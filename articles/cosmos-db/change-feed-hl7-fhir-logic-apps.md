@@ -1,12 +1,11 @@
 ---
-title: "Změna kanálu pro prostředky HL7 FHIR - Azure Cosmos DB | Microsoft Docs"
-description: "Zjistěte, jak nastavit oznámení o změnách pro záznamy HL7 FHIR pacientů zdravotní péče pomocí Azure Logic Apps, Azure Cosmos DB a služby Service Bus."
+title: Změna kanálu pro prostředky HL7 FHIR - Azure Cosmos DB | Microsoft Docs
+description: Zjistěte, jak nastavit oznámení o změnách pro záznamy HL7 FHIR pacientů zdravotní péče pomocí Azure Logic Apps, Azure Cosmos DB a služby Service Bus.
 keywords: hl7 fhir
 services: cosmos-db
 author: hedidin
-manager: jhubbard
-editor: mimig
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: 0d25c11f-9197-419a-aa19-4614c6ab2d06
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
-ms.author: b-hoedid
-ms.openlocfilehash: e5fa40dc128412e3b5b39c9fbdb751c797ca0cc7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: sngun
+ms.openlocfilehash: d9894709cc10c55295e63f64a0db89137bf36826
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů HL7 FHIR zdravotní péče záznam změn pomocí Logic Apps a Azure Cosmos DB
 

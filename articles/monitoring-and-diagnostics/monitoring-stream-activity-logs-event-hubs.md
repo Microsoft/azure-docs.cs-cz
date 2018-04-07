@@ -1,9 +1,9 @@
 ---
-title: "Stream protokol činnosti Azure do centra událostí | Microsoft Docs"
-description: "Zjistěte, jak k vysílání datového proudu protokol činnosti Azure do centra událostí."
+title: Stream protokol činnosti Azure do centra událostí | Microsoft Docs
+description: Zjistěte, jak k vysílání datového proudu protokol činnosti Azure do centra událostí.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: ec4c2d2c-8907-484f-a910-712403a06829
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: 4b2d9866839f943f65beb271d44bc691441b0fb3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8a599558fc35ca2bf48ce2a5f11ec4978bf10277
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Datový proud protokolu Azure činnosti do centra událostí
 Dá Streamovat [protokol činnosti Azure](monitoring-overview-activity-logs.md) skoro v reálném čase pro všechny aplikace, a to buď:
@@ -56,38 +56,48 @@ Aktualizovat profil protokolu protokol aktivit zahrnout streamování, uživatel
 
    > [!WARNING]  
    > Pokud nic jiné než vyberete **všech oblastech**, budete neproběhly klíče události, které chcete dostávat. Protokol aktivit je globální protokolu (není místní), takže většina události nemají oblasti s nimi spojených. 
-   > 
+   >
 
 4. Vyberte **Uložit** uložit tato nastavení. Nastavení se použije okamžitě do vašeho předplatného.
 5. Pokud máte několik předplatných, opakujte tuto akci a odeslat veškerá data do stejné centra událostí.
 
 ### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
-Pokud profil protokolu již existuje, musíte nejprve odebrat tento profil.
+Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
 
-1. Použití `Get-AzureRmLogProfile` a zjistit, zda existuje profil protokolu.
-2. Pokud ano, použít `Remove-AzureRmLogProfile` jeho odebrání.
-3. Použití `Set-AzureRmLogProfile` k vytvoření profilu:
+1. Použití `Get-AzureRmLogProfile` a zjistit, zda existuje profil protokolu.  Pokud profil protokolu neexistuje, vyhledejte *název* vlastnost.
+2. Použití `Remove-AzureRmLogProfile` pro odebrání profilu protokolu z hodnoty *název* vlastnost.
+
+    ```powershell
+    # For example, if the log profile name is 'default'
+    Remove-AzureRmLogProfile -Name "default"
+    ```
+3. Použití `Add-AzureRmLogProfile` k vytvoření nového profilu protokolu:
 
    ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your event hub belongs to>"
+   $eventHubNamespace = "<event hub namespace>"
 
-   Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+   # Build the service bus rule Id from the settings above
+   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespaceName/authorizationrules/RootManageSharedAccessKey"
 
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
-
-ID pravidla Service Bus je řetězec s Tento formát: `{service bus resource ID}/authorizationrules/{key name}`. 
 
 ### <a name="via-azure-cli"></a>Via Azure CLI
-Pokud profil protokolu již existuje, musíte nejprve odebrat tento profil.
+Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
 
-1. Použití `azure insights logprofile list` a zjistit, zda existuje profil protokolu.
-2. Pokud ano, použít `azure insights logprofile delete` jeho odebrání.
-3. Použití `azure insights logprofile add` k vytvoření profilu:
+1. Použití `az monitor log-profiles list` a zjistit, zda existuje profil protokolu.
+2. Použití `az monitor log-profiles delete --name "<log profile name>` pro odebrání profilu protokolu z hodnoty *název* vlastnost.
+3. Použití `az monitor log-profiles create` k vytvoření nového profilu protokolu:
 
    ```azurecli-interactive
-   azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
-
-ID pravidla Service Bus je řetězec s Tento formát: `{service bus resource ID}/authorizationrules/{key name}`.
 
 ## <a name="consume-the-log-data-from-event-hubs"></a>Tato data protokolu ze služby Event Hubs
 Schéma pro protokol aktivit je k dispozici v [sledovat činnost předplatné s protokol činnosti Azure](monitoring-overview-activity-logs.md). Každá událost je v pole objektů JSON BLOB názvem *záznamy*.

@@ -1,10 +1,10 @@
 ---
-title: "Vytvářet a spravovat virtuální počítač Azure pomocí jazyka C# | Microsoft Docs"
-description: "Použití jazyka C# a Azure Resource Manager k nasazení virtuálního počítače a všechny její Podpůrné prostředky."
+title: Vytvářet a spravovat virtuální počítač Azure pomocí jazyka C# | Microsoft Docs
+description: Použití jazyka C# a Azure Resource Manager k nasazení virtuálního počítače a všechny její Podpůrné prostředky.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 5d9021c2f65b70e36d5ea82992c9fb9d2d6d394a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43dcc8e5d9756807a3e005d629e84469a2e6eb04
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí jazyka C# #
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 > * Vytvořit přihlašovací údaje
 > * Vytvoření prostředků
 > * Provádění úloh správy
-> * Odstraňte prostředky
+> * Odstranění prostředků
 > * Spuštění aplikace
 
 Proveďte tyto kroky trvá asi 20 minut.
@@ -73,7 +73,7 @@ Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby A
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte  **&lt;id předplatného&gt;**  s ID vašeho předplatného  **&lt;id aplikace&gt;**  s identifikátor aplikace služby Active Directory  **&lt;ověřovací klíč&gt;**  s klíč aplikace a  **&lt;id klienta&gt;**  s identifikátorem klienta.
+    Nahraďte **&lt;id předplatného&gt;** s ID vašeho předplatného **&lt;id aplikace&gt;** s identifikátor aplikace služby Active Directory **&lt;ověřovací klíč&gt;** s klíč aplikace a **&lt;id klienta&gt;** s identifikátorem klienta.
 
 3. Uložte soubor azureauth.properties. 
 4. Nastavte proměnnou prostředí v systému Windows s názvem AZURE_AUTH_LOCATION s úplnou cestu k souboru autorizace, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
@@ -239,7 +239,7 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu virtuálního počítače můžete spustit úlohy správy, jako je například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
+Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
 
 Když potřebujete udělat nic s virtuálním Počítačem, budete muset získat instanci ho:
 
@@ -375,7 +375,7 @@ Console.WriteLine("Press enter to delete resources...");
 Console.ReadLine();
 ```
 
-## <a name="delete-resources"></a>Odstraňte prostředky
+## <a name="delete-resources"></a>Odstranění prostředků
 
 Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
@@ -393,7 +393,7 @@ Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spust
 
 2. Před stisknutím klávesy **Enter** zahájíte odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na portálu Azure. Klikněte na tlačítko Stav nasazení zobrazíte informace o tomto nasazení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Využít výhod pomocí šablony pro vytvoření virtuálního počítače pomocí informací v [nasadit virtuální počítač Azure pomocí jazyka C# a šablony Resource Manageru](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Další informace o používání [knihovny Azure pro .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
 

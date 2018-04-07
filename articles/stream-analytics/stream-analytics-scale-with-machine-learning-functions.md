@@ -1,27 +1,22 @@
 ---
-title: Úlohy škálování s Azure Stream Analytics & AzureML funkce | Microsoft Docs
-description: Zjistěte, jak se správně škálovat úlohy Stream Analytics (rozdělení do oddílů, SU množství a více) při použití funkce Azure Machine Learning.
-keywords: ''
-documentationcenter: ''
+title: Funkce škálování Machine Learning v Azure Stream Analytics
+description: Tento článek popisuje postup škálování úlohy Stream Analytics, které používají funkce Machine Learning nakonfigurováním vytváření oddílů a datový proud jednotky.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Škálovat vaše úloha Stream Analytics s funkcemi Azure Machine Learning
-Často je snadné nastavení úlohy Stream Analytics a spusťte ukázková data přes něj. Co můžeme dělat, když budeme potřebovat spuštění stejné úlohy s vyšší datový svazek? To vyžaduje nám pochopit, jak nakonfigurovat úlohy služby Stream Analytics tak, aby se škáluje. V tomto dokumentu zaměříme na zvláštní aspekty škálování úlohy Stream Analytics s funkcemi, Machine Learning. Informace o tom, jak obecně škálování úlohy Stream Analytics najdete v článku [škálování úlohy](stream-analytics-scale-jobs.md).
+Nastavení úlohy Stream Analytics a spuštění ukázkových dat přes něj je přímo dál. Co můžeme dělat, když budeme potřebovat spuštění stejné úlohy s vyšší datový svazek? To vyžaduje nám pochopit, jak nakonfigurovat úlohy služby Stream Analytics tak, aby se škáluje. V tomto dokumentu zaměříme na zvláštní aspekty škálování úlohy Stream Analytics s funkcemi, Machine Learning. Informace o tom, jak obecně škálování úlohy Stream Analytics najdete v článku [škálování úlohy](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Co je Azure Machine Learning funkce v Stream Analytics?
 Funkce Machine Learning v Stream Analytics lze použít jako normální funkce volání v jazyce dotaz služby Stream Analytics. Ale za scény, volání funkce je ve skutečnosti žádostí o webové službě Azure Machine Learning. Webové služby Machine Learning podporovat "dávkování" více řádků, která se nazývá zkrácená batch, ve stejném volání webové služby rozhraní API, ke zlepšení celkovou propustnost. Najdete v následujících článcích podrobnosti; [Funkce azure Machine Learning v Stream Analytics](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) a [webové služby Azure Machine Learning](../machine-learning/studio/consume-web-services.md).
@@ -111,7 +106,7 @@ To Shrneme hlavní body, aby bylo možné škálovat úloha Stream Analytics s f
 2. . Povolená latence pro spuštěná úloha Stream Analytics (a tedy velikost dávky žádosti webové služby Machine Learning)
 3. Zřízené SUs analýzy datového proudu a počet žádosti webové služby Machine Learning (Další funkce související náklady na)
 
-Jako příklad byl použit dotaz služby Stream Analytics plně oddílů. Pokud je potřeba komplexnější dotaz [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics) je skvělým zdrojem pro získávání potřebujete další pomoc od týmu Stream Analytics.
+Jako příklad byl použit dotaz služby Stream Analytics plně oddílů. Pokud je potřeba komplexnější dotaz [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) je skvělým zdrojem pro získávání potřebujete další pomoc od týmu Stream Analytics.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o Stream Analytics najdete v tématu:

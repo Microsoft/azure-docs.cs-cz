@@ -1,24 +1,19 @@
 ---
-title: Řídicí panel Power BI na Azure Stream Analytics | Microsoft Docs
-description: Použijte v reálném čase streamování řídicí panel Power BI shromažďovat business intelligence a analýze velkých objemů dat z úlohy Stream Analytics.
-keywords: Analýza řídicího panelu, řídicí panel v reálném čase
+title: Integrace řídicí panel Power BI s Azure Stream Analytics
+description: Tento článek popisuje, jak používat v reálném čase řídicí panel Power BI k vizualizaci dat mimo úlohu služby Azure Stream Analytics.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro datový proud
 Azure Stream Analytics můžete využít jeden z úvodní nástroje business intelligence [Microsoft Power BI](https://powerbi.com/). V tomto článku se dozvíte, jak vytvořit nástroje business intelligence pomocí Power BI jako výstup pro úlohy Azure Stream Analytics. Také zjistíte, jak vytvořit a použít v reálném čase řídicí panel.
@@ -249,7 +244,7 @@ Podobně pokud úloha spustí po vypršení platnosti tokenu, dojde k chybě a �
 Po aktualizaci autorizaci s Power BI, Zelená výstraha se zobrazí v oblasti autorizace tak, aby odrážela, že byl problém vyřešen.
 
 ## <a name="get-help"></a>Podpora
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

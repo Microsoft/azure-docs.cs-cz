@@ -1,24 +1,19 @@
 ---
-title: Testování dotazů v Azure Stream Analytics | Microsoft Docs
-description: Postup testování vašich dotazů v úlohy Stream Analytics.
-keywords: Test dotazu, řešení potíží s dotazu
-documentation center: ''
+title: Testování dotazů v Azure Stream Analytics
+description: Tento článek popisuje postup testování dotazů pomocí ukázkových datových souborů do úlohy Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 50bfce426bf48ba986887f8a2e2873fe04ea2507
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: fb7d936dfdc543c208ce98c588f5ad83704ff5dc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="test-azure-stream-analytics-queries-in-the-azure-portal"></a>Testování dotazů Azure Stream Analytics na portálu Azure
 
@@ -44,7 +39,7 @@ Jakmile budete spokojeni se na výsledky zobrazené v prohlížeči, můžete ul
 
 ## <a name="get-help"></a>Podpora
 
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 

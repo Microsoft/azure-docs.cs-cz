@@ -1,18 +1,18 @@
 ---
-title: "POST událost, která má vlastní téma Azure událostí mřížky"
-description: "Popisuje, jak odeslat událost do vlastní tématu pro Azure událostí mřížky"
+title: POST událost, která má vlastní téma Azure událostí mřížky
+description: Popisuje, jak odeslat událost do vlastní tématu pro Azure událostí mřížky
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Odeslání na vlastní tématu pro Azure událostí mřížky
 
@@ -91,8 +91,34 @@ Schéma dat platný událostí je například:
 }]
 ```
 
+## <a name="response"></a>Odpověď
+
+Po odeslání ke koncovému bodu tématu, obdržíte odpověď. Odpověď je standardní kódu odpovědi HTTP. Některé běžné odpovědi jsou:
+
+|Výsledek  |Odpověď  |
+|---------|---------|
+|Úspěch  | 200 OK  |
+|Nesprávný koncový bod | 404 – Nenalezeno |
+|Neplatný přístupový klíč | 401 unauthorized |
+|Data události mají nesprávný formát. | 400 – Chybný požadavek |
+
+Text zprávy pro chyby, má následující formát:
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>Další postup
 
-* Úvod do směrování vlastních událostí, naleznete v části [vytvořit a směrování vlastních událostí pomocí rozhraní příkazového řádku Azure a událostí mřížky](custom-event-quickstart.md) nebo [vytvořit a směrování vlastních událostí Azure PowerShell a mřížky událostí](custom-event-quickstart-powershell.md).
+* Informace o sledování událostí dodávky najdete v tématu [doručení zpráv monitorování událostí mřížky](monitor-event-delivery.md).
 * Další informace o klíči ověřování najdete v tématu [mřížky událostí zabezpečení a ověřování](security-authentication.md).
 * Další informace o vytváření předplatného služby Azure událostí mřížky, najdete v části [schématu odběru událostí mřížky](subscription-creation-schema.md).

@@ -1,11 +1,11 @@
 ---
 title: Cluster HPC Pack pro aplikaci Excel a SOA | Microsoft Docs
-description: "Začínáme s rozsáhlé úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure"
+description: Začínáme s rozsáhlé úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Začít a spustit úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure
 Tento článek ukazuje, jak nasadit cluster Microsoft HPC Pack 2012 R2 na virtuálních počítačích Azure pomocí šablony Azure rychlý start, nebo volitelně skript nasazení Azure PowerShell. Cluster využívá Image virtuálního počítače Azure Marketplace, které jsou navrženy pro spouštění úloh orientované na služby architektura (SOA) nebo Microsoft Excel pomocí sady HPC Pack. Clusteru můžete použít ke spuštění aplikace Excel HPC a SOA služby z klientského počítače k místní. Služby HPC pro Excel obsahovat snižování zátěže sešitu aplikace Excel a uživatelem definované funkce aplikace Excel nebo UDF.
@@ -59,7 +59,7 @@ Rychlé nasazení clusteru HPC Pack na portálu Azure pomocí šablony Azure ryc
    
    a. Na **parametry** stránky zadejte nebo upravte hodnoty pro parametry šablony. (Klikněte na ikonu u kteréhokoli nastavení pro informace nápovědy.) Ukázkové hodnoty jsou uvedené v následující obrazovku. Tento příklad vytvoří cluster s názvem *hpc01* v *hpc.local* domény, který se skládá z hlavního uzlu a 2 výpočetních uzlů. Výpočetní uzly jsou vytvořené z virtuálních počítačů HPC Pack obrázek, který obsahuje aplikace Microsoft Excel.
    
-   ![Zadejte parametry][parameters-new-portal]
+   ![Zadání parametrů][parameters-new-portal]
    
    > [!NOTE]
    > Virtuální počítač je automaticky vytvořen z hlavního uzlu [nejnovější image Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) HPC Pack 2012 R2 na Windows Server 2012 R2. Aktuálně bitovou kopii je založena na HPC Pack 2012 R2 Update 3.
@@ -341,7 +341,7 @@ Pokud chcete použít NetTcp vazby, konfigurace je podobný připojení k místn
 
 Klientská aplikace SOA nevyžaduje žádné změny kromě změna head název, který má úplný název clusteru IaaS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * V tématu [tyto prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) pro další informace o spuštění úlohy aplikace Excel pomocí sady HPC Pack.
 * V tématu [Správa služeb SOA v Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) Další informace o nasazení a správě SOA services pomocí sady HPC Pack.
 

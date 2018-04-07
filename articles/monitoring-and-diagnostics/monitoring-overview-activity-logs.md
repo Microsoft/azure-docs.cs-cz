@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Sledování aktivity předplatné s protokol činnosti Azure
+
 **Protokol činnosti Azure** je protokol odběru, který poskytuje přehled o události na úrovni předplatného, k nimž došlo v Azure. To zahrnuje celou řadu dat z provozních dat Azure Resource Manager aktualizací na události stavu služby. Protokol aktivit se dřív označovala jako "Protokoly auditu" nebo "Provozní protokoly," od události administrativní kategorie sestavy rovině řízení pro vaše předplatné. Pomocí protokolu činnosti, můžete určit ', kdo a kdy se pro všechny zápisu operace (PUT, POST, DELETE) na prostředky v rámci vašeho předplatného. Můžete také chápou stav operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET) nebo operace pro prostředky, které používají Classic nebo model "RDFE".
 
 ![Aktivita protokoly vs jiné typy protokolů ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
@@ -37,9 +38,7 @@ Protokol aktivity se liší od [diagnostické protokoly](monitoring-overview-of-
 Můžete načíst události z protokolu aktivit pomocí portálu Azure, rozhraní příkazového řádku, rutiny prostředí PowerShell a rozhraní REST API Azure monitorování.
 
 > [!NOTE]
-
->  [Novější výstrahy)](monitoring-overview-unified-alerts.md) nabízí vylepšené prostředí při vytváření a správa aktivity protokolu pravidla výstrah.  [Další informace](monitoring-activity-log-alerts-new-experience.md).
-
+>  [Novější výstrahy](monitoring-overview-unified-alerts.md) nabízí vylepšené prostředí při vytváření a správa aktivity protokolu pravidla výstrah.  [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
 Zobrazení v následujícím videu Představení protokolu aktivit.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -103,7 +102,7 @@ A **profil protokolu** řídí, jak je export protokolu aktivit. Použití profi
 * Které oblasti (umístění) mají být exportovány. Nezapomeňte zahrnout "globální", protože mnoho událostí v protokolu aktivit jsou globální události.
 * Jak dlouho se uchovávají v účtu úložiště protokol aktivit.
     - Uchování nulový počet dnů znamená, že jsou protokoly v nekonečné smyčce. Hodnota, jinak hodnota může být libovolný počet dnů od 1 do 2147483647.
-    - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud jenom jsou vybrané možnosti služby Event Hubs nebo OMS), zásady uchovávání informací nemají žádný vliv.
+    - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud jenom jsou vybrané možnosti služby Event Hubs nebo analýzy protokolů), zásady uchovávání informací nemají žádný vliv.
     - Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn.
 
 Můžete použít úložiště účet nebo události rozbočovače obor názvů, který není ve stejném předplatném jako jeden emitování protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající RBAC přístup na oba odběry.
@@ -129,12 +128,15 @@ Můžete datového proudu protokolu aktivit do centra událostí nebo uložit je
 4. Klikněte na tlačítko **Uložit** uložit tato nastavení. Nastavení se okamžitě použijí pro vaše předplatné.
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Konfigurace protokolu profilů pomocí rutin prostředí PowerShell Azure
+
 #### <a name="get-existing-log-profile"></a>Získat stávající profil protokolu
+
 ```
 Get-AzureRmLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>Přidat profil protokolu
+
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
@@ -153,33 +155,32 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cross-platform-cli"></a>Konfigurace protokolu profilů pomocí Azure CLI pro různé platformy
+### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Konfigurace protokolu profilů pomocí Azure CLI 2.0
+
 #### <a name="get-existing-log-profile"></a>Získat stávající profil protokolu
+
+```azurecli
+az monitor log-profiles list
+az monitor log-profiles show --name <profile name>
 ```
-azure insights logprofile list
-```
-```
-azure insights logprofile get --name my_log_profile
-```
+
 `name` Vlastnost by měla být název pro váš profil protokolu.
 
 #### <a name="add-a-log-profile"></a>Přidat profil protokolu
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+
+```azurecli
+az monitor log-profiles create --name <profile name> \
+    --locations <location1 location2 ...> \
+    --location <location> \
+    --categories <category1 category2 ...>
 ```
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| jméno |Ano |Název vašeho profilu protokolu. |
-| storageId |Ne |ID prostředku účtu úložiště, který má být uložen v protokolu aktivit. |
-| serviceBusRuleId |Ne |ID pravidla sběrnice služby pro chcete mít centra událostí, které jsou vytvořené v oboru názvů Service Bus. Je řetězec s Tento formát: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. |
-| retentionInDays |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
-| Kategorie |Ne |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
+Úplnou dokumentaci pro vytvoření profilu monitorování pomocí rozhraní příkazového řádku najdete v tématu [reference k příkazům rozhraní příkazového řádku](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)
 
 #### <a name="remove-a-log-profile"></a>Odebrat profil protokolu
-```
-azure insights logprofile delete --name my_log_profile
+
+```azurecli
+az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>Další kroky

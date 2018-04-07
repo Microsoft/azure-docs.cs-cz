@@ -1,11 +1,11 @@
 ---
-title: "Plánování migrace prostředky infrastruktury z klasického do Azure Resource Manageru | Microsoft Docs"
-description: "Plánování migrace z klasického do Azure Resource Manageru prostředků IaaS"
+title: Plánování migrace prostředky infrastruktury z klasického do Azure Resource Manageru | Microsoft Docs
+description: Plánování migrace z klasického do Azure Resource Manageru prostředků IaaS
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 246032701d97fc7d16e6cb38ee79fbd5470f65d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace z klasického do Azure Resource Manageru prostředků IaaS
 Zatímco Azure Resource Manager nabízí mnoho úžasné funkcí, je důležité k naplánování vaší cesty migrace zkontrolujte, zda věcí bezproblémové. Výdaje čas na plánování zajistí nedochází chybám při provádění migrace aktivity. 
@@ -114,7 +114,7 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
     >
 
     - Síťová rozhraní
-    - Nástroje pro vyrovnávání zatížení
+    - Služby vyrovnávání zatížení
     - Veřejné IP adresy
     - Statické veřejné IP adresy
     - Jádra
@@ -202,7 +202,7 @@ Být záměrné na jaké služby, které teď chcete povolit ve službě Správc
 Mějte na paměti, proč jste spustili tento Classic do cesty migrace správce prostředků Azure.  Jaké byly obchodních důvodů, proč původní? Dosáhnout obchodního důvodu?
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

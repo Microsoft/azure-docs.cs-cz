@@ -1,10 +1,10 @@
 ---
-title: "Vytvořit kopii virtuálním počítačům s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Informace o vytvoření kopie virtuálního počítače Azure Linux pomocí Azure CLI 1.0 v modelu nasazení Resource Manager"
+title: Vytvořit kopii virtuálním počítačům s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs
+description: Informace o vytvoření kopie virtuálního počítače Azure Linux pomocí Azure CLI 1.0 v modelu nasazení Resource Manager
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager
 ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 62ae54f3596c9383cbf3b401fcfdb42ecfdee63c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb350f8d14ad451ad3ff7cd617ca3f90967aaa4b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Vytvořit kopii virtuální počítač s Linuxem systémem Azure pomocí Azure CLI 1.0
 Tento článek ukazuje, jak vytvořit kopii Azure virtuálního počítače (VM) s Linuxem pomocí modelu nasazení Resource Manager. Nejdřív zkopírujte přes operačního systému a datové disky pro nový kontejner, potom nastavíte síťové prostředky a vytvoření nového virtuálního počítače.
@@ -46,7 +46,7 @@ Ujistěte se, splňují následující předpoklady, než začnete kroky:
 | Název kontejneru |`azure storage container list -a <sourcestorageaccountname>` |
 | Název zdrojového souboru virtuálního pevného disku virtuálního počítače |`azure storage blob list --container <containerName>` |
 
-* Budete muset některé rozhodování o nový virtuální počítač:   <br> -Název kontejneru   <br> -Název virtuálního počítače.   <br> Velikost virtuálního počítače-   <br> Název - vNet   <br> -Název podsítě.   <br> Název - IP   <br> Název - NIC
+* Budete muset některé rozhodování o nový virtuální počítač:    <br> -Název kontejneru    <br> -Název virtuálního počítače.    <br> Velikost virtuálního počítače-    <br> Název - vNet    <br> -Název podsítě.    <br> Název - IP    <br> Název - NIC
 
 ## <a name="login-and-set-your-subscription"></a>Přihlášení a nastavte předplatné
 1. Přihlášení k rozhraní příkazového řádku.
@@ -110,6 +110,6 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Naučte se používat rozhraní příkazového řádku Azure ke správě nového virtuálního počítače, najdete v tématu [rozhraní příkazového řádku Azure pro Azure Resource Manager](../azure-cli-arm-commands.md).
 

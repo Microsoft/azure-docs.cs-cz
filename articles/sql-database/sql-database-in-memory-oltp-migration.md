@@ -8,13 +8,13 @@ ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 04/01/2018
 ms.author: jodebrui
-ms.openlocfilehash: 00823ca44ec7135a9937bb37dd4ed58ec996c89d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd76f475f330c49dec737d2c4a25aa75a18b41a7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Použití OLTP v paměti pro zlepšení výkonu vaší aplikace v databázi SQL
 [OLTP v paměti](sql-database-in-memory.md) lze zlepšit výkon zpracování transakcí, přijímání dat a scénáře přechodný dat v [úroveň Premium a kritické obchodní](sql-database-service-tiers.md) databází bez zvýšení cenovou úroveň. 

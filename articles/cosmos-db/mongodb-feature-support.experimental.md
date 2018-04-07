@@ -3,8 +3,7 @@ title: Azure Cosmos DB funkce – Podpora pro MongoDB | Microsoft Docs
 description: Další informace o podporovaných funkcích, které poskytuje rozhraní API služby Azure DB Cosmos MongoDB pro MongoDB 3.4.
 services: cosmos-db
 author: alekseys
-manager: jhubbard
-editor: ''
+manager: kfile
 documentationcenter: ''
 ms.assetid: 29b6547c-3201-44b6-9e0b-e6f56e473e24
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: ff83c186702a65ce8b15df4094b9aed823e34cd5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 0bae274a7bf849267aed92d1372bc26e86227cb2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro MongoDB funkce a syntaxe
+# <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s rozhraním API databázi MongoDB do některého z klienta s otevřeným zdrojem MongoDB [ovladače](https://docs.mongodb.org/ecosystem/drivers). Rozhraní API MongoDB umožňuje použití existujících ovladačů klienta tak, že se MongoDB [propojit protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
@@ -36,7 +35,7 @@ Rozhraní API MongoDB DB Cosmos Azure poskytuje komplexní podporu pro jazykové
 Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům rozhraní API MongoDB. 
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro operaci dotazu a zápisu
-- odstranit
+- odstraňovat
 - Najít
 - findAndModify
 - getLastError
@@ -53,7 +52,7 @@ Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům r
 - dropDatabase
 - listCollections
 - přetažení
-- create
+- vytvoření
 - filemd5
 - createIndexes
 - listIndexes
@@ -213,7 +212,7 @@ Podporuje následující operátory odpovídající příkladů jeho použití. 
 }
 ```
 
-Operátor | Příklad |
+Operátor | Příklad: |
 --- | --- |
 $eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
 $gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
@@ -268,7 +267,7 @@ První část použije index omezit výsledky vyhledávání na tyto dokumenty p
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Příklad 
+Operátor | Příklad: 
 --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
@@ -284,7 +283,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>Další operátory
 
-Operátor | Příklad | Poznámky 
+Operátor | Příklad: | Poznámky 
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
@@ -298,7 +297,7 @@ Podporovány jsou následující metody:
 
 #### <a name="cursor-methods"></a>Kurzor metody
 
-Metoda | Příklad | Poznámky 
+Metoda | Příklad: | Poznámky 
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Získat nebyla vrácena dokumenty bez klíč řazení
 

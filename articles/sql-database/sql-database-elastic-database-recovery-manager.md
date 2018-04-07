@@ -1,19 +1,19 @@
 ---
-title: "Pomocí Správce obnovení opravit problémy mapy horizontálního oddílu | Microsoft Docs"
-description: "Použití třídy RecoveryManager pro řešení problémů s horizontálního oddílu mapy"
+title: Pomocí Správce obnovení opravit problémy mapy horizontálního oddílu | Microsoft Docs
+description: Použití třídy RecoveryManager pro řešení problémů s horizontálního oddílu mapy
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/25/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 45dc16c7bf54f34c89f2e9208a7cee06de03c0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 350ea0d4b744467849916f2d958cc49fd72d3e4b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) třída poskytuje ADO.Net aplikace umožňuje snadno zjistit a opravit nekonzistence mezi globální horizontálních mapy (GSM) a místní horizontálních mapy (LSM) v prostředí s horizontálně dělené databáze. 

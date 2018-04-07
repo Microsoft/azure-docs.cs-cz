@@ -1,11 +1,11 @@
 ---
-title: "Skript prostředí PowerShell pro nasazení clusteru Windows HPC | Microsoft Docs"
-description: "Spusťte skript prostředí PowerShell pro nasazení clusteru Windows HPC Pack 2012 R2 ve virtuálních počítačích Azure"
+title: Skript prostředí PowerShell pro nasazení clusteru Windows HPC | Microsoft Docs
+description: Spusťte skript prostředí PowerShell pro nasazení clusteru Windows HPC Pack 2012 R2 ve virtuálních počítačích Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 82aa2942a6a4fe6a3ac1c3ec2c0710e39f4282b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e05562aeac0ea89ec1c3d80d2967c8f59c68d332
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Vytvoření Windows vysoce výkonné výpočty (HPC) clusteru pomocí skriptu pro nasazení HPC Pack IaaS
 Spusťte nasazení HPC Pack IaaS skript Powershellu pro nasazení dokončení clusteru HPC Pack 2012 R2 pro úlohy Windows ve virtuálních počítačích Azure. Cluster se skládá z služby Active Directory připojené k hlavnímu uzlu systémem Windows Server a Microsoft HPC Pack a dalších Windows výpočetní prostředky, které zadáte. Pokud chcete nasazení clusteru HPC Pack v Azure pro Linux zatížení, přečtěte si téma [vytvořit cluster Linux HPC pomocí skriptu pro nasazení HPC Pack IaaS](../../linux/classic/hpcpack-cluster-powershell-script.md). 
@@ -267,7 +267,7 @@ Následující konfigurační soubor nasadí cluster služby HPC Pack v existuj�
   
     Chcete-li tento problém obejít, nejprve zkontrolujte stav rozšíření ve virtuálních počítačích. Pokud rozšíření není nainstalován správně, zkuste odebrat uzel z clusteru HPC a poté znovu přidejte uzly. Například můžete přidat výpočetním uzlu virtuální počítače pomocí skriptu přidat HpcIaaSNode.ps1 z hlavního uzlu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zkuste spustit test zatížení v clusteru. Příklad najdete v tématu HPC Pack [Příručka Začínáme](https://technet.microsoft.com/library/jj884144).
 * Skript nasazení clusteru a spuštění úlohy HPC, na adrese [začít pracovat s clusteru služby HPC Pack v Azure a spuštění aplikace Excel a SOA úloh](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Zkuste nástroje HPC Pack spustit, zastavit, přidat a odebrat výpočetních uzlů z clusteru, který vytvoříte. V tématu [spravovat výpočetní uzly v prostředí HPC Pack clusteru v Azure](hpcpack-cluster-node-manage.md).

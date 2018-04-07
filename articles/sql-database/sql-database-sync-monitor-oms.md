@@ -1,21 +1,21 @@
 ---
-title: Monitorování synchronizaci dat Azure SQL (Preview) s OMS Log Analytics | Microsoft Docs
-description: Naučte se monitorovat synchronizaci dat SQL Azure (Preview) pomocí OMS analýzy protokolů
+title: Monitorování synchronizaci dat Azure SQL (Preview) s Log Analytics | Microsoft Docs
+description: Naučte se monitorovat synchronizaci dat SQL Azure (Preview) pomocí analýzy protokolů
 services: sql-database
-ms.date: 11/07/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Synchronizaci dat SQL (Preview) monitorování s OMS analýzy protokolů 
+# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Synchronizaci dat SQL (Preview) monitorování s analýzy protokolů 
 
 Zkontrolujte protokol aktivit synchronizaci dat SQL a zjištění chyby a upozornění, dříve bylo nutné ručně zkontrolujte synchronizaci dat SQL na portálu Azure nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku nakonfigurovat vlastní řešení, který zlepšuje synchronizaci dat možností monitorování. Toto řešení vyhovovat vašemu scénáři můžete přizpůsobit.
 
@@ -23,27 +23,27 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny pro synchronizaci 
 
-Již nepotřebujete projděte protokol každé skupiny synchronizace jednotlivě, abyste zjišťování problémů. Všechny skupiny pro synchronizaci z jakéhokoli z vašich předplatných na jednom místě, můžete monitorovat pomocí vlastní zobrazení OMS (Operations Management Suite). Toto zobrazení zobrazí informace, které záleží zákazníkům synchronizaci dat SQL.
+Již nepotřebujete projděte protokol každé skupiny synchronizace jednotlivě, abyste zjišťování problémů. Všechny skupiny pro synchronizaci z jakéhokoli z vašich předplatných na jednom místě, můžete monitorovat pomocí vlastní zobrazení analýzy protokolů. Toto zobrazení zobrazí informace, které záleží zákazníkům synchronizaci dat SQL.
 
 ![Řídicí panel monitorování pro synchronizaci dat](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Automatizované e-mailových oznámení
 
-Již nepotřebujete protokolu ručně na portálu Azure nebo pomocí prostředí PowerShell nebo rozhraní REST API. S [analýzy protokolů OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet výstrahy, které přejít přímo na e-mailové adresy osob, které potřebujete vědět, když dojde k chybě.
+Již nepotřebujete protokolu ručně na portálu Azure nebo pomocí prostředí PowerShell nebo rozhraní REST API. S [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), můžete vytvářet výstrahy, které přejít přímo na e-mailové adresy osob, které potřebujete vědět, když dojde k chybě.
 
 ![Data synchronizace e-mailových oznámení](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Jak můžete nastavit tyto funkce sledování? 
 
-Implementujte vlastní OMS řešení monitorování pro synchronizaci dat SQL za méně než hodinu provedením následujících akcí:
+Implementujte vlastní analýzy protokolů řešení monitorování pro synchronizaci dat SQL za méně než hodinu provedením následujících akcí:
 
 Je třeba nakonfigurovat tři komponenty:
 
--   Powershellový runbook ke kanálu data protokolu synchronizaci dat SQL k OMS.
+-   Powershellový runbook ke kanálu data protokolu synchronizaci dat SQL k analýze protokolů.
 
--   Upozornění analýzy protokolů OMS pro e-mailová oznámení.
+-   Upozornění na analýzy protokolů pro e-mailová oznámení.
 
--   Zobrazení OMS pro monitorování.
+-   Zobrazení analýzy protokolů pro monitorování.
 
 ### <a name="samples-to-download"></a>Ukázky ke stažení
 
@@ -51,7 +51,7 @@ Stáhněte si následující dvě ukázky:
 
 -   [Runbook Powershellu protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení OMS protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení analýzy protokolů synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -59,11 +59,11 @@ Ujistěte se, že jste nastavili následujících akcí:
 
 -   Účet automatizace Azure
 
--   Propojit s pracovní prostor OMS analýzy protokolů
+-   Pracovní prostor Log Analytics
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>Powershellový Runbook získat protokolu synchronizaci dat SQL 
 
-Použijte Powershellový runbook hostované ve službě Azure Automation k synchronizaci dat SQL data protokolu pro vyžádání obsahu a jeho odeslání na OMS. Ukázkový skript je zahrnuta. Předpokladem je musíte mít účet Azure Automation. Pak budete muset vytvořit sadu runbook a naplánovat jeho spuštění. 
+K synchronizaci dat SQL data protokolu pro vyžádání obsahu a jeho odeslání k analýze protokolů použijte Powershellový runbook hostované ve službě Azure Automation. Ukázkový skript je zahrnuta. Předpokladem je musíte mít účet Azure Automation. Pak budete muset vytvořit sadu runbook a naplánovat jeho spuštění. 
 
 ### <a name="create-a-runbook"></a>Vytvoření runbooku
 
@@ -121,9 +121,9 @@ Při plánování sady runbook:
 
 Chcete-li sledovat, jestli vaše automation běží podle očekávání, v části **přehled** u vašeho účtu automation najít **Statistika projektu** zobrazit v části **monitorování**. Připnete na řídicí panel pro snadné prohlížení tohoto zobrazení. Úspěšné spuštění sady runbook zobrazit jako "Dokončeno" a spustí se nezdařilo zobrazí jako "Se nezdařilo."
 
-## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>Vytvořit výstrahu čtečky protokolu OMS e-mailových oznámení
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Vytvořit výstrahu pro čtečky analýzy protokolů pro e-mailových oznámení
 
-Vytvořit výstrahu, která využívá analýzy protokolů OMS, provádět následující akce. Předpokladem je musíte mít analýzy protokolů propojit s pracovní prostor služby OMS.
+Vytvořit výstrahu, která využívá analýzy protokolů, provádět následující akce. Předpokladem je musíte mít analýzy protokolů propojit s pracovní prostor Log Analytics.
 
 1.  Na portálu OMS vyberte **hledání protokolů**.
 
@@ -179,7 +179,7 @@ Ve většině případů toto řešení je bezplatná.
 
 **Azure Automation:** může být náklady spojené s účet Azure Automation, v závislosti na vaší využití. První 500 počet minut za měsíc dobu běhu úloh jsou volné. Ve většině případů se očekává toto řešení použít méně než 500 minut za měsíc. Abyste se vyhnuli poplatky, naplánujte spuštění v intervalu dvě hodiny nebo víc sady runbook. Další informace najdete v tématu [ceny automatizace](https://azure.microsoft.com/pricing/details/automation/).
 
-**Analýzy protokolů OMS:** může být s náklady spojené s OMS v závislosti na vaší využití. Úroveň free zahrnuje 500 MB ingestovaný dat za den. Ve většině případů se očekává toto řešení ingestovat menší než 500 MB za den. Chcete-li snížit využití, použijte jen selhání filtrování zahrnuté v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na úroveň placené, aby se zabránilo Analytics zastavení, když je dosaženo omezení na. Další informace najdete v tématu [analýzy protokolů ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Analýzy protokolů:** může být s náklady spojené s analýzy protokolů v závislosti na vaší využití. Úroveň free zahrnuje 500 MB ingestovaný dat za den. Ve většině případů se očekává toto řešení ingestovat menší než 500 MB za den. Chcete-li snížit využití, použijte jen selhání filtrování zahrnuté v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na úroveň placené, aby se zabránilo Analytics zastavení, když je dosaženo omezení na. Další informace najdete v tématu [analýzy protokolů ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Ukázky kódů
 
@@ -187,7 +187,7 @@ Stáhněte si ukázky kódu, které jsou popsané v tomto článku v následují
 
 -   [Runbook Powershellu protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Zobrazení OMS protokolu synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Zobrazení analýzy protokolů synchronizace dat](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o Synchronizaci dat SQL:

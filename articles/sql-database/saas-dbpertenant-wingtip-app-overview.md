@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 563d82076721a669069ba3e36df84a050188813c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Úvod do víceklientské aplikace SaaS, která využívá vzor databáze na klienta s databází SQL
 
@@ -43,7 +43,7 @@ Poté, co nasadíte aplikaci, prozkoumejte následující kurzy, které vycház�
 |[Nasazení a prozkoumejte Wingtip SaaS aplikace](saas-dbpertenant-get-started-deploy.md)|  Nasazení a prozkoumejte aplikace Wingtip SaaS s předplatným Azure. |
 |[Zřizování a katalog klientů](saas-dbpertenant-provision-and-catalog.md)| Zjistěte, jak se aplikace připojí klientům pomocí databáze katalogu a jak katalogu mapuje klienty na svá data. |
 |[Sledování a správa výkonu](saas-dbpertenant-performance-monitoring.md)| Naučte se používat monitorování funkcí služby SQL Database a nastavit upozornění při překročení prahové hodnoty výkonu. |
-|[Monitorování s Azure Log Analytics (služby Operations Management Suite)](saas-dbpertenant-log-analytics.md) | Další informace o použití [analýzy protokolů](../log-analytics/log-analytics-overview.md) monitorování velké množství prostředků napříč více fondů. |
+|[Monitorování s Azure Log Analytics](saas-dbpertenant-log-analytics.md) | Další informace o použití [analýzy protokolů](../log-analytics/log-analytics-overview.md) monitorování velké množství prostředků napříč více fondů. |
 |[Obnovení jednoho klienta](saas-dbpertenant-restore-single-tenant.md)| Zjistěte, jak k obnovení databázi klienta do předchozího bodu v čase. Také zjistěte, jak k obnovení databázi paralelní, což zanechá databázi existující klient online. |
 |[Správa schématu databáze klienta](saas-tenancy-schema-management.md)| Zjistěte, jak aktualizovat schéma a aktualizovat referenční data mezi databázemi všechny klienta. |
 |[Spuštění klienta mezi distribuovaných dotazů](saas-tenancy-cross-tenant-reporting.md) | Vytvoření databáze analýzy ad-hoc a spusťte v reálném čase distribuované dotazy mezi všechny klienty.  |

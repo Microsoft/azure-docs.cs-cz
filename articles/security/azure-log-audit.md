@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure protokolování a auditování
 ## <a name="introduction"></a>Úvod
@@ -74,7 +74,7 @@ V následující tabulce uveden nejdůležitější typ protokolů dostupných v
 |[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Protokolování úložiště a poskytuje data metriky pro účet úložiště|Poskytuje vhled do trasování požadavků, analyzovat trendy využití a diagnostikovat problémy s vaším účtem úložiště.|    Rozhraní API REST nebo [klientské knihovny](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Tok protokolů NSG (skupina zabezpečení sítě)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|Formát JSON a zobrazuje toky odchozí a příchozí pravidlo za den|Zobrazení informací o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě|[Sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Přehled aplikace](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Protokoly, výjimky a vlastní diagnostiky|    Služba správy výkonu (APM) aplikace pro web vývojářů ve více platformách.| Rozhraní REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|Zpracování dat nebo výstrahy zabezpečení| Výstraha Azure Security Center, OMS výstrahy| Informace o zabezpečení a výstrahy.|   Rozhraní REST API, JSON|
+|Zpracování dat nebo výstrahy zabezpečení| Azure Security Center Alert, Log Analytics Alert|   Informace o zabezpečení a výstrahy.|   Rozhraní REST API, JSON|
 
 ### <a name="activity-log"></a>Protokol aktivit
 [Protokol činnosti Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), poskytuje vhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Protokol aktivit se dřív označovala jako "Protokoly auditu" nebo "Provozní protokoly," vzhledem k tomu, že se hlásí [rovině řízení události](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) pro vaše předplatné. Pomocí protokolu činnosti, můžete určit ", kdo a kdy" pro všechny zápisu operace (PUT, POST, DELETE) na prostředky v rámci vašeho předplatného. Můžete také chápou stav operace a další relevantní vlastnosti. Protokol aktivit nezahrnuje operace čtení (GET).
@@ -114,7 +114,7 @@ Azure Diagnostics protokoly nabízí několik možností konfigurace, které je,
 
 -   [Stream je do centra událostí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs) pro přijímání službu třetí strany nebo řešení vlastní analýzy, jako [PowerBI.](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
--   Analyzovat, s [analýzy protokolů OMS.](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+-   Analyzovat, s [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 
 **Podporované služby, schéma pro diagnostické protokoly a kategorie podporované protokolu na typ prostředku**
 
@@ -130,10 +130,10 @@ Azure Diagnostics protokoly nabízí několik možností konfigurace, které je,
 |||Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|
 |Key Vault|[Protokolování v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
 |Azure Search|[Povolení a používání Analýza provozu vyhledávání](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
-|Data Lake Store|[Přístup k diagnostickým protokolům pro Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
-|Data Lake Analytics|[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
-|||Microsoft.DataLakeAnalytics/accounts|Žádosti|
-|||Microsoft.DataLakeStore/accounts|Žádosti|
+|Data Lake Store|[Přístup k diagnostickým protokolům pro Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Auditování|
+|Data Lake Analytics|[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Auditování|
+|||Microsoft.DataLakeAnalytics/accounts|Požadavky|
+|||Microsoft.DataLakeStore/accounts|Požadavky|
 |Logic Apps|[Vlastní schéma sledování B2B Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|Modul runtime pracovního postupu|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
 |Azure Batch|[Protokolování diagnostiky Azure Batch](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
@@ -141,9 +141,9 @@ Azure Diagnostics protokoly nabízí několik možností konfigurace, které je,
 |||Microsoft.Automation/automationAccounts|JobStreams|
 |Event Hubs|[Diagnostické protokoly služby Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces|ArchiveLogs|
 |||Microsoft.EventHub/namespaces|OperationalLogs|
-|Stream Analytics|[Diagnostické protokoly úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Zpracování|
+|Stream Analytics|[Diagnostické protokoly úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|
 |||Microsoft.StreamAnalytics/streamingjobs|Vytváření obsahu|
-|Sběrnice|[Diagnostické protokoly služby Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
+|Service Bus|[Diagnostické protokoly služby Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
 ### <a name="azure-active-directory-reporting"></a>Generování sestav Azure Active Directory
 Azure Active Directory (Azure AD) obsahuje různé sestavy zabezpečení, aktivit a auditu pro váš adresář. [Azure Active Directory sestava auditu](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) pomáhá zákazníkům k identifikaci privilegovaných akcí, které došlo k chybě v Azure Active Directory. Privilegované akce zahrnují změny zvýšení oprávnění (například role vytvoření nebo resetování hesla), změna konfigurace zásad (třeba zásady pro hesla) nebo změny konfigurace adresáře (například změny nastavení federace domén).
@@ -242,7 +242,7 @@ Do protokolů toku použít stejné zásady uchovávání informací jako zobraz
 
 Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech úložiště, odeslané do centra událostí, nebo analýzy protokolů. Tyto protokoly poskytují přehled o stavu prostředku. Tyto protokoly můžete zobrazit v nástrojů, jako je Power BI a analýzy protokolů. Další postup zobrazení diagnostických protokolů najdete [analýzy protokolů.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)
 
-![Protokoly pro diagnostiku](./media/azure-log-audit/azure-log-audit-fig5.png)
+![Diagnostické protokoly](./media/azure-log-audit/azure-log-audit-fig5.png)
 
 Diagnostické protokoly jsou k dispozici pro [nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), trasy a [Application Gateway.](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
 
@@ -333,11 +333,11 @@ Mnoho operace zabezpečení a reakce na incidenty týmy závisí na informace o 
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Analýzy protokolů je služba v [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) který vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí. Nabízí přehledy v reálném čase pomocí integrovaného hledání a vlastní řídicí panely, které snadno analyzovat miliony záznamů ve všech úloh a servery bez ohledu na jejich fyzické umístění.
+Analýzy protokolů je služba v Azure, který vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí. Nabízí přehledy v reálném čase pomocí integrovaného hledání a vlastní řídicí panely, které snadno analyzovat miliony záznamů ve všech úloh a servery bez ohledu na jejich fyzické umístění.
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-V center Log Analytics je OMS úložiště, který je hostován v cloudu Azure. Data se do úložiště shromažďují z připojených zdrojů tak, že se konfigurují zdroje dat a přidávají řešení do vašeho předplatného. Zdroje dat a řešení vytvářejí různé typy záznamů, které mají vlastní sady vlastností, ale dají se přesto analyzovat společně v dotazech zasílaných do úložiště. To vám umožňuje používat stejné nástroje a metody pro práci s různými druhy dat shromážděných různými prostředky.
+V center Log Analytics je pracovní prostor analýzy protokolů, který je hostován v cloudu Azure. Data jsou shromažďována do pracovního prostoru z připojených zdrojů tak, že konfigurace zdroje dat a řešení pro přidání do vašeho předplatného. Zdroje dat a řešení každý vytvoří typy různých záznamů, které mají své vlastní sadu vlastností, ale může být analyzován společně v dotazech do pracovního prostoru. To vám umožňuje používat stejné nástroje a metody pro práci s různými druhy dat shromážděných různými prostředky.
 
 Propojené zdroje jsou počítače a další prostředky, které generují data shromážděná službou Log Analytics. To může zahrnovat agentů nainstalovaných na [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) a [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) počítače, které se připojují přímo nebo agentů v [připojené skupiny pro správu System Center Operations Manager.](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents) Analýzy protokolů může taky shromažďovat data z [úložiště Azure.](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)
 
@@ -352,11 +352,11 @@ Existují čtyři různé způsoby [shromažďování protokolů a metriky pro s
 
 4.  Skripty ke sběru a následně je publikovat data do analýzy protokolů (prázdné buňky v následující tabulce a pro služby, které nejsou uvedené)
 
-| Služba | Typ prostředku | Protokoly | metriky | Řešení |
+| Služba | Typ prostředku | Logs | Metriky | Řešení |
 | :------ | :------------ | :--- | :------ | :------- |
-|Aplikační brány|  Microsoft.Network/<br>applicationGateways|  Diagnostika|Diagnostika|    [Aplikace Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Analytics brány](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Application Gateway|  Microsoft.Network/<br>applicationGateways|  Diagnostika|Diagnostika|    [Aplikace Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Analytics brány](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     Konektor|  Konektor|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Connectoru (Preview)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Účty služby Automation|   Microsoft.Automation/<br>AutomationAccounts|    Diagnostika||       [Další informace](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
+|Účty Automation|   Microsoft.Automation/<br>AutomationAccounts|    Diagnostika||       [Další informace](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Účty Batch|    Microsoft.Batch/<br>batchAccounts|  Diagnostika|    Diagnostika||
 |Classic cloudové služby||       Úložiště||       [Další informace](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Kognitivní služby|    Microsoft.CognitiveServices/<br>accounts|       Diagnostika|||
@@ -370,13 +370,13 @@ Existují čtyři různé způsoby [shromažďování protokolů a metriky pro s
 ||Microsoft.Logic/<br>integrationAccounts||||
 |Network Security Groups (Skupiny zabezpečení sítě)|   Microsoft.Network/<br>networksecuritygroups|Diagnostika||   [Skupina zabezpečení sítě Azure Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Trezory zotavení|   Microsoft.RecoveryServices/<br>trezory|||[Azure Recovery Services Analytics (Preview)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
-|Služby vyhledávání|   Microsoft.Search/<br>searchServices|    Diagnostika|    Diagnostika||
+|Služby hledání|   Microsoft.Search/<br>searchServices|    Diagnostika|    Diagnostika||
 |Obor názvů služby Service Bus| Microsoft.ServiceBus/<br>namespaces|    Diagnostika|Diagnostika|    [Service Bus Analytics (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Úložiště||    [Služba Fabric Analytics (Preview)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (v12)| Microsoft.Sql/<br>servers/<br>databáze/í||       Diagnostika||
+|SQL (v12)| Microsoft.Sql/<br>servers/<br>databáze||       Diagnostika||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Úložiště|||         Skript| [Azure Storage Analytics (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Virtual Machines|  Microsoft.Compute/<br>virtuálních počítačů|  Přípona|  Přípona||
+|Virtuální počítače|  Microsoft.Compute/<br>virtuálních počítačů|  Linka|  Linka||
 ||||Diagnostika||
 |Sady škálování virtuálních počítačů|   Microsoft.Compute/<br>virtuálních počítačů    ||Diagnostika||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtuálních počítačů||||

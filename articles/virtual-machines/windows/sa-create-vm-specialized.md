@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače z disku specializované v Azure | Microsoft Docs"
-description: "Vytvoření nového virtuálního počítače připojením specializované nespravované disku, v modelu nasazení Resource Manager."
+title: Vytvoření virtuálního počítače z disku specializované v Azure | Microsoft Docs
+description: Vytvoření nového virtuálního počítače připojením specializované nespravované disku, v modelu nasazení Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ffa36967eb987f5e1b66f007ae60a63e640a609a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače z specializované virtuálního pevného disku v účtu úložiště
 
@@ -138,7 +138,7 @@ Je třeba účty úložiště zdrojové a cílové adresy URL. Jako adresy URL v
 
 Portál Azure nebo Azure Powershell můžete použít k získání adresy URL:
 
-* **Portál**: klikněte  **>**  pro **všechny služby** > **účty úložiště** > *úložiště účet* > **objekty BLOB** a váš zdrojový soubor virtuálního pevného disku je pravděpodobně v **virtuální pevné disky** kontejneru. Klikněte na tlačítko **vlastnosti** kontejneru a zkopírujte text s názvem bez přípony **URL**. Budete potřebovat adresy URL zdrojového a cílového kontejnery. 
+* **Portál**: klikněte **>** pro **všechny služby** > **účty úložiště** > *úložiště účet* > **objekty BLOB** a váš zdrojový soubor virtuálního pevného disku je pravděpodobně v **virtuální pevné disky** kontejneru. Klikněte na tlačítko **vlastnosti** kontejneru a zkopírujte text s názvem bez přípony **URL**. Budete potřebovat adresy URL zdrojového a cílového kontejnery. 
 * **Prostředí PowerShell**: použití [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) získání informací o pro virtuální počítač s názvem **Můjvp** ve skupině prostředků **myResourceGroup**. Ve výsledcích vyhledejte v **profilu úložiště** část **Uri virtuálního pevného disku**. První část identifikátoru Uri je adresa URL ke kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
 
 ```powershell

@@ -9,23 +9,20 @@ ms.author: xshi
 ms.date: 3/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8da16ffe72ad265f0201c2fe7e00e585dfa255e8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c266a01375bf74fd4df9290255e84bc28e6089c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-debug-azure-functions-with-azure-iot-edge"></a>Pomocí Visual Studio Code funkce Azure s Azure IoT hranou ladění
 
 Tento článek obsahuje podrobné pokyny pro používání [Visual Studio Code](https://code.visualstudio.com/) jako hlavní vývojový nástroj k ladění funkcí Azure IoT hranu.
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení nebo zařízení IoT Edge můžete simulovat na vývojovém počítači.
+Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení nebo zařízení IoT Edge můžete simulovat na vývojovém počítači.
 
-Ujistěte se, že máte dokončené následující kurzy, než začnete v tomto návodu.
-- [Vývoj IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md)
-
-Po dokončení předchozí kurz, byste měli mít připravený, následující položky
+Než následující pokyny v tomto článku, proveďte kroky v [vyvíjet IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md). Potom byste měli mít připravené následující položky:
 - Místní registru Docker na vývojovém počítači spuštěna. Je navržený pro použití místního registru Docker pro prototypu a účely testování. Můžete aktualizovat v registru kontejneru `module.json` souboru ve složce každý modul.
 - Okraj IoT řešení projektu pracovní prostor služby s podsložku modulu funkce Azure v ní.
 - `run.csx` Soubor s kód funkce.
@@ -59,8 +56,6 @@ Po dokončení předchozí kurz, byste měli mít připravený, následující p
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu vytvořit funkci Azure a nasadit IoT okraj pro účely ladění a spuštění ladění v produktu VS Code. Můžete pokračovat na některý z následujících kurzech Další informace o další scénáře při vývoji Azure IoT Edge v produktu VS Code. 
 
-> [!div class="nextstepaction"]
-> [Vývoj IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md)
+[Použití Visual Studio Code k ladění modulu jazyka C# s hranou Azure IoT](how-to-vscode-debug-csharp-module.md)
 

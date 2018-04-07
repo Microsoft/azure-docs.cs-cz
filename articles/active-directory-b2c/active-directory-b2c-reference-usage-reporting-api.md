@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 3470f45683ea508dfe338c313a5307eb6c1164d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07029181423927f0796cb85e728df416d01466e8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
@@ -125,7 +125,7 @@ V kombinaci s [nejaktuálnější Azure AD B2C cenách dostupné](https://azure.
 Následující kód ukazuje příklady odeslání výstupu do formátu JSON, seznam hodnot název a XML:
 ```powershell
 # to output to JSON use following line in the PowerShell sample
-$myReport.Content | Out-File -FilePath b2cUserJourneySummaryEvents.json -Force
+$myReport.Content | Out-File -FilePath name-your-file.json -Force
 
 # to output the content to a name value list
 ($myReport.Content | ConvertFrom-Json).value | Out-File -FilePath name-your-file.txt -Force

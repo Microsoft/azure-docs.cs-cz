@@ -1,13 +1,13 @@
 ---
-title: "Virtuální počítač Azure PowerShell ukázky | Microsoft Docs"
-description: "Virtuální počítač Azure PowerShell ukázky"
+title: Virtuální počítač Azure PowerShell ukázky | Microsoft Docs
+description: Virtuální počítač Azure PowerShell ukázky
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bd7fe69f50e1fe1c1b333c6102dd4b8fc39cf3ad
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 31dbb8485232d1b446469135b5bda0c8c7884190
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Ukázek Azure PowerShell virtuálního počítače
 
@@ -28,7 +28,7 @@ Následující tabulka obsahuje odkazy na ukázky skripty prostředí PowerShell
 
 | | |
 |---|---|
-|**Vytváření virtuálních počítačů**||
+|**Vytvoření virtuálních počítačů**||
 | [Rychle vytvořit virtuální počítač](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří skupinu prostředků, virtuální počítač a všechny související prostředky s minimálním výzvy.|
 | [Vytvoření kompletně nakonfigurovaný virtuálního počítače](./../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří skupinu prostředků, virtuální počítač a všechny související prostředky.|
 | [Vytvoření vysoce dostupné virtuální počítače](./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří několik virtuálních počítačů v s vysokou dostupností a konfigurace skupinu s vyrovnáváním zatížení.|

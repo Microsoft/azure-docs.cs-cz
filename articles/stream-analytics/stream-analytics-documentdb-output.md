@@ -1,26 +1,21 @@
 ---
-title: Výstup JSON pro Stream Analytics | Microsoft Docs
-description: Zjistěte, jak Stream Analytics můžete cílit na Azure Cosmos DB pro výstup JSON, archivace dat a nízkou latencí dotazy na nestrukturovaných dat JSON.
-keywords: Výstup JSON
-documentationcenter: ''
-services: stream-analytics,documentdb
+title: Azure Stream Analytics výstup do databáze systému Cosmos
+description: Tento článek popisuje, jak používat Azure Stream Analytics se uložit výstup do Azure Cosmos databáze pro výstup JSON, archivace dat a nízkou latencí dotazy na nestrukturovaných dat JSON.
+services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: f7115f7d19cd44ae7d0812d3aa6c48d8dd58c20d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Cíl Azure Cosmos DB pro výstup JSON ze služby Stream Analytics
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
 Stream Analytics můžete cílit na [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) pro výstup JSON, povolení archivace a nízkou latencí dotazy dat na nestrukturovaných dat JSON. Tento dokument popisuje některé osvědčené postupy při implementaci této konfigurace.
 
 Pro ty, kteří jsou obeznámeni s Cosmos DB, podívejte se na [studijní postup Azure Cosmos DB](https://azure.microsoft.com/documentation/learning-paths/documentdb/) začít pracovat. 
@@ -35,7 +30,7 @@ Výstup Azure Cosmos DB v Stream Analytics, který umožňuje zapisovat zpracov�
 Některé možnosti Cosmos DB kolekce jsou podrobně popsány níže.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Vyladění konzistence, dostupností a latencí
-Tak, aby odpovídaly vaše požadavky aplikací, umožňuje Cosmos DB správně vyladit databáze a kolekce a ujistěte se, kompromis mezi konzistencí, dostupností a latencí. V závislosti na tom, jaké úrovně konzistenci čtení potřeb scénář proti čtení a zápisu latence, že můžete úroveň konzistence na vašem účtu databáze. Také ve výchozím nastavení, Cosmos DB umožňuje synchronní indexování na každé operace CRUD do vaší kolekce. Toto je další možností užitečné k řízení výkonu zápisu nebo čtení v Cosmos DB. Další informace v tomto tématu najdete v článku [změnit vaší databáze a dotaz úrovně konzistence](../cosmos-db/consistency-levels.md) článku.
+Tak, aby odpovídaly vaše požadavky aplikací, umožňuje Cosmos DB správně vyladit databáze a kolekce a ujistěte se, kompromis mezi konzistencí, dostupností a latencí. V závislosti na tom, jaké úrovně konzistenci čtení potřeb scénář proti čtení a zápisu latence, že můžete úroveň konzistence na vašem účtu databáze. Také ve výchozím nastavení, Cosmos DB umožňuje synchronní indexování na každé operace CRUD do vaší kolekce. Toto je další možností užitečné k řízení výkonu zápisu nebo čtení v Cosmos DB. Další informace najdete v článku [změnit vaší databáze a dotaz úrovně konzistence](../cosmos-db/consistency-levels.md) článku.
 
 ## <a name="upserts-from-stream-analytics"></a>Upserts ze služby Stream Analytics
 Stream Analytics integrace s Cosmos DB umožňuje vložit nebo aktualizovat záznamy v Cosmos DB kolekce na základě daného sloupce ID dokumentu. Tím se také označuje jako *Upsert*.

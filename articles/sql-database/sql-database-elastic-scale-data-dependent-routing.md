@@ -1,19 +1,19 @@
 ---
-title: "Data závislé směrování s Azure SQL Database | Microsoft Docs"
-description: "Jak používat třídu ShardMapManager v aplikacích .NET pro data závislé na směrování, funkce horizontálně dělené databází ve službě Azure SQL Database"
+title: Data závislé směrování s Azure SQL Database | Microsoft Docs
+description: Jak používat třídu ShardMapManager v aplikacích .NET pro data závislé na směrování, funkce horizontálně dělené databází ve službě Azure SQL Database
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5685c1e1c502b5f3700fb1c4487778d38ff19d1e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8a9b0b2c0541504954c4a1352180552cc650a31f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-dependent-routing"></a>Směrování závislé na datech
 **Data závislé směrování** je možnost používat data v dotazu pro směrování požadavku k příslušné databázi. Toto je základní vzor při práci s horizontálně dělené databáze. Kontext požadavku může také použít pro směrování požadavku, zvlášť pokud klíč horizontálního dělení není část dotazu. Každé specifického dotazu nebo transakce v aplikaci pomocí závislé směrování dat je omezen na přístup k jedné databáze na základě požadavku. Pro nástroje Azure SQL Database elastické tento směrování se provádí s **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) třída.
@@ -161,7 +161,7 @@ Balíčky, které jsou nezbytné k implementaci přechodná chyba zpracování s
 ## <a name="transactional-consistency"></a>Transakční konzistence
 Transakční vlastnosti jsou zaručena bezpečnost pro všechny operace místní horizontálního oddílu. Například spuštění transakce odeslat prostřednictvím závislé na data směrování v rámci oboru horizontálního oddílu cíl pro připojení. V současné době neexistují žádné možnosti zadaná pro zapsání několik připojení do transakce a proto nejsou žádné záruky transakcí pro operace prováděné napříč horizontálních oddílů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Odpojit horizontálního oddílu, nebo znovu připojit horizontálního oddílu, najdete v části [pomocí třídy RecoveryManager opravit problémy horizontálního oddílu mapy](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,19 +1,19 @@
 ---
-title: "Instalace úlohy elastické databáze | Microsoft Docs"
-description: "Provede procesem instalace funkce elastické úlohy."
+title: Instalace úlohy elastické databáze | Microsoft Docs
+description: Provede procesem instalace funkce elastické úlohy.
 services: sql-database
 manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalace úlohy elastické databáze – přehled
 [**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím portálu Azure. Můžete získat přístup k vytvářet a spravovat úlohy pomocí rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než portálu v daném okamžiku.
@@ -167,7 +167,7 @@ Jakmile máte [vytvoření fondu elastické databáze](sql-database-elastic-pool
 
 Pokud odinstalaci je potřeba, odstraňte skupinu prostředků. V tématu [postup odinstalace komponenty úlohy elastické databáze](sql-database-elastic-jobs-uninstall.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkontrolujte přihlašovací údaj se příslušná oprávnění pro spuštění skriptu se vytvoří na každou databázi ve skupině, další informace najdete v tématu [zabezpečení databáze SQL](sql-database-manage-logins.md).
 V tématu [vytváření a Správa úloh elastické databáze](sql-database-elastic-jobs-create-and-manage.md) začít pracovat.
 

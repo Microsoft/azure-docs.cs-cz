@@ -4,7 +4,7 @@ description: Další informace o tom, jak ruční a automatické převzetí slu�
 services: cosmos-db
 documentationcenter: ''
 author: arramac
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 446e2580-ff49-4485-8e53-ae34e08d997f
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a4bdc49c5ab36a5026095b5d7b6f9856b020e1b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a221a0d4f9ef6b6b32ed9b684939b9f277e2084
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatické regionální převzetí služeb při selhání pro kontinuitu podnikových procesů v Azure Cosmos DB
 Azure Cosmos DB zjednodušuje globální distribuci dat tím, že nabídka plně spravované, [účty databáze více oblast](distribute-data-globally.md) , poskytovat jasné kompromisy mezi konzistencí, dostupnosti a výkonu, všechny odpovídající záruky. Účty cosmos DB nabízí vysokou dostupnost, jednu číslici ms latenci, [dobře definované úrovně konzistence](consistency-levels.md), transparentní regionální převzetí služeb při selhání s více funkci rozhraní API a schopnost Elasticky škálovat propustnost a úložiště napříč zeměkouli. 

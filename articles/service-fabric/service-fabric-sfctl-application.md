@@ -1,12 +1,12 @@
 ---
-title: "Aplikace Azure Service Fabric rozhraní příkazového řádku - sfctl | Microsoft Docs"
-description: "Popisuje příkazy sfctl aplikace Service Fabric rozhraní příkazového řádku."
+title: Aplikace Azure Service Fabric rozhraní příkazového řádku - sfctl | Microsoft Docs
+description: Popisuje příkazy sfctl aplikace Service Fabric rozhraní příkazového řádku.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: fe0ef5c81b1ef6bef298e65cde3649c9464089d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 Vytvoření, odstranění a spravovali aplikace a typy aplikací.
@@ -46,7 +46,7 @@ Vytvoření, odstranění a spravovali aplikace a typy aplikací.
 | upgrade-resume  | Obnoví upgrade aplikace v clusteru Service Fabric.|
 | upgrade-rollback| Spustí se vracení zpět aktuálně probíhající upgradu aplikace v clusteru Service Fabric.|
 | upgrade-status  | Získá informace pro upgrade na nejnovější provést na tuto aplikaci.|
-| Nahrávání       | Zkopírujte balíček aplikace Service Fabric do úložiště bitové kopie.|
+| nahrání       | Zkopírujte balíček aplikace Service Fabric do úložiště bitové kopie.|
 
 ## <a name="sfctl-application-create"></a>Vytvoření aplikace sfctl
 Vytvoří aplikace Service Fabric pomocí zadaný popis.
@@ -241,9 +241,7 @@ Získá manifest popisující typ aplikace. Odpověď obsahuje manifest aplikace
 ## <a name="sfctl-application-provision"></a>zřídit aplikace sfctl
 Zřizuje nebo zaregistruje typ aplikace Service Fabric s clusterem pomocí balíčku SFPKG v externím obchodu nebo pomocí balíčku aplikace v úložišti bitové kopie.
 
-Zřídí typu aplikace Service Fabric s clusterem. To je potřeba, než může být vytvořena instance všechny nové aplikace. Zřízení operaci lze provést buď na zadaný relativePathInImageStore, nebo pomocí identifikátoru URI externí SFPKG balíčku aplikace. Pokud – externí provision nastavena, tento příkaz předpokládá, že úložiště bitových kopií
-
-zřizování.
+Zřídí typu aplikace Service Fabric s clusterem. To je potřeba, než může být vytvořena instance všechny nové aplikace. Zřízení operaci lze provést buď na zadaný relativePathInImageStore, nebo pomocí identifikátoru URI externí SFPKG balíčku aplikace. Pokud – externí provision nastavena, tento příkaz zřídí balíčku aplikace z úložiště bitových kopií.
         
 
 

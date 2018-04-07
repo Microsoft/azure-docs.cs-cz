@@ -1,12 +1,12 @@
 ---
-title: "Rozbalte disk operačního systému na virtuální počítač s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Zjistěte, jak rozšířit virtuální disk operačního systému (OS) na virtuální počítač s Linuxem pomocí Azure CLI 1.0 a modelu nasazení Resource Manager"
+title: Rozbalte disk operačního systému na virtuální počítač s Linuxem pomocí Azure CLI 1.0 | Microsoft Docs
+description: Zjistěte, jak rozšířit virtuální disk operačního systému (OS) na virtuální počítač s Linuxem pomocí Azure CLI 1.0 a modelu nasazení Resource Manager
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 0aedcd70b54c2ed47ec327ccf0529a48351353c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f81054727bb1f0e8ffa752783e866a72d573589d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Rozbalte disk operačního systému na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure s Azure CLI 1.0
 Výchozí velikost virtuálního pevného disku pro operační systém (OS) je obvykle 30 GB na virtuální počítač s Linuxem (VM) v Azure. Můžete [přidat datových disků](add-disk.md) zajistit pro dalšího volného místa, ale můžete také chtít rozbalte disk operačního systému. Tento článek podrobně popisují rozbalte disk operačního systému pro virtuální počítač s Linuxem pomocí Azure CLI 1.0 nespravované disky.
@@ -47,7 +47,7 @@ V následující ukázky nahraďte názvy parametrů příklad vlastní hodnoty.
     ```
 
     > [!NOTE]
-    > `azure vm stop`neuvolní výpočetní prostředky. Chcete-li uvolnit výpočetní prostředky, pomocí `azure vm deallocate`. Virtuální počítač musí být navrácena rozbalte virtuální pevný disk.
+    > `azure vm stop` neuvolní výpočetní prostředky. Chcete-li uvolnit výpočetní prostředky, pomocí `azure vm deallocate`. Virtuální počítač musí být navrácena rozbalte virtuální pevný disk.
 
 2. Aktualizovat velikost nespravované disk operačního systému pomocí `azure vm set` příkaz. Následující příklad aktualizace virtuálního počítače s názvem *Můjvp* ve skupině prostředků s názvem *myResourceGroup* být *50* GB:
 
@@ -73,5 +73,5 @@ V následující ukázky nahraďte názvy parametrů příklad vlastní hodnoty.
     /dev/sda1        49G  1.3G   48G   3% /
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud potřebujete další úložiště, můžete také [přidat datových disků pro virtuální počítač s Linuxem](add-disk.md). Další informace o šifrování disku najdete v tématu [šifrování disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](encrypt-disks.md).

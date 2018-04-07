@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a4fa0d542d755e783f422a62e9135d06133385f8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5a20f8cb2946db0ff5fafc4c307f56629b635825
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Databáze chyb připojení a další problémy
 
@@ -119,7 +119,7 @@ K vytváření a používání elastické fondy se vztahují k následujícím c
 | 40868 |EX_USER |Na databázi maximální počet jednotek DTU nesmí překročit (%d) pro úroveň služby "%. * ls'. |Maximální počet jednotek DTU na databázi; úrovně služby elastického fondu. |Došlo k pokusu o nastavení maximální počet jednotek DTU na databázi překračuje podporovaný limit. | Zvažte použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
 | 40870 |EX_USER |Minimální počet jednotek DTU na databázi nesmí překročit (%d) pro úroveň služby "%. * ls'. |Minimální počet jednotek DTU na databázi; úrovně služby elastického fondu. |Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi překračuje podporovaný limit. | Zvažte použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
 | 40873 |EX_USER |Počet databází (%d) a minimální počet jednotek DTU na databázi (%d) nemůže překročit počet jednotek Dtu elastického fondu (%d). |Počet databází v elastickém fondu; Minimální počet jednotek DTU na databázi; Počet jednotek Dtu elastického fondu. |Probíhá pokus o zadejte minimální počet jednotek DTU pro databáze v elastickém fondu, která překračuje počet jednotek Dtu elastického fondu. | Zvažte zvýšení počet jednotek Dtu elastického fondu nebo snížit minimální počet jednotek DTU na databázi nebo snížení počtu databází v elastickém fondu. |
-| 40877 |EX_USER |Fondu elastické databáze nelze odstranit, pokud neobsahuje žádné databáze. |Žádný |Elastický fond obsahuje jednu nebo více databází a proto nelze odstranit. |Chcete-li odstranit ho odeberte databáze z elastického fondu. |
+| 40877 |EX_USER |Fondu elastické databáze nelze odstranit, pokud neobsahuje žádné databáze. |Žádné |Elastický fond obsahuje jednu nebo více databází a proto nelze odstranit. |Chcete-li odstranit ho odeberte databáze z elastického fondu. |
 | 40881 |EX_USER |Elastický fond se %. * ls' bylo dosaženo limitu počtu databáze.  Limit počtu databáze pro elastický fond nesmí překročit (%d) pro elastický fond se (%d) Dtu. |Název elastického fondu; limit počtu databázi elastického fondu; Edtu pro fond zdrojů. |Probíhá pokus o vytvoření nebo přidat databáze do pružného fondu, pokud byl dosažen limit počtu databázi elastického fondu. | Zvažte zvýšení limitu databáze zvýšit počet jednotek Dtu elastického fondu pokud je to možné, nebo odebrat z fondu elastické databáze. |
 | 40889 |EX_USER |Počet jednotek Dtu nebo limit úložiště elastického fondu. %. * ls' nelze zmenšit, vzhledem k tomu, které by poskytují dostatek úložného prostoru pro jeho databáze. |Název elastického fondu. |Probíhá pokus o snížit limit úložiště elastického fondu pod jeho využití úložiště. | Zvažte snížení využití úložiště jednotlivých databází v elastickém fondu nebo odebrat databáze z fondu, abyste mohli snížit jeho Dtu nebo limit úložiště. |
 | 40891 |EX_USER |Minimální počet jednotek DTU na databázi (%d) nemůže být delší než maximální počet jednotek DTU na databázi (%d). |Minimální počet jednotek DTU na databázi; Maximální počet jednotek DTU na databázi. |Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi vyšší než maximální počet jednotek DTU na databázi. |Zajistěte, aby že minimální počet jednotek DTU na databáze není delší než maximální počet jednotek DTU na databázi. |

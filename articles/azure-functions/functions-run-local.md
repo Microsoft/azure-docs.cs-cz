@@ -1,11 +1,11 @@
 ---
-title: "Vývoj a spustit místně na Azure functions | Microsoft Docs"
-description: "Zjistěte, jak kód a testovat Azure functions v místním počítači před spuštěním na Azure Functions."
+title: Vývoj a spustit místně na Azure functions | Microsoft Docs
+description: Zjistěte, jak kód a testovat Azure functions v místním počítači před spuštěním na Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód a testovat místně na Azure Functions
 
@@ -110,7 +110,7 @@ Chcete-li vytvořit projekt bez místní úložiště Git, použijte `--no-sourc
 
 Ve verzi 2.x modulu runtime Azure Functions, je nutné explicitně zaregistrovat [vazby rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) používaných ve vaší aplikaci funkce. 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 Další informace najdete v tématu [Azure Functions triggerů a vazeb koncepty](functions-triggers-bindings.md#register-binding-extensions).
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | Port pro uzel ladicí program používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. |
 | **`--debugLevel -d`** | Úroveň trasování konzoly (vypnuto, podrobné nastavení, informace, varování nebo chyba). Výchozí: informace.|
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v sekundách. Výchozí hodnota: 20 sekund.|
-| **`--useHttps`** | Vytvořit vazbu na https://localhost:{port} místo na http://localhost:{port}. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
+| **`--useHttps`** | Vytvořit vazbu na https://localhost:{port} spíše než do http://localhost:{port}. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
 | **`--pause-on-error`** | Pozastavení další vstupní před ukončení procesu. Užitečné při spuštění nástroje základní funkce Azure z integrované vývojové prostředí (IDE).|
 
 Při spuštění funkce hostitele výstupy funkce aktivované protokolem URL HTTP:

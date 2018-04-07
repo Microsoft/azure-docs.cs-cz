@@ -4,8 +4,7 @@ description: Další informace o vzoru návrhu pro sociální sítě s využití
 keywords: Aplikace v sociálních sítích
 services: cosmos-db
 author: ealsur
-manager: jhubbard
-editor: ''
+manager: kfile
 documentationcenter: ''
 ms.assetid: 2dbf83a7-512a-4993-bf1b-ea7d72e095d9
 ms.service: cosmos-db
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
-ms.author: mimig
-ms.openlocfilehash: d223187ab1f8338c57e6aa32903ea9b762393ab5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: maquaran
+ms.openlocfilehash: 53abefd4f3dd1f8da60b8b8efed1e7070b471383
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Budete sociálních s Azure Cosmos DB
 Žijí v společnosti massively propojeny znamená, že v určitém okamžiku v životnosti stane součástí **sociálních sítí**. Pro komunikaci s kolegy přátel, rodiny nebo někdy nasdílejte naše nadšení pro osoby s společné zájmy používáme sociálních sítí.

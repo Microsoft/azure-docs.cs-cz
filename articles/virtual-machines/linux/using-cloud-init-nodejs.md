@@ -1,13 +1,13 @@
 ---
-title: "Přizpůsobení virtuálního počítače s Linuxem během vytváření v Azure pomocí cloudu init | Microsoft Docs"
-description: "Jak používat cloudové init k přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí Azure CLI 1.0"
+title: Přizpůsobení virtuálního počítače s Linuxem během vytváření v Azure pomocí cloudu init | Microsoft Docs
+description: Jak používat cloudové init k přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí Azure CLI 1.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2016
 ms.author: v-livech
-ms.openlocfilehash: 0b6150bca333188666935b3c9aa02c4b33690db9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e9182a18a2827ed7f54f5fd042e5934b3b1fd5c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Použít cloudové init k přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí Azure CLI 1.0
 Tento článek ukazuje, jak chcete-li skript cloudu init nastavit název hostitele, aktualizace nainstalované balíčky, a spravovat uživatelské účty.  Skripty cloud init se označují jako při vytvoření virtuálního počítače z příkazového řádku Azure.  Tento článek vyžaduje:

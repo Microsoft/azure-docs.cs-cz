@@ -1,11 +1,11 @@
 ---
-title: "Scénáře zotavení po havárii pro virtuální počítače Azure | Microsoft Docs"
-description: "Zjistěte, co dělat v případě, že přerušení služby Azure má dopad na virtuálních počítačích Azure."
+title: Scénáře zotavení po havárii pro virtuální počítače Azure | Microsoft Docs
+description: Zjistěte, co dělat v případě, že přerušení služby Azure má dopad na virtuálních počítačích Azure.
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
 ms.service: virtual-machines
 ms.workload: virtual-machines
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb986a41e33501ee71c93a48457ac4114e33c671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co dělat v případě, že přerušení služby Azure má dopad na virtuálních počítačích Azure
 Ve společnosti Microsoft můžeme fungovat pevného a ujistěte se, že našich služeb jsou vždy k dispozici a když je potřebujete. Vynutí nad rámec naše řízení někdy vliv nám způsoby, které způsobit přerušení poskytování služeb neplánované.
@@ -47,7 +47,7 @@ Toto je nejlepší možnost, pokud jste nenastavili Azure Site Recovery, geograf
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Spustit [chrání vaše aplikace spuštěné na virtuálních počítačích Azure](https://aka.ms/a2a-getting-started) pomocí Azure Site Recovery
 

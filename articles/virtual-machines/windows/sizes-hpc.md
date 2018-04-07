@@ -1,13 +1,13 @@
 ---
-title: "Azure velikosti virtuálních počítačů Windows - HPC | Microsoft Docs"
-description: "Obsahuje seznam různých velikostí, které jsou k dispozici pro Windows s vysokým výkonem virtuálních počítačů v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série."
+title: Azure velikosti virtuálních počítačů Windows - HPC | Microsoft Docs
+description: Obsahuje seznam různých velikostí, které jsou k dispozici pro Windows s vysokým výkonem virtuálních počítačů v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: 6f2c72689811d26f95a64fdf5f473606f3ea3f7d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e402fd3ac95cac4816b9442f7c08aeaf7c108886
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Velikosti virtuálních počítačů pro výpočetní vysoký výkon
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/16/2018
 - [Optimalizované z hlediska úložiště](../virtual-machines-windows-sizes-storage.md)
 - [Optimalizované z hlediska GPU](sizes-gpu.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Kontrolní seznamy pro použití instance náročné s HPC Pack v systému Windows Server, najdete v části [nastavení clusteru s podporou Windows RDMA pomocí sady HPC Pack ke spouštění aplikací MPI](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

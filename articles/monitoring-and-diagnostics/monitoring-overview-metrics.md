@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Přehled metriky v Microsoft Azure
 Tento článek popisuje, co metriky jsou ve službě Microsoft Azure jejich výhody a jak je začít používat.  
@@ -47,7 +47,7 @@ Rovněž můžete:
 
 * Konfigurovat metriku **výstraha pravidla, které odešle oznámení nebo trvá automatizované akce** když metrika protne prahovou hodnotu, kterou jste nastavili. Při automatickém škálování je zvláštní automatizované akce, které umožňuje škálovat prostředek ke splnění příchozí požadavky nebo načte na vašem webu nebo výpočetních prostředků. Můžete nakonfigurovat pravidlo škálování nastavení škálování příchozí nebo odchozí podle metriky při překročení prahové hodnoty.
 
-* **Trasy** všechny metriky, které umožní rychlé analýzy, vyhledávání a vlastní výstrahy na metriky data z vašich prostředků Application Insights nebo analýzy protokolů (OMS). Můžete také stream metriky do centra událostí, které umožňují směrovat je do služby Azure Stream Analytics a vlastních aplikací pro analýzu skoro v reálném čase. Nastavíte centra událostí streamování pomocí nastavení pro diagnostiku.
+* **Trasy** všechny metriky Application Insights nebo analýzy protokolů, které umožní rychlé analýzy, vyhledávání a vlastní výstrahy na metriky data z vašich prostředků. Můžete také stream metriky do centra událostí, které umožňují směrovat je do služby Azure Stream Analytics a vlastních aplikací pro analýzu skoro v reálném čase. Nastavíte centra událostí streamování pomocí nastavení pro diagnostiku.
 
 * **Archivovat metriky pro úložiště** pro uchování delší nebo je používat pro offline generování sestav. Při konfiguraci nastavení diagnostiky pro prostředek, můžete směrovat vaše metriky do úložiště objektů Blob Azure.
 
@@ -100,11 +100,18 @@ Azure metriky je přístupný prostřednictvím rozhraní API Azure monitorován
 Podrobnější návod pomocí rozhraní API REST Azure monitorování najdete v tématu [REST API služby Azure monitorování návod](monitoring-rest-api-walkthrough.md).
 
 ## <a name="export-metrics"></a>Export metriky
-Můžete přejít na **nastavení diagnostiky** okno pod **monitorování** kartě a zobrazit možnosti exportu metrik. Můžete vybrat metriky (a diagnostických protokolů) k odeslání do úložiště objektů Blob Azure Event Hubs, nebo OMS pro použití případů, které byly dříve uvedených v tomto článku.
+Můžete přejít na **nastavení diagnostiky** okno pod **monitorování** kartě a zobrazit možnosti exportu metrik. Můžete vybrat metriky (a diagnostických protokolů) k odeslání do úložiště objektů Blob Azure Event Hubs, nebo analýzy protokolů pro použití případů, které byly dříve uvedených v tomto článku.
 
  ![Možnosti exportu metrik, které v Azure monitorování](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 To můžete nakonfigurovat pomocí šablony Resource Manageru, [prostředí PowerShell](insights-powershell-samples.md), [rozhraní příkazového řádku Azure](insights-cli-samples.md), nebo [rozhraní REST API](https://msdn.microsoft.com/library/dn931943.aspx).
+
+> [!NOTE]
+> Odesílání vícerozměrných metriky prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+>
+> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu prostřednictvím nastavení pro diagnostiku metriku bude reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
+>
+>
 
 ## <a name="take-action-on-metrics"></a>Provést akci pro metriky
 K přijímání oznámení nebo provést automatické akce pro data metriky, můžete nakonfigurovat nastavení automatického škálování nebo pravidla výstrah.

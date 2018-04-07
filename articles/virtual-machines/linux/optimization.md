@@ -1,11 +1,11 @@
 ---
-title: "Optimalizace virtuálním počítačům s Linuxem v Azure | Microsoft Docs"
-description: "Další tipy optimalizace a ujistěte se, že jste nastavili virtuálním počítačům s Linuxem pro optimální výkon na Azure"
-keywords: "virtuální počítač Linux, virtuální počítač linux, ubuntu virtuálního počítače"
+title: Optimalizace virtuálním počítačům s Linuxem v Azure | Microsoft Docs
+description: Další tipy optimalizace a ujistěte se, že jste nastavili virtuálním počítačům s Linuxem pro optimální výkon na Azure
+keywords: virtuální počítač Linux, virtuální počítač linux, ubuntu virtuálního počítače
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: d3ee98253a69580e5ecafb4e117ef93f7c981416
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače (VM) Linux je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili za účelem optimalizace jeho výkon na platformě Microsoft Azure. Toto téma používá virtuálního počítače s Ubuntu Server, ale můžete vytvořit také pomocí virtuálních počítačů Linux [vlastní Image jako šablona](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -124,7 +124,7 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Pomocí softwaru diskového pole RAID k dosažení vyšší I / Ops
-Pokud vaše úlohy vyžadují více procesorů, než může poskytnout jeden disk, budete muset použít konfiguraci RAID softwaru několik disků. Protože Azure již provádí odolnosti disku ve vrstvě místní infrastruktury, můžete dosáhnout nejvyšší úroveň výkonu z proložení konfigurace RAID-0.  Zřídit a vytvořit disků v prostředí Azure a připojte je k virtuálním počítačům s Linuxem před rozdělení do oddílů, formátování a připojení jednotky.  Další informace o konfiguraci instalace softwaru diskového pole RAID na virtuálním počítačům s Linuxem v azure najdete v  **[konfigurace RAID softwaru v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**  dokumentu.
+Pokud vaše úlohy vyžadují více procesorů, než může poskytnout jeden disk, budete muset použít konfiguraci RAID softwaru několik disků. Protože Azure již provádí odolnosti disku ve vrstvě místní infrastruktury, můžete dosáhnout nejvyšší úroveň výkonu z proložení konfigurace RAID-0.  Zřídit a vytvořit disků v prostředí Azure a připojte je k virtuálním počítačům s Linuxem před rozdělení do oddílů, formátování a připojení jednotky.  Další informace o konfiguraci instalace softwaru diskového pole RAID na virtuálním počítačům s Linuxem v azure najdete v **[konfigurace RAID softwaru v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** dokumentu.
 
 ## <a name="next-steps"></a>Další kroky
 Pamatujte si, jak se všechny diskuse optimalizace, potřebujete provést testy před a po každé změně k měření dopad, který má změnu.  Optimalizace je krok za krokem proces, který má odlišné výsledky v různých počítačích ve vašem prostředí.  Co funguje pro jednu konfiguraci nemusí fungovat pro ostatní.

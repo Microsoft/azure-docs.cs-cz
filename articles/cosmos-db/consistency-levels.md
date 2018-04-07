@@ -3,9 +3,8 @@ title: Úrovně konzistence v Azure Cosmos DB | Microsoft Docs
 description: Azure Cosmos DB má pět úrovní konzistence můžete vyrovnávat případné konzistence, dostupností a latencí kompromis.
 keywords: konzistence typu případné azure cosmos databáze, azure, Microsoft azure
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Data přizpůsobitelné úrovně konzistence v Azure Cosmos DB
 Azure Cosmos DB slouží od základů až s globální distribuce v paměti pro každý datový model. Je navržen pro nabízejí předvídatelný s nízkou latencí záruky a více dobře definovaný volný konzistence modelů. V současné době Azure Cosmos DB poskytuje pět úrovně konzistence: silnou, s ohraničenou odolností, založenou relace, konzistentní Předpona a případnou. Typu ohraničenou prošlostí, relace, konzistentní předponu a případné jsou označovány jako "volný konzistence modely", jako poskytují menší konzistence než silné, což je většina vysoce konzistentní modelu, který je k dispozici. 
@@ -109,7 +108,7 @@ Výchozí úroveň konzistence můžete nakonfigurovat na vašem účtu databáz
 
 ## <a name="configuring-the-default-consistency-level"></a>Konfigurace výchozí úroveň konzistence
 1. V [portál Azure](https://portal.azure.com/), na panelu vlevo klikněte na tlačítko **Azure Cosmos DB**.
-2. V **Azure Cosmos DB** vyberte databázi účet, který chcete upravit.
+2. Na stránce **Azure Cosmos DB** vyberte účet databáze, který chcete upravit.
 3. Na stránce účtu klikněte na tlačítko **výchozí konzistence**.
 4. V **výchozí konzistence** , vyberte novou úroveň konzistence a klikněte na tlačítko **Uložit**.
    

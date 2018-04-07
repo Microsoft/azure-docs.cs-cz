@@ -1,11 +1,11 @@
 ---
-title: "Připojování Microsoft Advanced Threat Analytics k Azure Security Center | Microsoft Docs"
-description: "Zjistěte, jak Azure Security Center umožňuje integraci s Microsoft Advanced Threat Analytics."
+title: Připojování Microsoft Advanced Threat Analytics k Azure Security Center | Microsoft Docs
+description: Zjistěte, jak Azure Security Center umožňuje integraci s Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Připojování Microsoft Advanced Threat Analytics k Azure Security Center
 Tento dokument vám pomůže nakonfigurovat integraci mezi službou Microsoft Advanced Threat Analytics a Azure Security Center.
@@ -58,7 +58,7 @@ Za předpokladu, že už máte instalace ATA, a funguje správně místně, post
 
     ![Přímé agenta](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. Nainstalujte tohoto agenta v ATA Center. Během instalace, je nutné vybrat možnost **připojit agenta k Azure Log Analytics (OMS)**a zadejte *ID pracovního prostoru*, a *primární klíč* vyžádání .
+12. Nainstalujte tohoto agenta v ATA Center. Během instalace, je nutné vybrat možnost **připojit agenta k analýze protokolů Azure**a zadejte *ID pracovního prostoru*, a *primární klíč* na požádání.
 
 
 Jakmile dokončíte instalaci, dokončení integrace a bude moci zobrazit nové výstrahy Security Center v odeslaných z ATA **vyhledávání** výsledek. Řešení se zobrazí v **řešení zabezpečení** v části **připojené řešení**. 

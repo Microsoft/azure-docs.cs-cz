@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 1ebfab93c94c27de8e765ac3f8278372c8f0690f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3175236306f05831a78ae8ca01911d0c5d19f893
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasných tabulek se zásady uchovávání informací
 Dočasné tabulky může zvýšit velikost databáze více než regulérních tabulkách, zejména v případě, že zachováte historických dat pro delší časové období. Proto zásady uchovávání historických dat je důležitým aspektem plánování a správu životního cyklu každých dočasnou tabulku. Dočasné tabulky v databázi SQL Azure se dodávají s snadno použitelné uchování mechanismus, který umožňuje provedení této úlohy.

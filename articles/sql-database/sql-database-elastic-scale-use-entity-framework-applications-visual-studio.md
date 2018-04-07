@@ -1,19 +1,19 @@
 ---
-title: "Klientská knihovna pro elastické databáze pomocí rozhraní Entity Framework | Microsoft Docs"
-description: "Pomocí klientské knihovny pro elastické databáze a Entity Framework pro kódování databází"
+title: Klientská knihovna pro elastické databáze pomocí rozhraní Entity Framework | Microsoft Docs
+description: Pomocí klientské knihovny pro elastické databáze a Entity Framework pro kódování databází
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5f215c6c6f65804785e35ae1b3ec9cce24e2a976
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fba872b01d4ddf0bb4e6aa8d0217042617688b8a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna pro elastické databáze s platformou Entity Framework
 Tento dokument ukazuje změny v aplikaci rozhraní Entity Framework, která jsou potřebné k integraci s [nástroje elastické databáze](sql-database-elastic-scale-introduction.md). Zaměřuje se na skládání [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md) a [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) s platformou Entity Framework **Code First** přístup. [Code nejprve - novou databázi](http://msdn.microsoft.com/data/jj193542.aspx) kurz pro EF slouží jako příklad spuštěné v tomto dokumentu. Ukázkový kód doplňujícími tento dokument je součástí nástroje elastické databáze sada ukázky ve Visual Studio ukázky kódu.

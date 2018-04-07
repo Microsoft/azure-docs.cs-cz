@@ -4,7 +4,7 @@ description: Porovnání SPECint výpočetní srovnávacího testu skóre pro vi
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 69ae72ec-e8be-4e46-a8f0-e744aebb5cc2
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: cb77a058e72b8f08cb8974d5ec5088bc498e071d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0b3e717ef9bf8af98650e78ce4a89eb9bf3eb83c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače Windows
 Následující skóre srovnávacího testu SPECInt zobrazit výpočetní výkon pro Azure a vysoce výkonných virtuálních počítačů řazení systémem Windows Server. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 

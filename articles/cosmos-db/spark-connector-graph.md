@@ -1,25 +1,24 @@
 ---
-title: "Azure Cosmos DB: Provádět analýzy grafu pomocí Spark a Apache TinkerPop Gremlin | Microsoft Docs"
-description: "Tento článek představuje pokyny pro nastavení a spuštění graf analýzy a paralelní výpočty v Azure DB Cosmos s Spark a TinkerPop SparkGraphComputer."
+title: 'Azure Cosmos DB: Provádět analýzy grafu pomocí Spark a Apache TinkerPop Gremlin | Microsoft Docs'
+description: Tento článek představuje pokyny pro nastavení a spuštění graf analýzy a paralelní výpočty v Azure DB Cosmos s Spark a TinkerPop SparkGraphComputer.
 services: cosmosdb
-documentationcenter: 
-author: khdang
-manager: shireest
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
 ms.custom: quick start connect
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: gremlin
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: khdang
-ms.openlocfilehash: d2ea692c5c353586cc2b653e57eca7ccb8c9c7ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: sngun
+ms.openlocfilehash: f44c7d432ac9c07daf9b99dd922f1dcd5de5d58e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Proveďte analýzy grafu pomocí Spark a Apache TinkerPop Gremlin
 
@@ -400,7 +399,7 @@ Abychom ukázali, jak se zachovat graf do Azure Cosmos databáze, tento příkla
 > Pokud chcete zobrazit podrobnější protokolování, nastavte úroveň v protokolu `conf/log4j-console.properties` na podrobnější úrovni.
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku úvodní jsme zjistili, jak pracovat s grafy kombinací Azure Cosmos DB a Spark.
 

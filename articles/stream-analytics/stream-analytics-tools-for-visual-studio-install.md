@@ -1,34 +1,29 @@
 ---
-title: Pokyny k instalaci služby Azure Stream Analytics tools pro sadu Visual Studio | Microsoft Docs
-description: Pokyny k instalaci služby Azure Stream Analytics tools pro sadu Visual Studio
-keywords: Visual studio
-documentationcenter: ''
+title: Instalační program služby Azure Stream Analytics tools pro sadu Visual Studio
+description: Tento článek popisuje požadavky na instalaci a jak nastavit Azure Stream Analytics tools pro sadu Visual Studio.
 services: stream-analytics
 author: su-jie
-manager: ''
-ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 9/19/2017
 ms.author: sujie
-ms.openlocfilehash: fe1f2158439b2c04e8232eb6fe3c9faf79641ffe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 09/19/2017
+ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="installation-instructions-for-stream-analytics-tools-for-visual-studio"></a>Pokyny k instalaci služby Stream Analytics tools pro sadu Visual Studio
-Nástroje služby Azure Stream Analytics teď podporují 2017 Visual Studio, 2015 a 2013. V tomto dokumentu zavedeme postup instalace a odinstalace nástroje.
+# <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Instalace nástrojů Azure Stream Analytics tools for Visual Studio
+Nástroje služby Azure Stream Analytics teď podporují 2017 Visual Studio, 2015 a 2013. Tento dokument popisuje, jak k instalaci a odinstalaci nástroje.
 
-Další informace o použití [Stream Analytics tools pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Další informace o používání nástrojů najdete v tématu [Stream Analytics tools pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
 ## <a name="install"></a>Instalace
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 * Stáhněte si [Visual Studio 2017 (15.3 nebo novější)](https://www.visualstudio.com/). Enterprise (Ultimate nebo Premium), Professional a Community jsou podporované tyto edice. Express edition není podporován. 
-* Stream Analytics tools jsou součástí **Azure development** a **úložiště dat a zpracování** úlohy v aplikaci Visual Studio 2017. Povolte jednu z těchto dvou úloh jako součást instalace Visual Studia.
+* Stream Analytics tools jsou součástí **Azure development** a **úložiště dat a zpracování** úlohy v aplikaci Visual Studio 2017. V rámci instalace sady Visual Studio povolte jednu z těchto dvou sad funkcí.
 
 Povolit **úložiště dat a zpracování** zatížení, jak je znázorněno:
 

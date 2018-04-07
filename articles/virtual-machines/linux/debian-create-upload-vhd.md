@@ -1,11 +1,11 @@
 ---
-title: "Příprava Debian Linux virtuální pevný disk v Azure | Microsoft Docs"
-description: "Naučte se vytvářet Debian 7 a 8 soubory virtuálního pevného disku pro nasazení v Azure."
+title: Příprava Debian Linux virtuální pevný disk v Azure | Microsoft Docs
+description: Naučte se vytvářet Debian 7 a 8 soubory virtuálního pevného disku pro nasazení v Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 9b32b298f141e9ee54b4c42d3ee9c15174daf8b7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f8e98ae823d03dae475efca48a4ce32f27317882
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
 ## <a name="prerequisites"></a>Požadavky
@@ -92,6 +92,6 @@ Nejsou k dispozici pro generování Debian virtuální pevné disky pro Azure, j
         # logout
 4. Klikněte na tlačítko **akce** -> vypnutí dolů ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní jste připraveni použít Debian virtuální pevný disk k vytvoření nové virtuální počítače v Azure. Pokud je poprvé, že jste nahrávání souboru VHD do Azure, najdete v části [vytvořit virtuální počítač s Linuxem z vlastní disku](upload-vhd.md#option-1-upload-a-vhd).
 

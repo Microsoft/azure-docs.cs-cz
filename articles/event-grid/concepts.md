@@ -1,18 +1,18 @@
 ---
-title: "Koncepty Azure událostí mřížky"
-description: "Popisuje mřížky událostí Azure a jeho koncepty. Definuje několik klíčových součástí událostí mřížky."
+title: Koncepty Azure událostí mřížky
+description: Popisuje mřížky událostí Azure a jeho koncepty. Definuje několik klíčových součástí událostí mřížky.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: babanisa
-ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v mřížce Azure událostí
 
@@ -32,9 +32,11 @@ Vydavatelé zařadit do témata události. Téma obsahuje koncový bod kde vydav
 
 Témata týkající se systému jsou předdefinované témata poskytovaném službami Azure. Vlastní témata jsou aplikace a témata třetích stran.
 
+Při navrhování vaší aplikace, vytvořte vlastní heslo pro každou kategorii související události. Představte si třeba aplikaci, která odesílá události související s Změna uživatelských účtů a zpracování objednávky. Není pravděpodobné že žádné obslužné rutiny události chce, aby obě kategorie události. Vytvořte dva vlastní témata a nechat obslužné rutiny událostí přihlášení k odběru tomu, které je zajímají. Když se přihlásíte k odběru vlastní tématu, obslužné rutiny události lze filtrovat podle typu události.
+
 ## <a name="event-subscriptions"></a>Odběry událostí
 
-Předplatné dá pokyn událostí mřížky, na které události se na téma má zájem o přijetí odběratele.  Předplatné také obsahuje informace o tom, jak by měla událostí doručit do odběratele.
+Předplatné dá pokyn událostí mřížky, na které události se na téma má zájem o přijetí odběratele. Předplatné také obsahuje informace o tom, jak by měla událostí doručit do odběratele.
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 

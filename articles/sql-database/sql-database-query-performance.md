@@ -1,19 +1,19 @@
 ---
-title: "Přehled o výkonu dotazu pro Azure SQL Database | Microsoft Docs"
-description: "Monitorování výkonu dotazu identifikuje většinu využívání procesoru dotazů pro databázi SQL Azure."
+title: Přehled o výkonu dotazu pro Azure SQL Database | Microsoft Docs
+description: Monitorování výkonu dotazu identifikuje většinu využívání procesoru dotazů pro databázi SQL Azure.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 18d03ffcd586a809b37cbc1ca9a7843c25c7758d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Informace o výkonu dotazů databáze Azure SQL
 Správa a ladění výkonu relačních databází je náročné úlohu, která vyžaduje značné znalosti a investice čas. Informace o výkonu dotazů umožňuje trávit méně času řešení potíží s výkonem databáze tím, že poskytuje následující:
@@ -203,7 +203,7 @@ Použití těchto nastavení budou nakonec úložiště dotazů shromažďován�
 ## <a name="summary"></a>Souhrn
 Informace o výkonu dotazů vám pomůže pochopit dopad dotazu úlohy a jak se týká spotřeby prostředků databáze. Pomocí této funkce se další informace o nejnáročnější dotazy a snadno identifikovat ty opravit dřív, než narostou problém.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další doporučení týkající se vylepšení výkonu SQL databáze, klikněte na tlačítko [doporučení](sql-database-advisor.md) na **Query Performance Insight** okno.
 
 ![Poradce pro výkon](./media/sql-database-query-performance/ia.png)

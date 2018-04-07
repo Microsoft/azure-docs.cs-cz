@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 6e0b8a999cf38cbef37498d4ee0fb2bceae8f292
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
 
@@ -76,7 +76,7 @@ Synchronizaci dat není vhodná pro následující scénáře:
 
 ### <a name="general-considerations"></a>Obecné aspekty
 
-#### <a name="eventual-consistency"></a>Konzistence typu Případné
+#### <a name="eventual-consistency"></a>Konečná konzistence
 Vzhledem k tomu, že synchronizace dat je na základě aktivační události, není zaručena konzistence transakcí. Microsoft zaručuje, že jsou všechny změny provedené nakonec a synchronizaci dat není způsobit ztrátu dat.
 
 #### <a name="performance-impact"></a>Vliv na výkon
@@ -166,7 +166,7 @@ Další informace o Synchronizaci dat SQL:
 
 -   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
 -   [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
--   [Monitorování Synchronizace dat SQL Azure s využitím OMS Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Monitorování synchronizaci dat Azure SQL s analýzy protokolů](sql-database-sync-monitor-oms.md)
 -   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
 -   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:

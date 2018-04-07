@@ -1,13 +1,13 @@
 ---
-title: "O monitorování sítě v Log Analytics | Microsoft Docs"
-description: "Přehled monitorování řešení, včetně NPM, pro správu sítě v cloudu, místní a hybridní prostředí sítě."
+title: O monitorování sítě v Log Analytics | Microsoft Docs
+description: Přehled monitorování řešení, včetně NPM, pro správu sítě v cloudu, místní a hybridní prostředí sítě.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
 
@@ -60,9 +60,11 @@ NPM pro ExpressRoute nabízí rozsáhlé sledování ExpressRoute pro privátní
 
 * Automatické zjišťování ER okruhů spojené s vaším předplatným
 * Zjišťování topologie sítě z místního pro cloudové aplikace
-* Plánování, analýza využití kapacity
+* Plánování kapacity, analýzy využití, využití šířky pásma na jednu virtuální síť
 * Monitorování a výstrahy na primární i sekundární cesty
 * Zjištění snížení připojení k virtuálním sítím
+
+![Geografické mapy znázorňující provoz v oblastech](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 Další informace najdete v následujících článcích:
 
@@ -116,7 +118,6 @@ Vytvořené pro Správce DNS, toto řešení shromažďuje, analyzuje a korelaci
 Související odkazy:
 * [Příspěvek blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentace](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>Další postup
+## <a name="miscellaneous"></a>Různé
 
-* [Konfigurace programu Sledování výkonu sítě](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
-* [Konfigurace Network Performance Monitor pro ExpressRoute](../expressroute/how-to-npm.md)
+* [Nové ceny](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

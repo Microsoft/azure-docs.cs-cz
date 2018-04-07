@@ -1,9 +1,9 @@
 ---
-title: "Ukázek Azure PowerShell monitorování rychlý start. | Dokumenty Microsoft"
-description: "Pomocí prostředí PowerShell pro přístup k Azure monitorování funkce, jako je automatické škálování, výstrahy, webhooky a hledání protokoly aktivity."
+title: Ukázek Azure PowerShell monitorování rychlý start. | Dokumenty Microsoft
+description: Pomocí prostředí PowerShell pro přístup k Azure monitorování funkce, jako je automatické škálování, výstrahy, webhooky a hledání protokoly aktivity.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c0761814-7148-4ab5-8c27-a2c9fa4cfef5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 5a08fd7d20dc78512315ab5d154ba95bd8e8494b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Ukázek Azure PowerShell monitorování rychlý start
 Tento článek ukazuje ukázkové příkazy prostředí PowerShell, abyste měli přístup k funkcím Azure monitorování.
@@ -338,7 +338,7 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 Mnoho služeb Azure poskytují další protokoly a telemetrii, kterou můžete provést jeden nebo více následujících akcí: 
  - nakonfigurovat tak, aby uložení dat v účtu úložiště Azure
  - Odeslat do centra událostí
- - Odeslat k pracovnímu prostoru analýzy protokolů OMS. 
+ - Odeslat do pracovního prostoru analýzy protokolů. 
 
 Operaci lze provést pouze na úrovni prostředků. Účet nebo události rozbočovače úložiště by měl být k dispozici ve stejné oblasti jako cílový prostředek, kde je nakonfigurované nastavení diagnostiky.
 
@@ -377,7 +377,7 @@ Povolit nastavení diagnostiky pro službu Event Hubs
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Enable $true
 ```
 
-Povolit nastavení diagnostiky pro analýzy protokolů (OMS)
+Povolit nastavení diagnostiky pro analýzy protokolů
 
 ```PowerShell
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -WorkspaceId /subscriptions/s1/resourceGroups/insights-integration/providers/providers/microsoft.operationalinsights/workspaces/myWorkspace -Enabled $true

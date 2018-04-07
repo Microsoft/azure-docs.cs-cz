@@ -1,21 +1,21 @@
 ---
-title: "Monitorování a optimalizace výkonu – Azure SQL Database | Microsoft Docs"
-description: "Tipy k ladění ve službě Azure SQL Database pomocí vyhodnocení a zlepšování výkonu."
+title: Monitorování a optimalizace výkonu – Azure SQL Database | Microsoft Docs
+description: Tipy k ladění ve službě Azure SQL Database pomocí vyhodnocení a zlepšování výkonu.
 services: sql-database
 author: v-shysun
 manager: craigg
-editor: 
-keywords: "ladění, ladění, ladění tipy, výkonu sql databáze výkonu výkonu SQL optimalizace výkonu databáze sql"
+editor: ''
+keywords: ladění, ladění, ladění tipy, výkonu sql databáze výkonu výkonu SQL optimalizace výkonu databáze sql
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 273a80134975fb9aa4d40b132c1403cc27246371
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorování a optimalizace výkonu
 

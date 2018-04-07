@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3c6d50ac128cd766a1d22689b737da975922466
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné klíče v Azure zásobníku
 
@@ -69,7 +69,7 @@ Spuštění tajný otočení pomocí následujícího postupu napraví tyto výs
 2.  Připravte novou sadu nahrazení externí certifikáty. Nové sady odpovídá certifikátu specifikace uvedené v [požadavky na certifikát PKI zásobník Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
 3.  Úložiště zálohování na certifikáty používané k otočení do zabezpečeného umístění. Pokud vaše otočení běží a pak selže, nahraďte předtím, než můžete znovu spustit, je oběh certifikáty ve sdílené složce záložní kopie. Všimněte si, udržování záložní kopie v zabezpečené umístění zálohy.
 3.  Vytvoření sdílení souborů, které je přístupné z ERCS virtuálních počítačů. Sdílené složky musí být možné číst a zapisovatelný **CloudAdmin** identity.
-4.  Otevřete konzolu prostředí PowerShell ISE ve virtuálním počítači ERCS pomocí **CloudAdmin** účtu.  Přejděte do vaší sdílení souborů. 
+4.  Otevřete konzolu prostředí PowerShell ISE z počítače, kde má přístup ke sdílení souborů. Přejděte do vaší sdílení souborů. 
 5.  Spustit **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** vytvořit požadované adresáře pro externí certifikáty.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Otáčení externí i interní tajné klíče

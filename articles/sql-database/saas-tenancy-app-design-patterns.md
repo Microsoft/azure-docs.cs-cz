@@ -1,6 +1,6 @@
 ---
-title: "Víceklientské SaaS vzorky – Azure SQL Database | Microsoft Docs"
-description: "Informace o požadavky a běžně data architektura vzory víceklientské softwaru jako databáze aplikace služby (SaaS), které běží v prostředí cloudu Azure."
+title: Víceklientské SaaS vzorky – Azure SQL Database | Microsoft Docs
+description: Informace o požadavky a běžně data architektura vzory víceklientské softwaru jako databáze aplikace služby (SaaS), které běží v prostředí cloudu Azure.
 keywords: kurz k sql database
 services: sql-database
 author: billgib
@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: ac4eceb2265850b18682b38141f24b18ca0f9b4b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Víceklientské SaaS databáze klientů vzory
 
@@ -179,7 +179,7 @@ Následující tabulka shrnuje rozdíly mezi modely hlavní klientů.
 | Provozní složitost | Nízká vysoká. Jednotlivě jednoduchý, komplexní ve velkém měřítku. | Nízká – střední. Vzory adres složitost ve velkém měřítku. | Nízká vysoká. Správa jednoho klienta je komplexní. |
 | &nbsp; ||||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Nasazení a prozkoumejte aplikace Wingtip více klientů, která používá model SaaS databáze za klienta – Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 

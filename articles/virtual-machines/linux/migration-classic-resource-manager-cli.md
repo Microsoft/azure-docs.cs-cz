@@ -1,11 +1,11 @@
 ---
-title: "Migrovat virtuální počítače do Resource Manager pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek vás provede migraci podporované platformy prostředků z klasického do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure"
+title: Migrovat virtuální počítače do Resource Manager pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tento článek vás provede migraci podporované platformy prostředků z klasického do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 607ab59dbeb414c69a6272d0aeb00299296bca6a
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: f986246e74305789eb2978a95fd6a3e51accd25e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky infrastruktury z klasického do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
 Tyto kroky ukazují, jak používat příkazy rozhraní příkazového řádku Azure (CLI) k migraci infrastruktury jako služby (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manager. Článek vyžaduje [Azure CLI 1.0](../../cli-install-nodejs.md). Vzhledem k tomu, že Azure CLI 2.0 je k dispozici jenom pro prostředky Azure Resource Manager, nelze použít pro migraci.
@@ -180,7 +180,7 @@ Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostře
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

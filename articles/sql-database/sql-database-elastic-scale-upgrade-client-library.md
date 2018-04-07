@@ -1,19 +1,19 @@
 ---
-title: "Upgrade na nejnovější klientské knihovny elastické databáze | Microsoft Docs"
-description: "Klientská knihovna pro upgrade elastické databáze pomocí balíčku Nuget."
+title: Upgrade na nejnovější klientské knihovny elastické databáze | Microsoft Docs
+description: Klientská knihovna pro upgrade elastické databáze pomocí balíčku Nuget.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 54ddde10935fa5add07aaf0c514cf48c6115678e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5e7702c164a414ee2b9c08ccb276d5d74ad90f19
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace používat nejnovější klientské knihovny elastické databáze
 Nové verze [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) jsou k dispozici prostřednictvím NuGetand rozhraní NuGetPackage správce v sadě Visual Studio. Upgrady obsahovat oprav chyb a podporu pro nové funkce knihovny klienta.

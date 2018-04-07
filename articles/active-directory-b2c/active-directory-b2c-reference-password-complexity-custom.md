@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 648c800da928ae230bde1ba92aea8c319a4d8fe2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9f8d576cbc5c2bb2fe4109086b04711422911390
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>Nakonfigurujte složitost hesel v vlastní zásady
 
@@ -99,15 +99,9 @@ Typy deklarací identity `newPassword` a `reenterPassword` jsou považovány za 
 ```XML
     <ClaimsSchema>
       <ClaimType Id="newPassword">
-        <Restriction>
-          <Pattern RegularExpression="^.*$" HelpText="" />
-        </Restriction>
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
       <ClaimType Id="reenterPassword">
-        <Restriction>
-          <Pattern RegularExpression="^.*$" HelpText="" />
-        </Restriction>
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
     </ClaimsSchema>
@@ -144,37 +138,31 @@ Tento příklad obsahuje ověření pro hesla PIN kód a jeden pro silná hesla:
   <BuildingBlocks>
     <ClaimsSchema>
       <ClaimType Id="newPassword">
-        <Restriction>
-          <Pattern RegularExpression="^.*$" HelpText="" />
-        </Restriction>
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
       <ClaimType Id="reenterPassword">
-        <Restriction>
-          <Pattern RegularExpression="^.*$" HelpText="" />
-        </Restriction>
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
     </ClaimsSchema>
     <Predicates>
       <Predicate Id="Lowercase" Method="MatchesRegex" HelpText="a lowercase">
         <Parameters>
-          <Parameter Id="RegularExpression">^[a-z]+$</Parameter>
+          <Parameter Id="RegularExpression">[a-z]+</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Uppercase" Method="MatchesRegex" HelpText="an uppercase">
         <Parameters>
-          <Parameter Id="RegularExpression">^[A-Z]+$</Parameter>
+          <Parameter Id="RegularExpression">[A-Z]+</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Number" Method="MatchesRegex" HelpText="a number">
         <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
+          <Parameter Id="RegularExpression">[0-9]+</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Symbol" Method="MatchesRegex" HelpText="a symbol">
         <Parameters>
-          <Parameter Id="RegularExpression">^[!@#$%^*()]+$</Parameter>
+          <Parameter Id="RegularExpression">[!@#$%^*()]+</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">

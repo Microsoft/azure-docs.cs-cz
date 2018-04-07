@@ -1,13 +1,13 @@
 ---
-title: "Standardní Přehled ochrany Azure DDoS | Microsoft Docs"
-description: "Další informace o službě Azure ochrana proti útoku DDoS."
+title: Standardní Přehled ochrany Azure DDoS | Microsoft Docs
+description: Další informace o službě Azure ochrana proti útoku DDoS.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb19baae1bc03633b7646fd2255ca910532595c5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS ochrany standardní
 
@@ -65,7 +65,7 @@ DDoS ochrany standardní funkce patří:
 - **Úrovně 3 na ochrana vrstvy 7:** poskytuje úplné zásobníku ochrana proti útoku DDoS, při použití s aplikační brány.
 - **Zmírnění dopadů rozsáhlé škálování:** přes 60 útoku různé typy lze zmírnit, s globální kapacity pro ochranu proti největší známé útoky DDoS. 
 - **Útokům metriky:** Summarized metriky z každé útoku jsou přístupné prostřednictvím Azure monitorování.
-- **Útok výstrahy:** výstrah lze nakonfigurovat na spuštění a ukončení útoku a na dobu trvání útok, pomocí předdefinovaných útoku metriky. Výstrahy integrovat do vaší provozní softwaru, třeba Microsoft Operations Management Suite, Splunk, Azure Storage, e-mailu a portálu Azure.
+- **Útok výstrahy:** výstrah lze nakonfigurovat na spuštění a ukončení útoku a na dobu trvání útok, pomocí předdefinovaných útoku metriky. Výstrahy integrovat do vaší provozní softwaru, třeba Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a portálu Azure.
 - **Cenově záruku:** přenosu dat a aplikací Škálováním na více systémů kompenzace zdokumentovaných útoku DDoS.
 
 ## <a name="ddos-protection-standard-mitigation"></a>Zmírnění dopadů DDoS ochrany standardní
@@ -82,6 +82,6 @@ Bloky ochrany DDoS útokům provozu a předává zbývající provoz do zamýšl
 
 Nedoporučujeme zákazníků k simulaci vlastní útoky DDoS. Místo toho zákazníci mohou používat podporu kanál k vyžádání DDoS útokům simulace provedený sítí Azure. Technika vás bude kontaktovat uspořádání podrobnosti útoku DDoS (porty, protokoly, cílové IP adresy) a uspořádat dobu a naplánovat test.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o správě DDoS ochrany standardní pomocí [prostředí Azure PowerShell](ddos-protection-manage-ps.md) nebo [portál Azure](ddos-protection-manage-portal.md).

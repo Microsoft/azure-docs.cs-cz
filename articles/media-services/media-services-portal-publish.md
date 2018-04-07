@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 5c79f4e0209658e5c95e158c3ef78f91dba8966f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6fec9b21e8612376dced6af9da7304f4c2b1a93f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Publikovat obsah na portálu Azure
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 04/05/2018
 
 Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborům asset. Služba Azure Media Services podporuje dva typy lokátorů: 
 
-* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Adaptivní datové proudy příklady Apple HTTP Live Streaming (HLS), technologie Smooth Streaming Microsoft a dynamické adaptivní datové proudy přes protokol HTTP (DASH, označované taky jako MPEG-DASH). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. 
+* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Adaptivní datové proudy příklady Apple HTTP Live Streaming (HLS), technologie Smooth Streaming Microsoft a dynamické adaptivní datové proudy přes protokol HTTP (DASH, označované taky jako MPEG-DASH). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. Například, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Progresivní lokátory (sdílený přístupový podpis)**. Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
 Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)*:

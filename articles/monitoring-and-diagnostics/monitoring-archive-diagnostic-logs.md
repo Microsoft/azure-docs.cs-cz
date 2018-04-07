@@ -1,9 +1,9 @@
 ---
-title: "Archivovat Azure diagnostické protokoly | Microsoft Docs"
-description: "Zjistěte, jak k archivaci k diagnostickým protokolům Azure pro dlouhodobé uchovávání v účtu úložiště."
+title: Archivovat Azure diagnostické protokoly | Microsoft Docs
+description: Zjistěte, jak k archivaci k diagnostickým protokolům Azure pro dlouhodobé uchovávání v účtu úložiště.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 3a55c73f-2ef3-45f3-8956-bcf9c0cb7e05
@@ -12,24 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: dbc5f89001dcb6cd1ab061cb0a9632e4e5d2c1c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf776ba8aaeca361250f39fb2c62233ee1dfbd5b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat Azure diagnostických protokolů
+
 V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí PowerShell, rozhraní příkazového řádku nebo REST API pro archivaci vaše [Azure diagnostické protokoly](monitoring-overview-of-diagnostic-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud chcete zachovat k diagnostickým protokolům zásadami volitelné uchování pro audit, statické analýzy nebo zálohování. Účet úložiště nemusí být ve stejném předplatném jako prostředek emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete, budete muset [vytvořit účet úložiště](../storage/storage-create-storage-account.md) ke kterému archivujete diagnostické protokoly. Důrazně doporučujeme nepoužívejte stávající účet úložiště, který má jiné, -monitoring data v ní uloženy, takže může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivaci protokolu aktivit a diagnostiky metriky na účet úložiště, má smysl pro použití tohoto účtu úložiště pro svoje diagnostické protokoly pro monitorování všech dat v centrálním umístění. Účet úložiště, které používáte, musí být účet úložiště obecné účely, nikoli účet úložiště objektů blob.
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
+
 K archivaci k diagnostickým protokolům pomocí kteréhokoli z následujících metod, můžete nastavit **nastavení diagnostiky** pro určitý prostředek. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metriky dat odesílaných do cílového umístění (účet úložiště, obor názvů služby Event Hubs nebo analýzy protokolů). Definuje také zásady uchovávání informací (počet dní, které chcete zachovat) pro události pro každé kategorie protokolu a metriky data uložená v účtu úložiště. Pokud zásady uchovávání informací je nastaven na hodnotu nula, události pro tuto kategorii protokolu se ukládají po neomezenou dobu (tzn. Tím vyjádříte navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů od 1 do 2147483647. [Další informace o nastavení pro diagnostiku zde](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn
 
+> [!NOTE]
+> Odesílání vícerozměrných metriky prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+>
+> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu prostřednictvím nastavení pro diagnostiku metriku bude reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
+>
+>
+
 ## <a name="archive-diagnostic-logs-using-the-portal"></a>Diagnostické protokoly archivu pomocí portálu
+
 1. Na portálu, přejděte do monitorování Azure a klikněte na **nastavení diagnostiky**
 
     ![Monitorování části monitorování Azure](media/monitoring-archive-diagnostic-logs/diagnostic-settings-blade.png)
@@ -45,14 +56,15 @@ K archivaci k diagnostickým protokolům pomocí kteréhokoli z následujících
    ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-archive-diagnostic-logs/diagnostic-settings-multiple.png)
 
 3. Zadejte název nastavení a zaškrtněte políčko pro **exportovat do účtu úložiště**, pak vyberte účet úložiště. Volitelně můžete nastavit počet dní, abyste tyto protokoly uchovávat pomocí **uchovávání dat (dny)** posuvníky. Uchování nulový počet dnů po neomezenou dobu ukládá protokoly.
-   
+
    ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
-    
+
 4. Klikněte na **Uložit**.
 
 Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prostředek a diagnostické protokoly jsou archivovány k tomuto účtu úložiště, jakmile se vygeneruje nová data události.
 
 ## <a name="archive-diagnostic-logs-via-azure-powershell"></a>Archiv diagnostických protokolů pomocí Azure PowerShell
+
 ```
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -66,39 +78,45 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | RetentionEnabled |Ne |Logická hodnota, která udává, pokud jsou zásady uchovávání informací na tento prostředek povolené. |
 | retentionInDays |Ne |Počet dní, pro které by měl být zachován události od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení. |
 
-## <a name="archive-diagnostic-logs-via-the-cross-platform-cli"></a>Diagnostické protokoly archivu prostřednictvím rozhraní příkazového řádku pro různé platformy
-```
-azure insights diagnostic set --resourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg --storageId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage –categories networksecuritygroupevent,networksecuritygrouprulecounter --enabled true
+## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archiv diagnostických protokolů pomocí Azure CLI 2.0
+
+```azurecli
+az monitor diagnostic-settings create --name <diagnostic name> \
+    --storage-account <name or ID of storage account> \
+    --resource <target resource object ID> \
+    --resource-group <storage account resource group> \
+    --logs '[
+    {
+        "category": <category name>,
+        "enabled": true,
+        "retentionPolicy": {
+            "days": <# days to retain>,
+            "enabled": true
+        }
+    }]'
 ```
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| resourceId |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
-| storageId |Ne |ID prostředku účtu úložiště, který má být uložen diagnostické protokoly. |
-| Kategorie |Ne |Čárkami oddělený seznam kategorií protokolu povolit. |
-| povoleno |Ano |Logická hodnota, která určuje, zda diagnostiky jsou zapnutá nebo vypnutá u tohoto prostředku. |
+Přidáním dalších kategorií do protokolů diagnostiky tak, že přidáte do pole JSON, který je předán jako slovník `--logs` parametr.
+
+`--resource-group` Argument je jenom v případě požadované `--storage-account` není ID objektu. Úplnou dokumentaci k archivaci diagnostických protokolů do úložiště najdete v tématu [reference k příkazům rozhraní příkazového řádku](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Diagnostické protokoly archivu přes REST API
+
 [Najdete v tomto dokumentu](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) informace o tom, jak můžete nastavit pomocí rozhraní REST API Azure monitorování diagnostické nastavení.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schéma diagnostických protokolů v účtu úložiště
+
 Jakmile jste nastavili archivace, kontejner úložiště se vytvoří v účtu úložiště, jakmile dojde k události v jedné z protokolu kategorií, které jste povolili. Objekty BLOB v kontejneru použijte stejný formát napříč diagnostické protokoly a protokolu aktivity. Struktura tyto objekty BLOB je:
 
 > insights - logs-{název kategorie protokolu} / resourceId = v odběry / {ID předplatného} /RESOURCEGROUPS/ {název skupiny prostředků} /PROVIDERS/ {název zprostředkovatele prostředků} / {resource type} nebo {název prostředku} / y = {čtyřciferné číselné year} / m = {dvoumístné číslo měsíce} / d = {letopočty numerický den} / h = {hour}/m=00/PT1H.json letopočty 24 hodin
-> 
-> 
 
 Nebo více jednoduše
 
 > insights - logs-{název kategorie protokolu} / resourceId = / {Id prostředku} / y = {čtyřciferné číselné year} / m = {dvoumístné číslo měsíce} / d = {letopočty numerický den} / h = {hour}/m=00/PT1H.json letopočty 24 hodin
-> 
-> 
 
 Například může být název objektu blob:
 
 > insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
-> 
-> 
 
 Každý objekt blob PT1H.json obsahuje objekt blob JSON událostí, které nastaly během hodiny zadaného v adrese URL objektu blob (například h = 12). Během přítomen hodinu jsou události připojen k souboru PT1H.json, kdy k nim dojde. Hodnota minutu (m = 00) je vždy 00, protože protokolů diagnostiky události jsou rozdělená do jednotlivých objektů blob za hodinu.
 
@@ -137,10 +155,9 @@ V souboru PT1H.json se ukládají všechny události v poli "záznamy" následuj
 
 > [!NOTE]
 > Vlastnosti a využití tyto vlastnosti se může lišit v závislosti na prostředek.
-> 
-> 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
 * [Stáhnout objekty BLOB pro analýzu](../storage/storage-dotnet-how-to-use-blobs.md)
 * [Diagnostické protokoly datový proud na obor názvů služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Další informace o diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md)

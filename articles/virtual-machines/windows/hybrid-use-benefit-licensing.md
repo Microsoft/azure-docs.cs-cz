@@ -1,11 +1,11 @@
 ---
-title: "Výhody Azure hybridní pro systém Windows Server | Microsoft Docs"
-description: "Zjistěte, jak chcete maximalizovat své výhody Windows Software Assurance a dovést místní licencí do Azure"
+title: Výhody Azure hybridní pro systém Windows Server | Microsoft Docs
+description: Zjistěte, jak chcete maximalizovat své výhody Windows Software Assurance a dovést místní licencí do Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: kmouss
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: 245bffbc208ce67d990a63e744c42dc671686b4b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f445a2c77b14477ea2ef4ff7722183d641275f08
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programu Software Assurance umožňuje Azure hybridní výhody pro Windows Server používat své místní licence systému Windows Server a spustit virtuální počítače s Windows v Azure s malými náklady. Azure hybridní výhody pro Windows Server můžete použít k nasazení nových virtuálních počítačů z libovolného Azure podporovaný image platformy systému Windows Server nebo vlastních bitových kopií systému Windows. Tento článek přejde přes kroky na tom, jak nasadit nové virtuální počítače s Azure hybridní výhody pro Windows Server a jak můžete aktualizovat existující spuštěných virtuálních počítačů. Další informace o Azure hybridní výhody pro Windows Server najdete v části úspory licencování a náklady [licencování stránky Azure hybridní výhody pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -183,7 +183,7 @@ V rámci virtuálního počítače sady škálování šablony Resource Manageru
 ```
 Můžete také [vytvořit a nasadit škálovací sadu virtuálních počítačů](#https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create) a nastavte vlastnost LicenseType
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [jak ušetřit peníze s výhodou hybridní Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
 Další informace o [Azure hybridní výhody pro Windows Server licencování podrobné pokyny](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)

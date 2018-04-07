@@ -1,10 +1,10 @@
 ---
-title: "Schválené distribucích systému Linux | Microsoft Docs"
-description: "Další informace o Linux na distribuce schválené pro Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE."
+title: Schválené distribucích systému Linux | Microsoft Docs
+description: Další informace o Linux na distribuce schválené pro Azure, včetně pokynů pro Ubuntu, CentOS, Oracle a SUSE.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 2b73ccbafc5ef16dff0bc666f601773c378ea2b0
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 7c41550d1fe9cf5981406d25599e51aa119eb697
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Linux na distribuce schválené pro Azure
 Partneři poskytovat Linux bitové kopie v Azure Marketplace. Pracujeme s různé komunit Linux přidat i více typů schválené distribučního seznamu. Do té doby pro distribuce, které nejsou k dispozici z Marketplace, můžete vždy zahrnout vlastní Linux podle pokynů v tématu [vytvoření a nahrání virtuálního pevného disku obsahující operační systém Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).

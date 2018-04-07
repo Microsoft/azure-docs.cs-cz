@@ -1,11 +1,11 @@
 ---
-title: "Odeslání úlohy HPC Pack clusteru v Azure | Microsoft Docs"
-description: "Zjistěte, jak nastavit na místní počítač k odesílání úloh do clusteru HPC Pack v Azure"
+title: Odeslání úlohy HPC Pack clusteru v Azure | Microsoft Docs
+description: Zjistěte, jak nastavit na místní počítač k odesílání úloh do clusteru HPC Pack v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management,hpc-pack
 ms.assetid: 78f6833c-4aa6-4b3e-be71-97201abb4721
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: d5953f1e1dd2deb4d871bd67352a6a5b2ae13dbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Odeslání úloh HPC z místního počítače do clusteru HPC Pack nasazeného v Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,7 +29,7 @@ Konfigurace klientského počítače k odesílání úloh do k místní [Microso
 ![Odeslání úlohy do clusteru s podporou v Azure][jobsubmit]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Nasadit virtuální počítač Azure hlavního uzlu HPC Pack** -doporučujeme použít automatizované nástroje, jako [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) nebo [skript prostředí Azure PowerShell](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) nasazení hlavního uzlu a clusteru. Potřebujete název DNS hlavního uzlu a přihlašovací údaje Správce clusteru k dokončení kroků v tomto článku.
+* **Nasadit virtuální počítač Azure hlavního uzlu HPC Pack** -doporučujeme použít automatizované nástroje, jako [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) nebo [skript prostředí Azure PowerShell](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) nasazení hlavního uzlu a clusteru . Potřebujete název DNS hlavního uzlu a přihlašovací údaje Správce clusteru k dokončení kroků v tomto článku.
 * **Klientský počítač** -potřebujete klientského počítače Windows nebo Windows Server, který můžete spustit HPC Pack klienta nástroje (viz [požadavky na systém](https://technet.microsoft.com/library/dn535781.aspx)). Pokud chcete používat k odesílání úloh HPC Pack webový portál nebo REST API, můžete použít libovolného klientského počítače podle svého výběru.
 * **HPC Pack instalačním médiu** – k instalaci nástroje klienta HPC Pack volné instalační balíček pro nejnovější verzi sady HPC Pack (HPC Pack 2012 R2) je k dispozici z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Ujistěte se, že si stáhnout stejnou verzi nástroje HPC Pack, který je nainstalován na hlavního uzlu virtuálního počítače.
 
@@ -167,7 +167,7 @@ Pokud chcete ověřit konfiguraci, zkuste spustit úlohy v clusteru v Azure z m�
 5. Klikněte na tlačítko **odeslání**. Pokud se zobrazí výzva, zadejte přihlašovací údaje domény Správce clusteru HPC. Je úloha odeslána a ID úlohy se zobrazí na **Mé úlohy** stránky.
 6. Pokud chcete zobrazit výsledky úlohy, které jste odeslali, klikněte na úlohu s ID a potom klikněte na **úlohy v zobrazení** k zobrazení výstupu příkazu (v části **výstup**).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Můžete také odesílání úloh do clusteru Azure s [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Pokud chcete k odesílání úloh clusteru z klienta Linux, viz ukázka Pythonu ve [HPC Pack 2012 R2 SDK a ukázkový kód](https://www.microsoft.com/download/details.aspx?id=41633).
 

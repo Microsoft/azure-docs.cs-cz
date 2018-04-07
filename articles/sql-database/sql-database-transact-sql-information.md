@@ -1,19 +1,19 @@
 ---
-title: "Řešení T-SQL rozdíly. migrace Azure SQL Database | Microsoft Docs"
-description: "Příkazy jazyka Transact-SQL, které služba Azure SQL Database plně nepodporuje"
+title: Řešení T-SQL rozdíly. migrace Azure SQL Database | Microsoft Docs
+description: Příkazy jazyka Transact-SQL, které služba Azure SQL Database plně nepodporuje
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: acc2c2556763650e0a0aff93fd247d882cb37852
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5a3196f1cdbebd131d6880bab6fc1468f4c1b849
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů Transact-SQL během migrace do databáze SQL   
 Když [migrace vaší databáze](sql-database-cloud-migrate.md) ze serveru SQL Server SQL Azure, může se stát, že vaše databáze vyžaduje některé znovu technici před migrací serveru SQL Server. Tento článek obsahuje pokyny, které vám pomohou při provádění technici znovu i pochopení základní důvody, proč je nutné znovu technici. Chcete-li zjistit problémům s kompatibilitou, použijte [pomocníka pro migraci dat (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).

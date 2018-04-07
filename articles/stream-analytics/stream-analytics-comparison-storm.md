@@ -1,24 +1,19 @@
 ---
-title: 'Analýza platformy: porovnání Apache Storm do služby Stream Analytics | Microsoft Docs'
-description: Získáte pokyny výběr cloudové platformy analýzy pomocí porovnávání Apache Storm do služby Stream Analytics. Pochopit funkce a rozdíly.
-keywords: analytické platformě, analýzy platformy, Cloudová platforma analýzy, storm porovnání
+title: 'Analýza platformy: porovnání Apache Storm do služby Azure Stream Analytics'
+description: Pokyny k zvolte cloudové platformy analýzy pomocí porovnávání Apache Storm do služby Stream Analytics. Pochopit funkce a rozdíly.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: 48599c362c5db50ebec3acd0aaa4359439edb00b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 94ac3c0075014a3e014ede8104a6aa259527a0ae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Výběr streamování analytické platformě: porovnání Apache Storm a Azure Stream Analytics
 Azure poskytuje několik řešení pro analýzu dat: [Azure streamování Analytics](https://docs.microsoft.com/azure/stream-analytics/) a [Apache Storm v Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-storm/). Obě platformy analytics poskytovat výhody PaaS řešení. Ale platformy mít některé významné rozdíly v jejich schopnosti stejně jako v tom, jak konfigurovat a spravovat je. 

@@ -1,13 +1,13 @@
 ---
-title: "Vytvářet a spravovat virtuální počítač s Windows v Azure pomocí Python | Microsoft Docs"
-description: "Naučte se používat jazyk Python vytvářet a spravovat virtuální počítač s Windows v Azure."
+title: Vytvářet a spravovat virtuální počítač s Windows v Azure pomocí Python | Microsoft Docs
+description: Naučte se používat jazyk Python vytvářet a spravovat virtuální počítač s Windows v Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.openlocfilehash: bb777d41570d7b1dc97402d532519488912948e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d56143a470be4da1faaea949ea286fca1ffd319d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí Python
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 > * Vytvořit přihlašovací údaje
 > * Vytvoření prostředků
 > * Provádění úloh správy
-> * Odstraňte prostředky
+> * Odstranění prostředků
 > * Spuštění aplikace
 
 Proveďte tyto kroky trvá asi 20 minut.
@@ -363,7 +363,7 @@ Teď, když jste vytvořili doprovodné materiály, můžete vytvořit virtuáln
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu virtuálního počítače můžete spustit úlohy správy, jako je například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
+Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
 
 ### <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
 
@@ -542,7 +542,7 @@ Virtuální počítače může mít jeden nebo více [datových disků](about-di
     input('Press enter to continue...')
     ```
 
-## <a name="delete-resources"></a>Odstraňte prostředky
+## <a name="delete-resources"></a>Odstranění prostředků
 
 Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
@@ -570,7 +570,7 @@ Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždyck
     Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spustit úplně od začátku. Může trvat několik minut, po dokončení aplikace před všechny prostředky a skupině prostředků se odstraní.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pokud byly nějaké problémy s nasazením, je dalším krokem projít si téma [Řešení potíží s nasazením skupin prostředků pomocí webu Azure Portal](../../resource-manager-troubleshoot-deployments-portal.md).
 - Další informace o [knihovna Python Azure](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)

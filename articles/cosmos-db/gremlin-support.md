@@ -4,9 +4,7 @@ description: Další informace o jazyka Gremlin z Apache TinkerPop. Další info
 services: cosmos-db
 documentationcenter: ''
 author: LuisBosquez
-manager: jhubbard
-editor: ''
-tags: ''
+manager: kfile
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
@@ -15,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 453e11c31a01b6ce8e77deda89725ecd53fd2db9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
 Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
@@ -136,7 +134,7 @@ Vlastnosti používané ve GraphSON pro vrcholy jsou následující:
 | --- | --- |
 | id | ID pro vrchol. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
 | Popisek | Popisek vrchol. Toto je volitelné a slouží k popisu typu entity. |
-| typ | Rozlišit vrcholy z jiných grafu dokumentů |
+| type | Rozlišit vrcholy z jiných grafu dokumentů |
 | properties | Kontejner uživatelem definované vlastnosti související s vrchol. Každá vlastnost může mít více hodnot. |
 | _partition (Konfigurovat) | Klíč oddílu vrcholu. Slouží k škálování grafy pro více serverů |
 | outE | Tato položka obsahuje seznam se okraje z vrchol. Ukládání informací o sousedství s vrchol umožňuje rychlé spuštění traversals. Okraje jsou seskupené podle jejich popisky. |

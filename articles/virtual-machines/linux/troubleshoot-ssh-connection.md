@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s připojeními SSH pro virtuální počítač Azure | Microsoft Docs"
-description: "Postup řešení potíží, třeba \"Připojení SSH se nezdařilo\" nebo \"odmítl připojení SSH' pro virtuální počítač Azure s Linuxem."
-keywords: "SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo"
+title: Řešení potíží s připojeními SSH pro virtuální počítač Azure | Microsoft Docs
+description: Postup řešení potíží, třeba "Připojení SSH se nezdařilo" nebo "odmítl připojení SSH' pro virtuální počítač Azure s Linuxem.
+keywords: SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojení SSH pro virtuální počítač Azure Linux který selže, chyby, nebo bylo odmítnuto
 Existují různé příčiny, že dojde k chybám Secure Shell (SSH), selhání připojení SSH, nebo SSH bylo odmítnuto, při pokusu o připojení k virtuálnímu počítači (VM) Linux. Tento článek pomůže najít a opravit problémy. Portál Azure, rozhraní příkazového řádku Azure nebo rozšíření pro přístup virtuálních počítačů pro Linux můžete použít k řešení problémů s připojením.
@@ -68,6 +68,14 @@ Jako první krok, vyberte `Reset configuration only` z **režimu** rozevírací 
 Se resetovat přihlašovací údaje stávajícího uživatele, vyberte buď `Reset SSH public key` nebo `Reset password` z **režimu** rozevírací nabídky jako v předchozím snímku obrazovky. Zadejte uživatelské jméno a klíč SSH nebo nové heslo a pak klikněte na **resetovat** tlačítko.
 
 Můžete také vytvořit uživatele s oprávněními sudo do virtuálního počítače z této nabídky. Zadejte nové uživatelské jméno a přiřazené heslo nebo klíč SSH a pak klikněte **resetovat** tlačítko.
+
+### <a name="check-security-rules"></a>Zkontrolujte pravidla zabezpečení
+
+Použití [IP tok ověření](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) potvrďte, zda pravidla v skupinu zabezpečení sítě neblokuje přenosy do nebo z virtuálního počítače. Můžete také zkontrolovat pravidel skupiny zabezpečení efektivní zajistit příchozí "Povolit" NSG pravidlo existuje a prioritu pro SSH port (standardně 22). Další informace najdete v tématu [tok provozu pomocí pravidel efektivní zabezpečení řešení virtuálních počítačů](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+
+### <a name="check-routing"></a>Zkontrolujte směrování
+
+Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
 
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 Pokud jste to ještě neudělali, nainstalujte nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/reference-index#az_login).

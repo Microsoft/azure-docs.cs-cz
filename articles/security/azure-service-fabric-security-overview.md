@@ -1,12 +1,12 @@
 ---
-title: "Přehled zabezpečení služby Azure service fabric | Microsoft Docs"
-description: "Tento článek obsahuje přehled o zabezpečení Azure Service Fabric."
+title: Přehled zabezpečení služby Azure service fabric | Microsoft Docs
+description: Tento článek obsahuje přehled o zabezpečení Azure Service Fabric.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Přehled zabezpečení služby Azure Service Fabric
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) je platforma distribuovaných systémů, která usnadňuje balíčku, nasazovat a spravovat škálovatelného a spolehlivého mikroslužeb. Service Fabric řeší významné problémy vývoj a správu aplikací v cloudu. Vývojáři a správci se můžou vyhnout problémům se složitou infrastrukturou a místo toho se soustředit na implementaci zásadních a náročných úloh, které jsou škálovatelné, spolehlivé a spravovatelné.
@@ -104,7 +104,7 @@ Celkové pracovní postup monitorování a Diagnostika zahrnuje tři kroky:
 
 -   **Agregace událostí:** události generované třeba shromažďovat a agregovat předtím, než je možné zobrazit. Obvykle doporučujeme používat [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobně jako kolekce založené na agentovi protokolu) nebo [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (v procesu protokolu kolekce).
 
--   **Analýza:** události musí být vizualizovaných a v některých formátu, aby za účelem analýzy a zobrazení. Existuje několik platforem pro analýzu a vizualizace dat monitorování a diagnostiky. Jsou dva, které doporučujeme [Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) z důvodu jejich dobrý integrace s Service Fabric.
+-   **Analýza:** události musí být vizualizovaných a v některých formátu, aby za účelem analýzy a zobrazení. Existuje několik platforem pro analýzu a vizualizace dat monitorování a diagnostiky. Jsou dva, které doporučujeme [analýzy protokolů](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) a [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) z důvodu jejich dobrý integrace s Service Fabric.
 
 Můžete také použít [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) monitorovat mnoho prostředků Azure, na kterých je vytvořen cluster Service Fabric.
 
@@ -189,6 +189,6 @@ Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní 
 -   [Pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication)
 -   [Pomoc se zabezpečením služby při použití zásobníku komunikace na základě WCF](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-secure-communication#help-secure-a-service-when-youre-using-a-wcf-based-communication-stack)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Koncepční informace o zabezpečení clusteru najdete v tématu [vytvořit cluster Service Fabric pomocí Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) a [portál Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal).
 - Další informace o zabezpečení clusteru Service Fabric najdete v tématu [zabezpečení clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 0563f071083080de7f99b3a77c680f791d80bcdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 342aeee25a7cb9f6a0f5af055d04e67d0c52db80
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -138,6 +138,7 @@ Tato možnost poskytují větší flexibilitu při zpracování anonymních pož
 
 ## <a name="more-resources"></a>Další zdroje informací
 
+[Kurz: Ověřování a autorizaci uživatelů klient server v Azure App Service](app-service-web-tutorial-auth-aad.md)  
 [Přizpůsobení ověřování a autorizace ve službě App Service](app-service-authentication-how-to.md)
 
 Návody specifický pro zprostředkovatele:

@@ -1,20 +1,20 @@
 ---
-title: "Vytváření sestav napříč instancemi cloudu databáze | Microsoft Docs"
-description: "jak nastavit elastické dotazy přes vodorovné oddíly"
+title: Vytváření sestav napříč instancemi cloudu databáze | Microsoft Docs
+description: jak nastavit elastické dotazy přes vodorovné oddíly
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: ec47a10fcfcb3ef52810ba2b3da9599b65db375a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dd2219c01f194dad658d08a01f5f525640ef1c7c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč instancemi cloudu databází (preview)
 ![Dotazování mezi horizontálních oddílů][1]
@@ -187,7 +187,7 @@ Používat regulární připojovací řetězce SQL serveru pro připojení vaš�
 * Elastické dotazu momentálně neprovádí odstranění horizontálních při predikáty nad klíčem horizontálního dělení by mohla bezpečně vyloučit některé horizontálních oddílů z zpracování.
 * Elastické dotazu je nejvhodnější pro dotazy kde většinu výpočet lze provést na horizontálních oddílů. Obvykle získáte nejlepší výkon dotazů s predikáty selektivní filtru, které lze vyhodnotit na horizontálních oddílů nebo spojení přes rozdělení klíčů, které lze provést tak oddílu zarovnaný na všechny horizontálních oddílů. Ostatní typy dotazů možná muset načíst velkých objemů dat z horizontálních oddílů k hlavnímu uzlu a může být špatná
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Přehled elastické dotazů najdete v tématu [elastické dotazu přehled](sql-database-elastic-query-overview.md).
 * Vertikální dělení kurzu, najdete v části [Začínáme s mezidatabázové dotazu (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).

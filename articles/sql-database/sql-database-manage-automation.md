@@ -1,19 +1,19 @@
 ---
-title: "Správa databází Azure SQL pomocí Azure Automation | Microsoft Docs"
-description: "Další informace o používání služby Azure Automation pro správu databáze Azure SQL ve velkém měřítku."
+title: Správa databází Azure SQL pomocí Azure Automation | Microsoft Docs
+description: Další informace o používání služby Azure Automation pro správu databáze Azure SQL ve velkém měřítku.
 services: sql-database, automation
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 0174b2b1dd5942e17ea60c2dce624c87fd1289c8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f0f071c2ad5e79168d89361c89a005c247599655
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL pomocí Azure Automation.
 Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy vašich databází Azure SQL.
@@ -37,7 +37,7 @@ Automatizace Azure má také možnost ke komunikaci se servery SQL přímo, vyd�
 * [Zkrácení tabulky SQL, pokud jeho databáze blíží maximální velikosti](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
 * [Index tabulky v databázi SQL Azure, pokud jsou vysoce fragmentován](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy Azure Automation a jak může sloužit ke správě databází Azure SQL, postupujte podle následujících odkazech na další informace o Azure Automation.
 
 * [Přehled služby Azure Automation](../automation/automation-intro.md)

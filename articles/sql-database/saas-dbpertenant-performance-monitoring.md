@@ -1,6 +1,6 @@
 ---
-title: "Sledování výkonu mnoho databází Azure SQL v aplikaci SaaS víceklientské | Microsoft Docs"
-description: "Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů"
+title: Sledování výkonu mnoho databází Azure SQL v aplikaci SaaS víceklientské | Microsoft Docs
+description: Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f76a9f0aa5e68e729c67dad52f6dae4e01fdb56a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů
 
@@ -54,7 +54,7 @@ Fondy a databází ve fondech, je potřeba sledovat zajistit, že zůstanou v r�
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Ve službě SQL Database je monitorování a upozorňování k dispozici v databázích a fondech. Toto integrované monitorování a výstrah je konkrétní prostředky, takže je možné použít pro malý počet prostředků, ale není možnost je užitečná při práci s množství prostředků.
 
-Vysoký počet scénářů, při kterém pracujete s mnoha prostředky, [analýzy protokolů (OMS)](saas-dbpertenant-log-analytics.md) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a použije k dotazování a nastavit výstrahy.
+Vysoký počet scénářů, při kterém pracujete s mnoha prostředky, [analýzy protokolů](saas-dbpertenant-log-analytics.md) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a použije k dotazování a nastavit výstrahy.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získat aplikační skripty Wingtip lístky SaaS databáze za klienta
 
@@ -175,7 +175,7 @@ Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístět
     1. Klikněte na tlačítko **přidat databáze** zobrazíte seznam databází na serveru, který lze přidat do *Pool2*.
     1. Vyberte všechny 10 databáze přesunout do nového fondu a potom klikněte na **vyberte**. Pokud jste byla spuštěna generátor zatížení, služba již ví, že váš profil výkonu vyžaduje fond větší než velikost 50 eDTU výchozí a doporučuje od 100 nastavení eDTU.
 
-    ![Doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+    ![doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
     1. V tomto kurzu ponechte výchozí hodnota 50 Edtu a klikněte na tlačítko **vyberte** znovu.
     1. Vyberte **OK** k vytvoření nového fondu a přesunout vybrané databáze do ní.
@@ -226,7 +226,7 @@ Tam, kde agregované využití tenanta probíhá podle předvídatelných vzorc�
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se naučíte:
 

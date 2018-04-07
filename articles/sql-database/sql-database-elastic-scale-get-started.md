@@ -1,19 +1,19 @@
 ---
-title: "Začínáme s nástroji elastické databáze – Azure | Microsoft Docs"
-description: "Základní vysvětlení funkce nástroje pro elastické databáze Azure SQL Database, včetně Snadné spuštění ukázkové aplikace."
+title: Začínáme s nástroji elastické databáze – Azure | Microsoft Docs
+description: Základní vysvětlení funkce nástroje pro elastické databáze Azure SQL Database, včetně Snadné spuštění ukázkové aplikace.
 services: sql-database
 manager: craigg
 author: anumjs
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 04/01/2018
 ms.author: anjangsh
-ms.openlocfilehash: 28ff3f6eee2316a078badcf29e6780f3844f3a54
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fa6899b285bcd1d3f2d4c1e17e3fbab7a6e0f839
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji elastické databáze
 Tento dokument vás seznámí s možnosti pro vývojáře [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) tím, že pomáhá spustíte ukázkovou aplikaci. Ukázková aplikace vytvoří jednoduchou aplikaci horizontálně dělené a jsou zde popsány klíčové funkce funkce nástroje pro elastické databáze Azure SQL Database. Zaměřuje se na případy použití pro [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md), [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md), a [víc horizontálních dotazování](sql-database-elastic-scale-multishard-querying.md). Klientská knihovna je k dispozici pro rozhraní .NET, jakož i Java. 

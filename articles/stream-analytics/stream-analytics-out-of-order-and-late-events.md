@@ -1,24 +1,19 @@
 ---
-title: Zpracování – pořadí událostí a zpoždění pomocí služby Azure Stream Analytics | Microsoft Docs
-description: Informace o fungování služby Stream Analytics s mimo pořadí nebo pozdní události v datových proudů.
-keywords: mimo provoz, pozdní, události
-documentationcenter: ''
+title: Pořadí zpracování událostí a zpoždění v Azure Stream Analytics
+description: Tento článek popisuje, jak Stream Analytics zpracovává události mimo pořadí nebo pozdní v datových proudů.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 3c1924ad87715f7a44c3666991e792adc3a20af9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Důležité informace pořadí událostí Azure Stream Analytics
 
@@ -132,7 +127,7 @@ Azure Stream Analytics implementuje pomocí této funkce [TIMESTAMP BY OVER](htt
 * Když jste kombinování více časových os, nedostatku dat v jednom ze zdroje nebo oddíly zpozdit výstup v závislosti další interval tolerance pozdního.
 
 ## <a name="get-help"></a>Podpora
-O další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+O další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)

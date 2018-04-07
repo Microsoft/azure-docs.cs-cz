@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -70,7 +70,7 @@ Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samp
 * `all`: vyhodnocení skupiny prostředků a všechny typy prostředků 
 * `indexed`: pouze vyhodnotit typy prostředků, které podporují značky a umístění
 
-Doporučujeme, abyste nastavili **režimu** k `all` ve většině případů. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, budete muset zadat **režimu** parametr ručně.
+Doporučujeme, abyste nastavili **režimu** k `all` ve většině případů. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, budete muset zadat **režimu** parametr ručně. Pokud definice zásady neobsahuje **režimu** hodnota je výchozí hodnota je `indexed` pro zpětné kompatibility.
 
 `indexed` by měl být použit při vytváření zásad, který vynutí značky nebo umístění. Tato akce není povinná, ale nebude možné prostředky, které nepodporují značky a umístění zobrazovala jako nevyhovující ve výsledcích dodržování předpisů. Jedinou výjimkou je **skupiny prostředků**. Měli nastavit zásady, které se pokoušíte vynutit umístění nebo značky na skupinu prostředků **režimu** k `all` a konkrétně cíle `Microsoft.Resources/subscriptions/resourceGroup` typu. Příklad, naleznete v části [vynutit značky prostředku skupiny](scripts/enforce-tag-rg.md).
 
@@ -102,6 +102,8 @@ V rámci vlastnost metadat můžete použít **strongType** zajistit vybrat víc
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 V pravidle zásady můžete odkazovat na parametry s následující syntaxí:
 

@@ -1,19 +1,19 @@
 ---
-title: "Detekce – Azure SQL Database hrozby | Microsoft Docs"
-description: "Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze."
+title: Detekce – Azure SQL Database hrozby | Microsoft Docs
+description: Detekce hrozeb zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze.
 services: sql-database
 author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 04/01/2018
 ms.author: ronmat
-ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c4a94ab9c7e0dab9e8c25e54fdd0a30b28b7a8a3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-threat-detection"></a>Detekce hrozeb databáze SQL
 
@@ -21,7 +21,7 @@ SQL detekce hrozeb zjistila neobvyklé aktivity, které indikují neobvyklou a p
 
 ## <a name="overview"></a>Přehled
 
-Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.  Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Detekce hrozeb SQL výstrahy zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Uživatele můžete prozkoumat podezřelé události pomocí [auditování databáze SQL](sql-database-auditing.md) k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi. Detekce hrozeb zjednodušuje na potenciální hrozby adres do databáze bez nutnosti odborné zabezpečení nebo spravovat pokročilým zabezpečením monitorování systémů.
+Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.  Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Detekce hrozeb SQL výstrahy zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Uživatele můžete prozkoumat podezřelé události pomocí [auditování databáze SQL](sql-database-auditing.md) k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
 
 Například Injektáž SQL je jedním z běžné problémy zabezpečení webových aplikací na Internetu, slouží k útokům na základě dat aplikace. Útočníci využít výhod ohrožení zabezpečení aplikace se zlými úmysly příkazy SQL, do pole pro zadání aplikací, vložit před nedodržením nebo upravovat data v databázi.
 

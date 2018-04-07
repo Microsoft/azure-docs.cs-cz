@@ -1,23 +1,23 @@
 ---
-title: "Tipy pro 20 dnů Azure Cosmos DB | Microsoft Docs"
-description: "Najdete všechny typy z 20 dnů Simona Cotin Azure Cosmos DB tipy řady na jednom místě."
+title: Tipy pro 20 dnů Azure Cosmos DB | Microsoft Docs
+description: Najdete všechny typy z 20 dnů Simona Cotin Azure Cosmos DB tipy řady na jednom místě.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>20 dnů Azure Cosmos DB tipy
 
@@ -29,7 +29,7 @@ Navštivte tuto stránku každý den pro nový tip z 5. září – září 29!
 
 ## <a name="tip-1-what-is-cosmos"></a>Tip 1: Co je Cosmos?
 
-Co je #cosmosdb? Doporučené databáze NoSQL, nebudou! [https://aka.MS/ubw007](https://aka.ms/ubw007)
+Co je #cosmosdb? Doporučené databáze NoSQL, nebudou! [https://aka.ms/ubw007](https://aka.ms/ubw007)
 
 > [!VIDEO https://www.youtube.com/embed/cGxO995iakM] 
 
@@ -37,7 +37,7 @@ Co je #cosmosdb? Doporučené databáze NoSQL, nebudou! [https://aka.MS/ubw007](
 
 ## <a name="tip-2-seeing-is-believing"></a>Tip 2: Zobrazuje je přesvědčit ho
 
-Zobrazuje je přesvědčit ho. Použít rozhraní visual #cosmosDB na portálu Azure ke kontrole a dotaz vaší DB [https://aka.ms/jprf75](https://aka.ms/jprf75)
+Zobrazuje je přesvědčit ho. Použít rozhraní visual #cosmosDB na portálu Azure ke kontrole a dotaz vaší databáze  [https://aka.ms/jprf75](https://aka.ms/jprf75)
 
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
@@ -45,7 +45,7 @@ Zobrazuje je přesvědčit ho. Použít rozhraní visual #cosmosDB na portálu A
 
 ## <a name="tip-3-replicate-data-globally"></a>Tip 3: Globálně replikaci dat
 
-Tip 3: Musí být svěží rychlého kdekoliv ve světě v aplikaci? Replikace dat pomocí #cosmosDB je mrtvých snadno! [https://aka.MS/nimw2g](https://aka.ms/nimw2g)  
+Tip 3: Musí být svěží rychlého kdekoliv ve světě v aplikaci? Replikace dat pomocí #cosmosDB je mrtvých snadno! [https://aka.ms/nimw2g](https://aka.ms/nimw2g)  
 
 > [!VIDEO https://www.youtube.com/embed/i22R7I_Rgdg]
 
@@ -53,7 +53,7 @@ Tip 3: Musí být svěží rychlého kdekoliv ve světě v aplikaci? Replikace d
 
 ## <a name="tip-4-gremlin-graph-support"></a>Tip 4: Podpora Gremlin grafu
 
-Tip 4: Jsou gremlins vaše papír? #cosmosdb miluje Gremlin příliš! Zobrazení, dotazování a upravit graf pomocí portálu Azure DB [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
+Tip 4: Jsou gremlins vaše papír? #cosmosdb miluje Gremlin příliš! Zobrazení, dotazování a upravit graf DB pomocí portálu Azure [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
@@ -61,7 +61,7 @@ Tip 4: Jsou gremlins vaše papír? #cosmosdb miluje Gremlin příliš! Zobrazen�
 
 ## <a name="tip-5-try-azure-cosmos-db-free"></a>Tip 5: Zkuste Azure DB Cosmos volné
 
-Tip 5: Chcete zdarma vyzkoušet Azure #CosmosDB? Bez registrace nebo kreditní karty, přejděte na adresu [https://aka.ms/d81vxr](https://aka.ms/d81vxr) a psaní!  
+Tip 5: Chcete zdarma vyzkoušet Azure #CosmosDB? Bez registrace nebo kreditní karty, přejděte na adresu [ https://aka.ms/d81vxr ](https://aka.ms/d81vxr) a psaní!  
 
 > [!VIDEO https://www.youtube.com/embed/Vf8iZCmoG2E]
 
@@ -69,7 +69,7 @@ Tip 5: Chcete zdarma vyzkoušet Azure #CosmosDB? Bez registrace nebo kreditní k
 
 ## <a name="tip-6-migrate-your-mean-app"></a>Tip 6: Migrace střední aplikace
 
-Tip 6: Je ZNAMENAT vaší věc? Zjistěte, jak snadno migrace vaší aplikace do Azure #cosmosDB! Úplné video https://aka.MS/gfh6i5: https://aka.ms/aoojih  
+Tip 6: Je ZNAMENAT vaší věc? Zjistěte, jak snadno migrace vaší aplikace do Azure #cosmosDB! https://aka.ms/gfh6i5 Úplné video:  https://aka.ms/aoojih  
 
 > [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
 
@@ -109,7 +109,7 @@ Tip 11: Sestavení nejdůležitější aplikace pro sledování pomocí reagují
 
 ## <a name="tip-12-go-serverless"></a>Tip 12: Přejděte bez serveru
 
-Tip 12: Přejděte bez serveru s Azure #CosmosDB a @AzureFunctions! Úplné dokumentace v [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j)
+Tip 12: Přejděte bez serveru s Azure #CosmosDB a @AzureFunctions! Úplnou dokumentaci v [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j)
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
@@ -125,7 +125,7 @@ Tip 13: od nuly do hrdina s @John_Papa a Azure Cosmos DB. Naučte se vytvářet 
 
 ## <a name="tip-14-use-cases"></a>Tip 14: Případy použití
 
-Tip 14: O běžné případy použití Azure #CosmosDB zvědaví? Podívejte se na [https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) Další informace o IoT, hraní a sociálních aplikace
+Tip 14: O běžné případy použití Azure #CosmosDB zvědaví? Podívejte se na [ https://aka.ms/Ihpf00 ](https://aka.ms/Ihpf00) Další informace o IoT, hraní a sociálních aplikace
 
 Článek: [běžné Azure DB Cosmos případy použití.](https://aka.ms/Ihpf00)
 
@@ -133,7 +133,7 @@ Tip 14: O běžné případy použití Azure #CosmosDB zvědaví? Podívejte se 
 
 ## <a name="tip-15-vs-code-integration"></a>Tip 15: Integrace VS Code
 
-Tip 15: Vytvořte nový účet Azure #CosmosDB aniž byste opustili @code. Nainstalujte rozšíření z [https://aka.ms/Wy547u](https://aka.ms/Wy547u) 
+Tip 15: Vytvořte nový účet Azure #CosmosDB aniž byste opustili @code. Instalovat rozšíření [https://aka.ms/Wy547u](https://aka.ms/Wy547u) 
 
 > [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
 
@@ -151,7 +151,7 @@ Tip 16: Demo Super! Integrovat Azure #cosmosDB, funkce a @twilio odeslat serveru
 
 ## <a name="tip-17-using-mongoose-discriminators"></a>Tip 17: Discriminators pomocí Mongoose
 
-Tip 17: Optimalizovat náklady pomocí Mongoose discriminators k ukládání více entit v kolekci jednoho #CosmosDB [https://aka.ms/M488jm](https://aka.ms/M488jm)
+Tip 17: Optimalizujte náklady pomocí Mongoose discriminators k ukládání více entit v jednom #CosmosDB kolekci [https://aka.ms/M488jm](https://aka.ms/M488jm)
 
 Blog: [pomocí Mongoose Discriminators k ukládání více entit v kolekci jednoho Cosmos DB podle Antonín Chu](https://aka.ms/M488jm)
 
@@ -159,7 +159,7 @@ Blog: [pomocí Mongoose Discriminators k ukládání více entit v kolekci jedno
 
 ## <a name="tip-18-request-units"></a>Tip 18: Jednotek žádosti
 
-Tip 18: Zjistěte, jaké jsou požadovaných jednotkách (RU) a způsob jejich konfigurace v Azure #CosmosDB. Další informace o dokumentace v [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 
+Tip 18: Zjistěte, jaké jsou požadovaných jednotkách (RU) a způsob jejich konfigurace v Azure #CosmosDB. Další na dokumenty v [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 
 
 Článek: [požadované jednotky v Azure Cosmos DB](https://aka.ms/Kt2nbn)
 
@@ -181,7 +181,7 @@ Tip 20: Everyone miluje dobrý staré "tahák". Azure #CosmosDB jeden má příl
 
 [![Retweet na twitteru](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![sdílené složky na LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure Cosmos DB načtením [Vítá vás Azure Cosmos DB](introduction.md) a [technický přehled Azure Cosmos DB](https://azure.microsoft.com/blog/a-technical-overview-of-azure-cosmos-db/).
 

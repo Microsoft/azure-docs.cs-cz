@@ -1,6 +1,6 @@
 ---
-title: "Sledování využití databáze se statistickými inteligentního – Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database inteligentního Insights používá vestavěné inteligentní neustále monitorovat využití databáze prostřednictvím umělé intelligence a zjišťování rušivý událostí, které způsobí snížení výkonu."
+title: Sledování využití databáze se statistickými inteligentního – Azure SQL Database | Microsoft Docs
+description: Azure SQL Database inteligentního Insights používá vestavěné inteligentní neustále monitorovat využití databáze prostřednictvím umělé intelligence a zjišťování rušivý událostí, které způsobí snížení výkonu.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/01/2018
 ms.author: v-daljep
-ms.openlocfilehash: 8654c35bb9c6e46a47f52dee6ab7969f996b42f4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f3ace9d178fdfa90130e4436722e1e36cedc7e50
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="intelligent-insights"></a>Užitečné přehledy
 
@@ -167,7 +167,7 @@ Protokol inteligentního Statistika výstupy počet chybných požadavků. Ozna�
 
 Pokud monitorované kritické výjimky křížové absolutní prahové hodnoty spravuje systém, vygeneruje se inteligentní přehledu s podrobnostmi kritické výjimky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [řešení potíží s výkonem databáze SQL pomocí služby inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 * Použití [inteligentního SQL Database Statistika výkonu diagnostiky protokolu](sql-database-intelligent-insights-use-diagnostics-log.md).
 * Zjistěte, jak [monitorovat SQL Database pomocí SQL Analytics](../log-analytics/log-analytics-azure-sql.md).

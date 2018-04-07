@@ -1,10 +1,10 @@
 ---
-title: "Konfigurace LVM na virtuální počítač s Linuxem | Microsoft Docs"
-description: "Naučte se konfigurovat LVM v systému Linux v Azure."
+title: Konfigurace LVM na virtuální počítač s Linuxem | Microsoft Docs
+description: Naučte se konfigurovat LVM v systému Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 7926627aaa3f0da935131f491d927ab5cb4b35c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuální počítač s Linuxem v Azure
 Tento dokument popisuje postup konfigurace logické svazku Manager (LVM) ve virtuálním počítači Azure. I když je to vhodné konfigurace LVM na všechny disky připojené k virtuálnímu počítači, ve výchozím nastavení většina cloudu Image nebude mít LVM nakonfigurované na disk operačního systému. Toto je zabránit problémům s duplicitní svazku skupiny, pokud disk operačního systému je někdy připojena k jiné virtuální počítač se stejným distribuce a typem, tj. během na scénář zotavení. Proto se doporučuje jenom pro použití LVM v datových disků.
@@ -141,7 +141,7 @@ V tomto průvodci budeme předpokládat připojeny tři datových disků, které
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. (Volitelné) Spouštěcí parametry bezporuchový v`/etc/fstab`
+5. (Volitelné) Spouštěcí parametry bezporuchový v `/etc/fstab`
    
     Velkém množství distribucí obsahovat buď `nobootwait` nebo `nofail` připojit parametry, které mohou být přidány do `/etc/fstab` souboru. Tyto parametry umožňují selhání při připojení příslušného systému souborů a povolit spuštění i v případě, že nelze správně připojit RAID systému souborů i nadále systému Linux. Naleznete v dokumentaci distribuční na další informace o těchto parametrů.
    
@@ -171,7 +171,7 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
     # sudo fstrim /datadrive
     ```
 
-    **RHEL nebo CentOS**
+    **RHEL/CentOS**
 
     ```bash 
     # sudo yum install util-linux

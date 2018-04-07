@@ -1,11 +1,11 @@
 ---
-title: "Spravovat výpočetní uzly clusteru HPC Pack | Microsoft Docs"
-description: "Další informace o nástroje skript prostředí PowerShell pro přidání, odebrání, spuštění a zastavení výpočetní uzly clusteru HPC Pack 2012 R2 v Azure"
+title: Spravovat výpočetní uzly clusteru HPC Pack | Microsoft Docs
+description: Další informace o nástroje skript prostředí PowerShell pro přidání, odebrání, spuštění a zastavení výpočetní uzly clusteru HPC Pack 2012 R2 v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 4193f03b-94e9-4704-a7ad-379abde063a9
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 2ad67efecf9a688ac3e7ccd7cc32576e9a46d1f5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 453f53be15b24b96f183b4935cc45fc97ad058bd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Správa počtu a dostupnosti výpočetních uzlů v clusteru HPC Pack v Azure
 Pokud jste vytvořili clusteru HPC Pack 2012 R2 ve virtuálních počítačích Azure, můžete chtít způsoby, jak snadno přidat, odebrat, (zřídit) spuštění nebo zastavení (deprovision) některé výpočetní uzel virtuální počítače v clusteru. Chcete-li provést tyto úlohy, spusťte prostředí Azure PowerShell skripty, které jsou nainstalované na hlavního uzlu virtuálního počítače. Tyto skripty vám pomůžou usnadnit řízení číslo a dostupnost prostředků clusteru HPC Pack, můžete řídit náklady.
@@ -70,7 +70,7 @@ Add-HPCIaaSNode.ps1 [-ServiceName] <String> [-ImageName] <String>
 * **DomainUserPassword**: heslo uživatele domény.
 * **NodeNameSeries** (volitelné): pojmenování vzor pro výpočetní uzly. Musí být ve formátu &lt; *kořenové\_název*&gt;&lt;*spustit\_číslo*&gt;%. Například MyCN % 10 % prostředků a řadu od MyCN11 názvy výpočetního uzlu. Pokud není zadaný, skript používá uzlu nakonfigurované pojmenování řady v clusteru HPC.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující příklad přidá 20 velikost velké výpočetním uzlu virtuální počítače v cloudové službě *hpcservice1*, na bitovou kopii virtuálního počítače na bázi *hpccnimage1*.
 
 ```PowerShell
@@ -98,7 +98,7 @@ Remove-HPCIaaSNode.ps1 -Node <Object> [-DeleteVHD] [-Force] [-Confirm] [<CommonP
 * **Potvrďte** (volitelné): výzva k potvrzení před provedením příkazu.
 * **WhatIf**: nastavení popisují, co by mohlo dojít, pokud se příkaz provedl, aniž by příkaz skutečně proveden.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující příklad vynutí offline uzly s názvy od *HPCNode-CN -* a jejich odebere uzlů a jejich přidružené disky.
 
 ```PowerShell
@@ -118,7 +118,7 @@ Start-HPCIaaSNode.ps1 -Node <Object> [<CommonParameters>]
 * **Název**: názvy uzlů clusteru spustit. Jsou podporovány zástupné znaky. Název parametru sada je název. Nejde zadat oba seznamy **název** a **uzlu** parametry.
 * **Uzel**-HpcNode objektu pro uzly má být spuštěn, které lze získat pomocí rutiny prostředí HPC PowerShell [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název parametru sada je uzel. Nejde zadat oba seznamy **název** a **uzlu** parametry.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující příklad spustí uzly s názvy od *HPCNode-CN -*.
 
 ```PowerShell
@@ -140,13 +140,13 @@ Stop-HPCIaaSNode.ps1 -Node <Object> [-Force] [<CommonParameters>]
 * **Uzel**: objekt HpcNode pro uzly zastavení, které lze získat pomocí rutiny prostředí HPC PowerShell [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx). Název parametru sada je uzel. Nejde zadat oba seznamy **název** a **uzlu** parametry.
 * **Vynutit** (volitelné): nastavení přinutit HPC uzly do offline režimu před zastavením je.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 Následující příklad vynutí offline uzly s názvy od *HPCNode-CN -* a poté se zastaví uzly.
 
 ```PowerShell
 Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Automaticky zvětšovat a zmenšovat uzly v clusteru podle aktuální zatížení úloh a úloh v clusteru, najdete v tématu [automaticky zvýšit nebo snížit prostředků clusteru HPC Pack v Azure podle zatížení clusteru](hpcpack-cluster-node-autogrowshrink.md).
 

@@ -1,19 +1,19 @@
 ---
-title: "Kód XEvent cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs"
-description: "Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl cyklické vyrovnávací paměti, v databázi SQL Azure."
+title: Kód XEvent cyklické vyrovnávací paměti pro databázi SQL. | Microsoft Docs
+description: Poskytuje ukázky kódu jazyka Transact-SQL, která přišla rychlé a snadné použití cíl cyklické vyrovnávací paměti, v databázi SQL Azure.
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: f553933d5a1435a96421939af8522daf53db1ff3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ee6181baf7a16bc827d35aaf5d18b281bcf9c3f7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Prstence kódu cílové vyrovnávací paměti pro rozšířené události v databázi SQL
 
@@ -219,7 +219,7 @@ Pokud chcete zobrazit výsledky, jsme klikli buňky v záhlaví sloupce **target
 
 Potom v podokně výsledků jsme klikli buňky v záhlaví sloupce **target_data_XML**. Klepněte na tlačítko vytvořit jinou kartu Soubor v ssms.exe ve kterém byl obsah buňky výsledek zobrazí, jako XML.
 
-Výstup se zobrazuje v následující bloku. Vypadá tak dlouho, ale je právě dva  **<event>**  elementy.
+Výstup se zobrazuje v následující bloku. Vypadá tak dlouho, ale je právě dva **<event>** elementy.
 
 &nbsp;
 

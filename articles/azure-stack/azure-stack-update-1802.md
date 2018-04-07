@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -56,7 +56,9 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1802, znám
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-*Neexistují žádné kroky po aktualizaci pro aktualizaci 1802.*
+Po instalaci 1802 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).  
+- [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/help/4103348)
+
 
 
 ### <a name="new-features-and-fixes"></a>Nové funkce a opravy
@@ -82,7 +84,7 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 
 - **Byla přidána podpora několika domén selhání**.  Další informace najdete v tématu [vysoká dostupnost pro Azure zásobníku](azure-stack-key-features.md#high-availability-for-azure-stack).
 
-- **Různé opravy** pro výkon, stabilitu, zabezpečení a operační systém, který je používán Azure zásobníku.
+- **Různé opravy** pro výkon, stabilitu, zabezpečení a operační systém, který je používán zásobník Azure.
 
 <!--
 #### New features
@@ -141,6 +143,10 @@ Po aktualizaci 1802 nejsou žádné známé problémy.
 
 #### <a name="compute"></a>Compute
 - Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
+
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
+
+  Tento problém se vyřeší ve verzi 1803. Chcete-li vyřešit tento problém pro verzi 1802, nainstalujte opravu hotfix zásobník Azure **1.0.180302.4**. Další informace najdete v tématu [KB 4131152: existující sady škálování virtuálního počítače se může stát nepoužitelným]( https://support.microsoft.com/help/4131152). 
 
 - Azure zásobníku podporuje používání pouze pevný typ virtuální pevné disky. Některé bitové kopie nabízeným přes marketplace v zásobníku Azure používají dynamické virtuální pevné disky, ale těch, které byly odebrány. Změna velikosti virtuálního počítače (VM) s dynamický disk, který je připojený ponechá virtuální počítač ve stavu selhání.
 

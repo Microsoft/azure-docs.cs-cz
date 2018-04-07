@@ -4,9 +4,8 @@ description: Tisknutelná PDF cheaty listy, které vám pomůže používat SQL 
 keywords: tahák SQL, sql podvést list pdf, dotaz sql – tahák
 services: cosmos-db
 documentationcenter: ''
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 ms.assetid: fdbdbc39-5a46-4129-b4ed-b049d1c9ccab
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
-ms.author: mimig
-ms.openlocfilehash: cf0d1d689d881e4924cd5e68690c1bff38a2599d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: sngun
+ms.openlocfilehash: 765da315919b16e9f4b27fa891e2072dcddd377b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB dotazu podvést listy
 

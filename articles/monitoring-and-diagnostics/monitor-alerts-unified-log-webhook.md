@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla výstrah protokolu
 Když [v Azure se vytvoří výstraha ](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí akce skupiny](monitoring-action-groups.md) provést několik akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o konfiguraci vlastních webhooku založenými na JSON.
@@ -54,7 +54,7 @@ Webhooky zahrnují adresu URL a datovou část ve formátu JSON, který se data 
 | StartTime Interval vyhledávání |#searchintervalstarttimeutc |Počáteční čas pro dotaz ve formátu UTC. 
 | SearchQuery |#searchquery |Vyhledávací dotaz protokolu používá pravidlo výstrahy. |
 | SearchResults |"IncludeSearchResults": true|Záznamů vrácených dotazem jako tabulku JSON, omezen na prvních 1000 záznamů; Pokud "IncludeSearchResults": true je přidaný do vlastní definici JSON webhooku jako vlastnost nejvyšší úrovně. |
-| WorkspaceID |#workspaceid |ID pracovního prostoru analýzy protokolů (OMS). |
+| WorkspaceID |#workspaceid |ID pracovního prostoru analýzy protokolů. |
 | ID aplikace |#applicationid |ID vaší aplikace přehled aplikace. |
 | ID předplatného |#subscriptionid |ID předplatného Azure používat s Application Insights. 
 
@@ -77,7 +77,7 @@ Zahrnout vlastní datovou část výsledky hledání, ujistěte se, že **Incude
 Tato část uvádí datová část ukázky webhooku protokolu výstrahy, včetně při datová část je standardní a při jeho vlastní.
 
 > [!NOTE]
-> Pro zajištění zpětné kompatibility, je stejné jako datové části standardní webhooku pro výstrahy pomocí Azure Log Analytics [OMS výstrahy správy](../log-analytics/log-analytics-alerts-creating.md). Ale pro výstrahy protokolu pomocí [Application Insights](../application-insights/app-insights-analytics.md), datové části standardní webhooku je založena na schéma akce skupiny.
+> Pro zajištění zpětné kompatibility, je stejné jako datové části standardní webhooku pro výstrahy pomocí Azure Log Analytics [analýzy protokolů výstrahy správy](../log-analytics/log-analytics-alerts-creating.md). Ale pro výstrahy protokolu pomocí [Application Insights](../application-insights/app-insights-analytics.md), datové části standardní webhooku je založena na schéma akce skupiny.
 
 ### <a name="standard-webhook-for-log-alerts"></a>Standardní Webhooku protokolu výstrahy 
 Obě tyto příklady uvedli fiktivní datové části s pouze dva sloupce a dva řádky.

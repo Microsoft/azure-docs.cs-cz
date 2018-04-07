@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 177bc05eea3aa05231c71a42950fa622b68afc53
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zápisu akcelerátoru pro nasazení SAP
 Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradně pro virtuální počítače M-Series. Zápis akcelerátoru Azure není k dispozici žádné další VM-Series v Azure, s výjimkou M-Series. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. 
@@ -55,15 +55,16 @@ Existují omezení Azure Premium Storage VHD na virtuální počítač, který m
 > Povolit Azure akcelerátoru k zápisu do existujícího Azure disku, který není součástí sestavení svazku mimo více disků se disk systému Windows nebo správci svazku, prostory úložiště ve Windows, souborový server (SOFS) Windows Škálováním na více systémů, Linux LVM nebo MDADM, přístup k zatížení Azure disk je možné vypnout. Databázové aplikace pomocí Azure disku musí být vypnuté.
 
 > [!IMPORTANT]
-> Povolení zápisu akcelerátoru disk Azure operačního systému virtuálního počítače se restartuje virtuální počítač. 
+> Povolení zápisu akcelerátoru pro virtuální počítač Azure disk operačního systému virtuálního počítače se restartuje virtuální počítač. 
 
 Povolení Azure zápisu akcelerátoru pro operační disky by neměly být potřebné pro SAP související s konfigurací virtuálních počítačů
 
 ### <a name="restrictions-when-using-azure-write-accelerator"></a>Omezení při použití Azure zápisu akcelerátoru
 Při používání Azure zápisu akcelerátoru pro Azure disk nebo VHD, platí tato omezení:
 
-- Premium disku ukládání do mezipaměti musí být nastavena na hodnotu 'None'. Všechny ostatní režimy ukládání do mezipaměti nejsou podporovány.
+- Premium disku ukládání do mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny ostatní režimy ukládání do mezipaměti nejsou podporovány.
 - Ještě není podporované snímku na disku akcelerátoru zápis povolen. Toto omezení blokuje služby zálohování Azure schopnost provádět snímky konzistentní aplikací všechny disky virtuálního počítače.
+- Menší velikost vstupně-výstupních operací trvá Zrychlený cestu. V zatížení načten situacích, kde je dat získávání hromadné nebo kde vyrovnávacích pamětí protokolu transakcí z různých databázového systému jsou vyplněny ve větší míře než získávání trvalé do úložiště, pravděpodobné, vstupně-výstupních operací zapsána do disk nejde Zrychlený cestu.
 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Povolení zápisu akcelerátoru na určitém disku
@@ -290,7 +291,7 @@ Výstup by měl vypadat jako:
 
 ```
 
-Dalším krokem je aktualizace souboru JSON a povolit zápis akcelerátoru na disku s názvem 'log1'. Tento krok můžete provést přidáním tohoto atributu do souboru JSON po položky mezipaměti disku. 
+Dalším krokem je aktualizace souboru JSON a povolit zápis akcelerátoru na disku s názvem 'log1'. Tento krok lze provést tak, že přidáte tento atribut do souboru JSON po položky mezipaměti disku. 
 
 ```
         {

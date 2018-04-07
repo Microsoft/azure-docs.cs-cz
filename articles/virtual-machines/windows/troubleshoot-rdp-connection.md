@@ -5,7 +5,7 @@ keywords: Vzdálené plochy chyba, Chyba připojení ke vzdálené ploše, nelze
 services: virtual-machines-windows
 documentationcenter: ''
 author: danielsollondon
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojení ke vzdálené ploše pro virtuální počítač Azure
 Protokol RDP (Remote Desktop) připojení k systému Windows Azure virtuálního počítače (VM) může selhat z různých důvodů, můžete ponechat nelze získat přístup k virtuálnímu počítači. Tento problém může být pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klienta vzdálené plochy v hostitelském počítači. Tento článek vás provede některé z nejběžnějších metod k vyřešení potíží s připojeními RDP. 
@@ -94,6 +94,10 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
     ![Znovu nasaďte virtuální počítač na portálu Azure](./media/troubleshoot-rdp-connection/redeploy-vm.png)
    
     Po dokončení této operace, dojde ke ztrátě dat v dočasných disku a jsou aktualizovány dynamické IP adresy, které jsou spojeny s virtuálním Počítačem.
+
+9. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+10. Ujistěte se, že žádné místní brány firewall nebo brána firewall v počítači, umožňuje odchozí přenosy TCP 3389 do Azure.
 
 Pokud jsou stále dochází k problémům RDP, můžete [otevřete žádost o podporu](https://azure.microsoft.com/support/options/) nebo si můžete přečíst [podrobnější RDP, koncepty a kroky pro řešení potíží](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
@@ -180,6 +184,10 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
+6. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+
+7. Ujistěte se, že žádné místní brány firewall nebo brána firewall v počítači, umožňuje odchozí přenosy TCP 3389 do Azure.
+
 Pokud jsou stále dochází k problémům RDP, můžete [otevřete žádost o podporu](https://azure.microsoft.com/support/options/) nebo si můžete přečíst [podrobnější RDP, koncepty a kroky pro řešení potíží](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Řešení potíží s virtuální počítače vytvořené pomocí modelu nasazení Classic
@@ -217,6 +225,8 @@ Po dokončení každého kroku řešení potíží pokuste o připojení k virtu
     Vyberte virtuální počítač na portálu Azure a klikněte na **přehled** kartě. Klikněte **restartujte** tlačítko:
    
     ![Restartujte virtuální počítač na portálu Azure](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
+
+7. Ujistěte se, že žádné místní brány firewall nebo brána firewall v počítači, umožňuje odchozí přenosy TCP 3389 do Azure.
 
 Pokud jsou stále dochází k problémům RDP, můžete [otevřete žádost o podporu](https://azure.microsoft.com/support/options/) nebo si můžete přečíst [podrobnější RDP, koncepty a kroky pro řešení potíží](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

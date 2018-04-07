@@ -1,24 +1,19 @@
 ---
-title: 'Datové připojení: Data stream vstupy z datového proudu událostí | Microsoft Docs'
-description: Další informace o nastavení připojení dat do služby Stream Analytics s názvem "vstupy". Vstupy zahrnout datový proud z událostí a také referenční data.
-keywords: datový proud, datové připojení, datového proudu událostí
+title: Datový proud vstupy z datového proudu událostí v Azure Stream Analytics
+description: Další informace o nastavení připojení dat v Azure Stream Analytics. Vstupy zahrnout datový proud z událostí a také referenční data.
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
 manager: kfile
-ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/11/2017
-ms.author: sngun
-ms.openlocfilehash: 405fcf190ab03b84ec463da8a1942adb8e326498
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datové připojení: Další informace o datech vstupy datového proudu z událostí do služby Stream Analytics
 Datové připojení do úlohy Stream Analytics je datový proud událostí ze zdroje dat, který se označuje jako úlohy *vstupní*. Stream Analytics obsahuje prvotřídní integrace s datového proudu zdrojů dat Azure, včetně [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/), a [úložiště objektů Azure Blob](https://azure.microsoft.com/services/storage/blobs/). Tyto vstupního zdroje může být ze stejného předplatného Azure jako vaše úloha analýzy nebo z jiného předplatného.

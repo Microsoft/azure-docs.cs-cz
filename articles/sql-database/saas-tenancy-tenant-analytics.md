@@ -1,6 +1,6 @@
 ---
-title: "Spustit analytics mezi klienta pomocí extrahovaná data | Microsoft Docs"
-description: "Mezi klienta analytické dotazy pomocí dat extrahovaných z více databází Azure SQL Database."
+title: Spustit analytics mezi klienta pomocí extrahovaná data | Microsoft Docs
+description: Mezi klienta analytické dotazy pomocí dat extrahovaných z více databází Azure SQL Database.
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: ff57bd054f3ff28662d3fd2eb46dca02e74af69b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ec54e68ee1d0b09b5fb34a2a11c331cb0d478326
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics mezi klienta pomocí extrahovaná data
 
@@ -91,7 +91,7 @@ V následujících krocích nasazení úložišti analýzy, která se nazývá *
     - Chcete-li použít SQL database s úložištěm sloupce, nastavte **$DemoScenario** = **3**  
 3. Stiskněte klávesu **F5** spustit ukázkový skript (, který volá *nasadit TenantAnalytics<XX>.ps1* skriptu) vytváří úložišti analytics klienta. 
 
-Teď, když máte nasazené aplikace a vyplněnou zajímavé údaje klienta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery pomocí přihlášení = *vývojáře*, heslo =  *P@ssword1* . Najdete v článku [úvodní kurz](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
+Teď, když máte nasazené aplikace a vyplněnou zajímavé údaje klienta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery pomocí přihlášení = *vývojáře*, heslo = *P@ssword1*. Najdete v článku [úvodní kurz](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -173,7 +173,7 @@ Pomocí následujících kroků pro připojení k Power BI a k importu zobrazen�
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Vyberte **databáze** v levém podokně, pak zadejte uživatelské jméno = *vývojáře*a zadejte heslo =  *P@ssword1* . Klikněte na **Připojit**.  
+5. Vyberte **databáze** v levém podokně, pak zadejte uživatelské jméno = *vývojáře*a zadejte heslo = *P@ssword1*. Klikněte na **Připojit**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -223,7 +223,7 @@ Dříve prohloubit analýzy chcete zjistit, že prodej lístků mívají sklony 
 
 Jste zaznamenali trendů v datech klienta z aplikací WingTip. Můžete zamýšlené další způsoby, které aplikace může informovat obchodních rozhodnutí pro dodavatele aplikací SaaS. Dodavatelé můžete lépe nahrazovat potřebám svým klientům. Zpravidla v tomto kurzu má vybavený můžete pomocí nástrojů, které jsou potřeba provádět analýzy dat klienta na základě kterých vaše firmám rozhodnutí řízené daty.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

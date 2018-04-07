@@ -1,6 +1,6 @@
 ---
-title: "Jak používat službu Azure Storage Table nebo rozhraní API služby Azure Cosmos DB tabulky z PHP | Microsoft Docs"
-description: "Naučte se používat rozhraní API služby Table z PHP vytvářet a odstraňovat tabulky, vložení, odstranit a dotaz tabulku."
+title: Jak používat službu Azure Storage Table nebo rozhraní API služby Azure Cosmos DB tabulky z PHP | Microsoft Docs
+description: Naučte se používat rozhraní API služby Table z PHP vytvářet a odstraňovat tabulky, vložení, odstranit a dotaz tabulku.
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Storage Table nebo Cosmos DB tabulky rozhraní API z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -435,9 +435,6 @@ Pro kontrolách souběžnosti, můžete nastavit značku Etag pro entitu k odstr
 * **addDeleteEntity** (přidá deleteEntity operace)
 
 Následující příklad ukazuje, jak provádět **insertEntity** a **deleteEntity** operace v jedné žádosti. 
-
-> [!NOTE]
-> Azure Cosmos DB zatím nepodporuje dávkové operace pro tabulky. 
 
 ```php
 require_once 'vendor/autoload.php';

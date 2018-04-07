@@ -1,11 +1,11 @@
 ---
-title: "Povolte diagnostiku na virtuální počítač s Windows pomocí prostředí Azure PowerShell | Microsoft Docs"
+title: Povolte diagnostiku na virtuální počítač s Windows pomocí prostředí Azure PowerShell | Microsoft Docs
 services: virtual-machines-windows
-documentationcenter: 
-description: "Další informace o použití prostředí PowerShell pro povolení Azure Diagnostics v virtuálního počítače se systémem Windows"
+documentationcenter: ''
+description: Další informace o použití prostředí PowerShell pro povolení Azure Diagnostics v virtuálního počítače se systémem Windows
 author: sbtron
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 49c6fe69afdee6a075d9f888f8a2417455bc7e51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -194,7 +194,7 @@ Konfigurace se musí aktualizovat, aby zahrnují následující:
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další pokyny týkající se použití možnosti diagnostiky Azure a další metody pro řešení problémů najdete v tématu [povolení diagnostiky Azure Cloud Services a virtuálních počítačů](../../cloud-services/cloud-services-dotnet-diagnostics.md).
 * [Schéma konfigurace diagnostiky](https://msdn.microsoft.com/library/azure/mt634524.aspx) vysvětluje různé možnosti konfigurace XML pro rozšíření diagnostiky.
 

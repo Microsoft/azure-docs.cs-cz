@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Pravidla ve službě Azure CDN modul funkce
 Tento článek obsahuje seznam podrobný popis dostupných funkcí pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -28,7 +28,6 @@ Je třetí součást pravidla funkce. Funkce definuje typ akce, který se použi
 ## <a name="access-features"></a>Získat přístup k funkcím
 
 Tyto funkce jsou navrženy pro řízení přístupu k obsahu.
-
 
 Název | Účel
 -----|--------
@@ -312,7 +311,7 @@ Odebrat| Tato možnost zajistí, že `Cache-Control` hlavičky není součástí
 
 Informace o klíči:
 
-- Zadejte jeden nebo více názvy parametrů řetězce dotazu. Deliminate každý parametr název mezerou.
+- Zadejte jeden nebo více názvy parametrů řetězce dotazu a název každého parametru oddělte mezerou.
 - Tato funkce určuje, zda jsou parametrů řetězce dotazu zahrnout nebo vyloučit z klíče mezipaměti. Další informace jsou poskytovány pro jednotlivé možnosti v následující tabulce.
 
 Typ|Popis
@@ -326,11 +325,14 @@ Stroj pravidel umožňuje přizpůsobit způsobem, ve kterém se implementuje uk
 
 Duplicitní řetězce dotazu "no-cache" ukládání do mezipaměti chování na stránce ukládání do mezipaměti řetězce dotazu, vytvořte pravidlo, které obsahuje podmínku shodu adresy URL dotazu zástupný znak a funkce mezipaměti jednorázové přihlášení. Nastavení adresy URL dotazu zástupné shodu podmínky na hvězdičku (*).
 
+>[!IMPORTANT] 
+> Pokud je token autorizace je povoleno pro jakoukoli cestu na tento účet, režimu mezipaměti standard je jediný režim, který lze použít pro ukládání do mezipaměti řetězce dotazu. Další informace najdete v tématu [Řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](cdn-query-string-premium.md).
+
 #### <a name="sample-scenarios"></a>Vzorové scénáře
 
 Následující příklad použití pro tuto funkci obsahuje ukázková žádost a klíče mezipaměti výchozí:
 
-- **Sample request:** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **Ukázková žádost:** http://wpc.0001.&lt; Domény&gt;/800001/Origin/folder/asset.htm?sessionid=1234 a jazyk = EN & userid = 01
 - **Výchozí klíč mezipaměti:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Zahrnout
@@ -1054,10 +1056,12 @@ Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit konfigu
 ### <a name="token-auth-denial-code"></a>Odmítnutí kód tokenu ověřování
 **Účel:** Určuje typ odpovědi, který bude vrácen uživateli při požadavku byl odepřen v důsledku ověřování na základě tokenu.
 
-K dispozici odpověď kódy jsou uvedeny níže.
+Kód tokenu odepření ověření nelze použít s podmínkou vždy shodu. Místo toho použijte **vlastní Denial zpracování** kapitoly **tokenu ověřování** stránky **spravovat** portálu. Další informace najdete v tématu [zabezpečení Azure CDN prostředky pomocí ověřování tokenem](cdn-token-auth.md).
+
+V následující tabulce jsou uvedeny kódy k dispozici odpověď.
 
 Kód odezvy|Název odpovědí|Popis
-----------------|-----------|--------
+-------------|-------------|--------
 301|Trvale přesunut|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé.
 302|Nalezeno|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé. Tento kód stavu je standardní způsob provedení přesměrování.
 307|Dočasné přesměrování|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé.

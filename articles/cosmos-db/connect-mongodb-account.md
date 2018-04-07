@@ -1,12 +1,11 @@
 ---
-title: "MongoDB připojovací řetězec pro účet Azure Cosmos DB | Microsoft Docs"
-description: "Zjistěte, jak připojit aplikace MongoDB k účtu Azure Cosmos DB pomocí připojovacího řetězce MongoDB."
-keywords: "mongodb připojovací řetězec"
+title: MongoDB připojovací řetězec pro účet Azure Cosmos DB | Microsoft Docs
+description: Zjistěte, jak připojit aplikace MongoDB k účtu Azure Cosmos DB pomocí připojovacího řetězce MongoDB.
+keywords: mongodb připojovací řetězec
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: e36f7375-9329-403b-afd1-4ab49894f75e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: anhoh
-ms.openlocfilehash: 41c0b360b54f9a9dcd2458ce5bdc05911c4f73a5
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: dfdcb458d0f81c0ddb9399ee8b89a52c4cbc6270
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB pro Azure Cosmos DB
 Zjistěte, jak připojit aplikace MongoDB k účtu Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Potom můžete databázi Azure Cosmos DB jako data store pro vaši aplikaci MongoDB. 
@@ -43,7 +42,7 @@ V tomto kurzu nabízí dva způsoby, jak načíst informace o připojovacím ře
 
     ![Okna rychlý start](./media/connect-mongodb-account/QuickStartBlade.png)
 
-## <a id="GetCustomConnection"></a>Získat MongoDB připojovací řetězec pro přizpůsobení
+## <a id="GetCustomConnection"></a> Získat MongoDB připojovací řetězec pro přizpůsobení
 1. V internetovém prohlížeči, přihlaste se k [portál Azure](https://portal.azure.com).
 2. V **Azure Cosmos DB** okně vybrat rozhraní API pro účet MongoDB. 
 3. V levém podokně okna účet, klikněte na tlačítko **připojovací řetězec**. 

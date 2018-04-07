@@ -1,24 +1,19 @@
 ---
-title: Sledovat a spravovat úlohy Stream Analytics v prostředí PowerShell | Microsoft Docs
-description: Naučte se používat rutiny prostředí Azure PowerShell a sledovat a spravovat úlohy Stream Analytics.
-keywords: prostředí Azure powershell, rutin prostředí azure powershell, příkaz prostředí powershell, skriptů prostředí powershell
+title: Sledovat a spravovat úlohy Azure Stream Analytics pomocí prostředí PowerShell
+description: Tento článek popisuje, jak používat rutiny prostředí Azure PowerShell a sledovat a spravovat úlohy Azure Stream Analytics.
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 514f454e-d18c-4081-8304-ab48577e15e8
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 1dcb6f8fe9f2f26ea0bd6970134b0bec67a50aa5
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: ed47141c46259007227ed391c1e114932153de38
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Sledovat a spravovat úlohy Stream Analytics pomocí rutin prostředí Azure PowerShell
 Zjistěte, jak sledovat a spravovat prostředky Stream Analytics pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
@@ -449,7 +444,7 @@ Azure PowerShell 1.0:
 Tato testy příkaz prostředí PowerShell stav připojení výstupu výstup v StreamingJob.  
 
 ## <a name="get-support"></a>Získat podporu
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics). 
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

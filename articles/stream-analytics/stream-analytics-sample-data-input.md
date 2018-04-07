@@ -1,26 +1,21 @@
 ---
-title: Dotaz testování v Azure Stream Analytics | Microsoft Docs
-description: Přesně stanovit problémy při řešení potíží s úlohy Stream Analytics.
-keywords: řešení potíží s vstupní, vstupní vzorkování
-documentationcenter: ''
+title: Testování dotazu pomocí ukázkových dat v Azure Stream Analytics
+description: Tento článek popisuje postup testování dotazu pomocí ukázková vstupní data v Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 99c9f7f2dc84f53d09b7aee1916c5532427de692
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 305b767ee86de6c8b04fed17514a9092afc2d735
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Testování Azure Stream Analytics dotazů a vzorkování vstupu stream
+# <a name="test-a-query-and-sample-input-in-azure-stream-analytics"></a>Testování dotazů a ukázkové vstup v Azure Stream Analytics 
 
 Pomocí Azure Stream Analytics můžete zkusit vstupní události, které pocházejí ze souboru a testování dotazů na portálu bez nutnosti spuštění nebo zastavení úlohy.
 
@@ -52,11 +47,11 @@ Na předchozím obrázku byl přidán druhý výstup, nazývá **HighAvgTempOutp
 
 Použijete-li několik výstupů v dotazu, můžete zobrazit výsledky pro každý výstup samostatně a snadno přepínat mezi nimi.
 
-Až budete s výsledky spokojeni, můžete uložit dotazu, spustit úlohu, sledujte a sledovat magické číslo Stream Analytics.
+Až budete s výsledky spokojeni, můžete své uložit, spustit úlohu, sledujte a sledovat magické číslo Stream Analytics.
 
 ## <a name="get-help"></a>Podpora
 
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+O další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

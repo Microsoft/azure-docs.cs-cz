@@ -1,13 +1,13 @@
 ---
-title: "Vytvářet a spravovat virtuální počítač Azure se používá Java | Microsoft Docs"
-description: "Použijte k nasazení virtuálního počítače a všechny její Podpůrné prostředky Java a Azure Resource Manager."
+title: Vytvářet a spravovat virtuální počítač Azure se používá Java | Microsoft Docs
+description: Použijte k nasazení virtuálního počítače a všechny její Podpůrné prostředky Java a Azure Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: b970b7a5e1db6d8580ede9699d4776a79e03c98f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: da8f8b0e84a51683bd4f631832e1f319f3a9bbb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí Java
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/08/2017
 > * Vytvořit přihlašovací údaje
 > * Vytvoření prostředků
 > * Provádění úloh správy
-> * Odstraňte prostředky
+> * Odstranění prostředků
 > * Spuštění aplikace
 
 Proveďte tyto kroky trvá asi 20 minut.
@@ -133,7 +133,7 @@ Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby A
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte  **&lt;id předplatného&gt;**  s ID vašeho předplatného  **&lt;id aplikace&gt;**  s identifikátor aplikace služby Active Directory  **&lt;ověřovací klíč&gt;**  s klíč aplikace a  **&lt;id klienta&gt;**  s identifikátorem klienta.
+    Nahraďte **&lt;id předplatného&gt;** s ID vašeho předplatného **&lt;id aplikace&gt;** s identifikátor aplikace služby Active Directory **&lt;ověřovací klíč&gt;** s klíč aplikace a **&lt;id klienta&gt;** s identifikátorem klienta.
 
 2. Uložte soubor.
 3. Nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION ve vašem prostředí s úplnou cestou k souboru ověřování.
@@ -320,7 +320,7 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu virtuálního počítače můžete spustit úlohy správy, jako je například spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
+Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
 
 Když potřebujete udělat nic s virtuálním Počítačem, budete muset získat instanci ho. Tento kód vložte do bloku try hlavní metody:
 
@@ -444,7 +444,7 @@ System.out.println("Press enter to delete resources...");
 input.nextLine();
 ```
 
-## <a name="delete-resources"></a>Odstraňte prostředky
+## <a name="delete-resources"></a>Odstranění prostředků
 
 Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
@@ -470,6 +470,6 @@ Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spust
 2. Před stisknutím klávesy **Enter** zahájíte odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na portálu Azure. Klikněte na tlačítko Stav nasazení zobrazíte informace o tomto nasazení.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o používání [knihovny Azure libraries for Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

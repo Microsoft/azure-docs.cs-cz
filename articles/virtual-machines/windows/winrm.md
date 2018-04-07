@@ -1,11 +1,11 @@
 ---
-title: "Nastavit přístup WinRM pro virtuální počítač Azure | Microsoft Docs"
-description: "Instalační program přístup WinRM pro použití s virtuálního počítače Azure vytvořené v modelu nasazení Resource Manager."
+title: Nastavit přístup WinRM pro virtuální počítač Azure | Microsoft Docs
+description: Instalační program přístup WinRM pro použití s virtuálního počítače Azure vytvořené v modelu nasazení Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: singhkays
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9718e85b-d360-4621-90b8-0b0b84a21208
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 2d6533462400bc1d93d0d3b0227769784e2658a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa82dd4a85ff2e62848df0fdc6006922005a84b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro virtuální počítače ve službě Správce prostředků Azure
 ## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>WinRM v sadě vs Azure Service Management Azure Resource Manager
@@ -88,7 +88,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 Zprostředkovateli prostředků Microsoft.Compute. adresu URL tajný klíč v Key Vault musí při zřizování virtuálního počítače. To umožňuje zprostředkovatele prostředků Microsoft.Compute ke stažení tajný klíč a vytvořit ekvivalentní certifikát ve virtuálním počítači.
 
 > [!NOTE]
-> Adresa URL tajný klíč musí obsahovat verzi také. Adresu URL příklad vypadá níže https://contosovault.vault.azure.net:443 nebo tajných klíčů nebo contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adresa URL tajný klíč musí obsahovat verzi také. Adresu URL příklad vypadá níže https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 > 
 > 
 
@@ -157,7 +157,7 @@ Před připojením k virtuálnímu počítači, budete muset zajistěte, aby vá
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Možná budete muset Ujistěte se, že Služba WinRM je spuštěná, pokud výše nefunguje. Můžete to, že pomocí`Get-Service WinRM`
+> Možná budete muset Ujistěte se, že Služba WinRM je spuštěná, pokud výše nefunguje. Můžete to, že pomocí `Get-Service WinRM`
 > 
 > 
 

@@ -1,19 +1,19 @@
 ---
-title: "Získání hodnot pro aplikaci ověřování – Azure SQL Database | Microsoft Docs"
-description: "Vytvořte objekt služby pro přístup k SQL Database z kódu."
+title: Získání hodnot pro aplikaci ověřování – Azure SQL Database | Microsoft Docs
+description: Vytvořte objekt služby pro přístup k SQL Database z kódu.
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 09/30/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: e907edc98228ecab645e63f5e38094e3a04812de
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9127362ec806b7b3cbf3971488bb5393eb170eff
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Získat požadované hodnoty pro ověřování aplikace pro přístup k databázi SQL z kódu
 Chcete-li vytvořit a spravovat databáze SQL z kódu vaší aplikace je nutné zaregistrovat v Azure Active Directory (AAD) domény v rámci předplatného, kde byly vytvořeny vašich prostředků Azure.

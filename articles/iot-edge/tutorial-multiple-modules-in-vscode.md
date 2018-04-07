@@ -9,20 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea2dc723c674e7119b6ef38771a73ff4c11e98d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c94701507f86f6ecab2875f952215cc3e4cc719
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>Vývoj IoT řešení s více modulů v aplikaci Visual Studio Code – náhled
-Visual Studio Code můžete použít k vývoji řešení IoT Edge s více modulů. Tento kurz vás provede vytváření, aktualizaci a nasazení řešení IoT Edge, jednoduše prostřednictvím kanálu dat snímačů v simulované zařízení IoT Edge v kódu Visual Studio. V tomto kurzu se naučíte:
+Visual Studio Code můžete použít k vývoji řešení IoT Edge s více modulů. Tento článek vás provede vytváření, aktualizaci a nasazení řešení IoT Edge dat snímačů kanály na simulované zařízení IoT Edge v kódu Visual Studio. V tomto článku se dozvíte, jak:
 
-> [!div class="checklist"]
-> * Použít k vytvoření IoT řešení Visual Studio Code
-> * Slouží k přidání nového modulu pracujete VS Code řešení IoT. 
-> * Nasazení řešení IoT okraj (více modulů) do zařízení IoT Edge
-> * Vygeneruje zobrazení dat
+* Použít k vytvoření IoT řešení Visual Studio Code
+* Slouží k přidání nového modulu pracujete VS Code řešení IoT. 
+* Nasazení řešení IoT okraj (více modulů) do zařízení IoT Edge
+* Zobrazení vygenerovaných dat
 
 ## <a name="prerequisites"></a>Požadavky
 * Dokončete následující kurzy
@@ -60,15 +59,14 @@ Visual Studio Code můžete použít k vývoji řešení IoT Edge s více modul�
 
 3. Pokud jste [simulaci IoT hraniční zařízení](tutorial-simulate-device-linux.md) na vývojovém počítači. Zobrazí se, že všechny kontejnery image modul bude spuštěn za pár minut.
 
-## <a name="view-generated-data"></a>Vygeneruje zobrazení dat
+## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
-1. Chcete-li monitorovat dat odesílaných do služby IoT hub, vyberte **zobrazení** > **příkaz palety...**  a vyhledejte **IoT: spuštění monitorování D2C zpráva**. 
-2. Chcete-li zastavit monitorování dat, použijte **IoT: zastavení monitorování D2C zpráva** v příkazu palety. 
+1. Pokud chcete monitorovat data přicházející do centra IoT, vyberte **Zobrazit** > **Paleta příkazů...** a vyhledejte **IoT: Spustit monitorování zpráv typu zařízení-cloud**. 
+2. Pokud chcete monitorování dat zastavit, použijte příkaz **IoT: Zastavit monitorování zpráv typu zařízení-cloud** na paletě příkazů. 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste vytvořili řešení IoT pomocí jazyka C# modul, později přidat modul funkce, aktualizovat trasy pro řešení, vytvořené a nasazené simulovaného zařízení IoT okraj. Můžete pokračovat na některý z následujících kurzech Další informace o další scénáře při vývoji Azure IoT Edge v produktu VS Code.
+Můžete pokračovat na jednom z následujících článků Další informace o další scénáře při vývoji Azure IoT hrany v Visual Studio Code:
 
-> [!div class="nextstepaction"]
-> [Ladění modulu jazyka C# v produktu VS Code](how-to-vscode-debug-csharp-module.md)
-> [ladění funkce jazyka C# v produktu VS Code](how-to-vscode-debug-azure-function.md)
+* [Ladění modulu jazyka C# v produktu VS Code](how-to-vscode-debug-csharp-module.md)
+* [Ladění funkce jazyka C# v produktu VS Code](how-to-vscode-debug-azure-function.md)

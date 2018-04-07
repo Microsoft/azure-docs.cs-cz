@@ -4,7 +4,7 @@ description: Porovnání CoreMark výpočetní srovnávacího testu skóre pro v
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cynthn;davberg
-ms.openlocfilehash: 5066ca582beb0c226e3b5e4014a696d44af50df6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 25e471b826a1df0bd71f141286a59159b674f365
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače s Linuxem
 Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon systémem Ubuntu řazení pro virtuální počítač Azure vysoce výkonné. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuálních počítačů Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -106,7 +106,7 @@ Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon
 ## <a name="dv3---general-compute"></a>Dv3 - výpočetní obecné
 (3, 23/2018 7:32:37 PM pbi 2050259)
 
-| Velikost virtuálního počítače | Procesor | Vcpu | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
+| Velikost virtuálního počítače | Procesor | vCPU | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2,40 GHz | 2 | 1 | 8.0 | 20,791 | 1,531 | 7.36% | 175 |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 8.0 | 21,326 | 1,622 | 7.61% | 84 |
@@ -123,7 +123,7 @@ Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - paměťově optimalizované + Storage úrovně Premium
 (3, 23/2018 19:31:01: 00 pbi 2050259)
 
-| Velikost virtuálního počítače | Procesor | Vcpu | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
+| Velikost virtuálního počítače | Procesor | vCPU | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 16.0 | 21,015 | 1,112 | 5.29% | 210 |
 | Standard_E4s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 32.1 | 40,691 | 1,928 | 4.74% | 287 |
@@ -140,7 +140,7 @@ Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon
 ## <a name="ev3---memory-optimized"></a>Ev3 - paměťově optimalizované
 (3, 23/2018 7:29:35 PM pbi 2050259)
 
-| Velikost virtuálního počítače | Procesor | Vcpu | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
+| Velikost virtuálního počítače | Procesor | vCPU | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 16.0 | 23,318 | 2,734 | 11.72% | 245 |
 | Standard_E4_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 32.1 | 42,612 | 3,834 | 9.00% | 154 |
@@ -153,7 +153,7 @@ Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon
 ## <a name="dsv2---storage-optimized"></a>DSv2 - úložiště optimalizovat
 (3, 23/2018 19:30:03: 00 pbi 2050259)
 
-| Velikost virtuálního počítače | Procesor | Vcpu | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
+| Velikost virtuálního počítače | Procesor | vCPU | Uzly NUMA | Memory(GiB) | Průměr skóre | StdDev | StdDev% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2,40 GHz | 1 | 1 | 3.4 | 14,691 | 626 | 4.26% | 182 |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 1 | 1 | 3.4 | 14,577 | 1,120 | 7.68% | 63 |
