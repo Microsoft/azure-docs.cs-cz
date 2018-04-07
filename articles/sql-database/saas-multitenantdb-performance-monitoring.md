@@ -1,6 +1,6 @@
 ---
-title: "Sledování výkonu horizontálně dělené databáze Azure SQL víceklientské v aplikaci SaaS víceklientské | Microsoft Docs"
-description: "Sledování a správa výkonu horizontálně dělené víceklientské Azure SQL database v aplikaci SaaS více klientů"
+title: Sledování výkonu horizontálně dělené databáze Azure SQL víceklientské v aplikaci SaaS víceklientské | Microsoft Docs
+description: Sledování a správa výkonu horizontálně dělené víceklientské Azure SQL database v aplikaci SaaS více klientů
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 53d8c099d68fd7eb3f00fb4d1be7ec54404521ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 43bac88a7ab6320c5fdcc9dc0fb6b5209bdbcaa3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Sledování a správa výkonu horizontálně dělené víceklientské Azure SQL database v aplikaci SaaS více klientů
 
@@ -49,7 +49,7 @@ Správa výkonu databáze sestává z kompilování a analýz dat výkonu a nás
 
 [Azure Portal](https://portal.azure.com) poskytuje integrované monitorování a upozorňování pro většinu prostředků. Pro databázi SQL je k dispozici v databázích monitorování a výstrahy. Toto integrované monitorování a výstrah je konkrétní prostředky, takže je možné použít pro malý počet prostředků, ale není vhodné při práci s mnoha prostředky.
 
-Vysoký počet scénářů, při kterém pracujete s mnoha prostředky, [analýzy protokolů (OMS)](https://azure.microsoft.com/services/log-analytics/) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a použije k dotazování a nastavit výstrahy.
+Vysoký počet scénářů, při kterém pracujete s mnoha prostředky, [analýzy protokolů](https://azure.microsoft.com/services/log-analytics/) lze použít. Toto je samostatný služba Azure, která nabízí v porovnání s emitovaného diagnostické protokoly a telemetrie získané v pracovním prostoru analýzy protokolů analýzy. Analýzy protokolů můžete shromažďovat telemetrická data z mnoha služeb a použije k dotazování a nastavit výstrahy.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Zdrojový kód Wingtip lístky SaaS víceklientské databáze aplikace a skripty
 
@@ -181,7 +181,7 @@ Protože škálování je úloha snadno názvem přes správu rozhraní API, mů
 
 Kde využití agregační klienta odpovídá vzorce používání předvídatelné, můžete v Azure Automation nahoru a dolů škálování databáze podle plánu. Například škálování databáze po 18: 00 a až znovu před 6: 00 ve všední dny víte, když je pokles požadavků na prostředky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se naučíte:
 

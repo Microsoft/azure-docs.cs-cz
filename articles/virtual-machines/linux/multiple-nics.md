@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 79c5d70d201b54e7ca1c8d421a5f0dc5e6b53bcd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d981ffc9a0053ed8bf2d49f386f7c1c82d50c907
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuální počítač s Linuxem v Azure s více síťových karet
 Virtuální počítač (VM) můžete vytvořit v Azure, který má více rozhraní virtuální sítě (NIC) je připojený. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje postup vytvoření virtuálního počítače s více síťovými kartami k němu připojen a postup přidání nebo odebrání síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -100,6 +100,8 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
+Přidání směrovacích tabulek do hostovaného operačního systému pomocí kroků v [konfigurace hostovaný operační systém pro několik síťových adaptérů](#configure-guest-os-for- multiple-nics).
+
 ## <a name="add-a-nic-to-a-vm"></a>Přidat síťovou kartu k virtuálnímu počítači
 V předchozím postupu vytvořili virtuální počítač s více síťovými kartami. Síťové adaptéry můžete také přidat na existující virtuální počítač s Azure CLI 2.0. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
 
@@ -135,6 +137,8 @@ Spusťte virtuální počítač s [spuštění virtuálního počítače az](/cl
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
+
+Přidání směrovacích tabulek do hostovaného operačního systému pomocí kroků v [konfigurace hostovaný operační systém pro několik síťových adaptérů](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Odeberte síťový adaptér z virtuálního počítače
 Odebrat síťový adaptér ze stávajícího virtuálního počítače, nejprve zrušit přidělení virtuálního počítače s [az OM deallocate](/cli/azure/vm#az_vm_deallocate). Následující příklad zruší přidělení virtuálního počítače s názvem *Můjvp*:
@@ -179,6 +183,7 @@ Můžete použít také `copyIndex()` pak připojit k názvu zdroje, které vám
 
 Kompletní příklad, jak si můžete přečíst [vytváření několik síťových adaptérů pomocí šablony Resource Manageru](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+Přidání směrovacích tabulek do hostovaného operačního systému pomocí kroků v [konfigurace hostovaný operační systém pro několik síťových adaptérů](#configure-guest-os-for- multiple-nics).
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurace hostovaný operační systém pro několik síťových adaptérů
 Pokud přidáte několik síťových adaptérů virtuálního počítače s Linuxem, budete muset vytvořit pravidla směrování. Tato pravidla povolit virtuální počítač odesílat a přijímat provoz, který patří na konkrétní síťový adaptér. Jinak, provoz, který patří do *eth1*, například nemůže zpracovat správně definované výchozí trasu.

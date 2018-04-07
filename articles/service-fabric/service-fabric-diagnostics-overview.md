@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: b7bd5ce879e5119417a24879c875915245f9070b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
 
@@ -68,7 +68,7 @@ Platforma Service Fabric obsahuje stav modelu, který poskytuje rozšiřitelný 
 
 ![Řídicí panel stavu SFX](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-Kromě zobrazení nejnovější sestavy stavu v SFX, je také jednotlivých sestav k dispozici jako událost. Stav události se můžou shromažďovat prostřednictvím provozní kanálu (najdete v části [agregace událostí pomocí diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) a jsou uložené v OMS analýzy protokolů pro výstrahy a dotazování v budoucnu. To pomáhá rozpoznat problémy, které můžou mít vliv dostupnosti vaší aplikace, takže doporučujeme, abyste nastavili výstrahy pro příslušné selhání scénáře (vlastní výstrahy prostřednictvím OMS).
+Kromě zobrazení nejnovější sestavy stavu v SFX, je také jednotlivých sestav k dispozici jako událost. Stav události se můžou shromažďovat prostřednictvím provozní kanálu (najdete v části [agregace událostí pomocí diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)) a jsou uložené v analýzy protokolů pro výstrahy a dotazování v budoucnu. To pomáhá rozpoznat problémy, které můžou mít vliv dostupnosti vaší aplikace, takže doporučujeme, abyste nastavili výstrahy pro příslušné selhání scénáře (vlastní výstrahy prostřednictvím analýzy protokolů).
 
 ## <a name="other-logging-solutions"></a>Jiných řešení pro protokolování
 

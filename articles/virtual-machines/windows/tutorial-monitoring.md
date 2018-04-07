@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorovat a aktualizovat virtuální počítač s Windows v prostředí Azure PowerShell
 
@@ -238,7 +238,7 @@ Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání p�
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-Můžete to udělat pokročilejší monitorování vašeho virtuálního počítače pomocí řešení, jako jsou Správa aktualizací a změn a inventáře, které poskytuje Azure Automation. [Služby Operations Management Suite](../../automation/automation-intro.md).
+Můžete provést rozšířené monitorování vašeho virtuálního počítače pomocí řešení, jako jsou Správa aktualizací a změn a inventáře poskytované [Azure Automation](../../automation/automation-intro.md).
 
 Až budete mít přístup k pracovnímu prostoru analýzy protokolů, můžete najít klíč pracovního prostoru a identifikátor prostoru na výběrem **upřesňující nastavení** pod **nastavení**. Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent do virtuálního počítače. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru analýzy protokolů a prostoru ID.
 

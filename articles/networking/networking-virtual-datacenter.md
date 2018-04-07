@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure virtuální Datacenter: Sítě perspektivy | Microsoft Docs"
-description: "Naučte se vytvářet virtuální datové centrum v Azure"
+title: 'Microsoft Azure virtuální Datacenter: Sítě perspektivy | Microsoft Docs'
+description: Naučte se vytvářet virtuální datové centrum v Azure
 services: networking
 author: tracsman
 manager: rossort
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
 **Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data
@@ -259,9 +259,9 @@ V vDC je velmi důležité ke sledování protokolů Nsg, zejména tyto informac
 
 Všechny protokoly mohou být uloženy v účtech úložiště Azure pro audit, statické analýzy nebo pro účely zálohování. Když protokoly jsou uložené v účtu úložiště Azure, můžete zákazníci používají různé typy rozhraní k načtení, Příprava, analýze a vizualizovat tato data do sestavy stavu a stavu prostředků cloudu.
 
-Velké podniky by měl mít již získal standardní rozhraní pro monitorování místních systémů a můžete rozšířit dané platformy pro integraci protokoly Cloudová nasazení. Organizace, které chcete zachovat všechny protokolování v cloudu [Microsoft Operations Management Suite (OMS)] [ OMS] je je služba skvělou volbou. Vzhledem k tomu, že je OMS implementována jako cloudová služba, je možné ji zprovoznit velmi rychle a s minimální investicí do služeb infrastruktury. OMS můžete také integrovat s součástí produktu System Center, jako je například System Center Operations Manager k rozšíření stávajících investic správy do cloudu.
+Velké podniky by měl mít již získal standardní rozhraní pro monitorování místních systémů a můžete rozšířit dané platformy pro integraci protokoly Cloudová nasazení. Organizace, které chcete zachovat všechny protokolování v cloudu [analýzy protokolů] [ LogAnalytics] je je služba skvělou volbou. Vzhledem k tomu, že analýzy protokolů je implementovaný jako cloudová služba, můžete jej budete mít spuštěný a funkční rychle s minimálním investice do infrastruktury služby. Analýzy protokolů můžete také integrovat s součástí produktu System Center, jako je například System Center Operations Manager k rozšíření stávajících investic správy do cloudu.
 
-Analýzy protokolů OMS je součástí OMS framework ke shromažďování, korelovat, vyhledávání a fungovat na data protokolu a výkonu generovaných operačních systémů, aplikací, součásti infrastruktury cloudu. Nabízí zákazníkům v reálném čase statistiky provozu analyzovat všechny záznamy mezi všechny úlohy v virtuálních řadičů domény pomocí integrovaného hledání a vlastní řídicí panely.
+Analýzy protokolů je služba v Azure, který pomáhá shromažďování, korelovat, vyhledávání a fungovat na data protokolu a výkonu generovaných operačních systémů, aplikací a součástí infrastruktury cloudu. Nabízí zákazníkům v reálném čase statistiky provozu analyzovat všechny záznamy mezi všechny úlohy v virtuálních řadičů domény pomocí integrovaného hledání a vlastní řídicí panely.
 
 #### <a name="component-type-workloads"></a>Typ součásti: úlohy
 Zatížení součásti jsou, kde jsou umístěné vaše vlastní aplikace a služby. Je také kde vaše aplikace vývojové týmy tráví většinu jejich doby.
@@ -332,7 +332,7 @@ Následující funkce byly popsané v tomto dokumentu. Kliknutím na odkazy na d
 |Funkce sítě|Vyrovnávání zatížení|Připojení|
 |[Azure Virtual Networks][VNet]</br>[Skupiny zabezpečení sítě][NSG]</br>[Protokolů NSG][NSGLog]</br>[Směrování definované uživatelem][UDR]</br>[Virtuální síťová zařízení][NVA]</br>[Veřejné IP adresy][PIP]|[Pro vyrovnávání zatížení Azure (L3) ][ALB]</br>[Aplikační brána (L7) ][AppGW]</br>[Brány Firewall webových aplikací][WAF]</br>[Azure Traffic Manager][TM] |[Partnerský vztah virtuální sítě][VNetPeering]</br>[Virtuální privátní síť][VPN]</br>[ExpressRoute][ExR]
 |Identita</br>|Monitorování</br>|Osvědčené postupy</br>|
-|[Azure Active Directory][AAD]</br>[Vícefaktorové ověřování][MFA]</br>[Ovládací prvky přístupu na základě role][RBAC]</br>[Výchozí role AAD][Roles] |[Protokoly aktivity][ActLog]</br>[Diagnostické protokoly][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br> |[Hraniční sítě osvědčené postupy][DMZ]</br>[Správa předplatného][SubMgmt]</br>[Správa skupin prostředků][RGMgmt]</br>[Limity předplatného Azure][Limits] |
+|[Azure Active Directory][AAD]</br>[Vícefaktorové ověřování][MFA]</br>[Ovládací prvky přístupu na základě role][RBAC]</br>[Výchozí role AAD][Roles] |[Protokoly aktivity][ActLog]</br>[Diagnostické protokoly][DiagLog]</br>[Analýzy protokolů][LogAnalytics]</br> |[Hraniční sítě osvědčené postupy][DMZ]</br>[Správa předplatného][SubMgmt]</br>[Správa skupin prostředků][RGMgmt]</br>[Limity předplatného Azure][Limits] |
 |Jinými službami Azure|
 |[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -379,7 +379,7 @@ Následující funkce byly popsané v tomto dokumentu. Kliknutím na odkazy na d
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

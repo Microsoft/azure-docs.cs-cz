@@ -1,8 +1,8 @@
 ---
-title: "Zobrazit protokoly aktivita Azure k monitorování zdrojů | Microsoft Docs"
-description: "Použijte protokoly aktivity zkontrolujte akcemi uživatelů a chyby. Zobrazuje portálu prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST."
+title: Zobrazit protokoly aktivita Azure k monitorování zdrojů | Microsoft Docs
+description: Použijte protokoly aktivity zkontrolujte akcemi uživatelů a chyby. Zobrazuje portálu prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,15 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazit protokoly aktivity akce u prostředků
+
 Prostřednictvím protokolů činnosti můžete určit:
 
 * jaké operace provedené na prostředky v rámci vašeho předplatného
@@ -38,6 +39,7 @@ Protokoly aktivity jsou uchovány 90 dní. Pro libovolný rozsah kalendářních
 Můžete načíst informace z protokolů aktivity prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní API pro přehledy REST, nebo [knihovny .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Portál
+
 1. Chcete-li zobrazit protokoly aktivity přes portál, vyberte **monitorování**.
    
     ![Vyberte protokoly aktivity](./media/resource-group-audit/select-monitor.png)
@@ -68,6 +70,7 @@ Můžete načíst informace z protokolů aktivity prostřednictvím portálu, pr
     ![Operace zobrazení](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
+
 1. Chcete-li načíst položky protokolu, spusťte **Get-AzureRmLog** příkaz. Můžete zadat další parametry pro filtrování seznamu položek. Pokud nezadáte počáteční a koncový čas, vrátí se položky za poslední hodinu. Chcete-li například získat operace pro skupinu prostředků během poslední hodiny spustit:
 
   ```powershell
@@ -136,17 +139,20 @@ Můžete načíst informace z protokolů aktivity prostřednictvím portálu, pr
 
 
 ## <a name="azure-cli"></a>Azure CLI
-* Chcete-li načíst položky protokolu, spusťte **zobrazit skupiny azure protokolu** příkaz.
+
+Chcete-li načíst položky protokolu, spusťte [az monitorování protokol aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkaz.
 
   ```azurecli
-  azure group log show ExampleGroup --json
+  az monitor activity-log list --resource-group <group name>
   ```
 
 
 ## <a name="rest-api"></a>REST API
+
 Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API pro přehledy](https://msdn.microsoft.com/library/azure/dn931943.aspx). Načtení aktivity protokolu události, najdete v části [seznam událostí správy v předplatném](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>Další postup
+
 * Azure protokoly aktivity s Power BI můžete použít k získání lepší přehled o akcích v rámci vašeho předplatného. V tématu [zobrazení a analýza protokolů Azure aktivity v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../active-directory/role-based-access-control-configure.md).
 * Další informace o příkazy pro zobrazení operace nasazení najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).

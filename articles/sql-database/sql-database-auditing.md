@@ -1,19 +1,19 @@
 ---
-title: "Začínáme s auditování databáze Azure SQL | Microsoft Docs"
-description: "Auditování databáze Azure SQL použijte ke sledování databáze události do protokolu auditování."
+title: Začínáme s auditování databáze Azure SQL | Microsoft Docs
+description: Auditování databáze Azure SQL použijte ke sledování databáze události do protokolu auditování.
 services: sql-database
 author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 0339dc2ecc93fb9ec260ede9d3f2e9b7b1419b08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu přihlášení účtu úložiště Azure. Auditování také:
@@ -118,7 +118,7 @@ Existuje několik metod, které můžete použít k zobrazení protokolů audito
 
     4. Sloučené soubor se otevře v aplikaci SSMS, kde je můžete zobrazit a analyzujte ji, a také ho exportovat do souboru souboru XEL nebo sdíleného svazku clusteru nebo do tabulky.
 
-* Použití [synchronizace aplikace](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) které jsme vytvořili. Jeho spuštění v Azure a využívá Operations Management Suite (OMS) veřejná rozhraní API analýzy protokolů tak, aby nabízel protokoly auditu SQL do OMS. Synchronizace aplikace doručí protokoly auditu SQL do OMS analýzy protokolů pro používání prostřednictvím řídicího panelu analýzy protokolů OMS.
+* Použití [synchronizace aplikace](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) které jsme vytvořili. Jeho spuštění v Azure a využívá analýzy protokolů veřejná rozhraní API, tak, aby nabízel protokoly auditu SQL do analýzy protokolů. Synchronizace aplikace doručí protokoly auditu SQL do analýzy protokolů pro používání prostřednictvím řídicího panelu analýzy protokolů.
 
 * Pomocí Power BI. Můžete zobrazit a analyzovat data protokolu auditování v Power BI. Další informace o [Power BI a přístup ke stažení šablony](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

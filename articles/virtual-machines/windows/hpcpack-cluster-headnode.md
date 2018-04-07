@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit virtuální počítač Azure hlavnímu uzlu HPC Pack | Microsoft Docs"
-description: "Další informace o použití portálu Azure a modelu nasazení Resource Manager k vytvoření hlavního uzlu Microsoft HPC Pack 2012 R2 ve virtuálním počítači Azure."
+title: Vytvořit virtuální počítač Azure hlavnímu uzlu HPC Pack | Microsoft Docs
+description: Další informace o použití portálu Azure a modelu nasazení Resource Manager k vytvoření hlavního uzlu Microsoft HPC Pack 2012 R2 ve virtuálním počítači Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: e6a13eaf-9124-47b4-8d75-2bc4672b8f21
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: b2bb9caf82a580dc5f67ea0b0b1c2e9a46363e9c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Vytvoření hlavního uzlu clusteru HPC Pack ve virtuálním počítači Azure s imagí Marketplace
 Použití [bitovou kopii virtuálního počítače Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z Azure Marketplace a portálu Azure k vytvoření hlavního uzlu clusteru prostředí HPC. Tuto bitovou kopii virtuálního počítače HPC Pack je založená na Windows Server 2012 R2 Datacenter s HPC Pack 2012 R2 Update 3 předinstalován. Pomocí tohoto hlavního uzlu pro testování konceptu nasazení sady HPC Pack v Azure. Výpočetní uzly potom můžete přidat do clusteru ke spuštění úlohy v prostředí HPC.
@@ -73,7 +73,7 @@ Následují základní kroky pro vytvoření virtuálního počítače Azure pro
    
     Pro další hlavního uzlu možnosti konfigurace, zadejte `get-help HPCHNPrepare.ps1`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Teď můžete pracovat s hlavního uzlu clusteru HPC Pack. Například spusťte Správce clusteru HPC a dokončete [nasazení na seznam úkolů](https://technet.microsoft.com/library/jj884141.aspx).
 * Pokud chcete zvýšit clusteru výpočetní kapacity na vyžádání, přidejte [Azure burst uzly](classic/hpcpack-cluster-node-burst.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) v cloudové službě. 
 * Zkuste spustit test zatížení v clusteru. Příklad najdete v tématu HPC Pack [Příručka Začínáme](https://technet.microsoft.com/library/jj884144).

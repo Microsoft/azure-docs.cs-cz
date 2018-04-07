@@ -3,9 +3,8 @@ title: Power BI kurz pro Azure Cosmos DB konektor | Microsoft Docs
 description: Tento kurz Power BI použijte k importu JSON, vytvářet sestavy pronikavého a vizualizovat data pomocí konektoru Azure Cosmos DB a Power BI.
 keywords: Power bi kurzu, vizualizaci dat, power bi connector
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: mimig
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: mimig
-ms.openlocfilehash: 74be3e5b25401a7811c1af23a0a7e2887f9055c1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: sngun
+ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí Power BI connector
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit k účtu Azure Cosmos DB prostřednictvím konektoru Azure Cosmos DB pro Power BI.   

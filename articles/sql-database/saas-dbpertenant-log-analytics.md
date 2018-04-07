@@ -1,6 +1,6 @@
 ---
 title: Pomocí analýzy protokolů a víceklientské aplikaci SQL Database | Microsoft Docs
-description: Nastavení a použití analýzy protokolů (Operations Management Suite) s víceklientské aplikace SaaS databáze SQL Azure
+description: Nastavení a použití analýzy protokolů víceklientské aplikace SaaS databáze SQL Azure
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,23 +8,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>Nastavení a použití analýzy protokolů (Operations Management Suite) s víceklientské aplikace SaaS databáze SQL
+# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Nastavení a použití analýzy protokolů víceklientské aplikace SaaS databáze SQL
 
-V tomto kurzu, nastavení a použití Azure Log Analytics ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) ke sledování elastické fondy a databází. V tomto kurzu vychází [výkonu monitorování a správu kurzu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat analýzy protokolů k posílení monitorování a výstrahy poskytuje na portálu Azure. Analýzy protokolů podporuje monitorování tisíce elastické fondy a stovky tisíc databáze. Log Analytics poskytuje jeden řešení monitorování, které můžete integrovat monitorování jiným aplikacím a službám Azure napříč několika předplatných Azure.
+V tomto kurzu nastavit a používat Azure [analýzy protokolů](/azure/log-analytics/log-analytics-overview) monitorování elastické fondy a databází. V tomto kurzu vychází [výkonu monitorování a správu kurzu](saas-dbpertenant-performance-monitoring.md). Ukazuje, jak používat analýzy protokolů k posílení monitorování a výstrahy poskytuje na portálu Azure. Analýzy protokolů podporuje monitorování tisíce elastické fondy a stovky tisíc databáze. Log Analytics poskytuje jeden řešení monitorování, které můžete integrovat monitorování jiným aplikacím a službám Azure napříč několika předplatných Azure.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Instalace a konfigurace analýzy protokolů (Operations Management Suite).
+> * Instalace a konfigurace analýzy protokolů.
 > * Pomocí analýzy protokolů sledování fondů a databází.
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
@@ -34,11 +34,11 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 Najdete v článku [výkonu monitorování a správu kurzu](saas-dbpertenant-performance-monitoring.md) diskuzi o SaaS scénáře a vzory a jejich vliv na požadavky na řešení monitorování.
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>Sledování a správě výkon databáze a elastického fondu s analýzy protokolů nebo Operations Management Suite
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>Sledování a správě výkon databáze a elastického fondu s analýzy protokolů
 
 Pro databázi SQL Azure monitorování a výstrah je k dispozici na databáze a fondy na portálu Azure. Toto integrované monitorování a výstrah je vhodné, ale je také konkrétní prostředky. To znamená, že je vhodná méně i k monitorování velké instalace nebo poskytnout jednotný pohled mezi prostředky a odběry.
 
-U scénářů s vysokým zatížením můžete analýzy protokolů pro monitorování a výstrahy. Analýzy protokolů je samostatný služba Azure, která umožňuje analytics přes diagnostické protokoly a telemetrii, která se nashromáždí v pracovním prostoru z potenciálně mnoho služeb. Analýzy protokolů poskytuje integrovaného dotazu jazyka a data vizualizace nástroje, které umožňují provozních dat analytics. Řešení SQL Analytics poskytuje několik předdefinovaných elastického fondu a databáze monitorování a výstrah zobrazení a dotazy. Služby Operations Management Suite také poskytuje Návrhář vlastní zobrazení.
+U scénářů s vysokým zatížením můžete analýzy protokolů pro monitorování a výstrahy. Analýzy protokolů je samostatný služba Azure, která umožňuje analytics přes diagnostické protokoly a telemetrii, která se nashromáždí v pracovním prostoru z potenciálně mnoho služeb. Analýzy protokolů poskytuje integrovaného dotazu jazyka a data vizualizace nástroje, které umožňují provozních dat analytics. Řešení SQL Analytics poskytuje několik předdefinovaných elastického fondu a databáze monitorování a výstrah zobrazení a dotazy. Analýzy protokolů taky poskytuje Návrhář vlastní zobrazení.
 
 Log Analytics pracovních prostorů a analýzy řešení otevřete na portálu Azure a v Operations Management Suite. Portál Azure je novější přístupový bod, ale může to být za portál Operations Management Suite v určité oblasti.
 
@@ -129,9 +129,9 @@ V tomto cvičení otevřete analýzy protokolů a portál Operations Management 
 
 Na portálu služby Operations Management Suite můžete data protokolu a metriku, v pracovním prostoru dále prozkoumat. 
 
-Monitorování a generování výstrah v analýzy protokolů a Operations Management Suite jsou založené na dotazech přes data v pracovním prostoru, na rozdíl od výstrahy definované na každého prostředku na portálu Azure. Po vytvoření výstrahy na základě dotazů, lze definovat jedna výstraha, která vypadá přes všechny databáze, místo definující jeden do každého databáze. Dotazy jsou omezena pouze data, která je k dispozici v pracovním prostoru.
+Monitorování a generování výstrah v analýzy protokolů jsou založené na dotazech přes data v pracovním prostoru, na rozdíl od výstrahy definované na každého prostředku na portálu Azure. Po vytvoření výstrahy na základě dotazů, lze definovat jedna výstraha, která vypadá přes všechny databáze, místo definující jeden do každého databáze. Dotazy jsou omezena pouze data, která je k dispozici v pracovním prostoru.
 
-Další informace o tom, jak používat služby Operations Management Suite pro dotazování a nastavit upozornění, najdete v tématu [pracovat s pravidla výstrah v analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
+Další informace o tom, jak používat analýzy protokolů pro dotazování a nastavit upozornění, najdete v tématu [pracovat s pravidla výstrah v analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Analýzy protokolů pro databáze SQL poplatky stanovené podle objemu dat v pracovním prostoru. V tomto kurzu jste vytvořili volného prostoru, který je omezen na 500 MB za den. Po dosažení tohoto limitu data je již přidána do pracovního prostoru.
 
@@ -141,7 +141,7 @@ Analýzy protokolů pro databáze SQL poplatky stanovené podle objemu dat v pra
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Instalace a konfigurace analýzy protokolů (Operations Management Suite).
+> * Instalace a konfigurace analýzy protokolů.
 > * Pomocí analýzy protokolů sledování fondů a databází.
 
 Zkuste [kurzu analýza klienta](saas-dbpertenant-log-analytics.md).
@@ -150,4 +150,3 @@ Zkuste [kurzu analýza klienta](saas-dbpertenant-log-analytics.md).
 
 * [Další kurzy, které vychází z počátečního nasazení databáze za klienta aplikace SaaS Wingtip lístky](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

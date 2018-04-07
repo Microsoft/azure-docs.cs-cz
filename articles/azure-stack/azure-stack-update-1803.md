@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: cff6d780826164de6ef0122849e40d453192f81c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack 1803 update
 
@@ -44,7 +44,9 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, znám
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-*Neexistují žádné kroky po aktualizaci pro aktualizaci 1803.*
+Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
+
+- [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/en-us/help/4103348)
 
 
 ### <a name="new-features"></a>Nové funkce 
@@ -90,7 +92,7 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace    
-Během instalace aktualizace 1803 může být výpadek služby objektů blob a interních služeb, které používají služby objektů blob. To zahrnuje některé operace virtuálního počítače.  To výpadek může způsobit chyby klienta operace nebo výstrahy ze služeb, které nelze získat přístup k datům. Tento problém vyřeší sám po dokončení instalace aktualizace. 
+<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
 
 
 ### <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
@@ -129,10 +131,6 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 #### <a name="compute"></a>Compute
 - Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
-
-- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
-
-  Chcete-li vyřešit tento problém, požádejte podporu o opravu Hotfix **1.0.180302.4** pro Azure zásobníku. 
 
 - Když vytvoříte sadu na portálu přejděte na dostupnosti **nový** > **výpočetní** > **sadu dostupnosti**, můžete vytvořit pouze skupiny dostupnosti s doména selhání a aktualizace domény 1. Jako řešení, při vytváření nového virtuálního počítače, vytvořte skupinu dostupnosti pomocí prostředí PowerShell, rozhraní příkazového řádku, nebo v portálu.
 

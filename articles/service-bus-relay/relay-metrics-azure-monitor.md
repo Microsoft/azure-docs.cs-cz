@@ -1,12 +1,12 @@
 ---
-title: "Azure metriky předávání v programu Sledování Azure (preview) | Microsoft Docs"
-description: "Pomocí Azure Monitoring monitorovat předávání přes Azure"
+title: Azure metriky předávání v programu Sledování Azure (preview) | Microsoft Docs
+description: Pomocí Azure Monitoring monitorovat předávání přes Azure
 services: service-bus-relay
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: dd5bc0dd0088856954e06d880f2c03f0a74ed9d7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b919f1fb0799ec497742115b2611f34872af2027
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure metriky předávání v programu Sledování Azure (preview)
 
@@ -44,7 +44,7 @@ Pro podporu dimenze metriky musí filtrovat s hodnotou požadované dimenze.
 
 ## <a name="billing"></a>Fakturace
 
-Použití metriky v Azure monitorování není aktuálně volné při ve verzi preview. Ale pokud používáte další řešení, které ingestují data metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Také fakturuje se podle sady Management operace (OMS) Pokud stream metriky dat do OMS pro účely provádění pokročilých analýz.
+Použití metriky v Azure monitorování není aktuálně volné při ve verzi preview. Ale pokud používáte další řešení, které ingestují data metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Také fakturuje se podle analýzy protokolů Pokud stream metriky dat k analýze protokolů pro účely provádění pokročilých analýz.
 
 Následující metriky vám poskytl přehled o stavu služby. 
 

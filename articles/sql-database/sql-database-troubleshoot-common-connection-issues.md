@@ -1,19 +1,19 @@
 ---
-title: "Řešení běžných problémů s připojením ke službě Azure SQL Database"
-description: "Postup identifikovat a řešit běžné chyby připojení pro databázi SQL Azure."
+title: Řešení běžných problémů s připojením ke službě Azure SQL Database
+description: Postup identifikovat a řešit běžné chyby připojení pro databázi SQL Azure.
 services: sql-database
 author: dalechen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 04/01/2018
 ms.author: daleche
-ms.openlocfilehash: 56ebe6876d621e190b4e808804113ff80cb3f50c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2737b641559b04d661db6ede0e487af30b36737a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení potíží s připojením k databázi SQL Azure
 Když se připojení k databázi SQL Azure nezdaří, zobrazí se [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizované téma, které vám pomůže vyřešit problémy s připojením k databázi SQL Azure. Zavádí [běžných příčin](#cause) z problémů s připojením, doporučuje [nástroje pro odstraňování potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) se vám pomůže identity problém a k řešení potíží naleznete [přechodné chyby](#troubleshoot-transient-errors) a [trvalé nebo jiných přechodná chyb](#troubleshoot-persistent-errors). 
@@ -74,7 +74,7 @@ Pokud aplikace se trvale nepodaří připojit k databázi SQL Azure, obvykle ozn
 3. Ověřte připojovací řetězec a další nastavení připojení. Najdete v části připojovací řetězec v [tématu problémy s připojením](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. Zkontrolujte stav služby v řídicím panelu. Pokud se domníváte, že je místní výpadku, přečtěte si téma [zotavit výpadku](sql-database-disaster-recovery.md) pokyny k obnovení do nové oblasti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Řešení potíží s výkonem databáze SQL Azure](sql-database-troubleshoot-performance.md)
 * [Hledání v dokumentaci v Microsoft Azure](http://azure.microsoft.com/search/documentation/)
 * [Zobrazit nejnovější aktualizace služby databáze SQL Azure](http://azure.microsoft.com/updates/?service=sql-database)

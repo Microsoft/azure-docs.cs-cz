@@ -1,11 +1,11 @@
 ---
-title: "Načtení dat z SQL serveru do Azure SQL Data Warehouse (SSIS) | Microsoft Docs"
-description: "Ukazuje, jak vytvořit balíček integrační služby SSIS (SQL Server) pro přesun dat z široké škály zdrojů dat do SQL Data Warehouse."
+title: Načtení dat z SQL serveru do Azure SQL Data Warehouse (SSIS) | Microsoft Docs
+description: Ukazuje, jak vytvořit balíček integrační služby SSIS (SQL Server) pro přesun dat z široké škály zdrojů dat do SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
 ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/07/2018
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>Načtení dat z SQL serveru do Azure SQL Data Warehouse služby SSIS)
 > [!div class="op_single_selector"]
@@ -167,7 +167,7 @@ Pokud balíček bylo dokončeno, uvidíte zelené značky zaškrtnutí indikují
 
 Blahopřejeme! SQL Server Integration Services jste úspěšně použili k načtení dat do Azure SQL Data Warehouse.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o toku dat SSIS. Začněte zde: [toku dat][Data Flow].
 * Informace o ladění a odstraňování potíží v prostředí návrhu vaší balíčky správné. Začněte zde: [řešení potíží s nástrojů pro vývoj balíček][Troubleshooting Tools for Package Development].
 * Informace o nasazení služby SSIS projekty a balíčky Server integračních služeb nebo do jiného umístění úložiště. Začněte zde: [projekty nasazení a balíčky][Deployment of Projects and Packages].

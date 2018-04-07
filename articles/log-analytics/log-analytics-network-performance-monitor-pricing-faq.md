@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 84a3834416c7d93ecb4f51fea9c7baed8af85db0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5b2335ee2584af07ed23ce87be92a869f3a07ba1
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Změny cenových pro sledování výkonu síť Azure
 
-Můžete Zjišťovali jsme a nedávno zavedly [nové cenách prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), pro různé sledování služby v Azure.
+Jsme byla naslouchání vaše připomínky a nedávno zavedly [nové cenách prostředí](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), pro různé sledování služby v Azure.
 
 Tento dokument zachytává cenovou změny související s Azure [sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM), v žádném snadno čitelný otázku a odpověď formátu.
 
@@ -32,11 +32,11 @@ Sledování výkonu sítě se skládá ze tří součástí:
 * [Monitorování koncový bod služby](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor) a
 * [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
-Následující části vysvětluje cenové změny pro sledování výkonu, ExpressRoute sledování a monitorování koncového bodu služby.
+Následující části vysvětluje cenové změny pro výše uvedené součásti.
 
 ## <a name="performance-monitor-pm"></a>Sledování výkonu (odp)
 
-**Jak se využití sledování výkonu účtují v původním schéma?**
+**Jak se využití sledování výkonu účtují v původním modelu?**
 
 Fakturace pro NPM bylo založeno na nebo využívání ze dvou částí:
 * Uzly: Všechny syntetické transakce pocházejí a ukončovat platnost u uzlů. Uzly jsou také označovány jako agentů nebo MMA (Microsoft agenti pro správu).
@@ -121,3 +121,8 @@ Připojení je testu dostupnosti jeden koncový bod (adresa URL nebo síťové s
 
 - Odkazovat [monitorování připojení](https://azure.microsoft.com/pricing/details/network-watcher/) části nákladů na monitorování koncový bod pro celý měsíc.
 - Zdarma pro data je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) pro analýzu protokolu.  (Část: přijímání dat).
+
+## <a name="references"></a>Odkazy
+
+- [Protokolu analýzy ceny – nejčastější dotazy](https://azure.microsoft.com/pricing/details/log-analytics/) – nejčastější dotazy týkající se část obsahuje informace o úroveň free, na každém uzlu cenovou atd.
+

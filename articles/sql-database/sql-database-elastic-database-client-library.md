@@ -1,19 +1,19 @@
 ---
-title: "Vytváření databází škálovatelné cloudové | Microsoft Docs"
-description: "Vytvářet škálovatelné aplikace .NET databáze s knihovnou klienta elastické databáze"
+title: Vytváření databází škálovatelné cloudové | Microsoft Docs
+description: Vytvářet škálovatelné aplikace .NET databáze s knihovnou klienta elastické databáze
 services: sql-database
 manager: jhubbard
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/12/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: e15254fd529d98f2b92acea8dd1ed908a82841ea
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6000b06950ddd442b76838e5632196808f893ef9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="building-scalable-cloud-databases"></a>Vytváření škálovatelných cloudových databází
 Škálování databáze dá snadno dosáhnout pomocí funkcí a nástrojů pro škálovatelná pro databázi SQL Azure. Konkrétně můžete použít **klientské knihovny pro elastické databáze** k vytváření a správě databází Škálováním. Tato funkce vám umožní snadno vyvíjet horizontálně dělené aplikace, které používají stovky – nebo dokonce tisíce – databází Azure SQL. [Elastické úlohy](sql-database-elastic-jobs-powershell.md) lze použít ke snadné správy těchto databází.

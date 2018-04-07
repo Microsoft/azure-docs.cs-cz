@@ -1,13 +1,13 @@
 ---
-title: "Vytvoření kanálu CI/CD v Azure pomocí Team Services | Microsoft Docs"
-description: "Naučte se vytvořit kanál Visual Studio Team Services pro průběžnou integraci a doručení, které nasadí webové aplikace do služby IIS na virtuální počítač s Windows"
+title: Vytvoření kanálu CI/CD v Azure pomocí Team Services | Microsoft Docs
+description: Naučte se vytvořit kanál Visual Studio Team Services pro průběžnou integraci a doručení, které nasadí webové aplikace do služby IIS na virtuální počítač s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Vytvoření kanálu průběžnou integraci s Visual Studio Team Services a služby IIS
 K automatizaci sestavení, testování a fáze nasazení pro vývoj aplikací, můžete použít průběžnou integraci a nasazení (CI/CD) kanálu. V tomto kurzu vytvoříte kanál CI/CD pomocí Visual Studio Team Services a virtuálního počítače (VM) s Windows v Azure, který spouští IIS. Získáte informace o těchto tématech:
@@ -218,7 +218,7 @@ S vaší webové aplikace běžící v IIS zkuste teď celého kanálu CI/CD. Po
     ![Spuštění virtuálního počítače služby IIS z CI/CD kanálu webové aplikace ASP.NET](media/tutorial-vsts-iis-cicd/running_web_app_cicd.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu vytvoříte webovou aplikaci ASP.NET ve službě Team Services a nakonfigurujete sestavení a definice vydání k nasazení nové webové nasazení balíčků do služby IIS na každém potvrzení kódu. Naučili jste se tyto postupy:
 
@@ -230,7 +230,7 @@ V tomto kurzu vytvoříte webovou aplikaci ASP.NET ve službě Team Services a n
 > * Vytvořit verzi definice k publikování nové webové nasazení balíčků do služby IIS
 > * Testování CI/CD kanálu
 
-Přechodu na v dalším kurzu se dozvíte, jak nainstalovat SQL &#92; IIS &#92;. NET zásobníku na dvojice virtuálních počítačů Windows.
+Přechod na další kurzu se dozvíte, jak nainstalovat SQL&#92;IIS&#92;.NET zásobníku na dvojice virtuálních počítačů Windows.
 
 > [!div class="nextstepaction"]
-> [SQL &#92; IIS &#92;. NET zásobníku](tutorial-iis-sql.md)
+> [SQL&#92;IIS&#92;.NET zásobníku](tutorial-iis-sql.md)

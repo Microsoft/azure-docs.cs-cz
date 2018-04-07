@@ -1,13 +1,13 @@
 ---
-title: "Virtuální počítače Azure Security Center a systému Windows v Azure | Microsoft Docs"
-description: "Další informace o zabezpečení pro virtuální počítač Azure Windows s Azure Security Center."
+title: Virtuální počítače Azure Security Center a systému Windows v Azure | Microsoft Docs
+description: Další informace o zabezpečení pro virtuální počítač Azure Windows s Azure Security Center.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,133 +16,133 @@ ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adb00e28b0b204858a763f83836ee2ac96f8f9e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4597de035e352387c22e92412ee6361f9c38a8ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Sledování zabezpečení virtuálního počítače pomocí Azure Security Center
+# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center
 
-Azure Security Center můžete získat přehled o Azure prostředku postupy zabezpečení. Security Center nabízí integrované zabezpečení monitorování. Může zjistit hrozeb, které jinak může nevšimli. V tomto kurzu se dozvíte o Azure Security Center a postup:
+Azure Security Center vám může pomoct získat přehled o postupech zabezpečení vašich prostředků Azure. Security Center nabízí integrované monitorování zabezpečení. Dokáže detekovat hrozby, kterých byste si jinak možná nevšimli. V tomto kurzu se seznámíte s Azure Security Center a následujícími postupy:
  
 > [!div class="checklist"]
 > * Nastavení shromažďování dat
-> * Nastavte zásady zabezpečení
-> * Zobrazení a opravte problémy s konfigurací stavu
-> * Zkontrolujte zjištěnými hrozbami  
+> * Nastavení zásad zabezpečení
+> * Zobrazení a oprava problémů se stavem konfigurace
+> * Kontrola zjištěných hrozeb  
 
-## <a name="security-center-overview"></a>Security Center – přehled
+## <a name="security-center-overview"></a>Přehled služby Security Center
 
-Security Center identifikuje potenciální potíže s konfigurací virtuálního počítače (VM) a cílem bezpečnostní hrozby. To může zahrnovat virtuální počítače, které chybí skupin zabezpečení sítě, nezašifrované disků a útoku hrubou silou protokol RDP (Remote Desktop). Informace se zobrazí na řídicím panelu Security Center v grafy snadno čitelné.
+Security Center identifikuje potenciální problémy s konfigurací virtuálních počítačů a cílené bezpečnostní hrozby. Ty můžou zahrnovat virtuální počítače bez skupin zabezpečení sítě, nešifrované disky a útoky hrubou silou na protokol RDP (Remote Desktop Protocol). Tyto informace se zobrazí v přehledných grafech na řídicím panelu Security Center.
 
-Chcete-li přístup k řídicímu panelu Security Center na portálu Azure, v nabídce vyberte **Security Center**. Na řídicím panelu můžete zobrazit stav zabezpečení prostředí Azure, najít a počet aktuální doporučení a zobrazit aktuální stav výstrahy hrozeb. Můžete rozbalit každý vysoké úrovně grafu pro zobrazení dalších podrobností.
+Přístup k řídicímu panelu Security Center získáte výběrem možnosti **Security Center** v nabídce na webu Azure Portal. Na řídicím panelu můžete zobrazit stav zabezpečení vašeho prostředí Azure, zjistit aktuální počet doporučení a zobrazit aktuální stav upozornění na hrozby. Každý graf vysoké úrovně můžete rozbalit a zobrazit tak další podrobnosti.
 
 ![Řídicí panel Security Center](./media/tutorial-azure-security/asc-dash.png)
 
-Security Center překročí data zjišťování poskytnout doporučení pro problémy, které zjistí. Například pokud virtuální počítač byl nasazen bez skupiny zabezpečení služby připojené síti, Security Center zobrazuje doporučení, s nápravy kroky, které můžete provést. Získáte automatizovanou nápravu, aniž byste museli opustit kontext služby Security Center.  
+Security Center jde nad rámec zjišťování dat a poskytuje doporučení k problémům, které detekuje. Pokud se například nasadil virtuální počítač bez připojené skupiny zabezpečení sítě, Security Center zobrazí doporučení s nápravnými kroky, které můžete použít. Získáte automatizovanou nápravu, aniž byste opustili kontext Security Center.  
 
 ![Doporučení](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Nastavení shromažďování dat
 
-Než do zabezpečení konfigurací virtuálních počítačů můžete získat viditelnost, budete muset nastavit shromažďování dat Security Center. To zahrnuje zapnutí shromažďování dat a vytvoření účtu úložiště Azure pro uložení shromážděná data. 
+Abyste mohli získat přehled o konfiguracích zabezpečení virtuálních počítačů, je potřeba v Security Center nastavit shromažďování dat. To zahrnuje zapnutí shromažďování dat a vytvoření účtu úložiště Azure, do kterého se shromážděná data budou ukládat. 
 
-1. Na řídicím panelu Security Center klikněte na tlačítko **zásady zabezpečení**a potom vyberte své předplatné. 
-2. Pro **shromažďování dat**, vyberte **na**.
-3. Chcete-li vytvořit účet úložiště, vyberte **zvolte účet úložiště**. Pak vyberte **OK**.
-4. Na **zásady zabezpečení** vyberte **Uložit**. 
+1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné. 
+2. V části **Shromažďování dat** vyberte **Zapnuto**.
+3. Účet úložiště vytvoříte výběrem možnosti **Zvolit účet úložiště**. Pak vyberte **OK**.
+4. V okně **Zásady zabezpečení** vyberte **Uložit**. 
 
-Agenta pro sběr dat Security Center je nainstalován na všech virtuálních počítačů a shromažďování dat začíná. 
+Na všechny virtuální počítače se pak nainstaluje agent Security Center pro shromažďování dat a zahájí se shromažďování dat. 
 
-## <a name="set-up-a-security-policy"></a>Nastavte zásady zabezpečení
+## <a name="set-up-a-security-policy"></a>Nastavení zásady zabezpečení
 
-Zásady zabezpečení se používá k definování položky, pro které Security Center shromažďuje data a díky doporučení. Můžete použít jiné bezpečnostní zásady pro různé skupiny prostředků Azure. I když ve výchozím nastavení jsou prostředky Azure porovnán s všechny položky zásad, můžete vypnout jednotlivé zásady položky pro všechny prostředky Azure nebo pro skupinu prostředků. Podrobné informace o zásadách zabezpečení Security Center najdete v tématu [nastavení zásad zabezpečení v Azure Security Center](../../security-center/security-center-policies.md). 
+Zásady zabezpečení slouží k definici položek, pro které Security Center shromažďuje data a poskytuje doporučení. Na různé sady prostředků Azure můžete použít různé zásady zabezpečení. Přestože se ve výchozím nastavení u prostředků Azure vyhodnocují všechny položky zásad, jednotlivé položky zásad můžete pro všechny prostředky Azure nebo skupinu prostředků vypnout. Podrobné informace o zásadách zabezpečení Security Center najdete v tématu [Nastavení zásad zabezpečení v Azure Security Center](../../security-center/security-center-policies.md). 
 
-Nastavení zásad zabezpečení pro všechny prostředky Azure:
+Nastavení zásady zabezpečení pro všechny prostředky Azure:
 
-1. Na řídicím panelu Security Center, vyberte **zásady zabezpečení**a potom vyberte své předplatné.
-2. Vyberte **zásada Zabránění**.
-3. Zapněte nebo vypněte zásady položky, které chcete použít pro všechny prostředky Azure.
-4. Jakmile budete hotovi, vyberte nastavení, vyberte **OK**.
-5. Na **zásady zabezpečení** vyberte **Uložit**. 
+1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte své předplatné.
+2. Vyberte **Zásady prevence**.
+3. Zapněte nebo vypněte položky zásad, které chcete použít pro všechny prostředky Azure.
+4. Jakmile budete hotovi s výběrem nastavení, vyberte **OK**.
+5. V okně **Zásady zabezpečení** vyberte **Uložit**. 
 
-Nastavení zásad pro určité skupiny zdrojů:
+Nastavení zásady pro konkrétní skupinu prostředků:
 
-1. Na řídicím panelu Security Center, vyberte **zásady zabezpečení**a pak vyberte skupinu prostředků.
-2. Vyberte **zásada Zabránění**.
-3. Zapněte nebo vypněte zásady položky, které chcete použít ke skupině prostředků.
-4. V části **DĚDIČNOSTI**, vyberte **jedinečný**.
-5. Jakmile budete hotovi, vyberte nastavení, vyberte **OK**.
-6. Na **zásady zabezpečení** vyberte **Uložit**.  
+1. Na řídicím panelu Security Center vyberte **Zásady zabezpečení** a pak vyberte skupinu prostředků.
+2. Vyberte **Zásady prevence**.
+3. Zapněte nebo vypněte položky zásad, které chcete pro tuto skupinu prostředků použít.
+4. V části **DĚDIČNOST** vyberte **Jedinečná**.
+5. Jakmile budete hotovi s výběrem nastavení, vyberte **OK**.
+6. V okně **Zásady zabezpečení** vyberte **Uložit**.  
 
-Také můžete vypnout shromažďování dat pro určité skupiny zdrojů na této stránce.
+Na této stránce můžete také vypnout shromažďování dat pro konkrétní skupinu zabezpečení.
 
-V následujícím příkladu, byl vytvořen jedinečné zásady pro skupinu prostředků s názvem *myResoureGroup*. V této zásadě jsou vypnuté disku šifrování a webové aplikace brány firewall doporučení.
+V následujícím příkladu se vytvořila jedinečná zásada pro skupinu prostředků *myResoureGroup*. V této zásadě jsou vypnutá doporučení k šifrování disku a Firewallu webových aplikací.
 
-![Jedinečné zásady](./media/tutorial-azure-security/unique-policy.png)
+![Jedinečná zásada](./media/tutorial-azure-security/unique-policy.png)
 
-## <a name="view-vm-configuration-health"></a>Zobrazit stav konfigurace virtuálního počítače
+## <a name="view-vm-configuration-health"></a>Zobrazení stavu konfigurace virtuálních počítačů
 
-Po zapnutá shromažďování dat a nastavit zásadu zabezpečení, Security Center začne poskytovat výstrahy a doporučení. Při nasazování virtuálních počítačů, agenta pro sběr dat je nainstalována. Security Center je pak naplněný daty pro nové virtuální počítače. Podrobné informace o stavu konfigurace virtuálních počítačů najdete v tématu [chránit virtuální počítače ve službě Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
+Po zapnutí shromažďování dat a nastavení zásady zabezpečení začne Security Center poskytovat upozornění a doporučení. Při nasazování virtuálních počítačů se nainstaluje agent pro shromažďování dat. Security Center se pak naplní daty o těchto nových virtuálních počítačích. Podrobné informace o stavu konfigurace virtuálních počítačů najdete v tématu [Ochrana virtuálních počítačů v Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
 
-Jak se data shromažďují, je agregován stav prostředku pro každý virtuální počítač a souvisejících prostředků Azure. Informace jsou zobrazeny v diagramu snadno čitelné. 
+S tím, jak se shromažďují data, se agreguje stav prostředků jednotlivých virtuálních počítačů a souvisejících prostředků Azure. Tyto informace se zobrazí v přehledném grafu. 
 
-Chcete-li zobrazit stav prostředku:
+Zobrazení stavu prostředků:
 
-1.  Na zabezpečení Center řídicího panelu, v části **stav zabezpečení prostředků**, vyberte **výpočetní**. 
-2.  Na **výpočetní** vyberte **virtuální počítače**. Toto zobrazení obsahuje souhrn stavu konfigurace pro všechny virtuální počítače.
+1.  Na řídicím panelu Security Center v části **Stav zabezpečení prostředků** vyberte **Compute**. 
+2.  V okně **Compute** vyberte **Virtuální počítače**. Toto zobrazení obsahuje souhrn stavu konfigurace všech vašich virtuálních počítačů.
 
-![Výpočetní stavu](./media/tutorial-azure-security/compute-health.png)
+![Stav výpočetních prostředků](./media/tutorial-azure-security/compute-health.png)
 
-Pokud chcete zobrazit všechna doporučení pro virtuální počítač, vyberte virtuální počítač. Doporučení a náprava jsou podrobněji v další části tohoto kurzu.
+Pokud chcete zobrazit všechna doporučení pro virtuální počítač, vyberte příslušný virtuální počítač. Doporučením a nápravám se podrobněji věnuje další část tohoto kurzu.
 
-## <a name="remediate-configuration-issues"></a>Opravit problémy s konfigurací
+## <a name="remediate-configuration-issues"></a>Náprava problémů s konfigurací
 
-Po zahájení Security Center k naplnění dat konfigurace doporučení jsou provedená na základě zásad zabezpečení, kterou vytvoříte. Například pokud virtuální počítač vytvořený bez skupinu zabezpečení sítě spojenou doporučení přišla k jeho vytvoření. 
+Jakmile se Security Center začne naplňovat daty o konfiguraci, začnou se poskytovat doporučení k zásadám zabezpečení, které jste nastavili. Pokud se například nastavil virtuální počítač bez přidružené skupiny zabezpečení sítě, poskytne se doporučení k jejímu vytvoření. 
 
-Chcete-li zobrazit seznam všech doporučení: 
+Zobrazení seznamu všech doporučení: 
 
-1. Na řídicím panelu Security Center, vyberte **doporučení**.
-2. Vyberte konkrétní doporučení. Zobrazí se seznam všech prostředků, pro kterou platí doporučení.
-3. Chcete-li použít doporučení, vyberte konkrétní prostředku. 
-4. Postupujte podle pokynů pro nápravu kroky. 
+1. Na řídicím panelu Security Center vyberte **Doporučení**.
+2. Vyberte konkrétní doporučení. Zobrazí se seznam všech prostředků, na které se toto doporučení vztahuje.
+3. Pokud chcete doporučení použít, vyberte konkrétní prostředek. 
+4. Postupujte podle pokynů k nápravným krokům. 
 
-V mnoha případech Security Center nabízí řešitelné kroky, které můžete provést k vyřešení doporučení, aniž byste museli opustit Security Center. V následujícím příkladu Security Center zjišťuje skupinu zabezpečení sítě, který má neomezený příchozího pravidla. Na stránce doporučení můžete vybrat **upravit příchozí pravidla** tlačítko. Zobrazí se uživatelské rozhraní, které je potřeba upravit pravidlo. 
+V řadě případů poskytuje Security Center praktické kroky, pomocí kterých můžete doporučení vyřešit, aniž byste opustili Security Center. V následujícím příkladu Security Center detekuje skupinu zabezpečení sítě, která obsahuje neomezené příchozí pravidlo. Na stránce doporučení můžete vybrat tlačítko **Upravit příchozí pravidla**. Zobrazí se uživatelské rozhraní potřebné k úpravě pravidla. 
 
 ![Doporučení](./media/tutorial-azure-security/remediation.png)
 
-Podle doporučení opraví, jsou označeny jako vyřešené. 
+Když se doporučení napraví, označí se jako vyřešená. 
 
-## <a name="view-detected-threats"></a>Zobrazit zjištěnými hrozbami
+## <a name="view-detected-threats"></a>Zobrazení zjištěných hrozeb
 
-Kromě doporučené konfigurace prostředků Security Center zobrazuje výstrahy detekce hrozeb. Funkce výstrahy zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů Azure síťové protokoly a připojených partnerských řešení ke zjištění ohrožení zabezpečení proti prostředků Azure. Podrobné informace o možnostech detekce hrozeb Security Center najdete v tématu [funkce zjišťování služby Azure Security Center](../../security-center/security-center-detection-capabilities.md).
+Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb v Security Center najdete v tématu [Možnosti detekce v Azure Security Center](../../security-center/security-center-detection-capabilities.md).
 
-Funkce výstrahy zabezpečení vyžaduje Security Center cenová úroveň zvýšit z *volné* k *standardní*. 30denní **bezplatnou zkušební verzi** je k dispozici, když přesouváte vyšší cenová úroveň. 
+Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Při přesunu na tuto vyšší cenovou úroveň je k dispozici 30denní **bezplatná zkušební verze**. 
 
-Chcete-li změnit cenovou úroveň:  
+Změna cenové úrovně:  
 
-1. Na řídicím panelu Security Center klikněte na tlačítko **zásady zabezpečení**a potom vyberte své předplatné.
-2. Vyberte **cenová úroveň**.
-3. Vyberte novou vrstvu a pak vyberte **vyberte**.
-4. Na **zásady zabezpečení** vyberte **Uložit**. 
+1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné.
+2. Vyberte **Cenová úroveň**.
+3. Vyberte novou úroveň a pak **Vybrat**.
+4. V okně **Zásady zabezpečení** vyberte **Uložit**. 
 
-Po změně cenové úrovně, začne grafu výstrahy zabezpečení k naplnění jako zjištění ohrožení zabezpečení.
+Po změně cenové úrovně se s detekovanými výstrahami zabezpečení začne naplňovat graf výstrah zabezpečení.
 
 ![Výstrahy zabezpečení](./media/tutorial-azure-security/security-alerts.png)
 
-Vyberte příslušnou výstrahu a zobrazit informace. Například se zobrazí popis ohrožení, čas detekce, všechny pokusy hrozeb a doporučené nápravy. V následujícím příkladu byla zjištěna útoku hrubou silou RDP s 294 neúspěšných pokusů protokolu RDP. Doporučené řešení je k dispozici.
+Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hrozby, čas detekce, všechny pokusy o zneužití hrozby a doporučenou nápravu. V následujícím příkladu se detekoval útok hrubou silou na protokol RDP s 294 pokusy o připojení RDP, které selhaly. Zobrazí se doporučené řešení.
 
-![Útok protokolu RDP](./media/tutorial-azure-security/rdp-attack.png)
+![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Další kroky
-V tomto kurzu nastavení Azure Security Center a poté zkontrolovat virtuální počítače ve službě Security Center. Naučili jste se tyto postupy:
+## <a name="next-steps"></a>Další postup
+V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Nastavení shromažďování dat
-> * Nastavte zásady zabezpečení
-> * Zobrazení a opravte problémy s konfigurací stavu
-> * Zkontrolujte zjištěnými hrozbami
+> * Nastavení zásad zabezpečení
+> * Zobrazení a oprava problémů se stavem konfigurace
+> * Kontrola zjištěných hrozeb
 
 Přechodu na v dalším kurzu se dozvíte, jak vytvořit kanál CI/CD s Visual Studio Team Services a virtuální počítač s Windows služby IIS.
 

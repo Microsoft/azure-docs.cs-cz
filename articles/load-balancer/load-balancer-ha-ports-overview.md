@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>Přehled porty vysokou dostupnost
 
@@ -72,20 +72,20 @@ Tato konfigurace neumožňuje ostatní Vyrovnávání zatížení pravidlo konfi
 
 Ale můžete nakonfigurovat veřejný Standard Vyrovnávání zatížení pro instance back-end kromě tomuto pravidlu HA portu.
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Jeden jeden plovoucí IP (přímé odpovědi ze serveru) HA konfigurace portů na interní standardní Vyrovnávání zatížení
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>Jeden jeden plovoucí IP (přímé odpovědi ze serveru) HA konfigurace portů na interní standardní Vyrovnávání zatížení
 
 Podobně můžete nakonfigurovat nástroj pro vyrovnávání zatížení použít pravidlo s Vyrovnávání zatížení **HA Port** s jednom front-endu a **plovoucí IP adresa** nastavena na **povoleno**. 
 
 Tato konfigurace umožňuje přidat více plovoucí IP rozložení zátěže pravidla, nebo veřejné Vyrovnávání zatížení. Vyrovnávání konfiguraci bez plovoucí IP HA portu boad nad tato konfigurace však nelze použít.
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Konfigurací s více porty HA na interní standardní Vyrovnávání zatížení
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>Konfigurací s více porty HA na interní standardní Vyrovnávání zatížení
 
 Pokud váš scénář vyžaduje, že nakonfigurujete více než jeden port frontends HA pro stejný fond back-end, lze dosáhnout pomocí: 
 - Konfigurace více než jeden front-endu privátní IP adresy pro jediný zdroj interní nástroj pro vyrovnávání zatížení.
 - Konfigurace více pravidel, kde každé pravidlo obsahuje jeden Vyrovnávání zatížení jedinečný front-endovou IP adresa je vybrána.
 - Vyberte **HA porty** možnost a nastavte **plovoucí IP adresa** k **povoleno** pro všechna pravidla Vyrovnávání zatížení.
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Interní Vyrovnávání zatížení s porty HA & veřejné Vyrovnávání zatížení v rámci stejné instancí back-end
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>Interní Vyrovnávání zatížení s porty HA & veřejné Vyrovnávání zatížení v rámci stejné instancí back-end
 
 Můžete nakonfigurovat **jeden** prostředek veřejné nástroj pro vyrovnávání zatížení pro back-endové prostředky společně s jeden interní standardní Vyrovnávání zatížení s vysokou DOSTUPNOSTÍ porty.
 

@@ -1,6 +1,6 @@
 ---
-title: "Spuštění sestav dotazy napříč více databází Azure SQL | Microsoft Docs"
-description: "Vytváření sestav pomocí cross klienta distribuované dotazy."
+title: Spuštění sestav dotazy napříč více databází Azure SQL | Microsoft Docs
+description: Vytváření sestav pomocí cross klienta distribuované dotazy.
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: articles
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: billgib
 ms.reviewer: sstein; AyoOlubeko
-ms.openlocfilehash: b470a9cf4e3c08e582bda3f0b02378e68de7c8cf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9ea308cb933948d22c7b9b14b031b9fa15af9c88
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí cross klienta distribuované dotazy
 
@@ -174,7 +174,7 @@ Je důležité si uvědomit, že nastavení **distribuční = SHARDED(VenueId)**
    ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -1,11 +1,11 @@
 ---
-title: "Služba Azure Instance metadat | Microsoft Docs"
-description: "Rozhraní rESTful získat informace o výpočetní, síťové a nadcházející údržbě události Linux Virtuálního počítače."
+title: Služba Azure Instance metadat | Microsoft Docs
+description: Rozhraní rESTful získat informace o výpočetní, síťové a nadcházející údržbě události Linux Virtuálního počítače.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: harijayms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 5c65157d1fdb0effd272437cc92c305ca4d1a510
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8da7573d8790bae8c54d2055fd355372625eccf7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Služba Azure Instance metadat
 
@@ -285,7 +285,7 @@ Data | Popis | Verze zavedená
 -----|-------------|-----------------------
 location | Oblast Azure virtuální počítač běží v | 2017-04-02 
 jméno | Název virtuálního počítače | 2017-04-02
-Nabídka | Nabízí informace o image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici. | 2017-04-02
+nabídka | Nabízí informace o image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici. | 2017-04-02
 Vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
 sku | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 verze | Verze bitové kopie virtuálního počítače | 2017-04-02
@@ -413,7 +413,7 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
    ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
     
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [naplánované události](scheduled-events.md)
 

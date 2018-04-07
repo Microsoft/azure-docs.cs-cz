@@ -1,10 +1,10 @@
 ---
-title: "Vytvořit a odeslat Ubuntu Linux virtuální pevný disk v Azure"
-description: "Naučte se vytvořit a odeslat Azure virtuálního pevného disku (VHD) obsahující Ubuntu Linux operačního systému."
+title: Vytvořit a odeslat Ubuntu Linux virtuální pevný disk v Azure
+description: Naučte se vytvořit a odeslat Azure virtuálního pevného disku (VHD) obsahující Ubuntu Linux operačního systému.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 4c49cbefafe71646ba08dd049baf50ff04463fdc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9a4588a444b5bfeb37f0bd98ada6a336baabb04
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -130,7 +130,7 @@ Tento článek předpokládá, že jste již nainstalovali Ubuntu Linux operačn
 
 9. Klikněte na tlačítko **akce -> vypnutí dolů** ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní jste připraveni používat Ubuntu Linux virtuální pevný disk pro vytvoření nového virtuálního počítače v Azure. Pokud je poprvé, že jste nahrávání souboru VHD do Azure, najdete v části [vytvořit virtuální počítač s Linuxem z vlastní disku](upload-vhd.md#option-1-upload-a-vhd).
 
 ## <a name="references"></a>Odkazy

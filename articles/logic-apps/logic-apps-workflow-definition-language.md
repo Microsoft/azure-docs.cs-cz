@@ -1,11 +1,11 @@
 ---
-title: "Pracovní postup schema Definition Language - Azure Logic Apps | Microsoft Docs"
-description: "Definovat pracovní postupy založené na schéma definice pracovního postupu pro Azure Logic Apps"
+title: Pracovní postup schema Definition Language - Azure Logic Apps | Microsoft Docs
+description: Definovat pracovní postupy založené na schéma definice pracovního postupu pro Azure Logic Apps
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 994b8946078ed9b4c8aa965a3bc0e117ba3185c0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema Definition Language pracovního postupu pro Azure Logic Apps
 
@@ -70,10 +70,10 @@ Následující příklad ukazuje definici parametru strukturu:
 
 |Název elementu|Požaduje se|Popis|  
 |------------------|--------------|-----------------|  
-|type|Ano|**Typ**: řetězec <p> **Deklarace**: `"parameters": {"parameter1": {"type": "string"}` <p> **Specifikace**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: securestring <p> **Deklarace**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specifikace**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: int <p> **Deklarace**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specifikace**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ**: bool <p> **Deklarace**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": true }}` <p> **Typ**: pole <p> **Deklarace**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ**: objekt <p> **Deklarace**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ**: secureobject <p> **Deklarace**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Poznámka:** `securestring` a `secureobject` typy nebudou zobrazeny v `GET` operace. Tento typ měli používat hesla, klíče a tajné klíče.|  
+|type|Ano|**Typ**: řetězec <p> **Deklarace**: `"parameters": {"parameter1": {"type": "string"}}` <p> **Specifikace**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: securestring <p> **Deklarace**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **Specifikace**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ**: int <p> **Deklarace**: `"parameters": {"parameter1": {"type": "int"}}` <p> **Specifikace**: `"parameters": {"parameter1": {"value" : 5}}` <p> **Typ**: bool <p> **Deklarace**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": true }}` <p> **Typ**: pole <p> **Deklarace**: `"parameters": {"parameter1": {"type": "array"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ**: objekt <p> **Deklarace**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ**: secureobject <p> **Deklarace**: `"parameters": {"parameter1": {"type": "object"}}` <p> **Specifikace**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Poznámka:** `securestring` a `secureobject` typy nebudou zobrazeny v `GET` operace. Tento typ měli používat hesla, klíče a tajné klíče.|  
 |Výchozí hodnota|Ne|Určuje výchozí hodnota pro parametr, pokud není zadaná žádná hodnota v době, kdy byl vytvořený.|  
 |allowedValues|Ne|Určuje pole povolených hodnot pro parametr.|  
-|metadata|Ne|Určuje další informace o parametru, jako je čitelný popis nebo návrhu dat používané v sadě Visual Studio nebo jiných nástrojů.|  
+|zprostředkovatele identity|Ne|Určuje další informace o parametru, jako je čitelný popis nebo návrhu dat používané v sadě Visual Studio nebo jiných nástrojů.|  
   
 Tento příklad ukazuje, jak můžete použít parametr v části textu, akce:  
   

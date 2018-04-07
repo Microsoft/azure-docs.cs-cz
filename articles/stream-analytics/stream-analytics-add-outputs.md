@@ -1,24 +1,19 @@
 ---
-title: Postup konfigurace dat vstupů pro úlohy Stream Analytics | Microsoft Docs
+title: Postup konfigurace dat vstupů pro úlohy Azure Stream Analytics
 description: Nakonfigurujte výstupy pro úlohy Stream Analytics | učení segmentu cesty.
-keywords: data výstupu přesun dat
-documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 3bbea3da-bfce-4af1-a15e-d4b23874034f
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/26/2017
 ms.author: jeanb
-ms.openlocfilehash: c7b6a519a8465221953a0f6fb20169431e229e30
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/26/2017
+ms.openlocfilehash: 2e54b7970e4748ff56844fb06fa5177ddb207fa6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-configure-data-outputs-for-stream-analytics-jobs"></a>Postup konfigurace dat vstupů pro úlohy Stream Analytics
 

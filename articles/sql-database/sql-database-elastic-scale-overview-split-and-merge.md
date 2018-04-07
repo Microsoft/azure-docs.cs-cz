@@ -1,19 +1,19 @@
 ---
-title: "Přesun dat mezi instancemi cloudu databáze | Microsoft Docs"
-description: "Vysvětluje, jak pracovat s horizontálních oddílů a přesun dat prostřednictvím samoobslužné hostované služby pomocí rozhraní API pro elastické databáze."
+title: Přesun dat mezi instancemi cloudu databáze | Microsoft Docs
+description: Vysvětluje, jak pracovat s horizontálních oddílů a přesun dat prostřednictvím samoobslužné hostované služby pomocí rozhraní API pro elastické databáze.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 9e2b231ad2e9fc5ab07532daef44da9870cef4ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c70279bd52f7b0b0e0cbc27742eca93d9af5e630
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 Pokud jste Software jako služba developer a najednou aplikace zde nevyskytlo strávíte vyžádání, budete muset zohlednit růst. Proto můžete přidat další databáze (horizontálních oddílů). Jak opětovné distribuci dat do nové databáze a to bez přerušení integritu dat? Použití **nástroji pro sloučení rozdělení** pro přesun dat z omezené databází do nové databáze.  

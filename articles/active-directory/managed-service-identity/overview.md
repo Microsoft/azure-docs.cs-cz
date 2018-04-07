@@ -1,24 +1,24 @@
 ---
-title: "Identita spravované služby (MSI) pro Azure Active Directory"
-description: "Přehled identita spravované služby pro prostředky Azure."
+title: Identita spravované služby (MSI) pro Azure Active Directory
+description: Přehled identita spravované služby pro prostředky Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 2d711d4fa48a1d10d4c37b9591a66e5b746f1ca7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Spravovaná služba Identity (MSI) pro prostředky Azure
 
@@ -38,7 +38,7 @@ Tady je příklad toho, jak spravovat identitu služby funguje s virtuálními p
 2. Azure Resource Manager vytvoří objekt služby ve službě Azure AD reprezentuje identitu virtuálního počítače. Objekt služby se vytvoří v klientovi Azure AD, který je důvěryhodný pro toto předplatné.
 3. Azure Resource Manager nakonfiguruje Podrobnosti objektu služby v rozšíření virtuálního počítače MSI virtuálního počítače.  Tento krok zahrnuje konfiguraci ID klienta a certifikát používaný službou rozšíření k získání přístupových tokenů z Azure AD.
 4. Teď, když se označuje identity instanční objekt virtuálního počítače, můžete udělit přístup k prostředkům Azure.  Například pokud váš kód potřebuje volat Azure Resource Manager, pak by přiřadíte instanční objekt Virtuálního počítače roli odpovídající pomocí řízení přístupu na základě Role (RBAC) ve službě Azure AD.  Pokud váš kód potřebuje volat Key Vault, by udělit přístup kódu k určitého tajného klíče nebo klíče v Key Vault.
-5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token.  Parametr prostředku určuje službu, na kterou je odesláno token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků = https://management.azure.com/.
+5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token.  Parametr prostředku určuje službu, na kterou je odesláno token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků =https://management.azure.com/.
 6. Rozšíření virtuálního počítače MSI používá jeho ID konfigurovaného klienta a certifikát k vyžádání tokenu přístupu z Azure AD.  Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupového tokenu pro volání na službu, která podporuje ověřování Azure AD.
 
@@ -62,7 +62,7 @@ Zkuste identita spravované služby kurzu se dozvíte začátku do konce scéná
 |                    | [Přístup k Azure úložiště přes SAS s virtuálního počítače s Linuxem identita spravované služby](tutorial-linux-vm-access-storage-sas.md) |
 |                    | [Přístup k prostředku mimo Azure AD s Azure Key Vault a identita služby spravovaných virtuálních počítačů Linux](tutorial-linux-vm-access-nonaad.md) |
 | Azure App Service  | [Identita spravované služby pomocí služby Azure App Service nebo Azure Functions](/azure/app-service/app-service-managed-service-identity) |
-| Azure – funkce     | [Identita spravované služby pomocí služby Azure App Service nebo Azure Functions](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | [Identita spravované služby pomocí služby Azure App Service nebo Azure Functions](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Identita spravované služby pomocí služby Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure Event Hubs   | [Identita spravované služby pomocí služby Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md) |
 
@@ -76,10 +76,12 @@ Následující služby Azure podporují identita spravované služby.
 
 | Služba | Status | Datum | Konfigurace | Získání tokenu |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | Preview | 2017 září | [portál Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Azure App Service | Preview | 2017 září | [portál Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | Preview | 2017 září | [portál Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Data Factory V2 | Preview | 2017 listopadu | [portál Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+| Azure Virtual Machines | Preview | 2017 září | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
+| Azure App Service | Preview | 2017 září | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions<sup>1</sup> | Preview | 2017 září | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Data Factory V2 | Preview | 2017 listopadu | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+
+<sup>1</sup> podpory azure Functions umožňuje uživatele kódu pro použití identity, ale triggerů a vazeb může stále vyžadují připojovací řetězce.
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure services, ověření podpory Azure AD
 
@@ -87,7 +89,7 @@ Následující služby podporují ověřování Azure AD a byly testovány s kli
 
 | Služba | ID prostředku | Status | Datum | Přiřadit přístup pro |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com | Dostupné | 2017 září | [portál Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
+| Azure Resource Manager | https://management.azure.com | Dostupné | 2017 září | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net | Dostupné | 2017 září | |
 | Azure Data Lake | https://datalake.azure.net | Dostupné | 2017 září | |
 | Azure SQL | https://database.windows.net | Dostupné | Říjen 2017 | |

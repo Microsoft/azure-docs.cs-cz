@@ -1,11 +1,11 @@
 ---
-title: "Rozšíření virtuálního počítače a funkce pro Windows v Azure | Microsoft Docs"
-description: "Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure, seskupené podle co se poskytují nebo zvýšit."
+title: Rozšíření virtuálního počítače a funkce pro Windows v Azure | Microsoft Docs
+description: Zjistěte, jaká rozšíření jsou k dispozici pro virtuální počítače Azure, seskupené podle co se poskytují nebo zvýšit.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0065468e4172f62dc1759c1905a8df48e91e01a6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: efb7f7cf911ad5dc753afffd077c473cc0faaf74
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálního počítače a funkce pro Windows
 
@@ -113,7 +113,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
 `Set-AzureRmVMExtension` Příkaz můžete použít ke spuštění všech rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzureRmVMExtension](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Rozšíření virtuálního počítače je použít pro existující virtuální počítač prostřednictvím portálu Azure. To pokud chcete udělat, vyberte virtuální počítač, který chcete použít, zvolte **rozšíření**a klikněte na tlačítko **přidat**. To poskytuje seznam dostupných rozšíření. Vyberte možnost, chcete a postupujte podle kroků v průvodci.
 

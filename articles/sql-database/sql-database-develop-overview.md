@@ -1,6 +1,6 @@
 ---
-title: "Přehled vývoje databázových aplikací služby SQL Database | Dokumentace Microsoftu"
-description: "Další informace o dostupných knihovnách připojení a osvědčených postupech pro aplikace, které se připojují ke službě SQL Database"
+title: Přehled vývoje databázových aplikací služby SQL Database | Dokumentace Microsoftu
+description: Další informace o dostupných knihovnách připojení a osvědčených postupech pro aplikace, které se připojují ke službě SQL Database
 services: sql-database
 author: stevestein
 manager: craigg
@@ -8,13 +8,13 @@ ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje aplikace SQL Database
 V tomto článku se seznámíte se základními předpoklady, které by měl mít vývojář na zřeteli při zapisování kódu pro připojení ke službě Azure SQL Database.
@@ -69,5 +69,5 @@ Elastické škálování zjednodušuje proces škálování out (a v).
 * [Data závislé směrování](sql-database-elastic-scale-data-dependent-routing.md).
 * [Začínáme s Azure SQL Database elastické škálování ve verzi Preview](sql-database-elastic-scale-get-started.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Prozkoumejte všechny [schopnosti služby SQL Database](sql-database-technical-overview.md).

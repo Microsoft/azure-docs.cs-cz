@@ -1,18 +1,18 @@
 ---
-title: "Osvědčené postupy pro synchronizaci dat SQL Azure (Preview) | Microsoft Docs"
-description: "Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizaci dat SQL Azure (Preview)."
+title: Osvědčené postupy pro synchronizaci dat SQL Azure (Preview) | Microsoft Docs
+description: Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizaci dat SQL Azure (Preview).
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Osvědčené postupy pro synchronizaci dat SQL (Preview) 
 
@@ -20,7 +20,7 @@ Tento článek popisuje osvědčené postupy pro synchronizaci dat SQL Azure (Pr
 
 Přehled synchronizaci dat SQL (Preview) najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md).
 
-## <a name="security-and-reliability"></a>Zabezpečení a spolehlivost
+## <a name="security-and-reliability"></a> Zabezpečení a spolehlivost
 
 ### <a name="client-agent"></a>Klientský agent
 
@@ -45,7 +45,7 @@ Azure SQL Database podporuje pouze jedinou sadu přihlašovacích údajů. Aby b
 
 ## <a name="setup"></a>Nastavení
 
-### <a name="database-considerations-and-constraints"></a>Informace se databází a omezení
+### <a name="database-considerations-and-constraints"></a> Informace se databází a omezení
 
 #### <a name="sql-database-instance-size"></a>Velikost instance databáze SQL
 
@@ -54,7 +54,7 @@ Když vytvoříte novou instanci databáze SQL, nastavte maximální velikost ta
 > [!IMPORTANT]
 > Synchronizaci dat SQL (Preview) ukládá další metadata s každou databázi. Ujistěte se, když vypočítat místo potřeby účtu pro tato metadata. Množství přidat režijní náklady související s šířku tabulky (například úzké tabulky vyžadují další režii) a objemu provozu.
 
-### <a name="table-considerations-and-constraints"></a>Aspekty tabulky a omezení
+### <a name="table-considerations-and-constraints"></a> Aspekty tabulky a omezení
 
 #### <a name="selecting-tables"></a>Výběr tabulek
 
@@ -66,7 +66,7 @@ Každá tabulka ve skupině synchronizace musí mít primární klíč. Službu 
 
 Než začnete používat synchronizaci dat SQL (Preview) v provozním prostředí, testování výkonu počátečních a pokračujících synchronizace.
 
-### <a name="provisioning-destination-databases"></a>Zřizování cílové databáze
+### <a name="provisioning-destination-databases"></a> Zřizování cílové databáze
 
 Náhled synchronizaci dat SQL (Preview) poskytuje autoprovisioning databáze basic.
 
@@ -90,7 +90,7 @@ Synchronizaci dat SQL (Preview) má následující omezení na autoprovisioning:
 -   Jenom v případě, že se pokoušíte na službu, použijte možnost autoprovisioning synchronizaci dat SQL (Preview).  
 -   V produkčním prostředí zřídit schéma databáze.
 
-### <a name="locate-hub"></a>Umístění databáze rozbočovače
+### <a name="locate-hub"></a> Umístění databáze rozbočovače
 
 #### <a name="enterprise-to-cloud-scenario"></a>Scénář Enterprise cloudu
 
@@ -107,7 +107,7 @@ Podle předchozích pokynů týkají konfigurace skupiny komplexní synchronizac
 
 ## <a name="sync"></a>Sync
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vyhněte se pomalé a nákladná počáteční synchronizaci
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Vyhněte se pomalé a nákladná počáteční synchronizaci
 
 V této části probereme počáteční synchronizace synchronizace skupiny. Zjistěte, jak pomoci zabránit počáteční synchronizaci z trvá déle a probíhá dražší než nezbytné.
 
@@ -121,13 +121,13 @@ Pokud jsou databáze v různých datových centrech, musí každý řádek přen
 
 Pokud je to možné spusťte s daty v jenom jedna z databází synchronizace skupiny.
 
-### <a name="design-to-avoid-synchronization-loops"></a>Návrh, aby se zabránilo synchronizace smyčky
+### <a name="design-to-avoid-synchronization-loops"></a> Návrh, aby se zabránilo synchronizace smyčky
 
 Smyčku synchronizace nastane, když jsou cyklické odkazy v rámci synchronizace skupiny. V tomto scénáři každé změně v jedné databáze se do nekonečna a pravidelného replikuje prostřednictvím databází ve skupině synchronizace.   
 
 Ujistěte se vyhnout smyčky synchronizace, protože způsobit snížení výkonu a může se výrazně zvýšit náklady.
 
-### <a name="handling-changes-that-fail-to-propagate"></a>Změny, které se nepodařilo rozšířit
+### <a name="handling-changes-that-fail-to-propagate"></a> Změny, které se nepodařilo rozšířit
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Z důvodů, které se nepodařilo rozšířit změny
 
@@ -151,9 +151,9 @@ Změny se nemusí podařit šířit z jednoho z následujících důvodů:
 Monitorování stavu synchronizace skupiny a databáze pravidelně přes rozhraní portálu a protokolu.
 
 
-## <a name="maintenance"></a>Údržby
+## <a name="maintenance"></a>Údržba
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Vyhněte se zastaralé databáze a synchronizaci skupin
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a> Vyhněte se zastaralé databáze a synchronizaci skupin
 
 Synchronizace skupiny nebo databáze ve skupině synchronizace se může stát zastaralý. Pokud je stav skupiny synchronizace **zastaralé**, přestane fungovat. Pokud je stav databáze **zastaralé**, data budou ztracena. Je vyhýbat se tento scénář namísto pokusu o obnovení z něj.
 
@@ -178,7 +178,7 @@ Aby se zabránilo zastaralé synchronizace skupiny:
 -   Aktualizujte hodnoty cizího klíče zahrnout hodnoty, které jsou obsaženy v řádcích se nezdařilo.
 -   Hodnoty data v řádku se nezdařilo aktualizujte tak, aby byly kompatibilní s schématu nebo cizí klíče v cílové databázi.
 
-### <a name="avoid-deprovisioning-issues"></a>Vyhněte se zrušení zřízení problémy
+### <a name="avoid-deprovisioning-issues"></a> Vyhněte se zrušení zřízení problémy
 
 V některých případech rušení registrace databáze s klientským agentem může dojít k synchronizaci, aby se nezdaří.
 
@@ -199,7 +199,7 @@ Pokud chcete obnovit z tento scénář:
 2. Přidejte databázi zpět do každé skupiny synchronizace, který jste odebrali z.  
 3. Nasaďte každou skupinu ovlivněných synchronizace (Tato akce zřídí databázi).  
 
-### <a name="modifying-your-sync-group"></a>Úprava skupiny synchronizace
+### <a name="modifying-your-sync-group"></a> Úprava skupiny synchronizace
 
 Nemáte pokus o odebrání databáze ze skupiny pro synchronizaci a pak upravte skupiny synchronizace bez nasazení první z nich změny.
 
@@ -207,16 +207,16 @@ Místo toho odeberte nejprve databázi ze skupiny pro synchronizaci. Potom nasa�
 
 Pokud se pokusíte odebrat databázi a pak upravte skupinu synchronizace bez nasazení první z nich změny, jeden nebo jiná operace selže. Rozhraní portálu, mohou být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku k obnovení stavu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
 
 -   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md)
 -   [Nastavit synchronizaci dat SQL Azure (Preview)](sql-database-get-started-sql-data-sync.md)
--   [Synchronizaci dat Azure SQL (Preview) monitorování s OMS analýzy protokolů](sql-database-sync-monitor-oms.md)
+-   [Synchronizaci dat Azure SQL (Preview) monitorování s analýzy protokolů](sql-database-sync-monitor-oms.md)
 -   [Řešení problémů s synchronizaci dat SQL Azure (Preview)](sql-database-troubleshoot-data-sync.md)  
 -   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL (Preview):  
     -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Synchronizace mezi databáze SQL Azure a místní databáze SQL serveru pomocí prostředí PowerShell](scripts/sql-database-sync-data-between-azure-onprem.md)  
+    -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL (Preview)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Další informace o databázi SQL najdete v tématu:

@@ -1,13 +1,13 @@
 ---
-title: "Virtuální počítač Azure PowerShell ukázky | Microsoft Docs"
-description: "Virtuální počítač Azure PowerShell ukázky"
+title: Virtuální počítač Azure PowerShell ukázky | Microsoft Docs
+description: Virtuální počítač Azure PowerShell ukázky
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: iainfou
-ms.openlocfilehash: 3f0466f5ecfabcf74e677e0c0f9fe2c33ca0519c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c2e8cf79e5d4f7900588108809fc487e36f43b3d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Ukázek Azure PowerShell virtuálního počítače
 

@@ -4,7 +4,7 @@ description: Přehled konceptu Azure výpočetní jednotky pro Windows. ACU posk
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2017
 ms.author: jonbeck
-ms.openlocfilehash: aa7fd198a2b9eba6b47afdbb124e6a632a0a24c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotky (ACU)
 

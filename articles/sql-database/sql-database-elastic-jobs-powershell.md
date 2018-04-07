@@ -1,19 +1,19 @@
 ---
-title: "Vytvářet a spravovat elastické úlohy pomocí prostředí PowerShell | Microsoft Docs"
-description: "Prostředí PowerShell použít ke správě fondů databáze SQL Azure"
+title: Vytvářet a spravovat elastické úlohy pomocí prostředí PowerShell | Microsoft Docs
+description: Prostředí PowerShell použít ke správě fondů databáze SQL Azure
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 17e4176129da747925596c66ca9df936a3828c2d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 425213f66a4b9960cf68a40c935fedff12f9f75d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvářet a spravovat úlohy elastické databáze SQL pomocí prostředí PowerShell (preview)
 

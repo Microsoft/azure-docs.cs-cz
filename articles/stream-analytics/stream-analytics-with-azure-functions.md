@@ -1,28 +1,23 @@
 ---
-title: "Spusťte Azure Functions s úlohy Azure Stream Analytics | Microsoft Docs"
-description: "Informace o konfiguraci Azure Functions jako výstupní jímku do úlohy Stream Analytics."
-keywords: "data výstup, streamování dat Azure – funkce"
-documentationcenter: 
+title: Spusťte Azure Functions z úlohy Azure Stream Analytics
+description: Tento článek popisuje postup konfigurace Azure Functions jako výstupní jímku v úlohy Stream Analytics na jednotce událostí úlohy.
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Spusťte Azure Functions s úlohy Azure Stream Analytics 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spusťte Azure Functions z úlohy Azure Stream Analytics 
 
-Funkce Azure s Azure Stream Analytics můžete spustit tak, že nakonfigurujete funkce jako jeden z jímky výstup do úlohy Stream Analytics. Functions je prostředí událostmi, výpočetní na vyžádání, které umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran. Tato schopnost funkce reagovat na aktivační události je přirozené výstup do úlohy Stream Analytics.
+Azure Functions ze služby Azure Stream Analytics můžete spustit tak, že nakonfigurujete funkce jako jeden z jímky výstup do úlohy Stream Analytics. Funkce jsou událostmi, výpočetní na vyžádání prostředí, které umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran. Tato schopnost funkce reagovat na aktivační události je přirozené výstup do úlohy Stream Analytics.
 
 Stream Analytics vyvolá funkce prostřednictvím protokolu HTTP aktivační události. Adaptér pro výstup funkce umožňuje uživatelům připojit funkce do služby Stream Analytics, tak, že události můžete spustit založená na dotazech Stream Analytics. 
 
@@ -153,7 +148,7 @@ Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real
    |---|---|
    |Alias pro výstup| Popisný název, který používáte v dotazu úlohy k odkazu na výstup. |
    |Možnost importu| Můžete použít funkci z aktuálního předplatného, nebo ručně zadejte nastavení, pokud se funkce nachází v jiné předplatné. |
-   |Aplikace zajišťující funkci| Název funkce aplikace. |
+   |Function App| Název funkce aplikace. |
    |Funkce| Název funkce v aplikaci funkce (název funkce run.csx).|
    |Velikost dávky maximální|Nastaví maximální velikost pro každou dávku výstup, která se posílají funkce. Ve výchozím nastavení je tato hodnota nastavena na 256 KB.|
    |Maximální počet dávek|Určuje maximální počet událostí v každé dávce, které je odesláno funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|

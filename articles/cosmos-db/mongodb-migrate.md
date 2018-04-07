@@ -1,12 +1,11 @@
 ---
-title: "Použít mongoimport a mongorestore s rozhraním API pro Azure Cosmos DB pro MongoDB | Microsoft Docs"
-description: "Další informace o použití mongoimport a mongorestore pro import dat do rozhraní API pro MongoDB účet"
+title: Použít mongoimport a mongorestore s rozhraním API pro Azure Cosmos DB pro MongoDB | Microsoft Docs
+description: Další informace o použití mongoimport a mongorestore pro import dat do rozhraní API pro MongoDB účet
 keywords: mongoimport mongorestore
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,22 +15,22 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Data pro Import MongoDB 
 
-Chcete-li migrovat data z MongoDB k účtu Azure Cosmos DB pro použití s rozhraním API pro MongoDB, postupujte takto:
+Pokud chcete migrovat data z MongoDB do účtu Azure Cosmos DB, aby je bylo možné použít pomocí rozhraní API pro MongoDB, musíte:
 
 * Stáhněte si buď *mongoimport.exe* nebo *mongorestore.exe* z [MongoDB stažení softwaru](https://www.mongodb.com/download-center).
-* Získat vaše [rozhraní API pro MongoDB připojovací řetězec](connect-mongodb-account.md).
+* Získat [připojovací řetězec API pro MongoDB](connect-mongodb-account.md).
 
 Pokud importujete data z MongoDB a plánujete používat s Azure Cosmos DB, měli byste použít [nástroj pro migraci dat](import-data.md) k importu dat.
 
-Tento kurz obsahuje následující úlohy:
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Získávání připojovacího řetězce
@@ -110,7 +109,7 @@ Příklad:
     
 3. Určení latence z vašeho počítače ke cloudové službě Azure Cosmos DB:
     
-    a. Zapnutí podrobného protokolování z prostředí MongoDB pomocí tohoto příkazu:```setVerboseShell(true)```
+    a. Zapnutí podrobného protokolování z prostředí MongoDB pomocí tohoto příkazu: ```setVerboseShell(true)```
     
     b. Spusťte jednoduchý dotaz pro databázi: ```db.coll.find().limit(1)```. Zobrazí odpověď podobné následujícímu:
 
@@ -118,7 +117,7 @@ Příklad:
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Odeberte vloženého dokumentu před migrací zajistit, že neexistují žádné duplicitní dokumenty. Dokumenty můžete odebrat pomocí tohoto příkazu:```db.coll.remove({})```
+4. Odeberte vloženého dokumentu před migrací zajistit, že neexistují žádné duplicitní dokumenty. Dokumenty můžete odebrat pomocí tohoto příkazu: ```db.coll.remove({})```
 
 5. Vypočítat přibližnou *batchSize* a *numInsertionWorkers* hodnoty:
 
@@ -146,7 +145,7 @@ Příklad:
    mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete pokračovat v dalším kurzu a zjistěte, jak dotazovat MongoDB dat pomocí Azure Cosmos DB. 
 

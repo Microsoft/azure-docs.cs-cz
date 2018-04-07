@@ -1,20 +1,20 @@
 ---
-title: "Funkce Always Encrypted: Azure SQL Database – úložiště certifikátů Windows | Microsoft Docs"
-description: "Tento článek ukazuje, jak zajistit citlivá data v databázi SQL s šifrování databáze pomocí Průvodce vždycky šifrovaná v serveru SQL Server Management Studio (SSMS). Je také ukazuje, jak chcete ukládat šifrovací klíče v úložišti certifikátů systému Windows."
-keywords: "šifrování dat, šifrování sql, šifrování databáze, citlivých dat, vždycky šifrovaná."
+title: 'Funkce Always Encrypted: Azure SQL Database – úložiště certifikátů Windows | Microsoft Docs'
+description: Tento článek ukazuje, jak zajistit citlivá data v databázi SQL s šifrování databáze pomocí Průvodce vždycky šifrovaná v serveru SQL Server Management Studio (SSMS). Je také ukazuje, jak chcete ukládat šifrovací klíče v úložišti certifikátů systému Windows.
+keywords: šifrování dat, šifrování sql, šifrování databáze, citlivých dat, vždycky šifrovaná.
 services: sql-database
 author: stevestein
 manager: jhubbard
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1bb3f6bd3b4bfc1546e992734a85921248eff8fd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38c4a724cc963370e60ae796729476c3bbc0342a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Funkce Always Encrypted: Chrání citlivá data v databázi SQL a ukládat šifrovací klíče v úložišti certifikátů systému Windows
 
@@ -497,7 +497,7 @@ Pomocí aplikace SSMS přístup k datům ve formátu prostého textu, můžete p
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po vytvoření databáze, která používá vždycky šifrovaná, můžete provést následující akce:
 
 * Tuto ukázku spusťte z jiného počítače. Nebude mít přístup k šifrovacím klíčům, tak, aby ho nebudete mít přístup k datům ve formátu prostého textu a nespustí úspěšně.

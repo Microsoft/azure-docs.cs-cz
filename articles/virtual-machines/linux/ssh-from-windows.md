@@ -1,11 +1,11 @@
 ---
-title: "Používat klíče SSH se systémem Windows pro virtuální počítače s Linuxem | Microsoft Docs"
-description: "Zjistěte, jak vygenerovat a používat klíče SSH na počítači se systémem Windows pro připojení k virtuální počítač s Linuxem v Azure."
+title: Používat klíče SSH se systémem Windows pro virtuální počítače s Linuxem | Microsoft Docs
+description: Zjistěte, jak vygenerovat a používat klíče SSH na počítači se systémem Windows pro připojení k virtuální počítač s Linuxem v Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Postup použití SSH klíče s Windows v Azure
 > [!div class="op_single_selector"]
 > * [Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-> * [Linux nebo Mac.](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+> * [Linux/Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 >
 >
 
@@ -50,7 +50,7 @@ Pokud chcete použít něco jiného než Bash pro systém Windows, jsou běžné
 * [Git pro Windows](https://git-for-windows.github.io/)
 * [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
-* [Emulaci](https://cygwin.com/)
+* [Cygwin](https://cygwin.com/)
 
 
 ## <a name="which-key-files-do-you-need-to-create"></a>Klíče souborů, které je třeba vytvořit?
@@ -66,7 +66,7 @@ Zde jsou scénáře nasazení a typy souborů, které můžete použít v každ�
 ## <a name="install-git-for-windows"></a>Instalace Gitu pro Windows
 V předchozí části uveden více balíčků, které zahrnují `openssl` nástroje pro systém Windows. Tento nástroj je potřeba k vytvoření veřejné a soukromé klíče. Následující příklady jsou upřesněny postupy instalace a použití **Git pro Windows**, i když můžete podle toho, která balíček dáváte přednost. **Git pro Windows** dává vám přístup k některé další open-source softwaru ([OSS](https://en.wikipedia.org/wiki/Open-source_software)) nástrojů a pomůcek, které mohou být užitečné při práci s virtuální počítače s Linuxem.
 
-1. Stáhněte a nainstalujte **Git pro Windows** z následujícího umístění: [https://git-for-windows.github.io/](https://git-for-windows.github.io/).
+1. Stáhněte a nainstalujte **Git pro Windows** z následujícího umístění: [ https://git-for-windows.github.io/ ](https://git-for-windows.github.io/).
 2. Pokud potřebujete konkrétně je změnit, přijměte výchozí nastavení během procesu instalace.
 3. Spustit **Git Bash** z **nabídky Start** > **Git** > **Git Bash**. Konzole vypadá podobně jako v následujícím příkladu:
 
@@ -177,7 +177,7 @@ PuTTY znovu, je běžné SSH klient pro systém Windows. Jste libovolného klien
     ![Vyberte PuTTY privátní klíč pro ověřování](./media/ssh-from-windows/putty-auth-dialog.png)
 4. Klikněte na tlačítko **otevřete** pro připojení k virtuálnímu počítači
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Můžete také vygenerovat veřejné a soukromé klíče [pomocí OS X a Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Další informace o Bash pro systém Windows a o výhodách operačních systémů nástroje snadno dostupné na počítači s Windows najdete v tématu [Bash na Ubuntu v systému Windows](https://msdn.microsoft.com/commandline/wsl/about).

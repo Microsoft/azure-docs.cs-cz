@@ -1,10 +1,10 @@
 ---
-title: "Konfigurace softwaru diskového pole RAID na virtuálním počítači se systémem Linux | Microsoft Docs"
-description: "Další informace o použití mdadm ke konfiguraci RAID na systému Linux v Azure."
+title: Konfigurace softwaru diskového pole RAID na virtuálním počítači se systémem Linux | Microsoft Docs
+description: Další informace o použití mdadm ke konfiguraci RAID na systému Linux v Azure.
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
 Je běžný scénář pomocí softwaru diskového pole RAID na virtuální počítače s Linuxem v Azure k dispozici více připojených datových disků jako jedno zařízení RAID. Obvykle to lze zlepšit výkon a umožňuje lepší výkon ve srovnání s použitím právě jeden disk.
@@ -61,7 +61,7 @@ V tomto příkladu vytvoříme na /dev/sdc oddíl jediný disk. Nový diskový o
                     sectors (command 'u').
     ```
 
-2. Stiskněte klávesu n příkazového řádku k vytvoření  **n** ové oddílu:
+2. Stiskněte klávesu n příkazového řádku k vytvoření **n**ové oddílu:
 
     ```bash
     Command (m for help): n
@@ -233,7 +233,7 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
     # sudo fstrim /data
     ```
 
-    **RHEL nebo CentOS**
+    **RHEL/CentOS**
     ```bash
     # sudo yum install util-linux
     # sudo fstrim /data

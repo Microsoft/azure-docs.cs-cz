@@ -1,19 +1,19 @@
 ---
-title: "Vrácení upgradu aplikace – Azure SQL Database | Microsoft Docs"
-description: "Další informace o použití geografická replikace databáze SQL Azure pro podporu online upgrady cloudových aplikací."
+title: Vrácení upgradu aplikace – Azure SQL Database | Microsoft Docs
+description: Další informace o použití geografická replikace databáze SQL Azure pro podporu online upgrady cloudových aplikací.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 07/16/2016
+ms.date: 04/01/2018
 ms.author: sashan
-ms.openlocfilehash: 6efc14e5f8fab5baafff50e8eb6844f8decca1c9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1799befb2b5f59f1794bbca2a1daa2a13990882
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Správa postupné upgrady cloudových aplikací pomocí SQL Database aktivní geografickou replikaci
 > [!NOTE]
@@ -126,7 +126,7 @@ Klíč **využít** této možnosti je, aniž by to ohrozilo vaší kontinuity p
 ## <a name="summary"></a>Souhrn
 Tyto dvě metody upgradu, které jsou popsané v článku se liší v složitost a dolaru náklady ale oba soustředit na minimalizovat čas, kdy je omezený na jen pro čtení operace koncového uživatele. Tento čas je přímo definované doba trvání upgradu skriptu. Nezávisí na velikost databáze, úroveň služby, které jste zvolili, konfiguraci webu a dalších faktorů, které nelze snadno řídit. Je to proto, že všechny přípravné kroky jsou odpojené od jednotlivé kroky upgradu a lze provést bez dopadu na produkční aplikaci. Efektivitu skriptu pro upgrade je klíčovým faktorem, který určuje činnost koncového uživatele při upgradech. Proto je nejlepší způsob je možné zvýšit činnosti spojené se zaměříte na provedení upgradu skriptu co nejúčinnější.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přehled kontinuity obchodních a scénářů najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md).
 * Další informace o Azure SQL Database automatizované zálohování najdete v tématu [automatizované zálohování SQL Database](sql-database-automated-backups.md).
 * Další informace o použití automatizované zálohování pro obnovení, najdete v části [obnovit databázi ze zálohy pro automatické](sql-database-recovery-using-backups.md).

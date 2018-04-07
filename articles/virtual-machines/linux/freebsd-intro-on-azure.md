@@ -1,11 +1,11 @@
 ---
-title: "Úvod do FreeBSD v Azure | Microsoft Docs"
-description: "Další informace o použití FreeBSD virtuální počítače v Azure"
+title: Úvod do FreeBSD v Azure | Microsoft Docs
+description: Další informace o použití FreeBSD virtuální počítače v Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: thomas1206
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9c7cf223eab3e989436e12c39b122f2aee7619a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Úvod do FreeBSD v Azure
 Toto téma obsahuje přehled spuštěným virtuálním počítačem FreeBSD v Azure.
@@ -130,7 +130,7 @@ $ sudo <COMMAND>
 Kořenové prostředí můžete volitelně můžete získat pomocí `sudo -s`.
 
 ## <a name="known-issues"></a>Známé problémy
-[Agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.2 má [známý problém] (https://github.com/Azure/WALinuxAgent/pull/517), která způsobí selhání přidělení pro virtuální počítač FreeBSD v Azure. Oprava zaznamenaná [agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.3 a pozdějších verzích. 
+[Agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.2 má [známý problém] (https://github.com/Azure/WALinuxAgent/pull/517) , která způsobí selhání přidělení pro virtuální počítač FreeBSD v Azure. Oprava zaznamenaná [agenta hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) verze 2.2.3 a pozdějších verzích. 
 
 ## <a name="next-steps"></a>Další postup
 * Přejděte na [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) vytvoření FreeBSD virtuálního počítače.

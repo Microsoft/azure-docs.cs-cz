@@ -1,6 +1,6 @@
 ---
-title: "Připojení k databázi SQL pomocí C a C++ | Microsoft Docs"
-description: "Použijte ukázkový kód v této úvodní vytvářet moderní aplikace s C++ a zálohovány výkonné relační databáze v cloudu s Azure SQL Database."
+title: Připojení k databázi SQL pomocí C a C++ | Microsoft Docs
+description: Použijte ukázkový kód v této úvodní vytvářet moderní aplikace s C++ a zálohovány výkonné relační databáze v cloudu s Azure SQL Database.
 services: sql-database
 author: edmacauley
 manager: craigg
@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.custom: develop apps
 ms.devlang: cpp
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 04/01/2018
 ms.author: edmacauley
-ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 49cbed06d92843fcf0c444e7ef2bb42df2addf7e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k databázi SQL pomocí C a C++
 Tento příspěvek je zaměřen na vývojáře C a C++ pokusu o připojení k databázi SQL Azure. Ho je rozdělena na oddíly, můžete přejít na oddíl, který nejlépe zaznamená váš zájem. 
@@ -122,7 +122,7 @@ Můžete najít řešení GetStarted, které obsahuje všechny ukázky v tomto �
 * [Ukázka ODBC C++ Windows](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), stažení ukázky Windows C++ rozhraní ODBC pro připojení k Azure SQL
 * [Ukázka ODBC C++ Linux](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), stažení ukázky Linux C++ rozhraní ODBC pro připojení k Azure SQL
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zkontrolujte [přehled vývoje SQL databáze](sql-database-develop-overview.md)
 * Další informace o [referenční dokumentace rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 

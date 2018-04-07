@@ -1,24 +1,19 @@
 ---
-title: 'Azure Stream Analytics: Pochopení a upravit jednotek streamování | Microsoft Docs'
-description: Pochopte, jaké faktory dopad na výkon v Azure Stream Analytics.
-keywords: streamování jednotky, výkon dotazů
+title: Rady pro pochopení a upravit jednotek streamování v Azure Stream Analytics
+description: Tento článek popisuje nastavení jednotek streamování a dalších faktorů, které mají vliv výkon v Azure Stream Analytics.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 4312b5f5a64048ad697ae398697da1c59a75e75c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: ede0c0aa7b0e795760123246366f947889224b2d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Rady pro pochopení a upravit jednotek streamování
 
@@ -121,7 +116,7 @@ Když přidáte funkce UDF, načte Azure Stream Analytics prostředí JavaScript
 
 
 ## <a name="get-help"></a>Podpora
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Vytvoření paralelní dotazy v Azure Stream Analytics](stream-analytics-parallelization.md)

@@ -1,11 +1,10 @@
 ---
-title: "Více hlavní databázi architektury s Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o návrhu architektury aplikací s místní čtení a zápisu v různých geografických oblastech s Azure Cosmos DB."
+title: Více hlavní databázi architektury s Azure Cosmos DB | Microsoft Docs
+description: Další informace o návrhu architektury aplikací s místní čtení a zápisu v různých geografických oblastech s Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
 ms.devlang: multiple
@@ -15,11 +14,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e02b286db42d8a9de8f1df8263f40c3732484038
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 941af42561afbdf91cb3529fd51971ee88fafdbc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Více hlavní globálně replikované databáze architektury s Azure Cosmos DB
 Podporuje Azure Cosmos DB připraveného [globální replikace](distribute-data-globally.md), která umožňuje distribuci dat do několika oblastí přístup s nízkou latencí kdekoli v zatížení. Tento model se často používá pro vydavatele nebo příjemce zatížení tam, kde je zapisovač v jedné zeměpisné oblasti a globálně distribuované čtečky v jiných oblastech (čtení). 
@@ -166,7 +165,7 @@ Nyní Podíváme se na hlavní data musíme implementovat metody přístupu. Tad
 ## <a id="Architecture"></a>Konfigurace účtu Azure Cosmos DB
 Zaručit místní čte a zapisuje, jsme musí oddílu data nejen v oddílu klíče, ale také podle vzoru zeměpisné přístup do oblasti. Model spoléhá na nutnosti geograficky replikované Azure Cosmos DB databázového účtu pro každou oblast. Například se dvěma oblastmi, zde je instalace s pro zápisy více oblasti:
 
-| Název účtu | Zápis oblast | Oblast pro čtení |
+| Název účtu | Oblast zápisu | Oblast čtení |
 | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
@@ -197,7 +196,7 @@ Zde je fragment kódu znázorňující k chybě při inicializaci klienty v DAL,
 
 V předchozí instalaci může předat vrstva přístupu k datům všech zápisů místní účet, podle které se nasadí. Čtení ze oba účty, a získat globální zobrazení dat provádí čtení. Tuto metodu lze rozšířit na jako v mnoha oblastech podle potřeby. Zde je ukázka, instalační program s tři zeměpisné oblasti:
 
-| Název účtu | Zápis oblast | Oblast pro čtení 1 | Přečtěte si oblasti 2 |
+| Název účtu | Oblast zápisu | Oblast pro čtení 1 | Přečtěte si oblasti 2 |
 | --- | --- | --- | --- |
 | `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
 | `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |

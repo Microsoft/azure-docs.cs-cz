@@ -1,13 +1,13 @@
 ---
-title: "Podrobné vzdálené plochy, řešení potíží s v Azure | Microsoft Docs"
-description: "Přečtěte si podrobné řešení problémů s kroky pro vzdálené plochy chyby, kde nemůžete virtuálních počítačích s Windows v Azure"
+title: Podrobné vzdálené plochy, řešení potíží s v Azure | Microsoft Docs
+description: Přečtěte si podrobné řešení problémů s kroky pro vzdálené plochy chyby, kde nemůžete virtuálních počítačích s Windows v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: genlin
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: "Nelze se připojit k vzdálené ploše, řešení potíží s vzdálené plochy, nemůže připojit ke vzdálené ploše, vzdálené plochy chyby, řešení potíží vzdálené plochy, potížích se vzdálenou plochou"
+keywords: Nelze se připojit k vzdálené ploše, řešení potíží s vzdálené plochy, nemůže připojit ke vzdálené ploše, vzdálené plochy chyby, řešení potíží vzdálené plochy, potížích se vzdálenou plochou
 ms.assetid: 9da36f3d-30dd-44af-824b-8ce5ef07e5e0
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/06/2017
 ms.author: genli
-ms.openlocfilehash: afbaa3afc78efd220d74def2e9f106e9fbd1ee2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1485bc5ac7ae47df9a1a36c8b88d6515b5624360
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení potíží připojení ke vzdálené ploše na Windows virtuálních počítačů v Azure
 Tento článek obsahuje podrobný postup řešení potíží diagnostikovat a opravit chyby komplexní vzdálené plochy pro systém Windows Azure virtuální počítače.
@@ -39,7 +39,7 @@ Následující součásti jsou součástí připojení ke vzdálené ploše:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Než budete pokračovat, může pomoci duševně zkontrolovat, co se změnil od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači. Například:
+Než budete pokračovat, může pomoci duševně zkontrolovat, co se změnil od posledního úspěšného připojení vzdálené plochy k virtuálnímu počítači. Příklad:
 
 * Veřejnou IP adresu virtuálního počítače nebo cloudové služby, která obsahuje virtuální počítač (také nazývané virtuální IP adresy [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) se změnila. Selhání RDP může být způsobeno vaší mezipaměti klienta DNS má stále *starou IP adresu* zaregistrovat pro název DNS. Vyprázdnění mezipaměti klienta DNS a zkuste se znovu připojit virtuální počítač. Nebo se připojte přímo s novou virtuální IP adresu.
 * Aplikace třetích stran používají ke správě vašeho připojení ke vzdálené ploše místo použití připojení vygenerované portálu Azure. Ověřte, že konfigurace aplikace obsahuje správný port TCP pro přenosy vzdálené plochy. Tento port pro klasické virtuální počítač v můžete zkontrolovat [portál Azure](https://portal.azure.com), kliknutím na nastavení Virtuálního počítače > Koncové body.
@@ -191,12 +191,12 @@ Exit-PSSession
 
 Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure také používá port TCP. 3398 jako svůj vnitřní port. Restartujte virtuální počítač Azure a znovu se připojit ke vzdálené ploše.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 [Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítače s Windows](reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)
 
 [Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Řešení potíží s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[Poradce při potížích s přístupem k aplikaci spuštěné na virtuálním počítači Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

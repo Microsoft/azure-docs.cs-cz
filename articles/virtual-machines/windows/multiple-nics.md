@@ -1,11 +1,11 @@
 ---
-title: "Vytvářet a spravovat virtuální počítače Windows v Azure, použít několik síťových adaptérů | Microsoft Docs"
-description: "Naučte se vytvářet a spravovat virtuální počítač Windows, který má několik síťových adaptérů připojený pomocí šablon Azure PowerShell nebo správce prostředků."
+title: Vytvářet a spravovat virtuální počítače Windows v Azure, použít několik síťových adaptérů | Microsoft Docs
+description: Naučte se vytvářet a spravovat virtuální počítač Windows, který má několik síťových adaptérů připojený pomocí šablon Azure PowerShell nebo správce prostředků.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0f19ed89e49b34ff4b8abf5d22e7d59b89fd6d72
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows, který má několik síťových adaptérů
 Virtuální počítače (VM) v Azure může mít několik virtuálních síťových karet (NIC) připojené k nim. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek popisuje, jak vytvořit virtuální počítač, který má několik síťových adaptérů, které jsou k němu připojen. Můžete také zjistěte, jak přidat nebo odebrat síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -116,11 +116,13 @@ Nyní spusťte Sestavit vaše konfigurace virtuálního počítače. Limit velik
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Nakonec vytvořte virtuální počítač s [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+5. Vytvoření virtuálního počítače s [nové AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
 
     ```powershell
     New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
     ```
+
+6. Přidání tras pro sekundární síťové adaptéry operačního systému pomocí kroků v [konfigurace operačního systému pro několik síťových adaptérů](#configure-guest-os-for-multiple-nics).
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Přidat síťovou kartu k existující virtuální počítač
 Pokud chcete přidat do existující virtuální počítač virtuální síťovou kartu, můžete zrušit přidělení virtuálního počítače, přidejte virtuální síťovou kartu a pak spusťte virtuální počítač. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](resize-vm.md).
@@ -175,6 +177,8 @@ Pokud chcete přidat do existující virtuální počítač virtuální síťovo
     ```powershell
     Start-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
+
+5. Přidání tras pro sekundární síťové adaptéry operačního systému pomocí kroků v [konfigurace operačního systému pro několik síťových adaptérů](#configure-guest-os-for-multiple-nics).
 
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Odeberte síťový adaptér ze stávajícího virtuálního počítače
 Odebrat virtuální síťový adaptér ze stávajícího virtuálního počítače, můžete zrušit přidělení virtuálního počítače, odeberte virtuálního síťového adaptéru, a pak spusťte virtuální počítač.
@@ -233,6 +237,8 @@ Můžete také použít `copyIndex()` číslo připojit k názvu zdroje. Potom m
 
 Kompletní příklad, jak si můžete přečíst [vytvoření několik síťových adaptérů pomocí šablony Resource Manageru](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
+Přidání tras pro sekundární síťové adaptéry operačního systému pomocí kroků v [konfigurace operačního systému pro několik síťových adaptérů](#configure-guest-os-for-multiple-nics).
+
 ## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurace hostovaný operační systém pro několik síťových adaptérů
 
 Azure přiřadí výchozí bránu na první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní může, ale komunikovat s prostředky mimo jejich podsíť, když postup povolení komunikace se liší pro různé operační systémy.
@@ -287,7 +293,7 @@ Azure přiřadí výchozí bránu na první (primární) síťové rozhraní př
 
     Trasy označené *192.168.1.1* pod **brány**, je trasy, která je k dispozici ve výchozím nastavení pro primární síťové rozhraní. Trasa *192.168.2.1* pod **brány**, je trasy, které jste přidali.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkontrolujte [velikosti virtuálních počítačů Windows](sizes.md) při pokusu o vytvoření virtuálního počítače, který má několik síťových adaptérů. Věnujte pozornost maximální počet síťových adaptérů, které podporuje každý velikost virtuálního počítače. 
 
 

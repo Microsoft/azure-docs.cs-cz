@@ -1,19 +1,19 @@
 ---
-title: "Monitorování databáze Azure SQL pomocí zobrazení dynamické správy | Microsoft Docs"
-description: "Zjistěte, jak najít a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy ke sledování Microsoft Azure SQL Database."
+title: Monitorování databáze Azure SQL pomocí zobrazení dynamické správy | Microsoft Docs
+description: Zjistěte, jak najít a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy ke sledování Microsoft Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8185e2748f4aeec4343fa649d8b54958cdcb262a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 96255ed92e0dc05aa5a215a78a070f60f001e8bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy
 Microsoft Azure SQL Database umožňuje podmnožinu zobrazení dynamické správy diagnostikovat problémy s výkonem, které mohou být způsobeny blokované nebo dlouhodobé dotazy, kritických bodů prostředků, dotaz nízký plány a tak dále. Toto téma obsahuje informace o tom, jak zjišťují běžné problémy s výkonem pomocí zobrazení dynamické správy.

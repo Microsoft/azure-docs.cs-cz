@@ -1,24 +1,19 @@
 ---
-title: Průvodci odstraňováním potíží Azure Stream Analytics | Microsoft Docs
-description: Řešení potíží s vaší úloze Stream Analytics
-keywords: řešení potíží s Průvodce
-documentationcenter: ''
+title: Průvodce řešením potíží pro Azure Stream Analytics
+description: Tento článek popisuje postupy řešení úlohy Azure Stream Analytics, připojení, vstupy, výstupy, dotazů a data.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 87e8b99cb2774966ce22c76e1afed6a754749e9d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 44777946fdc829da222ffdd67dfecfa3bf240be7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Průvodce řešením potíží pro Azure Stream Analytics
 
@@ -87,7 +82,7 @@ Chcete-li dosáhnout nejlepších výsledků při řešení potíží úlohu slu
 
 ## <a name="get-help"></a>Podpora
 
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 

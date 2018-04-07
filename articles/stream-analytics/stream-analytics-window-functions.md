@@ -1,24 +1,19 @@
 ---
-title: Úvod do funkce okno Stream Analytics | Microsoft Docs
-description: Další informace o tři funkce okna v Stream Analytics (přeskakujícího, vše, klouzavé).
-keywords: přeskakujícího okna, posuvném okně, posílání okna
-documentationcenter: ''
+title: Úvod do Azure Stream Analytics oddílová funkce
+description: Tento článek popisuje tři oddílová funkce (přeskakujícího, vše, klouzavé) používané v úlohy Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 3757834ff816fffc4571aeef8c164c2230c0f7c2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>Úvod do okna Stream Analytics funkce
 V mnoha reálném čase streamování scénáře je potřeba provádět operace pouze na data obsažená v dočasné systému windows. Nativní podpora pro oddílová funkce je klíčovou funkcí Azure Stream Analytics, která přemísťuje se ručička na vývojáře produktivitu při vytváření úlohy zpracování komplexní datového proudu. Stream Analytics umožňuje vývojářům používat [ **Přeskakujícího**](https://msdn.microsoft.com/library/dn835055.aspx), [ **Hopping** ](https://msdn.microsoft.com/library/dn835041.aspx) a [ **posuvné** ](https://msdn.microsoft.com/library/dn835051.aspx) windows k provádění dočasné operací na datový proud. Je to, že všechny [okno](https://msdn.microsoft.com/library/dn835019.aspx) operations výstup výsledků na **end** okna. Výstup okna bude jedinou událost podle používá agregační funkci. Události budou mít časové razítko konce okna a všechny funkce okna jsou definovány s pevnou délkou. Nakonec je důležité si uvědomit, že je třeba používat všechny funkce okno v [ **GROUP BY** ](https://msdn.microsoft.com/library/dn835023.aspx) klauzule.
@@ -41,7 +36,7 @@ Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, 
 ![Stream Analytics okno funkce klouzavé Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="getting-help-with-window-functions"></a>Získání nápovědy k okno funkce
-Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

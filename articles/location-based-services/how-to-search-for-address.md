@@ -1,18 +1,17 @@
 ---
-title: "Tom, jak hledat adresu pomocí služby Azure na základě polohy (preview) vyhledávání | Microsoft Docs"
-description: "Zjistěte, jak hledat adresu pomocí Azure umístění na základě Services (preview) vyhledávací služba"
+title: Tom, jak hledat adresu pomocí služby Azure na základě polohy (preview) vyhledávání | Microsoft Docs
+description: Zjistěte, jak hledat adresu pomocí Azure umístění na základě Services (preview) vyhledávací služba
 services: location-based-services
-keywords: "Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO."
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Postup nalezení adresu pomocí služby Azure na základě polohy (preview) vyhledávání
 Služba vyhledávání se RESTful sada rozhraní API určená pro vývojáře k vyhledání adresy, míst, bodů zájmu, výpisech obchodních a jiných zeměpisné údaje. Služba vyhledávání zeměpisnou šířku a délku přiřadí konkrétní adresu, křížové ulici, geografické funkci nebo v případě zájmu (bodů zájmu). Zeměpisné šířky a délky hodnot vrácených rozhraním API služby vyhledávání můžete použít jako parametry v jiných služeb na základě umístění Azure jako je například rozhraní API toku provozu a trasy.

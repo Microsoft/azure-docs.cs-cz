@@ -1,11 +1,11 @@
 ---
-title: "Resetovat heslo místního systému Windows bez agenta Azure | Microsoft Docs"
-description: "Obnovení hesla místního uživatelského účtu systému Windows, když Azure hostovaného agenta, není nainstalován nebo je funkční na virtuálním počítači"
+title: Resetovat heslo místního systému Windows bez agenta Azure | Microsoft Docs
+description: Obnovení hesla místního uživatelského účtu systému Windows, když Azure hostovaného agenta, není nainstalován nebo je funkční na virtuálním počítači
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 2f9efdbaf0ae79781d6f9c7dfa4c8317185be79e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ad892aee646b1a5f8c96d5bdeca24b7a0d88f38e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Obnovit heslo místního systému Windows pro virtuální počítač Azure v režimu offline
 Můžete resetovat hesla místního systému Windows virtuálního počítače v Azure pomocí [portál Azure nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zadaný je nainstalován agent hosta Azure. Tato metoda je primární způsob, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na potíže s agentem Azure hosta neodpovídá nebo je možné nainstalovat, nahráním vlastní image, můžete ručně obnovit heslo systému Windows. Tento článek popisuje, jak resetovat heslo místního účtu pomocí zdrojový OS virtuální disk se připojuje k jiným virtuálním Počítačem. Podle pokynů popsaných v tomto článku se nevztahují na řadiče domény systému Windows. 

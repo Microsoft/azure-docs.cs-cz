@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: markvi
 ms.reviewer: luleon
-ms.openlocfilehash: 45f366767daa6557fd9577a2a27a6923e63da384
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 89508f555f9d56e9de2af188e696b7c5f465691d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory
 Přiřadit uživatele nebo skupiny do podnikové aplikace, musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.
@@ -101,6 +101,7 @@ Tento příklad přiřadí uživatele Britta Simon k [Microsoft Analytics síti 
     ```powershell
     # Assign the values to the variables
     $app_role_name = "Analyst (Limited access)"
+    $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
     ```
 
 5. Spusťte následující příkaz k přiřazení uživatele k roli aplikace:

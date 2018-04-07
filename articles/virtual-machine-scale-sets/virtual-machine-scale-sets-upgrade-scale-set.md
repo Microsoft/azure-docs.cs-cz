@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Upravit škálovací sadu virtuálních počítačů
 V průběhu životního cyklu aplikací musíte upravit nebo aktualizovat vaše škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci sady škálování nebo změnit konfiguraci aplikace. Tento článek popisuje, jak upravit existující měřítku nastavit pomocí rozhraní REST API, prostředí Azure PowerShell nebo Azure CLI 2.0.
@@ -367,7 +367,7 @@ Některé změny může použít pro konkrétní virtuální počítače místo 
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="application-updates"></a>Aktualizace aplikace
-Pokud je aplikace nasazená na měřítko nastavit prostřednictvím rozšíření, aktualizaci konfigurace rozšíření způsobí, že aplikace aktualizovat v souladu s zásad upgradu. Například pokud máte novou verzi skript běžet v rozšíření vlastních skriptů, je může aktualizovat *fileUris* vlastnost tak, aby odkazoval na nový skript. V některých případech můžete chtít vynutit aktualizaci, i když konfigurace rozšíření je beze změny (například aktualizaci skript bez změny na identifikátor URI skriptu). V těchto případech můžete upravit *forceUpdateTag* chcete vynutit aktualizaci. Tato vlastnost nebude interpretovat platformy Azure. Pokud změníte hodnotu, neexistuje žádný vliv na způsob spuštění rozšíření. Ke změně jednoduše vynutí rozšíření znovu spustit. Další informace o *forceUpdateTag*, najdete v článku [dokumentace k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate).
+Pokud je aplikace nasazená na měřítko nastavit prostřednictvím rozšíření, aktualizaci konfigurace rozšíření způsobí, že aplikace aktualizovat v souladu s zásad upgradu. Například pokud máte novou verzi skript běžet v rozšíření vlastních skriptů, je může aktualizovat *fileUris* vlastnost tak, aby odkazoval na nový skript. V některých případech můžete chtít vynutit aktualizaci, i když konfigurace rozšíření je beze změny (například aktualizaci skript bez změny na identifikátor URI skriptu). V těchto případech můžete upravit *forceUpdateTag* chcete vynutit aktualizaci. Tato vlastnost nebude interpretovat platformy Azure. Pokud změníte hodnotu, neexistuje žádný vliv na způsob spuštění rozšíření. Ke změně jednoduše vynutí rozšíření znovu spustit. Další informace o *forceUpdateTag*, najdete v článku [dokumentace k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít s všechna rozšíření, ne jenom rozšíření vlastních skriptů.
 
 Také je běžné pro aplikace pro nasazení pomocí vlastní image. Tento scénář je popsaná v následující části.
 

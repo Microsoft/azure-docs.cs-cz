@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření kompletní prostředí Linux pomocí Azure CLI 1.0 | Microsoft Docs"
-description: "Vytvoření úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, seskupování, veřejnou IP adresu a skupinu zabezpečení sítě, všechny od základů pomocí Azure CLI 1.0."
+title: Vytvoření kompletní prostředí Linux pomocí Azure CLI 1.0 | Microsoft Docs
+description: Vytvoření úložiště, virtuální počítač s Linuxem, virtuální síť a podsíť, nástroj pro vyrovnávání zatížení, seskupování, veřejnou IP adresu a skupinu zabezpečení sítě, všechny od základů pomocí Azure CLI 1.0.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a43e138d3497e01fe9e0e5c55a4a66adac767c6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Vytvoření kompletní prostředí Linux pomocí Azure CLI 1.0
 V tomto článku jsme sestavení jednoduchá síť se nástroj pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduchý computing. Provede jsme proces příkazu command, dokud nebudete mít dvě funkční a zabezpečené virtuální počítače s Linuxem do kterých můžete připojit z kdekoli v síti Internet. Potom můžete přesunout složitější sítě a prostředí.
@@ -795,7 +795,7 @@ data:    Backend address pool id         : /subscriptions/guid/resourceGroups/my
 info:    network lb rule create command OK
 ```
 
-## <a name="create-a-load-balancer-health-probe"></a>Vytvoření stavu sondu nástroje pro vyrovnávání zatížení.
+## <a name="create-a-load-balancer-health-probe"></a>Vytvoření sondy stavu nástroje pro vyrovnávání zatížení
 Stavu testů pravidelně kontroluje virtuálních počítačů, které jsou za naše pro vyrovnávání zatížení a ujistěte se, že jsou operační a reagovat na požadavky, jak jsou definovány. V opačném případě se odebere z operace zajistit, že uživatelé nejsou směrovat na ně. Můžete definovat vlastní kontroly pro kontrolu stavu, spolu s intervalech a hodnoty časového limitu. Další informace o sondy stavu najdete v tématu [nástroj pro vyrovnávání zatížení sondy](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Následující příklad vytvoří TCP stavu zjištěný pojmenované `myHealthProbe`:
 
 ```azurecli
@@ -1287,5 +1287,5 @@ azure group deployment create --resource-group myNewResourceGroup \
 
 Můžete chtít číst [Další informace o tom, jak nasadit ze šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Další informace o tom, jak přírůstkově aktualizovat prostředí, použijte soubor parametrů a přístup k šablony z jedno umístění úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní jste připraveni začít pracovat s více síťovými součástmi a virtuálními počítači. Tato ukázka prostředí můžete vytváří vaše aplikace pomocí základních komponent zavedená sem.

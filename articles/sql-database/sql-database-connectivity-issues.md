@@ -1,20 +1,20 @@
 ---
-title: "Opravte chyby připojení SQL, přechodné chybě. | Microsoft Docs"
-description: "Informace o odstraňování potíží, diagnostikovat a zabránit chyba připojení SQL nebo přechodné chybě ve službě Azure SQL Database."
-keywords: "připojení SQL, připojovací řetězec, problémy s připojením, přechodná chyba, došlo k chybě připojení"
+title: Opravte chyby připojení SQL, přechodné chybě. | Microsoft Docs
+description: Informace o odstraňování potíží, diagnostikovat a zabránit chyba připojení SQL nebo přechodné chybě ve službě Azure SQL Database.
+keywords: připojení SQL, připojovací řetězec, problémy s připojením, přechodná chyba, došlo k chybě připojení
 services: sql-database
 author: dalechen
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 04/01/2018
 ms.author: daleche
-ms.openlocfilehash: f6b5f825d7f8111075fe37b5dc29d174928d913e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 27e565845ec538a1982ec0742d7ca723fa9c348c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Oprava a diagnostika chyb připojení SQL a přechodných chyb služby SQL Database a jejich předcházení
 Tento článek popisuje, jak zabránit, odstraňování, diagnostikovat a opravit chyby připojení a přechodné chyby, které klientské aplikace, zaznamená při komunikuje se službou Azure SQL Database. Zjistěte, jak nakonfigurovat logika opakovaných pokusů, sestavení připojovacího řetězce a další nastavení připojení.
@@ -421,7 +421,7 @@ public bool IsTransient(Exception ex)
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o řešení potíží s další běžné problémy s připojením databáze SQL najdete v tématu [řešení problémů s připojením k databázi SQL Azure](sql-database-troubleshoot-common-connection-issues.md).
 * [Knihovny připojení k databázi SQL a SQL Server](sql-database-libraries.md)
 * [Připojení serveru SQL Server sdružování (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

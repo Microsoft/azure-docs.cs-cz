@@ -1,24 +1,19 @@
 ---
-title: Pomocí Azure Machine Learning koncové body v Stream Analytics | Microsoft Docs
-description: Funkce definované uživatelem počítače jazyk v Stream Analytics
-keywords: ''
-documentationcenter: ''
+title: Pomocí koncových bodů Machine Learning v Azure Stream Analytics
+description: Tento článek popisuje, jak používat jazyk počítače uživatelem definované funkce v Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 406b258f-b8c2-4e55-953c-b7f84e8e5354
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: a7d76d6015f8e9f08d3493b1c1e237858c341592
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: bdc6041258e4a5ecf602d19c0d912918f86af313
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Počítač integrace učení v Stream Analytics
 Stream Analytics podporuje uživatelsky definované funkce, které volají na koncové body Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [Stream Analytics REST API knihovny](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné dokončení implementace tuto funkci v Stream Analytics. Kurz také byl odeslán a je k dispozici [zde](stream-analytics-machine-learning-integration-tutorial.md).

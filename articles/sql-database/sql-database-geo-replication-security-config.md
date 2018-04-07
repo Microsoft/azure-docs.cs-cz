@@ -1,19 +1,19 @@
 ---
-title: "Konfigurace zabezpečení databáze SQL Azure pro zotavení po havárii | Microsoft Docs"
-description: "Další důležité informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo převzetí služeb při selhání na sekundární server."
+title: Konfigurace zabezpečení databáze SQL Azure pro zotavení po havárii | Microsoft Docs
+description: Další důležité informace o zabezpečení pro konfiguraci a správu zabezpečení po obnovení databáze nebo převzetí služeb při selhání na sekundární server.
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 10/13/2016
+ms.date: 04/01/2018
 ms.author: sashan
-ms.openlocfilehash: 758096692c83ae08c8ef2bce8ec67dd9bc6e878d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6b4b599fee9a8ff5b4674cf26ca19b22230d6364
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurovat a spravovat zabezpečení Azure SQL Database geografické obnovení nebo převzetí služeb při selhání 
 
@@ -90,7 +90,7 @@ Posledním krokem je můžete přejít na cílový server nebo servery a generov
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o správě přístupu k databázi a přihlášení najdete v tématu [zabezpečení SQL Database: správu přístupu a přihlašovací zabezpečení databáze](sql-database-manage-logins.md).
 * Další informace o uživatele databáze s omezením naleznete v tématu [obsažené databáze uživatelé – provádění vaše databáze přenosné](https://msdn.microsoft.com/library/ff929188.aspx).
 * Informace o používání a konfiguraci aktivní geografickou replikaci, najdete v článku [aktivní geografickou replikaci](sql-database-geo-replication-overview.md)

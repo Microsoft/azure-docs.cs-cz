@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace zabezpečení rozdělení sloučení | Microsoft Docs"
-description: "Nastavit x409 certifikáty pro šifrování se službou rozdělení či sloučení pro elastické škálování."
+title: Konfigurace zabezpečení rozdělení sloučení | Microsoft Docs
+description: Nastavit x409 certifikáty pro šifrování se službou rozdělení či sloučení pro elastické škálování.
 metakeywords: Elastic Database certificates security
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 05/27/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení rozdělení sloučení
 Pokud chcete používat službu rozdělení či sloučení, musíte nakonfigurovat správně zabezpečení. Služba je součástí funkce elastické škálování sady Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz služby](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -111,7 +111,7 @@ Výchozí konfigurace odmítne všechny přístup ke koncovému bodu HTTP. Toto 
 Výchozí konfigurace umožňuje veškerý přístup ke koncovému bodu HTTPS. Toto nastavení může být další s omezeným přístupem.
 
 ### <a name="changing-the-configuration"></a>Změna konfigurace
-Skupiny pravidly řízení přístupu, která se týkají a koncového bodu se konfigurují v  **<EndpointAcls>**  tématu **konfigurační soubor služby**.
+Skupiny pravidly řízení přístupu, která se týkají a koncového bodu se konfigurují v **<EndpointAcls>** tématu **konfigurační soubor služby**.
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
@@ -429,7 +429,7 @@ V Průvodci importem certifikátu:
 9. Klikněte na tlačítko **OK** na všechny systémy windows dialogové okno.
 
 ## <a name="upload-certificate"></a>Nahrání certifikátu
-V [portálu Azure](https://portal.azure.com/)
+Na webu [Azure Portal](https://portal.azure.com/)
 
 1. Vyberte **cloudových služeb**.
 2. Vyberte cloudovou službu.

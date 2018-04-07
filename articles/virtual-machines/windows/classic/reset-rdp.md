@@ -1,13 +1,13 @@
 ---
-title: "Resetovat heslo nebo konfigurace vzdálené plochy na virtuální počítač s Windows v Azure | Microsoft Docs"
-description: "Zjistěte, jak resetovat heslo k účtu nebo služeb vzdálené plochy na virtuální počítač s Windows vytvořené pomocí modelu nasazení Classic pomocí portálu Azure nebo Azure PowerShell."
+title: Resetovat heslo nebo konfigurace vzdálené plochy na virtuální počítač s Windows v Azure | Microsoft Docs
+description: Zjistěte, jak resetovat heslo k účtu nebo služeb vzdálené plochy na virtuální počítač s Windows vytvořené pomocí modelu nasazení Classic pomocí portálu Azure nebo Azure PowerShell.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 200e5667f4bc2ca0b7dc041eef990b7aff0914ff
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 516cb740f9acad19dac77db0239341b42a2b27fe
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>Obnovení služby Vzdálená plocha nebo jeho heslo pro přihlášení do systému Windows virtuálního počítače, vytvořené pomocí modelu nasazení Classic
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ Vzdálená plocha a přihlašovací údaje můžete resetovat několika různým
 - [Resetovat pomocí portálu Azure](#azure-portal)
 - [Resetovat pomocí Azure PowerShell](#vmaccess-extension-and-powershell)
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 Můžete použít [portál Azure](https://portal.azure.com) resetovat služby Vzdálená plocha. Rozbalte nabídku portálu, klikněte na tři řádky v levém horním rohu a pak klikněte na **virtuálních počítačů (klasické)**:
 
 ![Procházením vyhledejte virtuálních počítačů Azure](./media/reset-rdp/Portal-Select-Classic-VM.png)
@@ -102,7 +102,7 @@ Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' 
 
 Tento příkaz nastaví fDenyTSConnections hodnotu registru na 0, povolení připojení ke vzdálené ploše.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud neodpovídá rozšíření přístup k virtuálnímu počítači Azure a nemůžete resetovat heslo, můžete [resetovat offline místní heslo pro Windows](../reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Tato metoda je pokročilejší proces a vyžaduje, abyste připojit virtuální pevný disk problematické virtuálního počítače k jiným virtuálním Počítačem. Postupujte podle kroků popsaných v tomto článku nejprve a pouze pokusí metodu offline heslo resetovat jako poslední možnost.
 
 [Rozšíření virtuálního počítače Azure a funkce](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

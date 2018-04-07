@@ -1,24 +1,19 @@
 ---
-title: Využít paralelizace dotazu v Azure Stream Analytics | Microsoft Docs
-description: Postup konfigurace vstupní oddíly, ladění definice dotazu a nastavení úlohu streamování jednotky škálování úlohy Stream Analytics.
-keywords: data streamování, streamování zpracování dat, optimalizovat analytics
+title: Použít dotaz paralelizace a škálování v Azure Stream Analytics
+description: Tento článek popisuje postup konfigurace vstupní oddíly, ladění definice dotazu a nastavení úlohu streamování jednotky škálování úlohy Stream Analytics.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využít paralelizace dotazu v Azure Stream Analytics
 Tento článek ukazuje, jak chcete využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak se škálovat úlohy Stream Analytics nakonfigurováním vstupní oddíly a ladění analytics definice dotazu.
@@ -50,7 +45,7 @@ Při práci s Stream Analytics můžete využít oddíly v výstupy:
 -   IoT Hub (třeba explicitně nastaven klíč oddílu)
 -   Service Bus
 
-Výstupy PowerBI, SQL a datový sklad SQL nepodporují dělení. Ale můžete můžete stále oddílu vstup jak je popsáno v [v této části](#multi-step-query-with-a-grouping-key) 
+Výstupy PowerBI, SQL a datový sklad SQL nepodporují dělení. Ale můžete můžete stále oddílu vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
 
 Další informace o oddílech najdete v následujících článcích:
 
@@ -65,7 +60,7 @@ Další informace o oddílech najdete v následujících článcích:
 
 2. Jakmile data rozložená na vstupní straně, musí se ujistěte, že váš dotaz je rozdělený do oddílů. To vyžaduje, abyste použili **PARTITION BY** v všechny kroky. Jsou povoleny několik kroků, ale musí mít všechny oddíly pomocí stejného klíče. V současné době rozdělení klíč musí být nastavena na **PartitionId** v pořadí pro úlohu, která má být plně paralelní.  
 
-3. Většina našich výstupu můžete využít výhod rozdělení do oddílů, ale pokud používáte výstupní typ, které nepodporují dělení úlohu nebudou plně paralelní. Odkazovat [výstup části](#Outputs) další podrobnosti.
+3. Většina našich výstupu můžete využít výhod rozdělení do oddílů, ale pokud používáte výstupní typ, které nepodporují dělení úlohu nebudou plně paralelní. Odkazovat [výstup části](#outputs) další podrobnosti.
 
 4. Počet vstupních oddílů musí být roven počtu oddílů výstup. Výstup úložiště objektů BLOB aktuálně nepodporuje oddíly. Ale to nevadí, protože dědí schéma rozdělení oddílů nadřazeného dotazu. Zde jsou příklady oddílu hodnot, které umožňují plně paralelní úlohy:  
 
@@ -221,7 +216,7 @@ Tento dotaz můžete škálovat na 24 služby SUs.
 
 
 ## <a name="get-help"></a>Podpora
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

@@ -1,12 +1,12 @@
 ---
-title: "Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tom, jak připojit Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB"
+title: Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tom, jak připojit Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/07/2016
 ms.author: v-livech
-ms.openlocfilehash: 4951860630f0aad107d0846d52ebe4423ee0b91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 442c08a03ff3eb8e4c86f8190e16b74744aa9dd3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-by-using-smb-with-azure-cli-10"></a>Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 1.0 rozhraní příkazového řádku Azure
 
@@ -127,7 +127,7 @@ Pro tento podrobný návod jsme vytvořte součásti potřebné nejprve vytvoři
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Přidání disku do virtuálního počítače s Linuxem](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

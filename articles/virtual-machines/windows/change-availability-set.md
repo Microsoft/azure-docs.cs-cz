@@ -1,12 +1,12 @@
 ---
-title: "Změna nastavení dostupnosti virtuální počítače | Microsoft Docs"
-description: "Zjistěte, jak změnit sadu dostupnosti pro virtuální počítače pomocí Azure PowerShell a modelu nasazení Resource Manager."
-keywords: 
+title: Změna nastavení dostupnosti virtuální počítače | Microsoft Docs
+description: Zjistěte, jak změnit sadu dostupnosti pro virtuální počítače pomocí Azure PowerShell a modelu nasazení Resource Manager.
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 44c90f90-bc9a-4260-a36f-5465e2a1ef94
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: c10c947b6fc0737a7b9fba6b7f3efcae1f96638b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 938614d7427f691dcacbafa324694a9a7f37d3ca
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Změňte sadu dostupnosti pro virtuální počítač s Windows
 Následující kroky popisují postup změna nastavení dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač můžete přidat jenom při vytvoření sadu dostupnosti. Chcete-li změnit dostupnost nastaven, je potřeba odstranit a znovu vytvořte virtuální počítač. 
@@ -154,6 +154,6 @@ Následující skript představuje příklad shromažďování požadované info
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přidejte další úložiště k virtuálnímu počítači tak, že přidáte další [datový disk](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

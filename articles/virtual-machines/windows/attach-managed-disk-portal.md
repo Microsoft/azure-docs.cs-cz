@@ -1,13 +1,13 @@
 ---
-title: "Připojit spravované datový disk k virtuálnímu počítači Windows - Azure | Microsoft Docs"
-description: "Jak připojit nový spravovaný datový disk pro virtuální počítač s Windows v portálu Azure pomocí modelu nasazení Resource Manager."
+title: Připojit spravované datový disk k virtuálnímu počítači Windows - Azure | Microsoft Docs
+description: Jak připojit nový spravovaný datový disk pro virtuální počítač s Windows v portálu Azure pomocí modelu nasazení Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 603d1c423ff2039915bdd3d5ed4a79b78d491edc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 14721b2f2bc7913c2b7eadfc5ee801a223201ea9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Tom, jak připojit spravované datový disk k virtuálnímu počítači Windows na portálu Azure
 
@@ -38,7 +38,7 @@ Můžete také [připojit datový disk pomocí prostředí Powershell](attach-di
 3. Na stránce virtuálního počítače klikněte na tlačítko **disky**.
 4. Na **disky** klikněte na tlačítko **+ přidat datový disk**.
 5. V rozevírací nabídky pro nový disk, vyberte **vytvořit disk**.
-6. V **spravovaných disků na vytvořit** stránky, zadejte název pro disk a upravte nastavení podle potřeby. Až budete hotovi, klikněte na tlačítko **vytvořit**.
+6. V **spravovaných disků na vytvořit** stránky, zadejte název pro disk a upravte nastavení podle potřeby. Až budete hotoví, klikněte na **Vytvořit**.
 7. V **disky** klikněte na tlačítko **Uložit** uložíte novou konfiguraci disku pro virtuální počítač.
 6. Jakmile Azure vytvoří disk a připojí jej k virtuálnímu počítači, na nový disk, je uvedena ve nastavení disku virtuálního počítače v části **datových disků**.
 

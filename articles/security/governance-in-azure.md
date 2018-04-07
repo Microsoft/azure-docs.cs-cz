@@ -1,12 +1,12 @@
 ---
-title: "Zásady správného řízení v Azure | Microsoft Docs"
-description: "Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise."
+title: Zásady správného řízení v Azure | Microsoft Docs
+description: Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="governance-in-azure"></a>Zásady správného řízení v Azure
 
@@ -199,7 +199,7 @@ V roce 2014 si uvedla Azure Resource Manager, která přidá koncept skupinu pro
 
 Resource Manager umožňuje umístit prostředky do smysluplný skupin pro správu, fakturace nebo přírodní spřažení. Jak už bylo zmíněno dříve, Azure má dva modely nasazení. V dříve [modelu Classic](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model), základní jednotkou správy byl odběr. Bylo obtížné rozdělení prostředků v rámci předplatného, která vedla k vytvoření velkého počtu předplatných. Pomocí modelu Resource Manager jsme viděli zavedení skupiny prostředků.
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení s Azure. [Skupina prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) může zahrnovat všechny prostředky pro řešení, nebo jenom prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. [Skupina prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) může zahrnovat všechny prostředky pro řešení, nebo jenom prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
 
 Další doporučení k šablonám najdete v tématu [Osvědčené postupy pro vytváření šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices).
 
@@ -285,7 +285,7 @@ Používáte rozhraní API Správce Azure fakturace k získání dat využití a
 
 Použití Azure [API využití prostředků](https://msdn.microsoft.com/library/azure/mt219003) načíst vaše data Odhadované využití platformy Azure. Rozhraní API obsahuje:
 
-- **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com/) nebo pomocí [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k datům použití odběru. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure.
+- **Řízení přístupu Azure na základě rolí** -konfigurovat zásady přístupu na [portál Azure](https://portal.azure.com/) nebo pomocí [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení, které uživatele nebo aplikace můžete získat přístup k data o využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volající do čtečky fakturace, čtečky, vlastníka nebo přispěvatele role získat přístup k dat o využití pro konkrétní předplatné Azure.
 
 - **Hodinové nebo denní agregace** – volající můžete určit, jestli chtějí jejich Azure využití dat každou hodinu intervalů nebo denních intervalů. Výchozí hodnota je denně.
 
@@ -379,7 +379,7 @@ Sledování, protokolování a auditování poskytují základ pro sledování a
 
 Zabezpečení Azure zásad správného řízení z GPO v AD DS k řízení všech správce Windows rozhraní, například sdílení souborů. Zahrňte pracovní stanice pro správu do procesů auditování, sledování a protokolování. Sledujte všechny přístupy a chování správců a vývojářů.
 
-### <a name="azure-security-center"></a>Azure security center
+### <a name="azure-security-center"></a>Azure Security Center
 
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) poskytuje centrální zobrazení stavu zabezpečení prostředků ve předplatných a poskytuje doporučení, které pomáhají zabránit ohroženými prostředky. Podrobnější zásady (například používá zásady skupiny konkrétní prostředků, které povolí enterprise podle jejich postavení riziku, které budou adresování) ji můžete povolit.
 
@@ -410,33 +410,33 @@ Azure Security Center monitoruje následující prostředky Azure:
 
 - Partnerských řešení integrovaných ve vašem předplatném Azure například brány firewall webových aplikací na virtuálních počítačích a na [App Service Environment](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme).
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-Zabezpečení informací OMS softwaru vývoj a služby týmu a [zásad správného řízení programu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) a [dodržování předpisů Center důvěřovat Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak zřídit požadavky na zabezpečení OMS, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
+Zabezpečení informací analýzy protokolů softwaru vývoj a služby týmu a [zásad správného řízení programu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [důvěřovat Microsoft Azure Center](https://azure.microsoft.com/support/trust-center/) a [dodržování předpisů Centrum zabezpečení Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak zřídit požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
 
-Každý člen týmu vývoj OMS obdrží formální aplikace bezpečnostního školení. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt softwaru je chráněn systém správy verzí.
+Každý člen týmu vývoj analýzy protokolů obdrží formální aplikace bezpečnostního školení. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt softwaru je chráněn systém správy verzí.
 
-Společnost Microsoft nemá tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby ve službě Microsoft. Informace o zabezpečení osob tvoří tým a nejsou přidruženy engineering oddělení, které vyvíjet OMS. Zabezpečení osoby mít vlastní řetězec správy a provedení nezávislé posuzování produktů a služeb k zajištění zabezpečení a dodržování předpisů.
+Společnost Microsoft nemá tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby ve službě Microsoft. Informace o zabezpečení osob tvoří tým a nejsou přidruženy engineering oddělení, které vyvíjet analýzy protokolů. Zabezpečení osoby mít vlastní řetězec správy a provedení nezávislé posuzování produktů a služeb k zajištění zabezpečení a dodržování předpisů.
 
-Operations Management Suite (používá se také zkratka OMS) je kolekce služeb pro správu, které byly od prvopočátku navržené pro cloud. Namísto nasazení a správa na místní prostředky, jsou součástí OMS zcela hostované v Azure. Konfigurace je minimální a během několika minut můžete začít pracovat.
+Azure poskytuje kolekci služeb pro správu, které byly navrženy v cloudu od začátku. Namísto nasazení a správa na místní prostředky, jsou tyto součásti zcela hostované v Azure. Konfigurace je minimální a během několika minut můžete začít pracovat.
 
 ![Sada Operations Manager](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-To, že služby OMS běží v cloudu, neznamená, že nemohou efektivně spravovat místní prostředí.
+Právě, protože služby běží v cloudu analýzy protokolů neznamená, že to není možné efektivně spravujte v místním prostředí.
 
 Uvedené agenta na všechny Windows nebo počítač se systémem Linux v datovém centru a bude posílat data do analýzy protokolů, které mohou být analyzovány spolu se všemi ostatními daty, které jsou shromážděny z cloudu nebo na místní služby. Využít cloudu pro zálohování a vysokou dostupnost pro místní prostředky pomocí Azure Backup a Azure Site Recovery.
 
 Runbooky v cloudu nemohou běžně přistupovat k místním prostředkům, ale můžete nainstalovat agenta na jeden nebo více počítačů, které budou hostovat runbooky v datovém centru. Když spustíte runbook, stačí určit, jestli ho chcete spustit v cloudu, nebo na místním pracovním procesu.
 
-Základní funkce OMS poskytuje sada služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
+Sada služeb, které běží v Azure poskytuje základní funkce služby analýzy protokolů. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
 
 ![Sada Operations Manager](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Operace systému Azure manager rozšiřuje jeho funkce tím, že poskytuje řešení pro správu. [Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou hotových sady logiky, které implementují scénáři správy využívá jednu nebo více služeb OMS.
+Operace systému Azure manager rozšiřuje jeho funkce tím, že poskytuje řešení pro správu. [Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou hotových sady logiky, které implementují scénáři správy využívá jednu nebo více služeb správy.
 
 ![Spravovat operace systému Azure](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Jsou dostupná různá řešení od Microsoftu a partnerů, která můžete snadno přidat do předplatného Azure ke zvýšení hodnoty investice do OMS.
+Různá řešení jsou dostupné od Microsoftu a partnerů můžete snadno přidat do vašeho předplatného Azure k zvýšit hodnotu svou investici do analýzy protokolů.
 
 Jako partner můžete vytvořit vlastní řešení pro podporu aplikací a služeb a poskytněte uživatelům prostřednictvím Azure Marketplace nebo šablony rychlý Start.
 
@@ -455,7 +455,7 @@ Výstrahy jsou k dispozici mezi různé služby, včetně:
 >[!Note]
 > V tématu [nastavit výstrahy ve službě Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) a [sledování dostupnosti a odezvy žádné webu](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability).
 
-- Analýzy protokolů (Operations Management Suite): Umožňuje směrování aktivity a diagnostických protokolů k analýze protokolů. Služby Operations Management Suite umožňuje metrika, log a ostatní typy výstrah.
+- Analýzy protokolů: Umožňuje směrování aktivity a diagnostických protokolů k analýze protokolů a povoluje metrika, log a ostatní typy výstrah.
 
 >[!Note]
 > Další informace najdete v tématu výstrahy v [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts).
@@ -484,7 +484,7 @@ Zde jsou hlavní nástroje:
 - **System Center Operations Manager (SCOM)** je pro správu a monitorování instalace velké cloudu. Je již obeznámeni s ním jako nástroj pro správu pro místní server systému Windows a na základě technologie Hyper-V-cloudy, ale můžete také integrovat a spravovat aplikace Azure. Kromě jiných věcí ho můžete nainstalovat na existující živé aplikace Application Insights. Pokud aplikace přestane fungovat, zde zjistíte v sekundách.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Osvědčené postupy pro vytváření šablon Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices).
 

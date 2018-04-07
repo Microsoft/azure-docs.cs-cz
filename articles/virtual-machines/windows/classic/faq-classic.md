@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy pro klasické virtuální počítače s Windows | Microsoft Docs"
-description: "Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače Azure Windows vytvořené pomocí modelu nasazení classic."
+title: Nejčastější dotazy pro klasické virtuální počítače s Windows | Microsoft Docs
+description: Poskytuje odpovědi na některé časté otázky týkající se virtuální počítače Azure Windows vytvořené pomocí modelu nasazení classic.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: e3df76fc-5163-4914-9972-c1efe78cd6f8
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-ms.openlocfilehash: a88013dbae7a8445562ac24da15766cafd4d8182
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 6e40d9269206b82fefbcdb3ecc80a1ca23c7c0ae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>Časté otázky týkající se virtuální počítače Azure Windows vytvořené pomocí modelu nasazení classic
 > [!IMPORTANT] 

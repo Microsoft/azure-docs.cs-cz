@@ -1,19 +1,19 @@
 ---
-title: "Přehled služby Azure SQL Database elastické dotazu | Microsoft Docs"
-description: "Elastické dotaz můžete spustit dotaz jazyka Transact-SQL, která přesahuje více databází."
+title: Přehled služby Azure SQL Database elastické dotazu | Microsoft Docs
+description: Elastické dotaz můžete spustit dotaz jazyka Transact-SQL, která přesahuje více databází.
 services: sql-database
 manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 04/27/2016
+ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 76a8332b99639bacee994824b69624d7fd457a7f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6367418fb07b2ab5b425609540c653678a207ebc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Elastické dotazu Přehled služby Azure SQL Database (preview)
 Funkce elastické dotazu (ve verzi preview) umožňuje spuštění dotazu jazyka Transact-SQL, která přesahuje více databází ve službě Azure SQL Database. Umožňuje provádět dotazy mezidatabázové přístup do vzdálených tabulek, připojovat a nástroje Microsoft a třetích stran (aplikace Excel, PowerBI, Tableau atd.) k dotazování mezi datové vrstvy s více databází. Pomocí této funkce můžete škálovat dotazy do vrstev velkých objemů dat v databázi SQL a zobrazit výsledky v sestavách business intelligence (BI).
@@ -138,7 +138,7 @@ Elastické dotazu je zahrnut do náklady databáze Azure SQL Database. Všimnět
 ## <a name="feedback"></a>Váš názor
 Předejte zpětná vazba týkající se vašich zkušeností s elastické dotazy s námi Livefyre níže, fórech MSDN nebo v zásobníku. Snažíme se ve všech druhy zpětnou vazbu o službu (závad, případné nedostatky, funkce mezery).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vertikální dělení kurzu, najdete v části [Začínáme s mezidatabázové dotazu (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
 * Syntaxe a ukázkové dotazy pro svisle oddílů data, najdete v části [dotazování svisle na oddíly dat)](sql-database-elastic-query-vertical-partitioning.md)

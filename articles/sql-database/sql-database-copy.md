@@ -1,19 +1,19 @@
 ---
-title: "Zkopírujte Azure SQL database | Microsoft Docs"
-description: "Vytvořte stavu transakční konzistence kopii existující databázi Azure SQL na stejný server nebo jiný server."
+title: Zkopírujte Azure SQL database | Microsoft Docs
+description: Vytvořte stavu transakční konzistence kopii existující databázi Azure SQL na stejný server nebo jiný server.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 06/15/2017
+ms.date: 04/01/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: c4a3836cfd0bbbb8d26a42af2980deab5f9d7681
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6b594c81f86a87e3b50b487f523cf4699c97365a
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="copy-an-azure-sql-database"></a>Kopírování databáze Azure SQL
 

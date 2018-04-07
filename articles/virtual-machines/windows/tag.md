@@ -1,10 +1,10 @@
 ---
-title: "Jak k označování prostředků virtuálního počítače s Windows v Azure | Microsoft Docs"
-description: "Další informace o označování Windows virtuální počítač vytvořený v Azure pomocí modelu nasazení Resource Manager"
+title: Jak k označování prostředků virtuálního počítače s Windows v Azure | Microsoft Docs
+description: Další informace o označování Windows virtuální počítač vytvořený v Azure pomocí modelu nasazení Resource Manager
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 56d17f45-e4a7-4d84-8022-b40334ae49d2
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 5f00c4265cea3db02dbb09a7f81be636a3fdd3d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5044bda855b6ac88eb5784f257686bf8a1838222
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Postup označení virtuálního počítače s Windows v Azure
 Tento článek popisuje různé způsoby, jak označit virtuálního počítače s Windows v Azure pomocí modelu nasazení Resource Manager. Značky jsou páry klíč – hodnota definovaný uživatelem, které mohou být umístěny přímo na prostředek nebo skupina zdrojů. Azure aktuálně podporuje až 15 značky pro každý prostředků a skupina prostředků. Značky mohou umístit na prostředku v době vytvoření nebo přidat do existující prostředek. Upozorňujeme, že značky jsou podporovány pro prostředky vytvořené pomocí modelu nasazení Resource Manager jenom. Pokud chcete označit virtuální počítač s Linuxem, přečtěte si téma [jak k označování virtuální počítač s Linuxem v Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -63,7 +63,7 @@ Druhý příkaz zobrazí značek pro daný proměnnou.
         Value        Production
         Name        Environment
 
-Třetí příkaz přidá značku další na *$tags* proměnné. Všimněte si použití  **+=**  připojit nový pár klíč/hodnota do *$tags* seznamu.
+Třetí příkaz přidá značku další na *$tags* proměnné. Všimněte si použití **+=** připojit nový pár klíč/hodnota do *$tags* seznamu.
 
         PS C:\> $tags += @{Name="Location";Value="MyLocation"}
 
@@ -92,7 +92,7 @@ Další informace o označování pomocí prostředí PowerShell, podívejte se 
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o označování prostředků Azure, najdete v části [přehled Azure Resource Manageru] [ Azure Resource Manager Overview] a [pomocí značek k uspořádání prostředků Azure][Using Tags to organize your Azure Resources].
 * Jak značky vám může pomoci spravovat používání prostředků Azure, najdete v tématu [pochopení vaše faktura Azure] [ Understanding your Azure Bill] a [proniknout do vaší spotřeby prostředků Microsoft Azure][Gain insights into your Microsoft Azure resource consumption].
 

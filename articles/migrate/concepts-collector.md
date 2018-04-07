@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="collector-appliance"></a>Kolekce zařízení
 
@@ -53,7 +53,7 @@ Kolekce zařízení musí být připojen k Internetu k odeslání informací o z
 1. Můžete nakonfigurovat kolekce tak, aby měl přímé připojení k Internetu.
 2. Můžete nakonfigurovat kolekce pro připojení prostřednictvím serveru proxy.
     * Pokud proxy server vyžaduje ověření, můžete zadat uživatelské jméno a heslo v nastavení připojení.
-    * Formulář http://IPaddress nebo http://FQDN by měla být IP adresa nebo plně kvalifikovaný název Proxy serveru. Je podporován pouze server proxy protokolu http.
+    * IP adresa nebo plně kvalifikovaný název Proxy serveru musí být ve tvaru http://IPaddress nebo http://FQDN. Je podporován pouze server proxy protokolu http.
 
 > [!NOTE]
 > Kolekce nepodporuje založený na protokolu HTTPS proxy servery.
@@ -126,7 +126,7 @@ Po připojení k serveru vCenter, můžete vybrat obor zjišťování. Výběr o
 
 1. Datové centrum, složku nebo hostiteli ESXi, může být oboru. 
 2. Můžete vybrat pouze jeden obor. Pokud chcete vybrat víc virtuálních počítačů, můžete dokončit jeden zjišťování a restartujte proces zjišťování nového oboru.
-3. Můžete vybrat pouze v rozsahu, který má *méně než 1 000 virtuálních počítačů*. Pokud vyberete v rozsahu, který má více než 1 000 virtuálních počítačů, budete muset rozdělení oboru do menších jednotek tím, že vytvoříte složek. Dále musíte spustit nezávislé zjišťování menší složek.
+3. Můžete vybrat pouze v rozsahu, který má *menší než 1 500 virtuálních počítačů*.
 
 ## <a name="specify-migration-project"></a>Zadejte migrace projektu
 
@@ -197,6 +197,16 @@ Kolekce můžete upgradovat na nejnovější verzi bez stahování vajíčka je�
 5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit v prostředí PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
 
 ### <a name="list-of-updates"></a>Seznam aktualizací
+
+#### <a name="upgrade-to-version-1097"></a>Upgrade na verzi 1.0.9.7
+
+Pro Upgrade na verzi 1.0.9.7 stažení [balíčku](https://aka.ms/migrate/col/upgrade_9_7)
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | 01ccd6bc0281f63f2a672952a2a25363
+SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
+SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
 
 #### <a name="upgrade-to-version-1095"></a>Upgrade na verzi 1.0.9.5
 

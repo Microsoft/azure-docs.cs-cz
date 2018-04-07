@@ -1,31 +1,25 @@
 ---
-title: Škálování úlohy Stream Analytics, pokud chcete zvýšit propustnost | Microsoft Docs
-description: Postup konfigurace vstupní oddíly, ladění definice dotazu a nastavení úlohu streamování jednotky škálování úlohy Stream Analytics.
-keywords: data streamování, streamování zpracování dat, optimalizovat analytics
+title: Škálování nahoru i vně v úlohy Azure Stream Analytics
+description: Tento článek popisuje postup škálování úloha Stream Analytics dělení vstupních dat, ladění dotazu a nastavení úlohu jednotky streamování.
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>Škálování služby Stream Analytics ke zvýšení propustnosti
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálování úlohu služby Azure Stream Analytics, pokud chcete zvýšit propustnost
 Tento článek ukazuje, jak ladit dotaz služby Stream Analytics chcete zvýšit propustnost pro úlohy streamování Analytics. V následujícím průvodci můžete škálovat vaše úloha zpracování větší zátěže a využít výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, paměť).
 Předpokladem je budete muset přečíst v následujících článcích:
 -   [Principy a úpravy jednotek streamování](stream-analytics-streaming-unit-consumption.md)
 -   [Vytvořte paralelní úlohy](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Případ 1 – dotazu je ze své podstaty plně může běžet paralelně napříč vstupní oddíly
 Pokud váš dotaz je ze své podstaty plně může běžet paralelně přes vstupní oddíly, můžete provést následující kroky:
@@ -40,7 +34,6 @@ Pokud váš dotaz je ze své podstaty plně může běžet paralelně přes vstu
 >[!Note]
 > Vyberte správný počet jednotek streamování: protože Stream Analytics vytvoří uzel zpracování pro přidání jednotlivých 6 SU, je nejvhodnější počet uzlů dělitele počet vstupních oddílů, takže můžete oddíly rovnoměrně rozdělené mezi uzly.
 > Například máte měří vaší 6 SU úlohy můžete dosáhnout 4 MB/s zpracování rychlost a spočítat vstupní oddílu je 4. Můžete spustit úlohu s 12 SU k dosažení rychlost zpracování přibližně 8 MB/s nebo 24 SU k dosažení 16 MB/s. Potom se můžete rozhodnout, kdy se má zvýšit číslo SU pro úlohu na jakou hodnotu, v závislosti na vaší vstupní míry.
-
 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>Případ 2 – Pokud váš dotaz není paralelně zpracovatelné.
@@ -150,7 +143,7 @@ A následující graf ukazuje vizualizaci vztah mezi službou SUs a propustnosti
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>Podpora
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

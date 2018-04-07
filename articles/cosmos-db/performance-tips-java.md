@@ -3,9 +3,8 @@ title: Azure Cosmos DB tipy pro zvýšení výkonu pro Javu | Microsoft Docs
 description: Další možnosti konfigurace klienta ke zlepšení výkonu databáze Azure Cosmos DB
 keywords: tom, jak zvýšit výkon databáze
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: dfe8f426-3c98-4edc-8094-092d41f2795e
 ms.service: cosmos-db
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
-ms.author: mimig
-ms.openlocfilehash: 7aeb76f59b9489f7c930ef754ccbe6d3712e52a7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: sngun
+ms.openlocfilehash: ace817bc7a703ed2aa1dcd71f7d84f91ee16cce6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)

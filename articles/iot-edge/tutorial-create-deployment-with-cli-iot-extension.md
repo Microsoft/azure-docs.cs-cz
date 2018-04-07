@@ -1,29 +1,29 @@
 ---
-title: "Nasazení modulů na IoT hraniční zařízení pomocí rozšíření IoT 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Nasazení modulů na IoT hraniční zařízení pomocí IoT rozšíření pro Azure CLI 2.0"
+title: Nasazení modulů na IoT hraniční zařízení pomocí rozšíření IoT 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
+description: Nasazení modulů na IoT hraniční zařízení pomocí IoT rozšíření pro Azure CLI 2.0
 services: iot-edge
-keywords: 
+keywords: ''
 author: chrissie926
 manager: timlt
 ms.author: menchi
 ms.date: 03/02/2018
 ms.topic: article
 ms.service: iot-edge
-ms.custom: mvc
+ms.custom: ''
 ms.reviewer: kgremban
-ms.openlocfilehash: 25f1becff11138e59595c211802acbf791094e53
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1f71fdfb7090dce24ba73f1fa01e287c52b065f8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Nasazení modulů na IoT hraniční zařízení pomocí IoT rozšíření pro Azure CLI 2.0
 
-[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) je open source pro různé platformy nástroj příkazového řádku pro správu prostředků Azure, jako je například IoT okraj. Azure CLI 2.0 je k dispozici v systému Windows, Linux a systému MacOS.
+[Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy určený ke správě prostředků Azure, jako je služba IoT Edge. Azure CLI 2.0 je k dispozici v systémech Windows, Linux a MacOS.
 
-Azure CLI 2.0 umožňuje spravovat prostředky Azure IoT Hub, instance služby zřizování zařízení a propojené rozbočovače mimo pole. Nové rozšíření IoT vylepšuje 2.0 rozhraní příkazového řádku Azure s funkcemi, jako je Správa zařízení a úplných možností IoT okraj.
+Azure CLI 2.0 bez dalších úprav umožňuje spravovat prostředky služby Azure IoT Hub, instance služby Device Provisioning a propojená centra. Nové rozšíření IoT vylepšuje 2.0 rozhraní příkazového řádku Azure s funkcemi, jako je Správa zařízení a úplných možností IoT okraj.
 
-V tomto kurzu nejprve dokončit postup nastavení Azure CLI 2.0 a rozšíření IoT. Potom můžete naučit se nasazovat modulů na IoT hraniční zařízení pomocí dostupné příkazy rozhraní příkazového řádku.
+V tomto článku nastavíte 2.0 rozhraní příkazového řádku Azure a IoT rozšíření. Potom můžete naučit se nasazovat modulů na IoT hraniční zařízení pomocí dostupné příkazy rozhraní příkazového řádku.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ V tomto kurzu nejprve dokončit postup nastavení Azure CLI 2.0 a rozšíření 
 
 * [Python 2.7 x nebo Python 3.x](https://www.python.org/downloads/).
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Minimálně musí být vaší verzi 2.0 rozhraní příkazového řádku Azure 2.0.24 nebo vyšší. Použití `az –-version` k ověření. Tato verze podporuje az rozšíření příkazy a zavádí rozhraní Knack příkaz. Jeden způsob, jak nainstalovat v systému Windows je ke stažení a instalaci [MSI](https://aka.ms/InstallAzureCliWindows).
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows).
 
 * [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension):
    1. Spusťte `az extension add --name azure-cli-iot-ext`. 

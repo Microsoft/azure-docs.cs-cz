@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Rámce zabezpečení: Kryptografie | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |
@@ -73,7 +73,7 @@ ms.lasthandoff: 04/05/2018
 | **Použít technologie** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Produkty musí používat schválené generátory náhodných čísel. Pseudonáhodná funkce jako je například rand – C runtime funkce, třídu rozhraní .NET Framework System.Random nebo funkce systému, jako je například GetTickCount nesmí, proto být nikdy použit v takový kód. Zakazuje použití algoritmu duální eliptické křivky náhodné číslo generátor (DUAL_EC_DRBG)</p><ul><li>**CNG -** BCryptGenRandom (použijte příznak BCRYPT_USE_SYSTEM_PREFERRED_RNG nedoporučuje, pokud má volající by se mohly spustit na jakékoli OVĚŘILO větší než 0 [PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (nové implementace by měl použít BCryptGenRandom nebo CryptGenRandom) * rand_s – * SystemPrng (pro režimu jádra)</li><li>**. NET -** RNGCryptoServiceProvider nebo RNGCng</li><li>**Aplikace Windows Store -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom nebo. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef náhodné, size_t – počet, uint8_t *bajtů)</li><li>** Apple OS X (< 10.7)-** / dev/náhodných načíst pomocí náhodná čísla</li><li>**Java(Including Google Android Java Code) -** java.security.SecureRandom třídy. Upozorňujeme, že pro Android 4.3 (želé položku Bean), vývojáři musí postupovat podle Android doporučená řešení a aktualizace aplikací explicitně inicializovat PRNG s entropie z /dev/urandom nebo /dev/random</li></ul>|
+| **Kroky** | <p>Produkty musí používat schválené generátory náhodných čísel. Pseudonáhodná funkce jako je například rand – C runtime funkce, třídu rozhraní .NET Framework System.Random nebo funkce systému, jako je například GetTickCount nesmí, proto být nikdy použit v takový kód. Zakazuje použití algoritmu duální eliptické křivky náhodné číslo generátor (DUAL_EC_DRBG)</p><ul><li>**CNG -** BCryptGenRandom (použijte příznak BCRYPT_USE_SYSTEM_PREFERRED_RNG nedoporučuje, pokud má volající by se mohly spustit na jakékoli OVĚŘILO větší než 0 [PASSIVE_LEVEL])</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom (nové implementace by měl použít BCryptGenRandom nebo CryptGenRandom) * rand_s – * SystemPrng (pro režimu jádra)</li><li>**. NET -** RNGCryptoServiceProvider nebo RNGCng</li><li>**Aplikace Windows Store -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom nebo. GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef náhodné, size_t – počet, uint8_t \*bajtů)</li><li>**Apple OS X (< 10.7)-** použít/dev/náhodných k načtení náhodná čísla</li><li>**Java(Including Google Android Java Code) -** java.security.SecureRandom třídy. Upozorňujeme, že pro Android 4.3 (želé položku Bean), vývojáři musí postupovat podle Android doporučená řešení a aktualizace aplikací explicitně inicializovat PRNG s entropie z /dev/urandom nebo /dev/random</li></ul>|
 
 ## <a id="stream-ciphers"></a>Nepoužívejte šifry symetrický datového proudu
 

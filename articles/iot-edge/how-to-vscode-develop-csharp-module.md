@@ -1,25 +1,25 @@
 ---
-title: "Použití kódu v jazyce Visual Studio k vývoji modulu jazyka C# s hranou Azure IoT | Microsoft Docs"
-description: "Vývoj a nasazení modul C# s Azure IoT hrany v sadě Visual Studio Code, aniž by se přepnula kontextu."
+title: Použití kódu v jazyce Visual Studio k vývoji modulu jazyka C# s hranou Azure IoT | Microsoft Docs
+description: Vývoj a nasazení modul C# s Azure IoT hrany v sadě Visual Studio Code, aniž by se přepnula kontextu.
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4cf07d5c4a21fa989e7de6e996cc62424099e3e5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 48c6cacebdeb7505c8dc2bcaed099c33862589ac
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-develop-a-c-module-with-azure-iot-edge"></a>Použití kódu v jazyce Visual Studio k vývoji modulu jazyka C# s hranou Azure IoT
 Tento článek obsahuje podrobné pokyny pro používání [Visual Studio Code](https://code.visualstudio.com/) jako hlavní vývojový nástroj k vývoji a nasazení moduly Azure IoT okraj. 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Může být zařízení IoT Edge jiného fyzického zařízení, nebo můžete simulovat zařízení IoT Edge na vývojovém počítači.
+Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Může být zařízení IoT Edge jiného fyzického zařízení, nebo můžete simulovat zařízení IoT Edge na vývojovém počítači.
 
 Než začnete v tomto návodu, proveďte následující kurzy:
 - Nasazení v simulovaném zařízení v Azure IoT Edge [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)
@@ -86,7 +86,7 @@ Instalace a spuštění modulu runtime Azure IoT Edge ve vašem zařízení. Nas
 V tomto kurzu [vyvíjet modulu jazyka C#](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module), aktualizovat, vytvářet a publikovat bitové kopie modulu v produktu VS Code. Potom přejděte na portál Azure k nasazení modulu jazyka C#. Tato část představuje způsob použití VS Code k nasazení a monitorování modulu jazyka C#.
 
 ### <a name="start-a-local-docker-registry"></a>Spustit místní registru Docker
-Žádné kompatibilní Docker registru můžete použít pro tento kurz. Jsou dvě oblíbených Docker registru služby k dispozici v cloudu [registru kontejner Azure](https://docs.microsoft.com/azure/container-registry/) a [úložiště Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Tato část používá [místním registru Docker](https://docs.docker.com/registry/deploying/), což je snazší pro testování během vaší časná vývoje.
+Žádné kompatibilní Docker registru můžete použít pro tento článek. V cloudu jsou k dispozici dvě oblíbené služby registrů Dockeru – [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Tato část používá [místním registru Docker](https://docs.docker.com/registry/deploying/), což je snazší pro testování během vaší časná vývoje.
 V produktu VS Code **integrované Terminálové** (Ctrl + '), spusťte následující příkaz spusťte místní registru:  
 
 ```cmd/sh
@@ -105,7 +105,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhra
     dotnet new -i Microsoft.Azure.IoT.Edge.Module
     ```
 
-2. Vytvoření projektu pro nového modulu. Následující příkaz vytvoří složce projektu **FilterModule**, v aktuální pracovní složku:
+2. Vytvořte projekt pro nový modul. Následující příkaz vytvoří složce projektu **FilterModule**, v aktuální pracovní složku:
 
     ```cmd/sh
     dotnet new aziotedgemodule -n FilterModule
@@ -253,14 +253,14 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhra
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Vytvoření bitové kopie Docker a publikujete ho v registru
 
-1. V Průzkumníku kód VS rozbalte **Docker** složky. Poté rozbalte složku pro vaši platformu kontejneru buď **linux x64** nebo **windows nano**.
+1. V Průzkumníku kód VS rozbalte **Docker** složky. Pak rozbalte složku pro vaši kontejnerovou platformu – **linux-x64** nebo **windows-nano**.
 2. Klikněte pravým tlačítkem myši **soubor Docker** soubor a vyberte **sestavení IoT Edge modulu Docker image**. 
 
     ![Snímek obrazovky Průzkumník kódu VS](./media/how-to-vscode-develop-csharp-module/build-docker-image.png)
 
 3. V **vyberte složku** okně vyhledejte nebo zadejte `./bin/Debug/netcoreapp2.0/publish`. Vyberte **vyberte složku EXE_DIR**.
-4. Automaticky otevírané okno textového pole v horní části okna VS Code zadejte název bitové kopie. Například: `<your container registry address>/filtermodule:latest`. Když nasazujete do místního registru, měla by být `localhost:5000/filtermodule:latest`.
-5. Do úložiště Docker push bitovou kopii. Použití **Edge: Push IoT Edge modulu Docker image** příkaz a zadejte adresu URL bitové kopie do místní textového pole v horní části okna VS Code. Použijte stejnou adresu URL obrázku jste použili v předchozím kroku. Zkontrolujte protokol konzoly a ujistěte se, že bylo úspěšně posunuto bitovou kopii.
+4. Do místního textového pole v horní části okna VS Code zadejte název image. Například: `<your container registry address>/filtermodule:latest`. Když nasazujete do místního registru, měla by být `localhost:5000/filtermodule:latest`.
+5. Nasdílejte image do svého úložiště Dockeru. Použití **Edge: Push IoT Edge modulu Docker image** příkaz a zadejte adresu URL bitové kopie do místní textového pole v horní části okna VS Code. Použijte stejnou adresu URL obrázku jste použili v předchozím kroku. Zkontrolujte protokol konzoly a ujistěte se, že bylo úspěšně posunuto bitovou kopii.
 
     ![Snímek obrazovky vkládání bitovou kopii Docker](./media/how-to-vscode-develop-csharp-module/push-image.png) ![snímek obrazovky protokolu console](./media/how-to-vscode-develop-csharp-module/pushed-image.png)
 
@@ -296,7 +296,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhra
     "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
     ```
    > [!NOTE]
-   > Deklarativní pravidel v modulu runtime definovat, kde se tyto zprávy toku. V tomto kurzu musíte dvě trasy. První trasa je určena k přenosu zpráv z teploty senzoru modulu filtru prostřednictvím koncového bodu "input1". Toto je koncový bod, který jste nakonfigurovali s FilterMessages obslužnou rutinou. Druhá trasa je určena k přenosu zpráv z modulu filtru do služby IoT Hub. V této trase je nadřazený speciální cíl, která říká službě IoT Hub Edge k odesílání zpráv do služby IoT Hub.
+   > Deklarativní pravidel v modulu runtime definovat, kde se tyto zprávy toku. V tomto článku je nutné dvě trasy. První trasa přenáší zprávy ze senzoru teploty do modulu filtru přes koncový bod input1. Toto je koncový bod, který jste nakonfigurovali s FilterMessages obslužnou rutinou. Druhá trasa přenáší zprávy z modulu filtru do služby IoT Hub. V této trase je nadřazený speciální cíl, která říká službě IoT Hub Edge k odesílání zpráv do služby IoT Hub.
 
 3. Uložte tento soubor.
 4. Příkaz palety, vyberte **Edge: vytvoření nasazení pro hraniční zařízení**. Pak vyberte ID zařízení IoT Edge k vytvoření nasazení. Nebo, klikněte pravým tlačítkem na ID zařízení v seznamu zařízení a vyberte **vytvořit nasazení pro hraniční zařízení**.
@@ -317,7 +317,4 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhra
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu vytvořili modul IoT okraj a nasazené na IoT hraniční zařízení v produktu VS Code. Další informace o další scénáře při vývoji Azure IoT Edge v produktu VS Code, najdete v následujícím kurzu:
-
-> [!div class="nextstepaction"]
-> [Ladění jazyka C# modulu v produktu VS Code](how-to-vscode-debug-csharp-module.md)
+[Ladění jazyka C# modulu v produktu VS Code](how-to-vscode-debug-csharp-module.md)

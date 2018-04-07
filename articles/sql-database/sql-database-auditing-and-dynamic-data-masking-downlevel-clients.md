@@ -1,19 +1,19 @@
 ---
-title: "Tabulky auditování, přesměrování TDS IP koncové body pro databázi SQL Azure a | Microsoft Docs"
-description: "Další informace o auditování, TDS přesměrování a IP koncový bod změny při implementaci tabulky auditování ve službě Azure SQL Database."
+title: Tabulky auditování, přesměrování TDS IP koncové body pro databázi SQL Azure a | Microsoft Docs
+description: Další informace o auditování, TDS přesměrování a IP koncový bod změny při implementaci tabulky auditování ve službě Azure SQL Database.
 services: sql-database
 author: giladm
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 05/31/2017
+ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 1053869ed26739463ab6035692052d7b6b34bff0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1114d6c5073aa6e60d6fb700989fb3d205ee914
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database – podpora klientů nižší úrovně a změní koncový bod IP adresy pro auditování tabulka
 

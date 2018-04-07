@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží se přes rozšíření virtuálního počítače s Windows | Microsoft Docs"
-description: "Další informace o řešení potíží se přes rozšíření virtuálního počítače Windows Azure"
+title: Řešení potíží se přes rozšíření virtuálního počítače s Windows | Microsoft Docs
+description: Další informace o řešení potíží se přes rozšíření virtuálního počítače Windows Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: kundanap
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 4dba196e1b838f2092b30972fb070514bd2a4b25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c99f4a9209595fd58021fd8da9cd67f1e034748
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Řešení potíží se přes rozšíření virtuálního počítače Windows Azure
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]

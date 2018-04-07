@@ -1,19 +1,19 @@
 ---
-title: "Nasazení služby rozdělení sloučení | Microsoft Docs"
-description: "Pomocí rozdělení sloučení příliš pro přesun dat mezi horizontálně dělené databázemi."
+title: Nasazení služby rozdělení sloučení | Microsoft Docs
+description: Pomocí rozdělení sloučení příliš pro přesun dat mezi horizontálně dělené databázemi.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: ed5545df8d09192eeed21dd2ac379e255b049e30
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>Nasazení služby dělení a slučování
 Nástroj pro rozdělení sloučení umožňuje přesun dat mezi horizontálně dělené databáze. V tématu [přesouvání dat mezi instancemi cloudu databáze](sql-database-elastic-scale-overview-split-and-merge.md)

@@ -1,13 +1,13 @@
 ---
-title: "Podrobný postup vytvoření páru klíčů SSH pro virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu"
-description: "Naučíte se další postup vytvoření páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure společně s konkrétními certifikáty pro různé případy použití."
+title: Podrobný postup vytvoření páru klíčů SSH pro virtuální počítače s Linuxem v Azure | Dokumentace Microsoftu
+description: Naučíte se další postup vytvoření páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure společně s konkrétními certifikáty pro různé případy použití.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.openlocfilehash: 1308812287fa4484e244c47497a7aef7aa994b14
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 20d36f5e377f2d5af588319cee2be1808571f905
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="detailed-walk-through-to-create-an-ssh-key-pair-and-additional-certificates-for-a-linux-vm-in-azure"></a>Podrobný postup vytvoření páru klíčů SSH a dalších certifikátů pro virtuální počítač s Linuxem v Azure
 Pomocí páru klíčů SSH můžete v Azure vytvořit službu Virtual Machines, která ve výchozím nastavení používá klíče SSH k ověřování. Není potom potřeba používat k přihlášení hesla. Hesla se dají uhodnout a jejich používání může vaše virtuální počítače vystavit útokům hrubou silou při pokusech o jejich uhodnutí. Virtuální počítače vytvořené pomocí šablon Resource Manageru nebo Azure CLI můžou jako součást svého nasazení zahrnovat veřejný klíč SSH. Po nasazení potom není potřeba provádět krok konfigurace, při kterém se zakáže přihlašování pomocí hesla pro SSH. Tento článek obsahuje podrobné pokyny a další příklady generování certifikátů, například pro použití s virtuálním počítačům s Linuxem. Pokud chcete rychle vytvořit a používat pár klíčů SSH, přečtěte si téma [Vytvoření páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure](mac-create-ssh-keys.md).
@@ -55,7 +55,7 @@ ssh-keygen \
 
 `ssh-keygen`= program použitý k vytvoření klíčů
 
-`-t rsa`= Typ klíče pro vytvoření, který je [formát RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
+`-t rsa` = Typ klíče pro vytvoření, který je [formát RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) 
  `-b 2048` = bity klíče
 
 `-C "azureuser@myserver"`= komentář připojený na konec souboru veřejného klíče pro snadnější identifikaci.  Standardně se jako komentář používá e-mail, můžete ale použít cokoli, co je pro vaši infrastrukturu vhodné.

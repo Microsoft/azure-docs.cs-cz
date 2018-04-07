@@ -1,10 +1,10 @@
 ---
-title: "Vytvořte bitovou kopii virtuálního počítače Windows Azure | Microsoft Docs"
-description: "Zachycení image virtuálního počítače Azure s Windows vytvořeného pomocí modelu klasického nasazení"
+title: Vytvořte bitovou kopii virtuálního počítače Windows Azure | Microsoft Docs
+description: Zachycení image virtuálního počítače Azure s Windows vytvořeného pomocí modelu klasického nasazení
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: ee6371faa9c3cc72104ba0eb05d17226679fa420
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 24366d3adf63fb6fafb8afa9f1a9fb359e88d8ed
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Zachycení image virtuálního počítače Azure s Windows vytvořeného pomocí modelu klasického nasazení
 > [!IMPORTANT]

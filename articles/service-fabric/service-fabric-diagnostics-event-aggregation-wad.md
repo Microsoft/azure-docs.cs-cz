@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Seskupení událostí a kolekce s použitím Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 Když používáte cluster služby Azure Service Fabric, je vhodné shromažďovat protokoly ze všech uzlů v centrálním umístění. S protokoly v centrálním umístění, vám pomáhají analyzovat a vyřešit problémy v clusteru nebo problémy v aplikací a služeb spuštěných v daném clusteru.
 
-Jeden způsob, jak nahrát a shromažďování protokolů je použití rozšíření Windows Azure Diagnostics (WAD), který odešle protokoly do služby Azure Storage a má také možnost odeslat protokoly služby Azure Application Insights nebo Event Hubs. Externího procesu můžete také použít ke čtení události z úložiště a umístit je o analýzy platformy produkt, například [analýzy protokolů OMS](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení pro analýzu protokolu.
+Jeden způsob, jak nahrát a shromažďování protokolů je použití rozšíření Windows Azure Diagnostics (WAD), který odešle protokoly do služby Azure Storage a má také možnost odeslat protokoly služby Azure Application Insights nebo Event Hubs. Externího procesu můžete také použít ke čtení události z úložiště a umístit je o analýzy platformy produkt, například [analýzy protokolů](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení pro analýzu protokolu.
 
 ## <a name="prerequisites"></a>Požadavky
 Tyto nástroje se používají k provádění některých operací v tomto dokumentu:
@@ -285,11 +285,11 @@ Odeslání dat monitorování a Diagnostika Statistika aplikace (AI) lze provés
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile jste správně nakonfigurovali Azure diagnostics, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud se rozhodnete použít OMS, Kibana nebo jakékoli jiné data analýzy a vizualizace platformě, která není přímo nakonfigurovanou v šabloně Resource Manager, ujistěte se, zda je nastavení platformou vaší volby pro čtení dat z těchto tabulek úložiště. Díky tomuto pro OMS je relativně jednoduchá a je vysvětleno v [událostí a protokolu analýzu prostřednictvím OMS](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je bit ve speciálním případě v tomto smyslu získáte vzhledem k tomu může být nakonfigurovaný jako součást konfigurace rozšíření diagnostiky, takže [příslušném článku](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud se rozhodnete použít AI.
+Jakmile jste správně nakonfigurovali Azure diagnostics, zobrazí se data v tabulkách úložiště z protokolů trasování událostí pro Windows a EventSource. Pokud se rozhodnete použít analýzy protokolů, Kibana nebo jakékoli jiné data analýzy a vizualizace platformě, která není přímo nakonfigurovanou v šabloně Resource Manager, ujistěte se, zda je nastavení platformou vaší volby pro čtení dat z těchto tabulek úložiště. Díky tomuto pro analýzy protokolů je relativně jednoduchá a je vysvětleno v [událostí a protokolů analýzy](service-fabric-diagnostics-event-analysis-oms.md). Application Insights je bit ve speciálním případě v tomto smyslu získáte vzhledem k tomu může být nakonfigurovaný jako součást konfigurace rozšíření diagnostiky, takže [příslušném článku](service-fabric-diagnostics-event-analysis-appinsights.md) Pokud se rozhodnete použít AI.
 
 >[!NOTE]
 >Aktuálně neexistuje žádný způsob, jak filtrovat nebo je naopak události, které se odesílají do tabulky. Pokud nemáte implementujte proces odebrání události v tabulce, tabulka pořád roste s tím. V současné době je příkladem data výmazu dat služby spuštěné [sledovací zařízení ukázka](https://github.com/Azure-Samples/service-fabric-watchdog-service), a se doporučuje, když napsat jeden pro sami taky Pokud dobrý důvody pro ukládání protokolů nad rámec 30 nebo 90 den časový rámec.
 
 * [Zjistěte, jak shromažďování čítače výkonu nebo protokoly pomocí rozšíření diagnostiky](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Analýza události a vizualizace s Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Analýza události a vizualizace s OMS](service-fabric-diagnostics-event-analysis-oms.md)
+* [Analýza události a vizualizace s analýzy protokolů](service-fabric-diagnostics-event-analysis-oms.md)

@@ -1,19 +1,19 @@
 ---
-title: "Kód soubor události XEvent pro SQL Database | Microsoft Docs"
-description: "Příklad dvoufázového kód, který ukazuje soubor událostí cíl v rozšířené události v databázi SQL Azure poskytuje prostředí PowerShell a Transact-SQL. Azure Storage je požadovaných součástí tohoto scénáře."
+title: Kód soubor události XEvent pro SQL Database | Microsoft Docs
+description: Příklad dvoufázového kód, který ukazuje soubor událostí cíl v rozšířené události v databázi SQL Azure poskytuje prostředí PowerShell a Transact-SQL. Azure Storage je požadovaných součástí tohoto scénáře.
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 630e0ca84479757d3bb4397aa63ee8a440e69427
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f13ac366a1c382e955db23f3bcefb8f31c89fcb9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kód cílový soubor události pro rozšířené události v databázi SQL
 
@@ -455,9 +455,9 @@ GO
 
 ## <a name="output"></a>Výstup
 
-Po dokončení skriptu jazyka Transact-SQL, klikněte na buňku v části **event_data_XML** záhlaví sloupce. Jeden  **<event>**  element se zobrazuje, který zobrazuje jeden příkaz aktualizace.
+Po dokončení skriptu jazyka Transact-SQL, klikněte na buňku v části **event_data_XML** záhlaví sloupce. Jeden **<event>** element se zobrazuje, který zobrazuje jeden příkaz aktualizace.
 
-Tady je jeden  **<event>**  element, který byl vygenerován při testování:
+Tady je jeden **<event>** element, který byl vygenerován při testování:
 
 
 ```xml

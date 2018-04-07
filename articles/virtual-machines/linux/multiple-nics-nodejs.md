@@ -1,12 +1,12 @@
 ---
-title: "Vytvořte virtuální počítač s Linuxem v Azure s více síťovými kartami | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač s Linuxem s více síťovými kartami připojit se pomocí šablony Azure CLI nebo správce prostředků."
+title: Vytvořte virtuální počítač s Linuxem v Azure s více síťovými kartami | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač s Linuxem s více síťovými kartami připojit se pomocí šablony Azure CLI nebo správce prostředků.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 93a32ae7ec0cf73825791e8c8bc3d388cf999ece
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 20e3a65c28e95849822d81076b6780e05a2aebbf
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-multiple-nics-using-the-azure-cli-10"></a>Vytvořit virtuální počítač s Linuxem s více síťovými kartami pomocí Azure CLI 1.0
 Virtuální počítač (VM) můžete vytvořit v Azure, který má více rozhraní virtuální sítě (NIC) je připojený. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek obsahuje rychlý příkazů pro vytvoření virtuálního počítače s více síťovými kartami k němu připojen. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -43,7 +43,7 @@ azure config mode arm
 
 V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Názvy parametrů příklad zahrnuté *myResourceGroup*, *můj_účet_úložiště*, a *Můjvp*.
 
-Nejprve vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění:
+Nejprve vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
 ```azurecli
 azure group create myResourceGroup --location eastus
@@ -143,6 +143,8 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
+Pokud přidáte několik síťových adaptérů virtuálního počítače s Linuxem, budete muset vytvořit pravidla směrování. Tato pravidla povolit virtuální počítač odesílat a přijímat provoz, který patří na konkrétní síťový adaptér. Jinak provoz, který patří do eth1, například nelze zpracovat správně podle definovaného výchozí trasu. Chcete-li tento problém směrování, najdete v části [konfigurovat hostovaný operační systém pro několik síťových adaptérů](multiple-nics.md#configure-guest-os-for-multiple-nics).
+
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Vytvořit několik síťových adaptérů pomocí šablony Resource Manageru
 Šablony Azure Resource Manageru použijte k definování prostředí deklarativní soubory JSON. Můžete si přečíst [přehled nástroje Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Správce prostředků šablony poskytují způsob, jak vytvořit více instancí prostředku během nasazení, jako je například vytváření několik síťových adaptérů. Používáte *kopie* k určení počtu instancí vytvořit:
 
@@ -163,7 +165,9 @@ Můžete použít také `copyIndex()` pak připojit k názvu zdroje, které vám
 
 Kompletní příklad, jak si můžete přečíst [vytváření několik síťových adaptérů pomocí šablony Resource Manageru](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
-## <a name="next-steps"></a>Další kroky
+Pokud přidáte několik síťových adaptérů virtuálního počítače s Linuxem, budete muset vytvořit pravidla směrování. Tato pravidla povolit virtuální počítač odesílat a přijímat provoz, který patří na konkrétní síťový adaptér. Jinak provoz, který patří do eth1, například nelze zpracovat správně podle definovaného výchozí trasu. Chcete-li tento problém směrování, najdete v části [konfigurovat hostovaný operační systém pro několik síťových adaptérů](multiple-nics.md#configure-guest-os-for-multiple-nics).
+
+## <a name="next-steps"></a>Další postup
 Projděte si [velikosti virtuálního počítače s Linuxem](sizes.md) při pokusu o vytvoření virtuálního počítače s více síťovými kartami. Věnujte pozornost maximální počet síťových adaptérů podporuje každý velikost virtuálního počítače. 
 
 Mějte na paměti, že další síťové adaptéry nelze přidat do stávajícího virtuálního počítače, když nasazujete virtuální počítač je nutné vytvořit všechny síťové adaptéry. Vezměte v potaz při plánování nasazení a ujistěte se, že máte všechny požadované síťové připojení od samého počátku.

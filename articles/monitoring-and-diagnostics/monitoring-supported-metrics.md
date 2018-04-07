@@ -14,17 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c9dab276b39b1ceb55851e865f9166e3e9e7fee8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s monitorováním Azure
-Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včetně grafů, je na portálu, k nim přistupovat pomocí rozhraní REST API nebo je dotazování pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Níže je úplný seznam všech metriky aktuálně k dispozici s Azure monitorování metriky kanálu.
+Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včetně grafů, je na portálu, k nim přistupovat pomocí rozhraní REST API nebo je dotazování pomocí prostředí PowerShell nebo rozhraní příkazového řádku. Níže je úplný seznam všech metriky aktuálně k dispozici s Azure monitorování metriky kanálu. Další metriky může být k dispozici v portálu nebo pomocí starší verze rozhraní API. Tento seznam dole obsahuje pouze metriky, které jsou k dispozici konsolidované monitorování Azure metriky zřetězením příkazů. Vyhledat a přístup k použijte prosím tyto metriky [verze rozhraní api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
-> Další metriky může být k dispozici v portálu nebo pomocí starší verze rozhraní API. Tento seznam obsahuje pouze metriky, které jsou k dispozici konsolidované monitorování Azure metriky zřetězením příkazů. Vyhledat a přístup k metriky s dimenzí použijte prosím [verze rozhraní api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> Odesílání vícerozměrných metriky prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+>
+> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu prostřednictvím nastavení pro diagnostiku metriku bude reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
 >
 >
 
@@ -128,20 +130,20 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |connectedclients|Připojení klienti|Počet|Maximum||Žádné dimenze|
-|totalcommandsprocessed|Celkový počet operací|Počet|Celkem||Žádné dimenze|
-|mezipaměti|Přístupů k mezipaměti|Počet|Celkem||Žádné dimenze|
+|totalcommandsprocessed|Operace celkem|Počet|Celkem||Žádné dimenze|
+|mezipaměti|Přístupy do mezipaměti|Počet|Celkem||Žádné dimenze|
 |cachemisses|Neúspěšné přístupy do mezipaměti|Počet|Celkem||Žádné dimenze|
-|getcommands|Získá|Počet|Celkem||Žádné dimenze|
+|getcommands|Klíče Get|Počet|Celkem||Žádné dimenze|
 |setcommands|Sady|Počet|Celkem||Žádné dimenze|
 |operationsPerSecond|Operací za sekundu|Počet|Celkem||Žádné dimenze|
-|evictedkeys|Vyřazené klíče|Počet|Celkem||Žádné dimenze|
+|evictedkeys|Vyloučené klíče|Počet|Celkem||Žádné dimenze|
 |totalkeys|Celkový počet klíčů|Počet|Maximum||Žádné dimenze|
-|expiredkeys|Vypršela platnost klíče|Počet|Celkem||Žádné dimenze|
+|expiredkeys|Prošlé klíče|Počet|Celkem||Žádné dimenze|
 |usedmemory|Použitá paměť|B|Maximum||Žádné dimenze|
 |usedmemoryRss|Použitá paměť RSS|B|Maximum||Žádné dimenze|
 |serverLoad|Zatížení serveru|Procento|Maximum||Žádné dimenze|
-|cacheWrite|Mezipaměť zápisu|BytesPerSecond|Maximum||Žádné dimenze|
-|cacheRead|Mezipaměti pro čtení|BytesPerSecond|Maximum||Žádné dimenze|
+|cacheWrite|Zápis do mezipaměti|BytesPerSecond|Maximum||Žádné dimenze|
+|cacheRead|Čtení z mezipaměti|BytesPerSecond|Maximum||Žádné dimenze|
 |percentProcessorTime|Procesor|Procento|Maximum||Žádné dimenze|
 |connectedclients0|Připojených klientů (horizontálního oddílu 0)|Počet|Maximum||Žádné dimenze|
 |totalcommandsprocessed0|Celkový počet operací (horizontálního oddílu 0)|Počet|Celkem||Žádné dimenze|
@@ -308,41 +310,41 @@ Monitorování Azure poskytuje několik způsobů, jak pracovat s metriky, včet
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento přidělené výpočetní jednotky, které jsou aktuálně používán virtuálním počítačům.|Žádné dimenze|
-|Sítě v|Sítě v|B|Celkem|Počet bajtů přijatých virtuální počítače (příchozí provoz) na všech síťových rozhraní.|Žádné dimenze|
-|Sítě Out|Sítě Out|B|Celkem|Počet bajtů odhlašování na všech síťových rozhraní pomocí virtuální počítače (odchozí provoz).|Žádné dimenze|
-|Čtení z disku bajtů/s|Čtení disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období sledování.|Žádné dimenze|
-|Bajty zapisování na disk/s|Zápis disku|BytesPerSecond|Průměr|Průměrný počet bajtů zapsat na disk během období sledování.|Žádné dimenze|
-|Čtení z disku operace/s|Čtení z disku operace/s|CountPerSecond|Průměr|Čtení disku IOPS.|Žádné dimenze|
-|Operace zápisu disku/s|Operace zápisu disku/s|CountPerSecond|Průměr|Zápis disku IOPS.|Žádné dimenze|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
+|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Průměr|Průměrný počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
+|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
+|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné dimenze|
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|Procento využití procesoru|Procento využití procesoru|Procento|Průměr|Procento přidělené výpočetní jednotky, které jsou aktuálně používán virtuálním počítačům.|Žádné dimenze|
-|Sítě v|Sítě v|B|Celkem|Počet bajtů přijatých virtuální počítače (příchozí provoz) na všech síťových rozhraní.|Žádné dimenze|
-|Sítě Out|Sítě Out|B|Celkem|Počet bajtů odhlašování na všech síťových rozhraní pomocí virtuální počítače (odchozí provoz).|Žádné dimenze|
-|Čtení z disku bajtů/s|Čtení disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období sledování.|Žádné dimenze|
-|Bajty zapisování na disk/s|Zápis disku|BytesPerSecond|Průměr|Průměrný počet bajtů zapsat na disk během období sledování.|Žádné dimenze|
-|Čtení z disku operace/s|Čtení z disku operace/s|CountPerSecond|Průměr|Čtení disku IOPS.|Žádné dimenze|
-|Operace zápisu disku/s|Operace zápisu disku/s|CountPerSecond|Průměr|Zápis disku IOPS.|Žádné dimenze|
+|Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
+|Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
+|Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
+|Bajty čtení z disku/s|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
+|Bajty zápisu na disk/s|Zápis na disk|BytesPerSecond|Průměr|Průměrný počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
+|Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
+|Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné dimenze|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|TotalCalls|Celkový počet volání|Počet|Celkem|Celkový počet volání.|Žádné dimenze|
-|SuccessfulCalls|Úspěšné volání|Počet|Celkem|Počet úspěšných volání.|Žádné dimenze|
-|TotalErrors|Celkový počet chyb|Počet|Celkem|Celkový počet volání s odpovědi na chybu (4xx kód odpovědi HTTP nebo 5xx).|Žádné dimenze|
-|BlockedCalls|Blokované volání|Počet|Celkem|Počet volání dané překročil míry nebo limit kvóty.|Žádné dimenze|
-|ServerErrors|Chyby serveru|Počet|Celkem|Počet volání s vnitřní chybou služby (5xx kód odpovědi HTTP).|Žádné dimenze|
-|ClientErrors|Chyby klientů|Počet|Celkem|Počet volání s chyba na straně klienta (4xx kód odpovědi HTTP).|Žádné dimenze|
-|DataIn|Vstupní data|B|Celkem|Velikost příchozích dat v bajtech.|Žádné dimenze|
-|DataOut|Výstupní data|B|Celkem|Velikost odesílaných dat v bajtech.|Žádné dimenze|
-|Latence|Latence|Počet milisekund|Průměr|Latence v milisekundách.|Žádné dimenze|
-|CharactersTranslated|Znaky přeložit|Počet|Celkem|Celkový počet znaků v příchozí žádosti o text.|Žádné dimenze|
-|SpeechSessionDuration|Rozpoznávání řeči dobu trvání relace|Sekundy|Celkem|Celková doba trvání relace řeči v sekundách.|Žádné dimenze|
+|TotalCalls|Celkem volání|Počet|Celkem|Celkový počet volání|Žádné dimenze|
+|SuccessfulCalls|Úspěšná volání|Počet|Celkem|Počet úspěšných volání|Žádné dimenze|
+|TotalErrors|Celkem chyb|Počet|Celkem|Celkový počet volání s chybovou odpovědí (kód odpovědi HTTP 4xx nebo 5xx)|Žádné dimenze|
+|BlockedCalls|Blokovaná volání|Počet|Celkem|Počet volání nad limit vyplývající ze sazby nebo kvóty|Žádné dimenze|
+|ServerErrors|Chyby serveru|Počet|Celkem|Počet volání s vnitřní chybou služby (kód odpovědi HTTP 5xx)|Žádné dimenze|
+|ClientErrors|Chyby klientů|Počet|Celkem|Počet volání s chybou na straně klienta (kód odpovědi HTTP 4xx)|Žádné dimenze|
+|DataIn|Vstupní data|B|Celkem|Velikost příchozích dat v bajtech|Žádné dimenze|
+|DataOut|Výstupní data|B|Celkem|Velikost odchozích dat v bajtech|Žádné dimenze|
+|Latence|Latence|Počet milisekund|Průměr|Latence v milisekundách|Žádné dimenze|
+|CharactersTranslated|Přeložené znaky|Počet|Celkem|Celkový počet znaků v příchozí textové žádosti|Žádné dimenze|
+|SpeechSessionDuration|Doba trvání řečové relace|Sekundy|Celkem|Celková doba trvání řečové relace v sekundách|Žádné dimenze|
 |TotalTransactions|Celkový počet transakcí|Počet|Celkem|Celkový počet transakcí|Žádné dimenze|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines

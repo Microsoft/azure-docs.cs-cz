@@ -1,19 +1,19 @@
 ---
-title: "Jak používat dávkování pro zvýšení výkonu aplikací Azure SQL Database"
-description: "V tématu poskytuje důkazy této dávkování databázových operací výrazně imroves rychlosti a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungovat pro libovolnou databázi systému SQL Server, je zaměřená článek v Azure."
+title: Jak používat dávkování pro zvýšení výkonu aplikací Azure SQL Database
+description: V tématu poskytuje důkazy této dávkování databázových operací výrazně imroves rychlosti a škálovatelnost aplikací Azure SQL Database. I když tyto dávkování techniky fungovat pro libovolnou databázi systému SQL Server, je zaměřená článek v Azure.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 07/12/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak používat dávkování pro zvýšení výkonu aplikací databáze SQL
 Dávkování operací do Azure SQL Database výrazně zvyšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé ukázkové výsledky testů, porovnávající postupného a dávkové požadavky na databázi SQL. Zbývající část článek ukazuje techniky, scénáře a požadavky umožňují použít dávkování úspěšně v aplikacích Azure.
@@ -154,7 +154,7 @@ V kódu, můžete vytvořit **DataTable** s přesnou stejné názvy a typy typu 
         cmd.ExecuteNonQuery();
     }
 
-V předchozím příkladu **SqlCommand** objekt vloží řádky z parametr s hodnotou tabulky  **@TestTvp** . Dříve vytvořenou **DataTable** objektu je přiřazen tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vloží jedno volání výrazně zvyšuje výkon přes sekvenční vložení.
+V předchozím příkladu **SqlCommand** objekt vloží řádky z parametr s hodnotou tabulky **@TestTvp**. Dříve vytvořenou **DataTable** objektu je přiřazen tento parametr se **SqlCommand.Parameters.Add** metoda. Dávkování vloží jedno volání výrazně zvyšuje výkon přes sekvenční vložení.
 
 Chcete-li zlepšit další předchozí příklad, použijte uložené procedury místo příkaz založený na textu. Následující příkaz Transact-SQL vytvoří uložené procedury, která přebírá **SimpleTestTableType** parametr s hodnotou tabulky.
 
@@ -611,6 +611,6 @@ Následující seznam obsahuje souhrn dávkování doporučení popsané v tomto
 * Vyhněte se paralelní zpracování dávek, které působí na jednotlivé tabulky v jedné databáze. Pokud si zvolíte jedné dávkové rozdělit mezi několik pracovních vláken, spusťte testy můžete určit ideální počet vláken. Po neurčené prahová hodnota další podprocesy bude snížit výkon, a nikoli zvýšit ji.
 * Vezměte v úvahu ukládání do vyrovnávací paměti na velikost a čas jako způsob implementace dávkování pro více scénářů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek zaměřuje na jak návrhu databáze a kódování techniky související s dávkování může zlepšit výkon aplikace a škálovatelnost. Ale toto je pouze jediný faktor v vaše celková strategie. Další způsoby, jak zvýšit výkon a škálovatelnost, najdete v části [Azure SQL Database – Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky fondu elastické databáze](sql-database-elastic-pool-guidance.md).
 

@@ -1,11 +1,11 @@
 ---
-title: "Správa přístupu k hostované službě Azure AD přístup recenze | Microsoft Docs"
-description: "Spravovat uživatele typu Host jako členové skupiny nebo přiřazené k aplikaci s Azure Active Directory přístup recenze"
+title: Správa přístupu k hostované službě Azure AD přístup recenze | Microsoft Docs
+description: Spravovat uživatele typu Host jako členové skupiny nebo přiřazené k aplikaci s Azure Active Directory přístup recenze
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu k hostované službě Azure AD přístup recenze
 
@@ -105,17 +105,17 @@ V některých organizacích hosté nemusíte být vědomi jejich členství ve s
 > [!NOTE]
 > Starší verze na portálu Azure nebyla povolit přístup pro správu uživatelů s UserType hosta. V některých případech správcem ve vašem adresáři mohlo změnit hodnotu vlastnosti UserType hostovaný na člen pomocí prostředí PowerShell. Pokud už k této změně došlo v adresáři, předchozí dotaz nemusí zahrnovat všechny hosta uživatelů, kteří v minulosti vytvořili přístupová práva pro správu. V takovém případě musíte změnit UserType hosta nebo ručně zahrnout Host členství ve skupině.
 
-1. Vytvořte skupinu zabezpečení ve službě Azure AD s hosté jako členové, pokud ještě neexistuje vhodné skupiny. Můžete například vytvořit skupinu s ručně zachována členství hostů. Nebo můžete vytvořit dynamická skupina s názvem, například "Hosté Contoso" pro uživatele v klientovi Contoso, kteří mají hodnotu atribut UserType hosta.
+1. Vytvořte skupinu zabezpečení ve službě Azure AD s hosté jako členové, pokud ještě neexistuje vhodné skupiny. Můžete například vytvořit skupinu s ručně zachována členství hostů. Nebo můžete vytvořit dynamická skupina s názvem, například "Hosté Contoso" pro uživatele v klientovi Contoso, kteří mají hodnotu atribut UserType hosta.  Pro efektivitu zajistěte skupiny guests převážně – nemáte vyberte skupinu, která obsahuje uživatele, kteří mají být zkontrolovány nepotřebujete.
 
 2. Pokud chcete spustit kontrola přístupu pro tuto skupinu, vyberte kontroloři mají být členy sami. Další informace najdete v popisu [vytvoření kontroly přístupu](active-directory-azure-ad-controls-create-access-review.md).
 
-3. Požádejte každý hostovi Zkontrolujte své vlastní členství. Ve výchozím nastavení každý hosta, který přijmout pozvánku obdrží e-mailu z Azure AD s odkazem ke kontrole přístupu ve vaší organizaci přístupového panelu. Azure AD má pokyny pro hosty o tom, jak [kontrolovat jejich přístup](active-directory-azure-ad-controls-perform-access-review.md).
+3. Požádejte každý hostovi Zkontrolujte své vlastní členství. Ve výchozím nastavení každý hosta, který přijmout pozvánku obdrží e-mailu z Azure AD s odkazem ke kontrole přístupu ve vaší organizaci přístupového panelu. Azure AD má pokyny pro hosty o tom, jak [kontrolovat jejich přístup](active-directory-azure-ad-controls-perform-access-review.md).  Tyto hosté, kteří nepřijal jejich pozvání se zobrazí ve výsledcích zkontrolujte jako "Není oznámení".
 
 4. Po kontroloři poskytnout vstup, zastavte kontrola přístupu. Další informace najdete v popisu [dokončení kontroly přístupu](active-directory-azure-ad-controls-complete-access-review.md).
 
-5. Pro hosty, kteří byly byl odepřen, nebyla dokončena kontrola nebo nebyla dříve přijmout pozvánku k jejich odebrání přístupu hosta. Pokud jsou některé z hostů kontakty, které byly vybrány k účasti v recenzi, protože nebyla dříve přijetí pozvánky, můžete zakázat své účty pomocí portálu Azure nebo prostředí PowerShell. Pokud Host už potřebuje přístup a není kontaktu, můžete odebrat jejich objekt uživatele z adresáře pomocí portálu Azure nebo prostředí PowerShell.
+5. Pro hosty, kteří byly byl odepřen, nebyla dokončena kontrola nebo nebyla dříve přijmout pozvánku k jejich odebrání přístupu hosta. Pokud některé z hostů jsou kontakty, které byly vybrány k účasti v recenzi nebo Pozvánka nebyla dříve přijetí, můžete zakázat své účty pomocí portálu Azure nebo prostředí PowerShell. Pokud Host už potřebuje přístup a není kontaktu, můžete odebrat jejich objekt uživatele z adresáře pomocí portálu Azure nebo prostředí PowerShell k odstranění tohoto objektu uživatele guest.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Vytváření kontroly přístupu pro členy skupiny nebo přístupu k aplikaci](active-directory-azure-ad-controls-create-access-review.md)
 

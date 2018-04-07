@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6020272d79ace55041da94ee45165e557e92b80f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiv protokol činnosti Azure
 V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí PowerShell nebo rozhraní příkazového řádku a platformy pro archivaci vaše [ **protokol činnosti Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud chcete uchovat déle, než 90 dní (s plnou kontrolu nad zásady uchovávání informací) pro audit, statické analýzy nebo zálohování aktivity protokolu. Pokud potřebujete události uchovávány 90 dnů nebo méně není nutné nastavit archivace na účet úložiště, protože aktivity protokolu události se zachovají v platformy Azure za 90 dnů bez povolení archivace.
@@ -43,29 +43,43 @@ K archivaci protokolu aktivit pomocí kteréhokoli z následujících metod, mů
 5. Klikněte na **Uložit**.
 
 ## <a name="archive-the-activity-log-via-powershell"></a>Archiv protokol aktivit pomocí prostředí PowerShell
-```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
-```
+
+   ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your storage account belongs to>"
+   $storageAccountName = "<your storage account name>"
+
+   # Build the storage account Id from the settings above
+   $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   ```
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| StorageAccountId |Ne |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
-| Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech [této stránce](https://azure.microsoft.com/en-us/regions) nebo pomocí [REST API pro správu Azure](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
-| Kategorie |Ano |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
+| StorageAccountId |Ano |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
+| Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech pro předplatné s použitím `(Get-AzureRmLocation).Location`. |
+| retentionInDays |Ne |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
+| Kategorie |Ne |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce.  Pokud není zadaná, pak všechny možné hodnoty jsou považovány za |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archiv protokol aktivit prostřednictvím rozhraní příkazového řádku
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
-```
+
+   ```azurecli-interactive
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
+   ```
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | jméno |Ano |Název vašeho profilu protokolu. |
-| storageId |Ne |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
-| Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech [této stránce](https://azure.microsoft.com/en-us/regions) nebo pomocí [REST API pro správu Azure](https://msdn.microsoft.com/library/azure/gg441293.aspx). |
-| retentionInDays |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (navždy). |
-| Kategorie |Ano |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
+| id účtu úložiště |Ano |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
+| Umístění |Ano |Oddělených mezerami seznam oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech pro předplatné s použitím `az account list-locations --query [].name`. |
+| dny |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (navždy).  Pokud nula, pak povoleno parametr by měl být nastaven na hodnotu true. |
+|povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  V případě hodnoty True, musí být parametr dní hodnotu větší než 0.
+| Kategorie |Ano |Oddělených mezerami seznam kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
 
 ## <a name="storage-schema-of-the-activity-log"></a>Schéma úložiště protokolu činnosti
 Jakmile jste nastavili archivace, kontejner úložiště bude vytvořen v účtu úložiště Jakmile dojde k aktivity protokolu události. Objekty BLOB v kontejneru použijte stejný formát přes protokol aktivit a diagnostické protokoly. Struktura tyto objekty BLOB je:

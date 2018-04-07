@@ -3,17 +3,17 @@ title: Azure Stream Analytics IoT hranu (preview)
 description: Vytvoření úlohy edge v Azure Stream Analytics a nasadit je spuštěna zařízení Azure IoT okraj.
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.service: stream-analytics
-ms.topic: article
-ms.workload: data-services
-ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 6d8dfe253082763858588fb4092be9d5be08cb41
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 01/16/2017
+ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics IoT hranu (preview)
 

@@ -1,16 +1,16 @@
 ---
-title: "Škálování zjišťování a hodnocení pomocí Azure migrovat | Microsoft Docs"
-description: "Popisuje, jak k vyhodnocení velký počet počítačů místně pomocí služby Azure migrovat."
+title: Škálování zjišťování a hodnocení pomocí Azure migrovat | Microsoft Docs
+description: Popisuje, jak k vyhodnocení velký počet počítačů místně pomocí služby Azure migrovat.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -29,9 +29,9 @@ Plánování zjišťování a vyhodnocování podle následující omezení:
 
 | **Entity** | **Limit pro počítače** |
 | ---------- | ----------------- |
-| Project    | 1,500              | 
-| Zjišťování  | 1,500              |
-| Posouzení | 1,500               |
+| Project    | 1,500             |
+| Zjišťování  | 1,500             |
+| Posouzení | 1,500             |
 
 <!-- 
 - If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
@@ -40,12 +40,12 @@ Plánování zjišťování a vyhodnocování podle následující omezení:
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
     - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
--->
+      -->
 
 ## <a name="plan-multiple-discoveries"></a>Plánování více zjišťování
 
 Stejné kolekce Azure migraci můžete udělat několik zjišťování na jeden nebo více projekty. Tyto aspekty plánování mějte na paměti:
- 
+
 - Při zjišťování pomocí Azure migraci kolekce, můžete nastavit obor zjišťování pro složku na serveru vCenter, datacenter, cluster nebo hostitele.
 - Více než jedno zjišťování provedete ověřte v systému vCenter Server, které jsou virtuální počítače, které chcete zjistit v složek, datových center, clusterům nebo hostitele, kteří podporují omezení 1 500 počítačů.
 - Doporučujeme, aby pro účely hodnocení, byl počítače s vzájemné závislosti v rámci stejného projektu a hodnocení. V systému vCenter Server Ujistěte se, že závislé počítače jsou ve stejné složce, datacenter nebo clusteru pro hodnocení.
@@ -73,20 +73,30 @@ Pokud máte více projektů, budete muset stáhnout kolekce zařízení pouze je
 2. V **zjistit počítače**, vyberte **Stáhnout**, chcete-li stáhnout soubor vajíčka.
 3. V **zkopírujte projektu pověření**, zkopírujte ID a klíč pro projekt. Budete je potřebovat při konfiguraci kolektoru.
 
-   
+
 ### <a name="verify-the-collector-appliance"></a>Ověření zařízení kolektoru
 
 Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
 
 1. Na počítači, do kterého jste soubor stáhli, otevřete jako správce příkazový řádek.
+
 2. Spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor OVA:
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
    Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
 3. Ujistěte se, že generované hodnoty hash odpovídá následující nastavení.
 
-    Pro verzi vajíčka 1.0.9.5
+    Pro verzi vajíčka 1.0.9.7
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | d5b6a03701203ff556fa78694d6d7c35
+    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
+
+    Pro soubory OVA verze 1.0.9.5:
 
     **Algoritmus** | **Hodnota hash**
     --- | ---
@@ -94,7 +104,7 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
     SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
     SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
-    Pro verzi vajíčka 1.0.9.2
+    Pro soubory OVA verze 1.0.9.2:
 
     **Algoritmus** | **Hodnota hash**
     --- | ---
@@ -109,7 +119,7 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
     MD5 | 71139e24a532ca67669260b3062c3dad
     SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
     SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
- 
+
     Pro soubory OVA verze 1.0.8.49:
 
     **Algoritmus** | **Hodnota hash**
@@ -136,11 +146,11 @@ Stažený soubor importujte do systému vCenter Server:
 
 2. V Průvodci nasazením šablony OVF > **zdroj**, zadejte umístění souboru vajíčka.
 3. V části **Name** (Název) a **Location** (Umístění) zadejte popisný název virtuálního počítače kolektoru a objekt inventáře, ve kterém bude daný virtuální počítač hostovaný.
-5. V části **Host/Cluster** (Hostitel/cluster) zadejte hostitele nebo cluster, na kterém se bude virtuální počítač kolektoru spouštět.
-7. V části Storage (Úložiště) zadejte cílové úložiště pro virtuální počítač kolektoru.
-8. V části **Disk Format** (Formát disku) zadejte typ a velikost disku.
-9. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Síť musí připojení k Internetu k odeslání metadata do Azure. 
-10. Zkontrolujte a potvrďte nastavení a potom vyberte **Dokončit**.
+4. V části **Host/Cluster** (Hostitel/cluster) zadejte hostitele nebo cluster, na kterém se bude virtuální počítač kolektoru spouštět.
+5. V části Storage (Úložiště) zadejte cílové úložiště pro virtuální počítač kolektoru.
+6. V části **Disk Format** (Formát disku) zadejte typ a velikost disku.
+7. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Síť musí připojení k Internetu k odeslání metadata do Azure. 
+8. Zkontrolujte a potvrďte nastavení a potom vyberte **Dokončit**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Určit ID a klíč pro každý projekt
 
@@ -157,16 +167,16 @@ Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky
 
 Následující tabulka uvádí také výsledky hodnocení, které bude mít vliv, pokud nejsou zjištěny jednotlivých čítačů.
 
-|Čítač                                  |Úroveň    |Úroveň za zařízení  |Dopad hodnocení                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
-|mem.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
-|virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|net.received.average                     | 2       |3                 |Náklady na velikost a sítě virtuálních počítačů                        |
-|net.transmitted.average                  | 2       |3                 |Náklady na velikost a sítě virtuálních počítačů                        |
+| Čítač                                 | Úroveň | Úroveň za zařízení | Dopad hodnocení                    |
+| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
+| cpu.usage.average                       | 1     | Není k dispozici               | Doporučená velikost virtuálního počítače a náklady         |
+| mem.usage.average                       | 1     | Není k dispozici               | Doporučená velikost virtuálního počítače a náklady         |
+| virtualDisk.read.average                | 2     | 2                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
+| virtualDisk.write.average               | 2     | 2                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
+| net.received.average                    | 2     | 3                | Náklady na velikost a sítě virtuálních počítačů             |
+| net.transmitted.average                 | 2     | 3                | Náklady na velikost a sítě virtuálních počítačů             |
 
 > [!WARNING]
 > Pokud jste právě nastavili na vyšší úrovni statistiky, bude trvat jeden den ke generování čítače výkonu. Ano doporučujeme spustit zjišťování po uplynutí jednoho dne.
@@ -175,28 +185,28 @@ Následující tabulka uvádí také výsledky hodnocení, které bude mít vliv
 
 U každého zjišťování, které je třeba provést spusťte kolekce k vyhledání virtuálních počítačů v oboru vyžaduje. Spusťte zjišťování jedna po druhé. Nejsou podporovány souběžných zjišťování a každého zjišťování musí mít jiný rozsah.
 
-1. V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
-2. Nastavte pro zařízení preferovaný jazyk, časové pásmo a heslo.
-3. Na ploše, vyberte **spustit kolekce** zástupce.
-4. V kolekci Azure migrovat otevřete **nastavit požadavky** a pak:
+1.  V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
+2.  Nastavte pro zařízení preferovaný jazyk, časové pásmo a heslo.
+3.  Na ploše, vyberte **spustit kolekce** zástupce.
+4.  V kolekci Azure migrovat otevřete **nastavit požadavky** a pak:
 
-   a. Přijměte licenční podmínky a přečtěte si informace třetích stran.
+    a. Přijměte licenční podmínky a přečtěte si informace třetích stran.
 
-   Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
-   
-   b. Pokud virtuální počítač získá přístup k Internetu prostřednictvím proxy serveru, vyberte **nastavení proxy serveru**a zadat adresu proxy serveru a port naslouchání. Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
+    Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
 
-   Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
+    b. Pokud virtuální počítač získá přístup k Internetu prostřednictvím proxy serveru, vyberte **nastavení proxy serveru**a zadat adresu proxy serveru a port naslouchání. Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
 
-   c. Stáhněte a nainstalujte VMware PowerCLI.
+    Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
 
-5. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
+    c. Stáhněte a nainstalujte VMware PowerCLI.
+
+5.  V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (FQDN) nebo IP adresa serveru vCenter.
     - V **uživatelské jméno** a **heslo**, zadejte pověření účtu jen pro čtení, které kolekce použije k vyhledání virtuálních počítačů v systému vCenter Server.
     - V **vyberte obor**, vyberte obor pro zjišťování virtuálních počítačů. Kolekce může zjišťovat pouze virtuální počítače v zadaném oboru. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Měl by neměl obsahovat více než 1 000 virtuálních počítačů. 
 
-6. V **zadejte migrace projektu**, zadejte ID a klíč pro projekt. Pokud zkopírujete nebyla je, otevřete portál Azure z kolekce virtuálních počítačů. V projektu **přehled** vyberte **zjišťovat počítače** a zkopírujte hodnoty.  
-7. V **sledovat průběh kolekce**, monitorovat proces zjišťování a zkontrolujte, že metadata shromážděných z virtuálních počítačů jsou v oboru. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.
+6.  V **zadejte migrace projektu**, zadejte ID a klíč pro projekt. Pokud zkopírujete nebyla je, otevřete portál Azure z kolekce virtuálních počítačů. V projektu **přehled** vyberte **zjišťovat počítače** a zkopírujte hodnoty.  
+7.  V **sledovat průběh kolekce**, monitorovat proces zjišťování a zkontrolujte, že metadata shromážděných z virtuálních počítačů jsou v oboru. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.
 
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu

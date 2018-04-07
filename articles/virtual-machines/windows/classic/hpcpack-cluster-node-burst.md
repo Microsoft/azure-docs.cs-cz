@@ -1,11 +1,11 @@
 ---
-title: "Přidat shluků uzly do clusteru HPC Pack | Microsoft Docs"
-description: "Zjistěte, jak rozbalte cluster služby HPC Pack v Azure na vyžádání přidáním instancí role pracovního procesu spuštěných v rámci cloudové služby"
+title: Přidat shluků uzly do clusteru HPC Pack | Microsoft Docs
+description: Zjistěte, jak rozbalte cluster služby HPC Pack v Azure na vyžádání přidáním instancí role pracovního procesu spuštěných v rámci cloudové služby
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 24b79a8a-24ad-4002-ae76-75abc9b28c83
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 96e332504509ae98e280d1c8585b0b294e0e07cb
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: eee9183321f21676271c8a9c7e023c80c4daf554
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Přidat na vyžádání "shluků" uzly do clusteru HPC Pack v Azure
 Pokud jste nastavili [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) clusteru v Azure, můžete způsob, jak rychle změnit velikost clusteru kapacitu nahoru nebo dolů, bez zachování sadu předkonfigurované výpočetním uzlu virtuálních počítačů. Tento článek ukazuje, jak přidat uzly na vyžádání "shluků" (pracovní role instancí spuštěných v rámci cloudové služby) jako výpočetní prostředky k hlavnímu uzlu v Azure. 
@@ -80,7 +80,7 @@ Po přidání a spustit uzly, jsou připravené pro použití ke spuštění úl
 
 Pokud narazíte na potíže při nasazování uzlů Azure, najdete v části [řešení nasazení z uzlů Azure pomocí sady Microsoft HPC Pack](http://technet.microsoft.com/library/jj159097.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Použití instance náročné velikost pro uzly shluků naleznete v tématu důležité informace v [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Pokud chcete automaticky zvětšit nebo zmenšit Azure výpočetních prostředků podle zatížení clusteru najdete v tématu [automaticky zvětšovat a zmenšovat Azure výpočetních prostředků v clusteru služby HPC Pack](hpcpack-cluster-node-autogrowshrink.md).
 

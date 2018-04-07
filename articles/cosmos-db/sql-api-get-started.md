@@ -5,8 +5,7 @@ keywords: kurz nosql, online databáze konzolová aplikace jazyka c#
 services: cosmos-db
 documentationcenter: .net
 author: AndrewHoh
-manager: jhubbard
-editor: monicar
+manager: kfile
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: anhoh
-ms.openlocfilehash: 870bdce0b909a882b99de92bbe5ad1e51db11a39
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9de183ccd60dca0b8c67bc3e17136212b7132439
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Rozhraní SQL API kurz Začínáme
 > [!div class="op_single_selector"]
@@ -74,7 +73,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 5. V **NuGet** , klikněte na **Procházet**a typ **azure documentdb** do vyhledávacího pole.
 6. Najděte ve výsledcích **Microsoft.Azure.DocumentDB** a klikněte na **Nainstalovat**.
    Je třeba ID balíčku klientské knihovny Azure Cosmos SQL DB rozhraní API [Klientská knihovna pro Microsoft Azure Cosmos DB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
-   ![Snímek obrazovky nabídky NuGet pro vyhledání Azure Cosmos DB Client SDK](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   ![Snímek obrazovky s nabídkou NuGet pro vyhledání klientské sady SDK služby Azure Cosmos DB](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Pokud se vám zobrazí zpráva týkající se kontroly změn řešení, klikněte na **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
 
@@ -113,7 +112,7 @@ Na portálu Azure přejděte na svůj účet Azure Cosmos DB a pak klikněte na 
 
 Zkopírujte identifikátor URI z portálu a vložte ho do `<your endpoint URL>` v souboru program.cs. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `<your primary key>`.
 
-![Snímek obrazovky portálu Azure používá v kurzu NoSQL k vytvoření konzolové aplikace jazyka C#. Zobrazuje účet Azure Cosmos DB s AKTIVNÍM centrem, zvýrazněným tlačítkem klíče na stránce účtu Azure Cosmos DB a zvýrazněnými na stránce klíče hodnotami URI, primární klíč a sekundární klíč][keys]
+![Snímek obrazovky webu Azure Portal, který se v kurzu NoSQL používá k vytvoření konzolové aplikace v jazyce C#. Zobrazuje účet Azure Cosmos DB s AKTIVNÍM centrem, zvýrazněným tlačítkem klíče na stránce účtu Azure Cosmos DB a zvýrazněnými na stránce klíče hodnotami URI, primární klíč a sekundární klíč][keys]
 
 Potom vytvořením nové instance **DocumentClient** spustíme aplikaci.
 

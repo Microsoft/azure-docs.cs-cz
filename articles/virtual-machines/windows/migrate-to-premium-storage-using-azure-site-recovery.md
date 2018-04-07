@@ -1,12 +1,12 @@
 ---
-title: "Migrovat virtuální počítače Windows Azure Premium Storage s Azure Site Recovery | Microsoft Docs"
-description: "Migrace stávajících virtuálních počítačů do Azure Premium Storage pomocí Site Recovery. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure."
+title: Migrovat virtuální počítače Windows Azure Premium Storage s Azure Site Recovery | Microsoft Docs
+description: Migrace stávajících virtuálních počítačů do Azure Premium Storage pomocí Site Recovery. Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro I náročnými úlohy běžící na virtuálních počítačích Azure.
 services: virtual-machines-windows
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 171b0f938e44218d11cfb001e3f58ebd0feb35fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Storage úrovně Premium pomocí Azure Site Recovery
 
@@ -80,7 +80,7 @@ Site Recovery můžete použít k migraci virtuálních počítačů Azure IaaS 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Vytvoření trezoru služeb zotavení
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. Vyberte **vytvořit prostředek** > **správy** > **zálohování** a **obnovení lokality (OMS)**. Alternativně můžete vybrat **Procházet** > **trezoru služeb zotavení** > **přidat**. 
+2. Vyberte **vytvořit prostředek** > **správy** > **zálohování a obnovení lokality (OMS)**. Alternativně můžete vybrat **Procházet** > **trezoru služeb zotavení** > **přidat**. 
 3. Zadejte oblast, která bude replikován virtuálních počítačů. Pro účely migrace ve stejné oblasti vyberte oblast, kde jsou zdrojové virtuální počítače a účty zdrojové úložiště. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Volba cílů ochrany 

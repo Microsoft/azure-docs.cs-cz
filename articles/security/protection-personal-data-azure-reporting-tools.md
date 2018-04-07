@@ -1,12 +1,12 @@
 ---
-title: "Zdokumentujte ochrany osobních údajů v Azure, vytváření sestav nástroje | Microsoft Docs"
-description: "pomocí Azure služby reporting services a ochrany osobních údajů osobních údajů v iniciativy v souladu s obecné Data Protection nařízení (GDPR)."
+title: Zdokumentujte ochrany osobních údajů v Azure, vytváření sestav nástroje | Microsoft Docs
+description: pomocí Azure služby reporting services a ochrany osobních údajů osobních údajů v iniciativy v souladu s obecné Data Protection nařízení (GDPR).
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokument ochranu osobních údajů v Azure, vytváření sestav nástroje
 
@@ -95,13 +95,13 @@ Nástrojů pro analýzu v analýzy protokolů například protokol hledání, zo
 
 #### <a name="how-do-i-use-log-analytics"></a>Použití analýzy protokolů
 
-Analýzy protokolů můžete přistupovat prostřednictvím portálu OMS nebo portálu Azure, z libovolného webového prohlížeče. Log Analytics poskytuje dotazovací jazyk pro rychlé načítání a slučování dat v úložišti. Můžete vytvořit a uložit hledání protokolu přímo analyzovat data v portálu.
+Analýzy protokolů můžete přistupovat prostřednictvím portálu OMS nebo portálu Azure, z libovolného webového prohlížeče. Log Analytics obsahuje dotazovací jazyk rychle načíst a slučování dat v pracovním prostoru analýzy protokolů. Můžete vytvořit a uložit hledání protokolu přímo analyzovat data v portálu.
 
 Pokud chcete vytvořit pracovní prostor analýzy protokolů na portálu Azure, postupujte takto:
 
 1. Vyberte **analýzy protokolů** ze seznamu služeb v Marketplace.
 
-2. Vyberte **vytvořit,** pak zadejte název pracovní prostor OMS, vyberte předplatné, skupinu prostředků, umístění a cenovou úroveň.
+2. Vyberte **vytvořit,** pak zadejte název pracovního prostoru analýzy protokolů, vyberte předplatné, skupinu prostředků, umístění a cenovou úroveň.
 
 3. Klikněte na tlačítko **OK** k zobrazení seznamu vašich pracovních prostorů.
 

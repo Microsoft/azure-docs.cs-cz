@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumejte horizontálně dělené víceklientské aplikace, která používá Azure SQL Database
 
@@ -57,7 +57,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 Kroky v této části, poskytnete *uživatele* hodnotu, která se používá k zajištění jsou globálně jedinečné názvy prostředků a název *skupiny prostředků* obsahující všechny prostředky vytvořeny při nasazení aplikace. Pro osoby s názvem *Ann Finley*, doporučujeme:
 - *Uživatel:* **af1***(jeho iniciály a číslice. Použít jinou hodnotu (např. af2) Pokud nasazujete aplikaci ještě jednou.)*
-- *Skupina prostředků:* **wingtip. dpt af1** *(wingtip dpt signalizuje to databáze za klienta aplikace. Připojování af1 název uživatele koreluje s názvy prostředků, které obsahuje název skupiny prostředků.)*
+- *Skupina prostředků:* **wingtip-mt-af1** *(wingtip mt signalizuje to horizontálně dělené víceklientské aplikace. Připojování af1 název uživatele koreluje s názvy prostředků, které obsahuje název skupiny prostředků.)*
 
 Teď zvolte názvy a poznamenejte si je. 
 
@@ -123,7 +123,7 @@ Každý místo získá přizpůsobené webové aplikace do seznamu svoje událos
 Centrálního **události rozbočovače** webová stránka obsahuje seznam odkazů na klienty v konkrétní nasazení. Použijte následující postup můžete vyzkoušet **události rozbočovače** webové stránky a jednotlivé webové aplikace:
 
 1. Otevřete **události rozbočovače** ve webovém prohlížeči:
-    - http://events.Wingtip-mt.&lt;uživatele&gt;. trafficmanager.net &nbsp; *(Nahraďte &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.)*
+    - http://events.wingtip-mt. &lt;uživatele&gt;. trafficmanager.net &nbsp; *(Nahraďte &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.)*
 
     ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 

@@ -1,10 +1,10 @@
 ---
-title: "Řídí virtuální počítače Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Kurz – spravovat virtuální počítače Azure s použitím RBAC, zásady, zámků a značky pomocí rozhraní příkazového řádku Azure"
+title: Řídí virtuální počítače Azure pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Kurz – spravovat virtuální počítače Azure s použitím RBAC, zásady, zámků a značky pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: ac6f7b0d32479e9e7e9945f83dc63a5847cba6a4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f52079e00c7c5f4e70acf8c86f648ed9281744e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Zásady správného řízení virtuálního počítače pomocí rozhraní příkazového řádku Azure
 
@@ -231,7 +231,7 @@ az group delete --name myResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 

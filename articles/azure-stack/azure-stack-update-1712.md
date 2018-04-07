@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 04/06/2018
 ms.author: brenduns
-ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure aktualizace 1712 zásobníku
 
@@ -43,11 +43,14 @@ Tento článek popisuje vylepšení a opravy v tomto balíčku aktualizace – z
 Je nutné nejprve nainstalovat Azure zásobníku [aktualizovat 1711](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711) před instalací této aktualizace.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
+- Po instalaci 1712 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).  
+  - [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/help/4103348)
 
-Tato aktualizace vyžaduje také nainstalovat aktualizace firmwaru z partnerského OEM po dokončení instalace aktualizace 1712 zásobník Azure.
 
-> [!NOTE]
-> Naleznete na webu výrobce OEM partnera můžete stáhnout aktualizace.
+- Aktualizace 1712 také vyžaduje instalaci aktualizace firmwaru z partnerského OEM po dokončení instalace aktualizace 1712 zásobník Azure.
+
+  > [!NOTE]
+  > Naleznete na webu výrobce OEM partnera můžete stáhnout aktualizace.
 
 ### <a name="new-features-and-fixes"></a>Nové funkce a opravy
 

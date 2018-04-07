@@ -1,19 +1,19 @@
 ---
-title: "Migrovat existující databáze chcete škálovat. | Microsoft Docs"
-description: "Převést horizontálně dělené databáze používejte nástroje elastické databáze tak, že vytvoříte horizontálního oddílu správce mapy"
+title: Migrovat existující databáze chcete škálovat. | Microsoft Docs
+description: Převést horizontálně dělené databáze používejte nástroje elastické databáze tak, že vytvoříte horizontálního oddílu správce mapy
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: d82994f3ab925fa3ace0d0dbe1631a01dd1df586
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 41652717417f47858698b80eac83a4022dcfe13b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrovat existující databáze chcete škálovat.
 Snadno spravovat existující upraveným horizontálně dělené databáze pomocí nástrojů databáze Azure SQL Database (například [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md)). Nejdřív převést stávající sadu databází, které chcete použít [správce mapy horizontálního oddílu](sql-database-elastic-scale-shard-map-management.md). 
@@ -147,7 +147,7 @@ Informace o existující horizontálních oddílů a s nimi spojených mapován�
 ## <a name="summary"></a>Souhrn
 Po dokončení instalace můžete začít používat klientské knihovny pro elastické databáze. Můžete také použít [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) a [dotazu víc horizontálních](sql-database-elastic-scale-multishard-querying.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Získat skriptů prostředí PowerShell z [Azure SQL DB Elastická databáze nástroje skripty](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Nástroje jsou také na Githubu: [/Elastická db nástroje Azure](https://github.com/Azure/elastic-db-tools).

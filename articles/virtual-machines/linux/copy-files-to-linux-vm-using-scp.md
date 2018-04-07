@@ -1,13 +1,13 @@
 ---
-title: "Přesuňte soubory do a z virtuálních počítačů Linux Azure s spojovací bod služby | Microsoft Docs"
-description: "Bezpečně přesunout soubory do a z virtuálního počítače s Linuxem v Azure pomocí spojovací bod služby a dvojici klíčů SSH."
+title: Přesuňte soubory do a z virtuálních počítačů Linux Azure s spojovací bod služby | Microsoft Docs
+description: Bezpečně přesunout soubory do a z virtuálního počítače s Linuxem v Azure pomocí spojovací bod služby a dvojici klíčů SSH.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 736f7c11ec3de04f1ad52ee29d0a4c952c9b0545
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0231e402848e617a46ca70470ba4d3272ace59f7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Přesunutí souborů do a z virtuálního počítače s Linuxem pomocí spojovací bod služby
 
@@ -73,6 +73,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 `-r` Rozhraní příkazového řádku příznak dá pokyn spojovací bod služby k rekurzivnímu kopírování souborů a adresářů z bodu adresáře uvedené v příkazu.  Také Všimněte si, že je podobná syntaxe příkazového řádku `cp` zkopírujte příkaz.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Spravovat uživatele, SSH a zkontrolujte nebo opravte disky na virtuálních počítačích Azure Linux pomocí rozšíření VMAccess](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

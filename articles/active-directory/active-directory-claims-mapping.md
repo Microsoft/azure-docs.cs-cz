@@ -1,6 +1,6 @@
 ---
-title: "Deklarace identity mapování v Azure Active Directory (verze public preview) | Microsoft Docs"
-description: "Tato stránka popisuje mapování deklarace Azure Active Directory."
+title: Deklarace identity mapování v Azure Active Directory (verze public preview) | Microsoft Docs
+description: Tato stránka popisuje mapování deklarace Azure Active Directory.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Deklarace identity mapování v Azure Active Directory (verze public preview)
 
@@ -234,7 +234,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>Deklarace identity mapování vlastnosti zásad
-Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které jsou vygenerované zásad a kde jsou data pochází z. Pokud je nastavené žádné zásady, systém vydá obsahující základní sady deklarací identity, sadě základní deklarací identity a volitelné deklarace identity, které aplikace se rozhodli přijímat tokeny.
+Pomocí vlastnosti deklarací, mapování na ovládací prvek deklarace, které jsou vygenerované zásad a kde jsou data pochází z. Pokud je nastavené žádné zásady, problémy s tokeny systému obsahující základní deklarace sadu, sadě základní deklarací identity a jakékoli [volitelné deklarací](develop/active-directory-optional-claims.md) , aplikace se rozhodli přijímat.
 
 ### <a name="include-basic-claim-set"></a>Patří nastavení základní deklarace identity
 
@@ -403,7 +403,7 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabulka 6: Transformace metody povolené pro SAML NameID
 |TransformationMethod|Omezení|
 | ----- | ----- |
-|ExtractMailPrefix|Žádné|
+|ExtractMailPrefix|Žádný|
 |Spojit|Přípona je připojený k musí být ověřené domény klienta prostředků.|
 
 ### <a name="custom-signing-key"></a>Vlastní podpisového klíče

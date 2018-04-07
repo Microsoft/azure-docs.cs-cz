@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/19/2018
+ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1f24db331b3d59eaad54c5c2488e56913261cff2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verze hostovaného operačního systému a kompatibilních sad SDK
 Poskytuje že aktuální informace o nejnovější hostovaného operačního systému Azure verze pro cloudové služby. Tyto informace vám pomůžou naplánovat způsob upgradu než hostovaného operačního systému je zakázáno. Pokud nakonfigurujete použití role *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -42,6 +42,9 @@ Poskytuje že aktuální informace o nejnovější hostovaného operačního sys
 Nejste si jistí, o jaké hostovaného operačního systému je nebo jak hostovaného operačního systému uvolní pracovní? Čtení [to](#how-it-works) části.
 
 ## <a name="news-updates"></a>Nejnovější zprávy
+###### <a name="april-6-2018"></a>**6. dubna 2018**
+Vydala března hostovaného operačního systému.
+
 ###### <a name="march-19-2018"></a>**19. března 2018**
 Vydala února hostovaného operačního systému.
 
@@ -90,8 +93,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum | Vypršela platnost datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.17_201803-01 |6. dubna 2018 |POST 5.19 |Bude doplněno |
 | WA-GUEST-OS-5.16_201802-01 |12. březen 2018 |POST 5.18 |Bude doplněno |
-| WA-GUEST-OS-5.15_201801-01 |4. ledna 2018 |POST 5.17 |Bude doplněno |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4. ledna 2018 |6. dubna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-5.14_201712-01~~ |4. ledna 2018 |12. březen 2018 |Bude doplněno |
 |~~WA-GUEST-OS-5.13_201711-01~~ |14. prosince 2017 |4. ledna 2018|Bude doplněno |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8 listopadu 2017 |4. ledna 2018 |Bude doplněno |
@@ -116,8 +120,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum | Vypršela platnost datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.52_201803-01 |6. dubna 2018 |POST 4.54 |Bude doplněno |
 | WA-GUEST-OS-4.51_201802-01 |12. březen 2018 |POST 4,53 |Bude doplněno |
-| WA-GUEST-OS-4.50_201801-01 |4. ledna 2018 |POST 4.52. |Bude doplněno |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4. ledna 2018 |6. dubna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-4.49_201712-01~~ |4. ledna 2018 |12. březen 2018 |Bude doplněno |
 |~~WA-GUEST-OS-4.48_201711-01~~ |14. prosince 2017 |4. ledna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8 listopadu 2017 |4. ledna 2018 |Bude doplněno |
@@ -142,8 +147,9 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum | Vypršela platnost datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.59_201803-01 |6. dubna 2018 |POST 3.61 |Bude doplněno |
 | WA-GUEST-OS-3.58_201802-01 |19. března 2018 |POST 3.60 |Bude doplněno |
-| WA-GUEST-OS-3.57_201801-01 |29. ledna 2018 |POST 3.59 |Bude doplněno |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29. ledna 2018 |6. dubna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-3.56_201712-01~~ |4. ledna 2018 |19. března 2018 |Bude doplněno |
 |~~WA-GUEST-OS-3.55_201711-01~~ |14. prosince 2017 |29. ledna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8 listopadu 2017 |4. ledna 2018 |Bude doplněno |
@@ -168,8 +174,9 @@ Nainstalované rozhraní .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum | Vypršela platnost datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.72_201803-01 |6. dubna 2018 |POST 2.74 |Bude doplněno |
 | WA-GUEST-OS-2.71_201802-01 |12. březen 2018 |POST 2,73 |Bude doplněno |
-| WA-GUEST-OS-2.70_201801-01 |29. ledna 2018 |POST 2.72 |Bude doplněno |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29. ledna 2018 |6. dubna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-2.69_201712-01~~ |4. ledna 2018 |12. březen 2018 |Bude doplněno |
 |~~WA-GUEST-OS-2.68_201711-01~~ |14. prosince 2017 |29. ledna 2018 |Bude doplněno |
 |~~WA-GUEST-OS-2.67_201710-02~~ |8 listopadu 2017 |4. ledna 2018 |Bude doplněno |

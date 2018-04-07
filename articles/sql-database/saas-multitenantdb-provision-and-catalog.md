@@ -1,6 +1,6 @@
 ---
-title: "Zřídit v SaaS víceklientské Azure | Microsoft Docs"
-description: "Zjistěte, jak zřídit a nové klienty v aplikaci SaaS víceklientské Azure SQL Database v katalogu"
+title: Zřídit v SaaS víceklientské Azure | Microsoft Docs
+description: Zjistěte, jak zřídit a nové klienty v aplikaci SaaS víceklientské Azure SQL Database v katalogu
 keywords: kurz k sql database
 services: sql-database
 author: MightyPen
@@ -9,13 +9,13 @@ ms.reviewer: billgib;andrela;genemi
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb0229731d8fd1495173915b3bc95b48538f1e85
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřizování a katalog novým tenantům v aplikaci SaaS pomocí horizontálně dělené víceklientské databázi Azure SQL
 
@@ -101,7 +101,7 @@ Podobně jako všechny aplikace bude Wingtip momentální v čase. V některých
 
 U SaaS aplikace musí být tyto změny nasazeny koordinovaně u potenciálně velkého počtu klientských databází. Pro tyto změny se v budoucnu klienta databáze musí být součástí procesu zřizování. Tento problém je prozkoumali další v [schématu správu kurzu](saas-tenancy-schema-management.md).
 
-#### <a name="scripts"></a>Skripty
+#### <a name="scripts"></a>Scripts
 
 Zřizování skripty klienta v tomto kurzu podporují obě z následujících scénářů:
 - Zřizování klienta do existující databázi sdílet s jinými klienty.
@@ -167,7 +167,7 @@ Abyste pochopili, jak aplikace Wingtip implementuje zřizování ve sdílené da
 
 4. Po spuštění skriptu se zastaví u zarážky, stiskněte klávesu **F11** ke kroku do kódu.
 
-   ![Ladění](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![ladit](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Trasování spuštění skriptu na pomocí **ladění** možnosti nabídky, **F10** a **F11**, aby krok přes nebo do volaných funkcí.
 
@@ -266,7 +266,7 @@ Tento typ automatizované služby může být jednoduché nebo komplexní. Např
 - [Ladění skriptů v integrovaném skriptovacím prostředí (ISE) v prostředí Windows PowerShell](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

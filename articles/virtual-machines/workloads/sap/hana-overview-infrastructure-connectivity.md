@@ -1,11 +1,11 @@
 ---
-title: "Infrastruktury a připojení k SAP HANA v Azure (velké instance) | Microsoft Docs"
-description: "Konfigurace infrastruktury požadované připojení používat SAP HANA v Azure (velké instance)."
+title: Infrastruktury a připojení k SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Konfigurace infrastruktury požadované připojení používat SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (velké instance) a připojení v Azure 
 
@@ -49,9 +49,9 @@ Po zakoupení SAP HANA v Azure (velké instance) je dokončené mezi vámi a tý
 - Data pro každou HANA velké instancí systému:
   - Požadované hostname - ideálně s plně kvalifikovaný název domény.
   - Požadovanou IP adresu pro jednotku velké Instance HANA mimo rozsah adres fondu IP serverů - mějte na paměti, že prvních 30 IP adresy v rozsahu Server fond IP adres jsou vyhrazené pro interní použití v rámci instancí velké HANA
-  - SAP HANA SID název instance SAP HANA (nutné vytvářet svazky potřeby související SAP HANA disku). Identifikátor SID HANA je nezbytné k vytváření oprávnění pro <sidadm> na svazcích systému souborů NFS, který se získávání připojen k instanci HANA velké jednotky. Také je používán jako jedna z komponent název disku svazků, které získat připojené. Pokud chcete spustit více než jednu instanci HANA na jednotce, budete muset seznam identifikátorů SID více HANA. Každé z nich získá samostatnou sadu svazky, které jsou přiřazeny.
-  - Identifikátor skupiny, které má uživatel hana sidadm v operačním systému Linux, je potřeba k vytvoření svazky potřeby související SAP HANA disku. Instalace SAP HANA obvykle vytvoří skupinu sapsys s id skupiny 1001. Hana sidadm uživatel je součástí této skupiny
-  - ID uživatele, který má uživatel hana sidadm v operačním systému Linux, je potřeba vytvářet svazky potřeby související SAP HANA disku. Pokud používáte více instancí HANA na jednotce, budete muset seznam všech <sid>uživatelé adm 
+  - SAP HANA SID název instance SAP HANA (nutné vytvářet svazky potřeby související SAP HANA disku). Identifikátor SID HANA je nezbytné k vytváření oprávnění pro sidadm na svazky systému souborů NFS, které jsou získávání připojené k jednotce HANA velké Instance. Také je používán jako jedna z komponent název disku svazků, které získat připojené. Pokud chcete spustit více než jednu instanci HANA na jednotce, budete muset seznam identifikátorů SID více HANA. Každé z nich získá samostatnou sadu svazky, které jsou přiřazeny.
+  - K vytvoření svazky potřeby související SAP HANA disku je potřeba groupid, které má uživatel sidadm v operačním systému Linux. Instalace SAP HANA obvykle vytvoří skupinu sapsys s id skupiny 1001. Sidadm uživatel je součástí této skupiny
+  - ID uživatele, který má uživatel sidadm v operačním systému Linux, je potřeba vytvářet svazky potřeby související SAP HANA disku. Pokud používáte více instancí HANA na jednotce, budete muset seznam všech <sid>uživatelé adm 
 - ID předplatného Azure pro předplatné Azure, na které SAP HANA na Azure HANA velké instance má být přímo připojen. Toto ID předplatného odkazuje předplatné Azure, který bude účtován jednotka HANA velké Instance.
 
 Po zadání informací Microsoft zřídí SAP HANA v Azure (velké instance) a vrátí informace nezbytné propojení sítě Azure Vnet s HANA velké instancí a přístup k instanci HANA velké jednotky.
@@ -182,7 +182,7 @@ Pokud brána už existuje, zkontrolujte, zda je bránu ExpressRoute nebo ne. Pok
 
 - Použijte buď (nové) [portál Azure](https://portal.azure.com/), nebo prostředí PowerShell k vytvoření brány ExpressRoute VPN připojen k virtuální síti.
   - Pokud používáte portál Azure, přidejte nový **brány virtuální sítě** a pak vyberte **ExpressRoute** jako typ brány.
-  - Pokud jste zvolili namísto toho prostředí PowerShell, nejprve stáhnout a použít nejnovější [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) zajistit optimální zkušenosti. Následující příkazy vytvořte bránu ExpressRoute. Texty před sebou  _$_  jsou proměnné definované uživatelem, které je třeba aktualizovat pomocí vaší konkrétní informace.
+  - Pokud jste zvolili namísto toho prostředí PowerShell, nejprve stáhnout a použít nejnovější [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) zajistit optimální zkušenosti. Následující příkazy vytvořte bránu ExpressRoute. Texty před sebou _$_ jsou proměnné definované uživatelem, které je třeba aktualizovat pomocí vaší konkrétní informace.
 
 ```PowerShell
 # These Values should already exist, update to match your environment

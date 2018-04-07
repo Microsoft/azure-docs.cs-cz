@@ -1,6 +1,6 @@
 ---
-title: "Pokyny pro příklad víceklientské aplikace SQL Database - Wingtip SaaS | Microsoft Docs"
-description: "Poskytuje kroky a pokyny pro instalaci a spuštění aplikace víceklientské ukázka, která používá Azure SQL Database, příklad Wingtip lístky SaaS."
+title: Pokyny pro příklad víceklientské aplikace SQL Database - Wingtip SaaS | Microsoft Docs
+description: Poskytuje kroky a pokyny pro instalaci a spuštění aplikace víceklientské ukázka, která používá Azure SQL Database, příklad Wingtip lístky SaaS.
 keywords: kurz k sql database
 services: sql-database
 author: MightyPen
@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 0bdb91fc9eb2fa23f8cf1e3f69206a89a93ceaee
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip lístky ukázkové aplikace SaaS
 

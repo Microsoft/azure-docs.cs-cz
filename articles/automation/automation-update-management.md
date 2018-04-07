@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -30,7 +30,7 @@ Počítače spravované pomocí správy aktualizací následující konfigurace 
 * Funkci Hybrid Runbook Worker služby Automation
 * Microsoft Update nebo Windows Server Update Services pro počítače s Windows
 
-Následující diagram znázorňuje koncepční zobrazení chování a tok dat způsobu řešení vyhodnocuje a bezpečnostní aktualizace se vztahuje na všechny připojené serveru Windows a Linux počítačů v pracovním prostoru.    
+Následující diagram znázorňuje koncepční zobrazení chování a tok dat způsobu řešení vyhodnocuje a bezpečnostní aktualizace se vztahuje na všechny připojené serveru Windows a Linux počítačů v pracovním prostoru.
 
 ![Tok procesu správy aktualizace](media/automation-update-management/update-mgmt-updateworkflow.png)
 
@@ -70,21 +70,24 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 
 #### <a name="windows"></a>Windows
 
-Agenty se systémem Windows musí být nakonfigurované pro komunikaci se serverem Windows Server Update Services (WSUS) nebo mají přístup ke službě Microsoft Update. Také agent systému Windows nelze spravovat souběžně nástrojem System Center Configuration Manager. [Agenta Windows](../log-analytics/log-analytics-agent-windows.md) se vyžaduje. Tento agent se nainstaluje automaticky, pokud se registrace virtuální počítač Azure.
+Agenty se systémem Windows musí být nakonfigurované pro komunikaci se serverem Windows Server Update Services (WSUS) nebo mají přístup ke službě Microsoft Update. Správa aktualizací může být použita pomocí nástroje System Center Configuration Manager, další informace o scénářích integrace najdete [integraci se System Center Configuration Manager pomocí správy aktualizací](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agenta Windows](../log-analytics/log-analytics-agent-windows.md) se vyžaduje. Tento agent se nainstaluje automaticky, pokud se registrace virtuální počítač Azure.
 
 #### <a name="linux"></a>Linux
 
 Pro Linux počítač musí mít přístup k aktualizaci úložiště, což může být privátní nebo veřejné. Toto řešení nepodporuje OMS agenta pro Linux nakonfigurovaný tak, aby sestavy několik pracovních prostorů analýzy protokolů.
 
-Další informace o tom, jak nainstalovat agenta OMS pro Linux a stáhnout nejnovější verzi najdete v tématu [Operations Management Suite agenta pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat agenta OMS pro Windows, najdete v tématu popisujícím [agenta Operations Management Suite pro Windows](../log-analytics/log-analytics-windows-agent.md).  
+Další informace o tom, jak nainstalovat agenta OMS pro Linux a stáhnout nejnovější verzi najdete v tématu [Operations Management Suite agenta pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat agenta OMS pro Windows, najdete v tématu popisujícím [agenta Operations Management Suite pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Oprávnění
-Chcete-li vytvořit a spravovat nasazení aktualizací, musíte konkrétní oprávnění. Další informace o těchto oprávnění naleznete [přístupu na základě na Role - Správa aktualizací](automation-role-based-access-control.md#update-management) 
+
+Chcete-li vytvořit a spravovat nasazení aktualizací, musíte konkrétní oprávnění. Další informace o těchto oprávnění naleznete [přístupu na základě na Role - Správa aktualizací](automation-role-based-access-control.md#update-management)
 
 ## <a name="solution-components"></a>Součásti řešení
+
 Toto řešení se skládá z následujících prostředků, které se přidají do vašeho účtu Automation, a přímo připojených agentů nebo skupiny pro správu připojené k Operations Manageru.
 
 ### <a name="hybrid-worker-groups"></a>Skupiny Hybrid Worker
+
 Povolíte-li toto řešení, všechny počítač se systémem Windows přímo připojené k pracovní prostor analýzy protokolů je automaticky nakonfigurovaná jako hybridní pracovní proces Runbooku na podporu sady runbook, zahrnuté v tomto řešení. Pro každý počítač systému Windows spravovat řešení, je uveden v části stránku hybridních pracovních skupin jako skupinu hybridních pracovních procesů systému pro účet služby Automation následující zásady vytváření názvů *Hostname FQDN_GUID*. Cílem nemůže tyto skupiny se sadami runbook ve vašem účtu, jinak se nezdaří. Tyto skupiny jsou určeny pouze pro podporu tohoto řešení pro správu.
 
 Počítače s Windows ale můžete přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation pro podporu runbooků Automation, pokud používáte stejný účet pro toto řešení i pro členství ve skupině Hybrid Runbook Worker. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
@@ -119,14 +122,13 @@ Heartbeat
 
 Na počítači s Windows můžete zkontrolovat následující k ověření připojení agenta s analýzy protokolů:
 
-1.  Otevřete Microsoft Monitoring Agent v Ovládacích panelech a na **Azure Log Analytics** agenta na kartě zobrazí zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojila k analýze protokolů** .   
-2.  Otevřete protokol událostí systému Windows, přejděte do **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ze zdrojového konektoru Service Connector. Tyto události znamenat počítač zaregistrován s pracovní prostor analýzy protokolů a přijímá konfigurace.  
+1. Otevřete Microsoft Monitoring Agent v Ovládacích panelech a na **Azure Log Analytics** agenta na kartě zobrazí zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojila k analýze protokolů** .   
+2. Otevřete protokol událostí systému Windows, přejděte do **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ze zdrojového konektoru Service Connector. Tyto události znamenat počítač zaregistrován s pracovní prostor analýzy protokolů a přijímá konfigurace.
 
 Pokud agenta není schopna komunikovat s analýzy protokolů a je nakonfigurován pro komunikaci přes internet prostřednictvím brány firewall nebo proxy server, potvrzení, brány firewall nebo proxy server byl správně nakonfigurován kontrolou [konfiguraci sítě pro Agent webu Windows](../log-analytics/log-analytics-agent-windows.md) nebo [konfiguraci sítě pro agenta systému Linux](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Pokud vaše systémy Linux jsou nakonfigurovány ke komunikaci s server proxy nebo brány OMS a jsou registrace toto řešení, aktualizovat *proxy.conf* oprávnění ke skupině omiuser udělit oprávnění u souboru čtení tak, že provedete následující příkazy:  
-> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> Pokud vaše systémy Linux jsou nakonfigurovány ke komunikaci s server proxy nebo brány OMS a jsou registrace toto řešení, aktualizovat *proxy.conf* oprávnění ke skupině omiuser udělit oprávnění u souboru čtení tak, že provedete následující příkazy: `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
 Stav nově přidaných agentů systému Linux bude po provedení vyhodnocení **Aktualizovaný**. Tento proces může trvat až 6 hodin.
@@ -136,6 +138,7 @@ Pokud chcete potvrdit skupinu správy nástroje Operations Manager komunikuje s 
 ## <a name="data-collection"></a>Shromažďování dat
 
 ### <a name="supported-agents"></a>Podporovaní agenti
+
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
 | Připojený zdroj | Podporováno | Popis |
@@ -145,11 +148,13 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br>Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Do pracovního prostoru analýzy protokolů se předají data ze skupiny pro správu. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
+
 Pro každý spravovaný počítač s Windows se kontrola provádí dvakrát denně. Každých 15 minut se volá rozhraní Windows API pro zadání dotazu na čas poslední aktualizace, podle kterého zjistí, jestli se změnil stav, a pokud ano, zahájí se kontrola kompatibility. Pro každý spravovaný počítač s Linuxem se kontrola provádí každé tři hodiny.
 
-Může trvat 30 minut až 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.   
+Může trvat 30 minut až 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
 ## <a name="viewing-update-assessments"></a>Zobrazení posouzení aktualizací
+
 Klikněte na **správy aktualizací** na účtu automation k zobrazení stavu počítačů.
 
 Toto zobrazení obsahuje informace o vašich počítačů, chybějící aktualizace, nasazení aktualizací a plánovaná aktualizace nasazení.
@@ -165,7 +170,7 @@ Po posouzení aktualizací pro všechny počítače s Linuxem a Windows ve vaše
 
 Pokud se chcete vyhnout tomu, aby se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci Unattended-Upgrade tak, aby automatické aktualizace byly zakázány. Informace o postupu této konfigurace najdete v tématu [Téma Automatické aktualizace v příručce k Ubuntu Serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-Pro virtuální počítače vytvořené z imagí Red Hat Enterprise Linux (RHEL) na vyžádání dostupných v Azure Marketplace jsou registrované pro přístup k infrastruktuře [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) nasazené v Azure. Všechny ostatní distribuce Azure musí být aktualizované z online úložiště souborů distribuce podle podporované metody.  
+Pro virtuální počítače vytvořené z imagí Red Hat Enterprise Linux (RHEL) na vyžádání dostupných v Azure Marketplace jsou registrované pro přístup k infrastruktuře [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) nasazené v Azure. Všechny ostatní distribuce Azure musí být aktualizované z online úložiště souborů distribuce podle podporované metody.
 
 ## <a name="viewing-missing-updates"></a>Chybějící aktualizace zobrazení
 
@@ -204,8 +209,8 @@ Následující tabulka obsahuje ukázkový protokol hledání aktualizace zázna
 |Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi<br>Přidejte jednu z těchto omezit operačního systému:<br>OSType = "Windows"<br>OSType == "Linux" |
 | Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;kde počítač == "ContosoVM1.contoso.com"<br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
 | Událost<br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false <br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími požadovanými důležitými aktualizacemi nebo aktualizacemi zabezpečení |
-| Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích | 
-| UpdateRunProgress<br>&#124;kde InstallationStatus == "se nezdařilo" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci<br>Přidejte jednu z těchto omezit operačního systému:<br>OSType = "Windows"<br>OSType == "Linux" | 
+| Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích |
+| UpdateRunProgress<br>&#124;kde InstallationStatus == "se nezdařilo" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci<br>Přidejte jednu z těchto omezit operačního systému:<br>OSType = "Windows"<br>OSType == "Linux" |
 | Aktualizace<br>&#124;kde OSType == "Linux"<br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")<br>&#124; summarize AggregatedValue = count() by Computer |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|Počítače aktualizované při této hromadné postupné aktualizaci (nahraďte hodnotu názvem vašeho nasazení aktualizací) | 
 
@@ -239,15 +244,15 @@ Nasazení aktualizací pomocí klasifikace aktualizace nemusí fungovat na openS
 
 Tato část obsahuje informace, které vám pomohou s řešením potíží s řešením pro správu aktualizací.
 
-Pokud při pokusech o připojení řešení nebo virtuálního počítače dochází k potížím, zkontrolujte, jestli jsou v protokolu událostí **Protokoly aplikací a služeb\Operations Manager** události s ID události 4502 a zprávou události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. V následující tabulce najdete konkrétní chybové zprávy a možné řešení pro každou z nich.  
+Pokud při pokusech o připojení řešení nebo virtuálního počítače dochází k potížím, zkontrolujte, jestli jsou v protokolu událostí **Protokoly aplikací a služeb\Operations Manager** události s ID události 4502 a zprávou události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. V následující tabulce najdete konkrétní chybové zprávy a možné řešení pro každou z nich.
 
-| Zpráva | Důvod | Řešení |   
-|----------|----------|----------|  
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.InvalidOperationException: {"Zpráva":"Počítač už je<br>registrovaný k jinému účtu. "} | Počítač už je připojený k jinému pracovnímu prostoru pro řešení Update Management | Proveďte vyčištění starých artefaktů [odstraněním hybridních runbooků](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---><br>System.Net.WebException: Nadřízené připojení<br>bylo uzavřeno: Došlo k neočekávané<br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:<br>Klient a server nemůžou komunikovat,<br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|  
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)| 
-| Certifikát předložený službou <wsid>.oms.opinsights.azure.com<br>nebyl vydaný certifikační autoritou<br>používanou pro služby Microsoft. Kontakt<br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící<br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|  
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---><br>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem | Ověřte, že má systémový účet<br>oprávnění ke čtení ze složky:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
+| Zpráva | Důvod | Řešení |
+|----------|----------|----------|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.InvalidOperationException: {"Zpráva":"Počítač už je<br>registrovaný k jinému účtu. "} | Počítač už je připojený k jinému pracovnímu prostoru pro řešení Update Management | Proveďte vyčištění starých artefaktů [odstraněním hybridních runbooků](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---><br>System.Net.WebException: Nadřízené připojení<br>bylo uzavřeno: Došlo k neočekávané<br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:<br>Klient a server nemůžou komunikovat,<br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Certifikát předložený službou <wsid>.oms.opinsights.azure.com<br>nebyl vydaný certifikační autoritou<br>používanou pro služby Microsoft. Kontakt<br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící<br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---><br>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem | Ověřte, že má systémový účet<br>oprávnění ke čtení ze složky:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
 
 ## <a name="next-steps"></a>Další postup
 

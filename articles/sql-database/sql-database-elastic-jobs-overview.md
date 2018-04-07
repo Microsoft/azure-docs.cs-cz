@@ -1,6 +1,6 @@
 ---
-title: "Správa databází upraveným cloudu | Microsoft Docs"
-description: "Použijte službu úlohy elastické databáze pro spuštění skriptu napříč skupinou databází."
+title: Správa databází upraveným cloudu | Microsoft Docs
+description: Použijte službu úlohy elastické databáze pro spuštění skriptu napříč skupinou databází.
 metakeywords: azure sql database elastic databases
 services: sql-database
 manager: craigg
@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3fdc24a811544de87d97da498d7946507653cec5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Správa databází upraveným cloudu
 Ke správě upraveným horizontálně dělené databází, **úlohy elastické databáze** funkce (preview) umožňuje spolehlivě spuštění skriptu jazyka Transact-SQL (T-SQL) napříč skupinou databází, včetně:
@@ -129,7 +129,7 @@ Existují různé druhy úlohy, které provádějí spouštění úloh:
 4. Po dokončení úlohy všechny, aktualizuje řadičem stavu dokončení úlohy. 
    Kdykoli během provádění úlohy rozhraní API prostředí PowerShell slouží k zobrazení aktuálního stavu provádění úlohy. Všechny časy vrácený rozhraní API prostředí PowerShell jsou reprezentované ve standardu UTC. V případě potřeby k zastavení úlohy lze inicializovat žádost o zrušení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Nainstalujte součásti](sql-database-elastic-jobs-service-installation.md), pak [vytvořit a přidat do protokolu pro každou databázi ve skupině databází](sql-database-manage-logins.md). Abyste pochopili, úlohy vytváření a správu, najdete v části [vytvářením a správou úloh elastické databáze](sql-database-elastic-jobs-create-and-manage.md). Viz také [Začínáme s úlohami elastické databáze](sql-database-elastic-jobs-getting-started.md).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,95 +1,77 @@
 ---
-title: "SSH do uzlů clusteru Azure Container Service (AKS)"
-description: "Vytvoření připojení SSH pomocí clusteru služby Azure Container Service (AKS) uzly"
+title: SSH do uzlů clusteru Azure Container Service (AKS)
+description: Vytvoření připojení SSH pomocí clusteru služby Azure Container Service (AKS) uzly
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 2/28/2018
+ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 00affc3d1c02c477826261aeac6e092934037e81
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>SSH do uzlů clusteru Azure Container Service (AKS)
 
 V některých případech může potřebujete přístup k uzlu Azure Container Service (AKS) pro údržby, shromáždění protokolů nebo jiné řešení potíží operace. Uzlů Azure Container Service (AKS) nejsou vystaveny v Internetu. Vytvoření připojení SSH pomocí do uzlu AKS použijte kroky popsané v tomto dokumentu.
 
-## <a name="configure-ssh-access"></a>Konfigurace SSH přístupu
+## <a name="get-aks-node-address"></a>Získat adresu AKS uzlu
 
- SSH na konkrétním uzlu, pod je vytvořena `hostNetwork` přístup. Služby se vytvoří také pod přístup. Tato konfigurace je privilegovaný a měla by být odebrána po použití.
+Získat IP adresu k AKS clusteru uzlu pomocí `az vm list-ip-addresses` příkaz. Nahraďte název skupiny prostředků s názvem vaší skupiny prostředků AKS.
 
-Vytvořte soubor s názvem `aks-ssh.yaml` a zkopírujte tento manifestu. Aktualizujte název uzlu s názvem AKS cílový uzel.
+```console
+$ az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: aks-ssh
-spec:
-  selector:
-    app: aks-ssh
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 22
-    targetPort: 22
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: aks-ssh
-  labels:
-    app: aks-ssh
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: aks-ssh
-  template:
-    metadata:
-      labels:
-        app: aks-ssh
-    spec:
-      containers:
-      - name: alpine
-        image: alpine:latest
-        ports:
-        - containerPort: 22
-        command: ["/bin/sh", "-c", "--"]
-        args: ["while true; do sleep 30; done;"]
-      hostNetwork: true
-      nodeName: aks-nodepool1-42032720-0
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-42032720-0  10.240.0.6
+aks-nodepool1-42032720-1  10.240.0.5
+aks-nodepool1-42032720-2  10.240.0.4
 ```
 
-Spusťte manifest vytvoření pod a služby.
+## <a name="create-ssh-connection"></a>Vytvoření připojení SSH
 
-```azurecli-interactive
-$ kubectl apply -f aks-ssh.yaml
+Spustit `debian` kontejneru bitovou kopii a k němu připojí relaci terminálu. Kontejner pak lze vytvořit relace SSH pomocí libovolného uzlu v clusteru AKS.
+
+```console
+kubectl run -it --rm aks-ssh --image=debian
 ```
 
-Získáte externí IP adresu zveřejněné služby. Může trvat několik minut pro konfiguraci IP adres k dokončení. 
+Instalace klienta SSH v kontejneru.
 
-```azurecli-interactive
-$ kubectl get service
-
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
-kubernetes         ClusterIP      10.0.0.1      <none>          443/TCP        1d
-aks-ssh            LoadBalancer   10.0.51.173   13.92.154.191   22:31898/TCP   17m
+```console
+apt-get update && apt-get install openssh-client -y
 ```
 
-Vytvořte ssh připojení. 
+Seznam všech pracovními stanicemi soustředěnými kolem získat název nově vytvořený pod a otevřete druhý terminál.
 
-Je výchozí uživatelské jméno pro cluster služby AKS `azureuser`. Pokud tento účet byl změněn v okamžiku vytvoření clusteru, nahraďte správce správné uživatelské jméno. 
+```console
+$ kubectl get pods
 
-Pokud váš klíč není v `~/ssh/id_rsa`, zadejte správné umístění, pomocí `ssh -i` argument.
+NAME                       READY     STATUS    RESTARTS   AGE
+aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
+```
 
-```azurecli-interactive
-$ ssh azureuser@13.92.154.191
+Kopírování klíče SSH na pod, nahraďte název pod správnou hodnotu.
+
+```console
+kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+```
+
+Aktualizace `id_rsa` souboru tak, aby se uživatel jen pro čtení.
+
+```console
+chmod 0600 id_rsa
+```
+
+Teď vytvořte připojení SSH k uzlu AKS. Je výchozí uživatelské jméno pro cluster služby AKS `azureuser`. Pokud tento účet byl změněn v okamžiku vytvoření clusteru, nahraďte správce správné uživatelské jméno.
+
+```console
+$ ssh -i id_rsa azureuser@10.240.0.6
 
 Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
@@ -114,8 +96,4 @@ azureuser@aks-nodepool1-42032720-0:~$
 
 ## <a name="remove-ssh-access"></a>Odebrat přístup SSH
 
-Až budete hotoví, odstraňte pod přístup SSH a služby.
-
-```azurecli-interactive
-kubectl delete -f aks-ssh.yaml
-```
+Až budete hotoví, ukončete relaci SSH a pak kontejneru interaktivní relace. Tato akce odstraní pod používá pro přístup k SSH z AKS clusteru.

@@ -2,9 +2,8 @@
 title: Bez serveru databáze computing – funkce Azure a Azure Cosmos DB | Microsoft Docs
 description: Další informace databáze Cosmos Azure a Azure Functions použití společně vytvářet událostmi řízené bez serveru výpočetní aplikace.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: ''
 ms.service: cosmos-db
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
-ms.author: mimig
-ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: 9b1ffe7e63157f86a1cfe643e297c0cb3eb5c235
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Pomocí Azure Functions computing bez serveru databáze
 

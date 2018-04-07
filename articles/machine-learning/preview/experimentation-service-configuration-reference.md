@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 0bd9786d0c6a6e6ba571c58e7fdc4ad86cc20024
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8ea7e7453ba49b17560b7c2147dd6c71c6c1a7a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 
@@ -64,7 +64,7 @@ dependencies:
      # a package hosted in a public URL endpoint
      - https://cntk.ai/PythonWheel/CPU-Only/cntk-2.1-cp35-cp35m-win_amd64.whl
      
-     # a wheel file available locally on disk (this only works if you are executing against local target)
+     # a wheel file available locally on disk (this only works if you are executing against local Docker target)
      - C:\temp\my_private_python_pkg.whl
 ```
 
