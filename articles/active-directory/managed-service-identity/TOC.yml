@@ -37,37 +37,49 @@
           href: how-to-use-vm-sign-in.md
         - name: Použití se sadami Azure SDK
           href: how-to-use-vm-sdk.md
-    - name: Použití MSI virtuálního počítače pro přístup ke službě Azure Data Lake Store
+    - name: Použití spravované identity VM/VMSS s Windows
       items:
-        - name: Z virtuálního počítače s Windows
+        - name: Přístup ke službě Azure Data Lake Store
           href: tutorial-windows-vm-access-datalake.md
-        - name: Z virtuálního počítače s Linuxem
-          href: tutorial-linux-vm-access-datalake.md
-    - name: Použití MSI virtuálního počítače pro přístup k Azure Resource Manageru
-      items:
-        - name: Z virtuálního počítače s Windows
+        - name: Přístup k Azure Resource Manageru
           href: tutorial-windows-vm-access-arm.md
-        - name: Z virtuálního počítače s Linuxem
-          href: tutorial-linux-vm-access-arm.md
-    - name: Použití MSI virtuálního počítače pro přístup k Azure SQL
-      items:
-        - name: Z virtuálního počítače s Windows
+        - name: Přístup k Azure SQL
           href: tutorial-windows-vm-access-sql.md
-    - name: Použití MSI virtuálního počítače pro přístup k úložišti Azure
-      items:
-        - name: Z virtuálního počítače s Windows pomocí přístupového klíče
+        - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
           href: tutorial-windows-vm-access-storage.md
-        - name: Z virtuálního počítače s Windows pomocí SAS
+        - name: Přístup ke službě Azure Storage pomocí SAS
           href: tutorial-windows-vm-access-storage-sas.md
-        - name: Z virtuálního počítače s Linuxem pomocí přístupového klíče
-          href: tutorial-linux-vm-access-storage.md
-        - name: Z virtuálního počítače s Linuxem pomocí SAS
-          href: tutorial-linux-vm-access-storage-sas.md
-    - name: Použití MSI virtuálního počítače pro přístup ke službě Azure Key Vault
-      items:
-        - name: Z virtuálního počítače s Windows
+        - name: Přístup ke službě Azure Key Vault
           href: tutorial-windows-vm-access-nonaad.md
-        - name: Z virtuálního počítače s Linuxem
+    - name: Použití spravované identity VM/VMSS s Linuxem
+      items:
+        - name: Přístup ke službě Azure Data Lake Store
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Přístup k Azure Resource Manageru
+          href: tutorial-linux-vm-access-arm.md
+        - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
+          href: tutorial-linux-vm-access-storage.md
+        - name: Přístup ke službě Azure Storage pomocí SAS
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Přístup ke službě Azure Key Vault
           href: tutorial-linux-vm-access-nonaad.md
     - name: Nejčastější dotazy a známé problémy
       href: known-issues.md
+    - name: Referenční informace
+      items:
+        - name: Rozhraní příkazového řádku
+          href: /cli/azure/identity
+        - name: PowerShell
+          href: '/powershell/module/azurerm.managedserviceidentity#managed_service_identity'
+        - name: .NET
+          href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+        - name: Java
+          href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+        - name: Python
+          href: /python/api/azure.mgmt.msi
+        - name: Ruby
+          href: 'https://rubygems.org/gems/azure_mgmt_msi'
+        - name: Node.js
+          href: /javascript/api/ms-rest-azure
+        - name: Přejít
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'

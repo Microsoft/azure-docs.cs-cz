@@ -17,18 +17,18 @@
       href: tutorial-simulate-device-linux.md
     - name: Simulace hraničního zařízení – Windows
       href: tutorial-simulate-device-windows.md
-    - name: 'Vývoj modulu jazyka C#'
-      href: tutorial-csharp-module.md
-    - name: Vývoj modulu jazyka Python
-      href: tutorial-python-module.md
+    - name: Nasazení kódu v modulu
+      items:
+        - name: 'C#'
+          href: tutorial-csharp-module.md
+        - name: Python
+          href: tutorial-python-module.md
     - name: Nasazení služby Azure Stream Analytics
       href: tutorial-deploy-stream-analytics.md
     - name: Nasazení služby Azure Machine Learning
       href: tutorial-deploy-machine-learning.md
     - name: Nasazení služby Azure Functions
       href: tutorial-deploy-function.md
-    - name: Práce s několika moduly v editoru VS Code
-      href: tutorial-multiple-modules-in-vscode.md
 - name: Návody
   items:
     - name: Vytváření bran
@@ -53,6 +53,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: Ladění služby Azure Functions
           href: how-to-vscode-debug-azure-function.md
+        - name: Práce s několika cloudy
+          href: tutorial-multiple-modules-in-vscode.md
     - name: Ukládání dat na hraničních zařízeních
       href: sql-storage.md
     - name: Řešení potíží

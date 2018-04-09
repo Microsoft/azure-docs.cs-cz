@@ -232,7 +232,7 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Vyvážení clusteru
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Omezování
+            - name: Throttling
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Přesun služeb
               href: service-fabric-cluster-resource-manager-movement-cost.md
@@ -249,12 +249,12 @@
               href: service-fabric-reliable-services-diagnostics.md
             - name: Události Reliable Actors
               href: service-fabric-reliable-actors-diagnostics.md
-            - name: Metriky výkonu
-              href: service-fabric-diagnostics-event-generation-perf.md
             - name: Monitorování vzdálené komunikace služeb
               href: service-fabric-reliable-serviceremoting-diagnostics.md
         - name: Protokolování aplikací
           href: service-fabric-diagnostics-event-generation-app.md
+        - name: Metriky výkonu
+          href: service-fabric-diagnostics-event-generation-perf.md
         - name: Přehled modelu stavu
           href: service-fabric-health-introduction.md
         - name: Reportování událostí stavu
@@ -433,6 +433,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Doporučené postupy
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: Refaktoring migrované aplikace
+          href: /azure/architecture/service-fabric/refactor-migrated-app
     - name: Správa životního cyklu aplikace
       items:
         - name: Balení aplikace

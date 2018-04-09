@@ -1,0 +1,358 @@
+- name: Dokumentace ke službě Virtual Network
+  href: index.yml
+- name: Přehled
+  items:
+    - name: "Informace o\_službě Virtual Network"
+      href: virtual-networks-overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření virtuální sítě – portál
+      href: quick-create-portal.md
+    - name: Vytvoření virtuální sítě – PowerShell
+      href: quick-create-powershell.md
+    - name: Vytvoření virtuální sítě – Azure CLI
+      href: quick-create-cli.md
+- name: Kurzy
+  items:
+    - name: Filtrování provozu sítě
+      href: tutorial-filter-network-traffic.md
+    - name: Směrování provozu sítě
+      href: tutorial-create-route-table-portal.md
+    - name: Omezení síťového přístupu k prostředkům
+      href: tutorial-restrict-network-access-to-resources.md
+    - name: Připojení virtuálních sítí
+      href: tutorial-connect-virtual-networks-portal.md
+- name: Ukázky
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Koncepty
+  items:
+    - name: Filtrování provozu
+      href: security-overview.md
+    - name: Koncové body služby
+      href: virtual-network-service-endpoints-overview.md
+    - name: Směrování
+      href: virtual-networks-udr-overview.md
+    - name: Partnerské vztahy
+      href: virtual-network-peering-overview.md
+    - name: Virtuální síť pro služby Azure
+      href: virtual-network-for-azure-services.md
+    - name: Sítě kontejnerů
+      href: container-networking.md
+    - name: Kontinuita podnikových procesů
+      href: virtual-network-disaster-recovery-guidance.md
+    - name: Přidělování IP adres
+      href: virtual-network-ip-addresses-overview-arm.md
+    - name: Ochrana před útoky DDoS
+      href: ddos-protection-overview.md
+    - name: Classic
+      items:
+        - name: Přidělování IP adres
+          href: virtual-network-ip-addresses-overview-classic.md
+        - name: Seznamy řízení přístupu
+          href: virtual-networks-acl.md
+- name: Návody
+  items:
+    - name: Plánování a návrh
+      items:
+        - name: Virtuální sítě
+          href: virtual-network-vnet-plan-design-arm.md
+        - name: Skupiny zabezpečení sítě
+          href: virtual-networks-nsg.md
+    - name: Nasazení
+      items:
+        - name: Skupiny zabezpečení sítě
+          items:
+            - name: Azure CLI
+              href: tutorial-filter-network-traffic-cli.md
+            - name: Azure Portal
+              href: virtual-networks-create-nsg-arm-pportal.md
+            - name: Šablona
+              href: virtual-networks-create-nsg-arm-template.md
+            - name: Classic
+              items:
+                - name: Azure PowerShell
+                  href: virtual-networks-create-nsg-classic-ps.md
+                - name: Azure CLI 1.0
+                  href: virtual-networks-create-nsg-classic-cli.md
+        - name: Směrovací tabulky
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Azure CLI
+              href: tutorial-create-route-table-cli.md
+            - name: Šablona
+              href: virtual-network-create-udr-arm-template.md
+            - name: Classic
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-create-udr-classic-ps.md
+                - name: Azure CLI
+                  href: virtual-network-create-udr-classic-cli.md
+        - name: Koncové body služby
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: Partnerské vztahy virtuálních sítí
+          items:
+            - name: 'Stejný model nasazení, stejné předplatné'
+              items:
+                - name: Azure PowerShell
+                  href: tutorial-connect-virtual-networks-powershell.md
+                - name: Azure CLI
+                  href: tutorial-connect-virtual-networks-cli.md
+            - name: 'Stejný model nasazení, různá předplatná'
+              href: create-peering-different-subscriptions.md
+            - name: 'Různé modely nasazení, stejné předplatné'
+              href: create-peering-different-deployment-models.md
+            - name: 'Různé modely nasazení, různá předplatná'
+              href: create-peering-different-deployment-models-subscriptions.md
+        - name: Virtuální počítače
+          items:
+            - name: Vytvoření virtuálního počítače se statickou veřejnou IP adresou
+              items:
+                - name: Azure Portal
+                  href: virtual-network-deploy-static-pip-arm-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-deploy-static-pip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-network-deploy-static-pip-arm-cli.md
+                - name: Šablona
+                  href: virtual-network-deploy-static-pip-arm-template.md
+                - name: Classic
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-public-ip.md
+            - name: Vytvoření virtuálního počítače – statická privátní IP adresa
+              items:
+                - name: Azure Portal
+                  href: virtual-networks-static-private-ip-arm-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-static-private-ip-arm-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-static-private-ip-arm-cli.md
+                - name: Classic
+                  items:
+                    - name: Azure Portal
+                      href: virtual-networks-static-private-ip-classic-pportal.md
+                    - name: Azure PowerShell
+                      href: virtual-networks-static-private-ip-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+            - name: Vytvoření virtuálního počítače – několik síťových rozhraní
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Šablona
+                  href: virtual-network-deploy-multinic-arm-template.md
+                - name: Classic
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-network-deploy-multinic-classic-ps.md
+                    - name: Azure CLI
+                      href: virtual-network-deploy-multinic-classic-cli.md
+            - name: Vytvoření virtuálního počítače – několik IP adres
+              items:
+                - name: Azure Portal
+                  href: virtual-network-multiple-ip-addresses-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-multiple-ip-addresses-powershell.md
+                - name: Azure CLI
+                  href: virtual-network-multiple-ip-addresses-cli.md
+                - name: Šablona
+                  href: virtual-network-multiple-ip-addresses-template.md
+            - name: Vytvoření virtuálního počítače – akcelerované síťové služby
+              items:
+                - name: Azure PowerShell
+                  href: create-vm-accelerated-networking-powershell.md
+                - name: Azure CLI
+                  href: create-vm-accelerated-networking-cli.md
+            - name: Propustnost sítě virtuálních počítačů
+              href: virtual-machine-network-throughput.md
+        - name: Scénáře připojení
+          items:
+            - name: Virtuální síť k virtuální síti
+              href: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Virtuální síť (Resource Manager) k virtuální síti (Classic)
+              href: ../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Virtuální síť k místní síti (VPN)
+              href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Virtuální síť k místní síti (ExpressRoute)
+              href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Vysoce dostupná hybridní síťová architektury
+              href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Scénáře zabezpečení
+          items:
+            - name: Zabezpečení sítí pomocí virtuálních zařízení
+              href: virtual-network-scenario-udr-gw-nva.md
+            - name: DMZ mezi Azure a internetem
+              href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Zabezpečení cloudové služby a sítě
+              href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+              items:
+                - name: Vytvoření DMZ pomocí skupin zabezpečení sítě
+                  href: virtual-networks-dmz-nsg.md
+                - name: Vytvoření DMZ pomocí skupin zabezpečení sítě (Classic)
+                  href: virtual-networks-dmz-nsg-asm.md
+                - name: Vytvoření DMZ pomocí brány firewall a skupin zabezpečení sítě (Classic)
+                  href: virtual-networks-dmz-nsg-fw-asm.md
+                - name: 'DMZ s využitím brány firewall, směrování definovaného uživatelem a skupin zabezpečení sítě (Classic)'
+                  href: virtual-networks-dmz-nsg-fw-udr-asm.md
+                - name: Ukázková aplikace
+                  href: virtual-networks-sample-app.md
+        - name: Classic
+          items:
+            - name: Virtuální síť
+              href: create-virtual-network-classic.md
+              items:
+                - name: Azure Portal
+                  href: virtual-networks-create-vnet-classic-pportal.md
+                - name: Azure PowerShell
+                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
+                - name: Azure CLI
+                  href: virtual-networks-create-vnet-classic-cli.md
+            - name: Zadání nastavení DNS v konfiguračním souboru virtuální sítě
+              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
+            - name: Zadání nastavení DNS v konfiguračním souboru služby
+              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
+    - name: Konfigurace
+      items:
+        - name: Virtuální počítače
+          items:
+            - name: Přidání nebo odebrání síťových rozhraní
+              href: virtual-network-network-interface-vm.md
+            - name: Překlad názvů pro virtuální počítače a cloudové služby
+              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+            - name: Použití dynamického DNS s vlastním serverem DNS
+              href: virtual-networks-name-resolution-ddns.md
+            - name: Optimalizace propustnosti sítě
+              href: virtual-network-optimize-network-bandwidth.md
+            - name: Zobrazení a úpravy názvů hostitelů
+              href: virtual-networks-viewing-and-modifying-hostnames.md
+            - name: Classic
+              items:
+                - name: Statické IP adresy
+                  items:
+                    - name: Azure PowerShell
+                      href: virtual-networks-reserved-private-ip.md
+                    - name: Azure CLI
+                      href: virtual-networks-static-private-ip-classic-cli.md
+                - name: Veřejná IP adresa na úrovni instance
+                  href: virtual-networks-instance-level-public-ip.md
+        - name: Classic
+          items:
+            - name: Seznamy řízení přístupu
+              items:
+                - name: Azure Portal
+                  href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: virtual-networks-acl-powershell.md
+    - name: Spravovat
+      items:
+        - name: Virtuální sítě
+          href: manage-virtual-network.md
+          items:
+            - name: Podsítě
+              href: virtual-network-manage-subnet.md
+            - name: Partnerské vztahy
+              href: virtual-network-manage-peering.md
+            - name: Ochrana před útoky DDoS
+              items:
+                - name: Azure Portal
+                  href: ddos-protection-manage-portal.md
+                - name: Azure PowerShell
+                  href: ddos-protection-manage-ps.md
+            - name: Classic
+              items:
+                - name: Konfigurační soubor sítě
+                  href: virtual-networks-using-network-configuration-file.md
+                - name: Migrace ze skupiny vztahů do oblasti
+                  href: virtual-networks-migrate-to-regional-vnet.md
+        - name: Skupiny zabezpečení sítě
+          items:
+            - name: Azure Portal
+              href: virtual-network-manage-nsg-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-manage-nsg-arm-ps.md
+            - name: Azure CLI
+              href: virtual-network-manage-nsg-arm-cli.md
+            - name: Logs
+              href: virtual-network-nsg-manage-log.md
+        - name: Směrovací tabulky
+          href: manage-route-table.md
+        - name: Síťová rozhraní
+          href: virtual-network-network-interface.md
+          items:
+            - name: IP adresy
+              href: virtual-network-network-interface-addresses.md
+        - name: Veřejné IP adresy
+          href: virtual-network-public-ip-address.md
+        - name: Virtuální počítače
+          items:
+            - name: Přesun virtuálního počítače do jiné podsítě
+              href: virtual-networks-move-vm-role-to-subnet.md
+    - name: Řešení potíží
+      items:
+        - name: Skupiny zabezpečení sítě
+          items:
+            - name: Azure Portal
+              href: virtual-network-nsg-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-nsg-troubleshoot-powershell.md
+        - name: Trasy
+          items:
+            - name: Azure Portal
+              href: virtual-network-routes-troubleshoot-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-routes-troubleshoot-powershell.md
+        - name: Testování propustnosti
+          href: virtual-network-bandwidth-testing.md
+        - name: Nelze odstranit virtuální sítě
+          href: virtual-network-troubleshoot-cannot-delete-vnet.md
+        - name: Problémy s propojením virtuálních počítačů
+          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
+        - name: Konfigurace PTR pro kontrolu bannerů protokolu SMTP
+          href: create-ptr-for-smtp-service.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.network
+    - name: .NET
+      href: /api/overview/azure/virtual-network
+    - name: Java
+      href: /java/api/
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/virtual-network
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog o sítích
+      href: 'http://azure.microsoft.com/blog/topics/networking'
+    - name: Fórum o sítích
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/virtual-network'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: Poskytovatel síťových prostředků
+      href: resource-groups-networking.md
+    - name: Nejčastější dotazy
+      href: virtual-networks-faq.md

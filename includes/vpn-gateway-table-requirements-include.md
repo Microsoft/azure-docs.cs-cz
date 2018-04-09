@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5e7e365a73c9ba9cfd91d4f93759e7af55a0ad48
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 Následující tabulka uvádí požadavky na brány PolicyBased a sítě VPN RouteBased. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model. Pro klasického modelu brány sítě VPN PolicyBased jsou stejné jako statické brány a trasové brány jsou stejné jako dynamické brány.
 
@@ -23,4 +23,6 @@ Následující tabulka uvádí požadavky na brány PolicyBased a sítě VPN Rou
 | **Metoda ověřování** |Předsdílený klíč |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |
 | **Maximální počet připojení S2S** |1 |10 |10 |30 |
 | **Maximální počet připojení P2S** |Nepodporuje se |128 |128 |128 |
-| **Podpora aktivního směrování (BGP)** |Nepodporuje se |Nepodporuje se |Podporováno |Podporováno |
+| **Podpora aktivního směrování (BGP)** (*) |Nepodporuje se |Nepodporuje se |Podporováno |Podporováno |
+
+  (*) Protokol BGP není podporován pro model nasazení classic.

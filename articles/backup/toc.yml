@@ -155,14 +155,10 @@
           href: backup-client-automation.md
     - name: Azure SQL Database
       items:
-        - name: Konfigurace dlouhodobého uchovávání záloh
-          href: ../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Zobrazení záloh v trezoru služby Recovery Services
-          href: ../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Obnovení z dlouhodobě uchovávaných záloh
-          href: ../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Odstranění dlouhodobých záloh Azure SQL
-          href: ../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Konfigurace a obnovení záloh SQL Database – úložiště SQL
+          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Konfigurace a obnovení záloh SQL Database – trezor služby Recovery Services
+          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
     - name: Windows Server
       items:
         - name: Zálohování souborů a složek Windows Serveru

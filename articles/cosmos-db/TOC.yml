@@ -6,8 +6,6 @@ items:
     items:
       - name: Informace o databázi Azure Cosmos
         href: introduction.md
-      - name: Experiment s dokumentací
-        href: experiment.md
   - name: Šablony Rychlý start
     expanded: true
     items:
@@ -164,7 +162,7 @@ items:
       - name: Zabezpečení
         href: database-security.md
       - name: Celkové náklady na vlastnictví
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Případy použití
         href: use-cases.md
         items:
@@ -184,13 +182,15 @@ items:
               - name: Výkon dotazů SQL
                 href: sql-api-sql-query-metrics.md
               - name: SQL Playground
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
               - name: Dělení
                 href: sql-api-partition-data.md
               - name: 'Uložené procedury, triggery a systémy souborů UDF'
                 href: programming.md
               - name: Testování výkonu
                 href: performance-testing.md
+              - name: Tipy ke zvýšení výkonu pro Async Javu
+                href: performance-tips-async-java.md
               - name: Tipy ke zvýšení výkonu pro .NET
                 href: performance-tips.md
               - name: Tipy ke zvýšení výkonu pro Javu
@@ -378,17 +378,17 @@ items:
           - name: Protokolování aplikací pomocí funkce Logic Apps
             href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
           - name: Vytvoření vazby na službu Azure Functions
-            href: ../azure-functions/functions-bindings-documentdb.md
+            href: ../azure-functions/functions-bindings-cosmosdb.md
           - name: Integrace se službou Azure Search
-            href: ../search/search-howto-index-documentdb.md
+            href: ../search/search-howto-index-cosmosdb.md
           - name: Přesun dat pomocí služby Azure Data Factory
             href: ../data-factory/connector-azure-cosmos-db.md
           - name: Analýza dat v reálném čase pomocí Azure Stream Analytics
-            href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Získání změněného záznamu HL7 FHIR pomocí Logic Apps
             href: change-feed-hl7-fhir-logic-apps.md
           - name: Zpracování dat ze snímačů v reálném čase
-            href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
           - name: Vizualizace dat pomocí Power BI
             href: powerbi-visualize.md
           - name: Využití ovladače ODBC pro vizualizaci dat

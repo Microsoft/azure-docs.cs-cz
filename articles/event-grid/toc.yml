@@ -53,6 +53,8 @@
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Monitorování doručování událostí
       href: monitor-event-delivery.md
+    - name: Dotazování na odběry událostí
+      href: query-event-subscriptions.md
 - name: Referenční informace
   items:
     - name: Azure CLI

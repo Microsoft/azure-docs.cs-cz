@@ -1,15 +1,28 @@
 - name: Dokumentace ke službě CDN
   href: index.md
 - name: Přehled
-  href: cdn-overview.md
   items:
     - name: Co je Azure CDN?
-      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
-- name: Začínáme
+      href: cdn-overview.md
+    - name: Funkce produktu Azure CDN
+      href: cdn-features.md
+- name: Šablony Rychlý start
   items:
-    - name: Povolení Azure CDN
+    - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
-- name: Postup
+- name: Kurzy
+  items:
+    - name: Přidání vlastní domény
+      href: cdn-map-content-to-custom-domain.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+- name: Koncepty
+  items:
+    - name: Jak funguje ukládání do mezipaměti
+      href: cdn-how-caching-works.md
+- name: Návody
   items:
     - name: Integrace
       items:
@@ -124,8 +137,6 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Funkce stroje pravidel
           href: cdn-rules-engine-reference-features.md
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET
@@ -145,7 +156,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: Cenová kalkulačka

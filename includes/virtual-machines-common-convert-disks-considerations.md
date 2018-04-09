@@ -3,6 +3,8 @@
 
 * Převod je nevratný. 
 
+* Upozorňujeme, že všechny uživatele s [Přispěvatel virtuálních počítačů](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) role nebude možné změnit velikost virtuálního počítače (jak se může před převod). Je to proto, že virtuální počítače s spravované disky vyžadovat, aby uživatel má oprávnění Microsoft.Compute/disks/write na discích operačního systému.
+
 * Nezapomeňte převod otestovat. Před migrací v produkčním prostředí proveďte migraci testovacího virtuálního počítače.
 
 * Během převodu virtuální počítač uvolníte. Virtuální počítač obdrží novou IP adresu při spuštění po převodu. V případě potřeby můžete virtuálnímu počítači [přiřadit statickou IP adresu](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md).

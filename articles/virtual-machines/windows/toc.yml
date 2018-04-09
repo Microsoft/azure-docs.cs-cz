@@ -342,13 +342,20 @@
         - name: Rozšíření Azure Log Collector
           href: log-collector-extension.md
         - name: Rozšíření diagnostiky Azure
-          href: ps-extensions-diagnostics.md
+          href: extensions-diagnostics.md
+          items:
+            - name: Schéma rozšíření
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
+            - name: Povolení s využitím PowerShellu
+              href: ps-extensions-diagnostics.md
+            - name: Povolení s využitím šablon
+              href: extensions-diagnostics-template.md
+            - name: Řešení potíží
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
         - name: Export rozšíření virtuálních počítačů
           href: extensions-export-templates.md
         - name: Poradce při potížích s rozšířeními
           href: extensions-troubleshoot.md
-        - name: Rozšíření pro monitorování a diagnostiku
-          href: extensions-diagnostics-template.md
         - name: Agent Network Watcher
           href: extensions-nwa.md
         - name: Omezení instalace rozšíření
