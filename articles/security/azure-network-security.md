@@ -1,12 +1,12 @@
 ---
-title: "Zabezpečení sítě Azure | Microsoft Docs"
-description: "Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise."
+title: Zabezpečení sítě Azure | Microsoft Docs
+description: Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
@@ -392,7 +392,7 @@ Kromě toho aplikace brány firewall webových aplikací umožňuje monitorovat 
 
 Formátovaný protokolu JSON přejde přímo na účet úložiště zákazníka. Mít plnou kontrolu nad tyto protokoly a můžete použít vlastní zásady uchovávání informací.
 
-Tyto protokoly můžete také ingestování do vlastní analytics systém pomocí [integrace se službou Azure protokolu](https://aka.ms/AzLog). Protokoly firewall webových aplikací taky jsou integrované s [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) , můžete na provedení dotazů sofistikované podrobné analýzy protokolů OMS.
+Tyto protokoly můžete také ingestování do vlastní analytics systém pomocí [integrace se službou Azure protokolu](https://aka.ms/AzLog). Protokoly firewall webových aplikací taky jsou integrované s [analýzy protokolů](../log-analytics/log-analytics-overview.md) , analýzy protokolů můžete použít k provedení sofistikované podrobných dotazy.
 
 #### <a name="azure-web-application-firewall-waf"></a>Brány firewall Azure webových aplikací (firewall webových aplikací)
 
@@ -520,7 +520,7 @@ Sledovací proces sítě je místní služba, která umožňuje sledovat a diagn
 
 Sledovací proces sítě aktuálně má následující možnosti:
 
-#### <a name="topology"></a>topologie
+#### <a name="topology"></a>Topologie
 
 [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview) vrátí graf síťovým prostředkům ve virtuální síti. Graf znázorňuje propojení mezi prostředky představující koncové síťové připojení. Na portálu vrátí topologie objektů prostředků na podle základ virtuální sítě. Vztahy, jsou použité v ukázkách linkami mezi prostředky mimo oblast sledovací proces sítě, i když v prostředku skupiny se nezobrazí. Prostředky, vrátí se v zobrazení portálu, jsou podmnožinou síťové součásti, které vykreslovacích. Pokud chcete zobrazit úplný seznam síťové prostředky, můžete použít [prostředí PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-powershell) nebo [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-rest).
 
@@ -580,7 +580,7 @@ Poskytuje sledovací proces sítě [diagnostické protokoly](https://docs.micros
 
 Následující funkce jsou k dispozici pro monitorování na úrovni prostředků:
 
-#### <a name="audit-log"></a>Protokol auditování
+#### <a name="audit-log"></a>Protokol auditu
 
 Operace provedené v rámci konfigurace sítí přihlášeni. Tyto protokoly auditu je nezbytné k navázání různých compliances. Tyto protokoly můžete zobrazit na portálu Azure nebo pomocí nástroje Microsoft, jako je Power BI nebo nástroje třetích stran. Protokoly auditu jsou k dispozici prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku a Rest API.
 
@@ -606,7 +606,7 @@ Sledovací proces sítě poskytuje že diagnostické protokoly zobrazení. Toto 
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Analýza protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je služba v [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) , sleduje vaše cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
+[Analýza protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je služba v Azure, která monitoruje své cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji.
 
 Analýzy protokolů nabízí následující řešení pro monitorování vaší sítí:
 
@@ -650,7 +650,7 @@ Tyto protokoly jsou podporovány pro [skupin zabezpečení sítě](https://docs.
 
 - **NetworkSecurityGroupRuleCounter:** obsahuje položky pro jednotlivé skupiny NSG počet použití pravidla se aplikuje zakázat nebo povolit provoz.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o zabezpečení načtením některá témata s našimi podrobné zabezpečení:
 
 -   [Analýzy protokolů pro skupinu zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
