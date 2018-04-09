@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b31ed6b37e8d293d4e684ce169e9297e6bf61ec7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bf9d9368207f8791c33db84e1467d44201d6a5af
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway Resource Manageru otevřením připojení. Následující postup ukazuje jeden ze způsobů přechodu k připojení a jeho ověření.
 
@@ -20,4 +20,4 @@ Na webu Azure Portal můžete zobrazit stav připojení VPN Gateway Resource Man
 2. V okně vaší brány virtuální sítě klikněte na **Připojení**. Můžete zobrazit stav každého připojení.
 3. Kliknutím na název připojení, které chcete ověřit, otevřete **Základní údaje**. V části Základní údaje můžete zobrazit další informace o připojení. **Stav** bude „Úspěšně dokončeno“ a „Připojeno“ po provedení úspěšného připojení.
 
-  ![Ověření připojení VPN Gateway pomocí webu Azure Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)
+  ![Ověření připojení VPN Gateway pomocí webu Azure Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connection-succeeded.png)

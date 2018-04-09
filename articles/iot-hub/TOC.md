@@ -43,6 +43,7 @@
 ## Použití MXChip IoT DevKit
 ### [Překlad hlasové zprávy pomocí Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [Načtení zprávy Twitteru s využitím Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # Návody

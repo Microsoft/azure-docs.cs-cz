@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Připojení sdílené složky Azure a přístup k ní v systému Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows a Windows Server. Tento článek ukazuje tři různé způsoby připojení sdílené složky Azure v systému Windows: pomocí uživatelského rozhraní Průzkumníka souborů, přes PowerShell a přes příkazový řádek. 
@@ -86,7 +86,7 @@ Po trvalém uložení přihlašovacích údajů už je při připojování ke sd
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. **Zkopírujte cestu UNC z podokna Připojit na webu Azure Portal:** Podrobný popis toho, jak tuto informaci najít, najdete [tady](storage-how-to-use-files-portal.md#connect-to-file-share).
+3. **Zkopírujte cestu UNC z podokna Připojit na webu Azure Portal.** 
 
     ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 

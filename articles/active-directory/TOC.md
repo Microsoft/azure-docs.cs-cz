@@ -215,11 +215,12 @@
 ##### [Vlastní domovská stránka](application-proxy-office365-app-launcher.md)
 ##### [Převod vložených odkazů](application-proxy-link-translation.md)
 ##### [Aplikace se zástupnými znaky](active-directory-application-proxy-wildcard.md)
-##### [Proxy aplikací služby Azure AD a Qlik Sense](active-directory-application-proxy-qlik.md) 
+
 #### Názorné postupy publikování
 ##### [Vzdálená plocha](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+##### [Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [Řešení problémů](active-directory-application-proxy-troubleshoot.md)
 

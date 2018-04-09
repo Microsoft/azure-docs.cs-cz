@@ -25,10 +25,12 @@
       href: geocoding-coverage.md
     - name: Zajištění provozu
       href: traffic-coverage.md
-    - name: Zajištění pokrytí
+    - name: Zajištění vykreslování
       href: render-coverage.md
     - name: Zajištění směrování
       href: routing-coverage.md
+    - name: Podporované jazyky
+      href: supported-languages.md
 - name: Návody
   items:
     - name: Správa účtu a klíčů

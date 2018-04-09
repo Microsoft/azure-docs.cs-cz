@@ -139,6 +139,8 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Ověřování pomocí Twitteru
               href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: Přizpůsobení authN/authZ
+          href: app-service-authentication-how-to.md
         - name: Použití služby Managed Service Identity
           href: app-service-managed-service-identity.md
         - name: Použití certifikátu SSL v kódu aplikace

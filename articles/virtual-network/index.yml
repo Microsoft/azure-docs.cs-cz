@@ -1,0 +1,97 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Virtual Network
+metadata:
+  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
+  title: Virtual Network
+  meta.description: Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.
+  services: virtual-network
+  author: jdial
+  manager: jeconnoc
+  ms.service: virtual-network
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/23/2018
+  ms.author: jdial
+  ms.openlocfilehash: 80704fedebafe097d199a4f00fba04f51adfe2d9
+  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/05/2018
+abstract:
+  description: Naučte se používat Azure Virtual Network. Rychlá zprovoznění, kurzy, ukázky a další materiály vám ukážou, jak nasadit virtuální síť, řídit filtrování a směrování provozu a připojit virtuální síť k jiným virtuálním sítím.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučíte se, jak vytvořit virtuální síť, nasadit do ní virtuální počítače a potom zajistit komunikaci mezi virtuálními počítači a sítí.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/virtual-network/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg
+      text: Azure PowerShell
+      href: /azure/virtual-network/quick-create-powershell
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/virtual-network/quick-create-cli
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se vytvářet a připojovat virtuální sítě a řídit směrování a filtrování.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Filtrování provozu sítě</a>
+    - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Směrování provozu sítě</a>
+    - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Omezení síťového přístupu k prostředkům</a>
+    - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Připojení virtuálních sítí</a>
+- title: Bezplatné školicí video od Pluralsightu
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Implementace síťových služeb Microsoft Azure
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Plánování a návrh síťových řešení Microsoft Azure
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: Administrace Microsoft Azure pro administrátory AWS
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Ukázky skriptů pro běžné úlohy
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
+    - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/virtual-network/">Reference k rozhraní REST API</a></p>

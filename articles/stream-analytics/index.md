@@ -1,22 +1,19 @@
 ---
-title: "Dokumentace ke službě Azure Stream Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se spouštět analýzy IoT v cloudu s plně spravovaným zpracováním událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů."
+title: Dokumentace ke službě Azure Stream Analytics – kurzy, reference k rozhraní API
+description: Naučte se spouštět analýzy IoT v cloudu s plně spravovaným zpracováním událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.
 services: stream-analytics
-author: czeumault
-manager: carolz
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 layout: LandingPage
-ms.assetid: 
 ms.service: stream-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
-ms.author: carolz
-ms.openlocfilehash: 5bc0f813ac9ba8fa0960f2802d5482e31d772daf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: bb305fa038a59c5e385e0cce7eed07c3a2693634
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-documentation"></a>Dokumentace ke službě Stream Analytics
 
