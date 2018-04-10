@@ -122,6 +122,8 @@
           href: author-visually.md
         - name: "Průběžná integrace a\_nasazování"
           href: continuous-integration-deployment.md
+        - name: Iterativní vývoj a ladění
+          href: iterative-development-debugging.md
     - name: Kopírování dat
       items:
         - name: Kopírování dat pomocí aktivit kopírování
