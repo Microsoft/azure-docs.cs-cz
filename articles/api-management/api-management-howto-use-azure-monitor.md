@@ -1,11 +1,11 @@
 ---
-title: "Monitorování publikovaných rozhraní API pomocí služby Azure API Management | Microsoft Docs"
-description: "Pomocí kroků v tomto kurzu se naučíte monitorovat rozhraní API pomocí služby Azure API Management."
+title: Monitorování publikovaných rozhraní API pomocí služby Azure API Management | Microsoft Docs
+description: Pomocí kroků v tomto kurzu se naučíte monitorovat rozhraní API pomocí služby Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -44,29 +44,6 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>Zobrazení protokolů aktivit
-
-Protokoly aktivit poskytují přehled o operacích provedených vašimi službami API Management. Pomocí protokolů aktivit můžete zjistit obsah, autora a čas veškerých operací zápisu (PUT, POST, DELETE) provedených ve vašich službách API Management. 
-
-> [!NOTE]
-> Protokoly aktivit nezahrnují operace čtení (GET) ani operace prováděné na webu Azure Portal nebo pomocí původních rozhraní API pro správu.
-
-Protokoly aktivit můžete zobrazit ve své službě API Management nebo k nim můžete získat přístup ze všech svých prostředků Azure prostřednictvím služby Azure Monitor. 
-
-Zobrazení protokolů aktivit:
-
-1. Vyberte instanci služby APIM.
-2. Klikněte na **Protokol aktivit**.
-
-## <a name="view-diagnostic-logs"></a>Zobrazení diagnostických protokolů
-
-Diagnostické protokoly poskytují spoustu informací o operacích a chybách, které jsou důležité pro audit i pro účely odstraňování potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
-
-Přístup k diagnostickým protokolům:
-
-1. Vyberte instanci služby APIM.
-2. Klikněte na **Diagnostický protokol**.
 
 ## <a name="view-metrics-of-your-apis"></a>Zobrazení metrik vašich rozhraní API
 
@@ -109,6 +86,118 @@ Konfigurace upozornění:
     > Pravidlo upozornění může také při aktivaci volat webhook nebo aplikaci logiky Azure.
 
     ![Nastavení upozornění](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>Protokoly aktivit
+
+Protokoly aktivit poskytují přehled o operacích provedených vašimi službami API Management. Pomocí protokolů aktivit můžete zjistit obsah, autora a čas veškerých operací zápisu (PUT, POST, DELETE) provedených ve vašich službách API Management. 
+
+> [!NOTE]
+> Protokoly aktivit nezahrnují operace čtení (GET) ani operace prováděné na webu Azure Portal nebo pomocí původních rozhraní API pro správu.
+
+Protokoly aktivit můžete zobrazit ve své službě API Management nebo k nim můžete získat přístup ze všech svých prostředků Azure prostřednictvím služby Azure Monitor. 
+
+Zobrazení protokolů aktivit:
+
+1. Vyberte instanci služby APIM.
+2. Klikněte na **Protokol aktivit**.
+
+## <a name="diagnostic-logs"></a>Diagnostické protokoly
+
+Diagnostické protokoly poskytují spoustu informací o operacích a chybách, které jsou důležité pro audit i pro účely odstraňování potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
+
+Konfigurace diagnostických protokolů:
+
+1. Vyberte instanci služby APIM.
+2. Klikněte na **Diagnostický protokol**.
+3. Klikněte na **Zapnout diagnostiku**. Diagnostické protokoly můžete společně s metrikami archivovat v účtu úložiště, streamovat je do centra událostí nebo je odesílat do Log Analytics. 
+
+API Management v současné době poskytuje diagnostické protokoly (dávkované po hodinách) o jednotlivých požadavcích rozhraní API, kde má každá položka následující schéma:
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| Vlastnost  | Typ | Popis |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | Boolean | Má hodnotu true, pokud se požadavek HTTP dokončil se stavovým kódem odpovědi v rozsahu 2xx nebo 3xx. |
+| time | date-time | Časové razítko přijetí požadavku HTTP v bráně. |
+| operationName | řetězec | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
+| category | řetězec | Konstantní hodnota GatewayLogs. |
+| durationMs | celé číslo | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
+| callerIpAddress | řetězec | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
+| correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
+| location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
+| httpStatusCodeCategory | řetězec | Kategorie stavového kódu odpovědi HTTP: Úspěch (301 nebo nižší, 304 nebo 307), Neautorizováno (401, 403, 429), Chyba (400, 500 až 600), Jiné. |
+| resourceId | řetězec | ID prostředku služby API Management /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<skupina_prostředků>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> |
+| properties | objekt | Vlastnosti aktuálního požadavku. |
+| method | řetězec | Metoda HTTP příchozího požadavku. |
+| url | řetězec | Adresa URL příchozího požadavku. |
+| clientProtocol | řetězec | Verze protokolu HTTP příchozího požadavku. |
+| responseCode | celé číslo | Stavový kód odpovědi HTTP odeslané do klienta. |
+| backendMethod | řetězec | Metoda HTTP požadavku odeslaného do back-endu. |
+| backendUrl | řetězec | Adresa URL požadavku odeslaného do back-endu. |
+| backendResponseCode | celé číslo | Kód odpovědi HTTP přijaté z back-endu. |
+| backendProtocol | řetězec | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
+| requestSize | celé číslo | Počet bajtů přijatých z klienta během zpracování požadavku. | 
+| responseSize | celé číslo | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
+| cache | řetězec | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
+| cacheTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
+| backendTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
+| clientTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
+| apiId | řetězec | Identifikátor entity rozhraní API pro aktuální požadavek. | 
+| operationId | řetězec | Identifikátor entity operace pro aktuální požadavek. | 
+| productId | řetězec | Identifikátor entity produktu pro aktuální požadavek. | 
+| userId | řetězec | Identifikátor entity uživatele pro aktuální požadavek. | 
+| apimSubscriptionId | řetězec | Identifikátor entity předplatného pro aktuální požadavek. | 
+| backendId | řetězec | Identifikátor entity back-endu pro aktuální požadavek. | 
+| LastError | objekt | Poslední chyba zpracování požadavku. | 
+| elapsed | celé číslo | Počet milisekund, které uplynuly od přijetí požadavku bránou do chvíle, kdy došlo k chybě. | 
+| source | řetězec | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
+| scope | řetězec | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| section | řetězec | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
+| reason | řetězec | Důvod chyby | 
+| zpráva | řetězec | Chybová zpráva | 
 
 ## <a name="next-steps"></a>Další kroky
 

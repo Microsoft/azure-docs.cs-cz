@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření první šablony Azure Resource Manageru | Dokumentace Microsoftu"
-description: "Podrobný průvodce vytvořením první šablony Azure Resource Manageru. Ukáže vám, jak vytvořit šablonu pomocí referenčních informací k šablonám pro účet úložiště."
+title: Vytvoření první šablony Azure Resource Manageru | Dokumentace Microsoftu
+description: Podrobný průvodce vytvořením první šablony Azure Resource Manageru. Ukáže vám, jak vytvořit šablonu pomocí referenčních informací k šablonám pro účet úložiště.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Vytvoření a nasazení první šablony Azure Resource Manageru
 Toto téma vás provede jednotlivými kroky k vytvoření první šablony Azure Resource Manageru. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md). Pokud máte existující prostředky a chcete pro ně získat šablonu, podívejte se na téma [Export šablony Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).
@@ -26,8 +26,9 @@ K vytváření a revidování šablon potřebujete editor JSON. [Visual Studio C
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Visual Studio Code. V případě potřeby ho nainstalujte z adresy [https://code.visualstudio.com/](https://code.visualstudio.com/).
+* Visual Studio Code. V případě potřeby ho nainstalujte z webu [https://code.visualstudio.com/](https://code.visualstudio.com/).
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Místní nainstalovaný [Azure PowerShell](/powershell/azure/install-azurerm-ps) nebo [Azure CLI](/cli/azure/install-azure-cli). Pro účely tohoto kurzu potřebujete místní instalaci, protože vaše šablona je uložená jako místní soubor. Pokud chcete použít Cloud Shell, musíte [svou šablonu nahrát do účtu úložiště](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell).
 
 ## <a name="create-template"></a>Vytvoření šablony
 
@@ -92,24 +93,6 @@ Jste připraveni k nasazení této šablony. Pomocí PowerShellu nebo Azure CLI 
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-Jakmile se nasazení dokončí, váš účet úložiště bude existovat ve skupině prostředků.
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Pokud používáte Azure CLI, použijte následující příkazy:
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-PowerShell je v současné době ve službě Cloud Shell k dispozici jako verze Preview. Pokud používáte PowerShell, použijte následující příkazy:
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 Jakmile se nasazení dokončí, váš účet úložiště bude existovat ve skupině prostředků.
 
@@ -244,12 +227,6 @@ Pokud používáte Azure CLI, použijte:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-Pokud používáte Cloud Shell, nahrajte změněnou šablonu do sdílené složky. Přepište existující soubor. Potom použijte následující příkaz:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>Použití automatického dokončování
 
 Dosud se vaše práce na šabloně skládala jenom z kopírování a vkládání kódu JSON z tohoto článku. Při vývoji vlastních šablon však budete chtít vyhledávat a zadávat vlastnosti a hodnoty, které jsou dostupné pro příslušný typ prostředku. VS Code přečte schéma pro typ prostředku a navrhne vlastnosti a hodnoty. Pokud chcete zobrazit funkci automatického dokončování, přejděte k elementu properties vaší šablony a přidejte nový řádek. Zadejte uvozovku a všimněte si, že VS Code okamžitě navrhne dostupné názvy v rámci elementu properties.
@@ -377,12 +354,6 @@ Pokud používáte Azure CLI, použijte:
 
 ```azurecli
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
-Pokud používáte Cloud Shell, nahrajte změněnou šablonu do sdílené složky. Přepište existující soubor. Potom použijte následující příkaz:
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

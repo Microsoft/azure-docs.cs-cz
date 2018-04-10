@@ -1,5 +1,5 @@
 ---
-title: Analýzy webové aplikace Java pomocí Azure Application Insights | Microsoft Docs
+title: Analýzy webové aplikace Java pomocí Azure Application Insights | Dokumentace Microsoftu
 description: 'Sledování výkonu webových aplikací Java pomocí Application Insights '
 services: application-insights
 documentationcenter: java
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -31,12 +31,12 @@ Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Un
 Budete potřebovat:
 
 * Oracle nebo Zulu JRE verze 1.7 nebo 1.8
-* Předplatné [Microsoft Azure](https://azure.microsoft.com/)
+* Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 
 *Pokud máte webovou aplikaci, která je už v provozu, můžete použít alternativní postup [přidání sady SDK za běhu na webovém serveru](app-insights-java-live.md). S touto alternativou se vyhnete opětovnému sestavování kódu, ale nebudete mít možnost napsat kód ke sledování činnosti uživatelů.*
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte klíč instrumentace Application Insights
-1. Přihlaste se na portál [Microsoft Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
 2. Vytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
     ![Zadejte název, vyberte webovou aplikaci Java a klikněte na možnost Vytvořit](./media/app-insights-java-get-started/02-create.png)
@@ -47,10 +47,10 @@ Budete potřebovat:
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Do projektu přidejte Application Insights SDK pro jazyk Java
 *Zvolte vhodný způsob pro váš projekt.*
 
-#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Pokud používáte Eclipse k vytvoření Maven nebo dynamického webového projektu...
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Pokud k vytvoření dynamického webového projektu používáte Eclipse...
 Použijte [Modul Application Insights SDK pro jazyk Java][eclipse].
 
-#### <a name="if-youre-using-maven"></a>Pokud používáte Maven...
+#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Pokud používáte Maven... <a name="maven-setup" />
 Pokud je váš projekt již nastaven na sestavení s použitím nástroje Maven, slučte následující kód do souboru pom.xml.
 
 Pak obnovte závislosti projektu k získání stažených binárních souborů.
@@ -75,15 +75,15 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
     </dependencies>
 ```
 
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>2.0.n</version>`. Nejnovější verzi naleznete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v našich [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>2.0.n</version>`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Je nutné přejít na novou sadu SDK?* Obnovte závislosti svého projektu.
 
-#### <a name="if-youre-using-gradle"></a>Pokud používáte Gradle...
+#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Pokud používáte Gradle... <a name="gradle-setup" />
 Pokud je váš projekt již nastaven na sestavení s použitím nástroje Gradle, slučte následující kód do souboru build.gradle.
 
 Pak obnovte závislosti projektu k získání stažených binárních souborů.
 
-```JSON
+```gradle
 
     repositories {
       mavenCentral()
@@ -95,30 +95,27 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
     }
 ```
 
-* *Chyby ověření sestavení nebo kontrolního součtu? Zkuste použít konkrétní verzi, například:* `version:'2.0.n'`. *Nejnovější verzi naleznete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).*
-* *Postup aktualizace na novou sadu SDK*
-  * Obnovte závislosti svého projektu.
+* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Aktualizace na novou sadu SDK* Aktualizujte závislosti svého projektu.
 
-#### <a name="otherwise-"></a>V opačném případě...
-Ručně přidejte sadu SDK:
-
-1. Stáhněte si [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest).
-2. Rozbalte binární soubory ze souboru zip a přidejte je do projektu.
+#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Jinak, pokud spravujete závislosti ručně...
+Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a zkopírujte do svého projektu potřebné soubory, přičemž nahraďte jejich starší verze.
 
 ### <a name="questions"></a>Otázky...
-* *Jaký je vztah mezi komponentami `-core` a `-web` v souboru zip?*
-
+* *Jaký je vztah mezi komponentami `-core` a `-web`?*
   * `applicationinsights-core` poskytuje úplné informace o API. Tuto komponentu budete vždy potřebovat.
   * `applicationinsights-web` poskytuje metriky, které sledují počty žádostí HTTP a časy odezvy. Tuto komponentu můžete vynechat, pokud nechcete automaticky shromažďovat tuto telemetrii. Hodí se to například v případě, že chcete napsat vlastní.
-* *Chcete-li aktualizovat sadu SDK, když publikujeme změny*
+  
+* *Jak mám aktualizovat sadu SDK na nejnovější verzi?*
+  * Pokud používáte Gradle nebo Maven...
+    * Aktualizujte svůj soubor sestavení zadáním nejnovější verze nebo pomocí syntaxe zástupných znaků Gradle nebo Maven zahrňte nejnovější verzi automaticky. Pak aktualizujte závislosti svého projektu. Syntaxi zástupných znaků si můžete prohlédnout ve výše uvedených příkladech pro [Gradle](#gradle-setup) nebo [Maven](#maven-setup).
+  * Pokud spravujete závislosti ručně...
+    * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a nahraďte staré. Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-  * Stáhněte si poslední [Application Insights SDK pro jazyk Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a nahraďte staré.
-  * Změny jsou popsány v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
-
-## <a name="3-add-an-application-insights-xml-file"></a>3. Vytvořte soubor Application Insights .xml
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. Přidejte soubor ApplicationInsights.xml
 Přidejte soubor ApplicationInsights.xml do složky zdrojů v projektu nebo zajistěte, aby byl přidán do cesty nasazení tříd projektu. Zkopírujte do něj následující kód XML.
 
-Nahraďte klíč instrumentace, který jste dostali z portálu Azure Portal.
+Nahraďte klíč instrumentace, který jste dostali z portálu Azure.
 
 ```XML
 
@@ -127,12 +124,10 @@ Nahraďte klíč instrumentace, který jste dostali z portálu Azure Portal.
 
 
       <!-- The key from the portal: -->
-
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
 
       <!-- HTTP request component (not required for bare API) -->
-
       <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
@@ -153,11 +148,11 @@ Nahraďte klíč instrumentace, který jste dostali z portálu Azure Portal.
     </ApplicationInsights>
 ```
 
+Volitelně se konfigurační soubor může nacházet v jakémkoli umístění, ke kterému má vaše aplikace přístup.  Systémová vlastnost `-Dapplicationinsights.configurationDirectory` určuje adresář obsahující soubor ApplicationInsights.xml. Například konfigurační soubor umístěný v cestě `E:\myconfigs\appinsights\ApplicationInsights.xml` se nakonfiguruje pomocí vlastnosti `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
 
 * Klíč instrumentace se zasílá společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
 * Požadavek komponenty HTTP je volitelný. Automaticky odesílá telemetrii týkající se žádostí a časů odezvy na portál.
 * Korelace událostí je doplněk komponenty požadavku HTTP. Přiřadí identifikátor každé žádosti přijaté serverem a přidá ho jako vlastnost každé položce telemetrie jako vlastnost Operation.Id. Umožňuje korelovat telemetrii související s každou žádostí nastavením filtru v [diagnostickém vyhledávání][diagnostic].
-* Klíč Application Insights se může předat dynamicky z portálu Azure Portal jako vlastnost systému (-DAPPLICATION_INSIGHTS_IKEY=váš_ikey). Pokud není definovaná žádná vlastnost, hledá se proměnná prostředí (APPLICATION_INSIGHTS_IKEY) v nastavení aplikace Azure. Pokud ani jedna vlastnost není definovaná, použije se výchozí InstrumentationKey ze souboru ApplicationInsights.xml. Tato posloupnost pomáhá spravovat různé klíče InstrumentationKey pro různá prostředí dynamicky.
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternativní způsoby nastavení klíče instrumentace
 Application Insights SDK hledá klíče v tomto pořadí:
@@ -219,13 +214,13 @@ Tuto položku přidáte do konfiguračního souboru Struts (obvykle s názvem st
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(Pokud máte sběrače definované ve výchozím zásobníku, lze sběrač jednoduše přidat do tohoto balíku.)
+Pokud máte sběrače definované ve výchozím zásobníku, lze sběrač přidat do tohoto balíku.
 
 ## <a name="5-run-your-application"></a>5. Spusťte aplikaci
 Buď ji spusťte v režimu ladění na vývojovém počítači, nebo publikujte na serveru.
 
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6. Zobrazte telemetrii ve službě Application Insights
-Vraťte se do prostředku Application Insights na portál [Microsoft Azure Portal](https://portal.azure.com).
+Vraťte se do prostředku Application Insights na web [Microsoft Azure Portal](https://portal.azure.com).
 
 Data požadavků HTTP se zobrazí v okně přehledu. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
 

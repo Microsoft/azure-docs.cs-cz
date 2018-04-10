@@ -1,13 +1,13 @@
 ---
-title: "Prostředí PowerShell příklad synchronizace mezi SQL Database a SQL Server na místě | Microsoft Docs"
-description: "Azure PowerShell ukázkový skript k synchronizaci mezi databáze SQL Azure a místní databáze SQL serveru"
+title: Příklad PowerShellu – Synchronizace mezi službou SQL Database a místním SQL Serverem | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,21 +17,21 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: a29c8c7fbd583b45849be6fcab046c578dbbb98a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Synchronizace mezi SQL Database a místní databáze SQL serveru pomocí prostředí PowerShell
+# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Použití PowerShellu k synchronizaci mezi službou SQL Database a místní databází SQL Serveru
 
-Tento příklad PowerShell konfiguruje synchronizaci dat pro synchronizaci mezi databáze SQL Azure a místní databázi systému SQL Server. 
+Tento příklad PowerShellu nakonfiguruje Synchronizaci dat (Preview) pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru. 
 
-Tato ukázka vyžaduje prostředí Azure PowerShell verze modulu 4.2 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít nainstalovanou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Tato ukázka vyžaduje modul Azure PowerShellu verze 4.2 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
  
-Spustit `Login-AzureRmAccount` vytvořit připojení s Azure.
+Spuštěním příkazu `Login-AzureRmAccount` vytvořte připojení k Azure.
 
-Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](../sql-database-sync-data.md).
+Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -360,7 +360,7 @@ else
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkový skript můžete spustit následující příkaz pro odebrání skupiny prostředků a všechny prostředky, které jsou s ním spojená.
+Po spuštění ukázkového skriptu můžete spuštěním následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $ResourceGroupName
@@ -369,41 +369,41 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci specifické pro příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nové AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Vytvoří nový Agent synchronizace |
-| [Nové AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Vygeneruje klíč agenta přiřazeného k agentu synchronizace |
-| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Získání všech informací pro agenta synchronizace |
-| [Nové AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Přidání nového člena do skupiny synchronizace |
-| [Aktualizace AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Aktualizuje informace o schématu databáze |
-| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Získání informací o schématu databáze |
-| [Aktualizace AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualizace skupiny synchronizace |
-| [Počáteční AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Aktivace synchronizace |
-| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Kontroly protokolů synchronizace |
+| [New-AzureRmSqlSyncAgent](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgent) |  Vytvoří nového agenta synchronizace. |
+| [New-AzureRmSqlSyncAgentKey](/powershell/module/azurerm.sql/New-AzureRmSqlSyncAgentKey) |  Vygeneruje klíč agenta přidružený k agentovi synchronizace. |
+| [Get-AzureRmSqlSyncAgentLinkedDatabase](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncAgentLinkedDatabase) |  Získá všechny informace o agentovi synchronizace. |
+| [New-AzureRmSqlSyncMember](/powershell/module/azurerm.sql/New-AzureRmSqlSyncMember) |  Přidá do skupiny synchronizace nového člena. |
+| [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  Aktualizuje informace o schématu databáze. |
+| [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  Získá informace o schématu databáze. |
+| [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  Aktualizuje skupinu synchronizace. |
+| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | Aktivuje synchronizaci. |
+| [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  Zkontroluje protokol synchronizace. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o prostředí Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky skriptu PowerShell databáze SQL naleznete v [skriptů prostředí PowerShell databáze SQL Azure](../sql-database-powershell-samples.md).
+Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../sql-database-powershell-samples.md).
 
-Další informace o synchronizaci dat SQL najdete v tématu:
+Další informace o Synchronizaci dat SQL:
 
--   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](../sql-database-sync-data.md)
--   [Nastavit synchronizaci dat SQL Azure](../sql-database-get-started-sql-data-sync.md)
--   [Osvědčené postupy pro synchronizaci dat SQL Azure](../sql-database-best-practices-data-sync.md)
--   [Monitorování synchronizaci dat Azure SQL s OMS analýzy protokolů](../sql-database-sync-monitor-oms.md)
--   [Řešení problémů s synchronizaci dat SQL Azure](../sql-database-troubleshoot-data-sync.md)
+-   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md)
+-   [Nastavení Synchronizace dat SQL Azure](../sql-database-get-started-sql-data-sync.md)
+-   [Osvědčené postupy pro Synchronizaci dat SQL Azure](../sql-database-best-practices-data-sync.md)
+-   [Monitorování Synchronizace dat SQL Azure s využitím OMS Log Analytics](../sql-database-sync-monitor-oms.md)
+-   [Řešení potíží se Synchronizací dat SQL Azure](../sql-database-troubleshoot-data-sync.md)
 
--   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL:
-    -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](sql-database-sync-data-between-sql-databases.md)
+-   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
+    -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](sql-database-sync-data-between-sql-databases.md)
 
--   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-Další informace o databázi SQL najdete v tématu:
+Další informace o službě SQL Database:
 
--   [Databáze SQL – přehled](../sql-database-technical-overview.md)
+-   [Přehled služby SQL Database](../sql-database-technical-overview.md)
 -   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)

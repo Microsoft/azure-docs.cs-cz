@@ -4,7 +4,7 @@ description: Postup vytvoření připojení IPsec z vaší místní sítě k vir
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: fcc2fda5-4493-4c15-9436-84d35adbda8e
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 84df8b286bd9f3ae3012f297c3a929ef57369ff6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6ee23beaa450129be7c173da9efc687cc3790a15
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -33,7 +33,6 @@ Tento článek ukazuje, jak pomocí PowerShellu vytvořit připojení brány VPN
 > 
 >
 
-
 Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě k virtuální síti Azure přes tunel VPN IPsec/IKE (IKEv1 nebo IKEv2). Tento typ připojení vyžaduje místní zařízení VPN, které má přiřazenou veřejnou IP adresu. Další informace o bránách VPN najdete v tématu [Informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md).
 
 ![Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
@@ -45,7 +44,16 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN. Tato IP adresa nesmí být umístěná za překladem adres (NAT).
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
-* Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Rutiny PowerShellu se často aktualizují a obvykle bude třeba rutiny PowerShellu aktualizovat, abyste získali nejnovější funkce. Pokud rutiny PowerShellu neaktualizujete, zadané hodnoty nemusí fungovat. Další informace o stažení a instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+
+### <a name="running-powershell-locally"></a>Místní použití PowerShellu
+
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Rutiny PowerShellu se často aktualizují a obvykle bude třeba rutiny PowerShellu aktualizovat, abyste získali nejnovější funkce. Pokud rutiny PowerShellu neaktualizujete, zadané hodnoty nemusí fungovat. 
+
+Verzi, kterou používáte, zjistíte spuštěním rutiny Get-Module -ListAvailable AzureRM. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Pokud používáte PowerShell místně, je také potřeba spuštěním rutiny Login-AzureRmAccount vytvořit připojení k Azure.
+
 
 ### <a name="example"></a>Příklady hodnot
 
@@ -54,31 +62,26 @@ V příkladech v tomto článku se používají následující hodnoty. Tyto hod
 ```
 #Example values
 
-VnetName                = TestVNet1
+VnetName                = VNet1
 ResourceGroup           = TestRG1
 Location                = East US 
-AddressSpace            = 10.11.0.0/16 
-SubnetName              = Subnet1 
-Subnet                  = 10.11.1.0/28 
-GatewaySubnet           = 10.11.0.0/27
-LocalNetworkGatewayName = Site2
-LNG Public IP           = <VPN device IP address> 
-Local Address Prefixes  = 10.0.0.0/24, 20.0.0.0/24
+AddressSpace            = 10.1.0.0/16 
+SubnetName              = Frontend 
+Subnet                  = 10.1.0.0/24 
+GatewaySubnet           = 10.1.255.0/27
+LocalNetworkGatewayName = Site1
+LNG Public IP           = <On-premises VPN device IP address> 
+Local Address Prefixes  = 10.101.0.0/24, 10.101.1.0/24
 Gateway Name            = VNet1GW
-PublicIP                = VNet1GWIP
+PublicIP                = VNet1GWPIP
 Gateway IP Config       = gwipconfig1 
 VPNType                 = RouteBased 
 GatewayType             = Vpn 
-ConnectionName          = VNet1toSite2
+ConnectionName          = VNet1toSite1
 
 ```
 
-
-## <a name="Login"></a>1. Připojení k vašemu předplatnému
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
-
-## <a name="VNet"></a>2. Vytvoření virtuální sítě a podsítě brány
+## <a name="VNet"></a>1. Vytvoření virtuální sítě a podsítě brány
 
 Pokud ještě nemáte virtuální síť, vytvořte si ji. Při vytváření virtuální sítě ověřte, že se zadané adresní prostory nepřekrývají s adresními prostory ve vaší místní síti. 
 
@@ -99,7 +102,7 @@ Tento příklad vytvoří virtuální síť a podsíť brány. Pokud již máte 
 
 Vytvořte skupinu prostředků:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name TestRG1 -Location 'East US'
 ```
 
@@ -107,36 +110,38 @@ Vytvořte virtuální síť.
 
 1. Nastavte proměnné.
 
-  ```powershell
-  $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.11.0.0/27
-  $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Subnet1' -AddressPrefix 10.11.1.0/28
+  ```azurepowershell-interactive
+  $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27
+  $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Frontend' -AddressPrefix 10.1.0.0/24
   ```
 2. Vytvořte virtuální síť.
 
-  ```powershell
-  New-AzureRmVirtualNetwork -Name TestVNet1 -ResourceGroupName TestRG1 `
-  -Location 'East US' -AddressPrefix 10.11.0.0/16 -Subnet $subnet1, $subnet2
+  ```azurepowershell-interactive
+  New-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1 `
+  -Location 'East US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
   ```
 
 ### <a name="gatewaysubnet"></a>Chcete přidat podsíť brány k již vytvořené virtuální síti
 
+Postup v této části použijte v případě, že už máte virtuální síť, ale potřebujete přidat podsíť brány.
+
 1. Nastavte proměnné.
 
-  ```powershell
+  ```azurepowershell-interactive
   $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
   ```
 2. Vytvořte podsíť brány.
 
-  ```powershell
-  Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.11.0.0/27 -VirtualNetwork $vnet
+  ```azurepowershell-interactive
+  Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
   ```
 3. Nastavte konfiguraci.
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 
-## 3. <a name="localnet"></a>Vytvoření brány místní sítě
+## 2. <a name="localnet"></a>Vytvoření brány místní sítě
 
 Brána místní sítě obvykle odkazuje na vaše místní umístění. Pro toto umístění určíte název, podle kterého na něj bude Azure odkazovat, a pak zadáte IP adresu místního zařízení VPN, ke kterému vytvoříte připojení. Zadáte také předpony IP adres, které se budou přes bránu VPN směrovat do zařízení VPN. Předpony adres, které zadáte, jsou předpony ve vaší místní síti. V případě změny vaší místní sítě můžete tyto předpony snadno aktualizovat.
 
@@ -147,44 +152,44 @@ Použijte následující hodnoty:
 
 Chcete-li přidat bránu místní sítě s jednou předponou adresy:
 
-  ```powershell
-  New-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1 `
-  -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.0.0.0/24'
+  ```azurepowershell-interactive
+  New-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+  -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.101.0.0/24'
   ```
 
 Chcete-li přidat bránu místní sítě s více předponami adresy:
 
-  ```powershell
-  New-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1 `
-  -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.0.0.0/24','20.0.0.0/24')
+  ```azurepowershell-interactive
+  New-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+  -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
   ```
 
 Chcete-li upravit předpony IP adres pro bránu místní sítě:<br>
 Někdy dojde ke změně předpon brány místní sítě. Postup upravení předpon IP adresy závisí na tom, zda jste vytvořili připojení k bráně VPN. Viz oddíl [Úprava předpon IP adresy pro bránu místní sítě](#modify) v tomto článku.
 
-## <a name="PublicIP"></a>4. Vyžádání veřejné IP adresy
+## <a name="PublicIP"></a>3. Vyžádání veřejné IP adresy
 
 Brána VPN musí mít veřejnou IP adresu. Nejprve si vyžádáte prostředek IP adresy a pak na něj budete odkazovat při vytváření brány virtuální sítě. IP adresa se dynamicky přiřadí k prostředku po vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. Nemůžete si vyžádat statické přiřazení IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
 Vyžádejte si veřejnou IP adresu, která bude přiřazena k bráně VPN vaší virtuální sítě.
 
-```powershell
-$gwpip= New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
+```azurepowershell-interactive
+$gwpip= New-AzureRmPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>5. Vytvoření konfigurace adresování IP brány
+## <a name="GatewayIPConfig"></a>4. Vytvoření konfigurace adresování IP brány
 
 Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. Podle následujícího příkladu vytvořte vlastní konfiguraci brány:
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name TestVNet1 -ResourceGroupName TestRG1
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>6. Vytvoření brány VPN
+## <a name="CreateGateway"></a>5. Vytvoření brány VPN
 
-Vytvořte bránu VPN virtuální sítě. Vytvoření brány VPN může trvat až 45 minut nebo ještě déle.
+Vytvořte bránu VPN virtuální sítě.
 
 Použijte následující hodnoty:
 
@@ -192,46 +197,48 @@ Použijte následující hodnoty:
 * Hodnota *-VpnType* může být *RouteBased* (v některé dokumentaci nazývaná Dynamická brána), nebo *PolicyBased* (v některé dokumentaci nazývaná Statická brána). Další informace o typech brány VPN najdete v tématu [Informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md).
 * Vyberte SKU brány, kterou chcete použít. Pro určité skladové jednotky (SKU) platí omezení konfigurace. Další informace najdete v části [Skladové jednotky (SKU) brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Pokud při vytváření brány VPN dojde k chybě související s parametrem -GatewaySku, ověřte, že máte nainstalovanou nejnovější verzi rutin PowerShellu.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'East US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="ConfigureVPNDevice"></a>7. Konfigurace zařízení VPN
+Po spuštění tohoto příkazu může dokončení konfigurace brány trvat až 45 minut.
+
+## <a name="ConfigureVPNDevice"></a>6. Konfigurace zařízení VPN
 
 Připojení Site-to-Site k místní síti vyžadují zařízení VPN. V tomto kroku nakonfigurujete zařízení VPN. Při konfiguraci zařízení VPN potřebujete následující:
 
 - Sdílený klíč. Jedná se o stejný sdílený klíč, který zadáváte při vytváření připojení VPN Site-to-Site. V našich ukázkách používáme základní sdílený klíč. Doporučujeme, abyste pro použití vygenerovali složitější klíč.
 - Veřejnou IP adresu vaší brány virtuální sítě. Veřejnou IP adresu můžete zobrazit pomocí webu Azure Portal, PowerShellu nebo rozhraní příkazového řádku. Pokud chcete zjistit veřejnou IP adresu brány virtuální sítě pomocí PowerShellu, použijte následující příklad:
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG1
   ```
 
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>8. Vytvoření připojení VPN
+## <a name="CreateConnection"></a>7. Vytvoření připojení VPN
 
 Dále vytvoříte připojení VPN typu Site-to-Site mezi bránou virtuální sítě a zařízením VPN. Nezapomeňte hodnoty nahradit vlastními. Sdílený klíč se musí shodovat s hodnotou, kterou jste použili pro konfiguraci zařízení VPN. Všimněte si, že hodnota -ConnectionType pro připojení typu Site-to-Site je *IPsec*.
 
 1. Nastavte proměnné.
-  ```powershell
+  ```azurepowershell-interactive
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-  $local = Get-AzureRmLocalNetworkGateway -Name Site2 -ResourceGroupName TestRG1
+  $local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
   ```
 
 2. Vytvořte připojení.
-  ```powershell
-  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite2 -ResourceGroupName TestRG1 `
+  ```azurepowershell-interactive
+  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
   -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
   ```
 
 Za malou chvíli dojde k vytvoření připojení.
 
-## <a name="toverify"></a>9. Ověření připojení VPN
+## <a name="toverify"></a>8. Ověření připojení VPN
 
 Existuje několik různých způsobů, jak ověřit připojení VPN.
 
@@ -242,13 +249,13 @@ Existuje několik různých způsobů, jak ověřit připojení VPN.
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
 
-## <a name="modify"></a>Úprava předpon IP adres pro bránu místní sítě
+## <a name="modify"></a>Úprava předpony IP adresy pro místní síťovou bránu
 
 Pokud se změní předpony IP adres, které chcete směrovat do vašeho místního umístění. můžete upravit bránu místní sítě. K dispozici jsou dvě sady pokynů. Pokyny, které zvolíte, závisí na tom, jestli jste už vytvořili připojení brány.
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="modifygwipaddress"></a>Úprava IP adresy brány místní sítě
+## <a name="modifygwipaddress"></a>Změna IP adresy místní síťové brány
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 

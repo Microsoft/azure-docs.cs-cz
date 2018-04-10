@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/16/2018
+ms.date: 03/29/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní MongoDB API
 
@@ -30,6 +30,10 @@ Tento článek se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Dotazování dat pomocí MongoDB
+
+Můžete začít zhlédnutím tohoto videa, ve kterém manažer programu Azure Cosmos DB Andy Hoh popisuje dotazování MongoDB:
+
+>[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
 
 ## <a name="sample-document"></a>Ukázkový dokument
 
@@ -300,7 +304,7 @@ Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
 **Results**
 
-Nevrátí se žádné výsledky, protože máme pouze 2 děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
+Nevrátí se žádné výsledky, protože v žádné rodině není více než dvě děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
 
 ## <a name="next-steps"></a>Další kroky
 

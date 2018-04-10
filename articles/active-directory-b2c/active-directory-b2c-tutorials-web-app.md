@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19629f383bdab19a2541ca33dd2937574c2ced17
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Kurz: Ověřování uživatelů pomocí Azure Active Directory B2C ve webové aplikaci ASP.NET
 
@@ -66,7 +66,7 @@ Poznamenejte si **ID klienta aplikace**. Toto ID jednoznačně identifikuje apli
 
 ### <a name="create-a-client-password"></a>Vytvoření hesla klienta
 
-Azure AD B2C pro [klientské aplikace](../active-directory/develop/active-directory-dev-glossary.md#client-application) používá autorizaci OAuth2. Webové aplikace jsou [důvěrní klienti](../active-directory/develop/active-directory-dev-glossary.md#web-client) a vyžadují tajný klíč klienta (heslo). ID klienta aplikace a tajný klíč klienta se používají při ověřování webové aplikace v Azure Active Directory. 
+Azure AD B2C pro [klientské aplikace](../active-directory/develop/active-directory-dev-glossary.md#client-application) používá autorizaci OAuth2. Webové aplikace jsou [důvěrní klienti](../active-directory/develop/active-directory-dev-glossary.md#web-client) a vyžadují ID klienta nebo ID aplikace a tajný klíč klienta, heslo klienta nebo klíč aplikace.
 
 1. Vyberte stránku Klíče pro zaregistrovanou webovou aplikaci a klikněte na **Vygenerovat klíč**.
 
@@ -150,7 +150,7 @@ Ukázkové řešení obsahuje dva projekty:
 
 **Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 
-Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem tenantovi. Musíte také nakonfigurovat zásady, které jste vytvořili. Ukázková webová aplikace definuje hodnoty konfigurace jako nastavení aplikace v souboru Web.config. Nastavení aplikace můžete změnit následujícím způsobem:
+Aplikaci je potřeba změnit tak, aby používala registraci aplikace ve vašem tenantovi, což zahrnuje ID klienta nebo ID aplikace a heslo klienta nebo klíč aplikace. Musíte také nakonfigurovat zásady, které jste vytvořili. Ukázková webová aplikace definuje hodnoty konfigurace jako nastavení aplikace v souboru Web.config. Nastavení aplikace můžete změnit následujícím způsobem:
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 
@@ -161,7 +161,7 @@ Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem tena
     
     <add key="ida:ClientId" value="The Application ID for your web app registered in your tenant" />
     
-    <add key="ida:ClientSecret" value="Client password (client secret)" />
+    <add key="ida:ClientSecret" value="Client password (client secret or app key)" />
     ```
 3. Aktualizujte nastavení zásad s použitím názvů vygenerovaných při vytváření zásad.
 
