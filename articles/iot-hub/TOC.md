@@ -45,6 +45,7 @@
 ### [Načtení zprávy Twitteru s využitím Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 ### [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
+### [Ovládání MXChip IoT DevKit RGB LED s využitím dvojčat zařízení Azure](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
 
 # Návody
 ## Plánování
@@ -173,7 +174,7 @@
 ## [Java (služba)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (zařízení)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Node.js (zařízení)](https://docs.microsoft.com/javascript/api/azure-iot-device/)
-## [Node.js (služba)](https://docs.microsoft.com/javascript/api/azure-iothub)
+## [Node.js (služba)](https://docs.microsoft.com/javascript/api/azure-iothub/)
 ## [Sady SDK pro zařízení jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (poskytovatel prostředků)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
