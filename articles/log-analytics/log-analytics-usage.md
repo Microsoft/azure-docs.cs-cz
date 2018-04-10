@@ -1,27 +1,27 @@
 ---
-title: "Analýza využití dat v Log Analytics | Dokumentace Microsoftu"
-description: "Pomocí řídicího panelu Využití v Log Analytics můžete zobrazit, kolik dat se odesílá do služby Log Analytics, a řešit potíže způsobující odesílání velkých objemů dat."
+title: Analýza využití dat v Log Analytics | Dokumentace Microsoftu
+description: Použijte řídicí panel Využití a odhad nákladů v Log Analytics k vyhodnocení objemu dat odesílaných do Log Analytics a identifikaci možných příčin jejich neočekávaných nárůstů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2018
+ms.date: 03/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
-Log Analytics obsahuje informace o objemu shromážděných dat, systémech odesílajících data a různých typech odesílaných dat.  Pomocí řídicího panelu **Využití Log Analytics** můžete zobrazit objem dat odesílaných do služby Log Analytics. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
+Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odesílajících data a různých typech odesílaných dat.  Využití dat můžete zkontrolovat a analyzovat pomocí řídicího panelu **Využití Log Analytics**. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
 
 ## <a name="understand-the-usage-dashboard"></a>Vysvětlení řídicího panelu Využití
 Řídicí panel **Využití Log Analytics** obsahuje tyto informace:
@@ -41,20 +41,17 @@ Log Analytics obsahuje informace o objemu shromážděných dat, systémech odes
     - Čas potřebný k shromáždění a indexaci dat  
 - Seznam dotazů
 
-![řídicí panel využití](./media/log-analytics-usage/usage-dashboard01.png)
+![Řídicí panel Využití a náklady](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+)
 
 ### <a name="to-work-with-usage-data"></a>Práce s daty o využití
-1. Pokud jste to ještě neudělali, přihlaste se na webu [Azure Portal](https://portal.azure.com) pomocí svého předplatného Azure.
-2. Klikněte na **Všechny služby** a v seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Klikněte na **Log Analytics**.  
-    ![Centrum Azure](./media/log-analytics-usage/hub.png)
-3. Na řídicím panelu **Log Analytics** se zobrazí seznam vašich pracovních prostorů. Vyberte pracovní prostor.
-4. Na řídicím panelu *pracovního prostoru* klikněte na **Využití Log Analytics**.
-5. Na řídicím panelu **Využití Log Analytics** klikněte na **Čas: Posledních 24 hodin** a změňte časový interval.  
-    ![časový interval](./media/log-analytics-usage/time.png)
-6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-log-searches.md).  
-    ![příklad okna využití dat](./media/log-analytics-usage/blade.png)
-7. Na řídicím panelu Prohledávání protokolů zkontrolujte vrácené výsledky hledání.  
-    ![příklad prohledávání protokolů využití](./media/log-analytics-usage/usage-log-search.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
+4. V seznamu v levém podokně vyberte **Využití a odhad nákladů**.
+5. Na řídicím panelu **Využití a odhad nákladů** můžete upravit časový rozsah výběrem možnosti **Čas: Posledních 24 hodin** a změnou časového intervalu.<br><br> ![časový interval](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
+6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-log-searches.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+7. Na řídicím panelu Prohledávání protokolů zkontrolujte vrácené výsledky hledání.<br><br> ![příklad prohledávání protokolů využití](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
 Tato část popisuje postup vytvoření upozornění v těchto případech:

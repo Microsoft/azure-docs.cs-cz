@@ -1,96 +1,94 @@
 ---
-title: "Zřízení zařízení pomocí Azure IoT Hub zařízení zřizování služby | Microsoft Docs"
-description: "Zřízení zařízení do jednoho IoT hub pomocí služby Azure IoT Hub zařízení zřizování Service"
+title: Zřízení zařízení pomocí služby Azure IoT Hub Device Provisioning | Microsoft Docs
+description: Zřízení zařízení pro jedno centrum IoT pomocí služby Azure IoT Hub Device Provisioning
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 03/28/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: bf50699d2dc67294d554ba15713254a8b88d8ade
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 4d98ce103bed7f9d14eb45422b70ceca1328afaa
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zřízení zařízení do služby IoT hub pomocí služby Azure IoT Hub zařízení zřizování Service
+# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zřízení zařízení pro centrum IoT pomocí služby Azure IoT Hub Device Provisioning
 
-V tomto kurzu předchozí jste zjistili, jak nastavit zařízení pro připojení k službě zřizování zařízení. V tomto kurzu se dozvíte, jak tuto službu využívat ke zřízení zařízení do jednoho IoT hub pomocí  **_registrace seznamy_**. V tomto kurzu získáte informace o následujících postupech:
+V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_seznamů registrací_**. V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Registrace zařízení
 > * Spuštění zařízení
-> * Ověřte, zda že je zařízení zaregistrované
+> * Ověření registrace zařízení
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat, ujistěte se, pro konfiguraci zařízení a jeho *modul hardwarového zabezpečení* popsané v tomto kurzu [nastavení zařízení ke zřízení pomocí Azure IoT Hub zařízení zřizování služby](./tutorial-set-up-device.md).
+Než budete pokračovat, nezapomeňte své zařízení nakonfigurovat, jak je popsáno v kurzu [Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning](./tutorial-set-up-device.md).
 
+Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o [konceptech automatického zřizování](concepts-auto-provisioning.md), než budete pokračovat.
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>Registrace zařízení
 
-Tento krok zahrnuje přidání artefakty jedinečný zabezpečení zařízení ke službě zřizování zařízení. Tyto artefakty zabezpečení jsou následující:
+Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízení do služby Device Provisioning. Tyto artefakty zabezpečení jsou založené na [mechanismu ověřování](concepts-device.md#attestation-mechanism) zařízení následujícím způsobem:
 
-- Pro zařízení s založené na čipu TPM:
-    - *Ověřovací klíč* , je jedinečný pro každý čip TPM nebo simulace. Pro čtení [pochopit ověřovacího klíče TPM](https://technet.microsoft.com/library/cc770443.aspx) Další informace.
-    - *ID registrace* který slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. To může nebo nemusí být stejný jako identifikátor zařízení. ID je povinné pro každé zařízení. Pro zařízení, založené na čipu TPM může být ID registrace odvozen od čipu TPM samostatně, například algoritmus hash SHA-256 ověřovacího klíče čipu TPM.
+- Pro zařízení založená na TPM potřebujete:
+    - *Ověřovací klíč*, který je jedinečný pro každou simulaci nebo čip TPM a který získáte od výrobce čipu TPM.  Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](https://technet.microsoft.com/library/cc770443.aspx).
+    - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. U zařízení založených na TPM můžete ID registrace získat přímo z TMP, například jako hodnotu hash SHA-256 ověřovacího klíče TPM.
 
-    ![Informace o registraci pro TPM v portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)
+    ![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)
 
-- X.509 na základě zařízení:
-    - [Certifikát vydaný pro X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) čip TPM nebo simulace ve formě buď *.pem* nebo *.cer* souboru. Pro jednotlivé registrace, budete muset použít *certifikát podepisující osoba* pro váš systém X.509, zatímco pro skupiny registrace, budete muset použít *kořenový certifikát*.
+- Pro zařízení založená na X.509 potřebujete:
+    - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *certifikát podpisovatele* daného zařízení pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát*. 
 
-    ![Informace o registraci pro X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-device-enrollment.png)
+    ![Informace o registraci X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-device-enrollment.png)
 
+Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsoby:
 
-Existují dva způsoby, jak zaregistrovat zařízení ke službě zřizování zařízení:
+- **Skupiny registrací** představují skupinu zařízení, která sdílí konkrétní mechanismus ověřování. Skupinu registrací doporučujeme použít pro velké množství zařízení, která sdílí požadovanou počáteční konfiguraci, nebo pro zařízení, která budou patřit do stejného tenanta.
 
-- **Registrace skupiny** reprezentuje skupinu zařízení, které sdílejí mechanismus konkrétní ověření. Doporučujeme používat skupinu registrace pro velký počet zařízení, které sdílejí požadované počáteční konfigurace, nebo pro zařízení všechny má stejné klienta.
+    ![Skupiny registrací pro X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-enrollment-groups.png)
 
-    ![Registrace skupiny pro X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-enrollment-groups.png)
+- **Jednotlivé registrace** představují záznamy jednotlivých zařízení, která se můžou zaregistrovat do služby Device Provisioning. Jednotlivé registrace můžou jako mechanismus ověřování využívat certifikáty X.509 nebo tokeny SAS (na skutečném nebo virtuálním zařízení TPM). Jednotlivé registrace doporučujeme použít pro zařízení, která vyžadují jedinečnou počáteční konfiguraci, a zařízení, která jako mechanismus ověřování můžou využívat pouze tokeny SAS prostřednictvím skutečného nebo virtuálního zařízení TPM. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.
 
-- **Jednotlivé registrace** reprezentuje položku pro jedno zařízení, která může zaregistrovat službu zřizování zařízení. Jednotlivé registrace může použít buď x509 certifikáty nebo SAS tokeny (ve fyzických nebo virtuálních čipu TPM) jako mechanismů ověření. Doporučujeme používat jednotlivé registrace zařízení, které vyžadují jedinečné počáteční konfigurace, nebo pro zařízení, které lze použít pouze tokeny SAS prostřednictvím TPM nebo virtuální čipu TPM jako mechanismus ověření. Jednotlivé registrace může mít požadovaný IoT hub ID zařízení v zadané.
-
-Následující kroky k registraci zařízení na portálu:
-
-1. Všimněte si artefakty zabezpečení pro modul hardwarového zabezpečení na vašem zařízení. Možná budete muset použít rozhraní API uvedených v části s názvem [extrahovat zabezpečení artefakty](./tutorial-set-up-device.md#extractsecurity) předchozí kurzu ve vývojovém prostředí.
+Teď zařízení zaregistrujete do své instance služby Device Provisioning s použitím požadovaných artefaktů zabezpečení na základě mechanismu ověřování zařízení: 
 
 1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning.
 
-1. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte buď **jednotlivých registrace** kartě nebo **registrace skupiny** karta podle vašeho nastavení zařízení. Klikněte **přidat** tlačítka v horní části. Vyberte **TPM** nebo **X.509** jako ověření identity *mechanismus*a zadejte příslušná bezpečnostní artefakty, jak jsme vysvětlili výše. Můžete zadat nový **ID zařízení IoT Hub**. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
+2. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. V závislosti na nastavení svého zařízení vyberte kartu **Jednotlivé registrace** nebo **Skupiny registrací**. Klikněte na tlačítko **Přidat** v horní části. Jako *Mechanismus* ověření identity vyberte **TPM** nebo **X.509** a zadejte odpovídající artefakty zabezpečení, jak je popsáno výše. Můžete zadat nové **ID zařízení služby IoT Hub**. Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
-1. Když je zařízení úspěšně zaregistrované, měli byste vidět se zobrazovat na portálu jako následující:
+3. Po úspěšné registraci by se zařízení mělo zobrazit na portálu, jak je znázorněno níže:
 
-    ![Úspěšné TPM registrace na portálu](./media/tutorial-provision-device-to-hub/tpm-enrollment-success.png)
+    ![Úspěšná registrace TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-enrollment-success.png)
 
+Po registraci zřizovací služba počká na budoucí spuštění a připojení zařízení. Při prvním spuštění zařízení klientská knihovna SDK ve spolupráci s čipem extrahuje ze zařízení artefakty zabezpečení a ověří registraci ve službě Device Provisioning. 
 
 ## <a name="start-the-device"></a>Spuštění zařízení
 
-V tomto okamžiku následující instalační program je připraven pro registraci zařízení:
+V tuto chvíli je následující nastavení připravené k registraci zařízení:
 
-1. Skupiny zařízení nebo zařízení jsou zaregistrovaná k službě zřizování zařízení, a 
-2. Zařízení je připraven s čipovou HSM nakonfigurované a dostupné prostřednictvím aplikace pomocí klienta zařízení zřizování služby SDK.
+1. Vaše zařízení nebo skupina zařízení jsou zaregistrované do služby Device Provisioning. 
+2. Vaše zařízení je připravené s nakonfigurovaným mechanismem ověřování a přístupné přes aplikaci pomocí klientské sady SDK služby Device Provisioning.
 
-Spusťte zařízení a povolit klientské aplikaci začínat registrace služby zřizování zařízení.  
+Spusťte aplikaci, aby klientská aplikace mohla zahájit registraci do vaší služby Device Provisioning.  
 
+## <a name="verify-the-device-is-registered"></a>Ověření registrace zařízení
 
-## <a name="verify-the-device-is-registered"></a>Ověřte, zda že je zařízení zaregistrované
+Po spuštění zařízení by se měly provést následující akce. Další podrobnosti najdete v ukázkové aplikaci simulátoru TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
 
-Jednou vaše jednotlivými spuštěními zařízení následující akce má být provedena. V tématu TPM simulátoru ukázkovou aplikaci [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) další podrobnosti. 
+1. Zařízení odešle žádost o registraci do vaší služby Device Provisioning.
+2. Pro zařízení TPM služba Device Provisioning odešle zpět výzvu k registraci, na kterou zařízení zareaguje. 
+3. Po úspěšné registraci služba Device Provisioning odešle zpět do zařízení identifikátor URI centra IoT, ID zařízení a zašifrovaný klíč. 
+4. Klientská aplikace IoT Hub na zařízení se pak připojí k vašemu centru. 
+5. Po úspěšném připojení k centru by se zařízení mělo zobrazit v nástroji **Device Explorer** centra IoT. 
 
-1. Zařízení odesílá žádost o registraci vašeho zařízení zřizovací služby.
-2. Pro zařízení s čipem TPM odešle služba zřizování zařízení zpět registraci výzvy, ke kterému zařízení reaguje. 
-3. Na úspěšnou registraci zařízení zřizovací služby odešle že IOT hub identifikátor URI, ID zařízení a zašifrovaný klíč zpět do zařízení. 
-4. IoT Hub klientská aplikace na zařízení pak připojí do vašeho centra. 
-5. Úspěšné připojení k rozbočovači, měli byste vidět zařízení objeví ve službě IoT hub **Explorer zařízení**. 
-
-    ![Úspěšné připojení k rozbočovači na portálu](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
+    ![Úspěšné připojení k centru na portálu](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
@@ -98,9 +96,9 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Registrace zařízení
 > * Spuštění zařízení
-> * Ověřte, zda že je zařízení zaregistrované
+> * Ověření registrace zařízení
 
-Přechodu na v dalším kurzu se dozvíte, jak zřídit víc zařízení přes centra Vyrovnávání zatížení sítě. 
+V dalším kurzu se dozvíte, jak zřídit několik zařízení napříč centry s vyrovnáváním zatížení. 
 
 > [!div class="nextstepaction"]
-> [Zřízení zařízení napříč Vyrovnávání zatížení sítě centra IoT](./tutorial-provision-multiple-hubs.md)
+> [Zřízení zařízení v několika centrech IoT s vyrovnáváním zatížení](./tutorial-provision-multiple-hubs.md)

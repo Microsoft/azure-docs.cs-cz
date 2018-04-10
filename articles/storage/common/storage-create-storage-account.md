@@ -1,8 +1,8 @@
 ---
-title: "Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Dokumentace Microsoftu"
-description: "Přečtěte si, jak vytvořit nový účet úložiště, spravovat klíče pro přístup k účtu nebo odstranit účet na webu Azure Portal. Získejte informace o účtech úložiště Standard a Premium."
+title: Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Dokumentace Microsoftu
+description: Přečtěte si, jak vytvořit nový účet úložiště, spravovat klíče pro přístup k účtu nebo odstranit účet na webu Azure Portal. Získejte informace o účtech úložiště Standard a Premium.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -12,7 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords: sql13.swb.windowsazurestorage.connect.f1
+f1_keywords:
+- sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
 ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
