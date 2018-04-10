@@ -1,6 +1,6 @@
 ---
-title: "Spuštění paralelní úlohy – Azure Batch Python"
-description: "Kurz – Zpracování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch Python"
+title: Spuštění paralelní úlohy – Azure Batch Python
+description: Kurz – Zpracování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch Python
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,13 +8,13 @@ ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: dlepow
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f9853578962027d6308581a76e00d6619cbbf9ec
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a04cd63944d0ed75ff90f211134cd93c77abe1e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 

@@ -1,4 +1,4 @@
-1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal a pak vyberte **Compute** > **Function App**. 
+1. Klikněte na tlačítko **Nový** v levém horním rohu portálu Azure Portal a pak vyberte **Compute** > **Function App**. 
 
     ![Vytvoření aplikace Function App na portálu Azure Portal](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -16,8 +16,14 @@
     | **Umístění** | Západní Evropa | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
     | **[Účet úložiště](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** |  Globálně jedinečný název |  Název nového účtu úložiště, který bude aplikace Function App používat. Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete taky použít existující účet. |
 
-1. Po kliknutí na **Vytvořit** se nová aplikace Function App zřídí a nasadí. Stav nasazení můžete monitorovat kliknutím na ikonu Oznámení v pravém horním rohu portálu. 
+3. Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**. 
+
+4. Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**. 
 
     ![Určení nastavení nové aplikace Function App](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-    Kliknutím na **Přejít k prostředku** přejdete k nové aplikaci funkcí.
+4. Volbou **Přejít k prostředku** novou aplikaci Function App zobrazíte.
+
+>[!TIP]
+>Pokud máte potíže najít na portálu své aplikace funkcí, zkuste [přidat aplikace funkcí mezi oblíbené na webu Azure Portal](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#favorite).   
+

@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 14007bff572f5ecf71b4595dcab8f24d9cf2d17e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9b92e00f7082921586e8b8d8461ddf718ca30aeb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>Rychlý start: Vytvoření Azure Database for PostgreSQL pomocí Azure CLI
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for PostgreSQL ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) pomocí rozhraní CLI Azure.
@@ -58,11 +58,11 @@ Vrácený kód JSON by měl obsahovat následující:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Pokud se nevrátí verze 0.0.4, spuštěním následujícího příkazu rozšíření aktualizujte: 
+Pokud se nevrátí verze 0.0.5, spuštěním následujícího příkazu rozšíření aktualizujte: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

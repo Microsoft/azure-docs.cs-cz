@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9123519217e87494316c1dc6b7f90da1b30ba392
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -28,17 +28,25 @@ ms.lasthandoff: 03/28/2018
 >
 >  
 
-Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric](service-fabric-application-model.md) na vývojovém počítači s Linuxem, musíte nainstalovat modul runtime a běžnou sadu SDK. Můžete také nainstalovat volitelné sady SDK pro vývoj v Javě a .NET Core.
+Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric](service-fabric-application-model.md) na vývojovém počítači s Linuxem, musíte nainstalovat modul runtime a běžnou sadu SDK. Můžete také nainstalovat volitelné sady SDK pro vývoj v Javě a .NET Core. 
 
-> [!NOTE]
-> Instalace sady SDK a modulu runtime Service Fabric v subsystému Windows pro Linux se nepodporuje. Podporuje se však rozhraní příkazového řádku Azure Service Fabric, které umožňuje správu entit Service Fabric hostovaných jinde v clusteru nebo místním prostředí. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Nastavení rozhraní příkazového řádku Service Fabric](./service-fabric-cli.md).
->
+Kroky v tomto článku předpokládají, že provádíte nativní instalaci v Linuxu nebo používáte image kontejneru Service Fabric OneBox `microsoft/service-fabric-onebox`. 
+
+Instalace sady SDK a modulu runtime Service Fabric v subsystému Windows pro Linux se nepodporuje. Podporuje se však rozhraní příkazového řádku Azure Service Fabric, které umožňuje správu entit Service Fabric hostovaných jinde v clusteru nebo místním prostředí. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Nastavení rozhraní příkazového řádku Service Fabric](./service-fabric-cli.md).
+
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro vývoj jsou podporovány tyto verze operačních systémů:
+* Pro vývoj jsou podporovány tyto verze operačních systémů:
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+    * Ubuntu 16.04 (`Xenial Xerus`)
+
+* Ujistěte se, že je nainstalovaný balíček `apt-transport-https`:
+
+      ```bash
+      sudo apt-get install apt-transport-https
+      ```
+
 
 ## <a name="installation-methods"></a>Metody instalace
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 
@@ -324,9 +324,9 @@ Pokud chcete zobrazit podrobné informace o jednotlivých krocích, kliknutím n
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>Krok 5 – Zobrazení protokolu aktivit Azure v Log Analytics
 Posledním krokem je kontrola pracovního prostoru Log Analytics a ověření, že se data shromažďují podle očekávání.
 
-1. Na webu Azure Portal vyberte **Log Analytics**.
-2. Vyberte svůj pracovní prostor a pak dlaždici **Prohledávání protokolů**.
-3. Na panelu vyhledávacího dotazu zadejte `AzureActivity_CL` a klikněte na tlačítko Hledat. Pokud jste pro vlastní protokol nepoužili název *AzureActivity*, zadejte název, který jste zvolili, s příponou `_CL`.
+1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+2. V seznamu pracovních prostorů Log Analytics vyberte svůj pracovní prostor.
+3.  Klikněte na dlaždici **Prohledávání protokolu**, v podokně Prohledávání protokolu zadejte do pole dotazu `AzureActivity_CL` a stiskněte Enter nebo klikněte na tlačítko Vyhledat napravo od pole dotazu. Pokud jste pro vlastní protokol nepoužili název *AzureActivity*, zadejte název, který jste zvolili, s příponou `_CL`.
 
 >[!NOTE]
 > Po prvním odeslání nového vlastního protokolu do Log Analytics může trvat až hodinu, než bude vlastní protokol prohledávatelný.

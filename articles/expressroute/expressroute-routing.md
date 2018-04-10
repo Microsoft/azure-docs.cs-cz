@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 829646be6404f86d9f370b3a402cfc0c0c980699
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -197,7 +197,7 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 Všechny trasy inzerované Microsoftem budou označené odpovídající hodnotou komunity. 
 
 > [!IMPORTANT]
-> Globální předpony se označují odpovídající hodnotou komunity a budou se inzerovat, jenom když bude povolený doplněk ExpressRoute Premium.
+> Globální předpony jsou označené odpovídající hodnotou komunity.
 > 
 > 
 

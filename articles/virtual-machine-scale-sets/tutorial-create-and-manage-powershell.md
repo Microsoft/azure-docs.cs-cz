@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1f1b987d00fad4931f9ad39b39101cc474c2a1e3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 54f63ec4cddf64110eadf25fff60167238f9f9a6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. V tomto kurzu se naučíte:
@@ -45,7 +45,6 @@ Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spra
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```
-
 Název skupiny prostředků zadáte při vytváření nebo úpravě škálovací sady v rámci tohoto kurzu.
 
 
@@ -83,10 +82,10 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleS
 Následující příklad výstupu ukazuje dvě instance virtuálních počítačů ve škálovací sadě:
 
 ```powershell
-ResourceGroupName         Name Location          Sku InstanceID ProvisioningState
------------------         ---- --------          --- ---------- -----------------
-MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS2          0         Succeeded
-MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS2          1         Succeeded
+ResourceGroupName         Name Location             Sku InstanceID ProvisioningState
+-----------------         ---- --------             --- ---------- -----------------
+MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succeeded
+MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
 Pokud chcete zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte k rutině [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) parametr `-InstanceId`. Následující příklad zobrazí informace o instanci virtuálního počítače *1*:
@@ -235,7 +234,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_D1_v2*. Na základě výstupu rutiny [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) můžete zadat jinou velikost instancí virtuálních počítačů. Následující příklad vytvoří škálovací sadu s použitím parametru `-VmSize`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
+Při vytváření škálovací sady na začátku kurzu jste pro instance virtuálních počítačů zadali výchozí skladovou položku virtuálního počítače *Standard_DS1_v2*. Na základě výstupu rutiny [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) můžete zadat jinou velikost instancí virtuálních počítačů. Následující příklad vytvoří škálovací sadu s použitím parametru `-VmSize`, který určí velikost instancí virtuálních počítačů *Standard_F1*. Vzhledem k tomu, že vytvoření a konfigurace všech prostředků škálovací sady a instancí virtuálních počítačů trvá několik minut, následující škálovací sadu nasazovat nemusíte:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `

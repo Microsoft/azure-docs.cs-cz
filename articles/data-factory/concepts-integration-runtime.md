@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 88475c169bd6cc8fc4d653801ec1af58ebc7620e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97c2f68356a6a589f48224d297493509786ceff1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -94,14 +94,14 @@ Pokud chcete navýšit a přesunout stávající úlohy služby SSIS, můžete v
 Prostředí Azure-SSIS IR se dá zřídit ve veřejné síti nebo privátní síti.  Připojením prostředí Azure-SSIS IR k virtuální síti připojené k vaší místní síti se dá získat podpora přístupu k místním datům.  
 
 ### <a name="compute-resource-and-scaling"></a>Výpočetní prostředky a škálování
-Prostředí Azure-SSIS IR je plně spravovaný cluster virtuálních počítačů Azure vyhrazených ke spouštění balíčků služby SSIS. Můžete použít vlastní server Azure SQL Database nebo spravované instance (privátní verze Preview) k hostování katalogu projektů/balíčků služby SSIS (SSISDB), který k němu bude připojený. Můžete vertikálně navýšit výkon výpočetního prostředí tím, že určíte velikost uzlu a pak určíte počet uzlů v clusteru. Prostředí Azure-SSIS Integration Runtime můžete podle libosti zastavovat a spouštět, takže můžete mít pod kontrolou související náklady.
+Prostředí Azure-SSIS IR je plně spravovaný cluster virtuálních počítačů Azure vyhrazených ke spouštění balíčků služby SSIS. K hostování katalogu projektů nebo balíčků služby SSIS (SSISDB), který k němu bude připojený, můžete použít vlastní server Azure SQL Database nebo spravované instance (Preview). Můžete vertikálně navýšit výkon výpočetního prostředí tím, že určíte velikost uzlu a pak určíte počet uzlů v clusteru. Prostředí Azure-SSIS Integration Runtime můžete podle libosti zastavovat a spouštět, takže můžete mít pod kontrolou související náklady.
 
 Další informace najdete v článku o vytváření a konfiguraci prostředí Azure-SSIS IR mezi příručkami s postupy.  Po vytvoření můžete existující balíčky služby SSIS nasazovat a spravovat s minimem změn pomocí známých nástrojů, jako jsou SQL Server Data Tools (SSDT) a SQL Server Management Studio (SSMS), stejně jako kdybyste službu SSIS používali místně.
 
 Další informace o modulu runtime Azure-SSIS najdete v následujících článcích: 
 
 - [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny pro vytvoření Azure-SSIS IR a využívá databázi Azure SQL k hostování katalogu SSIS. 
-- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek dál navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (privátní verze Preview) a připojení IR k virtuální síti. 
+- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek dál navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (Preview) a připojení IR k virtuální síti. 
 - [Monitorování Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). Tento článek ukazuje, jak načíst informace o Azure-SSIS IR a popisy stavů ve vrácených informacích. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
 - [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md) Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure (VNet). Poskytuje také kroky pro využití webu Azure Portal ke konfiguraci virtuální sítě, aby se k ní prostředí Azure-SSIS IR mohlo připojit. 
@@ -178,13 +178,13 @@ Pokud se prostředí IR v místním prostředí používá k provádění přesu
 ### <a name="azure-ssis-ir"></a>Prostředí Azure-SSIS IR
 Pro vysoký výkon pracovních postupů extrakce, transformace a načítání (ETL) je velmi důležitý výběr správného umístění prostředí Azure-SSIS IR.  Momentálně je pro verzi Preview dostupných šest umístění (Východní USA, Východní USA 2, Střed USA, Austrálie – východ, Severní Evropa a Západní Evropa).
 
-- Umístění vaší služby SSIS-Azure IR nemusí být stejné jako umístění datové továrny, ale mělo by odpovídat umístění vašeho vlastního serveru Azure SQL Database / spravované instance (privátní verze Preview), na kterém chcete hostovat službu SSISDB. Díky tomu může prostředí Azure-SSIS Integration Runtime snadno získat přístup ke službě SSISDB bez nadměrných přenosů dat mezi různými umístěními.
-- Pokud nemáte stávající server Azure SQL Database / spravované instance (privátní verze Preview) pro hostování služby SSISDB, ale máte místní zdroje/cíle dat, měli byste vytvořit nový server Azure SQL Database / spravované instance (privátní verze Preview) ve stejném umístění jako virtuální síť připojená k vaší místní síti.  Můžete tak vytvořit prostředí Azure-SSIS IR pomocí nového serveru Azure SQL Database / spravované instance (privátní verze Preview) a připojit se k této virtuální síti ve stejném umístění, čímž účinně omezíte přesuny dat mezi různými umístěními.
-- Pokud se umístění existujícího serveru Azure SQL Database / spravované instance (privátní verze Preview), který je hostitelem služby SSISDB, neshoduje s umístěním virtuální sítě připojené k vaší místní síti, nejdřív vytvořte prostředí Azure-SSIS IR pomocí existujícího serveru Azure SQL Database / spravované instance (privátní verze Preview), připojte se k jiné virtuální síti ve stejném umístění a potom nakonfigurujte připojení virtuální sítě k virtuální síti mezi různými umístěními.
+- Umístění vašeho prostředí Azure-SSIS IR nemusí být stejné jako umístění datové továrny, ale mělo by odpovídat umístění vašeho vlastního serveru Azure SQL Database nebo spravované instance (Preview), na kterém chcete službu SSISDB hostovat. Díky tomu může prostředí Azure-SSIS Integration Runtime snadno získat přístup ke službě SSISDB bez nadměrných přenosů dat mezi různými umístěními.
+- Pokud nemáte stávající server Azure SQL Database nebo spravované instance (Preview) pro hostování služby SSISDB, ale máte místní zdroje/cíle dat, měli byste vytvořit nový server Azure SQL Database nebo spravované instance (Preview) ve stejném umístění jako virtuální síť připojenou k vaší místní síti.  Můžete tak vytvořit prostředí Azure-SSIS IR s použitím nového serveru Azure SQL Database nebo spravované instance (Preview) a připojit se k této virtuální síti ve stejném umístění, čímž účinně omezíte přesuny dat mezi různými umístěními.
+- Pokud se umístění existujícího serveru Azure SQL Database nebo spravované instance (Preview), který je hostitelem služby SSISDB, neshoduje s umístěním virtuální sítě připojené k vaší místní síti, vytvořte nejprve prostředí Azure-SSIS IR s použitím existujícího serveru Azure SQL Database nebo spravované instance (Preview), připojte se k jiné virtuální síti ve stejném umístění a pak nakonfigurujte připojení virtuální sítě k virtuální síti mezi různými umístěními.
 
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
-- [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Tento článek dál navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (privátní verze Preview) a připojení IR k virtuální síti. 
+- [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md). Tento článek dál navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (Preview) a připojení IR k virtuální síti. 

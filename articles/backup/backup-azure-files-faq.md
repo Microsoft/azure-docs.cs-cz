@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 850d4d1e2ef6a13fcd8a072e6da210d558c7769b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8093275ec9e9cce6d9a765bf1bfc434fecdb6ea7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,8 +29,14 @@ Během období Preview nepodporuje zálohování sdílených složek Azure všec
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Proč se nezobrazují některé sdílené složky Azure v účtu úložiště, když se pokouším nakonfigurovat zálohování? <br/>
 Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná ve stejném trezoru služby Recovery Services nebo jestli nebyla nedávno odstraněna.
 
-### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-file-sync-br"></a>Proč nemůžu chránit sdílené složky připojené ke skupině synchronizace ve službě Azure File Sync? <br/>
-Ochrana sdílených složek Azure připojených ke skupinám synchronizace je ve verzi Limited Preview. Pokud chcete požádat o přístup, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) a uveďte ID vašeho předplatného. 
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Můžu chránit sdílené složky připojené ke skupině synchronizace ve službě Azure File Sync? <br/>
+Ano. Ochrana sdílených složek Azure připojených ke skupinám synchronizace je povolená a ve verzi Preview.
+
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Při pokusu o zálohování sdílených složek jsem kliknul/a na účet úložiště, abych zjistil/a, které sdílené složky obsahuje. Nenastavil/a jsem však jejich ochranu. Jak nastavím ochranu těchto sdílených složek pomocí jiného trezoru?
+Při pokusu o zálohování se výběrem účtu úložiště kvůli zjištění, které sdílené složky obsahuje, zaregistruje účet úložiště do trezoru, ze kterého se tato akce provede. Pokud se rozhodnete chránit sdílené složky pomocí jiného trezoru, [zrušte registraci](troubleshoot-azure-files.md#configuring-backup) zvoleného účtu úložiště v tomto trezoru.
+
+### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>Můžu změnit trezor, do kterého zálohuji své sdílené složky?
+Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting-an-azure-file-share) v připojeném trezoru, [zrušit registraci](troubleshoot-azure-files.md#configuring-backup) tohoto účtu úložiště a pak nastavit ochranu v jiném trezoru.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Ve kterých zeměpisných oblastech můžu zálohovat sdílené složky Azure? <br/>
 Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k dispozici pouze v následujících zeměpisných oblastech: 
@@ -43,7 +49,11 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 -   Východní Austrálie (AE) 
 -   USA – východ (EUS)
 -   USA – východ 2 (EUS2)
+- Japonsko – východ (JPE)
+- Japonsko – západ (JPW)
 -   Indie – střed (INC) 
+- Indie – jih (INS)
+- Korea – jih (KRS)
 -   Střed USA – sever (NCUS) 
 -   Severní Evropa (NE) 
 -   Střed USA – jih (SCUS) 
@@ -58,7 +68,10 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>Kolik sdílených složek Azure můžu chránit v jednom trezoru?<br/>
-Během období Preview můžete v jednom trezoru chránit sdílené složky Azure až z 25 účtů úložiště. Zároveň můžete v jednom trezoru chránit až 200 sdílených složek Azure. 
+Během období Preview můžete v jednom trezoru chránit sdílené složky Azure až z 25 účtů úložiště. Zároveň můžete v jednom trezoru chránit až 200 sdílených složek Azure.
+
+### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Můžu chránit dvě různé sdílené složky ze stejného účtu úložiště v jiných trezorech?
+Ne. Všechny sdílené složky v účtu úložiště je možné chránit pouze ve stejném trezoru.
 
 ## <a name="backup"></a>Backup
 
@@ -71,7 +84,7 @@ Zálohování sdílených složek Azure nepodporuje účty úložiště s povole
 ## <a name="restore"></a>Obnovení
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>Můžu obnovit odstraněnou sdílenou složku Azure? <br/>
-Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které se také odstraní, a výzva k potvrzení. Odstraněnou sdílenou složku Azure není možné obnovit.
+Při odstraňování sdílené složky Azure se zobrazí seznam záloh, které se odstraní, a výzva k potvrzení. Odstraněnou sdílenou složku Azure není možné obnovit.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Můžu provést obnovení ze zálohy po zastavení ochrany sdílené složky Azure? <br/>
 Ano. Pokud jste při zastavování ochrany zvolili možnost **Zachovat zálohovaná data**, můžete provést obnovení ze všech stávajících bodů obnovení.
@@ -85,7 +98,7 @@ Přístup ke všem snímkům pořízeným službou Azure Backup je možný přes
 Zálohování sdílených složek Azure nabízí možnost uchovávat denní zálohy po dobu až 120 dnů.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co se stane, když u sdílené složky Azure změním zásady zálohování? <br/>
-Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní.
+Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
 
 ## <a name="see-also"></a>Viz také
 Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:

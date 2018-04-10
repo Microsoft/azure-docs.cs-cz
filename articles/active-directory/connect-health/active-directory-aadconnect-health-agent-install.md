@@ -1,8 +1,8 @@
 ---
-title: "Instalace agenta služby Azure AD Connect Health | Dokumentace Microsoftu"
-description: "Toto je stránka služby Azure AD Connect Health, která popisuje instalaci agenta pro službu AD FS a synchronizaci."
+title: Instalace agenta služby Azure AD Connect Health | Dokumentace Microsoftu
+description: Toto je stránka služby Azure AD Connect Health, která popisuje instalaci agenta pro službu AD FS a synchronizaci.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 5a0dadb86b6bdcbf8fc9ba38d09a2bfc9f8ec341
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 Tento dokument vás provede procesem instalace a konfigurace agentů služby Azure AD Connect Health. Agenty si můžete stáhnout [tady](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent).
@@ -31,7 +31,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 | Azure AD Premium |Azure AD Connect Health je funkcí služby Azure AD Premium a vyžaduje Azure AD Premium. </br></br>Další informace najdete v článku [Začínáme s Azure AD Premium](../active-directory-get-started-premium.md). </br>Pokud chcete začít používat bezplatnou 30denní zkušební verzi, přečtěte si článek o tom, jak [začít se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/). |
 | Abyste mohli Azure AD Connect Health začít používat, musíte být globálním správcem služby Azure AD.  |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci. Bez nich agenty nespustíte, nebudete mít přístup na portál ani nebudete moct v rámci Azure AD Connect Health provádět jakékoli operace. Další informace najdete v článku o [správě adresáře Azure AD](../active-directory-administer.md). <br><br> Pomocí řízení přístupu na základě rolí můžete povolit přístup k Azure AD Connect Health i ostatním uživatelům z vaší organizace. Další informace najdete v článku o [řízení přístupu k Azure AD Connect Health na základě rolí](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control). </br></br>**Důležité:** Účet, který jste použili při instalaci agentů, musí být pracovním nebo školním účtem. Nemůže to být účet Microsoft. Další informace najdete v článku o [registraci do Azure jako organizace](../sign-up-organization.md). |
 | Agent Azure AD Connect Health je nainstalovaný na každém cílovém serveru | Azure AD Connect Health kvůli získávání dat a poskytování možností monitorování a analýzy vyžaduje, aby na cílových serverech byli nainstalovaní a nakonfigurovaní agenti služby Health. </br></br>Pokud například potřebujete získávat data z infrastruktury služby AD FS, musí být agent nainstalovaný na serverech služby AD FS a na proxy serverech webových aplikací. Podobně pro načtení dat ve vaší místní infrastruktuře služby AD DS musí být agent nainstalován na řadičích domény. </br></br> |
-| Odchozí připojení ke koncovým bodům služby Azure | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud je odchozí připojení blokováno pomocí bran firewall, nezapomeňte do seznamu povolených výjimek přidat následující koncové body: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.servicebus.windows.net – Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https://management.azure.com </li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com </li><li>https://www.Office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li><br> Pro prostředí **Azure (Německo)** přidejte do seznamu povolených výjimek alternativní koncové body:</br><li>&#42;.blob.core.cloudapi.de </li><li>&#42;.queue.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li><li>&#42;.table.core.cloudapi.de </li><li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https://management.microsoftazure.de </li><li>https://policykeyservice.aadcdi.microsoftazure.de </li><li>https://login.microsoftonline.de </li><li>https://secure.aadcdn.microsoftonline-p.de </li><li>https://www.Office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> | 
+| Odchozí připojení ke koncovým bodům služby Azure | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud je odchozí připojení blokováno pomocí bran firewall, nezapomeňte do seznamu povolených výjimek přidat následující koncové body: </br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.servicebus.windows.net – Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https://management.azure.com </li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com </li><li>https://www.office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li><br> Pro prostředí **Azure (Německo)** přidejte do seznamu povolených výjimek alternativní koncové body:</br><li>&#42;.blob.core.cloudapi.de </li><li>&#42;.queue.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li><li>&#42;.table.core.cloudapi.de </li><li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https://management.microsoftazure.de </li><li>https://policykeyservice.aadcdi.microsoftazure.de </li><li>https://login.microsoftonline.de </li><li>https://secure.aadcdn.microsoftonline-p.de </li><li>https://www.office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> | 
 |Odchozí připojení na základě IP adres | Informace o filtrování podle IP adres v branách firewall najdete v článku [Rozsahy IP adres Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653).|
 | Kontrola protokolu SSL je pro odchozí připojení filtrovaná nebo zakázaná | Krok registrace agenta nebo operace nahrávání dat můžou selhat, pokud je na síťové vrstvě povolená kontrola nebo ukončování protokolu SSL pro odchozí připojení. |
 | Porty brány firewall na serveru se spuštěným agentem. |Agent vyžaduje, aby následující porty brány firewall byly otevřené. Je to proto, aby agent mohl komunikovat s koncovými body služby Azure AD Health.</br></br><li>Port 443 protokolu TCP</li><li>Port 5671 protokolu TCP</li> |
@@ -136,7 +136,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 9. Zaškrtněte políčka **Úspěšné audity a Neúspěšné audity** a klikněte na tlačítko **OK**. Tyto možnosti by měly být povolené ve výchozím nastavení.
 10. Otevřete okno PowerShellu a spusťte následující příkaz: ```Set-AdfsProperties -AuditLevel Verbose```.
 
-Poznámka: Ve výchozím nastavení je povolena úroveň Basic. Další informace najdete v tématu [Vylepšení auditu služby AD FS ve Windows Serveru 2016](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016).
+Poznámka: Ve výchozím nastavení je povolena úroveň Basic. Další informace najdete v tématu [Vylepšení auditu služby AD FS ve Windows Serveru 2016](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016).
 
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>Nalezení protokolů auditu služby AD FS
@@ -144,6 +144,8 @@ Poznámka: Ve výchozím nastavení je povolena úroveň Basic. Další informac
 2. Přejděte na Protokoly systému Windows a vyberte **Zabezpečení**.
 3. Na pravé straně klikněte na **Filtrovat aktuální protokoly**.
 4. V části Zdroj události vyberte **Auditování služby AD FS**.
+
+    Stručná [poznámka v nejčastějších dotazech](active-directory-aadconnect-health-faq.md#operations-questions) k protokolům auditu.
 
 ![Protokoly auditu služby AD FS](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 

@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: a4ae31e133cb275a8b795d53e73e0e83bb64b045
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 96cf7409d4fbaa7c9c633ebd5aabbb15f30c9a5c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MySQL ve skupině prostředků Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
@@ -56,11 +56,11 @@ Vrácený kód JSON by měl obsahovat následující:
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-Pokud se nevrátí verze 0.0.4, spuštěním následujícího příkazu rozšíření aktualizujte: 
+Pokud se nevrátí verze 0.0.5, spuštěním následujícího příkazu rozšíření aktualizujte: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

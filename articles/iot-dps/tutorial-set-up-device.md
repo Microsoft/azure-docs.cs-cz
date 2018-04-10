@@ -1,120 +1,169 @@
 ---
-title: "Nastavit zařízení do služby Azure IoT Hub zařízení zřizování | Microsoft Docs"
-description: "Nastavení zařízení a zajišťují prostřednictvím zřizování služby zařízení IoT Hub během zařízení výrobní proces"
+title: Nastavení zařízení pro službu Azure IoT Hub Device Provisioning
+description: Nastavení zařízení pro zřízení prostřednictvím služby IoT Hub Device Provisioning během procesu výroby zařízení
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 835a54f147b9ea543df21e7dfeb226ac42aceda3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
-ms.translationtype: MT
+ms.openlocfilehash: c885e4d5d747d913eaf0b7137b240950e920e7ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení ke zřízení pomocí služby Azure IoT Hub zařízení zřizování Service
+# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning
 
-V tomto kurzu předchozí jste zjistili, jak nastavit služby Azure IoT Hub zařízení zřizování Service pro automatické zřizování zařízení do služby IoT hub. Tento kurz obsahuje pokyny pro nastavení zařízení během procesu výroby tak, že nakonfigurujete službu zřizování zařízení pro vaše zařízení na základě jeho [modulu hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security), a zařízení připojení k službě zřizování zařízení, když ji spustí poprvé. Tento kurz popisuje procesy:
+V předchozím kurzu jste zjistili, jak ve službě Azure IoT Hub Device Provisioning nastavit automatické zřizování vašich zařízení pro centrum IoT. V tomto kurzu se dozvíte, jak nastavit své zařízení během výrobního procesu a umožnit tak jeho automatické zřízení pomocí služby IoT Hub. Vaše zařízení se zřídí na základě [mechanismu ověřování](concepts-device.md#attestation-mechanism) po prvním spuštění a připojení ke zřizovací službě. Tento kurz popisuje následující procesy:
 
 > [!div class="checklist"]
-> * Vyberte modul hardwarového zabezpečení.
-> * Sestavení pro vybraný modul hardwarového zabezpečení zařízení zřizování Client SDK
-> * Extrahování artefakty zabezpečení
-> * Nastavení konfigurace služby zřizování zařízení na zařízení
+> * Sestavení klientské sady SDK služby Device Provisioning specifické pro platformu
+> * Extrahování artefaktů zabezpečení
+> * Vytvoření softwaru pro registraci zařízení
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat, vytvořte instanci služby zřizování zařízení a služby IoT hub, postupujte podle pokynů uvedených v tomto kurzu [nastavení cloudu pro zřizování zařízení](./tutorial-set-up-cloud.md).
+Než budete pokračovat, vytvořte si instanci služby Device Provisioning a centrum IoT podle pokynů v předchozím kurzu [1 – Nastavení cloudových prostředků](./tutorial-set-up-cloud.md).
 
+V tomto kurzu se používá [úložiště sad SDK a knihoven Azure IoT pro C](https://github.com/Azure/azure-iot-sdk-c), které obsahuje klientskou sadu SDK služby Device Provisioning pro C. Tato sada SDK aktuálně poskytuje podporu TPM a X.509 pro zařízení využívající implementace Windows nebo Linuxu. Tento kurz je založený na použití vývojového klienta pro Windows, který také předpokládá základní znalost sady Visual Studio 2017. 
 
-## <a name="select-a-hardware-security-module"></a>Vyberte modul hardwarového zabezpečení.
+Pokud neznáte proces automatického zřizování, nezapomeňte si přečíst o [konceptech automatického zřizování](concepts-auto-provisioning.md), než budete pokračovat. 
 
-[Klienta zařízení zřizování služby SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) poskytuje podporu pro dva typy modulů hardwarového zabezpečení (nebo moduly hardwarového zabezpečení): 
+## <a name="build-a-platform-specific-version-of-the-sdk"></a>Sestavení specifické verze sady SDK pro platformu
 
-- [Trusted Platform Module (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module).
-    - Čip TPM je navázáno standard pro většinu platforem zařízení se systémem Windows, jakož i několik Linux/Ubuntu na základě zařízení. Jako výrobce zařízení můžete tento modul hardwarového zabezpečení, pokud máte buď tyto operační systémy běžící na vašem zařízení, a pokud hledáte zavedených standard pro moduly hardwarového zabezpečení. S čipy TPM můžete registrovat pouze každé zařízení jednotlivě, abyste službu zřizování zařízení. Pro účely vývoje můžete použít simulátoru TPM na vývojovém počítači Windows nebo Linux.
+Klientská sada SDK služby Device Provisioning pomáhá implementovat software pro registraci zařízení. Před jejím použitím však musíte sestavit specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš mechanismus ověřování. V tomto kurzu sestavíte sadu SDK využívající sadu Visual Studio 2017 na vývojové platformě Windows pro podporovaný typ ověřování:
 
-- [X.509](https://cryptography.io/en/latest/x509/) na základě moduly hardwarového zabezpečení. 
-    - X.509 moduly hromadného zabezpečení jsou relativně novější čipy s pracovní aktuálně stavu zpracování v rámci Microsoftu nepokojů nebo ROZČLENĚNÍ čipy, které implementují třídu certifikáty X.509. S čipy X.509, můžete provést hromadné registrace na portálu. Podporuje také některé jiné - operační systémy jako embedOS. Za účelem vývoj klienta zařízení zřizování služby SDK podporuje simulátor zařízení X.509. 
+1. Nainstalujte požadované nástroje a naklonujte úložiště GitHub, které obsahuje sadu SDK služby Device Provisioning pro C:
 
-Jako výrobce zařízení je nutné vybrat hardwaru zabezpečení moduly nebo čipy založená na některý z výše uvedených typů. Jiné typy moduly hardwarového zabezpečení, se v klientovi služby zřizování zařízení SDK aktuálně nepodporují.   
+   a. Ujistěte se, že na svém počítači máte nainstalovanou sadu Visual Studio 2015 nebo [Visual Studio 2017](https://www.visualstudio.com/vs/). Pro vaši instalaci sady Visual Studio musíte mít povolenou sadu funkcí [Vývoj desktopových aplikací pomocí C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/).
 
+   b. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/). Je důležité, aby sada Visual Studio se sadou funkcí Vývoj desktopových aplikací pomocí C++ byla na vašem počítači nainstalovaná ještě **před** zahájením instalace CMake.
 
-## <a name="build-device-provisioning-client-sdk-for-the-selected-hsm"></a>Sestavení pro vybraný modul hardwarového zabezpečení zařízení zřizování Client SDK
+   c. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git`, včetně **Git Bash**, prostředí Bash v příkazovém řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-SDK klienta služby pro zřizování zařízení pomůže implementovat vybrané bezpečnostní mechanismus v softwaru. Následující kroky ukazují, jak pomocí sady SDK pro vybrané čip modulu hardwarového zabezpečení:
+   d. Otevřete Git Bash a naklonujte úložiště sad SDK a knihoven Azure IoT pro C. Dokončení příkazu clone může trvat několik minut, protože stahuje také několik závislých dílčích modulů:
+    
+   ```cmd/sh
+   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+   ```
 
-1. Pokud jste postupovali podle [rychlý start pro vytvoření simulovaného zařízení](./quick-create-simulated-device.md), mají nastavení průvodce je připraven vytvořit sadu SDK. Pokud ne, postupujte podle kroků první čtyři z části s názvem [Příprava vývojového prostředí](./quick-create-simulated-device.md#setupdevbox). Tyto kroky naklonujte úložiště GitHub pro SDK klienta služby pro zřizování zařízení a také nainstalovat `cmake` nástrojem sestavení. 
+   e. V nově vytvořeném podadresáři úložiště vytvořte nový podadresář `cmake`:
 
-1. Sestavení sady SDK pro typ modulu hardwarového zabezpečení, které jste vybrali pro vaše zařízení pomocí jedné z následujících příkazů na příkazovém řádku:
-    - Pro zařízení s TPM:
+   ```cmd/sh
+   mkdir azure-iot-sdk-c/cmake
+   ``` 
+
+2. V příkazovém řádku Git Bash přejděte do podadresáře `cmake` úložiště azure-iot-sdk-c:
+
+   ```cmd/sh
+   cd azure-iot-sdk-c/cmake
+   ```
+
+3. Sestavte sadu SDK pro svou vývojovou platformu a některý z podporovaných mechanismů ověřování pomocí některého z následujících příkazů (všimněte si také dvou znaků tečky na konci). Po dokončení CMake vytvoří podadresář `/cmake` s obsahem specifickým pro vaše zařízení:
+    - Zařízení, která k ověřování používají certifikát fyzického zařízení TPM/HSM nebo simulovaného zařízení X.509:
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - Pro TPM simulátoru:
+    - Zařízení, která k ověřování používají simulátor TPM:
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
         ```
 
-    - Pro zařízení X.509 a simulátoru:
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON ..
-        ```
-
-1. Sada SDK poskytuje výchozí podporu pro zařízení se systémem Windows nebo Ubuntu implementace čip TPM a X.509 moduly hardwarového zabezpečení. Tyto podporované moduly hardwarového zabezpečení, přejděte k části s názvem [extrahovat artefakty zabezpečení](#extractsecurity) níže. 
+Teď jste připraveni pomocí sady SDK sestavit kód pro registraci vašeho zařízení. 
  
-## <a name="support-custom-tpm-and-x509-devices"></a>Podpora vlastních zařízení čip TPM a X.509
+<a id="extractsecurity"></a> 
 
-SDK klienta systému pro zřizování zařízení neposkytuje podporu výchozí pro TPM a X.509 zařízení, která nepoužívají Windows nebo Ubuntu. Pro taková zařízení budete muset psát vlastní kód pro vaše konkrétní čip TPM HSM, jak je znázorněno v následující kroky:
+## <a name="extract-the-security-artifacts"></a>Extrahování artefaktů zabezpečení 
 
-### <a name="develop-your-custom-repository"></a>Vývoj vlastní úložiště
+Dalším krokem je extrakce artefaktů zabezpečení pro mechanismus ověřování, který vaše zařízení používá. 
 
-1. Vytvořte knihovnu pro přístup k vaší HSM. Tento projekt je potřeba vytvořit statickou knihovnu pro SDK zřizování zařízení a využívat.
-1. Vaše knihovna musí implementovat funkce definované v následující soubor hlaviček:. Pro vlastní TPM implementovat funkcí definovaných v [vlastní HSM dokumentu](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api).
-    b. Pro vlastní X.509 implementovat funkcí definovaných v [vlastní HSM dokumentu](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api). 
+### <a name="physical-device"></a>Fyzické zařízení 
 
-### <a name="integrate-with-the-device-provisioning-service-client"></a>Integrovat zařízení zřizování klienta služby
+Pokud jste sestavili sadu SDK tak, aby používala ověřování z fyzického zařízení TPM/HSM:
 
-Jakmile vaše knihovna úspěšně staví na svůj vlastní, můžete přesunout k IoThub C-SDK a odkaz na knihovnu:
+- U zařízení TPM je potřeba určit **Ověřovací klíč**, který mu přiřadil výrobce čipu TPM. Vytvořením hodnoty hash ověřovacího klíče můžete získat jedinečné **ID registrace** pro vaše zařízení TPM.  
 
-1. Zadejte vlastní úložiště HSM GitHub, danou cestu knihovny a jeho název v následujícím příkazu cmake:
-    ```cmd/sh
-    cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=<path_and_name_of_library> <PATH_TO_AZURE_IOT_SDK>
+- U zařízení X.509 je potřeba získat certifikáty vydané pro vaše zařízení – certifikáty koncové entity pro registrace jednotlivých zařízení a kořenové certifikáty pro skupinové registrace zařízení. 
+
+### <a name="simulated-device"></a>Simulované zařízení
+
+Pokud jste sestavili sadu SDK tak, aby používala ověřování z certifikátu simulovaného zařízení TPM nebo X.509:
+
+- Simulované zařízení TPM:
+   1. V samostatném nebo novém příkazovém řádku přejděte do podadresáře `azure-iot-sdk-c` a spusťte simulátor TPM. Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce následujícího rychlého startu. 
+
+      Spuštěním následujícího příkazu v podadresáři `azure-iot-sdk-c` spusťte simulátor:
+
+      ```cmd/sh
+      .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
+      ```
+
+   2. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+
+   3. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. 
+
+   4. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. V okně výstupu se zobrazí **_ID registrace_** a **_Ověřovací klíč_** simulátoru TPM potřebné pro registraci zařízení. Zkopírujte tyto hodnoty pro pozdější použití. Toto okno (s ID registrace a ověřovacím klíčem) můžete zavřít, ale okno simulátoru TPM, které jste spustili v kroku 1, nechte spuštěné.
+
+- Simulované zařízení X.509:
+  1. Pomocí sady Visual Studio otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho pomocí příkazu Sestavit řešení v nabídce Sestavení.
+
+  2. V podokně *Průzkumník řešení* v sadě Visual Studio přejděte do složky **Provision\_Tools**. Klikněte pravým tlačítkem na projekt **dice\_device\_enrollment** a vyberte **Nastavit jako spouštěný projekt**. 
+  
+  3. Spusťte řešení pomocí některého z příkazů Spustit v nabídce Ladění. Po zobrazení výzvy zadejte v okně Výstup **i** pro jednotlivou registraci. V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 pro vaše simulované zařízení. Zkopírujte do schránky výstup začínající na *-----BEGIN CERTIFICATE-----* a končící na první řádek *-----END CERTIFICATE-----* a ujistěte se, že kopírujete i oba tyto řádky. Pamatujte, že z okna Výstup potřebujete pouze první certifikát.
+ 
+  4. Vytvořte soubor **_X509testcert.pem_**, otevřete ho v libovolném textovém editoru a zkopírujte do něj obsah schránky. Soubor uložte, protože ho použijete později k registraci zařízení. Software pro registraci po spuštění používá stejný certifikát jako při automatickém zřizování.    
+
+Tyto artefakty zabezpečení jsou potřeba při registraci vašeho zařízení do služby Device Provisioning. Zřizovací služba počká na budoucí spuštění a připojení zařízení. Při prvním spuštění zařízení logika klientské sady SDK ve spolupráci s čipem (nebo simulátorem) extrahuje ze zařízení artefakty zabezpečení a ověří registraci ve službě Device Provisioning. 
+
+## <a name="create-the-device-registration-software"></a>Vytvoření softwaru pro registraci zařízení
+
+Posledním krokem je napsat registrační aplikaci, která pomocí klientské sady SDK služby Device Provisioning zaregistruje zařízení ve službě IoT Hub. 
+
+> [!NOTE]
+> V tomto kroku budeme předpokládat použití simulovaného zařízení a spuštění ukázkové registrační aplikace sady SDK na vaší pracovní stanici. Stejné koncepty však platí i v případě, že vytváříte registrační aplikaci pro nasazení na fyzické zařízení. 
+
+1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning a zkopírujte hodnotu **_Rozsah ID_**. *Rozsah ID* je generovaný službou a zaručuje jedinečnost. Je neměnný a slouží k jednoznačné identifikaci ID registrací.
+
+    ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+
+2. V *Průzkumníku řešení* sady Visual Studio na vašem počítači přejděte do složky **Provision\_Samples**. Vyberte ukázkový projekt **prov\_dev\_client\_sample** a otevřete zdrojový soubor **prov\_dev\_client\_sample.c**.
+
+3. Přiřaďte hodnotu _Rozsah ID_, kterou jste získali v kroku 1, do proměnné `id_scope` (odeberte levou `[` a pravou `]` závorku): 
+
+    ```c
+    static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+    static const char* id_scope = "[ID Scope]";
     ```
-   
-1. Otevřete v sadě visual studio SDK a sestavte jej. 
 
-    - Proces sestavení zkompiluje knihovny sady SDK.
-    - Sada SDK se pokusí o propojení pro vlastní modul hardwarového zabezpečení definované v příkazu cmake.
+    Pro srovnání vidíte proměnnou `global_prov_uri`, která umožňuje rozhraní API `IoTHubClient_LL_CreateFromDeviceAuth` pro registraci klienta služby IoT Hub připojit se k vyhrazené instanci služby Device Provisioning.
 
-1. Spustit `\azure-iot-sdk-c\provisioning_client\samples\prov_dev_client_ll_sample\prov_dev_client_ll_sample.c` Ukázka ověření, pokud vaše modulu hardwarového zabezpečení je implementovaná správně.
+4. Ve funkci **main()** ve stejném souboru přidejte nebo zrušte komentář u proměnné `hsm_type` odpovídající mechanismu ověřování, který používá váš software pro registraci zařízení (TPM nebo X.509): 
 
-<a id="extractsecurity"></a>
-## <a name="extract-the-security-artifacts"></a>Extrahování artefakty zabezpečení
+    ```c
+    hsm_type = SECURE_DEVICE_TYPE_TPM;
+    //hsm_type = SECURE_DEVICE_TYPE_X509;
+    ```
 
-Dalším krokem je pro extrahování artefakty zabezpečení modulu hardwarového zabezpečení na vašem zařízení.
+5. Uložte provedené změny a znovu sestavte ukázku **prov\_dev\_client\_sample** výběrem možnosti Sestavit řešení v nabídce Sestavení. 
 
-1. U zařízení, TPM, budete muset zjistit **ověřovací klíč** přidružené od výrobce čipu TPM. Můžete odvodit jedinečný **ID registrace** pro vaše zařízení TPM rozdělováním ověřovacího klíče. 
-2. Pro zařízení se systémem X.509 musíte získat certifikáty vydané na vašem zařízení - certifikáty pro koncové entity pro registraci jednotlivých zařízení při kořenové certifikáty pro skupiny registrace zařízení.
+6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** ve složce **Provision\_Samples** a vyberte **Nastavit jako spouštěný projekt**. Ukázkovou aplikaci ještě NESPOUŠTĚJTE.
 
-Tyto artefakty zabezpečení vyžadovaných pro registraci zařízení ke službě zřizování zařízení. Zřizování služby potom počká, než pro některý z těchto zařízení, aby spouštěcí a připojte se k němu kdykoli později v čase. V tématu [jak spravovat registrace zařízení](how-to-manage-enrollments.md) informace o tom, jak pomocí těchto artefaktů zabezpečení můžete vytvořit registrace. 
+> [!IMPORTANT]
+> Zařízení ještě nepouštějte. Proces musíte nejprve dokončit registrací zařízení ve službě Device Provisioning, a teprve pak můžete zařízení spustit. V části Další kroky níže najdete odkaz na další článek.
 
-Když se zařízení spustí poprvé, klient SDK komunikuje s vaší čip TPM k extrakci artefakty zabezpečení ze zařízení a ověřuje registraci služby zřizování zařízení. 
+### <a name="sdk-apis-used-during-registration-for-reference-only"></a>Rozhraní API sady SDK použité během registrace (pouze pro srovnání)
 
-
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>Nastavení konfigurace služby zřizování zařízení na zařízení
-
-Poslední krok v zařízení výrobní proces je psát aplikace, které používá služba zřizování zařízení klienta SDK k registraci zařízení se službou. Tato sada SDK obsahuje následující rozhraní API pro vaše aplikace používat:
+Sada SDK pro srovnání poskytuje následující rozhraní API, která může vaše aplikace během registrace použít. Tato rozhraní API pomáhají zařízení s připojením ke službě Device Provisioning a registrací v ní, jakmile se spustí. Vaše zařízení pak získá informace potřebné k navázání připojení k vaší instanci služby IoT Hub:
 
 ```C
-// Creates a Provisioning Client for communications with the Device Provisioning Client Service
+// Creates a Provisioning Client for communications with the Device Provisioning Client Service.  
 PROV_DEVICE_LL_HANDLE Prov_Device_LL_Create(const char* uri, const char* scope_id, PROV_DEVICE_TRANSPORT_PROVIDER_FUNCTION protocol)
 
 // Disposes of resources allocated by the provisioning Client.
@@ -130,70 +179,25 @@ void Prov_Device_LL_DoWork(PROV_DEVICE_LL_HANDLE handle)
 PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const char* optionName, const void* value)
 ```
 
-Mějte na paměti, k chybě při inicializaci proměnné `uri` a `id_scope` jak je uvedeno v [simulovat první pořadí spouštění pro části zařízení této úvodní](./quick-create-simulated-device.md#firstbootsequence), než je použijete. Registrace zařízení zřizování klienta rozhraní API `Prov_Device_LL_Create` připojí ke službě globální zřizování zařízení. *ID oboru* je vygenerované službou a zaručí jedinečnosti. Je neměnné a slouží k jednoznačné identifikaci ID registrace. `iothub_uri` Umožňuje registraci klienta služby IoT Hub rozhraní API `IoTHubClient_LL_CreateFromDeviceAuth` připojit ke správné služby IoT hub. 
-
-
-Tato rozhraní API pomoci zařízení pro připojení a registrace pomocí služby zřizování zařízení, když ji spustí, získat informace o službě IoT hub a připojte se k němu. Soubor `provisioning_client/samples/prov_client_ll_sample/prov_client_ll_sample.c` ukazuje, jak použijte tato rozhraní API. Obecně platí musíte vytvořit následující rozhraní pro registrace klienta:
-
-```C
-static const char* global_uri = "global.azure-devices-provisioning.net";
-static const char* id_scope = "[ID scope for your provisioning service]";
-...
-static void register_callback(DPS_RESULT register_result, const char* iothub_uri, const char* device_id, void* context)
-{
-    USER_DEFINED_INFO* user_info = (USER_DEFINED_INFO *)user_context;
-    ...
-    user_info. reg_complete = 1;
-}
-static void registation_status(DPS_REGISTRATION_STATUS reg_status, void* user_context)
-{
-}
-int main()
-{
-    ...
-    SECURE_DEVICE_TYPE hsm_type;
-    hsm_type = SECURE_DEVICE_TYPE_TPM;
-    //hsm_type = SECURE_DEVICE_TYPE_X509;
-    prov_dev_security_init(hsm_type); // initialize your HSM 
-
-    prov_transport = Prov_Device_HTTP_Protocol;
-    
-    PROV_CLIENT_LL_HANDLE handle = Prov_Device_LL_Create(global_uri, id_scope, prov_transport); // Create your provisioning client
-
-    if (Prov_Client_LL_Register_Device(handle, register_callback, &user_info, register_status, &user_info) == IOTHUB_DPS_OK) {
-        do {
-        // The register_callback is called when registration is complete or fails
-            Prov_Client_LL_DoWork(handle);
-        } while (user_info.reg_complete == 0);
-    }
-    Prov_Client_LL_Destroy(handle); // Clean up the Provisioning client
-    ...
-    iothub_client = IoTHubClient_LL_CreateFromDeviceAuth(user_info.iothub_uri, user_info.device_id, transport); // Create your IoT hub client and connect to your hub
-    ...
-}
-```
-
-Služba zřizování zařízení klientské registrace aplikace pomocí simulovaného zařízení na první pohled pomocí instalačního programu testovací služby může Upřesnit. Jakmile aplikace funguje v testovacím prostředí, můžete vytvářet pro konkrétní zařízení a zkopírujte spustitelný soubor do bitové kopie zařízení. Nespouštět zařízení, ale budete muset [registraci zařízení se službou zřizování zařízení](./tutorial-provision-device-to-hub.md#enrolldevice) před zahájením zařízení. Najdete v části Další kroky a zjistěte, tento proces. 
+Můžete také zjistit, že potřebujete svou aplikaci pro registraci klienta služby Device Provisioning upřesnit, nejprve pomocí simulovaného zařízení a pak pomocí nastavení testovací služby. Jakmile bude aplikace fungovat v testovacím prostředí, můžete ji sestavit pro své konkrétní zařízení a zkopírovat spustitelný soubor do image vašeho zařízení. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto okamžiku jste může nastavili služby zřizování zařízení a služby IoT Hub v portálu. Pokud chcete abandon zařízení zřizování instalační program, nebo zpoždění pomocí kteréhokoli z těchto služeb, doporučujeme je vypíná účtovány zbytečných nákladů.
+V tuto chvíli pravděpodobně máte na portálu spuštěné služby Device Provisioning a IoT Hub. Pokud chcete přerušit nastavování zřizování zařízení nebo chcete tuto sérii kurzů dokončit později, doporučujeme tyto služby vypnout, aby se vám neúčtovaly zbytečné poplatky.
 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
-1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
-
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vyberte modul hardwarového zabezpečení.
-> * Sestavení pro vybraný modul hardwarového zabezpečení zařízení zřizování Client SDK
-> * Extrahování artefakty zabezpečení
-> * Nastavení konfigurace služby zřizování zařízení na zařízení
+> * Sestavení klientské sady SDK služby Device Provisioning specifické pro platformu
+> * Extrahování artefaktů zabezpečení
+> * Vytvoření softwaru pro registraci zařízení
 
-Přechodu na v dalším kurzu se dozvíte, jak zřídit zařízení do služby IoT hub tak, že zaregistrujete ve službě Azure IoT Hub zařízení zřizování pro automatické zřizování.
+V dalším kurzu se dozvíte, jak zřídit zařízení pro vaše centrum IoT prostřednictvím jeho registrace do služby Azure IoT Hub Device Provisioning pro účely automatického zřízení.
 
 > [!div class="nextstepaction"]
-> [Zřízení zařízení do služby IoT hub](tutorial-provision-device-to-hub.md)
+> [Zřízení zařízení pro centrum IoT](tutorial-provision-device-to-hub.md)
 

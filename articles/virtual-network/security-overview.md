@@ -1,12 +1,12 @@
 ---
-title: "Přehled zabezpečení sítě Azure | Dokumentace Microsoftu"
-description: "Seznamte se s možnostmi zabezpečení pro řízení toku síťového provozu mezi prostředky Azure."
+title: Přehled zabezpečení sítě Azure | Dokumentace Microsoftu
+description: Seznamte se s možnostmi zabezpečení pro řízení toku síťového provozu mezi prostředky Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="network-security"></a>Zabezpečení sítě
 
@@ -117,7 +117,7 @@ Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pra
  Značka služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou ve značce zahrnuté. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Pro použití v definici pravidla zabezpečení jsou k dispozici následující značky služeb. Jejich názvy se mírně liší mezi [modely nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** v případě klasického modelu): Tato značka zahrnuje adresní prostor virtuální sítě (všechny rozsahy CIDR definované pro virtuální síť), všechny připojené místní adresní prostory a [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [IP adresu datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), kde mají původ testy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [IP adresu datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
 * **Internet** (Resource Manager) (**INTERNET** v případě klasického modelu): Tato značka označuje adresní prostor IP adres, který se nachází mimo virtuální síť a je dostupný prostřednictvím veřejného internetu. Rozsah adres zahrnuje [veřejný adresní prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 * **AzureTrafficManager** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres sondy pro Azure Traffic Manager. Další informace o IP adresách sondy pro Traffic Manager najdete v tématu [Azure Traffic Manager – nejčastější dotazy](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-faqs).
 * **Storage** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete povolit přístup k úložišti pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure Storage v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage.
@@ -141,7 +141,7 @@ Pokud jste vytvořili jiná pravidla a jako cíl jste zadali jiné skupiny zabez
  
 Další informace o omezeních při vytváření skupin zabezpečení aplikací a jejich zadávání v pravidlech zabezpečení najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Skupiny zabezpečení aplikací jsou dostupné ve verzi Preview. Funkce ve verzi Preview nedosahují stejné úrovně dostupnosti a spolehlivosti jako služby v obecné verzi. Před použitím skupin zabezpečení aplikací je potřeba se nejdřív zaregistrovat k jejich použití dokončením kroků 1–5 v částech tématu [Vytvoření skupiny zabezpečení sítě s použitím skupin zabezpečení aplikací](create-network-security-group-preview.md) věnovaných Azure nebo PowerShellu. Pro skupiny zabezpečení aplikací platí následující omezení:
+Pro skupiny zabezpečení aplikací platí následující omezení:
 
 -   Všechna síťová rozhraní v rámci skupiny zabezpečení aplikace musí existovat ve stejné virtuální síti. Do stejné skupiny zabezpečení aplikace nemůžete přidat síťová rozhraní z různých virtuálních sítí. Virtuální síť, ve které je první síťové rozhraní přiřazené ke skupině zabezpečení aplikace, definuje, ve které virtuální síti musí existovat všechna další přiřazená síťová rozhraní.
 - Pokud zadáte skupiny zabezpečení aplikací jako zdroj a cíl v pravidle zabezpečení, síťová rozhraní v obou skupinách zabezpečení aplikací musí existovat ve stejné virtuální síti. Kdyby například skupina ASG1 obsahovala síťová rozhraní z virtuální sítě VNet1 a skupina ASG2 obsahovala síťová rozhraní z virtuální sítě VNet2, nemohli byste v pravidle přiřadit skupinu ASG1 jako zdroj a skupinu ASG2 jako cíl, ale všechna síťová rozhraní by musela existovat ve virtuální síti VNet1.
@@ -165,5 +165,4 @@ Skupiny zabezpečení aplikací jsou dostupné ve verzi Preview. Funkce ve verzi
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokončení kurzu [Vytvoření skupiny zabezpečení sítě](virtual-networks-create-nsg-arm-pportal.md)
-* Dokončení kurzu [Vytvoření skupiny zabezpečení sítě s použitím skupin zabezpečení aplikací](create-network-security-group-preview.md)
+* Zjistěte, jak [vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).

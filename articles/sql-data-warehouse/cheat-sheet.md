@@ -1,141 +1,136 @@
 ---
-title: "Tahák pro Azure SQL Data Warehouse | Microsoft Docs"
-description: "Najděte odkazy a osvědčené postupy pro rychle vytvářet řešení Azure SQL Data Warehouse."
+title: Tahák pro službu Azure SQL Data Warehouse | Microsoft Docs
+description: Tady najdete odkazy a osvědčené postupy, které vám pomůžou s rychlým vytvářením řešení Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: 
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
+ms.topic: overview
+ms.component: design
+ms.date: 03/28/2018
 ms.author: acomet
-ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
-ms.translationtype: MT
+ms.reviewer: mausher,igorstan,jrj
+ms.openlocfilehash: 1e09dc2f3c7e7aa4ae98ef98a8957454a1beee6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro Azure SQL Data Warehouse
-Chcete-li list podvést poskytuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Před zahájením práce, další informace o jednotlivých kroků podrobně načtením [vzory úlohy Azure SQL Data Warehouse a proti vzory](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), která vysvětluje, co je SQL Data Warehouse a co není.
+# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
+Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
 
 Následující obrázek znázorňuje proces návrhu datového skladu:
 
-![Nákresu]
+![Nákres]
 
-## <a name="queries-and-operations-across-tables"></a>Dotazy a operace mezi tabulkami
+## <a name="queries-and-operations-across-tables"></a>Dotazy a operace napříč tabulkami
 
-Pokud znáte předem primární operace a dotazy ke spuštění v datovém skladu, můžete změnit prioritu vaší Architektura datového skladu pro tyto operace. Tyto dotazy a operace mohou zahrnovat:
-* Propojení s tabulek dimenzí, filtrování kombinované tabulky a pak výsledky připojit do datového tržiště jedno nebo dvě tabulky faktů.
-* Provádění aktualizací do prodeje fakt velký či malý.
-* Připojení k vaší tabulky jenom data.
+Pokud předem znáte hlavní operace a dotazy, které se ve vašem datovém skladu budou spouštět, můžete nastavit priority architektury datového skladu pro tyto operace. Mezi tyto dotazy a operace můžou patřit:
+* Propojení jedné nebo dvou tabulek faktů s tabulkami dimenzí, filtrování zkombinované tabulky a následné připojení výsledků do datového tržiště.
+* Provádění velkých nebo malých aktualizací tabulek faktů.
+* Připojení pouze dat k tabulkám.
 
-Znalost typy operací v předstihu vám pomůže optimalizovat návrh vaší tabulek.
+Znalost typů operací předem vám pomůže optimalizovat návrh tabulek.
 
 ## <a name="data-migration"></a>Migrace dat
 
-Nejdřív načíst data do [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) nebo úložiště objektů Blob v Azure. Potom pomocí funkce PolyBase načteme data do SQL Data Warehouse v pracovní tabulce. Použijte následující konfiguraci:
+Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) nebo úložiště objektů blob v Azure. Pak pomocí PolyBase načtěte svá data do pracovní tabulky ve službě SQL Data Warehouse. Použijte následující konfiguraci:
 
 | Návrh | Doporučení |
 |:--- |:--- |
 | Distribuce | Kruhové dotazování. |
-| Indexování | Haldy |
-| Dělení | Žádné |
+| Indexování | Halda |
+| Dělení | Žádný |
 | Třída prostředku | largerc nebo xlargerc |
 
-Další informace o [migrace dat], [načítání dat]a [proces extrakce, načítání a transformace ELT ()](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Další informace o [migraci dat], [načítání dat] a [procesu extrakce, načítání a transformace (ELT)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
 
 ## <a name="distributed-or-replicated-tables"></a>Distribuované nebo replikované tabulky
 
-Pomocí následujících strategií, v závislosti na její vlastnosti:
+Použijte následující strategie v závislosti na vlastnostech tabulek:
 
-| Typ | Skvělé vyhovovat...| Sledujte if...|
+| Typ | Skvěle se hodí pro...| Na co si dát pozor|
 |:--- |:--- |:--- |
-| Replikovat | • Tabulky malé dimenzí v hvězdicového schématu s menší než 2 GB úložiště po kompresi (komprese ~ 5 x) |• Mnoho zapisují transakce jsou v tabulce (například vložení, upsert, odstranění, aktualizace)<br></br>• Změňte zřizování často datového skladu jednotky (DWU)<br></br>• Používáte pouze sloupce 2 – 3 ale vaše tabulka má mnoho sloupců<br></br>• Indexu replikované tabulky |
-| Kruhové dotazování (výchozí) | • Dočasných nebo pracovní tabulka<br></br> • Žádné zřejmé připojení sloupec klíče nebo dobrý candidate |• Výkon je pomalý z důvodu přesunu dat. |
-| Hash | Tabulky faktů •<br></br>• Velké dimenze tabulky |• Distribučního klíče nelze aktualizovat. |
+| Replikované | • Malé tabulky dimenzí v hvězdicovém schématu s úložištěm menším než 2 GB po kompresi (přibližně 5násobná komprese) |• V tabulce se provádí velké množství transakcí zápisu (například vložení, operace upsert, odstranění, aktualizace).<br></br>• Často měníte zřizování jednotek datového skladu (DWU).<br></br>• Vaše tabulka obsahuje mnoho sloupců, ale používáte pouze 2 až 3 sloupce.<br></br>• Indexujete replikovanou tabulku. |
+| Kruhové dotazování (výchozí) | • Dočasná nebo pracovní tabulka<br></br> • Žádný zřejmý připojovací klíč ani vhodný sloupec |• Nízký výkon kvůli přesunům dat |
+| Hodnota hash | • Tabulky faktů<br></br>• Velké tabulky dimenzí |• Distribuční klíč není možné aktualizovat. |
 
-**Tipy pro:**
-* Spustit s kruhové dotazování, ale aspire na strategii hash distribuce využívat výhod masivně paralelní architektura.
-* Ujistěte se, že společné klíče hash mají stejný formát data.
-* Nemáte distribuovat na varchar formátu.
-* Tabulky dimenzí pomocí běžných hash klíče do tabulky faktů s operací spojování časté lze distribuovat algoritmu hash.
-* Použití  *[sys.dm_pdw_nodes_db_partition_stats]*  k analýze všechny hodnoty v datech.
-* Použití  *[sys.dm_pdw_request_steps]*  k analýze dat pohybů za dotazy, monitorovat čas vysílání a náhodně operací trvat. To je užitečné zkontrolovat strategie distribuce.
+**Tipy:**
+* Začněte strategií kruhového dotazování, ale usilujte o strategii distribuce hodnot hash, abyste mohli využít výkonnou paralelní architekturu.
+* Ujistěte se, že společné klíče hash mají stejný formát dat.
+* Neprovádějte distribuci podle formátu varchar.
+* U tabulek dimenzí se společným klíčem hash jako tabulka faktů s častými operacemi spojení je možné provádět distribuci hodnot hash.
+* Pomocí *[sys.dm_pdw_nodes_db_partition_stats]* můžete analyzovat případné zkreslení dat.
+* Pomocí *[sys.dm_pdw_request_steps]* můžete analyzovat přesuny dat vyvolané dotazy, monitorovat všesměrové vysílání času a prohazování prováděné operacemi. To je užitečné při kontrole distribuční strategie.
 
-Další informace o [replikovaných tabulek] a [distribuované tabulky].
+Další informace o [replikovaných tabulkách] a [distribuovaných tabulkách].
 
-## <a name="index-your-table"></a>Index tabulky
+## <a name="index-your-table"></a>Indexování tabulky
 
-Indexování je užitečné pro rychlé čtení tabulky. Je jedinečnou sadu technologií, které můžete použít na základě potřeb:
+Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sada technologií, které můžete použít podle svých potřeb:
 
-| Typ | Skvělé vyhovovat... | Sledujte if...|
+| Typ | Skvěle se hodí pro... | Na co si dát pozor|
 |:--- |:--- |:--- |
-| Haldy | • Pracovní nebo dočasné tabulky<br></br>• Malé tabulky s malé hledání |• Žádné vyhledávání kontrol plném tabulka |
-| Clusterovaný index | • Tabulky s až 100 milionu řádků<br></br>• Velké tabulky (více než 100 miliónů řádky) s výraznou použít jenom na 1 – 2 sloupce |• Použít na replikované tabulky<br></br>• Máte komplexní dotazy zahrnující více připojení a Group By operace<br></br>• Proveďte aktualizace na indexovaného sloupce: trvá paměti |
-| Clusterovaný index columnstore (KÚS) (výchozí) | • Velké tabulky (více než 100 miliónů řádky) | • Použít na replikované tabulky<br></br>•, Které provedete masivní aktualizovat operací na tabulku<br></br>• Overpartition tabulku: skupiny řádků napříč uzly jiný distribuční a oddíly, které nezahrnují. |
+| Halda | • Pracovní nebo dočasná tabulka<br></br>• Malé tabulky s malým počtem hledání |• Každé hledání prochází celou tabulku. |
+| Clusterovaný index | • Tabulky obsahující až 100 milionů řádků<br></br>• Velké tabulky (více než 100 milionů řádků) obsahující pouze 1 až 2 často používané sloupce |• Používá se u replikované tabulky.<br></br>• Máte složité dotazy zahrnující několik operací spojení a seskupení.<br></br>• Provádíte aktualizace indexovaných sloupců, což zabírá paměť. |
+| Clusterovaný index columnstore (CCI) (výchozí) | • Velké tabulky (více než 100 milionů řádků) | • Používá se u replikované tabulky.<br></br>• Provádíte rozsáhlé operace aktualizace tabulky.<br></br>• Vytvoříte pro tabulku příliš mnoho oddílů a skupiny řádků nebudou pokrývat různé distribuční uzly a oddíly. |
 
-**Tipy pro:**
-* Nad clusterovaný index můžete přidat do sloupce výraznou použitých pro filtrování neclusterovaný index. 
-* Dávejte pozor, jak spravovat paměti v tabulce s KÚS. Při načítání dat, budete chtít uživatele (nebo dotaz) těžit z třídy velké prostředku. Ujistěte se, že vyhnout ořezávání a vytváření skupin mnoho malých komprimované řádků.
-* Optimalizovaná pro výpočetní vrstvě skály s KÚS.
-* Pro KÚS může dojít, pomalý výkon z důvodu nízký komprese vaší skupiny řádků. Pokud k tomu dojde, znovu sestavit nebo reorganizovat vaší KÚS. Chcete nejméně 100 000 řádků na jeden skupiny komprimované řádků. Ideální je 1 milionu řádků v skupiny řádků.
-* Na základě frekvence přírůstkových zatížení a velikosti, chcete automatizovat při reorganizovat nebo opětovné sestavení indexů. Čištění pružiny je vždy užitečné.
-* Být strategické Pokud chcete trim skupiny řádků. Jak velká se o skupiny, otevřete řádek? Množství dat, které očekáváte načíst v následujících dnech?
+**Tipy:**
+* Kromě clusterovaného indexu můžete chtít přidat neclusterovaný index pro sloupec, který se často používá k filtrování. 
+* Při správě paměti v tabulce s CCI buďte opatrní. Při načítání dat chcete, aby uživatel (nebo dotaz) využíval výhod velké třídy prostředků. Nezapomeňte se vyhnout ořezávání a vytváření mnoha malých komprimovaných skupin řádků.
+* CCI je vhodný pro úroveň optimalizovanou pro výpočty.
+* U CCI může docházet ke snížení výkonu kvůli špatné kompresi skupin řádků. Pokud k tomu dojde, znovu svůj CCI sestavte nebo ho reorganizujte. Každá komprimovaná skupina řádků by měla obsahovat alespoň 100 000 řádků. Ideálně by skupina řádků měla obsahovat 1 milion řádků.
+* Reorganizaci nebo opětovné sestavení indexů byste měli automatizovat na základě frekvence a velikosti přírůstkového načítání. Jarní úklid je vždy užitečný.
+* Pokud chcete oříznout skupinu řádků, myslete strategicky. Jak velké jsou otevřené skupiny řádků? Kolik dat očekáváte, že se bude v nadcházejících dnech načítat?
 
-Další informace o [indexy].
+Další informace o [indexech].
 
 ## <a name="partitioning"></a>Dělení
-Vaše tabulka může oddílu, když máte velké fakt tabulku (větší než 1 miliardy řádků). V 99 procent případů klíč oddílu by měla být založena na datum. Pečlivě není overpartition, zejména pokud máte clusterovaný index columnstore.
+Pokud máte velkou tabulku faktů (více než 1 miliarda řádků), můžete ji rozdělit do oddílů. V 99 % případů by klíč oddílu měl být založený na datu. Buďte opatrní, abyste nevytvořili příliš mnoho oddílů, zejména pokud máte clusterovaný index columnstore.
 
-S pracovních tabulek, které vyžadují ELT, můžete využívat výhod rozdělení do oddílů. Zařídí dat – Správa životního cyklu.
-Dejte pozor, abyste overpartition vaše data, zejména u clusterovaný index columnstore.
+Výhody dělení můžete využívat u pracovních tabulek, které vyžadují ELT. Usnadňuje to správu životního cyklu dat.
+Buďte opatrní, abyste nevytvořili příliš mnoho oddílů dat, zejména u clusterovaného indexu columnstore.
 
-Další informace o [oddíly].
+Přečtěte si další informace o [oddílech].
 
-## <a name="incremental-load"></a>Přírůstkové zatížení
+## <a name="incremental-load"></a>Přírůstkové načítání
 
-Pokud se chystáte přírůstkově načíst vaše data, nejprve ujistěte se, že přidělíte větší třídy prostředků k načtení dat. Doporučujeme používat pro automatizaci kanály ELT do SQL Data Warehouse PolyBase a ADF V2.
+Pokud se chystáte přírůstkově načítat data, nejprve se ujistěte, že pro načítání dat přidělujete větší třídy prostředků. K automatizaci kanálů ELT do služby SQL Data Warehouse doporučujeme použít PolyBase nebo ADF V2.
 
-Pro velké hromadné aktualizace ve vašich historických dat nejprve odstraňte obavy data. Zkontrolujte příkaz bulk insert nových dat, potom. Tento přístup dvoustupňové je efektivnější.
+V případě velkých dávek aktualizací historických dat nejprve příslušná data odstraňte. Pak proveďte hromadné vložení nových dat. Tento dvoukrokový přístup je efektivnější.
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
- Dokud automaticky statistiky jsou obecně k dispozici, SQL Data Warehouse vyžaduje ruční údržbu statistiky. Je potřeba aktualizovat statistiku jako *významné* změny dojít k datům. To pomáhá Optimalizace plánu dotazu. Pokud zjistíte, že trvá příliš dlouho udržovat všechny vaše statistiky, pečlivě více sloupců, které mají statistiky. 
+ Dokud nebudou obecně dostupné automatické statistky, vyžaduje SQL Data Warehouse ruční údržbu statistik. Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pomáhá to optimalizovat plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít. 
 
-Můžete také definovat frekvence aktualizace. Například můžete chtít aktualizovat sloupců s kalendářními daty, kde může přidat nové hodnoty, na každý den. Získáte tak, že statistiky na sloupce použité ve spojení, sloupce použité v klauzuli WHERE a sloupců v GROUP BY nalezen využívat výhod.
+Můžete také definovat frekvenci aktualizací. Například můžete chtít každý den aktualizovat sloupce s datem, do kterých se můžou přidávat nové hodnoty. Nejvíce výhod získáte tak, že budete mít statistiky pro sloupce používané ve spojeních, sloupce používané v klauzuli WHERE a sloupce používané v příkazu GROUP BY.
 
-Další informace o [statistiky].
+Další informace o [statistikách].
 
 ## <a name="resource-class"></a>Třída prostředků
-SQL Data Warehouse používá skupiny prostředků jako způsob přidělení paměti pro dotazy. Pokud potřebujete více paměti pro zlepšení dotazu nebo načtení rychlost, měli byste přidělit vyšší třídy prostředků. Na straně překlopit pomocí větší třídy prostředků ovlivňuje souběžnosti. Chcete, vzít v úvahu před přesunutím všichni uživatelé na třídu velké prostředků.
+SQL Data Warehouse používá skupiny prostředků jako způsob přidělení paměti pro dotazy. Pokud ke zrychlení dotazů nebo načítání potřebujete více paměti, měli byste přidělit vyšší třídy prostředků. Na druhou stranu, použití větších tříd prostředků má vliv na souběžnost. Na to byste měli brát ohled před přesunem všech vašich uživatelů do větší třídy prostředků.
 
-Pokud si všimnete, že dotazy trvá příliš dlouho, zkontrolujte, že uživatelé se nespustí v třídách velké prostředků. Třídy velké prostředků využívat mnoho sloty souběžnosti. Může dojít k jiné dotazy do fronty.
+Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-Nakonec pomocí vrstvě výpočetní optimalizované dostane každá třída prostředků 2, 5krát větší spotřebu paměti než na vrstvě elastické optimalizované.
+A nakonec, díky použití úrovně optimalizované pro výkon získá každá třída prostředků 2,5× více paměti než na úrovni optimalizované pro elasticitu.
 
-Další informace o tom, jak pracovat s [třídy prostředků a souběžnost].
+Další informace o práci s [třídami prostředků a souběžností].
 
-## <a name="lower-your-cost"></a>Snížení nákladů na vaše
-Klíčovou funkcí SQL Data Warehouse je schopnost [spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Je možné pozastavit datový sklad když nepoužíváte, která zastaví fakturaci výpočetní prostředky. Je možné škálovat materiály, které splňují vaše požadavky na výkon. Chcete-li pozastavit, použijte [portál Azure](pause-and-resume-compute-portal.md) nebo [prostředí PowerShell](pause-and-resume-compute-powershell.md). Pokud chcete použít škálování, použijte [portál Azure](quickstart-scale-compute-portal.md), [prostředí Powershell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md), nebo [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+## <a name="lower-your-cost"></a>Snížení nákladů
+Klíčovou funkcí služby SQL Data Warehouse je schopnost [spravovat výpočetní prostředky](sql-data-warehouse-manage-compute-overview.md). Datový sklad můžete pozastavit, když ho zrovna nepoužíváte, a zastavit tak účtování výpočetních prostředků. Prostředky můžete škálovat s ohledem na své požadavky na výkon. K pozastavení můžete použít [Azure Portal](pause-and-resume-compute-portal.md) nebo [PowerShell](pause-and-resume-compute-powershell.md). Ke škálování můžete použít [Azure Portal](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), jazyk [T-SQL](quickstart-scale-compute-tsql.md) nebo rozhraní [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Škálování teď v době, je vhodné s Azure Functions:
+Automatické škálování teď můžete provádět kdykoli díky Azure Functions:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-## <a name="optimize-your-architecture-for-performance"></a>Optimalizace výkonu vaší architektury
+## <a name="optimize-your-architecture-for-performance"></a>Optimalizace výkonu architektury
 
-Doporučujeme, abyste vzhledem k tomu SQL Database a Azure Analysis Services v architektuře střed a paprsek. Toto řešení může poskytovat zatížení izolaci mezi skupinami jiného uživatele při také pomocí funkce Rozšířené zabezpečení z SQL Database a Azure Analysis Services. Toto je způsob, jak uživatelům poskytnout neomezený souběžnosti.
+Služby SQL Database a Azure Analysis Services doporučujeme zvážit v hvězdicovité architektuře. Toto řešení může zajistit izolaci úloh mezi různými skupinami uživatelů a zároveň využívat pokročilé funkce zabezpečení ve službách SQL Database a Azure Analysis Services. Tímto způsobem můžete uživatelům poskytnout neomezenou souběžnost.
 
-Další informace o [typické architektury, které využívají služby SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Další informace o [typických architekturách, které využívají službu SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Nasaďte jedním kliknutím vaší koncových v databázích SQL z SQL Data Warehouse:
+Nasazujte své paprsky do databází SQL ze služby SQL Data Warehouse jedním kliknutím:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
@@ -143,15 +138,17 @@ Nasaďte jedním kliknutím vaší koncových v databázích SQL z SQL Data Ware
 
 
 <!--Image references-->
-[Nákresu]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
+[Nákres]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
 [načítání dat]:design-elt-data-loading.md
 [deeper guidance]:guidance-for-loading-data.md
-[indexy]:sql-data-warehouse-tables-index.md
-[oddíly]:sql-data-warehouse-tables-partition.md
-[statistiky]:sql-data-warehouse-tables-statistics.md
-[třídy prostředků a souběžnost]:resource-classes-for-workload-management.md
+[indexech]:sql-data-warehouse-tables-index.md
+[oddílech]:sql-data-warehouse-tables-partition.md
+[statistikách]:sql-data-warehouse-tables-statistics.md
+[třídami prostředků a souběžností]:resource-classes-for-workload-management.md
+[replikovaných tabulkách]:design-guidance-for-replicated-tables.md
+[distribuovaných tabulkách]:sql-data-warehouse-tables-distribute.md
 
 <!--MSDN references-->
 
@@ -159,9 +156,8 @@ Nasaďte jedním kliknutím vaší koncových v databázích SQL z SQL Data Ware
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[migrace dat]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-[replikovaných tabulek]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-guidance-for-replicated-tables
-[distribuované tabulky]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
-[Azure Data Lake Store]: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store
-[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
+[migraci dat]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+
+[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
+[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

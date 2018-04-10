@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: eb68993924bff8605fc244f438a686f0142c4762
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Úvod do Microsoft Azure Storage
 
@@ -143,35 +143,11 @@ Další informace o šifrování na straně klienta najdete v tématu [Šifrová
 
 ## <a name="replication"></a>Replikace
 
-Aby se zajistila odolnost dat, služba Azure Storage uchovává (a spravuje) několik kopií vašich dat. Označuje se jako replikace, nebo někdy také redundance. Když nastavujete účet úložiště, vybíráte typ replikace. Ve většině případů toto nastavení můžete po vytvoření účtu úložiště změnit.
+Aby se zajistila odolnost dat, služba Azure Storage replikuje několik kopií vašich dat. Když nastavujete účet úložiště, vybíráte typ replikace. Ve většině případů toto nastavení můžete po vytvoření účtu úložiště změnit. 
 
-**Místně redundantní úložiště (LRS)**
-
-Místně redundantní úložiště (LRS) je navržené pro poskytování alespoň 99,999999999% (11 devítek) odolnosti objektů v průběhu daného roku. To znamená, že služba Azure Storage spravuje několik kopií vašich dat v data centru, které bylo zadané při vytváření účtu úložiště. Při potvrzení změn se aktualizují všechny kopie a teprve potom se informuje o úspěchu. To znamená, že tyto repliky jsou vždy synchronizované. Kromě toho se tyto kopie nacházejí v samostatných doménách selhání a upgradovacích doménách. To znamená, že vaše data jsou dostupná, i když selže uzel úložiště, ve kterém jsou tato data uložená, nebo když se tento uzel převede z důvodů aktualizace do režimu offline.
-
-**Zónově redundantní úložiště (ZRS) (Preview)**
-
-Zónově redundantní úložiště (ZRS) je navržené pro zjednodušení vývoje aplikací s vysokou dostupností. ZRS poskytuje pro objekty úložiště alespoň 99,9999999999% (12 devítek) odolnost během daného roku. ZRS vaše data synchronně replikuje mezi několika zónami dostupnosti. Zvažte použití ZRS pro scénáře, jako jsou transakční aplikace, u kterých je výpadek nepřijatelný. ZRS umožňuje zákazníkům čtení a zápis dat i v případě, že jedna zóna není k dispozici nebo je neopravitelná. Vkládání a aktualizace dat probíhají synchronně a jsou vysoce konzistentní.    
-
-Předchozí možnosti ZRS se nyní označují názvem ZRS Classic. Účty ZRS Classic jsou k dispozici jen pro objekty blob bloku v účtech úložiště pro obecné účely verze 1. ZRS Classic replikuje data asynchronně mezi datovými centry v jedné až dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. Účet ZRS Classic nelze převést na LRS nebo GRS ani naopak a nepodporuje možnosti metrik ani protokolování.
-
-**Geograficky redundantní úložiště (GRS)**
-
-Geograficky redundantní úložiště (GRS) je navržené pro poskytování 99,99999999999999%(16 devítek) odolnosti objektů v průběhu daného roku. Dosahuje toho díky udržování místních kopií vašich dat v primární oblasti a navíc další sady kopií těchto dat v sekundární oblasti, která je od primární oblasti vzdálená stovky kilometrů. V případě selhání primární oblasti převezme služby pro Azure Storage sekundární oblast.
-
-**Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)**
-
-Geograficky redundantní úložiště s přístupem čtení je úplně stejně jako GRS, s výjimkou toho, že k datům v sekundárním umístění máte přístup pro čtení. Když je primární datové centrum dočasně nedostupné, můžete dál číst data ze sekundárního umístění. To může být velmi užitečné. Můžete například mít webovou aplikaci, která přejde do režimu jen pro čtení, odkazuje na sekundární kopii a povoluje určitý přístup, i když nejsou dostupné aktualizace.
-
-> [!IMPORTANT]
-> Způsob replikace dat můžete změnit po vytvoření účtu úložiště. Pokud ale z LRS nebo ZRS přejdete na GRS nebo RA-GRS, může se vám účtovat jednorázový poplatek za přenos dat.
->
-
-Další informace o možnostech replikace najdete v tématu [Replikace Azure Storage](storage-redundancy.md).
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 Informace o zotavení po havárii najdete v tématu [Co dělat v případě výpadku služby Azure Storage](storage-disaster-recovery-guidance.md).
-
-Příklad toho, jak využít úložiště RA-GRS k zajištění vysoké dostupnosti, najdete v tématu [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Přesun dat z Azure Storage a do Azure Storage
 
