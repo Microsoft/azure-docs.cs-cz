@@ -1,10 +1,10 @@
 ---
-title: "Automatizace změny velikosti nahraných obrázků pomocí Azure Event Gridu | Microsoft Docs"
-description: "Při každém nahrání objektu blob v Azure Storage se může aktivovat Azure Event Grid. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením."
+title: Automatizace změny velikosti nahraných obrázků pomocí Azure Event Gridu | Microsoft Docs
+description: Při každém nahrání objektu blob v Azure Storage se může aktivovat Azure Event Grid. Díky tomu můžete odesílat soubory obrázků nahrané do Azure Storage do jiných služeb, třeba Azure Functions, ke změně velikosti a dalším vylepšením.
 services: event-grid, functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -26,7 +26,7 @@ Tento kurz je druhou částí série kurzů o službě Storage. Navazuje na [př
 
 Funkce změny velikosti se do existující aplikace pro nahrávání obrázků přidává pomocí rozhraní Azure CLI a webu Azure Portal.
 
-![Publikovaná webová aplikace v prohlížeči Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![Publikovaná webová aplikace v prohlížeči Microsoft Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 V tomto kurzu se naučíte:
 
@@ -157,7 +157,7 @@ Klikněte na oblast **Nahrát fotografie** a vyberte a nahrajte soubor. Do této
 
 Všimněte si, že po zmizení nahraného obrázku se na karuselu **Vygenerované miniatury** zobrazí kopie nahraného obrázku. Funkce změnila velikost tohoto obrázku, přidala miniaturu do kontejneru *thumbs* a webový klient ji stáhl.
 
-![Publikovaná webová aplikace v prohlížeči Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Publikovaná webová aplikace v prohlížeči Microsoft Edge](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>Další kroky
 

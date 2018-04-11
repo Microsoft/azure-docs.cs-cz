@@ -128,7 +128,7 @@ Pokud vaše App Service Environment ILB je název domény *contoso.net* a je ná
 
 ## <a name="functions-and-web-jobs"></a>Funkce a webové úlohy ##
 
-Funkce a webové úlohy závisí na webu SCM, ale jsou podporovány pro použití na portálu, i v případě, že vaše aplikace nacházely ve ILB App Service Environment, dokud bude prohlížeč dosáhnout SCM lokality.  Pokud používáte certifikát podepsaný svým držitelem s vaší App Service Environment ILB, musíte povolit prohlížeč důvěřovat certifikátu.  Pro aplikaci Internet Explorer a Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikát v prohlížeči zasažení pravděpodobně z důvodu webu scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v prohlížeči řetěz certifikátů.  
+Funkce a webové úlohy závisí na webu SCM, ale jsou podporovány pro použití na portálu, i v případě, že vaše aplikace nacházely ve ILB App Service Environment, dokud bude prohlížeč dosáhnout SCM lokality.  Pokud používáte certifikát podepsaný svým držitelem s vaší App Service Environment ILB, musíte povolit prohlížeč důvěřovat certifikátu.  Pro aplikaci Internet Explorer a Microsoft Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikát v prohlížeči zasažení pravděpodobně z důvodu webu scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v prohlížeči řetěz certifikátů.  
 
 ## <a name="ase-ip-addresses"></a>App Service Environment IP adresy ##
 

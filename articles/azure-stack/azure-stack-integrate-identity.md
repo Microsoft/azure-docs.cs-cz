@@ -261,7 +261,7 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
    > [!IMPORTANT]
    > Modul snap-in konzoly MMC AD FS musíte použít ke konfiguraci autorizačních pravidel vystavování, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS.
 
-4. Pokud používáte Internet Explorer nebo Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném pokusů o přihlášení nezdaří. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
+4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném pokusů o přihlášení nezdaří. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

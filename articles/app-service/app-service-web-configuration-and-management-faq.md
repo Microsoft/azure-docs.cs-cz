@@ -185,7 +185,7 @@ Máte dvě možnosti pro zaznamenání při F12 trasování:
 3. Ověřte, zda **sítě** karta je vybraná a pak vyberte zeleným **přehrání** tlačítko.
 4. Proveďte kroky, které reprodukujte problém.
 5. Vyberte červený **Zastavit** tlačítko.
-6. Vyberte **Uložit** tlačítko (ikona disku) a uložte soubor HAR (v Internet Exploreru a Edge) *nebo* pravým tlačítkem na soubor HAR a potom vyberte **uložit jako HAR s obsahem** (v prohlížeči Chrome).
+6. Vyberte **Uložit** tlačítko (ikona disku) a uložte soubor HAR (v Internet Exploreru a  Microsoft Edge) *nebo* pravým tlačítkem na soubor HAR a potom vyberte **uložit jako HAR s obsahem** (v prohlížeči Chrome).
 
 ### <a name="f12-console-output"></a>Výstup konzoly F12
 

@@ -62,7 +62,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 2. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Na konec této adresy URL připojte hodnotu řetězce dotazu `&name=<yourname>` a stisknutím klávesy `Enter` na klávesnici požadavek proveďte. V prohlížeči by se měla zobrazit odpověď, kterou funkce vrátila.  
 
-    Následující příklad ukazuje odpověď v prohlížeči Edge (ostatní prohlížeče můžou zahrnovat zobrazený kód XML):
+    Následující příklad ukazuje odpověď v prohlížeči Microsoft Edge (ostatní prohlížeče můžou zahrnovat zobrazený kód XML):
 
     ![Odezva funkce v prohlížeči.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 

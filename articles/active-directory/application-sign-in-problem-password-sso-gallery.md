@@ -1,10 +1,10 @@
 ---
-title: "Potíže při přihlašování k aplikaci Azure AD Galerie nakonfigurovaný pro heslo jednotného přihlašování | Microsoft Docs"
-description: "Řešení potíží s aplikací Azure AD Galerie nakonfigurovaný pro heslo jednotné přihlašování"
-documentationcenter: 
+title: Potíže při přihlašování k aplikaci Azure AD Galerie nakonfigurovaný pro heslo jednotného přihlašování | Microsoft Docs
+description: Řešení potíží s aplikací Azure AD Galerie nakonfigurovaný pro heslo jednotné přihlašování
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -37,7 +37,7 @@ Pro jednotné přihlašování založené na heslech může být prohlížeče k
 -   Firefox 26.0 nebo později - do systému Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
 
 >[!NOTE]
->Rozšíření založené na heslech jednotného přihlašování k dispozici pro Edge ve Windows 10 při rozšíření prohlížeče stát podporované pro okraj.
+>Rozšíření založené na heslech jednotného přihlašování k dispozici pro Microsoft Edge ve Windows 10 při rozšíření prohlížeče stát podporované pro okraj.
 >
 >
 

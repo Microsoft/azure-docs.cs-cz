@@ -1,9 +1,9 @@
 ---
-title: "Referenční příručka k nastavení roamingu Windows 10 | Microsoft Docs"
-description: "Úplný seznam všech nastavení, které budou roamované nebo zálohovat ve Windows 10."
+title: Referenční příručka k nastavení roamingu Windows 10 | Microsoft Docs
+description: Úplný seznam všech nastavení, které budou roamované nebo zálohovat ve Windows 10.
 services: active-directory
 keywords: roaming, stav Enterprise windows cloud
-documentationcenter: 
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -49,7 +49,7 @@ Následující skupiny nastavení jsou k dispozici pro koncovým uživatelům po
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
 
-Synchronizace skupiny (oblíbených položek, čtení seznamu) nastavení prohlížeče Edge můžete povolit nebo zakázat koncoví uživatelé prostřednictvím prohlížeče Edge možnost nabídky nastavení.
+Synchronizace skupiny (oblíbených položek, čtení seznamu) nastavení prohlížeče Microsoft Edge můžete povolit nebo zakázat koncoví uživatelé prostřednictvím prohlížeče Microsoft Edge možnost nabídky nastavení.
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
 
@@ -86,21 +86,21 @@ Nastavení, která není přemístit nebo synchronizace nebude patří do skupin
 | **Přizpůsobení plochy**: nastavení hlavního panelu (pozice, automaticky skrýt atd.) |Synchronizace |X |Motiv |
 | **Přizpůsobení plochy**: rozložení obrazovky start |X |zálohování | |
 | **Zařízení**: sdílené tiskárny, které jste se připojili k |X |X |ostatní |
-| **Prohlížeč Edge**: čtení seznamu |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: oblíbených položek |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: top lokality <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: zadané adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: oblíbených položek panelu nastavení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: Zobrazit tlačítko Domů <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: blokovat automaticky otevíraná okna <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: dotaz na co dělat s každého stažení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: nabízejí pro ukládání hesel <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: odeslání není sledování žádostí o <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: uložit formuláře položky <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: zobrazovat návrhy vyhledávání a lokality během zadávání <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: soubory cookie předvoleb <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: nechat lokality uložit licence chráněné médií v zařízení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Prohlížeč Edge**: čtečky obrazovky nastavení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: čtení seznamu |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: oblíbených položek |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: top lokality <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: zadané adresy URL <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: oblíbených položek panelu nastavení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: Zobrazit tlačítko Domů <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: blokovat automaticky otevíraná okna <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: dotaz na co dělat s každého stažení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: nabízejí pro ukládání hesel <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: odeslání není sledování žádostí o <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: uložit formuláře položky <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: zobrazovat návrhy vyhledávání a lokality během zadávání <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: soubory cookie předvoleb <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: nechat lokality uložit licence chráněné médií v zařízení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
+| **Prohlížeč Microsoft Edge**: čtečky obrazovky nastavení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Vysoký kontrast**: zapnutí nebo vypnutí |Synchronizace |X |usnadnění přístupu |
 | **Vysoký kontrast**: nastavení motivů |Synchronizace |X |usnadnění přístupu |
 | **Internet Explorer**: otevřete karty (adresa URL a název) |Synchronizace |Synchronizace |Internet Explorer |
