@@ -1,11 +1,11 @@
 ---
-title: "Správa skupin Nsg pomocí portálu Azure | Microsoft Docs"
-description: "Naučte se spravovat existující skupiny Nsg pomocí portálu Azure."
+title: Správa skupin Nsg pomocí portálu Azure | Microsoft Docs
+description: Naučte se spravovat existující skupiny Nsg pomocí portálu Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>Správa skupin Nsg pomocí portálu
 
@@ -197,5 +197,5 @@ Skupinu NSG můžete odstranit, pouze pokud má není přidružen k žádnému p
 
     ![Portál Azure – skupiny Nsg](./media/virtual-network-manage-nsg-arm-portal/figure16.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Povolit protokolování](virtual-network-nsg-manage-log.md) pro skupiny Nsg.

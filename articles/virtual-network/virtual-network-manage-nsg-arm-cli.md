@@ -1,11 +1,11 @@
 ---
-title: "Správa skupin zabezpečení sítě - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se spravovat skupiny zabezpečení sítě pomocí rozhraní příkazového řádku Azure."
+title: Správa skupin zabezpečení sítě - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se spravovat skupiny zabezpečení sítě pomocí rozhraní příkazového řádku Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: ed17d314-07e6-4c7f-bcf1-a8a2535d7c14
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ee43bfd85bdda16cb496ec938c266c72f0d5688b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli"></a>Správa skupin zabezpečení sítě pomocí rozhraní příkazového řádku Azure
 

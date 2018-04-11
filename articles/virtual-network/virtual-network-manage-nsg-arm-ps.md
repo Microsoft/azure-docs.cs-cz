@@ -1,11 +1,11 @@
 ---
-title: "Správa skupin zabezpečení sítě - prostředí Azure PowerShell | Microsoft Docs"
-description: "Naučte se spravovat skupiny zabezpečení sítě pomocí prostředí PowerShell."
+title: Správa skupin zabezpečení sítě - prostředí Azure PowerShell | Microsoft Docs
+description: Naučte se spravovat skupiny zabezpečení sítě pomocí prostředí PowerShell.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3706ce6c-d9ae-46cb-a048-f0a4e84dc5cc
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>Správa skupin zabezpečení sítě pomocí prostředí PowerShell
 
@@ -512,6 +512,6 @@ Skupinu NSG můžete odstranit, pouze pokud má není přidružen k žádnému p
    > `-Force` Parametr zajišťuje nemusíte potvrďte odstranění.
    > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Povolit protokolování](virtual-network-nsg-manage-log.md) pro skupiny Nsg.
 
