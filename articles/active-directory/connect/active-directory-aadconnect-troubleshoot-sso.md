@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Connect: Řešení potíží s bezproblémové jednotné přihlašování | Microsoft Docs"
-description: "Toto téma popisuje postupy řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování"
+title: 'Azure Active Directory Connect: Řešení potíží s bezproblémové jednotné přihlašování | Microsoft Docs'
+description: Toto téma popisuje postupy řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 services: active-directory
-keywords: "Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -28,7 +28,7 @@ Tento článek vám pomůže najít informace o běžné problémy týkající s
 
 - V určitých případech povolení jednotného přihlašování bezproblémové může trvat až 30 minut.
 - Pokud zakázat a znovu povolit bezproblémové jednotného přihlašování na váš klient, nebudou uživatelé získat jeden přihlašování dokud jejich uložené v mezipaměti lístky protokolu Kerberos, obvykle platný pro 10 hodin, vypršela.
-- Podpora prohlížeče Edge není k dispozici.
+- Podpora prohlížeče Microsoft Edge není k dispozici.
 - Pokud bezproblémové jednotného přihlašování k úspěšné, uživatel nemá možnost vybrat **zůstat přihlášeni**. Z důvodu toto chování služby SharePoint a OneDrive scénáře mapování nefungují.
 - Klienti Office nižší než verze 16.0.8730.xxxx nepodporují neinteraktivnímu přihlašování pomocí bezproblémové jednotné přihlašování. U těchto klientů musí uživatelé zadat svá uživatelská jména, ale není hesla k přihlášení.
 - Bezproblémové SSO nefunguje v privátním režimu procházení na Firefox.

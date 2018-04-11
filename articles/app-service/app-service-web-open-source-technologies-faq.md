@@ -240,4 +240,4 @@ Po zajištění, že je spuštěn tento MySQL v aplikaci, zkuste použít PHPMyA
 
 ## <a name="i-get-an-http-403-error-when-i-try-to-import-or-export-my-mysql-in-app-database-by-using-phpmyadmin-how-do-i-resolve-this"></a>Při pokusu o import nebo export databáze MySQL v aplikaci s použitím PHPMyadmin zobrazila chybu HTTP 403. Jak to lze vyřešit?
 
-Pokud používáte starší verzi Chrome, může se jednat známého problému. Chcete-li problém vyřešit, upgradujte na novější verzi Chrome. Zkuste taky pomocí jiného prohlížeče, jako je Internet Explorer nebo Edge, kde problému nedojde.
+Pokud používáte starší verzi Chrome, může se jednat známého problému. Chcete-li problém vyřešit, upgradujte na novější verzi Chrome. Zkuste taky pomocí jiného prohlížeče, jako je Internet Explorer nebo Microsoft Edge, kde problému nedojde.

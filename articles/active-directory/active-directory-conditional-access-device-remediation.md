@@ -1,9 +1,9 @@
 ---
-title: "Odsud se tam nelze dostat na webu Azure Portal ze zařízení s Windows | Dokumentace Microsoftu"
-description: "Dozvíte se, odkud pochází zpráva, že odsud se tam nelze dostat, a co můžete zkontrolovat, aby se vám toto dialogové okno nezobrazovalo."
+title: Odsud se tam nelze dostat na webu Azure Portal ze zařízení s Windows | Dokumentace Microsoftu
+description: Dozvíte se, odkud pochází zpráva, že odsud se tam nelze dostat, a co můžete zkontrolovat, aby se vám toto dialogové okno nezobrazovalo.
 services: active-directory
-keywords: "přístup podmíněný zařízením, registrace zařízení, povolení registrace zařízení, registrace zařízení a MDM"
-documentationcenter: 
+keywords: přístup podmíněný zařízením, registrace zařízení, povolení registrace zařízení, registrace zařízení a MDM
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
@@ -40,7 +40,7 @@ Pokud používáte zařízení s **Windows**, měli byste zkontrolovat toto:
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
-Pokud váš správce nakonfiguroval zásady podmíněného přístupu, můžete pro přístup k prostředkům vaší organizace používat jenom podporovaný prohlížeč. V zařízeních se systémem Windows se podporují jenom prohlížeče **Internet Explorer** a **Edge**.
+Pokud váš správce nakonfiguroval zásady podmíněného přístupu, můžete pro přístup k prostředkům vaší organizace používat jenom podporovaný prohlížeč. V zařízeních se systémem Windows se podporují jenom prohlížeče **Internet Explorer** a **Microsoft Edge**.
 
 To, jestli k prostředku nejde přistupovat kvůli nepodporovanému prohlížeči, snadno zjistíte v sekci podrobností chybové stránky:
 
