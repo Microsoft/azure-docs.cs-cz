@@ -1,11 +1,11 @@
 ---
-title: "Kurz k používání funkce PolyBase v SQL Data Warehouse | Dokumentace Microsoftu"
-description: "Zjistěte, co je PolyBase a jak tuto funkci používat pro scénáře datových skladů."
+title: Kurz k používání funkce PolyBase v SQL Data Warehouse | Dokumentace Microsoftu
+description: Zjistěte, co je PolyBase a jak tuto funkci používat pro scénáře datových skladů.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0a0103b4-ddd6-4d1e-87be-4965d6e99f3f
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/01/2017
 ms.author: barbkess
 ms.openlocfilehash: 47a2f48a1eef0c138875fbc079724b8d631abc54
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Načtení dat pomocí funkce PolyBase v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Vyhledání vašeho koncového bodu Služby objektů blob:
     ![Klikněte na Objekty blob.](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
 4. Uložte si adresu URL koncového bodu Služby objektů blob pro pozdější použití.
    
-    ![Koncový bod Služby objektů blob](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
+    ![Koncový bod služby Blob service](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### <a name="c-find-your-azure-storage-key"></a>C. Vyhledání klíče účtu úložiště Azure
 Vyhledání klíče účtu úložiště Azure:
@@ -113,7 +113,7 @@ Viz také [Začínáme s nástrojem příkazového řádku AzCopy][Getting Start
 ### <a name="e-explore-your-blob-storage-container"></a>E. Prozkoumání vašeho kontejneru úložiště objektů blob
 Zobrazení souboru, který jste nahráli do úložiště objektů blob:
 
-1. Přejděte zpět do okna vaší Služby objektů blob.
+1. Přejděte zpět do okna vaší služby Blob service.
 2. V části Kontejnery poklikejte na **datacontainer**.
 3. Pokud chcete prozkoumat cestu ke svým datům, klikněte na složku **datedimension**. Zobrazí se nahraný soubor **DimDate2.txt**.
 4. Pokud chcete zobrazit vlastnosti, klikněte na **DimDate2.txt**.

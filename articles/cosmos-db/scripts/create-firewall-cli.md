@@ -3,9 +3,8 @@ title: Skript Azure CLI – Vytvoření brány firewall pro službu Azure Cosmos
 description: Ukázkový skript Azure CLI – Vytvoření brány firewall pro službu Azure Cosmos DB
 services: cosmos-db
 documentationcenter: cosmosdb
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 tags: azure-service-management
 ms.assetid: ''
 ms.service: cosmos-db
@@ -15,12 +14,12 @@ ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
-ms.author: mimig
-ms.openlocfilehash: 1c43f9cb23598e69341720286882fadcc20a2ff7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: sngun
+ms.openlocfilehash: 41cd8181c525ab8921c369adf97ab80045d3d5ff
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-firewall-using-the-azure-cli"></a>Azure Cosmos DB: Vytvoření brány firewall pomocí Azure CLI
 

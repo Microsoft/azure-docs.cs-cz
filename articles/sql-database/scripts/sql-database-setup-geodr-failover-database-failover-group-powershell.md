@@ -1,26 +1,26 @@
 ---
-title: "Příklad PowerShellu – Skupina převzetí služeb při selhání geografické replikace – Jedna databáze SQL Azure | Microsoft Docs"
-description: "Ukázkový skript Azure PowerShellu, který nastaví skupinu převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure a převezme její služby."
+title: Příklad PowerShellu – Skupina převzetí služeb při selhání geografické replikace – Jedna databáze SQL Azure | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu, který nastaví skupinu převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure a převezme její služby.
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: business continuity, mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: a2f4caf32ae7fa7e2384cbf1b80fd6f25d6a7bf5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5217063dc99868be6777b09042e5aeb1fe9640a2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Použití PowerShellu ke konfiguraci skupiny převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure
 

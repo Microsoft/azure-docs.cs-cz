@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: a0586b32fd12744c8bfce782583cdc4078979ef1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Výstupní datový proud analýza Data Lake Store
 Úlohy Stream Analytics podporovat několik metod pro výstup, jeden se [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložiště pro analytické úlohy s velkými objemy dat. Data Lake Store umožňuje ukládání dat z jakékoli velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy.
@@ -45,7 +45,7 @@ Jakmile máte účet Data Lake Store, ověření, můžete konfigurovat vlastnos
 <td>Název účtu úložiště, kde jsou odesílání výstupu. Zobrazí seznam účtů Data Lake Store, které má přihlášený uživatel přístup k.</td>
 </tr>
 <tr>
-<td>Předpony vzorek cesty [<I>volitelné</I>]</td>
+<td>Path Prefix Pattern [<I>optional</I>]</td>
 <td>Cesta k souboru používaná k zápisu souborů v rámci zadaného účtu Data Lake Store. <BR>{date}, {time}<BR>Příklad 1: složku1/logs / {date} / {time}<BR>Příklad 2: složku1/logs / {date}</td>
 </tr>
 <tr>

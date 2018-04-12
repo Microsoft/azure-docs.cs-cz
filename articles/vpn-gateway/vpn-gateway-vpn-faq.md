@@ -1,24 +1,24 @@
 ---
-title: "Azure VPN Gateway – nejčastější dotazy | Dokumentace Microsoftu"
-description: "Nejčastější dotazy k branám VPN. Nejčastější dotazy týkající se propojení Microsoft Azure Virtual Network mezi různými místy, připojení s hybridní konfigurací a bran VPN"
+title: Azure VPN Gateway – nejčastější dotazy | Dokumentace Microsoftu
+description: Nejčastější dotazy k branám VPN. Nejčastější dotazy týkající se propojení Microsoft Azure Virtual Network mezi různými místy, připojení s hybridní konfigurací a bran VPN
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 6ce36765-250e-444b-bfc7-5f9ec7ce0742
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/20/2017
-ms.author: cherylmc,yushwang,anzaman
-ms.openlocfilehash: 2b648caa51eb457a62e846b74f1b95ca84974635
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.date: 04/05/2018
+ms.author: cherylmc
+ms.openlocfilehash: 9ebdbb8958779e074195623aec90b7a6f6de2bb4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -74,7 +74,7 @@ Brány založené na směrování implementují sítě VPN založené na směrov
 Ne. Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 2. Odstraňte bránu:
-* [portál Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+* [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 * [Azure PowerShell – Classic](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 3. [Vytvoření nové brány požadovaného typu a dokončení nastavení sítě VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)

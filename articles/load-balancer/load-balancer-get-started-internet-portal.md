@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c646b0b1ab0ec62cffb4f7cf7474b48c68dfabb4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Vytvoření veřejného Load Balanceru úrovně Basic pro vyrovnávání zatížení virtuálních počítačů pomocí webu Azure Portal
 
@@ -38,8 +38,8 @@ V této části pomocí portálu vytvoříte veřejný Load Balancer úrovně Ba
 1. V levém horním rohu obrazovky klikněte na **Vytvořit prostředek** > **Sítě** > **Load Balancer**.
 2. Na stránce **Vytvoření nástroje pro vyrovnávání zatížení** zadejte pro nástroj pro vyrovnávání zatížení tyto hodnoty:
     - *myLoadBalancer* – název nástroje pro vyrovnávání zatížení.
-    - **Public** – typ front-endu nástroje pro vyrovnávání zatížení. 
-     - *myPublicIP* – veřejná IP adresa, kterou je potřeba vytvořit se skladovou položkou **Basic** a **přiřazením** nastaveným na **Dynamické**.
+    - **Public** – typ nástroje pro vyrovnávání zatížení.
+    - *myPublicIP* – veřejná IP adresa, kterou je potřeba vytvořit se skladovou položkou **Basic** a **přiřazením** nastaveným na **Dynamické**.
     - *myResourceGroupLB* – název nové skupiny prostředků, kterou vytvoříte.
 3. Kliknutím na **Vytvořit** vytvořte nástroj pro vyrovnávání zatížení.
    
