@@ -15,10 +15,10 @@ ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 4efae8aa8a016849193b67ea7481e18ee48811d0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure
 

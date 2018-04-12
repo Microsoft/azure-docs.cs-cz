@@ -1,11 +1,11 @@
 ---
-title: "Řízení přístupu na základě role se zbytkem – Azure AD | Microsoft Docs"
-description: "Správa řízení přístupu na základě rolí pomocí rozhraní REST API"
+title: Řízení přístupu na základě role se zbytkem – Azure AD | Microsoft Docs
+description: Správa řízení přístupu na základě rolí pomocí rozhraní REST API
 services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: active-directory
 ms.workload: multiple
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.openlocfilehash: ba25340e41cefe2b7847a39a6c9182cd0fc057d3
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>Správa řízení přístupu na základě rolí pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{api-version}* s 2015-07-01.
 3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu přiřazení role:
 
@@ -94,7 +94,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role přiřazení}* s identifikátorem GUID přiřazení role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -135,7 +135,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1   
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role přiřazení}* s nový identifikátor GUID, který se stane identifikátor GUID nové přiřazení role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -153,7 +153,7 @@ Tělo žádosti zadejte hodnoty v následujícím formátu:
 
 | Název elementu | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- |
-| hodnoty vlastnosti roleDefinitionId |Ano |Řetězec |Identifikátor role. Formát identifikátoru je: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| roleDefinitionId |Ano |Řetězec |Identifikátor role. Formát identifikátoru je: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId |Ano |Řetězec |objectId přiřazenou roli hlavního Azure AD (uživatele, skupinu nebo objekt služby). |
 
 ### <a name="response"></a>Odpověď
@@ -193,7 +193,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role přiřazení}* s id přiřazení role identifikátor GUID.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -234,7 +234,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * /Subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 prostředků  
+   * Resource /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{api-version}* s 2015-07-01.
 3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu rolí:
 
@@ -317,7 +317,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role definice}* s identifikátorem GUID definice role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -397,7 +397,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role definice}* s nový identifikátor GUID, který se stane identifikátor GUID novou vlastní roli.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -500,7 +500,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role definice}* s identifikátorem GUID vlastní role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 
@@ -603,7 +603,7 @@ V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení
 
    * Předplatné: /subscriptions/ {id předplatného}  
    * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+   * Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Nahraďte *{id role definice}* s id definice role GUID vlastní role.
 3. Nahraďte *{api-version}* s 2015-07-01.
 

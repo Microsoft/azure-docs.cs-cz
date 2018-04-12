@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření vlastních rolí pro Azure RBAC | Microsoft Docs"
-description: "Další informace jak definovat vlastní role pomocí řízení přístupu pro přesnější správu identit ve vašem předplatném Azure."
+title: Vytvoření vlastních rolí pro Azure RBAC | Microsoft Docs
+description: Další informace jak definovat vlastní role pomocí řízení přístupu pro přesnější správu identit ve vašem předplatném Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2871ff5eea8fb99040dfab2593d1640d79f51092
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Vytvořit vlastní role pro řízení přístupu
 Vytvořte vlastní roli v řízení řízení přístupu (RBAC), pokud žádná z předdefinovaných rolí podle svých potřeb konkrétní přístup. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](role-based-access-control-manage-access-powershell.md), [rozhraní příkazového řádku Azure](role-based-access-control-manage-access-azure-cli.md) (CLI) a [REST API](role-based-access-control-manage-access-rest.md). Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny a aplikace na předplatné, skupinu prostředků a prostředků obory. Vlastní role jsou uloženy v klient služby Azure AD a mohlo sdílet víc předplatných.
@@ -59,11 +59,11 @@ Následující příklad ukazuje vlastní role pro monitorování a restartován
 ## <a name="actions"></a>Akce
 **Akce** vlastnost vlastní role určuje činnosti Azure, ke kterým roli udělí přístup. Jedná se o kolekci operaci řetězců, které identifikují zabezpečitelné operations poskytovatelů prostředků Azure. Operace řetězce použijte formát `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Operace řetězce, které obsahují zástupné znaky (\*) udělit přístup ke všem operacím, které odpovídají řetězci operace. Například:
 
-* `*/read`uděluje přístup ke čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.
-* `Microsoft.Compute/*`uděluje přístup ke všem operacím pro všechny typy prostředků ve zprostředkovateli prostředků Microsoft.Compute.
-* `Microsoft.Network/*/read`uděluje přístup ke čtení pro všechny typy prostředků v poskytovatel prostředků Microsoft.Network Azure.
-* `Microsoft.Compute/virtualMachines/*`uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.
-* `Microsoft.Web/sites/restart/Action`uděluje přístup k restartování weby.
+* `*/read` uděluje přístup ke čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.
+* `Microsoft.Compute/*` uděluje přístup ke všem operacím pro všechny typy prostředků ve zprostředkovateli prostředků Microsoft.Compute.
+* `Microsoft.Network/*/read` uděluje přístup ke čtení pro všechny typy prostředků v poskytovatel prostředků Microsoft.Network Azure.
+* `Microsoft.Compute/virtualMachines/*` uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.
+* `Microsoft.Web/sites/restart/Action` uděluje přístup k restartování weby.
 
 Použití `Get-AzureRmProviderOperation` (v prostředí PowerShell) nebo `azure provider operations show` (v Azure CLI) k operacím seznamu zprostředkovatelů prostředků Azure. Ověřte, zda je řetězec v operaci platný a rozbalte řetězce operaci zástupný znak, může pomocí následujících příkazů.
 
