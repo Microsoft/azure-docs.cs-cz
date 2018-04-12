@@ -1,10 +1,10 @@
 ---
-title: "Rychlý start: Cassandra API s využitím Javy – Azure Cosmos DB | Dokumentace Microsoftu"
-description: "Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy."
+title: 'Rychlý start: Cassandra API s využitím Javy – Azure Cosmos DB | Dokumentace Microsoftu'
+description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: ef611081-0195-4ad8-9b54-b313588e5754
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: 4d12fe3890b1d3190af1bc94eba7b93059a03f10
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: f132c20f1bcb2de2af708e87f869fbe06fe6914b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Javy a Azure Cosmos DB
 
-Tento rychlý start ukazuje, jak pomocí Javy a rozhraní Azure Cosmos DB [Cassandra API](cassandra-introduction.md) sestavit aplikaci profilu naklonováním příkladu z GitHubu. Tento rychlý start vás také provede vytvořením účtu Azure Cosmos DB pomocí webu Azure Portal.
+Tento rychlý start ukazuje, jak pomocí Javy a rozhraní Azure Cosmos DB [Cassandra API](cassandra-introduction.md) sestavit aplikaci profilu naklonováním příkladu z GitHubu. Tento rychlý start vás také provede vytvořením účtu služby Azure Cosmos DB pomocí webu Azure Portal.
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
 Přejděte k programu Azure Cosmos DB Cassandra API Preview. Pokud jste ještě nepožádali o přístup, [zaregistrujte se](cassandra-introduction.md#sign-up-now).
 
@@ -54,7 +54,7 @@ Než budete moct vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do složky, do které chcete nainstalovat ukázkovou aplikaci. 
+1. Otevřete okno terminálu Git, třeba Git Bash, a pomocí příkazu `cd` přejděte do složky, do které chcete nainstalovat ukázkovou aplikaci. 
 
     ```bash
     cd "C:\git-samples"
@@ -68,7 +68,7 @@ Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHub
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete rovnou přeskočit k části [Aktualizace připojovacího řetězce](#update-your-connection-string). Všechny fragmenty kódu pocházejí ze souboru src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java.  
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). Všechny fragmenty kódu pocházejí ze souboru src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java.  
 
 * Je nastavený hostitel Cassandra, port, uživatelské jméno, heslo a možnosti SSL. Informace o připojovacím řetězci pocházejí ze stránky připojovacího řetězce na webu Azure Portal.
 
@@ -206,7 +206,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-java/data-explorer.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
+## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 

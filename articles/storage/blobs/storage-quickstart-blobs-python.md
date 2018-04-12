@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 9ea8fdcd2d21729117101748e20e52029c315e15
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3b081e34886d4075ae3c88e412d732578d1ce26
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
@@ -39,6 +39,8 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 ```
 
 Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít program v Pythonu, vyhledejte složku storage-blobs-python-quickstart a soubor example.py.  
+
+[!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
@@ -75,7 +77,7 @@ Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
 ### <a name="get-references-to-the-storage-objects"></a>Získání odkazů na objekty úložiště
 První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
 
-* Vytvořte instanci objektu **BlockBlobService**, která odkazuje na službu Blob ve vašem účtu úložiště. 
+* Vytvořte instanci objektu **BlockBlobService**, která odkazuje na službu Blob service ve vašem účtu úložiště. 
 
 * Vytvořte instanci objektu **CloudBlobContainer**, která představuje kontejner, ke kterému přistupujete. Kontejnery slouží k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
 

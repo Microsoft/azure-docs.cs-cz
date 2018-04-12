@@ -3,8 +3,7 @@ title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a p
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Graph API služby Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
-manager: jhubbard
-editor: monicar
+manager: kfile
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,11 +12,11 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 3f0ec59ccee61fd0dbb7587a9d2ec3e17b1cf873
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: a2855a05cf77afa69e79ecc602797524b80219d2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 

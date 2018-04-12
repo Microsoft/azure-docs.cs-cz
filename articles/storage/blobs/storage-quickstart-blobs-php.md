@@ -10,11 +10,11 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: a1d0232f093ab99bfbeba3012d78c35d6476496e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: be8e58cd998abf0105c3ef17bd3e192605f15ecd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
@@ -40,6 +40,8 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 ```
 
 Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete ukázkovou aplikaci PHP otevřít, vyhledejte složku storage-blobs-php-quickstart a otevřete soubor phpqs.php.  
+
+[!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 V aplikaci musíte zadat název svého účtu úložiště a klíč účtu pro vytvoření instance **BlobRestProxy** ve vaší aplikaci. Doporučujeme uložit tyto identifikátory do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systému vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů. Hodnoty **youraccountname** a **youraccountkey** nahraďte názvem a klíčem vašeho účtu.
@@ -87,7 +89,7 @@ Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
 První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
 
 * Vytvořte instanci objektu úložiště Azure **BlobRestProxy** pro nastavení přihlašovacích údajů pro připojení. 
-* Vytvořte objekt **BlobService**, který odkazuje na službu Blob ve vašem účtu úložiště. 
+* Vytvořte objekt **BlobService**, který odkazuje na službu Blob service ve vašem účtu úložiště. 
 * Vytvořte objekt **Container**, který představuje kontejner, ke kterému přistupujete. Kontejnery slouží k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
 
 Jakmile budete mít objekt kontejneru **blobClient**, můžete vytvořit objekt blob **Block**, který odkazuje na konkrétní objekt blob, který vás zajímá. Pak můžete provádět operace, jako jsou nahrávání, stahování a kopírování.

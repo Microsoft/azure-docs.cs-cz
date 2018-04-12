@@ -3,9 +3,8 @@ title: 'Databáze Azure Cosmos: Sestavení aplikace konzoly v jazyce Java s rozh
 description: Představuje ukázku kódu Java, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB služby Azure Cosmos DB.
 services: cosmos-db
 documentationcenter: ''
-author: mimig1
-manager: jhubbard
-editor: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
-ms.author: mimig
-ms.openlocfilehash: 9716bc9a4728a48732cacef7c2568a640ba39ee6
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: sngun
+ms.openlocfilehash: 6a9a60b9ba06e6a8fa9069e770613dc7d27de39f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Databáze Azure Cosmos: Sestavení aplikace konzoly v jazyce Java s rozhraním API MongoDB na webu Azure Portal
 

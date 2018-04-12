@@ -1,11 +1,11 @@
 ---
-title: "Přehled virtuálních počítačů s Linuxem v Azure | Dokumentace Microsoftu"
-description: "Popis služeb Azure Compute, Storage a síťové služby Azure s použitím virtuálních počítačů s Linuxem."
+title: Přehled virtuálních počítačů s Linuxem v Azure | Dokumentace Microsoftu
+description: Popis služeb Azure Compute, Storage a síťové služby Azure s použitím virtuálních počítačů s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: cdb2bda0c3f7e73b115c2609c3f229c633093bdc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
