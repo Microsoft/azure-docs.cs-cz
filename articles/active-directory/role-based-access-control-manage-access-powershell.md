@@ -1,8 +1,8 @@
 ---
-title: "Správa řízení přístupu na základě rolí (RBAC) pomocí prostředí Azure PowerShell | Microsoft Docs"
-description: "Jak spravovat RBAC pomocí Azure Powershellu, včetně obsahující seznam rolí, přiřazení rolí a odstraňovat přiřazení role."
+title: Správa řízení přístupu na základě rolí (RBAC) pomocí prostředí Azure PowerShell | Microsoft Docs
+description: Jak spravovat RBAC pomocí Azure Powershellu, včetně obsahující seznam rolí, přiřazení rolí a odstraňovat přiřazení role.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
@@ -15,10 +15,10 @@ ms.date: 07/12/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.openlocfilehash: 5e7e01502a173cb93216c77dd43f61094fd88148
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Správa řízení přístupu podle role pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Pokud chcete odebrat přístup pro uživatele, skupiny a aplikace, použijte:
 
     Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
 
-![RBAC prostředí PowerShell - Remove-AzureRmRoleAssignment – snímek obrazovky](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
+![RBAC PowerShell - Remove-AzureRmRoleAssignment - screenshot](./media/role-based-access-control-manage-access-powershell/3-remove-azure-rm-role-assignment.png)
 
 ## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 Chcete-li vytvořit vlastní roli, použijte ```New-AzureRmRoleDefinition``` příkaz. Strukturování roli pomocí PSRoleDefinitionObject nebo šablonu JSON dvěma způsoby. 

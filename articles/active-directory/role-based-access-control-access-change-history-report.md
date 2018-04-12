@@ -1,8 +1,8 @@
 ---
-title: "Přístup k vytváření sestav - Azure RBAC | Microsoft Docs"
-description: "Vygenerujte sestavu, která uvádí všechny změny v přístupu k vašemu předplatnému Azure pomocí řízení přístupu na základě rolí za posledních 90 dnů."
+title: Přístup k vytváření sestav - Azure RBAC | Microsoft Docs
+description: Vygenerujte sestavu, která uvádí všechny změny v přístupu k vašemu předplatnému Azure pomocí řízení přístupu na základě rolí za posledních 90 dnů.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 169ed8dd6d14d8d9d0fd49ad7306b1d4fb2c4d90
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>Vytvoření sestavy přístup k řízení přístupu na základě rolí
 Vždy, když někdo uděluje nebo odvolá přístup v rámci vašich předplatných, změny se budou protokolovat do Azure událostí. Můžete vytvořit sestavy historie změn přístupu zobrazíte všechny změny za posledních 90 dnů.
@@ -32,7 +32,7 @@ Při volání tento příkaz můžete určit kterou vlastnost tohoto přiřazen�
 | Vlastnost | Popis |
 | --- | --- |
 | **Akce** |Jestli byl přístup udělen nebo odebrán |
-| **Volající** |Vlastník zodpovědná za změnu přístup |
+| **Caller** |Vlastník zodpovědná za změnu přístup |
 | **PrincipalId** | Jedinečný identifikátor uživatele, skupiny nebo aplikace, kterému byla přiřazena role |
 | **PrincipalName** |Jméno uživatele, skupiny nebo aplikace |
 | **PrincipalType** |Jestli přiřazení byla pro uživatele, skupiny nebo aplikace |
@@ -41,7 +41,7 @@ Při volání tento příkaz můžete určit kterou vlastnost tohoto přiřazen�
 | **Rozsah** | Jedinečný identifikátor předplatné, skupinu prostředků nebo prostředek, který se vztahuje na přiřazení | 
 | **ScopeName** |Název předplatné, skupinu prostředků nebo prostředek |
 | **ScopeType** |Jestli přiřazení byl v předplatné, skupinu prostředků nebo prostředek oboru |
-| **Časové razítko** |Datum a čas, která byla změněna přístup |
+| **časové razítko** |Datum a čas, která byla změněna přístup |
 
 Příkaz v tomto příkladu jsou uvedeny všechny změny v přístupu v rámci předplatného pro posledních sedmi dnech:
 

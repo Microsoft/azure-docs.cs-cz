@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
 ms.openlocfilehash: 4d9df6743d84310b7db70034d1e84dd3591b3c21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Předdefinované role pro řízení přístupu Azure na základě rolí
 Azure na základě rolí řízení přístupu (RBAC) obsahuje následující předdefinované role, které lze přiřadit uživatelům, skupinám a službám. Definice předdefinované role se nedá změnit. Můžete však vytvořit [vlastní role v Azure RBAC](role-based-access-control-custom-roles.md) podle konkrétních potřeb vaší organizace.
@@ -39,9 +39,9 @@ V tomto článku pouze adresy různé role, které existují ještě dnes. Když
 
 | Předdefinovaná role | Popis |
 | --- | --- |
-| [Vlastník](#owner) | Umožňuje správu všech položek včetně přístupu k prostředkům. |
+| [Owner](#owner) | Umožňuje správu všech položek včetně přístupu k prostředkům. |
 | [Přispěvatel](#contributor) | Umožňuje správu všech položek kromě přístupu k prostředkům. |
-| [Čtecí modul](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
+| [Reader](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
 | [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) | Může spravovat službu a rozhraní API |
 | [Role operátora služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role čtenáře služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
@@ -54,21 +54,21 @@ V tomto článku pouze adresy různé role, které existují ještě dnes. Když
 | [Zálohování přispěvatele](#backup-contributor) | Umožňuje spravovat službu zálohování, ale neumožňuje vytvářet trezory a udělovat přístup ostatním uživatelům. |
 | [Backup Operator](#backup-operator) | Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytváření trezorů a udělování přístupu jiným uživatelům. |
 | [Zálohování čtečky](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny. |
-| [Čtečka fakturace](#billing-reader) | Povolí přístup pro čtení fakturačních údajů. |
-| [BizTalk přispěvatele](#biztalk-contributor) | Umožňuje správu služeb BizTalk, ale ne přístup k nim. |
+| [Billing Reader](#billing-reader) | Povolí přístup pro čtení fakturačních údajů. |
+| [BizTalk Contributor](#biztalk-contributor) | Umožňuje správu služeb BizTalk, ale ne přístup k nim. |
 | [Přispěvatel koncový bod CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělovat přístup jiným uživatelům. |
-| [Čtečka koncový bod CDN](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže je měnit. |
+| [CDN Endpoint Reader](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže je měnit. |
 | [Přispěvatel profil CDN](#cdn-profile-contributor) | Může spravovat profily CDN a jejich koncové body, ale nemůže udělovat přístup jiným uživatelům. |
-| [Čtečka profil CDN](#cdn-profile-reader) | Může zobrazovat profily CDN a jejich koncové body, ale nemůže je měnit. |
+| [CDN Profile Reader](#cdn-profile-reader) | Může zobrazovat profily CDN a jejich koncové body, ale nemůže je měnit. |
 | [Přispěvatel klasických sítí](#classic-network-contributor) | Umožňuje správu klasických sítí, ale ne přístup k nim. |
 | [Přispěvatel účet úložiště Classic](#classic-storage-account-contributor) | Umožňuje správu klasických účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíče účtu úložiště Classic](#classic-storage-account-key-operator-service-role) | Operátoři klíčů klasických účtů úložiště můžou vypisovat a znovu generovat klíče pro klasické účty úložiště. |
 | [Přispěvatel Classic virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje spravovat klasické virtuální počítače, ale ne přístup k nim a nikoli na virtuální sítě nebo účet úložiště, který jste připojení k. |
-| [Databáze MySQL cleardb – DB přispěvatele](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
+| [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
 | [Role čtenáře účet cosmos DB](#cosmos-db-account-reader-role) | Můžete číst data účtu Azure Cosmos DB. V tématu [Přispěvatel účet DocumentDB](#documentdb-account-contributor) pro správu účtů Azure Cosmos DB. |
 | [Přispěvatel objekt pro vytváření dat](#data-factory-contributor) | Umožňuje vytvářet a spravovat datové továrny i podřízené prostředky v nich. |
-| [Data Lake Analytics vývojáře](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
-| [Uživatel DevTest Labs](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
+| [Data Lake Analytics Developer](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
+| [DevTest Labs User](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) | Ke správě účtů Azure Cosmos DB. Azure Cosmos DB je dříve označované jako DocumentDB. |
 | [Přispěvatel účet inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
@@ -94,12 +94,12 @@ V tomto článku pouze adresy různé role, které existují ještě dnes. Když
 | [Operátor obnovení lokality](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
 | [Čtečka obnovení lokality](#site-recovery-reader) | Umožňuje zobrazovat stav služby Site Recovery, ale ne provádět jiné operace správy. |
 | [Přispěvatel databází SQL](#sql-db-contributor) | Umožňuje spravovat databáze SQL, ale ne přístup k nim. Navíc se nedají spravovat jejich zásady zabezpečení nebo jejich nadřazené servery SQL. |
-| [Správce zabezpečení SQL](#sql-security-manager) | Umožňuje vám spravovat zásady vztahující se k zabezpečení serverů a databází SQL, ale ne přístup k nim. |
+| [SQL Security Manager](#sql-security-manager) | Umožňuje vám spravovat zásady vztahující se k zabezpečení serverů a databází SQL, ale ne přístup k nim. |
 | [Přispěvatel serveru SQL](#sql-server-contributor) | Umožňuje vám spravovat servery a databáze SQL, ale ne přístup k nim ani jejich zásady vztahující se k zabezpečení. |
 | [Přispěvatel účtu úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíče účtu úložiště](#storage-account-key-operator-service-role) | Operátoři klíčů účtů úložiště můžou vypisovat a znovu generovat klíče pro účty úložiště. |
 | [Přispěvatel žádosti o podporu](#support-request-contributor) | Umožňuje vytvořit a spravovat žádosti o podporu. |
-| [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
+| [Traffic Manager Contributor](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Správce přístupu uživatelů](#user-access-administrator) | Umožňuje správu přístupu uživatelů k prostředkům Azure. |
 | [Přihlášení správce virtuálních počítačů](#virtual-machine-administrator-login) | – Uživatelé s touto rolí mají možnost přihlášení k virtuálnímu počítači pomocí Správce služby Windows nebo Linux oprávnění uživatele root. |
 | [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a ne virtuální sítě nebo účet úložiště, který jste připojení k. |
@@ -134,7 +134,7 @@ Umožňuje zobrazit všechny položky, ale ne provádět změny.
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 
 ## <a name="api-management-service-contributor"></a>Přispěvatel služby API Management
 Může spravovat službu a rozhraní API
@@ -327,14 +327,14 @@ Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytv
 | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
 | Microsoft.Network/virtualNetworks/read | Získat definici virtuální sítě |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Vrátí stav operace |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/čtení | Načte výsledky operace provedené na kontejneru ochrany. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/zálohování nebo akce | Provede zálohování chráněné položky. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/čtení | Načte výsledky operace provedené na chráněných položkách. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/čtení | Načte stav operace provedené na chráněných položkách. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/čtení | Vrátí podrobnosti o objektu chráněné položky |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/čtení | Načíst body obnovení pro chráněné položky |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints nebo obnovení nebo akce | Obnoví body obnovení pro chráněné položky |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems a zápis | Vytvoření zálohy chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/read | Načte výsledky operace provedené na kontejneru ochrany. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/backup/action | Provede zálohování chráněné položky. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/read | Načte výsledky operace provedené na chráněných položkách. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/read | Načte stav operace provedené na chráněných položkách. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Vrátí podrobnosti o objektu chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/restore/action | Obnoví body obnovení pro chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/write | Vytvoření zálohy chráněné položky |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Vrátí všechny registrované kontejnery |
 | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvářet a spravovat úlohy zálohování |
 | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | Zrušení úlohy |
@@ -361,8 +361,8 @@ Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytv
 | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/provisionInstantItemRecovery nebo akce | Zřízení rychlých položky obnovení pro chráněné položky |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/revokeInstantItemRecovery nebo akce | Odvolat rychlých položky obnovení pro chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Zřízení rychlých položky obnovení pro chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Odvolat rychlých položky obnovení pro chráněné položky |
 | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá výstrahy pro trezor služeb zotavení. |
@@ -380,10 +380,10 @@ Může zobrazovat služby zálohování, ale nemůže provádět změny.
 | --- | --- |
 | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Vrátí stav operace |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/čtení | Načte výsledky operace provedené na kontejneru ochrany. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/čtení | Načte výsledky operace provedené na chráněných položkách. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/čtení | Načte stav operace provedené na chráněných položkách. |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/čtení | Vrátí podrobnosti o objektu chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ operationResults/read | Načte výsledky operace provedené na kontejneru ochrany. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationResults/read | Načte výsledky operace provedené na chráněných položkách. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/operationsStatus/read | Načte stav operace provedené na chráněných položkách. |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Vrátí podrobnosti o objektu chráněné položky |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Vrátí všechny registrované kontejnery |
 | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Vrátí výsledek operace úlohy. |
 | Microsoft.RecoveryServices/Vaults/backupJobs/read | Vrátí všechny objekty úlohy |
@@ -405,7 +405,7 @@ Může zobrazovat služby zálohování, ale nemůže provádět změny.
 | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá výstrahy pro trezor služeb zotavení. |
 | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
 | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/read |  |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/čtení | Načíst body obnovení pro chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
 | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Vrátí výsledek operace úlohy exportu. |
 | Microsoft.RecoveryServices/Vaults/usages/read | Vrátí podrobnosti využití trezoru Recovery Services. |
 
@@ -728,7 +728,7 @@ Log Analytics Přispěvatel můžete načíst všechna data monitorování a upr
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 | Microsoft.Automation/automationAccounts/* |  |
 | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Umožňuje vypsat seznam přístupových klíčů pro účty úložiště. |
@@ -747,7 +747,7 @@ Log Analytics Přispěvatel můžete načíst všechna data monitorování a upr
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 | Microsoft.OperationalInsights/workspaces/analytics/query/action | Vyhledávání pomocí nový modul. |
 | Microsoft.OperationalInsights/workspaces/search/action | Provede vyhledávací dotaz. |
 | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
@@ -836,7 +836,7 @@ Můžete načíst všechna data monitorování a upravit nastavení monitorován
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 | Microsoft.AlertsManagement/alerts/* |  |
 | Microsoft.AlertsManagement/alertsSummary/* |  |
 | Microsoft.Insights/AlertRules/* | Pravidla výstrah pro čtení, zápisu a odstranění. |
@@ -861,7 +861,7 @@ Může číst veškerá monitorování data (metriky, protokoly, atd.). Viz tak�
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 | Microsoft.OperationalInsights/workspaces/search/action | Provede vyhledávací dotaz. |
 | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
 
@@ -1033,25 +1033,25 @@ Umožňuje provádět převzetí služeb při selhání a navrácení služeb po
 | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Přidružení brány |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Obnovit certifikát pro prostředky infrastruktury |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Přečtěte si žádné sítě. |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/čtení | Číst veškerá jeho mapování sítě |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read | Číst veškerá jeho mapování sítě |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/čtení | Číst všechny kontejnery ochrany |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read | Číst všechny položky, které jsou předmětem ochrany |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/čtení | Číst všechny položky, které jsou předmětem ochrany |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint nebo akce | Použít bod obnovení |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/failoverCommit nebo akce | Potvrzení převzetí služeb při selhání |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/plannedFailover nebo akce | Plánované převzetí služeb při selhání |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Potvrzení převzetí služeb při selhání |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Plánované převzetí služeb při selhání |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/čtení | Číst všechny chráněné položky |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/čtení | Číst všechny body obnovení replikace |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/repairReplication nebo akce | Oprava replikace |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems nebo opětovné ochrany nebo akce | Znovu aktivujte ochranu chráněné položky |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover nebo akce | Testovací převzetí služeb při selhání |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/reProtect/action | Znovu aktivujte ochranu chráněné položky |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/action | Testovací převzetí služeb při selhání |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup nebo akce | Vyčistit testovací převzetí služeb při selhání |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover nebo akce | Převzetí služeb při selhání |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService nebo akce | Aktualizace služby Mobility |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Převzetí služeb při selhání |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizace služby Mobility |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/čtení | Číst veškerá jeho mapování kontejnerů ochrany |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/čtení | Přečtěte si zprostředkovatelů služby obnovení |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider nebo akce | Aktualizujte zprostředkovatele |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/čtení | Číst všechny klasifikace úložiště |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/čtení | Číst veškerá jeho mapování klasifikace úložiště |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | Aktualizujte zprostředkovatele |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | Číst všechny klasifikace úložiště |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | Číst veškerá jeho mapování klasifikace úložiště |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny úlohy |
 | Microsoft.RecoveryServices/vaults/replicationJobs/* | Vytvářet a spravovat úlohy replikace |
 | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Číst všechny zásady |
@@ -1092,15 +1092,15 @@ Umožňuje zobrazovat stav služby Site Recovery, ale ne provádět jiné operac
 | Microsoft.RecoveryServices/vaults/replicationEvents/read | Číst všechny události |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Číst všechny prostředky infrastruktury |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Přečtěte si žádné sítě. |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/čtení | Číst veškerá jeho mapování sítě |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationNetworks/replicationNetworkMappings/read | Číst veškerá jeho mapování sítě |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/čtení | Číst všechny kontejnery ochrany |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/read | Číst všechny položky, které jsou předmětem ochrany |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectableItems/čtení | Číst všechny položky, které jsou předmětem ochrany |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/čtení | Číst všechny chráněné položky |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/čtení | Číst všechny body obnovení replikace |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectionContainerMappings/čtení | Číst veškerá jeho mapování kontejnerů ochrany |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/čtení | Přečtěte si zprostředkovatelů služby obnovení |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/čtení | Číst všechny klasifikace úložiště |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/čtení | Číst veškerá jeho mapování klasifikace úložiště |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/read | Číst všechny klasifikace úložiště |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications/replicationStorageClassificationMappings/read | Číst veškerá jeho mapování klasifikace úložiště |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny úlohy |
 | Microsoft.RecoveryServices/vaults/replicationJobs/read | Číst všechny úlohy |
 | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Číst všechny zásady |
@@ -1260,7 +1260,7 @@ Umožňuje správu přístupu uživatelů k prostředkům Azure.
 
 | **Akce** |  |
 | --- | --- |
-| * / Číst | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
+| */read | Přečtěte si prostředky všech typů, s výjimkou tajných klíčů. |
 | Microsoft.Authorization/* | Spravovat autorizace |
 | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
 
@@ -1301,9 +1301,9 @@ Umožňuje spravovat virtuální počítače, ale ne přístup k nim a ne virtu�
 | Microsoft.Network/virtualNetworks/read | Získat definici virtuální sítě |
 | Microsoft.Network/virtualNetworks/subnets/join/action | Připojí virtuální sítě |
 | Microsoft.RecoveryServices/locations/* |  |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems / * / číst |  |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/čtení | Vrátí podrobnosti o objektu chráněné položky |
-| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems a zápis | Vytvoření zálohy chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/*/read |  |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/read | Vrátí podrobnosti o objektu chráněné položky |
+| Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/ protectedItems/write | Vytvoření zálohy chráněné položky |
 | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Vytvoření zálohy záměr ochrany |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Vrátí všechny zásady ochrany |
 | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Vytvoří zásadu ochrany |

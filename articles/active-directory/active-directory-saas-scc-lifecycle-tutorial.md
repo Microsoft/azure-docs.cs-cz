@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s životního cyklu SCC | Microsoft Docs"
-description: "Další informace o použití životního cyklu SCC službou Azure Active Directory umožňující jednotné přihlašování, automatického zřizování a další!"
+title: 'Kurz: Azure Active Directory integrace s životního cyklu SCC | Microsoft Docs'
+description: Další informace o použití životního cyklu SCC službou Azure Active Directory umožňující jednotné přihlašování, automatického zřizování a další!
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Kurz: Azure Active Directory integrace s SCC životního cyklu
 Cílem tohoto kurzu je zobrazit integraci Azure a SCC životního cyklu.  
@@ -45,7 +45,7 @@ Cílem této části se popisují postup povolení integrace aplikace pro život
 
 1. V portálu Azure classic, v levém navigačním podokně klikněte na **služby Active Directory**.
    
-    ![Služby Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "služby Active Directory")
+    ![Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
 2. Z **Directory** seznamu, vyberte adresář, pro který chcete povolit integraci adresáře.
 3. Chcete-li otevřít zobrazení aplikací, v zobrazení adresáře, klikněte na tlačítko **aplikace** v horní nabídce.
    
@@ -61,7 +61,7 @@ Cílem této části se popisují postup povolení integrace aplikace pro život
     ![Galerie aplikací](./media/active-directory-saas-scc-lifecycle-tutorial/IC794121.png "galerii aplikací")
 7. V podokně výsledků vyberte **životního cyklu SCC**a potom klikněte na **Complete** tuto aplikaci přidat.
    
-    ![SCC LifeCycle](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "SCC LifeCycle")
+    ![Životní cyklus SCC](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "SCC životního cyklu")
    
 ## <a name="configure-single-sign-on"></a>Konfigurovat jednotné přihlašování
 
@@ -75,7 +75,7 @@ Cílem této části se popisují, jak uživatelům povolit ověřování na ži
 2. Na **jak chcete uživatelům se přihlásit životní cyklus SCC** vyberte **Microsoft Azure AD Single Sign-On**a potom klikněte na **Další**.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "nakonfigurovat jednotné přihlašování")
-3. Na **konfigurace adresy URL aplikace** stránky v **přihlašovací adresa URL** textové pole, zadejte adresu URL používají vaši uživatelé k přihlášení do aplikace životního cyklu SCC pomocí následujícího vzorce " *https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx* "a potom klikněte na **Další**.
+3. Na **konfigurace adresy URL aplikace** stránky v **přihlašovací adresa URL** textové pole, zadejte adresu URL používají vaši uživatelé k přihlášení do aplikace životního cyklu SCC pomocí následujícího vzorce "*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*"a potom klikněte na **Další**.
    
     ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "konfigurovat adresu URL aplikace")
 4. Na **nakonfigurovat jednotné přihlašování v cyklu SCC** klikněte na tlačítko **stáhnout metadata**a potom uložte soubor metadat místně na vašem počítači.
