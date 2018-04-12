@@ -1,31 +1,30 @@
 ---
-title: "Zobrazení nebo analýza shromážděných dat služby Azure Log Analytics | Microsoft Docs"
-description: "Tento článek obsahuje kurz popisující vytváření prohledávání protokolů a analýzu dat uložených v prostředku Log Analytics pomocí portálu pro prohledávání protokolů.  Tento kurz zahrnuje spuštění několika jednoduchých dotazů, které vrátí různé typy dat, a analýzu výsledků."
+title: Zobrazení nebo analýza shromážděných dat služby Azure Log Analytics | Microsoft Docs
+description: Tento článek obsahuje kurz popisující vytváření prohledávání protokolů a analýzu dat uložených v prostředku Log Analytics pomocí portálu pro prohledávání protokolů.  Tento kurz zahrnuje spuštění několika jednoduchých dotazů, které vrátí různé typy dat, a analýzu výsledků.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2017
+ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 
 V Log Analytics můžete využít prohledávání protokolů vytvářením dotazů pro analýzu shromážděných dat a předem vytvořené řídicí panely, které si můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání.  Nadefinovali jste shromažďování provozních dat z virtuálních počítačů Azure a protokolů aktivit a v tomto kurzu se teď naučíte:
 
 > [!div class="checklist"]
-> * Upgrade prostředku Azure Log Analytics na nový dotazovací jazyk 
 > * Jednoduché hledání dat událostí a použití funkcí k úpravě a filtrování výsledků 
 > * Práce s daty výkonu
 
@@ -42,15 +41,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Začněte otevřením portálu pro prohledávání protokolů.   
 
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-2. V podokně předplatného Log Analytics vyberte pracovní prostor a pak vyberte dlaždici **Prohledávání protokolů**.<br> ![Tlačítko Prohledávání protokolů](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
-
-V horní části stránky prostředku Log Analytics na portálu jste si možná všimli banneru vybízejícího k upgradu.<br> ![Upozornění na upgrade Log Analytics na webu Azure Portal](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
-
-V Log Analytics se nedávno zavedl nový dotazovací jazyk, který usnadňuje vytváření dotazů, korelaci dat z různých zdrojů a analýzu pro rychlé zjišťování trendů nebo problémů.
-
-Upgrade je jednoduchý.  Proces zahájíte kliknutím na banner s textem **Další informace a upgrade**.  Na stránce s informacemi o upgradu si pročtěte další informace o upgradu a pak klikněte na **Upgradovat**.
-
-Dokončení tohoto procesu trvá několik minut, během kterých můžete sledovat jeho průběh prostřednictvím možnosti nabídky **Oznámení**. Další informace o [výhodách nového dotazovacího jazyka](log-analytics-log-search-upgrade.md#why-the-new-language).
+2. V podokně předplatného Log Analytics vyberte pracovní prostor a pak vyberte dlaždici **Prohledávání protokolů**.<br><br> ![Tlačítko Prohledávání protokolů](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
 
 ## <a name="create-a-simple-search"></a>Vytvoření jednoduchého hledání
 Nejrychlejší způsob načtení nějakých dat, se kterými můžeme pracovat, je použít tento jednoduchý dotaz, který vrátí všechny záznamy v tabulce.  Pokud ke svému pracovnímu prostoru máte připojené nějaké klienty Windows nebo Linuxu, budete mít data v tabulce Event (Windows) nebo Syslog (Linux).
