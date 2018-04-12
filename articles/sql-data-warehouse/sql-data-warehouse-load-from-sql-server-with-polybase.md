@@ -1,11 +1,11 @@
 ---
-title: "Načtení dat z SQL Serveru do Azure SQL Data Warehouse (PolyBase) | Dokumentace Microsoftu"
-description: "Využívá bcp k exportu dat z SQL Serveru do plochých souborů, AZCopy k importu dat do Azure Blob Storage a PolyBase ke zpracování příjmu dat do Azure SQL Data Warehouse."
+title: Načtení dat z SQL Serveru do Azure SQL Data Warehouse (PolyBase) | Dokumentace Microsoftu
+description: Využívá bcp k exportu dat z SQL Serveru do plochých souborů, AZCopy k importu dat do Azure Blob Storage a PolyBase ke zpracování příjmu dat do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: f8c251fb9b8275eeea2940f8856669d2ef9f3549
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Načtení dat pomocí funkce PolyBase v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -81,7 +81,7 @@ Vyhledání vašeho koncového bodu Služby objektů blob:
     ![Klikněte na Objekty blob.](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
 4. Uložte si adresu URL koncového bodu Služby objektů blob pro pozdější použití.
    
-    ![Koncový bod Služby objektů blob](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
+    ![Koncový bod služby Blob service](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### <a name="c-find-your-azure-storage-key"></a>C. Vyhledání klíče účtu úložiště Azure
 Vyhledání klíče účtu úložiště Azure:
@@ -112,7 +112,7 @@ Viz také [Začínáme s nástrojem příkazového řádku AzCopy][latest versio
 ### <a name="e-explore-your-blob-storage-container"></a>E. Prozkoumání vašeho kontejneru úložiště objektů blob
 Zobrazení souboru, který jste nahráli do úložiště objektů blob:
 
-1. Přejděte zpět do okna vaší Služby objektů blob.
+1. Přejděte zpět do okna vaší služby Blob service.
 2. V části Kontejnery poklikejte na **datacontainer**.
 3. Pokud chcete prozkoumat cestu ke svým datům, klikněte na složku **datedimension**. Zobrazí se nahraný soubor **DimDate2.txt**.
 4. Pokud chcete zobrazit vlastnosti, klikněte na **DimDate2.txt**.

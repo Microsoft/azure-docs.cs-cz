@@ -1,11 +1,11 @@
 ---
-title: "Načtení dat do Azure SQL Data Warehouse – Data Factory | Microsoft Docs"
-description: "V tomto kurzu načte data do Azure SQL Data Warehouse pomocí Azure Data Factory a používá jako zdroj dat databázi systému SQL Server."
+title: Načtení dat do Azure SQL Data Warehouse – Data Factory | Microsoft Docs
+description: V tomto kurzu načte data do Azure SQL Data Warehouse pomocí Azure Data Factory a používá jako zdroj dat databázi systému SQL Server.
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Načtení dat do SQL Data Warehouse pomocí služby Data Factory
 
@@ -97,7 +97,7 @@ Objekt pro vytváření dat se teď říct o databázi systému SQL Server na m�
 
 Objekt pro vytváření dat se teď říct o informace o cíli.
 
-1. Informace o připojení SQL Data Warehouse se vyplní automaticky. Zadejte heslo pro uživatelské jméno. a klikněte na tlačítko **Další**.
+1. Informace o připojení SQL Data Warehouse se vyplní automaticky. Zadejte heslo pro toto uživatelské jméno. a klikněte na tlačítko **Další**.
 
     ![Konfigurace cílového](media/sql-data-warehouse-load-with-data-factory/configure-destination.png)
 
@@ -146,7 +146,7 @@ Zobrazí se průběh nasazení a výsledkem **nasazení** stránky.
 
 5. Chcete-li spustit tento zobrazení monitorování později, přejděte do SQL Data Warehouse, klikněte na tlačítko **načítání dat > Azure Data Factory**, vyberete továrnu a zvolit **monitorování existující načítání úlohy**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Migrace databáze do SQL Data Warehouse, najdete v části [Přehled migrace](sql-data-warehouse-overview-migrate.md).
 

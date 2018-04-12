@@ -1,13 +1,13 @@
 ---
-title: "Rychlý start Azure – Vytvoření virtuálního počítače s Windows pomocí PowerShellu | Microsoft Docs"
-description: "Rychle se naučíte, jak vytvářet virtuální počítače s Windows pomocí PowerShellu."
+title: Rychlý start Azure – Vytvoření virtuálního počítače s Windows pomocí PowerShellu | Dokumentace Microsoftu
+description: Rychle se naučíte, jak vytvářet virtuální počítače s Windows pomocí PowerShellu.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 393536ab2c485f2ecf844144016c212bd1d00c16
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: f1ab714407bd686ac8bffb23c7ba9ec8951902ef
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell"></a>Vytvoření virtuálního počítače s Windows pomocí PowerShellu
 

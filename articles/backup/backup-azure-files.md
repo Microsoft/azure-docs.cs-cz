@@ -2,18 +2,17 @@
 title: Zálohování Souborů Azure do Azure
 description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
 services: backup
-keywords: Nepřidávejte ani neupravujte klíčová slova, aniž byste se poradili se svým odborníkem na SEO.
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -32,7 +31,7 @@ Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachá
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
 Zálohování sdílených složek Azure je ve verzi Preview. Během využívání verze Preview mějte na paměti následující omezení:
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) nebo [geograficky redundantního úložiště jen pro čtení (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
+- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště (ZRS)](../storage/common/storage-redundancy-zrs.md) nebo [geograficky redundantního úložiště jen pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md).
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi.
 - PowerShell ani CLI nejsou pro ochranu souborů Azure dostupné.
 - Maximální počet plánovaných záloh je jedna za den.

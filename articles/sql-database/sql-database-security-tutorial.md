@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 06/28/2017
+ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 99b719c302bb02e96e4bfa0ea4588862e9f304e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 

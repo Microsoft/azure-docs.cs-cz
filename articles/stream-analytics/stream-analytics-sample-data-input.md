@@ -10,10 +10,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 305b767ee86de6c8b04fed17514a9092afc2d735
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="test-a-query-and-sample-input-in-azure-stream-analytics"></a>Testování dotazů a ukázkové vstup v Azure Stream Analytics 
 

@@ -1,13 +1,13 @@
 ---
-title: "Kurz ke skupinám dostupnosti pro virtuální počítače s Windows v Azure | Microsoft Docs"
-description: "Seznamte se se skupinami dostupnosti pro virtuální počítače s Windows v Azure."
-documentationcenter: 
+title: Kurz ke skupinám dostupnosti pro virtuální počítače s Windows v Azure | Microsoft Docs
+description: Seznamte se se skupinami dostupnosti pro virtuální počítače s Windows v Azure.
+documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 247f86dafe35d69dd742583d246862b739d9fe90
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 980dd0a96cee16598992f184579d2195c2be8b52
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-availability-sets"></a>Jak používat skupiny dostupnosti
 

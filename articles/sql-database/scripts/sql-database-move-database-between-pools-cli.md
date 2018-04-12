@@ -14,13 +14,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 07/05/2017
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 162617caae751d027deac0a2e2710d425b5a7101
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 37b083a2da74ba2f097dd49eb877f606b9a9cfc8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Přesun databáze SQL Azure v elastickém fondu SQL pomocí rozhraní příkazového řádku
 
