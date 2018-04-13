@@ -1,11 +1,11 @@
 ---
-title: "Úrovně výkonu služby Azure SQL Data Warehouse | Microsoft Docs"
-description: "Úvod do pružnost a úrovně výkonu optimalizované výpočetní dostupné v Azure SQL Data Warehouse."
+title: Úrovně výkonu služby Azure SQL Data Warehouse | Microsoft Docs
+description: Úvod do pružnost a úrovně výkonu optimalizované výpočetní dostupné v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 03881c12faed723999e97431e4a69fdeb6bfa10d
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Úrovně výkonu Azure SQL Data Warehouse (Preview)
 SQL Data Warehouse nabízí dvě úrovně výkonu, které jsou optimalizované pro analytické úlohy. Tento článek vysvětluje koncepty úrovně výkonu, které vám pomohou zvolit nejvhodnější úroveň výkonu pro úlohy. 
