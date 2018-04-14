@@ -1,9 +1,9 @@
 ---
-title: "Povolit Microsoft Windows Hello pro firmy ve vaší organizaci | Microsoft Docs"
-description: "Pokyny k nasazení povolit Microsoft Passport ve vaší organizaci."
+title: Povolit Microsoft Windows Hello pro firmy ve vaší organizaci | Microsoft Docs
+description: Pokyny k nasazení povolit Microsoft Passport ve vaší organizaci.
 services: active-directory
-documentationcenter: 
-keywords: "Konfigurace Microsoft Passport, Microsoft Windows Hello pro firmy nasazení"
+documentationcenter: ''
+keywords: Konfigurace Microsoft Passport, Microsoft Windows Hello pro firmy nasazení
 author: MarkusVi
 manager: mtillman
 tags: azure-classic-portal
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>Povolit Microsoft Windows Hello pro firmy ve vaší organizaci
 Po [připojení zařízení s Windows 10 připojených k doméně se službou Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md), proveďte postup pro povolení Microsoft Windows Hello pro firmy v organizaci:
