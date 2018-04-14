@@ -1,11 +1,11 @@
 ---
-title: "Migrovat existující Azure datového skladu do úložiště úrovně premium | Microsoft Docs"
-description: "Pokyny k migraci existující datový sklad storage úrovně premium"
+title: Migrovat existující Azure datového skladu do úložiště úrovně premium | Microsoft Docs
+description: Pokyny k migraci existující datový sklad storage úrovně premium
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 03/15/2018
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 3b43bc17b7f9cf80a9520c5c573be3a48d82e4e7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Migrace na storage úrovně premium datového skladu
 Azure SQL Data Warehouse nedávno zaveden [storage úrovně premium pro vyšší výkon, předvídatelnost][premium storage for greater performance predictability]. Existující datových skladů aktuálně na standardní úložiště lze nyní přenést do úložiště úrovně premium. Můžete využít výhod Automatická migrace, nebo pokud chcete řídit, kdy k migraci (které zahrnují výpadky), můžete provést migraci sami.

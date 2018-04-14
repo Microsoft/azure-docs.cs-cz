@@ -1,11 +1,11 @@
 ---
-title: "Migrace: Datového skladu nástroje Migrace | Microsoft Docs"
+title: 'Migrace: Datového skladu nástroje Migrace | Microsoft Docs'
 description: Migrace do SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 4d7ad981-ef31-4513-b337-50bdc4709c09
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Nástroj migrace data Warehouse (Preview)
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Kliknutím na možnost "migrace dat může generovat BCP skripty, které bude p�
 
 Po vyplnění výše uvedené parametry jednoduše muset kliknout na spuštění migrace a sadu dva balíčky se budou generovat do zadaného umístění. Spusťte soubor exportu aby bylo možné exportovat data ze zdroje migrace do plochých souborů a spusťte soubor importu Chcete-li importovat data do SQL Data Warehouse.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste migrovali některá data, podívejte se na postup [vyvíjet][develop].
 
 <!--Image references-->
