@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
 Webové služby Azure Machine Learning je vytvořen publikování experimentu, který obsahuje moduly, které se dají konfigurovat parametry. V některých případech můžete změnit chování modulu je spuštěn webovou službu. *Parametry webové služby* umožňují tuto úlohu. 
@@ -52,7 +52,7 @@ Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul
    * V části **zadejte cíl dat**, vyberte "Azure Blob Storage".
    * V části **zadejte typ ověřování**, vyberte "Účet".
    * Zadejte informace o účtu pro úložiště objektů blob v Azure. 
-     <p />
+
 3. Klikněte na ikonu napravo **cesta k objektu blob počínaje kontejneru parametr**. Vypadá takto:
    
    ![Ikona webové služby parametr][icon]
@@ -63,7 +63,7 @@ Jako příklad předpokládejme máme experimentu s [Export dat] [ writer] modul
 4. Chcete-li přejmenovat parametr webové služby, klikněte na název, zadejte "Blob cestu" a stiskněte klávesu **Enter** klíč. 
 5. Zadejte výchozí hodnotu pro parametr webové služby, klikněte na ikonu vpravo od názvu, vyberte možnost "Zadejte výchozí hodnotu", zadejte hodnotu (například "container1/output1.csv") a stiskněte klávesu **Enter** klíč.
    
-   ![Web Service Parameter][parameter]
+   ![Parametr webové služby][parameter]
 6. Klikněte na **Run** (Spustit). 
 7. Klikněte na tlačítko **nasazení webové služby** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webové služby** nasadit webovou službu.
 

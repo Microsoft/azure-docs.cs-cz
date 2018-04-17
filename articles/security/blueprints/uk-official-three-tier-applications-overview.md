@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - Spojené království – oficiální třívrstvá webové aplikace automatizace"
-description: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - Spojené království – oficiální třívrstvá webové aplikace automatizace"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - Spojené království – oficiální třívrstvá webové aplikace automatizace
+description: Zabezpečení Azure a dodržování předpisů plán, podle kterého - Spojené království – oficiální třívrstvá webové aplikace automatizace
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - UK OFICIÁLNÍHO třívrstvá webové aplikace automatizace
 
@@ -185,7 +185,7 @@ Tyto virtuální sítě se pořád spravují jako samostatné prostředky, ale z
 
 ### <a name="identity"></a>Identita
 
-**Active Directory Domain Services**: Tato architektura zajišťuje nasazení služby Active Directory Domain Services v Azure. Konkrétní doporučení pro implementaci služby Active Directory v Azure najdete v následujících článcích:
+**Active Directory Domain Services**: Tato architektura zajišťuje nasazení služby Active Directory Domain Services v Azure. Konkrétní doporučení ohledně implementace Active Directory v Azure najdete v následujících článcích:
 
 [Rozšíření do Azure Active Directory Domain Services (AD DS)](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain).
 
@@ -211,7 +211,7 @@ Zákazníci mohou také zvažte použití [model správy rozšířené zabezpeč
 
 **Správa prostředků**: spravuje prostředky Azure, jako jsou virtuální počítače, virtuální sítě a nástroje pro vyrovnávání zatížení seskupení společně do [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource). Řízení přístupu na základě role prostředků můžete omezit přístup jenom autorizovaným uživatelům přiřadit pak ke každé skupině prostředků.
 
-**Přístup k omezení řízení**: použití [řízení přístupu na základě Role](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) ke správě prostředků ve aplikace pomocí [vlastní role](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) RBAC lze použít k omezení operací, DevOps provádět na jednotlivých úrovních. Při udělování oprávnění, použijte [Princip nejnižších nutných oprávnění](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Přihlaste se všechny operace správy a provádět pravidelné audity zajistit, že byly naplánovat změny konfigurace.
+**Přístup k omezení řízení**: použití [řízení přístupu na základě Role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) ke správě prostředků ve aplikace pomocí [vlastní role](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC lze použít k omezení operací, DevOps provádět na jednotlivých úrovních. Při udělování oprávnění, použijte [Princip nejnižších nutných oprávnění](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1). Protokolujte všechny operace správy a provádějte pravidelné audity, abyste měli jistotu, že byly všechny změny konfigurace plánované.
 
 **Přístup k Internetu**: využívá tuto referenční architekturu [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) jako internetové brány a zatížení vyrovnávání. Někteří zákazníci mohou také zvažte použití virtuálních zařízení třetích stran sítě pro další vrstvy zabezpečení jako alternativu k síťových [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).
 

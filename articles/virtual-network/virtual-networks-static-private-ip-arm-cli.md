@@ -1,11 +1,11 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI)."
+title: Nakonfigurovat privátní IP adresy pro virtuální počítače - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí rozhraní příkazového řádku Azure
 
@@ -158,6 +158,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
 
    * `--nics`: Název síťové karty, ke kterému je připojený virtuální počítač.
    
+Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Načíst statickou privátní IP adresu informace pro virtuální počítač
 
@@ -267,9 +268,7 @@ Chcete-li změnit síťový adaptér pro virtuální počítač používá v př
 
     > [!NOTE]
     > Pokud je dostatečně velký pro mít více než jeden síťový adaptér virtuálního počítače, spusťte **odstranit síťových adaptérů sítě azure** příkaz k odstranění původního síťový adaptér.
-   
-## <a name="next-steps"></a>Další postup
-* Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
-* Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
-* Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+## <a name="next-steps"></a>Další postup
+
+Další informace o správě [nastavení IP adresy](virtual-network-network-interface-addresses.md).

@@ -12,16 +12,14 @@ ms.assetid: 2c10f989-7636-41bf-b7f7-c4b67ec0814f
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ddd27af47edd9bf4ffbf688ef6e5f12a34c681cf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -234,7 +232,7 @@ Azure Data Factory můžete použít jako součást pro vytváření dat kanál 
 
 Integrace služby SSIS (SQL Server) můžete použít ke spuštění úlohy Hive. Azure Feature Pack pro službu SSIS poskytuje následující součásti, které pracují se úlohy Hive v HDInsight.
 
-* [Azure HDInsight Hive Task][hivetask]
+* [Úloha Azure HDInsight Hive][hivetask]
 
 * [Správce připojení k Azure předplatného][connectionmanager]
 

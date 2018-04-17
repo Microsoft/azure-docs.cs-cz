@@ -1,11 +1,11 @@
 ---
-title: "Zabránit neočekávané náklady, spravovat fakturace - Azure | Microsoft Docs"
-description: "Zjistěte, jak neočekávané náklady na faktury Azure. Pomocí funkce sledování nákladů a správy pro předplatné Microsoft Azure."
-services: 
-documentationcenter: 
+title: Zabránit neočekávané náklady, spravovat fakturace - Azure | Microsoft Docs
+description: Zjistěte, jak neočekávané náklady na faktury Azure. Pomocí funkce sledování nákladů a správy pro předplatné Microsoft Azure.
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zabránit neočekávané poplatky s Azure fakturace a náklady na správu
 
@@ -62,7 +62,7 @@ Nastavení výstrah fakturace získat e-mailů, když vaše náklady na použit�
 
 Můžete chtít použít odhad náklady z cenové kalkulačky jako vodítko pro první výstraha.
 
-### <a name="spending-limit"></a>Zkontrolujte, pokud máte limitu útraty a automaticky
+### <a name="spending-limit"></a> Zkontrolujte, pokud máte limitu útraty a automaticky
 
 Pokud máte předplatné, které používá kredity, pak limit útraty je pro vás ve výchozím nastavení zapnuta. Tímto způsobem, když tráví vaše kredity platební karty není získat účtovat. Najdete v článku [úplný seznam Azure nabízí a dostupnost útrat](https://azure.microsoft.com/support/legal/offer-details/).
 
@@ -76,7 +76,7 @@ Klikněte na informační zprávě a postupujte podle výzev a odeberte limit ú
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Způsoby, jak sledovat vaše náklady při použití služby Azure
 
-### <a name="tags"></a>Přidání značek k prostředkům na fakturační data seskupit
+### <a name="tags"></a> Přidání značek k prostředkům na fakturační data seskupit
 
 Značky, které skupiny fakturační údaje můžete použít pro podporované služby. Například pokud spustíte několik virtuálních počítačů pro různé týmy, pak můžete značek ke kategorizaci náklady nákladové středisko (HR, marketing, finance) nebo prostředí (test předprodukční, produkčním prostředí). 
 
@@ -86,7 +86,7 @@ Značky zobrazí v rámci různých náklady na vytváření sestav zobrazení. 
 
 Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a>Pravidelně zkontrolujte na portálu a rozdělení nákladů a vypálíte rychlost
+### <a name="costs"></a> Pravidelně zkontrolujte na portálu a rozdělení nákladů a vypálíte rychlost
 
 Po získání vaší služby spuštěné pravidelně kontrolovat, kolik je jste nákladů. Můžete zobrazit aktuální výdaji a zápis míry v portálu Azure. 
 
@@ -138,20 +138,20 @@ Na konci fakturačního cyklu faktury bude k dispozici. Můžete také [stáhnou
 
 Pomocí našich fakturace rozhraní API prostřednictvím kódu programu získat data o využití. Použijte RateCard rozhraní API a rozhraní API využití společně k získání vašeho fakturovaná využití. Další informace najdete v tématu [proniknout do vaší spotřeby prostředků Microsoft Azure](billing-usage-rate-card-overview.md).
 
-## <a name="other-offers"></a>Další zdroje informací a zvláštních případech
+## <a name="other-offers"></a> Další zdroje informací a zvláštních případech
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA, CSP a sponzorství zákazníků
 Obraťte se na vašeho account manažera nebo partnera Azure, abyste mohli začít.
 
 | Nabídka | Zdroje a prostředky |
 |-------------------------------|-----------------------------------------------------------------------------------|
-| Smlouva Enterprise Agreement (EA) | [Portál EA](https://ea.azure.com/), [pomoci dokumentace](https://ea.azure.com/helpdocs), a [sestavy Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
+| Smlouva Enterprise (EA) | [Portál EA](https://ea.azure.com/), [pomoci dokumentace](https://ea.azure.com/helpdocs), a [sestavy Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (CSP) | Obraťte se na svého poskytovatele |
 | Sponzorství Azure | [Sponzorství portálu](https://www.microsoftazuresponsorships.com/) |
 
 Pokud spravujete IT ve velkých organizacích doporučujeme čtení [vygenerované uživatelské rozhraní Azure enterprise](../azure-resource-manager/resource-manager-subscription-governance.md) a [enterprise IT dokumentu white paper](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf ke stažení, pouze v angličtině).
 
-#### <a name="EA"></a>Náklady zobrazení v portálu Azure Preview Enterprise Agreement 
+#### <a name="EA"></a> Náklady zobrazení v portálu Azure Preview Enterprise Agreement 
 
 Zobrazení náklady Enterprise jsou aktuálně ve verzi Public Preview. Všimněte si položek:
 - Předplatné náklady jsou založená na využití a nespadá zálohách, poplatky za použití, zahrnuté množství, úpravy a daně. Skutečné poplatky se vypočítávají na úrovni registrace. 
@@ -172,7 +172,7 @@ Pokud chcete zobrazit, pokud jste správce účtu, přejděte na [okno předplat
 
 ![Snímek obrazovky vaše role při zobrazení odběry na portálu Azure](./media/billing-getting-started/sub-blade-view.PNG)
 
-Pokud si nejste správce účtu, pak někdo pravděpodobně vám Dal částečný přístup prostřednictvím [řízení přístupu na základě Role v Azure Active Directory](../active-directory/role-based-access-control-configure.md) (RBAC). Správa předplatných a změnu fakturační údaje, [najít správce účtu](billing-subscription-transfer.md#whoisaa) a požádejte je o provádět úlohy nebo [převést předplatné vám](billing-subscription-transfer.md).
+Pokud si nejste správce účtu, pak někdo pravděpodobně vám Dal částečný přístup prostřednictvím [řízení přístupu na základě Role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md) (RBAC). Správa předplatných a změnu fakturační údaje, [najít správce účtu](billing-subscription-transfer.md#whoisaa) a požádejte je o provádět úlohy nebo [převést předplatné vám](billing-subscription-transfer.md).
 
 Pokud váš správce účtu je už ve vaší organizaci a potřebujete spravovat fakturace, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory

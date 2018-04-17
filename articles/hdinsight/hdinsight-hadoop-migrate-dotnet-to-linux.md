@@ -1,36 +1,34 @@
 ---
-title: "MapReduce s Hadoop v HDInsight se systémem Linux - Azure pomocí rozhraní .NET | Microsoft Docs"
-description: "Další informace o použití aplikace .NET pro streamování MapReduce na HDInsight se systémem Linux."
+title: MapReduce s Hadoop v HDInsight se systémem Linux - Azure pomocí rozhraní .NET | Microsoft Docs
+description: Další informace o použití aplikace .NET pro streamování MapReduce na HDInsight se systémem Linux.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bff53af8f5c0b74cf0f69ba474d62ecdb7e20ce1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 36b8f51122bad6614e63dfc58e09e5c1ca08f83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro HDInsight se systémem Windows do HDInsight se systémem Linux
 
-Clustery HDInsight se systémem Linux použijte [Mono (https://mono-project.com)](https://mono-project.com) ke spouštění aplikací .NET. Mono umožňuje použití rozhraní .NET komponent, jako jsou například aplikace MapReduce s HDInsight se systémem Linux. V tomto dokumentu zjistěte, jak migrovat .NET řešení vytvořená pro clustery HDInsight se systémem Windows pro práci s Mono na HDInsight se systémem Linux.
+Clustery HDInsight se systémem Linux použijte [Mono (https://mono-project.com) ](https://mono-project.com) ke spouštění aplikací .NET. Mono umožňuje použití rozhraní .NET komponent, jako jsou například aplikace MapReduce s HDInsight se systémem Linux. V tomto dokumentu zjistěte, jak migrovat .NET řešení vytvořená pro clustery HDInsight se systémem Windows pro práci s Mono na HDInsight se systémem Linux.
 
 ## <a name="mono-compatibility-with-net"></a>Monofonní kompatibilitu s rozhraním .NET
 
 Je součástí HDInsight verze 3.6 mono verze 4.2.1. Další informace o verzi Mono zahrnuté do HDInsight naleznete v tématu [HDInsight verze součástí](hdinsight-component-versioning.md). K instalaci na konkrétní verzi Mono naleznete [instalovat nebo aktualizovat Mono](hdinsight-hadoop-install-mono.md) dokumentu.
 
-Další informace o kompatibilitě mezi Mono a rozhraní .NET najdete v tématu [Mono kompatibility (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
+Další informace o kompatibilitě mezi Mono a rozhraní .NET najdete v tématu [Mono kompatibility (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 
 > [!IMPORTANT]
 > Rozhraní framework SCP.NET je kompatibilní s Mono. Další informace o používání SCP.NET s Mono najdete v tématu [pomocí Visual Studio pro vývoj topologií C# pro Apache Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -58,7 +56,7 @@ Další informace o kompatibilitě mezi Mono a rozhraní .NET najdete v tématu 
 
 ## <a name="manual-portability-analysis"></a>Analýza ruční přenositelnost
 
-Proveďte ruční auditu podle informací uvedených v kódu [přenositelnost aplikace (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
+Proveďte ruční auditu podle informací uvedených v kódu [přenositelnost aplikace (http://www.mono-project.com/docs/getting-started/application-portability/) ](http://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
 
 ## <a name="modify-and-build"></a>Upravit a sestavení
 

@@ -1,26 +1,24 @@
 ---
-title: "Správa clusterů systému Hadoop v HDInsight pomocí prostředí PowerShell – Azure | Microsoft Docs"
-description: "Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí Azure PowerShell."
+title: Správa clusterů systému Hadoop v HDInsight pomocí prostředí PowerShell – Azure | Microsoft Docs
+description: Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí Azure PowerShell.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 tags: azure-portal
 author: mumian
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bfdfa754-18e5-4ef9-b0d6-2dbdcebc0283
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 04bb16d4779741d71f686f53a8f325243ab8499e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8163c2a0443e5e92be6e54e04f529db307bc965a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů systému Hadoop v HDInsight pomocí prostředí Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

@@ -1,11 +1,11 @@
 ---
-title: "Zabezpečení clusteru služby Azure Service Fabric | Microsoft Docs"
-description: "Další informace o zabezpečení scénáře pro cluster služby Azure Service Fabric a různých technologií, které můžete použít pro jejich implementaci."
+title: Zabezpečení clusteru služby Azure Service Fabric | Microsoft Docs
+description: Další informace o zabezpečení scénáře pro cluster služby Azure Service Fabric a různých technologií, které můžete použít pro jejich implementaci.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2017
-ms.author: chackdan
-ms.openlocfilehash: f0fdbd7fc4ec48037371ffa296cf668897e45b70
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: aljo
+ms.openlocfilehash: f60b428ba7fe93713af68851a3e9d246a3b1641b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster služby Azure Service Fabric je prostředek, který vlastníte. Je vaší povinností zabezpečit clusterů pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité, pokud používáte produkční zatížení v clusteru. Přestože je možné vytvořit zabezpečená cluster, pokud clusteru zpřístupní koncové body správy do veřejného Internetu, anonymní uživatelé k nim mohla připojit. Zabezpečená clustery nejsou podporovány pro úlohy v produkčním prostředí. 
@@ -103,7 +103,7 @@ Klientské certifikáty obvykle nejsou vydány certifikační Autority třetích
 > [!NOTE]
 > Všechny operace správy na cluster Service Fabric vyžadují certifikáty serveru. Klientské certifikáty nelze použít pro správu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vytvoření clusteru v Azure pomocí šablony Resource Manageru](service-fabric-cluster-creation-via-arm.md) 
 * [Vytvoření clusteru pomocí portálu Azure](service-fabric-cluster-creation-via-portal.md)
 

@@ -1,27 +1,25 @@
 ---
-title: "Hadoop součásti a verze - Azure HDInsight | Microsoft Docs"
-description: "Další komponent systému Hadoop a verzí v HDInsight a úrovně služeb, která je k dispozici v této cloudové distribuce softwaru Hortonworks Data Platform."
-keywords: "hadoop verze součástí ekosystému hadoop, komponent systému hadoop, jak zkontrolovat hadoop verze"
+title: Hadoop součásti a verze - Azure HDInsight | Microsoft Docs
+description: Další komponent systému Hadoop a verzí v HDInsight a úrovně služeb, která je k dispozici v této cloudové distribuce softwaru Hortonworks Data Platform.
+keywords: hadoop verze součástí ekosystému hadoop, komponent systému hadoop, jak zkontrolovat hadoop verze
 services: hdinsight
 editor: cgronlun
 manager: asadk
 author: bprakash
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 35ded349e9ced6463ece876ca1fd92423d20c625
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 813b05c5be4378ea6e57cb0b14fd8110e2772998
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Co jsou komponent systému Hadoop a verze, které jsou k dispozici v prostředí HDInsight?
 
@@ -80,7 +78,7 @@ V následujících tabulkách jsou uvedeny verzích HDInsight. Verze softwaru HD
 
 Následující tabulka uvádí verze služby HDInsight, které jsou k dispozici v portálu Azure, jakož i jiné metody nasazení, třeba prostředí PowerShell a .NET SDK.
 
-| HDInsight verze | Verze softwaru HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  K dispozici na portálu Azure | 
+| HDInsight verze | Verze softwaru HDP | OPERAČNÍM SYSTÉMEM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  K dispozici na portálu Azure | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | | |Ano |Ano |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5 září 2017 |31 může 2018 |Ano |Ano |
@@ -94,7 +92,7 @@ Následující tabulka uvádí verze služby HDInsight, které jsou k dispozici 
 
 Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozici na portálu Azure.
 
-| HDInsight verze | Verze softwaru HDP | VM OS | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  K dispozici na portálu Azure | 
+| HDInsight verze | Verze softwaru HDP | OPERAČNÍM SYSTÉMEM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  K dispozici na portálu Azure | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosinci 2016 |9 leden 2018 |Ano |Ne |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |27. června 2016 |31. července 2017 |Ano |Ne |
@@ -109,7 +107,7 @@ Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozic
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>Balíček zabezpečení Enterprise pro HDInsight
 
-Azure HDInsight je volitelné balíček, který můžete přidat jako součást pracovního postupu vytvoření clusteru v clusteru HDInsight. Balíček zabezpečení Enterprise podporuje:
+Podnikové zabezpečení je volitelné balíček, který můžete přidat jako součást pracovního postupu vytvoření clusteru v clusteru HDInsight. Balíček zabezpečení Enterprise podporuje:
 
 - Integrace se službou Active Directory pro ověřování.
 
@@ -237,11 +235,11 @@ V následujících tabulkách jsou uvedeny výchozí velikosti virtuálního po�
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | R Server |
   | --- | --- | --- | --- | --- | --- | --- |
   | HEAD: velikost virtuálního počítače výchozí |D3 v2 |D3 v2 | D13, D14 |A3 |D12 v2 |D12 v2 |
-  | HEAD: doporučené velikosti virtuálních počítačů |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3, A4, A5 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
+  | HEAD: doporučené velikosti virtuálních počítačů |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3 A4, A5 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
   | Worker: velikost virtuálního počítače výchozí |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
   | Pracovní: doporučené velikosti virtuálních počítačů |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
   | ZooKeeper: velikost virtuálního počítače výchozí | |A3 | |A2 | | |
-  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A3, A4, A5 | | A2, A3, A4 | | |
+  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A3 A4, A5 | | A2, A3, A4 | | |
   | Okraj: velikost virtuálního počítače výchozí | | | | | |Windows: D12 v2; Linux: D4 v2 |
   | Okraj: Doporučená velikost virtuálního počítače | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
@@ -249,13 +247,13 @@ V následujících tabulkách jsou uvedeny výchozí velikosti virtuálního po�
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | R Server |
   | --- | --- | --- | --- | --- | --- | --- |
   | HEAD: velikost virtuálního počítače výchozí |D3 |D3  | D13, D14 |A3 |D12 |D12 |
-  | HEAD: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |
+  | HEAD: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3 A4, A5 |D12, D13, D14 |D12, D13, D14 |
   | Worker: velikost virtuálního počítače výchozí |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Pracovní: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Pracovní: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12 D13, D14; Linux: D4, D14 D12 D13, |Windows: D12 D13, D14; Linux: D4, D14 D12 D13, |
   | ZooKeeper: velikost virtuálního počítače výchozí | |A2 | | A2 | | |
   | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2, A3, A4 | |A2, A3, A4 | | |
   | Hraniční: velikosti virtuálních počítačů výchozí | | | | | |Windows: D12; Linux: D4 |
-  | Okraj: doporučené velikosti virtuálních počítačů | | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Okraj: doporučené velikosti virtuálních počítačů | | | | | |Windows: D12 D13, D14; Linux: D4, D14 D12 D13, |
 
 > [!NOTE]
 > - HEAD se označuje jako *Nimbus* Storm clusteru typu.

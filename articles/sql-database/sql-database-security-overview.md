@@ -1,6 +1,6 @@
 ---
-title: "Přehled zabezpečení služby Azure SQL Database | Dokumentace Microsoftu"
-description: "Další informace o zabezpečení Azure SQL Database a SQL Server, včetně rozdíly mezi cloudové a místní SQL Server."
+title: Přehled zabezpečení služby Azure SQL Database | Dokumentace Microsoftu
+description: Další informace o zabezpečení Azure SQL Database a SQL Server, včetně rozdíly mezi cloudové a místní SQL Server.
 services: sql-database
 author: giladm
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -48,7 +48,7 @@ Další informace najdete v tématu [Začínáme s SQL DB Data zjišťování a 
 Služba SQL Database chrání vaše data omezením přístupu k databázi pomocí pravidel brány firewall, ověřovacími mechanismy vyžadujícími po uživatelích prokázání identity a autorizací přístupu k datům prostřednictvím členství a oprávnění na základě rolí, stejně jako prostřednictvím zabezpečení na úrovni řádku a dynamického maskování dat. Diskuzi o používání funkcí řízení přístupu ve službě SQL Database najdete v tématu [Řízení přístupu](sql-database-control-access.md).
 
 > [!IMPORTANT]
-> Správa databází a logických serverů v Azure se řídí tím, jaké role má uživatelský účet na portálu přiřazené. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-what-is.md).
+> Správa databází a logických serverů v Azure se řídí tím, jaké role má uživatelský účet na portálu přiřazené. Další informace v tomto článku najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../role-based-access-control/overview.md).
 >
 
 ### <a name="firewall-and-firewall-rules"></a>Brána firewall a pravidla brány firewall

@@ -1,24 +1,24 @@
 ---
 title: Aplikace s SQL serverem a Azure Site Recovery replikovat | Microsoft Docs
-description: "Tento článek popisuje, jak k replikaci systému SQL Server pomocí Azure Site Recovery pro funkce systému SQL Server po havárii."
+description: Tento článek popisuje, jak k replikaci systému SQL Server pomocí Azure Site Recovery pro funkce systému SQL Server po havárii.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: prateek9us
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 04/09/2018
 ms.author: pratshar
-ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: f0c43eee127857edfd1692dce825ef295be09f7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrana systému SQL Server pomocí zotavení po havárii serveru SQL a Azure Site Recovery
 
@@ -95,7 +95,7 @@ Tato tabulka shrnuje Naše doporučení pro integraci technologiemi BCDR SQL ser
 
 Nastavení služby Active Directory v obnovení sekundární lokality, systému SQL Server správně spouštět.
 
-* **Malý podnik**– s malý počet aplikací a jeden řadič domény pro místní lokalitu, pokud chcete převzít celou síť, doporučujeme používat Site Recovery replikaci replikace řadiče domény do sekundárního datacentra, nebo do Azure.
+* **Malý podnik**– s malý počet aplikací a jeden řadič domény pro místní lokalitu, pokud chcete převzít celou síť, doporučujeme používat Site Recovery replikaci replikace do sekundární řadič domény Datacenter, nebo do Azure.
 * **Středních a velkých podniků**– Pokud máte velký počet aplikací, doménové struktury služby Active Directory a chcete selhání převezme aplikace nebo zatížení, doporučujeme nastavit další řadič domény v sekundárního datacentra, nebo v Azure. Pokud používáte skupiny dostupnosti Always On provést obnovení na vzdálený server, doporučujeme že nastavit jiný další řadič domény v sekundární lokalitě nebo v Azure, použijte pro obnovenou instanci systému SQL Server.
 
 Podle pokynů v tomto článku předpokládá, že je řadič domény k dispozici v sekundárním umístění. [Další informace](site-recovery-active-directory.md) o ochraně Active Directory pomocí Site Recovery.

@@ -4,22 +4,22 @@ description: Data platformy pro virtuální počítač vědecké účely Data.
 keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c9c85ebed6382a4188db028fbfb35675751bce76
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b3f340006801287383c2afb2924706affbd77a51
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-platforms"></a>Datové platformy
 
@@ -67,10 +67,10 @@ SQL Server je nainstalován ve standardním způsobem. Se nachází v `C:\Progra
 | | |
 | ------------- | ------------- |
 | Co je to?   | Samostatné (jeden uzel v procesu) instance Oblíbené platformy Apache Spark, systém pro rychlé rozsáhlé zpracování dat a strojové učení     |
-| Podporované DSVM edice      | Linux <br /> Windows (Experimental)      |
+| Podporované DSVM edice      | Linux <br /> Windows (experimentální)      |
 | Typické použití      | * Rychlý vývoj aplikací Spark/PySpark místně s menší datové sady a později ho nasadit na velkých clusterech Spark, jako je například Azure HDInsight<br/> * Kontextu Spark serveru Microsoft R testu <br />* Použití SparkML nebo společnosti Microsoft otevřený zdroj [MMLSpark](https://github.com/Azure/mmlspark) knihovny sestavovat aplikace ML  |
 | Odkazy na ukázky      |    Ukázka Jupyter: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Server Microsoft R (Spark kontextu): /dsvm/samples/MRS/MRSSparkContextSample.R |
-| Na DSVM souvisejících nástrojích       | PySpark, Scala<br/>Jupyter (Spark/PySpark jádra)<br/>Microsoft R Server, SparkR, Sparklyr <br />Apache procházení      |
+| Na DSVM souvisejících nástrojích       | PySpark, Scala<br/>Jupyter (Spark/PySpark jádra)<br/>Server, SparkR, Sparklyr Microsoft R <br />Apache procházení      |
 
 ### <a name="how-to-use-it"></a>Způsobu jeho použití
 Můžete spouštět Spark a odesílání úloh Spark na příkazovém řádku s `spark-submit` nebo `pyspark` příkazy. Můžete také vytvořit poznámkového bloku Jupyter tak, že vytvoříte nový poznámkový blok s jádrem Spark. 

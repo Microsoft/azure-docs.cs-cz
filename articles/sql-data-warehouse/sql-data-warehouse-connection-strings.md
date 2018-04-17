@@ -1,27 +1,22 @@
 ---
-title: "Ovladače pro SQL Data Warehouse | Microsoft Docs"
-description: "Připojovací řetězce a ovladače pro datový sklad SQL"
+title: Připojovací řetězce pro Azure SQL Data Warehouse | Microsoft Docs
+description: Připojovací řetězce pro datový sklad SQL
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: 5c91f423-b550-4734-8094-c7f2c418ac8d
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 6950fff1c899510ce9291393aa3f6cb9774c994d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 3445de83ff29ecf60cbd6d021b431f444284858c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="drivers-for-azure-sql-data-warehouse"></a>Ovladače pro Azure SQL Data Warehouse
+# <a name="connection-strings-for-azure-sql-data-warehouse"></a>Připojovací řetězce pro Azure SQL Data Warehouse
 Můžete připojit k SQL Data Warehouse s protokoly několik různých aplikací, jako [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] a [JDBC][JDBC]. Níže jsou příklady řetězců připojení pro každý protokol.  Portálu Azure můžete také použít k vytvoření připojovacího řetězce.  Chcete-li vytvořit připojovací řetězec pomocí portálu Azure, přejděte do okna databáze, v části *Essentials* klikněte na *zobrazit databázové připojovací řetězce*.
 
 ## <a name="sample-adonet-connection-string"></a>Připojovací řetězec ADO.NET ukázka

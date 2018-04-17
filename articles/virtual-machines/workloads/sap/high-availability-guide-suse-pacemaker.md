@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8db6857ba40f128c78e42eedba80e0d0062bbb27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení kardiostimulátor na SUSE Linux Enterprise Server v Azure
 
@@ -184,7 +184,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 
    Příkaz seznam tří ID zařízení. Doporučujeme, abyste pomocí ID, který začíná scsi-3, v příkladu výše to je
    
-   **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
+   **/dev/disk/by-ID/SCSI-360014053fe4da371a5a4bb69a419a4df**
 
 1. **[1]**  Vytvořte SBD zařízení
 
@@ -229,7 +229,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 
 Následující položky jsou předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
 
-1. **[A]** Update SLES
+1. **[A]**  Aktualizovat SLES
 
    <pre><code>
    sudo zypper update
@@ -396,7 +396,7 @@ STONITH zařízení používá objekt služby k autorizaci s Microsoft Azure. Po
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Vytvořit vlastní roli pro ochrannou agenta
 
-Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte poskytnout oprávnění objektu služby spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru. Pokud jste již nevytvořili vlastní roli, můžete vytvořit pomocí [prostředí PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell#create-a-custom-role) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli#create-a-custom-role)
+Objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Musíte poskytnout oprávnění objektu služby spuštění a zastavení (zrušit přidělení) všechny virtuální počítače v clusteru. Pokud jste již nevytvořili vlastní roli, můžete vytvořit pomocí [prostředí PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role)
 
 Použijte následující obsah pro vstupní soubor. Je nutné přizpůsobit obsah ke svým předplatným, nahraďte c276fc76-9cd4-44c9-99a7-4fd71546436e a e91d47c4-76f3-4271-a796-21b4ecfe3624 ID předplatného. Pokud máte pouze jedno předplatné, odeberte druhou položku AssignableScopes.
 

@@ -3,7 +3,7 @@ title: Připojení Azure File storage na virtuální počítače s Linuxem pomoc
 description: Tom, jak připojit Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB 2.0 rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: vlivech
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
-ms.author: v-livech
-ms.openlocfilehash: de200c9b18b9d27325bcb92e0d27e83ad7c65811
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: iainfou
+ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení Azure File storage na virtuální počítače s Linuxem pomocí protokolu SMB
 
-Tento článek ukazuje, jak využívat službu Azure File storage na virtuální počítač s Linuxem pomocí připojení protokolu SMB 2.0 rozhraní příkazového řádku Azure. Azure File storage nabízí sdílené složky v cloudu přes standardní protokol SMB. K provedení těchto kroků můžete také využít [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Požadavky:
+Tento článek ukazuje, jak využívat službu Azure File storage na virtuální počítač s Linuxem pomocí připojení protokolu SMB 2.0 rozhraní příkazového řádku Azure. Azure File storage nabízí sdílené složky v cloudu přes standardní protokol SMB. K provedení těchto kroků můžete také využít [Azure CLI 1.0](mount-azure-file-storage-on-linux-using-smb-nodejs.md). Požadavky:
 
 - [Účet Azure](https://azure.microsoft.com/pricing/free-trial/)
 - [Soubory veřejného a privátního klíče SSH](mac-create-ssh-keys.md)
@@ -49,14 +49,14 @@ mkdir -p /mnt/mymountpoint
 ### <a name="mount-the-file-storage-smb-share-to-the-mount-point"></a>Připojte soubor úložiště do přípojného bodu sdílená složka SMB
 
 ```bash
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ### <a name="persist-the-mount-after-a-reboot"></a>Zachovat připojení po restartu systému
 Uděláte to tak, přidejte následující řádek na `/etc/fstab`:
 
 ```bash
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+//myaccountname.file.core.windows.net/mysharename /mnt/mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
 
 ## <a name="detailed-walkthrough"></a>Podrobný postup
@@ -121,7 +121,7 @@ Pro tento podrobný návod jsme vytvořte součásti potřebné nejprve vytvoři
     Vytvořte místní adresář v souborovém systému Linux připojit sdílenou složku SMB. Nic zapsané nebo čtení z adresáře místní připojení se předají do složky SMB, který je hostován na úložiště File. K vytvoření místního adresáře v /mnt/mymountdirectory, použijte následující příklad:
 
     ```bash
-    sudo mkdir -p /mnt/mymountdirectory
+    sudo mkdir -p /mnt/mymountpoint
     ```
 
 6. Připojení sdílené složky SMB do místního adresáře.
@@ -129,7 +129,7 @@ Pro tento podrobný návod jsme vytvořte součásti potřebné nejprve vytvoři
     Zadejte vlastní uživatelské jméno účtu úložiště a klíč účtu úložiště přihlašovacích údajů k připojení následujícím způsobem:
 
     ```azurecli
-    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountdirectory -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
+    sudo mount -t cifs //myStorageAccount.file.core.windows.net/mystorageshare /mnt/mymountpoint -o vers=3.0,username=mystorageaccount,password=mystorageaccountkey,dir_mode=0777,file_mode=0777
     ```
 
 7. Zachovat připojení SMB prostřednictvím restartování počítače.
@@ -137,11 +137,11 @@ Pro tento podrobný návod jsme vytvořte součásti potřebné nejprve vytvoři
     Po restartování virtuálního počítače s Linuxem, je při vypnutí nepřipojené připojené sdílenou složku SMB. Pro opětovné připojení do sdílené složky protokolu SMB na spuštění, přidejte řádek na Linux /etc/fstab. Linux používá soubor fstab zobrazte seznam systémů souborů, které je potřeba připojit během spouštění. Přidání sdílené složky SMB zajistí, že sdílené složky úložiště bude trvale připojeného souboru systém pro virtuální počítač s Linuxem. Přidání úložiště File sdílená složka SMB na nový virtuální počítač je možné, pokud používáte cloudové init.
 
     ```bash
-    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>Další postup
 
-- [Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Přidání disku do virtuálního počítače s Linuxem](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Šifrování disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](using-cloud-init.md)
+- [Přidání disku do virtuálního počítače s Linuxem](add-disk.md)
+- [Šifrování disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](encrypt-disks.md)

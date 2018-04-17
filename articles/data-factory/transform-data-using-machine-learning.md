@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: bd72fd957948e77df6ffb0b310c590132c663235
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8d87facdf1724ddbcb3bb6d7c189d8ff41d44973
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 
 1. **Vytvoření experimentu školení**. Tento krok se provádí pomocí nástroje Azure ML Studio. ML studio se spolupráce vizuální vývojové prostředí, které používáte a natrénuje a otestuje model prediktivní analýzy pomocí Cvičná data.
 2. **Převést na prediktivní experiment**. Jakmile model byl vyzkoušen s existujícími daty a budete chtít použít skóre pro nová data, připravte a zjednodušit experimentu pro vyhodnocování.
-3. **Nasadit jako webovou službu**. Vyhodnocování experimentu můžete publikovat jako Azure webové služby. Můžete posílat data do modelu přes tento koncový bod webové služby a přijímat výsledek předpovědi u tabulátorů modelu.  
+3. **Nasadit jako webovou službu**. Vyhodnocování experimentu můžete publikovat jako Azure webové služby. Můžete posílat data do modelu přes tento koncový bod webové služby a přijímat výsledek předpovědi z modelu.  
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivita provedení dávky Machine Learning v V1](v1/data-factory-azure-ml-batch-execution-activity.md).
@@ -51,7 +51,9 @@ Vytvoříte **Azure Machine Learning** propojená služba propojení webové slu
 
 ```JSON
 {
+    "type" : "linkedServices",
     "name": "AzureMLLinkedService",
+    "apiVersion" : "2017-09-01-preview",
     "properties": {
         "type": "AzureML",
         "typeProperties": {

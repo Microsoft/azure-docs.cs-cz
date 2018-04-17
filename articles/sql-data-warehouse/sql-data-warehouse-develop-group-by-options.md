@@ -1,28 +1,27 @@
 ---
-title: "Seskupit podle možností v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro implementaci skupiny pomocí možnosti v Azure SQL Data Warehouse na vývoj řešení."
+title: Skupiny pomocí možnosti v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro implementaci skupiny pomocí možnosti v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: f95a1e43-768f-4b7b-8a10-8a0509d0c871
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 98d2ecfd2f38d086e50f3103b8598b1dccc9323b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možností v SQL Data Warehouse
-[GROUP BY] [ GROUP BY] klauzule slouží ke shromáždění dat pro souhrn sadu řádků. Je také několik možností, které rozšiřují jeho funkce, které musí být práce na incidentu kolem jako nejsou podporovány přímo pomocí Azure SQL Data Warehouse.
+Tipy pro implementaci skupiny pomocí možnosti v Azure SQL Data Warehouse na vývoj řešení.
+
+## <a name="what-does-group-by-do"></a>GROUP BY k čemu slouží?
+
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) klauzule T-SQL agreguje data souhrnu sadu řádků. GROUP BY obsahuje některé možnosti, které SQL Data Warehouse nepodporuje. Tyto možnosti mají alternativní řešení.
 
 Tyto možnosti jsou
 
@@ -31,10 +30,9 @@ Tyto možnosti jsou
 * Klauzule GROUP BY datové KRYCHLE
 
 ## <a name="rollup-and-grouping-sets-options"></a>Souhrn a seskupení nastaví možnosti
-Nejjednodušší možnost je použít `UNION ALL` místo toho provést kumulativní z nespoléhá se na explicitní syntaxe. Výsledkem je přesně stejný
+Nejjednodušší možnost je UNION ALL místo toho chcete použít k provedení kumulativní z nespoléhá se na explicitní syntaxe. Výsledkem je přesně stejný
 
-Dole je příklad skupiny pomocí příkazu `ROLLUP` možnost:
-
+Následující příklad pomocí příkazu GROUP BY s souhrn možností:
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -48,13 +46,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Pomocí KUMULATIVNÍ jsme odeslali žádost o následující agregace:
+Pomocí KUMULATIVNÍ požadavky v předchozím příkladu agregace následující:
 
 * Zemí a oblastí
 * Země
 * Celkový součet
 
-K nahraďte ho budete muset použít `UNION ALL`; určení agregace explicitně potřeba vrátí stejné výsledky:
+Pokud chcete nahradit KUMULATIVNÍ a vrátí stejné výsledky, můžete použít UNION ALL a explicitně zadáte požadované agregace:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -81,10 +79,10 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Pro všechny GROUPING SETS budeme muset udělat, je použít stejný objekt zabezpečení, ale vytvořit pouze UNION ALL oddíly pro úrovně agregace, které chcete najdete v části
+Pokud chcete nahradit GROUPING SETS, ukázka princip platí. Potřebujete vytvořit UNION ALL oddíly pro úrovně agregace, které chcete zobrazit.
 
 ## <a name="cube-options"></a>Možnosti datové krychle
-Je možné vytvořit SKUPINU podle s datovou KRYCHLI UNION ALL přístup. Problém je, že kód může být pracné a nepraktické. Toto riziko lze snížit můžete použít tento pokročilejší přístup.
+Je možné vytvořit SKUPINU podle s datovou KRYCHLI UNION ALL přístup. Problém je, že kód může být pracné a nepraktické. Toto riziko lze snížit, můžete použít tento pokročilejší přístup.
 
 Použijeme v předchozím příkladu.
 
@@ -119,9 +117,9 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Výsledky funkce CTAS si můžete prohlédnout níže:
+Na obrázku výsledky funkce CTAS:
 
-![][1]
+![Seskupit podle datové krychle](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
 Druhým krokem je zadání cílové tabulku pro ukládání dočasné výsledky:
 
@@ -170,7 +168,7 @@ BEGIN
 END
 ```
 
-Nakonec se vrací výsledky načtením jednoduše z dočasné tabulky #Results
+A konečně můžete se vrátit výsledky podle jednoduše čtení z dočasné tabulky #Results
 
 ```sql
 SELECT *
@@ -179,19 +177,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Kód rozdělení do oddílů a generování opakování konstrukce kód stane lepší spravovat a údržba.
+Kód rozdělení do oddílů a generování opakování konstrukce, kód se změní na správu a udržovatelný.
 
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/library/ms177673.aspx
-
-
-<!--Other Web references-->

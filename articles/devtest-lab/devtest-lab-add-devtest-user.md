@@ -1,11 +1,11 @@
 ---
-title: "Přidat vlastníků a uživatelé v Azure DevTest Labs | Microsoft Docs"
-description: "Přidat vlastníků a uživatelé v Azure DevTest Labs buď pomocí portálu Azure nebo pomocí prostředí PowerShell"
+title: Přidat vlastníků a uživatelé v Azure DevTest Labs | Microsoft Docs
+description: Přidat vlastníků a uživatelé v Azure DevTest Labs buď pomocí portálu Azure nebo pomocí prostředí PowerShell
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
 ms.service: devtest-lab
 ms.workload: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d0fdd8441143e2d2eb49399a10dc12d38fbf6823
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníků a uživatelé v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Přístup v Azure DevTest Labs řídí [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md). Pomocí RBAC, můžete oddělit povinností v rámci týmu do *role* kde můžete poskytnout pouze takovou úroveň přístupu, které jsou nezbytné pro uživatele k provádění svých úloh. Jsou tři tyto role RBAC *vlastníka*, *uživatel DevTest Labs*, a *Přispěvatel*. V tomto článku se dozvíte, jaké akce lze provést v každé tři hlavní role RBAC. Odtud zjistíte, jak přidat uživatele do testovacího prostředí - prostřednictvím portálu i pomocí skriptu prostředí PowerShell a jak přidat uživatele na úrovni předplatného.
+Přístup v Azure DevTest Labs řídí [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md). Pomocí RBAC, můžete oddělit povinností v rámci týmu do *role* kde můžete poskytnout pouze takovou úroveň přístupu, které jsou nezbytné pro uživatele k provádění svých úloh. Jsou tři tyto role RBAC *vlastníka*, *uživatel DevTest Labs*, a *Přispěvatel*. V tomto článku se dozvíte, jaké akce lze provést v každé tři hlavní role RBAC. Odtud zjistíte, jak přidat uživatele do testovacího prostředí - prostřednictvím portálu i pomocí skriptu prostředí PowerShell a jak přidat uživatele na úrovni předplatného.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Akce, které mohou být prováděny v každé role
 Existují tři hlavní role, můžete přiřadit uživatele:

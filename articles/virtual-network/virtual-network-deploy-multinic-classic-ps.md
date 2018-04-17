@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače (klasické) s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell."
+title: Vytvoření virtuálního počítače (klasické) s více síťovými kartami - prostředí Azure PowerShell | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí prostředí PowerShell.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 824af3f0f5f6d42341f6f1dc94104f6009b568b8
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: a86a3cecffa50143afbb7aad20b1a40baeb87c38
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí prostředí PowerShell
 
@@ -46,7 +46,7 @@ Virtuální počítače back-end závisí na vytvoření v následujících zdro
 
 * **Back-end podsítě**. Databázové servery budou součástí samostatnou podsíť, oddělit provoz. Níže uvedený skript předpokládá, že tuto podsíť existovat ve virtuální síti s názvem *WTestVnet*.
 * **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.
-* **Skupina dostupnosti**. Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
+* **Skupina dostupnosti:** Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
 
 ### <a name="step-1---start-your-script"></a>Krok 1 – spustit skript
 Si můžete stáhnout úplné skript prostředí PowerShell použít [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Postupujte podle pokynů níže změňte skript pro práci ve vašem prostředí.

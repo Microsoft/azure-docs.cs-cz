@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Doporučené postupy pro používání Azure Data Lake Store
 V tomto článku se dozvíte o osvědčených postupech a důležité informace týkající se práce s Azure Data Lake Store. Tento článek obsahuje informace o zabezpečení, výkonu, odolnost proti chybám a monitorování pro Data Lake Store. Před Data Lake Store práci s skutečně velkých objemů dat v služby, jako je Azure HDInsight byl složitý. Bylo sdílení dat mezi více účtů úložiště Blob tak, aby bylo možné dosáhnout petabajty úložiště a optimální výkon v tomto měřítku. S Data Lake Store jsou odstraněna většina pevných limitů pro velikost a výkon. Existují však stále některé aspekty, které tento článek se týká, abyste měli k dosažení nejlepšího výkonu s Data Lake Store. 
@@ -26,11 +26,13 @@ V tomto článku se dozvíte o osvědčených postupech a důležité informace 
 
 Azure Data Lake Store nabízí přístup POSIX ovládací prvky a podrobné auditování pro Azure Active Directory (Azure AD) uživatele, skupiny a objekty služby. Tato řízení přístupu můžete nastavit pro existující soubory a složky. Řízení přístupu lze také vytvořit výchozí hodnoty, které můžete použít pro nové soubory nebo složky. Pokud jsou oprávnění nastavená do stávající složky a podřízených objektů, musí být šířený rekurzivně na každém objektu oprávnění. Pokud existuje velký počet souborů, šíření oprávnění může trvat dlouhou dobu. Doba, může být v rozsahu mezi objekty 30 – 50 zpracovaných za sekundu. Proto naplánujte skupiny složek strukturu a uživatel správně. Jinak může to způsobit neočekávané prodlevy a problémy při práci s daty. 
 
-Předpokládejme, že máte složku s 100 000 podřízené objekty. Pokud pořídíte dolní hranice 30 objektů zpracovaných za sekundu, chcete-li aktualizovat oprávnění pro celou složku může trvat jednu hodinu. Další informace o Data Lake Store seznamy ACL jsou k dispozici na [řízení přístupu v Azure Data Lake Store](data-lake-store-access-control.md). Pro zlepšení výkonu na přiřazení rekurzivně seznamy ACL můžete použít nástroj příkazového řádku služby Azure Data Lake. Nástroj vytváří více vláken a logiku navigační rekurzivní rychle použít seznamy řízení přístupu na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentace](https://github.com/Azure/data-lake-adlstool) a [stáhne](http://aka.ms/adlstool-download) pro tento nástroj najdete na Githubu.
+Předpokládejme, že máte složku s 100 000 podřízené objekty. Pokud pořídíte dolní hranice 30 objektů zpracovaných za sekundu, chcete-li aktualizovat oprávnění pro celou složku může trvat jednu hodinu. Další informace o Data Lake Store seznamy ACL jsou k dispozici na [řízení přístupu v Azure Data Lake Store](data-lake-store-access-control.md). Pro zlepšení výkonu na přiřazení rekurzivně seznamy ACL můžete použít nástroj příkazového řádku služby Azure Data Lake. Nástroj vytváří více vláken a logiku navigační rekurzivní rychle použít seznamy řízení přístupu na miliony souborů. Nástroj je k dispozici pro Linux a Windows a [dokumentace](https://github.com/Azure/data-lake-adlstool) a [stáhne](http://aka.ms/adlstool-download) pro tento nástroj najdete na Githubu. Tyto stejné vylepšení výkonu se dá nastavit podle vlastních nástrojů napsané pomocí Data Lake Store [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) sady SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Použití skupin zabezpečení a jednotlivé uživatele 
 
-Při práci s velkým objemem dat v Data Lake Store, pravděpodobně objekt služby používá k povolení služeb, jako je Azure HDInsight pro práci s daty. Však může být případech, kde jednotlivé uživatelé potřebovat přístup k datům také. V takových případech musíte použít skupiny zabezpečení Azure Active Directory místo přiřazování jednotlivých uživatelů do složek a souborů. Jakmile skupinu zabezpečení je přiřazena oprávnění k přidávání nebo odebírání uživatelů ze skupiny nevyžaduje žádné aktualizace do Data Lake Store. 
+Při práci s velkým objemem dat v Data Lake Store, pravděpodobně objekt služby používá k povolení služeb, jako je Azure HDInsight pro práci s daty. Však může být případech, kde jednotlivé uživatelé potřebovat přístup k datům také. V takových případech musíte použít Azure Active Directory [skupiny zabezpečení](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory) místo přiřazování jednotlivých uživatelů do složek a souborů. 
+
+Jakmile skupinu zabezpečení je přiřazena oprávnění k přidávání nebo odebírání uživatelů ze skupiny nevyžaduje žádné aktualizace do Data Lake Store. To také pomáhá zajistit nepřekračují maximální počet [32 přístupu a výchozí seznamy ACL](../azure-subscription-service-limits.md#data-lake-store-limits) (to zahrnuje čtyři stylu POSIX seznamy ACL, které jsou vždy přidružený všechny soubory a složky: [vlastnícím uživatele](data-lake-store-access-control.md#the-owning-user), [vlastnícím skupiny](data-lake-store-access-control.md#the-owning-group), [maska](data-lake-store-access-control.md#the-mask-and-effective-permissions)a další).
 
 ### <a name="security-for-groups"></a>Zabezpečení pro skupiny 
 

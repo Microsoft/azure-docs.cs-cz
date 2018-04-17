@@ -1,11 +1,11 @@
 ---
-title: "Pro vytvoření aplikace Azure AD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services použít 2.0 rozhraní příkazového řádku | Microsoft Docs"
-description: "Toto téma ukazuje, jak používat 2.0 rozhraní příkazového řádku k vytvoření aplikace Azure AD a nakonfigurovat ji pro přístup k rozhraní API služby Azure Media Services."
+title: Pro vytvoření aplikace Azure AD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services použít 2.0 rozhraní příkazového řádku | Microsoft Docs
+description: Toto téma ukazuje, jak používat 2.0 rozhraní příkazového řádku k vytvoření aplikace Azure AD a nakonfigurovat ji pro přístup k rozhraní API služby Azure Media Services.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 205e554fa42b1c28ed78add3e84c046855875872
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b640455b151d0e5d4701b8c076ee1a587b92f5b6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Pomocí rozhraní příkazového řádku 2.0 vytvořit aplikaci AAD a konfigurovat ho pro přístup k rozhraní API služby Azure Media Services
 
@@ -61,7 +61,7 @@ Například je může použít jeden z následujících úrovní:
 
 Další informace najdete v tématu [vytvořit objekt služby Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Viz také [Manage Role-Based řízení přístupu pomocí rozhraní příkazového řádku Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md). 
+Viz také [Manage Role-Based řízení přístupu pomocí rozhraní příkazového řádku Azure](../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Další postup
 

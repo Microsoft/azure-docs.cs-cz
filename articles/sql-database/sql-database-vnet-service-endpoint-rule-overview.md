@@ -1,6 +1,6 @@
 ---
-title: "Koncové body služby virtuální sítě a pravidla pro Azure SQL Database | Microsoft Docs"
-description: "Podsíť označte jako koncový bod služby virtuální sítě. Potom koncový bod jako virtuální sítě se pravidlo seznamu řízení přístupu vaší databázi SQL Azure. Pak můžete SQL Database přijme komunikaci ze všech virtuálních počítačů a dalších uzlů v podsíti."
+title: Koncové body služby virtuální sítě a pravidla pro Azure SQL Database | Microsoft Docs
+description: Podsíť označte jako koncový bod služby virtuální sítě. Potom koncový bod jako virtuální sítě se pravidlo seznamu řízení přístupu vaší databázi SQL Azure. Pak můžete SQL Database přijme komunikaci ze všech virtuálních počítačů a dalších uzlů v podsíti.
 services: sql-database
 ms.service: sql-database
 author: MightyPen
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -140,7 +140,7 @@ Pro databázi SQL Azure funkci pravidla virtuální sítě má následující om
 Pokud používáte koncové body služby pro databázi SQL Azure, projděte si následující aspekty:
 
 - **Odchozí do veřejných IP adres Azure SQL Database je požadována**: skupiny zabezpečení sítě (Nsg) musí být otevřené pro IP adresy databáze SQL Azure umožňující připojení. Můžete to provést pomocí NSG [služby značky](../virtual-network/security-overview.md#service-tags) pro databázi SQL Azure.
-- **Azure databáze PostgreSQL a MySQL nejsou podporovány**: koncové body služby nejsou podporovány pro databázi Azure pro PostgreSQL nebo MySQL. Povolování koncových bodů služby SQL Database bude přerušení připojení k těmto službám. Máme zmírnění dopadů pro tento; Obraťte se na  *dmalik@microsoft.com* .
+- **Azure databáze PostgreSQL a MySQL nejsou podporovány**: koncové body služby nejsou podporovány pro databázi Azure pro PostgreSQL nebo MySQL. Povolování koncových bodů služby SQL Database bude přerušení připojení k těmto službám. Máme zmírnění dopadů pro tento; Obraťte se na *dmalik@microsoft.com*.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -178,7 +178,7 @@ Azure SQLDB má funkce synchronizace dat, která se připojuje k vaší databáz
 Pokud se rozhodnete tuto funkci používat s účtem úložiště, který používá Azure SQL Server, můžete spustit na problémy. Následuje seznam a diskuzi o Azure SQLDB funkce, které jsou ovlivněny to.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase se běžně používá k načtení dat do Azure SQLDW z úložiště účtů. Pokud účet úložiště, který se načítání dat z omezuje přístup pouze na sadu podsítí virtuální sítě, dojde k přerušení připojení k z PolyBase k účtu. Je zmírnění dopadů pro tento; Obraťte se na  *dmalik@microsoft.com*  Další informace.
+PolyBase se běžně používá k načtení dat do Azure SQLDW z úložiště účtů. Pokud účet úložiště, který se načítání dat z omezuje přístup pouze na sadu podsítí virtuální sítě, dojde k přerušení připojení k z PolyBase k účtu. Je zmírnění dopadů pro tento; Obraťte se na *dmalik@microsoft.com* Další informace.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Objekt Blob Azure SQLDB auditování
 Auditování objektů BLOB doručí protokolů auditu na účtu úložiště. Pokud tento účet úložiště používá funkce koncové body služby ECYKLACI dojde k přerušení připojení z Azure SQLDB k účtu úložiště.
@@ -315,7 +315,7 @@ Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v po
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]:../role-based-access-control/overview.md
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 

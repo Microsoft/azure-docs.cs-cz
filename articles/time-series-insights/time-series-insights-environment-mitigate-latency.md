@@ -1,6 +1,6 @@
 ---
-title: "Postup monitorování a snižování omezení v Azure časové řady přehledy | Microsoft Docs"
-description: "Tento článek popisuje, jak monitorovat, diagnostikovat a zmírnit problémy s výkonem, které způsobí latenci a omezení v Azure časové řady přehledy."
+title: Postup monitorování a snižování omezení v Azure časové řady přehledy | Microsoft Docs
+description: Tento článek popisuje, jak monitorovat, diagnostikovat a zmírnit problémy s výkonem, které způsobí latenci a omezení v Azure časové řady přehledy.
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ec16f20723e4a613c953363da6cf6b463de829a9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnit omezení ke snížení latence v Azure časové řady přehledy
 Při konfiguraci vašeho prostředí překračuje příchozích dat, může zaznamenat latenci nebo omezení v Azure časové řady přehledy.
@@ -41,7 +41,7 @@ Výstrahy můžete pomoci diagnostikovat a zmírnit problémy s latencí způsob
 
 2. Klikněte na tlačítko **přidat metriky upozornění**.  
 
-    ![Přidání metriky upozornění](media/environment-mitigate-latency/add-metric-alert.png)
+    ![Přidat upozornění metriky](media/environment-mitigate-latency/add-metric-alert.png)
 
 Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 
@@ -52,10 +52,17 @@ Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 |**Příjem příchozích dat přijatých zpráv**   | Počet zpráv číst ze zdroje událostí pro všechny služby Event Hubs nebo centra IoT.        |
 |**Příjem příchozích dat uložené bajtů**     | Celková velikost událostí uložených a k dispozici pro dotaz. Velikost se počítá pouze na hodnotu vlastnosti.        |
 |**Příjem příchozích dat uložené události**     |   Počet plochou události uložené a k dispozici pro dotaz.      |
+|**Příchozí zpráva přístupů časové prodlení**    |  Rozdíl mezi časem, který zprávy je zařazených do fronty ve zdroji událostí a v době zpracování ve vstupní.      |
+|**Funkce Lag počet zpráv přijatých přístupů příjem příchozích dat**    |  Rozdíl mezi pořadové číslo poslední zprávu ve frontě události zdroje oddílu a pořadí číslo zpracovávána v příchozí zprávy.      |
+
 
 ![Latence](media/environment-mitigate-latency/latency.png)
 
-Jednoho technika je nastavit **uložené události příchozího** výstrahu > = prahová hodnota mírně nižší než vaše kapacita celkový prostředí pro 2 hodin.  Tato výstraha může pomoct pochopit, pokud jste neustále na kapacitě, který označuje vysokou pravděpodobnost latence.  
+Pokud jste jsou omezené, zobrazí se hodnota *příjem příchozích dat přijatých přístupů zpráva časové prodlení*, která vás informuje o tom, kolik minut za TSI je z skutečný čas zpráva dotkne zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Počet zpráv přijatých přístupů příchozího prodleva* musí také mít hodnotu, umožňuje určit, kolik zpráv za můžete jsou.  Nejjednodušší způsob, jak získat zachycena je zvýšit kapacitu pro vaše prostředí na velikost, která vám umožní překonat rozdíl.  
+
+Například pokud máte prostředí S1 jedné jednotky a že je zpráva pěti milionů prodleva, může zvýšit velikost vašeho prostředí a šesti jednotky pro kolem denně pro získání zachycena.  Vám může zhoršit i dál catch až rychlejší.  Je to běžné occurance při počátečním zřizování prostředí, zejména při připojení k zdroje událostí, který už má události v něm, nebo při hromadné nahrávání spoustu historická data.
+
+Jiné technika je nastavit **uložené události příchozího** výstrahu > = prahová hodnota mírně nižší než vaše kapacita celkový prostředí pro 2 hodin.  Tato výstraha může pomoct pochopit, pokud jste neustále na kapacitě, který označuje vysokou pravděpodobnost latence.  
 
 Například pokud máte tři jednotky S1 zřízený (nebo 2100 událostí za minutu příchozího kapacity), můžete nastavit **uložené události příchozího** výstrahy pro > = 1900 události další 2 hodiny. Pokud jsou neustále překročení této mezní hodnoty a proto, která aktivuje upozornění, budete pravděpodobně pod připravené.  
 
@@ -66,6 +73,6 @@ Ke snížení omezení nebo zaznamenat latenci, je nejlepší způsob, jak oprav
 
 Latence a omezování tak, že správně nakonfigurujete prostředí pro množství dat, který chcete analyzovat se můžete vyhnout. Další informace o tom, jak přidat kapacitu pro vaše prostředí najdete v tématu [škálování prostředí](time-series-insights-how-to-scale-your-environment.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Pro další kroky odstraňování [Diagnostikujte a řešení problémů ve vašem prostředí časové řady Insights](time-series-insights-diagnose-and-solve-problems.md).
 - Další pomoc získáte zahájit konverzaci na [fórum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Můžete také kontaktovat [podporu Azure](https://azure.microsoft.com/support/options/) možnosti odborné pomoci řešení.

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače (klasické) s více síťovými kartami - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí rozhraní příkazového řádku Azure (CLI) 1.0."
+title: Vytvoření virtuálního počítače (klasické) s více síťovými kartami - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač (klasický) s více síťovými kartami pomocí rozhraní příkazového řádku Azure (CLI) 1.0.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: b436e41e-866c-439f-a7c7-7b4b041725ef
 ms.service: virtual-network
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5569209d3628003b3f3e169b227e069b920c03f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d2631e531368df4f00d7ffd8fef585038658797b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí Azure CLI 1.0
 
@@ -45,7 +45,7 @@ Virtuální počítače back-end závisí na vytvoření v následujících zdro
 
 * **Účet úložiště pro datové disky**. Pro lepší výkon datové disky v databázových serverech použije technologii SSD jednotky (SSD Solid-State Drive), která vyžaduje účet úložiště premium. Zajistěte, aby umístění Azure, můžete nasadit pro podporu služby storage úrovně premium.
 * **Síťové adaptéry**. Každý virtuální počítač bude mít dva síťové adaptéry, jeden pro přístup k databázi a jeden pro správu.
-* **Skupina dostupnosti**. Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
+* **Skupina dostupnosti:** Všechny databázové servery se zařadí do jedné dostupnosti nastavte, ujistěte se, že nejméně jedna z virtuálních počítačů je nahoru a během údržby.
 
 ### <a name="step-1---start-your-script"></a>Krok 1 – spustit skript
 Si můžete stáhnout skript úplné bash používá [zde](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Proveďte následující kroky, chcete-li změnit skript pro práci ve vašem prostředí:

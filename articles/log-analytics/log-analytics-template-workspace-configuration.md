@@ -1,30 +1,30 @@
 ---
-title: "Pomocí šablony Azure Resource Manager vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs"
-description: "Šablony Azure Resource Manager můžete použít k vytvoření a konfigurace analýzy protokolů pracovních prostorů."
+title: Pomocí šablony Azure Resource Manager vytvořit a nakonfigurovat pracovní prostor Log Analytics | Microsoft Docs
+description: Šablony Azure Resource Manager můžete použít k vytvoření a konfigurace analýzy protokolů pracovních prostorů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Spravovat pomocí šablony Azure Resource Manager analýzy protokolů
 Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory analýzy protokolů. Mezi příklady úloh, které můžete provádět s šablonami patří:
 
-* Vytvoření pracovního prostoru
-* Přidat řešení
+* Vytvořit pracovní prostor včetně nastavení cenové úrovně 
+* Přidání řešení
 * Vytvoření uložených hledání
 * Vytvořit skupinu počítačů
 * Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
@@ -34,32 +34,108 @@ Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/re
 * Přidat agenta analýzy protokolů pro virtuální počítač Azure
 * Konfigurace analýzy protokolů pro data indexu shromažďována pomocí Azure diagnostics
 
-Tento článek obsahuje šablonu vzorků, které ilustrovat některé konfigurace, kterou můžete provést z šablony.
+Tento článek obsahuje šablony vzorků, které ilustrovat některé z konfigurací, která je možné provádět pomocí šablony.
 
-## <a name="api-versions"></a>Verze rozhraní API
-V příkladu v tomto článku je pro [upgradovat pracovní prostor analýzy protokolů](log-analytics-log-search-upgrade.md).  Pokud chcete použít starší verze pracovní prostor, musíte změnit syntaxe dotazů na starší verze jazyka a změnit verzi rozhraní API pro každý zdroj.  Následující tabulka uvádí verze rozhraní API pro prostředky používané v tomto příkladu.
+## <a name="create-a-log-analytics-workspace"></a>Vytvořit pracovní prostor analýzy protokolů
+Následující příklad vytvoří pracovního prostoru pomocí šablony ze svého místního počítače. Šablona JSON je nakonfigurován pouze s výzvou k zadání názvu pracovního prostoru a určí výchozí hodnotu pro parametry, které se pravděpodobně použije jako standardní konfigurace ve vašem prostředí.  
 
-| Prostředek | Typ prostředku | Starší verze rozhraní API | Upgradovaná verze rozhraní API |
-|:---|:---|:---|:---|
-| Pracovní prostor   | Pracovní prostory    | 2015-11-01-preview | 2017-03-15-preview |
-| Search      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
-| Zdroj dat | zdroje dat   | 2015-11-01-preview | 2015-11-01-preview |
-| Řešení    | Řešení     | 2015-11-01-preview | 2015-11-01-preview |
+Tyto parametry nastavit výchozí hodnotu:
 
+* Umístění – výchozí hodnota je východní USA
+* SKU – výchozí nastavení na nové za GB cenové úrovně vydané v dubnu 2018 cenový model
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvořit a nakonfigurovat pracovní prostor Log Analytics
+>[!WARNING]
+>Pokud vytváříte nebo konfigurace pracovní prostor analýzy protokolů v odběru, který má vyjádřit výslovný souhlas do nové duben 2018 cenový model, pouze platné analýzy protokolů cenová úroveň je **PerGB2018**. 
+>
+
+### <a name="create-and-deploy-template"></a>Vytvoření a nasazení šablony
+
+1. Zkopírujte a vložte do souboru následující syntaxi JSON:
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. Upravte šablonu, aby vyhovovalo vašim požadavkům.  Zkontrolujte [Microsoft.OperationalInsights/workspaces šablony](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odkaz na další, jaké vlastnosti a hodnoty jsou podporovány. 
+3. Uložte tento soubor jako **deploylaworkspacetemplate.json** do místní složky.
+4. Jste připraveni k nasazení této šablony. Můžete použít PowerShell nebo příkazový řádek pro cretae pracovním prostoru.
+
+   * Pro prostředí PowerShell použijte následující příkazy ze složky se šablonou:
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * Pro příkazový řádek použijte následující příkazy ze složky se šablonou:
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která zahrnuje výsledek:<br><br> ![Příklad výsledků po dokončení nasazení](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvořit a nakonfigurovat pracovní prostor analýzy protokolů
 Znázorňuje následující ukázka šablony postup:
 
-1. Vytvořit pracovní prostor, včetně nastavení uchovávání dat
-2. Přidat řešení do pracovního prostoru
-3. Vytvoření uložených hledání
-4. Vytvořit skupinu počítačů
-5. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
-6. Z počítače se systémem Linux shromáždit čítače výkonu logický Disk (% použitých uzlů; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
-7. Shromažďovat události procesu syslog z počítače se systémem Linux
-8. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítače se systémem Windows
-9. Shromažďovat čítač výkonu paměť v MB k dispozici z počítače se systémem Windows
-11. Shromažďovat protokoly služby IIS a protokoly událostí systému Windows zapsaných správcem Azure diagnostiky do účtu úložiště
+1. Přidat řešení do pracovního prostoru
+2. Vytvoření uložených hledání
+3. Vytvořit skupinu počítačů
+4. Povolit shromažďování protokolů služby IIS z počítačů s nainstalovaným agentem systému Windows
+5. Z počítače se systémem Linux shromáždit čítače výkonu logický Disk (% použitých uzlů; Volné megabajty; % Využitého místa; Přenosy disku/s; Čtení disku/s; Zápis disku/s)
+6. Shromažďovat události procesu syslog z počítače se systémem Linux
+7. Shromažďování událostí chyb a upozornění z protokolu událostí aplikace z počítače se systémem Windows
+8. Shromažďovat čítač výkonu paměť v MB k dispozici z počítače se systémem Windows
+9. Shromažďovat protokoly služby IIS a protokoly událostí systému Windows zapsaných správcem Azure diagnostiky do účtu úložiště
 
 ```json
 {
@@ -77,10 +153,11 @@ Znázorňuje následující ukázka šablony postup:
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>Příklad Resource Manager šablony
 Galerie pro šablonu Azure rychlý start zahrnuje několik šablon pro analýzy protokolů, včetně:

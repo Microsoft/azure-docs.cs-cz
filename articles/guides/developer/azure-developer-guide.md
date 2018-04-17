@@ -1,12 +1,12 @@
 ---
-title: "Get spuštěn Průvodce pro vývojáře v Azure | Microsoft Docs"
-description: "Toto téma obsahuje základní informace pro vývojáře, kteří chtějí Začínáme pomocí platformy Microsoft Azure pro potřeby jejich vývoj."
-services: 
-cloud: 
-documentationcenter: 
+title: Get spuštěn Průvodce pro vývojáře v Azure | Microsoft Docs
+description: Toto téma obsahuje základní informace pro vývojáře, kteří chtějí Začínáme pomocí platformy Microsoft Azure pro potřeby jejich vývoj.
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b1cda302636d8bd4d0f14536f186c7b4951c09c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -295,7 +295,7 @@ Když povolíte přístup k prostředkům Azure, vždycky je osvědčeným postu
 
     >**Kdy použít**: když potřebujete vyladění správy přístupu pro uživatele a skupiny.
 
-    >**Začínáme**: Další informace najdete v tématu [Začínáme se správou přístupu na portálu Azure](../../active-directory/role-based-access-control-what-is.md).
+    >**Začínáme**: Další informace najdete v tématu [Začínáme se správou přístupu na portálu Azure](../../role-based-access-control/overview.md).
 
 -   **Hlavní objekty služeb**: Kromě zajištění přístupu k objekty uživatele a skupiny, můžete udělit stejný přístup k objektu služby.
 

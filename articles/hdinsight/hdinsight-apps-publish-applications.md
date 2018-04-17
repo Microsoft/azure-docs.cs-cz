@@ -1,8 +1,8 @@
 ---
-title: "Publikování aplikací Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak vytvořit aplikaci HDInsight a potom ho publikovat na webu Azure Marketplace."
+title: Publikování aplikací Azure HDInsight | Microsoft Docs
+description: Zjistěte, jak vytvořit aplikaci HDInsight a potom ho publikovat na webu Azure Marketplace.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: aef54782c200ad0be261959705b9b10cd0ebb064
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight v Azure Marketplace
 Aplikace Azure HDInsight můžete nainstalovat na clusteru HDInsight se systémem Linux. V tomto článku se dozvíte, jak publikovat aplikace HDInsight do Azure Marketplace. Obecné informace o publikování v Azure Marketplace najdete v tématu [publikování nabídky v Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
@@ -99,8 +97,8 @@ Publikování aplikace HDInsight:
 3. Zadejte název a potom vyberte **vytvořte novou šablonu řešení**.
 4. Pokud jste ještě nezaregistrovali vaší organizace, vyberte **účet Centra vývojářů pro vytvoření a zapojte se do programu Azure**.  Další informace najdete v tématu [vytvoření účtu Microsoft Developer](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
 5. Vyberte **definovat některé topologie začít**. Šablona řešení je "nadřazená" pro všechny její topologie. V jedné šabloně nabídky nebo řešení můžete definovat více topologií. Pokud je nabídka vložena do přípravy, je vložena se svým topologiím. 
-6. Zadejte název topologie a potom vyberte  **+** .
-7. Zadejte novou verzi a potom vyberte  **+** .
+6. Zadejte název topologie a potom vyberte **+**.
+7. Zadejte novou verzi a potom vyberte **+**.
 8. Nahrát soubor .zip, který jste vytvořili, když jste [zabalené aplikace](#package-application).  
 9. Vyberte **požádat o certifikaci**. Tým certifikace společnosti Microsoft soubory zkontroluje a topologii certifikuje.
 

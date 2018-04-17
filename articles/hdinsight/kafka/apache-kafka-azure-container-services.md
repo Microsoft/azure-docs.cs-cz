@@ -1,24 +1,24 @@
 ---
-title: "Azure Container Service pomocí Kafka v HDInsight | Microsoft Docs"
-description: "Další informace o použití Kafka v HDInsight z bitové kopie kontejneru hostované v Azure Container Service (AKS)."
+title: Azure Container Service pomocí Kafka v HDInsight | Microsoft Docs
+description: Další informace o použití Kafka v HDInsight z bitové kopie kontejneru hostované v Azure Container Service (AKS).
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 53342e11476a307bb6af356eb40fe51928041822
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Pomocí služby Azure kontejneru Kafka v HDInsight
 
@@ -158,7 +158,7 @@ V tomto okamžiku Kafka a Azure Container Service jsou v komunikaci prostřednic
 
 1. Vytvořte téma Kafka, které používá testovací aplikace. Informace o vytváření Kafka témata najdete v tématu [vytvoření clusteru s podporou Kafka](apache-kafka-get-started.md) dokumentu.
 
-2. Stáhněte si ukázková aplikace z [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test). 
+2. Stáhněte si ukázková aplikace z [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test). 
 
 3. Upravit `index.js` soubor a změňte následující řádky:
 

@@ -1,24 +1,24 @@
 ---
-title: "Použijte nástroj pro migraci Power BI Embedded | Microsoft Docs"
-description: "Power BI Embedded nástroj pro migraci můžete použít pro kopírování sestavy z kolekce pracovních prostorů Power BI do Power BI Embedded."
+title: Použijte nástroj pro migraci Power BI Embedded | Microsoft Docs
+description: Power BI Embedded nástroj pro migraci můžete použít pro kopírování sestavy z kolekce pracovních prostorů Power BI do Power BI Embedded.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b7b5089045daf6dd88fcd84e316b2bd44f8c927
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4f76b1efb509745653bfde0926f56032030f7d47
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-power-bi-embedded-migration-tool"></a>Použijte nástroj pro migraci Power BI Embedded
 
@@ -262,7 +262,7 @@ Potom můžete aktualizovat připojovací řetězec pro datovou sadu v rámci sl
 * [Aktualizovat DirectQuery připojovací řetězec v Power BI Embedded](migrate-code-snippets.md#update-directquery-connection-string-in-power-bi-embedded)
 * [Nastavení přihlašovacích údajů DirectQuery v Power BI Embedded](migrate-code-snippets.md#set-directquery-credentials-in-power-bi-embedded)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když sestavy byly migrovány z kolekce pracovních prostorů Power BI pro Power BI Embedded, teď můžete aktualizovat aplikace a začít vložení sestavy do tohoto pracovního prostoru aplikace.
 

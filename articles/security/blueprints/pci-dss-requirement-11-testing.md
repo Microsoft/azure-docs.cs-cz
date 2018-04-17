@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – testování požadavky"
-description: "PCI DSS požadavek 11"
+title: Azure platebních zpracování plán, podle kterého – testování požadavky
+description: PCI DSS požadavek 11
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>Testování požadavky pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-11"></a>PCI DSS požadavek 11
@@ -43,8 +43,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure nedovoluje ani povolit bezdrátové připojení v prostředí sítě Azure. Interní zabezpečení týmy pravidelně hledá podvodný bezdrátové signály čtvrtletně a podvodný signály jsou prozkoumat a odebrat. Zákazníci nemáte oprávnění k nasazení bezdrátové technologie v prostředí Azure. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure nedovoluje ani povolit bezdrátové připojení v prostředí sítě Azure. Interní zabezpečení týmy pravidelně hledá podvodný bezdrátové signály čtvrtletně a podvodný signály jsou prozkoumat a odebrat. Zákazníci nemáte oprávnění k nasazení bezdrátové technologie v prostředí Azure. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -56,8 +56,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.1](#pci-dss-requirement-11-1). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.1](#pci-dss-requirement-11-1). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -70,8 +70,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.1](#pci-dss-requirement-11-1). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.1](#pci-dss-requirement-11-1). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -88,8 +88,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure provádí prověřování čtvrtletně interních a externích ohrožení zabezpečení. Kvalifikované pracovníky provádí kontroly. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure provádí prověřování čtvrtletně interních a externích ohrožení zabezpečení. Kvalifikované pracovníky provádí kontroly. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
 
 
 
@@ -101,8 +101,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí kontroly pro chyby zabezpečení v podkladové infrastruktury ve oboru. Microsoft Azure implementuje ohrožení zabezpečení kontrolu serverové operační systémy, databáze a síťová zařízení s nástrojů pro vyhledávání odpovídající ohrožení zabezpečení. Azure webové aplikace jsou prohledávány s příslušnou odvětví kontrolu řešení. Čtvrtletně jsou prováděny prověřování ohrožení zabezpečení.<br /><br />Znovu prochází probíhají podle potřeby pro všechny systémy, dokud nebudou vyřešeny všechny "s vysokým rizikem" ohrožení zabezpečení (jak je určeno v požadavek 6.1). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí kontroly pro chyby zabezpečení v podkladové infrastruktury ve oboru. Microsoft Azure implementuje ohrožení zabezpečení kontrolu serverové operační systémy, databáze a síťová zařízení s nástrojů pro vyhledávání odpovídající ohrožení zabezpečení. Azure webové aplikace jsou prohledávány s příslušnou odvětví kontrolu řešení. Čtvrtletně jsou prováděny prověřování ohrožení zabezpečení.<br /><br />Znovu prochází probíhají podle potřeby pro všechny systémy, dokud nebudou vyřešeny všechny "s vysokým rizikem" ohrožení zabezpečení (jak je určeno v požadavek 6.1). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
 
 
 
@@ -118,8 +118,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí externí vyhledávání pro chyby zabezpečení v ve oboru podpůrné infrastruktuře, která je přístupná externě. Kontroly se provádějí pomocí schválení kontrolovat dodavatele (ASV).<br /><br />Microsoft Azure jako odběratel u střediska MSRC/OSSC měsíční oprava oznámení a hledá alespoň čtvrtletně ohrožení zabezpečení. Chyby zabezpečení identifikované vyhodnoceny a nápravy za zavedené časová osa založené na úrovni rizika.<br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority komponenty prostředí Microsoft Azure se provádí k identifikaci ohrožení zabezpečení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Při nasazení Contoso Webstore, zákazníků ukázce jsou zodpovědní za provádění čtvrtletně externí ohrožení zabezpečení skenování a znovu prochází podle potřeby u všech instancí PaaS ve svém prostředí dat držitele karty (CDE) pomocí schválení kontrolu dodavatele (ASV) schválené standardy Radou platební karty oboru zabezpečení.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí externí vyhledávání pro chyby zabezpečení v ve oboru podpůrné infrastruktuře, která je přístupná externě. Kontroly se provádějí pomocí schválení kontrolovat dodavatele (ASV).<br /><br />Microsoft Azure jako odběratel u střediska MSRC/OSSC měsíční oprava oznámení a hledá alespoň čtvrtletně ohrožení zabezpečení. Chyby zabezpečení identifikované vyhodnoceny a nápravy za zavedené časová osa založené na úrovni rizika.<br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority komponenty prostředí Microsoft Azure se provádí k identifikaci ohrožení zabezpečení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Při nasazení Contoso Webstore, zákazníků ukázce jsou zodpovědní za provádění čtvrtletně externí ohrožení zabezpečení skenování a znovu prochází podle potřeby u všech instancí PaaS ve svém prostředí dat držitele karty (CDE) pomocí schválení kontrolu dodavatele (ASV) schválené standardy Radou platební karty oboru zabezpečení.<br /><br />|
 
 
 
@@ -131,8 +131,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým zabezpečení Azure po uzavření. Výsledky testu Azure může sdílet s zákazníkům na základě smlouvy o. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za provádění kontrol čtvrtletně interních a externích ohrožení zabezpečení a znovu prochází podle potřeby u všech instancí PaaS v jejich CDE. Kontroly je třeba provést po významné změny v prostředí v oboru.<br /><br />Kontroly musí být provádí ASV nebo pracovníky organizační nezávisle.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým zabezpečení Azure po uzavření. Výsledky testu Azure může sdílet s zákazníkům na základě smlouvy o. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za provádění kontrol čtvrtletně interních a externích ohrožení zabezpečení a znovu prochází podle potřeby u všech instancí PaaS v jejich CDE. Kontroly je třeba provést po významné změny v prostředí v oboru.<br /><br />Kontroly musí být provádí ASV nebo pracovníky organizační nezávisle.|
 
 
 
@@ -152,8 +152,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ověří služby třetích stran průnikům testování podle OWASP (otevřít projekt webové aplikace zabezpečení) top deset pomocí certifikované NEJVYŠŠÍHO testerům, sada. Výsledky testování jsou sledovány prostřednictvím rejstříku rizika, která je auditovat a zkontrolovat v pravidelných intervalech zajistit dodržování předpisů pro postupy zabezpečení. <br /><br />Microsoft také používá seskupování síťových adaptérů Red vůči infrastruktury spravovaný společností Microsoft, služeb a aplikací. Žádná data koncového zákazníka je úmyslně určené během síťových adaptérů Red a testování průnikům živý web. Testy jsou proti infrastruktury Microsoft Azure a platformy a také společnosti Microsoft vlastní aplikace a data. Nikdy cílí zákazníka klientům, aplikacím a datům hostované v Azure.<br /><br />Používala nezávislé Poradce vytvořte plán hodnocení systému a proveďte assessment ovládací prvky se Microsoft Azure. Ovládací prvky jsou prováděná ročně a výsledky jsou uvedeny na dotčené strany. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ověří služby třetích stran průnikům testování podle OWASP (otevřít projekt webové aplikace zabezpečení) top deset pomocí certifikované NEJVYŠŠÍHO testerům, sada. Výsledky testování jsou sledovány prostřednictvím rejstříku rizika, která je auditovat a zkontrolovat v pravidelných intervalech zajistit dodržování předpisů pro postupy zabezpečení. <br /><br />Microsoft také používá seskupování síťových adaptérů Red vůči infrastruktury spravovaný společností Microsoft, služeb a aplikací. Žádná data koncového zákazníka je úmyslně určené během síťových adaptérů Red a testování průnikům živý web. Testy jsou proti infrastruktury Microsoft Azure a platformy a také společnosti Microsoft vlastní aplikace a data. Nikdy cílí zákazníka klientům, aplikacím a datům hostované v Azure.<br /><br />Používala nezávislé Poradce vytvořte plán hodnocení systému a proveďte assessment ovládací prvky se Microsoft Azure. Ovládací prvky jsou prováděná ročně a výsledky jsou uvedeny na dotčené strany. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
 
 
 
@@ -165,8 +165,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.3](#pci-dss-requirement-11-3). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.3](#pci-dss-requirement-11-3). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
 
 
 
@@ -178,8 +178,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Kontrakty Microsoft Azure s nezávislí posuzovatelé provést průnikům testování hranice Microsoft Azure. Cvičení Red týmu se také pravidelně provádí a výsledky používat k vylepšení zabezpečení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Kontrakty Microsoft Azure s nezávislí posuzovatelé provést průnikům testování hranice Microsoft Azure. Cvičení Red týmu se také pravidelně provádí a výsledky používat k vylepšení zabezpečení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla testována pera a ohrožení zabezpečení prohledávají ve snaze, jako je". Výsledky testů pera, se dají duplikovat pomocí běžných nástrojů, například nmap nebo pentest tools.com. Výsledky testu pera poskytne neprůkazné útok s žádné využitelných položky. Kromě toho [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) poskytují informace o ohrožení zabezpečení a nápravu.|
 
 
 
@@ -191,8 +191,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Postupy k monitorování komponenty platformy Microsoft Azure pro chyby zabezpečení známé byly vytvořeny. <br /><br /><br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority součástí Azure produkčním prostředí provádí k identifikaci ohrožení zabezpečení. Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým po uzavření. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Postupy k monitorování komponenty platformy Microsoft Azure pro chyby zabezpečení známé byly vytvořeny. <br /><br /><br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority součástí Azure produkčním prostředí provádí k identifikaci ohrožení zabezpečení. Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým po uzavření. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
 
 
 
@@ -204,8 +204,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Postupy k monitorování komponenty platformy Microsoft Azure pro chyby zabezpečení známé byly vytvořeny. <br /><br /><br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority součástí Azure produkčním prostředí provádí k identifikaci ohrožení zabezpečení. Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým po uzavření. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Postupy k monitorování komponenty platformy Microsoft Azure pro chyby zabezpečení známé byly vytvořeny. <br /><br /><br /><br />Chyba komplexní zabezpečení každé čtvrtletí cílové skenování seřazený podle priority součástí Azure produkčním prostředí provádí k identifikaci ohrožení zabezpečení. Výsledky jsou uvedeny zúčastněným stranám a nápravy sledován tým po uzavření. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
 
 
 
@@ -221,8 +221,8 @@ Podle toho, která metod, musí být dostatek ke zjišťování a identifikaci o
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.3.4](#pci-dss-requirement-11-3-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 11.3.4](#pci-dss-requirement-11-3-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations), které poskytují informace o ohrožení zabezpečení a opravy byly použity k zajištění, že pro ukázkové společnosti Contoso Webstore CDE provedla nápravu všechny zbývající potíže.|
 
 
 
@@ -235,8 +235,8 @@ Aktuálnost zjišťování neoprávněných vniknutí a moduly prevence, směrn�
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí analýzu v reálném čase události v rámci jeho provozní prostředí a systémy ID generování téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore je služba PaaS a zjišťování neoprávněných vniknutí sítě a prevenci označují odpovědnost Azure. [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) zadejte neoprávněných vniknutí výstrahy a nápravu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure provádí analýzu v reálném čase události v rámci jeho provozní prostředí a systémy ID generování téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore je služba PaaS a zjišťování neoprávněných vniknutí sítě a prevenci označují odpovědnost Azure. [Azure Security Center](https://azure.microsoft.com/services/security-center/) a [Azure Advisor](/azure/advisor/advisor-security-recommendations) zadejte neoprávněných vniknutí výstrahy a nápravu.|
 
 
 
@@ -251,8 +251,8 @@ Aktuálnost zjišťování neoprávněných vniknutí a moduly prevence, směrn�
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure udržuje a upozorní zákazníky potenciální změny a události, které může mít vliv na zabezpečení nebo dostupnost služeb prostřednictvím online řídicí panel služby. Změny závazky týkajícími se zabezpečení a povinnosti zabezpečení Microsoft Azure zákazníků jsou na webu Microsoft Azure aktualizovány v časovém limitu.<br /><br />Instalace nebo změny softwaru v Microsoft Azure je omezený na produkční prostředí oprávnění správy pracovníky a způsobem změňte postupy správy. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore je služba PaaS a detekce změn nebyla implementovaná pomocí OMS. Další informace najdete v tématu [pokyny PCI - předinstalovaný OMS řešení](payment-processing-blueprint.md#oms-solutions).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure udržuje a upozorní zákazníky potenciální změny a události, které může mít vliv na zabezpečení nebo dostupnost služeb prostřednictvím online řídicí panel služby. Změny závazky týkajícími se zabezpečení a povinnosti zabezpečení Microsoft Azure zákazníků jsou na webu Microsoft Azure aktualizovány v časovém limitu.<br /><br />Instalace nebo změny softwaru v Microsoft Azure je omezený na produkční prostředí oprávnění správy pracovníky a způsobem změňte postupy správy. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore je služba PaaS a detekce změn nebyla implementovaná pomocí analýzy protokolů. Další informace najdete v tématu [pokyny PCI - řešení pro správu předinstalovaný](payment-processing-blueprint.md#management-solutions).<br /><br />|
 
 
 
@@ -264,8 +264,8 @@ Aktuálnost zjišťování neoprávněných vniknutí a moduly prevence, směrn�
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure pravidla monitorování událostí zajistit vyšší úroveň sledování pro operace vysoce rizikové a prostředky. Pro dodržování standardů zavedených zabezpečení jsou monitorovány Azure spravovaných síťových zařízení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore výstrahy pro změny jsou poskytovány implementace OMS. Další informace najdete v tématu [pokyny PCI - předinstalovaný OMS řešení](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure pravidla monitorování událostí zajistit vyšší úroveň sledování pro operace vysoce rizikové a prostředky. Pro dodržování standardů zavedených zabezpečení jsou monitorovány Azure spravovaných síťových zařízení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore výstrahy pro změny jsou poskytovány implementace analýzy protokolů. Další informace najdete v tématu [pokyny PCI - řešení pro správu předinstalovaný](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 
@@ -277,8 +277,8 @@ Aktuálnost zjišťování neoprávněných vniknutí a moduly prevence, směrn�
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore výstrahy pro změny jsou poskytovány implementace OMS. Další informace najdete v tématu [pokyny PCI - předinstalovaný OMS řešení](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore výstrahy pro změny jsou poskytovány implementace analýzy protokolů. Další informace najdete v tématu [pokyny PCI - řešení pro správu předinstalovaný](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 

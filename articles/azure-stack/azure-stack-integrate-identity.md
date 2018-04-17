@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Zásobník datacenter integrace se službou Azure - Identity
 Zásobník Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je nutné provést před nasazením Azure zásobníku. Nasazení pomocí služby AD FS se také označuje jako nasazení Azure zásobníku v odpojeném režimu.
@@ -65,7 +65,7 @@ Tyto informace se vyžaduje jako vstupy pro automatizaci parametry:
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílového doménové struktury služby Active Directory<br>Chcete-li integrovat|Contoso.com|
+|CustomADGlobalCatalog|Plně kvalifikovaný název domény cílového doménové struktury služby Active Directory<br>Chcete-li integrovat|contoso.com|
 |CustomADAdminCredentials|Uživatel s oprávněním ke čtení protokolu LDAP|YOURDOMAIN\graphservice|
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Vytvoření uživatelského účtu ve stávající službě Active Directory (volitelné)
@@ -262,6 +262,9 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
    > Modul snap-in konzoly MMC AD FS musíte použít ke konfiguraci autorizačních pravidel vystavování, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS.
 
 4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném pokusů o přihlášení nezdaří. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:
+
+   > [!note]  
+   > Tento krok není použitelný, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS. Je bezpečné Přeskočit tento příkaz a pokračujte integrace.
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

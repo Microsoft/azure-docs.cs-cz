@@ -3,7 +3,7 @@
 
 * Převod je nevratný. 
 
-* Upozorňujeme, že všechny uživatele s [Přispěvatel virtuálních počítačů](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) role nebude možné změnit velikost virtuálního počítače (jak se může před převod). Je to proto, že virtuální počítače s spravované disky vyžadovat, aby uživatel má oprávnění Microsoft.Compute/disks/write na discích operačního systému.
+* Upozorňujeme, že všechny uživatele s [Přispěvatel virtuálních počítačů](../articles/role-based-access-control/built-in-roles.md#virtual-machine-contributor) role nebude možné změnit velikost virtuálního počítače (jak se může před převod). Je to proto, že virtuální počítače s spravované disky vyžadovat, aby uživatel má oprávnění Microsoft.Compute/disks/write na discích operačního systému.
 
 * Nezapomeňte převod otestovat. Před migrací v produkčním prostředí proveďte migraci testovacího virtuálního počítače.
 

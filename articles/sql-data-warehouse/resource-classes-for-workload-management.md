@@ -1,45 +1,93 @@
 ---
-title: "Třídy prostředků pro úlohy správy – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Pokyny pro použití třídy prostředků ke správě souběžnosti a výpočetní prostředky pro dotazy v Azure SQL Data Warehouse."
+title: Třídy prostředků pro úlohy správy – Azure SQL Data Warehouse | Microsoft Docs
+description: Pokyny pro použití třídy prostředků ke správě souběžnosti a výpočetní prostředky pro dotazy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
-ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/23/2017
-ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+author: kevinvngo
+manager: craigg-msft
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/11/2018
+ms.author: kevin
+ms.reviewer: jrj
+ms.openlocfilehash: 289281567eff7f2575f26f1ae7ec2f9ee4389461
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="resource-classes-for-workload-management"></a>Třídy prostředků pro úlohy správy
-Pokyny pro použití třídy prostředků ke správě počtu souběžných dotazů, které běží souběžně a výpočetní prostředky pro dotazy v Azure SQL Data Warehouse.
+# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Úlohy správy pomocí třídy prostředků v Azure SQL Data Warehouse
+Pokyny pro použití třídy prostředků ke správě paměti a souběžnost pro dotazy v Azure SQL Data Warehouse.  
  
 ## <a name="what-is-workload-management"></a>Co je pracovní zatížení management?
-Úlohy správy je možnost optimalizovat celkový výkon všech dotazů. Dobře ujít zatížení spustí dotazy a operace zatížení efektivně bez ohledu na tom, jestli mají náročné nebo náročné na vstupně-výstupní operace. 
+Úlohy správy je možnost optimalizovat celkový výkon všech dotazů. Dobře ujít zatížení spustí dotazy a operace zatížení efektivně bez ohledu na tom, jestli mají náročné nebo náročné na vstupně-výstupní operace.  SQL Data Warehouse poskytuje možnosti správy úloh pro prostředí s více uživateli. Datový sklad není určeno pro více klientů úlohy.
 
-SQL Data Warehouse poskytuje možnosti správy úloh pro prostředí s více uživateli. Datový sklad není určeno pro více klientů úlohy.
+Kapacita výkonu datového skladu je určena [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers) a [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
+
+- Paměť a souběžnost limity pro všechny profily výkonu najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md).
+- Chcete-li upravit výkonu kapacitu, můžete [škálovat nahoru nebo dolů](quickstart-scale-compute-portal.md).
+
+Kapacita výkonu dotazu je určen podle třídy prostředků dotazu. Tento zbývající část tohoto článku vysvětluje, co jsou třídy prostředků a způsob jejich nastavení.
+
 
 ## <a name="what-are-resource-classes"></a>Jaké jsou třídy prostředků?
-Třídy prostředků se limitů předem určené prostředků, které řídí zpracování dotazu. SQL Data Warehouse omezuje výpočetní prostředky pro každý dotaz podle třídy prostředků. 
+Třídy prostředků se předem určit, že omezení prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro spuštění dotazu. Třídy prostředků vám může pomoci spravovat vaši úlohu nastavením omezení na počet dotazů, které běží souběžně a výpočetní prostředky přiřazené každý dotaz. Je kompromis mezi paměti a souběžnosti.
 
-Prostředek třídy snadněji tak můžete spravovat na celkový výkon vašeho úlohy datového skladu. Použití třídy prostředků efektivně pomáhá spravovat vaše úlohy nastavením omezení na počet dotazů, které běží souběžně a výpočetní prostředky přiřazené každý dotaz. 
+- Menší třídy prostředků snížit maximální paměť na dotaz, ale zvýšit souběžnost.
+- Větší třídy prostředků zvyšuje maximální paměť na dotaz, ale snížit souběžnosti. 
 
-- Menší třídy prostředků použít menší výpočetní prostředky, ale povolit větší celkové dotazu souběžnosti
-- Větší třídy prostředků poskytují další výpočetní prostředky, ale omezení dotazu souběžnosti
+Kapacita výkonu dotazu je určen podle třídy prostředků uživatele.
 
-Třídy prostředků jsou navrženy pro aktivity správy a manipulace dat. Některé velmi složité dotazy budou také využívat výhody při k dispozici jsou velké spojení a řazení systému provede daný dotaz v paměti místo přesahu na disk.
+- Využití prostředků pro třídy prostředků najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md#concurrency-maximums).
+- Chcete-li upravit Třída prostředků, můžete spustit dotaz pod odlišným uživatelským nebo [změnit Třída prostředků aktuálního uživatele](#change-a-user-s-resource-class) členství. 
 
-Třídy prostředků se řídí následující operace:
+Třídy prostředků pomocí souběžnosti sloty k měření spotřeby prostředků.  [Sloty souběžnosti](#concurrency-slots) jsou popsané dále v tomto článku. 
+
+### <a name="static-resource-classes"></a>Statické prostředků třídy
+Statické prostředků třídy přidělit stejnou velikost paměti, bez ohledu na aktuální úroveň výkonu, který se měří v [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). Vzhledem k tomu, že dotazy získat stejné přidělení paměti bez ohledu na úroveň výkonu [škálování datového skladu](quickstart-scale-compute-portal.md) umožňuje další dotazy ke spuštění v rámci třídy prostředků.
+
+Statické prostředků třídy jsou implementované pomocí těchto předem definovaných databázových rolí:
+
+- staticrc10
+- staticrc20
+- staticrc30
+- staticrc40
+- staticrc50
+- staticrc60
+- staticrc70
+- staticrc80
+
+Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvyšují Třída prostředků se získat další výpočetní prostředky.
+
+### <a name="dynamic-resource-classes"></a>Dynamické prostředků třídy
+Dynamické třídy prostředků přidělit proměnné množství paměti v závislosti na aktuální úrovni služby. Při změně měřítka na vyšší úroveň služby, vaše dotazy automaticky získat více paměti. 
+
+Dynamické prostředků třídy jsou implementované pomocí těchto předem definovaných databázových rolí:
+
+- smallrc
+- mediumrc
+- largerc
+- xlargerc. 
+
+Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvýšení výpočetní škálování, chcete-li získat další prostředky. 
+
+
+### <a name="default-resource-class"></a>Třída prostředků výchozí
+Ve výchozím nastavení, každý uživatel je členem třídy dynamické prostředků **smallrc**. 
+
+Třída prostředků Správce služby je pevná a nedá se změnit.  Správce služeb je uživatelem vytvořené během procesu zřizování.
+
+> [!NOTE]
+> Správci služeb jsou i uživatelé nebo skupiny, které jsou definované jako správce Active Directory.
+>
+>
+
+## <a name="resource-class-operations"></a>Operace prostředků – třída
+
+Třídy prostředků jsou navrženy pro zlepšení výkonu pro aktivity správy a manipulace dat. Komplexní dotazy mohou také těžit z spuštěna pod třídou prostředků velké. Například dotazování výkonu pro velké spojení a řazení může zvýšit, pokud je třída prostředků dostatečně velké na to, aby dotaz na provedení v paměti.
+
+### <a name="operations-governed-by-resource-classes"></a>Operace řídí třídy prostředků
+
+Třídy prostředků se řídí tyto operace:
 
 * VYBERTE PŘÍKAZ INSERT, UPDATE, DELETE
 * Vyberte (při dotazování tabulky uživatelů)
@@ -56,50 +104,7 @@ Třídy prostředků se řídí následující operace:
 > 
 > 
 
-## <a name="static-and-dynamic-resource-classes"></a>Statické a dynamické prostředků třídy
-
-Existují dva typy třídy prostředků: dynamických a statických.
-
-- **Statické třídy prostředků** přidělit stejnou velikost paměti, bez ohledu na aktuální úrovni služby, který se měří v [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). Tato statického přidělování znamená na vyšší úrovně služeb, že můžete spouštět další dotazy v každé třídě prostředků.  Třídy statické prostředku se nazývají staticrc10, staticrc20, staticrc30, staticrc40, staticrc50, staticrc60, staticrc70 a staticrc80. Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvyšují Třída prostředků se získat další výpočetní prostředky.
-
-- **Dynamické třídy prostředků** přidělit proměnné množství paměti v závislosti na aktuální úrovni služby. Při změně měřítka na vyšší úroveň služby, vaše dotazy automaticky získat více paměti. Třídy dynamického prostředku se nazývají smallrc, mediumrc, largerc a xlargerc. Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvýšení výpočetní škálování, chcete-li získat další prostředky. 
-
-[Úrovně výkonu](performance-tiers.md) použijte stejné názvy Třída prostředků, ale jiné [specifikace paměti a souběžnost](performance-tiers.md). 
-
-
-## <a name="assigning-resource-classes"></a>Přiřazování prostředků třídy
-
-Třídy prostředků se implementují přiřadit uživatele k role databáze. Když uživatel spustí dotaz, spustí dotaz s třídou prostředků uživatele. Například pokud je uživatel členem role databáze smallrc nebo staticrc10, jejich dotazy se spustí s malé množství paměti. Pokud je databáze uživatel členem role databáze xlargerc nebo staticrc80, jejich dotazy se spustí s velkými objemy paměti. 
-
-Třída prostředků uživatele zvýšit, použijte uloženou proceduru [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
-
-```sql
-EXEC sp_addrolemember 'largerc', 'loaduser';
-```
-
-Chcete-li snížit Třída prostředků, použijte [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
-
-```sql
-EXEC sp_droprolemember 'largerc', 'loaduser';
-```
-
-Třída prostředků Správce služby je pevná a nedá se změnit.  Správce služeb je uživatelem vytvořené během procesu zřizování.
-
-> [!NOTE]
-> Správci služeb jsou i uživatelé nebo skupiny, které jsou definované jako správce Active Directory.
->
->
-
-### <a name="default-resource-class"></a>Třída prostředků výchozí
-Ve výchozím nastavení, každý uživatel je členem Třída prostředků se malé, **smallrc**. 
-
-### <a name="resource-class-precedence"></a>Priorita prostředků – třída
-Uživatelé mohou být členy více tříd prostředků. Když uživatel patří do více než jedna třída prostředků:
-
-- Dynamické prostředků třídy mají přednost před třídy statické prostředků. Například pokud je uživatel členem mediumrc(dynamic) a staticrc80 (statické), dotazy se spustí s mediumrc.
-- Větší třídy prostředků má přednost před menší třídy prostředků. Například pokud je uživatel členem mediumrc a largerc, dotazy se spustí s largerc. Podobně pokud je uživatel členem staticrc20 a statirc80, dotazy se spustí s staticrc80 přidělení prostředků.
-
-### <a name="queries-exempt-from-resource-classes"></a>Dotazy, které jsou vyloučené z prostředků tříd
+### <a name="operations-not-governed-by-resource-classes"></a>Operace není řídí třídy prostředků
 Některé dotazy se vždy spustit v Třída prostředků smallrc, i když je uživatel členem skupiny větší Třída prostředků. Tyto vyloučený dotazy není započítávat limit souběžnosti. Například pokud limit souběžnosti 16, řada uživatelů můžete vybírat ze zobrazení systému bez dopadu na sloty dostupné souběžnosti.
 
 Následující příkazy vyjmuté z třídy prostředků a vždy spouštějí v smallrc:
@@ -126,6 +131,45 @@ Removed as these two are not confirmed / supported under SQLDW
 - CREATE EXTERNAL TABLE AS SELECT
 - REDISTRIBUTE
 -->
+
+## <a name="concurrency-slots"></a>Sloty souběžnosti
+Concurrency sloty jsou pohodlný způsob, jak sledovat prostředky k dispozici pro spuštění dotazu. Jsou to například lístků, které jste si koupili tak, aby vyhradil licencí na vzájemné součinnosti, protože zasedací je omezená. Celkový počet patic souběžnosti za datového skladu je dáno úrovně služby. Předtím, než dotaz můžete spustit provádění, musí být možné vyhradit dostatek sloty souběžnosti. Po dokončení dotazu uvolní jeho sloty souběžnosti.  
+
+- Dotaz s 10 sloty souběžnosti můžete přístup 5krát víc zdrojích výpočtů než dotazu s 2 sloty souběžnosti.
+- Pokud každý dotaz vyžaduje 10 souběžnosti sloty a nejsou 40 souběžnosti sloty, můžete současně spustit jenom 4 dotazy.
+ 
+Pouze na dotazy prostředků, které využívají sloty souběžnosti. Dotazy na systém a některé trivial není využívat žádné sloty. Přesné číslo souběžnosti sloty spotřebované je dáno Třída prostředků dotazu.
+
+## <a name="view-the-resource-classes"></a>Zobrazí třídy prostředků
+
+Třídy prostředků se implementují jako předem definovaných databázových rolí. Existují dva typy třídy prostředků: dynamických a statických. Chcete-li zobrazit seznam tříd prostředků, použijte následující dotaz:
+
+    ```sql
+    SELECT name FROM sys.database_principals
+    WHERE name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+    ```
+
+## <a name="change-a-users-resource-class"></a>Změnit Třída prostředků uživatele
+
+Třídy prostředků se implementují přiřadit uživatele k role databáze. Když uživatel spustí dotaz, spustí dotaz s třídou prostředků uživatele. Například pokud je uživatel členem role databáze smallrc nebo staticrc10, jejich dotazy se spustí s malé množství paměti. Pokud je databáze uživatel členem role databáze xlargerc nebo staticrc80, jejich dotazy se spustí s velkými objemy paměti. 
+
+Třída prostředků uživatele zvýšit, použijte uloženou proceduru [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). 
+
+```sql
+EXEC sp_addrolemember 'largerc', 'loaduser';
+```
+
+Chcete-li snížit Třída prostředků, použijte [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql).  
+
+```sql
+EXEC sp_droprolemember 'largerc', 'loaduser';
+```
+
+## <a name="resource-class-precedence"></a>Priorita prostředků – třída
+Uživatelé mohou být členy více tříd prostředků. Když uživatel patří do více než jedna třída prostředků:
+
+- Dynamické prostředků třídy mají přednost před třídy statické prostředků. Například pokud je uživatel členem mediumrc(dynamic) a staticrc80 (statické), dotazy se spustí s mediumrc.
+- Větší třídy prostředků má přednost před menší třídy prostředků. Například pokud je uživatel členem mediumrc a largerc, dotazy se spustí s largerc. Podobně pokud je uživatel členem staticrc20 a statirc80, dotazy se spustí s staticrc80 přidělení prostředků.
 
 ## <a name="recommendations"></a>Doporučení
 Doporučujeme vytvoření uživatele, který je vyhrazený ke spouštění určitý typ dotazu nebo načtení operace. Tento uživatel pak umožnit třída trvalé prostředků místo změna Třída prostředků na základě časté. Vzhledem k tomu, že statické prostředků třídy dovolit větší kontrolu celkové na pracovním vytížení také navrhnout pomocí těchto první před zvažování třídy dynamického prostředku.

@@ -1,8 +1,8 @@
 ---
-title: "Prohlídka prostřednictvím analýzy ve službě Azure Application Insights | Microsoft Docs"
-description: "Krátký ukázky všechny hlavní dotazů v analýzy, nástroj výkonné vyhledávání služby Application Insights."
+title: Prohlídka prostřednictvím analýzy ve službě Azure Application Insights | Microsoft Docs
+description: Krátký ukázky všechny hlavní dotazů v analýzy, nástroj výkonné vyhledávání služby Application Insights.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Prohlídka Analytics ve službě Application Insights
 [Analýza](app-insights-analytics.md) je výkonný vyhledávání funkcí [Application Insights](app-insights-overview.md). Tyto stránek popisují dotazovací jazyk analýzy protokolů.
@@ -69,7 +69,7 @@ Pokud chcete kombinovat data z více aplikací služby Application Insights, pou
 ```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Horní](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) a [řazení](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
-`take`je užitečné k získání ukázku rychlé výsledků, ale zobrazuje řádky z tabulky seřazeny. Chcete-li získat seřazené zobrazení, použijte `top` (pro ukázku) nebo `sort` (přes celé tabulky).
+`take` je užitečné k získání ukázku rychlé výsledků, ale zobrazuje řádky z tabulky seřazeny. Chcete-li získat seřazené zobrazení, použijte `top` (pro ukázku) nebo `sort` (přes celé tabulky).
 
 Zobrazte první n řádky, seřazené podle konkrétního sloupce:
 
@@ -79,11 +79,11 @@ Zobrazte první n řádky, seřazené podle konkrétního sloupce:
 ```
 
 * *Syntaxe:* většina operátory mít parametry – klíčové slovo jako `by`.
-* `desc`= sestupné řazení `asc` = vzestupně.
+* `desc` = sestupné řazení `asc` = vzestupně.
 
 ![](./media/app-insights-analytics-tour/260.png)
 
-`top...`je další způsob původce o tom, že `sort ... | take...`. Budeme mít zapsat:
+`top...` je další způsob původce o tom, že `sort ... | take...`. Budeme mít zapsat:
 
 ```AIQL
 
@@ -146,7 +146,7 @@ Ve výchozím vaše dotazy jsou omezeny na poslední 24 hodin. Můžete však zm
 
 Funkci rozsah čas je ekvivalentní volání za každou zmínky jednoho ze zdrojové tabulky vložit klauzuli 'where'.
 
-`ago(3d)`znamená tří dnů před. Jiné jednotky doby zahrnují hodin (`2h`, `2.5h`), minut (`25m`) a sekund (`10s`).
+`ago(3d)` znamená tří dnů před. Jiné jednotky doby zahrnují hodin (`2h`, `2.5h`), minut (`25m`) a sekund (`10s`).
 
 Další příklady:
 
@@ -170,7 +170,7 @@ Další příklady:
 
 ```
 
-[Dat a časů odkaz](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html).
+[Dat a časů odkaz](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): vyberte, přejmenování a výpočetní sloupců
@@ -199,10 +199,10 @@ Také můžete přejmenovat sloupce a definovat nové:
 
 ![výsledek](./media/app-insights-analytics-tour/270.png)
 
-* Názvy sloupců může obsahovat mezery nebo symboly v případě jejich jsou v závorkách, jako to: `['...']` nebo`["..."]`
-* `%`je obvyklé Operátor modulo.
-* `1d`(která je číslice, pak měl ') je časový interval literálu znamená jeden den. Tady jsou některé další literály časový interval: `12h`, `30m`, `10s`, `0.01s`.
-* `floor`(alias `bin`) zaokrouhlí dolů na nejbližší násobek hodnotu zadáte hodnotu. Proto `floor(aTime, 1s)` zaokrouhlí dolů nejbližší sekundu čas.
+* Názvy sloupců může obsahovat mezery nebo symboly v případě jejich jsou v závorkách, jako to: `['...']` nebo `["..."]`
+* `%` je obvyklé Operátor modulo.
+* `1d` (která je číslice, pak měl ') je časový interval literálu znamená jeden den. Tady jsou některé další literály časový interval: `12h`, `30m`, `10s`, `0.01s`.
+* `floor` (alias `bin`) zaokrouhlí dolů na nejbližší násobek hodnotu zadáte hodnotu. Proto `floor(aTime, 1s)` zaokrouhlí dolů nejbližší sekundu čas.
 
 Výrazy může zahrnovat všechny běžných operátorů (`+`, `-`,...), a rozsah užitečné funkce.
 
@@ -231,7 +231,7 @@ Pomocí [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_e
 
 
 ## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Shrnout](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): agregovat skupiny řádků
-`Summarize`použije zadanou *agregační funkce* přes skupiny řádků.
+`Summarize` použije zadanou *agregační funkce* přes skupiny řádků.
 
 Například čas trvá odpovědět na požadavek webové aplikace je uvedená v poli `duration`. Podívejme se, Průměrná doba odezvy pro všechny požadavky:
 
@@ -241,13 +241,13 @@ Nebo výsledek jsme může oddělení do požadavků odlišné názvy:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`shromažďuje datových bodů v datovém proudu do skupin, pro kterou `by` klauzule vyhodnotí stejně. Každá hodnota v `by` výrazu - každý je název jedinečný operace v předchozím příkladu - výsledkem řádek v tabulce výsledků.
+`Summarize` shromažďuje datových bodů v datovém proudu do skupin, pro kterou `by` klauzule vyhodnotí stejně. Každá hodnota v `by` výrazu - každý je název jedinečný operace v předchozím příkladu - výsledkem řádek v tabulce výsledků.
 
 Nebo jsme může seskupení výsledků podle denní dobu:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Všimněte si, jak používáme `bin` – funkce (neboli `floor`). Pokud jsme použili `by timestamp`, každý řádek vstupu by skončit ve své vlastní malé skupiny. Pro všechny průběžné skalárních jako časy nebo čísla, musíme průběžné rozsahu rozdělit spravovat počet jednotlivých hodnot. `bin`-který je právě známé zaokrouhlení nižší `floor` funkce – je nejjednodušší způsob, jak to udělat.
+Všimněte si, jak používáme `bin` – funkce (neboli `floor`). Pokud jsme použili `by timestamp`, každý řádek vstupu by skončit ve své vlastní malé skupiny. Pro všechny průběžné skalárních jako časy nebo čísla, musíme průběžné rozsahu rozdělit spravovat počet jednotlivých hodnot. `bin` -který je právě známé zaokrouhlení nižší `floor` funkce – je nejjednodušší způsob, jak to udělat.
 
 Můžeme použít stejný postup ke snížení rozsahy řetězců:
 
@@ -256,7 +256,7 @@ Můžeme použít stejný postup ke snížení rozsahy řetězců:
 Všimněte si, že můžete použít `name=` nastavit název sloupec výsledků, buď ve výrazech agregace nebo klauzuli by.
 
 ## <a name="counting-sampled-data"></a>Počítání vzorků dat
-`sum(itemCount)`je doporučené agregace počítat události. V mnoha případech itemCount = 1, takže funkce jednoduše spočítá počet řádků ve skupině. Ale když [vzorkování](app-insights-sampling.md) je v provozu se pouze část původní události zachová jako datových bodů ve službě Application Insights, aby byl pro každý datový bod, uvidíte, `itemCount` události.
+`sum(itemCount)` je doporučené agregace počítat události. V mnoha případech itemCount = 1, takže funkce jednoduše spočítá počet řádků ve skupině. Ale když [vzorkování](app-insights-sampling.md) je v provozu se pouze část původní události zachová jako datových bodů ve službě Application Insights, aby byl pro každý datový bod, uvidíte, `itemCount` události.
 
 Například pokud vzorkování zahodí 75 % původní události, pak itemCount == 4 v udržených záznamy – to znamená, pro každý záznam zachované existovaly čtyři původní záznamy.
 
@@ -661,7 +661,7 @@ Pokud chcete najít požadavek HTTP, který aplikace byla zpracování, pokud by
 ![Připojení výjimky s požadavky na operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Tabulka časování prohlížeče
-`browserTimings`Zobrazuje data zatížení stránky shromažďují v prohlížečích vašich uživatelů.
+`browserTimings` Zobrazuje data zatížení stránky shromažďují v prohlížečích vašich uživatelů.
 
 [Nastavit aplikaci pro telemetrických dat na straně klienta](app-insights-javascript.md) Chcete-li zobrazit tyto metriky.
 
@@ -672,7 +672,7 @@ Zobrazit popularities různých stránek a načíst časy pro jednotlivé strán
 ![Časů načtení stránky v Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>Tabulky výsledků dostupnosti
-`availabilityResults`Zobrazuje výsledky vaše [webové testy](app-insights-monitor-web-app-availability.md). Každé spuštění testů z umístění každého testu se hlásí samostatně.
+`availabilityResults` Zobrazuje výsledky vaše [webové testy](app-insights-monitor-web-app-availability.md). Každé spuštění testů z umístění každého testu se hlásí samostatně.
 
 ![Časů načtení stránky v Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d4931c710bebc5e6c3ee23fb58e1432bb86da4a5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Výstup a zprávy ve službě Azure Automation Runbooku
 Většina runbooků služeb automatizace Azure má určitou formu výstupu, jako je chybová zpráva pro uživatele nebo složitý objekt určené pro jiný pracovní postup. Prostředí Windows PowerShell poskytuje [víc datových proudů](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) pro odeslání výstupu z skript nebo pracovního postupu. Služby Azure Automation funguje s každou z těchto datových proudů jinak a postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
@@ -33,29 +33,32 @@ Výstupní datový proud je určený pro výstup objektů vytvořených skript n
 
 Můžete zapsat data do výstupního datového proudu pomocí [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) nebo vložením objektu na vlastním řádku v sadě runbook.
 
-    #The following lines both write an object to the output stream.
-    Write-Output –InputObject $object
-    $object
+```PowerShell
+#The following lines both write an object to the output stream.
+Write-Output –InputObject $object
+$object
+```
 
 ### <a name="output-from-a-function"></a>Výstup z funkce
 Při zápisu do výstupního datového proudu ve funkci, která je zahrnutá ve vašem runbooku, výstup se předá zpět do runbooku. Pokud runbook přidá tento výstup do proměnné, nezapíše se do výstupního datového proudu. Zápis do jiných datových proudů z v rámci funkce zapíše do odpovídajícího datového proudu pro runbook.
 
 Vezměte v úvahu následující vzorový runbook:
 
-    Workflow Test-Runbook
-    {
-        Write-Verbose "Verbose outside of function" -Verbose
-        Write-Output "Output outside of function"
-        $functionOutput = Test-Function
-        $functionOutput
+```PowerShell
+Workflow Test-Runbook
+{
+  Write-Verbose "Verbose outside of function" -Verbose
+  Write-Output "Output outside of function"
+  $functionOutput = Test-Function
+  $functionOutput
 
-    Function Test-Function
-     {
-        Write-Verbose "Verbose inside of function" -Verbose
-        Write-Output "Output inside of function"
-      }
-    }
-
+  Function Test-Function
+  {
+    Write-Verbose "Verbose inside of function" -Verbose
+    Write-Output "Output inside of function"
+  }
+}
+```
 
 Výstupní datový proud pro runbook by byl:
 
@@ -81,13 +84,15 @@ Tady je seznam příklad výstupu typy:
 
 Následující vzorový runbook výstup objektu řetězce a zahrnuje deklaraci jeho typu výstupu. Pokud runbook jako výstup pole určitého typu, byste měli stále zadat typ a pole typu.
 
-    Workflow Test-Runbook
-    {
-       [OutputType([string])]
+```PowerShell
+Workflow Test-Runbook
+{
+  [OutputType([string])]
 
-       $output = "This is some string output."
-       Write-Output $output
-    }
+  $output = "This is some string output."
+  Write-Output $output
+}
+ ```
 
 Chcete-li deklarovat výstupní typ v sadách runbook grafický nebo grafické prostředí PowerShell Workflow, můžete vybrat **vstup a výstup** nabídky možnost a zadejte název výstupní typ. Doporučuje se, že používáte úplný název třídy rozhraní .NET, aby bylo snadno identifikovat při odkazování z nadřízeného runbooku. To zpřístupní všechny vlastnosti třídy do datové sběrnice v sadě runbook a poskytuje mnohem flexibilitu při jejich používání pro podmíněnou logiku, protokolování a odkazování na jako hodnoty pro další aktivity v sadě runbook.<br> ![Možnost Runbook vstup a výstup](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
@@ -115,11 +120,13 @@ Datové proudy upozornění a chyb jsou určené k protokolování problémů, k
 
 Vytvořte upozornění nebo chybovou zprávu pomocí [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) nebo [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) rutiny. Do těchto datových proudů můžou zapisovat taky aktivity.
 
-    #The following lines create a warning message and then an error message that will suspend the runbook.
+```PowerShell
+#The following lines create a warning message and then an error message that will suspend the runbook.
 
-    $ErrorActionPreference = "Stop"
-    Write-Warning –Message "This is a warning message."
-    Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+$ErrorActionPreference = "Stop"
+Write-Warning –Message "This is a warning message."
+Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+```
 
 ### <a name="verbose-stream"></a>Podrobný datový proud
 Datový proud podrobnou zprávu je obecné informace o činnosti runbooku. Vzhledem k tomu [datový proud ladění](#Debug) není k dispozici v sadě runbook, podrobné zprávy se mají použít pro informace o ladění. Ve výchozím nastavení podrobné zprávy z publikovaných runbooků neukládá do historie úlohy. Pokud chcete tyto zprávy uložit, nakonfigurujte publikované runbooky na protokolovat podrobné záznamy na kartě Konfigurace sady runbook na portálu Azure. Ve většině případů byste měli mít ve výchozím nastavení není protokolování podrobných záznamů pro runbook z důvodů výkonu. Zapněte tato možnost jenom pro vyřešení problémů nebo ladění runbooku.
@@ -128,9 +135,11 @@ Když [testování runbooku](automation-testing-runbook.md), podrobné zprávy n
 
 Vytvoření podrobné zprávy použijte [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) rutiny.
 
-    #The following line creates a verbose message.
+```PowerShell
+#The following line creates a verbose message.
 
-    Write-Verbose –Message "This is a verbose message."
+Write-Verbose –Message "This is a verbose message."
+```
 
 ### <a name="debug-stream"></a>Datový proud ladění
 Datový proud ladění je určený pro použití s interaktivním uživatelem a nesmí se používat v runboocích.
@@ -168,24 +177,25 @@ V prostředí Windows PowerShell můžete načítat výstup a zprávy z runbooku
 
 Následující příklad spouští vzorový runbook a potom počká, než na její dokončení. Po dokončení je jeho výstupní datový proud shromáždí z úlohy.
 
-    $job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+```PowerShell
+$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
 
-    $doLoop = $true
-    While ($doLoop) {
-       $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
-       –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
-       $status = $job.Status
-       $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
-    }
+$doLoop = $true
+While ($doLoop) {
+  $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
+  $status = $job.Status
+  $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
+}
 
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
-    
-    # For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
-    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
-    
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+
+# For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
+Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+``` 
 
 ### <a name="graphical-authoring"></a>Vytváření grafického obsahu
 Pro grafické runbooky velmi protokolování je k dispozici ve formě trasování na úrovni aktivity. Existují dvě úrovně trasování: Basic a podrobné. V základní trasování, uvidíte spuštění a čas ukončení každé aktivity v runbooku a informace týkající se žádné opakování aktivity, jako je počet pokusů o zadání a počáteční čas aktivity. V podrobného trasování získat plus základní trasování vstupní a výstupní data pro každou aktivitu. Aktuálně záznamy trasování jsou zapsány pomocí podrobný datový proud, takže musíte povolit podrobné protokolování, pokud povolíte trasování. Pro grafické runbooky pomocí trasování povoleno je potřeba protokolování záznamů o průběhu, protože základní trasování slouží ke stejnému účelu a je informativnější.
@@ -204,7 +214,7 @@ Uvidíte z předchozí snímek obrazovky, když povolíte podrobné protokolová
    
    ![Grafické vytváření protokolování a trasování okno](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-log-analytics"></a>Analýza protokolů Microsoft Azure
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Pomocí analýzy protokolů je možné,
 
 * Pohled na vaše úlohy automatizace 

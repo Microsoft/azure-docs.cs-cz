@@ -1,11 +1,11 @@
 ---
 title: Azure Active Directory v2.0 aplikace pro Android | Microsoft Docs
-description: "Postup vytvoření aplikace pro Android s přihlašováním uživatelů s osobní účet Microsoft a pracovní nebo školní účty a volání rozhraní Graph API pomocí knihoven jiných dodavatelů."
+description: Postup vytvoření aplikace pro Android s přihlašováním uživatelů s osobní účet Microsoft a pracovní nebo školní účty a volání rozhraní Graph API pomocí knihoven jiných dodavatelů.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 16294c07-f27d-45c9-833f-7dbb12083794
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
 ms.openlocfilehash: b1c30362a7b14c8f7f0c44d911c46c491b3de3c0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Přidání přihlášení do aplikace pro Android pomocí rozhraní Graph API pomocí koncového bodu v2.0 knihovnu třetích stran
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Vývojáři mohou použít žádné knihovny, které chtějí integrovat našich služeb. Což vývojářům používat naše platforma s další knihovny, jsme jste zapisují několik návody podobné následujícímu abychom ukázali, jak nakonfigurovat třetích stran knihovny pro připojení k identitu platformy Microsoft. Většina knihovny, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) se může připojit k Microsoft identity platform.

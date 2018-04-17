@@ -1,11 +1,11 @@
 ---
-title: "Zobrazení diagnostických protokolů pro Azure Data Lake Analytics | Microsoft Docs"
-description: "Pochopit, jak nastavit a přístupu k diagnostickým protokolům pro Azure Data Lake analytics "
+title: Zobrazení diagnostických protokolů pro Azure Data Lake Analytics | Microsoft Docs
+description: 'Pochopit, jak nastavit a přístupu k diagnostickým protokolům pro Azure Data Lake analytics '
 services: data-lake-analytics
-documentationcenter: 
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.service: data-lake-analytics
 ms.devlang: na
@@ -13,12 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/12/2018
-ms.author: larryfr
-ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: efec1e00e9c2da519028f7e6ff094a0f0876df79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Analytics
 
@@ -149,7 +148,7 @@ Zde je vzorového vstupu do formátu JSON žádost protokolu. Každý objekt blo
 | HttpMethod |Řetězec |Metoda HTTP se používá pro operaci. Například získáte. |
 | Cesta |Řetězec |Cesta k operaci byla provedena na |
 | RequestContentLength |celá čísla |Délka obsahu požadavku HTTP |
-| ClientRequestId |Řetězec |Identifikátor, který jedinečně identifikuje tuto žádost |
+| clientRequestId |Řetězec |Identifikátor, který jedinečně identifikuje tuto žádost |
 | StartTime |Řetězec |Čas, na které server přijal žádost |
 | EndTime |Řetězec |Čas, kdy server odeslal odpověď |
 
@@ -203,7 +202,7 @@ Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt 
 | Název | Typ | Popis |
 | --- | --- | --- |
 | JobId |Řetězec |ID přiřazené úlohy |
-| JobName |Řetězec |Název, která byla poskytnuta pro úlohu |
+| Název úlohy |Řetězec |Název, která byla poskytnuta pro úlohu |
 | JobRunTime |Řetězec |Modul runtime používá ke zpracování úlohy |
 | SubmitTime |Řetězec |Čas (v UTC), který úloha byla odeslána. |
 | StartTime |Řetězec |Čas úlohy spuštění po odeslání (ve formátu UTC) |
@@ -215,7 +214,7 @@ Zde je vzorového vstupu v protokolu auditování formátu JSON. Každý objekt 
 
 ## <a name="process-the-log-data"></a>Zpracování dat protokolu
 
-Azure Data Lake Analytics poskytuje vzorku o tom, jak zpracovávat a analyzovat data protokolu. Můžete najít ukázku najdete na adrese [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Azure Data Lake Analytics poskytuje vzorku o tom, jak zpracovávat a analyzovat data protokolu. Můžete najít ukázku najdete na adrese [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
 
 ## <a name="next-steps"></a>Další postup
 * [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)

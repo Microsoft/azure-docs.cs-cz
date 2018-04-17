@@ -1,25 +1,25 @@
 ---
-title: "Uložení zpráv IoT hub do úložiště dat Azure | Microsoft Docs"
-description: "IoT hub zprávy uložit do Azure blob storage pomocí služby IoT Hub směrování zpráv. IoT hub zprávy obsahují informace, například data snímačů, která je odeslána ze zařízení IoT."
+title: Uložení zpráv IoT hub do úložiště dat Azure | Microsoft Docs
+description: IoT hub zprávy uložit do Azure blob storage pomocí služby IoT Hub směrování zpráv. IoT hub zprávy obsahují informace, například data snímačů, která je odeslána ze zařízení IoT.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "úložiště dat IOT, úložiště dat snímačů iot"
+tags: ''
+keywords: úložiště dat IOT, úložiště dat snímačů iot
 ms.assetid: 62fd14fd-aaaa-4b3d-8367-75c1111b6269
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
-ms.author: xshi
-ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 03111cd07364aa30f15ddcfdc196107d92d02e0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>Uložit IoT hub zprávy, které obsahují data snímačů do Azure blob storage
 
@@ -61,7 +61,7 @@ Zjistíte, jak vytvořit účet úložiště Azure a Azure funkce aplikace na uk
 
 ## <a name="prepare-your-iot-hub-to-route-messages-to-storage"></a>Příprava služby IoT hub pro směrování zpráv do úložiště
 
-Směrování zpráv do úložiště Azure IoT Hub nativně podporuje jako objekty BLOB.
+Směrování zpráv do úložiště Azure IoT Hub nativně podporuje jako objekty BLOB. Další informace o vlastní koncové body Azure IoT Hub, můžete se podívat do [seznam předdefinovaných koncové body centra IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints).
 
 ### <a name="add-storage-as-a-custom-endpoint"></a>Přidání úložiště jako vlastní koncový bod
 

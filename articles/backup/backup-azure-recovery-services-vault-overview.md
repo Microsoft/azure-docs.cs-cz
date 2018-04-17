@@ -1,6 +1,6 @@
 ---
-title: "Trezory služeb zotavení přehled | Microsoft Docs"
-description: "Přehled a porovnání trezory služeb zotavení a trezory Azure Backup."
+title: Trezory služeb zotavení přehled | Microsoft Docs
+description: Přehled a porovnání trezory služeb zotavení a trezory Azure Backup.
 services: backup
 documentationcenter: " "
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/15/2017
 ms.author: markgal;arunak;sogup
-ms.openlocfilehash: ad685744595ab86def8d226d7c2fb5455af98da4
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 2d25782ef73f8899587636b65ccd2d7870f89e6f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezory služeb zotavení
 
@@ -35,7 +35,7 @@ Trezory služeb zotavení jsou založené na modelu Azure Resource Manager ve sl
 
 - **Centrální monitorování pro vaše prostředí IT hybridní**: trezory služeb zotavení s, můžete monitorovat nejenom vaše [virtuální počítače Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portálu. [Další informace](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje správu řízení podrobných přístupu v Azure. [Azure poskytuje různé integrované role](../active-directory/role-based-access-built-in-roles.md), a zálohování Azure má tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služeb zotavení jsou kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje správu řízení podrobných přístupu v Azure. [Azure poskytuje různé integrované role](../role-based-access-control/built-in-roles.md), a zálohování Azure má tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služeb zotavení jsou kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
 - **Chránit všechny konfigurace virtuálních počítačů Azure**: trezory služeb zotavení ochrana založené na správci prostředků virtuálních počítačů včetně prémiové disky, spravované disky a virtuální počítače šifrovaná. Upgrade trezor Backup do trezoru služeb zotavení vám dává příležitost k upgradu virtuální počítače založené na portálu Service Manager na virtuální počítače na základě Resource Manager. Při upgradu trezoru, můžete zachovat body obnovení virtuálních počítačů na bázi portálu Service Manager a nakonfigurovat ochranu upgradovaný virtuálních počítačů (Resource Manager povoleno). [Další informace](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 

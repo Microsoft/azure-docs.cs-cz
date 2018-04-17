@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na fyzický přístup"
-description: "PCI DSS požadavek 9"
+title: Azure platebních zpracování plán, podle kterého – požadavky na fyzický přístup
+description: PCI DSS požadavek 9
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Požadavky fyzického přístupu pro prostředí kompatibilní s rozhraním PCI DSS 
 ## <a name="pci-dss-requirement-9"></a>PCI DSS požadavek 9
@@ -38,8 +38,8 @@ Všechny fyzický přístup k data nebo systémy této úklidové držitele kart
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování zabezpečení fyzický přístup pro datového centra. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování zabezpečení fyzický přístup pro datového centra. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -54,8 +54,8 @@ Všechny fyzický přístup k data nebo systémy této úklidové držitele kart
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování průmyslové televize a mechanismy řízení přístupu biometrické pro datového centra. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování průmyslové televize a mechanismy řízení přístupu biometrické pro datového centra. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -69,8 +69,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Neexistují žádné konektorů veřejně přístupné síti v rámci platformy Microsoft Azure. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Neexistují žádné konektorů veřejně přístupné síti v rámci platformy Microsoft Azure. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -82,8 +82,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Fyzický přístup k Microsoft Azure seznamy přístupu úzce řídí síťového hardwaru, více způsoby ověřování, fyzických překážek položku a požadavek pro firmy vyžadují schválení pro přístup k zařízení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Fyzický přístup k Microsoft Azure seznamy přístupu úzce řídí síťového hardwaru, více způsoby ověřování, fyzických překážek položku a požadavek pro firmy vyžadují schválení pro přístup k zařízení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -98,8 +98,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování zabezpečení a zaměstnanec nebo dodavatel identifikace fyzický přístup při návštěvě datových centrech. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za implementace, vynucení a monitorování zabezpečení a zaměstnanec nebo dodavatel identifikace fyzický přístup při návštěvě datových centrech. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -113,8 +113,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Povolení přístupu k datových Center společnosti Microsoft se řídí použití seznamu autorizovaný přístup schválení tým datové centrum podle Princip nejnižších nutných oprávnění. Seznam řízení přístupu je zkontrolovat, ověřit a čtvrtletně aktualizovat.<br /><br />Microsoft Azure datových centrech využívat fyzický přístup zařízení, jako je hraniční brány, čteček oznámení "BADGE" elektronické přístup, biometrické čtečky, man depeše/portály pro a proti průchodu zpět zařízení. Přístup k oznámení "BADGE" zařízení jsou neustále monitorovány. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Povolení přístupu k datových Center společnosti Microsoft se řídí použití seznamu autorizovaný přístup schválení tým datové centrum podle Princip nejnižších nutných oprávnění. Seznam řízení přístupu je zkontrolovat, ověřit a čtvrtletně aktualizovat.<br /><br />Microsoft Azure datových centrech využívat fyzický přístup zařízení, jako je hraniční brány, čteček oznámení "BADGE" elektronické přístup, biometrické čtečky, man depeše/portály pro a proti průchodu zpět zařízení. Přístup k oznámení "BADGE" zařízení jsou neustále monitorovány. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -126,8 +126,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá pro vynucení doručení předem schválené jsou dostali bay zabezpečené načítání, který je fyzicky izolované od zařízení, informace o zpracování a jsou monitorovány pomocí oprávněný personál. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá pro vynucení doručení předem schválené jsou dostali bay zabezpečené načítání, který je fyzicky izolované od zařízení, informace o zpracování a jsou monitorovány pomocí oprávněný personál. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -140,8 +140,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá pro vynucení doručení předem schválené jsou dostali bay zabezpečené načítání, který je fyzicky izolované od zařízení, informace o zpracování a jsou monitorovány pomocí oprávněný personál. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá pro vynucení doručení předem schválené jsou dostali bay zabezpečené načítání, který je fyzicky izolované od zařízení, informace o zpracování a jsou monitorovány pomocí oprávněný personál. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -153,8 +153,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft access center dat musí být předem schválené a osoby oprávněné jsou vyžadovány k vrácení se změnami s fyzického zabezpečení v místě doručení a zadejte platný důkaz ID před vstupem. Odznaky jasně označuje zaměstnanci. Dodavatelů a návštěvníky zobrazit dočasné oznámení, které musí být předána po opuštění zařízení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft access center dat musí být předem schválené a osoby oprávněné jsou vyžadovány k vrácení se změnami s fyzického zabezpečení v místě doručení a zadejte platný důkaz ID před vstupem. Odznaky jasně označuje zaměstnanci. Dodavatelů a návštěvníky zobrazit dočasné oznámení, které musí být předána po opuštění zařízení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -166,8 +166,8 @@ Například sítě konektorů umístěné ve veřejných oblastí a oblastí, kt
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Návštěvníky vyžadovaných předáním odznaky po opuštění jakékoli zařízení společnosti Microsoft. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Návštěvníky vyžadovaných předáním odznaky po opuštění jakékoli zařízení společnosti Microsoft. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -181,8 +181,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za údržbu návštěvníka protokolu jako fyzické kontrolní záznam aktivity návštěvníka k zařízením a také místnostmi počítače a datových center, kde ukládána nebo přenášených dat držitele karty. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zodpovídá za údržbu návštěvníka protokolu jako fyzické kontrolní záznam aktivity návštěvníka k zařízením a také místnostmi počítače a datových center, kde ukládána nebo přenášených dat držitele karty. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -194,8 +194,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -207,8 +207,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -220,8 +220,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -233,8 +233,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -246,8 +246,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -259,8 +259,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -272,8 +272,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -286,8 +286,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -299,8 +299,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -312,8 +312,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukládá všechna data v Azure SQL Database. Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -325,8 +325,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Techniky odstraňování dat se liší v závislosti na typu datového objektu, bude zrušeno, ať to odběry, úložiště, virtuální počítače nebo databáze. V víceklientské prostředí Microsoft Azure postupujte opatrně, že je přijata pozornost jednoho zákazníka dat není povoleno buď "úniku" do jiné zákaznická data, nebo když zákazník odstraňuje data, žádné jiné zákazníků (včetně, ve většině případů zákazníka Kdo vlastní jednou data) můžete získat přístup k této odstraněná data.<br /><br />Microsoft Azure postupuje podle NIST 800-88 pokyny na média čištění, které adres hlavní zájmem zajistit tato data se náhodně neuvolní. Tyto pokyny zahrnovat elektronické a fyzické čištění. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore lze odstranit zcela odstraněním použitá při nasazení skupiny prostředků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Techniky odstraňování dat se liší v závislosti na typu datového objektu, bude zrušeno, ať to odběry, úložiště, virtuální počítače nebo databáze. V víceklientské prostředí Microsoft Azure postupujte opatrně, že je přijata pozornost jednoho zákazníka dat není povoleno buď "úniku" do jiné zákaznická data, nebo když zákazník odstraňuje data, žádné jiné zákazníků (včetně, ve většině případů zákazníka Kdo vlastní jednou data) můžete získat přístup k této odstraněná data.<br /><br />Microsoft Azure postupuje podle NIST 800-88 pokyny na média čištění, které adres hlavní zájmem zajistit tato data se náhodně neuvolní. Tyto pokyny zahrnovat elektronické a fyzické čištění. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore lze odstranit zcela odstraněním použitá při nasazení skupiny prostředků.|
 
 
 
@@ -341,8 +341,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá OMS do protokolu všechny změny systému.<br /><br />[Operations Management Suite (OMS)](/azure/operations-management-suite/) poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure do protokolu všechny změny systému.<br /><br />Log Analytics poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - protokolování a auditování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -357,8 +357,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore obsahuje referenční architektura a seznam všech služeb používaných v dokumentaci k jeho nasazení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore obsahuje referenční architektura a seznam všech služeb používaných v dokumentaci k jeho nasazení.|
 
 
 
@@ -373,8 +373,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -390,8 +390,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -403,8 +403,8 @@ Zachovat tento protokol pro minimálně tři měsíce, není-li jinak omezené n
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 

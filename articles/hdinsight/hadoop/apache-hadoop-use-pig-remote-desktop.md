@@ -1,8 +1,8 @@
 ---
-title: "Použijte Hadoop Pig pomocí vzdálené plochy v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití příkazu Pig spustit příkazy Pig Latin z připojení vzdálené plochy na clusteru systému Windows Hadoop v HDInsight."
+title: Použijte Hadoop Pig pomocí vzdálené plochy v HDInsight - Azure | Microsoft Docs
+description: Další informace o použití příkazu Pig spustit příkazy Pig Latin z připojení vzdálené plochy na clusteru systému Windows Hadoop v HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: e034a286-de0f-465f-8bf1-3d085ca6abed
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b5e8e7f400a4494549c997e969a46ca90eb0ba5
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Spuštění úlohy Pig z připojení vzdálené plochy
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -64,7 +62,7 @@ Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokyn�
 
     <table>
     <tr>
-    <th>Příkaz</th><th>Výsledek</th>
+    <th>Výraz</th><th>Co dělá</th>
     </tr>
     <tr>
     <td>FILTEREDLEVELS = filtr úrovně podle LOGLEVEL není null.</td><td>Odebere řádky, které obsahují hodnotu null pro úroveň protokolu a ukládá výsledky do FILTEREDLEVELS.</td>
@@ -79,7 +77,7 @@ Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokyn�
     <td>VÝSLEDEK = pořadí FREKVENCÍ podle počtu desc;</td><td>Řadí úrovní záznamu do protokolu podle počtu (sestupně) a ukládá do výsledku</td>
     </tr>
     </table>
-6.Můžete také uložit výsledky transformace pomocí `STORE` příkaz. Například následující příkaz uloží `RESULT` k **/example/data/pigout** adresář ve výchozím kontejneru úložiště pro cluster:
+6. Můžete také uložit výsledky transformace pomocí `STORE` příkaz. Například následující příkaz uloží `RESULT` k **/example/data/pigout** adresář ve výchozím kontejneru úložiště pro cluster:
 
         STORE RESULT into 'wasb:///example/data/pigout'
 

@@ -64,7 +64,7 @@ V dalším kroku měření požadavky na maximální výkon vaší aplikace v pr
 | Min. Latence | | | |
 | Průměrná latence | | | |
 | Max. Procesor | | | |
-| Průměrné využití procesoru | | | |
+| Průměr CPU | | | |
 | Max. Memory (Paměť) | | | |
 | Průměrná paměti | | | |
 | Hloubka fronty | | | |
@@ -87,14 +87,14 @@ Tyto čítače PerfMon jsou k dispozici pro procesor, paměť a každý logický
 | --- | --- | --- | --- |
 | **IOPS nebo transakcí za sekundu** |Počet vstupně-výstupní požadavky vydané úložiště disku za sekundu. |Čtení disku/s <br> Zápis disku/s |TPS <br> r/s <br> w/s |
 | **Disk čtení a zápisu** |% čtení a zápisu operace provedené na disku. |Čas čtení disku v % <br> Čas zápisu disku v % |r/s <br> w/s |
-| **Propustnost** |Množství dat číst nebo zapisovat na disk za sekundu. |Čtení z disku bajtů/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
+| **Propustnost** |Množství dat číst nebo zapisovat na disk za sekundu. |Bajty čtení z disku/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
 | **Latence** |Celková doba nutná k dokončení žádosti o vstupně-výstupní operace disku. |Průměrná doba disku/čtení <br> Doba průměrná disku/zápis |await <br> svctm |
 | **Velikost vstupně-výstupní operace** |Velikost vstupně-výstupních požadavků problémy na discích úložiště. |Průměrná disku bajtů/čtení <br> Průměrná disku bajtů/zápis |avgrq sz |
 | **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků čekání na čtení formuláře nebo zapsaných na disk úložiště. |Aktuální délka fronty disku |avgqu sz |
 | **Max. Paměť** |Množství paměti nutné ke spuštění aplikace bez problémů |% Využití potvrzených bajtů |Použití vmstat |
 | **Max. VYUŽITÍ PROCESORU** |Velikost procesoru potřebné ke spuštění aplikace bez problémů |% Času procesoru |% util |
 
-Další informace o [iostat](http://linuxcommand.org/man_pages/iostat1.html) a [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
+Další informace o [iostat](https://linux.die.net/man/1/iostat) a [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Optimalizace výkonu aplikace
 Hlavní faktory, které mají vliv na výkon aplikace běžící na Storage úrovně Premium jsou povaze z vstupně-výstupní požadavky, velikost virtuálního počítače, velikost disku, počet disků, ukládání do mezipaměti na disku, Multithreading a hloubku fronty. Můžete ovládat některé tyto faktory s knoflíky poskytované systémem. Většina aplikací nemusí poskytnout možnost ke změně velikosti vstupně-výstupní operace a hloubku fronty přímo. Například pokud používáte systém SQL Server, nemůžete hloubka velikost a fronty vstupně-výstupní operace. SQL Server vybere optimální vstupně-výstupní operace velikost fronty hloubka hodnoty a získat většina výkonu. Je důležité pochopit účinky oba typy faktory na výkon aplikace tak, aby můžete zřídit příslušné prostředky ke splnění požadavkům na výkon.
@@ -140,10 +140,10 @@ Tady je příklad na tom, jak můžete vypočítat IOPS a propustnost nebo ší�
 
 | Požadavků aplikace | Velikost vstupně-výstupních operací | IOPS | Propustnost nebo šířky pásma |
 | --- | --- | --- | --- |
-| Maximální IOPS |8 kB |5,000 |40 MB za sekundu |
-| Maximální propustnost |1024 KB |200 |200 MB za sekundu |
+| Maximální počet vstupně-výstupních operací za sekundu |8 kB |5 000 |40 MB za sekundu |
+| Maximální propustnost |1024 kB |200 |200 MB za sekundu |
 | Maximální propustnost + vysoké IOPS |64 kB |3,200 |200 MB za sekundu |
-| Maximální IOPS + Vysoká propustnost |32 KB. |5,000 |160 MB za sekundu |
+| Maximální IOPS + Vysoká propustnost |32 KB. |5 000 |160 MB za sekundu |
 
 IOPS a šířky pásma, vyšší než maximální hodnota disku úložiště jednoho premium, použijte více prémiové disky rozdělená společně. Například stripe dva P30 disky a k získání součet IOPS v 10 000 IOPS nebo kombinované propustnost 400 MB za sekundu. Jak je vysvětleno v další části, je nutné použít velikost virtuálního počítače, který podporuje kombinovaná IOPS a propustnost disku.
 
@@ -197,7 +197,7 @@ Azure Premium Storage nabízí aktuálně sedm velikosti disku. Velikost každé
 
 | Disky typu Premium  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2 048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Velikost disku           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
 | Propustnost / disk | 25 MB za sekundu  | 50 MB za sekundu  | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 
 
@@ -323,7 +323,7 @@ Hloubka fronty byste neměli konfigurovat žádné vysokou hodnotu, ale na optim
 Pro svazek prokládané udržovat tak, aby každý disk má ve špičce hloubce fronty jednotlivě hloubce fronty dostatečně vysoký. Představte si třeba aplikace, který by vložil hloubce fronty 2 a v stripe je 4 disky. Dva požadavky vstupně-výstupní operace přejde na dva disky a zbývající dva disky bude nečinnosti. Proto konfigurovat hloubku fronty tak, aby všechny disky může být zaneprázdněn. Vzorec níže ukazuje, jak určit hloubku fronty prokládané svazky.  
     ![](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Omezování
+## <a name="throttling"></a>Throttling
 Azure Premium Storage zřizuje zadaný počet IOPS a propustnost v závislosti na velikosti virtuálních počítačů a velikosti disků, které zvolíte. Kdykoliv se aplikace pokusí o jednotka IOPS nebo propustnosti nad těchto omezení co virtuálního počítače nebo disk může zpracovat, budou omezení úložiště Premium ho. To manifesty ve formě snížení výkonu ve vaší aplikaci. To může znamenat vyšší latence, snížit propustnost nebo snižte IOPS. Pokud Storage úrovně Premium není omezení, vaše aplikace může úplně nezdaří podle překročení, jaké jsou schopné dosáhnout její prostředky. Tak aby se zabránilo problémům s výkonem kvůli omezování, vždy zřídit dostatečné prostředky pro vaši aplikaci. Vzít v úvahu, co jsme probírali v částech velikosti disku výše a velikosti virtuálních počítačů. Srovnávací testy je nejlepší způsob, jak zjistit, jaké prostředky, je nutné kvůli hostování vaší aplikace.
 
 ## <a name="benchmarking"></a>Srovnávací testy
@@ -374,24 +374,24 @@ Proveďte následující postup tedy mezipaměti
 
 1. Vytvořte dva specifikace přístup s hodnoty zobrazené níže,
 
-   | Name (Název) | Velikost požadavku | Náhodné % | % Pro čtení |
+   | Název | Velikost požadavku | Náhodné % | % Pro čtení |
    | --- | --- | --- | --- |
    | RandomWrites\_1 MB |1MB |100 |0 |
    | RandomReads\_1 MB |1MB |100 |100 |
 2. Spusťte test Iometer pro inicializaci mezipaměti disku s následujícími parametry. Pomocí tří pracovních vláken pro cílový svazek a hloubce fronty 128. Nastavte "Běh" doba trvání testu na 2hrs na kartě "Testování instalace".
 
-   | Scénář | Cílový svazek | Name (Název) | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
    | Inicializovat Disk mezipaměti |Čtení z mezipaměti |RandomWrites\_1 MB |2hrs |
 3. Spusťte test Iometer pro zahájení práce s disku mezipaměti s následujícími parametry. Pomocí tří pracovních vláken pro cílový svazek a hloubce fronty 128. Nastavte "Běh" doba trvání testu na 2hrs na kartě "Testování instalace".
 
-   | Scénář | Cílový svazek | Name (Název) | Doba trvání |
+   | Scénář | Cílový svazek | Název | Doba trvání |
    | --- | --- | --- | --- |
    | Horké až diskové mezipaměti |Čtení z mezipaměti |RandomReads\_1 MB |2hrs |
 
 Po diskové mezipaměti je provozní teplotu, pokračujte testovací scénáře uvedené níže. Pokud chcete spustit Iometer test, použijte aspoň tři pracovních vláken pro **každý** cíle svazku. Pro každý pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložené testovací specifikace, jak je znázorněno v následující tabulce, ke spuštění odpovídající scénáře testu. V tabulce také jsou očekávané výsledky pro IOPS a propustnost při spuštění tyto testy. Ve všech scénářích se používá malé velikost vstupně-výstupní operace 8 kB a hloubce fronty vysoké 128.
 
-| Testovací scénář | Cílový svazek | Name (Název) | výsledek |
+| Testovací scénář | Cílový svazek | Název | Výsledek |
 | --- | --- | --- | --- |
 | Max. Čtení IOPS |Čtení z mezipaměti |RandomWrites\_8 kb |50 000 IOPS |
 | Max. Zápis IOPS |NoCacheWrites |RandomReads\_8 kb |64 000 IOPS |
@@ -566,7 +566,8 @@ Získat maximální kombinovat pro čtení a zápisu propustnosti, použít vět
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Azure Premium Storage:
 
-* [Storage úrovně Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md)  
+* 
+  [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md)  
 
 Pro uživatele systému SQL Server, přečtěte si článek na nejlepší postupy z hlediska výkonu pro SQL Server:
 

@@ -1,11 +1,11 @@
 ---
-title: "Vytváření bitové kopie virtuálního počítače pro Azure Marketplace | Microsoft Docs"
-description: "Podrobné pokyny o tom, jak vytvořit bitovou kopii virtuálního počítače pro Azure Marketplace pro ostatní k nákupu."
+title: Vytváření bitové kopie virtuálního počítače pro Azure Marketplace | Microsoft Docs
+description: Podrobné pokyny o tom, jak vytvořit bitovou kopii virtuálního počítače pro Azure Marketplace pro ostatní k nákupu.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Průvodce pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede procesem přípravy virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základ pro vaše SKU. Proces se liší v závislosti na tom, jestli tím SKU systémem Linux nebo systému Windows. Tento článek se týká obou scénářů. Tento postup lze provést paralelně s [vytváření účtů a registrace][link-acct-creation].
@@ -69,8 +69,8 @@ Operační systém virtuálního pevného disku pro bitové kopie virtuálního 
 Chcete-li začít, vytvoření virtuálního počítače z jednoho z následujících bitových kopií, nachází na [portálu Microsoft Azure][link-azure-portal]:
 
 * Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 SP1] [link-datactr-2008-r2])
-* SQL Server 2014 ([Enterprise][link-sql-2014-ent], [Standard][link-sql-2014-std], [Web][link-sql-2014-web])
-* SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent], [Standard][link-sql-2012-std], [Web][link-sql-2012-web])
+* SQL Server 2014 ([Enterprise][link-sql-2014-ent], [standardní][link-sql-2014-std], [webové] [ link-sql-2014-web])
+* SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent], [standardní][link-sql-2012-std], [webové] [ link-sql-2012-web])
 
 Tyto odkazy se dají najít i na Portálu publikování na stránce skladové jednotky.
 
@@ -430,7 +430,7 @@ Toto jsou kroky pro vytvoření adresy URL SAS pomocí Microsoft Azure Storage E
 
 Toto jsou kroky pro vytvoření adresy URL SAS pomocí rozhraní příkazového řádku Azure
 
-1.  Stáhněte si Microsoft Azure CLI z [zde](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také najít jiné odkazy pro  **[Windows](http://aka.ms/webpi-azure-cli)**  a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Stáhněte si Microsoft Azure CLI z [zde](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Můžete také najít jiné odkazy pro **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po jeho stažení, nainstalujte prosím
 
@@ -446,7 +446,7 @@ Toto jsou kroky pro vytvoření adresy URL SAS pomocí rozhraní příkazového 
 
     b. **`<Storage Account Key>`**: Zadejte klíč účtu úložiště
 
-    c. **`<Permission Start Date>`**: Aby se předešlo pro čas UTC, vyberte den, než aktuální datum. Například pokud je aktuální datum 26 října 2016, pak hodnota by měla být 10/25/2016. Pokud používáte Azure CLI 2.0 (az příkaz), zadejte datum a čas v počátečním a koncovým datem, například: 10-25-2016T00:00:00Z.
+    c. **`<Permission Start Date>`**: Aby se předešlo pro čas UTC, vyberte den, než aktuální datum. Například pokud je aktuální datum 25. října 2016, pak hodnota by měla být 10/25/2016. Pokud používáte Azure CLI 2.0 (az příkaz), zadejte datum a čas v počátečním a koncovým datem, například: 10-25-2016T00:00:00Z.
 
     d. **`<Permission End Date>`**: Vyberte datum, které je minimálně 3 týdny po **počáteční datum**. Hodnota musí být **11/02/2016**. Pokud používáte Azure CLI 2.0 (az příkaz), zadejte datum a čas v počátečním a koncovým datem, například: 11-02-2016T00:00:00Z.
 

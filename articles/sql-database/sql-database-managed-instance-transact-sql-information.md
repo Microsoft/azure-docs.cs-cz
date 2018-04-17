@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -239,7 +239,7 @@ Další informace najdete v tématu [FILESTREAM](https://docs.microsoft.com/sql/
 ### <a name="linked-servers"></a>Propojené servery
  
 Odkazované servery ve spravované Instance podporují omezený počet cíle: 
-- Podporované cíle: SQL Server, SQL Database, spravované Instance a SQL Server na virtuálním počítači.
+- Podporované cíle: SQL Server a databáze SQL
 - Není podporováno cíle: soubory, služby Analysis Services a dalších relační.
 
 Operace
@@ -280,7 +280,7 @@ Replikace se ještě nepodporuje. Informace o replikaci najdete v tématu [repli
  - `FROM DISK`/`TAPE`/ zálohovací zařízení není podporován.
  - Zálohovací sklady nejsou podporovány. 
 - `WITH` možnosti nejsou podporovány (ne `DIFFERENTIAL`, `STATS`atd.)     
-- `ASYNC RESTORE` -Obnovení pokračovat i v případě, že dělí připojení klienta. Pokud vaše připojení se ukončí, můžete zkontrolovat `sys.dm_operation_status` zobrazení stavu operace obnovení (a také vytvořit a vyřazení databáze). See [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
+- `ASYNC RESTORE` -Obnovení pokračovat i v případě, že dělí připojení klienta. Pokud vaše připojení se ukončí, můžete zkontrolovat `sys.dm_operation_status` zobrazení stavu operace obnovení (a také vytvořit a vyřazení databáze). V tématu [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
  
 Následující možnosti databáze jsou sady nebo přepsat a není možné později změnit:  
 - `NEW_BROKER` (Pokud broker není povolena v souboru .bak)  
@@ -324,7 +324,7 @@ Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://
  - `max text repl size` 
  - `remote data archive` 
  - `remote proc trans` 
-- `sp_execute_external_scripts` není podporována. See [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `sp_execute_external_scripts` není podporována. V tématu [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` není podporována. V tématu [procedury xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nejsou podporovány, včetně `sp_addextendedproc` a `sp_dropextendedproc`. V tématu [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. V tématu [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
@@ -419,4 +419,4 @@ Může existovat pouze jedna databáze profil e-mailu a musí být voláno `Azur
 
 - Podrobnosti o spravovaných instanci najdete v tématu [co je spravované Instance?](sql-database-managed-instance.md)
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
-- Podívejte se kurz [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
+- Kurz ukazuje, jak vytvořit novou instanci spravované, najdete v části [vytvoření Instance spravované](sql-database-managed-instance-create-tutorial-portal.md).

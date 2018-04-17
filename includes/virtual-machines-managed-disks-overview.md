@@ -24,7 +24,7 @@ Disky Azure jsou navržené pro 99,999% dostupnost. REST snadnější zároveň 
 
 ### <a name="granular-access-control"></a>Řízení přístupu granulární
 
-Můžete použít [řízení řízení přístupu (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) přiřadit konkrétní oprávnění pro spravovaných disků na jeden nebo více uživatelů. Spravované disky zpřístupňuje a různé operace, včetně čtení, zápisu (vytvořit nebo aktualizovat), odstranění a načítání [sdílený přístupový podpis (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) disku. Můžete udělit přístup k pouze operace, které uživatel potřebuje provést jeho úlohy. Například pokud nechcete, aby uživatel ke zkopírování spravovaných disků na účet úložiště, můžete není k udělení přístupu k exportu akce pro tohoto spravovaného disku. Podobně pokud nechcete, aby uživatel použít identifikátor URI SAS ke zkopírování se spravovaným diskem, můžete neudělujte oprávnění, které chcete spravovaného disku.
+Můžete použít [řízení řízení přístupu (RBAC)](../articles/role-based-access-control/overview.md) přiřadit konkrétní oprávnění pro spravovaných disků na jeden nebo více uživatelů. Spravované disky zpřístupňuje a různé operace, včetně čtení, zápisu (vytvořit nebo aktualizovat), odstranění a načítání [sdílený přístupový podpis (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) disku. Můžete udělit přístup k pouze operace, které uživatel potřebuje provést jeho úlohy. Například pokud nechcete, aby uživatel ke zkopírování spravovaných disků na účet úložiště, můžete není k udělení přístupu k exportu akce pro tohoto spravovaného disku. Podobně pokud nechcete, aby uživatel použít identifikátor URI SAS ke zkopírování se spravovaným diskem, můžete neudělujte oprávnění, které chcete spravovaného disku.
 
 ### <a name="azure-backup-service-support"></a>Podporu služby Azure Backup
 Pomocí služby zálohování Azure s spravované disky vytvářet úlohy zálohování se zálohy založené na čase, snadno obnovení virtuálních počítačů a zásady uchovávání záloh. Spravované disky podporují pouze místně redundantní úložiště (LRS) jako možnost replikace; To znamená, že udržuje tři kopie dat v jedné oblasti. Místní zotavení po havárii, je nutné zálohovat vaše disky virtuálních počítačů v jiné oblasti pomocí [služba Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) a účet úložiště GRS jako úložiště záloh. Azure Backup podporuje datový disk aktuálně velikostí až 1TB pro zálohování. Další informace o to v [služby pomocí zálohování Azure pro virtuální počítače s spravované disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -53,14 +53,14 @@ Zde jsou k dispozici pro premium se spravovaným diskem velikosti disků:
 
 | **Premium spravované <br>typ disku** | **P4** | **P6** |**P10** | **P15** | **P20** | **P30** | **P40** | **P50** | 
 |------------------|---------|---------|---------|---------|---------|----------------|----------------|----------------|  
-| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB  | 256 GiB  | 512 GiB  | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 Zde jsou k dispozici pro standardní se spravovaným diskem velikosti disků:
 
 | **Standardní spravované <br>typ disku** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
 |------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 
+| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 **Počet transakcí**: fakturuje se počet transakcí, které můžete provádět na standardní spravovaného disku. Neexistuje žádné náklady pro transakce pro premium se spravovaným diskem.
@@ -104,8 +104,7 @@ Existují dva typy šifrování, které popisují v souvislosti s aplikací spra
 
 ### <a name="storage-service-encryption-sse"></a>Šifrování služby úložiště (SSE)
 
-[Azure šifrování služby úložiště](../articles/storage/common/storage-service-encryption.md) poskytuje šifrování na rest a ochranu dat, aby splňovaly vaše organizace závazky zabezpečení a dodržování předpisů. SSE je ve výchozím nastavení povolena pro všechny spravované disky, snímky a obrázků ve všech oblastech, kde je k dispozici spravované disky. Od 10. června 2017, všechny nové spravované disky, snímky nebo obrázky a nová data k existující spravovaná diskům, jsou automaticky šifrovat na rest klíče spravované microsoftem ve výchozím nastavení. Můžete se rozhodnout, přineste si vlastní klíč k šifrování pro soubory a objektů BLOB služby Azure. Šifrování pro tabulky a fronty bude vždy používat Microsoft spravované klíče.
-Pamatujte, že po povolení šifrování služby úložiště, bude šifrovat jenom nová data, a případné existující soubory v rámci tohoto účtu úložiště bude získat zpětně zašifrovaný šifrování procesem na pozadí. Přejděte [stránka spravované nejčastější dotazy disky](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) další podrobnosti.
+[Azure šifrování služby úložiště](../articles/storage/common/storage-service-encryption.md) poskytuje šifrování na rest a ochranu dat, aby splňovaly vaše organizace závazky zabezpečení a dodržování předpisů. SSE je ve výchozím nastavení povolena pro všechny spravované disky, snímky a obrázků ve všech oblastech, kde je k dispozici spravované disky. Od 10. června 2017, všechny nové spravované disky, snímky nebo obrázky a nová data k existující spravovaná diskům, jsou automaticky šifrovat na rest klíče spravované microsoftem ve výchozím nastavení. Přejděte [stránka spravované nejčastější dotazy disky](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) další podrobnosti.
 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)

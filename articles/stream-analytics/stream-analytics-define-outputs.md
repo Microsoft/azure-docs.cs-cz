@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/18/2017
-ms.openlocfilehash: afaadc12d056f42a75795073d480fe26757649d8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: 8d984c17ab373428b13ed59a598ca8ae4e88136a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Stream Analytics výstupy: možnosti pro úložiště a analýzy
 Při vytváření úlohy Stream Analytics, zvažte, jak se využívá výsledných datech. Jak můžete zobrazit výsledky úlohu služby Stream Analytics a kde je můžete uložit?
@@ -21,18 +21,19 @@ Při vytváření úlohy Stream Analytics, zvažte, jak se využívá výsledný
 Pokud chcete povolit různé vzorce aplikací, má Azure Stream Analytics různé možnosti pro ukládání výstupu a zobrazit výsledky analýzy. To umožňuje snadno zobrazit výstup úlohy a umožňuje flexibilitu při využívání a úložiště výstup úlohy datového skladu a jiné účely. Před zahájení úlohy a události spuštění toku musí existovat žádný výstup nakonfigurované v úloze. Například pokud použijete jako výstupu úložiště objektů Blob, úloha nemá vytvořit účet úložiště automaticky. Před spuštěním úlohy Stream Analytics, vytvoření účtu úložiště.
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Toto úložiště umožňuje ukládání dat z jakékoli velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Další Stream Analytics musí mít oprávnění pro přístup k Data Lake Store. Podrobnosti o ověřování a jak se můžete zaregistrovat pro Data Lake Store (v případě potřeby), jsou popsané v [Data Lake výstup článku](stream-analytics-data-lake-output.md).
+Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložiště pro analytické úlohy s velkými objemy dat. Data Lake Store umožňuje ukládání dat z jakékoli velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Další Stream Analytics musí mít oprávnění pro přístup k Data Lake Store.
 
-### <a name="authorize-an-azure-data-lake-store"></a>Autorizace Azure Data Lake Store
-Pokud Data Lake Storage je vybraná jako výstupu na portálu Azure, zobrazí se výzva k autorizaci připojení k existující Data Lake Store.  
+### <a name="authorize-an-azure-data-lake-store-account"></a>Autorizace účtu Azure Data Lake Store
 
-![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+1. Pokud Data Lake Storage je vybraná jako výstupu na portálu Azure, zobrazí se výzva k autorizaci připojení k existující Data Lake Store.  
 
-Pak vyplňte vlastnosti pro Data Lake Store výstup jak vidíte níže:
+   ![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
-![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+2. Pokud již máte přístup do Data Lake Store, klikněte na možnost "Povolit teď" a objeví se na stránce označující "Přesměrováním na autorizace". Po úspěšné ověřování, se zobrazí stránka, která můžete konfigurovat výstupní Data Lake Store.  
 
-Následující tabulka uvádí názvy vlastností a jejich popis potřebné pro vytvoření výstupní Data Lake Store.
+3. Jakmile máte účet Data Lake Store, ověření, můžete konfigurovat vlastnosti pro výstup do Data Lake Store. V následující tabulce je seznam názvů vlastností a jejich popis konfigurace výstup do Data Lake Store.
+
+   ![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 <table>
 <tbody>
@@ -46,11 +47,11 @@ Následující tabulka uvádí názvy vlastností a jejich popis potřebné pro 
 </tr>
 <tr>
 <td>Název účtu</td>
-<td>Název účtu Data Lake Storage, kde jsou odesílání výstupu. Zobrazí rozevírací seznam účtů Data Lake Store, ke kterým má uživatel přihlásí k portálu přístup k.</td>
+<td>Název účtu Data Lake Storage, kde jsou odesílání výstupu. Zobrazí rozevírací seznam účtů Data Lake Store, které jsou k dispozici v rámci vašeho předplatného.</td>
 </tr>
 <tr>
 <td>Předpona vzorek cesty</td>
-<td>Pojmenovávání souborů zahrnuje následující konvence: <BR>{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>Příklad výstupní soubory:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>Zde jsou také situacích, kde se má vytvořit nový soubor:<BR>1. Změnit ve výstupu schématu <BR>2. Vnější nebo vnitřní restartovat úlohy<BR><BR>Kromě toho pokud vzorek cesty soubor neobsahuje koncový znak "/", poslední vzor v cestě k souboru je považován za předponu názvu souboru.<BR><BR>Příklad:<BR>Pro vzorek cesty: složku1/logs/HH, vygenerovaný soubor bude vypadat podobně jako: folder1/logs/02_134343_gguid_1.csv</td>
+<td>Cesta k souboru používaná k zápisu souborů v rámci zadaného účtu Data Lake Store. Můžete určit jeden nebo více instancí {date} a {time} proměnné.<BR> Příklad 1: složku1/logs / {date} / {time}<BR>Příklad 2: složku1/logs / {date}<BR>Zde jsou také situacích, kde se má vytvořit nový soubor:<BR>1. Změnit ve výstupu schématu <BR>2. Vnější nebo vnitřní restartovat úlohy<BR><BR>Kromě toho pokud vzorek cesty soubor neobsahuje koncový znak "/", poslední vzor v cestě k souboru je považován za předponu názvu souboru.<BR></td>
 </tr>
 <tr>
 <td>Datum formátu [<I>volitelné</I>]</td>
@@ -80,12 +81,14 @@ Následující tabulka uvádí názvy vlastností a jejich popis potřebné pro 
 </table>
 
 ### <a name="renew-data-lake-store-authorization"></a>Obnovit autorizační Data Lake Store
-Je potřeba novému ověření účtu Data Lake Store, pokud došlo ke změně jeho heslo vzhledem k tomu, že vaše úlohy vytvoření nebo poslední ověření.
+Je potřeba novému ověření účtu Data Lake Store, pokud došlo ke změně jeho heslo vzhledem k tomu, že vaše úlohy vytvoření nebo poslední ověření. Pokud nemáte novému ověření, úlohu nebude výstup výsledků a protokoly operací se zaznamená chyba oznamující potřebu opětovná autorizace. V současné době není omezení kde ověřovací token, je potřeba ručně aktualizovat každých 90 dní pro všechny úlohy s výstupem Data Lake Store. 
+
+Obnovit autorizace, **Zastavit** úlohu > přejděte na výstup do Data Lake Store > klikněte na tlačítko **obnovit autorizace** propojit a po krátkou dobu a stránky objeví se označující "Přesměrováním autorizace …". Stránka se automaticky zavře a v případě úspěšného označí "Autorizace byl úspěšně obnoven". Pak je třeba kliknout na **Uložit** v dolní části stránky a můžete pokračovat restartováním úlohu z **naposledy Zastaveno** ztráty dat.
 
 ![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>Databáze SQL
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) lze použít jako výstup pro data, která je povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics k zápisu do existující tabulky v databázi SQL Azure.  Schématu tabulky se musí přesně shodovat, pole a jejich typy se výstup z úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) dá se zadat taky jako výstupu prostřednictvím SQL Database možnost output také (Toto je funkce preview). Následující tabulka uvádí názvy vlastností a jejich popis pro vytvoření databáze SQL výstup.
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) lze použít jako výstup pro data, která je povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics k zápisu do existující tabulky v databázi SQL Azure.  Schématu tabulky se musí přesně shodovat, pole a jejich typy se výstup z úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) dá se zadat taky jako výstupu prostřednictvím také možnost output databáze SQL. Následující tabulka uvádí názvy vlastností a jejich popis pro vytvoření databáze SQL výstup.
 
 | Název vlastnosti | Popis |
 | --- | --- |
@@ -232,7 +235,7 @@ datetime | Datum a čas
 Plovoucí desetinná čárka | Dvojitý
 Pole záznamu | Řetězec typu konstantní hodnoty "IRecord" nebo "IArray"
 
-### <a name="schema-update"></a>Schema Update
+### <a name="schema-update"></a>Aktualizace schématu
 Stream Analytics odvodí schéma modelu dat podle první sadu událostí ve výstupu. Později v případě potřeby schéma modelu dat se aktualizuje zohlednit příchozí události, které nemusí začlenit do původní schématu.
 
 `SELECT *` Dotazu je nutno, aby se zabránilo aktualizace dynamické schématu více řádků. Kromě potenciální ovlivnit výkon to může také způsobit nejistoty čas potřebný pro dané výsledky. Měla by být vybrána přesný pole, které je potřeba se zobrazí na řídicí panel Power BI. Kromě toho musí být hodnoty data kompatibilní s vybraným datovým typem.
@@ -304,21 +307,26 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Oddělovač |Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuované databáze, více modelu služby, aby neomezenou elastické škálování nabízí kolem celém světě, plnohodnotný dotazovací a automatické indexování přes vázané na schéma datové modely, garantované s nízkou latencí a špičkový komplexní SLA.
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuované databáze, více modelu služby, aby neomezenou elastické škálování nabízí kolem celém světě, plnohodnotný dotazovací a automatické indexování přes vázané na schéma datové modely, garantované s nízkou latencí a špičkový komplexní SLA. Další informace o možnosti kolekce Cosmos DB Stream Analytics, naleznete [Stream Analytics s DB Cosmos jako výstup](stream-analytics-documentdb-output.md) článku.
 
-Následujícím seznamu podrobnosti názvy vlastností a jejich popis pro vytváření výstupu Azure Cosmos DB.
+> [!Note]
+> V tomto okamžiku Azure Stream Analytics podporuje jenom připojení pomocí CosmosDB **rozhraní SQL API**.
+> Jiná rozhraní API Azure Cosmos DB ještě nejsou podporovány. Pokud bod Azure Stream Analytics k účtům Azure Cosmos DB vytvořené pomocí jiných rozhraní API, data nemusí být uložen správně. 
 
-* **Výstup Alias** – na alias odkazovat tento výstup v dotazu Stream Analytics  
-* **Název účtu** – název nebo identifikátor URI účtu Cosmos DB koncového bodu.  
-* **Účet klíč** – sdílený přístupový klíč pro účet Cosmos DB.  
-* **Databáze** – název databáze DB Cosmos.  
-* **Vzor názvu** – název kolekce nebo jejich vzor pro kolekce, který se má použít. Formát názvu kolekce se dá vytvořit pomocí tokenu volitelná {partition}, na kterém oddíly začínají od 0. Ukázka platné vstupní hodnoty jsou následující:  
-  1\) kolekce – jednu kolekci s názvem "Kolekce" musí existovat.  
-  2\) kolekce {partition} – takových kolekcí, musí existovat – "MyCollection0", "MyCollection1", "MyCollection2" a tak dále.  
-* **Klíč oddílu** – volitelné. To je potřeba jenom Pokud používáte token oddílu ve vzoru názvu vaší kolekce. Název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí Pro výstup jedinou kolekci všechny libovolný výstupního sloupce lze například ID oddílu.  
-* **ID dokumentu** – volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.  
+Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos DB.
+| Název vlastnosti | Popis |
+| --- | --- |
+| Alias pro výstup | Alias odkazoval tento výstup v dotazu Stream Analytics. |
+| Jímka | Databáze Cosmos |
+| Možnost importu | Vyberte buď "Vybrat ze svého předplatného Cosmos DB", nebo "Zadejte Cosmos DB nastavení ručně".
+| ID účtu | Název nebo identifikátor URI účtu Cosmos DB koncového bodu. |
+| Klíč účtu | Sdílený přístupový klíč pro účet Cosmos DB. |
+| Databáze | Název databáze Cosmos DB. |
+| Vzor názvu kolekce | Název kolekce nebo jejich vzor pro kolekce, který se má použít. <br/>Formát názvu kolekce se dá vytvořit pomocí tokenu volitelná {partition}, na kterém oddíly začínají od 0. Dva příklady:  <br/>1. _Kolekce_ – jednu kolekci s názvem "Kolekce", musí existovat.  <br/>2. _Kolekce {partition}_ – na základě dělicí sloupce. <br/>Musí existovat kolekce dělicí sloupec – "MyCollection0", "MyCollection1", "MyCollection2" a tak dále. |
+| Klíč oddílu | Volitelné. To je potřeba jenom Pokud používáte tokenu {partition} ve vzoru názvu vaší kolekce.<br/> Klíč oddílu je název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí.<br/> Pro výstup jedinou kolekci všechny libovolný výstupního sloupce lze například ID oddílu. |
+| ID dokumentu |Volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.  
 
-## <a name="azure-functions-in-preview"></a>Azure Functions (ve verzi Preview)
+## <a name="azure-functions-in-preview"></a>Azure Functions (ve verzi preview)
 Azure Functions je výpočetní služba bez serveru umožňující spouštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran.  Tato schopnost Azure Functions reagovat na aktivační události usnadňuje přirozené výstup Azure Stream Analytics. Tento výstup adaptér umožňuje uživatelům připojení k Azure Functions Stream Analytics a spusťte skript nebo část kódu v reakci na celou řadu událostí.
 
 Azure Stream Analytics vyvolá Azure Functions prostřednictvím protokolu HTTP aktivační události. Nový adaptér výstup funkce Azure je k dispozici následující konfigurovatelné vlastnosti:

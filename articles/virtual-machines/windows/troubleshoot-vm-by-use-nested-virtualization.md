@@ -12,31 +12,31 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/06/2018
 ms.author: genli
-ms.openlocfilehash: 2743a00404a2ee990147dfb6e73e9c2369eb4753
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9026b702e6e0d27817955c70c733bf372005dd4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží problém virtuálního počítače Azure pomocí vnořené virtualizace v Azure
 
-Tento článek ukazuje, jak vytvářet vnořené virtualizované prostředí ve službě Microsoft Azure, takže můžete připojit disk problému virtuální počítač na hostitele Hyper-V (obnovení virtuálních počítačů) pro účely odstraňování potíží.
+Tento článek ukazuje, jak vytvářet vnořené virtualizované prostředí ve službě Microsoft Azure, takže můžete připojit disk problému virtuální počítač na hostitele Hyper-V (VM záchranných) pro účely odstraňování potíží.
 
-## <a name="prerequisite"></a>Požadavek
+## <a name="prerequisites"></a>Požadavky
 
-Připojit problém virtuálních počítačů, virtuálních počítačů pro obnovení musí splňovat následující požadavek:
+Připojit problém virtuálních počítačů, záchranných virtuálního počítače musí splňovat následující požadavky:
 
--   Obnovení virtuálního počítače musí být ve stejném umístění jako problém virtuálních počítačů.
+-   Virtuální počítač záchranných musí být ve stejném umístění jako problém virtuálních počítačů.
 
--   Obnovení virtuálního počítače musí být ve stejné skupině prostředků jako problém virtuálních počítačů.
+-   Virtuální počítač záchranných musí být ve stejné skupině prostředků jako problém virtuálních počítačů.
 
--   Obnovení virtuálního počítače musí používat stejný typ účtu úložiště (Standard nebo Premium) jako problém virtuálních počítačů.
+-   Virtuální počítač záchranných musí používat stejný typ účtu úložiště (Standard nebo Premium) jako problém virtuálních počítačů.
 
-## <a name="step-1-create-a-recovery-vm-and-install-hyper-v-role"></a>Krok 1: Vytvořte virtuální počítač pro obnovení a nainstalujte roli Hyper-V
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Krok 1: Vytvoření virtuálního počítače záchranných a nainstalujte roli Hyper-V
 
-1.  Vytvořte nový virtuální počítač pro obnovení:
+1.  Vytvořte nový virtuální počítač záchranných:
 
     -  Operační systém: Windows Server 2016 Datacenter
 
@@ -46,13 +46,13 @@ Připojit problém virtuálních počítačů, virtuálních počítačů pro ob
 
     -  Vyberte stejný typ úložiště jako problém virtuálních počítačů (Standard nebo Premium).
 
-2.  Po obnovení virtuálního počítače je vytvořen, vzdálené plochy k obnovení virtuálního počítače.
+2.  Po záchranných virtuální počítač je vytvořen, vzdálené plochy na záchranu virtuální počítač.
 
 3.  Ve Správci serveru vyberte **spravovat** > **přidat role a funkce**.
 
 4.  V **typ instalace** vyberte **instalace na základě rolí nebo na základě funkcí**.
 
-5.  V **vybrat cílový server** Ujistěte se, že je vybraný virtuální počítač pro obnovení.
+5.  V **vybrat cílový server** Ujistěte se, že je vybraný záchranných virtuálního počítače.
 
 6.  Vyberte **role Hyper-V** > **přidat funkce**.
 
@@ -70,25 +70,25 @@ Připojit problém virtuálních počítačů, virtuálních počítačů pro ob
 
 13. Povolí server k instalaci role Hyper-V. Tato akce trvá několik minut a na server se automaticky restartuje.
 
-## <a name="step-2-create-the-problem-vm-on-the-recovery-vms-hyper-v-server"></a>Krok 2: Vytvoření problém virtuálního počítače na serveru pro obnovení Virtuálního počítače technologie Hyper-V
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Krok 2: Vytvoření problém virtuálního počítače na serveru záchranných Virtuálního počítače technologie Hyper-V
 
 1.  Zaznamenejte název disku v problém virtuálních počítačů a pak odstraňte problém virtuálních počítačů. Ujistěte se, že zachováte všechny připojené disky. 
 
-2.  Připojte disk operačního systému vašeho problému virtuálního počítače jako datový disk virtuálního počítače pro obnovení.
+2.  Jako datový disk virtuálního počítače záchranných připojte disk operačního systému vašeho problému virtuálních počítačů.
 
-    1.  Po problém se odstraní virtuální počítač, přejděte na virtuální počítač pro obnovení.
+    1.  Po problém se odstraní virtuální počítač, přejděte k virtuálnímu počítači záchranných.
 
     2.  Vyberte **disky**a potom **přidat datový disk**.
 
     3.  Vyberte disk problém Virtuálního počítače a potom vyberte **Uložit**.
 
-3.  Po disk se úspěšně připojené, vzdálené plochy k obnovení virtuálního počítače.
+3.  Po disk se úspěšně připojené, vzdálené plochy na záchranu virtuální počítač.
 
-4.  Open Disk Management (diskmgmt.msc). Ujistěte se, že disk problému virtuálního počítače je nastavená na **Offline**.
+4.  Otevřete správu disků (diskmgmt.msc). Ujistěte se, že disk problému virtuálního počítače je nastavená na **Offline**.
 
 5.  Otevřete Správce technologie Hyper-V: V **správce serveru**, vyberte **role Hyper-V**. Pravým tlačítkem na server a pak vyberte **Správce technologie Hyper-V**.
 
-6.  Ve Správci technologie Hyper-V, klikněte pravým tlačítkem na virtuální počítač pro obnovení a pak vyberte **nový** > **virtuálního počítače** > **Další**.
+6.  Ve Správci technologie Hyper-V, klikněte pravým tlačítkem na virtuální počítač záchranných a pak vyberte **nový** > **virtuálního počítače** > **Další**.
 
 7.  Zadejte název pro virtuální počítač a potom vyberte **Další**.
 
@@ -125,7 +125,7 @@ Připojit problém virtuálních počítačů, virtuálních počítačů pro ob
 
 1.  Jakmile se zobrazí zpět do režimu online virtuálního počítače, vypněte virtuální počítač ve Správci technologie Hyper-V.
 
-2.  Přejděte na [portál Azure](https://portal.azure.com) a vyberte virtuální počítač pro obnovení > disky, zkopírujte název disku. V dalším kroku použijete název. Odpojte pevný disk z virtuální počítač pro obnovení.
+2.  Přejděte na [portál Azure](https://portal.azure.com) a vyberte virtuální počítač záchranných > disky, zkopírujte název disku. V dalším kroku použijete název. Pevný disk z virtuálního počítače záchranných odpojte.
 
 3.  Přejděte na **všechny prostředky**, vyhledejte název disku a pak vyberte disk.
 

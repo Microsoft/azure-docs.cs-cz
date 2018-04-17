@@ -1,11 +1,11 @@
 ---
-title: "Registrace k Azure Security Center Standard pro lepší zabezpečení | Microsoft Docs"
+title: Registrace k Azure Security Center Standard pro lepší zabezpečení | Microsoft Docs
 description: " Zjistěte, jak chcete připojit k Azure Security Center Standard pro rozšířené zabezpečení. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: terrylan
-ms.openlocfilehash: a6394b1b02ebfe518dc2f2b7f65eb677bb0ba5f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d83beecfc5a8f6b8a01c64e809bc84c6fd0238bf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Registrace k Azure Security Center Standard pro rozšířené zabezpečení
 Upgradujte Security Center standardní využívat výhod správy lepší zabezpečení a ochrana před internetovými útoky pro zatížení hybridní cloud.  Můžete zkusit Standard zdarma 60 dnů. Najdete v Centru zabezpečení [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -30,7 +30,7 @@ Security Center Standard zahrnuje:
 - **Ovládací prvky pro přístup a aplikace** -blokování malwaru a další nežádoucí aplikace s použitím povolených doporučení přizpůsobit pro konkrétní úlohy a používá technologii strojové učení. Snižte sítě prostor pro útoky s za běhu, řízené přístup k portům správy na virtuálních počítačích Azure, zásadně snižuje vystavení hrubou silou a další síťovým útokům.
 
 ## <a name="detecting-unprotected-resources"></a>Zjišťování nechráněné prostředky     
-Security Center automaticky rozpozná všechny předplatná Azure nebo není povoleno pro zabezpečení Center standardní pracovní prostory. To zahrnuje předplatná Azure Security Center volné a pracovní prostory, které nemají povolené řešení zabezpečení.
+Security Center automaticky rozpozná veškerá předplatná a pracovní prostory Azure, které ještě nepřešly na úroveň Security Center Standard. To zahrnuje předplatná Azure využívající úroveň Security Center Free volné a pracovní prostory, které nemají povolené řešení zabezpečení.
 
 Celý předplatného Azure můžete upgradovat na úroveň Standard, který zdědí všechny prostředky v rámci předplatného, nebo můžete definovat jedinečné zásady pro určité skupiny zdrojů pouze upgrade. Pokud jsou nastavení zásad skupiny prostředků jedinečný, Security Center nebude přepsat cenové zásady při upgradu odběru na úrovni Standard. Použití standardní vrstvy do předplatného se vztahuje pouze na virtuální počítače v rámci předplatného, které podávají zprávy pracovních prostorů vytvořit pomocí služby Security Center. Použití standardní vrstvy do pracovního prostoru se vztahují na všechny prostředky do pracovního prostoru generování sestav.
 
@@ -84,7 +84,7 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 1. Vraťte se do **registrace**.   
 2. Vyberte **chcete přidat nové počítače mimo Azure**.
 
-  ![Přidat počítač mimo Azure][3]
+  ![Přidání počítače umístěného mimo Azure][3]
 
 Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat nové počítače bez Azure**. Můžete přidat k existujícímu pracovnímu prostoru počítače nebo vytvořit nový pracovní prostor. Pokud chcete vytvořit nový pracovní prostor, vyberte odkaz **přidat nový pracovní prostor**.
 
@@ -115,7 +115,7 @@ Můžete přidat do počítače pomocí následujícího pracovního postupu z *
 2. Vyberte **výpočetní** dlaždici.
 3. V části **výpočetní**, vyberte **přidat počítače**.
 
-   ![Výpočetní okno][6]
+   ![Okno Compute][6]
 
 4. V části **přidat nové počítače mimo Azure**, vyberte pracovní prostor počítače a klikněte na tlačítko **Add Computers**.
 
@@ -123,7 +123,7 @@ Můžete přidat do počítače pomocí následujícího pracovního postupu z *
 
  **Přímé agenta** obsahuje odkaz na stažení agenta systému Windows nebo Linux a klíče pro vaše ID pracovního prostoru pro použití v konfiguraci agenta.   
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste se dozvěděli, jak připojit Azure a prostředky mimo Azure, aby bylo možné využívat Security Center pokročilým zabezpečením.  Více s prostředkům zařazený nemá v tématu
 
 - [Povolení shromažďování dat](security-center-enable-data-collection.md)

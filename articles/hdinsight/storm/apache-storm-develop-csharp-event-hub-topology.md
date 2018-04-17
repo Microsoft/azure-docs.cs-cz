@@ -1,26 +1,24 @@
 ---
-title: "Zpracování událostí ze služby Event Hubs se Storm - Azure HDInsight | Microsoft Docs"
-description: "Informace o zpracování dat z Azure Event Hubs s topologií C# Storm pomocí nástrojů HDInsight pro Visual Studio vytvořit v sadě Visual Studio."
+title: Zpracování událostí ze služby Event Hubs se Storm - Azure HDInsight | Microsoft Docs
+description: Informace o zpracování dat z Azure Event Hubs s topologií C# Storm pomocí nástrojů HDInsight pro Visual Studio vytvořit v sadě Visual Studio.
 services: hdinsight,notification hubs
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: 
+ms.custom: ''
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 475a63937ed09b4ce875465c0eb3488ce92c38be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs se Storm v HDInsight (C#)
 
@@ -51,7 +49,7 @@ Topologie C# musí být také .NET 4.5.
 
 ## <a name="how-to-work-with-event-hubs"></a>Jak pracovat s Event Hubs
 
-Společnost Microsoft poskytuje sadu komponent v jazyce Java, které lze použít ke komunikaci se službou Event Hubs od topologie Storm. Můžete najít soubor Java archivu (JAR), který obsahuje HDInsight 3.6 kompatibilní verze těchto součástí v [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Společnost Microsoft poskytuje sadu komponent v jazyce Java, které lze použít ke komunikaci se službou Event Hubs od topologie Storm. Můžete najít soubor Java archivu (JAR), který obsahuje HDInsight 3.6 kompatibilní verze těchto součástí v [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 > [!IMPORTANT]
 > Při součásti jsou napsané v jazyce Java, je můžete snadno použít z topologie C#.
@@ -132,7 +130,7 @@ Můžete stáhnout úplnou verzi vytvořených v tomto kurzu z projektů [Github
 
 ## <a name="download-the-event-hubs-components"></a>Stáhněte si komponenty služby Event Hubs
 
-Stáhnout spout Event Hubs a funkce bolt z komponenty [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
+Stáhnout spout Event Hubs a funkce bolt z komponenty [ https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar ](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar).
 
 Vytvořte adresář s názvem `eventhubspout`a uložte soubor do adresáře.
 

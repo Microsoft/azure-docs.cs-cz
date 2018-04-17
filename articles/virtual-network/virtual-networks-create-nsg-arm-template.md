@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření skupin zabezpečení sítě - šablony Azure Resource Manageru | Microsoft Docs"
-description: "Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí šablony Azure Resource Manager."
+title: Vytvoření skupin zabezpečení sítě - šablony Azure Resource Manageru | Microsoft Docs
+description: Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí šablony Azure Resource Manager.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fc210ac5e28efe10be27f8b5a752788d3d5a5a3
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Vytvořit síť pomocí šablony Azure Resource Manager skupin zabezpečení
 
@@ -104,7 +104,7 @@ Ukázková šablona, která je k dispozici ve veřejném úložišti, používá
 Pokud chcete nasadit šablonu ARM, kterou jste stáhli, pomocí prostředí PowerShell, použijte následující postup.
 
 1. Pokud jste prostředí Azure PowerShell nikdy nepoužívali, postupujte podle pokynů [způsob instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) nainstalovat a nakonfigurovat ho.
-2. Spustit  **`New-AzureRmResourceGroup`**  vytvořte skupinu prostředků pomocí šablony.
+2. Spustit **`New-AzureRmResourceGroup`** vytvořte skupinu prostředků pomocí šablony.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `

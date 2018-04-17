@@ -1,27 +1,26 @@
 ---
-title: "Uživatelem definované schémata v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro používání schémata Transact-SQL v Azure SQL Data Warehouse pro vývoj řešení."
+title: Použití vlastní schémata v SQL Data Warehouse | Microsoft Docs
+description: Tipy pro používání schémata uživatelem definované T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d30434bf3c5e5f27f3a95bcb70bddaf3d92967bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>Uživatelem definované schémata v SQL Data Warehouse
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Použití vlastní schémata v SQL Data Warehouse
+Tipy pro používání schémata uživatelem definované T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+
+## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
+
 Samostatné databáze tradičních datových skladů často používají k vytvoření hranice aplikace na základě zatížení, domény nebo zabezpečení. Tradiční datového skladu SQL serveru může například obsahovat pracovní databáze, databáze datového skladu a některé databáze datového tržiště. V této topologii každou databázi funguje jako hranice zabezpečení v architektuře a zatížení.
 
 Naopak SQL Data Warehouse spouští úlohy celého datového skladu v rámci jedné databáze. Mezi databáze nejsou povoleny spojení. Proto SQL Data Warehouse očekává, že všechny tabulky použité ve skladu ukládaly v rámci jedné databáze.
@@ -120,14 +119,6 @@ FROM    [edw].customer
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

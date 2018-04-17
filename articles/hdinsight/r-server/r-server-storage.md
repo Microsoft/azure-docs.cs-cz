@@ -1,31 +1,29 @@
 ---
 title: Řešení úložiště Azure pro R serverem v HDInsight - Azure | Microsoft Docs
 description: Další informace o možnostech jiného úložiště k dispozici s R serverem v HDInsight
-services: HDInsight
+services: hdinsight
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 1cf30096-d3ca-45ea-b526-aa3954402f66
-ms.service: HDInsight
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: nitinme
-ms.openlocfilehash: f0333252e404c52f123da916df01d198234ef5af
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 23e32a913fb73d2207f7cf37ce6230e428fbe95c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-solutions-for-r-server-on-azure-hdinsight"></a>Řešení úložiště Azure pro R Server v Azure HDInsight
 
 R serverem v HDInsight obsahuje celou řadu řešení úložiště k uchování dat, kódu nebo objektů, které obsahují výsledky z analýzy. Mezi ně patří následující možnosti:
 
-- [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
+- [Objekt Blob systému Azure](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
 - [Úložiště Azure File](https://azure.microsoft.com/services/storage/files/)
 
@@ -176,5 +174,5 @@ Hlavní výhodou soubory Azure je, sdílené složky můžete připojit a použ�
 
 * [Přehled cluster R serverem v HDInsight](r-server-overview.md)
 * [Začínáme s R Server clusteru v systému Hadoop](r-server-get-started.md)
-* [Výpočetní kontextu možnosti pro cluster R serverem v HDInsight](r-server-compute-contexts.md)
+* [Možnosti výpočetního kontextu pro cluster R Serveru v HDInsight](r-server-compute-contexts.md)
 

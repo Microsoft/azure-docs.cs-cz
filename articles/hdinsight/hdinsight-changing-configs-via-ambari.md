@@ -1,24 +1,22 @@
 ---
-title: "Optimalizace konfigurace clusteru pomocí Ambari - Azure HDInsight | Microsoft Docs"
-description: "Použijte webovému uživatelskému rozhraní Ambari ke konfiguraci a optimalizovat clusterů HDInsight."
-documentationcenter: 
+title: Optimalizace konfigurace clusteru pomocí Ambari - Azure HDInsight | Microsoft Docs
+description: Použijte webovému uživatelskému rozhraní Ambari ke konfiguraci a optimalizovat clusterů HDInsight.
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f3c1edc767ab07bcdd8b09a0e40e291cbd1f3d9a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurace clusteru HDInsight pomocí Ambari
 
@@ -183,7 +181,7 @@ K dispozici komprese typy jsou:
 
 | Formát | Nástroj | Algoritmus | Přípona souboru | Rozdělitelné? |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | Ne |
+| GZIP | GZIP | DEFLATE | .gz | Ne |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Ano |
 | LZO | Lzop | LZO | .lzo | Ano, pokud indexované |
 | Tenhle | neuvedeno | Tenhle | Tenhle | Ne |
@@ -274,7 +272,7 @@ Následující části popisují další optimalizace související Hive, může
 
 Je výchozím typem spojení v Hive *náhodně spojení*. V Hive speciální mappers číst vstupní a emitování dvojici klíč/hodnota spojení do pomocný soubor. Hadoop seřadí a sloučí těmto párům ve fázi náhodně. Tato fáze náhodně je nákladné. Výběr správné spojení založené na vašich dat může výrazně zlepšit výkon.
 
-| Typ připojení | Kdy | Způsob | Nastavení Hive | Komentáře |
+| Typ připojení | Kdy | Postupy | Nastavení Hive | Komentáře |
 | -- | -- | -- | -- | -- |
 | Náhodný výběr spojení | <ul><li>Výchozí volba</li><li>Vždy funguje</li></ul> | <ul><li>Čte z jedné z tabulek součástí</li><li>Kbelíků a řazení na klíč připojení</li><li>Odešle jedné sady jednotlivých reduce</li><li>Spojení se provádí na straně snižte</li></ul> | Žádné významné Hive nastavení potřebné | Pokaždé, když funguje |
 | Mapy připojení | <ul><li>Vejde na jednu tabulku v paměti</li></ul> | <ul><li>Načte malé tabulky do paměti zatřiďovací tabulku</li><li>Datové proudy přes součástí velkých souborů</li><li>Spojí každý záznam z tabulky hash</li><li>Spojení jsou mapovačem samostatně</li></ul> | `hive.auto.confvert.join=true` | Velmi rychlé, ale omezená |
@@ -286,7 +284,7 @@ Další doporučení pro optimalizaci modul provádění Hive:
 
 | Nastavení | Doporučené | Výchozí HDInsight |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Hodnotu true = bezpečnější, pomalejší; false = rychlejší | nepravda |
+| `hive.mapjoin.hybridgrace.hashtable` | Hodnotu true = bezpečnější, pomalejší; false = rychlejší | false (nepravda) |
 | `tez.am.resource.memory.mb` | Horní mez 4 GB pro většinu | Automaticky Laděná |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |

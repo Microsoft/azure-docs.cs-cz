@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
-ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 5219ebc22e56ad4b5cdfc125f7fa5882c61adb9f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: devtiw
+ms.openlocfilehash: f42f20893a815640378b9d18186c88b782e61284
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS
 Microsoft Azure se důrazně zaměřuje na zajištění ochrany osobních údajů, suverenity data a umožňuje vám řízení vaší Azure hostované data prostřednictvím řadu pokročilých technologiích k šifrování, řídit a spravovat šifrovací klíče, řízení a audit přístupu k datům. To poskytuje Azure zákazníkům flexibilitu zvolit si řešení, které nejlépe vyhovuje potřebám své firmy. V tomto dokumentu jsme vás seznámí s nové řešení technologie "Azure Disk Encryption pro systém Windows a Linux IaaS virtuálního počítače je" k ochraně a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Dokumentu poskytuje podrobné pokyny k použití funkcí Azure disk encryption, včetně Podporované scénáře a uživatel dojde.
@@ -572,7 +572,7 @@ V následující tabulce jsou uvedeny parametry šablony Resource Manageru pro e
 | volumeType | Typ svazku, který operace šifrování. Platné podporované hodnoty jsou _OS_ nebo _všechny_ (distribucích systému Linux najdete v tématu podporované a jejich verze pro operační systém a datové disky v dřívější části prerequisiteis). |
 | sequenceVersion | Pořadí verze operace nástroje BitLocker. Toto číslo verze zvýší pokaždé, když se operace šifrování disku provádí na stejného virtuálního počítače. |
 | vmName | Název virtuálního počítače, který operace šifrování je třeba provést na. |
-| passPhrase | Zadejte silné heslo jako datový šifrovací klíč. |
+| přístupové heslo | Zadejte silné heslo jako datový šifrovací klíč. |
 
 > [!NOTE]
 > _KeyEncryptionKeyURL_ je volitelný parametr. Můžete zahrnout vlastní KEK na další chránit datový šifrovací klíč (heslo tajný klíč) v trezoru klíčů.

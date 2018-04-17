@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tdykstra
-ms.openlocfilehash: 94a039ab1973cbd4112ddd0cd7548baa69924d26
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ee70c3784205a70f455bd7ef147467e4547d167
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure funkce protokolu HTTP a webhooku vazby
 
@@ -138,7 +138,6 @@ public static string Run(CustomObject req, TraceWriter log)
 
 public class CustomObject {
      public String name {get; set;}
-}
 }
 ```
 
@@ -389,11 +388,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **Typ** | neuvedeno| Vyžaduje - musí být nastavena na `httpTrigger`. |
-| **Směr** | neuvedeno| Vyžaduje - musí být nastavena na `in`. |
-| **name** | neuvedeno| Požadovaná proměnná používá v kódu funkce pro požadavek nebo textu požadavku. |
+| **type** | neuvedeno| Vyžaduje - musí být nastavena na `httpTrigger`. |
+| **direction** | neuvedeno| Vyžaduje - musí být nastavena na `in`. |
+| **Jméno** | neuvedeno| Požadovaná proměnná používá v kódu funkce pro požadavek nebo textu požadavku. |
 | <a name="http-auth"></a>**AuthLevel** |  **AuthLevel** |Určuje, co klíče, pokud existuje, musí být přítomen v požadavku k vyvolání funkce. Úroveň oprávnění může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Je vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Je požadován klíč rozhraní API specifických funkcí. Toto je výchozí hodnota, pokud žádný je k dispozici.</li><li><code>admin</code>&mdash;Je nezbytný hlavní klíč.</li></ul> Další informace najdete v části [autorizace klíče](#authorization-keys). |
-| **Metody** |**Metody** | Pole metody HTTP, na které funkce odpoví. Pokud není zadaný, funkce odpoví na všechny metody HTTP. V tématu [přizpůsobit koncový bod http](#trigger---customize-the-http-endpoint). |
+| **Metody** |**Metody** | Pole metody HTTP, na které funkce odpoví. Pokud není zadaný, funkce odpoví na všechny metody HTTP. V tématu [přizpůsobit koncový bod http](#customize-the-http-endpoint). |
 | **Trasy** | **Trasy** | Definuje šablonu trasy řízení, které žádosti o funkce odpoví adresy URL. Výchozí hodnota, pokud je zadaný žádný je `<functionname>`. Další informace najdete v tématu [přizpůsobit koncový bod http](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Nakonfiguruje tak, aby fungoval jako triggeru protokolu HTTP [webhooku](https://en.wikipedia.org/wiki/Webhook) příjemce pro zadaného zprostředkovatele. Není nastavený `methods` vlastnost při nastavení této vlastnosti. Typ webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod pro obecné účely webhooku bez logiku pro konkrétního zprostředkovatele. Toto nastavení omezuje jenom na ty pomocí protokolu HTTP POST a s požadavky `application/json` typ obsahu.</li><li><code>github</code>&mdash;Funkce odpoví na [Githubu webhooky](https://developer.github.com/webhooks/). Nepoužívejte _authLevel_ vlastnost s webhooky Githubu. Další informace najdete v části GitHub webhooky později v tomto článku.</li><li><code>slack</code>&mdash;Funkce odpoví na [Slack webhooky](https://api.slack.com/outgoing-webhooks). Nepoužívejte _authLevel_ vlastnost s Slack webhooky. Další informace najdete v části Slack webhooky později v tomto článku.</li></ul>|
 
@@ -568,9 +567,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost  |Popis  |
 |---------|---------|
-| **Typ** |musí být nastavena na `http`. |
-| **Směr** | musí být nastavena na `out`. |
-|**name** | Název proměnné používá v kódu funkce pro odpověď. |
+| **type** |musí být nastavena na `http`. |
+| **direction** | musí být nastavena na `out`. |
+|**Jméno** | Název proměnné používá v kódu funkce pro odpověď. |
 
 ## <a name="output---usage"></a>Výstup – použití
 

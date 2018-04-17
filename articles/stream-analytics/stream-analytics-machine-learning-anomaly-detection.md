@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -65,6 +65,8 @@ Chcete-li extrahovat jednotlivé hodnoty mimo záznam, použijte **GetRecordProp
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 Anomálií typu je zjištěna, když jeden skóre anomálií překračuje prahovou hodnotu. Prahová hodnota může být jakékoli číslo s plovoucí desetinnou čárkou > = 0. Prahová hodnota je kompromis mezi velkých a malých písmen a spolehlivosti. Například by nižší prahové hodnotě zkontrolujte detekce více citlivé na změny a generovat více výstrah, zatímco vyšší prahová hodnota může zvýšit detekce méně citlivou a větší jistotu, ale některé anomálií maskování. Přesný prahová hodnota používat závisí na scénáři. Neexistuje žádné horní limit, ale je doporučené rozsah 3,25 5. 
+
+Hodnota 3,25 v příkladu je pouze navrhované počáteční bod. Upřesnit hodnota spuštěním operací na sadu dat a sledovat výstupní hodnotu, dokud se nedostanete přípustný prahovou hodnotu.
 
 ## <a name="anomaly-detection-algorithm"></a>Algoritmus detekce anomálií
 
@@ -118,19 +120,19 @@ Pojďme si strangeness výpočet podrobně (předpokládá existuje sada histori
    - Pokud event_value/90th_percentile event_value > 90th_percentile  
    - 10th_percentile/event_value, pokud je event_value < 10th_percentile  
 
-2. **Pomalé pozitivní trend:** se počítá trendu přes hodnoty události v okně historie a podíváme pro pozitivní trend v řádku. Strangeness hodnota je vypočítána jako:  
+2. **Pomalé pozitivní trend:** trendu přes hodnoty události v okně historie je počítaný, a operaci hledá pozitivní trend v řádku. Strangeness hodnota je vypočítána jako:  
 
    - Sklon, pokud je kladné sklon  
    - 0, jinak hodnota 
 
-1. **Pomalé negativní trend:** se počítá trendu přes hodnoty události v okně historie a budeme hledat negativní trend v řádku. Strangeness hodnota je vypočítána jako: 
+3. **Pomalé negativní trend:** trendu přes hodnoty události v okně historie je počítaný, a operaci Hledat negativní trend v řádku. Strangeness hodnota je vypočítána jako: 
 
    - Sklon, pokud sklon je záporná.  
    - 0, jinak hodnota  
 
 Jakmile hodnota strangeness pro příchozí události je vypočítána, martingale hodnota se vypočítá podle hodnota strangeness (najdete v článku [blog Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) podrobnosti o tom, jak martingale hodnota je vypočítána). Tato hodnota martingale je retuned jako skóre anomálií. Hodnota martingale zvyšuje pomalu v reakci na neobvyklé hodnoty, což umožňuje detektor zůstat robustní na výskyt občasný změny a snižuje false výstrahy. Je také užitečné vlastnost: 
 
-Pravděpodobnost [existuje t takové této M<sub>t</sub> > λ] < 1 nebo λ, kde M<sub>t</sub> je hodnota martingale v rychlých t a λ je skutečné hodnoty. Například, pokud při dáme M<sub>t</sub>> 100 a potom pravděpodobnost falešně pozitivních je menší než 1/100.  
+Pravděpodobnost [existuje t takové této M<sub>t</sub> > λ] < 1 nebo λ, kde M<sub>t</sub> je hodnota martingale v rychlých t a λ je skutečné hodnoty. Například, pokud je výstraha při M<sub>t</sub>> 100 a potom pravděpodobnost falešně pozitivních je menší než 1/100.  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Pokyny pro použití úrovně obousměrný změnit detektor 
 
@@ -140,7 +142,7 @@ Následující body považovat při použití této detektor:
 
 1. Když časové řady najednou uvidí zvětšit nebo vyřadit v hodnotě, operátor AnomalyDetection zjistí ho. Ale zjišťování návratu do normální vyžaduje další plánování. Pokud během stabilního stavu před anomálií, které lze dosáhnout nastavení operátor AnomalyDetection detekce okno na maximálně poloviční délka anomálií se časové řady. Tento scénář předpokládá, že se dá odhadnout minimální trvání anomálií dopředu a nejsou k dispozici dostatek události v tomto časovém rámci pro trénování modelu dostatečně (alespoň 50 událostí). 
 
-   Můžete se podívat na obrázcích 1 a 2 níže pomocí o změnu horní limit (stejná logika platí pro nižší limit změny). Na obou obrázcích jsou tvarový průběh o neobvyklé změnu úrovně. Svislé čáry oranžové označují směrování hranice a velikost skoku je stejný jako okno detekce zadaný v operátoru AnomalyDetection. Zelená řádky označují velikost okna školení. Velikost skoku na obrázku 1 je stejný jako doba, kterou vydrží anomálií. Na obrázku 2 je velikost skoku poloviny doby, pro kterou anomálií platnost. Ve všech případech je zjištěna vzestupnou změnu protože model používá pro vyhodnocování naučil na normální data. Ale podle toho, jak funguje detektor Změna úrovně obousměrný, jsme musí vyloučit normální hodnoty z okna školení použít pro model, který skóre návratu do normální. Na obrázku 1 školení vyhodnocování model obsahuje některé běžné události, vraťte se na normální nebyl nalezen. Ale na obrázku 2 zahrnuje školení jenom neobvyklé části, které zajišťuje rozpoznání návratu do normální. Nic menší než polovinu funguje i pro ze stejného důvodu, že něco větší dojdete včetně bit normální událostí. 
+   Můžete se podívat na obrázcích 1 a 2 níže pomocí o změnu horní limit (stejná logika platí pro nižší limit změny). Na obou obrázcích jsou tvarový průběh o neobvyklé změnu úrovně. Svislé čáry oranžové označují směrování hranice a velikost skoku je stejný jako okno detekce zadaný v operátoru AnomalyDetection. Zelená řádky označují velikost okna školení. Velikost skoku na obrázku 1 je stejný jako doba, kterou vydrží anomálií. Na obrázku 2 je velikost skoku poloviny doby, pro kterou anomálií platnost. Ve všech případech je zjištěna vzestupnou změnu protože model používá pro vyhodnocování naučil na normální data. Ale podle toho, jak funguje detektor Změna úrovně obousměrný, se musí vyloučit normální hodnoty z okna školení použít pro model, který skóre návratu do normální. Na obrázku 1 školení vyhodnocování model obsahuje některé běžné události, vraťte se na normální nebyl nalezen. Ale na obrázku 2 zahrnuje školení jenom neobvyklé části, které zajišťuje rozpoznání návratu do normální. Nic menší než polovinu funguje i pro ze stejného důvodu, že něco větší dojdete včetně bit normální událostí. 
 
    ![AD s délkou rovna anomálií velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 

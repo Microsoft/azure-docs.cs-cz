@@ -1,8 +1,8 @@
 ---
-title: "Nainstalovat a používat Giraph v HDInsight (Hadoop) - Azure | Microsoft Docs"
-description: "Informace o instalaci Giraph v clusterech HDInsight se systémem Linux pomocí akcí skriptů. Akce skriptu umožňují přizpůsobit clusteru během vytváření, změnou konfigurace clusteru nebo instalace služby a nástroje."
+title: Nainstalovat a používat Giraph v HDInsight (Hadoop) - Azure | Microsoft Docs
+description: Informace o instalaci Giraph v clusterech HDInsight se systémem Linux pomocí akcí skriptů. Akce skriptu umožňují přizpůsobit clusteru během vytváření, změnou konfigurace clusteru nebo instalace služby a nástroje.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1f2ee45d5d3a4dbb53faf43f67989ea92488b92a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: dcfd37a40ce16a1574c21e3a6e9520cb2e773166
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalujte Giraph clusterů systému HDInsight Hadoop a používat Giraph ke zpracování velkých grafy
 
@@ -42,16 +40,16 @@ Informace o instalaci Apache Giraph v clusteru HDInsight. Funkci akce skriptu HD
 > [!WARNING]
 > Součásti, které jsou součástí clusteru HDInsight plně podporované – Microsoft Support pomáhá izolovat a vyřešení problémů týkajících se těchto součástí.
 >
-> Vlastní komponenty, například Giraph, přijímat vyvineme podporu o pomoci při další řešení problému. Microsoft Support pravděpodobně možné do vyřešení problému. Pokud ne, musíte obrátit komunit s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, například Giraph, přijímat vyvineme podporu o pomoci při další řešení problému. Microsoft Support pravděpodobně možné do vyřešení problému. Pokud ne, musíte obrátit komunit s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Funkci skriptu
 
 Tento skript provede následující akce:
 
-* Giraph nainstaluje do`/usr/hdp/current/giraph`
+* Giraph nainstaluje do `/usr/hdp/current/giraph`
 
-* Kopie `giraph-examples.jar` souboru do výchozího úložiště (WASB) pro váš cluster:`/example/jars/giraph-examples.jar`
+* Kopie `giraph-examples.jar` souboru do výchozího úložiště (WASB) pro váš cluster: `/example/jars/giraph-examples.jar`
 
 ## <a name="install"></a>Nainstalujte Giraph pomocí akcí skriptů
 
@@ -76,7 +74,7 @@ Tato část obsahuje pokyny o tom, jak pomocí vzorového skriptu při vytváře
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+   * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
    * **HEAD**: Zkontrolujte tuto položku
 

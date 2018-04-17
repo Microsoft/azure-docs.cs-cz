@@ -1,11 +1,11 @@
 ---
-title: "X12 sledování schémata B2B monitorování - Azure Logic Apps | Microsoft Docs"
-description: "Ke sledování zpráv B2B z transakcí v účtu Azure integrace použít X12 sledování schémat."
+title: X12 sledování schémata B2B monitorování - Azure Logic Apps | Microsoft Docs
+description: Ke sledování zpráv B2B z transakcí v účtu Azure integrace použít X12 sledování schémat.
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Počáteční nebo povolit sledování X12 zprávy k úspěchu monitorování, chyb a vlastnosti zprávy
 Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se službou Azure vám pomohou monitorovat transakce business-to-business (B2B):
@@ -69,7 +69,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční řízení číslo. (Volitelné) |
 | transactionSetControlNumber | Řetězec | Transakce nastavit počet ovládacího prvku. (Volitelné) |
@@ -124,7 +124,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange řízení počet funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční skupiny řízení počet funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
 | isaSegment | Řetězec | Segment ISA zprávy. Hodnota naplní pouze pro straně odesílání, kde přijato potvrzení funkční zprávy odeslané na partnera. (Volitelné) |
@@ -181,7 +181,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | isaSegment | Řetězec | Segment ISA zprávy. (Volitelné) |
 | isTechnicalAcknowledgmentExpected | Logická hodnota | Jestli je v X12 nakonfigurovaný technické potvrzení smlouvy. (Povinné) |
@@ -230,7 +230,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange řízení počet technické potvrzení, které se získaly od partnerů. (Volitelné) |
 | isaSegment | Řetězec | Segment ISA pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
 | respondingInterchangeControlNumber |Řetězec | Interchange číslo ovládací prvek pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
@@ -282,7 +282,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládacího prvku. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční řízení číslo. (Volitelné) |
 | gsSegment | Řetězec | Zpráva GS segmentu. (Volitelné) |
@@ -336,7 +336,7 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | receiverQualifier | Řetězec | Zobrazí kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | Řetězec | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | Řetězec | Název X12 smlouvy, ke kterému jsou vyřešeny zprávy. (Volitelné) |
-| Směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
+| směr | výčet | Směr toku zpráv přijímat nebo odesílat. (Povinné) |
 | interchangeControlNumber | Řetězec | Interchange číslo ovládací prvek, který naplní pro straně odeslání, když je obdržena technické potvrzení od partnerů. (Volitelné) |
 | functionalGroupControlNumber | Řetězec | Funkční skupiny řízení počet technické potvrzení, který naplní pro straně odeslání, když je obdržena technické potvrzení od partnerů. (Volitelné) |
 | isaSegment | Řetězec | Stejné jako výměnu řídit číslo, ale vyplněná pouze v určitých případech. (Volitelné) |
@@ -350,9 +350,9 @@ Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se s
 | ak904 | Řetězec | Počet transakcí sad přijaté ve skupině identifikovaných funkčnosti. (Volitelné) |
 | ak9Segment | Řetězec | Jestli funkční skupiny identifikovat v segmentu AK1 přijetí nebo zamítnutí a proto. (Volitelné) |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [sledování zpráv B2B](logic-apps-monitor-b2b-message.md).
 * Další informace o [schémata sledování AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md).
 * Další informace o [B2B vlastní sledování schémata](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
-* Další informace o [sledování zpráv B2B na portálu služby Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Další informace o [sledování zpráv B2B ve analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 * Další informace o [Enterprise integračního balíčku](../logic-apps/logic-apps-enterprise-integration-overview.md).  

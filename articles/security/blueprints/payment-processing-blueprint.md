@@ -1,6 +1,6 @@
 ---
-title: "Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí"
-description: "Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí"
+title: Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
+description: Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 
@@ -120,7 +120,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 >- Application Gateway
 >- Azure Active Directory
 >- V2 prostředí služby App Service
->- OMS analýzy protokolů
+>- Log Analytics
 >- Azure Key Vault
 >- Network Security Groups (Skupiny zabezpečení sítě)
 >- Azure SQL DB
@@ -173,7 +173,7 @@ Každý z skupin Nsg mít určité porty a protokoly otevřené pro operaci zabe
 
 Každý z skupin Nsg mít určité porty a protokoly otevřené pro zabezpečení a správné fungování řešení. Kromě toho tyto konfigurace jsou povolené pro jednotlivé skupiny NSG:
 - Povolit [diagnostické protokoly a události](/azure/virtual-network/virtual-network-nsg-manage-log) jsou uložené v účtu úložiště 
-- Připojení analýzy protokolů OMS na [NSG na diagnostiky](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Připojení analýzy protokolů pro [NSG na diagnostiky](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 #### <a name="subnets"></a>Podsítě
  Zajistěte, aby že každá podsíť je přidružen jeho odpovídající skupina NSG.
@@ -203,12 +203,12 @@ Instance databáze SQL Azure používá následující bezpečnostní opatření
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) můžete poskytnout Contoso Webstore rozsáhlé protokolování veškerou aktivitu systému a uživatele, zahrnují protokolování dat držitele karty. Změny můžete zkontrolovat a ověřit přesnost. 
+[Analýza protokolu](https://azure.microsoft.com/services/log-analytics) můžete poskytnout Contoso Webstore rozsáhlé protokolování veškerou aktivitu systému a uživatele, zahrnují protokolování dat držitele karty. Změny můžete zkontrolovat a ověřit přesnost. 
 
-- **Protokoly aktivity:**[protokoly aktivity](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o činnosti, které byly provedeny v prostředky ve vašem předplatném.  
-- **Diagnostické protokoly:**[diagnostické protokoly](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem.   Tyto protokoly patří protokoly událostí systému Windows, úložiště objektů Azure Blob, tabulek a protokoly fronty.
+- **Protokoly aktivity:**[protokoly aktivity](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o činnosti, které byly provedeny v prostředky ve vašem předplatném.
+- **Diagnostické protokoly:**[diagnostické protokoly](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem. Tyto protokoly patří protokoly událostí systému Windows, úložiště objektů Azure Blob, tabulek a protokoly fronty.
 - **Protokoly brány firewall:** služby Application Gateway poskytuje úplné diagnostiky a přístup k protokolům. Brány firewall protokoly jsou k dispozici pro aplikační bránu prostředky, které mají povolen firewall webových aplikací.
-- **Archivaci protokolu:** všechny diagnostické protokoly jsou nakonfigurovány k zápisu do účtu úložiště Azure centralizovaný a šifrované pro archivaci s dobou uchování definované (2 dny). Protokoly jsou připojena k analýze protokolů Azure pro zpracování, ukládání a dashboarding. [Analýza protokolu](https://azure.microsoft.com/services/log-analytics) je OMS služba, která pomáhá shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
+- **Archivaci protokolu:** všechny diagnostické protokoly jsou nakonfigurovány k zápisu do účtu úložiště Azure centralizovaný a šifrované pro archivaci s dobou uchování definované (2 dny). Protokoly jsou připojena k analýze protokolů Azure pro zpracování, ukládání a dashboarding. [Analýza protokolu](https://azure.microsoft.com/services/log-analytics) je služba, která pomáhá shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
 
 ### <a name="encryption-and-secrets-management"></a>Správa šifrování a tajné klíče
 
@@ -224,7 +224,7 @@ Následujících technologií poskytovat identitu možnosti správy v prostřed�
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je společnosti Microsoft víceklientské cloudové adresáře a identity management service. Všechny uživatele pro řešení byly vytvořeny v Azure Active Directory, včetně uživatelů přístup k databázi SQL.
 - Ověřování do aplikace se provádí pomocí služby Azure AD. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications). Kromě toho sloupce šifrování databáze také používá Azure AD k ověřování aplikace do Azure SQL Database. Další informace najdete v tématu [funkce Always Encrypted: chrání citlivá data v databázi SQL](/azure/sql-database/sql-database-always-encrypted-azure-key-vault). 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) zjistí potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci, nakonfiguruje automatické odpovědi na zjištěné podezřelé akcí souvisejících s identity ve vaší organizaci, a prozkoumá podezřelé incidenty a provede příslušnou akci jejich řešení.
-- [Azure na základě rolí řízení přístupu (RBAC)](/azure/active-directory/role-based-access-control-configure) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na všechny uživatele.
+- [Azure na základě rolí řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na všechny uživatele.
 
 Další informace o používání funkcí zabezpečení databáze SQL Azure, najdete v článku [Contoso Klinika ukázkové aplikace](https://github.com/Microsoft/azure-sql-security-sample) ukázka.
    
@@ -266,7 +266,7 @@ Virtuální počítač byl vytvořen jako jumpbox (bastionu hostitel) s následu
 
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.  
 
-[Azure Advisor](/azure/advisor/advisor-overview) je konzultantem přizpůsobené cloudu, který vám pomůže dodržujte doporučené postupy, chcete-li optimalizovat nasazení Azure. Ho analyzuje konfigurace prostředků a telemetrii využití a pak doporučuje řešení, které vám pomůžou líp finanční efektivita, výkon, vysokou dostupnost a zabezpečení vašich prostředků Azure.
+[Azure Advisor](/azure/advisor/advisor-overview) je konzultantem přizpůsobené cloudu, který vám pomůže dodržujte doporučené postupy, chcete-li optimalizovat nasazení Azure. Analyzuje konfiguraci vašich prostředků a telemetrii jejich využívání a následně doporučí řešení, která zlepší finanční úspornost, výkon, dostupnost a zabezpečení vašich prostředků Azure.
 
 [Microsoft Antimalware](/azure/security/azure-security-antimalware) pro Azure Cloud Services a virtuálních počítačů je ochrana v reálném čase funkci, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software s konfigurovat výstrahy, když známé škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v Azure systémech.
 
@@ -278,11 +278,11 @@ Použití [Application Insights](https://azure.microsoft.com/services/applicatio
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba v Operations Management Suite (OMS), která vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
+[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba v Azure, který vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
 
-#### <a name="oms-solutions"></a>Řešení OMS
+#### <a name="management-solutions"></a>Řešení pro správu
 
-Tyto další řešení OMS by měl být a konfigurovány:
+Tyto další správu řešení by měl být a konfigurovány:
 - [Activity Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Analýza sítí Azure](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -338,9 +338,9 @@ Důrazně doporučujeme, aby čistou instalaci prostředí PowerShell použít k
     
     Podrobné informace o použití pokyny najdete v tématu [pokyny skriptu – nasazení a konfigurace prostředků Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. OMS protokolování a monitorování. Po nasazení řešení [Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) lze otevřít pracovní prostor a ukázkové šablony součástí řešení úložiště může sloužit k objasnění, jak může být monitorování řídicí panel nakonfigurovat. Ukázkové OMS šablony naleznete [omsDashboards složky](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Všimněte si, že data se shromažďují ve OMS pro šablony nasazení správně. To může trvat až hodinu nebo déle v závislosti na aktivitě lokality.
+3. Protokolování a monitorování. Po nasazení řešení můžete otevřít pracovní prostor analýzy protokolů a ukázkové šablony součástí řešení úložiště může sloužit k objasnění, jak lze nakonfigurovat monitorování řídicí panel. Ukázkové šablony naleznete [omsDashboards složky](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Všimněte si, že data se shromažďují ve analýzy protokolů pro šablony nasazení správně. To může trvat až hodinu nebo déle v závislosti na aktivitě lokality.
  
-    Při nastavování vaší OMS protokolování, zvažte, včetně těchto prostředků:
+    Při nastavování vaší protokolování analýzy protokolů, zvažte, včetně těchto prostředků:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -371,7 +371,7 @@ Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](http
 
 ## <a name="disclaimer-and-acknowledgements"></a>Právní omezení a potvrzení
 
-2017 září
+*2017 září*
 
 - Tento dokument je pouze informativní charakter. MICROSOFT A AVYAN PROVÉST ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ INFORMACE V TOMTO DOKUMENTU. Tento dokument je poskytován "jako-je." Informace a názory vyjádřené v tomto dokumentu včetně adres URL a dalších odkazů na internetové weby mohou změnit bez předchozího upozornění. Zákazníci čtení tohoto dokumentu na sebe rizika spojená s jejím používáním.  
 - Tento dokument neposkytuje zákazníkům žádná zákonná práva týkající se jakékoli produkty společnosti Microsoft nebo Avyan nebo řešení duševního vlastnictví.  
@@ -388,7 +388,7 @@ Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](http
 ### <a name="document-authors"></a>Autoři dokumentu
 
 - *František Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan Consulting)*
+- *Gururaj Pandurangi (Avyan poradě)*
 
 
 [code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Úložiště kódu"

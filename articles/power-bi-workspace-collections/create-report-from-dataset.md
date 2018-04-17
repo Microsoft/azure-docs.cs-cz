@@ -1,26 +1,26 @@
 ---
-title: "Vytvoření nové sestavy z datové sady v Power BI prostoru kolekcích | Microsoft Docs"
-description: "Sestavy Power BI kolekce pracovních prostorů můžete vytvořit nyní z datové sady ve vaší vlastní aplikaci."
+title: Vytvoření nové sestavy z datové sady v Power BI prostoru kolekcích | Microsoft Docs
+description: Sestavy Power BI kolekce pracovních prostorů můžete vytvořit nyní z datové sady ve vaší vlastní aplikaci.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: aa902cbc4992292420948b36d85e52fafc7224de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5c6a52edd708b6077820f2004e83ac7dee945610
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Vytvoření nové sestavy z datové sady v Power BI prostoru kolekce
 
@@ -63,7 +63,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Vytvoření nové prázdné sestavy
 
-Chcete-li vytvořit novou sestavu, je třeba poskytnout vytvořit konfiguraci. To by mělo zahrnovat přístupový token, embedURL a datasetID, který chcete vytvořit sestavu s. To je nutné nainstalovat nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
+Chcete-li vytvořit novou sestavu, je třeba poskytnout vytvořit konfiguraci. To by mělo zahrnovat přístupový token, embedURL a datasetID, který chcete vytvořit sestavu s. To je nutné nainstalovat nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Právě embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
@@ -199,7 +199,7 @@ var embedCreateConfiguration = {
     });
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Ukládání sestav](save-reports.md)  

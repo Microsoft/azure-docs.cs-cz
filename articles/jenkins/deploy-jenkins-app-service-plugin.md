@@ -1,12 +1,12 @@
 ---
-title: "Nasazení do Azure App Service pomocí modulu plug-in volaných | Microsoft Docs"
-description: "Další informace o použití modulu plug-in Azure App Service volaných nasazení webové aplikace v jazyce Java do Azure ve volaných"
+title: Nasazení do Azure App Service pomocí modulu plug-in volaných | Microsoft Docs
+description: Další informace o použití modulu plug-in Azure App Service volaných nasazení webové aplikace v jazyce Java do Azure ve volaných
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: multiple
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0e5916b2f8f901ff549ef74fca57cf09dc9fec21
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Nasazení do Azure App Service pomocí modulu plug-in volaných 
 
@@ -39,7 +39,7 @@ Pokud ještě nemáte volaných Master, začínat [šablona řešení](install-j
 * [Modul plug-in klienta volaných Git](https://plugins.jenkins.io/git-client) verze 2.4.6 
 * [Modul plug-in docker Commons](https://plugins.jenkins.io/docker-commons) verze 1.4.0
 * [Přihlašovací údaje Azure](https://plugins.jenkins.io/azure-credentials) verze 1.2
-* [Aplikační služba Azure](https://plugins.jenkins.io/azure-app-server) verze 0,1
+* [Aplikační služba Azure](https://plugins.jenkins.io/azure-app-service) verze 0,1
 
 Modul plug-in volaných můžete použít k nasazení webové aplikace ve všech jazycích, které podporuje webové aplikace, například C#, PHP, Java a Node.js. V tomto kurzu používáme [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Chcete-li rozvětvit úložiště k účtu GitHub, vyberte **rozvětvení** tlačítko v pravém horním rohu rozhraní Githubu.  
 > [!NOTE]
@@ -54,7 +54,7 @@ sudo apt-get install -y maven
 
 Pokud chcete nasadit do webové aplikace pro kontejnery, nainstalujte Docker na hlavním volaných nebo na agenta virtuálního počítače, který se používá pro sestavení. Pokyny najdete v tématu [Docker nainstalovat na Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-##<a name="service-principal"></a>Přidat objektu zabezpečení služby Azure na volaných pověření
+##<a name="service-principal"></a> Přidat objektu zabezpečení služby Azure na volaných pověření
 
 Budete potřebovat objektu zabezpečení služby Azure k nasazení do Azure. 
 
@@ -90,7 +90,7 @@ Před nastavením pro úlohu ve volaných potřebujete plán aplikační služby
 ### <a name="set-up-the-jenkins-job"></a>Nastavení úloh volaných
 
 1. Vytvořte novou **volný styl** projektu na řídicím panelu volaných.
-2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/ &lt;your_ID > / javawebappsample.
 3. Přidejte krok pro sestavení projektu pomocí Maven přidáním **spustit prostředí** příkaz. V tomto příkladu budeme potřebovat další příkaz Přejmenovat \*.war souborů v cílové složce do **ROOT.war**:   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Před nastavením pro úlohu ve volaných, je třeba webové aplikace v systému
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Nastavení úloh volaných pro Docker
 
 1. Vytvořte novou **volný styl** projektu na řídicím panelu volaných.
-2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/&lt;your_ID > / javawebappsample.
+2. Konfigurace **správu zdrojového kódu** pole, které chcete používat vaše místní pokračovatelem [jednoduché webové aplikace Java pro Azure](https://github.com/azure-devops/javawebappsample). Zadejte **adresu URL úložiště** hodnotu. Příklad: http://github.com/ &lt;your_ID > / javawebappsample.
 3. Přidejte krok pro sestavení projektu pomocí Maven přidáním **spustit prostředí** příkaz. Následující řádek do příkazu zahrnout:
     ```bash
     mvn clean package
@@ -206,7 +206,7 @@ Pro **Docker registru URL** hodnotu, zadejte adresu URL pomocí formátu https:/
     Sun Jun 17 16:39:10 UTC 2017
     ```
 
-3. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y. Rozhraní kalkulačky zobrazí součet: ![kalkulačky: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
+3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y. Rozhraní kalkulačky zobrazí součet: ![kalkulačky: Přidat](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
 ### <a name="for-azure-app-service-on-linux"></a>Pro službu Azure App Service v systému Linux
 
@@ -225,7 +225,7 @@ Pro **Docker registru URL** hodnotu, zadejte adresu URL pomocí formátu https:/
     Sun Jul 09 16:39:10 UTC 2017
     ```
 
-3. Go to http://&lt;your_app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y.
+3. Přejděte na http://&lt;your_app_name >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y >. Nahraďte &lt;x > a &lt;y > s všechna čísla získat součet hodnot x a y.
     
 ## <a name="next-steps"></a>Další postup
 

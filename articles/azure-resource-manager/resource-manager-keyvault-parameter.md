@@ -1,6 +1,6 @@
 ---
-title: "Tajný klíč Key Vault pomocí šablony Azure Resource Manager | Microsoft Docs"
-description: "Ukazuje, jak předat tajného klíče z trezoru klíčů jako parametr během nasazení."
+title: Tajný klíč Key Vault pomocí šablony Azure Resource Manager | Microsoft Docs
+description: Ukazuje, jak předat tajného klíče z trezoru klíčů jako parametr během nasazení.
 services: azure-resource-manager,key-vault
 documentationcenter: na
 author: tfitzmac
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2017
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e02bd9c6130ef8b120282fafa9f0ee517890d0d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2643f79bb1e5e2603b1bd50b04c8ee3e7496f1f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault předejte hodnotu parametru zabezpečení při nasazení
 
 Když potřebujete předat hodnotu zabezpečení (třeba heslo) jako parametr během nasazení, můžete získat hodnotu z [Azure Key Vault](../key-vault/key-vault-whatis.md). Načíst hodnotu odkazem trezoru klíčů a tajný klíč v souboru parametrů. Hodnota je nikdy vystavena, protože budete odkazovat pouze na jeho ID trezoru klíčů. Nemusíte ručně zadat hodnotu pro tajný klíč pokaždé, když nasazujete prostředky. Trezor klíčů může existovat v jiném předplatném. než skupině prostředků, které nasazujete. Při odkazování na trezor klíčů, můžete zahrnout ID předplatného.
 
-Při vytváření trezoru klíčů, nastavte *enabledForTemplateDeployment* vlastnost *true*. Nastavením této hodnoty na hodnotu true, můžete povolit přístup ze šablon Resource Manager během nasazení.
+Při vytváření trezoru klíčů, nastavte *enabledForTemplateDeployment* vlastnost *true*. Nastavením této hodnoty na hodnotu true povolit přístup ze Správce prostředků šablony během nasazení.
 
 ## <a name="deploy-a-key-vault-and-secret"></a>Nasazení trezoru klíčů a tajný klíč
 
@@ -62,7 +62,7 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 
 ## <a name="enable-access-to-the-secret"></a>Povolení přístupu k tajný klíč
 
-Ať používáte nového trezoru klíčů nebo stávající, zajistí, že uživatel nasazení šablony můžete přístup tajný klíč. Uživatel nasazení šablonu, která odkazuje na tajný klíč musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro trezor klíčů. [Vlastníka](../active-directory/role-based-access-built-in-roles.md#owner) a [Přispěvatel](../active-directory/role-based-access-built-in-roles.md#contributor) role obou udělit přístup.
+Ať používáte nového trezoru klíčů nebo stávající, zajistí, že uživatel nasazení šablony můžete přístup tajný klíč. Uživatel nasazení šablonu, která odkazuje na tajný klíč musí mít `Microsoft.KeyVault/vaults/deploy/action` oprávnění pro trezor klíčů. [Vlastníka](../role-based-access-control/built-in-roles.md#owner) a [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) role obou udělit přístup.
 
 ## <a name="reference-a-secret-with-static-id"></a>Referenční tajný klíč s ID statické
 
@@ -129,6 +129,13 @@ Teď vytvořte soubor parametrů pro předchozí šablonu. V souboru parametrů 
         }
     }
 }
+```
+
+Pokud musíte použít verzi než aktuální verze tajný klíč, použijte `secretVersion` vlastnost.
+
+```json
+"secretName": "examplesecret",
+"secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 
 Nyní se nasazení šablony a předejte soubor parametru. Můžete například šablony z Githubu, ale musíte použít místní parametr souboru s hodnotami nastavenými pro vaše prostředí.
@@ -241,6 +248,6 @@ New-AzureRmResourceGroupDeployment `
   -vaultName <your-vault> -vaultResourceGroup examplegroup -secretName examplesecret -adminLogin exampleadmin -sqlServerName <server-name>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Obecné informace o trezorů klíčů najdete v tématu [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md).
 * Dokončení příklady odkazující na klíče tajné klíče, naleznete v tématu [Key Vault příklady](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

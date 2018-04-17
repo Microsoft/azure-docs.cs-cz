@@ -1,11 +1,11 @@
 ---
-title: "Více IP adres pro virtuální počítače Azure – prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí prostředí PowerShell | Správce prostředků."
+title: Více IP adres pro virtuální počítače Azure – prostředí PowerShell | Microsoft Docs
+description: Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí prostředí PowerShell | Správce prostředků.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c44ea62f-7e54-4e3b-81ef-0b132111f1f8
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: b3690ec991add437afdaba3ef22022d49c962b34
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: bfc8f432e868c03d101ca7bfbc6b59f6e98ce29b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit více IP adres virtuálních počítačů pomocí prostředí PowerShell
 
@@ -194,7 +194,7 @@ Kroky, které následují vysvětlují, jak vytvořit příklad virtuálních po
 
 ## <a name="add"></a>Přidání IP adres pro virtuální počítač
 
-Provedením následujících kroků můžete přidat privátní a veřejné IP adresy pro síťový adaptér. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
+Provedením následujících kroků můžete přidat privátní a veřejné IP adresy rozhraní sítě Azure. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario) v tomto článku, ale není to nutné, abyste provedli.
 
 1. Otevřete příkazový řádek prostředí PowerShell a dokončit zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, proveďte kroky v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
 2. Změňte název síťového adaptéru, který chcete přidat IP adresu a skupinu prostředků a umístění, které síťový adaptér existuje v "hodnoty" $Variables následující:

@@ -1,11 +1,11 @@
 ---
-title: "Sledování zpráv B2B v Operations Management Suite - Azure Logic Apps | Microsoft Docs"
-description: "Sledování komunikace B2B pro integraci účet a logiku aplikace v Operations Management Suite (OMS) s Azure Log Analytics"
+title: Sledování zpráv B2B s Azure Log Analytics - Azure Logic Apps | Microsoft Docs
+description: Sledování komunikace B2B pro integraci účet a logiku aplikace s Azure Log Analytics
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Sledování komunikace B2B v Microsoft Operations Management Suite (OMS)
+# <a name="track-b2b-communication-with-azure-log-analytics"></a>Sledování komunikace B2B s Azure Log Analytics
 
-Po nastavení komunikace B2B mezi dvěma systémem obchodních procesů nebo aplikací prostřednictvím účtu integrace tyto entity můžou vyměňovat zprávy mezi sebou. Zkontrolujte, zda tyto zprávy jsou zpracovány správně, můžete sledovat AS2, X12, a EDIFACT zprávy s [Azure Log Analytics](../log-analytics/log-analytics-overview.md) v [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Například můžete použít tyto možnosti sledování založené na webu pro sledování zpráv:
+Po nastavení komunikace B2B mezi dvěma systémem obchodních procesů nebo aplikací prostřednictvím účtu integrace tyto entity můžou vyměňovat zprávy mezi sebou. Zkontrolujte, zda tyto zprávy jsou zpracovány správně, můžete sledovat AS2, X12, a EDIFACT zprávy s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založené na webu pro sledování zpráv:
 
 * Počet zpráv a stav
 * Potvrzení stavu
@@ -36,30 +36,30 @@ Po nastavení komunikace B2B mezi dvěma systémem obchodních procesů nebo apl
 
 * Integrace účet, který je nastavený s sledování a protokolování. Další informace [postup vytvoření účtu integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [postup nastavení sledování a protokolování pro tento účet](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Pokud jste to ještě neudělali, [publikování diagnostických dat k analýze protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) v OMS.
+* Pokud jste to ještě neudělali, [publikování diagnostických dat k analýze protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Po splnění předchozí požadavky, měli byste pracovního prostoru [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Měli byste použít stejné pracovním prostorem OMS pro sledování vaší komunikace B2B v OMS. 
+> Po splnění předchozí požadavky, měli byste mít pracovního prostoru v analýzy protokolů. Měli byste použít ve stejném pracovním prostoru pro sledování vaší komunikace B2B ve analýzy protokolů. 
 >  
-> Pokud nemáte pracovním prostorem OMS, přečtěte si [jak vytvořit pracovní prostor služby OMS](../log-analytics/log-analytics-get-started.md).
+> Pokud nemáte pracovní prostor analýzy protokolů, přečtěte si [jak vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Přidejte logiku aplikace B2B řešení k Operations Management Suite (OMS)
+## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Přidejte logiku aplikace B2B řešení k analýze protokolů
 
-Chcete-li mít OMS sledování zpráv B2B pro svou aplikaci logiky, je nutné přidat **B2B aplikace logiky** řešení na portálu OMS. Další informace o [přidávání řešení do OMS](../log-analytics/log-analytics-get-started.md).
+Pokud chcete, aby analýzy protokolů sledování zpráv B2B pro svou aplikaci logiky, je nutné přidat **B2B aplikace logiky** řešení na portálu OMS. Další informace o [přidání řešení k analýze protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. V [portál Azure](https://portal.azure.com), zvolte **všechny služby**. Vyhledejte "analýzy protokolů" a potom vyberte **analýzy protokolů** jak je vidět tady:
 
    ![Najít analýzy protokolů](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
-2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor OMS. 
+2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor analýzy protokolů. 
 
-   ![Vyberte pracovní prostor OMS](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
 3. V části **správy**, zvolte **portálu OMS**.
 
    ![Zvolte portálu OMS](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Když se otevře okno domovské stránce OMS, zvolte **řešení Galerie**.    
+4. Po otevření domovské stránce vyberte **řešení Galerie**.    
 
    ![Zvolte řešení Galerie](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
@@ -71,21 +71,21 @@ Chcete-li mít OMS sledování zpráv B2B pro svou aplikaci logiky, je nutné p�
 
    ![Vyberte Přidat](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-   Na domovské stránce OMS, dlaždice pro **zpráv B2B aplikace logiky** se teď zobrazí. 
+   Na domovské stránce na dlaždici **zpráv B2B aplikace logiky** se teď zobrazí. 
    Tuto dlaždici aktualizuje počet zpráv při zpracování zpráv B2B.
 
-   ![OMS domovské stránce dlaždice zpráv B2B aplikace logiky](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
+   ![Domovská stránka, dlaždice zpráv B2B aplikace logiky](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Sledovat stav zprávy a údaje ve službě Operations Management Suite
+## <a name="track-message-status-and-details-in-log-analytics"></a>Sledovat stav zprávu a podrobnosti v analýzy protokolů
 
-1. Po zpracování zpráv B2B, můžete zobrazit stav a podrobnosti o těchto zpráv. Na domovské stránce OMS zvolte **zpráv B2B aplikace logiky** dlaždici.
+1. Po zpracování zpráv B2B, můžete zobrazit stav a podrobnosti o těchto zpráv. Na domovské stránce vyberte **zpráv B2B aplikace logiky** dlaždici.
 
    ![Počet aktualizované zpráv](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
    > [!NOTE]
-   > Ve výchozím nastavení **zpráv B2B aplikace logiky** dlaždice zobrazuje data podle jednoho dne. Chcete-li změnit rozsah dat na jiný interval, vyberte ovládacího prvku oboru v horní části stránky OMS:
+   > Ve výchozím nastavení **zpráv B2B aplikace logiky** dlaždice zobrazuje data podle jednoho dne. Chcete-li změnit rozsah dat na jiný interval, vyberte ovládacího prvku oboru v horní části stránky:
    > 
    > ![Změnit rozsah dat](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
    >
@@ -150,7 +150,7 @@ Tady jsou popisy vlastností pro každou zprávu AS2.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro smlouvy AS2 |
-| Receiver | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy AS2 |
+| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy AS2 |
 | Aplikace logiky | Aplikace logiky, kde se nastaví AS2 akce |
 | Status | Stav zpráv AS2 <br>Úspěch = přijatých nebo odeslaných zprávu platný AS2. Žádné MDN je nastavený. <br>Úspěch = přijatých nebo odeslaných zprávu platný AS2. Nastavení a obdrží MDN nebo odesílání MDN. <br>Se nezdařilo = přijatá neplatná zpráva AS2. Žádné MDN je nastavený. <br>Čekající = přijatých nebo odeslaných zprávu platný AS2. MDN nastavení a MDN se očekává. |
 | Potvrzení | Stav zpráv MDN <br>Přijatá = přijatých nebo odeslaných kladné MDN. <br>Čekající na vyřízení = čekání na příjem nebo odeslání MDN. <br>Odmítl = přijatých nebo odeslaných záporné MDN. <br>Není vyžadována = MDN není nastavený smlouvy. |
@@ -169,7 +169,7 @@ Tady jsou formáty názvu pro každou složku zpráva stažené AS2 a soubory.
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
 | Složka zpráv | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
-| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Input payload**: [sender]\_[receiver]\_AS2\_[correlation-ID]\_input_payload.txt </p>**Output payload**: [sender]\_[receiver]\_AS2\_[correlation-ID]\_output\_payload.txt </p></p>**Inputs**: [sender]\_[receiver]\_AS2\_[correlation-ID]\_inputs.txt </p></p>**Outputs**: [sender]\_[receiver]\_AS2\_[correlation-ID]\_outputs.txt |
+| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Datová část vstupního**: [odesílatele]\_[příjemce]\_AS2\_[ID korelace]\_input_payload.txt </p>**Výstupní datové**: [odesílatele]\_[příjemce]\_AS2\_[ID korelace]\_výstup\_payload.txt </p></p>**Vstupy**: [odesílatele]\_[příjemce]\_AS2\_[ID korelace]\_inputs.txt </p></p>**Výstupy**: [odesílatele]\_[příjemce]\_AS2\_[ID korelace]\_outputs.txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -181,7 +181,7 @@ Zde je uveden popis vlastnost pro každý X12 zprávy.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro X12 smlouvy |
-| Receiver | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro X12 smlouvy |
+| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro X12 smlouvy |
 | Aplikace logiky | Aplikace logiky kde X12 jsou nastavení akce |
 | Status | X12 zprávy stav <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Funkční potvrzení se nastavení služby a přijímají nebo odesílání funkční potvrzení. <br>Se nezdařilo = přijatých nebo odeslaných neplatný X12 zprávy. <br>Čekající = přijatých nebo odeslaných platný X12 zprávy. Funkční potvrzení nastavení a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijatá = přijatých nebo odeslaných kladné funkční ack. <br>Odmítl = přijatých nebo odeslaných záporné funkční ack. <br>Čekající na vyřízení = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající na vyřízení = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není vyžadována = funkčnosti ack není nastaven. |
@@ -201,8 +201,8 @@ Tady jsou formáty názvu pro každý stáhnout X12 složky a soubory zpráv.
 
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Input payload**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_input_payload.txt </p>**Output payload**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_output\_payload.txt </p></p>**Inputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_inputs.txt </p></p>**Outputs**: [sender]\_[receiver]\_X12\_[interchange-control-number]\_outputs.txt |
+| Složka zpráv | [odesílatele] \_[příjemce]\_X12\_[číslo datového přenosu řízení]\_[globální – ovládací prvek číslo]\_[transakce set řízení number]\_[časové razítko] |
+| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Datová část vstupního**: [odesílatele]\_[příjemce]\_X12\_[číslo datového přenosu řízení]\_input_payload.txt </p>**Výstupní datové**: [odesílatele]\_[příjemce]\_X12\_[číslo datového přenosu řízení]\_výstup\_payload.txt </p></p>**Vstupy**: [odesílatele]\_[příjemce]\_X12\_[číslo datového přenosu řízení]\_inputs.txt </p></p>**Výstupy**: [odesílatele]\_[příjemce]\_X12\_[číslo datového přenosu řízení]\_outputs.txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -214,7 +214,7 @@ Tady jsou popisy vlastností pro každou zprávu EDIFACT.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
-| Receiver | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
+| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
 | Aplikace logiky | Aplikace logiky, kde se nastaví EDIFACT akce |
 | Status | Stav zpráv EDIFACT <br>Úspěch = přijatých nebo odeslaných zprávu platný EDIFACT. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných zprávu platný EDIFACT. Funkční potvrzení se nastavení služby a přijímají nebo odesílání funkční potvrzení. <br>Se nezdařilo = přijatých nebo odeslaných neplatná zpráva EDIFACT <br>Čekající = přijatých nebo odeslaných zprávu platný EDIFACT. Funkční potvrzení nastavení a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijatá = přijatých nebo odeslaných kladné funkční ack. <br>Odmítl = přijatých nebo odeslaných záporné funkční ack. <br>Čekající na vyřízení = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající na vyřízení = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není vyžadována = funkční Ack není nastaven. |
@@ -234,13 +234,13 @@ Tady jsou formáty názvu pro každou složku zpráva stažené EDIFACT a soubor
 
 | Složka nebo soubor | Formát názvu |
 | :------------- | :---------- |
-| Složka zpráv | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
-| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Input payload**: [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_input_payload.txt </p>**Výstupní datové**: [odesílatele]\_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_výstup\_payload.txt </p></p>**Inputs**: [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_inputs.txt </p></p>**Outputs**: [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_outputs.txt |
+| Složka zpráv | [odesílatele] \_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_[globální – ovládací prvek číslo]\_[transakce set řízení number]\_[časové razítko] |
+| Vstupní, výstupní a v případě nastavení, potvrzení soubory | **Datová část vstupního**: [odesílatele]\_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_input_payload.txt </p>**Výstupní datové**: [odesílatele]\_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_výstup\_payload.txt </p></p>**Vstupy**: [odesílatele]\_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_inputs.txt </p></p>**Výstupy**: [odesílatele]\_[příjemce]\_EDIFACT\_[číslo datového přenosu řízení]\_outputs.txt |
 |          |             |
 
 ## <a name="next-steps"></a>Další postup
 
-* [Dotaz pro B2B zprávy v Operations Management Suite](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Dotaz pro B2B zprávy v analýzy protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [Schémata sledování AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schémata sledování X12](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Vlastní sledování schémata](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

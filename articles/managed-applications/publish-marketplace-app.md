@@ -1,6 +1,6 @@
 ---
-title: "Azure spravované aplikace na webu Marketplace | Microsoft Docs"
-description: "Popisuje Azure spravované aplikace, které jsou dostupné přes Marketplace."
+title: Azure spravované aplikace na webu Marketplace | Microsoft Docs
+description: Popisuje Azure spravované aplikace, které jsou dostupné přes Marketplace.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure spravovaných aplikací na webu Marketplace
 
@@ -107,7 +107,7 @@ V případě nadřazené nabídky na Marketplace se zobrazí SKU. Zobrazí se ja
 
 Můžete přidat více oprávnění. Doporučujeme vytvořit skupinu uživatele AD a zadejte své ID v **PrincipalId**. Tímto způsobem můžete přidat další uživatele do skupiny uživatelů, aniž by bylo nutné aktualizovat verze SKU.
 
-Další informace o RBAC najdete v tématu [začít pracovat s RBAC na portálu Azure](../active-directory/role-based-access-control-what-is.md).
+Další informace o RBAC najdete v tématu [začít pracovat s RBAC na portálu Azure](../role-based-access-control/overview.md).
 
 ## <a name="marketplace-form"></a>Formulář Marketplace.
 

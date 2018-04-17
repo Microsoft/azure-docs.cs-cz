@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: d558db176f2fa6888ead1dd3228f31d942049fc4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c02ded6605b6374e0e37462205f8390f54b24b58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Správa webové služby pomocí portálu Azure Machine Learning webové služby
 Můžete spravovat vaše nové Machine Learning a Classic webové služby pomocí portálu Microsoft Azure Machine Learning webové služby. Vzhledem k tomu, že Classic webové služby a nové webové služby jsou založená na různých základní technologií, máte možnosti mírně lišit správy pro každý z nich.
@@ -43,7 +43,7 @@ Pokud uživatel nemá správná oprávnění pro přístup k prostředkům v por
 
 Další informace o vytváření pracovního prostoru najdete v tématu [vytvoření a sdílení pracovní prostor služby Azure Machine Learning](create-workspace.md).
 
-Další informace o nastavení oprávnění přístupu najdete v tématu [zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure – ve verzi Public preview](../../active-directory/role-based-access-control-manage-assignments.md).
+Další informace o nastavení oprávnění přístupu najdete v tématu [zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure – ve verzi Public preview](../../role-based-access-control/role-assignments-users.md).
 
 
 ## <a name="manage-new-web-services"></a>Správa nové webové služby

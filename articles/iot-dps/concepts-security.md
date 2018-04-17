@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 03/27/2018
+ms.date: 03/30/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f6410aa3ab21e7c50ec6918930f31b9e1455c464
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Koncepty zabezpečení služby zřizování zařízení IoT Hub 
 
-Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou Device Provisioning můžete bezpečně a škálovatelně zřizovat miliony zařízení. Tento článek nabízí přehled *zabezpečení* koncepty, které jsou součástí zřizování zařízení. Tento článek je relevantní pro všechny osoby, které se účastní Příprava zařízení pro nasazení.
+Služba zřizování zařízení IoT Hub je služba Pomocník pro IoT Hub, který použijete ke konfiguraci zařízení nula touch zřizování do zadané služby IoT hub. Se službou zřizování zařízení můžete [automatického zřizování](concepts-auto-provisioning.md) miliony zařízení zabezpečené a škálovatelné způsobem. Tento článek nabízí přehled *zabezpečení* koncepty, které jsou součástí zřizování zařízení. Tento článek je relevantní pro všechny osoby, které se účastní Příprava zařízení pro nasazení.
 
 ## <a name="attestation-mechanism"></a>Ověření mechanismu
 
@@ -46,6 +46,8 @@ Tajné klíče zařízení může být taky uložené v softwaru (paměť), ale 
 
 Čip TPM mohou odkazovat na standard týkající se bezpečného ukládání klíče, které slouží k ověření platformu nebo mohou odkazovat na rozhraní vstupně-výstupních operací používají k interakci s moduly implementace standardní. Čipy TPM může existovat jako diskrétní hardware, integrované hardware, založené na firmwaru, nebo na základě softwaru. Další informace o [čipy TPM a TPM ověření](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Služba zřizování zařízení podporuje jenom čip TPM 2.0.
 
+Ověření identity TPM je založena na nonce výzvy, které používá kořenové klíče ověřovací a úložiště k dispozici podepsaný token sdíleného přístupového podpisu (SAS).
+
 ### <a name="endorsement-key"></a>Ověřovací klíč
 
 Ověřovací klíč je asymetrický klíč nachází v čipu TPM, které bylo generované interně nebo vložit na výrobní čas a je jedinečný pro každý čip TPM. Ověřovací klíč nelze změnit ani odebrat. Soukromá část ověřovacího klíče nikdy vydání mimo čipu TPM, přičemž veřejnou část ověřovacího klíče se používá k rozpoznání pravosti čipu TPM. Další informace o [ověřovací klíč](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
@@ -56,21 +58,27 @@ Kořenový klíč úložiště je uložená v čipu TPM a slouží k ochraně kl
 
 ## <a name="x509-certificates"></a>X.509 – certifikáty
 
-Pomocí certifikátů X.509 jako mechanismus ověření je vynikající způsob, jak škálování produkční a zjednodušit zřizování zařízení. X.509 – certifikáty jsou obvykle uspořádány v řetězu certifikátů, ve kterém je každý certifikát v řetězu podepsané soukromým klíčem další vyšší certifikátu, a tak dále, se ukončuje v certifikát podepsaný svým držitelem kořenové důvěryhodnosti. Tím dojde k delegované řetěz certifikátů z kořenového certifikátu vygenerovaných důvěryhodné kořenové certifikační autority (CA) dolů prostřednictvím každý zprostředkující certifikační Autority pro certifikát koncové entity na zařízení nainstalovaná. Další informace najdete v tématu [zařízení ověřování pomocí certifikátů X.509 certifikační Autority](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Pomocí certifikátů X.509 jako mechanismus ověření je vynikající způsob, jak škálování produkční a zjednodušit zřizování zařízení. X.509 – certifikáty jsou obvykle uspořádány v řetězu certifikátů, ve kterém je každý certifikát v řetězu podepsané soukromým klíčem další vyšší certifikátu, a tak dále, se ukončuje v certifikát podepsaný svým držitelem kořenové důvěryhodnosti. Tím dojde k delegované řetěz certifikátů z kořenového certifikátu vygenerovaných důvěryhodné kořenové certifikační autority (CA) dolů prostřednictvím každý zprostředkující certifikační Autority "listu" certifikát koncové entity na zařízení nainstalovaná. Další informace najdete v tématu [zařízení ověřování pomocí certifikátů X.509 certifikační Autority](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Řetěz certifikátů často představuje některé logickou nebo fyzickou hierarchie přidružená k zařízení. Například může výrobce vystavit certifikát podepsaný svým držitelem kořenové Certifikační autority, pomocí tohoto certifikátu generovat jedinečný certifikát zprostředkující certifikační Autority pro každý objekt pro vytváření, generovat jedinečný certifikát zprostředkující certifikační Autority pro každý provozní pomocí certifikátu každý objekt factory řádek v zařízení a nakonec řádku produkční certifikát použít k vygenerování certifikátu jedinečný zařízení (koncové entity) pro každé zařízení vyrobila na řádku. Další informace najdete v tématu [koncepční přehled o certifikáty X.509 certifikační Autority v odvětví IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept). 
+Řetěz certifikátů často představuje některé logickou nebo fyzickou hierarchie přidružená k zařízení. Například může výrobce:
+- certifikát podepsaný svým držitelem kořenové certifikační Autority
+- Generovat jedinečný certifikát zprostředkující certifikační Autority pro každý objekt pro vytváření pomocí kořenového certifikátu
+- použití certifikátu každý objekt factory pro generování jedinečný certifikát zprostředkující certifikační Autority pro každý řádek produkční v zařízení
+- a nakonec řádku produkční certifikát, použít k vygenerování certifikátu jedinečný zařízení (koncové entity) pro každé zařízení vyrobila na řádek. 
+
+Další informace najdete v tématu [koncepční přehled o certifikáty X.509 certifikační Autority v odvětví IoT](/azure/iot-hub/iot-hub-x509ca-concept). 
 
 ### <a name="root-certificate"></a>Kořenový certifikát
 
-Kořenový certifikát je certifikát podepsaný svým držitelem X.509 představující certifikační autoritu (CA). Je nejzažšímu nebo kotva vztahu důvěryhodnosti, řetěz certifikátů. Kořenové certifikáty můžete samoobslužné vystavený organizace nebo zakoupit od kořenové certifikační autority. Další informace najdete v tématu [certifikáty získat certifikační Autority X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Kořenový certifikát, můžete také označuje jako certifikát kořenové Certifikační autority.
+Kořenový certifikát je certifikát podepsaný svým držitelem X.509 představující certifikační autoritu (CA). Je nejzažšímu nebo kotva vztahu důvěryhodnosti, řetěz certifikátů. Kořenové certifikáty můžete samoobslužné vystavený organizace nebo zakoupit od kořenové certifikační autority. Další informace najdete v tématu [certifikáty získat certifikační Autority X.509](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Kořenový certifikát, můžete také označuje jako certifikát kořenové Certifikační autority.
 
 ### <a name="intermediate-certificate"></a>Zprostředkující certifikát
 
 Zprostředkující certifikát je certifikát X.509, který byl podepsán kořenový certifikát (nebo jiný certifikát zprostředkující kořenový certifikát ve svém řetězu). Poslední zprostředkující certifikát v řetězu se používá k podepisování certifikátů typu list. Zprostředkující certifikát, můžete také označuje jako zprostředkující Certifikační autority.
 
-### <a name="leaf-certificate"></a>Certifikát listu
+### <a name="end-entity-leaf-certificate"></a>Certifikát koncové entity "listu"
 
-Certifikát listu, nebo certifikát koncové entity, identifikuje držitele certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a také v počtu nula či více zprostředkující certifikáty. Listu certifikát se používá k podepisování jiných certifikátů. Jednoznačně identifikují zařízení ke službě zřizování a se někdy označuje jako certifikát zařízení. Při ověřování zařízení používá soukromý klíč přidružený k tomuto certifikátu reagovat na ověření u sebe výzvy ze služby. Další informace najdete v tématu [ověřování zařízení podepsané certifikáty certifikační Autority X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Certifikát listu, nebo certifikát koncové entity, identifikuje držitele certifikátu. Má kořenový certifikát ve svém řetězu certifikátů a také v počtu nula či více zprostředkující certifikáty. Listu certifikát se používá k podepisování jiných certifikátů. Jednoznačně identifikují zařízení ke službě zřizování a se někdy označuje jako certifikát zařízení. Při ověřování zařízení používá soukromý klíč přidružený k tomuto certifikátu reagovat na ověření u sebe výzvy ze služby. Další informace najdete v tématu [ověřování zařízení podepsané certifikáty certifikační Autority X.509](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Řízení přístupu k zařízení ke službě zřizování pomocí certifikátů X.509
 

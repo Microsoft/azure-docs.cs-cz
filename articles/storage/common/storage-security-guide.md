@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-guide"></a>Průvodce zabezpečením služby Azure Storage
 
@@ -85,16 +85,16 @@ Zde jsou hlavní body, které potřebujete vědět o použití RBAC pro přístu
 * Můžete vytvořit sestavu kdo udělit nebo odvolat jaký typ přístupu do a z kterého a v jaké oboru pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure.
 
 #### <a name="resources"></a>Zdroje a prostředky
-* [Řízení přístupu na základě role v Azure Active Directory](../../active-directory/role-based-access-control-configure.md)
+* [Řízení přístupu na základě role v Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
-* [RBAC: vestavěné role](../../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md)
 
   Tento článek podrobně všech předdefinovaných rolí, které jsou k dispozici v RBAC.
 * [Principy nasazení podle modelu Resource Manager a klasického nasazení](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   Tento článek popisuje nasazení Resource Manager a modely nasazení classic a vysvětluje výhody použití skupin pro správce prostředků a prostředků. Vysvětluje, jak funguje Azure výpočetní, síťové a poskytovatelé úložiště v rámci modelu Resource Manager.
-* [Správa řízení přístupu na základě role pomocí REST API](../../active-directory/role-based-access-control-manage-access-rest.md)
+* [Správa řízení přístupu na základě role pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
 
   Tento článek popisuje, jak používat rozhraní REST API ke správě RBAC.
 * [Referenci rozhraní API REST poskytovatele prostředků úložiště Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx)

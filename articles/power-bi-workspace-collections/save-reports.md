@@ -1,26 +1,26 @@
 ---
-title: "Uložení sestavy v Power BI prostoru kolekce | Microsoft Docs"
-description: "Informace o ukládání sestavy v rámci kolekce pracovních prostorů Power BI. To vyžaduje příslušná oprávnění, aby bylo možné správně fungovat."
+title: Uložení sestavy v Power BI prostoru kolekce | Microsoft Docs
+description: Informace o ukládání sestavy v rámci kolekce pracovních prostorů Power BI. To vyžaduje příslušná oprávnění, aby bylo možné správně fungovat.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 94a72ba4478aa317b4a1930b2894c1346d0590c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Uložení sestavy v Power BI prostoru kolekce
 
@@ -131,7 +131,7 @@ var embedConfiguration = {
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Vložení sestavy](embed-report.md)  

@@ -1,28 +1,28 @@
 ---
-title: "Správa přístupu k zařízení služby Azure IoT Hub zařízení zřizování | Microsoft Docs"
-description: "Tom, jak odebrat zařízení přístup k službě distribučních bodů na portálu Azure"
+title: Postup disenroll zařízení z Azure IoT Hub zařízení zřizování služby
+description: Postup disenroll zařízení, aby se zabránilo zřizování prostřednictvím Azure IoT Hub zařízení zřizování služby
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 12/22/2017
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/05/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 12aebf3a56aa7469a765ab6fc67aa65b254db71a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="revoke-device-access-to-your-provisioning-service-in-the-azure-portal"></a>Odebrat zařízení přístup ke službě zřizování na portálu Azure
+# <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup disenroll zařízení z Azure IoT Hub zařízení zřizování služby
 
-Správné správu přihlašovacích údajů, zařízení je zásadní pro systémy vysokou profil jako řešení IoT. Osvědčeným postupem pro tyto systémy je mít zrušte plán o tom, jak odvolat přístup k zařízení při jejich přihlašovacích údajů, zda token sdílený přístupový podpis (SAS) nebo certifikátu X.509, může dojít k ohrožení. Tento článek popisuje, jak odvolat přístup k zařízením v kroku zřizování.
+Správné správu přihlašovacích údajů, zařízení je zásadní pro systémy vysokou profil jako řešení IoT. Osvědčeným postupem pro tyto systémy je mít zrušte plán o tom, jak odvolat přístup k zařízení při jejich přihlašovacích údajů, zda token sdílený přístupový podpis (SAS) nebo certifikátu X.509, může dojít k ohrožení. 
 
-Další informace o odvolání přístupu zařízení do služby IoT hub po zřídil zařízení najdete v tématu [zakažte zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices).
+Registrace ve službě zřizování zařízení umožňuje zařízení tak, aby [automaticky zřizovat](concepts-auto-provisioning.md). Zřízené zařízení je ten, který byl registrován u služby IoT Hub, díky kterému jej přijímat úvodního [dvojče zařízení](~/articles/iot-hub/iot-hub-devguide-device-twins.md) stavu a začít reporting telemetrická data. Tento článek popisuje postup disenroll zařízení z zřizování instance služby znemožňuje se znovu zřídí v budoucnu.
 
 > [!NOTE] 
 > Pamatujte na zařízení, která odvolání přístupu pro zásady opakování. Například zařízení, které má zásady opakování nekonečné může trvale pokusit zaregistrovat službu zřizování. Tato situace spotřebovává prostředky služby a pravděpodobně má vliv na výkon.
@@ -37,10 +37,10 @@ Dočasně blokovaných zakázáním jeho položku registrace zařízení:
 2. V seznamu prostředků vyberte službu, kterou chcete blokovaných zařízení z zřizování.
 3. Ve službě zřizování vyberte **spravovat registrace**a pak vyberte **jednotlivých registrace** kartě.
 4. Vyberte položku registrace pro zařízení, které chcete blokovaných. 
-5. Vyberte **zakázat** na **povolit položku** přepínače a potom vyberte **Uložit**.  
+5. Posuňte se dolů a vyberte **zakázat** na **povolit položku** přepínače a potom vyberte **Uložit**.  
 
-   ![Zakázat registrace jednotlivé položky na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
-    
+   [![Zakázat registrace jednotlivé položky na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+
 Chcete-li trvale blokovaných zařízení odstraněním jeho registrace položku:
 
 1. Přihlaste se k Azure portálu a vyberte možnost **všechny prostředky** v levé nabídce.
@@ -64,9 +64,8 @@ Chcete-li dočasně blokovaných certifikát zakázáním jeho registrace skupin
 1. Přihlaste se k Azure portálu a vyberte možnost **všechny prostředky** v levé nabídce.
 2. V seznamu prostředků vyberte zřizování službu, kterou chcete blokovaných podpisový certifikát z.
 3. Ve službě zřizování vyberte **spravovat registrace**a pak vyberte **registrace skupiny** kartě.
-4. Vyberte skupinu zápisu pro certifikát, který chcete blokovaných.
-5. V položce skupiny registrace, vyberte **upravit skupinu**.
-6. Vyberte **zakázat** na **povolit položku** přepínače a potom vyberte **Uložit**.  
+4. Vyberte skupinu registrace pomocí certifikátu, který chcete blokovaných.
+5. Vyberte **zakázat** na **povolit položku** přepínače a potom vyberte **Uložit**.  
 
    ![Zakažte položky skupiny registrace na portálu](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -96,12 +95,15 @@ Chcete-li blokovaných k jednotlivým zařízením ve skupině registrace, postu
 2. V seznamu zdrojů vyberte zřizování služba, která obsahuje skupinu registrace pro zařízení, které chcete blokovaných.
 3. Ve službě zřizování vyberte **spravovat registrace**a pak vyberte **jednotlivých registrace** kartě.
 4. Vyberte **přidat** tlačítka v horní části. 
-5. Vyberte **X.509** jako mechanismus zabezpečení pro zařízení a nahrání certifikátu zařízení. Toto je nainstalovaný v zařízení certifikát podepsaný držitelem koncové entity. Zařízení se používá pro generování certifikátů pro ověřování.
+5. Vyberte **X.509** jako mechanismus ověření pro zařízení a nahrání certifikátu zařízení. Toto je nainstalovaný v zařízení certifikát podepsaný držitelem koncové entity. Zařízení se používá pro generování certifikátů pro ověřování.
 6. Pro **ID zařízení IoT Hub**, zadejte ID zařízení. 
 7. Vyberte **zakázat** na **povolit položku** přepínače a potom vyberte **Uložit**. 
 
-   ![Zakázat registrace jednotlivé položky na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
+    [![Použití zakázaná položka jednotlivých registrace se zakázat zařízení ze skupiny registrace na portálu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 Když vytvoříte úspěšně registraci, měli byste vidět zobrazí na zařízení **jednotlivých registrace** kartě.
 
+## <a name="next-steps"></a>Další postup
+
+Disenrollment je také součástí větší proces zrušení zřízení. Zrušení zřízení zařízení zahrnuje jak disenrollment od zřízení služby a deregistering ze služby IoT hub. Další informace o plné zpracování najdete v tématu [postup zrušení zřízení zařízení, které byly dříve auto zajištěny](how-to-unprovision-devices.md) 
 

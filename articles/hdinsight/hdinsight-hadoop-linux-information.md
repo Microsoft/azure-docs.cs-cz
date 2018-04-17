@@ -1,8 +1,8 @@
 ---
-title: "Tipy pro používání Hadoop v HDInsight se systémem Linux - Azure | Microsoft Docs"
-description: "Získáte implementace tipy pro použití systémem Linux HDInsight (Hadoop) clusterů ve známém prostředí Linux spuštěné v cloudu Azure."
+title: Tipy pro používání Hadoop v HDInsight se systémem Linux - Azure | Microsoft Docs
+description: Získáte implementace tipy pro použití systémem Linux HDInsight (Hadoop) clusterů ve známém prostředí Linux spuštěné v cloudu Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad7aa01200bf2bf4a63a380b2b883983c8622d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -72,14 +70,14 @@ Tento příkaz vrátí dokumentu JSON s popisem služby, a potom jq lze posunout
     >
     > Pokud chcete používat všechny funkce webovému uživatelskému rozhraní Ambari, pomocí tunelového propojení SSH pro přenosy webového proxy serveru k hlavnímu uzlu clusteru. V tématu [používání tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a jiným webovým uživatelská rozhraní](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
+* **Ambari (REST)** -https://&lt;clustername >.azurehdinsight.net/ambari
 
     > [!NOTE]
     > Ověřování pomocí clusteru správce uživatele a heslo.
     >
     > Ověřování je ve formátu prostého textu – vždycky používají protokol HTTPS k zajištění, že připojení je bezpečné.
 
-* **WebHCat (Templeton)** - https://&lt;clustername>.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** -https://&lt;clustername >.azurehdinsight.net/templeton
 
     > [!NOTE]
     > Ověřování pomocí clusteru správce uživatele a heslo.
@@ -196,7 +194,7 @@ Pokud používáte __Azure Data Lake Store__, najdete v následujících témate
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
-* [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
+* [Rozhraní REST API WebHDFS](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Nástroje data Lake pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
@@ -273,7 +271,7 @@ Použití jiné verze součásti, nahrajte verze potřebujete a použít v úloh
 > [!WARNING]
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešení problémů týkajících se těchto součástí.
 >
-> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Vlastní komponenty získat vyvineme podporu k pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 
 ## <a name="next-steps"></a>Další postup
 

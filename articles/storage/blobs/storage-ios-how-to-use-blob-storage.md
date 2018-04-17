@@ -1,32 +1,26 @@
 ---
-title: "Jak používat Azure Blob storage z iOS | Microsoft Docs"
-description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
+title: Jak používat úložiště objektů (objekt Blob) z iOS – Azure | Microsoft Docs
+description: Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů).
 services: storage
 documentationcenter: ios
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
+Tento článek ukazuje, jak provádět běžné scénáře s využitím Microsoft Azure Blob storage. Ukázky jsou napsané v Objective-C a použít [Klientská knihovna pro úložiště Azure pro iOS](https://github.com/Azure/azure-storage-ios). Pokryté scénáře zahrnují odesílání, výpis, stahování a odstraňování objektů BLOB. Další informace o objekty BLOB, najdete v článku [další kroky](#next-steps) části. Můžete také stáhnout [ukázkovou aplikaci](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) rychle zobrazíte pomocí Azure Storage ve aplikace pro iOS.
 
-## <a name="overview"></a>Přehled
-Tento článek vám ukáže, jak provádět běžné scénáře s využitím Microsoft Azure Blob storage. Ukázky jsou napsané v Objective-C a použít [Klientská knihovna pro úložiště Azure pro iOS](https://github.com/Azure/azure-storage-ios). Pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB. Další informace o objekty BLOB, najdete v článku [další kroky](#next-steps) části. Můžete také stáhnout [ukázkovou aplikaci](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) rychle zobrazíte pomocí Azure Storage ve aplikace pro iOS.
+## <a name="what-is-blob-storage"></a>Co je služba Blob storage?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -91,7 +85,7 @@ Pokud používáte Swift, je potřeba vytvořit hlavičku přemostění a import
 
 1. Vytvořte soubor hlavičky `Bridging-Header.h`a přidejte výše uvedený příkaz importu.
 2. Přejděte na *nastavení sestavení* kartě a vyhledejte *hlavičky přemostění jazyka Objective-C*.
-3. Dvakrát klikněte na pole *hlavičky přemostění jazyka Objective-C* a přidejte cestu k souboru hlavičky:`ProjectName/Bridging-Header.h`
+3. Dvakrát klikněte na pole *hlavičky přemostění jazyka Objective-C* a přidejte cestu k souboru hlavičky: `ProjectName/Bridging-Header.h`
 4. Sestavení projektu (⌘ + B) Chcete-li ověřit, že byl hlavičku přemostění zachyceny pomocí Xcode.
 5. Začít používat knihovny přímo v žádném Swift souboru, není nutné pro příkazy pro import.
 
@@ -382,7 +376,7 @@ Následující příklad ukazuje, jak odstranit kontejner.
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili používání úložiště Blob z iOS, postupujte podle následujících odkazech na další informace o knihovně iOS a služby úložiště.
 
 * [Azure Klientská knihovna pro úložiště pro iOS](https://github.com/azure/azure-storage-ios)

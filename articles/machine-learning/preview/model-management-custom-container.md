@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 858c8933565aeeb22dc1b685082dab2c6481737b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f56b651c40187e42361ac12f0cbf4e509385e0d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Přizpůsobení bitové kopie kontejneru, použít pro modely Azure ML
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak lze přizpůsobit image kontejner pro modely Azure 
 ## <a name="how-to-customize-the-docker-image"></a>Postup přizpůsobení bitové kopie Docker
 Přizpůsobení bitové kopie Docker, která Azure ML se nasazuje pomocí:
 
-1. Soubor depenencies.yml: ke správě závislosti, které se instalovat z [úložiště PyPi]( https://pypi.python.org/pypi), můžete použít soubor conda_dependencies.yml z projektu Workbench, nebo vytvořit vlastní. Jedná se o postup doporučujeme pro instalaci Python závislosti, které pip instalovat.
+1. A `dependencies.yml` souboru: ke správě závislosti, které se instalovat z [úložiště PyPi]( https://pypi.python.org/pypi), můžete použít `conda_dependencies.yml` souboru z projektu Workbench, nebo vytvořit vlastní. Jedná se o postup doporučujeme pro instalaci Python závislosti, které pip instalovat.
 
    Příklad rozhraní příkazového řádku příkaz:
    ```azurecli

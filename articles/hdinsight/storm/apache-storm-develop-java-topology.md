@@ -1,27 +1,25 @@
 ---
-title: "Apache Storm příkladu Java topologie – Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet topologií Apache Storm v jazyce Java tak, že vytvoříte ukázkové topologie počet aplikace word."
+title: Apache Storm příkladu Java topologie – Azure HDInsight | Microsoft Docs
+description: Naučte se vytvářet topologií Apache Storm v jazyce Java tak, že vytvoříte ukázkové topologie počet aplikace word.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-keywords: "Apache storm, například apache storm storm java, příklad topologie storm"
+keywords: Apache storm, například apache storm storm java, příklad topologie storm
 ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5f2a6de9737569c75e0350e2aceec19b149d9549
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
@@ -30,7 +28,7 @@ Naučte se vytvářet topologii založené na jazyce Java pro Apache Storm. Mů�
 Po dokončení kroků v tomto dokumentu, můžete nasadit topologie do Apache Storm v HDInsight.
 
 > [!NOTE]
-> Dokončené verze příkladů topologie Storm vytvořené v tomto dokumentu je k dispozici na [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
+> Dokončené verze příkladů topologie Storm vytvořené v tomto dokumentu je k dispozici na [ https://github.com/Azure-Samples/hdinsight-java-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -169,7 +167,7 @@ Moduly plug-in maven umožňují přizpůsobit fáze sestavení projektu. Např�
 </build>
 ```
 
-V této části se používá k přidání modulů plug-in, prostředky a další možnosti konfigurace sestavení. Úplný přehled o **pom.xml** souborů najdete v tématu [http://maven.apache.org/pom.html](http://maven.apache.org/pom.html).
+V této části se používá k přidání modulů plug-in, prostředky a další možnosti konfigurace sestavení. Úplný přehled o **pom.xml** souborů najdete v tématu [ http://maven.apache.org/pom.html ](http://maven.apache.org/pom.html).
 
 ### <a name="add-plug-ins"></a>Přidat moduly plug-in
 
@@ -565,10 +563,10 @@ Tato konfigurace XML nakonfiguruje nové protokoly pro `com.microsoft.example` t
 
 `<Root level="error">` Části nakonfiguruje kořenové úrovni protokolování (vše, co není ve `com.microsoft.example`) se protokolovat jenom informace o chybě.
 
-Další informace o konfiguraci protokolování pro Log4j najdete v tématu [http://logging.apache.org/log4j/2.x/manual/configuration.html](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Další informace o konfiguraci protokolování pro Log4j najdete v tématu [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
-> Storm verze 0.10.0 a vyšší využití Log4j 2.x. Starší verze storm použít Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší, najdete v části [http://wiki.apache.org/logging-log4j/Log4jXmlFormat](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
+> Storm verze 0.10.0 a vyšší využití Log4j 2.x. Starší verze storm použít Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší, najdete v části [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
 
 ## <a name="test-the-topology-locally"></a>Testování topologie místně
 
@@ -601,7 +599,7 @@ Soubor YAML definuje součásti, které budou používat pro topologii a data to
 Další informace o toku najdete v tématu [tok framework (https://storm.apache.org/releases/0.10.0/flux.html)](https://storm.apache.org/releases/0.10.0/flux.html).
 
 > [!WARNING]
-> Z důvodu [chyb (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) s Storm 1.0.1, budete muset nainstalovat [Storm vývojového prostředí](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) tok topologie spouštět místně.
+> Z důvodu [chyb (https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) s Storm 1.0.1, budete muset nainstalovat [Storm vývojového prostředí](https://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) tok topologie spouštět místně.
 
 1. Přesunout `WordCountTopology.java` souboru mimo projekt. Tento soubor dříve, definované topologii, ale není potřeba s tokem.
 
@@ -720,7 +718,7 @@ Další informace o toku najdete v tématu [tok framework (https://storm.apache.
     ```
 
     > [!WARNING]
-    > Pokud vaše topologie používá Storm 1.0.1 bits, tento příkaz se nezdaří. Tato chyba je způsobená [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Místo toho [nainstalovat Storm ve vašem vývojovém prostředí](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) a pomocí následujících kroků:
+    > Pokud vaše topologie používá Storm 1.0.1 bits, tento příkaz se nezdaří. Tato chyba je způsobená [ https://issues.apache.org/jira/browse/STORM-2055 ](https://issues.apache.org/jira/browse/STORM-2055). Místo toho [nainstalovat Storm ve vašem vývojovém prostředí](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html) a pomocí následujících kroků:
     >
     > Pokud máte [nainstalovaný ve vašem vývojovém prostředí Storm](http://storm.apache.org/releases/0.10.0/Setting-up-development-environment.html), můžete místo toho použít následující příkazy:
     >

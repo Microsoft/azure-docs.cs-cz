@@ -1,20 +1,20 @@
 ---
-title: "Aktivovat předplatných Azure a účtů | Microsoft Docs"
-description: "Povolte přístup pomocí rozhraní API Správce Azure Resource Manager pro nové a stávající účty a řešení běžných problémů s účtu."
+title: Aktivovat předplatných Azure a účtů | Microsoft Docs
+description: Povolte přístup pomocí rozhraní API Správce Azure Resource Manager pro nové a stávající účty a řešení běžných problémů s účtu.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivovat předplatných Azure a účtů s Azure náklady na správu
 
@@ -29,7 +29,7 @@ Konkrétní oprávnění jsou nutné k dokončení postupy v tomto článku. Vy 
 - Oprávnění k registraci aplikací CloudynCollector klientovi Azure AD.
 - Možnost přiřazení aplikace k roli ve vašich předplatných Azure.
 
-V rámci vašich předplatných Azure, musí mít vaše účty `Microsoft.Authorization/*/Write` přístup k aplikaci CloudynCollector přiřadit. Tato akce je poskytována prostřednictvím [vlastníka](../active-directory/role-based-access-built-in-roles.md#owner) role nebo [správce přístupu uživatelů](../active-directory/role-based-access-built-in-roles.md#user-access-administrator) role.
+V rámci vašich předplatných Azure, musí mít vaše účty `Microsoft.Authorization/*/Write` přístup k aplikaci CloudynCollector přiřadit. Tato akce je poskytována prostřednictvím [vlastníka](../role-based-access-control/built-in-roles.md#owner) role nebo [správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) role.
 
 Pokud je váš účet přiřazenou **Přispěvatel** role, nemáte dostatečná oprávnění k aplikaci přiřadit. Obdržíte chybu při pokusu o přiřazení CloudynCollector aplikace k předplatnému Azure.
 
@@ -61,8 +61,8 @@ Když přidáte aktualizace účtu předplatného, povolíte Azure náklady na s
 2. V případě potřeby zadejte ID klienta. Pokud si nejste jisti vaše ID klienta, vyhledání pomocí následující kroky:
     1. Přihlaste se [portál Azure](https://portal.azure.com).
     2. Na portálu Azure vyberte **Azure Active Directory**.
-    3. Chcete-li získat ID klienta, vyberte **vlastnosti** pro vašeho tenanta Azure AD.
-    4. Zkopírujte identifikátor GUID ID adresáře. Tato hodnota je vaše ID klienta.
+    3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
+    4. Zkopírujte identifikátor GUID ID adresáře. Tato hodnota představuje ID tenanta.
     Další informace najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
 3. V případě potřeby vyberte ID míry. Pokud neznáte vaše ID míry, použijte následující kroky k vyhledání.
     1. V pravém horním portálu Azure, klikněte na tlačítko informace o uživateli a potom klikněte na **Zobrazit Moje faktury**.

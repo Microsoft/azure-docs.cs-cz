@@ -1,9 +1,9 @@
 ---
-title: "Pomocí prohlížeče sestav na webu | Microsoft Docs"
-description: "Toto téma popisuje postup vytvoření webu služby Microsoft Azure pomocí ovládacího prvku prohlížeče sestav Visual Studio, který se zobrazí zpráva uložené na virtuální počítač Azure Microsoft."
+title: Pomocí prohlížeče sestav na webu | Microsoft Docs
+description: Toto téma popisuje postup vytvoření webu služby Microsoft Azure pomocí ovládacího prvku prohlížeče sestav Visual Studio, který se zobrazí zpráva uložené na virtuální počítač Azure Microsoft.
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: af8a4a9c25005925bed3ddb78ced618e669f7f09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Použití ReportVieweru na webu hostovaném v Azure
 > [!IMPORTANT] 
@@ -86,7 +86,7 @@ Pokyny k publikování webové aplikace technologie ASP.NET do Azure, najdete v 
 > 
 > 
 
-## <a name="resources"></a>Zdroje
+## <a name="resources"></a>Zdroje a prostředky
 [Sestavy Microsoft](http://go.microsoft.com/fwlink/?LinkId=205399)
 
 [SQL Server Business Intelligence v Azure Virtual Machines](../classic/ps-sql-bi.md)

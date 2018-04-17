@@ -9,14 +9,13 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.openlocfilehash: 2498c0960ef8fd50064e40428f87d106abf10ecd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fb69f1b52e5b17dd6794c896969c29003a929c9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavit výstrahy pro úlohy Azure Stream Analytics
-## <a name="introduction-monitor-page"></a>Úvod: Stránka sledování
+# <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>Kurz: Nastavení výstrah pro úlohy Azure Stream Analytics
 Výstrahy můžete nastavit, které spustí výstrahu, když metriky dosáhne podmínku, která zadáte. Může například nastavit výstrahy pro podmínku takto:
 
 `If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`

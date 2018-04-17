@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - nastavení monitorování s OMS Log Analytics | Microsoft Docs
-description: Zjistěte, jak pro nastavení služby Operations Management Suite pro vizualizaci a analýzu událostí k monitorování clusterů Azure Service Fabric.
+title: Nastavení monitorování pomocí analýzy protokolů Azure Service Fabric - | Microsoft Docs
+description: Zjistěte, jak nastavit analýzy protokolů pro vizualizaci a analýzu událostí k monitorování clusterů Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 807c703eccf336236846212b8a0cadc20ec2bc4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Nastavení pro cluster s podporou Operations Management Suite Log Analytics
+# <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení analýzy protokolů pro cluster
 
-Můžete nastavit pracovní prostor služby Operations Management Suite (OMS) pomocí Správce prostředků Azure, PowerShell nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manager nasazení pro budoucí použití, nastavení prostředí OMS pomocí stejné šablony. Nasazení prostřednictvím Marketplace je jednodušší, pokud již máte cluster nasadit s diagnostikou povolena. Pokud účet, do které nasazujete OMS nemají přístup na úrovni předplatného, nasaďte pomocí prostředí PowerShell nebo šablony Resource Manageru.
+Můžete nastavit pracovní prostor analýzy protokolů pomocí Azure Resource Manager, prostředí PowerShell nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manager nasazení pro budoucí použití, nastavení prostředí OMS pomocí stejné šablony. Nasazení prostřednictvím Marketplace je jednodušší, pokud již máte cluster nasadit s diagnostikou povolena. Pokud účet, do které nasazujete OMS nemají přístup na úrovni předplatného, nasaďte pomocí prostředí PowerShell nebo šablony Resource Manageru.
 
 > [!NOTE]
-> Pokud chcete nastavit OMS monitorování vašeho clusteru, musíte mít diagnostiky povoleno zobrazovat události na úrovni clusteru nebo platformu.
+> Nastavení analýzy protokolů pro monitorování vašeho clusteru, musíte mít diagnostiky povoleno zobrazovat události na úrovni clusteru nebo platformu.
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>Nasazení OMS pomocí webu Azure Marketplace
 

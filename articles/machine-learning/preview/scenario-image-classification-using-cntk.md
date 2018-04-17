@@ -1,8 +1,8 @@
 ---
-title: "Obrázek klasifikace pomocí CNTK uvnitř Azure Machine Learning Workbench | Microsoft Docs"
-description: "Cvičení, hodnocení a nasadit vlastní image klasifikace model pomocí Azure ML Workbench."
+title: Obrázek klasifikace pomocí CNTK uvnitř Azure Machine Learning Workbench | Microsoft Docs
+description: Cvičení, hodnocení a nasadit vlastní image klasifikace model pomocí Azure ML Workbench.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c585609ec8854045e943ae7cd33089021f8f1f2f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Pomocí Azure Machine Learning Workbench klasifikace bitové kopie
 
@@ -54,7 +54,7 @@ Požadavky na spuštění v tomto příkladu jsou následující:
 4. Vyhrazené GPU není nutné provést školení SVM část 1, ale je potřeba pro upřesnění z DNN popsané v části 2. Chybí silné grafického procesoru, chcete cvičení na více grafickými procesory nebo nemají počítače s Windows, můžete použít Azure hloubkové Learning virtuální počítač s operačním systémem Windows. V tématu [sem](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) průvodce kliknutím 1 nasazení. Po nasazení připojit k virtuálnímu počítači prostřednictvím připojení ke vzdálené ploše, nainstalujte Workbench existuje a spouštění kódu místně z virtuálního počítače.
 5. Různé knihovny Python, jako je například OpenCV je potřeba nainstalovat. Klikněte na tlačítko *spusťte příkazový řádek* z *souboru* nabídky na Workbench a spusťte následující příkazy pro instalaci tyto závislosti:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` Po stažení OpenCV wheel z http://www.lfd.uci.edu/~gohlke/pythonlibs/ (přesný název souboru a verze můžete změnit)
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` Po stažení OpenCV hodinových z http://www.lfd.uci.edu/~gohlke/pythonlibs/ (přesný název souboru a verze můžete změnit)
     - `conda install pillow`
     - `pip install -U numpy`
     - `pip install bqplot`
@@ -73,7 +73,7 @@ Požadavky na spuštění v tomto příkladu jsou následující:
 
 Chcete-li vytvořit nový projekt v tomto příkladu jako šablona:
 1.  Otevřete aplikaci Azure Machine Learning Workbench.
-2.  Na **projekty** klikněte na tlačítko  **+**  přihlásit a vybrat **nový projekt**.
+2.  Na **projekty** klikněte na tlačítko **+** přihlásit a vybrat **nový projekt**.
 3.  V **vytvořit nový projekt** podokně, vyplňte informace pro nový projekt.
 4.  V **šablony projektů vyhledávání** vyhledávacího pole zadejte "Image klasifikaci" a vyberte šablonu.
 5.  Klikněte na možnost **Vytvořit**.
@@ -215,7 +215,7 @@ Nyní Představujeme několik způsobů, jak zlepšit přesnost modelu ze část
 
 Místo SVM jedné můžete udělat klasifikací přímo v neuronové sítě. Toho dosáhnete přidáním nové poslední vrstvy do předem vyškolení DNN, který přebírá obtékaných objektů 512 z předposlední vrstvy jako vstup. Výhodou provádění klasifikace na DNN je, že teď plné síti může být retrained pomocí backpropagation. Tento přístup často vede k mnohem lepší přesnostmi klasifikace ve srovnání s pomocí předem vyškolení DNN jako-se, ale za cenu mnohem delší dobu školení (i s grafickým Procesorem).
 
-Cvičení Neuronové sítě místo SVM se provádí tak, že změníte proměnnou `classifier` v `PARAMETERS.py` z `svm` k `dnn`. Pak jak je popsáno v části 1, všech skriptech s výjimkou přípravy dat (krok 1) a školení SVM (krok 3) potřeba provést znovu. Upřesnění DNN vyžaduje grafického procesoru. Pokud nebyl nalezen žádný GPU nebo pokud je uzamčené na grafický procesor (například podle předchozího spuštění CNTK) pak skript `2_refineDNN.py` vrátí chybu. Školení DNN můžete vyvolat chyba z důvodu nedostatku paměti na některé grafickými procesory, které se vyhnout snížením velikosti minibatch (proměnná `cntk_mb_size` v `PARAMETERS.py`).
+Cvičení Neuronové sítě místo SVM se provádí tak, že změníte proměnnou `classifier` v `PARAMETERS.py` z `svm` k `dnn`. Pak jak je popsáno v části 1, všech skriptech s výjimkou přípravy dat (krok 1) a školení SVM (krok 4) potřeba provést znovu. Upřesnění DNN vyžaduje grafického procesoru. Pokud nebyl nalezen žádný GPU nebo pokud je uzamčené na grafický procesor (například podle předchozího spuštění CNTK) pak skript `2_refineDNN.py` vrátí chybu. Školení DNN můžete vyvolat chyba z důvodu nedostatku paměti na některé grafickými procesory, které se vyhnout snížením velikosti minibatch (proměnná `cntk_mb_size` v `PARAMETERS.py`).
 
 Po dokončení školení přesnějších model je uložen na *DATA_DIR/proc/fashionTexture/cntk_refined.model*, a vykreslení vykreslovat, který ukazuje, jak změnit učení a testovací klasifikace chyby během cvičení. Poznámka: v této výkresu, který je mnohem menší než na testovací sada chybu na trénovací sady. Toto chování takzvané přepsání těsně může snížit, například pomocí vyšší hodnoty pro rychlost Odpadlík `rf_dropoutRate`.
 <p align="center">
@@ -234,8 +234,7 @@ Jak je vidět v výkresu níže, přesnost pomocí DNN upřesnění zadané sady
 Na snímku obrazovky první upřesnění DNN vede k lepší přesnostmi než SVM školení pro všechny třídy. Druhý snímek obrazovky ukazuje všechny metriky, které jsou sledovány, včetně toho, co byl třídění. Toto sledování se provádí ve skriptu `5_evaluate.py` voláním Azure Machine Learning Workbench protokolovacího nástroje. Kromě toho skript navíc šetří ROC křivky a přehlednosti matice do *výstupy* složky. To *výstupy* složka je speciální v, že jeho obsah je také sleduje funkci historie Workbench a proto výstupních souborů je přístupný kdykoli bez ohledu na to, jestli máte místní kopie přepsán.
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>  
-</p>
+<img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/> </p>
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison2b.jpg" alt="alt text" width="700"/>

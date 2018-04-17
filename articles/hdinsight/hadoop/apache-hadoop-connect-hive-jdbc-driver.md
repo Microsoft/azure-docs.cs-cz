@@ -11,16 +11,14 @@ ms.assetid: 928f8d2a-684d-48cb-894c-11c59a5599ae
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: larryfr
-ms.openlocfilehash: 876d6169f1ecb2f9cdecc59f3f7c8d0a82a8fe7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9700408dad36591fc26aa159524f33965b9d1324
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotaz Hive prostřednictvím ovladač JDBC v HDInsight
 
@@ -97,7 +95,7 @@ SQuirreL SQL je klient JDBC, který umožňuje vzdáleně spouštět dotazy Hive
     * **Název**: Hive
     * **Příklad adresy URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
     * **Navíc cesty tříd**: přidání všech souborů jar předtím stáhli pomocí tlačítka Přidat
-    * **Class Name**: org.apache.hive.jdbc.HiveDriver
+    * **Název třídy**: org.apache.hive.jdbc.HiveDriver
 
    ![Přidat dialogové okno ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 

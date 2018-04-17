@@ -1,11 +1,11 @@
 ---
-title: "Služba Azure Security Center a Azure SQL Database | Microsoft Docs"
-description: "Tento článek ukazuje, jak Security Center vám může pomoct zabezpečit vaše databáze v Azure SQL Database."
+title: Služba Azure Security Center a Azure SQL Database | Microsoft Docs
+description: Tento článek ukazuje, jak Security Center vám může pomoct zabezpečit vaše databáze v Azure SQL Database.
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Služba Azure Security Center a Azure SQL Database
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -38,7 +38,7 @@ Kromě pomáhá chránit prostředky SQL Database, Security Center také poskytu
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Úroveň Free služby Security Center je povolená s vaším předplatným. Další informace o volné a standardní úrovně Security Center, najdete v části [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
-Security Center podporuje přístup na základě rolí. Další informace o řízení přístupu na základě role (RBAC) v Azure najdete v tématu [řízení přístupu na základě Role v Azure Active Directory](../active-directory/role-based-access-control-configure.md). Security Center – nejčastější dotazy poskytuje informace o [zpracování oprávnění ve službě Security Center](security-center-faq.md#permissions).
+Security Center podporuje přístup na základě rolí. Další informace o řízení přístupu na základě role (RBAC) v Azure najdete v tématu [řízení přístupu na základě Role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md). Security Center – nejčastější dotazy poskytuje informace o [zpracování oprávnění ve službě Security Center](security-center-faq.md#permissions).
 
 ## <a name="access-security-center"></a>Přístup ke službě Security Center
 Služba Security Center je přístupná prostřednictvím [portálu Azure](https://azure.microsoft.com/features/azure-portal/). [Přihlaste se k portálu](https://portal.azure.com/) a vyberte **Security Center možnost**.
@@ -77,7 +77,7 @@ Pokud chcete zobrazit doporučení pro vaše prostředky Azure, vyberte **doporu
 ![Doporučení][4]
 
 Jak vidíte níže, Security Center zobrazuje SQL servery, kde nejsou povoleno auditování a zjišťování hrozeb. Po zapnutí auditování, nakonfigurujete nastavení detekce hrozeb a nastavení e-mailu pro výstrahy zabezpečení. Detekce hrozeb vás upozorní, když se zjistila nezvyklé databázové aktivity, které indikují potenciální ohrožení databáze. Výstrahy se zobrazují na řídicím panelu Security Center.
-![Auditování a zjišťování hrozeb][5]
+![Auditování a detekce hrozeb][5]
 
 Postupujte podle kroků v [detekce hrozeb SQL Database na portálu Azure](../sql-database/sql-database-threat-detection-portal.md) zapnout a nakonfigurovat detekce hrozeb a ke konfiguraci seznamu e-mailů, které budou dostávat upozornění zabezpečení při zjištění nezvyklých aktivit.
 
@@ -100,7 +100,7 @@ Jak vidíte níže, Security Center nabízí další podrobnosti, které nabíze
 
 Další informace najdete v tématu [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Security Center – nejčastější dotazy](security-center-faq.md) – přečtěte si nejčastější dotazy o použití této služby.
 * [Průvodce plánováním a operace Security Center](security-center-planning-and-operations-guide.md) – postupujte podle sadu kroků a úloh, abyste přizpůsobili použití služby Security Center na základě vaší organizace požadavky na zabezpečení a modelu správy cloudu.
 * [Zabezpečení dat Security Center](security-center-data-security.md) – zjistěte, jak Security Center shromažďuje a zpracovává data o vašich prostředků Azure, včetně informací o konfiguraci, metadata, protokoly událostí, soubory se stavem systému a další.

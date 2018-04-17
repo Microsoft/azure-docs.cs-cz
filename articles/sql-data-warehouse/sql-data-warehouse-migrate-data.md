@@ -1,11 +1,11 @@
 ---
 title: Migrace dat do SQL Data Warehouse | Microsoft Docs
-description: "Tipy pro migraci dat do Azure SQL Data Warehouse na vývoj řešení."
+description: Tipy pro migraci dat do Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fbab223963989eab16cecea2facd9c15ba646d4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data lze přesunout z různých zdrojů do SQL Data Warehouse pomocí různých nástrojů.  Kopírování ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Jako velikost dat zvyšuje však měli myslíte o rozdělení proces migrace dat do kroků. To nabízí možnost optimalizovat každý krok pro výkon i pro odolnost k zajištění smooth dat migrace.
@@ -90,7 +90,7 @@ Proces migrace dat SQLDW můžete efektivně rozdělit na tři samostatné kroky
 Každý krok může jednotlivě optimalizovaný na vytváření robustní, znovu spustit a odolné migrace proces, který maximalizuje výkon při každém kroku.
 
 ## <a name="optimizing-data-load"></a>Optimalizace načtení dat
-Prohlížení tyto v obráceném pořadí na chvíli; nejrychlejší způsob, jak načíst data je prostřednictvím PolyBase. Optimalizace pro proces zatížení PolyBase umístí požadavky na předchozí kroky proto je vhodné pro lepší vysvětlení předem. Jsou:
+Prohlížení tyto v obráceném pořadí na chvíli; nejrychlejší způsob, jak načíst data je prostřednictvím PolyBase. Optimalizace pro proces zatížení PolyBase umístí požadavky na předchozí kroky proto je vhodné pro lepší vysvětlení předem. Jsou to tyto:
 
 1. Kódování dat souborů
 2. Formátu dat souborů
@@ -178,7 +178,7 @@ PolyBase také podporuje funkci označuje jako "rekurzivní složky traversal". 
 
 Další informace o načtení dat pomocí funkce PolyBase, najdete v části [PolyBase používá k načtení dat do SQL Data Warehouse][Use PolyBase to load data into SQL Data Warehouse].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o migraci najdete v tématu [migrace vašeho řešení do SQL Data Warehouse][Migrate your solution to SQL Data Warehouse].
 Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
 
@@ -190,10 +190,11 @@ Další tipy pro vývoj, najdete v části [přehled vývoje][development overvi
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[migrovat schéma]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

@@ -1,6 +1,6 @@
 ---
-title: "Používání služby webové služby Azure Machine Learning modelu Management | Microsoft Docs"
-description: "Tento dokument popisuje kroky a koncepty součástí využívání webových služeb, které jsou nasazeny pomocí modelu správy v Azure Machine Learning."
+title: Používání služby webové služby Azure Machine Learning modelu Management | Microsoft Docs
+description: Tento dokument popisuje kroky a koncepty součástí využívání webových služeb, které jsou nasazeny pomocí modelu správy v Azure Machine Learning.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0976e2dca909781ade76c742cc99746e1123307d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="consuming-web-services"></a>Využívání webových služeb
 Jakmile nasadíte model jako webovou službu v reálném čase, můžete odeslat data a získat předpovědi z mnoha různých platforem a aplikace. Webovou službu v reálném čase zpřístupňuje rozhraní REST API pro získání předpovědi. K webové službě ve formátu jednoho nebo více řádků získat jeden nebo více předpovědi současně může odesílat data.
@@ -162,6 +162,6 @@ url = 'http://<service ip address>:80/api/v1/service/<service name>/score'
 api_key = 'your service key' 
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-resp = requests.post(url, data, headers=headers)
+resp = requests.post(url, body, headers=headers)
 resp.text
 ```

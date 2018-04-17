@@ -1,11 +1,11 @@
 ---
-title: "Řídit směrování a virtuální zařízení ve službě Azure - šablony | Microsoft Docs"
-description: "Zjistěte, jak řídit směrování a virtuální zařízení pomocí šablony Azure Resource Manager."
+title: Řídit směrování a virtuální zařízení ve službě Azure - šablony | Microsoft Docs
+description: Zjistěte, jak řídit směrování a virtuální zařízení pomocí šablony Azure Resource Manager.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 832c7831-d0e9-449b-b39c-9a09ba051531
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Vytvoření trasy definované uživatelem (UDR) pomocí šablony
 
@@ -186,7 +186,7 @@ Pokud chcete nasadit šablonu Azure Resource Manager pomocí rozhraní příkazo
 
         info:    New mode is arm
 
-3. V prohlížeči přejděte na **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, zkopírujte obsah souboru json a vložit do nového souboru ve vaší počítač. Pro tento scénář, zkopírujte následující hodnoty do souboru s názvem **c:\udr\azuredeploy.parameters.json**.
+3. V prohlížeči přejděte na **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, zkopírujte obsah souboru json a vložit do nového souboru v počítači. Pro tento scénář, zkopírujte následující hodnoty do souboru s názvem **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {

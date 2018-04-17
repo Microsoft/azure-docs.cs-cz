@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a řízení přístupu plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů"
-description: "FedRAMP webové aplikace automatizace – řízení přístupu"
+title: Zabezpečení Azure a řízení přístupu plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů
+description: FedRAMP webové aplikace automatizace – řízení přístupu
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 73ce33bc6136b9b76661dc9e29b3a11c3eabc5f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3d30f889c4d7ed0dafcf8559e8987090c03f4d5e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-ac"></a>Řízení přístupu (AC)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásad řízení přístupu, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásad řízení přístupu a řízení přístupu přidružené; kontroluje a aktualizuje aktuální zásady řízení přístupu [přiřazení: organizace definované frekvence]; a procedury řízení přístupu [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.a** organizace identifikuje a vybere následující typy informace účty systému pro podporu organizační poslání nebo podnikové funkce: [přiřazení: typy účtů systému informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.b** organizace přiřadí účet správce pro informace o systémové účty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.c** organizace vytváří podmínky pro členství skupiny a role.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.d** organizace určuje oprávněným uživatelům informace o systému, skupiny a role členství a přístup k povolení (tj. oprávnění) a další atributy (podle potřeby) pro každý účet.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2.e** Organizace vyžaduje schválení podle [přiřazení: organizace definované pracovníky nebo rolí] pro požadavky na vytvoření informace systémové účty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.f** organizace vytvoří, povolí, upraví, zakáže a odebere účty systému informace v souladu s [přiřazení: organizace definované postupy nebo podmínky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,11 +129,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.g** organizace monitoruje použití účtů, informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení OMS zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. |
+| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.h** organizace upozorní správce účtu při účty se už nevyžadují; při ukončen nebo přenést; uživatelů a při používání systému jednotlivé informace nebo potřeba znát změny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.i** organizace povolí přístup k systému informace na základě platný přístup autorizace; určený systému využití; a další atributy podle požadavků organizace nebo přidružené poslání nebo podnikovým funkcím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.j** organizace zkontroluje účty kompatibilitu s požadavky na správu účtu [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 2.k** organizace vytváří proces pro opětovné vystavení přihlašovací údaje účtu sdílené nebo skupiny (Pokud je nasazený) při jednotlivce se odeberou ze skupiny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,11 +199,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (1)** organizace využívá automatizované mechanismy pro podporu správy informace systémové účty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení OMS zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. OMS může být nakonfigurován pro odesílání upozornění, pokud podezření netypických aktivity nebo jiné předdefinované události. |
+| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. Můžete nastavit pro odesílání upozornění, pokud podezření netypických aktivity nebo jiné předdefinované události. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (2)** informace systému automaticky [výběr: Odebere; zakáže] dočasné a nouzový účty po [přiřazení: organizace definované časové období pro každý typ účtu].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (3)** informace systému automaticky zakáže neaktivní účty po [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,11 +241,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (4)** informace systému automaticky audity akce vytváření, úpravy, povolení, zasílání zpráv o zakázání a odebrání účtu a upozorní, [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje následující typy účtů systému: uživatelů Azure Active Directory, uživatelé operačního systému Windows, účet služby SQL Server. Akce správy účtu služby Azure Active Directory generovat událost v protokolu aktivit Azure; Úroveň operačního systému účtu akce správy vygenerují událost do systémového protokolu. Tyto protokoly se shromažďují analýzy protokolů a uložené v úložišti OMS. OMS můžete nakonfigurovat na odesílání výstrah při výskytu události v předdefinované.  |
+| **Zákazníka** | Tento plán, podle kterého implementuje následující typy účtů systému: uživatelů Azure Active Directory, uživatelé operačního systému Windows, účet služby SQL Server. Akce správy účtu služby Azure Active Directory generovat událost v protokolu aktivit Azure; Úroveň operačního systému účtu akce správy vygenerují událost do systémového protokolu. Tyto protokoly se shromažďují analýzy protokolů a uložené v pracovním prostoru analýzy protokolů. Analýzy protokolů můžete nakonfigurovat na odesílání výstrah při výskytu události v předdefinované.  |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (5)** organizace vyžaduje, aby se při přihlašování uživatelů [přiřazení: organizace definované doby nečinnosti očekávané nebo popis při odhlášení].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (7) .a** organizace vytváří a spravuje privilegované uživatelské účty v souladu s schéma přístupu podle rolí, které slouží k uspořádání povolené informace systému přístup a oprávnění, do role.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,11 +283,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (7) .b** organizace monitoruje přiřazení privilegované role.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého se implementuje OMS zabezpečení a Audit řešení identit a přístupu řídicího panelu. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. Toto řešení můžete položit dotaz k hlášení přiřazení privilegované role. |
+| **Zákazníka** | Tento plán, podle kterého se implementuje zabezpečení a Audit řešení identit a přístupu řídicího panelu. Tento řídicí panel umožňuje správcům účet monitorování použití účtů, informace o systému. Toto řešení můžete položit dotaz k hlášení přiřazení privilegované role. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (7) .c** organizace trvá [přiřazení: akce definované organizace] při přiřazení privilegované role již nejsou vhodné.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (9)** organizace pouze povolí použití sdíleného nebo skupinové účty, které splňují [přiřazení: organizace definované podmínky pro vytvoření sdílených nebo skupinové účty].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (10)** informace systému ukončit sdílené nebo skupiny pověření při členy nechte skupinu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (11)** vynucuje systémové informace [přiřazení: organizace definované okolností nebo podmínky použití] pro [přiřazení: účty systému informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -347,17 +347,17 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-ac-2-12a"></a>NIST 800-53 Control AC-2 (12).a
+ ### <a name="nist-800-53-control-ac-2-12a"></a>NIST 800-53 řízení .a AC-2 (12)
 
 #### <a name="account-management--account-monitoring--atypical-usage"></a>Správa účtů | Účet monitorování / Netypických využití
 
 **AC-2 (12) .a** organizace sleduje informace o systémových účtů pro [přiřazení: organizace definované netypické využití].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení OMS zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování přístupu pokusy o přihlášení nasazené prostředky. |
+| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování přístupu pokusy o přihlášení nasazené prostředky. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -367,11 +367,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (12) .b** organizace sestavy netypických využití účty systému informace [přiřazení: definované organizace pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení OMS zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování přístupu pokusy o přihlášení nasazené prostředky. Toto řešení můžete nakonfigurovat k odesílání upozornění, pokud podezření netypických aktivity nebo jiné předdefinované události. |
+| **Zákazníka** | Tento plán, podle kterého implementuje řídicí panel řešení zabezpečení a Audit přístupu a identit. Tento řídicí panel umožňuje správcům účet monitorování přístupu pokusy o přihlášení nasazené prostředky. Toto řešení můžete nakonfigurovat k odesílání upozornění, pokud podezření netypických aktivity nebo jiné předdefinované události. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-2 (13)** zakáže účty uživatelů autority významné riziko v rámci organizace [přiřazení: organizace definované časové období] zjišťování riziko.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 3** vynucuje schválené autorizací pro logického přístupu k informace a systémové prostředky v souladu s zásady řízení přístupu na příslušné informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 4** vynucuje schválené oprávnění pro řízení toku informací v rámci systému a mezi propojenými systémy založené na systému informace [přiřazení: zásady řízení toku informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-4 (8)** informace systému vynucuje informace o toku řízení pomocí [přiřazení: filtry zásad zabezpečení organizace definované] jako základ pro rozhodnutí o toku řízení pro [přiřazení: toky informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-4 (21)** informace systému odděluje informace toky logicky nebo fyzicky pomocí [přiřazení: mechanismy definované organizace nebo techniky] provedete [přiřazení: organizace definované požadované separace typy informace o].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 5.a** organizace odděluje [přiřazení: organizace definované povinností jednotlivců].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 5.b** organizace dokumenty oddělení povinností jednotlivce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 5.c** organizace definuje informace systému přístup autorizací pro podporu rozdělení povinností.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 6** organizace využívá princip nejnižších nutných oprávnění, umožňuje pouze oprávněných přístupů pro uživatele (nebo procesy, které jednají jménem uživatelů), které jsou nezbytné k provádění úloh přiřazené v souladu s organizační poslání a podnikovým funkcím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (1)** organizace výslovně povoluje přístup k [přiřazení: zabezpečení organizace definované funkce (nasazený v hardware, software a firmware) a zabezpečení relevantní informace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (2)** organizace vyžaduje, aby uživatelé informace systému účtů nebo role, přístup k [přiřazení: funkce definované organizace zabezpečení nebo zabezpečení relevantní informace], použít účty bez oprávnění nebo role, při přístup k funkce netýká se zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (3)** organizace povolí přístup k síti na [přiřazení: organizace definovaný privilegovaný příkazy] pouze pro [přiřazení: organizace definované přesvědčivé provozní potřeby] a dokumenty důvody tohoto přístupu v plánování zabezpečení systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (5)** organizace omezuje privilegovaných účtů v systému informace [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A AC – 6 (7)** recenze organizace [přiřazení: organizace definované frekvence] oprávnění přiřazená [přiřazení: organizace definované role nebo třídy uživatelů] k ověření potřeba taková oprávnění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (7) .b** organizace pouze Změna přiřazení nebo odebere oprávnění, pokud je to nezbytné, aby se správně odrážela organizační zvláště nebo obchodní potřeby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (8)** informace brání [přiřazení: softwaru definované organizace] spuštění na vyšší úrovni oprávnění než uživatelé provádění softwaru.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,11 +605,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (9)** informace systému audity provádění privilegovaných funkce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého implementuje službu analýzy protokolů v OMS. Nasadit virtuální počítače a Azure diagnostics účty úložiště jsou připojené zdroje pro analýzy protokolů zajistíte, že je auditováno provádění privilegovaných funkcí. |
+| **Zákazníka** | Tento plán, podle kterého implementuje službu analýzy protokolů. Nasadit virtuální počítače a Azure diagnostics účty úložiště jsou připojené zdroje pro analýzy protokolů zajistíte, že je auditováno provádění privilegovaných funkcí. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 6 (10)** systému informací zabraňuje uživatelům bez oprávnění v provádění privilegovaných funkce: zákaz, obcházení, nebo změnu implementována zabezpečení bezpečnostní opatření nebo protiopatření.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 7a** informace systému se vynucuje maximální počet [přiřazení: organizace definované číslo] po sobě jdoucích neplatné pokusy o přihlášení uživatelem během [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 7.b** informace systému automaticky [výběr: zamkne účet nebo uzel pro [přiřazení: organizace definované časové období]; zamkne účet nebo uzel, dokud vydání správcem; zpozdí další výzva k přihlášení podle [Přiřazení: algoritmus definované organizace zpoždění]] při překročení maximální počet neúspěšných pokusů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-7 (2)** informace systému vyprazdňovat nebo vymazání informace z [přiřazení: organizace definované mobilní zařízení] na základě [přiřazení: organizace definované vyprazdňování nebo vymazání požadavky nebo techniky] po [přiřazení: pokusy o přihlášení po sobě jdoucích neúspěšných zařízení organizace definované číslo].
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.a** zobrazí systém informace pro uživatele [přiřazení: systém definované organizace používat oznámení nebo informační zpráva] před udělením přístupu k systému, který poskytuje ochranu osobních údajů a zabezpečení oznámení, které jsou konzistentní s použít federální právní Executive objednávky, direktivy, zásady, standardy a pokyny a stavy, uživatelé přistupují USA Informace o systému Government; využití systémové informace může být monitorovaná, zaznamenané a auditování; neoprávněné použití systému informace je zakázané a souladu trestního a občanského práva; a použití systému informace označuje souhlasu sledování a záznamu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.b** informace systému zachová oznámení nebo informační zpráva na obrazovce, dokud uživatelé vědomí podmínky použití a explicitní kroky k přihlášení k počítači nebo Další informace o systému přístup.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 8.c** systému informace veřejně přístupná systémů zobrazí informace o použití systému [přiřazení: organizace definované podmínky], před udělením přístupu Další; zobrazí odkazy, pokud existuje, sledování, záznamu, nebo auditování, které jsou konzistentní s přizpůsobení ochrany osobních údajů pro tyto systémy, které obvykle zakázat tyto aktivity; a obsahuje popis povolená použití systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 10** informace systému omezuje počet souběžných relací pro každou [přiřazení: organizace definovaný účet nebo typ účtu] na [přiřazení: organizace definované číslo].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 11.a** informace brání další přístupu k systému pomocí inicializace relace uzamčení po [přiřazení: organizace definované časové období] nečinnosti nebo po přijetí žádosti od uživatele.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 11.b** informace systému zachová zámek relace, dokud uživatel obnoví přístup pomocí stanovené postupy identifikace a ověření.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-11 (1)** informace systému ukrývá prostřednictvím relace zámek informace dříve viditelné na displeji s veřejně viditelný obrázek.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 12** informace systém automaticky ukončí relace uživatele po [přiřazení: organizace definované podmínky nebo aktivační události vyžadující relace odpojení].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 12 (1) .a** systému informace poskytuje funkci odhlášení pro komunikaci uživatel spustil relace vždy, když je ověřování slouží k získání přístupu k [přiřazení: prostředky informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC – 12 (1) .b** systému informace zobrazí zprávu explicitní odhlášení uživatelům označující spolehlivé ukončení relací ověřené komunikaci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 14.a** identifikuje organizace [přiřazení: akcí uživatele organizaci definované], lze provést v systému informace bez identifikace a ověřování, které jsou konzistentní s organizační poslání nebo podnikovým funkcím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 14.b** organizace dokumenty a poskytuje podpůrné odůvodnění plánu zabezpečení informace systému, akcí uživatele, které nevyžadují identifikace nebo ověřování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 17.a** organizace vytváří a dokumenty omezení použití, požadavky konfigurace nebo připojení a implementace pokyny pro každý typ vzdáleného přístupu povolena.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 17.b** organizace autorizuje vzdálený přístup k systému informace před povolením takové připojení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -871,11 +871,11 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (1)** informace systému sleduje a řídí metody vzdáleného přístupu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého poskytuje vzdálený přístup k systému informace prostřednictvím portálu Azure prostřednictvím připojení ke vzdálené ploše prostřednictvím jumpbox a prostřednictvím implementované zákazníka webové aplikace. Přistupuje prostřednictvím portálu Azure a relací vzdálené plochy se auditují a je možné monitorovat prostřednictvím OMS. Zákazník musí implementovat ovládací prvky vzdáleného přístupu, jako nezbytné, aby webové aplikace. |
+| **Zákazníka** | Tento plán, podle kterého poskytuje vzdálený přístup k systému informace prostřednictvím portálu Azure prostřednictvím připojení ke vzdálené ploše prostřednictvím jumpbox a prostřednictvím implementované zákazníka webové aplikace. Přistupuje prostřednictvím portálu Azure a relací vzdálené plochy se auditují a je možné monitorovat prostřednictvím analýzy protokolů. Zákazník musí implementovat ovládací prvky vzdáleného přístupu, jako nezbytné, aby webové aplikace. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (2)** systém informace implementuje kryptografických mechanismů chránit důvěrnost a integritu relací vzdáleného přístupu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (3)** informace systému směruje všechny vzdálené přistupuje prostřednictvím [přiřazení: organizace definované číslo] spravované řízení přístupových bodů sítě.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (4) .a** organizace autorizuje provádění privilegovaných příkazů a přístup k zabezpečení relevantní informace prostřednictvím vzdáleného přístupu pouze pro [přiřazení: organizace definované vyžaduje].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (4) .b** organizace dokumenty důvody tohoto přístupu v plánu zabezpečení pro systém informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-17 (9)** poskytuje možnost rychle odpojit nebo zakázat vzdálený přístup k systému informace v rámci organizace [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18.a** organizace vytváří omezení použití, požadavky konfigurace nebo připojení a implementace pokyny pro bezdrátový přístup.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -969,7 +969,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18.b** organizace autorizuje bezdrátový přístup k systému informace před povolením takové připojení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -983,7 +983,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18 (1)** informace systému chrání bezdrátový přístup k systému prostřednictvím ověřování [výběr (jeden nebo více): uživatelé; zařízení] a šifrování.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -997,7 +997,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18 (3)** zakáže organizace, pokud není určena pro použití, bezdrátové sítě možnosti interně vloženým do komponent systému informace před vystavování a nasazení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -1011,7 +1011,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18 (4)** organizace identifikuje a explicitně autorizuje uživatele, které mohou nezávisle konfigurovat bezdrátové síťové služby.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -1025,7 +1025,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 18 (5)** organizace vybere antény přepínačů a kalibruje přenosu úrovní snížit pravděpodobnost, že použitelné signál lze zachytit mimo organizaci řízené hranice.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -1039,7 +1039,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 19.a** organizace vytváří omezení použití, požadavky na konfiguraci, požadavky na připojení a implementace pokyny pro organizaci řízené mobilní zařízení.
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -1053,7 +1053,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 19.b** organizace povolí připojení mobilních zařízení a systémy organizační údaje.
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -1067,7 +1067,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-19 (5)** organizace využívá [výběr: šifrování kontejneru; šifrování zařízení úplné] chránit důvěrnost a integritu informace na [přiřazení: organizace definované mobilní zařízení].
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -1081,7 +1081,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 20.a** organizace vytváří podmínky a ujednání, které jsou konzistentní s žádný vztah důvěry s dalšími organizacemi, který je vlastníkem, provozování, nebo udržování systémů externí informace, což autorizované jednotlivce pro přístup k systému informace z externích informačních systémů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1095,7 +1095,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 20.b** organizace vytváří podmínky a ujednání, které jsou konzistentní s žádný vztah důvěry s dalšími organizacemi, který je vlastníkem, provozování, nebo udržování systémů externí informace, což autorizované jednotlivce ke zpracování, ukládání nebo přenášet informace řízenou organizace pomocí externích informačních systémů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1109,7 +1109,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-20 (1)** organizace umožňuje autorizované jednotlivce používat systém externí informace pro přístup k systému informace nebo ke zpracování, ukládání nebo přenášet řízenou organizace informace jenom v případě, že ověřuje organizace implementace ovládacích prvků požadované bezpečnostní v externím systému, jak je uvedeno v zásadách zabezpečení organizace informace a plánu zabezpečení; nebo uchovává schválené informace systému připojení nebo zpracování smluv s organizační entity hostování externí informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1123,7 +1123,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC-20 (2)** organizace [výběr: omezuje; znemožňuje] použití řízené organizace přenosné úložné zařízení podle autorizované jednotlivce na externí informace o systémech.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -1137,7 +1137,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 21.a** organizace usnadňuje tím, že umožňuje autorizovaným uživatelům zjistil, zda povolení přístupu přiřazené sdílení partnera shodují omezení přístupu na informace o sdílení informací [přiřazení: organizace informace definované sdílení případech, kdy je potřeba uživatel v případě potřeby].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1151,7 +1151,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 21.b** organizace využívá [přiřazení: organizace definované automatizovaných mechanismy nebo manuální procesy] uživatelům pomoct rozhodnutími sdílení nebo spolupráce informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1165,7 +1165,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.a** organizace označí jednotlivce oprávnění ke zveřejnění informace veřejně dostupné informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1179,7 +1179,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.b** organizace nastaví autorizované jednotlivce zajistit, že veřejně přístupné informace neobsahuje neveřejní informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1193,7 +1193,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.c** organizace zkontroluje navrhované obsah informace před příspěvků na systém veřejně přístupné informace tak, aby neveřejní informace dosud nejsou zahrnuty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -1207,7 +1207,7 @@ ms.lasthandoff: 02/11/2018
 
 **AC 22.d** organizace zkontroluje obsah na veřejně přístupný informace systému neveřejní informace [přiřazení: organizace definované frekvence] a odebere takové informace, pokud vyhledat.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7eb7fa57630e5ae52d4bf5e4321456c6bff54a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autorizace uživatelů pro zobrazení Ambari
 
@@ -37,7 +35,7 @@ Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/a
 
 Abyste se dostali na **stránce management Ambari** na [webové uživatelské rozhraní Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytvoření clusteru. Potom vyberte z řídicího panelu Ambari **spravovat Ambari** pod **správce** nabídky:
 
-![Manage Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
+![Spravovat Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
 ## <a name="grant-permissions-to-hive-views"></a>Udělení oprávnění k zobrazení Hive
 

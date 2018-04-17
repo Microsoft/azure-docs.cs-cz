@@ -1,26 +1,24 @@
 ---
-title: "Použít prázdný edge uzly na clustery systému Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Postup přidání prázdný hraniční uzel clusteru služby HDInsight, který může být použit jako klient a pak testovacího nebo hostitele aplikace HDInsight."
+title: Použít prázdný edge uzly na clustery systému Hadoop v HDInsight - Azure | Microsoft Docs
+description: Postup přidání prázdný hraniční uzel clusteru služby HDInsight, který může být použit jako klient a pak testovacího nebo hostitele aplikace HDInsight.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: mumian
 tags: azure-portal
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: jgao
-ms.openlocfilehash: 7c09b2aefac1248a0bad06b913a8da56e73c0e4d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Použít prázdný edge uzly na clustery systému Hadoop v HDInsight
 
@@ -69,7 +67,7 @@ Po vytvoření hraniční uzel, můžete připojit k uzlu edge pomocí protokolu
 > * [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [http://stackoverflow.com](http://stackoverflow.com).
 >
-> Pokud používáte technologie Apache, bude pravděpodobně možné najít pomoc prostřednictvím Apache projektu lokalit na [http://apache.org](http://apache.org), například [Hadoop](http://hadoop.apache.org/) lokality.
+> Pokud používáte technologie Apache, bude pravděpodobně možné najít pomoc prostřednictvím Apache projektu lokalit na [ http://apache.org ](http://apache.org), například [Hadoop](http://hadoop.apache.org/) lokality.
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidat k existujícímu clusteru hraniční uzel
 V této části použijte šablonu Resource Manager přidat hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru naleznete v [Githubu](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu nacházející se v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení volání akce skriptu z šablony Resource Manageru.
@@ -132,7 +130,7 @@ Hraničního uzlu se zobrazí jako aplikace na portálu Azure.  Portál obsahuje
 
 **Používání Hive v uzlu edge**
 
-1. Použití SSH se připojit k uzlu edge. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Připojení k hraničnímu uzlu pomocí SSH Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Po připojení k uzlu edge pomocí protokolu SSH, použijte následující příkaz pro otevření konzoly Hive:
    

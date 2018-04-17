@@ -1,25 +1,25 @@
 ---
-title: "Připojení k Kafka pomocí virtuální sítě - Azure HDInsight | Microsoft Docs"
-description: "Zjistěte, jak k přímému připojení k Kafka v HDInsight prostřednictvím virtuální síti Azure. Zjistěte, jak se připojit k Kafka od klientů vývoj pomocí brány sítě VPN nebo z klientů ve vaší místní síti pomocí zařízení brány VPN."
+title: Připojení k Kafka pomocí virtuální sítě - Azure HDInsight | Microsoft Docs
+description: Zjistěte, jak k přímému připojení k Kafka v HDInsight prostřednictvím virtuální síti Azure. Zjistěte, jak se připojit k Kafka od klientů vývoj pomocí brány sítě VPN nebo z klientů ve vaší místní síti pomocí zařízení brány VPN.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
+ms.devlang: ''
 ms.custom: hdinsightactive
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53502257d85c88195a40b7bda033483bd97ff3f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Kafka v HDInsight pomocí virtuální sítě Azure
 
@@ -62,7 +62,7 @@ HDInsight neumožňuje přímé připojení k Kafka prostřednictvím veřejnéh
 
 Další informace o používání HDInsight ve virtuální síti, najdete v části [rozšířit HDInsight pomocí virtuálních sítí Azure](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a>Připojit k Kafka z místní sítě
+## <a id="on-premises"></a> Připojit k Kafka z místní sítě
 
 Pokud chcete vytvořit cluster Kafka, který komunikuje s vaší místní síti, postupujte podle kroků v [HDInsight připojit k místní síti](./../connect-on-premises-network.md) dokumentu.
 
@@ -78,7 +78,7 @@ Pomocí těchto kroků vytvoříte následující konfiguraci:
 
 Pokud chcete ověřit, že klient Kafka se může připojit ke clusteru z místního, použijte kroky v [příklad: klienta Python](#python-client) části.
 
-## <a id="vpnclient"></a>Připojení k Kafka pomocí klienta VPN
+## <a id="vpnclient"></a> Připojení k Kafka pomocí klienta VPN
 
 Postupujte podle kroků v této části vytvořit následující konfiguraci:
 
@@ -292,7 +292,7 @@ Ve výchozím nastavení Zookeeper vrátí název domény zprostředkovatelé Ka
 
 Pro připojení k bráně VPN, použijte __připojit k Azure__ části [konfigurace připojení typu Point-to-Site](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) dokumentu.
 
-## <a id="python-client"></a>Příklad: Python klienta
+## <a id="python-client"></a> Příklad: Python klienta
 
 K ověření připojení k Kafka, použijte následující postup k vytvoření a spuštění producent Python a příjemce:
 

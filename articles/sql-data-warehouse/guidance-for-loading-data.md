@@ -1,25 +1,20 @@
 ---
-title: "Osvědčené postupy načítání dat – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Doporučení pro načítání dat a provádění ELT pomocí služby Azure SQL Data Warehouse."
+title: Osvědčené postupy načítání dat – Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 12/13/2017
-ms.author: barbkess
-ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: a416bf7965a5d297bfea698d318d45f6e47c9c50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Osvědčené postupy načítání dat do služby Azure SQL Data Warehouse
 Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse. 
@@ -62,11 +57,11 @@ Připojte se k datovému skladu a vytvořte uživatele. Následující kód pře
 ```
 Pokud chcete spustit načítání s prostředky pro třídy prostředků staticRC20, stačí se přihlásit jako LoaderRC20 a spustit načítání.
 
-Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití statických tříd prostředků zaručuje stejné prostředky bez ohledu na vaši [úroveň služby](performance-tiers.md#service-levels). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
+Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití tříd statické prostředků zaručuje stejné prostředky bez ohledu na to vaše [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
 
 ## <a name="allowing-multiple-users-to-load"></a>Povolení načítání více uživatelům
 
-Často je potřeba, aby data do datového skladu načítalo více uživatelů. Příkaz [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] vyžaduje k databázi oprávnění CONTROL.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
+Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načtení se [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vyžaduje oprávnění pro řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
 Představte si například schémata databáze schema_A pro oddělení A a schema_B pro oddělení B. Uživatelé databáze user_A a user_B budou uživateli pro načítání PolyBase v oddělení A, respektive oddělení B. Oba uživatelé mají k databázi udělená oprávnění CONTROL. Autoři schémat A a B nyní svá schémata uzamknou pomocí příkazu DENY:
 
@@ -99,13 +94,13 @@ Načtení s použitím externí tabulky může selhat s chybou *Query aborted-- 
 Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formátů externí tabulky a externího souboru správné a že externí data těmto definicím odpovídají. V případě nezapsané podmnožiny externích datových záznamů se můžete rozhodnout, že ve svých dotazech, které využívají možnosti zamítnutí v příkazu CREATE EXTERNAL TABLE, chcete tyto záznamy zamítnout.
 
 ## <a name="inserting-data-into-a-production-table"></a>Vložení dat do provozní tabulky
-Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql.md) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení. 
+Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení. 
 
 Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich dávku, abyste je mohli načíst hromadně.  Vyvíjejte své procesy tak, aby samostatná vkládání připojovaly do souboru, a pak vytvořte další proces, který tento soubor bude pravidelně načítat.
 
 ## <a name="creating-statistics-after-the-load"></a>Vytvoření statistiky po načtení
 
-Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  Podrobné vysvětlení statistiky najdete v tématu [Statistika][Statistika]. Následující příklad vytvoří statistiku pro pět sloupců tabulky Customer_Speed.
+Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  Podrobné vysvětlení statistiky najdete v tématu [Statistika](sql-data-warehouse-tables-statistics.md). Následující příklad vytvoří statistiku pro pět sloupců tabulky Customer_Speed.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -120,22 +115,26 @@ Osvědčeným postupem zabezpečení je pravidelně měnit přístupový klíč 
 
 Obměna klíčů účtu služby Azure Storage:
 
-Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md).
+Pro každý účet úložiště, jehož klíč se změnil, vydejte příkaz [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql).
 
 Příklad:
 
 Původní klíč je vytvořený.
 
-CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
+    ``` 
 
 Proveďte otočení klíče 1 do klíče 2.
 
-ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```sq;
+    ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```
 
 V příslušných externích zdrojích dat se nevyžadují žádné další změny.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).
 
 

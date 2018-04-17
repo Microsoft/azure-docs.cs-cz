@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/12/2018
 ms.author: dukek
-ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e3185b8d8ce97ffd04188b2b49a457bd14d5c6c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akce na portálu Azure
 ## <a name="overview"></a>Přehled ##
@@ -26,10 +26,10 @@ Tento článek ukazuje, jak vytvořit a spravovat skupiny akce na portálu Azure
 
 Seznam akcí, můžete nakonfigurovat skupiny akcí. Tyto skupiny pak může být použit jednotlivé výstrahy, které definujete, zajistíte, že jsou stejné akce trvá pokaždé, když se výstraha.
 
-Skupinu akce může mít až 10 každý typ akce. Každá akce se skládá z následujících vlastností:
+Každá akce se skládá z následujících vlastností:
 
 * **Název**: Jedinečný identifikátor v rámci skupiny pro akce.  
-* **Typ akce**: odeslat hlasový hovor nebo SMS, e-mailovou zprávu, volat webhook, jehož, odesílání dat do nástroj na ITSM, volání Azure aplikace nebo spustit runbook služby automatizace.
+* **Typ akce**: odeslat telefonní hovor nebo SMS, e-mailovou zprávu, volat webhook, jehož, odesílání dat do nástroj na ITSM, volání aplikace logiky, odesílání nabízených oznámení do aplikace Azure nebo spustit runbook služby automatizace.
 * **Podrobnosti o**: odpovídající telefonního čísla, e-mailovou adresu, webhooku identifikátor URI nebo ITSM podrobnosti připojení.
 
 Informace o tom, jak pomocí šablony Azure Resource Manager můžete nakonfigurovat skupiny akcí najdete v tématu [šablony správce prostředků skupiny akce](monitoring-create-action-group-with-resource-manager-template.md).
@@ -56,14 +56,45 @@ Informace o tom, jak pomocí šablony Azure Resource Manager můžete nakonfigur
 
     a. **Název**: Zadejte jedinečný identifikátor pro tuto akci.
 
-    b. **Typ akce**: Vyberte e-mailu nebo SMS nebo nabízená nebo hlasové, Webhooku, ITSM nebo sady Automation Runbook.
+    b. **Typ akce**: Vyberte e-mailu nebo SMS nebo nabízená nebo hlasové, aplikace logiky, Webhooku, ITSM nebo sady Automation Runbook.
 
     c. **Podrobnosti o**: v závislosti na typu akce, zadejte telefonní číslo, e-mailovou adresu, webhooku identifikátor URI, aplikace Azure, ITSM připojení nebo sady Automation runbook. Pro akci ITSM kromě určit **pracovní položka** a vyžaduje vaše nástroje ITSM další pole.
 
-   > [!NOTE]
-   > Akce ITSM vyžaduje připojení k ITSM. Naučte se vytvářet [ITSM připojení](../log-analytics/log-analytics-itsmc-overview.md). 
-
 8. Vyberte **OK** vytvořit skupinu akce.
+
+## <a name="action-specific-information"></a>Konkrétní informace o akci
+<dl>
+<dt>Nabízená aplikace Azure</dt>
+<dd>Ve skupině Akce může mít až 10 akce aplikace Azure.</dd>
+<dd>V tuto chvíli akce aplikace Azure podporuje pouze ServiceHealth výstrahy. Všechny výstrahy čas se budou ignorovat. V tématu [Konfigurace upozornění pokaždé, když je odeslána oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
+
+<dt>E-mailu</dt>
+<dd>Může mít až 50 akce e-mailu ve skupině Akce</dd>
+<dd>Najdete v článku [míru omezení informací](./monitoring-alerts-rate-limiting.md) článku</dd>
+
+<dt>ITSM</dt>
+<dd>Může mít až 10 akce ITSM ve skupině Akce</dd>
+<dd>Akce ITSM vyžaduje připojení k ITSM. Naučte se vytvářet [ITSM připojení](../log-analytics/log-analytics-itsmc-overview.md).</dd>
+
+<dt>Aplikace logiky</dt>
+<dd>Může mít až 10 akce aplikace logiky ve skupině Akce</dd>
+
+<dt>sady runbook</dt>
+<dd>Může mít až 10 akce sady Runbook ve skupině Akce</dd>
+
+<dt>SMS</dt>
+<dd>Může mít až 10 akce SMS ve skupině Akce</dd>
+<dd>Najdete v článku [míru omezení informací](./monitoring-alerts-rate-limiting.md) článku</dd>
+<dd>Najdete v článku [SMS výstrahy chování](monitoring-sms-alert-behavior.md) článku</dd>
+
+<dt>hlas</dt>
+<dd>Může mít až 10 akce hlasové ve skupině Akce</dd>
+<dd>Najdete v článku [míru omezení informací](./monitoring-alerts-rate-limiting.md) článku</dd>
+
+<dt>Webhooku</dt>
+<dd>Může mít až 10 akce Webhooku ve skupině Akce
+<dd>Opakujte logiku - voláním webhooku se bude opakovat maximálně 3 při následující stavové kódy HTTP vrácené časy jsou: 408, 429, 503, 504</dd>
+</dl>
 
 ## <a name="manage-your-action-groups"></a>Správa skupin akce ##
 Jakmile vytvoříte skupinu akcí, se zobrazí na **skupiny akcí** části **monitorování** okno. Vyberte skupinu akce, kterou chcete spravovat:

@@ -1,11 +1,11 @@
 ---
-title: "Fronty Azure Storage a fronty Service Bus porovnání a rozdíl od aktualizovaného | Microsoft Docs"
-description: "Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure."
+title: Fronty Azure Storage a fronty Service Bus porovnání a rozdíl od aktualizovaného | Microsoft Docs
+description: Analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Azure.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d564f3974b2bc6355bb5dc5320a5193fe3c196af
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus - porovnání a na rozdíl od aktualizovaného
 Tento článek analyzuje rozdíly a podobnosti mezi těmito dvěma typy front, které nabízí Microsoft Azure ještě dnes: fronty úložiště a fronty Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -39,7 +39,7 @@ Při určování, které front technologie vyhovuje účelu daného řešení, z
 
 Jako řešení architekt nebo vývojáře **měli byste zvážit použití fronty úložiště** při:
 
-* Aplikace musí uložit více než 80 GB zpráv ve frontě, kde zprávy mají životnost kratší než 7 dní.
+* Aplikace musí uložit více než 80 GB zpráv ve frontě.
 * Aplikace se chce sledovat průběh zpracování zprávy uvnitř fronty. To je užitečné, pokud dojde k chybě pracovního procesu zpracovává zprávu. Následné pracovní potom můžete pomocí těchto informací pokračovat od kde skončil předchozí pracovního procesu.
 * Vyžadujete protokoly straně server všechny transakce prováděné vůči vaší front.
 
@@ -51,7 +51,6 @@ Jako řešení architekt nebo vývojáře **měli byste zvážit použití front
 * Řešení musí být schopné podporovat automatické zjišťování duplicitní.
 * Má vaše aplikace zpracování zpráv jako paralelní dlouhodobé datové proudy (zprávy jsou spojeny pomocí datového proudu [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) vlastnost zprávy). V tomto modelu bojuje každý uzel v spotřebitelskou aplikací pro datové proudy a zprávy. Pokud datový proud je uděleno náročné uzel, uzel můžete zkontrolovat stav stav datového proudu aplikace použití transakcí.
 * Řešení vyžaduje transakční chování a nedělitelnost při odesílání nebo přijímání více zpráv z fronty.
-* Time to live (TTL) vlastnosti specifické pro aplikaci zatížení může být vyšší než 7 dní.
 * Vaše aplikace zpracovává zprávy, které může být vyšší než 64 KB, ale omezí přístup je nepravděpodobné 256 KB.
 * Práce s požadavky pro poskytnutí přístupu podle rolí modelu do fronty a různá práva nebo oprávnění pro odesílateli a příjemci.
 * Velikost vašeho fronty nebude růst větší než 80 GB.
@@ -107,7 +106,7 @@ Tato část porovná pokročilých funkcí poskytovaných fronty úložiště a 
 | Aktualizace na místě |**Ano** |**Ano** |
 | Protokol transakce na straně serveru |**Ano** |**Ne** |
 | Metriky úložiště |**Ano**<br/><br/>**Minutu metriky**: poskytuje metriky v reálném čase pro dostupnost, TPS, rozhraní API volat počty, počty chyb a další v reálném čase (agregovat za minutu a jsou uvedeny během několika minut od co se právě stalo v produkčním prostředí. Další informace najdete v tématu [o Storage Analytics Metrics](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics). |**Ano**<br/><br/>(hromadné dotazy voláním [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Stav správy |**Ne** |**Ano**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Správa stavu |**Ne** |**Ano**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Automatické předávání zpráv |**Ne** |**Ano** |
 | Vyprázdnění fronty – funkce |**Ano** |**Ne** |
 | Zpráva skupiny |**Ne** |**Ano**<br/><br/>(prostřednictvím zasílání zpráv relací) |
@@ -133,7 +132,7 @@ Tato část porovná fronty úložiště a fronty Service Bus z perspektivy [kap
 | --- | --- | --- |
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezený na [jednotné kapacitě účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definován při vytvoření fronty a [povolení dělení](service-bus-partitioning.md) – najdete v části "Další informace") |
 | Maximální velikost zprávy |**64 KB**<br/><br/>(48 KB při použití **Base64** kódování)<br/><br/>Azure podporuje velké zprávy fronty a objekty BLOB – v tomto okamžiku je možné zařadit kombinují až 200 GB pro jednu položku. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a text, velikost maximální záhlaví: 64 KB).<br/><br/>Závisí na [vrstvy služby](service-bus-premium-messaging.md). |
-| Maximální hodnota TTL zprávy |**7 dní** |**TimeSpan.Max** |
+| Maximální hodnota TTL zprávy |**Nekonečné** (od verze api-version 2017-07-27) |**TimeSpan.Max** |
 | Maximální počet front |**Unlimited** |**10,000**<br/><br/>(podle oboru názvů služby) |
 | Maximální počet souběžných klientů |**Unlimited** |**Unlimited**<br/><br/>(100 limitu souběžných připojení se vztahuje pouze na komunikace na základě protokolu TCP) |
 

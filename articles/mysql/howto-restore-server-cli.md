@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5e8ac9da4df2428191e8a7e6402f2ac06e695503
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru ve službě Azure Database pro databázi MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -52,7 +52,7 @@ Vrácený kód JSON by měl obsahovat následující:
 }
 ```
 
-Pokud verze 0.0.5 nevrátí, spusťte následující příkaz a aktualizujte příponu: 
+Pokud se nevrátí verze 0.0.5, spuštěním následujícího příkazu rozšíření aktualizujte: 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -114,6 +114,10 @@ Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytv
 
 K vytvoření serveru pomocí geograficky redundantní zálohy, použijte rozhraní příkazového řádku Azure `az mysql server georestore` příkaz.
 
+> [!NOTE]
+> Při prvním vytvoření serveru nemusí být okamžitě k dispozici pro geografické obnovení. Může trvat několik hodin, než nezbytné metadata vyplnit.
+>
+
 Chcete-li geografické obnovení serveru, na příkazovém řádku Azure CLI zadejte následující příkaz:
 
 ```azurecli-interactive
@@ -132,10 +136,10 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků na nový server bude patřit do.|
-|jméno | mydemoserver-georestored | Název nového serveru. |
+|jméno | mydemoserver georestored | Název nového serveru. |
 |source-server | mydemoserver | Název existující server, jehož geograficky redundantní zálohy se používají. |
 |location | eastus | Umístění nového serveru. |
-|sku-name| GP_Gen4_8 | Tento parametr nastavuje cenovou úroveň, výpočetní generování a počet vCores nového serveru. GP_Gen4_8 mapuje obecné účely, server Gen 4 s 8 vCores.|
+|Název SKU| GP_Gen4_8 | Tento parametr nastavuje cenovou úroveň, výpočetní generování a počet vCores nového serveru. GP_Gen4_8 mapuje obecné účely, server Gen 4 s 8 vCores.|
 
 
 >[!Important]

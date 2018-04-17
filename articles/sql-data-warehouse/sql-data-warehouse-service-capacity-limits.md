@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 03/27/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: fa7d8a9880ff97f30dc583d792e39aa914ea5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4c49fa082547dc0de76126df17a888c6c32f03e4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Následující tabulky obsahují maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -27,12 +27,12 @@ Následující tabulky obsahují maximální hodnoty povolené pro různé kompo
 ## <a name="workload-management"></a>Správa zatížení
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| [Jednotky datového skladu (DWU)][Data Warehouse Units (DWU)] |Maximální počet DWU pro jeden datový sklad SQL | Optimalizovaná pro pružnost [úroveň výkonu](performance-tiers.md): DW6000<br></br>Optimalizovaná pro výpočet [úroveň výkonu](performance-tiers.md): DW30000c |
+| [Jednotky datového skladu (DWU)][Data Warehouse Units (DWU)] |Maximální počet DWU pro jeden datový sklad SQL | Optimalizovaná pro pružnost [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers): DW6000<br></br>Optimalizovaná pro výpočet [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers): DW30000c |
 | [Jednotky datového skladu (DWU)][Data Warehouse Units (DWU)] |Výchozí počet jednotek DTU na server |54,000<br></br>Ve výchozím nastavení má každého serveru SQL server (například myserver.database.windows.net) DTU kvótu 54 000, což umožňuje až DW6000c. Tato kvóta je jednoduše bezpečnostní omezení. Můžete zvýšit kvótu podle [vytvoření lístku podpory] [ creating a support ticket] a výběrem *kvóty* jako typ požadavku.  K výpočtu vaší DTU potřebuje, celkový počet DWU potřeby vynásobit 7.5 nebo 9.0 vynásobit celkový cDWU potřeby. Příklad:<br></br>DW6000 x 7.5 = 45,000 Dtu<br></br>DW600c x 9.0 = 54 000 Dtu.<br></br>Vaše aktuální spotřeba DTU z možnost SQL serveru můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
 | Připojení databáze |Souběžné otevřených relací |1024<br/><br/>Všechny aktivní relace 1024 mohou odesílat požadavky na databázi SQL Data Warehouse ve stejnou dobu. Všimněte si, existují omezení počtu dotazy, které mohou být prováděny současně. Při překročení limitu souběžnosti, žádost přejde do vnitřní fronty, kde se čeká na zpracování. |
 | Připojení databáze |Maximální velikost paměti pro připravené příkazy |20 MB |
-| [Úlohy správy][Workload management] |Maximální počet souběžných dotazů |32<br/><br/> Ve výchozím nastavení můžete spustit SQL Data Warehouse maximálně 32 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete descrease uživatelé přiřazení k vyšší třídy prostředku nebo když SQL Data Warehouse má nižší [služby úroveň](performance-tiers.md#service-levels). Některé dotazy, jako jsou dotazy DMV, je vždy povoleno spustit. |
-| [tempdb][Tempdb] |Maximální GB |399 GB za od DW100. Proto je v DWU1000, 3,99 TB velikosti databáze tempdb |
+| [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |32<br/><br/> Ve výchozím nastavení můžete spustit SQL Data Warehouse maximálně 32 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete snížit uživatelé přiřazení k vyšší třídy prostředku nebo když SQL Data Warehouse má nižší [jednotek datových skladů](memory-and-concurrency-limits.md) nastavení. Některé dotazy, jako jsou dotazy DMV, je vždy povoleno spustit. |
+| [databáze tempdb][Tempdb] |Maximální GB |399 GB za od DW100. Proto je v DWU1000, 3,99 TB velikosti databáze tempdb |
 
 ## <a name="database-objects"></a>Objekty databáze.
 | Kategorie | Popis | Maximum |

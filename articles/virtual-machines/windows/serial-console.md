@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 2ff0dcba0912461d8528fc76c7c67d90febc0324
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač konzoly sériového portu (preview) 
 
@@ -33,7 +33,7 @@ Konzole sériového portu virtuálního počítače na platformě Azure poskytuj
 ## <a name="prerequisites"></a>Požadavky 
 
 * Virtuální počítač musí mít [spouštění diagnostiky](boot-diagnostics.md) povoleno 
-* Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../active-directory/role-based-access-built-in-roles.md) pro virtuální počítač a [spouštění diagnostiky](boot-diagnostics.md) účet úložiště. 
+* Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [spouštění diagnostiky](boot-diagnostics.md) účet úložiště. 
 
 ## <a name="open-the-serial-console"></a>Otevření konzole sériového portu
 konzoly sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [portál Azure](https://portal.azure.com). Níže jsou uvedené kroky pro přístup k konzole sériového portu pro virtuální počítače prostřednictvím portálu 
@@ -51,7 +51,7 @@ Funkce konzoly sériového portu můžete deaktivovat pro konkrétní virtuáln�
 ## <a name="serial-console-security"></a>Zabezpečení konzoly sériového portu 
 
 ### <a name="access-security"></a>Zabezpečení přístupu 
-Přístup k konzoly sériového portu je omezená na uživatele, kteří mají [virtuálních počítačů přispěvatelé](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) nebo vyšší přístup k virtuálnímu počítači. Pokud klienta služby AAD vyžaduje Vícefaktorové ověřování, tak přístup ke konzole sériového portu bude také nutné vícefaktorového ověřování, jako je přístup přes [portál Azure](https://portal.azure.com).
+Přístup k konzoly sériového portu je omezená na uživatele, kteří mají [virtuálních počítačů přispěvatelé](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nebo vyšší přístup k virtuálnímu počítači. Pokud klienta služby AAD vyžaduje Vícefaktorové ověřování, tak přístup ke konzole sériového portu bude také nutné vícefaktorového ověřování, jako je přístup přes [portál Azure](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Všechna data odeslána zpět a stanovilo se šifrují v drátové síti.

@@ -1,10 +1,10 @@
 ---
-title: "Řešení potíží s enterprise náklady zobrazení - Azure | Microsoft Docs"
-description: "Přečtěte si o řešení problémů, které můžete mít s náklady na organizační zobrazení v portálu Azure."
+title: Řešení potíží s enterprise náklady zobrazení - Azure | Microsoft Docs
+description: Přečtěte si o řešení problémů, které můžete mít s náklady na organizační zobrazení v portálu Azure.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 527e12cdcc4eaebf98708c389dd21e8ac6ae4ac7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Řešení potíží s enterprise náklady zobrazení 
 
-V rámci podnikové registrace existuje několik nastavení, které by mohly způsobit uživatelům v rámci registrace není možné zobrazit náklady.  Tato nastavení jsou spravovány správcem registrace nebo partner poskytující prostředky, pokud registrace není zakoupili přímo se společností Microsoft.  Tento článek vám pomůže pochopit je nastavení a jak budou mít vliv na registraci. Tato nastavení jsou nezávislé [role RBAC Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
+V rámci podnikové registrace existuje několik nastavení, které by mohly způsobit uživatelům v rámci registrace není možné zobrazit náklady.  Tato nastavení jsou spravovány správcem registrace nebo partner poskytující prostředky, pokud registrace není zakoupili přímo se společností Microsoft.  Tento článek vám pomůže pochopit je nastavení a jak budou mít vliv na registraci. Tato nastavení jsou nezávislé [role RBAC Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
 
 ## <a name="enabling-access-to-costs"></a>Povolení přístupu k náklady
@@ -44,4 +44,4 @@ Pokud se vám zobrazí zpráva "Tento prostředek je k dispozici" při pokusu o 
 ![prostředek není nalezena](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Obraťte se na Spravovat předplatné nebo správu skupin má být poskytnut přístup.  
-* Odběry, odkazovat [řízení řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dokumentu nápovědy, na kterém je vyžadována role.
+* Odběry, odkazovat [řízení řízení přístupu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dokumentu nápovědy, na kterém je vyžadována role.

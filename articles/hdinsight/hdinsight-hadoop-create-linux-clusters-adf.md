@@ -1,8 +1,8 @@
 ---
-title: "Vytváření clusterů systému Hadoop na vyžádání pomocí služby Data Factory - Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory."
+title: Vytváření clusterů systému Hadoop na vyžádání pomocí služby Data Factory - Azure HDInsight | Microsoft Docs
+description: Naučte se vytvářet na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: spelluru
 manager: jhubbard
@@ -11,16 +11,14 @@ ms.assetid: 1f3b3a78-4d16-4d99-ba6e-06f7bb185d6a
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 213f1122dc9f616474005070ae3aefa45641fecc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Vytvářet na vyžádání clusterů systému Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -83,9 +81,9 @@ V tomto scénáři můžete použít až tři účty úložiště:
 
 Pro zjednodušení tento kurz, použijete jeden účet úložiště k obsluze tři účely. Najít v této části prostředí Azure PowerShell ukázkový skript provede následující úlohy:
 
-1. Přihlaste se k Azure.
+1. Přihlásí se k Azure.
 2. Vytvořte skupinu prostředků Azure.
-3. Vytvoření účtu úložiště Azure.
+3. Vytvořit účet služby Azure Storage
 4. Vytvořte kontejner objektů Blob v účtu úložiště
 5. Zkopírujte následující dva soubory do kontejneru objektů Blob:
 
@@ -561,7 +559,7 @@ V případě, že nechcete odstranit účet úložiště, když odstraníte skup
         }
     },            
     ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste se naučili, jak používat Azure Data Factory k vytvoření clusteru HDInsight na vyžádání ke zpracování úloh Hive. Další informace:
 
 * [Kurz Hadoopu: začněte používat systémem Linux Hadoop v HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

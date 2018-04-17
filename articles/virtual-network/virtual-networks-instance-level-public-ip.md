@@ -1,10 +1,10 @@
 ---
-title: "Řeší Azure úrovni Instance veřejnou IP adresu (klasická) | Microsoft Docs"
-description: "Pochopit instance adresy úrovně veřejné IP (splnění) a jak spravovat pomocí prostředí PowerShell."
+title: Řeší Azure úrovni Instance veřejnou IP adresu (klasická) | Microsoft Docs
+description: Pochopit instance adresy úrovně veřejné IP (splnění) a jak spravovat pomocí prostředí PowerShell.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 631b667b12941781a7e69361a0e731f94b7119f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Přehled veřejné IP (klasické) instance
 Instance úrovně veřejné IP (splnění) je veřejná IP adresa, kterou můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, a nikoli pro cloudovou službu, která jsou umístěny ve vaší instanci virtuálního počítače nebo role. SPLNĚNÍ neberou v místě z virtuální IP (VIP) přiřazený ke cloudové službě. Místo toho je další IP adresu, která můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.
@@ -43,7 +43,7 @@ Při vytváření cloudové služby v Azure, odpovídající záznamy DNS A auto
 ## <a name="why-would-i-request-an-ilpip"></a>Proč se splnění požadavku?
 Pokud chcete být schopni se připojit k instanci virtuálního počítače nebo role pomocí přiřazené přímo na IP adresy, místo cloudu pomocí služby virtuální IP adresy:&lt;číslo portu&gt;, žádosti splnění virtuálního počítače nebo role instance.
 
-* **Aktivní FTP** -přiřazením splnění pro virtuální počítač mohl přijímat provoz z jakéhokoli portu. Koncové body nejsou nutné pro virtuální počítač přijímat provoz.  (Https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) [přehled protokolu FTP] naleznete podrobnosti o protokolu FTP.
+* **Aktivní FTP** -přiřazením splnění pro virtuální počítač mohl přijímat provoz z jakéhokoli portu. Koncové body nejsou nutné pro virtuální počítač přijímat provoz.  V tématu (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[přehled protokolu FTP] podrobnosti v protokolu FTP.
 * **Odchozí IP** – odchozí přenosy pocházející z virtuálního počítače je namapovaná na splnění jako zdroj a splnění jednoznačně identifikuje virtuálního počítače na externí entity.
 
 > [!NOTE]
@@ -144,6 +144,6 @@ Pokud chcete přidat splnění instanci role cloudové služby, proveďte násle
     ```
 3. Nahrát pomocí kroků v souboru .cscfg pro cloudové služby [postup konfigurace cloudové služby](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) článku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Pochopit, jak [IP adresování](virtual-network-ip-addresses-overview-classic.md) funguje v modelu nasazení classic.
 * Další informace o [vyhrazené IP adresy](virtual-networks-reserved-public-ip.md).

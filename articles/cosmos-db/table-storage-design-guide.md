@@ -1,11 +1,10 @@
 ---
-title: "Průvodce návrhem úložiště Azure Table | Microsoft Docs"
-description: "Návrh škálovatelné a původce tabulky ve službě Azure Table Storage"
+title: Průvodce návrhem úložiště Azure Table | Microsoft Docs
+description: Návrh škálovatelné a původce tabulky ve službě Azure Table Storage
 services: cosmos-db
 documentationcenter: na
-author: mimig1
-manager: tadb
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
 ms.devlang: na
@@ -13,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: sngun
+ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky úložiště Azure: Návrh škálovatelné a původce tabulky
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -52,9 +51,9 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Na ochranu</td>
@@ -72,12 +71,12 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
-<td>Června</td>
+<td>Čer</td>
 <td>CaO</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -109,9 +108,9 @@ Následující příklad ukazuje návrh jednoduché tabulky k ukládání entit 
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -1118,9 +1117,9 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1138,9 +1137,9 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1175,9 +1174,9 @@ Služba Table je *bez schématu* tabulky úložiště, která znamená, že na j
 <table>
 <tr>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1211,9 +1210,9 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1233,9 +1232,9 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1274,9 +1273,9 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <tr>
 <th>EntityType</th>
 <th>FirstName</th>
-<th>LastName</th>
+<th>Příjmení</th>
 <th>Věk</th>
-<th>E-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>

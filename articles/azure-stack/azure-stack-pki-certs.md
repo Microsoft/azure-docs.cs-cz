@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikát Azure zásobníku infrastruktura veřejných klíčů
+# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku
 
 Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veřejné IP adresy přiřazené k malého služeb Azure zásobníku a které by mohly mít klientské virtuální počítače. Certifikáty PKI s odpovídající názvy DNS pro tyto koncové body Azure zásobníku infrastruktury veřejných jsou nezbytné při nasazení Azure zásobníku. Tento článek obsahuje informace o:
 
@@ -65,27 +65,27 @@ Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a
 
 | Složky pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| Veřejné portálu | portal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
-| Portál pro správu | adminportal.&lt;region>.&lt;fqdn> | Portály | &lt;region>.&lt;fqdn> |
-| Veřejný Azure Resource Manager | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| Správce Azure Resource Manager | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;region>.&lt;fqdn> |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
+| Veřejné portálu | portál. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Portál pro správu | adminportal. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Portály | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Veřejný Azure Resource Manager | Správa. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Správce Azure Resource Manager | adminmanagement. &lt;oblast >. &lt;plně kvalifikovaný název domény > | Azure Resource Manager | &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Blob Storage | objekt BLOB. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | ACSTable | * .table. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Table Storage | Tabulka. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
-| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Internal Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| ACSQueue | * .queue. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| KeyVault | * .vault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 
 ### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pro prostředí Azure zásobníku 1803 předběžné verze
 
 |Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
-|Veřejné portálu|portal.*&lt;region>.&lt;fqdn>*|Portály|*&lt;region>.&lt;fqdn>*|
-|Portál pro správu|adminportal.*&lt;region>.&lt;fqdn>*|Portály|*&lt;region>.&lt;fqdn>*|
-|Veřejný Azure Resource Manager|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|Správce Azure Resource Manager|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
-|ACS<sup>1</sup>|Jeden více subdomény certifikát se zástupným znakem s názvy subjektu alternativní pro:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Úložiště|blob.*&lt;region>.&lt;fqdn>*<br>Tabulka.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>fronty.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|Key Vault|trezor.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|Internal Keyvault|adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
+|Veřejné portálu|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Portály|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|Portál pro správu|Adminportal.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Portály|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|Veřejný Azure Resource Manager|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Azure Resource Manager|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|Správce Azure Resource Manager|Adminmanagement.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Azure Resource Manager|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|ACS<sup>1</sup>|Jeden více subdomény certifikát se zástupným znakem s názvy subjektu alternativní pro:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.Table.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Úložiště|objekt BLOB.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>Tabulka.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>fronty.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
+|KeyVault|&#42;.Vault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|Key Vault|trezor.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
+|KeyVaultInternal|&#42;.adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|Interní Keyvault|adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
 |
 <sup>1</sup> certifikát ACS vyžaduje tři zástupné sítě SAN na jeden certifikát. Všechny veřejné certifikační autority nemusí podporovat více zástupné sítí SAN na jeden certifikát. 
 
@@ -93,8 +93,8 @@ Pokud nasadíte zásobník Azure pomocí režimu nasazení služby Azure AD, sta
 
 |Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
-|ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL)|ADFS|*&lt;region>.&lt;fqdn>*|
-|Graph|graph.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL)|Graph|*&lt;region>.&lt;fqdn>*|
+|ADFS|Služba AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|ADFS|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|Graph|Graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|Graph|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
 |
 
 > [!IMPORTANT]
@@ -110,11 +110,11 @@ Následující tabulka popisuje koncové body a certifikáty potřebné pro adap
 
 |Obor (podle oblasti)|Certifikát|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|SubDomain namespace|
 |-----|-----|-----|-----|
-|SQL, MySQL|SQL a MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard)|dbadapter.*&lt;region>.&lt;fqdn>*|
+|SQL, MySQL|SQL a MySQL|&#42;.dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|dbadapter.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
 |App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|JEDNOTNÉ PŘIHLAŠOVÁNÍ|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> vyžaduje jeden certifikát s více alternativní názvy subjektu zástupný znak. Více zástupné sítí SAN na jeden certifikát nemusí podporovat všechny veřejné certifikačních autorit 
 

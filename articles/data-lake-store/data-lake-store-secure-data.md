@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Zabezpečení dat uložených v Azure Data Lake Store
 Zabezpečení dat v Azure Data Lake Store je přístup třech krocích.  Jak na základě rolí přístup řízení (RBAC) a seznamy řízení přístupu (ACL) musí být nastavena na plně povolit přístup k datům pro uživatele a skupiny zabezpečení.
 
-1. Začněte vytvořením skupiny zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení slouží k implementaci řízení přístupu na základě role (RBAC) na portálu Azure. Další informace najdete v tématu [řízení přístupu na základě rolí ve službě Microsoft Azure](../active-directory/role-based-access-control-configure.md).
+1. Začněte vytvořením skupiny zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení slouží k implementaci řízení přístupu na základě role (RBAC) na portálu Azure. Další informace najdete v tématu [řízení přístupu na základě rolí ve službě Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 2. Skupiny zabezpečení AAD přiřadíte k účtu Azure Data Lake Store. To řídí přístup k účtu Data Lake Store z portál a management operace z portálu nebo rozhraní API.
 3. Přiřazení skupiny zabezpečení AAD jako přístup seznamy řízení (ACL) v systému souborů Data Lake Store.
 4. Kromě toho můžete také nastavit rozsah IP adres pro klienty, kteří měli přístup k datům v Data Lake Store.

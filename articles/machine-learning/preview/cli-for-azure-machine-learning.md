@@ -1,20 +1,21 @@
 ---
-title: "Nainstalovat a používat strojového učení rozhraní příkazového řádku pro nejdůležitější úkoly Azure Machine Learning"
-description: "Zjistěte, jak nainstalovat a používat rozhraní příkazového řádku pro nejběžnější strojového učení úlohy v Azure Machine Learning."
+title: Nainstalovat a používat rozhraní příkazového řádku pro nejdůležitější úkoly - Azure Machine Learning
+description: Zjistěte, jak nainstalovat a používat rozhraní příkazového řádku pro nejběžnější strojového učení úlohy v Azure Machine Learning.
 services: machine-learning
 author: haining
 ms.author: haining
-manager: mwinkler
+manager: cgronlun
 ms.reviewer: mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: f34c247728c854c47f486925d440eee0dc5b1945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 33a1665c8f09efae88c831172199fca3e0b7634d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Nainstalovat a používat strojového učení rozhraní příkazového řádku pro nejdůležitější úkoly v Azure Machine Learning
 
@@ -32,7 +33,11 @@ Tento článek představuje některé velmi užitečné příkazy rozhraní př�
 
 ![Azure Machine Learning rozhraní příkazového řádku](media/cli-for-azure-machine-learning/flow.png)
 
->[!NOTE]
+## <a name="what-you-need-to-get-started"></a>Co potřebujete, abyste mohli začít
+
+Je nutné použít přispěvatele předplatné Azure nebo skupinu prostředků, kde můžete nasadit modely. Navíc musíte nainstalovat Azure Machine Learning Workbench, aby bylo možné spustit rozhraní příkazového řádku. 
+
+>[!IMPORTANT]
 >Rozhraní příkazového řádku doručit službou Azure Machine Learning se liší od [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest), který se používá ke správě prostředků Azure.
 
 ## <a name="get-and-start-cli"></a>Získat a spustit rozhraní příkazového řádku
@@ -192,7 +197,7 @@ Nastavení prostředí, který se má použít:
 az ml env set -n <environment name> -g <resource group name>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s jedním z těchto článků: 
 + [Instalace a spuštění pomocí Azure Machine Learning](quickstart-installation.md)

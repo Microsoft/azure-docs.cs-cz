@@ -1,7 +1,7 @@
 | **Komponenta** | **Požadavek** |
 | --- |---|
 | Procesorová jádra| 8 |
-| Paměť RAM | 12 GB|
+| Paměť RAM | 16 GB|
 | Počet disků | 3, včetně disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení |
 | Volné místo na disku (mezipaměť procesového serveru) | 600 GB
 | Volné místo na disku (disk pro uchování) | 600 GB|
@@ -13,5 +13,5 @@
 | IIS | -Žádné dříve existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/en-us/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/en-us/library/cc753077(v=ws.10).aspx) nastavení  <br> -Žádná dříve existující web nebo aplikace naslouchá na portu 443<br>|
 | Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) |
 | Typ IP adresy | Statická |
-| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> -https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (není požadováno pro servery se Škálováním na více systémů procesu) <br> - time.nist.gov <br> - time.windows.com |
+| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (není požadováno pro servery se Škálováním na více systémů procesu) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|

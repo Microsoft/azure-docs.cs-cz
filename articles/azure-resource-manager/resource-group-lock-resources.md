@@ -1,8 +1,8 @@
 ---
-title: "Zamknout prostředky Azure, aby se změny | Microsoft Docs"
-description: "Zabráníte uživatelům v aktualizaci nebo odstranění důležité prostředky Azure s použitím zámek pro všechny uživatele a role."
+title: Zamknout prostředky Azure, aby se změny | Microsoft Docs
+description: Zabráníte uživatelům v aktualizaci nebo odstranění důležité prostředky Azure s použitím zámek pro všechny uživatele a role.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6832bd6dfb136b944a752ae61da74465a01c80a4
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9edf49a404e5030c05acf17efcbc66123c67ad62
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávané změny 
 
@@ -31,7 +31,7 @@ Jako správce musíte k uzamčení předplatné, skupinu prostředků nebo prost
 
 Když použijete zámku v nadřazeném oboru, zdědí všechny prostředky v rámci tohoto oboru stejné zámek. I prostředky, které přidáte později zámek dědí z nadřazeného objektu. Nejvíc omezující zámek v dědičnosti přednost.
 
-Na rozdíl od řízení přístupu na základě rolí použít zámky správy pro aplikaci omezení ve všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a rolí najdete v tématu [řízení přístupu na základě Role v Azure](../active-directory/role-based-access-control-configure.md).
+Na rozdíl od řízení přístupu na základě rolí použít zámky správy pro aplikaci omezení ve všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a rolí najdete v tématu [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
 
 Zámky správce prostředků se vztahují pouze na operace, které dojít v rovině řízení, sestávající operací posílá `https://management.azure.com`. Zámky neomezují jak prostředky provádět vlastní funkce. Změny prostředku jsou s omezeným přístupem, ale operace prostředků nejsou s omezeným přístupem. Například jen pro čtení zámku v databázi SQL zabráníte odstranění nebo úprava databázi, ale nezabrání můžete z vytvoření, aktualizace a odstraňování dat v databázi. Data transakce jsou povolené, protože tyto operace se neodesílají na `https://management.azure.com`.
 

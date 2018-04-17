@@ -1,25 +1,25 @@
 ---
-title: "Pomocí nástrojů sady Azure IoT Hub zařízení zřizování služby SDK pro zjednodušení vývoje"
-description: "Tento dokument zkontroluje nástrojů sady Azure IoT Hub zařízení zřizování služby sady SDK pro vývoj"
+title: Pomocí nástrojů sady Azure IoT Hub zařízení zřizování služby SDK pro zjednodušení vývoje
+description: Tento dokument zkontroluje nástrojů sady Azure IoT Hub zařízení zřizování služby sady SDK pro vývoj
 services: iot-dps
-keywords: 
+keywords: ''
 author: yzhong94
 ms.author: yizhon
-ms.date: 01/18/2018
+ms.date: 04/09/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 76c6f64dea202f661691fafaa78a6d77b4a40f14
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: a7e1a55bcfc8c7a8f76416fb12edf712340fadd2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Jak používat nástroje, které jsou součástí sady SDK pro zjednodušení vývoje pro zřizování
-Zřizování služby zařízení IoT Hub zjednodušuje proces zřizování s nula touch, za běhu zřizování zabezpečené a škálovatelné způsobem.  Ověření zabezpečení ve formě certifikátu X.509 nebo Trusted Platform Module (TPM) je povinný.  Microsoft je také partnerství se [dalšími partnery hardwaru zabezpečení](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) ke zlepšení důvěru zabezpečení IoT nasazení. Seznámení s požadavky na hardware zabezpečení může být velmi náročné pro vývojáře. Sadu SDK služby Azure IoT zřizování služby jsou k dispozici, aby vývojáři mohli používat vrstvu pohodlí pro zápis klienty, kteří komunikují s zřizování služby. Sady SDK poskytují ukázky pro běžné scénáře, jakož i sadu nástrojů pro zjednodušení ověření zabezpečení v vývoj.
+Zřizování služby zařízení IoT Hub zjednodušuje proces zřizování se nula touch, za běhu [automatické zřizování](concepts-auto-provisioning.md) zabezpečené a škálovatelné způsobem.  Ověření zabezpečení ve formě certifikátu X.509 nebo Trusted Platform Module (TPM) je povinný.  Microsoft je také partnerství se [dalšími partnery hardwaru zabezpečení](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) ke zlepšení důvěru zabezpečení IoT nasazení. Seznámení s požadavky na hardware zabezpečení může být velmi náročné pro vývojáře. Sadu SDK služby Azure IoT zřizování služby jsou k dispozici, aby vývojáři mohli používat vrstvu pohodlí pro zápis klienty, kteří komunikují s zřizování služby. Sady SDK poskytují ukázky pro běžné scénáře, jakož i sadu nástrojů pro zjednodušení ověření zabezpečení v vývoj.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Důvěryhodné simulátoru (Trusted Platform Module)
 [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security#trusted-platform-module-tpm) mohou odkazovat na standard týkající se bezpečného ukládání klíče k ověření platformy, nebo mohou odkazovat na rozhraní vstupně-výstupních operací používají k interakci s moduly implementace standardní. Čipy TPM může existovat jako diskrétní hardware, integrované hardware, založené na firmwaru, nebo na základě softwaru.  V produkčním prostředí, čip TPM je umístěn na zařízení, buď jako diskrétní hardware, integrované hardwaru, nebo na základě firmwaru. Ve fázi testování TPM jsme na základě softwaru poskytuje vývojářům.  Tato simulátoru je pouze pro vývoj na platformě Windows zatím k dispozici.
@@ -56,7 +56,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 2. Změňte kořenu azure-iot-sdk-Java.
 3. Spustit ```mvn install -DskipTests=true``` ke stažení všechny požadované balíčky a zkompilujte sadu SDK
 4. Přejděte do kořenového adresáře pro generátor certifikát X.509 v ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```.
-5. K sestavení```mvn clean install```
+5. K sestavení ```mvn clean install```
 6. Spusťte nástroj pomocí následujících příkazů:
 ```
 cd target

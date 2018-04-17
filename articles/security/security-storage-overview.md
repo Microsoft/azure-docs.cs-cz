@@ -1,5 +1,5 @@
 ---
-title: "Funkce zabezpečení, které lze použít s Azure Storage | Microsoft Docs"
+title: Funkce zabezpečení, které lze použít s Azure Storage | Microsoft Docs
 description: " Tento článek obsahuje přehled základní funkce Azure zabezpečení, které lze použít s Azure Storage. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a118bde2290e68c9a741e40cda210d47db918047
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8160ede71930bf4c15969044deb3fced855f03e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení úložiště Azure
 Azure Storage je řešení cloudového úložiště pro moderní aplikace, které se opírají o odolnost, dostupnost a škálovatelnost, aby mohly vyhovět potřebám zákazníků. Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení:
@@ -44,11 +44,11 @@ Zde jsou základní funkce, které chcete být popsaná v tomto článku:
 * Azure Key Vault
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Můžete zabezpečit váš účet úložiště pomocí řízení přístupu na základě rolí (RBAC). Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato oprávnění jsou udělena přiřazením příslušné role RBAC skupinám a aplikacím v určitých oboru. Můžete použít [předdefinované role RBAC](../active-directory/role-based-access-built-in-roles.md), jako je Přispěvatel účet úložiště, přiřadit oprávnění pro uživatele.
+Můžete zabezpečit váš účet úložiště pomocí řízení přístupu na základě rolí (RBAC). Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Tato oprávnění jsou udělena přiřazením příslušné role RBAC skupinám a aplikacím v určitých oboru. Můžete použít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md), jako je Přispěvatel účet úložiště, přiřadit oprávnění pro uživatele.
 
 Další informace:
 
-* [Řízení přístupu na základě role v Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+* [Řízení přístupu na základě role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegovaný přístup k objektům úložiště
 Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená udělit, že klient omezené oprávnění k objektům v účtu úložiště v zadaném časovém intervalu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílet klíče pro přístup k účtu. SAS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště s SAS, klient pouze musí zajistit SAS odpovídající konstruktor nebo metoda.

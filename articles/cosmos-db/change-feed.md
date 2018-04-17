@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 8cc4d8110db0a650b8355f96fee490093826ac30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce se změnami kanálu podpory v Azure Cosmos DB
 
@@ -159,6 +159,11 @@ Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informa
             }
     }
     ```
+
+> [!NOTE]
+> Místo `ChangeFeedOptions.PartitionKeyRangeId`, můžete použít `ChangeFeedOptions.PartitionKey` zadat jeden oddíl klíč pro který má být získána změnu informačního kanálu. Například, `PartitionKey = new PartitionKey("D8CFA2FD-486A-4F3E-8EA6-F3AA94E5BD44")`.
+> 
+>
 
 Pokud máte více čtenářů, můžete použít **ChangeFeedOptions** čtení rozdělovat do různých vláknech nebo různých klientů.
 

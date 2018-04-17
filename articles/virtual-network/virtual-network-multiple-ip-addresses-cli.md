@@ -1,13 +1,13 @@
 ---
-title: "Virtuální počítač s více IP adres pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure (CLI)."
+title: Virtuální počítač s více IP adres pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: a1e78f7fa892586385e1dbd186125630ee1fb307
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Přiřadit více IP adres virtuálních počítačů pomocí rozhraní příkazového řádku Azure
 
@@ -167,7 +167,7 @@ Přidání privátních IP adres do operačního systému virtuálního počíta
 
 ## <a name="add"></a>Přidání IP adres pro virtuální počítač
 
-Další privátní a veřejné IP adresy můžete přidat do stávající síťové karty pomocí kroků, které následují. Příklady stavějí [scénář](#Scenario) popsané v tomto článku.
+Provedením následujících kroků můžete přidat další privátní a veřejné IP adresy pro existující rozhraní sítě Azure. Příklady stavějí [scénář](#Scenario) popsané v tomto článku.
 
 1. Otevřete příkazové okno a dokončit zbývající kroky v této části v rámci jedné relace. Pokud ještě nemáte rozhraní příkazového řádku Azure, instalaci a konfiguraci, proveďte kroky v [instalace Azure CLI 2.0](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) článek a přihlášení k Azure váš účet, který `az-login` příkaz.
 

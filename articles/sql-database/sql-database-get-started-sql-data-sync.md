@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 72e0ed535139c088c4235b43a12ea96da080dc8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 86b0e78f362d1cf3c2480aad97ef5281c5f3bc95
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>Nastavit synchronizaci dat SQL (Preview)
 V tomto kurzu zjistěte, jak nastavit synchronizaci dat SQL Azure tak, že vytvoříte skupinu hybridních synchronizace, která obsahuje instance Azure SQL Database a SQL Server. Do nové skupiny synchronizace plně konfigurována a synchronizuje podle plánu, který nastavíte.
@@ -24,7 +24,7 @@ Tento kurz předpokládá, že máte alespoň zkušenosti s SQL Database a SQL S
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](sql-database-sync-data.md).
 
 Pro dokončení příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL, najdete v následujících článcích:
--   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)
+-   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
 -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ## <a name="step-1---create-sync-group"></a>Krok 1 – Vytvoření skupiny synchronizace
@@ -151,7 +151,7 @@ Na **nakonfigurovat místní** proveďte následující akce:
         ![Zadejte přihlašovací údaje pro klíč a server agenta](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   Pokud dojde k chybě brány firewall v tomto okamžiku, budete muset vytvořit pravidlo brány firewall na platformě Azure, které chcete povolit příchozí přenosy z počítače systému SQL Server. Pravidlo můžete vytvořit ručně na portálu, ale může být snadněji vytvořit v serveru SQL Server Management Studio (SSMS). V aplikaci SSMS pokuste se připojit k databázi rozbočovače na Azure. Zadejte jeho název jako \<hub_database_name\>. database.windows.net. Pokud chcete konfigurovat pravidlo brány firewall Azure, postupujte podle kroků v dialogovém okně. Pak se vraťte do agenta synchronizace klienta aplikace.
+        >   Pokud dojde k chybě brány firewall v tomto okamžiku, budete muset vytvořit pravidlo brány firewall na platformě Azure, které chcete povolit příchozí přenosy z počítače systému SQL Server. Pravidlo můžete vytvořit ručně na portálu, ale může být snadněji vytvořit v serveru SQL Server Management Studio (SSMS). V aplikaci SSMS pokuste se připojit k databázi rozbočovače na Azure. Zadejte jeho název jako < hub_database_name >. database.windows.net. Pokud chcete konfigurovat pravidlo brány firewall Azure, postupujte podle kroků v dialogovém okně. Pak se vraťte do agenta synchronizace klienta aplikace.
 
     9.  V aplikaci agenta synchronizace klienta, klikněte na tlačítko **zaregistrovat** k registraci do databáze SQL serveru s agentem. **Konfigurace serveru SQL Server** otevře se dialogové okno.
 
@@ -225,7 +225,16 @@ Ne nutně. V skupiny synchronizace s rozbočovačem a tři koncových (A, B a C)
 
 ### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Jak získat změny schématu do skupiny synchronizace?
 
-Je nutné ručně provést změny schématu.
+Budete muset provést a šířit všechny změny schématu ručně.
+1. Replikujte změny schématu ručně k rozbočovači a všem členům synchronizace.
+2. Aktualizace schématu synchronizace.
+
+**Přidání nové tabulky a sloupce**. Aktuální synchronizace nebudete mít vliv na nové tabulky a sloupce. Synchronizaci dat ignoruje nové tabulky a sloupce, dokud je nepřidáte do schématu synchronizace. Když přidáte nové databázové objekty, toto je doporučené pořadí podle:
+1. Přidáte nové tabulky nebo sloupce do centra a všem členům synchronizace.
+2. Přidejte nové tabulky nebo sloupce schématu synchronizace.
+3. Spusťte vložení hodnoty do nové tabulky a sloupce.
+
+**Změna datového typu sloupce**. Když změníte existující sloupec datový typ, synchronizaci dat i nadále fungovat, dokud nové hodnoty podle původní datového typu definovaného ve schématu synchronizace. Například, pokud změníte typ ve zdrojové databázi z **int** k **bigint**, bude pořád fungovat, dokud vložte hodnotu, která je příliš velký pro synchronizaci dat **int** datový typ . K dokončení změn, ručně replikovat změny schématu do centra a všem členům synchronizace a potom aktualizovat schéma synchronizace.
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Jak můžete exportovat a importovat databáze se synchronizací dat?
 Po exportu databáze jako `.bacpac` souboru a importovat soubor k vytvoření nové databáze, budete muset provést následující dva kroky můžete používat synchronizaci dat v databázi nové:
@@ -279,7 +288,7 @@ Další informace o Synchronizaci dat SQL:
 -   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
 -   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
-    -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

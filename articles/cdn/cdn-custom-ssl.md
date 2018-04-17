@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurujte protokol HTTPS na vlastní domény služby Azure Content Delivery Network | Microsoft Docs
-description: Zjistěte, jak chcete povolit nebo zakázat HTTPS na koncový bod Azure CDN s vlastní doménu.
+title: Nakonfigurujte protokol HTTPS na vlastní domény služby Azure CDN | Microsoft Docs
+description: Zjistěte, jak chcete povolit nebo zakázat HTTPS na vaši vlastní doménu Azure CDN koncový bod.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ca3dad18973197f63e69e6568b8ea5988b279e01
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Nakonfigurujte protokol HTTPS na vlastní domény služby Azure Content Delivery Network
+# <a name="configure-https-on-an-azure-cdn-custom-domain"></a>Nakonfigurujte protokol HTTPS na vlastní domény služby Azure CDN
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Společnost Microsoft podporuje protokol HTTPS pro vlastní domény na Azure Content Delivery Network (CDN). S podporou protokolu HTTPS vlastní doménu abyste mohli zajistit bezpečné obsahu přes SSL pomocí vlastní název domény pro zlepšení zabezpečení dat v průběhu přenosu. V pracovním postupu povolit HTTPS pro vaše vlastní doména je zjednodušený prostřednictvím povolování jedním kliknutím a kompletní certifikát správy, všechny s bez dalších nákladů.
+Azure Content Delivery Network (CDN) podporuje protokol HTTPS pro vlastní doménu na koncový bod CDN. Pomocí protokolu HTTPS na vaše vlastní doména je zajistit, že citlivá data přenáší bezpečně prostřednictvím šifrování SSL při posílání přes internet. Poskytuje HTTPS vztahu důvěryhodnosti, ověřování a chrání vaše webové aplikace před útoky. Kromě toho poskytovat zabezpečený obsah pomocí vlastní název domény (například https:\//www.contoso.com). V pracovním postupu povolit protokol HTTPS je zjednodušený prostřednictvím povolování jedním kliknutím a kompletní certifikát správy, všechny s bez dalších nákladů.
 
-Je důležité k zajištění ochrany osobních údajů a integritu dat webové aplikace citlivých dat při přenosu. Pomocí protokolu HTTPS, můžete zajistit, že citlivá data šifrování při posílání přes internet. Poskytuje vztah důvěryhodnosti, ověřování a chrání vaše webové aplikace před útoky. Ve výchozím nastavení Azure CDN podporuje protokol HTTPS na koncový bod CDN. Například pokud vytvoříte koncový bod CDN z Azure CDN (jako je například https:\//contoso.azureedge.net), je automaticky povolen protokol HTTPS. Kromě toho s podporou protokolu HTTPS vlastní doménu, můžete také povolit zabezpečené doručování pro vlastní doménu (například https:\//www.contoso.com). 
+Azure CDN také podporuje protokol HTTPS na hostitele koncového bodu CDN, ve výchozím nastavení. Například pokud vytvoříte koncový bod CDN (jako je například https:\//contoso.azureedge.net), je automaticky povolen protokol HTTPS.  
 
 Mezi klíčové atributy HTTPS funkce patří:
 
@@ -77,6 +77,8 @@ Další informace o záznamy CNAME najdete v tématu [vytvořit záznam CNAME DN
 
 Pokud vaše záznam CNAME ve správném formátu, DigiCert automaticky zkontroluje vlastního názvu domény a přidá ji do certifikátu alternativní názvy předmětu (SAN). DigitCert nepošle ověřovací e-mail a nebudete muset váš požadavek schválit. Certifikát je platný po dobu jednoho roku a bude automaticky obnoveno jeho platnost vyprší. Pokračujte [krok 3: Počkejte šíření](#step-3-wait-for-propagation). 
 
+Automatické ověření obvykle trvá několik minut. Pokud nevidíte doménu ověřit v rámci hodiny, otevřete lístek podpory.
+
 #### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>Záznam CNAME není namapován na koncový bod CDN
 
 Pokud položka záznam CNAME pro svůj koncový bod již neexistuje nebo obsahuje cdnverify subdomény, postupujte podle zbývajících pokynů v tomto kroku.
@@ -124,7 +126,7 @@ Následující tabulka zobrazuje průběh operace, která nastane, když povolí
 | Požadavků na odeslání: 1 | Žádost se odesílá |
 | | Vaše žádost o HTTPS se právě odesílá. |
 | | Vaše žádost o HTTPS se úspěšně odeslala. |
-| 2 ověření domény | Odeslali jsme vám e-mail s žádostí o ověření vlastnictví domény. Čeká na potvrzení. ** |
+| 2 ověření domény | Domény je automaticky ověřit, pokud je CNAME namapované na koncový bod CDN. Žádost o ověření, jinak hodnota zašle k e-mailu uvedené ve vaší doméně registrační záznam (WHOIS osob stránka žádajících o v registraci). Co nejdříve ověření domény. |
 | | Vaše vlastnictví domény se úspěšně ověřilo. |
 | | Platnost žádosti o ověření vlastnictví domény (zákazníků pravděpodobně neodpověděl v 6 dny). Ve vaší doméně nebude povolen protokol HTTPS. * |
 | | Požadavek na ověření vlastnictví domény byl odmítnut zákazníka. Ve vaší doméně nebude povolen protokol HTTPS. * |
@@ -135,7 +137,6 @@ Následující tabulka zobrazuje průběh operace, která nastane, když povolí
 
 \* Tato zpráva se nezobrazí, pokud došlo k chybě. 
 
-\** Tato zpráva se nezobrazí, pokud máte záznam CNAME pro vaši vlastní doménu, která odkazuje přímo na vaše hostitele koncového bodu CDN.
 
 Pokud dojde k chybě před odeslání žádosti, se zobrazí následující chybová zpráva:
 
@@ -189,7 +190,7 @@ Následující tabulka zobrazuje průběh operace, která nastane, když zakáž
 
 3. *Co když neobdrželi ověření domény e-mailu z DigiCert?*
 
-    Pokud jste neobdrželi e-mailu do 24 hodin, obraťte se na podporu společnosti Microsoft. Pokud máte záznam CNAME pro vaši vlastní doménu, která odkazuje přímo na vaše hostitele koncového bodu (a že nepoužíváte název subdomény cdnverify), neobdržíte domény ověřovací e-mail. Ověření probíhá automaticky.
+    Pokud máte záznam CNAME pro vaši vlastní doménu, která odkazuje přímo na vaše hostitele koncového bodu (a že nepoužíváte název subdomény cdnverify), neobdržíte domény ověřovací e-mail. Ověření probíhá automaticky. Jinak Pokud nemáte záznam CNAME a e-mail neobdrželi do 24 hodin, kontaktujte podporu společnosti Microsoft.
 
 4. *Používá certifikát SAN méně bezpečné než vyhrazené certifikát?*
     

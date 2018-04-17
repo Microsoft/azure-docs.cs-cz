@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5d1af5ae008fb2811f1ae59396a03833b8c1b15f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -50,8 +48,8 @@ Kromě toho při vytváření clusteru služby HDInsight, někdo s alespoň **P�
 
 Další informace o práci se správou přístupu najdete v následujících dokumentech:
 
-* [Začínáme se správou přístupu na webu Azure Portal](../active-directory/role-based-access-control-what-is.md)
-* [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md)
+* [Začínáme se správou přístupu na webu Azure Portal](../role-based-access-control/overview.md)
+* [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="understanding-script-actions"></a>Vysvětlení akcí skriptů
 
@@ -153,7 +151,7 @@ Skript akce skripty můžete použít následující nástroje:
 
 * Azure Portal
 * Azure PowerShell
-* Azure CLI v1.0
+* Azure CLI verze 1.0
 * Sada HDInsight .NET SDK
 
 HDInsight poskytuje skripty, které v clusterech HDInsight nainstalovat následující součásti:

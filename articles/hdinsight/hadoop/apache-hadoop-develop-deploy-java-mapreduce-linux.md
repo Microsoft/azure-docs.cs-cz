@@ -1,26 +1,24 @@
 ---
-title: "Vytvoření Java MapReduce pro Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight."
+title: Vytvoření Java MapReduce pro Hadoop - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Apache Maven k vytvoření aplikace založené na jazyce Java MapReduce a potom ji spustit s Hadoop na Azure HDInsight.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: Blackmist
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 9ee6384c-cb61-4087-8273-fb53fa27c1c3
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 16cb62c95784d7c8b284e03f0759028038af7f0a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 05b41f90b9508088c32923469b6c437b74ee5333
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Vývoj aplikací Java MapReduce pro Hadoop v HDInsight
 
@@ -42,13 +40,13 @@ Další informace o použití Apache Maven k vytvoření aplikace založené na 
 
 Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
 
-* `JAVA_HOME`-by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou`c:\Program Files (x86)\Java\jre1.7`
+* `JAVA_HOME` -by měla odkazovat na adresář, kam nainstalovat prostředí Java runtime (JRE). Například v systému OS X, Unix nebo Linux, musí mít hodnotu podobnou `/usr/lib/jvm/java-7-oracle`. V systému Windows má hodnotu podobnou `c:\Program Files (x86)\Java\jre1.7`
 
-* `PATH`-musí obsahovat následující cesty:
+* `PATH` -musí obsahovat následující cesty:
   
-  * `JAVA_HOME`(nebo ekvivalentní cesta)
+  * `JAVA_HOME` (nebo ekvivalentní cesta)
 
-  * `JAVA_HOME\bin`(nebo ekvivalentní cesta)
+  * `JAVA_HOME\bin` (nebo ekvivalentní cesta)
 
   * Adresář, kde je nainstalován Maven
 
@@ -69,9 +67,9 @@ Následující proměnné prostředí může být nastaven při instalaci Java a
 
     Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametr (**wordcountjava** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * `pom.xml`-Na [projektu objektu modelu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) obsahující podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * `pom.xml` -Na [projektu objektu modelu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) obsahující podrobnosti o informace a konfigurace použít k sestavení projektu.
 
-   * `src`-Adresář, který obsahuje aplikace.
+   * `src` -Adresář, který obsahuje aplikace.
 
 3. Odstranit `src/test/java/org/apache/hadoop/examples/apptest.java` souboru. V tomto příkladu se nepoužívá.
 

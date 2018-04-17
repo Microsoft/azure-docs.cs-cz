@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na monitorování"
-description: "PCI DSS požadavek 10"
+title: Azure platebních zpracování plán, podle kterého – požadavky na monitorování
+description: PCI DSS požadavek 10
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 5fa1d17e68ce04b1f67081479518279be6cca099
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>Monitorování požadavky pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-10"></a>PCI DSS požadavek 10
@@ -38,8 +38,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure omezuje přístup pro správu a diagnostických nástrojů oprávněný personál s odpovědnost příslušné úlohy. Microsoft Azure omezuje privilegovaný přístup k nástroje používané v produkčním prostředí založené na zásadách nejnižší oprávnění. Microsoft Azure zaznamenává a udržuje protokolu všechny jednotlivé uživatelům přístup k součásti systému Microsoft Azure v prostředí platformy.<br /><br />Komponenty platformy Microsoft Azure (včetně operačního systému, CloudNet, infrastruktury a tak dále) je nakonfigurován pro protokolu a shromáždění událostí zabezpečení. Aktivita správce v platformě Microsoft Azure se zaznamená. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure omezuje přístup pro správu a diagnostických nástrojů oprávněný personál s odpovědnost příslušné úlohy. Microsoft Azure omezuje privilegovaný přístup k nástroje používané v produkčním prostředí založené na zásadách nejnižší oprávnění. Microsoft Azure zaznamenává a udržuje protokolu všechny jednotlivé uživatelům přístup k součásti systému Microsoft Azure v prostředí platformy.<br /><br />Komponenty platformy Microsoft Azure (včetně operačního systému, CloudNet, infrastruktury a tak dále) je nakonfigurován pro protokolu a shromáždění událostí zabezpečení. Aktivita správce v platformě Microsoft Azure se zaznamená. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -58,8 +58,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure omezuje přístup pro správu a diagnostických nástrojů oprávněný personál s odpovědnost příslušné úlohy. Microsoft Azure omezuje privilegovaný přístup k nástroje používané v produkčním prostředí založené na zásadách nejnižší oprávnění. Microsoft Azure zaznamenává a udržuje protokolu všechny jednotlivé uživatelům přístup k součásti systému Microsoft Azure v prostředí platformy.<br /><br />Komponenty platformy Microsoft Azure (včetně operačního systému, CloudNet, infrastruktury a tak dále) je nakonfigurován pro protokolu a shromáždění událostí zabezpečení. Aktivita správce v platformě Microsoft Azure se zaznamená. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování veškerou aktivitu systému a uživatele, včetně CHD protokolování. Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure omezuje přístup pro správu a diagnostických nástrojů oprávněný personál s odpovědnost příslušné úlohy. Microsoft Azure omezuje privilegovaný přístup k nástroje používané v produkčním prostředí založené na zásadách nejnižší oprávnění. Microsoft Azure zaznamenává a udržuje protokolu všechny jednotlivé uživatelům přístup k součásti systému Microsoft Azure v prostředí platformy.<br /><br />Komponenty platformy Microsoft Azure (včetně operačního systému, CloudNet, infrastruktury a tak dále) je nakonfigurován pro protokolu a shromáždění událostí zabezpečení. Aktivita správce v platformě Microsoft Azure se zaznamená. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování veškerou aktivitu systému a uživatele, včetně CHD protokolování. Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -77,8 +77,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure navázal postupy k synchronizaci serverů a síťových zařízení v prostředí Microsoft Azure se servery času NTP vrstvě 1 synchronizovány do globální umístění systému GPS satelity. Synchronizace se provádí automaticky každých pět minut. Microsoft Azure je odpovědný za dodržování hostitelé služeb z správně čas synchronizace. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore zaznamenává identifikace uživatele, typu události, datum časového razítka, události úspěšného se nezdařilo, zdroj události a název prostředku podle požadavků 10.3 ovládacího prvku.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure navázal postupy k synchronizaci serverů a síťových zařízení v prostředí Microsoft Azure se servery času NTP vrstvě 1 synchronizovány do globální umístění systému GPS satelity. Synchronizace se provádí automaticky každých pět minut. Microsoft Azure je odpovědný za dodržování hostitelé služeb z správně čas synchronizace. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore zaznamenává identifikace uživatele, typu události, datum časového razítka, události úspěšného se nezdařilo, zdroj události a název prostředku podle požadavků 10.3 ovládacího prvku.|
 
 
 
@@ -92,8 +92,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure navázal postupy k synchronizaci serverů a síťových zařízení v prostředí Microsoft Azure se servery času NTP vrstvě 1 synchronizovány do globální umístění systému GPS satelity. Synchronizace se provádí automaticky každých pět minut. Microsoft Azure je odpovědný za dodržování hostitelé služeb z správně čas synchronizace. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure navázal postupy k synchronizaci serverů a síťových zařízení v prostředí Microsoft Azure se servery času NTP vrstvě 1 synchronizovány do globální umístění systému GPS satelity. Synchronizace se provádí automaticky každých pět minut. Microsoft Azure je odpovědný za dodržování hostitelé služeb z správně čas synchronizace. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
 
 
 
@@ -105,8 +105,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
 
 
 
@@ -118,8 +118,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
 
 
 
@@ -131,8 +131,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.4](#pci-dss-requirement-10-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Synchronizaci času pro službu PaaS provádí Azure.|
 
 
 
@@ -144,8 +144,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | FIM a ID nástroje jsou implementované v rámci prostředí Microsoft Azure. Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. <br /><br />Protokolování služby, uživatelů a zabezpečení událostí (protokoly webového serveru, protokoly serveru FTP a tak dále), které je povoleno a centrálně zachována. Azure omezuje přístup k protokolů auditů, aby oprávněný personál podle pracovní náplně. Protokoly událostí jsou archivovány na infrastrukturu Azure zabezpečené archivace a jsou uchovány na 180 dní. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM a ID nástroje jsou implementované v rámci prostředí Microsoft Azure. Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. <br /><br />Protokolování služby, uživatelů a zabezpečení událostí (protokoly webového serveru, protokoly serveru FTP a tak dále), které je povoleno a centrálně zachována. Azure omezuje přístup k protokolů auditů, aby oprávněný personál podle pracovní náplně. Protokoly událostí jsou archivovány na infrastrukturu Azure zabezpečené archivace a jsou uchovány na 180 dní. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -157,8 +157,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -170,8 +170,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -183,8 +183,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -196,8 +196,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -209,8 +209,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů k OMS. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.5](#pci-dss-requirement-10-5). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pro auditování všech elementů do Azure. Probíhá zálohování do externího zdroje lze provést pomocí [Azure Backup](https://azure.microsoft.com/services/backup/).|
 
 
 
@@ -225,8 +225,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | FIM a ID nástroje jsou implementované v rámci prostředí Microsoft Azure. Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. <br /><br />Protokolování služby, uživatelů a zabezpečení událostí (protokoly webového serveru, protokoly serveru FTP a tak dále), které je povoleno a centrálně zachována. Azure omezuje přístup k protokolů auditů, aby oprávněný personál podle pracovní náplně. Protokoly událostí jsou archivovány na infrastrukturu Azure zabezpečené archivace a jsou uchovány na 180 dní. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | FIM a ID nástroje jsou implementované v rámci prostředí Microsoft Azure. Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. <br /><br />Protokolování služby, uživatelů a zabezpečení událostí (protokoly webového serveru, protokoly serveru FTP a tak dále), které je povoleno a centrálně zachována. Azure omezuje přístup k protokolů auditů, aby oprávněný personál podle pracovní náplně. Protokoly událostí jsou archivovány na infrastrukturu Azure zabezpečené archivace a jsou uchovány na 180 dní. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
 
 
 
@@ -242,8 +242,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
 
 
 
@@ -255,8 +255,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
 
 
 
@@ -268,8 +268,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Viz část "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Viz část "Microsoft Azure" [požadavek 10.6](#pci-dss-requirement-10-6). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [Azure Security Center](https://azure.microsoft.com/services/security-center/) monitorovat, sestavy a zabránit anomálií. [Azure Advisor](/azure/advisor/advisor-security-recommendations) nabízí konzistentní, konsolidované zobrazení doporučení pro všechny prostředky Azure.|
 
 
 
@@ -281,8 +281,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure uchovává protokoly auditu jeden rok, s poslední 3 měsíce okamžitě dostupný prostřednictvím jejich interní portálu. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure uchovává protokoly auditu jeden rok, s poslední 3 měsíce okamžitě dostupný prostřednictvím jejich interní portálu. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -307,8 +307,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -330,8 +330,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá EWS pro podporu analýzy v reálném čase událostí v jeho provozní prostředí. MAs a cílů generovat téměř v reálném čase Výstrahy o událostech, které může potenciálně ohrozit zabezpečení systému. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore má rozsáhlé protokolování všech system a aktivitu uživatelů (včetně CHD protokolování). Další informace najdete v tématu [pokyny PCI - protokolování](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -344,8 +344,8 @@ Protokolování mechanismy a umožňuje sledovat aktivity uživatele jsou kritic
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje případ použití a popis o tom, jak je CHD spravované a chráněné.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje případ použití a popis o tom, jak je CHD spravované a chráněné.|
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření aplikace Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí prostředí PowerShell | Microsoft Docs"
-description: "Zjistěte, jak pomocí prostředí PowerShell k vytvoření aplikace Azure Active Directory (Azure AD) a nastavte jej tak přístup k rozhraní API služby Azure Media Services."
+title: Vytvoření aplikace Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí prostředí PowerShell | Microsoft Docs
+description: Zjistěte, jak pomocí prostředí PowerShell k vytvoření aplikace Azure Active Directory (Azure AD) a nastavte jej tak přístup k rozhraní API služby Azure Media Services.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: eea0f3a03dd77ce56484f32b192299bd97c05300
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 575e8a050a344cf3abb8adcda40b1f66fd9dcf59
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Vytvoření aplikace Azure AD pro použití s rozhraní API služby Azure Media Services pomocí prostředí PowerShell
 
@@ -55,9 +55,9 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 Další informace najdete v následujících článcích:
 
 - [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-- [Správa řízení přístupu na základě Role pomocí prostředí Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+- [Správa řízení přístupu na základě Role pomocí prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
 - [Jak ručně nakonfigurovat démon aplikace pomocí certifikátů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s [nahrávání souborů do účtu](media-services-portal-upload-files.md).

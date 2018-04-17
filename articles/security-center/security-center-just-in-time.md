@@ -1,12 +1,12 @@
 ---
-title: "Pouze ve virtuálním počítači čas přístup v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje jak jenom na dobu přístup virtuálních počítačů v Azure Security Center vám pomůže řízení přístupu k virtuální počítače Azure."
+title: Pouze ve virtuálním počítači čas přístup v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje jak jenom na dobu přístup virtuálních počítačů v Azure Security Center vám pomůže řízení přístupu k virtuální počítače Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Spravovat přístup k virtuálním počítačům pomocí právě v čase
 
 Právě v čas virtuální počítač (VM) přístupu slouží zamknout příchozí přenosy na virtuální počítače Azure, snižuje riziko napadení a snadného přístupu pro připojení k virtuálním počítačům v případě potřeby.
 
 > [!NOTE]
-> Právě v čase funkce je dostupná na úrovni Standard služby Security Center.  V tématu [cenová](security-center-pricing.md) Další informace o službě Security Center je cenové úrovně.
+> Právě v čase funkce je dostupná na úrovni Standard služby Security Center.  Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
 >
 >
 
@@ -41,7 +41,7 @@ Chcete-li omezit množství času, který je otevřený port je jedním ze způs
 
 Pokud je povolený přístup JIT (právě včas), Security Center uzamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla NSG. Můžete vybrat porty na virtuálním počítači, do které se uzamkne příchozí provoz směrem dolů. Tyto porty jsou řízeny jenom v době řešení.
 
-Když uživatel požaduje přístup k virtuálnímu počítači, Security Center zkontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../active-directory/role-based-access-control-configure.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud mají oprávnění k zápisu, jeho žádost se schválí a Security Center automaticky nakonfiguruje skupin zabezpečení sítě (Nsg) chcete povolit příchozí přenosy na správu porty pro množství času, který jste zadali. Po dobu vypršení platnosti, Security Center obnoví skupin Nsg do předchozího stavu.
+Když uživatel požaduje přístup k virtuálnímu počítači, Security Center zkontroluje, zda má uživatel [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) oprávnění, které poskytují přístup pro zápis pro virtuální počítač. Pokud mají oprávnění k zápisu, jeho žádost se schválí a Security Center automaticky nakonfiguruje skupin zabezpečení sítě (Nsg) chcete povolit příchozí přenosy na správu porty pro množství času, který jste zadali. Po dobu vypršení platnosti, Security Center obnoví skupin Nsg do předchozího stavu.
 
 > [!NOTE]
 > Security Center, které jsou právě čas virtuálních počítačů přístup aktuálně podporuje pouze virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager. Další informace o modelu nasazení Resource Manager i classic najdete [Azure Resource Manager oproti nasazení classic](../azure-resource-manager/resource-manager-deployment-model.md).
@@ -129,7 +129,7 @@ Chcete-li upravit stávající jenom v zásadách čas virtuálního počítače
 1. V části **virtuální počítače**, vyberte virtuální počítač port na přidáte kliknutím na tři tečky v řádku tohoto virtuálního počítače. Tím otevřete nabídku.
 2. Vyberte **upravit** v nabídce. Tím se otevře **JIT konfiguraci přístupu**.
 
-  ![Upravit zásadu][8]
+  ![Upravení zásady][8]
 
 3. V části **JIT konfiguraci přístupu**, můžete buď upravit existující nastavení, již chráněné portu kliknutím na její port, nebo můžete vybrat **přidat**. Tím se otevře **konfiguraci portů přidat**.
 

@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
 
@@ -46,7 +46,7 @@ Logický server Azure Database:
 - Je nadřazeným prostředkem pro databáze, elastické fondy a datové sklady.
 - Poskytuje obor názvů pro databáze elastické fondy a datových skladů
 - Je logický kontejner s silné životnost sémantiku - odstranění serveru a odstraní databázích s omezením, elastické fondy a datových skladů
-- Účastní se [řízení přístupu Azure na základě rolí (RBAC)](/active-directory/role-based-access-control-what-is) -databází, elastické fondy a datových skladů v rámci serveru zdědí oprávnění ze serveru
+- Účastní se [řízení přístupu Azure na základě rolí (RBAC)](/azure/role-based-access-control/overview) -databází, elastické fondy a datových skladů v rámci serveru zdědí oprávnění ze serveru
 - Je element horní identity databází, elastické fondy a datových skladů pro prostředků Azure pro účely správy (viz schéma adresy URL pro databáze a fondy)
 - Uspořádává prostředky v oblasti.
 - Poskytuje koncový bod připojení pro přístup k databázi (<serverName>.database.windows.net).
@@ -79,9 +79,8 @@ Chcete-li vytvořit databázi Azure SQL pomocí [portál Azure](https://portal.a
 
 > [!IMPORTANT]
 > Informace o výběru cenovou úroveň pro vaši databázi najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
->
 
-K vytvoření Instance spravované, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md)
+K vytvoření Instance spravované, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Spravovat existující server SQL
 
@@ -169,12 +168,12 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall pomocí jaz
 |[Příkaz ALTER databáze (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Upravuje datovým skladem Azure SQL.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (vrstva služby), cíl služby (cenové úrovně) a název elastického fondu, pokud existuje, pro databázi Azure SQL nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi serveru Azure SQL Database, vrátí informace na všechny databáze. Pro Azure SQL Data Warehouse musí být připojen k hlavní databázi.|
-|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i když je v databázi žádná aktivita.|
+|[Sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i když je v databázi žádná aktivita.|
 |[Sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Vrátí data o využití a úložiště procesoru pro Azure SQL Database. Data jsou nasbírána a shrnuta v pěti minutách.|
-|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Obsahuje statistiku pro události připojení databáze SQL Database, umožní získat přehled o databáze připojení úspěchy a selhání. |
-|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Vrátí úspěšné připojení databáze Azure SQL Database, připojení selhání a zablokování. Tyto informace můžete sledovat a řešit potíže aktivitu vaší databáze SQL Database.|
-|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Vytvoří nebo aktualizuje nastavení brány firewall na úrovni serveru pro server služby SQL Database. Tuto uloženou proceduru lze pouze v hlavní databázi, a hlavní přihlášení úrovni serveru. Pravidlo brány firewall na úrovni serveru lze vytvořit pouze po vytvoření první pravidlo brány firewall na úrovni serveru uživatel oprávnění na úrovni Azure pomocí jazyka Transact-SQL|
-|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Vrací informace o nastavení brány firewall na úrovni serveru přidružené k vaší databázi SQL Azure Microsoft.|
+|[Sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Obsahuje statistiku pro události připojení databáze SQL Database, umožní získat přehled o databáze připojení úspěchy a selhání. |
+|[Sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Vrátí úspěšné připojení databáze Azure SQL Database, připojení selhání a zablokování. Tyto informace můžete sledovat a řešit potíže aktivitu vaší databáze SQL Database.|
+|[příkaz sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Vytvoří nebo aktualizuje nastavení brány firewall na úrovni serveru pro server služby SQL Database. Tuto uloženou proceduru lze pouze v hlavní databázi, a hlavní přihlášení úrovni serveru. Pravidlo brány firewall na úrovni serveru lze vytvořit pouze po vytvoření první pravidlo brány firewall na úrovni serveru uživatel oprávnění na úrovni Azure pomocí jazyka Transact-SQL|
+|[Sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Vrací informace o nastavení brány firewall na úrovni serveru přidružené k vaší databázi SQL Azure Microsoft.|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Nastavení brány firewall na úrovni serveru odebere server služby SQL Database. Tuto uloženou proceduru lze pouze v hlavní databázi, a hlavní přihlášení úrovni serveru.|
 |[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Vytvoří nebo aktualizuje pravidla brány firewall na úrovni databáze Azure SQL Database nebo SQL Data Warehouse. Pravidla firewallu databáze lze konfigurovat pro hlavní databázi a pro uživatele databáze pro službu SQL Database. Pravidla firewallu databáze jsou užitečné, pokud pomocí obsažené uživatele databáze. |
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Vrací informace o nastavení brány firewall na úrovni databáze přidružené k vaší databázi SQL Azure Microsoft. |

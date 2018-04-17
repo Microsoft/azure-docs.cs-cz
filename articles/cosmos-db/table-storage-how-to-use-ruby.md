@@ -1,24 +1,24 @@
 ---
-title: "Jak používat Azure Table Storage a rozhraní API služby Azure Cosmos DB tabulky s Ruby | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: Jak používat Azure Table Storage a rozhraní API služby Azure Cosmos DB tabulky s Ruby | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 services: cosmos-db
 documentationcenter: ruby
-author: mimig1
-manager: jhubbard
-editor: 
+author: SnehaGunda
+manager: kfile
+editor: ''
 ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 02/27/2018
-ms.author: mimig
-ms.openlocfilehash: 104d793826116462f71e4889386906256b2df8f8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 19ffdab40b3032421612ef4ba1b840eeb0d2e62b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-ruby"></a>Jak používat Azure Table Storage a rozhraní API služby Azure Cosmos DB tabulky s Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,9 +27,14 @@ ms.lasthandoff: 03/08/2018
 ## <a name="overview"></a>Přehled
 Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure Table a rozhraní API služby Azure Cosmos DB tabulky. Ukázky jsou napsané v Ruby a použít [Azure Table Klientská knihovna pro úložiště pro Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Pokryté scénáře zahrnují **vytváření a odstraňování tabulek a vkládání a dotazování entity v tabulce**.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu Azure Cosmos DB tabulky rozhraní API
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Přidělte oprávnění úložišť nebo databázi Cosmos Azure
 Pokud chcete použít Azure Storage nebo Azure Cosmos DB, musíte stáhnout a použít Ruby Azure balíček, který obsahuje sadu pohodlí knihoven, které komunikují se službami tabulky REST.

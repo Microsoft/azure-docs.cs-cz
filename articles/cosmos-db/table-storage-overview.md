@@ -1,11 +1,10 @@
 ---
-title: "Přehled služby Azure Table Storage | Dokumentace Microsoftu"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: Přehled služby Azure Table Storage | Dokumentace Microsoftu
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 services: cosmos-db
 documentationcenter: .net
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: fe46d883-7bed-49dd-980e-5c71df36adb3
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: mimig
-ms.openlocfilehash: 5ad83a5a33440200c4e25f5752e5c3242941d022
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: sngun
+ms.openlocfilehash: 6047f105fc3948ad5ed51ddb172ca7ffa9153cd8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-table-storage-overview"></a>Přehled služby Azure Table Storage
 
@@ -36,7 +35,7 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 * [Začínáme se službou Azure Table Storage pomocí rozhraní .NET](table-storage-how-to-use-dotnet.md)
 
-* Projděte si referenční dokumentaci ke službě Table, kde najdete úplné podrobnosti o dostupných rozhraních API:
+* Projděte si referenční dokumentaci ke službě Table service, kde najdete úplné podrobnosti o dostupných rozhraních API:
 
     * [Klientská knihovna Storage pro .NET – referenční informace](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 

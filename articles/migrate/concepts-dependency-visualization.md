@@ -1,16 +1,16 @@
 ---
-title: "Vizualizace závislostí v Azure migrovat | Microsoft Docs"
-description: "Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migrovat."
+title: Vizualizace závislostí v Azure migrovat | Microsoft Docs
+description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migrovat.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -24,7 +24,7 @@ Vizualizace závislostí v migraci Azure můžete vytvořit skupiny pro vyhodnoc
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
 Azure používá migrací [mapy služeb](../operations-management-suite/operations-management-suite-service-map.md) řešení v [analýzy protokolů](../log-analytics/log-analytics-overview.md) pro vizualizaci závislostí.
-- Při vytváření projektu Azure migrace k pracovnímu prostoru analýzy protokolů OMS se vytvoří ve vašem předplatném.
+- Při vytváření projektu Azure migrace pracovní prostor analýzy protokolů se vytvoří ve vašem předplatném.
 - Název pracovního prostoru je zadaný název migrace projektu, s předponou **migrovat-**a volitelně vyznačeno s číslem. 
 - Přejděte do pracovního prostoru analýzy protokolů z **Essentials** části projektu **přehled** stránky.
 - Vytvořeným pracovním prostorem je označené klíč **MigrateProject**a hodnota **název projektu**. To slouží k vyhledávání na webu Azure portal.  

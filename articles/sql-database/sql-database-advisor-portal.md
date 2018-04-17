@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení výkonu
 
@@ -21,7 +21,7 @@ Portálu Azure můžete použít k vyhledání doporučení výkonu, které mů�
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
-Pokud chcete zobrazit a použít doporučení pro optimální výkon, je nutné správný [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) oprávnění v Azure. **Čtečka**, **Přispěvatel databází SQL** zobrazíte doporučení, jsou vyžadována oprávnění a **vlastníka**, **Přispěvatel databází SQL** se vyžadují oprávnění k provádět žádné akce; Vytvořit nebo vyřadit indexy a zrušit vytváření indexu.
+Pokud chcete zobrazit a použít doporučení pro optimální výkon, je nutné správný [řízení přístupu na základě role](../role-based-access-control/overview.md) oprávnění v Azure. **Čtečka**, **Přispěvatel databází SQL** zobrazíte doporučení, jsou vyžadována oprávnění a **vlastníka**, **Přispěvatel databází SQL** se vyžadují oprávnění k provádět žádné akce; Vytvořit nebo vyřadit indexy a zrušit vytváření indexu.
 
 Najít výkonu doporučení na portálu Azure pomocí následujících kroků:
 
@@ -154,5 +154,5 @@ Sledovat vaše doporučení a pokračuje v používání jejich Upřesnit výkon
 ## <a name="additional-resources"></a>Další zdroje informací:
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [VYTVOŘENÍ INDEXU](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Řízení přístupu na základě rolí](../active-directory/role-based-access-control-what-is.md)
+* [Řízení přístupu na základě rolí](../role-based-access-control/overview.md)
 

@@ -1,24 +1,24 @@
 ---
-title: "Kód fragmenty pro migraci obsahu z kolekce pracovních prostorů Power BI | Microsoft Docs"
-description: "Tady jsou některé fragmenty kódu základních operací, které jsou potřebné k migraci obsahu."
+title: Kód fragmenty pro migraci obsahu z kolekce pracovních prostorů Power BI | Microsoft Docs
+description: Tady jsou některé fragmenty kódu základních operací, které jsou potřebné k migraci obsahu.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 64f012322c89236fa8827fddf2f9090d0a167b76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: ae69655292fd4ead04229e251280fe5920cb4d50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="code-snippets-for-migrating-content-from-power-bi-workspace-collections"></a>Fragmenty kódu při migraci obsahu z kolekce pracovních prostorů Power BI
 
@@ -232,7 +232,7 @@ V tento fragment kódu předpokládáme, že pushable datové sady je již v pra
     }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o migraci naleznete v tématu [jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Embedded](migrate-from-power-bi-workspace-collections.md).
 

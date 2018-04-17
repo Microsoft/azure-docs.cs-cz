@@ -1,6 +1,6 @@
 ---
-title: "Příprava na místním serveru technologie Hyper-V pro zotavení po havárii virtuálních počítačů technologie Hyper-V do Azure | Microsoft Docs"
-description: "Zjistěte, jak připravit virtuální počítače Hyper-v místě nejsou spravované přes System Center VMM pro zotavení po havárii do Azure se službou Azure Site Recovery."
+title: Příprava na místním serveru technologie Hyper-V pro zotavení po havárii virtuálních počítačů technologie Hyper-V do Azure | Microsoft Docs
+description: Zjistěte, jak připravit virtuální počítače Hyper-v místě nejsou spravované přes System Center VMM pro zotavení po havárii do Azure se službou Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7e0219a662483ef123bdc2889a43dd3d93d23ac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava na místních serverech technologie Hyper-V pro zotavení po havárii do Azure
 
@@ -35,8 +35,8 @@ Ujistěte se, zda hostitelé Hyper-V a virtuálních počítačů v souladu s po
 1. [Ověřte](hyper-v-azure-support-matrix.md#on-premises-servers) místní požadavky na server.
 2. [Zkontrolujte požadavky na](hyper-v-azure-support-matrix.md#replicated-vms) pro virtuální počítače Hyper-V, které chcete replikovat do Azure.
 3. Zkontrolujte hostitele Hyper-V [sítě](hyper-v-azure-support-matrix.md#hyper-v-network-configuration); a hostitele a hostů [úložiště](hyper-v-azure-support-matrix.md#hyper-v-host-storage) podporu pro místního hostitele technologie Hyper-V.
-4. Zkontrolujte, co je podporováno pro [Azure sítě](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [úložiště](hyper-v-azure-support-matrix.md#azure-storage), a [výpočetní](hyper-v-azure-support-matrix.md#azure-compute-features), po převzetí služeb při selhání.
-5. Virtuální počítače na místní replikaci do Azure musí být v souladu s [požadavky virtuálního počítače Azure](hyper-v-azure-support-matrix.md#azure-vm-requirements).
+4. Zkontrolujte podporované [sítě Azure](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [úložiště](hyper-v-azure-support-matrix.md#azure-storage) a [výpočetní prostředí](hyper-v-azure-support-matrix.md#azure-compute-features) po převzetí služeb při selhání.
+5. Místní virtuální počítače, které replikujete do Azure, musí splňovat [Požadavky na virtuální počítače Azure](hyper-v-azure-support-matrix.md#azure-vm-requirements).
 
 
 ## <a name="prepare-vmm-optional"></a>Příprava VMM (volitelné)
@@ -58,14 +58,13 @@ Připravte VMM mapování sítě následujícím způsobem:
 
 ## <a name="verify-internet-access"></a>Ověřte přístup k Internetu
 
-1. Pro účely tohoto kurzu je nejjednodušší konfiguraci pro hostitele Hyper-V a VMM server, pokud je k dispozici, umožňuje mít přímý přístup k Internetu bez použití proxy serveru. 
+1. Pro účely tohoto kurzu nejjednodušší konfigurace je pro hostitele Hyper-V a VMM server, který umožňuje mít přímý přístup k Internetu bez použití proxy serveru. 
 2. Ujistěte se, který je hostitelem technologie Hyper-V a na serveru VMM, pokud je to relevantní, můžete přístup tyto adresy URL: 
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-3. Zajistěte, aby:
-    - Všechna pravidla brány firewall založená na adresu IP by měl povolit komunikaci s Azure.
-    - Povolte [Rozsahy IP adres datového centra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) a port HTTPS (443).
+3. Pokud jste řízení přístupu podle IP adresy, ujistěte se, že:
+    - Pravidla brány firewall založená na adresu IP se může připojit k [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443).
     - Povolte rozsahy IP adres pro oblast Azure svého předplatného a západní USA (používá se pro přístup k řízení a identity management).
 
 
@@ -82,7 +81,7 @@ Pro připojení k virtuálním počítačům systému Windows pomocí protokolu 
 
 Po převzetí služeb při selhání můžete přístup k virtuálním počítačům Azure pomocí stejné IP adresy jako virtuální počítač replikovaný místní nebo jinou IP adresu. [Další informace](concepts-on-premises-to-azure-networking.md) o nastavení IP adresy pro převzetí služeb při selhání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V](tutorial-hyper-v-to-azure.md)

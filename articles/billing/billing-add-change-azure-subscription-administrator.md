@@ -1,11 +1,11 @@
 ---
-title: "Přidání nebo změna role správce Azure předplatné | Microsoft Docs"
-description: "Popisuje, jak přidat nebo změnit společné správce Azure, Správce služby a účet správce"
-services: 
-documentationcenter: 
+title: Přidání nebo změna role správce Azure předplatné | Microsoft Docs
+description: Popisuje, jak přidat nebo změnit společné správce Azure, Správce služby a účet správce
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ecee98e9b74613a4176d20d231b32e4cb99a721e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
-Správci předplatného služby Azure classic a Azure [řízení přístupu na základě Role (RBAC)](../active-directory/role-based-access-control-what-is.md) se dvěma systémy pro správu přístupu k prostředkům Azure:
+Správci předplatného služby Azure classic a Azure [řízení přístupu na základě Role (RBAC)](../role-based-access-control/overview.md) se dvěma systémy pro správu přístupu k prostředkům Azure:
 
 * Role správce Classic předplatné nabízejí základní access managementu a zahrnují správce účtu, Správce služeb a Spolusprávci.
     * Při registraci nového předplatného Azure, je váš účet ve výchozím nastavení jako účet správce a Správce služby.
@@ -41,10 +41,12 @@ Někdo přidat jako správce pro správu služby předplatného Azure, jim posky
 
 1. Navštivte [ **odběry** na portálu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Vyberte předplatné, které chcete udělit přístup.
-3. Vyberte **přístup k ovládacímu prvku (IAM)** v nabídce.
-4. V **Role** vyberte **vlastníka**. 
-5. V **přiřadit přístup** vyberte **uživatele Azure AD, skupinu nebo aplikaci**. 
-6. V **vyberte** zadejte e-mailovou adresu uživatele, který chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
+3. Vyberte **přidat**  
+   (Pokud chybí na tlačítko Přidat, nemáte oprávnění k přidání oprávnění.)
+4. Vyberte **přístup k ovládacímu prvku (IAM)** v nabídce.
+5. V **Role** vyberte **vlastníka**. 
+6. V **přiřadit přístup** vyberte **uživatele Azure AD, skupinu nebo aplikaci**. 
+7. V **vyberte** zadejte e-mailovou adresu uživatele, který chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
 
     ![Snímek obrazovky zobrazující vybrané roli vlastníka](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
@@ -111,7 +113,7 @@ Správce účtu je uživatel, který původně zaregistrovali do služby pro př
  Správce účtu, Správce služeb a spolusprávce jsou tři druhy rolí správců classic předplatného v Azure. Účet, který se používá k registraci do Azure bude automaticky nastavena jako účet správce a Správce služby. Potom můžete přidat další Spolusprávci. Následující tabulka popisuje přesný rozdíly mezi tyto tři role správce. 
 
 > [!TIP]
-> Pro lepší řízení a vyladění správy přístupu doporučujeme používat na základě Role v Azure řízení přístupu (RBAC), což umožňuje uživatelům, který se má přidat k více rolím. Další informace najdete v tématu [řízení přístupu na základě Role v Azure Active Directory](../active-directory/role-based-access-control-what-is.md).
+> Pro lepší řízení a vyladění správy přístupu doporučujeme používat na základě Role v Azure řízení přístupu (RBAC), což umožňuje uživatelům, který se má přidat k více rolím. Další informace najdete v tématu [řízení přístupu na základě Role v Azure Active Directory](../role-based-access-control/overview.md).
 
 | Klasický správce předplatného | Omezení | Popis |
 | --- | --- | --- |
@@ -121,7 +123,7 @@ Správce účtu je uživatel, který původně zaregistrovali do služby pro př
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>Další informace o řízení přístupu k prostředkům a služby Active Directory
 
-* Další informace o tom, jak je přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům v Azure](../active-directory/active-directory-understanding-resource-access.md).
+* Další informace o tom, jak je přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 * Další informace o službě Azure Active Directory najdete v tématu [asociování předplatných Azure se službou Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md) a [přiřazení rolí správce v Azure Active Directory](../active-directory/active-directory-assign-admin-roles-azure-portal.md).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.

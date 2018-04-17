@@ -1,31 +1,26 @@
 ---
-title: "Elastické dotazu konceptech Azure SQL Data Warehouse | Microsoft Docs"
-description: "Elastické dotazu konceptech Azure SQL Data Warehouse"
+title: Elastické dotaz – přístup k datům v Azure SQL Data Warehouse z databáze Azure SQL Database | Microsoft Docs
+description: Přečtěte si doporučené postupy pro používání pomocí elastické dotazu pro přístup k datům v Azure SQL Data Warehouse z databáze SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67f
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 09/18/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/11/2018
 ms.author: elbutter
-ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.reviewer: jrj
+ms.openlocfilehash: 909271792b73b5fdc517847db7cfd6c8cf2092bc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Použití elastické dotazu s SQL Data Warehouse
+# <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Doporučené postupy pro používání elastické dotazu v databázi SQL Azure pro přístup k datům v Azure SQL Data Warehouse
+Přečtěte si doporučené postupy pro používání elastické dotazu pro přístup k datům v Azure SQL Data Warehouse z databáze SQL Azure. 
 
-
-
-Elastické dotaz s Azure SQL Data Warehouse umožňuje zapisovat Transact-SQL v databázi SQL, které je odesláno vzdáleně instance Azure SQL Data Warehouse pomocí externí tabulky. Pomocí této funkce poskytuje úsporu nákladů a další původce architektury v závislosti na scénáři.
+## <a name="what-is-an-elastic-query"></a>Co je elastické dotazu?
+Dotaz elastické umožňuje napsat dotaz v databázi Azure SQL, který je vzdáleně odesílaných do služby Azure SQL data warehouse pomocí T-SQL a externí tabulky. Pomocí této funkce poskytuje úsporu nákladů a další původce architektury, v závislosti na scénáři.
 
 Tato funkce umožňuje dva základní scénáře:
 
@@ -46,10 +41,7 @@ Elastické dotaz může poskytovat umožňuje snadno vyberte podmnožiny dat ser
 
 Elastické dotazu umožňuje spuštění vzdáleného dotazu na instanci SQL data warehouse. Tím, že oddělíte horká a studená data mezi těmito dvěma databázemi jeden můžete využít nejlepší z databáze SQL a SQL data warehouse. Uživatele můžete ponechat novější data v databázi SQL, která může obsluhovat sestavy a velkého počtu průměrná podnikoví uživatelé. Ale je potřeba víc dat nebo výpočetní, uživatel může přenést část dotazu do instance datového skladu SQL, kde lze zpracovat rozsáhlé agregace mnohem rychlejší a efektivnější.
 
-
-
-## <a name="elastic-query-overview"></a>Přehled elastické dotazu
-
+## <a name="elastic-query-process"></a>Proces elastické dotazů
 Elastické dotazu je použít k datům umístěným v rámci SQL datového skladu k dispozici instance databáze SQL. Elastické dotazu umožňuje dotazy z databáze SQL odkazují na tabulky vzdálenou instanci SQL data warehouse. 
 
 Prvním krokem je vytvoření definice zdroj externích dat, který odkazuje na instance SQL datového skladu, který používá existující přihlašovací údaje uživatele v SQL data warehouse. Žádné změny jsou nezbytné ve vzdálené instanci SQL data warehouse. 
@@ -58,13 +50,12 @@ Prvním krokem je vytvoření definice zdroj externích dat, který odkazuje na 
 > 
 > Musíte mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE. Jsou potřeba oprávnění ALTER ANY externí zdroj dat k odkazování na vzdálené zdroje dat.
 
-Dále vytvoříme definici vzdálené externí tabulky v instanci SQL databáze, která odkazuje na vzdálenou tabulku v SQL data warehouse. Použijete-li dotaz, který používá externí tabulku, část dotaz odkazující na externí tabulky posílá instance SQL datového skladu na zpracování. Po dokončení dotazu výsledné sady budou odeslána zpět do volání instance databáze SQL. Stručný kurzu nastavení dotaz elastické mezi SQL database a SQL data warehouse, najdete v článku [konfigurace elastické dotaz s SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
+Dále vytvořte definici vzdálené externí tabulky instance databáze SQL, který odkazuje na vzdálenou tabulku v SQL data warehouse. Když dotaz používá externí tabulku, část dotaz odkazující na externí tabulky je odeslat instance SQL datového skladu na zpracování. Po dokončení dotazu výsledné sady budou odeslána zpět do volání instance databáze SQL. Stručný kurzu nastavení dotaz elastické mezi SQL database a SQL data warehouse, najdete v článku [konfigurace elastické dotaz s SQL Data Warehouse][Configure Elastic Query with SQL Data Warehouse].
 
 Další informace o elastické dotazu s databází SQL, najdete v článku [Azure SQL Database elastické dotazu přehled][Azure SQL Database elastic query overview].
 
-
-
 ## <a name="best-practices"></a>Osvědčené postupy
+Použijte tyto doporučené postupy pro používání elastické dotazu efektivně.
 
 ### <a name="general"></a>Obecné
 
@@ -78,9 +69,9 @@ Další informace o elastické dotazu s databází SQL, najdete v článku [Azur
 
 ### <a name="elastic-querying"></a>Elastické dotazování
 
-- V mnoha případech jeden chtít spravovat typu roztažené tabulky, kde je část tabulku v databázi SQL jako data výkonu se zbytkem data uložená v SQL Data Warehouse uložená v mezipaměti. Budete muset mít dva objekty v databázi SQL: externí tabulku v databázi SQL, který odkazuje na základní tabulky v SQL Data Warehouse a "v mezipaměti" část tabulky v databázi SQL. Zvažte vytvoření zobrazení v horní části uložené v mezipaměti v tabulce a externí tabulky, které sjednocení tabulky i použity filtry, které oddělte materializována v rámci SQL Database a SQL Data Warehouse dat, které jsou k dispozici prostřednictvím externí tabulky data.
+- V mnoha případech jeden chtít spravovat typu roztažené tabulky, kde je část tabulku v databázi SQL jako data výkonu se zbytkem data uložená v SQL Data Warehouse uložená v mezipaměti. Budete potřebovat dva objekty v databázi SQL: externí tabulku v databázi SQL, který odkazuje na základní tabulky v SQL Data Warehouse a "v mezipaměti" část tabulky v databázi SQL. Zvažte vytvoření zobrazení v horní části uložené v mezipaměti v tabulce a externí tabulky, které sjednocení tabulky i použity filtry, které oddělte materializována v rámci SQL Database a SQL Data Warehouse dat, které jsou k dispozici prostřednictvím externí tabulky data.
 
-  Představte si, že nám chcete zachovat poslední rok data v instanci databáze SQL. Máme dvě tabulky **ext. Objednávky**, který odkazuje na datový sklad řadí tabulky, a **dbo. Objednávky** představuje poslední za roky dat v rámci instance databáze SQL. Místo požádat uživatele, můžete rozhodnout, jestli dotaz jednu tabulku nebo jiné, můžeme vytvořit zobrazení v horní části obě tabulky v bodě oddílu posledního roku.
+  Představte si, že chcete zachovat poslední rok data v instanci databáze SQL. **Ext. Objednávky** odkazy na tabulku datového skladu řadí tabulky. **Dbo. Objednávky** představuje poslední za roky dat v rámci instance databáze SQL. Místo požádat uživatele, můžete rozhodnout, jestli dotaz na jednu tabulku nebo dalších, vytvořte zobrazení v horní části obě tabulky v bodě oddílu posledního roku.
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -115,23 +106,21 @@ Další informace o elastické dotazu s databází SQL, najdete v článku [Azur
 ### <a name="moving-data"></a>Přesun dat 
 
 - Pokud je to možné zachovat data správy snadněji vyřeší pomocí připojovacího zdrojové tabulky tak, aby byly aktualizace snadno udržovatelný mezi instancemi datového skladu a databáze.
-- Přesun dat na úrovni oddílu s vyprázdnění a vyplňte sémantiky Chcete-li minimalizovat náklady na dotaz na úroveň datového skladu a množství dat přesunout zachovat aktuální instanci databáze. 
+- Přesunutí dat na úrovni oddílu s vyprázdnit a výplně sémantiku minimalizovat náklady na dotaz na data skladu úroveň a množství dat přesunout k zachování aktualizovaného stavu instanci databáze. 
 
 ### <a name="when-to-choose-azure-analysis-services-vs-sql-database"></a>Kdy použít Azure Analysis Services vs databáze SQL
 
-#### <a name="azure-analysis-services"></a>Azure Analysis Services
+Použití Azure Analysis Services, když:
 
 - Máte v úmyslu používat vaše mezipaměť s BI nástroj, který odešle velké množství malých dotazy
 - Třeba subsecond latence dotazu
 - Máte zkušenosti ve správě nebo vývoj modely pro službu Analysis Services 
 
-#### <a name="sql-database"></a>SQL Database
+Použití Azure SQL databáze, když:
 
 - Chcete dotazování na data mezipaměti s SQL
 - Potřebujete vzdálené spuštění některých dotazů
 - Máte větší požadavky mezipaměti
-
-
 
 ## <a name="faq"></a>Nejčastější dotazy
 
@@ -161,19 +150,11 @@ Odpověď: můžete uložit prostorové typy v SQL Data Warehouse jako hodnoty v
 
 ![prostorové typy](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 
-
-
-
-
-<!--Image references-->
-
 <!--Article references-->
 
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
-[Configure Elastic Query with SQL Data Warehouse]: ./tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
+[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
+[Configure Elastic Query with SQL Data Warehouse]: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
 [Feedback Page]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Database elastic query overview]: ../sql-database/sql-database-elastic-query-overview.md
 
-<!--MSDN references-->
 
-<!--Other Web references-->

@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na heslo"
-description: "PCI DSS požadavek 2"
+title: Azure platebních zpracování plán, podle kterého – požadavky na heslo
+description: PCI DSS požadavek 2
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 4ae9fc7d5b53d33f9feb98c450970e0560afa2af
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>Požadavky na heslo pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS požadavek 2
@@ -39,8 +39,8 @@ To platí pro všechna výchozí hesla, včetně, ale bez omezení, používaný
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure Active Directory heslo požadavky zásad se vynutí pro nová hesla poskytl zákazníci v rámci portálu AADUX. Změny spouštěná zákazníka hesla pomocí samoobslužné služby vyžadují ověřování předchozí hesla. Resetování hesla správce je potřeba změnit při následné přihlášení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vyžaduje, aby uživatelé používat sadu silná hesla pro všechny uživatele. Ukázku jsou povolené žádné účty ukázku nebo hostů.<br /><br />Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure Active Directory heslo požadavky zásad se vynutí pro nová hesla poskytl zákazníci v rámci portálu AADUX. Změny spouštěná zákazníka hesla pomocí samoobslužné služby vyžadují ověřování předchozí hesla. Resetování hesla správce je potřeba změnit při následné přihlášení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vyžaduje, aby uživatelé používat sadu silná hesla pro všechny uživatele. Ukázku jsou povolené žádné účty ukázku nebo hostů.<br /><br />Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -52,8 +52,8 @@ To platí pro všechna výchozí hesla, včetně, ale bez omezení, používaný
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -70,8 +70,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Pro Microsoft Azure vyvíjí tým technické služeb zabezpečení OSSC normami konfigurace zabezpečení pro systémy v prostředí Microsoft Azure, které jsou konzistentní s přijata odvětví, posílení zabezpečení standardů. Tyto konfigurace jsou popsány v systému směrné plány a změny příslušné konfigurace se předávají ovlivněné týmy (např. nástroj týmu). Postupy jsou implementované k monitorování dodržování předpisů na základě standardů konfigurace zabezpečení. Konfigurace standardy zabezpečení pro systémy v prostředí Microsoft Azure jsou v souladu s normami přijata odvětví posílení zabezpečení a jsou kontrolovány nejméně jednou ročně. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje posílení zabezpečení všech služeb v oboru pro držitele karty data prostředí (CDE). <br /><br />Kromě toho nasadí Contoso Webstore [Azure Security Center](https://azure.microsoft.com/services/security-center/), který poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.<br /><br />Contoso Webstore využívá Operations Management Suite do protokolu všechny změny systému. [Operations Management Suite (OMS)](/azure/operations-management-suite/) poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Pro Microsoft Azure vyvíjí tým technické služeb zabezpečení OSSC normami konfigurace zabezpečení pro systémy v prostředí Microsoft Azure, které jsou konzistentní s přijata odvětví, posílení zabezpečení standardů. Tyto konfigurace jsou popsány v systému směrné plány a změny příslušné konfigurace se předávají ovlivněné týmy (např. nástroj týmu). Postupy jsou implementované k monitorování dodržování předpisů na základě standardů konfigurace zabezpečení. Konfigurace standardy zabezpečení pro systémy v prostředí Microsoft Azure jsou v souladu s normami přijata odvětví posílení zabezpečení a jsou kontrolovány nejméně jednou ročně. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje posílení zabezpečení všech služeb v oboru pro držitele karty data prostředí (CDE). <br /><br />Kromě toho nasadí Contoso Webstore [Azure Security Center](https://azure.microsoft.com/services/security-center/), který poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.<br /><br />Contoso Webstore využívá Operations Management Suite do protokolu všechny změny systému. Log Analytics poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -86,8 +86,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -99,8 +99,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure softwarových a hardwarových konfiguracích jsou kontrolovány alespoň čtvrtletně identifikovat a odstranit všechny nepotřebné funkce, porty, protokoly a služby. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure softwarových a hardwarových konfiguracích jsou kontrolovány alespoň čtvrtletně identifikovat a odstranit všechny nepotřebné funkce, porty, protokoly a služby. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -116,8 +116,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě. Nasazení také poskytuje posílení zabezpečení všech služeb v oboru CDE. <br /><br />Kromě toho nasadí Contoso Webstore [Azure Security Center](https://azure.microsoft.com/services/security-center/), který poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore služby jsou nasazeny jako PaaS služby. Všechny služby jsou izolované a segmentovaným používání segmentace sítě. Nasazení také poskytuje posílení zabezpečení všech služeb v oboru CDE. <br /><br />Kromě toho nasadí Contoso Webstore [Azure Security Center](https://azure.microsoft.com/services/security-center/), který poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -129,8 +129,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure zajistí, že jen oprávněný personál se můžou ke konfiguraci ovládacích prvků zabezpečení platformy Azure, pomocí vícefaktorového řízení přístupu a zdokumentovaných obchodních potřeb. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá AAD a RBAC AD ke správě parametrů zabezpečení jsou správně nasazena. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure zajistí, že jen oprávněný personál se můžou ke konfiguraci ovládacích prvků zabezpečení platformy Azure, pomocí vícefaktorového řízení přístupu a zdokumentovaných obchodních potřeb. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá AAD a RBAC AD ke správě parametrů zabezpečení jsou správně nasazena. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -142,8 +142,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci na tom, jak jsou určeny hranice. Model hrozeb společnosti Contoso a diagram toku dat znázorňují všechny služby jsou používány a ovládací prvky, které jsou povolené.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci na tom, jak jsou určeny hranice. Model hrozeb společnosti Contoso a diagram toku dat znázorňují všechny služby jsou používány a ovládací prvky, které jsou povolené.|
 
 
 
@@ -158,8 +158,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zajistí, že používání silného šifrování v situacích, kdy přistupuje k infrastruktuře hypervisoru. Microsoft Azure také zajišťuje, aby byly zákazníkům, kteří používají Microsoft Azure Management Portal mít přístup k jejich konzoly služby nebo IaaS s silného šifrování. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukazuje, jak silného hesla, můžou se implementovat v řešení; všechny testy kromě toho lze provést ověření, zda že je implementováno šifrování v celé řešení.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zajistí, že používání silného šifrování v situacích, kdy přistupuje k infrastruktuře hypervisoru. Microsoft Azure také zajišťuje, aby byly zákazníkům, kteří používají Microsoft Azure Management Portal mít přístup k jejich konzoly služby nebo IaaS s silného šifrování. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukazuje, jak silného hesla, můžou se implementovat v řešení; všechny testy kromě toho lze provést ověření, zda že je implementováno šifrování v celé řešení.<br /><br />Contoso Webstore také používá [prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) vynucovaného klíče postupy. Další informace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -171,8 +171,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukázku PaaS řešení inventáře můžete zkontrolovat v zadané dokumentaci. Další informace najdete v tématu [pokyny PCI - předinstalovaný OMS řešení](payment-processing-blueprint.md#oms-solutions).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore ukázku PaaS řešení inventáře můžete zkontrolovat v zadané dokumentaci. Další informace najdete v tématu [pokyny PCI - řešení pro správu předinstalovaný](payment-processing-blueprint.md#management-solutions).|
 
 
 
@@ -184,8 +184,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentace, která poskytuje vhled do parametrů zabezpečení a dokumenty služby elementy. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentace, která poskytuje vhled do parametrů zabezpečení a dokumenty služby elementy. |
 
 
 
@@ -197,8 +197,8 @@ Zdroje přijata oborových standardů posilování systému může zahrnovat, al
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. Microsoft Azure není poskytovateli sdíleného hostingu. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici. Microsoft Azure není poskytovateli sdíleného hostingu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. Microsoft Azure není poskytovateli sdíleného hostingu. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici. Microsoft Azure není poskytovateli sdíleného hostingu.|
 
 
 

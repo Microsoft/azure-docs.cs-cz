@@ -1,16 +1,16 @@
 ---
-title: "Skupina počítačů pomocí Azure migrovat počítač závislosti | Microsoft Docs"
-description: "Popisuje postup vytvoření posouzení závislosti počítače pomocí služby Azure migrovat."
+title: Skupina počítačů pomocí Azure migrovat počítač závislosti | Microsoft Docs
+description: Popisuje postup vytvoření posouzení závislosti počítače pomocí služby Azure migrovat.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Skupina počítačů pomocí mapování závislostí počítače
 
@@ -33,8 +33,8 @@ Instalace agenta na počítači s Windows:
 1. Poklikejte na stažený agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na **licenční podmínky** klikněte na tlačítko **souhlasím** tak, aby přijímal licence.
 3. V **cílovou složku**, zachovat, nebo upravit výchozí instalační složku > **Další**. 
-4. V **možnosti instalace agenta**, vyberte **Azure Log Analytics (OMS)** > **Další**. 
-5. Klikněte na tlačítko **přidat** přidat nový pracovní prostor OMS. Vložte ID a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
+4. V **možnosti instalace agenta**, vyberte **Azure Log Analytics** > **Další**. 
+5. Klikněte na tlačítko **přidat** přidat nový pracovní prostor analýzy protokolů. Vložte ID a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
 
 
 Instalace agenta na počítač s Linuxem:
@@ -82,4 +82,4 @@ Jakmile je skupina vytvořená, se doporučuje nainstalovat agenty na všechny p
 ## <a name="next-steps"></a>Další postup
 
 - [Zjistěte, jak](how-to-create-group-dependencies.md) upřesněte skupině vizualizací skupiny závislosti
-- [Další informace](concepts-assessment-calculation.md) o tom, jak jsou vypočítávány vyhodnocování.
+- [Přečtěte si další informace](concepts-assessment-calculation.md) o tom, jak se v rámci posouzení počítají náklady.

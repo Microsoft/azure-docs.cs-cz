@@ -1,11 +1,11 @@
 ---
-title: "Automatizovat NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny, jak nakonfigurovat auditování skupinu zabezpečení sítě"
+title: Automatizovat NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure | Microsoft Docs
+description: Tato stránka obsahuje pokyny, jak nakonfigurovat auditování skupinu zabezpečení sítě
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatizovat NSG auditování s zobrazení skupiny zabezpečení sledovací proces sítě Azure
 
@@ -185,9 +185,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Pokud se změnila nastavení, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou v.
+Pokud se změnila nastavení, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou v.
 
 
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2017
-ms.author: v-masebo;kgremban
-ms.openlocfilehash: d5b606532ac445b03527c5027dc3b434d88b6b1f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: kgremban
+ms.openlocfilehash: 44b913d5f30a8465219a6793f48d82cfe39d12b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-device-twins-python"></a>Začínáme s dvojčata zařízení (Python)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -242,7 +242,7 @@ V této části vytvoříte konzolovou aplikaci Python, která se připojuje k v
 1. Spuštění aplikace zařízení
    
     ```cmd/sh
-    python ReportConnectivity.js
+    python ReportConnectivity.py
     ```
    
     Měli byste vidět potvrzení, které byly aktualizovány dvojčata zařízení.
@@ -252,7 +252,7 @@ V této části vytvoříte konzolovou aplikaci Python, která se připojuje k v
 6. Teď, když je zařízení hlášené jeho informace o připojení k se má zobrazit v obou dotazy. Přejděte zpět a znovu spusťte dotazy:
    
     ```cmd/sh
-    python AddTagsAndQuery.js
+    python AddTagsAndQuery.py
     ```
    
     Tentokrát vaše **{Id zařízení}** by se měla objevit v obou výsledky dotazu.

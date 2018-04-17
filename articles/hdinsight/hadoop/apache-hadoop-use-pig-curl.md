@@ -1,26 +1,26 @@
 ---
-title: "Použijte Hadoop Pig s REST v HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak se použije ke spuštění úlohy Pig Latin na cluster Hadoop v prostředí Azure HDInsight REST."
+title: Použijte Hadoop Pig s REST v HDInsight - Azure | Microsoft Docs
+description: Zjistěte, jak se použije ke spuštění úlohy Pig Latin na cluster Hadoop v prostředí Azure HDInsight REST.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: c2c441d92607a017b4451cd8a06fb78a5e8e7135
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4883794261116abf4925e7e4e9a8df14626c7a71
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig s Hadoop v HDInsight pomocí REST
 
@@ -76,7 +76,7 @@ Zjistěte, jak spouštět úlohy Pig Latin tím, že požadavky REST do clusteru
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-d**: protože `-G` se nepoužívá, použije se výchozí hodnota žádost na metodu POST. `-d`Určuje datových hodnot, které se odesílají s požadavkem.
+    * **-d**: protože `-G` se nepoužívá, použije se výchozí hodnota žádost na metodu POST. `-d` Určuje datových hodnot, které se odesílají s požadavkem.
 
     * **User.Name**: uživatel, který spouští příkaz
     * **spuštění**: příkazy Pig Latin provést

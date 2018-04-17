@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého - CHD požadavky"
-description: "PCI DSS požadavek 3"
+title: Azure platebních zpracování plán, podle kterého - CHD požadavky
+description: PCI DSS požadavek 3
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>CHD požadavky pro kompatibilní se standardem PCI DSS prostředí
 ## <a name="pci-dss-requirement-3"></a>PCI DSS požadavek 3
@@ -43,8 +43,8 @@ Naleznete PCI DSS a PA-DSS slovníku pojmů, zkratky a zkratky definice "silnéh
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure zodpovídá za to, že jsou bezpečně vyřazení pomocí NIST 800-88 kompatibilní protokolů zadaný v jejími zásadami zabezpečení uvolnění data zákazníků, které jsou určené k odstranění. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore neodstraníte ani destroy všechny uložené CHD. Ale všechna data je šifrovaná a žádný z primárních účet číslo (PANORAMOVÁNÍ) data se ukládají.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure zodpovídá za to, že jsou bezpečně vyřazení pomocí NIST 800-88 kompatibilní protokolů zadaný v jejími zásadami zabezpečení uvolnění data zákazníků, které jsou určené k odstranění. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore neodstraníte ani destroy všechny uložené CHD. Ale všechna data je šifrovaná a žádný z primárních účet číslo (PANORAMOVÁNÍ) data se ukládají.<br /><br />|
 
 
 
@@ -60,8 +60,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore odstranit nebo zničit všechny uložené CHD; Ukázková data ukládána po pouze pro účely ukázky. Šifrované a ne primární účet, číslo (PANORAMOVÁNÍ) data uložená se ale všechna data.<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore odstranit nebo zničit všechny uložené CHD; Ukázková data ukládána po pouze pro účely ukázky. Šifrované a ne primární účet, číslo (PANORAMOVÁNÍ) data uložená se ale všechna data.<br /><br />|
 
 
 
@@ -73,7 +73,7 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 > Následující prvky dat z magnetické stripe běžné obchodní činnosti, může třeba pro zachování: 
 > - Vlastník karty 
 > - Číslo primární účtu (PANORAMOVÁNÍ) 
-> - Datum vypršení platnosti 
+> - Datum konce platnosti 
 > - Kódu služby 
 >
 > Chcete-li minimalizovat riziko, uložte jenom tyto datové prvky podle potřeby pro firmy.
@@ -82,8 +82,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore nejsou uložené žádné CHD celý obsah.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore nejsou uložené žádné CHD celý obsah.|
 
 
 
@@ -95,8 +95,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore šifruje všechna data, včetně CVV ukázky.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore šifruje všechna data, včetně CVV ukázky.|
 
 
 
@@ -108,8 +108,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore neumožňuje ukládání informací o PIN kódu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore neumožňuje ukládání informací o PIN kódu.|
 
 
 
@@ -124,8 +124,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore zakrývá číslo primární účet (PANORAMOVÁNÍ) pomocí transparentní šifrování dat, vždy šifrované sloupce a maskování dynamická data. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore zakrývá číslo primární účet (PANORAMOVÁNÍ) pomocí transparentní šifrování dat, vždy šifrované sloupce a maskování dynamická data. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -144,8 +144,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore šifruje všechna data platební karty a používat Azure Key Vault pro správu klíčů, brání načtení CHD.<br /><br />Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore šifruje všechna data platební karty a používat Azure Key Vault pro správu klíčů, brání načtení CHD.<br /><br />Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -160,8 +160,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore všechny uložené data jsou zašifrována a odděluje přenosy, aby privilegované zvýšení oprávnění pro funkce DevOps.<br /><br />Služba App Service Environment je zabezpečená a uzamčené, je potřeba povolit pro všechny verze DevOps nebo změny, které může být nezbytné, jako je například možnost monitorování webové aplikace pomocí modulu Kudu mechanismus.<br /><br />Virtuální počítač je vytvořeno jako jumpbox (bastionu hostitel) s následující konfigurace:<br /><br /><ul><li>[Rozšíření proti malwaru](/azure/security/azure-security-antimalware)</li><li>[Monitorování OMS rozšíření](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Rozšíření diagnostiky virtuálního počítače](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Nástroj BitLocker šifrované disku](/azure/security/azure-security-disk-encryption)</li></ul>Použití Azure Key Vault zarovnaná s Azure Government, PCI DSS a HIPAA požadavky.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore všechny uložené data jsou zašifrována a odděluje přenosy, aby privilegované zvýšení oprávnění pro funkce DevOps.<br /><br />Služba App Service Environment je zabezpečená a uzamčené, je potřeba povolit pro všechny verze DevOps nebo změny, které může být nezbytné, jako je například možnost monitorování webové aplikace pomocí modulu Kudu mechanismus.<br /><br />Virtuální počítač je vytvořeno jako jumpbox (bastionu hostitel) s následující konfigurace:<br /><br /><ul><li>[Rozšíření proti malwaru](/azure/security/azure-security-antimalware)</li><li>[Rozšíření monitorování analýzy protokolů](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[Rozšíření diagnostiky virtuálního počítače](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Nástroj BitLocker šifrované disku](/azure/security/azure-security-disk-encryption)</li></ul>Použití Azure Key Vault zarovnaná s Azure Government, PCI DSS a HIPAA požadavky.|
 
 
 
@@ -176,8 +176,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Microsoft Azure zajistí, že zákazník trezorů klíčů jsou logicky izolované od sebe navzájem a logicky izolované od roviny správy do služby Key Vault. Key Vault je navržený tak, aby Microsoft nemá žádné stálý přístup k trezoru klíčů zákazníka. <br /><br />Klíče jsou chráněné službou Microsoft Azure, pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM).<br /><br />Klíče uloženého v Microsoft Azure Key Vault může použít k ochraně jiný klíč. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci pro ilustraci a pomáhají nasazení chráněných klíčů řešení ochrany ukázku CHD.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Microsoft Azure zajistí, že zákazník trezorů klíčů jsou logicky izolované od sebe navzájem a logicky izolované od roviny správy do služby Key Vault. Key Vault je navržený tak, aby Microsoft nemá žádné stálý přístup k trezoru klíčů zákazníka. <br /><br />Klíče jsou chráněné službou Microsoft Azure, pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM).<br /><br />Klíče uloženého v Microsoft Azure Key Vault může použít k ochraně jiný klíč. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci pro ilustraci a pomáhají nasazení chráněných klíčů řešení ochrany ukázku CHD.|
 
 
 
@@ -195,8 +195,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Microsoft Azure zajistí, že zákazník trezorů klíčů jsou logicky izolované od sebe navzájem a logicky izolované od roviny správy do služby Key Vault. Key Vault je navržený tak, aby Microsoft nemá žádné stálý přístup k trezoru klíčů zákazníka. <br /><br />Klíče jsou chráněné službou Microsoft Azure, pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM).<br /><br />Klíče uloženého v Microsoft Azure Key Vault může použít k ochraně jiný klíč. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci pro ilustraci a pomáhají nasazení chráněných klíčů řešení ochrany ukázku CHD.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Microsoft Azure zajistí, že zákazník trezorů klíčů jsou logicky izolované od sebe navzájem a logicky izolované od roviny správy do služby Key Vault. Key Vault je navržený tak, aby Microsoft nemá žádné stálý přístup k trezoru klíčů zákazníka. <br /><br />Klíče jsou chráněné službou Microsoft Azure, pomocí standardních algoritmů, délek klíčů a modulů hardwarového zabezpečení (HSM).<br /><br />Klíče uloženého v Microsoft Azure Key Vault může použít k ochraně jiný klíč. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje dokumentaci pro ilustraci a pomáhají nasazení chráněných klíčů řešení ochrany ukázku CHD.|
 
 
 
@@ -209,8 +209,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje zásady granulární přístupu, které umožňují vlastníka Key Vault pro udělení přístupu ke konkrétním funkcím provádět určité operace na konkrétní entity. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Správa klíčů společnosti Contoso Webstore je izolovaný na jeden uživatelský účet (správce ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje zásady granulární přístupu, které umožňují vlastníka Key Vault pro udělení přístupu ke konkrétním funkcím provádět určité operace na konkrétní entity. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Správa klíčů společnosti Contoso Webstore je izolovaný na jeden uživatelský účet (správce ##@contosowebstore.com).|
 
 
 
@@ -228,8 +228,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uloženy v konkrétních trezorů klíčů identifikovaný zákazníka.<br /><br />Key Vault je přístupný současně a globálně více aplikací, což snižuje nutnost zkopírovat klíč a uložit na víc umístění. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uloženy v konkrétních trezorů klíčů identifikovaný zákazníka.<br /><br />Key Vault je přístupný současně a globálně více aplikací, což snižuje nutnost zkopírovat klíč a uložit na víc umístění. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -242,8 +242,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uloženy v konkrétních trezorů klíčů identifikovaný zákazníka. <br /><br />Key Vault je přístupný současně a globálně více aplikací, což snižuje nutnost zkopírovat klíč a uložit na víc umístění. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uloženy v konkrétních trezorů klíčů identifikovaný zákazníka. <br /><br />Key Vault je přístupný současně a globálně více aplikací, což snižuje nutnost zkopírovat klíč a uložit na víc umístění. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -258,8 +258,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -271,8 +271,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:** <br /><br />Při generování klíčů v Key Vault, Azure je zodpovědný za generování klíčů za specifikace zákazníka. Klíče se generují pomocí modul HSM. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:** <br /><br />Při generování klíčů v Key Vault, Azure je zodpovědný za generování klíčů za specifikace zákazníka. Klíče se generují pomocí modul HSM. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -284,8 +284,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Přineste si vlastní klíč (BYOK) nástroj zapouzdří klíče zákazníků a cílem konkrétní bezpečnostní trezoru, který je vázaný na konkrétní předplatné Azure. Klíč se dají importovat jenom do trezoru klíčů definované předplatného v zadané oblasti. Tento proces používá šifrování postupy od výrobce hardwaru. Zákazníci obdrží oznámení, že přenos bylo úspěšné. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Přineste si vlastní klíč (BYOK) nástroj zapouzdří klíče zákazníků a cílem konkrétní bezpečnostní trezoru, který je vázaný na konkrétní předplatné Azure. Klíč se dají importovat jenom do trezoru klíčů definované předplatného v zadané oblasti. Tento proces používá šifrování postupy od výrobce hardwaru. Zákazníci obdrží oznámení, že přenos bylo úspěšné. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -297,8 +297,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uložené v moduly hardwarového zabezpečení a jsou zabezpečené pomocí kryptografických zabezpečení od výrobce hardwaru. Metadata na klíče je uložená ve službě Azure Storage v šifrovaného stavu, který je jedinečný pro každý trezor klíčů. <br /><br /> |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Klíče jsou uložené v moduly hardwarového zabezpečení a jsou zabezpečené pomocí kryptografických zabezpečení od výrobce hardwaru. Metadata na klíče je uložená ve službě Azure Storage v šifrovaného stavu, který je jedinečný pro každý trezor klíčů. <br /><br /> |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -310,8 +310,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje funkce aktualizace nebo odebrání klíče, který je definován zákazník. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje funkce aktualizace nebo odebrání klíče, který je definován zákazník. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -326,8 +326,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje funkce vyřadit z provozu nebo nahrazení, který je definován zákazník. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Key Vault podporuje funkce vyřadit z provozu nebo nahrazení, který je definován zákazník. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -342,8 +342,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -355,8 +355,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Trezory klíč jsou logicky oddělené a nepodporují ověřování mezi adresáři. V důsledku toho je zabránit neoprávněným nahrazení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | **Pro zákazníky používající Key Vault:**<br /><br />Trezory klíč jsou logicky oddělené a nepodporují ověřování mezi adresáři. V důsledku toho je zabránit neoprávněným nahrazení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -368,8 +368,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Správa klíčů společnosti Contoso Webstore je izolovaný na jeden uživatelský účet (správce ##@contosowebstore.com).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Správa klíčů společnosti Contoso Webstore je izolovaný na jeden uživatelský účet (správce ##@contosowebstore.com).|
 
 
 
@@ -381,8 +381,8 @@ Data citlivé ověřování zahrnuje data, jak je uvedené v následující pož
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Key Vault pro všechny správu klíčů. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 

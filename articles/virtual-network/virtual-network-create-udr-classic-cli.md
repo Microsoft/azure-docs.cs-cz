@@ -1,11 +1,11 @@
 ---
-title: "Řídit směrování v virtuální síti příkazového - řádku - Azure Classic | Microsoft Docs"
-description: "Zjistěte, jak řídit směrování v virtuální sítě pomocí rozhraní příkazového řádku Azure v modelu nasazení classic"
+title: Řídit směrování v virtuální síti příkazového - řádku - Azure Classic | Microsoft Docs
+description: Zjistěte, jak řídit směrování v virtuální sítě pomocí rozhraní příkazového řádku Azure v modelu nasazení classic
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 6bfdfcdde39d64d662bb6d2ea55fadca24d49091
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: genli
+ms.openlocfilehash: f158270df344ebd55601b3f625aaabc284ad1323
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Řídit směrování a použití virtuálních zařízení (klasické) pomocí rozhraní příkazového řádku Azure
 

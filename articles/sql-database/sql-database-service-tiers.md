@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/09/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: a4474aec212084006becd02f317dabae6e731d98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5ac9623b9089fc0aa8a440196fb7f48cb4963a64
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Co je Azure SQL Database úrovně služeb?
 
@@ -101,6 +101,12 @@ Základě vCore nákupu modelu zákazníkům mzdy pro:
 > [!IMPORTANT]
 > Výpočetní, IOs, data a budou se účtovat úložiště protokolů pro databáze nebo elastického fondu. Úložiště zálohy je účtován na každou databázi. Podrobnosti instance spravované poplatky najdete [Azure SQL Database spravované Instance](sql-database-managed-instance.md).
 
+> [!IMPORTANT]
+> Oblast omezení: 
+>
+> Na základě vCore nákupní model dosud nejsou k dispozici v Austrálie – jihovýchod. Ve verzi preview není k dispozici v následujících oblastech: západní Evropa, střední Francie, Spojené království – jih a Spojené království – západ.
+> 
+
 ### <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Výběr vrstvy služeb, výpočetní, paměť, úložiště a vstupně-výstupní operace prostředky
 
 Převádění na základě vCore nákupní model, můžete nezávisle škálovat výpočetní a úložnou kapacitu, odpovídající místní výkonu a optimalizovat cena. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore.
@@ -109,7 +115,7 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 
 ||**Obecné účely**|**Kritické obchodní**|
 |---|---|---|
-|Nejvhodnější pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Obchodní aplikace s vysokým vstupně-VÝSTUPNÍMI požadavky. Nabízí nejvyšší odolnost proti selhání pomocí několika izolované repliky.|
+|Nejvhodnější pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
 |Compute|1 až 16 vCore|1 až 16 vCore|
 |Memory (Paměť)|7 GB za jádra |7 GB za jádra |
 |Úložiště|Vzdálené úložiště Premium, 5 GB – 4 TB|Místní úložiště SSD, 5 GB – 1 TB|
@@ -149,7 +155,7 @@ Chcete-li monitorovat aktuální celková velikost MDF a LDF, použijte [sp_spac
 
 Úložiště pro zálohování databáze je přidělen pro podporu bodem v možnostech doba obnovení (Možnosti PITR) a dlouhou dobu uchování zleva doprava databáze SQL. Toto úložiště je přidělen samostatně pro každou databázi a účtován jako dva samostatné za databáze poplatky. 
 
-- **Možnosti PITR**: jednotlivé databáze zálohy se zkopírují do úložiště RA-GRS jsou automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště se používá týdenní úplné zálohování, denní rozdílové zálohy a transakce protokolu zálohování zkopírovat každých 5 minut. Spotřeba úložiště závisí na míru změn databáze a dobu uchování. Můžete nakonfigurovat doby uchování samostatné pro každou databázi mezi 7 až 35 dnů. Velikost minimální úložiště rovna 1 x velikost dat je k dispozici bez dalších poplatků. Pro většinu databáze je toto množství dost pro ukládání záloh 7 dní.
+- **Možnosti PITR**: jednotlivé databáze zálohy se zkopírují do úložiště RA-GRS jsou automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Spotřeba úložiště závisí na míru změn databáze a dobu uchování. Můžete nakonfigurovat doby uchování samostatné pro každou databázi mezi 7 až 35 dnů. Velikost minimální úložiště rovna 1 x velikost dat je k dispozici bez dalších poplatků. Pro většinu databáze je toto množství dost pro ukládání záloh 7 dní.
 - **Zleva doprava**: SQL Database nabízí možnost konfigurace dlouhodobé uchovávání úplných záloh pro až 10 let. Pokud je LTR zásada povolena, tato zálohy se ukládají do úložiště RA-GRS automaticky, ale můžete řídit, jak často se zkopírují zálohy. Chcete-li splnit požadavky různých kompatibility, můžete vybrat odlišných období uchování pro týdenní, měsíční nebo roční zálohy. Tato konfigurace bude definovat, jak velké úložiště se použije pro zálohy zleva doprava. Cenová Kalkulačka zleva doprava. můžete použít k zjištění přibližné hodnoty náklady na úložiště zleva doprava. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
@@ -169,13 +175,13 @@ Následující tabulka obsahuje pokyny pro migraci konkrétních scénářů:
 |Aktuální úroveň služby|Cílové úrovně služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
 |Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Standard|Obchodně klíčové|Upgrade|Musíte migrovat sekundární nejprve|
-|Obchodně klíčové|Standard|Downgradovat|Musíte migrovat nejprve primární|
+|Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
+|Pro důležité obchodní informace|Standard|Downgradovat|Musíte migrovat nejprve primární|
 |Premium|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
 |Obecné účely|Premium|Upgrade|Musíte migrovat sekundární nejprve|
-|Obchodně klíčové|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
-|Obecné účely|Obchodně klíčové|Upgrade|Musíte migrovat sekundární nejprve|
+|Pro důležité obchodní informace|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
 ||||
 
 \* Každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore

@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na zabezpečení systému"
-description: "PCI DSS požadavek 6"
+title: Azure platebních zpracování plán, podle kterého – požadavky na zabezpečení systému
+description: PCI DSS požadavek 6
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 24c8d90d3fec27258165472e99ba3d36ffcba733
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>Požadavky na systém pro kompatibilní se standardem PCI DSS prostředí zabezpečení 
 ## <a name="pci-dss-requirement-6"></a>PCI DSS požadavek 6
@@ -46,8 +46,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Postupy byly vytvořit a implementovat kontrolovala chyby zabezpečení v hostitelé hypervisoru v hranice oboru. Ohrožení zabezpečení kontrola se provádí na serverové operační systémy, databáze a síťová zařízení s příslušnou ohrožení zabezpečení, nástroje pro kontrolu. Čtvrtletně minimálně jsou prováděny prověřování ohrožení zabezpečení. Kontrakty Microsoft Azure s nezávislí posuzovatelé provést průnikům testování hranice Microsoft Azure. Cvičení Red týmu se také pravidelně provádí a výsledky používat k vylepšení zabezpečení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Postupy byly vytvořit a implementovat kontrolovala chyby zabezpečení v hostitelé hypervisoru v hranice oboru. Ohrožení zabezpečení kontrola se provádí na serverové operační systémy, databáze a síťová zařízení s příslušnou ohrožení zabezpečení, nástroje pro kontrolu. Čtvrtletně minimálně jsou prováděny prověřování ohrožení zabezpečení. Kontrakty Microsoft Azure s nezávislí posuzovatelé provést průnikům testování hranice Microsoft Azure. Cvičení Red týmu se také pravidelně provádí a výsledky používat k vylepšení zabezpečení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -62,8 +62,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure je odpovědný za dodržování všech síťových zařízení a softwaru operačního systému hypervisoru chráněn před známých slabých míst instalací opravy zabezpečení použít dodavatele. Pokud nechcete použít službu na žádost zákazníka, aby se zajistilo zabránila a opraven včas úroveň ohrožení zabezpečení operačního systému existuje proces správy opravy. Produkční servery jsou prohledávány ověření dodržování předpisů oprava měsíčně. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. Azure poskytuje údržby všechny opravy služby.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure je odpovědný za dodržování všech síťových zařízení a softwaru operačního systému hypervisoru chráněn před známých slabých míst instalací opravy zabezpečení použít dodavatele. Pokud nechcete použít službu na žádost zákazníka, aby se zajistilo zabránila a opraven včas úroveň ohrožení zabezpečení operačního systému existuje proces správy opravy. Produkční servery jsou prohledávány ověření dodržování předpisů oprava měsíčně. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. Azure poskytuje údržby všechny opravy služby.|
 
 
 
@@ -81,8 +81,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft Azure a koncové body jsou vyvinuté v souladu s metodika Microsoft Security Development Lifecycle (SDL), který je v souladu s požadavky DSS. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla navržená tak, aby použijte osvědčené postupy ochrana CHD. Pokyny pro nasazení poskytuje podrobnosti o meassures zabezpečení a je povoleno protokolování.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft Azure a koncové body jsou vyvinuté v souladu s metodika Microsoft Security Development Lifecycle (SDL), který je v souladu s požadavky DSS. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore byla navržená tak, aby použijte osvědčené postupy ochrana CHD. Pokyny pro nasazení poskytuje podrobnosti o meassures zabezpečení a je povoleno protokolování.|
 
 
 
@@ -94,8 +94,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Zkontrolujte pro konečné zabezpečení (FSR) se provádí pro hlavní verze před produkční nasazení pomocí určených Poradce zabezpečení mimo Azure vývojový tým a ujistěte se, že jsou vydávány pouze aplikace, které jsou připravené pro produkci. Jako součást této poslední kontrole je zajistit, že všechny testovací účty a testovací data byly odebrány. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Zkontrolujte pro konečné zabezpečení (FSR) se provádí pro hlavní verze před produkční nasazení pomocí určených Poradce zabezpečení mimo Azure vývojový tým a ujistěte se, že jsou vydávány pouze aplikace, které jsou připravené pro produkci. Jako součást této poslední kontrole je zajistit, že všechny testovací účty a testovací data byly odebrány. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -116,8 +116,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft Azure a koncové body jsou vyvinuté v souladu s metody Microsoft životního cyklu SDL (Security Development). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aplikace Microsoft Azure a koncové body jsou vyvinuté v souladu s metody Microsoft životního cyklu SDL (Security Development). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -129,8 +129,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft dodržuje NIST pokyny týkající aspekty zabezpečení při vývoji softwaru v této informace zabezpečení musí být integrován do SDLC od zahájení systému. Nepřetržité integrace postupů zabezpečení v procesu Microsoft SDL umožňuje:<ul><li>Časná identifikace a zmírnění chyby zabezpečení a nesprávné konfigurace</li><li>Informace o potenciální softwaru kódování problémy způsobené požadované bezpečnostní ovládací prvky</li><li>Identifikace sdílené zabezpečení služeb a opakované použití nástroje osvědčené postupy zabezpečení, což zvyšuje postavení zabezpečení prostřednictvím principy metody a techniky</li><li>Vynucení programu správy společnosti Microsoft již komplexní rizika</li></ul>Microsoft Azure navázal změn a verzí procesů správy k řízení provádění hlavních změn, včetně:<ul><li>Identifikace a dokumentaci plánované změny</li><li>Identifikace obchodních cílů, priority a scénáře při plánování produktu</li><li>Specifikace návrhu funkce nebo součást</li><li>Zkontrolujte provozní připravenosti podle předem definovaná kritéria/kontrolní seznam pro vyhodnocení celkové riziko/dopad</li><li>Testování, autorizace a správu změn na základě přechodu kritérií pro vývoj (vývoj), INT (integrace testování), fáze (předprodukční) a PRODUKČNÍMU (produkční) prostředí podle potřeby. Je zodpovědností pro své vlastní aplikace hostované ve službě Microsoft Azure zákazníků.</li></ul> |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. <br /><br />Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).<br /><br />Změny se zaznamenávají pomocí služby Operations Management Suite a sady Runbook se používá ke shromažďování protokolů. [Operations Management Suite (OMS)](/azure/operations-management-suite/) poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft dodržuje NIST pokyny týkající aspekty zabezpečení při vývoji softwaru v této informace zabezpečení musí být integrován do SDLC od zahájení systému. Nepřetržité integrace postupů zabezpečení v procesu Microsoft SDL umožňuje:<ul><li>Časná identifikace a zmírnění chyby zabezpečení a nesprávné konfigurace</li><li>Informace o potenciální softwaru kódování problémy způsobené požadované bezpečnostní ovládací prvky</li><li>Identifikace sdílené zabezpečení služeb a opakované použití nástroje osvědčené postupy zabezpečení, což zvyšuje postavení zabezpečení prostřednictvím principy metody a techniky</li><li>Vynucení programu správy společnosti Microsoft již komplexní rizika</li></ul>Microsoft Azure navázal změn a verzí procesů správy k řízení provádění hlavních změn, včetně:<ul><li>Identifikace a dokumentaci plánované změny</li><li>Identifikace obchodních cílů, priority a scénáře při plánování produktu</li><li>Specifikace návrhu funkce nebo součást</li><li>Zkontrolujte provozní připravenosti podle předem definovaná kritéria/kontrolní seznam pro vyhodnocení celkové riziko/dopad</li><li>Testování, autorizace a správu změn na základě přechodu kritérií pro vývoj (vývoj), INT (integrace testování), fáze (předprodukční) a PRODUKČNÍMU (produkční) prostředí podle potřeby. Je zodpovědností pro své vlastní aplikace hostované ve službě Microsoft Azure zákazníků.</li></ul> |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. <br /><br />Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).<br /><br />Změny se zaznamenávají pomocí služby Operations Management Suite a sady Runbook se používá ke shromažďování protokolů. Log Analytics poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -142,8 +142,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -155,8 +155,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje pracovní službu, která je zaznamenána do protokolu a izolované. Každý z úrovně sítě má skupinu zabezpečení vyhrazenou síť [NSG]. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](payment-processing-blueprint.md#network-security-groups).|
 
 
 
@@ -168,8 +168,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Dynamická data číslo (PANORAMOVÁNÍ) primární účet nemá Contoso Webstore.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Dynamická data číslo (PANORAMOVÁNÍ) primární účet nemá Contoso Webstore.|
 
 
 
@@ -181,8 +181,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá všechny testovací účty.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá všechny testovací účty.|
 
 
 
@@ -198,8 +198,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. A údržby všechny opravy service poskytuje Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. A údržby všechny opravy service poskytuje Azure.|
 
 
 
@@ -215,8 +215,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. A údržby všechny opravy service poskytuje Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení služby PaaS. A údržby všechny opravy service poskytuje Azure.|
 
 
 
@@ -247,8 +247,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore obsahuje pokyny, které zabezpečený vývoj, diagramu toku dat a hrozeb modelu pro ilustraci zabezpečený vývoj postupy.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Naleznete v části "Microsoft Azure" [požadavek 6.4](#pci-dss-requirement-6-4). |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore obsahuje pokyny, které zabezpečený vývoj, diagramu toku dat a hrozeb modelu pro ilustraci zabezpečený vývoj postupy.|
 
 
 
@@ -267,8 +267,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure testy veřejné webové aplikace v rámci procesu SDL, než se aplikace nasadí do produkčního prostředí. Kromě toho Microsoft kontroluje všechny veřejné webové aplikace v provozním prostředí v pravidelných intervalech ke zjištění všech možných ohrožení zabezpečení. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Odkaz na řešení snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure testy veřejné webové aplikace v rámci procesu SDL, než se aplikace nasadí do produkčního prostředí. Kromě toho Microsoft kontroluje všechny veřejné webové aplikace v provozním prostředí v pravidelných intervalech ke zjištění všech možných ohrožení zabezpečení. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Odkaz na řešení snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
 
 
 
@@ -280,8 +280,8 @@ Skrupulí jednotlivce použít k získání privilegovaného přístupu k systé
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Odkaz na řešení snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Odkaz na řešení snižuje riziko ohrožení zabezpečení pomocí služby Application Gateway s firewall webových aplikací a ruleset OWASP povolena. Další informace najdete v tématu [pokyny PCI - zmírnění rizik chyb zabezpečení](payment-processing-blueprint.md#application-gateway).|
 
 
 

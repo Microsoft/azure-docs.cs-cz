@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2018
-ms.author: v-masebo;kgremban
-ms.openlocfilehash: e6f4aa61e37769dc4851f8284d07a7991ee38c91
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: kgremban
+ms.openlocfilehash: 0ba614ab26caad31a045849d85a1abcbb5a9f818
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-desired-properties-to-configure-devices-python"></a>Použijte požadované vlastnosti pro konfiguraci zařízení (Python)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -159,7 +159,7 @@ V této části vytvoříte konzolovou aplikaci Python, která se připojuje k v
 1. Spusťte aplikaci zařízení:
    
     ```cmd/sh
-    node SimulateDeviceConfiguration.js
+    node SimulateDeviceConfiguration.py
     ```
    
     Měli byste vidět zprávu `Device twins updated.`. Nechte aplikaci spuštěnou.

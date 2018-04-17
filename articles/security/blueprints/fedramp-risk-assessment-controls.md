@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a vyhodnocení rizik plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů"
-description: "FedRAMP webové aplikace automatizace - vyhodnocení rizik"
+title: Zabezpečení Azure a vyhodnocení rizik plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů
+description: FedRAMP webové aplikace automatizace - vyhodnocení rizik
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7abdb674b9d6bb000ce9a8e1861d012c1882f2a5
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 7a7529f9a0ebe43c9fd6e473baff6f7a3b61e5e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="risk-assessment-ra"></a>Vyhodnocení rizik (RA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu hodnocení rizik, která řeší účel, oboru, role, odpovědnosti, správu závazků, koordinaci mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásad vyhodnocení rizik a ovládací prvky přidružené riziko assessment; kontroluje a aktualizuje aktuální zásady hodnocení rizik [přiřazení: organizace definované frekvence]; a také riziko postupy posuzování [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA 2.a** organizace rozděluje informace a informace o systému v souladu s platné zákony federal, objednávky vedení, direktivy, zásady, nařízení, standardů a pokyny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA 2.b** organizace dokumenty výsledky kategorizaci zabezpečení (včetně podpora odůvodnění) v plánu zabezpečení pro systém informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-2.c** organizace zajišťuje, že autorizace oficiální nebo autorizace oficiální určené zástupce zkontroluje a schválí rozhodnutí kategorizaci zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA 3.a** organizace provádí hodnocení rizik, včetně pravděpodobnost a odhad škodu před neoprávněným přístupem, použití, zpřístupnění, přerušení, úpravy nebo odstranění informace o systému a informace se zpracuje, ukládá nebo přenáší.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.b** organizace dokumenty výsledky hodnocení rizik v [výběr: plánu zabezpečení; zpráva o hodnocení rizik; [Přiřazení: organizace definované dokumentu]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.c** organizace zkontroluje výsledky hodnocení rizik [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.d** organizace šíří výsledky hodnocení rizik [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-3.e** Organizace aktualizuje vyhodnocení rizik [přiřazení: organizace definované frekvence] nebo vždy, když jsou významné změny systému informace nebo prostředí operace (včetně identifikace nové hrozby a ohrožení zabezpečení), nebo Další podmínky, které můžou mít vliv na stav zabezpečení systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,11 +157,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.a** organizace hledá ohrožení zabezpečení v systému informace a hostované aplikace [přiřazení: frekvence definované organizace nebo náhodně v souladu s definované organizace procesu] a kdy nová ohrožení zabezpečení potenciálně ovlivňuje systém a aplikace jsou identifikovány a jsou uvedeny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. Toto řešení poskytuje komplexní pohled postavení zabezpečení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Vyhodnocení směrného plánu vyhodnocuje sady klíčů registru, nastavení zásad auditu a nastavení zásad zabezpečení společně se doporučené hodnoty těchto nastavení společnosti Microsoft. Vyhodnocení aktualizací vyhodnocuje stav dostupné aktualizace na všechny nasazené virtuální počítače. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. Toto řešení poskytuje komplexní pohled postavení zabezpečení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Vyhodnocení směrného plánu vyhodnocuje sady klíčů registru, nastavení zásad auditu a nastavení zásad zabezpečení společně se doporučené hodnoty těchto nastavení společnosti Microsoft. Vyhodnocení aktualizací vyhodnocuje stav dostupné aktualizace na všechny nasazené virtuální počítače. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -171,11 +171,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.b** organizace využívá ohrožení zabezpečení kontrolu nástroje a techniky, které vzájemná funkční spolupráce mezi nástroje usnadnit a automatizovat části procesu správy ohrožení zabezpečení pomocí standardů pro vytvoření výčtu platforem, nedostatky softwaru a nesprávné konfigurace; formátování seznamy a testovací postupy; a měření dopad ohrožení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Zjištěné problémy přiřazené hodnocení závažnosti. ID společné konfigurace – výčet (CCE) jsou k dispozici pro pravidla vyhodnocení směrného plánu.  |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Zjištěné problémy přiřazené hodnocení závažnosti. ID společné konfigurace – výčet (CCE) jsou k dispozici pro pravidla vyhodnocení směrného plánu.  |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.c** organizace analyzuje sestavy kontroly ohrožení zabezpečení a výsledkem vyhodnocování řízení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5** organizace opravuje legitimní ohrožení zabezpečení [přiřazení: organizace definované odezvy] v souladu s organizační hodnocení rizik.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5.e** Organizace sdílí informacemi získanými z ohrožení zabezpečení kontrolu zabezpečení a proces hodnocení ovládacího prvku s [přiřazení: organizace definované pracovníky nebo rolí] k odstranění podobné ohrožení zabezpečení v ostatních systémech informace (tj.), Systémová slabá místa nebo nedostatky).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,11 +227,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (1)** organizace využívá kontrolu nástroje, které obsahují možnost snadno aktualizovat ohrožení zabezpečení systému informace ke skenování ohrožení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Kritéria, kterými se tato řešení vyhodnocení se automaticky aktualizuje. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Kritéria, kterými se tato řešení vyhodnocení se automaticky aktualizuje. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -241,11 +241,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (2)** organizace aktualizace ohrožení zabezpečení systému informace zkontrolovat [výběr (jeden nebo více): [přiřazení: organizace definované frekvence]; před nové prohledání; Pokud nová ohrožení zabezpečení jsou identifikovány a hlášené].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Kritéria, kterými se tato řešení vyhodnocení se automaticky aktualizuje. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Kritéria, kterými se tato řešení vyhodnocení se automaticky aktualizuje. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -255,11 +255,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (3)** organizace využívá ohrožení zabezpečení kontrolu postupy, které může identifikovat spektra a hloubku pokrytí (tj. komponenty system informace zkontrolovat a ohrožení zabezpečení zaškrtnutí).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Vyhodnocení aktualizací provede hodnocení před virtuálními počítači Windows a Linux. Vyhodnocení směrného plánu provede hodnocení pro virtuální počítače s Windows pomocí Microsoft vyvinul směrný plán podle odvětví osvědčené postupy. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. V rámci řešení jsou k dispozici dvě domény zabezpečení, vyhodnocení aktualizací a vyhodnocení směrného plánu. Vyhodnocení aktualizací provede hodnocení před virtuálními počítači Windows a Linux. Vyhodnocení směrného plánu provede hodnocení pro virtuální počítače s Windows pomocí Microsoft vyvinul směrný plán podle odvětví osvědčené postupy. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (4)** organizace určuje, jaké informace o systému informace je zjistitelný podle nežádoucí a následně trvá [přiřazení: organizace definované opravné akce].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (5)** systém informace implementuje autorizaci privilegovaného přístupu [přiřazení: komponent systému organizace identifikovat informace] pro vybrané [přiřazení: organizace definované ohrožení zabezpečení kontrolu aktivity].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,11 +297,11 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (6)** organizace využívá automatizované mechanismy k porovnání výsledků prověřování ohrožení zabezpečení v čase k určení trendy v ohrožení zabezpečení systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | OMS poskytuje možnost vytvořit vlastní řídicí panel dlaždice, které chcete analyzovat data shromažďovaná společností analýzy protokolů a Microsoft Monitoring Agent. Tyto dlaždice můžete přizpůsobit tak, aby zobrazení trendů v čase. |
+| **Zákazníka** | Azure poskytuje možnost vytvořit vlastní řídicí panel dlaždice, které chcete analyzovat data shromažďovaná společností analýzy protokolů a Microsoft Monitoring Agent. Tyto dlaždice můžete přizpůsobit tak, aby zobrazení trendů v čase. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (8)** organizace zkontroluje protokoly historie auditu, abyste zjistili, pokud byla dříve zneužití ohrožení zabezpečení identifikované v informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,9 +325,9 @@ ms.lasthandoff: 02/11/2018
 
 **RA-5 (10)** organizace korelaci výstup nástroje k určení přítomnosti vektory útoku více vulnerability nebo více hop prověřování ohrožení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. Toto řešení poskytuje komplexní pohled postavení zabezpečení. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v nasazené řešení OMS. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. Toto řešení poskytuje komplexní pohled postavení zabezpečení. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v řešení pro správu nasazené. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |

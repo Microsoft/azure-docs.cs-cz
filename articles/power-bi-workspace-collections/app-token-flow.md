@@ -1,12 +1,12 @@
 ---
-title: "Ověřování a autorizaci s Power BI prostoru kolekce | Microsoft Docs"
-description: "Ověřování a autorizaci s Power BI prostoru kolekce."
+title: Ověřování a autorizaci s Power BI prostoru kolekce | Microsoft Docs
+description: Ověřování a autorizaci s Power BI prostoru kolekce.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: ae9627c6bb5e7bb099598acaa2eb29375c35593e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizaci s Power BI prostoru kolekce
 
@@ -48,7 +48,7 @@ Váš token zabezpečení aplikace může obsahovat následující deklarace ide
 | **ver** |Verze tokenu aplikace. 0.2.0 je aktuální verze. |
 | **oblast** |Zamýšlený příjemce tokenu. Kolekce pracovních prostorů Power BI použijte: "https://analysis.windows.net/powerbi/api." |
 | **iss** |Řetězec označující aplikace, která vydala token. |
-| **Typ** |Typ tokenu aplikace, který je právě vytvářena. Aktuální se podporuje jen typ **vložení**. |
+| **type** |Typ tokenu aplikace, který je právě vytvářena. Aktuální se podporuje jen typ **vložení**. |
 | **WCN** |Název kolekce prostoru token se vydává. |
 | **interní databáze Windows** |ID pracovního prostoru token se vydává. |
 | **identifikátorů RID** |ID sestavy token se vydává. |

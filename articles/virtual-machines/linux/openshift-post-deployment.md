@@ -1,32 +1,32 @@
 ---
-title: "OpenShift Azure po nasazení úloh | Microsoft Docs"
-description: "Další úlohy při po clusteru služby OpenShift byly nasazeny."
+title: OpenShift Azure po nasazení úloh | Microsoft Docs
+description: Další úlohy při po clusteru služby OpenShift byly nasazeny.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 77c4719b5cee7f5736d73ee10cf6abf12229ea11
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="post-deployment-tasks"></a>Úlohy po nasazení
 
 Po nasazení clusteru služby OpenShift, můžete nakonfigurovat další položky. Tento článek obsahuje následující:
 
 - Jak nakonfigurovat jednotné přihlašování pomocí služby Azure Active Directory (Azure AD)
-- Postup konfigurace služby Operations Management Suite monitorování OpenShift
+- Postup konfigurace analýzy protokolů pro monitorování OpenShift
 - Postup konfigurace metrik a protokolování
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Konfigurovat jednotné přihlašování pomocí služby Azure Active Directory
@@ -38,9 +38,9 @@ Pokud chcete použít pro ověřování Azure Active Directory, musíte vytvoři
 Tyto kroky používají rozhraní příkazového řádku Azure k vytvoření registrace aplikací a grafickým uživatelským rozhraním (portál) Chcete-li nastavit oprávnění. Chcete-li vytvořit registrace aplikace, je třeba pět následující informace:
 
 - Zobrazovaný název: název registraci aplikace (například OCPAzureAD)
-- Domovská stránka: adresa URL konzoly OpenShift (například https://masterdns343khhde.westus.cloudapp.azure.com:8443 nebo konzola)
-- Identifikátor URI: Adresa URL konzoly OpenShift (například https://masterdns343khhde.westus.cloudapp.azure.com:8443 nebo konzola)
-- Adresa URL odpovědi: Hlavní veřejnou adresu URL a název pro registraci aplikace (například https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
+- Domovská stránka: OpenShift konzole adresy URL (například) https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Identifikátor URI: Adresa URL konzoly OpenShift (např. https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Adresa URL odpovědi: Hlavní veřejnou adresu URL a název registraci aplikace (například) https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
 - Heslo: Zabezpečené heslo (použijte silné heslo)
 
 Následující příklad vytvoří registraci aplikací s použitím předchozích informací:
@@ -145,7 +145,7 @@ Vložte následující řádky ihned po předchozí řádky:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Najít ID klienta pomocí rozhraní příkazového řádku následující příkaz:```az account show```
+Najít ID klienta pomocí rozhraní příkazového řádku následující příkaz: ```az account show```
 
 Restartujte služby hlavní OpenShift na všech uzlech, hlavní:
 
@@ -171,11 +171,11 @@ sudo systemctl restart atomic-openshift-master
 
 V konzole OpenShift uvidíte teď dvě možnosti pro ověřování: htpasswd_auth a [registrace aplikací].
 
-## <a name="monitor-openshift-with-operations-management-suite"></a>Monitorování OpenShift s služby Operations Management Suite
+## <a name="monitor-openshift-with-log-analytics"></a>Monitorování OpenShift s analýzy protokolů
 
-Pokud chcete monitorovat OpenShift s Operations Management Suite, můžete použít jednu ze dvou možností: Instalace agenta OMS na hostiteli virtuálního počítače nebo kontejner OMS. Tento článek obsahuje pokyny pro nasazení kontejneru OMS.
+Pokud chcete monitorovat OpenShift s analýzy protokolů, můžete použít jednu ze dvou možností: Instalace agenta OMS na hostiteli virtuálního počítače nebo kontejner OMS. Tento článek obsahuje pokyny pro nasazení kontejneru OMS.
 
-## <a name="create-an-openshift-project-for-operations-management-suite-and-set-user-access"></a>Vytvoření projektu OpenShift pro služby Operations Management Suite a nastavení přístupu uživatele
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Vytvoření projektu OpenShift pro analýzy protokolů a nastavení přístupu uživatele
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -244,7 +244,7 @@ spec:
 
 ## <a name="create-a-secret-yaml-file"></a>Vytvořte soubor tajný yaml
 
-K vytvoření souboru tajný yaml, budete potřebovat dva kusy informací: ID pracovního prostoru OMS a sdílený klíč pracovního prostoru OMS. 
+K vytvoření souboru tajný yaml, budete potřebovat dva kusy informací: ID pracovního prostoru analýzy protokolů a protokolu sdílený klíč pracovního prostoru analýzy. 
 
 Následuje ukázkový soubor ocp-secret.yml: 
 
@@ -258,7 +258,7 @@ data:
   KEY: key_data
 ```
 
-Nahraďte wsid_data s Base64, pomocí kódování OMS ID pracovního prostoru. Potom můžete nahraďte key_data s kódováním Base64 OMS prostoru sdílený klíč.
+Nahraďte wsid_data s Base64, pomocí kódování ID pracovní prostor Log Analytics. Potom můžete nahraďte key_data s kódováním base64, pomocí protokolu Analytics prostoru sdílený klíč.
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'
@@ -347,7 +347,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cl
 -e openshift_logging_install_logging=True 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Začínáme s platformou OpenShift kontejneru](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
 - [Začínáme s OpenShiftem Origin](https://docs.openshift.org/latest/getting_started/index.html)

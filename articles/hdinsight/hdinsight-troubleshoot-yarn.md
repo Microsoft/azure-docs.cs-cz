@@ -1,25 +1,23 @@
 ---
-title: "Řešení potíží YARN pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se práce s Apache Hadoop YARN a Azure HDInsight."
-keywords: "Azure HDInsight, YARN – nejčastější dotazy, řešení potíží s průvodce, časté otázky"
+title: Řešení potíží YARN pomocí Azure HDInsight | Microsoft Docs
+description: Získejte odpovědi na časté otázky týkající se práce s Apache Hadoop YARN a Azure HDInsight.
+keywords: Azure HDInsight, YARN – nejčastější dotazy, řešení potíží s průvodce, časté otázky
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: F76786A9-99AB-4B85-9B15-CA03528FC4CD
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: fbcb4807aa7f6a3d6227cd630c77714c4d2834b3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 338d678fb31a86046b8bc6424d0e8aac2de1a0c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Řešení potíží YARN pomocí Azure HDInsight
 
@@ -28,16 +26,16 @@ Další informace o hlavních problémů a jejich řešení při práci s Apache
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak vytvořit novou frontu YARN v clusteru?
 
 
-### <a name="resolution-steps"></a>Kroky řešení 
+### <a name="resolution-steps"></a>Postup řešení 
 
 Vytvořte novou frontu YARN pomocí následujících kroků v Ambari a pak vyvážit přidělení kapacity mezi všechny fronty. 
 
 V tomto příkladu dvě existující fronty (**výchozí** a **thriftsvr**) obě se změnil z 50 % kapacity na kapacity 25 %, která poskytuje nové kapacity 50 % fronty (spark).
 | Fronta | Kapacita | Maximální kapacita |
 | --- | --- | --- | --- |
-| Výchozí | 25 % | 50% |
-| thrftsvr | 25 % | 50% |
-| Spark | 50% | 50% |
+| výchozí | 25 % | 50 % |
+| thrftsvr | 25 % | 50 % |
+| Spark | 50 % | 50 % |
 
 1. Vyberte **zobrazení Ambari** ikonu a potom vyberte vzoru mřížky. Potom vyberte **správce front YARN**.
 
@@ -73,7 +71,7 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Jak lze stáhnout protokoly YARN z clusteru?
 
 
-### <a name="resolution-steps"></a>Kroky řešení 
+### <a name="resolution-steps"></a>Postup řešení 
 
 1. Připojte se ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-2).
 

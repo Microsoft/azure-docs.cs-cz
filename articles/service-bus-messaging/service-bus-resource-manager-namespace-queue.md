@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření oboru názvů Azure Service Bus a fronty pomocí šablony Azure Resource Manager | Microsoft Docs"
-description: "Vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manageru"
+title: Vytvoření oboru názvů Azure Service Bus a fronty pomocí šablony Azure Resource Manager | Microsoft Docs
+description: Vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manageru
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 2ac9bb07a1b690681e0b263eea233cd5373d990b
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: 47e29050ca78ee116f3c4dee0ecb53a6a71a866b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus a fronty pomocí šablony Azure Resource Manager
 
@@ -100,8 +100,7 @@ Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**, s f
         "location": "[variables('location')]",
         "kind": "Messaging",
         "sku": {
-            "name": "StandardSku",
-            "tier": "Standard"
+            "name": "Standard",
         },
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",
@@ -134,7 +133,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste vytvoření a nasazení prostředků pomocí Azure Resource Manager, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Service Bus pomocí prostředí PowerShell](service-bus-manage-with-ps.md)

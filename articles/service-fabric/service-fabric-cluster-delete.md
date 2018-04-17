@@ -1,11 +1,11 @@
 ---
-title: "Odstranění clusteru služby Azure a jeho prostředků | Microsoft Docs"
-description: "Zjistěte, jak úplně odstranit cluster Service Fabric odstranění skupiny prostředků obsahující cluster nebo selektivně odstraněním prostředky."
+title: Odstranění clusteru služby Azure a jeho prostředků | Microsoft Docs
+description: Zjistěte, jak úplně odstranit cluster Service Fabric odstranění skupiny prostředků obsahující cluster nebo selektivně odstraněním prostředky.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de422950-2d22-4ddb-ac47-dd663a946a7e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
-ms.author: chackdan
-ms.openlocfilehash: 7672aa12421fbe4ad86e7315d6a7a06c2ff5124d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: aljo
+ms.openlocfilehash: 7da2277fef224ff7859cac1ad5a2290c9dc56a85
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Odstranění clusteru Service Fabric na Azure a prostředky, které používá
 Cluster Service Fabric se skládá z mnoha dalším prostředkům služby Azure kromě prostředek clusteru sám sebe. Proto je ke kompletnímu odstranění clusteru Service Fabric potřeba odstranit taky prostředky, které ho tvoří.
@@ -46,7 +46,7 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 Zobrazí se výzva k potvrzení odstranění, pokud jste nepoužili *-Force* možnost. Na potvrzení RG a všechny prostředky, které obsahuje, se odstraní.
 
 ### <a name="delete-a-resource-group-in-the-azure-portal"></a>Odstranit skupinu prostředků na portálu Azure
-1. Přihlášení k [portál Azure](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Přejděte ke clusteru Service Fabric, který chcete odstranit.
 3. Klikněte na název skupiny prostředků na stránce essentials clusteru.
 4. Po výběru této možnosti **Essentials skupiny prostředků** stránky.
@@ -60,12 +60,12 @@ Pokud vaše skupina prostředků má jenom prostředky, které se vztahují k cl
 
 Pokud jste nasadili cluster pomocí portálu nebo pomocí jedné z šablon služby Správce prostředků infrastruktury z Galerie šablon, jsou všechny prostředky, které cluster používá označené s těmito dvěma značkami. Můžete je používat k rozhodování o prostředky, ke kterým chcete odstranit.
 
-***Značka č. 1:*** klíč = clusterName, hodnota = "název clusteru.
+***Značka #1:*** klíč = clusterName, hodnota = "název clusteru.
 
-***Značka č. 2:*** klíč = resourceName, hodnota = ServiceFabric
+***Značka #2:*** klíč = resourceName, hodnota = ServiceFabric
 
 ### <a name="delete-specific-resources-in-the-azure-portal"></a>Odstranit konkrétní prostředky na portálu Azure
-1. Přihlášení k [portál Azure](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Přejděte ke clusteru Service Fabric, který chcete odstranit.
 3. Přejděte na **všechna nastavení** v okně essentials.
 4. Klikněte na **značky** pod **Správa prostředků** v okně nastavení.
@@ -84,19 +84,19 @@ Otevřete okno prostředí PowerShell a spusťte následující rutiny PS:
 ```powershell
 Login-AzureRmAccount
 ```
-Pro každou prostředků chcete odstranit, spusťte následující:
+Pro všechny prostředky, které chcete odstranit spusťte následující skript:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-Pokud chcete odstranit prostředek clusteru, spusťte následující:
+Pokud chcete odstranit prostředek clusteru, spusťte následující skript:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si následující také další informace o upgradu clusteru a rozdělení do oddílů služby:
 
 * [Další informace o upgrade clusteru](service-fabric-cluster-upgrade.md)

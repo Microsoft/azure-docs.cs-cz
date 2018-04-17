@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4f44d8cc48d6bfee909c04b20136cd2be6f828a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžnou integraci a nasazení v Azure Data Factory
 
@@ -61,6 +61,8 @@ Tady je celý životní cyklus průběžnou integraci a nasazení, které může
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatizovat průběžnou integraci s verzemi služby VSTS
 
 Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizovat nasazení objektu pro vytváření dat do několika prostředí.
+
+![Diagram průběžnou integraci s služby VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Požadavky
 

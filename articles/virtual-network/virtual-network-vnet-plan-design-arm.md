@@ -1,6 +1,6 @@
 ---
-title: "Průvodce návrhem a plán virtuální sítě Azure (VNet) | Microsoft Docs"
-description: "Informace o plánování a návrh virtuálních sítí v Azure na základě požadavků vaší izolace, připojení a umístění."
+title: Průvodce návrhem a plán virtuální sítě Azure (VNet) | Microsoft Docs
+description: Informace o plánování a návrh virtuálních sítí v Azure na základě požadavků vaší izolace, připojení a umístění.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Naplánujte a navrhněte Azure Virtual Network
 Vytvoření virtuální sítě a experimentovat s je dostatečně snadno, ale pravděpodobné, budete nasazovat více virtuálních sítí v čase pro podporu provozním potřebám vaší organizace. S některými plánování a návrhu bude možné nasadit virtuální sítě a připojení prostředků, které potřebujete efektivněji. Pokud nejste obeznámeni s virtuální sítě, se doporučuje, můžete [Další informace o virtuálních sítí](virtual-networks-overview.md) a [nasazení](quick-create-portal.md) jeden než budete pokračovat.
@@ -60,9 +60,9 @@ Virtuální sítě obsahují následující vlastnosti.
 
 | Vlastnost | Popis | Omezení |
 | --- | --- | --- |
-| **name** |Název virtuální sítě |Řetězec až 80 znaků. Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky. Musí začínat písmenem nebo číslicí. Musí končit písmenem, číslicí nebo podtržítkem. Můžete obsahuje velká nebo malá písmena. |
+| **Jméno** |Název virtuální sítě |Řetězec až 80 znaků. Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky. Musí začínat písmenem nebo číslicí. Musí končit písmenem, číslicí nebo podtržítkem. Můžete obsahuje velká nebo malá písmena. |
 | **location** |Umístění Azure (označované také jako oblast). |Musí mít jednu z platných umístění Azure. |
-| **addressSpace** |Kolekce předpon adres, které tvoří virtuální sítě v zápisu CIDR. |Musí být pole platné bloky adres CIDR, včetně rozsahů veřejných IP adres. |
+| **adresní prostor** |Kolekce předpon adres, které tvoří virtuální sítě v zápisu CIDR. |Musí být pole platné bloky adres CIDR, včetně rozsahů veřejných IP adres. |
 | **Podsítě** |Kolekce podsítě, které tvoří virtuální sítě |viz následující tabulka vlastnosti podsítě. |
 | **dhcpOptions** |Objekt, který obsahuje jeden požadovaná vlastnost s názvem **dnsServers**. | |
 | **dnsServers** |Pole serverů DNS používaných virtuální sítě. Pokud není zadaný žádný server, se používá Azure interní překlad adres. |Musí být pole až 10 serverů DNS, podle IP adresy. |
@@ -73,7 +73,7 @@ Podsítě obsahují následující vlastnosti.
 
 | Vlastnost | Popis | Omezení |
 | --- | --- | --- |
-| **name** |Název podsítě |Řetězec až 80 znaků. Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky. Musí začínat písmenem nebo číslicí. Musí končit písmenem, číslicí nebo podtržítkem. Můžete obsahuje velká nebo malá písmena. |
+| **Jméno** |Název podsítě |Řetězec až 80 znaků. Může obsahovat písmena, číslice, podtržítka, tečky a pomlčky. Musí začínat písmenem nebo číslicí. Musí končit písmenem, číslicí nebo podtržítkem. Můžete obsahuje velká nebo malá písmena. |
 | **location** |Umístění Azure (označované také jako oblast). |Musí mít jednu z platných umístění Azure. |
 | **addressPrefix** |Jedna adresa předponu, která tvoří podsíť v notaci CIDR |Musí být jeden blok CIDR, která je součástí jednoho virtuální síť adresní prostory. |
 | **networkSecurityGroup** |Skupina NSG použije na podsíť | |
@@ -87,12 +87,12 @@ Ve výchozím nastavení, virtuální sítě používá [Azure překlad](virtual
 Zkontrolujte síťové omezení v [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článek a ujistěte se, že váš návrh není v konfliktu s žádným z omezení. Některá omezení je možné zvýšit otevřením lístku podpory.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Můžete použít [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) řídit úroveň přístupu k prostředkům v Azure může mít různé uživatele. Tímto způsobem můžete oddělit práci váš tým podle svých potřeb.
+Můžete použít [Azure RBAC](../role-based-access-control/built-in-roles.md) řídit úroveň přístupu k prostředkům v Azure může mít různé uživatele. Tímto způsobem můžete oddělit práci váš tým podle svých potřeb.
 
 Pokud jde o virtuální sítě jsou problémem, uživatelé v **Přispěvatel sítě** role mít plnou kontrolu nad prostředky virtuální sítě Azure Resource Manager. Podobně, uživatelé v **Classic Přispěvatel sítě** role mít plnou kontrolu nad klasické virtuální síťové prostředky.
 
 > [!NOTE]
-> Můžete také [vytvářet vlastní role](../active-directory/role-based-access-control-configure.md) jednotlivé požadavky na správu.
+> Můžete také [vytvářet vlastní role](../role-based-access-control/role-assignments-portal.md) jednotlivé požadavky na správu.
 >
 >
 
@@ -112,10 +112,10 @@ Následující tabulka uvádí některé běžné vzory návrhu pro použití od
 
 | Scénář | Diagram | Odborníci na | Nevýhody |
 | --- | --- | --- | --- |
-| Jednomu předplatnému, dvě virtuální sítě na aplikace |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Jenom jedno předplatné pro správu. |Maximální počet virtuálních sítí na oblast Azure. Potom musíte více odběrů. Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
-| S jedním odběrem na aplikaci, dvě virtuální sítě na aplikace |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Využívá jenom dva virtuální sítě na jedno předplatné. |Těžší ke správě, pokud jsou moc velký počet aplikací. |
-| S jedním odběrem na organizační jednotku, dvě virtuální sítě, jednu aplikaci. |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Maximální počet virtuálních sítí na organizační jednotku (předplatné). Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
-| S jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací. |![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Aplikace musí být izolovat pomocí podsítě a skupin Nsg. |
+| Jednomu předplatnému, dvě virtuální sítě na aplikace |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Jenom jedno předplatné pro správu. |Maximální počet virtuálních sítí na oblast Azure. Potom musíte více odběrů. Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
+| S jedním odběrem na aplikaci, dvě virtuální sítě na aplikace |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Využívá jenom dva virtuální sítě na jedno předplatné. |Těžší ke správě, pokud jsou moc velký počet aplikací. |
+| S jedním odběrem na organizační jednotku, dvě virtuální sítě, jednu aplikaci. |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Maximální počet virtuálních sítí na organizační jednotku (předplatné). Zkontrolujte [Azure omezuje](../azure-subscription-service-limits.md#networking-limits) článku. |
+| S jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací. |![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Vyrovnávat mezi počet odběrů a virtuální sítě. |Aplikace musí být izolovat pomocí podsítě a skupin Nsg. |
 
 ### <a name="number-of-subnets"></a>Počet podsítí
 Je třeba zvážit několik podsítí ve virtuální síti v následujících scénářích:
@@ -202,11 +202,11 @@ Odběry a virtuální sítě se vztahují následující požadavky:
 
 Na základě těchto požadavků, potřebujete předplatné pro jednotlivé obchodní jednotky. Tímto způsobem, spotřebu prostředků z organizační jednotky nebude započítávat limity pro jiné organizační jednotky. A vzhledem k tomu, že chcete minimalizovat počet virtuálních sítí, měli byste zvážit použití **s jedním odběrem na organizační jednotku, dvě virtuální sítě na skupinu aplikací** vzor, jak vidíte níže.
 
-![Jednoho předplatného](./media/virtual-network-vnet-plan-design-arm/figure9.png)
+![Jedno předplatné](./media/virtual-network-vnet-plan-design-arm/figure9.png)
 
 Budete taky muset zadat adresní prostor pro každý virtuální síť. Vzhledem k tomu, že potřebujete centra pro připojení mezi místní data a oblasti, adresní prostor, použít pro virtuální sítě Azure nelze kolidovat s místní sítí a adresní prostor používá každý virtuální sítě nesmí kolidovat s jiné existující virtuální sítě. Splňovat tyto požadavky můžete použít adresní prostory v následující tabulce.  
 
-| **Předplatné** | **VNet** | **Oblast Azure** | **Adresní prostor** |
+| **Předplatné** | **Virtuální síť** | **Oblast Azure** | **Adresní prostor** |
 | --- | --- | --- | --- |
 | BU1 |ProdBU1US1 |Západní USA |172.16.0.0/16 |
 | BU1 |ProdBU1US2 |Východ USA |172.17.0.0/16 |
@@ -247,7 +247,7 @@ K řízení přístupu se vztahují následující požadavky:
 
 Na základě těchto požadavků, můžete přidat uživatele od týmu pro sítě do vestavěné **Přispěvatel sítě** role v každém předplatném; a vytvořit vlastní roli pro vývojáře aplikací v každém předplatném, bude mít práva k přidání virtuálních počítačů do existující podsítí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasazení virtuální sítě](quick-create-portal.md).
 * Pochopit, jak [vyrovnávat zatížení](../load-balancer/load-balancer-overview.md) virtuální počítače IaaS a [spravovat směrování nad několika oblastmi Azure](../traffic-manager/traffic-manager-overview.md).
 * Další informace o [skupin zabezpečení sítě](security-overview.md) řešení s NSG.

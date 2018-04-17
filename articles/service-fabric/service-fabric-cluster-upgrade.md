@@ -1,11 +1,11 @@
 ---
-title: "Upgrade clusteru služby Azure Service Fabric | Microsoft Docs"
-description: "Upgrade Service Fabric kód nebo konfigurace používající cluster Service Fabric, včetně nastavení režimu aktualizace clusteru upgrade certifikáty, přidání aplikace porty, provádění oprav operačního systému, a tak dále. Co můžete očekávat, když se provádí upgrady?"
+title: Upgrade clusteru služby Azure Service Fabric | Microsoft Docs
+description: Upgrade Service Fabric kód nebo konfigurace používající cluster Service Fabric, včetně nastavení režimu aktualizace clusteru upgrade certifikáty, přidání aplikace porty, provádění oprav operačního systému, a tak dále. Co můžete očekávat, když se provádí upgrady?
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
-ms.author: chackdan
-ms.openlocfilehash: 7ea71ab891583c51b3c07a4d0a9f0b4f54e56669
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: aljo
+ms.openlocfilehash: 22dae85c4125c54003f65aba3ef112ffcec9b76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Upgrade clusteru služby Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -210,7 +210,7 @@ Odkazovat na [použití opravy Orchestration](service-fabric-patch-orchestration
 ### <a name="os-upgrades-on-the-vms-that-make-up-the-cluster"></a>Upgrade operačního systému na virtuální počítače, které tvoří clusteru
 Pokud upgradujete bitovou kopii operačního systému na virtuální počítače clusteru, je nutné se jeden virtuální počítač najednou. Jste zodpovědní pro tento upgrade – v současné době není žádné automation pro tento.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak přizpůsobit některé [nastavení prostředků infrastruktury clusteru prostředků infrastruktury služby](service-fabric-cluster-fabric-settings.md)
 * Zjistěte, jak [škálování vašeho clusteru a odhlášení](service-fabric-cluster-scale-up-down.md)
 * Další informace o [upgradů aplikací](service-fabric-application-upgrade.md)

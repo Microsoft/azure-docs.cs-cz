@@ -3,8 +3,8 @@ title: 'Azure Cosmos DB: Příklady Java rozhraní SQL API | Microsoft Docs'
 description: Pro běžné úlohy pomocí Cosmos DB SQL rozhraní API služby Azure, včetně operace CRUD najít příkladů Java na Githubu.
 keywords: Příklad NoSQL
 services: cosmos-db
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 documentationcenter: java
 ms.assetid: d824d517-903e-4d82-ab0a-09fc3b984c84
 ms.service: cosmos-db
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 02/08/2018
-ms.author: mimig
-ms.openlocfilehash: 992451018baeea15bf63906c71ad72faccb0dbe4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: 3372de0218f20b29a03e0cc7caabea44cea10ded
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Příklady Java rozhraní SQL API
 

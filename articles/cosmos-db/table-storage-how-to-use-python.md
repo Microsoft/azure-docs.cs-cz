@@ -1,24 +1,23 @@
 ---
-title: "Začínáme s Azure Table storage pomocí Python | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: Začínáme s Azure Table storage pomocí Python | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 services: cosmos-db
 documentationcenter: python
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 7ddb9f3e-4e6d-4103-96e6-f0351d69a17b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/08/2018
-ms.author: mimig
-ms.openlocfilehash: 455479c9eb77093dd5611263fe5bdcf699b9d026
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>Začínáme s Azure Table storage pomocí Python
 
@@ -45,22 +44,14 @@ Pro úspěšné absolvování tohoto kurzu potřebujete následující položky:
 - [Tabulky Azure Cosmos DB sady SDK pro jazyk Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK se připojí pomocí Azure Table storage a rozhraní API služby Azure DB Cosmos tabulky.
 - [Účet služby Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account) nebo [účet Azure Cosmos DB](https://azure.microsoft.com/en-us/try/cosmosdb/)
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
-
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
-
-Můžete pracovat s tabulkami pomocí Azure Table storage nebo Azure Cosmos DB. Další informace o rozdílech mezi službami načtením [tabulky nabídky](table-introduction.md#table-offerings). Budete muset vytvořit účet služby, že se chystáte použít. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
-Nejjednodušší způsob, jak vytvořit první účet úložiště Azure, je pomocí [webu Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-
-Účet úložiště Azure můžete vytvořit také pomocí [prostředí Azure PowerShell](../storage/common/storage-powershell-guide-full.md) nebo [rozhraní příkazového řádku Azure](../storage/common/storage-azure-cli.md).
-
-Pokud teď nechcete vytvářet účet úložiště, můžete také pomocí emulátoru úložiště Azure spustit a otestovat kód v místním prostředí. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../storage/common/storage-use-emulator.md).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu Azure Cosmos DB tabulky rozhraní API
-
-Pokyny k vytvoření účtu Azure Cosmos DB tabulky API najdete v tématu [vytvořit účet rozhraní API tabulky](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="install-the-azure-cosmos-db-table-sdk-for-python"></a>Nainstalovat Azure Cosmos Databázové tabulce SDK pro Python
 

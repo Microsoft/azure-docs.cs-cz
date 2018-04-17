@@ -1,25 +1,23 @@
 ---
-title: "Přidání knihovny Hive během vytváření clusteru HDInsight - Azure | Microsoft Docs"
-description: "Informace o postupu přidání knihovny Hive (soubory jar) do clusteru HDInsight při vytváření clusteru."
+title: Přidání knihovny Hive během vytváření clusteru HDInsight - Azure | Microsoft Docs
+description: Informace o postupu přidání knihovny Hive (soubory jar) do clusteru HDInsight při vytváření clusteru.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2fd74b8d-c006-45c6-a9e2-72ff5d2d978a
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 434c7d24f55c20cc763df3b83429e039bb5e8541
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 71e2859085dc4a9f4fa327d88faff4fecf5108ef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Hive, při vytváření clusteru HDInsight
 
@@ -41,9 +39,9 @@ Při vytváření clusteru, skript vytvoří výčet soubory, kopíruje je do `/
 
 **Umístění skriptu**
 
-For **Linux-based clusters**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+Pro **clusterech se systémem Linux**: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
-For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
+Pro **clusterech se systémem Windows**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -56,7 +54,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
 * Účet úložiště obsahuje knihovnu souborů jar **musí** propojit během vytváření clusteru HDInsight. Musí být buď výchozí účet úložiště, nebo účet přidané prostřednictvím __volitelné konfiguraci__.
 
-* WASB cesta ke kontejneru musí být zadána jako parametr pro akce skriptu. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** na účet úložiště s názvem **mystorage**, bude parametr  **wasb://libs@mystorage.blob.core.windows.net/** .
+* WASB cesta ke kontejneru musí být zadána jako parametr pro akce skriptu. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** na účet úložiště s názvem **mystorage**, bude parametr **wasb://libs@mystorage.blob.core.windows.net/**.
 
   > [!NOTE]
   > Tento dokument předpokládá, že jste již vytvořili účet úložiště, kontejner objektů blob a odeslat soubory do ní.
@@ -76,7 +74,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
    * **NÁZEV**: Zadejte popisný název akce skriptu.
 
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+   * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
 
    * **HEAD**: zaškrtnete tuto možnost.
 
@@ -84,7 +82,7 @@ For **Windows-based clusters**: [https://hdiconfigactions.blob.core.windows.net/
 
    * **ZOOKEEPER**: nechat prázdné.
 
-   * **Parametry**: Zadejte adresu WASB účtu úložiště a kontejneru, který obsahuje JAR. Například  **wasb://libs@mystorage.blob.core.windows.net/** .
+   * **Parametry**: Zadejte adresu WASB účtu úložiště a kontejneru, který obsahuje JAR. Například **wasb://libs@mystorage.blob.core.windows.net/**.
 
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko Uložit konfiguraci.
 

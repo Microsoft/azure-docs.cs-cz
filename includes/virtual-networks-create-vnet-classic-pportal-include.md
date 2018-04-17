@@ -1,8 +1,24 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: edfcd4d59eceada9e1c6014dad9afa7fe8ab3c8f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Postup vytvoření klasické virtuální sítě na portálu Azure
 Pokud chcete vytvořit virtuální síť v závislosti na předchozím scénáři klasický, postupujte podle těchto kroků.
 
 1. V prohlížeči přejděte na http://portal.azure.com a v případě potřeby se přihlaste pomocí účtu Azure.
-2. Klikněte na tlačítko **vytvořit prostředek** > **sítě** > **virtuální síť**. Všimněte si, že **vybrat model nasazení** seznam již ukazuje **Classic**. 3. Klikněte na tlačítko **vytvořit** jak je znázorněno na následujícím obrázku.
+2. Klikněte na **Vytvořit prostředek** > **Sítě** > **Virtuální síť**. Všimněte si, že **vybrat model nasazení** seznam již ukazuje **Classic**. 3. Klikněte na tlačítko **vytvořit** jak je znázorněno na následujícím obrázku.
    
     ![Vytvoření virtuální sítě VNet na portálu Azure](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
 4. Na **virtuální síť** podokně, zadejte **název** virtuální síť a potom klikněte na **adresní prostor**. Nakonfigurujte nastavení prostoru adres pro síť VNet a jeho první podsíť a pak klikněte na tlačítko **OK**. Následující obrázek ukazuje nastavení blok CIDR pro náš scénář.

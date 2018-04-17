@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení dat a šifrování osvědčené postupy | Microsoft Docs"
-description: "Tento článek obsahuje sadu osvědčené postupy pro zabezpečení dat a šifrování pomocí součástí možnosti Azure."
+title: Zabezpečení dat a šifrování osvědčené postupy | Microsoft Docs
+description: Tento článek obsahuje sadu osvědčené postupy pro zabezpečení dat a šifrování pomocí součástí možnosti Azure.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Doporučené postupy zabezpečení služby Azure Data a šifrování
 Jeden z klíčů do ochrany dat v cloudu je monitorování účtů pro možné stavy, která může nastat vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Pro účely služby Azure data bude šifrování osvědčené postupy pro zabezpečení a doporučení ohledně stavy následující data:
@@ -63,11 +63,11 @@ Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Fac
 ## <a name="use-role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě Role pomocí
 Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení. To je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Azure na základě rolí řízení přístupu (RBAC) slouží k přiřazení oprávnění pro uživatele, skupiny a aplikace v určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role.
 
-Můžete využít [předdefinované role RBAC](../active-directory/role-based-access-built-in-roles.md) v Azure přiřadit oprávnění pro uživatele. Zvažte použití *Přispěvatel účet úložiště* pro operátorům cloudu, kteří potřebují spravovat účty úložiště a *Classic Přispěvatel účet úložiště* rolí ke správě klasické účty úložiště. Operátoři cloudu, které potřebuje ke správě virtuálních počítačů a účet úložiště, zvažte přidá do *Přispěvatel virtuálních počítačů* role.
+Můžete využít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md) v Azure přiřadit oprávnění pro uživatele. Zvažte použití *Přispěvatel účet úložiště* pro operátorům cloudu, kteří potřebují spravovat účty úložiště a *Classic Přispěvatel účet úložiště* rolí ke správě klasické účty úložiště. Operátoři cloudu, které potřebuje ke správě virtuálních počítačů a účet úložiště, zvažte přidá do *Přispěvatel virtuálních počítačů* role.
 
 Organizace, které nebudou vynucovat řízení přístupu dat s využitím funkcí, jako je RBAC může být poskytnutí další oprávnění, než je nezbytné pro své uživatele. To může vést k ohrožení zabezpečení dat tak, že někteří uživatelé, kteří mají přístup k datům, který by neměl mít na prvním místě.
 
-Další informace o Azure RBAC přečíst v článku [řízení přístupu](../active-directory/role-based-access-control-configure.md).
+Další informace o Azure RBAC přečíst v článku [řízení přístupu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Šifrování virtuálních počítačů Azure
 Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok k suverenity data o ochraně osobních údajů a dodržování předpisů a data. Azure Disk Encryption umožňuje správcům IT šifrování disků systému Windows a Linux IaaS virtuálního počítače (VM). Azure Disk Encryption využívá funkci oborový standard BitLocker systému Windows a DM-Crypt funkce systému Linux zajistit šifrování svazku operačního systému a datové disky.

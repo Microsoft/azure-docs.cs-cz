@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-ms.openlocfilehash: 5d62c40bfc909915fa222db12413634aa7ce7158
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0539736f4b7294a613ffd42c28ff6bb29cf9e2bf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Pomocí dynamického DNS zaregistrovat názvy hostitelů na serveru DNS
 [Azure poskytuje překlad](virtual-networks-name-resolution-for-vms-and-role-instances.md) pro virtuální počítače (VM) a instancí rolí. Ale pokud vaše překlad musí přejít nad rámec těch, které poskytuje Azure, můžete zadat vlastní servery DNS. To vám umožňuje přizpůsobit řešení DNS tak, aby odpovídal vašim požadavkům. Potřebujete například přístup k místním prostředkům prostřednictvím řadiči domény služby Active Directory.
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 Pokud vaše vlastní servery DNS jsou hostované jako virtuální počítače Azure může předat dotazy název hostitele pro stejnou virtuální síť Azure přeložit názvy hostitelů. Pokud nechcete použít tuto trasu, můžete zaregistrovat vaše názvy hostitelů virtuálních počítačů v serveru DNS pomocí dynamického DNS.  Azure nemá možnost (například přihlašovací údaje), jsou často potřeba alternativní uspořádání přímo vytvářet záznamy v vaše servery DNS. Tady jsou některé běžné scénáře s alternativy.
 
 ## <a name="windows-clients"></a>Klienti systému Windows
-Klienty připojené k jiné doméně systému Windows pokus zabezpečená aktualizace dynamického DNS (DDNS), když se budou spouštět nebo když se změní své IP adresy. Název DNS je název hostitele a primární příponu DNS. Azure zůstane prázdné primární příponu DNS, ale můžete tuto nastavit ve virtuálním počítači, pomocí [uživatelského rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [s použitím automatizace popsané tady](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
+Klienty připojené k jiné doméně systému Windows pokus zabezpečená aktualizace dynamického DNS (DDNS), když se budou spouštět nebo když se změní své IP adresy. Název DNS je název hostitele a primární příponu DNS. Azure zůstane prázdné primární příponu DNS, ale můžete tuto nastavit ve virtuálním počítači, pomocí [uživatelské rozhraní](https://technet.microsoft.com/library/cc794784.aspx) nebo [prostředí PowerShell](/powershell/module/dnsclient/set-dnsclient).
 
 Klienty připojené k doméně systému Windows registrovat IP adresy s řadičem domény pomocí zabezpečené dynamické DNS. Proces připojení k doméně nastaví primární příponu DNS na straně klienta a vytvoří a udržuje vztah důvěryhodnosti.
 

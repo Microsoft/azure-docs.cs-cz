@@ -1,34 +1,30 @@
 ---
-title: "Architektura MPP – Azure SQL Data Warehouse? | Dokumentace Microsoftu"
-description: "Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost."
+title: Azure SQL Data Warehouse – architektura MPP | Microsoft Docs
+description: Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: acomet
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: acomet
+ms.reviewer: mausher
+ms.openlocfilehash: a0dad8afa87b3424c8561b2aaf44fbe0f5d5dae6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - masivně paralelní zpracování architektura (MPP)
 Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost. 
 
-## <a name="mpp-architecture-components"></a>Architektura MPP součásti
-SQL Data Warehouse využívá horizontální navýšení kapacity architektura distribuovat výpočetní zpracování dat mezi několika uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako jednotek datových skladů. Odděluje SQL Data Warehouse výpočetní z úložiště, které umožňuje, můžete jako uživatel škálovat výpočetní nezávisle na data v systému.
+## <a name="mpp-architecture-components"></a>Komponenty architektury MPP
+SQL Data Warehouse využívá horizontální navýšení kapacity architektura distribuovat výpočetní zpracování dat mezi několika uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako jednotek datových skladů. SQL Data Warehouse odděluje výpočetní z úložiště, které umožňuje umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
 
 ![Architektura služby SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Data Warehouse používá architekturu uzel na základě. Aplikace připojit a vydávat příkazy T-SQL řídicí uzel, který je jediný bod položky pro datový sklad. Řídicí uzel spustí MPP modul, který optimalizuje dotazy pro paralelní zpracování a pak předá operations výpočetních uzlů k práci a současně. Výpočetní uzly ukládání dat všech uživatelů ve službě Azure Storage a spouští paralelní dotazy. Služba přesun dat (DMS) je služba interní úrovni systému, která přesouvá data mezi uzly podle potřeby spouštět dotazy paralelně a vrátíte se přesné výsledky. 
+SQL Data Warehouse používá architekturu založenou na uzlu. Aplikace připojit a vydávat příkazy T-SQL řídicí uzel, který je jediný bod položky pro datový sklad. Řídicí uzel spustí MPP modul, který optimalizuje dotazy pro paralelní zpracování a pak předá operations výpočetních uzlů k práci a současně. Výpočetní uzly ukládání dat všech uživatelů ve službě Azure Storage a spouští paralelní dotazy. Služba přesun dat (DMS) je služba interní úrovni systému, která přesouvá data mezi uzly podle potřeby spouštět dotazy paralelně a vrátíte se přesné výsledky. 
 
 Díky oddělenému úložišti a výpočetním prostředkům může SQL Data Warehouse:
 
@@ -91,7 +87,7 @@ Následující diagram znázorňuje replikované tabulky. Pro SQL Data Warehouse
 
 ![Replikované tabulky](media/sql-data-warehouse-distributed-data/replicated-table.png "replikované tabulky") 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
 * [Úspěšné zákaznické implementace]

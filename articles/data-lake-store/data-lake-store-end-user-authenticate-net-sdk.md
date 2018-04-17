@@ -1,8 +1,8 @@
 ---
-title: "Ověřování koncového uživatele: .NET SDK s Data Lake Store pomocí Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí sady .NET SDK služby Azure Active Directory"
+title: 'Ověřování koncového uživatele: .NET SDK s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí sady .NET SDK služby Azure Active Directory
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 524b00c9fac8b874576cb756c1c8ee39e15e9882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Ověřování koncového uživatele s Data Lake Store pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ V tomto článku se dozvíte o tom, jak používat sadu .NET SDK chcete ověřen
    4. Zavřete **Správce balíčků NuGet**.
 
 6. Otevřete **Program.cs**
-7. Replease použití příkazů s následujícími řádky:
+7. Nahradit bránu pomocí příkazů s následujícími řádky:
 
     ```csharp
     using System;

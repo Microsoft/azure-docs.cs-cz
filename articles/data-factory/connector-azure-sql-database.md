@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 82aea8b13fd4bad777fd3120fa811fa1ab284ac1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c4f27f59412fbfc72e193f916895c3e67091f5f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -127,7 +127,7 @@ Služba hlavní ověřování založené na AAD aplikace tokenu, postupujte podl
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             },
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
@@ -570,37 +570,37 @@ Při kopírování dat z/do Azure SQL Database, se používají následující m
 | Azure SQL Database datový typ | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |
 | bigint |Int64 |
-| Binární |Byte[] |
+| Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datový typ DateTimeOffset |Datový typ DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte] |
 | Plovoucí desetinná čárka |Dvojitý |
-| Bitové kopie |Byte[] |
+| Bitové kopie |Byte] |
 | celá čísla |Int32 |
-| money |Decimal |
+| peníze |Decimal |
 | nchar |Řetězec, Char] |
 | ntext |Řetězec, Char] |
 | číselné |Decimal |
 | nvarchar |Řetězec, Char] |
-| skutečné |Svobodný/svobodná |
-| ROWVERSION |Byte[] |
+| skutečné |Jednoduchá |
+| ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| sql_variant |Objekt * |
+| SQL_VARIANT |Objekt * |
 | Text |Řetězec, Char] |
-| time |TimeSpan |
-| časové razítko |Byte[] |
+| time |Časový interval |
+| časové razítko |Byte] |
 | tinyint |Bajtů |
 | Typ UniqueIdentifier |Guid |
-| varbinary |Byte[] |
+| varbinary |Byte] |
 | varchar |Řetězec, Char] |
-| xml |Xml |
+| xml |XML |
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

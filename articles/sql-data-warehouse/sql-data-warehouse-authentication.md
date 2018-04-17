@@ -1,35 +1,23 @@
 ---
-title: "Ověřování do Azure SQL Data Warehouse | Microsoft Docs"
-description: "Azure Active Directory (AAD) a SQL Server ověřování pro Azure SQL Data Warehouse."
+title: Ověření do Azure SQL Data Warehouse | Microsoft Docs
+description: Naučte se provádět ověřování na Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
 services: sql-data-warehouse
-documentationcenter: 
 author: ronortloff
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: fefaaa75-2d0c-4e5d-aadb-410342d1ad73
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.custom: security
-ms.date: 03/21/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 2340168e736c13b5d911a987d36b0224d3c3b1ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="authentication-to-azure-sql-data-warehouse"></a>Ověřování do Azure SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
-> * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
-> * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
+# <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověření do Azure SQL Data Warehouse
+Naučte se provádět ověřování na Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
 
 Pro připojení k SQL Data Warehouse, musí projít v zabezpečovací přihlašovací údaje pro účely ověření. Při navazování připojení, jsou určitá nastavení připojení nakonfigurovaný jako součást navazování relace dotazu.  
 
@@ -90,7 +78,7 @@ Aktuálně nejsou Azure Active Directory uživatelům zobrazí v Průzkumníku o
 * Postup pro konfiguraci a použití ověřování Azure Active Directory jsou téměř stejné pro databázi SQL Azure a Azure SQL Data Warehouse. Podrobné pokyny v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí pomocí Azure ověřování služby Active Directory](../sql-database/sql-database-aad-authentication.md).
 * Vytvořte vlastní databázové role a přidání uživatelů do rolí. Potom udělte oprávnění na podrobné úrovni do rolí. Další informace najdete v tématu [Začínáme s oprávněními modul databáze](https://msdn.microsoft.com/library/mt667986.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete spustit dotaz na vaše data warehouse pomocí sady Visual Studio a dalších aplikací, najdete v části [dotazu pomocí sady Visual Studio][Query with Visual Studio].
 
 <!-- Article references -->

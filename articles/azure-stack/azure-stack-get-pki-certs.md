@@ -1,6 +1,6 @@
 ---
 title: Vygenerujete certifikáty infrastruktury veřejných klíčů Azure zásobníku pro nasazení Azure zásobníku integrované systémy | Microsoft Docs
-description: Popisuje Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátu nasazení processfor zásobník Azure integrované systémy.
+description: Popisuje proces nasazení certifikátu PKI zásobník Azure pro Azure zásobníku integrované systémy.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,67 +12,104 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fc2ec96113310f54d32a67ea5fa31725600046c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fbf3c66979730a9162c56e8583f0a32977a0310d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Generovat certifikáty PKI pro nasazení Azure zásobníku
-Nyní když znáte [požadavcích na certifikáty PKI](azure-stack-pki-certs.md) pro nasazení zásobník Azure, budete muset získat tyto certifikáty z certifikační autority (CA) podle svého výběru. 
+# <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
 
-## <a name="request-certificates-using-an-inf-file"></a>Požadovat certifikáty pomocí soubor INF
-Jedním ze způsobů žádosti o certifikáty z interní certifikační Autority nebo veřejné certifikační Autority je pomocí souboru INF. Nástroj Windows integrované certreq.exe, můžete použít soubor INF zadání podrobností certifikát, generovat soubor žádosti o, jak je popsáno v této části. 
+Nástroj kontrolu připravenosti zásobník Azure popsané v tomto článku je k dispozici [z Galerie Powershellu](https://aka.ms/AzsReadinessChecker). Nástroj vytváří vhodný pro nasazení služby Azure zásobníku Podepisování žádostí o certifikát (zástupci oddělení služeb zákazníkům). Certifikáty by měl požadovaný, generovány a ověřit s dostatek času k otestování před nasazením. 
 
-### <a name="sample-inf-file"></a>Ukázkový soubor INF 
-Příklad souboru INF žádost o certifikát slouží k vytvoření souboru žádosti o certifikát offline pro odeslání certifikační Autoritě (interní nebo veřejná). Soubor INF obsahuje požadované koncové body (včetně volitelné služby PaaS) v certifikát jeden zástupný znak. 
+Nástroj pro kontrolu připravenosti zásobník Azure (AzsReadinessChecker) provádí následující žádosti o certifikát:
 
-Ukázkový soubor INF předpokládá této oblasti se rovná **sea** a externí hodnota plně kvalifikovaný název domény je **sea&#46;contoso&#46;com**. Změnit tyto hodnoty tak, aby odpovídaly prostředí před vygenerováním. Soubor INF pro vaše nasazení. 
+ - **Standardní certifikát požadavky**  
+    Žádosti podle [generovat certifikáty PKI pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md). 
+ - **Typ žádosti**  
+    Požádat o víc zástupných znaků sítě SAN, několik certifikátů domény, certifikát se zástupným znakem jeden požadavky.
+ - **Platforma jako služba**  
+    Volitelně můžete požádat o platforma jako služba (PaaS) názvy se certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů Azure zásobníku - volitelné certifikáty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
-    
-    [Version] 
-    Signature="$Windows NT$"
+## <a name="prerequisites"></a>Požadavky
 
-    [NewRequest] 
-    Subject = "C=US, O=Microsoft, L=Redmond, ST=Washington, CN=portal.sea.contoso.com"
+Váš systém by měl splňovat následující požadavky před vygenerováním CSR(s) pro certifikáty PKI pro nasazení služby Azure zásobníku:
 
-    Exportable = TRUE                   ; Private key is not exportable 
-    KeyLength = 2048                    ; Common key sizes: 512, 1024, 2048, 4096, 8192, 16384 
-    KeySpec = 1                         ; AT_KEYEXCHANGE 
-    KeyUsage = 0xA0                     ; Digital Signature, Key Encipherment 
-    MachineKeySet = True                ; The key belongs to the local computer account 
-    ProviderName = "Microsoft RSA SChannel Cryptographic Provider" 
-    ProviderType = 12 
-    SMIME = FALSE 
-    RequestType = PKCS10
-    HashAlgorithm = SHA256
+ - Kontrola připravenosti zásobníku Microsoft Azure
+ - Certifikát atributy:
+    - Název oblasti
+    - Externí plně kvalifikovaný název domény (FQDN)
+    - Předmět
+ - Windows 10 nebo Windows Server 2016
 
-    ; At least certreq.exe shipping with Windows Vista/Server 2008 is required to interpret the [Strings] and [Extensions] sections below
+## <a name="generate-certificate-signing-requests"></a>Vygeneruje certifikát pro podepisování žádostí
 
-    [Strings] 
-    szOID_SUBJECT_ALT_NAME2 = "2.5.29.17" 
-    szOID_ENHANCED_KEY_USAGE = "2.5.29.37" 
-    szOID_PKIX_KP_SERVER_AUTH = "1.3.6.1.5.5.7.3.1" 
-    szOID_PKIX_KP_CLIENT_AUTH = "1.3.6.1.5.5.7.3.2"
+Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobník Azure: 
 
-    [Extensions] 
-    %szOID_SUBJECT_ALT_NAME2% = "{text}dns=*.sea.contoso.com&dns=*.blob.sea.contoso.com&dns=*.queue.sea.contoso.com&dns=*.table.sea.contoso.com&dns=*.vault.sea.contoso.com&dns=*.adminvault.sea.contoso.com&dns=*.dbadapter.sea.contoso.com&dns=*.appservice.sea.contoso.com&dns=*.scm.appservice.sea.contoso.com&dns=api.appservice.sea.contoso.com&dns=ftp.appservice.sea.contoso.com&dns=sso.appservice.sea.contoso.com&dns=adminportal.sea.contoso.com&dns=management.sea.contoso.com&dns=adminmanagement.sea.contoso.com" 
-    %szOID_ENHANCED_KEY_USAGE% = "{text}%szOID_PKIX_KP_SERVER_AUTH%,%szOID_PKIX_KP_CLIENT_AUTH%"
+1.  Instalace AzsReadinessChecker z řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
 
-    [RequestAttributes]
-    
+    ````PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker
+    ````
 
-## <a name="generate-and-submit-request-to-the-ca"></a>Generování a odeslat žádost certifikační Autority
-Následující pracovní postup popisuje, jak můžete přizpůsobit a použijte vzorový soubor INF generované dříve k vyžádání certifikátu od certifikační Autority:
+2.  Deklarovat **subjektu** jako seřazený slovníku. Příklad: 
 
-1. **Upravit a uložit soubor INF**. Kopírování ukázku zadat a uložit ho do nového textového souboru. Název subjektu a externí plně kvalifikovaný název domény nahraďte hodnoty, které odpovídají vaše nasazení a soubor uložte jako. Soubor INF.
-2. **Vytvořit požadavek s použitím certreq**. Pomocí počítači se systémem Windows, spusťte příkazový řádek jako správce a spusťte následující příkaz k žádosti (.req) soubor: `certreq -new <yourinffile>.inf <yourreqfilename>.req`.
-3. **Odeslání certifikační Autority**. Odeslání. Soubor REQ generována do vaší certifikační Autority (může být interní nebo veřejná).
-4. **Import. CER**. Vrátí certifikační Autority. Soubor CER. Používáte stejný počítač systému Windows, ze kterého jste vygenerovali soubor žádosti, importujte. Soubor CER vrácen do počítače nebo osobním úložišti. 
-5. **Exportovat a kopírovat. Soubor PFX do složek pro nasazení**. Export certifikátu (včetně privátního klíče) jako. Soubor PFX soubor a zkopírujte. Soubor PFX do složek nasazení popsané v [požadavky na Azure zásobníku nasazení infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md).
+    ````PowerShell  
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    ````
+    > [!note]  
+    > Pokud se běžný název (CN) to budou přepsány první název DNS žádosti o certifikát.
+
+3.  Deklarujte výstupní adresář, který již existuje:
+
+    ````PowerShell  
+    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    ````
+
+4. Deklarovat **název oblasti** a **externí plně kvalifikovaný název domény** určený pro nasazení Azure zásobníku.
+
+    ```PowerShell  
+    $regionName = 'east'
+    $externalFQDN = 'azurestack.contoso.com'
+    ````
+
+    > [!note]  
+    > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou všechny externí názvy DNS v zásobníku Azure vytvořili, v tomto příkladu, portálu budou `portal.east.azurestack.contoso.com`.
+
+5. K vytvoření žádosti jeden certifikát s více alternativní názvy subjektu, včetně těch, které potřebné pro PaaS služby:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    ````
+
+6. Pro vytvoření jednotlivých certifikátu Podepisování žádostí pro každý název DNS bez PaaS služeb:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    ````
+
+7. Zkontrolujte výstup:
+
+    ````PowerShell  
+    AzsReadinessChecker v1.1803.405.3 started
+    Starting Certificate Request Generation
+
+    CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
+    oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
+    nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\username\Documents\AzureStackCSR\wildcard_east_azurestack_contoso_com_CertRequest_20180405233530.req
+    Certreq.exe output: CertReq: Request Created
+
+    Finished Certificate Request Generation
+
+    AzsReadinessChecker Log location: C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\1.1803.405.3\AzsReadinessChecker.log
+    AzsReadinessChecker Completed
+    ````
+
+8.  Odeslání **. No** souboru vygenerovaného na certifikační Autorita (interní nebo veřejná).  Do výstupního adresáře **Start-AzsReadinessChecker** obsahuje CSR(s) potřebné k odeslání certifikační autoritě.  Obsahuje taky podřízené adresáře, který obsahuje soubory INF používá při generování žádosti o certifikát, jako odkaz. Ujistěte se, že certifikační Autorita vygeneruje certifikáty pomocí generovaného žádost, které splňují [požadavky na Azure zásobníku PKI](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Další postup
 [Příprava certifikátů PKI zásobník Azure](azure-stack-prepare-pki-certs.md)

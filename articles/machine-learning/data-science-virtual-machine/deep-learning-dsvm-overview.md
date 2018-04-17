@@ -1,25 +1,25 @@
 ---
-title: "Úvod do hloubkového učení virtuálního počítače – Azure | Microsoft Docs"
-description: "Scénáře klíče analýzu a součásti pro přímý Learning virtuální počítače."
-keywords: "přímý učení, AI, vědecké účely nástrojů data, data vědecké účely virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux"
+title: Úvod do hloubkového učení virtuálního počítače – Azure | Microsoft Docs
+description: Scénáře klíče analýzu a součásti pro přímý Learning virtuální počítače.
+keywords: přímý učení, AI, vědecké účely nástrojů data, data vědecké účely virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f74b5c68c2c04eebc1d6f1e59fac8cbb11fef46a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 35370d3d143fdc154728aa8b31b9874227e46168
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>Úvod do hloubkového učení virtuálního počítače
 

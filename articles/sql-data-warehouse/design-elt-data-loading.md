@@ -7,14 +7,14 @@ manager: jhubbard
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Navrhování extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse
 
@@ -48,8 +48,8 @@ Načtení dat pomocí funkce PolyBase, můžete použít některý z těchto mo�
 
 - [PolyBase s T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, pokud je vaše data v Azure Blob storage nebo Azure Data Lake Store. Poskytuje maximální kontrolu nad procesu načítání, ale také vyžaduje, abyste definice externích dat objektů. Jiné metody definujte tyto objekty na pozadí, jako je mapovat zdrojové tabulky do cílové tabulky.  K orchestraci zatížení T-SQL, můžete použít Azure Data Factory, SSIS nebo Azure functions. 
 - [PolyBase se SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, pokud je zdrojová data v systému SQL Server, SQL Server místně nebo v cloudu. SSIS definuje zdrojové do cílové tabulky mapování a také orchestruje zatížení. Pokud již máte balíčky SSIS, můžete upravit balíčky pro práci s nové cílové datového skladu. 
-- [PolyBase s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je jiný nástroj orchestration.  Definuje kanálu a plány úloh. Můžete ADF a analyzovat JSON data a nahrajte ho do SQL Data Warehouse.
-- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosu dat z Azure Data Lake Store k SQL Data Warehouse. Azure DataBricks můžete použít k analýze dat JSON a načtení dat do SQL Data Warehouse. 
+- [PolyBase s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je jiný nástroj orchestration.  Definuje kanálu a plány úloh. 
+- [PolyBase s Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenosu dat z SQL Data Warehouse tabulku do Databricks dataframe a zapisuje data z Databricks dataframe do tabulky SQL Data Warehouse.
 
 ### <a name="polybase-external-file-formats"></a>Formáty PolyBase externích souborů
 
@@ -70,11 +70,8 @@ Pokud chcete zobrazovat data v úložišti Azure, můžete přesunout ho na [úl
 Jedná se o nástrojích a službách, které můžete použít pro přesun dat do úložiště Azure.
 
 - [Azure ExpressRoute](../expressroute/expressroute-introduction.md) služba zvyšuje propustnost sítě, výkonu a předvídatelnost. ExpressRoute je služba, která směruje data přes vyhrazené soukromé připojení do Azure. Připojení ExpressRoute není směrovat data prostřednictvím veřejného Internetu. Připojení nabízí další spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než Typická připojení prostřednictvím veřejného Internetu.
-- [Nástroj AZCopy](../storage/common/storage-use-azcopy.md) přesouvá data do úložiště Azure prostřednictvím veřejného Internetu. Toto funguje, pokud jsou vaše data velikosti menší než 10 TB. Načítání v pravidelných intervalech s AZCopy provedete testovací rychlost sítě, jestli je přijatelné. 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou lze nainstalovat na místním serveru. Potom můžete vytvořit kanál pro přesun dat z místní server až Azure Storage.
-
-Další informace najdete v tématu [přesun dat do a z Azure Storage](../storage/common/storage-moving-data.md)
-
+- [Nástroj AZCopy](../storage/common/storage-moving-data.md) přesouvá data do úložiště Azure prostřednictvím veřejného Internetu. Toto funguje, pokud jsou vaše data velikosti menší než 10 TB. Načítání v pravidelných intervalech s AZCopy provedete testovací rychlost sítě, jestli je přijatelné. 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou lze nainstalovat na místním serveru. Potom můžete vytvořit kanál pro přesun dat z místní server až Azure Storage. Pomocí objektu pro vytváření dat s datovým skladem SQL naleznete v části [načtení dat do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
 
 ## <a name="prepare-data"></a>Příprava dat
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  Pokud se zobrazí následující zpráva: "1) analýza vaše skupina NSG toku protokoly poprvé. Tento proces může trvat 20-30 minut. Zkontrolujte zpět po určité době. 2) Pokud předchozí krok nefunguje a pracovní prostor je pod volné SKU a potom zkontrolujte vašeho pracovního prostoru využití k ověření přes kvótu, jinak postupujte nejčastější dotazy o další informace", jak lze vyřešit ji?
 
         Může dojít k chybě z následujících důvodů:
-        - Analýza provozu může byl nedávno povolen a může být agregování dostatek dat pro její odvodit smysluplné přehledy, než lze generovat žádné sestavy. V takovém případě zkuste to znovu za 30 minut
+        - Analýza provozu může mít nedávno povolenou a nemusí být ještě agregovat dostatek dat pro její odvodit smysluplné přehledy.
         - Pracovní prostor OMS je pod volné SKU a nichž nebyla dodržena omezení kvóty. V takovém případě budete muset použít pracovního prostoru v SKU s větší kapacitou.
     
         Pokud problémy potrvají, vyšší riziko z hlediska v [fórum hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844).

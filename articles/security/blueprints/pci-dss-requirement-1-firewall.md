@@ -1,6 +1,6 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na bránu Firewall"
-description: "PCI DSS požadavek 1"
+title: Azure platebních zpracování plán, podle kterého – požadavky na bránu Firewall
+description: PCI DSS požadavek 1
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>Požadavky na bránu firewall pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS požadavek 1
@@ -42,8 +42,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje fungující brána firewall může z CDE pomocí izolace PaaS a implementaci služby App Service Environment zajistíte chráněný CDE příchozí a odchozí data.<br /><br />[Prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) je plán služeb Premium použít kvůli dodržování předpisů. Další informace o ovládacích prvcích App Service Environment a konfigurace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje fungující brána firewall může z CDE pomocí izolace PaaS a implementaci služby App Service Environment zajistíte chráněný CDE příchozí a odchozí data.<br /><br />[Prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) je plán služeb Premium použít kvůli dodržování předpisů. Další informace o ovládacích prvcích App Service Environment a konfigurace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -56,8 +56,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Instance Contoso Webstore vytvoří model DevOps CI nebo CD pro zajištění, že všechny změny jsou správně spravovány. [Operations Management Suite (OMS)](/azure/operations-management-suite/) poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Instance Contoso Webstore vytvoří model DevOps CI nebo CD pro zajištění, že všechny změny jsou správně spravovány. Log Analytics poskytuje rozsáhlé protokolování změn. Změny můžete zkontrolovat a ověřit přesnost. Podrobnější pokyny najdete v tématu [pokyny PCI - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).<br /><br />[Azure Security Center](https://azure.microsoft.com/services/security-center/) poskytuje centralizovanou zobrazení stavu zabezpečení všech vašich prostředků Azure. Na první pohled můžete ověřit příslušná bezpečnostní prvky jsou na místě a správně nakonfigurovaný, a můžete rychle zjistit všechny prostředky, které vyžadují pozornost.|
 
 
 
@@ -69,8 +69,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Naleznete Contoso Webstore referenční architektuře a designu dokumentaci k dispozici jako součást instalace vzoru řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Naleznete Contoso Webstore referenční architektuře a designu dokumentaci k dispozici jako součást instalace vzoru řešení.|
 
 
 
@@ -82,8 +82,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Viz Contoso Webstore diagramu toku dat a Model hrozeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Viz Contoso Webstore diagramu toku dat a Model hrozeb.|
 
 
 
@@ -95,8 +95,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Aktivuje se hranic ochranu zařízení, jako jsou brány, seznamy ACL sítě a brány firewall aplikace pro řízení komunikace na externí i interní hranice na úrovni platformy Microsoft Azure. Zákazník nakonfiguruje pak tyto požadavky a specifikace. Microsoft Azure filtruje komunikace, když přicházející do platformy. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje hraniční sítě pomocí izolace PaaS a implementaci služby App Service Environment zajistíte chráněný CDE příchozí a odchozí data.<br /><br />[Prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) je plán služeb Premium použít kvůli dodržování předpisů. Další informace o ovládacích prvcích App Service Environment a konfigurace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Aktivuje se hranic ochranu zařízení, jako jsou brány, seznamy ACL sítě a brány firewall aplikace pro řízení komunikace na externí i interní hranice na úrovni platformy Microsoft Azure. Zákazník nakonfiguruje pak tyto požadavky a specifikace. Microsoft Azure filtruje komunikace, když přicházející do platformy. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje hraniční sítě pomocí izolace PaaS a implementaci služby App Service Environment zajistíte chráněný CDE příchozí a odchozí data.<br /><br />[Prostředí App Service (App Service Environment)](/azure/app-service-web/app-service-app-service-environment-intro) je plán služeb Premium použít kvůli dodržování předpisů. Další informace o ovládacích prvcích App Service Environment a konfigurace najdete v tématu [pokyny PCI - App Service Environment](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -108,8 +108,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [řízení řízení přístupu (RBAC)](/azure/active-directory/role-based-access-control-configure) izolovat uživatelské role. RBAC umožňuje přesněji správu cílených přístupu pro Azure. Existují konkrétní konfigurace pro předplatné přístup a přístup Azure Key Vault.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá [řízení řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) izolovat uživatelské role. RBAC umožňuje přesněji správu cílených přístupu pro Azure. Existují konkrétní konfigurace pro předplatné přístup a přístup Azure Key Vault.|
 
 
 
@@ -121,8 +121,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore otevře pouze požadované porty a protokoly v rámci RA návrhu. Podrobnosti o tok dat si můžete prohlédnout ve model diagramu toku dat a hrozeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore otevře pouze požadované porty a protokoly v rámci RA návrhu. Podrobnosti o tok dat si můžete prohlédnout ve model diagramu toku dat a hrozeb.|
 
 
 
@@ -134,8 +134,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Ve společnosti Contoso Webstore jsou kontrolovány sady pravidel brány firewall zajistit, že žádná pravidla nepotřebné a nepoužívané jsou zahrnuty. Standardně se ukázku nasazuje s nejnižší oprávnění, nejmenší nároky cestu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Ve společnosti Contoso Webstore jsou kontrolovány sady pravidel brány firewall zajistit, že žádná pravidla nepotřebné a nepoužívané jsou zahrnuty. Standardně se ukázku nasazuje s nejnižší oprávnění, nejmenší nároky cestu.|
 
 
 
@@ -150,8 +150,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | CDE Contoso Webstore je definována v dokumentaci k nasazení a Vzdálená pomoc. Návrh je odepřen nedůvěryhodným sítím.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | CDE Contoso Webstore je definována v dokumentaci k nasazení a Vzdálená pomoc. Návrh je odepřen nedůvěryhodným sítím.|
 
 
 
@@ -163,8 +163,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | CDE Contoso Webstore je definována v dokumentaci k nasazení a Vzdálená pomoc. Návrh je odepřen nedůvěryhodným sítím. Ukázkové společnosti Contoso Webstore nakonfiguruje bránu firewall aplikace Microsoft Azure umožňuje pouze zadaný rozsah IP adres pro přístup ke službám Microsoft Azure. Contoso Webstore poskytuje brána firewall Odepřít všechny vůbec CDE hranice. Všechny konfigurace se provádí při počátečním nastavení nasazení.
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | CDE Contoso Webstore je definována v dokumentaci k nasazení a Vzdálená pomoc. Návrh je odepřen nedůvěryhodným sítím. Ukázkové společnosti Contoso Webstore nakonfiguruje bránu firewall aplikace Microsoft Azure umožňuje pouze zadaný rozsah IP adres pro přístup ke službám Microsoft Azure. Contoso Webstore poskytuje brána firewall Odepřít všechny vůbec CDE hranice. Všechny konfigurace se provádí při počátečním nastavení nasazení.
 
 > [!NOTE]
 > Prostředí App Service (App Service Environment) se používá v tomto řešení izolovat CDE ale je nezbytné, aby vaše kvalifikovaný zabezpečení posuzovatel (QSA) vyhodnotí toto řešení, protože App Service Environment implementuje DMZ izolace, která umožňuje odchozí připojení k být provedené App Service Environment. PCI-DSS vyžaduje, je nutné blokovat všechny příchozí a odchozí připojení, které nejsou potřeba. Pro App Service Environment pracovat správně, App Service Environment bude navázat odchozí připojení podle potřeby definovaným v ["Sítě důležité informace týkající se služby App Service Environment"](/azure/app-service/app-service-environment/network-info). Zákazníci by měly vyhodnotit odchozí připojení s vaší QSA před nasazením řešení do provozního prostředí k zajištění, že se bude splňovat požadavky. |
@@ -179,8 +179,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje konfigurace synchronizace pro řízení nativní sítě Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje konfigurace synchronizace pro řízení nativní sítě Microsoft Azure.|
 
 
 
@@ -192,8 +192,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá žádné povolené funkce nebo bezdrátové řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá žádné povolené funkce nebo bezdrátové řešení.|
 
 
 
@@ -205,8 +205,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure aktivuje zařízení ochrany založené na síti a založená na hostiteli hranic, jako jsou brány firewall, nástroje pro vyrovnávání zatížení a seznamy ACL. Tato zařízení používají mechanismy, například izolace sítě VLAN, NAT a filtrování samostatné zákazníka provoz z Internetu a přenosy správy paketů. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje v době nasazení, konfigurace brány firewall Azure aplikací povolit pouze zadaný rozsah IP adres pro přístup k webu, zahrnout do své CDE u chráněných virtuálních počítačích Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure aktivuje zařízení ochrany založené na síti a založená na hostiteli hranic, jako jsou brány firewall, nástroje pro vyrovnávání zatížení a seznamy ACL. Tato zařízení používají mechanismy, například izolace sítě VLAN, NAT a filtrování samostatné zákazníka provoz z Internetu a přenosy správy paketů. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje v době nasazení, konfigurace brány firewall Azure aplikací povolit pouze zadaný rozsah IP adres pro přístup k webu, zahrnout do své CDE u chráněných virtuálních počítačích Azure.|
 
 
 
@@ -219,8 +219,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Implementace Contoso Webstore jeho DMZ zajistí, že CDE se může připojit pouze ověřených služeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Implementace Contoso Webstore jeho DMZ zajistí, že CDE se může připojit pouze ověřených služeb.|
 
 
 
@@ -232,8 +232,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Implementace Contoso Webstore jeho DMZ zajistí, že CDE se může připojit pouze ověřených služeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Implementace Contoso Webstore jeho DMZ zajistí, že CDE se může připojit pouze ověřených služeb.|
 
 
 
@@ -245,8 +245,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrování Pokud chcete zabránit podvodná provoz a omezit příchozí a odchozí provoz na komponenty platformy důvěryhodné sítě. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrování Pokud chcete zabránit podvodná provoz a omezit příchozí a odchozí provoz na komponenty platformy důvěryhodné sítě. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -259,8 +259,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Architektura Contoso Webstore brání neoprávněným odchozí provoz z prostředí v oboru k Internetu. To se provádí konfigurace odchozí přenosy seznamy ACL pro schválené porty a protokoly v Microsoft Azure. Tyto ovládací prvky zahrnovat přístup do CDE v databázi systému SQL Server. <br /><br />Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Architektura Contoso Webstore brání neoprávněným odchozí provoz z prostředí v oboru k Internetu. To se provádí konfigurace odchozí přenosy seznamy ACL pro schválené porty a protokoly v Microsoft Azure. Tyto ovládací prvky zahrnovat přístup do CDE v databázi systému SQL Server. <br /><br />Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -273,8 +273,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrování Pokud chcete zabránit podvodná provoz a omezit příchozí a odchozí provoz na komponenty platformy důvěryhodné sítě. K oddělení provozu zákazníka z provozu správy je rozdělen sítě Microsoft Azure. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure implementuje filtrování Pokud chcete zabránit podvodná provoz a omezit příchozí a odchozí provoz na komponenty platformy důvěryhodné sítě. K oddělení provozu zákazníka z provozu správy je rozdělen sítě Microsoft Azure. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici.|
 
 
 
@@ -287,8 +287,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá síť oddělení a NAT pro oddělení provozu zákazníka z provozu správy. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Architektura Contoso Webstore brání neoprávněným odchozí provoz z prostředí v oboru k Internetu. To se provádí konfigurace odchozí přenosy seznamy ACL pro schválené porty a protokoly v Microsoft Azure. Tyto ovládací prvky zahrnovat přístup do CDE v databázi systému SQL Server. <br /><br />Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá síť oddělení a NAT pro oddělení provozu zákazníka z provozu správy. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Architektura Contoso Webstore brání neoprávněným odchozí provoz z prostředí v oboru k Internetu. To se provádí konfigurace odchozí přenosy seznamy ACL pro schválené porty a protokoly v Microsoft Azure. Tyto ovládací prvky zahrnovat přístup do CDE v databázi systému SQL Server. <br /><br />Instance databáze SQL PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -308,8 +308,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá překládání adres (NAT) a sítě oddělení pro oddělení provozu zákazníka z provozu správy. Azure zařízení je jednoznačně identifikováno jejich UUID a ověření pomocí protokolu Kerberos. Azure spravované sítě, kterou zařízení se identifikují podle RFC 1918 IP řešit. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore umístí všechna data držitele karty za servery proxy nebo brány firewall a interně používá RFC1918 adresní prostor.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá překládání adres (NAT) a sítě oddělení pro oddělení provozu zákazníka z provozu správy. Azure zařízení je jednoznačně identifikováno jejich UUID a ověření pomocí protokolu Kerberos. Azure spravované sítě, kterou zařízení se identifikují podle RFC 1918 IP řešit. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore umístí všechna data držitele karty za servery proxy nebo brány firewall a interně používá RFC1918 adresní prostor.|
 
 
 
@@ -323,8 +323,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore neposkytuje ochranu koncového uživatele zařízení. [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) lze použít ke správě mobilních zařízení pracovníky používá pro přístup k firemním datům.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore neposkytuje ochranu koncového uživatele zařízení. [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) lze použít ke správě mobilních zařízení pracovníky používá pro přístup k firemním datům.|
 
 
 
@@ -336,8 +336,8 @@ Dalších komponent systému poskytnout funkci brány firewall, tak dlouho, doku
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje v době nasazení, konfigurace brány firewall Azure aplikací povolit pouze zadaný rozsah IP adres pro přístup k webu, zahrnout do své CDE u chráněných virtuálních počítačích Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje v době nasazení, konfigurace brány firewall Azure aplikací povolit pouze zadaný rozsah IP adres pro přístup k webu, zahrnout do své CDE u chráněných virtuálních počítačích Azure.|
 
 
 

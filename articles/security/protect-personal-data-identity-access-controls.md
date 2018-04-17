@@ -1,12 +1,12 @@
 ---
-title: "Ochrana osobních údajů s ovládacími prvky Azure identit a přístupu | Microsoft Docs"
-description: "Azure identit a přístupu řídí pomáhají chránit osobní údaje a může být užitečné, které jsou v souladu s obecné Data Protection nařízení (GDPR)"
+title: Ochrana osobních údajů s ovládacími prvky Azure identit a přístupu | Microsoft Docs
+description: Azure identit a přístupu řídí pomáhají chránit osobní údaje a může být užitečné, které jsou v souladu s obecné Data Protection nařízení (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: ''
+ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory a služby Multi-Factor Authentication: ochrana osobních dat s ovládacími prvky identit a přístupu
 
@@ -39,7 +39,7 @@ Společnosti musí ochrany osobních údajů zaměstnanců a zákazníků osobn�
 
 ## <a name="company-goal"></a>Cílem společnosti
 
-Cílem společnosti je potřeba zajistit přísnou kontrolu přístupu k osobním datům. Je nezbytné, aby identit uživatelů s přístupem k osobním údajům chráněn silné ověřování. Zásady [nejnižší oprávnění] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musí být vynucená tak, aby oprávněných uživatelů pouze úroveň přístupu, které potřebují a žádné další.
+Cílem společnosti je potřeba zajistit přísnou kontrolu přístupu k osobním datům. Je nezbytné, aby identit uživatelů s přístupem k osobním údajům chráněn silné ověřování. Zásady [nejnižší oprávnění] (https://en.wikipedia.org/wiki/Principle_of_least_privilege) musí vynucovat tak, aby oprávněných uživatelů pouze úroveň přístupu, které potřebují a žádné další.
 
 ## <a name="solutions"></a>Řešení
 
@@ -83,11 +83,11 @@ Další informace a pokyny, Začínáme se službou AAD PIM najdete v tématu [s
 
 ### <a name="azure-role-based-access-control"></a>Řízení přístupu Azure na základě rolí
 
-[Řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) pomáhá Azure správcům spravovat přístup k prostředkům Azure povolením udělení přístupu na základě role přiřazené uživatele. Můžete povinnosti v rámci týmu oddělit a poskytnout pouze takovou úroveň přístupu pro uživatele, skupiny a aplikace, které potřebují k provádění svých úloh.
+[Řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) pomáhá Azure správcům spravovat přístup k prostředkům Azure povolením udělení přístupu na základě role přiřazené uživatele. Můžete povinnosti v rámci týmu oddělit a poskytnout pouze takovou úroveň přístupu pro uživatele, skupiny a aplikace, které potřebují k provádění svých úloh.
 
 Přístup na základě role můžete udělit uživatelům, kteří používají portál Azure, nástroje příkazového řádku Azure nebo rozhraní API pro správu Azure.
 
-Další informace o základní informace o Azure RBAC najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure.](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)
+Další informace o základní informace o Azure RBAC najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure.](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>Jak lze spravovat Azure RBAC pomocí prostředí PowerShell?
 
@@ -111,7 +111,7 @@ Rutiny prostředí PowerShell můžete použít ke správě Azure RBAC, včetně
 
 - Vlastní role seznamu
 
-Pokyny o tom, jak spravovat Azure RBAC pomocí prostředí PowerShell najdete v tématu [přístupu na základě Role spravovat pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell).
+Pokyny o tom, jak spravovat Azure RBAC pomocí prostředí PowerShell najdete v tématu [přístupu na základě Role spravovat pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -135,7 +135,7 @@ Pokud aktuálně nemáte licencí, které budete muset projít procesem určení
 
     ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-4. Klikněte na tlačítko **uložit**
+4. Klikněte na **Uložit**.
 
 V tomto okně máte také možnost stažení serveru MFA. Můžete získat další podrobnosti o tom, jak upravit velikost a plánování nasazení najdete v článku [Začínáme s Azure Multi-Factor Authentication server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
 
@@ -184,6 +184,6 @@ Informace o tom, jak nakonfigurovat nastavení Azure MFA k nastavení upozorněn
 
 - [Nejčastější dotazy ohledně služby Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [Na základě rolí řešení potíží s řízení přístupu](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [Na základě rolí řešení potíží s řízení přístupu](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Ochrany identit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

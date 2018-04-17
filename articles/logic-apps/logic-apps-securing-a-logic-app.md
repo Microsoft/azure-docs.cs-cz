@@ -1,11 +1,11 @@
 ---
-title: "Zabezpečený přístup k Azure Logic Apps | Microsoft Docs"
-description: "Přidejte zabezpečení pro ochranu přístupu k aktivační události, vstupy a výstupy, parametrů akcí a služeb používaných u pracovních postupů v Azure Logic Apps."
+title: Zabezpečený přístup k Azure Logic Apps | Microsoft Docs
+description: Přidejte zabezpečení pro ochranu přístupu k aktivační události, vstupy a výstupy, parametrů akcí a služeb používaných u pracovních postupů v Azure Logic Apps.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>Zabezpečený přístup k aplikacím logiky
 
@@ -77,7 +77,7 @@ Kromě sdíleného přístupového podpisu můžete chtít omezit volání aplik
 Toto nastavení lze konfigurovat v nastavení aplikace logiky:
 
 1. Na portálu Azure otevřete aplikaci logiky, kterou chcete přidat omezení podle IP adresy
-1. Klikněte **konfigurace řízení přístupu** položky nabídky v části **nastavení**
+1. Klikněte **nastavení pracovních postupů** položky nabídky v části **nastavení**
 1. Zadejte seznam rozsahů IP adres třeba přijmout, který má aktivační procedura
 
 Platný rozsah IP má formát `192.168.1.1/255`. Pokud chcete aplikaci logiky má pouze provést jako aplikace vnořené logiky, vyberte **jenom jiné aplikace logiky** možnost. Tato možnost zapíše prázdné pole k prostředku význam jenom volání ze samotné (nadřazené logiku aplikace) služby úspěšně provést.
@@ -119,7 +119,7 @@ Chcete-li přidat další protokoly autorizace nad aplikace logiky, [Azure API M
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Zabezpečený přístup ke správě nebo upravovat aplikace logiky
 
-Pro operace správy v aplikaci logiky můžete omezit přístup tak, aby pouze konkrétní uživatele nebo skupiny se můžou k provádění operací na prostředek. Použití aplikace logiky Azure [řízení přístupu na základě Role (RBAC)](../active-directory/role-based-access-control-configure.md) funkci a můžete přizpůsobit pomocí stejných nástrojů.  Existuje několik integrovaných rolí, které můžete přiřadit také členy předplatného:
+Pro operace správy v aplikaci logiky můžete omezit přístup tak, aby pouze konkrétní uživatele nebo skupiny se můžou k provádění operací na prostředek. Použití aplikace logiky Azure [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md) funkci a můžete přizpůsobit pomocí stejných nástrojů.  Existuje několik integrovaných rolí, které můžete přiřadit také členy předplatného:
 
 * **Přispěvatel aplikace logiky** – poskytuje přístup k zobrazení, upravte a aktualizujte aplikaci logiky.  Nelze odebrat prostředek nebo provádět operace správy.
 * **Operátor aplikace logiky** – můžete zobrazit aplikaci logiky a historie spouštění a povolit nebo zakázat.  Nelze upravit nebo aktualizovat definice.
@@ -268,7 +268,7 @@ Mnoho spravovaných konektorů pro logic apps poskytuje zabezpečené připojen�
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) možnosti místní připojení, včetně site-to-site VPN a ExpressRoute integrace pro zabezpečené proxy a komunikaci místních systémů. V návrháři aplikace logiky můžete rychle vybrat rozhraní API zveřejněné z Azure API Management v rámci pracovního postupu, že poskytuje rychlý přístup k místním systémům.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Vytvoření šablony nasazení](logic-apps-create-deploy-template.md)  
 [Zpracování výjimek](logic-apps-exception-handling.md)  
 [Monitorování aplikací logiky](logic-apps-monitor-your-logic-apps.md)  

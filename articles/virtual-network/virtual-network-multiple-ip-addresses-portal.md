@@ -1,11 +1,11 @@
 ---
-title: "Více IP adres pro virtuální počítače Azure - Portal | Microsoft Docs"
-description: "Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí portálu Azure | Správce prostředků."
+title: Více IP adres pro virtuální počítače Azure - Portal | Microsoft Docs
+description: Zjistěte, jak přiřadit více IP adres k virtuálnímu počítači pomocí portálu Azure | Správce prostředků.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3a8cae97-3bed-430d-91b3-274696d91e34
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 85eefd0d15ed08eaa82983c6901faa0aa1ff303c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřadit více IP adres virtuálních počítačů pomocí portálu Azure
 
@@ -35,11 +35,11 @@ Pokud chcete vytvořit virtuální počítač s více IP adres nebo statickou pr
 
 ## <a name="add"></a>Přidání IP adres pro virtuální počítač
 
-Provedením následujících kroků můžete přidat privátní a veřejné IP adresy pro síťový adaptér. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario), ale není to nutné.
+Privátní a veřejné IP adresy můžete přidat k rozhraní sítě Azure pomocí kroků, které následují. Příklady v následujících částech předpokládají, že už máte virtuální počítač s tři konfigurace protokolu IP, které jsou popsané v [scénář](#Scenario), ale není to nutné.
 
 ### <a name="coreadd"></a>Základní kroky
 
-1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlaste do ní, v případě potřeby.
+1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlásit, pokud je to nutné.
 2. Na portálu, klikněte na tlačítko **další služby** > typ *virtuální počítače* pole filtru, a pak klikněte na **virtuální počítače**.
 3. V **virtuální počítače** podokně, klikněte na virtuální počítač, který chcete přidat IP adres k. Klikněte na tlačítko **síťových rozhraní** ve virtuálním počítači podokně, který se zobrazí a potom vyberte síťové rozhraní, které chcete přidat IP adres k. V příkladu znázorněno na následujícím obrázku s názvem síťový adaptér *myNIC* z virtuálního počítače s názvem *Můjvp* je vybrán:
 
@@ -75,7 +75,7 @@ Veřejná IP adresa se přidá tím, že přidružíte prostředek veřejné IP 
 
 Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pokud máte na veřejnou IP adresu prostředek, který není aktuálně přidružena ke konfiguraci IP adres, kterou chcete přidružit k konfiguraci IP adres, následující kroky přeskočte a dokončete kroky v jednom z následujících, potřebujete. Pokud nemáte k dispozici prostředek veřejné adresy IP, proveďte následující kroky k jeho vytvoření:
 
-1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlaste do ní, v případě potřeby.
+1. Přejděte na portál Azure na adrese https://portal.azure.com a přihlásit, pokud je to nutné.
 3. Na portálu, klikněte na tlačítko **vytvořit prostředek** > **sítě** > **veřejnou IP adresu**.
 4. V **vytvoření veřejné IP adresy** podokně, který se zobrazí, zadejte **název**, vyberte možnost **přiřazení IP adresy** typ, **předplatné**, **Skupiny prostředků**a **umístění**, pak klikněte na tlačítko **vytvořit**, jak je znázorněno na následujícím obrázku:
 

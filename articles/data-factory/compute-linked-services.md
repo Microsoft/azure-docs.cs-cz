@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: fe4a4962acce06a6448cef8d5c1af398e3965a33
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 806d0db3536a00dea4e421f847cf0f75bcfc218c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různé výpočetní prostředí, které můžete použít k datům procesu nebo transformace. Obsahuje také podrobnosti o různých konfiguracích (na vyžádání oproti přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojených služeb propojení tyto výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -338,7 +338,7 @@ Najdete v následujících tématech, pokud začínáte používat službu Azure
 | Vlastnost          | Popis                              | Požaduje se |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Vlastnost typu musí být nastavená na **AzureBatch**. | Ano      |
-| accountName       | Název účtu Azure Batch.         | Ano      |
+| název účtu       | Název účtu Azure Batch.         | Ano      |
 | accessKey         | Přístupový klíč pro účet Azure Batch.  | Ano      |
 | batchUri          | Adresa URL ke svému účtu Azure Batch, ve formátu https://*batchaccountname.region*. batch.azure.com. | Ano      |
 | poolName          | Název fondu virtuálních počítačů.    | Ano      |
@@ -417,7 +417,7 @@ Vytvoříte **Azure Data Lake Analytics** propojená služba Azure Data Lake Ana
 | Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
-| accountName          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
+| název účtu          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
 | dataLakeAnalyticsUri | Identifikátor URI služby Azure Data Lake Analytics.           | Ne                                       |
 | subscriptionId       | Id předplatného Azure                    | Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
 | resourceGroupName    | Název skupiny prostředků Azure.                | Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
@@ -426,6 +426,65 @@ Vytvoříte **Azure Data Lake Analytics** propojená služba Azure Data Lake Ana
 | tenant               | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano                                      |
 | connectVia           | Integrace modulu Runtime použít k odesílání aktivity k této propojené službě. Můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. | Ne                                       |
 
+
+
+## <a name="azure-databricks-linked-service"></a>Služba Azure Databricks propojené
+Můžete vytvořit **propojená služba Azure Databricks** k registraci Databricks pracovní prostor, který použijete ke spuštění Databricks workloads(notebooks).
+
+### <a name="example---using-new-job-cluster-in-databricks"></a>Příklad: Databricks v novém clusteru úlohy
+
+```json
+{
+    "name": "AzureDatabricks_LS",
+    "properties": {
+        "type": "AzureDatabricks",
+        "typeProperties": {
+            "domain": "eastus.azuredatabricks.net",
+            "newClusterNodeType": "Standard_D3_v2",
+            "newClusterNumOfWorker": "1:10",
+            "newClusterVersion": "4.0.x-scala2.11",
+            "accessToken": {
+                "type": "SecureString",
+                "value": "dapif33c9c721144c3a790b35000b57f7124f"
+            }
+        }
+    }
+}
+
+```
+
+### <a name="example---using-existing-interactive-cluster-in-databricks"></a>Příklad: použití existujícího interaktivní clusteru v Databricks
+
+```json
+{
+    "name": " AzureDataBricksLinedService",
+    "properties": {
+      "type": " AzureDatabricks",
+      "typeProperties": {
+        "domain": "https://westeurope.azuredatabricks.net",
+        "accessToken": {
+            "type": "SecureString", 
+            "value": "dapif33c9c72344c3a790b35000b57f7124f"
+          },
+        "existingClusterId": "{clusterId}"
+        }
+}
+
+```
+
+### <a name="properties"></a>Vlastnosti
+
+| Vlastnost             | Popis                              | Požaduje se                                 |
+| -------------------- | ---------------------------------------- | ---------------------------------------- |
+| jméno                 | Název propojené služby               | Ano   |
+| type                 | Vlastnost typu musí být nastavená na: **AzureDatabricks**. | Ano                                      |
+| Doména               | Zadejte oblast Azure, odpovídajícím způsobem podle oblasti Databricks pracovního prostoru. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
+| accessToken          | Přístupový token, je nutné k ověření Azure Databricks Data Factory. Přístupový token, je třeba vytvořit v pracovním prostoru databricks. Kroky k nalezení přístupový token naleznete podrobnější [sem](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Ano                                       |
+| existingClusterId    | ID stávajícího clusteru spustit všechny úlohy v tomto clusteru. To by měl být již vytvořené interaktivní clusteru. Budete muset ručně restartovat clusteru, pokud přestane reagovat. Databricks navrhnout probíhajících úloh na nových clusterů pro větší spolehlivost. Můžete najít ID clusteru interaktivní clusteru na Databricks -> prostoru clustery -> Interaktivní název clusteru -> Konfigurace -> značky. [Další informace](https://docs.databricks.com/user-guide/clusters/tags.html) | Ne 
+| newClusterVersion    | Verze clusteru Spark. V databricks vytvoří cluster úlohy. | Ne  |
+| newClusterNumOfWorker| Počet uzlů pracovního procesu, které by měly mít tento cluster. Cluster má jeden ovladač Spark a num_workers vykonavatelů celkem num_workers + 1 uzly Spark. Řetězec formátu Int32, jako je "1" znamená numOfWorker 1 nebo "1:10" znamená automatickému škálování z 1 jako minimální a 10 jako maximální počet.  | Ne                |
+| newClusterNodeType   | Toto pole kóduje prostřednictvím jednu hodnotu, prostředky, které jsou k dispozici na všech uzlech Spark v tomto clusteru. Například Spark dají zřizovat a optimalizované pro zatížení s intenzivním paměti nebo výpočetní uzly toto pole je povinné pro nový cluster                | Ne               |
+| newClusterSparkConf  | Sada volitelné, zadán uživatel páry klíč hodnota konfigurace Spark. Uživatele můžete také předat řetězec volby navíc JVM ovladače a vykonavatelů prostřednictvím spark.driver.extraJavaOptions a spark.executor.extraJavaOptions v uvedeném pořadí. | Ne  |
 
 
 ## <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database

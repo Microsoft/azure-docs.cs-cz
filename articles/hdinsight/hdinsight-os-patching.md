@@ -1,25 +1,23 @@
 ---
-title: "Konfigurace plánu pro clustery HDInsight se systémem Linux - Azure opravy operačního systému | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat plán pro clustery HDInsight se systémem Linux opravy operačního systému."
+title: Konfigurace plánu pro clustery HDInsight se systémem Linux - Azure opravy operačního systému | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat plán pro clustery HDInsight se systémem Linux opravy operačního systému.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bprakash
 manager: asadk
 editor: bprakash
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42771b9ff0f177b6b31f626d1dd2d07046a53965
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy chyb pro HDInsight operačního systému 
 Služba se spravuje Hadoop HDInsight má na starosti opravy operačního systému základní virtuální počítače, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili oprav zásady hostovaného operačního systému pro clustery HDInsight se systémem Linux (verze 3.4 nebo novější). Cílem nové zásady je výrazně snížit počet restartování z důvodu opravy. Nové zásady budou nadále opravy virtuálních počítačů (VM) v clusterech Linux každé pondělí a čtvrtek začínající na 12: 00 UTC postupný způsobem mezi uzly v jakémkoliv daného clusteru. Všechny daného virtuálního počítače se však pouze restartuje maximálně jednou za 30 dní z důvodu opravy operačního systému hosta. Kromě toho první restartování pro nově vytvořený cluster neprovede dřív než 30 dní od data vytvoření clusteru. Opravy bude platit, jakmile jsou virtuální počítače restartovat.
@@ -54,7 +52,7 @@ Při použití tohoto skriptu vyžaduje následující informace:
     | Parametr | Definice |
     | --- | --- |
     | Povolit nebo zakázat automatické restartování počítače |0 nebo 1. Hodnota 0 zakáže automatické restartování počítače během 1 povolí automatické restartování počítače. |
-    | frekvence |7 až 90 (včetně). Počet dní, které se má čekat před restartováním virtuálních počítačů pro opravy, které vyžadují restart počítače. |
+    | Frekvence |7 až 90 (včetně). Počet dní, které se má čekat před restartováním virtuálních počítačů pro opravy, které vyžadují restart počítače. |
     | Den v týdnu |1 až 7 (včetně). Hodnota 1 znamená restartování provedeno v pondělí a 7 označuje Sunday.For příklad, pomocí parametrů 1 60 2 výsledky v automaticky restartuje každých 60 dnů (maximálně) úterý. |
     | Trvalost |Při použití akce skriptu do existujícího clusteru, můžete skript označit jako trvalý. Trvalý skripty se použijí při přidání nového workernodes ke clusteru prostřednictvím operace škálování. |
 
@@ -63,7 +61,7 @@ Při použití tohoto skriptu vyžaduje následující informace:
 Pokud použijete skript jako součást procesu vytváření clusteru, je automaticky trvalá.
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Konkrétní kroky pomocí akce skriptu, naleznete v následujících částech [HDInsight se systémem Linuz přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md):
 

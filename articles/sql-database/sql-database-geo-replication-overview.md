@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fc3dca82bea17b44f66b433f59e5861da3bb0ca2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Přehled: Převzetí služeb při selhání skupiny a aktivní geografickou replikaci
 Aktivní geografickou replikaci můžete nakonfigurovat až čtyři čitelný sekundární databáze v umístění center stejný nebo jiný dat (oblastí). Sekundární databáze jsou k dispozici pro dotazování a převzetí služeb při selhání v případě výpadku datacentra nebo neschopnost se připojit k primární databázi. Převzetí služeb při selhání musí ručně zahájit aplikace uživatele. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení. 
@@ -131,7 +131,7 @@ Z důvodu vysoké latenci sítě WAN průběžná kopie používá mechanismus a
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>Prostřednictvím kódu programu Správa skupin převzetí služeb při selhání a aktivní geografickou replikaci
 Jak je popsáno dříve, skupiny automatické převzetí služeb při selhání (v preview) a aktivní geografickou replikaci lze spravovat také programově pomocí Azure PowerShell a rozhraní REST API. Následující tabulky popisují sadu příkazů, které jsou k dispozici.
 
-**Rozhraní API Azure Resource Manager a na základě rolí zabezpečení**: aktivní geografickou replikací zahrnuje sadu rozhraní API Správce Azure Resource Manager pro správu, včetně [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) a [Azure Rutiny prostředí PowerShell](https://docs.microsoft.com/powershell/azure/overview). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě role (RBAC). Další informace o tom, jak implementovat přístup rolí najdete v tématu [řízení přístupu](../active-directory/role-based-access-control-what-is.md).
+**Rozhraní API Azure Resource Manager a na základě rolí zabezpečení**: aktivní geografickou replikací zahrnuje sadu rozhraní API Správce Azure Resource Manager pro správu, včetně [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) a [Azure Rutiny prostředí PowerShell](https://docs.microsoft.com/powershell/azure/overview). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě role (RBAC). Další informace o tom, jak implementovat přístup rolí najdete v tématu [řízení přístupu](../role-based-access-control/overview.md).
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Správa SQL databáze převzetí služeb při selhání pomocí jazyka Transact-SQL
 
@@ -140,9 +140,9 @@ Jak je popsáno dříve, skupiny automatické převzetí služeb při selhání 
 | [Příkaz ALTER DATABASE (databáze Azure SQL)](/sql/t-sql/statements/alter-database-azure-sql-database) |Přidat sekundární SERVER ON argument použít k vytvoření sekundární databáze pro stávající databáze a spustí replikaci dat |
 | [Příkaz ALTER DATABASE (databáze Azure SQL)](/sql/t-sql/statements/alter-database-azure-sql-database) |Pomocí funkce převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS přepínač sekundární databáze, která bude primární k zahájení převzetí služeb při selhání |
 | [Příkaz ALTER DATABASE (databáze Azure SQL)](/sql/t-sql/statements/alter-database-azure-sql-database) |Odebrat sekundární SERVER ON použijte k ukončení replikaci dat mezi SQL Database a zadaný sekundární databázi. |
-| [sys.geo_replication_links (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všechna existující replikační připojení pro každou databázi na logického serveru Azure SQL Database. |
-| [sys.dm_geo_replication_link_status (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, poslední replikace funkce lag a další informace o propojení replikace pro danou databázi SQL. |
-| [sys.dm_operation_status (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav pro všechny databázové operace, včetně stav odkazů replikace. |
+| [Sys.geo_replication_links (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všechna existující replikační připojení pro každou databázi na logického serveru Azure SQL Database. |
+| [Sys.dm_geo_replication_link_status (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, poslední replikace funkce lag a další informace o propojení replikace pro danou databázi SQL. |
+| [Sys.dm_operation_status (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav pro všechny databázové operace, včetně stav odkazů replikace. |
 | [sp_wait_for_database_copy_sync (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počkejte, dokud všechny potvrzené transakce jsou replikována a potvrzena aktivní sekundární databáze. |
 |  | |
 

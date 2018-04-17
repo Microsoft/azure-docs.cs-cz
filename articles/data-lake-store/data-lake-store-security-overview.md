@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpečení v Azure Data Lake Store
 Mnoho podniků jsou využívat výhod analýzy velkých objemů dat podnikových statistik pomáhá jim inteligentní rozhodnutí. Organizace může mít složitý a regulovaná prostředí s roste počet různých uživatelů. Je důležité pro organizace a ujistěte se, bezpečněji, uložení kritickými podnikovými daty s správné úrovně udělení přístupu k jednotlivým uživatelům. Azure Data Lake Store je navržená tak, abyste splňovat tyto požadavky na zabezpečení. V tomto článku se dozvíte o funkcích zabezpečení Data Lake Store, včetně:
@@ -42,7 +42,7 @@ Každé předplatné Azure může být přidružen k instanci služby Azure Acti
 ## <a name="authorization-and-access-control"></a>Autorizace a řízení přístupu
 Po Azure Active Directory ověřuje uživatele tak, že má uživatel přístup Azure Data Lake Store, ovládací prvky autorizace přístupová oprávnění pro Data Lake Store. Data Lake Store odděluje autorizace aktivity souvisejícím s účtem a data související s následujícím způsobem:
 
-* [Řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) (RBAC) poskytovaný platformou Azure pro správu účtu
+* [Řízení přístupu na základě role](../role-based-access-control/overview.md) (RBAC) poskytovaný platformou Azure pro správu účtu
 * POSIX seznamu ACL pro přístup k datům v úložišti
 
 ### <a name="rbac-for-account-management"></a>RBAC pro správu účtu
@@ -54,7 +54,7 @@ Všimněte si, že i když role přiřazené pro správu účtu, některé role 
 
 | Role | Práva pro správu | Data přístupová práva | Vysvětlení |
 | --- | --- | --- | --- |
-| Žádné přiřazenou roli |Žádný |Řídí seznamu ACL |Uživatel nemůže použít portál Azure nebo rutin prostředí Azure PowerShell procházet Data Lake Store. Uživatel může použít jenom nástroje příkazového řádku. |
+| Žádné přiřazenou roli |Žádné |Řídí seznamu ACL |Uživatel nemůže použít portál Azure nebo rutin prostředí Azure PowerShell procházet Data Lake Store. Uživatel může použít jenom nástroje příkazového řádku. |
 | Vlastník |Vše |Vše |Role vlastníka je superuživatele. Tato role můžou spravovat všechno a má úplný přístup k datům. |
 | Čtenář |Jen pro čtení |Řídí seznamu ACL |Role čtenáře můžou zobrazit všechno týkající se správy účtů, například která je přiřazena uživatele které role. Role čtenáře nelze provést žádné změny. |
 | Přispěvatel |Všechny kromě přidání a odebrání rolí |Řídí seznamu ACL |Role Přispěvatel můžete spravovat některé aspekty účtu, jako je například nasazení a vytváření a Správa výstrah. Role Přispěvatel nelze přidat nebo odebrat role. |

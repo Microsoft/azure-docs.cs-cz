@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: aa74596906206ba4460e80af9015955c0b848cd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě
 
@@ -66,7 +66,7 @@ Při použití této funkce, existují tato omezení:
 * **Vytvoření virtuálního počítače:** A síťovým Adaptérem s Zrychlený sítě povolené lze připojit pouze k virtuálnímu počítači, když je vytvořen virtuální počítač. Síťový adaptér nelze připojit k existující virtuální počítač. Pokud Přidání virtuálního počítače do existující dostupnosti nastavena, všechny virtuální počítače v sadě dostupnosti musí také mít accelerated sítě povolené.
 * **Nasazení prostřednictvím Správce Azure Resource Manager pouze:** virtuálních počítačů (klasické) nelze nasadit pomocí Accelerated sítě.
 
-I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí rozhraní příkazového řádku Azure, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače s podporovaným operačním systémem a velikost virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno** pod **Accelerated sítě**. Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [zkontrolujte, zda je povoleno Zrychlený sítě](#confirm-that-accelerated-networking-is-enabled).
+I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí rozhraní příkazového řádku Azure, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno**v části **Accelerated sítě**. Možnost povolit Zrychlený sítě nebude se zobrazovat na portálu, pokud jste vybrali [podporovaný operační systém](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [zkontrolujte, zda je povoleno Zrychlený sítě](#confirm-that-accelerated-networking-is-enabled).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -175,7 +175,7 @@ Po vytvoření virtuálního počítače, je vrácen výstup podobný výstupu v
 
 ## <a name="confirm-that-accelerated-networking-is-enabled"></a>Zkontrolujte, zda je povoleno Zrychlený sítě
 
-Použijte následující příkaz k vytvoření relace SSH s virtuálním Počítačem. Nahraďte `<your-public-ip-address>` s veřejnou IP adresou přiřazené pro virtuální počítače, kterou jste vytvořili a nahraďte *azureuser* Pokud jste použili jinou hodnotu pro `--admin-username` při vytvoření virtuálního počítače.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nahraďte `<your-public-ip-address>` s veřejnou IP adresou přiřazené pro virtuální počítače, kterou jste vytvořili a nahraďte *azureuser* Pokud jste použili jinou hodnotu pro `--admin-username` při vytvoření virtuálního počítače.
 
 ```bash
 ssh azureuser@<your-public-ip-address>

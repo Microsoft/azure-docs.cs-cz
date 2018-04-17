@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0a704a6ac4a317e0d8e280a9353b04f9b4d919b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy k sadách škálování virtuálních počítačů Azure
 
@@ -121,7 +121,7 @@ Výstrahy můžete vytvořit na metriky pro sady škálování virtuálního po�
 
 TargetResourceId škálovací sadu virtuálních počítačů vypadá takto: 
 
-/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
+/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.COMPUTE/virtualMachineScaleSets/yourvmssname
 
 Můžete jako metriku nastavit výstrahy pro všechny čítače výkonu virtuálních počítačů. Další informace najdete v tématu [metriky hostovaného operačního systému pro virtuální počítače na bázi správce prostředků Windows](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) a [metriky hostovaného operačního systému pro virtuální počítače s Linuxem](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) v [běžné metriky automatického škálování Azure monitorování](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)článku.
 
@@ -264,7 +264,7 @@ Název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | --- |  ---
 SSH | Ne | Kolekce | Určuje klíče konfigurace SSH pro operační systém Linux.
 path | Ano | Řetězec | Určuje cestu souboru Linux, kde klíče SSH nebo certifikát má být umístěn
-keyData | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
+data klíče | Ano | Řetězec | Určuje kódování base64 veřejný klíč SSH
 
 Příklad, naleznete v části [šablony rychlý start Githubu 101-vm-sshkey](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -402,9 +402,9 @@ Update-AzureRmVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vms
  
 Můžete najít hodnotu Název_rozšíření v `$vmss`.
    
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-operations-management-suite"></a>Je k dispozici, že že škálovací sady virtuálních počítačů příklad šablony, který se integruje s Operations Management Suite?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Je k dispozici příklad šablony, který se integruje s analýzy protokolů sady škálování virtuálního počítače?
 
-Pro škálování virtuálních počítačů, nastavte příklad šablony, který se integruje s Operations Management Suite, najdete v druhém příkladu v [nasazení clusteru Azure Service Fabric a povolte monitorování pomocí analýzy protokolů](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Pro škálování virtuálních počítačů, nastavte příklad šablony, který se integruje s analýzy protokolů, najdete ve druhém příkladu v [nasazení clusteru Azure Service Fabric a povolte monitorování pomocí analýzy protokolů](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
    
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Zdá se, že rozšíření spustit souběžně na sady škálování virtuálního počítače. To způsobí, že Moje rozšíření vlastních skriptů selhání. Jak tento problém lze vyřešit?
 
@@ -693,9 +693,9 @@ Ano, můžete operaci obnovení z Image se resetovat virtuální počítač bez 
 
 Další informace najdete v tématu [spravovat všechny virtuální počítače ve škálovací sadu virtuálních počítačů](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-oms-operations-management-suite"></a>Je možné k integraci sady škálování s Azure OMS (Operations Management Suite)?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Je možné k integraci sady škálování s Azure Log Analytics?
 
-Ano, můžete po instalaci rozšíření OMS do měřítka nastavit virtuální počítače. Tady je příklad rozhraní příkazového řádku Azure:
+Ano, můžete po instalaci rozšíření analýzy protokolů do měřítka nastavit virtuální počítače. Tady je příklad rozhraní příkazového řádku Azure:
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
@@ -734,7 +734,7 @@ Když je vytvořen nový virtuální počítač, jak vlastnost virtuálního po�
 
 Chcete-li získat informace o vlastnosti pro každý virtuální počítač bez volání více, můžete zavolat `ListVMInstanceViews` pomocí rozhraní REST API `GET` na následující identifikátor URI prostředku:
 
-/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
+/subscriptions/ < ID_ODBĚRU > /resourceGroups/ < resource_group_name > /providers/Microsoft.Compute/virtualMachineScaleSets/ < scaleset_name > / virtualMachines? $expand = instanceView & $select = instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Můžete předat argumenty jiné rozšíření pro různé virtuální počítače ve škálovací sadě virtuálního počítače?
 

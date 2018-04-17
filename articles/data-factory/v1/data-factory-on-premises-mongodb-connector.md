@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0afdfb7b7d1f74d3df40b22bb97afc0f39bcc6d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Do úložiště dat žádné podporované podřízený může kopírovat data z 
 ## <a name="prerequisites"></a>Požadavky
 Pro službu Azure Data Factory být schopni připojit k vaší databázi MongoDB místní musíte nainstalovat následující součásti:
 
-- Podporované verze MongoDB jsou: 2.4, 2.6, 3.0 a 3.2.
+- Podporované verze MongoDB jsou: 2.4, 2.6, 3.0, 3.2, 3.4 a 3.6.
 - Brána pro správu dat na stejném počítači, který je hostitelem databáze nebo na samostatném počítači, aby se zabránilo neslučitelných pro prostředky s databází. Brána pro správu dat je software, který se připojuje místní zdroje dat do cloudové služby v zabezpečený a spravovaný. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) podrobnosti o Brána pro správu dat najdete v článku. V tématu [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny o nastavení brány datovém kanálu pro přesun dat najdete v článku.
 
     Při instalaci brány se automaticky nainstaluje ovladač Microsoft MongoDB ODBC používaný pro připojení k MongoDB.
@@ -295,7 +295,7 @@ Při přesunu dat na MongoDB se používají následující mapování z typů M
 
 | Typ MongoDB | Typ rozhraní .NET framework |
 | --- | --- |
-| Binární hodnota |Byte[] |
+| Binární hodnota |Byte] |
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
 | NumberDouble |Dvojitý |

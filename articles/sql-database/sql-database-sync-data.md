@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
 
@@ -44,7 +44,7 @@ Synchronizaci dat používá k synchronizaci dat hvězdicové topologii. Definuj
 
 ## <a name="when-to-use-data-sync"></a>Kdy používat synchronizaci dat
 
-Synchronizace dat je užitečné v případech, kde data musí být pořád aktuální napříč několika databází SQL Azure nebo databáze systému SQL Server. Zde jsou nejčastěji se využívá případů pro synchronizaci dat:
+Synchronizace dat je užitečné v případech, kdy data musí být pořád aktuální napříč několika databází SQL Azure nebo databáze systému SQL Server. Zde jsou nejčastěji se využívá případů pro synchronizaci dat:
 
 -   **Synchronizace dat hybridní:** se synchronizací dat, abyste zajistili, že data synchronizovat mezi vaší místní databáze a databáze SQL Azure povolit hybridní aplikace. Tato funkce může odvolat pro zákazníky, kteří jsou s přechodu do cloudu a chcete uvést některé své aplikace do Azure.
 
@@ -138,6 +138,11 @@ Ano. Musíte mít účet databáze SQL pro hostování databáze rozbočovače.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Můžete používat synchronizaci dat k synchronizaci mezi místní databáze systému SQL Server pouze? 
 Ne přímo. Pro synchronizaci mezi místní databáze systému SQL Server nepřímo, ale vytvoření centra databáze v Azure a následným přidáním do skupiny synchronizace místní databáze.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Můžete používat synchronizaci dat k synchronizaci mezi databázemi SQL, které patří do různých předplatných?
+Ano. Můžete synchronizovat mezi databází SQL, které patří do různých předplatných vlastníkem skupiny prostředků.
+-   Pokud předplatná patří do stejné klienta, a zda máte oprávnění pro všechny odběry, můžete nakonfigurovat skupiny synchronizace na portálu Azure.
+-   Jinak budete muset použít PowerShell k přidání synchronizace členů, které patří do různých předplatných.
    
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Lze používat synchronizaci dat na počáteční hodnoty data z provozní databáze pro prázdnou databázi a pak je synchronizovat zachovat? 
 Ano. Vytvoření schématu ručně v nové databáze pomocí skriptování z původní. Jakmile vytvoříte schéma, přidáte do skupiny synchronizace zkopírovat data a udržovat synchronizované tabulky.
@@ -147,6 +152,12 @@ Ano. Vytvoření schématu ručně v nové databáze pomocí skriptování z pů
 Není doporučeno používat synchronizaci dat SQL (Preview) k vytvoření zálohy, vaše data. Nelze zálohování a obnovení k určitému bodu v čase, protože synchronizace synchronizaci dat SQL (Preview) nejsou verzí. Kromě toho synchronizaci dat SQL (Preview) nezálohuje další SQL objekty, například uložené procedury a rychle neprovádí ekvivalent operaci obnovení.
 
 Pro jeden doporučuje zálohování techniku, najdete v části [zkopírujte Azure SQL database](sql-database-copy.md).
+
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Můžete synchronizovat synchronizaci dat šifrovaných tabulky a sloupce?
+
+-   Pokud databáze používá funkce Always Encrypted, budete moct synchronizovat pouze ty tabulky a sloupce, které jsou *není* šifrované. Šifrované sloupce nelze synchronizovat, protože synchronizaci dat nelze dešifrovat data.
+
+-   Pokud sloupec používá šifrování na úrovni sloupce (Vymazat), budete moct synchronizovat sloupci, tak dlouho, dokud velikost řádku je menší než maximální velikost 24 Mb. Synchronizaci dat zpracovává sloupci šifrované pomocí klíče (Vymazat) jako normální binární data. K dešifrování dat na ostatní členové synchronizace, musíte mít stejný certifikát.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Jsou podporované kolace v synchronizaci dat SQL?
 
@@ -170,7 +181,7 @@ Další informace o Synchronizaci dat SQL:
 -   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)
 
 -   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
-    -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

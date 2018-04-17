@@ -1,11 +1,11 @@
 ---
-title: "Škálování clusteru Service Fabric příchozí nebo odchozí | Microsoft Docs"
-description: "Cluster Service Fabric příchozí nebo odchozí škálovat tak, aby odpovídaly vyžádání nastavením pravidla automatického škálování pro každý uzel typu nebo virtuální počítač škálovací sadu. Přidávat nebo odebírat uzly do clusteru Service Fabric"
+title: Škálování clusteru Service Fabric příchozí nebo odchozí | Microsoft Docs
+description: Cluster Service Fabric příchozí nebo odchozí škálovat tak, aby odpovídaly vyžádání nastavením pravidla automatického škálování pro každý uzel typu nebo virtuální počítač škálovací sadu. Přidávat nebo odebírat uzly do clusteru Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
-ms.author: chackdan
-ms.openlocfilehash: 4813276ea8180aa8bdd385da289e6073f08d400e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: aljo
+ms.openlocfilehash: 506877e12d12ff3b1372cc0360a8df1a1d52744a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Škálování clusteru Service Fabric v nebo pomocí pravidel automatického škálování
-Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako samostatnou sadu škálování virtuálního počítače. Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Další informace o jeho [nodetypes Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Vzhledem k tomu, že Service Fabric typy uzlů v clusteru jsou tvořeny sady škálování virtuálního počítače v back-end, budete muset nastavit pravidla pro automatické škálování pro každý uzel typu nebo virtuální počítač škálovací sadu.
+# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Škálování clusteru Service Fabric v nebo pomocí pravidel automatického škálování, nebo ručně
+Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako sada škálování samostatný virtuální počítač. Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Další informace o jeho [nodetypes Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Vzhledem k tomu, že Service Fabric typy uzlů v clusteru jsou tvořeny sady škálování virtuálního počítače v back-end, budete muset nastavit pravidla pro automatické škálování pro každý uzel typu nebo virtuální počítač škálovací sadu.
 
 > [!NOTE]
 > Vaše předplatné musí mít dostatečný počet jader, který má-li přidat nové virtuální počítače, které tvoří tento cluster. Proto čas selhání nasazení, když se některé z maximální kvóty dosáhl neexistuje žádné ověření modelu v současné době.
@@ -40,7 +40,7 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Nastavení automatického škálování pravidel pro typ nebo virtuální uzel škálovací sadu počítačů.
-Pokud váš cluster má více typů uzlu, potom opakujte pro každý uzel typy nebo virtuální počítače nastaví tato chcete škálovat (příchozí nebo odchozí). Vezměte v úvahu počet uzlů, musí mít před nastavením automatické škálování. Minimální počet uzlů, které musí být pro typ primárním uzlu, který doprovází úroveň spolehlivosti, kterou jste vybrali. Další informace o [úrovní spolehlivosti](service-fabric-cluster-capacity.md).
+Pokud váš cluster má více typů uzlu, potom opakujte pro každý uzel typy nebo virtuální počítače nastaví tato chcete škálovat (příchozí nebo odchozí). Před nastavením automatického škálování vezměte v úvahu potřebný počet uzlů. Minimální počet uzlů, který je potřeba pro primární typ uzlu, vychází ze zvolené úrovně spolehlivosti. Další informace o [úrovní spolehlivosti](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
 > Škálování dolů primárním uzlu, který typ na hodnotu menší než minimální počet zkontrolujte nestabilním clusteru nebo tím, že ji. To může vést ke ztrátě dat pro vaše aplikace a systémových služeb.
@@ -74,7 +74,7 @@ Je třeba provést následující kroky jeden virtuální počítač instance so
 
 1. Spustit [zakázat ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) se záměrem 'RemoveNode' Chcete-li zakázat uzlu se chystáte odebrat (nejvyšší instance typu uzlu).
 2. Spustit [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) a ujistěte se, že uzel přešla skutečně na zakázáno. Pokud ne, počkejte, až uzel je zakázána. Tento krok nelze hurry.
-3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto uzlu. Instance odebrat je nejvyšší instance virtuálního počítače. 
+3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto typu uzlu. Instance odebrat je nejvyšší instance virtuálního počítače. 
 4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat počet instancí v primárním uzlu typy menší než co zaručuje úroveň spolehlivosti. Odkazovat na [informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md). 
 
 ## <a name="manually-remove-vms-from-the-non-primary-node-typevirtual-machine-scale-set"></a>Ručně odeberte z typu nebo virtuální uzel není primární počítač škálovací sadu virtuálních počítačů
@@ -86,8 +86,8 @@ Je třeba provést následující kroky jeden virtuální počítač instance so
 Musíte provést následující kroky jeden virtuální počítač instance současně. To umožňuje, aby korektně vypnout na instanci virtuálního počítače, kterou chcete odebrat systémových služeb (a vaše stavové služby) a vytvořit nové repliky else where.
 
 1. Spustit [zakázat ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) se záměrem 'RemoveNode' Chcete-li zakázat uzlu se chystáte odebrat (nejvyšší instance typu uzlu).
-2. Spustit [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) a ujistěte se, že uzel přešla skutečně na zakázáno. V opačném případě počkejte na uzlu je zakázána. Tento krok nelze hurry.
-3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto uzlu. Tato akce odebere teď nejvyšší instance virtuálního počítače. 
+2. Spustit [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) a ujistěte se, že uzel přešla skutečně na zakázáno. Pokud ne, počkejte, až uzel je zakázána. Tento krok nelze hurry.
+3. Ukázka nebo podle pokynů [Galerie šablon úvodní](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) Chcete-li změnit počet virtuálních počítačů pomocí jedné v tomto typu uzlu. Tato akce odebere teď nejvyšší instance virtuálního počítače. 
 4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy snižovat počet instancí v primárním uzlu typy menší než co zaručuje úroveň spolehlivosti. Odkazovat na [informace o spolehlivosti vrstev zde](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Chování můžete pozorovat v Service Fabric Exploreru

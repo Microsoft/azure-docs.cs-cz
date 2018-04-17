@@ -1,8 +1,8 @@
 ---
-title: "Ověřování služby služby: Python s Data Lake Store pomocí Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory používá Python"
+title: 'Ověřování služby služby: Python s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory používá Python
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: c04b870e72c5d29df95d16b96cc423441af6fd85
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4a60ce14b711f50dd6cca996438ba0405ba4abcb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-python"></a>Service-to-service ověřování s Data Lake Store pomocí jazyka Python
 > [!div class="op_single_selector"]
@@ -102,7 +102,15 @@ Použijte tento fragment kódu k ověření s Azure AD pro operace správy účt
 
 Použijte následující fragment kódu k ověření s Azure AD pro operace systému souborů v Data Lake Store, jako například vytvořit složku, nahrávání souborů atd. Následující fragment kódu lze použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
-    adlCreds = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+    tenant = '<TENANT>'
+    RESOURCE = 'https://datalake.azure.net/'
+    client_id = '<CLIENT_ID>'
+    client_secret = '<CLIENT_SECRET>'
+    
+    adlCreds = lib.auth(tenant_id = tenant,
+                    client_secret = client_secret,
+                    client_id = client_id,
+                    resource = RESOURCE)
 
 <!-- ## Service-to-service authentication with certificate for account management
 

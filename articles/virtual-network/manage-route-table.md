@@ -1,13 +1,13 @@
 ---
-title: "Vytvoření, změnit nebo odstranit tabulku směrování Azure | Microsoft Docs"
-description: "Zjistěte, jak vytvořit, změnit nebo odstranit tabulku směrování."
+title: Vytvoření, změnit nebo odstranit tabulku směrování Azure | Microsoft Docs
+description: Zjistěte, jak vytvořit, změnit nebo odstranit tabulku směrování.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: a7e45d6bccfd8113157eba63d311b6609bf35aaa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 73b0c35ac81d9b32cd56a6fd23119f3889867499
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
@@ -31,8 +31,8 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít nainstalovanou verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
-- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Spustit `az --version` najít nainstalovanou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="create-a-route-table"></a>Vytvořit směrovací tabulku
 
@@ -95,7 +95,7 @@ Podsíť může mít žádnou nebo jednu směrovací tabulku přidružené k ně
 **Příkazy**
 
 - Azure CLI: [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
+- Prostředí PowerShell: [AzureRmVirtualNetworkSubnetConfig sady](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušit přidružení směrovací tabulku z podsítě
 
@@ -110,7 +110,7 @@ Pokud zrušíte přidružení směrovací tabulku z podsítě, Azure směruje pr
 **Příkazy**
 
 - Azure CLI: [aktualizace az sítě vnet podsíť](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
+- Prostředí PowerShell: [AzureRmVirtualNetworkSubnetConfig sady](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
 ## <a name="delete-a-route-table"></a>Odstranit tabulku směrování
 
@@ -123,7 +123,7 @@ Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zruš
 **Příkazy**
 
 - Azure CLI: [odstranit az sítě-tabulka směrování](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- PowerShell: [Delete-AzureRmRouteTable](/powershell/module/azurerm.network/delete-azurermroutetable) 
+- Prostředí PowerShell: [AzureRmRouteTable odstranění](/powershell/module/azurerm.network/delete-azurermroutetable) 
 
 ## <a name="create-a-route"></a>Vytvořit trasu
 
@@ -229,7 +229,7 @@ Můžete určit typ dalšího směrování mezi virtuálním počítačem a IP a
  
 ## <a name="permissions"></a>Oprávnění
 
-K provádění úloh na směrovací tabulky a směrování, musí mít váš účet přiřazenou k [Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena odpovídající oprávnění uvedených v následující tabulce:
+K provádění úloh na směrovací tabulky a směrování, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena odpovídající oprávnění uvedených v následující tabulce:
 
 |Operace                                                       |   Název operace                               |
 |--------------------------------------------------------------  |   -------------------------------------------  |

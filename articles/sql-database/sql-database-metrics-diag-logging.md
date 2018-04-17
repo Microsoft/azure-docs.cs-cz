@@ -1,8 +1,8 @@
 ---
-title: "Azure SQL database metrik a protokolování diagnostiky | Microsoft Docs"
-description: "Další informace o tom, jak nakonfigurovat databázi SQL Azure pro ukládání využití prostředků, připojení a statistik provádění dotazů."
+title: Azure SQL database metrik a protokolování diagnostiky | Microsoft Docs
+description: Další informace o tom, jak nakonfigurovat databázi SQL Azure pro ukládání využití prostředků, připojení a statistik provádění dotazů.
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: veljko-msft
 manager: craigg
 ms.service: sql-database
@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Databáze SQL Azure můžete emitování metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
@@ -191,11 +191,11 @@ Nejjednodušší způsob, jak nakonfigurovat, kde databáze záznam jejich metri
 
 ### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Nainstalujte řešení analýzy SQL z Galerie
 
-1. Po vytvoření prostředků analýzy protokolů a je do ní toku dat, nainstalujte řešení analýzy SQL. Na domovské stránce Operations Management Suite. v nabídce straně vyberte **řešení Galerie**. V galerii, vyberte **Azure SQL Analytics** řešení a vyberte **přidat**.
+1. Po vytvoření prostředků analýzy protokolů a je do ní toku dat, nainstalujte řešení analýzy SQL. Na domovské stránce v nabídce straně vyberte **řešení Galerie**. V galerii, vyberte **Azure SQL Analytics** řešení a vyberte **přidat**.
 
    ![řešení monitorování](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
 
-2. Na domovské stránce Operations Management Suite **Azure SQL Analytics** se zobrazí dlaždice. Vyberte tuto dlaždici otevřete řídící panel analýzy SQL.
+2. Na domovské stránce **Azure SQL Analytics** se zobrazí dlaždice. Vyberte tuto dlaždici otevřete řídící panel analýzy SQL.
 
 ### <a name="use-the-sql-analytics-solution"></a>Pomocí řešení analýzy SQL
 

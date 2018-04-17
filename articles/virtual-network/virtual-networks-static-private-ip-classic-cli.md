@@ -1,10 +1,10 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) pomocí rozhraní příkazového řádku Azure (CLI) 1.0."
+title: Nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) - 1.0 rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače (klasické) pomocí rozhraní příkazového řádku Azure (CLI) 1.0.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed0fe2fea20671063395b9ff089599853278989d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c23419fdee7330d091d4699714f4ec08e72be2df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-cli-10"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač (klasický) pomocí Azure CLI 1.0
 
@@ -115,7 +115,11 @@ Očekávaný výstup:
     info:    Updating network configuration
     info:    vm static-ip set command OK
 
-## <a name="next-steps"></a>Další kroky
+## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adresy v rámci operačního systému
+
+Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné. Pokud ručně nastavit privátní IP adresu v operačním systému, ujistěte se, že se jedná o stejnou adresu jako přiřazené k virtuálnímu počítači Azure privátní IP adresy nebo ztratíte připojení k virtuálnímu počítači. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
+
+## <a name="next-steps"></a>Další postup
 * Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
 * Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
 * Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).

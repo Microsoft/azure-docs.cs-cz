@@ -1,9 +1,9 @@
 ---
 title: SQL Server Business Intelligence | Microsoft Docs
-description: "Toto téma používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a popisuje funkce Business Intelligence (BI), která je k dispozici pro SQL Server běžící na virtuálních počítačích Azure (VM)."
+description: Toto téma používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a popisuje funkce Business Intelligence (BI), která je k dispozici pro SQL Server běžící na virtuálních počítačích Azure (VM).
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
-ms.author: asaxton
-ms.openlocfilehash: a010e60df2d86d2b1cc923b427aa7d7452f58089
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: maghan
+ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server Business Intelligence v Azure Virtual Machines
 > [!IMPORTANT] 
@@ -62,7 +62,7 @@ Virtuální počítač Microsoft Azure galerie obsahuje několik imagí, které 
 
 Další informace o vydání a funkce v systému SQL Server podporovány naleznete v následujících tématech:
 
-* [SQL Server Editions](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
+* [Edice serveru SQL](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
 * [Funkce podporovaných jednotlivými edicemi systému SQL Server 2016](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>BI funkce nainstalované Image SQL serveru galerii virtuálních počítačů
@@ -75,7 +75,7 @@ Následující tabulka shrnuje nainstalovaných na běžné Galerie obrázků vi
 * SQL Server 2012 SP3 Enterprise
 * SQL Server 2012 SP3 Standard
 
-| SQL Server BI Feature | Nainstalovat na bitovou kopii Galerie | Poznámky |
+| Funkci SQL Server BI | Nainstalovat na bitovou kopii Galerie | Poznámky |
 | --- | --- | --- |
 | **Reporting Services – nativní režim** |Ano |Nainstalován, ale vyžaduje konfigurace, včetně adresu URL správce sestav. Najdete v části [konfigurace služby Reporting Services](#configure-reporting-services). |
 | **Služby Reporting Services režimu serveru SharePoint** |Ne |Bitovou kopii virtuálního počítače Microsoft Azure Galerie nezahrnuje SharePoint nebo SharePoint instalační soubory. <sup>1</sup> |
@@ -101,7 +101,7 @@ Následující tabulka shrnuje nainstalovaných na běžné Galerie obrázků vi
     Další informace o vytváření a připojení disků najdete v tématu [jak připojit datový Disk k virtuálnímu počítači](../classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 * Zastavení nebo odinstalaci služby, které není plánujete použít. Pro příklad, pokud virtuální počítač se používá pouze pro služby Reporting Services, zastavení nebo odinstalaci služby Analysis Services a SQL Server Integration Services. Na následujícím obrázku je příkladem služby, které jsou spuštěny ve výchozím nastavení.
   
-    ![SQL Server services](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
+    ![Službu SQL Server.](./media/virtual-machines-windows-classic-ps-sql-bi/IC650107.gif)
   
   > [!NOTE]
   > Databázový stroj SQL Server je vyžadována v Podporované scénáře BI. Jeden server topologie virtuálních počítačů je databázový stroj vyžadovat, aby byl spuštěn na stejného virtuálního počítače.
@@ -159,12 +159,12 @@ Existují dvě běžné pracovní postupy pro připojení k virtuální počíta
 
 **Spuštění, vytváření sestav služby Configuration Manager**
 
-In **Windows Server 2012/2016**:
+V **systému Windows Server 2012/2016**:
 
 1. Z **spustit** zadejte **služby Reporting Services** zobrazíte seznam aplikací.
 2. Klikněte pravým tlačítkem na **Správce konfigurace služby Reporting Services** a klikněte na tlačítko **spustit jako správce**.
 
-In **Windows Server 2008 R2**:
+V **systému Windows Server 2008 R2**:
 
 1. Klikněte na tlačítko **spustit**a potom klikněte na **všechny programy**.
 2. Klikněte na tlačítko **Microsoft SQL Server 2016**.
@@ -216,7 +216,7 @@ Informace o oprávnění serveru sestav, naleznete v části [udělení oprávn�
 Pokud chcete ověřit konfiguraci, přejděte do Správce sestav ve virtuálním počítači.
 
 1. Ve virtuálním počítači spusťte Internet Explorer s oprávněními správce.
-2. Vyhledejte http://localhost/reports ve virtuálním počítači.
+2. Přejděte do http://localhost/reports ve virtuálním počítači.
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>Pro připojení k vzdálené webový portál nebo správce sestav pro 2014 a 2012
 Pokud se chcete připojit na webový portál nebo správce sestav pro 2014 a 2012, na virtuálním počítači ze vzdáleného počítače, vytvořte nový virtuální počítač koncový bod TCP. Ve výchozím nastavení, server sestav čeká na požadavky HTTP na **port 80**. Pokud nakonfigurujete adresy URL serveru sestav použít jiný port, zadejte toto číslo portu v následujících pokynech.
@@ -225,7 +225,7 @@ Pokud se chcete připojit na webový portál nebo správce sestav pro 2014 a 201
 2. Otevřete port 80 v bráně firewall virtuálního počítače.
 3. Přejděte na webový portál nebo ohlásit manager pomocí virtuální počítač Azure **název DNS** jako název serveru v adrese URL. Příklad:
    
-    **Server sestav**: http://uebi.cloudapp.net/reportserver **webový portál**: http://uebi.cloudapp.net/reports
+    **Server sestav**: http://uebi.cloudapp.net/reportserver **webový portál**:   http://uebi.cloudapp.net/reports
    
     [Configure a Firewall for Report Server Access](https://msdn.microsoft.com/library/bb934283.aspx)
 

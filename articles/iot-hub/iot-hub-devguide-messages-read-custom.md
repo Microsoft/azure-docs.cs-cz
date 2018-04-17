@@ -1,23 +1,23 @@
 ---
-title: "Pochopení vlastní koncové body Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - pravidel směrování pro směrování zpráv typu zařízení cloud do vlastní koncové body."
+title: Pochopení vlastní koncové body Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře - pravidel směrování pro směrování zpráv typu zařízení cloud do vlastní koncové body.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3d54da43141dc2bdf34c9f71adc41dc7cf24ff10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Použít vlastní koncové body a směrování zpráv pro zprávy typu zařízení cloud
 
@@ -28,9 +28,11 @@ IoT Hub umožňuje směrovat [zpráv typu zařízení cloud] [ lnk-device-to-clo
 | **Název**      | Jedinečný název, který identifikuje pravidlo. |
 | **Zdroj**    | Původ datový proud do být reagovali na ni. Například zařízení telemetrie. |
 | **Podmínka** | Výraz dotazu pro směrování pravidlo, které je spouštění hlavičky a text zprávy a určuje, zda je shoda pro koncový bod. Další informace o vytváření podmínku trasy, najdete v článku [odkaz - dotazovacího jazyka pro úlohy a dvojčata zařízení][lnk-devguide-query-language]. |
-| **Endpoint**  | Název koncového bodu, kde IoT Hub odešle zprávy, které splňují podmínku. Koncové body musí být ve stejné oblasti jako službu IoT hub, jinak vám může být účtovat mezi oblastmi zápisy. |
+| **koncový bod**  | Název koncového bodu, kde IoT Hub odešle zprávy, které splňují podmínku. Koncové body musí být ve stejné oblasti jako službu IoT hub, jinak vám může být účtovat mezi oblastmi zápisy. |
 
 Do jedné zprávy může odpovídat na více pravidel směrování, ve kterých případ IoT Hub doručení zprávy do koncového bodu spojené s každou odpovídající pravidlo podmínku. Centrum IoT také automaticky deduplicates doručení zpráv, takže pokud zpráva odpovídá více pravidel, které mají stejný cíl, ho je zapsat pouze jednou do tohoto cílového místa.
+
+## <a name="endpoints-and-routing"></a>Koncové body a směrování
 
 Centrum IoT má výchozí [vestavěným koncovým bodem][lnk-built-in]. Můžete vytvořit vlastní koncové body pro směrování zpráv do pomocí jiných služeb v rámci vašeho předplatného propojení k rozbočovači. IoT Hub aktuálně podporuje kontejnery Azure Storage, Event Hubs, fronty Service Bus a témat sběrnice Service Bus jako vlastní koncové body.
 
@@ -50,6 +52,12 @@ Další informace o čtení ze vlastní koncové body najdete v tématu:
 * Čtení z [služby Event Hubs][lnk-getstarted-eh].
 * Čtení z [fronty Service Bus][lnk-getstarted-queue].
 * Čtení z [témat sběrnice Service Bus][lnk-getstarted-topic].
+
+## <a name="latency"></a>Latence
+
+Při směrování zařízení cloud telemetrické zprávy pomocí předdefinovaných koncových bodů, je po vytvoření první trasy k mírnému zvýšení latence začátku do konce.
+
+Ve většině případů průměrném zvyšování latence je menší než jedna sekunda. Můžete monitorovat pomocí latence **d2c.endpoints.latency.builtIn.events** [IoT Hub metrika](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). Vytvoření nebo odstranění všech trasy po první nemá negativní vliv na latenci začátku do konce.
 
 ### <a name="next-steps"></a>Další postup
 

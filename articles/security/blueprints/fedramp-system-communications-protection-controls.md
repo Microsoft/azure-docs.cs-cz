@@ -1,6 +1,6 @@
 ---
-title: "Ochrana komunikace a systému plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů a zabezpečení Azure"
-description: "FedRAMP webové aplikace automatizace – systém a komunikace ochrany"
+title: Ochrana komunikace a systému plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů a zabezpečení Azure
+description: FedRAMP webové aplikace automatizace – systém a komunikace ochrany
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>Systém a komunikace ochrany (SC)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] systému a komunikaci zásady ochrany, které řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění systému a zásady ochrany komunikaci a přidružené systému a ovládací prvky ochrany komunikace; kontroluje a aktualizuje aktuální zásady ochrany systému a komunikace [přiřazení: organizace definované frekvence]; a postupy ochrany systému a komunikace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC 2** informace systému odděluje od funkce správy systému informace funkce uživatele (včetně uživatelské rozhraní služby).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-3** informace systému izoluje funkcí zabezpečení z funkcí netýká se zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-4** informace brání neoprávněným a neúmyslné informace o přenosu prostřednictvím sdílených systémových prostředků.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-5** informace systému chrání před nebo omezení důsledků tyto typy útoků DOS: [přiřazení: organizace definované typy odmítnutí služby nebo odkazy na zdroje pro tyto údaje] podle nasazení [přiřazení: ochrana definované organizace zabezpečení].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-6** informace systému chrání dostupnost prostředků přidělí [přiřazení: organizace definované prostředky] podle [výběr (jeden nebo více) s prioritou; kvóty; [Přiřazení: ochrana definované organizace zabezpečení]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,11 +115,11 @@ ms.lasthandoff: 02/11/2018
 
 **SC 7a** systému informace o monitorování a řídí komunikaci v externí hranice systému a klíče interní hranice v rámci systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí služby Application Gateway, nástroj pro vyrovnávání zatížení a nakonfiguruje pravidla skupiny zabezpečení sítě k řízení commutations na externí hranice a mezi interní podsítě. Aplikační bránu, Vyrovnávání zatížení a událostí skupiny zabezpečení sítě a diagnostické protokoly jsou shromážděny prostřednictvím analýzy protokolů OMS umožňující zákazníka monitorování. |
+| **Zákazníka** | Tento plán, podle kterého nasadí služby Application Gateway, nástroj pro vyrovnávání zatížení a nakonfiguruje pravidla skupiny zabezpečení sítě k řízení commutations na externí hranice a mezi interní podsítě. Aplikační bránu, Vyrovnávání zatížení a událostí skupiny zabezpečení sítě a diagnostické protokoly jsou shromážděny prostřednictvím analýzy protokolů umožňuje monitorování zákazníka. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7.b** systém informace implementuje podsítě pro součásti veřejně přístupná systému, které jsou [výběr: fyzicky; logicky] oddělené z interní sítě organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7.c** informace systému se připojí k externí sítě nebo systémy informace pouze prostřednictvím spravovaná rozhraní, který se skládá z zařízení pro ochranu hranic uspořádané podle architekturu zabezpečení organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (3)** organizace omezuje počet externí síťové připojení k systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -165,13 +165,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-sc-7-4a"></a>NIST 800-53 Control SC-7 (4).a
+ ### <a name="nist-800-53-control-sc-7-4a"></a>.A NIST 800-53 řízení SC-7 (4)
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Hranice ochrany | Externí Telecommunications služby
 
 **SC-7 (4) .a** organizace implementuje spravovaného rozhraní pro každou službu externí telekomunikace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4) .b** organizace vytvoří zásadu tok provozu pro každé spravované rozhraní.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -193,13 +193,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-sc-7-4c"></a>NIST 800-53 Control SC-7 (4).c
+ ### <a name="nist-800-53-control-sc-7-4c"></a>.C NIST 800-53 řízení SC-7 (4)
 
 #### <a name="boundary-protection--external-telecommunications-services"></a>Hranice ochrany | Externí Telecommunications služby
 
 **SC-7 (4) .c** organizace chrání utajení a celistvost informací přenášených po každé rozhraní.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4) .d** dokumentů. každý výjimkou zásady tok provozu pomocí podpůrné zvláště/obchodních potřeb a dobu trvání kterém musí organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (4).e** Organizace zkontroluje výjimky pro zásady tok přenosů [přiřazení: organizace definované frekvence] a odebere výjimky, které již nejsou podporovány explicitní zvláště/obchodních potřeb.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (5)** systému informace v spravovaná rozhraní odmítne síťový provoz komunikace ve výchozím nastavení a umožňuje síťový provoz komunikace výjimkou (tedy Zakázat vše, povolit výjimkou).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (7)** informace systému, ve spojení se vzdáleným zařízením, zabrání zařízení z současně navazování bez vzdáleného připojení pomocí systému a komunikaci přes jiné připojení k prostředkům v externím sítím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (8)** systémové trasy informace [přiřazení: provoz organizace definované interních komunikací] na [přiřazení: organizace definované externí sítě] prostřednictvím ověření proxy servery na spravované rozhraní.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (10)** organizace brání neoprávněným exfiltration informací mezi spravovaná rozhraní.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (12)** organizace implementuje [přiřazení: mechanismy ochrany definované organizace založená na hostiteli hranic] na [přiřazení: komponent systému informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (13)** izoluje organizace [přiřazení: nástroje zabezpečení informace definované organizace, mechanismy a součástí podpory] z dalších komponent systému interní informace implementací fyzicky jednotlivé podsítě s spravovaná rozhraní pro součásti systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (18)** informace systému selže bezpečně provozní selhání zařízení ochrany hranic.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (20)** informace systém poskytuje schopnost dynamicky isolate/oddělit [přiřazení: komponent systému informace definované organizace] z dalších komponent systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-7 (21)** organizace využívá mechanismy ochrany hranic k oddělení [přiřazení: komponent systému informace definované organizace] podpora [přiřazení: poslání definované organizace nebo podnikovým funkcím].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-8** chrání informace systému [výběr (jeden nebo více): důvěrnost; integrity] přenášená informací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-8 (1)** systém informace implementuje kryptografických mechanismů pro [výběr (jeden nebo více): zabránit neoprávněným úniku informací; zjišťuje změny informací] během přenosu Pokud jinak chráněn [přiřazení: organizace definované alternativní fyzické ochrana].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-10** informace systém ukončuje připojení sítě přidružené k relaci komunikace na konci relace nebo po [přiřazení: organizace definované časové období] nečinnosti.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12** organizace vytváří a spravuje kryptografické klíče pro požadované kryptografie pracujících v rámci systému informace v souladu s [přiřazení: požadavky organizace definované pro generování klíčů, distribuci, úložiště, přístupu a odstraňování].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (1)** organizace udržuje dostupnost informací v případě ztráty kryptografické klíče uživatelé.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (2)** organizace vytváří, ovládací prvky a distribuuje symetrické kryptografické klíče pomocí [výběr: NIST kompatibilní se standardem FIPS; Technologie NSA schválení] správy klíčů a procesy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-12 (3)** organizace vytváří, ovládací prvky a distribuuje asymetrické kryptografické klíče pomocí [výběr: technologie NSA schválení správy klíčů a procesy; schválené certifikáty infrastruktury veřejných KLÍČŮ třídy 3 nebo prepositioned klíčový materiál; schválené certifikáty infrastruktury veřejných KLÍČŮ třídě 3 nebo 4 – třída a tokeny zabezpečení hardwaru, které ochrana privátního klíče uživatele].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-13** systém informace implementuje [přiřazení: organizace definované kryptografických používá a typ šifrování, které jsou potřebné pro každé použití] v souladu s platné federální zákony Executive objednávky direktivy, zásady, nařízení, a standardy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-15.a** informace systém neumožňuje Vzdálená aktivace spolupráce výpočetní zařízení s následujícími výjimkami: [přiřazení: organizace definované výjimky, kde je Vzdálená aktivace smí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-15.b** informace systému poskytuje explicitní informace o použití uživatelům fyzicky přítomen v zařízení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-17** organizace vydává certifikáty s veřejným klíčem v části [přiřazení: zásady definované organizace certifikátu] nebo získá od poskytovatele služeb schválené certifikáty s veřejným klíčem.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-18.a** organizace definuje přijatelná a nepřijatelná mobilního kódu a technologie mobilního kódu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-18.b** organizace vytváří implementace ke přijatelné mobilního kódu a mobilního kódu technologie a omezení použití.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-18.c** organizace povolí, sleduje a řídí použití mobilního kódu v rámci systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-19.a** organizace vytváří implementace ke hlasové přes Internet Protocol (VoIP) technologie, podle kterého hrozí riziko poškození systému informace, pokud se používá neoprávněnému a omezení použití.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-19.b** organizace povolí, sleduje a řídí použití VoIP v rámci systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-20.a** informace systému poskytuje další data počátku ověřování a integrita ověření artefaktů spolu s daty autoritativního názvového řešení, systém se vrátí v odpovědi na dotazy pro překlad názvů externí názvu nebo adresy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-20.b** systému informací nabízí způsob, jak označují stav zabezpečení podřízené zóny a (Pokud podřízená podporuje zabezpečené řešení služby) Chcete-li povolit ověřování řetězu certifikátů mezi nadřazenými a podřízenými domény, při fungování v rámci v distribuované hierarchické oboru názvů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-21** systém informace požadavků a provádí ověřování původu dat a ověření integrity dat v systému obdrží z autoritativních zdrojů odpovědi rozlišení názvu nebo adresy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-22** informačními systémy, které společně poskytují služba překladu názvu nebo adresy v organizaci, jsou odolné proti chybám a implementaci oddělení rolí interní/externí.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-23** informace systému chrání pravost komunikace relací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **(1) SC-23** informace systému by způsobila neplatnost identifikátory relace při odhlášení uživatele nebo jiné ukončení relace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC – 24** informace systému nepodaří [přiřazení: organizace známé stavu na definovaný] pro [přiřazení: organizace definované typy chyb] zachování [přiřazení: informace o stavu systému definované organizace] selhání.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-28** chrání informace systému [výběr (jeden nebo více): důvěrnost; integrity] z [přiřazení: organizace definované informace, které v klidovém stavu].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-28 (1)** systém informace implementuje kryptografických mechanismů, aby se zabránilo neoprávněnému zpřístupnění a úpravu [přiřazení: informace definované organizace] na [přiřazení: informace definované organizace systému komponenty].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **SC-39** informace systém uchovává samostatné spuštění domény jednotlivých spuštěných procesů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

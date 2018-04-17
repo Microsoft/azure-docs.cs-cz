@@ -1,12 +1,12 @@
 ---
-title: "Přenos vlastnictví předplatného Azure na jiný účet | Microsoft Docs"
-description: "Popisuje, jak převést předplatné Azure do jiného uživatele a některé nejčastější dotazy (FAQ) o procesu"
-keywords: "přenos předplatného přenos předplatného azure, azure, přesunout do jiné vlastník předplatného změnu účtu azure předplatné azure, přenos předplatného azure na jiný účet"
-services: 
-documentationcenter: 
+title: Přenos vlastnictví předplatného Azure na jiný účet | Microsoft Docs
+description: Popisuje, jak převést předplatné Azure do jiného uživatele a některé nejčastější dotazy (FAQ) o procesu
+keywords: přenos předplatného přenos předplatného azure, azure, přesunout do jiné vlastník předplatného změnu účtu azure předplatné azure, přenos předplatného azure na jiný účet
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e81037aeb3a8aee4f70eaf33280b1dc0d483332
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného služby Azure na jiný účet
 
@@ -29,7 +29,7 @@ Přenos předplatného na jiného uživatele v Centru pro účet a změňte úč
 
 > [!IMPORTANT]
 > 
-> Pokud předáte předplatné nové Azure AD klienta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../active-directory/role-based-access-control-what-is.md) jsou trvale odstraněny z klienta, zdroje a nebyly migrovány do cílového klienta.
+> Pokud předáte předplatné nové Azure AD klienta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) jsou trvale odstraněny z klienta, zdroje a nebyly migrovány do cílového klienta.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Přenos vlastnictví předplatného Azure
 
@@ -51,7 +51,7 @@ Přenos předplatného na jiného uživatele v Centru pro účet a změňte úč
 
    > [!IMPORTANT]
    > 
-   > Pokud předáte předplatné nové Azure AD klienta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../active-directory/role-based-access-control-what-is.md) jsou trvale odstraněny z klienta, zdroje a nebyly migrovány do cílového klienta.
+   > Pokud předáte předplatné nové Azure AD klienta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) jsou trvale odstraněny z klienta, zdroje a nebyly migrovány do cílového klienta.
 
    ![Dialogové okno přenos předplatného](./media/billing-subscription-transfer/image2.PNG)
 
@@ -63,7 +63,7 @@ Přenos předplatného na jiného uživatele v Centru pro účet a změňte úč
    ![První předplatné přenos webové stránky](./media/billing-subscription-transfer/image4.png)
 
    ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/image5.png)
-1. Povedlo se. Předplatné je nyní přenést.
+1. Výborně! Předplatné je nyní přenést.
 
 <a id="EA"></a>
 
@@ -115,7 +115,7 @@ Správce účtu je osoba, která registraci aplikace nebo kód zakoupili předpl
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Všechno přenosu? Včetně skupin prostředků, virtuálních počítačů, disků a další spuštěné služby?
 
-Všechny prostředky, například virtuálních počítačů, disků a weby přenos do nového vlastníka. Však žádné [role správce](billing-add-change-azure-subscription-administrator.md) a [řízení přístupu na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md) zásady, které jste nastavili nepřenášejí mezi různé adresáře. Navíc [registrace aplikace](../active-directory//develop/active-directory-integrating-applications.md) a jinými službami konkrétního klienta není přenos společně.
+Všechny prostředky, například virtuálních počítačů, disků a weby přenos do nového vlastníka. Však žádné [role správce](billing-add-change-azure-subscription-administrator.md) a [řízení přístupu na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) zásady, které jste nastavili nepřenášejí mezi různé adresáře. Navíc [registrace aplikace](../active-directory//develop/active-directory-integrating-applications.md) a jinými službami konkrétního klienta není přenos společně.
 
 ### <a id="no-button"></a> Proč se nezobrazí tlačítko "Přenesení předplatného"?
 

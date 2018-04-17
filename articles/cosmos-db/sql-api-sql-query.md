@@ -5,7 +5,7 @@ keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázov
 services: cosmos-db
 documentationcenter: ''
 author: LalithaMV
-manager: jhubbard
+manager: kfile
 editor: monicar
 ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro Azure Cosmos DB
 
@@ -369,7 +369,7 @@ V následující tabulce jsou výsledkem porovnání rovnosti v rozhraní SQL AP
             <strong>Řetězec</strong>
          </td>
          <td valign="top">
-            <strong>Object</strong>
+            <strong>Objekt</strong>
          </td>
          <td valign="top">
             <strong>Pole</strong>
@@ -476,7 +476,7 @@ Nedefinováno </td>
       </tr>
       <tr>
          <td valign="top">
-            <strong>Object<strong>
+            <strong>Objekt<strong>
          </td>
          <td valign="top">
 Nedefinováno </td>
@@ -1411,7 +1411,7 @@ Matematické funkce provedení výpočtu, podle vstupní hodnoty, které jsou k 
 | Využití | Popis |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [[ABS (num_expr)](#bk_abs) | Vrátí absolutní hodnotu (kladné) zadaný číselný výraz. |
-| [CEILING (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
+| [Horní MEZ (num_expr)](#bk_ceiling) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
 | [FLOOR (num_expr)](#bk_floor) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
 | [EXP (num_expr)](#bk_exp) | Vrátí exponent zadaný číselný výraz. |
 | [LOG (num_expr [,base])](#bk_log) | Vrátí přirozený logaritmus zadaný číselný výraz nebo pomocí o zadaném základu logaritmus |
@@ -1419,8 +1419,8 @@ Matematické funkce provedení výpočtu, podle vstupní hodnoty, které jsou k 
 | [ZAOKROUHLÍ (num_expr)](#bk_round) | Vrátí číselnou hodnotu, zaokrouhlí na nejbližší celé číslo. |
 | [TRUNC (num_expr)](#bk_trunc) | Vrátí číselnou hodnotu, zkrácen na nejbližší celé číslo. |
 | [SQRT (num_expr)](#bk_sqrt) | Vrátí druhou odmocninu čísla zadaný číselný výraz. |
-| [SQUARE (num_expr)](#bk_square) | Vrátí druhou mocninu zadaný číselný výraz. |
-| [POWER (num_expr, num_expr)](#bk_power) | Hodnota zadaná vrátí sílu zadaný číselný výraz. |
+| [HRANATÉ (num_expr)](#bk_square) | Vrátí druhou mocninu zadaný číselný výraz. |
+| [NAPÁJENÍ (num_expr, num_expr)](#bk_power) | Hodnota zadaná vrátí sílu zadaný číselný výraz. |
 | [SIGN (num_expr)](#bk_sign) | Vrátí hodnotu přihlašovací (-1, 0, 1) zadaný číselný výraz. |
 | [ACOS (num_expr)](#bk_acos) | Vrací úhel, v radiánech, jehož kosinus je zadaný číselný výraz. Zkratka Arkus. |
 | [ASIN (num_expr)](#bk_asin) | Vrací úhel, v radiánech, jehož sinus je zadaný číselný výraz. To je také označován Arkus sinus. |
@@ -1428,7 +1428,7 @@ Matematické funkce provedení výpočtu, podle vstupní hodnoty, které jsou k 
 | [ATN2 (num_expr)](#bk_atn2) | Vrací úhel, v radiánech, mezi kladné osy x a paprsek z tohoto počátku do bodu (y, x), kde x a y jsou hodnoty dvou výrazů zadaný float. |
 | [COS (num_expr)](#bk_cos) | Vrací trigonometrické kosinus určeného úhlu v radiánech v zadaným výrazem. |
 | [COT (num_expr)](#bk_cot) | Vrací trigonometrické kotangens zadaný úhel v radiánech v zadaný číselný výraz. |
-| [DEGREES (num_expr)](#bk_degrees) | Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech. |
+| [STUPŇŮ (num_expr)](#bk_degrees) | Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech. |
 | [PI ()](#bk_pi) | Vrátí konstantní hodnotu čísla PÍ. |
 | [RADIANS (num_expr)](#bk_radians) | Vrátí radiánech při zadání číselného výrazu, ve stupních, se. |
 | [SIN (num_expr)](#bk_sin) | Vrací trigonometrické sinus určeného úhlu v radiánech v zadaným výrazem. |
@@ -1463,7 +1463,7 @@ Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů
   <td>Vrátí logickou hodnotu udávající, pokud typ hodnoty je logická hodnota.</td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null">IS_NULL (expr)</a></td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null">IS_NULL (výraz)</a></td>
   <td>Vrátí logickou hodnotu, která určuje, jestli je typ hodnoty null.</td>
 </tr>
 <tr>
@@ -1483,7 +1483,7 @@ Kontrola, zda funkce typů umožňují zkontrolujte typ výrazu v rámci dotazů
   <td>Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu.</td>
 </tr>
 <tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive">IS_PRIMITIVE (expr)</a></td>
+  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive">IS_PRIMITIVE (výraz)</a></td>
   <td>Vrátí logickou hodnotu, která udává, pokud je typ hodnoty řetězce, číslo, logickou hodnotu nebo hodnotu null.</td>
 </tr>
 
@@ -1504,22 +1504,22 @@ Následující skalární funkce provést operaci s vstupní hodnotu řetězce a
 
 | Využití | Popis |
 | --- | --- |
-| [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Vrátí počet znaků ze zadaného řetězcového výrazu |
+| [Délka (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) |Vrátí počet znaků ze zadaného řetězcového výrazu |
 | [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) |Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
 | [SUBSTRING (str_expr, num_expr num_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) |Vrátí část řetězcového výrazu. |
 | [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý |
 | [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) |Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý |
-| [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
+| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) |Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
 | [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) |Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
 | [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) |Vrátí levé části řetězec s zadaný počet znaků. |
 | [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) |Vrátí pravou část řetězec s zadaný počet znaků. |
 | [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) |Vrací výraz řetězce po ho odebere úvodní mezery. |
 | [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) |Vrací výraz řetězce po zkracování všechny koncové mezery. |
-| [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
+| [NIŽŠÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
 | [HORNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
 | [NAHRAĎTE (str_expr, str_expr str_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
 | [REPLIKOVAT (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) |Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí obráceném pořadí řetězcovou hodnotu. |
+| [ZPĚTNÉHO (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |Vrátí obráceném pořadí řetězcovou hodnotu. |
 
 Pomocí těchto funkcí, můžete nyní spustit dotazy podobně jako tento. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
 
@@ -1576,7 +1576,7 @@ Následující skalární funkce provedení operace hodnota vstupní pole a vrá
 | --- | --- |
 | [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí počet prvků výrazu zadané pole. |
 | [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, které je výsledkem zřetězení dvě nebo více hodnot pole. |
-| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu udávající, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud je shoda celé nebo jeho část. |
+| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu udávající, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud je shoda celé nebo jeho část. |
 | [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Vrátí část výraz pole. |
 
 Funkce pole můžete použít k manipulaci s pole v rámci JSON. Tady je příklad dotaz, který vrátí všechny dokumenty, kde jeden z rodičů je "Každý s každým Wakefieldů". 
@@ -1994,7 +1994,7 @@ Cosmos DB zveřejňuje prostředky přes rozhraní REST API, kterou lze volat v 
 
 Následující příklady ukazují, jak vytvořit dotaz a odešlete ji proti Cosmos DB databázového účtu.
 
-### <a id="RestAPI"></a>REST API
+### <a id="RestAPI"></a>ROZHRANÍ REST API
 Cosmos DB nabízí otevřete RESTful programovací model přes protokol HTTP. Databáze účtů se dá zřídit pomocí předplatného Azure. Model prostředků Cosmos DB obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátoru URI. Sadu prostředků se označuje jako informačního kanálu v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkce UDF a další typy prostředků.
 
 Základní interakce model pomocí těchto prostředků je pomocí příkazů HTTP GET, PUT, POST a odstranit pomocí jejich standardní překladu. Příkaz POST se používá pro vytvoření nového prostředku, pro spuštění uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádné vedlejší účinky.
@@ -2129,7 +2129,7 @@ Pokud nakonfigurované zásady indexování na kolekce nepodporuje zadaný dotaz
 
 Podrobné metriky můžete získat na spuštění dotazu nastavením `x-ms-documentdb-populatequerymetrics` hlavičky k `True`. Další informace najdete v tématu [metriky dotazů SQL pro Azure Cosmos DB](sql-api-sql-query-metrics.md).
 
-### <a id="DotNetSdk"></a>C# (.NET) SDK
+### <a id="DotNetSdk"></a>SADA SDK JAZYKA C# (.NET)
 .NET SDK podporuje LINQ a SQL dotazování. Následující příklad ukazuje, jak k provedení dotazu jednoduchý filtr zavedená dříve v tomto dokumentu.
 
     foreach (var family in client.CreateDocumentQuery(collectionLink, 

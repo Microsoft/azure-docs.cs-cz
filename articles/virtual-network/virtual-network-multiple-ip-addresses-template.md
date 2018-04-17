@@ -1,12 +1,12 @@
 ---
-title: "Více IP adres pro virtuální počítače Azure - šablony | Microsoft Docs"
-description: "Zjistěte, jak přiřadit více IP adres pro virtuální počítač pomocí šablony Azure Resource Manager."
-documentationcenter: 
+title: Více IP adres pro virtuální počítače Azure - šablony | Microsoft Docs
+description: Zjistěte, jak přiřadit více IP adres pro virtuální počítač pomocí šablony Azure Resource Manager.
+documentationcenter: ''
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Přiřadit více IP adres pro virtuální počítače pomocí šablony Azure Resource Manager
 
@@ -34,7 +34,7 @@ Nasazení šablony můžete rychle a konzistentně vytváření prostředků Azu
 
 <a name="resources"></a>Nasazení šablony vytvoří v následujících zdrojích informací:
 
-|Prostředek|Name (Název)|Popis|
+|Prostředek|Název|Popis|
 |---|---|---|
 |Síťové rozhraní|*myNic1*|Tři konfigurace protokolu IP, které jsou popsané v části scénář v tomto článku jsou vytvořeny a přiřazeny tento síťový adaptér.|
 |Prostředek veřejné IP adresy|jsou vytvořené 2: *myPublicIP* a *myPublicIP2*|Tyto prostředky jsou přiřazené statické veřejné IP adresy a jsou přiřazeny *IPConfig-1* a *IPConfig 2* konfigurace protokolu IP, které jsou popsané v tomto scénáři.|
@@ -44,7 +44,7 @@ Nasazení šablony můžete rychle a konzistentně vytváření prostředků Azu
 
 <a name="parameters"></a>Při nasazení šablony, je nutné zadat hodnoty následujících parametrů:
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |adminUsername|Uživatelské jméno správce. Uživatelské jméno musí být v souladu s [požadavky na Azure uživatelské jméno](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |adminPassword|Heslo správce heslo musí být v souladu s [požadavky na heslo pro platformu Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -68,7 +68,7 @@ Pokud chcete nasadit šablonu pomocí portálu Azure, proveďte následující k
 1. Upravte šablonu, v případě potřeby. Šablona nasadí prostředky a nastavení uvedené v [prostředky](#resources) tohoto článku. Další informace o šablonách a postupu pro jejich vytváření, čtení [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)článku.
 2. Nasazení šablony s jedním z následujících metod:
     - **Vyberte šablonu v portálu:** kroky [nasadit prostředky z vlastní šablony](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) článku. Vyberte existující šablonu s názvem *101-vm několika ipconfig*.
-    - **Přímo:** kliknutím na následující tlačítko Otevřít šablonu přímo na portálu:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+    - **Přímo:** kliknutím na následující tlačítko Otevřít šablonu přímo na portálu: <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
 Bez ohledu na metodu si zvolíte, bude nutné zadat hodnoty pro [parametry](#parameters) uvedené dříve v tomto článku. Po nasazení virtuálního počítače připojit k virtuálnímu počítači a přidejte privátních IP adres do operačního systému, který jste nasadili pomocí kroků v [přidat IP adresy na operační systém virtuálního počítače](#os-config) tohoto článku. Nepřidávejte veřejné IP adresy v operačním systému.
 

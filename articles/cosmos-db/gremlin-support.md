@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
 Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
@@ -145,7 +145,7 @@ A hranici obsahuje následující informace, které pomůžou s odkazy na dalš�
 | --- | --- |
 | id | ID pro hranici. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
 | Popisek | Popisek okraj. Tato vlastnost je volitelná a slouží k popisu typu relace. |
-| inV | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
+| inventáře | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
 | properties | Kontejner uživatelem definované vlastnosti související s hranou. Každá vlastnost může mít více hodnot. |
 
 Každou vlastnost můžete ukládat víc hodnot v rámci pole. 
@@ -153,12 +153,6 @@ Každou vlastnost můžete ukládat víc hodnot v rámci pole.
 | Vlastnost | Popis |
 | --- | --- |
 | hodnota | Hodnota vlastnosti
-
-## <a name="gremlin-partitioning"></a>Vytváření oddílů gremlin
-
-V Azure Cosmos DB, grafy ukládají v rámci kontejnerů, které je možné škálovat nezávisle z hlediska úložiště a propustnost (vyjádřeno v normalizovaný požadavků za sekundu). Každý kontejner musí definovat volitelný, ale doporučuje vlastnost klíče oddílu, která určuje hranici logický oddíl pro související data. Každý vrchol okraj musí mít `id` vlastnosti, které jsou jedinečné pro entity v rámci této hodnotu klíče oddílu. Podrobnosti jsou popsané v [vytváření oddílů v Azure Cosmos DB](partition-data.md).
-
-Operace gremlin fungují bezproblémově napříč daty grafu, které jsou v rozsahu více oddílů v Azure Cosmos DB. Doporučujeme ale, vyberte klíč oddílu pro vaše grafů, který se často používá jako filtr ve funkci dotazy, obsahuje mnoho různých hodnot a podobné frekvenci přístup tyto hodnoty. 
 
 ## <a name="gremlin-steps"></a>Kroky gremlin
 Nyní Podíváme se na postup Gremlin nepodporuje Azure Cosmos DB. Úplný odkaz na Gremlin, najdete v části [TinkerPop odkaz](http://tinkerpop.apache.org/docs/current/reference).

@@ -1,24 +1,24 @@
 ---
-title: "Vícevrstvé aplikace služby SharePoint pomocí Azure Site Recovery replikovat | Microsoft Docs"
-description: "Tento článek popisuje, jak replikovat vícevrstvé aplikace služby SharePoint pomocí funkcí Azure Site Recovery."
+title: Vícevrstvé aplikace služby SharePoint pomocí Azure Site Recovery replikovat | Microsoft Docs
+description: Tento článek popisuje, jak replikovat vícevrstvé aplikace služby SharePoint pomocí funkcí Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: sujayt
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/23/2017
+ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replikovat vícevrstvé aplikace služby SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -66,7 +66,7 @@ Pro vytvoření tohoto článku, používaly virtuální počítače VMware s Wi
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
-**Scénář** | **Sekundární lokality** | **To Azure**
+**Scénář** | **Sekundární lokality** | **Do Azure**
 --- | --- | ---
 **Hyper-V** | Ano | Ano
 **VMware** | Ano | Ano
@@ -115,10 +115,10 @@ Postupujte podle [v tomto návodu](site-recovery-vmware-to-azure.md) k zahájen�
 Pro internetové weby [vytvořit profil Traffic Manageru typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) v rámci předplatného Azure. A pak nakonfigurujte DNS a Traffic Manager profilu následujícím způsobem.
 
 
-| **Kde** | **Zdroj** | **Cíl**|
+| **kde** | **Zdroj** | **cíl**|
 | --- | --- | --- |
 | Veřejné služby DNS | Veřejné služby DNS pro weby služby SharePoint <br/><br/> Například: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
-| On-premises DNS | sharepointonprem.contoso.com | Veřejná IP adresa na místní farmě |
+| Místní DNS | sharepointonprem.contoso.com | Veřejná IP adresa na místní farmě |
 
 
 V profilu Traffic Manageru [vytvoření koncových bodů primárními a obnovovacími](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Použijte externí koncový bod pro místní koncový bod a veřejnou IP adresu pro koncový bod Azure. Ujistěte se, že je priorita nastavena tak, aby místní koncový bod.

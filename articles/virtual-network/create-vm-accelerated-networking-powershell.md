@@ -1,12 +1,12 @@
 ---
-title: "Vytvořte virtuální počítač Azure s Accelerated sítě | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě."
+title: Vytvořte virtuální počítač Azure s Accelerated sítě | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě.
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: jdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f3c8853331121fc1e267f6c569279f7d8df907b5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí Accelerated sítě
 
@@ -61,7 +61,7 @@ Při použití této funkce, existují tato omezení:
 * **Vytvoření virtuálního počítače:** A síťovým Adaptérem s Zrychlený sítě povolené lze připojit pouze k virtuálnímu počítači, když je vytvořen virtuální počítač. Síťový adaptér nelze připojit k existující virtuální počítač. Pokud Přidání virtuálního počítače do existující dostupnosti nastavena, všechny virtuální počítače v sadě dostupnosti musí také mít accelerated sítě povolené.
 * **Nasazení prostřednictvím Správce Azure Resource Manager pouze:** virtuálních počítačů (klasické) nelze nasadit pomocí Accelerated sítě.
 
-I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí prostředí Azure PowerShell, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače s podporovaným operačním systémem a velikost virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno** pod **Accelerated sítě**. Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [Přesvědčte se ovladače je nainstalována v operačním systému](#confirm-the-driver-is-installed-in-the-operating-system).
+I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí prostředí Azure PowerShell, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno**v části **Accelerated sítě**. Možnost povolit Zrychlený sítě nebude se zobrazovat na portálu, pokud jste vybrali [podporovaný operační systém](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [Přesvědčte se ovladače je nainstalována v operačním systému](#confirm-the-driver-is-installed-in-the-operating-system).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 04/10/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ed0ac6e2041ef503470f7317a5736deecd1d2b8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 642b27405c703aa7a30d9fc544009d70b5d1b2df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah v analýzy protokolů pomocí rozhraní REST API
 Log Analytics výstrahy REST API umožňuje vytvářet a spravovat výstrahy v Operations Management Suite (OMS).  Tento článek obsahuje podrobné informace o rozhraní API a několik příkladů pro provádění různých akcí.
@@ -101,7 +101,7 @@ Všechny akce mít vlastnosti v následující tabulce.  Různé typy výstrah m
 ### <a name="retrieving-actions"></a>Načítání akce
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Umožňuje načíst všechny akce pro plán metodu Get.
 
@@ -124,7 +124,7 @@ Formát požadavku pro vytvoření nové akce se liší podle typu akce, takže 
 ### <a name="deleting-actions"></a>Odstranění akcí
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Použijte metodu Delete s ID akce k odstranění akce.
 
@@ -144,7 +144,7 @@ Plán by měl mít pouze jeden výstrahy akce.  Jeden nebo více oddílů v nás
 | Akce Webhooku | Nabízet data z výstrahy, k požadované službě jako JSON |Není vyžadována, pokud jsou rozšířené výstrahy do Azure|
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
 #### <a name="thresholds"></a>Prahové hodnoty
 Výstrahy akce by měl mít pouze jednu prahovou hodnotu.  Pokud výsledky uloženého hledání neodpovídají prahovou hodnotu v akci spojené s toto hledání, jsou spuštěny žádné další procesy, které jsou v této akce.  Akce může také obsahovat pouze prahovou hodnotu, aby se může použít s akcemi jiných typů, které neobsahují žádný prahové hodnoty.
@@ -322,7 +322,7 @@ K úpravě skupinu akce přidružené pro plán, použijte metodu Put s existuj�
 E-mailová oznámení odesílat e-mailu na jeden nebo více příjemců.  Patří mezi ně vlastnosti v následující tabulce.
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou řízeny v Azure akce skupiny teď akce jako e-mailové oznámení. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou řízeny v Azure akce skupiny teď akce jako e-mailové oznámení. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
    
 
 | Vlastnost | Popis |
@@ -366,7 +366,7 @@ K úpravě akce e-mailu pro plán, použijte metodu Put s existující ID akce. 
 Nápravy spuštění sady runbook ve službě Azure Automation, který se pokouší odstranit problém identifikovaný výstrahy.  Musíte vytvořit webhooku pro sadu runbook použít v akci automatické nápravy a pak zadejte identifikátor URI ve vlastnosti WebhookUri.  Když vytvoříte tuto akci pomocí konzole OMS, se automaticky vytvoří nové webhooku pro sadu runbook.
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou ve skupinách Azure akce nyní ovládaná akce jako nápravy pomocí sady runbook. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou ve skupinách Azure akce nyní ovládaná akce jako nápravy pomocí sady runbook. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 Nápravami, které zahrnují vlastnosti v následující tabulce.
 
@@ -425,7 +425,7 @@ Toto je kompletní příklad k vytvoření nové e-mailové výstrahy.  Tím se 
 Akce Webhooku spuštění procesu voláním adresu URL a volitelně poskytuje datové části k odeslání.  Jsou podobná nápravné akce s výjimkou jsou určené pro webhooků, který může vyvolat procesy než Azure Automation runbook.  Obsahují taky další možnost poskytnout datové části který bude doručen do vzdálený proces.
 
 > [!NOTE]
-> Od 23. dubna 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 23 duben 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce jako Webhooku řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
+> Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce jako Webhooku řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups).
 
 
 Akce Webhooku nemáte prahovou hodnotu, ale místo toho musí být přidaní do plánu, který má výstrahy akce s prahovou hodnotou.  

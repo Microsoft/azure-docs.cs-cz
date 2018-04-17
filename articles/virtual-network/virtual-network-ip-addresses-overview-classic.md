@@ -1,10 +1,10 @@
 ---
-title: "Typy adres IP v Azure (klasický) | Microsoft Docs"
-description: "Další informace o veřejné a privátní IP adresy (klasické) v Azure."
+title: Typy adres IP v Azure (klasický) | Microsoft Docs
+description: Další informace o veřejné a privátní IP adresy (klasické) v Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
-ms.author: jdial
-ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: genli
+ms.openlocfilehash: f9e36abd44c2012d96a6ead8659197dcf66c6032
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP adresa typy a metody přidělování (klasické) v Azure
 Přiřazením IP adres k prostředkům Azure umožníte komunikaci s ostatními prostředky Azure, místní sítí a internetem. Existují dva typy IP adres můžete použít v Azure: veřejné a soukromé.
@@ -91,7 +91,7 @@ Následující tabulka uvádí každý typ prostředku s možné přidělení me
 
 | Prostředek | Dynamická | Statická | Několik IP adres |
 | --- | --- | --- | --- |
-| Cloudové služby |Ano |Ano |Ano |
+| Cloudová služba |Ano |Ano |Ano |
 | Instance role virtuálních počítačů IaaS nebo PaaS |Ano |Ne |Ne |
 | VPN Gateway |Ano |Ne |Ne |
 | Application Gateway |Ano |Ne |Ne |
@@ -175,6 +175,6 @@ Níže je uvedeno porovnání IP adresování funkcí ve Správci prostředků a
 |  ||Přiřazené virtuálních počítačů IaaS nebo PaaS role instance |Přiřadit síťový adaptér Virtuálního počítače | |
 |  |***Interní vyrovnávání zátěže (ILB)*** |Přiřazené ILB (dynamický nebo statický) |Přiřazené ke konfiguraci front-end ILB (dynamická nebo statická) | |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasadit virtuální počítač se statickou privátní IP adresou](virtual-networks-static-private-ip-classic-pportal.md) pomocí portálu Azure.
 

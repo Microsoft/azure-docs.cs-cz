@@ -1,11 +1,11 @@
 ---
-title: "Ověřte provozu pomocí Azure sítě sledovacích procesů IP toku ověřit - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak zkontrolovat, pokud provoz nebo z virtuálního počítače povolený nebo zakázaný pomocí rozhraní příkazového řádku Azure"
+title: Ověřte provozu pomocí Azure sítě sledovacích procesů IP toku ověřit - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tento článek popisuje, jak zkontrolovat, pokud provoz nebo z virtuálního počítače povolený nebo zakázaný pomocí rozhraní příkazového řádku Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 92b857ed-c834-4c1b-8ee9-538e7ae7391d
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f1355cd861722848211277250155c434da1e774d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8681118e55d8ddddf17ebac3bae63486446c70e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Zkontrolujte, jestli je provoz povolen nebo odepřen do nebo z virtuálního počítače s tok ověření IP součást sledovací proces sítě Azure
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
+> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
@@ -53,7 +53,7 @@ azure vm show -g resourceGroupName -n virtualMachineName
 
 ## <a name="get-the-nics"></a>Získat síťové karty
 
-IP adresa síťového adaptéru na virtuálním počítači je potřeba v tomto příkladu, nemůžeme načíst síťové adaptéry na virtuálním počítači. Pokud už znáte IP adresu, která chcete testovat na virtuálním počítači, můžete tento krok přeskočit.
+IP adresa síťového adaptéru na virtuálním počítači je potřeba. Načtěte síťové adaptéry pro virtuální počítač pomocí příkazu, který následuje dále. Pokud už znáte IP adresu, která chcete testovat na virtuálním počítači, můžete tento krok přeskočit.
 
 ```
 azure network nic show -g resourceGroupName -n nicName
@@ -61,7 +61,7 @@ azure network nic show -g resourceGroupName -n nicName
 
 ## <a name="run-ip-flow-verify"></a>Ověření spuštění toku IP
 
-Teď, když máme informace potřebné ke spuštění rutiny jsme spustit `network watcher ip-flow-verify` rutiny k otestování provozu. V tomto příkladu používáme první IP adresu na první síťový adaptér.
+Spustit `network watcher ip-flow-verify` rutiny k otestování provozu. V tomto příkladu se používá první IP adresu prvního síťového adaptéru:
 
 ```
 azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
@@ -80,9 +80,9 @@ data:    Rule Name                       : defaultSecurityRules/DefaultInboundDe
 info:    network watcher ip-flow-verify command OK
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/virtual-network-manage-nsg-arm-portal.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
+Pokud je blokován provoz a neměl by být, najdete v části [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md) sledovat pravidla zabezpečení sítě skupiny a zabezpečení, které jsou definovány.
 
 Naučte se audit nastavení NSG navštivte stránky [auditování zabezpečení sítě skupiny (NSG) s sledovací proces sítě](network-watcher-nsg-auditing-powershell.md).
 
