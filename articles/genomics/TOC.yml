@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: Historie vydaných verzí
       href: version-release-history-genomics.md
+    - name: Kontinuita podnikových procesů
+      href: business-continuity-genomics.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: Ceny
