@@ -1,8 +1,8 @@
 ---
-title: "Uživatel přiřazený MSI na virtuální počítač s Linuxem používat pro přístup k Azure Storage"
-description: "Kurz vás provede procesem pomocí uživatele přiřazené spravované služby Identity (MSI) na virtuální počítač s Linuxem pro přístup k úložišti Azure."
+title: Uživatel přiřazený MSI na virtuální počítač s Linuxem používat pro přístup k Azure Storage
+description: Kurz vás provede procesem pomocí uživatele přiřazené spravované služby Identity (MSI) na virtuální počítač s Linuxem pro přístup k úložišti Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: arluca
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ae0e4e8149772d79190ee196cdd1c1bef344681
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dd82f1757d9c5a5fc8fb110cc36ec9f4bbd73e8a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>Použít pro přístup k úložišti Azure přiřazený uživatelem spravované služby Identity (MSI) na virtuální počítač s Linuxem
 
@@ -45,7 +45,7 @@ V tomto kurzu spustit příklady skriptu rozhraní příkazového řádku, máte
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvořit virtuální počítač s Linuxem do nové skupiny prostředků
 
@@ -189,7 +189,7 @@ K dokončení těchto kroků, potřebujete klientem SSH. Pokud používáte syst
 4. Teď pomocí přístupového tokenu pro přístup k úložišti Azure, například ke čtení obsahu ukázkový soubor, který jste dříve nahráli do kontejneru. Nahraďte hodnoty `<STORAGE ACCOUNT>`, `<CONTAINER NAME>`, a `<FILE NAME>` s hodnotami, které jste zadali dříve, a `<ACCESS TOKEN>` s tokenem, vrátí se v předchozím kroku.
 
    ```bash
-   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME>?api-version=2017-11-09 -H "Authorization: Bearer <ACCESS TOKEN>"
+   curl https://<STORAGE ACCOUNT>.blob.core.windows.net/<CONTAINER NAME>/<FILE NAME> -H "x-ms-version: 2017-11-09" -H "Authorization: Bearer <ACCESS TOKEN>"
    ```
 
    Odpověď obsahuje obsah souboru:

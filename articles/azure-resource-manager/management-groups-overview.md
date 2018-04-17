@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků s skupin pro správu Azure 
 
@@ -32,7 +32,7 @@ Můžete vytvořit flexibilní strukturu skupin pro správu a odběry, které sl
 
 ![strom](media/management-groups/MG_overview.png)
 
-Vytvořením hierarchie, která je seskupené podle oddělení, budete moci přiřadit [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md) role, *dědění* k oddělení pod tuto skupinu pro správu. Pomocí skupin pro správu, můžete snížit vaše úlohy a snižuje riziko chyby tak, že pouze jednou přiřadit role. 
+Vytvořením hierarchie, která je seskupené podle oddělení, budete moci přiřadit [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md) role, *dědění* k oddělení pod tuto skupinu pro správu. Pomocí skupin pro správu, můžete snížit vaše úlohy a snižuje riziko chyby tak, že pouze jednou přiřadit role. 
 
 ### <a name="important-facts-about-management-groups"></a>Důležité informace o skupinách správy
 - 10 000 skupin pro správu může být podporováno v jednom adresáři. 
@@ -55,7 +55,7 @@ Tato položka je pracuje a vyřeší před skupin pro správu jsou oznámeno jak
 
 ## <a name="root-management-group-for-each-directory"></a>Skupina pro správu kořenového pro každý adresář
 
-Každý adresář dostane nejvyšší úrovně správy skupinu s názvem "Root" skupina pro správu. Tuto skupinu pro správu kořenového je integrovaná do hierarchie, které chcete mít všechny skupiny pro správu a odběry přeložte do ní. Tuto skupinu pro správu kořenového umožňuje globální zásady a přiřazení RBAC má být použita na úrovni adresáře. [Directory správce potřebuje ke zvýšení oprávnění sami](../active-directory/role-based-access-control-tenant-admin-access.md) jako vlastník této kořenové skupiny původně. Jakmile správce vlastník skupiny, budou všechny role RBAC přiřadit jiné adresáře uživatele nebo skupiny pro správu v hierarchii.  
+Každý adresář dostane nejvyšší úrovně správy skupinu s názvem "Root" skupina pro správu. Tuto skupinu pro správu kořenového je integrovaná do hierarchie, které chcete mít všechny skupiny pro správu a odběry přeložte do ní. Tuto skupinu pro správu kořenového umožňuje globální zásady a přiřazení RBAC má být použita na úrovni adresáře. [Directory správce potřebuje ke zvýšení oprávnění sami](../role-based-access-control/elevate-access-global-admin.md) jako vlastník této kořenové skupiny původně. Jakmile správce vlastník skupiny, budou všechny role RBAC přiřadit jiné adresáře uživatele nebo skupiny pro správu v hierarchii.  
 
 ### <a name="important-facts-about-the-root-management-group"></a>Důležité skutečnosti o skupině pro správu kořenové
 - Název a ID skupiny pro správu kořenového mají Azure Active Directory ID ve výchozím nastavení. Zobrazovaný název lze aktualizovat kdykoli zobrazit jiné v rámci portálu Azure. 
@@ -67,9 +67,9 @@ Každý adresář dostane nejvyšší úrovně správy skupinu s názvem "Root" 
   
 ## <a name="management-group-access"></a>Skupina pro správu přístupu
 
-Podporuje Azure skupin pro správu [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md) pro všechny přístupy prostředků a definice rolí. Tato oprávnění zdědí na podřízené prostředky, které existují v hierarchii.   
+Podporuje Azure skupin pro správu [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md) pro všechny přístupy prostředků a definice rolí. Tato oprávnění zdědí na podřízené prostředky, které existují v hierarchii.   
 
-Při žádné [předdefinovaná role RBAC](../active-directory/role-based-access-control-what-is.md#built-in-roles) lze přiřadit ke skupině pro správu, jsou čtyři role, které se běžně používají: 
+Při žádné [předdefinovaná role RBAC](../role-based-access-control/overview.md#built-in-roles) lze přiřadit ke skupině pro správu, jsou čtyři role, které se běžně používají: 
 - **Vlastník** má úplný přístup ke všem prostředkům, včetně právo delegovat přístup k ostatním. 
 - **Přispěvatel** můžete vytvářet a spravovat všechny typy prostředků Azure, ale nelze udělit přístup ostatním uživatelům.
 - **Přispěvatel zásad prostředků** můžete vytvořit a spravovat zásady v adresáři na prostředky.     

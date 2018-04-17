@@ -1,11 +1,11 @@
 ---
-title: "Začínáme integrace s aplikacemi Azure AD | Microsoft Docs"
-description: "Tento článek je příručka Začínáme k integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací."
+title: Začínáme integrace s aplikacemi Azure AD | Microsoft Docs
+description: Tento článek je příručka Začínáme k integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: db6d210d-c970-49e9-bd20-36d984bcd1c3
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: bf8ef28b49a3a12772965e7ebc85539c1a86e10f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dd118dbda9b7b0bee27bf9c97627bb8269e2d9b4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrace služby Azure Active Directory s aplikacemi, získávání Příručka Začínáme
 ## <a name="overview"></a>Přehled
@@ -51,7 +51,7 @@ Předtím, než můžete přejít v integrace aplikací s Azure AD, je důležit
 * Budete potřebovat k vyčištění uživatele nebo skupiny databází před integrací?  (Toto je poměrně důležité otázku. Uvolňování paměti v paměti se.)
 
 ### <a name="access-management-inventory"></a>Správa inventáře přístup
-* Jak je aktuálně spravovat přístup uživatelů k aplikacím? Potřebuje, chcete-li změnit?  Můžete udělat jiné způsoby správy přístupu, například s [RBAC](role-based-access-control-configure.md) například?
+* Jak je aktuálně spravovat přístup uživatelů k aplikacím? Potřebuje, chcete-li změnit?  Můžete udělat jiné způsoby správy přístupu, například s [RBAC](../role-based-access-control/role-assignments-portal.md) například?
 * Kdo potřebuje přístup k co?
 
 Možná nemáte odpovědi na všechny tyto otázky předem, ale to nevadí.  Tento průvodce vám může pomoct odpovědět na některé z těchto dotazů a některé informovanému rozhodnutí.

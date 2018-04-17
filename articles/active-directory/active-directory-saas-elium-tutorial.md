@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a72cc1829b7b8a5c7c588543d0b5c91f9f36bf5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c41b2c297d8d89554950e8c77201ff5bedf743e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Azure Active Directory integrace s Elium
 
@@ -117,7 +117,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: ` https://<platform-domain>.elium.com/login/saml2/login`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Zobrazí se tyto hodnoty z **soubor metadat SP** ke stažení na `https://<platform-domain>/login/saml2/metadata`, který se vysvětluje dále v tomto kurzu.
+    > Tyto hodnoty nejsou skutečné. Zobrazí se tyto hodnoty z **soubor metadat SP** ke stažení na `https://<platform-domain>.elium.com/login/saml2/metadata`, který se vysvětluje dále v tomto kurzu.
 
 5. Aplikace Elium očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace.
 
@@ -127,11 +127,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
            
     | Název atributu | Hodnota atributu |   
     | ---------------| ----------------|
-    | e-mail   |user.mail |
-    | first_name| user.givenname |
-    | last_name| user.surname|
-    | job_title| user.jobtitle|
-    | Společnosti| user.companyname|
+    | e-mail   |User.Mail |
+    | křestní_jméno| user.givenname |
+    | Příjmení| user.surname|
+    | funkce| user.jobtitle|
+    | Společnosti| User.CompanyName|
     
     > [!NOTE]
     > Toto jsou výchozí deklarace identity. **Deklarace identity e-mailu je vyžadována pouze**. JIT zřizování také pouze e-mailu je povinné deklarace identity. Další vlastní deklarace identity se může lišit od jednoho zákazníka platformy na jiné platformě zákazníka.

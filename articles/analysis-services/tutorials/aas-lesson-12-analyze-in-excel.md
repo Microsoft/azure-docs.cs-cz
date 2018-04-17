@@ -1,27 +1,20 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 12: Analýza v aplikaci Excel | Dokumentace Microsoftu"
-description: "Popisuje, jak používat funkci Analýza v aplikaci Excel v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Kurz služby Azure Analysis Services – Lekce 12: Analýza v aplikaci Excel | Dokumentace Microsoftu'
+description: Popisuje, jak používat funkci Analýza v aplikaci Excel v projektu Kurz služby Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 8d7f79db612ee02eaf585f9b45d888b3533a91b2
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 17dba7be2acab18108dc50a5c16d55e0e720cbcc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="analyze-in-excel"></a>Analyzovat v aplikaci Excel
+# <a name="analyze-in-excel"></a>Doplněk analyzovat v aplikaci Excel
 
 V této lekci pomocí funkce Analýza v aplikaci Excel otevřete aplikaci Microsoft Excel, automaticky vytvoříte připojení k pracovnímu prostoru modelu a automaticky do listu přidáte kontingenční tabulku. Smyslem funkce Analýza v aplikaci Excel je poskytnout rychlý a snadný způsob, jak otestovat efektivnost návrhu modelu před jeho nasazením. V této lekci nebudete provádět žádné analýzy dat. Účelem této lekce je seznámit vás jako autora modelu s nástroji, pomocí kterých můžete otestovat návrh modelu.   
   

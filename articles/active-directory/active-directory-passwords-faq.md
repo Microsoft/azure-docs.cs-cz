@@ -1,13 +1,13 @@
 ---
-title: "Samoobslužného resetování hesel – nejčastější dotazy – Azure Active Directory"
-description: "Nejčastější dotazy o hesla pomocí samoobslužné služby Azure AD resetovat"
+title: Samoobslužného resetování hesel – nejčastější dotazy – Azure Active Directory
+description: Nejčastější dotazy o hesla pomocí samoobslužné služby Azure AD resetovat
 services: active-directory
-keywords: "Správa hesel služby Active directory, správou hesel Azure AD samoobslužném resetování hesla služby"
-documentationcenter: 
+keywords: Správa hesel služby Active directory, správou hesel Azure AD samoobslužném resetování hesla služby
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d30e3f099f497f35938b702d5fbb3ca38565f7c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy se správou hesel
 
@@ -105,7 +105,7 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
     >Pokud nemáte přijímat oznámení v této časového rámce:
         > * Zkontrolujte své složky s nevyžádanou poštou.
         > * Zkontrolujte, že číslo nebo e-mailu kontaktovaný je ta, kterou očekáváte.
-        > * Zkontrolujte, jestli je ověřování dat v adresáři správně naformátován, například 4255551234 + 1 nebo  *user@contoso.com* . 
+        > * Zkontrolujte, jestli je ověřování dat v adresáři správně naformátován, například 4255551234 + 1 nebo *user@contoso.com*. 
   >
   >
 * **Otázka: jaké jazyky jsou podporovány resetování hesla?**
@@ -190,7 +190,7 @@ Tyto nejčastější dotazy je rozdělená do následujících částí:
   >
 * **Otázka: je možné zablokovat uživatelům resetování hesla?**
 
-  > **Odpověď:** Ano, pokud používáte skupiny umožňující SSPR, můžete odebrat jednotlivého uživatele ze skupiny, který umožňuje uživatelům obnovit své heslo.
+  > **Odpověď:** Ano, pokud používáte skupiny umožňující SSPR, můžete odebrat jednotlivého uživatele ze skupiny, který umožňuje uživatelům obnovit své heslo. Pokud je uživatel globální správce zachovávají možnost Resetovat heslo, a to nelze zakázat.
   >
   >
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c775780a39c4d423c62bf88f55d35675c70442c7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bf01cf4fe5d7c7219fa7c53e54db60cd4bafb928
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě Role v Azure API Management
 Azure API Management spoléhá na řízení řízení přístupu (RBAC) Chcete-li povolit vyladění správy přístupu pro služby API Management a entit (například rozhraní API a zásady). Tento článek obsahuje přehled rolí předdefinované a vlastní ve službě API Management. Další informace o řízení přístupu na portálu Azure najdete v tématu [Začínáme se správou přístupu na portálu Azure](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -26,7 +26,7 @@ Azure API Management spoléhá na řízení řízení přístupu (RBAC) Chcete-l
 ## <a name="built-in-roles"></a>Vestavěné role
 API Management aktuálně poskytuje tři předdefinované role a přidá dva další role v blízké budoucnosti. Tyto role mohou být přiřazeny na různých místech, včetně předplatné, skupinu prostředků a jednotlivé instance služby API Management. Například pokud uživatel na úrovni skupiny prostředků přiřadíte roli "Azure API Management Service čtečky", pak uživatel má přístup pro čtení pro všechny instance API Management uvnitř skupiny prostředků. 
 
-Následující tabulka obsahuje stručný popis předdefinovaných rolí. Tyto role lze přiřadit pomocí portálu Azure nebo jiných nástrojů, včetně Azure [prostředí PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli), a [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest). Podrobnosti o tom, jak přiřadit předdefinovaných rolí najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
+Následující tabulka obsahuje stručný popis předdefinovaných rolí. Tyto role lze přiřadit pomocí portálu Azure nebo jiných nástrojů, včetně Azure [prostředí PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Podrobnosti o tom, jak přiřadit předdefinovaných rolí najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 | Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření služby, odstranění, změny velikosti, VPN a konfigurace vlastní domény | Přístup k portálu vydavatele starší verze | Popis
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -43,7 +43,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Tyto r
 <sup>\* Role služby Editor bude k dispozici po jsme migrovat všechny správce uživatelského rozhraní na portálu vydavatele existující k portálu Azure. Role správce obsahu bude k dispozici po portálu vydavatele je teď vyčleněný, aby obsahovala pouze funkce související se správou portálu pro vývojáře.</sup>  
 
 ## <a name="custom-roles"></a>Vlastní role
-Pokud žádná z předdefinovaných rolí splňovat specifické potřeby, lze vytvořit vlastní role a zajistit tak podrobnější správu přístupu pro API Management entity. Například můžete vytvořit vlastní roli, která má přístup jen pro čtení do služby API Management, ale pouze oprávnění k zápisu pro jedno konkrétní rozhraní API. Další informace o vlastních rolích naleznete v tématu [vlastní role v Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles). 
+Pokud žádná z předdefinovaných rolí splňovat specifické potřeby, lze vytvořit vlastní role a zajistit tak podrobnější správu přístupu pro API Management entity. Například můžete vytvořit vlastní roli, která má přístup jen pro čtení do služby API Management, ale pouze oprávnění k zápisu pro jedno konkrétní rozhraní API. Další informace o vlastních rolích naleznete v tématu [vlastní role v Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
 Když vytvoříte vlastní roli, je snazší začít s některou z předdefinovaných rolí. Upravit atributy, které se přidat **akce**, **NotActions**, nebo **AssignableScopes**a potom uložte změny jako novou roli. V následujícím příkladu začíná roli "Azure API Management Service čtečky" a vytvoří vlastní role s názvem "Editor rozhraní API kalkulačky." Vlastní roli můžete přiřadit konkrétní rozhraní API. V důsledku toho tato role má přístup pouze k toto rozhraní API. 
 
@@ -59,7 +59,7 @@ New-AzureRmRoleDefinition -Role $role
 New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionName 'Calculator API Contributor' -Scope '/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.ApiManagement/service/<service name>/apis/<api ID>'
 ```
 
-[Operace poskytovatele prostředků Azure Resource Manager](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement) článek obsahuje seznam oprávnění, která může na úroveň API Management.
+[Operace poskytovatele prostředků Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement) článek obsahuje seznam oprávnění, která může na úroveň API Management.
 
 ## <a name="video"></a>Video
 
@@ -71,8 +71,8 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 ## <a name="next-steps"></a>Další postup
 
 Další informace o řízení přístupu na základě rolí v Azure, najdete v následujících článcích:
-  * [Začínáme se správou přístupu na webu Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)
-  * [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)
-  * [Vlastní role v Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)
-  * [Operace zprostředkovatele prostředků v Azure Resource Manager](../active-directory/role-based-access-control-resource-provider-operations.md#microsoftapimanagement)
+  * [Začínáme se správou přístupu na webu Azure Portal](../role-based-access-control/overview.md)
+  * [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md)
+  * [Vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md)
+  * [Operace zprostředkovatele prostředků v Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
 

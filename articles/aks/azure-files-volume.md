@@ -1,6 +1,6 @@
 ---
-title: "Použít Azure soubor s AKS"
-description: "Disky systému Azure pomocí AKS"
+title: Použít Azure soubor s AKS
+description: Disky systému Azure pomocí AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1def417f97a94fa0770b99606cd3a68189d1d51b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="volumes-with-azure-files"></a>Svazky s soubory Azure
 
@@ -21,7 +21,7 @@ Aplikace založené na kontejneru často potřebují přístup a uchovávat data
 
 Další informace o svazcích Kubernetes najdete v tématu [Kubernetes svazky][kubernetes-volumes].
 
-## <a name="create-an-azure-file-share"></a>Vytvořte sdílenou složku Azure
+## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
 Před použitím sdílení souborů Azure jako svazek Kubernetes, je nutné vytvořit účet úložiště Azure a sdílené složky. K dokončení těchto úloh můžete použít následující skript. Všimněte si nebo aktualizujte hodnoty parametru, některé z nich je třeba při vytváření svazku Kubernetes.
 
@@ -66,7 +66,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-file-share-as-volume"></a>Připojení sdílené složky jako svazek
 
-Do sdílené složky souborů Azure můžete připojit do vaší pod nakonfigurováním svazek v jeho specifikace. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s tímto obsahem. Aktualizace `aksshare` s názvem uvedeným k Azure Files sdílet.
+Připojte do sdílené složky Azure soubory do vaší pod nakonfigurováním svazek v jeho specifikace. Vytvořte nový soubor s názvem `azure-files-pod.yaml` s tímto obsahem. Aktualizace `aksshare` s názvem uvedeným k Azure Files sdílet.
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ K vytvoření pod použijte kubectl.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Nyní máte kontejner spuštěné s Azure sdílené složky připojené `/mnt/azure` adresáře. Zobrazí připojení při kontrole vaší pod prostřednictvím svazku `kubectl describe pod azure-files-pod`.
+Nyní máte kontejner spuštěné s Azure sdílené složky připojené `/mnt/azure` adresáře.  Zobrazí připojení při kontrole vaší pod prostřednictvím svazku `kubectl describe pod azure-files-pod`.
 
 ## <a name="next-steps"></a>Další postup
 

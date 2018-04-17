@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s GaggleAMP | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GaggleAMP."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GaggleAMP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: ffa6a3d6cc1377277591de63c7224b23796b53d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f68fdd84acd95ccd2a400e02303247f246d876b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Kurz: Azure Active Directory integrace s GaggleAMP
 
@@ -36,7 +36,7 @@ Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, n
 Konfigurace integrace Azure AD s GaggleAMP, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- GaggleAMP jednotného přihlašování povolené předplatné
+- GaggleAMP jednotné přihlašování povolené předplatné
 
 > [!NOTE]
 > K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
@@ -44,7 +44,7 @@ Konfigurace integrace Azure AD s GaggleAMP, potřebujete následující položky
 Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
@@ -106,44 +106,48 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_samlbase.png)
 
-3. Na **GaggleAMP domény a adresy URL** část, proveďte následující kroky:
+3. Na **GaggleAMP domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url.png)
 
-     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.gaggleamp.com`
+     V **identifikátor** textovému poli, zadejte adresu URL: `https://accounts.gaggleamp.com/auth/saml/callback`
 
-    > [!NOTE] 
-    > Hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory GaggleAMP klienta](mailto:sales@gaggleamp.com) k získání hodnoty. 
+4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_url1.png)
+
+     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://gaggleamp.com/i/<customerid>`
+
+    > [!NOTE]
+    > Hodnota přihlašovací adresa URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory GaggleAMP klienta](mailto:sales@gaggleamp.com) získat tuto hodnotu.
  
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+5. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_certificate.png) 
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_400.png)
 
-6. Na **GaggleAMP konfigurace** klikněte na tlačítko **konfigurace GaggleAMP** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na **GaggleAMP konfigurace** klikněte na tlačítko **konfigurace GaggleAMP** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_configure.png) 
 
-7. V instanci jiný prohlížeč, přejít na stránku jednotné přihlašování SAML vytvořené pro vám Gaggle podporu team (například: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+8. V instanci jiný prohlížeč, přejít na stránku jednotné přihlašování SAML vytvořené pro vám Gaggle podporu team (například: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
 
-8. Na vaše **jednotné přihlašování SAML** proveďte následující kroky:  
+9. Na vaše **jednotné přihlašování SAML** proveďte následující kroky:  
    
-    ![GaggleAMP jednotné přihlášení](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png) 
- 
-    a. V **vystavitele zprostředkovatele Identity** textovému poli, vložte hodnotu **URL vystavitele** který jste zkopírovali z portálu Azure. 
- 
-    b. V **Identity zprostředkovatele jeden přihlašovací adresa URL** textovému poli, vložte hodnotu **jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure. 
+    ![GaggleAMP jednotné přihlášení](./media/active-directory-saas-gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
-    c. Klikněte na tlačítko **uložit**      
-
-    d. Odeslat **certifikátu (Base64)** certifikát do vaší [tým podpory GaggleAMP](mailto:sales@gaggleamp.com).
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Vyberte **jiných** formuláře **zprostředkovatele Identity** rozevírací nabídce.
+    
+    b. V **vystavitele zprostředkovatele Identity** textovému poli, vložte hodnotu **URL vystavitele** který jste zkopírovali z portálu Azure.
+    
+    c. V **Identity zprostředkovatele jeden přihlašovací adresa URL** textovému poli, vložte hodnotu **jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
+    
+    d. Otevřete váš stažené **Certificate(Base64)** souboru v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **certifikát X.509** textové pole.
+    
+    e. Klikněte na **Uložit**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -218,12 +222,10 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici GaggleAMP na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci GaggleAMP.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 
@@ -238,4 +240,3 @@ Když kliknete na dlaždici GaggleAMP na přístupovém panelu, jste měli získ
 [201]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-gaggleamp-tutorial/tutorial_general_203.png
-

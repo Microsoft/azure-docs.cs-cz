@@ -1,11 +1,11 @@
 ---
-title: "Registrace ke službě Azure s účtem Office 365 | Microsoft Docs"
-description: "Naučte se vytvářet předplatné služby Azure pomocí účtu Office 365"
-services: 
-documentationcenter: 
+title: Registrace ke službě Azure s účtem Office 365 | Microsoft Docs
+description: Naučte se vytvářet předplatné služby Azure pomocí účtu Office 365
+services: ''
+documentationcenter: ''
 author: JiangChen79
 manager: adpick
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: 129cdf7a-2165-483d-83e4-8f11f0fa7f8b
 ms.service: billing
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: cjiang
-ms.openlocfilehash: c81d7fa793388612ec4d76d79a2f30f209b9cf42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e9f90127bce0502147572c5ac6bd65e47dbe8c35
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Zaregistrujte si předplatné Azure pomocí svého účtu Office 365
-Pokud máte předplatné služeb Office 365, můžete předplatné Azure, vytvořte účtu služeb Office 365. Přihlaste se k [portál Azure](https://portal.azure.com/) pomocí Office 365 uživatelské jméno a heslo. Pokud chcete nastavit virtuální počítače nebo použijte jinými službami Azure, musíte se musí zaregistrovat pro předplatné Azure. Vaše předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě Role můžete spravovat přístup k vašemu předplatnému Azure a prostředky](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+Pokud máte předplatné služeb Office 365, můžete předplatné Azure, vytvořte účtu služeb Office 365. Přihlaste se k [portál Azure](https://portal.azure.com/) pomocí Office 365 uživatelské jméno a heslo. Pokud chcete nastavit virtuální počítače nebo použijte jinými službami Azure, musíte se musí zaregistrovat pro předplatné Azure. Vaše předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě Role můžete spravovat přístup k vašemu předplatnému Azure a prostředky](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 Pokud již máte účet Office 365 a předplatné Azure, najdete v části [přidružit klienta služby Office 365 k předplatnému Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
@@ -39,7 +39,7 @@ Ušetřit čas a vyhnout se účet šíření nutná registrace do Azure pomocí
 
     ![Snímek obrazovky zobrazující registračního formuláře.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Pokud potřebujete přidat jiní lidé ve vaší organizaci k předplatnému Azure, najdete v části [Začínáme se správou přístupu na portálu Azure](../active-directory/role-based-access-control-what-is.md). 
+- Pokud potřebujete přidat jiní lidé ve vaší organizaci k předplatnému Azure, najdete v části [Začínáme se správou přístupu na portálu Azure](../role-based-access-control/overview.md). 
 
 ## <a id="more-about-subs">Další informace o předplatných Azure a Office 365</a>
 Office 365 a Azure použít ke správě uživatelů a odběry služby Azure AD. Adresář Azure je jako kontejner, ve kterém můžete skupině uživatelů a odběry. Chcete-li používat stejné uživatelské účty pro vaše předplatná Azure a Office 365, ujistěte se, že předplatná Azure jsou vytvořeny ve stejném adresáři jako předplatná Office 365. Mějte na paměti následující body:

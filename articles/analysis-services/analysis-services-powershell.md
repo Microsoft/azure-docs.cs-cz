@@ -1,24 +1,18 @@
 ---
-title: "Správa služby Azure Analysis Services pomocí prostředí PowerShell | Microsoft Docs"
-description: "Správa Azure Analysis Services pomocí prostředí PowerShell."
-services: analysis-services
-documentationcenter: 
+title: Správa služby Azure Analysis Services pomocí prostředí PowerShell | Microsoft Docs
+description: Správa Azure Analysis Services pomocí prostředí PowerShell.
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: reference
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 0e154c7789b38843cd3784daa8cf60d078bdc546
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: c7315835bca446c4cae592f4bdd58a733b203655
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí prostředí PowerShell
 
@@ -29,7 +23,7 @@ Tento článek popisuje rutiny prostředí PowerShell použít k provádění se
 ## <a name="permissions"></a>Oprávnění
 Většinu úloh prostředí PowerShell vyžadují, že abyste měli oprávnění správce na serveru služby Analysis Services, který spravujete. Naplánované úlohy prostředí PowerShell jsou bezobslužné operace. Účet, který spouští Plánovač musí mít oprávnění správce na serveru služby Analysis Services. 
 
-Operace serveru pomocí rutin AzureRm, váš účet nebo účet spouštějící scheduler musíte také zařadit do roli vlastníka na zdroj v [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+Operace serveru pomocí rutin AzureRm, váš účet nebo účet spouštějící scheduler musíte také zařadit do roli vlastníka na zdroj v [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="server-operations"></a>Operace serveru 
 Rutiny Azure Analysis Services jsou součástí [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) součást modulu. Instalaci moduly rutin AzureRM naleznete v tématu [rutiny Azure Resource Manager](/powershell/azure/overview) v galerii prostředí PowerShell.
@@ -59,10 +53,10 @@ Modul SQL Server poskytuje rutiny správy specifických úkolů databáze a tak�
 |[Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet)|Zálohování databáze služby Analysis Services.|  
 |[Odebrat RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Odebrání člena z databázové role.|   
 |[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Spuštění skriptu TMSL.|
-|[Invoke-ProcessASDatabase](https://msdn.microsoft.com/library/mt651773.aspx)|Zpracování databáze.|  
-|[Invoke-ProcessPartition](https://msdn.microsoft.com/library/hh510164.aspx)|Zpracování oddílu.| 
+|[Vyvolání ProcessASDatabase](https://msdn.microsoft.com/library/mt651773.aspx)|Zpracování databáze.|  
+|[Vyvolání ProcessPartition](https://msdn.microsoft.com/library/hh510164.aspx)|Zpracování oddílu.| 
 |[Vyvolání ProcessTable](https://msdn.microsoft.com/library/mt651774.aspx)|Proces tabulku.|  
-|[Merge-Partition](https://msdn.microsoft.com/library/hh479576.aspx)|Sloučit oddíl.|  
+|[Sloučení oddílů](https://msdn.microsoft.com/library/hh479576.aspx)|Sloučit oddíl.|  
 |[Obnovení ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet)|Obnovte databázi služby Analysis Services.| 
   
 

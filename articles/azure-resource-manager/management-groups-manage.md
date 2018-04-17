@@ -1,10 +1,10 @@
 ---
-title: "Jak změnit, odstranit nebo spravovat skupiny pro správu - Azure | Microsoft Docs"
-description: "Zjistěte, jak udržovat a aktualizovat vaše hierarchie skupin správy."
+title: Jak změnit, odstranit nebo spravovat skupiny pro správu - Azure | Microsoft Docs
+description: Zjistěte, jak udržovat a aktualizovat vaše hierarchie skupin správy.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 33797ddcd2a6ff083c5fb4b2fa7ddb8f9d6bd76c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Spravovat prostředky s skupin pro správu 
-Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Můžete změnit, odstranit a správě těchto kontejnerů do mají hierarchie, které lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../active-directory/role-based-access-control-what-is.md). Další informace o skupinách správy najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
+Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Můžete změnit, odstranit a správě těchto kontejnerů do mají hierarchie, které lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
 
 Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat správu skupin, přihlášení k [portál Azure](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) na Spravujte skupiny pro správu.
 
-Změnit skupinu pro správu, musí mít roli vlastníka nebo přispěvatele skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../active-directory/role-based-access-control-what-is.md).
+Změnit skupinu pro správu, musí mít roli vlastníka nebo přispěvatele skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../role-based-access-control/overview.md).
 
 ## <a name="change-the-name-of-a-management-group"></a>Změňte název skupiny pro správu 
 Název skupiny pro správu můžete změnit pomocí portálu, prostředí PowerShell nebo rozhraní příkazového řádku Azure.
@@ -64,7 +64,7 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 1. Neexistují žádné podřízené skupiny pro správu nebo předplatných v rámci skupiny pro správu. 
     - Pro přesun předplatného mimo skupinu pro správu, najdete v části [předplatné přesunout do jiné skupiny managemnt](#Move-subscriptions-in-the-hierarchy). 
     - Přesunout skupinu pro správu do jiné skupiny pro správu, najdete v tématu [přesunutí skupin pro správu v hierarchii](#Move-management-groups-in-the-hierarchy). 
-2. Máte oprávnění k zápisu na skupinu vlastníkem nebo přispěvatelem roli správy skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o role RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../active-directory/role-based-access-control-what-is.md).  
+2. Máte oprávnění k zápisu na skupinu vlastníkem nebo přispěvatelem roli správy skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o role RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Odstranit na portálu
 
@@ -139,7 +139,7 @@ Pokud chcete přesunout předplatné, jsou k dispozici několik oprávnění, kt
 - "Vlastník" role v podřízených předplatné.
 - "Vlastník" nebo "Přispěvatel" role v nové skupině pro správu nadřazené. 
 - "Vlastník" nebo "Přispěvatel" role staré nadřazené skupiny pro správu.
-Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o role RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../active-directory/role-based-access-control-what-is.md). 
+Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o role RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../role-based-access-control/overview.md). 
 
 ### <a name="move-subscriptions-in-the-portal"></a>Přesunout předplatná v portálu
 

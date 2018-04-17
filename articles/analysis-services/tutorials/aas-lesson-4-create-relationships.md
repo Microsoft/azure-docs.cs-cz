@@ -1,27 +1,20 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 4: Vytvoření relací | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit relace v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Kurz služby Azure Analysis Services – Lekce 4: Vytvoření relací | Dokumentace Microsoftu'
+description: Popisuje, jak vytvořit relace v projektu Kurz služby Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-relationships"></a>Vytvořit relace
+# <a name="create-relationships"></a>Vytvoření relace
 
 V této lekci ověříte relace, které se automaticky vytvořily při importu dat, a přidáte nové relace mezi různými tabulkami. Relace je propojení dvou tabulek, které určuje, jakým způsobem se data v těchto tabulkách mají korelovat. Například tabulky DimProduct a DimProductSubcategory mají relaci na základě toho, že každý produkt patří do nějaké podkategorie. Další informace najdete v tématu [Relace](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   

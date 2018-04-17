@@ -1,8 +1,8 @@
 ---
-title: "Vytváření řídicích panelů Azure prostřednictvím kódu programu | Microsoft Docs"
-description: "Tento článek vysvětluje, jak programově vytváření řídicích panelů Azure."
+title: Vytváření řídicích panelů Azure prostřednictvím kódu programu | Microsoft Docs
+description: Tento článek vysvětluje, jak programově vytváření řídicích panelů Azure.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -55,7 +55,7 @@ Po nakonfigurování řídicího panelu, aby přesně další kroky jsou publiko
 
 ![příkaz sdílené složky](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Kliknutím na příkaz sdílené složky zobrazí dialogové okno s dotazem, abyste si zvolili které předplatném nebo skupině prostředků pro publikování do. Mějte na paměti, [musí mít oprávnění k zápisu](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) ke skupině předplatného a prostředků, který zvolíte.
+Kliknutím na příkaz sdílené složky zobrazí dialogové okno s dotazem, abyste si zvolili které předplatném nebo skupině prostředků pro publikování do. Mějte na paměti, [musí mít oprávnění k zápisu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) ke skupině předplatného a prostředků, který zvolíte.
 
 ![sdílení a přístup](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

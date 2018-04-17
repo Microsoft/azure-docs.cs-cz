@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b0adf5098b1be9f245b22c859dbb86a14335e435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Průběžné nasazování pomocí volaných a Azure Container Service
 
-Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi volaných a cluster Azure Container Service (AKS). 
+Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi volaných a cluster Azure Container Service (AKS).
 
 Příklad pracovního postupu zahrnuje následující kroky:
 
@@ -41,7 +41,7 @@ Aby bylo možné dokončit kroky v tomto článku potřebujete následující po
 
 ## <a name="prepare-application"></a>Příprava aplikace
 
-V tomto dokumentu aplikace Azure hlas obsahuje webové rozhraní hostované v jedné nebo více pracovními stanicemi soustředěnými kolem a druhý pod hostování Redis pro dočasná data úložiště. 
+V tomto dokumentu aplikace Azure hlas obsahuje webové rozhraní hostované v jedné nebo více pracovními stanicemi soustředěnými kolem a druhý pod hostování Redis pro dočasná data úložiště.
 
 Před vytvořením volaných / AKS integrace připravit a nasadit aplikaci Azure hlas AKS clusteru. Považujte jej za verze jedna aplikace.
 
@@ -94,7 +94,7 @@ Použití [docker značka] [ docker-tag] příkaz k označení bitové kopie s p
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Aktualizujte hodnotu ACR přihlášení serveru se název serveru ACR přihlášení a push `azure-vote-front` bitovou kopii do registru. 
+Aktualizujte hodnotu ACR přihlášení serveru se název serveru ACR přihlášení a push `azure-vote-front` bitovou kopii do registru.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -118,7 +118,7 @@ Pak pomocí [kubectl vytvořit] [ kubectl-create] příkaz ke spuštění aplika
 kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
-A [Kubernetes služby] [ kubernetes-service] se vytvoří vystavit aplikace k Internetu. Tento proces může trvat několik minut. 
+A [Kubernetes služby] [ kubernetes-service] se vytvoří vystavit aplikace k Internetu. Tento proces může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -127,12 +127,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Zpočátku se *EXTERNAL-IP* (Externí IP adresa) pro službu *azure-vote-front* bude zobrazovat ve stavu *probíhá*.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `control+c` zastavte sledovací proces kubectl. 
+Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `control+c` zastavte sledovací proces kubectl.
 
 ```
 azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
@@ -209,7 +209,7 @@ Klikněte na tlačítko **OK** a vrátíte se k portálu pro správu volaných.
 
 Z portálu správce volaných, klikněte na tlačítko **novou položku**.
 
-Pojmenujte projekt, například `azure-vote`, vyberte **volný styl projektu**a klikněte na tlačítko **OK**. 
+Pojmenujte projekt, například `azure-vote`, vyberte **volný styl projektu**a klikněte na tlačítko **OK**.
 
 ![Volaných projektu](media/aks-jenkins/jenkins-project.png)
 
@@ -217,9 +217,9 @@ V části **Obecné**, vyberte **Githubu projektu** a zadejte adresu URL vašeho
 
 ![GitHub projektu](media/aks-jenkins/github-project.png)
 
-V části **správu zdrojového kódu**, vyberte **Git**, zadejte adresu URL vašeho rozvětvení úložiště GitHub hlas Azure. 
+V části **správu zdrojového kódu**, vyberte **Git**, zadejte adresu URL vašeho rozvětvení úložiště GitHub hlas Azure.
 
-Pro přihlašovací údaje, klikněte na a **přidat** > **volaných**. V části **druhu**, vyberte **tajný text** a zadejte vaše [Githubu osobní přístupový token] [ git-access-token] jako tajný klíč. 
+Pro přihlašovací údaje, klikněte na a **přidat** > **volaných**. V části **druhu**, vyberte **tajný text** a zadejte vaše [Githubu osobní přístupový token] [ git-access-token] jako tajný klíč.
 
 Vyberte **přidat** po dokončení.
 
@@ -233,7 +233,7 @@ V části **sestavení prostředí**, vyberte **použít tajný texty nebo soubo
 
 ![Prostředí sestavení volaných](media/aks-jenkins/build-environment.png)
 
-V části **vazby**, vyberte **přidat** > **uživatelské jméno a heslo (oddělených)**. 
+V části **vazby**, vyberte **přidat** > **uživatelské jméno a heslo (oddělených)**.
 
 Zadejte `ACR_ID` pro **proměnné uživatelského jména**, a `ACR_PASSWORD` pro **proměnnou hesla**.
 
@@ -263,13 +263,13 @@ Po dokončení klikněte na tlačítko **Uložit**.
 
 Než budete pokračovat, otestujte volaných sestavení. Ověří, zda úlohu sestavení byl správně nakonfigurován, správný soubor Kubernetes ověřování je místní a aby byly zadány správné přihlašovací údaje ACR.
 
-Klikněte na tlačítko **sestavení teď** v levé nabídce projektu. 
+Klikněte na tlačítko **sestavení teď** v levé nabídce projektu.
 
 ![Volaných testování sestavení](media/aks-jenkins/test-build.png)
 
 Během tohoto procesu je k serveru sestavení volaných klonovat úložiště GitHub. Novou bitovou kopii kontejneru je vytvořen a instaluje do registru ACR. Nakonec Azure hlas aplikace běžící v clusteru AKS je aktualizovat a použít novou bitovou kopii. Vzhledem k tomu, že byly provedeny žádné změny kódu aplikace, aplikace se nezmění.
 
-Po dokončení tohoto procesu můžete kliknutím na **sestavení #1** v části sestavení historie a vyberte **výstup konzoly** zobrazíte všechny výstup z procesu sestavení. Na posledním řádku by měl být uveden úspěšném sestavení. 
+Po dokončení procesu klikněte na **sestavení #1** v části sestavení historie a vyberte **výstup konzoly** zobrazíte všechny výstup z procesu sestavení. Na posledním řádku by měl být uveden úspěšném sestavení.
 
 ## <a name="create-github-webhook"></a>Vytvoření webhooku GitHubu
 
@@ -280,14 +280,14 @@ V dalším kroku připojit úložiště aplikací se serverem volaných sestaven
 3. Zvolte **přidat službu**, zadejte `Jenkins (GitHub plugin)` v pole filtru a vyberte modul plug-in.
 4. Pro volaných napojit adresu URL, zadejte `http://<publicIp:8080>/github-webhook/` kde `publicIp` je IP adresa serveru volaných. Nezapomeňte zahrnout koncový znak /.
 5. Vyberte možnost Přidat služby.
-  
+
 ![Webhook GitHubu](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>Testovat proces CI/CD koncová
 
-Na vývojovém počítači otevře Klonovaná aplikace v editoru kódu. 
+Na vývojovém počítači otevře Klonovaná aplikace v editoru kódu.
 
-V části **/azure-vote/azure-vote** adresáře, můžete najít soubor s názvem **config_file.cfg**. Aktualizujte hodnoty hlas v tomto souboru na jinou hodnotu než kočky a PSI. 
+V části **/azure-vote/azure-vote** adresáře, najít a soubor s názvem **config_file.cfg**. Aktualizujte hodnoty hlas v tomto souboru na jinou hodnotu než kočky a PSI.
 
 Následující příklad ukazuje a aktualizovat **config_file.cfg** souboru.
 
@@ -299,7 +299,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Po dokončení soubor uložte, provedení změn a oznámení do vaší rozvětvení úložiště GitHub... Po dokončení potvrzení webhook Githubu aktivuje nového sestavení volaných aktualizací bitové kopie kontejneru a AKS nasazení. Monitorování procesu sestavení v konzole pro správu volaných. 
+Po dokončení soubor uložte, provedení změn a oznámení do vaší rozvětvení úložiště GitHub... Po dokončení potvrzení webhook Githubu aktivuje nového sestavení volaných aktualizací bitové kopie kontejneru a AKS nasazení. Monitorování procesu sestavení v konzole pro správu volaných.
 
 Po dokončení sestavení znovu přejděte ke koncovému bodu aplikace sledovat změny.
 

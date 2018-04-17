@@ -1,6 +1,6 @@
 ---
-title: "Omezení žádostí o Azure Resource Manager | Microsoft Docs"
-description: "Popisuje způsob použití omezení šířky pásma s Azure Resource Manager požadavky při dosáhli limity předplatného."
+title: Omezení žádostí o Azure Resource Manager | Microsoft Docs
+description: Popisuje způsob použití omezení šířky pásma s Azure Resource Manager požadavky při dosáhli limity předplatného.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 04/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1d670fd7a9a165977fa5c8d3ce4caf5ff1b1df1e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezení žádostí Resource Manager
 Omezení správce prostředků pro každé předplatné a klienta, přečtěte si požadavky na 15 000 za hodinu a požadavků na zápis na 1 200 za hodinu. Tato omezení se použijí na každou instanci Azure Resource Manager. Existuje více instancí v každé oblasti Azure a Azure Resource Manager je nasazen na všechny oblasti Azure.  Tím, že v praxi, jsou omezení efektivně mnohem vyšší než tato omezení, jako uživatel požadavky jsou obvykle obsluhovány pomocí mnoha různými instancemi.
@@ -29,20 +29,20 @@ Když dostanete tento limit, zobrazí se stavový kód HTTP **429 příliš mnoh
 
 Počet požadavků, které je vymezen na vašeho předplatného nebo tenanta. Pokud máte více souběžných zasílání požadavků v rámci vašeho předplatného, požadavky z těchto aplikací se aplikace přidávají společně k určení počet zbývajících požadavků.
 
-Předplatné obor požadavky jsou ty, které zahrnují předávání vaše předplatné ID, jako je například načítání skupin prostředků v rámci vašeho předplatného. Požadavky klienta obor nezahrnují svoje ID předplatného, jako je například načítání platná umístění Azure.
+Předplatné obor požadavky jsou ty, které zahrnují předávání vaše předplatné ID, jako je například načítání skupin prostředků v rámci vašeho předplatného. Požadavky klienta obor neobsahují svoje ID předplatného, jako je například načítání platná umístění Azure.
 
 ## <a name="remaining-requests"></a>Zbývající požadavků
 Počet zbývajících požadavků, které můžete zjistit tak, že prověří hlavičky odpovědi. Každý požadavek obsahuje hodnoty pro číslo zbývající čtení a zápisu požadavků. Následující tabulka popisuje hlavičky odpovědi, které můžete zkontrolovat pro tyto hodnoty:
 
 | Hlavička odpovědi | Popis |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-reads |Předplatné obor čte zbývající |
-| x-ms-ratelimit-remaining-subscription-writes |Předplatné obor zapíše zbývající |
+| x-ms-ratelimit-remaining-subscription-reads |Předplatné obor přečte zbývající. Tato hodnota se vrátí na operace čtení. |
+| x-ms-ratelimit-remaining-subscription-writes |Předplatné obor zapíše zbývající. Tato hodnota se vrátí na operace zápisu. |
 | x-ms-ratelimit-remaining-tenant-reads |Obor klienta čte zbývající |
 | x-ms-ratelimit-remaining-tenant-writes |Obor klienta zapíše zbývající |
 | x-ms-ratelimit-remaining-subscription-resource-requests |Předplatné obor zbývající žádosti typu prostředku.<br /><br />Hodnotu této hlavičky je vrácena pouze v případě služby má přepsat výchozí limit. Resource Manager přidá tato hodnota místo předplatné čtení nebo zápisu. |
 | x-ms-ratelimit-remaining-subscription-resource-entities-read |Předplatné obor zbývající žádosti pro kolekci prostředků typu.<br /><br />Hodnotu této hlavičky je vrácena pouze v případě služby má přepsat výchozí limit. Tuto hodnotu poskytuje počet zbývajících požadavků kolekce (seznam prostředky). |
-| x-ms-ratelimit-remaining-tenant-resource-requests |Klienta obor zbývající žádosti typu prostředku.<br /><br />Tuto hlavičku přidat jenom pro požadavky na úrovni klienta a pouze v případě služby má přepsat výchozí limit. Resource Manager přidá tato hodnota místo klienta čtení nebo zápisu. |
+| x-MS-ratelimit-Remaining-tenant-Resource-Requests |Klienta obor zbývající žádosti typu prostředku.<br /><br />Tuto hlavičku přidat jenom pro požadavky na úrovni klienta a pouze v případě služby má přepsat výchozí limit. Resource Manager přidá tato hodnota místo klienta čtení nebo zápisu. |
 | x-ms-ratelimit-remaining-tenant-resource-entities-read |Klienta obor zbývající žádosti pro kolekci prostředků typu.<br /><br />Tuto hlavičku přidat jenom pro požadavky na úrovni klienta a pouze v případě služby má přepsat výchozí limit. |
 
 ## <a name="retrieving-the-header-values"></a>Načítání hodnoty hlavičky
@@ -70,7 +70,6 @@ Get-AzureRmResourceGroup -Debug
 Která vrací mnoho hodnot, včetně následující hodnotu odpovědi:
 
 ```powershell
-...
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -79,7 +78,25 @@ OK
 Headers:
 Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 14999
-...
+```
+
+Omezení zápis, použijte operaci zápisu: 
+
+```powershell
+New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+```
+
+Která vrací mnoho hodnot, včetně následujících hodnot:
+
+```powershell
+DEBUG: ============================ HTTP RESPONSE ============================
+
+Status Code:
+Created
+
+Headers:
+Pragma                        : no-cache
+x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
 V **rozhraní příkazového řádku Azure**, je hodnota hlavičky načíst pomocí podrobnější možnosti.
@@ -88,20 +105,37 @@ V **rozhraní příkazového řádku Azure**, je hodnota hlavičky načíst pomo
 az group list --verbose --debug
 ```
 
-Která vrací mnoho hodnot, včetně následujících objektů:
+Která vrací mnoho hodnot, včetně následujících hodnot:
 
 ```azurecli
-...
-silly: returnObject
-{
-  "statusCode": 200,
-  "header": {
-    "cache-control": "no-cache",
-    "pragma": "no-cache",
-    "content-type": "application/json; charset=utf-8",
-    "expires": "-1",
-    "x-ms-ratelimit-remaining-subscription-reads": "14998",
-    ...
+msrest.http_logger : Response status: 200
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Content-Encoding': 'gzip'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'Vary': 'Accept-Encoding'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
+```
+
+Omezení zápis, použijte operaci zápisu: 
+
+```azurecli
+az group create -n myresourcegroup --location westus --verbose --debug
+```
+
+Která vrací mnoho hodnot, včetně následujících hodnot:
+
+```azurecli
+msrest.http_logger : Response status: 201
+msrest.http_logger : Response headers:
+msrest.http_logger :     'Cache-Control': 'no-cache'
+msrest.http_logger :     'Pragma': 'no-cache'
+msrest.http_logger :     'Content-Length': '163'
+msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
+msrest.http_logger :     'Expires': '-1'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
 ## <a name="waiting-before-sending-next-request"></a>Čekání před odesláním další požadavek

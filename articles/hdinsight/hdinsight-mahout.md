@@ -1,8 +1,8 @@
 ---
-title: "Generování doporučení pomocí Mahout HDInsight z prostředí PowerShell – Azure | Microsoft Docs"
-description: "Další informace o použití Apache Mahout strojového učení knihovny pro generování doporučení s HDInsight (Hadoop) ze skriptu prostředí PowerShell systémem vašeho klienta."
+title: Generování doporučení pomocí Mahout HDInsight z prostředí PowerShell – Azure | Microsoft Docs
+description: Další informace o použití Apache Mahout strojového učení knihovny pro generování doporučení s HDInsight (Hadoop) ze skriptu prostředí PowerShell systémem vašeho klienta.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 07b57208-32aa-4e59-900a-6c934fa1b7a7
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: a2477b0a7c9c76f8ce4a183f4d699ddf4c291023
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 92b68253f28904c8406be77cb45de40d88ce862d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování doporučení pomocí Apache Mahout s Hadoop v HDInsight (PowerShell)
 

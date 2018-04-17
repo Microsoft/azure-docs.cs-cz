@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/12/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Použití profilů verze rozhraní API pro prostředí PowerShell v Azure zásobníku
 
@@ -34,15 +34,10 @@ Profily rozhraní API verze poskytují způsob, jak spravovat verze rozdíly mez
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-Modul AzureRM.Bootstrapper je ve verzi preview; Podrobnosti a funkce se mohou změnit. Pokud chcete stáhnout a nainstalovat nejnovější verzi tento modul z Galerie prostředí PowerShell, spusťte následující rutinu:
-
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
 
 ## <a name="install-a-profile"></a>Instalace profilu
 
-Použití **instalace AzureRmProfile** rutiny s **2017-03-09profil** profil verze rozhraní API pro instalaci modulů AzureRM vyžadovanou zásobník Azure. Všimněte si, že nejsou nainstalované moduly Azure zásobníku operátor s tímto profilem verze rozhraní API, a že by měly být nainstalovány samostatně uvedené v kroku 3 [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md) článku.
+Použití **instalace AzureRmProfile** rutiny s **2017-03-09profil** profil verze rozhraní API pro instalaci modulů AzureRM vyžadovanou zásobník Azure. S tímto profilem verze rozhraní API nejsou nainstalované moduly operátor zásobník Azure. Že by měly být nainstalovány samostatně uvedené v kroku 3 [instalaci prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md) článku.
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

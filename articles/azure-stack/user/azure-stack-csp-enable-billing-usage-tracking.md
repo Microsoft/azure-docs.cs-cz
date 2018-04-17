@@ -1,11 +1,11 @@
 ---
-title: "Povolit poskytovatele cloudové služby ke správě svého předplatného Azure zásobníku | Microsoft Docs"
-description: "Povolte poskytovatele služeb k odběru v zásobníku Azure."
+title: Povolit poskytovatele cloudové služby ke správě svého předplatného Azure zásobníku | Microsoft Docs
+description: Povolte poskytovatele služeb k odběru v zásobníku Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 4bc5644425aa11fb210d81095e4166baefc6432e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 26ba68be6d4932da77befaf7c968525393c0a033
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Povolit poskytovatele cloudové služby ke správě svého předplatného Azure zásobníku
 
@@ -41,7 +41,7 @@ Pokud používáte Azure zásobníku se poskytovatele cloudové služby (CSP), m
 Do svého předplatného přidáte CSP jako vlastníka. 
 
 1. Přidejte zprostředkovatelem kryptografických služeb jako uživatel guest. k roli vlastníka do vašeho adresáře klienta.  Pokyny k přidání uživatele, najdete v části [přidání nových uživatelů do služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)
-2. Přidáte roli vlastníka na uživatele guest CSP. Pokyny k přidání uživatele CSP k vašemu předplatnému, najdete v části [Use Role-Based řízení přístupu ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+2. Přidáte roli vlastníka na uživatele guest CSP. Pokyny k přidání uživatele CSP k vašemu předplatnému, najdete v části [Use Role-Based řízení přístupu ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 3. Zprostředkovatel kryptografických služeb pak vytvoří místní odběr zásobník Azure za vás.
 4. Jste připraveni začít používat Azure zásobníku.
 5. Poskytovatel cloudových služeb by pak vytvořte prostředek v rámci vašeho předplatného, chcete-li ověřit, že umožňuje spravovat prostředky. 

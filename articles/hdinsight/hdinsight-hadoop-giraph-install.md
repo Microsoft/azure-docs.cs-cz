@@ -1,26 +1,24 @@
 ---
-title: "Na nainstalovat a používat Giraph clusterů systému Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit clusteru HDInsight s Giraph a jak používat Giraph."
+title: Na nainstalovat a používat Giraph clusterů systému Hadoop v HDInsight - Azure | Microsoft Docs
+description: Zjistěte, jak přizpůsobit clusteru HDInsight s Giraph a jak používat Giraph.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 77a1d0e0-55de-4e61-98a0-060914fb7ca0
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0eb5c1f457380600463a370043f03e6d655a02c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df7c5e175ecfd2eca2b1db7eb4ab056bb1588dda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Nainstalovat a používat Giraph v clusterech HDInsight se systémem Windows
 
@@ -30,7 +28,7 @@ Zjistěte, jak přizpůsobit na bázi clusteru HDInsight se systémem Windows s 
 > Kroky v tomto dokumentu pracovat pouze s clustery HDInsight se systémem Windows. HDInsight je k dispozici pouze v systému Windows verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o tom, jak nainstalovat Giraph na clusteru HDInsight se systémem Linux najdete v tématu [Giraph nainstalovat na clusterů systému HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
 
-Giraph můžete nainstalovat na libovolný typ clusteru (Hadoop, Spark, HBase, Storm) v Azure HDInsight pomocí *akce skriptu*. Ukázkový skript pro instalaci Giraph v clusteru HDInsight je k dispozici z objektu blob úložiště Azure jen pro čtení v [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1). Ukázkový skript pracuje pouze s verze clusteru HDInsight verze 3.1. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
+Giraph můžete nainstalovat na libovolný typ clusteru (Hadoop, Spark, HBase, Storm) v Azure HDInsight pomocí *akce skriptu*. Ukázkový skript pro instalaci Giraph v clusteru HDInsight je k dispozici z objektu blob úložiště Azure jen pro čtení v [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1). Ukázkový skript pracuje pouze s verze clusteru HDInsight verze 3.1. Další informace o verzích clusterů HDInsight, naleznete v části [verze clusteru HDInsight](hdinsight-component-versioning.md).
 
 **Související články**
 
@@ -54,7 +52,7 @@ Giraph můžete nainstalovat na libovolný typ clusteru (Hadoop, Spark, HBase, S
 
     <table border='1'>
         <tr><th>Vlastnost</th><th>Hodnota</th></tr>
-        <tr><td>Name (Název)</td>
+        <tr><td>Název</td>
             <td>Zadejte název akce skriptu. Například <b>nainstalovat Giraph</b>.</td></tr>
         <tr><td>Identifikátor URI skriptu</td>
             <td>Zadejte identifikátoru URI (Uniform Resource) do skriptu, která je volána, chcete-li přizpůsobit clusteru. Například <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
@@ -160,12 +158,12 @@ Příklad SimpleShortestPathsComputation používáme k předvedení základní 
     ![Kreslení objektů jako kroužky s nejkratší cest mezi](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
 ## <a name="install-giraph-using-aure-powershell"></a>Nainstalujte Giraph pomocí prostředí Azure PowerShell
-V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Ukázka ukazuje, jak nainstalovat Spark pomocí Azure PowerShell. Je nutné přizpůsobit skript, který chcete použít [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
+V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell).  Ukázka ukazuje, jak nainstalovat Spark pomocí Azure PowerShell. Je nutné přizpůsobit skript, který chcete použít [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
 ## <a name="install-giraph-using-net-sdk"></a>Nainstalujte Giraph pomocí sady .NET SDK
-V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Ukázka ukazuje, jak nainstalovat Spark pomocí sady .NET SDK. Je nutné přizpůsobit skript, který chcete použít [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
+V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell). Ukázka ukazuje, jak nainstalovat Spark pomocí sady .NET SDK. Je nutné přizpůsobit skript, který chcete použít [ https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1 ](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Nainstalujte Giraph clusterů systému HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md)
 * [Vytvoření clusterů systému Hadoop v HDInsight](hdinsight-provision-clusters.md): Obecné informace o vytváření clusterů HDInsight.
 * [Přizpůsobení clusteru HDInsight pomocí akce skriptu][hdinsight-cluster-customize]: Obecné informace o přizpůsobení clusterů HDInsight pomocí akce skriptu.

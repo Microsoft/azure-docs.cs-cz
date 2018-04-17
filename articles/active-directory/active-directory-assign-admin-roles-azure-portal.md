@@ -1,25 +1,25 @@
 ---
-title: "Přiřazení rolí správce v Azure Active Directory | Microsoft Docs"
-description: "Roli správce můžete přidat uživatele, přiřadit role pro správu, resetovat uživatelská hesla, spravovat uživatelské licence nebo spravovat domény. Uživatel, který je přiřazen roli správce má stejné oprávnění mezi všechny cloudové služby, na které má vaše organizace předplatné."
+title: Přiřazení rolí správce v Azure Active Directory | Microsoft Docs
+description: Roli správce můžete přidat uživatele, přiřadit role pro správu, resetovat uživatelská hesla, spravovat uživatelské licence nebo spravovat domény. Uživatel, který je přiřazen roli správce má stejné oprávnění mezi všechny cloudové služby, na které má vaše organizace předplatné.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 88cd8fd99b61a8332d443e4969e30eac39916d66
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -137,14 +137,14 @@ Můžete provést | Nelze provést
 ------ | ----------
 Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení informací o společnosti a uživatele<br>Přístup k Office 365 použití řídicího panelu | Vytvoření a Správa zobrazení uživatele<br>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence<br>Delegovat role správců jiným uživatelům<br>Spravovat informace o společnosti
 
-### <a name="security-reader"></a>Čtečka zabezpečení
+### <a name="security-reader"></a>Čtecí zařízení pro zabezpečení
 | V | Můžete provést |
 | --- | --- |
-| Centrum Identity Protection |Číst všechny sestavy zabezpečení a informace o nastavení pro funkce zabezpečení<ul><li>Anti-spam<li>Šifrování<li>Zabránění ztrátě dat<li>Anti-malware<li>Pokročilé threat protection<li>Ochrana proti podvodným<li>Mailflow pravidla |
+| Centrum Identity Protection |Číst všechny sestavy zabezpečení a informace o nastavení pro funkce zabezpečení<ul><li>Proti spamu<li>Šifrování<li>Zabránění ztrátě dat<li>Anti-malware<li>Pokročilé threat protection<li>Ochrana proti podvodným<li>Mailflow pravidla |
 | Privileged Identity Management |<p>Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: zásady a sestav pro Azure AD přiřazení rolí zabezpečení zkontroluje a v budoucnu přístup pro čtení k zásad datům a sestavám pro scénáře kromě přiřazení role Azure AD.<p>**Nelze** registrace pro Azure AD PIM nebo proveďte změny. PIM na portálu nebo pomocí prostředí PowerShell někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud je uživatel kandidátem pro ně. |
 | <p>Monitorování stavu služby Office 365</p><p>Centru dodržování předpisů a zabezpečení Office 365</p> |<ul><li>Číst a spravovat výstrahy<li>Zásady zabezpečení pro čtení<li>Číst analýzou hrozeb, Cloud App Discovery a karantény v hledání a prošetřit<li>Číst všechny sestavy |
 
-### <a name="security-administrator"></a>Správce zabezpečení.
+### <a name="security-administrator"></a>Správce zabezpečení
 | V | Můžete provést |
 | --- | --- |
 | Centrum Identity Protection |<ul><li>Všechna oprávnění role zabezpečení čtečky.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
@@ -180,16 +180,16 @@ Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení info
 Následující role není vhodné používat. Budou se nepoužívá a bude odebrána z Azure AD v budoucnu.
 
 * Správce ad hoc licencí
-* Tvůrce uživatele ověřený e-mailem
+* Tvůrce uživatelů ověřovaných na základě e-mailu
 * Připojení zařízení k
-* Správce zařízení.
+* Správci zařízení
 * Uživatelé zařízení
-* Připojení zařízení k síti na pracovišti
+* Připojení pracovních zařízení
 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o tom, jak změnit správce pro předplatné služby Azure naleznete v tématu [Postup přidání nebo změna role správce služby Azure](../billing-add-change-azure-subscription-administrator.md)
-* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](active-directory-understanding-resource-access.md)
+* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o tom, jak Azure Active Directory má vztah k předplatnému Azure, najdete v části [asociování předplatných Azure se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 * [Správa uživatelů](active-directory-create-users.md)
 * [Správa hesel](active-directory-manage-passwords.md)

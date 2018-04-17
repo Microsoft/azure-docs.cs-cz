@@ -1,25 +1,18 @@
 ---
-title: "Spravovat role databáze a uživatele ve službě Azure Analysis Services | Microsoft Docs"
-description: "Zjistěte, jak spravovat role databáze a uživatele na serveru služby Analysis Services v Azure."
-services: analysis-services
-documentationcenter: 
+title: Spravovat role databáze a uživatele ve službě Azure Analysis Services | Microsoft Docs
+description: Zjistěte, jak spravovat role databáze a uživatele na serveru služby Analysis Services v Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3c35fb1ee70544b8b01bbadaf72ee38145179b27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat role databáze a uživatele
 
@@ -139,7 +132,7 @@ V této ukázce B2B externího uživatele a skupiny jsou přidány do role analy
 |Table|Výraz jazyka DAX|  
 |-----------|--------------------|  
 |Oblast|= Oblast [Země] = "USA"|  
-|ProductCategory|=ProductCategory[Name]=”Bicycles”|  
+|ProductCategory|= ProductCategory [Name] = "Jízdních kol"|  
 |Transakce|= Transakcí [rok] = 2016|  
   
  Net efekt je, že členové můžete dotazovat řádky dat, kde zákazník je v USA, kategorie produktů je jízdních kol a je roku 2016. Uživatelé se nemohou dotazovat transakce mimo USA, transakce, které nejsou jízdních kol nebo transakce není v 2016 dokud je členem jiné role, která uděluje tato oprávnění.

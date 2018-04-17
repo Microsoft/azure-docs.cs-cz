@@ -1,24 +1,18 @@
 ---
-title: "Škálování Azure Analysis Services | Microsoft Docs"
-description: "Replikace služby Azure Analysis Services serverů se Škálováním na více systémů"
-services: analysis-services
-documentationcenter: 
+title: Škálování Azure Analysis Services | Microsoft Docs
+description: Replikace služby Azure Analysis Services serverů se Škálováním na více systémů
 author: minewiskan
-manager: erikre
-editor: 
-ms.assetid: 
+manager: kfile
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 6a340cb3d73e0aaa86a5b7beb555133daed39d8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování Azure Analysis Services
 

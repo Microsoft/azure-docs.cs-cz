@@ -1,8 +1,8 @@
 ---
-title: "Integrace aplikací s Azure Active Directory"
-description: "Postup přidání, aktualizace nebo odebrání aplikace v Azure Active Directory (Azure AD)."
+title: Integrace aplikací s Azure Active Directory
+description: Postup přidání, aktualizace nebo odebrání aplikace v Azure Active Directory (Azure AD).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: PatAltimore
 manager: mtillman
 editor: mbaldwin
@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -47,7 +47,7 @@ Všechny aplikace, který chce využívat možnosti Azure AD musí být zaregist
     - Vyberte "Nativní" pro [klientské aplikace](active-directory-dev-glossary.md#client-application) , jsou nainstalovány místně na zařízení. Toto nastavení se používá pro veřejné OAuth [nativních klientů](active-directory-dev-glossary.md#native-client).
     - Vyberte "webovou aplikaci nebo API" pro [klientské aplikace](active-directory-dev-glossary.md#client-application) a [aplikace prostředků nebo rozhraní API](active-directory-dev-glossary.md#resource-server) které se instalují na zabezpečeného serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](active-directory-dev-glossary.md#web-client) a veřejné [klienty na základě uživatelského agenta](active-directory-dev-glossary.md#user-agent-based-client). Stejnou aplikaci můžete také zveřejnit klient i prostředků nebo rozhraní API.
   - **Adresa URL přihlašování:** pro "webovou aplikaci nebo API" aplikace, zadejte základní adresu URL aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěné v místním počítači. Uživatelé by používat tuto adresu URL pro přihlášení k webové aplikaci klienta. 
-  - **Identifikátor URI pro přesměrování:** pro "Nativní" aplikace, zadejte identifikátor URI používá Azure AD k vrácení odpovědi tokenu. Zadejte hodnotu konkrétní k vaší aplikaci, například`http://MyFirstAADApp`
+  - **Identifikátor URI pro přesměrování:** pro "Nativní" aplikace, zadejte identifikátor URI používá Azure AD k vrácení odpovědi tokenu. Zadejte hodnotu konkrétní k vaší aplikaci, například `http://MyFirstAADApp`
 
    ![Zaregistrujte novou aplikaci – vytvoření](./media/active-directory-integrating-applications/add-app-registration-create.png)
 
@@ -101,7 +101,7 @@ Následující kroky vám ukážou, jak souhlasu prostředí funguje pro vývoj�
   > Udělení explicitní souhlas pomocí **udělit oprávnění** tlačítko je momentálně nevyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js. Aplikace, jinak selže, pokud se požaduje přístupový token.   
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurovat klientskou aplikaci pro přístup k webové rozhraní API
-Aby webové nebo důvěrné klientskou aplikaci, aby mohli účastnit tok udělení autorizace, který vyžaduje ověření (a získat přístupový token) je potřeba vytvořit zabezpečené přihlašovací údaje. Výchozí metoda ověřování nepodporuje portál Azure je ID klienta a tajný klíč. Tato část obsahuje kroky konfigurace, který je třeba zadat pověření vašeho klienta tajný klíč.
+Aby webové nebo důvěrné klientskou aplikaci, aby mohli účastnit tok udělení autorizace, který vyžaduje ověření (a získat přístupový token) je potřeba vytvořit zabezpečené přihlašovací údaje. Výchozí metoda ověřování nepodporuje portál Azure je ID klienta a tajný klíč. Tato část obsahuje kroky konfigurace, které jsou nutné k zajištění tajný klíč s přihlašovacími údaji vašeho klienta.
 
 Kromě toho předtím, než klient může získat přístup k webové rozhraní API vystavené prostředků aplikace (například Microsoft Graph API), rozhraní souhlasu zajistí, klient získá udělení oprávnění, která je potřeba, na základě požadovaná oprávnění. Všechny aplikace ve výchozím nastavení, můžete vybrat oprávnění z "Windows Azure Active Directory" (rozhraní Graph API) a "Systém Windows Azure Service Management API." ["Přihlášení a čtení uživatelský profil" oprávnění rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) , vybere se také ve výchozím nastavení. Pokud váš klient je registrována v klientovi, který má předplatné Office 365 účty, jsou k dispozici pro výběr webovým rozhraním API a oprávnění pro služby SharePoint a Exchange Online. Můžete vybrat z [dva typy oprávnění](active-directory-dev-glossary.md#permissions) pro všechny potřeby webového rozhraní API:
 
@@ -129,7 +129,7 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
 
 5. Chcete-li přidat oprávnění pro přístup k prostředku rozhraní API z vašeho klienta
   - Klikněte **požadovaných oprávnění** části na **nastavení** stránky. 
-  - Klikněte **přidat** tlačítko.
+  - Klikněte na tlačítko **Přidat**.
   - Klikněte na tlačítko **vybrat rozhraní API** vyberte typ prostředků, kterou chcete vybrat z.
   - Procházet seznam dostupných rozhraní API nebo použijte pole hledání a vyberte z dostupných prostředků aplikací ve vašem adresáři, které zveřejňují webového rozhraní API. Klikněte na prostředek zájem a pak klikněte na **vyberte**.
   - Se **povolit přístup** stránky. Vyberte oprávnění aplikací nebo delegovaná oprávnění aplikace musí při přístupu k rozhraní API.
@@ -162,7 +162,7 @@ Následující části se dozvíte, jak vystavit oborů přístupu změnou manif
 
 4. Budete přesměrováni na stránku registrace hlavní aplikace, což otevře **nastavení** stránku pro aplikaci. Přepnout **úpravy manifest** stránku kliknutím **Manifest** ze stránky registrace aplikace. Otevře webové manifestu editor, umožní **upravit** manifestu v rámci portálu. Volitelně můžete kliknout na **Stáhnout** a upravit místně, potom použijte **nahrát** znovu do vaší aplikace.
 
-5. V tomto příkladu bude zveřejňujeme nového oboru názvem `Employees.Read.All` na našem prostředků nebo rozhraní API, přidáním následující elementu JSON, který chcete `oauth2Permissions` kolekce. Existující `user_impersonation` obor je dostupné ve výchozím nastavení během registrace. `user_impersonation`Umožňuje klientskou aplikaci, aby žádala o oprávnění pro přístup k prostředku, v části identita přihlášeného uživatele. Nezapomeňte přidat čárkou po existující `user_impersonation` obor elementu a změnit hodnoty vlastností, aby odpovídaly potřebám vaší prostředků. 
+5. V tomto příkladu bude zveřejňujeme nového oboru názvem `Employees.Read.All` na našem prostředků nebo rozhraní API, přidáním následující elementu JSON, který chcete `oauth2Permissions` kolekce. Existující `user_impersonation` obor je dostupné ve výchozím nastavení během registrace. `user_impersonation` Umožňuje klientskou aplikaci, aby žádala o oprávnění pro přístup k prostředku, v části identita přihlášeného uživatele. Nezapomeňte přidat čárkou po existující `user_impersonation` obor elementu a změnit hodnoty vlastností, aby odpovídaly potřebám vaší prostředků. 
 
   ```json
   {
@@ -233,7 +233,7 @@ Provedení víceklientské aplikace vyžaduje obě změny registrace aplikace, a
 Pokud píšete aplikaci, kterou chcete zpřístupnit pro vaše zákazníky nebo partnery mimo organizaci, budete muset aktualizovat definice aplikace na portálu Azure.
 
 > [!IMPORTANT]
-> Azure AD vyžaduje identifikátor ID URI aplikace víceklientské aplikací být globálně jedinečný. Identifikátor ID URI aplikace je jedním ze způsobů, které aplikace je definována ve zprávách protokolu. Aplikace pomocí jednoho klienta je dostačující pro identifikátor ID URI aplikace být jedinečný v rámci tohoto klienta. Pro více klientů aplikace musí být globálně jedinečné, Azure AD můžete najít aplikaci přes všechny klienty. Globální jedinečnosti se vynucuje tím, že identifikátor ID URI aplikace tak, aby měl název hostitele, který odpovídá ověřené domény klienta Azure AD. Například pokud je název vašeho klienta contoso.onmicrosoft.com pak platný identifikátor ID URI aplikace bude https://contoso.onmicrosoft.com/myapp. Pokud váš klient má ověřené domény contoso.com, pak platný identifikátor ID URI aplikace by také https://contoso.com/myapp. Pokud je identifikátor ID URI aplikace není postupujte podle tohoto vzoru, nastavení aplikace, protože víceklientské selže.
+> Azure AD vyžaduje identifikátor ID URI aplikace víceklientské aplikací být globálně jedinečný. Identifikátor ID URI aplikace je jedním ze způsobů, které aplikace je definována ve zprávách protokolu. Aplikace pomocí jednoho klienta je dostačující pro identifikátor ID URI aplikace být jedinečný v rámci tohoto klienta. Pro více klientů aplikace musí být globálně jedinečné, Azure AD můžete najít aplikaci přes všechny klienty. Globální jedinečnosti se vynucuje tím, že identifikátor ID URI aplikace tak, aby měl název hostitele, který odpovídá ověřené domény klienta Azure AD. Například pokud je název vašeho klienta contoso.onmicrosoft.com pak platný identifikátor ID URI aplikace by být https://contoso.onmicrosoft.com/myapp. Pokud má váš klient ověřené domény contoso.com, pak by také být platný identifikátor ID URI aplikace https://contoso.com/myapp. Pokud je identifikátor ID URI aplikace není postupujte podle tohoto vzoru, nastavení aplikace, protože víceklientské selže.
 > 
 
 Chcete-li uživatelům externí umožňuje přístup k aplikaci: 

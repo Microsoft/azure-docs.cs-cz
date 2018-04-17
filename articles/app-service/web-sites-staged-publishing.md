@@ -1,8 +1,8 @@
 ---
-title: "Nastavení přípravných prostředí pro webové aplikace v Azure App Service | Microsoft Docs"
-description: "Naučte se používat dvoufázové instalace publikování pro webové aplikace v Azure App Service."
+title: Nastavení přípravných prostředí pro webové aplikace v Azure App Service | Microsoft Docs
+description: Naučte se používat dvoufázové instalace publikování pro webové aplikace v Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: a262ba335256878b03a9a2cce6f7ba6a3dae715c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí v Azure App Service
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ Při nasazení vaší webové aplikace, webové aplikace na Linuxu, mobilní bac
 * Nasazení aplikace do patice nejprve a odkládací do provozu zajišťuje, že jsou všechny instance přihrádky jestli před prohazují do produkčního prostředí. Tím se eliminuje výpadek při nasazení aplikace. Přesměrování provozu je bezproblémové a jsou v důsledku operace prohození vyřadit žádné požadavky. Tento celý pracovní postup je možné automatizovat tak, že nakonfigurujete [Prohodit automaticky](#Auto-Swap) při swap předběžné ověření není potřeba.
 * Po prohození slot s dříve dvoufázové instalace aplikace teď má předchozí produkční aplikaci. Pokud změny, které jsou vzájemně zaměněny na produkční slot není podle očekávání, můžete provést stejný prohození okamžitě k získání "poslední známé funkční web" zpět.
 
-Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [omezení služby App](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits).
 
 * Pokud vaše aplikace obsahuje více sloty, nelze změnit úroveň.
 * Škálování není k dispozici pro nevýrobní prostředí sloty.

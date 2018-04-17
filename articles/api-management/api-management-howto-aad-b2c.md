@@ -1,11 +1,11 @@
 ---
-title: "Autorizovat vývojářským účtům pomocí Azure Active Directory B2C - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak mají autorizovat uživatelé pomocí Azure Active Directory B2C ve službě API Management."
+title: Autorizovat vývojářským účtům pomocí Azure Active Directory B2C - Azure API Management | Microsoft Docs
+description: Zjistěte, jak mají autorizovat uživatelé pomocí Azure Active Directory B2C ve službě API Management.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: d843757c2ed63c4f8cff09d809c2de382b2aeb59
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 1268905d8a992d0cac65174142f6a3870f38f0d8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 > [!WARNING]
 > Integrace se službou Azure Active Directory B2C je k dispozici v [Developer a Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) pouze úrovně.
@@ -114,7 +114,7 @@ Azure Active Directory B2C je cloudové řešení správy identity pro určenýc
 
     ![Registrace je dokončena.][api-management-registration-complete]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 *  [přehled Azure Active Directory B2C]
 *  [Azure Active Directory B2C: rozšiřitelný rámec zásad]

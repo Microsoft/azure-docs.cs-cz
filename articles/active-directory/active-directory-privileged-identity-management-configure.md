@@ -1,11 +1,11 @@
 ---
 title: Konfigurovat Azure AD Privileged Identity Management | Microsoft Docs
-description: "Téma, které vysvětluje, co je Azure AD Privileged Identity managementu a jak používat PIM k zlepšují zabezpečení vašeho cloudu."
+description: Téma, které vysvětluje, co je Azure AD Privileged Identity managementu a jak používat PIM k zlepšují zabezpečení vašeho cloudu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -72,7 +72,7 @@ Pro role Azure RBAC můžete spravovat pouze správce předplatného, vlastník 
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Správa privilegovaných identit (vstupního bodu) – přehled
 
-Azure AD Privileged Identity Management podporuje správu rolí adresáře Azure AD a rolí pro prostředky Azure (Preview). Funkce rolí pro prostředky Azure se liší od správní role ve službě Azure AD. Role prostředků Azure poskytují podrobné oprávnění k prostředku, na které jsou přiřazeny a všechny podřízené prostředky v hierarchii prostředků (označované jako dědičnosti). [Další informace o RBAC, hierarchie prostředků a dědičnost](role-based-access-control-configure.md). PIM pro obě role adresář Azure AD a prostředky Azure (Preview) můžete spravovat přístup k na příslušný odkaz v části Správa levé navigační nabídce PIM přehled vstupní bod.
+Azure AD Privileged Identity Management podporuje správu rolí adresáře Azure AD a rolí pro prostředky Azure (Preview). Funkce rolí pro prostředky Azure se liší od správní role ve službě Azure AD. Role prostředků Azure poskytují podrobné oprávnění k prostředku, na které jsou přiřazeny a všechny podřízené prostředky v hierarchii prostředků (označované jako dědičnosti). [Další informace o RBAC, hierarchie prostředků a dědičnost](../role-based-access-control/role-assignments-portal.md). PIM pro obě role adresář Azure AD a prostředky Azure (Preview) můžete spravovat přístup k na příslušný odkaz v části Správa levé navigační nabídce PIM přehled vstupní bod.
 
 PIM poskytuje pohodlné přístup k aktivaci rolí, zobrazení čekajících aktivací nebo požadavků, čeká na schválení (pro role adresář Azure AD) a čeká na vaši odpověď z části úlohy levé navigační nabídce na.
 

@@ -1,13 +1,13 @@
 ---
-title: "Odstraňování běžných chyb nasazení Azure | Microsoft Docs"
-description: "Popisuje postup řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager."
+title: Odstraňování běžných chyb nasazení Azure | Microsoft Docs
+description: Popisuje postup řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "Chyba nasazení, nasazení azure nasazení do azure"
+keywords: Chyba nasazení, nasazení azure nasazení do azure
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: support-article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru
 
@@ -31,9 +31,9 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postupujte podle omezení pro pojmenovávání pro účty úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Zkontrolujte vlastnosti účtu úložiště k dispozici. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Na clusteru nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače. Opakovat požadavek později, nebo požádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a přidělení Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) a [problémy zřizování a přidělení pro Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
+| AllocationFailed | Na clusteru nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače. Opakovat požadavek později, nebo požádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a přidělení Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problémy se zřizováním a přidělení Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a [řešení potíží s přidělováním](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžná operace. | |
-| AuthorizationFailed | Váš účet nebo instanční objekt nemá dostatečný přístup k dokončení nasazení. Zkontrolujte roli, kterou váš účet patří do a přístup pro obor nasazení. | [Řízení přístupu Azure na základě rolí](../active-directory/role-based-access-control-configure.md) |
+| AuthorizationFailed | Váš účet nebo instanční objekt nemá dostatečný přístup k dokončení nasazení. Zkontrolujte roli, kterou váš účet patří do a přístup pro obor nasazení. | [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md) |
 | Struktura BadRequest | Jste poslali hodnot nasazení, které neodpovídají očekávané pomocí Správce prostředků. Zkontrolujte zprávy vnitřní stav a nápovědu k řešení potíží. | [Odkaz na šablonu](/azure/templates/) a [podporované umístění](resource-manager-templates-resources.md#location) |
 | Konflikt | Požadujete operace, který není povolen v aktuálním stavu prostředku. Například změna velikosti disku je povolená pouze při vytváření virtuálního počítače, nebo když je virtuální počítač navrácený. | |
 | DeploymentActive | Počkejte, než pro souběžné nasazení do této skupiny prostředků pro dokončení. | |
@@ -69,7 +69,7 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | RequestDisallowedByPolicy | Vaše předplatné zahrnuje zásady prostředků, které brání akce, které se pokoušíte provést během nasazení. Najít zásady, které blokuje akce. Pokud je to možné změňte nasazení tak, aby splňovaly omezení ze zásad. | [Vyřešte zásady](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Zadejte název prostředku, který nezahrnuje o vyhrazený název. | [Názvy vyhrazené prostředků](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Počkejte na dokončení odstranění. | |
-| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Již musí existovat v rámci vašeho předplatného. Zkontrolujte kontext vašeho předplatného. | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Zkontrolujte název cílové skupiny prostředků pro nasazení. Již musí existovat v rámci vašeho předplatného. Zkontrolujte kontext vašeho předplatného. | [Rozhraní příkazového řádku Azure](/cli/azure/account?#az_account_set) [prostředí PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | Nasazení odkazuje na prostředek, který nelze vyřešit. Ověřte, že používání **odkaz** parametrů požadovaných pro váš scénář zahrnuje funkce. | [Překlad odkazů](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překročí kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upraveno infrastrukturu tak, aby zůstat v rámci kvóty. Zvažte, jinak hodnota požadavku na změnu vaší kvóty. | [Vyřešte kvóty](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Vyberte SKU (například velikost virtuálního počítače), která je k dispozici pro umístění, které jste vybrali. | [Vyřešte SKU](resource-manager-sku-not-available-errors.md) |

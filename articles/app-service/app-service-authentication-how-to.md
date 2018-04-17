@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 10decbd5291e2054e373bfef266b64eae36ea1cf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Přizpůsobení ověřování a autorizace ve službě Azure App Service
 
@@ -44,7 +44,7 @@ V přihlašovací stránky, nebo na navigačním panelu nebo v jiném umístěn�
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoft">Log in with Microsoft Account</a> 
+<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -56,8 +56,8 @@ Když uživatel klikne na jeden z odkazů, otevře se stránka příslušných p
 
 Služby App Service předá deklarace identity uživatelů do vaší aplikace pomocí speciálními záhlavími. Externí požadavky nejsou povoleny nastavit tyto hlavičky, takže jsou k dispozici pouze v případě nastavení službou App Service. Některé příklad hlavičky zahrnují:
 
-* X-MS-CLIENT-PRINCIPAL-NAME
-* X-MS-CLIENT-PRINCIPAL-ID
+* X-MS-KLIENTA HLAVNÍ NÁZEV
+* X-MS-CLIENT-HLAVNÍ ID
 
 Kód, který je napsán v libovolném jazyce nebo rozhraní můžete získat informace, které se musí z těchto hlavičky. Pro aplikace ASP.NET 4.6 **ClaimsPrincipal** bude automaticky nastavena s příslušnými hodnotami.
 

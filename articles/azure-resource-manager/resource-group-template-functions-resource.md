@@ -1,12 +1,12 @@
 ---
-title: "Funkce šablon Azure Resource Manager - prostředky | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manager k načtení hodnoty o prostředcích."
+title: Funkce šablon Azure Resource Manager - prostředky | Microsoft Docs
+description: Popisuje funkce pro použití v šablonu Azure Resource Manager k načtení hodnoty o prostředcích.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkce prostředků pro šablony Azure Resource Manager
 
 Resource Manager poskytuje následující funkce pro získání hodnoty prostředku:
 
-* [listKeys a seznamu {Value}](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [seznam *](#list)
 * [Zprostředkovatelé](#providers)
-* [reference](#reference)
+* [Referenční dokumentace](#reference)
 * [resourceGroup](#resourcegroup)
 * [ID prostředku](#resourceid)
 * [předplatné](#subscription)
@@ -36,12 +38,14 @@ Chcete-li získat hodnoty z parametrů, proměnné nebo aktuální nasazení, p�
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys a seznamu {Value}
+## <a name="listkeys-listsecrets-and-list"></a>listKeys listSecrets a seznamu *
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Vrátí hodnoty pro libovolný typ prostředku, který podporuje operaci seznamu. Nejběžnější využití `listKeys`. 
+Vrátí hodnoty pro libovolný typ prostředku, který podporuje operaci seznamu. Nejběžnější použití jsou `listKeys` a `listSecrets`. 
 
 ### <a name="parameters"></a>Parametry
 
@@ -154,7 +158,7 @@ Vrátí informace o poskytovatele prostředků a jeho typy podporovaných zdroj�
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Ano |řetězec |Namespace zprostředkovatele |
-| resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
+| Typ prostředku |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -441,7 +445,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="resourcegroup" />
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Skupina prostředků
 `resourceGroup()`
 
 Vrátí objekt, který představuje aktuální skupině prostředků. 
@@ -535,7 +539,7 @@ Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když se n�
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu identifikátoru GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředku v jiné předplatné. |
 | resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupině prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. |
-| resourceType |Ano |řetězec |Typ prostředku, včetně obor názvů zprostředkovatele prostředků. |
+| Typ prostředku |Ano |řetězec |Typ prostředku, včetně obor názvů zprostředkovatele prostředků. |
 | resourceName1 |Ano |řetězec |Název prostředku. |
 | resourceName2 |Ne |řetězec |Další prostředků název segment Pokud je vnořený prostředek. |
 

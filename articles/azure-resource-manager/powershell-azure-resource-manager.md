@@ -1,8 +1,8 @@
 ---
-title: "Spravovat řešení Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Ke správě prostředků pomocí Azure PowerShell a správce prostředků."
+title: Spravovat řešení Azure pomocí prostředí PowerShell | Microsoft Docs
+description: Ke správě prostředků pomocí Azure PowerShell a správce prostředků.
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 96206482195cdcbd06ee2dafdc551f7b1f81d319
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9521a9be1d2bdc91836830dbb6471d2ffcb4daaf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Správa prostředků pomocí Azure PowerShell
 
@@ -51,9 +51,9 @@ V současné době skupina prostředků je prázdný.
 
 V tomto článku nasaďte virtuální počítač a jeho odpovídající virtuální síť. Pro správu řešení virtuálního počítače, existují tři role konkrétní prostředky, které poskytují běžně potřebné přístup:
 
-* [Přispěvatel virtuálních počítačů](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Přispěvatel účtu úložiště](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor)
+* [Přispěvatel účtu úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Místo přiřazení rolí pro jednotlivé uživatele, je často jednodušší [vytvoření skupiny Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují k provádění podobných akcí. Potom přiřaďte této skupině do odpovídající role. Ke zjednodušení tohoto článku, vytvořit skupinu služby Azure Active Directory bez členů. Tato skupina stále můžete přiřadit do rolí pro obor. 
 

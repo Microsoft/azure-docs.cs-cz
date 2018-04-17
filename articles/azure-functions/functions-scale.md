@@ -1,13 +1,13 @@
 ---
-title: "Azure funkce škálování a hostování | Microsoft Docs"
-description: "Zjistěte, jak si vybrat mezi plánu spotřeby funkce Azure a plán služby App Service."
+title: Azure funkce škálování a hostování | Microsoft Docs
+description: Zjistěte, jak si vybrat mezi plánu spotřeby funkce Azure a plán služby App Service.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkce, funkce, plánu spotřeby, plán služby app service, zpracování událostí, webhooků, dynamické výpočetní, bez serveru architektura"
+editor: ''
+tags: ''
+keywords: Azure funkce, funkce, plánu spotřeby, plán služby app service, zpracování událostí, webhooků, dynamické výpočetní, bez serveru architektura
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure funkce škálování a hostování
 
@@ -74,7 +74,7 @@ Pokud plánujete spouštět funkce jazyka JavaScript na plán služby App Servic
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
-###Always On
+### Always On
 
 Pokud spustíte na plán služby App Service, měli byste povolit **Always On** nastavení tak, aby vaše aplikace funkce běží správně. Na plán služby App Service bude přejděte functions runtime nečinnosti po několika minutách nečinnosti, takže pouze aktivace protokolu HTTP bude "probuzení" funkcí. Toto je podobná jak webové úlohy musí mít povolenou funkci Always On. 
 
@@ -86,7 +86,7 @@ Spotřeba plánu nebo plán služby App Service vyžaduje aplikaci funkce obecn�
 
 <!-- JH: Does using a PRemium Storage account improve perf? -->
 
-Další informace o typech účtu úložiště najdete v tématu [Představení služby Azure Storage](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
+Další informace o typech účtu úložiště najdete v tématu [Představení služby Azure Storage](../storage/common/storage-introduction.md#azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>Jak funguje s plánem spotřeba
 

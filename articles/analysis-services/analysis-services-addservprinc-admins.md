@@ -1,24 +1,18 @@
 ---
-title: "Přidat zásadu služby do role správce serveru Azure Analysis Services | Microsoft Docs"
-description: "Zjistěte, jak přidat zásadě služby automation k roli správce serveru"
-services: analysis-services
-documentationcenter: 
+title: Přidat zásadu služby do role správce serveru Azure Analysis Services | Microsoft Docs
+description: Zjistěte, jak přidat zásadě služby automation k roli správce serveru
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 8e51b80e184b2b1ff24b1051b55088fbc54c271c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: minewiskan
+ms.openlocfilehash: 9c6417e069bbed38b1f6e9317636a10834ce7197
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-a-service-principle-to-the-server-administrator-role"></a>Přidat zásadu služby do role správce serveru 
 
@@ -28,7 +22,7 @@ ms.lasthandoff: 03/08/2018
 Před dokončením tohoto úkolu, musí mít Princip služby registruje v Azure Active Directory.
 
 [Vytvořit zásadu služby - portálu Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Vytvořit zásadu služby – prostředí PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Vytvoření instančního objektu – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 Chcete-li tuto úlohu dokončit, musíte mít [správce serveru](analysis-services-server-admins.md) oprávnění na serveru Azure AS. 
@@ -47,7 +41,7 @@ Chcete-li tuto úlohu dokončit, musíte mít [správce serveru](analysis-servic
 
 
 > [!NOTE]
-> Pro operace serveru pomocí rutin AzureRm systémem scheduler Princip služby musí patřit také do **vlastníka** role pro prostředek v [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md). 
+> Pro operace serveru pomocí rutin AzureRm systémem scheduler Princip služby musí patřit také do **vlastníka** role pro prostředek v [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="related-information"></a>Související informace
 

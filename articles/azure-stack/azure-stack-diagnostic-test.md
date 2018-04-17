@@ -1,6 +1,6 @@
 ---
-title: "Spustit test pro ověření v zásobníku Azure | Microsoft Docs"
-description: "Jak chcete shromažďovat soubory protokolů pro diagnostiku v Azure zásobníku"
+title: Spustit test pro ověření v zásobníku Azure | Microsoft Docs
+description: Jak chcete shromažďovat soubory protokolů pro diagnostiku v Azure zásobníku
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,13 +11,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro Azure zásobníku
 
@@ -33,7 +33,8 @@ Pokud máte potíže, obraťte se na zákaznickou podporu služeb společnosti M
 2. Obraťte se na zákaznický Microsoft služby podpory.
 3. Spustit **Test AzureStack** od privilegovaného koncového bodu.
     1. Přístup k privilegované koncový bod. Pokyny najdete v tématu [pomocí privilegované koncový bod v zásobníku Azure](azure-stack-privileged-endpoint.md). 
-    2. Přihlaste se jako **AzureStack\CloudAdmin** na hostiteli správy.
+    2. Na ASDK, přihlaste se k hostiteli správy jako **AzureStack\CloudAdmin**.  
+    Na integrovaný systém musíte použít IP adresu pro privilegovaný end bod pro správu, které jste získali od dodavatele hardwaru, od výrobců OEM.
     3. Spusťte PowerShell jako správce.
     4. Spusťte: `Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
     5. Spusťte: `Test-AzureStack`

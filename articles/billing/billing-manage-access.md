@@ -1,11 +1,11 @@
 ---
-title: "Správa přístupu k Azure fakturace použití rolí | Microsoft Docs"
-description: 
-services: 
-documentationcenter: 
+title: Správa přístupu k Azure fakturace použití rolí | Microsoft Docs
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ded7904c6cb855994d92e68c4a1af64ccdb2c3a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Správa přístupu k fakturační informace pro Azure pomocí řízení přístupu na základě rolí
 
-Můžete udělit přístup Azure fakturační informace pro členy týmu přiřazením jednu z následujících rolí uživatele k předplatnému: správce účtu, Správce služby, spolusprávcem, vlastník, Přispěvatel, Čtenář a fakturace čtečky. By mají přístup k fakturační informace v [portál Azure](https://portal.azure.com/), a mohou používat [fakturace rozhraní API](billing-usage-rate-card-overview.md) prostřednictvím kódu programu získat faktury (jednou přihlásí) a podrobnosti o použití. Další informace o, který můžete udělit role, a které role co naleznete na adrese [role v Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
+Můžete udělit přístup Azure fakturační informace pro členy týmu přiřazením jednu z následujících rolí uživatele k předplatnému: správce účtu, Správce služby, spolusprávcem, vlastník, Přispěvatel, Čtenář a fakturace čtečky. By mají přístup k fakturační informace v [portál Azure](https://portal.azure.com/), a mohou používat [fakturace rozhraní API](billing-usage-rate-card-overview.md) prostřednictvím kódu programu získat faktury (jednou přihlásí) a podrobnosti o použití. Další informace o, který můžete udělit role, a které role co naleznete na adrese [role v Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-## <a name="opt-in"></a>Povolíte dalším uživatelům přístup k faktury
+## <a name="opt-in"></a> Povolíte dalším uživatelům přístup k faktury
 
 Účet správce musí povolit pomocí [portál Azure](https://portal.azure.com/) povolit přístup k faktury pro ostatní uživatele nebo přes rozhraní API.
 

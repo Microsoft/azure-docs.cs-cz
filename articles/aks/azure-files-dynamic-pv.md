@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78f447c96afe7955f115de4bbd28015cd231bb53
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trvalé svazky s soubory Azure
 
-Trvalé svazku představuje část úložiště, které se zřizují pro použití v clusteru s podporou Kubernetes. Trvalé svazku může používat jednoho nebo mnoha pracovními stanicemi soustředěnými kolem a můžete dynamicky nebo staticky zřídit. Tento dokument podrobně popisuje dynamické zřizování sdílenou složku Azure jako trvalé svazek Kubernetes v clusteru služby AKS. 
+Trvalé svazku představuje část úložiště, které se zřizují pro použití v clusteru s podporou Kubernetes. Trvalé svazku může používat jednoho nebo mnoha pracovními stanicemi soustředěnými kolem a můžete dynamicky nebo staticky zřídit. Tento dokument podrobně popisuje dynamické zřizování sdílenou složku Azure jako trvalé svazek Kubernetes v clusteru služby AKS.
 
 Další informace o Kubernetes trvalé svazky, najdete v části [trvalé svazky Kubernetes][kubernetes-volumes].
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Při zřizování dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete tak dlouho, dokud je obsažena ve stejné skupině prostředků jako AKS cluster použít libovolný účet úložiště. V případě potřeby vytvořte účet úložiště ve stejné skupině prostředků jako AKS cluster. 
+Při zřizování dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete tak dlouho, dokud je obsažena ve stejné skupině prostředků jako AKS cluster použít libovolný účet úložiště. V případě potřeby vytvořte účet úložiště ve stejné skupině prostředků jako AKS cluster.
 
 Chcete-li identifikovat odpovídající prostředek skupiny, použijte [seznam skupiny az] [ az-group-list] příkaz.
 
@@ -40,7 +40,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Použití [vytvořit účet úložiště az] [ az-storage-account-create] příkaz pro vytvoření účtu úložiště. 
+Použití [vytvořit účet úložiště az] [ az-storage-account-create] příkaz pro vytvoření účtu úložiště.
 
 V tomto příkladu, aktualizovat `--resource-group` s názvem skupiny prostředků a `--name` název svého výběru.
 
@@ -74,7 +74,7 @@ kubectl create -f azure-file-sc.yaml
 
 ## <a name="create-persistent-volume-claim"></a>Vytvoření svazku trvalé deklarace identity
 
-Trvalé svazku deklarace identity (PVC) používá objektu třídy úložiště pro dynamicky zajišťují sdílenou složku Azure. 
+Trvalé svazku deklarace identity (PVC) používá objektu třídy úložiště pro dynamicky zajišťují sdílenou složku Azure.
 
 Následující manifest je použít k vytvoření svazku trvalé deklarace `5GB` velikost `ReadWriteOnce` přístup.
 
@@ -132,12 +132,12 @@ Vytvoření pod s [kubectl vytvořit] [ kubectl-create] příkaz.
 kubectl create -f azure-pvc-files.yaml
 ```
 
-Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. Zobrazí připojení při kontrole vaší pod prostřednictvím svazku `kubectl describe pod mypod`.
+Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. Tato konfigurace si můžete prohlédnout při kontrole vaší pod prostřednictvím `kubectl describe pod mypod`.
 
 ## <a name="mount-options"></a>Možnosti připojení
- 
+
 Výchozí hodnoty fileMode a dirMode liší mezi verzemi Kubernetes, jak je popsáno v následující tabulce.
- 
+
 | verze | hodnota |
 | ---- | ---- |
 | v1.6.x, v1.7.x | 0777 |
@@ -145,9 +145,9 @@ Výchozí hodnoty fileMode a dirMode liší mezi verzemi Kubernetes, jak je pops
 | V1.8.6 nebo novější | 0755 |
 | v1.9.0 | 0700 |
 | V1.9.1 nebo novější | 0755 |
- 
+
 Pokud používáte cluster verze 1.8.5 nebo větší, přípojných možnosti lze zadat v objektu třídy úložiště. Následující příklad sady `0777`.
- 
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -162,7 +162,7 @@ mountOptions:
 parameters:
   skuName: Standard_LRS
 ```
- 
+
 Pokud používáte cluster verze 1.8.0 - 1.8.4, lze určit kontext zabezpečení `runAsUser` nastavena na hodnotu `0`. Další informace o kontextu zabezpečení Pod najdete v tématu [konfigurace kontextu zabezpečení][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Další postup

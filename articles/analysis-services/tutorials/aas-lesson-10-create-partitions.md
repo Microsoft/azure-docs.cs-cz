@@ -1,25 +1,18 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 10: Vytvoření oddílů | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit oddíly v projektu Kurz služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Kurz služby Azure Analysis Services – Lekce 10: Vytvoření oddílů | Dokumentace Microsoftu'
+description: Popisuje, jak vytvořit oddíly v projektu Kurz služby Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: a73836b784a5e86d01df51fb83d619890d56502a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 743eff21154502fc4ff651177abb8df91edb7494
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-partitions"></a>Vytvoření oddílů
 

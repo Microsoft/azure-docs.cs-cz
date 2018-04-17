@@ -1,28 +1,28 @@
 ---
-title: "Spuštění a zastavení zásobník Azure | Microsoft Docs"
-description: "Zjistěte, jak pro spuštění a vypnutí zásobník Azure."
+title: Spuštění a zastavení zásobník Azure | Microsoft Docs
+description: Zjistěte, jak pro spuštění a vypnutí zásobník Azure.
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 43BF9DCF-F1B7-49B5-ADC5-1DA3AF9668CA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
-ms.author: mabrigg
-ms.openlocfilehash: 98bf75f5883b734c785ed1a3ed924afca1737c56
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 04/09/2018
+ms.author: jeffgilb
+ms.reviewer: misainat
+ms.openlocfilehash: 53015ba5c282bbe9c7b8185b080ffb6d834b6c75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-and-stop-azure-stack"></a>Spuštění a zastavení Azure zásobníku
-
-*Platí pro: Azure zásobníku integrované systémy (verze 1712 a novější)*
+Postupujte podle postupů v tomto článku správně vypnutí a restartování služby Azure zásobníku. 
 
 ## <a name="stop-azure-stack"></a>Zastavit Azure zásobníku 
 
@@ -86,4 +86,4 @@ Pokud služby infrastruktury a klientů není úspěšně spustit 2 hodiny po na
 
 ## <a name="next-steps"></a>Další postup 
 
-Další informace o Azure zásobníku nástroj pro diagnostiku a vydat protokolování najdete v tématu [Zásobník Azure diagnostické nástroje. Diagnostické nástroje Azure zásobníku. Diagnostické nástroje Azure zásobníku. Diagnostické nástroje Azure zásobníku.
+Další informace o Azure zásobníku nástroj pro diagnostiku a vystavování protokolování, najdete v části [diagnostické nástroje Azure zásobníku](azure-stack-diagnostics.md).

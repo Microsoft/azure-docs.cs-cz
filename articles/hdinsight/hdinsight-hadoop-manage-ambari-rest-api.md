@@ -1,8 +1,8 @@
 ---
-title: "Sledování a správě Hadoop pomocí Ambari REST API – Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Ambari ke sledování a správě clusterů systému Hadoop v prostředí Azure HDInsight. V tomto dokumentu se dozvíte, jak pomocí Ambari REST API, která je součástí clusterů HDInsight."
+title: Sledování a správě Hadoop pomocí Ambari REST API – Azure HDInsight | Microsoft Docs
+description: Další informace o použití Ambari ke sledování a správě clusterů systému Hadoop v prostředí Azure HDInsight. V tomto dokumentu se dozvíte, jak pomocí Ambari REST API, která je součástí clusterů HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 6d82e67e546c8c2079d1feced6e10954fe67a83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Správa clusterů HDInsight pomocí Ambari REST API
 
@@ -51,7 +49,7 @@ Jestli používáte Bash nebo prostředí PowerShell, musí také mít [jq](http
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Základní identifikátor URI pro Ambari Rest API
 
-Základní identifikátor URI pro Ambari REST API v HDInsight je https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, kde **CLUSTERNAME** je název clusteru.
+Základní identifikátor URI pro Ambari REST API v HDInsight https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, kde **CLUSTERNAME** je název clusteru.
 
 > [!IMPORTANT]
 > Sice velká a malá písmena název clusteru v části název (FQDN) plně kvalifikované domény identifikátor URI (CLUSTERNAME.azurehdinsight.net), jsou ostatní události v identifikátoru URI malá a velká písmena. Například pokud je název clusteru `MyCluster`, platné identifikátory URI jsou následující:
@@ -82,7 +80,7 @@ curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$C
 > Příklady Bash v tomto dokumentu provést následující předpoklady:
 >
 > * Výchozí hodnota je přihlašovací jméno pro cluster `admin`.
-> * `$CLUSTERNAME`obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí`set CLUSTERNAME='clustername'`
+> * `$CLUSTERNAME` obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí `set CLUSTERNAME='clustername'`
 > * Po zobrazení výzvy zadejte heslo pro přihlášení clusteru (správce).
 
 ```powershell
@@ -94,8 +92,8 @@ $resp.Content
 > [!IMPORTANT]
 > Příklady prostředí PowerShell v tomto dokumentu provést následující předpoklady:
 >
-> * `$creds`je objekt přihlašovacích údajů, který obsahuje přihlašovací jméno správce a heslo pro cluster. Tuto hodnotu můžete nastavit pomocí `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` a poskytování pověření při zobrazení výzvy.
-> * `$clusterName`je řetězec, který obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí `$clusterName="clustername"`.
+> * `$creds` je objekt přihlašovacích údajů, který obsahuje přihlašovací jméno správce a heslo pro cluster. Tuto hodnotu můžete nastavit pomocí `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` a poskytování pověření při zobrazení výzvy.
+> * `$clusterName` je řetězec, který obsahuje název clusteru. Tuto hodnotu můžete nastavit pomocí `$clusterName="clustername"`.
 
 Oba příklady vrátit dokument JSON, který začíná informace podobně jako v následujícím příkladu:
 
@@ -160,7 +158,7 @@ Při práci s HDInsight, musíte znát název plně kvalifikované domény (FQDN
     $respObj.items.Hosts.host_name
     ```
 
-* **HEAD uzly**
+* **hlavních uzlech**
 
     ```bash
     curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
@@ -259,9 +257,9 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Vrácená hodnota je podobný jedné z následujících příkladech:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Tato hodnota určuje, zda cluster používá účet úložiště Azure pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenem HDFS kompatibilní úložiště pro cluster.
+* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Tato hodnota určuje, zda cluster používá účet úložiště Azure pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenem HDFS kompatibilní úložiště pro cluster.
 
-* `adl://home`– Tato hodnota určuje, jestli cluster používá Azure Data Lake Store pro výchozí úložiště.
+* `adl://home` – Tato hodnota určuje, jestli cluster používá Azure Data Lake Store pro výchozí úložiště.
 
     Pokud chcete najít název účtu Data Lake Store, použijte následující příklady:
 

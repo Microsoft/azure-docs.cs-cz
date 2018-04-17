@@ -1,8 +1,8 @@
 ---
-title: "Prostředky, rolí a řízení přístupu ve službě Azure Application Insights | Microsoft Docs"
-description: "Vlastníci, přispěvatelé a čtenáři z vaší organizace statistiky."
+title: Prostředky, rolí a řízení přístupu ve službě Azure Application Insights | Microsoft Docs
+description: Vlastníci, přispěvatelé a čtenáři z vaší organizace statistiky.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu ve službě Application Insights
-Můžete řídit, kdo má číst a aktualizovat přístupu k datům v Azure [Application Insights][start], pomocí [řízení přístupu na základě Role ve službě Microsoft Azure](../active-directory/role-based-access-control-configure.md).
+Můžete řídit, kdo má číst a aktualizovat přístupu k datům v Azure [Application Insights][start], pomocí [řízení přístupu na základě Role ve službě Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
 
 > [!IMPORTANT]
 > Přiřadit uživatelům v přístupu **skupiny prostředků nebo předplatného** , ke které prostředek vaší aplikace patří - není v prostředku sám sebe. Přiřazení **Přispěvatel součásti Application Insights** role. Tím se zajistí uniform řízení přístupu k webové testy a výstrahy společně s prostředek vaší aplikace. [Další informace](#access).
@@ -45,7 +45,7 @@ První, definice:
 * [**Předplatné** ](https://portal.azure.com) – Pokud chcete použít Application Insights nebo další prostředky Azure, přihlaste se k předplatnému Azure. Každá skupina prostředků patří do jedno předplatné, kde vyberete vašeho balíčku ceny a, pokud je předplatné organizace, zvolte členy a jejich oprávnění k přístupu.
 * [**Účet Microsoft** ] [ account] -uživatelské jméno a heslo, které používáte pro přihlášení k Microsoft Azure odběry, XBox Live, Outlook.com a dalších služeb společnosti Microsoft.
 
-## <a name="access"></a>Řízení přístupu ve skupině prostředků
+## <a name="access"></a> Řízení přístupu ve skupině prostředků
 Je důležité si uvědomit, že kromě prostředek, který jste vytvořili pro vaši aplikaci, existují také samostatné skrytá prostředky pro výstrahy a webové testy. Jsou připojené ke stejné [skupiny prostředků](#resource-group) jako aplikace. Můžete také mít ukládat jinými službami Azure zde například weby nebo úložiště.
 
 ![Prostředky ve službě Application Insights](./media/app-insights-resources-roles-access-control/00-resources.png)
@@ -67,7 +67,7 @@ Přidejte uživatele existuje.
 
 Nebo můžete přejít do jiné úrovně a přidejte uživatele k předplatnému.
 
-#### <a name="select-a-role"></a>Vybrat roli
+#### <a name="select-a-role"></a>Výběr role
 ![Vyberte role pro nového uživatele](./media/app-insights-resources-roles-access-control/03-role.png)
 
 | Role | Ve skupině prostředků |
@@ -79,19 +79,19 @@ Nebo můžete přejít do jiné úrovně a přidejte uživatele k předplatnému
 
 'Úpravy' zahrnuje vytváření, odstraňování a aktualizace:
 
-* Zdroje
-* Testy webu
+* Zdroje a prostředky
+* Webové testy
 * Výstrahy
 * Průběžný export
 
-#### <a name="select-the-user"></a>Vyberte uživatele
+#### <a name="select-the-user"></a>Vybrat uživatele
 
 Pokud uživatel, který má být není v adresáři, můžete pozvat, každý uživatel s účtem Microsoft.
 (Pokud používají služby, jako je Outlook.com, OneDrive, Windows Phone nebo XBox Live, budou mít účet Microsoft.)
 
 ## <a name="related-content"></a>Související obsah
 
-* [Řízení přístupu v Azure na základě role](../active-directory/role-based-access-control-configure.md)
+* [Řízení přístupu v Azure na základě role](../role-based-access-control/role-assignments-portal.md)
 
 <!--Link references-->
 
