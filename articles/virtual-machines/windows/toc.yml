@@ -83,6 +83,8 @@
           href: sizes-hpc.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
+        - name: Výsledky srovnávacích testů
+          href: compute-benchmark-scores.md
     - name: Údržba a aktualizace
       href: maintenance-and-updates.md
     - name: Diskové úložiště
@@ -90,9 +92,9 @@
       items:
         - name: Managed Disks
           href: managed-disks-overview.md
-        - name: Storage úrovně Premium
+        - name: Premium Storage
           href: premium-storage.md
-        - name: Výkon Storage úrovně Premium
+        - name: Výkon Premium Storage
           href: premium-storage-performance.md
         - name: Storage úrovně Standard
           href: standard-storage.md
@@ -157,7 +159,7 @@
         - name: Použití WinRM
           href: winrm.md
         - name: Použití řízení přístupu
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Použití zásad
           href: policy.md
         - name: Vytvoření trezoru klíčů
@@ -288,7 +290,7 @@
           href: incremental-snapshots.md
         - name: Převod disku mezi úrovněmi Standard a Premium
           href: convert-disk-storage.md
-        - name: Migrace na Storage úrovně Premium s Azure Site Recovery
+        - name: Migrace na Premium Storage s Azure Site Recovery
           href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: Vyhledání nepřipojených disků
           href: find-unattached-disks.md

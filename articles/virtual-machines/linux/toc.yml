@@ -89,6 +89,8 @@
           href: sizes-hpc.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
+        - name: Výsledky srovnávacích testů
+          href: compute-benchmark-scores.md
     - name: Schválené distribuce
       href: endorsed-distros.md
     - name: Údržba a aktualizace
@@ -98,9 +100,9 @@
       items:
         - name: Managed Disks
           href: managed-disks-overview.md
-        - name: Storage úrovně Premium
+        - name: Premium Storage
           href: premium-storage.md
-        - name: Výkon Storage úrovně Premium
+        - name: Výkon Premium Storage
           href: premium-storage-performance.md
         - name: Storage úrovně Standard
           href: standard-storage.md
@@ -145,7 +147,7 @@
         - name: Šifrování
           href: encrypt-disks.md
         - name: Použití řízení přístupu
-          href: ../../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Použití zásad
           href: policy.md
         - name: Vytvoření trezoru klíčů
@@ -371,7 +373,7 @@
           href: convert-disk-storage.md
         - name: Kopírování souborů do virtuálního počítače
           href: copy-files-to-linux-vm-using-scp.md
-        - name: Migrace na Storage úrovně Premium s Azure Site Recovery
+        - name: Migrace na Premium Storage s Azure Site Recovery
           href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: Vyhledání nepřipojených disků
           href: find-unattached-disks.md
@@ -400,6 +402,8 @@
           href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Přiřazení veřejného názvu DNS
           href: portal-create-fqdn.md
+        - name: Vyhledání a odstranění nepřipojených síťových adaptérů
+          href: find-unattached-nics.md
         - name: Překlad DNS
           href: azure-dns.md
           items:

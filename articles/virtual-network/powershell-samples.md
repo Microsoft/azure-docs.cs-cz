@@ -1,6 +1,6 @@
 ---
-title: Ukázky pro virtuální síť Azure PowerShell | Microsoft Docs
-description: Ukázek Azure PowerShell pro virtuální síť.
+title: Ukázky Azure PowerShellu pro virtuální síť | Microsoft Docs
+description: Ukázky Azure PowerShellu pro virtuální síť.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -10,24 +10,24 @@ tags: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: jdial
-ms.openlocfilehash: c9cb8da2a6a7512daa6721af90d5b21c6ba5e8e5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: ab3a0935f23cda70cfef49af3563f6b1e85d1d8b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="azure-powershell-samples-for-virtual-network"></a>Ukázky pro virtuální síť Azure PowerShell
+# <a name="azure-powershell-samples-for-virtual-network"></a>Ukázky Azure PowerShellu pro virtuální síť
 
-Následující tabulka obsahuje odkazy na skripty prostředí Azure Powershell:
+Následující tabulka obsahuje odkazy na skripty Azure PowerShellu:
 
 | | |
 |----|----|
-| [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Vytvoří virtuální síť s podsítí front-end a back-end. Provoz do front-endu podsítě je omezený na protokolu HTTP, zatímco provozu do podsítě back-end je omezený na SQL, portu 1433. |
-| [Peer dvě virtuální sítě](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Vytvoří a připojí dvou virtuálních sítí ve stejné oblasti. |
-| [Směrovat provoz prostřednictvím sítě virtuálního zařízení](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md) | Vytvoří virtuální síť s podsítí front-end a back-end a virtuální počítač, který je schopen směrovat provoz mezi dvěma podsítěmi. |
-| [Filtrovat příchozí a odchozí provoz sítě virtuálních počítačů](./scripts/virtual-network-powershell-sample-filter-network-traffic.md) | Vytvoří virtuální síť s podsítí front-end a back-end. Příchozí síťový provoz do front-endu podsítí je omezený na protokolu HTTP a HTTPS. Odchozí přenosy k Internetu z podsítě back-end není povoleno. |
+| [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Provoz do front-endové podsítě je omezený na HTTP, zatímco provoz do back-endové podsítě je omezený na SQL na portu 1433. |
+| [Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | Vytvoří a propojí dvě virtuální sítě ve stejné oblasti. |
+| [Směrování provozu přes síťové virtuální zařízení](./scripts/virtual-network-powershell-sample-route-traffic-through-nva.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí a virtuální počítač, který je schopný směrovat provoz mezi těmito dvěma podsítěmi. |
+| [Filtrování příchozího a odchozího síťového provozu virtuálního počítače](./scripts/virtual-network-powershell-sample-filter-network-traffic.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Příchozí síťový provoz do front-endové podsítě je omezený na HTTP a HTTPS. Odchozí provoz do internetu z back-endové podsítě není povolený. |

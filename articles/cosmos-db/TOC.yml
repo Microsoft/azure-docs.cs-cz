@@ -183,7 +183,7 @@ items:
                 href: sql-api-sql-query-metrics.md
               - name: SQL Playground
                 href: 'https://aka.ms/cosmos-db-playground'
-              - name: Dělení
+              - name: Dělení dat SQL
                 href: sql-api-partition-data.md
               - name: 'Uložené procedury, triggery a systémy souborů UDF'
                 href: programming.md
@@ -286,6 +286,8 @@ items:
             items:
               - name: Podpora Gremlin
                 href: gremlin-support.md
+              - name: Dělení grafů
+                href: graph-partitioning.md
           - name: Rozhraní Table API
             items:
               - name: Vývoj tabulek
@@ -328,8 +330,6 @@ items:
             href: geospatial.md
           - name: Indexování
             href: indexing-policies.md
-          - name: Připojená služba v sadě Visual Studio
-            href: connected-service.md
       - name: Spravovat
         items:
           - name: Nákladově efektivní čtení a zápisy
@@ -394,7 +394,7 @@ items:
           - name: Využití ovladače ODBC pro vizualizaci dat
             href: odbc-driver.md
           - name: Použití aplikace Spring Boot Starter s rozhraními SQL API
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
   - name: Referenční informace
     items:
       - name: Ukázky kódů

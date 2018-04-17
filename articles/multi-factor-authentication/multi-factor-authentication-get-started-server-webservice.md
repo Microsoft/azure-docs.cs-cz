@@ -1,8 +1,8 @@
 ---
-title: "Webová služba mobilní aplikace Azure MFA Serveru | Dokumentace Microsoftu"
-description: "Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo.  To umožňuje serveru MFA používat nabízená oznámení pro uživatele."
+title: Webová služba mobilní aplikace Azure MFA Serveru | Dokumentace Microsoftu
+description: Aplikace Microsoft Authenticator nabízí možnost dalšího ověření mimo pásmo.  To umožňuje serveru MFA používat nabízená oznámení pro uživatele.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 83b04e48dd528881097bcf16bc03e1a18ea20c43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7ca5c7bcc82f0a77276f4f39a02d8abf2f47bc10
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Povolení ověření přes mobilní aplikaci se serverem Azure Multi-Factor Authentication
 
@@ -29,11 +29,13 @@ Použití mobilní aplikace pro dvojstupňové ověřování se upřednostňuje 
 
 V závislosti na vašem prostředí můžete chtít webovou službu mobilní aplikace nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
 
+Pokud jste nainstalovali MFA Server verze 8.0 nebo novější, většinu níže uvedených kroků provádět nemusíte. Ověřování přes mobilní aplikaci můžete nastavit podle pokynů v části [Konfigurace mobilní aplikace](#configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server).
+
 ## <a name="requirements"></a>Požadavky
 
 Pokud chcete použít aplikaci Microsoft Authenticator, je třeba splnit následující podmínky, aby aplikace mohla úspěšně komunikovat s webovou službou mobilní aplikace:
 
-* Azure Multi-Factor Authentication Server verze 6.0 nebo vyšší
+* Azure Multi-Factor Authentication Server verze 6.x nebo novější
 * Instalace webové služby mobilní aplikace na internetovém webovém serveru s [Internetovou informační službou Microsoft® (IIS) IIS 7.x nebo vyšší](http://www.iis.net/)
 * Nainstalované, registrované a povolené rozhraní ASP.NET v4.0.30319
 * Požadované role služby zahrnují technologie ASP.NET a kompatibilitu metabáze služby IIS 6
@@ -48,13 +50,14 @@ Pokud chcete použít aplikaci Microsoft Authenticator, je třeba splnit násled
 
 Před instalací webové služby mobilní aplikace mějte na paměti následující:
 
+* Instalace webové služby mobilní aplikace není nutná ve verzi 8.0 nebo novější. Proveďte pouze kroky v části [Konfigurace mobilní aplikace](#configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server).
 * Potřebujete účet služby, který je součástí skupiny PhoneFactor Admins. Může to být stejný účet, jako jste použili k instalaci portálu User Portal.
 * Je užitečné otevřít webový prohlížeč na webovém serveru s přístupem k internetu a přejít na adresu URL sady Web Service SDK, která byla zadán do souboru web.config. Pokud se prohlížeč úspěšně dostane k webové službě, měla by se zobrazit výzva k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo, které jste zadali do souboru web.config, v naprosto stejném tvaru. Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 * Pokud se před webovým serverem webové služby mobilní aplikace nachází reverzní proxy server nebo brána firewall a provádí snižování zátěže protokolu SSL, můžete upravit soubor web.config webové služby mobilní aplikace tak, aby webová služba mobilní aplikace mohla používat protokol http místo protokolu https. SSL je však stále zapotřebí ve směru z mobilní aplikace k reverznímu proxy serveru / bráně firewall. Do části \<appSettings\> přidejte následující klíč:
 
         <add key="SSL_REQUIRED" value="false"/>
 
-### <a name="install-the-web-service-sdk"></a>Instalace sady SDK webové služby
+### <a name="install-the-web-service-sdk"></a>Instalaci sady SDK webové služby
 
 V obou scénářích, pokud sada SDK webové služby Azure Multi-Factor Authentication **není** na Azure Multi-Factor Authentication (MFA) Serveru nainstalovaná, proveďte následující kroky.
 
@@ -80,25 +83,24 @@ Sada SDK webové služby musí být zabezpečená certifikátem SSL. Pro tento �
 
    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"**, kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"**, kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
-   * Vyhledejte nastavení **pfMobile App Web Service_pfwssdk_PfWsSdk** a změňte hodnotu z **http://localhost:4898/PfWsSdk.asmx** na adresu URL sady SDK webové služby (příklad: https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
+   * Vyhledejte nastavení **pfMobile App Web Service_pfwssdk_PfWsSdk** a změňte jeho hodnotu z **http://localhost:4898/PfWsSdk.asmx** na adresu URL sady SDK webové služby (příklad: https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
    * Uložte soubor Web.Config a zavřete Poznámkový blok.
 
    > [!NOTE]
    > Vzhledem k tomu, že se pro toto připojení používá protokol SSL, je třeba na sadu SDK webové služby odkazovat pomocí **plně kvalifikovaného názvu domény**, a **ne pomocí IP adresy**. Certifikát SSL by byl vydán pro plně kvalifikovaný název domény a použitá adresa URL se musí shodovat s názvem na certifikátu.
 
 7. Pokud web, na který byla nainstalována webová služba mobilní aplikace, nebyl dosud navázaný na veřejně podepsaný certifikát, nainstalujte certifikát na server, otevřete Správce služby IIS a vytvořte vazbu certifikátu k webu.
-8. Na libovolném počítači otevřete webový prohlížeč a přejděte na adresu URL, kam byla nainstalována webová služba mobilní aplikace (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+8. Na libovolném počítači otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstalovala webová služba mobilní aplikace (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 9. Další informace o metodách dostupných v sadě SDK pro webové služby najdete v souboru nápovědy pro MFA Server.
+10. Teď, když je instalována webová služba mobilní aplikace, musíte nakonfigurovat server Azure Multi-Factor Authentication pro práci s portálem.
 
 ## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurace serveru Azure Multi-Factor Authentication
-
-Teď, když je instalována webová služba mobilní aplikace, musíte nakonfigurovat server Azure Multi-Factor Authentication pro práci s portálem.
 
 1. V konzole Multi-Factor Authentication Serveru klikněte na ikonu User Portal. Pokud mají uživatelé povolení řídit své metody ověřování, zaškrtněte možnost **Mobilní aplikace** na kartě Nastavení v části **Povolit uživatelům výběr metody**. Bez povolení této funkce musí koncoví uživatelé pro dokončení aktivace mobilní aplikace kontaktovat podporu.
 2. Zaškrtněte políčko **Povolit uživatelům aktivaci mobilní aplikace**.
 3. Zaškrtněte políčko **Povolit zápis uživatele**.
 4. Klikněte na ikonu **Mobilní aplikace**.
-5. Do pole **Adresa URL webové služby mobilní aplikace** zadejte adresu URL používanou s virtuálním adresářem vytvořeným při instalaci MultiFactorAuthenticationMobileAppWebServiceSetup64 (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/).
+5. Pokud používáte verzi 8.0 nebo novější, následující krok přeskočte: Do pole **Adresa URL webové služby mobilní aplikace** zadejte adresu URL používanou s virtuálním adresářem vytvořeným při instalaci MultiFactorAuthenticationMobileAppWebServiceSetup64 (příklad: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/).
 6. Do pole **Název účtu** vyplňte název společnosti nebo organizace, který se pro tento účet zobrazí v mobilní aplikaci.
    ![Konfigurace MFA Serveru – nastavení mobilní aplikace](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)
 

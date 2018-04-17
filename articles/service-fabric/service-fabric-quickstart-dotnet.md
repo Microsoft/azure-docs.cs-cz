@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6038251ba79797312a0fec61e4a6f3d2e99d5435
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rychlý start: Vytvoření aplikace Service Fabric v .NET v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -29,14 +29,14 @@ Tento rychlý start ukazuje, jak nasadit první aplikaci .NET do Service Fabric.
 ![Snímek obrazovky aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
 Pomocí této aplikace se naučíte:
-> [!div class="checklist"]
-> * Vytvoření aplikace pomocí .NET a Service Fabric
-> * Použití ASP.NET jako webového front-endu
-> * Ukládání dat aplikace do stavové služby
-> * Místní ladění aplikace
-> * Nasazení aplikace do clusteru v Azure
-> * Škálování aplikace na více instancí napříč několika uzly
-> * Provedení upgradu aplikace se zajištěním provozu
+
+* Vytvoření aplikace pomocí .NET a Service Fabric
+* Použití ASP.NET jako webového front-endu
+* Ukládání dat aplikace do stavové služby
+* Místní ladění aplikace
+* Nasazení aplikace do clusteru v Azure
+* Škálování aplikace na více instancí napříč několika uzly
+* Provedení upgradu aplikace se zajištěním provozu
 
 ## <a name="prerequisites"></a>Požadavky
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
@@ -92,7 +92,7 @@ Při hlasování v aplikaci dojde k následujícím událostem:
 
 ## <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 
-Při ladění aplikace v sadě Visual Studio používáte místní vývojový cluster Service Fabric. Možnosti ladění si můžete upravit tak, aby vyhovovaly vašemu scénáři. V této aplikaci se data ukládají v back-end službě s použitím spolehlivého slovníku. Sada Visual Studio ve výchozím nastavení odebere aplikaci při zastavení ladicího programu. Odebrání aplikace způsobí i odebrání dat v back-end službě. Pokud chcete zachovat data mezi ladicími relacemi, můžete změnit **Režim ladění aplikace** ve vlastnosti projektu **Voting** v sadě Visual Studio.
+Aplikace by měla být spuštěná bez problémů, ale pomocí ladicího programu se můžete podívat, jak fungují klíčové části aplikace. Při ladění aplikace v sadě Visual Studio používáte místní vývojový cluster Service Fabric. Možnosti ladění si můžete upravit tak, aby vyhovovaly vašemu scénáři. V této aplikaci se data ukládají v back-end službě s použitím spolehlivého slovníku. Sada Visual Studio ve výchozím nastavení odebere aplikaci při zastavení ladicího programu. Odebrání aplikace způsobí i odebrání dat v back-end službě. Pokud chcete zachovat data mezi ladicími relacemi, můžete změnit **Režim ladění aplikace** ve vlastnosti projektu **Voting** v sadě Visual Studio.
 
 Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 1. Otevřete soubor **/VotingWeb/Controllers/VotesController.cs** a nastavte zarážku v metodě **Put** webového rozhraní API (řádek 69) – Soubor můžete vyhledat v Průzkumníku řešení v sadě Visual Studio.
@@ -181,8 +181,8 @@ Můžete obdržet upozornění prohlížeče, že umístění není důvěryhodn
 
 Pokud chcete škálovat webovou front-end službu, proveďte následující kroky:
 
-1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-2. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/Voting/VotingWeb** a zvolte **Škálovat službu**.
+1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+2. Ve stromovém zobrazení rozbalte **Aplikace**->**VotingType**->**fabric:/Voting**. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/Voting/VotingWeb** a zvolte **Škálovat službu**.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
 
@@ -213,25 +213,26 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 7. V dialogovém okně **Publikovat aplikaci Service Fabric** zaškrtněte políčko Upgradovat aplikaci a klikněte na **Publikovat**.
 
     ![Dialogové okno pro publikování – nastavení upgradu](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
+
+    V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
+
 8. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080, například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
 9. Ve stromovém zobrazení klikněte na uzel **Aplikace** a pak na **Probíhající upgrady** v pravém podokně. Zobrazí se postupné zavádění upgradu napříč upgradovacími doménami ve vašem clusteru. U každé domény se nejprve ověří, jestli je v pořádku, a pak se přejde k další. Po ověření stavu domény se upgradovací doména v indikátoru průběhu zobrazí zeleně.
     ![Zobrazení upgradu v Service Fabric Exploreru](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric zajišťuje bezpečné upgrady tím, že po upgradu služby na každém uzlu v clusteru dvě minuty počká. Počítejte s tím, že úplná aktualizace bude trvat přibližně osm minut.
 
-10. V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste se naučili:
 
-> [!div class="checklist"]
-> * Vytvoření aplikace pomocí .NET a Service Fabric
-> * Použití ASP.NET jako webového front-endu
-> * Ukládání dat aplikace do stavové služby
-> * Místní ladění aplikace
-> * Nasazení aplikace do clusteru v Azure
-> * Škálování aplikace na více instancí napříč několika uzly
-> * Provedení upgradu aplikace se zajištěním provozu
+* Vytvoření aplikace pomocí .NET a Service Fabric
+* Použití ASP.NET jako webového front-endu
+* Ukládání dat aplikace do stavové služby
+* Místní ladění aplikace
+* Nasazení aplikace do clusteru v Azure
+* Škálování aplikace na více instancí napříč několika uzly
+* Provedení upgradu aplikace se zajištěním provozu
 
 Další informace o Service Fabric a .NET najdete v tomto kurzu:
 > [!div class="nextstepaction"]

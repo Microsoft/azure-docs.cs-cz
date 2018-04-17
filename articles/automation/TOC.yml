@@ -21,7 +21,7 @@
       href: automation-tutorial-update-management.md
     - name: Začlenění aktualizace a sledování změn pomocí runbooku
       href: automation-onboard-solutions.md
-    - name: Identifikace softwaru na virtuálním počítači
+    - name: Identifikace softwaru ve vašem prostředí
       href: automation-tutorial-installed-software.md
     - name: Řešení potíží se změnami na virtuálním počítači
       href: automation-tutorial-troubleshoot-changes.md

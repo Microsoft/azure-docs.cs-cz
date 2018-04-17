@@ -1,6 +1,6 @@
 ---
-title: "Archivovat Azure dat monitorování | Microsoft Docs"
-description: "Archiv protokolu a metriku, data vytvořená v rámci Azure na účet úložiště."
+title: Archivace dat monitorování Azure | Microsoft Docs
+description: Archivujte data protokolů a metrik vygenerovaná v rámci Azure do účtu úložiště.
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: MT
+ms.openlocfilehash: b44bbd9cb2f54107d2593b1ab7f07f07fcc41e57
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="archive-azure-monitoring-data"></a>Archiv Azure dat monitorování
+# <a name="archive-azure-monitoring-data"></a>Archivace dat monitorování Azure
 
-Několik vrstev prostředí Azure vytvořit protokolu a metriky data, která mohou být archivovány k účtu úložiště Azure. Můžete k tomu zachovat historii po uplynutí jeho doba uchovávání dat v Log Analytics nebo Azure monitorování dat monitorování dat časem v úložišti nenákladné, prohledávatelné. Tento kurz postup provede procesem konfigurace prostředí Azure k archivaci dat do účtu úložiště.
+Různé vrstvy vašeho prostředí Azure generují data protokolů a metrik, která je možné archivovat do účtu Azure Storage. Můžete to provádět za účelem zachování historie dat monitorování v průběhu času v nenákladném a neprohledávatelném úložišti po uplynutí doby uchovávání těchto dat v Log Analytics nebo ve službě Azure Monitor. Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do účtu úložiště.
 
 > [!div class="checklist"]
-> * Vytvořit účet úložiště pro uložení dat monitorování
-> * Protokoly odběru trasy k němu 
-> * Data trasy prostředků do ní 
-> * Směrovat dat virtuálního počítače (hostovaný operační systém) 
-> * Zobrazení dat monitorování v ní 
-> * Vyčištění prostředků 
+> * Vytvoření účtu úložiště pro uchovávání dat monitorování
+> * Směrování protokolů předplatného do tohoto účtu úložiště
+> * Směrování dat prostředků do tohoto účtu úložiště
+> * Směrování dat virtuálního počítače (hostovaného operačního systému) do tohoto účtu úložiště
+> * Zobrazení dat monitorování v tomto účtu úložiště
+> * Vyčištění prostředků
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -36,148 +36,155 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Nejdřív je potřeba nastavit účet úložiště, do které bude archivován data monitorování. K tomu, [postupujte podle kroků v tomto poli](../storage/common/storage-create-storage-account.md).
+Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../storage/common/storage-create-storage-account.md).
 
-## <a name="route-subscription-logs-to-the-storage-account"></a>Protokoly odběru trasy k účtu úložiště
+## <a name="route-subscription-logs-to-the-storage-account"></a>Směrování protokolů předplatného do účtu úložiště
 
-Nyní jste připraveni začít nastavení prostředí Azure pro účet úložiště se bude směrovat data monitorování. Nejprve nakonfigurujeme data na úrovni předplatného (obsažené v protokol činnosti Azure) k přesměrování na účet úložiště. [ **Protokol činnosti Azure** ](monitoring-overview-activity-logs.md) poskytuje historii událostí na úrovni předplatného v Azure. Můžete ho vyhledat na webu Azure portal k určení *kdo* vytvořené, aktualizovat nebo odstranit *co* prostředky a *při* tomu bylo ho.
+Teď jste připraveni začít nastavovat své prostředí Azure pro směrování dat monitorování do účtu úložiště. Nejprve nakonfigurujeme směrování dat na úrovni předplatného (obsažená v protokolu aktivit Azure) do účtu úložiště. [**Protokol aktivit Azure**](monitoring-overview-activity-logs.md) poskytuje historii událostí na úrovni předplatného v Azure. Najdete ho na webu Azure Portal a jeho procházením můžete určit, *kdo* vytvořil, aktualizoval nebo odstranil *jaké* prostředky a *kdy* k tomu došlo.
 
-1. Klikněte **monitorování** tlačítko nachází na levé navigační seznamu, pak na **protokol aktivit**.
+1. V levém navigačním seznamu klikněte na tlačítko **Monitorování** a pak na **Protokol aktivit**.
 
-   ![Část protokolu aktivit](media/monitor-tutorial-archive-monitoring-data/activity-log-home.png)
+   ![Část Protokol aktivit](media/monitor-tutorial-archive-monitoring-data/activity-log-home.png)
 
-2. V části aktivity protokolu, který se zobrazí, klikněte na **exportovat** tlačítko.
+2. V části Protokol aktivit, která se zobrazí, klikněte na tlačítko **Exportovat**.
 
-3. V **Export protokolu aktivit** oddíl, který se zobrazí, zaškrtněte políčko pro **exportovat do účtu úložiště** a klikněte na tlačítko **vyberte účet úložiště.**
+3. V části **Export protokolu aktivit**, která se zobrazí, zaškrtněte políčko u možnosti **Exportovat do účtu úložiště** a klikněte na **Vybrat účet úložiště**.
 
    ![Export protokolu aktivit](media/monitor-tutorial-archive-monitoring-data/activity-log-export.png)
 
-4. V oddílu, který se zobrazí, použijte **účet úložiště** rozevíracího seznamu vyberte název účtu úložiště, který jste vytvořili v předchozím **vytvořit účet úložiště** krok a pak klikněte na **OK**.
+4. V části, která se zobrazí, pomocí rozevíracího seznamu **Účet úložiště** vyberte název účtu úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**, a klikněte na **OK**.
 
-   ![Vyberte účet úložiště](media/monitor-tutorial-archive-monitoring-data/activity-log-storage.png)
+   ![Výběr účtu úložiště](media/monitor-tutorial-archive-monitoring-data/activity-log-storage.png)
 
-5. Nastavte **uchovávání dat (dny)** posuvníku 30. Tento jezdec nastaví počet dní, které chcete zachovat data sledování v účtu úložiště. Azure monitorování automaticky odstraní data starší než počet dní, zadaný. Uchování nulový počet dnů po neomezenou dobu ukládá data.
+5. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
 
-6. Klikněte na tlačítko **Uložit** a zavřete v této části.
+6. Klikněte na **Uložit** a zavřete tuto části.
 
-Data ze svého předplatného monitorování je nyní předávaných do účtu úložiště.
+Data monitorování z vašeho předplatného se teď přenášejí do účtu úložiště.
 
-## <a name="route-resource-data-to-the-storage-account"></a>Data trasy prostředek k účtu úložiště
+## <a name="route-resource-data-to-the-storage-account"></a>Směrování dat prostředků do účtu úložiště
 
-Nyní nakonfigurujeme data na úrovni prostředků (metrika prostředků a diagnostických protokolů) směrovat do účtu úložiště nastavením **nastavení diagnostiky pro prostředek**.
+Teď nakonfigurujeme směrování dat na úrovni prostředku (metriky prostředků a diagnostické protokoly) do účtu úložiště tak, že nastavíme **nastavení diagnostiky prostředků**.
 
-1. Klikněte **monitorování** tlačítko nachází na levé navigační seznamu, pak na **nastavení pro diagnostiku**. Zde se zobrazí seznam všech prostředků v rámci vašeho předplatného, které vytváří monitorování dat pomocí Azure sledování. Pokud nemáte žádné prostředky v tomto seznamu, můžete [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) než budete pokračovat, tak, aby na prostředek, který můžete nakonfigurovat nastavení diagnostiky na.
+1. V levém navigačním seznamu klikněte na tlačítko **Monitorování** a pak na **Nastavení diagnostiky**. Tady se zobrazí seznam všech prostředků ve vašem předplatném, které generují data monitorování prostřednictvím služby Azure Monitor. Pokud se na tomto seznamu nezobrazí žádné prostředky, můžete [vytvořit aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) předtím, než budete pokračovat, abyste měli prostředek, u kterého můžete nakonfigurovat nastavení diagnostiky.
 
-2. Klikněte na prostředek v seznamu a pak klikněte na tlačítko **zapněte diagnostiku**.
-   
+2. Klikněte na prostředek v seznamu a pak klikněte na **Zapnout diagnostiku**.
+
    ![Zapnout diagnostiku](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-turn-on.png)
 
-   Pokud je již nakonfigurována nastavení, zobrazí místo stávající nastavení a tlačítko pro **přidat nastavení diagnostiky**. Kliknutím na toto tlačítko.
+   Pokud už existuje nakonfigurované nastavení, zobrazí se místo toho stávající nastavení a tlačítko **Přidat nastavení diagnostiky**. Klikněte na toto tlačítko.
 
-   Nastavení diagnostiky prostředků je definice *co* dat monitorování by měl směrovat z konkrétního zdroje a *kde* , by měli přejít dat monitorování.
+   Nastavení diagnostiky prostředků je definice toho, *jaká* data monitorování se mají směrovat z konkrétního prostředku a *kam* se mají směrovat.
 
-3. V oddílu, který se zobrazí, zadejte vaše nastavení **název** a zaškrtněte políčko pro **archivu do účtu úložiště**.
+3. V části, která se zobrazí, zadejte **název** nastavení a zaškrtněte políčko u možnosti **Archivovat do účtu úložiště**.
 
-   ![Část nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-home.png)
+   ![Část Nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-home.png)
 
-4. Klikněte na **konfigurace** tlačítko pod **archivu do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na **OK**.
+4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na **OK**.
 
-   ![Nastavení diagnostiky účtu úložiště](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
+   ![Nastavení diagnostiky – účet úložiště](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
 
-5. Zkontrolujte všechna pole v **protokolu** a **metrika**. V závislosti na typu prostředku může pouze mít jeden z těchto možností. Tato zaškrtnutí jednotlivých políček: řízení které kategorie protokolu a metriku, dat, které jsou k dispozici pro typ prostředku odešlou, které jste vybrali, v takovém případě cílového účtu úložiště.
+5. Zaškrtněte všechna políčka v částech **Protokol** a **Metrika**. V závislosti na typu prostředku může být k dispozici pouze jedna z těchto možností. Tato zaškrtávací políčka řídí, jaké kategorie dat protokolů a metrik dostupné pro daný typ prostředku se odesílají do vybraného cíle, v tomto případě do účtu úložiště.
 
-   ![Nastavení diagnostiky kategorií](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-categories.png)
-   
-6. Nastavte **uchovávání dat (dny)** posuvníku 30. Tento jezdec nastaví počet dní, které chcete zachovat data sledování v účtu úložiště. Azure monitorování automaticky odstraní data starší než počet dní, zadaný. Uchování nulový počet dnů po neomezenou dobu ukládá data.
+   ![Kategorie nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-categories.png)
+
+6. Nastavte posuvník **Doba uchování (dny)** na hodnotu 30. Tento posuvník nastavuje počet dnů, po který se mají data monitorování uchovávat v účtu úložiště. Azure Monitor automaticky odstraní data starší než zadaný počet dnů. Pokud jako dobu uchování nastavíte 0 dnů, data se uloží navždy.
 
 7. Klikněte na **Uložit**.
 
-Monitorování dat z prostředku je nyní předávaných do účtu úložiště.
+Data monitorování z vašeho prostředku se teď přenášejí do účtu úložiště.
 
-## <a name="route-virtual-machine-guest-os-data-to-the-storage-account"></a>Virtuální počítač (hostovaný operační systém) data trasy k účtu úložiště
+> [!NOTE]
+> Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
+>
+> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
+>
+>
 
-1. Pokud jste ještě není virtuální počítač v rámci vašeho předplatného, [vytvořit virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
+## <a name="route-virtual-machine-guest-os-data-to-the-storage-account"></a>Směrování dat virtuálního počítače (hostovaného operačního systému) do účtu úložiště
 
-2. V levém navigačním seznamu na portálu, klikněte na **virtuální počítače**.
+1. Pokud ho ve svém předplatném ještě nemáte, [vytvořte virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
-3. V seznamu virtuálních počítačů, který se zobrazí klikněte na virtuální počítač, který jste vytvořili.
+2. V levém navigačním seznamu na portálu klikněte na **Virtuální počítače**.
 
-4. V oddílu, který se zobrazí, klikněte na **nastavení pro diagnostiku** na levé straně. V této části můžete nastavit rozšíření monitorování out-of-box z Azure monitorování na virtuální počítač a data trasy, která se vytváří pomocí systému Windows nebo Linux na účet úložiště.
+3. V zobrazeném seznamu virtuálních počítačů klikněte na virtuální počítač, který jste vytvořili.
 
-   ![Přejděte na nastavení pro diagnostiku](media/monitor-tutorial-archive-monitoring-data/guest-navigation.png)
+4. V části, která se zobrazí, klikněte v levém navigačním panelu na **Nastavení diagnostiky**. Tato část umožňuje nastavit integrované rozšíření monitorování ze služby Azure Monitor na vlastním virtuálním počítači a směrovat data generovaná systémem Windows nebo Linuxem do účtu úložiště.
 
-5. Klikněte na tlačítko **povolit sledování na úrovni hosta** v oddílu, který se zobrazí.
+   ![Přechod do nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/guest-navigation.png)
 
-   ![Povolit nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/guest-enable.png)
+5. V části, která se zobrazí, klikněte na **Povolit monitorování na úrovni hosta**.
 
-6. Po nastavení diagnostiky má správně uložené, **přehled** karta zobrazuje seznam shromažďovaných údajů a kde se ukládají. Klikněte na **čítače výkonu** čítače části Zkontrolovat sadu výkon systému Windows nejsou shromažďována.
+   ![Povolení nastavení diagnostiky](media/monitor-tutorial-archive-monitoring-data/guest-enable.png)
+
+6. Po správném uložení nastavení diagnostiky se na kartě **Přehled** zobrazí seznam shromažďovaných dat a umístění, kam se ukládají. Klikněte na část **Čítače výkonu** a zkontrolujte sadu shromažďovaných čítačů výkonu Windows.
 
    ![Nastavení čítačů výkonu](media/monitor-tutorial-archive-monitoring-data/guest-perf-counters.png)
-   
-7. Klikněte na **protokoly** kartě a zaškrtněte políčka pro **informace** úroveň protokolů v aplikaci a protokoly systému.
+
+7. Klikněte na kartu **Protokoly** a zaškrtněte políčka u úrovně **Informace** protokolů aplikací a systémových protokolů.
 
    ![Nastavení protokolů](media/monitor-tutorial-archive-monitoring-data/guest-logs.png)
 
-8. Klikněte na **agenta** kartě a v části **účet úložiště** klikněte na název účtu úložiště, zobrazí.
+8. Klikněte na kartu **Agent** a v části **Účet úložiště** klikněte na název zobrazeného účtu úložiště.
 
-   ![Aktualizovat účet úložiště](media/monitor-tutorial-archive-monitoring-data/guest-storage-home.png)
+   ![Aktualizace účtu úložiště](media/monitor-tutorial-archive-monitoring-data/guest-storage-home.png)
 
-9. V oddílu, který se zobrazí, vyberte účet úložiště, který jste vytvořili v předchozím **vytvořit účet úložiště** krok.
+9. V části, která se zobrazí, vyberte účet úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**.
 
 10. Klikněte na **Uložit**.
 
-Data z virtuálních počítačů monitorování je nyní předávaných do účtu úložiště.
+Data monitorování z vašich virtuálních počítačů se teď přenášejí do účtu úložiště.
 
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Zobrazení dat monitorování v účtu úložiště
 
-Pokud jste postupovali podle předchozích kroků, zahájil dat předávaných do účtu úložiště.
+Pokud jste postupovali podle předchozích kroků, data se začala přenášet do vašeho účtu úložiště.
 
-1. Pro některé typy dat, například protokol aktivit, je potřeba některé aktivity, která vygeneruje událost v účtu úložiště. Chcete-li vygenerovat aktivity v protokolu aktivit, postupujte podle [tyto pokyny](./monitor-quick-audit-notify-action-in-subscription.md). Musíte počkat až pět minut, než se zobrazí události v účtu úložiště.
+1. Pro některé typy dat, například pro protokol aktivit, musí existovat aktivita, která v účtu úložiště vygeneruje událost. Pokud chcete generovat aktivitu v protokolu aktivit, postupujte podle [těchto pokynů](./monitor-quick-audit-notify-action-in-subscription.md). Na zobrazení události v účtu úložiště možná budete muset počkat až pět minut.
 
-2. Na portálu, přejděte na **účty úložiště** oddílu tak, že najdete na levém navigačním panelu.
+2. Na portálu přejděte do části **Účty úložiště**, kterou najdete v levém navigačním panelu.
 
-3. Identifikace účtu úložiště, kterou jste vytvořili v předchozí části a klikněte na něm.
+3. Identifikujte účet úložiště, který jste vytvořili v předchozí části, a klikněte na něj.
 
-4. Klikněte na **objekty BLOB**, pak na kontejner s názvem bez přípony **statistiky operační protokoly** a nakonec na kontejner s názvem bez přípony **name = výchozí**. Toto je kontejner, který se nachází váš protokol aktivit. Sledování dat je rozdělená do kontejnerů podle ID prostředku (právě ID předplatného pro protokol aktivit) a pak podle data a času. Úplné formátování pro tyto objekty BLOB je:
+4. Klikněte na **Objekty blob**, pak na kontejner označený jako **insights-operational-logs** a nakonec na kontejner označený jako **name=default**. Toto je kontejner, který obsahuje váš protokol aktivit. Data monitorování se rozdělují do kontejnerů podle ID prostředku (v případě protokolu aktivit je to pouze ID předplatného) a pak podle data a času. Úplný formát těchto objektů blob je následující:
 
-   Statistika provozní protokoly/name = výchozí/resourceId = v odběry / {ID předplatného} / y = {čtyřciferné číselné year} / m = {dvoumístné číslo měsíce} / d = {letopočty numerický den} / h = {hour}/m=00/PT1H.json letopočty 24 hodin
+   insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{ID_předplatného}/y={čtyřmístné_číslo_roku}/m={dvoumístné_číslo_měsíce}/d={dvoumístné_číslo_dne}/h={dvoumístné_číslo_hodiny_ve_24hodinovém_formátu}/m=00/PT1H.json
 
-5. Přejděte k souboru PT1H.json kliknutím na kontejnery pro ID prostředku, datum a čas. Kliknutím na soubor PT1H.json a klikněte na tlačítko **Stáhnout**. Každý objekt blob PT1H.json obsahuje objekt blob JSON událostí, které nastaly během hodiny zadaného v adrese URL objektu blob (například h = 12). Během přítomen hodinu jsou události připojen k souboru PT1H.json, kdy k nim dojde. Hodnota minutu (m = 00) je vždy 00, protože události protokolu jsou rozdělená do jednotlivých objektů blob za hodinu.
+5. Kliknutím na kontejnery pro ID prostředku, datum a čas přejděte k souboru PT1H.json. Klikněte na soubor PT1H.json a pak klikněte na **Stáhnout**. Každý objekt blob PT1H.json obsahuje objekt blob ve formátu JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h=12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodina minut (m=00) je vždy 00, protože události protokolu se rozdělují do jednotlivých objektů blob po hodinách.
 
-   Teď si můžete zobrazit JSON událost, která byla uložená v účtu úložiště. Diagnostické protokoly prostředků je formát pro objekty BLOB:
+   Teď můžete zobrazit událost JSON, která se uložila do účtu úložiště. V případě protokolů diagnostiky prostředků je formát objektů blob následující:
 
-   insights - logs-{název kategorie protokolu} / resourceId = / {ResourceId} / y = {čtyřciferné číselné year} / m = {dvoumístné číslo měsíce} / d = {letopočty numerický den} / h = {hour}/m=00/PT1H.json letopočty 24 hodin
+   insights-logs-{log category name}/resourceId=/{resource ID}/y={čtyřmístné_číslo_roku}/m={dvoumístné_číslo_měsíce}/d={dvoumístné_číslo_dne}/h={dvoumístné_číslo_hodiny_ve_24hodinovém_formátu}/m=00/PT1H.json
 
-6. Data monitorování hostovaného operačního systému jsou uloženy v tabulkách. Přejděte zpět na domovskou účet úložiště a klikněte na tlačítko **tabulky**. Nejsou k dispozici tabulky pro metriku, čítače výkonu a protokoly událostí.
+6. Data monitorování hostovaného operačního systému se ukládají do tabulek. Vraťte se na domovskou stránku účtu úložiště a klikněte na **Tabulky**. Zobrazí se tabulky pro metriky, čítače výkonu a protokoly událostí.
 
-Jste teď úspěšně nastavili monitorování dat archivaci na účet úložiště.
+Právě jste úspěšně nastavili archivaci dat monitorování do účtu úložiště.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Přejděte zpět na **Export protokolu aktivit** části předchozím **směrovat protokoly odběru k účtu úložiště** kroku a klikněte na tlačítko **resetovat**.
+1. Vraťte se do části **Export protokolu aktivit** z předchozího kroku **Směrování protokolů předplatného do účtu úložiště** a klikněte na **Resetovat**.
 
-2. Přejděte na **nastavení pro diagnostiku** části, klikněte na prostředek, na který jste vytvořili nastavení diagnostiky v předchozím **směrovat data prostředků k účtu úložiště** krok, pak nastavení najít můžete vytvořili, klikněte na **upravit nastavení** tlačítko a klikněte na tlačítko **odstranit**.
+2. Přejděte do části **Nastavení diagnostiky**, klikněte na prostředek, pro který jste vytvořili nastavení diagnostiky v předchozím kroku **Směrování dat prostředků do účtu úložiště**, vyhledejte vytvořené nastavení, klikněte na tlačítko **Upravit nastavení** a pak klikněte na **Odstranit**.
 
-3. Přejděte na **nastavení pro diagnostiku** části na virtuálním počítači, který jste nakonfigurovali v předchozím **směrování dat virtuálního počítače (hostovaný operační systém) k účtu úložiště** kroku a v části  **Agent** klikněte na možnost **odebrat** (pod **odebrat Azure Diagnostics agenta** části).
+3. Na virtuálním počítači, který jste nakonfigurovali v předchozím kroku **Směrování dat virtuálního počítače (hostovaného operačního systému) do účtu úložiště**, přejděte do části **Nastavení diagnostiky** a na kartě **Agent** klikněte na **Odebrat** (pod částí **Odebrat agenta diagnostiky Azure**).
 
-4. Přejděte na účet úložiště, který jste vytvořili v předchozím **vytvořit účet úložiště** krok a klikněte na tlačítko **odstranit účet úložiště**. Zadejte název účtu úložiště a pak klikněte na tlačítko **odstranit**.
+4. Přejděte do účtu úložiště, který jste vytvořili v předchozím kroku **Vytvoření účtu úložiště**, a klikněte na **Odstranit účet úložiště**. Zadejte název účtu úložiště a klikněte na **Odstranit**.
 
-5. Pokud jste vytvořili virtuálního počítače nebo aplikace logiky předchozí kroky, i ty odstraňte.
+5. Pokud jste v předchozích krocích vytvořili virtuální počítač nebo aplikaci logiky, odstraňte je také.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak nastavit dat monitorování od prostředí Azure (předplatné, prostředků a hostovaný operační systém) archivaci na účet úložiště. 
+V tomto kurzu jste zjistili, jak nastavit archivaci dat monitorování z vašeho prostředí Azure (předplatné, prostředek a hostovaný operační systém) do účtu úložiště.
 
 
 > [!div class="checklist"]
-> * Vytvořit účet úložiště pro uložení dat monitorování
-> * Protokoly odběru trasy k němu 
-> * Data trasy prostředků do ní 
-> * Směrovat dat virtuálního počítače (hostovaný operační systém) 
-> * Zobrazení dat monitorování v ní 
-> * Vyčištění prostředků 
+> * Vytvoření účtu úložiště pro uchovávání dat monitorování
+> * Směrování protokolů předplatného do tohoto účtu úložiště
+> * Směrování dat prostředků do tohoto účtu úložiště
+> * Směrování dat virtuálního počítače (hostovaného operačního systému) do tohoto účtu úložiště
+> * Zobrazení dat monitorování v tomto účtu úložiště
+> * Vyčištění prostředků
 
-Pokud chcete získat další mimo vaše data a jsou odvozeny další statistiky, také odesílat data do analýzy protokolů.
+Pokud chcete svá data využívat ještě lépe a získávat z nich další přehledy, odesílejte je také do Log Analytics.
 
 > [!div class="nextstepaction"]
-> [Začínáme s analýzy protokolů](../log-analytics/log-analytics-get-started.md)
+> [Začínáme se službou Log Analytics](../log-analytics/log-analytics-get-started.md)

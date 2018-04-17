@@ -1,57 +1,58 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace k virtuálním počítačům Azure pro datové vědy"
+title: Dokumentace k virtuálním počítačům Azure pro datové vědy
 metadata:
-  title: "Dokumentace k virtuálním počítačům Azure pro datové vědy"
-  description: "Naučte se používat virtuální počítače pro datové vědy."
+  title: Dokumentace k virtuálním počítačům pro datové vědy – Azure
+  description: Naučíte se využívat virtuální počítač pro datové vědy, experimentální prostředí v cloudu Azure vytvořené speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.
   services: machine-learning
-  author: bradsev
+  author: gopitk
   manager: cgronlun
   ms.service: machine-learning
+  ms.component: data-science-vm
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: bradsev
-  ms.openlocfilehash: 291d38522adfa780629892ea6d7f7a17a82a0e39
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.author: gokuma
+  ms.openlocfilehash: b4a4d167a74b89ff623fb8267c4fdc28b46923e9
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: "Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy."
+  description: Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučíte se nastavit virtuální počítač pro datové vědy založený na Windows nebo Linuxu:"
+    text: 'Naučíte se nastavit virtuální počítač pro datové vědy založený na Windows nebo Linuxu:'
   - type: list
     style: unordered
     items:
     - html: <a href="provision-vm.md">Windows</a>
     - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
     - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se zřizovat a používat virtuální počítače pro datové vědy:"
+    text: 'Naučte se zřizovat a používat virtuální počítače pro datové vědy:'
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"provision-vm\">Zřízení virtuálního počítače pro datové vědy s Windows</a>"
-    - html: "<a href=\"vm-do-ten-thing\">Použití virtuálního počítače pro datové vědy s Windows</a>"
-    - html: "<a href:\"linux-dsvm-intro\">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>"
-    - html: "<a href=\"dsvm-ubuntu-intro\">Zřízení virtuálního počítače pro datové vědy se systémem Linux Ubuntu</a>"
-    - html: "<a href=\"linux-dsvm-walkthrough\">Použití virtuálního počítače pro datové vědy s Linuxem</a>"
-- title: "Další technologie Azure Machine Learning"
+    - html: <a href="provision-vm">Zřízení virtuálního počítače pro datové vědy s Windows</a>
+    - html: <a href="vm-do-ten-thing">Použití virtuálního počítače pro datové vědy s Windows</a>
+    - html: <a href:"linux-dsvm-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>
+    - html: <a href="dsvm-ubuntu-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux Ubuntu</a>
+    - html: <a href="linux-dsvm-walkthrough">Použití virtuálního počítače pro datové vědy s Linuxem</a>
+- title: Další technologie Azure Machine Learning
   items:
   - type: paragraph
-    text: "Další technologie dostupné ve službách Azure Machine Learning:"
+    text: 'Další technologie dostupné ve službách Azure Machine Learning:'
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Služby Azure Machine Learning (Preview)"
+    - title: Služby Azure Machine Learning (Preview)
       href: /azure/machine-learning/preview/
       image:
         src: media/index/i_machine-learning.svg

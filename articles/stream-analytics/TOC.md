@@ -2,40 +2,38 @@
 
 # Přehled
 ## [Co je služba Stream Analytics?](stream-analytics-introduction.md)
-## [Porovnání Storm a Stream Analytics](stream-analytics-comparison-storm.md)
 
-# Začínáme
-## [Zpracování streamovaných dat IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
-## [Zjišťování možných podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md)
-## [Analýza dat pomocí Power BI](stream-analytics-power-bi-dashboard.md)
+# Šablony Rychlý start
+## [Vytvoření úlohy – Azure Portal](stream-analytics-quick-create-portal.md)
+## [Vytvoření úlohy – PowerShell](stream-analytics-quick-create-powershell.md)
+
+# Kurzy
+## [1. Vytvoření a správy úlohy](stream-analytics-manage-job.md)
+## [2. Spuštění Azure Functions](stream-analytics-with-azure-functions.md)
+## [3. Spuštění UDF JavaScriptu](stream-analytics-javascript-user-defined-functions.md)
 
 # Ukázky
 ## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 
 # Koncepty
-## Vstupní typy pro úlohu
+## [Vstupní typy pro úlohu](stream-analytics-add-inputs.md)
 ### [Streamování datových výstupů](stream-analytics-define-inputs.md)
 ### [Referenční datové výstupy](stream-analytics-use-reference-data.md)
 ## [Výstupní typy pro úlohu](stream-analytics-define-outputs.md)
+### [Výstup do Cosmos DB](stream-analytics-documentdb-output.md)
 ## [Funkce okna](stream-analytics-window-functions.md)
 ## [Úroveň kompatibility](stream-analytics-compatibility-level.md)
 ## [Běžné vzory dotazů](stream-analytics-stream-analytics-query-patterns.md)
 ## [Důležité informace o řazení událostí](stream-analytics-out-of-order-and-late-events.md)
 
-
 # Návody
-
-## Vytváření úloh
-### [Testování dotazů a ukázková vstupní data](stream-analytics-sample-data-input.md)
-### [Testování dotazů](stream-analytics-test-query.md)
-### [Spuštění UDF JavaScriptu](stream-analytics-javascript-user-defined-functions.md)
-### [Výstup do Data Lake Store](stream-analytics-data-lake-output.md)
-### [Výstup do Cosmos DB](stream-analytics-documentdb-output.md)
-### [Konfigurace upozornění](stream-analytics-set-up-alerts.md)
 
 ## Spravovat
 ### [Aktualizace úlohy](stream-analytics-job-reliability.md)
 ### [Aktualizace přihlašovacích údajů](stream-analytics-login-credentials-inputs-outputs.md)
+### [Konfigurace upozornění](stream-analytics-set-up-alerts.md)
+### [Otestování úlohy](stream-analytics-test-query.md)
+### [Zobrazení výsledků na řídicím panelu](stream-analytics-power-bi-dashboard.md)
 
 ## Vytváření řešení
 ### [Analýza subjektivního hodnocení na Twitteru](stream-analytics-twitter-sentiment-analysis-trends.md)
@@ -44,11 +42,11 @@
 ### [Analýza dat snímačů z mýtných bran](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [Spuštění UDA JavaScriptu](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Vysokofrekvenční obchodování](stream-analytics-high-frequency-trading.md)
-### [Spuštění Azure Functions](stream-analytics-with-azure-functions.md)
+### [Zpracování streamovaných dat IoT](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 
 ## Monitorování
 
-### [Monitorování úloh – portál](stream-analytics-monitoring.md)
+### [Monitorování úloh – Azure Portal](stream-analytics-monitoring.md)
 ### [Monitorování úloh – PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Monitorování úloh – Azure .Net SDK](stream-analytics-monitor-jobs.md)
 
@@ -82,7 +80,6 @@
 ### [Detekce anomálií](stream-analytics-machine-learning-anomaly-detection.md)
 ### [Použití rozhraní REST API](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
-
 # Referenční informace
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [Dotazovací jazyk](https://msdn.microsoft.com/library/azure/dn834998)
@@ -102,7 +99,8 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [Zákaznické případové studie](https://azure.microsoft.com/case-studies/?service=stream-analytics)
-## [Zpracování událostí v reálném čase](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [Dokument white paper – Zpracování událostí v reálném čase](stream-analytics-real-time-event-processing-reference-architecture.md)
+## [Porovnání Storm a Stream Analytics](stream-analytics-comparison-storm.md)
 
 
 

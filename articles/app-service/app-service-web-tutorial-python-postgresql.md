@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření webové aplikace Python a PostgreSQL v Azure | Microsoft Docs"
-description: "Zjistěte, jak v Azure zprovoznit aplikaci Python s připojením k databázi PostgreSQL."
+title: Vytvoření webové aplikace Python a PostgreSQL v Azure | Microsoft Docs
+description: Zjistěte, jak v Azure zprovoznit aplikaci Python s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
 author: berndverst
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: de20dae10ae6b43adcbc5040a8a71ba5650bafec
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9694dcfec7b3297e925bb45bee5e74b69609063d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Python a PostgreSQL v Azure
+# <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Python s připojením k databázi PostgreSQL v Azure
 
 > [!NOTE]
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení služby App Service v _Linuxu_ je popsané v tématu[Vytvoření webové aplikace Docker Python a PostgreSQL v Azure](./containers/tutorial-docker-python-postgresql-app.md).
@@ -226,7 +226,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-V prohlížeči přejděte na adresu http://localhost:5000. Klikněte na **Register!** (Zaregistrovat) a vytvořte testovací registraci. Právě zapisujete data do databáze v Azure.
+V prohlížeči přejděte na http://localhost:5000. Klikněte na **Register!** (Zaregistrovat) a vytvořte testovací registraci. Právě zapisujete data do databáze v Azure.
 
 ![Místně spuštěná aplikace Python Flask](./media/app-service-web-tutorial-python-postgresql/local-app.png)
 

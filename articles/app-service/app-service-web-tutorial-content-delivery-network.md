@@ -1,6 +1,6 @@
 ---
-title: "Přidejte název CDN do Azure App Service | Microsoft Docs"
-description: "Přidejte do služby Azure App Service službu Content Delivery Network (CDN) umožňující ukládání statických souborů do mezipaměti a jejich doručování ze serverů blízko zákazníkům po celém světe."
+title: Přidání sítě CDN do služby Azure App Service | Microsoft Docs
+description: Přidejte do služby Azure App Service službu Content Delivery Network (CDN) umožňující ukládání statických souborů do mezipaměti a jejich doručování ze serverů blízko zákazníkům po celém světe.
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,13 +10,13 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Přidání služby Content Delivery Network (CDN) do služby Azure App Service
+# <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Kurz: Přidání služby Content Delivery Network (CDN) do služby Azure App Service
 
 [Azure Content Delivery Network (CDN)](../cdn/cdn-overview.md) ukládá statický webový obsah do mezipaměti na strategicky umístěných místech, a tak poskytuje maximální propustnost pro doručování obsahu uživatelům. CDN také snižuje zatížení serveru na webovou aplikaci. Tento kurz ukazuje, jak přidat Azure CDN do [webové aplikace ve službě Azure App Service](app-service-web-overview.md). 
 
@@ -24,7 +24,7 @@ Tady je domovská stránka ukázkového statického webu v HTML, se kterým bude
 
 ![Domovská stránka ukázkové aplikace](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page.png)
 
-Získáte informace:
+Naučíte se:
 
 > [!div class="checklist"]
 > * Vytvořit koncový bod CDN.
@@ -37,21 +37,21 @@ Získáte informace:
 Pro absolvování tohoto kurzu potřebujete:
 
 - [Nainstalovat Git](https://git-scm.com/).
-- [Instalace rozhraní příkazového řádku Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Nainstalujte Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Vytvoření webové aplikace
 
-Při vytváření webové aplikace, kterou budete pracovat, postupujte podle [statické rychlý start HTML](app-service-web-get-started-html.md) prostřednictvím **přejděte do aplikace** krok.
+Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](app-service-web-get-started-html.md) až do kroku **Přechod do aplikace**.
 
 ### <a name="have-a-custom-domain-ready"></a>Připravení vlastní domény
 
-K dokončení kroku vlastní domény tohoto kurzu, musíte mít přístup k registru systému DNS u svého poskytovatele domény (například GoDaddy) a vlastní vlastní doménu. Abyste například mohli přidat záznamy DNS pro `contoso.com` a `www.contoso.com`, musíte mít přístup ke konfiguraci nastavení DNS pro kořenovou doménu `contoso.com`.
+K dokončení kroku týkajícího se vlastní domény v tomto kurzu potřebujete mít vlastní doménu a přístup k registru DNS vašeho poskytovatele domény (jako je například GoDaddy). Abyste například mohli přidat záznamy DNS pro `contoso.com` a `www.contoso.com`, musíte mít přístup ke konfiguraci nastavení DNS pro kořenovou doménu `contoso.com`.
 
 Pokud ještě nemáte název domény, zvažte nákup domény pomocí webu Azure Portal podle postupu v [kurzu k doménám App Service](custom-dns-web-site-buydomains-web-app.md). 
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
 Otevřete prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com).
 
@@ -71,8 +71,8 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 
 | Nastavení | Navrhovaná hodnota | Popis |
 | ------- | --------------- | ----------- |
-| **Profil CDN** | myCDNProfile | Vyberte **vytvořit nový** k vytvoření profilu CDN. Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
-| **Cenová úroveň** | Akamai Standard | [Cenová úroveň](../cdn/cdn-overview.md#azure-cdn-features) určuje poskytovatele a dostupné funkce. V tomto kurzu používáme Standard Akamai. |
+| **Profil CDN** | myCDNProfile | Vyberte **Vytvořit nový** a vytvořte profil CDN. Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
+| **Cenová úroveň** | Akamai Standard | [Cenová úroveň](../cdn/cdn-overview.md#azure-cdn-features) určuje poskytovatele a dostupné funkce. V tomto kurzu používáme Akamai Standard. |
 | **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete na doméně *\<název_koncového_bodu>.azureedge.net*.
 
 Vyberte **Vytvořit**.
@@ -103,7 +103,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![Domovská stránka ukázkové aplikace poskytnutá z CDN](media/app-service-web-tutorial-content-delivery-network/sample-app-home-page-cdn.png)
 
- Zobrazí na stejné stránce, který byl dříve v webové aplikace Azure. Azure CDN má načíst prostředky počátek webové aplikace a jejich obsluhuje z koncového bodu CDN
+ Zobrazí se stejná stránka, kterou jste spustili dříve ve webové aplikaci Azure. Služba Azure CDN načetla prostředky původní webové aplikace a poskytuje je z koncového bodu CDN.
 
 Abyste zajistili uložení této stránky v mezipaměti v CDN, aktualizujte stránku. Někdy jsou k uložení požadovaného obsahu do mezipaměti v CDN potřeba dva požadavky na stejný prostředek.
 
@@ -194,7 +194,7 @@ Azure CDN nabízí následující možnosti chování při ukládání do mezipa
 * Nepoužívat ukládání do mezipaměti pro řetězce dotazu
 * Ukládat do mezipaměti každou jedinečnou adresu URL 
 
-První z nich je výchozí, což znamená, že existuje jenom jedna verze uložené v mezipaměti majetku bez ohledu na to, řetězec dotazu v adrese URL. 
+Výchozí je první z těchto možností, to znamená, že existuje pouze jedna verze prostředku uložená do mezipaměti bez ohledu na řetězec dotazu v adrese URL. 
 
 V této části kurzu změníte chování při ukládání do mezipaměti tak, že se do mezipaměti bude ukládat každá jedinečná adresa URL.
 
@@ -241,10 +241,10 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 ![V2 v nadpisu v CDN, řetězec dotazu 1](media/app-service-web-tutorial-content-delivery-network/v2-in-cdn-title-qs1.png)
 
-Výstup ukazuje, že každý řetězec dotazu je zpracovávat odděleně:
+Tento výstup ukazuje, že se každý řetězec dotazu zpracovává jinak:
 
-* q = 1 byl používán před, takže obsah uložený v mezipaměti, jsou vráceny (V2).
-* q = 2 je novou, proto se nejnovější obsah webové aplikace načíst a vrátí (V3).
+* Parametr q=1 se použil dříve, proto se vrátí obsah uložený v mezipaměti (V2).
+* Parametr q=2 je nový, takže se načte a vrátí nejnovější obsah webové aplikace (V3).
 
 Další informace najdete v tématu [Řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](../cdn/cdn-query-string.md).
 
@@ -270,7 +270,7 @@ Přejděte na web registrátora vaší domény a vyhledejte část pro vytváře
 
 Najděte část pro správu záznamů CNAME. Možná bude nutné přejít na stránku rozšířeného nastavení a hledat slova jako CNAME, Alias nebo Subdomény.
 
-Vytvořit záznam CNAME, který mapuje vaši zvolenou subdomény (například **statické** nebo **cdn**) k **názvu hostitele koncového bodu** uvedené výše v portálu. 
+Vytvořte záznam CNAME mapující zvolenou subdoménu (například **static** nebo **cdn**) na **název hostitele koncového bodu**, který jste na portálu zobrazili dříve. 
 
 ### <a name="enter-the-custom-domain-in-azure"></a>Zadání vlastní domény v Azure
 
@@ -278,7 +278,7 @@ Vraťte se na stránku **Přidat vlastní doménu** a do dialogového okna zadej
    
 Azure ověří, že pro zadaný název domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří.
 
-Rozšíření záznamu CNAME na názvové servery na internetu může nějakou dobu trvat. Pokud vaše doména není ověřený okamžitě, počkejte několik minut a zkuste to znovu.
+Rozšíření záznamu CNAME na názvové servery na internetu může nějakou dobu trvat. Pokud se vaše doména neověří okamžitě, počkejte několik minut a zkuste to znovu.
 
 ### <a name="test-the-custom-domain"></a>Testování vlastní domény
 
@@ -292,7 +292,7 @@ Další informace najdete v tématu [Mapování obsahu Azure CDN na vlastní dom
 
 ## <a name="next-steps"></a>Další kroky
 
-Co jste se naučili:
+Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvořit koncový bod CDN.
@@ -300,7 +300,7 @@ Co jste se naučili:
 > * Spravovat verze uložené v mezipaměti pomocí řetězců dotazu.
 > * Použít vlastní doménu pro koncový bod CDN.
 
-Informace o optimalizaci výkonu CDN v těchto článcích:
+V následujících článcích se dozvíte, jak optimalizovat výkon sítě CDN:
 
 > [!div class="nextstepaction"]
 > [Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN](../cdn/cdn-improve-performance.md)

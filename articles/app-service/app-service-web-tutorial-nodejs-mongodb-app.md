@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření webové aplikace Node.js a MongoDB v Azure | Microsoft Docs"
-description: "Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB."
+title: Vytvoření webové aplikace Node.js a MongoDB v Azure | Microsoft Docs
+description: Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.service: app-service-web
 ms.workload: web
@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b191af9edd8fd38c819483e8836568657d0b6bf0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8fdad8d8e62365c33b47e67b483c929aaab0083e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Vytvoření webové aplikace Node.js a MongoDB v Azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js využívající MongoDB v Azure
 
 > [!NOTE]
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace Node.js a MongoDB v Azure v Linuxu](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
-Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace Node.js v Azure a jejím připojení k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](app-service-web-overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková [webovou architekturu MEAN.js](http://meanjs.org/).
+Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace Node.js v Azure a jejím připojení k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](app-service-web-overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková aplikace [webovou architekturu MEAN.js](http://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -35,7 +35,7 @@ Naučíte se:
 
 > [!div class="checklist"]
 > * Vytvoření databáze MongoDB v Azure
-> * Připojení aplikace Node.js k MongoDB
+> * Připojit aplikaci Node.js k MongoDB
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
@@ -307,7 +307,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 Můžete si všimnout, že proces nasazení po příkazu `npm install` spustí [Gulp](http://gulpjs.com/). Služba App Service během nasazení nespouští úlohy Gulp ani Grunt, takže toto ukázkové úložiště obsahuje v kořenovém adresáři dva další soubory, které je povolují: 
 
-- _.deployment_ – Tento soubor informuje službu App Service, že má `bash deploy.sh` spustit jako vlastní skript nasazení.
+- _.deployment_ – Tento soubor informuje službu App Service, že má jako vlastní skript nasazení spustit `bash deploy.sh`.
 - _deploy.sh_ – Vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazech `npm install` a `bower install` spouští příkaz `gulp prod`. 
 
 Pomocí tohoto postupu můžete přidat libovolný krok nasazení z Gitu. Pokud svou webovou aplikaci Azure kdykoli restartujete, služba App Service tyto úlohy automatizace znovu nespustí.
@@ -460,7 +460,7 @@ Po dokončení operace `git push` přejděte do webové aplikace Azure a vyzkou�
 
 ![Změny modelu a databáze publikované v Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
-Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající data v databázi Cosmos nebudou ztracena. Kromě toho vaše aktualizace ovlivňují schéma dat a nechávají existující data netknutá.
+Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající data ve službě Cosmos DB nebudou ztracena. Kromě toho vaše aktualizace ovlivňují schéma dat a nechávají existující data netknutá.
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů 
 
@@ -497,7 +497,7 @@ Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření databáze MongoDB v Azure
-> * Připojení aplikace Node.js k MongoDB
+> * Připojit aplikaci Node.js k MongoDB
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat protokoly z Azure do terminálu

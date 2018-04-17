@@ -1,26 +1,26 @@
 ---
-title: "Interaktivní hledání v mapách pomocí Azure Location Based Services | Dokumentace Microsoftu"
-description: "Rychlý start Azure – Spuštění ukázky interaktivního hledání v mapách pomocí Azure Location Based Services (Preview)"
+title: Interaktivní hledání v mapách pomocí Azure Location Based Services | Dokumentace Microsoftu
+description: Rychlý start Azure – Spuštění ukázky interaktivního hledání v mapách pomocí Azure Location Based Services (Preview)
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 04/03/2018
 ms.topic: quickstart
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 288044b2f8a4b996489bbd6a6b0a61b455e8f4ad
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a61d56f8e649d60dacff8f9849ab7e26363e119
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Spuštění ukázky interaktivního hledání v mapách pomocí Azure Location Based Services (Preview)
 
-Tento článek předvádí možnosti služeb Azure Location Based Services (LBS) na příkladu interaktivního hledání s využitím map Azure. Také vás provede základními kroky k vytvoření vlastního účtu LBS a získání klíče účtu pro použití v ukázkové webové aplikaci. 
+Tento článek předvádí možnosti služeb Azure Location Based Services (LBS) na příkladu interaktivního hledání. Také vás provede základními kroky k vytvoření vlastního účtu LBS a získání klíče účtu pro použití v ukázkové webové aplikaci. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -40,14 +40,14 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 5. Po úspěšném vytvoření účtu ho otevřete a přejděte do **NASTAVENÍ** účtu. Kliknutím na **Klíče** získáte primární a sekundární klíče pro účet Azure Location Based Services. Zkopírujte do místní schránky hodnotu **primárního klíče** pro použití v následující části. 
 
-## <a name="download-the-demo-application-for-azure-maps"></a>Stažení ukázkové aplikace pro mapy Azure
+## <a name="download-the-demo-application"></a>Stažení ukázkové aplikace
 
 1. Stáhněte nebo zkopírujte obsah souboru [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html).
 2. Uložte obsah tohoto souboru místně jako **AzureMapDemo.html** a otevřete ho v textovém editoru.
 3. Vyhledejte řetězec `<insert-key>` a nahraďte ho hodnotou **primárního klíče**, kterou jste získali v předchozí části. 
 
 
-## <a name="launch-the-demo-application-for-azure-maps"></a>Spuštění ukázkové aplikace pro mapy Azure
+## <a name="launch-the-demo-application-for"></a>Spuštění ukázkové aplikace
 
 1. V libovolném prohlížeči otevřete soubor **AzureMapDemo.html**.
 2. Prohlédněte si zobrazenou mapu města Los Angeles. Město určuje hodnota páru `[longitude, latitude]` (zeměpisná délka a šířka) předaná do proměnné JavaScriptu s názvem **center** v souboru *AzureMapDemo.html*. Tyto souřadnice můžete změnit na libovolné jiné město. Například souřadnice města New York jsou *[-74.0060, 40.7128]*.

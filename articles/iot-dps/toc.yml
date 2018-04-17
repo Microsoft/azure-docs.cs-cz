@@ -89,28 +89,30 @@
       href: concepts-service.md
 - name: Návody
   items:
-    - name: Správa registrací zařízení
-      items:
-        - name: Správa registrací zařízení pomocí webu Azure Portal
-          href: how-to-manage-enrollments.md
-        - name: Správa registrací zařízení pomocí sad SDK služby
-          href: how-to-manage-enrollments-sdks.md
-    - name: Odvolání přístupu k zařízení
-      href: how-to-revoke-device-access-portal.md
-    - name: Zrušení zřízení zařízení
-      href: how-to-unprovision-devices.md
-    - name: Provedení ověření vlastnictví pro certifikáty webu X.509
-      href: how-to-verify-certificates.md
-    - name: Použití HSM s SDK
-      href: use-hsm-with-sdk.md
-    - name: Řízení přístupu ke službě zřizování
-      href: how-to-control-access.md
-    - name: Použití Azure CLI ke správě služeb zřizování zařízení
-      href: how-to-manage-dps-with-cli.md
-    - name: Použití nástrojů sady SDK pro vývoj
-      href: how-to-use-sdk-tools.md
-    - name: Připojení k MXChip IoT DevKitu
+    - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Správa konfigurace zřizování zařízení
+      items:
+        - name: Konfigurace ověřených certifikátů CA
+          href: how-to-verify-certificates.md
+        - name: Správa zrušení zřízení
+          href: how-to-unprovision-devices.md
+        - name: Správa zrušení registrace
+          href: how-to-revoke-device-access-portal.md
+        - name: Správa registrací – portál
+          href: how-to-manage-enrollments.md
+        - name: Správa registrací – sady SDK služeb
+          href: how-to-manage-enrollments-sdks.md
+    - name: Správa služby zřizování zařízení
+      items:
+        - name: Konfigurace služby zřizování zařízení s využitím Azure CLI
+          href: how-to-manage-dps-with-cli.md
+        - name: Řízení přístupu k rozhraním API služby zřizování
+          href: how-to-control-access.md
+    - name: Použití mechanismů ověřování s využitím SDK
+      href: use-hsm-with-sdk.md
+    - name: Použití nástrojů SDK pro vývoj
+      href: how-to-use-sdk-tools.md
 - name: Referenční informace
   items:
     - name: REST

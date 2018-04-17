@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: Monitorování a odstraňování potíží
           items:
-            - name: Řešení potíží s převzetím služeb při selhání do Azure
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: Řešení potíží s replikaci Hyper-V
+              href: hyper-v-azure-troubleshoot.md
             - name: Monitorování služby Azure Site Recovery
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Hyper-V do sekundární lokality

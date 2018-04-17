@@ -56,6 +56,7 @@
 #### [-mailová pozvánka](active-directory-b2b-invitation-email.md)
 #### [Uplatnění pozvánky](active-directory-b2b-redemption-experience.md)
 #### [Přidání uživatelů B2B bez pozvánky](active-directory-b2b-add-user-without-invite.md)
+#### [Povolení nebo blokování pozvánek](active-directory-b2b-allow-deny-list.md)
 #### [Podmíněný přístup pro B2B](active-directory-b2b-mfa-instructions.md)
 #### [Zásady sdílení B2B](active-directory-b2b-delegate-invitations.md)
 #### [Přidání uživatele B2B do role](active-directory-b2b-add-guest-to-role.md)
@@ -327,9 +328,6 @@
 #### [Technické referenční informace](active-directory-conditional-access-technical-reference.md)
 #### [Nejčastější dotazy](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Ověření bez hesla](active-directory-azureadjoin-passport.md)
-#### [Povolení Windows Hello pro firmy](active-directory-azureadjoin-passport-deployment.md)
 ### Ověřování pomocí certifikátů
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

@@ -7,9 +7,9 @@
 ### [Přehled](active-directory-authentication-scenarios.md#native-application-to-web-api)
 ### [iOS](active-directory-devquickstarts-ios.md)
 ### [Android](active-directory-devquickstarts-android.md)
-### [.NET](active-directory-devquickstarts-dotnet.md)
-### [Windows](active-directory-devquickstarts-windowsstore.md)
-### [Xamarin](active-directory-devquickstarts-xamarin.md)
+### [.NET (Windows Desktop)](active-directory-devquickstarts-dotnet.md)
+### [.NET (Windows Universal)](active-directory-devquickstarts-windowsstore.md)
+### [.NET (Xamarin)](active-directory-devquickstarts-xamarin.md)
 ### [Cordova](active-directory-devquickstarts-cordova.md)
 ### [OAuth 2.0](active-directory-protocols-oauth-code.md)
 ## Webové aplikace
@@ -96,11 +96,16 @@
 ### Mobilní aplikace a aplikace počítače
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [Desktopová aplikace .NET pro Windows](guidedsetups/active-directory-windesktop.md)
+#### [.NET (Windows Desktop)](guidedsetups/active-directory-windesktop.md)
 ### Webové aplikace
-#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
-#### [Webový server ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
-#### [Webová aplikace NodeJS](active-directory-v2-devquickstarts-node-web.md)
+#### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
+#### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+### Jednostránkové aplikace
+#### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
+### Webová rozhraní API
+#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
+### Komunikace mezi službami
+#### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Průvodci
 ### [Registrace aplikace](active-directory-v2-app-registration.md)
 ## Referenční informace
@@ -111,9 +116,9 @@
 #### [Implicitní grant Oauth 2.0](active-directory-v2-protocols-implicit.md)
 #### [Udělení přihlašovacích údajů klienta protokolu OAuth 2.0](active-directory-v2-protocols-oauth-client-creds.md)
 #### [Tok Oauth 2.0 On-Behalf-Of](active-directory-v2-protocols-oauth-on-behalf-of.md)
-#### [Referenční informace o tokenech](active-directory-v2-tokens.md)
 #### [Přihlašovací údaje ve formě certifikátu](active-directory-certificate-credentials.md)
-### [Obory](active-directory-v2-scopes.md)
+### [Tokeny](active-directory-v2-tokens.md)
+### [Rozsah a souhlas](active-directory-v2-scopes.md)
 # Zdroje a prostředky
 ## [Získání nápovědy](active-directory-develop-help-support.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)

@@ -196,6 +196,8 @@
               href: app-insights-usage-segmentation.md
             - name: Trychtýře
               href: usage-funnels.md
+            - name: Kohorty
+              href: app-insights-usage-cohorts.md
             - name: Dopad
               href: app-insights-usage-impact.md
             - name: Uchovávání

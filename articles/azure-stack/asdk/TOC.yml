@@ -57,6 +57,8 @@
       href: asdk-register.md
     - name: Konfigurace nastavení telemetrie Azure zásobníku
       href: asdk-telemetry.md
+    - name: Spuštění a zastavení ASDK
+      href: asdk-start-stop.md
     - name: Řešení potíží
       href: asdk-troubleshooting.md
 - name: Referenční informace

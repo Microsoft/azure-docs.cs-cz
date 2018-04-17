@@ -55,11 +55,11 @@
         - name: Požadavky nasazení infrastruktury veřejných KLÍČŮ pro Azure zásobníku
           href: azure-stack-pki-certs.md
           items:
-            - name: Získat certifikáty PKI zásobník Azure
+            - name: Vygenerujete certifikáty infrastruktury veřejných KLÍČŮ
               href: azure-stack-get-pki-certs.md
             - name: Příprava certifikátů PKI zásobník Azure
               href: azure-stack-prepare-pki-certs.md
-            - name: Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
+            - name: Ověření certifikátů infrastruktury veřejných KLÍČŮ
               href: azure-stack-validate-pki-certs.md
         - name: Integrace identit
           href: azure-stack-integrate-identity.md
@@ -286,8 +286,6 @@
           href: azure-stack-diagnostics.md
         - name: Ověření Azure zásobníku
           href: azure-stack-diagnostic-test.md
-        - name: Znovunasazení sady Azure Stack Development Kit
-          href: azure-stack-redeploy.md
 - name: Referenční informace
   items:
     - name: Azure Stack PowerShell

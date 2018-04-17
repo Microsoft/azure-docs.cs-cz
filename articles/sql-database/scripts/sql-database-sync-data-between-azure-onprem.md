@@ -14,14 +14,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 07/31/2017
+ms.date: 04/01/2018
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5f10bc981581de12b816a45a6c6d704c42024b67
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Použití PowerShellu k synchronizaci mezi službou SQL Database a místní databází SQL Serveru
 
@@ -395,7 +395,7 @@ Další informace o Synchronizaci dat SQL:
 -   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md)
 -   [Nastavení Synchronizace dat SQL Azure](../sql-database-get-started-sql-data-sync.md)
 -   [Osvědčené postupy pro Synchronizaci dat SQL Azure](../sql-database-best-practices-data-sync.md)
--   [Monitorování Synchronizace dat SQL Azure s využitím OMS Log Analytics](../sql-database-sync-monitor-oms.md)
+-   [Monitorování Synchronizace dat SQL Azure s využitím Log Analytics](../sql-database-sync-monitor-oms.md)
 -   [Řešení potíží se Synchronizací dat SQL Azure](../sql-database-troubleshoot-data-sync.md)
 
 -   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:
