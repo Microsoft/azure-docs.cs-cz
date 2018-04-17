@@ -26,12 +26,12 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Podsítě na virtuální síť |1000 |10000 |
 | Partnerské vztahy virtuální sítě na jednu virtuální síť |10 |50 |
 | Servery DNS na virtuální síť |9 |25 |
-| Privátní IP adresy na virtuální síť |4 096 |8192 |
+| Privátní IP adresy na virtuální síť |16384 ** |16384 |
 | Privátní IP adresy na síťové rozhraní |256 |1024 |
 | Souběžné TCP nebo UDP toků na síťový adaptér virtuálního počítače nebo role instance |500 000 |500 000 |
-| Síťová rozhraní (NIC) |350 |20000 |
+| Síťová rozhraní (NIC) |24000 ** |24000 |
 | Skupiny zabezpečení sítě (NSG) |100 |5000 |
-| Počet pravidel NSG na skupinu NSG |200 |1000 |
+| Počet pravidel NSG na skupinu NSG |1000 ** |1000 |
 | IP adresy a rozsahy, zadaný pro zdrojové nebo cílové ve skupině zabezpečení |2000 |4000 |
 | Skupiny zabezpečení aplikací |200 |500 |
 | Skupiny zabezpečení aplikací na konfiguraci IP adresy, na síťový adaptér |10 |20 |
@@ -39,10 +39,12 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Skupiny zabezpečení aplikací, které lze zadat v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |50 |100 |
 | Směrovací tabulky definované uživatelem |100 |200 |
 | Trasy definované uživatelem na směrovací tabulku |100 |400 |
-| Veřejné IP adresy - dynamické |(Basic) 60 |kontaktovat podporu |
-| Veřejné IP adresy – statické |(Basic) 20 |kontaktovat podporu |
+| Veřejné IP adresy - dynamické |60 (základní) |kontaktovat podporu |
+| Veřejné IP adresy – statické |20 (základní) |kontaktovat podporu |
 | Veřejné IP adresy – statické |20 (standardní) |kontaktovat podporu |
 | Kořenové certifikáty typu Point-to-Site na službu VPN Gateway |20 |20 |
+
+** Tyto výchozí omezení se vztahují na odběry, které předtím nebyl dříve tyto limity zvýšit prostřednictvím podpory
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
 

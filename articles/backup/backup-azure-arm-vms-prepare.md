@@ -1,12 +1,12 @@
 ---
-title: "Zálohování Azure: Příprava k zálohování virtuálních počítačů | Microsoft Docs"
-description: "Ujistěte se, že vaše prostředí je připravený pro zálohování virtuálních počítačů v Azure."
+title: 'Zálohování Azure: Příprava k zálohování virtuálních počítačů | Microsoft Docs'
+description: Ujistěte se, že vaše prostředí je připravený pro zálohování virtuálních počítačů v Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "zálohování; zálohování;"
+editor: ''
+keywords: zálohování; zálohování;
 ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -55,7 +55,7 @@ Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení
 * Zálohovaná data neobsahuje sítě připojené jednotky připojené k virtuálnímu počítači.
 * Nahrazení existujícího virtuálního počítače během obnovení se nepodporuje. Pokud se pokusíte obnovit virtuální počítač, když virtuální počítač existuje, operaci obnovení se nezdaří.
 * Mezi oblastmi zálohování a obnovení nejsou podporovány.
-* Zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště, sítě pravidla použít, není podporována. 
+* Zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště, sítě pravidla použít, není podporován pro zákazníky v původním zásobníku zálohování virtuálních počítačů. 
 * Při konfiguraci back up, zajistěte, aby **brány firewall a virtuální sítě** nastavení účtu úložiště povolit přístup ze všech sítí.
 * Můžete zálohovat virtuální počítače ve všech veřejných oblastech Azure. (Viz [kontrolní seznam](https://azure.microsoft.com/regions/#services) z podporovaných oblastí.) Pokud oblast, kterou hledáte, není podporován dnes, nezobrazí se v rozevíracím seznamu při vytváření trezoru.
 * Obnovení řadiče domény (DC) virtuálního počítače, který je součástí konfigurace více – řadič domény je možné pouze pomocí prostředí PowerShell. Další informace najdete v tématu [obnovení řadiče domény, řadiče domény služby více](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
@@ -301,7 +301,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ## <a name="questions"></a>Máte dotazy?
 Pokud máte dotazy nebo pokud je všechny funkce, kterou chcete uvítali, [pošlete nám svůj názor](http://aka.ms/azurebackup_feedback).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když připravíte prostředí pro zálohování virtuálního počítače, vaše další logické krokem je vytvoření zálohy. Plánování článek poskytuje podrobnější informace o zálohování virtuálních počítačů.
 
 * [Zálohování virtuálních počítačů](backup-azure-arm-vms.md)

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
-ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f6f10649670dac523289724603e2aecaf17fa67d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zóny DNS a sad záznamů pomocí sady .NET SDK
 
@@ -29,7 +29,7 @@ Obvykle je programový přístup k prostředkům Azure udělit prostřednictvím
 
 1. Postupujte podle [tyto pokyny](../azure-resource-manager/resource-group-authenticate-service-principal.md) k vytvoření účtu objektu služby (ukázkový projekt Azure DNS SDK předpokládá ověřování založené na heslech.)
 2. Vytvoření skupiny prostředků ([tady je způsob](../azure-resource-manager/resource-group-template-deploy-portal.md)).
-3. Udělte hlavní účet služby oprávnění, Přispěvatel zóny DNS, do skupiny prostředků pomocí Azure RBAC ([tady je způsob](../active-directory/role-based-access-control-configure.md).)
+3. Udělte hlavní účet služby oprávnění, Přispěvatel zóny DNS, do skupiny prostředků pomocí Azure RBAC ([tady je způsob](../role-based-access-control/role-assignments-portal.md).)
 4. Pokud používáte Azure DNS SDK ukázkový projekt, upravte soubor 'program.cs' následujícím způsobem:
 
    * Vložte správné hodnoty tenantId, clientId (také označované jako ID účtu), tajný klíč (heslo hlavní účet služby) a ID předplatného jako použít v kroku 1.

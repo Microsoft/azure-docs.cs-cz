@@ -1,12 +1,12 @@
 ---
-title: "Oprávnění v Azure Security Center | Microsoft Docs"
-description: "Tento článek vysvětluje, jak Azure Security Center používá řízení přístupu na základě rolí k přiřazení oprávnění pro uživatele a identifikuje povolené akce pro každou roli."
+title: Oprávnění v Azure Security Center | Microsoft Docs
+description: Tento článek vysvětluje, jak Azure Security Center používá řízení přístupu na základě rolí k přiřazení oprávnění pro uživatele a identifikuje povolené akce pro každou roli.
 services: security-center
 cloud: na
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: terrylan
-ms.openlocfilehash: 0aaa99dda44d2020afd3e841e84020eb4ff87a85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f85f49bd54eacbca67143b35eaf555cfb744a41d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění v Azure Security Center
 
-Azure Security Center používá [řízení přístupu na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md). To poskytuje [předdefinované role](../active-directory/role-based-access-built-in-roles.md), které se dají v Azure přiřadit uživatelům, skupinám a službám.
+Azure Security Center používá [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md), který poskytuje [předdefinované role](../role-based-access-control/built-in-roles.md) , lze přiřadit uživatelům, skupinám a službám v Azure.
 
 Security Center vyhodnocuje konfigurace vaše prostředky a identifikují problémy se zabezpečením a ohrožení zabezpečení. V Centru zabezpečení zobrazí jenom informace týkající se prostředek v případě jsou přiřazenou roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které daný prostředek patří.
 
@@ -47,15 +47,15 @@ Následující tabulka zobrazuje role a povolené akce v Centru zabezpečení. X
 | Vlastník skupiny prostředků | -- | X | -- | X |
 | Skupina prostředků přispěvatele | -- | X | -- | X |
 | Čtenář | -- | -- | -- | X |
-| Správce zabezpečení. | X | -- | X | X |
-| Čtečka zabezpečení | -- | -- | -- | X |
+| Správce zabezpečení | X | -- | X | X |
+| Čtecí zařízení pro zabezpečení | -- | -- | -- | X |
 
 > [!NOTE]
 > Doporučujeme přiřadit uživatelům tu nejvíc omezenou roli, kterou ke své práci potřebují. Například přiřadíte role Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale nemusí provádět žádné akce, třeba uplatňovat doporučení nebo upravovat zásady.
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek vysvětlení, jak Security Center používá RBAC přiřadit oprávnění pro uživatele a identifikovat povolené akce pro každou roli. Teď, když jste obeznámeni s přiřazení rolí, které jsou potřeba k monitorování stavu zabezpečení vašeho předplatného, upravit zásady zabezpečení a použijete doporučení, zjistěte, jak:
 
 - [Nastavení zásad zabezpečení v Centru zabezpečení](security-center-policies.md)

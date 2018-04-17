@@ -1,39 +1,27 @@
 ---
-title: "Jak používat úložiště objektů blob (úložiště objektů) z jazyka C++ | Microsoft Docs"
-description: "Ukládejte nestrukturovaná data v cloudu pomocí Azure Blob Storage (úložiště objektů)."
+title: Jak používat úložiště objektů (objekt Blob) z jazyka C++ - Azure | Microsoft Docs
+description: Ukládání nestrukturovaných dat v cloudu s úložištěm Azure Blob (objekt).
 services: storage
-documentationcenter: .net
 author: MichaelHauss
-manager: vamshik
-editor: tysonn
-ms.assetid: 53844120-1c48-4e2f-8f77-5359ed0147a4
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: 9fe2112370f7d29eb0fde856995768660f9871e6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d3297ae7bc4a5ac7e2a43d9d44a05365004b685f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Používání úložiště Blob z jazyka C++
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
-
-## <a name="overview"></a>Přehled
-Úložiště objektů blob v Azure je služba, která ukládá nestrukturovaná data v cloudu jako objekty nebo objekty blob. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů.
-
-Tato příručka popisuje, jak provádět běžné scénáře s využitím služby Azure Blob storage. Ukázky jsou napsané v C++ a použít [Klientská knihovna pro úložiště Azure pro jazyk C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Pokryté scénáře zahrnují **odesílání**, **výpis**, **stahování**, a **odstraňování** objekty BLOB.  
+Tato příručka ukazuje, jak provádět běžné scénáře s využitím služby Azure Blob storage. Ukázky jsou napsané v C++ a použít [Klientská knihovna pro úložiště Azure pro jazyk C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Pokryté scénáře zahrnují odesílání, výpis, stahování a odstraňování objektů BLOB.  
 
 > [!NOTE]
-> Tato příručka se zaměřuje Klientská knihovna pro úložiště Azure pro jazyk C++ verze 1.0.0 a vyšší. Doporučená verze je klientská knihovna pro úložiště 2.2.0, která je k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
-> 
-> 
+> Tato příručka se zaměřuje Klientská knihovna pro úložiště Azure pro jazyk C++ verze 1.0.0 a vyšší. Společnost Microsoft doporučuje používat nejnovější verzi klientské knihovny pro úložiště pro jazyk C++, k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp).
+
+## <a name="what-is-blob-storage"></a>Co je služba Blob storage?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -88,7 +76,7 @@ Můžete použít **cloud_storage_account** třída představující informací 
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-V dalším kroku získat odkaz na **cloud_blob_client** třídy jako umožňuje načtení objektů, které představují kontejnery a objekty BLOB uložené v rámci služby úložiště objektů Blob. Následující kód vytvoří **cloud_blob_client** pomocí objekt účtu úložiště jsme načíst výše:  
+V dalším kroku získat odkaz na **cloud_blob_client** třídy jako umožňuje načtení objektů, které představují kontejnery a objekty BLOB uložené v úložišti objektů Blob. Následující kód vytvoří **cloud_blob_client** pomocí objekt účtu úložiště jsme načíst výše:  
 
 ```cpp
 // Create the blob client.
@@ -133,7 +121,7 @@ container.upload_permissions(permissions);
 Kdokoli na Internetu může vidět objekty BLOB ve veřejném kontejneru, ale můžete upravit nebo odstranit pouze v případě, že máte příslušný přístupový klíč.  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>Postupy: nahrát objekt blob do kontejneru
-Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.  
+Azure Blob storage podporuje blok objektů BLOB a objekty BLOB stránky. Ve většině případů se jako vhodný typ k použití doporučuje objekt blob bloku.  
 
 Když chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner a použijte ho k získání odkazu objektu blob bloku. Až budete mít odkaz na objekt blob, můžete nahrát jakýkoli proud dat k němu voláním **upload_from_stream** metoda. Tahle operace vytvoří objekt blob, pokud už dříve neexistoval, nebo ho přepíše, pokud už existoval. Následující příklad ukazuje, jak nahrát objekt blob do kontejneru, zároveň předpokládá, že kontejner byl již vytvořen.  
 
@@ -265,7 +253,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy používání blob storage, postupujte podle následujících odkazech na další informace o službě Azure Storage.  
 
 * [Postup používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)

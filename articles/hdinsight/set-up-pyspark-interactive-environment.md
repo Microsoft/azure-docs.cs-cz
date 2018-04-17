@@ -1,26 +1,24 @@
 ---
-title: "Nastavení nástroje Azure HDInsight - PySpark interaktivní prostředí pro Visual Studio Code | Microsoft Docs"
-description: "Další informace o použití nástroje Azure HDInsight pro Visual Studio Code pro vytvoření a odesílání dotazů a skriptů."
+title: Nastavení nástroje Azure HDInsight - PySpark interaktivní prostředí pro Visual Studio Code | Microsoft Docs
+description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code pro vytvoření a odesílání dotazů a skriptů.
 Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 5a64023df813262c461b9d772b722ebd613369ed
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 4ab7b95861fcd1ff75f8ac84e4f00aedb6e526f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Nastavení interaktivní prostředí PySpark pro Visual Studio Code
 
@@ -94,7 +92,7 @@ Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro n
 
 8. Restartujte VS Code a poté přejděte zpět na editor skriptů, které běží **HDInsight: PySpark interaktivní**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="demo"></a>Ukázka
 * HDInsight pro VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
@@ -110,5 +108,5 @@ Pokud používáte **python 3.x**, budete muset použít příkaz **pip3** pro n
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Vizualizovat data Hive s Microsoft Power BI v Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight](hdinsight-connect-hive-zeppelin.md)
+* [Vizualizace dat Hive pomocí Microsoft Power BI ve službě Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight ](hdinsight-connect-hive-zeppelin.md)

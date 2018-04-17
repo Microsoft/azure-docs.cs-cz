@@ -5,7 +5,7 @@ services: cosmos-db
 documentationcenter: ''
 keywords: Emulátor Azure Cosmos DB
 author: David-Noble-at-work
-manager: jhubbard
+manager: kfile
 editor: ''
 ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 810e3e8af5295348ba73b4f7433e3203f47f4554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru DB Cosmos Azure pro místní vývoj a testování
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/03/2018
 </tr>
 <tr>
   <td><strong>Docker</strong></td>
-  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
+  <td>[Úložiště docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
 </tr>
 <tr>
   <td><strong>Zdroj docker</strong></td>
@@ -195,7 +195,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
   <td></td>
 </tr>
 <tr>
-  <td>GetStatus</td>
+  <td>GetStatus –</td>
   <td>Získá stav emulátoru Azure DB Cosmos. Stav je indikován ukončovací kód: 1 = počáteční, 2 = spuštěný, 3 = zastaveno. Záporné ukončovací kód označuje, že došlo k chybě. Žádný jiný výsledek.</td>
   <td>CosmosDB.Emulator.exe /GetStatus</td>
   <td></td>
@@ -214,7 +214,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
 <tr>
   <td>Port</td>
   <td>Určuje číslo portu pro použití pro emulátor.  Výchozí hodnota je 8081.</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
+  <td>/ CosmosDB.Emulator.exe port =&lt;portu&gt;</td>
   <td>&lt;port&gt;: jedno číslo portu</td>
 </tr>
 <tr>
@@ -232,7 +232,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
 <tr>
   <td>Klíč</td>
   <td>Autorizační klíč pro emulátor. Klíč musí být kódování base-64 vektoru 64 bajtů.</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;key&gt;</td>
+  <td>CosmosDB.Emulator.exe /Key:&lt;klíč&gt;</td>
   <td>&lt;klíč&gt;: klíč musí být kódování base-64 vektoru 64 bajtů</td>
 </tr>
 <tr>
@@ -250,7 +250,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
 <tr>
   <td>NoUI</td>
   <td>Nezobrazovat emulátoru uživatelské rozhraní.</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
+  <td>/ Noui CosmosDB.Emulator.exe</td>
   <td></td>
 </tr>
 <tr>
@@ -262,7 +262,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
 <tr>
   <td>PartitionCount</td>
   <td>Určuje maximální počet dělené kolekce. V tématu [změnit počet kolekcí](#set-partitioncount) Další informace.</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;partitioncount&gt;</td>
+  <td>CosmosDB.Emulator.exe /PartitionCount =&lt;partitioncount&gt;</td>
   <td>&lt;partitioncount&gt;: maximální počet povolených kolekce tvořené jedním oddílem. Výchozí hodnota je 25. Maximální povolený počet je 250.</td>
 </tr>
 <tr>
@@ -292,7 +292,7 @@ Chcete-li zobrazit seznam možností, zadejte `CosmosDB.Emulator.exe /?` na př�
 <tr>
   <td>Konzistence</td>
   <td>Nastavte výchozí úroveň konzistence pro účet.</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;consistency&gt;</td>
+  <td>CosmosDB.Emulator.exe /Consistency =&lt;konzistence&gt;</td>
   <td>&lt;konzistence&gt;: hodnota musí být jeden z následujících [úrovně konzistence](consistency-levels.md): relace silného, Eventual nebo BoundedStaleness.  Výchozí hodnota je relace.</td>
 </tr>
 <tr>

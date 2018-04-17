@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy (FAQ) Azure Security Center | Microsoft Docs"
-description: "Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center."
+title: Nejčastější dotazy (FAQ) Azure Security Center | Microsoft Docs
+description: Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: 2bbd0a8be891bd472cdc631a1f8dc79471d66a77
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která pomáhá zabránit, zjistit a reagovat na hrozby nabízí lepší přehled a kontrolu nad zabezpečení vašich prostředků Microsoft Azure.
@@ -44,7 +44,7 @@ Security Center je k dispozici v dvěma vrstvami:
 **Úrovně Standard** přidá rozšířené hrozba možností detekce, včetně hrozby intelligence, analýzy chování, detekce anomálií, incidenty zabezpečení a hrozby uvedení sestavy. Úroveň Standard je po dobu prvních 60 dní zdarma. By měl vybrat dál používat službu nad rámec 60 dnů, můžeme automaticky začít účtují pro službu.  Pokud chcete upgradovat, vyberte [cenová úroveň](https://docs.microsoft.com/azure/security-center/security-center-pricing) v zásadě zabezpečení.
 
 ## <a name="permissions"></a>Oprávnění
-Azure Security Center používá [řízení přístupu na základě rolí (RBAC)](../active-directory/role-based-access-control-configure.md). To poskytuje [předdefinované role](../active-directory/role-based-access-built-in-roles.md), které se dají v Azure přiřadit uživatelům, skupinám a službám.
+Azure Security Center používá [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md), který poskytuje [předdefinované role](../role-based-access-control/built-in-roles.md) , lze přiřadit uživatelům, skupinám a službám v Azure.
 
 Security Center vyhodnocuje konfigurace vaše prostředky a identifikují problémy se zabezpečením a ohrožení zabezpečení. V Centru zabezpečení zobrazí jenom informace týkající se prostředek v případě jsou přiřazenou roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které daný prostředek patří.
 

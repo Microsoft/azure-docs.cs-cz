@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – systém a informace o Integrity"
-description: "FedRAMP webové aplikace automatizace – systém a informace o Integrity"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – systém a informace o Integrity
+description: FedRAMP webové aplikace automatizace – systém a informace o Integrity
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2d744032c2a35fbbedf34397861c3bb03aa39939
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 0eca3c82aea287f6582bd56574512dce5e8e86c7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-information-integrity-si"></a>Systém a informace o Integrity (SI)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SI-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] systém a informace o integrity zásadu, která řeší účel, oboru, role, odpovědnosti, závazků správy spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění systému a zásady integrity informace a přidružené systému a ovládací prvky integrity informace; kontroluje a aktualizuje aktuální zásady integrity systému a informace [přiřazení: organizace definované frekvence]; a postupy integrity systému a informace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,11 +45,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 2.a** organizace identifikuje, sestavy a opravuje nedostatky informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS automatizace a řízení řešení ke sledování stavu aktualizace pro Windows virtuální počítače nasazené v této architektuře. Na řídicím panelu OMS dlaždici správy aktualizací zobrazuje stav nápravy závadu pro všechny nasazené servery Windows. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení automatizace a řízení sledovat stav aktualizací pro virtuální počítače Windows nasazené v této architektuře. Na řídicím panelu dlaždici správy aktualizací zobrazuje stav nápravy závadu pro všechny nasazené servery Windows. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 2.b** organizace testy software a firmware aktualizacemi souvisejícími se chyba nápravy efektivitu a potenciální vedlejší účinky před instalací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,11 +73,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 2.c** organizace nainstaluje příslušné zabezpečení software a firmware aktualizace v rámci [přiřazení: organizace definované časové období] verze aktualizací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Virtuální počítače s Windows, které jsou nasazeny tento plán, podle kterého jsou nakonfigurované ve výchozím nastavení příjem automatických aktualizací ze služby Windows Update. Toto řešení taky nasadí OMS automatizace a řízení řešení, pomocí kterého lze vytvořit nasazení aktualizací na servery Windows v případě potřeby nasadit opravy. |
+| **Zákazníka** | Virtuální počítače s Windows, které jsou nasazeny tento plán, podle kterého jsou nakonfigurované ve výchozím nastavení příjem automatických aktualizací ze služby Windows Update. Toto řešení taky nasadí automatizace a řízení řešení, pomocí kterého lze vytvořit nasazení aktualizací na servery Windows v případě potřeby nasadit opravy. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 2.d** organizace zahrnuje závadu nápravy do procesu správy organizační konfigurace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,11 +101,11 @@ ms.lasthandoff: 02/11/2018
 
 **SI-2 (1)** organizace centrálně spravovat proces nápravy chyba.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS automatizace a řízení řešení ke sledování stavu aktualizace pro Windows virtuální počítače nasazené v této architektuře. Na řídicím panelu OMS dlaždici správy aktualizací zobrazuje stav nápravy závadu pro všechny nasazené servery Windows. Nasazení aktualizací můžete vytvořit nasazení oprav na servery Windows v případě potřeby. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení automatizace a řízení sledovat stav aktualizací pro virtuální počítače Windows nasazené v této architektuře. Na řídicím panelu dlaždici správy aktualizací zobrazuje stav nápravy závadu pro všechny nasazené servery Windows. Nasazení aktualizací můžete vytvořit nasazení oprav na servery Windows v případě potřeby. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -115,11 +115,11 @@ ms.lasthandoff: 02/11/2018
 
 **SI-2 (2)** organizace využívá automatizované mechanismy [přiřazení: organizace definované frekvence] k určení stavu komponent systému informace s ohledem na závadu nápravy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS automatizace a řízení řešení ke sledování stavu aktualizace pro Windows virtuální počítače nasazené v této architektuře. Pro každý spravovaný počítač s Windows se kontrola provádí dvakrát denně. Každých 15 minut se volá rozhraní Windows API pro zadání dotazu na čas poslední aktualizace, podle kterého zjistí, jestli se změnil stav, a pokud ano, zahájí se kontrola kompatibility. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení automatizace a řízení sledovat stav aktualizací pro virtuální počítače Windows nasazené v této architektuře. Pro každý spravovaný počítač s Windows se kontrola provádí dvakrát denně. Každých 15 minut se volá rozhraní Windows API pro zadání dotazu na čas poslední aktualizace, podle kterého zjistí, jestli se změnil stav, a pokud ano, zahájí se kontrola kompatibility. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **.A SI-2 (3)** organizace měří čas mezi závadu identifikace a nápravy chyba.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **.B SI-2 (3)** organizace vytváří [přiřazení: organizace definované srovnávacích testů] pro případné nápravné akce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 3.a** organizace využívá ochranu mechanismy škodlivý kód na informace o systému vstupní a výstupní místa ke zjišťování a eradikaci škodlivý kód.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 3.b** organizace aktualizace mechanismy ochrany škodlivý kód vždy, když jsou k dispozici v souladu s organizační konfigurace zásad správy a postupy nové verze.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 3.c** organizace nakonfiguruje mechanismy ochrany škodlivý kód do provádět pravidelné kontroly systému informace [přiřazení: organizace definované frekvence] a kontroly v reálném čase souborů z externích zdrojů na [výběr (jeden nebo informace); koncový bod; vstupní/výstupní body sítě] jsou stažené soubory, otevření nebo provést v souladu se zásadami zabezpečení organizace; a [výběr (jeden nebo více): blokovat škodlivý kód; umístit do karantény škodlivý kód; Odeslat výstrahu do Správce; [Přiřazení: akce definované organizace]] v reakci na detekce škodlivý kód.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 3.d** organizace řeší příjmu falešně pozitivních během likvidaci a škodlivý kód zjišťování a výsledný potenciální dopad na dostupnost informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,11 +213,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-3 (1)** organizace centrálně spravuje mechanismy ochrany škodlivý kód.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí založené na hostiteli antimalwarové ochrany pro všechny nasazené virtuální počítače s Windows implementovaná pomocí rozšíření virtuálního počítače Antimalware od Microsoftu. Azure OMS poskytuje centralizovanou funkci, můžete zkontrolovat aktuální stav řešení proti malwaru. |
+| **Zákazníka** | Tento plán, podle kterého nasadí založené na hostiteli antimalwarové ochrany pro všechny nasazené virtuální počítače s Windows implementovaná pomocí rozšíření virtuálního počítače Antimalware od Microsoftu. Azure poskytuje centralizovanou schopnost zkontrolujte aktuální stav řešení proti malwaru. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-3 (2)** informace systému automaticky aktualizuje mechanismy ochrany škodlivý kód.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-3 (7)** systém informace implementuje mechanismů zjišťování na základě nonsignature škodlivý kód.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,11 +255,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.a** organizace sleduje informace o systému zjistit útoky a zjišťování indikátorů možných útoků, které v souladu s [přiřazení: organizace definované monitorování cílů]; a neoprávněným místní, síťové a vzdálené připojení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a řešení zabezpečení OMS a auditování. Toto řešení poskytuje komplexní pohled postavení zabezpečení, útokům a indikátory možných útoků. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v nasazené řešení OMS. |
+| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a řešení zabezpečení a auditování. Toto řešení poskytuje komplexní pohled postavení zabezpečení, útokům a indikátory možných útoků. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v řešení pro správu nasazené. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -269,11 +269,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.b** organizace identifikuje neoprávněnému použití systému informace prostřednictvím [přiřazení: organizace definované technik a metody].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí OMS zabezpečení a Audit řešení. Domény identifikace a přístup poskytuje přehled identity stavu informace systému, včetně počtu neúspěšných pokusů o přihlášení a aktuální počet účtů, které se protokolují v řídicím panelu. Informace k dispozici v tomto řídicím panelu může být užitečné při identifikaci potenciální podezřelých aktivit. |
+| **Zákazníka** | Tento plán, podle kterého nasadí řešení zabezpečení a auditování. Domény identifikace a přístup poskytuje přehled identity stavu informace systému, včetně počtu neúspěšných pokusů o přihlášení a aktuální počet účtů, které se protokolují v řídicím panelu. Informace k dispozici v tomto řídicím panelu může být užitečné při identifikaci potenciální podezřelých aktivit. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -283,11 +283,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.c** organizace nasazuje monitorování zařízení strategicky systému informace ke shromažďování, organizaci určit základní informace; a na ad hoc místa v systému pro sledování konkrétní typy transakce zájmu v organizaci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a řešení zabezpečení OMS a auditování. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v nasazené řešení OMS, včetně aspekty dat monitorování virtuálních počítačů operačního systému. |
+| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a řešení zabezpečení a auditování. Řídicí panel zabezpečení a Audit poskytuje podrobný přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v řešení pro správu nasazené, včetně aspekty dat monitorování virtuálních počítačů operačního systému. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.d** organizace chrání informacemi získanými z monitorování neoprávněných vniknutí nástroje před neoprávněným přístupem, úpravy a odstranění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SI-4.e** Organizace zvýší úroveň monitorování aktivity vždy, když je to znamenat vyšší riziko pro organizační operace a prostředky, jednotlivce, jinými organizacemi nebo výhod založený na informacích vynucení zákonem, informace o systému informací o prostředcích, nebo dalších důvěryhodných zdrojů informací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.f** organizace získává právní stanovisko k monitorování aktivit v souladu s příslušných zákonů federal, objednávky vedení, direktivy, zásady a předpisy informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 4.g** poskytuje organizace [přiřazení: monitorování informace systému informace definované organizace] na [přiřazení: definované organizace pracovníky nebo rolí] [výběr (jeden nebo více): podle potřeby; [Přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (1)** organizace připojí a nakonfiguruje nástrojů pro zjišťování neoprávněných vniknutí jednotlivých do systému zjišťování neoprávněných vniknutí systémové informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,11 +367,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (2)** organizace využívá automatizované nástroje k podpoře téměř v reálném čase analýzy událostí.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a různá řešení OMS, včetně řešení zabezpečení a auditování. Analýzy protokolů zajišťuje téměř v reálném čase analýzy událostí napříč nasazené prostředky. OMS řešení poskytuje komplexní pohled postavení zabezpečení napříč doménami řešení. OMS poskytuje přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v nasazené řešení OMS. OMS může být nakonfigurováno pro generování výstrahy na základě definovaných kritérií. |
+| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a různá řešení správy, včetně řešení zabezpečení a auditování. Analýzy protokolů zajišťuje téměř v reálném čase analýzy událostí napříč nasazené prostředky. Řešení pro správu poskytuje komplexní pohled postavení zabezpečení napříč doménami řešení. Log Analytics poskytuje přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v řešení pro správu nasazené. Analýzy protokolů může být nakonfigurováno pro generování výstrahy na základě definovaných kritérií. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (4)** informace systému monitoruje provoz příchozí a odchozí komunikace [přiřazení: organizace definované frekvence] pro neobvyklou nebo neoprávněné aktivity nebo podmínky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,11 +395,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (5)** výstrahy systémové informace [přiřazení: definované organizace pracovníky nebo rolí] Pokud dojde k ohrožení nebo potenciální ohrožení těchto údajů: [přiřazení: indikátory definované organizace ohrožení].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí různá řešení OMS, včetně řešení zabezpečení a auditování. Analýzy protokolů zajišťuje téměř v reálném čase analýzy událostí napříč nasazené prostředky. OMS řešení poskytuje komplexní pohled postavení zabezpečení napříč doménami řešení. OMS může být nakonfigurováno pro generování výstrahy na základě definovaných kritérií. |
+| **Zákazníka** | Tento plán, podle kterého nasadí různých řešení pro správu, včetně řešení zabezpečení a auditování. Analýzy protokolů zajišťuje téměř v reálném čase analýzy událostí napříč nasazené prostředky. Řešení pro správu poskytuje komplexní pohled postavení zabezpečení napříč doménami řešení. Analýzy protokolů může být nakonfigurováno pro generování výstrahy na základě definovaných kritérií. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (11)** organizace analyzuje odchozí komunikace provoz na externí hranice systému informace a vybrali [přiřazení: organizace definované interior body v rámci systému (například podsítě, subsystémy)] do zjišťovat anomálie.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (14)** zahrnuje organizace pokusí systému zjišťování neoprávněných vniknutí bezdrátové identifikovat podvodný bezdrátových zařízení a zjištění útoku a potenciální ohrožení/narušení informace o systému.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -437,11 +437,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (16)** organizace korelaci informace z monitorování nástroje, které jsou použity v celém systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a různá řešení OMS, včetně řešení zabezpečení a auditování. OMS poskytuje přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v nasazené řešení OMS. |
+| **Zákazníka** | Tento plán, podle kterého nasadí analýzy protokolů a různá řešení správy, včetně řešení zabezpečení a auditování. Log Analytics poskytuje přehled o stavu zabezpečení nasazené prostředky pomocí dat, které jsou k dispozici v řešení pro správu nasazené. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (18)** organizace analyzuje odchozí komunikace provoz na externí hranic informace o systému (tj. hraniční system) a v [přiřazení: organizace definované interior body v rámci systému (například subsystémy, podsítě)] rozpoznat převeďte exfiltration informací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (19)** organizace implementuje [přiřazení: organizace definované další monitorování] osob, které byly identifikovány [přiřazení: zdroje definované organizace] jako autority na vyšší úroveň rizika.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (20)** organizace implementuje [přiřazení: organizace definované další monitorování] privilegovaných uživatelů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (22)** informace systém rozpozná síťové služby, které nebyly oprávnění nebo schválený [přiřazení: organizace definované autorizace nebo schválení procesy] a [výběr (jeden nebo více): audity; výstrahy [přiřazení: "definované organizace pracovníky nebo rolí]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -507,11 +507,11 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (23)** organizace implementuje [přiřazení: definované organizace založená na hostiteli monitorování mechanismy] na [přiřazení: komponent systému informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého shromažďuje data monitorování z nasazené prostředky, včetně dat z možnosti monitorování založené na hostiteli. Microsoft Monitoring Agent je nainstalována na všechny virtuální počítače s Windows ke shromažďování dat monitorování používané analýzy protokolů a jiných řešení OMS. |
+| **Zákazníka** | Tento plán, podle kterého shromažďuje data monitorování z nasazené prostředky, včetně dat z možnosti monitorování založené na hostiteli. Microsoft Monitoring Agent je nainstalována na všechny virtuální počítače s Windows ke shromažďování dat monitorování používané analýzy protokolů a dalších řešení pro správu. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-4 (24)** informace systém zjistí, shromažďuje, distribuuje a používá ukazatele ohrožení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 5.a** organizace obdrží informace výstrahy zabezpečení systému, zpravodaje a direktivy z [přiřazení: organizace definované externími organizacemi] průběžně.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 5.b** organizace generuje výstrahy interní zabezpečení, zpravodaje a direktivy, které jsou nezbytné.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 5.c** organizace šíří výstrahy zabezpečení, zpravodaje a direktivy pro: [výběr (jeden nebo více): [přiřazení: organizace definované pracovníky nebo rolí]; [Přiřazení: organizace definované elementů v rámci organizace]; [Přiřazení: organizace definované externími organizacemi]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 5** organizace implementuje direktivy zabezpečení v souladu s vytvořeným časových intervalů nebo upozorní vystavující organizace stupeň nesplňujících požadavky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-5 (1)** organizace využívá automatizované mechanismy, mají-li zabezpečení výstrah a Poradní informace, které jsou k dispozici v celé organizaci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 6.a** systému informace ověřuje správné fungování [přiřazení: funkce zabezpečení organizace definované].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 6.b** informace systému, provede toto ověření [výběr (jeden nebo více): [přiřazení: přechodové stavy definované organizace systému]; po příkazu uživatelem s odpovídající oprávnění; [Přiřazení: organizace definované frekvence]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 6.c** systém informace oznámení [přiřazení: definované organizace pracovníky nebo rolí] testů pro ověření zabezpečení se nezdařilo.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 6.d** systémové informace [výběr (jeden nebo více): vypnutí systému informace; restartování systému informace; [Přiřazení: organizace definované alternativní akce]] Při zjištění anomálií.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 7** organizace využívá nástroje pro ověření integrity k detekci neoprávněných změn [přiřazení: softwaru definované organizace, firmwaru a informace o].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-7 (1)** systém informace provádí kontrolu integrity systému [přiřazení: softwaru definované organizace, firmwaru a informace o] [výběr (jeden nebo více): při spuštění; na [přiřazení: přechodové stavy definované organizace nebo zabezpečení relevantní události]; [Přiřazení: organizace definované frekvence]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-7 (2)** organizace využívá automatizované nástroje, které poskytují oznámení [přiřazení: organizace definované pracovníky nebo rolí] při zjišťování nesrovnalostí během ověření integrity.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-7 (5)** informace systému automaticky [výběr (jeden nebo více): vypnutí systému informace; restartování systému informace; implementuje [přiřazení: ochrana definované organizace zabezpečení]] při porušení integrity jsou zjistit.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-7 (7)** organizace zahrnuje detekce neoprávněným [přiřazení: definované organizaci relevantní zabezpečení změny systému informace] do funkce organizační reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-7 (14)** organizace zakáže použití binary nebo počítač spustitelný kód z zdroje s omezeným nebo žádné záruky a bez poskytování zdrojového kódu; a poskytuje výjimky požadavek na zdroj kódu pouze pro poutavé zvláště / provozní požadavky a po schválení povolující oficiální.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 8.a** organizace zahrnuje nevyžádané pošty ochrany mechanismy na informace o systému vstupní a výstupní místa ke zjišťování a provést akci pro nevyžádaných zpráv.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -759,7 +759,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 8.b** organizace aktualizace nevyžádané pošty ochranný mechanismus když nové verze jsou k dispozici v souladu s organizační konfigurace zásad správy a postupy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-8 (1)** organizace centrálně spravuje mechanismy ochrany proti spamu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **(2) ve-8** informace systému automaticky aktualizuje mechanismy ochrany proti spamu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 10** informace systému kontroluje platnost [přiřazení: vstupy informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 11.a** generuje systém informace chybové zprávy, které obsahují informace potřebné pro opravné akce, aniž by odhalil informace, které může zneužít nežádoucí.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -829,7 +829,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma 11.b** systému informace zobrazí chybové zprávy se jenom pro [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma – 12** organizace zpracovává a zachová informace v rámci systému informace a výstup informace ze systému v souladu s platnými zákony federal, objednávky vedení, direktivy, zásady, nařízení, standardy, a provozní požadavky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **Ma-16** systém informace implementuje [přiřazení: ochrana definované organizace zabezpečení] k ochraně jeho paměť z provádění neoprávněným kódu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

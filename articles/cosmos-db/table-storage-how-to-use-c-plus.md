@@ -1,24 +1,23 @@
 ---
-title: "Jak používat Azure Table Storage a Azure Cosmos DB s jazykem C++ | Microsoft Docs"
-description: "Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL."
+title: Jak používat Azure Table Storage a Azure Cosmos DB s jazykem C++ | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 services: cosmos-db
 documentationcenter: .net
-author: mimig1
-manager: jahogg
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: f191f308-e4b2-4de9-85cb-551b82b1ea7c
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
-ms.author: mimig
-ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 60c419a45e795d5968b58fbb6b469d06750a0679
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat Azure Table storage a rozhraní API služby Azure Cosmos DB tabulky s C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -30,11 +29,15 @@ Tento průvodce vám ukáže, jak provádět běžné scénáře pomocí služby
 > [!NOTE]
 > Tato příručka se zaměřuje Klientská knihovna pro úložiště Azure pro jazyk C++ verze 1.0.0 a vyšší. Doporučená verze je klientská knihovna pro úložiště 2.2.0, která je k dispozici prostřednictvím [NuGet](http://www.nuget.org/packages/wastorage) nebo [Githubu](https://github.com/Azure/azure-storage-cpp/).
 > 
-> 
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu Azure Cosmos DB tabulky rozhraní API
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-c-application"></a>Vytvoření aplikace C++
 V této příručce bude používat funkce úložiště, které lze spustit v rámci aplikace C++. V takovém případě budete muset nainstalovat Klientská knihovna pro úložiště Azure pro jazyk C++ a vytvoření účtu úložiště Azure ve vašem předplatném Azure.  
@@ -285,7 +288,7 @@ for (; it != end_of_results; ++it)
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Načtení jedné entity
-Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód používá **table_operation::retrieve_entity** k určení zákazníka 'Jeff Smith'. Tato metoda vrátí místo kolekce pouze jednu entitu a vrácená hodnota v **table_result**. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table.  
+Můžete napsat dotaz pro načtení jedné konkrétní entity. Následující kód používá **table_operation::retrieve_entity** k určení zákazníka 'Jeff Smith'. Tato metoda vrátí místo kolekce pouze jednu entitu a vrácená hodnota v **table_result**. Určení jak klíčů oddílu, tak klíčů řádků v dotazu představuje nejrychlejší způsob, jak načíst jednu entitu ze služby Table service.  
 
 ```cpp
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -472,7 +475,7 @@ if (table.delete_table_if_exists())
   - V **stránky vlastností** dialogové okno, rozbalte seznam **vlastnosti konfigurace**, rozbalte položku **C/C++**a vyberte **jazyk**.
   - Nastavit **shoda režimu** k **ne**.
    
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o Azure Storage a Table API v Azure Cosmos DB na následujících odkazech: 
 
 * [Úvod do tabulky rozhraní API](table-introduction.md)

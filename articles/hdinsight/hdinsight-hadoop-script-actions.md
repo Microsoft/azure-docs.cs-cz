@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptů akce skriptu pro clustery se systémem HDInsight Windows
 Zjistěte, jak k psaní skriptů akce skriptu pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejný článek napsán pro clustery HDInsight se systémem Linux, najdete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -178,7 +176,7 @@ Při vývoji vlastních skriptů pro cluster služby HDInsight, existuje několi
 
     HDInsight má aktivní – pasivní architekturu pro vysokou dostupnost, ve kterém jednou z hlavního uzlu je v aktivním režimu (které jsou spuštěny služby HDInsight) a z hlavního uzlu je v pohotovostním režimu (v HDInsight, které nejsou spuštěny služby). Uzly přepínače aktivní a pasivní režim, pokud jsou přerušení služby HDInsight. Pokud akce skriptu se používá k instalaci služby na obou head uzlů pro vysokou dostupnost, Všimněte si, že není možné automaticky převzít tyto služby uživatel nainstaloval mechanismus převzetí služeb při selhání HDInsight. Proto uživatel nainstaloval služeb v HDInsight hlavních uzlech, které jsou očekávané k zajištění vysoké dostupnosti musí mít vlastní mechanismus převzetí služeb při selhání, pokud v režimu aktivní pasivní nebo v režimu aktivní aktivní.
 
-    Příkaz akce skriptu HDInsight spustí na obou hlavních uzlech při roli Hlavní uzel je zadán jako hodnota v *ClusterRoleCollection* parametr. Proto při návrhu vlastní skript, ujistěte se, že váš skript známa tento instalační program. Nespouštějte k potížím, kde jsou stejné služby instalaci a spuštění na obou hlavních uzlech a jejich skončili neslučitelných mezi sebou. Navíc mějte na paměti, že dojde ke ztrátě dat během obnovování, takže softwaru nainstalované prostřednictvím akce skriptu musí být odolné vůči tyto události. Aplikace by měl být pro práci s vysokou dostupností data, která se distribuuje do mnoha uzly. Všimněte si, že až 1/5 uzlů v clusteru lze obnovit z Image ve stejnou dobu.
+    Příkaz akce skriptu HDInsight spustí na obou hlavních uzlech při roli Hlavní uzel je zadán jako hodnota v *ClusterRoleCollection* parametr. Proto při návrhu vlastní skript, ujistěte se, že váš skript známa tento instalační program. Nespouštějte k potížím, kde jsou stejné služby instalaci a spuštění na obou hlavních uzlech a jejich skončili neslučitelných mezi sebou. Navíc mějte na paměti, že dojde ke ztrátě dat během obnovování, takže softwaru nainstalované prostřednictvím akce skriptu musí být odolné vůči tyto události. Aplikace by měl být pro práci s vysokou dostupností data, která se distribuuje do mnoha uzly. Současně lze obnovit z Image až 1/5 uzlů v clusteru.
 * Konfigurace vlastní součásti, které budou používat úložiště objektů Blob v Azure
 
     Vlastní komponenty, které instalujete na uzlech clusteru může mít výchozí konfiguraci, kterou chcete používat Hadoop Distributed File System (HDFS) úložiště. Měli byste změnit konfiguraci místo toho používat úložiště objektů Blob Azure. Na obnovení z Image clusteru systému souborů HDFS získá formátu a by ztratíte všechna data, která je uložena existuje. Použití úložiště objektů Blob v Azure místo toho zajišťuje, aby vaše data se uchovávají.
@@ -192,14 +190,14 @@ Tato část obsahuje pokyny k implementaci některých běžných vzorů využit
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-Tento příkaz nastaví proměnnou prostředí **MDS_RUNNER_CUSTOM_CLUSTER** na hodnotu "true" a také nastaví rozsah této proměnné můžete být celého systému. V některých případech je důležité, aby proměnné prostředí se nastavují v příslušné oboru – počítače nebo uživatele. Odkazovat [sem] [ 1] Další informace o nastavení proměnných prostředí.
+Tento příkaz nastaví proměnnou prostředí **MDS_RUNNER_CUSTOM_CLUSTER** na hodnotu "true" a také nastaví rozsah této proměnné můžete být celého systému. Je důležité, aby proměnné prostředí se nastavují v příslušné oboru – počítače nebo uživatele. Odkazovat [sem] [ 1] Další informace o nastavení proměnných prostředí.
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>Přístup k umístění, kde jsou uloženy vlastní skripty
-Skripty použít pro přizpůsobení cluster musí buď nacházet ve výchozí účet úložiště pro cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud skript odkazuje na prostředky, které se nacházejí jinde tyto musí být v veřejně přístupná (alespoň veřejné jen pro čtení). Můžete například chtít přístup k souboru a uložte ho pomocí příkazu SaveFile HDI.
+Skripty použít pro přizpůsobení cluster musí buď nacházet ve výchozí účet úložiště pro cluster nebo ve veřejném kontejneru jen pro čtení na jiný účet úložiště. Pokud skript odkazuje na prostředky, které se nacházejí jinde prostředky musí být veřejně čitelné. Můžete například chtít přístup k souboru a uložte ho pomocí příkazu SaveFile HDI.
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-V tomto příkladu je nutné zajistit, že kontejner 'somecontainer' v účtu úložiště 'somestorageaccount' je veřejně přístupná. Skript, jinak hodnota vyhodí výjimku "Nebyl nalezen" a selhání.
+V tomto příkladu, musíte zajistit, aby kontejneru `somecontainer` v účtu úložiště `somestorageaccount` veřejně přístupný. Skript, jinak hodnota vyhodí výjimku "Nebyl nalezen" a selhání.
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>Předat parametry do rutiny přidat AzureRmHDInsightScriptAction
 Chcete-li předat do rutiny přidat AzureRmHDInsightScriptAction několik parametrů, je potřeba formátu řetězcovou hodnotu tak, aby obsahovala všechny parametry pro skript. Příklad:
@@ -238,9 +236,9 @@ Zde jsou kroky, které jsme trvalo při přípravě nasazení těchto skriptů:
 
 1. Uveďte soubory, které obsahují vlastní skripty na místě, která je přístupná na uzlech clusteru během nasazení. To může být libovolná z výchozí nebo další účty úložiště zadaný v době nasazení clusteru nebo jiných veřejně přístupná úložiště kontejneru.
 2. Přidejte kontroly na skripty a ujistěte se, že spouštění idempotently, tak, aby skript můžete spustit několikrát na stejném uzlu.
-3. Použití **Write-Output** rutiny Azure Powershellu tisknout do STDOUT a také STDERR. Nepoužívejte **Write-Host**.
-4. Použijte složku dočasného souboru, jako je například $env: dočasné zachovat stažený soubor používá skripty a vyčistit je po mají spouštět skripty.
-5. Nainstalujte jenom na D:\ nebo C:\apps vlastní software. Jiných umístění na jednotce C: není vhodné používat, protože se jedná o vyhrazené. Všimněte si, že instalaci souborů na jednotce C: mimo složku C:\apps může vést instalace selhání během reimages uzlu.
+3. Použití `Write-Output` rutiny Azure Powershellu tisknout do STDOUT a také STDERR. Nepoužívejte `Write-Host`.
+4. Použijte složku dočasného souboru, jako například `$env:TEMP`, abyste mohli udržovat stažený soubor používá skripty a pak vyčištění je po mají spouštět skripty.
+5. Nainstalujte jenom na D:\ nebo C:\apps vlastní software. Jiných umístění na jednotce C: není vhodné používat, protože se jedná o vyhrazené. Instalace souborů na jednotce C: mimo složku C:\apps může vést k selhání instalace během reimages uzlu.
 6. V případě, že nastavení na úrovni operačního systému nebo Hadoop služby konfigurační soubory se změnily, můžete tak, aby se vyzvedávat všechna nastavení, úrovni operačního systému, jako je například proměnné prostředí, které jsou nastavené ve skriptech restartovat služby HDInsight.
 
 ## <a name="debug-custom-scripts"></a>Ladění vlastních skriptů

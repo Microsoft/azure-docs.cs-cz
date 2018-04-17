@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: af5738ac96bd2afacee493765453567f7f13c9e5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 969f6b9654200b7f742b6405faa2cff2b13ba537
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="registration-management"></a>Správa registrací
 ## <a name="overview"></a>Přehled
@@ -39,10 +39,10 @@ Tady jsou některé klíčové výhody pomocí instalace:
 * Instalační model usnadňuje provést jednotlivé nabízených oznámení - cílení na konkrétní zařízení. Značku systému **"$InstallationId: [installationId]"** se automaticky přidá s každou instalace na základě registrace. Proto můžete volat odeslání na tuto značku zaměřit na konkrétní zařízení bez nutnosti psaní Další.
 * Pomocí instalace také umožňuje provést registraci částečné aktualizace. Částečné aktualizace instalace se požaduje pomocí metody PATCH [JSON-Patch standard](https://tools.ietf.org/html/rfc6902). To je zvlášť užitečné, pokud chcete aktualizovat značky na registraci. Nemáte stahují celý registrace a pak znovu odeslat všechny předchozí značky.
 
-Instalace může obsahovat následující vlastnosti. Úplný seznam najdete v tématu instalace vlastnosti [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Instalace může obsahovat následující vlastnosti. Úplný seznam vlastností instalace, najdete v části [vytvoření nebo instalaci přepsat REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) nebo [vlastnosti instalace](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
     // Example installation format to show some supported properties
-    {
+    {,
         installationId: "",
         expirationTime: "",
         tags: [],

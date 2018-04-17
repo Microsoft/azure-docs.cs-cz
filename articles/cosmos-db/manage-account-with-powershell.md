@@ -3,7 +3,7 @@ title: Automatizace Azure Cosmos DB - Management pomocí prostředí Powershell 
 description: Použití Azure Powershell spravovat své účty Azure Cosmos DB.
 services: cosmos-db
 author: dmakwana
-manager: jhubbard
+manager: kfile
 editor: ''
 tags: azure-resource-manager
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 12c7800ee2a823cca5394841cae86eeacc20fb1b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e049c94ae6c0ea2cf350d8c2ae9ca359f18a8751
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Vytvoření účtu Azure Cosmos DB pomocí prostředí PowerShell
 

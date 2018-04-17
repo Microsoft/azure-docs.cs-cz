@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric programový škálování | Microsoft Docs"
-description: "Škálování clusteru služby Azure Service Fabric příchozí nebo odchozí prostřednictvím kódu programu, podle vlastní aktivační události"
+title: Azure Service Fabric programový škálování | Microsoft Docs
+description: Škálování clusteru služby Azure Service Fabric příchozí nebo odchozí prostřednictvím kódu programu, podle vlastní aktivační události
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
 manager: jonjung
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,46 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b875351ef80050687fcf85e35da132cf37bab83b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Škálování clusteru Service Fabric prostřednictvím kódu programu 
 
-Základní informace o škálování clusteru Service Fabric v Azure jsou popsané v dokumentaci na [škálování clusterů](./service-fabric-cluster-scale-up-down.md). Tento článek popisuje, jak Service Fabric clustery jsou vytvořeny na základě sady škálování virtuálního počítače a je možné rozšířit ručně nebo pomocí pravidel automatického škálování. Tento dokument zjistí programové metody koordinující Azure škálování operací pro pokročilejší scénáře. 
+Service Fabric clustery spuštěná v Azure jsou postavená na sady škálování virtuálního počítače.  [Škálování clusterů](./service-fabric-cluster-scale-up-down.md) popisuje, jak je možné rozšířit clusterů Service Fabric buď ručně, nebo pomocí pravidel automatického škálování. Tento článek popisuje, jak spravovat přihlašovací údaje a škálování clusteru v nebo pomocí fluent Azure výpočetní SDK, která je pokročilejší scénáře. Přehled najdete v tématu [programové metody spolupráci Azure škálování operations](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
-## <a name="reasons-for-programmatic-scaling"></a>Důvody pro programové škálování
-V mnoha scénářích škálování ručně nebo pomocí pravidel automatického škálování jsou dobré řešení. V dalších scénářích ale jejich nemusí být vpravo fit. Potenciální nedostatky do těchto přístupů patří:
-
-- Ruční škálování vyžaduje, abyste se přihlaste a explicitní žádost o škálování operace. Pokud operace škálování se často vyžadují, nebo v nepředvídatelným časech, tento přístup nemusí být vhodné řešení.
-- Při pravidel automatického škálování odebrání instance škálovací sadu virtuálních počítačů, jejich neodebírejte automaticky znalosti o tomto uzlu z clusteru Service Fabric přidružené Pokud typ uzlu má úroveň odolnosti Silver nebo zlatý. Protože pravidel automatického škálování fungovat ve velkém měřítku, nastavte úroveň (nikoli na úrovni Service Fabric), automatickému škálování pravidla můžete odebrat uzly Service Fabric bez jejich řádně vypínání. Odebrání tohoto článku neslušní uzlu ponechá 'neodstraněných' stav uzlu Service Fabric po škálování v operacích. Pravidelně vyčistěte stav odebraném uzlu v clusteru Service Fabric potřebovat fyzickou (nebo služby).
-  - Typ uzlu s úrovní odolnost zlatý nebo Silver automaticky vyčistí odebrané uzly, je potřeba žádné další čištění.
-- I když jsou [mnoho metriky](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) podporovaná pravidel automatického škálování, je stále omezenou sadu. Pokud váš scénář vyžaduje škálování podle některé metrika nejsou zahrnuté v dané sadě, pravidel automatického škálování, nemusí být vhodný.
-
-Podle těchto omezení, můžete implementovat více přizpůsobené automatické škálování modelů. 
-
-## <a name="scaling-apis"></a>Škálování rozhraní API
-Rozhraní API Azure existují, které umožňují aplikacím prostřednictvím kódu programu pracovat s virtuálním počítačem škálování sady a clusterů Service Fabric. Pokud pro váš scénář nepodporují existující možnosti automatického škálování, tato rozhraní API umožňují k implementaci vlastní logiky škálování. 
-
-Jeden ze způsobů implementace tato "domovské ze" funkce automatického škálování je přidání nové bezstavové služby do aplikace Service Fabric ke správě operací škálování. V rámci služby `RunAsync` metody sadu aktivační události můžete zjistit, jestli škálování vyžaduje (včetně kontrolu parametry, jako je například maximální velikost clusteru a škálování cooldowns).   
-
-Rozhraní API používá pro interakce sady škálování virtuálního počítače, (obojí ke kontrole aktuální počet instancí virtuálního počítače a upravit ho) je [fluent Azure Compute správy knihovny](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/). Knihovna fluent výpočetní poskytuje rozhraní API snadno použitelné pro interakci s sady škálování virtuálního počítače.
-
-Chcete-li pracovat s samotného clusteru Service Fabric, použijte [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient).
-
-Samozřejmě kód škálování nepotřebuje pro spuštění jako služba v clusteru a škálovat. Obě `IAzure` a `FabricClient` může připojit k jejich přidružené prostředky Azure vzdáleně, tak službu škálování může být snadno konzolové aplikace nebo služba systému Windows spuštěna z mimo aplikace Service Fabric. 
-
-## <a name="credential-management"></a>Správa přihlašovacích údajů
+## <a name="manage-credentials"></a>Správa přihlašovacích údajů
 Jeden výzvy zápisu služby pro zpracování škálování je, že je služba mít přístup k prostředkům sady škálování virtuálního počítače bez interaktivního přihlášení. Přístup ke clusteru Service Fabric je snadné, pokud škálování služby upravuje vlastní aplikace Service Fabric, ale jsou přihlašovací údaje potřebné pro přístup k sadě škálování. K přihlášení, můžete použít [instanční objekt](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) vytvořené pomocí [Azure CLI 2.0](https://github.com/azure/azure-cli).
 
 Hlavní název služby může být vytvořen pomocí následujících kroků:
 
 1. Přihlaste se k Azure CLI (`az login`) nastavit jako uživatel s přístupem k škálování virtuálních počítačů
-2. Vytvoření objektu zabezpečení pomocí služby`az ad sp create-for-rbac`
+2. Vytvoření objektu zabezpečení pomocí služby `az ad sp create-for-rbac`
     1. Poznamenejte si appId (nazývané "ID klienta, jinde), jméno, heslo a klienta pro pozdější použití.
-    2. Budete také potřebovat vaše ID odběru, který lze zobrazit pomocí`az account list`
+    2. Budete také potřebovat vaše ID odběru, který lze zobrazit pomocí `az account list`
 
 Knihovna fluent výpočetní umožní přihlásit se pomocí těchto přihlašovacích údajů takto (Všimněte si, že základní fluent Azure typy jako `IAzure` v [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) balíčku):
 
@@ -85,7 +64,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativně velikost sady škálování virtuálního počítače můžete také spravovat pomocí rutin prostředí PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss)můžete načíst objekt sady škálování virtuálního počítače. Aktuální kapacita je k dispozici prostřednictvím `.sku.capacity` vlastnost. Po změně kapacitu na požadovanou hodnotu, můžete aktualizovat v Azure sad škálování virtuálního počítače [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) příkaz.
+Alternativně velikost sady škálování virtuálního počítače můžete také spravovat pomocí rutin prostředí PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) můžete načíst objekt sady škálování virtuálního počítače. Aktuální kapacita je k dispozici prostřednictvím `.sku.capacity` vlastnost. Po změně kapacitu na požadovanou hodnotu, můžete aktualizovat v Azure sad škálování virtuálního počítače [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) příkaz.
 
 Jako při přidávání uzlu ručně, musí být přidání nastavit instance škále všechno, co je potřeba spustit nový uzel Service Fabric od měřítka nastavení šablony zahrnuje rozšíření automaticky propojit nové instance služby cluster Service Fabric. 
 
@@ -140,12 +119,6 @@ Jako s škálování, rutiny prostředí PowerShell pro úpravy škálování vi
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
-
-## <a name="potential-drawbacks"></a>Potenciální nedostatky
-
-Jak je předvedeno v předchozích fragmentů kódu, vytvoření vlastního škálování služby zajišťuje, že je na nejvyšší úrovni řízení a možnosti přizpůsobení přes aplikaci škálování chování. To může být užitečné pro scénářům, které vyžadují přesnou kontrolu nad při nebo jak aplikace škáluje příchozí nebo odchozí. Tento ovládací prvek se ale dodává s kompromis složitost kódu. Tento přístup, znamená to, budete muset vlastní škálování kód, který je netriviální.
-
-Jak by měl postupovat, Service Fabric škálování závisí na vašem scénáři. Pokud škálování neobvyklé, možnost přidávat nebo odebírat uzly ručně je pravděpodobně dostatečná. Složitější scénáře pravidel automatického škálování a sady SDK vystavení schopnost škálování prostřednictvím kódu programu nabízí výkonné alternativy.
 
 ## <a name="next-steps"></a>Další postup
 

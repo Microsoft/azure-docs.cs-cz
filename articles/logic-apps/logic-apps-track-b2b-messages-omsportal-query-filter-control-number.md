@@ -1,11 +1,11 @@
 ---
-title: "Dotaz pro B2B zprávy v Operations Management Suite - Azure Logic Apps | Microsoft Docs"
-description: "Vytvářet dotazy ke sledování AS2, X 12 a EDIFACT zpráv ve službě Operations Management Suite"
+title: Dotaz pro B2B zprávy v protokolu analýzy - Azure Logic Apps | Microsoft Docs
+description: Vytvářet dotazy ke sledování AS2, X 12 a EDIFACT zprávy v analýzy protokolů
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Dotaz pro AS2, X 12 a EDIFACT zprávy v Microsoft Operations Management Suite (OMS)
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Dotaz pro AS2, X 12 a EDIFACT zprávy v analýzy protokolů
 
-Chcete-li najít AS2, X12 nebo EDIFACT zprávy sledujete s [Azure Log Analytics](../log-analytics/log-analytics-overview.md) v [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), můžete vytvořit dotazy, které akce na základě konkrétních kritérií filtru. Například můžete najít na základě různých řízení konkrétní výměnu zpráv.
+Chcete-li najít AS2, X12 nebo EDIFACT zprávy sledujete s [Azure Log Analytics](../log-analytics/log-analytics-overview.md), můžete vytvořit dotazy, které akce na základě konkrétních kritérií filtru. Například můžete najít na základě různých řízení konkrétní výměnu zpráv.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -30,41 +30,41 @@ Chcete-li najít AS2, X12 nebo EDIFACT zprávy sledujete s [Azure Log Analytics]
 
 * Integrace účet, který je nastavený s sledování a protokolování. Další informace [postup vytvoření účtu integrace](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a [postup nastavení sledování a protokolování pro tento účet](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Pokud jste to ještě neudělali, [publikování diagnostických dat k analýze protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) a [nastavení sledování v OMS zpráv](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Pokud jste to ještě neudělali, [publikování diagnostických dat k analýze protokolů](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) a [nastavení sledování v analýzy protokolů zpráv](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 > [!NOTE]
-> Po splnění předchozí požadavky, měli byste pracovního prostoru [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Měli byste použít stejné pracovním prostorem OMS pro sledování vaší komunikace B2B v OMS. 
+> Po splnění předchozí požadavky, měli byste mít pracovního prostoru v analýzy protokolů. Měli byste použít ve stejném pracovním prostoru pro sledování vaší komunikace B2B ve analýzy protokolů. 
 >  
-> Pokud nemáte pracovním prostorem OMS, přečtěte si [jak vytvořit pracovní prostor služby OMS](../log-analytics/log-analytics-get-started.md).
+> Pokud nemáte pracovní prostor analýzy protokolů, přečtěte si [jak vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Vytváření dotazů zprávu s filtry na portálu služby Operations Management Suite
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>Vytvořte dotazy zprávy s filtry v analýzy protokolů
 
 Tento příklad ukazuje, jak můžete najít podle jejich výměnu řízení počtu zpráv.
 
 > [!TIP] 
-> Pokud znáte název pracovní prostor OMS, přejděte na domovskou stránku pracovního prostoru (`https://{your-workspace-name}.portal.mms.microsoft.com`) a začít od kroku 4. Jinak začněte v kroku 1.
+> Pokud znáte název pracovního prostoru analýzy protokolů, přejděte na domovskou stránku pracovního prostoru (`https://{your-workspace-name}.portal.mms.microsoft.com`) a začít od kroku 4. Jinak začněte v kroku 1.
 
 1. V [portál Azure](https://portal.azure.com), zvolte **všechny služby**. Vyhledejte "analýzy protokolů" a potom vyberte **analýzy protokolů** jak je vidět tady:
 
    ![Najít analýzy protokolů](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor OMS.
+2. V části **analýzy protokolů**, najděte a vyberte pracovní prostor analýzy protokolů.
 
-   ![Vyberte pracovní prostor OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
 3. V části **správy**, zvolte **portálu OMS**.
 
    ![Zvolte portálu OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. Na domovské stránce OMS, zvolte **hledání protokolů**.
+4. Na domovské stránce, zvolte **hledání protokolů**.
 
-   ![Na domovské stránce OMS zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Na domovské stránce zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    -nebo-
 
-   ![V nabídce OMS zvolte "Protokolu hledání"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![V nabídce zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, ukazuje OMS je možné shody a operací, které můžete použít. Další informace o [vyhledávání dat v analýzy protokolů](../log-analytics/log-analytics-log-searches.md).
+5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, analýzy protokolů se dozvíte možné shody a operací, které můžete použít. Další informace o [vyhledávání dat v analýzy protokolů](../log-analytics/log-analytics-log-searches.md).
 
    Tento příklad vyhledá pro události se **typ = AzureDiagnostics**.
 
@@ -106,15 +106,15 @@ Tento příklad ukazuje, jak můžete najít podle jejich výměnu řízení po�
 
    ![Vyberte dotaz](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>Najít a spustit uložené dotazy na portálu služby Operations Management Suite
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>Najít a spustit uložené dotazy v analýzy protokolů
 
-1. Otevřete domovskou stránku pracovní prostor OMS (`https://{your-workspace-name}.portal.mms.microsoft.com`) a zvolte **hledání protokolů**.
+1. Otevřete domovskou stránku pracovní prostor analýzy protokolů (`https://{your-workspace-name}.portal.mms.microsoft.com`) a zvolte **hledání protokolů**.
 
-   ![Na domovské stránce OMS zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Na domovské stránce analýzy protokolů zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    -nebo-
 
-   ![V nabídce OMS zvolte "Protokolu hledání"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![V nabídce zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. Na **hledání protokolů** – Domovská stránka, zvolte **Oblíbené**.
 

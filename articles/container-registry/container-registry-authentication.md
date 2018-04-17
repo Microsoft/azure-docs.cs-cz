@@ -1,6 +1,6 @@
 ---
-title: "Ověřování pomocí služby Azure kontejneru registru"
-description: "Možnosti ověřování pro služby Azure kontejneru registru, včetně služby Azure Active Directory služby přihlášení objekty přímo a registru."
+title: Ověřování pomocí služby Azure kontejneru registru
+description: Možnosti ověřování pro služby Azure kontejneru registru, včetně služby Azure Active Directory služby přihlášení objekty přímo a registru.
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověření pomocí privátní registru kontejner Docker
 
@@ -31,11 +31,11 @@ Při práci s registr přímo, například bitové kopie k vyžádání a před�
 az acr login --name <acrName>
 ```
 
-Po přihlášení s `az acr login`, rozhraní příkazového řádku používá token vytvořen při provedení `az login` bezproblémově ověřit relace s registrem. Jakmile jste se přihlásili tímto způsobem, jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy nevyžadují uživatelské jméno nebo heslo. Pokud vyprší platnost vašeho tokenu, můžete ho obnovit pomocí `az acr login` příkaz znovu k novému ověření. Pomocí `az acr login` s identitami, Azure poskytuje [přístupu podle rolí](../active-directory/role-based-access-control-configure.md).
+Po přihlášení s `az acr login`, rozhraní příkazového řádku používá token vytvořen při provedení `az login` bezproblémově ověřit relace s registrem. Jakmile jste se přihlásili tímto způsobem, jsou vaše přihlašovací údaje uložené v mezipaměti a následné `docker` příkazy nevyžadují uživatelské jméno nebo heslo. Pokud vyprší platnost vašeho tokenu, můžete ho obnovit pomocí `az acr login` příkaz znovu k novému ověření. Pomocí `az acr login` s identitami, Azure poskytuje [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="service-principal"></a>Instanční objekt
 
-Můžete přiřadit [instanční objekt](../active-directory/develop/active-directory-application-objects.md) do registru, a aplikace nebo služby můžete použít pro bezobslužných ověřování. Objekty služby povolit [přístupu podle rolí](../active-directory/role-based-access-control-configure.md) do registru, a několik hlavních objektů služby lze přiřadit registru. Několik hlavních objektů služby umožňují definovat jiný přístup pro různé aplikace.
+Můžete přiřadit [instanční objekt](../active-directory/develop/active-directory-application-objects.md) do registru, a aplikace nebo služby můžete použít pro bezobslužných ověřování. Objekty služby povolit [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md) do registru, a několik hlavních objektů služby lze přiřadit registru. Několik hlavních objektů služby umožňují definovat jiný přístup pro různé aplikace.
 
 Dostupné role jsou:
 

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -161,7 +161,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 
 * AD Domain Services
-* AD Hybrid Health Service
+* Hybridní AD Health Service
 * Application Gateway
 * BizTalk Services
 * Container Service
@@ -192,6 +192,8 @@ Virtuální počítače vytvořené z Marketplace prostředků pomocí plánů p
 Virtuální počítače s certifikát uložený v Key Vault můžete přesunout do nové skupiny prostředků v rámci stejného předplatného, ale ne odběry.
 
 ## <a name="virtual-networks-limitations"></a>Omezení virtuální sítě
+
+Při přesunu virtuální síť, musíte také přesunout jeho závislé prostředky. Například musíte přesunout brány s virtuální sítě.
 
 Pokud chcete přesunout peered virtuální sítě, je nutné nejdřív zakázat partnerského vztahu virtuální sítě. Jakmile je zakázaná, můžete přesunout virtuální sítě. Po přesunu znovu povolte partnerského vztahu virtuální sítě.
 

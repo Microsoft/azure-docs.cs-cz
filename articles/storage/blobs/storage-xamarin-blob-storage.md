@@ -1,29 +1,22 @@
 ---
-title: "Používání úložiště Blob z Xamarin | Microsoft Docs"
-description: "Klientská knihovna pro úložiště Azure pro Xamarin umožňuje vývojářům vytvářet iOS, Android a aplikací pro Windows Store s jejich nativní uživatelská rozhraní. Tento kurz ukazuje, jak vytvořit aplikaci, která používá Azure Blob storage pomocí Xamarin."
+title: Jak používat úložiště objektů (objekt Blob) z Xamarin | Microsoft Docs
+description: Klientská knihovna pro úložiště Azure pro Xamarin umožňuje vývojářům vytvářet iOS, Android a aplikací pro Windows Store s jejich nativní uživatelská rozhraní. Tento kurz ukazuje, jak vytvořit aplikaci, která používá Azure Blob storage pomocí Xamarin.
 services: storage
 documentationcenter: xamarin
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: 44cb845d-cf78-4942-95b8-952da4f9a2c2
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: c7b4d0e7d7d95f2e3f8c5a97b78c60c52cc862a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31dbaeb1dd998d8d27af5eff0fa293117ef7f471
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Používání úložiště Blob z Xamarin
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-## <a name="overview"></a>Přehled
 Codebase – Xamarin umožňuje vývojářům používat sdílené C# k vytvoření iOS, Android a aplikací pro Windows Store s jejich nativní uživatelského rozhraní. V tomto kurzu se dozvíte, jak používat úložiště objektů Blob Azure pomocí aplikace Xamarin. Pokud vás zajímají další informace o službě Azure Storage, než začnete kód, najdete [Úvod do Microsoft Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
@@ -43,7 +36,7 @@ Postupujte podle těchto kroků můžete vytvořit aplikaci:
 Teď byste měli mít aplikaci, která umožňuje klikněte na tlačítko, které zvýší čítače.
 
 ## <a name="create-container-and-upload-blob"></a>Vytvoření kontejneru a nahrát objekt blob
-Části vašeho `(Portable)` projektu přidáte kód, který `MyClass.cs`. Tento kód vytvoří kontejner a odešle objekt blob do tohoto kontejneru. `MyClass.cs`by měl vypadat asi takto:
+Části vašeho `(Portable)` projektu přidáte kód, který `MyClass.cs`. Tento kód vytvoří kontejner a odešle objekt blob do tohoto kontejneru. `MyClass.cs` by měl vypadat asi takto:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -84,7 +77,7 @@ namespace XamarinApp
 
 Ujistěte se, že "your_account_name_here" a "your_account_key_here" nahraďte skutečný název svého účtu a klíč účtu. 
 
-Systémem iOS, Android a Windows Phone, které mají projekty všechny odkazy na přenosné projektu – což znamená, že všechny sdílené kódu můžete napsat v jednom umístění a použít napříč všemi svými projekty. Pro každý projekt, chcete-li začít využívat můžete nyní přidejte následující řádek kódu:`MyClass.performBlobOperation()`
+Systémem iOS, Android a Windows Phone, které mají projekty všechny odkazy na přenosné projektu – což znamená, že všechny sdílené kódu můžete napsat v jednom umístění a použít napříč všemi svými projekty. Pro každý projekt, chcete-li začít využívat můžete nyní přidejte následující řádek kódu: `MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -240,7 +233,7 @@ Teď můžete spustit tuto aplikaci v emulátoru Android nebo Windows Phone. Mů
 
 Po spuštění aplikace, vytvoří kontejner `mycontainer` ve vašem účtu úložiště. Objekt blob, měl by obsahovat `myblob`, text, na kterém je `Hello, world!`. Můžete to ověřit pomocí [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit aplikaci různé platformy v Xamarinu, která používá Azure Storage, konkrétně zaměřené na jeden scénář v úložišti objektů Blob. Však můžete provést mnohem víc s ne jenom úložiště objektů Blob, ale také pomocí tabulky, souboru a Queue Storage. Podrobnosti naleznete další informace v následujících článcích:
 
 * [Začínáme s úložištěm Azure Blob pomocí rozhraní .NET](storage-dotnet-how-to-use-blobs.md)

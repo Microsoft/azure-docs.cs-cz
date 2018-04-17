@@ -1,8 +1,8 @@
 ---
-title: "Nasazení a správa topologií Apache Storm v HDInsight se systémem Linux | Microsoft Docs"
-description: "Zjistěte, jak pro nasazení, monitorování a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Linux. Pomocí nástroje Hadoop pro sadu Visual Studio."
+title: Nasazení a správa topologií Apache Storm v HDInsight se systémem Linux | Microsoft Docs
+description: Zjistěte, jak pro nasazení, monitorování a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Linux. Pomocí nástroje Hadoop pro sadu Visual Studio.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight
 
@@ -95,7 +93,7 @@ Nástroje HDInsight slouží k odeslání jazyka C# nebo hybridní topologie pro
 
 ## <a name="submit-a-topology-programmatically"></a>Odeslání topologii: prostřednictvím kódu programu
 
-Můžete nasadit prostřednictvím kódu programu topologii pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-Java-Deploy-Storm-Topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje příklad aplikaci Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
+Můžete nasadit prostřednictvím kódu programu topologii pomocí služby Nimbus. [https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) poskytuje příklad aplikaci Java, která ukazuje, jak nasadit a spustit topologii prostřednictvím služby Nimbus.
 
 ## <a name="monitor-and-manage-visual-studio"></a>Sledování a správě: Visual Studio
 

@@ -1,27 +1,25 @@
 ---
-title: "Další informace pomocí izolovaném prostoru – emulátor – Azure HDInsight Hadoop | Microsoft Docs"
-description: "Pokud chcete spustit, získávání informací o použití ekosystému Hadoop, nastavením izolovaného prostoru Hadoop z Hortonworks na virtuální počítač Azure. "
-keywords: "hadoop emulátoru, izolovaného prostoru hadoop"
+title: Další informace pomocí izolovaném prostoru – emulátor – Azure HDInsight Hadoop | Microsoft Docs
+description: 'Pokud chcete spustit, získávání informací o použití ekosystému Hadoop, nastavením izolovaného prostoru Hadoop z Hortonworks na virtuální počítač Azure. '
+keywords: hadoop emulátoru, izolovaného prostoru hadoop
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 ms.assetid: 6ad5bb58-8215-4e3d-a07f-07fcd8839cc6
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: d7df18a80470beb8dc25cf6add6b7a61f45dcfe7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0b4daa8c832d40457b19ffe4aee1a365796b2435
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Hadoop izolovaném prostoru, emulátoru na virtuálním počítači
 
@@ -59,7 +57,7 @@ Chcete-li stáhnout izolovaného prostoru starší verzi softwaru HDP, rozbalte 
 1. Z **Začínáme** krok Hortonworks karanténě stránky, vyberte **pokročilé možnosti zobrazení**. Pomocí informací na této stránce pro přihlášení do izolovaného prostoru pomocí protokolu SSH. Pomocí zadaného názvu a hesla.
    
    > [!NOTE]
-   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webové SSH, uvedených v pro virtuální počítač na **http://localhost:4200 /**.
+   > Pokud nemáte nainstalovaného klienta SSH, můžete použít webové SSH, uvedených v pro virtuální počítač na **http://localhost:4200/**.
    > 
    
     Při prvním připojení pomocí protokolu SSH, budete vyzváni ke změně hesla pro kořenový účet. Zadejte nové heslo, které můžete použít při přihlášení pomocí protokolu SSH.
@@ -82,7 +80,7 @@ Chcete-li stáhnout izolovaného prostoru starší verzi softwaru HDP, rozbalte 
    
         select * from sample_07 limit 10;
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Další informace o použití sady Visual Studio s Hortonworks karanténě](../hdinsight-hadoop-emulator-visual-studio.md)
 * [Učení LAN Hortonworks izolovaného prostoru](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop kurz – Začínáme s HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

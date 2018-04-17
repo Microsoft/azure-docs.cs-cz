@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c0cff73e8164bd493554b663d4ffbbf20f5155cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Informace o výkonu dotazů databáze Azure SQL
 Správa a ladění výkonu relačních databází je náročné úlohu, která vyžaduje značné znalosti a investice čas. Informace o výkonu dotazů umožňuje trávit méně času řešení potíží s výkonem databáze tím, že poskytuje následující:
@@ -29,7 +29,7 @@ Správa a ladění výkonu relačních databází je náročné úlohu, která v
 * Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx) je aktivní databáze. Pokud není spuštěné úložiště dotazů, vyzve k portálu můžete zapnout.
 
 ## <a name="permissions"></a>Oprávnění
-Následující [řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md) používat informace o výkonu dotazů jsou potřeba oprávnění: 
+Následující [řízení přístupu na základě role](../role-based-access-control/overview.md) používat informace o výkonu dotazů jsou potřeba oprávnění: 
 
 * **Čtečka**, **vlastníka**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **Přispěvatel serveru SQL** jsou požadována oprávnění Chcete-li zobrazit nejvyšší prostředků využívání dotazy a grafy. 
 * **Vlastník**, **Přispěvatel**, **Přispěvatel databází SQL**, nebo **SQL serveru Přispěvatel** oprávnění jsou vyžadována k zobrazení text dotazu.

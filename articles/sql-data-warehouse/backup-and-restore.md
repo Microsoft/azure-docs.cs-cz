@@ -1,23 +1,23 @@
 ---
 title: Azure SQL Data Warehouse zálohování a obnovení – snímky geograficky redundantní | Microsoft Docs
-description: Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použijte k obnovení datového skladu pro bod obnovení v primární oblasti datového skladu zálohy nebo použijte geograficky redundantní zálohy obnovit do jiné zeměpisné oblasti.
+description: Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použití zálohování skladu data k obnovení datového skladu na bod obnovení v primární oblasti. Chcete-li obnovit jiné zeměpisné oblasti použijte geograficky redundantní zálohy.
 services: sql-data-warehouse
 author: ronortloff
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f540bca0d2eb2c9009a386bd14a5beda2912014
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 21708f51d09d640721af196d2ffa91aede97ffb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení v Azure SQL Data Warehouse
-Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použijte k obnovení datového skladu pro bod obnovení v primární oblasti datového skladu zálohy nebo použijte geograficky redundantní zálohy obnovit do jiné zeměpisné oblasti. 
+Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použití zálohování skladu data k obnovení datového skladu na bod obnovení v primární oblasti. Chcete-li obnovit jiné zeměpisné oblasti použijte geograficky redundantní zálohy. 
 
 ## <a name="what-is-backup-and-restore"></a>Co je zálohování a obnovení?
 A *zálohování dat skladu* je kopii databáze, můžete použít k obnovení datového skladu.  Vzhledem k tomu, že datový sklad SQL je distribuovaného systému, zálohu datového skladu se skládá z mnoho souborů, které se nacházejí v úložišti Azure. Zálohu datového skladu zahrnuje snímky místní databáze a geo zálohování databáze a soubory, které jsou přidružené k datovému skladu. 
@@ -54,7 +54,7 @@ Při umístění datového skladu SQL Data Warehouse vytvoří poslední snímek
 > Pokud odstraníte logické instance systému SQL server, všechny databáze patřící k instanci budou také odstraněny a nelze jej obnovit. Nelze obnovit odstraněné serveru.
 > 
 
-## <a name="geo-backups"></a>Geo-backups
+## <a name="geo-backups"></a>Geograficky zálohy
 SQL Data Warehouse provádí zálohu geograficky jednou denně za účelem [spárované datového centra](../best-practices-availability-paired-regions.md). Plánovaný bod obnovení pro geografické obnovení je 24 hodin. Geograficky zálohování můžete obnovit na server v spárovat geografické oblasti. Zálohu geograficky zajistí, že datový sklad můžete obnovit v případě, že snímky nelze získat přístup v primární oblasti.
 
 Geograficky zálohy jsou ve výchozím. Pokud váš datový sklad je optimalizován pro pružnost, můžete [chodit](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) nechcete-li. Nelze vyjádření výslovného nesouhlasu geo zálohy s optimalizovaná pro výpočetní výkon vrstvě.

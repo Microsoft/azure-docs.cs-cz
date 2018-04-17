@@ -1,6 +1,6 @@
 ---
-title: "Nakonfigurovat privátní IP adresy pro virtuální počítače - prostředí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí prostředí PowerShell."
+title: Nakonfigurovat privátní IP adresy pro virtuální počítače - prostředí Azure PowerShell | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat privátní IP adresy pro virtuální počítače pomocí prostředí PowerShell.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8727318c9dff79b795b473caf7b778272134726c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b0e8153f1d0cecd4efe66dc7cce64addd6ed62aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>Nakonfigurovat privátní IP adresy pro virtuální počítač pomocí prostředí PowerShell
 
@@ -68,7 +68,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
     -PrivateIpAddress 192.168.1.101
     ```
 
-5. Vytvoření virtuálního počítače pomocí síťového adaptéru vytvořili výše.
+5. Vytvoření virtuálního počítače pomocí seskupování:
 
     ```powershell
     $vm = New-AzureRmVMConfig -VMName DNS01 -VMSize "Standard_A1"
@@ -83,16 +83,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíť 
     New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm 
     ```
 
-    Očekávaný výstup:
-    
-        EndTime             : [Date and time]
-        Error               : 
-        Output              : 
-        StartTime           : [Date and time]
-        Status              : Succeeded
-        TrackingOperationId : [Id]
-        RequestId           : [Id]
-        StatusCode          : OK 
+Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-powershell.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>Načíst statickou privátní IP adresu informace pro síťové rozhraní
 Chcete-li zobrazit statické soukromé informace IP adresu pro virtuální počítač vytvořený pomocí skriptu pro výše uvedené, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *PrivateIpAddress* a *PrivateIpAllocationMethod*:
@@ -199,6 +190,9 @@ $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 $nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
+
+Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-powershell.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení. Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače.
+
 ## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>Změnit metodu přidělení privátní IP adresy přiřazené k síťovému rozhraní
 
 Privátní IP adresy přiřazeny metoda přidělení statickou nebo dynamickou síťový adaptér. Dynamické IP adresy můžete změnit po spuštění virtuálního počítače, která byla dříve v zastaveném stavu (deallocated). Pokud virtuální počítač je hostitelem služby, která vyžaduje stejnou IP adresu, i po restartování z zastaveném stavu (deallocated) to může potenciálně způsobit problémy. Statické IP adresy jsou uchovány až do odstranění virtuálního počítače. Chcete-li změnit metodu přidělení IP adresy, spusťte následující skript, který změní metoda přidělení z dynamické na statické. Pokud je metoda přidělení pro aktuální privátní IP adresy statické, změnit *statické* k *dynamické* před spuštěním skriptu.
@@ -222,7 +216,5 @@ Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.Provisioni
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [vyhrazené veřejné IP adresy](virtual-networks-reserved-public-ip.md) adresy.
-* Další informace o [veřejné IP (splnění) na úrovni instance](virtual-networks-instance-level-public-ip.md) adresy.
-* Obrátit [vyhrazené IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+Další informace o správě [nastavení IP adresy](virtual-network-network-interface-addresses.md).

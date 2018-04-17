@@ -1,16 +1,16 @@
 ---
-title: "Upřesnit skupinu assessment pomocí mapování skupiny závislostí v Azure migrovat | Microsoft Docs"
-description: "Popisuje, jak k zpřesnění posouzení pomocí mapování závislostí skupin ve službě Azure migrovat."
+title: Upřesnit skupinu assessment pomocí mapování skupiny závislostí v Azure migrovat | Microsoft Docs
+description: Popisuje, jak k zpřesnění posouzení pomocí mapování závislostí skupin ve službě Azure migrovat.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnit skupiny pomocí mapování skupin závislostí
 
@@ -37,8 +37,8 @@ Instalace agenta na počítači s Windows:
 1. Poklikejte na stažený agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na **licenční podmínky** klikněte na tlačítko **souhlasím** tak, aby přijímal licence.
 3. V **cílovou složku**, zachovat, nebo upravit výchozí instalační složku > **Další**. 
-4. V **možnosti instalace agenta**, vyberte **Azure Log Analytics (OMS)** > **Další**. 
-5. Klikněte na tlačítko **přidat** přidat nový pracovní prostor OMS. Vložte ID a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
+4. V **možnosti instalace agenta**, vyberte **Azure Log Analytics** > **Další**. 
+5. Klikněte na tlačítko **přidat** přidat nový pracovní prostor analýzy protokolů. Vložte ID a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
 
 
 Instalace agenta na počítač s Linuxem:

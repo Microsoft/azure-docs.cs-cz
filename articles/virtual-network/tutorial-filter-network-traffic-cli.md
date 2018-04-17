@@ -17,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: dfda95d2340d7dd57ac7b4d7ed7b0665c8e9294e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 11dc0e5f6ee398b2a745ed60cbc166e2a1697c3e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrování provozu sítě s skupinu zabezpečení sítě pomocí rozhraní příkazového řádku Azure
 
-Síťový provoz na příchozí a odchozí z podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, které umožňují filtrovat provoz sítě podle IP adresy, portu a protokolu. Pro prostředky nasazené v podsíti, platí pravidla zabezpečení. V tomto článku se dozvíte, jak:
+Síťový provoz na příchozí a odchozí z podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, které umožňují filtrovat provoz sítě podle IP adresy, portu a protokolu. Pro prostředky nasazené v podsíti, platí pravidla zabezpečení. V tomto článku získáte informace o těchto tématech:
 
 * Vytvořit skupinu a zabezpečení pravidla zabezpečení sítě
 * Vytvoření virtuální sítě a přidružte skupinu zabezpečení sítě pro podsíť
@@ -241,6 +241,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružené k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md) a [spravovat skupinu zabezpečení sítě](virtual-network-manage-nsg-arm-ps.md).
+V tomto článku jste vytvořili skupinu zabezpečení sítě a přidružené k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md) a [spravovat skupinu zabezpečení sítě](manage-network-security-group.md).
 
 Provoz Azure směrování mezi podsítěmi ve výchozím nastavení. Místo toho můžete směrovat provoz mezi podsítěmi pomocí virtuálních počítačů, slouží jako bránu firewall, například. Další informace, jak zjistit, [vytvořit směrovací tabulku](tutorial-create-route-table-cli.md).

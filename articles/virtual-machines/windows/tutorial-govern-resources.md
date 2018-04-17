@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 30f5fe83c46f2dbe1933e8347242be7fbb30a3e3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3c32b5ce90d4e5aafacb8211ff8f432bc3c78db8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Zásady správného řízení virtuální počítač s prostředím Azure PowerShell
 
@@ -43,15 +43,15 @@ V současné době skupina prostředků je prázdný.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Chcete Ujistěte se, že uživatelé ve vaší organizaci mají správnou úroveň přístupu na tyto prostředky. Nechcete, aby uživatelům udělit neomezený přístup, ale musíte také zkontrolujte, zda že mohou provádět práci. [Řízení přístupu na základě role](../../active-directory/role-based-access-control-what-is.md) můžete spravovat uživatele, kteří mají oprávnění k dokončení určitých akcí u oboru.
+Chcete Ujistěte se, že uživatelé ve vaší organizaci mají správnou úroveň přístupu na tyto prostředky. Nechcete, aby uživatelům udělit neomezený přístup, ale musíte také zkontrolujte, zda že mohou provádět práci. [Řízení přístupu na základě role](../../role-based-access-control/overview.md) můžete spravovat uživatele, kteří mají oprávnění k dokončení určitých akcí u oboru.
 
 Vytvoření a odeberte přiřazení rolí, uživatelé musí mít `Microsoft.Authorization/roleAssignments/*` přístup. Tento přístup je poskytována prostřednictvím role vlastníka nebo správce uživatelského přístupu.
 
 Pro správu řešení virtuálního počítače, existují tři role konkrétní prostředky, které poskytují běžně potřebné přístup:
 
-* [Přispěvatel virtuálních počítačů](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [Přispěvatel sítě](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [Přispěvatel účtu úložiště](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Přispěvatel sítě](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 Místo přiřazení rolí pro jednotlivé uživatele, je často jednodušší [vytvoření skupiny Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují k provádění podobných akcí. Potom přiřaďte této skupině do odpovídající role. Ke zjednodušení tohoto článku, vytvořit skupinu služby Azure Active Directory bez členů. Tato skupina stále můžete přiřadit do rolí pro obor. 
 

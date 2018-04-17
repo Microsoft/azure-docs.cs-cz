@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače se statickou veřejnou IP adresu - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure (CLI)."
+title: Vytvoření virtuálního počítače se statickou veřejnou IP adresu - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure (CLI).
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
 ms.service: virtual-network
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c50f685745a645b5fbe383a5fe4726faa0e36345
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 93b284b207539ed87531b5554d70b2f16170ff7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí rozhraní příkazového řádku Azure
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
+> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 > * [Šablona](virtual-network-deploy-static-pip-arm-template.md)
@@ -145,7 +145,11 @@ Doporučujeme vám odstranit prostředky vytvořené v tomto cvičení, pokud ne
 1. Chcete-li zobrazit prostředky ve skupině prostředků, spusťte `az resource list --resource-group IaaSStory` příkaz.
 2. Potvrďte, že neexistují žádné prostředky ve skupině prostředků, než prostředky vytvořené pomocí skriptu, který v tomto článku. 
 3. Chcete-li odstranit všechny prostředky, které jsou vytvořené v tomto cvičení, spusťte `az group delete -n IaaSStory` příkaz. Příkaz odstraní skupinu prostředků a všechny prostředky, které obsahuje.
+ 
+## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adresy v rámci operačního systému
 
-## <a name="next-steps"></a>Další kroky
+Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače. Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-cli.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
 
-Síťové přenosy můžete procházet do a z virtuálního počítače vytvořit v tomto článku. Můžete definovat příchozí a odchozí pravidla v rámci skupiny NSG, které omezit přenos, který může obtékat do a z rozhraní sítě, podsítě nebo obojí. Další informace o skupinách Nsg, najdete [NSG přehled](virtual-networks-nsg.md) článku.
+## <a name="next-steps"></a>Další postup
+
+Síťové přenosy můžete procházet do a z virtuálního počítače vytvořit v tomto článku. Můžete definovat pravidla pro příchozí a odchozí zabezpečení v rámci skupiny zabezpečení sítě, které omezit přenos, který může obtékat do a z rozhraní sítě, podsítě nebo obojí. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md).

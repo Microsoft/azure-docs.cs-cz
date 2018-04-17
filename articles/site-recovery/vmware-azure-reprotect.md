@@ -1,6 +1,6 @@
 ---
-title: "Znovu nastavte ochranu virtuálních počítačů z Azure na místní web | Microsoft Docs"
-description: "Po převzetí služeb při selhání virtuálních počítačů do Azure můžete zahájit navrácení služeb po obnovení a dovést tak virtuální počítače zpět do místní. Naučte se znovu nastavte ochranu před navrácení služeb po obnovení."
+title: Znovu nastavte ochranu virtuálních počítačů z Azure na místní web | Microsoft Docs
+description: Po převzetí služeb při selhání virtuálních počítačů do Azure můžete zahájit navrácení služeb po obnovení a dovést tak virtuální počítače zpět do místní. Naučte se znovu nastavte ochranu před navrácení služeb po obnovení.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: cd5e53b49a850acf851e8351b5e14e2993176435
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Znovu nastavte ochranu počítačů z Azure do místního serveru
 
@@ -79,7 +79,7 @@ Po vytvoření hlavní cílový server, postupujte takto:
 - Je nutné přidat na nový disk, pokud používáte existující počítač proces serveru nebo konfigurační server nebo škálování nebo proces serveru/hlavní cílový server počítač. Nový disk by měl splňovat požadavky na předchozí. Pokud jednotka pro uchování není dostupná, nezobrazí se v rozevíracím seznamu výběru na portálu. Po přidání k hlavnímu cíli místní jednotku, bude trvat až 15 minut na jednotce, než se objeví ve výběru na portálu. Můžete taky aktualizovat konfigurační server, pokud jednotka nezobrazí po 15 minutách.
 - Nainstalujte nástroje VMware na hlavním cílovém serveru. Bez nástroje VMware nelze zjistit datastores na hostiteli ESXi na hlavním cíli.
 - Nastavte `disk.EnableUUID=true` nastavení v konfigurační parametry hlavního cílového virtuálního počítače v prostředí VMware. Pokud tento řádek neexistuje, přidejte ji. Toto nastavení je nutné k zajištění konzistentní UUID disku virtuálního počítače (VMDK) tak, aby ji připojí správně.
-- Hlavní cíl musí mít alespoň jeden VMFS úložiště připojené. Pokud je none, **úložiště** vstup na stránce opětovné ochrany bude prázdný a nemůže pokračovat.
+- Hostiteli ESX, ve které je vytvořena na hlavním cíli musí mít alespoň jeden VMFS úložiště k němu připojen. Pokud je none, **úložiště** vstup na stránce opětovné ochrany bude prázdný a nemůže pokračovat.
 - Hlavní cílový server nemůže mít snímky na discích. Pokud existují snímky, vytvoření a navrácení služeb po obnovení nezdaří.
 - Na hlavním cíli nemůže mít řadič Paravirtual SCSI. Kontroler může být pouze řadič LSI Logic. Bez řadič LSI Logic nové provedení ochrany se nezdaří.
 - V dané instanci může mít hlavního cíle atmst 60 disky připojené k němu. Pokud počet virtuálních počítačů se znovu k hlavnímu cíli místní součet celkový počet víc než 60 disky a pak reprotects k hlavnímu cíli začne selhání. Ujistěte se, že máte dostatek hlavní cíl sloty disku nebo nasadit další hlavních cílových serverů.
@@ -92,7 +92,7 @@ Po spuštění virtuálního počítače v Azure, bude trvat nějakou dobu agent
 
 1. V **trezoru** > **replikované položky**, klikněte pravým tlačítkem na virtuální počítač, který při selhání a pak vyberte **znovu nastavit ochranu**. Můžete také klikněte na počítač a vyberte **znovu nastavit ochranu** z příkazová tlačítka.
 2. Ověřte směr ochrany, **Azure k místnímu**, je již vybrána.
-3. V **hlavní cílový Server** a **procesový Server**, vyberte místní hlavní cílový server a procesový server.
+3. V **hlavní cílový Server** a **procesový Server**, vyberte místní hlavní cílový server a procesový server.  
 4. Pro **úložiště**, vyberte úložiště dat, ke které chcete obnovit disky na místě. Tato možnost se používá při odstranění virtuálního počítače na místě, a budete muset vytvořit nové disky. Tato možnost je ignorována, pokud disky již existují, ale stále je třeba zadat hodnotu.
 5. Vyberte jednotky pro uchovávání dat.
 6. Automaticky se vyberou zásady navrácení služeb po obnovení.

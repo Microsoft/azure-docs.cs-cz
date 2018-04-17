@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o infrastruktuře síťový zásobník Azure vám pomohou rozhodnout, jak nejlépe zásobník Azure integrovat do stávajícího síťového prostředí. 
@@ -40,7 +40,7 @@ V následující tabulce jsou uvedeny logické sítě a přidružené podsítě 
 
 | Logické sítě | Popis | Velikost | 
 | -------- | ------------- | ------------ | 
-| Veřejná virtuální IP adresy | Veřejné IP adresy pro malého služby Azure zásobníku se zbytkem používat klientské virtuální počítače. Infrastruktura Azure zásobníku používá 32 adres z této sítě. Pokud máte v úmyslu používat službu App Service a poskytovateli prostředků SQL, se používají 7 víc adres. | / 26 (62 hostitelé) – /22 (1022 hostitele)<br><br>Doporučená = /24 (254 hostitele) | 
+| Veřejná virtuální IP adresy | Azure zásobníku používá celkem 32 adres z této sítě. Osm veřejné IP adresy se používají pro malého služeb Azure zásobníku a zbývající používají klientské virtuální počítače. Pokud máte v úmyslu používat službu App Service a poskytovateli prostředků SQL, se používají 7 víc adres. | / 26 (62 hostitelé) – /22 (1022 hostitele)<br><br>Doporučená = /24 (254 hostitele) | 
 | Přepínač infrastruktury | Point-to-Point IP adresy pro účely směrování, vyhrazené přepínače rozhraní pro správu a zpětné smyčky adresy přiřazené k přepínači. | /26 | 
 | Infrastruktura | Používá se pro interní součásti zásobníku Azure ke komunikaci. | /24 |
 | Privátní | Použít pro sítě úložiště a privátní virtuální IP adresy. | /24 | 
@@ -70,7 +70,7 @@ To/24 síť je vyhrazená pro interní součásti zásobníku Azure, aby se mohl
 To/27 síť je malý rozsahu podsítě infrastruktury Azure zásobníku, již bylo zmíněno dříve, nevyžaduje veřejné IP adresy, ale vyžaduje přístup k Internetu prostřednictvím NAT nebo transparentní proxy server. Tato síť se přidělí pro nouzové obnovení konzoly System (ERCS), ERCS virtuální počítač vyžaduje přístup k Internetu během registrace do Azure a infrastruktura zálohování. Virtuální počítač ERCS musí být směrovatelné vaší síti pro správu pro účely odstraňování potíží.
 
 ### <a name="public-vip-network"></a>Veřejné síti VIP
-Veřejné síti VIP je přiřazen do síťového adaptéru v zásobníku Azure. Není logická síť na přepínači. SLB pomocí fondu adres a přiřadí/32 sítě pro úlohy klientů. V tabulce směrování přepínače jsou inzerovaný těchto 32 IP adres jako trasu k dispozici prostřednictvím protokolu BGP. Tato síť obsahuje externí dostupný nebo veřejné IP adresy. Infrastruktura Azure zásobníku používá aspoň 8 adres z této veřejné síti VIP, zatímco zbytek používá klientské virtuální počítače. Velikost sítě v této podsíti může být v rozsahu od minimálně /26 (64 hostitele) do maximálně /22 (1022 hostitele), doporučujeme, abyste naplánovali pro/24 sítě.
+Veřejné síti VIP je přiřazen do síťového adaptéru v zásobníku Azure. Není logická síť na přepínači. SLB pomocí fondu adres a přiřadí/32 sítě pro úlohy klientů. V tabulce směrování přepínače jsou inzerovaný těchto 32 IP adres jako trasu k dispozici prostřednictvím protokolu BGP. Tato síť obsahuje externí dostupný nebo veřejné IP adresy. Infrastruktura zásobník Azure používá 8 adres z této veřejné síti VIP, přičemž zbývající se používá ho klientské virtuální počítače. Velikost sítě v této podsíti může být v rozsahu od minimálně /26 (64 hostitele) do maximálně /22 (1022 hostitele), doporučujeme, abyste naplánovali pro/24 sítě.
 
 ### <a name="switch-infrastructure-network"></a>Přepínač síti infrastruktury.
 To, 26 sítě je podsítě, která obsahuje podsítě/30 IP směrovatelné point-to-point (2 hostitele IP na) a vytváření, které jsou vyhrazené zpětných smyček nebo přepínač 32 podsítě pro integrované správy a ID směrovače protokolu BGP Tento rozsah IP adres musí být směrovatelné externě z řešení Azure zásobníku vašeho datového centra, mohou být privátní nebo veřejné IP adresy.

@@ -1,6 +1,6 @@
 ---
-title: Reaktivní události Azure Blob Storage | Microsoft Docs
-description: Přihlásit k odběru událostí úložiště objektů Blob pomocí Azure událostí mřížky.
+title: Reaktivní události úložiště objektů Blob v Azure | Microsoft Docs
+description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
 services: storage,event-grid
 keywords: ''
 author: cbrooksmsft
@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktivní události úložiště objektů Blob
 
@@ -24,7 +24,7 @@ Dostupnost pro události úložiště je vázaný na události mřížky [dostup
 
 ![Model událostí mřížky](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
-## <a name="blob-storage-accounts"></a>Účty služby Blob Storage
+## <a name="blob-storage-accounts"></a>Účty úložiště Blob
 Nejsou k dispozici v objektu BLOB úložiště události [účty úložiště Blob](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) a v [účty úložiště v2 obecné účely](../common/storage-account-options.md#general-purpose-v2). **Obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce pro všechny služby úložiště, včetně objektů BLOB, soubory, fronty a tabulky. A **účtem služby Blob storage** je specializovaný účet úložiště pro ukládání nestrukturovaných dat jako blobů (objektů) ve službě Azure Storage. Účty úložiště BLOB jsou podobné účtům úložiště pro obecné účely a sdílejí všechny skvělé odolnost, dostupnost, škálovatelnost a výkon funkce používají. jednotlivá včetně 100 % konzistentnost rozhraní API pro objekty BLOB bloku a doplňovací objekty BLOB. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
 
 ## <a name="available-blob-storage-events"></a>K dispozici události úložiště objektů Blob
@@ -44,7 +44,7 @@ Další informace o použití vlastností události mřížky událostí je pops
 > |Téma|řetězec|Id účtu úložiště, který vysílá události úplné Azure Resource Manager.|
 > |Předmět|řetězec|Prostředků relativní cesta k objektu, která je předmětem události, používající stejný rozšířený formát Azure Resource Manager, který používáme k popisu účty úložiště, služeb a kontejnery pro Azure RBAC.  Tento formát obsahuje název objektu blob zachována.|
 > |eventTime|řetězec|Datum a čas, který byl vytvořen události ve formátu ISO 8601|
-> |eventType|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
+> |Typ události|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
 > |ID|řetězec|Jedinečný identifikátor, pokud událost|
 > |dataVersion|řetězec|Verze schématu datového objektu.|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
@@ -92,7 +92,7 @@ Je možné filtrovat závislosti na typu události a název kontejneru a název 
 
 Předmět události úložiště objektů Blob používá formát:
 
-```json
+```
 /blobServices/default/containers/<containername>/blobs/<blobname>
 ```
 
@@ -100,19 +100,19 @@ Tak, aby odpovídaly všechny události pro účet úložiště, můžete ponech
 
 Vyhledat události z vytvořit v sadě sdílení předponu kontejnery objektů BLOB, použijte `subjectBeginsWith` filtrovat jako:
 
-```json
+```
 /blobServices/default/containers/containerprefix
 ```
 
 Vyhledat události z vytvořené v určitém kontejneru objektů BLOB, použijte `subjectBeginsWith` filtrovat jako:
 
-```json
+```
 /blobServices/default/containers/containername/
 ```
 
 Vyhledat události z objektů BLOB, které jsou vytvořené v určitém kontejneru sdílení předponu názvu objektu blob, použijte `subjectBeginsWith` filtrovat jako:
 
-```json
+```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 

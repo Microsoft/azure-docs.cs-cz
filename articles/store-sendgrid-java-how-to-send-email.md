@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9f7d4841846e41eacb66125bcdeeb29466bb0b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z Javy
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou napsané v jazyce Java. Pokryté scénáře zahrnují **vytváření e-mailu**, **odesílání e-mailu**, **přidávání příloh**, **pomocí filtrů**, a **aktualizace vlastností**. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky](#next-steps) části.
@@ -81,7 +81,7 @@ Získat javax.mail knihovny, například z <http://www.oracle.com/technetwork/ja
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
 3. Vytvořte zprávu a přiřadit **k**, **z**, **subjektu** a obsahu hodnoty. To je ukázáno v [postupy: vytvoření e-mailu](#how-to-create-an-email) části.
-4. Odeslat zprávu prostřednictvím *javax.mail.Transport* objektu. To je ukázáno v [postupy: e-mailovou zprávu] [postup: e-mailovou zprávu] části.
+4. Odeslat zprávu prostřednictvím *javax.mail.Transport* objektu. To je ukázáno v [postupy: e-mailovou zprávu] [#how-k-send-] části e-mail.
 
 ## <a name="how-to-create-an-email"></a>Postupy: vytvoření e-mailu
 Následující ukazuje, jak zadat hodnoty pro e-mailu.

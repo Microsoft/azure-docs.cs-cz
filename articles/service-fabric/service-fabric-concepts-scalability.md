@@ -1,11 +1,11 @@
 ---
-title: "Škálovatelnost služby Service Fabric | Microsoft Docs"
-description: "Popisuje postup škálování služby Service Fabric"
+title: Škálovatelnost služby Service Fabric | Microsoft Docs
+description: Popisuje postup škálování služby Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d8484a4c30fdd17cbb4773e6ff822b73efd5c4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>Nastavení velikosti v Service Fabric
 Azure Service Fabric lze snadno vytvářet škálovatelné aplikace pomocí správy služeb, oddíly a repliky na uzlech clusteru. Spuštění řadu úloh na stejném hardwaru umožňuje využití maximální prostředků, ale také poskytuje flexibilitu z hlediska jak rozhodnete škálování vašich úloh. Toto video Channel 9 popisuje, jak mohou vytvářet škálovatelné mikroslužeb aplikace:
@@ -117,12 +117,7 @@ Pokud zvýšíte počet uzlů, Service Fabric přesune některé z existujícíc
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Škálování podle přidávání a odebírání uzlů z clusteru 
 Další možností škálování s Service Fabric je ke změně velikosti clusteru. Změna velikosti clusteru znamená přidávání a odebírání uzlů pro jeden nebo více typy uzlů v clusteru. Například Představte si případ, kde jsou všechny uzly v clusteru aktivní. To znamená, zda jsou prostředky clusteru téměř všechny využívat. Přidání více uzlů do clusteru v tomto případě je nejlepší způsob, jak škálování. Po připojení ke clusteru nové uzly Správce prostředků clusteru Service Fabric přesune služby, výsledkem je menší celkové zatížení na existujícím uzlům. Pro bezstavové služby se počet instancí = -1, další služby, jsou automaticky vytvořeny instance. To umožňuje některá volání pro přesun z existujících uzlů do nových uzlů. 
 
-Přidávání a odebírání uzlů do clusteru se dá udělat pomocí modulu prostředí PowerShell služby infrastruktury Azure Resource Manager.
-
-```posh
-Add-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName  -NumberOfNodesToAdd 5 
-Remove-AzureRmServiceFabricNode -ResourceGroupName $resourceGroupName -Name $clusterResourceName -NodeType $nodeTypeName -NumberOfNodesToRemove 5
-```
+Další informace najdete v tématu [škálování clusterů](service-fabric-cluster-scaling.md).
 
 ## <a name="putting-it-all-together"></a>Třeba umisťovat všechny společně
 Podívejme se na všechny nápady, které jsme probrali sem a komunikovat prostřednictvím příklad. Vezměte v úvahu následující služby: Pokoušíte se vytvořit službu, která funguje jako adresáře, která uchovává názvy a kontaktní informace. 
@@ -147,7 +142,7 @@ Tato dynamického vytváření vzor řadu výhod:
   - Zatímco čekáte pro zákazníky objeví nespustíte spoustu instance služby nebo repliky
   - Pokud zákazník někdy ponechá, pak odebrání své informace ze služby je jednoduše tak, že má správce odstranit této služby nebo aplikace, která ji vytvořila.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o konceptech Service Fabric najdete v následujících článcích:
 
 * [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)

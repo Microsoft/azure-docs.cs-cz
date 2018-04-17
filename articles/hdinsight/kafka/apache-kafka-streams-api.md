@@ -1,8 +1,8 @@
 ---
-title: "Použití rozhraní Apache Kafka datové proudy API - Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat rozhraní API Apache Kafka datových proudů s Kafka v HDInsight. Toto rozhraní API umožňuje provádět mezi témata v Kafka zpracování datového proudu."
+title: Použití rozhraní Apache Kafka datové proudy API - Azure HDInsight | Microsoft Docs
+description: Naučte se používat rozhraní API Apache Kafka datových proudů s Kafka v HDInsight. Toto rozhraní API umožňuje provádět mezi témata v Kafka zpracování datového proudu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 36d67cdb99871f3948db1f6497b1a4638df4f3f1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="apache-kafka-streams-api"></a>Apache Kafka streams API
+# <a name="apache-kafka-streams-api"></a>Datové proudy Apache Kafka rozhraní API
 
 Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Kafka datové proudy a spustit ji s Kafka v HDInsight.
 
@@ -45,7 +45,7 @@ Tento příklad vyžaduje Kafka na HDInsight 3.6. Naučte se vytvářet Kafka na
 
 Použijte následující postup pro sestavení a nasazení projektu do vaší Kafka na clusteru HDInsight.
 
-1. Stáhněte si příklady ze stránky [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Stáhněte si příklady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Přejděte do adresáře `Streaming` adresáře a potom použijte následující příkaz, který má-li vytvořit balíček jar:
 
@@ -114,14 +114,14 @@ Použijte následující postup pro sestavení a nasazení projektu do vaší Ka
 
     Tento příkaz rozdělí zobrazení SSH do tří částí:
 
-    * Spustí konzolu příjemce, který čte zprávy z levé části `wordcounts` tématu:`/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
+    * Spustí konzolu příjemce, který čte zprávy z levé části `wordcounts` tématu: `/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer`
 
         > [!NOTE]
         > `--property` Parametry říct konzole příjemce tisknout klíč (word) společně se počet (hodnota). Tento parametr nakonfiguruje taky deserializátor pro použití při čtení z Kafka tyto hodnoty.
 
-    * V horní pravé části spustí řešení datové proudy rozhraní API:`java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
+    * V horní pravé části spustí řešení datové proudy rozhraní API: `java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS`
 
-    * Pravé dolní části spouští producent konzoly a čeká na zadání zprávy k odeslání do `test` tématu:`/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
+    * Pravé dolní části spouští producent konzoly a čeká na zadání zprávy k odeslání do `test` tématu: `/usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test`
  
 6. Po `tmux` příkaz rozdělí zobrazení, ukazatelem je v pravé dolní části. Spusťte zadáním věty. Po každé větě je aktualizována v levém podokně na počet jedinečných slov. Výstup se bude podobat následujícímu:
    

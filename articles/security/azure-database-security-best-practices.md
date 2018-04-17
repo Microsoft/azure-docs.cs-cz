@@ -1,12 +1,12 @@
 ---
-title: "Osvědčené postupy zabezpečení databáze Azure | Microsoft Docs"
-description: "Tento článek obsahuje sadu osvědčené postupy pro zabezpečení databáze Azure."
+title: Osvědčené postupy zabezpečení databáze Azure | Microsoft Docs
+description: Tento článek obsahuje sadu osvědčené postupy pro zabezpečení databáze Azure.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení databáze Azure
 
@@ -112,7 +112,7 @@ Je důležité si uvědomit, že soubory související s [vyrovnávací paměti 
 Od oprávněný uživatel, jako je zabezpečení správce nebo správce databáze měli přístup k datům, i v případě, že databáze je šifrován TDE, by navíc dodržíte následující doporučení:
 
 -   Povolte ověřování SQL na úrovni databáze.
--   Ověřování pomocí služby Azure AD pomocí [role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+-   Ověřování pomocí služby Azure AD pomocí [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 -   Uživatelé a aplikace by měla používat samostatné účty k ověření. Tímto způsobem můžete omezit oprávnění udělená uživatelům a aplikacím a snížení rizika škodlivých aktivit.
 -   Implementace zabezpečení na úrovni databáze pomocí pevné databázové role (například db_datareader nebo db_datawriter), nebo můžete vytvořit vlastní role pro vaši aplikaci udělit výslovná oprávnění k objektům vybrané databáze.
 
@@ -166,7 +166,7 @@ Další informace o databázi detekce hrozeb a jak ji povolit, najdete v článk
 ## <a name="conclusion"></a>Závěr
 Databáze Azure je platforma robustní databáze, s celou řadu funkcí zabezpečení, které splňují mnoho organizace i regulačních požadavků. Vám může pomoct chránit data pomocí řízení fyzický přístup k datům a použití různých možností pro zabezpečení dat na soubor-, sloupec-, řádek úrovni nebo se transparentní šifrování dat, šifrování na úrovni buněk nebo zabezpečení na úrovni řádků. Vždy šifrovaný také umožní operace proti šifrovaná data, zjednodušuje proces aktualizace aplikace. Přístup k auditování protokoly aktivity databáze SQL se pak poskytuje informace, které potřebujete, abyste mohli vědět, jak a kdy je přístup k datům.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o pravidlech brány firewall najdete v tématu [pravidla brány Firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
 - Informace o uživateli a přihlašování najdete v tématu [Správa přihlašování](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 - Podívejte se kurz [zabezpečení vaší databázi SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).

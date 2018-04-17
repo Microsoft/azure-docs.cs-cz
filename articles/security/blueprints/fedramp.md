@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - automatizace FedRAMP webové aplikace"
-description: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - automatizace FedRAMP webové aplikace"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - automatizace FedRAMP webové aplikace
+description: Zabezpečení Azure a dodržování předpisů plán, podle kterého - automatizace FedRAMP webové aplikace
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - automatizace FedRAMP webové aplikace
 
@@ -76,10 +76,9 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 * **Azure Active Directory**
 * **Azure Resource Manager**
 * **Azure Log Analytics**
+    - (1) pracovní prostor analýzy protokolů
 * **Azure Automation**
     - (1) účet automation
-* **Operations Management Suite**
-    - (1) pracovní prostor OMS
 
 ## <a name="deployment-architecture"></a>Architektura nasazení služby
 
@@ -136,7 +135,7 @@ Azure Disk Encryption se používá k šifrované disky virtuálních počítač
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) poskytuje rozsáhlé protokolování systému a uživatelské aktivity a také stav systému. 
+[Analýza protokolu](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) poskytuje rozsáhlé protokolování systému a uživatelské aktivity a také stav systému. 
 
 - **Protokoly aktivity:**[protokoly aktivity](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o činnosti, které byly provedeny v prostředky ve vašem předplatném.
 - **Diagnostické protokoly:**[diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem. Tyto protokoly zahrnují protokoly událostí systému Windows, protokoly úložiště Azure, protokoly Key Vault auditu a protokolů Application Gateway přístup a brány firewall.
@@ -154,7 +153,7 @@ Azure Disk Encryption se používá k šifrované disky virtuálních počítač
 Následujících technologií poskytovat identitu možnosti správy v prostředí Azure.
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je společnosti Microsoft víceklientské cloudové adresáře a identity management service.
 - Lze provést ověření do zákazníka nasazené webové aplikace pomocí služby Azure AD. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
-- [Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného, a přístup k prostředkům může být omezen na základě role uživatele.
+- [Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného, a přístup k prostředkům může být omezen na základě role uživatele.
 - Nasazenou instanci služby Active Directory IaaS poskytuje identity management na úrovni operačního systému pro nasazené virtuální počítače IaaS.
    
 ### <a name="compute-resources"></a>Výpočet prostředků
@@ -182,17 +181,17 @@ Správa jumpbox (bastionu hostitel) poskytuje zabezpečené připojení pro Spr�
 
 ### <a name="patch-management"></a>Opravy správy
 
-Windows virtuálních počítačů nasazených v tomto zabezpečení Azure a dodržování předpisů plán, podle kterého Automation jsou nakonfigurované ve výchozím nastavení příjem automatických aktualizací ze služby Windows Update. Toto řešení taky nasadí řešení OMS Azure Automation, pomocí kterého lze vytvořit nasazení aktualizací na servery Windows v případě potřeby nasadit opravy.
+Windows virtuálních počítačů nasazených v tomto zabezpečení Azure a dodržování předpisů plán, podle kterého Automation jsou nakonfigurované ve výchozím nastavení příjem automatických aktualizací ze služby Windows Update. Toto řešení taky nasadí řešení Azure Automation, pomocí kterého lze vytvořit nasazení aktualizací na servery Windows v případě potřeby nasadit opravy.
 
 ### <a name="operations-management"></a>Řízení provozu
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba v Operations Management Suite (OMS), která umožňuje shromažďování a analýza dat vygenerovaných sadami prostředky ve službě Azure a místní prostředí.
+[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba, která umožňuje shromažďování a analýza dat vygenerovaných sadami prostředky ve službě Azure a místní prostředí.
 
-#### <a name="oms-solutions"></a>Řešení OMS
+#### <a name="management-solutions"></a>Řešení pro správu
 
-Následující řešení OMS jsou předem nainstalován jako součást tohoto řešení:
+Následující řešení pro správu jsou předem nainstalován jako součást tohoto řešení:
 - [Posouzení AD](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [Posouzení antimalwaru](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

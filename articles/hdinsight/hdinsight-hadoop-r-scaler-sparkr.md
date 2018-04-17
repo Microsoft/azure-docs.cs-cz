@@ -1,8 +1,8 @@
 ---
-title: "Použijte ScaleR a SparkR s Azure HDInsight | Microsoft Docs"
-description: "Použít ScaleR a SparkR s R Server a HDInsight"
+title: Použijte ScaleR a SparkR s Azure HDInsight | Microsoft Docs
+description: Použít ScaleR a SparkR s R Server a HDInsight
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinace ScaleR a SparkR v HDInsight
 
-Tento článek ukazuje, jak k předvídání příchodem zpoždění letů pomocí **ScaleR** logistic regresní model z dat na zpoždění letů a počasí spojena s **SparkR**. Tento scénář předvádí možnosti ScaleR pro manipulaci s daty na Spark používat s Microsoft R Server pro analýzu. Kombinace těchto technologií umožňuje použít nejnovější funkce v distribuované zpracování.
+Tento dokument popisuje, jak k předvídání příchodem zpoždění letů pomocí **ScaleR** logistic regresní model. Tento příklad používá data zpoždění a počasí letu, spojena **SparkR**.
 
 I když oba balíčky běží na stroji provádění Spark pro Hadoop, jsou blokovat sdílení jako každý vyžadují jejich vlastní příslušné relace Spark dat v paměti. Dokud se tento problém řešit v budoucích verzích R Server, je alternativní řešení údržbu nepřekrývají relací Spark a vyměňovat data prostřednictvím zprostředkující soubory. Podle pokynů tady ukazují, že tyto požadavky jsou jednoduché k dosažení.
 
-Používáme příklad zde původně sdílí v obraťte na 2016 vrstev Mario Inchiosa a Roni Burd, která je také k dispozici prostřednictvím na webinář [vytváření škálovatelné platformy vědecké účely dat s R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio). Příklad používá SparkR připojit dobře známé airlines příchodem zpoždění datovou sadu s daty o počasí na letištích odeslání a přijetí. Data připojené k se pak používá jako vstup pro ScaleR logistic regresní model pro predikci letu příchodem zpoždění.
+V tomto příkladu byla původně sdílí v obraťte na 2016 vrstev Mario Inchiosa a Roni Burd. Můžete najít tento obraťte na [vytváření škálovatelné platformy vědecké účely dat s R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-Kód jsme návod byl původně zapsán pro R Server systémem Spark v clusteru služby HDInsight v Azure. Ale koncept kombinování použití SparkR a ScaleR v jednom skriptu je taky platná v kontextu místního prostředí. V následujícím příkladu jsme předpokládá pokročilou úroveň znalosti R a jsou [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) knihovny R Server. Zavedeme použití [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) při procházení tohoto scénáře.
+Kód byl původně zapsán pro R Server systémem Spark v clusteru služby HDInsight v Azure. Ale koncept kombinování použití SparkR a ScaleR v jednom skriptu je taky platná v kontextu místního prostředí. 
+
+Kroky v tomto dokumentu předpokládají, že byl pokročilou úroveň znalosti R a jsou [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) knihovny R Server. Zavedly se k [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) při procházení tohoto scénáře.
 
 ## <a name="the-airline-and-weather-datasets"></a>Datové sady letecká společnost a počasí
 
-**AirOnTime08to12CSV** airlines veřejné datové sady obsahuje informace o letu příchodem a odeslání podrobnosti pro všechny obchodní lety v USA, z října 1987 prosince 2012. Toto je velké datové sady: celkem jsou téměř 150 miliony záznamů. Je právě v části vybaleno 4 GB. Je k dispozici z [US government archivy](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Snadněji, je k dispozici jako soubor zip (AirOnTimeCSV.zip) obsahující sadu 303 samostatné měsíční CSV soubory z [úložiště Revolution Analytics datové sady](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)
+Data pohybující se má k dispozici [US government archivy](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako zip z [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Důsledky počasí na zpoždění letů najdete také třeba údaje o počasí na všech letištích. Tato data lze stáhnout jako soubory zip v základním formátu po měsících, z [National Oceánský a důsledky správy úložiště](http://www.ncdc.noaa.gov/orders/qclcd/). Pro účely tohoto příkladu jsme vyžádá počasí data z května 2007 – prosinec 2012 a použít v každém z 68 měsíční zips hodinové datové soubory. Měsíční soubory zip také obsahují mapování (YYYYMMstation.txt) mezi stanice počasí ID (WBAN), letiště, že je přidružen (volacím) a časové pásmo letišti posun od času UTC (časové pásmo). Všechny tyto informace je třeba při propojení s daty zpoždění a počasí letecká společnost.
+Údaje o počasí lze stáhnout jako soubory zip v základním formátu po měsících, z [National Oceánský a důsledky správy úložiště](http://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu stahování dat pro květen 2007 – prosinec 2012. Použít hodinové datové soubory a `YYYYMMMstation.txt` souboru v každém z zips. 
 
 ## <a name="setting-up-the-spark-environment"></a>Nastavení prostředí Spark
 
-Prvním krokem je nastavení prostředí Spark. Začneme odkazující na adresář, který obsahuje naše adresáře vstupních dat, vytváření kontextu výpočtů Spark a vytvoření funkce protokolování pro informační protokolování do konzoly:
+Nastavení prostředí Spark použijte následující kód:
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Další přidáme "Spark_Home" pro cestu pro balíčky R hledání tak, že jsme použít SparkR a inicializaci SparkR relace:
+Dál přidejte `Spark_Home` na cestu pro balíčky R hledání. Přidávání do cesta hledání umožňuje použít SparkR a inicializace SparkR relace:
 
 ```
 #..setup for use of SparkR  
@@ -108,7 +108,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>Příprava dat počasí
 
-Příprava dat počasí, jsme podmnožina ho na sloupce potřebné pro modelování: 
+Příprava dat počasí, podmnožina ke sloupcům potřeboval pro modelování: 
 
 - "Viditelnosti"
 - "DryBulbCelsius"
@@ -119,15 +119,7 @@ Příprava dat počasí, jsme podmnožina ho na sloupce potřebné pro modelová
 
 Pak přidejte letiště kód spojený s stanice počasí a převést měření z místního času na čas UTC.
 
-Začneme vytvořením souboru mapovat informace o počasí stanice (WBAN) na letišti kód. Tato korelace jsme může získat ze souboru mapování součástí počasí data. Pomocí mapování *volacím* (například LAX) pole v datovém souboru počasí na *původu* v datech letecká společnost. Ale jsme právě došlo mít jiné mapování na straně mapující *WBAN* k *AirportID* (například 12892 pro LAX) a zahrnuje *časové pásmo* které byly uloženy do souboru CSV s názvem "wban na letiště id-tz. CSV", které můžeme použít. Například:
-
-| AirportID | WBAN | Časové pásmo
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-Následující kód načte všechny hodinové datové soubory nezpracované počasí, podmnožin ke sloupcům budeme potřebovat, sloučí soubor mapování počasí stanice, upraví časy data měření na čas UTC a zapíše na novou verzi souboru:
+Začněte tím, že vytvoříte soubor, který chcete namapovat informace o počasí stanice (WBAN) na letišti kód. Následující kód načte všechny hodinové datové soubory nezpracované počasí, podmnožin ke sloupcům budeme potřebovat, sloučí soubor mapování počasí stanice, upraví časy data měření na čas UTC a zapíše na novou verzi souboru:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time

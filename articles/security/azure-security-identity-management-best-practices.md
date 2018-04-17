@@ -1,6 +1,6 @@
 ---
-title: "Azure identit a přístupu osvědčené postupy zabezpečení | Microsoft Docs"
-description: "Tento článek obsahuje sadu osvědčené postupy pro správu identit a přístupu k řízení pomocí součástí možnosti Azure."
+title: Azure identit a přístupu osvědčené postupy zabezpečení | Microsoft Docs
+description: Tento článek obsahuje sadu osvědčené postupy pro správu identit a přístupu k řízení pomocí součástí možnosti Azure.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ec8eb8759e310e31c7798c54cc95f0170e95cf50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení řízení Azure správu identit a přístupu
 Mnoho zvažte identity jako novou vrstvu hranice zabezpečení, převzetí této role z perspektivy tradiční zaměřené na síti. Tento vývoj primární pivot pro zabezpečení pozornost a investice do pocházet z skutečnost, že se staly stále porézní hranice sítě a že hraniční obrana nemůže být co nejúčinnější se jednou byly před rozbalení [BYOD](http://aka.ms/byodcg) zařízení a cloudových aplikací.
@@ -52,7 +52,7 @@ Jeden důležitý krok k zabezpečení vaší identity je zajistit, že může o
 K tomu [hybridní identita](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) scénáři doporučujeme dvě možnosti:
 
 * Synchronizace místního adresáře s adresářem cloudu pomocí služby Azure AD Connect
-* Vytvořit federaci vaší identity na místě s directory cloudu s použitím [Active Directory Federation Services](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS)
+* Povolit jednotné přihlašování s [synchronizaci hodnoty hash hesla](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization), [předávací ověřování](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq) nebo vytvořit federaci vaší identity na místě s directory cloudu s použitím [služby Active Directory Federační služby](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS)
 
 Organizace, které nepodaří integrovat svou identitu v místě jejich Cloudová identita, budou mít zvýšenou administrativní režii při správě účtů, což zvyšuje pravděpodobnost chyb a porušení zabezpečení.
 
@@ -95,11 +95,11 @@ Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Fac
 ## <a name="use-role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě role pomocí
 Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Azure na základě rolí řízení přístupu (RBAC) slouží k přiřazení oprávnění pro uživatele, skupiny a aplikace v určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role.
 
-Můžete využít [součástí RBAC](../active-directory/role-based-access-built-in-roles.md) role v Azure přiřadit oprávnění pro uživatele. Zvažte použití *Přispěvatel účet úložiště* pro operátorům cloudu, kteří potřebují spravovat účty úložiště a *Classic Přispěvatel účet úložiště* rolí ke správě klasické účty úložiště. Operátoři cloudu, které potřebuje ke správě virtuálních počítačů a účet úložiště, zvažte přidá do *Přispěvatel virtuálních počítačů* role.
+Můžete využít [součástí RBAC](../role-based-access-control/built-in-roles.md) role v Azure přiřadit oprávnění pro uživatele. Zvažte použití *Přispěvatel účet úložiště* pro operátorům cloudu, kteří potřebují spravovat účty úložiště a *Classic Přispěvatel účet úložiště* rolí ke správě klasické účty úložiště. Operátoři cloudu, které potřebuje ke správě virtuálních počítačů a účet úložiště, zvažte přidá do *Přispěvatel virtuálních počítačů* role.
 
 Organizace, které nebudou vynucovat řízení přístupu dat s využitím funkcí, jako je RBAC může poskytnutí další oprávnění, než je nutné uživatelům. To může vést k datům ohrožení zabezpečení pomocí povolit uživatelům přístup k určitým typům typy dat (např. vysoký obchodní dopad), který by neměl mít na prvním místě.
 
-Další informace o Azure RBAC přečíst v článku [řízení přístupu](../active-directory/role-based-access-control-configure.md).
+Další informace o Azure RBAC přečíst v článku [řízení přístupu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Řízení umístění, kde jsou prostředky vytvořené pomocí resource manager
 Povolení operátorům cloudu úkoly při brání nejnovější konvence, které jsou potřebné ke správě prostředků vaší organizace je velmi důležité. Organizace, které chcete mít pod kontrolou umístění, kde jsou vytvářeny prostředky měli pevného kódu těchto umístění.

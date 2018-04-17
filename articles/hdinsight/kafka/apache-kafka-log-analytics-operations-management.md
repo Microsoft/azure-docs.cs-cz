@@ -9,16 +9,16 @@ editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a373ef5cc71d5ae69c83555dc71525aa2188233e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
@@ -65,8 +65,8 @@ Postup povolení analýzy protokolů pro HDInsight jsou stejné pro všechny clu
     | Typ protokolu | Popis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Server.log Kafka zprostředkovatele |
-    | log\_kafkacontroller\_CL | Controller.log Kafka zprostředkovatele |
-    | metrics\_kafka\_CL | Kafka JMX metriky |
+    | protokol\_kafkacontroller\_CL | Controller.log Kafka zprostředkovatele |
+    | metriky\_kafka\_CL | Kafka JMX metriky |
 
     ![Obrázek hledání využití procesoru](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  

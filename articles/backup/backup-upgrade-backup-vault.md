@@ -1,11 +1,11 @@
 ---
-title: "Upgrade trezoru zálohování do trezoru služeb zotavení služby Azure Backup | Microsoft Docs"
-description: "Upgrade trezoru zálohování do trezoru služeb zotavení získat nové funkce, například zálohování správce prostředků virtuálních počítačů, lepší zabezpečení, zálohování virtuálních počítačů VMware a zálohy stav systému pro systémy Windows Server"
+title: Upgrade trezoru zálohování do trezoru služeb zotavení služby Azure Backup | Microsoft Docs
+description: Upgrade trezoru zálohování do trezoru služeb zotavení získat nové funkce, například zálohování správce prostředků virtuálních počítačů, lepší zabezpečení, zálohování virtuálních počítačů VMware a zálohy stav systému pro systémy Windows Server
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: 
+editor: ''
 keyword: backup vault; upgrade vault; recovery services vault
 ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Trezor záloh upgradovat na trezor služeb zotavení
 Tento článek obsahuje přehled jaké trezor služeb zotavení poskytuje, často kladené otázky týkající se upgradu existující zálohy trezoru do trezoru služeb zotavení a kroků po upgradu. Trezor služeb zotavení je ekvivalentem Azure Resource Manager, kde zálohovaných dat úložiště záloh. Data je obvykle kopie dat, nebo informace o konfiguraci pro virtuální počítače (VM), úlohy, servery nebo pracovní stanice, jestli místně nebo v Azure.
@@ -34,7 +34,7 @@ Trezory služeb zotavení jsou založené na modelu Azure Resource Manager ve sl
 
 - **Centrální monitorování pro vaše prostředí IT hybridní**: trezory služeb zotavení s, můžete monitorovat nejenom vaše [virtuální počítače Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portálu. [Další informace](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje správu řízení podrobných přístupu v Azure. [Azure poskytuje různé integrované role](../active-directory/role-based-access-built-in-roles.md), a zálohování Azure má tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služeb zotavení jsou kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje správu řízení podrobných přístupu v Azure. [Azure poskytuje různé integrované role](../role-based-access-control/built-in-roles.md), a zálohování Azure má tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služeb zotavení jsou kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatele. [Další informace](backup-rbac-rs-vault.md)
 
 - **Chránit všechny konfigurace virtuálních počítačů Azure**: trezory služeb zotavení ochrana založené na správci prostředků virtuálních počítačů včetně prémiové disky, spravované disky a virtuální počítače šifrovaná. Upgrade trezor Backup do trezoru služeb zotavení vám dává příležitost k upgradu virtuální počítače založené na portálu Service Manager na virtuální počítače na základě Resource Manager. Při upgradu trezoru, můžete zachovat body obnovení virtuálních počítačů na bázi portálu Service Manager a nakonfigurovat ochranu upgradovaný virtuálních počítačů (Resource Manager povoleno). [Další informace](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
@@ -99,7 +99,7 @@ Monitorování pro zálohování (agenta MARS a IaaS) je nová funkce, kterou do
 **Jak se nahlásit problém?**</br>
 Pokud jakékoli její části trezoru upgrade selže, Všimněte si, že že OperationID uvedený v chybě. Microsoft Support bude fungovat proaktivně k vyřešení problému. Můžete oslovení podpory nebo e-mailu nás na adrese rsvaultupgrade@service.microsoft.com s ID odběru, název trezoru a OperationId. Pokusíme se problém vyřešit co nejrychleji. Pokud se na společnost Microsoft výslovně pokyn není opakujte operaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Použijte v následujících článcích:</br>
 [Zálohování virtuálních počítačů IaaS](backup-azure-arm-vms-prepare.md)</br>
 [Zálohování serveru Azure Backup](backup-azure-microsoft-azure-backup.md)</br>

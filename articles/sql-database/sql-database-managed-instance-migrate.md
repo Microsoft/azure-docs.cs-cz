@@ -9,26 +9,32 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 4546f03294ea8ab01ecb2b2777c5b92dbc5a7f4a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5b8a2ec7e0401ac239acdefdd77a13b522f73960
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
 V tomto článku informace o metodách pro migraci systému SQL Server 2005 nebo novější verze instance do Azure SQL Database spravované Instance (preview). 
-
-> [!NOTE]
-> Migrace jedné databáze do jedné databáze nebo elastického fondu, najdete v části [migrovat do databáze SQL serveru do Azure SQL Database](sql-database-cloud-migrate.md).
 
 MI je rozšíření stávající služby SQL Database, které nabízí třetí možnost nasazení vedle jedné databáze a elastických fondů.  Je navržená tak, jak povolit databázi navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. SQL Database Managed Instance poskytuje vysokou kompatibilitu díky místnímu programovacímu modelu SQL Serveru a integrované podpoře valné většiny funkcí SQL Serveru a doprovodných nástrojů a služeb.
 
 Na vysoké úrovni proces migrace aplikace vypadá na následující diagram:
 
 ![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
+
+- [Vyhodnocení kompatibility spravované Instance](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
+- [Vyberte možnost připojení k aplikaci](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
+- [Nasazení do optimálně velikostí spravované Instance](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
+- [Vyberte metodu migrace a migrujte](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
+- [Monitorování aplikací](sql-database-managed-instance-migrate.md#monitor-applications)
+
+> [!NOTE]
+> Migrace jedné databáze do jedné databáze nebo elastického fondu, najdete v části [migrovat do databáze SQL serveru do Azure SQL Database](sql-database-cloud-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Vyhodnocení kompatibility spravované Instance
 
@@ -43,14 +49,6 @@ Nicméně jsou případy, pokud je potřeba zvážit alternativní možnosti, ja
 - Pokud absolutně budete muset zůstat na konkrétní verzi systému SQL Server (2012, například).
 - Pokud vaše požadavky na výpočetní jsou mnohem nižší dané spravované Instance nabízí ve verzi public preview (jeden vCore pro instanci) a databáze konsolidace není přijatelné možnost.
 
-## <a name="choose-app-connectivity-option"></a>Vyberte možnost připojení k aplikaci
-
-Spravované Instance je plně obsažen ve virtuální síti, takže poskytuje ultimate úroveň izolace a zabezpečení pro vaše data. Následující diagram znázorňuje několik možností nasazení různé topologie aplikaci zcela v Azure nebo v hybridním prostředí, bez ohledu na to, zda zvolíte plně spravovaná služba, nebo hostovaný modelu pro aplikace front-endu.
-
-![topologie nasazení aplikace](./media/sql-database-managed-instance-migration/application-deployment-topologies.png)
-
-Některé vybrané možnosti Povolit připojení k SQL koncový bod pouze prostřednictvím privátních IP adres, což zaručuje optimální úroveň izolace pro vaše data. <!--- For more information, see How to connect your application to Managed Instance.--->
-
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Nasazení do optimálně velikostí spravované Instance
 
 Spravované Instance je přizpůsobit pro místní úlohy, které jsou v úmyslu přesunout do cloudu. Zavádí nové nákupní model, který poskytuje větší flexibilitu při výběru správnou úroveň prostředky pro úlohy. Na světě místní jste zvyklí pravděpodobně dimenzování tyto úlohy pomocí fyzických jader. Nový model nákupu pro spravované Instance je založena na virtuální jader, nebo "vCores" s další úložiště a vstupně-výstupní operace k dispozici samostatně. VCore model je jednodušší způsob, jak porozumět požadavkům vašeho výpočetního v cloudu můžete použít místní ještě dnes. Tento nový model umožňuje optimální velikost prostředí cílového v cloudu.
@@ -59,7 +57,7 @@ Můžete vybrat výpočetní a prostředky úložiště v nasazení čas a potom
 
 ![nastavení velikosti spravované instance](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-Naučte se vytvořit virtuální síť infrastruktury a spravované Instance - a obnovit databázi ze záložního souboru, najdete v tématu [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
+Naučte se vytvářet virtuální sítě infrastruktury a spravovat instanci, najdete v tématu [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md).
 
 > [!IMPORTANT]
 > Je důležité udržovat vaše cílové virtuální síť a podsíť vždy v souladu s [požadavky spravované Instance VNET](sql-database-managed-instance-vnet-configuration.md#requirements). Nekompatibilita můžete zabránit vám v vytvoření nové instance služby nebo pomocí ty, které jste už vytvořili.
@@ -77,11 +75,13 @@ Spravované Instance je plně spravovaná služba, která umožňuje delegovat n
 
 Spravované Instance podporuje následující možnosti migrace databáze (aktuálně to jsou pouze podporovaných migračních metody):
 
-### <a name="azure-database-migration-service"></a>Služba Azure Database Migration
+- Služba Azure migrace databáze - migrace s téměř nulové výpadek
+- Nativní obnovení z adresy URL - využívá nativní zálohy z SQL serveru a vyžaduje výpadky
+- Migrace pomocí souboru BACPAC souboru – používá soubor souboru BACPAC z SQL serveru nebo v databázi SQL a vyžaduje výpadky
+
+### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure databáze migrace služby (DMS)](../dms/dms-overview.md) je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Tato služba zjednodušuje úkoly vyžadované pro přesun existujících třetích stran a databáze SQL serveru do Azure. Možnosti nasazení ve verzi Public Preview zahrnují Azure SQL Database, spravované Instance a SQL Server v virtuální počítač Azure. Služba DMS patří mezi doporučené metody migrace pro vaše podnikové úlohy. 
-
-![DMS](./media/sql-database-managed-instance-migration/dms.png)
 
 Další informace o krocích, tento scénář a konfiguraci pro DMS najdete v tématu [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -100,12 +100,12 @@ Následující tabulka obsahuje další informace o metodě, které můžete pou
 |Uveďte zálohování do úložiště Azure|Předchozí SQL 2012 SP1 CU2|Nahrát soubor .bak přímo do úložiště Azure|
 ||2012 SP1 CU2 - 2016|Přímé zálohování pomocí zastaralé [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxe|
 ||2016 a vyšší|Přímé zálohování pomocí [s pověření SAS](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Obnovení z úložiště Azure do spravované Instance|[OBNOVENÍ z adresy URL pověření SAS](sql-database-managed-instance-tutorial-portal.md#restore-the-wide-world-importers-database-from-a-backup-file)|
+|Obnovení z úložiště Azure do spravované Instance|[OBNOVENÍ z adresy URL pověření SAS](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
-> PRestore systémových databází se nepodporuje. Pokud chcete migrovat instance objektů úrovně (uložené v databázi master a databázi msdb databázích), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
+> Obnovení databází systému není podporována. Pokud chcete migrovat instance objektů úrovně (uložené v databázi master a databázi msdb databázích), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
-Úplné kurz, který zahrnuje obnovení ze zálohy databáze do Instance spravované pomocí pověření SAS, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
+Úplné kurz, který zahrnuje obnovení ze zálohy databáze do Instance spravované pomocí pověření SAS, najdete v části [obnovit ze zálohy do Instance spravované](sql-database-managed-instance-restore-from-backup-tutorial.md).
 
 ### <a name="migrate-using-bacpac-file"></a>Migrace pomocí souboru BACPAC souboru
 
@@ -127,6 +127,6 @@ K posílení zabezpečení, zvažte použití některých funkcí, které jsou k
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o instanci spravované najdete v tématu [co je spravované Instance?](sql-database-managed-instance.md)
-- Kurz, který zahrnuje obnovení ze zálohy, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
+- Informace o instancích spravované najdete v tématu [co je Instance spravované?](sql-database-managed-instance.md).
+- Kurz, který zahrnuje obnovení ze zálohy, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md).
 - Kurz zobrazující migraci pomocí DMS, najdete v části [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  

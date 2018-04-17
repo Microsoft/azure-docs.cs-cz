@@ -1,23 +1,21 @@
 ---
-title: "Připojit k místní síti - Azure HDInsight HDInsight | Microsoft Docs"
-description: "Zjistěte, jak vytvořit cluster služby HDInsight ve virtuální síti Azure a připojte ho k síti na pracovišti. Zjistěte, jak nakonfigurovat překlad mezi HDInsight a místní sítí pomocí vlastního serveru DNS."
-documentationcenter: 
+title: Připojit k místní síti - Azure HDInsight HDInsight | Microsoft Docs
+description: Zjistěte, jak vytvořit cluster služby HDInsight ve virtuální síti Azure a připojte ho k síti na pracovišti. Zjistěte, jak nakonfigurovat překlad mezi HDInsight a místní sítí pomocí vlastního serveru DNS.
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>Připojit k místní síti HDInsight
 
@@ -74,7 +72,7 @@ Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](http
 > * [Vytvoření virtuálního počítače – rozhraní příkazového řádku Azure](../virtual-machines/linux/quick-create-cli.md)
 > * [Vytvoření virtuálního počítače - prostředí Azure PowerShell](../virtual-machines/linux/quick-create-portal.md)
 
-1. Z [portál Azure](https://portal.azure.com), vyberte  __+__ , __výpočetní__, a __Ubuntu Server 16.04 LTS__.
+1. Z [portál Azure](https://portal.azure.com), vyberte __+__, __výpočetní__, a __Ubuntu Server 16.04 LTS__.
 
     ![Vytvoření virtuálního počítače Ubuntu](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
@@ -297,7 +295,7 @@ Postupujte podle kroků v [vytvoření clusteru HDInsight pomocí portálu Azure
 
 ## <a name="connecting-to-hdinsight"></a>Připojení k HDInsight
 
-Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. Pro příklad, který můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
+Většina dokumentace v HDInsight předpokládá, že máte přístup ke clusteru přes internet. To znamená, že se ke clusteru můžete připojit třeba na https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejný brány, která není k dispozici, pokud jste použili skupiny Nsg nebo udr k omezení přístupu z Internetu.
 
 Některé dokumentaci odkazuje také `headnodehost` při připojování ke clusteru z relace SSH. Tato adresa je dostupná pouze z uzlů v rámci clusteru a již není použitelné na klientů připojených přes virtuální síť.
 

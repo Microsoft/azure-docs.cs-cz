@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c755d171b34d59d2746a965ab3511a0df00c98db
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d464bbfb9f38b184e47911a7224be8ec8679f0be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Ukládání dat na hranici s databází serveru SQL Server
 
@@ -36,10 +36,10 @@ Po dokončení požadované kurzy, musí mít všechny požadované součásti p
 * Aktivní Azure IoT hub.
 * IoT hraniční zařízení s alespoň 2 GB paměti RAM a disku 2 GB.
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge rozšíření pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
-* [C# pro rozšíření Visual Studio Code (používá technologii OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
+* [Rozšíření Azure IoT Edge pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
+* [Rozšíření jazyka C# pro Visual Studio Code (využívající OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
 * [Docker](https://docs.docker.com/engine/installation/)
-* [Základní rozhraní .NET 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
+* [.NET Core 2.0 SDK](https://www.microsoft.com/net/core#windowscmd). 
 * [Python 2.7](https://www.python.org/downloads/)
 * [Skript IoT okraj ovládacího prvku](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 * Šablona AzureIoTEdgeFunction (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
@@ -98,7 +98,7 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
 3. Nahraďte `<docker registry address>` s adresou vyplněno dokončené kurzu [nasazení funkce Azure jako modul IoT Edge – náhled](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)
 
    >[!NOTE]
-   >Adresa registru kontejneru je stejný jako server přihlášení, který jste zkopírovali z registru. Musí být ve tvaru `<your container registry name>.azurecr.io`
+   >Adresa registru kontejneru je stejná jako přihlašovací server, který jste zkopírovali ze svého registru. Musí být ve tvaru `<your container registry name>.azurecr.io`
 
 4. V závislosti na operační systém, který používáte aktualizujte nastavení modulu jazyka SQL s následujícím kódem: 
 
@@ -106,7 +106,7 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
    * Linux:
@@ -297,7 +297,7 @@ Použít změny, které jste udělali, aktualizovat image kontejneru, publikovat
 2. Podle platformy, kterou používáte, rozbalte **windows nano** nebo **linux x64** složky. 
 3. Klikněte pravým tlačítkem myši **soubor Docker** soubor a vyberte **sestavení IoT Edge modulu Docker image**.
 4. Přejděte na **FilterFunction** složky projektu a klikněte na tlačítko **vyberte složku jako EXE_DIR**.
-5. Automaticky otevírané okno textového pole v horní části okna VS Code zadejte název bitové kopie. Například, `<your container registry address>/filterfunction:latest`. Pokud nasazujete do místního registru, musí být název `<localhost:5000/filterfunction:latest>`.
+5. Do místního textového pole v horní části okna VS Code zadejte název image. Například, `<your container registry address>/filterfunction:latest`. Pokud nasazujete do místního registru, musí být název `<localhost:5000/filterfunction:latest>`.
 6. Příkaz palety VS Code, vyberte **Edge: Push IoT Edge modulu Docker image**. 
 7. Automaticky otevírané okno textového pole zadejte stejný název bitové kopie. 
 8. Příkaz palety VS Code, vyberte **Edge: restartujte Edge**.

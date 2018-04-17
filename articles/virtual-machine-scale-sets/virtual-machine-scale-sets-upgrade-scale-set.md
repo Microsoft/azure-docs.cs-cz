@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Upravit škálovací sadu virtuálních počítačů
 V průběhu životního cyklu aplikací musíte upravit nebo aktualizovat vaše škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci sady škálování nebo změnit konfiguraci aplikace. Tento článek popisuje, jak upravit existující měřítku nastavit pomocí rozhraní REST API, prostředí Azure PowerShell nebo Azure CLI 2.0.
@@ -347,6 +347,7 @@ Některé vlastnosti lze nastavit pouze při vytváření sady škálování. Ty
 - Zóny dostupnosti
 - Vydavatel referenční bitové kopie
 - Nabídka referenční bitové kopie
+- Spravovaný typ účtu úložiště disku operačního systému
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Vlastnosti, které lze změnit pouze na základě aktuální hodnoty
 S výjimkami v závislosti na aktuální hodnota může změnit některé vlastnosti. Tyto vlastnosti:

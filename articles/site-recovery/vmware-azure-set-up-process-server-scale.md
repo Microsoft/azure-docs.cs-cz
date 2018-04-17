@@ -1,6 +1,6 @@
 ---
-title: "Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware."
+title: Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 9d9270d8c6d2ffc5e42dfc6f94818fdace89bfb5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7bbe690e749680edde08facadf6d5910d7896f7e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesní server v Azure pro navrácení služeb po obnovení
 
@@ -26,7 +26,7 @@ Další informace o [vytvoření](vmware-azure-reprotect.md) a [navrácení slu�
 
 ## <a name="deploy-a-process-server-in-azure"></a>Nasadit procesový server v Azure
 
-1. V trezoru > **infrastruktura Site Recovery**> **Mnaage** > **konfigurační servery**, vyberte konfigurační server.
+1. V trezoru > **infrastruktura Site Recovery**> **spravovat** > **konfigurační servery**, vyberte konfigurační server.
 2. Na stránce serveru klikněte na tlačítko **+ procesového serveru**
 3. V **přidat procesový server** stránku a vyberte, které chcete nasadit procesový server v Azure.
 4. Zadejte nastavení Azure, včetně předplatné použité pro převzetí služeb při selhání, skupinu prostředků, oblast Azure pro převzetí služeb při selhání a virtuální síť, ve které se nacházejí virtuální počítače Azure. Pokud jste použili více sítí Azure, je třeba procesový server v každé z nich.

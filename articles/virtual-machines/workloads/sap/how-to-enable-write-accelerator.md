@@ -16,21 +16,19 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zápisu akcelerátoru pro nasazení SAP
 Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradně pro virtuální počítače M-Series. Zápis akcelerátoru Azure není k dispozici žádné další VM-Series v Azure, s výjimkou M-Series. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. 
 
->[!NOTE]
-> V tomto okamžiku je ve verzi public preview akcelerátoru zápisu Azure a vyžaduje prázdný seznam svoje ID předplatného Azure
-
 Funkce zápisu akcelerátoru Azure k dispozici pro nasazení řady M jako ve verzi public preview v:
 
 - Západní US2
+- Východní US2
 - Západní Evropa
 - Jihovýchodní Asie
 
@@ -44,8 +42,15 @@ Azure akcelerátoru zapisovat pouze funguje ve spojení s [discích spravovanýc
 
 Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat Azure zápisu akcelerátoru. Aktuální omezení jsou:
 
-- 16 virtuálních pevných disků pro M128xx virtuálních počítačů
-- 8 virtuální pevné disky pro M64xx virtuálních počítačů
+
+| VIRTUÁLNÍ POČÍTAČ SKU | Počet disků zápisu akcelerátoru | Zápis akcelerátoru IOPS na virtuálních počítačů |
+| --- | --- | --- |
+| M128ms | 16 | 8000 |
+| M128s | 16 | 8000 |
+| M64ms | 8 | 4000 |
+| M64s | 8 | 4000 | 
+
+
 
 > [!IMPORTANT]
 > Pokud chcete povolit nebo zakázat Azure zápisu akcelerátoru pro existující svazek, který vychází z více disků Storage úrovně Premium a rozdělená pomocí Správce Windows disk nebo svazek, prostory úložiště ve Windows, Windows škálovatelný souborový server (SOFS), Linux LVM nebo MDADM, vytváření svazku všechny disky musí být zapnutá nebo vypnutá pro zápis akcelerátoru v samostatné kroky. **Před povolením nebo zakázáním zápisu akcelerátoru v takové konfiguraci, vypněte virtuální počítač Azure**. 

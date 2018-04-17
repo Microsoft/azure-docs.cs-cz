@@ -1,27 +1,25 @@
 ---
-title: "Serializaci dat ve službě Azure - Microsoft Avro Library - Hadoop | Microsoft Docs"
-description: "Zjistěte, jak k serializaci a deserializaci dat v Hadoop v HDInsight pomocí Microsoft Avro Library k uchovávání paměť, databáze nebo souboru."
+title: Serializaci dat ve službě Azure - Microsoft Avro Library - Hadoop | Microsoft Docs
+description: Zjistěte, jak k serializaci a deserializaci dat v Hadoop v HDInsight pomocí Microsoft Avro Library k uchovávání paměť, databáze nebo souboru.
 keywords: avro hadoop avro
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 5bb2ee2b9b838cc9feca60eca6b2c721ca58ed45
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b4bd615a8a64070a9b246cb8fe8635cc89108cf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serializovat data v Hadoop pomocí Microsoft Avro Library
 
@@ -1384,7 +1382,7 @@ Všechny informace z požadavků musí být zadán pro vzorový konfigurační s
 * Upravte soubor app.config v kořenovém adresáři ukázka a potom sestavit ukázku
 * Nejprve sestavit ukázku a pak upravte AvroHDISample.exe.config v adresáři sestavení
 
-V obou případech by mělo být provedeno všechny úpravy  **<appSettings>**  v oddílu nastavení. Postupujte podle komentáře v souboru.
+V obou případech by mělo být provedeno všechny úpravy **<appSettings>** v oddílu nastavení. Postupujte podle komentáře v souboru.
 Ukázka spuštění z příkazového řádku tak, že spustíte následující příkaz (kde soubor .zip s ukázkou se předpokládá, že extrahovány do C:\AvroHDISample; Pokud, jinak použijte cestu k souboru relevantní):
 
     AvroHDISample run C:\AvroHDISample\Data

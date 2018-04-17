@@ -1,8 +1,8 @@
 ---
-title: "Odpovědi výstrah v Azure Log Analytics | Microsoft Docs"
-description: "Výstrahy v Log Analytics identifikovat důležité informace v pracovním prostoru Azure a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje, jak vytvořit pravidlo výstrahy a podrobnosti o různé akce, které jejich zajištění může trvat."
+title: Odpovědi výstrah v Azure Log Analytics | Microsoft Docs
+description: Výstrahy v Log Analytics identifikovat důležité informace v pracovním prostoru Azure a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje, jak vytvořit pravidlo výstrahy a podrobnosti o různé akce, které jejich zajištění může trvat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 6a48e4c0ab61e5dcf526bb8b1d8bdc6b0d16f9e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Přidání akce do pravidla výstrah v analýzy protokolů
 Když [v analýzy protokolů se vytvoří výstraha](log-analytics-alerts.md), máte možnost [konfigurace pravidlo výstrahy](log-analytics-alerts.md) provést několik akcí.  Tento článek popisuje různé akce, které jsou k dispozici a podrobnosti o konfiguraci jednotlivých typů.
@@ -27,8 +27,8 @@ Když [v analýzy protokolů se vytvoří výstraha](log-analytics-alerts.md), m
 | Akce | Popis |
 |:--|:--|
 | [E-mail](#email-actions) | Jeden nebo více příjemcům odeslat e-mail s detaily výstrahy. |
-| [Webhooku](#webhook-actions) | Vyvolání externího procesu prostřednictvím jedné žádosti HTTP POST. |
-| [Sady Runbook](#runbook-actions) | Spuštění sady runbook ve službě Azure Automation. |
+| [Webhook](#webhook-actions) | Vyvolání externího procesu prostřednictvím jedné žádosti HTTP POST. |
+| [sady runbook](#runbook-actions) | Spuštění sady runbook ve službě Azure Automation. |
 
 
 ## <a name="email-actions"></a>Akce e-mailu
@@ -39,7 +39,7 @@ E-mailu akce vyžadují vlastnosti v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | Předmět |Subjektu v e-mailu.  Tělo e-mailu se nedá změnit. |
-| Příjemci |Adresy všech příjemců e-mailu.  Pokud zadáte víc než jednou adresou, jednotlivé adresy oddělujte středníkem (;). |
+| Příjemci |Adresy všech příjemců e-mailu.  Pokud zadáte více než jednu adresu, oddělte adresy středníkem (;). |
 
 
 ## <a name="webhook-actions"></a>Akce Webhooku
@@ -70,7 +70,7 @@ Webhooky zahrnují adresu URL a datovou část ve formátu JSON, který se data 
 | SearchIntervalInSeconds |#searchinterval |Časový interval pro pravidlo výstrahy. |
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Počáteční čas pro dotaz ve formátu UTC. |
 | SearchQuery |#searchquery |Vyhledávací dotaz protokolu používá pravidlo výstrahy. |
-| SearchResults |Níže najdete |Záznamů vrácených dotazem ve formátu JSON.  Omezeno na první 5 000 záznamů. |
+| SearchResults |Viz níže |Záznamů vrácených dotazem ve formátu JSON.  Omezeno na první 5 000 záznamů. |
 | ID pracovního prostoru |#workspaceid |ID pracovního prostoru analýzy protokolů. |
 
 Například může určit následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*.  Služby, který volá tento webhook by byla očekávána tento parametr.
@@ -603,6 +603,7 @@ Následuje ukázka datové části pro akci sady runbook v pracovním prostoru u
                 "a4e29a95-5b4c-408b-80e3-113f9410566e",
                 "00000000-0000-0000-0000-000000000000",
                 "Usage"
+            ]
             ]
         }
         ]

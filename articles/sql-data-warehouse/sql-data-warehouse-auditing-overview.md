@@ -1,28 +1,26 @@
 ---
-title: "Auditování v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Začínáme s auditování v Azure SQL Data Warehouse"
+title: Auditování v Azure SQL Data Warehouse | Microsoft Docs
+description: Další informace o auditování a jak nastavit auditování v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: 
 author: ronortloff
-manager: jhubbard
-editor: 
-ms.assetid: 0e6af148-b218-4b43-bb5f-907917d20330
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.custom: security
-ms.date: 01/16/2018
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/11/2018
+ms.author: rortloff
+ms.reviewer: jrj
+ms.openlocfilehash: 7bce59114dcfef7f9faa7f112c62dbb88044f2ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování v Azure SQL Data Warehouse
 
+Další informace o auditování a jak nastavit auditování v Azure SQL Data Warehouse.
+
+## <a name="what-is-auditing"></a>Co je auditování?
 Auditování SQL Data Warehouse umožňuje záznam, který protokolují se události v databázi auditování v účtu úložiště Azure. Auditování vám může pomoct zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které by mohly být známkou problémů obchodního charakteru nebo by mohly vzbuzovat podezření narušení zabezpečení. Auditování SQL Data Warehouse taky integruje s Microsoft Power BI pro vytváření sestav a analýzu.
 
 Nástroje auditování povolit a zajištění dodržování standardů dodržování předpisů, ale nezaručují dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v části <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Centrum zabezpečení Azure</a>.

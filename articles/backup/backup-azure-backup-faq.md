@@ -1,25 +1,25 @@
 ---
-title: "Nejčastější dotazy k Azure Backup | Dokumentace Microsoftu"
-description: "Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. "
+title: Nejčastější dotazy k Azure Backup | Dokumentace Microsoftu
+description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "zálohování a zotavení po havárii; služba zálohování"
+editor: ''
+keywords: zálohování a zotavení po havárii; služba zálohování
 ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 4/11/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 39e7c95f236f53d7b7c4de0e5b792debe5c0c6f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9226bef986a0fd2b6e8454cbd78b659feda401b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na časté otázky týkající se součástí Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ K rychlému procházení částmi tohoto článku použijte odkazy vpravo v čá
 Ano. Od ledna 2018 je možné vytvořit až 25 trezorů služeb zotavení, za podporovanou oblast Azure Backup za předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru? <br/>
-Můžete zaregistrovat až 200 Azure virtuálních počítačů na jeden trezor. Pokud používáte MAB agenta můžete zaregistrovat až 50 MAB agentů na jeden trezor. A můžete zaregistrovat servery pro 50 serverů nebo DPM MAB do trezoru.
+Můžete zaregistrovat až 200 Azure virtuálních počítačů na jeden trezor. Pokud používáte MAB agenta, můžete zaregistrovat až 50 MAB agentů na jeden trezor. A můžete zaregistrovat servery pro 50 serverů nebo DPM MAB do trezoru.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Pokud má moje organizace jeden trezor, jak mohu během obnovování dat izolovat data jednoho serveru od jiného?<br/>
 Všechny servery zaregistrované ke stejnému trezoru mohou obnovit data zálohovaná ostatními servery, *které používají stejné heslo* Máte-li servery, jejichž zálohovaná data chcete izolovat od ostatních serverů ve vaší organizaci, použijte pro tyto servery vyhrazené heslo. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.
@@ -81,13 +81,13 @@ Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování
 Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou dosud přenesená data ignorována. Při následujícím přírůstkovém zálohování se přenesou data, která se změnila od poslední úspěšně dokončené úlohy zálohování.
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>Existují omezení počtu a času naplánovaných úloh zálohování?<br/>
-Ano. Úlohy zálohování na pracovních stanicích s Windows Serverem nebo s Windows můžete spustit až třikrát za den. Úlohy zálohování na System Center DPM můžete spustit až dvakrát za den. Úlohy zálohování pro virtuální počítače IaaS můžete spustit jednou za den. Pomocí zásady plánování můžete pro pracovní stanice s Windows Serverem nebo s Windows zadat denní nebo týdenní plány. Pomocí aplikace System Center DPM můžete zadat denní, týdenní, měsíční nebo roční plány.
+Ano. Úlohy zálohování na pracovních stanicích s Windows Serverem nebo s Windows můžete spustit až třikrát za den. Úlohy zálohování na System Center DPM můžete spustit až dvakrát denně. Úlohy zálohování pro virtuální počítače IaaS můžete spustit jednou za den. Chcete-li zadat denní nebo Týdenní plány používejte zásady plánování pro Windows Server nebo pracovní stanice systému Windows. S nástrojem System Center DPM můžete zadat denní, týdenní, měsíční a roční plány.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Proč je velikost dat přenášených do trezoru služby Recovery Services menší než velikost dat, která jsem zálohoval?<br/>
  Všechna data zálohovaná z agenta Azure Backup, SCDPM nebo serveru Azure Backup, projdou před odesláním kompresí a šifrováním. Po kompresi a šifrování se použije, data v trezoru služeb zotavení je 30-40 % menší.
 
 ## <a name="what-can-i-back-up"></a>Co můžu zálohovat
-### <a name="which-operating-systems-do-azure-backup-support-br"></a>Které operační systémy podporuje služba Azure Backup? <br/>
+### <a name="which-operating-systems-does-azure-backup-support-br"></a>Které operační systémy podporují Azure Backup? <br/>
 Azure Backup podporuje pro zálohování souborů a složek a pro zálohování úloh aplikací chráněných pomocí Azure Backup Serveru a aplikace System Center Data Protection Manager (SCDPM) následující operační systémy.
 
 | Operační systém | Platforma | Skladová jednotka (SKU) |
@@ -112,7 +112,7 @@ Azure Backup podporuje pro zálohování souborů a složek a pro zálohování 
 
 
 ### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Existuje nějaké omezení velikosti jednotlivých zdrojů zálohovaných dat? <br/>
-Množství dat, která můžete do trezoru zálohovat, není nijak omezené. Azure Backup omezuje maximální velikost pro zdroj dat, ale tato omezení jsou velká. K srpnu 2015 je maximální velikost zdroje dat pro podporované operační systémy:
+Zálohování Azure vynucuje maximální velikost zdroje dat, ale jsou velké limity pro zdroj. K srpnu 2015 je maximální velikost zdroje dat pro podporované operační systémy:
 
 | Zdroj č. | Operační systém | Maximální velikost zdroje dat |
 |:---:|:--- |:--- |
@@ -132,13 +132,16 @@ Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdroj
 | Microsoft Exchange |Součet všech databází systému Exchange na zálohovaném serveru Exchange. |
 | BMR/Stav systému |Každá jednotlivá kopie BMR nebo stavu systému zálohovaného počítače. |
 
-Pro zálohování virtuálních počítačů Azure každý virtuální počítač může mít až 16 datových disků s každý datový disk o velikosti 4095GB nebo méně. <br>
+Pro zálohování virtuálních počítačů Azure IaaS každý virtuální počítač může mít až 16 datových disků a každý datový disk může být až 4095 GB.
+
+### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Existuje nějaké omezení na množství dat, které jsou uložené v trezoru služeb zotavení?
+Neexistuje žádné omezení množství dat, která vám může zálohovat služeb zotavení trezoru.
 
 ## <a name="retention-policy-and-recovery-points"></a>Zásady uchovávání informací a body obnovení
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Je nějaký rozdíl mezi zásadami uchovávání informací pro DPM a Windows Server nebo klienta (tj. pro Windows Server bez DPM)?<br/>
 Ne, DPM i Windows Server nebo klient mohou mít denní, týdenní, měsíční nebo roční zásady uchovávání.
 
-### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Mohu konfigurovat zásady uchovávání informací selektivně – tj. nakonfigurovat týdenní a denní, ale ne roční a měsíční?<br/>
+### <a name="can-i-configure-my-retention-policies-selectively--that-is-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Můžete nakonfigurovat Moje zásady uchovávání informací selektivně – tj, konfigurovat každý týden a denní, ale ne roční a měsíční?<br/>
 Ano, struktura uchovávání Azure Backup vám poskytuje úplnou flexibilitu při definování zásad uchovávání informací podle vašich požadavků.
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>Můžu naplánovat zálohování na 18:00 a pro zásady uchovávání informací zadat jiný čas?<br/>

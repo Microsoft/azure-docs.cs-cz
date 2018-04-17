@@ -3,8 +3,8 @@ title: Jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Em
 description: Zjistěte, jak migrovat z kolekce pracovních prostorů Power BI pro Power BI Embedded a využívání přejde pro vložení do aplikace.
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.service: power-bi-embedded
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: maghan
+ms.openlocfilehash: d138b0c26ffc0a44947f79811fd586dda7df4509
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Jak migrovat obsah kolekce pracovních prostorů Power BI pro Power BI Embedded
 
@@ -107,7 +107,7 @@ Existuje několik typů sestav, každou nutnosti toku různé migrace.
 
 V mezipaměti datové sady odkazují na soubor PBIX soubory, které měl importovali data a živé připojení nebo připojení DirectQuery.
 
-**Flow**
+**Tok**
 
 1. Stáhněte si soubor PBIX rozhraní API volejte z pracovního prostoru kolekce pracovních prostorů Power BI.
 2. Uložte soubor PBIX.
@@ -115,7 +115,7 @@ V mezipaměti datové sady odkazují na soubor PBIX soubory, které měl importo
 
 #### <a name="directquery-dataset-and-report"></a>DirectQuery datovou sadu a sestavu
 
-**Flow**
+**Tok**
 
 1. Volání GET https://api.powerbi.com/v1.0/collections/{collection_id}/workspaces/{wid}/datasets/{dataset_id}/Default.GetBoundGatewayDataSources a uložte připojovací řetězec přijata.
 2. Stáhněte si soubor PBIX rozhraní API volejte z pracovního prostoru kolekce pracovních prostorů Power BI.
@@ -129,7 +129,7 @@ V mezipaměti datové sady odkazují na soubor PBIX soubory, které měl importo
 
 Sestavy než října 2016 nepodporují funkci stáhnout soubor PBIX nahrát.
 
-**Flow**
+**Tok**
 
 1. Získáte soubor PBIX z vývojové prostředí (vaše interní zdrojového kódu).
 2. Importovat soubor PBIX volání pro Power BI Embedded pracovním prostoru.
@@ -138,7 +138,7 @@ Sestavy než října 2016 nepodporují funkci stáhnout soubor PBIX nahrát.
 
 Stáhněte si soubor PBIX nepodporuje *Push rozhraní API* datové sady. Doručte datovou sadu rozhraní API, které nelze přenést data z Power BI prostoru kolekcí do Power BI Embedded.
 
-**Flow**
+**Tok**
 
 1. Volání API "Vytvořte datovou sadu" datové sadě Json pro vytvoření datové sady pro Power BI Embedded pracovním prostoru.
 2. Znovu sestavte sestavy pro vytvořenou datovou sadu *.

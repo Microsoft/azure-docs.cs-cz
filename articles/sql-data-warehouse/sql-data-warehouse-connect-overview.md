@@ -1,31 +1,26 @@
 ---
-title: "Připojení k Azure SQL Data Warehouse | Dokumentace Microsoftu"
-description: "Postup vyhledání názvu serveru a připojovacího řetězce pro Azure SQL Data Warehouse"
+title: Připojení k Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Připojení k Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: e52872ca-ae74-4e25-9c56-d49c85c8d0f0
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 12/14/2017
-ms.author: anvang;barbkess;kevin
-ms.openlocfilehash: 804d91d309fcce42f0ac50ac98dbad9c5648b4eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a575bc4f57c3b1dbcf3846b1246b338621e4d720
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
-Tento článek vám pomůže s prvním připojením k SQL Data Warehouse.
+Připojení k Azure SQL Data Warehouse.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
-Prvním krokem při připojení k SQL Data Warehouse je vědět, jak najít název serveru.  Například název serveru v následujícím příkladu je samplesvr.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
+Název serveru v následujícím příkladu je samplesvr.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 1. Přejděte na web [Azure Portal][Azure portal].
 2. Klikněte na **Datové sklady SQL**.
@@ -35,7 +30,7 @@ Prvním krokem při připojení k SQL Data Warehouse je vědět, jak najít náz
     ![Úplný název serveru][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Kliknutím na jeden z předchozích ovladačů vyhledáte nejnovější verzi a dokumentaci. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte, z webu Azure Portal, můžete kliknout na **Zobrazit připojovací řetězce databáze** z předchozího příkladu.  Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Najít na nejnovější verzi a dokumentace, klikněte na jednu z předchozí ovladače. Chcete-li automaticky generovat připojovací řetězec pro ovladač, který používáte z portálu Azure, klikněte na **zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -72,7 +67,7 @@ SQL Data Warehouse během připojování a vytváření objektů používá něk
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio][Query with Visual Studio]. Další informace o možnostech ověřování najdete v oddílu [Ověřování do Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->

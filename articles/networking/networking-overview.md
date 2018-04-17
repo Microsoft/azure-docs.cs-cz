@@ -1,13 +1,13 @@
 ---
-title: "Síť Azure | Microsoft Docs"
-description: "Další informace o Azure síťové služby a možnosti."
+title: Síť Azure | Microsoft Docs
+description: Další informace o Azure síťové služby a možnosti.
 services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Síť Azure
 
@@ -138,7 +138,7 @@ Azure poskytuje následující nástroje pro sledování a správě sítí:
 - **Diagnostické protokoly:** periodický a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech úložiště Azure, odeslané do centra událostí Azure nebo odesílání k analýze protokolů Azure. Diagnostické protokoly nabízí náhled na stav prostředku. Diagnostické protokoly jsou uvedené pro nástroj pro vyrovnávání zatížení (internetový), skupiny zabezpečení sítě, trasy a aplikační brány. Další informace o diagnostických protokolů, najdete [diagnostické protokoly přehled](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Metrika:** jsou metriky měření výkonu a čítače, které jsou shromažďovány prostřednictvím v časovém intervalu na prostředky. Metriky lze použít k aktivaci výstrahy na základě prahových hodnot. Aktuálně jsou k dispozici na aplikační brána metriky. Další informace o metriky, přečtěte si [metriky přehled](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Řešení potíží:** informace o odstraňování potíží je přístupný přímo na portálu Azure. Informace pomohou diagnostikovat běžné problémy s ExpressRoute, brána sítě VPN, aplikační bránu, protokoly zabezpečení sítě, trasy, DNS, nástroj pro vyrovnávání zatížení a Traffic Manager.
-- **Řízení přístupu na základě role (RBAC):** určovat, kdo může vytvářet a spravovat síťových prostředků pomocí řízení přístupu na základě rolí (RBAC). Další informace o RBAC načtením [začít pracovat s RBAC](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. 
+- **Řízení přístupu na základě role (RBAC):** určovat, kdo může vytvářet a spravovat síťových prostředků pomocí řízení přístupu na základě rolí (RBAC). Další informace o RBAC načtením [začít pracovat s RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku. 
 - **Zachytáváním paketů:** služby sledovací proces sítě Azure poskytuje možnost spustit zachytávání paketů na virtuálním počítači prostřednictvím rozšíření virtuálního počítače. Tato možnost je k dispozici pro systémy Linux a virtuální počítače Windows. Další informace o zachytáváním paketů, přečtěte si [přehled zachytávání paketů](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Ověřte IP toky:** sledovací proces sítě vám umožní ověřit IP toků mezi virtuální počítač Azure a vzdálený prostředek, k určení, jestli jsou pakety povolený nebo zakázaný. Tato funkce poskytuje správcům možnost rychle diagnostikovat problémy s připojením. Další informace o tom, jak ověřit IP toky, najdete [IP tok ověření přehled](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Řešení potíží s připojení VPN:** funkce Poradce při potížích s VPN sledovací proces sítě poskytuje možnost pro dotazování připojení nebo brány a ověřit stav prostředků. Další informace o odstraňování potíží s připojení VPN, najdete [připojení VPN k řešení potíží s přehled](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.

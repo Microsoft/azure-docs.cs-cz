@@ -1,26 +1,24 @@
 ---
-title: "Správa clusterů systému Hadoop v HDInsight pomocí .NET SDK - Azure | Microsoft Docs"
-description: "Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí sady .NET SDK HDInsight."
+title: Správa clusterů systému Hadoop v HDInsight pomocí .NET SDK - Azure | Microsoft Docs
+description: Zjistěte, jak k provádění úloh správy pro clusterů systému Hadoop v HDInsight pomocí sady .NET SDK HDInsight.
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 tags: azure-portal
 author: mumian
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: fd134765-c2a0-488a-bca6-184d814d78e9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: d881d47e26460d3fff89c01245bba4c608dc8b08
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 6926ef6ee3634a2bc469f56e2b4f7cfe9278d2a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Správa clusterů systému Hadoop v HDInsight pomocí sady .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

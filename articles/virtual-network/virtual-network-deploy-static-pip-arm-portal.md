@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače se statickou veřejnou IP adresu - portálu Azure | Microsoft Docs"
-description: "Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí portálu Azure."
+title: Vytvoření virtuálního počítače se statickou veřejnou IP adresu - portálu Azure | Microsoft Docs
+description: Naučte se vytvořit virtuální počítač se statickou veřejnou IP adresu pomocí portálu Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
 ms.service: virtual-network
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53e9b55a82e7750393dfb6c4818681028c5c4d2f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ebbc31016417dd6fecb91f6cdc0bba3fcf0a3f50
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí portálu Azure
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
+> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 > * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 > * [Šablona](virtual-network-deploy-static-pip-arm-template.md)
@@ -65,3 +65,10 @@ Postup vytvoření virtuálního počítače se statickou veřejnou IP adresu na
     
     ![Portál Azure – vytvoření veřejné IP adresy](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
+## <a name="set-ip-addresses-within-the-operating-system"></a>Nastavení IP adresy v rámci operačního systému
+
+Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače. Doporučuje se, že nepřiřadíte staticky privátní IP přiřazené k virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače, pokud nezbytné, jako např. kdy [přiřazení více IP adres pro virtuální počítač s Windows](virtual-network-multiple-ip-addresses-portal.md). Pokud ručně nastavit privátní IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](virtual-network-network-interface-addresses.md#private) nastavení.
+
+## <a name="next-steps"></a>Další postup
+
+Síťové přenosy můžete procházet do a z virtuálního počítače vytvořit v tomto článku. Můžete definovat pravidla pro příchozí a odchozí zabezpečení v rámci skupiny zabezpečení sítě, které omezit přenos, který může obtékat do a z rozhraní sítě, podsítě nebo obojí. Další informace o skupinách zabezpečení sítě najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md).

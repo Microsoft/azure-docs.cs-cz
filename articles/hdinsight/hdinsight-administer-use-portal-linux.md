@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure
 
@@ -63,7 +61,7 @@ Předplatné Azure je třeba zadat při vytváření clusteru HDInsight. Cluster
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Klikněte na tlačítko **předplatné** v levé nabídce. Obsahuje žlutou ikonu klíče. Zobrazí se seznam předplatných.
     3. Klikněte na předplatné, který použijete k vytvoření clusterů. 
-    4. Klikněte na tlačítko **Moje oprávnění**.  Zobrazuje vaše [role](../active-directory/role-based-access-control-what-is.md#built-in-roles) u předplatného. Musí být minimálně Přispěvatel přístup k vytvoření clusteru HDInsight.
+    4. Klikněte na tlačítko **Moje oprávnění**.  Zobrazuje vaše [role](../role-based-access-control/overview.md#built-in-roles) u předplatného. Musí být minimálně Přispěvatel přístup k vytvoření clusteru HDInsight.
 
 - Chcete-li použít existující skupinu prostředků:
 
@@ -89,7 +87,7 @@ Pokud se zobrazí chyba NoRegisteredProviderFound nebo MissingSubscriptionRegist
 
     **Levé nabídce:**
     * **Protokoly aktivity**: zobrazení a dotaz aktivity protokoly.
-    * **Přístup k ovládacímu prvku (IAM)**: použití přiřazení rolí.  V tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md).
+    * **Přístup k ovládacímu prvku (IAM)**: použití přiřazení rolí.  V tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
     * **Značky**: můžete nastavit páry klíč/hodnota k definování vlastní taxonomii cloudových služeb. Můžete například vytvořit klíč s názvem **projektu**a potom používat běžné hodnotu pro všechny služby související s konkrétní projekt.
     * **Diagnostika a řešení problémů**: Zobrazit informace o odstraňování potíží.
     * **Zamkne**: uzamčení, aby se zabránilo clusteru se přidat, upravit nebo odstranit.
@@ -237,7 +235,7 @@ Ambari poskytuje intuitivní, snadno použitelné Hadoop správu webového uživ
 
 1. Zadejte uživatelské jméno clusteru a heslo.  Výchozí uživatelské jméno clusteru _správce_. Ambari webového uživatelského rozhraní vypadá takto:
 
-    ![HDInsight Hadoop Ambari Web UI](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
+    ![HDInsight Hadoop Ambari webového uživatelského rozhraní](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
 
 Další informace najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).
 

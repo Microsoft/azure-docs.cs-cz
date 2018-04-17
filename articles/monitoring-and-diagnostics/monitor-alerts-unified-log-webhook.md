@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/2/2018
+ms.date: 04/09/2018
 ms.author: vinagara
-ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla výstrah protokolu
 Když [v Azure se vytvoří výstraha ](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí akce skupiny](monitoring-action-groups.md) provést několik akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o konfiguraci vlastních webhooku založenými na JSON.
@@ -54,22 +54,26 @@ Webhooky zahrnují adresu URL a datovou část ve formátu JSON, který se data 
 | StartTime Interval vyhledávání |#searchintervalstarttimeutc |Počáteční čas pro dotaz ve formátu UTC. 
 | SearchQuery |#searchquery |Vyhledávací dotaz protokolu používá pravidlo výstrahy. |
 | SearchResults |"IncludeSearchResults": true|Záznamů vrácených dotazem jako tabulku JSON, omezen na prvních 1000 záznamů; Pokud "IncludeSearchResults": true je přidaný do vlastní definici JSON webhooku jako vlastnost nejvyšší úrovně. |
-| WorkspaceID |#workspaceid |ID pracovního prostoru analýzy protokolů. |
+| ID pracovního prostoru |#workspaceid |ID pracovního prostoru analýzy protokolů. |
 | ID aplikace |#applicationid |ID vaší aplikace přehled aplikace. |
 | ID předplatného |#subscriptionid |ID předplatného Azure používat s Application Insights. 
 
 
 Například může určit následující vlastní datovou část, která obsahuje jeden parametr s názvem *text*.  Služby, který volá tento webhook by byla očekávána tento parametr.
 
+```json
+
     {
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
-
+```
 Tato datová část příkladu by odkazující na něco jako následující odeslání do webhooku.
 
+```json
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
+```
 
 Zahrnout vlastní datovou část výsledky hledání, ujistěte se, že **IncudeSearchResults** je nastaven jako vlastnost nejvyšší úrovně v datové části json. 
 
@@ -85,7 +89,8 @@ Obě tyto příklady uvedli fiktivní datové části s pouze dva sloupce a dva 
 #### <a name="log-alert-for-azure-log-analytics"></a>Výstraha protokolu pro Azure analýzy protokolů
 Následuje ukázka datové části pro akci standardní webhooku *bez vlastní možnost Json* používá pro výstrahy na základě analýzy protokolů.
 
-    {
+```json
+{
     "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
     "AlertRuleName":"AcmeRule","SearchQuery":"search *",
     "SearchResult":
@@ -95,7 +100,7 @@ Následuje ukázka datové části pro akci standardní webhooku *bez vlastní m
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -104,7 +109,7 @@ Následuje ukázka datové části pro akci standardní webhooku *bez vlastní m
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -114,15 +119,14 @@ Následuje ukázka datové části pro akci standardní webhooku *bez vlastní m
     "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
     "Severity": "Warning"
-    }
-    
-
+ }
+ ```   
 
 #### <a name="log-alert-for-azure-application-insights"></a>Výstraha protokolu pro službu Azure Application Insights
 Následuje ukázka datové části pro standardní webhooku *bez vlastní možnost Json* při použití pro application insights výstrahy na základě protokolu-.
     
-
-    {
+```json
+{
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
@@ -134,7 +138,7 @@ Následuje ukázka datové části pro standardní webhooku *bez vlastní možno
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -143,7 +147,7 @@ Následuje ukázka datové části pro standardní webhooku *bez vlastní možno
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -152,10 +156,11 @@ Následuje ukázka datové části pro standardní webhooku *bez vlastní možno
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error"
+    "Severity": "Error",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
-    }
+}
+```
 
 > [!NOTE]
 > Protokolu výstrahy pro službu Application Insights je momentálně ve veřejné verzi preview – funkce a činnost koncového uživatele mohou podléhat změnám.
@@ -163,14 +168,16 @@ Následuje ukázka datové části pro standardní webhooku *bez vlastní možno
 #### <a name="log-alert-with-custom-json-payload"></a>Výstraha protokolu s vlastní datovou část JSON
 Například pokud chcete vytvořit vlastní datovou část, která obsahuje jenom název výstrahy a výsledky hledání, můžete použít následující: 
 
+```json
     {
        "alertname":"#alertrulename",
        "IncludeSearchResults":true
     }
+```
 
 Následuje ukázka datové části pro akci vlastní webhooku pro všechny výstrahy protokolu.
     
-
+```json
     {
     "alertname":"AcmeRule","IncludeSearchResults":true,
     "SearchResult":
@@ -180,7 +187,7 @@ Následuje ukázka datové části pro akci vlastní webhooku pro všechny výst
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -191,8 +198,7 @@ Následuje ukázka datové části pro akci vlastní webhooku pro všechny výst
                 ]
         }
     }
-
-
+```
 
 
 ## <a name="next-steps"></a>Další postup

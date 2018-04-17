@@ -1,25 +1,20 @@
 ---
-title: "Jak vytvořit lístek podpory pro SQL Data Warehouse | Microsoft Docs"
-description: "Jak vytvořit lístek podpory v Azure SQL Data Warehouse"
+title: Jak vytvořit lístek podpory pro Azure SQL Data Warehouse | Microsoft Docs
+description: Jak vytvořit lístek podpory v Azure SQL Data Warehouse
 services: sql-data-warehouse
-documentationcenter: NA
 author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: a91d1f53-03cb-464b-9d5b-4a9c1a194ed3
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: 66aa12431e39ce295ce76411693bd20535a5c70c
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 1485ff4392caa5df0851d46a964c7699c9f8e90b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Jak vytvořit lístek podpory pro SQL Data Warehouse
 Pokud máte se službou SQL Data Warehouse problémy, vytvořte si lístek podpory, aby vám mohl náš technický tým pomoct.

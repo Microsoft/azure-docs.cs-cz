@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: cosmos-db
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: sngun
+ms.custom: include file
+ms.openlocfilehash: f8ef3070c318293af59a8f22d271b9c836c06f69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/16/2018
+---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**.
    
@@ -17,7 +33,7 @@
 
     Poté klikněte na **Vytvořit**.
 
-    ![Nová stránka účtu pro Azure Cosmos DB](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Nová stránka účtu pro Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account.png)
 
 4. Vytvoření účtu trvá několik minut. Počkejte na portálu pro zobrazení **Blahopřejeme! Byl vytvořen účet Azure Cosmos DB** stránky.
 

@@ -1,11 +1,11 @@
 ---
-title: "Využít smyčky T-SQL v Azure SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro smyčky Transact-SQL a nahraďte kurzory v Azure SQL Data Warehouse na vývoj řešení."
+title: Pomocí smyčky T-SQL v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro pomocí smyčky T-SQL a nahrazení kurzory v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,19 +15,23 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 40a872ff310f48bfd543ac184fe7301b85b50258
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e49a0de0e4a6aba6639f7f3100f41c8db254220
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="loops-in-sql-data-warehouse"></a>Smyčky v SQL Data Warehouse
-Podporuje SQL Data Warehouse [při][při] smyčky pro opakovaně provádění blok příkazu. To bude pokračovat pro tak dlouho, dokud zadané podmínky splněny, nebo dokud se kód konkrétně ukončí, pomocí smyčky `BREAK` – klíčové slovo. Smyčky jsou obzvláště užitečná pro nahrazení kurzory definované v kódu SQL. Naštěstí téměř všechny kurzory, které jsou zapsány v kódu SQL jsou rychloposuv vpřed číst pouze řady. Proto [při] smyčky jsou skvělý alternativní, pokud se přistihnete museli nahradit jednu.
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Pomocí smyčky T-SQL v SQL Data Warehouse
+Tipy pro pomocí smyčky T-SQL a nahrazení kurzory v Azure SQL Data Warehouse na vývoj řešení.
 
-## <a name="leveraging-loops-and-replacing-cursors-in-sql-data-warehouse"></a>Využití smyčky a nahrazení kurzory v SQL Data Warehouse
-Ale, než začnete v head nejdřív měli byste požádat sami následující otázku: "Tento kurzor lze znovu zapsat používat sady na základě operace?". V mnoha případech odpověď bude Ano a je často nejlepším přístupem. Operace set na základě často provádí výrazně rychlejší než přístup iterativní, řádek po řádku.
+## <a name="purpose-of-while-loops"></a>Účelem při smyčky
 
-Rychloposuv vpřed kurzory jen pro čtení můžete snadno nahradit opakování konstrukce. Níže je jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Iterování přes tabulky v smyčky jsme jsou mohou ke spuštění každého příkazu v pořadí.
+Podporuje SQL Data Warehouse [při](/sql/t-sql/language-elements/while-transact-sql) smyčky pro opakovaně provádění blok příkazu. Tuto CHVÍLI smyčky pokračuje pro tak dlouho, dokud k zadaným podmínkám mají hodnotu true, nebo dokud se kód ukončí smyčky pomocí klíčového slova přerušení. Smyčky jsou užitečné pro nahrazení kurzory definované v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou zapsány v kód SQL z různých rychloposuv vpřed, jen pro čtení. Proto [] smyčky jsou SICE skvělou alternativou k nahrazení kurzory.
+
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>Nahrazení kurzory v SQL Data Warehouse
+Ale, než začnete v head nejdřív měli byste požádat sami následující otázku: "by mohla používat na základě sady operace být přepsána tohoto kurzoru?." V mnoha případech odpovědi je Ano a je často nejlepším přístupem. Operace na základě sady často provede rychleji než přístup iterativní, po řádcích.
+
+Rychloposuv vpřed kurzory jen pro čtení můžete snadno nahradit opakování konstrukce. Zde je jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Podle iterování přes tabulky v smyčky, každý příkaz spustí v pořadí.
 
 Nejprve vytvořte dočasnou tabulku obsahující řádek jedinečné číslo, které používají k identifikaci jednotlivých příkazy:
 
@@ -69,19 +73,6 @@ Nakonec vyřaďte dočasné tabulky vytvořené v prvním kroku
 DROP TABLE #tbl;
 ```
 
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
-
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[při]: https://msdn.microsoft.com/library/ms178642.aspx
-
-
-<!--Other Web references-->

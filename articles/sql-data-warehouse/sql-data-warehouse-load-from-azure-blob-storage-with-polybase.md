@@ -1,36 +1,24 @@
 ---
-title: "Načtení z Azure blob Azure datovým skladem. | Microsoft Docs"
-description: "Naučte se používat k načtení dat z Azure blob storage do SQL Data Warehouse PolyBase. Načtení několik tabulek z veřejná data do schématu Contoso prodejní datového skladu."
+title: Načíst data o maloobchodním Contoso do Azure SQL Data Warehouse | Microsoft Docs
+description: Načtení dvou tabulek z Contoso prodejní data do Azure SQL Data Warehouse pomocí PolyBase a T-SQL příkazů.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: barbkess
-editor: 
-ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 10/31/2016
-ms.author: barbkess
-ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c32068c965810da8e9072094b5832c7943f2841d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Načtení dat z Azure blob storage do SQL Data Warehouse (PolyBase)
-> [!div class="op_single_selector"]
-> * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-> 
-> 
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Načíst data o maloobchodním Contoso do Azure SQL Data Warehouse
 
-Načtení dat z Azure blob storage do Azure SQL Data Warehouse pomocí PolyBase a T-SQL příkazů. 
-
-V tomto kurzu na jednoduchost, načte dvě tabulky z veřejné Azure Blob Storage do schématu Contoso prodejní datového skladu. Pokud chcete načíst úplnou datovou sadu, spusťte v příkladu [načíst úplné Contoso prodejní datového skladu] [ Load the full Contoso Retail Data Warehouse] z úložiště ukázky Microsoft SQL Server.
+Načtení dvou tabulek z Contoso prodejní data do Azure SQL Data Warehouse pomocí PolyBase a T-SQL příkazů. Pokud chcete načíst úplnou datovou sadu, spusťte v příkladu [načíst úplné Contoso prodejní datového skladu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md) z úložiště ukázky Microsoft SQL Server.
 
 V tomto kurzu provedete následující:
 
@@ -354,7 +342,7 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete načíst data úplné Contoso prodejní datového skladu, použijte skript v další tipy pro vývoj, najdete v části [přehled vývoje SQL Data Warehouse][SQL Data Warehouse development overview].
 
 <!--Image references-->

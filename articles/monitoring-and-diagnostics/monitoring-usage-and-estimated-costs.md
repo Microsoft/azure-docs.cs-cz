@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f87705ebbdd14b1bbf7cade481a7dbe7dd3d5131
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ce295c449b01de4fa99df9198805a6b0727c0d18
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Sledování využití a odhadované náklady
 
@@ -61,12 +61,16 @@ V tomto poli se zobrazí jinou sadu měřidla – měřidla, které odpovídají
 3. Nadlimitní Data Insights\Basic aplikací
 4. Insights\Included Data aplikací
 
-spojují se do nové běžné data přijímání měřidla názvem **sdílené přijímání Services\Data** vzhledem k tomu, že nový cenový model nemá přidělení zahrnuté dat na základě uzlu.
+spojují se do nové běžné data přijímání měřidla názvem **sdílené přijímání Services\Data** vzhledem k tomu, že nový cenový model nemá oprávnění data zahrnuté podle uzlu.
 
 Další změnou uvidíte je dat nasávaného analýzy protokolů nebo Application Insights v oblastech s vyšší poplatky za se zobrazí s novou místní měřidla tak, aby správně odrážela, například **"přijímání dat (střed USA – západ)**.
 
 > [!NOTE]
-> Pokud máte předplatné služby Operations Management Suite (OMS), obdržíte analýzy protokolů a Application Insights přidělení přijímání dat pro každý uzel zakoupili. Vzhledem k tomu, že to je použité na úrovni účtu (ne na předplatné), nelze zobrazit tento odhad účinku tyto přidělení. Přečtěte si vaším zástupcem účet pro podrobné informace o nový cenový model v tomto případě.
+> Náklady na odhadované za předplatné není dvoufaktorového do úrovně podle uzlu oprávnění účtu předplatného služby Operations Management Suite (OMS). Přečtěte si vaším zástupcem účet pro podrobné informace o nový cenový model v tomto případě.
+
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nové ceny modelu a oprávnění předplatné služby Operations Management Suite
+
+Zákazníci, kteří si zakoupili služby Microsoft Operations Management Suite E1 a E2 jsou způsobilé pro oprávnění přijímání dat podle uzlu pro [analýzy protokolů](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Pro příjem těchto oprávnění pro analýzy protokolů pracovních prostorů nebo prostředkům v daném předplatném, že je předplatné cenový model musí zůstat v dubnu pre 2018 cenovou Application Insights modelu kde analýzy protokolů "za uzlu (OMS)" cenová úroveň a Application Insights "Enterprise" ceny plánu jsou k dispozici. V závislosti na počtu uzlů sady, které vaše organizace koupila přesunutí některých odběrů nový cenový model stále může být výhodné, ale vyžaduje pečlivě zvážit. 
 
 ## <a name="changes-when-moving-to-the-new-pricing-model"></a>Změny při přesunu na nový cenový model
 

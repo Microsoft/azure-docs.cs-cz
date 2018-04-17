@@ -1,29 +1,27 @@
 ---
-title: "Odesílání úloh z R nástrojů pro Visual Studio – Azure HDInsight | Microsoft Docs"
-description: "Odeslání úlohy R ze svého místního počítače v sadě Visual Studio do clusteru HDInsight."
+title: Odesílání úloh z R nástrojů pro Visual Studio – Azure HDInsight | Microsoft Docs
+description: Odeslání úlohy R ze svého místního počítače v sadě Visual Studio do clusteru HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 1a82ba7790f739768156a8bee33a74d7130e24e1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z R nástrojů pro Visual Studio
+# <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
-[R Tools pro Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) je bezplatná, open-source rozšíření pro Community (zdarma), Professional a verze Enterprise Edition obou [Visual Studio 2017](https://www.visualstudio.com/downloads/), a [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129) nebo vyšší.
+[R Tools pro Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) je bezplatná, open-source rozšíření pro Community (zdarma), Professional a verze Enterprise Edition obou [Visual Studio 2017](https://www.visualstudio.com/downloads/), a [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129)nebo vyšší.
 
 RTVS vylepšuje pracovní postup R prostřednictvím nabídky Nástroje, jako [R interaktivních okna](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL), intellisense (doplňování kódu), [vykreslení vizualizace](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) prostřednictvím knihovny R jako ggplot2 a ggviz, [Ladění kódu R](https://docs.microsoft.com/visualstudio/rtvs/debugging)a další.
 
@@ -131,7 +129,7 @@ Pomocí klienta Microsoft R Server nebo Microsoft R z Windows počítače vybave
 
     3. Vyberte **kontejnery** z nabídky na levé straně na vaše podokně účet úložiště.
 
-        ![Kontejnery](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
 
     4. Vyberte název kontejneru vašeho clusteru, přejděte na **uživatele** složky (možná budete muset klikněte na tlačítko *načtěte více* v dolní části seznamu), pak vyberte *RevoShare*, pak **newUser**. `people.json` Soubor má být zobrazena v `newUser` složky.
 

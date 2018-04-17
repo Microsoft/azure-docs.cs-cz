@@ -1,11 +1,11 @@
 ---
-title: "Migrace platformy Security Center – nejčastější dotazy | Microsoft Docs"
-description: "Tyto nejčastější dotazy odpovídá na dotazy týkající se migrace platformy Azure střediska zabezpečení."
+title: Migrace platformy Security Center – nejčastější dotazy | Microsoft Docs
+description: Tyto nejčastější dotazy odpovídá na dotazy týkající se migrace platformy Azure střediska zabezpečení.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>Migrace platformy Security Center – nejčastější dotazy
 V časná června 2017 začal Azure Security Center pomocí agenta Microsoft Monitoring Agent shromažďovat a ukládat data. Další informace najdete v tématu [Azure Security Center platformy migrace](security-center-platform-migration.md). Tyto nejčastější dotazy odpovídá na dotazy týkající se migrace platformy.
@@ -34,7 +34,7 @@ Security Center používá ke shromažďování dat zabezpečení z virtuálníc
 Údaje shromážděné agentem je uložená v existující pracovní prostor analýzy protokolů připojený k virtuálnímu počítači nebo nový pracovní prostor vytvořené Security Center. Security Center vytvoří nový pracovní prostor, informace o zeměpisné poloze virtuálního počítače je vzít v úvahu.
 
 > [!NOTE]
-> Microsoft Monitoring Agent je stejného agenta použít pomocí Operations Management Suite (OMS), analýzy protokolů služby a služby System Center Operations Manager (SCOM).
+> Microsoft Monitoring Agent je stejného agenta používané služby analýzy protokolů a System Center Operations Manager (SCOM).
 >
 >
 
@@ -64,8 +64,8 @@ Umístění pracovního prostoru je založena na umístění virtuálního poč�
 >
 >
 
-### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>Mě I účtovány poplatky za analýzy protokolů nebo OMS na pracovních prostorů vytvořit pomocí služby Security Center?
-Ne. Pracovní prostory, které jsou vytvořené pomocí služby Security Center, zatímco nakonfigurovaný pro OMS na uzlu fakturace, nevznikají OMS poplatky. Fakturace Security Center je vždy založené na vaše zásady zabezpečení Security Center a řešení v pracovním prostoru nainstalován:
+### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Mě účtuje analýzy protokolů na pracovních prostorů vytvořit pomocí služby Security Center?
+Ne. Pracovní prostory, které jsou vytvořené pomocí služby Security Center, zatímco nakonfigurovaný pro analýzy protokolů na uzel fakturace, nevznikají poplatky analýzy protokolů. Fakturace Security Center je vždy založené na vaše zásady zabezpečení Security Center a řešení v pracovním prostoru nainstalován:
 
 - **Úroveň Free** – Security Center umožňuje 'SecurityCenterFree' řešení na výchozí pracovní prostor. Fakturuje nejsou pro úroveň Free.
 - **Úroveň standard** – Security Center umožňuje řešení, zabezpečení, v pracovním prostoru pro výchozí.
@@ -73,7 +73,7 @@ Ne. Pracovní prostory, které jsou vytvořené pomocí služby Security Center,
 Další informace o cenách najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/). Na stránce s cenami řeší změny do úložiště dat zabezpečení a poměrné fakturace od června 2017.
 
 > [!NOTE]
-> OMS cenová úroveň pracovních prostorů vytvořit pomocí služby Security Center neovlivňuje fakturace Security Center.
+> Analýzy protokolů cenová úroveň pracovních prostorů vytvořit pomocí služby Security Center neovlivňuje fakturace Security Center.
 >
 >
 
@@ -101,7 +101,7 @@ Vyberte existující pracovní prostor analýzy protokolů:
 
 1. V části **zásady zabezpečení – shromažďování dat**, vyberte **použijte jiný pracovní prostor**.
 
-   ![Použijte jiný pracovní prostor][5]
+   ![Použít jiný pracovní prostor][5]
 
 2. V rozevírací nabídce vyberte pracovní prostor pro ukládání shromážděných dat.
 
@@ -204,12 +204,12 @@ Chcete-li ručně odebrat agenta:
 >
 >
 
-## <a name="existing-oms-customers"></a>Stávající zákazníky služby OMS
+## <a name="existing-log-analytics-customers"></a>Stávající zákazníky služby analýzy protokolů
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Security Center přepsání všech existujících připojení mezi virtuální počítače a pracovní prostory?
 Pokud virtuální počítač už má Microsoft Monitoring Agent nainstalována jako rozšíření Azure, Security Center nemůže přepsat existující připojení pracovního prostoru. Místo toho Security Center používá existujícímu pracovnímu prostoru.
 
-Řešení Security Center je nainstalován v pracovním prostoru není-li již k dispozici, a řešení se použije jenom pro příslušné virtuální počítače. Když přidáte řešení, se automaticky nasadí ve výchozím nastavení všechny agenty systému Windows a Linux připojené k pracovní prostor analýzy protokolů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), což je funkce OMS, vám umožní použít pro obor pro vaše řešení.
+Řešení Security Center je nainstalován v pracovním prostoru není-li již k dispozici, a řešení se použije jenom pro příslušné virtuální počítače. Když přidáte řešení, se automaticky nasadí ve výchozím nastavení všechny agenty systému Windows a Linux připojené k pracovní prostor analýzy protokolů. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro vaše řešení.
 
 Pokud je Microsoft Monitoring Agent nainstalován přímo na virtuálním počítači (ne jako Azure rozšíření), Security Center nenainstaluje agenta Microsoft Monitoring Agent a sledování zabezpečení je omezená.
 
@@ -220,18 +220,13 @@ To nemělo stát. Pokud k tomu dojít, pak [vytvoření žádosti o podporu Azur
 - ID prostředku Azure pracovního prostoru nakonfigurovaná na rozšíření před připojení bylo přerušeno
 - Agent a verzi, která byla dříve nainstalovaná
 
-### <a name="does-security-center-install-solutions-on-my-existing-oms-workspaces-what-are-the-billing-implications"></a>Security Center se nenainstaluje řešení v mé existující pracovní prostory OMS? Jaké jsou důsledky fakturace?
+### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Security Center se nenainstaluje řešení v mé existující pracovní prostory Log Analytics? Jaké jsou důsledky fakturace?
 Pokud Security Center identifikuje, že virtuální počítač je již připojen do pracovního prostoru, který jste vytvořili, Security Center umožňuje řešení na tento pracovní prostor podle cenové úrovně. Řešení se použijí jenom u příslušných virtuálních počítačích Azure, prostřednictvím [cílení na řešení](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting), takže fakturaci zůstává stejná.
 
 - **Úroveň Free** – Security Center nainstaluje řešení 'SecurityCenterFree' v pracovním prostoru. Fakturuje nejsou pro úroveň Free.
 - **Úroveň standard** – Security Center nainstaluje řešení, zabezpečení, v pracovním prostoru.
 
    ![Řešení na výchozí pracovní prostor][4]
-
-> [!NOTE]
-> Řešení, zabezpečení, v analýzy protokolů je zabezpečení & auditu v OMS.
->
->
 
 ### <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Už mám pracovní prostory v mé prostředí, můžete chci použít ke shromažďování dat zabezpečení?
 Pokud virtuální počítač už má Microsoft Monitoring Agent nainstalována jako rozšíření Azure, Security Center používá existující připojené pracovního prostoru. Řešení Security Center je nainstalován v pracovním prostoru není-li již k dispozici a řešení se použije jenom pro příslušné virtuální počítače prostřednictvím [cílení na řešení](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting).
@@ -241,7 +236,7 @@ Pokud Security Center nainstaluje agenta Microsoft Monitoring Agent na virtuáln
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Už mám řešení zabezpečení na osobní pracovní prostory. Jaké jsou důsledky fakturace?
 Řešení a auditu zabezpečení slouží k povolení funkce Security Center standardní úrovně pro virtuální počítače Azure. Pokud řešení zabezpečení a Audit je již nainstalován v pracovním prostoru, Security Center používá existující řešení. Neexistuje žádná změna v fakturace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o migraci platformy Security Center najdete v tématu
 
 - [Migrace pro platformu Azure Security Center](security-center-platform-migration.md)

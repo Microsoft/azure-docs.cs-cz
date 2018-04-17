@@ -1,6 +1,6 @@
 ---
-title: "Diagnostika a řešení problémů ve službě Azure časové řady Insights | Microsoft Docs"
-description: "Tento článek popisuje, jak k určení, řešení potíží a řešení běžných problémů, které mohou nastat ve vašem prostředí Statistika Azure časové řady."
+title: Diagnostika a řešení problémů ve službě Azure časové řady Insights | Microsoft Docs
+description: Tento článek popisuje, jak k určení, řešení potíží a řešení běžných problémů, které mohou nastat ve vašem prostředí Statistika Azure časové řady.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/15/2017
-ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/09/2018
+ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostika a řešení problémů ve vašem prostředí Statistika časové řady
 
@@ -45,6 +45,11 @@ Během registrace am Centrum IoT nebo centra událostí zadejte skupinu příjem
 Pokud se zobrazí data částečně, ale data zaostává, existuje několik možností vzít v úvahu:
 
 ### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>Možná příčina A: prostředí je získávání omezen.
+Tento problém je běžný, při zřizování prostředí po vytvoření zdroje událostí s daty.  Azure IoT Hubs a události rozbočovače ukládat data sedm dní.  TSI se vždycky spustí z nejstarší události (FIFO), v rámci zdroj události.  Takže pokud máte pět milión událostí v zdroje událostí při připojování k S1, prostředí TSI jedné jednotky, bude číst TSI přibližně jeden milión událostí za den.  To může vypadat jako zdát, že TSI dochází na první pohled pět dní latence.  Co se děje ve skutečnosti je, že dochází k omezení prostředí.  Pokud máte ve zdroji událostí starých událostí, můžete postupovat jedním ze dvou způsobů:
+
+- Změna limity uchování zdroj události, které pomohou zbavit staré události, které nechcete, aby se v TSI
+- Pokud chcete zvýšit propustnost staré události zřídit větší velikost prostředí (z hlediska počtu jednotek).  Pomocí příkladu nahoře, je-li zvýšit stejném prostředí S1 pět jednotkách jeden den, prostředí musí zjištěná k teď v rámci dne.  Pokud vaše produkční událostí stabilního stavu 1 milion nebo méně událostí za den, můžete po jeho zachytila snížit kapacitu události zpět na jednu jednotku.  
+
 Omezení limit vynucený na základě typu SKU v prostředí a kapacity. Všechny zdroje událostí v prostředí sdílet tento kapacitu. Pokud zdroj události pro vaše Centrum IoT nebo Centrum událostí je předání dat nad rámec Vynucené limity, zobrazí omezení a prodleva.
 
 Následující diagram znázorňuje časové řady Statistika prostředí, které má SKU S1 a kapacitou 3. Můžete ho příjem příchozích dat 3 miliony událostí za den.
@@ -77,6 +82,12 @@ Ujistěte se, že název a hodnotu odpovídají následující pravidla:
 * Název vlastnosti časové razítko je _malá a velká písmena_.
 * Hodnota vlastnosti časové razítko, které pochází ze zdroje událostí, jako řetězec formátu JSON by měl mít formát _rrrr-MM-ddTHH. FFFFFFFK_. Příkladem takových řetězec je "2008-04-12T12:53Z".
 
-## <a name="next-steps"></a>Další kroky
+Nejjednodušší způsob, jak zajistit, aby vaše *název vlastnosti časové razítko* zachytí a funguje správně, je pomocí Průzkumníka TSI.  V Průzkumníku TSI pomocí graf, vyberte uplynutí časového intervalu po jste zadali *název vlastnosti časové razítko*.  Klikněte pravým tlačítkem na výběr a zvolte *prozkoumat události* možnost.  První záhlaví sloupce musí být vaše *název vlastnosti časové razítko* a měl by mít *($ts)* vedle slovo *časové razítko*, místo:
+- *(abc)* , které by znamenat TSI čte data hodnoty jako řetězce
+- *Ikona kalendáře*, které by znamenat TSI je čtení hodnoty dat jako *data a času*
+- *#*, které by znamenat TSI čte data hodnoty jako celé číslo
+
+
+## <a name="next-steps"></a>Další postup
 - Další pomoc získáte zahájit konverzaci na [fórum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 
 - Můžete také použít [podporu Azure](https://azure.microsoft.com/support/options/) možnosti odborné pomoci řešení.

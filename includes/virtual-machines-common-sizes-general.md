@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 4eeff0d89fa8a73b8f7f4b73fb5bfb85cda26184
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 48c4ee60487ed4a78bf7a823011b833d46db4ecf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáváním poměr paměť procesoru. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -63,7 +63,7 @@ ACU: 160–190
 
 Dv3-series velikosti jsou založené na 2.4® GHz Intel Xeon E5-2673 v3 (Haswell) procesoru nebo 2.3 v4® GHz Intel XEON E5-2673 procesor (Broadwell), které můžete dosáhnout 3.5GHz s Intel Turbo nárůst technologie 2.0. Velikosti Dv3-series nabízejí kombinaci virtuálního procesoru, paměti a dočasného úložiště pro většinu produkčních úloh.
 
-Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Storage úrovně Premium, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series. 
+Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti Dsv3. Měřiče cen a účtování pro velikosti Dsv3 jsou stejné jako pro Dv3-series. 
 
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
@@ -95,15 +95,15 @@ ACU: 210–250
 
 ACU: 210–250
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3,5 |4 |50 |3000 / 46 / 23 |4 / 4×500 |2 / 750 |
-| Standard_D2_v2 |2 |7 |8 |100 |6000 / 93 / 46 |8 / 8×500 |2 / 1 500 |
-| Standard_D3_v2 |4 |14 |16 |200 |12000 / 187 / 93 |16 / 16×500 |4 / 3 000 |
-| Standard_D4_v2 |8 |28 |32 |400 |24000 / 375 / 187  |32 / 32×500 |8 / 6 000 |
-| Standard_D5_v2 |16 |56 |64 |800 |48000 / 750 / 375 |64 / 64 x 500 |8 / 12000 |
+| Velikost           | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. datových disků | Propustnost: IOPS | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
+|----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
+| Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4×500            | 2 / 750                                      |
+| Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8×500            | 2 / 1 500                                     |
+| Standard_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16             | 16×500           | Dubna 00                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32             | 32×500           | Srpna 00                                       |
+| Standard_D5_v2 | 16   | 56          | 800                    | 48000 / 750 / 375                                          | 64             | 64 x 500           | 8 / 12000                                    |
 
-<br>
+
 
 ## <a name="ds-series"></a>DS-series
 
@@ -179,7 +179,7 @@ V klasickém modelu nasazení se některé názvy virtuálních počítačů s p
 
 ## <a name="basic-a"></a>Basic A
 
-|Velikost – Velikost\Název | Virtuální procesory |Memory (Paměť)|Síťové karty (Max.)|Max. velikost dočasného disku |Max. počet datových disků (každý o velikosti 1 023 GB)|Max. IOPS (300 na disk)|
+|Velikost – Velikost\Název | Virtuální procesory |Memory (Paměť)|Síťové karty (Max.)|Max. velikost dočasného disku |Max. datové disky (1023 GB každý)|Max. IOPS (300 na disk)|
 |---|---|---|---|---|---|---|
 |A0\Basic_A0|1|768 MB|2| 20 GB|1|1×300|
 |A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2×300|

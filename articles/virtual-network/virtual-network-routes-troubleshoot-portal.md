@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s trasy – portál | Microsoft Docs"
-description: "Informace o řešení potíží s trasy v modelu nasazení Azure Resource Manager pomocí portálu Azure."
+title: Řešení potíží s trasy – portál | Microsoft Docs
+description: Informace o řešení potíží s trasy v modelu nasazení Azure Resource Manager pomocí portálu Azure.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bdd8b6dc-02fb-4057-bb23-8289caa9de89
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 67da2eae5ea04962cd5adeff8edd070c1a3cf95a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Řešení potíží s postupy pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Tento příklad používá jenom systémové trasy, stejný postup slouží k ur
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Zobrazit účinné postupy pro virtuální počítač
 Agregace tras, které se použijí k virtuálnímu počítači najdete proveďte následující kroky:
 
-1. Přihlášení k portálu Azure na https://portal.azure.com. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Přihlášení k portálu Azure na https://portal.azure.com. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **virtuální počítače** v seznamu, který se zobrazí.
 3. Vyberte virtuální počítač ze seznamu, který se zobrazí řešení a zobrazí se okno virtuálních počítačů s možnostmi.
 4. Klikněte na tlačítko **Diagnostikujte & řešení problémů** a pak vyberte častých problémů. V tomto příkladu **nelze se připojit k virtuálnímu počítači s Windows** je vybrána.

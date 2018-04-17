@@ -1,25 +1,23 @@
 ---
-title: "Analýza dat Twitteru pomocí Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Další informace o použití Hive k analýze dat Twitteru systému Hadoop v HDInsight k vyhledání využití četnost určité slovo."
+title: Analýza dat Twitteru pomocí Hadoop v HDInsight - Azure | Microsoft Docs
+description: Další informace o použití Hive k analýze dat Twitteru systému Hadoop v HDInsight k vyhledání využití četnost určité slovo.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: a5f97dfa084291cefde9bf27b5639926de1bc80e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1d3f00658c836eaba41b7ab3d1c065991a2c12a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hive v HDInsight
 Sociální weby jsou jedním z hlavních řízení vynutí pro velké objemy dat přijetí. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy.
@@ -77,13 +75,13 @@ Prvním krokem k používají OAuth je vytvořit novou aplikaci na webu služby 
 
 **Vytvořit aplikaci služby Twitter.**
 
-1. Přihlaste se k [https://apps.twitter.com/](https://apps.twitter.com/). Klikněte na tlačítko **nyní** odkaz, pokud nemáte účet služby Twitter.
+1. Přihlaste se k [ https://apps.twitter.com/ ](https://apps.twitter.com/). Klikněte na tlačítko **nyní** odkaz, pokud nemáte účet služby Twitter.
 2. Klikněte na tlačítko **vytvořte novou aplikaci**.
 3. Zadejte **název**, **popis**, **webu**. Můžete použít pro adresu URL **webu** pole. Následující tabulka uvádí některé ukázkové hodnoty použít:
 
    | Pole | Hodnota |
    | --- | --- |
-   |  Name (Název) |MyHDInsightApp |
+   |  Název |MyHDInsightApp |
    |  Popis |MyHDInsightApp |
    |  Web |http://www.myhdinsightapp.com |
 4. Zkontrolujte **souhlasím**a potom klikněte na **vytvořit aplikaci služby Twitter**.
@@ -539,7 +537,7 @@ Write-Host "==================================" -ForegroundColor Green
 
 Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data na Azure SQL database nebo SQL server, export dat do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analýza letu zpoždění dat pomocí HDInsight][hdinsight-analyze-flight-delay-data], [připojení aplikace Excel do prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query], a [připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jsme viděli, jak k transformaci datové sadě služby nestrukturovaných JSON do strukturovaných tabulku Hive k dotazování, prozkoumejte a analýze dat z Twitteru pomocí HDInsight v Azure. Další informace naleznete v tématu:
 
 * [Začínáme s HDInsight][hdinsight-get-started]

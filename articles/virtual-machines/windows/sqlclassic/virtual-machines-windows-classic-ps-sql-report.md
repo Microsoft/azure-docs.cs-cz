@@ -3,7 +3,7 @@ title: Vytvoření virtuálního počítače se serverem sestav v nativním rež
 description: 'Toto téma popisuje a provede nasazení a konfiguraci serveru sestav v nativním režimu SQL Server Reporting Services ve virtuální počítač Azure. '
 services: virtual-machines-windows
 documentationcenter: na
-author: guyinacube
+author: markingmyname
 manager: erikre
 editor: monicar
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: maghan
+ms.openlocfilehash: edfae3a56bc13e4c41a1676bfc0f4e8cf4cd9d30
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -124,7 +124,7 @@ Certifikát podepsaný svým držitelem byl vytvořen ve virtuálním počítač
        Například na následujícím obrázku je název virtuálního počítače **ssrsnativecloud** a uživatelské jméno je **testuser**.
       
        ![název virtuálního počítače jejíž součástí přihlášení](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Run mmc.exe. Další informace najdete v tématu [postupy: zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Spusťte mmc.exe. Další informace najdete v tématu [postupy: zobrazení certifikátů pomocí modulu Snap-in konzoly MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. V konzolové aplikaci **soubor** nabídky, přidejte **certifikáty** modul snap-in, vyberte **účet počítače** při zobrazení výzvy a potom klikněte na **Další**.
    4. Vyberte **místního počítače** pro správu a pak klikněte na tlačítko **Dokončit**.
    5. Klikněte na tlačítko **Ok** a potom rozbalte **certifikáty – osobní** uzly a pak klikněte na tlačítko **certifikáty**. Certifikát je pojmenovaný po název DNS virtuálního počítače a končí **cloudapp.net**. Klikněte pravým tlačítkem na název certifikátu a klikněte na tlačítko **kopie**.

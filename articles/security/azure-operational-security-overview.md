@@ -1,12 +1,12 @@
 ---
-title: "Přehled Azure provozní zabezpečení | Microsoft Docs"
-description: "Tento článek obsahuje přehled o zabezpečení Azure provozu."
+title: Přehled Azure provozní zabezpečení | Microsoft Docs
+description: Tento článek obsahuje přehled o zabezpečení Azure provozu.
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-operational-security-overview"></a>Přehled Azure provozního zabezpečení
 Zabezpečení provozu Azure se odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. [Zabezpečení provozu Azure](https://docs.microsoft.com/azure/security/azure-operational-security) je rozhraní, které zahrnuje znalosti získaných prostřednictvím nejrůznějších možností, které jsou jedinečné pro společnosti Microsoft, včetně Microsoft SDL Security Development Lifecycle (), Microsoft Security Response Center program a hloubkové povědomí o povahu hrozeb kybernetického zabezpečení.
@@ -65,7 +65,7 @@ Microsoft [Azure Automation](https://docs.microsoft.com/azure/automation/automat
 -   Poskytuje správu centrální přístupu, jednotného přihlašování (SSO) a vytváření sestav
 -   Podporuje správu integrovaného přístupu k [tisíce aplikace](https://azure.microsoft.com/marketplace/active-directory/) v galerii aplikací, včetně služby Salesforce, Google Apps, pole, Concur a další.
 
-Azure AD také zahrnuje úplná sada [funkce správy identit](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) včetně [služby Multi-Factor authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [registrace zařízení]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [ hesla pomocí samoobslužné služby správy](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [privilegovaný účet správy](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [řízení přístupu na základě role](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is), [sledování využití aplikací](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [bohaté auditování](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), a [sledování a výstrah zabezpečení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
+Azure AD také zahrnuje úplná sada [funkce správy identit](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports) včetně [služby Multi-Factor authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication), [registrace zařízení]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview), [ hesla pomocí samoobslužné služby správy](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/), [Samoobslužná správa skupin](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password), [privilegovaný účet správy](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure), [řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview), [sledování využití aplikací](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health), [bohaté auditování](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), a [sledování a výstrah zabezpečení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts).
 
 S Azure Active Directory všechny aplikace publikujete pro partnery a zákazníky (obchodní nebo příjemce) mají stejnou identitu a přístup k možnosti správy. To vám umožňuje výrazně snížit provozní náklady.
 
@@ -80,7 +80,7 @@ S Azure Active Directory všechny aplikace publikujete pro partnery a zákazník
 -   Ověření šifrování disku
 -   Útoky ze sítě
 
-Azure Security Center používá [řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure), který poskytuje [předdefinované role](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) , lze přiřadit uživatelům, skupinám a službám v Azure.
+Azure Security Center používá [řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), který poskytuje [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) , lze přiřadit uživatelům, skupinám a službám v Azure.
 
 Security Center vyhodnocuje konfigurace vaše prostředky a identifikují problémy se zabezpečením a ohrožení zabezpečení. V Centru zabezpečení zobrazí jenom informace týkající se prostředek v případě jsou přiřazenou roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které daný prostředek patří.
 
@@ -109,7 +109,7 @@ Je protokol, který poskytuje vhled do činnosti, které byly provedeny v prost�
 
 Například protokoly událostí systému Windows jsou jednu kategorii protokolů diagnostiky pro virtuální počítače a objektů blob, table a queue protokoly jsou kategorie diagnostické protokoly pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokol aktivit (dříve označované jako protokol auditů nebo operační protokol)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Diagnostické protokoly získat přehled o operace, aby prostředku provedeny sám sebe.
+Diagnostické protokoly se liší od [protokol aktivit (dříve označované jako protokol auditů nebo operační protokol)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
 
 ### <a name="metrics"></a>Metriky
 Azure monitorování umožňuje využívat telemetrie a získáte přehled o výkonu a stavu úlohy v Azure. Nejdůležitější typ Azure telemetrická data je metriky (také nazývané čítače výkonu) vysílaných prostředků nejvíce Azure. Monitorování Azure poskytuje několik způsobů, jak nakonfigurovat a využívat tyto [metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) pro monitorování a řešení potíží.

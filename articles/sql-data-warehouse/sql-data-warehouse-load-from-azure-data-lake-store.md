@@ -1,56 +1,50 @@
 ---
-title: "Zatížení – Azure Data Lake Store k SQL Data Warehouse | Microsoft Docs"
-description: "Naučte se používat k načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse PolyBase externí tabulky."
+title: 'Kurz: Načíst z Azure Data Lake Store k Azure SQL Data Warehouse | Microsoft Docs'
+description: Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
-manager: barbkess
-editor: 
-ms.assetid: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 3/14/2018
-ms.author: cakarst;barbkess
-ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 3c6907e8eb4ae4bbfae76a5a220d670427afd703
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store do SQL Data Warehouse
-Tento dokument poskytuje všechny kroky nutné k načtení dat z Azure Data Lake Store (ADLS) do SQL Data Warehouse pomocí PolyBase.
-Zatímco budete moci spouštět dotazy ad hoc přes data uložená v ADLS pomocí externí tabulky, doporučujeme importu dat do SQL Data Warehouse pro nejlepší výkon.
+# <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store k SQL Data Warehouse
+Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spustit ad hoc dotazy na data uložená v ADLS, doporučujeme importu dat do SQL Data Warehouse pro nejlepší výkon.
 
-V tomto kurzu se dozvíte, jak:
+> [!div class="checklist"]
+> * Vytvořte databázové objekty nezbytné načítat z Azure Data Lake Store.
+> * Připojení k adresáři Azure Data Lake Store.
+> * Načtení dat do Azure SQL Data Warehouse.
 
-1. Vytvořte databázové objekty nezbytné načítat z Azure Data Lake Store.
-2. Připojení k adresáři Azure Data Lake Store.
-3. Načtení dat do Azure SQL Data Warehouse.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
+Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+
 Chcete-li spustit tento kurz, je třeba:
 
-* Azure Active Directory aplikace bude používat pro ověření Service-to-Service. Pokud chcete vytvořit, postupujte podle [ověřování služby Active directory](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)
+* Azure Active Directory aplikace bude používat pro ověření Service-to-Service. Pokud chcete vytvořit, postupujte podle [ověřování služby Active directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Potřebujete ID klienta, klíč a hodnotu tokenu koncového bodu OAuth2.0 Active Directory aplikace pro připojení k vaší Azure Data Lake z SQL Data Warehouse. Podrobnosti o tom, jak získat tyto hodnoty jsou ve výše uvedený odkaz.
->Poznámka pro Azure Active Directory aplikace registrace pomocí ID aplikace jako ID klienta.
+> Potřebujete ID klienta, klíč a hodnotu tokenu koncového bodu OAuth2.0 Active Directory aplikace pro připojení k vaší Azure Data Lake z SQL Data Warehouse. Podrobnosti o tom, jak získat tyto hodnoty jsou ve výše uvedený odkaz. Pro Azure Active Directory aplikace registrace pomocí ID aplikace jako ID klienta.
+> 
 
-* SQL Server Management Studio nebo SQL Server Data Tools a stáhnout aplikaci SSMS připojení najdete v části [dotazu SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
+* Azure SQL Data Warehouse. V tématu [vytvořit a dotaz a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* Azure SQL Data Warehouse, chcete-li vytvořit jeden postupujte podle: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Azure Data Lake Store. V tématu [Začínáme s Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md). 
 
-* Azure Data Lake Store, vytvoření jeden postupujte podle kroků: https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
+Pro přístup k Azure Data Lake Store, musíte vytvořit hlavní klíč databáze pro zašifrování váš tajný klíč pověření použít v dalším kroku. Pak vytvořte obor přihlašovací údaje databáze, která ukládá hlavní přihlašovací údaje služby nastavit v AAD. Pro ty z vás kdo PolyBase použili pro připojení k systému Windows Azure Storage Blobs syntaxe přihlašovacích údajů se liší.
 
-
-###  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
-Pro přístup k Azure Data Lake Store, musíte vytvořit hlavní klíč databáze pro zašifrování váš tajný klíč pověření použít v dalším kroku.
-Pak vytvořte obor přihlašovací údaje databáze, která ukládá hlavní přihlašovací údaje služby nastavit v AAD. Pro ty z vás kdo PolyBase použili pro připojení k systému Windows Azure Storage Blobs syntaxe přihlašovacích údajů se liší.
-Abyste mohli připojit k Azure Data Lake Store, musíte **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a udělit aplikaci přístup k prostředku Azure Data Lake. Pokyny k provedení těchto kroků jsou umístěné [zde](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory).
+Abyste mohli připojit k Azure Data Lake Store, musíte **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a udělit aplikaci přístup k prostředku Azure Data Lake. Pokyny najdete v tématu [ověřit do Azure Data Lake Store pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -80,9 +74,8 @@ WITH
 ;
 ```
 
-
-### <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat.
-Použít [vytvořit externí zdroj dat] [ CREATE EXTERNAL DATA SOURCE] příkazu umístění dat úložiště. 
+## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat.
+Použít [vytvořit externí zdroj dat](/sql/t-sql/statements/create-external-data-source-transact-sql) příkazu umístění dat úložiště. 
 
 ```sql
 -- C: Create an external data source
@@ -100,7 +93,7 @@ WITH (
 
 ## <a name="configure-data-format"></a>Konfigurovat formát dat
 Pro import dat z ADLS, budete muset zadat External File Format. Tento objekt definuje, jak tyto soubory jsou zapsány v ADLS.
-Úplný seznam najdete v dokumentaci T-SQL [vytvořit EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]
+Úplný seznam najdete v dokumentaci T-SQL [vytvořit EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
 ```sql
 -- D: Create an external file format
@@ -160,7 +153,7 @@ Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo 
  Azure Data Lake store využívá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že objekt služby musí mít oprávnění ke čtení adresáře definované v parametru umístění a podřízené objekty daného konečné adresář a soubory. To umožňuje PolyBase k ověření a načíst data. 
 
 ## <a name="load-the-data"></a>Načtení dat
-Načtení dat z Azure Data Lake Store pomocí [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] příkaz. 
+Načtení dat z Azure Data Lake Store pomocí [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkaz. 
 
 Funkce CTAS vytvoří novou tabulku a naplní s výsledky příkazu select. Funkce CTAS definuje novou tabulku tak, aby měl stejné sloupce a typy dat jako výsledky příkazu select. Pokud vyberete všechny sloupce z externí tabulky, je nová tabulka repliku sloupce a typy dat v externí tabulky.
 
@@ -177,7 +170,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace columnstore komprese
-Ve výchozím nastavení SQL Data Warehouse ukládá jako clusterovaný index columnstore v tabulce. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Je z různých důvodů, proč k tomu může dojít. Další informace najdete v tématu [spravovat indexy columnstore][manage columnstore indexes].
+Ve výchozím nastavení SQL Data Warehouse ukládá jako clusterovaný index columnstore v tabulce. Po dokončení zatížení některé řádky dat nemusí být komprimovány do columnstore.  Je z různých důvodů, proč k tomu může dojít. Další informace najdete v tématu [spravovat indexy columnstore](sql-data-warehouse-tables-index.md).
 
 Chcete-li optimalizovat výkon dotazů a komprese columnstore po zatížení, znovu sestavte vynutit index columnstore komprimovat všechny řádky v tabulce.
 
@@ -187,41 +180,31 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ```
 
-Další informace o údržbě indexů columnstore, najdete v článku [spravovat indexy columnstore] [ manage columnstore indexes] článku.
-
 ## <a name="optimize-statistics"></a>Optimalizace statistiky
 Je vhodné vytvořit jednosloupcovou statistiku okamžitě po zatížení. Existuje několik možností pro statistiky. Například pokud vytvoříte jednosloupcovou statistiku pro každý sloupec může trvat dlouhou dobu znovu vytvořit všechny statistiky. Pokud víte, že některé sloupce nejsou má být v predikátech dotazu, můžete přeskočit vytvoření statistiky pro tyto sloupce.
 
-Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít ukázka kódu uložené procedury `prc_sqldw_create_stats` v [statistiky] [ statistics] článku.
+Pokud se rozhodnete vytvořit jednosloupcovou statistiku pro každý sloupec každé tabulky, můžete použít ukázka kódu uložené procedury `prc_sqldw_create_stats` v [statistiky](sql-data-warehouse-tables-statistics.md) článku.
 
 V následujícím příkladu je to dobrý výchozí bod pro vytvoření statistiky. Vytvoří jednosloupcovou statistiku pro každý sloupec v tabulce dimenze a pro každý sloupec spojující v tabulkách faktů. Vždy přidáním statistiky jeden nebo více sloupců do ostatních sloupců tabulky faktů později.
-
 
 ## <a name="achievement-unlocked"></a>Dosažení odemčený!
 Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
 
-## <a name="next-steps"></a>Další kroky
-Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývoj prostředky na [tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview) a [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops).
+## <a name="next-steps"></a>Další postup 
+V tomto kurzu vytvořili externí tabulky můžete definovat strukturu dat uložených v Azure Data Lake Store a pak použít příkaz PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
+
+Provedli jste tyto akce:
+> [!div class="checklist"]
+> * Vytvoření databázové objekty nezbytné načítat z Azure Data Lake Store.
+> * Připojení k adresář služby Azure Data Lake Store.
+> * Načíst data do Azure SQL Data Warehouse.
+> 
+
+Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývoj prostředky.
+
+> [!div class="nextstepaction"]
+>[Další informace jak vyvíjet tabulek v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
 
 
-<!--Image references-->
 
-<!--Article references-->
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[manage columnstore indexes]: sql-data-warehouse-tables-index.md
-[Statistics]: sql-data-warehouse-tables-statistics.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[label]: sql-data-warehouse-develop-label.md
 
-<!--MSDN references-->
-[CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/library/dn935022.aspx
-[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
-[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
-
-<!--Other Web references-->
-[Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
-[Load the full Contoso Retail Data Warehouse]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md

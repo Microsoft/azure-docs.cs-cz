@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na Data virtuálního počítače vědecké účely
 
@@ -33,7 +33,7 @@ Virtuální počítač vědecké účely dat (DSVM) poskytuje produktivní prost
 | Typické použití      | Vývoj softwaru    |
 | Jak je ho nakonfigurovaná a nainstalovaná na DSVM?      | Data vědecké účely zatížení (Python a R tools), úloha Azure (Hadoop, Data Lake), Node.js, nástroje SQL Server, [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
-| Na DSVM souvisejících nástrojích      |     Visual Studio Code, RStudio, Juno  |
+| Na DSVM souvisejících nástrojích      |     Juno kód, Rstudia, Visual Studio  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 |    |           |
@@ -69,7 +69,7 @@ Virtuální počítač vědecké účely dat (DSVM) poskytuje produktivní prost
 | Podporované DSVM verze      | Windows, Linux      |
 | Typické použití      |  Dita vývoj     |
 | Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\JuliaPro-0.5.1.1\Juno.bat`) v systému Windows, zástupce na ploše (`/opt/JuliaPro-VERSION/Juno`) v systému Linux      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, RStudio      |
+| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Rstudia      |
 
 ## <a name="pycharm"></a>Pycharm
 |    |           |
@@ -78,7 +78,7 @@ Virtuální počítač vědecké účely dat (DSVM) poskytuje produktivní prost
 | Podporované DSVM verze      | Linux      |
 | Typické použití      |  Vývoj R     |
 | Jak se použít nebo ji spustit?      | Zástupce na ploše (`/usr/bin/pycharm`) v systému Linux      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, RStudio      |
+| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Rstudia      |
 
 
 

@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření pravidla autorizace služby Service Bus pomocí šablony Azure Resource Manager | Microsoft Docs"
-description: "Vytvoření pravidla autorizace sběrnice pro obor názvů a fronty pomocí šablony Azure Resource Manageru"
+title: Vytvoření pravidla autorizace služby Service Bus pomocí šablony Azure Resource Manager | Microsoft Docs
+description: Vytvoření pravidla autorizace sběrnice pro obor názvů a fronty pomocí šablony Azure Resource Manageru
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f1443a0-5fa8-4d90-8637-1a977ef0b1f0
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 384a2fce4bf338ffc4ab6690980c12ad7ff34a6e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: e29045f43f5b80ffc66d7b10bac39f3d8d03ae3c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Vytvoření pravidla autorizace sběrnice pro obor názvů a fronty pomocí šablony Azure Resource Manager
 
@@ -107,8 +107,7 @@ Vytvoří standardní oboru názvů Service Bus typu **zasílání zpráv**a Ser
             "location": "[variables('location')]",
             "kind": "Messaging",
             "sku": {
-                "name": "StandardSku",
-                "tier": "Standard"
+                "name": "Standard",
             },
             "resources": [
                 {
@@ -164,7 +163,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste vytvoření a nasazení prostředků pomocí Azure Resource Manager, zjistěte, jak tyto zdroje spravovat pomocí těchto článků:
 
 * [Správa služby Service Bus pomocí prostředí PowerShell](service-bus-powershell-how-to-provision.md)

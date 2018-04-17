@@ -33,7 +33,7 @@ Následující doporučení platí pro většinu scénářů. Pokud nemáte konk
 
 ### <a name="vm-recommendations"></a>Doporučení pro virtuální počítače
 
-Azure nabízí mnoho různých velikostí virtuálních počítačů, ale my doporučujeme řady GS a DS, a to proto, že tyto velikosti počítačů podporují [Storage úrovně Premium][premium-storage]. Pokud nemáte speciální úlohy, jako je třeba vysokovýkonné výpočetní prostředí (HPC), vyberte jednu z těchto velikosti počítačů. Podrobnosti najdete v tématu věnovaném [velikostem virtuálních počítačů][virtual-machine-sizes].
+Azure nabízí mnoho různých velikostí virtuálních počítačů, ale my doporučujeme řady GS a DS, a to proto, že tyto velikosti počítačů podporují [Premium Storage][premium-storage]. Pokud nemáte speciální úlohy, jako je třeba vysokovýkonné výpočetní prostředí (HPC), vyberte jednu z těchto velikosti počítačů. Podrobnosti najdete v tématu věnovaném [velikostem virtuálních počítačů][virtual-machine-sizes].
 
 Pokud přesouváte existující úlohy do Azure, začněte s velikostí virtuálního počítače, která nejvíce odpovídá vašim místním serverům. Potom změřte výkon vaší aktuální úlohy s ohledem na využití procesoru, paměti a diskových vstupně-výstupních operací za sekundu (IOPS) a v případě potřeby velikost upravte. Pokud budete pro virtuální počítač potřebovat několik síťových rozhraní, uvědomte si, že maximální počet síťových adaptérů závisí na [velikosti virtuálního počítače][vm-size-tables].
 
@@ -47,7 +47,7 @@ Informace o volbě publikované image virtuálního počítače najdete v témat
 
 ### <a name="disk-and-storage-recommendations"></a>Doporučení pro disk a úložiště
 
-Pro zajištění nejlepšího výkonu diskových operací doporučujeme použít službu [Storage úrovně Premium][premium-storage], která ukládá data na discích SSD (solid-state drive). Náklady závisí na velikosti zřízeného disku. Na velikosti disku závisí také vstupně-výstupní operace za sekundu a propustnost (to znamená rychlost přenosu dat). Proto při zřizování disku zvažte všechny tři faktory (kapacita, IOPS a propustnost). 
+Pro zajištění nejlepšího výkonu diskových operací doporučujeme použít službu [Premium Storage][premium-storage], která ukládá data na discích SSD (solid-state drive). Náklady závisí na velikosti zřízeného disku. Na velikosti disku závisí také vstupně-výstupní operace za sekundu a propustnost (to znamená rychlost přenosu dat). Proto při zřizování disku zvažte všechny tři faktory (kapacita, IOPS a propustnost). 
 
 Pro každý virtuální počítač vytvořte samostatné účty úložiště Azure pro uložení virtuálních pevných disků (VHD). Nenarazíte tak na limity IOPS pro účty úložiště. 
 
@@ -69,7 +69,7 @@ Pokud máte velký počet datových disků, nezapomínejte na celkové limity V/
 
 Když přidáte datový disk, přiřadí se mu ID logické jednotky (LUN). Volitelně můžete LUN ID zadat, třeba když vyměňujete disk a chcete zachovat stejné LUN ID nebo když máte aplikaci, která hledá konkrétní LUN ID. Nezapomeňte ale, že hodnota LUN ID musí být pro každý disk jedinečná.
 
-Možná budete chtít plánovač vstupně-výstupních operací změnit kvůli optimalizaci výkonu na jednotkách SSD, protože disky pro virtuální počítače s účty Storage úrovně Premium jsou právě disky SSD. Běžně se pro SSD doporučuje používat plánovač NOOP, ale k monitorování výkonu V/V disku pro konkrétní úlohu měli byste použít nástroj, jako je [iostat].
+Možná budete chtít plánovač vstupně-výstupních operací změnit kvůli optimalizaci výkonu na jednotkách SSD, protože disky pro virtuální počítače s účty Premium Storage jsou právě disky SSD. Běžně se pro SSD doporučuje používat plánovač NOOP, ale k monitorování výkonu V/V disku pro konkrétní úlohu měli byste použít nástroj, jako je [iostat].
 
 K zajištění nejlepšího výkonu vytvořte samostatný účet úložiště pro uložení diagnostických protokolů. Pro diagnostické protokoly stačí standardní účet místně redundantního úložiště (LRS).
 
@@ -189,10 +189,10 @@ Pro zajištění vyšší dostupnosti nasaďte dva nebo víc virtuálních poč�
 [OSPatching]: https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching
 [planned-maintenance]:../articles/virtual-machines/linux/planned-maintenance.md
 [premium-storage]:../articles/virtual-machines/windows/premium-storage.md
-[rbac]: ../articles/active-directory/role-based-access-control-what-is.md
-[rbac-roles]: ../articles/active-directory/role-based-access-built-in-roles.md
-[rbac-devtest]: ../articles/active-directory/role-based-access-built-in-roles.md#devtest-labs-user
-[rbac-network]: ../articles/active-directory/role-based-access-built-in-roles.md#network-contributor
+[rbac]: ../articles/role-based-access-control/overview.md
+[rbac-roles]:../articles/role-based-access-control/built-in-roles.md
+[rbac-devtest]:../articles/role-based-access-control/built-in-roles.md#devtest-labs-user
+[rbac-network]:../articles/role-based-access-control/built-in-roles.md#network-contributor
 [reboot-logs]: https://azure.microsoft.com/en-us/blog/viewing-vm-reboot-logs/
 [Resize-VHD]: https://technet.microsoft.com/en-us/library/hh848535.aspx
 [Resize virtual machines]: https://azure.microsoft.com/en-us/blog/resize-virtual-machines/

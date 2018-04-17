@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: efe4b3a1a63fa1986682a2fdde1a20221dc5d93a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b91b1f902b2d769823067ea66bf7d00bd17a5160
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Monitorování clusteru Azure Container Service pomocí analýzy protokolů
 
@@ -30,8 +30,8 @@ Můžete otestovat, pokud máte `az` nainstalovaná, spuštěním nástroje:
 $ az --version
 ```
 
-Pokud nemáte `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).  
-Alternativně můžete použít [prostředí cloudu Azure](https://docs.microsoft.com/azure/cloud-shell/overview), který má `az` rozhraní příkazového řádku Azure a `kubectl` nástroje pro je již nainstalována.  
+Pokud nemáte `az` nástroj nainstalovali, jsou k dispozici pokyny [zde](https://github.com/azure/azure-cli#installation).
+Alternativně můžete použít [prostředí cloudu Azure](https://docs.microsoft.com/azure/cloud-shell/overview), který má `az` rozhraní příkazového řádku Azure a `kubectl` nástroje pro je již nainstalována.
 
 Můžete otestovat, pokud máte `kubectl` nainstalovaná, spuštěním nástroje:
 
@@ -67,40 +67,40 @@ Další informace o kontejneru řešení, naleznete [analýzy protokolů řešen
 ## <a name="installing-log-analytics-on-kubernetes"></a>Instalace na Kubernetes analýzy protokolů
 
 ### <a name="obtain-your-workspace-id-and-key"></a>Získání ID a klíč
-Agent komunikovat službu pro OMS je potřeba nakonfigurovat s id pracovního prostoru a klíč pracovního prostoru. Id pracovního prostoru a klíč musíte vytvořit účet na webu <https://mms.microsoft.com>.
-Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat id a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
+Pro analýzu protokolu agenta ke komunikaci služby je potřeba nakonfigurovat s ID pracovního prostoru a klíč pracovního prostoru. ID pracovního prostoru a klíč musíte vytvořit účet na webu <https://mms.microsoft.com>.
+Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat ID a klíč kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-the-oms-agent-using-a-daemonset"></a>Instalace agenta OMS pomocí DaemonSet
+### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>Instalace agenta analýzy protokolů pomocí DaemonSet
 DaemonSets Kubernetes používá ke spuštění jednu instanci kontejner na jednotlivých hostitelích v clusteru.
 Jsou ideální pro spuštění monitorovací agenty.
 
-Tady je [DaemonSet YAML soubor](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložit do souboru s názvem `oms-daemonset.yaml` a nahraďte zástupný symbol hodnoty pro `WSID` a `KEY` s vaše id a klíč v souboru.
+Tady je [DaemonSet YAML soubor](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Uložit do souboru s názvem `oms-daemonset.yaml` a nahraďte zástupný symbol hodnoty pro `WSID` a `KEY` s vaše ID a klíč v souboru.
 
-Po přidání vaše ID a klíč v konfiguraci DaemonSet, můžete nainstalovat agenta OMS na cluster s `kubectl` nástroj pro příkazový řádek:
+Po přidání vaše ID a klíč v konfiguraci DaemonSet, analýzy protokolů agenta můžete nainstalovat na cluster s `kubectl` nástroj příkazového řádku:
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Instalace agenta OMS pomocí Kubernetes tajný klíč
+### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Instalace agenta analýzy protokolů pomocí Kubernetes tajný klíč
 K ochraně ID pracovního prostoru analýzy protokolů a klíč můžete jako součást souboru DaemonSet YAML Kubernetes tajný klíč.
 
- - Zkopírujte skript, soubor tajný šablonu a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou na stejném adresáři. 
+ - Zkopírujte skript, soubor tajný šablonu a soubor DaemonSet YAML (z [úložiště](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)) a ujistěte se, že jsou na stejném adresáři.
       - Generování skriptu - tajný klíč gen.sh tajný klíč
       - Šablona tajné – template.yaml tajný klíč
    - Soubor DaemonSet YAML - omsagent – ds-secrets.yaml
- - Spusťte skript. Skript vyzve pro ID pracovního prostoru analýzy protokolů a primární klíč. Vložte který. skript se vytvoří soubor tajný yaml, můžete ji spustit.   
+ - Spusťte skript. Skript vyzve pro ID pracovního prostoru analýzy protokolů a primární klíč. Vložit, a tento skript vytvoří soubor tajný yaml, můžete ji spustit.
    ```
-   #> sudo bash ./secret-gen.sh 
+   #> sudo bash ./secret-gen.sh
    ```
 
    - Vytvoření tajných klíčů pod spuštěním následujícího: ``` kubectl create -f omsagentsecret.yaml ```
- 
-   - Pokud chcete zkontrolovat, spusťte následující: 
 
-   ``` 
+   - Pokud chcete zkontrolovat, spusťte následující:
+
+   ```
    root@ubuntu16-13db:~# kubectl get secrets
    NAME                  TYPE                                  DATA      AGE
    default-token-gvl91   kubernetes.io/service-account-token   3         50d
@@ -116,10 +116,10 @@ K ochraně ID pracovního prostoru analýzy protokolů a klíč můžete jako so
    Data
    ====
    WSID:   36 bytes
-   KEY:    88 bytes 
+   KEY:    88 bytes
    ```
- 
+
   - Vytvoření vaší omsagent démon set spuštěním ``` kubectl create -f omsagent-ds-secrets.yaml ```
 
 ### <a name="conclusion"></a>Závěr
-A to je vše! Po několika minutách byste měli vidět dat odesílaných do řídicího panelu OMS.
+A to je vše! Po několika minutách byste měli vidět dat odesílaných do řídicího panelu analýzy protokolů.

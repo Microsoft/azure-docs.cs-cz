@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: ''
-ms.openlocfilehash: cd458b1f6d26fbd5f5821a04cd01be5c3a4e4514
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="auto-provisioning-concepts"></a>Automatické zřizování koncepty
 
@@ -31,7 +31,7 @@ Azure IoT automatické zřizování možné ho rozdělit do tří fází:
    > [!NOTE]
    > Bez ohledu na velikost řešení IoT, i pokud plánujete podporu miliony zařízení, je to **jednorázovou konfiguraci**.
 
-2. **Registrace zařízení** -proces převedení instance služby zřizování zařízení upozornit zařízení, která se pokusí o registraci v budoucnu. Registrace se provádí konfigurace informací o identitu zařízení v rámci zřizování služby, jako "jednotlivých zápisu" pro jedno zařízení, nebo "registrace skupiny" pro více zařízení. Je na základě identity [ověření mechanismu](concepts-security.md#attestation-mechanism) zařízení slouží k použití, která umožňuje zřizování služby ověřit identitu pro pravosti zařízení během registrace:
+2. **Registrace zařízení** -proces převedení instance služby zřizování zařízení upozornit zařízení, která se pokusí o registraci v budoucnu. [Registrace](concepts-service.md#enrollment) provádí konfigurace informací o identitu zařízení v rámci zřizování služby, jako "jednotlivých zápisu" pro jedno zařízení, nebo "registrace skupiny" pro více zařízení. Je na základě identity [ověření mechanismu](concepts-security.md#attestation-mechanism) zařízení slouží k použití, která umožňuje zřizování služby ověřit identitu pro pravosti zařízení během registrace:
 
    - **Čip TPM**: nakonfigurovaný jako "jednotlivých zápisu", identitu tohoto zařízení je založeno na ID registrace TPM a veřejné ověřovacího klíče. Vzhledem k tomu, že je čip TPM [specifikace]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)), služba očekává pouze ověřit identitu podle specifikace, bez ohledu na čipu TPM implementace (hardwaru nebo softwaru). V tématu [zřizování zařízení: ověření Identity s čipem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) podrobnosti o ověření založené na čipu TPM. 
 

@@ -1,5 +1,5 @@
 ---
-title: "Zabezpečení osvědčených postupů pro IaaS úlohy v Azure | Microsoft Docs"
+title: Zabezpečení osvědčených postupů pro IaaS úlohy v Azure | Microsoft Docs
 description: " Tím migrace úloh do Azure IaaS přináší možnosti přehodnocovat naše návrhy "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -83,7 +83,7 @@ Můžete použít [Privileged Identity Management](../active-directory/active-di
 
 Pomocí Azure pro testovací prostředí a vývojových prostředí umožňuje organizacím získat lepší schopnost vývoj a testování pomocí rychle zpoždění, které představuje nákup hardwaru. Bohužel chybějících znalost Azure nebo chce, aby urychlit přijetí může vést správce mohl být zbytečně projektovou s přiřazení práv. Toto riziko může neúmyslně vystavit organizaci pro interní útoky. Někteří uživatelé mohou udělit přístup mnohem víc, než by měly mít.
 
-[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) služby používá [řízení přístupu](../active-directory/role-based-access-control-what-is.md) (RBAC). Pomocí RBAC, můžete v rámci týmu oddělit povinností do rolí, která udělují pouze úroveň přístupu, které jsou nutné, aby uživatelé pro svou práci. RBAC se dodává s předdefinované role (vlastník, uživatel lab a Přispěvatel). Tyto role můžete použít i k přiřazení práv pro externí partnery a výrazně zjednodušit spolupráci.
+[Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) služby používá [řízení přístupu](../role-based-access-control/overview.md) (RBAC). Pomocí RBAC, můžete v rámci týmu oddělit povinností do rolí, která udělují pouze úroveň přístupu, které jsou nutné, aby uživatelé pro svou práci. RBAC se dodává s předdefinované role (vlastník, uživatel lab a Přispěvatel). Tyto role můžete použít i k přiřazení práv pro externí partnery a výrazně zjednodušit spolupráci.
 
 Protože DevTest Labs používá RBAC, je možné vytvořit další, [vlastní role](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nejen zjednodušuje správu oprávnění, se zjednodušuje proces získávání prostředí zřízený. Pomáhá také řešit potíže s další typické výzvy týmy, které pracují na vývojových a testovacích prostředí. Vyžaduje určitou přípravu, ale z dlouhodobého hlediska, ji budou usnadnily pro váš tým.
 
@@ -224,7 +224,7 @@ Následující snímek obrazovky ukazuje příklad informace, které můžete zo
 
 ![Směrné plány zabezpečení Operations Management Suite](./media/azure-security-iaas/oms-security-baseline.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Blog týmu zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/)
 * [Středisko Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)

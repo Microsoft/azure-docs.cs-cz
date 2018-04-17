@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8b5869e44e22fab1e996fcd58b4258849603a711
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Pomocí rutin AzureRM.RecoveryServices.Backup zálohování virtuálních počítačů
 
@@ -132,7 +132,7 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
     ```
 
    > [!TIP]
-   > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení jako vstup. Z tohoto důvodu je vhodné pro uložení objektu trezoru služeb zotavení zálohování v proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
    >
    >
 
@@ -157,14 +157,14 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Ochrana virtuálních počítačů pomocí trezoru služeb zotavení. Před použitím ochranu nastavit kontext trezoru (typ dat v úložišti) a ověřte zásady ochrany. Zásady ochrany je plán při spuštění úloh zálohování a jak dlouho mají být uchována každý snímek zálohy.
 
 ### <a name="set-vault-context"></a>Kontext sady trezoru
-Než povolíte ochranu na virtuálním počítači, použijte **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** nastavit kontext úložiště. Po nastavení trezoru rámci platí pro všechny následující rutiny. Následující příklad nastaví kontext trezoru trezoru, *testvault*.
+Než povolíte ochranu na virtuálním počítači, použijte **[Set-AzureRmRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)** nastavit kontext úložiště. Po nastavení se kontext trezoru použije pro všechny další rutiny. Následující příklad nastaví kontext trezoru trezoru, *testvault*.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault -Name "testvault" | Set-AzureRmRecoveryServicesVaultContext
 ```
 
 ### <a name="create-a-protection-policy"></a>Vytvoření zásady ochrany
-Při vytváření trezoru služeb zotavení dodává s výchozí ochrana a zásady uchovávání informací. Výchozí zásady ochrany aktivuje úlohu zálohování každý den v zadanou dobu. Výchozí zásady uchovávání informací zachová denního bodu obnovení po dobu 30 dnů. Výchozí zásady můžete rychle zajistit ochranu virtuálního počítače a upravovat zásady později pomocí různých údajů.
+Při vytváření trezoru služby Recovery Services se vytvoří i výchozí zásady ochrany a uchovávání informací. Výchozí zásady ochrany aktivují úlohu zálohování každý den v určenou dobu. Výchozí zásady uchovávání informací uchovávají denní bod obnovení po dobu 30 dnů. Výchozí zásady můžete rychle zajistit ochranu virtuálního počítače a upravovat zásady později pomocí různých údajů.
 
 Použití **[Get-AzureRmRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupprotectionpolicy)** Chcete-li zobrazit zásady ochrany v trezoru. Tuto rutinu můžete použít, chcete-li získat konkrétní zásadu, nebo pokud chcete zobrazit zásady přidružené typu úlohy. Následující příklad získá zásady pro typ pracovního vytížení, AzureVM.
 
@@ -362,7 +362,7 @@ Po obnovení disky, přejděte k další části vytvořte virtuální počíta�
 Po obnovení disky, tyto kroky použijte k vytvoření a konfiguraci virtuálního počítače z disku.
 
 > [!NOTE]
-> Pokud chcete vytvořit šifrovaný virtuální počítače z obnovené disků, musí mít vaše Azure role oprávnění k provedení akce, **Microsoft.KeyVault/vaults/deploy/action**. Pokud vaše role nemá toto oprávnění, vytvořte vlastní role pomocí této akce. Další informace najdete v tématu [vlastní role v Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+> Pokud chcete vytvořit šifrovaný virtuální počítače z obnovené disků, musí mít vaše Azure role oprávnění k provedení akce, **Microsoft.KeyVault/vaults/deploy/action**. Pokud vaše role nemá toto oprávnění, vytvořte vlastní role pomocí této akce. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
 

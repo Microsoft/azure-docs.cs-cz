@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s skupin zabezpečení sítě - portál | Microsoft Docs"
-description: "Informace o řešení potíží s skupin zabezpečení sítě v modelu nasazení Azure Resource Manager pomocí portálu Azure."
+title: Řešení potíží s skupin zabezpečení sítě - portál | Microsoft Docs
+description: Informace o řešení potíží s skupin zabezpečení sítě v modelu nasazení Azure Resource Manager pomocí portálu Azure.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: b053993bec74d358dd7a0a8889fa05885b563b16
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Řešení potíží s skupin zabezpečení sítě pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Pomocí následujících kroků pro řešení potíží s skupiny Nsg pro virtu�
 
 Úplný seznam pravidel efektivní zabezpečení můžete zobrazit na síťový adaptér z virtuálního počítače sám sebe. Můžete také přidat, upravit a odstranit pravidla NSG síťových Adaptérů a podsíť z okna efektivní pravidla, pokud máte oprávnění k provedení těchto operací.
 
-1. Přihlášení k portálu Azure v https://portal.azure.com s účet Azure. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Přihlášení k portálu Azure v https://portal.azure.com s účet Azure. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klikněte na tlačítko **všechny služby**, pak klikněte na tlačítko **virtuální počítače** v seznamu, který se zobrazí.
 3. Vyberte virtuální počítač ze seznamu, který se zobrazí řešení a zobrazí se okno virtuálních počítačů s možnostmi.
 4. Klikněte na tlačítko **Diagnostikujte & řešení problémů** a pak vyberte častých problémů. V tomto příkladu **nelze se připojit k virtuálnímu počítači s Windows** je vybrána. 

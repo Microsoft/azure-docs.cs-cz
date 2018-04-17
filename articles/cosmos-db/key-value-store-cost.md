@@ -1,13 +1,12 @@
 ---
-title: "Azure DB Cosmos jako hodnota klíče úložiště – přehled nákladů | Microsoft Docs"
-description: "Další informace o nízké náklady na používání Azure Cosmos DB jako úložiště hodnota klíče."
-keywords: "Hodnota klíče úložiště"
+title: Azure DB Cosmos jako hodnota klíče úložiště – přehled nákladů | Microsoft Docs
+description: Další informace o nízké náklady na používání Azure Cosmos DB jako úložiště hodnota klíče.
+keywords: Hodnota klíče úložiště
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+tags: ''
+documentationcenter: ''
 ms.assetid: 7f765c17-8549-4509-9475-46394fc3a218
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: 9854ed30672ea16650fbdd98e991fb3916afef07
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure DB Cosmos jako hodnota klíče úložiště – přehled nákladů
 
@@ -53,7 +52,7 @@ Pokud zřizujete 1000 RU za sekundu, tento objemy 3,6 m RU za hodinu a bude nák
 
 Většina základních objektů blob nebo objekt úložiště služby ceně $0,40 za mil. čtení transakce a 5 na mil. zápisu transakce. Pokud se používá optimálně, Cosmos databáze může být až 98 % levnější než tato řešení (pro transakce 1 KB).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nenechte ujít nových článků pro optimalizaci zřizování prostředků Azure Cosmos DB. Do té doby, klidně používat naše [RU kalkulačky](https://www.documentdb.com/capacityplanner).
 

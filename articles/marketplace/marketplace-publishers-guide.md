@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce Azure Marketplace a AppSource vydavatele
 
@@ -121,8 +121,7 @@ Každý výkladní skříň podporuje více publikování možnosti a nabídka t
 Obraťte se na mě možnost použijte, pokud zapojení úrovni zkušební verze nebo transakce není možné. Výhodou tohoto přístupu je, že umožňuje vydavatelé s řešením na trhu pro okamžitě začne zájemce, které můžete by měla vycházet do základní nabídky zahájíte setrvačníku vaší firmy. Nevýhodou je ale, že je omezená, porovnání s jinými typy nabídka zákaznické engagement.
 
 >[!IMPORTANT]
-<<<<<<< HEAD zákaznické engagement je nejvhodnější zkušební verzi a nabízí Transact. Obraťte se na mě hodnotu realizace, která se zobrazí, pokud si zvolíte tento typ výpis, zajistěte proto že realizace cíl je nakonfigurována a jste připraveni k maximalizaci zájemce. === Nedoporučujeme kontakt mi typ seznamu. Používejte jenom v situacích, kde neexistuje žádný způsob, jak vytvořit zkušební prostředí. Zákaznické engagement je vhodné s nabídkami zkušební verze a transakce. Pokud máte libovolného typu zkušební verze, naše procesu registrace vám pomohou jednu z těchto možností, v závislosti na vašem scénáři.
->>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
+>Zákaznické engagement je nejvhodnější zkušební verzi a nabízí Transact. Obraťte se na mě hodnotu realizace, která se zobrazí, pokud si zvolíte tento typ výpis, zajistěte proto že realizace cíl je nakonfigurována a jste připraveni k maximalizaci zájemce. 
 
 Nabídka se primárně skládá z profesionální služby (například hodnocení, implementace, pracovních konferencí), použijte nabídnout služby konzultace ohledně typu. Nabídka oboru, doba trvání a cena musí být vyřešeny, musí být pro jednoho zákazníka a musí být provedeny v lokalitě.
 
@@ -413,7 +412,7 @@ V této části vám vysvětlíme, postup:
 
 |Krok registrace Marketplace.  |Čas  |Popis  |
 |---------|---------|---------|
-| Registrovat v síti Microoft partnera | 15 minut | Vydavatelé musí být registrované v Microsoft Partner sítě (MPN) Chcete-li mít první úroveň ověření účtu a přijímat další výhody a podpora pro se Azure Marketplace vydavatele |
+| Registrovat v síti partnera společnosti Microsoft | 15 minut | Vydavatelé musí být registrované v Microsoft Partner sítě (MPN) Chcete-li mít první úroveň ověření účtu a přijímat další výhody a podpora pro se Azure Marketplace vydavatele |
 |Vytvoření ID společnosti Microsoft     |   15 minut      |   Partneři musí mít účet Microsoft ID. Toto ID Microsoft se použije pro přístup k portálu pro partnery cloudu.       |
 |Odeslání formuláře navrženém marketplace.     |  1 až 3 dnů       |  K odeslání formuláře navrženém ke spuštění procesu schvalování pro marketplace, musí partneři. Po odeslání formuláře se tým registrace marketplace. Zkontrolujte, zda aplikace a ověření žádosti.       |
 |Zaregistrovat v Centru pro vývojáře     |    5 až 10 dnů     | Registrace ve službě Microsoft Developer Center je vyžadována pro Microsoft chcete ověřit, že partner je platný právní subjekt s platnou daňové číslo pro země, ve kterém je zaregistrován. Středisko pro vývojáře vám umožní partnerovi registrované Microsoft developer a poskytnout přístup k programu vývojáře pro službu Azure. <br><br>Všimněte si, že pokud jste nedokončili formuláře navrženém marketplace, zobrazí se výzva zaplatili poplatek registrace $99. Pokud chcete, aby tento poplatek prominuty, vyplňte formulář navrženém marketplace a budete dostávat propagační kód prostřednictvím e-mailu.  |
@@ -493,7 +492,6 @@ Toto je seznam možností podpory pro Azure Marketplace:
 
 |Podpora kanálu  |Popis  |
 |---------|---------|
-|Slack: [připojení k systému Slack Marketplace.](https://join.marketplace.azure.com)    |   Slack prostředí pro podporu partnery s technické problémy. Existuje více než 350 partnery právě v tomto prostředí pracuje.        |
 |Fórech MSDN: [Marketplace.](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Fórum Microsoft Developer Network.         |
 |Přetečení zásobníku: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    Stack Overflow prostředí získat řešení a klást otázky týkající se všechno související s Azure a Marketplace:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Azure Virtual Machines](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
 

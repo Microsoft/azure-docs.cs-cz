@@ -1,11 +1,11 @@
 ---
-title: "Nabídka změnu předplatného Azure | Microsoft Docs"
-description: "Další informace o tom, jak změnit vašeho předplatného Azure a přepnout na jinou nabídku pomocí centra účtů Azure"
-services: 
-documentationcenter: 
+title: Nabídka změnu předplatného Azure | Microsoft Docs
+description: Další informace o tom, jak změnit vašeho předplatného Azure a přepnout na jinou nabídku pomocí centra účtů Azure
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
 ms.service: billing
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 381994079b7bcaeff08802b06573b977bf631e9d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 12e5641093dd1bdc1546cc115283f48d5c134121
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Změna předplatného Azure průběžné platby na jinou nabídku
 
@@ -29,7 +29,7 @@ Jako [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) zá
 
 ## <a name="whats-supported"></a>Co je podporováno:
 
-| Z | Akce |
+| Od | Akce |
 | --- | --- |
 | Průběžné platby |[Průběžné platby vývoje/testování](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | Průběžné platby |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
@@ -63,7 +63,7 @@ Jako [průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) zá
 1. Můžete přejmenovat své předplatné. Ve výchozím nastavení jsme ho nastavit na nový název nabídky. Klikněte na tlačítko **přepínač nabízejí** proces dokončete.
 
    ![Kliknutím na zelené tlačítko](./media/billing-how-to-switch-azure-offer/confirmpage.png)
-1. Úspěšné! Předplatné je nyní přepnout do nové nabídky.
+1. Výborně! Předplatné je nyní přepnout do nové nabídky.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -105,7 +105,7 @@ V den, kdy jste přešli je vygenerována faktura pro všechny nezaplacených po
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Můžete migrovat z průběžné platby k [poskytovatele Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) nebo [smlouva Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
 
-* Chcete-li migrovat do CSP, přečtěte si téma [migrace předplatného Azure Pa-jako-vám-přejděte k CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* Chcete-li migrovat do CSP, přečtěte si téma [migrace předplatného Azure průběžné platby k CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Pokud chcete migrovat do EA, mohl váš správce pro zápis do EA přidejte svůj účet. Postupujte podle pokynů v e-mailová pozvánka tak, aby měl vašich předplatných přesunout pod EA registrace. Další informace najdete v tématu [přidružit existující účet](https://ea.azure.com/helpdocs/associateExistingAccount) EA portálu.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Můžete migrovat data a služby do nového předplatného?

@@ -1,12 +1,12 @@
 ---
-title: "Izolace ve veřejném cloudu Azure | Microsoft Docs"
-description: "Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise."
+title: Izolace ve veřejném cloudu Azure | Microsoft Docs
+description: Další informace o cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -52,7 +52,7 @@ V prostředí cloudu se dá klient služby Azure AD definovat jako klient nebo o
 Každý adresář služby Azure AD je oddělený od ostatních adresářů služby Azure AD. Adresář služby Azure AD byl navržen tak, aby se jednalo o zabezpečený prostředek k použití pouze pro vaši organizaci – stejně jako je podniková kancelářská budova zabezpečeným prostředkem výhradně vaší organizace. Architektura služby Azure AD znemožňuje míchání dat zákazníků a informací o identitě. To znamená, že se uživatelé a správci jednoho adresáře služby Azure AD nemohou dostat – ať už omylem nebo záměrně – k datům v jiném adresáři.
 
 ### <a name="azure-tenancy"></a>Azure klientů
-Azure klientů (předplatné Azure) odkazuje na relaci "zákazníka nebo billing" a jedinečný [klienta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) v [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Úrovně izolaci klientů v Microsoft Azure je dosaženo pomocí služby Azure Active Directory a [ovládací prvky založené na rolích](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) nabízené ho. Každé předplatné Azure je přidružen jeden adresář Azure Active Directory (AD).
+Azure klientů (předplatné Azure) odkazuje na relaci "zákazníka nebo billing" a jedinečný [klienta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) v [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Úrovně izolaci klientů v Microsoft Azure je dosaženo pomocí služby Azure Active Directory a [ovládací prvky založené na rolích](https://docs.microsoft.com/azure/role-based-access-control/overview) nabízené ho. Každé předplatné Azure je přidružen jeden adresář Azure Active Directory (AD).
 
 Uživatelé, skupiny a aplikací z adresáře, můžete spravovat prostředky v rámci předplatného Azure. Můžete přiřadit tyto přístupová práva pomocí portálu Azure, nástroje příkazového řádku Azure a rozhraní API pro správu Azure. Klient služby Azure AD je logicky izolované pomocí hranice zabezpečení, aby žádné zákazníka lze zobrazit nebo ohrozit společné klientů, závadně nebo náhodně. Azure AD je spuštěna na serverech "holý počítač" izolované v segmentu oddělené sítě, kde filtrování paketů na úrovni hostitele a brány Windows Firewall blokovat nežádoucí připojení a provozu.
 
@@ -80,7 +80,7 @@ Koncept kontejnery klienta je úzce ingrained v adresářové službě na všech
 I v případě, že metadata od víc klientů služby Azure Active Directory je uložený na stejném fyzickém disku, není žádný vztah mezi kontejnerů než co je definováno adresářová služba, která zase závisí správce klienta.
 
 ### <a name="azure-role-based-access-control-rbac"></a>Řízení přístupu Azure na základě rolí (RBAC)
-[Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) umožňuje sdílet různé součásti, které jsou k dispozici v rámci předplatného Azure tím, že poskytuje vyladění správy přístupu pro Azure. Azure RBAC umožňuje oddělit povinností v rámci vaší organizace a udělit přístup podle toho, co uživatelé potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění v předplatného Azure nebo prostředky, můžete povolit jenom určité akce.
+[Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) umožňuje sdílet různé součásti, které jsou k dispozici v rámci předplatného Azure tím, že poskytuje vyladění správy přístupu pro Azure. Azure RBAC umožňuje oddělit povinností v rámci vaší organizace a udělit přístup podle toho, co uživatelé potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění v předplatného Azure nebo prostředky, můžete povolit jenom určité akce.
 
 Azure RBAC má tři základní role, které platí pro všechny typy prostředků:
 
@@ -90,11 +90,11 @@ Azure RBAC má tři základní role, které platí pro všechny typy prostředk�
 
 - **Čtečka** můžete zobrazit stávající prostředky Azure.
 
-![Řízení přístupu Azure na základě rolí](./media/azure-isolation/azure-isolation-fig3.png)
+![Řízení přístupu na základě role Azure](./media/azure-isolation/azure-isolation-fig3.png)
 
 Zbytek role RBAC v Azure povolit správu konkrétních prostředků Azure. Například role Přispěvatel virtuálních počítačů umožňuje uživatelům vytvářet a spravovat virtuální počítače. Nedává je přístup k službě Azure Virtual Network nebo podsíť, které se virtuální počítač připojí k.
 
-[Předdefinované role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) vytvořte seznam rolí v Azure k dispozici. Určuje operace a rozsah, který každé předdefinované role uděluje uživatelům. Pokud zjišťujete, kam můžete definovat vlastní role pro ještě větší kontrolu, najdete v části jak sestavit [vlastní role v Azure RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
+[Předdefinované role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) vytvořte seznam rolí v Azure k dispozici. Určuje operace a rozsah, který každé předdefinované role uděluje uživatelům. Pokud zjišťujete, kam můžete definovat vlastní role pro ještě větší kontrolu, najdete v části jak sestavit [vlastní role v Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 Některé další možnosti pro Azure Active Directory patří:
 - Azure AD umožňuje jednotné přihlašování pro aplikace SaaS, bez ohledu na to, kde jsou hostované. Některé aplikace jsou federované pomocí Azure AD, jiné používají jednotné přihlašování pomocí hesla. Federované aplikace také podporují zřizování uživatelů a [heslo překlenutí vyrovnávací paměti](https://www.techopedia.com/definition/31415/password-vault).

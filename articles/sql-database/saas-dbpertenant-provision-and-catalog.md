@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Zjistěte, jak zřídit nové klienty a zaregistrujte je v katalogu
 
@@ -63,7 +63,7 @@ Zřizování, musí být součástí strategie správy schématu databáze. Mus�
 
 Databáze za klienta aplikace Wingtip lístky zřídí nové klienty pomocí kopírování šablony databáze s názvem _basetenantdb_, který je nasazen na serveru katalogu. Zřizování se dají integrovat do aplikace jako součást registrace prostředí. Je také může být podporováno offline pomocí skriptů. V tomto kurzu jsou zde popsány zřizování pomocí prostředí PowerShell. 
 
-Zřizování skriptů kopie _basetenantdb_ databáze slouží k vytvoření nové databáze klienta v elastickém fondu. Skripty pak inicializace databáze s informace specifické pro klienta a zaregistrovat ji v mapě horizontálního oddílu katalogu. Databáze klienta jsou názvy zadaným na základě názvu klienta. Toto schéma pojmenování není důležitou součástí vzoru. Klíč tenanta název databáze, proto můžete použít všechny zásady vytváření názvů mapuje katalogu. 
+Zřizování skriptů kopie _basetenantdb_ databáze slouží k vytvoření nové databáze klienta v elastickém fondu. Vytvoření databáze klienta na klienta serveru namapované na _newtenant_ DNS alias. Tento alias udržuje odkaz na serveru používají ke zřízení nových klientů a je aktualizována tak, aby odkazoval na server pro obnovení klienta v kurzech obnovení po havárii ([DR pomocí georestore](saas-dbpertenant-dr-geo-restore.md), [DR pomocí geografická replikace](saas-dbpertenant-dr-geo-replication.md)). Skripty pak inicializace databáze s informace specifické pro klienta a zaregistrovat ji v mapě horizontálního oddílu katalogu. Databáze klienta jsou názvy zadaným na základě názvu klienta. Toto schéma pojmenování není důležitou součástí vzoru. Klíč tenanta název databáze, proto můžete použít všechny zásady vytváření názvů mapuje katalogu. 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získat skripty databáze za klienta aplikace SaaS Wingtip lístky

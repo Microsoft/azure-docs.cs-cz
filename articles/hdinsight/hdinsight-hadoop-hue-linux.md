@@ -1,26 +1,24 @@
 ---
-title: "HUE s Hadoop v clusterech se systémem HDInsight Linux - Azure | Microsoft Docs"
-description: "Postup instalace aplikace Hue clustery prostředí HDInsight a směrovat požadavky na Hue pomocí tunelové propojení. Použijte Hue procházet úložiště a spuštění Hive nebo Pig."
+title: HUE s Hadoop v clusterech se systémem HDInsight Linux - Azure | Microsoft Docs
+description: Postup instalace aplikace Hue clustery prostředí HDInsight a směrovat požadavky na Hue pomocí tunelové propojení. Použijte Hue procházet úložiště a spuštění Hive nebo Pig.
 keywords: HUE hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9e57fcca-e26c-479d-a745-7b80a9290447
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 829f309fa66bc548b9f74cca8112c244cc88775e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Hue clusterů systému HDInsight Hadoop
 
@@ -100,7 +98,7 @@ Tunelové připojení SSH je jedinou možností k přístupu ke Hue na clusteru,
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Toto je název hostitele primární headnode, kde se nachází na webu Hue.
-4. Otevření portál Hue v http://HOSTNAME:8888 pomocí prohlížeče. Název hostitele nahraďte název, který jste získali v předchozím kroku.
+4. Pomocí prohlížeče otevření portál Hue v http://HOSTNAME:8888. Název hostitele nahraďte název, který jste získali v předchozím kroku.
 
    > [!NOTE]
    > Pokud se přihlašujete poprvé, vyzve k vytvoření účtu k přihlášení na portál Hue. Přihlašovací údaje, který zde určíte bude omezena na portál a nesouvisí se správce nebo přihlašovací údaje uživatele SSH, které jste zadali při zřizování clusteru.

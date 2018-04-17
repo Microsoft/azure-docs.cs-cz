@@ -1,11 +1,11 @@
 ---
-title: "Osvědčené postupy zabezpečení virtuální počítač Azure"
-description: "Tento článek obsahuje celou řadu osvědčené postupy zabezpečení pro použití ve virtuálních počítačích, které jsou umístěné v Azure."
+title: Osvědčené postupy zabezpečení virtuální počítač Azure
+description: Tento článek obsahuje celou řadu osvědčené postupy zabezpečení pro použití ve virtuálních počítačích, které jsou umístěné v Azure.
 services: security
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Doporučené postupy pro zabezpečení virtuálního počítače Azure
 
@@ -49,14 +49,14 @@ Pro každý osvědčený postup Tento článek vysvětluje:
 
 Prvním krokem při ochraně virtuálního počítače je zajistit, aby mohly jenom autorizovaným uživatelům nastavit nové virtuální počítače. Můžete použít [Azure zásady](../azure-policy/azure-policy-introduction.md) zavést konvence pro prostředky ve vaší organizaci, vytvářet vlastní zásady a použít tyto zásady k prostředkům, jako například [skupiny prostředků](../azure-resource-manager/resource-group-overview.md).
 
-Virtuální počítače, které patří do skupiny prostředků přirozeně dědit jejími zásadami. Doporučujeme tuto metodu pro správu virtuálních počítačů, ale můžete taky řídit přístup ke jednotlivé zásady virtuálních počítačů pomocí [řízení přístupu na základě role (RBAC)](../active-directory/role-based-access-control-configure.md).
+Virtuální počítače, které patří do skupiny prostředků přirozeně dědit jejími zásadami. Doporučujeme tuto metodu pro správu virtuálních počítačů, ale můžete taky řídit přístup ke jednotlivé zásady virtuálních počítačů pomocí [řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md).
 
 Když povolíte zásady Resource Manager a RBAC pro řízení přístupu virtuálních počítačů, můžete k vylepšování celkové zabezpečení virtuálních počítačů. Doporučujeme, abyste konsolidovat virtuálních počítačů s stejný životní cyklus do stejné skupiny prostředků. Pomocí skupin prostředků, můžete nasadit, monitorování a souhrnné náklady pro vaše prostředky fakturace. Pokud chcete povolit uživatelům přístup a nastavení virtuálních počítačů, použijte [alespoň oprávnění přístupu](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models). A při přiřazení oprávnění pro uživatele, v úmyslu používat následující předdefinované role Azure:
 
-- [Virtuální počítač Přispěvatel](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor): můžete spravovat virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené.
-- [Classic Přispěvatel virtuálních počítačů](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor): můžete spravovat virtuální počítače vytvořené pomocí modelu nasazení classic, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené virtuální počítače.
-- [Správce zabezpečení](../active-directory/role-based-access-built-in-roles.md#security-manager): můžete spravovat součásti zabezpečení, zásady zabezpečení a virtuálních počítačů.
-- [Uživatel DevTest Labs](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user): můžete zobrazit vše, co a připojení, spuštění, restartování a vypnout virtuální počítače.
+- [Virtuální počítač Přispěvatel](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): můžete spravovat virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené.
+- [Classic Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): můžete spravovat virtuální počítače vytvořené pomocí modelu nasazení classic, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené virtuální počítače.
+- [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-manager): můžete spravovat součásti zabezpečení, zásady zabezpečení a virtuálních počítačů.
+- [Uživatel DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user): můžete zobrazit vše, co a připojení, spuštění, restartování a vypnout virtuální počítače.
 
 Nesdílejte účty a hesla mezi správci a nemáte opakovaně používat hesla mezi více uživatelských účtů nebo služeb, zejména hesla pro sociálních médií nebo dalšími aktivitami bez oprávnění správce. V ideálním případě byste měli používat [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) šablony bezpečně nastavit virtuální počítače. Pomocí tohoto přístupu může posílit vaše volby nasazení a vynucení nastavení zabezpečení v rámci nasazení.
 

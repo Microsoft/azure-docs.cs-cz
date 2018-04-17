@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB tabulky rozhraní API pro jazyk Python | Microsoft Docs"
-description: "Další informace o Cosmos DB tabulky rozhraní API služby Azure včetně data vydání, vyřazení dat a změny provedené mezi každou verzi."
+title: Azure Cosmos DB tabulky rozhraní API pro jazyk Python | Microsoft Docs
+description: Další informace o Cosmos DB tabulky rozhraní API služby Azure včetně data vydání, vyřazení dat a změny provedené mezi každou verzi.
 services: cosmos-db
 documentationcenter: python
-author: mimig
-manager: jhubbard
-editor: 
-ms.assetid: 
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 11/20/2017
-ms.author: mimig1
-ms.custom: 
-ms.openlocfilehash: 70315d93b7211351c19a17553db88962f25d8acb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: sngun
+ms.custom: ''
+ms.openlocfilehash: 760f79bf50ea3e6e76beb26d2cd8419a8404a3ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB tabulky rozhraní API sady SDK pro jazyk Python: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/21/2017
 |**Dokumentaci k rozhraní API**|[Referenční dokumentace rozhraní API jazyka Python](https://azure.github.io/azure-cosmosdb-python/)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci Python SDK](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Můžete přispět k sadě SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Aktuální podporované platformy**|[Python 2.7](https://www.python.org/downloads/) nebo [Python 3.3 3,4, 3.5 nebo 3.6] (https://www.python.org/downloads/)|
+|**Aktuální podporované platformy**|[Python 2.7](https://www.python.org/downloads/) nebo ([Python 3.3 3,4, 3.5 nebo 3.6]https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.

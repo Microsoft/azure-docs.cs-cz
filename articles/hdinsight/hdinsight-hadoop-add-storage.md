@@ -1,25 +1,23 @@
 ---
-title: "Přidejte další úložiště Azure účty do HDInsight | Microsoft Docs"
-description: "Naučte se přidávat další úložiště Azure účty do existujícího clusteru HDInsight."
+title: Přidejte další úložiště Azure účty do HDInsight | Microsoft Docs
+description: Naučte se přidávat další úložiště Azure účty do existujícího clusteru HDInsight.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidat další účty úložiště do HDInsight
 
@@ -55,7 +53,7 @@ Během zpracování na skript provede následující akce:
 
 ## <a name="the-script"></a>Skript
 
-__Script location__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
+__Skript umístění__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
 __Požadavky na__:
 
@@ -68,7 +66,7 @@ Tento skript lze z portálu Azure, Azure PowerShell nebo Azure CLI 1.0. Další 
 > [!IMPORTANT]
 > Pokud používáte podle kroků uvedených v dokumentu přizpůsobení, použijte tyto informace použít tento skript:
 >
-> * Nahradí všechny akce skriptu příklad URI identifikátor URI pro tento skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
+> * Nahraďte všechny akce skriptu příklad URI identifikátor URI pro tento skript (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh).
 > * Žádné parametry příkladu nahraďte název účtu úložiště Azure a klíč účtu úložiště, který se má přidat do clusteru. Pokud používáte portál Azure, musí být tyto parametry oddělené mezerou.
 > * Není potřeba označit tento skript jako __trvalé__, jak přímo aktualizuje Ambari konfiguraci pro daný cluster.
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Nastavit `$PASSWORD` heslo k účtu přihlášení (správce) clusteru. Nastavit `$CLUSTERNAME` na název clusteru HDInsight. Nastavit `$STORAGEACCOUNTNAME` k názvu účtu úložiště.
 >
-> Tento příklad používá [curl (http://curl.haxx.se/)](http://curl.haxx.se/) a [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) načíst a analyzovat JSON data.
+> Tento příklad používá [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) a [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) načíst a analyzovat JSON data.
 
 Při použití tohoto příkazu, nahraďte __CLUSTERNAME__ s názvem clusteru HDInsight. Nahraďte __heslo__ s heslo pro přihlášení HTTP pro cluster. Nahraďte __STORAGEACCOUNT__ s názvem účtu úložiště přidat pomocí akce skriptu. Informace o vrácená z tohoto příkazu se zobrazí podobná následující text:
 

@@ -1,11 +1,9 @@
 ---
-title: "Běžné případy použití a scénáře pro Azure Cosmos DB | Microsoft Docs"
-description: "Další informace o horní pět případy používání pro Azure Cosmos DB: uživatel vygeneruje obsah, protokolování událostí, data katalogu, předvolby data uživatele a Internetu věcí (IoT)."
+title: Běžné případy použití a scénáře pro Azure Cosmos DB | Microsoft Docs
+description: 'Další informace o horní pět případy používání pro Azure Cosmos DB: uživatel vygeneruje obsah, protokolování událostí, data katalogu, předvolby data uživatele a Internetu věcí (IoT).'
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
 ms.assetid: eca68a58-1a8c-4851-8cf8-6e4d2b889905
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: c85aa1a010ea9ccac807d676fd69473de07abca9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití Azure Cosmos DB
 Tento článek obsahuje přehled několik běžné případy použití pro Azure Cosmos DB.  Doporučení v tomto článku sloužit jako výchozí bod, když budete vyvíjet aplikace s Cosmos DB.   
@@ -97,14 +95,14 @@ Spousta sociálních aplikací spusťte v globálním měřítku a mohou vykazov
 
 ![Azure Cosmos DB webové aplikace referenční architektura](./media/use-cases/apps-with-global-reach.png)
 
-### <a name="personalization"></a>Přizpůsobení
+### <a name="personalization"></a>Personalizace
 V současné době moderních aplikací mít komplexní zobrazení a prostředí. Toto jsou obvykle dynamická, stravovací uživatelských předvoleb nebo atmosféru a značka potřebám. Proto aplikace musí být možné načíst individuální nastavení efektivně k vykreslení prvky uživatelského rozhraní a prostředí rychle. 
 
 Formát JSON, formátu nepodporuje Cosmos databáze, je ve formátu efektivní představující rozložení data uživatelského rozhraní, jako je nejen lightweight, ale také můžete snadno interpretovat JavaScript. Cosmos DB nabízí přizpůsobitelné úrovně konzistence umožňující rychlé čtení s nízkou latencí a zápisu. Ukládání dat rozložení uživatelského rozhraní, včetně individuální nastavení jako dokumenty JSON v Cosmos DB proto je účinnou k získání těchto dat napříč drátové síti.
 
 ![Azure Cosmos DB webové aplikace referenční architektura](./media/use-cases/personalization.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Chcete-li začít s Azure Cosmos DB, postupujte podle našich [rychlé zahájení](create-sql-api-dotnet.md), který vás provede procesem vytvoření účtu a úvod do Cosmos DB. 
 
 Nebo, pokud vás zajímají další informace o použití Cosmos DB, jsou dostupné následující scénáře zákazníka:

@@ -1,24 +1,24 @@
 ---
-title: "Zřídit (Ubuntu) Data vědecké účely virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Nakonfigurujte a vytvořte na datové vědě virtuálního počítače pro Linux (Ubuntu) na Azure a provádět analýzy a strojového učení."
+title: Zřídit (Ubuntu) Data vědecké účely virtuální počítač s Linuxem v Azure | Microsoft Docs
+description: Nakonfigurujte a vytvořte na datové vědě virtuálního počítače pro Linux (Ubuntu) na Azure a provádět analýzy a strojového učení.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu)
 
@@ -159,7 +159,7 @@ Caffe2 je architektura hloubkové learning ze sítě Facebook, která je založe
 Některé poznámkových bloků příkladu jsou k dispozici v JupyterHub.
 
 #### <a name="h2o"></a>H2O
-H2O je rychlé, v paměti, distribuované strojového učení a platformy prediktivní analýzy. Balíček Python je nainstalována v kořenové i py35 Anaconda prostředí. Balíček R je také nainstalován. Chcete-li spustit H2O z příkazového řádku, spusťte `java -jar /dsvm/tools/h2o/current/h2o.jar`; existují různé [možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , které chcete nakonfigurovat. Webové rozhraní toku přístupná procházením http://localhost:54321 začít pracovat. Ukázka poznámkových bloků jsou také k dispozici v JupyterHub.
+H2O je rychlé, v paměti, distribuované strojového učení a platformy prediktivní analýzy. Balíček Python je nainstalována v kořenové i py35 Anaconda prostředí. Balíček R je také nainstalován. Chcete-li spustit H2O z příkazového řádku, spusťte `java -jar /dsvm/tools/h2o/current/h2o.jar`; existují různé [možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , které chcete nakonfigurovat. Webové rozhraní tok je přístupná procházením http://localhost:54321 začít pracovat. Ukázka poznámkových bloků jsou také k dispozici v JupyterHub.
 
 #### <a name="keras"></a>Keras
 Keras je nejdůležitější neuronové sítě rozhraní API v Python, která umožňuje spustit v horní části TensorFlow nebo Theano. Je k dispozici v kořenové a py35 prostředí Python. 
@@ -170,7 +170,7 @@ MXNet je hloubkové learning rozhraní určené pro efektivitu a flexibilitu. M�
 #### <a name="nvidia-digits"></a>NVIDIA ČÍSLIC
 NVIDIA hloubkové učení GPU školení systému, označuje jako ČÍSLIC, je systém pro zjednodušení běžné úkoly, hloubkové learning jako správy dat, navrhování a cvičení neuronové sítě v systémech GPU a sledování výkonu v reálném čase s pokročilé vizualizace. 
 
-ČÍSLIC je k dispozici jako služba, názvem číslic. Spusťte službu a přejděte na http://localhost: 5000 začít pracovat.
+ČÍSLIC je k dispozici jako služba, názvem číslic. Spusťte službu a přejděte do http://localhost:5000 začít pracovat.
 
 ČÍSLIC je také nainstalován jako modul Python v prostředí kořenové Conda.
 
@@ -221,7 +221,7 @@ Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
 Distribuce Anaconda také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Poznámkového bloku Jupyter přistupuje prostřednictvím JupyterHub. Přihlášení pomocí místní Linux uživatelské jméno a heslo.
 
-Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuální počítač prostřednictvím protokolu SSH nebo X2Go klienta, můžete také navštívit [https://localhost:8000 /](https://localhost:8000/) pro přístup k serveru poznámkového bloku Jupyter.
+Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Není ikony na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuální počítač prostřednictvím protokolu SSH nebo X2Go klienta, můžete také navštívit [ https://localhost:8000/ ](https://localhost:8000/) pro přístup k serveru poznámkového bloku Jupyter.
 
 > [!NOTE]
 > Pokračujte, pokud chcete získat všechna upozornění certifikátu.
@@ -404,7 +404,7 @@ Nyní grafické rozhraní otevře sadu karet. Tady jsou kroky pro rychlé spušt
 7. Klikněte **Evaluate** kartě.
 8. Klikněte na tlačítko **riziko** přepínač a klikněte na tlačítko **Execute** zobrazíte dva pozemků výkonu riziko (kumulativní).
 9. Klikněte **protokolu** zobrazte kód generování R pro předchozí operace.
-   (Z důvodu chyby v aktuální verzi Rattle, je třeba vložit  *#*  znak před *exportovat tento protokol...*  v textu protokolu.)
+   (Z důvodu chyby v aktuální verzi Rattle, je třeba vložit *#* znak před *exportovat tento protokol...*  v textu protokolu.)
 10. Klikněte **exportovat** tlačítko pro uložení souboru skriptu R s názvem *weather_script. R* do domovské složky.
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaného skriptu R, nebo ho použít, protože to je vše, co bylo provedeno v rámci rozhraní Rattle opakování ji kdykoli spustit. Zejména pro začátečníky v R je to snadný způsob, jak rychle provést analýzy a strojového učení v jednoduchého grafického rozhraní, při automatické generování kódu v R upravit nebo Další informace.

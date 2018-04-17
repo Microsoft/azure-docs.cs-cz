@@ -12,11 +12,11 @@ ms.workload: On Demand
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 46236c11b15f86c26be5e8c1311ba35e8bdd90f2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -28,7 +28,7 @@ SQL Database poskytuje řadu funkcí provozní kontinuity, včetně automatizova
 
 Následující tabulka porovnává vložit a plánovaný bod obnovení pro jednotlivé úrovně služby pro tři nejběžnější scénáře.
 
-| Schopnost | Basic | Standard | Premium  | Obecné použití | Obchodně klíčové
+| Schopnost | Basic | Standard | Premium  | Obecné použití | Pro důležité obchodní informace
 | --- | --- | --- | --- |--- |--- |
 | Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |Všechny body obnovení v rámci nastaveném časovém intervalu (až 35 dnů)|Všechny body obnovení v rámci nastaveném časovém intervalu (až 35 dnů)|
 | Geografické obnovení ze zálohy geograficky replikované |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h |ERT < 12 h, RPO < 1 h|ERT < 12 h, RPO < 1 h|
@@ -44,7 +44,7 @@ Pokud maximální doba uchování podporované možnosti PITR není dostatečná
 Tyto automatické zálohy databáze můžete použít k obnovení databáze po různých ničivých událostech, a to jak v rámci vašeho datového centra, tak do jiného datového centra. Při použití automatických záloh databáze závisí odhadovaný čas obnovení na několika faktorech. Patří mezi ně celkový počet obnovovaných databází ve stejném regionu a ve stejnou dobu, velikost databáze, velikost protokolu transakcí a šířka pásma sítě. Doba obnovení je obvykle menší než 12 hodin. Při obnovování do jiné oblasti dat je potenciální ztráta dat omezena na 1 hodinu díky geograficky redundantnímu úložišti s rozdílovými zálohami prováděnými každou hodinu.
 
 > [!IMPORTANT]
-> Pokud chcete provést obnovení pomocí automatizovaného zálohování, musíte být členem role Přispěvatel SQL Serveru nebo vlastník předplatného – viz [RBAC: Předdefinované role](../active-directory/role-based-access-built-in-roles.md). Obnovení můžete provést pomocí webu Azure Portal, prostředí PowerShell nebo rozhraní REST API. Nelze použít jazyk Transact-SQL.
+> Pokud chcete provést obnovení pomocí automatizovaného zálohování, musíte být členem role Přispěvatel SQL Serveru nebo vlastník předplatného – viz [RBAC: Předdefinované role](../role-based-access-control/built-in-roles.md). Obnovení můžete provést pomocí webu Azure Portal, prostředí PowerShell nebo rozhraní REST API. Nelze použít jazyk Transact-SQL.
 >
 
 Automatizované zálohování použijte pro zajištění provozní kontinuity a jako mechanismus obnovení, pokud vaše aplikace:

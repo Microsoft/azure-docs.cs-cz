@@ -1,6 +1,22 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: 1febadbbf7821988600d6feddc94fce25d15e989
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
-Připojte a přihlaste se k virtuálnímu počítači, který jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte následující kroky pro operační systém vašeho virtuálního počítače:
+Připojte a přihlaste se k virtuálnímu počítači, který jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte kroky tohoto následující pro operační systém virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
@@ -13,17 +29,16 @@ Připojte a přihlaste se k virtuálnímu počítači, který jste vytvořili s 
     * **IP adresa:** Zadejte *primární* privátní IP adresu.
     * **Maska podsítě:** Nastavte podle vaší podsítě. Pokud je podsíť například /24, maska podsítě bude 255.255.255.0.
     * **Výchozí brána:** První IP adresa v podsíti. Pokud je vaše podsíť 10.0.0.0/24, IP adresa brány bude 10.0.0.1.
-    * Klikněte na **Použít následující adresu serveru DNS** a zadejte tyto hodnoty:
+    * Vyberte **použít následující adresy serverů DNS** a zadejte následující hodnoty:
         * **Upřednostňovaný server DNS:** Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte vlastní server DNS, zadejte IP adresu pro váš server.
-    * Klikněte na tlačítko **Upřesnit** a přidejte další IP adresy. Přidejte všechny sekundární privátní IP adresy uvedené v kroku 8 k síťovému adaptéru, který má zadanou stejnou podsíť pro primární IP adresu.
-        >[!WARNING] 
-        >Pokud nebudete správně postupovat podle výše uvedených kroků, můžete ztratit připojení k virtuálnímu počítači. Než budete pokračovat, ujistěte se, že informace zadané v kroku 5 jsou správné.
+    * Vyberte **Upřesnit** tlačítko a přidejte další IP adresy. Přidejte všechny sekundární soukromé IP adresy, které jste přidali do Azure síťového rozhraní v předchozím kroku, přiřazený přiřazené Azure síťové rozhraní primární IP adresy rozhraní sítě systému Windows.
+
+        Byste měli přiřadit nikdy ručně veřejnou IP adresu přiřazené pro virtuální počítač Azure v rámci operačního systému virtuálního počítače. Když nastavíte ručně IP adresu v operačním systému, zajistěte, aby byl stejnou adresu jako přiřazené Azure privátní IP adresy [síťové rozhraní](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), nebo můžete ztratit připojení k virtuálnímu počítači. Další informace o [privátní IP adresu](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) nastavení. Nikdy byste měli přiřadit Azure veřejnou IP adresu v operačním systému.
 
     * Kliknutím na **OK** zavřete nastavení protokolu TCP/IP a pak znovu kliknutím na **OK** zavřete nastavení adaptéru. Vaše připojení RDP je obnoveno.
 
 6. Na příkazovém řádku zadejte *ipconfig /all*. Zobrazí se všechny IP adresy, které jste přidali, a protokol DHCP je vypnutý.
 7. Konfigurace systému Windows na privátní IP adresa primární konfigurace protokolu IP v Azure jako primární IP adresu pro systém Windows. V tématu [přístup k Internetu bez z virtuálního počítače Windows Azure, který má více IP adres](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) podrobnosti. 
-
 
 ### <a name="validation-windows"></a>Ověření (Windows)
 

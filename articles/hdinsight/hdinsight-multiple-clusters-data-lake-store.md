@@ -1,31 +1,29 @@
 ---
-title: "Použití více clusterů HDInsight pomocí účtu Azure Data Lake Store - Azure | Microsoft Docs"
-description: "Naučte se používat více než jeden cluster HDInsight poskytují jeden účet Data Lake Store"
-keywords: "úložiště hdinsight, hdfs, strukturovaných dat, nestrukturovaných dat, data lake store"
+title: Použití více clusterů HDInsight pomocí účtu Azure Data Lake Store - Azure | Microsoft Docs
+description: Naučte se používat více než jeden cluster HDInsight poskytují jeden účet Data Lake Store
+keywords: úložiště hdinsight, hdfs, strukturovaných dat, nestrukturovaných dat, data lake store
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c306c66354f34fc945a5fe0ffa11d63bce4d7005
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Použití více clusterů HDInsight pomocí účtu Azure Data Lake Store
 
 Počínaje HDInsight verze 3.5, můžete vytvořit clustery HDInsight pomocí účtů Azure Data Lake Store jako výchozí systém souborů.
-Data Lake Store podporuje neomezené úložiště, která usnadňuje ideální nejen pro hostování velké objemy dat; Můžete ale také pro hostování clusterů HDInsight více tuto sdílenou složku jeden účet Data Lake Store. Instructionson způsobu vytvoření clusteru HDInsight s Data Lake uložit jako úložiště, najdete v [Tvorba clusterů HDInsight s Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store podporuje neomezené úložiště, která usnadňuje ideální nejen pro hostování velké objemy dat; Můžete ale také pro hostování clusterů HDInsight více tuto sdílenou složku jeden účet Data Lake Store. Pokyny k vytvoření clusteru HDInsight s Data Lake Store jako úložiště najdete v tématu [Tvorba clusterů HDInsight s Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
 Tento článek obsahuje doporučení pro Data Lake Správce úložiště pro nastavení jednoho a sdílené Data Lake ukládání účet, který lze použít v rámci více **active** clusterů HDInsight. Tato doporučení se vztahují k hostování více clusterů systému Hadoop zabezpečené a také nezabezpečené na sdíleného účtu Data Lake store.
 
@@ -42,8 +40,8 @@ Chcete-li povolit tuto strukturu složek pro efektivně používat clusterů HDI
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Jmenovaný uživatel oprávnění | S názvem skupiny | Oprávnění skupiny s názvem |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |správce |správce  |Instanční objekt |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |správce |správce |Instanční objekt |--x  |FINGRP |r-x         |
+|/ | rwxr-x--x  |správce |správce  |Instanční objekt |– x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |správce |správce |Instanční objekt |– x  |FINGRP |r-x         |
 |nebo clustery, finance | rwxr-x--t |správce |FINGRP  |Instanční objekt |rwx  |-  |-     |
 
 V tabulce
@@ -94,7 +92,7 @@ Tato nastavení se ví, vliv na jeden konkrétní HDInsight případ použití z
 Jak je uvedeno v JIRA YARN propojené dříve, při lokalizace veřejných prostředků, lokalizátora ověří, zda jsou všechny požadované prostředky skutečně veřejné kontrolou svá oprávnění na vzdálený systém souborů. Všechny LocalResource, který se nevejde této podmínky je odmítnutých pro lokalizaci. Kontrola oprávnění, zahrnuje přístup pro čtení k souboru pro "ostatní". Tento scénář nefunguje se na pole při hostování clusterů HDInsight v Azure Data Lake, protože Azure Data Lake odmítne všechny přístup na "ostatní" na kořenové úrovni složky.
 
 #### <a name="workaround"></a>Alternativní řešení
-Sada pro čtení-oprávnění ke spouštění pro **ostatní** prostřednictvím hierarchie, například na  **/** , **/clusterů** a **nebo clustery, finance** jak je znázorněno v předchozí tabulce.
+Sada pro čtení-oprávnění ke spouštění pro **ostatní** prostřednictvím hierarchie, například na **/**, **/clusterů** a **nebo clustery, finance** jak je znázorněno v předchozí tabulce.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

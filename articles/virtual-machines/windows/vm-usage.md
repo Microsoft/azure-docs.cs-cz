@@ -1,31 +1,31 @@
 ---
-title: "Pochopení využití virtuálního počítače Azure | Microsoft Docs"
-description: "Pochopení podrobnosti o použití virtuálního počítače"
+title: Pochopení využití virtuálního počítače Azure | Microsoft Docs
+description: Pochopení podrobnosti o použití virtuálního počítače
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: c87c4256aa193a4971b75c3230d1996c2efdc352
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 9980650008e2d2c2f768dcb3256ea5344119fa13
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Porozumění využití virtuálního počítače Azure
-Analýzou data o využití Azure, může být získávají efektivní využívání Statistika – přehledy, které umožňují lépe náklady správy a přidělení v celé organizaci. Tento dokument obsahuje podrobné informace do vaší spotřeby podrobnosti Azure Compute. Další informace o využití obecné Azure, přejděte na [pochopení vaše faktura](/billing/billing-understand-your-bill.md).
+Analýzou data o využití Azure, může být získávají efektivní využívání Statistika – přehledy, které umožňují lépe náklady správy a přidělení v celé organizaci. Tento dokument obsahuje podrobné informace do vaší spotřeby podrobnosti Azure Compute. Další informace o využití obecné Azure, přejděte na [pochopení vaše faktura](../../billing/billing-understand-your-bill.md).
 
 ## <a name="download-your-usage-details"></a>Stáhnout podrobností o využití
-Pokud chcete začít, [stáhnout podrobností o využití](/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv.md). Následující tabulka obsahuje definice a ukázkové hodnoty využití pro virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených pomocí našich klasického modelu.
+Pokud chcete začít, [stáhnout podrobností o využití](../../billing/billing-download-azure-invoice-daily-usage-date.md). Následující tabulka obsahuje definice a ukázkové hodnoty využití pro virtuální počítače nasazené prostřednictvím Správce Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených pomocí našich klasického modelu.
 
 
 | Pole             | Význam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Příklad hodnoty                                                                                                                                                                                                                                                                                                                                                   |
@@ -39,12 +39,12 @@ Pokud chcete začít, [stáhnout podrobností o využití](/billing/billing-down
 | Spotřebované           | Množství prostředků, které bylo spotřebováno pro daný den. Pro výpočty budeme účtovat pro každou minutu, kterou virtuální počítač spustil pro danou hodinu (až 6 desetinných míst přesnost).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    “1”, “0.5”                                                                                                                                                                                                                                                                                                                                                    |
 | Umístění prostředku  | Určuje datové centrum, ve kterém prostředek běží.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | "Japonsko – východ"                                                                                                                                                                                                                                                                                                                                                        |
 | Spotřebovaná služba   | Služba platformy Azure, který jste použili.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
-| Skupina prostředků     | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manageru.](/azure-resource-manager/resource-group-overview.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
+| Skupina prostředků     | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manageru.](../../azure-resource-manager/resource-group-overview.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
 | ID instance        | Identifikátor prostředku. Tento identifikátor obsahuje název prostředku, který jste zadali při jeho vytváření. U virtuálních počítačů Instance ID bude obsahovat ID předplatného, název skupiny prostředků a VMName (nebo název pro použití sady škálování sady škálování).                                                                                                                                                                                                                                                                                                                                                                                                                    | "/ odběry/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1"<br><br>nebo<br><br>"/ odběry/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx / resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1"                                                                                           |
 | Značky               | Značky, který přiřadíte k prostředku. Použití značek k seskupení záznamů fakturace. Zjistěte, jak [značky virtuálních počítačů.](tag.md) To je k dispozici pro virtuální počítače správce prostředků pouze.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"VP","myUser":"myName"}"                                                                                                                                                                                                                                                                                                                        |
 | Další informace    | Metadata specifická pro služby. U virtuálních počítačů naplníme následující v poli Další informace: <ul><li>Obrázek bitové kopie konkrétní typ, který jste spustili. Najít úplný seznam podporovaných řetězců níže v části typy obrázků.</li><li>Service Type: velikost který jste nasadili.</li><li>VMName: název vašeho virtuálního počítače. To je vyplněna pouze pro škálovací sady virtuálních počítačů. Potřebujete-li nastavit název vašeho virtuálního počítače pro více virtuálních počítačů, které můžete najít v Instance ID řetězec výše.</li><li>UsageType: Určuje typ použití, který reprezentuje.<ul><li>ComputeHR je výpočetní hodiny využití pro základní virtuální počítač, jako je Standard_D1_v2.</li><li>ComputeHR_SW je zdarma softwaru premium, pokud virtuální počítač používá premium softwaru, jako je Microsoft R Server.</li></ul></li></ul>    | Virtuální počítače {"ImageType": "Kanonický", "ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR"}<br><br>Sady škálování virtuálního počítače {"ImageType": "Kanonický", "ServiceType": "Standard_DS1_v2", "VMName": "myVM1", "UsageType": "ComputeHR"}<br><br>Premium softwaru {"ImageType": "","ServiceType": "Standard_DS1_v2", "VMName": "", "UsageType": "ComputeHR_SW"} |
 
-## <a name="image-type"></a>Obrázek – typ
+## <a name="image-type"></a>Typ image
 Pro některé obrázky v galerii Azure se v poli Další informace o naplní typ obrázku. To umožňuje uživatelům pochopit a sledovat, co se mají nasadit na jejich virtuální počítač. Hodnoty, které jsou v tomto poli na základě bitové kopie, které jste nasadili naplněny jsou následující:
   - BitRock 
   - Canonical 
@@ -71,42 +71,42 @@ Název oblasti vložené do pole umístění prostředku v podrobnosti o využit
 
 |    **Název oblasti Resource Manageru**       |    **Umístění prostředků v podrobnosti o použití**    |
 |--------------------------|------------------------------------------|
-|    australiaeast         |    AU – východ                               |
-|    australiasoutheast    |    AU – jihovýchod                          |
+|    australiaeast         |    Austrálie – východ                               |
+|    australiasoutheast    |    Austrálie – jihovýchod                          |
 |    brazilsouth           |    Brazílie – jih                              |
-|    CanadaCentral         |    CA – střed                            |
-|    CanadaEast            |    CA – východ                               |
-|    CentralIndia          |    IN – střed                            |
+|    CanadaCentral         |    Kanada – střed                            |
+|    CanadaEast            |    Kanada – východ                               |
+|    CentralIndia          |    Indie – střed                            |
 |    centralus             |    Střed USA                            |
 |    chinaeast             |    Čína – východ                            |
 |    chinanorth            |    Čína – sever                           |
 |    eastasia              |    Východní Asie                             |
 |    eastus                |    Východ USA                               |
 |    eastus2               |    Východní USA 2                             |
-|    GermanyCentral        |    DE – střed                            |
+|    GermanyCentral        |    Německo – střed                            |
 |    GermanyNortheast      |    Německo – severovýchod                          |
 |    japaneast             |    Japonsko – východ                               |
 |    japanwest             |    Japonsko – západ                               |
-|    KoreaCentral          |    KR – střed                            |
-|    KoreaSouth            |    KR – jih                              |
+|    KoreaCentral          |    Korea – střed                            |
+|    KoreaSouth            |    Korea – jih                              |
 |    northcentralus        |    Střed USA – sever                      |
 |    northeurope           |    Severní Evropa                          |
 |    southcentralus        |    Střed USA – jih                      |
 |    southeastasia         |    Jihovýchodní Asie                        |
-|    SouthIndia            |    IN – jih                              |
+|    SouthIndia            |    Indie – jih                              |
 |    UKNorth               |    USA – sever                              |
 |    uksouth               |    Spojené království – jih                              |
 |    UKSouth2              |    Spojené království – jih 2                            |
 |    ukwest                |    Spojené království – západ                               |
 |    USDoDCentral          |    US DoD – střed                        |
 |    USDoDEast             |    US DoD – východ                           |
-|    USGovArizona          |    Arizona vláda USA                         |
-|    usgoviowa             |    Iowa vláda USA                            |
-|    USGovTexas            |    Texas vláda USA                           |
-|    usgovvirginia         |    Vláda USA Virginia                        |
-|    westcentralus         |    Střed USA – západ                       |
+|    USGovArizona          |    USGov – Arizona                         |
+|    usgoviowa             |    USGov (Iowa)                            |
+|    USGovTexas            |    USGov – Texas                           |
+|    usgovvirginia         |    USGov (Virginie)                        |
+|    westcentralus         |    USA – středozápad                       |
 |    westeurope            |    Západní Evropa                           |
-|    WestIndia             |    IN – západ                               |
+|    WestIndia             |    Indie – západ                               |
 |    westus                |    Západní USA                               |
 |    westus2               |    USA – západ 2                             |
 
@@ -131,7 +131,7 @@ ComputeHR je zkratka pro výpočetní hodiny, která představuje událost využ
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Jak poznám, pokud mám mě účtovat premium softwaru?
 Při prohlížení které Image virtuálního počítače nejlépe vyhovuje vašim potřebám, nezapomeňte se podívat [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Bitová kopie je míra plán softwaru. Pokud se zobrazí "Free" rychlost, je bez dalších nákladů pro software. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaký je rozdíl mezi Microsoft.Network a Microsoft.Compute ve službě Potřebováno?
-Microsoft.Network představuje klasické prostředky nasazené prostřednictvím portálu Azure Service Manager. Pokud nasazujete prostřednictvím Resource Manager, je ve službě spotřebované naplněný Microsoft.Compute. Další informace o [modelech nasazení Azure](/azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft.Network představuje klasické prostředky nasazené prostřednictvím portálu Azure Service Manager. Pokud nasazujete prostřednictvím Resource Manager, je ve službě spotřebované naplněný Microsoft.Compute. Další informace o [modelech nasazení Azure](../../azure-resource-manager/resource-manager-deployment-model.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Identifikátor InstanceID pole je prázdné, pokud mého používání virtuálního počítače
 Pokud nasadíte pomocí modelu nasazení classic, řetězec Identifikátor InstanceID není k dispozici.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Proč se značky pro není předávaných do podrobnosti o využití virtuálních počítačů?
@@ -141,6 +141,6 @@ V klasickém modelu fakturace pro prostředky se shromažďují na úrovni cloud
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Proč není k dispozici pro velikosti DS nebo služby FS nebo GS/LS v cenových na stránce s cenami?
 Storage úrovně Premium podporuje virtuální počítače se účtují stejnou rychlostí jako neprémiové úložiště podporující virtuálních počítačů. Liší se pouze vaše náklady na úložiště. Přejděte [úložiště stránce s cenami](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) Další informace.
 
-## <a name="next-steps"></a>Další kroky
-Další informace o vaší podrobnosti o použití najdete v tématu [porozumět vaší faktuře pro Microsoft Azure.](/billing/billing-understand-your-bill.md)
+## <a name="next-steps"></a>Další postup
+Další informace o vaší podrobnosti o použití najdete v tématu [porozumět vaší faktuře pro Microsoft Azure.](../../billing/billing-understand-your-bill.md)
 

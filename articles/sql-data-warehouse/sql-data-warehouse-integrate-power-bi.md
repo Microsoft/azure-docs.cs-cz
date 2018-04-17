@@ -1,11 +1,11 @@
 ---
-title: "Používat Power BI s SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro používání Power BI s datovým skladem SQL Azure pro vývoj řešení."
+title: Používat Power BI s SQL Data Warehouse | Microsoft Docs
+description: Tipy pro používání Power BI s datovým skladem SQL Azure pro vývoj řešení.
 services: sql-data-warehouse
 documentationcenter: NA
 author: mlee3gsd
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>SQL Data Warehouse pomocí Power BI
 Jako s Azure SQL Database, SQL Data Warehouse přímé připojení umožňuje uživatelům využívat výkonné logické přenos směrem dolů vedle analytické možnosti Power BI.  Přímé připojení dotazy jsou odeslán zpět do Azure SQL Data Warehouse v reálném čase jako zkoumat data.  To, v kombinaci s měřítkem služby SQL Data Warehouse, umožňuje uživatelům vytvářet dynamické sestavy v minutách proti terabajtů dat.  Kromě toho zavedení Open in tlačítko Power BI umožňuje uživatelům připojovat přímo Power BI do jejich SQL Data Warehouse bez shromažďovat informace z dalších částí Azure.

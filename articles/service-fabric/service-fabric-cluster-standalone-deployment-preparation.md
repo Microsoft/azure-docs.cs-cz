@@ -1,23 +1,23 @@
 ---
-title: "Azure Service Fabric samostatný Cluster nasazení přípravy | Microsoft Docs"
-description: "Dokumentace týkající se přípravy prostředí a vytváření konfigurace clusteru, aby byla považována za před nasazením clusteru s podporou určený pro produkční zatížení zpracování."
+title: Azure Service Fabric samostatný Cluster nasazení přípravy | Microsoft Docs
+description: Dokumentace týkající se přípravy prostředí a vytváření konfigurace clusteru, aby byla považována za před nasazením clusteru s podporou určený pro produkční zatížení zpracování.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -49,11 +49,11 @@ Když zadáte UDs v souboru ClusterConfig.json, můžete název pro každý UD. 
 
 Podrobné informace o FDs a UDs, najdete v části [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Cluster v produkčním prostředí by měly obsahovat alespoň tři FDs, aby byla podporována v produkčním prostředí, pokud máte plnou kontrolu nad údržby a správy uzlů, tj. jste zodpovědní za aktualizace a nahrazení počítače. Pro clustery spuštěná v prostředích (tj. instance Amazon Web Services virtuálních počítačů), kde nemáte plnou kontrolu nad na počítače měli byste mít minimálně pět FDs v clusteru. Každý FD může mít jeden nebo více uzlů. Toto je zabránit problémů způsobených počítač upgrady a aktualizace, které v závislosti na jejich časování můžete intefere s běžící aplikací a služeb v prostředí clusterů.
+Cluster v produkčním prostředí by měly obsahovat alespoň tři FDs, aby byla podporována v produkčním prostředí, pokud máte plnou kontrolu nad údržby a správy uzlů, to znamená, jste zodpovědní za aktualizace a nahrazení počítače. Pro clustery spuštěná v prostředích (to znamená, Amazon Web Services VM instance), kde nemáte plnou kontrolu nad na počítače měli byste mít minimálně pět FDs v clusteru. Každý FD může mít jeden nebo více uzlů. Toto je zabránit problémů způsobených počítač upgrady a aktualizace, které v závislosti na jejich časování může narušovat běh aplikace a služby v clusterech.
 
 ## <a name="determine-the-initial-cluster-size"></a>Určit velikost počáteční clusteru
 
-Obecně platí počet uzlů v clusteru je určen podle obchodních potřeb, tj., kolik služeb a kontejnery bude spuštěna v clusteru a kolik prostředky potřebujete tolerovat vašich úloh. Produkčních clusterů doporučujeme mít minimálně 5 uzly v clusteru, 5 FDs pokrývání uzlů. Ale jak je popsáno výše, pokud máte plnou kontrolu nad uzly a můžou sahat tři FDs, pak tři uzly vhodné provést úlohu.
+Obecně je počet uzlů v clusteru je určen podle obchodních potřeb, které je, kolik služeb a kontejnery bude spuštěna v clusteru a kolik prostředky potřebujete tolerovat vašich úloh. Produkčních clusterů doporučujeme mít alespoň pět uzlů v clusteru, 5 FDs pokrývání uzlů. Ale jak je popsáno výše, pokud máte plnou kontrolu nad uzly a můžou sahat tři FDs, pak tři uzly vhodné provést úlohu.
 
 Test clustery spuštěná stavová zatížení by měl mít tři uzly, zatímco potřebovat testovacích clusterů pouze spuštěný Bezstavová zatížení jenom jeden uzel. Také je potřeba poznamenat, že pro účely vývoje, můžete mít více než jeden uzel v daném počítači. V produkčním prostředí však Service Fabric podporuje jenom jeden uzel na fyzický nebo virtuální počítač.
 
@@ -99,7 +99,7 @@ Pokud správce clusteru konfiguruje samostatný cluster Service Fabric, v prost�
 * Odinstalovali Service Fabric SDK
 * Mít odinstalaci modulu runtime Service Fabric 
 * Povolili službu Brána Windows Firewall (mpssvc)
-* Povolili služby Remote Registry (remoteregistry)
+* Povolili služby Remote Registry (vzdálený registr)
 * Soubor povoleno sdílení (SMB)
 * Máte nezbytné porty otevřít, založené na porty konfigurace clusteru
 * Mít nezbytné porty otevřené pro službu Windows SMB a Remote Registry: 135, 137, 138, 139 a 445
@@ -165,5 +165,5 @@ Tento modul testování konfigurace aktuálně neověřuje konfigurace zabezpeč
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vytvoření clusteru s podporou samostatné systémem Windows Server](service-fabric-cluster-creation-for-windows-server.md)

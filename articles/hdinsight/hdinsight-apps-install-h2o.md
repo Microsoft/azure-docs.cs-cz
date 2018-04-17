@@ -1,26 +1,24 @@
 ---
-title: "Instalace publikované aplikace – H2O šumivého horních - Azure HDInsight | Microsoft Docs"
-description: "Nainstalovat a používat aplikace Hadoop H2O šumivého horních třetích stran."
+title: Instalace publikované aplikace – H2O šumivého horních - Azure HDInsight | Microsoft Docs
+description: Nainstalovat a používat aplikace Hadoop H2O šumivého horních třetích stran.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Nainstalujte publikované aplikace – H2O šumivého horních
 
@@ -73,7 +71,7 @@ Podrobné pokyny k instalaci to a dalších dostupných aplikací ISV, najdete v
 
     ![Spuštění clusteru](./media/hdinsight-apps-install-h2o/start-cluster.png)
 
-5. Jakmile je Cluster H2O spuštěná, otevřete H2O toku přechodem na  **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`** .
+5. Jakmile je Cluster H2O spuštěná, otevřete H2O toku přechodem na **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
     > [!NOTE]
     > Pokud nelze otevřít H2O toku, vymažte mezipaměť prohlížeče. Pokud stále možné vás zastihnout na jeho, pravděpodobně nemáte dostatek prostředků v clusteru. Pokuste se zvýšit počet uzlů pracovního procesu v rámci **škálování clusteru** možnost v podokně pro cluster.
@@ -84,7 +82,7 @@ Podrobné pokyny k instalaci to a dalších dostupných aplikací ISV, najdete v
 
     ![Vyberte Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. Najít cestu obsahující **milsongs. specifikací cls train.csv.gz**a nahraďte celou cestu s **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz** .
+7. Najít cestu obsahující **milsongs. specifikací cls train.csv.gz**a nahraďte celou cestu s **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**.
 
 8. Najít cestu obsahující **milsongs. specifikací cls test.csv.gz** a nahraďte ho **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**.
 

@@ -1,51 +1,49 @@
 ---
-title: "Uložené procedury v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení."
+title: Použití uložených procedur v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 9b238789-6efe-4820-bf77-5a5da2afa0e8
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: e42d80f0ca35f3fbb67389c66d072bc40d8a8d2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 74e943548ff97a04231e2affb645daa1e4b826a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="stored-procedures-in-sql-data-warehouse"></a>Uložené procedury v SQL Data Warehouse
-SQL Data Warehouse podporuje mnoho funkcí jazyka Transact-SQL v SQL serveru. Je důležité nejsou specifické funkce, které bude chceme využít také k maximalizovat výkon vašeho řešení s více instancemi.
+# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Použití uložených procedur v SQL Data Warehouse
+Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení.
+
+## <a name="what-to-expect"></a>Co můžete očekávat
+
+SQL Data Warehouse podporuje mnoho funkcí T-SQL, které se používají v systému SQL Server. Je důležité existují Škálováním na více systémů specifické funkce, které můžete maximalizovat výkon vašeho řešení.
 
 Zachování škálování a výkonu, služby SQL Data Warehouse jsou však také některé funkce a funkce, které mají rozdíly v chování a ostatní uživatele, které nejsou podporovány.
 
-Tento článek vysvětluje, jak implementovat uložené procedury v rámci SQL Data Warehouse.
 
 ## <a name="introducing-stored-procedures"></a>Představení uložené procedury
-Uložené procedury jsou vhodné pro zapouzdření kódu SQL; ukládání blízko data v datovém skladu. Zapouzdřením kód do spravovatelných jednotek uložené procedury pomoci vývojářům rozčlenění moduly svá řešení; usnadnění větší znovuvyužití kódu. Každý uložené procedury mohou také přijímat parametry tak, aby byly i flexibilnější.
+Uložené procedury jsou vhodné pro zapouzdření kódu SQL; ukládání blízko data v datovém skladu. Uložené procedury pomoci vývojářům rozčlenění moduly svá řešení zapouzdřením kód do spravovatelných jednotek; usnadnění větší – opětovné použití kódu. Každý uložené procedury mohou také přijímat parametry tak, aby byly i flexibilnější.
 
-SQL Data Warehouse poskytuje zjednodušenou a efektivní uložené procedury implementaci. Největší rozdíl oproti systému SQL Server je, že uložená procedura není předem zkompilovaný kód. V datové sklady jsou obecně menší význam s časem kompilace. Je důležité kód uložené procedury je při fungování proti velkých objemů dat správně optimalizované. Cílem je uložit hodiny, minuty a sekundy není milisekundách. Je proto více vhodné zamyslet nad uložené procedury jako kontejnery pro logiku SQL.     
+SQL Data Warehouse poskytuje zjednodušenou a efektivní uložené procedury implementaci. Největší rozdíl oproti systému SQL Server je, že uložená procedura není předem zkompilovaný kód. V datových skladů je malá oproti době potřebné ke spouštění dotazů na velkých objemů dat dobu kompilace. Je důležité zajistit, že kód uložené procedury je správně optimalizovaná pro rozsáhlé dotazy. Cílem je uložit hodin, minut a sekund, není milisekundách. Je proto více vhodné zamyslet nad uložené procedury jako kontejnery pro logiku SQL.     
 
-Když SQL Data Warehouse provede uložené procedury jsou analyzovat příkazy SQL, přeložených a optimalizované za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je ve skutečnosti spustit pro data se liší na dotaz odeslána.
+Když SQL Data Warehouse provede uložené procedury, jsou příkazy SQL analyzovat, přeložit a optimalizované za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je y u dat spustit, se liší od odeslání dotazu.
 
 ## <a name="nesting-stored-procedures"></a>Vnoření uložené procedury
-Uložené procedury při volání jiné uložené procedury nebo pak vnitřní uložená procedura nebo kód volání říká, že je možné provést dynamické sql.
+Pokud uložené procedury volat jiné uložené procedury nebo provést dynamické SQL, pak vnitřní uložené procedury nebo volání kódu se označuje jako vnořený.
 
-SQL Data Warehouse podporují maximálně 8 vnořených úrovní. To se mírně liší k systému SQL Server. Úroveň vnoření v systému SQL Server je 32.
+SQL Data Warehouse podporuje maximálně osm vnořených úrovní. To se mírně liší k systému SQL Server. Úroveň vnoření v systému SQL Server je 32.
 
-Volání uložené procedury nejvyšší úrovně se rovná vnořit úroveň 1
+Volání uložené procedury nejvyšší úrovně se rovná vnořit úroveň 1.
 
 ```sql
 EXEC prc_nesting
 ```
-Pokud uložená procedura také provede další EXEC volání pak to zvýší úroveň vnoření 2
+Pokud uložená procedura také provede volání jiného EXEC, zvyšuje úroveň vnoření ke dvěma.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -54,7 +52,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
-Pokud se druhý postup pak provede některé dynamické sql, pak to zvýší úroveň vnoření na 3
+Pokud se druhý postup pak provede některé dynamické SQL, zvyšuje úroveň vnoření na tři.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -64,22 +62,21 @@ GO
 EXEC prc_nesting
 ```
 
-Poznámka: SQL Data Warehouse nepodporuje aktuálně@NESTLEVEL. Musíte mít nainstalované sledovat vaše úrovně vnoření. Nepravděpodobné, se setkají limit úrovně vnoření 8, ale v takovém případě budete muset znovu fungovat kódu a "zploštění" jej tak, aby odpovídal v rámci tohoto limitu.
+Všimněte si, že SQL Data Warehouse v současné době nepodporuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Je třeba sledovat úroveň vnoření. Není pravděpodobné, abyste překračují limit úrovně vnoření osm, ale pokud to uděláte, budete muset přepracování kódu podle úrovně vnoření v rámci tohoto limitu.
 
 ## <a name="insertexecute"></a>PŘÍKAZ INSERT... SPUŠTĚNÍ
-SQL Data Warehouse nepovoluje využívat sady výsledků dotazu uložené proceduře pomocí příkazu INSERT. Je však alternativní způsob, který můžete použít.
-
-Naleznete v následujícím článku na [dočasných tabulek] příklad o tom, jak to udělat.
+SQL Data Warehouse nepovoluje využívat sady výsledků dotazu uložené proceduře pomocí příkazu INSERT. Je však alternativní způsob, který můžete použít. Příklad najdete v článku na [dočasných tabulek](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Omezení
 Existují některé aspekty Transact-SQL uložené procedury, které nejsou implementované v SQL Data Warehouse.
 
-Jsou:
+Jsou to tyto:
 
 * dočasně uložených procedur
 * číslované uložené procedury
 * Rozšířené uložené procedury
 * CLR uložené procedury
+* 
 * možnost šifrování
 * možnost replikace
 * Parametry s hodnotou tabulky
@@ -88,16 +85,6 @@ Jsou:
 * kontexty provádění
 * Return – příkaz
 
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[dočasných tabulek]: ./sql-data-warehouse-tables-temporary.md#modularizing-code
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[nest level]: https://msdn.microsoft.com/library/ms187371.aspx
-
-<!--Other Web references-->

@@ -1,8 +1,8 @@
 ---
 title: Apache Storm s comopnents Python - Azure HDInsight | Microsoft Docs
-description: "Naučte se vytvářet topologie Apache Storm, která používá Python součásti."
+description: Naučte se vytvářet topologie Apache Storm, která používá Python součásti.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1da38ebbe3354bbb36f68d1243b30bf2f4c5633f
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ebfc9d5aa1c3a650a938c0a9f5fc3d047f90458d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm v HDInsight používá Python
 
@@ -29,7 +27,7 @@ Naučte se vytvářet topologie Apache Storm, která používá Python součást
 > [!IMPORTANT]
 > Informace v tomto dokumentu byla testována pomocí Storm v HDInsight 3.6. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Kód pro tento projekt je k dispozici na [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+Kód pro tento projekt je k dispozici na [ https://github.com/Azure-Samples/hdinsight-python-storm-wordcount ](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +41,7 @@ Kód pro tento projekt je k dispozici na [https://github.com/Azure-Samples/hdins
 
 ## <a name="storm-multi-language-support"></a>Podpora více jazyků Storm
 
-Apache Storm je navržené pro práci s součásti, které jsou napsané v žádný programovací jazyk. Součásti musíte pochopit, jak pracovat [definici Thrift Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Pro Python se v rámci Apache Storm projekt, který umožňuje snadno rozhraní s Storm poskytuje modul. Můžete najít na tento modul [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm je navržené pro práci s součásti, které jsou napsané v žádný programovací jazyk. Součásti musíte pochopit, jak pracovat [definici Thrift Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Pro Python se v rámci Apache Storm projekt, který umožňuje snadno rozhraní s Storm poskytuje modul. Můžete najít na tento modul [ https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py ](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
 Storm je Java proces, který běží na virtuálním počítači Java (JVM). Součásti, které jsou napsané v dalších jazycích jsou spouštěny jako podprocesů, které se. Storm komunikuje se tyto podprocesů, které se pomocí JSON zprávy odeslané přes stdin/stdout. Další informace o komunikaci mezi součástmi najdete v [více jazyků protokol](https://storm.apache.org/documentation/Multilang-protocol.html) dokumentaci.
 
@@ -140,7 +138,7 @@ Chcete-li zastavit topologii, použijte __kombinaci kláves Ctrl + C__.
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. Uživatelské rozhraní Storm můžete použít k zobrazení topologii v clusteru. Uživatelské rozhraní Storm je umístěn v https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` se název clusteru.
+3. Uživatelské rozhraní Storm můžete použít k zobrazení topologii v clusteru. Uživatelské rozhraní Storm se nachází v https://mycluster.azurehdinsight.net/stormui. Nahraďte `mycluster` se název clusteru.
 
 > [!NOTE]
 > Po spuštění, topologie Storm spustí, dokud nebude zastaven. Zastavení topologie, použijte jednu z následujících metod:

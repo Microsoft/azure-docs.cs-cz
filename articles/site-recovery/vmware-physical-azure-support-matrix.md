@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
 Tento článek obsahuje souhrn podporovaných součásti a nastavení pro zotavení po havárii virtuálních počítačů VMware do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="supported-scenarios"></a>Podporované scénáře
+## <a name="replication-scenario"></a>Scénář replikace
 
 **Scénář** | **Podrobnosti**
 --- | ---
-Virtuální počítače VMware | Pro virtuální počítače VMware na místě, můžete provést zotavení po havárii do Azure. Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.
-Fyzické servery | Můžete provést zotavení po havárii do Azure pro místní Windows nebo Linuxem fyzických serverů. Můžete nasadit tento scénář v portálu Azure.
+Virtuální počítače VMware | Replikace virtuálních počítačů VMware místně do Azure. Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.
+Fyzické servery | Replikace fyzických serversto Windows nebo Linuxem místní Azure. Můžete nasadit tento scénář v portálu Azure.
 
 ## <a name="on-premises-virtualization-servers"></a>Místní virtualizace serverů
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.
-Fyzické | Nevztahuje se.
+VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.<br/><br/> Doporučujeme vám, že vSphere hostitelů a serverů vCenter nacházejí ve stejné síti jako procesní server. Ve výchozím nastavení spouští součásti serveru proces na konfiguračním serveru, tak to bude síť, ve kterém můžete nastavit konfigurační server, pokud nastavíte vyhrazené procesový server. 
+Fyzické | neuvedeno
 
+## <a name="site-recovery-configuration-server"></a>Konfigurace serveru pro obnovení lokality
+
+Konfigurační server je na místním počítači, který spouští součásti Site Recovery, včetně konfigurační server, procesový server a hlavní cílový server. Pro replikaci VMware nastavíte konfigurační server se všemi požadavky, pomocí šablony OVF k vytvoření virtuálního počítače VMware. Pro replikaci fyzický server můžete nastavit počítač konfigurace serveru ručně.
+
+**Komponenta** | **Požadavky**
+--- |---
+Procesorová jádra | 8 
+Paměť RAM | 12 GB
+Počet disků | 3 disky<br/><br/> Disky zahrnují disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení.
+Volné místo na disku | 600 GB místa na požadované pro proces mezipaměti serveru.
+Volné místo na disku | 600 GB místa vyžaduje jednotka pro uchování.
+Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 | 
+Národní prostředí operačního systému | Angličtina (en-us) 
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
+Role Windows Serveru | Nepovolíte: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
+Zásady skupiny| Nepovolíte: <br> -Zabránit přístupu do příkazového řádku. <br> -Znemožnit přístup k registru nástroje pro úpravy. <br> -Důvěřujete logiku pro přílohy souborů. <br> -Zapněte provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Ověřte, že je:<br/><br/> -Nemáte dříve existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Nemají dříve existující web nebo aplikaci naslouchá na portu 443<br>
+Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) 
+Typ IP adresy | Statická 
+Porty | použít pro ovládací prvek kanál orchestration 443)<br>9443 používá pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikovaných počítačů
 
-Následující tabulka shrnuje podporu replikace pro virtuální počítače VMware a fyzické servery. Site Recovery podporuje replikaci jakoukoli úlohu spuštěnou na počítači s podporovaným operačním systémem.
+Site Recovery podporuje replikaci jakoukoli úlohu spuštěnou na počítači, podporované.
 
 **Komponenta** | **Podrobnosti**
 --- | ---
@@ -114,7 +134,7 @@ Azure ExpressRoute | Ano
 Interní nástroj pro vyrovnávání zatížení | Ano
 ELB | Ano
 Azure Traffic Manager | Ano
-Multi-NIC | Ano
+Více síťovými Kartami | Ano
 Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojové IP adresy | Ano
@@ -126,11 +146,11 @@ Koncové body služby Azure virtuální sítě<br/><br/> (Brány firewall úlož
 Hostitele systému souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
 Síť SAN (ISCSI) hostitele | Ano
 Multipath hostitele (MPIO) | Ano, testována s Microsoft DSM EMC PowerPath 5.7 SP4, EMC PowerPath DSM CLARiiON
-Guest/server VMDK | Ano
-Guest/server EFI/UEFI| Partial (migrace do Azure pro Windows Server 2012 a novější virtuální počítače VMware pouze) </br></br> Viz poznámka na konci tabulky
+Host server VMDK | Ano
+Host server rozhraním EFI/UEFI| Partial (migrace do Azure pro Windows Server 2012 a novější virtuální počítače VMware pouze) </br></br> Viz poznámka na konci tabulky
 Disk sdíleného clusteru hosta/server | Ne
 Šifrované disk hosta/server | Ne
-Guest/server NFS | Ne
+Host server systému souborů NFS | Ne
 Host server protokolu SMB 3.0 | Ne
 Host server RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk Host server > 1 TB | Ano<br/><br/>Až 4095 GB
@@ -140,7 +160,7 @@ Host server svazek s prokládané disku > 4 TB <br><br/>Správa logických svazk
 Host server - prostory úložiště | Ne
 Disk přidat nebo odebrat aktivní hosta/server | Ne
 Host server - vyloučení disku | Ano
-Multipath hosta/server (MPIO) | Nevztahuje se.
+Multipath hosta/server (MPIO) | neuvedeno
 
 > [!NOTE]
 > Rozhraní UEFI spouštění virtuálních počítačů VMware s Windows serverem 2012 nebo novější se dají migrovat na Azure. Platí následující omezení:
@@ -161,7 +181,7 @@ Studeného úložiště | Ne
 Horkého úložiště| Ne
 Objekty blob bloku | Ne
 Šifrování v klidovém stavu (šifrování služby úložiště)| Ano
-Storage úrovně Premium | Ano
+Premium Storage | Ano
 Import a export služby | Ne
 Koncové body služby virtuální sítě<br/><br/> Úložiště brány firewall a virtuální sítě, které jsou nakonfigurované na cílový účet úložiště nebo mezipaměti úložiště (používá se k uložení dat replikace) | Ne
 Účty úložiště obecné účely v2 (horká a studená vrstev) | Ne
@@ -170,7 +190,7 @@ Koncové body služby virtuální sítě<br/><br/> Úložiště brány firewall 
 
 **Funkce** | **Podporuje se**
 --- | ---
-Sady dostupnosti | Ano
+Skupiny dostupnosti | Ano
 ROZBOČOVAČE | Ano
 Managed Disks | Ano
 

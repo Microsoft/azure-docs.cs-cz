@@ -10,20 +10,18 @@ ms.assetid: 7bcad2dd-edea-467c-9130-44cffc005ff3
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c201af6b1c14553e31ca71e28fc22d99ec900bd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití Azure sdílené přístupové podpisy úložiště omezit přístup k datům v HDInsight
 
-HDInsight má úplný přístup k datům v účtech úložiště Azure, který je přidružen ke clusteru. Sdílené přístupové podpisy na kontejner objektů blob můžete použít k omezení přístupu k datům. Chcete-li například zadat jen pro čtení přístup k datům. Podpisy sdíleného přístupu (SAS) jsou funkce účtů úložiště Azure, která vám umožní omezit přístup k datům. Například poskytuje přístup jen pro čtení k datům.
+HDInsight má úplný přístup k datům v účtech úložiště Azure, který je přidružen ke clusteru. Sdílené přístupové podpisy na kontejner objektů blob můžete použít k omezení přístupu k datům. Podpisy sdíleného přístupu (SAS) jsou funkce účtů úložiště Azure, která vám umožní omezit přístup k datům. Například poskytuje přístup jen pro čtení k datům.
 
 > [!IMPORTANT]
 > Řešení pomocí Apache škálu zvažte použití HDInsight připojený k doméně. Další informace najdete v tématu [konfigurace připojený k doméně HDInsight](./domain-joined/apache-domain-joined-configure.md) dokumentu.

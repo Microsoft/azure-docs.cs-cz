@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ddd80f2ebfa9d06fcd47c41d337348e01ac112e9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočtů v Azure SQL Data Warehouse
 Další informace o správě výpočetních prostředků v Azure SQL Data Warehouse. Nižší náklady ponecháte datového skladu nebo změně velikosti datového skladu k splňovat požadavky na výkon. 
@@ -28,7 +28,7 @@ Další informace o správě výpočetních prostředků v Azure SQL Data Wareho
 Architektura služby SQL Data Warehouse odděluje úložiště a výpočty, což nezávislé škálování. V důsledku toho je možné škálovat výpočetní splňovat požadavky na výkon nezávislé datové úložiště. Můžete taky pozastavit a obnovit výpočetní prostředky. Přirozený důsledek této architektury je, že [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) pro výpočetní prostředí a úložiště jsou oddělené. Pokud nemusíte použít datový sklad nějakou dobu, můžete ušetřit náklady na výpočetní pozastavení výpočty. 
 
 ## <a name="scaling-compute"></a>Škálování výpočetní
-Můžete škálovat nebo úpravou škálovat výpočetní zpět [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md) nastavení pro datový sklad. Načítání a dotazování výkonu může zvýšit lineárně, jak přidat další jednotky datového skladu. SQL Data Warehouse nabízí [služby úrovně](performance-tiers.md#service-levels) pro datového skladu jednotky, které zajišťují výraznou změnu ve výkonu při změně měřítka out nebo zpět. 
+Můžete škálovat nebo úpravou škálovat výpočetní zpět [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md) nastavení pro datový sklad. Načítání a dotazování výkonu může zvýšit lineárně, jak přidat další jednotky datového skladu. 
 
 Postup Škálováním na více systémů najdete v tématu [portál Azure](quickstart-scale-compute-portal.md), [prostředí PowerShell](quickstart-scale-compute-powershell.md), nebo [T-SQL](quickstart-scale-compute-tsql.md) – elementy quickstart. Můžete také provádět operace Škálováním na více systémů s [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
@@ -103,19 +103,19 @@ Doporučujeme vám umožní na Dokončit před spuštěním operace pozastavení
 
 Když službu SQL Data Warehouse pozastavíte nebo škálujete, při vytvoření požadavku na pozastavení nebo škálování se na pozadí zruší vaše dotazy.  Zrušení jednoduchého dotazu SELECT je rychlá operace a nemá téměř žádný vliv na čas potřebný k pozastavení nebo škálování instance.  Nicméně zastavení transakčních dotazů, které upravují data nebo strukturu dat, může trvat mnohem déle.  **Transakční dotazy se podle definice musí dokončit v celém rozsahu, nebo musí vrátit zpět provedené změny.**  Vracení dokončené práce transakčního dotazu zpět může trvat stejně dlouho nebo dokonce déle, než původní změna, kterou dotaz prováděl.  Například pokud zrušíte dotaz, který odstraňoval řádky a už hodinu běžel, může systému hodinu trvat, než odstraněné řádky vloží zpět.  Pokud spustíte pozastavení nebo škálování zatímco probíhají transakce, může to vypadat, že vaše pozastavení nebo škálování trvá dlouho, protože pozastavení a škálování musí počkat na dokončení odvolání transakce, než budou moci pokračovat.
 
-Viz také [transakce](sql-data-warehouse-develop-transactions.md)a [Optimalizace transakce][optimalizace transakce](sql-data-warehouse-develop-best-practices-transactions.md).
+Viz také [transakce](sql-data-warehouse-develop-transactions.md), a [optimalizace transakce](sql-data-warehouse-develop-best-practices-transactions.md).
 
 ## <a name="automating-compute-management"></a>Automatizace správy výpočetní
 K automatizaci operací správy výpočetní, najdete v části [spravovat výpočetní s Azure functions](manage-compute-with-azure-functions.md).
 
 Každý Škálováním na více systémů, pozastavení a obnovení operace může trvat několik minut na dokončení. Pokud jste se škálování, pozastavení, nebo obnovení automaticky, doporučujeme, abyste implementace logiku a ujistěte se, že některé operace dokončili před pokračováním další akci. Kontroluje stav datového skladu pomocí různých koncové body umožňuje správně implementovat automatizace těchto operací. 
 
-Chcete-li zkontrolovat stav datového skladu, se [prostředí PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rychlý start. Můžete také zkontrolovat stav datového skladu s [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
+Pokud chcete zkontrolovat stav datového skladu, najdete v článku [prostředí PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) nebo [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) rychlý start. Můžete také zkontrolovat stav datového skladu s [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state).
 
 
 ## <a name="permissions"></a>Oprávnění
 
-Změna měřítka datového skladu vyžaduje oprávnění popsaná v [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md).  Pozastavení a obnovení vyžadují [Přispěvatel databází SQL](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) oprávnění, konkrétně Microsoft.Sql/servers/databases/action.
+Změna měřítka datového skladu vyžaduje oprávnění popsaná v [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Pozastavení a obnovení vyžadují [Přispěvatel databází SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) oprávnění, konkrétně Microsoft.Sql/servers/databases/action.
 
 
 ## <a name="next-steps"></a>Další postup

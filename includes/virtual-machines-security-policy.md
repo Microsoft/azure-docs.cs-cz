@@ -28,8 +28,8 @@ Jakmile se připojíte k virtuálním počítačům, měli byste použít šifro
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Pomocí [řízení přístupu na základě role (RBAC)](../articles/active-directory/role-based-access-control-what-is.md), můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele na vašem virtuálním počítači, které potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění ve virtuálním počítači, můžete povolit jenom určité akce. Řízení přístupu můžete nakonfigurovat pro virtuální počítač v [portál Azure](../articles/active-directory/role-based-access-control-configure.md)pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/role), nebo[prostředí Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md).
+Pomocí [řízení přístupu na základě role (RBAC)](../articles/role-based-access-control/overview.md), můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele na vašem virtuálním počítači, které potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění ve virtuálním počítači, můžete povolit jenom určité akce. Řízení přístupu můžete nakonfigurovat pro virtuální počítač v [portál Azure](../articles/role-based-access-control/role-assignments-portal.md)pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/role), nebo[prostředí Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Provede kroky pro sledování zabezpečení virtuálního počítače pomocí Azure Security Center pro [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) nebo [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md).

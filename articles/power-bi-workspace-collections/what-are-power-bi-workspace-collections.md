@@ -1,12 +1,12 @@
 ---
-title: "Jaké jsou kolekce pracovních prostorů Power BI?"
-description: "Power BI Embedded můžete integrovat sestavy Power BI na váš web nebo mobilní aplikace, takže nemusíte vytvářet vlastní řešení."
+title: Jaké jsou kolekce pracovních prostorů Power BI?
+description: Power BI Embedded můžete integrovat sestavy Power BI na váš web nebo mobilní aplikace, takže nemusíte vytvářet vlastní řešení.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 7df172895bb926f1715370b941964e2c29ab393d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0bd6ba74d176ed1db1e8f1f1b38646182da2c379
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Jaké jsou kolekce pracovních prostorů Power BI?
 
@@ -81,7 +81,7 @@ Tyto tokeny se používají pro v různých fázích vaši interakci s **Microso
 
 Nyní můžete upravit existující sestavy nebo vytváření nových sestav přímo ve vaší aplikaci bez nutnosti použití Power BI Desktop. To vyžaduje, že existují datové sady v rámci pracovního prostoru.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Běžné scénáře Microsoft Power BI prostoru kolekce](scenarios.md)  
 [Začínáme s Microsoft Power BI prostoru kolekce](get-started.md)  

@@ -1,26 +1,24 @@
 ---
-title: "Spouštění dotazů Hive pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak k odesílání úloh Hadoop do HDInsight Hadoop Azure pomocí sady .NET SDK HDInsight."
+title: Spouštění dotazů Hive pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs
+description: Zjistěte, jak k odesílání úloh Hadoop do HDInsight Hadoop Azure pomocí sady .NET SDK HDInsight.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 4e291890-f8b4-426c-b5e8-d4fd512ff042
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 93649c51c6dd6c158e3870a2fa75d92ae4579b7e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 558ea75a74b89776be32095a7230f9c6e97dcea2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Hive pomocí sady .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -38,7 +36,7 @@ Před zahájením tohoto článku, musíte mít následující položky:
     > [!WARNING]
     > Od 15. září 2017 sady .NET SDK HDInsight podporuje pouze vracejících výsledky dotazu Hive z účty Azure Storage. Pokud používáte v tomto příkladu se cluster služby HDInsight, která používá Azure Data Lake Store jako primární úložiště, nelze načíst výsledky vyhledávání pomocí .NET SDK.
 
-* **Visual Studio 2013/2015/2017**.
+* **Visual Studio 2013 nebo 2015 nebo 2017**.
 
 ## <a name="run-a-hive-query"></a>Spouštění dotazů Hive
 .NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET. 

@@ -1,11 +1,11 @@
 ---
-title: "Azure hybridní připojení přenosového protokolu Průvodce | Microsoft Docs"
-description: "Azure Průvodce protokol předávání hybridní připojení."
+title: Azure hybridní připojení přenosového protokolu Průvodce | Microsoft Docs
+description: Azure Průvodce protokol předávání hybridní připojení.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1979746d143dbf8c3f4bca3f9a3a7925fe8e3f0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure hybridní připojení předávací protokol
-Předávání přes Azure je jedním z klíčů schopností pilíře na platformě Azure Service Bus. Nové *hybridní připojení* funkce předávání je zabezpečený, otevřete protokol evolution na základě protokolu HTTP a objekty WebSockets. Nahrazuje dřívějším, stejně s názvem *BizTalk Services* funkce, který byl postavený na vlastnickým protokolem foundation. Integrace hybridní připojení do Azure App Services budou nadále fungovat jako-je.
+Předávání přes Azure je jedním z klíčů schopností pilíře na platformě Azure Service Bus. Nové *hybridní připojení* funkce předávání je zabezpečený, otevřete protokol evolution na základě protokolu HTTP a objekty WebSockets. Nahrazuje dřívějším, stejně jako s názvem *BizTalk Services* funkce, který byl postavený na vlastnickým protokolem foundation. Integrace hybridní připojení do Azure App Services budou nadále fungovat jako-je.
 
 Hybridní připojení umožňuje obousměrnou, binární datový proud komunikaci mezi dvěma síťových aplikací, během které může být buď nebo obou stran umístěn za zařízení NAT nebo brány firewall. Tento článek popisuje interakce na straně klienta s předávání hybridní připojení pro připojení klientů v naslouchací proces a odesílatele rolí a jak naslouchací procesy přijímat nová připojení.
 
 ## <a name="interaction-model"></a>Interakce modelu
 Předávání hybridní připojení dvě strany připojí tím, že poskytuje bod potkávací v cloudu Azure, která obě strany můžete zjistit a připojte se k z hlediska vlastní síť. Tento bod potkávací se nazývá "Hybridní připojení" v tomto a dalších dokumentaci rozhraní API a také na portálu Azure. Koncový bod služby hybridní připojení se označuje jako "služba" pro zbývající část tohoto článku. Model interakce leans na klasifikace vymezenému mnoho jiná síťová rozhraní API.
 
-Je naslouchací proces, který nejprve znamená připravenosti pro zpracování příchozí připojení a následně je přijímá po doručení. Na druhé straně se připojujícího klienta, který se připojuje ke naslouchací proces, očekává se toto připojení pro navázání obousměrné komunikační cestu.
+Je naslouchací proces, který nejprve znamená připravenosti pro zpracování příchozí připojení a následně je přijímá po doručení. Na druhé straně se připojujícího klienta, který nabízí připojení pro naslouchací proces, očekává se toto připojení pro navázání obousměrné komunikační cestu.
 "Připojit", "Naslouchání" a "Přijmout" jsou stejné podmínky, které můžete najít v většina soketu rozhraní API.
 
-Všechny přenosu komunikační model má buď strany odchozí připojení ke koncovému bodu služby, což usnadňuje "naslouchací proces" i "client" v obecné použití a může také způsobit dalšími přetíženími terminologie. Přesné technologiím, které jsme proto použít pro hybridní připojení je následující:
+Všechny přenosu komunikační model má obě strany, které odchozí připojení ke koncovému bodu služby, takže je "naslouchací proces" i "client" v obecné použití a může také způsobit další terminologie přetížení. Přesné technologiím, které jsme proto použít pro hybridní připojení je následující:
 
 Programy na obou stranách připojení se nazývají "klienty,", vzhledem k tomu, že jsou klienti ke službě. Klienta, která čeká na a přijímá připojení je "naslouchací proces", nebo je uvedená v "naslouchací proces role." Klienta, který iniciuje nové připojení směrem naslouchací proces prostřednictvím služby se označuje jako "sender", nebo je v "odesílatele role."
 
@@ -40,10 +40,10 @@ Naslouchací proces má čtyři interakce s službu; všechny podrobnosti přeno
 
 #### <a name="listen"></a>Naslouchání
 K označení připravenosti služby, který naslouchací proces je připraven přijmout připojení, vytvoří odchozí připojení protokolu WebSocket. Metoda handshake připojení stejný název hybridní připojení nakonfigurovaná na obor názvů předávání a token zabezpečení, která uděluje "Naslouchání" přímo na tento název.
-Když protokol WebSocket je přijatá službou, registrace je dokončena a zavedených webového protokolu WebSocket se ukládají jako "řídicí kanál" pro povolení všechny následné interakce zachování připojení. Služba umožňuje až pro 25 souběžných moduly pro naslouchání na hybridní připojení. Pokud existují dvě nebo více active naslouchací procesy, jsou mezi nimi rozložit příchozí připojení v náhodném pořadí; správného distribuční není zaručena.
+Když protokol WebSocket je přijatá službou, registrace je dokončena a zavedených protokolu WebSocket se ukládají jako "řídicí kanál" pro povolení všechny následné interakce zachování připojení. Služba umožňuje až pro 25 souběžných moduly pro naslouchání na hybridní připojení. Pokud existují dvě nebo více active naslouchací procesy, jsou mezi nimi rozložit příchozí připojení v náhodném pořadí; správného distribuční není zaručena.
 
 #### <a name="accept"></a>Přijmout
-Když odesílatele otevře nové připojení na službu, službu vybere a upozorní jednu aktivní naslouchacího procesu na hybridní připojení. Toto oznámení se odesílá do naslouchací proces kanálem otevřít řídicí jako zprávu JSON obsahující adresu URL koncového bodu protokolu WebSocket, který naslouchací proces musí připojit k pro přijetí připojení.
+Když odesílatele otevře nové připojení na službu, službu vybere a upozorní jednu aktivní naslouchacího procesu na hybridní připojení. Toto oznámení se odesílá do naslouchací proces kanálem otevřít řídicí jako zprávu JSON obsahující adresu URL koncového bodu protokolu WebSocket, který naslouchací proces musí připojit k, aby přijímal připojení.
 
 Adresu URL můžete a musí používat přímo naslouchací proces bez další zátěže.
 Kódovaného informace je platná pouze na krátkou dobu běhu v podstatě po dobu, odesílatel je ochotná počkejte pro připojení k být navázáno začátku do konce, ale až do maximálního počtu 30 sekund. Adresu URL můžete použít pouze pro jeden úspěšného pokusu o připojení. Po vytvoření připojení protokolu WebSocket s adresou URL potkávací všechny další aktivity na tento protokol WebSocket je přes předávací službu z a do odesílatele, bez zásahu nebo interpretace službou.
@@ -52,7 +52,7 @@ Kódovaného informace je platná pouze na krátkou dobu běhu v podstatě po do
 Token zabezpečení, která bude použita k registraci naslouchací proces a udržovat řídicí kanál může vyprší během naslouchací proces je aktivní. Vypršení platnosti tokenu nemá vliv na probíhající připojení, ale způsobit řídicí kanál přeruší službou v nebo krátce po v okamžiku vypršení platnosti. Operace "obnovit" je zprávu JSON, který naslouchací proces může odesílat nahradit token přidružené řídicí kanál, takže řídicí kanál je možné udržovat po delší dobu.
 
 #### <a name="ping"></a>Ping
-Je-li řídicí kanál nečinnosti, po dlouhou dobu, prostředníci na cestě, jako je například zatížení vyrovnávání nebo zařízení NAT. může dojít k přerušení připojení TCP. Operace "ping", zabraňuje odesláním malé množství dat, na který upozorní všem uživatelům v síti trasy, která je určené připojení jako aktivní, a slouží také jako "živé" testu pro naslouchací proces kanálu. V případě selhání příkazu ping řídicí kanál by měl být považován za nepoužitelný a naslouchací proces by měl znovu připojit.
+Je-li řídicí kanál po dlouhou dobu nečinnosti, může drop prostředníci na cestě, jako jsou nástroje pro vyrovnávání zatížení nebo zařízení NAT, připojení TCP. Operace "ping", zabraňuje odesláním malé množství dat, na který upozorní všem uživatelům v síti trasy, která je určené připojení jako aktivní, a slouží také jako "živé" testu pro naslouchací proces kanálu. V případě selhání příkazu ping řídicí kanál by měl být považován za nepoužitelný a naslouchací proces by měl znovu připojit.
 
 ### <a name="sender-interaction"></a>Odesílatel interakce
 Odesílatel má jenom jeden interakci se službou: připojení.
@@ -75,7 +75,7 @@ Všechna připojení protokolu WebSocket probíhají na portu 443 jako upgrade z
 Naslouchací proces protokolu se skládá z dvě připojení gesta a tři operace zpráv.
 
 #### <a name="listener-control-channel-connection"></a>Naslouchací proces připojení kanálu ovládací prvek
-Řídicí kanál je otevřené se vytvoření připojení protokolu WebSocket k:
+Vytvoření připojení protokolu WebSocket k otevřel řídicí kanál:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...
@@ -147,11 +147,11 @@ Adresa URL je nutné použít jako-je pro vytvoření soketu přijmout, ale obsa
 
 | Parametr | Požaduje se | Popis |
 | --- | --- | --- |
-| `sb-hc-action` |Ano |Pro příjem soketu, musí být parametr`sb-hc-action=accept` |
+| `sb-hc-action` |Ano |Pro příjem soketu, musí být parametr `sb-hc-action=accept` |
 | `{path}` |Ano |(viz odstavec) |
 | `sb-hc-id` |Ne |Viz popis v předchozí **id**. |
 
-`{path}`je cesta k oboru názvů kódovaná adresou URL předkonfigurované hybridní připojení, na které chcete zaregistrovat toto naslouchací proces. Tento výraz se připojí k pevné `$hc/` část adresy obsahující cestu. 
+`{path}` je cesta k oboru názvů kódovaná adresou URL předkonfigurované hybridní připojení, na které chcete zaregistrovat toto naslouchací proces. Tento výraz se připojí k pevné `$hc/` část adresy obsahující cestu. 
 
 `path` Výraz může být rozšířena příponu a výrazu řetězec dotazu, který následuje po dělicí lomítkem zaregistrovaný název. To umožňuje klientovi odesílatele předání argumentů odesílání do přijímá naslouchací proces, když není možné zahrnout hlavičky protokolu HTTP. Očekávání je, že rozhraní naslouchací proces analyzuje část adresy obsahující pevné cestu a název registrované z cesty a umožňuje zbývající, které by mohly mít bez argumentů řetězce dotazu předponu `sb-`, k dispozici pro aplikace pro rozhodnutí, jestli se tak, aby přijímal připojení.
 
@@ -195,7 +195,7 @@ Při dokončení správně, tato metoda handshake záměrně selže, s kódem ch
 | 500 |Vnitřní chyba |Došlo k chybě ve službě. |
 
 ### <a name="listener-token-renewal"></a>Naslouchací proces obnovení tokenu
-Pokud token naslouchací proces vyprší, ho můžete nahradit odesláním textovou zprávu rámce ke službě prostřednictvím zavedených řídicí kanál. Zpráva obsahuje objekt JSON s názvem `renewToken`, která v tuto chvíli definuje následující vlastnost:
+Pokud token naslouchací proces vyprší, naslouchací proces můžete nahradit odesláním textovou zprávu rámce ke službě prostřednictvím zavedených řídicí kanál. Zpráva obsahuje objekt JSON s názvem `renewToken`, která v tuto chvíli definuje následující vlastnost:
 
 * **token** – přístup k službě sběrnice sdílené token platný, kódovaná adresou URL pro obor názvů nebo hybridní připojení, která uděluje **naslouchání** správné.
 

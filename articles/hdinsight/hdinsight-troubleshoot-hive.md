@@ -1,25 +1,23 @@
 ---
-title: "Řešení potíží Hive pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se práce s Apache Hive a Azure HDInsight."
-keywords: "Azure HDInsight Hive, – nejčastější dotazy, řešení potíží s průvodce, časté otázky"
+title: Řešení potíží Hive pomocí Azure HDInsight | Microsoft Docs
+description: Získejte odpovědi na časté otázky týkající se práce s Apache Hive a Azure HDInsight.
+keywords: Azure HDInsight Hive, – nejčastější dotazy, řešení potíží s průvodce, časté otázky
 services: Azure HDInsight
 documentationcenter: na
 author: dharmeshkakadia
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d397552285466dc038fe580a084e2d1d0d69bfe2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Řešení potíží Hive pomocí Azure HDInsight
 
@@ -29,7 +27,7 @@ Další informace o nejvyšší otázky a jejich řešení při práci s Apache 
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Jak exportovat metaúložiště Hive a importovat na jiný cluster?
 
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Připojte se ke clusteru HDInsight pomocí klienta Secure Shell (SSH). Další informace najdete v tématu [další čtení](#additional-reading-end).
 
@@ -56,7 +54,7 @@ Kód v kroky řešení předpokládá, že cesty k datům v novém clusteru jsou
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Jak najít protokoly Hive v clusteru?
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Připojte ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu **další čtení**.
 
@@ -85,7 +83,7 @@ Kód v kroky řešení předpokládá, že cesty k datům v novém clusteru jsou
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Jak spuštění prostředí Hive s konkrétní konfigurací v clusteru?
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Zadejte pár klíč hodnota konfigurace při spuštění prostředí Hive. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
@@ -113,7 +111,7 @@ Kód v kroky řešení předpokládá, že cesty k datům v novém clusteru jsou
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak můžu analyzovat data Tez DAG v clusteru kritické cestě?
 
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
  
 1. Pro analýzu Apache Tez necyklicky (DAG) na clusteru kritické graf, připojte ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [další čtení](#additional-reading-end).
 
@@ -153,7 +151,7 @@ Kód v kroky řešení předpokládá, že cesty k datům v novém clusteru jsou
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>Jak lze stáhnout Tez DAG data z clusteru?
 
 
-#### <a name="resolution-steps"></a>Kroky řešení
+#### <a name="resolution-steps"></a>Postup řešení
 
 Ke shromažďování dat Tez DAG dvěma způsoby:
 

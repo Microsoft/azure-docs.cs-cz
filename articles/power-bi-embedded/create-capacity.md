@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření Power BI Embedded kapacity na portálu Azure | Microsoft Docs"
-description: "Tento článek vás provede vytvoření Power BI Embedded kapacity v Microsoft Azure."
+title: Vytvoření Power BI Embedded kapacity na portálu Azure | Microsoft Docs
+description: Tento článek vás provede vytvoření Power BI Embedded kapacity v Microsoft Azure.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: maghan
+ms.openlocfilehash: 2fadfde13aee3aaf965c6ba30188544a8a075b9d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Vytvoření Power BI Embedded kapacity na portálu Azure
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení tohoto rychlého startu je potřeba:
 
 * **Předplatné Azure:** navštivte [bezplatná zkušební verze Azure](https://azure.microsoft.com/free/) vytvořit účet.
-* **Azure Active Directory:** předplatného musí být přidružen klienta služby Azure Active Directory (AAD). A, ***musíte být přihlášeni do Azure s účtem v něm***. Účty Microsoft nejsou podporovány. Další informace najdete v tématu ověřování a uživatel oprávnění.
+* **Azure Active Directory:** předplatného musí být přidružen klienta služby Azure Active Directory (AAD). A, ***musíte být přihlášeni do Azure s účtem v něm***. Účty Microsoft nejsou podporovány. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](../analysis-services/analysis-services-manage-users.md).
 * **Power BI klienta:** alespoň jeden účet ve vašem tenantovi AAD, musíte mít zaregistrovaný pro Power BI.
 * **Skupina prostředků:** už máte skupinu prostředků nebo [vytvořte novou](../azure-resource-manager/resource-group-overview.md).
 

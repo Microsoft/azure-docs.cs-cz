@@ -3,22 +3,23 @@ title: Vědecké zpracování dat s Linux datové vědy virtuálního počítač
 description: Jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: bradsev
-ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: gokuma
+ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Vědecké zpracování dat pomocí datové vědy virtuální počítač s Linuxem v Azure
 Tento návod ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely. Virtuální počítač pro vědecké účely Data Linux (DSVM) je bitová kopie virtuálního počítače, která je k dispozici v Azure, který je předem nainstalovaná s kolekcí nástrojů pro běžně používané k analýze dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřízení virtuálního počítače Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače lze snadno začít provádění vědecké zpracování dat v minutách, bez nutnosti instalace a konfigurace každého nástroje jednotlivě. Můžete snadno škálování virtuálních počítačů, v případě potřeby a zastavte ji když není používán. Proto tento prostředek je elastické a nákladově efektivní.
@@ -385,7 +386,7 @@ Rattle můžete také provést analýzu clusteru. Umožňuje vyloučit některé
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* spam
+* nevyžádané pošty
 
 Poté přejděte zpět na **clusteru** , zvolte **KMeans**a nastavte *počtu clusterů, které* na 4. Potom **provést**. Výsledky jsou zobrazeny v okně výstupu. Jeden cluster má vysoká frekvence "Jirka" a "hp" a je pravděpodobně legitimní firemní e-mail.
 

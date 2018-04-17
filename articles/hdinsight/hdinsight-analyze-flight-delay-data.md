@@ -1,25 +1,23 @@
 ---
-title: "Analýza dat zpoždění letu s Hadoop v HDInsight - Azure | Microsoft Docs"
-description: "Naučte se používat jeden skript prostředí Windows PowerShell k vytvoření clusteru HDInsight, spouštět úlohy Hive, Sqoop úlohu spusťte a odstranění clusteru."
+title: Analýza dat zpoždění letu s Hadoop v HDInsight - Azure | Microsoft Docs
+description: Naučte se používat jeden skript prostředí Windows PowerShell k vytvoření clusteru HDInsight, spouštět úlohy Hive, Sqoop úlohu spusťte a odstranění clusteru.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 00e26aa9-82fb-4dbe-b87d-ffe8e39a5412
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5da745901ec2fe57530e4d7fe38a055e0b8691ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 6e42cfa666ad6b6523043f4412a321789adad9a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analýza dat zpoždění letu pomocí Hive v HDInsight
 Hive zajišťuje spuštěných úloh Hadoop MapReduce prostřednictvím SQL jako skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování, a analýze velkých objemů dat.
@@ -256,12 +254,12 @@ Odesílání datového souboru a soubory skript HiveQL (viz [příloha B](#appen
 2. Na stránce vyberte následující hodnoty:
 
     <table border="1">
-    <tr><th>Name (Název)</th><th>Hodnota</th></tr>
+    <tr><th>Název</th><th>Hodnota</th></tr>
     <tr><td>Filtr roku</td><td>2013 </td></tr>
     <tr><td>Filtrovat období</td><td>Leden</td></tr>
-    <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *poskytovatel*, *FlightNum*, *OriginAirportID* , *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *cíle* , *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
+    <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *poskytovatel*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *cíle*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
     </table>
-3.Klikněte na tlačítko **Stáhnout**.
+3. Klikněte na tlačítko **Stáhnout**.
 4. Rozbalte soubor **C:\Tutorials\FlightDelay\2013Data** složky. Každý soubor je soubor CSV a je přibližně 60GB.
 5. Přejmenujte soubor na název v měsíci, který obsahuje data. Například by s názvem souboru, který obsahuje data leden *January.csv*.
 6. Opakujte kroky 2 a 5 na stažení souboru pro každou dobu 12 měsíců v 2013. Budete potřebovat minimálně jeden soubor ke spuštění tohoto kurzu.
@@ -383,8 +381,10 @@ Skript HiveQL provede následující:
     <tr><td>$storageAccountName</td><td>Pokud chcete odeslat skript HiveQL k účtu úložiště Azure.</td></tr>
     <tr><td>$blobContainerName</td><td>Kontejner objektů Blob, kde chcete odeslat skript HiveQL k.</td></tr>
     </table>
-2. Otevřete Azure PowerShell ISE.
-3. Zkopírujte a vložte následující skript do podokna skriptu:
+    
+2. Otevřete Azure PowerShell ISE.  
+
+3. Zkopírujte a vložte následující skript do podokna skriptu:  
 
     ```powershell
     [CmdletBinding()]
@@ -573,8 +573,10 @@ Skript HiveQL provede následující:
     <tr><td>$sqlDatabaseLocation</td><td>Tato hodnota se používá jenom v případě, že vytváříte nový server databáze Azure.</td></tr>
     <tr><td>$sqlDatabaseName</td><td>Databázi SQL používanou k vytvoření tabulky AvgDelays Sqoop úlohy. Ponechat prázdné vytvoří databázi s názvem HDISqoop. Název tabulky pro výstup úlohy Sqoop je AvgDelays. </td></tr>
     </table>
+    
 2. Otevřete Azure PowerShell ISE.
-3. Zkopírujte a vložte následující skript do podokna skriptu:
+
+3. Zkopírujte a vložte následující skript do podokna skriptu:  
 
     ```powershell
     [CmdletBinding()]

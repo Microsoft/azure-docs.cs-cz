@@ -7,11 +7,11 @@ manager: rloutlaw
 ms.author: tarcher
 ms.date: 3/12/2018
 ms.topic: article
-ms.openlocfilehash: db45e9fe1eb724e6404f5e83bbbe4f62ee32343d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Pomocí image Azure Marketplace můžete vytvořit virtuální počítač s Linuxem Terraform s identita spravované služby
 
@@ -88,7 +88,7 @@ Předchozí skript používá [AZ rozhraní příkazového řádku v 2.0 interak
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Další informace o vzdálené správě stavu najdete v tématu [tuto stránku týkající se stavu vzdáleného Terraform](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je vystaven v tomto souboru a musí být pečlivě změnami do správy zdrojového kódu.  
+ Další informace o vzdálené správě stavu najdete v tématu [tuto stránku týkající se stavu vzdáleného Terraform](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je vystaven v tomto souboru a je potřeba vyloučit před potvrzení Terraform konfigurační soubory do správy zdrojového kódu.
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak nastavit virtuální počítač s Linuxem Terraform v Azure. Zde jsou některé další zdroje, které obsahují další informace o Terraform v Azure: 

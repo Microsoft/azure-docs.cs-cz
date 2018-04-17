@@ -1,28 +1,26 @@
 ---
 title: Nainstalujte Presto v clusterech Azure HDInsight Linux | Microsoft Docs
-description: "Zjistěte, jak nainstalovat Presto a Airpal na systémem Linux HDInsight Hadoop clustery pomocí akcí skriptů."
+description: Zjistěte, jak nainstalovat Presto a Airpal na systémem Linux HDInsight Hadoop clustery pomocí akcí skriptů.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e6f1e1ee37592d974cab01ca229995c4ff6b70e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 32b7925b7414f00dfdd7d5c8a45b3601bf58942e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Presto clusterů systému HDInsight Hadoop
 
-V tomto tématu se naučíte instalace Presto na clusterů systému HDInsight Hadoop pomocí akce skriptu. Také zjistíte, jak nainstalovat Airpal na stávající cluster Presto HDInsight.
+V tomto dokumentu zjistěte, jak nainstalovat Presto na clusterů systému HDInsight Hadoop pomocí akce skriptu. Také zjistíte, jak nainstalovat Airpal na stávající cluster Presto HDInsight.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují **clusteru HDInsight 3.5 Hadoop** Linux, který používá. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight verze](hdinsight-component-versioning.md).
@@ -33,7 +31,7 @@ V tomto tématu se naučíte instalace Presto na clusterů systému HDInsight Ha
 > [!WARNING]
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomůže k izolování a vyřešení problémů týkajících se těchto součástí.
 > 
-> Vlastní komponenty, například Presto přijímat vyvineme podporu o pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [http://apache.org](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, například Presto přijímat vyvineme podporu o pomoci při další řešení problému. To může způsobit řešení problému nebo s žádostí o zapojení dostupné kanály pro technologie s otevřeným zdrojem, kterých se nachází hluboké znalosti pro tuto technologii. Například existuje mnoho komunity webů, které lze použít jako: [fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také Apache projekty mají na projektu serverů [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 > 
 > 
 
@@ -42,15 +40,15 @@ V tomto tématu se naučíte instalace Presto na clusterů systému HDInsight Ha
 
 Tato část obsahuje pokyny o tom, jak pomocí vzorového skriptu při vytváření nového clusteru pomocí portálu Azure. 
 
-1. Spuštění zřizování clusteru pomocí kroků v [clustery HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md). Ujistěte se, vytvořit cluster pomocí **vlastní** postup vytvoření clusteru. Je nutné zajistit, že cluster, který vytvoříte splňuje následující požadavky.
+1. Spuštění zřizování clusteru pomocí kroků v [clustery HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md). Ujistěte se, vytvořit cluster pomocí **vlastní** postup vytvoření clusteru. Cluster musí splňovat následující požadavky.
 
-    a. Musí to být clusteru Hadoop v prostředí HDInsight verze 3.5.
+    * Musí to být clusteru Hadoop v prostředí HDInsight verze 3.5.
 
-    b. Jako úložiště dat musí používat úložiště Azure. Použití Presto v clusteru, který používá Azure Data Lake Store jako možnost úložiště není dosud podporováno. 
+    * Jako úložiště dat musí používat úložiště Azure. Použití Presto v clusteru, který používá Azure Data Lake Store jako možnost úložiště není dosud podporováno. 
 
     ![Vytvoření clusteru HDInsight pomocí vlastních možností](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. Na **upřesňující nastavení** vyberte **akcí skriptů**a zadejte následující informace:
+2. Na **upřesňující nastavení** oblasti, vyberte **akcí skriptů**a zadejte následující informace:
    
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **Identifikátor URI skriptu Bash:**`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
@@ -60,7 +58,7 @@ Tato část obsahuje pokyny o tom, jak pomocí vzorového skriptu při vytváře
    * **Parametry**: to pole ponechat prázdné
 
 
-3. V dolní části **akcí skriptů** okně klikněte na tlačítko **vyberte** tlačítko Uložit konfiguraci. Nakonec klikněte na **vyberte** tlačítko v dolní části **Upřesnit nastavení** okno a uložte informace o konfiguraci.
+3. V dolní části **akcí skriptů** oblast, klikněte na tlačítko **vyberte** tlačítko Uložit konfiguraci. Nakonec klikněte na **vyberte** tlačítko v dolní části **Upřesnit nastavení** oblasti uložit informace o konfiguraci.
 
 4. Pokračovat zřizování clusteru, jak je popsáno v [clustery HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -71,7 +69,7 @@ Tato část obsahuje pokyny o tom, jak pomocí vzorového skriptu při vytváře
 
 ## <a name="use-presto-with-hdinsight"></a>Použijte Presto s HDInsight
 
-Proveďte následující postup použijte Presto v clusteru služby HDInsight po instalaci pomocí výše uvedeného postupu.
+Chcete-li pracovat s Presto v clusteru služby HDInsight, použijte následující kroky:
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
    
@@ -90,13 +88,13 @@ Proveďte následující postup použijte Presto v clusteru služby HDInsight po
    
     Ve výchozím nastavení [Hive](https://prestodb.io/docs/current/connector/hive.html) a [TPCH](https://prestodb.io/docs/current/connector/tpch.html) konektory pro Presto jsou již nakonfigurována. Hive konektor je nakonfigurovaný na použití výchozí nainstalován Hive instalace, takže všechny tabulky z podregistru budou automaticky viditelné v Presto.
 
-    Podrobný popis na použití Presto naleznete v tématu [Presto dokumentaci](https://prestodb.io/docs/current/index.html).
+    Další informace najdete v tématu [Presto dokumentaci](https://prestodb.io/docs/current/index.html).
 
 ## <a name="use-airpal-with-presto"></a>Pomocí Airpal Presto
 
 [Airpal](https://github.com/airbnb/airpal#airpal) je dotazu open-source webové rozhraní pro Presto. Další informace o Airpal najdete v tématu [Airpal dokumentaci](https://github.com/airbnb/airpal#airpal).
 
-V této části se podíváme na postup **nainstalujte Airpal edgenode** clusteru HDInsight Hadoop, kde je již Presto nainstalována. Zajistíte tak, že rozhraní Airpal webové dotazu je k dispozici přes Internet.
+K instalaci Airpal na uzlu edge použijte následující kroky:
 
 1. Pomocí SSH se připojte k headnode clusteru HDInsight, která má nainstalovanou Presto:
    
@@ -108,7 +106,7 @@ V této části se podíváme na postup **nainstalujte Airpal edgenode** cluster
 
         sudo slider registry  --name presto1 --getexp presto 
    
-    Zobrazený výstup by měl vypadat asi takto:
+    Zobrazí výstup podobný následujícím kódu JSON:
 
         {
             "coordinator_address" : [ {
@@ -117,9 +115,9 @@ V této části se podíváme na postup **nainstalujte Airpal edgenode** cluster
                 "updatedTime" : "Mon Apr 03 20:13:41 UTC 2017"
         } ]
 
-3. Z výstupu, poznamenejte si hodnotu pro **hodnotu** vlastnost. Je nutné při instalaci Airpal na edgenode clusteru. Ve výstupu výš, je hodnota, kterou budete potřebovat **10.0.0.12:9090**.
+3. Z výstupu, poznamenejte si hodnotu pro **hodnotu** vlastnost. Tuto hodnotu budete potřebovat při instalaci Airpal na edgenode clusteru. Ve výstupu výš, je hodnota, kterou budete potřebovat **10.0.0.12:9090**.
 
-4. Použít šablonu  **[sem](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)**  vytvoření edgenode clusteru HDInsight a zadejte hodnoty, jak je znázorněno na následujícím snímku obrazovky.
+4. Použít šablonu **[sem](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)** vytvoření edgenode clusteru HDInsight a zadejte hodnoty, jak je znázorněno na následujícím snímku obrazovky.
 
     ![Instalace HDInsight Airpal na Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-install-airpal.png)
 
@@ -127,19 +125,19 @@ V této části se podíváme na postup **nainstalujte Airpal edgenode** cluster
 
 6. Jakmile jsou změny v konfiguraci clusteru, můžete přístup k webové rozhraní Airpal pomocí následujících kroků.
 
-    a. V okně clusteru, klikněte na tlačítko **aplikace**.
+    1. V dialogovém okně clusteru, klikněte na **aplikace**.
 
-    ![Spuštění HDInsight Airpal na Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
+        ![Spuštění HDInsight Airpal na Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    b. Z **nainstalované aplikace** okně klikněte na tlačítko **portál** proti airpal.
+    2. Z **nainstalované aplikace** oblast, klikněte na tlačítko **portál** proti airpal.
 
-    ![Spuštění HDInsight Airpal na Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
+        ![Spuštění HDInsight Airpal na Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    c. Po zobrazení výzvy zadejte přihlašovací údaje správce, které jste zadali při vytváření clusteru HDInsight Hadoop.
+    3. Po zobrazení výzvy zadejte přihlašovací údaje správce, které jste zadali při vytváření clusteru HDInsight Hadoop.
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>Přizpůsobení Presto instalace na clusteru HDInsight
 
-Po instalaci Presto na clusteru HDInsight Hadoop, můžete přizpůsobit instalaci provést změny, jako aktualizace nastavení paměti, změnit konektorů, atd. To uděláte podle následujících kroků.
+Chcete-li přizpůsobit instalace, použijte následující kroky:
 
 1. Pomocí SSH se připojte k headnode clusteru HDInsight, která má nainstalovanou Presto:
    
@@ -165,12 +163,12 @@ Po instalaci Presto na clusteru HDInsight Hadoop, můžete přizpůsobit instala
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>Generovat srovnávacího testu data pro clustery služby HDInsight se systémem Presto
 
-TPC DS je oborový standard pro měření výkonu systémů mnoho rozhodnutí podpory, včetně systémy velkých objemů dat. Můžete Presto v clusterech HDInsight pro generování dat a vyhodnotit, jak se porovnává s vlastními daty srovnávacího testu HDInsight. Další informace najdete v tématu [zde](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md).
+TPC DS je oborový standard pro měření výkonu systémů mnoho rozhodnutí podpory, včetně systémy velkých objemů dat. Presto můžete použít pro generování dat a vyhodnotit, jak se porovnává s vlastními daty srovnávacího testu HDInsight. Další informace najdete v tématu [zde](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md).
 
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Nainstalovat a používat Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). HUE je webové uživatelské rozhraní, které usnadňuje vytvoření, spuštění a uložte úlohy Pig a Hive, a také procházet výchozí úložiště pro vaše HDInsight clusteru.
+* [Nainstalovat a používat Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). HUE je webové uživatelské rozhraní, které umožňuje snadné vytvoření, spuštění a uložte Pig a Hive úlohy.
 
 * [Nainstalujte Giraph clustery HDInsight](hdinsight-hadoop-giraph-install-linux.md). Přizpůsobení clusteru použijte k instalaci Giraph clusterů systému HDInsight Hadoop. Giraph umožňuje provádět grafu zpracování pomocí Hadoop a lze použít s Azure HDInsight.
 

@@ -1,23 +1,23 @@
 ---
 title: Architektura lambda s Azure Cosmos DB a HDInsight (Apache Spark) | Microsoft Docs
-description: "Tento článek popisuje, jak implementace architektury lambda pomocí Azure Cosmos DB, HDInsight a Spark"
-keywords: lambda-architecture
+description: Tento článek popisuje, jak implementace architektury lambda pomocí Azure Cosmos DB, HDInsight a Spark
+keywords: Lambda – architektura
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: dennyglee
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: 273aeae9-e31c-4a43-b216-5751c46f212e
 ms.service: cosmos-db
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: denlee
-ms.openlocfilehash: f88f3fb05495b0f3330d5a4cde7718fe89b2f694
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9c1a8c212fbacde9fbf69fdf9bf72ed2393786db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementace architektury lambda na platformě Azure 
 
@@ -43,7 +43,7 @@ Architektura lambda je obecný, škálovatelná a odolný proti chybám data arc
 
 Zdroj: http://lambda-architecture.net/
 
-Základní zásady architektury lambda jsou popsané v předchozím obrázku jako za [https://lambda-architecture.net](http://lambda-architecture.net/).
+Základní zásady architektury lambda jsou popsané v předchozím obrázku jako za [ https://lambda-architecture.net ](http://lambda-architecture.net/).
 
  1. Všechny **data** je vložena do *i* *vrstvy batch* a *rychlost vrstvy*.
  2. **Batch vrstvy** má hlavní datovou sadu (neměnné, připojovacího sadu dat ve formátu raw) a předem vypočítá zobrazení dávky.

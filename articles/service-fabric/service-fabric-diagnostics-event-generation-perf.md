@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
@@ -30,14 +30,14 @@ Pro počítače v clusteru vezměte v úvahu shromažďování následující č
 
 | Kategorie čítače | Název čítače |
 | --- | --- |
-| PhysicalDisk(per Disk) | Střední Délka fronty disku pro čtení |
-| PhysicalDisk(per Disk) | Střední Délka fronty disku zápisu |
-| PhysicalDisk(per Disk) | Střední Doba disku/čtení |
-| PhysicalDisk(per Disk) | Střední Doba disku/zápis |
-| PhysicalDisk(per Disk) | Čtení disku/s |
-| PhysicalDisk(per Disk) | Bajty čtení z disku/s |
-| PhysicalDisk(per Disk) | Zápis disku/s |
-| PhysicalDisk(per Disk) | Bajty zapisování na disk/s |
+| Fyzický disk (na disku) | Střední Délka fronty disku pro čtení |
+| Fyzický disk (na disku) | Střední Délka fronty disku zápisu |
+| Fyzický disk (na disku) | Střední Doba disku/čtení |
+| Fyzický disk (na disku) | Střední Doba disku/zápis |
+| Fyzický disk (na disku) | Čtení disku/s |
+| Fyzický disk (na disku) | Bajty čtení z disku/s |
+| Fyzický disk (na disku) | Zápis disku/s |
+| Fyzický disk (na disku) | Bajty zapisování na disk/s |
 | Memory (Paměť) | Počet MB k dispozici |
 | Soubor stránkování | % Využití |
 | Processor(Total) | % Času procesoru |
@@ -64,7 +64,7 @@ Shromážděte následující čítače, pokud nasazujete služeb .NET do cluste
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet potvrzených bajtů |
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet vyhrazené bajtů |
 | Využívání paměti rozhraním .NET CLR (pro službu) | Počet bajtů ve všech haldách |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 0 |
+| Využívání paměti rozhraním .NET CLR (pro službu) | Počet úklidů 0 |
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 1 |
 | Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 2 |
 | Využívání paměti rozhraním .NET CLR (pro službu) | Čas |
@@ -75,7 +75,7 @@ Service Fabric generuje vyžadovat značné množství vlastní čítače výkon
 
 V aplikacích nasazujete do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric spolehlivé aktéři diagnostiky](service-fabric-reliable-actors-diagnostics.md)).
 
-Pokud používáte spolehlivé služby, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítače, které mají shromažďovat čítače z. 
+Pokud používáte vzdálenou komunikaci služby, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítače, které mají shromažďovat čítače z. 
 
 Pokud používáte spolehlivé kolekcí, doporučujeme přidání `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` ke shromažďování latenci průměrná potvrzení za metrika transakce.
 

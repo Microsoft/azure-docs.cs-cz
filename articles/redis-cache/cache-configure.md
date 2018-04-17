@@ -1,6 +1,6 @@
 ---
 title: Postup konfigurace Azure Redis Cache | Microsoft Docs
-description: "Rady pro pochopení výchozí konfiguraci Redis pro Azure Redis Cache a informace o konfiguraci vaší instance služby Azure Redis Cache"
+description: Rady pro pochopení výchozí konfiguraci Redis pro Azure Redis Cache a informace o konfiguraci vaší instance služby Azure Redis Cache
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Postup konfigurace Azure Redis Cache
 Toto téma popisuje konfigurace, které jsou k dispozici pro vaše instance služby Azure Redis Cache. Toto téma obsahuje také výchozí konfigurace serveru Redis pro instance služby Azure Redis Cache.
@@ -45,7 +45,7 @@ Můžete zobrazit a nakonfigurovat následující nastavení pomocí **prostřed
 * [Nastavení](#settings)
     * [Přístupové klávesy](#access-keys)
     * [Upřesnit nastavení](#advanced-settings)
-    * [Redis Cache Advisor](#redis-cache-advisor)
+    * [Advisor mezipaměti redis](#redis-cache-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru redis](#cluster-size)
     * [Trvalosti dat redis](#redis-data-persistence)
@@ -79,7 +79,7 @@ Klikněte na tlačítko **protokol aktivit** zobrazíte akcích provedených v m
 
 ### <a name="access-control-iam"></a>Řízení přístupu (IAM)
 
-**Přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) na portálu Azure. Tato konfigurace pomáhá organizacím, které splňují požadavky na správu jejich přístup, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-configure.md).
+**Přístup k ovládacímu prvku (IAM)** části poskytuje podporu pro řízení přístupu na základě role (RBAC) na portálu Azure. Tato konfigurace pomáhá organizacím, které splňují požadavky na správu jejich přístup, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="tags"></a>Značky
 
@@ -97,7 +97,7 @@ Klikněte na tlačítko **Diagnostikujte a řešení problémů** poskytované s
 
 * [Přístupové klávesy](#access-keys)
 * [Upřesnit nastavení](#advanced-settings)
-* [Redis Cache Advisor](#redis-cache-advisor)
+* [Advisor mezipaměti redis](#redis-cache-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru redis](#cluster-size)
 * [Trvalosti dat redis](#redis-data-persistence)
@@ -170,7 +170,7 @@ Další informace najdete v tématu [Redis oznámení Keyspace](http://redis.io/
 
 
 <a name="recommendations"></a>
-## <a name="redis-cache-advisor"></a>Advisor mezipaměti redis
+## <a name="redis-cache-advisor"></a>Redis Cache Advisor
 **Redis Cache Advisor** zobrazuje doporučení pro mezipaměť. Během normálních operací zobrazí se žádná doporučení. 
 
 ![Doporučení](./media/cache-configure/redis-cache-no-recommendations.png)
@@ -233,7 +233,7 @@ Další informace najdete v tématu [postup konfigurace trvalosti pro mezipamě�
 > 
 > 
 
-### <a name="schedule-updates"></a>Aktualizace plánu
+### <a name="schedule-updates"></a>Plán aktualizací
 **Naplánovat aktualizace** okno umožňuje určit časové období údržby pro aktualizace serveru Redis ke svojí mezipaměti. 
 
 > [!IMPORTANT]
@@ -241,7 +241,7 @@ Další informace najdete v tématu [postup konfigurace trvalosti pro mezipamě�
 > 
 > 
 
-![Aktualizace plánu](./media/cache-configure/redis-schedule-updates.png)
+![Plán aktualizací](./media/cache-configure/redis-schedule-updates.png)
 
 Zadejte časové období údržby, zkontrolujte požadované dny a zadejte hodina spouštění údržby okna pro každý den a klikněte na tlačítko **OK**. Všimněte si, že časového období údržby se ve standardu UTC. 
 
@@ -290,7 +290,7 @@ Klikněte na tlačítko **vlastnosti** zobrazíte informace o mezipaměti, včet
 ### <a name="locks"></a>Zámky
 **Zamkne** části umožňuje zamknout předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-lock-resources.md).
 
-### <a name="automation-script"></a>Skriptu pro automatizaci
+### <a name="automation-script"></a>Automatizační skript
 
 Klikněte na tlačítko **skriptu pro automatizaci** sestavení a exportovat šablonu vaše nasazené prostředky pro budoucí nasazení. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablony Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -343,10 +343,10 @@ Restartovat jeden nebo více uzlů svojí mezipaměti, vyberte požadovaný uzel
 * [Pravidla výstrah](#alert-rules)
 * [Diagnostika](#diagnostics)
 
-### <a name="redis-metrics"></a>Metriky pro redis
+### <a name="redis-metrics"></a>Metrika mezipaměti Redis
 Klikněte na tlačítko **Redis metriky** k [metriky zobrazit](cache-how-to-monitor.md#view-cache-metrics) ke svojí mezipaměti.
 
-### <a name="alert-rules"></a>Pravidla výstrah
+### <a name="alert-rules"></a>Pravidla upozornění
 
 Klikněte na tlačítko **výstrah pravidla** můžete konfigurovat upozornění na základě metriky pro Redis Cache. Další informace najdete v tématu [výstrahy](cache-how-to-monitor.md#alerts).
 
@@ -362,7 +362,7 @@ Ve výchozím nastavení, mezipaměti metriky v Azure monitorování jsou [uchov
 ## <a name="support--troubleshooting-settings"></a>Podporovat & řešení potíží s nastavení
 Nastavení v **podpory a řešení potíží s** části poskytují možnosti pro řešení problémů s mezipamětí.
 
-![Podpora + řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Podpora a řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Stav prostředků](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
@@ -512,6 +512,6 @@ Mezipaměti můžete přesunout do nového předplatného kliknutím **přesunou
 
 Informace o přesun prostředků z jedné skupiny prostředků do jiné a z jedno předplatné do druhého, najdete v části [přesunutím prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o práci s příkazy Redis najdete v tématu [jak můžete spouštět příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)
 

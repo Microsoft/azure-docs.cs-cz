@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse pomocí Azure Machine Learning | Microsoft Docs"
-description: "Kurz pro používání Azure Machine Learning s Azure SQL Data Warehousem pro vývoj řešení."
+title: SQL Data Warehouse pomocí Azure Machine Learning | Microsoft Docs
+description: Kurz pro používání Azure Machine Learning s Azure SQL Data Warehousem pro vývoj řešení.
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>SQL Data Warehouse pomocí Azure Machine Learning
 Azure Machine Learning je plně spravovaná prediktivní analýzy služba, která můžete použít k vytvoření prediktivní modely pro vaše data v SQL Data Warehouse a pak publikovat jako připravené využívají webové služby. Můžete seznámíte se základy prediktivní analýzy a strojového učení načtením [Úvod do strojového učení na platformě Azure][Introduction to Machine Learning on Azure].  Můžete pak zjistíte, jak k vytváření, trénování, stanovení skóre a otestování machine learning pomocí modelu [vytvořit experimentu kurzu][Create experiment tutorial].
@@ -109,7 +109,7 @@ Vyberte modul, zapisovače a vyplňte v podokně Vlastnosti.
 1. Spusťte experiment kliknutím na tlačítko spustit pod plátnem experimentu.
 2. Až se experiment dokončí, bude mít všechny moduly zelená značka zaškrtnutí označující, že se úspěšně dokončila.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse][SQL Data Warehouse development overview].
 
 <!--Image references-->

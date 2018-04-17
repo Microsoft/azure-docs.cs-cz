@@ -1,12 +1,12 @@
 ---
-title: "Začínáme s pomocí ukázky"
-description: "V tomto článku jsme budete seznámí Začínáme ukázce get kolekce pracovních prostorů Power BI."
+title: Začínáme s pomocí ukázky
+description: V tomto článku jsme budete seznámí Začínáme ukázce get kolekce pracovních prostorů Power BI.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 9049f95c9f81c0217c96469a45561b6cd0b33ae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4daa675092bed1788025e7e3f7e7e11d02ef1671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
 
@@ -143,7 +143,7 @@ Použití běžných server a databáze atributy selhání. Příklad: Server=tc
 
 | Část | Popis |
 | --- | --- |
-| Název |Název sestavy. |
+| Nadpis |Název sestavy. |
 | Řetězce dotazu |Odkaz na ID sestavy. |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -171,7 +171,7 @@ Report.cshtml: Nastavte **Model.AccessToken**a ve výrazu Lambda **PowerBIReport
         @Html.PowerBIReportFor(m => m.Report, new { style = "height:85vh" })
     </div>
 
-### <a name="controller"></a>Řadiče
+### <a name="controller"></a>Kontroler
 
 **DashboardController.cs**: vytvoří předávání PowerBIClient **tokenu aplikace**. Token JSON Web Token (JWT) se generují z **podpisový klíč** získat **pověření**. **Pověření** slouží k vytvoření instance **PowerBIClient**. Až budete mít instanci **PowerBIClient**, můžete volat GetReports() a GetReportsAsync().
 
@@ -254,7 +254,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > [!NOTE]
 > V řetězci {tableName/fieldName} nesmí být mezery ani speciální znaky. Na místo položky {FieldValue} je možné vložit jednu hodnotu představující kategorii.  
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Běžné scénáře kolekce Microsoft Power BI pracovních prostorů](scenarios.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  

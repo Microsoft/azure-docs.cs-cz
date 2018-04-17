@@ -1,24 +1,20 @@
 ---
-title: "Návrh pokyny pro replikované tabulky – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Doporučení k návrhu replikovaných tabulek v Azure SQL Data Warehouse schéma."
+title: Návrh pokyny pro replikované tabulky – Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení k návrhu replikovaných tabulek v Azure SQL Data Warehouse schéma.
 services: sql-data-warehouse
-documentationcenter: NA
 author: ronortloff
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 10/23/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/11/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 271b832f329e33b68f60fbc62005c6ee36bafe69
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro používání replikovaných tabulek v Azure SQL Data Warehouse
 Tento článek obsahuje doporučení pro návrh replikovaných tabulek v SQL Data Warehouse schéma. Použijte tato doporučení pro zlepšení výkonu dotazů, protože se sníží složitost dat přesouvání a dotazu.
@@ -84,7 +80,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Převést stávající tabulky pomocí kruhového dotazování na replikované tabulky
 Pokud již máte kruhového dotazování tabulky, doporučujeme převodu na replikované tabulky, pokud splňují s kritérii uvedených v tomto článku. Replikované tabulky zlepšit výkon na kruhového dotazování tabulky, protože se vyhnete nutnosti pro přesun dat.  Přesun dat pomocí kruhového dotazování tabulky vždy vyžaduje pro spojení. 
 
-Tento příklad používá [funkce CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ke změně v tabulce DimSalesTerritory replikované tabulky. Tento příklad funguje bez ohledu na to, jestli je DimSalesTerritory distribuovat algoritmu hash nebo kruhového dotazování.
+Tento příklad používá [funkce CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ke změně v tabulce DimSalesTerritory replikované tabulky. Tento příklad funguje bez ohledu na to, jestli je DimSalesTerritory distribuovat algoritmu hash nebo kruhového dotazování.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -112,7 +108,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Příklad výkonu dotazu, kruhové dotazování versus replikovat 
 
-Replikované tabulky nevyžaduje žádné přesun dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu. Pokud tabulky dimenzí distribuované kruhového dotazování, a připojte zkopíruje tabulce dimenze v plném rozsahu na každém výpočetním uzlu. Plán dotazu pro přesun dat, obsahuje operace názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a je eliminována použití replikované tabulky. Chcete-li zobrazit kroky plán dotazu, použijte [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
+Replikované tabulky nevyžaduje žádné přesun dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu. Pokud tabulky dimenzí distribuované kruhového dotazování, a připojte zkopíruje tabulce dimenze v plném rozsahu na každém výpočetním uzlu. Plán dotazu pro přesun dat, obsahuje operace názvem BroadcastMoveOperation. Tento typ operace přesunu dat zpomalí výkon dotazů a je eliminována použití replikované tabulky. Chcete-li zobrazit kroky plán dotazu, použijte [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) zobrazení katalogu systému. 
 
 Například v následujícím dotazu pro schéma AdventureWorks ` FactInternetSales` tabulka je distribuovat algoritmu hash. `DimDate` a `DimSalesTerritory` tabulky jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej v Severní Americe pro fiskálního roku 2004:
  
@@ -140,7 +136,7 @@ SQL Data Warehouse implementuje replikované tabulky udržováním hlavní verze
 
 Znovu sestaví je potřeba po:
 - Data jsou načíst nebo upravit
-- Datový sklad je škálovat na jiný [úrovni služby](performance-tiers.md#service-levels)
+- Datový sklad je škálovat na jinou úroveň
 - Aktualizace definice tabulky
 
 Znovu sestaví nejsou nutné po:
@@ -178,7 +174,7 @@ Tento vzor zatížení například načte data ze čtyř zdrojů, ale pouze vyvo
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Znovu sestavte replikované tabulky po zatížení batch
 Aby dobu provádění konzistentní dotazy, doporučujeme vynutit aktualizaci replikované tabulky po batch zatížení. Jinak hodnota první dotaz musí počkat tabulky, které chcete aktualizovat, která zahrnuje nové sestavení indexů. V závislosti na velikosti a počtu replikované tabulky vliv může být významný dopad na výkon.  
 
-Tento dotaz používá [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV seznam replikované tabulky, která byla upravena, ale není znovu sestavit.
+Tento dotaz používá [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV seznam replikované tabulky, která byla upravena, ale není znovu sestavit.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -197,11 +193,11 @@ Chcete-li vynutit opětovném sestavení, spustíte následující příkaz pro 
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 Pokud chcete vytvořit replikované tabulky, použijte jednu z těchto příkazů:
 
-- [Vytvoření tabulky (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [Vytvoření TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [Vytvoření tabulky (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [Vytvoření TABLE AS SELECT (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Přehled distribuované tabulek, najdete v tématu [distribuované tabulky](sql-data-warehouse-tables-distribute.md).
 

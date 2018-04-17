@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření sítě skupiny zabezpečení - portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí portálu Azure."
+title: Vytvoření sítě skupiny zabezpečení - portálu Azure | Microsoft Docs
+description: Zjistěte, jak vytvořit a nasadit skupin zabezpečení sítě pomocí portálu Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>Vytvoření sítě skupiny zabezpečení pomocí portálu Azure
 
@@ -92,6 +92,6 @@ K vytvoření **NSG back-end** NSG a přidružte ji k **back-end** podsíť, pou
 3. Opakujte kroky v [přidružení skupiny NSG k podsíti front-endu](#Associate-the-NSG-to-the-FrontEnd-subnet) přidružit **NSG back-end** NSG k **back-end** podsítě.
 
 ## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [spravovat existující skupiny Nsg](virtual-network-manage-nsg-arm-portal.md)
+* Zjistěte, jak [spravovat existující skupiny Nsg](manage-network-security-group.md)
 * [Povolit protokolování](virtual-network-nsg-manage-log.md) pro skupiny Nsg.
 

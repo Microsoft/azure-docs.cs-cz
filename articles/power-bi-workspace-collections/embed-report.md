@@ -1,26 +1,26 @@
 ---
-title: "Vložení sestavy v Azure Power BI prostoru kolekcích | Microsoft Docs"
-description: "Postup vložení sestavy, který je v Power BI prostoru kolekce do vaší aplikace."
+title: Vložení sestavy v Azure Power BI prostoru kolekcích | Microsoft Docs
+description: Postup vložení sestavy, který je v Power BI prostoru kolekce do vaší aplikace.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy v Power BI prostoru kolekce
 
@@ -116,7 +116,7 @@ Pokud používáte vložení tokeny, můžete omezit využití prostředků, kte
 
 ## <a name="embed-using-javascript"></a>Vložení pomocí jazyka JavaScript
 
-Až budete mít přístupový token a ID sestavy, jsme vložení sestavy pomocí jazyka JavaScript. To je nutné nainstalovat NuGet [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl právě bude https://embedded.powerbi.com/appTokenReportEmbed.
+Až budete mít přístupový token a ID sestavy, jsme vložení sestavy pomocí jazyka JavaScript. To je nutné nainstalovat NuGet [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Právě embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
@@ -148,7 +148,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 Sestava bude automaticky vložený podle velikosti svého kontejneru. Pokud chcete přepsat výchozí velikost vložené položky, stačí přidáte třídu atributu nebo vložené stylů CSS pro šířku a výšku.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Začínáme s ukázkou](get-started-sample.md)  
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  

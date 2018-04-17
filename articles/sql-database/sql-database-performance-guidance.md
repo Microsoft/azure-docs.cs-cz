@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c9a04f6ebbca60e969d608e0ad92839b5e04d772
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Ladění výkonu v Azure SQL Database
 
@@ -28,7 +28,7 @@ Tyto jsou ruční metody, protože je potřeba rozhodnout se, jak [úrovních sl
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zvýšení úrovně výkonu databáze
 
-Azure SQL Database nabízí čtyři [úrovních služeb](sql-database-service-tiers.md) ze kterých si můžete vybrat: Basic, Standard a Premium (výkonu se měří v jednotky propustnosti databáze, nebo [Dtu](sql-database-what-is-a-dtu.md). Každé úrovni služeb výhradně izoluje prostředky, můžete použít SQL database a zaručuje, předvídatelný výkon této úrovně služeb. V tomto článku jsme nabízí pokyny, které vám pomohou vybrat úroveň služby pro aplikaci. Můžeme také popisují způsoby, abyste mohli vyladit aplikace k plnému využití z databáze SQL Azure.
+Databáze SQL Azure nabízí dva modely nákupu, na základě vCore nákupní model a na základě v základní nákupní model. Každý model obsahuje více [úrovních služeb](sql-database-service-tiers.md) ze kterých si můžete vybrat. Každé úrovni služeb výhradně izoluje prostředky, můžete použít SQL database a zaručuje, předvídatelný výkon této úrovně služeb. V tomto článku jsme nabízí pokyny, které vám pomohou vybrat úroveň služby pro aplikaci. Můžeme také popisují způsoby, abyste mohli vyladit aplikace k plnému využití z databáze SQL Azure.
 
 > [!NOTE]
 > Tento článek se zaměřuje na pokyny výkonu pro izolované databáze ve službě Azure SQL Database. Pokyny výkonu související s elastické fondy najdete v tématu [cenové a výkonové požadavky pro elastické fondy](sql-database-elastic-pool-guidance.md). Upozorňujeme ale, můžete použít řadu vyladění doporučení v tomto článku pro databáze v elastickém fondu a získejte výhody podobné výkonu.

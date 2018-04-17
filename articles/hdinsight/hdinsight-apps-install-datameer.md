@@ -1,26 +1,24 @@
 ---
-title: "Instalace publikované aplikace – Datameer - Azure HDInsight | Microsoft Docs"
-description: "Nainstalovat a používat aplikace Hadoop Datameer třetích stran."
+title: Instalace publikované aplikace – Datameer - Azure HDInsight | Microsoft Docs
+description: Nainstalovat a používat aplikace Hadoop Datameer třetích stran.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8a898b4f82cf2d7e05e8c3895e5eddd8cf02b173
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 5008056ae2274d058706649f286b91b71feadc27
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---datameer"></a>Nainstalujte publikované aplikace – Datameer
 
@@ -62,7 +60,7 @@ Následující kroky ukazují ukázka "Hello World".
 
 1. [Stažení ukázky CSV](https://datameer.box.com/s/wzzw27za3agic4yjj8zrn6vfrph0ppnf).
 
-2. Klikněte  **+**  přihlásit na řídicím panelu Datameer a klikněte na **nahrát soubor**.
+2. Klikněte **+** přihlásit na řídicím panelu Datameer a klikněte na **nahrát soubor**.
 
     ![Nahrání souboru](./media/hdinsight-apps-install-datameer/upload.png)
 
@@ -72,15 +70,15 @@ Následující kroky ukazují ukázka "Hello World".
 
 4. Název souboru **Hello, World** pod novou složku. Přejmenujte do nové složky jako "Ukázkový". Vyberte **Uložit**.
 
-    ![Uložit](./media/hdinsight-apps-install-datameer/save.png)
+    ![Uložení](./media/hdinsight-apps-install-datameer/save.png)
 
-5. Klikněte  **+**  přihlásit jednou a vybrat **sešitu** k vytvoření nového sešitu pro data.
+5. Klikněte **+** přihlásit jednou a vybrat **sešitu** k vytvoření nového sešitu pro data.
 
     ![Přidat sešitu](./media/hdinsight-apps-install-datameer/add-workbook.png)
 
 6. Rozbalte **Data** složky, **FileUploads**, pak se **ukázku** složky, které jste vytvořili při ukládání souboru "Hello World". Vyberte **Hello, World** formuláři seznam souborů a pak klikněte na **přidat Data**.
 
-    ![Uložit](./media/hdinsight-apps-install-datameer/select-file.png)
+    ![Uložení](./media/hdinsight-apps-install-datameer/select-file.png)
 
 7. Zobrazit data načíst v rozhraní tabulky. Chcete-li vybrat podmnožinu dat, vyberte **filtru** tlačítka na panelu nástrojů.
 
@@ -96,7 +94,7 @@ Následující kroky ukazují ukázka "Hello World".
 
     ![Sešit uložit](./media/hdinsight-apps-install-datameer/save-workbook.png)
 
-11. Datameer poskytuje výkonné vizualizace nástroje. Pokud chcete zobrazit data, vytvořte Infografice. Vyberte  **+**  přihlásit na řídicím panelu a pak vyberte **Infografice**.
+11. Datameer poskytuje výkonné vizualizace nástroje. Pokud chcete zobrazit data, vytvořte Infografice. Vyberte **+** přihlásit na řídicím panelu a pak vyberte **Infografice**.
 
     ![Přidat Infografice](./media/hdinsight-apps-install-datameer/infographic-button.png)
 

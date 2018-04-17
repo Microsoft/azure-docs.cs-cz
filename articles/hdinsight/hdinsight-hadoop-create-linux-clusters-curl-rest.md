@@ -1,8 +1,8 @@
 ---
-title: "Vytváření clusterů systému Hadoop pomocí rozhraní API REST Azure - Azure | Microsoft Docs"
-description: "Naučte se vytvářet clustery HDInsight odesláním šablon Azure Resource Manageru do rozhraní API REST Azure."
+title: Vytváření clusterů systému Hadoop pomocí rozhraní API REST Azure - Azure | Microsoft Docs
+description: Naučte se vytvářet clustery HDInsight odesláním šablon Azure Resource Manageru do rozhraní API REST Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů systému Hadoop pomocí REST API služby Azure
 
@@ -34,13 +32,13 @@ Rozhraní REST API Azure umožňuje provádět operace správy na služby hostov
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]
-> Kroky v tomto dokumentu pomocí [curl (https://curl.haxx.se/)](https://curl.haxx.se/) nástroj ke komunikaci s REST API služby Azure.
+> Kroky v tomto dokumentu pomocí [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) nástroj ke komunikaci s REST API služby Azure.
 
 ## <a name="create-a-template"></a>Vytvoření šablony
 
 Šablony Azure Resource Manageru jsou dokumenty JSON, které popisují **skupiny prostředků** a všechny prostředky v ní (například HDInsight.) Tento přístup na základě šablon můžete zadat prostředky, které potřebujete pro HDInsight v jedné šabloně.
 
-V následujícím dokumentu JSON je fúze ze souborů šablony a parametry [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří cluster se systémem Linux pomocí hesla pro zabezpečení účtu uživatele SSH.
+V následujícím dokumentu JSON je fúze ze souborů šablony a parametry [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), která vytvoří cluster se systémem Linux pomocí hesla pro zabezpečení účtu uživatele SSH.
 
    ```json
    {

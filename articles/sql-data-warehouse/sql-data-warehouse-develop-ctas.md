@@ -1,33 +1,32 @@
 ---
-title: "Vytvoření tabulky jako vyberte (funkce CTAS) v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro kódování s tabulkou vytvořit jako SELECT (funkce CTAS) v Azure SQL Data Warehouse na vývoj řešení."
+title: Vytvoření TABLE AS SELECT (funkce CTAS) v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro psaní kódu s použitím příkazu Vytvořit tabulku AS vyberte funkce CTAS () v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 68ac9a94-09f9-424b-b536-06a125a653bd
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: queries
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: a885ba4f455fecd158696faaee38c83c1e4ec0bf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: cb36cb7d3dd652608620283fe2ea2e6649406be5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>Vytvoření tabulky jako vyberte (funkce CTAS) v SQL Data Warehouse
-Vytvoření tabulky jako vyberte nebo `CTAS` je jedním z nejdůležitějších funkcích T-SQL k dispozici. Je plně parallelized operaci, která vytvoří novou tabulku ve výstupu příkazu SELECT. `CTAS`je nejjednodušší a nejrychlejší způsob, jak vytvořit kopii tabulky. Tento dokument obsahuje příklady a osvědčené postupy pro `CTAS`.
+# <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Pomocí CREATE TABLE AS SELECT (funkce CTAS) v Azure SQL Data Warehouse
+Tipy pro psaní kódu s použitím příkazu Vytvořit tabulku AS vyberte funkce CTAS () T-SQL v Azure SQL Data Warehouse na vývoj řešení.
+
+## <a name="what-is-create-table-as-select-ctas"></a>Co je vytvoření tabulky AS vyberte funkce CTAS ()?
+
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) nebo příkaz funkce CTAS je jedním z nejdůležitějších funkcích T-SQL, která je k dispozici. Je paralelní operace, která vytvoří novou tabulku ve výstupu příkazu SELECT. CTASD je nejjednodušší a nejrychlejší způsob, jak vytvořit kopii tabulky. 
 
 ## <a name="selectinto-vs-ctas"></a>VYBERTE... DO vs. CTAS
-Můžete zvážit `CTAS` jako extrémně účtovat verze `SELECT..INTO`.
+Můžete zvážit funkce CTAS jako extrémně účtovat verze [vyberte... DO](/sql/t-sql/queries/select-into-clause-transact-sql) příkaz.
 
-Dole je příklad jednoduchou `SELECT..INTO` příkaz:
+Dole je příklad jednoduchý příkaz SELECT... DO:
 
 ```sql
 SELECT *
@@ -35,11 +34,11 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-V předchozím příkladu `[dbo].[FactInternetSales_new]` by se vytvořily jako ROUND_ROBIN distribuované tabulku s INDEXEM COLUMNSTORE v clusteru na něm jsou tyto výchozí hodnoty tabulky v Azure SQL Data Warehouse.
+V předchozím příkladu `[dbo].[FactInternetSales_new]` je vytvořen jako ROUND_ROBIN distribuované tabulku s INDEXEM COLUMNSTORE v clusteru, protože toto jsou výchozí hodnoty tabulky v Azure SQL Data Warehouse.
 
-`SELECT..INTO`ale neumožňuje změnit metodu distribuce nebo typ indexu v rámci operace. To je, kdy `CTAS` odeslán.
+VYBERTE... DO ale neumožňuje změnit metodu distribuce nebo typ indexu v rámci operace. Toto je, kde funkce CTAS odeslán.
 
-Chcete-li převést výše a `CTAS` je poměrně jednoduché:
+Chcete-li převést předchozí příklad pro funkce CTAS je poměrně jednoduché:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -54,7 +53,7 @@ FROM    [dbo].[FactInternetSales]
 ;
 ```
 
-S `CTAS` budete moci změnit rozdělení dat v tabulce, jakož i typu tabulky. 
+Pomocí funkce CTAS budete moci změnit rozdělení dat v tabulce, jakož i typu tabulky. 
 
 > [!NOTE]
 > Pokud se pouze pokoušíte změnit index v vaše `CTAS` operace a zdrojová tabulka je distribuovat algoritmu hash pak vaší `CTAS` operace provede nejlépe, pokud chcete zachovat stejné distribuční typ sloupce a data. Tím se vyhnete křížové distribuční přesun dat během operace, které je efektivnější.
@@ -62,7 +61,7 @@ S `CTAS` budete moci změnit rozdělení dat v tabulce, jakož i typu tabulky.
 > 
 
 ## <a name="using-ctas-to-copy-a-table"></a>Pomocí funkce CTAS zkopírujte tabulku
-Možná jedním z většiny běžných používá `CTAS` vytváří kopie tabulku, ve kterém můžete změnit DDL. Pokud třeba jste původně vytvořili tabulku jako `ROUND_ROBIN` a teď chcete ho změnit na tabulku rozdělit na sloupci, `CTAS` je, jak by sloupec distribuční změnit. `CTAS`lze také změnit typy rozdělení do oddílů, indexování nebo sloupec.
+Možná jedním z většiny běžných používá `CTAS` vytváří kopie tabulku, ve kterém můžete změnit DDL. Pokud třeba jste původně vytvořili tabulku jako `ROUND_ROBIN` a teď chcete ho změnit na tabulku rozdělit na sloupci, `CTAS` je, jak by sloupec distribuční změnit. `CTAS` lze také změnit typy rozdělení do oddílů, indexování nebo sloupec.
 
 Řekněme, že jste vytvořili tuto tabulku pomocí výchozí typ distribuce tohoto `ROUND_ROBIN` distribuované vzhledem k tomu, že žádný distribuční sloupec byl zadán v `CREATE TABLE`.
 
@@ -126,12 +125,12 @@ DROP TABLE FactInternetSales_old;
 ```
 
 > [!NOTE]
-> Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik.  Aby vám dotazy vracely co nejlepší výsledky, je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením nebo kdykoli, kdy v datech dojde k podstatným změnám.  Podrobné vysvětlení statistiky najdete v tématu [Statistika][Statistics] ve skupině témat věnovaných vývoji.
+> Azure SQL Data Warehouse zatím nepodporuje automatické vytváření ani automatickou aktualizaci statistik.  Aby vám dotazy vracely co nejlepší výsledky, je důležité, aby se statistiky vytvořily pro všechny sloupce všech tabulek po prvním načtením nebo kdykoli, kdy v datech dojde k podstatným změnám.  Podrobné vysvětlení statistiky najdete v tématu [statistiky] [statistiky] ve skupině témat věnovaných vývoji.
 > 
 > 
 
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>Pomocí funkce CTAS obejít nepodporované funkce
-`CTAS`Můžete také použít obejít počet níže uvedené nepodporované funkce. To může být často na win/win situaci, protože pouze váš kód bude kompatibilní, ale je často spustí rychleji SQL Data Warehouse. Toto je v důsledku plně parallelized návrh. Mezi scénáře, které může být kolem pracovali funkce CTAS patří:
+Funkce CTAS lze také obejít počet níže uvedené nepodporované funkce. To může být často na win/win situaci, protože pouze váš kód bude kompatibilní, ale je často spustí rychleji SQL Data Warehouse. Toto je v důsledku plně parallelized návrh. Mezi scénáře, které může být kolem pracovali funkce CTAS patří:
 
 * ANSI spojení na aktualizace
 * ANSI spojení na odstranění
@@ -246,9 +245,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 ```
 
 ## <a name="replace-merge-statements"></a>Nahraďte příkazy merge
-Příkazy Merge lze nahradit, alespoň v rámci, pomocí `CTAS`. Může konsolidovat `INSERT` a `UPDATE` do jednoho příkazu. Odstraněné záznamy by třeba ukončit vypnout v druhém příkazu.
+Příkazy Merge lze nahradit, alespoň v rámci, pomocí funkce CTAS. Do jednoho příkazu může konsolidovat úlohy INSERT a aktualizace. Odstraněné záznamy by třeba ukončit vypnout v druhém příkazu.
 
-Příklad `UPSERT` je k dispozici následující:
+Následuje příklad UPSERT:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -329,13 +328,13 @@ from ctas_r
 
 Hodnota uložená pro výsledek se liší. Jako trvalé hodnoty ve sloupci Výsledek se používá v jiné výrazy se změní i větších chyba.
 
-![][1]
+![Funkce CTAS výsledky](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
 To je zvlášť důležité pro data migrace. I když je pravděpodobně přesnější druhého dotazu došlo k potížím. Data byla odlišná ve srovnání s zdrojovém systému a který vede k otázky integrity migrace. Toto je jedna z těchto výjimečných případech, kdy "nesprávný" odpověď je ve skutečnosti ten správný!
 
 Z důvodu, že vidíte tento rozdíl mezi dvěma výsledky je dolů implicitní typ přetypování. V prvním příkladu definuje tabulky definice sloupce. Když je vložit řádek dojde k konverzi implicitní typu. V druhém příkladu není žádný typ implicitní převod jako výraz definuje datový typ sloupce. Všimněte si také, že sloupec v druhém příkladu jako sloupec s možnou hodnotou Null byla definována zatímco v prvním příkladu má není. Při vytváření tabulky v první Nullable sloupce příklad byl explicitně definován. Ve druhém příkladu, který je právě bylo výrazu a ve výchozím nastavení to by způsobilo definici hodnotu NULL.  
 
-Chcete-li vyřešit tyto problémy musíte explicitně nastavit převodu typu a možnost použití hodnoty Null v `SELECT` část `CTAS` příkaz. V části Vytvoření tabulky nelze nastavit tyto vlastnosti.
+Chcete-li vyřešit tyto problémy musíte explicitně nastavit převodu typu a možnost použití hodnoty Null v části vyberte příkaz funkce CTAS. V části Vytvoření tabulky nelze nastavit tyto vlastnosti.
 
 Následující příklad ukazuje, jak opravit kód:
 
@@ -357,7 +356,7 @@ Je třeba počítat s následujícím:
 * Druhá část ISNULL je konstanta, tzn. 0
 
 > [!NOTE]
-> Pro možnost použití hodnoty Null, být správně nastavena je potřeba použít `ISNULL` a není `COALESCE`. `COALESCE`není deterministický funkce a tak výsledkem výrazu bude vždy s možnou hodnotou Null. `ISNULL`se liší. Je deterministický. Proto když druhou částí `ISNULL` funkce je konstanta, nebo literál pak bude výsledná hodnota není NULL.
+> Pro možnost použití hodnoty Null, být správně nastavena je důležité používat ISNULL a není COALESCE. Funkci COALESCE není deterministický funkce a tak výsledkem výrazu bude vždy s možnou hodnotou Null. ISNULL se liší. Je deterministický. Proto když druhou částí funkce ISNULL konstanta, nebo literál pak výsledná hodnota není NULL.
 > 
 > 
 
@@ -435,19 +434,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Můžete zobrazit proto konzistenci typu a udržování možnost použití hodnoty NULL vlastnosti funkce CTAS je vhodné engineering nejlepší. Pomáhá zachovat integritu do výpočtů a také zajistí, že přepnutí oddílu je možné.
 
-Naleznete na webu MSDN pro další informace o použití [funkce CTAS][CTAS]. Je jedním z nejdůležitějších příkazy v Azure SQL Data Warehouse. Ujistěte se, že rozumíte důkladně.
+Podrobnosti najdete [funkce CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) dokumentaci. Je jedním z nejdůležitějších příkazy v Azure SQL Data Warehouse. Ujistěte se, že rozumíte důkladně.
 
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-develop-ctas/ctas-results.png
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-
-<!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/library/mt204041.aspx
-
-<!--Other Web references-->

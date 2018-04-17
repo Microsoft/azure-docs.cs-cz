@@ -1,25 +1,25 @@
 ---
-title: "Vizualizace dat v reálném čase s daty ze snímačů z Azure IoT hub – Web Apps | Microsoft Docs"
-description: "Použijte funkci webové aplikace Microsoft Azure App Service k vizualizaci dat teploty a vlhkosti, který se shromažďují ze senzoru a odesílá do služby Iot hub."
+title: Vizualizace dat v reálném čase s daty ze snímačů z Azure IoT hub – Web Apps | Microsoft Docs
+description: Použijte funkci webové aplikace Microsoft Azure App Service k vizualizaci dat teploty a vlhkosti, který se shromažďují ze senzoru a odesílá do služby Iot hub.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "vizualizace dat reálném čase, vizualizace dat za provozu, vizualizace dat snímačů"
+tags: ''
+keywords: vizualizace dat reálném čase, vizualizace dat za provozu, vizualizace dat snímačů
 ms.assetid: e42b07a8-ddd4-476e-9bfb-903d6b033e91
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
-ms.author: xshi
-ms.openlocfilehash: 54a2defd6bfe2396e24584c686698d3215893cfd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 0edf72595f67dd9f6b33f9bfeaf4cd98405dc3ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Vizualizovat data snímačů v reálném čase ze služby Azure IoT hub pomocí funkce Web Apps služby Azure App Service
 

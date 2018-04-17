@@ -4,7 +4,7 @@ description: Další informace o SQL .NET Core API a sady SDK, včetně data vyd
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: f899b314-26ac-4ddb-86b2-bfdf05c2abf2
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b26a06f1dfba6124254f42c216891596b118d4d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 447c07a5a5e75c5f70a2310c596d52ce439f6033
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější v
 
 Azure Cosmos DB .NET Core SDK umožňuje vytvářet rychlé a napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace běžely na Windows, Mac a Linux. Nejnovější verzi Azure Cosmos DB .NET Core SDK je plně [Xamarin](https://www.xamarin.com) kompatibilní a umožňuje vytvářet aplikace, které cílí na iOS, Android a Mono (Linux).  
 
-### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
+### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
 
 Azure Cosmos DB .NET Core Preview SDK umožňuje vytvářet rychlé a napříč platformami [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace běžely na Windows, Mac a Linux.
 

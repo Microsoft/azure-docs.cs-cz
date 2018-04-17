@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 03/19/2018
 ms.author: raynew
-ms.openlocfilehash: b2c89a980411cac02f46bc91d53620bc94fa845b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bba52534c534ea33c2939d0d9b76b7b4138e13cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -37,7 +37,7 @@ Ujistěte se, že jste se zkopírovat a vložit správné informace. Chcete-li v
 2. Chcete-li spustit instalaci, poklikejte na stažený soubor.
 3. V instalačním programu na **úvodní** klikněte na tlačítko **Další**. Na **licenční podmínky** klikněte na tlačítko **souhlasím** tak, aby přijímal licence.
 4. V **cílovou složku**, zachovat, nebo upravit výchozí instalační složku > **Další**.
-5. V **možnosti instalace agenta**, vyberte **Azure Log Analytics (OMS)** > **Další**.
+5. V **možnosti instalace agenta**, vyberte **Azure Log Analytics** > **Další**.
 6. Klikněte na tlačítko **přidat** přidat nový pracovní prostor analýzy protokolů. Vložte projektu ID a klíč, který jste zkopírovali. Pak klikněte na tlačítko **Další**.
 7. Ověřte, zda agent může připojit k projektu. Pokud ne, ověřte nastavení. Pokud se mohou připojit agenta však nemůže kolekce, kontaktujte podporu.
 
@@ -62,7 +62,7 @@ Chcete-li povolit shromažďování dat výkonu diskových a síťových, změň
 
 **I nainstalovali agenty a vizualizaci závislostí použitý k vytvoření skupin. Nyní post převzetí služeb při selhání, na počítače zobrazit akci "Instalace agenta" místo "Zobrazení závislosti"**
 * POST plánované nebo neplánované převzetí služeb při selhání, na místní počítače jsou vypnuté a ekvivalentní počítače jsou spuštěné v Azure. Tyto počítače získat jinou adresu MAC. Se může získat jinou IP adresu založené na tom, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud MAC a IP adresy liší, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
-* Odeslat testovací převzetí služeb při selhání, místní počítače zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatel blokuje odchozí provoz OMS z těchto počítačů, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
+* Odeslat testovací převzetí služeb při selhání, místní počítače zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatel blokuje odchozí provoz analýzy protokolů z těchto počítačů, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
 
 
 ## <a name="troubleshoot-readiness-issues"></a>Řešení potíží s problémy připravenosti
@@ -134,7 +134,7 @@ K těmto potížím dochází u Collectoru verze nižší než 1.0.9.5. S těmit
 
 [Pokud chcete tyto potíže vyřešit, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates).
 
-### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
+### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 
 Nelze se připojit k systému vCenter Server "Servername.com:9443" kvůli chybě: koncový bod, naslouchá na https://Servername.com:9443/sdk , může přijímat zprávy.
 

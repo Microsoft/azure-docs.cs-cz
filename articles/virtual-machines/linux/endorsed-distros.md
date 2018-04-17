@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 7c41550d1fe9cf5981406d25599e51aa119eb697
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8ea768c6ba8b404978b78f2cbd272f98af3fa70b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Linux na distribuce schválené pro Azure
 Partneři poskytovat Linux bitové kopie v Azure Marketplace. Pracujeme s různé komunit Linux přidat i více typů schválené distribučního seznamu. Do té doby pro distribuce, které nejsou k dispozici z Marketplace, můžete vždy zahrnout vlastní Linux podle pokynů v tématu [vytvoření a nahrání virtuálního pevného disku obsahující operační systém Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/create-upload-generic).
@@ -27,19 +27,19 @@ Partneři poskytovat Linux bitové kopie v Azure Marketplace. Pracujeme s různ�
 ## <a name="supported-distributions-and-versions"></a>Podporované distribuce a verze
 Následující tabulka uvádí Linuxových distribucích a verzích, které jsou podporovány v Azure. Odkazovat na [podporu pro Linux bitové kopie v Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) podrobné informace o podpoře pro systémy Linux a technologií s otevřeným zdrojem v Azure.
 
-Linux integrační služby (LIS) ovladače pro Hyper-V a Azure jsou moduly jádra, které Microsoft přispívá přímo do nadřazeného jádra systému Linux.  Některé ovladače LIS jsou součástí distribuční jádra ve výchozím nastavení. Starší distribuce, které jsou založeny na Red Hat Enterprise (RHEL) / CentOS jsou k dispozici jako samostatný soubor ke stažení na [Linux Integration Services verze 4.1 pro Hyper-V](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409). V tématu [Linux jádra požadavky](create-upload-generic.md#linux-kernel-requirements) Další informace o ovladačích LIS.
+Linux integrační služby (LIS) ovladače pro Hyper-V a Azure jsou moduly jádra, které Microsoft přispívá přímo do nadřazeného jádra systému Linux.  Některé ovladače LIS jsou součástí distribuční jádra ve výchozím nastavení. Starší distribuce, které jsou založeny na Red Hat Enterprise (RHEL) / CentOS jsou k dispozici jako samostatný soubor ke stažení na [Linux integrační služby verzi 4.2 pro Hyper-V a Azure](https://www.microsoft.com/en-us/download/details.aspx?id=55106). V tématu [Linux jádra požadavky](create-upload-generic.md#linux-kernel-requirements) Další informace o ovladačích LIS.
 
 Azure Linux Agent je již předem nainstalován pro Azure Marketplace Image a je obvykle dostupná z úložiště balíčků pro distribuci. Zdrojový kód najdete na [Githubu](https://github.com/azure/walinuxagent).
 
   
 | Distribuce | Verze | Ovladače | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS stáhnout](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)<p>CentOS 6.4 +: V jádra |Balíček: V [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3 + 7.0 + |CentOS 6.3: [LIS stáhnout](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: V jádra |Balíček: V [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jádra systému |Zdrojový kód: [Githubu](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9 +, 8.2 + |Jádra systému |Balíček: V úložišti v části "příkaz waagent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1+|Jádra systému |Balíček:<p> pro 11 v [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložišti<br>pro 12 součástí modulu "Veřejného cloudu" v části "python agenta azure"<br/>Zdrojový kód: [Githubu](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 + |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1 +|Jádra systému |Balíček:<p> pro 11 v [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložišti<br>pro 12 součástí modulu "Veřejného cloudu" v části "python agenta azure"<br/>Zdrojový kód: [Githubu](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE přestupného 42.2 + |Jádra systému |Balíček: V [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložišti v části "python agenta azure" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |Jádra systému |Balíček: V úložišti v části "walinuxagent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 

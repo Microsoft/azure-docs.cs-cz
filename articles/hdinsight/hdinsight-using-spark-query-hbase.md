@@ -1,27 +1,25 @@
 ---
-title: "Používat ke čtení a zápisu dat HBase - Azure HDInsight Spark | Microsoft Docs"
-description: "Pomocí konektoru HBase Spark ke čtení a zápisu dat z clusteru Spark pro HBase cluster."
+title: Používat ke čtení a zápisu dat HBase - Azure HDInsight Spark | Microsoft Docs
+description: Pomocí konektoru HBase Spark ke čtení a zápisu dat z clusteru Spark pro HBase cluster.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: ccbcd1d9cb45da7076d73f71a2ed692e71816650
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: acad1058cbff2099a67603cc547a19d6cac022be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Používat Spark ke čtení a zápisu dat HBase
+# <a name="use-spark-to-read-and-write-hbase-data"></a>Použití Sparku ke čtení a zápisu dat HBase
 
 Apache HBase je dotazován obvykle s jeho nízké úrovně rozhraní API (kontroly, získá a PUT) nebo s použitím Phoenix syntaxí SQL. Apache také poskytuje Spark HBase konektor, který je pohodlnou a alternativní původce pro dotazování a upravit data ukládaná HBase.
 

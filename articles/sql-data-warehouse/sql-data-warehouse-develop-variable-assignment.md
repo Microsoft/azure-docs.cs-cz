@@ -1,40 +1,34 @@
 ---
-title: "Přiřazení proměnné v SQL Data Warehouse | Microsoft Docs"
-description: "Tipy pro přiřazení proměnné jazyka Transact-SQL v Azure SQL Data Warehouse na vývoj řešení."
+title: Přiřazení proměnné v Azure SQL Data Warehouse | Microsoft Docs
+description: Tipy pro přiřazení proměnné T-SQL v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 81ddc7cf-a6ba-4585-91a3-b6ea50f49227
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 012bc76950f212d69d26607c666e878b22015e70
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="assign-variables-in-sql-data-warehouse"></a>Přiřazení proměnné v SQL Data Warehouse
-Jsou nastaveny proměnné v SQL Data Warehouse pomocí `DECLARE` příkaz nebo `SET` příkaz.
-
-Všechny tyto způsoby perfektně platný nastavte hodnotu proměnné:
+---
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazení proměnné v Azure SQL Data Warehouse
+Tipy pro přiřazení proměnné T-SQL v Azure SQL Data Warehouse na vývoj řešení.
 
 ## <a name="setting-variables-with-declare"></a>Nastavení proměnné s DECLARE
-Inicializace proměnných s DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
+Jsou nastaveny proměnné v SQL Data Warehouse pomocí `DECLARE` příkaz nebo `SET` příkaz. Inicializace proměnných s DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-DECLARE můžete také nastavit více než jednu proměnnou najednou. Nemůžete použít `SELECT` nebo `UPDATE` k tomu:
+DECLARE můžete také nastavit více než jednu proměnnou najednou. Vyberte nebo aktualizaci nelze použít k následujícím:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +36,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použití proměnné v příkazu DECLARE stejné. Pro ilustraci bodem následující příklad je **není** povolena jako @p1 jak inicializovat a použít v příkazu DECLARE stejné. To bude mít za následek chybu.
+Nelze inicializovat a použití proměnné v příkazu DECLARE stejné. Pro ilustraci bod, následující příklad je **není** povolené od @p1 jak inicializovat a použít v příkazu DECLARE stejné. Následující příklad vrátí chybu.
 
 ```sql
 DECLARE @p1 int = 0
@@ -51,9 +45,9 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>Nastavení hodnot sadou
-Sada je velmi běžné metody pro nastavení jednu proměnnou.
+Sada je běžnou metodu pro nastavení jednu proměnnou.
 
-Všechny následující příklady jsou platné způsoby nastavení proměnné sadou:
+Následující příkazy jsou všechny platné způsoby, jak nastavit proměnnou sadou:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -62,19 +56,11 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Najednou můžete sadou nastavit pouze jednu proměnnou. Je ale, jak je vidět výše složené operátory povolená.
+Najednou můžete sadou nastavit pouze jednu proměnnou. Složené operátory jsou však povolený.
 
 ## <a name="limitations"></a>Omezení
 Vyberte nebo aktualizaci nelze použít pro přiřazení proměnné.
 
-## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj, najdete v části [přehled vývoje][development overview].
+## <a name="next-steps"></a>Další postup
+Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

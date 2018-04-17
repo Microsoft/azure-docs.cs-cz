@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>O nastavení konfigurace brány sítě VPN
 
@@ -79,9 +79,9 @@ New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>Změna velikosti oproti změna SKU
+###  <a name="resizechange"></a>Změna velikosti nebo změna SKU
 
-Změna velikosti brány SKU je poměrně snadné. Jako brána změní, budete mít velmi malé výpadku. Existují však pravidel ohledně Změna velikosti:
+Pokud máte bránu VPN a chcete použít jiný skladová položka brány, vaše možnosti jsou buď změnit velikost skladová položka vaší brány, nebo chcete-li změnit na druhý. Když změníte na jinou bránu SKU, odstraňte existující bránu zcela a vytvořit nový. To může trvat až 45 minut sestavení. Porovnání když změníte velikost bránu SKU, budete mít velmi málo výpadek protože není nutné odstranit a znovu vytvořit bránu. Pokud máte možnost změnit velikost skladová položka vaší brány, nikoli ho změnit, můžete to udělat. Existují však pravidel ohledně Změna velikosti:
 
 1. Můžete měnit velikost mezi VpnGw1, VpnGw2 a VpnGw3 SKU.
 2. Pokud používáte staré SKU brány, můžete měnit velikost mezi Basic, Standard a HighPerformance SKU.

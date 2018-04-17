@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 6c5b5c8c9dbb03a2189eb5f1539499ace55e7dfc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3e3ee232b6342601e44d728148d32e70e6f3f00b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Ukázky na datové vědě virtuálních počítačů (DSVM)
 
@@ -36,7 +36,7 @@ DSVMs se dodávají s uvedené ukázky plně fungovala na více systémů ve for
 | **CNTK** <br/> (Microsoft kognitivní Toolkit)  | Přímý učení ukázky publikováno kognitivní Toolkit týmu ve společnosti Microsoft.  <br/> [snímek obrazovky](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
 | **MXNet** poznámkových bloků  | Hluboké učení ukázky použití **MXNet** na základě neuronové sítě. Existuje mnoho různých poznámkových bloků od Začátečník až pokročilé scénáře.  <br/> [snímek obrazovky](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
 | **Azure Machine Learning** AzureML  | Interakci s **Azure Machine Learning** Studio a vytváření koncových bodů webové služby z místně trénované modely pro cloudové vyhodnocování pracovní postupy. <br/> [snímek obrazovky](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
-| **caffe2** | Hluboké učení ukázky použití **caffe2** na základě neuronové sítě. Existuje několik poznámkových bloků navržený tak, aby uživatelé seznamte s caffe2 a způsobu jeho použití efektivně, včetně příkladů, jako jsou bitové kopie předem zpracování, vytváření datovou sadu, regrese a pomocí předem Trénink modely. <br/> [snímek obrazovky](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
+| **Caffe2** | Hluboké učení ukázky použití **caffe2** na základě neuronové sítě. Existuje několik poznámkových bloků navržený tak, aby uživatelé seznamte s caffe2 a způsobu jeho použití efektivně, včetně příkladů, jako jsou bitové kopie předem zpracování, vytváření datovou sadu, regrese a pomocí předem Trénink modely. <br/> [snímek obrazovky](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
 | **H2O**   | Na základě Python ukázky použití **H2O** řada problémů scénářem z reálného prostředí. <br/> [snímek obrazovky](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
 | **SparkML** jazyk  | Ukázka použití funkcí a možností Spark **MLlib** toolkit prostřednictvím **pySpark 2.0** na **Apache Spark 2.0**.  <br/> [snímek obrazovky](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/><br/> |
 | **MMLSpark** jazyk  | Celou řadu ukázky použití **MMLSpark - Microsoft Machine Learning pro Apache Spark**, což je rozhraní, které poskytuje řadu hloubkové učení a vědecké účely nástroje data pro **Apache Spark**. <br/> [snímek obrazovky](#sparkml) | <br/>`~notebooks/MMLSpark`<br/><br/> |
@@ -87,7 +87,7 @@ Přihlaste se pomocí stejné heslo jako vaše přihlašovací údaje pro DSVM.
 <br/>![Ukázky MXnet](./media/mxnet-samples.png)<br/>
 
 ## <a name="azureml"></a>AzureML 
-<br/>![AzurekML Samples](./media/azureml-samples.png)<br/>
+<br/>![Ukázky AzurekML](./media/azureml-samples.png)<br/>
 
 ## <a name="caffe2"></a>Caffe2 
 <br/>![Ukázky caffe2](./media/caffe2-samples.png)<br/>

@@ -1,9 +1,9 @@
 ---
-title: "Použijte Azure sadu nástrojů pro IntelliJ s Hortonworks karanténě | Microsoft Docs"
-description: "Naučte se používat nástroje HDInsight pro IntelliJ s Hortonworks karanténě v Azure nástrojů."
-keywords: "nástroje hadoop hive dotaz, intellij, hortonworks karanténě, azure nástrojů pro intellij"
+title: Použijte Azure sadu nástrojů pro IntelliJ s Hortonworks karanténě | Microsoft Docs
+description: Naučte se používat nástroje HDInsight pro IntelliJ s Hortonworks karanténě v Azure nástrojů.
+keywords: nástroje hadoop hive dotaz, intellij, hortonworks karanténě, azure nástrojů pro intellij
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -12,16 +12,14 @@ ms.assetid: b587cc9b-a41a-49ac-998f-b54d6c0bdfe0
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 6bb29dc4e231bc859be620e56a606fbbfade102b
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: c72fb17a53b9d373bbd141f76f01e6b029d1e8f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástroje HDInsight pro IntelliJ s Hortonworks karanténě
 
@@ -64,7 +62,7 @@ V této části vytvoříte projekt Scala ukázka pomocí IntelliJ IDEA. V dalš
 
    ![Dialogové okno Nový projekt](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Vyberte **Další**.
+2. Vyberte **Next** (Další).
 3. V dalším **nový projekt** dialogové okno pole, proveďte následující kroky:
 
     1. V **název projektu** zadejte název projektu.

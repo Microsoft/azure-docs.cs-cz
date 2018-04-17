@@ -1,8 +1,8 @@
 ---
-title: "Použít Apache Kafka producent a příjemce rozhraní API – Azure HDInsight | Microsoft Docs"
-description: "Naučte se používat rozhraní API příjemce a Apache Kafka producent s Kafka v HDInsight. Tato rozhraní API umožňují vyvíjet aplikace, které pro zápis a čtení z Apache Kafka."
+title: Použít Apache Kafka producent a příjemce rozhraní API – Azure HDInsight | Microsoft Docs
+description: Naučte se používat rozhraní API příjemce a Apache Kafka producent s Kafka v HDInsight. Tato rozhraní API umožňují vyvíjet aplikace, které pro zápis a čtení z Apache Kafka.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
@@ -12,14 +12,14 @@ ms.custom: hdinsightactive
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/18/2018
+ms.topic: conceptual
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: b57745d6bd993a993e923c964327d9071e745413
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 01592401c4c88adeed49b11df4e7963e27b1bcee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="apache-kafka-producer-and-consumer-apis"></a>Apache Kafka producent a příjemce rozhraní API
 
@@ -43,7 +43,7 @@ Tento příklad vyžaduje Kafka na HDInsight 3.6. Naučte se vytvářet Kafka na
 
 ## <a name="build-and-deploy-the-example"></a>Sestavení a nasazení v příkladu
 
-1. Stáhněte si příklady ze stránky [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
+1. Stáhněte si příklady z [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
 2. Změňte adresáře na umístění `Producer-Consumer` adresáře a použijte následující příkaz:
 
@@ -61,7 +61,7 @@ Tento příklad vyžaduje Kafka na HDInsight 3.6. Naučte se vytvářet Kafka na
    
     Místo **SSHUSER** použijte jméno uživatele SSH pro váš cluster a místo **CLUSTERNAME** zadejte název clusteru. Po zobrazení výzvy zadejte heslo uživatele SSH.
 
-## <a id="run"></a>Spuštění ukázkového
+## <a id="run"></a> Spuštění ukázkového
 
 1. Chcete-li otevřít připojení SSH do clusteru, použijte následující příkaz:
 
@@ -144,9 +144,9 @@ V tomto dokumentu jste zjistili, jak používat Kafka producent a příjemce roz
 
 * [Analýza protokolů Kafka](apache-kafka-log-analytics-operations-management.md)
 * [Replikace dat mezi clustery Kafka](apache-kafka-mirroring.md)
-* [Datové proudy Kafka rozhraní API s HDInsight](apache-kafka-streams-api.md)
+* [Rozhraní API pro datové proudy Kafka pomocí HDInsight](apache-kafka-streams-api.md)
 * [Použití streamování Apache Sparku (DStream) se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
 * [Použití strukturovaného streamování Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md)
-* [Použití Apache Spark strukturovaných streamování pro přesun dat z Kafka v HDInsight k databázi systému Cosmos](../apache-kafka-spark-structured-streaming-cosmosdb.md)
+* [Požití strukturovaného streamu Apache Spark k přesunu dat z Kafka na HDInsight do Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Připojení k systému Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)

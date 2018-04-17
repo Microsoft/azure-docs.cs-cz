@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží pro vyrovnávání zatížení Azure
 
@@ -103,9 +103,7 @@ Pokud virtuální počítač neodpovídá na přenos dat, může to být proto c
 
 Pokud jeden nebo více skupin zabezpečení sítě nakonfigurované v podsíti nebo na virtuálním počítači, je blokování zdrojové IP adresy nebo portu, potom virtuální počítač není schopen odpovídat.
 
-* Zobrazí seznam skupin zabezpečení sítě nakonfigurované na back-end virtuálních počítačů. Další informace naleznete v tématu:
-    -  [Správa skupin zabezpečení sítě pomocí portálu](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [Správa skupin zabezpečení sítě pomocí PowerShellu](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* Zobrazí seznam skupin zabezpečení sítě nakonfigurované na back-end virtuálních počítačů. Další informace najdete v tématu [spravovat skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 * Ze seznamu skupin zabezpečení sítě zkontrolujte, zda:
     - příchozí nebo odchozí přenosy na portu dat má narušení. 
     - **Odepřít všechny** pravidlo skupiny zabezpečení na síťový adaptér virtuálního počítače nebo podsítě, který má vyšší prioritu, která sondy výchozí pravidlo, které umožňuje Vyrovnávání zatížení sítě a provoz (skupiny zabezpečení sítě musí umožňovat IP nástroje pro vyrovnávání zatížení 168.63.129.16, který je port testu) 

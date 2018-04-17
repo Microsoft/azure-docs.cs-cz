@@ -1,8 +1,8 @@
 ---
-title: "Použití portálu Azure ke správě prostředků Azure | Microsoft Docs"
-description: "Ke správě prostředků pomocí portálu Azure a správě prostředků Azure. Ukazuje, jak pracovat s řídicí panely a sledujte prostředky."
+title: Použití portálu Azure ke správě prostředků Azure | Microsoft Docs
+description: Ke správě prostředků pomocí portálu Azure a správě prostředků Azure. Ukazuje, jak pracovat s řídicí panely a sledujte prostředky.
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Spravovat prostředky prostřednictvím portálu Azure
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak používat [portál Azure](https://portal.azure.com)
 
 ## <a name="manage-resource-groups"></a>Správa skupin prostředků
 
-Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení s Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, můžete snadno nasadit, aktualizovat a odstranit jejich jako skupina. 
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, můžete snadno nasadit, aktualizovat a odstranit jejich jako skupina. 
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
@@ -123,10 +123,10 @@ Odstranění skupiny prostředků se odstraní všechny prostředky, které jsou
 
 ![Odstranění skupiny](./media/resource-group-portal/delete-group.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Chcete-li zobrazit protokoly aktivity, najdete v části [auditovat operace s Resource Managerem](resource-group-audit.md).
 * Chcete-li zobrazit podrobnosti o nasazení, přečtěte si téma [zobrazit operace nasazení](resource-manager-deployment-operations.md).
 * Nasazení prostředků prostřednictvím portálu najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
-* Pokud chcete spravovat přístup k prostředkům, najdete v části [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md).
+* Pokud chcete spravovat přístup k prostředkům, najdete v části [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
 

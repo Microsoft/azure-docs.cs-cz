@@ -1,26 +1,24 @@
 ---
-title: "Ladění a analýze služby Hadoop s výpisů paměti haldy - Azure | Microsoft Docs"
-description: "Automatické shromažďování výpisů paměti haldy pro služby Hadoop a umístěte do účtu úložiště objektů Blob v Azure pro ladění a analýzu."
+title: Ladění a analýze služby Hadoop s výpisů paměti haldy - Azure | Microsoft Docs
+description: Automatické shromažďování výpisů paměti haldy pro služby Hadoop a umístěte do účtu úložiště objektů Blob v Azure pro ladění a analýzu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e4ec4ebb-fd32-4668-8382-f956581485c4
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6d1d4d47d279eb7a1f0bf1f587445683f0ace7a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0721d20987008e5cc6370c6e853440ce93edcfa9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>V úložišti objektů Blob k ladění a analýze služby Hadoop výpisy paměti shromažďování haldy
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]

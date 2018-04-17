@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8d414a7a2ad46fbe63cc6eb8e6a6a41bb76aa432
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c8966f3dfa16010b82d1fe9cd02c63bdde65463c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Konzultační služby Azure Marketplace
 Azure Marketplace s cílem propojení zákazníků s služby podporují a rozšířit jejich používání Azure, podporuje seznam všech nabídek konzultace ohledně služby od partnerů systému integrátor (SI) společnosti Microsoft. 
@@ -48,6 +48,9 @@ Nabídky musí být jeden z těchto pět typů služby (je možné uvést více 
 S výjimkou *přehledové* typ služby, konzultační služby může být nabídnut osoba (který je na místě v umístění zákazníka nebo partnera na zařízení), nebo virtuálně (který je prostřednictvím telekonference, webového konference, nebo vzdálené implementace). Informačních musí být nabídnut osobně.
 
 Další informace najdete v tématu [možnosti prostřednictvím Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
+
+>[!TIP]
+>Tyto informace jsou pro jenom služby Azure Marketplace. Pokud chcete publikovat na webu Azure Marketplace výkladní skříň, provedete výběr výběrem "Azure" z rozevírací nabídky "Primární produkt" v portálu pro partnery cloudu. K publikování do AppSource, bude tato volba výběrem "Dynamics 365", "Power BI" nebo "Power aplikací" z rozevírací nabídky "Primární produkt" v portálu pro partnery cloudu. 
 
 ## <a name="supported-countries"></a>Podporované země
 
@@ -95,3 +98,31 @@ Výpis vaši nabídku konzultace ohledně služby v Azure Marketplace zahrnuje t
 4. **Zkontrolujte**: náš tým marketing a redakční zkontroluje váš odeslání a optimalizuje kvůli přehlednosti, gramatika a efektivitu. 
 5. **Pracovní**: vaše žádost je připravený k vaší kontrole. 
 6. **Publikování**: Pokud jste s Microsoftem jsou splněny s obsahem dvoufázové instalace, vaše výpis je připraven k odeslání za provozu v Azure Marketplace. Datum za provozu přejděte váš seznam závisí na zemi, který je zadán v rámci vaší nabídky. Pokud už je katalog pro vaši zemi vybrané za provozu na Azure Marketplace, bude výpis zobrazen v rámci několik hodin. Seznam, jinak hodnota se zobrazí, jakmile uvedete katalogu.
+
+## <a name="content-review-criteria"></a>Kritéria obsahu kontroly
+
+Po nakonfigurování požadované prvky uvedené výše se týmem kontrolu obsahu ověřte, že je vaše popis nabídky informativní a dokončení pro cílovou skupinu. 
+
+Všimněte si, že pole Název omezení na 50 znaků a musí přenášet doba trvání a služby typ nabídky. Toto je maximalizovat optimalizaci pro vyhledávací weby. Požadovaný formát vypadá takto: název: typ doba trvání
+
+Příklady:
+
+
+|Ukázkový název  |Správný formát  |
+|---------|---------|
+|Začínáme s Azure IoT ve výrobním    |   Výrobní IoT: hodnocení 2 dny      |
+|Dílny na inteligentní opékače        |  Inteligentní opékače: 1 týden dílny       |
+|  Testování koncepce migrace serveru SQL    | Migrace SQL: 3týden testování konceptu        |
+
+ 
+Při kontrole nabízejí popisy a nabízejí souhrny, bude týmem platí následující kritéria:
+
+|Typ nabídky  |Požaduje se |Doporučené  |
+|---------|---------|---------|
+|Posouzení    |   Zahrnout podrobný program jednání pro posuzování Vícedenní nebo více týdny a co se vyjádřete dodávky zákazníka můžete očekávat      |    Optimalizace vaši nabídku souhrn s vaší nejvyšší klíčová slova optimalizaci pro vyhledávací weby     |
+|Přehled    |   Co se vyjádřete dodávky zákazníka můžete očekávat. Zapamatujte si, že informačních musí být také nabídnuty osobně. Pokud zadáte virtuální službu, zvolte prosím typ různé nabídky    |  Optimalizace vaši nabídku souhrn s vaší nejvyšší klíčová slova optimalizaci pro vyhledávací weby       |
+|Implementace    |  Zahrnout podrobný program jednání pro implementace Vícedenní nebo více týdny a vyjádřete, jaké engineering změny nebo artefaktů, kterou zákazník můžete očekávat, že jako výstupy zapojení technické artefaktů.       |    Optimalizace vaši nabídku souhrn s vaší nejvyšší klíčová slova optimalizaci pro vyhledávací weby     |
+|Testování konceptu    |    Vyjádřete, jaké engineering změny nebo artefaktů, kterou zákazník můžete očekávat, že jako výstupy zapojení technické artefaktů.     | Optimalizace vaši nabídku souhrn s vaší nejvyšší klíčová slova optimalizaci pro vyhledávací weby        |
+|Seminář    |   Zahrnout podrobný program jednání denní, týdenní nebo měsíční, v závislosti na zvolené trvání vaší nabídky. Vyjádřete cílů learning nebo jiných podkladech jsou z vaší dílny     |   Optimalizace vaši nabídku souhrn s nejvyšší klíčová slova optimalizace vyhledávacího webu      |
+
+V rámci cloudu portál pro partnery, můžete přidat do vašeho seznamu formátování s použitím [Markdownu](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Toto je lightweight návrhu jazyk, který vám pomůže přidat polština do vašeho seznamu. 

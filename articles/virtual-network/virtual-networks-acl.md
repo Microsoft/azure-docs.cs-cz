@@ -1,11 +1,11 @@
 ---
-title: "Co je síť Azure seznam řízení přístupu?"
-description: "Další informace o seznamy řízení přístupu v Azure"
+title: Co je síť Azure seznam řízení přístupu?
+description: Další informace o seznamy řízení přístupu v Azure
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 9a0c85367968c9b38104012d75b1f3975be82cc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: b2239ae6393e74a518522594d36f7b9c30d2a6f7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Co je seznam řízení přístupu koncový bod?
 
@@ -47,7 +47,7 @@ Při vytváření virtuálního počítače, je výchozí seznam ACL uveďte zav
 
 **Příklad seznamu ACL výchozí tabulky**
 
-| **Pravidlo č** | **Vzdálené podsítě** | **Koncový bod** | **Povolení nebo odepření** |
+| **Pravidlo č** | **Vzdálené podsítě** | **koncový bod** | **Povolení nebo odepření** |
 | --- | --- | --- | --- |
 | 100 |0.0.0.0/0 |3389 |Povolit |
 
@@ -69,7 +69,7 @@ V následujícím příkladu, pokud chcete povolit přístup ke koncovému bodu 
 
 **Příklad – více pravidel**
 
-| **Pravidlo č** | **Vzdálené podsítě** | **Koncový bod** | **Povolení nebo odepření** |
+| **Pravidlo č** | **Vzdálené podsítě** | **koncový bod** | **Povolení nebo odepření** |
 | --- | --- | --- | --- |
 | 100 |65.0.0.0/8 |3389 |Povolit |
 | 200 |159.0.0.0/8 |3389 |Povolit |
@@ -79,7 +79,7 @@ Vzhledem k tomu, že pro koncový bod lze zadat více pravidel, musí být způs
 
 **Příklad – pravidla priorit**
 
-| **Pravidlo č** | **Vzdálené podsítě** | **Koncový bod** | **Povolení nebo odepření** |
+| **Pravidlo č** | **Vzdálené podsítě** | **koncový bod** | **Povolení nebo odepření** |
 | --- | --- | --- | --- |
 | 100 |175.1.0.1/24 |80 |Odepřít |
 | 200 |175.0.0.0/8 |80 |Povolit |

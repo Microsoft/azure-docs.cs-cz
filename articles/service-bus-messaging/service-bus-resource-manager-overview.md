@@ -1,24 +1,24 @@
 ---
-title: "Vytvořit prostředky Azure Service Bus pomocí šablony Resource Manageru | Microsoft Docs"
-description: "Použití šablon Azure Resource Manageru k automatizaci vytváření prostředků služby Service Bus"
+title: Vytvořit prostředky Azure Service Bus pomocí šablony Resource Manageru | Microsoft Docs
+description: Použití šablon Azure Resource Manageru k automatizaci vytváření prostředků služby Service Bus
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 876b1c30c09f31958555ff3dee769d8dd443a60d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvoření služby Service Bus prostředků pomocí šablony Azure Resource Manager
 
@@ -61,7 +61,7 @@ Nainstalovat Azure PowerShell podle pokynů v [Začínáme s Azure Powershellem]
 
 ### <a name="create-a-template"></a>Vytvoření šablony
 
-Klonování nebo kopírování [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) šablony z Githubu:
+Klonování úložiště nebo kopírování [201-servicebus vytvořit queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) šablony z Githubu:
 
 ```json
 {
@@ -180,7 +180,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Nastavit skupinu prostředků
 
-Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s ** New-AzureRmResourceGroup ** příkaz. Zadejte název skupiny prostředků a umístění, do kterého chcete použít. Například:
+Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s ** New-AzureRmResourceGroup ** příkaz. Zadejte název skupiny prostředků a umístění, do kterého chcete použít. Příklad:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -251,7 +251,7 @@ Parameters        :
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní jste se seznámili základní pracovní postup a příkazy pro nasazení šablonu Azure Resource Manager. Podrobnější informace získáte pomocí následujících odkazů:
 
 * [Přehled Azure Resource Manageru][Azure Resource Manager overview]

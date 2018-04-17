@@ -1,6 +1,6 @@
 ---
 title: Alias DNS pro Azure SQL Database | Microsoft Docs
-description: "Vaše aplikace může připojit k alias pro název serveru Azure SQL Database. Mezitím můžete změnit databázi SQL alias odkazuje na kdykoli, aby se usnadnilo, testování a tak dále."
+description: Vaše aplikace může připojit k alias pro název serveru Azure SQL Database. Mezitím můžete změnit databázi SQL alias odkazuje na kdykoli, aby se usnadnilo, testování a tak dále.
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;ayolubek
 ms.author: dmalik
-ms.openlocfilehash: c2a2bce3b385bd5700bf327f283289cf4d94b057
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1793f44026db55d17fabde5fb92bc46795109418
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro databázi SQL Azure
 
@@ -63,7 +63,7 @@ Následující vlastnosti použít pro každý aliasu DNS pro server služby SQL
 - *Není vázána na libovolné oblasti:* aliasy DNS nejsou vázány na oblast. Všechny aliasy DNS mohou být aktualizovány k odkazování na serveru Azure SQL Database, který se nachází v libovolné geografické oblasti.
     - Ale při aktualizaci alias, který bude odkazovat na jiný server se oba servery, musí existovat ve stejném Azure *předplatné*.
 
-- *Oprávnění:* ke správě DNS alias, musí mít uživatel *Server Přispěvatel* oprávnění, nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](../active-directory/role-based-access-control-what-is.md).
+- *Oprávnění:* ke správě DNS alias, musí mít uživatel *Server Přispěvatel* oprávnění, nebo vyšší. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](../role-based-access-control/overview.md).
 
 
 

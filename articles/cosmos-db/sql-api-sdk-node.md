@@ -4,7 +4,7 @@ description: Další informace o rozhraní API Node.js SQL a sady SDK, včetně 
 services: cosmos-db
 documentationcenter: nodejs
 author: rnagpal
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 9d5621fa-0e11-4619-a28b-a19d872bcf37
 ms.service: cosmos-db
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 1/4/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 728db669954e317905d762c68c8990f064529699
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 68c124bc2a89c819eb72310138ddd5d0c7739c4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/30/2018
 <tr><td>**Kurz vývoje webové aplikace**</td><td>[Vytvoření webové aplikace Node.js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)</td></tr>
 
 <tr><td>**Aktuální podporované platformy**</td><td> 
-[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
+[Verze 6.x Node.js](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
 [Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
 [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
 [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 

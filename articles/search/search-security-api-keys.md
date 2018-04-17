@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/20/2018
 ms.author: heidist
-ms.openlocfilehash: ab04214dc02f337afdf8268b7d05b5e0896efc73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2718a0b2e97c5af8ee25a96100c3d8cb0dbfe9fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvářet a spravovat klíče api Key pro službu Azure Search
 
@@ -65,7 +65,7 @@ Zabezpečení klíčů je zajištěno omezení přístupu prostřednictvím port
 
 + V řídicím panelu služby, klikněte na **přístup k ovládacímu prvku (IAM)** zobrazíte přiřazení rolí pro vaši službu.
 
-Můžete zobrazit a znovu vygenerovat klíče členy následujících rolí: vlastník, Přispěvatel, [přispěvatelé služby vyhledávání](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#search-service-contributor)
+Můžete zobrazit a znovu vygenerovat klíče členy následujících rolí: vlastník, Přispěvatel, [přispěvatelé služby vyhledávání](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
 > Pro přístup na základě identity prostřednictvím výsledky hledání můžete vytvořit filtry zabezpečení oříznout výsledky identita, odebírání dokumentů, pro které žadatel by neměly mít přístup. Další informace najdete v tématu [filtrů zabezpečení](search-security-trimming-for-azure-search.md) a [zabezpečeného se službou Active Directory](search-security-trimming-for-azure-search-with-aad.md).

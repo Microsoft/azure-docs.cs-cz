@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží Azure Cloud prostředí | Microsoft Docs"
-description: "Řešení potíží s prostředí cloudu Azure"
+title: Řešení potíží Azure Cloud prostředí | Microsoft Docs
+description: Řešení potíží s prostředí cloudu Azure
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendMSFT
 manager: angelc
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 52ee832b643af573d8236b266df17d36e485ead2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7ab344f77ef88ffdc2ff1976d97b0b9aa86aa3fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure cloudové prostředí
 
@@ -148,3 +148,29 @@ Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v
 ### <a name="gui-applications-are-not-supported"></a>Grafické uživatelské rozhraní aplikací není podporované.
 
 Pokud uživatel spustí příkaz, který by vytvořit dialogové okno Windows, jako například `Connect-AzureAD` nebo `Login-AzureRMAccount`, například jeden zobrazí chybovou zprávu: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+
+## <a name="gdpr-compliance-for-cloud-shell"></a>GDPR dodržování předpisů pro cloudové prostředí
+
+Prostředí Azure Cloud vážně trvá vašich osobních údajů, dat zaznamenaných a uložené ve službě Azure Cloud prostředí používané k zajištění výchozí hodnoty pro vaše prostředí, například naposledy použitých prostředí, velikost písma upřednostňované, typ upřednostňované písma a sdílených složek podrobnosti který zpět clouddrive. Měli chcete exportovat nebo odstranění těchto dat, jsme zahrnuli podle následujících pokynů.
+
+### <a name="export"></a>Export
+Za účelem **exportovat** uživatelská nastavení prostředí cloudové uloží pro vás, jako upřednostňovaný prostředí, velikost písma a typ písma, spusťte následující příkazy.
+
+1. Spusťte Bash v prostředí cloudu
+2. Spusťte následující příkazy:
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
+```
+
+### <a name="delete"></a>Odstranění
+Za účelem **odstranit** uživatelská nastavení prostředí cloudové uloží pro vás, jako upřednostňovaný prostředí, velikost písma a typ písma, spusťte následující příkazy. Při příštím spuštění prostředí cloudu zobrazí se výzva k připojit sdílenou složku znovu. 
+
+Skutečné soubory Azure sdílené složky nebudou odstraněny, pokud odstraníte uživatelská nastavení, přejděte na Azure soubory pro dokončení této akce.
+
+1. Spusťte Bash v prostředí cloudu
+2. Spusťte následující příkazy:
+```
+user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+user@Azure:~$ curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
+```

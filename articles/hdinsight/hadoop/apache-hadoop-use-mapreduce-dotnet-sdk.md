@@ -1,26 +1,24 @@
 ---
-title: "Odesílání úloh MapReduce pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs"
-description: "Zjistěte, jak k odesílání úloh MapReduce do Azure HDInsight Hadoop pomocí sady .NET SDK HDInsight."
+title: Odesílání úloh MapReduce pomocí sady SDK rozhraní .NET HDInsight - Azure | Microsoft Docs
+description: Zjistěte, jak k odesílání úloh MapReduce do Azure HDInsight Hadoop pomocí sady .NET SDK HDInsight.
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: c85e44b0-85fd-4185-ad1c-c34a9fe5ef44
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: e967c6df89722492554998dc21e09388b7b7cdf2
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0ea6e559cd9fd857f66ca1d9a7ed91d5f9c238e4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spuštění úloh MapReduce pomocí sady .NET SDK HDInsight
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -36,7 +34,7 @@ Zjistěte, jak k odesílání úloh MapReduce pomocí sady .NET SDK HDInsight. H
 Před zahájením tohoto článku, musíte mít následující položky:
 
 * **Cluster Hadoop v HDInsight**. V tématu [začít používat systémem Linux Hadoop v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
-* **Visual Studio 2013/2015/2017**.
+* **Visual Studio 2013 nebo 2015 nebo 2017**.
 
 ## <a name="submit-mapreduce-jobs-using-hdinsight-net-sdk"></a>Odesílání úloh MapReduce pomocí sady .NET SDK HDInsight
 .NET SDK služby HDInsight poskytuje klientské knihovny .NET, která usnadňuje práci s clustery HDInsight pomocí technologie .NET. 

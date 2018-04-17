@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -66,7 +66,7 @@ Pokud chcete dostávat oznámení o selhání nebo jiné možné problémy, nast
    ![Podrobnosti o krok](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > Všechny podrobnosti o modulu runtime a události se šifrují v rámci služby Logic Apps. Budou se dešifrují jenom v případě, že uživatel požádá o zobrazovat data. Také můžete řídit přístup k těmto událostem s [řízení řízení přístupu (RBAC)](../active-directory/role-based-access-control-what-is.md).
+   > Všechny podrobnosti o modulu runtime a události se šifrují v rámci služby Logic Apps. Budou se dešifrují jenom v případě, že uživatel požádá o zobrazovat data. Také můžete řídit přístup k těmto událostem s [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md).
 
 6. Chcete-li získat podrobnosti o konkrétní aktivační událost, přejděte zpět na **přehled** podokně. V části **aktivovat historie**, vyberte aktivační událost. Můžete teď zkontrolujte podrobnosti jako vstupy a výstupy, například:
 
@@ -217,7 +217,7 @@ Nastavit výstrahy bez [Azure Log Analytics](../log-analytics/log-analytics-over
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Nastavení Azure Diagnostics událostí a podrobnosti
 
-Každý diagnostických událostí obsahuje podrobnosti o aplikaci logiky a tuto událost, například stav, čas spuštění, koncový čas a tak dále. Chcete-li nastavit prostřednictvím kódu programu, monitorování, sledování a protokolování, organizační jednotky použít tyto podrobnosti s [REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [REST API pro Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
+Každý diagnostických událostí obsahuje podrobnosti o aplikaci logiky a tuto událost, například stav, čas spuštění, koncový čas a tak dále. Chcete-li nastavit prostřednictvím kódu programu, monitorování, sledování a protokolování, můžete použít tyto podrobnosti s [REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [REST API pro Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
 
 Například `ActionCompleted` událost má `clientTrackingId` a `trackedProperties` vlastnosti, které můžete použít pro sledování a monitorování:
 

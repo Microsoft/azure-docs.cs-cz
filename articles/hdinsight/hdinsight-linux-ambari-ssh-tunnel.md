@@ -1,8 +1,8 @@
 ---
-title: "Použití SSH tunelového propojení pro přístup k Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití tunelového propojení SSH bezpečně procházet webové prostředky, které jsou hostované na uzly HDInsight se systémem Linux."
+title: Použití SSH tunelového propojení pro přístup k Azure HDInsight | Microsoft Docs
+description: Další informace o použití tunelového propojení SSH bezpečně procházet webové prostředky, které jsou hostované na uzly HDInsight se systémem Linux.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 05e06d6ed8c2a3bec0d12f81aae6f7022a56b942
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Pomocí tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Ambari, JobHistory, NameNode, Oozie a jiným webovým uživatelská rozhraní
 
@@ -75,7 +73,7 @@ Tento příkaz vytvoří připojení, který směruje provoz do místního portu
 * **2** -force SSH pokusit protocol verze 2 pouze.
 * **q** -tichém režimu.
 * **T** -zakázat pseudo tty přidělení, protože se právě předávání port.
-* **n**-Zabránit čtení STDIN, protože se právě předávání port.
+* **n** -zabránit čtení STDIN, protože se právě předávání port.
 * **N** -nespouštějte vzdáleného příkazu, protože se právě předávání port.
 * **f** -spuštěný na pozadí.
 
@@ -115,7 +113,7 @@ Po dokončení příkazu posílají do portu 9876 v místním počítači provoz
    > [!NOTE]
    > Výběr **DNS vzdálené** přeloží požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení vyřeší DNS pomocí hlavního uzlu clusteru.
 
-2. Ověřte, že funguje tunelu návštěvou lokality [http://www.whatismyip.com/](http://www.whatismyip.com/). Vrácená IP adresa by měl být jeden používané datového centra Microsoft Azure.
+2. Ověřte, že funguje tunelu návštěvou lokality [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Vrácená IP adresa by měl být jeden používané datového centra Microsoft Azure.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ověřte si u webovému uživatelskému rozhraní Ambari
 
@@ -124,7 +122,7 @@ Po vytvoření clusteru ověřte, že jste z webu Ambari přístup webové služ
 1. V prohlížeči přejděte na http://headnodehost:8080. `headnodehost` Adresa je odeslána přes tunel ke clusteru a vyřešte k headnode, která Ambari běží na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí Ambari webového uživatelského rozhraní. Pokud ano, zadejte informace znovu.
 
    > [!NOTE]
-   > Při použití adresu http://headnodehost:8080 se připojit ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečena pomocí tunelového propojení SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru.
+   > Při použití http://headnodehost:8080 adresu, které se připojte ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečena pomocí tunelového propojení SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název clusteru.
 
 2. Webové uživatelské rozhraní Ambari vyberte ze seznamu na levé straně stránky HDFS.
 
@@ -144,7 +142,7 @@ Po vytvoření clusteru ověřte, že jste z webu Ambari přístup webové služ
     ![Obrázek NameNode uživatelského rozhraní](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]
-   > Všimněte si adresu URL pro tuto stránku; by měl vypadat přibližně **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/clusteru**. Tento identifikátor URI interní plně kvalifikovaný název domény (FQDN) je pomocí uzlu a je k dispozici pouze při používání tunelového propojení SSH.
+   > Všimněte si adresu URL pro tuto stránku; by měl vypadat přibližně **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Tento identifikátor URI interní plně kvalifikovaný název domény (FQDN) je pomocí uzlu a je k dispozici pouze při používání tunelového propojení SSH.
 
 ## <a name="next-steps"></a>Další postup
 

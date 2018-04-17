@@ -1,26 +1,24 @@
 ---
-title: "Použijte Hive s Hadoop pro analýzu protokolu Web - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Hive s HDInsight k analýze webových protokolů. Budete používat soubor protokolu jako vstup do tabulky HDInsight a použít HiveQL k dotazování data."
+title: Použijte Hive s Hadoop pro analýzu protokolu Web - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Hive s HDInsight k analýze webových protokolů. Budete používat soubor protokolu jako vstup do tabulky HDInsight a použít HiveQL k dotazování data.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 6fb7b5c2-8df4-40b1-a9e2-6815080004f9
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5aabb69dc233dfd927c1d6cc1b131115e2d096d4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 53a0560d3bc5a52069d5829b9c3bd353e0c37ef3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Použijte Hive s HDInsight se systémem Windows k analýze protokolů z webů
 Zjistěte, jak použít HiveQL v prostředí HDInsight k analýze protokolů z webu. Analýza protokolu webu můžete použít, segmentovat cílovou skupinu podle podobné aktivity, kategorizace návštěvníky podle demografické údaje a zjistit, obsah se zobrazení, webů, které pocházejí z a tak dále.
@@ -52,7 +50,7 @@ V této ukázce použijete clusteru služby HDInsight k analýze webu soubory pr
 3. Z webové stránky, které se otevře, klikněte na tlačítko **postupem Začínáme Galerie** kartě a potom v části **řešení s ukázkovými daty** kategorie, klikněte na tlačítko **analýza webového protokolu** ukázka.
 4. Postupujte podle pokynů na webové stránce ukončíte vzorku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkuste následující ukázka: [analýza dat snímače používání Hive s HDInsight](apache-hive-analyze-sensor-data.md).
 
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

@@ -10,13 +10,13 @@ ms.component: manage
 ms.date: 04/02/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ea45398b0bf7fca43c75797313b7e683972b1ab
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu upgradem SQL Data Warehouse
+# <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 
 Teď můžete plynule upgradovat na optimalizovat pro výpočetní úroveň výkonu na portálu Azure. Pokud máte optimalizovaný pro pružnost datového skladu, doporučuje se, že upgradujete pro nejnovější generování Azure hardware a architekturu rozšířené úložiště. Bude moct využívat výhod vyšší výkon a vyšší škálovatelnost a neomezené sloupcovém úložiště. 
 
@@ -70,9 +70,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    
    Prvním krokem procesu upgradu projde operace škálování ("upgrade - Offline") budou ukončeny všechny relace, kde se zahodí připojení. 
    
-   Druhým krokem procesu upgradu je migrace dat ("upgrade - Online"). Migrace dat je proces online skapat pozadí, které pomalu přesune sloupcová data z původní architektura úložiště Gen1 do nové architektury úložiště Gen2 využít Gen2 místní mezipaměti SSD. Během této doby bude online pro dotazování a načítání datového skladu. Všechna vaše data, bude k dispozici pro dotazy bez ohledu na to, jestli ho byla migrována nebo ne. Migrace dat se stane s různými rychlostí v závislosti na vaší velikost dat, vaše úroveň výkonu a počet segmentů columnstore. 
+   Druhým krokem procesu upgradu je migrace dat ("upgrade - Online"). Migrace dat je proces online skapat pozadí, které pomalu přesune sloupcová data z původní architektury úložiště do nové architektury úložiště využívat místní mezipaměti SSD. Během této doby bude online pro dotazování a načítání datového skladu. Všechna vaše data, bude k dispozici pro dotazy bez ohledu na to, jestli ho byla migrována nebo ne. Migrace dat se stane s různými rychlostí v závislosti na vaší velikost dat, vaše úroveň výkonu a počet segmentů columnstore. 
 
-5. **Volitelné doporučení:** urychlit proces na pozadí migrace dat, doporučuje se okamžitě vynutit přesun dat spuštěním [opětovné sestavení Alter Index](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách columnstore v větší SLO a prostředků Třída. Tato operace je offline ve srovnání s skapat proces na pozadí; migrace dat však budou být mnohem rychlejší kde lze poté využít všech výhod Gen2 architekturou úložiště s vysokou kvalitu rowgroups po dokončení. 
+5. **Volitelné doporučení:** urychlit proces na pozadí migrace dat, doporučuje se okamžitě vynutit přesun dat spuštěním [opětovné sestavení Alter Index](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách columnstore v větší SLO a prostředků Třída. Tato operace je offline ve srovnání s skapat proces na pozadí; migrace dat však budou být mnohem rychlejší kde lze poté využít všech výhod nové architektury rozšířené úložiště s vysokou kvalitu rowgroups po dokončení. 
 
 Následující dotaz vygeneruje požadované příkazy Alter Index Rebuild urychlit proces migrace dat:
 

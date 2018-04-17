@@ -2,9 +2,8 @@
 title: Vytváření oddílů a horizontální škálování v Azure Cosmos DB | Microsoft Docs
 description: Další informace o tom, jak rozdělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a oddílu klíče a jak vybrat klíč správné oddílu pro vaši aplikaci.
 services: cosmos-db
-author: arramac
+author: SnehaGunda
 manager: kfile
-editor: monicar
 documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: arramac
+ms.date: 04/10/2018
+ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16b0ddd45c8e524798a453af7c731af28f5f5c2d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fcb33dff131106fd801b72a0bfaafd528d9f1af9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Oddíl a škálování v Azure Cosmos DB
 
@@ -99,8 +98,8 @@ Azure Cosmos DB je určená pro předvídatelný výkon. Když vytvoříte konte
 ## <a name="work-with-the-azure-cosmos-db-apis"></a>Práce s Azure Cosmos DB rozhraní API
 Portál Azure nebo rozhraní příkazového řádku Azure slouží k vytvoření kontejnerů a škálování je kdykoli. Tato část ukazuje způsob vytvoření kontejnerů a zadejte definici klíče propustnost a oddílu v každé z podporovaných rozhraní API.
 
-### <a name="azure-cosmos-db-api"></a>Rozhraní API Azure Cosmos DB
-Následující příklad ukazuje, jak vytvořit kontejner (kolekce) pomocí rozhraní API služby Azure Cosmos DB. 
+### <a name="sql-api"></a>SQL API
+Následující příklad ukazuje, jak vytvořit kontejner (kolekce) pomocí rozhraní API služby Azure Cosmos databáze SQL. 
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -124,6 +123,8 @@ DeviceReading document = await client.ReadDocumentAsync<DeviceReading>(
   UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
+
+Další informace najdete v tématu [vytváření oddílů v Azure DB Cosmos pomocí rozhraní SQL API](sql-api-partition-data.md).
 
 ### <a name="mongodb-api"></a>Rozhraní MongoDB API
 S rozhraním API pro MongoDB můžete vytvořit kolekci horizontálně dělené prostřednictvím vaše oblíbené nástroje, ovladače nebo sady SDK. V tomto příkladu používáme prostředí Mongo pro vytvoření kolekce.
@@ -186,7 +187,7 @@ Okraj můžete odkazovat pomocí klíč oddílu a klíč řádku.
 g.E(['USA', 'I5'])
 ```
 
-Další informace najdete v tématu [Gremlin podpora pro Azure Cosmos DB](gremlin-support.md).
+Další informace najdete v tématu [pomocí oddílů grafu v Azure Cosmos DB](graph-partitioning.md).
 
 
 <a name="designing-for-partitioning"></a>

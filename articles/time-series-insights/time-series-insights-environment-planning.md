@@ -1,6 +1,6 @@
 ---
-title: "Plánování rozsahu prostředí Azure časové řady Insights | Microsoft Docs"
-description: "Tento článek popisuje, jak postupovat podle osvědčených postupů při plánování prostředí Azure časové řady statistiky, včetně kapacitu úložiště, uchovávání dat, kapacity příjem příchozích dat a monitorování."
+title: Plánování rozsahu prostředí Azure časové řady Insights | Microsoft Docs
+description: Tento článek popisuje, jak postupovat podle osvědčených postupů při plánování prostředí Azure časové řady statistiky, včetně kapacitu úložiště, uchovávání dat, kapacity příjem příchozích dat a monitorování.
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 5fb158ba162dd199f419f9568de08a7a18c833dd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Statistika Azure časové řady
 
@@ -32,11 +32,13 @@ Zvažte následující atributy, které se nejlepší plán prostředí pro dlou
 - Kapacita úložiště
 - Doba uchování dat
 - Příjem příchozích dat kapacity 
+- Shaping události
+- Ověříte, že máte referenční data na místě
 
 ## <a name="understand-storage-capacity"></a>Kapacita úložiště
 Ve výchozím nastavení časové řady Statistika uchovává data v závislosti na množství úložiště, kterou jste zřídili (jednotky doby velikost úložiště na jednotku) a vstupní.
 
-## <a name="understand-data-retention"></a>Pochopení uchovávání dat
+## <a name="understand-data-retention"></a>Vysvětlení uchovávání dat
 Můžete nakonfigurovat prostředí časové řady Insights **doby uchování dat** nastavení, povolení až 400 dní uchovávání informací.  Statistika časové řady má dva režimy, ten, který optimalizuje pro zajištění prostředí má nejaktuálnější data (na ve výchozím nastavení) a druhou, která optimalizuje pro zajištění uchování omezení jsou splněny, kde je pozastaven příjem příchozích dat, pokud celkové kapacity úložiště prostředí je přístupů.  Můžete upravit uchovávání a přepínání mezi těmito dvěma režimy na stránce konfigurace v prostředí na portálu Azure.
 
 Můžete nakonfigurovat maximálně 400 dní uchovávání dat ve vašem prostředí Statistika časové řady.
@@ -74,16 +76,27 @@ Například pokud máte jeden S1 SKU a příchozí přenos dat s rychlostí 700 
 
 Nemusí vědět předem kolik dat byste měli push. V takovém případě můžete najít data telemetrie [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) a [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) na portálu Azure. Tuto telemetrii vám pomohou určit, jak zřídit prostředí. Použití **metriky** na portálu Azure ke zdroji příslušných událostí k zobrazení jeho telemetrie. Pokud budete rozumět tomu vaše metriky zdroje událostí, umožňuje efektivněji plánování a zřízení prostředí Statistika časové řady.
 
-## <a name="calculate-ingress-requirements"></a>Výpočet požadavků na příjem příchozích dat
+### <a name="calculate-ingress-requirements"></a>Výpočet požadavků na příjem příchozích dat
 
 - Potvrďte vaše kapacita příjem příchozích dat je vyšší než vaše průměrná rychlost za minutu a že je vaše prostředí dostatečně velký pro zpracování vaše předpokládaného příchozího ekvivalentní 2 x vaší kapacitu menší než 1 hodina.
 
 - Dojde-li špičky příjem příchozích dat, poslední po dobu delší než 1 hod., použijte rychlost Špička jako vaše průměr a zřízení prostředí s dostatečnou kapacitu pro zpracování Špička rychlost.
  
-## <a name="mitigate-throttling-and-latency"></a>Zmírnění omezení a čekací doba
+### <a name="mitigate-throttling-and-latency"></a>Zmírnění omezení a čekací doba
 
 Informace o tom, jak zabránit omezení a latence najdete v tématu [zmírnění latence a omezování](time-series-insights-environment-mitigate-latency.md). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="shaping-your-events"></a>Shaping události
+Je důležité zajistit způsob, jak odesílat události TSI podporuje velikost prostředí jsou zřizování (naopak můžete namapovat velikost prostředí tak, aby počtu událostí TSI přečte a velikost jednotlivých událostí).  Podobně je důležité zvážit atributy, které můžete chtít řezu a filtrovat podle při dotazování na data.  Myslete na to, doporučujeme kontrola JSON shaping části našich *odesílat události* dokumentace [dokumentace] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  Je směrem k dolní části stránky.  
+
+## <a name="ensuring-you-have-reference-data-in-place"></a>Ověříte, že máte referenční data na místě
+Referenční datové sady je kolekce položek, které posílení události ze zdroje událostí. Čas řady Statistika příchozího modul spojí všechny události ze zdroje událostí s odpovídající řádek dat v odkaz na sadu dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto připojení je založena na sloupce primární klíč v vaší referenční datové sadě definován.
+
+Poznámka: referenční data není zpětně připojena. To znamená, že pouze aktuálních a budoucích příchozí přenos dat je shodná a připojený k sadu referenční data, jakmile byla nakonfigurována a nahrát.  Pokud budete chtít poslat TSI velký počet historických dat a nemáte nahrát nebo nejprve vytvořit referenční data v TSI pak budete muset znovu práci (pomocného parametru, není fun).  
+
+Další informace o tom, jak vytvářet, odeslání a odkaz na data v TSI spravovat, přejděte na našem *referenční data* dokumentace [dokumentace] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+
+
+## <a name="next-steps"></a>Další postup
 - [Postup přidání zdroje událostí centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md)
 - [Postup přidání zdroje událostí služby IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md)

@@ -1,7 +1,22 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="about-vhds"></a>Virtuální pevné disky
 
-Virtuální pevné disky používané v Azure jsou soubory .vhd uložené jako objekty blob stránky v účtu úložiště úrovně Standard nebo Premium v Azure. Podrobnosti o objektech blob stránky najdete v tématu [Vysvětlení objektů blob bloku a objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Podrobnosti o úložišti úrovně Premium najdete v článku [Vysoce výkonné úložiště úrovně Premium a virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+Virtuální pevné disky používané v Azure jsou soubory .vhd uložené jako objekty blob stránky v účtu úložiště úrovně Standard nebo Premium v Azure. Podrobnosti o objektech blob stránky najdete v tématu [Vysvětlení objektů blob bloku a objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Podrobnosti o službě Premium Storage najdete v článku [Vysoce výkonné úložiště úrovně Premium a virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 Azure podporuje virtuální pevné disky s pevným formátem. Pevný formát logický disk lineárně rozvrhne v rámci souboru, takže posun disku o X je uložen na pozici objektu blob s posunem o X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Pevný formát často plýtvá místem, protože většina disků obsahuje velké nevyužité oblasti dat. Azure však ukládá soubory .vhd ve zhuštěném formátu, takže současně můžete těžit z výhod pevných i dynamických disků. Další podrobnosti najdete v tématu [Začínáme s virtuálními pevnými disky](https://technet.microsoft.com/library/dd979539.aspx).
 
@@ -10,16 +25,16 @@ Všechny soubory VHD v Azure, který chcete použít jako zdroj pro vytvoření 
 Při vytváření virtuálního počítače z image Azure vytvoří pro virtuální počítač disk, který je kopií zdrojového souboru .vhd. Z důvodu ochrany před náhodným odstraněním Azure označí jako zapůjčený každý zdrojový soubor .vhd, který se používá k vytváření image, disku operačního systému nebo datového disku.
 
 Před odstraněním zdrojového souboru .vhd bude nutné toto označení odebrat odstraněním disku nebo image. Pokud chcete odstranit soubor .vhd používaný některým virtuálním počítačem jako disk operačního systému, můžete najednou odstranit virtuální počítač, disk operačního systému a zdrojový soubor .vhd tak, že odstraníte virtuální počítač a všechny přidružené disky. Nicméně odstranění souboru .vhd, který je zdrojem pro datový disk, vyžaduje několik kroků v určitém pořadí. Nejprve odpojíte disk z virtuálního počítače, odstraníte disk a potom odstraníte soubor .vhd.
-
 > [!WARNING]
 > Pokud odstraníte zdrojový soubor .vhd z úložiště nebo pokud odstraníte účet úložiště, Microsoft pro vás tato data nebude moct obnovit.
 > 
+> Objekty BLOB stránky v Storage úrovně Premium jsou navrženy pro použití jako virtuální pevné disky pouze. Společnost Microsoft nedoporučuje ukládání dalších typů dat v objekty BLOB stránky v Storage úrovně Premium, jak může být výrazně větší náklady. Používejte objekty BLOB bloku pro ukládání dat, která není na disku VHD.
 
 ## <a name="types-of-disks"></a>Typy disků 
 
 Disky Azure jsou navržené pro 99,999% dostupnost. Disky systému Azure konzistentně mít doručit odolnost podnikové úrovni s špičkový NULOVÉ % Annualized míra selhání.
 
-Při vytváření disků si můžete vybrat ze dvou úrovní výkonu úložiště – Storage úrovně Standard a Storage úrovně Premium. Existují také dva typy disků, spravované a nespravované, které můžou být umístěné v obou úrovních výkonu.
+Při vytváření disků si můžete vybrat ze dvou úrovní výkonu úložiště – Storage úrovně Standard a Premium Storage. Existují také dva typy disků, spravované a nespravované, které můžou být umístěné v obou úrovních výkonu.
 
 
 ### <a name="standard-storage"></a>Storage úrovně Standard 
@@ -28,9 +43,9 @@ Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje n
 
 Další informace o používání služby Storage úrovně Standard s disky virtuálních počítačů najdete v tématu [Storage úrovně Standard a disky](../articles/virtual-machines/windows/standard-storage.md).
 
-### <a name="premium-storage"></a>Storage úrovně Premium 
+### <a name="premium-storage"></a>Premium Storage 
 
-Služba Storage úrovně Premium je založená na jednotkách SSD a poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy. Premium Storage můžete použít s DS, DSv2, GS, Ls nebo virtuálních počítačích Azure řady služby FS. Další informace najdete v článku [Storage úrovně Premium](../articles/virtual-machines/windows/premium-storage.md).
+Služba Premium Storage je založená na jednotkách SSD a poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy. Premium Storage můžete obvykle použít s velikostí, které zahrnují "s" v názvu řady. Například je Dv3-Series a Dsv3-series, Dsv3-series lze použít s Storage úrovně Premium.  Další informace najdete v článku [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nespravované disky
 

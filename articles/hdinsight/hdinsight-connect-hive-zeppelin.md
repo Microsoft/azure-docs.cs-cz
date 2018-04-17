@@ -1,26 +1,24 @@
 ---
-title: "Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Zeppelin ke spouštění dotazů Hive."
-keywords: "hdinsight hadoop, hive, interaktivní dotaz, LLAP"
+title: Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight | Microsoft Docs
+description: Další informace o použití Zeppelin ke spouštění dotazů Hive.
+keywords: hdinsight hadoop, hive, interaktivní dotaz, LLAP
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: jgao
-ms.openlocfilehash: 39f99bef252e93db55e0493ee284ef78b7d087a1
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 59e8e40360702d623827f6784856b874ca629591
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Použití Zeppelin ke spouštění dotazů Hive v Azure HDInsight 
 

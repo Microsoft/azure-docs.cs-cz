@@ -1,9 +1,9 @@
 ---
 title: Instalace clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server - Azure HDInsight | Microsoft Docs
-description: "Nastavte Hadoop, Kafka, Spark, HBase, R Server nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK."
-keywords: "nastavení clusteru hadoop, kafka clusteru instalační program, nastavení clusteru spark, co je cluster v hadoop"
+description: Nastavte Hadoop, Kafka, Spark, HBase, R Server nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
+keywords: nastavení clusteru hadoop, kafka clusteru instalační program, nastavení clusteru spark, co je cluster v hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -12,16 +12,14 @@ ms.assetid: 23a01938-3fe5-4e2e-8e8b-3368e1bbe2ca
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: 39c1be51d7aa54691a6ff55483138a603c3fabed
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 54c88b25911ddfa4ed9ecf6ea4b28278c2d9aac2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavit clusterů v HDInsight Hadoop, Spark, Kafka a dalšími
 
@@ -40,7 +38,7 @@ Následující tabulka uvádí různé metody, které můžete použít k nastav
 
 | Clustery jsou vytvořené pomocí | Webový prohlížeč | Příkazový řádek | REST API | Sada SDK | 
 | --- |:---:|:---:|:---:|:---:|
-| [portál Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Rozhraní příkazového řádku Azure (ver 1.0)](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -228,7 +226,7 @@ Některé nativní součásti Java, jako je Mahout a s možností, můžete spus
 V některých případech je vhodné nakonfigurovat následující konfigurační soubory během procesu vytváření:
 
 * clusterIdentity.xml
-* core-site.xml
+* Core-site.xml
 * gateway.xml
 * hbase-env.xml
 * hbase-site.xml
@@ -238,7 +236,7 @@ V některých případech je vhodné nakonfigurovat následující konfiguračn�
 * mapred-site
 * oozie-site.xml
 * oozie-env.xml
-* storm-site.xml
+* Storm-site.xml
 * tez-site.xml
 * webhcat-site.xml
 * yarn-site.xml

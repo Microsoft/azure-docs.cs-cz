@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření a sdílení Azure portálu řídicí panely | Microsoft Docs"
-description: "Tento článek vysvětluje, jak vytvořit a upravit řídicí panely na portálu Azure."
+title: Vytvoření a sdílení Azure portálu řídicí panely | Microsoft Docs
+description: Tento článek vysvětluje, jak vytvořit a upravit řídicí panely na portálu Azure.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: sewatson
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: sewatson
-ms.openlocfilehash: 7f90c882285170bac34bfe020831d3ac04010a11
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5a5ae944b5f0059ee78a2171a9688902aaf6db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytvářet a sdílet řídicí panely na portálu Azure
 Můžete vytvořit více řídicí panely a sdílet je s ostatními uživateli, kteří mají přístup k vašemu předplatnému Azure.  Tento článek probírá základní informace o vytváření, úpravy, publikování a správa přístupu k řídicí panely.
@@ -75,7 +75,7 @@ Když vytváříte řídicí panel, je soukromé ve výchozím nastavení, což 
 
 ![sdílení řídicího panelu.](./media/azure-portal-dashboards/share-dashboard.png)
 
-Zobrazí se výzva vybrat skupinu prostředků pro řídicí panel publikování a odběru. Řídicí panely se bezproblémově integruje do ekosystému, implementovali jsme sdílené řídicí panely jako prostředky Azure (tak nemůžete sdílet zadáním e-mailovou adresu).  Přístup k informacím zobrazit většinou dlaždice na portálu se řídí [řízení přístupu na základě Role Azure](../active-directory/role-based-access-control-configure.md). Sdílené řídicí panely jsou z hlediska řízení k přístupu, nijak neliší od virtuálního počítače nebo účtu úložiště.  
+Zobrazí se výzva vybrat skupinu prostředků pro řídicí panel publikování a odběru. Řídicí panely se bezproblémově integruje do ekosystému, implementovali jsme sdílené řídicí panely jako prostředky Azure (tak nemůžete sdílet zadáním e-mailovou adresu).  Přístup k informacím zobrazit většinou dlaždice na portálu se řídí [řízení přístupu na základě Role Azure](../role-based-access-control/role-assignments-portal.md). Sdílené řídicí panely jsou z hlediska řízení k přístupu, nijak neliší od virtuálního počítače nebo účtu úložiště.  
 
 Řekněme, že máte předplatné Azure a členy týmu přiřazení rolí **vlastníka**, **Přispěvatel**, nebo **čtečky** předplatného.  Uživatelé, kteří jsou vlastníci a přispěvatelé dokážou seznamu, zobrazení, vytvořit, upravit nebo odstranit řídicí panely v rámci tohoto předplatného.  Uživatelé, kteří jsou čtečky dokážou seznamu a zobrazení řídicích panelů, ale nelze upravit nebo odstranit je.  Uživatelé s přístupem čtečky jsou možnost provádět místní úpravy sdílené řídicího panelu, ale nejsou možné publikovat tyto změny zpět na server.  Ale udělat privátní kopie řídicího panelu pro vlastní použití.  Jednotlivé dlaždice na řídicím panelu jako vždy vynutit svoje vlastní pravidla pro řízení přístupu na základě prostředků, které odpovídají.  
 
@@ -91,7 +91,7 @@ Po publikování řídicího panelu **sdílení + přístup** ovládacího prvku
 
 ![Správa řízení přístupu](./media/azure-portal-dashboards/manage-access.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Ke správě prostředků, najdete v části [Azure spravovat prostředky prostřednictvím portálu](../azure-resource-manager/resource-group-portal.md).
 * Nasazení prostředků najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

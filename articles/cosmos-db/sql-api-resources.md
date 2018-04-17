@@ -1,11 +1,11 @@
 ---
 title: Azure Cosmos DB model prostředků a koncepty | Microsoft Docs
 description: Další informace o databázi Cosmos Azure hierarchické model databáze, kolekce, uživatelem definované funkce (UDF), dokumentů, oprávnění ke správě prostředků a další.
-keywords: Hierarchical model, cosmosdb, azure, Microsoft azure
+keywords: Model hierarchické, cosmosdb, azure, Microsoft azure
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchický model prostředků a základní koncepty databáze Azure Cosmos
 
@@ -116,16 +116,16 @@ Všechny prostředky jsou adresovatelné identifikátor URI. Hodnota **_self** v
 
 | Hodnota _self | Popis |
 | --- | --- |
-| /dbs |Informační kanál databází pod účtem databáze |
-| /dbs/{dbName} |Databáze s id odpovídající hodnotě {dbName} |
-| /dbs/{dbName}/colls/ |Informační kanál kolekcí v databázi |
-| /dbs/{dbName}/colls/{collName} |Kolekce s id odpovídající hodnotě {collName} |
-| /dbs/{dbName}/colls/{collName}/docs |Informační kanál dokumentů v kolekci |
+| /DBS |Informační kanál databází pod účtem databáze |
+| /DBS/ {dbName} |Databáze s id odpovídající hodnotě {dbName} |
+| /colls/ /DBS/ {dbName} |Informační kanál kolekcí v databázi |
+| /colls/ /DBS/ {dbName} {collName} |Kolekce s id odpovídající hodnotě {collName} |
+| /colls/ /DBS/ {dbName} {collName} / docs |Informační kanál dokumentů v kolekci |
 | /dbs/{dbName}/colls/{collName}/docs/{docId} |Dokumentů s id odpovídající hodnotě {doc} |
-| /dbs/{dbName}/users/ |Informační kanál uživatele v databázi |
+| /users/ /DBS/ {dbName} |Informační kanál uživatele v databázi |
 | /dbs/{dbName}/users/{userId} |Uživatel s id odpovídající hodnota {uživatele} |
-| /dbs/{dbName}/users/{userId}/permissions |Informační kanál oprávnění pod uživatelským |
-| /dbs/{dbName}/users/{userId}/permissions/{permissionId} |Oprávnění s id odpovídající hodnotě {oprávnění} |
+| /users/ /DBS/ {dbName} {userId} nebo oprávnění |Informační kanál oprávnění pod uživatelským |
+| /permissions/ /users/ {userId} /DBS/ {dbName} {permissionId} |Oprávnění s id odpovídající hodnotě {oprávnění} |
 
 Každý prostředek má jedinečný název definovaný uživatelem, zveřejňovány prostřednictvím vlastnost id. Poznámka: pro dokumenty, pokud uživatel není uveden id, sady SDK automaticky generovat jedinečný identifikátor pro dokument. Id je řetězec definovaný uživatelem, až 256 znaků, které je jedinečné v rámci konkrétní nadřazený prostředek. 
 

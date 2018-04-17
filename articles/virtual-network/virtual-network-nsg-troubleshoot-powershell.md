@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s skupin zabezpečení sítě - prostředí PowerShell | Microsoft Docs"
-description: "Informace o řešení potíží s skupin zabezpečení sítě v modelu nasazení Azure Resource Manager pomocí Azure PowerShell."
+title: Řešení potíží s skupin zabezpečení sítě - prostředí PowerShell | Microsoft Docs
+description: Informace o řešení potíží s skupin zabezpečení sítě v modelu nasazení Azure Resource Manager pomocí Azure PowerShell.
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d556f2d6d37956c3b3bca2a2905b2c947e6be0df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Řešení potíží s skupin zabezpečení sítě pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Při tomto příkladu používá TCP port 3389, následující postup slouží k
 ## <a name="detailed-troubleshooting-steps"></a>Podrobné kroky řešení potíží
 Pomocí následujících kroků pro řešení potíží s skupiny Nsg pro virtuální počítač:
 
-1. Spuštění z relace prostředí Azure PowerShell a do Azure. Pokud si nejste obeznámeni s používáním Azure PowerShell, přečtěte si [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Spuštění z relace prostředí Azure PowerShell a do Azure. Pokud si nejste obeznámeni s používáním Azure PowerShell, přečtěte si [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku. Musí mít váš účet přiřazenou *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* operace pro síťové rozhraní. Zjistěte, jak přiřadit operations účty, najdete v tématu [vytvářet vlastní role pro řízení přístupu](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Zadejte následující příkaz, který vrátí všechna pravidla NSG použije na síťový adaptér s názvem *VM1 NIC1* ve skupině prostředků *RG1*:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

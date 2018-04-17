@@ -1,9 +1,9 @@
 ---
-title: "Vytvořit aktivitu protokolu výstrahy a spravovat je pomocí nové výstrahy (Preview) prostředí v Azure monitorování | Microsoft Docs"
-description: "Tento článek obsahuje informace o tom, jak vytvořit aktivitu protokolu výstrahy z karty výstrahy (Preview) v části monitorování Azure. Tento článek podrobně nové uživatelské rozhraní pro tuto funkci."
+title: Vytvořit aktivitu protokolu výstrahy a spravovat je pomocí nové výstrahy (Preview) prostředí v Azure monitorování | Microsoft Docs
+description: Tento článek obsahuje informace o tom, jak vytvořit aktivitu protokolu výstrahy z karty výstrahy (Preview) v části monitorování Azure. Tento článek podrobně nové uživatelské rozhraní pro tuto funkci.
 author: JYOTHIRMAISURI
 manager: vvithal
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: 
-ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.custom: ''
+ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Vytvoření protokol aktivit, které prostředí výstrah pomocí nové výstrahy (Preview)
 
@@ -103,13 +103,13 @@ Použijte následující postup:
 
     **Výstrahy logiku**:
 
-        - **Event Level**- The severity level of the event.**Verbose,Informational, Warning, Error**, or **Critical**.
-        - **Status**: The status of the event.**Started, Failed**, or **Succeeded**.
-        - **Event initiated by**: Also known as the caller; The email address or Azure Active Directory identifier of the user who performed the operation.
+     - **Úroveň události**-úroveň závažnosti události. **Podrobné, informační, upozornění, chyby**, nebo **kritické**.
+     - **Stav**: stav události. **Spuštění, se nezdařilo**, nebo **úspěšné**.
+     - **Událost iniciovaná**: známé taky jako volající; E-mailovou adresu nebo identifikátor Azure Active Directory uživatele, který provádí operaci.
 
-        **Sample signal graph with alert logic applied** :
+        **Ukázka signál grafu se výstrahy logikou použít** :
 
-        ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ Vybraná kritéria](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
 4. V části **definujte pravidla výstrah podrobnosti**, zadejte následující podrobnosti:
 

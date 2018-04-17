@@ -16,12 +16,12 @@ Při migraci jsou podporovány tyto klasické prostředky IaaS
 * Virtuální sítě
 * Brány VPN Gateway
 * Express trasy brány _(ve stejném předplatném jako virtuální síť pouze)_
-* Network Security Groups (Skupiny zabezpečení sítě) 
-* Směrovací tabulky 
-* Vyhrazené IP adresy 
+* Network Security Groups (Skupiny zabezpečení sítě)
+* Směrovací tabulky
+* Vyhrazené IP adresy
 
 ## <a name="supported-scopes-of-migration"></a>Podporované obory migrace
-K dokončení migrace výpočty, síť a úložiště prostředků 4 různými způsoby. Jedná se o 
+K dokončení migrace výpočty, síť a úložiště prostředků 4 různými způsoby. Jedná se o
 
 * Migrace virtuálních počítačů (ne ve virtuální síti)
 * Migrace virtuálních počítačů (ve virtuální síti)
@@ -77,7 +77,7 @@ Aktuálně nejsou podporovány následující funkce. Volitelně můžete tato n
 | Compute | Bitové kopie virtuálních počítačů. | Objekty BLOB virtuálního pevného disku za tyto disky bude migrována při migraci účtu úložiště |
 | Síť | Seznamy ACL koncových bodů. | Odeberte seznamy ACL koncových bodů a zkuste migraci opakovat. |
 | Síť | Application Gateway | Odeberte služby Application Gateway před zahájením migrace a potom bránu znovu vytvořte aplikaci po dokončení migrace. |
-| Síť | Virtuální sítě pomocí virtuální sítě partnerský vztah. | Migrovat virtuální sítě do Resource Manager a potom partnerský uzel. Další informace o [VNet Peering](../articles/virtual-network/virtual-network-peering-overview.md). | 
+| Síť | Virtuální sítě pomocí virtuální sítě partnerský vztah. | Migrovat virtuální sítě do Resource Manager a potom partnerský uzel. Další informace o [VNet Peering](../articles/virtual-network/virtual-network-peering-overview.md). |
 
 ### <a name="unsupported-configurations"></a>Nepodporované konfigurace
 Následující konfigurace nejsou aktuálně podporovány.
@@ -85,7 +85,7 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Služba | Konfigurace | Doporučení |
 | --- | --- | --- |
 | Resource Manager |Na základě řízení přístupu role (RBAC) pro klasické prostředky |Protože je identifikátor URI prostředků upravené po migraci, doporučujeme, abyste naplánovali RBAC aktualizace zásad, které je třeba provést po migraci. |
-| Compute |Více podsítí, které jsou přidružené k virtuálnímu počítači |Aktualizujte konfiguraci podsítě odkazovat jenom podsítě. |
+| Compute |Více podsítí, které jsou přidružené k virtuálnímu počítači |Aktualizujte konfiguraci podsítě odkazovat jenom jednu podsíť. To může vyžadovat odeberte sekundární síťový adaptér (který se odkazuje na jinou podsítí) z virtuálního počítače a znovu připojit po dokončení migrace. |
 | Compute |Virtuální počítače, které patří k virtuální síti, ale nemáte podsíť explicitní přiřazen |Volitelně můžete odstranit virtuální počítač. |
 | Compute |Virtuální počítače, které mají výstrahy, zásady škálování |Migrace prochází a tato nastavení jsou vyřadit. Důrazně doporučujeme vyhodnotit prostředí, před provedením migrace. Alternativně můžete znovu nakonfigurovat nastavení výstrah po dokončení migrace. |
 | Compute |Rozšíření virtuálního počítače XML (BGInfo 1.*, Visual Studio Debugger, Web Deploy a vzdálené ladění) |To není podporováno. Doporučujeme, odeberte tyto přípony z virtuálního počítače migraci pokračovat, nebo se budou automaticky odstraněna během procesu migrace. |
@@ -98,7 +98,7 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Síť | Classic okruhy Expressroute |Tato možnost není aktuálně podporována. Tyto okruhy se musí migrovat na Azure Resource Manager před zahájením migrace IaaS. Další informace o této najdete [okruhy ExpressRoute přesouvání z klasického modelu nasazení Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuální sítě, které obsahují služby App Service Environment |Tato možnost není aktuálně podporována. |
 | Azure HDInsight |Virtuální sítě, které obsahují služby HDInsight |Tato možnost není aktuálně podporována. |
-| Microsoft Dynamics Lifecycle Services |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány nástrojem služby Dynamics životního cyklu |Tato možnost není aktuálně podporována. |
+| Služby životního cyklu aplikace Microsoft Dynamics |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány nástrojem služby Dynamics životního cyklu |Tato možnost není aktuálně podporována. |
 | Azure AD Domain Services |Virtuální sítě, které obsahují služby Azure AD Domain services |Tato možnost není aktuálně podporována. |
 | Azure RemoteApp |Virtuální sítě, které obsahují nasazení Azure RemoteApp |Tato možnost není aktuálně podporována. |
 | Azure API Management |Virtuální sítě, které obsahují nasazení Azure API Management |Tato možnost není aktuálně podporována. Migrovat virtuální síť IaaS, změňte nasazení API Management, který je žádná operace výpadek sítě VNET. |

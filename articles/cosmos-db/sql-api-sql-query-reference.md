@@ -3,8 +3,7 @@ title: 'Azure Cosmos DB: Referenční informace SQL syntaxe dotazu | Microsoft D
 description: Referenční dokumentace pro Azure Cosmos DB SQL dotazovací jazyk.
 services: cosmos-db
 author: LalithaMV
-manager: jhubbard
-editor: mimig
+manager: kfile
 documentationcenter: ''
 ms.assetid: ''
 ms.service: cosmos-db
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 012fa27fdebebf1c86a324c49c53d665a15a91c2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL reference syntaxe
 
@@ -171,11 +170,11 @@ Určuje zdroj dat s nebo bez alias. Pokud není zadán alias, bude odvodit z `<c
   
 -   Pokud je výraz `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud ve výrazu název_kolekce, bude Název_kolekce použít jako alias.  
   
-AS `input_alias`  
+STEJNĚ JAKO `input_alias`  
   
 Určuje, že `input_alias` je sada hodnot vrácených základní výraz kolekce.  
  
-`input_alias` IN  
+`input_alias` V  
   
 Určuje, že `input_alias` by měl představovat sadu hodnot získat iterování přes všechny elementy pole každé pole vrácené výrazem základní kolekce. Libovolná hodnota vrácený základní kolekce výraz, který není pole se ignoruje.  
   
@@ -308,7 +307,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200),  (C, 4, 300) ,  (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300) (C, 5, 300)  
   
 > [!NOTE]
 > To bylo způsobeno v smíšený produkt mezi `<from_source2>` a `<from_source3>` vzhledem k tomu, jak jsou omezená na stejné `<from_source1>`.  To bylo způsobeno 4 (2 x 2) řazených kolekcí členů má hodnotu, 0 řazené kolekce členů s hodnota B (1 × 0) a 2 (2 × 1) řazených kolekcí členů mají hodnotu C.  
@@ -485,7 +484,7 @@ ORDER BY <sort_specification>
 |**Aritmetické operace**|Operátor očekává input(s) být čísel. Výstup je také číslo. Pokud je některý ze vstupních údajů **nedefinované** nebo typ než číslo potom výsledek **nedefinované**.|  
 |**Bitový**|Operátor očekává input(s) být 32bitové číslo se znaménkem čísel. Výstup je také 32bitové číslo se znaménkem číslo.<br /><br /> Libovolná hodnota není celé číslo se zaokrouhlí. Kladné celé číslo se zaokrouhlí směrem dolů, záporné hodnoty zaokrouhlený nahoru.<br /><br /> Provedením poslední 32 bity jeho dva pro zápis doplňku budou převedeny jakoukoli hodnotu, která je mimo rozsah 32bitové celé číslo.<br /><br /> Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než čísla, potom je **nedefinované**.<br /><br /> **Poznámka:** výše uvedené chování je kompatibilní s chováním bitový operátor jazyka JavaScript.|  
 |**Logické**|Operátor očekává input(s) být Boolean(s). Výstup je také logickou hodnotu.<br />Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než logickou hodnotu, bude výsledkem **nedefinované**.|  
-|**comparison**|Operátor očekává input(s) stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud je některý ze vstupních údajů **nedefinované** nebo mají různé typy vstupních hodnot, potom je **nedefinované**.<br /><br /> V tématu **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
+|**Porovnání**|Operátor očekává input(s) stejného typu a nesmí být definován. Výstup je logická hodnota.<br /><br /> Pokud je některý ze vstupních údajů **nedefinované** nebo mají různé typy vstupních hodnot, potom je **nedefinované**.<br /><br /> V tématu **řazení hodnot pro porovnání** tabulky pro hodnotu řazení podrobnosti.|  
 |**Řetězec**|Operátor očekává input(s) jako řetězec nebo řetězce. Výstup je také řetězec.<br />Pokud je některý ze vstupních údajů **nedefinované** nebo jiného typu než řetězec potom je **nedefinované**.|  
   
  **Unární operátory:**  
@@ -494,7 +493,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |**Aritmetické operace**|+<br /><br /> -|Vrátí číselnou hodnotu.<br /><br /> Bitovou negaci. Vrátí Negované číselnou hodnotu.|  
 |**Bitový**|~|Ty, které se doplňku. Vrátí zbytek číselnou hodnotu.|  
-|**Logické**|**NOT**|Negace. Vrátí Negované logická hodnota.|  
+|**Logické**|**NENÍ**|Negace. Vrátí Negované logická hodnota.|  
   
  **Binární operátory:**  
   
@@ -503,7 +502,7 @@ ORDER BY <sort_specification>
 |**Aritmetické operace**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Přidání.<br /><br /> Odčítání.<br /><br /> Násobení.<br /><br /> Dělení.<br /><br /> Modulační.|  
 |**Bitový**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitový operátor OR.<br /><br /> Bitové operace AND.<br /><br /> Bitové operace XOR.<br /><br /> Operátor posunu vlevo.<br /><br /> Posunutí doprava.<br /><br /> Posunutí doprava výplně nula.|  
 |**Logické**|**A**<br /><br /> **OR**|Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.<br /><br /> Logické spojení. Vrátí **true** Pokud jsou oba argumenty **true**, vrátí **false** jinak.|  
-|**comparison**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Rovná se. Vrátí **true** Pokud argumenty jsou stejné, vrátí **false** jinak.<br /><br /> Není rovno. Vrátí **true** Pokud argumenty nejsou stejné, vrátí **false** jinak.<br /><br /> Větší než. Vrátí **true** Pokud je větší než druhý argument, vrátí **false** jinak.<br /><br /> Větší než nebo rovna hodnotě. Vrátí **true** Pokud první argument je větší než nebo rovno druhý, vrátí **false** jinak.<br /><br /> Menší než. Vrátí **true** Pokud první argument je menší než druhý jeden návratový **false** jinak.<br /><br /> Menší než nebo rovno. Vrátí **true** Pokud první argument je menší než nebo rovna druhý, vrátí **false** jinak.<br /><br /> Sloučení. Vrátí druhý argument, pokud je první argument **nedefinované** hodnotu.|  
+|**Porovnání**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Rovná se. Vrátí **true** Pokud argumenty jsou stejné, vrátí **false** jinak.<br /><br /> Není rovno. Vrátí **true** Pokud argumenty nejsou stejné, vrátí **false** jinak.<br /><br /> Větší než. Vrátí **true** Pokud je větší než druhý argument, vrátí **false** jinak.<br /><br /> Větší než nebo rovna hodnotě. Vrátí **true** Pokud první argument je větší než nebo rovno druhý, vrátí **false** jinak.<br /><br /> Menší než. Vrátí **true** Pokud první argument je menší než druhý jeden návratový **false** jinak.<br /><br /> Menší než nebo rovno. Vrátí **true** Pokud první argument je menší než nebo rovna druhý, vrátí **false** jinak.<br /><br /> Sloučení. Vrátí druhý argument, pokud je první argument **nedefinované** hodnotu.|  
 |**Řetězec**|**&#124;&#124;**|Zřetězení. Vrátí zřetězení oba argumenty.|  
   
  **Ternární operátory:**  
@@ -520,7 +519,7 @@ ORDER BY <sort_specification>
 |**Číslo**|Fyzická reálné číslo.<br /><br /> Zápornou hodnotu Infinity je menší než ostatní číselnou hodnotu.<br /><br /> Je větší než jakoukoli jinou hodnotu, číslo kladné nekonečnou hodnotu. **NaN** hodnota není porovnatelný. Porovnávání s **NaN** bude mít za následek **nedefinované** hodnotu.|  
 |**Řetězec**|Lexicographical pořadí.|  
 |**Pole**|Žádné řazení, ale přiměřenou.|  
-|**Object**|Žádné řazení, ale přiměřenou.|  
+|**Objekt**|Žádné řazení, ale přiměřenou.|  
   
  **Poznámky**  
   
@@ -549,7 +548,7 @@ ORDER BY <sort_specification>
 |**Číslo**|Dvojitá přesnost s plovoucí desetinnou čárkou číslo, IEEE 754 standard.|  
 |**Řetězec**|Pořadí nula nebo více znaků Unicode. Řetězce musí být uzavřena do jednoduchých nebo dvojitých uvozovek.|  
 |**Pole**|Pořadí počtu nula či více elementů. Každý element může být hodnota všechny skalární datového typu, s výjimkou Undefined.|  
-|**Object**|Neseřazený sadu nula nebo více dvojic název hodnota. Název je řetězec znaků Unicode, hodnota může být jakékoli skalární datového typu, s výjimkou **Undefined**.|  
+|**Objekt**|Neseřazený sadu nula nebo více dvojic název hodnota. Název je řetězec znaků Unicode, hodnota může být jakékoli skalární datového typu, s výjimkou **Undefined**.|  
   
  **Syntaxe**  
   
@@ -631,10 +630,10 @@ ORDER BY <sort_specification>
 |\\"|dvojité uvozovky (")|U+0022|  
 |\\\|obrácené lomítko (\\)|U+005C|  
 |\\/|lomítko (/)|U+002F|  
-|\b|backspace|U+0008|  
-|\f|řídicí znak|U+000C|  
-|\n|Přechod na nový řádek|U+000A|  
-|\r|Návrat na začátek|U+000D|  
+|\b|BACKSPACE|U+0008|  
+|\f|řídicí znak|U + 000C|  
+|\n|Přechod na nový řádek|U + 000A|  
+|\r|Návrat na začátek|U + 000D|  
 |\t|tabulátor|U+0009|  
 |\uXXXX|Znak Unicode definované 4 hexadecimální číslice.|U+XXXX|  
   
@@ -700,8 +699,8 @@ ORDER BY <sort_specification>
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[MEZNÍ HODNOTY](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[STUPŇŮ](#bk_degrees)|  
 |[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
-|[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
-|[RADIANS](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
+|[LOG10](#bk_log10)|[PI](#bk_pi)|[NAPÁJENÍ](#bk_power)|  
+|[RADIÁNECH](#bk_radians)|[ZAOKROUHLIT](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[HRANATÉ](#bk_square)|[SIGN](#bk_sign)|  
 |[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
@@ -969,7 +968,7 @@ SELECT COT(124.1332)
 [{"$1": -0.040311998371148884}]  
 ```  
   
-####  <a name="bk_degrees"></a> DEGREES  
+####  <a name="bk_degrees"></a> STUPŇŮ  
  Vrací odpovídající úhel ve stupních pro úhlu uvedeného v radiánech.  
   
  **Syntaxe**  
@@ -1088,7 +1087,7 @@ SELECT EXP(LOG(20)), LOG(EXP(20))
 [{$1: 19.999999999999996, $2: 20}]  
 ```  
   
-####  <a name="bk_log"></a> LOG  
+####  <a name="bk_log"></a> PROTOKOLU  
  Vrátí přirozený logaritmus zadaný číselný výraz.  
   
  **Syntaxe**  
@@ -1215,7 +1214,7 @@ SELECT PI()
 [{"$1": 3.1415926535897931}]  
 ```  
   
-####  <a name="bk_power"></a> POWER  
+####  <a name="bk_power"></a> NAPÁJENÍ  
  Vrátí hodnotu zadaného výrazu na zadanou mocninu.  
   
  **Syntaxe**  
@@ -1252,7 +1251,7 @@ SELECT POWER(2, 3), POWER(2.5, 3)
 [{$1: 8, $2: 15.625}]  
 ```  
   
-####  <a name="bk_radians"></a> RADIANS  
+####  <a name="bk_radians"></a> RADIÁNECH  
  Vrátí radiánech při zadání číselného výrazu, ve stupních, se.  
   
  **Syntaxe**  
@@ -1324,7 +1323,7 @@ SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)
 [{$1: 2, $2: 3, $3: 3, $4: -2, $5: -3}]  
 ```  
   
-####  <a name="bk_sign"></a> SIGN  
+####  <a name="bk_sign"></a> PŘIHLÁŠENÍ  
  Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.  
   
  **Syntaxe**  
@@ -1853,11 +1852,11 @@ SELECT
 ||||  
 |-|-|-|  
 |[CONCAT](#bk_concat)|[OBSAHUJE](#bk_contains)|[ENDSWITH](#bk_endswith)|  
-|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[LENGTH](#bk_length)|  
+|[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[DÉLKA](#bk_length)|  
 |[NIŽŠÍ](#bk_lower)|[LTRIM](#bk_ltrim)|[NAHRADIT](#bk_replace)|  
 |[REPLIKACE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[DÍLČÍ ŘETĚZEC](#bk_substring)|  
-|[UPPER](#bk_upper)|||  
+|[HORNÍ](#bk_upper)|||  
   
 ####  <a name="bk_concat"></a> CONCAT  
  Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty.  
@@ -1991,7 +1990,7 @@ SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")
 [{"$1": 0, "$2": 1, "$3": -1}]  
 ```  
   
-####  <a name="bk_left"></a> LEFT  
+####  <a name="bk_left"></a> VLEVO  
  Vrátí levé části řetězec s zadaný počet znaků.  
   
  **Syntaxe**  
@@ -2231,7 +2230,7 @@ SELECT REVERSE("Abc")
 [{"$1": "cbA"}]  
 ```  
   
-####  <a name="bk_right"></a> RIGHT  
+####  <a name="bk_right"></a> VPRAVO  
  Vrátí pravou část řetězec s zadaný počet znaků.  
   
  **Syntaxe**  

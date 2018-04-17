@@ -1,25 +1,25 @@
 ---
-title: "ESP8266 do cloudu - připojení Sparkfun ESP8266 věc Dev do služby Azure IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak nastavit a připojení k Azure IoT Hub pro něj k odesílání dat do Azure Cloudová platforma v tomto kurzu Sparkfun ESP8266 věc vývojářů."
+title: ESP8266 do cloudu - připojení Sparkfun ESP8266 věc Dev do služby Azure IoT Hub | Microsoft Docs
+description: Zjistěte, jak nastavit a připojení k Azure IoT Hub pro něj k odesílání dat do Azure Cloudová platforma v tomto kurzu Sparkfun ESP8266 věc vývojářů.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: 587fe292-9602-45b4-95ee-f39bba10e716
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2017
-ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: e6837d0312217d8e27e3639b8220f5016a2505a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Připojení k Azure IoT Hub v cloudu Sparkfun ESP8266 věc vývojářů
 
@@ -119,7 +119,7 @@ Pokud používáte Ubuntu, zkontrolujte, zda že normální uživatel má opráv
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>`je název vlastníka skupiny, kterou jste získali v předchozím kroku. `<username>`je Ubuntu uživatelské jméno.
+   `<group-owner-name>` je název vlastníka skupiny, kterou jste získali v předchozím kroku. `<username>` je Ubuntu uživatelské jméno.
 
 1. Odhlaste se Ubuntu a přihlaste se znovu pro změna se projeví.
 
@@ -221,7 +221,7 @@ Pokud se zobrazí následující výstup z okna sériové monitorování a blika
 
 ![závěrečný výstup v integrovaném vývojovém prostředí arduino](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Úspěšně jste připojené Sparkfun ESP8266 věc Dev do služby IoT hub a data zaznamenaná senzor odeslané do služby IoT hub. 
 

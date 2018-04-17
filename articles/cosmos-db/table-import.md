@@ -1,10 +1,10 @@
 ---
-title: "Umožňuje importovat data pro použití s rozhraním API pro Azure Cosmos DB tabulky | Microsoft Docs"
-description: "Zjistěte, jak importovat data pomocí rozhraní API služby Azure DB Cosmos tabulky."
+title: Umožňuje importovat data pro použití s rozhraním API pro Azure Cosmos DB tabulky | Microsoft Docs
+description: Zjistěte, jak importovat data pomocí rozhraní API služby Azure DB Cosmos tabulky.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: mimig
-ms.openlocfilehash: 1c53be736ad65a53767626033be27f0891de06ba
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sngun
+ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Umožňuje importovat data pro použití s rozhraní API služby Azure DB Cosmos tabulky
 
 Tento kurz obsahuje pokyny týkající se importu dat pro použití s Azure Cosmos DB [tabulky API](table-introduction.md). Pokud máte data uložená ve službě Azure Table storage, můžete použít buď nástroj pro migraci dat nebo AzCopy k importu vaše data. Pokud máte data uložená v účtu Azure Cosmos DB tabulky API (preview), musíte použít nástroj Migrace dat pro migraci dat. Po importu dat je budete moct využívat nabídky Azure Cosmos DB jako připraveného globální distribuční, vyhrazené propustnosti, latenci jednociferné milisekund na 99th percentilu, zaručit vysoká dostupnost, pomocí možnosti premium a automatické sekundární indexování.
 
-Tento kurz obsahuje následující úlohy:
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Import dat pomocí nástroje migrace dat
@@ -131,7 +131,7 @@ Při migraci z tabulky rozhraní API (preview) do rozhraní API všeobecně dost
 
 3. Migrace dat klienta z tabulky preview do tabulek GA pomocí nástroje migrace dat. Pokyny týkající se použití nástroj pro migraci dat pro tento účel, jsou popsané v [nástroj pro migraci dat](#data-migration-tool). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -1,11 +1,11 @@
 ---
-title: "Zlepšení výkonu index columnstore – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Snižte požadavky na paměť nebo zvýšení dostupné paměti maximalizovat počet řádků, které columnstore index zkomprimuje do každé skupiny řádků."
+title: Zlepšení výkonu index columnstore – Azure SQL Data Warehouse | Microsoft Docs
+description: Snižte požadavky na paměť nebo zvýšení dostupné paměti maximalizovat počet řádků, které columnstore index zkomprimuje do každé skupiny řádků.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6484f457731bb1b97f01df339eaf1b0aebf924c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Tím se maximalizuje quality rowgroup pro columnstore
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 Velikost DWU a třída prostředků uživatele, společně určují, kolik paměti je k dispozici pro dotaz uživatele. Ke zvýšení přidělení paměti pro dotaz zatížení, můžete zvýšit počet Dwu nebo zvýšit Třída prostředků.
 
 - Pokud chcete zvýšit jednotkami Dwu, najdete v části [jak škálování výkonu?](quickstart-scale-compute-portal.md)
-- Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](resource-classes-for-workload-management.md#assigning-resource-classes).
+- Chcete-li změnit třídy prostředků pro dotaz, [změnit v příkladu třída prostředků uživatele](resource-classes-for-workload-management.md#change-a-users-resource-class).
 
 Například na DWU 100 může uživatel ve třídě prostředků smallrc používat 100 MB paměti pro každý distribuci. Podrobnosti najdete v tématu [souběžnost v SQL Data Warehouse](resource-classes-for-workload-management.md).
 

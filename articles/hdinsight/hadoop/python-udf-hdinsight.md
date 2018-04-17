@@ -1,26 +1,24 @@
 ---
-title: "Python UDF s Apache Hive a vepřových - Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití Python uživatele definované funkce (UDF) z Hive a Pig v HDInsight, technologie zásobníku Hadoop v Azure."
+title: Python UDF s Apache Hive a vepřových - Azure HDInsight | Microsoft Docs
+description: Další informace o použití Python uživatele definované funkce (UDF) z Hive a Pig v HDInsight, technologie zásobníku Hadoop v Azure.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: c44d6606-28cd-429b-b535-235e8f34a664
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f98fe82a9637cfdddf7af1dcb6aaf979bffcad6f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c508ffcdd5cccaad5c7b0717d33e2ea1449ab522
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Funkce (UDF) s Hive a Pig definované uživatelem Python použití v HDInsight
 
@@ -48,7 +46,7 @@ HDInsight zahrnuje taky Jython, což je implementace Python napsanou v jazyce Ja
 
 Python lze použít jako UDF z Hive prostřednictvím HiveQL `TRANSFORM` příkaz. Například následující HiveQL vyvolá `hiveudf.py` souboru uložený v výchozí účet úložiště Azure pro cluster.
 
-**Linux-based HDInsight**
+**HDInsight se systémem Linux**
 
 ```hiveql
 add file wasb:///hiveudf.py;
@@ -60,7 +58,7 @@ FROM hivesampletable
 ORDER BY clientid LIMIT 50;
 ```
 
-**Windows-based HDInsight**
+**HDInsight se systémem Windows**
 
 ```hiveql
 add file wasb:///hiveudf.py;
@@ -380,8 +378,8 @@ Informace o chybě (STDERR) a výsledek úlohy (STDOUT) jsou taky zaznamenává 
 
 | Pro tuto úlohu... | Podívejte se na tyto soubory v kontejneru objektů blob |
 | --- | --- |
-| Hive |/HivePython/stderr<p>/HivePython/stdout |
-| Pig |/PigPython/stderr<p>/ PigPython/stdout |
+| Hive |/HivePython/stderr<p>/ HivePython/stdout |
+| Pig |/ PigPython/stderr<p>/ PigPython/stdout |
 
 ## <a name="next"></a>Další kroky
 

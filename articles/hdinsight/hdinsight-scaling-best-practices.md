@@ -1,26 +1,24 @@
 ---
-title: "Škálování clusteru velikosti - Azure HDInsight | Microsoft Docs"
-description: "Škálování clusteru HDInsight na úlohu."
+title: Škálování clusteru velikosti - Azure HDInsight | Microsoft Docs
+description: Škálování clusteru HDInsight na úlohu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 7e9ee660c07d6265e55e94cf79ed13334fcb3d16
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8b76d7d0441a5c1c25ad17b73083ec0e4feef1fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
@@ -125,7 +123,7 @@ Po opuštění nouzovém režimu, můžete ručně odebrat dočasné soubory, ne
 
 * H100 nelze odeslat příkaz Zobrazit databází: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: připojení k hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername . internal.cloudapp.NET/1.1.1.1] se nezdařilo: **odmítl připojení**
 
-* H020 Could not establish connection to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException: Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed: Connection refused: org.apache.thrift.transport.TTransportException: Could not create http connection to http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: připojení k hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: **odmítl připojení**
+* Není H020 může vytvořit připojení k hn0 hdisrv.servername.bx.internal.cloudapp .net: 10001: org.apache.thrift.transport.TTransportException: nebylo možné vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: připojení k hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: odmítl připojení: org.apache.thrift.transport.TTransportException: nebylo možné vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: připojení k hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: **odmítl připojení**
 
 * Z protokolů Hive: UPOZORNIT [hlavní]: server. HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Chyba při spuštění HiveServer2 při pokusu 21, bude akci opakovat v 60 sekund java.lang.RuntimeException: Chyba při použití zásad autorizace v konfiguraci hive: org.apache.hadoop.ipc.RemoteException ( org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **nelze vytvořit adresář** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Název uzlu je v nouzovém režimu**.
     Hlášené bloky 0 potřebuje další 9 bloky k dosažení prahové hodnoty 0.9900 celkový počet bloků 9.
@@ -156,7 +154,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 ![Nouzový režim mimo](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
 > [!NOTE]
-> `-D` Přepínač je nezbytný, protože výchozí systém souborů v prostředí HDInsight je Azure Storage nebo Azure Data Lake Store. `-D`Určuje, že se příkazy provedou proti místního systému souborů HDFS.
+> `-D` Přepínač je nezbytný, protože výchozí systém souborů v prostředí HDInsight je Azure Storage nebo Azure Data Lake Store. `-D` Určuje, že se příkazy provedou proti místního systému souborů HDFS.
 
 Potom můžete zobrazit sestavu, která zobrazuje podrobnosti o stavu HDFS:
 

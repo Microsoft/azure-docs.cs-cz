@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Úvod do víceklientské aplikace SaaS, která využívá vzor databáze na klienta s databází SQL
 
@@ -24,7 +24,7 @@ Jsou k dispozici v aplikaci zdrojový kód a správu skriptů [WingtipTicketsSaa
 
 ## <a name="application-architecture"></a>Architektura aplikace
 
-Aplikace Wingtip SaaS používá model databáze za klienta. Chcete-li maximalizovat efektivitu používá elastické fondy SQL. Pro zřizování a mapování klientům svá data se používá databázi katalogu. Základní aplikace Wingtip SaaS používá fond s tři klienty ukázka plus databáze katalogu. Dokončení mnoho výsledků kurzy Wingtip SaaS v rozšíření do počáteční nasazení. Zavedly se doplňky, jako je například analytické databáze a schématu databáze mezi správy.
+Aplikace Wingtip SaaS používá model databáze za klienta. Chcete-li maximalizovat efektivitu používá elastické fondy SQL. Pro zřizování a mapování klientům svá data se používá databázi katalogu. Základní aplikace Wingtip SaaS používá fond s tři klienty ukázka plus databáze katalogu. Servery katalogu a klientů zajištěných s aliasy DNS. Tyto aliasy slouží k udržování odkazů na aktivní prostředky využívané třídou Wingtip aplikace. Tyto aliasy jsou aktualizovány tak, aby odkazoval na obnovení prostředky v kurzech obnovení po havárii. Dokončení mnoho výsledků kurzy Wingtip SaaS v rozšíření do počáteční nasazení. Zavedly se doplňky, jako je například analytické databáze a schématu databáze mezi správy.
 
 
 ![Architektura Wingtip SaaS](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

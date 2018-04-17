@@ -1,6 +1,6 @@
 ---
 title: Pravidla ve službě Azure CDN modul funkce | Microsoft Docs
-description: Referenční dokumentace pro Azure CDN pravidla shody stav motoru a funkce.
+description: Referenční dokumentace pro Azure CDN pravidla modul funkce.
 services: cdn
 documentationcenter: ''
 author: Lichard
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 04/10/2018
 ms.author: rli
-ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fd670e3b01812b7fa8fc708a02d02210b598ac6a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Pravidla ve službě Azure CDN modul funkce
 Tento článek obsahuje seznam podrobný popis dostupných funkcí pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -49,7 +49,7 @@ Název | Účel
 [Nepoužívat mezipaměti](#bypass-cache) | Určuje, zda požadavek by měl nepoužívat ukládání do mezipaměti.
 [Zpracování hlavička Cache-Control](#cache-control-header-treatment) | Ovládací prvky generování `Cache-Control` hlavičky pomocí protokolu POP, když je aktivní funkce externí Max-Age.
 [Řetězec dotazu klíče mezipaměti](#cache-key-query-string) | Určuje, zda klíč mezipaměti zahrnutí nebo vyloučení parametrů řetězce dotazu přidružený k požadavku.
-[Cache-Key Rewrite](#cache-key-rewrite) | Přepíše klíč mezipaměti přidružený k požadavku.
+[Přepište klíče mezipaměti](#cache-key-rewrite) | Přepíše klíč mezipaměti přidružený k požadavku.
 [Dokončení výplně mezipaměti](#complete-cache-fill) | Určuje, co se stane, když požadavek výsledky v k neúspěšnému přístupu do částečné mezipaměti na serveru POP.
 [Komprimovat typy souborů](#compress-file-types) | Definuje formáty souborů pro soubory, které jsou komprimované a na serveru.
 [Výchozí interní Max-Age](#default-internal-max-age) | Určuje výchozí maximální stáří interval pro POP opětovné ověření mezipaměti serveru původu.
@@ -382,7 +382,7 @@ Tento typ konfigurace by generovat následující dotaz řetězec parametr-klí�
 </br>
 
 ---
-### <a name="cache-key-rewrite"></a>Cache-Key Rewrite
+### <a name="cache-key-rewrite"></a>Přepište klíče mezipaměti
 **Účel:** přepíše klíč mezipaměti přidružený k požadavku.
 
 Klíč mezipaměti je relativní cesta, která určuje prostředek pro účely ukládání do mezipaměti. Jinými slovy zkontrolujte servery v mezipaměti verzi prostředek podle cesty podle definice jeho klíče mezipaměti.
@@ -428,14 +428,32 @@ K neúspěšnému přístupu do mezipaměti částečné obvykle dochází, až 
 
 Ponechat výchozí konfiguraci pro HTTP velké platformu, protože snižuje zatížení na serveru počátek zákazníka a zvyšuje rychlost, jakou vašim zákazníkům stažení vašeho obsahu.
 
-Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení, tato funkce nemůže být přidružena následující podmínky shody: Edge Cname, literálu hlavičky požadavku, žádosti o záhlaví zástupný znak, adresa URL dotazu literálu a adresa URL dotazu.
-
 Hodnota|Výsledek
 --|--
 Povoleno|Obnoví výchozí chování. Výchozí chování je vynutit POP zahájíte načítání na pozadí prostředku ze zdrojového serveru. Po kterém asset bude v místní mezipaměti na serveru POP.
 Zakázáno|POP bránit v provádění načítání na pozadí pro asset. Výsledkem je, že další požadavek pro tento prostředek z této oblasti způsobí, že POP k vyžádání ze zdrojového serveru zákazníka.
 
 **Výchozí chování:** povolena.
+
+#### <a name="compatibility"></a>Kompatibilita
+Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
+- JAKO počet
+- IP adresa klienta
+- Parametr souboru cookie
+- Soubor cookie parametr Regex
+- Země
+- Zařízení
+- Hraniční Cname
+- Odkazující domény
+- Literál hlavičky požadavku
+- Regex hlavičky požadavku
+- Zástupný znak hlavičky požadavku
+- Request – metoda
+- Schéma požadavku
+- Adresa URL dotazu literál
+- Adresa URL dotazu Regex
+- Adresa URL dotazu zástupný znak
+- Parametr URL dotazu
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -478,8 +496,8 @@ Formát pro zadání hlavičkách žádostí a odpovědí je definován následu
 
 Záhlaví – typ|Formát|Příklady
 -|-|-
-Hlavička požadavku|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referer}i <br/> % {Autorizace} i
-Hlavička odezvy|%{[ResponseHeader]()}[o]()| % {Stáří} o <br/> %{Content-Type}o <br/> %{Cookie}o
+Hlavička požadavku|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Odkazující server} i <br/> % {Autorizace} i
+Hlavička odezvy|%{[ResponseHeader]()}[o]()| % {Stáří} o <br/> % {Content-Type} o <br/> %{Cookie}o
 
 Informace o klíči:
 
@@ -487,7 +505,7 @@ Informace o klíči:
 - U tohoto pole platné znaky jsou následující: alfanumerické znaky (0 – 9, a-z a A-Z), pomlčky, dvojtečky, středníky, apostrofy, čárky, tečky, podtržítka, znaky rovná, závorky, závorky a mezery. Symbol procenta a složené závorky jsou povoleny pouze pokud se používá k určení pole hlavičky.
 - Pravopis pro každé pole Zadaná hlavička musí odpovídat názvu záhlaví požadovaného požadavků a odpovědí.
 - Pokud chcete určit více záhlaví, použijte oddělovač označíte, každá hlavička. Můžete například použít zkratkou pro každá hlavička:
-    - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o 
+    - AE: % {přijmout Encoding} i odpověď: % {autorizace} i Berte: % {Content-Type} o 
 
 **Výchozí hodnota:** -
 
@@ -510,7 +528,7 @@ X-ES Debug: _Directive1_,_Directive2_,_DirectiveN_
 
 **Příklad:**
 
-X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
+X-ES-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 Hodnota|Výsledek
 -|-
@@ -538,16 +556,28 @@ Informace o klíči:
     - Určení celočíselnou hodnotu a pak vyberete požadovanou časovou jednotku (například sekund, minut, hodin, atd.). Tato hodnota definuje výchozí interval interní maximální stáří.
 
 - Nastavení časovou jednotku na hodnotu "Vypnuto" přidělí intervalu výchozí vnitřní maximální stáří 7 dní pro požadavky, které nebyly přiřazeny indikace maximální stáří v jejich `Cache-Control` nebo `Expires` záhlaví.
-- Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
-    - Edge 
-    - CNAME
-    - Literál hlavičky požadavku
-    - Zástupný znak hlavičky požadavku
-    - Request – metoda
-    - Adresa URL dotazu literál
-    - Adresa URL dotazu zástupný znak
 
 **Výchozí hodnota:** 7 dnů
+
+#### <a name="compatibility"></a>Kompatibilita
+Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
+- JAKO počet
+- IP adresa klienta
+- Parametr souboru cookie
+- Soubor cookie parametr Regex
+- Země
+- Zařízení
+- Hraniční Cname
+- Odkazující domény
+- Literál hlavičky požadavku
+- Regex hlavičky požadavku
+- Zástupný znak hlavičky požadavku
+- Request – metoda
+- Schéma požadavku
+- Adresa URL dotazu literál
+- Adresa URL dotazu Regex
+- Adresa URL dotazu zástupný znak
+- Parametr URL dotazu
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -642,16 +672,28 @@ Informace o klíči:
     - Určení celočíselná hodnota a výběrem požadovaného časovou jednotku (například sekund, minut, hodin, atd.). Tato hodnota definuje interval maximální stáří žádosti.
 
 - Tato funkce nastavení časovou jednotku na hodnotu "Vypnuto" zakáže. Interní maximální stáří intervalu nesmí být přiděleno požadované prostředky. Pokud původní hlavičku neobsahuje pokyny pro ukládání do mezipaměti, pak asset bude do mezipaměti podle active nastavení ve funkci výchozí vnitřní Max-Age.
-- Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
-    - Edge 
-    - CNAME
-    - Literál hlavičky požadavku
-    - Zástupný znak hlavičky požadavku
-    - Request – metoda
-    - Adresa URL dotazu literál
-    - Adresa URL dotazu zástupný znak
 
 **Výchozí chování:** vypnuto
+
+#### <a name="compatibility"></a>Kompatibilita
+Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
+- JAKO počet
+- IP adresa klienta
+- Parametr souboru cookie
+- Soubor cookie parametr Regex
+- Země
+- Zařízení
+- Hraniční Cname
+- Odkazující domény
+- Literál hlavičky požadavku
+- Regex hlavičky požadavku
+- Zástupný znak hlavičky požadavku
+- Request – metoda
+- Schéma požadavku
+- Adresa URL dotazu literál
+- Adresa URL dotazu Regex
+- Adresa URL dotazu zástupný znak
+- Parametr URL dotazu
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -707,16 +749,28 @@ Informace o klíči:
 - Nakonfigurujte tuto funkci tak, že definujete mezerami oddělený seznam stavové kódy, pro které se budou ignorovat výše direktivy.
 - Sada platný stavové kódy pro tuto funkci: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 a 505.
 - Tuto funkci zakážete nastavením na prázdnou hodnotu.
-- Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
-    - Edge 
-    - CNAME
-    - Literál hlavičky požadavku
-    - Zástupný znak hlavičky požadavku
-    - Request – metoda
-    - Adresa URL dotazu literál
-    - Adresa URL dotazu zástupný znak
 
 **Výchozí chování:** výchozí chování je respektovat výše direktivy.
+
+#### <a name="compatibility"></a>Kompatibilita
+Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
+- JAKO počet
+- IP adresa klienta
+- Parametr souboru cookie
+- Soubor cookie parametr Regex
+- Země
+- Zařízení
+- Hraniční Cname
+- Odkazující domény
+- Literál hlavičky požadavku
+- Regex hlavičky požadavku
+- Zástupný znak hlavičky požadavku
+- Request – metoda
+- Schéma požadavku
+- Adresa URL dotazu literál
+- Adresa URL dotazu Regex
+- Adresa URL dotazu zástupný znak
+- Parametr URL dotazu
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -758,16 +812,28 @@ Informace o klíči:
     - Určení celočíselnou hodnotu a pak vyberete požadovanou časovou jednotku (například sekund, minut, hodin, atd.). Tato hodnota definuje interní max zastaralé, se použijí.
 
 - Nastavení časovou jednotku na hodnotu "Vypnuto" bude tuto funkci zakázat. V mezipaměti asset nebudou poskytnuty času její normální vypršení platnosti.
-- Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
-    - Edge 
-    - CNAME
-    - Literál hlavičky požadavku
-    - Zástupný znak hlavičky požadavku
-    - Request – metoda
-    - Adresa URL dotazu literál
-    - Adresa URL dotazu zástupný znak
 
 **Výchozí chování:** dvě minuty.
+
+#### <a name="compatibility"></a>Kompatibilita
+Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže být přidružena následující podmínky shody této funkce: 
+- JAKO počet
+- IP adresa klienta
+- Parametr souboru cookie
+- Soubor cookie parametr Regex
+- Země
+- Zařízení
+- Hraniční Cname
+- Odkazující domény
+- Literál hlavičky požadavku
+- Regex hlavičky požadavku
+- Zástupný znak hlavičky požadavku
+- Request – metoda
+- Schéma požadavku
+- Adresa URL dotazu literál
+- Adresa URL dotazu Regex
+- Adresa URL dotazu zástupný znak
+- Parametr URL dotazu
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -872,13 +938,13 @@ Informace o klíči:
     - Přijměte kódování
     - stáří
     - připojení
-    - content-encoding
+    - kódování obsahu
     - Délka obsahu
     - rozsah obsahu
     - datum
     - server
     - přípojného
-    - transfer-encoding
+    - kódování přenosu
     - upgrade
     - lišit
     - prostřednictvím
@@ -1041,12 +1107,17 @@ Pokud je povoleno ověřování na základě tokenu, bude použito pouze požada
 
 Šifrovací klíč, který se používá k šifrování a dešifrování hodnoty tokenu je určen podle primární klíč a možnosti zálohování klíče na stránce tokenu ověřování. Mějte na paměti, že šifrovací klíče jsou specifické pro platformu.
 
+**Výchozí chování:** zakázané.
+
+Tato funkce má přednost před většinu funkcí s výjimkou funkce přepisování adres URL.
+
 Hodnota | Výsledek
 ------|---------
 Povoleno | Chrání požadovaný obsah s ověřováním na základě tokenu. Pouze požadavky od klientů, které poskytují platný token a splňovat požadavky na jeho bude dodržet. FTP transakce jsou vyloučeny z ověřování na základě tokenu.
 Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit konfiguraci ověřování na základě tokenu k určení, zda požadavek nebude zabezpečené.
 
-**Výchozí chování:** zakázané.
+#### <a name="compatibility"></a>Kompatibilita
+Nepoužívejte tokenu ověřování s podmínkou vždy shodu. 
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
 
@@ -1056,8 +1127,6 @@ Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit konfigu
 ### <a name="token-auth-denial-code"></a>Odmítnutí kód tokenu ověřování
 **Účel:** Určuje typ odpovědi, který bude vrácen uživateli při požadavku byl odepřen v důsledku ověřování na základě tokenu.
 
-Kód tokenu odepření ověření nelze použít s podmínkou vždy shodu. Místo toho použijte **vlastní Denial zpracování** kapitoly **tokenu ověřování** stránky **spravovat** portálu. Další informace najdete v tématu [zabezpečení Azure CDN prostředky pomocí ověřování tokenem](cdn-token-auth.md).
-
 V následující tabulce jsou uvedeny kódy k dispozici odpověď.
 
 Kód odezvy|Název odpovědí|Popis
@@ -1066,8 +1135,11 @@ Kód odezvy|Název odpovědí|Popis
 302|Nalezeno|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé. Tento kód stavu je standardní způsob provedení přesměrování.
 307|Dočasné přesměrování|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé.
 401|Neautorizováno|Kombinování tento kód stavu se hlavička WWW-Authenticate odpovědi umožňuje zobrazit výzvu uživateli pro ověřování.
-403|Zakázáno|Toto je standardní 403 Zakázáno stavovou zprávu, která neoprávněný uživatel uvidí při pokusu o přístup k chráněnému obsahu.
+403|Zakázáno|Tato zpráva je standardní 403 Zakázáno stavovou zprávu, která neoprávněný uživatel uvidí při pokusu o přístup k chráněnému obsahu.
 404|Soubor se nenašel|Tento kód stavu označuje, že klient HTTP byl schopen komunikovat se serverem, ale nebyl nalezen požadovaný obsah.
+
+#### <a name="compatibility"></a>Kompatibilita
+Nepoužívejte kód tokenu odmítnutí ověřování s podmínkou vždy shodu. Místo toho použijte **vlastní Denial zpracování** kapitoly **tokenu ověřování** stránky **spravovat** portálu. Další informace najdete v tématu [zabezpečení Azure CDN prostředky pomocí ověřování tokenem](cdn-token-auth.md).
 
 #### <a name="url-redirection"></a>Adresa URL přesměrování
 
@@ -1152,7 +1224,7 @@ Konfigurace této funkce vyžaduje nastavení následujících možností:
 Možnost|Popis
 -|-
 Kód|Vyberte kód odpovědi, který bude vrácen do žadatel.
-Zdroj & vzor| Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přesměrována. Bude přesměrovat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/> <br/> **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. To je v části "/XXXX/" a název koncového bodu. <br/> **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> -Zkontrolujte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s veškeré podmínky shody definované pro tuto funkci. <br/> -Zadat vzor; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce.
+Zdroj & vzor| Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přesměrována. Bude přesměrovat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/> <br/> **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/> **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> -Zkontrolujte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s veškeré podmínky shody definované pro tuto funkci. <br/> -Zadat vzor; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce.
 Cíl| Zadejte adresu URL, na kterou se přesměruje výše uvedených požadavků. <br/> Vytvořte dynamicky pomocí této adresy URL: <br/> -Vzor regulárního výrazu <br/>-HTTP proměnné <br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. <br/> 
 Důrazně doporučujeme používat absolutní adresu URL. Použití relativní adresa URL může přesměrovat adresy URL CDN platná cesta UNC.
 
@@ -1177,7 +1249,7 @@ Tato adresa URL přesměrování může dosáhnout pomocí následující konfig
     - Vzorový scénář #3: 
         - Ukázková žádost (hraniční CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - Adresa URL požadavku (po přesměrování): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
-- Proměnná požadavku schématu (% {schéma}) byl využity v cílovém možnost. Tím se zajistí, že schéma žádosti zůstává beze změny po přesměrování.
+- V cílovém možnosti, které zajišťuje, že schéma žádosti zůstává beze změny po přesměrování se využívají záznamy proměnnou schéma požadavku (% {schéma}).
 - Segmenty adres URL, které zaznamenalo z požadavku se připojují na novou adresu URL prostřednictvím "1 USD."
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
@@ -1194,9 +1266,9 @@ Informace o klíči:
 
 Možnost|Popis
 -|-
- Zdroj & vzor | Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přepsána. Bude nutné přepsat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/>     - **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. To je v části "/XXXX/" a název koncového bodu. <br/> - **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> Ověřte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s některá z podmínek shodu definované pro tuto funkci. Určete vzorec; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce. 
+ Zdroj & vzor | Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přepsána. Bude nutné přepsat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/>     - **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/> - **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> Ověřte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s některá z podmínek shodu definované pro tuto funkci. Určete vzorec; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce. 
  Cíl  |Zadejte relativní adresu URL, na který se přepsal výše uvedené požadavky: <br/>    1. Výběr bodu přístup k obsahu, který identifikuje zdrojový server. <br/>    2. Definování relativní cestu pomocí: <br/>        -Vzor regulárního výrazu <br/>        -HTTP proměnné <br/> <br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. 
- Tato funkce umožňuje bodů POP přepsání adresy URL bez tradičních přesměrování. To znamená, že žadatel dostanou stejný kód odpovědi jako v případě, kdyby byla požadována rewritten adresy URL.
+ Tato funkce umožňuje bodů POP přepsání adresy URL bez tradičních přesměrování. To znamená žadatel obdrží stejný kód odpovědi jako v případě, kdyby byla požadována rewritten adresy URL.
 
 **Vzorový scénář 1**
 
@@ -1220,7 +1292,6 @@ Tato adresa URL přesměrování může dosáhnout pomocí následující konfig
 - Segmenty adres URL, které zaznamenalo z požadavku se připojují na novou adresu URL prostřednictvím "1 USD."
 
 #### <a name="compatibility"></a>Kompatibilita
-
 Tato funkce zahrnuje odpovídající kritériím, které je nutné splnit, než ji jde použít na žádost. Chcete-li zabránit nastavení konfliktní kritéria shody, tato funkce není kompatibilní s následující podmínky shody:
 
 - JAKO počet

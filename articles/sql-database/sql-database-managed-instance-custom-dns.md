@@ -1,20 +1,20 @@
 ---
-title: "Databáze Azure SQL spravované Instance vlastní DNS | Microsoft Docs"
-description: "Toto téma popisuje možnosti konfigurace pro vlastní DNS s spravované Instance databáze Azure SQL."
+title: Databáze Azure SQL spravované Instance vlastní DNS | Microsoft Docs
+description: Toto téma popisuje možnosti konfigurace pro vlastní DNS s spravované Instance databáze Azure SQL.
 services: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 993ff518a1987581ad7de4797611f104080c2c2f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurace vlastní DNS pro Azure SQL Database spravované Instance
 
@@ -79,5 +79,5 @@ Konfigurace DNS na Azure VNet vyžaduje zadejte IP adresy, takže konfigurace vi
 ## <a name="next-steps"></a>Další postup
 
 - Přehled najdete v tématu [co je spravované Instance](sql-database-managed-instance.md)
-- Příklad vytvoření virtuální sítě a potom vytvoření Instance spravované, naleznete v části [vytvoření Instance spravované](sql-database-managed-instance-tutorial-portal.md).
-- Konfigurace virtuální sítě, naleznete v části [konfiguraci virtuální sítě pro spravované instance](sql-database-managed-instance-vnet-configuration.md)
+- Kurz ukazuje, jak vytvořit novou instanci spravované, najdete v části [vytvoření Instance spravované](sql-database-managed-instance-create-tutorial-portal.md).
+- Informace o konfiguraci virtuální sítě pro instanci spravované najdete v tématu [konfiguraci virtuální sítě pro spravované instance](sql-database-managed-instance-vnet-configuration.md)

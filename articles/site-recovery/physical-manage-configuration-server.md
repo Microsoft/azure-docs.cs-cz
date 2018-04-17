@@ -1,17 +1,17 @@
 ---
 title: " Spravovat konfigurační server pro obnovení po havárii fyzického serveru s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii fyzického serveru do Azure, se službou Azure Site Recovery."
+description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii fyzického serveru do Azure, se službou Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84969ff04684003a04f99b4fbf7f03be4140a277
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfigurace serveru pro zotavení po havárii fyzického serveru
 
@@ -24,7 +24,7 @@ Tabulka shrnuje předpoklady pro nasazení na místním počítači konfigurace 
 | **Komponenta** | **Požadavek** |
 | --- |---|
 | Procesorová jádra| 8 |
-| Paměť RAM | 12 GB|
+| Paměť RAM | 16 GB|
 | Počet disků | 3, včetně disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení |
 | Volné místo na disku (mezipaměť procesového serveru) | 600 GB
 | Volné místo na disku (disk pro uchování) | 600 GB|
@@ -36,7 +36,7 @@ Tabulka shrnuje předpoklady pro nasazení na místním počítači konfigurace 
 | IIS | -Žádné existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Žádná existující web nebo aplikace naslouchá na portu 443<br>|
 | Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) |
 | Typ IP adresy | Statická |
-| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nevyžaduje se pro procesový server pro horizontální navýšení kapacity) <br> - time.nist.gov <br> - time.windows.com |
+| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (není požadováno pro servery se Škálováním na více systémů procesu) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru

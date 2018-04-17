@@ -1,22 +1,22 @@
 ---
-title: "Ověřování do služby Azure Key Vault pomocí rozhraní .NET"
-description: "V knihovně Microsoft.Azure.Services.AppAuthentication k ověření do Azure Key Vault pomocí rozhraní .NET."
-keywords: "místní přihlašovací údaje Azure key vault ověřování"
+title: Ověřování do služby Azure Key Vault pomocí rozhraní .NET
+description: V knihovně Microsoft.Azure.Services.AppAuthentication k ověření do Azure Key Vault pomocí rozhraní .NET.
+keywords: místní přihlašovací údaje Azure key vault ověřování
 author: lleonard-msft
 manager: mbaldwin
 services: key-vault
 ms.author: alleonar
 ms.date: 11/15/2017
 ms.topic: article
-ms.prod: 
-ms.service: microsoft-keyvault
-ms.technology: 
+ms.prod: ''
+ms.service: key-vault
+ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -113,7 +113,7 @@ Použití Azure CLI pro místní vývoj:
 
 Použití `az account get-access-token` ověřte přístup.  Pokud narazíte na chyby, ověřte, že krok 1 dokončena úspěšně. 
 
-Pokud rozhraní příkazového řádku Azure není nainstalovaná na výchozí adresář, může se zobrazit chyba, které `AzureServiceTokenProvider` nelze najít cestu k rozhraní příkazového řádku Azure.  Použití **AzureCLIPath**proměnnou prostředí k definování instalační složce nástroje příkazového řádku Azure CLI. `AzureServiceTokenProvider`Přidá zadaný v adresář **AzureCLIPath** proměnnou prostředí **cesta** proměnné prostředí v případě potřeby.
+Pokud rozhraní příkazového řádku Azure není nainstalovaná na výchozí adresář, může se zobrazit chyba, které `AzureServiceTokenProvider` nelze najít cestu k rozhraní příkazového řádku Azure.  Použití **AzureCLIPath**proměnnou prostředí k definování instalační složce nástroje příkazového řádku Azure CLI. `AzureServiceTokenProvider` Přidá zadaný v adresář **AzureCLIPath** proměnnou prostředí **cesta** proměnné prostředí v případě potřeby.
 
 Pokud jste přihlášeni k více účtů pomocí rozhraní příkazového řádku Azure nebo účtu má přístup k více předplatných, budete muset zadat konkrétní předplatné, který se má použít.  Chcete-li to provést, použijte:
 
@@ -211,7 +211,7 @@ Přihlaste se pomocí Azure AD sdílených tajný přihlašovacích údajů:
 
 3. Spusťte aplikaci. 
 
-Až všechno, co nastavíte správně, žádné další změny kódu jsou nezbytné.  `AzureServiceTokenProvider`používá proměnnou prostředí a certifikát k ověření služby Azure AD. 
+Až všechno, co nastavíte správně, žádné další změny kódu jsou nezbytné.  `AzureServiceTokenProvider` používá proměnnou prostředí a certifikát k ověření služby Azure AD. 
 
 <a name="connectionstrings"></a>
 ## <a name="connection-string-support"></a>Podpora řetězců připojení
@@ -228,12 +228,12 @@ Podporovány jsou následující možnosti:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Místní vývoj | AzureServiceTokenProvider používá Visual Studio k získání tokenu. |
 | `RunAs=CurrentUser;` | Místní vývoj | AzureServiceTokenProvider používá integrované ověřování služby Azure AD se získat token. |
 | `RunAs=App;` | Managed Service Identity | AzureServiceTokenProvider používá identita spravované služby se získat token. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Instanční objekt | `AzureServiceTokenProvider`certifikát se používá k získání tokenu z Azure AD. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Instanční objekt | `AzureServiceTokenProvider`používá certifikát k získání tokenu z Azure AD|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt |`AzureServiceTokenProvider`tajný klíč se používá k získání tokenu z Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Instanční objekt | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Instanční objekt | `AzureServiceTokenProvider` používá certifikát k získání tokenu z Azure AD|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt |`AzureServiceTokenProvider` tajný klíč se používá k získání tokenu z Azure AD. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [identita spravované služby](/azure/app-service/app-service-managed-service-identity).
 

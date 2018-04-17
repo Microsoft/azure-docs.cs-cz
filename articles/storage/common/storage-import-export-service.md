@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1e94466d9d41bbc6a2100256d96e19d0d13600cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Použít službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure.
 V tomto článku jsme poskytují podrobné pokyny k používání služby Azure Import/Export bezpečně přenést velké objemy dat do úložiště objektů Blob v Azure a Azure Files jednotkami přenosů disku pro datové centrum Azure. Tato služba slouží také k přenosu dat ze služby Azure storage na jednotky pevného disku a dodávat místní servery. Buď do úložiště objektů Blob v Azure nebo Azure Files můžete importovat data z jednoho disku interní disků SATA. 
@@ -32,7 +32,7 @@ Postupujte podle níže uvedených pokynů, pokud data na disku má být importo
 2.  Pokud chcete povolit šifrování na počítači systému windows, povolte šifrování schránku na svazku systému souborů NTFS. Postupujte podle pokynů na https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
 3.  Úplně zkopírujte data do těchto šifrované jednoho systému souborů NTFS svazků na discích pomocí kopírování a vkládání nebo přetažení & rozevírací nebo Robocopy nebo takový nástroj.
 7.  Stáhněte si WAImportExport V1 z https://www.microsoft.com/en-us/download/details.aspx?id=42659
-8.  Rozbalení souborů do waimportexportv1 složky výchozí. For example, C:\WaImportExportV1  
+8.  Rozbalení souborů do waimportexportv1 složky výchozí. Například C:\WaImportExportV1  
 9.  Spustit jako správce a otevřete příkazový řádek nebo prostředí PowerShell a změňte adresář na rozbalené složce. Například cd C:\WaImportExportV1
 10. Zkopírujte následující příkazový řádek do textového editoru a upravit ho vytvořit příkazového řádku:
 
@@ -431,7 +431,7 @@ Příprava jednotky pro úlohy exportu doporučujeme následující předběžn�
    | Začíná |/Music/ |Exportuje všech objektů BLOB v kontejneru **Hudba** |
    | Začíná |/ Hudba/láska |Exportuje všech objektů BLOB v kontejneru **Hudba** které začínají předponou **rádi** |
    | Rovno |$root/logo.bmp |Export objektu blob **logo.bmp** v kořenovém kontejneru |
-   | Rovno |videos/story.mp4 |Export objektu blob **story.mp4** v kontejneru **videa** |
+   | Rovno |videos/Story.MP4 |Export objektu blob **story.mp4** v kontejneru **videa** |
    
    Cesty objektů blob v platné formáty, aby nedocházelo k chybám při zpracování, je nutné zadat, jak je vidět na tomto snímku obrazovky.
    
@@ -560,7 +560,7 @@ Objekt Blob stránky maximální velikost je 1TB.
 
 Služba Azure Import/Export ve výchozím nastavení zašifruje pomocí nástroje bitlocker šifrování AES 128, ale to je možné zvýšit na AES 256 ručně šifrování nástrojem bitlocker před data budou zkopírována. 
 
-Pokud používáte [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), zde je ukázka příkazu
+Pokud používáte [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip), zde je ukázka příkazu
 ```
 WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
 ```

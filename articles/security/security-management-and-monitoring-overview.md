@@ -1,5 +1,5 @@
 ---
-title: "Správa zabezpečení Azure a Přehled monitorování | Microsoft Docs"
+title: Správa zabezpečení Azure a Přehled monitorování | Microsoft Docs
 description: " Azure nabízí mechanismy zabezpečení, které pomáhají při správy a monitorování cloudových služeb Azure a virtuálních počítačů.  Tento článek obsahuje přehled těchto klíčových funkcí zabezpečení a služeb. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99e7a7746ae3f229614c8ac3d059b422a4ee6f74
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Správa zabezpečení Azure a Přehled monitorování
 Azure nabízí mechanismy zabezpečení, které pomáhají při správy a monitorování cloudových služeb Azure a virtuálních počítačů. Tento článek obsahuje přehled těchto klíčových funkcí zabezpečení a služeb. Jsou uvedeny odkazy na články, které poskytují podrobnosti o jednotlivých tak další informace.
@@ -50,7 +50,7 @@ Zde jsou základní funkce, které chcete být popsaná v tomto článku:
 Další informace:
 
 * [Blog týmu Active Directory na RBAC](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-* [Řízení přístupu Azure na základě rolí](../active-directory/role-based-access-control-configure.md)
+* [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware
 S Azure můžete použít antimalwarový software od dodavatelů hlavní zabezpečení, jako je Microsoft, Symantec, Trend Micro, McAfee a Kaspersky k ochraně vašich virtuálních počítačů ze škodlivých souborů, adwaru a dalšími hrozbami.

@@ -1,8 +1,8 @@
 ---
-title: "Instalace aplikací Hadoop jiných výrobců v Azure HDInsight | Dokumentace Microsoftu"
-description: "Přečtěte si, jak v Azure HDInsight instalovat aplikace Hadoop jiných výrobců."
+title: Instalace aplikací Hadoop jiných výrobců v Azure HDInsight | Dokumentace Microsoftu
+description: Přečtěte si, jak v Azure HDInsight instalovat aplikace Hadoop jiných výrobců.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: eaf5904d-41e2-4a5f-8bec-9dde069039c2
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: cfaad24e7bf1c38f3be1e13c88fc932be0bd502c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bd74be9c78744619f60606b509ea16d000bd3998
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Hadoop jiných výrobců v Azure HDInsight
 

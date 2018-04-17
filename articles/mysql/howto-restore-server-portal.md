@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5d6118a47e10763373c9376ca08d328cf22ab3c8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8782befb1548606fe649909a7841eb648c15f1c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Postup zálohování a obnovení serveru se ve službě Azure Database pro databázi MySQL pomocí portálu Azure
 
@@ -85,6 +85,10 @@ Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytv
 
 2. Ve formuláři na **vybrat zdroj** rozevíracího seznamu, vyberte **zálohování**. Tato akce načte seznam serverů, které mají geograficky redundantní zálohy povolena. Vyberte jednu z těchto zálohy jako zdroj nový server.
    ![Vyberte zdroj: Zálohování a seznam geograficky redundantní zálohy](./media/howto-restore-server-portal/2-georestore.png)
+
+   > [!NOTE]
+   > Při prvním vytvoření serveru nemusí být okamžitě k dispozici pro geografické obnovení. Může trvat několik hodin, než nezbytné metadata vyplnit.
+   >
 
 3. Vyplňte zbytek formulář s vašich předvolbách. Můžete vybrat libovolný **umístění**. Až vyberete umístění, můžete vybrat **cenová úroveň**. Ve výchozím nastavení se zobrazí parametry, které obnovujete z existující server. Můžete kliknout na **OK** bez jakýchkoli změn pro dědění těchto nastavení. Nebo můžete změnit **výpočetní generování** (Pokud k dispozici v oblasti jste vybrali), počet **vCores**, **dobu uchování zálohování**, a **zálohování Možnost redundance**. Změna **cenová úroveň** (Basic, obecné účely nebo k paměťově optimalizovaným) nebo **úložiště** velikost během obnovení není podporována.
 

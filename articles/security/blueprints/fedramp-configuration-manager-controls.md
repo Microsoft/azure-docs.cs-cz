@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – Configuration Management"
-description: "FedRAMP webové aplikace automatizace – Configuration Management."
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – Configuration Management
+description: FedRAMP webové aplikace automatizace – Configuration Management.
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 356eccac6af2780c02d1cd935d41891b5f89f1a2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-management-cm"></a>Správa konfigurací (CM)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu správy konfigurace, které řeší účel, oboru, role, odpovědnosti, závazků správy spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásady správy konfigurace a ovládací prvky přidružené konfigurace správy; kontroluje a aktualizuje aktuální zásady správy konfigurace [přiřazení: organizace definované frekvence]; a postupy správy konfigurace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 2** organizace sama vyvinula, dokumenty a udržuje pod řízení konfigurace, standardních hodnot konfigurace aktuální informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -53,13 +53,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-2-1a"></a>NIST 800-53 Control CM-2 (1).a
+ ### <a name="nist-800-53-control-cm-2-1a"></a>((1) .a CM 2 NIST 800-53 ovládací prvek
 
 #### <a name="baseline-configuration--reviews-and-updates"></a>Standardních hodnot konfigurace | Recenze a aktualizace
 
 **CM-2 (1) .a** organizace kontroluje a aktualizuje standardních hodnot konfigurace systému informace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (1) .b** organizace kontroluje a aktualizuje standardních hodnot konfigurace systému informace o vyžádání kvůli [přiřazení definované organizace okolností].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -81,13 +81,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-2-1c"></a>NIST 800-53 Control CM-2 (1).c
+ ### <a name="nist-800-53-control-cm-2-1c"></a>((1) .c CM 2 NIST 800-53 ovládací prvek
 
 #### <a name="baseline-configuration--reviews-and-updates"></a>Standardních hodnot konfigurace | Recenze a aktualizace
 
 **CM-2 (1) .c** organizace kontroluje a aktualizuje standardních hodnot konfigurace systému informace jako nedílné součásti informace systému součást instalace a upgrady.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (2)** organizace využívá automatizované mechanismy pro údržbu aktuální, úplné, přesný a snadno dostupné standardních hodnot konfigurace systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-2 (3)** organizace zachová [přiřazení: organizace definované předchozích verzích standardních hodnot konfigurace systému informace] pro podporu vrácení zpět.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -123,13 +123,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-2-7a"></a>NIST 800-53 Control CM-2 (7).a
+ ### <a name="nist-800-53-control-cm-2-7a"></a>NIST 800-53 řízení .a CM 2 (7)
 
 #### <a name="baseline-configuration--configure-systems-components-or-devices-for-high-risk-areas"></a>Standardních hodnot konfigurace | Konfigurace systémů, komponenty nebo zařízení s vysokým rizikem oblastí
 
 **CM-2 (7) .a** problémy organizace [přiřazení: systémy informace definované organizace, součásti systému nebo zařízení] s [přiřazení: Konfigurace organizace definované] jednotlivcům cestě do umístění, organizace za to mít významné riziko.
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **.B CM-2 (7)** organizace platí [přiřazení: ochrana definované organizace zabezpečení] do zařízení, když vrátíte jednotlivce.
 
-**Odpovědnosti:**`Not Applicable`
+**Odpovědnosti:** `Not Applicable`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.a** organizace určuje typy změny systému informace, které jsou řízené konfigurací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.b** organizace zkontroluje navrhované změny konfigurace řídí systému informace a schválí nebo disapproves tyto změny s explicitní aspekt analýzy dopadu zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -179,13 +179,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ## <a name="nist-800-53-control-cm-3c"></a>NIST 800-53 Control CM-3.c
+ ## <a name="nist-800-53-control-cm-3c"></a>Ovládací prvek NIST 800-53 CM-3.c
 
 #### <a name="configuration-change-control"></a>Řízení změn konfigurace
 
 **CM 3.c** dokumenty konfigurace organizace změnit rozhodnutí, které jsou přidružené informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.d** organizace implementuje schválené změny konfigurace řídí informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3.e** Organizace zachová záznamy řízené konfigurací změny systému informace [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.f** organizace audity a zkontroluje aktivity spojené s konfigurace řídí změnami informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 3.g** organizace koordinuje a poskytuje dohledu pro aktivity řízení změn konfigurace prostřednictvím [přiřazení: elementu ovládacího prvku změn konfigurace definované organizace (například výbor, panel)], convenes [výběr ( jeden nebo více): [přiřazení: organizace definované frekvence]; [Přiřazení: Konfigurace organizace definované podmínky změnu]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -249,13 +249,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-3-1a"></a>NIST 800-53 Control CM-3 (1).a
+ ### <a name="nist-800-53-control-cm-3-1a"></a>((1) .a CM 3 NIST 800-53 ovládací prvek
 
 #### <a name="configuration-change-control--automated-document--notification--prohibition-of-changes"></a>Řízení změn konfigurace | Automatizované dokumentu nebo oznámení nebo zákaz změn
 
 **CM-3 (1) .a** organizace využívá automatizované mechanismy pro dokumentu navrhované změny do systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (1) .b** organizace využívá automatizované mechanismy pro upozornění [přiřazení: autority uspořádané definované schválení] navrhované změny informací o systému a žádosti o změnu schválení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -277,13 +277,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-3-1c"></a>NIST 800-53 Control CM-3 (1).c
+ ### <a name="nist-800-53-control-cm-3-1c"></a>((1) .c CM 3 NIST 800-53 ovládací prvek
 
 #### <a name="configuration-change-control--automated-document--notification--prohibition-of-changes"></a>Řízení změn konfigurace | Automatizované dokumentu nebo oznámení nebo zákaz změn
 
 **CM-3 (1) .c** organizace využívá automatizované mechanismy, abyste měli na očích informace systému, který dosud neschválených podle nebo schválení navrhované změny [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -291,13 +291,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-3-1d"></a>NIST 800-53 Control CM-3 (1).d
+ ### <a name="nist-800-53-control-cm-3-1d"></a>((1) .d CM 3 NIST 800-53 ovládací prvek
 
 #### <a name="configuration-change-control--automated-document--notification--prohibition-of-changes"></a>Řízení změn konfigurace | Automatizované dokumentu nebo oznámení nebo zákaz změn
 
 **CM-3 (1) .d** organizace využívá automatizované mechanismy zakázat změny systému informace, dokud jsou přijaty určené schválení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -309,9 +309,9 @@ ms.lasthandoff: 02/11/2018
 
 #### <a name="configuration-change-control--automated-document--notification--prohibition-of-changes"></a>Řízení změn konfigurace | Automatizované dokumentu nebo oznámení nebo zákaz změn
 
-**CM-3 (1).e** Organizace používá automatizované mechanismy pro všechny změny do systému informace o dokumentu.
+**.E CM-3 (1)** Organizace používá automatizované mechanismy pro všechny změny do systému informace o dokumentu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -319,13 +319,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-3-1f"></a>NIST 800-53 Control CM-3 (1).f
+ ### <a name="nist-800-53-control-cm-3-1f"></a>((1) .f CM 3 NIST 800-53 ovládací prvek
 
 #### <a name="configuration-change-control--automated-document--notification--prohibition-of-changes"></a>Řízení změn konfigurace | Automatizované dokumentu nebo oznámení nebo zákaz změn
 
 **CM-3 (1) .f** organizace využívá automatizované mechanismy pro upozornění [přiřazení: definované organizace pracovníky] při dokončení schválené změny systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (2)** organizace testuje, ověří a dokumenty změny systému informace před implementací změny na operační systém.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (4)** organizace vyžaduje zástupce informace o zabezpečení, být členem skupiny [přiřazení: elementu ovládacího prvku změn konfigurace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-3 (6)** organizace zajistí, že kryptografických mechanismů použitý k poskytnutí [přiřazení: ochrana definované organizace zabezpečení] jsou v části Správa konfigurace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 4** organizace analyzuje změny systému informace k určení potenciální dopadů zabezpečení před implementací změnu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-4 (1)** organizace analyzuje změny systému informace v samostatných testovacím prostředí před implementací v provozním prostředí, hledá zabezpečení ovlivňuje kvůli nedostatky, slabá místa, nekompatibilita nebo úmyslně zlomyslných.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 5** organizace definuje, dokumentů, schválí a vynucuje omezení přístupu fyzické a logické přidružené změny systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (1)** informace systému vynucuje omezení přístupu a podporuje auditování vynucení akce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (2)** organizace kontroluje změny systému informace [přiřazení: organizace definované frekvence] a [přiřazení: organizace definované okolností] k určení, zda došlo k neoprávněné změny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (3)** informace brání instalaci [přiřazení: organizace definované software a firmware součásti] bez ověření, že součást byla digitálně podepsané používá certifikát, který se rozpozná a Schválit organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -459,13 +459,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-5-5a"></a>NIST 800-53 Control CM-5 (5).a
+ ### <a name="nist-800-53-control-cm-5-5a"></a>NIST 800-53 řízení .a CM 5 (5)
 
 #### <a name="access-restrictions-for-change--limit-production--operational-privileges"></a>Přístup k omezení pro změnu | Omezit produkční / provozní oprávnění
 
 **CM-5 (5) .a** organizace omezuje oprávnění pro změnu komponent systému informace a informace týkající se systému v produkčním nebo provozní prostředí.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-5 (5) .b** organizace zkontroluje a reevaluates oprávnění [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.a** organizace vytváří a dokumenty nastavení konfigurace pro produkty informačních technologií pracujících v rámci informace systém pomocí [přiřazení: konfigurace zabezpečení organizace definované kontrolní seznamy] které odrážejí nejvíc omezující režim konzistentní s provozní požadavky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.b** organizace implementuje nastavení konfigurace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -515,13 +515,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ## <a name="nist-800-53-control-cm-6c"></a>NIST 800-53 Control CM-6.c
+ ## <a name="nist-800-53-control-cm-6c"></a>Ovládací prvek NIST 800-53 CM-6.c
 
 #### <a name="configuration-settings"></a>Nastavení konfigurace
 
 **CM 6.c** organizace identifikuje, dokumenty a schválí všechny odchylky od zavedených konfigurační nastavení pro [přiřazení: komponent systému informace definované organizace] na základě [přiřazení: definované organizace provozní požadavky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 6.d** organizace monitorování a ovládací prvky změny nastavení konfigurace v souladu se zásadami a postupy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6 (1)** organizace využívá automatizované mechanismy centrálně spravovat, používá a ověření konfiguračních nastavení pro [přiřazení: komponent systému informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,11 +563,11 @@ ms.lasthandoff: 02/11/2018
 
 **CM-6 (2)** organizace využívá [přiřazení: ochrana definované organizace zabezpečení] reagovat na neoprávněné změny [přiřazení: nastavení konfigurace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
-| **Zákazníka** | Tento plán, podle kterého nasadí Azure Automation DSC. Část z Azure Operations Management Suite (OMS) Automation DSC je možné nakonfigurovat pro generování výstrahy nebo chcete-li opravit nesprávné konfigurace při zjištění. |
+| **Zákazníka** | Tento plán, podle kterého nasadí Azure Automation DSC. Automatizace DSC lze nakonfigurovat pro generování výstrahy, nebo chcete-li opravit nesprávné konfigurace při zjištění. |
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 7a** organizace nakonfiguruje systému informace poskytují pouze základní funkce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 7.b** organizace zakáže nebo omezí používání následující funkce, porty, protokoly a služby: [přiřazení: organizace definované funkce zakázané nebo s omezeným přístupem, porty, protokoly nebo služby].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -599,13 +599,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-7-1a"></a>NIST 800-53 Control CM-7 (1).a
+ ### <a name="nist-800-53-control-cm-7-1a"></a>((1) .a CM 7 NIST 800-53 ovládací prvek
 
 #### <a name="least-functionality--periodic-review"></a>Minimálně funkce | Pravidelné kontroly
 
 **CM-7 (1) .a** organizace zkontroluje informace o systému [přiřazení: organizace definované frekvence] k identifikaci nepotřebné nebo nezabezpečené funkcí, porty, protokoly a služby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -613,13 +613,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-7-1b"></a>NIST 800-53 Control CM-7 (1).b
+ ### <a name="nist-800-53-control-cm-7-1b"></a>((1) .b CM 7 NIST 800-53 ovládací prvek
 
 #### <a name="least-functionality--periodic-review"></a>Minimálně funkce | Pravidelné kontroly
 
 **CM-7 (1) .b** zakáže organizace [přiřazení: organizace definované funkce, porty, protokoly a služby v rámci systému informace považuje za nepotřebné nebo nezabezpečené].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-7 (2)** systému informací zabraňuje spuštění programu v souladu s [výběr (jeden nebo více): [přiřazení: organizace definované zásady týkající se softwaru programu využití a omezení]; pravidla autorizace podmínky a podmínky použití programu software].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -641,13 +641,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-7-5a"></a>NIST 800-53 Control CM-7 (5).a
+ ### <a name="nist-800-53-control-cm-7-5a"></a>NIST 800-53 řízení .a CM 7 (5)
 
 #### <a name="least-functionality--authorized-software--whitelisting"></a>Minimálně funkce | Oprávnění softwaru / vytvoření seznamu povolených
 
 **CM-7 (5) .a** identifikuje organizace [přiřazení: programy definované organizace softwaru pověření ke spouštění v systému informace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -655,13 +655,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-7-5b"></a>NIST 800-53 Control CM-7 (5).b
+ ### <a name="nist-800-53-control-cm-7-5b"></a>NIST 800-53 řízení .b CM 7 (5)
 
 #### <a name="least-functionality--authorized-software--whitelisting"></a>Minimálně funkce | Oprávnění softwaru / vytvoření seznamu povolených
 
 **CM-7 (5) .b** organizace využívá zásadu odepřít all, povolení výjimka, která umožní provádění autorizovaný softwarových programů na informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -669,13 +669,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-7-5c"></a>NIST 800-53 Control CM-7 (5).c
+ ### <a name="nist-800-53-control-cm-7-5c"></a>NIST 800-53 řízení .c CM 7 (5)
 
 #### <a name="least-functionality--authorized-software--whitelisting"></a>Minimálně funkce | Oprávnění softwaru / vytvoření seznamu povolených
 
 **CM-7 (5) .c** organizace kontroluje a aktualizuje seznam autorizovaných softwarových programů [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 8.a** organizace vyvíjí a dokumenty inventáře informace o systémových součástí, které přesně odráží aktuální informace o systému zahrnuje všechny součásti v rámci hranice autorizace systému informace; je v úrovně podrobností považované za nezbytné pro sledování a vytváření sestav; a zahrnuje [přiřazení: informace definované organizace považované za nezbytné k dosažení odpovědnosti za součást systému informace o platnosti].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 8.b** organizace kontroluje a aktualizuje inventář součásti systému informace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (1)** organizace aktualizace inventáře komponenty system informace jako součást instalace součástí, odstraňování a aktualizace informací o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (2)** organizace využívá automatizované mechanismy, které pomáhají udržovat inventář aktuální, úplné, přesný a snadno dostupné informace o systémových součástí.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -739,13 +739,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-8-3a"></a>NIST 800-53 Control CM-8 (3).a
+ ### <a name="nist-800-53-control-cm-8-3a"></a>NIST 800-53 řízení (3) .a CM-8
 
 #### <a name="information-system-component-inventory--automated-unauthorized-component-detection"></a>Informace o systému součást inventáře | Automatické zjišťování neoprávněným součásti
 
 **CM-8 (3) .a** organizace využívá automatizované mechanismy [přiřazení: definované organizace frekvence] k detekci přítomnosti neoprávněným hardware, software a firmware součásti v rámci systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -753,13 +753,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-cm-8-3b"></a>NIST 800-53 Control CM-8 (3).b
+ ### <a name="nist-800-53-control-cm-8-3b"></a>NIST 800-53 řízení (3) .b CM-8
 
 #### <a name="information-system-component-inventory--automated-unauthorized-component-detection"></a>Informace o systému součást inventáře | Automatické zjišťování neoprávněným součásti
 
 **CM-8 (3) .b** organizace provede následující akce při zjištění neoprávněným součásti: [výběr (jeden nebo více): Zakáže přístup k síti tím, že tyto součásti; izoluje komponenty; upozorní [přiřazení: definované organizace "pracovníky nebo rolí]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -773,7 +773,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (4)** organizace obsahuje součást inventáře informace Systémové informace, způsob pro definování [výběr (jeden nebo více): název; pozice role], jednotlivce zodpovědná/odpovědní za správu těchto součástí .
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -787,7 +787,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-8 (5)** organizace ověřuje, že všechny součásti v rámci hranice autorizace systému informace se neduplikují v jiné informace o systému součást inventáře.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -801,7 +801,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 9.a** organizace sama vyvinula, dokumenty a implementuje plán správy konfigurace pro informace systému, která řeší rolí, odpovědnosti a konfigurace správy procesy a postupy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -815,7 +815,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 9.b** organizace sama vyvinula, dokumenty a implementuje plán správy konfigurace pro informace o systému, který stanoví proces identifikace položky konfigurace po celou dobu životnosti vývoj systému cyklus a pro Správa konfigurace položek konfigurace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -823,13 +823,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ## <a name="nist-800-53-control-cm-9c"></a>NIST 800-53 Control CM-9.c
+ ## <a name="nist-800-53-control-cm-9c"></a>Ovládací prvek NIST 800-53 CM-9.c
 
 #### <a name="configuration-management-plan"></a>Konfigurace plánu
 
 **CM 9.c** organizace sama vyvinula, dokumenty a implementuje plán správy konfigurace pro informace o systému, která definuje konfiguraci položek pro systém informace a umístí položek konfigurace v konfiguraci Správa.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -843,7 +843,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 9.d** organizace sama vyvinula, dokumenty a implementuje plán správy konfigurace pro informace o systému, který chrání před neoprávněným sdílením a úpravy do konfigurace plánu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -857,7 +857,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.a** organizace používá software a související dokumentace v souladu s kontrakt smlouvy a zákony o autorských právech.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -871,7 +871,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.b** organizace sleduje použití softwaru a související dokumentaci chráněn množství licencí pro řízení kopírování a distribuci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -885,7 +885,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 10.c** organizace ovládací prvky a dokumenty použití technologie zajistíte, že tato funkce není použité pro neoprávněné distribuční zobrazení, výkon nebo kopírování autorským dílem pro sdílení souborů peer-to-peer.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -899,7 +899,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-10 (1)** organizace vytváří následující omezení použití software s otevřeným zdrojem: [přiřazení: omezení definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -913,7 +913,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.a** organizace vytváří [přiřazení: organizace definované zásady] pro instalaci softwaru uživatelé.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -927,7 +927,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.b** organizace vynucuje zásady instalace softwaru prostřednictvím [přiřazení: metody definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -941,7 +941,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM 11.c** monitoruje zásady dodržování předpisů v organizaci [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -955,7 +955,7 @@ ms.lasthandoff: 02/11/2018
 
 **CM-11 (1)** výstrahy systémové informace [přiřazení: organizace definované pracovníky nebo rolí] když je zjištěna neoprávněným instalace softwaru.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

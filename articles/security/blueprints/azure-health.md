@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6bc2c63e75e9c750da852b77e4486666c3fc8561
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
 
@@ -79,14 +79,14 @@ Základní architektura se skládá z následujících součástí:
 ## <a name="roles"></a>Role
 
 
-Plán, podle kterého definuje dvě role pro správce (operátory) a tři role pro uživatele v správu měla nemocnice a pacienta pozor. Šesté role je definována pro auditor k vyhodnocení dodržování předpisů HIPAA a jiné předpisy. Azure na základě rolí řízení přístupu (RBAC) umožňuje přesněji cílených správu přístupu pro každého uživatele řešení pomocí předdefinované a vlastní rolí. V tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) a [předdefinované role pro řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) podrobné informace o RBAC, rolí a oprávnění.
+Plán, podle kterého definuje dvě role pro správce (operátory) a tři role pro uživatele v správu měla nemocnice a pacienta pozor. Šesté role je definována pro auditor k vyhodnocení dodržování předpisů HIPAA a jiné předpisy. Azure na základě rolí řízení přístupu (RBAC) umožňuje přesněji cílených správu přístupu pro každého uživatele řešení pomocí předdefinované a vlastní rolí. V tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) a [předdefinované role pro řízení přístupu Azure na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) podrobné informace o RBAC, rolí a oprávnění.
 
 ### <a name="site-administrator"></a>Správce webu
 
 
 Správce webu je zodpovědná za předplatné zákazníka. Řízení celkové nasazení, ale nemají přístup k pacienta záznamy.
 
--   Výchozí přiřazení role: [vlastníka](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   Výchozí přiřazení role: [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
@@ -97,7 +97,7 @@ Správce webu je zodpovědná za předplatné zákazníka. Řízení celkové na
 Analytik databáze spravuje instance systému SQL Server a databáze.
 Žádný přístup k pacienta záznamy mají.
 
--   Předdefinovaná role přiřazení: [Přispěvatel databází SQL](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor), [Přispěvatel serveru SQL](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   Předdefinovaná role přiřazení: [Přispěvatel databází SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Přispěvatel serveru SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
@@ -108,7 +108,7 @@ Analytik databáze spravuje instance systému SQL Server a databáze.
 
 Vědecký pracovník dat funguje službu Azure Machine Learning. Se můžou importovat, exportovat a spravovat data a spouštět sestavy. Data vědecký pracovník má přístup k datům pacienta, ale nemá oprávnění správce.
 
--   Předdefinovaná role přiřazení: [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   Předdefinovaná role přiřazení: [Přispěvatel účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
@@ -138,7 +138,7 @@ Jeho úkolem je monitorovat stav pacientů a také zajistit, aby byl k dispozici
 
 Auditor vyhodnotí řešení pro dodržování předpisů. Mají žádný přímý přístup k síti.
 
--   Předdefinovaná role přiřazení: [čtečky](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   Předdefinovaná role přiřazení: [čtečky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Přiřazení vlastních rolí: není k dispozici
 
@@ -183,7 +183,7 @@ Caroline predikcím ze délka trvání řešení (LOS) používá k určení, po
 
 **Jan pro vás úsekového manažera--**
 
-*Email: Chris\_CareLineManager*
+*E-mailu: Jan\_CareLineManager*
 
 Jako jednotlivých přímo zodpovědní za správu pacienta jejich příchodu a vypouštění v Contosoclinic, Jan používá předpovědi generuje řešení LOS zajistit, že odpovídající zaměstnanci jsou k dispozici zajistit pozor pacientům, když jsou zůstávají ve zařízení.
 
@@ -222,7 +222,7 @@ Tato část popisuje, o výchozí konfigurace a bezpečnostní opatření, kter�
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) zjistí potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci, nakonfiguruje automatické odpovědi na zjištěné podezřelé akcí souvisejících s identity ve vaší organizaci, a prozkoumá podezřelé incidenty a provede příslušnou akci jejich řešení.
 
--   [Azure na základě rolí řízení přístupu (RBAC)](/azure/active-directory/role-based-access-control-configure) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na správce webu. Silná hesla (minimální s aspoň jedno velké nebo malé písmeno, číslo a zvláštní znak 12 znaků) se vyžadují.
+-   [Azure na základě rolí řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na správce webu. Silná hesla (minimální s aspoň jedno velké nebo malé písmeno, číslo a zvláštní znak 12 znaků) se vyžadují.
 
 -   Služby Multi-Factor authentication je podporována, pokud je povoleno přepínačem - enableMFA během nasazení.
 
@@ -230,7 +230,7 @@ Tato část popisuje, o výchozí konfigurace a bezpečnostní opatření, kter�
 
 **Role:**
 
--   Řešení využívá [předdefinované role](/azure/active-directory/role-based-access-built-in-roles) ke správě přístupu k prostředkům.
+-   Řešení využívá [předdefinované role](/azure/role-based-access-control/built-in-roles) ke správě přístupu k prostředkům.
 
 -   Všichni uživatelé jsou přiřazeny určité předdefinované role ve výchozím nastavení.
 
@@ -242,7 +242,7 @@ Tato část popisuje, o výchozí konfigurace a bezpečnostní opatření, kter�
     -   Klíč pacienta přístup k úložišti dat
     -   Pacienta připojovací řetězec
     -   Název tabulky pacienta dat
-    -   Azure ML Web Service Endpoint
+    -   Koncový bod Azure ML webové služby
     -   Klíč rozhraní API služby Azure ML
 
 -   Konfigurace zásad pokročilé přístupu na základě potřeba
@@ -311,7 +311,7 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 
 -   Auditování
 
-## <a name="store"></a>STORE 
+## <a name="store"></a>ÚLOŽIŠTĚ 
 
 ### <a name="sql-database-and-server"></a>SQL Database a serveru 
 

@@ -1,12 +1,12 @@
 ---
-title: "Power BI prostoru kolekce – nejčastější dotazy"
-description: "Nejčastější dotazy týkající se kolekce pracovních prostorů Power BI."
+title: Power BI prostoru kolekce – nejčastější dotazy
+description: Nejčastější dotazy týkající se kolekce pracovních prostorů Power BI.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1475ed4f-fc84-4865-b243-e8a47d8bda59
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 6b33f497a5dbc889945e2147586f79edf1bd9aeb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 6915538e47207ee9a45f2647a84924d79c7b2851
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI prostoru kolekce – nejčastější dotazy
 
@@ -43,7 +43,7 @@ Aplikace jsou výrazně výkonnější při můžete využít poutavých, intera
 Kolekce pracovních prostorů Power BI jsou určené pro aplikace, které jsou k dispozici pro použití třetích stran. Pokud chcete používat službu Power BI prostoru kolekce k vytvoření interní obchodní aplikace, každý z vaší interní uživatele potřebovat horní limit Pro s Power BI a vaší organizace se bude účtovat poplatek pro jejich používání služby Power BI prostoru kolekce Kromě jejich poplatků Pro horní limit Power BI. Účtovány poplatky Pro horní limit Power BI a náklady na spotřebu kolekce pracovních prostorů Power BI pro interní aplikace, nabízí služba Power BI vlastní obsah vložení možnosti mimo kolekce pracovních prostorů Power BI pro bez dalších nákladů na Power BI horní limit držitelé (dev.powerbi.com).
 
 ## <a name="can-power-bi-workspace-collections-be-used-to-create-internal-applications"></a>Kolekce pracovních prostorů Power BI slouží k vytvoření interní aplikace?
-Kolekce pracovních prostorů Power BI Ne, jsou určené jenom pro použití externích uživatelů a neměl by se používat v rámci interní obchodní aplikace. Pro integraci obsahu z Power BI do interních obchodních aplikací je třeba použít službu Power BI a všichni uživatelé, kteří budou tento obsah používat, musí mít platnou licenci předplatného Power BI Free nebo Power BI Pro. Další informace o tom, jak integrovat interních aplikací ve službě Power BI je k dispozici na [https://dev.powerbi.com](https://dev.powerbi.com).
+Kolekce pracovních prostorů Power BI Ne, jsou určené jenom pro použití externích uživatelů a neměl by se používat v rámci interní obchodní aplikace. Pro integraci obsahu z Power BI do interních obchodních aplikací je třeba použít službu Power BI a všichni uživatelé, kteří budou tento obsah používat, musí mít platnou licenci předplatného Power BI Free nebo Power BI Pro. Další informace o tom, jak integrovat interních aplikací ve službě Power BI je k dispozici na [ https://dev.powerbi.com ](https://dev.powerbi.com).
 
 ## <a name="is-this-service-available-globally"></a>Je tato služba k dispozici globálně?
 Kolekce pracovních prostorů Power BI služba je k dispozici v většina datových Center nyní. Vždy můžete zkontrolovat nejnovější dostupnost [zde](https://azure.microsoft.com/status/).
@@ -87,7 +87,7 @@ Můžete navštívit [stránky dokumentace Power BI prostoru kolekce](get-starte
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 Můžete začít používat bezplatné teď! Pokud máte předplatné Azure, můžete nyní zřídit kolekce pracovních prostorů Power BI z portálu Azure přímo. Můžete také vytvořit vaše [bezplatný účet Azure](https://azure.microsoft.com/free/). Jakmile jste zřízenou službu Power BI prostoru kolekce, snadno použijte rozhraní REST API Power BI přímo, nebo použijte vývojáře SDK, které jsou k dispozici na [Githubu](http://go.microsoft.com/fwlink/?LinkID=746472). Ukázky jsou uvedeny na tom, jak využívat vývojáři sady SDK.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 [Co je Microsoft Power BI prostoru kolekce](what-are-power-bi-workspace-collections.md)
 [Začínáme s Microsoft Power BI prostoru kolekce](get-started.md)

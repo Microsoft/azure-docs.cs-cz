@@ -3,8 +3,8 @@ title: Protokolování diagnostiky Azure Cosmos DB | Microsoft Docs
 description: Pomocí tohoto kurzu můžete začít pracovat s Azure Cosmos DB protokolování.
 services: cosmos-db
 documentationcenter: ''
-author: mimig1
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: cosmos-db
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
-ms.author: mimig
-ms.openlocfilehash: 3b7c9f1acd79a2f170ecead9dedd200ad37d9388
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: sngun
+ms.openlocfilehash: 0b49a23de62385a8aa362680dde845512d9302fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
@@ -445,9 +445,9 @@ Následující tabulka popisuje obsah každé položky protokolu.
 | **Čas** | **TimeGenerated** | Datum a čas (UTC) při operaci došlo k chybě. |
 | **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro které jsou povolené protokoly.|
 | **Kategorie** | **Kategorie** | Pro Azure Cosmos DB protokoly **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **operationName** | **OperationName** | Název operace. Tato hodnota může být libovolná z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahraďte, spouštění, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
+| **OperationName** | **OperationName** | Název operace. Tato hodnota může být libovolná z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahraďte, spouštění, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
 | **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsané v řádky, které následují. |
-| **activityId** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
+| **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
 | **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
 | **Typ prostředku** | **Typ prostředku** | Typ prostředku, u níž. Tato hodnota může být jakýkoli z následujících typů prostředků: databáze, kolekce, dokument, přílohy, uživatele, oprávnění, StoredProcedure, aktivační události, UserDefinedFunction nebo nabídku. |
 | **statusCode** | **statusCode_s** | Stav odpovědi operace. |

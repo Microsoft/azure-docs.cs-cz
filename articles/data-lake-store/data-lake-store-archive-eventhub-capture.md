@@ -1,8 +1,8 @@
 ---
-title: "Zachycení dat ze služby Event Hubs do Azure Data Lake Store | Microsoft Docs"
-description: "Použití Azure Data Lake Store k zaznamenání dat ze služby Event Hubs"
+title: Zachycení dat ze služby Event Hubs do Azure Data Lake Store | Microsoft Docs
+description: Použití Azure Data Lake Store k zaznamenání dat ze služby Event Hubs
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9f91acf8c26fdec0c8d128f598f218cff091c7aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Store k zaznamenání dat ze služby Event Hubs
 
@@ -27,7 +27,7 @@ Naučte se používat Azure Data Lake Store k zaznamenání dat přijatých Azur
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Store**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
 *  **Obor názvů Event Hubs**. Pokyny najdete v tématu [vytvoření oboru názvů Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Ujistěte se, že účet Data Lake Store a obor názvů služby Event Hubs jsou ve stejném předplatném Azure.
 
@@ -58,9 +58,12 @@ V této části vytvoříte složku v rámci účtu, ve které chcete zaznamenat
 
     c. V části **přiřadit oprávnění**, klikněte na tlačítko **vyberte oprávnění**. Nastavit **oprávnění** k **provést**. Nastavit **přidat do** k **tuto složku a všechny podřízené objekty**. Nastavit **přidat jako** k **položka oprávnění k přístupu a výchozí položku oprávnění**.
 
-    ![Přiřazení oprávnění pro Data Lake Store kořenové](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "přiřadit oprávnění pro kořenový adresář Data Lake Store")
+> [!IMPORTANT]
+> Při vytváření nové hierarchii složek pro zaznamenání dat přijatých Azure Event Hubs, to je snadný způsob, jak zajistit přístup k cílové složce.  Přidání oprávnění pro všechny podřízené objekty složku nejvyšší úrovně s mnoha podřízené soubory a složky, může trvat dlouhou dobu.  Kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat **Execute** oprávnění pro `Microsoft.EventHubs` jednotlivě na všechny složky v cestě ke složce konečného cíle. 
 
-    Klikněte na **OK**.
+    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+
+    Click **OK**.
 
 4. Přiřazení oprávnění pro dílčí složku složky účtu Data Lake Store, ve které chcete zaznamenat data.
 
@@ -86,11 +89,11 @@ V této části vytvoříte Centrum událostí v rámci oboru názvů Event Hubs
 
 2. Z **přehled** podokně oboru názvů služby Event Hubs, klikněte na tlačítko **+ centra událostí**.
 
-    ![Create Event Hub](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Create Event Hub")
+    ![Vytvoření centra událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "vytvoření centra událostí")
 
 3. Zadejte následující hodnoty pro konfiguraci služby Event Hubs k zaznamenání dat do Data Lake Store.
 
-    ![Create Event Hub](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Create Event Hub")
+    ![Vytvoření centra událostí](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "vytvoření centra událostí")
 
     a. Zadejte název centra událostí.
     

@@ -1,8 +1,8 @@
 ---
-title: "Vytváření clusterů systému Hadoop pomocí webového prohlížeče - Azure HDInsight | Microsoft Docs"
-description: "Naučte se vytvářet clustery Hadoop, HBase, Storm a Spark v Linux pro HDInsight pomocí webového prohlížeče a portálu Azure preview."
+title: Vytváření clusterů systému Hadoop pomocí webového prohlížeče - Azure HDInsight | Microsoft Docs
+description: Naučte se vytvářet clustery Hadoop, HBase, Storm a Spark v Linux pro HDInsight pomocí webového prohlížeče a portálu Azure preview.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 697278cf-0032-4f7c-b9b2-a84c4347659e
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c200b405d8ae2548e16548b88683cf6de4aef2b3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí portálu Azure
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -40,7 +38,7 @@ Portál Azure zpřístupní většinu vlastností clusteru. Pomocí šablony Azu
 
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. Klikněte na tlačítko  **+** , klikněte na tlačítko **Intelligence + analýzy**a potom klikněte na **HDInsight**.
+2. Klikněte na tlačítko **+**, klikněte na tlačítko **Intelligence + analýzy**a potom klikněte na **HDInsight**.
    
     ![Vytvoření nového clusteru na portálu Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "vytvoření nového clusteru na portálu Azure")
 

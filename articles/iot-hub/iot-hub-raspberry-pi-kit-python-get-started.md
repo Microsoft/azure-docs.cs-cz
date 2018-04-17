@@ -1,24 +1,24 @@
 ---
-title: "Malinová pí do cloudu (Python) - pí malin připojit ke službě Azure IoT Hub | Microsoft Docs"
-description: "Zjistěte, jak nastavit a připojení k Azure IoT Hub malin pí k odesílání dat do Azure Cloudová platforma v tomto kurzu malin pí."
+title: Malinová pí do cloudu (Python) - pí malin připojit ke službě Azure IoT Hub | Microsoft Docs
+description: Zjistěte, jak nastavit a připojení k Azure IoT Hub malin pí k odesílání dat do Azure Cloudová platforma v tomto kurzu malin pí.
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: "Azure iot Malinová pi, malinová platformy iot hub, malinová pí odesílání dat do cloudu, malinová pí do cloudu"
+tags: ''
+keywords: Azure iot Malinová pi, malinová platformy iot hub, malinová pí odesílání dat do cloudu, malinová pí do cloudu
 ms.service: iot-hub
 ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/31/2017
-ms.author: xshi
-ms.openlocfilehash: 1b1a9dc960846cbc15ce09d0fd106e1492937439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Připojení ke službě Azure IoT Hub (Python) Malinová platformy
 
@@ -169,7 +169,7 @@ Použijte jeden z následujících klientů SSH z hostitelského počítače pro
    nano config.py
    ```
 
-   5 maker v tomto souboru můžete configurate. První z nich je `MESSAGE_TIMESPAN`, která definuje časový interval (v milisekundách) mezi dvě zprávy, které odesílají do cloudu. Druhý `SIMULATED_DATA`, což je logickou hodnotu pro jestli se má používat data simulované snímačů, nebo ne. `I2C_ADDRESS`je adresa I2C, která je připojena vaše BME280 senzoru. `GPIO_PIN_ADDRESS`je adresa GPIO pro vaše Indikátor. Je poslední `BLINK_TIMESPAN`, která definována časový interval, po zapnutí vaší DIODU v milisekundách.
+   5 maker v tomto souboru můžete configurate. První z nich je `MESSAGE_TIMESPAN`, která definuje časový interval (v milisekundách) mezi dvě zprávy, které odesílají do cloudu. Druhý `SIMULATED_DATA`, což je logickou hodnotu pro jestli se má používat data simulované snímačů, nebo ne. `I2C_ADDRESS` je adresa I2C, která je připojena vaše BME280 senzoru. `GPIO_PIN_ADDRESS` je adresa GPIO pro vaše Indikátor. Je poslední `BLINK_TIMESPAN`, která definována časový interval, po zapnutí vaší DIODU v milisekundách.
 
    Pokud jste **nemají senzoru**, nastavte `SIMULATED_DATA` hodnotu `True` aby ukázkovou aplikaci, vytváření a používání dat snímačů simulované.
 
@@ -204,7 +204,7 @@ Použijte jeden z následujících klientů SSH z hostitelského počítače pro
    ![Výstup – data snímačů odeslaný malin pí do služby IoT hub](media/iot-hub-raspberry-pi-kit-c-get-started/success.png
 )
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Spustíte ukázkovou aplikaci pro shromažďování dat snímačů a odeslat do služby IoT hub. Zprávy, které vaše platformy malin odeslal na IoT hub nebo odesílání zprávy pro vaše platformy malin v rozhraní příkazového řádku najdete v sekci [cloud zařízení spravovat zasílání zpráv s iothub-explorer kurzu](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
 

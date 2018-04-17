@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ac0b15f120071093fd81de1d83cf2067ecbac269
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c5f3dbd1aa26cbe656b2ff89106819d228cf447d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změnit nebo odstranit virtuální síť
 
@@ -49,7 +49,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
         - 255.255.255.255/32 (vysílání)
         - 127.0.0.0/8 (zpětné smyčky)
         - 169.254.0.0/16 (Link-local)
-        - 168.63.129.16/32 (Internal DNS)
+        - 168.63.129.16/32 (interní DNS)
 
       I když při vytváření virtuální sítě můžete definovat pouze jednu adresu rozsahu, můžete přidat další rozsahy adres do adresního prostoru po vytvoření virtuální sítě. Informace o postupu přidání rozsah adres k existující virtuální síti, najdete v tématu [přidat nebo odebrat rozsah adres](#add-or-remove-an-address-range).
 
@@ -111,7 +111,7 @@ Můžete přidávat a odebírat rozsahy adres pro virtuální síť. Rozsah adre
 - 255.255.255.255/32 (vysílání)
 - 127.0.0.0/8 (zpětné smyčky)
 - 169.254.0.0/16 (Link-local)
-- 168.63.129.16/32 (Internal DNS)
+- 168.63.129.16/32 (interní DNS)
 
 Přidat nebo odebrat rozsah adres:
 
@@ -167,7 +167,7 @@ Virtuální síť můžete odstranit pouze v případě, že neexistují žádn�
 
 ## <a name="permissions"></a>Oprávnění
 
-K provádění úloh na virtuální sítě, musí mít váš účet přiřazenou k [Přispěvatel sítě](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena odpovídající oprávnění uvedených v následující tabulce:
+K provádění úloh na virtuální sítě, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena odpovídající oprávnění uvedených v následující tabulce:
 
 |Operace                                    |   Název operace                    |
 |-------------------------------------------  |   --------------------------------  |

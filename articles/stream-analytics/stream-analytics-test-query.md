@@ -1,44 +1,43 @@
 ---
-title: Testování dotazů v Azure Stream Analytics
-description: Tento článek popisuje postup testování dotazů pomocí ukázkových datových souborů do úlohy Stream Analytics.
+title: Testovací vaše úloha Azure Stream Analytics s ukázkovými daty | Microsoft Docs
+description: Postup testování vašich dotazů v úlohy Stream Analytics.
+keywords: Testovací úloha, vstup vzorkování, nahrát ukázková data
+documentationcenter: ''
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: SnehaGunda
 manager: kfile
-ms.reviewer: jasonh
+ms.assetid: ''
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: fb7d936dfdc543c208ce98c588f5ad83704ff5dc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.workload: data-services
+ms.date: 03/18/2018
+ms.author: sngun
+ms.openlocfilehash: c026a91fff5b8ef5774993b335f8d61877aa5d39
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="test-azure-stream-analytics-queries-in-the-azure-portal"></a>Testování dotazů Azure Stream Analytics na portálu Azure
+# <a name="test-your-stream-analytics-query-with-sample-data"></a>Testovat dotaz služby Stream Analytics s ukázkovými daty
 
-Pomocí služby Azure Stream Analytics můžete otestovat dotazy na portálu Azure bez nutnosti spuštění nebo zastavení úlohy.
+Pomocí Azure Stream Analytics můžete nahrát ukázková data a testování dotazů na portálu bez spuštění nebo zastavení úlohy.
 
-## <a name="test-the-input"></a>Testování vstupu
+## <a name="upload-sample-data-and-test-the-query"></a>Nahrát ukázková data a otestujte dotaz
 
-1. Chcete-li otestovat s ukázkovými daty vstupní, klikněte pravým tlačítkem na vstupy a pak vyberte **nahrát ukázková data ze souboru**. Nyní můžete uložit pouze data formátu JSON. Pokud je například sdíleného svazku clusteru do jiného formátu dat, musí ho převést na JSON před nahráním. Všechny opensource převodní nástroj můžete použít jako [CSV k JSON úpravy](http://www.convertcsv.com/csv-to-json.htm) vaše data převést do formátu JSON.
+1. Přejděte do jednoho existující úlohy Stream Analytics > klikněte na **dotazu** otevřete okno editoru dotazů. 
+
+2. Chcete-li otestovat dotazu s ukázkovými daty vstupní, klikněte pravým tlačítkem myši na žádném z vašich vstupů a pak vyberte **nahrát ukázková data ze souboru**. Nyní můžete uložit pouze data formátu JSON. Pokud je například sdíleného svazku clusteru do jiného formátu dat, musí ho převést na JSON před nahráním. Všechny opensource převodní nástroj můžete použít jako [CSV k JSON úpravy](http://www.convertcsv.com/csv-to-json.htm) vaše data převést do formátu JSON.
 
     ![Stream analytics dotaz editor testu dotazu](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-2. Po dokončení nahrávání se klikněte na tlačítko **testování** k testování tento dotaz ukázková data, které jste zadali.
+3. Po dokončení nahrávání se klikněte na tlačítko **testování** k testování tento dotaz ukázková data, které jste zadali.
 
     ![Dotaz služby Stream analytics editor testu ukázková data](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 
-Výstup tohoto dotazu se zobrazí v prohlížeči s výsledky odkaz ke stažení, budete chtít uložit výstup testu pro pozdější použití. Teď můžete snadno a interaktivně upravte dotaz a otestovat opakovaně a najdete v části Jak výstup změny.
+4. Pokud chcete uložit test výstup pro pozdější použití, výstup tohoto dotazu se zobrazí v prohlížeči se zobrazí odkaz na výsledky stahování. Teď můžete snadno a interaktivně upravte dotaz a otestovat opakovaně a najdete v části Jak výstup změny.
 
-![Stream Analytics query editor ukázkový výstup](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+   ![Stream Analytics query editor ukázkový výstup](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
 
-S více výstupů použitých v dotazu můžete zobrazit výsledky pro obě výstupy samostatně a snadno přepínat mezi nimi.
-
-Jakmile budete spokojeni se na výsledky zobrazené v prohlížeči, můžete uložit dotazu, spusťte úlohu a nechat zpracovat události bez chyby.
-
-## <a name="get-help"></a>Podpora
-
+Použijete-li několik výstupů v dotazu, můžete zobrazit výsledky pro každý výstup samostatně a snadno přepínat mezi nimi. Po ověření na výsledky zobrazené v prohlížeči, můžete uložit dotazu, spustit úlohu a nechat zpracovat události bez chyby.
 Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup

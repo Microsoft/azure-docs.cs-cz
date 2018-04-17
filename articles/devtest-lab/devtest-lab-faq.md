@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs"
-description: "Odpovědi na časté otázky týkající se Azure DevTest Labs."
+title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
+description: Odpovědi na časté otázky týkající se Azure DevTest Labs.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: afe83109-b89f-4f18-bddd-b8b4a30f11b4
 ms.service: devtest-lab
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: 24a3220a21280684a34405ac4c3d9f9eab9e3683
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 133a2978ce2b359366d3c5d0639b613977a723fc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejčastější dotazy o Azure DevTest Labs.
@@ -55,7 +55,7 @@ DevTest Labs je bezplatná služba. Vytvoření prostředí a konfiguraci zásad
 
 **Zabezpečení**
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jaké jsou různé úrovně zabezpečení v DevTest Labs?
-Zabezpečení přístupu je dáno [řízení přístupu na základě Role (RBAC)](../active-directory/role-based-access-built-in-roles.md). Informace o tom, jak funguje přístup, je dobré se další rozdíly mezi oprávnění, role a obor, podle definice RBAC.
+Zabezpečení přístupu je dáno [řízení přístupu na základě Role (RBAC)](../role-based-access-control/built-in-roles.md). Informace o tom, jak funguje přístup, je dobré se další rozdíly mezi oprávnění, role a obor, podle definice RBAC.
 
 * **Oprávnění**: oprávnění je definovaný přístup k určité akce. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
 * **Role**: role je sadu oprávnění, které mohou být seskupeny a přiřazen k uživateli. Například uživatele k roli vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.

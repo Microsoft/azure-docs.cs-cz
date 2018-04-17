@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FFIEC finančních služeb regulovaná úlohy"
-description: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FFIEC finančních služeb regulovaná úlohy"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FFIEC finančních služeb regulovaná úlohy
+description: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FFIEC finančních služeb regulovaná úlohy
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - FFIEC finančních služeb regulovaná úlohy
 
@@ -122,7 +122,7 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 >- Application Gateway
 >- Azure Active Directory
 >- V2 prostředí služby App Service
->- OMS analýzy protokolů
+>- Log Analytics
 >- Azure Key Vault
 >- Network Security Groups (Skupiny zabezpečení sítě)
 >- Azure SQL DB
@@ -177,7 +177,7 @@ Každý z skupin Nsg mít určité porty a protokoly otevřené pro operaci zabe
 Kromě toho tyto konfigurace jsou povolené pro jednotlivé skupiny NSG:
 
 - Povolit [diagnostické protokoly a události](/azure/virtual-network/virtual-network-nsg-manage-log) jsou uložené v účtu úložiště 
-- Připojení analýzy protokolů OMS na [NSG na diagnostiky](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Připojení analýzy protokolů pro [NSG na diagnostiky](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
  
 #### <a name="subnets"></a>Podsítě
@@ -208,12 +208,12 @@ Instance databáze SQL Azure používá následující bezpečnostní opatření
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) můžete poskytnout Contoso Webstore rozsáhlé protokolování veškerou aktivitu systému a uživatele, zahrnují protokolování finanční údaje. Změny můžete zkontrolovat a ověřit přesnost. 
+[Analýza protokolu](https://azure.microsoft.com/services/log-analytics) můžete poskytnout Contoso Webstore rozsáhlé protokolování veškerou aktivitu systému a uživatele, zahrnují protokolování finanční údaje. Změny můžete zkontrolovat a ověřit přesnost. 
 
 - **Protokoly aktivity.**  [Protokoly aktivity](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o činnosti, které byly provedeny v prostředky ve vašem předplatném.
 - **Diagnostické protokoly.**  [Diagnostické protokoly](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem. Tyto protokoly patří protokoly událostí systému Windows, protokol úložiště objektů Azure Blob, tabulek a protokoly fronty.
 - **Protokoly brány firewall.**  Application Gateway poskytuje úplné diagnostiky a přístup k protokolům. Brány firewall protokoly jsou k dispozici pro aplikační bránu prostředky, které mají povolen firewall webových aplikací.
-- **Archivace protokolu.**  Všechny diagnostické protokoly jsou nakonfigurovány k zápisu centralizovaný a šifrované účtu úložiště Azure pro archivaci s dobou uchování definované (2 dny). Protokoly jsou připojena k analýze protokolů Azure pro zpracování, ukládání a dashboarding. [Analýza protokolu](https://azure.microsoft.com/services/log-analytics) je OMS služba, která pomáhá shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
+- **Archivace protokolu.**  Všechny diagnostické protokoly jsou nakonfigurovány k zápisu centralizovaný a šifrované účtu úložiště Azure pro archivaci s dobou uchování definované (2 dny). Protokoly jsou připojena k analýze protokolů Azure pro zpracování, ukládání a dashboarding. [Analýza protokolu](https://azure.microsoft.com/services/log-analytics) je služba, která pomáhá shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
 
 ### <a name="encryption-and-secrets-management"></a>Správa šifrování a tajné klíče
 
@@ -230,7 +230,7 @@ Následujících technologií poskytovat identitu možnosti správy v prostřed�
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) je Microsoft víceklientské cloudové adresáře a identity management service. Všechny uživatele pro řešení byly vytvořeny v Azure Active Directory, včetně uživatelů přístup k databázi SQL.
 - Ověřování do aplikace se provádí pomocí služby Azure AD. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications). Kromě toho sloupce šifrování databáze také používá Azure AD k ověřování aplikace do Azure SQL Database. Další informace najdete v tématu [funkce Always Encrypted: chrání citlivá data v databázi SQL](/azure/sql-database/sql-database-always-encrypted-azure-key-vault). 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) zjistí potenciální ohrožení zabezpečení, které mohou ovlivnit identity ve vaší organizaci, nakonfiguruje automatické odpovědi na zjištěné podezřelé akcí souvisejících s identity ve vaší organizaci, a prozkoumá podezřelé incidenty a provede příslušnou akci jejich řešení.
-- [Azure na základě rolí řízení přístupu (RBAC)](/azure/active-directory/role-based-access-control-configure) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na všechny uživatele.
+- [Azure na základě rolí řízení přístupu (RBAC)](/azure/role-based-access-control/role-assignments-portal) umožňuje přesněji správu cílených přístupu k Azure. Předplatné přístup je omezen na správce předplatného a Azure Key Vault přístup je omezen na všechny uživatele.
 
 Další informace o používání funkcí zabezpečení databáze SQL Azure, najdete v článku [Contoso Klinika ukázkové aplikace](https://github.com/Microsoft/azure-sql-security-sample) ukázka.
    
@@ -263,7 +263,7 @@ Protože služba App Service Environment je zabezpečená a uzamčené, je potř
 Virtuální počítač byl vytvořen jako jumpbox (bastionu hostitel) s následující konfigurace:
 
 -   [Rozšíření proti malwaru](/azure/security/azure-security-antimalware)
--   [Rozšíření OMS](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Rozšíření analýzy protokolů](/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Rozšíření Azure Diagnostics](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   [Azure Disk Encryption](/azure/security/azure-security-disk-encryption) pomocí Azure Key Vault 
 -   [Vypnutí automatického zásad](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) snížit spotřebu prostředků virtuálního počítače, když není používán
@@ -284,11 +284,11 @@ Použití [Application Insights](https://azure.microsoft.com/services/applicatio
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba v Operations Management Suite (OMS), která vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
+[Analýza protokolu](https://azure.microsoft.com/services/log-analytics/) je služba, která vám pomůže shromažďovat a analyzovat data generována prostředky ve vašem cloudu a místní prostředí.
 
-#### <a name="oms-solutions"></a>Řešení OMS
+#### <a name="managment-solutions"></a>Řešení pro správu
 
-Tyto další řešení OMS by měl být a konfigurovány: 
+Tyto další správu řešení by měl být a konfigurovány: 
 - [Activity Log Analytics](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Analýza sítí Azure](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL Analytics](/azure/log-analytics/log-analytics-azure-sql)
@@ -344,9 +344,9 @@ Společnost Microsoft důrazně doporučuje, aby čistou instalaci prostředí P
     
     Podrobné informace o použití pokyny najdete v tématu [pokyny skriptu – nasazení a konfigurace prostředků Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. OMS protokolování a monitorování. Když je řešení nasazeno [Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) lze otevřít pracovní prostor a ukázkové šablony součástí řešení úložiště může sloužit k objasnění, jak lze nakonfigurovat monitorování řídicí panel . Ukázkové OMS šablony, najdete v části [omsDashboards složky](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Všimněte si, že data se shromažďují ve OMS pro šablony nasazení správně. To může trvat až hodinu nebo déle v závislosti na aktivitě lokality.
+3. Log Analytics protokolování a monitorování. Při nasazení řešení, můžete otevřít pracovní prostor analýzy protokolů a ukázkové šablony součástí řešení úložiště lze použít k objasnění, jak lze nakonfigurovat monitorování řídicího panelu. Ukázka šablony, najdete v části [omsDashboards složky](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Všimněte si, že data se shromažďují ve analýzy protokolů pro šablony nasazení správně. To může trvat až hodinu nebo déle v závislosti na aktivitě lokality.
  
-    Při nastavování vaší OMS protokolování, zvažte, včetně těchto prostředků:
+    Při nastavování vaší protokolování analýzy protokolů, zvažte, včetně těchto prostředků:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -375,7 +375,7 @@ Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](http
 
 ## <a name="disclaimer-and-acknowledgments"></a>Právní omezení a potvrzování
 
-2017 září
+*2017 září*
 
 - Tento dokument je pouze informativní charakter. MICROSOFT A AVYAN PROVÉST ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ INFORMACE V TOMTO DOKUMENTU. Tento dokument je poskytován "jako-je." Informace a názory vyjádřené v tomto dokumentu včetně adres URL a dalších odkazů na internetové weby mohou změnit bez předchozího upozornění. Zákazníci čtení tohoto dokumentu na sebe rizika spojená s jejím používáním.  
 - Tento dokument neposkytuje zákazníkům žádná zákonná práva týkající se jakékoli produkty společnosti Microsoft nebo Avyan nebo řešení duševního vlastnictví.  

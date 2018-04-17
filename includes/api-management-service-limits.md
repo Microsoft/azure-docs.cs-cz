@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: bee289da3f18edd0cb425f3d9acde084567a3b13
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b40e2ba448236bcef72ffe501b4b14fa0dd64e1c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -21,6 +21,7 @@ ms.lasthandoff: 04/05/2018
 | Mezipaměť | 5 GB na jednotku<sup>1</sup> |
 | Back-end souběžných připojení<sup>2</sup> za autority HTTP | 2048 na jednotku<sup>3</sup> |
 | Velikost maximální odpovědi v mezipaměti | 10MB. |
+| Zásady maximální velikost dokumentu | 256KB |
 | Maximální brány vlastní domény | 20 na instanci služby<sup>4</sup> |
 
 

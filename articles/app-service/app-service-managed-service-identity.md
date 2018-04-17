@@ -1,36 +1,32 @@
 ---
-title: "Identita spravované služby ve službě App Service a Azure Functions | Microsoft Docs"
-description: "Koncepční odkaz a Instalační příručka pro podporu identita spravované služby ve službě Azure App Service a Azure Functions"
+title: Identita spravované služby ve službě App Service a Azure Functions | Microsoft Docs
+description: Koncepční odkaz a Instalační příručka pro podporu identita spravované služby ve službě Azure App Service a Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a2aacc28a70a5150c1903a60c7a697409e2bbbe7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Jak používat Azure spravované služby Identity (verze public preview) ve službě App Service a Azure Functions
 
 > [!NOTE] 
-> Identita spravované služby pro služby App Service a Azure Functions je aktuálně ve verzi preview.
+> Identita spravované služby pro služby App Service a Azure Functions je aktuálně ve verzi preview. Aplikační služby na Linuxu a webové aplikace kontejnerů nejsou aktuálně podporovány.
 
 Toto téma ukazuje, jak vytvořit identitu spravované aplikace pro aplikace služby App Service a Azure Functions a způsobu jeho použití přistupovat k dalším prostředkům. Identita spravované služby ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k dalším prostředkům chráněné AAD, například Azure Key Vault. Identita spravuje platformy Azure a zřizovat nebo otočit všech tajných klíčů nevyžaduje. Další informace o identitě spravované služby najdete v tématu [identita spravované služby přehled](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Vytvoření aplikace pomocí identity
 
 Vytvoření aplikace pomocí identity vyžaduje další vlastnost, kterou chcete nastavit na aplikaci.
-
-> [!NOTE] 
-> Pouze primární slotu pro webový server obdrží identitu. Spravovat identity služby pro nasazení, které se ještě nepodporují sloty.
-
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -48,11 +44,11 @@ Nastavit identita spravované služby v portálu, se nejprve vytvořit aplikace 
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
-Pokud chcete nastavit identitu spravované služby pomocí rozhraní příkazového řádku Azure, budete muset použít `az webapp assign-identity` příkaz s existující aplikaci. Máte tři možnosti pro spuštění v příkladech v této části:
+Pokud chcete nastavit identitu spravované služby pomocí rozhraní příkazového řádku Azure, budete muset použít `az webapp identity assign` příkaz s existující aplikaci. Máte tři možnosti pro spuštění v příkladech v této části:
 
 - Použití [prostředí cloudu Azure](../cloud-shell/overview.md) z portálu Azure.
 - Používání embedded prostředí cloudu Azure prostřednictvím "Zkuste ho" tlačítko, umístěné v pravém horním rohu každé blok kódu níže.
-- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.21 nebo novější) Pokud byste radši chtěli použít místní konzoly rozhraní příkazového řádku. 
+- [Nainstalujte nejnovější verzi 2.0 rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 nebo novější) Pokud byste radši chtěli použít místní konzoly rozhraní příkazového řádku. 
 
 Následující postup vás provede vytvořením webové aplikace a jeho přiřazení identity pomocí rozhraní příkazového řádku:
 
@@ -65,14 +61,14 @@ Následující postup vás provede vytvořením webové aplikace a jeho přiřaz
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
-    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
-    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    az appservice plan create --name myPlan --resource-group myResourceGroup --sku S1
+    az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Spustit `assign-identity` příkaz pro vytvoření identity pro tuto aplikaci:
+3. Spustit `identity assign` příkaz pro vytvoření identity pro tuto aplikaci:
 
     ```azurecli-interactive
-    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manager
@@ -161,7 +157,7 @@ Aplikace s identitou, spravované služby má dvě proměnné definované:
 > [!div class="mx-tdBreakAll"]
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |Prostředek|Dotaz|AAD identifikátor URI prostředku, pro který by měl získat token.|
+> |prostředek|Dotaz|AAD identifikátor URI prostředku, pro který by měl získat token.|
 > |verze rozhraní API.|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je aktuálně podporovány pouze verze.|
 > |Tajný kód|Záhlaví|Hodnota proměnné prostředí MSI_SECRET.|
 
@@ -173,7 +169,7 @@ Aplikace s identitou, spravované služby má dvě proměnné definované:
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby.|
 > |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti.|
-> |Prostředek|Identifikátor ID URI aplikace přijímající webové služby.|
+> |prostředek|Identifikátor ID URI aplikace přijímající webové služby.|
 > |token_type|Určuje hodnotu typ tokenu. Pouze typ, který podporuje Azure AD je nosiče. Další informace o nosné tokeny najdete v tématu [rámci autorizace OAuth 2.0: použití tokenů nosiče (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 

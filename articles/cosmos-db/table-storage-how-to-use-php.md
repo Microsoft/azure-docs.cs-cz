@@ -3,22 +3,21 @@ title: Jak používat službu Azure Storage Table nebo rozhraní API služby Azu
 description: Naučte se používat rozhraní API služby Table z PHP vytvářet a odstraňovat tabulky, vložení, odstranit a dotaz tabulku.
 services: cosmos-db
 documentationcenter: php
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: mimig
-ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Storage Table nebo Cosmos DB tabulky rozhraní API z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -27,23 +26,18 @@ ms.lasthandoff: 04/06/2018
 ## <a name="overview"></a>Přehled
 Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure Storage Table a rozhraní API služby Azure Cosmos DB tabulky. Ukázky jsou napsané v PHP a použití [klientské knihovny pro Azure Storage tabulky PHP][download]. Pokryté scénáře zahrnují **vytváření a odstraňování tabulek**, a **vkládání, odstraňování a dotazování entity v tabulce**. Další informace o službě Azure Table, najdete v článku [další kroky](#next-steps) části.
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
 
-Můžete pracovat s tabulkami pomocí Azure Table storage nebo rozhraní API služby Azure Cosmos DB tabulky. Další informace o rozdílech mezi službami načtením [tabulky nabídky](table-introduction.md#table-offerings). Budete muset vytvořit účet služby, že se chystáte použít. 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
+### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-Nejjednodušší způsob, jak vytvořit svůj první účet úložiště je pomocí [portál Azure](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-Můžete také vytvořit účet úložiště pomocí [prostředí Azure PowerShell](../storage/common/storage-powershell-guide-full.md) nebo [rozhraní příkazového řádku Azure](../storage/common/storage-azure-cli.md).
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu Azure Cosmos DB tabulky rozhraní API
 
-Pokud nechcete vytvořit účet úložiště v tuto chvíli, můžete také použít emulátor úložiště Azure spustit a otestovat kód v místním prostředí. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../storage/common/storage-use-emulator.md).
-
-### <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
-
-Pokyny pro vytvoření účtu Azure Cosmos DB, najdete v části [vytvořit účet rozhraní API tabulky](create-table-dotnet.md#create-a-database-account).
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
 

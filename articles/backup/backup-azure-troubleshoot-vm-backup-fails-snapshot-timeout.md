@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -29,7 +29,8 @@ Tento článek obsahuje kroky řešení potíží, které vám mohou pomoci vyř
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nelze navázat komunikaci s Azure Backup agent virtuálního počítače
 
-Chybová zpráva: "Nelze navázat komunikaci s Azure Backup Agent virtuálního počítače"
+Chybová zpráva: "Nelze navázat komunikaci s Azure Backup Agent virtuálního počítače"<br>
+Kód chyby: "UserErrorGuestAgentStatusUnavailable"
 
 Po registraci a naplánovat virtuálního počítače pro službu zálohování, zálohování spustí úlohu komunikaci s agentem virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Při aktivaci snímku není zálohování může selhat. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:
 
@@ -41,7 +42,8 @@ Po registraci a naplánovat virtuálního počítače pro službu zálohování,
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Operace snímku se nezdaří, protože virtuální počítač není připojený k síti
 
-Chybová zpráva: "Snímku operace se nezdařila z důvodu žádné připojení k síti na virtuálním počítači"
+Chybová zpráva: "Snímku operace se nezdařila z důvodu žádné připojení k síti na virtuálním počítači"<br>
+Kód chyby: "ExtensionSnapshotFailedNoNetwork"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:    
 **Příčina 1: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>Dojde k selhání operace rozšíření VMSnapshot
 
-Chybová zpráva: "VMSnapshot rozšíření operace se nezdařilo"
+Chybová zpráva: "VMSnapshot rozšíření operace se nezdařilo"<br>
+Kód chyby: "ExtentionOperationFailed"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
 **Příčina 1: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,7 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování se nezdaří, protože agent virtuálního počítače je reagovat
 
-Chyba messagae: "Nelze provést operaci, protože agenta virtuálního počítače není přizpůsobivý"
+Chybová zpráva: "Nelze provést operaci, protože agenta virtuálního počítače není přizpůsobivý"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
 **Příčina 1: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -142,7 +145,7 @@ Většina související s agenta nebo rozšíření selhání pro virtuální po
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Spusťte nové zálohování testu. Je-li chyba přetrvávat, shromážděte tyto protokoly z virtuálního počítače:
 
-   * /var/lib/waagent/*.xml
+   * /var/lib/waagent/*.XML
    * /var/log/waagent.log
    * / var/protokolu/azure / *
 
@@ -177,6 +180,8 @@ Chcete-li odinstalovat rozšíření:
 3. Vyberte **rozšíření**.
 4. Vyberte **Vmsnapshot rozšíření**.
 5. Vyberte **odinstalovat**.
+
+Pro virtuální počítač s Linuxem, pokud rozšíření VMSnapshot nezobrazuje na webu Azure portal [aktualizovat Azure Linux Agent](../virtual-machines/linux/update-agent.md), a spusťte zálohování. 
 
 Dokončení tohoto postupu způsobí, že rozšíření nutné přeinstalovat během příští zálohování.
 

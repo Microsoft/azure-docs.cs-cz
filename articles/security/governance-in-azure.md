@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Zásady správného řízení v Azure
 
@@ -147,7 +147,7 @@ Pokud Azure byla původně, řízení přístupu k odběru byly základní: spr�
 
 Tento, jak narůstá počet odběrů již není potřeba. Pomocí řízení přístupu na základě rolí můžete přiřadit uživatele k standardní role (jako je například běžné "čtení" a "zápis" typy rolí). Můžete také definovat vlastní role.
 
-[Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) umožňuje vyladění správy přístupu pro Azure. Pomocí řízení přístupu na základě role v Azure můžete uživatelům poskytnout pouze takovou úroveň přístupu, kterou potřebují k provádění svých úloh. Zaměřené na zabezpečení společnosti by měla soustředit na poskytnutí zaměstnanci přesný oprávnění, které potřebují. Příliš mnoho oprávnění vystavit účet, který útočníkům. Příliš málo oprávnění znamená, že zaměstnanci nelze práci efektivně. Azure na základě rolí řízení přístupu (RBAC) pomáhá vyřešit tento problém tak, že nabídka vyladění správy přístupu pro Azure. RBAC vám pomůže povinností v rámci týmu oddělit a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění v vašeho předplatného Azure nebo prostředky, můžete povolit jenom určité akce.
+[Azure na základě rolí řízení přístupu (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) umožňuje vyladění správy přístupu pro Azure. Pomocí řízení přístupu na základě role v Azure můžete uživatelům poskytnout pouze takovou úroveň přístupu, kterou potřebují k provádění svých úloh. Zaměřené na zabezpečení společnosti by měla soustředit na poskytnutí zaměstnanci přesný oprávnění, které potřebují. Příliš mnoho oprávnění vystavit účet, který útočníkům. Příliš málo oprávnění znamená, že zaměstnanci nelze práci efektivně. Azure na základě rolí řízení přístupu (RBAC) pomáhá vyřešit tento problém tak, že nabídka vyladění správy přístupu pro Azure. RBAC vám pomůže povinností v rámci týmu oddělit a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Namísto udělení každý uživatel neomezený oprávnění v vašeho předplatného Azure nebo prostředky, můžete povolit jenom určité akce.
 
 Například použijte funkci RBAC umožníte jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databází SQL v rámci stejného předplatného.
 
@@ -161,7 +161,7 @@ Azure RBAC má tři základní role, které platí pro všechny typy prostředk�
 
 Zbytek role RBAC v Azure povolit správu konkrétních prostředků Azure. Například role Přispěvatel virtuálních počítačů umožňuje uživatelům vytvářet a spravovat virtuální počítače. Nedává je přístup k virtuální síť nebo podsíť, které se virtuální počítač připojí k.
 
-[Předdefinované role RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) uvádí role, které jsou k dispozici v Azure. Určuje operace a rozsah, který každé předdefinované role uděluje uživatelům.
+[Předdefinované role RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) uvádí role, které jsou k dispozici v Azure. Určuje operace a rozsah, který každé předdefinované role uděluje uživatelům.
 
 Udělit přístup přiřazením příslušné role RBAC uživatelům, skupinám a aplikace v určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. Role přiřazené v nadřazeném oboru podřízené objekty jsou v něm obsažena také uděluje přístup.
 
@@ -169,9 +169,9 @@ Například uživatel s přístupem do skupiny prostředků můžete spravovat v
 
 Azure RBAC podporuje pouze operace správy prostředků Azure v portálu Azure a rozhraní API Správce Azure Resource Manager. Všechny operace úrovně dat pro prostředky Azure se nejde autorizovat. Například může autorizovat někdo chcete spravovat účty pro úložiště, ale není pro objekty BLOB nebo tabulky v rámci účtu úložiště nemůžete. Podobně databáze SQL je možné spravovat, ale nikoli tabulky v něm.
 
-Další informace o tom, jak vám řízení přístupu na základě role v Azure pomůže spravovat přístup uživatelů najdete v článku [Co je řízení přístupu na základě role](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is).
+Další informace o tom, jak vám řízení přístupu na základě role v Azure pomůže spravovat přístup uživatelů najdete v článku [Co je řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-Můžete také [vytvořit vlastní roli](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) v řízení řízení přístupu (RBAC), pokud žádná z předdefinovaných rolí splňují konkrétní přístup potřebuje. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell), [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli)a [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest). Stejně jako předdefinovaných rolí vlastní role jde přiřadit uživatelům, skupinám a aplikacím na předplatné, skupinu prostředků a prostředků obory.
+Můžete také [vytvořit vlastní roli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) v řízení řízení přístupu (RBAC), pokud žádná z předdefinovaných rolí splňují konkrétní přístup potřebuje. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Stejně jako předdefinovaných rolí vlastní role jde přiřadit uživatelům, skupinám a aplikacím na předplatné, skupinu prostředků a prostředků obory.
 
 V rámci každého předplatného můžete udělit až 2000 přiřazení rolí.
 
@@ -271,7 +271,7 @@ Použití **jen pro čtení** může vést k neočekávaným výsledkům, proto�
 
 Další příklad uvedení zámek jen pro čtení na prostředek aplikace služby zabrání Průzkumníka serveru Visual Studia zobrazení souborů pro daný prostředek, protože interakce vyžaduje oprávnění k zápisu.
 
-Na rozdíl od řízení přístupu na základě rolí použít zámky správy pro aplikaci omezení ve všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a rolí najdete v tématu [řízení přístupu na základě Role v Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+Na rozdíl od řízení přístupu na základě rolí použít zámky správy pro aplikaci omezení ve všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a rolí najdete v tématu [řízení přístupu na základě Role v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Když použijete zámku v nadřazeném oboru, zdědí všechny prostředky v rámci tohoto oboru stejné zámek. I prostředky, které přidáte později zámek dědí z nadřazeného objektu. Nejvíc omezující zámek v dědičnosti přednost.
 

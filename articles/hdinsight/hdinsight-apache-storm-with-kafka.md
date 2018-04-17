@@ -1,8 +1,8 @@
 ---
-title: "Pomocí Apache Kafka Storm v HDInsight - Azure | Microsoft Docs"
-description: "Apache Kafka se instaluje s Apache Storm v HDInsight. Naučte se zapsat do Kafka a pak čtení z něj, pomocí KafkaBolt a KafkaSpout součásti, které jsou součástí Storm. Také další informace o použití rozhraní tok definovat a odeslání topologie Storm."
+title: Pomocí Apache Kafka Storm v HDInsight - Azure | Microsoft Docs
+description: Apache Kafka se instaluje s Apache Storm v HDInsight. Naučte se zapsat do Kafka a pak čtení z něj, pomocí KafkaBolt a KafkaSpout součásti, které jsou součástí Storm. Také další informace o použití rozhraní tok definovat a odeslání topologie Storm.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: e4941329-1580-4cd8-b82e-a2258802c1a7
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: be62705ce0217235b75ec5ad220ad6f32dfd3c10
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Pomocí Apache Kafka Storm v HDInsight
 
@@ -32,7 +30,7 @@ Další informace o použití Apache Storm číst a zapisovat do Apache Kafka. T
 
 ## <a name="get-the-code"></a>Získání kódu
 
-Kód pro tento příklad v tomto dokumentu je k dispozici na [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
+Kód pro tento příklad v tomto dokumentu je k dispozici na [ https://github.com/Azure-Samples/hdinsight-storm-java-kafka ](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
 
 Kompilace projektu, potřebujete následující konfigurace pro vývojové prostředí:
 
@@ -131,11 +129,11 @@ Následující parametry jsou nastavené v době běhu pro tyto topologie:
 
 * `${kafka.zookeeper.hosts}`: Hostitelů, které Zookeeper běží na clusteru Kafka.
 
-Další informace o topologiích tok najdete v tématu [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
+Další informace o topologiích tok najdete v tématu [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="download-and-compile-the-project"></a>Stáhněte si a kompilaci projektu
 
-1. Na vašem vývojovém prostředí, stáhněte si projekt z [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), otevřete příkazového řádku a změňte adresáře na umístění, který jste si stáhli projektu.
+1. Na vašem vývojovém prostředí, stáhněte si projekt z [ https://github.com/Azure-Samples/hdinsight-storm-java-kafka ](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), otevřete příkazového řádku a změňte adresáře na umístění, který jste si stáhli projektu.
 
 2. Z **hdinsight storm java kafka** adresáře, použijte následující příkaz pro kompilaci projektu a vytvořit balíček pro nasazení:
 
