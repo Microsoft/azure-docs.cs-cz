@@ -55,7 +55,7 @@
 
 # Související
 ## [Azure Active Directory](/azure/active-directory/)
-## [Řízení přístupu na základě role](../role-based-access-control-what-is.md)
+## [Řízení přístupu na základě role](../../role-based-access-control/overview.md)
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

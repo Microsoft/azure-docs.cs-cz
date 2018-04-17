@@ -7,18 +7,18 @@ metadata:
   description: Naučte se pomocí databáze Azure Cosmos vytvářet globálně distribuované databáze s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů.
   services: cosmos-db
   author: mimig1
-  manager: jhubbard
+  manager: kfile
   ms.service: cosmos-db
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: 684b0f00e85755b55aa0bfd9e8e6f68af3d38886
-  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.openlocfilehash: 017130095fc8de6a83cbff075f47cbff9fd48089
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/05/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
   description: Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA.
   aside:

@@ -24,7 +24,7 @@
 ###[Nasazení šablon pomocí Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Zabezpečení (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Správa prostředků pomocí přiřazení rolí](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Správa prostředků pomocí přiřazení rolí](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtual Machines](azure-operations-guide.md#azure-virtual-machines)
 ### [Velikosti virtuálních počítačů pro Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

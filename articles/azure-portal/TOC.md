@@ -16,7 +16,7 @@
 ## Spravovat
 ### [Zapnutí vysokého kontrastu nebo změna motivu](azure-portal-change-theme-high-contrast.md)
 ### [Použití portálu ke správě prostředků](../azure-resource-manager/resource-group-portal.md)
-### [Správa přístupu prostřednictvím řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md)
+### [Správa přístupu prostřednictvím řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md)
 ### [Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role](azure-portal-dashboard-share-access.md)
 ### [Použití značek k uspořádání prostředků](../azure-resource-manager/resource-group-using-tags.md)
 ### [Škálování prostředků](../monitoring-and-diagnostics/insights-how-to-scale.md)

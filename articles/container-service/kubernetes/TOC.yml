@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6. Aktualizace aplikace
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7. Monitorování pomocí OMS
+    - name: 7. Monitorování pomocí Log Analytics
       href: container-service-tutorial-kubernetes-monitor.md
 - name: Koncepty
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: Monitorování
       items:
-        - name: Monitorování pomocí OMS
+        - name: Monitorování pomocí Log Analytics
           href: container-service-kubernetes-oms.md
         - name: Monitorování pomocí služby Datadog
           href: container-service-kubernetes-datadog.md
