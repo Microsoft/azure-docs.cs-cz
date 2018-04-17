@@ -364,6 +364,10 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
+        - name: Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Správa prostředí Azure-SSIS Integration Runtime
@@ -374,6 +378,8 @@
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Plánování prostředí Azure-SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: Vývoj licencovaných komponent pro Azure-SSIS Integration Runtime
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: Vytvoření aktivačních událostí
       items:
         - name: Vytvoření aktivační události plánu

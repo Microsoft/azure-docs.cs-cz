@@ -1,6 +1,6 @@
 ---
-title: "Úvod do služby Azure App Service Environment"
-description: "Stručný přehled služby Azure App Service Environment"
+title: Úvod do služby Azure App Service Environment
+description: Stručný přehled služby Azure App Service Environment
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="introduction-to-app-service-environments"></a>Úvod do služby App Service Environment #
+# <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
 ## <a name="overview"></a>Přehled ##
 
@@ -43,7 +43,7 @@ Služby ASE jsou izolované tak, aby spouštěly jenom aplikace jednoho zákazn�
 
 ## <a name="dedicated-environment"></a>Vyhrazené prostředí ##
 
-Služba ASE je vyhrazená jenom pro jedno předplatné a může být hostitelem 100 instancí. Tento rozsah může zahrnovat 100 instancí v rámci jednoho plánu služby App Service, ale i 100 plánů služby App Service s jednou instancí a veškeré další kombinace.
+Služba ASE je vyhrazená jenom pro jedno předplatné a může být hostitelem 100 instancí plánů služby App Service. Tento rozsah může zahrnovat 100 instancí v rámci jednoho plánu služby App Service, ale i 100 plánů služby App Service s jednou instancí a veškeré další kombinace.
 
 Služba ASE se skládá z front-endů a pracovních procesů. Front-endy zodpovídají za ukončení protokolu HTTP/HTTPS a automatické vyrovnávání zatížení požadavků aplikací ve službě ASE. Front-endy se přidávají automaticky při horizontálním škálování plánů služby App Service ve službě ASE.
 

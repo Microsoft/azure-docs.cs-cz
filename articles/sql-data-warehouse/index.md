@@ -1,26 +1,25 @@
 ---
-title: "Dokumentace ke službě Azure SQL Data Warehouse – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se používat službu SQL Data Warehouse, která kombinuje SQL Server s architekturou MPP (Massively Parallel Processing). Dokumentace ukazuje, jak načítat, analyzovat, spravovat a exportovat data."
+title: Dokumentace ke službě Azure SQL Data Warehouse – kurzy a koncepty | Microsoft Docs
+description: Naučte se používat službu Azure SQL Data Warehouse, která kombinuje relační databáze SQL s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak navrhovat, načítat, spravovat a analyzovat data pomocí datového skladu.
 services: sql-data-warehouse
-author: czeumault
-manager: carolz
+author: hirokib
+manager: craigg-msft
 layout: LandingPage
-ms.assetid: 
 ms.service: sql-data-warehouse
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 47807360dd58f0c19360d90ed66f726d8922be1e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.component: design
+ms.date: 04/11/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 42db87fd64bca58ee3e86589acdc85107e057665
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentace ke službě SQL Data Warehouse
 
-Naučte se používat službu SQL Data Warehouse, která relační databázi kombinuje SQL Serveru s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak načítat data do skladu a potom je analyzovat, spravovat a exportovat.
+Naučte se používat službu Azure SQL Data Warehouse, která kombinuje relační databáze SQL s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak navrhovat, načítat, spravovat a analyzovat data pomocí datového skladu. 
 
 <ul class="panelContent cardsFTitle">
     <li>

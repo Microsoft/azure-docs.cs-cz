@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
+ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 88b95c28cd64afb97fb34d2bced09161c3aa9312
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -94,8 +94,9 @@ Virtuální počítače Azure můžou využít výhod pokročilé cloudové obra
 
 V následujících zdrojích se dozvíte, jak tyto možnosti ve službě Security Center využít.
 
-Video   
+Videa  
 * [Azure Security Center – Přístup k virtuálním počítačům metodou Just-in-Time](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center – Adaptivní řízení aplikací](https://youtu.be/wWWekI1Y9ck)
 
 Články    
 * [Správa přístupu k virtuálním počítačům pomocí metody Just-in-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
@@ -105,6 +106,7 @@ Video
 
 * [Praktická cvičení pro Security Center](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Playbook doporučených postupů pro Firewall webových aplikací (WAF) ve službě Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
+* [Playbook Azure Security Center: Výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>Další zdroje
 * [Stránky dokumentace služby Security Center](https://docs.microsoft.com/azure/security-center/)
@@ -115,6 +117,7 @@ Video
 * [Osvědčené postupy zabezpečení sítě](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
 * [Doporučení k PaaS](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Dodržování předpisů](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
+* [Zákazníci OMS teď můžou pomocí služby Azure Security Center chránit své hybridní cloudové úlohy](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>Komunitní zdroje
 

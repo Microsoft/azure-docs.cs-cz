@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -54,7 +54,7 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejný jako v databázi SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejný jako v databázi SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravované Instance.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:<instanceName>.<dnsPrefix>. Database.Windows.NET, kde <instanceName> je název poskytované zákazníka, zatímco <dnsPrefix> je automaticky generovaný část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", např.)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:<instanceName>.<dnsPrefix>. Database.Windows.NET, kde <instanceName> je název poskytované zákazníka, zatímco <dnsPrefix> je automaticky generovaný část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", např.)|Příklad: Moje spravované instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="key-features-and-capabilities-of-a-managed-instance"></a>Klíčové funkce a možnosti spravované instance 
 
@@ -74,7 +74,7 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 Na základě vCore nákupní model poskytuje flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. Je také vhodné pro až na 30 procent úspor s modelem vCore [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru.
-- Gen 4 logické procesory jsou založené na Intel E5-2673 v3 (Haswell) 2,4 GHz procesory.
+- Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz.
 - Gen 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesory.
 
 Následující tabulka vám pomůže pochopit postup výběru optimální konfigurace výpočtů, paměť, úložiště a vstupně-výstupních prostředků.
@@ -131,7 +131,7 @@ Následující část popisuje klíčové funkce vrstvy služby s obecné účel
 
 Spravované Instance poskytují další bezpečnostní izolaci od ostatních klientů v cloudu Azure. Izolace zabezpečení zahrnuje: 
 
-- Implementace nativní virtuální sítě a připojení k prostředí místní pomocí Azure Express trasy nebo brány sítě VPN 
+- [Implementace nativní virtuální sítě](sql-database-managed-instance-vnet-configuration.md) a připojení k prostředí místní pomocí Azure Express trasy nebo brány sítě VPN 
 - Koncový bod SQL je k dispozici pouze prostřednictvím privátní IP adresy, umožňuje bezpečné připojení z Azure privátní nebo hybridní sítě
 - Jednoho klienta s vyhrazenou základní infrastruktury (výpočetní, úložiště)
 
@@ -185,7 +185,13 @@ Služba Azure databáze migrace je plně spravovaná služba navržených k povo
 
 ### <a name="backup-and-restore"></a>Zálohování a obnovení  
 
-Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Záloh uložených v objektu blob úložiště Azure můžete přímo obnovena do spravované Instance. 
+Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Záloh uložených v objektu blob úložiště Azure můžete přímo obnovena do spravované Instance. Chcete-li obnovit existující databázi SQL do spravované instance, můžete:
+
+- Použití [služba migrace dat (DMS)](/sql/dma/dma-overview). Podívejte se kurz [migrací do Instance spravované pomocí služby pro migraci databáze Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) obnovit ze záložního souboru databáze
+- Použití [příkaz RESTORE T-SQL](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+  - Zobrazuje postup obnovení společnost Wide World Importers - záložní soubor standardní databáze, na adrese [obnovit záložní soubor do Instance spravované](sql-database-managed-instance-restore-from-backup-tutorial.md). Tento kurz ukazuje, že budete muset nahrát záložní soubor do úložiště Azure blog a zabezpečení pomocí klíč sdíleného přístupu podpis (SAS).
+  - Informace o obnovení z adresy URL, najdete v článku [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
+- [Import ze souboru BACPAC souboru](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Funkce SQL podporované 
 
@@ -217,5 +223,6 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 ## <a name="next-steps"></a>Další postup
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
+- Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-vnet-configuration.md).
 - Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
 - Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).

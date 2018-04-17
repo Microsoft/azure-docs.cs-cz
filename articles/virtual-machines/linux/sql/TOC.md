@@ -1,13 +1,10 @@
 # Přehled
 ## [Linuxové virtuální počítače s SQL Serverem](sql-server-linux-virtual-machines-overview.md)
-## [Ceny](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)
-## [Nejčastější dotazy](sql-server-linux-faq.md)
 
-# Začínáme
-## [Zřízení virtuálního počítače na webu Azure Portal](provision-sql-server-linux-virtual-machine.md)
+# Šablony Rychlý start
+## [Vytvoření virtuálního počítače SQL – portál](provision-sql-server-linux-virtual-machine.md)
 
 # Referenční informace
-## [Dokumentace k SQL Serveru na Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 ## [Azure CLI](/cli/azure/)
 ## [PowerShell](/powershell/azure/overview)
 ## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
@@ -15,8 +12,11 @@
 ## [REST](/rest/api/)
 
 # Zdroje a prostředky
-## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=compute)
-## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
+## [Nejčastější dotazy](sql-server-linux-faq.md)
+## [Dokumentace k SQL Serveru na Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+## [Ceny](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)
+## [PaaS nebo IaaS?](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)
 ## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
 ## [Nástroje SQL Serveru](https://docs.microsoft.com/sql/tools/overview-sql-tools)
+## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Stack Overflow](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)

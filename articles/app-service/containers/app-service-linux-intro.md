@@ -1,12 +1,12 @@
 ---
-title: "Seznámení se službou App Service v Linuxu | Dokumentace Microsoftu"
-description: "Seznamte se se službou Azure App Service v Linuxu."
+title: Seznámení se službou App Service v Linuxu | Dokumentace Microsoftu
+description: Seznamte se se službou Azure App Service v Linuxu.
 keywords: azure app service, linux, oss
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 465e3d2c0c2b7c5d811441ede20adb9da2dbe847
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -33,9 +33,23 @@ App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšen�
 | Jazyk | Podporované verze |
 |---|---|
 | Node.js | 4.4, 4.5, 6.2, 6.6, 6.9–6.11, 8.0, 8.1 |
+| Java* | 8.0 |
 | PHP | 5.6, 7.0 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
+
+* Podpora funkce Preview
+
+### <a name="preview-supported-java-runtimes"></a>Preview: podporované moduly runtime Java
+
+Ve službě App Service v Linuxu jsou k dispozici následující moduly runtime Java:
+
+| Modul runtime | Verze |
+|---|---|
+| Apache Tomcat | 8.5 |
+| Apache Tomcat | 9.0 |
+
+Další podrobnosti najdete v tématu [Vytvoření webové aplikace v Javě ve službě App Service v Linuxu](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java).
 
 ## <a name="deployments"></a>Nasazení
 

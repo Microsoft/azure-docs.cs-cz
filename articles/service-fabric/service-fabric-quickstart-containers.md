@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/18
+ms.date: 04/03/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: eb4de9d7781ae355e42a6fec9f7732ad67228e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47a4e75699e024dae367524f16eb23fb72043ef5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Rychlý start: Nasazení aplikace Service Fabric typu kontejner pro Windows v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -29,11 +29,11 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 ![Výchozí webová stránka služby IIS][iis-default]
 
 V tomto rychlém startu se naučíte:
-> [!div class="checklist"]
-> * Zabalení kontejneru image Dockeru
-> * Konfigurace komunikace
-> * Sestavení a zabalení aplikace Service Fabric
-> * Nasazení aplikace typu kontejner do Azure
+
+* Zabalení kontejneru image Dockeru
+* Konfigurace komunikace
+* Sestavení a zabalení aplikace Service Fabric
+* Nasazení aplikace typu kontejner do Azure
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure (můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
@@ -210,16 +210,16 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto rychlém sta
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste se naučili:
-> [!div class="checklist"]
-> * Zabalení kontejneru image Dockeru
-> * Konfigurace komunikace
-> * Sestavení a zabalení aplikace Service Fabric
-> * Nasazení aplikace typu kontejner do Azure
 
-* Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).
-* Přečtěte si kurz [Nasazení aplikace .NET v kontejneru](service-fabric-host-app-in-a-container.md).
-* Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.
-* Prohlédněte si [ukázky kódu kontejneru Service Fabric](https://github.com/Azure-Samples/service-fabric-containers) na GitHubu.
+* Zabalení kontejneru image Dockeru
+* Konfigurace komunikace
+* Sestavení a zabalení aplikace Service Fabric
+* Nasazení aplikace typu kontejner do Azure
+
+Další informace o práci s kontejnery Windows v Service Fabric najdete v kurzu věnovaném aplikacím typu kontejner pro Windows.
+
+> [!div class="nextstepaction"]
+> [Vytvoření aplikace typu kontejner pro Windows](./service-fabric-host-app-in-a-container.md)
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png

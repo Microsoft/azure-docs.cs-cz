@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: 1. Návrh databáze pomocí .NET
       href: sql-database-design-first-database-csharp.md
-    - name: 2. Migrace do databáze SQL Serveru
+    - name: 2. Migrace do databáze SQL Serveru s využitím DMS
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3. Zabezpečení databáze SQL
       href: sql-database-security-tutorial.md
     - name: 4. Implementace geograficky distribuované databáze
       href: sql-database-implement-geo-distributed-database.md
     - name: 5. Vytvoření spravované Instance
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: 6. Obnovení zálohy do spravované instance
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: 7. Migrace do spravované instance s využitím DMS
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: ETL pro analýzu
               href: saas-tenancy-tenant-analytics.md
+            - name: Zotavení po havárii s využitím geografického obnovení
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: Zotavení po havárii s využitím geografické replikace databáze
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: Víceklientská databáze
           items:
             - name: Nasazení ukázkové aplikace

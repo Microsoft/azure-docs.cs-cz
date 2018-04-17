@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a34a94a9421c65a2b1d4ce5c390732e0adbb69d6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí .NET
 
@@ -56,26 +56,15 @@ Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojo
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít řešení sady Visual Studio, vyhledejte složku storage-blobs-dotnet-quickstart, otevřete ji a dvakrát klikněte na soubor storage-blobs-dotnet-quickstart.sln. 
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít řešení sady Visual Studio, vyhledejte složku *storage-blobs-dotnet-quickstart*, otevřete ji a dvakrát klikněte na soubor *storage-blobs-dotnet-quickstart.sln*. 
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Zkopírujte svůj připojovací řetězec z webu Azure Portal a zapište ho do nové proměnné prostředí. Ukázka načte připojovací řetězec z proměnné prostředí a použije ho k ověření vašich požadavků ve službě Azure Storage.
+Pro spuštění aplikace je potřeba zadat připojovací řetězec pro váš účet úložiště. Ukázková aplikace načte připojovací řetězec z proměnné prostředí a použije ho k ověření požadavků ve službě Azure Storage.
 
-### <a name="copy-your-connection-string-from-the-azure-portal"></a>Zkopírování připojovacího řetězce z webu Azure Portal
-
-Zkopírování připojovacího řetězce:
-
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-2. Vyhledejte svůj účet úložiště.
-3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**.
-4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.  
-
-    ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
-
-## <a name="write-your-connection-string-to-an-environment-variable"></a>Zápis připojovacího řetězce do proměnné prostředí
-
-Dále na místním počítači, na kterém je aplikace spuštěná, napište novou proměnnou prostředí. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` svým skutečným připojovacím řetězcem:
+Po zkopírování připojovacího řetězce ho zapište do nové proměnné prostředí na místním počítači, na kterém aplikaci spouštíte. Proměnnou prostředí nastavíte tak, že otevřete okno konzoly a budete postupovat podle pokynů pro váš operační systém. Nahraďte `<yourconnectionstring>` svým skutečným připojovacím řetězcem:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -91,7 +80,7 @@ Po přidání proměnné prostředí možná bude nutné restartovat všechny sp
 export storageconnectionstring=<yourconnectionstring>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core v Service Fabric
 Tento kurz je čtvrtou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md). 
@@ -89,8 +89,12 @@ Tady je postup nastavení balíčku NuGet:
 1. Klikněte pravým tlačítkem na **Řešení Voting** v horní části Průzkumníku řešení a pak klikněte na **Spravovat balíčky NuGet pro řešení**.
 2. Klikněte na **Procházet** v horní části navigační nabídky v okně NuGet – Řešení a zaškrtněte políčko **Zahrnout předběžné verze** vedle panelu vyhledávání.
 3. Vyhledejte `Microsoft.ApplicationInsights.ServiceFabric.Native` a klikněte na odpovídající balíček NuGet.
+
+>[!NOTE]
+>Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnistics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
+
 4. Na pravé straně klikněte na dvě zaškrtávací políčka vedle dvou služeb v aplikaci – **VotingWeb** a **VotingData** – a klikněte na **Nainstalovat**.
-    ![Dokončená registrace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/aisdk-sf-nuget.png)
+    ![Balíček NuGet sady Application Insights SDK](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. V dialogovém okně *Zkontrolovat změny*, které se otevře, klikněte na **OK** a přijměte *Souhlas s podmínkami licence*. Tím se dokončí přidání balíčku NuGet do služeb.
 6. Teď je potřeba v obou službách nastavit inicializátor telemetrie. Provedete to tak, že otevřete soubory *VotingWeb.cs* a *VotingData.cs*. U obou z nich proveďte následující kroky:
     1. Na začátek obou souborů *\<název_služby>.cs* přidejte tyto dva příkazy *using*:
@@ -114,6 +118,7 @@ Tady je postup nastavení balíčku NuGet:
                 .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
+        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -137,6 +142,19 @@ Tady je postup nastavení balíčku NuGet:
         .Build();
     ```
 
+Pečlivě zkontrolujte, že se v obou souborech volá metoda `UseApplicationInsights()`, jak je znázorněno výše. 
+
+>[!NOTE]
+>Tato ukázková aplikace pro zajištění komunikace služeb používá protokol HTTP. Pokud vyvíjíte aplikaci s využitím vzdálené komunikace služeb V2, budete muset na stejné místo jako výše přidat také následující řádky kódu.
+
+```csharp
+ConfigureServices(services => services
+    ...
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingDependencyTrackingTelemetryModule())
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingRequestTrackingTelemetryModule())
+)
+```
+
 V tuto chvíli jste připraveni nasadit aplikaci. Klikněte na **Spustit** v horní části (nebo stiskněte **F5**) a sada Visual Studio sestaví a zabalí aplikaci, nastaví místní cluster a nasadí do něj aplikaci. 
 
 Po nasazení aplikace přejděte na adresu [localhost:8080](localhost:8080), kde by se měla zobrazit jednostránková aplikace Voting Sample. Hlasujte pro několik různých položek, abyste vytvořili nějaká ukázková data a telemetrii – my jsme zvolili zákusky.
@@ -147,9 +165,7 @@ Až budete hotovi s přidáváním hlasů, můžete některé možnosti hlasová
 
 ## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>Zobrazení telemetrie a mapy aplikace v Application Insights 
 
-Přejděte do vašeho prostředku Application Insights na webu Azure Portal a v levém navigačním panelu prostředku klikněte na **Verze Preview** v části *Konfigurace*. V seznamu dostupných verzí Preview nastavte možnost *Mapa aplikace s více rolemi* na **Zapnuto**.
-
-![Povolení mapy aplikace v Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/ai-appmap-enable.png)
+Přejděte ke svému prostředku Application Insights na webu Azure Portal.
 
 Kliknutím na **Přehled** se vraťte na úvodní stránku vašeho prostředku. Pak kliknutím na **Vyhledávání** v horní části zobrazte příchozí trasování. Zobrazení trasování v Application Insights trvá několik minut. V případě, že se žádné nezobrazí, chvíli počkejte a stiskněte tlačítko **Aktualizovat** v horní části.
 ![Zobrazení trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
@@ -160,9 +176,9 @@ Kliknutím na některé z trasování můžete zobrazit další podrobnosti. Zob
 
 ![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-Navíc protože jsme povolili mapu aplikace, po kliknutí na ikonu **Mapa aplikace** na stránce *Přehled* se zobrazí obě připojené služby.
+Kromě toho můžete kliknutím na *Mapa aplikace* v levé nabídce na stránce Přehled nebo kliknutím na ikonu **Mapa aplikace** přejít do mapy aplikace, ve které se zobrazí dvě propojené služby.
 
-![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/app-map.png)
+![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 Mapa aplikace vám může pomoct lépe porozumět topologii vaší aplikace, zejména když začnete přidávat více různých služeb, které mezi sebou spoluprací. Poskytuje také základní data o úspěšnosti požadavků a může vám pomoct diagnostikovat požadavky, které selhaly, abyste zjistili, kde pravděpodobně dochází k problémům. Další informace o používání mapy aplikace najdete v tématu [Mapa aplikace v Application Insights](../application-insights/app-insights-app-map.md).
 

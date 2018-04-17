@@ -85,8 +85,6 @@
           href: backup-azure-files.md
         - name: Zálohování sdílených složek Azure – nejčastější dotazy
           href: backup-azure-files-faq.md
-        - name: Řešení problémů se zálohováním sdílených složek Azure
-          href: troubleshoot-azure-files.md
     - name: Virtuální počítače Azure
       items:
         - name: Příprava virtuálního počítače
@@ -181,18 +179,20 @@
           href: backup-azure-delete-vault.md
     - name: Řešení potíží
       items:
-        - name: Potíže se zálohami virtuálních počítačů Azure na webu Azure Portal
+        - name: Chybové zprávy zálohování virtuálních počítačů IaaS
           href: backup-azure-vms-troubleshoot.md
-        - name: 'Selhání zálohování virtuálních počítačů Azure: S agentem virtuálního počítače nebylo možné komunikovat – Dílčí úloze snímku virtuálního počítače vypršel časový limit'
+        - name: Pro agenta Azure Backup (MARS) nebo rozšíření virtuálního počítače vypršel časový limit
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-        - name: Pomalé zálohování souborů a složek ve službě Azure Backup
+        - name: Zálohování souborů a složek je pomalé
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
-        - name: Odstraňování potíží Azure Backup Serveru
+        - name: Server Azure Backup
           href: backup-azure-mabs-troubleshoot.md
-        - name: Řešení potíží se System Center Data Protection Managerem
+        - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Řešení potíží s agentem Azure Backup
+        - name: Agent Azure Backup (MARS)
           href: backup-azure-mars-troubleshoot.md
+        - name: Zálohování sdílených složek Azure
+          href: troubleshoot-azure-files.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

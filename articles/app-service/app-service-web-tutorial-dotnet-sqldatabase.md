@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření aplikace ASP.NET se službou SQL Database v Azure | Microsoft Docs"
-description: "Zjistěte, jak v Azure zprovoznit aplikaci ASP.NET s připojením ke službě SQL Database."
+title: Vytvoření aplikace ASP.NET se službou SQL Database v Azure | Microsoft Docs
+description: Zjistěte, jak v Azure zprovoznit aplikaci ASP.NET s připojením ke službě SQL Database.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>Vytvoření aplikace ASP.NET se službou SQL Database v Azure
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
 [Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak v Azure nasadit webovou aplikaci ASP.NET řízenou daty a připojit ji ke službě [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po dokončení budete mít v Azure spuštěnou aplikaci ASP.NET připojenou ke službě SQL Database.
 
@@ -48,6 +48,8 @@ K provedení kroků v tomto kurzu je potřeba:
   - **Azure – vývoj**
 
   ![Vývoj pro ASP.NET a Azure – vývoj (v části Web a cloud)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+Pokud jste už sadu Visual Studio nainstalovali, přidejte do ní sady funkcí kliknutím na **Nástroje** > **Získat nástroje a funkce**.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 

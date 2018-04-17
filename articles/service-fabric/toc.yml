@@ -96,7 +96,7 @@
     - name: Sestavování aplikací
       href: service-fabric-choose-framework.md
       items:
-        - name: Kontejnery
+        - name: Containers
           href: service-fabric-containers-overview.md
           items:
             - name: Docker Compose (Preview)
@@ -201,6 +201,8 @@
       items:
         - name: Zabezpečení clusteru
           href: service-fabric-cluster-security.md
+        - name: Škálování
+          href: service-fabric-cluster-scaling.md
         - name: Rozdíly ve funkcích mezi systémy Linux a Windows
           href: service-fabric-linux-windows-differences.md
         - name: Clustery v Azure
@@ -323,6 +325,8 @@
               href: service-fabric-resource-governance.md
             - name: Svazek a ovladače protokolování
               href: service-fabric-containers-volume-logging-drivers.md
+            - name: Zobrazení protokolů kontejneru
+              href: service-fabric-containers-view-logs.md
             - name: Služby uvnitř kontejnerů
               href: service-fabric-services-inside-containers.md
             - name: Síťové režimy kontejneru
@@ -539,8 +543,10 @@
           href: service-fabric-visualizing-your-cluster.md
         - name: Připojení k zabezpečenému clusteru
           href: service-fabric-connect-to-secure-cluster.md
-        - name: Oprava uzlů clusteru
+        - name: Oprava uzlů clusteru (Windows)
           href: service-fabric-patch-orchestration-application.md
+        - name: Oprava uzlů clusteru (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
     - name: Monitorování a diagnóza
       items:
         - name: Analýza s využitím OMS

@@ -1,12 +1,12 @@
 ---
-title: "Přehled identity pro Azure zásobníku | Microsoft Docs"
-description: "Další informace o systémů identit, které můžete použít s Azure zásobníku."
+title: Přehled identity pro Azure zásobníku | Microsoft Docs
+description: Další informace o systémů identit, které můžete použít s Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: deebe5d8ff4c35c4507d2daf5c15025a1810d865
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.reviewer: ''
+ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Přehled identity pro Azure zásobníku
 
@@ -52,12 +52,12 @@ Uživatelské účty (identity) jsou standardní účty, které ověřují jedno
 Jak vytvořit a spravovat uživatele a skupiny závisí na řešení identit, které používáte. 
 
 V zásobníku Azure, uživatelské účty: 
-- Jsou vytvořené v  *username@domain*  formátu. I když služby AD FS mapuje uživatelské účty na instanci služby Active Directory, služby AD FS nepodporuje použití  *\<domény >\<alias >* formátu. 
+- Jsou vytvořené v *username@domain* formátu. I když služby AD FS mapuje uživatelské účty na instanci služby Active Directory, služby AD FS nepodporuje použití  *\<domény >\<alias >* formátu. 
 - Můžete nastavit na používání služby Multi-Factor authentication. 
 - Jsou omezeny na adresář, kde se nejprve zaregistrovat, což je adresáře své organizace.
 - Je možné importovat z místních adresářů. Další informace najdete v tématu [integraci místních adresářů se službou Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect). 
 
-Při přihlášení na portál klienta vaší organizace, můžete použít  *https://portal.local.azurestack.external*  adresy URL. 
+Při přihlášení na portál klienta vaší organizace, můžete použít *https://portal.local.azurestack.external* adresy URL. 
 
 ### <a name="guest-users"></a>Uživatelé typu host
 Uživatele typu Host jsou uživatelské účty od ostatních klientů adresáře, kterým byl udělen přístup k prostředkům ve vašem adresáři. Pro podporu uživatelů typu Host, použít Azure AD a povolit podporu pro více klientů. Pokud je zapnutá podpora, můžete pozvat uživatele typu Host pro přístup k prostředkům ve vašem klientu adresář, který zase umožňuje vzájemnou spolupráci s mimo organizacemi. 
@@ -145,10 +145,10 @@ Pro aplikace a uživatelé se popisuje architekturu zásobník Azure čtyři vrs
 
 ### <a name="authenticate-to-azure-resource-manager"></a>Ověření do Azure Resource Manageru
 Ověření pomocí zprostředkovatele identity a přijímat webového tokenu JSON, musíte mít následující informace: 
-1.  **Adresa URL pro systém identit (autorita)**: adresa URL, na které bude možné spojit zprostředkovatele identity. Například  *https://login.windows.net* . 
+1.  **Adresa URL pro systém identit (autorita)**: adresa URL, na které bude možné spojit zprostředkovatele identity. Například *https://login.windows.net*. 
 2.  **Identifikátor ID URI aplikace pro Azure Resource Manager**: Jedinečný identifikátor pro Azure Resource Manager, která je zaregistrovaná u poskytovatele identit. Je také jedinečné pro každou instalaci Azure zásobníku.
 3.  **Přihlašovací údaje**: přihlašovací údaje použijete k ověření pomocí zprostředkovatele identity. 
-4.  **Adresa URL pro Azure Resource Manager**: adresa URL je umístění služby Správce prostředků Azure. Například  *https://management.azure.com*  nebo  *https://management.local.azurestack.external* .
+4.  **Adresa URL pro Azure Resource Manager**: adresa URL je umístění služby Správce prostředků Azure. Například *https://management.azure.com* nebo *https://management.local.azurestack.external*.
 
 Pokud objekt zabezpečení (klienta, aplikace nebo uživatele) provede požadavek ověřování pro přístup k prostředkům, musí žádosti zahrnovat:
 - Přihlašovací údaje objektu zabezpečení.
@@ -169,9 +169,9 @@ Po dokončení všech ověření Azure Resource Manager používá *proti* (oid)
 
 ### <a name="use-role-based-access-control"></a>Pomocí řízení přístupu na základě rolí  
 Na základě rolí řízení přístupu (RBAC) v zásobníku Azure je konzistentní s implementací v Microsoft Azure. Můžete spravovat přístup k prostředkům přiřazením příslušné role RBAC uživatelům, skupinám a aplikacím. Informace o tom, jak používat funkci RBAC zásobníkem Azure, najdete v následujících článcích:
-- [Začínáme s řízením přístupu na základě rolí na portálu Azure](/azure/active-directory/role-based-access-control-what-is).
-- [Pomocí řízení přístupu na základě Role můžete spravovat přístup k prostředkům na předplatné](/azure/active-directory/role-based-access-control-configure).
-- [Vytvořit vlastní role pro řízení přístupu](/azure/active-directory/role-based-access-control-custom-roles).
+- [Začínáme s řízením přístupu na základě rolí na portálu Azure](/azure/role-based-access-control/overview).
+- [Pomocí řízení přístupu na základě Role můžete spravovat přístup k prostředkům na předplatné](/azure/role-based-access-control/role-assignments-portal).
+- [Vytvořit vlastní role pro řízení přístupu](/azure/role-based-access-control/custom-roles).
 - [Správa řízení přístupu na základě rolí](azure-stack-manage-permissions.md) v Azure zásobníku.
 
 

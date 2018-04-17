@@ -1,11 +1,11 @@
 ---
 title: Migrace platformy pro Azure Security Center | Dokumentace Microsoftu
-description: "Tento dokument vysvětluje některé změny ve způsobu, jakým se shromažďují data ve službě Azure Security Center."
+description: Tento dokument vysvětluje některé změny ve způsobu, jakým se shromažďují data ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 80246b00-bdb8-4bbc-af54-06b7d12acf58
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2e2e8d7213504ccd71df7048045925bf566c76d5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-platform-migration"></a>Migrace platformy pro Azure Security Center
 
@@ -32,7 +32,7 @@ Od začátku června 2017 Azure Security Center postupně zavádí důležité z
 
 Dříve služba Security Center využívala ke shromažďování dat zabezpečení z virtuálních počítačů agenta Azure Monitoring Agent. Tato data zahrnují informace o konfiguracích zabezpečení, které slouží k identifikaci ohrožení zabezpečení, a události zabezpečení, které slouží k rozpoznání hrozeb. Tato data se ukládala ve vašich účtech Storage v Azure.
 
-Výhledově bude Security Center používat agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá Operations Management Suite a služba Log Analytics. Data shromážděná z tohoto agenta se ukládají v existujících [pracovním prostoru](../log-analytics/log-analytics-manage-access.md) *Log Analytics* přidruženém k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na geografickou polohu virtuálního počítače.
+Výhledově bude Security Center používat agenta Microsoft Monitoring Agent – to je stejný agent, kterého používá služba Log Analytics. Data shromážděná z tohoto agenta se ukládají v existujících [pracovním prostoru](../log-analytics/log-analytics-manage-access.md) *Log Analytics* přidruženém k vašemu předplatnému Azure nebo v nových pracovních prostorech s ohledem na geografickou polohu virtuálního počítače.
 
 ## <a name="agent"></a>Agent
 
@@ -62,9 +62,9 @@ U pracovních prostorů vytvořených službou Security Center se data uchováva
 > [!NOTE]
 > Data shromážděná dříve službou Security Center zůstanou ve vašich účtech Storage. Po dokončení migrace můžete tyto účty Storage odstranit.
 
-### <a name="oms-security-solution"></a>Řešení OMS Security 
+### <a name="security-management-solution"></a>Řešení pro správu zabezpečení 
 
-Pro zákazníky, kteří řešení OMS Security nemají nainstalované, ho Microsoft nainstaluje v jejich pracovním prostoru, ale bude cílit pouze na virtuální počítače Azure. Nesnažte se toto řešení odinstalovat, protože pokud to provedete z konzoly pro správu OMS, neexistuje žádná možnost automatické nápravy.
+Pro stávající zákazníky, kteří nemají v Log Analytics nainstalované řešení pro správu zabezpečení, ho Microsoft nainstaluje v jejich pracovním prostoru, ale bude cílit pouze na virtuální počítače Azure. Nesnažte se toto řešení odinstalovat, protože pokud to provedete z konzoly pro správu, neexistuje žádná možnost automatické nápravy.
 
 
 ## <a name="other-updates"></a>Další aktualizace

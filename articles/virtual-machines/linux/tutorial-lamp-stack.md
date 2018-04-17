@@ -1,11 +1,11 @@
 ---
-title: "Nasazení svítilna na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Kurz – instalace zásobníku svítilna na virtuální počítač s Linuxem v Azure"
+title: Nasazení LAMP na virtuální počítač s Linuxem v Azure | Microsoft Docs
+description: Kurz – Instalace stacku LAMP na virtuální počítač s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
 ms.service: virtual-machines-linux
@@ -15,34 +15,34 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 8fcf411db844e227e0c4db0e690a1832f98b42f1
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
-ms.translationtype: MT
+ms.openlocfilehash: 21790a44ff60bd11202814efd5c0f32e8b614ec4
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Nainstalujte svítilna webový server na virtuální počítač Azure
-Tento článek vás provede procesem nasazení webového serveru Apache, MySQL a PHP (svítilna stack) na virtuálního počítače s Ubuntu v Azure. Pokud dáváte přednost NGINX webový server, najdete v článku [LEMP zásobníku](tutorial-lemp-stack.md) kurzu. Informace o serveru svítilna v akci, můžete volitelně nainstalovat a nakonfigurovat web WordPress. V tomto kurzu se naučíte:
+# <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Instalace webového serveru LAMP na virtuální počítač Azure
+Tento článek vás provede nasazením webového serveru Apache, MySQL a PHP (stack LAMP) na virtuální počítač s Ubuntu v Azure. Pokud dáváte přednost webovému serveru NGINX, projděte si kurz věnovaný [stacku LEMP](tutorial-lemp-stack.md). Pokud chcete zobrazit server LAMP v akci, můžete volitelně nainstalovat a nakonfigurovat web WordPress. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Ubuntu ("L" v zásobníku svítilna)
+> * Vytvoření virtuálního počítače s Ubuntu (písmeno L ve stacku LAMP)
 > * Otevření portu 80 pro webový provoz
 > * Instalace Apache, MySQL a PHP
 > * Ověření instalace a konfigurace
-> * Instalace aplikace WordPress na serveru svítilna
+> * Instalace WordPressu na server LAMP
 
 
-Tento instalační program pro rychlé testů nebo testování konceptu. Další informace v zásobníku svítilna, včetně doporučení pro produkční prostředí, najdete [Ubuntu dokumentaci](https://help.ubuntu.com/community/ApacheMySQLPHP).
+Toto nastavení je určené pro rychlé testy nebo testování konceptu. Další informace o stacku LAMP, včetně doporučení pro produkční prostředí, najdete v [dokumentaci k Ubuntu](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
 ## <a name="install-apache-mysql-and-php"></a>Instalace Apache, MySQL a PHP
 
-Spusťte následující příkaz k aktualizaci zdroje balíčků Ubuntu a instalace Apache, MySQL a PHP. Všimněte si šipka nahoru (^) na konci příkazu, který je součástí služby `lamp-server^` název balíčku. 
+Spuštěním následujícího příkazu aktualizujte zdroje balíčků Ubuntu a nainstalujte Apache, MySQL a PHP. Všimněte si stříšky (^) na konci příkazu, která je součástí názvu balíčku `lamp-server^`. 
 
 
 ```bash
@@ -50,85 +50,85 @@ sudo apt update && sudo apt install lamp-server^
 ```
 
 
-Zobrazí se výzva k instalaci balíčků a další závislosti. Po zobrazení výzvy, nastavte kořenové heslo pro databázi MySQL a potom [Enter] pokračovat. Postupujte podle zbývajících pokynů. Tento proces nainstaluje minimální požadované rozšíření PHP potřeba k použití PHP s MySQL. 
+Zobrazí se výzva k instalaci balíčků a dalších závislostí. Po zobrazení výzvy nastavte kořenové heslo pro MySQL a pokračujte stisknutím klávesy [Enter]. Postupujte podle zbývajících výzev. Tímto postupem se nainstalují minimální požadovaná rozšíření PHP potřebná k používání PHP a MySQL. 
 
-![Stránka MySQL kořenového hesla][1]
+![Stránka kořenového hesla MySQL][1]
 
 ## <a name="verify-installation-and-configuration"></a>Ověření instalace a konfigurace
 
 
 ### <a name="apache"></a>Apache
 
-Kontrola verze Apache pomocí následujícího příkazu:
+Zkontrolujte verzi Apache pomocí následujícího příkazu:
 ```bash
 apache2 -v
 ```
 
-Apache nainstalován, a port 80 je otevřená pro virtuální počítač webový server je nyní přístupný z Internetu. Chcete-li zobrazit Apache2 Ubuntu výchozí stránku, otevřete webový prohlížeč a zadejte veřejnou IP adresu virtuálního počítače. Použijte veřejnou IP adresu, kterou jste použili k SSH pro virtuální počítač:
+Když je teď server Apache nainstalovaný a port 80 k virtuálnímu počítači otevřený, webový server je přístupný z internetu. Pokud chcete zobrazit výchozí stránku Apache2 v Ubuntu, otevřete webový prohlížeč a zadejte veřejnou IP adresu virtuálního počítače. Použijte veřejnou IP adresu, kterou jste použili k připojení přes SSH k virtuálnímu počítači:
 
-![Apache výchozí stránka][3]
+![Výchozí stránka Apache][3]
 
 
 ### <a name="mysql"></a>MySQL
 
-Kontrola verze databáze MySQL pomocí následujícího příkazu (Poznámka: velké `V` parametr):
+Zkontrolujte verzi MySQL pomocí následujícího příkazu (všimněte si parametru velké `V`):
 
 ```bash
 mysql -V
 ```
 
-Chcete-li pomoc se zabezpečením instalaci MySQL, spusťte `mysql_secure_installation` skriptu. Pokud jsou pouze nastavení dočasný server, můžete tento krok přeskočit.
+Pokud chcete pomoct se zabezpečením instalace MySQL, spusťte skript `mysql_secure_installation`. Pokud nastavujete pouze dočasný server, můžete tento krok přeskočit.
 
 ```bash
 mysql_secure_installation
 ```
 
-Zadejte kořenové heslo pro databázi MySQL a nakonfigurovat nastavení zabezpečení pro vaše prostředí.
+Zadejte kořenové heslo pro MySQL a nakonfigurujte nastavení zabezpečení pro vaše prostředí.
 
-Pokud budete chtít zkusit MySQL funkce (vytvoření databáze MySQL, přidat uživatele nebo změnit nastavení konfigurace), přihlášení k MySQL. Tento krok není nutný k dokončení tohoto kurzu.
+Pokud chcete vyzkoušet funkce MySQL (vytvoření databáze MySQL, přidání uživatelů nebo změna nastavení konfigurace), přihlaste se k MySQL. Tento krok není nezbytný k dokončení kurzu.
 
 ```bash
 mysql -u root -p
 ```
 
-Až budete hotoví, ukončete řádku mysql zadáním `\q`.
+Jakmile budete hotovi, ukončete příkazový řádek mysql zadáním `\q`.
 
 ### <a name="php"></a>PHP
 
-Zkontrolujte verzi PHP pomocí následujících příkazů:
+Zkontrolujte verzi PHP pomocí následujícího příkazu:
 
 ```bash
 php -v
 ```
 
-Pokud chcete testovat další, vytvořte rychlé stránka informace o PHP zobrazíte v prohlížeči. Následující příkaz vytvoří stránku s informacemi o PHP:
+Pokud chcete podrobnější test, vytvořte jednoduchou informační stránku PHP a zobrazte ji v prohlížeči. Následující příkaz vytvoří informační stránku PHP:
 
 ```bash
 sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 ```
 
-Nyní můžete zkontrolovat stránku s informacemi o PHP, kterou jste vytvořili. Otevřete prohlížeč a přejděte na `http://yourPublicIPAddress/info.php`. Nahraďte veřejnou IP adresu vašeho virtuálního počítače. By měla vypadat podobně jako tento obrázek.
+Teď můžete zkontrolovat informační stránku PHP, kterou jste vytvořili. Otevřete prohlížeč a přejděte na adresu `http://yourPublicIPAddress/info.php`. Použijte veřejnou IP adresu svého virtuálního počítače. Informační stránka by měla vypadat podobně jako na tomto obrázku.
 
-![Stránka informace o PHP][2]
+![Informační stránka PHP][2]
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili server svítilna v Azure. Naučili jste se tyto postupy:
+V tomto kurzu jste nasadili server LAMP v Azure. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Ubuntu
 > * Otevření portu 80 pro webový provoz
 > * Instalace Apache, MySQL a PHP
 > * Ověření instalace a konfigurace
-> * Instalace aplikace WordPress na serveru svítilna
+> * Instalace WordPressu na server LAMP
 
-Přechodu na v dalším kurzu se dozvíte, jak zabezpečit webové servery s certifikáty protokolu SSL.
+V dalším kurzu se dozvíte, jak zabezpečit webové servery pomocí certifikátů SSL.
 
 > [!div class="nextstepaction"]
-> [Zabezpečení webového serveru pomocí protokolu SSL](tutorial-secure-web-server.md)
+> [Zabezpečení webového serveru pomocí SSL](tutorial-secure-web-server.md)
 
 [1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png

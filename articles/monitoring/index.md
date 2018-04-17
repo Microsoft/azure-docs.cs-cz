@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2018
+ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: b20283e1189e4f1a3555e2dd8d25972c9a677cd6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 
@@ -54,3 +54,14 @@ Ochrana znamená zajištění, že vaše aplikace a data jsou vždycky k dispozi
 
 ## <a name="migrate"></a>Migrace 
 Migrace označuje přenos úloh, které jsou aktuálně spuštěné v místním prostředí, do cloudu Azure.  [Azure Migrate](../migrate/migrate-overview.md) je služba, která pomáhá vyhodnotit vhodnost migrace místních virtuálních počítačů do Azure, včetně odhadu rozsahu na základě výkonu a souvisejících nákladů.  Azure Site Recovery vám pomůže s vlastní migrací virtuálních počítačů [z místního prostředí](../site-recovery/migrate-tutorial-on-premises-azure.md) nebo [z Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Azure Database Migration](../dms/dms-overview.md) vám pomůže s migrací několika databázových zdrojů na datové platformy Azure.
+
+
+## <a name="operations-management-suite"></a>Operations Management Suite
+Předchozí technická dokumentace týkající se správy Azure zahrnovala Operations Management Suite (OMS), což je sdružení následující služeb Azure pro správu:
+
+- Azure Automation
+- Azure Backup
+- Log Analytics
+- Site Recovery
+
+Od popisu tohoto sdružení služeb v naší technické dokumentaci upouštíme, protože kompletní správa v Azure se rozšířila a zahrnuje i další služby. Žádná ze služeb, které jsou součástí OMS, se nezměnila a všechny stále mají důležitou roli při správě aplikací a prostředků Azure. Měli byste se zaměřit na úlohy správy, které potřebujete provádět, a na různé služby Azure, které pro jednotlivé úlohy spolupracují.

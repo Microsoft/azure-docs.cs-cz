@@ -1,11 +1,11 @@
 ---
-title: "Správa účtů úložiště Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, jak hledat, spravovat, obnovit a získat účty úložiště Azure zásobníku"
+title: Správa účtů úložiště Azure zásobníku | Microsoft Docs
+description: Zjistěte, jak hledat, spravovat, obnovit a získat účty úložiště Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště v Azure zásobníku
 Zjistěte, jak chcete spravovat účty úložiště v Azure zásobníku najít, obnovit a opětovné využití kapacity úložiště na základě obchodních potřeb.
@@ -27,7 +27,7 @@ Zjistěte, jak chcete spravovat účty úložiště v Azure zásobníku najít, 
 ## <a name="find"></a>Najít účet úložiště
 Seznam účtů úložiště v oblasti lze zobrazit v zásobníku Azure podle:
 
-1. V internetovém prohlížeči přejděte do https://adminportal.local.azurestack.external.
+1. V internetovém prohlížeči, přejděte na https://adminportal.local.azurestack.external.
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
 3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat, například **(místní**).
    
@@ -99,11 +99,11 @@ V zásobníku Azure je jednoduchý způsob, jak to udělat:
   Účet je nemusí zobrazit v seznamu účet při odstraněného účtu již bylo uvolnění z paměti. V takovém případě nelze obnovit. V tématu [opětovné využití kapacity](#reclaim) v tomto tématu.
 
 ## <a name="set-the-retention-period"></a>Nastavit dobu uchování.
-Nastavení doby uchování umožňuje operátor cloudu k zadejte časové období ve dnech (0 až 9 999 dnů), během které potenciálně lze obnovit všechny odstraněné účtu. Výchozí dobu uchování nastavena do 15 dnů. Nastavení hodnoty "0" znamená, že všechny odstraněné účet je okamžitě mimo uchovávání a označen pro pravidelné uvolňování paměti.
+Nastavení doby uchování umožňuje operátor cloudu k zadejte časové období ve dnech (0 až 9 999 dnů), během které potenciálně lze obnovit všechny odstraněné účtu. Výchozí dobu uchování nastavena na 0 dní. Nastavení hodnoty "0" znamená, že všechny odstraněné účet je okamžitě mimo uchovávání a označen pro pravidelné uvolňování paměti.
 
 **Chcete-li změnit dobu uchování:**
 
-1. V internetovém prohlížeči přejděte do https://adminportal.local.azurestack.external.
+1. V internetovém prohlížeči, přejděte na https://adminportal.local.azurestack.external.
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
 3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat – například **(místní**).
 4. Vyberte **úložiště** z **zprostředkovatelé prostředků** seznamu.

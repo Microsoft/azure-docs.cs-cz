@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření webové aplikace Java využívající databázi MySQL v Azure"
-description: "Zjistěte, jak získat aplikaci Java, která se připojuje k databázové službě Azure MySQL fungující ve službě Azure App Service."
+title: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
+description: Zjistěte, jak získat aplikaci Java, která se připojuje k databázové službě Azure MySQL fungující ve službě Azure App Service.
 services: app-service\web
 documentationcenter: Java
 author: bbenz
 manager: jeffsand
 editor: jasonwhowell
-ms.assetid: 
+ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0712035f317adb318d60285637526f951bf5bdec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-java-and-mysql-web-app-in-azure"></a>Vytvoření webové aplikace Java využívající databázi MySQL v Azure
+# <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
 > [!NOTE]
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit službu App Service v _Linuxu_, přečtěte si téma [Nasazení kontejnerizované aplikace Spring Boot do Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin).
@@ -137,7 +137,7 @@ K zobrazení možných hodnot, které se dají použít pro `--location`, použi
 
 ### <a name="create-a-mysql-server"></a>Vytvoření serveru MySQL
 
-Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) vytvořte v Azure Database for MySQL (Preview) server. Zástupný text `<mysql_server_name>` nahraďte vlastním jedinečným názvem serveru MySQL. Tento název je součástí názvu hostitele serveru MySQL, `<mysql_server_name>.mysql.database.azure.com`, proto musí být globálně jedinečný. Nahraďte vlastními hodnotami také položky `<admin_user>` a `<admin_password>`.
+Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) vytvořte server v Azure Database for MySQL. Zástupný text `<mysql_server_name>` nahraďte vlastním jedinečným názvem serveru MySQL. Tento název je součástí názvu hostitele serveru MySQL, `<mysql_server_name>.mysql.database.azure.com`, proto musí být globálně jedinečný. Nahraďte vlastními hodnotami také položky `<admin_user>` a `<admin_password>`.
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -168,7 +168,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> Azure Database for MySQL (Preview) v současné době neumožňuje automaticky připojení ze služeb Azure. Jelikož se IP adresy v Azure přidělují dynamicky, je lepší prozatím povolit všechny IP adresy. V průběhu verze Preview služby budou zapnuté lepší metody pro zabezpečení databáze.
+> Azure Database for MySQL v současné době neumožňuje automaticky připojení ze služeb Azure. Jelikož se IP adresy v Azure přidělují dynamicky, je lepší prozatím povolit všechny IP adresy. V budoucnu budou k dispozici lepší metody zabezpečení databáze.
 
 ## <a name="configure-the-azure-mysql-database"></a>Konfigurace databáze MySQL Azure
 
@@ -399,7 +399,7 @@ Po aktualizaci aplikace se teď zobrazí sloupec **Time Created** (Čas vytvoře
 
 Zatímco je vaše aplikace Java spuštěná ve službě Azure App Service, můžete směrovat protokoly konzoly přímo do svého terminálu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) ve službě Cloud Shell.
+Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) v Cloud Shellu.
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 

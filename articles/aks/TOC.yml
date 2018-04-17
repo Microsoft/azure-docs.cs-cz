@@ -83,6 +83,8 @@
           href: openfaas.md
         - name: Spouštění sparkových úloh v AKS
           href: spark-job.md
+        - name: Použití grafických procesorů v AKS
+          href: gpu-cluster.md
     - name: Základy Kubernetes
       items:
         - name: Použití řídicího panelu Kubernetes

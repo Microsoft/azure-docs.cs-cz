@@ -10,11 +10,11 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení
 
@@ -179,9 +179,9 @@ Ve druhé části série jste získali informace o simulaci selhání za účele
 > * Simulovat selhání pomocí [fiddleru](#simulate-a-failure-with-fiddler) nebo [neplatné statické trasy](#simulate-a-failure-with-an-invalid-static-route) 
 > * Simulovat obnovení primárního koncového bodu
 
-Pod tímto odkazem najdete ukázky předdefinovaných úložišť.
+Další informace o tom, jak úložiště RA-GRS funguje (a o souvisejících rizicích), najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů úložiště Azure](storage-samples-blobs-cli.md)
+> [Navrhování aplikací s vysokou dostupností s využitím RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

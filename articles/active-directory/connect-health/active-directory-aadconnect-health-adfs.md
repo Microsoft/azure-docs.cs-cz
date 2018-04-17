@@ -1,5 +1,5 @@
 ---
-title: Používání služby Azure AD Connect Health se službou AD FS | Microsoft Docs
+title: Používání služby Azure AD Connect Health se službou AD FS | Dokumentace Microsoftu
 description: Toto je stránka o službě Azure AD Connect Health, která popisuje postup monitorování místní infrastruktury služby AD FS.
 services: active-directory
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -109,7 +109,7 @@ Sestava obsahuje následující informace:
 | ID uživatele |Zobrazuje použité ID uživatele. Tato hodnota odpovídá hodnotě zadané uživatelem, což je v některých případech nesprávné ID uživatele, které bylo použito. |
 | Neúspěšné pokusy |Zobrazuje celkový počet neúspěšných pokusů s konkrétním ID uživatele. Tabulka je řazená podle největšího počtu neúspěšných pokusů v sestupném pořadí. |
 | Poslední chyba |Zobrazuje časové razítko výskytu poslední chyby. |
-| IP adresa poslední chyby |Zobrazuje IP adresu klienta z posledního neúspěšného požadavku. |
+| IP adresa poslední chyby |Zobrazuje IP adresu klienta z posledního neúspěšného požadavku. Pokud se v této hodnotě zobrazí více než jedna IP adresa, může zahrnovat IP adresu klienta přesměrování i IP adresu požadavku z posledního pokusu uživatele.  |
 
 > [!NOTE]
 > Sestava se každých 12 hodin automaticky aktualizuje novými informacemi, které se za tu dobu shromáždily. V důsledku tohoto postupu nemusí být v sestavě zahrnuté pokusy o přihlášení za posledních 12 hodin.
@@ -135,7 +135,7 @@ Každá položka v sestavě rizikových IP adres ukazuje agregované informace o
 
 | Položky sestavy | Popis |
 | ------- | ----------- |
-| Časové razítko | Ukazuje časové razítko na základě místního času portálu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
+| Časové razítko | Ukazuje časové razítko na základě místního času webu Azure Portal při zahájení časového intervalu zjišťování.<br /> Všechny denní události se generují o půlnoci UTC. <br />Hodinové události mají hodnotu časového razítka zaokrouhlenou na celou hodinu. Čas spuštění první aktivity můžete vyhledat v položce firstAuditTimestamp v exportovaném souboru. |
 | Typ triggeru | Ukazuje typ časového intervalu zjišťování. Typ triggeru agregace určuje, jestli se aktivuje každou hodinu nebo každý den. To je užitečně k rozpoznání útoku hrubou silou s vysokou frekvencí od pomalého útoku, při kterém se počet pokusů distribuuje během celého dne. |
 | IP adresa | Jedna riziková IP adresa, ze které probíhaly aktivity přihlášení se špatným heslem nebo uzamčením extranetu. Může se jednat o adresu IPv4 nebo IPv6. |
 | Počet chybných zadání hesla | Počet chybných zadání hesla, ke kterým z dané IP adresy došlo během časového intervalu zjišťování. K chybnému zadání hesla může u určitých uživatelů dojít vícekrát. Všimněte si, že toto číslo nezahrnuje neúspěšné pokusy kvůli heslům, kterým vypršela platnost. |
@@ -191,11 +191,14 @@ Prahovou hodnotu pro upozornění můžete upravit prostřednictvím nastavení 
 1. Proč se v sestavě zobrazují rozsahy privátních IP adres?  <br />
 Privátní IP adresy (<i>10.x.x.x, 172.x.x.x a 192.168.x.x</i>) a IP adresy Exchange se filtrují a v seznamu povolených IP adres jsou označené hodnotou True. Pokud se vám zobrazují rozsahy privátních IP adres, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta.
 
-2. Jak můžu zablokovat IP adresu?  <br />
+2. Proč se v sestavě zobrazují IP adresy nástroje pro vyrovnávání zatížení?  <br />
+Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta. Nakonfigurujte ve svém nástroji pro vyrovnávání zatížení správně předávání IP adresy klienta. 
+
+3. Jak můžu zablokovat IP adresu?  <br />
 Zjištěné škodlivé IP adresy byste měli přidat do brány firewall nebo je blokovat v Exchange.   <br />
 V případě služby AD FS 2016 + 1803.C+ QFE můžete IP adresu zablokovat přímo ve službě AD FS. 
 
-3. Proč se mi v této sestavě nezobrazují žádné položky? <br />
+4. Proč se mi v této sestavě nezobrazují žádné položky? <br />
    - Neúspěšné aktivity přihlášení nepřekračují nastavení prahových hodnot. 
    - Ujistěte se, že v seznamu serverů AD FS nejsou žádná aktivní upozornění Služba Health není aktuální.  Další informace o [řešení potíží s tímto upozorněním](active-directory-aadconnect-health-data-freshness.md).
    - Na farmách služby AD FS není povolené auditování.

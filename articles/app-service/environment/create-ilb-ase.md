@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě Azure App Service Environment
-description: Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolované od internetu
+description: Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolovanou od internetu
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -63,7 +63,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 4. Vyberte nebo vytvořte virtuální síť.
 
-5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/25`, která nabízí 128 adres a dokáže pojmout maximální velikost služby ASE. Minimální velikost, kterou můžete vybrat, je `/28`. Podle potřeby infrastruktury se dá tato velikost rozšířit na maximální počet 11 instancí.
+5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/25`, která nabízí 128 adres a dokáže pojmout maximální velikost služby ASE. Minimální velikost, kterou můžete vybrat, je `/28`. Podle potřeby infrastruktury se dá tato velikost rozšířit pouze na maximální počet 3 instancí.
 
     * Ve vašich plánech služby App Service dojde k překročení výchozí maximální hodnoty 100 instancí.
 
@@ -81,7 +81,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
     * &lt;nazev_ase&gt;.p.azurewebsites.net
 
-   Vlastní název domény pro aplikace se nesmí překrývat s názvem domény používaným vaší službou ASE. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení s názvem domény _contoso.com_ není možné použít vlastní názvy domény pro aplikace podobné těmto:
+   Existuje funkce označovaná jako Vlastní názvy domén, která umožňuje namapovat na webovou aplikaci existující název DNS. Další informace o této funkci najdete v dokumentu [Mapování existujícího názvu DNS na webovou aplikaci][customdomain]. Vlastní název domény pro aplikace se nesmí překrývat s názvem domény používaným vaší službou ASE. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení s názvem domény _contoso.com_ není možné použít vlastní názvy domény pro aplikace podobné těmto:
 
     * www.contoso.com
 
@@ -250,3 +250,4 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md
