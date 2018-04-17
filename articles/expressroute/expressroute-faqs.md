@@ -4,7 +4,7 @@ description: ExpressRoute – nejčastější dotazy obsahuje informace o podpor
 documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 04/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -68,6 +68,10 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 
 ### <a name="public-peering"></a>Veřejný partnerský vztah
 
+>[!NOTE]
+>Partnerský vztah Microsoftu je upřednostňovaný způsob pro přístup k všechny služby hostované v Azure.
+>
+
 * Power BI
 * Dynamics 365 Finance a operace (dříve označované jako Dynamics AX Online)
 * Většina služeb Azure jsou podporovány. Zkontrolujte prosím přímo se na službu, kterou chcete použít k ověření podpory.<br>
@@ -84,7 +88,7 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
   * Dynamics 365 pro prodej
   * Dynamics 365 zákaznický servis
   * Dynamics 365 služby pole
-  * Dynamics 365 for Project Service
+  * Dynamics 365 pro – služba projektu
 * Pomocí [směrovat filtry](#route-filters-for-microsoft-peering), získat přístup ke službám ve stejné veřejné s partnerského vztahu Microsoftu:
   * Power BI
   * Dynamics 365 Finance a operace

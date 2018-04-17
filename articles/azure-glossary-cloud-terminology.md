@@ -1,12 +1,12 @@
 ---
-title: "Azure Glosář - Azure slovník | Microsoft Docs"
-description: "Glosář Azure slouží k pochopení terminologie cloudu na platformě Azure. Tento krátký Azure slovník obsahuje definice pro běžné podmínky cloud pro Azure."
-keywords: "Azure slovník, terminologie cloudu, Azure glosář, definic termínů, podmínky cloudu"
+title: Azure Glosář - Azure slovník | Microsoft Docs
+description: Glosář Azure slouží k pochopení terminologie cloudu na platformě Azure. Tento krátký Azure slovník obsahuje definice pro běžné podmínky cloud pro Azure.
+keywords: Azure slovník, terminologie cloudu, Azure glosář, definic termínů, podmínky cloudu
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: slovník terminologie cloudu na platformě Azure
 
@@ -46,9 +46,9 @@ V tématu [Správa dostupnosti virtuálních počítačů Windows](virtual-machi
 Jeden ze dvou [modely nasazení](resource-manager-deployment-model.md) použít k nasazení prostředků v Azure (Azure Resource Manager je nový model). Některé služby Azure podporují jenom modelu nasazení Resource Manager, některé podporují pouze modelu nasazení classic a některé podporovat. Dokumentace pro každou službu Azure určuje modely podporují.
 
 ## <a name="cli"></a>Rozhraní příkazového řádku Azure (CLI)
-Rozhraní příkazového řádku, který slouží ke správě služeb Azure z Windows, systému macOS a Linux.  Některé služby nebo funkce služby lze spravovat pouze pomocí prostředí PowerShell nebo rozhraní příkazového řádku. See [Azure CLI 2.0](/cli/azure)
+Rozhraní příkazového řádku, který slouží ke správě služeb Azure z Windows, systému macOS a Linux.  Některé služby nebo funkce služby lze spravovat pouze pomocí prostředí PowerShell nebo rozhraní příkazového řádku. V tématu [rozhraní příkazového řádku Azure 2.0](/cli/azure)
 
-## <a name="powershell"></a>Azure PowerShell
+## <a name="powershell"></a>Prostředí Azure PowerShell
 Rozhraní příkazového řádku pro správu služby Azure přes příkazový řádek z počítačů s Windows. Některé služby nebo funkce služby lze spravovat pouze pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
 V tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview)
 
@@ -111,7 +111,7 @@ V tématu [přehled Azure Resource Manageru](azure-resource-manager/resource-gro
 
 ## <a name="role"></a>role
 Způsob pro řízení přístupu, kterou lze přiřadit uživatelům, skupinám a službám. Role jsou moct provádět akce, jako je vytvořit, spravovat a přečtěte si prostředků Azure.  
-V tématu [RBAC: předdefinovaných rolí](active-directory/role-based-access-built-in-roles.md)
+V tématu [RBAC: předdefinovaných rolí](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Dohoda o úrovni služeb (SLA)
 Smlouva, která popisuje závazky společnosti Microsoft pro provozu a připojení. Každá služba Azure má konkrétní SLA.  

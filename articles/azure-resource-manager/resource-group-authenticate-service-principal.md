@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření identity pro aplikaci Azure pomocí prostředí PowerShell | Microsoft Docs"
-description: "Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a objektu zabezpečení a jí udělit přístup k prostředkům prostřednictvím řízení přístupu na základě rolí. Ukazuje, jak k ověření aplikace s certifikátem."
+title: Vytvoření identity pro aplikaci Azure pomocí prostředí PowerShell | Microsoft Docs
+description: Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a objektu zabezpečení a jí udělit přístup k prostředkům prostřednictvím řízení přístupu na základě rolí. Ukazuje, jak k ověření aplikace s certifikátem.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 175d95c16484b90b13936c3be39b67749f0c3238
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3b14d148669457a47eecda11cf6a8c85b5361677
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Pomocí prostředí Azure PowerShell k vytvoření objektu služby pomocí certifikátu
 
@@ -40,7 +40,7 @@ Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostateč
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu se certifikát podepsaný svým držitelem
 
-Následující příklad popisuje jednoduchého scénáře. Používá [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) vytvoření objektu služby se certifikát podepsaný svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) přiřadit [Přispěvatel](../active-directory/role-based-access-built-in-roles.md#contributor)role instanční objekt. Přiřazení role je vymezen na aktuálně vybrané předplatné. Chcete-li vybrat jiného předplatného, použijte [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+Následující příklad popisuje jednoduchého scénáře. Používá [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) vytvoření objektu služby se certifikát podepsaný svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) přiřadit [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)role instanční objekt. Přiřazení role je vymezen na aktuálně vybrané předplatné. Chcete-li vybrat jiného předplatného, použijte [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -170,7 +170,7 @@ Pokud potřebujete zjistit ID aplikace, použijte:
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Vytvoření instančního objektu pomocí certifikátu od certifikační autority
 
-Následující příklad používá k vytvoření instančního objektu certifikátu vydaného certifikační autority. Přiřazení je vymezen na zadané předplatné Azure. Přidá objekt služby k [Přispěvatel](../active-directory/role-based-access-built-in-roles.md#contributor) role. Pokud dojde k chybě při přiřazení role, se pokusí o přiřazení.
+Následující příklad používá k vytvoření instančního objektu certifikátu vydaného certifikační autority. Přiřazení je vymezen na zadané předplatné Azure. Přidá objekt služby k [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) role. Pokud dojde k chybě při přiřazení role, se pokusí o přiřazení.
 
 ```powershell
 Param (

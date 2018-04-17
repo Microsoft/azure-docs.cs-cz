@@ -1,6 +1,6 @@
 ---
-title: "Vytvořit objekt služby pro Azure zásobníku | Microsoft Docs"
-description: "Popisuje, jak vytvořit nový objekt služby, které je možné pomocí řízení přístupu na základě rolí ve službě Správce prostředků Azure, které pokud chcete spravovat přístup k prostředkům."
+title: Vytvořit objekt služby pro Azure zásobníku | Microsoft Docs
+description: Popisuje, jak vytvořit nový objekt služby, které je možné pomocí řízení přístupu na základě rolí ve službě Správce prostředků Azure, které pokud chcete spravovat přístup k prostředkům.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 833efa7f24d01346525af3dd9ca37012ab0ba3c4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uveďte přístup aplikace k Azure zásobníku
 
@@ -46,25 +46,25 @@ V této části vytvoříte aplikaci (instanční objekt) ve službě Azure AD, 
 
 1. Přihlaste se k účtu Azure prostřednictvím [portál Azure](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **registrace aplikace** > **přidat**   
-3. Zadejte název a adresu URL pro aplikaci. Vyberte buď **webovou aplikaci nebo API** nebo **nativní** pro typ aplikace, kterou chcete vytvořit. Po nastavení hodnoty, vyberte **vytvořit**.
+3. Zadejte název a URL aplikace. Vyberte buď **webovou aplikaci nebo API** nebo **nativní** pro typ aplikace, kterou chcete vytvořit. Po nastavení hodnoty, vyberte **vytvořit**.
 
 Vytvořili jste objekt služby pro vaši aplikaci.
 
 ### <a name="get-credentials"></a>Získání přihlašovacích údajů
-Při prostřednictvím kódu programu přihlášení, abyste používali ID pro vaši aplikaci a pro webovou aplikaci nebo rozhraní API, ověřovací klíč. Tyto hodnoty, použijte následující kroky:
+Při prostřednictvím kódu programu přihlášení, abyste používali ID pro vaši aplikaci a pro webovou aplikaci nebo rozhraní API, ověřovací klíč. K získání těchto hodnot použijte následující postup:
 
 1. Z **registrace aplikace** ve službě Active Directory, vyberte svou aplikaci.
 
-2. Kopírování **ID aplikace** a ukládá je v kódu aplikace. Aplikace v [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
+2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikace v [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
 
      ![ID klienta](./media/azure-stack-create-service-principal/image12.png)
 3. Generovat ověřovací klíč pro webovou aplikaci nebo rozhraní API, vyberte **nastavení** > **klíče**. 
 
-4. Zadejte popis klíč a dobu trvání pro klíč. Až budete hotoví, vyberte **Uložit**.
+4. Zadejte popis klíče a jeho dobu platnosti. Až budete hotovi, vyberte **Uložit**.
 
-Po uložení klíče, se zobrazí hodnota klíče. Zkopírujte tuto hodnotu, protože nemůžete později načíst klíč. Hodnota klíče byl poskytnout ID aplikace pro přihlášení jako aplikace. Uložení klíče hodnoty, kde vaše aplikace, můžete jej načíst.
+Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte si ji, protože později už klíč nepůjde načíst. Hodnota klíče byl poskytnout ID aplikace pro přihlášení jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
-![Uložit klíč](./media/azure-stack-create-service-principal/image15.png)
+![Uložený klíč](./media/azure-stack-create-service-principal/image15.png)
 
 
 Po dokončení pokračujte [přiřazení aplikace k roli](azure-stack-create-service-principals.md#assign-role-to-service-principal).
@@ -136,7 +136,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 ```
 
 ## <a name="assign-role-to-service-principal"></a>Přiřazení role instančního objektu
-Pro přístup k prostředkům ve vašem předplatném, je nutné přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí najdete v tématu [RBAC: integrovaným rolím](../active-directory/role-based-access-built-in-roles.md).
+Pro přístup k prostředkům ve vašem předplatném, je nutné přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí najdete v tématu [RBAC: integrovaným rolím](../role-based-access-control/built-in-roles.md).
 
 Rozsah můžete nastavit na úrovni předplatné, skupinu prostředků nebo prostředek. Na nižších úrovních oboru dědí oprávnění. Například přidání aplikace do role Čtenář pro skupinu prostředků znamená, že ho může číst skupině prostředků a všechny prostředky, které obsahuje.
 

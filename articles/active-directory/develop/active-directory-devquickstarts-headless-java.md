@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se službou Azure AD Java příkazového řádku | Microsoft Docs"
-description: "Jak vytvořit aplikaci Java příkazového řádku, který se přihlásí uživatele pro přístup k rozhraní API."
+title: Začínáme se službou Azure AD Java příkazového řádku | Microsoft Docs
+description: Jak vytvořit aplikaci Java příkazového řádku, který se přihlásí uživatele pro přístup k rozhraní API.
 services: active-directory
 documentationcenter: java
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 51e1a8f9-6ff0-4643-a350-0ba794e26fd1
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 895741c6a33434633b8c35df959b3c68d005ba3e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0e12711e4a7e67861d61ae4575c4956531cf841
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Pomocí aplikace v jazyce Java příkazového řádku pro přístup k rozhraní API s Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -258,7 +258,7 @@ Teď byste měli mít `adal4jsample.war` ve vaší `/targets` adresáře. Může
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Je velmi snadno nasadit WAR s nejnovější serverů Tomcat. Jednoduše přejděte na `http://localhost:8080/manager/` a postupujte podle pokynů na odesílání vašeho '' adal4jsample.war' souboru. Autodeploy ho bude pro vás správný koncový bod.
+> Je velmi snadno nasadit WAR s nejnovější serverů Tomcat. Jednoduše přejděte na `http://localhost:8080/manager/` a postupujte podle pokynů na odesílání vašeho `adal4jsample.war` souboru. Autodeploy ho bude pro vás správný koncový bod.
 > 
 > 
 

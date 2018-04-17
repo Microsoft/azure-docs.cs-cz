@@ -1,25 +1,25 @@
 ---
-title: "Rozhodnutí o Azure odpojené nasazení pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Určení plánování rozhodnutí pro nasazení na víc uzlů připojená k Azure zásobník Azure nasazení."
+title: Rozhodnutí o Azure odpojené nasazení pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Určení plánování rozhodnutí pro nasazení na víc uzlů připojená k Azure zásobník Azure nasazení.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Plánování rozhodnutí pro Azure zásobník Azure odpojené nasazení integrované systémy
 Poté, co jste se rozhodli [jak bude zásobník Azure integrovat do cloudového prostředí hybridní](azure-stack-connection-models.md), pak můžete dokončit svoje rozhodnutí o nasazení Azure zásobníku.
@@ -45,7 +45,7 @@ Azure zásobníku byl navržený tak, aby fungují lépe, když je připojený k
 |Nasazení virtuálního počítače s rozšířením Docker ke spuštění příkazů Docker|Narušen – Docker zkontroluje Internetu na nejnovější verzi a tato kontrola se nezdaří.|
 |Odkazy na dokumentaci na webu Azure Portal zásobníku|Není k dispozici – odkazy například odeslat zpětnou vazbu, pomoc, startu atd využívající internetové adresy URL nebude fungovat.|
 |Výstrahy nápravy nebo zmírnění, odkazující online nápravy Průvodce|Není k dispozici – nápravy škod způsobených výstrahy odkazy využívající internetové adresy URL nebude fungovat.|
-|Syndikace Marketplace – možnost a vyberte a přidejte Galerie balíčky přímo z Azure Marketplace|Není k dispozici – tato funkce vyžaduje připojení k Azure a účet služby Azure Active Directory.|
+|Syndikace Marketplace – možnost a vyberte a přidejte Galerie balíčky přímo z Azure Marketplace|Narušen – když nasadíte Azure zásobníku v odpojeném režimu (bez žádné připojení k Internetu), nelze stáhnout položky marketplace pomocí portálu Azure zásobníku. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) ke stažení položky marketplace do počítače, který má připojení k Internetu a potom přenést do prostředí Azure zásobníku.|
 |Použití Azure Active Directory federation účty ke správě nasazení služby Azure zásobníku|Není k dispozici – tato funkce vyžaduje připojení k Azure. Místo toho je nutné použít služby AD FS s místní instancí Active Directory.|
 |Zprostředkovatelé prostředků, jako je například WebApps a SQL|Není k dispozici - poskytovatelů prostředků, jako je například WebApps a SQL vyžadují přístup k Internetu pro obsah.|
 |Rozhraní příkazového řádku (CLI)|Narušen – rozhraní příkazového řádku omezila funkce z hlediska ověřování a zřizování zásad služby.|

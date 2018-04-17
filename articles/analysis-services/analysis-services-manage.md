@@ -1,25 +1,18 @@
 ---
-title: "Správa služby Azure Analysis Services | Microsoft Docs"
-description: "Zjistěte, jak ke správě serveru služby Analysis Services v Azure."
-services: analysis-services
-documentationcenter: 
+title: Správa služby Azure Analysis Services | Microsoft Docs
+description: Zjistěte, jak ke správě serveru služby Analysis Services v Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření serveru služby Analysis Services v Azure, mohou být některé úlohy správy a údržby, které je třeba provést hned nebo zopakovat dolů na cestách. Například spusťte zpracování aktualizace dat, určovat, kdo může získat přístup modely na vašem serveru, nebo sledování stavu vašeho serveru. Některé úlohy správy lze provést pouze na portálu Azure, jiné v SQL Server Management Studio (SSMS) a některé úlohy lze provádět buď.
@@ -47,13 +40,18 @@ Chcete-li získat všechny nejnovější funkce a nejhladší zkušenosti při p
    
     ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. V aplikaci SSMS > **Průzkumník objektů**, klikněte na tlačítko **připojit** > **služby Analysis Services**.
-3. V **připojit k serveru** dialogové okno, vložte v názvu serveru, a potom v **ověřování**, vyberte jednu z následujících typů ověřování:
-   
+3. V **připojit k serveru** dialogové okno, vložte v názvu serveru, a potom v **ověřování**, vyberte jednu z následujících typů ověřování:   
+    > [!NOTE]
+    > Typ ověřování, **Universal s podpora vícefaktorového ověřování služby Active Directory -**, doporučuje se.
+
+    > [!NOTE]
+    > Pokud se přihlásíte Account Microsoft Live ID, Yanoo, z Gmailu, atd., ponechejte pole heslo prázdné. Po kliknutí na tlačítko připojit, zobrazí se výzva k zadání hesla.
+
     **Ověřování systému Windows** používat přihlašovací údaje doména\uživatelské jméno a heslo systému Windows.
 
     **Ověřování hesla Active Directory** použít účet organizace. Například když připojení z jiné domény připojený počítač.
 
-    **Univerzální ověřování služby Active Directory** používat [neinteraktivní nebo vícefaktorového ověřování](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Univerzální s podpora vícefaktorového ověřování služby Active Directory -** používat [neinteraktivní nebo vícefaktorového ověřování](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
     ![V aplikaci SSMS připojit](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

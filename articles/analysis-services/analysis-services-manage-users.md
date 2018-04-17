@@ -1,25 +1,18 @@
 ---
-title: "Oprávnění k ověřování a uživatel ve službě Azure Analysis Services | Microsoft Docs"
-description: "Další informace o ověřování a uživatel oprávnění ve službě Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
+title: Oprávnění k ověřování a uživatel ve službě Azure Analysis Services | Microsoft Docs
+description: Další informace o ověřování a uživatel oprávnění ve službě Azure Analysis Services.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatel oprávnění
 Azure Analysis Services použije Azure Active Directory (Azure AD) pro ověřování identity management a uživatelů. Jakýkoli uživatel, vytváření, Správa nebo připojení k serveru Azure Analysis Services server musí mít platné uživatelské identity [klienta Azure AD](../active-directory/active-directory-administer.md) ve stejném předplatném.
@@ -69,7 +62,7 @@ Uživatelé aplikace Excel můžete připojit k serveru pomocí účet systému 
 
 ![Řízení přístupu na portálu Azure](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Role na této úrovni aplikovat na uživatele nebo účty, které je třeba provést úlohy, které můžete provést na portálu nebo pomocí šablony Azure Resource Manager. Další informace najdete v tématu [řízení přístupu na základě Role](../active-directory/role-based-access-control-what-is.md). 
+Role na této úrovni aplikovat na uživatele nebo účty, které je třeba provést úlohy, které můžete provést na portálu nebo pomocí šablony Azure Resource Manager. Další informace najdete v tématu [řízení přístupu na základě Role](../role-based-access-control/overview.md). 
 
 
 ## <a name="database-roles"></a>Databázové role
@@ -85,4 +78,4 @@ Role na této úrovni aplikovat na uživatele nebo účty, které je třeba prov
 [Spravovat přístup k prostředkům pomocí skupin Azure Active Directory](../active-directory/active-directory-manage-groups.md)   
 [Spravovat role databáze a uživatele](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Řízení přístupu na základě role](../active-directory/role-based-access-control-what-is.md)  
+[Řízení přístupu na základě role](../role-based-access-control/overview.md)  

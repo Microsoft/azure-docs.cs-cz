@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod k řešení cloud computing a Microsoft Azure
 
@@ -323,7 +323,7 @@ Zde je několik rolí příklad integrovaný do Azure:
 
 -   **Přispěvatel účet úložiště**: uživatel k této roli můžete spravovat účty úložiště, ale nemohou spravovat přístup k účtům úložiště.
 
-Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../active-directory/role-based-access-control-configure.md).
+Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

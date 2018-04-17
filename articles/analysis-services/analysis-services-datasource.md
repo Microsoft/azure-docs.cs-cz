@@ -1,25 +1,18 @@
 ---
 title: Zdroje dat podporované ve službě Azure Analysis Services | Microsoft Docs
 description: Popisuje zdroje dat, které jsou podporovány pro modely dat v Azure Analysis Services.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: 6ec63319-ff9b-4b01-a1cd-274481dc8995
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 16bf333fe18c912db7cb81e74fce29960b0728d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3b60a5b96d7b8a0c48aacc916b1ba933dcd83705
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
@@ -31,12 +24,12 @@ Zdroje dat a konektory zobrazí v načíst Data nebo Průvodce importem v sadě 
 |---------|---------|---------|
 |Azure SQL Database     |   Ano      |    Ano      |
 |Azure SQL Data Warehouse     |   Ano      |   Ano       |
-|Azure Blob Storage*     |   Ano       |    Ne      |
+|Úložiště objektů Blob v Azure *     |   Ano       |    Ne      |
 |Azure Table Storage *    |   Ano       |    Ne      |
 |Azure Cosmos DB *     |  Ano        |  Ne        |
-|Azure Data Lake Store*     |   Ano       |    Ne      |
-|Azure HDInsight HDFS*     |     Ano     |   Ne       |
-|Azure HDInsight Spark*     |   Ano       |   Ne       |
+|Azure Data Lake Store *     |   Ano       |    Ne      |
+|Azure HDInsight HDFS *     |     Ano     |   Ne       |
+|Azure HDInsight Spark *     |   Ano       |   Ne       |
 ||||
 
 \* Tabulkové 1400 modely jenom.
@@ -77,7 +70,7 @@ Připojení k místní, že zdroje dat z a server Azure AS vyžadují místní b
 |Dotaz rozhraní ODBC     | 
 |OLE DB     |   
 |Databáze Postgre SQL *    | 
-|SAP HANA*    |  
+|SAP HANA *    |  
 |SAP Business Warehouse *    |  
 |SharePoint*     |   
 |Databáze Sybase     |  

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integraci s Workday | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a během pracovního dne."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a během pracovního dne.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Azure Active Directory integraci s Workday
 
@@ -108,15 +108,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![WORKDAY domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL:`http://www.workday.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `http://www.workday.com`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok:
 
     ![WORKDAY domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-workday-tutorial/tutorial_workday_url1.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečná adresa URL přihlašování a adresa URL odpovědi. Vaše adresa URL odpovědi musí mít například subdoména: www, wd2, wd3, wd3 impl, wd5, wd5 impl). Pomocí něco podobného jako "*http://www.myworkday.com*" funguje, ale "*http://myworkday.com*" neexistuje. Obraťte se na [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot.  
@@ -153,7 +153,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     >[!NOTE]
     > Hodnota atributu prostředí je vázaný na hodnotu adresy URL klienta:  
-    >-Pokud název domény adresy URL klienta Workday začíná impl například: *https://impl.workday.com/\<klienta\>/login-saml2.htmld*), **prostředí** musí být nastaven pro implementaci.  
+    >-Pokud název domény adresy URL klienta Workday začíná impl například:  *https://impl.workday.com/ \<klienta\>/login-saml2.htmld*), **prostředí** musí být nastaven pro implementaci.  
     >– Pokud je název domény začíná něco jiného, budete muset kontaktovat [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) získat shody **prostředí** hodnotu.
 
 11. V **SAML instalace** část, proveďte následující kroky:
@@ -172,9 +172,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     b. Na portálu Azure na **konfigurovat přihlášení** okno, kopie **SAML Entity ID** hodnotu a vložte ji do **vystavitele** textové pole.
 
-    ![Zprostředkovatelé Identity SAML](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "zprostředkovatelů Identity SAML")
+    ![Zprostředkovatelé Identity SAML](./media/active-directory-saas-workday-tutorial/IC7829272.png "zprostředkovatelů Identity SAML")
    
-    c. Vyberte **povolit Workday Initiated odhlášení**.
+    c. Vyberte **povolit idp iniciované odhlášení**.
    
     d. Na portálu Azure na **konfigurovat přihlášení** okno, kopie **Sign-Out URL** hodnotu a vložte ji do **adresa URL odpovědi odhlášení** textové pole.
 
@@ -226,9 +226,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     d. Klikněte na **OK**. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -309,7 +306,6 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

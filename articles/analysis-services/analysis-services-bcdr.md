@@ -1,24 +1,18 @@
 ---
-title: "Azure vysokou dostupnost služby Analysis Services | Microsoft Docs"
-description: "Zajišťuje vysokou dostupnost služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
+title: Azure vysokou dostupnost služby Analysis Services | Microsoft Docs
+description: Zajišťuje vysokou dostupnost služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: ed2bb2fe159db146ee520fc600c8b11f2dd4f761
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: f8252e47224b96d43551ad389148a1ce4349c308
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analysis-services-high-availability"></a>Vysoká dostupnost Analysis Services
 Tento článek popisuje, zajištění vysoké dostupnosti pro servery Azure Analysis Services. 

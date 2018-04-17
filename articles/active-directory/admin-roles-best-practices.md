@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro nasazení hybridními a cloudovými ve službě Azure AD
 
@@ -154,9 +154,9 @@ Pokud jste tak již neučinili, vytvořte samostatné účty pro uživatele k pr
 
 Ujistěte se, že mají všichni uživatelé přihlášení k jejich účty pro správu a změnit hesla nejméně jednou za posledních 90 dnů. Také zkontrolujte, zda byl, víte, že všechny sdílené účty, ve které více uživatelů heslo nedávno změnili hesla.
 
-#### <a name="turn-on-password-synchronization"></a>Zapnutí synchronizace hesel
+#### <a name="turn-on-password-hash-synchronization"></a>Zapnout synchronizaci hodnoty hash hesla
 
-Synchronizace hesel je funkce používá k synchronizaci hodnoty hash hodnot hash hesla uživatele z místní instance služby Active Directory k Azure cloudové AD instance. I, že pokud se rozhodnete používat federační službou Active Directory Federation Services (AD FS) nebo jiných poskytovatelů identit, můžete volitelně nastavení synchronizace hesel jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se změní na dočasně nedostupná. To umožňuje uživatelům přihlásit ke službě pomocí stejné heslo, které používají pro přihlášení k místní instanci AD. Také je možné zjistit zneužití přihlašovacích údajů porovnáním hodnot hash těchto hesel s hesly známé došlo k narušení, pokud má uživatel využít jejich stejnou e-mailovou adresu a heslo na jiné služby, které není připojeno k Azure AD Identity Protection.  Další informace najdete v tématu [implementovat synchronizaci hodnoty hash hesla s Azure AD Connect sync](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+Synchronizaci hodnoty hash hesla je funkce používá k synchronizaci hodnoty hash hodnot hash hesla uživatele z místní instance služby Active Directory k Azure cloudové AD instance. I, že pokud se rozhodnete používat federační službou Active Directory Federation Services (AD FS) nebo jiných poskytovatelů identit, můžete volitelně můžete nastavit synchronizaci hodnoty hash hesla jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se změní na dočasně nedostupná. To umožňuje uživatelům přihlásit ke službě pomocí stejné heslo, které používají pro přihlášení k místní instanci AD. Také je možné zjistit zneužití přihlašovacích údajů porovnáním hodnot hash těchto hesel s hesly známé došlo k narušení, pokud má uživatel využít jejich stejnou e-mailovou adresu a heslo na jiné služby, které není připojeno k Azure AD Identity Protection.  Další informace najdete v tématu [implementovat synchronizaci hodnoty hash hesla s Azure AD Connect sync](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Vyžadovat vícefaktorové ověřování (MFA) pro uživatele ve všech privilegovaných rolí, jakož i zveřejněné uživatelů
 
@@ -282,11 +282,11 @@ Pokud služby Azure Active Directory je připojený k místní službě Active D
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Inventáře privilegovaných účtů v rámci hostované virtuální počítače
 
-Ve většině případů nemusíte poskytnout neomezená oprávnění uživatele k předplatná Azure nebo prostředky. Role správce Azure AD můžete oddělit povinností v rámci vaší organizace a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provedení určité úlohy. Pokud chcete, aby jeden správce spravovat jenom virtuální počítače v předplatném, zatímco jiné můžete spravovat databází SQL v rámci stejného předplatného. použijte například role správce Azure AD. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](role-based-access-control-what-is.md).
+Ve většině případů nemusíte poskytnout neomezená oprávnění uživatele k předplatná Azure nebo prostředky. Role správce Azure AD můžete oddělit povinností v rámci vaší organizace a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provedení určité úlohy. Pokud chcete, aby jeden správce spravovat jenom virtuální počítače v předplatném, zatímco jiné můžete spravovat databází SQL v rámci stejného předplatného. použijte například role správce Azure AD. Další informace najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure](../role-based-access-control/overview.md).
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Implementace pro role správce Azure AD PIM
 
-Pro správu, řízení a monitorování přístupu k prostředkům Azure pomocí role správce Azure AD Privileged identity Management. Pomocí PIM chrání privilegované účty před internetovými útoky snížení času ohrožení oprávnění a zvýšení vaší přehled o jejich používání prostřednictvím sestavy a výstrahy. Další informace najdete v tématu [přístupu RBAC spravovat prostředky Azure s Privileged Identity Management](pim-azure-resource.md).
+Pro správu, řízení a monitorování přístupu k prostředkům Azure pomocí role správce Azure AD Privileged identity Management. Pomocí PIM chrání privilegované účty před internetovými útoky snížení času ohrožení oprávnění a zvýšení vaší přehled o jejich používání prostřednictvím sestavy a výstrahy. Další informace najdete v tématu [přístupu RBAC spravovat prostředky Azure s Privileged Identity Management](../role-based-access-control/pim-azure-resource.md).
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Integrace protokolů Azure používat k odesílání relevantní protokolů Azure k vašim systémů SIEM 
 

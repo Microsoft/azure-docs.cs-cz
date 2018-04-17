@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd11ec7c8a32792853e60b4bb14d4ed52f53f4a3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazit protokoly aktivity akce u prostředků
 
@@ -30,7 +30,7 @@ Prostřednictvím protokolů činnosti můžete určit:
 * Stav operace
 * Hodnoty další vlastnosti, které vám můžou pomoct zkoumání operaci
 
-Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) provést na vašich prostředků. Operace čtení (GET) neobsahuje. Seznam akcí prostředků najdete v tématu [poskytovatel prostředků Azure Resource Manager operations](../active-directory/role-based-access-control-resource-provider-operations.md). Najít k chybě při odstraňování problémů s nebo k monitorování, jak upravit uživatele ve vaší organizaci prostředek, můžete protokoly auditu.
+Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) provést na vašich prostředků. Operace čtení (GET) neobsahuje. Seznam akcí prostředků najdete v tématu [poskytovatel prostředků Azure Resource Manager operations](../role-based-access-control/resource-provider-operations.md). Najít k chybě při odstraňování problémů s nebo k monitorování, jak upravit uživatele ve vaší organizaci prostředek, můžete protokoly auditu.
 
 Protokoly aktivity jsou uchovány 90 dní. Pro libovolný rozsah kalendářních dat, se můžete dotazovat, dokud počáteční datum není více než 90 dní v minulosti.
 
@@ -154,8 +154,8 @@ Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API
 ## <a name="next-steps"></a>Další postup
 
 * Azure protokoly aktivity s Power BI můžete použít k získání lepší přehled o akcích v rámci vašeho předplatného. V tématu [zobrazení a analýza protokolů Azure aktivity v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../active-directory/role-based-access-control-configure.md).
+* Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
 * Další informace o příkazy pro zobrazení operace nasazení najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
 * Informace o tom, aby se zabránilo odstranění prostředku pro všechny uživatele, najdete v části [zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
-* Chcete-li zobrazit seznam operací dostupných pro každého zprostředkovatele Microsoft Azure Resource Manager, přečtěte si téma [operations poskytovatel prostředků Azure Resource Manager](~/articles/active-directory/role-based-access-control-resource-provider-operations.md)
+* Chcete-li zobrazit seznam operací dostupných pro každého zprostředkovatele Microsoft Azure Resource Manager, přečtěte si téma [operations poskytovatel prostředků Azure Resource Manager](../role-based-access-control/resource-provider-operations.md)
 

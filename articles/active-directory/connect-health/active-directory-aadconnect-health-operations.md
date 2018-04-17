@@ -1,8 +1,8 @@
 ---
 title: Operace v Azure Active Directory Connect Health
-description: "Tento článek popisuje další operace, které lze provést po nasazení Azure AD Connect Health."
+description: Tento článek popisuje další operace, které lze provést po nasazení Azure AD Connect Health.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operace v Azure Active Directory Connect Health
 Toto téma popisuje různé operace, které můžete provádět pomocí Azure Active Directory (Azure AD) Connect Health.
@@ -91,9 +91,9 @@ Pokud odstraňujete instance služby, uvědomte si z následujících akcí:
 4. Klikněte na **Odstranit**.
    <br><br>
 
-[//]: # (Start of RBAC section)
+[//]: # (Začátek RBAC oddílu)
 ## <a name="manage-access-with-role-based-access-control"></a>Správa přístupu pomocí řízení přístupu na základě rolí
-[Řízení přístupu na základě rolí (RBAC)](../role-based-access-control-configure.md) pro Azure AD Connect Health poskytuje přístup uživatelům a skupinám než globální správci. RBAC přiřadí role pro příslušné uživatele a skupiny a poskytuje mechanismus pro omezení globálních správců v adresáři.
+[Řízení přístupu na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup uživatelům a skupinám než globální správci. RBAC přiřadí role pro příslušné uživatele a skupiny a poskytuje mechanismus pro omezení globálních správců v adresáři.
 
 ### <a name="roles"></a>Role
 Azure AD Connect Health podporuje následující předdefinované role:
@@ -153,7 +153,7 @@ Nyní uvedené uživatele a skupiny mají přístup, podle jejich přiřazené r
 Můžete odebrat uživatele nebo skupinu přidat do Azure AD Connect Health RBAC. Jednoduše klikněte pravým tlačítkem na uživatele nebo skupinu a vyberte **odebrat**.<br>
 ![Připojení stavu RBAC uživatelům okno snímek obrazovky Azure AD, s odebrat zvýrazněná](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
-[//]: # (End of RBAC section)
+[//]: # (Konci části RBAC)
 
 ## <a name="next-steps"></a>Další postup
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

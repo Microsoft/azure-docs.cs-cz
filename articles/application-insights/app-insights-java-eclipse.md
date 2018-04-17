@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Azure Application Insights s Javou v prostředí Eclipse | Microsoft docs"
-description: "Pomocí modulu plug-in Eclipse přidejte výkon a sledování využití do vašeho webu Java pomocí Application Insights"
+title: Začínáme s Azure Application Insights s Javou v prostředí Eclipse | Microsoft docs
+description: Pomocí modulu plug-in Eclipse přidejte výkon a sledování využití do vašeho webu Java pomocí Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Začínáme s Application Insights s Javou v prostředí Eclipse
 Application Insights SDK odesílá telemetrii z webové aplikace Java, takže je můžete analyzovat využití a výkonu. Modul plug-in pro službu Application Insights Eclipse automaticky nainstaluje sady SDK v projektu, abyste měli mimo pole telemetrie a rozhraní API, které můžete psát vlastní telemetrii.   
@@ -28,7 +28,7 @@ Aktuálně modul plug-in funguje pro projekty Maven a dynamické webové projekt
 
 Budete potřebovat:
 
-* Oracle JRE 1.6 nebo novější
+* 1.7 prostředí JRE nebo 1.8
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/), džínovinu nebo novější.
 * Windows 7 nebo novější nebo Windows Server 2008 nebo novějším.
@@ -39,7 +39,7 @@ Stačí udělat tento jednou pro každý počítač. Tento krok nainstaluje sada
 1. V prostředí Eclipse klikněte na tlačítko Nápověda, nainstalovat nový Software.
 
     ![Nápověda, instalace nového softwaru](./media/app-insights-java-eclipse/0-plugin.png)
-2. Sada SDK se http://dl.microsoft.com/eclipse v rámci Azure Toolkit.
+2. Sada SDK je v http://dl.microsoft.com/eclipse, v rámci Azure Toolkit.
 3. Zrušte zaškrtnutí políčka **obraťte se na všechny lokality aktualizace...**
 
     ![Application Insights SDK zrušte vám poskytne všechny aktualizace lokality](./media/app-insights-java-eclipse/1-plugin.png)
@@ -215,7 +215,7 @@ Kód můžete vložit na webové stránce JavaScript i v jazyce Java na straně 
 
 [Další informace o vlastní telemetrii][track]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 #### <a name="detect-and-diagnose-issues"></a>Najít a diagnostikovat problémy
 * [Přidat telemetrie webového klienta] [ usage] sám výkonu telemetrie webového klienta.
 * [Nastavení webových testů][availability] pro zajištění, že aplikace zůstane funkční a bude reagovat.

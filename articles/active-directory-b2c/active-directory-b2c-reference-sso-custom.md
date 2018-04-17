@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: Jednotné přihlašování (SSO) relace správy
 
@@ -47,6 +47,9 @@ Jako název stanoví, tohoto zprostředkovatele neprovede žádnou akci. Tento z
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
 Tento zprostředkovatel mohou být použity k uložení deklarace identity v relaci. Tento zprostředkovatel se obvykle odkazuje v profilu technické používaným ke správě místních účtů. 
+
+> [!NOTE]
+> Při použití DefaultSSOSessionProvider k uložení deklarací identity v relaci, je potřeba zajistit, že všechny deklarace, které je třeba vrátí aplikaci nebo používá předběžné podmínky v dalších krocích, jsou uložené v relaci nebo rozšířen o čtení z profilu uživatele v adresář. Tím bude zajištěno, že vám dobře slouží ověřování nebudou na deklaracích identity chybí.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">

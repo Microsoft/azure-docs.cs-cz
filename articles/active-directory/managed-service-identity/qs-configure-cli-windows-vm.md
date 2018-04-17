@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace MSI ve virtuálním počítači Azure pomocí rozhraní příkazového řádku Azure"
-description: "Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí rozhraní příkazového řádku Azure."
+title: Postup konfigurace MSI ve virtuálním počítači Azure pomocí rozhraní příkazového řádku Azure
+description: Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí rozhraní příkazového řádku Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 0863d5bec71a79f28017582eaa111f6c4a97c1ec
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c76d53d32b297ff106c05bdd717a80a9f4b98814
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -71,10 +71,10 @@ Pokud potřebujete povolit MSI na existující virtuální počítač:
    az login
    ```
 
-2. Použití [az virtuálních počítačů přiřazení identity](/cli/azure/vm/#az_vm_assign_identity) s `--assign-identity` parametr přidat MSI do stávajícího virtuálního počítače:
+2. Použití [identita virtuálního počítače az přiřadit](/cli/azure/vm/identity/#az_vm_identity_assign) s `identity assign` příkaz pro přidání souboru MSI do stávajícího virtuálního počítače:
 
    ```azurecli-interactive
-   az vm assign-identity -g myResourceGroup -n myVm
+   az vm identity assign -g myResourceGroup -n myVm
    ```
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Odebrání virtuálního počítače Azure MSI

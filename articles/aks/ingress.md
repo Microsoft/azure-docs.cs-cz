@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Příchozí přenos HTTPS na Azure Container Service (AKS)
 
 Řadič příjem příchozích dat je softwarového produktu, které poskytuje reverzní proxy server, směrování provozu konfigurovatelné a ukončení TLS pro Kubernetes služby. Prostředky Kubernetes příjem příchozích dat se používají ke konfiguraci směrování pro jednotlivé služby Kubernetes a příchozího pravidla. Pomocí řadič příjem příchozích dat a příchozího pravidla, jedna externí adresa slouží ke směrování provozu na více služeb v clusteru s podporou Kubernetes.
 
 Tento dokument vás provede ukázkové nasazení [NGINX příjem příchozích dat řadič] [ nginx-ingress] na clusteru Azure Container Service (AKS). Kromě toho [KUBE LEGO] [ kube-lego] projektu se používá k automatickému generování a konfigurace [umožňuje šifrování] [ lets-encrypt] certifikáty. Nakonec několik aplikací se spouštějí v clusteru AKS, z nichž každý je přístupný prostřednictvím jednu adresu.
+
+## <a name="prerequisite"></a>Požadavek
+
+Instalace rozhraní příkazového řádku Helm – viz Helm CLI [dokumentace] [helm rozhraní příkazového řádku] postup instalace.
 
 ## <a name="install-an-ingress-controller"></a>Nainstalovat řadič příjem příchozích dat
 
@@ -183,6 +187,7 @@ Další informace o softwaru ukázáno v tomto dokumentu.
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

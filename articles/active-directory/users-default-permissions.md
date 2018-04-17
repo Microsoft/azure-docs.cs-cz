@@ -1,24 +1,24 @@
 ---
-title: "Porovnání výchozí oprávnění uživatele v Azure Active Directory | Microsoft Docs"
-description: "Porovnání člen, guest, aplikace a oprávnění vlastníka skupiny"
+title: Porovnání výchozí oprávnění uživatele v Azure Active Directory | Microsoft Docs
+description: Porovnání člen, guest, aplikace a oprávnění vlastníka skupiny
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Výchozí oprávnění uživatele v Azure Active Directory
 
@@ -77,6 +77,6 @@ Když uživatel vytvoří skupinu, jsou automaticky přidány jako vlastníka pr
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o tom, jak změnit správce pro předplatné služby Azure naleznete v tématu [Postup přidání nebo změna role správce služby Azure](../billing-add-change-azure-subscription-administrator.md)
-* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](active-directory-understanding-resource-access.md)
+* Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o tom, jak Azure Active Directory má vztah k předplatnému Azure, najdete v části [asociování předplatných Azure se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
 * [Správa uživatelů](active-directory-create-users.md)

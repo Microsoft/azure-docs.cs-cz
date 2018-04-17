@@ -1,8 +1,8 @@
 ---
-title: "Migrace z HDInsight se systémem Windows do HDInsight se systémem Linux - Azure | Microsoft Docs"
-description: "Informace o migraci z clusteru HDInsight se systémem Windows do clusteru HDInsight se systémem Linux."
+title: Migrace z HDInsight se systémem Windows do HDInsight se systémem Linux - Azure | Microsoft Docs
+description: Informace o migraci z clusteru HDInsight se systémem Windows do clusteru HDInsight se systémem Linux.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: ff35be59-bae3-42fd-9edc-77f0041bab93
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6d4b537834b8a70f0015fc9c6316dae20af5dd5a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -198,7 +196,7 @@ HDInsight se systémem Linux neposkytuje funkce vzdálené plochy. Místo toho m
 
 Následující graf obsahuje pokyny k migraci vašich úloh Hive.
 
-| V systému Windows použít... | On Linux-based... |
+| V systému Windows použít... | Na základě Linux... |
 | --- | --- |
 | **Hive Editor** |[Zobrazení Ambari Hive](hadoop/apache-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;` Chcete-li povolit Tez |Tez je výchozí modul provádění pro clustery se systémem Linux, takže příkaz set již není potřeba. |
@@ -208,14 +206,14 @@ Následující graf obsahuje pokyny k migraci vašich úloh Hive.
 
 ### <a name="pig"></a>Pig
 
-| V systému Windows použít... | On Linux-based... |
+| V systému Windows použít... | Na základě Linux... |
 | --- | --- |
 | Uživatelem definované funkce jazyka C# | Informace o ověřování součásti C# s HDInsight se systémem Linux najdete v tématu [řešení migrovat .NET HDInsight se systémem Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD soubory nebo skripty na serveru vyvolána jako součást úlohy Pig |pomocí skriptů Bash |
 
 ### <a name="mapreduce"></a>MapReduce
 
-| V systému Windows použít... | On Linux-based... |
+| V systému Windows použít... | Na základě Linux... |
 | --- | --- |
 | C# mapper a reduktorem součásti | Informace o ověřování součásti C# s HDInsight se systémem Linux najdete v tématu [řešení migrovat .NET HDInsight se systémem Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD soubory nebo skripty na serveru vyvolána jako součást úlohy Hive |pomocí skriptů Bash |
@@ -231,7 +229,7 @@ Pokud máte pracovní postup, který používá aplikace v jazyce C#, ověřte t
 
 ## <a name="storm"></a>Storm
 
-| V systému Windows použít... | On Linux-based... |
+| V systému Windows použít... | Na základě Linux... |
 | --- | --- |
 | Řídicí panel Storm |Řídicí panel Storm není k dispozici. V tématu [topologií nasazení a správa Storm v HDInsight se systémem Linux](storm/apache-storm-deploy-monitor-topology-linux.md) pro způsoby, jak odeslat topologie |
 | Storm uživatelského rozhraní |Uživatelské rozhraní Storm je k dispozici na https://CLUSTERNAME.azurehdinsight.net/stormui |

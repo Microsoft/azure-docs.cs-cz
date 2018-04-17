@@ -3,7 +3,7 @@ title: Spravovat účty pro vývojáře používání skupin v Azure API Managem
 description: Zjistěte, jak chcete spravovat účty pro vývojáře používání skupin v Azure API Management
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 184c8fff35a59715407989589d6d69b3dc2481e0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: df2e25bca907e90c12d18ea76f9c6a94c38a4ece
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Postup vytvoření a používání skupin Správa účtů pro vývojáře ve službě Azure API Management
 Ve službě API Management se ke správě viditelnosti produktů pro vývojáře používají skupiny. Produkty se první dostupná pro skupiny, a pak mohou vývojáři v těchto skupinách zobrazovat a odebírat produkty, které jsou přidružené skupiny. 

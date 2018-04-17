@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -47,6 +47,7 @@ Další informace najdete v tématu [stránku smlouvy SLA pro Azure DNS](https:/
 
 Doména je jedinečný název v systému názvů domény, například "contoso.com".
 
+
 K hostování záznamů DNS v určité doméně se používá zóna DNS. Třeba doména "contoso.com" může obsahovat několik záznamů DNS, třeba "mail.contoso.com" (pro poštovní server) a "www.contoso.com" (pro webový server). Tyto záznamy by být hostovaná v zóně DNS "contoso.com".
 
 Název domény je *pouze název*, zatímco zóny DNS je datový prostředek, který obsahuje záznamy DNS pro název domény. Azure DNS vám umožňuje hostovat zónu DNS a spravovat záznamy DNS pro doménu v Azure. Nabízí taky názvových serverů DNS k odpovědi na dotazy DNS z Internetu.
@@ -59,7 +60,7 @@ K hostování zóny DNS v Azure DNS nemusíte kupovat doménu. Zónu DNS můžet
 
 Budete muset zakoupit název domény, pokud chcete propojit zóny DNS do globální hierarchie DNS – toto propojení umožňuje dotazy DNS odkudkoli na světě najít zónu DNS a odpověď, v níž svoje záznamy DNS.
 
-## <a name="azure-dns-features"></a>Azure DNS Features
+## <a name="azure-dns-features"></a>Funkce Azure DNS
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Podporuje Azure DNS na základě DNS provoz směrování nebo koncový bod převzetí služeb při selhání?
 
@@ -90,6 +91,14 @@ Přenos zóny je funkce sledované v Azure DNS nevyřízených položek. Můžet
 Ne. Adresa URL přesměrování služby nejsou ve skutečnosti služba DNS – pracují na úrovni protokolu HTTP, nikoli na úrovni DNS. Někteří poskytovatelé služby DNS pro adresu URL sady přesměrování služby v rámci jejich celkový nabídky. To není podporováno aktuálně Azure DNS.
 
 Adresa URL přesměrování funkce jsou sledovány v Azure DNS nevyřízených položek. Můžete použít web pro zasílání názorů na [zaregistrovat podporu pro tuto funkci](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Podporuje Azure DNS rozšířené ASCII kódování (8 bitů) sady pro sadu záznamů TXT?
+
+Ano. Azure DNS podporuje rozšířené sady ASCII kódování pro sady záznamů TXT, pokud používáte nejnovější verzi rozhraní API REST služby Azure, SDK, prostředí PowerShell a rozhraní příkazového řádku (verze starší než 2017-10-01 ani SDK 2.1, se nepodporuje rozšířené sady ASCII). Například pokud uživatel poskytuje řetězec jako hodnotu pro záznam TXT s rozšířené \128 znaků ASCII (např: "abcd\128efgh"), Azure DNS použijete v interního vyjádření hodnotu bajtu tento znak (což je 128 znaků). V době překlad DNS i tato hodnota bajtu bude vrácen v odpovědi. Všimněte si také, že "abc" a "\097\098\099" se zaměňovat jde řešení. 
+
+Jsme podle [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zónu pravidla řídicí hlavní formát souboru pro záznamů TXT. Například ' \' nyní ve skutečnosti řídicí sekvence vše za v dokumentech RFC. Pokud zadáte "A\B" jako hodnota záznamu TXT, zastoupení a vyřešte jako právě "AB". Pokud chcete skutečně záznam TXT tak, aby měl "A\B" v řešení, budete muset vyhnuli "\" znovu, tj. zadejte jako "A\\B". 
+
+Všimněte si, že tato podpora není momentálně k dispozici pro záznamů TXT vytvořená na portálu Azure. 
 
 ## <a name="using-azure-dns"></a>Pomocí Azure DNS
 
@@ -169,7 +178,7 @@ Ne. Privátní zón fungovat ve spojení s virtuálními sítěmi a Informujte z
 Ano. Zákazníci můžete přidružit jeden privátní zóny až 10 řešení virtuálních sítí.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Virtuální síť, která patří do jiného předplatného přidáním jako řešení virtuální sítě na zónu privátní? 
-Ano, tak dlouho, dokud uživatel má oprávnění k zápisu operace na virtuálním sítím jak zónu DNS soukromé. Všimněte si, že k více rolím RBAC může být přiděleno oprávnění k zápisu. Například role RBAC Přispěvatel Classic sítě má oprávnění k zápisu do virtuální sítě. Další informace o role RBAC najdete v tématu [řízení přístupu na základě rolí](../active-directory/role-based-access-control-what-is.md)
+Ano, tak dlouho, dokud uživatel má oprávnění k zápisu operace na virtuálním sítím jak zónu DNS soukromé. Všimněte si, že k více rolím RBAC může být přiděleno oprávnění k zápisu. Například role RBAC Přispěvatel Classic sítě má oprávnění k zápisu do virtuální sítě. Další informace o role RBAC najdete v tématu [řízení přístupu na základě rolí](../role-based-access-control/overview.md)
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Záznamy DNS automaticky registrované virtuálního počítače v zóně s privátní se automaticky odstraní když virtuální počítače jsou odstraněny zákazník?
 Ano. Při odstranění virtuálního počítače v rámci virtuální sítě registrace jsme se automaticky odstraní záznamy DNS, které byly zapsány do zóny kvůli Probíhá registrace virtuální sítě. 

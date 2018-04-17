@@ -1,25 +1,18 @@
 ---
 title: Importovat soubor Power BI Desktop do Azure Analysis Services | Microsoft Docs
 description: Popisuje, jak importovat soubor Power BI Desktop (soubor pbix) pomocí portálu Azure.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 2ba9bc0e4b9a55312875fe120ee179800aeefb23
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 35bf2ba85017de43788f802b6244d61ed2bb62df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importovat soubor Power BI Desktop
 

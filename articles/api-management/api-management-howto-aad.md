@@ -1,11 +1,11 @@
 ---
-title: "Autorizovat vývojářským účtům pomocí Azure Active Directory – Azure API Management | Microsoft Docs"
-description: "Naučte se autorizace uživatelů pomocí služby Azure Active Directory ve službě API Management."
+title: Autorizovat vývojářským účtům pomocí Azure Active Directory – Azure API Management | Microsoft Docs
+description: Naučte se autorizace uživatelů pomocí služby Azure Active Directory ve službě API Management.
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizovat vývojářským účtům pomocí služby Azure Active Directory v Azure API Management
 
@@ -55,14 +55,14 @@ Tento článek ukazuje, jak povolit přístup k portálu pro vývojáře pro už
 13. Typ **active**. **Azure Active Directory** podokně se zobrazí.
 14. Vyberte **Azure Active Directory**.
 15. V části **SPRAVOVAT**, vyberte **registrace aplikace**.
-16. Vyberte **nové registrace aplikace**.
+16. Vyberte **Registrace nové aplikace**.
 
     ![Možnosti pro vytvoření nové aplikace registrace](./media/api-management-howto-aad/api-management-with-aad002.png)
 
     **Vytvořit** podokně se zobrazí na pravé straně. To je, kde zadáte informace relevantní aplikaci Azure AD.
 17. Zadejte název aplikace.
 18. Typ aplikace, vyberte **webové aplikace nebo rozhraní API**.
-19. Přihlašovací adresa URL zadejte přihlašovací adresa URL portálu pro vývojáře. V tomto příkladu je adresa URL přihlašování https://apimwithaad.portal.azure-api.net/signin.
+19. Přihlašovací adresa URL zadejte přihlašovací adresa URL portálu pro vývojáře. V tomto příkladu přihlašovací adresa URL je https://apimwithaad.portal.azure-api.net/signin.
 20. Vyberte **vytvořit** k vytvoření aplikace.
 21. Chcete-li najít aplikaci, vyberte **registrace aplikace** a hledat podle názvu.
 

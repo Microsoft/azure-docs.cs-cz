@@ -1,10 +1,10 @@
 ---
-title: "Vytvoření skupiny pro správu k uspořádání prostředků Azure | Microsoft Docs"
-description: "Zjistěte, jak vytvořit skupiny pro správu Azure ke správě více prostředků."
+title: Vytvoření skupiny pro správu k uspořádání prostředků Azure | Microsoft Docs
+description: Zjistěte, jak vytvořit skupiny pro správu Azure ke správě více prostředků.
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: ae91ad29b867ad4ab00831ee40102bcec2fc890c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 48af0bd566f8250e47e03ae45c8ba1c06e5a6792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupiny pro správu pro organizaci poskytující prostředky a Správa
-Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Vytvoření těchto kontejnerů k vytvoření hierarchie efektivní a efektivní, který lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [řízení přístupu na základě Role Azure](../active-directory/role-based-access-control-what-is.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md). 
+Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Vytvoření těchto kontejnerů k vytvoření hierarchie efektivní a efektivní, který lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [řízení přístupu na základě Role Azure](../role-based-access-control/overview.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md). 
 
 Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat správu skupin, přihlášení k [portál Azure](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) na Vytvoření skupiny pro správu.   
 

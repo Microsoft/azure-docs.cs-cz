@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/09/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9adecca35524962402d46169c531d135d0772bbd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrii ve službě Application Insights
 
@@ -58,7 +58,7 @@ V poznámce zobrazení výsledek, že všechny položky telemetrie sdílet koře
 | pageView   | Uložené stránky                |              | STYz               | STYz         |
 | závislosti | / Home GET/Stock           | qJSXU        | STYz               | STYz         |
 | Požadavek    | Domovské GET/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| závislosti | ZÍSKAT /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| závislosti | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Nyní když volání `GET /api/stock/value` provedené na externí službu chcete znát identitu tohoto serveru. Abyste mohli nastavit `dependency.target` pole správně. Když externí služba nepodporuje monitorování - `target` nastavena na název hostitele služby jako `stock-prices-api.com`. Ale pokud služby identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování dotazováním telemetrie z dané služby Application Insights. 
 
@@ -103,6 +103,31 @@ Jádro ASP.NET 2.0 podporuje extrakce hlavičky protokolu Http a spuštění nov
 Je-li nový modul Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) pro ASP.NET Classic. Tento modul implementuje pomocí DiagnosticsSource korelace telemetrie. Spustí aktivita podle příchozí hlavičky žádosti. Korelaci také telemetrie z různých fází zpracování žádosti. I pro případy, spuštění každé fáze zpracování služby IIS na jiný spravovat vláken.
 
 Application Insights SDK počáteční verze `2.4.0-beta1` používá k shromažďování telemetrických dat a přidružte ji k aktuální aktivita DiagnosticsSource a aktivity. 
+
+<a name="java-correlation"></a>
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelace telemetrie v jazyce Java SDK
+[Application Insights Java SDK](app-insights-java-get-started.md) podporuje automatické korelovat telemetrii počínaje verzí `2.0.0`. Automaticky naplní `operation_id` pro všechny telemetrická (trasování, výjimky, vlastních událostí atd.), které jsou vydané v rámci oboru požadavku. Je také postará šíření korelace hlavičky (popsané výše) pro volání služeb prostřednictvím protokolu HTTP Pokud [agenta Java SDK](app-insights-java-agent.md) je nakonfigurovaný. Poznámka: pro funkci korelace podporují pouze volání provedená prostřednictvím Apache HTTP klienta. Pokud používáte šablonu Rest pružiny nebo Feign, jak lze pomocí Apache HTTP klienta pod pokličkou.
+
+V současné době nepodporuje automatické kontextu šíření přes zasílání zpráv technologie (například Kafka, RabbitMQ, Azure Service Bus). Je možné, ale k ručně pomocí kódu takových scénářů `trackDependency` a `trackRequest` rozhraní API, kterým telemetrických závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
+
+<a name="java-role-name"></a>
+### <a name="role-name"></a>Název role
+V některých případech můžete chtít upravit způsob názvům součástí jsou zobrazeny v [aplikace mapy](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_roleName` jedním z následujících akcí:
+
+Pomocí inicializátoru telemetrie (všechny položky telemetrická data jsou příznakem)
+```Java
+public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
+
+    @Override
+    protected void onInitializeTelemetry(Telemetry telemetry) {
+        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
+    }
+  }
+```
+Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie příznakem)
+```Java
+telemetry.getContext().getDevice().setRoleName("My Component Name");
+```
 
 ## <a name="next-steps"></a>Další postup
 

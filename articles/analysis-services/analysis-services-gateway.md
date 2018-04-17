@@ -1,25 +1,18 @@
 ---
 title: Místní data brána | Microsoft Docs
 description: Bránu místní je nezbytný, pokud váš server služby Analysis Services v Azure se připojí k místní datové zdroje.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: f38faf4d75125201ee209eb40c9f223a0487f042
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5d327f016237890b506f45c4c494bd08ad2f71bb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místní zdroje dat s Azure místní brány dat
 Místní data brána funguje jako mostu, zajištění zabezpečených dat přenos mezi místní zdroje dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery Azure Analysis Services ve stejné oblasti, nejnovější verzi brány taky spolupracuje se službou Azure Logic Apps, Power BI, Power aplikace a Flow společnosti Microsoft. S jednou bránou můžete přidružit více služeb ve stejné oblasti. 
@@ -69,8 +62,8 @@ Níže jsou uvedeny plně kvalifikované názvy domény používá bránu.
 
 | Názvy domén | Odchozí porty | Popis |
 | --- | --- | --- |
-| *.powerbi.com |80 |HTTP používaný ke stahování instalační služby. |
-| *.powerbi.com |443 |HTTPS |
+| *. powerbi.com |80 |HTTP používaný ke stahování instalační služby. |
+| *. powerbi.com |443 |HTTPS |
 | *.analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Pokročilé zpráv služby Řízení front Protocol (AMQP) |
@@ -182,7 +175,7 @@ Soubory protokolu jsou důležité prostředků při řešení potíží.
 Můžete najít v protokolech Brána pro správu dat a PowerBIGateway pod **protokoly aplikací a služeb**.
 
 
-## <a name="telemetry"></a>Telemetry
+## <a name="telemetry"></a>Telemetrie
 Telemetrická data lze použít pro monitorování a řešení potíží. Ve výchozím nastavení
 
 **Chcete-li zapnout telemetrii**

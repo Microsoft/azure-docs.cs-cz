@@ -1,26 +1,24 @@
 ---
-title: "Instalace publikované aplikace – Dataiku DDS - Azure HDInsight | Microsoft Docs"
-description: "Nainstalovat a používat aplikace Hadoop Dataiku DDS třetích stran."
+title: Instalace publikované aplikace – Dataiku DDS - Azure HDInsight | Microsoft Docs
+description: Nainstalovat a používat aplikace Hadoop Dataiku DDS třetích stran.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 835f433e0bf79e8bc4d9b30963196f65bc53cd0e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: facee9187528fa0c6a74f71ee73636dc23ca35ba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---dataiku-dds"></a>Nainstalujte publikovanou aplikaci - Dataiku DDS
 
@@ -64,7 +62,7 @@ Následující kroky poskytují jednoduché ukázka.
 
 1. [Stáhnout ukázkové objednávky CSV](https://doc.dataiku.com/tutorials/data/101/haiku_shirt_sales.csv).
 
-2. Na řídicím panelu DSS, vyberte  **+**  (nový projekt) odkaz v levé nabídce na vytvoření nového projektu.
+2. Na řídicím panelu DSS, vyberte **+** (nový projekt) odkaz v levé nabídce na vytvoření nového projektu.
 
     ![Nové propojení projektu](./media/hdinsight-apps-install-dataiku/new-project.png)
 
@@ -84,7 +82,7 @@ Následující kroky poskytují jednoduché ukázka.
 
 7. Import je téměř úplně bez chyby. Soubor CSV je pomocí karty oddělovače. Uvidíte, že data jsou ve formátu tabulky se sloupci volat funkce a řádky, které představují připomínky. Jednu chybu je, že zjevně soubor obsahoval prázdný řádek mezi hlavičku a data. Chcete-li tuto chybu opravit, zadejte `1` v **přeskočit další řádky** pole.
 
-    ![Uložit](./media/hdinsight-apps-install-dataiku/skip-lines.png)
+    ![Uložení](./media/hdinsight-apps-install-dataiku/skip-lines.png)
 
 8. Zadejte název nové datové sady. Zadejte **haiku_shirt_sales** v poli na obrazovce, pak vyberte **vytvořit** tlačítko.
 

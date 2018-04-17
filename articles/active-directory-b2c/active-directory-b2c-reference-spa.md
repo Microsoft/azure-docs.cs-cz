@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: davidmu
-ms.openlocfilehash: ac0351ce220da5194d3a447e51185409b7368f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3347eac16e447091ffcaaf403e1291e2c7175a2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Jednostránkové aplikace přihlášení pomocí implicitního toku OAuth 2.0
-
-> [!NOTE]
-> Tato funkce je ve verzi preview.
-> 
 
 Řada moderních aplikací využívá jednostránkový front-end, který je primárně napsané v jazyce JavaScript. Aplikace je často zapsány pomocí rozhraní jako AngularJS, Ember.js nebo Durandal. Jednostránkové aplikace a další aplikace JavaScript, které běží především v prohlížeči mají některé další problémy týkající se ověřování:
 
@@ -93,7 +89,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | response_type |Požaduje se |Musí zahrnovat `id_token` pro OpenID Connect přihlášení. Typ odpovědi také může zahrnovat `token`. Pokud používáte `token`, vaše aplikace může bez provedení další požadavek na koncový bod authorize okamžitě přijímat přístupového tokenu z koncového bodu authorize.  Pokud použijete `token` typ odpovědi `scope` parametr musí obsahovat obor, který určuje, který prostředek vystavit token pro. |
 | redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování. Ho musí přesně shodovat s jedním přesměrování identifikátory URI, který je zaregistrovaný na portálu, s tím rozdílem, že musí být kódovaná adresou URL. |
 | response_mode |Doporučené |Určuje metodu sloužící k odeslání výsledný token zpět do vaší aplikace.  Implicitní toky, použijte `fragment`. |
-| Obor |Požaduje se |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD i oprávnění, která se vyžadují. `openid` Oboru označuje oprávnění přihlásit uživatele a získat data o uživateli ve formě ID tokeny. (Budeme mluvit o tom víc později v článku.) `offline_access` Obor je volitelné pro webové aplikace. Označuje, že vaše aplikace musí obnovovací token pro dlouhodobé přístup k prostředkům. |
+| scope |Požaduje se |Seznam obory oddělených mezerami. Hodnota jeden obor označuje do služby Azure AD i oprávnění, která se vyžadují. `openid` Oboru označuje oprávnění přihlásit uživatele a získat data o uživateli ve formě ID tokeny. (Budeme mluvit o tom víc později v článku.) `offline_access` Obor je volitelné pro webové aplikace. Označuje, že vaše aplikace musí obnovovací token pro dlouhodobé přístup k prostředkům. |
 | state |Doporučené |Hodnota, zahrnuté v požadavku, která je vrácena v odpovědi tokenu. Může být řetězec o délce veškerý obsah, který chcete použít. Obvykle náhodně generované, jedinečné hodnoty se používá, aby se zabránilo útokům padělání požadavku posílaného mezi weby. Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě, jako jsou stránky byly na. |
 | hodnotu Nonce |Požaduje se |Hodnota, zahrnuté v požadavku (generované aplikace), který je součástí výsledný token ID jako deklarace identity. Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
 | p |Požaduje se |Zásada provést. Je název zásady, který je vytvořen v klientovi Azure AD B2C. Hodnota název zásad by měl začínat obráceným **b2c\_1\_**. Další informace najdete v tématu [integrovaných zásad Azure AD B2C](active-directory-b2c-reference-policies.md). |
@@ -121,7 +117,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | access_token |Přístupový token, který požadované aplikace.  Přístupový token by neměl být dekódovat nebo jinak prověřovány. Může být považovány za neprůhledný řetězec. |
 | token_type |Typ tokenu hodnota. Pouze typ, který podporuje Azure AD je nosiče. |
 | expires_in |Časový interval, který přístupový token je platný (v sekundách). |
-| Obor |Obory, které token je platný pro. Také můžete pomocí oborů tokeny mezipaměti pro pozdější použití. |
+| scope |Obory, které token je platný pro. Také můžete pomocí oborů tokeny mezipaměti pro pozdější použití. |
 | id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o ID tokeny a jejich obsah, najdete v článku [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
 | state |Pokud `state` parametr je zahrnuta v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda `state` hodnoty v požadavku a odpovědi jsou identické. |
 
@@ -203,7 +199,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [portál Azure](https://portal.azure.com). |
 | response_type |Požaduje se |Musí zahrnovat `id_token` pro OpenID Connect přihlášení.  Může také obsahovat typ odpovědi `token`. Pokud používáte `token` zde, vaše aplikace může okamžitě přijímat přístupového tokenu z koncového bodu authorize bez vytváření druhé požadavku koncového bodu authorize. Pokud použijete `token` typ odpovědi `scope` parametr musí obsahovat obor, který určuje, který prostředek vystavit token pro. |
 | redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování. Ho musí přesně shodovat s jedním přesměrování identifikátory URI, které jste zaregistrovali na portálu, s tím rozdílem, že musí být kódovaná adresou URL. |
-| Obor |Požaduje se |Seznam obory oddělených mezerami.  Jak získat tokeny, zahrnují všechny obory, které požadujete pro určený prostředek. |
+| scope |Požaduje se |Seznam obory oddělených mezerami.  Jak získat tokeny, zahrnují všechny obory, které požadujete pro určený prostředek. |
 | response_mode |Doporučené |Určuje metodu, která se používá k odesílání výsledný token zpět do vaší aplikace.  Může být `query`, `form_post`, nebo `fragment`. |
 | state |Doporučené |Hodnota součástí požadavek, který je vrácený v odpovědi tokenu.  Může být řetězec o délce veškerý obsah, který chcete použít.  Obvykle náhodně generované, jedinečné hodnoty se používá, aby se zabránilo útokům padělání požadavku posílaného mezi weby.  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než požadavek na ověření došlo k chybě. Například stránky nebo zobrazení uživatel byl na. |
 | hodnotu Nonce |Požaduje se |Hodnota, zahrnuté v požadavku, vygenerovaný aplikací, který je součástí výsledný token ID jako deklarace identity.  Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu. Hodnota je obvykle, náhodné, jedinečný řetězec, který identifikuje původcem požadavku. |
@@ -231,7 +227,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |Typ tokenu bude vždy nosiče. |
 | state |Pokud `state` parametr je zahrnuta v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda `state` hodnoty v požadavku a odpovědi jsou identické. |
 | expires_in |Jak dlouho přístupový token je platný (v sekundách). |
-| Obor |Obory, které je platný pro přístupový token. |
+| scope |Obory, které je platný pro přístupový token. |
 
 ### <a name="error-response"></a>Chybové odpovědi
 Chybové odpovědi můžete také odešle do identifikátor URI přesměrování tak, aby aplikace můžete správně zpracovat.  Pro `prompt=none`, chybu očekávané vypadá takto:

@@ -1,25 +1,18 @@
 ---
 title: Nainstalovat bránu dat místní | Microsoft Docs
 description: Zjistěte, jak nainstalovat a nakonfigurovat bránu místní data.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5a923d3b5fbb5e7afe5f2a922ba083608ff35fd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Nainstalujte a nakonfigurujte bránu místní data
 Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblasti Azure Analysis Services připojení ke zdrojům dat v místě. Další informace o bráně najdete v tématu [místní brána dat](analysis-services-gateway.md).
@@ -44,7 +37,7 @@ Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblast
 * Bránu nainstalujte na počítač, který zůstává na a není přejít do režimu spánku.
 * Neinstalujte bránu v počítači se bezdrátově připojený k síti. Výkon může být snížena.
 * Přihlaste se k Azure pomocí účtu ve službě Azure AD pro stejné [klienta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné registrujete brána. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
-* (Jednotné) gateway popsané tady není podporována v Azure Government (Fairfax). Použijte vyhrazenou místní bránu pro Azure Analysis Services. Vyhrazené brána nepodporuje další služby, jako je Power BI a výkonu aplikací. Vyhrazené brána je nainstalovaná z vašich serverů rychlý Start na portálu.
+* (Jednotné) gateway popsané tady není podporována v Azure Government, Azure v Německu a Azure China svrchovaných oblastech. Použití **vyhrazené místní brána pro Azure Analysis Services**, nainstalované z vašeho serveru **rychlý Start** na portálu. 
 
 
 ## <a name="download"></a>Stahování

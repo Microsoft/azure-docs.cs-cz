@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace MSI ve virtuálním počítači Azure měřítku nastavit pomocí rozhraní příkazového řádku Azure"
-description: "Krok podle podrobné pokyny ke konfiguraci a spravovaná služba Identity (MSI) na Azure sadu škálování virtuálního počítače, pomocí rozhraní příkazového řádku Azure."
+title: Konfigurace MSI ve virtuálním počítači Azure měřítku nastavit pomocí rozhraní příkazového řádku Azure
+description: Krok podle podrobné pokyny ke konfiguraci a spravovaná služba Identity (MSI) na Azure sadu škálování virtuálního počítače, pomocí rozhraní příkazového řádku Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: d7a7b0c8b3f9bf0279282dbf1fed4fc8163d9170
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9cdf5225f2d87fffa2290e3edd09d4ae829aee21
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače sady škálování spravované služby Identity (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -71,10 +71,10 @@ Pokud potřebujete povolit MSI na existující sadu škálování virtuálního 
    az login
    ```
 
-2. Použití [az vmss přiřazení identity](/cli/azure/vm/#az_vmss_assign_identity) s `--assign-identity` parametr přidat MSI do stávajícího virtuálního počítače:
+2. Použití [az vmss identity přiřadit](/cli/azure/vmss/identity/#az_vmss_identity_assign) příkaz pro přidání souboru MSI do stávajícího virtuálního počítače:
 
    ```azurecli-interactive
-   az vmss assign-identity -g myResourceGroup -n myVMSS
+   az vmss identity assign -g myResourceGroup -n myVMSS
    ```
 
 ## <a name="remove-msi-from-an-azure-virtual-machine-scale-set"></a>Odebrání MSI sadu škálování virtuálního počítače Azure
@@ -87,10 +87,10 @@ Pokud máte škálovací sadu virtuálních počítačů, které už nepotřebuj
    az login
    ```
 
-2. Použití `--identities` přepínač s [az vmss remove-identity](/cli/azure/vmss/#az_vmss_remove_identity) odebrat soubor MSI:
+2. Použití [odebrat az vmss identity](/cli/azure/vmss/identity/#az_vmss_remove_identity) příkaz k odebrání soubor MSI:
 
    ```azurecli-interactive
-   az vmss remove-identity -g myResourceGroup -n myVMSS --identities readerID writerID
+   az vmss identity remove -g myResourceGroup -n myVMSS --identities readerID writerID
    ```
 
 ## <a name="next-steps"></a>Další postup

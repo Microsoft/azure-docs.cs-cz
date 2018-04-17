@@ -1,27 +1,25 @@
 ---
-title: "Zprovoznit kanálu analýzy dat – Azure | Microsoft Docs"
-description: "Nastavení a kanál dat příklad, který je aktivován nová data a vytvoří stručným výsledky spouštět."
+title: Zprovoznit kanálu analýzy dat – Azure | Microsoft Docs
+description: Nastavení a kanál dat příklad, který je aktivován nová data a vytvoří stručným výsledky spouštět.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 7a439c9d25a470a2474b427f6b20addb6ff3b0c7
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznit kanálu analýzy dat
+# <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
 *Datových kanálů* underly mnoho řešení pro analýzu dat. Jak již název naznačuje, datovém kanálu přebírá nezpracovaná data, vyčistí a změní tvar podle potřeby a potom obvykle provede výpočty nebo agregace před ukládání zpracovaná data. Zpracovaná data je spotřebované klienty, sestavy nebo rozhraní API. Kanál dat musíte zadat opakovatelných výsledky, zda podle plánu nebo když aktivovány nová data.
 
@@ -32,7 +30,7 @@ V následujícím scénáři je vstupní data plochý soubor obsahující dávky
 | ROK | MĚSÍC | DAY_OF_MONTH | POSKYTOVATEL |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | STEJNĚ JAKO | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 Příklad kanálu počká, až dorazí data pohybující se nové časové období a pak ukládá tyto informace podrobné letu do datového skladu Hive pro dlouhodobé analýzy. Kanál také vytvoří mnohem menší datovou sadu, která shrnuje pouze denní data letu. Tato denní souhrnná data pohybující se posílá k databázi SQL vytvářet sestavy, například pro web.
@@ -137,7 +135,7 @@ Databáze SQL Azure je nyní připravena.
 
        ![Nastavení HDInsight Metaúložiště.](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
-12. Vyberte **Další**.
+12. Vyberte **Next** (Další).
 13. Na **Souhrn** podokně, vyberte **vytvořit** k nasazení clusteru.
 
 ### <a name="verify-ssh-tunneling-setup"></a>Ověřte instalaci tunelování SSH
@@ -181,7 +179,7 @@ Můžete zkopírovat soubor pomocí spojovací bod služby ve vašem `bash` pros
 
 Ukázková data je nyní k dispozici. Však kanálu dvou tabulek Hive vyžaduje pro zpracování, jednu pro příchozí data (`rawFlights`) a jeden pro souhrnná data (`flights`). Vytváření těchto tabulek v Ambari následujícím způsobem.
 
-1. Přihlaste se k Ambari přechodem na [http://headnodehost:8080](http://headnodehost:8080).
+1. Přihlaste se k Ambari přechodem na [ http://headnodehost:8080 ](http://headnodehost:8080).
 2. V seznamu služeb vyberte **Hive**.
 
     ![Výběr v Ambari Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)

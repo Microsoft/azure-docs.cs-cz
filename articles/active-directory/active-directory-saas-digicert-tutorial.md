@@ -1,23 +1,23 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s DigiCert | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DigiCert."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a DigiCert.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 1eb3f6eda8603174fa5be5c76e16f7c2e3e58b2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f291b69f084913808f4494c7379a0f753254e3f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Kurz: Azure Active Directory integrace s DigiCert
 
@@ -106,9 +106,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-digicert-tutorial/tutorial_digicert_samlbase.png)
 
-3. Na **DigiCert domény a adresy URL** části uživatel nemusí provádět žádné kroky, protože aplikace je už předem integrováno s Azure.
+3. Na **DigiCert domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-digicert-tutorial/tutorial_digicert_url.png)
+    
+    V **identifikátor** textovému poli, zadejte adresu URL: `https://www.digicert.com/sso`
 
 4. Aplikace DigiCert očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z "**uživatelské atributy**" části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tuto konfiguraci. 
 
@@ -145,9 +147,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-digicert-tutorial/tutorial_general_400.png)
 
 8. Konfigurace jednotného přihlašování na **DigiCert** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory DigiCert](mailto:support@digicert.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -221,7 +220,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici DigiCert na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci DeigiCert.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -1,25 +1,18 @@
 ---
-title: "Asynchronní aktualizace pro modely Azure Analysis Services | Microsoft Docs"
-description: "Naučte se pomocí rozhraní REST API kódu asynchronní aktualizace."
-services: analysis-services
-documentationcenter: 
+title: Asynchronní aktualizace pro modely Azure Analysis Services | Microsoft Docs
+description: Naučte se pomocí rozhraní REST API kódu asynchronní aktualizace.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: minewiskan
+ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace pomocí rozhraní REST API
 Pomocí žádný programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vaše tabulkové modely služby Azure Analysis Services. To zahrnuje synchronizace repliky jen pro čtení pro dotaz Škálováním na více systémů. 
@@ -115,7 +108,7 @@ CommitMode se rovná partialBatch. Používá se při provádění modulu počá
 > [!NOTE]
 > V době psaní velikost dávky je hodnota MaxParallelism, ale tato hodnota může změnit.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId >
 
 Chcete-li zkontrolovat stav operace aktualizace, použijte příkaz GET na aktualizace ID. Tady je příklad textu odpovědi. Pokud je v průběhu operace **inProgress** je vrácen stav.
 
@@ -169,7 +162,7 @@ Seznam operací historických aktualizace pro model, použijte příkaz GET na k
 
 Zrušení operace probíhající aktualizace, použijte příkaz DELETE u aktualizace ID.
 
-## <a name="post-sync"></a>POST /sync
+## <a name="post-sync"></a>/ POST Sync
 
 Nutnosti provádět operace aktualizace, může být nutné synchronizovat nová data s replikami pro dotaz Škálováním na více systémů. K provedení operace synchronizace pro model, použijte příkaz POST na funkci/Sync. Hlavička umístění v odpovědi obsahuje ID synchronizační operace.
 

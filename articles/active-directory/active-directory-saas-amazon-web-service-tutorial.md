@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integrace s Amazon Web Services (AWS)
 
@@ -202,9 +202,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **popis Role** textovému poli, zadejte popis.
 
-    a. Klikněte na tlačítko **vytvořit roli**.
+    c. Klikněte na tlačítko **vytvořit roli**.
 
-    b. Vytvořit tolik role podle potřeby a jejich namapování na zprostředkovatele Identity.
+    d. Vytvořit tolik role podle potřeby a jejich namapování na zprostředkovatele Identity.
 
 18. Pomocí pověření účtu služby AWS pro načítání role z účtu AWS v zřizování uživatele Azure AD. V takovém případě otevřete konzolu AWS domácí.
 
@@ -270,16 +270,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     c. Klikněte na **"Vytvořit zásadu"** tlačítko.
 
-24. Na **zkontrolujte** dialogové okno, proveďte následující kroky:   
-    
-    ![Konfigurace zkontrolujte přihlášení][34] 
-
-    a. Klikněte na tlačítko **vytvořit roli**.
-
-    b. Vytvořit tolik role podle potřeby a jejich namapování na zprostředkovatele Identity.
-
-
-25. Vytvořte nový uživatelský účet ve službě IAM AWS provedením následujících kroků:
+24. Vytvořte nový uživatelský účet ve službě IAM AWS provedením následujících kroků:
 
     a. Klikněte na **uživatelé** navigace v konzole AWS IAM.
 
@@ -299,7 +290,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     * Klikněte na **další oprávnění** tlačítko v pravém horním rohu.
 
-26. Teď vytvořte novou zásadu pro tohoto uživatele tak, že provedete následující kroky:
+25. Teď vytvořte novou zásadu pro tohoto uživatele tak, že provedete následující kroky:
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -309,7 +300,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     c. Vyberte **zásad** a potom klikněte na **Další: kontrolní** tlačítko.
 
-27. Projděte si zásady připojené uživatele tak, že provedete následující kroky:
+26. Projděte si zásady připojené uživatele tak, že provedete následující kroky:
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -317,7 +308,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     b. Klikněte na **vytvořit uživateli** tlačítko v pravém dolním rohu vytvořit uživateli.
 
-28. Stáhněte si přihlašovací údaje uživatele uživatele tak, že provedete následující kroky:
+27. Stáhněte si přihlašovací údaje uživatele uživatele tak, že provedete následující kroky:
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -327,11 +318,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     c. Klikněte na **Zavřít** tlačítko dole.
 
-29. Přejděte na **zřizování uživatelů** části Amazon Web Services aplikace na portálu správy Azure AD.
+28. Přejděte na **zřizování uživatelů** části Amazon Web Services aplikace na portálu správy Azure AD.
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-30. Zadejte **přístupový klíč** a **tajný klíč** v **tajný klíč klienta** a **tajný klíč tokenu** pole v uvedeném pořadí.
+29. Zadejte **přístupový klíč** a **tajný klíč** v **tajný klíč klienta** a **tajný klíč tokenu** pole v uvedeném pořadí.
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -343,7 +334,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. Uložte nastavení kliknutím na **Uložit** tlačítka v horní části.
  
-31. Nyní se ujistěte, že povolíte stav zřizování **na** v části nastavení tím, že na přepínači a potom kliknutím na **Uložit** tlačítka v horní části.
+30. Nyní se ujistěte, že povolíte stav zřizování **na** v části nastavení tím, že na přepínači a potom kliknutím na **Uložit** tlačítka v horní části.
 
     ![Přidání uživatele](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 

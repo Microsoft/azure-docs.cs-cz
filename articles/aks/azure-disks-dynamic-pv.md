@@ -1,6 +1,6 @@
 ---
-title: "Azure Disk pomocí AKS"
-description: "Disky systému Azure pomocí AKS"
+title: Azure Disk pomocí AKS
+description: Disky systému Azure pomocí AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trvalé svazky s disky systému Azure
 
 Trvalé svazku představuje část úložiště, které se zřizují pro použití s pracovními stanicemi soustředěnými kolem Kubernetes. Trvalé svazku může používat jednoho nebo mnoha pracovními stanicemi soustředěnými kolem a můžete dynamicky nebo staticky zřídit. Další informace o Kubernetes trvalé svazky, najdete v části [trvalé svazky Kubernetes][kubernetes-volumes].
 
 Tento dokument údaje použití trvalé svazků s Azure disky v clusteru služby Azure Container Service (AKS).
+
+> [!NOTE]
+> Azure disk může být připojen pouze s typem režim přístupu ReadWriteOnce, že bude k dispozici pouze do jednoho uzlu AKS. Pokud museli sdílet mezi několika uzly trvalé svazku, zvažte použití [Azure Files][azure-files-pvc].
 
 ## <a name="built-in-storage-classes"></a>Součástí třídy úložiště
 
@@ -40,7 +43,7 @@ Trvalé svazku deklarace identity (PVC) se používá k automatickému zajiště
 
 Vytvořte soubor s názvem `azure-premimum.yaml`a zkopírujte následující manifestu.
 
-Všimněte si, která `managed-premium` třídy úložiště je uveden v anotace a deklarace identity požaduje disk `5GB` velikost `ReadWriteOnce` přístup. 
+Všimněte si, která `managed-premium` třídy úložiště je uveden v anotace a deklarace identity požaduje disk `5GB` velikost `ReadWriteOnce` přístup.
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ Vytvoření svazku trvalé deklarace s [kubectl vytvořit] [ kubectl-create] př
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Azure disk může být připojen pouze s typem režim přístupu ReadWriteOnce, že bude k dispozici pouze do jednoho uzlu AKS. Pokud museli sdílet mezi několika uzly trvalé svazku, zvažte použití [Azure Files][azure-files-pvc].
-
 ## <a name="using-the-persistent-volume"></a>Použití trvalé svazku
 
-Jakmile vytvořila deklaraci identity trvalé svazku a disku úspěšném zřízení, pod lze vytvořit s přístupem na disk. Následující manifest vytvoří pod, která používá deklarace trvalé svazku `azure-managed-disk` připojit disk v Azure `/mnt/azure` cesta. 
+Jakmile vytvořila deklaraci identity trvalé svazku a disku úspěšném zřízení, pod lze vytvořit s přístupem na disk. Následující manifest vytvoří pod, která používá deklarace trvalé svazku `azure-managed-disk` připojit disk v Azure `/mnt/azure` cesta.
 
 Vytvořte soubor s názvem `azure-pvc-disk.yaml`a zkopírujte následující manifestu.
 
@@ -96,7 +96,7 @@ Vytvoření pod s [kubectl vytvořit] [ kubectl-create] příkaz.
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. Zobrazí připojení při kontrole vaší pod prostřednictvím svazku `kubectl describe pod mypod`.
+Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. Tato konfigurace si můžete prohlédnout při kontrole vaší pod prostřednictvím `kubectl describe pod mypod`.
 
 ## <a name="next-steps"></a>Další postup
 

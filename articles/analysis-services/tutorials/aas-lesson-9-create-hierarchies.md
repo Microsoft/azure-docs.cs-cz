@@ -1,25 +1,18 @@
 ---
-title: "Kurz služby Azure Analysis Services – Lekce 9: Vytvoření hierarchií | Dokumentace Microsoftu"
-description: 
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Kurz služby Azure Analysis Services – Lekce 9: Vytvoření hierarchií | Dokumentace Microsoftu'
+description: Popisuje, jak vytvořit hierarchie ve tabulkový model.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 041096b1a93fdc671939b6d6715a7836d1977e3c
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: bb32736e5837c939b696e131746f9af2b9340acb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hierarchies"></a>Vytvoření hierarchií
 

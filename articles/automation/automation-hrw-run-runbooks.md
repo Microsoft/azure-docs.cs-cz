@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 1db1bf6f147ae4635b0d23e84faa67dbd8f786bc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 043a4efe85f45998f1dbf112044feb9996b50dd0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker.
 
@@ -112,8 +112,6 @@ This allows the use of the AzureRunAsConnection to authenticate to Azure and man
 AUTHOR: Azure Automation Team
 LASTEDIT: 2016.10.13
 #>
-
-[OutputType([string])]
 
 # Generate the password used for this certificate
 Add-Type -AssemblyName System.Web -ErrorAction SilentlyContinue | Out-Null

@@ -10,17 +10,15 @@ editor: cgronlun
 ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 4d3157441777cc7e39c3ede65a6d90a0f9a163aa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 67732b3a4c63408d8fc6ab5ed75b40a0eb043167
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Protokoly YARN aplikace přístup na HDInsight se systémem Linux
 
@@ -29,7 +27,7 @@ Zjistěte, jak získat přístup v protokolech aplikací YARN (ještě jiný pro
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="YARNTimelineServer"></a>YARN časová osa serveru
 
 [YARN časová osa serveru](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o dokončené aplikace a informace o konkrétní rozhraní aplikaci prostřednictvím dvou různých rozhraní. Zejména:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fbf50ac0807a3982385990871d9c4724bdaaad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správy nejčastější dotazy pro webové aplikace v Azure
 
@@ -84,7 +84,7 @@ Pokud chcete získat seznam odchozí IP adres pro webovou aplikaci:
 
 Zobrazí se seznam odchozí IP adres.
 
-Pokud váš web hostovaný ve službě App Service Environment pro PowerApps, zjistěte, jak získat odchozí IP adresu, najdete v článku [odchozí síťové adresy](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
+Další informace o získání odchozí IP adresu, pokud je váš web hostovaný ve službě App Service Environment, najdete v tématu [odchozí síťové adresy](environment/app-service-app-service-environment-network-architecture-overview.md#outbound-network-addresses).
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Jak získám vyhrazené vyhrazené příchozí IP adresu nebo webová aplikace?
 

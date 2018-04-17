@@ -1,25 +1,18 @@
 ---
-title: "Kurz služby Azure Analysis Services – Doplňková lekce: Řádky podrobností | Dokumentace Microsoftu"
-description: "Popisuje, jak vytvořit výraz řádků podrobností v kurzu služby Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: 'Kurz služby Azure Analysis Services – Doplňková lekce: Řádky podrobností | Dokumentace Microsoftu'
+description: Popisuje, jak vytvořit výraz řádků podrobností v kurzu služby Azure Analysis Services.
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: HT
+ms.reviewer: minewiskan
+ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Doplňková lekce – Řádky podrobností
 
@@ -31,19 +24,19 @@ Odhadovaný čas dokončení této lekce: **10 minut**
 Tato doplňková lekce je součástí kurzu tabulkového modelování. Než začnete provádět úkoly v této doplňkové lekci, měli byste mít dokončené všechny předchozí lekce nebo mít dokončený ukázkový projekt modelu Adventure Works Internet Sales.  
   
 ## <a name="whats-the-issue"></a>V čem je problém?
-Než přidáme výraz řádků podrobností, podívejme se na podrobnosti naší míry InternetTotalSales.
+Podívejme se na podrobnosti o InternetTotalSales míry, než přidáte výraz řádky podrobností.
 
 1.  V sadě SSDT klikněte na nabídku **Model** > **Analyzovat v aplikaci Excel**, otevřete Excel a vytvořte prázdnou kontingenční tabulku.
   
-2.  V části **Pole kontingenční tabulky** přidejte míru **InternetTotalSales** z tabulky FactInternetSales do **Hodnoty**, **CalendarYear** z tabulky DimDate do **Sloupce** a **EnglishCountryRegionName** do **Řádky**. Kontingenční tabulka nám teď poskytuje výsledky míry InternetTotalSales podle oblastí a roku. 
+2.  V části **Pole kontingenční tabulky** přidejte míru **InternetTotalSales** z tabulky FactInternetSales do **Hodnoty**, **CalendarYear** z tabulky DimDate do **Sloupce** a **EnglishCountryRegionName** do **Řádky**. Kontingenční tabulka nyní umožňuje agregované výsledky z míry InternetTotalSales oblasti a roku. 
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. V kontingenční tabulce poklikejte na agregovanou hodnotu pro rok a název oblasti. My jsme poklikali na hodnotu pro Austrálii a rok 2014. Otevře se nový list, který obsahuje data. Tato data ale nejsou moc užitečná.
+3. V kontingenční tabulce poklikejte na agregovanou hodnotu pro rok a název oblasti. Hodnota pro Austrálii a v roce 2014. Otevře se nový list, který obsahuje data. Tato data ale nejsou moc užitečná.
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-Rádi bychom viděli tabulku obsahující sloupce a řádky dat přispívající k agregovanému výsledku naší míry InternetTotalSales. Za tímto účelem můžeme přidat výraz řádků podrobností jako vlastnost míry.
+Cílem je tabulku obsahující sloupce a řádky dat, která můžete přispět k agregované výsledek InternetTotalSales míry. K tomu, přidejte výraz řádky podrobností jako vlastnost pro míru.
 
 ## <a name="add-a-detail-rows-expression"></a>Přidání výrazu řádků podrobností
 
@@ -79,7 +72,9 @@ Rádi bychom viděli tabulku obsahující sloupce a řádky dat přispívající
 5. Znovu nasaďte model.
 
   
-## <a name="see-also"></a>Viz také  
-[Funkce SELECTCOLUMNS (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
-[Doplňková lekce – Dynamické zabezpečení](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
-[Doplňková lekce – Nepravidelné hierarchie](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+## <a name="see-also"></a>Další informace najdete v tématech  
+
+[Funkce SELECTCOLUMNS (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[Další lekce - dynamické zabezpečení](../tutorials/aas-supplemental-lesson-dynamic-security.md)   
+[Doplňková lekce – Nepravidelné hierarchie](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)   
+ 

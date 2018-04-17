@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Použít koncept s Azure Container Service (AKS)
 
@@ -33,10 +33,10 @@ Nakonec je nutné nainstalovat [Docker](https://www.docker.com).
 
 ## <a name="install-draft"></a>Nainstalujte konceptu
 
-Rozhraní příkazového řádku koncept je klient, který běží ve vývojovém systému a umožňuje že vám quicky nasazení kódu do clusteru s podporou Kubernetes. 
+Rozhraní příkazového řádku koncept je klient, který běží ve vývojovém systému a umožňuje že vám quicky nasazení kódu do clusteru s podporou Kubernetes.
 
-> [!NOTE] 
-> Pokud jste nainstalovali koncept starší než verze 0.12, z clusteru pomocí nejprve odstraňte koncept `helm delete --purge draft` a pak odeberte konfiguraci místní spuštěním `rm -rf ~/.draft`. Pokud jste v systému MacOS, můžete spustit `brew upgrade draft`.
+> [!NOTE]
+> Pokud jste nainstalovali koncept starší než verze 0.12, z clusteru pomocí nejprve odstraňte koncept `helm delete --purge draft` a pak odeberte konfiguraci místní spuštěním `rm -rf ~/.draft`. Pokud jste v systému MacOS, spusťte `brew upgrade draft`.
 
 Instalace rozhraní příkazového řádku koncept na použití Mac `brew`. Další informace o instalaci naleznete v části, [koncept nainstalovat Průvodce][install-draft].
 
@@ -71,9 +71,9 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 Teď, když existuje vztah důvěryhodnosti mezi AKS a ACR, následující kroky povolí použití ACR z AKS clusteru.
 1. Nastavte konfiguraci koncept `registry` hodnotu spuštěním `draft config set registry <registry name>.azurecr.io`, kde _&lt;název registru&lt;_ je název vaší ACR registru.
-2. Přihlaste se k registru ACR spuštěním `az acr login -n <registry name>`. 
+2. Přihlaste se k registru ACR spuštěním `az acr login -n <registry name>`.
 
-Protože jste nyní přihlášeni místně na ACR a vytvořit důvěryhodný vztah s AKS a ACR, je potřeba nabízená nebo načítat z ACR do AKS bez hesla nebo tajných klíčů. Ověřování se odehrává na úrovni správce prostředků Azure, pomocí služby Azure Active Directory. 
+Protože jste nyní přihlášeni místně na ACR a vytvořit důvěryhodný vztah s AKS a ACR, je potřeba nabízená nebo načítat z ACR do AKS bez hesla nebo tajných klíčů. Ověřování se odehrává na úrovni správce prostředků Azure, pomocí služby Azure Active Directory.
 
 ## <a name="run-an-application"></a>Spuštění aplikace
 
@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Aplikaci můžete otestovat procházením http://localhost:46143 (pro předchozí příklad; portů může být jiný). Po dokončení testování aplikace pomocí `Control+C` zastavit připojení k proxy serveru.
+Teď aplikaci otestovat procházením http://localhost:46143 (pro předchozí příklad; portů může být jiný). Po dokončení testování aplikace pomocí `Control+C` zastavit připojení k proxy serveru.
 
 > [!NOTE]
 > Můžete také `draft up --auto-connect` příkaz k vytvoření a nasazení aplikace a okamžitě připojit k první spuštěné kontejneru aby iterace cyklus i rychlejší.

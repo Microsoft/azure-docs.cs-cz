@@ -1,6 +1,6 @@
 ---
-title: "Virtuální procesory Azure Resource Manager kvótu zvýšit požadavky | Microsoft Docs"
-description: "Žádosti o zvýšení kvóty Azure Resource Manager virtuální procesory"
+title: Virtuální procesory Azure Resource Manager kvótu zvýšit požadavky | Microsoft Docs
+description: Žádosti o zvýšení kvóty Azure Resource Manager virtuální procesory
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/18/2017
@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Žádosti o zvýšení kvóty virtuální procesor Resource Manager
 
@@ -19,7 +19,7 @@ Kvóty správce prostředků virtuální procesor prosazují na úrovni rodiny S
 Další informace o tom, jak se vynucují kvóty na [předplatného Azure a omezení služby](http://aka.ms/quotalimits) stránky.
 Další informace o SKU rodiny, může porovnat nákladů a výkonu na [ceny služeb Virtual Machines](http://aka.ms/pricingcompute) stránky.
 
-Chcete-li požádat o zvýšení, vytvoření kvóty případu podpory pro Vcpu na portálu Azure [https://portal.azure.com](https://portal.azure.com).
+Chcete-li požádat o zvýšení, vytvoření kvóty případu podpory pro Vcpu na portálu Azure [ https://portal.azure.com ](https://portal.azure.com).
 
 > [!NOTE]
 > Zjistěte, jak [vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) na portálu Azure
