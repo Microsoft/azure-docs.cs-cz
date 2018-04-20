@@ -1,11 +1,11 @@
 ---
-title: "Správa vaší bitové kopie virtuálního počítače v Azure Marketplace | Microsoft Docs"
-description: "Podrobné informace týkající se po počáteční publikace spravovat vaše bitovou kopii virtuálního počítače v Azure Marketplace"
+title: Správa vaší bitové kopie virtuálního počítače v Azure Marketplace | Microsoft Docs
+description: Podrobné informace týkající se po počáteční publikace spravovat vaše bitovou kopii virtuálního počítače v Azure Marketplace
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Po Provozní příručka pro virtuální počítač nabídky v Azure Marketplace
 Tento článek vysvětluje, jak můžete aktualizovat nabídka migraci virtuálního počítače v Azure Marketplace. Provede vás provede procesem přidání jeden nebo více nových SKU pro existující nabídku. Také provede vás provede procesem odebrání nabídka migraci virtuálního počítače nebo SKU z Marketplace.
@@ -47,7 +47,7 @@ Přidat novou verzi na uvedené verze SKU a znovu publikovat vaši nabídku, pos
 2. Přejděte na **virtuální počítače** a vyberte vaši nabídku.
 3. V nabídce na levé straně klikněte **Image virtuálních počítačů** kartě.
 4. V **SKU** část, vyhledejte SKU, který chcete aktualizovat.
-5. Přidat nové číslo verze pro verze SKU a klikněte na  **+**  tlačítko. Nové verze musí být ve formátu X.Y.Z, kde X, Y a jsou celá čísla. Verze změny by měly být jenom přírůstkové.
+5. Přidat nové číslo verze pro verze SKU a klikněte na **+** tlačítko. Nové verze musí být ve formátu X.Y.Z, kde X, Y a jsou celá čísla. Verze změny by měly být jenom přírůstkové.
 6. V **URL virtuálního pevného disku operačního systému** zadejte sdílený přístupový podpis URI vytvořený pro operační systém virtuálního pevného disku a uložte změny.
 
    > [!IMPORTANT]

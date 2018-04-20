@@ -1,8 +1,8 @@
 ---
-title: "Zapisují se výrazy pro mapování atributů v Azure Active Directory | Microsoft Docs"
-description: "Naučte se používat výraz mapování k transformaci hodnoty atributu do formátu přijatelné během automatického zřizování objektů aplikace SaaS ve službě Azure Active Directory."
+title: Zapisují se výrazy pro mapování atributů v Azure Active Directory | Microsoft Docs
+description: Naučte se používat výraz mapování k transformaci hodnoty atributu do formátu přijatelné během automatického zřizování objektů aplikace SaaS ve službě Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zapisují se výrazy pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování k aplikaci SaaS, je jeden z typů mapování atributů, které můžete zadat mapování u výrazu. Pro tyto musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů do formátů, které jsou více přijatelné pro aplikace SaaS.
@@ -27,7 +27,7 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 
 * Celý výraz musí být definován z hlediska funkcí, které se skládají z název, za nímž následují argumenty v závorce: <br>
   *%{FunctionName/ (<< argument 1 >>, <<argument N>>)*
-* Funkce v sobě navzájem může vnořit. Příklad: <br> *FunctionOne(FunctionTwo(<<argument1>>))*
+* Funkce v sobě navzájem může vnořit. Příklad: <br> *FunctionOne (FunctionTwo (<<argument1>>))*
 * Tři různé typy argumentů můžete předat do funkce:
   
   1. Atributy, které musí být uzavřena do odmocnina hranaté závorky. Příklad: [attributeName]
@@ -49,7 +49,7 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu |
-| **suffix** |Požaduje se |Řetězec |Řetězec, který má být připojen na konec zdrojové hodnoty. |
+| **Přípona** |Požaduje se |Řetězec |Řetězec, který má být připojen na konec zdrojové hodnoty. |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -77,8 +77,8 @@ Pokud je jedna z hodnot zdroj vícehodnotový atribut, pak každá hodnota v ten
 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| **separator** |Požaduje se |Řetězec |Řetězec slouží k oddělení zdroj hodnoty, když jsou zřetězeny do jednoho řetězce. Může být "" Pokud žádné oddělovače je vyžadován. |
-| ** zdroj1... sourceN ** |Požadované proměnné počet pokusů |Řetězec |Řetězec hodnoty, které mají být propojeny. |
+| **Oddělovač** |Požaduje se |Řetězec |Řetězec slouží k oddělení zdroj hodnoty, když jsou zřetězeny do jednoho řetězce. Může být "" Pokud žádné oddělovače je vyžadován. |
+| ** zdroj1... zdrojN ** |Požadované proměnné počet pokusů |Řetězec |Řetězec hodnoty, které mají být propojeny. |
 
 - - -
 ### <a name="mid"></a>Mid –
@@ -137,7 +137,7 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 | **regexGroupName** |Nepovinné |Řetězec |Název skupiny uvnitř **regexPattern**. Jenom v případě, že se používá replacementPropertyName, jsme jako zastaralá z vlastnosti nahrazení extrahuje hodnotu této skupiny. |
 | **Zastaralá** |Nepovinné |Řetězec |Nová hodnota nahradit starý s. |
 | **replacementAttributeName** |Nepovinné |Řetězec |Název atributu, který má být použit pro nahrazující hodnotou, pokud zdroj nemá žádnou hodnotu. |
-| **template** |Nepovinné |Řetězec |Když **šablony** je zadána hodnota, podíváme se **oldValue** uvnitř šablony a nahraďte ji metodou hodnota zdroje. |
+| **Šablony** |Nepovinné |Řetězec |Když **šablony** je zadána hodnota, podíváme se **oldValue** uvnitř šablony a nahraďte ji metodou hodnota zdroje. |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -176,7 +176,7 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 | **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 | **Výchozí hodnota** |Nepovinné |Řetězec |Výchozí hodnota má být použit při zdroj neodpovídá žádné klíče. Může být prázdný řetězec (""). |
 | **Klíč** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu s. |
-| **Hodnota** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíč. |
+| **value** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíč. |
 
 ## <a name="examples"></a>Příklady
 ### <a name="strip-known-domain-name"></a>Název domény známý pruhu

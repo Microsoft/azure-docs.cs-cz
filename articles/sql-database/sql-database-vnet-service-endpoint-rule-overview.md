@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: b15b3c7f50c23a1c11b2467bfdd2794d52b451ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -129,8 +129,8 @@ Pro databázi SQL Azure funkci pravidla virtuální sítě má následující om
 
 - Pravidla virtuální sítě se vztahují pouze k virtuálním sítím Azure Resource Manager; a nikoli k [modelu nasazení classic] [ arm-deployment-model-568f] sítě.
 
-- Zapnutí ON koncové body služby virtuální sítě do Azure SQL Database umožňuje také koncové body pro službu MySQL a PostGres Azure. Však s ON koncové body, se nezdaří pokusy o připojení k vaší instance databáze MySQL nebo Postgres z koncových bodů.
-    - Základní důvodem je skutečnost, že MySQL a PostGres funkce ACLing v současné době nepodporují.
+- Zapnutí ON koncové body služby virtuální sítě do Azure SQL Database umožňuje také koncové body pro službu MySQL a PostgreSQL Azure. Však s ON koncové body, se nezdaří pokusy o připojení z koncových bodů pro vaše instance databáze MySQL nebo PostgreSQL.
+    - Základní důvodem je, že MySQL a PostgreSQL nepodporují v současné době funkce ACLing.
 
 - V bráně firewall rozsahy IP adres se vztahují k následujícím položkám sítě, ale nepodporují pravidla pro virtuální sítě:
     - [Site-to-Site (S2S) virtuální privátní sítě (VPN)][vpn-gateway-indexmd-608y]
@@ -225,6 +225,10 @@ Seznam chybových zpráv SQL Database je popsána [sem][sql-database-develop-err
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portál můžete vytvořit pravidlo pro virtuální sítě
 
 Tato část ukazuje, jak můžete použít [portál Azure] [ http-azure-portal-link-ref-477t] k vytvoření *pravidlo virtuální sítě* ve vaší databázi SQL Azure. Pravidlo informuje vaší databázi SQL tak, aby přijímal komunikaci z konkrétní podsítě, kterých je označen jako *koncový bod služby virtuální sítě*.
+
+> [!NOTE]
+> Ověřte, zda služby, které jsou zapnuté koncové body pro virtuální síť nebo podsíť, který chcete přidat do virtuální sítě pravidla brány Firewall serveru.
+> Pokud nejsou vypnuté koncové body služby pro virtuální síť nebo podsíť, zobrazí se dotaz na portálu je povolit, klikněte na povolte na okno, ve kterém můžete přidat pravidlo.
 
 #### <a name="powershell-alternative"></a>Alternativní prostředí PowerShell
 

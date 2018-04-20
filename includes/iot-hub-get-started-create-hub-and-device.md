@@ -19,8 +19,8 @@ Pro tento kurz nastavení nebudete připojovací řetězec iothubowner potřebov
 
 1. Na webu [Azure Portal](https://portal.azure.com/) otevřete vaše centrum IoT.
 
-2. Klikněte na **Průzkumník zařízení**.
-3. V podokně Průzkumník zařízení klikněte na **Přidat** a přidejte zařízení do centra IoT. Potom udělejte následující:
+2. Klikněte na tlačítko **zařízení IoT**.
+3. V podokně zařízení IoT, klikněte na tlačítko **přidat** pro přidání zařízení do služby IoT hub. Potom udělejte následující:
 
    **ID zařízení:** Zadejte ID nového zařízení. V ID zařízení se rozlišují malá a velká písmena.
 
@@ -30,12 +30,15 @@ Pro tento kurz nastavení nebudete připojovací řetězec iothubowner potřebov
 
    **Připojit zařízení k centru IoT:** Klikněte na **Povolit**.
 
-   ![Přidání zařízení v Průzkumníku zařízení centra IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![Přidání zařízení v zařízení IoT služby IoT hub](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Klikněte na **Uložit**.
-5. Po vytvoření zařízení ho otevřete v podokně **Průzkumník zařízení**.
+5. Po vytvoření zařízení, otevřete v zařízení **zařízení IoT** podokně.
+
+   ![Seznam zařízení IoT ve IoT Hub.](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. Poznamenejte si primární klíč připojovacího řetězce.
 
-   ![Získání připojovacího řetězec zařízení](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Získání připojovacího řetězec zařízení](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Koncepty návrhu | Microsoft Docs"
-description: "Toto téma podrobnosti určité oblasti návrhu implementace"
+title: 'Azure AD Connect: Koncepty návrhu | Microsoft Docs'
+description: Toto téma podrobnosti určité oblasti návrhu implementace
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
 ms.custom: azure-ad-connect
@@ -16,10 +16,10 @@ ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
 Účelem tohoto tématu je k popisu oblastí, které musí považovat při návrhu implementace služby Azure AD Connect. Toto téma se podrobné informace o určité oblasti a tyto koncepty stručně jsou popsány v i další témata.

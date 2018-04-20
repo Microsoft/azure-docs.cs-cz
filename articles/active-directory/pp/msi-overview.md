@@ -1,25 +1,25 @@
 ---
-title: "Identita spravované služby (MSI) pro Azure Active Directory"
-description: "Přehled identita spravované služby pro prostředky Azure."
+title: Identita spravované služby (MSI) pro Azure Active Directory
+description: Přehled identita spravované služby pro prostředky Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ms.reviewer: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 95980c082b09ad959ab8bbaae0250b40ac08d2c8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Spravovaná služba Identity (MSI) pro prostředky Azure
 
@@ -47,7 +47,7 @@ Tady je příklad toho, jak funguje MSI se přiřazené systému s virtuálními
 2. Azure Resource Manager vytvoří objekt služby ve službě Azure AD reprezentuje identitu virtuálního počítače. Objekt služby se vytvoří v klientovi Azure AD, který je důvěryhodný pro toto předplatné.
 3. Azure Resource Manager nakonfiguruje Podrobnosti objektu služby v rozšíření virtuálního počítače MSI virtuálního počítače. Tento krok zahrnuje konfiguraci ID klienta a certifikát používaný službou rozšíření k získání přístupových tokenů z Azure AD.
 4. Teď, když se označuje identity instanční objekt virtuálního počítače, můžete udělit přístup k prostředkům Azure. Například pokud váš kód potřebuje volat Azure Resource Manager, pak by přiřadíte instanční objekt Virtuálního počítače roli odpovídající pomocí řízení přístupu na základě Role (RBAC) ve službě Azure AD.  Pokud váš kód potřebuje volat Key Vault, by udělit přístup kódu k určitého tajného klíče nebo klíče v Key Vault.
-5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token. Parametr prostředku určuje službu, na kterou je odesláno token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků = https://management.azure.com/.
+5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token. Parametr prostředku určuje službu, na kterou je odesláno token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků =https://management.azure.com/.
 6. Rozšíření virtuálního počítače MSI používá jeho ID konfigurovaného klienta a certifikát k vyžádání tokenu přístupu z Azure AD.  Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupového tokenu pro volání na službu, která podporuje ověřování Azure AD.
 
@@ -59,7 +59,7 @@ Pomocí stejné diagramu, tady je příklad toho, jak funguje instalační služ
 2. Azure Resource Manager vytvoří objekt služby ve službě Azure AD představují identitu soubor MSI. Objekt služby se vytvoří v klientovi Azure AD, který je důvěryhodný pro toto předplatné.
 3. Azure Resource Manager obdrží zprávu, která se v rozšíření virtuálního počítače MSI virtuálního počítače, nakonfigurujte podrobnosti instanční objekt. Tento krok zahrnuje konfiguraci ID klienta a certifikát používaný službou rozšíření k získání přístupových tokenů z Azure AD.
 4. Teď, když se označuje instanční objekt identity soubor MSI, můžete udělit přístup k prostředkům Azure. Například pokud váš kód potřebuje volat Azure Resource Manager, pak by přiřadíte MSI objektu služby roli odpovídající pomocí řízení přístupu na základě Role (RBAC) ve službě Azure AD. Pokud váš kód potřebuje volat Key Vault, by udělit přístup kódu k určitého tajného klíče nebo klíče v Key Vault. Poznámka: Krok 3 se nevyžaduje k dokončení kroku 4. Jakmile MSI existuje, můžete udělit přístup k prostředkům, bez ohledu na to, konfigurován na virtuálním počítači, nebo ne.
-5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token. Parametr ID klienta Určuje název MSI identity použít. Kromě toho určuje parametr prostředku služby, ke které je odeslána token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků = https://management.azure.com/.
+5. Váš kód spuštěný ve virtuálním počítači požadavky token z místní koncový bod, který je hostitelem rozšíření virtuálního počítače MSI: http://localhost:50342/oauth2/token. Parametr ID klienta Určuje název MSI identity použít. Kromě toho určuje parametr prostředku služby, ke které je odeslána token. Například pokud chcete, aby váš kód pro ověření do Azure Resource Manageru, byste použili prostředků =https://management.azure.com/.
 6. Rozšíření virtuálního počítače MSI zkontroluje, zda je nakonfigurovaný certifikát pro ID požadované klienta a požadavky přístupový token ze služby Azure AD. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupového tokenu pro volání na službu, která podporuje ověřování Azure AD.
 

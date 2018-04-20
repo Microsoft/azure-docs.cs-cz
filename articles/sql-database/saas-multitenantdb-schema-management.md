@@ -1,6 +1,6 @@
 ---
-title: "Správa schématu Azure SQL Database v aplikaci s více tenanty | Dokumentace Microsoftu"
-description: "Správa schématu pro více tenantů v aplikaci s více tenanty využívající službu Azure SQL Database"
+title: Správa schématu Azure SQL Database v aplikaci s více tenanty | Dokumentace Microsoftu
+description: Správa schématu pro více tenantů v aplikaci s více tenanty využívající službu Azure SQL Database
 keywords: kurz k sql database
 services: sql-database
 author: MightyPen
@@ -12,10 +12,10 @@ ms.date: 01/03/2018
 ms.reviewers: billgib
 ms.author: genemi
 ms.openlocfilehash: 474b7842c8295be0dd30c2c03b92dc68ce40630d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené víceklientské databáze SQL
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
 - Musí být nainstalovaný Azure PowerShell. Podrobnosti najdete v tématu [Začínáme s Azure Powershellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> Tento kurz používá funkce služby Azure SQL Database, které jsou v omezené preview ([úlohy elastické databáze](sql-database-elastic-database-client-library.md)). Pokud chcete provést v tomto kurzu, zadejte svoje ID předplatného pro  *SaaSFeedback@microsoft.com*  s předmětem = elastické úlohy Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na  *SaaSFeedback@microsoft.com*  pro dotazy související s ani nepodporuje.
+> Tento kurz používá funkce služby Azure SQL Database, které jsou v omezené preview ([úlohy elastické databáze](sql-database-elastic-database-client-library.md)). Pokud chcete provést v tomto kurzu, zadejte svoje ID předplatného pro *SaaSFeedback@microsoft.com* s předmětem = elastické úlohy Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato předběžná verze je omezená, takže obraťte se na *SaaSFeedback@microsoft.com* pro dotazy související s ani nepodporuje.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod k modelům správy schématu SaaS
 
@@ -162,7 +162,7 @@ Zkontrolujte následující položky *OnlineReindex.sql* skriptu:
 * [Správa cloudových databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-overview.md)
 * [Vytvoření a správa databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-create-and-manage.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric rozhraní příkazového řádku sfctl ot | Microsoft Docs"
-description: "Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl ot. / min."
+title: Azure Service Fabric rozhraní příkazového řádku sfctl ot | Microsoft Docs
+description: Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl ot. / min.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 34e7693ea40df2bf12fd6e9be2ef627f30748bcd
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Dotaz a odesílat příkazy na service manager opravit.
@@ -44,7 +44,7 @@ Toto rozhraní API podporuje platformy Service Fabric; ji není určen pro použ
 ### <a name="global-arguments"></a>Globální argumenty
 |Argument|Popis|
 | --- | --- |
-|    --debug             | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+|    – ladění             | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 |    – Nápověda -h           | Zobrazte tuto zprávu nápovědy a ukončení.|
 |    --výstup -o         | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.
 |    --dotazu             | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|
@@ -66,7 +66,7 @@ Toto rozhraní API podporuje platformy Service Fabric; ji není určen pro použ
 ### <a name="global-arguments"></a>Globální argumenty
 |Argument|Popis|
 | --- | --- |
-|    --debug          | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+|    – ladění          | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 |    – Nápověda -h        | Zobrazte tuto zprávu nápovědy a ukončení.|
 |    --výstup -o      | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí| JSON.|
 |    --dotazu          | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|

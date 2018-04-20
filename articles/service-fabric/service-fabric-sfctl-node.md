@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric rozhraní příkazového řádku sfctl uzlem | Microsoft Docs"
-description: "Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl uzlu."
+title: Azure Service Fabric rozhraní příkazového řádku sfctl uzlem | Microsoft Docs
+description: Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl uzlu.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 Spravujte uzly, které vytvoří cluster.
@@ -33,8 +33,8 @@ Spravujte uzly, které vytvoří cluster.
 |    Informace o          | Získá informace o konkrétním uzlu v clusteru Service Fabric.|
 |    Seznam          | Získá seznam uzlů v clusteru Service Fabric.|
 |    načítání          | Získá informace o zatížení Service Fabric uzlu.|
-|    remove-state  | Service Fabric upozorní, že trvalého stavu na uzlu trvale odstraněn nebo ztráty.|
-|    report-health | Odešle zprávu o stavu na uzlu Service Fabric.|
+|    odebrat stavu  | Service Fabric upozorní, že trvalého stavu na uzlu trvale odstraněn nebo ztráty.|
+|    Sestava stavu | Odešle zprávu o stavu na uzlu Service Fabric.|
 |    Restartování       | Restartování uzlu clusteru Service Fabric.|
 |    Přechod    | Spuštění nebo zastavení uzlu clusteru.|
 |    Přechod stavu| Získá průběh operace pomocí StartNodeTransition spuštěna.|
@@ -57,7 +57,7 @@ Deaktivace uzlu clusteru Service Fabric se záměrem zadaný deaktivace. Po deak
 
 |Argument|Popis|
 | --- | --- |
-| --debug            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h          | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o        | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu            | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -79,7 +79,7 @@ Aktivuje uzlem clusteru Service Fabric, která je právě deaktivována. Po akti
 
 |Argument|Popis|
 | --- | --- |
-| --debug            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h          | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o        | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu            | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -95,14 +95,14 @@ Získá stav uzlu Service Fabric. EventsHealthStateFilter použijte k filtrován
 |Argument|Popis|
 | --- | --- |
 | – Název uzlu [vyžaduje]| Název uzlu.|
-| --events-health-state-filter| Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr patří celočíselná hodnota jednoho z následujících stavů. Se vrátí jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadaný, jsou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnotou může být kombinací tyto hodnoty získané pomocí bitový operátor 'OR'. Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozornění (4), jsou vráceny. -Výchozí – výchozí hodnota. Vyhledá všechny stav HealthState. Hodnota je nula. -None - filtr, který se neshoduje se žádnou hodnotu stavu HealthState. Použít cílem vrátit žádné výsledky v dané kolekci stavů. Hodnota je 1. -Ok - filtrujte, aby odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2. -Upozornění - filtr, hodnota odpovídá vstup k elementu HealthState upozornění. Hodnota je 4. -Chyba – filtr, který odpovídá vstup s hodnotou elementu HealthState chyby. Hodnota je 8. -Všechny - filtr, který odpovídá vstup s libovolnou hodnotou elementu HealthState. Hodnota je 65535.|
+| --události stavu stavu filtru| Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr patří celočíselná hodnota jednoho z následujících stavů. Se vrátí jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadaný, jsou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnotou může být kombinací tyto hodnoty získané pomocí bitový operátor 'OR'. Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozornění (4), jsou vráceny. -Výchozí – výchozí hodnota. Vyhledá všechny stav HealthState. Hodnota je nula. -None - filtr, který se neshoduje se žádnou hodnotu stavu HealthState. Použít cílem vrátit žádné výsledky v dané kolekci stavů. Hodnota je 1. -Ok - filtrujte, aby odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2. -Upozornění - filtr, hodnota odpovídá vstup k elementu HealthState upozornění. Hodnota je 4. -Chyba – filtr, který odpovídá vstup s hodnotou elementu HealthState chyby. Hodnota je 8. -Všechny - filtr, který odpovídá vstup s libovolnou hodnotou elementu HealthState. Hodnota je 65535.|
 | časový limit – -t             | Server časový limit v sekundách.  Výchozí: 60.|
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug                  | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění                  | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h                | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o              | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu                  | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|
@@ -124,7 +124,7 @@ Získá informace o konkrétním uzlu v Cluster.The prostředků infrastruktury 
 
 |Argument|Popis|
 | --- | --- |
-| --debug            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h          | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o        | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu            | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -140,14 +140,14 @@ Získá seznam uzlů v clusteru Service Fabric. Odpověď obsahovat název, stav
 |Argument|Popis|
 | --- | --- |
 | --token pokračování| Parametr token pokračování slouží k získání další sadu výsledků. Token pokračování s hodnotou neprázdné je zahrnutý v odpovědi rozhraní API, když výsledky ze systému nelze uložit do odpověď o jedné.      Pokud je tato hodnota předaná pro další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud nejsou žádné další výsledky, pak token pro pokračování neobsahuje hodnotu. Hodnota tohoto parametru by neměla být kódovaná adresou URL.|
-| --node-status-filter| Umožňuje filtrování podle NodeStatus uzly. Vrátí se pouze uzly, které jsou odpovídající hodnota zadaného filtru. Hodnota filtru může být jedna z následujících akcí. Výchozí: výchozí.|
+| --uzlu filtru stavu| Umožňuje filtrování podle NodeStatus uzly. Vrátí se pouze uzly, které jsou odpovídající hodnota zadaného filtru. Hodnota filtru může být jedna z následujících akcí. Výchozí: výchozí.|
 | časový limit – -t     | Server časový limit v sekundách.  Výchozí: 60.|
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug          | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění          | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h        | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o      | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu          | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -169,7 +169,7 @@ Načte informace zatížení Service Fabric uzlu pro všechny metriky, které ma
 
 |Argument|Popis|
 | --- | --- |
-| --debug            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h          | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o        | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu            | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -185,15 +185,15 @@ Restartování uzlu clusteru Service Fabric, která je již spuštěn.
 |Argument|Popis|
 | --- | --- |
 | – Název uzlu [vyžaduje]| Název uzlu.|
-| --create-fabric-dump  | Zadejte hodnotu PRAVDA, chcete-li vytvořit výpis procesu uzlu prostředků infrastruktury. Toto je malá a velká písmena.  Výchozí: False.|
-| --node-instance-id | ID instance cílový uzel. Pokud je zadané instance ID restartování uzlu pouze v případě, že se shoduje s aktuální instancí třídy uzlu. Výchozí hodnota 0, odpovídá žádné ID instance. Instance ID lze získat pomocí get uzlu dotazu.  Výchozí: 0.|
+| – Vytvoření výpisu prostředků infrastruktury  | Zadejte hodnotu PRAVDA, chcete-li vytvořit výpis procesu uzlu prostředků infrastruktury. Toto je malá a velká písmena.  Výchozí: False.|
+| – id instance uzlu | ID instance cílový uzel. Pokud je zadané instance ID restartování uzlu pouze v případě, že se shoduje s aktuální instancí třídy uzlu. Výchozí hodnota 0, odpovídá žádné ID instance. Instance ID lze získat pomocí get uzlu dotazu.  Výchozí: 0.|
 | časový limit – -t       | Server časový limit v sekundách.  Výchozí: 60.|
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění            | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h          | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o        | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu            | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -220,7 +220,7 @@ Pro spuštění uzlu, předejte "Start" pro parametr NodeTransitionType. K zasta
 
 |Argument|Popis|
 | --- | --- |
-| --debug                           | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění                           | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h                         | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o                       | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.                       Výchozí: json.|
 | --dotazu                           | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|

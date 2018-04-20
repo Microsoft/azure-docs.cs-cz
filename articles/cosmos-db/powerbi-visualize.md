@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: sngun
 ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí Power BI connector
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit k účtu Azure Cosmos DB prostřednictvím konektoru Azure Cosmos DB pro Power BI.   
@@ -45,7 +45,7 @@ Než budete postupovat podle pokynů v tomto kurzu Power BI, ujistěte se, abyst
 * [Nejnovější verze Power BI Desktop](https://powerbi.microsoft.com/desktop).
 * Přístup k naší ukázkový účet nebo data ve vašem účtu Azure Cosmos DB.
   * Ukázkový účet bude zahrnovat sopka data zobrazená v tomto kurzu. Tento ukázkový účet není vázán žádné SLA a je určena pouze pro demonstrační účely.  Jsme vyhrazuje právo k úpravám této ukázkové účtu včetně, ale bez omezení, účet se ukončuje, změníte klíč, omezení přístupu, změna a odstranit data, kdykoli bez předstihu upozornění nebo důvod.
-    * URL: https://analytics.documents.azure.com
+    * ADRESA URL: https://analytics.documents.azure.com
     * Read-only key: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * Nebo, pokud chcete vytvořit svůj vlastní účet, najdete v části [vytvoření účtu Azure Cosmos DB databáze pomocí portálu Azure](https://azure.microsoft.com/documentation/articles/create-account/). Potom získat sopka ukázková data, která je podobná co se používá v tomto kurzu (ale neobsahuje bloky GeoJSON) najdete v tématu [NOAA lokality](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5) a pak můžete importovat data pomocí [nástroj pro migraci dat Azure Cosmos DB](import-data.md).
 

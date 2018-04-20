@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: jeedes
 ms.openlocfilehash: c7f74d3bd8a2f0173f8f3cc69c611696044875a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Kurz: Azure Active Directory integrace s Domo
 
@@ -140,7 +140,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
     | jméno | user.displayname |
-    | e-mail | user.mail |
+    | e-mail | User.Mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 

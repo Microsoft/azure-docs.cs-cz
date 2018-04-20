@@ -1,11 +1,11 @@
 ---
-title: "Potíže při přihlašování do Galerie aplikace nakonfigurovaná pro federované jednotné přihlašování | Microsoft Docs"
-description: "Pokyny pro konkrétní chyby při přihlášení k aplikaci, kterou jste nakonfigurovali pro na základě SAML federované jednotné přihlašování s Azure AD"
+title: Potíže při přihlašování do Galerie aplikace nakonfigurovaná pro federované jednotné přihlašování | Microsoft Docs
+description: Pokyny pro konkrétní chyby při přihlášení k aplikaci, kterou jste nakonfigurovali pro na základě SAML federované jednotné přihlašování s Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování do Galerie aplikace nakonfigurovaná pro federované jednotné přihlašování
 
@@ -63,7 +63,7 @@ Jakmile jste aktualizovali hodnota identifikátoru ve službě Azure AD a odešl
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odeslání odpovědi neodpovídá adresy odpovědět, nakonfigurované pro aplikaci.
 
-*Chyba AADSTS50011: Adresa odpovědi 'https://contoso.com' neodpovídá adresy odpovědět, nakonfigurované pro aplikaci*
+*Chyba AADSTS50011: Adresa pro odeslání odpovědi sehttps://contoso.com' neodpovídá adresy odpovědět, nakonfigurované pro aplikaci*
 
 **Možná příčina**
 

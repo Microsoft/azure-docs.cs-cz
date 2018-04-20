@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: f42f20893a815640378b9d18186c88b782e61284
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS
 Microsoft Azure se důrazně zaměřuje na zajištění ochrany osobních údajů, suverenity data a umožňuje vám řízení vaší Azure hostované data prostřednictvím řadu pokročilých technologiích k šifrování, řídit a spravovat šifrovací klíče, řízení a audit přístupu k datům. To poskytuje Azure zákazníkům flexibilitu zvolit si řešení, které nejlépe vyhovuje potřebám své firmy. V tomto dokumentu jsme vás seznámí s nové řešení technologie "Azure Disk Encryption pro systém Windows a Linux IaaS virtuálního počítače je" k ochraně a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Dokumentu poskytuje podrobné pokyny k použití funkcí Azure disk encryption, včetně Podporované scénáře a uživatel dojde.
@@ -665,7 +665,7 @@ Můžete zakázat šifrování na spuštěný Windows nebo virtuálních počít
 ##### <a name="windows-vm"></a>Virtuální počítač s Windows
 Zakázat šifrování krok zakazuje šifrování operačního systému, datový svazek nebo obojí do spuštěného virtuálního počítače Windows IaaS. Nelze zakázat svazku operačního systému a nechte datový svazek zašifrovaná. Při provádění krok zakázat šifrování modelu nasazení Azure classic aktualizace modelu služby virtuálních počítačů a virtuálních počítačů IaaS Windows je označena dešifrovaný. Obsah virtuálního počítače jsou již v zašifrované podobě. Dešifrování nedojde k odstranění trezoru klíčů a materiál klíče pro šifrování (šifrovací klíče nástroje BitLocker pro systém Windows a heslo pro Linux).
 
-##### <a name="linux-vm"></a>Virtuální počítač s Linuxem
+##### <a name="linux-vm"></a>Virtuální počítači s Linuxem
 Zakázat šifrování krok zakazuje šifrování datový svazek na spuštěného virtuálního počítače s Linuxem IaaS. Tento krok je funkční pouze v případě disk operačního systému není zašifrován.
 
 > [!NOTE]
@@ -720,7 +720,7 @@ Než budete pokračovat, zkontrolujte *požadavky* v tomto článku. Po zajišt�
 
 1. Spusťte relaci prostředí Azure PowerShell a přihlaste se k účtu Azure pomocí následujícího příkazu:
 
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 
 2. Pokud máte více předplatných a chcete zadat jeden použít, zadejte následující příkaz pro zobrazení předplatných pro váš účet:
 

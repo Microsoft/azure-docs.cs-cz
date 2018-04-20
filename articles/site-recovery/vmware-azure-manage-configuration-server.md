@@ -1,17 +1,17 @@
 ---
-title: "Spravovat konfigurační server pro obnovení po havárii VMware s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak spravovat existující konfigurační server pro obnovení po havárii VMware do Azure s Azure Site Recovery."
+title: Spravovat konfigurační server pro obnovení po havárii VMware s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak spravovat existující konfigurační server pro obnovení po havárii VMware do Azure s Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: ddb1c9426874634fea54f1b67509d4ac2af70eba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b5ba316b21e0c31e0ecc99fc2d57f81b0f24c086
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Spravovat konfigurační server pro virtuální počítače VMware
 
@@ -112,7 +112,7 @@ Volitelně můžete odstranit konfigurační server pomocí prostředí PowerShe
 1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell.
 2. Přihlaste se k účtu Azure pomocí tohoto příkazu:
     
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 3. Vyberte předplatné trezoru.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`

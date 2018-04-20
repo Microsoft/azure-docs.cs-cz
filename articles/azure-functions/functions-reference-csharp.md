@@ -1,25 +1,25 @@
 ---
-title: "Azure funkcí jazyka C# skript referenční informace pro vývojáře"
-description: "Pochopit, jak vyvíjet Azure Functions pomocí skriptu jazyka C#."
+title: Azure funkcí jazyka C# skript referenční informace pro vývojáře
+description: Pochopit, jak vyvíjet Azure Functions pomocí skriptu jazyka C#.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů"
+editor: ''
+tags: ''
+keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: tdykstra
+ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcí jazyka C# skript (.csx) referenční informace pro vývojáře
 
@@ -231,9 +231,9 @@ public static void Run(string myBlob, TraceWriter log)
 > [!NOTE]
 > Informace o novější rozhraní protokolování, který můžete použít místo `TraceWriter`, najdete v části [zápisu protokolů v C# funkce](functions-monitoring.md#write-logs-in-c-functions) v **monitorování Azure Functions** článku.
 
-## <a name="async"></a>Async
+## <a name="async"></a>Asynchronní
 
-Chcete-li funkci asynchronní, použijte `async` – klíčové slovo a vraťte se `Task` objektu.
+Chcete-li funkci [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), použijte `async` – klíčové slovo a vraťte se `Task` objektu.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 538d31f5b50ee22c06ba22c78e1aa92281a3b212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9391072159f26ae8c7d3eba9f023a8e7d62a4e26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Aplikační služby na Azure zásobníku update 1 poznámky
 
@@ -39,7 +39,7 @@ App Service na číslo sestavení Azure zásobníku Update 1 je **69.0.13698.9**
 ### <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
-> Nová nasazení služby Azure App Service v zásobníku Azure nyní vyžadují [certifikát se zástupným znakem tři subjektu](azure-stack-app-service-before-you-get-started.md#get-certificates) z důvodu vylepšení způsobem, ve kterém se nyní zpracovává jednotného přihlašování pro Kudu ve službě Azure App Service.  Nové subjektem je ** *. sso.appservice.<region>. <domainname>.<extension>**
+> Nová nasazení služby Azure App Service v zásobníku Azure nyní vyžadují [certifikát se zástupným znakem tři subjektu](azure-stack-app-service-before-you-get-started.md#get-certificates) z důvodu vylepšení způsobem, ve kterém se nyní zpracovává jednotného přihlašování pro Kudu ve službě Azure App Service. Nové subjektem je ** *.sso.appservice.<region>.<domainname>.<extension>**
 >
 >
 
@@ -49,11 +49,11 @@ Odkazovat [před zahájením práce dokumentaci](azure-stack-app-service-before-
 
 Azure App Service na Azure zásobníku Update 1 obsahuje následující vylepšení a opravy:
 
-- **Vysoká dostupnost služby Azure App Service** -poruch 1802 zásobníku Azure povolená aktualizace úloh k nasazení napříč doménami.  Infrastruktura služby App Service je proto může být odolné proti chybám, jak bude nasazen napříč doménami selhání.  Ve výchozím nastavení všechna nová nasazení služby Azure App Service bude mít tato funkce ale nasazení před 1802 zásobník Azure dokončil aktualizace, které bylo použito najdete [dokumentace doména selhání aplikace služby](azure-stack-app-service-fault-domain-update.md)
+- **Vysoká dostupnost služby Azure App Service** -poruch 1802 zásobníku Azure povolená aktualizace úloh k nasazení napříč doménami. Infrastruktura služby App Service je proto může být odolné proti chybám, jak bude nasazen napříč doménami selhání. Ve výchozím nastavení všechna nová nasazení služby Azure App Service má tato funkce ale nasazení před 1802 zásobník Azure dokončil aktualizace, které bylo použito najdete [dokumentace doména selhání aplikace služby](azure-stack-app-service-fault-domain-update.md)
 
-- **Nasazení v existující virtuální síť** -můžou nyní zákazníci nasadit služby App Service v zásobníku Azure v rámci existující virtuální síť.  Nasazení v existující virtuální síť umožňuje zákazníkům pro připojení k systému SQL Server a souborový Server, vyžaduje se pro Azure App Service přes privátní porty.  Během nasazení, můžete vybrat zákazníků k nasazení v existující virtuální síť, ale [musíte vytvořit podsítě pro použití službou App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) před jejich nasazením.
+- **Nasazení v existující virtuální síť** -můžou nyní zákazníci nasadit služby App Service v zásobníku Azure v rámci existující virtuální síť. Nasazení v existující virtuální síť umožňuje zákazníkům pro připojení k systému SQL Server a souborový Server, vyžaduje se pro Azure App Service přes privátní porty. Během nasazení, můžete vybrat zákazníků k nasazení v existující virtuální síť, ale [musíte vytvořit podsítě pro použití službou App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) před jejich nasazením.
 
-- Aktualizace **klienta služby aplikace, správce, portálů funkce a nástroje Kudu**.  Konzistentní s verzí Azure SDK portálu zásobníku.
+- Aktualizace **klienta služby aplikace, správce, portálů funkce a nástroje Kudu**. Konzistentní s verzí Azure SDK portálu zásobníku.
 
 - **Aktualizace na tyto architektury aplikace a nástroje pro**:
     - Přidat **základní rozhraní .net 2.0** podporu
@@ -105,11 +105,11 @@ Azure App Service na Azure zásobníku Update 1 obsahuje následující vylepše
 
 - Chyby ověření certifikátu
 
-Někteří zákazníci došlo problémy při poskytování certifikáty instalační program služby App Service při nasazování na integrovaný systém, z důvodu příliš omezující ověření v instalačním programu.  Instalační program služby App Service byl vydán znovu, musí zákazníkům [stáhnout aktualizovaný instalační program](https://aka.ms/appsvconmasinstaller).  Pokud můžete mít problémy ověřování certifikátů s aktualizovaný instalační program bude zobrazovat i nadále, obraťte se na podporu.
+Někteří zákazníci došlo problémy při poskytování certifikáty instalační program služby App Service při nasazování na integrovaný systém, z důvodu příliš omezující ověření v instalačním programu. Instalační program služby App Service byl vydán znovu, musí zákazníkům [stáhnout aktualizovaný instalační program](https://aka.ms/appsvconmasinstaller). Pokud můžete mít problémy ověřování certifikátů s aktualizovaný instalační program bude zobrazovat i nadále, obraťte se na podporu.
 
 - Potíže při načítání zásobník Azure kořenový certifikát z integrovaného systému.
 
-Chyba v Get-AzureStackRootCert.ps1 způsobila zákazníkům nepodaří načíst kořenový certifikát zásobník Azure při provádění skriptu na počítači, který nemá nainstalován kořenový certifikát.  Skript nyní také byl vydán znovu, vyřešte tento problém a požadavek zákazníci [stáhnout aktualizované pomocná skripty](https://aka.ms/appsvconmashelpers).  Pokud budete pokračovat v načítání kořenový certifikát aktualizované skript s problémy, kontaktujte podporu.
+Chyba v Get-AzureStackRootCert.ps1 způsobila zákazníkům nepodaří načíst kořenový certifikát zásobník Azure při provádění skriptu na počítači, který nemá nainstalován kořenový certifikát. Skript nyní také byl vydán znovu, vyřešte tento problém a požadavek zákazníci [stáhnout aktualizované pomocná skripty](https://aka.ms/appsvconmashelpers). Pokud budete pokračovat v načítání kořenový certifikát aktualizované skript s problémy, kontaktujte podporu.
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 
@@ -119,12 +119,12 @@ Chyba v Get-AzureStackRootCert.ps1 způsobila zákazníkům nepodaří načíst 
 
 - Prohození slotů nefunguje.
 
-V této verzi je rozděleno prohození slotů lokality.  Obnovit funkčnost, proveďte tyto kroky:
+V této verzi je rozděleno prohození slotů lokality. Obnovit funkčnost, proveďte tyto kroky:
 
-1. Změnit skupinu zabezpečení sítě ControllersNSG k **povolit** připojení ke vzdálené ploše na řadič instance služby App Service.  Nahraďte název skupiny prostředků, které jste nasadili App Service v AppService.local.
+1. Změnit skupinu zabezpečení sítě ControllersNSG k **povolit** připojení ke vzdálené ploše na řadič instance služby App Service. Nahraďte název skupiny prostředků, které jste nasadili App Service v AppService.local.
 
     ```powershell
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
 
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -146,7 +146,7 @@ V této verzi je rozděleno prohození slotů lokality.  Obnovit funkčnost, pro
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
       ```
 
-2. Vyhledejte **CN0-VM** v části virtuální počítače na portálu Azure zásobníku správce a **kliknete na připojit** otevřít relaci vzdálené plochy se instance kontroleru.  Pomocí přihlašovacích údajů zadaných v průběhu nasazování služby App Service.
+2. Vyhledejte **CN0-VM** v části virtuální počítače na portálu Azure zásobníku správce a **kliknete na připojit** otevřít relaci vzdálené plochy se instance kontroleru. Pomocí přihlašovacích údajů zadaných v průběhu nasazování služby App Service.
 3. Spustit **prostředí PowerShell jako správce** a spusťte následující skript
 
     ```powershell
@@ -171,11 +171,11 @@ V této verzi je rozděleno prohození slotů lokality.  Obnovit funkčnost, pro
     ```
 
 4. Zavřete relaci vzdálené plochy.
-5. Obnovit skupinu zabezpečení sítě ControllersNSG k **Odepřít** připojení ke vzdálené ploše na řadič instance služby App Service.  Nahraďte název skupiny prostředků, které jste nasadili App Service v AppService.local.
+5. Obnovit skupinu zabezpečení sítě ControllersNSG k **Odepřít** připojení ke vzdálené ploše na řadič instance služby App Service. Nahraďte název skupiny prostředků, které jste nasadili App Service v AppService.local.
 
     ```powershell
 
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
 
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -196,6 +196,18 @@ V této verzi je rozděleno prohození slotů lokality.  Obnovit funkčnost, pro
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
+- Jsou možné vás zastihnout souborového serveru při nasazení aplikace služby v existující virtuální síť a souborový server je k dispozici v soukromé síti pouze zaměstnanci.
+ 
+Pokud jste vybrali k nasazení do existující virtuální síť a interní IP adresu pro připojení k vaší souborovém serveru, je nutné přidat pravidlo odchozí zabezpečení povolení přenosy SMB mezi podsíť pracovního procesu a souborový server. Chcete-li to provést, přejděte do WorkersNsg v portálu pro správu a přidejte pravidlo odchozí zabezpečení s následujícími vlastnostmi:
+ * Zdroj: žádné
+ * Zdroj rozsah portů: *
+ * Cíl: IP adresy
+ * Rozsah cílových IP adres: rozsah IP adres pro souborový server
+ * Rozsah cílových portů: 445
+ * Protokol: TCP
+ * Akce: Povolit
+ * Priorita: 700
+ * Název: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Známé problémy pro správce cloudu operační Azure App Service v Azure zásobníku
 

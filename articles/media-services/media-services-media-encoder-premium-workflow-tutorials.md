@@ -1,11 +1,11 @@
 ---
-title: "Kurzy Avanced Media Encoder Premium pracovního postupu"
-description: "Tento dokument obsahuje postupů, které ukazují, jak provádět pokročilé úlohy s pracovním postupem Premium kodér médií a také jak vytvořit komplexní pracovní postupy pomocí Návrháře pracovního postupu."
+title: Kurzy Avanced Media Encoder Premium pracovního postupu
+description: Tento dokument obsahuje postupů, které ukazují, jak provádět pokročilé úlohy s pracovním postupem Premium kodér médií a také jak vytvořit komplexní pracovní postupy pomocí Návrháře pracovního postupu.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: xstof
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
 ms.openlocfilehash: 8b714fcf001a6830cffe4df8c152dab40834c7c4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy Media Encoder Premium pracovního postupu
 ## <a name="overview"></a>Přehled
@@ -66,10 +66,10 @@ Jsou pokryta následující témata:
   * [Úprava seznamu klip z součásti skriptování](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
   * [Přidání vlastnosti ClippingEnabled usnadnění práce](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a id="MXF_to_MP4">Kódování MXF do MP4 s jednou přenosovou rychlostí</a>
+## <a id="MXF_to_MP4"></a>Kódování MXF do MP4 s jednou přenosovou rychlostí
 V této části ukazuje, jak vytvořit s jednou přenosovou rychlostí. Soubor MP4 s AAC-HE kódovaný zvuk ze. MXF vstupní soubor.
 
-### <a id="MXF_to_MP4_start_new">Spuštění nového pracovního postupu</a>
+### <a id="MXF_to_MP4_start_new"></a>Spuštění nového pracovního postupu
 Otevřete návrháře pracovních postupů a vyberte soubor > Nový pracovní prostor > plán, podle kterého převod
 
 Nový pracovní postup ukazuje tři prvky:
@@ -80,44 +80,44 @@ Nový pracovní postup ukazuje tři prvky:
 
 ![Nový pracovní postup kódování](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
 
-Nový pracovní postup kódování
+*Nový pracovní postup kódování*
 
-### <a id="MXF_to_MP4_with_file_input">Pomocí vstupní soubor média</a>
+### <a id="MXF_to_MP4_with_file_input"></a>Pomocí vstupní soubor média
 Aby bylo možné přijímat souboru vstupní média, jeden začíná přidání komponentu vstupní soubor média. Chcete-li přidejte součást do pracovního postupu, podívejte se do vyhledávacího pole úložiště a přetáhněte na požadovanou položku na podokně návrháře. Opakujte akci pro vstupní soubor média a připojte komponentu primární zdrojový soubor vstupní připnete Filename ze vstupní soubor média.
 
 ![Připojených mediálních souborů vstup](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
 
-Připojených mediálních souborů vstup
+*Připojených mediálních souborů vstup*
 
 Na začátku Identifikujte příslušné ukázkový soubor pro použití při navrhování vlastní pracovní postup. Uděláte to tak, klepněte na pozadí návrháře podokně a pro vlastnost primární zdrojový soubor v podokně pravém vlastnost. Klikněte na ikonu složky a vyberte požadovaný soubor pro testování pracovního postupu. Vstupní soubor média součást zkontroluje soubor a naplní jeho výstup PIN tak, aby odrážela podrobnosti ukázkový soubor, který ho prověřovány.
 
 ![Vstupní soubor vyplněná média](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-populated-media-file-input.png)
 
-Vstupní soubor vyplněná média
+*Vstupní soubor vyplněná média*
 
 Teď, když je vyplněný vstupu, dalším krokem je nastavit výstupní nastavení kódování. Podobným způsobem primární zdrojový soubor byl nakonfigurován, teď nakonfigurovat vlastnost výstupní složky proměnné pod ním.
 
 ![Nakonfigurovaný vstupní a výstupní vlastnosti](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configured-io-properties.png)
 
-Nakonfigurovaný vstupní a výstupní vlastnosti
+*Nakonfigurovaný vstupní a výstupní vlastnosti*
 
-### <a id="MXF_to_MP4_streams">Probíhá kontrola mediální datové proudy</a>
+### <a id="MXF_to_MP4_streams"></a>Probíhá kontrola mediální datové proudy
 Často je žádoucí vědět, jak datového proudu vypadá jako procházejících pracovního postupu. Chcete-li prověřit datový proud v libovolném bodě v pracovním postupu, stačí kliknout na výstupu nebo vstupní PIN kódu na některé z těchto komponent. V takovém případě zkuste klepnout na nekomprimované Video pin výstup ze vstupu soubor média. Zobrazí se dialogové okno otevře umožňující kontrola odchozí video.
 
 ![Probíhá kontrola pin výstup nekomprimované Video](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
 
-Probíhá kontrola pin výstup nekomprimované Video
+*Probíhá kontrola pin výstup nekomprimované Video*
 
 V tomto případě zobrazuje, že na video obsahuje 1920 × 1080 vstupu v 24 snímků za sekundu v 4:2:2 vzorkování video o téměř 2 minut.
 
-### <a id="MXF_to_MP4_file_generation">Přidání video kodéru pro. Generování souboru MP4</a>
+### <a id="MXF_to_MP4_file_generation"></a>Přidání video kodéru pro. Generování souboru MP4
 Teď nekomprimované Video a více výstup nekomprimované zvuk, které jsou k dispozici pro kódy PIN použít na vstupní soubor média. Chcete-li kódování příchozí video, komponentu kódování musí být přidán do pracovního postupu – v takovém případě pro generování. Soubory MP4.
 
 Ke kódování datový proud videa na H.264, přidejte komponentu AVC kodér videa na plochu návrháře. Tato součást využívá uncompress datový proud videa jako vstup a poskytuje AVC komprimovaný datový proud videa na jeho výstupní kód pin.
 
 ![Bez připojení kodér AVC](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-avc-encoder.png)
 
-Bez připojení kodér AVC
+*Bez připojení kodér AVC*
 
 Jeho vlastnosti určují, jak přesně kódování se stane. Pojďme Podíváme se na některých důležitější nastavení:
 
@@ -136,7 +136,7 @@ Ke kanálu kodér AVC, připojte k vstupní pin nekomprimované Video z kodéru 
 
 *Kodér připojené hlavní AVC*
 
-### <a id="MXF_to_MP4_audio">Kódování zvukový datový proud</a>
+### <a id="MXF_to_MP4_audio"></a>Kódování zvukový datový proud
 V tomto okamžiku původní nekomprimované zvukový datový proud ještě potřeba komprimovat. Pro kompresi zvuk datového proudu přidejte komponentu kodér AAC (Dolby) do pracovního postupu.
 
 ![Bez připojení kodér AVC](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
@@ -149,31 +149,31 @@ Nejdřív jednu chce generovat prokládaná datového proudu z požadovaných zd
 
 ![Připojení Interleaver zvukový datový proud](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-audio-stream-interleaver.png)
 
-Připojení Interleaver zvukový datový proud
+*Připojení Interleaver zvukový datový proud*
 
 Teď, když máme prokládaná zvukový datový proud, jsme ještě nebyla určete, kam pozice mluvčího doleva nebo doprava, které chcete přiřadit. Aby bylo možné tuto verzi uveďte, můžeme využít přidělující mluvčího pozice uživatel.
 
 ![Přidání přidělující uživatel mluvčího pozice](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-speaker-position-assigner.png)
 
-Přidání přidělující uživatel mluvčího pozice
+*Přidání přidělující uživatel mluvčího pozice*
 
 Nakonfigurujte přidělující uživatel mluvčího pozice pro použití s stereo vstupního datového proudu prostřednictvím filtr přednastavení kodér "Vlastní" a předvolby Channel, které se nazývá "2.0 (L, R)." (To přiřadí pozice levého mluvčího do kanálu 1 a pozice správné mluvčího kanál 2.)
 
 Připojte ke vstupu kodéru AAC výstup přidělující mluvčího pozice uživatel. Potom je nutné určit AAC kodéru pro práci s "2.0 (L, R)" kanál předvolby, aby věděli, jak nakládat s stereofonní zvuk jako vstup.
 
-### <a id="MXF_to_MP4_audio_and_fideo">Multiplexní Audio a Video datových proudů do kontejner MP4</a>
+### <a id="MXF_to_MP4_audio_and_fideo"></a>Multiplexní Audio a Video datových proudů do kontejner MP4
 Zadaný naše AVC kódovaného datový proud videa a naše AAC kódovaný zvukový datový proud, jsme můžete zaznamenat do. Kontejner MP4. Kombinování různých datových proudů v jeden proces se nazývá "multiplexní" (nebo "muxing"). V takovém případě jsme se prokládání zvuk a video datové proudy v jediném souvislé. Balíček MP4. Komponenty, která koordinuje to pro. Kontejner MP4 se nazývá multiplexor ISO MPEG-4. Přidat na plochu návrháře a připojte se k jeho vstupů kodér videa AVC i AAC kodér.
 
 ![Připojené MPEG4 multiplexor](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
-Připojené MPEG4 multiplexor
+*Připojené MPEG4 multiplexor*
 
-### <a id="MXF_to_MP4_writing_mp4">Zapisování souboru MP4</a>
+### <a id="MXF_to_MP4_writing_mp4"></a>Zapisování souboru MP4
 Při zápisu výstupního souboru, komponentu výstupního souboru se používá. Jsme můžete připojit to k výstupu modulu multiplexor ISO MPEG-4, aby získá jeho výstup zapsán na disk. K tomu, připojte k zápisu kódu pin vstupní soubor výstupu pin výstup kontejneru (MPEG-4).
 
 ![Připojení výstupního souboru](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
 
-Připojení výstupního souboru
+*Připojení výstupního souboru*
 
 Název souboru, který se používá, je určen vlastností souboru. Tuto vlastnost mohou být pevně zakódované zadanou hodnotu, pravděpodobně jeden chce nastavit pomocí výrazu.
 
@@ -181,7 +181,7 @@ Pracovní postup automaticky určit výstup souboru název vlastnosti z výrazu,
 
 ![Prázdný výraz editoru](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-empty-expression-editor.png)
 
-Prázdný výraz editoru
+*Prázdný výraz editoru*
 
 Výraz editor umožňuje zadat všechny literálovou hodnotou, smíšený s jedním nebo více proměnných. Proměnné začínat znak dolaru. Protože jste dosáhl klíči $ editoru zobrazí rozevírací seznam s volbou proměnných k dispozici. V našem případě použijeme kombinaci proměnnou directory výstupní a vstupní soubor základní název proměnné:
 
@@ -189,7 +189,7 @@ Výraz editor umožňuje zadat všechny literálovou hodnotou, smíšený s jedn
 
 ![Naplní se Editor výrazů](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
-Naplní se Editor výrazů
+*Naplní se Editor výrazů*
 
 > [!NOTE]
 > Chcete-li zobrazit výstupního souboru kódování úlohy v Azure, musíte zadat hodnotu v editoru výraz.
@@ -200,9 +200,9 @@ Jakmile potvrdíte výraz zasažení ok, zobrazí v okně Vlastnosti náhled co 
 
 ![Výraz souboru přeloží dir výstup](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-expression-resolves-output-dir.png)
 
-Výraz souboru přeloží dir výstup
+*Výraz souboru přeloží dir výstup*
 
-### <a id="MXF_to_MP4_asset_from_output">Vytváření Asset Media Services z výstupního souboru</a>
+### <a id="MXF_to_MP4_asset_from_output"></a>Vytváření Asset Media Services z výstupního souboru
 Když jsme napsali výstupní soubor MP4, potřebujeme ještě znamenat, že tento soubor patří na výstupní asset, který služba media services generuje v důsledku spuštění tento pracovní postup. Za tímto účelem se používá uzlu výstupní soubor nebo Asset na plátně pracovního postupu. Všechny příchozí soubory do tohoto uzlu zařazení výsledné prostředku Azure Media Services.
 
 Komponentu výstupního souboru se připojte k výstupu. soubor/Asset součást dokončení pracovního postupu.
@@ -211,7 +211,7 @@ Komponentu výstupního souboru se připojte k výstupu. soubor/Asset součást 
 
 *Dokončení pracovního postupu*
 
-### <a id="MXF_to_MP4_test">Testování místně dokončení pracovního postupu</a>
+### <a id="MXF_to_MP4_test"></a>Testování místně dokončení pracovního postupu
 K testování pracovního postupu místně, stiskněte tlačítko Přehrát akci na panelu nástrojů v horní části. Po dokončení provádění pracovního postupu zkontrolujte výstup generovaný do nakonfigurované výstupní složky. Uvidíte dokončení výstupního souboru MP4, který kódované ze souboru MXF vstupní zdroj.
 
 ## <a id="MXF_to_MP4_with_dyn_packaging"></a>Kódování MXF do MP4 - multibitrate povolené dynamické balení
@@ -221,9 +221,9 @@ Pokud výstupní asset více přenosovými rychlostmi požadované pro použití
 
 ![Spuštění pracovního postupu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
 
-Spuštění pracovního postupu
+*Spuštění pracovního postupu*
 
-### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs">Přidání další jeden nebo více MP4 výstupy</a>
+### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>Přidání další jeden nebo více MP4 výstupy
 Každý soubor MP4 v našem výsledné asset Azure Media Services podporuje různé přenosové rychlosti a řešení. Umožňuje přidat jeden nebo více souborů MP4 výstup do pracovního postupu.
 
 Pokud chcete mít jistotu, že jsme všechny naše video kodéry vytvořené pomocí stejné nastavení, je nejvhodnější duplicitní stávající kodér videa AVC a nakonfigurovat jiné kombinace překlad IP adres a přenosovou rychlostí (přidejme mezi 960 x 540 na 25 snímků za sekundu při 2,5 MB/s ). Duplicitní stávajícího kodéru, kopírování vložte jej na plochu návrháře.
@@ -232,7 +232,7 @@ Připojte pin výstup nekomprimované Video vstupní soubor média do naší nov
 
 ![Druhý AVC kodér připojení](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-second-avc-encoder-connected.png)
 
-Druhý AVC kodér připojení
+*Druhý AVC kodér připojení*
 
 Nyní přizpůsobíte konfiguraci pro naše nové kodér AVC výstup 960 x 540 2,5 MB/s. (Použijte jeho vlastnosti "výstup šířka", "Výstup výšky" a "Přenosovou rychlostí (kbps)" pro tuto.)
 
@@ -248,17 +248,17 @@ Přidáte druhý multiplexor ISO MPEG-4 a druhý výstupního souboru. Připojen
 
 ![Druhý multiplexor a výstup souboru připojení](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-second-muxer-file-output-connected.png)
 
-Druhý multiplexor a výstup souboru připojení
+*Druhý multiplexor a výstup souboru připojení*
 
 Zajištění kompatibility se službou Azure Media Services dynamické balení nakonfigurujte multiplexor na režimu bloku na hodnotu GOP count nebo doba trvání a nastavte GOPs za bloku na hodnotu 1. (To by měl být výchozí.)
 
 ![Režimy multiplexor bloku](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-muxer-chunk-modes.png)
 
-Režimy multiplexor bloku
+*Režimy multiplexor bloku*
 
 Poznámka: můžete tento postup opakujte pro další přenosovou rychlostí a rozlišení kombinace, které chcete přidali do výstupní asset.
 
-### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names">Konfigurace názvů výstupní soubor</a>
+### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>Konfigurace názvů výstupní soubor
 Máme více než jeden jeden soubor přidán na výstupní asset. To poskytuje potřeba Ujistěte se, že názvy souborů pro každou výstupní soubory se liší od sebe navzájem a možná i použít zadávání názvů tak, že se z názvu souboru se zabývajících se.
 
 Názvy výstupního souboru se dá řídit přes výrazy v návrháři. Otevřete podokno vlastností pro jednu ze součástí výstup souboru a otevřete editor výraz pro vlastnost souboru. Naše první výstupní soubor byl nakonfigurovaný pomocí následující výraz (projděte si kurz pro přecházející z [MXF k výstupu MP4 s jednou přenosovou rychlostí](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
@@ -276,12 +276,12 @@ a druhou pro:
 
 Spusťte test zprostředkující spustit a ujistěte se generují správně obou výstupní soubory MP4.
 
-### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks">Přidání samostatných sledovat zvuk</a>
+### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>Přidání samostatných sledovat zvuk
 Jako ukážeme později při se vygeneruje soubor .ism pomocí našich výstupní soubory MP4, bude také vyžadujeme pouze zvukový soubor MP4 jako zvuk sledování pro naše adaptivní streamování. K vytvoření tohoto souboru, přidejte další multiplexor do pracovního postupu (multiplexor ISO-MPEG-4) a připojit kodér AAC výstup pin s jeho vstupní PIN kódu pro sledování 1.
 
 ![Zvuk multiplexor přidán](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
 
-Zvuk multiplexor přidán
+*Zvuk multiplexor přidán*
 
 Vytvořte třetí výstup souboru součást, kterou je výstup výstupní datový proud z multiplexor a nakonfigurovat souboru pojmenování výraz jako:
 
@@ -289,7 +289,7 @@ Vytvořte třetí výstup souboru součást, kterou je výstup výstupní datov�
 
 ![Zvuk multiplexor vytvoření výstupního souboru](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
-Zvuk multiplexor vytvoření výstupního souboru
+*Zvuk multiplexor vytvoření výstupního souboru*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Přidání. Soubor SMIL ISM
 Dynamické balení pro práci v kombinaci s MP4 soubory (i pouze MP4) v našem asset Media Services, je také nutné soubor manifestu (také označovaný jako soubor "SMIL": synchronizované multimédia integrace jazyka). Tento soubor k Azure Media Services určuje, jaké soubory MP4 jsou dostupné pro dynamické balení a které z nich vzít v úvahu pro zvuk streamování. Typické souboru manifestu sady na MP4 s jeden datový proud zvuku vypadá takto:
@@ -323,19 +323,19 @@ Naše dokončení pracovního postupu vypadá níže:
 
 ![Dokončení MXF multibitrate MP4 pracovního postupu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-mxf-to-multibitrate-mp4-workflow.png)
 
-Dokončení MXF multibitrate MP4 pracovního postupu
+*Dokončení MXF multibitrate MP4 pracovního postupu*
 
-## <a id="MXF_to__multibitrate_MP4">Kódování MXF do multibitrate MP4 - rozšířené plán, podle kterého</a>
+## <a id="MXF_to__multibitrate_MP4"></a>Kódování MXF do multibitrate MP4 - rozšířené plán, podle kterého
 V [předchozího návodu pracovního postupu](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging) jste viděli, jak jeden vstupní asset MXF, mohou být převedeny na výstupní asset s souborů MP4 s více přenosovými rychlostmi, pouze zvukový soubor MP4 a soubor manifestu pro použití ve spojení s Azure média Dynamické balení služby.
 
 Tento návod ukazuje, jak některé charakteristik jdou vylepšit a provedené pohodlnější.
 
-### <a id="MXF_to_multibitrate_MP4_overview">Přehled pracovního postupu k vylepšení</a>
+### <a id="MXF_to_multibitrate_MP4_overview"></a>Přehled pracovního postupu k vylepšení
 ![Pracovní postup Multibitrate MP4 k vylepšení](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
-Pracovní postup Multibitrate MP4 k vylepšení
+*Pracovní postup Multibitrate MP4 k vylepšení*
 
-### <a id="MXF_to__multibitrate_MP4_file_naming">Konvence pro pojmenování souborů</a>
+### <a id="MXF_to__multibitrate_MP4_file_naming"></a>Konvence pro pojmenování souborů
 V předchozím postupu jsme jednoduchý výraz zadaný jako základ pro generování názvy výstupního souboru. Když máme některé duplikace: všech součástí jednotlivých výstupní soubor zadaný takové výraz.
 
 Například naše součást výstupní soubor pro první videosoubor nakonfigurovaná s tímto výrazem:
@@ -350,12 +350,12 @@ Nebylo by čisticí méně chyba náchylné k chybám a pohodlnější, pokud js
 
 Předpokládejme, že jsme budete jednotka filename konfigurace z přenosových rychlostí jednotlivých souborů MP4. Tyto přenosových rychlostí, které budete usilujeme o nakonfigurovat na jednom místě (v kořenovém naše grafu), kde budete mít přístup ke konfiguraci a jednotky generování názvů souborů. K tomuto účelu jsme začít publikování vlastnost přenosovou rychlostí z obou AVC kodérů do kořenového adresáře naše pracovního postupu, takže bude přístupný z obou kořene také kvůli kodéry AVC. (I když se zobrazí v dva různé body, se jenom jedna nadřazená hodnota.)
 
-### <a id="MXF_to__multibitrate_MP4_publishing">Publikování vlastnosti komponenty do kořenové pracovního postupu</a>
+### <a id="MXF_to__multibitrate_MP4_publishing"></a>Publikování vlastnosti komponenty do kořenové pracovního postupu
 Otevřete první kodér AVC, přejděte na vlastnost přenosovou rychlostí (kbps) a z rozevíracího seznamu vyberte publikovat.
 
 ![Publikování vlastnost přenosovou rychlostí](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
 
-Publikování vlastnost přenosovou rychlostí
+*Publikování vlastnost přenosovou rychlostí*
 
 Dialogové okno publikování publikovat do kořenového adresáře naše grafu pracovního postupu nakonfigurujte publikované název "video1bitrate" a "1 Video přenosovou rychlostí" čitelné zobrazovaný název. Nakonfigurovat vlastní název skupiny označuje "Streamování přenosových rychlostí" a stiskněte tlačítko Publikovat.
 
@@ -378,15 +378,15 @@ Umožňuje dokončit skupině "Streamování přenosových rychlostí" pomocí p
 
 ![Dialogové okno pro zvuk přenosovou rychlostí](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-dialog-for-audio-bitrate.png)
 
-Dialogové okno pro zvuk přenosovou rychlostí
+*Dialogové okno pro zvuk přenosovou rychlostí*
 
 ![Výsledný videa a zvuku props v kořenovém adresáři](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-resulting-video-and-audio-props-on-root.png)
 
-Výsledný videa a zvuku props v kořenovém adresáři
+*Výsledný videa a zvuku props v kořenovém adresáři*
 
 Některé z těchto tří změna hodnoty také změní konfiguraci a změní hodnoty na příslušné komponenty jsou propojeny s (a případně pomocí publikovat).
 
-### <a id="MXF_to__multibitrate_MP4_output_files">Vygenerování výstupního souboru, jejichž názvy na hodnoty publikovaných vlastností</a>
+### <a id="MXF_to__multibitrate_MP4_output_files"></a>Vygenerování výstupního souboru, jejichž názvy na hodnoty publikovaných vlastností
 Místo hardcoding naše názvy generovaný soubor jsme nyní můžete změnit výraz naše filename jednotlivých součástí výstupního souboru se spoléhat na vlastnosti přenosovou rychlostí, nemůžeme zveřejněny v kořenovém adresáři grafu. Počínaje naše první výstupního souboru, najít vlastnost soubor a upravit výraz takto:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
@@ -395,7 +395,7 @@ Různé parametry v tomto výrazu můžete získat přístup a zadá stiskne dol
 
 ![Přístup k parametry v rámci výrazu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-accessing-parameters-within-an-expression.png)
 
-Přístup k parametry v rámci výrazu
+*Přístup k parametry v rámci výrazu*
 
 Proveďte stejný pro výstup souboru pro naše druhý video:
 
@@ -407,41 +407,41 @@ a pro výstup pouze zvukový soubor:
 
 Pokud nyní Změníme přenosovou rychlostí pro některý ze souborů video nebo zvuk, příslušné kodér konfigurace bude změněna a konvence název souboru na základě přenosovou rychlostí se dodržení vše probíhá automaticky.
 
-## <a id="thumbnails_to__multibitrate_MP4">Přidání miniatury do multibitrate MP4 výstup</a>
+## <a id="thumbnails_to__multibitrate_MP4"></a>Přidání miniatury do multibitrate MP4 výstup
 Od pracovní postup, který generuje [multibitrate MP4 výstup z MXF vstup](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), jsme se teď vyhledávání do přidávání miniatur do výstupu.
 
-### <a id="thumbnails_to__multibitrate_MP4_overview">Přehled pracovního postupu přidat miniatury pro</a>
+### <a id="thumbnails_to__multibitrate_MP4_overview"></a>Přehled pracovního postupu přidat miniatury pro
 ![Multibitrate MP4 pracovní postup spustit z](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
-Multibitrate MP4 pracovní postup spustit z
+*Multibitrate MP4 pracovní postup spustit z*
 
-### <a id="thumbnails_to__multibitrate_MP4__with_jpg">Přidání JPG kódování</a>
+### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>Přidání JPG kódování
 Srdcem naše miniatur generování bude komponentu kodér JPG, můžete provést výstup JPG soubory.
 
 ![Kodér JPG](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
-*JPG Encoder*
+*Kodér JPG*
 
 Nelze připojit ale přímo naší nekomprimované Video datového proudu ze vstupu soubor média do kodér JPG. Místo toho očekává možné předat jednotlivé snímky. To, provedeme prostřednictvím brány rámce Video komponent.
 
 ![Připojení brány rámce kodéru, JPG](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-frame-gate-to-jpg-encoder.png)
 
-Připojení brány rámce kodéru, JPG
+*Připojení brány rámce kodéru, JPG*
 
 Pro bránu rámce každých mnoho sekund nebo rámce umožňuje snímek videa a předat. Intervalu a časového posunu s který tomu je možné konfigurovat ve vlastnostech.
 
 ![Vlastnosti videa rámce brány](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-video-frame-gate-properties.png)
 
-Vlastnosti videa rámce brány
+*Vlastnosti videa rámce brány*
 
 Umožňuje vytvořit miniaturu každou minutu nastavení režimu (v sekundách) a Interval, který má 60.
 
-### <a id="thumbnails_to__multibitrate_MP4_color_space">Práci s barevný prostor převod</a>
+### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>Práci s barevný prostor převod
 Když se jeví logické, že oba PIN kódy nekomprimované Video rámce brány a vstupní soubor média lze nyní připojit, jsme by by tak v takovém případě se zobrazí upozornění.
 
 ![Vstupní barva místo chyby](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
 
-Vstupní barva místo chyby
+*Vstupní barva místo chyby*
 
 Je to proto, že způsob v barvu, která je reprezentována informace v našem původní nezpracovaná nekomprimované datový proud videa, pocházejících z našich MXF se liší od očekává kodér JPG. Přesněji řečeno takzvané "barvu místo" "RGB" nebo "Ve stupních šedi" se očekává v toku. To znamená, že příchozí video datový proud videa rámce brány musí mít převodu z týkající se jeho barevný prostor použije první.
 
@@ -449,16 +449,16 @@ Přetáhněte na pracovního postupu místo převaděč barva - Intel a připojt
 
 ![Připojení úpravy místo barev](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-color-space-convertor.png)
 
-Připojení úpravy místo barev
+*Připojení úpravy místo barev*
 
 V okně Vlastnosti vyberte položku BGR 24 ze seznamu přednastavení.
 
-### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails">Zápis miniatur</a>
+### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>Zápis miniatur
 Liší od našich video MP4, komponentu JPG kodér výstupy více než jeden soubor. Aby bylo možné zpracovat takové, lze použít komponentu scény vyhledávání JPG souboru zapisovače: přebírá příchozí miniatur JPG a zapíše je, každý název souboru se na konci pomocí jiné číslo. (Číslo obvykle určující počet sekund/jednotky v datový proud, který byl miniaturu čerpají z.)
 
 ![Představení zapisovač souboru JPG scény vyhledávání](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
 
-Představení zapisovač souboru JPG scény vyhledávání
+*Představení zapisovač souboru JPG scény vyhledávání*
 
 Nakonfigurovat vlastnost výstupní cesta ke složce ve výrazu: ${ROOT_outputWriteDirectory}
 
@@ -470,22 +470,22 @@ Předpona, která určuje, jak jsou právě miniatur soubory pojmenovány. Budou
 
 ![Vlastnosti scény zapisovače souboru JPG vyhledávání](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer-properties.png)
 
-Vlastnosti scény zapisovače souboru JPG vyhledávání
+*Vlastnosti scény zapisovače souboru JPG vyhledávání*
 
 Zapisovač souboru JPG vyhledávání scény připojte k uzlu výstupní soubor nebo Asset.
 
-### <a id="thumbnails_to__multibitrate_MP4_errors">Zjištění chyb v pracovním postupu</a>
+### <a id="thumbnails_to__multibitrate_MP4_errors"></a>Zjištění chyb v pracovním postupu
 Vstupní barva převaděč místa se připojte k nezpracované nekomprimované výstupu videa. Nyní testu místní spuštění pracovního postupu. Je velmi pravděpodobné pracovní postup bude najednou zastavit provádění a znamenat s červenou outline na komponentu došlo k chybě:
 
 ![Chyba místo převaděč barev](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
 
-Chyba místo převaděč barev
+*Chyba místo převaděč barev*
 
 Klepněte na malé červenou ikonu "E" v horním pravém rohu komponentu barva místo převaděč vidět co je z důvodu kódování pokus se nezdařil.
 
 ![Barva místo převaděč chybové dialogové okno](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error-dialog.png)
 
-Barva místo převaděč chybové dialogové okno
+*Barva místo převaděč chybové dialogové okno*
 
 Zjistíte, jak můžete vidět, že příchozí standard pro převaděč místo barva barevný prostor musí být rec601 pro naše požadovaný převod YUV RGB. Naše datový proud nepodporuje zjevně znamenat jeho rec601. (Dop. 601 je standard pro kódování prokládaných analogovým video signály v digitální podobě videa. Určuje oblast active pokrývajících 720 světlostí a 360 chrominance vzorků na každý řádek. Barevné kódování systému se označuje jako YCbCr 4:2:2.)
 
@@ -493,35 +493,35 @@ Chcete-li odstranit tento problém, jsme budete znamenat na metadata z našich d
 
 ![Aktualizace barva místo Standard na aktualizační typ dat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-update-color-space-standard-on-data-type.png)
 
-Aktualizace barva místo Standard na aktualizační typ dat
+*Aktualizace barva místo Standard na aktualizační typ dat*
 
-### <a id="thumbnails_to__multibitrate_MP4_finish">Dokončení pracovního postupu</a>
+### <a id="thumbnails_to__multibitrate_MP4_finish"></a>Dokončení pracovního postupu
 Teď, když naše pracovního postupu je dokončena, proveďte další testovací spustit zobrazíte předává.
 
 ![Dokončení pracovního postupu pro výstup více mp4 s miniaturami](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
-Dokončení pracovního postupu pro výstup více mp4 s miniaturami
+*Dokončení pracovního postupu pro výstup více mp4 s miniaturami*
 
-## <a id="time_based_trim">Oříznutí založené na čase multibitrate MP4 výstupu</a>
+## <a id="time_based_trim"></a>Oříznutí založené na čase multibitrate MP4 výstupu
 Od pracovní postup, který generuje [multibitrate MP4 výstup z MXF vstup](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), jsme se teď vyhledávání do ořezávání video zdroje podle časová razítka.
 
-### <a id="time_based_trim_start">Přehled pracovního postupu, pokud chcete začít přidávat oříznutí na</a>
+### <a id="time_based_trim_start"></a>Přehled pracovního postupu, pokud chcete začít přidávat oříznutí na
 ![Spouští pracovní postup pro přidání oříznutí na](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
-Spouští pracovní postup pro přidání oříznutí na
+*Spouští pracovní postup pro přidání oříznutí na*
 
-### <a id="time_based_trim_use_stream_trimmer">Použití oříznutí datového proudu</a>
+### <a id="time_based_trim_use_stream_trimmer"></a>Použití oříznutí datového proudu
 Oříznutí datového proudu součást umožňuje trim na začátek a konec vstupního datového proudu základní na časování informace (sekund, minut,...). Oříznutí nepodporuje na základě rámce oříznutí.
 
 ![Oříznutí datového proudu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
-Oříznutí datového proudu
+*Oříznutí datového proudu*
 
 Místo propojení AVC kodéry a přidělující mluvčího pozice uživatel do vstupní soubor média přímo, jsme budete uveďte mezi ty oříznutí datového proudu. (Jeden pro video signál a jeden pro prokládaná zvukový signál.)
 
 ![V rozmezí PUT oříznutí datového proudu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-put-stream-trimmer-in-between.png)
 
-V rozmezí PUT oříznutí datového proudu
+*V rozmezí PUT oříznutí datového proudu*
 
 Umožňuje nakonfigurovat oříznutí tak, aby jsme pouze zpracovat videa a zvuku mezi 15 sekund a ve videu 60 sekund.
 
@@ -529,21 +529,21 @@ Přejděte do vlastností oříznutí datový proud videa a nakonfigurovat i ča
 
 ![Počáteční čas vlastnost z datového proudu oříznutí publikování](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-start-time-from-stream-trimmer.png)
 
-Počáteční čas vlastnost z datového proudu oříznutí publikování
+*Počáteční čas vlastnost z datového proudu oříznutí publikování*
 
 ![Publikování dialogové okno vlastností pro spuštění](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-start-time.png)
 
-Publikování dialogové okno vlastností pro spuštění
+*Publikování dialogové okno vlastností pro spuštění*
 
 ![Publikování dialogové okno vlastností pro koncový čas](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-end-time.png)
 
-Publikování dialogové okno vlastností pro koncový čas
+*Publikování dialogové okno vlastností pro koncový čas*
 
 Pokud jsme teď prověřit kořenu naše pracovního postupu, jsou obě vlastnosti zobrazit a konfigurovat přehledně odtud.
 
 ![Publikované vlastnosti, které jsou k dispozici v kořenovém adresáři](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-properties-available-on-root.png)
 
-Publikované vlastnosti, které jsou k dispozici v kořenovém adresáři
+*Publikované vlastnosti, které jsou k dispozici v kořenovém adresáři*
 
 Nyní otevřete vlastnosti oříznutí z zvuk oříznutí a nakonfigurujte počátečního a koncového času s výrazem, který odkazuje na publikovaná vlastnosti v kořenovém adresáři naše pracovního postupu.
 
@@ -555,12 +555,12 @@ a pro její koncový čas:
 
     ${ROOT_TrimmingEndTime}
 
-### <a id="time_based_trim_finish">Dokončení pracovního postupu</a>
+### <a id="time_based_trim_finish"></a>Dokončení pracovního postupu
 ![Dokončení pracovního postupu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
 *Dokončení pracovního postupu*
 
-## <a id="scripting">Představení komponentu pomocí skriptu</a>
+## <a id="scripting"></a>Představení komponentu pomocí skriptu
 Skriptované součásti můžete spustit libovolný skripty během provádění fáze naše pracovního postupu. Existují čtyři jiné skripty, které mohou být provedeny, každý s konkrétními vlastnostmi a jejich vlastní místo v životním cyklu pracovního postupu:
 
 * **commandScript**
@@ -570,18 +570,18 @@ Skriptované součásti můžete spustit libovolný skripty během provádění 
 
 V dokumentaci komponentu skriptování přejde podrobněji pro každou z výše. V [v následující části](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim), **realizeScript** skriptování součásti se používá pro konstrukci cliplist xml za chodu při spuštění pracovního postupu. Tento skript je volána v průběhu instalace součástí, která se dělá jenom jednou v jeho průběhu životního cyklu.
 
-### <a id="scripting_hello_world">Skriptování v rámci pracovního postupu: hello, world</a>
+### <a id="scripting_hello_world"></a>Skriptování v rámci pracovního postupu: hello, world
 Přetáhněte součást skripty na plochu návrháře a přejmenujte ji (například "SetClipListXML").
 
 ![Přidání skriptované komponenty](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
-Přidání skriptované komponenty
+*Přidání skriptované komponenty*
 
 Pokud si prohlédnout vlastnosti komponenty skriptování, čtyři typy jiný skript bude uvedené, se každý konfigurovat, a další skript.
 
 ![Skriptované vlastnosti komponenty](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-Skriptované vlastnosti komponenty
+*Skriptované vlastnosti komponenty*
 
 Vymažte processInputScript a otevřete editor pro realizeScript. Nyní jsme se nastavené a připravené ke spuštění skriptování.
 
@@ -595,7 +595,7 @@ Teď spusťte místní testovací běh. Po této spustit zkontrolujte (prostřed
 
 ![Výstup Hello world protokolu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output.png)
 
-Výstup Hello world protokolu
+*Výstup Hello world protokolu*
 
 Objekt uzlu, který jsme volat metodu protokolu, odkazuje na našich aktuální "uzel" nebo součást, kterou jsme se skriptování v rámci. Všechny komponenty jako takový má schopnost výstupní protokolování data, k dispozici prostřednictvím kartě systému. V takovém případě jsme výstup řetězcový literál "hello, world". Důležité si uvědomit, zde je, že to může být být neocenitelnou pomocí ladicí nástroj vám poskytnou přehled na skript je ve skutečnosti činnosti.
 
@@ -621,42 +621,42 @@ Naše okno Protokol ukazuje nám následující:
 
 ![Výstup protokolu pro přístup k uzlu cesty](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output2.png)
 
-Výstup protokolu pro přístup k uzlu cesty
+*Výstup protokolu pro přístup k uzlu cesty*
 
-## <a id="frame_based_trim">Na základě rámce oříznutí multibitrate MP4 výstupu</a>
+## <a id="frame_based_trim"></a>Na základě rámce oříznutí multibitrate MP4 výstupu
 Od pracovní postup, který generuje [multibitrate MP4 výstup z MXF vstup](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), jsme se teď vyhledávání do ořezávání zdroj videa na základě počtu rámce.
 
-### <a id="frame_based_trim_start">Přehled plán, podle kterého chcete začít přidávat oříznutí na</a>
+### <a id="frame_based_trim_start"></a>Přehled plán, podle kterého chcete začít přidávat oříznutí na
 ![Pracovní postup, pokud chcete začít přidávat oříznutí na](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
-Pracovní postup, pokud chcete začít přidávat oříznutí na
+*Pracovní postup, pokud chcete začít přidávat oříznutí na*
 
-### <a id="frame_based_trim_clip_list">Pomocí seznamu klip XML</a>
+### <a id="frame_based_trim_clip_list"></a>Pomocí seznamu klip XML
 Ve všech předchozích kurzech pracovního postupu jsme použili komponentu vstupní soubor média jako naše vstupní zdroj videa. Pro tento konkrétní scénář, když budeme používat klip seznamu zdrojovou součástí místo. To by neměl být upřednostňovaný způsob práce; Zdroj seznamu klip používat jenom po skutečný důvod k tomu (jako v následujícím případě, kde provádíme za použití funkce klip seznamu oříznutí).
 
 Přepnutí z našich vstupní soubor média ke zdroji klip seznamu, přetáhněte klip seznamu zdrojovou součástí na návrhovou plochu a PIN kód XML seznamu klip se připojit k uzlu XML seznamu klip Návrháře pracovního postupu. Zdroj seznamu klip s výstupní kód PIN, tím vyplníte podle našich vstup videa. Teď připojte nekomprimované Video a PIN kódů nekomprimované zvuk ze seznamu zdroje klip k příslušné AVC kodéry a Interleaver zvuk datového proudu. Nyní odeberte vstupní soubor média.
 
 ![Vstupní soubor média nahradí zdroji klip seznamu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-replaced-media-file-with-clip-source.png)
 
-Vstupní soubor média nahradí zdroji klip seznamu
+*Vstupní soubor média nahradí zdroji klip seznamu*
 
 Klip seznamu zdrojovou součástí vezme jako vstupní "Klip seznam XML." Když vyberete zdrojový soubor, který testování s místně, tento klip seznamu xml je automaticky vyplněna za vás.
 
 ![Automaticky vyplněna klip seznamu XML – vlastnost](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-auto-populated-clip-list-xml-property.png)
 
-Automaticky vyplněna klip seznamu XML – vlastnost
+*Automaticky vyplněna klip seznamu XML – vlastnost*
 
 Vyhledávání poněkud blíže xml, to je, jak vypadá jako:
 
 ![Seznam klip dialogové okno Upravit](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-edit-clip-list-dialog.png)
 
-Seznam klip dialogové okno Upravit
+*Seznam klip dialogové okno Upravit*
 
 To ale nemusí odpovídat možnosti klip seznamu xml. Jednou z možností, které máme je přidání "Trim" prvek v rámci obou videa a zvuku zdroj, například takto:
 
 ![Přidání do seznamu klip element a uvolnění dočasné paměti](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-trim-element-to-clip-list.png)
 
-Přidání do seznamu klip element a uvolnění dočasné paměti
+*Přidání do seznamu klip element a uvolnění dočasné paměti*
 
 Je-li upravit xml seznamu klip takto výše a místní spustit test, zobrazí se na video správně byl oříznut mezi 10 a 20 sekund na videu.
 
@@ -668,15 +668,15 @@ Přetáhněte součást skripty na plochu návrháře a přejmenujte jej na "Set
 
 ![Přidání skriptované komponenty](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
-Přidání skriptované komponenty
+*Přidání skriptované komponenty*
 
 Když si prohlédnout vlastnosti komponenty skriptování, jsou čtyři typy jiný skript uvedené, se každý konfigurovat, a další skript.
 
 ![Skriptované vlastnosti komponenty](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-Skriptované vlastnosti komponenty
+*Skriptované vlastnosti komponenty*
 
-### <a id="frame_based_trim_modify_clip_list">Úprava seznamu klip z součásti skriptování</a>
+### <a id="frame_based_trim_modify_clip_list"></a>Úprava seznamu klip z součásti skriptování
 Před jsme můžete přepsat cliplist xml, který je generován během spouštění pracovního postupu, budeme potřebovat přístup k cliplist xml vlastnosti a obsah. Jsme, postupujte takto:
 
 ```java
@@ -687,7 +687,7 @@ Před jsme můžete přepsat cliplist xml, který je generován během spouště
 
 ![Příchozí klip seznamu protokolována](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-incoming-clip-list-logged.png)
 
-Příchozí klip seznamu protokolována
+*Příchozí klip seznamu protokolována*
 
 Nejdřív potřebujeme způsob, jak určit z bod, který, dokud bod, který má být trim videa. Chcete-li to vhodné pro uživatele bez technical pracovního postupu, publikujte dvě vlastnosti do kořenového adresáře grafu. Chcete-li to provést, klikněte pravým tlačítkem na plochu návrháře a vyberte "Přidat vlastnost":
 
@@ -696,17 +696,17 @@ Nejdřív potřebujeme způsob, jak určit z bod, který, dokud bod, který má 
 
 ![Přidat dialogové okno vlastností pro výstřižek počáteční čas](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
-Přidat dialogové okno vlastností pro výstřižek počáteční čas
+*Přidat dialogové okno vlastností pro výstřižek počáteční čas*
 
 ![Publikovaná výstřižek props čas v kořenovém adresáři pracovního postupu](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-time-props.png)
 
-Publikovaná výstřižek props čas v kořenovém adresáři pracovního postupu
+*Publikovaná výstřižek props čas v kořenovém adresáři pracovního postupu*
 
 Nakonfigurujte obě vlastnosti vhodný hodnota:
 
 ![Nakonfigurujte výstřižek spuštění a ukončení vlastnosti](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configure-clip-start-end-prop.png)
 
-Nakonfigurujte výstřižek spuštění a ukončení vlastnosti
+*Nakonfigurujte výstřižek spuštění a ukončení vlastnosti*
 
 Nyní z v rámci naší skriptu jsme přístup k obě vlastnosti, jako je to:
 
@@ -721,7 +721,7 @@ Nyní z v rámci naší skriptu jsme přístup k obě vlastnosti, jako je to:
 
 ![Okno Protokol zobrazující začátku a konci výstřižek](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-show-start-end-clip.png)
 
-Okno Protokol zobrazující začátku a konci výstřižek
+*Okno Protokol zobrazující začátku a konci výstřižek*
 
 Umožňuje analyzovat řetězce časový kód do pohodlnější použití formuláře pomocí jednoduchého regulární výraz:
 
@@ -745,19 +745,19 @@ Umožňuje analyzovat řetězce časový kód do pohodlnější použití formul
 
 ![Okno Protokol s výstupem Analyzovaná časový kód](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-output-parsed-timecode.png)
 
-Okno Protokol s výstupem Analyzovaná časový kód
+*Okno Protokol s výstupem Analyzovaná časový kód*
 
 Pomocí těchto informací po ruce jsme nyní můžete upravit cliplist xml tak, aby odrážela počáteční a koncový čas pro požadovanou rámce přesné výstřižek videa.
 
 ![Kód skriptu přidat trim elementy](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-trim-elements.png)
 
-Kód skriptu přidat trim elementy
+*Kód skriptu přidat trim elementy*
 
 K tomu bylo potřeba prostřednictvím operace manipulace s řetězci normální. Výsledný seznam xml upravené klip se nezapisují zpět na vlastnost clipListXML v kořenovém adresáři pracovního postupu prostřednictvím metody "SetProperty –". Okno Protokol po provedení jiného testu by zobrazit nám následující:
 
 ![V rozevíracím seznamu klip protokolování](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-result-clip-list.png)
 
-V rozevíracím seznamu klip protokolování
+*V rozevíracím seznamu klip protokolování*
 
 Proveďte spuštění testu chcete zobrazit, jak mají byl oříznut datové proudy videa a zvuku. Jako více než jeden testovací běh s různými hodnotami pro body oříznutí, můžete to udělat, můžete si všimnout, že ty, nebude vzít v úvahu ale! Důvodem je, že designer, na rozdíl od Azure modulu runtime nemůže přepsat cliplist xml každé spuštění. To znamená, že pouze první jste nastavili počáteční body a způsobí, že soubor xml k transformaci, všechny ostatní časy naše klauzule ochrana (pokud (clipListXML.indexOf ("<trim>") == -1)) zabrání přidávání jiný element uvolnění dočasné paměti, když je pracovní postup již jedna nachází.
 
@@ -823,7 +823,7 @@ Publikujte jako předtím nové vlastnosti do kořenového adresáře naše prac
 
 ![Publikovaná vlastnost pro povolení výstřižek](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)
 
-Publikovaná vlastnost pro povolení výstřižek
+*Publikovaná vlastnost pro povolení výstřižek*
 
 Pomocí níže jednoduché ochrana klauzule jsme můžete zkontrolujte, zda je vyžadován oříznutí a rozhodnout, pokud naše klip seznam jako takový musí upravit, nebo ne.
 
@@ -953,5 +953,5 @@ Pomocí níže jednoduché ochrana klauzule jsme můžete zkontrolujte, zda je v
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

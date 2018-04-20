@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
 ms.openlocfilehash: f5d0579cbb5f787ce08e2a2cea58d3c39a967970
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Odinstalace součástí úlohy elastické databáze
 **Elastické databáze úlohy** součásti lze odinstalovat pomocí portálu Azure nebo Powershellu.
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Odinstalace součástí úlohy elastické databáze pomocí prostředí PowerShell
 1. Spusťte příkazové okno Microsoft Azure PowerShell a přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x: typ **cd nástroje**.
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > disk cd nástroje
 2. Spusťte.\UninstallElasticDatabaseJobs.ps1 skript prostředí PowerShell.
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojit ITSM produkty nebo služby s konektoru služby správy IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktům a službám a konektor pro správu služby IT (ITSMC) v analýzy protokolů můžete centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -360,7 +360,7 @@ Pomocí následujícího postupu vytvoříte připojení typu Provance:
 | **Pole** | **Popis** |
 | --- | --- |
 | **Název připojení**   | Zadejte název pro instanci Cherwell, kterou chcete připojit k ITSMC.  Můžete použít tento název později při zobrazení analýzy podrobné protokolů nebo na tento ITSM nakonfigurujte pracovních položek. |
-| **Typ partnerského serveru**   | Select **Cherwell.** |
+| **Typ partnerského serveru**   | Vyberte **Cherwell.** |
 | **Uživatelské jméno**   | Zadejte uživatelské jméno Cherwell, který se může připojit k ITSMC. |
 | **Heslo**   | Zadejte heslo přidružené k této uživatelské jméno. **Poznámka:** uživatelské jméno a heslo se používají pro generování pouze tokeny ověřování a nejsou v rámci služby ITSMC uložit kdekoli.|
 | **Adresa URL serveru**   | Zadejte adresu URL, kterou chcete připojit k ITSMC Cherwell instanci. |

@@ -17,10 +17,10 @@ ms.date: 4/11/2018
 ms.author: rangv
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8a1ed0a42fe323183b8985e1530ef102552ae7d6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Připojení k Azure IoT Hub (C) Intel Edison
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: f3ddebdd02d4766b83f0834979a54552f88179cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu)
 
-Virtuální počítač vědecké účely Data pro Linux je image virtuálního počítače založeným na Ubuntu, proto je snadné začít pracovat s hloubkovým učení v Azure. Hloubkové learning nástroje patří:
+Virtuální počítač vědecké účely Data pro Linux je image virtuálního počítače založeným na Ubuntu, proto je snadné začít pracovat s machine learning, včetně hloubkové učení v Azure. Hloubkové learning nástroje patří:
 
   * [Caffe](http://caffe.berkeleyvision.org/): rozhraní hloubkové learning vytvořené pro rychlosti, expressivity a modularitu
   * [Caffe2](https://github.com/caffe2/caffe2): napříč platformami verzi Caffe
@@ -31,6 +31,7 @@ Virtuální počítač vědecké účely Data pro Linux je image virtuálního p
   * [Keras](https://keras.io/): vysoké úrovně neuronové sítě rozhraní API v Pythonu pro Theano a TensorFlow
   * [MXNet](http://mxnet.io/): knihovnu flexibilní a efektivní hloubkové learning s mnoha jazyk vazby
   * [NVIDIA ČÍSLIC](https://developer.nvidia.com/digits): grafického rozhraní systému, který zjednodušuje běžné úlohy hloubkového učení
+  * [PyTorch](http://pytorch.org/): Základní knihovna Python s podporou pro dynamický sítě
   * [TensorFlow](https://www.tensorflow.org/): knihovny open source pro počítač intelligence z Google
   * [Theano](http://deeplearning.net/software/theano/): Knihovna A Python pro definování, optimalizace a efektivně vyhodnocení matematickém výrazu obsahujícího vícerozměrných polí
   * [Svítilnou](http://torch.ch/): scientific výpočetní rozhraní s podporou wide pro algoritmy strojového učení
@@ -113,6 +114,14 @@ Tady jsou kroky k vytvoření instance z virtuálního počítače vědecké ú�
 Zajišťování zabere asi 5 až 10 minut. Stav zřizování se zobrazí na portálu Azure.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak získat přístup k datové vědy virtuálního počítače pro Linux
+
+Máte přístup DSVM Ubuntu ze tří metod:
+1. SSH pro terminálové relace
+2. X2Go pro grafické relace
+3. JupyterHub a JupyterLab pro poznámkové bloky Jupyter
+
+### <a name="ssh"></a>SSH
+
 Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Použít pověření účtu, které jste vytvořili v **Základy** části kroku 3 pro rozhraní prostředí text. V systému Windows, si můžete stáhnout nástroj pro klienta na SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (systém Windows X), můžete použít X11 předávání na Putty nebo instalace klienta na X2Go.
 
 > [!NOTE]
@@ -120,7 +129,7 @@ Po vytvoření virtuálního počítače se můžete přihlásit se pomocí prot
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>Instalace a konfigurace klienta X2Go
+### <a name="x2go"></a>X2Go
 Virtuální počítač s Linuxem již zřízená X2Go server a přijímá připojení klienta. Pro připojení k ploše virtuálního počítače s Linuxem grafického rozhraní, proveďte následující postup na vašeho klienta:
 
 1. Stáhněte a nainstalujte X2Go klienta pro vaši platformu klienta z [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
@@ -134,6 +143,14 @@ Virtuální počítač s Linuxem již zřízená X2Go server a přijímá připo
    * **Sdílené složky**: Pokud chcete adresáře z vaší klientské počítače na virtuální počítač s Linuxem připojeny, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
 
 Po přihlášení k virtuálnímu počítači pomocí SSH klienta nebo XFCE grafické plochy prostřednictvím klienta X2Go, jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované ve virtuálním počítači. Na XFCE můžete zobrazit zástupce aplikace nabídky a ikony na ploše pro řadu nástrojů.
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub a JupyterLab
+
+Spustí Ubuntu DSVM [JupyterHub](https://github.com/jupyterhub/jupyterhub), server Jupyter s více uživateli. Pokud chcete připojit, přejděte do https://your-vm-ip:8000 na notebooku nebo plochy, zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače a přihlaste se. Mnoho poznámkových bloků ukázka jsou k dispozici můžete procházet a vyzkoušejte.
+
+JupyterLab, nové generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Chcete-li k němu přístup, přihlaste se k JupyterHub a pak přejděte na adresu URL https://your-vm-ip:8000/lab. JupyterLab můžete nastavit jako výchozí notebooku server přidáním tohoto řádku do /etc/jupyterhub/jupyterhub_config.py:
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Nástroje nainstalované na virtuální počítač vědecké účely Data pro Linux
 ### <a name="deep-learning-libraries"></a>Hloubkové Learning knihovny
@@ -193,30 +210,32 @@ Pro spuštění R konzole, stačí zadat **R** v prostředí. Tím přejdete na 
 Je také skript jazyka R pro instalaci [balíčky R 20 horní](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) Chcete-li. Tento skript můžete spustit, jakmile se v rozhraní interaktivní R, kterou lze zadat (jak je uvedeno) tak, že zadáte **R** v prostředí.  
 
 ### <a name="python"></a>Python
-Pro vývoj pomocí Python byl nainstalován distribuce Anaconda Python 2.7 a 3.5. Toto rozdělení obsahuje základní Python společně s přibližně 300 nejoblíbenější balíčků analytics matematické, technici a data. Můžete použít výchozí textové editory. Kromě toho můžete Spyder IDE Python, který je instalován s distribucí Anaconda Python. Spyder musí grafické plocha nebo X11 předávání. Zástupce Spyder je součástí grafické plochy.
+Anaconda Python je nainstalována s Python 2.7 a 3.5 prostředí. 2.7 prostředí se nazývá _kořenové_, a 3.5 prostředí se nazývá _py35_. Toto rozdělení obsahuje základní Python společně s přibližně 300 nejoblíbenější balíčků analytics matematické, technici a data. 
 
-Vzhledem k tomu, že máme Python 2.7 a 3.5, budete muset konkrétně aktivovat požadované verzi Pythonu (conda prostředí) chcete pracovat v aktuální relaci. Proces aktivace nastavuje proměnnou Cesta k požadované verzi Pythonu.
+Py35 prostředí je výchozí. Chcete-li aktivovat prostředí kořenové (2.7):
 
-Pokud chcete aktivovat conda prostředí Python 2.7, spusťte následující příkaz z prostředí:
+    source activate root
 
-    source /anaconda/bin/activate root
+Znovu aktivovat py35 prostředí:
 
-Python 2.7 je nainstalována v */anaconda/bin*.
+    source activate py35
 
-Pokud chcete aktivovat conda prostředí Python 3.5, spusťte následující příkazy z prostředí:
+K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí. 
 
-    source /anaconda/bin/activate py35
+Nainstalujte další Python knihoven pomocí ```conda``` nebo ````pip```` . Pro pip aktivace nejprve správné prostředí, pokud nechcete, aby výchozí nastavení:
 
+    source activate root
+    pip install <package>
 
-Python 3.5 je nainstalována v */anaconda/envs/py35/bin*.
+Nebo zadejte úplnou cestu k nástrojem pip:
 
-K vyvolání interaktivní relace Python, stačí zadat **python** v prostředí. Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** spustit prostředí IDE PyCharm Python.
+    /anaconda/bin/pip install <package>
+    
+Pro conda, musíte vždycky zadat název prostředí (_py35_ nebo _kořenové_):
 
-Pokud chcete nainstalovat další knihovny Python, budete muset spustit ```conda``` nebo ````pip```` příkazu v části sudo a zadejte úplnou cestu Správce balíčků Python (conda nebo pip), chcete-li nainstalovat správnou prostředí Python. Příklad:
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+Pokud jsou na grafické rozhraní nebo mají X11 předávání sadu nahoru, můžete zadat **pycharm** spustit prostředí IDE PyCharm Python. Můžete použít výchozí textové editory. Kromě toho můžete Spyder IDE Python, který je instalován s distribucí Anaconda Python. Spyder musí grafické plocha nebo X11 předávání. Zástupce Spyder je součástí grafické desktop.s
 
 ### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
 Distribuce Anaconda také obsahuje poznámkového bloku Jupyter, prostředí sdílení kódu a analýzy. Poznámkového bloku Jupyter přistupuje prostřednictvím JupyterHub. Přihlášení pomocí místní Linux uživatelské jméno a heslo.

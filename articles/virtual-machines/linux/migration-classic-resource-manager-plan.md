@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
 ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace z klasického do Azure Resource Manageru prostředků IaaS
 Zatímco Azure Resource Manager nabízí mnoho úžasné funkcí, je důležité k naplánování vaší cesty migrace zkontrolujte, zda věcí bezproblémové. Výdaje čas na plánování zajistí nedochází chybám při provádění migrace aktivity. 

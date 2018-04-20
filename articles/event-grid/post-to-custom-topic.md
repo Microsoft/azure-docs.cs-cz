@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Odeslání na vlastní tématu pro Azure událostí mřížky
 
@@ -73,7 +73,7 @@ Pro vlastní témata obsahuje dat nejvyšší úrovně stejných polí jako stan
 ]
 ```
 
-Popis těchto vlastností najdete v tématu [schématu události mřížky událostí Azure](event-schema.md).
+Popis těchto vlastností najdete v tématu [schématu události mřížky událostí Azure](event-schema.md). Při publikování události mřížky téma události, může mít pole Celková velikost až 1 MB. Každá událost v poli je omezená na 64 KB.
 
 Schéma dat platný událostí je například:
 
@@ -98,9 +98,10 @@ Po odeslání ke koncovému bodu tématu, obdržíte odpověď. Odpověď je sta
 |Výsledek  |Odpověď  |
 |---------|---------|
 |Úspěch  | 200 OK  |
-|Nesprávný koncový bod | 404 – Nenalezeno |
-|Neplatný přístupový klíč | 401 unauthorized |
 |Data události mají nesprávný formát. | 400 – Chybný požadavek |
+|Neplatný přístupový klíč | 401 unauthorized |
+|Nesprávný koncový bod | 404 – Nenalezeno |
+|Pole nebo událostí přesahuje omezení velikosti | 413 datové části příliš velký |
 
 Text zprávy pro chyby, má následující formát:
 

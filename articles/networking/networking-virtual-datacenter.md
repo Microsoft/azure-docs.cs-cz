@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
 ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
 **Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data

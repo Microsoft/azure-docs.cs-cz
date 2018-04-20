@@ -1,11 +1,11 @@
 ---
-title: "Poznámky k verzi Media Services | Microsoft Docs"
-description: "Poznámky k verzi Media Services"
+title: Poznámky k verzi Media Services | Microsoft Docs
+description: Poznámky k verzi Media Services
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20a24aa19989370c6ce82a738193a78f24b0eba9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnout změny z předchozích verzí a známé problémy.
@@ -47,7 +47,7 @@ Informace o historii verze Media Services REST API najdete v tématu [REST API s
 
 ## <a name="october-2017-release"></a>Říjen 2017 verze
 > [!IMPORTANT] 
-> Služba Media Services je místo začne podporu služby Řízení přístupu Azure ověřovací klíče. Na 1. června 2018 můžete už ověřit pomocí back end Media Services prostřednictvím kódu s použitím klíče služby Řízení přístupu. Je nutné aktualizovat vaše kódu pro použití služby Azure Active Directory (Azure AD) za [Azure ověřování na základě AD](media-services-use-aad-auth-to-access-ams-api.md). Podívejte se na pro upozornění o této změně na portálu Azure.
+> Služba Media Services je místo začne podporu služby Řízení přístupu Azure ověřovací klíče. Na 22. června 2018 můžete už ověřit pomocí back end Media Services prostřednictvím kódu s použitím klíče služby Řízení přístupu. Je nutné aktualizovat vaše kódu pro použití služby Azure Active Directory (Azure AD) za [Azure ověřování na základě AD](media-services-use-aad-auth-to-access-ams-api.md). Podívejte se na pro upozornění o této změně na portálu Azure.
 
 ### <a name="updates-for-october-2017"></a>Aktualizace pro říjen 2017
 #### <a name="sdks"></a>Sady SDK
@@ -95,7 +95,7 @@ Od 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší ne
 
 Ve službě Media Services představuje koncový bod streamování streamování služba, která může poskytnout obsah přímo do klientské aplikace player nebo k síti pro doručování obsahu (CDN) pro další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure Content Delivery Network. Výstupní datový proud z StreamingEndpoint služba může být živý datový proud, video na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet Media Services obsahuje výchozí koncový bod streamování. V rámci účtu se dají vytvořit další koncové body streamování. 
 
-Existují dvě verze koncové body, streamování 1.0 a 2.0. Od 10. ledna 2017, zahrnují všechny nově vytvořené účty služby Media Services verze 2.0 výchozí koncový bod streamování. Další streamování koncové body, které přidáte k tomuto účtu jsou také verze 2.0. Tato změna nemá vliv existujících účtů. Stávající koncové body streamování jsou verze 1.0 a lze upgradovat na verzi 2.0. Existují chování, fakturace a změny funkce v této změně. Další informace najdete v tématu [Streaming koncové body přehled](media-services-streaming-endpoints-overview.md).
+Existují dvě verze koncové body, streamování 1.0 a 2.0. Od 10. ledna 2017, zahrnují všechny nově vytvořené účty služby Media Services verze 2.0 výchozí koncový bod streamování. Další streamování koncové body, které přidáte k tomuto účtu jsou také verze 2.0. Tato změna nemá vliv existujících účtů. Stávající koncové body streamování jsou verze 1.0 a lze upgradovat na verzi 2.0. Existují chování, fakturace a změny funkce v této změně. Další informace najdete v [přehledu koncových bodů streamování](media-services-streaming-endpoints-overview.md).
 
 Počínaje verzí 2.15, Media Services přidána následující vlastnosti streamování entitě koncový bod:
 
@@ -457,7 +457,7 @@ Následující změny jsou zahrnuty v červen 2013 uvolní sada SDK služby Medi
 * Počínaje verzí 2.3.0.0, sada SDK služby Media Services podporuje, propojování více úložiště účtů k účtu Media Services. Tuto funkci podporovat následující rozhraní API:
   
     * Typ IStorageAccount
-    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
+    * Vlastnost Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts
     * Vlastnost StorageAccount
     * Vlastnost StorageAccountName
   
@@ -468,7 +468,7 @@ Následující změny jsou zahrnuty v červen 2013 uvolní sada SDK služby Medi
     * Typ Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint
     * Typ Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription
     * Typ Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
+    * Typ Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType
 * Závislost na úložiště klienta SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll)
 * Závislost na protokolu OData 5.5 (Microsoft.Data.OData.dll)
 
