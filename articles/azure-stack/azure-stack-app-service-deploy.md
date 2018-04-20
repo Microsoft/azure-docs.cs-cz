@@ -1,12 +1,12 @@
 ---
-title: "Nasazení aplikace služeb: Azure zásobníku | Microsoft Docs"
-description: "Podrobné pokyny k nasazení služby App Service v Azure zásobníku"
+title: 'Nasazení aplikace služeb: Azure zásobníku | Microsoft Docs'
+description: Podrobné pokyny k nasazení služby App Service v Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 330b8015bdddbbcf27e4325b97e8b734c4d98d12
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků služby App Service se zásobníkem Azure
 
@@ -168,6 +168,18 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 2. V přehledu v části stav, zkontrolujte, který **stav** ukazuje **všech rolí jsou připravené**.
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
+    
+> [!NOTE]
+> Pokud jste vybrali k nasazení do existující virtuální síť a interní IP adresu do conenct k vaší souborovém serveru, je nutné přidat pravidlo odchozí zabezpečení povolení přenosy SMB mezi podsíť pracovního procesu a souborovém serveru.  Chcete-li to provést, přejděte do WorkersNsg v portálu pro správu a přidejte pravidlo odchozí zabezpečení s následujícími vlastnostmi:
+> * Zdroj: žádné
+> * Zdroj rozsah portů: *
+> * Cíl: IP adresy
+> * Rozsah cílových IP adres: rozsah IP adres pro vaše souborovém serveru
+> * Rozsah cílových portů: 445
+> * Protokol: TCP
+> * Akce: Povolit
+> * Priorita: 700
+> * Název: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Vyzkoušejte službu App Service v Azure zásobníku
 
@@ -198,9 +210,9 @@ Chcete-li vytvořit webové rozhraní API a Azure funkce aplikace, musíte použ
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>Nasazení na web WordPress, DNN nebo Django (volitelné)
 
-1. Na portálu Azure zásobníku klienta, klikněte na tlačítko  **+** , přejděte do Azure Marketplace, nasazení webu Django a čekání na úspěšné dokončení. Webová platforma Django používá databázi na základě systému souborů. Nevyžaduje žádné další prostředků poskytovatelé, například SQL nebo MySQL.
+1. Na portálu Azure zásobníku klienta, klikněte na tlačítko **+**, přejděte do Azure Marketplace, nasazení webu Django a čekání na úspěšné dokončení. Webová platforma Django používá databázi na základě systému souborů. Nevyžaduje žádné další prostředků poskytovatelé, například SQL nebo MySQL.
 
-2. Pokud jste nasadili také MySQL poskytovatele prostředků, můžete nasadit web WordPress v Marketplace. Když se zobrazí výzva k databázi parametry, zadejte uživatelské jméno jako  *User1@Server1* , uživatelské jméno a název serveru podle svého výběru.
+2. Pokud jste nasadili také MySQL poskytovatele prostředků, můžete nasadit web WordPress v Marketplace. Když se zobrazí výzva k databázi parametry, zadejte uživatelské jméno jako *User1@Server1*, uživatelské jméno a název serveru podle svého výběru.
 
 3. Pokud jste nasadili také poskytovatele prostředků systému SQL Server, můžete nasadit na web DNN z Marketplace. Když se zobrazí výzva k parametry databáze, zvolte databázi v počítači se systémem SQL Server, který je připojený ke zprostředkovateli prostředků.
 

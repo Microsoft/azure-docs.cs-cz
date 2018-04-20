@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Proces rozsáhlých datových sad pomocí objektu pro vytváření dat a Batch
 > [!NOTE]
@@ -42,7 +42,7 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 
 Volitelně můžete další informace o Batch, najdete v části [studijní Batch](https://azure.microsoft.com/documentation/learning-paths/batch/).
 
-## <a name="why-azure-data-factory"></a>Proč pro vytváření dat Azure?
+## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Data Factory slouží k vytvoření spravované datové kanály, které přesun dat z místní a cloudové úložiště dat do úložiště dat centralizované. Příkladem je úložiště objektů Blob v Azure. Data Factory slouží k procesu nebo transformace dat pomocí služby, například Azure HDInsight a Azure Machine Learning. Můžete také naplánovat datových kanálů spustit naplánované způsobem (například hodinový, denní a jednou týdně). Můžete monitorovat a Správa kanálů na první pohled identifikovat problémy a provést akci.
 
   Pokud se nevyznáte v objektu pro vytváření dat, v těchto článcích vám pomůže porozumět architektura nebo implementace řešení popsaných v tomto článku:  
@@ -177,7 +177,7 @@ Metoda má několik klíčové komponenty, které je třeba porozumět:
 #### <a name="procedure-create-the-custom-activity"></a>Postup: Vytvoření vlastní aktivity
 1. Vytvoření projektu knihovny tříd rozhraní .NET v sadě Visual Studio.
 
-   a. Start Visual Studio 2012/2013/2015.
+   a. Spusťte Visual Studio 2012/2013 nebo 2015.
 
    b. Vyberte **Soubor** > **Nový** > **Projekt**.
 

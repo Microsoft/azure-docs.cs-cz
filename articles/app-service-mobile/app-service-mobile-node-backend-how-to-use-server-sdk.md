@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat sadu SDK Mobile aplikace Node.js
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -334,10 +334,10 @@ Doporučujeme přidat do souboru .gitignore azureMobile.js (nebo jiné zdrojové
 ### <a name="howto-appsettings"></a>Konfigurovat nastavení aplikace pro mobilní aplikace
 Většina nastavení v souboru azureMobile.js mají nastavení ekvivalentní aplikace v [portál Azure]. Použít ke konfiguraci vaší aplikace v seznamu následující **nastavení aplikace**:
 
-| Nastavení aplikace | azureMobile.js setting | Popis | Platné hodnoty |
+| Nastavení aplikace | nastavení azureMobile.js | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |jméno |Název aplikace |řetězec |
-| **MS_MobileLoggingLevel** |logging.level |Úroveň minimální protokolu zpráv do protokolu |Chyba, upozornění, informace o podrobné nastavení, ladění, i |
+| **MS_MobileLoggingLevel** |Logging.level |Úroveň minimální protokolu zpráv do protokolu |Chyba, upozornění, informace o podrobné nastavení, ladění, i |
 | **MS_DebugMode** |ladit |Povolí nebo zakáže režim ladění |Hodnota TRUE, false |
 | **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
 | **MS_DynamicSchema** |data.dynamicSchema |Povolí nebo zakáže režim ladění |Hodnota TRUE, false |

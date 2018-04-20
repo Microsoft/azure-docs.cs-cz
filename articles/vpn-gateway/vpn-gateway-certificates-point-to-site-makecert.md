@@ -1,13 +1,13 @@
 ---
-title: "Generování a exportování certifikátů pro Point-to-Site: MakeCert: Azure | Microsoft Docs"
-description: "Vytvořit certifikát podepsaný svým držitelem kořenové, exportujte veřejný klíč a generovat klientské certifikáty pomocí nástroje MakeCert."
+title: 'Generování a exportování certifikátů pro Point-to-Site: MakeCert: Azure | Microsoft Docs'
+description: Vytvořit certifikát podepsaný svým držitelem kořenové, exportujte veřejný klíč a generovat klientské certifikáty pomocí nástroje MakeCert.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
 ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a exportování certifikátů pro připojení Point-to-Site pomocí nástroje MakeCert
 
@@ -100,4 +100,4 @@ V konfiguraci Point-to-Site pokračujte.
 * Pro **Resource Manager** postup nasazení modelu najdete v tématu [P2S konfigurace ověřování pomocí certifikátů nativní Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 * Pro **classic** postup nasazení modelu najdete v tématu [konfigurace připojení typu Point-to-Site VPN do virtuální sítě (klasické)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-Informace o odstraňování potíží P2S [připojení point-to-site řešení potíží s Azure](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+Informace o odstraňování potíží s P2S najdete v článku [Poradce při potížích s připojeními Azure typu point-to-site](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

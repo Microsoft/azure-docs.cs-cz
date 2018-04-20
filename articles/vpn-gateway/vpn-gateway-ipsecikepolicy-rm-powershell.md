@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace zásad protokolu IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet: Azure Resource Manager: prostředí PowerShell | Microsoft Docs"
-description: "Nakonfigurujte zásady protokolu IPsec/IKE pro připojení S2S nebo VNet-to-VNet s Azure VPN Gateway pomocí Azure Resource Manageru a prostředí PowerShell."
+title: 'Konfigurace zásad protokolu IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet: Azure Resource Manager: prostředí PowerShell | Microsoft Docs'
+description: Nakonfigurujte zásady protokolu IPsec/IKE pro připojení S2S nebo VNet-to-VNet s Azure VPN Gateway pomocí Azure Resource Manageru a prostředí PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 19233ccd306f507ef2e36bee878aa9705c115780
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fa1aed76f63e500a6c2849fb9b62a918e85c9fb0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad protokolu IPsec/IKE pro připojení S2S VPN nebo VNet-to-VNet
 
@@ -38,13 +38,13 @@ Tento článek obsahuje pokyny k vytvoření a konfiguraci zásad protokolu IPse
 
 > [!IMPORTANT]
 > 1. Všimněte si, že zásady protokolu IPsec/IKE funguje pouze na následující SKU brány:
->    * ***VpnGw1, VpnGw2, VpnGw3*** (route-based)
+>    * ***VpnGw1, VpnGw2, VpnGw3*** (trasové)
 >    * ***Standardní*** a ***HighPerformance*** (trasové)
 > 2. Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
 > 3. Je nutné zadat všechny algoritmy a parametry pro IKE (hlavní režim) a protokolu IPsec (rychlý režim). Zadání částečných zásad není povoleno.
 > 4. Poraďte se s dokumentaci VPN dodavatele k a ujistěte se, že zásady se podporuje na vaše místní zařízení VPN. S2S nebo připojení VNet-to-VNet nejde vytvořit, pokud zásady nejsou kompatibilní.
 
-## <a name ="workflow">Část 1 – pracovní postup pro vytvoření a nastavení zásad protokolu IPsec/IKE</a>
+## <a name ="workflow"></a>Část 1 – pracovní postup pro vytvoření a nastavení zásad protokolu IPsec/IKE
 Tato část popisuje postup vytvoření a aktualizace zásady protokolu IPsec/IKE na připojení S2S VPN nebo VNet-to-VNet:
 1. Vytvoření virtuální sítě a brány VPN
 2. Vytvoření brány místní sítě pro mezi místní připojení nebo jinou virtuální sítí a Brána pro propojení VNet-to-vnet
@@ -54,7 +54,7 @@ Tato část popisuje postup vytvoření a aktualizace zásady protokolu IPsec/IK
 
 Podle pokynů v tomto článku vám pomůže nastavit a konfigurovat zásady protokolu IPsec/IKE, jak je vidět v diagramu:
 
-![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![zásady protokolu IPSec ike](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 ## <a name ="params"></a>Část 2 - podporované kryptografické algoritmy & klíče síly
 
@@ -111,7 +111,7 @@ Následující tabulka uvádí odpovídající skupiny Diffie-Hellman nepodporuj
 
 Další podrobnosti najdete v článcích týkajících se [RFC3526](https://tools.ietf.org/html/rfc3526) a [RFC5114](https://tools.ietf.org/html/rfc5114).
 
-## <a name ="crossprem">Část 3 – vytvoření nového připojení S2S VPN pomocí zásad protokolu IPsec/IKE</a>
+## <a name ="crossprem"></a>Část 3 – vytvoření nového připojení S2S VPN pomocí zásad protokolu IPsec/IKE
 
 Tato část vás provede kroky k vytvoření připojení S2S VPN pomocí zásad protokolu IPsec/IKE. Následující postup vytvoření připojení, jak je vidět v diagramu:
 
@@ -162,7 +162,7 @@ Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo mož
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
@@ -220,7 +220,7 @@ Volitelně můžete přidat "-UsePolicyBasedTrafficSelectors $True" do rutiny vy
 > Po připojení je zadán pro zásady protokolu IPsec/IKE, brána Azure VPN pouze odeslat nebo přijmout protokolu IPsec/IKE návrh s zadané kryptografické algoritmy a klíče síly na konkrétní připojení. Zajistěte, aby vaše místní zařízení VPN pro připojení používá nebo přijímá kombinaci přesný zásad, jinak nebude vytvořit tunel S2S VPN.
 
 
-## <a name ="vnet2vnet">Součástí 4 – vytvoření nového připojení VNet-to-VNet s zásad protokolu IPsec/IKE</a>
+## <a name ="vnet2vnet"></a>Součástí 4 – vytvoření nového připojení VNet-to-VNet s zásad protokolu IPsec/IKE
 
 Kroky k vytvoření připojení VNet-to-VNet pomocí zásad protokolu IPsec/IKE jsou podobné jako připojení S2S VPN. Následující ukázkové skripty vytvoření připojení, jak je vidět v diagramu:
 
@@ -280,7 +280,7 @@ Podobá se připojení S2S VPN, vytvoření zásady protokolu IPsec/IKE pak pou�
 #### <a name="1-create-an-ipsecike-policy"></a>1. Vytvoření zásady protokolu IPsec/IKE
 
 Následující ukázkový skript vytvoří jiné zásady protokolu IPsec/IKE s parametry data a tyto algoritmy:
-* IKEv2: AES128, SHA1, DHGroup14
+* IKEv2: DHGroup14 AES128, SHA1,
 * Protokol IPsec: GCMAES128 GCMAES128, PFS14 14400 životnost přidružení zabezpečení sekund & 102400000KB
 
 ```powershell
@@ -305,7 +305,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 Po dokončení těchto kroků, připojení za pár minut a bude mít následující topologie sítě, jak je znázorněno v začátku:
 
-![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
+![zásady protokolu IPSec ike](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
 ## <a name ="managepolicy"></a>Část 5 – zásady aktualizace protokolu IPsec/IKE pro připojení

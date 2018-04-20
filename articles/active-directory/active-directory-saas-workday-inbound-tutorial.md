@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -363,9 +363,9 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | WORKDAY ATRIBUT | ATRIBUT SLUŽBY ACTIVE DIRECTORY |  ODPOVÍDAJÍCÍ ID? | VYTVOŘIT / AKTUALIZOVAT |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  Číslo zaměstnance | **Ano** | Zapisovat pouze na vytvoření | 
-| **UserId**    |  cn    |   |   Zapisovat pouze na vytvoření |
+| **UserId**    |  CN    |   |   Zapisovat pouze na vytvoření |
 | **Připojení k ("@", [UserID] "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření 
-| **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze na vytvoření |
+| **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    Název účtu SAM            |     |         Zapisovat pouze na vytvoření |
 | **Přepínače (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Vytvoření + aktualizace |
 | **FirstName**   | givenName       |     |    Vytvoření + aktualizace |
 | **LastName**   |   sn   |     |  Vytvoření + aktualizace |
@@ -403,14 +403,14 @@ Po instalaci agenta, spusťte příkazy prostředí Powershell následující ko
 
 **Příkaz #2**
 
-> Add-ADSyncAgentActiveDirectoryConfiguration
+> Přidat ADSyncAgentActiveDirectoryConfiguration
 
 * Vstup: "Název adresáře", zadejte název doménové struktury AD zadané v části \#2
 * Vstup: Jméno a heslo správce pro doménovou strukturu služby Active Directory
 
 **Příkaz #3**
 
-> Add-ADSyncAgentAzureActiveDirectoryConfiguration
+> Přidat ADSyncAgentAzureActiveDirectoryConfiguration
 
 * Vstup: Globální jméno a heslo správce pro vašeho tenanta Azure AD
 
@@ -435,7 +435,7 @@ Po instalaci agenta, spusťte příkazy prostředí Powershell následující ko
 >
 > Credentialed: False
 >
-> Identifier    : WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
+> Identifikátor: WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
 
 **Příkaz #5**
 
@@ -470,7 +470,7 @@ Pokud klienta služby Azure Active Directory se nachází v jedné z datových c
 
 [Protokolu událostí systému Windows](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) v systému Windows Server obsahuje počítače, který je hostitelem agenta události pro všechny operace prováděné tímto agentem. Pokud chcete zobrazit tyto události:
     
-1. Open **Eventvwr.msc**.
+1. Otevřete **Eventvwr.msc**.
 2. Vyberte **protokoly systému Windows > aplikace**.
 3. Zobrazit všechny události zaznamenané v části zdroj **AADSyncAgent**. 
 4. Zkontrolujte chyby a upozornění.

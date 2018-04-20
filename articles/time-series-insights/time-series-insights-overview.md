@@ -1,6 +1,6 @@
 ---
-title: "Co je Azure časové řady Insights? | Dokumenty Microsoft"
-description: "Úvod do Azure časové řady Insights, novou službu k analýze dat řady čas a řešení IoT."
+title: Co je Azure časové řady Insights? | Dokumenty Microsoft
+description: Úvod do Azure časové řady Insights, novou službu k analýze dat řady čas a řešení IoT.
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -12,10 +12,10 @@ ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
 ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure časové řady Insights?
 

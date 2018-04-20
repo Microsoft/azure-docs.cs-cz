@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: e2a0bdaf0d12a93dcee5a8a2657bb012095bb283
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Datové vědy virtuálního počítače](http://aka.ms/dsvm) (DSVM) a [počítač hloubkového učení](http://aka.ms/dsvm/deeplearning) podporuje mnoho hloubkové learning rozhraní k sestavení aplikace umělé Intelligence (AI) s prediktivní analýzy a kognitivní možnosti jako bitovou kopii a znalosti jazyka. 
@@ -32,10 +32,11 @@ Zde jsou uvedeny podrobnosti na všechny hloubkového učení rozhraní, které 
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Windows, Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Microsoft kognitivní Toolkit (CNTK) je nainstalována v Python 2.7 v _kořenové_ prostředí, stejně jako Python 3.5 v _py35_ prostředí.   |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Microsoft kognitivní Toolkit (CNTK) je nainstalována v Python 3.5 na [Linux a Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a Python 3.6 na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).   |
 | Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty.     |
 | Na DSVM souvisejících nástrojích      | Keras      |
-| Jak se použít nebo ji spustit?    | Otevřít Jupyter a pak vyhledejte složku CNTK  |
+| Jak se použít nebo ji spustit?    | * V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/>
+ * V Jupyter: Připojení k [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete adresář CNTK pro ukázky. |
 
 ## <a name="tensorflow"></a>TensorFlow
 
@@ -43,10 +44,22 @@ Zde jsou uvedeny podrobnosti na všechny hloubkového učení rozhraní, které 
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Windows, Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | V systému Linux, je nainstalován TensorFlow v Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí. V systému Windows, je nainstalován Tensorflow v Python 3.5 (_py35_) prostředí.  |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | TensorFlow je nainstalován v Python 3.5 na [Linux a Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a Python 3.6 na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition).  |
 | Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty.     |
 | Na DSVM souvisejících nástrojích      | Keras      |
-| Jak se použít nebo ji spustit?    | Otevřete Jupyter a potom vyhledejte složku TensorFlow.  |
+| Jak se použít nebo ji spustit?    | * V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/>
+ * V Jupyter: Připojení k [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete adresář TensorFlow pro ukázky.  |
+
+## <a name="horovod"></a>Horovod
+
+|    |           |
+| ------------- | ------------- |
+| Co je to?   | Architektura hloubkové learning Distribued pro TensorFlow      |
+| Podporované DSVM edice      | Ubuntu     |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Horovod je nainstalován v Python 3.5 na [Ubuntu](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
+| Odkazy na ukázky      | [https://github.com/uber/horovod/tree/master/examples](https://github.com/uber/horovod/tree/master/examples)     |
+| Na DSVM souvisejících nástrojích      | TensorFlow      |
+| Jak se použít nebo ji spustit?    | V terminálu: aktivovat správné prostředí a potom spusťte Python. |
 
 ## <a name="keras"></a>Keras
 
@@ -54,13 +67,11 @@ Zde jsou uvedeny podrobnosti na všechny hloubkového učení rozhraní, které 
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Windows, Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Keras je nainstalován v Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí.   |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | TensorFlow je nainstalován v Python 3.5 na [Linux a Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a Python 3.6 na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). |
 | Odkazy na ukázky      | https://github.com/fchollet/keras/tree/master/examples      |
 | Na DSVM souvisejících nástrojích      | Microsoft kognitivní Toolkit, TensorFlow, Theano      |
-| Jak se použít nebo ji spustit?    | Stáhnout ukázky z Githubu umístění, zkopírujte jej do adresáře v rámci ~/notebooks a otevře ji v Jupyter   |
-
-
-
+| Jak se použít nebo ji spustit?    | * V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/>
+ * V Jupyter: Stáhnout ukázky z Githubu umístění, připojí se k [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), pak otevřete adresář ukázka. |
 
 ## <a name="caffe"></a>Caffe
 
@@ -82,17 +93,19 @@ jupyter notebook
 
 Otevře se nové okno prohlížeče s ukázka poznámkových bloků.
 
+Binární soubory jsou nainstalovány v /opt/caffe/build/install/bin. 
+
 ## <a name="caffe2"></a>Caffe2
 
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Ubuntu     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný Caffe2 `/opt/caffe2`. Je také k dispozici pro Python 2.7 (_kořenové_) conda prostředí.     |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty     |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný Caffe2 [conda prostředí Python 2.7 (uživatel root)](dsvm-languages.md#python-linux-and-windows-server-2012-edition). Zdroj je v `/opt/caffe2`. |
+| Odkazy na ukázky      | Ukázka poznámkových bloků jsou součástí JupyterHub. |
 | Na DSVM souvisejících nástrojích      | Caffe      |
-| Jak se použít nebo ji spustit?    | Otevřít Jupyter a pak přejděte do adresáře Caffe2 najít ukázkové poznámkových bloků. Některé poznámkových bloků vyžadují kořenu Caffe2 ve kód Python; Zadejte /opt/caffe2.   |
-
+| Jak se použít nebo ji spustit?    | * V terminálu: aktivovat [prostředí Python kořenové](dsvm-languages.md#python-linux-and-windows-server-2012-edition)spusťte Python a importovat caffe2. <br/> * V JupyterHub: [připojit k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), pak přejděte do adresáře Caffe2 najít ukázkové poznámkových bloků. Některé poznámkových bloků vyžadují kořenu Caffe2 ve kód Python; Zadejte /opt/caffe2. |
+| Poznámky k sestavení | Caffe2 vychází ze zdroje v Linuxu a zahrnuje CUDA, cuDNN a Intel MKL. Aktuální potvrzení je 0d9c0d48c6f20143d6404b99cc568efd29d5a4be, který jste vybrali pro stabilitu na všech grafickými procesory a ukázky testována. |
 
 ## <a name="chainer"></a>Chainer
 
@@ -100,13 +113,11 @@ Otevře se nové okno prohlížeče s ukázka poznámkových bloků.
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Windows, Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Zřetězeného souboru je nainstalován v Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí. ChainerRL a ChainerCV jsou také nainstalované.   |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty.      |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Zřetězeného souboru je nainstalován v [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition). ChainerRL a ChainerCV jsou také nainstalované.   |
+| Odkazy na ukázky      | Ukázka poznámkových bloků jsou součástí JupyterHub. |
 | Na DSVM souvisejících nástrojích      | Caffe      |
-
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?  
-
-V terminálu, aktivovat verzi jazyka Python chcete (_kořenové_ nebo _py35_) spusťte _python_, pak importovat zřetězeného souboru. V Jupyter vyberte Python 2.7 nebo 3.5 jádra a pak importovat zřetězeného souboru.
+| Jak se použít nebo ji spustit?  | * V terminálu: aktivovat [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) prostředí, spusťte _python_, pak importovat zřetězeného souboru. <br/>
+* V JupyterHub: [připojit k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), pak přejděte do adresáře zřetězeného souboru najít ukázkové poznámkových bloků.
 
 
 ## <a name="deep-water"></a>Hloubkové horních
@@ -115,19 +126,22 @@ V terminálu, aktivovat verzi jazyka Python chcete (_kořenové_ nebo _py35_) sp
 | ------------- | ------------- |
 | Co je to?   | Architektura hloubkové learning pro H2O      |
 | Podporované DSVM edice      | Ubuntu     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Hloubkové horních je nainstalován v `/dsvm/tools/deep_water`.   |
-| Odkazy na ukázky      | Ukázky jsou dostupné prostřednictvím hloubkového horních serveru.      |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Hloubkové horních je nainstalován v [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a je také dostupná v `/dsvm/tools/deep_water`.   |
+| Odkazy na ukázky      | Ukázka poznámkových bloků jsou součástí JupyterHub.      |
 | Na DSVM souvisejících nástrojích      | H2O, šumivého horních      |
 
 ### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?  
 
-Připojte k virtuálnímu počítači pomocí X2Go. V terminálu spuštění hloubkového horních serveru:
+Hloubkové horních vyžaduje CUDA 8 s cuDNN 5.1. Toto není na cestě knihovny, ve výchozím nastavení, jako ostatní platformy hloubkové learning použijte CUDA 9 a cuDNN 7. Použití CUDA 8 + cuDNN 5.1 pro přímý horních:
 
-    java -jar /dsvm/tools/deep_water/h2o.jar
+```
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:${LD_LIBRARY_PATH}
+export CUDA_ROOT=/usr/local/cuda-8.0
+```
 
-Potom spusťte prohlížeč a připojení k `http://localhost:54321`.
-
-
+Použití hloubkové horních:
+* V terminálu: aktivovat [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) prostředí, spusťte _python_. <br/>
+* V JupyterHub: [připojit k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), pak přejděte do adresáře deep_water najít ukázkové poznámkových bloků.
 
 ## <a name="mxnet"></a>MXNet
 
@@ -135,10 +149,12 @@ Potom spusťte prohlížeč a připojení k `http://localhost:54321`.
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Windows, Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný MXNet `C:\dsvm\tools\mxnet` v systému Windows a `/dsvm/tools/mxnet` v systému Linux. Python vazby jsou nainstalovány v Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí. Vazby R jsou také nainstalované.   |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný MXNet `C:\dsvm\tools\mxnet` v systému Windows a `/dsvm/tools/mxnet` v systému Linux. Python vazby na nainstalovaných v Python 3.5 [Linux a Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) a Python 3.6 na [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition). Vazby R jsou také nainstalované na Ubuntu.   |
 | Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty.    |
 | Na DSVM souvisejících nástrojích      | Keras      |
-| Jak se použít nebo ji spustit?    | Otevřít Jupyter a pak vyhledejte složku mxnet  |
+| Jak se použít nebo ji spustit?    | * V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/>
+ * V Jupyter: Připojení k [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete adresář mxnet pro ukázky.  |
+ | Poznámky k sestavení | MXNet vychází ze zdroje v systému Linux. Toto sestavení obsahuje CUDA, cuDNN, NCCL a MKL. |
 
 ## <a name="nvidia-digits"></a>NVIDIA ČÍSLIC
 
@@ -176,7 +192,12 @@ Službu spusťte trvá přibližně jednu minutu. Spustit webový prohlížeč a
 | Podporované DSVM edice      | Ubuntu     |
 | Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Theano je nainstalován v Python 2.7 (_kořenové_), a také Python 3.5 (_py35_) prostředí.   |
 | Na DSVM souvisejících nástrojích      | Keras      |
-| Jak se použít nebo ji spustit?    | V terminálu aktivujte verzi Pythonu (kořenové nebo py35), spusťte python a pak importovat theano. V Jupyter vyberte Python 2.7 nebo 3.5 jádra a pak importovat theano.  |
+| Jak se použít nebo ji spustit?    | * V terminálu aktivujte verzi Pythonu (kořenové nebo py35), spusťte python a pak importovat theano. <br/> 
+* V Jupyter vyberte Python 2.7 nebo 3.5 jádra a pak importovat theano.  
+<br/>
+Obejít poslední chyby MKL, musíte nejprve nastavit MKL dělení na vlákna vrstvy:<br/><br/>
+_Export MKL_THREADING_LAYER = GNU_
+|
 
 
 
@@ -196,14 +217,12 @@ Službu spusťte trvá přibližně jednu minutu. Spustit webový prohlížeč a
 | ------------- | ------------- |
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Linux     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | PyTorch je nainstalován v Python 3.5 (_py35_) prostředí.   |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný PyTorch [Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition).  |
 | Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter jsou zahrnuty a ukázky najdete také v /dsvm/samples/pytorch.      |
 | Na DSVM souvisejících nástrojích      | Torch      |
-
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?  
-
-V terminálu, spusťte _python_, pak importovat svítilnou. V Jupyter vyberte jádra Python 3.5 a poté importovat svítilnou.
-
+| Postup použití možnosti / ji spustit | 
+* V terminálu: aktivovat správné prostředí a potom spusťte Python. <br/>
+ * V Jupyter: Připojení k [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux), otevřete adresář PyTorch pro ukázky.  |
 
 ## <a name="mxnet-model-server"></a>MXNet Model serveru
 
@@ -224,3 +243,16 @@ V terminálu, spusťte _python_, pak importovat svítilnou. V Jupyter vyberte j�
 | Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | _tensorflow_model_server_ jsou k dispozici v terminálu.   |
 | Odkazy na ukázky      | Ukázky jsou k dispozici [online](https://www.tensorflow.org/serving/).      |
 | Na DSVM souvisejících nástrojích      | TensorFlow      |
+
+## <a name="tensorrt"></a>TensorRT
+
+|    |           |
+| ------------- | ------------- |
+| Co je to?   | Přímý server odvozená z NVIDIA učení. |
+| Podporované DSVM edice      | Ubuntu     |
+| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | TensorRT je nainstalován jako _výstižný_ balíčku.   |
+| Odkazy na ukázky      | Ukázky jsou k dispozici [online](https://docs.nvidia.com/deeplearning/sdk/tensorrt-developer-guide/index.html#samples).      |
+| Na DSVM souvisejících nástrojích      | TensorFlow obsluhuje, MXNet Model serveru  |
+
+
+

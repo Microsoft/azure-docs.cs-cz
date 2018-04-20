@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace se serverem Tableau | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau serveru."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau serveru.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace se serverem Tableau
 
@@ -158,7 +158,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
   
    b. Zaškrtněte políčko z **pomocí SAML pro jednotné přihlašování**.
    
-   c. Adresa URL odpovědi ze serveru tableau – adresa URL, který Tableau Server uživatelé budou například http://tableau_server. Se nedoporučuje používat http://localhost. Použijete adresu URL s koncové lomítko (například http://tableau_server/) není podporována. Kopírování **Tableau Server návratovou adresu URL** a vložte jej do služby Azure AD **přihlašovací adresa URL** textového pole v **Tableau Server domény a adresy URL** části.
+   c. Adresa URL odpovědi ze serveru tableau – adresa URL, který Tableau Server uživatelé budou, jako například http://tableau_server. Pomocí http://localhost se nedoporučuje. Použijete adresu URL s koncové lomítko (například http://tableau_server/) není podporován. Kopírování **Tableau Server návratovou adresu URL** a vložte jej do služby Azure AD **přihlašovací adresa URL** textového pole v **Tableau Server domény a adresy URL** části.
    
    d. SAML entity ID – entity ID jednoznačně identifikuje instalaci serveru Tableau do rozšíření IdP. Můžete zadat vaše adresa URL serveru Tableau znovu sem, pokud chcete, ale nemusí být adresa URL serveru Tableau. Kopírování **SAML entity ID** a vložte jej do služby Azure AD **identifikátor** textového pole v **Tableau Server domény a adresy URL** části.
      

@@ -1,8 +1,8 @@
 ---
-title: "Přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory | Microsoft Docs"
-description: "Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které společně přesun dat na každý den mezi databází na místě a v cloudu."
+title: Přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory | Microsoft Docs
+description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které společně přesun dat na každý den mezi databází na místě a v cloudu.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
 ms.openlocfilehash: 05884fd39db284e268f31987e5ad7a47b9f87ebf
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory
 Toto téma ukazuje, jak pro přesun dat z databáze serveru SQL místní databázi SQL Azure přes Azure Blob Storage pomocí Azure Data Factory (ADF).
@@ -51,7 +51,7 @@ Nemůžeme nastavit kanál ADF, která vytvoří dvě aktivity migrace dat. Spol
 ## <a name="prereqs"></a>Požadavky
 Tento kurz předpokládá, že máte:
 
-* **Předplatné**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Předplatné**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účtu úložiště Azure**. Používáte účet úložiště Azure pro ukládání dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. V tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
 * Přístup **databáze Azure SQL**. Pokud je potřeba nastavit Azure SQL Database, tématu [Začínáme se službou Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci třídy Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
@@ -82,7 +82,7 @@ Pokyny k instalaci a informace o Brána pro správu dat najdete v tématu [přes
 ## <a name="adflinkedservices"></a>Vytvoření propojených služeb pro připojení ke zdrojům dat
 Propojená služba definuje informace potřebné pro vytváření dat Azure pro připojení k prostředku data. Máme tři zdroje v tomto scénáři, pro které jsou potřeba propojené služby:
 
-1. On-premises SQL Server
+1. Místní SQL Server
 2. Azure Blob Storage
 3. Databáze SQL Azure
 
@@ -113,7 +113,7 @@ Tři definice tabulek jsou potřeba pro tento kanál ADF:
 >
 >
 
-### <a name="adf-table-onprem-sql">Místní tabulky SQL</a>
+### <a name="adf-table-onprem-sql"></a>Místní tabulky SQL
 Definice tabulky pro místní systém SQL Server je zadán v následujícím souboru JSON:
 
         {
@@ -148,7 +148,7 @@ Kopírování názvem definici JSON tabulky do souboru *onpremtabledef.json* sou
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store">Tabulka objektů BLOB </a>
+### <a name="adf-table-blob-store"></a>Tabulka objektů BLOB
 Definice tabulky pro výstupní umístění objektu blob je v následujícím (mapuje ingestovaný data z místně do objektu blob Azure):
 
         {
@@ -178,7 +178,7 @@ Kopírování názvem definici JSON tabulky do souboru *bloboutputtabledef.json*
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
-### <a name="adf-table-azure-sql">SQL Azure Table</a>
+### <a name="adf-table-azure-sql"></a>SQL Azure Table
 Definice tabulky SQL Azure výstupu v následujícím (toto schéma mapuje dat pocházejících z objektu blob):
 
     {

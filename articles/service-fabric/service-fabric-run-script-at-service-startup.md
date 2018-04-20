@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
 ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
-# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spustit skript spuštění služby jako účet místního uživatele nebo systému
+# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
 Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit pracovní některé konfigurace nebo instalační program.  Například konfigurace proměnné prostředí. Můžete určit skript běžet před spustitelný soubor služby spuštění v service manifest pro službu. Tím, že nakonfigurujete zásadu RunAs pro instalační program Vstupní bod služby, že můžete změnit účet, který instalačního programu běží pod.  Vstupní bod samostatného instalačního umožňuje spustit vysokou privilged konfigurace na krátkou dobu, spustitelný soubor hostitele služby nemusí spustit s vysokou úrovní oprávnění pro dlouhou dobu.
 
 Instalační program vstupního bodu (**SetupEntryPoint** v [service manifest](service-fabric-application-and-service-manifests.md)) je privilegované vstupního bodu, který ve výchozím nastavení běží se stejnými pověřeními, jako Service Fabric (obvykle  *NetworkService* účtu) před další vstupní bod. Spustitelný soubor, který je zadán **EntryPoint** je obvykle dlouho běžící hostitele služby. **EntryPoint** po je spustit spustitelný soubor **SetupEntryPoint** spustitelný soubor ukončí úspěšně. Výsledný proces monitorovat a restartuje a znovu začíná **SetupEntryPoint** Pokud někdy ukončí nebo dojde k chybě. 

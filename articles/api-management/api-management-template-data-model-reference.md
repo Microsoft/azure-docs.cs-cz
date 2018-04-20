@@ -1,11 +1,11 @@
 ---
-title: "Referenční model dat šablony Azure API Management | Microsoft Docs"
-description: "Další informace o reprezentace entitu a typ pro běžné položky použít v modelech dat pro vývojáře šablony portálu v Azure API Management."
+title: Referenční model dat šablony Azure API Management | Microsoft Docs
+description: Další informace o reprezentace entitu a typ pro běžné položky použít v modelech dat pro vývojáře šablony portálu v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
 ms.service: api-management
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f27b6b529c2591e37d48e3386190077fc8efc32
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Referenční model dat šablony Azure API Management
 Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v modelech dat pro vývojáře šablony portálu v Azure API Management.  
@@ -33,14 +33,14 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 -   [Komentář](#Comment)  
 -   [Filtrování](#Filtering)  
 -   [Záhlaví](#Header)  
--   [HTTP Request](#HTTPRequest)  
+-   [Požadavek HTTP](#HTTPRequest)  
 -   [Odpověď HTTP](#HTTPResponse)  
 -   [Problém](#Issue)  
 -   [Operace](#Operation)  
 -   [Operace nabídky](#Menu)  
 -   [Operace položky nabídky](#MenuItem)  
 -   [Stránkování](#Paging)  
--   [Parameter](#Parameter)  
+-   [Parametr](#Parameter)  
 -   [Produktu](#Product)  
 -   [Poskytovatel](#Provider)  
 -   [Reprezentace](#Representation)  
@@ -50,7 +50,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 -   [Přihlášení uživatele](#UseSignIn)  
 -   [Registrace uživatele](#UserSignUp)  
   
-##  <a name="API"></a> API  
+##  <a name="API"></a> ROZHRANÍ API  
  `API` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -62,9 +62,9 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |path|řetězec|Relativní adresa URL jedinečně identifikující toto rozhraní API a všechny jeho cesty prostředku v rámci instance služby API Management. Připojí se k rozhraní API koncový bod základní adresa URL zadaná při vytvoření instance služby a vytvořit veřejnou adresu URL pro toto rozhraní API.|  
 |protokoly|pole čísla|Popisuje, na které protokoly může vyvolat operace v tomto rozhraní API. Povolené hodnoty jsou `1 - http` a `2 - https`, nebo obojí.|  
 |authenticationSettings|[Nastavení ověřování serveru ověřování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekce nastavení ověřování, které jsou zahrnuté v tomto rozhraní API.|  
-|subscriptionKeyParameterNames|Objekt|Volitelná vlastnost, která umožňuje určit vlastní názvy parametrů dotazu nebo hlavičku obsahující klíč předplatného. Pokud tuto vlastnost, musí obsahovat alespoň jeden z následujících dvou vlastností.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|subscriptionKeyParameterNames|objekt|Volitelná vlastnost, která umožňuje určit vlastní názvy parametrů dotazu nebo hlavičku obsahující klíč předplatného. Pokud tuto vlastnost, musí obsahovat alespoň jeden z následujících dvou vlastností.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="APISummary">Souhrn rozhraní API</a>  
+##  <a name="APISummary"></a> Souhrn rozhraní API  
  `API summary` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -73,7 +73,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |jméno|řetězec|Název rozhraní API. Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |description|řetězec|Popis rozhraní API. Nesmí být prázdný. Může zahrnovat formátování značky HTML. Maximální délka je 1 000 znaků.|  
   
-##  <a name="Application">Aplikace</a>  
+##  <a name="Application"></a> Aplikace  
  `application` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -91,7 +91,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Přílohy|Kolekce [přílohy](#Attachment) entity.|Přílohy pro aplikaci, například snímky obrazovky nebo ikon.|  
 |Ikona|[Přílohy](#Attachment)|Ikona pro danou aplikaci.|  
   
-##  <a name="Attachment">Přílohy</a>  
+##  <a name="Attachment"></a> Přílohy  
  `attachment` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -99,9 +99,9 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Jedinečné ID|řetězec|Jedinečný identifikátor pro přílohy.|  
 |URL|řetězec|Adresa URL prostředku.|  
 |Typ|řetězec|Typ přílohy.|  
-|ContentType|řetězec|Typ média přílohu.|  
+|Typ obsahu|řetězec|Typ média přílohu.|  
   
-##  <a name="Sample">Ukázka kódu</a>  
+##  <a name="Sample"></a> Ukázka kódu  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
@@ -110,7 +110,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |štětce|řetězec|Které šablony, který se má použít při zobrazení Ukázka kódu zvýrazňování syntaxe kódu. Povolené hodnoty jsou `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`, a `csharp`.|  
 |šablona|řetězec|Název této šablony ukázkový kód.|  
 |hlavní část|řetězec|Zástupný symbol pro část ukázka fragmentu kódu.|  
-|metoda|řetězec|Metoda HTTP operace.|  
+|method|řetězec|Metoda HTTP operace.|  
 |Schéma|řetězec|Protokol bude použit pro tento požadavek operation.|  
 |path|řetězec|Cesta k operaci.|  
 |query|řetězec|Příklad řetězce dotazu s definovaných parametrů.|  
@@ -118,7 +118,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |hlavičky|Kolekce [záhlaví](#Header) entity.|Hlavičky pro tuto operaci.|  
 |parameters|Kolekce [parametr](#Parameter) entity.|Parametry, které jsou definované pro tuto operaci.|  
   
-##  <a name="Comment">Komentář</a>  
+##  <a name="Comment"></a> Komentář  
  `API` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -144,7 +144,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Přílohy|Kolekce [přílohy](api-management-template-data-model-reference.md#Attachment) entity.|Přílohy k problému.|  
 |Služby|Kolekce [rozhraní API](#API) entity.|Rozhraní API předplatné uživatelem, která selhala problém.|  
   
-##  <a name="Filtering">Filtrování</a>  
+##  <a name="Filtering"></a> Filtrování  
  `filtering` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -160,10 +160,10 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |jméno|řetězec|Název parametru.|  
 |description|řetězec|Popis parametru.|  
 |hodnota|řetězec|Hodnota hlavičky.|  
-|typeName|řetězec|Datový typ hodnoty hlavičky.|  
+|TypeName|řetězec|Datový typ hodnoty hlavičky.|  
 |Možnosti|řetězec|Možnosti.|  
 |Požadované|Boolean|Jestli je požadované hlavičky.|  
-|readOnly|Boolean|Jestli záhlaví je jen pro čtení.|  
+|Jen pro čtení|Boolean|Jestli záhlaví je jen pro čtení.|  
   
 ##  <a name="HTTPRequest"></a> Požadavek HTTP  
  Tato část popisuje `request` reprezentace.  
@@ -175,7 +175,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |parameters|pole [parametr](#Parameter)|Kolekce parametrů žádost o operaci.|  
 |reprezentace|pole [reprezentace](#Representation)|Kolekce reprezentace žádost o operaci.|  
   
-##  <a name="HTTPResponse">Odpověď HTTP</a>  
+##  <a name="HTTPResponse"></a> Odpověď HTTP  
  Tato část popisuje `response` reprezentace.  
   
 |Vlastnost|Typ|Popis|  
@@ -196,10 +196,10 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |uriTemplate|řetězec|Relativní adresa URL Šablona identifikace cílový prostředek pro tuto operaci. Může obsahovat parametry. Příklad: `customers/{cid}/orders/{oid}/?date={date}`|  
 |hostitel|řetězec|Adresu URL brány API Management, který je hostitelem rozhraní API.|  
 |HttpMethod|řetězec|Metoda operaci HTTP.|  
-|Požadavek|[HTTP Request](#HTTPRequest)|Entita obsahující podrobnosti požadavku.|  
+|Požadavek|[Požadavek HTTP](#HTTPRequest)|Entita obsahující podrobnosti požadavku.|  
 |odpovědi|pole [odpovědi HTTP](#HTTPResponse)|Pole operace [odpověď HTTP](#HTTPResponse) entity.|  
   
-##  <a name="Menu">Operace nabídky</a>  
+##  <a name="Menu"></a> Operace nabídky  
  `operation menu` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -209,7 +209,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Akce|řetězec|Typ nabídky.|  
 |Vlastnost MenuItems|Kolekce [položky nabídky operaci](#MenuItem) entity.|Operace pro aktuální rozhraní API.|  
   
-##  <a name="MenuItem">Operace položky nabídky</a>  
+##  <a name="MenuItem"></a> Operace položky nabídky  
  `operation menu item` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -218,7 +218,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Nadpis|řetězec|Popis operace.|  
 |HttpMethod|řetězec|Metoda Http operace.|  
   
-##  <a name="Paging">Stránkování</a>  
+##  <a name="Paging"></a> Stránkování  
  `paging` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -240,9 +240,9 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Možnosti|Pole řetězců|Hodnot definovaných pro hodnoty parametru dotazu.|  
 |Požadované|Boolean|Určuje, zda parametr je povinný, nebo ne.|  
 |Typ|číslo|Jestli je tento parametr parametr cesty (1), nebo parametr řetězce dotazu (2).|  
-|typeName|řetězec|Typ parametru.|  
+|TypeName|řetězec|Typ parametru.|  
   
-##  <a name="Product">Produktu</a>  
+##  <a name="Product"></a> Produktu  
  `product` Entita, která má následující vlastnosti:  
   
 |Vlastnost|Typ|Popis|  
@@ -264,12 +264,12 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |authenticationType.|řetězec|Typ poskytovatele. (Azure Active Directory, Facebook přihlášení, účet Google, Microsoft Account, služby Twitter).|  
 |Popisek|řetězec|Zobrazovaný název zprostředkovatele.|  
   
-##  <a name="Representation">Reprezentace</a>  
+##  <a name="Representation"></a> Reprezentace  
  Tato část popisuje `representation`.  
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|contentType|řetězec|Určuje registrované nebo vlastní typ obsahu pro tento reprezentace, například `application/xml`.|  
+|Typ obsahu|řetězec|Určuje registrované nebo vlastní typ obsahu pro tento reprezentace, například `application/xml`.|  
 |Ukázka|řetězec|Příkladem reprezentace.|  
   
 ##  <a name="Subscription"></a> Předplatné  
@@ -283,15 +283,15 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Popisvýrobku|řetězec|Popis produktu. Nesmí být prázdný. Může zahrnovat formátování značky HTML. Maximální délka je 1 000 znaků.|  
 |ProductDetailsUrl|řetězec|Relativní adresu URL na podrobnosti o produktu.|  
 |state|řetězec|Stav odběru. Je možné stavy:<br /><br /> - `0 - suspended` – předplatného je zablokovaný a odběrateli nelze volat všechny rozhraní API produktu.<br /><br /> - `1 - active` – je předplatné aktivní.<br /><br /> - `2 - expired` – předplatné dosaženo datum vypršení platnosti a bylo deaktivováno.<br /><br /> - `3 - submitted` – žádosti o odběr byl proveden vývojáře, ale má ještě schválení nebo odmítnutí.<br /><br /> - `4 - rejected` – žádosti o odběr byl odepřen správcem.<br /><br /> - `5 - cancelled` – předplatné zrušil vývojáře nebo správce.|  
-|DisplayName|řetězec|Zobrazovaný název odběru.|  
-|CreatedDate|dateTime|Datum odběr byl vytvořen, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|displayName|řetězec|Zobrazovaný název odběru.|  
+|Datum vytvoření|Data a času|Datum odběr byl vytvořen, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
 |CanBeCancelled|Boolean|Jestli předplatné můžete zrušit podle aktuálního uživatele.|  
 |IsAwaitingApproval|Boolean|Jestli předplatného čeká na schválení.|  
-|StartDate|dateTime|Počáteční datum pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
-|Datumvypršení platnosti|dateTime|Datum vypršení platnosti pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
-|NotificationDate|dateTime|Datum oznámení pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|Počátečním|Data a času|Počáteční datum pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|Datumvypršení platnosti|Data a času|Datum vypršení platnosti pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
+|NotificationDate|Data a času|Datum oznámení pro předplatné, ve formátu ISO 8601: `2014-06-24T16:25:00Z`.|  
 |primaryKey|řetězec|Předplatné primární klíč. Maximální délka je 256 znaků.|  
-|secondaryKey|řetězec|Klíč sekundární předplatného. Maximální délka je 256 znaků.|  
+|sekundární klíč|řetězec|Klíč sekundární předplatného. Maximální délka je 256 znaků.|  
 |CanBeRenewed|Boolean|Jestli předplatné můžete obnovovat podle aktuálního uživatele.|  
 |HasExpired|Boolean|Jestli vypršela platnost předplatného.|  
 |IsRejected|Boolean|Jestli předplatné žádost byla odepřena.|  
@@ -304,7 +304,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |ID|řetězec|Identifikátor prostředku. Jednoznačně identifikuje předplatného v rámci aktuální instance služby API Management. Hodnota je platná relativní adresa URL ve formátu `subscriptions/{sid}` kde `{sid}` je identifikátor předplatného. Tato vlastnost je jen pro čtení.|  
-|DisplayName|řetězec|Zobrazovaný název odběru|  
+|displayName|řetězec|Zobrazovaný název odběru|  
   
 ##  <a name="UserAccountInfo"></a> Informace o účtu uživatele  
  `user account info` Entita, která má následující vlastnosti:  
@@ -312,8 +312,8 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |FirstName|řetězec|Křestní jméno. Nesmí být prázdný. Maximální délka je 100 znaků.|  
-|LastName|řetězec|Příjmení. Nesmí být prázdný. Maximální délka je 100 znaků.|  
-|E-mail|řetězec|E-mailovou adresu. Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
+|Příjmení|řetězec|Příjmení. Nesmí být prázdný. Maximální délka je 100 znaků.|  
+|Email|řetězec|E-mailovou adresu Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
 |Heslo|řetězec|Heslo uživatelského účtu.|  
 |NameIdentifier|řetězec|Identifikátor účtu stejný jako e-mail uživatele.|  
 |ProviderName|řetězec|Název zprostředkovatele ověřování.|  
@@ -324,7 +324,7 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|E-mail|řetězec|E-mailovou adresu. Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
+|Email|řetězec|E-mailovou adresu Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
 |Heslo|řetězec|Heslo uživatelského účtu.|  
 |ReturnUrl|řetězec|Adresu URL stránky, kde uživatel klepl přihlásit.|  
 |Obdobou|Boolean|Jestli se má uložit informace o aktuálním uživateli.|  
@@ -348,9 +348,9 @@ Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v m
 |UserRegistrationTerms|řetězec|Podmínky, které uživatel musí vyjádřit souhlas s před přihlášením.|  
 |UserRegistrationTermsOptions|číslo|Hodnota používaná metodou [registrace](api-management-page-controls.md#sign-up)registrace ovládacího prvku.|  
 |ConsentAccepted|Boolean|Hodnota používaná metodou [registrace](api-management-page-controls.md#sign-up)registrace ovládacího prvku.|  
-|E-mail|řetězec|E-mailovou adresu. Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
+|Email|řetězec|E-mailovou adresu Nesmí být prázdný a musí být jedinečné v rámci instance služby. Maximální délka je 254 znaků.|  
 |FirstName|řetězec|Křestní jméno. Nesmí být prázdný. Maximální délka je 100 znaků.|  
-|LastName|řetězec|Příjmení. Nesmí být prázdný. Maximální délka je 100 znaků.|  
+|Příjmení|řetězec|Příjmení. Nesmí být prázdný. Maximální délka je 100 znaků.|  
 |UserData|řetězec|Hodnota používaná metodou [registrace](api-management-page-controls.md#sign-up) ovládacího prvku.|  
 |NameIdentifier|řetězec|Hodnota používaná metodou [registrace](api-management-page-controls.md#sign-up)registrace ovládacího prvku.|  
 |ProviderName|řetězec|Název zprostředkovatele ověřování.|

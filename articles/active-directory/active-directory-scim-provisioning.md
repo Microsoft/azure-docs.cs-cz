@@ -1,11 +1,11 @@
 ---
-title: "Automatizovat zřizování aplikací v Azure Active Directory pomocí SCIM | Microsoft Docs"
-description: "Azure Active Directory, mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou webovou službou pomocí rozhraní definované v specifikace protokolu SCIM"
+title: Automatizovat zřizování aplikací v Azure Active Directory pomocí SCIM | Microsoft Docs
+description: Azure Active Directory, mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou webovou službou pomocí rozhraní definované v specifikace protokolu SCIM
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
 ms.workload: identity
@@ -17,10 +17,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro správu identit napříč doménami pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
@@ -144,7 +144,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
   ![][2]
   *Obrázek 4: Konfigurace zřizování na portálu Azure*
     
-6. V **URL klienta** pole, zadejte adresu URL a port váš koncový bod SCIM vystavené Internetu. To by něco jako http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu zveřejněné IP adresu.  
+6. V **URL klienta** pole, zadejte adresu URL a port váš koncový bod SCIM vystavené Internetu. To může být přibližně http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu zveřejněné IP adresu.  
 7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte do nepovinný požadovaný token nosiče OAuth **tajný klíč tokenu** pole. Pokud toto pole je prázdné, bude obsahovat Azure AD tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
 8. Klikněte **Test připojení** tlačítko tak, aby měl Azure Active Directory, pokusí se připojit ke koncovému bodu SCIM. Pokud pokusy o selhání, zobrazí se informace o chybě.  
 9. Pokud pokusy o připojení k úspěšné aplikaci, pak klikněte na tlačítko **Uložit** uložit přihlašovací údaje správce.
@@ -288,7 +288,7 @@ K hostování služby v rámci Internetové informační služby, by vývojář 
     }
 
 ### <a name="handling-endpoint-authentication"></a>Zpracování koncový bod ověřování
-Žádosti z Azure Active Directory zahrnovat tokenu nosiče OAuth 2.0.   Všechny služby přijetí žádosti by měl ověřit vystavitele jako jménem očekávané klienta Azure Active Directory pro přístup k webové službě Azure Active Directory Graph Azure Active Directory.  V tokenu, Vystavitel je identifikována deklaraci identity iss, například "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu bázové adresy hodnota deklarace identity, https://sts.windows.net, Azure Active Directory identifikuje jako vydavatel, zatímco relativní adresu segmentu cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor služby Azure Active Directory Klient jménem kterého byl token vydán.  Pokud byl token vydán pro přístup k webové službě Azure Active Directory Graph, by měl být identifikátor této služby, 00000002-0000-0000-c000-000000000000, v hodnotě deklarace identity oblast je token.  
+Žádosti z Azure Active Directory zahrnovat tokenu nosiče OAuth 2.0.   Všechny služby přijetí žádosti by měl ověřit vystavitele jako jménem očekávané klienta Azure Active Directory pro přístup k webové službě Azure Active Directory Graph Azure Active Directory.  V tokenu, Vystavitel je identifikována deklaraci identity iss, například "iss": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  V tomto příkladu bázové adresy hodnota deklarace identity, https://sts.windows.net, identifikuje Azure Active Directory jako vydavatel, zatímco relativního adres segmentu, cbb1a5ac-f33b-45fa-9bf5-f37db0fed422, je jedinečný identifikátor klienta Azure Active Directory na jménem, které byl token vydán.  Pokud byl token vydán pro přístup k webové službě Azure Active Directory Graph, by měl být identifikátor této služby, 00000002-0000-0000-c000-000000000000, v hodnotě deklarace identity oblast je token.  
 
 Vývojáři pomocí knihovny CLA od společnosti Microsoft pro vytváření SCIM služby můžete ověřování žádostí z Azure Active Directory pomocí balíček Microsoft.Owin.Security.ActiveDirectory pomocí následujících kroků: 
 
@@ -349,34 +349,34 @@ Azure Active Directory můžete zřídit dva typy prostředků, aby SCIM webové
 
 Uživatel prostředky jsou označeny identifikátor schématu urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, který je součástí této specifikace protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Výchozí mapování atributů uživatelům atributy urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků v Azure Active Directory je uvedené v tabulce 1, níže.  
 
-Skupiny prostředků jsou identifikovány identifikátor schématu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže znázorňuje výchozí mapování atributů skupin v Azure Active Directory atributy http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředků.  
+Skupiny prostředků jsou identifikovány identifikátor schématu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže znázorňuje výchozí mapování atributů skupin v Azure Active Directory na atributy http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředky.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabulka 1: Výchozí mapování atributů uživatele
 | Uživatele Azure Active Directory | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
 | --- | --- |
 | IsSoftDeleted |aktivní |
 | displayName |displayName |
-| Facsimile-TelephoneNumber |.value phoneNumbers [typ eq "fax"] |
+| TelephoneNumber faxu |.value phoneNumbers [typ eq "fax"] |
 | givenName |name.givenName |
 | pracovní funkce |název |
-| mail |.value e-mailů [typ eq "práce"] |
+| E-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |externalId |
 | Správce |Správce |
 | mobilní |.value phoneNumbers [eq typ "mobilní"] |
 | objectId |id |
 | PSČ |adresy [typ eq "práce"] .postalCode |
-| proxy-Addresses |[Zadejte eq "ostatní"] e-mailů. Hodnota |
-| physical-Delivery-OfficeName |adresy [Zadejte eq "ostatní"]. Formátu |
+| proxy adresy |[Zadejte eq "ostatní"] e-mailů. Hodnota |
+| fyzický. doručení OfficeName |adresy [Zadejte eq "ostatní"]. Formátu |
 | StreetAddress |adresy [typ eq "práce"] .streetAddress |
-| surname |name.familyName |
-| telephone-Number |.value phoneNumbers [typ eq "práce"] |
-| user-PrincipalName |userName |
+| Příjmení |name.familyName |
+| telefonní číslo |.value phoneNumbers [typ eq "práce"] |
+| user-PrincipalName |Uživatelské jméno |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny mapování atributů
 | Skupina Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
-| mail |.value e-mailů [typ eq "práce"] |
+| E-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |displayName |
 | členové |členové |
 | objectId |id |
@@ -442,9 +442,9 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
     }
   ````
   V následující ukázce dotazu pro uživatele s danou hodnotou atributu externalId jsou hodnoty argumentů předaný metodě dotazu: 
-  * parameters.AlternateFilters.Count: 1
-  * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
-  * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
+  * Parametry. AlternateFilters.Count: 1
+  * Parametry. AlternateFilters.ElementAt(0). AttributePath: "externalId"
+  * Parametry. AlternateFilters.ElementAt(0). Porovnávací operátor: ComparisonOperator.Equals
   * Parametry. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
@@ -538,14 +538,14 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
 
   Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody dotazu zprostředkovatele služby. Hodnota vlastnosti objektu zadaný jako hodnota argumentu parametry jsou následující: 
   
-  * parameters.AlternateFilters.Count: 2
+  * Parametry. AlternateFilters.Count: 2
   * Parametry. AlternateFilters.ElementAt(x). AttributePath: "id"
-  * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+  * Parametry. AlternateFilters.ElementAt(x). Porovnávací operátor: ComparisonOperator.Equals
   * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * Parametry. AlternateFilters.ElementAt(y). AttributePath: "správce"
-  * parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+  * Parametry. AlternateFilters.ElementAt(y). Porovnávací operátor: ComparisonOperator.Equals
   * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * parameters.RequestedAttributePaths.ElementAt(0): "id"
+  * Parametry. RequestedAttributePaths.ElementAt(0): "id"
   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   Zde hodnotu indexu x může být 0 a hodnotu index y může být 1, nebo může být hodnota parametru x 1 a hodnota y může být 0, v závislosti na pořadí výrazy parametru dotazu filtru.   
@@ -655,12 +655,12 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
   
   * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
-  * (PatchRequest as PatchRequest2).Operations.Count: 1
+  * (PatchRequest jako PatchRequest2). Operations.Count: 1
   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). OperationName: OperationName.Add
   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Path.AttributePath: "správce"
   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.Count: 1
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
-  * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
+  * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Referenční dokumentace: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
+  * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Hodnota: 2819c223-7f76-453a-919d-413861904646
 
 6. Zrušte zřídit uživatele z identity úložiště přední stěnou služba SCIM, Azure AD, jako odešle žádost: 
   ````

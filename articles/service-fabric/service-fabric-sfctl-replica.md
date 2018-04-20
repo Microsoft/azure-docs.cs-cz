@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric rozhraní příkazového řádku - sfctl repliky | Microsoft Docs"
-description: "Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl repliky."
+title: Azure Service Fabric rozhraní příkazového řádku - sfctl repliky | Microsoft Docs
+description: Popisuje příkazy Service Fabric rozhraní příkazového řádku sfctl repliky.
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
 ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Spravujte repliky, které patří do oddílů služby.
@@ -33,7 +33,7 @@ Spravujte repliky, které patří do oddílů služby.
 |    Informace o      | Získá informace o repliku oddílu Service Fabric.|
 |    Seznam      | Získá informace o replikách oddílu služby Service Fabric.|
 |    odebrat    | Odebere repliku služby spuštěné v uzlu.|
-|    report-health| Odešle zprávu o stavu v replice Service Fabric.|
+|    Sestava stavu| Odešle zprávu o stavu v replice Service Fabric.|
 |    Restartování   | Restartuje službu repliku trvalou služby spuštěné na uzlu.|
 
 
@@ -55,7 +55,7 @@ Získá podrobnosti repliky nasazené na uzlu Service Fabric. Informace zahrnuj�
 
 |Argument|Popis|
 | --- | --- |
-| --debug               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h             | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o           | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu               | Řetězec dotazu JMESPath. Další informace a příklady naleznete v tématu http://jmespath.org/.|
@@ -72,14 +72,14 @@ Získá stav repliky Service Fabric. EventsHealthStateFilter použijte k filtrov
 | --- | --- |
 | – id oddílu [vyžaduje]| Identita oddílu.|
 | – id repliky [vyžaduje]| Identifikátor repliky.|
-| --events-health-state-filter| Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr patří celočíselná hodnota jednoho z následujících stavů. Se vrátí jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadaný, jsou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnotou může být kombinací tyto hodnoty získané pomocí bitový operátor 'OR'. Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozornění (4), jsou vráceny. -Výchozí – výchozí hodnota. Vyhledá všechny stav HealthState. Hodnota je nula. -None - filtr, který se neshoduje se žádnou hodnotu stavu HealthState. Použít cílem vrátit žádné výsledky v dané kolekci stavů. Hodnota je 1. -Ok - filtrujte, aby odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2. -Upozornění - filtr, hodnota odpovídá vstup k elementu HealthState upozornění. Hodnota je 4. -Chyba – filtr, který odpovídá vstup s hodnotou elementu HealthState chyby. Hodnota je 8. -Všechny - filtr, který odpovídá vstup s libovolnou hodnotou elementu HealthState. Hodnota je 65535.|
+| --události stavu stavu filtru| Umožňuje filtrování vrácených objektů HealthEvent kolekce na základě stavu. Možné hodnoty pro tento parametr patří celočíselná hodnota jednoho z následujících stavů. Se vrátí jenom události, které odpovídají filtru. Všechny události se používají k vyhodnocení agregovaný stav v pořádku. Pokud není zadaný, jsou vráceny všechny položky. Hodnoty stavu jsou výčet založený na příznak, takže hodnotou může být kombinací tyto hodnoty získané pomocí bitový operátor 'OR'. Například pokud zadaná hodnota je 6 všechny události s hodnotou elementu HealthState OK (2) a upozornění (4), jsou vráceny. -Výchozí – výchozí hodnota. Vyhledá všechny stav HealthState. Hodnota je nula. -None - filtr, který se neshoduje se žádnou hodnotu stavu HealthState. Použít cílem vrátit žádné výsledky v dané kolekci stavů. Hodnota je 1. -Ok - filtrujte, aby odpovídá vstup s hodnotou elementu HealthState Ok. Hodnota je 2. -Upozornění - filtr, hodnota odpovídá vstup k elementu HealthState upozornění. Hodnota je 4. -Chyba – filtr, který odpovídá vstup s hodnotou elementu HealthState chyby. Hodnota je 8. -Všechny - filtr, který odpovídá vstup s libovolnou hodnotou elementu HealthState. Hodnota je 65535.|
 | časový limit – -t             | Server časový limit v sekundách.  Výchozí: 60.|
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug                  | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění                  | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h                | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o              | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu                  | Řetězec dotazu JMESPath. Další informace najdete v tématu http://jmespath.org/.|
@@ -103,7 +103,7 @@ Odpověď obsahuje id, role, stav, stav, název uzlu, provozu a další podrobno
 
 |Argument|Popis|
 | --- | --- |
-| --debug               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h             | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o           | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu               | Řetězec dotazu JMESPath. Další informace najdete v tématu http://jmespath.org/.|
@@ -127,7 +127,7 @@ Respons zahrnují ID, role, stav, stav, název uzlu, provozu a další podrobnos
 
 |Argument|Popis|
 | --- | --- |
-| --debug               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h             | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o           | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu               | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|
@@ -145,14 +145,14 @@ Toto rozhraní API simuluje selhání Service Fabric repliky odstranit repliku z
 | – Název uzlu [vyžaduje]| Název uzlu.|
 | – id oddílu [vyžaduje]| Identita oddílu.|
 | – id repliky [vyžaduje]| Identifikátor repliky.|
-| --force-remove        | Odebrání aplikace Service Fabric nebo služby vynuceně bez průchodu přes pořadí řádné vypnutí. Tento parametr slouží k vynuceně odstranit aplikace nebo služby, pro které odstranění je řádně vypršení časového limitu z důvodu problémů v kódu služby, která zabraňuje ukončení repliky.|
+| --remove silou        | Odebrání aplikace Service Fabric nebo služby vynuceně bez průchodu přes pořadí řádné vypnutí. Tento parametr slouží k vynuceně odstranit aplikace nebo služby, pro které odstranění je řádně vypršení časového limitu z důvodu problémů v kódu služby, která zabraňuje ukončení repliky.|
 | časový limit – -t          | Server časový limit v sekundách.  Výchozí: 60.|
 
 ### <a name="global-arguments"></a>Globální argumenty
 
 |Argument|Popis|
 | --- | --- |
-| --debug               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h             | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o           | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu               | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|
@@ -176,7 +176,7 @@ Restartuje službu repliku trvalou služby spuštěné na uzlu. Upozornění: zd
 
 |Argument|Popis|
 | --- | --- |
-| --debug               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
+| – ladění               | Zvýšit protokolování podrobností zobrazit, že všechny protokoly ladění.|
 | – Nápověda -h             | Zobrazte tuto zprávu nápovědy a ukončení.|
 | --výstup -o           | Výstupní formát.  Povolené hodnoty: formát json, jsonc, tabulce, tsv.  Výchozí: json.|
 | --dotazu               | Řetězec dotazu JMESPath. V tématu http://jmespath.org/ Další informace a příklady.|

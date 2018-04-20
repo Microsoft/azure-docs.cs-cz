@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Chyba automatizace, řešení potíží problém
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Odstraňování běžných problémů ve službě Azure Automation 
 Tento článek obsahuje nápovědu k odstraňování běžných chyb, může docházet v Azure Automation a navrhne možná řešení jejich řešení potíží.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Chyby ověřování při práci se sadami runbook automatizace Azure.
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>Scénář: Přihlaste se k účtu Azure se nezdařilo
-**Chyba:** při práci s rutiny Add-AzureAccount nebo Login-AzureRmAccount se zobrazí chyba "Unknown_user_type: Neznámý typ uživatele".
+**Chyba:** při práci s rutiny Add-AzureAccount nebo Connect-AzureRmAccount se zobrazí chyba "Unknown_user_type: Neznámý typ uživatele".
 
 **Důvod chyby:** k této chybě dojde, pokud název asset přihlašovacích údajů není platný nebo pokud uživatelské jméno a heslo, které jste použili k nastavení asset přihlašovacích údajů automatizace nejsou platné.
 
@@ -34,7 +34,7 @@ Tento článek obsahuje nápovědu k odstraňování běžných chyb, může doc
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. Pokud ověření selže místně, znamená to, zda nebyly správně nastavená přihlašovacích údajů Azure Active Directory. Odkazovat na [ověřování na Azure pomocí Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) příspěvku na blogu získat správně nastaven účet služby Azure Active Directory.  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>Scénář: Nelze najít předplatné Azure

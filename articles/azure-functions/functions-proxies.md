@@ -1,12 +1,12 @@
 ---
-title: "Práce s proxy Azure Functions | Microsoft Docs"
-description: "Přehled o tom, jak používat Azure funkce proxy"
+title: Práce s proxy Azure Functions | Microsoft Docs
+description: Přehled o tom, jak používat Azure funkce proxy
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Azure Functions proxy
 
@@ -83,17 +83,17 @@ Pokud proxy server má šablonu trasy, jako například `/pets/{petId}`, adresa 
 #### <a name="additional-request-parameters"></a>Parametry další žádosti
 Kromě parametry šablony trasy lze použít následující hodnoty v hodnotách konfigurace:
 
-* **{request.method} **: Metoda protokolu HTTP, který se používá u původního požadavku.
-* **{request.headers. \<HeaderName\>}**: hlavičku, který může číst z původního požadavku. Nahraďte * \<HeaderName\> * s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, bude hodnota prázdný řetězec.
-* **{request.querystring. \<ParameterName\>}**: parametr řetězce dotazu, který může číst z původního požadavku. Nahraďte * \<ParameterName\> * s názvem parametr, který chcete číst. Pokud parametr není zahrnut v žádosti, bude hodnota prázdný řetězec.
+* **{request.method}** : Metoda protokolu HTTP, který se používá u původního požadavku.
+* **{request.headers. \<HeaderName\>}**: hlavičku, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, bude hodnota prázdný řetězec.
+* **{request.querystring. \<ParameterName\>}**: parametr řetězce dotazu, který může číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametr, který chcete číst. Pokud parametr není zahrnut v žádosti, bude hodnota prázdný řetězec.
 
 ### <a name="response-parameters"></a>Odkaz na back-end odpovědi parametry
 
 Odpověď parametry můžete použít jako součást úprava odpověď klientovi. Následující hodnoty lze použít v hodnotách konfigurace:
 
-* **{backend.response.statusCode} **: Stavový kód protokolu HTTP, která je vrácena v odpovědi back-end.
-* **{backend.response.statusReason} **: Frázi důvodu protokolu HTTP, která je vrácena v odpovědi back-end.
-* **{backend.response.headers. \<HeaderName\>}**: hlavičku, který může číst z back-end odpovědi. Nahraďte * \<HeaderName\> * s názvem hlavičky, která si chcete přečíst. Pokud hlavička není zahrnut v odpovědi, bude hodnota prázdný řetězec.
+* **{backend.response.statusCode}** : Stavový kód protokolu HTTP, která je vrácena v odpovědi back-end.
+* **{backend.response.statusReason}** : Frázi důvodu protokolu HTTP, která je vrácena v odpovědi back-end.
+* **{backend.response.headers. \<HeaderName\>}**: hlavičku, který může číst z back-end odpovědi. Nahraďte *\<HeaderName\>* s názvem hlavičky, která si chcete přečíst. Pokud hlavička není zahrnut v odpovědi, bude hodnota prázdný řetězec.
 
 ### <a name="use-appsettings"></a>Odkaz nastavení aplikace
 
@@ -175,8 +175,8 @@ Můžete zakázat jednotlivé proxy přidáním `"disabled": true` k proxy serve
 Objekt requestOverrides definuje změny provedené na žádost o při volání prostředků back-end. Objekt je definováno následující vlastnosti:
 
 * **backend.Request.Method**: Metoda protokolu HTTP, který se používá k volání back-end.
-* **backend.Request.QueryString. \<ParameterName\>**: parametr řetězce dotazu, který je možné nastavit pro volání back-end. Nahraďte * \<ParameterName\> * s názvem parametr, který chcete nastavit. Pokud je zadán prázdný řetězec, není parametr součástí požadavek back-end.
-* **backend.Request.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro volání back-end. Nahraďte * \<HeaderName\> * s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, není k dispozici hlavičky v požadavku back-end.
+* **backend.Request.QueryString. \<ParameterName\>**: parametr řetězce dotazu, který je možné nastavit pro volání back-end. Nahraďte *\<ParameterName\>* s názvem parametr, který chcete nastavit. Pokud je zadán prázdný řetězec, není parametr součástí požadavek back-end.
+* **backend.Request.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro volání back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, není k dispozici hlavičky v požadavku back-end.
 
 Hodnoty můžete odkazovat nastavení aplikace a parametry z původního požadavku klienta.
 
@@ -208,7 +208,7 @@ Objekt requestOverrides definuje změny provedené v odpovědi, který je před�
 * **response.statusCode**: stavový kód protokolu HTTP má být vrácen do klienta.
 * **response.statusReason**: frázi důvodu protokolu HTTP má být vrácen do klienta.
 * **Response.body**: řetězcovou reprezentaci těla má být vrácen do klienta.
-* **Response.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro odpověď klientovi. Nahraďte * \<HeaderName\> * s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
+* **Response.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
 
 Hodnoty můžete odkazovat nastavení aplikace, parametry z původního požadavku klienta a parametry z back-end odpovědi.
 
@@ -234,13 +234,13 @@ Příklad konfigurace může vypadat následovně:
 > [!NOTE] 
 > V tomto příkladu text odpovědi nastavena přímo, takže ne `backendUri` vlastnost je vyžadována. Příklad ukazuje, jak je možné použít Azure funkce proxy pro mocking rozhraní API.
 
-[Azure Portal]: https://portal.azure.com
-[Aktivace protokolu HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[portál Azure]: https://portal.azure.com
+[aktivace protokolu HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
-[Definování objekt requestOverrides]: #requestOverrides
-[Definování objekt responseOverrides]: #responseOverrides
-[Nastavení aplikace]: #use-appsettings
-[Použití proměnných]: #using-variables
+[definovat objekt requestOverrides]: #requestOverrides
+[definovat objekt responseOverrides]: #responseOverrides
+[nastavení aplikace]: #use-appsettings
+[použijte proměnné]: #using-variables
 [parametry z původního požadavku klienta]: #request-parameters
 [parametry z back-end odpovědi]: #response-parameters

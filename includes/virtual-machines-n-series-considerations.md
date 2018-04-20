@@ -9,10 +9,10 @@ ms.date: 03/19/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: c1e57ea28f597293d8bb52207bbbb76892b1d5f5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 4/11/2018
 ms.author: rangv
 ms.openlocfilehash: 2a6a65a3c4a69a49788ce9799ceed53d53edcd77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Připojení ke službě Azure IoT Hub v cloudu Adafruit prolnutí M0 Wi-Fi
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]

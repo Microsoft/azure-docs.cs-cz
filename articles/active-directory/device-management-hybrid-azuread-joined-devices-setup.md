@@ -1,11 +1,11 @@
 ---
-title: "Jak nakonfigurovat hybridní připojená k Azure Active Directory zařízení | Microsoft Docs"
-description: "Naučte se konfigurovat hybridní Azure Active Directory připojené zařízení."
+title: Jak nakonfigurovat hybridní připojená k Azure Active Directory zařízení | Microsoft Docs
+description: Naučte se konfigurovat hybridní Azure Active Directory připojené zařízení.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -526,7 +526,7 @@ Ve službě AD FS musíte přidat pravidel transformace vystavení, který před
 
     `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-8. Na federačním serveru, zadejte příkaz prostředí PowerShell níže po nahrazení ** \<RPObjectName\> ** s předávající strany název objektu pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
+8. Na federačním serveru, zadejte příkaz prostředí PowerShell níže po nahrazení **\<RPObjectName\>** s předávající strany název objektu pro vztah důvěryhodnosti objektu předávající strany služby Azure AD. Tento objekt obvykle jmenuje **Microsoft Office 365 Identity Platform**.
    
     `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

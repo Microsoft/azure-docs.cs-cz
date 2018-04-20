@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -155,7 +155,7 @@ GO
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
-#### <a name="sqldwsink-example"></a>SqlDWSink example
+#### <a name="sqldwsink-example"></a>Příklad SqlDWSink
 
 ```JSON
 "sink": {
@@ -319,7 +319,7 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdr
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Čas | Čas |
-| DateTimeOffset | DateTimeOffset |
+| Datový typ DateTimeOffset | Datový typ DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (až 8000) |
 | NText | NVarChar (až 4000) |
@@ -329,7 +329,7 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdr
 | NChar | NChar |
 | VarChar | VarChar (až 8000) |
 | NVarChar | NVarChar (až 4000) |
-| Xml | Varchar (až 8000) |
+| XML | Varchar (až 8000) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -346,37 +346,37 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte[] |
+| Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datový typ DateTimeOffset |Datový typ DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte] |
 | Plovoucí desetinná čárka |Dvojitý |
-| Bitové kopie |Byte[] |
+| Bitové kopie |Byte] |
 | celá čísla |Int32 |
-| money |Decimal |
+| peníze |Decimal |
 | nchar |Řetězec, Char] |
 | ntext |Řetězec, Char] |
 | číselné |Decimal |
 | nvarchar |Řetězec, Char] |
-| skutečné |Svobodný/svobodná |
-| ROWVERSION |Byte[] |
+| skutečné |Jednoduchá |
+| ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| sql_variant |Objekt * |
+| SQL_VARIANT |Objekt * |
 | Text |Řetězec, Char] |
-| time |TimeSpan |
-| časové razítko |Byte[] |
+| time |Časový interval |
+| časové razítko |Byte] |
 | tinyint |Bajtů |
 | Typ UniqueIdentifier |Guid |
-| varbinary |Byte[] |
+| varbinary |Byte] |
 | varchar |Řetězec, Char] |
-| xml |Xml |
+| xml |XML |
 
 Můžete také mapovat sloupců z datové sady zdroje na sloupce ze sady jímku dat v definici aktivity kopírování. Podrobnosti najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
 
