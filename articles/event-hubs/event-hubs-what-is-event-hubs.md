@@ -1,12 +1,12 @@
 ---
-title: "Co je Azure Event Hubs a proč tuto službu používat | Microsoft Docs"
-description: "Přehled a úvod do služby Azure Event Hubs – ingestování telemetrických údajů z webů, aplikací a zařízení v cloudovém měřítku"
+title: Co je Azure Event Hubs a proč tuto službu používat | Microsoft Docs
+description: Přehled a úvod do služby Azure Event Hubs – ingestování telemetrických údajů z webů, aplikací a zařízení v cloudovém měřítku
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article

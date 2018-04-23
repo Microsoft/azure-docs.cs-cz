@@ -1,6 +1,6 @@
 ---
-title: "Instanční objekt pro cluster Azure Kubernetes"
-description: "Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service"
+title: Instanční objekt pro cluster Azure Kubernetes
+description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service
 services: container-service
 author: neilpeterson
 manager: timlt

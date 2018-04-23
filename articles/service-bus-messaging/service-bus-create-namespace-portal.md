@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření oboru názvů služby Service Bus na webu Azure Portal | Dokumentace Microsoftu"
-description: "Vytvořte obor názvů služby Service Bus pomocí webu Azure Portal."
+title: Vytvoření oboru názvů služby Service Bus na webu Azure Portal | Dokumentace Microsoftu
+description: Vytvořte obor názvů služby Service Bus pomocí webu Azure Portal.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fbb10e62-b133-4851-9d27-40bd844db3ba
 ms.service: service-bus-messaging
 ms.devlang: tbd

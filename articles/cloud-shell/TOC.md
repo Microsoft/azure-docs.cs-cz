@@ -18,6 +18,7 @@
 ## [Bash – spouštění runbooků Ansible](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [Vložení služby Cloud Shell](embed-cloud-shell.md)
+# [Použití Instalační služby MSI ve službě Cloud Shell](msi-authorization.md)
 
 # [Řešení potíží a omezení](troubleshooting.md)
 

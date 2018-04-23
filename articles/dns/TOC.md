@@ -8,6 +8,7 @@
 ## [Nejčastější dotazy k DNS](dns-faq.md)
 ## [Použití privátních zón DNS](private-dns-overview.md)
 ## [Scénáře pro privátní DNS](private-dns-scenarios.md)
+## [Metriky a výstrahy DNS](dns-alerts-metrics.md)
 
 
 # Začínáme

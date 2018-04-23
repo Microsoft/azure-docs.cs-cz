@@ -1,6 +1,6 @@
 ---
-title: "Ukázky v Azure CLI pro službu Azure Database for MySQL"
-description: "Tento článek uvádí dostupné vzorové kódy Azure CLI pro práci se službou Azure Database for MySQL."
+title: Ukázky v Azure CLI pro službu Azure Database for MySQL
+description: Tento článek uvádí dostupné vzorové kódy Azure CLI pro práci se službou Azure Database for MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh

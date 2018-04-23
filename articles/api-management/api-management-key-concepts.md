@@ -1,11 +1,11 @@
 ---
-title: "Klíčové koncepty a přehled Azure API Managementu | Dokumentace Microsoftu"
-description: "Seznamte se s rozhraními API, produkty, rolemi, skupinami a dalšími klíčovými koncepty služby API Management."
+title: Klíčové koncepty a přehled Azure API Managementu | Dokumentace Microsoftu
+description: Seznamte se s rozhraními API, produkty, rolemi, skupinami a dalšími klíčovými koncepty služby API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na

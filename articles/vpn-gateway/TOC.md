@@ -11,6 +11,12 @@
 ### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
 ### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
+# Ukázky
+## [Vytvoření brány VPN](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md)
+## [Point-to-Site – ověřování pomocí protokolu RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md)
+## [Point-to-Site – ověřování pomocí certifikátů](./scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md)
+## [Site-to-Site](./scripts/vpn-gateway-sample-site-to-site-powershell.md)
+
 # Koncepty
 ## [Plánování a návrh pro VPN Gateway](vpn-gateway-plan-design.md)
 ## [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md)
@@ -19,8 +25,9 @@
 ## [BGP a VPN Gateway](vpn-gateway-bgp-overview.md)
 ## [Možnosti připojení s vysokou dostupností](vpn-gateway-highlyavailable.md)
 ## [Připojení typu Point-to-Site](point-to-site-about.md)
+## [Směrování typu Point-to-Site](vpn-gateway-about-point-to-site-routing.md)
 
-# Postup
+# Návody
 ## Konfigurace připojení typu Site-to-Site
 ### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)

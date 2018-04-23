@@ -1,0 +1,251 @@
+- name: Dokumentace k Azure AD B2C
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o Azure AD B2C
+      expanded: true
+      href: active-directory-b2c-overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Nastavení přihlašování – ASP.NET
+      href: active-directory-b2c-quickstarts-web-app.md
+    - name: Nastavení přihlašování – Plocha
+      href: active-directory-b2c-quickstarts-desktop-app.md
+    - name: Nastavení přihlašování – Samostatná stránka
+      href: active-directory-b2c-quickstarts-spa.md
+- name: Kurzy
+  items:
+    - name: 1 – Registrace aplikací
+      href: tutorial-register-applications.md
+    - name: 2 – Ověření účtů
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-app.md
+        - name: Plocha
+          href: active-directory-b2c-tutorials-desktop-app.md
+        - name: Samostatná stránka
+          href: active-directory-b2c-tutorials-spa.md
+    - name: 3 – Udělení přístupu k rozhraní API
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-api.md
+        - name: Plocha
+          href: active-directory-b2c-tutorials-desktop-app-webapi.md
+        - name: Samostatná stránka
+          href: active-directory-b2c-tutorials-spa-webapi.md
+- name: Ukázky
+  href: code-samples.md
+- name: Návody
+  items:
+    - name: Registrace vaší aplikace
+      href: active-directory-b2c-app-registration.md
+    - name: Předdefinované zásady
+      href: active-directory-b2c-reference-policies.md
+    - name: Mobilní a desktopové aplikace
+      items:
+        - name: Přehled
+          href: active-directory-b2c-reference-oauth-code.md
+        - name: iOS
+          items:
+            - name: iOS Swift s využitím MSAL
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal'
+            - name: iOS ObjC s využitím ověřování aplikace
+              href: active-directory-b2c-devquickstarts-ios.md
+        - name: Android
+          items:
+            - name: Android s využitím MSAL
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-android-native-msal'
+            - name: Android s využitím ověřování aplikace
+              href: active-directory-b2c-devquickstarts-android.md
+            - name: .NET
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
+            - name: Xamarin
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
+        - name: Webové aplikace
+          items:
+            - name: Přehled
+              href: active-directory-b2c-reference-oidc.md
+            - name: ASP.NET
+              href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
+            - name: Jádro ASP.NET
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
+            - name: Node.js
+              href: active-directory-b2c-devquickstarts-web-node.md
+        - name: Jednostránkové aplikace
+          items:
+            - name: Přehled
+              href: active-directory-b2c-reference-spa.md
+            - name: JavaScript s využitím MSAL
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
+            - name: JavaScript s využitím Hello
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
+        - name: Webová rozhraní API
+          items:
+            - name: ASP.NET
+              href: active-directory-b2c-devquickstarts-api-dotnet.md
+            - name: Jádro ASP.NET
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
+            - name: Node.js
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
+            - name: Volání webového rozhraní API .NET
+              href: active-directory-b2c-devquickstarts-web-api-dotnet.md
+    - name: Průvodci
+      items:
+        - name: Konfigurace zprostředkovatelů identity
+          items:
+            - name: Účet Microsoft
+              href: active-directory-b2c-setup-msa-app.md
+            - name: Facebook
+              href: active-directory-b2c-setup-fb-app.md
+            - name: Google
+              href: active-directory-b2c-setup-goog-app.md
+            - name: Amazon
+              href: active-directory-b2c-setup-amzn-app.md
+            - name: LinkedIn
+              href: active-directory-b2c-setup-li-app.md
+            - name: Twitter
+              href: active-directory-b2c-setup-twitter-app.md
+            - name: Weibo
+              href: active-directory-b2c-setup-weibo-app.md
+            - name: QQ
+              href: active-directory-b2c-setup-qq-app.md
+            - name: WeChat
+              href: active-directory-b2c-setup-wechat-app.md
+        - name: Nastavení samoobslužného resetování hesla
+          href: active-directory-b2c-reference-sspr.md
+        - name: Přizpůsobení uživatelského rozhraní
+          href: active-directory-b2c-reference-ui-customization.md
+          items:
+            - name: Pomocný nástroj pro přizpůsobení
+              href: active-directory-b2c-reference-ui-customization-helper-tool.md
+        - name: Použití Graph API v Azure AD
+          href: active-directory-b2c-devquickstarts-graph-dotnet.md
+        - name: Získání přístupových tokenů
+          href: active-directory-b2c-access-tokens.md
+        - name: Zakázání ověření e-mailu
+          href: active-directory-b2c-reference-disable-ev.md
+        - name: Konfigurace tokenů
+          href: active-directory-b2c-token-session-sso.md
+        - name: Povolení MFA
+          href: active-directory-b2c-reference-mfa.md
+        - name: Použití vlastních atributů
+          href: active-directory-b2c-reference-custom-attr.md
+        - name: Přizpůsobení hesla
+          href: active-directory-b2c-reference-password-complexity.md
+        - name: Přizpůsobení jazyka
+          href: active-directory-b2c-reference-language-customization.md
+        - name: Použití rozhraní API pro vytváření sestav
+          href: active-directory-b2c-reference-usage-reporting-api.md
+        - name: Migrace uživatelů
+          href: active-directory-b2c-user-migration.md
+    - name: Architektura prostředí identit
+      items:
+        - name: Vlastní zásady
+          href: active-directory-b2c-overview-custom.md
+        - name: Průvodci
+          items:
+            - name: Začínáme
+              href: active-directory-b2c-get-started-custom.md
+            - name: Konfigurace zprostředkovatelů OIDC/OAUTH
+              items:
+                - name: Azure AD
+                  href: active-directory-b2c-setup-aad-custom.md
+                - name: Účet Microsoft
+                  href: active-directory-b2c-custom-setup-msa-idp.md
+                - name: Google+
+                  href: active-directory-b2c-custom-setup-goog-idp.md
+                - name: LinkedIn
+                  href: active-directory-b2c-custom-setup-li-idp.md
+                - name: Twitter
+                  href: active-directory-b2c-custom-setup-twitter-idp.md
+            - name: Konfigurace zprostředkovatelů SAML
+              items:
+                - name: ADFS
+                  href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                - name: Salesforce
+                  href: active-directory-b2c-setup-sf-app-custom.md
+            - name: Integrace rozhraní RESTful API
+              items:
+                - name: Ověření uživatelského vstupu
+                  href: active-directory-b2c-rest-api-validation-custom.md
+                - name: Získání dalších deklarací identity
+                  href: active-directory-b2c-rest-api-step-custom.md
+                - name: Přidání vlastního rozhraní RESTful API
+                  href: active-directory-b2c-custom-rest-api-netfw.md
+                - name: Zabezpečení rozhraní RESTful API pomocí základního ověřování
+                  href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+                - name: Zabezpečení rozhraní RESTful API pomocí ověřování certifikátů
+                  href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+            - name: Toky uživatele
+              items:
+                - name: Konfigurace uživatelského vstupu
+                  href: active-directory-b2c-configure-signup-self-asserted-custom.md
+                - name: Vlastní atributy
+                  href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+                - name: Přizpůsobení uživatelského rozhraní
+                  href: active-directory-b2c-ui-customization-custom.md
+                - name: Dynamické přizpůsobení uživatelského rozhraní
+                  href: active-directory-b2c-ui-customization-custom-dynamic.md
+                - name: Přizpůsobení tokenů
+                  href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+                - name: Složitost hesla
+                  href: active-directory-b2c-reference-password-complexity-custom.md
+                - name: Změna hesla
+                  href: active-directory-b2c-reference-password-change-custom.md
+                - name: Povolení možnosti zůstat přihlášeni
+                  href: active-directory-b2c-reference-kmsi-custom.md
+            - name: Řešení potíží
+              items:
+                - name: Shromažďování protokolů pomocí Application Insights
+                  href: active-directory-b2c-troubleshoot-custom.md
+        - name: Referenční informace
+          items:
+            - name: "Poznámky k\_verzi"
+              href: active-directory-b2c-developer-notes-custom.md
+            - name: Zprostředkovatelé relace jednotného přihlašování
+              href: active-directory-b2c-reference-sso-custom.md
+            - name: Přizpůsobení jazyka
+              href: active-directory-b2c-language-customization-custom.md
+            - name: Definice architektury důvěryhodnosti
+              href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+    - name: Referenční informace
+      items:
+        - name: Ukázky kódů
+          href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+        - name: Glosář
+          items:
+            - name: Typy aplikací
+              href: active-directory-b2c-apps.md
+            - name: Protokoly pro ověřování
+              href: active-directory-b2c-reference-protocols.md
+            - name: Tokeny
+              href: active-directory-b2c-reference-tokens.md
+        - name: Rezidence dat a dostupnost oblastí
+          href: active-directory-b2c-reference-tenant-type.md
+        - name: Povolení fakturace
+          href: active-directory-b2c-how-to-enable-billing.md
+        - name: Řízení rizik
+          href: active-directory-b2c-reference-threat-management.md
+        - name: Problém s vytvářením adresáře
+          href: active-directory-b2c-support-create-directory.md
+        - name: Aplikace rozšíření
+          href: active-directory-b2c-reference-extensions-app.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Nejčastější dotazy
+      href: active-directory-b2c-faqs.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c'
+    - name: Podpora
+      href: active-directory-b2c-support.md
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

@@ -47,6 +47,7 @@
 ### [Azure Portal](resource-group-portal.md)
 ### [Použití značek k uspořádání prostředků](resource-group-using-tags.md)
 ### [Přesunutí prostředků do nové skupiny nebo předplatného](resource-group-move-resources.md)
+### [Programové vytváření předplatných EA](programmatically-create-subscription.md)
 ### [Vytvoření skupin pro správu](management-groups-create.md)
 ### [Správa skupin pro správu](management-groups-manage.md)
 ### [Příklady zásad správného řízení](resource-manager-subscription-examples.md)

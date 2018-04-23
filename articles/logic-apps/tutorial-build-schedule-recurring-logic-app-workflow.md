@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření automatizovaných pracovních postupů prostřednictvím Scheduleru – Azure Logic Apps | Microsoft Docs"
-description: "Tento kurz ukazuje, jak ve službě Azure Logic Apps vytvořit opakované automatizované pracovní postupy s využitím Scheduleru"
+title: Vytvoření automatizovaných pracovních postupů prostřednictvím Scheduleru – Azure Logic Apps | Microsoft Docs
+description: Tento kurz ukazuje, jak ve službě Azure Logic Apps vytvořit opakované automatizované pracovní postupy s využitím Scheduleru
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na

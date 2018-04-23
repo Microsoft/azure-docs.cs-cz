@@ -470,6 +470,8 @@
           href: troubleshoot-app-connection.md
         - name: Selhání přidělení
           href: allocation-failure.md
+        - name: Selhání přidělení – klasický virtuální počítač
+          href: allocation-failure-classic.md
         - name: Problémy při nasazení
           href: troubleshoot-deploy-vm.md
         - name: Vytvoření virtuálního počítače

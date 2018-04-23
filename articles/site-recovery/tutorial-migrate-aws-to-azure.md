@@ -1,6 +1,6 @@
 ---
-title: "Migrace virtuálních počítačů z AWS do Azure pomocí Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak migrovat virtuální počítače běžící ve službě Amazon Web Services (AWS) pomocí služby Azure Site Recovery do Azure."
+title: Migrace virtuálních počítačů z AWS do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak migrovat virtuální počítače běžící ve službě Amazon Web Services (AWS) pomocí služby Azure Site Recovery do Azure.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

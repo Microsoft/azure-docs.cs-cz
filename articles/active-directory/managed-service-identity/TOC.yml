@@ -9,6 +9,34 @@
               href: tutorial-windows-vm-access-arm.md
             - name: Virtuální počítači s Linuxem
               href: tutorial-linux-vm-access-arm.md
+    - name: Kurzy
+      items:
+        - name: Virtuální počítač nebo škálovací sada virtuálních počítačů s Windows
+          items:
+            - name: Přístup ke službě Azure Data Lake Store
+              href: tutorial-windows-vm-access-datalake.md
+            - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
+              href: tutorial-windows-vm-access-storage.md
+            - name: Přístup ke službě Azure Storage pomocí SAS
+              href: tutorial-windows-vm-access-storage-sas.md
+            - name: Přístup k Azure SQL
+              href: tutorial-windows-vm-access-sql.md
+            - name: Přístup ke službě Azure Key Vault
+              href: tutorial-windows-vm-access-nonaad.md
+            - name: Přístup ke službě Azure Cosmos DB
+              href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Virtuální počítač nebo škálovací sada virtuálních počítačů s Linuxem
+          items:
+            - name: Přístup ke službě Azure Data Lake Store
+              href: tutorial-linux-vm-access-datalake.md
+            - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
+              href: tutorial-linux-vm-access-storage-access-key.md
+            - name: Přístup ke službě Azure Storage pomocí SAS
+              href: tutorial-linux-vm-access-storage-sas.md
+            - name: Přístup ke službě Azure Key Vault
+              href: tutorial-linux-vm-access-nonaad.md
+            - name: Přístup ke službě Azure Cosmos DB
+              href: tutorial-linux-vm-access-cosmos-db.md
     - name: Konfigurace MSI pro virtuální počítač Azure
       items:
         - name: Pomocí webu Azure Portal
@@ -45,30 +73,6 @@
           href: how-to-use-vm-sign-in.md
         - name: Použití se sadami Azure SDK
           href: how-to-use-vm-sdk.md
-    - name: Použití spravované identity VM/VMSS s Windows
-      items:
-        - name: Přístup ke službě Azure Data Lake Store
-          href: tutorial-windows-vm-access-datalake.md
-        - name: Přístup k Azure SQL
-          href: tutorial-windows-vm-access-sql.md
-        - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
-          href: tutorial-windows-vm-access-storage.md
-        - name: Přístup ke službě Azure Storage pomocí SAS
-          href: tutorial-windows-vm-access-storage-sas.md
-        - name: Přístup ke službě Azure Key Vault
-          href: tutorial-windows-vm-access-nonaad.md
-    - name: Použití spravované identity VM/VMSS s Linuxem
-      items:
-        - name: Přístup ke službě Azure Data Lake Store
-          href: tutorial-linux-vm-access-datalake.md
-        - name: Přístup ke službě Azure Storage pomocí přístupové klávesy
-          href: tutorial-linux-vm-access-storage.md
-        - name: Přístup ke službě Azure Storage pomocí SAS
-          href: tutorial-linux-vm-access-storage-sas.md
-        - name: Přístup ke službě Azure Key Vault
-          href: tutorial-linux-vm-access-nonaad.md
-        - name: Přístup ke službě Azure Cosmos DB
-          href: tutorial-linux-vm-access-cosmos-db.md
     - name: Nejčastější dotazy a známé problémy
       href: known-issues.md
     - name: Referenční informace

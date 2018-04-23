@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
+    - name: Šablony Resource Manageru
+      href: backup-rm-template-samples.md
 - name: Koncepty
   items:
     - name: Nejčastější dotazy
@@ -100,7 +102,7 @@
         - name: Zálohování virtuálních počítačů
           items:
             - name: Zálohování virtuálních počítačů do trezoru služby Recovery Services
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: Zálohování šifrovaných virtuálních počítačů
               href: backup-azure-vms-encryption.md
             - name: Povolení zálohování virtuálních počítačů během vytváření virtuálních počítačů
@@ -179,9 +181,9 @@
           href: backup-azure-delete-vault.md
     - name: Řešení potíží
       items:
-        - name: Chybové zprávy zálohování virtuálních počítačů IaaS
+        - name: Virtuální počítač Azure
           href: backup-azure-vms-troubleshoot.md
-        - name: Pro agenta Azure Backup (MARS) nebo rozšíření virtuálního počítače vypršel časový limit
+        - name: Vypršení platnosti agenta Azure Backup nebo rozšíření virtuálního počítače
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Zálohování souborů a složek je pomalé
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +191,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Agent Azure Backup (MARS)
+        - name: Agent Azure Backup
           href: backup-azure-mars-troubleshoot.md
-        - name: Zálohování sdílených složek Azure
+        - name: Sdílená složka Azure
           href: troubleshoot-azure-files.md
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST – zálohování
+      href: /rest/api/backup/
+    - name: REST – trezor služby Recovery Services
+      href: /rest/api/recoveryservices/
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

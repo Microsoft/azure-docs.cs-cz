@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Batch"
+title: Dokumentace ke službě Batch
 metadata:
-  title: "Dokumentace ke službě Batch – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  title: Dokumentace ke službě Batch – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   services: batch
   author: czeumault
   manager: carolz
@@ -19,12 +19,12 @@ metadata:
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 02/28/2018
 abstract:
-  description: "Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  description: Služba Batch umožňuje efektivně spouštět rozsáhlé paralelní aplikace a aplikace vysokovýkonného výpočetního prostředí (HPC) v cloudu. Můžete definovat výpočetní prostředky Azure, abyste mohli spouštět vaše aplikace paralelně nebo ve velkém měřítku bez nutnosti ruční konfigurace a správy infrastruktury. Můžete naplánovat úlohy náročné na výpočetní výkon a potom dynamicky přidávat nebo odebírat výpočetní prostředky na základě vašich požadavků. Naučte se používat Azure Batch prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Dozvíte se, jak spustit vaši první úlohu služby Batch v Azure."
+    text: Dozvíte se, jak spustit vaši první úlohu služby Batch v Azure.
   - type: list
     style: icon48
     items:
@@ -44,33 +44,33 @@ sections:
         src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
       text: Python
       href: quick-run-python
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se ve službě Batch spouštět úlohy náročné na výpočetní výkon."
+    text: Naučte se ve službě Batch spouštět úlohy náročné na výpočetní výkon.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-parallel-dotnet\">Paralelní zpracování souborů s využitím .NET SDK</a>"
-    - html: "<a href=\"tutorial-parallel-python\">Paralelní zpracování souborů s využitím Python SDK</a>"
-    - html: "<a href=\"tutorial-rendering-cli\">Vykreslování scén s využitím Arnoldu</a>"
-    - html: "<a href=\"tutorial-r-doazureparallel\">Paralelní simulace R</a>"
-- title: "Ukázky"
+    - html: <a href="tutorial-parallel-dotnet">Paralelní zpracování souborů s využitím .NET SDK</a>
+    - html: <a href="tutorial-parallel-python">Paralelní zpracování souborů s využitím Python SDK</a>
+    - html: <a href="tutorial-rendering-cli">Vykreslování scén s využitím Arnoldu</a>
+    - html: <a href="tutorial-r-doazureparallel">Paralelní simulace R</a>
+- title: Ukázky
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="cli-samples">Azure CLI</a>
-- title: "Referenční informace"
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
     - title: Jazyky
       html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/batchservice\">Rozhraní REST API služby Batch</a></p><p><a href=\"/rest/api/batchmanagement/\">Rozhraní REST API pro správu služby Batch</a></p>"
+      html: <p><a href="/rest/api/batchservice">Rozhraní REST API služby Batch</a></p><p><a href="/rest/api/batchmanagement/">Rozhraní REST API pro správu služby Batch</a></p>

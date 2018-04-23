@@ -1,8 +1,8 @@
 ---
-title: ".NET SDK: Operace systému souborů v Azure Data Lake Store | Dokumentace Microsoftu"
-description: "Použití sady .NET SDK pro Azure Data Lake Store k provádění operací systému souborů ve službě Data Lake Store, jako je například vytváření složek atd."
+title: '.NET SDK: Operace systému souborů v Azure Data Lake Store | Dokumentace Microsoftu'
+description: Použití sady .NET SDK pro Azure Data Lake Store k provádění operací systému souborů ve službě Data Lake Store, jako je například vytváření složek atd.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun

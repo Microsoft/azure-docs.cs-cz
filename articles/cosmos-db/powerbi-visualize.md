@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 7f884589cc198bed95a4a5fe51325a72cb799b69
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí Power BI connector
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit k účtu Azure Cosmos DB prostřednictvím konektoru Azure Cosmos DB pro Power BI.   
@@ -96,16 +96,16 @@ Jste připravení a vyzkoušejte ho? Můžeme začít.
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – okno připojení plochy](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 8. Pokud se připojujete k tomuto koncovému bodu poprvé, budete vyzváni k klíč účtu. Pro svůj vlastní účet načíst klíč z **primární klíč** pole **[klíče jen pro čtení](manage-account.md#keys)** okno portálu Azure. Pro účet ukázku klíč je `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`. Zadejte příslušný klíč a pak klikněte na tlačítko **Connect**.
    
-    Doporučujeme používat klíč jen pro čtení, při vytváření sestav.  To zabrání ohrožením hlavního klíče na potenciální rizika zabezpečení. Klíč jen pro čtení má k dispozici [klíče](manage-account.md#keys) okno portálu Azure, nebo můžete použít informace o účtu ukázka výše uvedeného.
+    Doporučujeme používat klíč jen pro čtení, při vytváření sestav.  To zabraňuje ohrožením hlavního klíče na potenciální rizika zabezpečení. Klíč jen pro čtení má k dispozici [klíče](manage-account.md#keys) okno portálu Azure, nebo můžete použít informace o účtu ukázka výše uvedeného.
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – klíč účtu](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
     
     > [!NOTE] 
     > Pokud dojde k chybě, která říká "Zadaná databáze nebyl nalezen." najdete v části alternativní řešení kroky v tomto [Power BI problém](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200).
     
-9. Když se účet úspěšně připojí, **Navigátor** se zobrazí.  **Navigátor** se zobrazí seznam databází v rámci účtu.
-10. Klikněte na tlačítko a rozbalte v databázi, kde data pro sestavy bude pocházet z, pokud používáte ukázku účet, vyberte **volcanodb**.   
-11. Nyní vyberte kolekci, která se budou načítat data z. Pokud používáte ukázku účtu, vyberte **volcano1**.
+9. Když se účet úspěšně připojí, **Navigátor** podokně se zobrazí.  **Navigátor** zobrazuje seznam databází v rámci účtu.
+10. Klikněte na tlačítko a rozbalte v databázi, kde data pro sestavy pochází z, pokud používáte ukázku účet, vyberte **volcanodb**.   
+11. Nyní vyberte kolekci, která obsahuje data pro načtení. Pokud používáte ukázku účtu, vyberte **volcano1**.
     
     Zobrazí se v podokně náhledu seznam **záznam** položky.  Dokument je reprezentován jako **záznam** typu v Power BI. Podobně vnořený blok v dokumentu JSON je také **záznam**.
     
@@ -115,28 +115,29 @@ Jste připravení a vyzkoušejte ho? Můžeme začít.
 ## <a name="flattening-and-transforming-json-documents"></a>Vyrovnání a transformace dokumentů JSON
 1. Přepnout na okno editoru dotazů Power BI, kde **dokumentu** sloupec v prostředním podokně.
    ![Editor dotazů aplikace Power BI Desktop](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. Klikněte na rozbalovací na pravé straně **dokumentu** záhlaví sloupce.  Zobrazí se v místní nabídce seznam polí.  Vyberte pole, je nutné pro sestavu, pro instanci, sopka název, zemi, oblast, umístění, zvýšení oprávnění, typ, stav a poslední erupcí vědět a pak klikněte na tlačítko **OK**.
+2. Klikněte na rozbalovací na pravé straně **dokumentu** záhlaví sloupce.  Zobrazí se v místní nabídce seznam polí.  Vyberte pole, které potřebujete pro sestavu, například sopka název, zemi, oblast, umístění, zvýšení oprávnění, typ, stav a poslední erupcí vědět. Zrušte zaškrtnutí políčka **použijte původní název sloupce jako předponu** pole a pak klikněte na **OK**.
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – rozbalte dokumenty](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. V prostředním podokně se zobrazí náhledu výsledku s poli vybrané.
+3. V prostředním podokně zobrazí se pole vybrané náhledu výsledku.
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – vyrovnání výsledky](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
 4. V našem příkladu je vlastnost umístění GeoJSON blok v dokumentu.  Jak vidíte, jako je reprezentována umístění **záznam** typu v Power BI Desktop.  
-5. Klikněte na rozbalovací na pravé straně záhlaví sloupce umístění.  Zobrazí se v místní nabídce s souřadnice a typ pole.  Umožňuje vybrat pole souřadnice a klikněte na tlačítko **OK**.
+5. Klikněte na rozbalovací na pravé straně Document.Location záhlaví sloupce.  Zobrazí se v místní nabídce s souřadnice a typ pole.  Umožňuje vybrat pole souřadnice, ujistěte se, **použijte původní název sloupce jako předponu** není vybrána a klikněte na tlačítko **OK**.
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – záznam o umístění](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
 6. V prostředním podokně zobrazí souřadnice sloupec **seznamu** typu.  Jak je znázorněno na začátku tohoto kurzu, GeoJSON data v tomto kurzu je bod typu s hodnoty zeměpisné šířky a délky zaznamenané v poli souřadnice.
    
     Element souřadnice [0] představuje zeměpisnou délku během šířky představuje souřadnice [1].
     ![Power BI kurz pro Azure Cosmos DB Power BI connector - souřadnice seznamu](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. K vyrovnání pole souřadnice, vytvoříme **vlastní sloupec** názvem LatLong.  Vyberte **přidat sloupec** pásu karet a klikněte na **přidat sloupec vlastní**.  **Přidat sloupec vlastní** okno by se měla objevit.
+7. Shrnout pole souřadnice, vytvořte **vlastní sloupec** názvem LatLong.  Vyberte **přidat sloupec** pásu karet a klikněte na **vlastní sloupec**.  **Vlastní sloupec** se zobrazí v okně.
 8. Zadejte název pro nový sloupec, například LatLong.
 9. Potom zadejte vlastní vzorec pro nový sloupec.  Pro náš příklad jsme se zřetězení hodnoty zeměpisné šířky a délky, oddělených čárkou, jak je uvedeno dále pomocí následujícího vzorce: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`. Klikněte na **OK**.
    
     Další informace na Data Analysis výrazy (DAX) včetně funkce jazyka DAX, navštivte [DAX základní v Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop).
    
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – přidat sloupec vlastní](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
-10. V prostředním podokně se zobrazí nyní, nový sloupec LatLong, naplní hodnoty zeměpisné šířky a délky, oddělený čárkou.
+
+10. Nyní zobrazuje v prostředním podokně nové sloupce LatLong naplněna hodnotami.
     
     ![Power BI kurz pro Azure Cosmos DB Power BI connector – vlastní LatLong sloupce](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
     
@@ -145,10 +146,8 @@ Jste připravení a vyzkoušejte ho? Můžeme začít.
     ![Použité kroky by měla být zdroje, navigace, rozšířit dokumentu, rozšířit Document.Location, přidat vlastní](./media/powerbi-visualize/power-bi-applied-steps.png)
     
     Pokud vaše postup se liší, kroků navíc odstranit a znovu zkuste přidat vlastní sloupce. 
-11. Nyní jsme dokončili vyrovnání data v tabulkovém formátu.  Můžete využít všech funkcí dostupných v editoru dotazů na obrazec a transformovat data do databáze. Cosmos.  Pokud používáte ukázku, změnit datový typ pro zvýšení oprávnění k **celé číslo** změnou **datový typ** na **Domů** pásu karet.
-    
-    ![Power BI kurz pro Azure Cosmos DB Power BI connector - Změna typu sloupce](./media/powerbi-visualize/power_bi_connector_pbichangetype.png)
-12. Klikněte na tlačítko **zavřete a použít** uložit datový model.
+
+11. Klikněte na tlačítko **zavřete a použít** uložit datový model.
     
     ![Power BI kurz pro Azure Cosmos DB Power BI connector - zavřete & použít](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
 
@@ -160,7 +159,7 @@ Zobrazení Power BI Desktop sestavy je, kde můžete začít s vytvářením ses
 
 V zobrazení sestavy byste měli najít:
 
-1. **Pole** podokně, to je, kde uvidíte seznam modelů dat s poli, můžete použít pro sestavy.
+1. **Pole** podokně, to je, kde můžete zobrazit seznam modelů dat s poli, můžete použít pro sestavy.
 2. **Vizualizace** podokně. Sestava může obsahovat jeden nebo více vizualizací.  Vyberte typy visual hodí potřeb z **vizualizace** podokně.
 3. **Sestavy** plátno, to je, kde vytvoříte vizuálech sestavy.
 4. **Sestavy** stránky. Můžete přidat více stránek sestavy v Power BI Desktop.
@@ -175,6 +174,7 @@ Na obrázku je základní kroky k vytvoření jednoduché sestavy interaktivní 
 6. Nyní jste vytvořili základní sestavy.  Sestavu můžete přizpůsobit přidáním více vizualizací.  V našem případě jsme přidali průřez sopka typ aby interaktivní sestavy.  
    
     ![Snímek obrazovky po dokončení tohoto kurzu Power BI pro Azure Cosmos DB konečné sestavy Power BI Desktop](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+7. V nabídce Soubor klikněte na tlačítko **Uložit** a uložte soubor jako PowerBITutorial.pbix.
 
 ## <a name="publish-and-share-your-report"></a>Publikování a sdílení sestavy
 Pokud chcete sdílet sestavy, musí mít účet na PowerBI.com.
@@ -201,26 +201,26 @@ Potom postupujte podle pokynů v [připnout dlaždice ze sestavy](https://powerb
 
 Před vytvořením řídicího panelu můžete provést také ad hoc změny do sestavy. Doporučuje se ale používáte Power BI Desktop k provedení změn a znovu publikovat sestavu na PowerBI.com.
 
-## <a name="refresh-data-in-powerbicom"></a>Aktualizovat data na PowerBI.com
-Existují dva způsoby, jak aktualizovat data, ad hoc a naplánované.
+<!-- ## Refresh data in PowerBI.com
+There are two ways to refresh data, ad hoc and scheduled.
 
-Pro ad hoc aktualizace, klikněte jednoduše na eclipses (...) pomocí **datovou sadu**, například PowerBITutorial. Zobrazí seznam akcí, včetně **aktualizovat**. Klikněte na tlačítko **aktualizovat** aktualizovat data.
+For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Snímek obrazovky aktualizace teď na PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
 
-Plánovaná aktualizace postupujte takto.
+For a scheduled refresh, do the following.
 
-1. Klikněte na tlačítko **naplánovat aktualizaci** v seznamu akcí. 
+1. Click **Schedule Refresh** in the action list. 
 
-    ![Snímek obrazovky naplánovat aktualizaci na PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
-2. V **nastavení** rozbalte **přihlašovací údaje ke zdroji dat**. 
-3. Klikněte na **upravit přihlašovací údaje**. 
+    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+2. In the **Settings** page, expand **Data source credentials**. 
+3. Click on **Edit credentials**. 
    
-    Se zobrazí místní okno konfigurace. 
-4. Zadejte klíč k připojení k účtu Azure Cosmos DB pro tuto datovou sadu a pak klikněte na **přihlášení**. 
-5. Rozbalte položku **naplánovat aktualizaci** a nastavení plánu, kterou chcete datovou sadu obnovte. 
-6. Klikněte na tlačítko **použít** a dokončení nastavení plánované aktualizace.
-
+    The Configure popup appears. 
+4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
+5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
+6. Click **Apply** and you are done setting up the scheduled refresh.
+-->
 ## <a name="next-steps"></a>Další postup
 * Další informace o službě Power BI naleznete v tématu [Začínáme s Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Další informace o databázi Cosmos Azure, najdete v článku [cílovou stránku dokumentace Azure Cosmos DB](https://azure.microsoft.com/documentation/services/cosmos-db/).
