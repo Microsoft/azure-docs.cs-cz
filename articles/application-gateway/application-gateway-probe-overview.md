@@ -69,7 +69,7 @@ Jakmile je zadaná kritéria shody, může být připojen testovat pomocí konfi
 > [!NOTE]
 > Port je stejný port jako nastavení HTTP back-end.
 
-Výchozí kontroly zjistí pouze http://127.0.0.1: \<port\> k určení stavu. Pokud potřebujete nakonfigurovat test stavu na Přejít na vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v následujících krocích:
+Výchozí kontroly zjistí pouze http://127.0.0.1:\<port\> k určení stavu. Pokud potřebujete nakonfigurovat test stavu na Přejít na vlastní adresu URL nebo změnit další nastavení, musíte použít vlastní testy paměti, jak je popsáno v následujících krocích:
 
 ## <a name="custom-health-probe"></a>Test vlastní stavu
 
