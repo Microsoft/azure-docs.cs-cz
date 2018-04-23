@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Azure Machine Learning"
+title: Dokumentace ke službě Azure Machine Learning
 metadata:
-  title: "Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API"
-  description: "Dokumentace, videa a ukázkové modely pro Machine Learning, cloudovou službu pro vědce pracující s daty a vývojáře, kteří v aplikacích používají prediktivní analýzy"
+  title: Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API
+  description: Dokumentace, videa a ukázkové modely pro Machine Learning, cloudovou službu pro vědce pracující s daty a vývojáře, kteří v aplikacích používají prediktivní analýzy
   services: machine-learning
   author: garyericson
   manager: jhubbard
@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/01/2018
   ms.author: garye
-  ms.openlocfilehash: 3303174486e9fd7a5b0f6dfe713be93e569a80a7
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.openlocfilehash: 6bfeb53dccd9d281cd467b8261eff5cd47cb4dfb
+  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 04/19/2018
 abstract:
-  description: "Naučte se využívat Azure Machine Learning s plně spravovanými službami pro vytváření, nasazování a správu strojového učení a modely AI v cloudu. Kurzy, rychlé starty, reference a příklady vám ukážou, jak sestavit a nasadit modely pro libovolnou z vašich aplikací."
+  description: Naučte se využívat Azure Machine Learning s plně spravovanými službami pro vytváření, nasazování a správu strojového učení a modely AI v cloudu. Kurzy, rychlé starty, reference a příklady vám ukážou, jak sestavit a nasadit modely pro libovolnou z vašich aplikací.
 sections:
 - title: 
   items:
@@ -27,13 +27,13 @@ sections:
     style: cards
     className: cardsA
     items:
-    - html: "<a href=\"/azure/machine-learning/preview/\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/i_machine-learning.svg\" alt=\"Azure Machine Learning services\"> (Preview) <br><b>Služby Azure Machine Learning</b></a> <p>Zjistíte, jak tyto služby umožňují odborníkům na data vyvíjet řešení AI s využitím knihoven a nástrojů Pythonu s celou řadou různých dat Azure a výpočetních služeb.</p>"
-    - html: "<a href=\"/azure/machine-learning/studio/\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/machine-learning-studio.svg\" alt=\"Azure Machine Learning Studio\"> <br><b>Azure Machine Learning Studio</b></a> <p>Naučte se používat tento nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat.</p>"
-    - html: "<a href=\"/azure/machine-learning/data-science-virtual-machine/index\"> <img height=\"48\" width=\"48\" src=\"/azure/machine-learning/media/index/virtualmachine.svg\" alt=\"Data Science Virtual Machine\"> <br><b>Virtuální počítač pro datové vědy</b></a> <p>Naučte se používat virtuální počítače pro datové vědy a hloubkové učení. Tyto přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.</p>"
-- title: "Zprovoznění během 5 minut"
+    - html: <a href="/azure/machine-learning/service/"> <img height="48" width="48" src="/azure/machine-learning/media/index/i_machine-learning.svg" alt="Azure Machine Learning services"> (Preview) <br><b>Služby Azure Machine Learning</b></a> <p>Zjistíte, jak tyto služby umožňují odborníkům na data vyvíjet řešení AI s využitím knihoven a nástrojů Pythonu s celou řadou různých dat Azure a výpočetních služeb.</p>
+    - html: <a href="/azure/machine-learning/studio/"> <img height="48" width="48" src="/azure/machine-learning/media/index/machine-learning-studio.svg" alt="Azure Machine Learning Studio"> <br><b>Azure Machine Learning Studio</b></a> <p>Naučte se používat tento nástroj pro spolupráci, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy dat.</p>
+    - html: <a href="/azure/machine-learning/data-science-virtual-machine/index"> <img height="48" width="48" src="/azure/machine-learning/media/index/virtualmachine.svg" alt="Data Science Virtual Machine"> <br><b>Virtuální počítač pro datové vědy</b></a> <p>Naučte se používat virtuální počítače pro datové vědy a hloubkové učení. Tyto přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.</p>
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se rychle nastavit a používat služby Azure Machine Learning (Preview), Studio a virtuální počítače pro datové vědy:"
+    text: 'Naučte se rychle nastavit a používat služby Azure Machine Learning (Preview), Studio a virtuální počítače pro datové vědy:'
   - type: table
     style: dataMatrix
     columns:
@@ -44,20 +44,20 @@ sections:
     - image:
         src: media/index/virtualmachine.svg
     rows:
-    - title: "Nastavení"
+    - title: Nastavení
       values:
-      - href: /azure/machine-learning/preview/quickstart-installation
+      - href: /azure/machine-learning/service/quickstart-installation
       - href: /azure/machine-learning/studio/create-workspace
       - href: /azure/machine-learning/data-science-virtual-machine/provision-vm
-    - title: "Sestavení modelu"
+    - title: Sestavení modelu
       values:
-      - href: /azure/machine-learning/preview/quickstart-installation
+      - href: /azure/machine-learning/service/quickstart-installation
       - href: /azure/machine-learning/studio/create-experiment
       - href: 
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se vytvářet, nasazovat a využívat modely s využitím služeb Azure Machine Learning (Preview) a Studio:"
+    text: 'Naučte se vytvářet, nasazovat a využívat modely s využitím služeb Azure Machine Learning (Preview) a Studio:'
   - type: table
     style: dataMatrix
     columns:
@@ -66,31 +66,31 @@ sections:
     - image:
         src: media/index/machine-learning-studio.svg
     rows:
-    - title: "Příprava dat"
+    - title: Příprava dat
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-1
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-1
       - href: /azure/machine-learning/studio/walkthrough-2-upload-data
-    - title: "Sestavení modelu"
+    - title: Sestavení modelu
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-2
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-2
       - href: /azure/machine-learning/studio/walkthrough-3-create-new-experiment
-    - title: "Zprovoznění modelu"
+    - title: Zprovoznění modelu
       values:
-      - href: /azure/machine-learning/preview/tutorial-classifying-iris-part-3
+      - href: /azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-3
       - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
-    - title: "Využití modelu"
+    - title: Využití modelu
       values:
-      - href: /azure/machine-learning/preview/model-management-consumption
+      - href: /azure/machine-learning/desktop-workbench/model-management-consumption
       - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
-- title: "Další technologie Microsoft Machine Learning"
+- title: Další technologie Microsoft Machine Learning
   items:
   - type: list
     style: cards
     className: cardsA
     items:
-    - html: "<a href=\"/azure/machine-learning/team-data-science-process\"> <img src=\"media/index/tdsp.png\" alt=\"Team Data Science Process\" height=\"32\" width=\"32\"> <p><b>Vědecké zpracování týmových dat</b></p> </a> Metodologie pro datové vědy založená na spolupráci, která týmům pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace."
-    - html: "<a href=\"/sql/advanced-analytics/r/r-services\"> <img src=\"media/index/logo_sql.png\" alt=\"SQL Server Machine Learning Services\" height=\"32\" width=\"32\"> <p><b>SQL Server Machine Learning Services</b></p> </a> Analýzy v databázích s podporou pro R i Python."
-    - html: "<a href=\"/machine-learning-server/\"> <img src=\"media/index/ml-server.png\" alt=\"Microsoft Machine Learning Server\" height=\"32\" width=\"32\"> <p><b>Microsoft Machine Learning Server</b></p> </a> Flexibilní podniková platforma pro strojové učení, která podporuje nasazení R a Pythonu ve Windows, Linuxu a clusterech HDInsight Spark a Hadoop."
-    - html: "<a href=\"/azure/batch-ai/\"> <img src=\"media/index/batch.png\" alt=\"Batch AI Training\" height=\"32\" width=\"32\"> <p><b>Batch AI Training</b></p> </a>Spravovaná služba, která pomáhá souběžně experimentovat s vašimi modely AI pomocí libovolné architektury a poté je trénovat ve velkém měřítku napříč grafickými procesory v clusteru."
-    - html: "<a href=\"/azure/#pivot=products&panel=cognitive\"> <img src=\"media/index/cognitive-services.png\" alt=\"Cognitive Services\" height=\"32\" width=\"32\"> <p><b>Cognitive Services</b></p> </a> Rozhraní API, která podporují inteligentní algoritmy pro aplikace, weby a roboty."
-    - html: "<a href=\"/cognitive-toolkit/\"> <img src=\"media/index/cntk.png\" alt=\"Microsoft Cognitive Toolkit\" height=\"32\" width=\"32\"> <p><b>Microsoft Cognitive Toolkit</b></p> </a> Bezplatná opensourcová sada nástrojů pro trénování algoritmů hloubkového učení."
+    - html: <a href="/azure/machine-learning/team-data-science-process"> <img src="media/index/tdsp.png" alt="Team Data Science Process" height="32" width="32"> <p><b>Vědecké zpracování týmových dat</b></p> </a> Metodologie pro datové vědy založená na spolupráci, která týmům pomáhá efektivně dodávat prediktivní analytická řešení a inteligentní aplikace.
+    - html: <a href="/sql/advanced-analytics/r/r-services"> <img src="media/index/logo_sql.png" alt="SQL Server Machine Learning Services" height="32" width="32"> <p><b>SQL Server Machine Learning Services</b></p> </a> Analýzy v databázích s podporou pro R i Python.
+    - html: <a href="/machine-learning-server/"> <img src="media/index/ml-server.png" alt="Microsoft Machine Learning Server" height="32" width="32"> <p><b>Microsoft Machine Learning Server</b></p> </a> Flexibilní podniková platforma pro strojové učení, která podporuje nasazení R a Pythonu ve Windows, Linuxu a clusterech HDInsight Spark a Hadoop.
+    - html: <a href="/azure/batch-ai/"> <img src="media/index/batch.png" alt="Batch AI Training" height="32" width="32"> <p><b>Batch AI Training</b></p> </a>Spravovaná služba, která pomáhá souběžně experimentovat s vašimi modely AI pomocí libovolné architektury a poté je trénovat ve velkém měřítku napříč grafickými procesory v clusteru.
+    - html: <a href="/azure/#pivot=products&panel=cognitive"> <img src="media/index/cognitive-services.png" alt="Cognitive Services" height="32" width="32"> <p><b>Cognitive Services</b></p> </a> Rozhraní API, která podporují inteligentní algoritmy pro aplikace, weby a roboty.
+    - html: <a href="/cognitive-toolkit/"> <img src="media/index/cntk.png" alt="Microsoft Cognitive Toolkit" height="32" width="32"> <p><b>Microsoft Cognitive Toolkit</b></p> </a> Bezplatná opensourcová sada nástrojů pro trénování algoritmů hloubkového učení.

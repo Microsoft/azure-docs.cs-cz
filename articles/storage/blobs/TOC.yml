@@ -10,7 +10,7 @@
   items:
     - name: vytvořit účet úložiště
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Práce s objekty blob – Azure Portal
+    - name: Práce s objekty blob – - Azure Portal
       href: storage-quickstart-blobs-portal.md
     - name: Práce s objekty blob – Průzkumník služby Storage
       href: storage-quickstart-blobs-storage-explorer.md
@@ -170,6 +170,8 @@
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Povolení a zobrazení metrik
               href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Migrace na nové metriky úložiště
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Postup
   items:
     - name: vytvořit účet úložiště

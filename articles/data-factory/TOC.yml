@@ -374,7 +374,9 @@
           href: manage-azure-ssis-integration-runtime.md
         - name: Konfigurace nastavení výkonu prostředí Azure-SSIS Integration Runtime
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Vyvolání balíčků SSIS pomocí aktivity uložených procedur
+        - name: Spouštění balíčků služby SSIS pomocí aktivity SSIS
+          href: how-to-invoke-ssis-package-ssis-activity.md
+        - name: Spouštění balíčků služby SSIS pomocí aktivity uložených procedur
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Plánování prostředí Azure-SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md

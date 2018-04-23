@@ -25,6 +25,7 @@
 ## [Úroveň kompatibility](stream-analytics-compatibility-level.md)
 ## [Běžné vzory dotazů](stream-analytics-stream-analytics-query-patterns.md)
 ## [Důležité informace o řazení událostí](stream-analytics-out-of-order-and-late-events.md)
+## [Kontrolní bod a opětovného přehrání](stream-analytics-concepts-checkpoint-replay.md)
 
 # Návody
 
@@ -68,7 +69,7 @@
 
 ## Řešení potíží
 ### [Postup při řešení potíží](stream-analytics-troubleshooting-guide.md)
-### [Řešení běžných problémů](stream-analytics-common-troubleshooting-issues.md)
+### [Běžné problémy](stream-analytics-common-troubleshooting-issues.md)
 ### [Diagram úloh](stream-analytics-job-diagram-with-metrics.md)
 ### [Diagnostické protokoly](stream-analytics-job-diagnostic-logs.md)
 ### [Kontrola stavu prostředků](stream-analytics-resource-health.md)
@@ -94,16 +95,8 @@
 ## [Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [Ceny](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
-## [Poznámky k verzi](stream-analytics-release-notes.md)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [Zákaznické případové studie](https://azure.microsoft.com/case-studies/?service=stream-analytics)
 ## [Dokument white paper – Zpracování událostí v reálném čase](stream-analytics-real-time-event-processing-reference-architecture.md)
-## [Porovnání Storm a Stream Analytics](stream-analytics-comparison-storm.md)
-
-
-
-
-
-

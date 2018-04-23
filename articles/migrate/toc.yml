@@ -18,6 +18,12 @@
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
+    - name: Migrace místních prostředků do Azure
+      items:
+        - name: Přehled scénáře – Migrace místních prostředků do Azure
+          href: migrate-scenarios-overview.md
+        - name: Scénář 1 – Posouzení vhodnosti místních prostředků k migraci do Azure
+          href: migrate-scenarios-assessment.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů

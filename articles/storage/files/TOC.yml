@@ -126,6 +126,8 @@
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: Povolení a zobrazení metrik
               href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Migrace na nové metriky úložiště
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Přenos dat
       items:
         - name: Přesouvání dat do a ze Storage

@@ -1,6 +1,6 @@
 ---
-title: "Kurz Azure Container Service – Příprava ACR"
-description: "Kurz Azure Container Service – Příprava ACR"
+title: Kurz Azure Container Service – Příprava ACR
+description: Kurz Azure Container Service – Příprava ACR
 services: container-service
 author: neilpeterson
 manager: timlt

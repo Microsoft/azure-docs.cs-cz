@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start – Azure Kubernetes cluster pro Linux"
-description: "Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro linuxové kontejnery ve službě Azure Container Service."
+title: Rychlý start – Azure Kubernetes cluster pro Linux
+description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro linuxové kontejnery ve službě Azure Container Service.
 services: container-service
 author: neilpeterson
 manager: timlt

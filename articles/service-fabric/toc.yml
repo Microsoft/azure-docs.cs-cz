@@ -238,6 +238,8 @@
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Přesun služeb
               href: service-fabric-cluster-resource-manager-movement-cost.md
+            - name: Automatické škálování služeb
+              href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: Monitorování a diagnostika
       items:
         - name: Přehled monitorování
@@ -261,8 +263,6 @@
           href: service-fabric-health-introduction.md
         - name: Reportování událostí stavu
           href: service-fabric-report-health.md
-        - name: Monitorování pomocí OMS
-          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Integrace se službou API Management
       href: service-fabric-api-management-overview.md
 - name: Návody
@@ -405,6 +405,10 @@
               href: service-fabric-securing-containers.md
             - name: Nastavení gMSA pro kontejnery Windows
               href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Konfigurace pravidelného zálohování (clustery v Azure)
+          href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
+        - name: Konfigurace pravidelného zálohování (samostatné clustery)
+          href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: Migrace staré aplikace v Javě pro podporu Mavenu
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Práce ve vývojovém prostředí Windows/VS
@@ -555,6 +559,8 @@
               href: service-fabric-diagnostics-oms-setup.md
             - name: Přidání agenta OMS
               href: service-fabric-diagnostics-oms-agent.md
+            - name: Monitorování pomocí OMS
+              href: service-fabric-diagnostics-event-analysis-oms.md
             - name: Monitorování kontejnerů
               href: service-fabric-diagnostics-oms-containers.md
         - name: Analýza s využitím Application Insights

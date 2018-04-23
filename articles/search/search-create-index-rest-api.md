@@ -5,15 +5,16 @@ author: chaosrealm
 manager: jlembicz
 ms.author: eugenesh
 tags: azure-portal
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 12/08/2016
-ms.openlocfilehash: c03f3130dcdb2393d684b22b7ff728ae55f04e67
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e871fa8cd2228067b3a1511b74ff7a425d1dc9fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
 > [!div class="op_single_selector"]

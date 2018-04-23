@@ -1,10 +1,10 @@
 ---
-title: "Nástroje Azure Data Lake: Nástroje použití Azure Data Lake pro Visual Studio Code | Microsoft Docs"
-description: "Další informace o použití nástroje Azure Data Lake pro Visual Studio Code pro vytvoření, testování a spouštění skriptů U-SQL. "
+title: 'Nástroje Azure Data Lake: Nástroje použití Azure Data Lake pro Visual Studio Code | Microsoft Docs'
+description: 'Další informace o použití nástroje Azure Data Lake pro Visual Studio Code pro vytvoření, testování a spouštění skriptů U-SQL. '
 Keywords: VScode,Azure Data Lake Tools,Local run,Local debug,Local Debug,preview file,upload to storage path,download,upload
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
+documentationcenter: ''
+author: Jejiang
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Pomocí nástroje Azure Data Lake pro Visual Studio Code
 
@@ -35,10 +35,10 @@ Nástroje Azure Data Lake pro VSCode podporuje Windows, Linux a systému MacOS.
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 
 Pro systému MacOS a Linux:
-- [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core). 
-- [Mono 5.2.x](http://www.mono-project.com/download/).
+- [.NET core SDK 2.0](https://www.microsoft.com/net/download/core). 
+- [Monofonní 5.2.x](http://www.mono-project.com/download/).
 
-## <a name="install-data-lake-tools"></a>Nainstalovat nástroje Data Lake
+## <a name="install-data-lake-tools"></a>Instalace nástrojů Data Lake
 
 Po instalaci požadavky, můžete nainstalovat nástroje Data Lake pro VS Code.
 
@@ -356,13 +356,13 @@ Stav se zobrazí v dolní části stavový řádek po dokončení stahování a 
 
 **Integrace se službou Azure** 
 
-- Před přihlášení k Azure, můžete vždy rozšířit **DATALAKE EXPLORER**, pak klikněte na tlačítko **Přihlaste se k Azur** k přihlášení k Azure. Po přihlášení, zobrazí se všechny odběry v rámci účtu Azure, jsou uvedeny v levém panelu **DATALAKE EXPLORER**. 
+- Před přihlášení k Azure, můžete vždy rozšířit **AZURE DATALAKE**, pak klikněte na tlačítko **přihlaste k Azure** k přihlášení k Azure. Po přihlášení, zobrazí se všechny odběry v rámci účtu Azure, jsou uvedeny v levém panelu **AZURE DATALAKE**. 
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/sign-in-datalake-explorer.png)
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
-**Navigační ADLA metadat** 
+**Navigační ADLA metadat**
 
 - Rozbalte vašeho předplatného Azure, můžete přejít U-SQL databáze, zobrazení **schémata**, **pověření**, **sestavení**, **tabulky**, **Index**a tak dále pod uzlem U-SQL databáze.
 
@@ -382,11 +382,31 @@ Stav se zobrazí v dolní části stavový řádek po dokončení stahování a 
 
 **Integrace ADLS** 
 
- - Přejděte na **účet úložiště**, můžete **Preview**, **Stáhnout**, **odstranit**, **kopírovat relativní cestu**, **Kopírovat úplnou cestu** pomocí místní nabídky na uzlu souboru. Můžete **aktualizovat**, **nahrát**, **nahrát složky**, **odstranit** kliknutím pravým tlačítkem myši v místní nabídce uzlu složky.
+Přejděte na **Data Lake Store**
+
+ - Na uzlu složky můžete **aktualizovat**, **odstranit**, **nahrát**, **nahrát složky**, **kopírovat relativní cestu**, **Kopírovat úplnou cestu** v místní nabídce klikněte pravým tlačítkem.
 
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
+ - Na uzlu souboru můžete **Stáhnout**, **Preview**, **odstranit**, **relativní cesta kopie**, **Kopírovat úplnou cestu**v místní nabídce klikněte pravým tlačítkem. 
+
    ![DataLake explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-download-preview-file.png)
+
+**Integrace WASB**
+
+Přejděte na **úložiště objektů Blob**
+
+- Na uzlu kontejner objektů blob můžete **aktualizovat**, **odstranit kontejner objektů Blob**, **nahrát objekt Blob** v místní nabídce klikněte pravým tlačítkem.
+
+    ![Uzel kontejner objektu blob úložiště objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
+
+- Na uzlu složky můžete **aktualizovat**, **nahrát objekt Blob** v místní nabídce klikněte pravým tlačítkem.
+
+    ![Uzel složky úložiště objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
+
+- Na uzlu souboru můžete **Preview či upravit**, **Stáhnout**, **odstranit**, **relativní cesta kopie**, **Kopírovat úplnou cestu** v místní nabídce klikněte pravým tlačítkem.
+
+    ![Uzel souborového úložiště objektů BLOB](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-file-node.png)
 
 ## <a name="open-adl-storage-explorer-in-portal"></a>Otevřete Průzkumníka úložiště ADL portálu
 1. Vyberte Ctrl + Shift + P otevřete paletu příkaz.

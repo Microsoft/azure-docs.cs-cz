@@ -14,8 +14,12 @@
     - name: Konfigurace zásad Hivu
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: Správa clusterů připojených k doméně
-      href: apache-domain-joined-manage.md
+    - name: Propojení s clusterem připojeným k doméně pomocí VSCode
+      href: ../hdinsight-for-vscode.md
+    - name: Propojení s clusterem připojeným k doméně pomocí IntelliJ
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: Propojení s clusterem připojeným k doméně pomocí Eclipse
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: Zabezpečení dat
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

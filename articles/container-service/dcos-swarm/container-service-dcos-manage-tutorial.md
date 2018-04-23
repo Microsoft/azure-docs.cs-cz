@@ -1,6 +1,6 @@
 ---
-title: "Kurz Azure Container Service – Správa DC/OS"
-description: "Kurz Azure Container Service – Správa DC/OS"
+title: Kurz Azure Container Service – Správa DC/OS
+description: Kurz Azure Container Service – Správa DC/OS
 services: container-service
 author: neilpeterson
 manager: timlt

@@ -307,7 +307,7 @@ items:
                       - name: .NET
                         href: table-storage-how-to-use-dotnet.md
                       - name: 'F#'
-                        href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+                        href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
                       - name: Node.js
                         href: table-storage-cloud-service-nodejs.md
                       - name: Java
@@ -371,18 +371,17 @@ items:
           - name: Připojení ke Spark GraphX
             href: spark-connector-graph.md
           - name: Streamování s Kafkou a Sparkem v HDInsight
-            href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
-            maintainContext: true
+            href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Nasazení webu pomocí služby Azure App Service
             href: create-website.md
           - name: Protokolování aplikací pomocí funkce Logic Apps
-            href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
+            href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
           - name: Vytvoření vazby na službu Azure Functions
-            href: ../azure-functions/functions-bindings-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Integrace se službou Azure Search
-            href: ../search/search-howto-index-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: Přesun dat pomocí služby Azure Data Factory
-            href: ../data-factory/connector-azure-cosmos-db.md
+            href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
           - name: Analýza dat v reálném čase pomocí Azure Stream Analytics
             href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Získání změněného záznamu HL7 FHIR pomocí Logic Apps
@@ -394,7 +393,7 @@ items:
           - name: Využití ovladače ODBC pro vizualizaci dat
             href: odbc-driver.md
           - name: Použití aplikace Spring Boot Starter s rozhraními SQL API
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+            href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
   - name: Referenční informace
     items:
       - name: Ukázky kódů

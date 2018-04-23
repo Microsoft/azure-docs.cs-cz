@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8fede07aea8410cfc2cee120102c9f8c3becd746
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0d930cc200d8f8df30927ba7d2f942b2eb8a85a7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Připojení a dotazování dat pomocí aplikace SQL Server Management Studio
 
-[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) je integrované prostředí pro správu jakékoliv infrastruktury SQL, od SQL Serveru po službu SQL Database pro Microsoft Windows. Tento rychlý úvodní kurz ukazuje použití SSMS k připojení k databázi SQL Azure a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi. 
+[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) je integrované prostředí pro správu jakékoliv infrastruktury SQL, od SQL Serveru po službu SQL Database pro Microsoft Windows. Tento rychlý start ukazuje použití SSMS k připojení k databázi SQL Azure a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi. 
 
 ## <a name="prerequisites"></a>Požadavky
 

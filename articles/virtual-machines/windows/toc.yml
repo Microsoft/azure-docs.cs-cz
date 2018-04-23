@@ -421,6 +421,8 @@
           href: troubleshoot-activation-problems.md
         - name: Selhání přidělení
           href: allocation-failure.md
+        - name: Selhání přidělení – klasický virtuální počítač
+          href: allocation-failure-classic.md
         - name: Znovunasazení virtuálního počítače
           href: redeploy-to-new-node.md
         - name: Běžné chybové zprávy

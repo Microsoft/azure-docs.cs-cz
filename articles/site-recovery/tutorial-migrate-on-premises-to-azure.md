@@ -1,6 +1,6 @@
 ---
-title: "Migrace místních počítačů do Azure pomocí Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery."
+title: Migrace místních počítačů do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery

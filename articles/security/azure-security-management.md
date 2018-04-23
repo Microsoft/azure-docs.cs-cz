@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -99,7 +99,7 @@ Konfigurace cloudových služeb Azure se provádí prostřednictvím portálu Az
 
 Virtuální počítač – nasazené aplikace podle potřeby poskytují svoje vlastní klientské nástroje a rozhraní, například konzola Microsoft Management Console (MMC), konzola pro správu podniku (například Microsoft System Center nebo Windows Intune) nebo jiná aplikace pro správu – například Microsoft SQL Server Management Studio. Tyto nástroje jsou obvykle umístěny v podnikovém prostředí nebo v klientské síti. Můžou záviset na konkrétních síťových protokolech, například na protokolu RDP (Remote Desktop Protocol), které vyžadují přímé stavové připojení. Některé z nich můžou mít povolené webové rozhraní, které nesmí být zveřejněno nebo zpřístupněno na internetu.
 
-Přístup k správě služeb infrastruktury a platformy Azure můžete omezit pomocí [vícefaktorového ověřování](../multi-factor-authentication/multi-factor-authentication.md), [certifikátů X.509 pro správu](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) a pravidel brány firewall. Portál Azure a rozhraní SMAPI vyžadují protokol TLS (Transport Layer Security). Služby a aplikace, které nasadíte do Azure, vyžadují, abyste udělali ochranná opatření, která vhodným způsobem závisí na vaší aplikaci. Tyto mechanismy můžete snadněji povolit prostřednictvím konfigurace standardizované posílené pracovní stanice.
+Přístup k správě služeb infrastruktury a platformy Azure můžete omezit pomocí [vícefaktorového ověřování](../active-directory/authentication/multi-factor-authentication.md), [certifikátů X.509 pro správu](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/) a pravidel brány firewall. Portál Azure a rozhraní SMAPI vyžadují protokol TLS (Transport Layer Security). Služby a aplikace, které nasadíte do Azure, vyžadují, abyste udělali ochranná opatření, která vhodným způsobem závisí na vaší aplikaci. Tyto mechanismy můžete snadněji povolit prostřednictvím konfigurace standardizované posílené pracovní stanice.
 
 ### <a name="management-gateway"></a>Brána pro správu
 Pokud chcete centralizovat veškerý přístup pro správu a zjednodušit sledování a protokolování, můžete nasadit vyhrazený server [brány vzdálené plochy](https://technet.microsoft.com/library/dd560672) (brána VP) v místní síti, který je připojený k prostředí Azure.
@@ -110,7 +110,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 * Připojte bránu VP ke stejné [doméně pro správu](http://technet.microsoft.com/library/bb727085.aspx) jako pracovní stanice správce. Je to nezbytné, když používáte VPN typu site-to-site s protokolem IPsec nebo ExpressRoute v rámci domény, která má jednosměrný vztah důvěryhodnosti k Azure AD, nebo pokud federujete přihlašovací údaje mezi místní instancí AD DS a Azure AD.
 * Pokud chcete, aby brána VP ověřila platnost názvu klientského počítače (propojení s doménou) a povolila přístup k webu Azure Portal, na konfigurujte [zásady autorizace připojení klienta](http://technet.microsoft.com/library/cc753324.aspx).
 * Protokol IPsec pro [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) slouží k ochraně před odposloucháváním provozu správy a před odcizením tokenu. Popřípadě zvažte použití izolovaného internetového odkazu prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-* Povolte vícefaktorové ověřování (prostřednictvím služby [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)) nebo ověřování pomocí čipové karty, aby ho mohli používat správci, kteří se připojují prostřednictvím brány VP.
+* Povolte vícefaktorové ověřování (prostřednictvím služby [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)) nebo ověřování pomocí čipové karty, aby ho mohli používat správci, kteří se připojují prostřednictvím brány VP.
 * Pokud chcete minimalizovat počet povolených koncových bodů pro správu, nakonfigurujte v Azure [omezení IP adres](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) nebo [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) prostředku.
 
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení

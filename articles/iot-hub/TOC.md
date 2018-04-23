@@ -121,7 +121,7 @@
 #### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java back-end / zařízení Java](iot-hub-java-java-twin-how-to-configure.md)
 #### [Back-end Python / zařízení Python](iot-hub-python-python-twin-how-to-configure.md)
-### Použití úloh zařízení k aktualizaci firmwaru zařízení
+### Použití dvojčat zařízení k aktualizaci firmwaru zařízení
 #### [Back-end Node / zařízení Node](iot-hub-node-node-firmware-update.md)
 #### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-firmware-update.md)
 #### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-firmware-update.md)

@@ -1,6 +1,6 @@
 ---
-title: "Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure pomocí Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak provést převzetí služeb při selhání virtuálních počítačů VMware a fyzických serverů do Azure a navrácení služeb po obnovení do místní lokality pomocí Azure Site Recovery."
+title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure pomocí Site Recovery | Microsoft Docs
+description: Zjistěte, jak provést převzetí služeb při selhání virtuálních počítačů VMware a fyzických serverů do Azure a navrácení služeb po obnovení do místní lokality pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm

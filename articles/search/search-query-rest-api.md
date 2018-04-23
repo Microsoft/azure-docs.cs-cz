@@ -4,14 +4,15 @@ description: Sestavení vyhledávacího dotazu ve službě Azure Search a použi
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 01/12/2017
-ms.openlocfilehash: d6cba61c670d005b59c9bc88bd1c90399f29cc3d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d51726ee1387b8e1cae05084d9c60eb93a28c112
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>Dotazování indexu Azure Search pomocí REST API
 > [!div class="op_single_selector"]
