@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 282b0a8bdb2fabad98dacacbff61c7cc4b8b6fb1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -82,7 +82,10 @@ Ve službě Cloud Shell pomocí příkazu [`az webapp create`](/cli/azure/webapp
 V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes). 
 
 ```azurecli-interactive
+# Bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+# PowerShell
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
 
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
