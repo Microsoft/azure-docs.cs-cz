@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení řízení Azure správu identit a přístupu
 Mnoho zvažte identity jako novou vrstvu hranice zabezpečení, převzetí této role z perspektivy tradiční zaměřené na síti. Tento vývoj primární pivot pro zabezpečení pozornost a investice do pocházet z skutečnost, že se staly stále porézní hranice sítě a že hraniční obrana nemůže být co nejúčinnější se jednou byly před rozbalení [BYOD](http://aka.ms/byodcg) zařízení a cloudových aplikací.
@@ -88,7 +88,7 @@ Povolením Azure MFA pro uživatele přidáte druhou vrstvu zabezpečení uživa
 
 Příklad: můžete vynutit vícefaktorové ověřování Azure pro vaše uživatele a bude sloužit jako ověření telefonního hovoru nebo textové zprávy. Pokud dojde k ohrožení přihlašovacích údajů uživatele, není útočník přístup k jakémukoli prostředku, protože nemají přístup k telefonu uživatele. Organizace, které Nepřidávejte další vrstvy ochrany identit budou náchylnější pro útoku krádeží přihlašovacích údajů, což může vést k ohrožení zabezpečení dat.
 
-Jeden alternativou pro organizace, které chcete zachovat celý proces ověřování řízení místní je použít [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), označované taky jako MFA na místě. Pomocí této metody přesto bude možné vynutit ověřování Multi-Factor authentication, a zajistit přitom ochranu MFA server místní.
+Jeden alternativou pro organizace, které chcete zachovat celý proces ověřování řízení místní je použít [Azure Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-deploy.md), označované taky jako MFA na místě. Pomocí této metody přesto bude možné vynutit ověřování Multi-Factor authentication, a zajistit přitom ochranu MFA server místní.
 
 Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Factor Authentication v cloudu](../active-directory/authentication/howto-mfa-getstarted.md).
 
