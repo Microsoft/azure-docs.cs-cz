@@ -1,5 +1,21 @@
-– Název: ' kurz: návrh databázi Azure pro PostgreSQL pomocí rozhraní příkazového řádku Azure, popis: Tento kurz ukazuje, jak vytvářet, konfigurovat a dotaz na první databáze Azure pro PostgreSQL server pomocí rozhraní příkazového řádku Azure.
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
+---
+title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI'
+description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první server Azure Database for PostgreSQL pomocí Azure CLI.
+services: postgresql
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
+ms.devlang: azure-cli
+ms.topic: tutorial
+ms.date: 04/01/2018
+ms.openlocfilehash: acba480631ba69a81da3029aadfb9cb51797549a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
@@ -27,31 +43,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 Vytvořte [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v umístění `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-
-## <a name="add-the-extension"></a>Přidání rozšíření
-Přidejte aktualizované rozšíření pro správu služby Azure Database for PostgreSQL pomocí následujícího příkazu:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Zkontrolujte, že máte nainstalovanou správnou verzi rozšíření. 
-```azurecli-interactive
-az extension list
-```
-
-Vrácený kód JSON by měl obsahovat následující: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Pokud verze 0.0.5 nevrátí, spusťte následující příkaz a aktualizujte příponu: 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Vytvoření serveru Azure Database for PostgreSQL
@@ -209,7 +200,7 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak pomocí Azure CLI (rozhraní příkazového řádku) a dalších nástrojů provést následující:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL

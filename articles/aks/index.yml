@@ -14,13 +14,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: a381697e27a2d85d99fcbb1eb54bd7c0ab7d743a
-  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+  ms.openlocfilehash: 7b18da63a74059e48d41f9e0a068a4f7618aa97a
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: Azure Container Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
+  description: Azure Container Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.<div class="IMPORTANT alert"><p>Důležité</p><p>Azure Container Service (AKS) je aktuálně ve verzi <strong>Preview</strong>. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s <a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">dodatečnými podmínkami použití</a>. Některé aspekty této funkce se můžou před zveřejněním změnit.</p></div>
 sections:
 - title: Zprovoznění během 5 minut
   items:

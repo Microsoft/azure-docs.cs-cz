@@ -4,7 +4,7 @@ description: Zjistěte, jak provádět dotazy na tabulková data ve službě Azu
 services: cosmos-db
 documentationcenter: ''
 author: kanshiG
-manager: jhubbard
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d3b46169f7cc175d1959ecaa7184faa0fd81590c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
 

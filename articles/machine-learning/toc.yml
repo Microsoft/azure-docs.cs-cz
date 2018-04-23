@@ -1,5 +1,5 @@
 - name: Služby Azure Machine Learning (Preview)
-  href: preview/index.yml
+  href: service/index.yml
 - name: Azure Machine Learning Studio
   href: studio/index.yml
 - name: Virtuální počítač pro datové vědy

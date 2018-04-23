@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 99b400d17164881f75cb8313c939d713610c221e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5be05ebd201796707934eac665793dd2c1dc8f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze dokumentů pomocí Javy a webu Azure Portal
 
@@ -54,43 +54,11 @@ Než budete moci vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>Přidání ukázkových dat
 
-Teď můžete do nové kolekce přidávat data pomocí Průzkumníka dat.
-
-1. Rozbalte kolekci **Položky** a klikněte na **Dokumenty** > **Nový dokument**.
-
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
-  
-2. Teď do kolekce přidejte dokument s následující strukturou a klikněte na **Uložit**. Pomocí tlačítka **Kopírovat** v poli s kódem zkopírujte kód JSON do schránky.
-
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
-
-    ![Zkopírujte data json a v Průzkumníku dat na webu Azure Portal klikněte na Uložit.](./media/create-sql-api-java/azure-cosmosdb-data-explorer-save-document.png)
-
-3.  Vytvořte a uložte ještě jeden dokument, ve kterém změníte `id` na 2 a ostatní vlastnosti změníte podle svých potřeb. Nové dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB neuplatňuje pro data žádné schéma.
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>Dotazování dat
 
-Teď můžete k načítání a filtrování dat používat dotazy v Průzkumníku dat.
-
-1. Všimněte si, že ve výchozím nastavení je dotaz nastavený na `SELECT * FROM c`. Tento výchozí dotaz načte a zobrazí všechny dokumenty v kolekci. 
-
-    ![Výchozí dotaz v Průzkumníku dat je „SELECT * FROM c“](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
-
-2. Zůstaňte na kartě **Dokumenty** a změňte dotaz tak, že kliknete na tlačítko **Upravit filtr**, do pole predikátu dotazu přidáte `ORDER BY c._ts DESC` a kliknete na **Použít filtr**.
-
-    ![Změna výchozího dotazu přidáním „ORDER BY c._ts DESC“ a kliknutím na Použít filtr](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
-
-Tento upravený dotaz vypíše dokumenty v sestupném pořadí na základě jejich časového razítka, takže teď je jako první uvedený váš druhý dokument. Pokud jste obeznámeni se syntaxí jazyka SQL, můžete do tohoto pole zadat jakýkoli z podporovaných [příkazů jazyka SQL](sql-api-sql-query.md). 
-
-Tím končí naše práce v Průzkumníku dat. Než se přesuneme k práci s kódem, upozorňujeme, že Průzkumník dat můžete použít také k vytváření uložených procedur, funkcí UDF a triggerů pro provádění obchodní logiky na straně serveru a také škálování propustnosti. Průzkumník dat zpřístupní všechna integrovaná programová data v rozhraních API, ale zajistí jednoduchý přístup k vašim datům na portálu Azure Portal.
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 

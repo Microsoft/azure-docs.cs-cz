@@ -1,25 +1,19 @@
 ---
-title: "Vytvoření indexu (REST API – Azure Search) | Dokumentace Microsoftu"
-description: "Vytvořte index v kódu pomocí rozhraní HTTP REST API Azure Search."
-services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
+title: Vytvoření indexu (REST API – Azure Search) | Dokumentace Microsoftu
+description: Vytvořte index v kódu pomocí rozhraní HTTP REST API Azure Search.
+author: chaosrealm
+manager: jlembicz
+ms.author: eugenesh
 tags: azure-portal
-ms.assetid: ac6c5fba-ad59-492d-b715-d25a7a7ae051
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 12/08/2016
-ms.author: ashmaka
-ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c03f3130dcdb2393d684b22b7ff728ae55f04e67
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -100,7 +94,7 @@ Abyste mohli vydat níže uvedenou žádost, budete muset zadat vlastní název 
 
 V případě úspěšné žádosti by se měl zobrazit stavový kód 201 (vytvořeno). Další informace o vytvoření indexu prostřednictvím rozhraní REST API najdete v [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP DELETE. Takto bychom například odstranili index „hotely“:
+Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP DELETE. Takto bychom například odstranili index „hotels“:
 
     DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
     api-key: [api-key]

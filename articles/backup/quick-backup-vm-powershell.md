@@ -1,13 +1,13 @@
 ---
-title: "Rychlý start Azure – Zálohování virtuálního počítače pomocí PowerShellu | Dokumentace Microsoftu"
-description: "Zjistěte, jak zálohovat virtuální počítače pomocí Azure PowerShellu."
+title: Rychlý start Azure – Zálohování virtuálního počítače pomocí PowerShellu | Dokumentace Microsoftu
+description: Zjistěte, jak zálohovat virtuální počítače pomocí Azure PowerShellu.
 services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 55de58770bd91e000c12b42c8eeac92fb8c0a710
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91303368f96b477f0756e4d3b9d19601797f0ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí modulu Azure PowerShell. K provedení těchto kroků můžete také využít [Azure CLI](quick-backup-vm-cli.md) nebo [Azure Portal](quick-backup-vm-portal.md).
@@ -31,10 +31,10 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 4.4 nebo novější. 
 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Při prvním použití služby Azure Backup musíte ve svém předplatném zaregistrovat poskytovatele služby Azure Recovery Services pomocí rutiny [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider).

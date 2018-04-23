@@ -1,11 +1,11 @@
 ---
-title: "Propojení virtuální sítě Azure s jinou virtuální síti s použitím připojení typu VNet-to-VNet: PowerShell | Dokumentace Microsoftu"
-description: "Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a PowerShellu."
+title: 'Propojení virtuální sítě Azure s jinou virtuální síti s použitím připojení typu VNet-to-VNet: PowerShell | Dokumentace Microsoftu'
+description: Propojení virtuálních sítí s použitím připojení typu VNet-to-VNet a PowerShellu.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8f2ecf4f10c5506b79adb033c67c41a4b1e17777
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a96326e23a2ed913ccab8a23666a4f408157d3da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
@@ -153,7 +153,7 @@ V příkladech používáme následující hodnoty:
 2. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Zkontrolujte předplatná pro příslušný účet.
@@ -349,7 +349,7 @@ Tento krok je třeba provést v rámci nového předplatného. Tuto část můž
 2. Připojte se k předplatnému 5. Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   Zkontrolujte předplatná pro příslušný účet.

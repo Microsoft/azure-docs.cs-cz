@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ecf83dd21b0803a6ceb4139d117a8b989b070403
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Kurz: Sestavení webové aplikace PHP s připojením k databázi MySQL v Azure
 
@@ -192,16 +192,11 @@ Po vytvoření serveru MySQL se v Azure CLI zobrazí podobné informace jako v n
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Ve službě Cloud Shell pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení.
+Ve službě Cloud Shell pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
-
-> [!NOTE]
-> Azure Database for MySQL v současné době neomezuje připojení jenom na služby Azure. Jelikož se IP adresy v Azure přidělují dynamicky, je lepší povolit všechny IP adresy. Plánujeme zavést lepší metody zabezpečení databáze.
->
->
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Místní připojení k produkčnímu serveru MySQL
 

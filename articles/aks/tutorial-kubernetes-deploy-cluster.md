@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1f31af4fcc7ef70889ad8bc021bea0796721e5f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 99b65ba5e5f0be40e464fd6565db40fda4170a0f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Container Service (AKS)
 
@@ -65,7 +65,7 @@ az aks install-cli
 Pokud chcete nakonfigurovat kubectl pro připojení k vašemu clusteru Kubernetes, spusťte následující příkaz:
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Pokud chcete ověřit připojení k vašemu clusteru, spusťte příkaz [kubectl get nodes][kubectl-get].

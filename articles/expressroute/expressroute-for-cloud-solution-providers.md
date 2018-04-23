@@ -1,11 +1,11 @@
 ---
 title: Azure ExpressRoute pro poskytovatele Cloud Solution Provider | Dokumentace Microsoftu
-description: "Tento článek obsahuje informace pro poskytovatele cloudových služeb, kteří do svých nabídek chtějí začlenit služby Azure a ExpressRoute."
+description: Tento článek obsahuje informace pro poskytovatele cloudových služeb, kteří do svých nabídek chtějí začlenit služby Azure a ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení se službami v Azure, které zajišťuje privátní komunikaci. 
@@ -65,7 +65,7 @@ Tento scénář připojení vyžaduje, aby se zákazník připojil přímo prost
 
 Volba mezi těmito dvěma možnostmi závisí na potřebách zákazníka a na vaší aktuální potřebě poskytování služeb Azure. Podrobnosti o těchto modelech a přidruženém řízení přístupu na základě role, sítích a vzorech návrhu identity jsou uvedeny na následujících odkazech:
 
-* **Řízení přístupu na základě role (RBAC)** – Funkce RBAC je založena na službě Azure Active Directory.  Další informace o funkci Azure RBAC najdete [tady](../active-directory/role-based-access-control-configure.md).
+* **Řízení přístupu na základě role (RBAC)** – Funkce RBAC je založena na službě Azure Active Directory.  Další informace o funkci Azure RBAC najdete [tady](../role-based-access-control/role-assignments-portal.md).
 * **Sítě** – Obsahuje informace k různým tématům týkající se sítí v Microsoft Azure.
 * **Azure Active Directory (Azure AD)** – Azure AD poskytuje správu identit pro Microsoft Azure a aplikace SaaS jiných dodavatelů. Další informace o Azure AD najdete [tady](https://azure.microsoft.com/documentation/services/active-directory/).  
 

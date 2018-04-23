@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 73839127c23eca29e3a20ab4d68668dfb7c6a375
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a4a422e62940a535a6303339bd5712654881d304
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-a-ruby-and-mysql-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Ruby využívající databázi MySQL ve službě Azure App Service v Linuxu
 
@@ -161,15 +161,11 @@ Po vytvoření serveru MySQL se v Azure CLI zobrazí podobné informace jako v n
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení.
+Pomocí příkazu [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) vytvořte pro svůj server MySQL pravidlo brány firewall umožňující klientská připojení. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
-az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
-
-> [!NOTE]
-> Azure Database for MySQL (Preview) v současné době neomezuje připojení jenom na služby Azure. Jelikož se IP adresy v Azure přidělují dynamicky, je lepší povolit všechny IP adresy. Služba je ve verzi Preview. Plánujeme zavést lepší metody zabezpečení databáze.
->
 
 ### <a name="connect-to-production-mysql-server-locally"></a>Místní připojení k produkčnímu serveru MySQL
 

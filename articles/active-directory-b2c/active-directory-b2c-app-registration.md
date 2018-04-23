@@ -10,11 +10,11 @@ ms.workload: identity
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 0d3c351ebe70a963db0453538108ae9b2fefef86
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8ba511464f8ce0bef2a14706a272f6c09dfe5d07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrace vaší aplikace
 
@@ -131,7 +131,7 @@ Pokud chcete aplikaci odstranit, přejděte na [Portál pro registraci aplikací
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile budete mít aplikaci registrovanou pomocí Azure AD B2C, můžete absolvovat jeden z [našich kurzů pro rychlý start](active-directory-b2c-overview.md#get-started), který vám pomůže uvést ji do provozu.
+Jakmile budete mít aplikaci registrovanou pomocí Azure AD B2C, můžete absolvovat jeden z [našich kurzů pro rychlý start](active-directory-b2c-overview.md), který vám pomůže uvést ji do provozu.
 
 > [!div class="nextstepaction"]
 > [Vytvoření webové aplikace ASP.NET s registrací, přihlášením a resetováním hesla](active-directory-b2c-devquickstarts-web-dotnet-susi.md)

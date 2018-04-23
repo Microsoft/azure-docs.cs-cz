@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Kurz: Streamování dat do Azure Databricks pomocí služby Event Hubs
 
@@ -61,7 +61,7 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data + analýzy** > **Azure Databricks**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
     ![Databricks na portálu Azure](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks na portálu Azure")
 
@@ -173,6 +173,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů služby Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
+```scala
     import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
@@ -242,6 +243,7 @@ Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a n
 
     // Closing connection to the Event Hub
     eventHubClient.get().close()
+```
 
 Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup podobný následujícímu fragmentu kódu. Každá událost ve výstupu představuje tweet, který obsahuje výraz Azure a ingestuje se do služby Event Hubs.
 
@@ -264,6 +266,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
 
 Do poznámkového bloku **ReadTweetsFromEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro vaši službu Azure Event Hubs, kterou jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
 
+```scala
     import org.apache.spark.eventhubs._
 
     // Build connection string with the above information
@@ -282,6 +285,7 @@ Do poznámkového bloku **ReadTweetsFromEventHub** vložte následující kód a
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 Zobrazí se následující výstup:
 
@@ -312,6 +316,7 @@ Zobrazí se následující výstup:
 
 Vzhledem k tomu, že se výstup zobrazuje v binárním režimu, pomocí následujícího fragmentu kódu ho převeďte na řetězec.
 
+```scala
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
 
@@ -328,6 +333,7 @@ Vzhledem k tomu, že se výstup zobrazuje v binárním režimu, pomocí následu
     messages.printSchema
 
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 Výstup teď vypadá podobně jako následující fragment kódu:
 

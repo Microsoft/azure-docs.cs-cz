@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: 01634be8c59433bc3f4b7283f7da38e8c248e80e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 69302a0291b267bd4d46ab9387d296673da17025
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
 
@@ -45,13 +45,25 @@ Měli byste mít praktickou znalost Node.js. Tento rychlý start není určen ja
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](http://meanjs.org/).
 
-Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](http://meanjs.org/). 
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
-```bash
-git clone https://github.com/prashanthmadi/mean
-```
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace. 
+
+    ```bash
+    git clone https://github.com/prashanthmadi/mean
+    ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
@@ -232,10 +244,7 @@ git commit -m "configured MongoDB connection string"
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

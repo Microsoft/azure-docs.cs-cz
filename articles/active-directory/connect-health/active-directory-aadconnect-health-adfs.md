@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -127,7 +127,7 @@ Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za n�
 
 > [!NOTE]
 > Pokud chcete tuto sestavu použít, ujistěte se, že je povolené auditování AD FS. Další informace najdete v článku o [povolení auditování služby AD FS](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader).  
+> Pro přístup k náhledu jsou vyžadována oprávnění Globálního správce nebo [Čtenáře zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader).  
 > 
 
 ### <a name="what-is-in-the-report"></a>Obsah sestavy

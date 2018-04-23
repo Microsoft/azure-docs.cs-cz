@@ -11,6 +11,8 @@
   items:
     - name: Vytvoření a připojení – portál
       href: create-data-warehouse-portal.md
+    - name: Vytvoření – PowerShell
+      href: create-data-warehouse-powershell.md
     - name: Pozastavení a obnovení výpočtů
       items:
         - name: Portál

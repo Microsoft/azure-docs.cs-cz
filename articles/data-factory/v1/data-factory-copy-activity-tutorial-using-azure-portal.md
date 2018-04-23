@@ -1,11 +1,11 @@
 ---
-title: "Kurz: Vytvoření kanálu Azure Data Factory pro kopírování dat (portál Azure Portal) | Dokumentace Microsoftu"
-description: "V tomto kurzu pomocí portálu Azure Portal vytvoříte kanál Azure Data Factory s aktivitou kopírování pro kopírování dat z úložiště objektů blob v Azure do databáze Azure SQL."
+title: 'Kurz: Vytvoření kanálu Azure Data Factory pro kopírování dat (portál Azure Portal) | Dokumentace Microsoftu'
+description: V tomto kurzu pomocí portálu Azure Portal vytvoříte kanál Azure Data Factory s aktivitou kopírování pro kopírování dat z úložiště objektů blob v Azure do databáze Azure SQL.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: d9317652-0170-4fd3-b9b2-37711272162b
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7f42cfda1684b7ff5bd2a1655154b6a11d4ffd31
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c4e8de6b229fe027e43a2b13f2a7ad54b7c3eaf2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití portálu Azure Portal k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
    6. Klikněte na možnost **Vytvořit**.
       
       > [!IMPORTANT]
-      > Chcete-li vytvářet instance služby Data Factory, musíte být členem role [Přispěvatel Data Factory](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) na úrovni předplatného a skupiny prostředků.
+      > Chcete-li vytvářet instance služby Data Factory, musíte být členem role [Přispěvatel Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na úrovni předplatného a skupiny prostředků.
       > 
       > Název objektu pro vytváření dat se může v budoucnu zaregistrovat jako název DNS, takže pak bude veřejně viditelný.                
       > 

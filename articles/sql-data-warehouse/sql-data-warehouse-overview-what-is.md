@@ -1,25 +1,20 @@
 ---
-title: Co je Azure SQL Data Warehouse? | Dokumentace Microsoftu
-description: "Distribuovaná databáze podnikové třídy schopná zpracovávat petabajtové objemy relačních a nerelačních dat. Je to první cloudový datový sklad v odvětví, který se umí během pár sekund zvětšit, zmenšit nebo pozastavit."
+title: Co je Azure SQL Data Warehouse? | Dokumenty Microsoft
+description: Distribuovaná databáze podnikové třídy schopná zpracovávat petabajtové objemy relačních a nerelačních dat. Je to první cloudový datový sklad v odvětví, který se umí během pár sekund zvětšit, zmenšit nebo pozastavit.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jenniehubbard
-editor: 
-ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
+author: igorstanko
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 10/23/2017
-ms.author: jrj
-ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.topic: overview
+ms.component: design
+ms.date: 04/17/2018
+ms.author: igorstan
+ms.reviewer: igorstan
+ms.openlocfilehash: 57b94a57ae0279a391cb4269f7b1625499748bae
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Co je Azure SQL Data Warehouse?
 
@@ -37,13 +32,6 @@ SQL Data Warehouse ukládá data v relačních tabulkách se sloupcovým úloži
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 
-## <a name="optimization-choices"></a>Možnosti optimalizace
-
-SQL Data Warehouse nabízí [úrovně výkonu](performance-tiers.md) navržené pro zajištění flexibility umožňující splnit vaše datové potřeby bez ohledu na rozsah. Máte na výběr mezi datovým skladem optimalizovaným pro zajištění elasticity, nebo výpočetního výkonu. 
-
-- **Úroveň výkonu optimalizovaná pro zajištění elasticity** odděluje výpočetní a úložnou vrstvu architektury. Tato možnost vyniká v úlohách, které můžou naplno využít oddělení výpočetního výkonu a úložiště, díky častému škálování podporujícímu krátká období nejvyšší aktivity. Tato výpočetní vrstva zahrnuje nízké vstupní náklady a škáluje se pro zajištění podpory většiny úloh zákazníků.
-
-- **Úroveň výkonu optimalizovaná pro zajištění výpočetního výkonu** využívá nejnovější hardware Azure a zavádí novou mezipaměť disku NVMe SSD, která udržuje nejčastěji používaná data blízko procesorům, tedy přesně tam, kde je chcete mít. Díky automatickému vrstvení úložiště vyniká tato úroveň výkonu ve složitých dotazech, protože všechny vstupně-výstupní operace zůstávají místně na výpočetní vrstvě. Vylepšené sloupcové úložiště navíc umožňuje ve službě SQL Data Warehouse uchovávat neomezený objem dat. Úroveň výkonu optimalizovaná pro zajištění výpočetního výkonu poskytuje nejvyšší úroveň škálovatelnosti, která umožňuje škálování až na 30 000 výpočetních jednotek datového skladu (cDWU). Tuto úroveň zvolte pro úlohy vyžadující nepřetržitý a neuvěřitelně vysoký výkon.
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  

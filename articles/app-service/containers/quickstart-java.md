@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 46c97ae5bd6f53857f0b7df12462102a03e8e857
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 657a5a72650b330323406703d2c479c96c096f2e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="preview-create-a-java-web-app-in-app-service-on-linux"></a>Preview: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
 
@@ -50,19 +50,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-
-Ve službě Cloud Shell vytvořte skupinu prostředků pomocí příkazu [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *Západní Evropa*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service, spusťte příkaz [`az appservice list-locations`](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations).
-
-```azurecli-interactive
-az group create --name myResourceGroup --location "West US"
-```
-
-Obvykle budete svoji skupinu prostředků a prostředky vytvářet v oblasti, kterou máte blízko. 
-
-Po dokončení příkazu se ve výstupu JSON zobrazí vlastnosti skupiny prostředků.
-
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
@@ -72,7 +60,10 @@ Po dokončení příkazu se ve výstupu JSON zobrazí vlastnosti skupiny prostř
 Ve službě Cloud Shell vytvořte [webovou aplikaci](../app-service-web-overview.md) v plánu služby `myAppServicePlan` App Service. Můžete to udělat pomocí příkazu [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). V následujícím příkladu nahraďte *\<app_name>* globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). 
 
 ```azurecli-interactive
+# Bash
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
+# PowerShell
+az --% webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
 ```
 
 V parametru **runtime** použijte jeden z následujících modulů runtime:

@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1c255e9671e488fa1ced019cb7fafe6b328d8181
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4e6fe47f148d6b9cb13d41bda9622a279f8bb93
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
 2. Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal.
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Spuštěním následujícího příkazu zobrazíte všechna předplatná pro tento účet.
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 9694dcfec7b3297e925bb45bee5e74b69609063d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f53ffdaa6c99d63bdab91f30ffa6b2b182c53848
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Python s připojením k databázi PostgreSQL v Azure
 
@@ -168,19 +168,19 @@ Po vytvoření serveru Azure Database for PostgreSQL se v Azure CLI zobrazí pod
 
 ### <a name="configure-server-firewall"></a>Konfigurace brány firewall serveru
 
-Spuštěním následujícího příkazu Azure CLI povolte přístup k databázi ze všech IP adres.
+Spuštěním následujícího příkazu Azure CLI povolte přístup k databázi ze všech IP adres. Pokud je jako počáteční i koncová adresa IP nastavená hodnota 0.0.0.0, je brána firewall otevřená jen pro ostatní prostředky Azure. 
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=255.255.255.255 --name AllowAllIPs
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 --name AllowAzureIPs
 ```
 
 Azure CLI potvrdí vytvoření pravidla brány firewall a zobrazí výstup jako v následujícím příkladu:
 
 ```json
 {
-  "endIpAddress": "255.255.255.255",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAllIPs",
-  "name": "AllowAllIPs",
+  "endIpAddress": "0.0.0.0",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAzureIPs",
+  "name": "AllowAzureIPs",
   "resourceGroup": "myResourceGroup",
   "startIpAddress": "0.0.0.0",
   "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 0c1c9364d6d7071e0aa454889417eeec3807f406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3a06374119851560d517704b817fb9bf18728059
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI
 
@@ -48,30 +48,6 @@ Následující příklad vytvoří skupinu prostředků s názvem `myresourcegro
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-## <a name="add-the-extension"></a>Přidání rozšíření
-Přidejte aktualizované rozšíření pro správu služby Azure Database for MySQL pomocí následujícího příkazu:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Zkontrolujte, že máte nainstalovanou správnou verzi rozšíření. 
-```azurecli-interactive
-az extension list
-```
-
-Vrácený kód JSON by měl obsahovat následující: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Pokud se nevrátí verze 0.0.5, spuštěním následujícího příkazu rozšíření aktualizujte: 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
