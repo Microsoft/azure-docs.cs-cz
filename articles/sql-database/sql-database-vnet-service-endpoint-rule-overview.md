@@ -7,14 +7,14 @@ author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -140,7 +140,7 @@ Pro databázi SQL Azure funkci pravidla virtuální sítě má následující om
 Pokud používáte koncové body služby pro databázi SQL Azure, projděte si následující aspekty:
 
 - **Odchozí do veřejných IP adres Azure SQL Database je požadována**: skupiny zabezpečení sítě (Nsg) musí být otevřené pro IP adresy databáze SQL Azure umožňující připojení. Můžete to provést pomocí NSG [služby značky](../virtual-network/security-overview.md#service-tags) pro databázi SQL Azure.
-- **Azure databáze PostgreSQL a MySQL nejsou podporovány**: koncové body služby nejsou podporovány pro databázi Azure pro PostgreSQL nebo MySQL. Povolování koncových bodů služby SQL Database bude přerušení připojení k těmto službám. Máme zmírnění dopadů pro tento; Obraťte se na *dmalik@microsoft.com*.
+- **Azure databáze PostgreSQL a MySQL nejsou podporovány**: koncové body služby nejsou podporovány pro databázi Azure pro PostgreSQL nebo MySQL. Povolování koncových bodů služby SQL Database bude přerušení připojení k těmto službám. Máme zmírnění dopadů pro tuto a může kontaktovat *dmalik@microsoft.com* Další informace.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -178,7 +178,7 @@ Azure SQLDB má funkce synchronizace dat, která se připojuje k vaší databáz
 Pokud se rozhodnete tuto funkci používat s účtem úložiště, který používá Azure SQL Server, můžete spustit na problémy. Následuje seznam a diskuzi o Azure SQLDB funkce, které jsou ovlivněny to.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase se běžně používá k načtení dat do Azure SQLDW z úložiště účtů. Pokud účet úložiště, který se načítání dat z omezuje přístup pouze na sadu podsítí virtuální sítě, dojde k přerušení připojení k z PolyBase k účtu. Je zmírnění dopadů pro tento; Obraťte se na *dmalik@microsoft.com* Další informace.
+PolyBase se běžně používá k načtení dat do Azure SQLDW z úložiště účtů. Pokud účet úložiště, který se načítání dat z omezuje přístup pouze na sadu podsítí virtuální sítě, dojde k přerušení připojení k z PolyBase k účtu. Je zmírnění dopadů pro tuto a může kontaktovat *dmalik@microsoft.com* Další informace.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Objekt Blob Azure SQLDB auditování
 Auditování objektů BLOB doručí protokolů auditu na účtu úložiště. Pokud tento účet úložiště používá funkce koncové body služby ECYKLACI dojde k přerušení připojení z Azure SQLDB k účtu úložiště.
@@ -227,8 +227,9 @@ Seznam chybových zpráv SQL Database je popsána [sem][sql-database-develop-err
 Tato část ukazuje, jak můžete použít [portál Azure] [ http-azure-portal-link-ref-477t] k vytvoření *pravidlo virtuální sítě* ve vaší databázi SQL Azure. Pravidlo informuje vaší databázi SQL tak, aby přijímal komunikaci z konkrétní podsítě, kterých je označen jako *koncový bod služby virtuální sítě*.
 
 > [!NOTE]
-> Ověřte, zda služby, které jsou zapnuté koncové body pro virtuální síť nebo podsíť, který chcete přidat do virtuální sítě pravidla brány Firewall serveru.
-> Pokud nejsou vypnuté koncové body služby pro virtuální síť nebo podsíť, zobrazí se dotaz na portálu je povolit, klikněte na povolte na okno, ve kterém můžete přidat pravidlo.
+> Pokud chcete přidat koncový bod služby do virtuální sítě pravidla brány firewall serveru Azure SQL Database, nejdříve se ujistěte, služby, které jsou zapnuté koncové body pro podsíť.
+>
+> Koncové body služby nejsou pro podsíť zapnuté, portálu požádá o je povolit. Klikněte **povolit** tlačítka v okně stejné, ve kterém můžete přidat pravidlo.
 
 #### <a name="powershell-alternative"></a>Alternativní prostředí PowerShell
 

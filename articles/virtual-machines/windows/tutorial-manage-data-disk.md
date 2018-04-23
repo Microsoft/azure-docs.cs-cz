@@ -1,13 +1,13 @@
 ---
-title: "Správa disků v Azure pomocí prostředí Azure PowerShell | Microsoft Docs"
-description: "Kurz – Správa disků v Azure pomocí prostředí Azure PowerShell"
+title: Správa disků v Azure pomocí prostředí Azure PowerShell | Microsoft Docs
+description: Kurz – Správa disků v Azure pomocí prostředí Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ea38fe599960db42c518603b59a60a920d1f1daf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4d84d1f5fbd0fcf5d4c6ba374b1fb5c3df2ba5c6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Správa disků v Azure pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 
@@ -81,11 +81,11 @@ Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje n
 
 ### <a name="premium-disk"></a>Disk Premium
 
-Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Storage úrovně Premium podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na pět typů (P10, P20, P30, P40, P50) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost menší než 128 GB, jedná se o typ disku P10, nebo pokud je mezi 129 GB a 512 GB, je to disk P20.
+Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Premium Storage podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na pět typů (P10, P20, P30, P40, P50) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost menší než 128 GB, jedná se o typ disku P10, nebo pokud je mezi 129 GB a 512 GB, je to disk P20.
 
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 
-|Typ disku pro Storage úrovně Premium | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
+|Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
 | Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
