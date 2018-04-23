@@ -1,25 +1,18 @@
 ---
-title: "Přehled služby Azure Analysis Services | Dokumentace Microsoftu"
-description: "Získejte celkový přehled o službě Analysis Services v Azure."
-services: analysis-services
-documentationcenter: 
+title: Přehled služby Azure Analysis Services | Dokumentace Microsoftu
+description: Získejte celkový přehled o službě Analysis Services v Azure.
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 83d7a29c-57ae-4aa0-8327-72dd8f00247d
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: overview
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: c71d6fd7e3542a22edf093b0c9fccbd5185e0f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-overview"></a>Přehled služby Azure Analysis Services
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)

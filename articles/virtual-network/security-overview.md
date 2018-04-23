@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 3b935d3a3c37b63386dfb2cbd25ceba59d91a998
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f57a4b87c239126d248cba5106e005103d8372b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-security"></a>Zabezpečení sítě
 
@@ -35,7 +35,7 @@ V případě přidružení skupiny zabezpečení sítě k síťovému rozhraní 
 - **Příchozí provoz:** Skupina zabezpečení sítě přidružená k podsíti, ve které se síťové rozhraní nachází, se vyhodnocuje jako první. Veškerý provoz, kterému je povolený průchod přes skupinu zabezpečení sítě přidruženou k podsíti, se pak vyhodnocuje skupinou zabezpečení sítě přidruženou k síťovému rozhraní. Můžete například požadovat příchozí přístup z internetu k virtuálnímu počítači přes port 80. Pokud přidružíte skupinu zabezpečení sítě k síťovému rozhraní i podsíti, ve které se síťové rozhraní nachází, musí tato skupina zabezpečení sítě povolovat port 80. Pokud jste port 80 povolili pouze prostřednictvím skupiny zabezpečení sítě přidružené k podsíti nebo síťovému rozhraní, ve kterém se podsíť nachází, kvůli výchozím pravidlům zabezpečení komunikace selže. Podrobnosti najdete v části [Výchozí pravidla zabezpečení](#default-security-rules). Pokud jste skupinu zabezpečení použili pouze na podsíť nebo síťové rozhraní a pokud obsahovala pravidlo povolující příchozí provoz například přes port 80, komunikace bude úspěšná. 
 - **Odchozí provoz:** Skupina zabezpečení sítě přidružená k síťovému rozhraní se vyhodnocuje jako první. Veškerý provoz, kterému je povolený průchod přes skupinu zabezpečení sítě přidruženou k síťovému rozhraní, se pak vyhodnocuje skupinou zabezpečení sítě přidruženou k podsíti.
 
-Ne vždy musíte mít přehled o použití skupin zabezpečení sítě na síťové rozhraní i podsíť. Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v [platných pravidlech zabezpečení](virtual-network-nsg-troubleshoot-portal.md) pro síťové rozhraní. Pomocí funkce [Ověření toku protokolu IP](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) v nástroji Azure Network Watcher můžete také určit, jestli je povolená komunikace směřující do síťového rozhraní nebo z něj. Tento nástroj vám řekne, jestli je povolená komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
+Ne vždy musíte mít přehled o použití skupin zabezpečení sítě na síťové rozhraní i podsíť. Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v [platných pravidlech zabezpečení](virtual-network-network-interface.md#view-effective-security-rules) pro síťové rozhraní. Pomocí funkce [Ověření toku protokolu IP](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) v nástroji Azure Network Watcher můžete také určit, jestli je povolená komunikace směřující do síťového rozhraní nebo z něj. Tento nástroj vám řekne, jestli je povolená komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
  
 > [!NOTE]
 > Skupiny zabezpečení sítě se nepřidružují k síťovým rozhraním v modelu nasazení Resource Manager, ale k podsítím nebo virtuálním počítačům a cloudovým službám nasazeným pomocí modelu nasazení Classic. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

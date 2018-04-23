@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službám Azure Machine Learning (Preview)
+metadata:
+  title: Dokumentace ke službám Azure Machine Learning (Preview)
+  meta.description: Learn how to use Azure Machine Learning services (preview).
+  services: machine-learning
+  author: garyericson
+  manager: jhubbard
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/18/2018
+  ms.author: garye
+  ms.openlocfilehash: dfd5d283afd61126bca4348bf02ffb8e968fd19f
+  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/19/2018
+abstract:
+  description: Služby Azure Machine Learning (Preview) umožňují sestavovat, nasazovat a spravovat modely strojového učení a AI s využitím libovolných knihoven a nástrojů Pythonu. K ukládání a zpracování dat můžete využít širokou škálu dat a výpočetních služeb v Azure.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Vytvoření prvního projektu s Machine Learningem
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="quickstart-installation.md">Instalace a vytvoření</a>
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Informace o postupu při přípravě dat, vytvoření experimentu a zprovoznění vašich modelů
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-1">Názorné seznámení se základy služeb Machine Learning (Preview)</a>
+    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-2">Využití aplikace Machine Learning Workbench k sestavení modelu s datovou sadou Iris</a>
+    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-3">Informace o postupu při nasazení modelu ve službě Machine Learning</a>
+    - html: <a href="../desktop-workbench/tutorial-bikeshare-dataprep">Použití aplikace Azure Machine Learning Workbench pro pokročilou přípravu dat</a>
+- title: Další technologie Azure Machine Learning
+  items:
+  - type: paragraph
+    text: 'Další technologie dostupné ve službách Azure Machine Learning:'
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure Machine Learning Studio
+      href: /azure/machine-learning/studio/
+      image:
+        src: media/index/machine-learning-studio.svg
+        href: /azure/machine-learning/studio/
+    - title: Virtuální počítač pro datové vědy
+      href: /azure/machine-learning/data-science-virtual-machine/
+      image:
+        src: media/index/virtual-machines.svg
+        href: /azure/machine-learning/data-science-virtual-machine/
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Jazyky
+      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
+    - title: REST
+      html: <p><a href="model-management-api-reference">Rozhraní REST API pro správu modelů</a></p>

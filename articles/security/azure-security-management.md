@@ -1,6 +1,6 @@
 ---
-title: "Zlepšení zabezpečení vzdálené správy v Azure | Dokumentace Microsoftu"
-description: "Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě prostředí Microsoft Azure včetně cloudových služeb, služby Virtual Machines a vlastních aplikací."
+title: Zlepšení zabezpečení vzdálené správy v Azure | Dokumentace Microsoftu
+description: Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě prostředí Microsoft Azure včetně cloudových služeb, služby Virtual Machines a vlastních aplikací.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 026a22355ab1d35fa1fe6b7ba624fed5d10b3e38
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -64,7 +64,7 @@ Sloučením přístupových prostředků a odstraněním nespravovaných koncov�
 ### <a name="providing-security-for-azure-remote-management"></a>Zajištění zabezpečení pro vzdálenou správu Azure
 Azure nabízí mechanismy zabezpečení na podporu správců, kteří spravují cloudové služby Azure a virtuální počítače. Mezi tyto mechanismy patří:
 
-* ověřování a [řízení přístupu na bázi rolí](../active-directory/role-based-access-control-configure.md)
+* ověřování a [řízení přístupu na bázi rolí](../role-based-access-control/role-assignments-portal.md)
 * sledování, protokolování a auditování
 * certifikáty a šifrovaná komunikace
 * webový portál pro správu
@@ -116,7 +116,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení
 Obecně platí, že zabezpečení pracovních stanic správce používaných s cloudem je podobné postupům používaným pro všechny místní pracovní stanice – například minimalizovaná oprávnění k sestavení a omezující oprávnění. Některé jedinečné aspekty správy cloudu se více podobají vzdálené nebo podnikové správě mimo IP síť. Patří sem používání a auditování přihlašovacích údajů, vzdálený přístup s rozšířeným zabezpečením a detekce a reakce na ohrožení.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 K omezení zdrojových IP adres pro přístup k nástrojům pro správu a požadavkům na audit přístupu můžete použít přihlašovací omezení Azure. Abyste Azure pomohli s identifikací klientů pro správu (pracovní stanice nebo aplikace), můžete nakonfigurovat rozhraní SMAPI (prostřednictvím zákazníkem vyvinutých nástrojů, například rutin Windows PowerShell) a web Azure Portal tak, aby na straně klienta vyžadovaly instalaci certifikátů pro správu (kromě certifikátů SSL). V případě přístupu pro správce doporučujeme vyžadovat vícefaktorové ověřování.
 
 Některé aplikace nebo služby, které nasadíte do Azure, můžou mít vlastní mechanismy ověřování pro přístup koncových uživatelů i správce, zatímco ostatní plně využívají výhody Azure AD. V závislosti na tom, jestli federujete přihlašovací údaje prostřednictvím služby Active Directory Federation Services (AD FS), vám synchronizace adresářů nebo správa uživatelských účtů výhradně v cloudu a pomocí [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (část Azure AD Premium) pomůže se správou životních cyklů identit mezi prostředky.

@@ -51,10 +51,10 @@
         - name: Klasifikace mínění
           href: predict-twitter-sentiment.md
         - name: Klasifikace příjmů v USA
-          href: ../preview/scenario-tdsp-classifying-us-incomes.md
+          href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: Rozpoznávání biomedicínských entit
-          href: ../preview/scenario-tdsp-biomedical-recognition.md
+          href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
     - name: Spark s PySparkem a Scalou
       href: walkthroughs-spark.md
@@ -82,7 +82,7 @@
 - name: Postup
   items:
     - name: Použití TDSP v Azure ML
-      href: ../preview/how-to-use-tdsp-in-azure-ml.md
+      href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
       maintainContext: true
     - name: Nastavení prostředí pro datové vědy
       href: environment-setup.md

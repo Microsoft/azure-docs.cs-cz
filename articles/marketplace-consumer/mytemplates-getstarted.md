@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mbaldwin
-ms.openlocfilehash: e3a0bbe75177ac25a0aeff89d171dfe88bd0880f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c716f54a1361d41dbad00e2e45562d5fbf8fd6ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Začínáme se soukromými šablonami na webu Azure Portal
 Šablona [Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) je deklarativní šablona, která slouží k definování nasazení. Můžete definovat, které prostředky se mají pro řešení nasadit, a určit parametry a proměnné, které vám umožní zadat hodnoty pro různá prostředí. Šablona se skládá z kódu JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení.
@@ -103,7 +103,7 @@ Můžete nasadit jakoukoli **šablonu**, ke které máte oprávnění ke **čten
 ![Nasazení šablony](media/deploy-template-portal1b.png)
 
 ## <a name="share-a-template-resource"></a>Úprava prostředku šablony
-Prostředek **Šablony** můžete sdílet s ostatními uživateli. Sdílení se chová podobně jako [přiřazování rolí pro jakýkoli prostředek na Azure](../active-directory/role-based-access-control-configure.md). Vlastník **šablony** poskytuje oprávnění ostatním uživatelům, kteří mohou interagovat s prostředkem šablony. Osoba nebo skupina osob, se kterou **šablonu** sdílíte, uvidí šablonu Resource Manageru a její vlastnosti galerie.
+Prostředek **Šablony** můžete sdílet s ostatními uživateli. Sdílení se chová podobně jako [přiřazování rolí pro jakýkoli prostředek na Azure](../role-based-access-control/role-assignments-portal.md). Vlastník **šablony** poskytuje oprávnění ostatním uživatelům, kteří mohou interagovat s prostředkem šablony. Osoba nebo skupina osob, se kterou **šablonu** sdílíte, uvidí šablonu Resource Manageru a její vlastnosti galerie.
 
 ### <a name="access-control-for-the-microsoftgallery-resources"></a>Řízení přístupu pro prostředky Microsoft.Gallery
 | Role | Oprávnění |

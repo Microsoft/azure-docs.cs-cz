@@ -1,13 +1,13 @@
 ---
-title: "Vytvoření aplikace funkcí na webu Azure Portal | Dokumentace Microsoftu"
-description: "Vytvořte novou aplikaci funkcí ve službě Azure App Service na portálu."
+title: Vytvoření aplikace funkcí na webu Azure Portal | Dokumentace Microsoftu
+description: Vytvořte novou aplikaci funkcí ve službě Azure App Service na portálu.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 4716d29a7b8c0830e2311398f033f8358ef24529
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Vytvoření aplikace funkcí na webu Azure Portal
 
@@ -46,12 +46,12 @@ Pokud v plánu služby App Service plánujete spouštět funkce JavaScriptu, mě
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-Při vytváření aplikace funkcí ve službě App Service musíte vytvořit nebo propojit účet služby Azure Storage pro obecné účely, který podporuje Blob, Queue a Table Storage. Služba Functions interně používá službu Storage pro operace, jako jsou správa triggerů a protokolování provádění funkcí. Některé účty úložiště nepodporují fronty a tabulky, například účty úložiště pouze objektů blob, Azure Storage úrovně Premium a účty úložiště pro obecné účely s replikací zónově redundantního úložiště. Tyto účty jsou při vytváření aplikace funkcí vyfiltrované z okna Účet úložiště.
+Při vytváření aplikace funkcí ve službě App Service musíte vytvořit nebo propojit účet služby Azure Storage pro obecné účely, který podporuje Blob, Queue a Table Storage. Služba Functions interně používá službu Storage pro operace, jako jsou správa triggerů a protokolování provádění funkcí. Některé účty úložiště nepodporují fronty a tabulky, například účty úložiště pouze objektů blob, Azure Premium Storage a účty úložiště pro obecné účely s replikací zónově redundantního úložiště. Tyto účty jsou při vytváření aplikace funkcí vyfiltrované z okna Účet úložiště.
 
 >[!NOTE]
 >Pokud použijete plán hostování Consumption, kód vaší funkce a vázané konfigurační soubory se ukládají ve službě Azure File Storage v hlavním účtu úložiště. Když odstraníte hlavní účet úložiště, tento obsah se odstraní a není možné ho obnovit.
 
-Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#introducing-the-azure-storage-services). 
+Další informace o typech účtů úložiště najdete v tématu [Seznámení se službami Azure Storage](../storage/common/storage-introduction.md#azure-storage-services). 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,8 +1,8 @@
 ---
-title: "Zabezpečení trezoru klíčů | Dokumentace Microsoftu"
-description: "Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Model ověřování a autorizace pro trezor klíčů a jak trezor klíčů zabezpečit"
+title: Zabezpečení trezoru klíčů | Dokumentace Microsoftu
+description: Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Model ověřování a autorizace pro trezor klíčů a jak trezor klíčů zabezpečit
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
@@ -76,7 +76,7 @@ Každé předplatné Azure zahrnuje službu (adresář) Azure Active Directory. 
 
 S modelem Azure Resource Manager vytváříte trezor klíčů ve skupině prostředků a řídíte přístup k rovině správy tohoto trezoru klíčů pomocí služby Azure Active Directory. Můžete například uživatelům nebo skupině udělit schopnost spravovat trezory klíčů v určité skupině prostředků.
 
-Přístup lze udělit uživatelům, skupinám nebo aplikacím v konkrétním oboru přiřazením odpovídajících rolí RBAC. Když například chcete uživateli udělit přístup ke správě trezorů klíčů, přiřadíte tomuto uživateli v konkrétním oboru předdefinovanou roli Přispěvatel trezoru klíčů (key vault Contributor). Oborem by v tomto případě bylo předplatné, skupina prostředků nebo určitý trezor klíčů. Role přiřazená na úrovni předplatného se bude vztahovat na všechny skupiny prostředků a prostředky v tomto předplatném. Role přiřazená na úrovni skupiny prostředků se bude vztahovat na všechny prostředky v této skupině. Role přiřazená pouze pro určitý prostředek se vztahuje pouze na tento prostředek. Je k dispozici několik předdefinovaných rolí (viz [RBAC: vestavěné role](../active-directory/role-based-access-built-in-roles.md)). Pokud tyto neodpovídají vašim potřebám, můžete si definovat i vlastní role.
+Přístup lze udělit uživatelům, skupinám nebo aplikacím v konkrétním oboru přiřazením odpovídajících rolí RBAC. Když například chcete uživateli udělit přístup ke správě trezorů klíčů, přiřadíte tomuto uživateli v konkrétním oboru předdefinovanou roli Přispěvatel trezoru klíčů (key vault Contributor). Oborem by v tomto případě bylo předplatné, skupina prostředků nebo určitý trezor klíčů. Role přiřazená na úrovni předplatného se bude vztahovat na všechny skupiny prostředků a prostředky v tomto předplatném. Role přiřazená na úrovni skupiny prostředků se bude vztahovat na všechny prostředky v této skupině. Role přiřazená pouze pro určitý prostředek se vztahuje pouze na tento prostředek. Je k dispozici několik předdefinovaných rolí (viz [RBAC: vestavěné role](../role-based-access-control/built-in-roles.md)). Pokud tyto neodpovídají vašim potřebám, můžete si definovat i vlastní role.
 
 > [!IMPORTANT]
 > Všimněte si, že pokud uživatel má oprávnění role Přispěvatel (RBAC) k rovině správy trezoru klíčů, může sám sobě udělit i přístup k rovině dat – může totiž nastavovat zásady přístupu trezoru klíčů, které řídí přístup k rovině dat. Doporučujeme proto důsledně kontrolovat, kdo má k vašim trezorům klíčů přístup jako Přispěvatel, aby bylo zajištěno, že jen autorizované osoby budou mít přístup a budou moci spravovat vaše trezory klíčů, klíče, tajné klíče a certifikáty.
@@ -204,19 +204,19 @@ Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi 
 > 
 
 ## <a name="resources"></a>Zdroje a prostředky
-* [Řízení přístupu na základě role v Azure Active Directory](../active-directory/role-based-access-control-configure.md)
+* [Řízení přístupu na základě role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
   
   Tento článek popisuje řízení přístupu podle role v Azure Active Directory a vysvětluje, jak funguje.
-* [RBAC: vestavěné role](../active-directory/role-based-access-built-in-roles.md)
+* [RBAC: vestavěné role](../role-based-access-control/built-in-roles.md)
   
   Tento článek podrobně popisuje všechny vestavěné role dostupné v RBAC.
 * [Principy nasazení podle modelu Resource Manager a klasického nasazení](../azure-resource-manager/resource-manager-deployment-model.md)
   
   Tento článek popisuje model nasazení Resource Manager ve srovnání s klasickým modelem nasazení a vysvětluje, jaké výhody přináší Resource Manager a skupiny prostředků.
-* [Správa řízení přístupu na základě role pomocí Azure PowerShellu](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [Správa řízení přístupu na základě role pomocí Azure PowerShellu](../role-based-access-control/role-assignments-powershell.md)
   
   Tento článek vysvětluje, jak spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell.
-* [Správa řízení přístupu na základě role pomocí REST API](../active-directory/role-based-access-control-manage-access-rest.md)
+* [Správa řízení přístupu na základě role pomocí REST API](../role-based-access-control/role-assignments-rest.md)
   
   Tento článek popisuje, jak používat rozhraní REST API ke správě RBAC.
 * [Řízení přístupu na základě role pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)

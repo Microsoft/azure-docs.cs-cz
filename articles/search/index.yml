@@ -1,40 +1,38 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Azure Search"
+title: Dokumentace ke službě Azure Search
 metadata:
   document_id: 
-  title: "Dokumentace ke službě Azure Search – kurzy, šablony Rychlý start, reference k rozhraní API"
+  title: Dokumentace ke službě Azure Search – kurzy, šablony Rychlý start, reference k rozhraní API
   meta.description: Learn how to create an enterprise search solution over private, heterogenous content using Azure Search. Tutorials, API references, and other docs show you how to  consolidate searchable content into a single fast index, queryable using simple-to-advanced syntax for a broad range of scenarios.
-  services: search
   author: HeidiSteen
   manager: cgronlun
   ms.service: search
-  ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/04/2018
   ms.author: heidist
-  ms.openlocfilehash: 046159c537d31579f0eb0dcd65c7fb8903dffd20
-  ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+  ms.openlocfilehash: e22cd20edcb9e60b13a5c608b5e51064101b4813
+  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/13/2018
+  ms.lasthandoff: 04/18/2018
 abstract:
-  description: "Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který lze vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a podporuje širokou škálu scénářů."
+  description: Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který lze vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a podporuje širokou škálu scénářů.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
       width: 250
-    title: "Další informace o Azure Search (9:32)"
+    title: Další informace o Azure Search (9:32)
     href: https://channel9.msdn.com/Events/Connect/2016/138/player
     width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Začnete se službou Search na portálu a potom můžete definovat a načítat indexy a zadávat dotazy v prostředí C# nebo REST."
+    text: Začnete se službou Search na portálu a potom můžete definovat a načítat indexy a zadávat dotazy v prostředí C# nebo REST.
   - type: list
     style: icon48
     items:
@@ -50,25 +48,25 @@ sections:
         src: /azure/search/media/index/rest.svg
       text: REST
       href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Kódovat můžete v prostředí .NET nebo REST. Můžete také vyzkoušet portál pro rychlé testování konceptů."
+    text: Kódovat můžete v prostředí .NET nebo REST. Můžete také vyzkoušet portál pro rychlé testování konceptů.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/search/search-howto-dotnet-sdk\">Použití Azure Search s technologií .NET</a>"
-    - html: "<a href=\"/azure/search/search-indexer-tutorial\">Indexování obsahu Azure SQL Database s využitím .NET</a>"
-    - html: "<a href=\"/azure/search/search-semi-structured-data\">Indexování částečně strukturovaných dat ve službě Azure Blob Storage s využitím REST</a>"
-    - html: "<a href=\"/azure/search/search-synonyms-tutorial-sdk\">Přidání synonym pro vrácení výskledků pro ekvivalentní termíny</a>"
-    - html: "<a href=\"/azure/search/search-get-started-portal\">Použití portálu pro indexování a testování dotazů</a>"
-- title: Odkaz
+    - html: <a href="/azure/search/search-howto-dotnet-sdk">Použití Azure Search s technologií .NET</a>
+    - html: <a href="/azure/search/search-indexer-tutorial">Indexování obsahu Azure SQL Database s využitím .NET</a>
+    - html: <a href="/azure/search/search-semi-structured-data">Indexování částečně strukturovaných dat ve službě Azure Blob Storage s využitím REST</a>
+    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">Přidání synonym pro vrácení výskledků pro ekvivalentní termíny</a>
+    - html: <a href="/azure/search/search-get-started-portal">Použití portálu pro indexování a testování dotazů</a>
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Jazyky
-      html: "<p><a href=\"/dotnet/api/?term=microsoft.azure.search\">.NET</a></p><p><a href=\"/dotnet/api/?term=microsoft.azure.management.search\">.NET (správa)</a></p><p><a href=\"http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html\">Python (správa)</a></p>"
+      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (správa)</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html">Python (správa)</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/searchservice\">Referenční informace k rozhraní API pro služby</a></p><p><a href=\"/rest/api/searchmanagement\">Referenční informace k rozhraní API pro správu</a></p>"
+      html: <p><a href="/rest/api/searchservice">Referenční informace k rozhraní API pro služby</a></p><p><a href="/rest/api/searchmanagement">Referenční informace k rozhraní API pro správu</a></p>

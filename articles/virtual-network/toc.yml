@@ -28,6 +28,8 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Šablony Resource Manageru
+      href: template-samples.md
 - name: Koncepty
   items:
     - name: Zabezpečení
@@ -70,16 +72,12 @@
               href: tutorial-filter-network-traffic-cli.md
             - name: Azure Portal
               href: virtual-networks-create-nsg-arm-pportal.md
-            - name: Šablona
-              href: virtual-networks-create-nsg-arm-template.md
         - name: Směrovací tabulky
           items:
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
-            - name: Šablona
-              href: virtual-network-create-udr-arm-template.md
         - name: Koncové body služby
           items:
             - name: Azure PowerShell
@@ -110,8 +108,6 @@
                   href: virtual-network-deploy-static-pip-arm-ps.md
                 - name: Azure CLI
                   href: virtual-network-deploy-static-pip-arm-cli.md
-                - name: Šablona
-                  href: virtual-network-deploy-static-pip-arm-template.md
             - name: Vytvoření virtuálního počítače – statická privátní IP adresa
               items:
                 - name: Azure Portal
@@ -126,8 +122,6 @@
                   href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                 - name: Azure CLI
                   href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Šablona
-                  href: virtual-network-deploy-multinic-arm-template.md
             - name: Vytvoření virtuálního počítače – několik IP adres
               items:
                 - name: Azure Portal
@@ -136,8 +130,6 @@
                   href: virtual-network-multiple-ip-addresses-powershell.md
                 - name: Azure CLI
                   href: virtual-network-multiple-ip-addresses-cli.md
-                - name: Šablona
-                  href: virtual-network-multiple-ip-addresses-template.md
             - name: Vytvoření virtuálního počítače – akcelerované síťové služby
               items:
                 - name: Azure PowerShell
@@ -190,11 +182,7 @@
             - name: Partnerské vztahy
               href: virtual-network-manage-peering.md
             - name: Ochrana před útoky DDoS
-              items:
-                - name: Azure Portal
-                  href: ddos-protection-manage-portal.md
-                - name: Azure PowerShell
-                  href: ddos-protection-manage-ps.md
+              href: manage-ddos-protection.md
         - name: Skupiny zabezpečení sítě
           href: manage-network-security-group.md
           items:

@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API | Microsoft Docs"
-description: "Naučte se vyvíjet v .NET s využitím rozhraní Table API služby Azure Cosmos DB"
+title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API | Microsoft Docs'
+description: Naučte se vyvíjet v .NET s využitím rozhraní Table API služby Azure Cosmos DB
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
 ms.assetid: 4b22cb49-8ea2-483d-bc95-1172cd009498
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/18/2017
-ms.author: arramac
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 52d91205e7b0daa82fb12c166222b1dce4c699eb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API
 
@@ -60,7 +60,7 @@ Tento kurz se věnuje používání rozhraní Table API služby Azure Cosmos DB 
 Další informace o složitých úlohách služby Azure Table Storage najdete tady:
 
 * [Úvod do rozhraní Table API služby Azure Cosmos DB](table-introduction.md)
-* Referenční dokumentace ke službě Table s úplnými podrobnostmi o dostupných rozhraních API: [Sada .NET SDK pro rozhraní Table API služby Azure Cosmos DB](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet)
+* Referenční dokumentace ke službě Table service s úplnými podrobnostmi o dostupných rozhraních API: [Sada .NET SDK pro rozhraní Table API služby Azure Cosmos DB](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet)
 
 ### <a name="about-this-tutorial"></a>O tomto kurzu
 Tento kurz je určený pro vývojáře, kteří znají sadu SDK služby Azure Table Storage a chtějí využít prémiové funkce dostupné ve službě Azure Cosmos DB. Vychází z kurzu [Začínáme se službou Azure Table Storage pomocí .NET](table-storage-how-to-use-dotnet.md) a ukazuje, jak využívat další možnosti, jako jsou sekundární indexy, zřízená propustnost a vícenásobné navádění. Popisujeme použití webu Azure Portal k vytvoření účtu služby Azure Cosmos DB a následnému sestavení a nasazení aplikace Table. Projdeme také příklady v .NET, ve kterých se vytvoří a odstraní tabulka a také vkládají, aktualizují a odstraňují data v tabulce nebo se na ně zadávají dotazy. 
@@ -298,7 +298,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 Azure Cosmos DB podporuje v rozhraní Table API stejné funkce dotazů jako Azure Table Storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další funkce budou přidané do rozhraní Table API v budoucí aktualizaci služby. Přehled těchto možností najdete v tématu [Dotazování služby Azure Cosmos DB](sql-api-sql-query.md). 
 
 ## <a name="replace-an-entity"></a>Nahrazení entity
-Pokud chcete entitu aktualizovat, načtěte ji ze služby Table, upravte objekt entity a potom uložte změny zpět do služby Table. Následující kód změní telefonní číslo stávajícího zákazníka. 
+Pokud chcete entitu aktualizovat, načtěte ji ze služby Table service, upravte objekt entity a potom uložte změny zpět do služby Table service. Následující kód změní telefonní číslo stávajícího zákazníka. 
 
 ```csharp
 TableOperation updateOperation = TableOperation.Replace(updateEntity);

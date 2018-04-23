@@ -12,15 +12,15 @@
 ## [Diagnostika a metriky Load Balanceru úrovně Standard](load-balancer-standard-diagnostics.md)
 
 # Začínáme
-## [Vytvoření Load Balanceru úrovně Basic](load-balancer-get-started-internet-portal.md)
-### [Vytvoření Load Balanceru úrovně Basic (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [Vytvoření Load Balanceru úrovně Basic (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [Vytvoření Load Balanceru úrovně Standard](load-balancer-standard-public-portal.md)
-### [Vytvoření Load Balanceru úrovně Standard (CLI)](load-balancer-standard-public-cli.md)
+## [Vytvoření Load Balanceru úrovně Basic](quickstart-create-basic-load-balancer-portal.md)
+### [Vytvoření Load Balanceru úrovně Basic (CLI)](quickstart-create-basic-load-balancer-cli.md)
+### [Vytvoření Load Balanceru úrovně Basic (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [Vytvoření Load Balanceru úrovně Standard](quickstart-load-balancer-standard-public-portal.md)
+### [Vytvoření Load Balanceru úrovně Standard (CLI)](quickstart-load-balancer-standard-public-cli.md)
 
 # Postup
 
-## [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard](load-balancer-get-started-internet-az-portal.md)
+## [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)](load-balancer-get-started-internet-az-cli.md)
 ## [Vytvoření zónového veřejného Load Balanceru úrovně Standard](load-balancer-get-started-internet-availability-zones-zonal-portal.md)

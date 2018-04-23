@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory-b2c
+author: davidmu1
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: davidmu
+ms.custom: include file
+ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/18/2018
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 Pokud chcete zaregistrovat mobilní nebo nativní aplikaci, použijte nastavení uvedená v tabulce.
@@ -8,7 +24,7 @@ Pokud chcete zaregistrovat mobilní nebo nativní aplikaci, použijte nastavení
 | ------------ | ------- | -------------------------------------------------- |
 | **Název** | Aplikace Contoso B2C | Zadejte **Název** aplikace, který popíše aplikaci uživatelům. |
 | **Nativní klient** | Ano | Pro mobilní nebo nativní aplikaci vyberte **Ano**. |
-| **Vlastní identifikátor URI přesměrování** | `com.onmicrosoft.contoso.appname://redirect/path` | Zadejte identifikátor URI přesměrování s vlastním schématem. Nezapomeňte zvolit [dobrý identifikátor URI přesměrování](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri) a nepoužívat speciální znaky jako podtržítka. |
+| **Vlastní identifikátor URI přesměrování** | `com.onmicrosoft.contoso.appname://redirect/path` | Zadejte identifikátor URI přesměrování s vlastním schématem. Nezapomeňte zvolit [dobrý identifikátor URI přesměrování](../articles/active-directory-b2c/active-directory-b2c-app-registration.md) a nepoužívat speciální znaky jako podtržítka. |
 
 Pro registraci aplikace klikněte na **Vytvořit**.
 

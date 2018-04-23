@@ -134,24 +134,24 @@
 #### [Použití certifikátů](active-directory-reporting-api-with-certificates.md)
 
 ## Správa hesel
-### [Přehled hesel](active-directory-passwords-overview.md)
+### [Přehled hesel](authentication/active-directory-passwords-overview.md)
 ### Dokumenty uživatele
 #### [Resetování nebo změna hesla](active-directory-passwords-update-your-own-password.md)
 #### [Osvědčené postupy pro hesla](active-directory-secure-passwords.md)
 #### [Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md)
-### [Jak funguje SSPR](active-directory-passwords-how-it-works.md)
-### [Průvodce nasazením SSPR](active-directory-passwords-best-practices.md)
+### [Jak funguje SSPR](authentication/concept-sspr-howitworks.md)
+### [Průvodce nasazením SSPR](authentication/howto-sspr-deployment.md)
 ### [SSPR a Windows 10](active-directory-passwords-login.md)
-### [Zásady SSPR](active-directory-passwords-policy.md)
-### [Přizpůsobení SSPR](active-directory-passwords-customize.md)
-### [Požadavky SSPR na data](active-directory-passwords-data.md)
-### [Vytváření sestav SSPR](active-directory-passwords-reporting.md)
+### [Zásady SSPR](authentication/concept-sspr-policy.md)
+### [Přizpůsobení SSPR](authentication/concept-sspr-customization.md)
+### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
+### [Vytváření sestav SSPR](authentication/howto-sspr-reporting.md)
 ### Správci IT: Resetování hesel
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-### [Samoobslužné resetování hesla licence](active-directory-passwords-licensing.md)
+### [Samoobslužné resetování hesla licence](authentication/concept-sspr-licensing.md)
 ### [Zpětný zápis hesla](active-directory-passwords-writeback.md)
-### [Řešení problémů](active-directory-passwords-troubleshoot.md)
-### [Nejčastější dotazy](active-directory-passwords-faq.md)
+### [Řešení problémů](authentication/active-directory-passwords-troubleshoot.md)
+### [Nejčastější dotazy](authentication/active-directory-passwords-faq.md)
 
 
 ## Správa zařízení

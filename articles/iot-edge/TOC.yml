@@ -45,16 +45,12 @@
       href: how-to-install-iot-core.md
     - name: Použití VS Code pro vývoj řešení IoT Edge
       items:
-        - name: 'Vývoj a nasazení modulu C#'
-          href: how-to-vscode-develop-csharp-module.md
-        - name: 'Ladění modulu C#'
-          href: how-to-vscode-debug-csharp-module.md
-        - name: Vývoj a nasazení služby Azure Functions
-          href: how-to-vscode-develop-azure-function.md
-        - name: Ladění služby Azure Functions
-          href: how-to-vscode-debug-azure-function.md
         - name: Práce s několika cloudy
           href: tutorial-multiple-modules-in-vscode.md
+        - name: 'Ladění modulu C#'
+          href: how-to-vscode-debug-csharp-module.md
+        - name: Ladění služby Azure Functions
+          href: how-to-vscode-debug-azure-function.md
     - name: Ukládání dat na hraničních zařízeních
       href: sql-storage.md
     - name: Řešení potíží

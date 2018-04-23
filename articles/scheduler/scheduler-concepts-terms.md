@@ -1,11 +1,11 @@
 ---
 title: Koncepty, pojmy a entity Scheduleru | Dokumentace Microsoftu
-description: "Koncepty, terminologie a hierarchie entit služby Azure Scheduler včetně úloh a kolekcí úloh.  Zobrazí ucelený příklad naplánované úlohy."
+description: Koncepty, terminologie a hierarchie entit služby Azure Scheduler včetně úloh a kolekcí úloh.  Zobrazí ucelený příklad naplánované úlohy.
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Koncepty, terminologie a hierarchie entit Scheduleru
 ## <a name="scheduler-entity-hierarchy"></a>Hierarchie entit Scheduleru
@@ -176,7 +176,7 @@ Pro případ, že úloha Scheduleru selže, se můžou zadat zásady opakovanýc
 
 Pokud chcete nastavit zásady opakovaných pokusů, můžete nastavit další dvě nastavení: interval opakovaných pokusů (**retryInterval**) a počet opakovaných pokusů (**retryCount**).
 
-Interval opakovaných pokusů zadaný v objektu **retryInterval** je interval mezi opakovanými pokusy. Výchozí hodnota je 30 sekund, minimální nastavitelná hodnota je 15 sekund a maximální hodnota je 18 měsíců. Pro úlohy v kolekcích úloh Free je minimální nastavitelná hodnota 1 hodina.  Definuje se ve formátu ISO 8601. Podobně je to s hodnotou počtu opakovaných pokusů nastavených v objektu **retryCount** – je to počet, kolikrát se má pokus opakovat. Výchozí hodnota je 4 a maximální hodnota je 20. Oba objekty **retryInterval** a **retryCount** jsou volitelné. Pokud je objekt **retryType** nastavený na **fixed** a nejsou explicitně zadané žádné konkrétní hodnoty, použijí se výchozí hodnoty.
+Interval opakovaných pokusů zadaný v objektu **retryInterval** je interval mezi opakovanými pokusy. Výchozí hodnota je 30 sekund, minimální nastavitelná hodnota je 15 sekund a maximální hodnota je 18 měsíců. Definuje se ve formátu ISO 8601. Podobně je to s hodnotou počtu opakovaných pokusů nastavených v objektu **retryCount** – je to počet, kolikrát se má pokus opakovat. Výchozí hodnota je 4 a maximální hodnota je 20. Oba objekty **retryInterval** a **retryCount** jsou volitelné. Pokud je objekt **retryType** nastavený na **fixed** a nejsou explicitně zadané žádné konkrétní hodnoty, použijí se výchozí hodnoty.
 
 ## <a name="see-also"></a>Viz také
  [Co je Scheduler?](scheduler-intro.md)
