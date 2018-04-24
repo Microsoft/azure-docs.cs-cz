@@ -31,6 +31,7 @@
 ### [Správa správců serveru](analysis-services-server-admins.md)
 ### [Monitorování metrik serveru](analysis-services-monitor.md)
 ### [Nastavení protokolování diagnostiky](analysis-services-logging.md)
+### [Použití brány pro zdroje dat ve virtuální síti](analysis-services-vnet-gateway.md)
 ## Připojení
 ### [Získání klientských knihoven](analysis-services-data-providers.md)
 ### [Propojení s Excelem](analysis-services-connect-excel.md)

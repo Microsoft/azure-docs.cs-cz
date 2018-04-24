@@ -43,6 +43,8 @@
       href: container-instances-environment-variables.md
     - name: Řešení potíží s nasazeními
       href: container-instances-troubleshooting.md
+    - name: Agenti sestavení Jenkins ve službě ACI
+      href: container-instances-jenkins.md
     - name: Konfigurace svazků s daty
       items:
         - name: Soubory Azure

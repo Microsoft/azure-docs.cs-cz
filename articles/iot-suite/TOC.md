@@ -48,6 +48,7 @@
 ### [Seznámení s řešením prediktivní údržby](iot-suite-predictive-walkthrough.md)
 
 ## Propojená továrna
+### [Co je propojená továrna?](iot-suite-connected-factory-features.md)
 ### [Přehled řešení propojené továrny](iot-suite-connected-factory-overview.md)
 ### [Názorný postup řešení propojené továrny](iot-suite-connected-factory-sample-walkthrough.md)
 

@@ -12,4 +12,5 @@
 ## Použití aplikace Microsoft Authenticator
 ### [Začínáme s aplikací](microsoft-authenticator-app-how-to.md)
 ### [Přihlášení pomocí telefonu](microsoft-authenticator-app-phone-signin-faq.md)
+### [Zálohování a obnovení přihlašovacích údajů k účtu](microsoft-authenticator-app-backup-and-recovery.md)
 ### [Nejčastější dotazy](microsoft-authenticator-app-faq.md)
