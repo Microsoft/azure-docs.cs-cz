@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: Kurzy
   items:
-    - name: 1. Aplikace s DB
+    - name: Aplikace s DB
       items:
         - name: .NET Core s SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python s PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1. Hostování rozhraní RESTful API
+    - name: Zabezpečený přístup k SQL DB
+      href: app-service-web-tutorial-connect-msi.md
+    - name: Hostování rozhraní RESTful API
       href: app-service-web-tutorial-rest-api.md
-    - name: 2. Mapování vlastní domény
+    - name: Mapování vlastní domény
       href: app-service-web-tutorial-custom-domain.md
-    - name: 3. Vazba certifikátu protokolu SSL
+    - name: Vytvoření vazby certifikátu SSL
       href: app-service-web-tutorial-custom-ssl.md
-    - name: 4. Přidání sítě CDN
+    - name: Přidání sítě CDN
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: 5. Ověřování uživatelů
+    - name: Ověřování uživatelů
       href: app-service-web-tutorial-auth-aad.md
 - name: Ukázky
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: Funkce operačního systému
       href: web-sites-available-operating-system-functionality.md
+    - name: Příchozí a odchozí IP adresy
+      href: app-service-ip-addresses.md
     - name: Ověřování a autorizace
       href: app-service-authentication-overview.md
     - name: Hybridní připojení
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: Přizpůsobení ověřování
           href: app-service-authentication-how-to.md
+        - name: Omezení IP adres
+          href: app-service-ip-restrictions.md
         - name: Použití služby Managed Service Identity
           href: app-service-managed-service-identity.md
         - name: Použití certifikátu SSL v kódu aplikace

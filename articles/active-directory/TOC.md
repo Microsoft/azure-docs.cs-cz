@@ -17,7 +17,7 @@
 ## [Konfigurace značky společnosti](customize-branding.md)
 ## [Přidání uživatelů do Azure AD](add-users-azure-active-directory.md)
 ## [Přiřazení licencí k uživatelům](license-users-groups.md)
-## [Konfigurace samoobslužného resetování hesla](active-directory-passwords-getting-started.md)
+## [Konfigurace samoobslužného resetování hesla](authentication/quickstart-sspr.md)
 
 
 # Postup
@@ -63,6 +63,8 @@
 #### [Dynamické skupiny a uživatelé B2B](active-directory-b2b-dynamic-groups.md)
 #### [Auditování a sestavy](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B pro hybridní organizace](active-directory-b2b-hybrid-organizations.md)
+##### [Udělení přístupu uživatelům B2B k místním aplikacím](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [Udělení přístupu místním uživatelům ke cloudovým aplikacím](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [B2B a externí sdílení Office 365](active-directory-b2b-o365-external-user.md)
 #### [Licencování B2B](active-directory-b2b-licensing.md)
 #### [Aktuální omezení](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [Uchování](active-directory-reporting-retention.md)
 #### [Latence](active-directory-reporting-latencies-azure-portal.md)
 #### [Oznámení](active-directory-reporting-notifications.md)
+#### [Reference k aktivitě auditování](active-directory-reporting-activity-audit-reference.md)
 #### [Kódy chyb aktivit přihlašování](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Řešení potíží
@@ -141,7 +144,7 @@
 #### [Registrace samoobslužného resetování hesla](active-directory-passwords-reset-register.md)
 ### [Jak funguje SSPR](authentication/concept-sspr-howitworks.md)
 ### [Průvodce nasazením SSPR](authentication/howto-sspr-deployment.md)
-### [SSPR a Windows 10](active-directory-passwords-login.md)
+### [SSPR a Windows 10](authentication/tutorial-sspr-windows.md)
 ### [Zásady SSPR](authentication/concept-sspr-policy.md)
 ### [Přizpůsobení SSPR](authentication/concept-sspr-customization.md)
 ### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### Správci IT: Resetování hesel
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [Samoobslužné resetování hesla licence](authentication/concept-sspr-licensing.md)
-### [Zpětný zápis hesla](active-directory-passwords-writeback.md)
+### [Zpětný zápis hesla](authentication/howto-sspr-writeback.md)
 ### [Řešení problémů](authentication/active-directory-passwords-troubleshoot.md)
 ### [Nejčastější dotazy](authentication/active-directory-passwords-faq.md)
 

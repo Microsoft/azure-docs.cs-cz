@@ -1,30 +1,28 @@
 # [Dokumentace ke službě Key Vault](index.md)
 
 # Přehled
-## [Co je Key Vault?](key-vault-whatis.md)
-## [Přehled služby](https://azure.microsoft.com/services/key-vault/)
+## [Přehled služby Key Vault](key-vault-overview.md)
 
-# Začínáme
+# Šablony Rychlý start
+## [Vytvoření služby Key Vault – Rozhraní příkazového řádku](quick-create-cli.md)
+## [Vytvoření služby Key Vault – PowerShell](quick-create-powershell.md)
+## [Vytvoření služby Key Vault – Portál](quick-create-portal.md)
+
+# Kurzy
+## [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md)
+# Ukázky
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# Koncepty
 ## [Začínáme se službou Key Vault](key-vault-get-started.md)
 ## [Nastavení obměny klíčů a auditování](key-vault-key-rotation-log-monitoring.md)
 ## [Použití služby Key Vault z webové aplikace](key-vault-use-from-web-application.md)
+## [Světy zabezpečení](key-vault-ovw-security-worlds.md)
+## [Obnovitelné odstranění](key-vault-ovw-soft-delete.md)
+## [Klíče účtu úložiště](key-vault-ovw-storage-keys.md)
+## [Omezování](key-vault-ovw-throttling.md)
+## [Co je Key Vault?](key-vault-whatis.md)
 
-# Postup
-## Vývoj
-### [Úvodní video pro vývojáře](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
-### [Průvodce pro vývojáře pro Key Vault](key-vault-developers-guide.md)
-### [Omezení služby](key-vault-service-limits.md)
-### [Klíče chráněné pomocí HSM](key-vault-hsm-protected-keys.md)
-### [Migrace na rozhraní .NET 2.0](key-vault-dotnet2api-release-notes.md)
-### [Uložení tajných kódů webové aplikace](vs-secure-secret-appsettings.md)
-### [Ověření služby pomocí .NET](service-to-service-authentication.md)
-
-### Přehledy
-#### [Světy zabezpečení](key-vault-ovw-security-worlds.md)
-#### [Obnovitelné odstranění](key-vault-ovw-soft-delete.md)
-#### [Klíče účtu úložiště](key-vault-ovw-storage-keys.md)
-#### [Omezování](key-vault-ovw-throttling.md)
-
+# Návody
 ## Spravovat
 ### [Protokolování v Azure Key Vault](key-vault-logging.md)
 ### [Přístup přes brány firewall](key-vault-access-behind-firewall.md)
@@ -40,7 +38,6 @@
 ### [Azure Automation](automation-manage-key-vault.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=key-vault)
 ## [Azure PowerShell](/powershell/module/azurerm.keyvault)
 ## [Azure CLI](/cli/azure/keyvault)
 ## [.NET](/dotnet/api/microsoft.azure.keyvault)
@@ -49,18 +46,21 @@
 ### [Správa trezoru](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 ### [Správa obsahu trezoru](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
 ## [REST](/rest/api/keyvault)
-
-# Související
-## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
-## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
-## [Rozšiřitelná správa klíčů s použitím služby Key Vault](https://msdn.microsoft.com/en-us/library/azure/dn198405)
-## [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+## Vývoj
+### [Úvodní video pro vývojáře](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Key-Vault-Developer-Quick-Start)
+### [Průvodce pro vývojáře pro Key Vault](key-vault-developers-guide.md)
+### [Omezení služby](key-vault-service-limits.md)
+### [Klíče chráněné pomocí HSM](key-vault-hsm-protected-keys.md)
+### [Migrace na rozhraní .NET 2.0](key-vault-dotnet2api-release-notes.md)
+### [Uložení tajných kódů webové aplikace](vs-secure-secret-appsettings.md)
+### [Ověření služby pomocí .NET](service-to-service-authentication.md)
 
 # Zdroje a prostředky
+## [Přehled služby](https://azure.microsoft.com/services/key-vault/)
 ## [Informace o klíčích, tajných kódech a certifikátech](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
 ## [Ukázky kódu](https://www.microsoft.com/download/details.aspx?id=45343)
-## [Fóra](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureKeyVault)
+## [Fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [Ceny](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
