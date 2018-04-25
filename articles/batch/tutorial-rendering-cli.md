@@ -1,6 +1,6 @@
 ---
-title: "Vykreslení scény v cloudu – Azure Batch"
-description: "Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure"
+title: Vykreslení scény v cloudu – Azure Batch
+description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0531406ce50cf8cb549965d1f30b327afe52b003
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f8a93e873f79e99777fe2d8675c9426f5fc5ecda
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -50,7 +50,7 @@ az group create \
     --location eastus2
 ```
 
-Ve vaší skupině prostředků vytvořte účet úložiště pro obecné účely pomocí příkazu [az storage account create](/cli/azure/storage/account#az_storage_account_create). Pro účely tohoto kurzu použijete účet úložiště k uložení vstupní scény 3ds Max a vykresleného výstupu.
+Ve vaší skupině prostředků vytvořte účet služby Azure Storage pomocí příkazu [az storage account create](/cli/azure/storage/account#az_storage_account_create). Pro účely tohoto kurzu použijete účet úložiště k uložení vstupní scény 3ds Max a vykresleného výstupu.
 
 ```azurecli-interactive
 az storage account create \

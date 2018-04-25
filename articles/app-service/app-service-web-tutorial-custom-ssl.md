@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -149,7 +149,7 @@ Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo n�
 
 ### <a name="upload-your-ssl-certificate"></a>Nahrání certifikátu SSL
 
-Pokud chcete nahrát svůj certifikát SSL, v levém navigačním panelu vaší webové aplikace klikněte na **Certifikáty SSL**.
+Pokud chcete nahrát svůj certifikát SSL, v levém navigačním panelu vaší webové aplikace klikněte na **Nastavení SSL**.
 
 Klikněte na **Nahrát certifikát**. 
 
@@ -159,7 +159,7 @@ Klikněte na **Odeslat**.
 
 ![Nahrání certifikátu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-Jakmile App Service dokončí nahrávání certifikátu, zobrazí se certifikát na stránce **Certifikáty SSL**.
+Jakmile App Service dokončí nahrávání certifikátu, zobrazí se certifikát na stránce **Nastavení SSL**.
 
 ![Nahraný certifikát](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -216,7 +216,7 @@ Teď už zbývá jen ověřit, že HTTPS na vaší vlastní doméně funguje. V 
 
 Ve výchozím nastavení mají všichni stále přístup k vaší webové aplikaci pomocí HTTP. Všechny požadavky HTTP můžete přesměrovat na port HTTPS.
 
-V levém navigačním panelu na stránce vaší webové aplikace vyberte **Vlastní domény**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
+V levém navigačním panelu na stránce vaší webové aplikace vyberte **Nastavení SSL**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
 
 ![Vynucení HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -225,6 +225,16 @@ Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na v
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-1112"></a>Vynucení protokolu TLS 1.1/1.2
+
+Vaše aplikace ve výchozím nastavení povoluje protokol [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0, který už se z hlediska oborových standardů, například [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard), nepovažuje za bezpečný. Pokud chcete vynucovat vyšší verze protokolu TLS, postupujte následovně:
+
+V levém navigačním panelu na stránce vaší webové aplikace vyberte **Nastavení SSL**. Pak v části **Verze protokolu TLS** vyberte minimální požadovanou verzi protokolu TLS.
+
+![Vynucení HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+Po dokončení operace bude vaše aplikace odmítat všechna připojení využívající nižší verze protokolu TLS.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
