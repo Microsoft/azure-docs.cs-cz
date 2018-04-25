@@ -871,9 +871,9 @@ Pomocí portálu Azure, můžete upravit soubory skriptu back-end Node.js v apli
 [Rychlý start Android klienta]: app-service-mobile-android-get-started.md
 [Rychlé spuštění klienta Apache Cordova]: app-service-mobile-cordova-get-started.md
 [iOS klienta rychlý start]: app-service-mobile-ios-get-started.md
-[Rychlý start Xamarin.iOS klienta]: app-service-mobile-xamarin-ios-get-started.md
+[Rychlé spuštění klienta Xamarin.iOS]: app-service-mobile-xamarin-ios-get-started.md
 [Rychlé spuštění klienta Xamarin.Android]: app-service-mobile-xamarin-android-get-started.md
-[Rychlý start Xamarin.Forms klienta]: app-service-mobile-xamarin-forms-get-started.md
+[Rychlé spuštění klienta Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Rychlé spuštění klienta Windows Store]: app-service-mobile-windows-store-dotnet-get-started.md
 [synchronizaci dat offline]: app-service-mobile-offline-data-sync.md
 [Konfigurace ověřování Azure Active Directory]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md

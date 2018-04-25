@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 02849fb63a8d696fa4296f5ec885a2d24f9adca1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrace místních adresářů do služby Azure Active Directory
 Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
@@ -97,7 +97,7 @@ Azure AD Connect obsahuje několik funkcí, které můžete volitelně zapnout n
 
 [Synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md) synchronizuje hodnoty hash hesel ve službě Active Directory do služby Azure AD. Koncový uživatel může používat stejné heslo v místní síti i na cloudu, a přitom ho spravovat pouze na jednom místě. Protože se jako autorita používá vaše místní služba Active Directory, můžete také použít vlastní zásady hesel.
 
-[Zpětný zápis hesel](../active-directory-passwords-getting-started.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
+[Zpětný zápis hesel](../authentication/quickstart-sspr.md) umožňuje uživatelům měnit a resetovat vlastní hesla v cloudu a používat přitom vaše místní zásady hesel.
 
 [Zpětný zápis zařízení](active-directory-aadconnect-feature-device-writeback.md) umožňuje zpětně zapisovat do místní služby Active Directory zařízení registrovaná v Azure AD, takže se dají použít pro podmíněný přístup.
 
@@ -110,7 +110,7 @@ Funkce pro [prevenci náhodného odstranění](active-directory-aadconnectsync-f
 | --- | --- |
 |Konfigurace filtrování | [Synchronizace Azure AD Connect: Konfigurace filtrování](active-directory-aadconnectsync-configure-filtering.md)|
 |Synchronizace hodnot hash hesel | [Synchronizace Azure AD Connect: Implementace synchronizace hodnot hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
-|Zpětný zápis hesla | [Začínáme se správou hesel](../active-directory-passwords-getting-started.md)|
+|Zpětný zápis hesla | [Začínáme se správou hesel](../authentication/quickstart-sspr.md)|
 |Zpětný zápis zařízení | [Povolení zpětného zápisu zařízení v Azure AD Connect](active-directory-aadconnect-feature-device-writeback.md)|
 |Prevence náhodného odstranění | [Synchronizace Azure AD Connect: Prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
 |Automatický upgrade | [Azure AD Connect: Automatický upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)|

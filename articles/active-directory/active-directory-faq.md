@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 83586cff59d5beb7c48bc6bb8b72fd09e4d37bf8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: be5f5a6c39e27ae7fedab32fea12f5cf9b7cd3bd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -112,7 +112,7 @@ Další informace najdete v tématu [Sledování infrastruktury místních ident
 
 **Odpověď:** Zpětný zápis hesla funguje v reálném čase.
 
-Další informace najdete v tématu [Začínáme se správou hesel](active-directory-passwords-getting-started.md).
+Další informace najdete v tématu [Začínáme se správou hesel](authentication/quickstart-sspr.md).
 
 - - -
 **Otázka: Je možné použít zpětný zápis hesel, která spravuje správce?**

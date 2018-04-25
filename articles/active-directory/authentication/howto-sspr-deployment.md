@@ -16,19 +16,19 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 22086a0d9fc774b75e1b0873188b16fc548d0791
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Úspěšné zavedení samoobslužného resetování hesla
 
 K zajištění hladkého zavedení funkce samoobslužného resetování hesla (SSPR) služby Azure Active Directory (Azure AD) většina zákazníků provede následující kroky:
 
-1. [Povolte resetování hesla ve svém adresáři](../active-directory-passwords-getting-started.md).
-2. [Nakonfigurujte oprávnění místní služby Active Directory pro zpětný zápis hesla](../active-directory-passwords-writeback.md#active-directory-permissions).
-3. [Nakonfigurujte zpětný zápis hesel](../active-directory-passwords-writeback.md#configure-password-writeback), aby se hesla z Azure AD zapsala zpátky do místního adresáře.
+1. [Povolte resetování hesla ve svém adresáři](quickstart-sspr.md).
+2. [Nakonfigurujte oprávnění místní služby Active Directory pro zpětný zápis hesla](howto-sspr-writeback.md#active-directory-permissions).
+3. [Nakonfigurujte zpětný zápis hesel](howto-sspr-writeback.md#configure-password-writeback), aby se hesla z Azure AD zapsala zpátky do místního adresáře.
 4. [Přiřaďte a ověřte požadované licence](concept-sspr-licensing.md).
 5. Určete, jestli chcete provést postupné zavedení. Pokud chcete samoobslužné resetování hesla zavádět postupně, můžete omezit přístup jenom na konkrétní skupinu uživatelů a provést s nimi pilotní nasazení. Pokud chcete provést zavedení pro konkrétní skupinu, nastavte přepínač **Samoobslužné resetování hesla povoleno** na **Vybrané** a vyberte skupinu zabezpečení, která má mít možnost použít resetování hesel. 
 6. Naplňte [ověřovací data](howto-sspr-authenticationdata.md) nutná k registraci uživatelů, například jejich telefonní číslo do kanceláře, mobilní telefon a alternativní e-mailovou adresu.
@@ -41,7 +41,7 @@ K zajištění hladkého zavedení funkce samoobslužného resetování hesla (S
    > [!NOTE]
    > Změnou této možnosti z vybrané skupiny na Všichni nedojde k zneplatnění stávajících ověřovacích dat, která uživatel zaregistroval jako součást testovací skupiny. Nakonfigurovaní uživatelé se zaregistrovanými platnými ověřovacími daty budou fungovat i nadále.
 
-12. [Povolte uživatelům Windows 10 resetování hesla na přihlašovací obrazovce](../active-directory-passwords-login.md).
+12. [Povolte uživatelům Windows 10 resetování hesla na přihlašovací obrazovce](tutorial-sspr-windows.md).
 
    > [!IMPORTANT]
    > K otestování samoobslužného resetování hesla využijte uživatele, a ne správce, protože Microsoft pro účty správců Azure vynucuje požadavky na silné ověřování. Další informace týkající se zásad hesel správců najdete v našem článku o [zásadách hesel](concept-sspr-policy.md#administrator-password-policy-differences).
@@ -90,7 +90,7 @@ Zakázání samoobslužného resetování hesla je snadné. Otevřete svého ten
 * [Máte dotaz k licencování?](concept-sspr-licensing.md)
 * [Jaká data používá SSPR a která data byste měli naplnit pro vaše uživatele?](howto-sspr-authenticationdata.md)
 * [Jaké jsou možnosti zásad se SSPR?](concept-sspr-policy.md)
-* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](../active-directory-passwords-writeback.md)
+* [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
 * [Myslím, že je něco poškozené. Jak řešit problémy SSPR?](active-directory-passwords-troubleshoot.md)
