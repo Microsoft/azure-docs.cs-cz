@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 5932cf29572377e4e221d7a217f36211c0fe04b8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7b1579b84f3ee3c24c087c481fab7eb702f20afc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API a webu Azure Portal
 
@@ -48,51 +48,41 @@ Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>Přidání ukázkových dat
 
-Teď můžete do nové kolekce přidávat data pomocí Průzkumníka dat.
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
-1. V Průzkumníku dat se nová databáze zobrazí v podokně Kolekce. Rozbalte databázi **Tasks**, rozbalte kolekci **Items**, klikněte na **Dokumenty** a potom klikněte na **Nové dokumenty**. 
+## <a name="query-your-data"></a>Dotazování dat
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-new-document.png)
-  
-2. Teď do kolekce přidejte dokument s následující strukturou.
-
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
-
-3. Po přidání formátu json na kartu **Dokumenty** klikněte na **Uložit**.
-
-    ![Zkopírujte data json a v Průzkumníku dat na webu Azure Portal klikněte na Uložit.](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-save-document.png)
-
-4.  Vytvořte a uložte ještě jeden dokument, ve kterém vložíte jedinečnou hodnotu pro vlastnost `id` a změníte ostatní vlastnosti podle svých potřeb. Nové dokumenty můžou mít jakoukoli strukturu, protože Azure Cosmos DB neuplatňuje pro data žádné schéma.
-
-     Teď můžete k načítání dat používat dotazy v Průzkumníku dat. Ve výchozím nastavení používá Průzkumník dat pro načtení všech dokumentů v kolekci příkaz `SELECT * FROM c`. Ten však můžete změnit na jiný [příkaz jazyka SQL](sql-api-sql-query.md), například `SELECT * FROM c ORDER BY c._ts DESC`, který vrátí všechny dokumenty v sestupném pořadí podle časového razítka.
- 
-     Průzkumník dat můžete použít také pro vytváření uložených procedur, funkcí UDF a triggerů pro provádění obchodní logiky a také propustnosti škálování na straně serveru. Průzkumník dat zpřístupní všechna integrovaná programová data v rozhraních API, ale zajistí jednoduchý přístup k vašim datům na portálu Azure Portal.
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
 Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `CD` přejděte do pracovního adresáře.  
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
     ```bash
     git clone https://github.com/Azure-Samples/documentdb-dotnet-todo-app.git
     ```
 
-3. Potom otevřete soubor řešení todo v sadě Visual Studio. 
+4. Potom otevřete soubor řešení todo v sadě Visual Studio. 
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor DocumentDBRepository.cs a zjistíte, že tyto řádky kódu vytvářejí prostředky Azure Cosmos DB. 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+
+Všechny následující fragmenty kódu pocházejí ze souboru DocumentDBRepository.cs.
 
 * Na řádku 76 se inicializuje DocumentClient.
 
@@ -158,10 +148,7 @@ Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést ú
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

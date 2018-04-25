@@ -1,23 +1,28 @@
 ---
-title: Migrace databáze SQL Serveru do služby Azure SQL Database | Microsoft Docs
-description: Zjistěte, jak migrovat databázi SQL Serveru do služby Azure SQL Database.
+title: Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMS | Microsoft Docs
+description: Zjistěte, jak migrovat databázi SQL Serveru do služby Azure SQL Database pomocí DMS.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: c4b4354cb1090b9abc388da9d1d1b135f135144d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>Migrace databáze SQL Serveru do služby Azure SQL Database
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMS
 
-K přesunu databáze SQL Serveru do služby Azure SQL Database stačí vytvořit prázdnou databázi SQL v Azure a pak použít nástroj [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) k importu databáze do Azure. V tomto kurzu se naučíte:
+K přesunu databáze SQL Serveru do izolované databáze služby Azure SQL Database stačí vytvořit prázdnou databázi SQL v Azure a pak použít nástroj [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) k importu databáze do Azure. Další možnosti migrace najdete v tématu [Migrace databáze do služby Azure SQL Database](sql-database-cloud-migrate.md).
+
+> [!IMPORTANT]
+> Pokud chcete databázi migrovat do spravované instance Azure SQL Database, přejděte na téma o [migraci z SQL Serveru do spravované instance](sql-database-managed-instance-migrate.md).
+
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit na webu Azure Portal prázdnou databázi SQL Azure (s použitím nového nebo existujícího serveru Azure SQL Database)

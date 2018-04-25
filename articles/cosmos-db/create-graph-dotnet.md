@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Azure Cosmos DB v .NET Framework nebo .NET Core s využitím rozhraní Graph API | Dokumentace Microsoftu
+title: Vytvoření aplikace Azure Cosmos DB v .NET Framework nebo .NET Core s využitím rozhraní Graph API | Microsoft Docs
 description: Obsahuje ukázku kódu v .NET Framework a .NET Core, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
 services: cosmos-db
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e70e3d7b4cfd37cb28bda7df6210ad45415d9673
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dd2ff95c23b149cd8d5becf086c021060b0ec5a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Vytvoření aplikace v .NET Framework nebo .NET Core s využitím rozhraní Graph API
 
@@ -46,19 +46,29 @@ Pokud už máte sadu Visual Studio 2017 nainstalovanou, ujistěte se, že máte 
 
 Teď naklonujeme aplikaci rozhraní Graph API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí příkazu `cd` přejděte do pracovního adresáře.  
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
     ```
 
-3. Potom otevřete sadu Visual Studio a otevřete soubor řešení.
+4. Potom otevřete sadu Visual Studio a otevřete soubor řešení.
 
-4. Obnovte balíčky NuGet v projektu. Ty by měly zahrnovat ovladač Gremlin.Net i balíček Newtonsoft.Json.
+5. Obnovte balíčky NuGet v projektu. Ty by měly zahrnovat ovladač Gremlin.Net i balíček Newtonsoft.Json.
 
-5. Ovladač Gremlin.Net verze 3.2.7 můžete nainstalovat také ručně, pomocí správce balíčků NuGet nebo pomocí [nástroje příkazového řádku nuget](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools): 
+6. Ovladač Gremlin.Net verze 3.2.7 můžete nainstalovat také ručně, pomocí správce balíčků NuGet nebo pomocí [nástroje příkazového řádku nuget](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools): 
 
     ```bash
     nuget install Gremlin.Net -Version 3.2.7
@@ -66,7 +76,9 @@ Teď naklonujeme aplikaci rozhraní Graph API z GitHubu, nastavíme připojovac
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor Program.cs a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos. 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+
+Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
 
 * Nastaví se parametry připojení podle účtu vytvořeného výše (řádek 19): 
 
@@ -196,10 +208,7 @@ Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, procházet n
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu: 
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
