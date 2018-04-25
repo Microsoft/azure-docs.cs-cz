@@ -3,15 +3,16 @@ title: Co je Azure Search | Microsoft Docs
 description: Azure Search je plně spravovaná hostovaná cloudová vyhledávací služba. Další informace najdete v tomto přehledu funkce.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.topic: overview
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: df726e26b6a6f9ff28c1c38253875897b49b4155
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ad5c60c246c2946e4dd3a5bb6b4d6e8d21d2b03d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
 Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v obsahu ve webových, mobilních a firemních aplikacích.

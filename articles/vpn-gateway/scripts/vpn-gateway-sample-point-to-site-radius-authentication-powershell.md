@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/17/2018
 ms.author: anzaman
-ms.openlocfilehash: 50c9652d6a59f6a1336a97694370fe8e8d31fddb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 390cc6f01b4e198fc35d1df36a5a234716523724
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Vytvoření brány sítě VPN a přidání konfigurace typu Point-to-Site pomocí PowerShellu
 
@@ -61,7 +61,7 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 # Set the subnet configuration for the virtual network
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$vnet | Set-AzureRmVirtualNetwork
 # Request a public IP address
 $gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' `
  -AllocationMethod Dynamic
