@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: fd5a8afe82bab5ca4e735a2483d90b84e234b8dc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: e982fa2bec3cbc4845ecebb45db76f019e2178ff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidat klienta pro využití a fakturace k Azure zásobníku
 
@@ -58,7 +58,7 @@ Aktualizace registrace s předplatným nové zákazníka. Azure sestavy využit�
 > Chcete-li provést tento krok, musíte mít [zaregistrovat Azure zásobníku](azure-stack-register.md).
 
 1. Otevřete prostředí Windows PowerShell s řádku se zvýšenými oprávněními a spusťte:  
-    `Connect-AzureRmAccount`
+    `Add-AzureRmAccount`
 2. Zadejte přihlašovací údaje Azure.
 3. V relaci prostředí PowerShell spusťte příkaz:
 

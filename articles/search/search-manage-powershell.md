@@ -10,11 +10,11 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 974f2df8c4c9c9730f176a1e8472199960b359f6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 8f83f2652f7bd34f53dde1674c022f8792ae7658
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/23/2018
 > 
 
 Toto téma popisuje příkazy prostředí PowerShell provádět mnoho úloh správy pro služby vyhledávání systému Azure. Jsme provede procesem vytváření vyhledávací službu, je škálování a správu jeho klíče rozhraní API.
-Tyto příkazy paralelní možnostmi správy dostupnými v [REST API správy služby Azure Search](http://msdn.microsoft.com/library/dn832684.aspx).
+Tyto příkazy paralelní možnostmi správy dostupnými v [REST API správy služby Azure Search](https://docs.microsoft.com/rest/api/searchmanagement).
 
 ## <a name="prerequisites"></a>Požadavky
 * Pokud nemáte Azure PowerShell 1.0 nebo novější. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).

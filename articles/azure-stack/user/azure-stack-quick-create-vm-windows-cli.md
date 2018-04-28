@@ -12,28 +12,39 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/19/2018
+ms.date: 04/23/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 5665af14b9b0d0705b68c8a27c593b19c31b053e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 381c1c37b0675d97adc058979a5d9b5c4fd2cc8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-azure-stack-using-azure-cli"></a>Rychlý úvod: vytvoření virtuálního počítače s Windows v zásobníku Azure pomocí rozhraní příkazového řádku Azure
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Rychlý úvod: vytvoření virtuálního počítače Windows serveru pomocí rozhraní příkazového řádku Azure v zásobníku Azure
 
-Rozhraní příkazového řádku Azure slouží k vytváření a správě prostředků Azure zásobníku z příkazového řádku. Tento článek ukazuje, jak používat rozhraní příkazového řádku Azure k vytváření a přístup k systému Windows Server 2016 virtuálního počítače v Azure zásobníku.
+‎*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+
+Virtuální počítač systému Windows Server 2016 můžete vytvořit pomocí rozhraní příkazového řádku Azure. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje následující kroky:
+
+* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
+* Nainstalovat webový server IIS a zobrazit výchozí domovskou stránku.
+* Vyčistěte vašich prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že vaše operátor zásobník Azure přidal bitovou kopii "Windows Server 2016" do zásobníku Azure marketplace.
+* Ujistěte se, že vaše zásobník Azure operátor přidán **systému Windows Server 2016** bitovou kopii do zásobníku Azure marketplace.
 
 * Azure zásobníku vyžaduje konkrétní verzi rozhraní příkazového řádku Azure k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro Azure zásobníku rozhraní příkazového řádku Azure, postupujte podle kroků pro [instalace a konfigurace rozhraní příkazového řádku Azure](azure-stack-version-profiles-azurecli2.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, do které zásobník Azure jsou nasadit a spravovat prostředky. Z vaší development kit nebo zásobník Azure integrovaný systém, [vytvořit skupinu az](/cli/azure/group#az_group_create) příkazu vytvořte skupinu prostředků. Hodnoty se přiřazují pro všechny proměnné v tomto dokumentu, můžete použít tyto hodnoty, nebo přiřadit nové hodnoty. Následující příklad vytvoří skupinu prostředků s názvem myResourceGroup do místního umístění.
+Skupina prostředků je logický kontejner, kde můžete nasadit a spravovat prostředky Azure zásobníku. Z prostředí zásobníku Azure spustit [vytvořit skupinu az](/cli/azure/group#az_group_create) příkazu vytvořte skupinu prostředků.
+
+>[!NOTE]
+ Hodnoty se přiřazují pro všechny proměnné v příklady kódu. Pokud chcete, můžete však přiřadit nové hodnoty.
+
+Následující příklad vytvoří skupinu prostředků s názvem myResourceGroup do místního umístění.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -41,7 +52,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvoření virtuálního počítače pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro název správce a Demouser@123 jako heslo. Aktualizujte tyto hodnoty na nějaké vhodné pro vaše prostředí. Tyto hodnoty je třeba při připojení k virtuálnímu počítači.
+Vytvoření virtuálního počítače (VM) pomocí [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) příkaz. Následující příklad vytvoří virtuální počítač s názvem můjvp přesměrovat. Tento příklad používá Demouser pro název správce a Demouser@123 jako heslo uživatele. Tyto hodnoty změňte na něco, co je vhodné pro vaše prostředí.
 
 ```cli
 az vm create \
@@ -54,11 +65,13 @@ az vm create \
   --location local
 ```
 
-Když je vytvořen virtuální počítač, *PublicIPAddress* je výstupní parametr. Poznamenejte si tuto adresu, protože to přístup k virtuálnímu počítači potřebujete.
+Když je vytvořen virtuální počítač, **PublicIPAddress** parametr ve výstupu obsahuje veřejnou IP adresu pro virtuální počítač. Poznamenejte si tuto adresu, protože je nutné ho pro přístup k virtuálnímu počítači.
 
 ## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
-Ve výchozím nastavení je povoleno pouze připojení RDP virtuálního počítače s Windows nasazené v Azure zásobníku. Pokud bude tento virtuální počítač webovým serverem, budete muset otevřít port 80 z internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#open-port).
+Protože tento virtuální počítač bude běžet webovém serveru IIS, budete muset otevřít port 80 pro přenosy z Internetu.
+
+Použití [az virtuálních počítačů open-port](/cli/azure/vm#open-port) příkaz pro otevření portu 80.
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -66,7 +79,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci vzdálené plochy. IP adresu nahraďte veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření virtuálního počítače.
+Použijte další příkaz k vytvoření připojení vzdálené plochy k virtuálnímu počítači. Nahraďte adresu IP virtuálního počítače "Veřejná IP adresa". Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili pro virtuální počítač.
 
 ```
 mstsc /v <Public IP Address>
@@ -74,7 +87,7 @@ mstsc /v <Public IP Address>
 
 ## <a name="install-iis-using-powershell"></a>Instalace služby IIS pomocí PowerShellu
 
-Po přihlášení k virtuálnímu počítači Azure, můžete použít jeden řádek prostředí PowerShell k instalaci IIS a aktivace pravidla místní brány firewall pro povolení webový provoz. Otevřete příkazový řádek PowerShellu a spusťte následující příkaz:
+Teď, když jste přihlášení k virtuálnímu počítači, můžete použít PowerShell k instalaci služby IIS. Spusťte prostředí PowerShell na virtuálním počítači a spusťte následující příkaz:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -88,7 +101,7 @@ Chcete-li zobrazit výchozí úvodní stránka služby IIS, můžete použít we
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již nepotřebujete, můžete použít [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky.
+Vyčistěte prostředky, které už nepotřebujete. Použití [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky.
 
 ```cli
 az group delete --name myResourceGroup
@@ -96,4 +109,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili jednoduchého virtuálního počítače Windows. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tento rychlý start jste nasadili základní virtuální počítač Windows serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).

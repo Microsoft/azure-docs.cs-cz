@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: davidmu
-ms.openlocfilehash: 85e61f96ff829052e857d4823b3c944c6d981d2f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 81ab3288d7a365c2665b3b38ca220a3e7cb648c7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-register-an-application-to-enable-sign-up-and-sign-in-using-azure-active-directory-b2c"></a>Kurz: Zaregistrujte aplikaci k povolení registrace a přihlášení pomocí Azure Active Directory B2C
 
@@ -175,4 +175,4 @@ V tomto článku jste se dozvěděli, jak:
 > * Registrace vaší aplikace
 
 > [!div class="nextstepaction"]
-> [Povolit webových aplikací k ověření s účty](active-directory-b2c-app-registration.md)
+> [Povolit webových aplikací k ověření s účty](active-directory-b2c-tutorials-web-app.md)

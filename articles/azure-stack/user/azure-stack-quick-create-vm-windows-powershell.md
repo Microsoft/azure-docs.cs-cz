@@ -12,20 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/19/2018
+ms.date: 04/20/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 4f0d07d2c64650091b5fc654a645785a12c3c3de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 9f5752a969ff6a191ec60e175494316aea4abcaf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v Azure zásobníku
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: vytvoření virtuálního počítače Windows serveru pomocí prostředí PowerShell v Azure zásobníku
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Tato příručka údaje vytváření virtuálního počítače v systému Windows Server 2016 v zásobníku Azure pomocí prostředí PowerShell. Můžete spustit kroků popsaných v tomto článku z Development Kit zásobník Azure nebo z externí klienta se systémem Windows, pokud jsou připojené prostřednictvím sítě VPN.
+Virtuální počítač systému Windows Server 2016 můžete vytvořit pomocí Azure PowerShell zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje postup:
+
+* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
+* Nainstalovat webový server IIS a zobrazit výchozí domovskou stránku.
+* Vyčistěte vašich prostředků.
+
+>[!NOTE]
+ Můžete spustit kroků popsaných v tomto článku z Development Kit zásobník Azure nebo z externí klienta se systémem Windows, pokud se připojíte přes síť VPN.
 
 ## <a name="prerequisites"></a>Požadavky
 

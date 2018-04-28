@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
 
 SQL Database nabízí tři typy databází:
 
-- Vytvořit v rámci jedné databáze [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu [výpočetní a úložnou kapacitu pro různé úlohy](sql-database-service-tiers.md). Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
-- Databáze vytvořené jako součást [fond databází](sql-database-elastic-pool.md) v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu [výpočetní a úložnou kapacitu pro různé úlohy](sql-database-service-tiers.md) , které jsou sdíleno mezi všechny databáze ve fondu. Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
+- Vytvořit v rámci jedné databáze [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu](sql-database-service-tiers-vcore.md). Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
+- Databáze vytvořené jako součást [fond databází](sql-database-elastic-pool.md) v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu (založené na DTU)](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu (vCore na základě)](sql-database-service-tiers-vcore.md) , jsou sdílena mezi všemi databází ve fondu. Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
 - [Instance systému SQL server](sql-database-managed-instance.md) (spravované instanci) vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu výpočetní a úložnou kapacitu pro všechny databáze v instanci serveru. Spravované instance obsahuje systém a uživatele databáze. Spravované Instance vytvořené za účelem povolení databáze navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. Spravované Instance poskytuje vysokou kompatibilitu s programovací model místní systém SQL Server a podporuje velká většina funkcí systému SQL Server a doprovodné nástroje a služby.  
 
 Microsoft Azure SQL Database podporuje tabular data stream (TDS) protokol klienta verze 7.3 nebo novější a umožňuje šifrované připojení TCP/IP.
@@ -52,7 +52,7 @@ Logický server Azure Database:
 - Poskytuje koncový bod připojení pro přístup k databázi (<serverName>.database.windows.net).
 - Poskytuje přístup k metadatům, která se vztahují k obsaženým prostředkům, přes zobrazení dynamických zpráv díky připojení k hlavní databázi. 
 - Poskytuje oboru pro zásady správy, které platí pro její databáze - přihlášení, brány firewall, audit, hrozby detekce atd. 
-- Je omezené na základě kvótu v rámci nadřazeného předplatného (dvacet servery podle předplatného ve výchozím nastavení - [najdete v části předplatné omezuje zde](../azure-subscription-service-limits.md))
+- Je omezené na základě kvótu v rámci nadřazeného předplatného (šesti serverů na jedno předplatné, ve výchozím nastavení - [najdete v části předplatné omezuje zde](../azure-subscription-service-limits.md))
 - Poskytuje oboru pro DTU nebo vCore kvót a kvóty databáze pro prostředky, které obsahuje (jako je například 45 000 DTU)
 - Je v rozsahu správy verzí pro možnosti zapnuta obsažených prostředků 
 - Hlavní přihlášení na úrovni serveru můžou spravovat všechny databáze na serveru.
@@ -65,11 +65,11 @@ K ochraně vašich dat [brány firewall SQL Database](sql-database-firewall-conf
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí portálu Azure
 
-Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. 
+Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. Existuje více metod pro získání nového formuláře SQL serveru tak, že vytvoříte nový server SQL nebo jako součást vytvoření nové databáze. 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Vytvořit prázdný SQL server (logický server)
 
-K vytvoření serveru (bez databáze) Azure SQL Database pomocí [portál Azure](https://portal.azure.com), přejděte do prázdného formuláře (logického) serveru SQL.  
+K vytvoření serveru (bez databáze) Azure SQL Database pomocí [portál Azure](https://portal.azure.com), přejděte do prázdného formuláře SQL server (logický server).  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Vytvoření databáze SQL prázdné nebo ukázku
 
@@ -78,7 +78,7 @@ Chcete-li vytvořit databázi Azure SQL pomocí [portál Azure](https://portal.a
   ![create database-1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> Informace o výběru cenovou úroveň pro vaši databázi najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
+> Informace o výběru cenovou úroveň pro vaši databázi najdete v tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 
 K vytvoření Instance spravované, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -91,7 +91,7 @@ Chcete-li spravovat stávající databázi, přejděte na **databází SQL** a k
    ![pravidlo brány firewall serveru](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> Konfigurace vlastnosti výkonu pro databázi najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
+> Konfigurace vlastnosti výkonu pro databázi najdete v tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 >
 
 > [!TIP]

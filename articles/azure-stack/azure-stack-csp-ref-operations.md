@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: fbdf4023bc70f1ad05dd52ac1eabe95b12be9be2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: ef7ca59647a1f8c15d85c809609060a5945bedde
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Spravovat registraci klientů v Azure zásobníku
 
@@ -47,7 +47,7 @@ Všimněte si, že může být pouze jedno předplatné přidružený klienta. P
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí rutiny New-AzureRmResource aktualizovat zdroj registrace. Přihlaste se k Azure (`Connect-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
+Pomocí rutiny New-AzureRmResource aktualizovat zdroj registrace. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -78,7 +78,7 @@ Získání seznamu všech klientů, které byly přidány na registraci.
 
 ### <a name="powershell"></a>PowerShell
 
-Použijte rutinu Get-AzureRmResovurce seznam všech registrovaných klientů. Přihlaste se k Azure (`Connect-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
+Použijte rutinu Get-AzureRmResovurce seznam všech registrovaných klientů. Přihlaste se k Azure (`Add-AzureRmAccount`) pomocí účtu, který jste použili pro počáteční registraci. Tady je příklad toho, jak přidat klienta:
 
 ```powershell
   Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01

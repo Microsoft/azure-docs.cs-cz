@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy zabezpečení pro vícefaktorového ověřování | Microsoft Docs
-description: Tento dokument obsahuje osvědčené postupy kolem účty Azure pomocí Azure MFA
+title: Doprovodné materiály zabezpečení pro MFA | Microsoft Docs
+description: Tento dokument obsahuje pokyny ohledně použití Azure MFA s účty Azure
 services: multi-factor-authentication
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -15,19 +15,19 @@ ms.date: 06/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 0fd90c4e59fa64c24ecfa6d7d8f23e025210e078
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 50e6cd3c067e09ebf9ace442894d5d066141e0b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="security-best-practices-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Osvědčené postupy zabezpečení pro používání ověřování Azure Multi-Factor Authentication s účty Azure AD
+# <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Bezpečnostní pokyny k používání ověřování Azure Multi-Factor Authentication s účty Azure AD
 
 Dvoustupňové ověření je upřednostňovanou volbou pro většinu organizací, které chcete zvýšit jejich procesu ověřování. Azure Multi-Factor Authentication (MFA) pomáhá společností splňují požadavky na jejich zabezpečení a dodržování předpisů při současném poskytování jednoduché prostředí přihlašování pro své uživatele. Tento článek se zabývá některé tipy, které byste měli zvážit při plánování pro přijetí Azure MFA.
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>Nasazení Azure MFA v cloudu
 
-Existují dva způsoby, jak povolit Azure MFA pro všechny uživatele.
+Existují dva způsoby, jak [povolit Azure MFA pro všechny uživatele](howto-mfa-getstarted.md).
 
 * Zakoupit licence pro každého uživatele (buď Azure MFA, Azure AD Premium nebo Enterprise Mobility + Security)
 * Vytvoření poskytovatele Multi-Factor Auth a platím na uživatele nebo podle ověření
@@ -46,12 +46,12 @@ Při nastavování služby Multi-Factor Authentication, vezměte v úvahu násle
 ### <a name="multi-factor-auth-provider"></a>Zprostředkovatel vícefaktorového ověřování
 ![Zprostředkovatel vícefaktorového ověřování](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-Pokud nemáte licence, které zahrnují Azure MFA, můžete vytvořit poskytovatele ověřování MFA. 
+Pokud nemáte licence, které zahrnují Azure MFA, pak můžete [vytvářet poskytovatele ověřování MFA](concept-mfa-authprovider.md).
 
 Při vytváření zprostředkovatele ověřování, potřebujete vyberte adresář a zvažte následující podrobnosti:
 
-* Adresář služby Azure AD k vytvoření poskytovatele Multi-Factor Auth nepotřebujete, ale můžete získat další funkce s jednou. Když přiřadíte zprostředkovatel ověřování adresář služby Azure AD, jsou povoleny tyto funkce:  
-  * Rozšíření dvoustupňové ověřování pro všechny uživatele  
+* Adresář služby Azure AD k vytvoření poskytovatele Multi-Factor Auth nepotřebujete, ale můžete získat další funkce s jednou. Když přiřadíte zprostředkovatel ověřování adresář služby Azure AD, jsou povoleny tyto funkce:
+  * Rozšíření dvoustupňové ověřování pro všechny uživatele
   * Globální správci nabízí další funkce, jako je například portál pro správu, vlastní přivítání a sestav.
 * Pokud synchronizujete prostředí služby Active Directory v místě s adresářem služby Azure AD, je třeba DirSync nebo AAD Sync. Pokud používáte adresář služby Azure AD, který není synchronizován s místní instancí Active Directory, není nutné DirSync nebo AAD Sync.
 * Vyberte model spotřeby, který nejlépe vyhovuje vašim obchodním. Jakmile vyberete model využití, už nemůžete provést změnu. Dva modely jsou:
@@ -65,7 +65,7 @@ Vzhledem k tomu, že většina uživatelů jsou zvykli na použití pouze hesel 
 * Vezměte v úvahu [důvěryhodné IP adresy schopností](howto-mfa-mfasettings.md#trusted-ips) v Azure MFA jako způsob, jak minimalizovat dvoustupňové ověřování. Pomocí této funkce mohou správci klienta spravované nebo federované obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze společnosti místní intranet. Funkce jsou dostupné pro klienty Azure AD, kteří mají licence Azure AD Premium, Enterprise Mobility Suite nebo Azure Multi-Factor Authentication.
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>Osvědčené postupy pro místní nasazení
-Pokud vaše společnost se rozhodla využít svou vlastní infrastrukturu pro vícefaktorové ověřování zapnout, budete muset nasadit Azure Multi-Factor Authentication Server místní. Součásti serveru MFA se zobrazují v následujícím diagramu:
+Pokud vaše společnost se rozhodla využít svou vlastní infrastrukturu jak zapnout MFA, pak budete muset [nasazení Azure Multi-Factor Authentication Server místní](howto-mfaserver-deploy.md). Součásti serveru MFA se zobrazují v následujícím diagramu:
 
 ![Výchozí součásti serveru MFA: konzoly, synchronizační modul, portálu pro správu, Cloudová služba](./media/multi-factor-authentication-security-best-practices/server.png) \*není ve výchozím nastavení nainstalovaná \** nainstalován, ale není povoleno ve výchozím nastavení
 
@@ -112,4 +112,3 @@ Při tomto článku klade důraz některé osvědčené postupy pro Azure MFA, e
 * [Sestavy v Azure Multi-Factor Authentication](howto-mfa-reporting.md)
 * [Prostředí dvoustupňové ověření registrace](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
 * [Nejčastější dotazy k Azure Multi-Factor Authentication](multi-factor-authentication-faq.md)
-

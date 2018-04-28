@@ -1,21 +1,21 @@
 ---
-title: Přehled služby Azure Policy | Microsoft Docs
+title: Přehled služby Azure Policy | Dokumentace Microsoftu
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
+author: DCtheGeek
+ms.author: dacoulte
 ms.reviewer: nini
 ms.date: 04/18/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9b948721c9190b38d0770fd38739d53d252f513d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 886026f8548cf3d7416b5034995399368de8c419
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 

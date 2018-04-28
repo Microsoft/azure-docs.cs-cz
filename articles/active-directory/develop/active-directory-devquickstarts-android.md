@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 8ea69fbc95b9d9b2452f041e99c46d223581bdac
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 25a908c542bf8fdd8008841a1865cdfb40d847fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Začínáme se službou Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -28,7 +28,7 @@ Pokud vyvíjíte aplikace pracovní plochy, Azure Active Directory (Azure AD) je
 
 Pro Android klientů, kteří potřebují přístup k chráněným prostředkům Azure AD poskytuje službě Active Directory Authentication Library (ADAL). Jediný účel ADAL je snadno pro aplikaci, kterou chcete získat přístupové tokeny. K předvedení, jak je snadné, jsme budete sestavit Android seznam úkolů aplikaci, která:
 
-* Získá přístup k tokeny pro volání rozhraní API seznamu úkolů pomocí [protokol ověřování OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
+* Získá přístup k tokeny pro volání rozhraní API seznamu úkolů pomocí [protokol ověřování OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 * Získá seznam úkolů uživatele.
 * Provede odhlášení uživatele.
 
@@ -274,7 +274,7 @@ Všimněte si, že jsou ID korelace centrální diagnostiku v knihovně. Můžet
 #### <a name="errors--exceptions"></a>Chyby a výjimky
 Výjimky jsou první diagnostiky. Pokusíme se poskytují užitečné chybové zprávy. Pokud zjistíte, ten, který není užitečné, oznamte problém a dejte nám vědět. Zahrnují informace o zařízení, jako je například modelu a číslo SDK.
 
-Další informace o chybách, které vaše aplikace by měla řídit, najdete v článku věnovaném [osvědčené postupy pro zpracování chyb](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
+Další informace o chybách, které vaše aplikace by měla řídit, najdete v článku věnovaném [osvědčené postupy pro zpracování chyb](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
 
 #### <a name="logs"></a>Logs
 Můžete nakonfigurovat knihovně k vygenerování zprávy protokolu, které můžete použít pro usnadnění diagnostiky problémů. Konfigurace protokolování tím, že provedete následující volání pro zpětné volání, které ADAL použije k ručně vypnout každé zprávě protokolu je generovaná konfigurace.

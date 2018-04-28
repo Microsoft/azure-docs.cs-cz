@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e47141d31d3876264eaf2bcb7dc562a4711048cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 4188d114aa86086821b2c640d7f2d98a78bcbf4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Externí řešení monitorování integrovat Azure zásobníku
 
@@ -99,7 +99,7 @@ Pokud nepoužíváte Operations Manager, Nagios nebo na základě Nagios řešen
    ```PowerShell
    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
-   Connect-AzureRmAccount -EnvironmentName "AzureStackAdmin"
+   Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 3. Přejděte do adresáře, kam jste nainstalovali [nástroje Azure zásobníku](https://github.com/Azure/AzureStack-Tools) jako součást instalace prostředí PowerShell, například c:\azurestack-tools-master. Pak přejděte do adresáře infrastruktury a spusťte následující příkaz pro import modulu infrastruktury:
 

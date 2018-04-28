@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 04/23/2018
 ms.author: jgao
-ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 95ffc033a442fcf6074998398104ccb01e7a01a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Použít prázdný edge uzly na clustery systému Hadoop v HDInsight
 
@@ -73,12 +73,11 @@ Po vytvoření hraniční uzel, můžete připojit k uzlu edge pomocí protokolu
 > Stejné jako clustery, edge uzly jsou i oprava spravované.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidat k existujícímu clusteru hraniční uzel
-V této části použijte šablonu Resource Manager přidat hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru naleznete v [Githubu](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu nacházející se v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení volání akce skriptu z šablony Resource Manageru.
+V této části použijte šablonu Resource Manager přidat hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru naleznete v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu nacházející se v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení volání akce skriptu z šablony Resource Manageru.
 
 **Chcete-li přidat prázdný hraniční uzel do existujícího clusteru**
 
-1. Pokud ještě nemáte, vytvořte cluster služby HDInsight.  V tématu [kurz Hadoopu: začněte s Hadoop v HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-2. Kliknutím na následující obrázek otevřete šablonu Azure Resource Manageru na portálu Azure a přihlaste se k Azure. 
+1. Kliknutím na následující obrázek otevřete šablonu Azure Resource Manageru na portálu Azure a přihlaste se k Azure. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. Nakonfigurujte následující vlastnosti:
@@ -98,7 +97,7 @@ V této části použijte šablonu Resource Manager přidat hraniční uzel do e
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Přidat hraniční uzel, při vytváření clusteru
 V této části použijte k vytvoření clusteru HDInsight s hraniční uzel, na šablony Resource Manageru.  Šablony Resource Manageru najdete v [galerii šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablony Resource Manageru volá akci skriptu nacházející se v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení volání akce skriptu z šablony Resource Manageru.
 
-**Chcete-li přidat prázdný hraniční uzel do existujícího clusteru**
+**Vytvoření clusteru HDInsight pomocí hraniční uzel**
 
 1. Pokud ještě nemáte, vytvořte cluster služby HDInsight.  V tématu [začněte s Hadoop v HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 2. Kliknutím na následující obrázek otevřete šablonu Azure Resource Manageru na portálu Azure a přihlaste se k Azure. 
@@ -132,7 +131,7 @@ Hraničního uzlu se zobrazí jako aplikace na portálu Azure.  Portál obsahuje
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Otevřete HDInsight cluster se hraniční uzel.
-3. Klikněte na tlačítko **aplikace** z okna clusteru. Zobrazí se hraničního uzlu.  Výchozí název je **nové edgenode**.
+3. Klikněte na tlačítko **aplikace**. Zobrazí se hraničního uzlu.  Výchozí název je **nové edgenode**.
 4. Klikněte na tlačítko hraničního uzlu. Zobrazí se koncový bod SSH.
 
 **Používání Hive v uzlu edge**
@@ -153,7 +152,7 @@ Hraniční uzel můžete odstranit z portálu Azure.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Otevřete HDInsight cluster se hraniční uzel.
-3. Klikněte na tlačítko **aplikace** z okna clusteru. Zobrazí se seznam uzlů okraj.  
+3. Klikněte na tlačítko **aplikace**. Zobrazí se seznam uzlů okraj.  
 4. Klikněte pravým tlačítkem na hraniční uzel, který chcete odstranit a potom klikněte na **odstranit**.
 5. Pro potvrzení klikněte na tlačítko **Ano**.
 

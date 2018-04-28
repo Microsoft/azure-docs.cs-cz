@@ -10,11 +10,11 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 22f05607d85a1425c54b890e233b161e72c10848
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: efd968c054543bc0f5bc7b6c768708400cfadf15
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse business intelligence partnery
 K vytvoření řešení začátku do konce datového skladu, vyberte z široké škály špičkový nástroje.  Tento článek označuje partnerských společností Microsoft s řešení pro business intelligence (BI) podporuje Azure SQL Data Warehouse.
@@ -94,16 +94,16 @@ Další informace o některých našich partnerů najdete v tématu [integraci d
 <!--Marketplace Links -->
 [birst_marketplace]:https://azure.microsoft.com/en-gb/marketplace/partners/birst/birst/
 <!--[clearstory_marketplace]:-->
-[dell_statistica_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/dell-software/statistica-data-miner/ 
-[dundas_bi_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/dundas/dundas-bi/ 
+[dell_statistica_marketplace]:https://azure.microsoft.com/marketplace/partners/dell-software/statistica-data-miner/ 
+[dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
 <!--[jinfonet_marketplace]:-->
-[logianalytics_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/logi-analytics/logi-info-11/ 
-[looker_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/looker/looker-analytics-platform-326/ 
-<!--[qlik_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/qliktech-international-ab/qlikview/ -->
-[sisense_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/sisense/sisense-byol/ 
-[tableau_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/tableau/tableau-server/
-[targit_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/targit/targit-decision-suite/ 
-[yellowfin_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/yellowfin/yellowfin-for-azure-byol/
+[logianalytics_marketplace]:https://azure.microsoft.com/marketplace/partners/logi-analytics/logi-info-11/ 
+[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/ 
+<!--[qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/ -->
+[sisense_marketplace]:https://azure.microsoft.com/marketplace/partners/sisense/sisense-byol/ 
+[tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
+[targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 
+[yellowfin_marketplace]:https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/
 
 <!--Press links-->
 <!--[birst_press]:-->

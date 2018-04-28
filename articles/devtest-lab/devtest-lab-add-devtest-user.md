@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: f7f7562f0af4753bc08018227a967f9ca3736021
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 67da209718c3f3436be6ceaae68f61f416da6832
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníků a uživatelé v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -88,7 +88,7 @@ Můžete získat `subscriptionId`, `labResourceGroup`, a `labName` hodnoty v okn
 
     # Add an external user in DevTest Labs user role to a lab
     # Ensure that guest users can be added to the Azure Active directory:
-    # https://azure.microsoft.com/en-us/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
+    # https://azure.microsoft.com/documentation/articles/active-directory-create-users/#set-guest-user-access-policies
 
     # Values to change
     $subscriptionId = "<Enter Azure subscription ID here>"

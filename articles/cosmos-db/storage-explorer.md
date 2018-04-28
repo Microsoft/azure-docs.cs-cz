@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
 
@@ -76,7 +76,7 @@ Alternativním způsobem, jak se připojit ke službě Azure Cosmos DB, je použ
 
 Pomocí následujících kroků se připojte ke službě Azure Cosmos DB pomocí emulátoru, který aktuálně podporuje pouze účet SQL.
 
-1. Nainstalujte emulátor a spusťte ho. Pokyny k instalaci emulátoru najdete v tématu [Emulátor služby Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator).
+1. Nainstalujte emulátor a spusťte ho. Pokyny k instalaci emulátoru najdete v tématu [Emulátor služby Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
 2. V levém stromě vyhledejte **Místní a připojené**, klikněte pravým tlačítkem na **Účty služby Cosmos DB** a zvolte **Připojit k emulátoru služby Cosmos DB...**
 
@@ -210,7 +210,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-[Azure Cosmos DB v Průzkumníku služby Storage](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) je samostatná aplikace umožňující připojení k účtům služby Azure Cosmos DB hostovaným v Azure a suverénních cloudech z Windows, macOS nebo Linuxu. Umožňuje správu entit Azure Cosmos DB, manipulaci s daty, aktualizace uložených procedur a triggerů, stejně jako dalších entit Azure, jako jsou objekty blob a fronty služby Storage.
+[Azure Cosmos DB v Průzkumníku služby Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) je samostatná aplikace umožňující připojení k účtům služby Azure Cosmos DB hostovaným v Azure a suverénních cloudech z Windows, macOS nebo Linuxu. Umožňuje správu entit Azure Cosmos DB, manipulaci s daty, aktualizace uložených procedur a triggerů, stejně jako dalších entit Azure, jako jsou objekty blob a fronty služby Storage.
 
 Toto jsou řešení běžných problémů, ke kterým dochází ve službě Azure Cosmos DB v Průzkumníku služby Storage.
 

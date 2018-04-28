@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: e68f8d4405ae82cfaae59b1e4d9dcea8b361baff
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (běžných dat služby) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -210,7 +210,7 @@ Ke zkopírování dat z Dynamics, nastavte typ zdroje v aktivitě kopírování 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na **DynamicsSource**. | Ano |
-| query | FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online a místně). Prohlédněte si následující příklad. Další informace najdete v tématu [vytvořit dotazy s FeachXML](https://msdn.microsoft.com/en-us/library/gg328332.aspx). | Ne (když je určena "entityName" v datové sadě) |
+| query | FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online a místně). Prohlédněte si následující příklad. Další informace najdete v tématu [vytvořit dotazy s FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Ne (když je určena "entityName" v datové sadě) |
 
 **Příklad:**
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: da78f88f0c79c0ad853dd644ef278f8402824760
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 8efbc1d400f1d32e6aee2c1e2d78847bea786940
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analýza události a vizualizace s analýzy protokolů
 
@@ -36,7 +36,7 @@ Po přijetí dat podle analýzy protokolů Azure má několik *řešení pro spr
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení Service Fabric Analytics
 
-1. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte prostředek**ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled.
+1. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled.
 
 2. Na stránce Přehled klikněte na odkaz v horní přejít na portálu OMS
 
@@ -67,13 +67,14 @@ Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto
     
     ![Provozní kanál OMS dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
 
-Můžete případně klikněte na tlačítko lupy na levé straně a použít Kusto dotazovací jazyk najít, co hledáte. Například pokud chcete vyhledat všechny události související s akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí použít níže se nacházejí v [reference pro provozní kanál události](service-fabric-diagnostics-event-generation-operational.md)
+Můžete případně klikněte na tlačítko lupy na levé straně a použít Kusto dotazovací jazyk najít, co hledáte. Například pokud chcete vyhledat všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí použít níže se nacházejí v [reference pro provozní kanál události](service-fabric-diagnostics-event-generation-operational.md)
 
 ```kusto
 ServiceFabricOperationalEvent
-| where EventId < 29627 and EventId > 29619 
+| where EventId < 25627 and EventId > 25619 
 ```
-Služba system (název úlohy) a další se můžete dotazovat na mnoho další pole, jako je například konkrétním uzlům (počítače)
+
+Můžete zadat dotaz na mnoho další pole, jako je například konkrétním uzlům (počítače) služby system (TaskName).
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Události zobrazení Service Fabric spolehlivé Service a objektu Actor
 

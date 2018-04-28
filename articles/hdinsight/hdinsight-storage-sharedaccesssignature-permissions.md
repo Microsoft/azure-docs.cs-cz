@@ -11,13 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/25/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ebb9fab63d57f880e8b556bf6e3a1c9c8934527d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 328f052e1ccad3ac26cce62c858e050253192ae8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití Azure sdílené přístupové podpisy úložiště omezit přístup k datům v HDInsight
 

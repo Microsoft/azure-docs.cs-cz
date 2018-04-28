@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: sashan
-ms.openlocfilehash: 6e82b851f7dc7e2b8c7fe996bff843c8f10f2978
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: d2472867c71aedf35e537a29d3912b9e423de2e2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít jen pro čtení repliky načíst vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -21,18 +21,20 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="overview-of-read-scale-out"></a>Přehled čtení Škálováním na více systémů
 
-Každou databázi v úrovni Premium ([na základě DTU nákupní model](sql-database-service-tiers.md#dtu-based-purchasing-model)) nebo v kritické obchodní vrstvy ([na základě vCore nákupní model](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)) je automaticky zřízena několik Always ON replik Podpora smlouva SLA o dostupnosti. Tyto repliky jsou zřízené se stejnou úrovní výkonu jako repliky pro čtení a zápis používá standardní databázi připojení. **Čtení škálování** funkce umožňuje načíst vyrovnávání SQL databáze jen pro čtení pracovní úlohy nepoužívají kapacitu jen pro čtení replik místo sdílení repliky pro čtení a zápis. Tímto způsobem zatížení jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může získat výhody výkonu pomocí tuto dodatečnou kapacitu na Ne peníze navíc.
+Každou databázi v úrovni Premium ([na základě DTU nákupní model](sql-database-service-tiers-dtu.md)) nebo v kritické obchodní vrstvy ([nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik Always ON repliky pro podporu smlouva SLA o dostupnosti. Tyto repliky jsou zřízené se stejnou úrovní výkonu jako repliky pro čtení a zápis používá standardní databázi připojení. **Čtení škálování** funkce umožňuje načíst vyrovnávání SQL databáze jen pro čtení pracovní úlohy nepoužívají kapacitu jen pro čtení replik místo sdílení repliky pro čtení a zápis. Tímto způsobem zatížení jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může získat výhody výkonu pomocí tuto dodatečnou kapacitu na Ne peníze navíc.
 
 Pokud chcete používat funkce škálování pro čtení s danou databází, je potřeba explicitně povolit ho při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda. 
 
 Po povolení škálování pro čtení pro databázi aplikace připojení k databázi přesměrováni do repliky pro čtení a zápis nebo repliku jen pro čtení této databáze podle `ApplicationIntent` vlastnost nakonfigurované do aplikace připojovací řetězec. Informace o `ApplicationIntent` vlastnost, najdete v části [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+
+Pokud je zakázán pro čtení Škálováním na více systémů nebo nastavte vlastnost ReadScale v vrstvou nepodporované služby, všechna připojení jsou směrované repliky pro čtení a zápis, nezávisle `ApplicationIntent` vlastnost.
 
 > [!NOTE]
 > Verzi Preview úložiště dat dotazů a rozšířených událostí nejsou podporovány na replikách jen pro čtení.
 
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod Always ON je, že repliky jsou vždycky ve stavu transakční konzistence stavu, ale v různých okamžicích v čase může existovat určité malé zpoždění mezi jiné repliky. Čtení Škálováním na více systémů podporuje relace úroveň konzistence. Znamená to, když relace jen pro čtení znovu připojí po chybě připojení kvůli nedostupnosti repliky, může být přesměrován na repliku, která není 100 % aktuální repliky pro čtení a zápis. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné. Je to proto znovu protokolu transakcí s replikami je asynchronní.
+Jednou z výhod Always ON je, že repliky jsou vždycky ve stavu transakční konzistence stavu, ale v různých okamžicích v čase může existovat určité malé zpoždění mezi jiné repliky. Čtení Škálováním na více systémů podporuje relace úroveň konzistence. Znamená to, když relace jen pro čtení znovu připojí po chybě připojení kvůli nedostupnosti repliky, může být přesměrován na repliku, která není 100 % aktuální s repliky pro čtení a zápis. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné. Je to proto znovu protokolu transakcí s replikami je asynchronní.
 
 > [!NOTE]
 > Jsou nízkou latenci replikace v rámci oblasti a navíc není obvyklé situace.
@@ -54,6 +56,12 @@ Některý z následujících připojovací řetězce klient připojí k repliky 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
+```
+
+Můžete ověřit, zda jste připojeni k repliku jen pro čtení spuštěním následujícího dotazu. Vrátí READ_ONLY při připojení k replice jen pro čtení.
+
+```SQL
+SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení Škálováním na více systémů pomocí prostředí Azure PowerShell

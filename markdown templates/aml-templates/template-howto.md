@@ -9,15 +9,15 @@ ms.reviewer: jmartens
 ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
-ms.openlocfilehash: c0cfbb8c0b91c94b4c72ae608341ba2bd6dcfed3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 1fd64cca8eb51cdcaa2eb6e8cbce853b6a55b0e6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>Tato H1 je název článku. Zobrazí se v hledání, se zobrazí v horní části článku druhé největší vliv na hledání, 100 znaků nebo méně
 
-Zde pokyny: https://review.docs.microsoft.com/en-us/help/contribute/contribute-how-to-write-seo-basics?branch=master
+Zde pokyny: https://review.docs.microsoft.com/help/contribute/contribute-how-to-write-seo-basics?branch=master
 
 
 1. odstavce poskytuje primární záměr článek v 1 nebo 2 krátké věty. 

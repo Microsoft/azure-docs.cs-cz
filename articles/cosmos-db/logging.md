@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžet
 
 ## <a name="logs-available-in-azure"></a>Protokoly, které jsou k dispozici v Azure
 
-Před mluvíme o tom, jak sledovat účtu Azure Cosmos DB, můžeme vysvětlení pár věcí o protokolování a monitorování. Existují různé typy protokolů na platformě Azure. Existují [protokoly aktivity Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostických protokolů Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), události, monitorování prezenčního signálu, protokoly operací a tak dále. Není nadbytku protokoly. Zobrazí seznam všech protokolů v [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) na portálu Azure. 
+Před mluvíme o tom, jak sledovat účtu Azure Cosmos DB, můžeme vysvětlení pár věcí o protokolování a monitorování. Existují různé typy protokolů na platformě Azure. Existují [protokoly aktivity Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs), [diagnostických protokolů Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs), [Azure metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), události, monitorování prezenčního signálu, protokoly operací a tak dále. Není nadbytku protokoly. Zobrazí seznam všech protokolů v [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) na portálu Azure. 
 
 Následující obrázek ukazuje různé druhy Azure protokoly, které jsou k dispozici:
 
@@ -51,7 +51,7 @@ Protokoly aktivity (operace ovládacího prvku roviny) může být bohatší ve 
 
 ### <a name="azure-metrics"></a>Azure metriky
 
-[Azure metriky](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics) nejdůležitější typ Azure telemetrická data (také nazývané _čítače výkonu_) je vysílaných prostředků nejvíce Azure. Metriky umožňují zobrazit informace o propustnosti, úložiště, konzistence, dostupnosti a latence vašich prostředků Azure Cosmos DB. Další informace najdete v tématu [sledování a ladění pomocí metriky v Azure Cosmos DB](use-metrics.md).
+[Azure metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) nejdůležitější typ Azure telemetrická data (také nazývané _čítače výkonu_) je vysílaných prostředků nejvíce Azure. Metriky umožňují zobrazit informace o propustnosti, úložiště, konzistence, dostupnosti a latence vašich prostředků Azure Cosmos DB. Další informace najdete v tématu [sledování a ladění pomocí metriky v Azure Cosmos DB](use-metrics.md).
 
 ### <a name="azure-diagnostic-logs"></a>Azure diagnostických protokolů
 

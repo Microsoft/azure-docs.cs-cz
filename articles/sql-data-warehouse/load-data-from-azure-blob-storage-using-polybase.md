@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: fb918cc70a3a3d21e86c9d530e264199794886f1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: acc7d0a031821b8b6e9c110c92597b0307e216fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Taxicab New Yorku zatížení dat do Azure SQL Data Warehouse
 
@@ -77,9 +77,9 @@ Pomocí následujících kroků vytvořte prázdný datový sklad SQL.
 
 5. Klikněte na **Vybrat**.
 
-6. Klikněte na **Úroveň výkonu** a určete, jestli je datový sklad optimalizovaný pro elasticitu nebo výpočetní výkon, a počet jednotek datového skladu. 
+6. Klikněte na tlačítko **úroveň výkonu** k určení, zda datový sklad je Gen1 nebo Gen2 a počet datových skladů jednotky. 
 
-7. Pro účely tohoto kurzu vyberte úroveň služby **Optimalizováno pro elasticitu**. Posuvník je ve výchozím nastavení nastavený na hodnotu **DW400**.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
+7. V tomto kurzu vyberte **Gen1** služby SQL Data Warehouse. Posuvník, ve výchozím nastavení, je nastavený na **DW1000c**.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -102,7 +102,7 @@ Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru, aby zab
 > SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 >
 
-1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20171113.database.windows.net**) a možnosti pro další konfiguraci. 
+1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka Přehled pro vaši databázi, ukazuje název plně kvalifikovaný serveru (například **mynewserver 20180430.database.windows.net**) a poskytuje možnosti pro další konfiguraci. 
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. Pak kliknutím na název serveru otevřete nastavení serveru.
 
@@ -132,8 +132,8 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20171113.database.windows.net. 
+2. Vyberte **SQL datových skladů** z nabídky na levé straně a klikněte na databázi **SQL datových skladů** stránky. 
+3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver 20180430.database.windows.net. 
 
     ![informace o připojení](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -148,7 +148,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | Nastavení      | Navrhovaná hodnota | Popis | 
     | ------------ | --------------- | ----------- | 
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
-    | Název serveru | Plně kvalifikovaný název serveru | Název by měl vypadat přibližně takto: **mynewserver-20171113.database.windows.net**. |
+    | Název serveru | Plně kvalifikovaný název serveru | Název musí být přibližně takto: **mynewserver 20180430.database.windows.net**. |
     | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
     | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
@@ -163,7 +163,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
-Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální paměť hodnoty jsou definovány podle [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers), [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md), a [Třída prostředků](resource-classes-for-workload-management.md). 
+Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální paměť hodnoty jsou definovány, podle které generování z SQL Data Warehouse jste zřízený, [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md), a [Třída prostředků](resource-classes-for-workload-management.md). 
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
@@ -588,7 +588,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
 
-4. Pokud chcete odstranit server SQL, který jste vytvořili, klikněte na **mynewserver-20171113.database.windows.net**, jak je znázorněno na předchozím obrázku, a pak klikněte na **Odstranit**.  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Chcete-li odebrat serveru SQL, který jste vytvořili, klikněte na tlačítko **mynewserver 20180430.database.windows.net** předchozí obrázek, a pak klikněte na **odstranit**.  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 

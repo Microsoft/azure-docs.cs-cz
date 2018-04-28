@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/17/2018
+ms.date: 04/25/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 860a381e5ec2054cd6243901a8e172832e6ada53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 2876565f3d6a3411eb170d4da640166fa3e607eb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Nástroje pro úložiště Azure zásobníku
 
@@ -47,41 +47,88 @@ Z důvodu úložiště služby rozdíly mezi Azure a Azure zásobníku může b�
 
 
 ## <a name="azcopy"></a>AzCopy
-AzCopy je nástroj příkazového řádku navržený tak, aby kopírování dat z úložiště objektů blob a tabulky Microsoft Azure pomocí jednoduchých příkazů optimální výkon. Data můžete zkopírovat z jednoho objektu do druhého v rámci účtu úložiště nebo mezi účty úložiště. Existují dvě verze nástroje azcopy: AzCopy ve Windows a AzCopy v systému Linux. Azure zásobníku podporuje jenom verze systému Windows. 
- 
-### <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte AzCopy 
 
-[Stáhněte si](https://aka.ms/azcopyforazurestack) podporovanou verzi systému Windows nástroje AzCopy pro Azure zásobníku. Můžete nainstalovat a použít AzCopy v zásobníku Azure stejně jako s Azure. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](../../storage/common/storage-use-azcopy.md). 
+AzCopy je nástroj příkazového řádku navržený tak, aby kopírování dat z úložiště objektů blob a tabulky Microsoft Azure pomocí jednoduchých příkazů optimální výkon. Data můžete zkopírovat z jednoho objektu do druhého v rámci účtu úložiště nebo mezi účty úložiště.
 
- - Pro 1802 aktualizace nebo novější verze [stáhnout AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
- - Pro předchozí verze [stáhnout AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20150405).
+### <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte AzCopy
+
+Existují dvě verze nástroje azcopy: AzCopy ve Windows a AzCopy v systému Linux.
+
+ - **AzCopy ve Windows**  
+    - Podporované verze nástroje AzCopy stažení pro Azure zásobníku. Můžete nainstalovat a použít AzCopy v zásobníku Azure stejně jako s Azure. Další informace najdete v tématu [AzCopy v systému Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
+        - Pro 1802 aktualizace nebo novější verze [stáhnout AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
+        - U předchozích verzí [stáhnout AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20170417).
+
+ - **AzCopy v Linuxu**  
+
+    - AzCopy v systému Linux podporuje Azure zásobníku 1802 aktualizace nebo novější verze. Můžete nainstalovat a použít AzCopy v zásobníku Azure stejně jako s Azure. Další informace najdete v tématu [AzCopy v systému Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>AzCopy příkladech pro přenos dat
 
-Následující příklady ukazují typické scénáře pro kopírování dat do a z Azure zásobník objektů BLOB. Další informace najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](../../storage/storage-use-azcopy.md). 
+Následující příklady podle typické scénáře pro kopírování dat do a z Azure zásobník objektů BLOB. Další informace najdete v tématu [AzCopy v systému Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) a [AzCopy v systému Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
 
-#### <a name="download-all-blobs-to-local-disk"></a>Stažení všech objektů blob na místní disk
+### <a name="download-all-blobs-to-a-local-disk"></a>Stažení všech objektů blob na místní disk
 
-```azcopy  
+**Windows**
+
+````AzCopy  
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
-```
+````
 
-#### <a name="upload-single-file-to-virtual-directory"></a>Jediný soubor nahrát do virtuálního adresáře 
-```azcopy  
+**Linux**
+
+````AzCopy  
+azcopy \
+    --source https://myaccount.blob.local.azurestack.external/mycontainer \
+    --destination /mnt/myfiles \
+    --source-key <key> \
+    --recursive
+````
+
+### <a name="upload-single-file-to-virtual-directory"></a>Jediný soubor nahrát do virtuálního adresáře
+
+**Windows**
+
+```AzCopy  
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
-#### <a name="move-data-between-azure-and-azure-stack-storage"></a>Přesun dat mezi Azure a Azure zásobník úložiště 
-Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. je třeba zadat o přenos pomocí **/SyncCopy** možnost. 
+**Linux**
 
-```azcopy  
+````AzCopy  
+azcopy \
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
+    --dest-key <key>
+````
+
+### <a name="move-data-between-azure-and-azure-stack-storage"></a>Přesun dat mezi Azure a Azure zásobník úložiště
+
+Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. Je třeba zadat o přenos pomocí **/SyncCopy** nebo **– kopírování synchronizace** možnost.
+
+**Windows**
+
+````AzCopy  
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-```
-### <a name="azcopy-known-issues"></a>Azcopy – známé problémy
+````
+
+**Linux**
+
+````AzCopy  
+azcopy \
+    --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
+    --destination https://myaccount2.blob.core.windows.net/myContainer/ \
+    --source-key <key1> \
+    --dest-key <key2> \
+    --include "abc.txt" \
+    --sync-copy
+````
+
+### <a name="azcopy-known-issues"></a>Azcopy známé problémy
 
  - Všechny operace AzCopy na úložiště souborů není k dispozici, protože soubor úložiště ještě není k dispozici v zásobníku Azure.
  - Asynchronní data přenos mezi Azure Storage a Azure zásobníku není podporován. Můžete zadat o přenos pomocí **/SyncCopy** možnost Kopírovat data.
- - Zásobník úložiště Azure nepodporuje Linux verzi Azcopy. 
+ - Linux verzi Azcopy podporuje pouze 1802 aktualizace nebo novější verze. A nepodporuje služby Table.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -132,7 +179,7 @@ Set-AzureRmEnvironment -Name $ARMEvnName -GraphEndpoint $GraphAudience
 
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName
-Connect-AzureRmAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
+Add-AzureRmAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
 
 # Set a default Azure subscription.
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName

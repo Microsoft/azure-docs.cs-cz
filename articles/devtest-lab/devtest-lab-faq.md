@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: v-craic
-ms.openlocfilehash: d8b9e48db9e75fb41ecad1958b3aa930a6bce3aa
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 7a65ba691b9cf8b0ce989f0c54bd0b74edd43b85
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejčastější dotazy o Azure DevTest Labs.
@@ -128,9 +128,9 @@ Ano, můžete připojit více disků do virtuálních počítačů.
 Chcete-li použít Image operačního systému klientů systému Windows (Windows 7 nebo novější verze) pro vaše vývoj nebo testování v Azure, musíte udělat jednu z těchto možností:
 
 - [Kupte si předplatné MSDN](https://www.visualstudio.com/products/how-to-buy-vs).
-- Pokud máte smlouvu Enterprise Agreement, vytvořte předplatné Azure s [Enterprise pro vývoj/testování nabídka](https://azure.microsoft.com/en-us/offers/ms-azr-0148p).
+- Pokud máte smlouvu Enterprise Agreement, vytvořte předplatné Azure s [Enterprise pro vývoj/testování nabídka](https://azure.microsoft.com/offers/ms-azr-0148p).
 
-Další informace o kredity Azure pro každou nabídku MSDN najdete v tématu [platební měsíční Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/).
+Další informace o kredity Azure pro každou nabídku MSDN najdete v tématu [platební měsíční Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>Jak mohu automatizovat proces odesílání soubory virtuálního pevného disku pro vytvoření vlastní Image?
 K automatizaci odesílání soubory virtuálního pevného disku pro vytvoření vlastní Image, máte dvě možnosti:

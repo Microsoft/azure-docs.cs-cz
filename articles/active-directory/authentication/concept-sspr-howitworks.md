@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 602f4c9b7108c0116e83e302bd73838e0902a7f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Samoobslužné služby v Azure AD podrobné informace pro vytvoření nového hesla
 
@@ -49,7 +49,7 @@ Když uživatel přejde na portál resetovat heslo, pracovní postup je spuště
        * Pokud není nakonfigurováno výzvy k zadání uživatelského, pak uživatel by měl obrátit na správce svého resetovat heslo.
      * Pokud zásady vyžaduje dva problémy, pak zajišťuje, že uživatel má příslušná data definované pro alespoň dvě z problémů ve zásad správce povolené.
        * Pokud není nakonfigurováno výzvy k zadání uživatelského, pak uživatel by měl obrátit na správce svého resetovat heslo.
-   * Kontroluje, zda je heslo uživatele spravovány místně (federovaný nebo hodnoty hash hesla synchronizovat).
+   * Kontroluje, zda je heslo uživatele spravovány místně (federované, předávací ověřování nebo hodnoty hash hesla synchronizovat).
      * Pokud je nasazený zpětný zápis a heslo uživatele se spravovaná místně, uživatel je moci pokračovat k ověření a obnovit své heslo.
      * Pokud není nasazena zpětný zápis a heslo uživatele je spravovaná místně, je uživatel požádán o obrátit na správce svého resetovat heslo.
 4. Pokud je zjištěno, že je uživatel moct úspěšně obnovit své heslo, pak může uživatel v průvodci procesem resetování.
@@ -224,8 +224,8 @@ Tato stránka obsahuje rychlý stav klienta pro zpětný zápis místní jednu z
 
 Tento ovládací prvek určuje, zda je pro tento adresář zapnutá zpětný zápis hesla. Pokud zpětného zápisu na, označuje stav zpětného zápisu služby místně. To je užitečné, pokud chcete dočasně zakázat zpětný zápis hesel, aniž by museli znovu konfigurovat Azure AD Connect.
 
-* Pokud je přepínač nastavený na **Ano**, pak zpětný zápis povolen a federovaných a mohou uživatelé hash synchronizovat heslo resetovat jejich hesla.
-* Pokud je přepínač nastavený na **ne**, pak zpětný zápis je zakázána a federovaných a uživatelé hash synchronizovat hesla nejsou schopna resetovat jejich hesla.
+* Pokud je přepínač nastavený na **Ano**, pak je povolit zpětný zápis a federované, předávací ověřování, nebo uživatelé synchronizovat hash hesla je moct resetovat jejich hesla.
+* Pokud je přepínač nastavený na **ne**, pak je zakázán zpětný zápis a federované, předávací ověřování, nebo uživatelé hash synchronizovat hesla nejsou schopna resetovat jejich hesla.
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Povolit uživatelům bez resetování hesla pro odemknutí účtů
 

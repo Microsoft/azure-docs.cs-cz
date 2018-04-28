@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Poznámky k verzi Microsoft Azure Storage Explorer
 
@@ -227,7 +227,7 @@ Tento článek obsahuje verze, kterou verzi poznámky pro Azure Storage Explorer
 * Pokud jste se pokusili otevřít nebo stažení objektů blob s neplatným názvem souboru systému Windows, operace selže. Storage Explorer bude nyní zjistí, jestli název objektu blob je neplatný a požádejte, pokud chcete zakódovat je nebo přeskočit objektu blob. Storage Explorer taky bude zjišťovat, pokud název souboru zdá být zakódován a zeptá, pokud chcete dekódovat před nahráním.
 * Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. To byl opraven.
 * Který poklesl podporu pro několik formy připojovací řetězce a identifikátory URI SAS. Jsme vyřešili všechny známé problémy, ale odešlete názor, pokud dojde k další problémy.
-* Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [zde](https://azure.microsoft.com/en-us/features/storage-explorer/).
+* Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [zde](https://azure.microsoft.com/features/storage-explorer/).
 
 ### <a name="known-issues"></a>Známé problémy
 * Storage Explorer nepodporuje účty služby AD FS.
@@ -281,7 +281,7 @@ Tento článek obsahuje verze, kterou verzi poznámky pro Azure Storage Explorer
 * Pokud jste se pokusili otevřít nebo stažení objektů blob s neplatným názvem souboru systému Windows, operace selže. Storage Explorer bude nyní zjistí, jestli název objektu blob je neplatný a požádejte, pokud chcete zakódovat je nebo přeskočit objektu blob. Storage Explorer taky bude zjišťovat, pokud název souboru zdá být zakódován a zeptá, pokud chcete dekódovat před nahráním.
 * Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. To byl opraven.
 * Který poklesl podporu pro několik formy připojovací řetězce a identifikátory URI SAS. Jsme vyřešili všechny známé problémy, ale odešlete názor, pokud dojde k další problémy.
-* Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [sem](https://azure.microsoft.com/en-us/features/storage-explorer/)
+* Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [sem](https://azure.microsoft.com/features/storage-explorer/)
 
 ### <a name="known-issues"></a>Známé problémy
 * Storage Explorer nepodporuje účty služby AD FS.

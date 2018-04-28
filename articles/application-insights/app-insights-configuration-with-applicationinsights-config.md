@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počet balíčků NuGet. [Základní balíček](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrie Application insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automaticky sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat telemetrii moduly a inicializátory a nastavit parametry pro některé z nich.
@@ -30,7 +30,7 @@ Není k dispozici soubor ekvivalentní k řízení [SDK na webové stránce][cli
 Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak budou řídit komponenty sady SDK, a které balíčky NuGet načíst těchto součástí.
 
 > [!NOTE]
-> Pokyny k souboru ApplicationInsights.config a .xml se nevztahují na .NET Core SDK. Změny k aplikaci .NET Core používáme obvykle soubor appSettings.JSON určený. Příklady najdete v [dokumentace snímku ladicí program.](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> Pokyny k souboru ApplicationInsights.config a .xml se nevztahují na .NET Core SDK. Změny k aplikaci .NET Core používáme obvykle soubor appSettings.JSON určený. Příklady najdete v [dokumentace snímku ladicí program.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetrie moduly (ASP.NET)
 Každý modul telemetrie shromažďuje konkrétní typ dat a používá základní rozhraní API odeslat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat do souboru .config požadovaných řádků.
@@ -294,7 +294,7 @@ Tohoto zprostředkovatele se přidá do konfiguračního souboru při instalaci 
 
 Tato třída obsahuje volitelná vlastnost `ProfileQueryEndpoint`.
 Ve výchozím nastavení to je nastavena na `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Pokud potřebujete nakonfigurovat proxy server pro tuto konfiguraci, doporučujeme, abyste proxy základní adresu a včetně "/ api/profily / {0} / appId". Všimněte si, že {0}' je nahrazena za běhu na základě požadavku klíč instrumentace.
+Pokud potřebujete nakonfigurovat proxy server pro tuto konfiguraci, doporučujeme, abyste proxy základní adresu a včetně "/api/profily/{0}/appId". Všimněte si, že se{0}' je nahrazena klíč instrumentace za běhu na základě požadavku.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace pomocí souboru ApplicationInsights.config:
 ```xml

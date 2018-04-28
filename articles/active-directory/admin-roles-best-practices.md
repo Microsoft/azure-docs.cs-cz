@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 9897a3578ad35376bea81b4821dbc2d84526a736
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro nasazení hybridními a cloudovými ve službě Azure AD
 
@@ -240,7 +240,7 @@ Vyžadovat C-suite vedení, vysoké úrovně manažerům, kritické IT a zabezpe
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Použití vyhrazených pracovních stanic pro správu pro Azure AD
 
-Útočníci můžou snažit cíle privilegované účty pro přístup do firemní data a systémy, že může dojít k přerušení integrity a jejich pravost data prostřednictvím škodlivého kódu, který mění logice program nebo snoops zadání pověření správce. Pracovní stanice privilegovaného přístupu (PAWs) poskytuje vyhrazený operačního systému pro citlivé úlohy, které jsou chráněny před útoky Internet a z nečekaných směrů. Oddělení tyto úkoly citlivé a účty z denní použít pracovní stanice a zařízení poskytuje velmi silné ochranu před útoky phishing, aplikace a ohrožení zabezpečení operačního systému, různé zosobnění útokům a útokům krádeže přihlašovacích údajů například stisknutí klávesy protokolování, Pass-the-Hash a Pass-The-Ticket. Nasazení pracovní stanice privilegovaný přístup, můžete snížit riziko, že správci zadejte přihlašovací údaje správce, s výjimkou na prostředí plochy, který má zesílené zabezpečení. Další informace najdete v tématu [pracovní stanice privilegovaného přístupu](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Útočníci můžou snažit cíle privilegované účty pro přístup do firemní data a systémy, že může dojít k přerušení integrity a jejich pravost data prostřednictvím škodlivého kódu, který mění logice program nebo snoops zadání pověření správce. Pracovní stanice privilegovaného přístupu (PAWs) poskytuje vyhrazený operačního systému pro citlivé úlohy, které jsou chráněny před útoky Internet a z nečekaných směrů. Oddělení tyto úkoly citlivé a účty z denní použít pracovní stanice a zařízení poskytuje velmi silné ochranu před útoky phishing, aplikace a ohrožení zabezpečení operačního systému, různé zosobnění útokům a útokům krádeže přihlašovacích údajů například stisknutí klávesy protokolování, Pass-the-Hash a Pass-The-Ticket. Nasazení pracovní stanice privilegovaný přístup, můžete snížit riziko, že správci zadejte přihlašovací údaje správce, s výjimkou na prostředí plochy, který má zesílené zabezpečení. Další informace najdete v tématu [pracovní stanice privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Zkontrolujte doporučení Národního institutu standardů a technologie pro zpracování incidentů 
 

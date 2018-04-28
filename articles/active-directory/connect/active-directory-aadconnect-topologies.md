@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: f47cf18f70572ad93f5075c2f2c883d80af8220e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), které využívají synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek obsahuje podporované a nepodporované konfigurace.
@@ -44,7 +44,7 @@ Tady je legendu pro obrázky v článku:
 ## <a name="single-forest-single-azure-ad-tenant"></a>Jediná doménová struktura, jeden klient Azure AD
 ![Topologie pro jednu doménovou strukturu a jednoho klienta](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-Nejběžnější topologie je jedné místní doménové struktuře s jedním nebo několika domén a jeden Azure AD klienta. Pro ověřování Azure AD se používá synchronizaci hesel. Expresní instalace služby Azure AD Connect podporuje jenom tato topologie.
+Nejběžnější topologie je jedné místní doménové struktuře s jedním nebo několika domén a jeden Azure AD klienta. Pro ověřování Azure AD se používá synchronizaci hodnoty hash hesla. Expresní instalace služby Azure AD Connect podporuje jenom tato topologie.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Jedna doménová struktura, víc synchronizačních serverů do jednoho klienta Azure AD
 ![Nepodporované, která jsou filtrovaná topologie pro jednu doménovou strukturu](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -64,7 +64,7 @@ Běžné topologie jsou popsané v částech o [oddělit topologie](#multiple-fo
 
 Předpokládá výchozí konfigurace v synchronizaci Azure AD Connect:
 
-* Každý uživatel má povolené pouze jeden účet a doménové struktury, kde se nachází tento účet se používá k ověření uživatele. Tento předpoklad je pro synchronizaci hesla i federací. UserPrincipalName a sourceAnchor/immutableID pocházet z této doménové struktury.
+* Každý uživatel má povolené pouze jeden účet a doménové struktury, kde se nachází tento účet se používá k ověření uživatele. Tento předpoklad je pro synchronizace hodnot hash hesel, předávací ověřování a federaci. UserPrincipalName a sourceAnchor/immutableID pocházet z této doménové struktury.
 * Každý uživatel má pouze jedna poštovní schránka.
 * Doménová struktura, která je hostitelem poštovních schránek pro uživatele má nejlepší kvalitu dat pro atributy, které jsou viditelné v systému Exchange globální seznam adres. Neexistuje žádné poštovní schránky pro uživatele, lze nastavit všech doménových strukturách přispívání tyto hodnoty atributů.
 * Pokud máte propojená poštovní schránka, existuje také účet v jiné doménové struktuře použít pro přihlášení.
@@ -157,7 +157,7 @@ Tato topologie má následující omezení jinak Podporované scénáře:
 
 * Pouze jeden z klientů Azure AD můžete povolit hybridní Exchange s místní instancí Active Directory.
 * Zařízení s Windows 10 může být přidružen pouze jeden klient Azure AD.
-* -Možnost jednotného přihlašování (SSO) pro synchronizaci a předávací ověřování hesla lze použít pouze jeden klientovi Azure AD.
+* -Možnost jednotného přihlašování (SSO) pro synchronizaci a předávací ověřování hodnoty hash hesla lze použít pouze jeden klientovi Azure AD.
 
 Požadavek na vzájemně se vylučuje sadu objektů, platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou podporované v této topologii, protože převzaly jednomu místnímu konfigurace. Tyto funkce patří:
 

@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/22/2017
-ms.openlocfilehash: fae9d7f871dbb20f19bfd61576e017b3910ee8f4
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.date: 04/27/2018
+ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využít paralelizace dotazu v Azure Stream Analytics
 Tento článek ukazuje, jak chcete využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak se škálovat úlohy Stream Analytics nakonfigurováním vstupní oddíly a ladění analytics definice dotazu.
@@ -35,7 +35,7 @@ Veškerý vstup Azure Stream Analytics můžete využít výhod vytváření odd
 
 ### <a name="outputs"></a>Výstupy
 
-Při práci s Stream Analytics můžete využít výhod dělení na oddíly pro většinu výstup jímky. Další informace o oddílech výstup je k dispozici na [dělení části stránky výstup](https://review.docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs?branch=master#partitioning).
+Při práci s Stream Analytics můžete využít výhod dělení na oddíly pro většinu výstup jímky. Další informace o oddílech výstup je k dispozici na [dělení části stránky výstup](stream-analytics-define-outputs.md#partitioning).
 
 Výstupy PowerBI, SQL a datový sklad SQL nepodporují dělení. Ale můžete můžete stále oddílu vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
 

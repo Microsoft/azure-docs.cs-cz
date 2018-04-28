@@ -10,14 +10,14 @@ tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 04/26/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 748d5f7497c3ab65a669bf3f205e9486dfcaed92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Spolupráce Azure Active Directory s B2B pro hybridní organizace
 
@@ -31,8 +31,8 @@ Pro aplikace, které používají ověřování na základě SAML můžete prov�
 
 Pro aplikace, které používají integrované ověřování systému Windows (IWA) s omezeným delegováním protokolu Kerberos použitím (KCD) můžete také použít Azure AD Proxy pro ověřování. K autorizaci fungovat, ale objekt uživatele je vyžadována v místní Windows Server Active Directory. Existují dvě metody, které můžete použít k vytváření objektů místního uživatele, které představují vaše uživatele typu Host B2B.
 
-- Můžete použít Microsoft Identity Manager (MIM) 2016 SP1 a agenta pro správu MIM pro Microsoft Graph. (To vyžaduje předplatné služby Azure AD Premium 1.)
-- Můžete použít skript prostředí PowerShell. (Toto řešení nevyžaduje MIM nebo AD Premium.)
+- Můžete použít Microsoft Identity Manager (MIM) 2016 SP1 a agenta pro správu MIM pro Microsoft Graph.
+- Můžete použít skript prostředí PowerShell. (Toto řešení se nevyžaduje MIM).
 
 Podrobnosti o způsobu implementace těchto řešení najdete v tématu [uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím](active-directory-b2b-hybrid-cloud-to-on-premises.md).
 
@@ -40,7 +40,7 @@ Podrobnosti o způsobu implementace těchto řešení najdete v tématu [uživat
 
 Před Azure AD, organizace s místních systémů identit mít tradičně partnera účty spravované ve své místní adresář. Pokud jste tyto organizace, budete chtít Ujistěte se, že vaši partneři dál mají přístup do cloudu přesouváte aplikace a dalším prostředkům. V ideálním případě chcete tyto uživatele bude možné použít stejnou sadu pověření pro přístup k prostředkům cloudu a místně. 
 
-Jsme teď nabídka metody, kde můžete použít Azure AD Connect k synchronizaci těchto místních účtů do cloudu jako "uživatele typu Host,", kde účty chovají stejně, jako uživatele Azure AD s B2B. Toto řešení funguje, i v případě, že máte v místním identity systému, která umožňuje partnerům použít vlastní externí e-mailové adresy jako jejich přihlašovací jméno.
+Jsme teď nabídka metody, kde můžete použít Azure AD Connect k synchronizaci těchto místních účtů do cloudu jako "uživatele typu Host,", kde účty chovají stejně, jako uživatele Azure AD s B2B.
 
 K ochraně dat vaší společnosti, můžete řídit přístup ke správné prostředky a nakonfigurujte zásady autorizace, které považovat tyto uživatele typu Host odlišně od zaměstnanců.
 
@@ -49,5 +49,6 @@ Podrobnosti implementace najdete v tématu [účtů místně spravované partner
 ## <a name="next-steps"></a>Další postup
 
 - [Uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím](active-directory-b2b-hybrid-cloud-to-on-premises.md)
-- [Udělení partnera místně spravované účty přístup k prostředkům cloudu pomocí spolupráce Azure AD B2B](active-directory-b2b-hybrid-on-premises-to-cloud.md).
+- [Udělení partnera místně spravované účty přístupu k cloudových prostředků pomocí spolupráce Azure AD B2B](active-directory-b2b-hybrid-on-premises-to-cloud.md)
+
 

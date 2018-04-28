@@ -9,11 +9,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: billmath
-ms.openlocfilehash: f450747cac06a416950efc6c37c1058c1cb40775
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d21f124858a7f98227eb301a97b9837e3adbba68
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="synchronizing-guest-user-accounts-that-use-email-for-sign-in-preview"></a>Synchronizace uživatelských účtů hosta, které používají e-mailu pro přihlášení (Preview)
 
@@ -37,7 +37,7 @@ Tato část obsahuje seznam požadavky a předpoklady, které potřebujete znát
 - Azure AD Connect verze 1.1.524.0 nebo vyšší
 - Nastavení cloudu UPN externích uživatelů ověřené domény (Příklad: bmcontoso.com).
 - Federační služba ověření externí uživatele. Pokud používáte službu AD FS, musí být 2012 R2 nebo vyšší
-- Prostředí PowerShell MSOL v1.1 je nainstalována na počítače, a ověřte nastavení federace. Další informace najdete v tématu [Azure Active Directory (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+- Prostředí PowerShell MSOL v1.1 je nainstalována na počítače, a ověřte nastavení federace. Další informace najdete v tématu [Azure Active Directory (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 
 ### <a name="assumptions"></a>Předpoklady 
@@ -45,7 +45,7 @@ Tato část obsahuje seznam požadavky a předpoklady, které potřebujete znát
 Tento dokument neposkytuje následující předpoklady:
 - jestli máte k službě federation service, nastavení a úspěšně ověřování uživatelů.
 - externí uživatelé můžete ověřit pomocí jejich externí e-mailovou adresu.
-- - Použití atributu alternativní ID pro přihlášení je nastavit a nakonfigurovaná. Uživatelé se mohou ověřovat pomocí jejich alternativní ID. Další informace o nastavení atributu alternativní ID se službou AD FS najdete v tématu [konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
+- - Použití atributu alternativní ID pro přihlášení je nastavit a nakonfigurovaná. Uživatelé se mohou ověřovat pomocí jejich alternativní ID. Další informace o nastavení atributu alternativní ID se službou AD FS najdete v tématu [konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 ## <a name="task-1--prepare-the-environment"></a>Úloha 1: Příprava prostředí
 Následující úloha je více informační tak, že jste připravení zahájit synchronizaci externí účtů, aby se můžete přihlásit pomocí alternativního i například atribut mail.
@@ -139,7 +139,7 @@ Použijte následující postup ke konfiguraci Azure AD Connect.
 ## <a name="task-3--federation"></a>Úloha 3: Federation
 Následující úloha je informační na pár věcí, které je potřeba mít na místě v pořadí pro scénář fungovat.
 
-Nastavení federačního můžete ověřit pomocí Azure pomocí Azure AD PowerShell. Tento dokument používá v1.1 MSOL prostředí PowerShell. Tuto verzi si můžete nainstalovat [zde](https://docs.microsoft.com/en-us/powershell/azure/active-directory/overview?view=azureadps-1.0).
+Nastavení federačního můžete ověřit pomocí Azure pomocí Azure AD PowerShell. Tento dokument používá v1.1 MSOL prostředí PowerShell. Tuto verzi si můžete nainstalovat [zde](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0).
 
 ### <a name="verify-the-federation-settings"></a>Ověřte nastavení federace
 Pomocí následujícího postupu ověřte nastavení federace.
@@ -181,5 +181,5 @@ Chcete-li ověřit, že to funguje správně, budete muset přihlásit se na kon
 
 ## <a name="next-steps"></a>Další postup
 - [Vlastnosti uživatele spolupráce Azure Active Directory s B2B](../../active-directory/active-directory-b2b-user-properties.md#key-properties-of-the-azure-ad-b2b-collaboration-user)
-- [Konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
+- [Konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
 - [Azure AD Connect: Historie vydaných verzí](active-directory-aadconnect-version-history.md)

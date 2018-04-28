@@ -8,16 +8,14 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/19/2018
-ms.openlocfilehash: 5ebf2d1025c8f9469a83a408cb79e3d944a601bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/25/2018
+ms.openlocfilehash: 1fc1791d75355cc30f2ef43fc17e39a868e2c756
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Datový proud dat jako vstup do služby Stream Analytics
-
-Stream Analytics přijme příchozí data z několika zdrojů událostí. Datové připojení, zadaný jako vstup do úlohy Stream Analytics se označuje jako úlohy *vstupní*. 
 
 Stream Analytics obsahuje prvotřídní integraci s Azure datové proudy jako vstupy z tři typy prostředků:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
@@ -25,17 +23,6 @@ Stream Analytics obsahuje prvotřídní integraci s Azure datové proudy jako vs
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
 
 Tyto prostředky vstupní může existovat ve stejné předplatné jako váš úlohy služby Stream Analytics, nebo z jiného předplatného.
-
-## <a name="compare-stream-and-reference-inputs"></a>Porovnání streamu a referenčních vstupy
-Jako data odesílána ke zdroji dat, má spotřebovávají úlohu služby Stream Analytics a zpracovány v reálném čase. Vstupy se dál dělí na dva typy: stream vstupy a referenční data vstupy dat.
-
-### <a name="data-stream-input"></a>Datový proud vstup
-Datový proud je už bez vazby pořadí událostí v čase. Úlohy Stream Analytics musí obsahovat alespoň jeden vstup datového streamu. Služba Event Hubs, IoT Hub a úložiště objektů Blob jsou podporovány jako vstupní zdroje dat datového proudu. Služba Event Hubs slouží ke shromažďování streamů událostí z více zařízení a služeb. Tyto datové proudy mohou zahrnovat sociálních médií o aktivitách, informace o uložených obchodní nebo dat ze senzorů. Centra IoT jsou optimalizované pro shromažďování dat z připojených zařízení v scénáře Internetu věcí (IoT).  Úložiště objektů BLOB můžete použít jako vstupní zdroj pro příjem dat hromadné jako datový proud, jako jsou například soubory protokolu.  
-
-### <a name="reference-data-input"></a>Referenčního datového vstupu
-Stream Analytics podporuje také označuje jako vstup *referenční data*. Toto je pomocná data, která je buď statickou nebo který změny pomalu. Referenční data se obvykle používá k provedení korelaci a vyhledávání. Například můžete spojit data vstup datového streamu k datům v referenční data tak, jak můžete provést připojení SQL k vyhledání statické hodnoty. Azure Blob storage je aktuálně podporované pouze vstupní zdroj pro referenční data. Referenční data zdroje BLOB jsou omezeny na 100 MB velikost.
-
-Naučte se vytvořit odkaz na vstupy data, najdete v tématu [použití referenčních dat](stream-analytics-use-reference-data.md).  
 
 ### <a name="compression"></a>Komprese
 Stream Analytics podporuje kompresi mezi všechny vstupní zdroje dat datového proudu. Odkaz na aktuálně podporované typy jsou: None, GZip a kompresi Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Nemusíte určit typ komprese s Avro serializace. 
@@ -50,7 +37,6 @@ Vytvoření nové vstupy a seznam nebo upravit existující vstupy na vaše úlo
 7. Vyberte **Test** na stránce vstupní podrobnosti a ověřte, zda jsou možnosti připojení platný a v provozu. 
 8. Klikněte pravým tlačítkem na název stávající vstup a vyberte **vzorová data ze vstupu** podle potřeby pro další testování.
 
-Můžete také použít [prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input), a [Visual Studio](stream-analytics-tools-for-visual-studio.md) k vytváření, úpravám a testovací úlohy služby Stream Analytics vstupy.
 
 ## <a name="stream-data-from-event-hubs"></a>Datový proud dat ze služby Event Hubs
 
@@ -72,7 +58,7 @@ Následující tabulka popisuje každou vlastnost **nové vstup** na portálu Az
 | **Název centra událostí** | Název centra událostí, a použít jako vstup. |
 | **Název zásady centra událostí** | Zásada sdíleného přístupu, který poskytuje přístup k Centru událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Tato možnost je automaticky vyplněno v, pokud vyberete možnost určit nastavení centra událostí ručně.|
 | **Skupina uživatelů centra událostí** (doporučeno) | Důrazně doporučujeme použít skupinu odlišné příjemce pro každou úlohu služby Stream Analytics. Tento řetězec identifikuje skupinu příjemců sloužící k načítání dat z centra událostí. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá skupina uživatelů $Default.  |
-| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) příchozí datový proud. |
+| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) příchozí datový proud.  Zkontrolujte formát JSON zarovnaná s specifikace a neobsahuje 0 na desetinná čísla. |
 | **Kódování** | Znakové sady UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese použít ke čtení příchozí datový proud, jako je například žádné (výchozí), GZip a Deflate. |
 
@@ -95,7 +81,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Při používání centra událostí jako koncový bod pro IoT Hub trasy, dostanete pomocí medadata IoT Hub [funkce GetMetadataPropertyValue](https://msdn.microsoft.com/en-us/library/azure/mt793845.aspx).
+> Při používání centra událostí jako koncový bod pro IoT Hub trasy, dostanete pomocí medadata IoT Hub [funkce GetMetadataPropertyValue](https://msdn.microsoft.com/library/azure/mt793845.aspx).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Datový proud dat ze služby IoT Hub
@@ -122,7 +108,7 @@ Následující tabulka popisuje každou vlastnost **nové vstup** na portálu Az
 | **Název zásady sdíleného přístupu** | Zásada sdíleného přístupu, který poskytuje přístup ke službě IoT Hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | **Sdílený přístupový klíč zásad** | Sdílený přístupový klíč použitý k autorizaci přístupu ke službě IoT Hub.  Tato možnost je automaticky vyplněno v, pokud vyberete možnost zadat nastavení centra Iot ručně. |
 | **Skupina uživatelů** | Důrazně doporučujeme použít skupinu jiný příjemce pro každou úlohu služby Stream Analytics. Skupina uživatelů slouží k načítání dat ze služby IoT Hub. Pokud neurčíte jinak, Stream Analytics používá skupina uživatelů $Default.  |
-| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) příchozí datový proud. |
+| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) příchozí datový proud.  Zkontrolujte formát JSON zarovnaná s specifikace a neobsahuje 0 na desetinná čísla. |
 | **Kódování** | Znakové sady UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese použít ke čtení příchozí datový proud, jako je například žádné (výchozí), GZip a Deflate. |
 
@@ -171,7 +157,7 @@ Následující tabulka popisuje každou vlastnost **nové vstup** na portálu Az
 | **Vzorek cesty** (volitelné) | Cesta k souboru používaná k nalezení objektů BLOB v rámci zadaného kontejneru. V této cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}`, `{time}`, nebo `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro předponu cestu. Jediné platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">objektů blob v Azure znaků</a> jsou povoleny. |
 | **Formát data** (volitelné) | Pokud použijete proměnnou datum v cestě, ve které soubory jsou uspořádány formát data. Příklad: `YYYY/MM/DD` |
 | **Formát času** (volitelné) |  Pokud použijete proměnnou čas ve formátu času, ve které soubory jsou uspořádány do cesty. Aktuálně je jediná podporovaná hodnota `HH` hodin. |
-| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) pro příchozí streamy. |
+| **Formát serializace událostí** | Formát serializace (JSON, CSV nebo Avro) příchozí datový proud.  Zkontrolujte formát JSON zarovnaná s specifikace a neobsahuje 0 na desetinná čísla. |
 | **Kódování** | Pro sdílený svazek clusteru a JSON je jediným podporovaným formátem kódování aktuálně UTF-8. |
 | **Komprese** | Typ komprese použít ke čtení příchozí datový proud, jako je například žádné (výchozí), GZip a Deflate. |
 
@@ -195,12 +181,8 @@ FROM Input
 ```
 
 ## <a name="next-steps"></a>Další postup
-Když jste se naučili o možnosti připojení dat v Azure pro úlohy Stream Analytics. Další informace o Stream Analytics najdete v tématu:
-
-* [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [Rychlý úvod: Vytvoření úlohy Stream Analytics pomocí portálu Azure](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
