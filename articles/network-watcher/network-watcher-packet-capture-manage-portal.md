@@ -1,11 +1,11 @@
 ---
-title: "Spravovat zachycení paketů s sledovací proces sítě Azure - portálu Azure | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak spravovat funkci zachycení paketu sledovací proces sítě pomocí portálu Azure"
+title: Spravovat zachycení paketů s sledovací proces sítě Azure - portálu Azure | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat funkci zachycení paketu sledovací proces sítě pomocí portálu Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 508b9e7eef757277d4bc0e93a26f3a63045f31e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Spravovat zachycení paketů s sledovací proces sítě Azure pomocí portálu
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
@@ -86,7 +86,7 @@ Vlastnosti, které lze definovat na zachytáváním paketů jsou:
 - **Místní cesta** – místní cesta na virtuálním počítači, kde je uložena zachytáváním paketů (platná pouze tehdy, když **[soubor]** je vybraný). Je nutné zadat platnou cestu. Pokud používáte virtuální počítač s Linuxem, cesta musí začínat znakem / var / zaznamená.
 - **Účet úložiště** -Určuje, pokud se zachytáváním paketů je uložen v účtu úložiště.
 - **Soubor** -Určuje, pokud se zachytáváním paketů se místně uloží na virtuálním počítači.
-- **Účty úložiště** – vybraný účet úložiště se zachytáváním paketů v uložit. Výchozí umístění je id name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription účtu https://{storage} /resourcegroups/ {název počítače name}/providers/microsoft.compute/virtualmachines/{virtual skupiny prostředků} / {RR} / {MM} / {DD} / {HH} packetcapture__{MM}_CAP _ {XXX} {SS}. (Aktivní, pouze pokud **úložiště** je vybraná)
+- **Účty úložiště** – vybraný účet úložiště se zachytáváním paketů v uložit. Výchozí umístění je id name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription účtu https://{storage} /resourcegroups/ {název počítače name}/providers/microsoft.compute/virtualmachines/{virtual skupiny prostředků} / {RR} / {MM} / {DD} / {HH} packetcapture__{MM}_ CAP _ {XXX} {SS}. (Aktivní, pouze pokud **úložiště** je vybraná)
 - **Cesta k souboru místní** -místní cestu na virtuální počítač uložit zachytáváním paketů. (Aktivní, pouze pokud **soubor** je vybraný). Je nutné zadat platnou cestu. Pro virtuální počítač s Linuxem, musí cesta začínat */var/zaznamená*.
 - **Maximální počet bajtů paketu** – počet bajtů z jednotlivých paketů, které jsou zachyceny, všechny bajty zachyceny, pokud je ponecháno prázdné.
 - **Maximální počet bajtů za relace** – celkový počet bajtů, které jsou zachyceny, hodnota v případě dosažení Zastaví zachytávání paketů.
@@ -131,7 +131,7 @@ V zobrazení zachytávání paketů, klikněte na tlačítko **kontextovou nabí
 
 ## <a name="download-a-packet-capture"></a>Stáhnout zachytáváním paketů
 
-Po dokončení relace zachytávání paketů zachycení soubor nahraje do úložiště objektů blob nebo do místního souboru virtuálního počítače. Umístění úložiště pro zachytávání paketů se definuje při vytvoření relace. Nástroj vhodné pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, kterou můžete stáhnout tady: http://storageexplorer.com/
+Po dokončení relace zachytávání paketů zachycení soubor nahraje do úložiště objektů blob nebo do místního souboru virtuálního počítače. Umístění úložiště pro zachytávání paketů se definuje při vytvoření relace. Nástroj vhodné pro přístup k těmto zachycení soubory uložené na účet úložiště je Microsoft Azure Storage Explorer, kterou můžete stáhnout tady:  http://storageexplorer.com/
 
 Pokud je zadaný účet úložiště, soubory zachytávání paketů ukládají na účet úložiště v následujícím umístění:
 ```
@@ -142,7 +142,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Informace o automatizaci paketu zachytává se virtuální počítač výstrahy zobrazením [vytvořit zaznamenání výstrahy spouštěná paketu](network-watcher-alert-triggered-packet-capture.md)
 
-Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](network-watcher-check-ip-flow-verify-portal.md)
+Najít, pokud určité provoz je povolený v nebo z virtuálního počítače navštivte stránky [zkontrolujte IP tok ověření](diagnose-vm-network-traffic-filtering-problem.md)
 
 <!-- Image references -->
 [1]: ./media/network-watcher-packet-capture-manage-portal/figure1.png

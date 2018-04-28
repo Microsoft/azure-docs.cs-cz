@@ -2,23 +2,20 @@
 title: Publikování-WebApplicationWebSite (skript prostředí Windows PowerShell) | Microsoft Docs
 description: Zjistěte, jak publikovat webového projektu do webové stránky Azure. Tento skript vytvoří požadované prostředky ve vašem předplatném Azure, pokud ještě neexistují.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 63cfaa2d-f04d-40dc-8677-345385c278d5
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 63cfaa2d-f04d-40dc-8677-345385c278d5
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: aaa1f679b0368b0ca93305fe867a63f3971a788c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b540734f17ed11e4c438e1248ed9612fb892e89a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publikování-WebApplicationWebSite (skript prostředí Windows PowerShell)
 ## <a name="syntax"></a>Syntaxe

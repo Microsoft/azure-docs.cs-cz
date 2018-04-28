@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/16/2018
-ms.author: bwren
+ms.date: 04/16/2018
+ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c43e262725bd7b4c4fe5680f514d80112766f991
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání analýzy protokolů uložit výstrahy a hledání řešení pro správu (Preview)
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 03/30/2018
 Tento článek předpokládá, že jste již obeznámeni s postupy [vytvoření řešení správy](operations-management-suite-solutions-creating.md) a strukturu [šablony Resource Manageru](../resource-group-authoring-templates.md) a soubor řešení.
 
 
-## <a name="log-analytics-workspace"></a>Pracovní prostor analýzy protokolů
+## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
 Všechny prostředky v analýzy protokolů jsou součástí [prostoru](../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [pracovní prostor analýzy protokolů a účet Automation](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account), pracovním prostoru není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, řešení instalace se nezdaří.
 
-Název pracovního prostoru je názvu každého prostředku analýzy protokolů.  To se provádí v řešení s **prostoru** parametr jako v následujícím příkladu savedsearch prostředku.
+Název pracovního prostoru je názvu každého prostředku analýzy protokolů.  To se provádí v řešení s **prostoru** parametr jako v následujícím příkladu SavedSearch prostředku.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
@@ -77,26 +77,31 @@ Zahrnout [uložená hledání](../log-analytics/log-analytics-log-searches.md) v
 
 
 
-Každou vlastnost uloženého hledání jsou popsané v následující tabulce. 
+Každou vlastnost uloženého hledání je popsané v následující tabulce. 
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | category | Kategorie pro uložené hledání.  Všechny uložená hledání ve stejném řešení, bude často sdílet jednu kategorii, jsou seskupeny dohromady v konzole. |
-| displayname | Název zobrazení pro uložené hledání na portálu. |
+| DisplayName | Název zobrazení pro uložené hledání na portálu. |
 | query | Dotaz spustit. |
 
 > [!NOTE]
-> Musíte použít řídicí znaky v dotazu, pokud obsahuje znaky, které je možné interpretovat jako JSON.  Například, pokud se dotaz **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měly být zapsány v souboru řešení jako **typu: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
+> Musíte použít řídicí znaky v dotazu, pokud obsahuje znaky, které je možné interpretovat jako JSON.  Například, pokud se dotaz **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měly být zapsány v souboru řešení jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Výstrahy
 [Protokolu analýzy výstrahy](../log-analytics/log-analytics-alerts.md) jsou vytvořené pomocí pravidla výstrah, které běží uloženého hledání v pravidelných intervalech.  Pokud výsledky dotazu odpovídal zadaná kritéria, se vytvoří záznam výstrah a spouštějí jednu nebo více akcí.  
+
+> [!NOTE]
+> Od 14 může 2018 všechny výstrahy v pracovním prostoru se začnou automaticky rozšířit do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny - šablony Azure Resource Manageru](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Pravidla výstrah v rámci řešení pro správu se skládá z těchto tří různých prostředků.
 
 - **Uložené hledání.**  Definuje vyhledávání protokolu, který se spouští.  Více pravidla výstrah můžete sdílet jeden uloženého hledání.
 - **Plán.**  Definuje, jak často se spustí vyhledávání protokolu.  Každé pravidlo výstrahy obsahuje pouze jeden plán.
-- **Výstrahy akce.**  Každé pravidlo výstrahy má jeden prostředek akce s typem **výstraha** , který definuje podrobnosti výstrahy například kritéria pro vytvoření záznamu výstrah a závažnosti výstrah.  Akce prostředku bude volitelně definovat odpověď e-mailu a sady runbook.
-- **Akce Webhooku (volitelné).**  Pokud pravidlo výstrahy volá webhook, jehož, pak vyžaduje prostředek další akce s typem **Webhooku**.    
+- **Výstrahy akce.**  Každé pravidlo výstrahy má jeden prostředek skupiny akce nebo akce prostředek (starší) s typem **výstraha** , který definuje podrobnosti výstrahy například kritéria pro vytvoření záznamu výstrah a závažnosti výstrah. [Akce skupiny](../monitoring-and-diagnostics/monitoring-action-groups.md) prostředků může mít seznam nakonfigurované akcí při vyvolání výstrahy – například telefonní hovor, SMS, e-mailu, webhooku, nástroj ITSM, sady automation runbook, aplikace logiky, atd.
+ 
+Akce prostředku (starší), volitelně definuje odpověď e-mailu a runbook.
+- **Akce Webhooku (zastaralé).**  Pokud pravidlo výstrahy volá webhook, jehož, pak vyžaduje prostředek další akce s typem **Webhooku**.    
 
 Uložené hledání, které prostředky jsou popsané výše.  Dále jsou uvedená na další prostředky.
 
@@ -129,24 +134,29 @@ Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 |:--|:--|:--|
 | povoleno       | Ano | Určuje, zda je povoleno výstrahu, když je vytvořeno. |
 | interval      | Ano | Jak často spuštění dotazu v minutách. |
-| queryTimeSpan | Ano | Časový interval v minutách, přes který vyhodnotit výsledky. |
+| QueryTimeSpan | Ano | Časový interval v minutách, přes který vyhodnotit výsledky. |
 
 Plán prostředku by měl závisí na uloženého hledání tak, aby se vytvoří před plán.
 
+> [!NOTE]
+> Název plánu musí být jedinečný v daném prostoru; dva plány nemůže mít stejné ID, i když jsou spojeny s jinou uložená hledání. Název pro všechny uložená hledání, plány a akce, které jsou vytvořené pomocí rozhraní API Log Analytics musí být také na malá písmena.
+
 
 ### <a name="actions"></a>Akce
-Existují dva typy prostředků akce určeného **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, který definuje podrobnosti pravidlo výstrahy a jaké akce jsou provedeny, když se vytvoří výstraha.  Může také zahrnovat **Webhooku** akce, pokud by se měla volat webhook, jehož ve výstraze.  
+Plán může mít více akcí. Akce může definovat jeden nebo více procesy provést například odesílání e-mailu nebo spuštění sady runbook, nebo se může definovat prahové hodnoty, která určuje, kdy výsledky hledání kritériím některé.  Některé akce obě bude definovat, aby procesy provede, když je splněna prahovou hodnotu.
 
-Akce prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
+Akce lze definovat pomocí [akce skupiny] prostředků nebo prostředek akce.
 
-#### <a name="alert-actions"></a>Akce upozornění
+> [!NOTE]
+> Od 14 může 2018 všechny výstrahy v pracovním prostoru se začnou automaticky rozšířit do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny - šablony Azure Resource Manageru](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
-Každý plán má jeden **výstrahy** akce.  Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce.  Oznámení se odešle e-mail na jeden nebo více adres.  Nápravy spuštění sady runbook ve službě Azure Automation se pokusit o napravit zjištěné potíže.
+
+Existují dva typy prostředků akce určeného **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, která definuje podrobnosti pravidlo výstrahy a jaké akce jsou provedeny, když se vytvoří výstraha. Akce prostředky mít typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
 
 Akce výstrah mají následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
 
 
-
+```
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -167,20 +177,16 @@ Akce výstrah mají následující strukturu.  Jedná se o běžné parametry a 
                     "triggerCondition": "[variables('Alert').Threshold.Trigger.Condition]",
                     "operator": "[variables('Alert').Trigger.Operator]",
                     "value": "[variables('Alert').Trigger.Value]"
-                },
-            },
-            "emailNotification": {
-                "recipients": [
-                    "[variables('Alert').Recipients]"
-                ],
-                "subject": "[variables('Alert').Subject]"
-            },
-            "remediation": {
-                "runbookName": "[variables('Alert').Remedition.RunbookName]",
-                "webhookUri": "[variables('Alert').Remedition.WebhookUri]"
-            }
+                  },
+              },
+      "AzNsNotification": {
+        "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+        "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]",
+        "CustomWebhookPayload": "[variables('MyAlert').AzNsNotification.CustomWebhookPayload]"
+        }
         }
     }
+```
 
 Vlastnosti výstrah akce prostředky jsou popsané v následujících tabulkách.
 
@@ -189,17 +195,16 @@ Vlastnosti výstrah akce prostředky jsou popsané v následujících tabulkách
 | Typ | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
 | Název | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
 | Popis | Ne | Volitelný popis výstrahy. |
-| Závažnost | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritické**<br>**Upozornění**<br>**Informační** |
+| Závažnost | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritické**<br>**Upozornění**<br>**Informační**
 
 
-##### <a name="threshold"></a>Mezní hodnota
+#### <a name="threshold"></a>Mezní hodnota
 Tento oddíl je povinný.  Definuje vlastnosti prahové hodnoty pro výstrahu.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
 | Operátor | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
 | Hodnota | Ano | Hodnoty k porovnání výsledků. |
-
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Tato část je volitelné.  Zahrňte pro upozornění na metriky měření.
@@ -213,12 +218,33 @@ Tato část je volitelné.  Zahrňte pro upozornění na metriky měření.
 | Operátor | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
 | Hodnota | Ano | Počet přístupů, které musí být splněna kritéria pro aktivování upozornění. |
 
-##### <a name="throttling"></a>Omezování
+
+#### <a name="throttling"></a>Throttling
 Tato část je volitelné.  Pokud chcete pro potlačení výstrahy ze stejného pravidla pro určitou dobu, po vytvoření výstrahy, zahrnují v této části.
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
 | Doba trvání v minutách | Ano, pokud omezení zahrnuté – element | Počet minut pro potlačení výstrahy po vytvoření jedné ze stejné pravidlo výstrahy. |
+
+
+#### <a name="azure-action-group"></a>Skupina Azure akcí
+Všechny výstrahy v Azure, použijte akci skupiny jako výchozího mechanismu pro zpracování akce. Akce skupin můžete zadat vaše akce jednou a potom přidružení skupiny akce k více výstrah – v Azure. Bez nutnosti opakovaně opakovaně deklarovat stejné akce. Akce skupiny podporují různé akce – včetně e-mailu, SMS, hlasový hovor, ITSM připojení, sady Automation Runbook, identifikátor URI Webhooku a dalších. 
+
+Pro uživatele, kteří rozšířili výstrahy do Azure – nyní plánu měli mít akce skupiny podrobnosti předán společně s prahovou hodnotou, abyste mohli vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, Runbook automatizace podrobnosti a další akce musí být definován na straně skupinu akcí nejdříve před vytvořením výstrahu; můžete vytvořit jeden [akce skupiny z Azure monitorování](../monitoring-and-diagnostics/monitoring-action-groups.md) v portálu nebo pomocí [akce skupiny - šablony prostředků](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+
+| Název elementu | Požaduje se | Popis |
+|:--|:--|:--|
+| AzNsNotification | Ano | ID prostředku Azure akce skupiny přiřazené upozornění pro pořízení potřebné akce při splnění kritérií výstrah. |
+| CustomEmailSubject | Ne | Vlastní předmět e-mailu odeslány na všechny adresy zadané ve skupině přidružená akce. |
+| CustomWebhookPayload | Ne | Vlastní datové části pro odeslání do všechny koncové body webhooku definovaná ve skupině přidružená akce. Formát závisí na co webhooku očekává a musí být platný kód JSON serializovaných. |
+
+
+#### <a name="actions-for-oms-legacy"></a>Akce pro OMS (zastaralé)
+
+Každý plán má jeden **výstrahy** akce.  Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce.  Oznámení se odešle e-mail na jeden nebo více adres.  Nápravy spuštění sady runbook ve službě Azure Automation se pokusit o napravit zjištěné potíže.
+
+> [!NOTE]
+> Od 14 může 2018 všechny výstrahy v pracovním prostoru se začnou automaticky rozšířit do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny - šablony Azure Resource Manageru](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Tato část je volitelný ho zahrňte, pokud chcete výstrahu odesílat poštu jeden nebo více příjemcům.
@@ -239,7 +265,7 @@ Tato část je volitelný ho zahrňte, pokud chcete sadu runbook spustit v reakc
 | WebhookUri | Ano | Identifikátor URI služby webhooku pro sadu runbook. |
 | Vypršení platnosti | Ne | Datum a čas, kdy vyprší platnost náprava. |
 
-#### <a name="webhook-actions"></a>Akce Webhooku
+##### <a name="webhook-actions"></a>Akce Webhooku
 
 Akce Webhooku spuštění procesu voláním adresu URL a volitelně poskytuje datové části k odeslání. Jsou podobná nápravné akce s výjimkou jsou určené pro webhooků, který může vyvolat procesy než Azure Automation runbook. Obsahují taky další možnost poskytnout datové části který bude doručen do vzdálený proces.
 
@@ -271,19 +297,17 @@ Vlastnosti Webhooku akce prostředky jsou popsané v následujících tabulkách
 | CustomPayload | Ne | Vlastní datovou část k odeslání do webhooku. Formát závisí na co webhooku očekává. |
 
 
-
-
 ## <a name="sample"></a>Ukázka
 
 Tady je ukázka řešení, které obsahuje, který obsahuje následující zdroje:
 
 - Uložené hledání
 - Plán
-- Akce oznámení
-- Akce Webhooku
+- Skupina akcí
 
 Příklad používá [standardní řešení parametry](operations-management-suite-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení oproti hardcoding hodnoty v definicích prostředků.
 
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -294,34 +318,16 @@ Příklad používá [standardní řešení parametry](operations-management-sui
               "Description": "Name of Log Analytics workspace"
             }
           },
-          "accountName": {
-            "type": "string",
-            "metadata": {
-              "Description": "Name of Automation account"
-            }
-          },
           "workspaceregionId": {
             "type": "string",
             "metadata": {
               "Description": "Region of Log Analytics workspace"
             }
           },
-          "regionId": {
+          "actiongroup": {
             "type": "string",
             "metadata": {
-              "Description": "Region of Automation account"
-            }
-          },
-          "pricingTier": {
-            "type": "string",
-            "metadata": {
-              "Description": "Pricing tier of both Log Analytics workspace and Azure Automation account"
-            }
-          },
-          "recipients": {
-            "type": "string",
-            "metadata": {
-              "Description": "List of recipients for the email alert separated by semicolon"
+              "Description": "List of action groups for alert actions separated by semicolon"
             }
           }
         },
@@ -331,7 +337,7 @@ Příklad používá [standardní řešení parametry](operations-management-sui
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-11-01-preview",
+          "LogAnalyticsApiVersion": "2015-03-20",
     
           "MySearch": {
             "displayName": "Error records by hour",
@@ -357,20 +363,11 @@ Příklad používá [standardní řešení parametry](operations-management-sui
               "Value": 3
             },
             "ThrottleMinutes": 60,
-            "Notification": {
-              "Recipients": [
-                "[parameters('recipients')]"
+            "AzNsNotification": {
+              "GroupIds": [
+                "[parameters('actiongroup')]"
               ],
-              "Subject": "Sample alert"
-            },
-            "Remediation": {
-              "RunbookName": "MyRemediationRunbook",
-              "WebhookUri": "https://s1events.azure-automation.net/webhooks?token=TluBFH3GpX4IEAnFoImoAWLTULkjD%2bTS0yscyrr7ogw%3d"
-            },
-            "Webhook": {
-              "Name": "MyWebhook",
-              "Uri": "https://MyService.com/webhook",
-              "Payload": "{\"field1\":\"value1\",\"field2\":\"value2\"}"
+              "CustomEmailSubject": "Sample alert"
             }
           }
         },
@@ -394,8 +391,7 @@ Příklad používá [standardní řešení parametry](operations-management-sui
               "containedResources": [
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Webhook.Name)]"
+                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
               ]
             },
             "plan": {
@@ -458,39 +454,18 @@ Příklad používá [standardní řešení parametry](operations-management-sui
               "Throttling": {
                 "DurationInMinutes": "[variables('MyAlert').ThrottleMinutes]"
               },
-              "EmailNotification": {
-                "Recipients": "[variables('MyAlert').Notification.Recipients]",
-                "Subject": "[variables('MyAlert').Notification.Subject]",
-                "Attachment": "None"
-              },
-              "Remediation": {
-                "RunbookName": "[variables('MyAlert').Remediation.RunbookName]",
-                "WebhookUri": "[variables('MyAlert').Remediation.WebhookUri]"
-              }
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name, '/', variables('MyAlert').Webhook.Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-            "dependsOn": [
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]",
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name, '/actions/',variables('MyAlert').Name)]"
-            ],
-            "properties": {
-              "etag": "*",
-              "Type": "Webhook",
-              "Name": "[variables('MyAlert').Webhook.Name]",
-              "WebhookUri": "[variables('MyAlert').Webhook.Uri]",
-              "CustomPayload": "[variables('MyAlert').Webhook.Payload]"
+            "AzNsNotification": {
+              "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+              "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]"
+            }             
             }
           }
         ]
     }
-
+```
 
 Následující soubor parametrů obsahuje hodnoty ukázky pro toto řešení.
-
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
@@ -510,12 +485,12 @@ Následující soubor parametrů obsahuje hodnoty ukázky pro toto řešení.
             "pricingTier": {
                 "value": "Free"
             },
-            "recipients": {
-                "value": "recipient1@contoso.com;recipient2@contoso.com"
+            "actiongroup": {
+                "value": "/subscriptions/3b540246-808d-4331-99aa-917b808a9166/resourcegroups/myTestGroup/providers/microsoft.insights/actiongroups/sample"
             }
         }
     }
-
+```
 
 ## <a name="next-steps"></a>Další postup
 * [Přidání zobrazení](operations-management-suite-solutions-resources-views.md) do řešení pro správu.

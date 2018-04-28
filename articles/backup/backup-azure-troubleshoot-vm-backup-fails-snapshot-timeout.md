@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 194b8237ce1bff6ac18878bc7eca6e0d3891aa33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -63,7 +63,8 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování se nezdaří, protože agent virtuálního počítače je reagovat
 
-Chybová zpráva: "Nelze provést operaci, protože agenta virtuálního počítače není přizpůsobivý"
+Chybová zpráva: "Nelze provést operaci, protože agenta virtuálního počítače není přizpůsobivý" <br>
+Kód chyby: "GuestAgentSnapshotTaskStatusError"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
 **Příčina 1: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -72,7 +73,8 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 
 ## <a name="backup-fails-with-an-internal-error"></a>Zálohování se nezdaří, k interní chybě
 
-Chybová zpráva: "zálohování došlo k vnitřní chybě - opakujte operaci za několik minut."
+Chybová zpráva: "zálohování došlo k vnitřní chybě - opakujte operaci za několik minut." <br>
+Kód chyby: "BackUpOperationFailed" nebo "BackUpOperationFailedV2"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
 **Příčina 1: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
@@ -97,6 +99,8 @@ Chcete-li vyřešit tento problém, zkuste jeden z následujících metod:
 Můžete použít [služby značky](../virtual-network/security-overview.md#service-tags) umožňující připojení k úložišti určité oblasti. Zkontrolujte, zda pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidlo tento přístup k Internetu bloky. 
 
 ![Skupina zabezpečení sítě se značky úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Pochopení podrobný postup konfigurace služby značky, můžete sledovat [toto video](https://youtu.be/1EjLQtbKm1M).
 
 > [!WARNING]
 > Značky služby úložiště jsou ve verzi preview. Jsou k dispozici pouze v určitých oblastí. Seznam oblastí naleznete v tématu [služby značky pro úložiště](../virtual-network/security-overview.md#service-tags).

@@ -1,24 +1,23 @@
 ---
-title: Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Microsoft Docs
+title: Úvod do Firewallu webových aplikací (WAF) služby Azure Application Gateway | Dokumentace Microsoftu
 description: Na této stránce najdete přehled firewallu webových aplikací (WAF) služby Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-ms.assetid: 04b362bc-6653-4765-86f6-55ee8ec2a0ff
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 4/16/2018
 ms.author: amsriva
-ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 35a7e60dc65b54cbddfcd85fa0e704823152889e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -60,7 +59,7 @@ Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravi
 * Ochrana před narušením protokolu HTTP.
 * Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
 * Ochrana před roboty, prohledávacími moduly a skenery.
-* Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.).
+* Detekce běžných chyb v konfiguraci aplikací (např. Apache, služba IIS atd.).
 
 Podrobnější seznam pravidel a ochrany, kterou poskytují, naleznete v popisu [základních sad pravidel](#core-rule-sets).
 
@@ -74,9 +73,7 @@ Základní sada pravidel 3.0 má 13 skupin pravidel, shrnutých v následující
 
 |RuleGroup|Popis|
 |---|---|
-|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|Obsahuje pravidla chránící před známými spammery a škodlivou aktivitou.|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Obsahuje pravidla pro uzamčení metod (PUT, PATCH< ..)|
-|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| Obsahuje pravidla pro ochranu před útoky DoS (Denial of Service).|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Obsahuje pravidla pro ochranu před skenery portů a prostředí.|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Obsahuje pravidla pro ochranu před problémy s protokoly a kódováním.|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Obsahuje pravidla s cílem zajistit ochranu proti vkládání záhlaví, podvržení požadavku a rozdělení odpovědi.|
@@ -166,7 +163,6 @@ Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobn
 
 Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato položka SKU je k dispozici pouze v modelu zřizování Azure Resource Manager, nikoli v rámci klasického modelu nasazení. WAF SKU je navíc dostupný jen pro střední a velké instance aplikační brány. Všechna omezení pro aplikační brány platí také pro WAF SKU. Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné. Neexistují žádné poplatky za pravidla nebo skupiny pravidel. Jedna aplikační brána může chránit několik webových aplikací a další aplikace nejsou zpoplatněny. 
 
-Fakturace za WAF bude zahájena 5. 5. 2017, do té doby budou položky WAF SKU fakturovány podle standardních sazeb.
 
 ## <a name="next-steps"></a>Další kroky
 

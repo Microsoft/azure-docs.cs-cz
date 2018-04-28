@@ -1,28 +1,24 @@
 ---
-title: "Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse - portálu Azure | Microsoft Docs"
-description: "Azure úkoly portálu pro správu výpočetního výkonu. Škálovat výpočetní prostředky úpravou Dwu. Nebo, pozastavení a obnovení výpočetní prostředky, abyste ušetřili náklady."
+title: 'Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse – Azure Portal | Microsoft Docs'
+description: Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí Azure Portalu. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/31/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 6b86042ed6b95ba49fa2089ba36b1dbe9a61cc40
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.topic: quickstart
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: d93ea939a938fa88615161d3d048ee1881dd319a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse na portálu Azure
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Škálování kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse na Azure Portalu
 
-Škálování výpočetní kapacity v Azure SQL Data Warehouse na portálu Azure. [Škálovat výpočetní](sql-data-warehouse-manage-compute-overview.md) pro lepší výkon, nebo určený počet číslic zpět výpočetní abyste ušetřili náklady. 
+Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí Azure Portalu. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -32,32 +28,32 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Je možné škálovat datový sklad, který už máte, nebo můžete použít [rychlý start: Vytvořte a připojte - portál](create-data-warehouse-portal.md) k vytvoření datového skladu s názvem **mySampleDataWarehouse**.  Tento rychlý start škáluje **mySampleDataWarehouse**.
+Můžete škálovat datový sklad, který už máte, nebo pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořit datový sklad s názvem **mySampleDataWarehouse**.  Tento rychlý start škáluje **mySampleDataWarehouse**.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-V SQL Data Warehouse můžete zvýšit nebo snížit výpočetní prostředky úpravou jednotky datového skladu. [Vytvořit a připojit - portál](create-data-warehouse-portal.md) vytvořit **mySampleDataWarehouse** a inicializovat se 400 Dwu. Následující kroky upravit Dwu pro **mySampleDataWarehouse**.
+Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a tím zvýšit nebo snížit množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
-Chcete-li změnit jednotky datového skladu:
+Změna jednotek datového skladu:
 
-1. Klikněte na tlačítko **databází SQL** v levé straně na portálu Azure.
-2. Vyberte **mySampleDataWarehouse** z **databází SQL** stránky. Otevře se datového skladu.
-3. Klikněte na tlačítko **škálování**.
+1. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
+2. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Otevře se datový sklad.
+3. Klikněte na **Škálovat**.
 
-    ![Klikněte na škálování](media/quickstart-scale-compute-portal/click-scale.png)
+    ![Kliknutí na Škálovat](media/quickstart-scale-compute-portal/click-scale.png)
 
-2. V panelu škálování nastavte posuvník doleva nebo doprava, chcete-li změnit nastavení DWU.
+2. Na panelu škálování přesuňte posuvník doleva nebo doprava. Tím změníte nastavení jednotek datového skladu.
 
-    ![Posuvník](media/quickstart-scale-compute-portal/scale-dwu.png)
+    ![Přesunutí posuvníku](media/quickstart-scale-compute-portal/scale-dwu.png)
 
-3. Klikněte na **Uložit**. Zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** potvrďte nebo **žádné** zrušit.
+3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
 
     ![Kliknutí na Uložit](media/quickstart-scale-compute-portal/confirm-change.png)
 
 
 
-## <a name="next-steps"></a>Další postup
-Jste se naučili nyní škálování výpočetní pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+## <a name="next-steps"></a>Další kroky
+Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
 >[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

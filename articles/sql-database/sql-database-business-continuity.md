@@ -12,11 +12,11 @@ ms.workload: On Demand
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 46236c11b15f86c26be5e8c1311ba35e8bdd90f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e5c64ed51fd7c36b1c2cb3b5d98df18b82e08cc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -37,7 +37,7 @@ Následující tabulka porovnává vložit a plánovaný bod obnovení pro jedno
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Použít obnovení bodu v čase k obnovení databáze
 
-SQL Database automaticky provede kombinaci databáze úplné zálohování každý týden, databáze rozdílové zálohy každou hodinu a transakce protokolu zálohování každých pět - deset minut chránit vaši firmu před ztrátou dat. Tyto zálohy jsou uloženy v úložišti RA-GRS 35 dní pro databáze v úrovně služeb Standard a Premium a pro databáze ve vrstvě služeb základní 7 dní. V obecné účely a obchodními úrovněmi kritické služby (preview) je možné konfigurovat až na 35 dní uchovávání záloh. Další informace najdete v tématu [úrovních služeb](sql-database-service-tiers.md). Pokud doba uchovávání vaší úrovně služby nevyhovuje požadavkům vaší organizace, můžete dobu uchovávání prodloužit [změnou úrovně služby](sql-database-service-tiers.md). Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md).
+SQL Database automaticky provede kombinaci databáze úplné zálohování každý týden, databáze rozdílové zálohy každou hodinu a transakce protokolu zálohování každých pět - deset minut chránit vaši firmu před ztrátou dat. Pokud používáte [na základě DTU nákupní model](sql-database-service-tiers-dtu.md), pak tyto zálohy jsou uloženy v úložišti RA-GRS 35 dní pro databáze v úrovních služeb Standard a Premium a 7 dní pro databáze ve vrstvě služby na úrovni Basic. Pokud doba uchovávání vaší úrovně služby nevyhovuje požadavkům vaší organizace, můžete dobu uchovávání prodloužit [změnou úrovně služby](sql-database-service-tiers-dtu.md#choosing-a-service-tier-in-the-dtu-based-purchasing-model). Pokud používáte [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md), uchovávání záloh je konfigurovatelné až na 35 dnů v obecné účely a kritické podnikové úrovně. Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md).
 
 Pokud maximální doba uchování podporované možnosti PITR není dostatečná pro aplikaci, můžete ji rozšířit tak, že nakonfigurujete zásady dlouhodobé uchovávání informací (zleva doprava) pro databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
@@ -97,8 +97,7 @@ Další informace a podrobné pokyny k obnovení odstraněné databáze pomocí 
 
 > [!IMPORTANT]
 > Pokud byl odstraněn logický server, není možné obnovit odstraněnou databázi.
->
->
+
 
 ### <a name="restore-backups-from-long-term-retention"></a>Obnovit zálohy z dlouhodobé uchovávání
 

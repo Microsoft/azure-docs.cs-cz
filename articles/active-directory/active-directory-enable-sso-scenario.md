@@ -1,8 +1,8 @@
 ---
-title: "Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs"
-description: "Tento článek výhod integrace s místními, cloudu a aplikace SaaS Azure Active Directory."
+title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
+description: Tento článek výhod integrace s místními, cloudu a aplikace SaaS Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 95b96f10-2d5c-4b78-8af8-d3657a24140f
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 Mimo pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:
@@ -111,5 +111,6 @@ S Azure AD můžete zabezpečit vaše aplikace s zásady granulární přístupu
 Abyste mohli začít, integrace aplikací s Azure AD, prohlédněte si [Příručka Začínáme integrace Azure Active Directory s aplikacemi, získávání](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
+[Článek Index pro správu aplikací v Azure Active Directory](active-directory-apps-index.md)
+[podrobný postup nasazení plán pro jednotné přihlašování do aplikace SaaS](http://aka.ms/ssodeploymentplan)
 

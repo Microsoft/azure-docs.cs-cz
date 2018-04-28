@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 9391072159f26ae8c7d3eba9f023a8e7d62a4e26
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fedf511e06243d5c0652e422b397bb00da3b42c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Aplikační služby na Azure zásobníku update 1 poznámky
 
@@ -124,7 +124,7 @@ V této verzi je rozděleno prohození slotů lokality. Obnovit funkčnost, prov
 1. Změnit skupinu zabezpečení sítě ControllersNSG k **povolit** připojení ke vzdálené ploše na řadič instance služby App Service. Nahraďte název skupiny prostředků, které jste nasadili App Service v AppService.local.
 
     ```powershell
-      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
+      Add-AzureRmAccount -EnvironmentName AzureStackAdmin
 
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -175,7 +175,7 @@ V této verzi je rozděleno prohození slotů lokality. Obnovit funkčnost, prov
 
     ```powershell
 
-        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
+        Add-AzureRmAccount -EnvironmentName AzureStackAdmin
 
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 

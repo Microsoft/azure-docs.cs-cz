@@ -1,25 +1,22 @@
 ---
-title: "Azure Application Gateway brány firewall webových aplikací řádku pravidel skupiny a pravidel | Microsoft Docs"
-description: "Tato stránka obsahuje informace o webové aplikaci brány firewall řádku pravidlo skupiny a pravidel."
+title: Azure Application Gateway brány firewall webových aplikací řádku pravidel skupiny a pravidel
+description: Tato stránka obsahuje informace o webové aplikaci brány firewall řádku pravidlo skupiny a pravidel.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Nabízí seznam webových aplikací brány firewall řádku pravidlo skupiny a pravidel
 
@@ -27,28 +24,8 @@ Brány firewall webových aplikací aplikace brány (firewall webových aplikac�
 
 V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k dispozici při Application Gateway pomocí brány firewall webových aplikací.  Každá tabulka představuje pravidel ve skupině pravidlo na konkrétní verzi řádku.
 
-##<a name="owasp30"></a>OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">ŽÁDOST O 910 IP REPUTACI</p>
-
-|RuleId|Popis|
-|---|---|
-|910011|Pravidlo 910011|
-|910012|Pravidlo 910012|
-|910000|Žádosti z známé škodlivého klienta (založený na předchozí porušení provozu).|
-|910100|Klient IP je z vysoké umístění země riziko.|
-|910120|Pravidlo 910120|
-|910130|Pravidlo 910130|
-|910150|HTTP zakázaných odpovídat IP modul vyhledávání|
-|910160|Shoda zakázaných HTTP pro IP adresu nevyžádané pošty|
-|910170|Shoda zakázaných HTTP pro podezřelé IP|
-|910180|Shoda zakázaných HTTP pro mlátičkou IP|
-|910013|Pravidlo 910013|
-|910014|Pravidlo 910014|
-|910015|Pravidlo 910015|
-|910016|Pravidlo 910016|
-|910017|Pravidlo 910017|
-|910018|Pravidlo 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">ŽÁDOST O 911 METODA VYNUCENÍ</p>
 
@@ -64,26 +41,6 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |911017|Pravidlo 911017|
 |911018|Pravidlo 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">ŽÁDOST O 912 DOS OCHRANY</p>
-
-|RuleId|Popis|
-|---|---|
-|912100|Pravidlo 912100|
-|912012|Pravidlo 912012|
-|912120|Útok na dostupnost služby (DoS) útoku, identifikovat z % @{tx.real_ip} (% @{tx.dos_block_counter} přístupů od poslední upozornění)|
-|912130|Pravidlo 912130|
-|912140|Pravidlo 912140|
-|912150|Pravidlo 912150|
-|912160|Pravidlo 912160|
-|912170|Možný útok na dostupnost služby (DoS) z % @{tx.real_ip} - počet požadavků Bursts = % @{ip.dos_burst_counter}|
-|912013|Pravidlo 912013|
-|912014|Pravidlo 912014|
-|912019|Pravidlo 912019|
-|912171|Možný útok na dostupnost služby (DoS) z % @{tx.real_ip} - počet požadavků Bursts = % @{ip.dos_burst_counter}|
-|912015|Pravidlo 912015|
-|912016|Pravidlo 912016|
-|912017|Pravidlo 912017|
-|912018|Pravidlo 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">ŽÁDOST O 913 SKENER ZJIŠTĚNÍ</p>
 
@@ -334,9 +291,9 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |943017|Pravidlo 943017|
 |943018|Pravidlo 943018|
 
-##<a name="owasp229"></a>OWASP_2.2.9
+##<a name="owasp229"></a> OWASP_2.2.9
 
-### <a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs20"></a> crs_20_protocol_violations
 
 |RuleId|Popis|
 |---|---|
@@ -362,7 +319,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |960901|Neplatný znak v požadavku|
 |960018|Neplatný znak v požadavku|
 
-### <a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs21"></a> crs_21_protocol_anomalies
 
 |RuleId|Popis|
 |---|---|
@@ -375,7 +332,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |960904|Žádosti o obsahující obsahu, ale chybí záhlaví typu obsahu|
 |960017|Hlavička hostitele je číselné IP adresa|
 
-### <a name="crs23"></a>crs_23_request_limits
+### <a name="crs23"></a> crs_23_request_limits
 
 |RuleId|Popis|
 |---|---|
@@ -386,7 +343,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |960342|Nahrávaný soubor příliš velký.|
 |960343|Celkový počet odeslaných souborů příliš velký.|
 
-### <a name="crs30"></a>crs_30_http_policy
+### <a name="crs30"></a> crs_30_http_policy
 
 |RuleId|Popis|
 |---|---|
@@ -396,7 +353,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |960035|Adresa URL souboru rozšíření je omezené na základě zásad|
 |960038|Hlavičky protokolu HTTP je omezené na základě zásad|
 
-### <a name="crs35"></a>crs_35_bad_robots
+### <a name="crs35"></a> crs_35_bad_robots
 
 |RuleId|Popis|
 |---|---|
@@ -405,7 +362,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |990902|Žádost o označuje prohlížela kontrolu zabezpečení webu|
 |990012|Webový server podvodný prohledávacího modulu|
 
-### <a name="crs40"></a>crs_40_generic_attacks
+### <a name="crs40"></a> crs_40_generic_attacks
 
 |RuleId|Popis|
 |---|---|
@@ -434,7 +391,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |958976|Útok prostřednictvím injektáže PHP|
 |958977|Útok prostřednictvím injektáže PHP|
 
-### <a name="crs41sql"></a>crs_41_sql_injection_attacks
+### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |RuleId|Popis|
 |---|---|
@@ -471,7 +428,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |981253|Zjistí, MySQL a PostgreSQL uložená procedura nebo funkce injekce|
 |981251|Zjistí vkládání MySQL UDF a dalších dat nebo struktura manipulace se pokusí|
 
-### <a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs41xss"></a> crs_41_xss_attacks
 
 |RuleId|Popis|
 |---|---|
@@ -576,13 +533,13 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |973329|Filtry IE XSS - útoku zjištěna.|
 |973328|Filtry IE XSS - útoku zjištěna.|
 
-### <a name="crs42"></a>crs_42_tight_security
+### <a name="crs42"></a> crs_42_tight_security
 
 |RuleId|Popis|
 |---|---|
 |950103|Cesta k procházení útoku|
 
-### <a name="crs45"></a>crs_45_trojans
+### <a name="crs45"></a> crs_45_trojans
 
 |RuleId|Popis|
 |---|---|
@@ -590,7 +547,7 @@ V následujících tabulkách jsou skupiny pravidel a pravidel, které jsou k di
 |950921|Zadní vrátka přístup|
 |950922|Zadní vrátka přístup|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak zakázat pravidla firewall webových aplikací tak, že navštívíte: [pravidla přizpůsobit firewall webových aplikací](application-gateway-customize-waf-rules-portal.md)
 

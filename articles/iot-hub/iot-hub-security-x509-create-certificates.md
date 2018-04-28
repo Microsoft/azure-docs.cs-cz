@@ -1,11 +1,11 @@
 ---
-title: "Jak pomocí prostředí PowerShell k vytvoření certifikátů X.509 | Microsoft Docs"
-description: "Jak pomocí prostředí PowerShell vytvořit certifikáty X.509 místně a povolit X.509 na základě zabezpečení ve službě Azure IoT hub v simulovaném prostředí."
+title: Jak pomocí prostředí PowerShell k vytvoření certifikátů X.509 | Microsoft Docs
+description: Jak pomocí prostředí PowerShell vytvořit certifikáty X.509 místně a povolit X.509 na základě zabezpečení ve službě Azure IoT hub v simulovaném prostředí.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
-ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e58096d4bde9c947f199b4696c0b5c28291956d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skripty prostředí PowerShell ke správě certifikační Autority podepsané X.509 – certifikáty
 
@@ -33,7 +33,9 @@ Tento kurz předpokládá, že jste získali OpenSSL binární soubory. Můžete
 ## <a name="create-x509-certificates"></a>Vytvoření certifikáty X.509
 Následující kroky ukazují příklad vytvoření kořenové certifikáty X.509 místně. 
 
-1. Otevřete okno prostředí PowerShell jako *správce*. 
+1. Otevřete okno prostředí PowerShell jako *správce*.  
+   **Poznámka:** musíte otevřít to v prostředí PowerShell sám sebe, není PowerShell ISE, Visual Studio Code nebo jiné nástroje, které balí základní konzole PowerShell.  Pomocí jiných konzoly založené na prostředí PowerShell bude mít za následek `openssl` příkazy níže ukotvených.
+
 2. Přejděte do pracovního adresáře. Spusťte následující skript a nastavte globální proměnné. 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"

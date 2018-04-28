@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: 80889ac29b6d92f17fb9c9c693fa733085ce7f1c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a150d8255171c83334ac4c1f81cbcee39c1df70a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migraci uživatelů s identitami, sociálních
 Při plánování migrace zprostředkovatele identity do Azure AD B2C, může také muset migrovat uživatelé s sociálních identity. Tento článek vysvětluje, jak migrovat existující účty sociálních identity, jako například: Facebook, LinkedIn, Microsoft a Google účtů Azure AD B2C. Tento článek se týká také federované identity, ale tyto migrace jsou méně častých.
@@ -46,7 +46,7 @@ V tomto článku je pokračování článku migrace uživatelů a se zaměřuje 
 * V závislosti na poskytovateli identity **ID sociálních uživatele** je jedinečná hodnota pro daného uživatele na účet aplikace nebo vývoj. Nakonfigurujte zásady služby Azure AD B2C se stejným ID aplikace, který byl dříve přiřazen sociálních zprostředkovatelem. Nebo jiná aplikace v rámci stejného účtu vývoj.
 
 ## <a name="use-graph-api-to-migrate-users"></a>Pomocí rozhraní Graph API pro migraci uživatelů
-Vytvořit uživatelský účet Azure AD B2C prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Ke komunikaci s rozhraní Graph API, nejprve musí mít účet služby s oprávněními správce. Ve službě Azure AD je třeba zaregistrovat aplikaci a ověřování do služby Azure AD. Přihlašovací údaje aplikací jsou ID aplikace a tajný klíč aplikace. Aplikace funguje jako samostatně, nikoli jako uživatel, k volání rozhraní Graph API. Postupujte podle pokynů v kroku 1 v [migraci uživatele](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) článku.
+Vytvořit uživatelský účet Azure AD B2C prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Ke komunikaci s rozhraní Graph API, nejprve musí mít účet služby s oprávněními správce. Ve službě Azure AD je třeba zaregistrovat aplikaci a ověřování do služby Azure AD. Přihlašovací údaje aplikací jsou ID aplikace a tajný klíč aplikace. Aplikace funguje jako samostatně, nikoli jako uživatel, k volání rozhraní Graph API. Postupujte podle pokynů v kroku 1 v [migraci uživatele](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users) článku.
 
 ## <a name="required-properties"></a>Požadované vlastnosti
 Následující seznam obsahuje vlastnosti, které jsou potřeba při vytvoření uživatele.
@@ -139,7 +139,7 @@ Název vystavitele, nebo název zprostředkovatele identity je nakonfigurované 
 1. Přihlaste se pomocí jednoho z sociálních účtů
 2. Z tokenu JWT, zkopírujte `sub` hodnotu. `sub` Obvykle obsahuje ID objektu uživatele v Azure AD B2C. Nebo z portálu Azure, otevřete vlastnosti uživatele a zkopírujte ID objektu.
 3. Otevřete [Explorer Azure AD Graph](https://graphexplorer.azurewebsites.net)
-4. Přihlaste se pomocí svého správce. N
+4. Přihlaste se pomocí svého správce. Ne
 5. Spusťte následující požadavek GET. Nahraďte userObjectId ID uživatele, který jste zkopírovali. **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Vyhledejte `userIdentities` element uvnitř návratový JSON z Azure AD B2C.
 7. [Nepovinné] Můžete také dekódovat `issuerUserId` hodnotu.
@@ -150,7 +150,7 @@ Název vystavitele, nebo název zprostředkovatele identity je nakonfigurované 
 ### <a name="is-it-possible-to-add-social-identity-to-an-existing-local-account"></a>Je možné přidat do existující místní účet sociálních identity?
 Ano. Sociální identity můžete přidat po vytvoření místního účtu. Spusťte požadavku HTTPS PATCH. Nahraďte userObjectId ID uživatele, který chcete aktualizovat. 
 
-**PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**OPRAVA** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
 Odešlete následující data formuláře: 
 
@@ -168,7 +168,7 @@ Odešlete následující data formuláře:
 ### <a name="is-it-possible-to-add-multiple-social-identities"></a>Je možné přidat více identit sociálních?
 Ano. Můžete přidat více sociálních identit pro jeden účet Azure AD B2C. Spusťte požadavku HTTPS PATCH. Nahraďte userObjectId ID uživatele. 
 
-**PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
+**OPRAVA** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
 Odešlete následující data formuláře: 
 

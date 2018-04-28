@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/03/2018
+ms.date: 04/27/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6b91f09b6c38c5461638b953f3a0df921fc7c30
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU v N-series virtuální počítače se systémem Linux
 
@@ -321,7 +321,7 @@ Desetinné BusID můžete najít spuštěním
 echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
-BusID lze změnit, pokud virtuální počítač získá znovu přidělit, nebo restartovat. Proto můžete chtít použít skript k aktualizaci BusID v X11 konfigurace, pokud je virtuální počítač restartovat. Příklad:
+BusID lze změnit, pokud virtuální počítač získá znovu přidělit, nebo restartovat. Proto můžete chtít vytvořit skript určený k aktualizaci BusID v X11 konfigurace, pokud je virtuální počítač restartovat. Můžete například vytvořit skript s názvem `busidupdate.sh` (nebo si vybrat jiný název) s tímto obsahem:
 
 ```bash 
 #!/bin/bash
@@ -330,7 +330,7 @@ BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 |
 if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
 ```
 
-Tento soubor nelze vyvolat jako kořenová na spouštěcí tak, že vytvoříte položku pro něj v `/etc/rc.d/rc3.d`.
+Pak vytvořte záznam pro váš skript restartovat v `/etc/rc.d/rc3.d` tak skript je vyvolána jako kořenová na spuštění.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

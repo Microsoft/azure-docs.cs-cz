@@ -1,11 +1,11 @@
 ---
-title: "Azure fakturace Enterprise rozhraní API | Microsoft Docs"
-description: "Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu."
-services: 
-documentationcenter: 
+title: Azure fakturace Enterprise rozhraní API | Microsoft Docs
+description: Další informace o rozhraních API vytváření sestav, které umožňují zákazníkům Enterprise Azure a si vyžádá data spotřeby prostřednictvím kódu programu.
+services: ''
+documentationcenter: ''
 author: anandedwin
 manager: aedwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ae04c7c1fdddecf40583d14f7b08dcf41941c6f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro vytváření sestav umožňují zákazníky, kteří Enterprise Azure prostřednictvím kódu programu vyžádání využívání a fakturační údaje do nástrojů pro analýzu dat upřednostňované. 
 
 ## <a name="enabling-data-access-to-the-api"></a>Povolení přístupu k datům v rozhraní API
-* **Generovat nebo načíst klíč rozhraní API** - protokolu v podnikovém portálu a postupujte podle kurzu v části Nápověda - Reporting rozhraní API. V první části v tomto článku nápovědy vysvětluje, jak vygenerovat nebo načíst klíč rozhraní API pro zadaný registrace.
+* **Generovat nebo načíst klíč rozhraní API** -Přihlaste se k portálu organizace a přejděte do sestavy > stáhnout využití > přístupový klíč rozhraní API pro generování nebo načíst klíč rozhraní API.
 * **Předávání klíče v rozhraní API** – klíč rozhraní API musí být předán pro každé volání pro ověřování a autorizaci. Následující vlastnost musí být hlavičkami protokolu HTTP
 
 |Klíč hlavičky požadavku | Hodnota|

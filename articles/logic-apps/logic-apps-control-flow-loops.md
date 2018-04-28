@@ -1,12 +1,12 @@
 ---
-title: "Smyčky - proces pole nebo opakování akce - Azure Logic Apps | Microsoft Docs"
-description: "Pole s \"pro každý\" zpracování smyčky nebo opakování akce až do splnění určitých podmínek v aplikacích logiky"
+title: Smyčky - proces pole nebo opakování akce - Azure Logic Apps | Microsoft Docs
+description: Pole s "pro každý" zpracování smyčky nebo opakování akce až do splnění určitých podmínek v aplikacích logiky
 services: logic-apps
-keywords: "pro každý smyčky"
-documentationcenter: 
+keywords: pro každý smyčky
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Smyčky: Zpracovat pole nebo opakujte akce, dokud je splněna podmínka
 
@@ -154,9 +154,6 @@ Opakování akce, dokud je splněna podmínka nebo došlo ke změně některých
 * Volání koncový bod, dokud nezískáte odpověď, který chcete.
 * Vytvořit záznam v databázi, počkejte na určitém poli v tom, že záznam schválení a pokračovat ve zpracování. 
 
-> [!NOTE]
-> "Dokud" smyčky nesmí obsahovat smyčky "Foreach" nebo jiné "Do" smyčky.
-
 Například v 8:00 AM každý den, tato aplikace logiky zvýší proměnné dokud hodnota proměnné se rovná 10. Aplikace logiky pak odešle e-mail, který potvrdí, že je aktuální hodnota. I když tento příklad používá Office 365 Outlook, které mohou využívat kteréhokoli zprostředkovatele e-mailu nepodporuje Logic Apps ([kontrolní seznam konektory zde](https://docs.microsoft.com/connectors/)). Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit. 
 
 1. Vytvoření prázdné aplikace logiky V návrháři aplikace logiky, vyhledejte "recurrence" a vyberte této aktivační události: **plán - opakování** 
@@ -217,7 +214,7 @@ Například v 8:00 AM každý den, tato aplikace logiky zvýší proměnné doku
     | -------- | ----- | ----------- | 
     | **Komu** | *<email-address@domain>* | příjemce e-mailovou adresu. Pro testování, použijte vlastní e-mailovou adresu. | 
     | **Předmět** | Aktuální hodnota pro "Limit" je **Limit** | Zadejte předmět e-mailu. V tomto příkladu zkontrolujte, jestli jste zahrnuli **Limit** proměnné. | 
-    | **Text** | <*email-content*> | Zadejte e-mailové zprávy obsah, který chcete odeslat. V tomto příkladu zadejte jakýkoli text, který chcete. | 
+    | **Text** | <*obsah e-mailu*> | Zadejte e-mailové zprávy obsah, který chcete odeslat. V tomto příkladu zadejte jakýkoli text, který chcete. | 
     |||| 
 
 11. Uložte svou aplikaci logiky. Můžete ručně vyzkoušet aplikace logiky na panelu nástrojů návrháře zvolte **spustit**.

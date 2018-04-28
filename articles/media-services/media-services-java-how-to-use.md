@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s využitím Java SDK pro Azure Media Services | Dokumentace Microsoftu"
-description: "Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa na vyžádání (Video-on-Demand) pomocí služby Azure Media Services (AMS) v jazyce Java."
+title: Začínáme s využitím Java SDK pro Azure Media Services | Dokumentace Microsoftu
+description: Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro doručování videa na vyžádání (Video-on-Demand) pomocí služby Azure Media Services (AMS) v jazyce Java.
 services: media-services
 documentationcenter: java
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: cba1e58478f4bbdffb61566e53aa0b86138b7fc6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7b8dea132fc1af546b64f51e5ab395ad8bc3fe37
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Začínáme s klientskou sadou Java SDK pro Azure Media Services
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -42,7 +42,7 @@ Pokud například jako nástroj pro sestavování používáte `gradle`, přidej
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->Počínaje balíčkem `azure-media` verze `0.9.8` se v sadě SDK přidala podpora pro ověřování Azure Active Directory (AAD) a odebrala podpora pro ověřování Azure Access Control Service (ACS). Služby ACS se přestanou používat 1. června 2018. Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve. Podrobné informace o migraci najdete v článku věnovaném [přístupu k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+>Počínaje balíčkem `azure-media` verze `0.9.8` se v sadě SDK přidala podpora pro ověřování Azure Active Directory (AAD) a odebrala podpora pro ověřování Azure Access Control Service (ACS). Služby ACS se přestanou používat 22. června 2018. Doporučujeme, abyste na model ověřování Azure AD migrovali co nejdříve. Podrobné informace o migraci najdete v článku věnovaném [přístupu k rozhraní API služby Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 
 >[!NOTE]
 >Zdrojový kód pro Azure Media Services Java SDK najdete v našem [úložišti GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Zkontrolujte, že jste přešli k větvi 0.9, nikoli k hlavní větvi. 

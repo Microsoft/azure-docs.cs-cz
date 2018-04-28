@@ -1,49 +1,48 @@
 ---
-title: "Klíčové rozdíly mezi Azure a Azure zásobníku při použití služeb a vytvářet aplikace | Microsoft Docs"
-description: "Co potřebujete vědět při použití služby nebo vývoj aplikací pro Azure zásobníku."
+title: Při používání služby a vytváření aplikací pochopit klíčové rozdíly mezi Azure a Azure zásobníku | Microsoft Docs
+description: Co potřebujete vědět o použití služeb nebo vývoj aplikací pro Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/25/2017
+ms.date: 04/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eab208175f7eb3b761ec7266483a7cd5268198e8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Klíčové aspekty: pomocí služby nebo vytváření aplikací pro Azure zásobníku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
-Při použití služby nebo vývoj aplikací pro Azure zásobníku, je potřeba pochopit, že jsou rozdíly mezi zásobník Azure a Azure. Tento článek obsahuje přehled klíčových faktorů při cíle zásobník Azure jako vývojové prostředí hybridního cloudu.
+Před použitím služby nebo vývoj aplikací pro Azure zásobníku, musíte pochopit rozdíly mezi zásobník Azure a Azure. Tento článek identifikuje klíčové faktory při použití Azure zásobníku jako vývojové prostředí hybridního cloudu.
 
 ## <a name="overview"></a>Přehled
 
-Azure Stack je hybridní cloudová platforma, která umožňuje využívat služby Azure z datového centra vaší společnosti nebo vašeho poskytovatele služeb. Jako vývojář můžete vytvořit aplikace, které běží v Azure zásobníku. Pak můžete nasadit tyto aplikace se zásobníkem Azure do Azure, nebo můžete vytvořit skutečně hybridní aplikace, které využívají připojení mezi Azure a cloudu Azure zásobníku.
+Azure Stack je hybridní cloudová platforma, která umožňuje využívat služby Azure z datového centra vaší společnosti nebo vašeho poskytovatele služeb. Můžete sestavit aplikace v zásobníku Azure a pak je nasadit do protokolů Azure, Azure nebo Azure hybridní cloud.
 
 Operátor vaší zásobník Azure umožňují vědět, které služby jsou k dispozici pro použití a jak získat podporu. Nabízejí tyto služby prostřednictvím jejich vlastní plány a nabídky.
 
 Azure technického obsahu předpokládá, že jsou aplikací vyvíjených pro služby Azure místo zásobník Azure. Při vytvoření a nasazení aplikací do zásobníku Azure, musíte pochopit některé hlavní rozdíly, jako například:
 
 * Zásobník Azure nabízí podmnožinu služby a funkce, které jsou k dispozici v Azure.
-* Poskytovatel společnosti nebo služby můžete zvolit služby, které chtějí nabízejí. To zahrnuje vlastní služby nebo aplikace. Nabízejí může vlastní vlastní dokumentace.
+* Poskytovatel společnosti nebo služby můžete zvolit služby, které chtějí nabízejí. Dostupné možnosti mohou zahrnovat vlastní služby nebo aplikace. Nabízejí může vlastní vlastní dokumentace.
 * Je nutné použít správné koncové body Azure specifické zásobníku (např. adresy URL adresu portálu a koncový bod Azure Resource Manager).
-* Je nutné použít prostředí PowerShell a rozhraní API verze, které podporuje Azure zásobníku. To zajistí, že vaše aplikace bude fungovat v zásobníku Azure a Azure.
+* Je nutné použít prostředí PowerShell a rozhraní API verze, které podporuje Azure zásobníku. Použití podporovaných verzí zajišťuje, že vaše aplikace bude fungovat v zásobníku Azure a Azure.
 
 ## <a name="cheat-sheet-high-level-differences"></a>Tahák: nejvýraznějších rozdílů
 
-Následující tabulka popisuje nejvýraznějších rozdílů mezi zásobník Azure a Azure. Při vývoji pro zásobník Azure nebo pomocí služby Azure zásobníku, ponechat v paměti.
+Následující tabulka popisuje nejvýraznějších rozdílů mezi zásobník Azure a Azure. Ponechat tyto rozdíly v úvahu při vývoji pro Azure zásobníku nebo použití služby Azure zásobníku.
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-| Oblast | Azure (global) | Azure Stack |
+| Oblast | Azure (globální) | Azure Stack |
 | -------- | ------------- | ----------|
 | Kdo funguje? | Microsoft | Vaše organizace nebo služba Zprostředkovatel.|
 | Kdo můžete požádat o podporu? | Microsoft | Integrovaný systém kontaktujte operátor Azure zásobníku (u vaší organizace nebo služba poskytovatele) pro podporu.<br><br>Pro podporu Azure zásobníku Development Kit, přejděte [fóra Microsoft](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Development kit je zkušební prostředí, a proto není žádná oficiální podporu nabízených prostřednictvím Microsoft podporu služby zákazníkům (CSS).
@@ -64,15 +63,15 @@ Následující tabulka popisuje nejvýraznějších rozdílů mezi zásobník Az
 | Doporučení | Odkazy | 
 | -------- | ------------- | 
 | Nainstalujte nástroje pro správné na pracovní stanici developer. | - [Instalace prostředí PowerShell](azure-stack-powershell-install.md)<br>- [Stažení nástroje](azure-stack-powershell-download.md)<br>- [Konfigurace prostředí PowerShell](azure-stack-powershell-configure-user.md)<br>- [Instalaci sady Visual Studio](azure-stack-install-visual-studio.md) 
-| Projděte si následující informace:<br>-Aspekty šablon azure Resource Manager<br>– Postup nalezení šablony rychlý start<br>-Použijte modul zásad můžete použít Azure k vývoji pro Azure zásobníku | [Vývoj pro Azure Stack](azure-stack-developer.md) | 
+| Projděte si informace o následující položky:<br>-Aspekty šablon azure Resource Manager<br>– Postup nalezení šablony rychlý start<br>-Použijte modul zásad můžete použít Azure k vývoji pro Azure zásobníku | [Vývoj pro Azure Stack](azure-stack-developer.md) | 
 | Zkontrolujte a použijte osvědčené postupy pro šablony. | [Rychlý start šablony Resource Manageru](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#best-practices)
 | | |
 
 ## <a name="version-requirements"></a>Požadavky verze
 
-Azure zásobníku podporuje konkrétní verze prostředí Azure PowerShell a rozhraní API služby Azure service. Podporované verze je nutné použít k zajištění, že vaše aplikace můžete nasadit do obou protokolů Azure a do Azure.
+Azure zásobníku podporuje konkrétní verze prostředí Azure PowerShell a rozhraní API služby Azure service. Pomůže zajistit, že vaše aplikace můžete nasadit do obou protokolů Azure a Azure podporované verze.
 
-Chcete-li mít jistotu, že používáte správnou verzi prostředí Azure PowerShell, použijte [profily verze rozhraní API](azure-stack-version-profiles.md). K určení profilu nejnovější verzi rozhraní API, kterou můžete použít, musíte znát, což sestavení Azure ve vrstvách. používáte. Tyto informace můžete získat od správce Azure zásobníku.
+Chcete-li mít jistotu, že používáte správnou verzi prostředí Azure PowerShell, použijte [profily verze rozhraní API](azure-stack-version-profiles.md). Pokud chcete zjistit profil nejnovější verzi rozhraní API, který můžete použít, zjistěte sestavení Azure ve vrstvách. používáte. Tyto informace můžete získat od správce Azure zásobníku.
 
 >[!NOTE]
  Pokud používáte Azure zásobníku Development Kit a budete mít přístup pro správu, najdete v části "Zjistit aktuální verzi" [spravovat aktualizace](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) k určení sestavení Azure zásobníku.

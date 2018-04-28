@@ -1,10 +1,9 @@
 ---
-title: Úvod do služby Azure Cosmos DB | Dokumentace Microsoftu
+title: Úvod do služby Azure Cosmos DB | Microsoft Docs
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržena s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost.
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
 ms.service: cosmos-db
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/15/2017
-ms.author: mimig
+ms.date: 04/08/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e78480ceb47e472029795848739b4416e0c4256e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -36,7 +35,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
 * **Globální distribuce na klíč**
     * Můžete [distribuovat data](distribute-data-globally.md) do libovolného počtu [oblastí Azure](https://azure.microsoft.com/regions/), a to [jediným kliknutím na tlačítko](tutorial-global-distribution-sql-api.md). Díky tomu můžete umístit data tam, kde jsou vaši uživatelé, a zajistit uživatelům nejnižší možnou latenci. 
     * Pomocí rozhraní API pro vícenásobné navádění služby Azure Cosmos DB bude aplikace vždycky vědět, kde je nejbližší oblast, a požadavky bude odesílat do nejbližšího datacentra. Toto vše je možné bez změny konfigurace. Nastavíte oblast zápisu a tolik oblastí čtení, kolik chcete, a o zbytek se postará služba za vás.
-    * Při přidávání oblastí k databázi Cosmos DB a jejich a odebírání není potřeba vaši aplikaci znovu nasazovat. Díky možnostem multihostingu rozhraní API je stále vysoce dostupná.
+    * Při přidávání oblastí k databázi Azure Cosmos DB a jejich odebírání není potřeba vaši aplikaci znovu nasazovat. Díky možnostem rozhraní API pro vícenásobné navádění je stále vysoce dostupná.
 
 * **Více datových modelů a oblíbená rozhraní API pro přístup k datům a dotazování na ně**
     * Datový model založený na sekvenci záznamu atomů (ARS), na kterém je služba Azure Cosmos DB postavena, nativně podporuje více datových modelů, mimo jiné modely dokumentů, grafů, párů klíč-hodnota, tabulek a sloupcových dat.
@@ -44,9 +43,9 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
         * [SQL API:](sql-api-introduction.md) Databázový stroj JSON bez schématu s bohatými možnostmi dotazování SQL.
         * [MongoDB API](mongodb-introduction.md): Masivně škálovatelné rozhraní *MongoDB jako služba* s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi MongoDB.
         * [Cassandra API](cassandra-introduction.md): Globálně distribuovatelné rozhraní Cassandra jako služba s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi [Apache Cassandra](https://cassandra.apache.org/).
-        * [Graph (Gremlin) API](graph-introduction.md): Plně spravovaná horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Graph API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Gremlin (Graph) API](graph-introduction.md): Plně spravovaná horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Graph API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
         * [Table API](table-introduction.md): Databázová služba pro páry klíč-hodnota vytvořená pro poskytování prémiových možností (například automatické indexování, garantovaná nízká latence, globální distribuce) existujícím aplikacím Azure Table Storage, a to bez nutnosti jakýchkoli změn těchto aplikací.
-        * Další datové modely se připravují.
+        * Další datové modely a rozhraní API se připravují.
 
 * **Elastické a nezávislé škálování propustnosti a úložiště na vyžádání, celosvětově**
     * Snadno škálujte propustnost databáze v přírůstcích po [sekundách](request-units.md), přičemž to můžete kdykoli změnit. 
@@ -65,7 +64,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
     * Pět dobře definovaných, praktických a intuitivních [modelů konzistence](consistency-levels.md) poskytuje celé spektrum od silné konzistence podobné SQL až po rozvolněnou konzistenci typu Případné, která je podobná NoSQL, a vše mezi tím. 
   
 * **Záruka vrácení peněz**
-    * Špičkové komplexní a finančně zajištěné [smlouvy o úrovni služeb](https://aka.ms/acdbsla) pro zajištění dostupnosti, latence, propustnosti a konzistence klíčových dat. 
+    * Špičkové komplexní a finančně zajištěné [smlouvy o úrovni služeb](https://aka.ms/acdbsla) (SLA) pro zajištění dostupnosti, latence, propustnosti a konzistence klíčových dat. 
 
 * **Není potřeba správa schématu/indexu databáze**
     * Schéma vaší aplikace můžete rychle iterovat, aniž byste si dělali starosti o schéma databáze nebo správu indexu.
@@ -77,7 +76,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
 
 ## <a name="capability-comparison"></a>Porovnání schopností
 
-Azure Cosmos DB nabízí ty nejlepší možnosti relačních a nerelačních databází.
+Azure Cosmos DB nabízí ty nejlepší možnosti tradičních relačních a nerelačních databází.
 
 | Možnosti | Relační databáze   | Nerelační databáze (NoSQL) |    Azure Cosmos DB |
 | --- | --- | --- | --- |

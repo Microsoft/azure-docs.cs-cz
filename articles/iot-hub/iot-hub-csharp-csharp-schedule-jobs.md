@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 012/16/2018
 ms.author: v-masebo;dobett
-ms.openlocfilehash: 8ea2a5bc0a2f017c17bce4d366cb39acfba935aa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 76c8d3739b2af3c010cd80585c93c097fc9eb466
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Úlohy plán a všesměrového vysílání (.NET/.NET)
 
@@ -304,4 +304,4 @@ Další informace o nasazení AI do hraniční zařízení s Azure IoT hranou na
 [lnk-transient-faults]: https://docs.microsoft.com/azure/architecture/best-practices/transient-faults
 [lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
 [lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-query]: https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language
+[lnk-query]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language

@@ -1,12 +1,12 @@
 ---
-title: "Odesílání nabízených oznámení do systému Android pomocí Azure Notification Hubs | Dokumentace Microsoftu"
-description: "V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení se systémem Android."
+title: Odesílání nabízených oznámení do systému Android pomocí Azure Notification Hubs | Dokumentace Microsoftu
+description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení se systémem Android.
 services: notification-hubs
 documentationcenter: android
-keywords: "nabízená oznámení;nabízené oznámení;nabízené oznámení Android"
+keywords: nabízená oznámení;nabízené oznámení;nabízené oznámení Android
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
-ms.openlocfilehash: fff043abea0a88f5f39bf8bfcd0be206772439bc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 2f7212fafc7b92d2848a58212bf1dc542aa6cd45
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Odesílání nabízených oznámení do systému Android pomocí Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -213,7 +213,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
                         regID = hub.register(token).getRegistrationId();
    
                         // If you want to use tags...
-                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+                        // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
                         // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
    
                         resultString = "Registered Successfully - RegId : " + regID;
@@ -572,7 +572,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
    
                             // Include any tags
                             // Example below targets 3 specific tags
-                            // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+                            // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
                             // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
                             //        "tag1 || tag2 || tag3");
    

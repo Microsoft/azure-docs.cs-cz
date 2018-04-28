@@ -1,11 +1,11 @@
 ---
-title: "Nejčastější dotazy k Azure Backup pro virtuální počítače | Dokumentace Microsoftu"
-description: "Odpovědi na běžné dotazy týkající se fungování zálohování virtuálních počítačů Azure, omezení a toho, co se stane při změnách zásad."
+title: Nejčastější dotazy k Azure Backup pro virtuální počítače | Dokumentace Microsoftu
+description: Odpovědi na běžné dotazy týkající se fungování zálohování virtuálních počítačů Azure, omezení a toho, co se stane při změnách zásad.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 keywords: azure vm backup, azure vm restore, backup policy
 ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Dotazy týkající se služby Azure Backup pro virtuální počítače
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám služby Azure Backup pro virtuální počítače. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -33,7 +33,7 @@ Projděte [podporované operační systémy](backup-azure-arm-vms-prepare.md#sup
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>Proč se můj virtuální počítač nezobrazuje v průvodci konfigurací zálohování?
 V Průvodci konfigurace zálohování Azure Backup je uveden pouze virtuální počítače, které jsou:
-  * Již není chráněná můžete ověřit zálohování stav virtuálního počítače tak, že přejdete do okna virtuálních počítačů a kontrola stavu zálohování z nabídky nastavení. Další informace o [kontrole stavu zálohování virtuálního počítače](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade).
+  * Již není chráněná můžete ověřit zálohování stav virtuálního počítače tak, že přejdete do okna virtuálních počítačů a kontrola stavu zálohování z nabídky nastavení. Další informace o [kontrole stavu zálohování virtuálního počítače](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu).
   * Patří do stejné oblasti jako virtuální počítač.
 
 ## <a name="backup"></a>Zálohování
@@ -78,7 +78,7 @@ Rutiny prostředí Powershell najdete v části [zde](backup-azure-vms-automatio
 
 ## <a name="manage-vm-backups"></a>Správa záloh virtuálních počítačů
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Co se stane, když že se na virtuálních počítačích změní zásady zálohování?
-Nová zásada se aplikuje na virtuální počítače, je následovaný plán a uchovávání nové zásady, které obsahuje. Pokud je rozšířeno uchování, stávajících bodů obnovení jsou označeny k jejich podle nové zásady. Pokud je snížen uchovávání, jsou označeny pro vyřazení v další úlohy čištění a následně odstranit. 
+Nová zásada se aplikuje na virtuální počítače, je následovaný plán a uchovávání nové zásady, které obsahuje. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a následně se odstraní. 
 
 ### <a name="how-can-i-move-a-vm-enrolled-in-azure-backup-between-resource-groups"></a>Jak můžete přesunout, že virtuální počítač zaregistrované v Azure backup mezi skupinami prostředků?
 Postupujte podle níže uvedených pokynů úspěšně přesuňte virtuální počítač zálohovaná cílová skupina prostředků 

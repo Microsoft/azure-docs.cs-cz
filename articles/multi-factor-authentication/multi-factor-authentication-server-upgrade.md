@@ -1,8 +1,8 @@
 ---
-title: "Upgrade služby Azure MFA serveru | Microsoft Docs"
-description: "Kroky a pokyny k upgradu serveru Azure Multi-Factor Authentication na novější verzi."
+title: Upgrade služby Azure MFA serveru | Microsoft Docs
+description: Kroky a pokyny k upgradu serveru Azure Multi-Factor Authentication na novější verzi.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 456f2c64c91249f3ec2de4f2d79a2f77cc7598da
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější Azure Multi-Factor Authentication Server
 
@@ -106,7 +106,7 @@ Tyto pokyny platí pouze pro spuštění aplikace Multi-Factor Authentication Se
 9. Opakujte krok 2: aktualizace serverů nyní odebrány z farmy služby AD FS a restartujte službu AD FS na těchto serverech.
 10. Přidáte tyto servery zpátky do farmy služby AD FS.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Získat příklady [pokročilé scénáře s Azure Multi-Factor Authentication a sítě VPN třetí strany](multi-factor-authentication-advanced-vpn-configurations.md)
 

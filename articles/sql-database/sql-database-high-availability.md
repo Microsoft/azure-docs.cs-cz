@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 69d004ae4c2408e5749d0a7d21b996cec8dba722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -46,7 +46,7 @@ Klíčové výhody:
 
 ## <a name="data-redundancy"></a>Data redundancy
 
-Řešení vysoké dostupnosti v SQL Database je založeno na [skupin dostupnosti Always ON](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie v systému SQL Server a udělá z něj fungovat pro LS a RS databáze s minimálním rozdíly. V konfiguraci LS technologie skupiny dostupnosti Always ON se používá pro trvalost při v RS se používá k zajištění dostupnosti (nízkou RTO). 
+Řešení vysoké dostupnosti v SQL Database je založeno na [skupin dostupnosti Always ON](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technologie v systému SQL Server a udělá z něj fungovat pro LS a RS databáze s minimálním rozdíly. V konfiguraci LS technologie skupiny dostupnosti Always ON se používá pro trvalost při v RS se používá k zajištění dostupnosti (nízkou RTO podle aktivní geografickou replikací). 
 
 ## <a name="local-storage-configuration"></a>Místní úložiště konfigurace
 

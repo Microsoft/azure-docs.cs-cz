@@ -1,9 +1,9 @@
 ---
 title: Azure Active Directory Identity Protection playbook | Microsoft Docs
-description: "Zjistěte, jak Azure AD Identity Protection umožňuje omezit možnost útočník zneužít ohroženými identity nebo zařízení a zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení."
+description: Zjistěte, jak Azure AD Identity Protection umožňuje omezit možnost útočník zneužít ohroženými identity nebo zařízení a zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení.
 services: active-directory
-keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure seznam strategií ochrany identit Active Directory
 
@@ -50,7 +50,7 @@ Dokončení následující postup vyžaduje použití:
 
 **Pro simulaci přihlášení z anonymních IP adresy, proveďte následující kroky**:
 
-1. Pomocí [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en), přejděte na [https://myapps.microsoft.com](https://myapps.microsoft.com).   
+1. Pomocí [Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en), přejděte na [ https://myapps.microsoft.com ](https://myapps.microsoft.com).   
 2. Zadejte přihlašovací údaje účtu, který se má zobrazit v **přihlášení z anonymních IP adres** sestavy.
 
 Přihlášení se zobrazí na řídicím panelu ochrany identit v rámci 10 až 15 minut. 
@@ -76,7 +76,7 @@ Dokončení následující postup vyžaduje, abyste uživatelský účet, který
 **Pro simulaci přihlášení z neznámého umístění, proveďte následující kroky**:
 
 1. Při přihlášení pomocí účtu test, nezdaří ověřovací test MFA není předáním ověřovací test MFA.
-2. Pomocí nové síť VPN, přejděte do [https://myapps.microsoft.com](https://myapps.microsoft.com) a zadejte přihlašovací údaje účtu testu.
+2. Pomocí nové síť VPN, přejděte do [ https://myapps.microsoft.com ](https://myapps.microsoft.com) a zadejte přihlašovací údaje účtu testu.
    
 
 Přihlášení se zobrazí na řídicím panelu ochrany identit v rámci 10 až 15 minut.
@@ -90,18 +90,18 @@ Simulaci podmínku neuskutečnitelná cesta je složité, protože algoritmus vy
 
 **Pro simulaci nemožná cesta do netypických umístění, proveďte následující kroky**:
 
-1. Pomocí standardní prohlížeč, přejděte do [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1. Pomocí standardní prohlížeč, přejděte do [ https://myapps.microsoft.com ](https://myapps.microsoft.com).  
 2. Zadejte přihlašovací údaje účtu, pomocí kterého chcete generovat událost riziko neuskutečnitelná cesta pro.
 3. Změna uživatelského agenta. Můžete změnit uživatelský agent v aplikaci Internet Explorer z nástrojů pro vývojáře, nebo změnit váš uživatelský agent v Firefox nebo Chrome pomocí doplňku přepínači uživatelského agenta.
 4. Změníte IP adresu. Můžete změnit IP adresu pomocí sítě VPN, rozšíření Tor nebo otáčí nový počítač v Azure v různých datových center.
-5. Přihlaste se do [https://myapps.microsoft.com](https://myapps.microsoft.com) pomocí stejných přihlašovacích údajů jako před a během několika minut po předchozí přihlášení.
+5. Přihlaste se do [ https://myapps.microsoft.com ](https://myapps.microsoft.com) pomocí stejných přihlašovacích údajů jako před a během několika minut po předchozí přihlášení.
 
 Přihlášení se zobrazí v řídicím panelu ochrany identit v rámci 2 – 4 hodiny.
 
 ## <a name="simulating-vulnerabilities"></a>Simulaci ohrožení zabezpečení
 Ohrožení zabezpečení jsou slabá místa v prostředí Azure AD, které může zneužít objektu actor chybný. Aktuálně jsou prezentované 3 typy ohrožení zabezpečení v Azure AD Identity Protection, které využít další funkce služby Azure AD. Tyto chyby zabezpečení se zobrazí na řídicím panelu ochrany identit automaticky po tyto funkce jsou nastavené.
 
-* Azure AD [vícefaktorového ověřování](../multi-factor-authentication/multi-factor-authentication.md)
+* Azure AD [vícefaktorového ověřování](authentication/multi-factor-authentication.md)
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
@@ -120,7 +120,7 @@ Další informace najdete v tématu [zásada zabezpečení uživatelů riziko](a
 
 **K otestování zásady uživatele rizika zabezpečení, proveďte následující kroky**:
 
-1. Přihlaste se do [https://portal.azure.com](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
+1. Přihlaste se do [ https://portal.azure.com ](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
 2. Přejděte na **ochrany identit**. 
 3. Na **Azure AD Identity Protection** klikněte na tlačítko **riziko zásady uživatele**.
 4. V **přiřazení** vyberte požadovanou uživatelům (a skupiny) a úroveň rizika uživatele.
@@ -145,7 +145,7 @@ Další informace najdete v tématu [zásada zabezpečení uživatelů riziko](a
 
 **K testování znaménkem v zásadách riziko, proveďte následující kroky:**
 
-1. Přihlaste se do [https://portal.azure.com ](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
+1. Přihlaste se do [ https://portal.azure.com ](https://portal.azure.com) pomocí přihlašovacích údajů globálního správce pro vašeho klienta.
 
 2. Přejděte na **Azure AD Identity Protection**.
 

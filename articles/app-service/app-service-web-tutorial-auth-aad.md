@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: cephalin
-ms.openlocfilehash: 66e127e3c2c025818bb972d8937d8fb238d49e15
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
 
@@ -273,7 +273,7 @@ Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horn�
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) > **_&lt;vaše\_předplatné>_** > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) > **_&lt;název\_back\_endové\_aplikace>_** > **config** (konfigurace) > **authsettings** (nastavení ověřování).
+V levém prohlížeči klikněte postupně na **subscriptions** (předplatná) > **_&lt;vaše\_předplatné>_** > **resourceGroups** (skupiny prostředků) > **myAuthResourceGroup** > **providers** (zprostředkovatelé) > **Microsoft.Web** > **sites** (weby) > **_\<název\_front\_endové\_aplikace>_** > **config** (konfigurace) > **authsettings** (nastavení ověřování).
 
 V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON s použitím ID aplikace, které jste zkopírovali. 
 

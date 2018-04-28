@@ -9,22 +9,20 @@ editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6ef0b1ce589bd19693d45a9e4f579ef260530a40
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL database
 
 Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL database a pak číst, zapisovat a Streamovat data do databáze SQL. Podle pokynů v tomto článku použít Poznámkový blok Jupyter ke spuštění Scala fragmenty kódu. Můžete však vytvoření samostatné aplikace v Scala nebo Python a provádění stejných úloh. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Cluster Azure HDInsight Spark**.  Postupujte podle pokynů v [vytvářet cluster Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -87,7 +85,7 @@ V této části, čtení dat z tabulky (například **SalesLT.Address**), existu
        val jdbcPort = 1433
        val jdbcDatabase ="<AZURE SQL DB NAME>"
 
-    Stiskněte klávesu **SHIFT + ENTER** ke spuštění buňky kódu.  
+    Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.  
 
 2. Následující fragment kódu vytvoří adresu URL JDBC, který můžete předat do dataframe Spark vytvoří rozhraní API `Properties` objekt pro uložení parametry. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 
@@ -132,7 +130,7 @@ V této části používáme ukázkový soubor CSV k dispozici v clusteru k vytv
        val jdbcPort = 1433
        val jdbcDatabase ="<AZURE SQL DB NAME>"
 
-    Stiskněte klávesu **SHIFT + ENTER** ke spuštění buňky kódu.  
+    Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.  
 
 2. Následující fragment kódu vytvoří adresu URL JDBC, který můžete předat do dataframe Spark vytvoří rozhraní API `Properties` objekt pro uložení parametry. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 

@@ -3,7 +3,7 @@ title: Vytvářet a spravovat virtuální počítač s Windows v Azure pomocí P
 description: Naučte se používat jazyk Python vytvářet a spravovat virtuální počítač s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: davidmu
-ms.openlocfilehash: d56143a470be4da1faaea949ea286fca1ffd319d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: dbe8f1603433f381c3c28cb47d2dbda543b462e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí Python
 

@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 991db58db1bb07f338c0f80aa4db69ddb868dcab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4da62d808caf1e88aef8e67f91815b959a19af0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Statistika Azure časové řady
 
@@ -87,14 +87,14 @@ Nemusí vědět předem kolik dat byste měli push. V takovém případě může
 Informace o tom, jak zabránit omezení a latence najdete v tématu [zmírnění latence a omezování](time-series-insights-environment-mitigate-latency.md). 
 
 ## <a name="shaping-your-events"></a>Shaping události
-Je důležité zajistit způsob, jak odesílat události TSI podporuje velikost prostředí jsou zřizování (naopak můžete namapovat velikost prostředí tak, aby počtu událostí TSI přečte a velikost jednotlivých událostí).  Podobně je důležité zvážit atributy, které můžete chtít řezu a filtrovat podle při dotazování na data.  Myslete na to, doporučujeme kontrola JSON shaping části našich *odesílat události* dokumentace [dokumentace] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-send-events).  Je směrem k dolní části stránky.  
+Je důležité zajistit způsob, jak odesílat události TSI podporuje velikost prostředí jsou zřizování (naopak můžete namapovat velikost prostředí tak, aby počtu událostí TSI přečte a velikost jednotlivých událostí).  Podobně je důležité zvážit atributy, které můžete chtít řezu a filtrovat podle při dotazování na data.  Myslete na to, doporučujeme kontrola JSON shaping části našich *odesílat události* dokumentace [dokumentace] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Je směrem k dolní části stránky.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Ověříte, že máte referenční data na místě
 Referenční datové sady je kolekce položek, které posílení události ze zdroje událostí. Čas řady Statistika příchozího modul spojí všechny události ze zdroje událostí s odpovídající řádek dat v odkaz na sadu dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto připojení je založena na sloupce primární klíč v vaší referenční datové sadě definován.
 
 Poznámka: referenční data není zpětně připojena. To znamená, že pouze aktuálních a budoucích příchozí přenos dat je shodná a připojený k sadu referenční data, jakmile byla nakonfigurována a nahrát.  Pokud budete chtít poslat TSI velký počet historických dat a nemáte nahrát nebo nejprve vytvořit referenční data v TSI pak budete muset znovu práci (pomocného parametru, není fun).  
 
-Další informace o tom, jak vytvářet, odeslání a odkaz na data v TSI spravovat, přejděte na našem *referenční data* dokumentace [dokumentace] (https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o tom, jak vytvářet, odeslání a odkaz na data v TSI spravovat, přejděte na našem *referenční data* dokumentace [dokumentace] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 
 ## <a name="next-steps"></a>Další postup

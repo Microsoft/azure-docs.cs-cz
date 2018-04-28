@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/10/2018
-ms.openlocfilehash: f78a68704f1670b4670384931a07d9651cd646e3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6628ea218c4c7a9aacc0c2899c1ea4e5b6169b51
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrace systému SQL Server do Azure SQL Database spravované instanci pomocí DMS
 Můžete používat službu Azure databáze migrace k migraci databáze z místní instance systému SQL Server k [Azure SQL Database spravované Instance](../sql-database/sql-database-managed-instance.md) s téměř nulové výpadky. Další metody, které vyžadují výpadky, najdete v části [migrace instance systému SQL Server do Azure SQL Database spravované Instance](../sql-database/sql-database-managed-instance-migrate.md).
@@ -43,7 +43,7 @@ K dokončení tohoto kurzu potřebujete:
 - Vytvoření sdílené síťové složky, službu Azure databáze migrace můžete použít k zálohování zdrojové databáze.
 - Ujistěte se, zda má účet služby spuštění instance systému SQL Server zdrojové oprávnění k zápisu ve sdílené síťové složce, kterou jste vytvořili.
 - Poznamenejte si uživatel systému Windows (a heslo), který má oprávnění Úplné řízení ve sdílené síťové složce, kterou jste vytvořili výše. Služba Azure databáze migrace zosobňuje přihlašovací údaje uživatele pro nahrání záložní soubory do kontejneru úložiště Azure pro operaci obnovení.
-- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), je nutné vybrat všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) v okně Zásady Při vytváření identifikátor URI SAS. To poskytuje přístup k vaší kontejneru účtu úložiště pro nahrávání záložní soubory použít k migraci službu Azure databáze migrace databáze Azure SQL Database spravované Instance
+- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), je nutné vybrat v okně zásady při všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) vytváření identifikátor URI SAS. To poskytuje přístup k vaší kontejneru účtu úložiště pro nahrávání záložní soubory použít k migraci službu Azure databáze migrace databáze Azure SQL Database spravované Instance
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 

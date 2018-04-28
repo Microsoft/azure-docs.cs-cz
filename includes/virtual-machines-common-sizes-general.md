@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 48c4ee60487ed4a78bf7a823011b833d46db4ecf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáváním poměr paměť procesoru. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -20,7 +20,10 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáván
 
 - Virtuální počítače D-series slouží ke spouštění aplikací, které potřebují vyšší výpočetní výkon a krátkodobý vysoký diskový výkon. Virtuální počítače řady D-series mají rychlejší procesory, vyšší poměr paměti na virtuální procesor a jednotky SSD (solid-state-drive) pro dočasný disk. Podrobnosti najdete v oznámení na blogu Azure: [Nové velikosti virtuálních počítačů D-Series](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
 
-- Dv3-series, Dv2-series, návaznosti na původní D-series, funkce výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Využívá nejnovější generaci procesorů Intel Xeon® E5-2673 v3 (Haswell) s frekvencí 2,4 GHz, kterou může technologie Intel Turbo Boost 2.0 zvýšit až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+- Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založena na nejnovější® Intel Xeon E5-2673 v3 generování 2,4 GHz (Haswell) nebo E5-2673 v4 2.3 GHz (Broadwell) procesorů a s 2.0 technologie Intel Turbo nárůst, můžete přejít až 3.1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+
+- Funkce Dv3-series stejné provozu jako Dv2-series, ale v konfiguraci technologie hyper-threaded, poskytuje lepší nabízená hodnota pro nejobecnější účel úlohy a převedení Dv3 do zarovnání s obecné účely virtuální počítače většinu ostatních cloudů.  Paměť se rozšířila (z ~3.5 GiB/virtuální procesory na 4 GiB/virtuální procesory) při omezení diskových a síťových byly upraveny na základě za jádra souladu s přechodem na Hyper-threadingem.  Dv3 už má velikosti virtuálních počítačů velkého množství paměti rodin D/Dv2, těch, které byly přesunuty do nové Ev3 rodiny.
+
 
 - Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
 
@@ -77,6 +80,7 @@ Dv3-series velikosti jsou založené na 2.4® GHz Intel Xeon E5-2673 v3 (Haswell
 
 <sup>1</sup> Dv3-series Virtuálního počítače funkci technologii Intel® Hyper-Threading
 
+
 ## <a name="dsv2-series"></a>DSv2-series
 
 ACU: 210–250
@@ -99,8 +103,8 @@ ACU: 210–250
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 4              | 4×500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 8              | 8×500            | 2 / 1 500                                     |
-| Standard_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16             | 16×500           | Dubna 00                                       |
-| Standard_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32             | 32×500           | Srpna 00                                       |
+| Standard_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16             | 16×500           | 4 / 3 000                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32             | 32×500           | 8 / 6 000                                       |
 | Standard_D5_v2 | 16   | 56          | 800                    | 48000 / 750 / 375                                          | 64             | 64 x 500           | 8 / 12000                                    |
 
 

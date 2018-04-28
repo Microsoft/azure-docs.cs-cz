@@ -1,94 +1,90 @@
 ---
-title: 'Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse – prostředí PowerShell | Microsoft Docs'
-description: Prostředí PowerShell úlohy chcete škálovat výpočetní prostředky úpravou jednotky datového skladu.
+title: 'Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse – PowerShell | Microsoft Docs'
+description: Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí PowerShellu. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: jhubbard
-editor: ''
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/16/2018
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 3236c0ad9676712afd220a3c8a9326f3ea1f59d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.topic: quickstart
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý úvod: Škálovat výpočetní v Azure SQL Data Warehouse v prostředí PowerShell
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse v PowerShellu
 
-Škálování výpočetní kapacity v Azure SQL Data Warehouse v prostředí PowerShell. [Škálovat výpočetní](sql-data-warehouse-manage-compute-overview.md) pro lepší výkon, nebo určený počet číslic zpět výpočetní abyste ušetřili náklady. 
+Škálujte kapacitu výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí PowerShellu. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.1.1 nebo novější. Spustit `Get-Module -ListAvailable AzureRM` najít verzi můžete nyní k dispozici. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps.md). 
+Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento rychlý start předpokládá, že již máte datový sklad SQL, které je možné škálovat. Pokud potřebujete vytvořit, použijte [vytvořit a připojit - portál](create-data-warehouse-portal.md) k vytvoření datového skladu názvem **mySampleDataWarehouse**. 
+Tento rychlý start předpokládá, že už máte datový sklad SQL, který lze škálovat. Pokud ho potřebujete vytvořit, postupujte podle pokynů v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) a vytvořte datový sklad s názvem **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
-Chcete-li zobrazit předplatné, které používáte, spusťte [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Pokud chcete zobrazit, které předplatné používáte, spusťte příkaz [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Pokud budete muset použít jiné předplatné než výchozí, spusťte [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Pokud musíte použít jiné než výchozí předplatné, spusťte příkaz [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Vyhledat informace o datovém skladu
+## <a name="look-up-data-warehouse-information"></a>Vyhledání informací o datovém skladu
 
-Najděte název databáze, název serveru a skupinu prostředků pro datový sklad, který máte v úmyslu pozastavení a obnovení. 
+Vyhledejte název databáze, název serveru a skupinu prostředků pro datový sklad, jehož provoz chcete pozastavit a obnovit.
 
-Postupujte podle těchto kroků se najít informace o umístění pro datový sklad.
+Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na tlačítko **databází SQL** v levé straně na portálu Azure.
-3. Vyberte **mySampleDataWarehouse** z **databází SQL** stránky. Otevře se datového skladu. 
+2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Tím se otevře datový sklad.
 
-    ![Název a prostředek skupiny serverů](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
+    ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Poznamenejte si název datového skladu, který se použije jako název databáze. Pamatujte si, že se datový sklad je jeden typ databáze. Také poznamenejte si název serveru a skupině prostředků. Budete používat v pozastavit a obnovit příkazy.
-5. Pokud je server foo.database.windows.net, použijte pouze první část jako název serveru v rutin prostředí PowerShell. Na předchozím obrázku je úplný název serveru NovyServer 20171113.database.windows.net. Používáme **NovyServer 20171113** jako název serveru ve výsledcích rutiny Powershellu.
+4. Poznamenejte si název datového skladu, který se použije jako název databáze. Pamatujte, že datový sklad je jedním z typů databáze. Také poznamenejte si název serveru a skupinu prostředků. Použijete je v příkazech pro pozastavení a obnovení.
+5. Pokud využíváte server foo.database.windows.net, v rutinách PowerShellu používejte jako název serveru jen jeho první část. Na předchozím obrázku je úplný název serveru newserver-20171113.database.windows.net. Jako název serveru v rutině PowerShellu používáme **newserver-20171113**.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-V SQL Data Warehouse můžete zvýšit nebo snížit výpočetní prostředky úpravou jednotky datového skladu. [Vytvořit a připojit - portál](create-data-warehouse-portal.md) vytvořit **mySampleDataWarehouse** a inicializovat se 400 Dwu. Následující kroky upravit Dwu pro **mySampleDataWarehouse**.
+Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a zvýšit nebo snížit tak množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
-Chcete-li změnit jednotky datového skladu, použijte [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) rutiny prostředí PowerShell. Následující příklad ilustruje jednotky datového skladu na DW300 pro databázi **mySampleDataWarehouse** která je hostovaná ve skupině prostředků **myResourceGroup** na serveru  **mynewserver 20171113**.
+Pokud chcete změnit jednotky datového skladu, použijte rutinu PowerShellu [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase). Následující příklad nastaví jako jednotky datového skladu DW300 pro databázi **mySampleDataWarehouse**, která je hostovaná ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20171113**.
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
-## <a name="check-data-warehouse-state"></a>Zkontrolujte stav datového skladu
+## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
 
-Pokud chcete zobrazit aktuální stav datového skladu, použijte [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) rutiny prostředí PowerShell. To získá stav **mySampleDataWarehouse** databáze v ResourceGroup **myResourceGroup** a server **mynewserver 20171113.database.windows.net**.
+Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase). S její pomocí se načte stav databáze **mySampleDataWarehouse** ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20171113.database.windows.net**.
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
 $database
 ```
 
-Důsledkem přibližně takto:
+Výsledek bude přibližně takový:
 
-```powershell   
+```powershell
 ResourceGroupName             : myResourceGroup
 ServerName                    : mynewserver-20171113
 DatabaseName                  : mySampleDataWarehouse
@@ -114,16 +110,16 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-Můžete zobrazit **stav** databáze ve výstupu. V takovém případě se zobrazí, že tato databáze je online.  Když spustíte tento příkaz, měli byste obdržet hodnotou stavu Online, pozastavení, obnovování, škálování nebo pozastaveno. 
+Ve výstupu vidíte **Stav** databáze. V tomto případě vidíte, že tato databáze je online.  Když spustíte tento příkaz, hodnota v poli Stav by měla být Online, Pozastavování, Obnovování, Škálování, nebo Pozastaveno.
 
-Pokud chcete zobrazit stav samostatně, použijte následující příkaz:
+Pokud chcete zobrazit jen samotný stav, použijte následující příkaz:
 
 ```powershell
 $database | Select-Object DatabaseName,Status
 ```
 
-## <a name="next-steps"></a>Další postup
-Jste se naučili nyní škálování výpočetní pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+## <a name="next-steps"></a>Další kroky
+Nyní už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
 >[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

@@ -1,12 +1,12 @@
 ---
-title: "Stažení položky marketplace z Azure | Microsoft Docs"
-description: "Položky marketplace lze stáhnout z Azure do nasazení Moje zásobník Azure."
+title: Stažení položky marketplace z Azure | Microsoft Docs
+description: Položky marketplace lze stáhnout z Azure do nasazení Moje zásobník Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
 ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položky marketplace z Azure do Azure zásobníku
 

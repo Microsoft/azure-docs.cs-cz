@@ -1,8 +1,8 @@
 ---
-title: "Řešení problémů s cluster Apache Spark v Azure HDInsight | Microsoft Docs"
-description: "Další informace o problémech souvisejících s clustery Apache Spark v Azure HDInsight a postup ty obejít."
+title: Řešení problémů s cluster Apache Spark v Azure HDInsight | Microsoft Docs
+description: Další informace o problémech souvisejících s clustery Apache Spark v Azure HDInsight a postup ty obejít.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,24 +10,22 @@ tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
 Tento dokument uchovává informace o všechny známé problémy pro verzi public preview HDInsight Spark.  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy nevracení interaktivní relace.
-Při Livy restartování (z Ambari nebo z důvodu restartování virtuálního počítače headnode 0) k interaktivní relaci stále aktivní, došlo k úniku relaci interaktivní úlohy. Z toho důvodu nové úlohy můžete zablokované ve stavu platných a nejde ho spustit.
+Když Livy restartuje (z Ambari nebo z důvodu restartování virtuálního počítače headnode 0) k interaktivní relaci stále aktivní, došlo k úniku relaci interaktivní úlohy. V důsledku toho může být nové úlohy zasekla v automatickém platných stavu.
 
 **Omezení rizik:**
 
@@ -54,7 +52,12 @@ Spark historie Server není spuštěn automaticky po vytvoření clusteru.
 Historie serveru spusťte ručně z Ambari.
 
 ## <a name="permission-issue-in-spark-log-directory"></a>Problém s oprávněním v adresáři protokolu Spark
-Pokud hdiuser odešle úlohu s spark-submit, dojde k chybě java.io.FileNotFoundException: nebylo napsáno /var/log/spark/sparkdriver_hdiuser.log (bylo odepřeno oprávnění) a protokol ovladačů. 
+hdiuser získá k následující chybě při odesílání úlohy pomocí spark odeslat:
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+A je zapsán protokolu žádné ovladače. 
 
 **Omezení rizik:**
 
@@ -65,7 +68,7 @@ Pokud hdiuser odešle úlohu s spark-submit, dojde k chybě java.io.FileNotFound
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>Spark Phoenix konektor není podporovaný.
 
-V současné době Spark Phoenix konektor není podporovaný s clusteru HDInsight Spark.
+Clustery HDInsight Spark Spark Phoenix konektor nepodporují.
 
 **Omezení rizik:**
 
@@ -75,10 +78,10 @@ Místo toho musíte použít konektor Spark HBase. Pokyny najdete v tématu [pos
 Toto jsou některé známé problémy související s poznámkové bloky Jupyter.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Poznámkové bloky s jiné znaky než ASCII v názvech souborů
-Jupyter notebooks, které mohou být používány clustery Spark HDInsight by neměl mít jiné znaky než ASCII v názvech souborů. Pokud se pokusíte odeslat soubor prostřednictvím uživatelského rozhraní Jupyter, který má název souboru jiné sady než ASCII, selže bez upozornění (tedy Jupyter neumožňuje nahrát soubor, ale viditelná chyba nevyvolá výjimku buď). 
+V názvech souborů poznámkového bloku Jupyter nepoužívejte ani jiné znaky než ASCII. Pokud se pokusíte odeslat soubor prostřednictvím uživatelského rozhraní Jupyter, který má název souboru jiné sady než ASCII, selže bez jakékoli chybová zpráva. Jupyter neumožňuje nahrát soubor, ale viditelná chyba nevyvolá výjimku buď.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Chyba při načítání poznámkové bloky o větší velikosti
-Může dojít k chybě  **`Error loading notebook`**  při načtení poznámkových bloků, které jsou větší velikost.  
+Může dojít k chybě **`Error loading notebook`** při načtení poznámkových bloků, které jsou větší velikost.  
 
 **Omezení rizik:**
 

@@ -1,27 +1,24 @@
 ---
-title: Referenční dokumentace jazyka Transact-SQL SQL datového skladu | Microsoft Docs
-description: Odkazy na referenční obsah pro SQL Data Warehouse používá témata Transact-SQL.
+title: Příkazů T-SQL - Azure SQL Data Warehouse | Microsoft Docs
+description: Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 03/22/2018
-ms.author: kevin;barbkess
-ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: ec708f30b59bbd6af878720c65f9a464224c57a5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="transact-sql-topics"></a>Témata Transact-SQL
+# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Příkazů T-SQL, které jsou podporovány v Azure SQL Data Warehouse
+Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
+
 ## <a name="data-definition-language-ddl-statements"></a>Příkazy Definition Language (DDL) dat
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [PŘÍKAZ ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
@@ -44,7 +41,7 @@ ms.lasthandoff: 03/28/2018
 * [VYTVOŘENÍ ZOBRAZENÍ](https://msdn.microsoft.com/library/ms187956.aspx)
 * [VYŘAĎTE EXTERNÍ ZDROJ DAT](https://msdn.microsoft.com/library/mt146367.aspx)
 * [VYŘAĎTE FORMÁT EXTERNÍCH SOUBORŮ](https://msdn.microsoft.com/library/mt146379.aspx)
-* [DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/mt130698.aspx)
+* [ODPOJIT EXTERNÍ TABULKU](https://msdn.microsoft.com/library/mt130698.aspx)
 * [DROP INDEX](https://msdn.microsoft.com/library/ms176118.aspx)
 * [ODPOJIT PROCEDURU](https://msdn.microsoft.com/library/ms174969.aspx)
 * [VYŘAĎTE STATISTIKY](https://msdn.microsoft.com/library/ms175075.aspx)
@@ -61,20 +58,20 @@ ms.lasthandoff: 03/28/2018
 * [AKTUALIZACE](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Příkazů konzole databáze
-* [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
-* [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
+* [PŘÍKAZ DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
+* [PŘÍKAZ DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
+* [PŘÍKAZ DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [PŘÍKAZ DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [PŘÍKAZ DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [PŘÍKAZ DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Dotaz – příkazy
 * [VYBERTE](https://msdn.microsoft.com/library/ms189499.aspx)
 * [S common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [S výjimkou a INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 * [VYSVĚTLUJÍ](https://msdn.microsoft.com/library/mt631615.aspx)
-* [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
+* [Z](https://msdn.microsoft.com/library/ms177634.aspx)
 * [Pomocí PIVOT a UNPIVOT](https://msdn.microsoft.com/library/ms177410.aspx)
 * [SESKUPIT PODLE](https://msdn.microsoft.com/library/ms177673.aspx)
 * [S](https://msdn.microsoft.com/library/ms180199.aspx)
@@ -113,14 +110,4 @@ ms.lasthandoff: 03/28/2018
 * [OTEVŘETE HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Další postup
-Odkaz na další TSQL, najdete v části [prvků jazyka T-SQL SQL datového skladu](sql-data-warehouse-reference-tsql-language-elements.md).
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Další informace najdete v části [elementů jazyka T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md), a [systémová zobrazení v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).

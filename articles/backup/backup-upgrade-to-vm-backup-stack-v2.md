@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 4bdbf48030dda18e6698a7731989ec2de2319b35
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů V2
 Upgrade zálohování zásobníku V2 virtuální počítač (VM) obsahuje následující vylepšení funkce:
@@ -68,7 +68,7 @@ Spusťte následující rutiny z zvýšenými terminálu prostředí PowerShell:
 1.  Přihlaste se k účtu Azure. 
 
 ```
-PS C:> Login-AzureRmAccount
+PS C:> Connect-AzureRmAccount
 ```
 
 2.  Vyberte odběr, který chcete zaregistrovat pro verzi preview:
@@ -80,14 +80,14 @@ PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select
 3.  Zaregistrujte toto předplatné privátní Preview verzi:
 
 ```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ## <a name="verify-whether-the-upgrade-is-complete"></a>Ověřte, zda bude dokončen upgrade
 Z prostředí PowerShell terminálu se zvýšenými oprávněními spusťte následující rutinu:
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 Pokud se říká registrovaná, je vaše předplatné upgradován na zásobníku zálohování virtuálních počítačů V2. 

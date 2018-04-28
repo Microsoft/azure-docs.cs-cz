@@ -1,8 +1,8 @@
 ---
-title: "Používat Windows virtuální počítač MSI pro přístup k Azure SQL"
-description: "Kurz vás provede procesem použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL."
+title: Používat Windows virtuální počítač MSI pro přístup k Azure SQL
+description: Kurz vás provede procesem použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 863054ea8c69206d4068a35f09ec946aec67ea1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5459739e9d3469adc7dbf65c8dcc0de918ea0c73
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
 
@@ -55,17 +55,13 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Můžete tak�
 
 ## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači 
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI ve službě Správce prostředků Azure.
+Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači.
 
 1.  Vyberte **virtuálního počítače** , které chcete povolit MSI v.  
 2.  V levém navigačním panelu klikněte na tlačítko **konfigurace**. 
 3.  Zobrazí **identita spravované služby**. Registrovat a povolit soubor MSI, vyberte **Ano**, pokud chcete zakázat, vyberte Ne. 
 4.  Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.  
     ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Pokud chcete zkontrolovat a ověřit, která rozšíření jsou na tomto virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, pak **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
-
-    ![Obrázek alternativní text](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělit váš virtuální počítač přístup k databázi v serveru Azure SQL
 
@@ -100,7 +96,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, které můžete získat pomocí Azure PowerShell.  Nejprve stáhnout [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Login-AzureRmAccount`, a spusťte následující příkazy, které:
+V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, které můžete získat pomocí Azure PowerShell.  Nejprve stáhnout [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Connect-AzureRmAccount`, a spusťte následující příkazy, které:
 - Ujistěte se, že je váš kontext relace nastaven na požadované předplatné Azure, pokud máte několik snímků.
 - Seznam dostupných prostředků ve vašem předplatném Azure, v ověřte správné prostředků skupiny a názvy virtuálních počítačů.
 - Získat vlastnosti Virtuálního počítače MSI, pomocí příslušnými hodnotami pro `<RESOURCE-GROUP>` a `<VM-NAME>`.
@@ -182,7 +178,7 @@ Kód spuštěný ve virtuálním počítači teď můžete získat token z MSI a
 
 Azure SQL nativně podporuje Azure AD ověřování, mohl přímo přijímat tokeny přístupu získat pomocí Instalační služby MSI.  Můžete použít **přístupový token** metodu vytváření připojení k SQL.  To je součástí Azure SQL integraci s Azure AD a se liší od zadávání přihlašovacích údajů v připojovacím řetězci.
 
-Tady je příklad kódu .net otevření připojení k SQL pomocí přístupového tokenu.  Tento kód musí být spuštěn na virtuální počítač přístup k koncový bod virtuálního počítače MSI.  **Rozhraní .net framework 4.6** nebo vyšší je vyžadován v případě metody token přístupu.  Nahraďte hodnoty AZURE-SQL-SERVERNAME a databáze odpovídajícím způsobem.  Všimněte si, že ID prostředku pro Azure SQL je "https://database.windows.net/".
+Tady je příklad kódu .net otevření připojení k SQL pomocí přístupového tokenu.  Tento kód musí být spuštěn na virtuální počítač přístup k koncový bod virtuálního počítače MSI.  **Rozhraní .net framework 4.6** nebo vyšší je vyžadován v případě metody token přístupu.  Nahraďte hodnoty AZURE-SQL-SERVERNAME a databáze odpovídajícím způsobem.  Poznamenejte si ID prostředku pro Azure SQL je "https://database.windows.net/".
 
 ```csharp
 using System.Net;
@@ -193,7 +189,7 @@ using System.Web.Script.Serialization;
 //
 // Get an access token for SQL.
 //
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://database.windows.net/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://database.windows.net/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 string accessToken = null;
@@ -234,7 +230,7 @@ Případně je rychlý způsob, jak otestovat koncová nastavení bez nutnosti p
 4.  Pomocí prostředí PowerShell na `Invoke-WebRequest`, vytvořte žádost na místní koncový bod MSI k získání tokenu přístupu pro Azure SQL.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     Převeďte odpověď z objektu JSON na objekt prostředí PowerShell. 

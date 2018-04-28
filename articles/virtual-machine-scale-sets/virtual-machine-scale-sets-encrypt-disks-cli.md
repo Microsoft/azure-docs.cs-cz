@@ -1,13 +1,13 @@
 ---
-title: "Sady škálování virtuálního počítače Azure šifrovat disky | Microsoft Docs"
-description: "Zjistěte, jak k šifrování připojených disků v sady škálování virtuálního počítače."
+title: Sady škálování virtuálního počítače Azure šifrovat disky | Microsoft Docs
+description: Zjistěte, jak k šifrování připojených disků v sady škálování virtuálního počítače.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3263ed4d6325207f38656d741fa4a1f091d4fdea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Šifrování operačního systému a připojené datové disky v škálovací sadu virtuálních počítačů
 Azure [sady škálování virtuálního počítače](/azure/virtual-machine-scale-sets/) podporu Azure disk encryption (ADE).  Šifrování Azure disku se dá nastavit pro Windows a Linux sadách škálování virtuálních počítačů k ochraně a zabezpečit měřítka nastaví data v klidovém stavu pomocí technologie oborový standard šifrování. Další informace najdete v tématu virtuální počítače Azure Disk Encryption pro systém Windows a Linux.
@@ -42,7 +42,7 @@ Instalace nejnovější verze [prostředí Azure Powershell](https://github.com/
 Azure disk šifrování pro náhled sady škálování virtuálního počítače vyžaduje, abyste samoobslužné registrace předplatného použijte následující příkazy Powershellu: 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 

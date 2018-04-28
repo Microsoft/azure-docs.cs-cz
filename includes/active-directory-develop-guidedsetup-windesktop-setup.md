@@ -1,4 +1,26 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: d407b015699925a6a3ce6ef9108ace1e9900303f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
 V této části vytvoříte nový projekt na ukazují, jak integrovat aplikace Windows Desktop .NET (XAML) s *přihlášení se společností Microsoft* tak, aby aplikace můžete dotazovat webovým rozhraním API, které vyžadují token.
@@ -6,7 +28,7 @@ V této části vytvoříte nový projekt na ukazují, jak integrovat aplikace W
 Aplikace, které vytvoříte v této příručce zobrazí tlačítko, které se používá k volání graf, oblast, kterou chcete zobrazit výsledky na obrazovce a odhlášení tlačítko.
 
 > [!NOTE]
-> Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)a pokračujte [krok konfigurace](#create-an-application-express) ke konfiguraci ukázka kódu, než ho provést.
+> Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)a pokračujte [krok konfigurace](#register-your-application) ke konfiguraci ukázka kódu, než ho provést.
 >
 
 Pokud chcete vytvořit aplikaci, postupujte takto:
@@ -51,6 +73,7 @@ V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je nap
     ```
 
 ## <a name="create-the-application-ui"></a>Vytvoření aplikace uživatelského rozhraní
+
 Tato část uvádí, jak můžete aplikaci dotaz na chráněném serveru back-end, jako je například Microsoft Graph. 
 
 A *MainWindow.xaml* soubor by měl být automaticky vytvoří jako součást vaše šablona projektu. Umožňuje otevřít tento soubor a potom můžete nahradit vaší aplikace  *\<mřížky >* uzlu s následujícím kódem:

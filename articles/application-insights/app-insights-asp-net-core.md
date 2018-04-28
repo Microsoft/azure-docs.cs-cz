@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 
@@ -151,7 +151,7 @@ Více potvrzení výzvy bude dojít, přečtěte si a přijměte Pokud souhlasí
 
 1. V sadě Visual Studio přejděte do **Průzkumníku řešení** > **stránky** > bude nutné upravit dva soubory: **_Layout.cshtml**, a **_ ViewImports.cshtml**
 
-2. In **_ViewImports.cshtml**, add:
+2. V **_ViewImports.cshtml**, přidejte:
 
    ```C#
    @using Microsoft.ApplicationInsights.AspNetCore
@@ -187,13 +187,13 @@ Teď, když jste dokončili předchozích kroků můžete otestovat a potvrďte,
 
    ![Snímek obrazovky za provozu metriky datového proudu](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Pokud váš skript prostředí PowerShell je stále spuštěna, měli byste vidět metriky za provozu, pokud byla zastavena skript znovu spustit s živý datový proud otevřít.)
+   Pokud vaše prostředí PowerShell skriptu je stále spuštěná jste měli vidět za provozu metriky, pokud zastavil spustit skriptu znovu pomocí živý datový proud otevřete (.)
 
 ## <a name="app-insights-sdk-comparison"></a>App Insights SDK porovnání
 
 Pevného pracuje se product group Application Insights k dosažení co nejblíže parity funkcí jako mezi [úplné rozhraní .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) a .net Core SDK. 2.2.0 vydání [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) pro Application Insights do značné míry zavřel funkce mezery.
 
-Další informace o rozdílech a kompromisy mezi [.NET a .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+Další informace o rozdílech a kompromisy mezi [.NET a .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
    | Porovnání SDK | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +203,7 @@ Další informace o rozdílech a kompromisy mezi [.NET a .NET Core](https://docs
    | **Volání závislost SQL**     | **+** |**-** | **+**|
    | **Čítače výkonu*** | **+** | **-**| **-**|
 
-_Čítače výkonu_ v tomto kontextu odkazuje na [čítače výkonu na straně serveru](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) jako procesor, paměť a využití disku.
+_Čítače výkonu_ v tomto kontextu odkazuje na [čítače výkonu na straně serveru](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) jako procesor, paměť a využití disku.
 
 ## <a name="open-source-sdk"></a>Open-source SDK
 [Přečtěte si a přispívat ke kódu](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

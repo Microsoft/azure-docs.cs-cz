@@ -1,24 +1,24 @@
 ---
-title: "Protokolu zabezpečení dat Analytics | Microsoft Docs"
-description: "Další informace o tom, jak analýzy protokolů chrání vaše osobní údaje a zabezpečuje data."
+title: Protokolu zabezpečení dat Analytics | Microsoft Docs
+description: Další informace o tom, jak analýzy protokolů chrání vaše osobní údaje a zabezpečuje data.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: bfd9b3302c73e50408cdd68b25317630aa087d7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="log-analytics-data-security"></a>Protokolu zabezpečení analýzy dat
 Tento dokument je určený k poskytování Azure Log Analytics konkrétní informace, které doplňují informace na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -46,7 +46,7 @@ Jako součást vaší [předplatné smlouvy](https://azure.microsoft.com/support
 
 Následující tabulka uvádí některé z dostupných řešení a obsahuje příklady typu shromážděná data.
 
-| Řešení | **Datové typy** |
+| **Řešení** | **Datové typy** |
 | --- | --- |
 | Kapacitu a výkon |Údaje o výkonu a metadata |
 | Posouzení malwaru |Konfigurační data a metadata |
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny příklady typů dat:
 | Výstrahy |Výstrahy název, popis výstrahy, BaseManagedEntityId, ID problému, IsMonitorAlert, RuleId, ResolutionState, Priority, závažnosti, kategorie, vlastníka, ResolvedBy, TimeRaised, TimeAdded, změněno, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
 | Konfigurace |CustomerID, ID agenta, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
 | Událost |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** při zápisu událostí s vlastními poli v protokolu událostí systému Windows shromažďuje OMS je. |
-| Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IP adresa, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adresa, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Výkon |ObjectName, název_čítače, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
@@ -155,9 +155,9 @@ Windows nebo data agenta do mezipaměti serveru správy je chráněn úložišt�
 Jak je popsáno výše, data ze serveru pro správu nebo přímo připojené agentů se odešlou přes SSL datová centra služby Microsoft Azure. Volitelně můžete ExpressRoute pro další zabezpečení pro data. ExpressRoute je způsob, jak připojovat přímo k Azure z existující sítě WAN, například více protokol popisku přepínání sítě VPN (MPLS) poskytované poskytovatelem síťové služby. Další informace najdete v tématu [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Službu analýzy protokolů přijímá a zpracovává data
-Analýzy protokolů Tnelze služby zajišťuje, že příchozích dat z důvěryhodného zdroje pomocí ověřování certifikátů a integrity dat pomocí ověřování Azure. Nezpracované nezpracovaná data se pak uloženy v Centru událostí Azure v oblasti, které se data uloží nakonec v klidovém stavu. Typ dat uložených závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Poté analýzy protokolů služby procesy nezpracovaná data a ingestuje do databáze.
+Službu analýzy protokolů zajišťuje, že příchozích dat z důvěryhodného zdroje pomocí ověřování certifikátů a integrity dat pomocí ověřování Azure. Nezpracované nezpracovaná data se pak uloženy v Centru událostí Azure v oblasti, které se data uloží nakonec v klidovém stavu. Typ dat uložených závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Poté analýzy protokolů služby procesy nezpracovaná data a ingestuje do databáze.
 
-Doba uchování shromážděných dat uložených v databázi, závisí na plán vybraný při vytváření pracovního prostoru.  Pro úroveň placené shromážděná data 31 dní ve výchozím nastavení je k dispozici, ale můžete rozšířit do 365 dní.  Tato data ještě není zašifrovaná přinejmenším a je plánovaná pro mid 2018. 
+Doba uchování shromážděných dat uložených v databázi, závisí na vybrané cenový plán. Pro *volné* vrstvy, shromážděná data je k dispozici 7 dní. Pro *zaplacenou* vrstvy, shromážděná data 31 dní ve výchozím nastavení je k dispozici, ale můžete rozšířit na 720 dnů. Data se ukládají zašifrovaná přinejmenším v úložišti Azure, šifrovací. Poslední dva týdny dat jsou také uloženy v mezipaměti založená na SSD a tato mezipaměť není aktuálně šifrována.  Plánujeme podporu takové šifrování v novější polovině 2018.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Pomocí analýzy protokolů pro přístup k datům
 Pro přístup k pracovní prostor analýzy protokolů se přihlásíte do portálu Azure pomocí účtu organizace nebo účtu Microsoft, kterou jste vytvořili dříve. Všechny přenosy mezi portálem a službou analýzy protokolů se odesílají přes zabezpečený kanál protokolu HTTPS. Při použití portálu, se vygeneruje ID relace na straně klienta uživatele (webový prohlížeč) a data jsou uložena v místní mezipaměti, dokud relace je ukončena. Pokud byla ukončena, mezipaměti je odstranit. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené době nečinnosti Azure portálu relace je ukončena.

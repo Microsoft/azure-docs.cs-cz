@@ -1,25 +1,25 @@
 ---
-title: "Kurz k MongoDB, Angular a Node pro Azure – Část 3 | Dokumentace Microsoftu"
-description: "Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB."
+title: Kurz k MongoDB, Angular a Node pro Azure – Část 3 | Dokumentace Microsoftu
+description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: ff75b4546a85c1c0bbf5c256977a3d33016c8c44
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 3: Vytvoření uživatelského rozhraní pomocí Angular
 
@@ -101,7 +101,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     > 2. Do vyhledávacího pole zadejte *angular essentials*.
     > 3. Klikněte na **Nainstalovat**. 
     > 4. Klikněte na tlačítko **Znovu načíst**, aby se použila nová rozšíření.
-    > Případně je můžete stáhnout ze stránky [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials). 
+    > Případně si rozšíření stáhněte z adresy [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials). 
     > ![Rozšíření Angular Essentials](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
 
 7. Přejděte zpět do souboru **heroes.component.html** a zkopírujte do něj tento kód. Element `<div>` je kontejner pro celou stránku. Uvnitř kontejneru je seznam hrdinů, který potřebujeme vytvořit tak, aby se hrdina po kliknutí vybral a bylo možné ho upravit nebo odstranit v uživatelském rozhraní. Dále v kódu HTML máme několik stylů, abyste věděli, který hrdina je vybraný. Je tam také oblast pro úpravy, abyste mohli přidat nového hrdinu nebo upravit existujícího. 

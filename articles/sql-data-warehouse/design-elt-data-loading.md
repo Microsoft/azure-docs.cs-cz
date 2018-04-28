@@ -3,18 +3,18 @@ title: Místo ETL, návrh ELT pro Azure SQL Data Warehouse | Microsoft Docs
 description: Místo ETL návrh o proces extrakce, načítání a transformace ELT () pro načtení dat nebo Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 04/11/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 13189bfe2e2e6db6185c798065dc3bea1fd3d537
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Navrhování extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse
 
@@ -56,7 +56,7 @@ Načtení dat pomocí funkce PolyBase, můžete použít některý z těchto mo�
 PolyBase načte data z UTF-8 a UTF-16 oddělený textových souborů. Kromě souborů text oddělený znaky načte ze souboru RC, ORC a Parquet formáty souborů Hadoop. PolyBase můžete načíst data z Gzip a Tenhle komprimovaných souborů. PolyBase aktuálně nepodporuje rozšířené ASCII, formát pevnou délkou a vnořené formáty například WinZip, JSON a XML.
 
 ### <a name="non-polybase-loading-options"></a>Načítání PolyBase bez možnosti
-Pokud vaše data není kompatibilní s funkcí PolyBase, můžete použít [bcp](sql-data-warehouse-load-with-bcp.md) nebo [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP načte přímo do SQL Data Warehouse bez průchodu přes Azure Blob storage a je určena pouze pro malé zatížení. Všimněte si, zatížení výkonu z těchto možností je podstatně pomalejší než PolyBase. 
+Pokud vaše data není kompatibilní s funkcí PolyBase, můžete použít [bcp](/sql/tools/bcp-utility) nebo [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP načte přímo do SQL Data Warehouse bez průchodu přes Azure Blob storage a je určena pouze pro malé zatížení. Všimněte si, zatížení výkonu z těchto možností je podstatně pomalejší než PolyBase. 
 
 
 ## <a name="extract-source-data"></a>Extrakce zdrojových dat

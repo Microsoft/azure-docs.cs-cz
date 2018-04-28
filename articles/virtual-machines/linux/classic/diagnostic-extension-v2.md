@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Použití diagnostického rozšíření Linuxu pro monitorování údajů o výkonu a diagnostických dat virtuálního počítače s Linuxem
 
@@ -53,7 +53,7 @@ Nejnovější verze rozšíření je **2.3**, a **všechny starší verze (2.0, 
 
 Toto rozšíření můžete povolit pomocí [portál Azure](https://portal.azure.com/#), prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure skripty.
 
-Chcete-li zobrazit a nakonfigurovat výkon systému a data přímo z portálu Azure, postupujte podle [na Azure blog tyto kroky](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/).
+Chcete-li zobrazit a nakonfigurovat výkon systému a data přímo z portálu Azure, postupujte podle [na Azure blog tyto kroky](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/).
 
 Tento článek se zaměřuje na tom, jak povolit a konfigurovat rozšíření pomocí rozhraní příkazového řádku Azure. To umožňuje číst a zobrazovat data přímo z tabulky úložiště.
 
@@ -88,7 +88,7 @@ Krok 1. Vytvořte soubor s názvem PrivateConfig.json s následujícím obsahem:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Spustit **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálních počítačů azure.* --private-config-path PrivateConfig.json**.
+Krok 2. Spustit **vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálních počítačů azure.* --PrivateConfig.json** privátní config-path.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scénář 2. Přizpůsobení metriky sledování výkonu
 
@@ -155,7 +155,7 @@ Výkon a diagnostických dat jsou uložené v tabulce Azure Storage. Zkontrolujt
 
 Kromě toho můžete tyto nástroje uživatelského rozhraní pro přístup k datům:
 
-1. Visual Studio Server Explorer. Přejděte na svůj účet úložiště. Po dobu asi 5 minut spuštění virtuálního počítače, uvidíte čtyři výchozí tabulky: "LinuxCpu", "LinuxDisk", "LinuxMemory" a "Linuxsyslog". Dvakrát klikněte na názvy tabulek, které chcete zobrazit data.
+1. Průzkumníka serveru Visual Studio. Přejděte na svůj účet úložiště. Po dobu asi 5 minut spuštění virtuálního počítače, uvidíte čtyři výchozí tabulky: "LinuxCpu", "LinuxDisk", "LinuxMemory" a "Linuxsyslog". Dvakrát klikněte na názvy tabulek, které chcete zobrazit data.
 1. [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 ![Bitové kopie](./media/diagnostic-extension/no1.png)

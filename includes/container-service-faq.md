@@ -84,13 +84,23 @@ Připojovací řetězec najdete na webu Azure Portal nebo pomocí nástrojů př
 
 4. Na stránce **Souhrn** v části **Výstupy** je uvedeno několik odkazů na cluster. **SSHMaster0** představuje připojovací řetězec SSH k prvnímu hlavnímu serveru ve vašem clusteru služby Container Service. 
 
-Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Například:
+Jak bylo uvedeno výše, plně kvalifikovaný název domény hlavního serveru můžete najít také pomocí nástrojů Azure. Vytvořte připojení SSH k hlavnímu serveru pomocí plně kvalifikovaného názvu domény hlavního serveru a uživatelského jména, které jste zadali při vytváření clusteru. Příklad:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
 ```
 
 Další informace najdete v [Připojení ke clusteru služby Azure Container Service](../articles/container-service/kubernetes/container-service-connect.md).
+
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>Nefunguje mi překlad názvů DNS ve Windows. Co bych měl/a dělat?
+
+Ve Windows existuje několik známých problémů s DNS, které se postupně stále aktivně opravují. Ujistěte se, že používáte aktuální verzi acs-engine a Windows (s nainstalovanými aktualizacemi [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) a [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)), abyste mohli tuto funkci využívat ve svém prostředí. Jinak si přečtěte kroky pro zmírnění rizika v následující tabulce:
+
+| Příznak DNS | Alternativní řešení  |
+|-------------|-------------|
+|Když je kontejner úloh nestabilní a dojde u něj k chybě, vyčistí se obor názvů sítě. | Znovu nasaďte všechny ovlivněné služby. |
+| Přístup k virtuální IP adrese služby nefunguje. | Nakonfigurujte kontroler [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby vždy udržoval spuštěný jeden normální (neprivilegovaný) pod. |
+|Když se uzel, na kterém je kontejner spuštěný, stane nedostupným, dotazy DNS můžou selhat a vytvářet negativní položky mezipaměti. | Uvnitř ovlivněných kontejnerů spusťte následující: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Pokud se tím problém nevyřeší, zkuste zakázat ukládání do mezipaměti DNS úplně: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
 ## <a name="next-steps"></a>Další kroky
 

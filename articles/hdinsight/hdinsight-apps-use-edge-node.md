@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 04/19/2018
 ms.author: jgao
-ms.openlocfilehash: 0e5e05a1a5c084854cd911188777dedf40817227
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Použít prázdný edge uzly na clustery systému Hadoop v HDInsight
 
@@ -69,6 +69,9 @@ Po vytvoření hraniční uzel, můžete připojit k uzlu edge pomocí protokolu
 >
 > Pokud používáte technologie Apache, bude pravděpodobně možné najít pomoc prostřednictvím Apache projektu lokalit na [ http://apache.org ](http://apache.org), například [Hadoop](http://hadoop.apache.org/) lokality.
 
+> [!NOTE]
+> Stejné jako clustery, edge uzly jsou i oprava spravované.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
+
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidat k existujícímu clusteru hraniční uzel
 V této části použijte šablonu Resource Manager přidat hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru naleznete v [Githubu](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu nacházející se v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení volání akce skriptu z šablony Resource Manageru.
 
@@ -115,6 +118,10 @@ V této části použijte k vytvoření clusteru HDInsight s hraniční uzel, na
      
      Některé vlastnosti byly pevně kódovaný v šabloně: typ clusteru, počet uzlů pracovního procesu clusteru, velikost uzlu Edge a název uzlu Edge.
 4. Zkontrolujte **souhlasím s podmínkami a ujednáními výše uvedených**a potom klikněte na **nákupu** k vytvoření clusteru s hraničního uzlu.
+
+## <a name="add-multiple-edge-nodes"></a>Přidání více uzlů edge
+
+Můžete přidat více edge uzly do clusteru HDInsight.  Konfigurace více uzly okraj lze provést pouze pomocí šablon Azure Resource Manageru.  Viz ukázka šablony na začátku tohoto článku.  Je potřeba aktualizovat **targetInstanceCount** tak, aby odrážela počet uzlů edge, kterou chcete vytvořit.
 
 ## <a name="access-an-edge-node"></a>Přístup uzlu edge
 Hraničního uzlu ssh koncový bod je &lt;EdgeNodeName >.&lt; Název clusteru >-ssh.azurehdinsight.net:22.  Například nové edgenode.myedgenode0914-ssh.azurehdinsight.net:22.

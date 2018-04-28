@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ae8e9f46923928853c0c63e8c50f4e95b915e277
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
-ms.translationtype: MT
+ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 Průvodce instalací služby Azure AD Connect nabízí dva různé cesty:
@@ -30,12 +30,12 @@ Průvodce instalací služby Azure AD Connect nabízí dva různé cesty:
 ## <a name="related-documentation"></a>Související dokumentace
 Pokud jste si v dokumentaci na [integrace místních identit s Azure Active Directory](../active-directory-aadconnect.md), následující tabulka obsahuje odkazy na související témata.
 
-|Téma |Propojení|  
+|Téma |Odkaz|  
 | --- | --- |
 |Stažení služby Azure AD Connect | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)|
 |Instalace s expresním nastavením | [Expresní instalace služby Azure AD Connect](./active-directory-aadconnect-get-started-express.md)|
 |Instalace s vlastním nastavením | [Vlastní instalace služby Azure AD Connect](./active-directory-aadconnect-get-started-custom.md)|
-|Upgradovat z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+|Upgrade z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
 |Po instalaci | [Ověření instalace a přiřazení licencí](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>Expresní nastavení instalace
@@ -43,7 +43,7 @@ V nastavení Express Průvodce instalací požádá o pověření správce podni
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Použít pro |
 | --- | --- | --- | --- |
-| Nevztahuje se. |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří místní účet, který se používá jako [synchronizovat účet služby modul](#azure-ad-connect-sync-service-account). |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří místní účet, který se používá jako [synchronizovat účet služby modul](#azure-ad-connect-sync-service-account). |
 | Připojení k Azure AD |Přihlašovací údaje pro adresář Azure AD |Roli globálního správce ve službě Azure AD |<li>Zapíná se synchronizace v adresáři služby Azure AD.</li>  <li>Vytváření [účet Azure AD](#azure-ad-service-account) který se používá pro synchronizační průběžné operace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří [účet](#active-directory-account) ve službě Active Directory a uděluje oprávnění k němu. Tento účet vytvořil slouží ke čtení a zápisu informací v adresáři directory během synchronizace.</li> |
 
@@ -63,14 +63,14 @@ Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívaj�
 | Pro čtení a zápis všech iNetOrgPerson vlastnosti |Hybridní importu a serveru Exchange |
 | Skupina všech vlastností čtení/zápisu |Hybridní importu a serveru Exchange |
 | Obraťte se na čtení/zápisu všechny vlastnosti |Hybridní importu a serveru Exchange |
-| Resetovat heslo |Příprava k povolení zpětného zápisu hesla |
+| Resetování hesla |Příprava k povolení zpětného zápisu hesla |
 
 ## <a name="custom-settings-installation"></a>Vlastní nastavení instalace
 Azure AD Connect verze 1.1.524.0 a novějším je možnost povolit, aby průvodce Azure AD Connect vytvořit účet používaný pro připojení ke službě Active Directory.  Starší verze vyžadovat, že je účet vytvořený před instalací. Tento účet musí udělit oprávnění naleznete v [vytvořit účet služby AD DS](#create-the-ad-ds-account). 
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Použít pro |
 | --- | --- | --- | --- |
-| Nevztahuje se. |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte plnou instalaci systému SQL Server, uživatel musí být správce systému (SA) v systému SQL</li> |Ve výchozím nastavení, vytvoří místní účet, který se používá jako [synchronizovat účet služby modul](#azure-ad-connect-sync-service-account). Účet se vytvoří jen tehdy, když správce neurčuje určitého účtu. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte plnou instalaci systému SQL Server, uživatel musí být správce systému (SA) v systému SQL</li> |Ve výchozím nastavení, vytvoří místní účet, který se používá jako [synchronizovat účet služby modul](#azure-ad-connect-sync-service-account). Účet se vytvoří jen tehdy, když správce neurčuje určitého účtu. |
 | Nainstalovat synchronizační služby, možnost účet služby |AD nebo pověření místního uživatelského účtu |Uživatel, oprávnění pomocí Průvodce instalací |Pokud správce určuje účet, tento účet slouží jako účet služby pro službu synchronizace. |
 | Připojení k Azure AD |Přihlašovací údaje pro adresář Azure AD |Roli globálního správce ve službě Azure AD |<li>Zapíná se synchronizace v adresáři služby Azure AD.</li>  <li>Vytváření [účet Azure AD](#azure-ad-service-account) který se používá pro synchronizační průběžné operace ve službě Azure AD.</li> |
 | Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro jednotlivé doménové struktury, která je připojena k Azure AD |Oprávnění závisí na funkce, které můžete povolit a lze nalézt v [vytvořit účet služby AD DS](#create-the-ad-ds-account) |Tento účet slouží ke čtení a zápisu informací v adresáři directory během synchronizace. |
@@ -90,7 +90,7 @@ Oprávnění, která budete potřebovat, závisí na volitelné funkce povolíte
 | Synchronizace hesla |<li>Replikovat změny adresáře</li>  <li>Replikace adresáře všechny změny |
 | Hybridní nasazení systému Exchange |Oprávnění k zápisu do atributy zdokumentována [zpětný zápis hybridní Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) pro uživatele, skupiny a kontakty. |
 | Veřejné složky e-mailu Exchange |Oprávnění ke čtení pro atributy, které jsou dokumentovány v článku [veřejné složky e-mailu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) pro veřejných složek. | 
-| Zpětný zápis hesla |Oprávnění k zápisu do atributy zdokumentována [Začínáme se správou hesel](../active-directory-passwords-writeback.md) pro uživatele. |
+| Zpětný zápis hesla |Oprávnění k zápisu do atributy zdokumentována [Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |
 | Zpětný zápis zařízení |Oprávnění udělená pomocí skriptu prostředí PowerShell, jak je popsáno v [zpětný zápis zařízení](active-directory-aadconnect-feature-device-writeback.md). |
 | Zpětný zápis skupin |Čtení, vytvoření, aktualizace a odstranění skupiny objekty, pro synchronizována **skupiny Office 365**.  Další informace najdete v části [zpětný zápis skupin](active-directory-aadconnect-feature-preview.md#group-writeback).|
 
@@ -143,11 +143,11 @@ Legenda:
 - sMSA - [samostatný účet spravované služby](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA - [skupinový účet spravované služby](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Expresní | LocalDB/LocalSQL</br>Vlastní | Vzdálený server SQL</br>Vlastní |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Vzdálený server SQL</br>Vlastní |
 | --- | --- | --- | --- |
-| **samostatné nebo pracovní skupiny počítače** | Nepodporováno | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporováno |
-| **počítač připojený k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA,gMSA | **gMSA**</br>Účet domény |
-| **Domain Controller** | **Účet domény** | *gMSA*</br>**Účet domény**</br>sMSA| *gMSA*</br>**Účet domény**|
+| **samostatné nebo pracovní skupiny počítače** | Nepodporuje se | **VSA**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
+| **počítač připojený k doméně** | **VSA**</br>Místní účet (2008) | **VSA**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
+| **Řadič domény** | **Účet domény** | *gMSA*</br>**Účet domény**</br>sMSA| *gMSA*</br>**Účet domény**|
 
 #### <a name="virtual-service-account"></a>Účet služby virtuální
 Účet služby virtuální je speciální typ účtu, který nemá heslo a je spravována službou Windows.

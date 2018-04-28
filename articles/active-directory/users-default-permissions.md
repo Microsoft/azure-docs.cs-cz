@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 7465486109af773403c61f6b4505d932949009df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c4f6ef9d934a414ef805ddba6d2602b03bcbf16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Výchozí oprávnění uživatele v Azure Active Directory
 
-V Azure Active Directory (Azure AD) všichni uživatelé mají sadu výchozích oprávnění. Přístup uživatele se skládá typ uživatele, jejich [členství v rolích](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-users-assign-role-azure-portal)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tyto výchozí oprávnění a obsahuje porovnání člen a hosta výchozí nastavení uživatele.
+V Azure Active Directory (Azure AD) všichni uživatelé mají sadu výchozích oprávnění. Přístup uživatele se skládá typ uživatele, jejich [členství v rolích](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tyto výchozí oprávnění a obsahuje porovnání člen a hosta výchozí nastavení uživatele.
 
 ## <a name="member-and-guest-users"></a>Člen a hosta uživatelů
 Sada výchozích oprávnění přijatých závisí na Pokud je uživatel členem nativního klienta (člen uživatele), nebo pokud je uživatel Host spolupráce B2B (hosta uživatele). Další informace o spolupráci B2B najdete v tématu [co je spolupráce Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md) Další informace o uživatele typu Host). 

@@ -1,8 +1,8 @@
 ---
-title: "Místní nasazení z Gitu do služby Azure App Service"
-description: "Zjistěte, jak povolit místní nasazení Git do služby Azure App Service."
+title: Místní nasazení z Gitu do služby Azure App Service
+description: Zjistěte, jak povolit místní nasazení Git do služby Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 4cbe26055bdbf906223a327ab8cf94bebe9e7998
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -189,3 +189,5 @@ git config --global http.postBuffer 524288000
 
 * [Dokumentace Kudu projektu](https://github.com/projectkudu/kudu/wiki)
 * [Průběžné nasazování do Azure App Service](app-service-continuous-deployment.md)
+* [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (Azure CLI)](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json)
+* [Ukázka: Vytvoření webové aplikace a nasazení kódu z místního úložiště Git (PowerShell)](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json)

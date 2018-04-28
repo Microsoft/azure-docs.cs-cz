@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: 09c48b92e39aa347c97d42358b50c338851fa59b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5f0961a99eac805e82cbc5e5d61c485f8661ba0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Deset věcí, které můžete provádět na virtuálních počítačích pro vědecké zkoumání dat
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které můžete provést na datové vědě virtuálního počítače s Windows
 
-Virtuální počítač pro vědecké účely dat společnosti Microsoft (DSVM) je výkonný data vědecké účely vývojového prostředí, které umožňuje provádět různé úlohy zkoumání a modelování data. Prostředí obsahuje již vytvořené a připojené několik oblíbených data analýzy nástroje, které usnadňují rychle začít používat analýzy pro místní Cloud a hybridní nasazení. DSVM úzce spolupracuje s řadou služeb Azure a se bude moct číst a zpracovávat data, která je již uložen v Azure, Azure SQL Data Warehouse, Azure Storage a Azure Data Lake nebo v Azure Cosmos DB. Můžou taky jiných analytics nástrojů, například Azure Machine Learning a Azure Data Factory.
+Virtuální počítač pro vědecké účely dat systému Windows (DSVM) je výkonný data vědecké účely vývojového prostředí, které umožňuje provádět různé úlohy zkoumání a modelování data. Prostředí obsahuje již vytvořené a připojené několik oblíbených data analýzy nástroje, které usnadňují rychle začít používat analýzy pro místní, Cloudová nebo hybridní nasazení. DSVM úzce spolupracuje s řadou služeb Azure a se bude moct číst a zpracovávat data, která je již uložen v Azure, Azure SQL Data Warehouse, Azure Storage a Azure Data Lake nebo v Azure Cosmos DB. Můžete využít i jiné analytics nástroje, například Azure Machine Learning a Azure Data Factory.
 
 V tomto článku se dozvíte, jak používat vaše DSVM k provádění různých úloh datové vědy a komunikovat s jinými službami Azure. Tady jsou některé z akcí, které můžete provést jak na DSVM:
 
@@ -208,7 +208,7 @@ Datových vědců můžete sdílet rozsáhlých datových sad, kódu nebo jiným
 Prostředí Azure Powershell můžete použít k vytvoření Azure služba souborů složky. Zde je skript, který chcete spustit v prostředí Azure PowerShell k vytvoření služby Azure sdílené složky.
 
     # Authenticate to Azure.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     # Select your subscription
     Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
     # Create a new resource group.

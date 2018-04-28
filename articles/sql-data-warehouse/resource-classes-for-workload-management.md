@@ -2,18 +2,19 @@
 title: Třídy prostředků pro úlohy správy – Azure SQL Data Warehouse | Microsoft Docs
 description: Pokyny pro použití třídy prostředků ke správě souběžnosti a výpočetní prostředky pro dotazy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/11/2018
-ms.author: kevin
-ms.reviewer: jrj
-ms.openlocfilehash: 289281567eff7f2575f26f1ae7ec2f9ee4389461
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/26/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 09fd39865a52767195ebf7dad13f24d883af476a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Úlohy správy pomocí třídy prostředků v Azure SQL Data Warehouse
 Pokyny pro použití třídy prostředků ke správě paměti a souběžnost pro dotazy v Azure SQL Data Warehouse.  
@@ -21,29 +22,31 @@ Pokyny pro použití třídy prostředků ke správě paměti a souběžnost pro
 ## <a name="what-is-workload-management"></a>Co je pracovní zatížení management?
 Úlohy správy je možnost optimalizovat celkový výkon všech dotazů. Dobře ujít zatížení spustí dotazy a operace zatížení efektivně bez ohledu na tom, jestli mají náročné nebo náročné na vstupně-výstupní operace.  SQL Data Warehouse poskytuje možnosti správy úloh pro prostředí s více uživateli. Datový sklad není určeno pro více klientů úlohy.
 
-Kapacita výkonu datového skladu je určena [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers) a [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
+Kapacita výkonu datového skladu je určena [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). 
 
 - Paměť a souběžnost limity pro všechny profily výkonu najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md).
 - Chcete-li upravit výkonu kapacitu, můžete [škálovat nahoru nebo dolů](quickstart-scale-compute-portal.md).
 
-Kapacita výkonu dotazu je určen podle třídy prostředků dotazu. Tento zbývající část tohoto článku vysvětluje, co jsou třídy prostředků a způsob jejich nastavení.
-
+Kapacita výkonu dotazu je určen podle třídy prostředků dotazu. Zbývající část tohoto článku popisuje, co jsou třídy prostředků a způsob jejich nastavení.
 
 ## <a name="what-are-resource-classes"></a>Jaké jsou třídy prostředků?
-Třídy prostředků se předem určit, že omezení prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro spuštění dotazu. Třídy prostředků vám může pomoci spravovat vaši úlohu nastavením omezení na počet dotazů, které běží souběžně a výpočetní prostředky přiřazené každý dotaz. Je kompromis mezi paměti a souběžnosti.
+Kapacita výkonu dotazu je určen podle třídy prostředků uživatele.  Třídy prostředků se předem určit, že omezení prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro spuštění dotazu. Třídy prostředků vám může pomoci spravovat vaši úlohu nastavením omezení na počet dotazů, které běží souběžně a výpočetní prostředky přiřazené každý dotaz. Mezi paměti a souběžnost je obchod vypnout.
 
 - Menší třídy prostředků snížit maximální paměť na dotaz, ale zvýšit souběžnost.
 - Větší třídy prostředků zvyšuje maximální paměť na dotaz, ale snížit souběžnosti. 
 
-Kapacita výkonu dotazu je určen podle třídy prostředků uživatele.
+Existují dva typy prostředků třídy:
 
-- Využití prostředků pro třídy prostředků najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md#concurrency-maximums).
-- Chcete-li upravit Třída prostředků, můžete spustit dotaz pod odlišným uživatelským nebo [změnit Třída prostředků aktuálního uživatele](#change-a-user-s-resource-class) členství. 
+- Třídy statické prostředky, které se nehodí pro vyšší souběžnosti na velikosti datové sady, který vyřešen.
+- Dynamické prostředků třídy, které se nehodí pro datové sady, které jsou ročně zvýší velikost a zvýšení výkonu, jako je škálovat úrovně služby.   
 
 Třídy prostředků pomocí souběžnosti sloty k měření spotřeby prostředků.  [Sloty souběžnosti](#concurrency-slots) jsou popsané dále v tomto článku. 
 
+- Využití prostředků pro třídy prostředků najdete v tématu [omezení paměti a souběžnost](memory-and-concurrency-limits.md#concurrency-maximums).
+- Chcete-li upravit Třída prostředků, můžete spustit dotaz pod odlišným uživatelským nebo [změnit Třída prostředků aktuálního uživatele](#change-a-users-resource-class) členství. 
+
 ### <a name="static-resource-classes"></a>Statické prostředků třídy
-Statické prostředků třídy přidělit stejnou velikost paměti, bez ohledu na aktuální úroveň výkonu, který se měří v [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). Vzhledem k tomu, že dotazy získat stejné přidělení paměti bez ohledu na úroveň výkonu [škálování datového skladu](quickstart-scale-compute-portal.md) umožňuje další dotazy ke spuštění v rámci třídy prostředků.
+Statické prostředků třídy přidělit stejnou velikost paměti, bez ohledu na aktuální úroveň výkonu, který se měří v [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md). Vzhledem k tomu, že dotazy získat stejné přidělení paměti bez ohledu na úroveň výkonu [škálování datového skladu](quickstart-scale-compute-portal.md) umožňuje další dotazy ke spuštění v rámci třídy prostředků.  Statické prostředků třídy jsou ideální, pokud je známý datový svazek a konstantní.
 
 Statické prostředků třídy jsou implementované pomocí těchto předem definovaných databázových rolí:
 
@@ -56,19 +59,31 @@ Statické prostředků třídy jsou implementované pomocí těchto předem defi
 - staticrc70
 - staticrc80
 
-Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvyšují Třída prostředků se získat další výpočetní prostředky.
-
 ### <a name="dynamic-resource-classes"></a>Dynamické prostředků třídy
-Dynamické třídy prostředků přidělit proměnné množství paměti v závislosti na aktuální úrovni služby. Při změně měřítka na vyšší úroveň služby, vaše dotazy automaticky získat více paměti. 
+Dynamické třídy prostředků přidělit proměnné množství paměti v závislosti na aktuální úrovni služby. Statické prostředků třídy jsou užitečné pro vyšší souběžnosti a statické datové svazky, dynamické prostředků třídy se hodí pro množství dat rostoucí nebo proměnné.  Při změně měřítka na vyšší úroveň služby, vaše dotazy automaticky získat více paměti.  
 
 Dynamické prostředků třídy jsou implementované pomocí těchto předem definovaných databázových rolí:
 
 - smallrc
 - mediumrc
 - largerc
-- xlargerc. 
+- xlargerc 
 
-Tyto třídy prostředků jsou nejvhodnější pro řešení, které zvýšení výpočetní škálování, chcete-li získat další prostředky. 
+### <a name="gen2-dynamic-resource-classes-are-truly-dynamic"></a>Gen2 dynamické prostředků třídy jsou skutečně dynamické
+Při digging na podrobné informace o dynamické prostředků tříd na Gen1, existuje několik podrobnosti, které přidat další složitosti k pochopení jejich chování:
+
+- Třída prostředků smallrc funguje s modelem pevné paměti jako třída statické prostředků.  Dotazy Smallrc Nezískávat dynamicky více paměti, jako je vyšší úrovně služby.
+- Mění úrovně služeb, můžete přejít k dispozici dotazu souběžnosti nahoru nebo dolů.
+- Změna měřítka úrovně služby neposkytuje proporční změna je paměť přidělená pro stejné třídy prostředků.
+
+Na **Gen2 pouze**, dynamické prostředků třídy jsou skutečně dynamické adresování bodů uvedených výše.  Nové pravidlo je 3-10-22-70 pro procento přidělení paměti pro malé – střední velké xlarge prostředků třídy **bez ohledu na úrovni služby**.  Níže uvedená tabulka obsahuje konsolidované podrobnosti procenta přidělení paměti a minimální počet souběžných dotazů, které bez ohledu na to úrovně služby.
+
+| Třída prostředku | Procento paměti | Minimální počet souběžných dotazů |
+|:--------------:|:-----------------:|:----------------------:|
+| smallrc        | 3 %                | 32                     |
+| mediumrc       | 10 %               | 10                     |
+| largerc        | 22 %               | 4                      |
+| xlargerc       | 70 %               | 1                      |
 
 
 ### <a name="default-resource-class"></a>Třída prostředků výchozí
@@ -144,10 +159,11 @@ Pouze na dotazy prostředků, které využívají sloty souběžnosti. Dotazy na
 
 Třídy prostředků se implementují jako předem definovaných databázových rolí. Existují dva typy třídy prostředků: dynamických a statických. Chcete-li zobrazit seznam tříd prostředků, použijte následující dotaz:
 
-    ```sql
-    SELECT name FROM sys.database_principals
-    WHERE name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
-    ```
+```sql
+SELECT name 
+FROM   sys.database_principals
+WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
+```
 
 ## <a name="change-a-users-resource-class"></a>Změnit Třída prostředků uživatele
 
@@ -197,7 +213,7 @@ Pro optimalizaci výkonu, použijte jiný prostředek třídy. Poskytuje další
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>Ukázkový kód pro hledání nejlepší Třída prostředků
  
-Můžete provádět následující uložené procedury a pokuste se zjistit grant souběžnosti a paměti na třídě prostředků v dané SLO a nejbližší nejlepší Třída prostředků pro operace náročné na prostředky KÚS paměti na bez oddílů tabulky KÚS na třídy daného prostředku:
+Můžete použít následující uložené procedury na **Gen1 pouze** a pokuste se zjistit souběžnosti a paměť udělit na třídě prostředků v dané SLO a nejbližší nejlepší Třída prostředků pro KÚS operace náročné na KÚS bez oddílů tabulky v paměti třídy daného prostředku:
 
 Tady je účelem tuto uloženou proceduru:  
 1. Zobrazíte souběžnosti a paměti udělit za Třída prostředků v daném objektu SLO. Uživatel musí zadat hodnotu NULL pro schématu a název tabulky, jsou uvedené v tomto příkladu.  
@@ -228,6 +244,10 @@ EXEC dbo.prc_workload_management_by_DWU NULL, 'dbo', 'Table1';
 EXEC dbo.prc_workload_management_by_DWU 'DW6000', NULL, NULL;  
 EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;  
 ```
+> [!NOTE]
+> Hodnot fronty definovaných v této verzi uložená procedura platí pouze pro Gen1.
+>
+>
 
 Následující příkaz vytvoří tabulky1, který se používá v předchozích příkladech.
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
@@ -294,7 +314,7 @@ AS
   UNION ALL
     SELECT 'DW400', 16, 16, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
-     SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
+    SELECT 'DW500', 20, 20, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
     SELECT 'DW600', 24, 24, 1, 4, 8, 16, 1, 2, 4, 8, 16, 16, 16, 16
   UNION ALL
@@ -306,7 +326,7 @@ AS
   UNION ALL
     SELECT 'DW2000', 32, 80, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
-   SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
+    SELECT 'DW3000', 32, 120, 1, 16, 32, 64, 1, 2, 4, 8, 16, 32, 64, 64
   UNION ALL
     SELECT 'DW6000', 32, 240, 1, 32, 64, 128, 1, 2, 4, 8, 16, 32, 64, 128
 )

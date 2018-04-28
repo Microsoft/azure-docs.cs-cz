@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: a00e61cc30f9e500df6c2c4336f0ed78d9988f68
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dd23f24fd817bfc443457dee30d2f3091c0d9f6b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče v Azure Cosmos DB
 
@@ -111,6 +111,7 @@ Ukázka dokumentu JSON.
 ```json
 {
     "id": "1",
+    "pk": "1234",
     "firstName": "Gaby",
     "lastName": "Duperre",
     "email": "gaby@contoso.com",

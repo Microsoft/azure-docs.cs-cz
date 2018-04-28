@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: f445a2c77b14477ea2ef4ff7722183d641275f08
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfad3ff71be07026cf4a7dd6ad75df399349f844
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
 Pro zákazníky s programu Software Assurance umožňuje Azure hybridní výhody pro Windows Server používat své místní licence systému Windows Server a spustit virtuální počítače s Windows v Azure s malými náklady. Azure hybridní výhody pro Windows Server můžete použít k nasazení nových virtuálních počítačů z libovolného Azure podporovaný image platformy systému Windows Server nebo vlastních bitových kopií systému Windows. Tento článek přejde přes kroky na tom, jak nasadit nové virtuální počítače s Azure hybridní výhody pro Windows Server a jak můžete aktualizovat existující spuštěných virtuálních počítačů. Další informace o Azure hybridní výhody pro Windows Server najdete v části úspory licencování a náklady [licencování stránky Azure hybridní výhody pro Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -194,4 +194,4 @@ Další informace o [Azure hybridní výhody pro Windows Server a Azure Site Rec
 
 Další informace o [Windows 10 v Azure s víceklientské hostování vpravo](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 
-Další informace o [nejčastější dotazy](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)
+Další informace o [nejčastější dotazy](#https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)

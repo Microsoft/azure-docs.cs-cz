@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbd96187ad73a9c7e27b28f137e25fe66e2944ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>Začínáme sestavovat řešení pomocí klientské knihovny služby Batch pro .NET
 
@@ -40,12 +40,8 @@ Tento článek předpokládá, že máte praktické znalosti jazyka C# a sady Vi
 ### <a name="accounts"></a>Účty
 * **Účet Azure**: Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet Azure][azure_free_account].
 * **Účet Batch**: Po pořízení předplatného Azure si [vytvořte účet Azure Batch](batch-account-create-portal.md).
-* **Účet Storage**: Viz část [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) v článku [Informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md).
+* **Účet úložiště:** Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
 
-> [!IMPORTANT]
-> Služba Batch aktuálně podporuje *jenom* typ účtu úložiště **pro obecné účely**, jak je popsáno v kroku č. 5 [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) v článku [Informace o účtech úložiště Azure](../storage/common/storage-create-storage-account.md).
->
->
 
 ### <a name="visual-studio"></a>Visual Studio
 K vytvoření ukázkového projektu potřebujete sadu **Visual Studio 2015 nebo novější**. V [přehledu produktů Visual Studio][visual_studio] najdete bezplatné a zkušební verze sady Visual Studio.
@@ -101,11 +97,6 @@ private const string BatchAccountUrl  = "";
 private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
-
-> [!IMPORTANT]
-> Jak je uvedeno výše, aktuálně musíte ve službě Azure Storage zadat přihlašovací údaje účtu úložiště, který je pro **obecné účely**. Vaše aplikace Batch používají úložiště objektů blob v rámci účtu úložiště pro **obecné účely**. Nezadávejte přihlašovací údaje k účtu služby Storage, který jste vytvořili výběrem účtu typu *Blob Storage*.
->
->
 
 Přihlašovací údaje k účtu Batch a k účtu služby Storage najdete v okně účtu každé služby na webu [Azure Portal][azure_portal]:
 

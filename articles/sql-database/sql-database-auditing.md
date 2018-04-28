@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu přihlášení účtu úložiště Azure. Auditování také:
@@ -165,8 +165,18 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizovat klí�
 3. Přejděte zpět do okna auditování konfigurace přepínače ze sekundární pro primární přístupový klíč úložiště a pak klikněte na tlačítko **OK**. Pak klikněte na tlačítko **Uložit** v horní části okna Konfigurace auditování.
 4. Přejděte zpět do okna konfigurace úložiště a znovu vygenerovat sekundární přístupový klíč (v rámci přípravy cyklus aktualizace Další klíč).
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Spravovat auditování databáze SQL pomocí Azure PowerShell
+## <a name="additional-information"></a>Další informace
 
+* Podrobnosti o protokol formátu, hierarchie složky úložiště a konvence vytváření názvů, najdete v článku [odkaz formátu protokolu auditu objekt Blob](https://go.microsoft.com/fwlink/?linkid=829599).
+
+   > [!IMPORTANT]
+   > Azure SQL Database Audit ukládá 4000 znaků dat pro pole znaků v záznam auditu. Když **příkaz** nebo **data_sensitivity_information** hodnot vrácených z kontrolovatelný akce obsahovat více než 4 000 znaků, bude veškerá data větší než první 4 000 znaků  **zkrácené a není auditovat**.
+
+* Protokoly auditu se zapisují do **doplňovacích objektů blob** v úložišti objektů Blob v Azure na vaše předplatné Azure.
+   * **Storage úrovně Premium** právě **nepodporuje** podle doplňovacích objektů BLOB.
+   * **Úložiště ve virtuální síti** právě **nepodporuje**.
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Spravovat auditování databáze SQL pomocí Azure PowerShell
 
 * **Rutiny prostředí PowerShell**:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 70dff848ce0674461749075e6498741c3eb9a381
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvořit sadu škálování virtuálního počítače, která používá dostupnost zóny
 
@@ -70,15 +70,15 @@ K používání zón dostupnosti, musí být škálovací sadu vytvořené v [po
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Proces vytvoření sada škálování, které používá dostupnosti zóny je stejný jako podrobné v [Začínáme článku](quick-create-portal.md). Ujistěte se, že máte [zaregistrovanou zóny dostupnosti Náhled](http://aka.ms/azenroll). Když vyberete podporovanou oblast Azure, můžete vytvořit škálování nastavit v jedné ze zón k dispozici, jak je znázorněno v následujícím příkladu:
+Proces vytvoření sada škálování, které používá dostupnosti zóny je stejný jako podrobné v [Začínáme článku](quick-create-portal.md). Když vyberete podporovanou oblast Azure, můžete vytvořit škálování nastavit v jedné nebo více dostupných zón, jak je znázorněno v následujícím příkladu:
 
-![Vytvoření sad v jedné zóně dostupnosti škálování](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
+![Vytvoření sad v jedné zóně dostupnosti škálování](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
 Sada škálování a podpůrné prostředky, například pro vyrovnávání zatížení Azure a veřejné IP adresy, jsou vytvořené v jedné oblasti, který určíte.
 
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 
-Proces vytvoření sada škálování, které používá dostupnosti zóny je stejný jako podrobné v [Začínáme článku](quick-create-cli.md). K používání zón dostupnost, musíte vytvořit škálovací sadu v podporovanou oblast Azure a mít [zaregistrovanou zóny dostupnosti Náhled](http://aka.ms/azenroll).
+Proces vytvoření sada škálování, které používá dostupnosti zóny je stejný jako podrobné v [Začínáme článku](quick-create-cli.md). K používání zón dostupnosti, je nutné vytvořit váš škálování nastavit v podporovanou oblast Azure.
 
 Přidat `--zones` parametru [vytvořit az vmss](/cli/azure/vmss#az_vmss_create) příkaz a zadejte zóně, ve které chcete použít (například zóny *1*, *2*, nebo *3*). Následující příklad vytvoří zónu jedním škálování nastavení s názvem *myScaleSet* v zóně *1*:
 

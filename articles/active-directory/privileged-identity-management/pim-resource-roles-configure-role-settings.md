@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management pro prostředky Azure - nakonfigurovat nastavení role | Microsoft Docs
+title: Konfigurace nastavení role pomocí pro prostředků Azure pomocí Privileged Identity managementu | Microsoft Docs
 description: Popisuje postup konfigurace nastavení role pro PIM.
 services: active-directory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 0fe986d8cdace301fde4045b16d299ba8395457d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 05546be87aec3ec2f44b876a97eeab2121383d61
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="privileged-identity-management---resource-roles---configure"></a>Správa privilegovaných identit - role prostředků – konfigurace
+# <a name="configure-role-settings-by-using-for-azure-resources-by-using-privileged-identity-management"></a>Konfigurace nastavení role pomocí pro prostředků Azure pomocí Privileged Identity Management 
 
-Konfigurace nastavení role definuje výchozí hodnoty použít pro přiřazení v prostředí PIM. Pokud chcete definovat tyto prostředku, vyberte kartu Nastavení Role z levé navigaci, nebo na tlačítko Nastavení role z panelu akcí v žádné role, chcete-li zobrazit aktuální možnosti.
+Při konfiguraci nastavení role definujete výchozí nastavení, které se použijí pro přiřazení v prostředí Privileged Identity Management (PIM). Chcete-li definovat toto nastavení prostředku, vyberte **nastavení Role** kartě v levém podokně. Chcete-li zobrazit aktuální možnosti můžete také vybrat tlačítko Nastavení role z panelu akcí (v libovolné role).
 
 
 ## <a name="select-a-role"></a>Výběr role
-Vyberte roli, kterou chcete provést změny pro. Potom vyberte upravit, chcete-li změnit všechna existující nastavení.
+Vyberte roli, do kterého chcete změnit. Potom provést změny všechna existující nastavení, vyberte **upravit**.

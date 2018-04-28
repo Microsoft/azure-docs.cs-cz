@@ -1,25 +1,18 @@
 ---
-title: "Plánování kapacity pro Azure Search | Microsoft Docs"
-description: "Upravte oddíl a repliky prostředky počítače ve službě Azure Search, kde je každý prostředek za cenu v jednotkách fakturovatelný vyhledávání."
-services: search
-documentationcenter: 
+title: Plánování kapacity pro Azure Search | Microsoft Docs
+description: Upravte oddíl a repliky prostředky počítače ve službě Azure Search, kde je každý prostředek za cenu v jednotkách fakturovatelný vyhledávání.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 1dc16afe-56f9-439d-8874-1733ae1a2b74
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Škálování prostředku úrovně pro dotaz a indexování úlohy ve službě Azure Search
 Po jste [zvolte cenovou úroveň](search-sku-tier.md) a [zřídit službu vyhledávání](search-create-service-portal.md), dalším krokem je volitelně zvýšit počet replik nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet fakturace jednotky. Tento článek vysvětluje, jak přidělit tyto jednotky k dosažení optimálního konfigurace, který vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
@@ -111,10 +104,10 @@ Tato tabulka ukazuje služby SUs potřebné k podpoře kombinace repliky a oddí
 | **1 repliky** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 repliky** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 repliky** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |Není k dispozici |
-| **5 repliky** |5 SU |10 SU |15 SU |20 SU |30 SU |Není k dispozici |
-| **6 repliky** |6 SU |12 SU |18 SU |24 SU |36 SU |Není k dispozici |
-| **12 repliky** |12 SU |24 SU |36 SU |Není k dispozici |Není dostupné. |Není k dispozici |
+| **4 repliky** |4 SU |8 SU |12 SU |16 SU |24 SU |neuvedeno |
+| **5 repliky** |5 SU |10 SU |15 SU |20 SU |30 SU |neuvedeno |
+| **6 repliky** |6 SU |12 SU |18 SU |24 SU |36 SU |neuvedeno |
+| **12 repliky** |12 SU |24 SU |36 SU |neuvedeno |neuvedeno |neuvedeno |
 
 Služba SUs, ceny a kapacity jsou podrobně vysvětleny na webu Azure. Další informace najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/search/).
 

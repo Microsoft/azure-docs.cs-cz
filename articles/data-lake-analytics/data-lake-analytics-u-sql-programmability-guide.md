@@ -1,8 +1,8 @@
 ---
-title: "Průvodci programovatelnosti U-SQL Azure Data Lake | Microsoft Docs"
-description: "Další informace o sadu služeb v Azure Data Lake, které vám umožní vytvořit cloudové velkých objemů dat platformu."
+title: Průvodci programovatelnosti U-SQL Azure Data Lake | Microsoft Docs
+description: Další informace o sadu služeb v Azure Data Lake, které vám umožní vytvořit cloudové velkých objemů dat platformu.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: a241199ff8441d76d48d297b69af05a604d2a423
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 400057b5ce79cdcf6c7651462e9f497bf647e930
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="u-sql-programmability-guide"></a>Průvodce programovatelnosti U-SQL
 
@@ -37,7 +37,7 @@ Podívejte se na následující skript U-SQL:
     (VALUES
        ("Contoso",   1500.0, "2017-03-39"),
        ("Woodgrove", 2700.0, "2017-04-10")
-    ) AS D( customer, amount );
+    ) AS D( customer, amount, date );
 
 @results =
   SELECT
@@ -88,7 +88,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>Použití jazyka C# výrazů pro dnešní datum
 
-Vyžádání dnešní datum, můžeme použít následující výraz jazyka C#:`DateTime.Now.ToString("M/d/yyyy")`
+Vyžádání dnešní datum, můžeme použít následující výraz jazyka C#: `DateTime.Now.ToString("M/d/yyyy")`
 
 Tady je příklad toho, jak používat tento výraz ve skriptu:
 
@@ -536,9 +536,9 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **Serializovat**: serializuje objektu, nebo grafu objektů s danou kořenovou do zadaného datového proudu.
 
-`MyType`instance: Instance typu.  
-`IColumnWriter`Zapisovač / `IColumnReader` čtečky: základního datového proudu sloupce.  
-`ISerializationContext`kontext: výčet, který definuje sadu příznaky, která určuje zdrojový nebo cílový kontext pro datový proud během serializace.
+`MyType` instance: Instance typu.  
+`IColumnWriter` Zapisovač / `IColumnReader` čtečky: základního datového proudu sloupce.  
+`ISerializationContext` kontext: výčet, který definuje sadu příznaky, která určuje zdrojový nebo cílový kontext pro datový proud během serializace.
 
 * **Zprostředkující**: Určuje, že kontext zdrojové nebo cílové není trvalého úložiště.
 
@@ -1270,9 +1270,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`je volána pro každý řádek vstupu. Vrátí `IUnstructuredWriter output` sady řádků.
+* `Output` je volána pro každý řádek vstupu. Vrátí `IUnstructuredWriter output` sady řádků.
 * Konstruktor třída se používá k předat parametry outputter definovaný uživatelem.
-* `Close`slouží k volitelně přepsat verzi nákladné stavu nebo zjistit, kdy byla zapsána poslední řádek.
+* `Close` slouží k volitelně přepsat verzi nákladné stavu nebo zjistit, kdy byla zapsána poslední řádek.
 
 **SqlUserDefinedOutputter** atribut uvádí, že typ by měl být registrován jako outputter se uživatelem definované. Tato třída nelze dědí.
 

@@ -2,23 +2,20 @@
 title: Správa konfigurace služby a profily | Microsoft Docs
 description: Naučte se pracovat se soubory konfigurace profilů a konfigurace služby | které uložit nastavení pro nasazení prostředí a nastavení publikování pro cloudové služby.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 7da8c551-fb06-4057-b5c7-c77f4b39d803
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 8/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 411daa8892bee1858c6930dfd8b2b811f164ec5d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4f2dce7cdbf81718f9ccf0c1b7d52c6678cc847f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>Správa konfigurace služby a profily
 ## <a name="overview"></a>Přehled

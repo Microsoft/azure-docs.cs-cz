@@ -1,6 +1,7 @@
-Pokud chcete ve své aplikaci povolit přihlašování, budete muset vytvořit zásadu přihlašování. Tato zásada popisuje prostředí, kterými uživatelé budou procházet při přihlašování, a obsah tokenů, které bude aplikace přijímat po úspěšných přihlášeních.
+Pokud chcete povolit pouze přihlášení ve vaší aplikaci, můžete použít **přihlášení** zásad. Tato zásada popisuje možnosti, které zákazníci budou projít během přihlašování a obsah tokeny, které aplikace se zobrazí na úspěšné přihlášení.
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]Klikněte na **Zásady přihlašování**.
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
+Klikněte na tlačítko **přihlášení zásady**.
 
 Klikněte na **Přidat** v horní části okna.
 

@@ -1,11 +1,11 @@
 ---
-title: "Správa certifikátů v clusteru služby Azure Service Fabric | Microsoft Docs"
-description: "Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z clusteru Service Fabric."
+title: Správa certifikátů v clusteru služby Azure Service Fabric | Microsoft Docs
+description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 65ade0f2526bf444c2205c74cce0e20be540998d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70de9ed6175a5fe7a8e3eed9c0a921cf8184d50d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme Seznamte se s jak Service Fabric používá certifikáty X.509 a znát [clusteru scénáře zabezpečení](service-fabric-cluster-security.md). Je potřeba pochopit, jaké certifikát clusteru je a co se používá, před pokračováním.
@@ -47,7 +47,7 @@ Pokud vaše záměrem odebrat certifikát, který je označen jako primární, p
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidat sekundární certifikát pomocí Správce prostředků Powershell
 > [!TIP]
-> Teď je lepší a jednodušší způsob, jak přidat sekundární certifikátu pomocí [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Nemusíte postupujte podle zbývajících kroků v této části.  Navíc není nutné použili k vytvoření nasazení clusteru při použití šablony [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
+> Teď je lepší a jednodušší způsob, jak přidat sekundární certifikátu pomocí [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Nemusíte postupujte podle zbývajících kroků v této části.  Navíc není nutné použili k vytvoření a nasazení clusteru při použití šablony [přidat AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
 
 Tento postup předpokládá se seznámíte s fungování Resource Manager a nasadili alespoň jeden pomocí šablony Resource Manageru cluster Service Fabric a mít šablony, která jste použili k nastavení užitečné clusteru. Taky se předpokládá, že umíte pomocí JSON.
 
@@ -197,7 +197,7 @@ Upravit daný parametr šablony Resource Manageru soubor, přidejte dva nové pa
 - Přihlaste se k účtu Azure a vybrat konkrétní předplatné azure. Toto je důležitý krok pro zaměstnance, kteří mají přístup k více než jedno předplatné.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId <Subcription ID> 
 
 ```
@@ -287,7 +287,7 @@ můžete zadat libovolný počet klientských certifikátů. Každý přidáván
 
 K odebrání sekundární certifikátu používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost 'Delete' z kontextové nabídky na konkrétní certifikátu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si tyto články pro další informace o správě clusteru:
 
 * [Proces upgradu Service Fabric Cluster a očekávání od vás](service-fabric-cluster-upgrade.md)

@@ -1,18 +1,18 @@
 ---
-title: "Vytváření prostředků pro použití s Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak připravit Azure na replikaci místních počítačů pomocí Azure Site Recovery."
+title: Vytváření prostředků pro použití s Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak připravit Azure na replikaci místních počítačů pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2f6ff1d30eef1fe34e55457d9bdd4295804ec16a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Příprava prostředků Azure na replikaci místních počítačů
 
@@ -21,8 +21,9 @@ ms.lasthandoff: 02/23/2018
 V tomto kurzu se dozvíte, jak připravit komponenty Azure v případě, že chcete replikovat místní virtuální počítače (Hyper-V nebo VMware) nebo fyzické servery s Windows nebo Linuxem do Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Ověření oprávnění účtu k replikaci
-> * Vytvoření účtu úložiště Azure
+> * Ověření oprávnění účtu Azure k replikaci
+> * Vytvoření účtu úložiště Azure Do toho se ukládají replikovaná data.
+> * Vytvořte trezor služby Recovery Services.
 > * Nastavení sítě Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, připojí se do této sítě Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
@@ -39,7 +40,7 @@ Pokud jste si právě vytvořili bezplatný účet Azure, jste správcem předpl
 - Vytvoření virtuálního počítače ve vybrané virtuální síti
 - Zápis do vybraného účtu úložiště
 
-Tato oprávnění má předdefinovaná role Přispěvatel virtuálních počítačů. Potřebujete také oprávnění ke správě operací Site Recovery. Všechna oprávnění nutná ke správě operací Site Recovery v trezoru služby Recovery Services má role Přispěvatel Site Recovery.
+K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovanou roli Přispěvatel virtuálních počítačů. Pokud chcete spravovat operace Site Recovery v trezoru, měl by váš účet mít navíc přiřazenou předdefinovanou roli Přispěvatel Site Recovery.
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 

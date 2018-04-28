@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 55de110c61b2b7603c2f01483e28d12032b732c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 52c910609930bbeecd21b75549c71ee9ed4e1e3b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, jejich změny nebo odstranění virtuální sítě partnerského vztahu
 
@@ -31,7 +31,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerských vztahů.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.5.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Login-AzureRmAccount` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerský vztah, chcete-li vytvořit připojení s Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.5.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzureRmAccount` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerský vztah, chcete-li vytvořit připojení s Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.29 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` pomocí účtu, který má [potřebná oprávnění](#permissions) pro práci s partnerský vztah, chcete-li vytvořit připojení s Azure.
 
 ## <a name="create-a-peering"></a>Vytvoření partnerského vztahu
@@ -42,7 +42,7 @@ Před vytvořením partnerský vztah, seznamte se s [požadavky a omezení](#req
 2. Vyberte virtuální síť, v seznamu, který chcete vytvořit pro partnerský vztah.
 3. Ze seznamu virtuálních sítí vyberte virtuální síť, kterou chcete vytvořit pro partnerský vztah.
 4. V části **nastavení**, vyberte **partnerských vztahů**.
-5. Vyberte **+ přidat**. 
+5. Vyberte **+ Přidat**. 
 6. <a name="add-peering"></a>Zadejte nebo vyberte hodnoty pro následující nastavení:
     - **Název:** název partnerského vztahu musí být jedinečný v rámci virtuální sítě.
     - **Virtuální síť modelu nasazení:** vyberte model nasazení, které virtuální síť, kterou chcete partnerský vztah nasazená prostřednictvím.
@@ -129,8 +129,8 @@ Pokud chcete, aby virtuální sítě pro komunikaci někdy, ale ne vždy místo 
 - Odběry, které jsou obě virtuální sítě, které chcete partnerský uzel, musí být přidruženy ke stejné klienta Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) připojení dvě virtuální sítě, které existují v různých předplatných, které jsou přidružené k různými klienty služby Active Directory.
 - Virtuální sítě můžete peered s jinou virtuální sítí a také být připojen k jiné virtuální síti s bránu virtuální sítě Azure. Pokud virtuální sítě jsou připojené prostřednictvím partnerského vztahu a bránu, provoz mezi virtuálními sítěmi toky prostřednictvím konfigurace partnerského vztahu, nikoli brány.
 - Za příchozí a výchozí přenos dat využívající partnerský vztah virtuálních sítí se účtuje nominální poplatek. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
-* <a name="cross-region"></a>V oblasti stejný nebo jiný virtuální sítě můžete partnerský uzel. Následující omezení neplatí, pokud jsou obě virtuální sítě v *stejné* oblasti, ale nastavují v případě, že virtuální sítě jsou v *různých* oblastí: 
-    - Virtuální sítě může existovat pouze v následujících oblastech: Korejská – Jih, Spojené království – Jih, Spojené království – Západ, Východní Kanada, Indie – Jih, Indie – střed, Indie – Západ, nám – Západ střední, Střední Kanada a USA – západ 2.
+* <a name="cross-region"></a>Mohou párově virtuálních sítí ve stejné oblasti nebo v různých oblastech. Následující omezení neplatí, pokud jsou obě virtuální sítě v *stejné* oblasti, ale nastavují v případě, že virtuální sítě se kterými mají globálně partnerský: 
+    - Virtuální sítě může existovat pouze v následujících oblastech: západní centrální USA (Wyoming), západ USA 2 (Washington), střed USA (Iowa), USA – východ 2 (Virginia), Střední Kanada (Toronto), Východní Kanada (Quebec Město), jihovýchodní Asie (Singapur) Korejská – Jih (Buscan), jih Indie (Čennaj), centrální Indie (Pune), Indie – západ (Bombaj), UK Jih (Praha), Spojené království – západ (Cardiffu), západní Evropa (Nizozemí)
     - Prostředky v jednu virtuální síť nemůže komunikovat s IP adresu k nástroji pro vyrovnávání zatížení Azure interní peered virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které komunikují s ním musí být ve stejné virtuální síti.
     - Nelze použít vzdálené Gateway nebo povolit přenosu brány. Používat vzdálený brány nebo povolit přenosu brány, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
 

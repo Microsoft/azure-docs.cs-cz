@@ -1,8 +1,8 @@
 ---
-title: "Zabezpečení privilegovaného přístupu ve službě Azure AD | Microsoft Docs"
-description: "Téma, které popisuje přístupy k zabezpečení privilegovaného přístupu v Azure, Azure Active Directory a služeb Microsoft Online Services."
+title: Zabezpečení privilegovaného přístupu ve službě Azure AD | Microsoft Docs
+description: Téma, které popisuje přístupy k zabezpečení privilegovaného přístupu v Azure, Azure Active Directory a služeb Microsoft Online Services.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
 editor: mwahl
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f49d5a629b9643df81253c57ee8e3458b43b0c59
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Zabezpečení privilegovaného přístupu ve službě Azure AD
 Zabezpečení privilegovaného přístupu je důležitým prvním krokem k ochraně obchodní prostředky v moderní organizaci. Privilegované účty jsou účty, které správu a spravovat systémy IT. Internetový útočník cíle tyto účty pro přístup k datům a systémy organizace. K zabezpečení privilegovaného přístupu, měli izolovat účty a systémy ze riziko napadení se zlými úmysly.
@@ -63,7 +63,7 @@ Pokud chcete snížit čas ohrožení oprávnění a zvýšit vaši přehled o j
 Pomocí podmíněného řízení přístupu Azure Active Directory kontroluje konkrétních podmínek, které zvolíte při ověřování uživatele, před povolením přístupu k aplikaci. Po splnění těchto podmínek je uživatel ověřený a přistupovat k aplikaci.
 
 ## <a name="related-articles"></a>Související články
-* Povolit [Azure Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
+* Povolit [Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 * Povolit [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * Povolit [ochrany identit Azure AD](../active-directory-identityprotection.md)
 * Povolit [řízení podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)

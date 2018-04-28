@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 0fe0b5d3120833b8472fcdaee366a5d1f2818600
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -393,7 +393,7 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení prostoru úložiště s malou databází soubory
 
-Každá Instance spravované musel vyhrazená místa na disku Azure Premium storage 35 TB a každý databázový soubor je umístěn na jiném fyzickém disku. Velikosti disků může být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Není účtován nevyužité místo na disku, ale celkového součtu velikostí disku Azure Premium nesmí být delší než 35 TB. V některých případech může překročit spravované Instnace, který není nutné 8 TB celkem 35 TB Azure limit velikost úložiště, z důvodu vnitřní fragmentace. 
+Každá Instance spravované musel vyhrazená místa na disku Azure Premium storage 35 TB a každý databázový soubor je umístěn na jiném fyzickém disku. Velikosti disků může být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Není účtován nevyužité místo na disku, ale celkového součtu velikostí disku Azure Premium nesmí být delší než 35 TB. V některých případech může překročit spravované Instance, který nemusí 8 TB celkem 35 TB Azure limit velikost úložiště, z důvodu vnitřní fragmentace. 
 
 Například do spravované Instance může mít jeden soubor s velikostí 1.2 TB, který používá disk 4 TB a 248 soubory s 1 GB, každý, které jsou umístěny na 248 disky o velikosti 128 GB. V tomto příkladu je velikost úložiště disku celkem 1 x 4 TB + 248 × 128 GB = 35 TB. Celkový počet vyhrazenou instanci velikost databází je však 1 x 1.2 TB + 248 1 GB = 1,4 TB. To ukazuje, že za určitých okolností, z důvodu velmi konkrétní distribuční souborů, může do spravované Instance dosažení limit úložiště Azure Premium disku, kde nemusí být jeho. 
 

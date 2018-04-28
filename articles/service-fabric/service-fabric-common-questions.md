@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a112951409fc6177240b9eddc9fcd7f6c0c932cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Často kladené otázky Service Fabric
 
 Existuje mnoho nejčastější dotazy týkající se co můžete udělat Service Fabric a jak se má použít. Tento dokument popisuje mnoho z těchto běžné otázky a odpovědi.
 
 ## <a name="cluster-setup-and-management"></a>Instalace a správy
+
+### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Jak mohu vrácení Moje certifikát clusteru Service Fabric?
+
+Vrácení zpět jakéhokoli upgradu do vaší aplikace vyžaduje detekce chyb stavu před vaší kvorum clusteru Service Fabric provádění změn; Potvrdit změny lze pouze posunuta dopředu. Vedoucím pracovníkem prostřednictvím na službu zákaznické podpory, může být potřeba zotavit cluster, pokud je zavedený sledována narušující změně certifikátu.  [Upgrade aplikace Service Fabric](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master) platí [parametry upgradu aplikace](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master), a doručí nula upgradu promise výpadku.  Následující doporučené aplikace s upgradem monitorovaných režimu, automatické průběh prostřednictvím aktualizací domén podle kontroly stavu, v případě selhání předejte, postupného zpět automaticky, pokud aktualizace výchozí služby.
+ 
+Pokud váš cluster je pořád využívat vlastnost classic kryptografický otisk certifikátu v šabloně Resource Manager, doporučuje je [clusteru změnu z kryptografický otisk certifikátu běžný název](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), můžete využít moderní tajné klíče funkce správy.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžete vytvořit cluster, který zahrnuje několik oblastí Azure nebo vlastní datových centrech?
 
@@ -89,7 +95,7 @@ Při pracujeme na vylepšené uživatelské prostředí, v současné době jste
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Můžete šifrovat připojené datové disky v typu uzlu clusteru (škálovací sadu virtuálních počítačů)?
 Ano.  Další informace najdete v tématu [vytvořit cluster s disky připojené data](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [šifrování disků (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), a [šifrování disků (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Co jsou adresáře a procesy, které je nutné vyloučit při spuštění antivirového programu v mé clusteru?
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Co jsou adresáře a procesy, které je nutné vyloučit při spuštění antivirového programu v mé clusteru?
 
 | **Antivirový Vyloučené adresáře** |
 | --- |

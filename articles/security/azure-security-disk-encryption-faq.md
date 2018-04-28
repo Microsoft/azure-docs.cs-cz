@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2018
-ms.author: devtiw
-ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/27/2018
+ms.author: barclayn
+ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Nejčastější dotazy k Azure Disk Encryption
 
@@ -34,7 +34,7 @@ Azure Disk Encryption GA podporuje šablony Azure Resource Manager, prostředí 
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Kolik Azure Disk Encryption stojí?
 
-Není nijak zpoplatněn pro šifrování disky virtuálních počítačů s Azure Disk Encryption.
+Je bezplatná pro šifrování disky virtuálních počítačů s Azure Disk Encryption, ale existují poplatky související s používáním Azure Key Vault. Další informace o Azure Key Vault naleznete náklady [Key Vault ceny](https://azure.microsoft.com/pricing/details/key-vault/) stránky.
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Které vrstvy virtuálního počítače Azure Disk Encryption podporuje?
 
@@ -68,7 +68,7 @@ Azure Disk Encryption je podporováno v následujících Linuxových distribucí
 | SLES | Priorita: 11-SP4 | Datový disk |
 | SLES | 11 SP4 | Datový disk |
 
-*__ADE se podporuje pro RHEL pro datový disk. Aktuální implementace ADE funguje pro disk operačního systému, ale nepodporuje aktuálně společně. Společnosti Microsoft a Red Hat práce na společně podporované řešení. Do té doby můžete odkazovat v dokumentu White Paper ADE šifrování disku operačního systému Linux [zde](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
+*__ADE se podporuje pro RHEL pro datový disk. Aktuální implementace ADE funguje pro disk operačního systému, ale nepodporuje aktuálně společně. Společnosti Microsoft a Red Hat práce na společně podporované řešení. Do té doby můžete odkazovat v dokumentu White Paper ADE šifrování disku operačního systému Linux [zde](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak můžete začít používat Azure Disk Encryption?
 

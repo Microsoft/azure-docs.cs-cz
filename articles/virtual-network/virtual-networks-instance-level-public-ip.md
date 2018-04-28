@@ -3,7 +3,7 @@ title: Řeší Azure úrovni Instance veřejnou IP adresu (klasická) | Microsof
 description: Pochopit instance adresy úrovně veřejné IP (splnění) a jak spravovat pomocí prostředí PowerShell.
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: genli
-ms.openlocfilehash: 631b667b12941781a7e69361a0e731f94b7119f8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b4350e6b1616450ce45f9e947cc3b639a341ae7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Přehled veřejné IP (klasické) instance
 Instance úrovně veřejné IP (splnění) je veřejná IP adresa, kterou můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, a nikoli pro cloudovou službu, která jsou umístěny ve vaší instanci virtuálního počítače nebo role. SPLNĚNÍ neberou v místě z virtuální IP (VIP) přiřazený ke cloudové službě. Místo toho je další IP adresu, která můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.

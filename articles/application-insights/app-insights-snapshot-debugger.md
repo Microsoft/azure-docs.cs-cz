@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights snímku ladicí program pro aplikace .NET | Microsoft Docs"
-description: "Ladění snímky jsou shromažďovány automaticky, pokud jsou výjimky vyvolány v produkční aplikace .NET"
+title: Azure Application Insights snímku ladicí program pro aplikace .NET | Microsoft Docs
+description: Ladění snímky jsou shromažďovány automaticky, pokud jsou výjimky vyvolány v produkční aplikace .NET
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: pharring
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladění snímků výjimky v aplikacích .NET
 
@@ -29,7 +29,7 @@ Snímek kolekce je k dispozici pro:
 * Aplikace rozhraní .NET 2.0 core a ASP.NET Core 2.0 v systému Windows.
 
 Podporovány jsou následující prostředí:
-* Azure App Service.
+* Aplikační služba Azure.
 * Služba Azure Cloud spuštěna řada operačního systému, 4 nebo novější.
 * Azure Service Fabric služby běžící na Windows Server 2012 R2 nebo novějším.
 * Virtuální počítače Azure s Windows serverem 2012 R2 nebo novější.
@@ -42,7 +42,7 @@ Podporovány jsou následující prostředí:
 
 1. [Povolit Application Insights ve vaší webové aplikaci](app-insights-asp-net.md), pokud jste ho ještě neučinili.
 
-2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíček NuGet v aplikaci. 
+2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíček NuGet v aplikaci.
 
 3. Zkontrolujte výchozí možnosti, které balíčku přidány do [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
@@ -92,10 +92,18 @@ Podporovány jsou následující prostředí:
 
 3. Úprava vaší aplikace `Startup` třída k přidání a konfiguraci kolekce snímku telemetrie procesoru.
 
+    Přidejte následující příkazy using do `Startup.cs`
+
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;
    using Microsoft.Extensions.Options;
-   ...
+   using Microsoft.ApplicationInsights.AspNetCore;
+   using Microsoft.ApplicationInsights.Extensibility;
+   ```
+
+   Přidejte následující `SnapshotCollectorTelemetryProcessorFactory` třídy k `Startup` třídy.
+
+   ```csharp
    class Startup
    {
        private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
@@ -111,11 +119,11 @@ Podporovány jsou následující prostředí:
                return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
            }
        }
+       ...
+    ```
+    Přidat `SnapshotCollectorConfiguration` a `SnapshotCollectorTelemetryProcessorFactory` služby do kanálu spuštění:
 
-       public Startup(IConfiguration configuration) => Configuration = configuration;
-
-       public IConfiguration Configuration { get; }
-
+    ```csharp
        // This method gets called by the runtime. Use this method to add services to the container.
        public void ConfigureServices(IServiceCollection services)
        {
@@ -178,7 +186,7 @@ Podporovány jsou následující prostředí:
         }
    }
     ```
-    
+
 ## <a name="grant-permissions"></a>Udělit oprávnění
 
 Vlastníky předplatného Azure můžete prohlédnout snímky. Ostatní uživatelé musí udělit oprávnění vlastníka.
@@ -208,7 +216,7 @@ V zobrazení ladění snímků zobrazí zásobník volání a podokně proměnn�
 Snímky mohou obsahovat citlivé informace a ve výchozím nastavení nejsou viditelná. Chcete-li zobrazit snímky, musíte mít `Application Insights Snapshot Debugger` přiřazená role.
 
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Ladění snímky s Visual Studio 2017 Enterprise
-1. Klikněte na tlačítko **stáhnout snímku** tlačítko Stáhnout `.diagsession` souboru, který lze otevřít v aplikaci Visual Studio Enterprise 2017. 
+1. Klikněte na tlačítko **stáhnout snímku** tlačítko Stáhnout `.diagsession` souboru, který lze otevřít v aplikaci Visual Studio Enterprise 2017.
 
 2. Chcete-li otevřít `.diagsession` souboru, je nutné nejprve [stáhnout a nainstalovat rozšíření ladicí program snímku pro sadu Visual Studio](https://aka.ms/snapshotdebugger).
 
@@ -312,7 +320,7 @@ Měli byste povolit pro alespoň dva souběžné snímky.
 Například pokud vaše aplikace používá 1 GB celkový pracovní sady, měli byste zajistit, že je alespoň 2 GB místa na disku pro ukládání snímků.
 Postupujte podle těchto kroků nakonfigurujete vaše cloudové služby role s vyhrazenou místní prostředek pro snímky.
 
-1. Přidejte nové místní prostředek do cloudové služby tak, že upravíte soubor definice (.csdf) cloudové služby. V následujícím příkladu je definován prostředek s názvem `SnapshotStore` s velikostí 5 GB.
+1. Přidejte nové místní prostředek do cloudové služby tak, že upravíte soubor definice (.csdef) cloudové služby. V následujícím příkladu je definován prostředek s názvem `SnapshotStore` s velikostí 5 GB.
    ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
@@ -379,5 +387,5 @@ Pokud stále nevidíte výjimku s tímto ID snímku, telemetrie výjimek nebyla 
 ## <a name="next-steps"></a>Další postup
 
 * [Nastavit snappoints ve vašem kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) získat snímky bez čekání na výjimku.
-* [Diagnostikovat výjimky ve webových aplikacích](app-insights-asp-net-exceptions.md) vysvětluje, jak chcete zviditelnit více výjimek pro Application Insights. 
+* [Diagnostikovat výjimky ve webových aplikacích](app-insights-asp-net-exceptions.md) vysvětluje, jak chcete zviditelnit více výjimek pro Application Insights.
 * [Inteligentní detekce](app-insights-proactive-diagnostics.md) automaticky vyhledá anomálie výkonu.

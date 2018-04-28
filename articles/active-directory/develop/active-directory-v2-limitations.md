@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 koncový bod omezení a limity | Microsoft Docs"
-description: "Seznam omezení a limity pro koncový bod v2.0 Azure AD."
+title: Azure Active Directory v2.0 koncový bod omezení a limity | Microsoft Docs
+description: Seznam omezení a limity pro koncový bod v2.0 Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Použít koncového bodu v2.0?
 Při vytváření aplikací, které se integrují s Azure Active Directory, musíte rozhodnout, zda protokoly v2.0 koncový bod a ověřování podle svých potřeb. Původní koncový bod Azure služby Active Directory je stále plně podporovaná a v některých ohledech je další bohaté funkce než v2.0. Ale koncového bodu v2.0 [představuje významné výhody](active-directory-v2-compare.md) pro vývojáře.
@@ -84,15 +84,6 @@ Druhé dva můžete přidat, protože jsou subdomény první URI přesměrován�
 Všimněte si také, může mít jenom 20 adresy URL odpovědi pro konkrétní aplikace.
 
 Zjistěte, jak zaregistrovat aplikaci v portálu pro registraci aplikace, najdete v tématu [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).
-
-## <a name="restrictions-on-services-and-apis"></a>Omezení služeb a rozhraní API
-V současné době podporuje koncového bodu v2.0 přihlášení pro všechny aplikace, který je registrován v portálu pro registraci aplikace a který spadá v seznamu [podporované ověřování toky](active-directory-v2-flows.md). Tyto aplikace však můžete získat přístupových tokenů OAuth 2.0 pro velmi omezená sada prostředků. Problémy koncový bod v2.0 přístup jenom pro tokeny:
-
-* Aplikaci, která požadovaný token. Aplikaci můžete získat přístupový token pro sebe, pokud logickou aplikaci se skládá z několika různých komponent nebo vrstev. Pokud chcete zobrazit tento scénář v akci, podívejte se na naše [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) kurzy.
-* Outlook pošta, kalendář a kontakty REST API, které jsou umístěné na https://outlook.office.com. Další informace o zápisu aplikace, který používá tato rozhraní API, najdete v článku [Office Začínáme](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) kurzy.
-* Microsoft Graph API. Další informace o [Microsoft Graph](https://graph.microsoft.io) a data, která je k dispozici.
-
-Žádné jiné služby jsou nyní podporovány. Kromě podpory pro vaše vlastní uživatelské rozhraní Web API a služby se v budoucnu, přidá další Microsoft Online Services.
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Omezení knihovny a sady SDK
 Podpora knihovny pro koncový bod v2.0 je v současné době omezené. Pokud chcete použít koncového bodu v2.0 v produkční aplikace, máte tyto možnosti:

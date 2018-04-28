@@ -9,17 +9,18 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 59a09b5d67391f2b48d338d721369f14ed6b4ede
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
 V tomto kurzu se naučíte migrovat virtuální počítače služby Amazon Web Services (AWS) do virtuálních počítačů Azure pomocí služby Site Recovery. Při migraci instancí EC2 do Azure se virtuální počítače zpracovávají, jako by šlo o fyzické místní počítače. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+> * Ověření požadavků
 > * Příprava prostředků Azure
 > * Příprava instancí EC2 služby AWS na migraci
 > * Nasazení konfiguračního serveru
@@ -29,12 +30,28 @@ V tomto kurzu se naučíte migrovat virtuální počítače služby Amazon Web S
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
+## <a name="prerequisites"></a>Požadavky
+- Přesvědčte se, že virtuální počítače, které chcete migrovat, běží na podporované verzi operačního systému, mezi které patří: 
+    - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější 
+    - Windows Server 2012
+    - Windows Server 2012 R2 
+    - Windows Server 2016
+    - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) a musí mít jedině ovladače Citrix PV nebo AWS PV. Instance s ovladači RedHat PV **nejsou** podporované.
+
+- Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
+
+> [!IMPORTANT]
+> Služba Site Recovery tuto službu nainstaluje automaticky, když u virtuálního počítače zapnete replikaci. U automatické instalace musíte připravit účet na instancích EC2, který služba Site Recovery použije k získání přístupu k virtuálnímu počítači. Můžete použít účet domény nebo místní účet. 
+> - U virtuálních počítačů s Linuxem by měl být na zdrojovém serveru s Linuxem účet superuživatel. 
+> - Pokud u virtuálních počítačů s Windows nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele: V registru přidejte v části **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** položku DWORD **LocalAccountTokenFilterPolicy** a hodnotu nastavte na 1.
+
+- Musíte oddělit instanci EC2, kterou můžete používat jako konfigurační server služby Site Recovery. Tato instance musí běžet na Windows Serveru 2012 R2.
 
 ## <a name="prepare-azure-resources"></a>Příprava prostředků Azure
 
 V Azure je potřeba mít připravených několik prostředků, které budou migrované instance EC2 potřebovat. Patří mezi ně účet úložiště, trezor a virtuální síť.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místního úložiště do Azure.
 
@@ -74,19 +91,6 @@ Když se po migraci vytvoří virtuální počítače Azure (převzetí služeb 
 8. U položky **Podsíť** ponechte výchozí hodnoty jak pro **Název**, tak i pro **Rozsah IP adres**.
 9. **Koncové body služeb** nechte vypnuté.
 10. Až budete hotoví, klikněte na **Vytvořit**.
-
-
-## <a name="prepare-the-ec2-instances"></a>Příprava instancí EC2
-
-Budete potřebovat jeden nebo dva virtuální počítače, které chcete migrovat. Tyto instance EC2 by měly běžet na 64bitové verzi Windows Serveru 2008 R2 SP1 nebo novější, Windows Serveru 2012, Windows Serveru 2012 R2, Windows Serveru 2016 nebo Red Hat Enterprise Linuxu 6.7 (pouze virtualizované instance HVM). Server musí mít jedině ovladače Citrix PV nebo AWS PV. Instance s ovladači RedHat PV nejsou podporované.
-
-Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. Služba Site Recovery tuto službu nainstaluje automaticky, když u virtuálního počítače zapnete replikaci. U automatické instalace musíte připravit účet na instancích EC2, který služba Site Recovery použije k získání přístupu k virtuálnímu počítači.
-
-Můžete použít účet domény nebo místní účet. U virtuálních počítačů s Linuxem by měl být na zdrojovém serveru s Linuxem účet superuživatel. Pokud u virtuálních počítačů s Windows nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele:
-
-  - V registru přidejte v části **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** položku DWORD **LocalAccountTokenFilterPolicy** a hodnotu nastavte na 1.
-
-Musíte také oddělit instanci EC2, kterou můžete používat jako konfigurační server služby Site Recovery. Tato instance musí běžet na Windows Serveru 2012 R2.
 
 
 ## <a name="prepare-the-infrastructure"></a>Příprava infrastruktury

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Řízení přístupu v Azure Data Lake Store
 
@@ -150,7 +150,7 @@ V Azure má účet Data Lake Store několik rolí Azure, včetně rolí:
 * Přispěvatelé
 * Čtenáři
 
-Všichni členové role **Vlastníci** pro účet Data Lake Store jsou automaticky superuživateli pro příslušný účet. Další informace najdete v tématu [Řízení přístupu na základě role](../active-directory/role-based-access-control-configure.md).
+Všichni členové role **Vlastníci** pro účet Data Lake Store jsou automaticky superuživateli pro příslušný účet. Další informace najdete v tématu [Řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 Pokud chcete vytvořit vlastní roli řízení přístupu na základě role (RBAC) s oprávněními superuživatele, musí zahrnovat následující oprávnění:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ Vlastnící skupinu smí změnit:
 * Vlastnící uživatel, pokud je také členem cílové skupiny.
 
 > [!NOTE]
-> Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.
+> Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.  Přestože v případě kořenového adresáře (výše uvedený **Případ 1**) je vlastnící skupina nastavená na uživatele, který vytvořil účet, prostřednictvím vlastnící skupiny není možné poskytnout oprávnění jednomu uživatelskému účtu.  Toto oprávnění můžete přiřadit platné skupině uživatelů, pokud nějaká existuje.
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
 

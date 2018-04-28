@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dc1b070f7933f23ee615501dfbc68551068210c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpečení v Azure Data Lake Store
 Mnoho podniků jsou využívat výhod analýzy velkých objemů dat podnikových statistik pomáhá jim inteligentní rozhodnutí. Organizace může mít složitý a regulovaná prostředí s roste počet různých uživatelů. Je důležité pro organizace a ujistěte se, bezpečněji, uložení kritickými podnikovými daty s správné úrovně udělení přístupu k jednotlivým uživatelům. Azure Data Lake Store je navržená tak, abyste splňovat tyto požadavky na zabezpečení. V tomto článku se dozvíte o funkcích zabezpečení Data Lake Store, včetně:
@@ -35,7 +35,7 @@ Ověřování je proces, podle kterého je ověřit identitu uživatele, když u
 Každé předplatné Azure může být přidružen k instanci služby Azure Active Directory. Pouze uživatele a identity služby, které jsou definované ve službě Azure Active Directory přístup účtu Data Lake Store pomocí portálu Azure, nástroje příkazového řádku, nebo prostřednictvím klientské aplikace sestavení vaší organizace pomocí Azure Data Lake Sada SDK úložiště. Klíčové výhody použití služby Azure Active Directory jako mechanismus řízení centralizované přístupu jsou:
 
 * Zjednodušená správa životního cyklu identity. Identity uživatele nebo služby (hlavní identity služby) můžete rychle vytvořit a rychle odvolán jednoduše odstranit nebo zakázat účet v adresáři.
-* Multi-Factor Authentication [Služba Multi-Factor authentication](../multi-factor-authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
+* Multi-Factor Authentication [Služba Multi-Factor authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
 * Ověřování z libovolného klienta přes standardní otevřete protokol, jako je například účtu OAuth nebo OpenID.
 * Federaci se enterprise adresářových služeb a zprostředkovatelů identity cloudu.
 
@@ -54,7 +54,7 @@ Všimněte si, že i když role přiřazené pro správu účtu, některé role 
 
 | Role | Práva pro správu | Data přístupová práva | Vysvětlení |
 | --- | --- | --- | --- |
-| Žádné přiřazenou roli |Žádné |Řídí seznamu ACL |Uživatel nemůže použít portál Azure nebo rutin prostředí Azure PowerShell procházet Data Lake Store. Uživatel může použít jenom nástroje příkazového řádku. |
+| Žádné přiřazenou roli |Žádný |Řídí seznamu ACL |Uživatel nemůže použít portál Azure nebo rutin prostředí Azure PowerShell procházet Data Lake Store. Uživatel může použít jenom nástroje příkazového řádku. |
 | Vlastník |Vše |Vše |Role vlastníka je superuživatele. Tato role můžou spravovat všechno a má úplný přístup k datům. |
 | Čtenář |Jen pro čtení |Řídí seznamu ACL |Role čtenáře můžou zobrazit všechno týkající se správy účtů, například která je přiřazena uživatele které role. Role čtenáře nelze provést žádné změny. |
 | Přispěvatel |Všechny kromě přidání a odebrání rolí |Řídí seznamu ACL |Role Přispěvatel můžete spravovat některé aspekty účtu, jako je například nasazení a vytváření a Správa výstrah. Role Přispěvatel nelze přidat nebo odebrat role. |

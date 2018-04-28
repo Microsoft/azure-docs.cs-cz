@@ -2,19 +2,19 @@
 title: Azure SQL Data Warehouse zálohování a obnovení – snímky geograficky redundantní | Microsoft Docs
 description: Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použití zálohování skladu data k obnovení datového skladu na bod obnovení v primární oblasti. Chcete-li obnovit jiné zeměpisné oblasti použijte geograficky redundantní zálohy.
 services: sql-data-warehouse
-author: ronortloff
+author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-ms.date: 04/11/2018
-ms.author: rortloff
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 21708f51d09d640721af196d2ffa91aede97ffb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení v Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použití zálohování skladu data k obnovení datového skladu na bod obnovení v primární oblasti. Chcete-li obnovit jiné zeměpisné oblasti použijte geograficky redundantní zálohy. 
@@ -55,9 +55,9 @@ Při umístění datového skladu SQL Data Warehouse vytvoří poslední snímek
 > 
 
 ## <a name="geo-backups"></a>Geograficky zálohy
-SQL Data Warehouse provádí zálohu geograficky jednou denně za účelem [spárované datového centra](../best-practices-availability-paired-regions.md). Plánovaný bod obnovení pro geografické obnovení je 24 hodin. Geograficky zálohování můžete obnovit na server v spárovat geografické oblasti. Zálohu geograficky zajistí, že datový sklad můžete obnovit v případě, že snímky nelze získat přístup v primární oblasti.
+SQL Data Warehouse provádí zálohu geograficky jednou denně za účelem [spárované datového centra](../best-practices-availability-paired-regions.md). Plánovaný bod obnovení pro geografické obnovení je 24 hodin. Geograficky zálohování můžete obnovit na server v jiné oblasti, kde je podporováno SQL Data Warehouse. Zálohu geograficky zajistí, že datový sklad můžete obnovit v případě, že snímky nelze získat přístup v primární oblasti.
 
-Geograficky zálohy jsou ve výchozím. Pokud váš datový sklad je optimalizován pro pružnost, můžete [chodit](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) nechcete-li. Nelze vyjádření výslovného nesouhlasu geo zálohy s optimalizovaná pro výpočetní výkon vrstvě.
+Geograficky zálohy jsou ve výchozím. Pokud váš datový sklad je Gen1, můžete [chodit](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) nechcete-li. Můžete nemohou výslovně nesouhlasit geograficky zálohy pro Gen2 jako ochrana dat je předdefinovaný záruční.
 
 ## <a name="backup-costs"></a>Zálohování náklady
 Si všimnete, že faktury Azure má položku řádku pro Storage úrovně Premium a položku řádku pro geograficky redundantní úložiště. Zřizování úložiště Premium je celková cena pro ukládání dat v primární oblasti, která zahrnuje snímky.  Geograficky redundantní poplatků popisuje jsou náklady na ukládání geo záloh.  

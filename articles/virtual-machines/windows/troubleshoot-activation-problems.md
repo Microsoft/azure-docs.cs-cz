@@ -1,11 +1,11 @@
 ---
-title: "Řešení problémů aktivace systému Windows virtuálního počítače v Azure | Microsoft Docs"
-description: "Popisuje kroky poradce při potížích pro řešení potíží s aktivace systému Windows virtuálního počítače v Azure"
+title: Řešení problémů aktivace systému Windows virtuálního počítače v Azure | Microsoft Docs
+description: Popisuje kroky poradce při potížích pro řešení potíží s aktivace systému Windows virtuálního počítače v Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Řešení problémů aktivace virtuálního počítače Azure Windows
 
@@ -29,10 +29,10 @@ Pokud máte potíže při aktivaci Azure Windows virtuální počítač (VM), kt
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Principy koncové body Azure služby správy KLÍČŮ pro aktivaci produktu virtuálních počítačů Azure
 Azure používá různými koncovými body pro aktivaci služby správy KLÍČŮ v závislosti na cloudu oblasti, kde je umístěn virtuální počítač. Při použití této Průvodci odstraňováním potíží, používejte příslušný koncový bod služby správy KLÍČŮ, který se vztahují na vaši oblast.
 
-* Azure public cloud regions: kms.core.windows.net:1688
-* Azure China national cloud regions: kms.core.chinacloudapi.cn:1688
+* Oblasti Azure veřejného cloudu: kms.core.windows.net:1688
+* Oblastí Azure Číně národních cloudů: kms.core.chinacloudapi.cn:1688
 * Německo oblasti národních cloudů: kms.core.cloudapi.de:1688
-* Azure US Gov national cloud regions: kms.core.usgovcloudapi.net:1688
+* Oblastí Azure nám verze pro státní správu národních cloudů: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Příznaky
 
@@ -78,7 +78,7 @@ Tento krok se nevztahuje na Windows 2012 nebo Windows 2008 R2. Používá funkci
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Krok 2 Ověřte připojení mezi služby virtuálního počítače a služby správy KLÍČŮ Azure
 
-1. Stažení a extrakci [Pspingu](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) nástroj do místní složky ve virtuálním počítači, který nemusí aktivovat. 
+1. Stažení a extrakci [Pspingu](http:/technet.microsoft.com/sysinternals/jj729731.aspx) nástroj do místní složky ve virtuálním počítači, který nemusí aktivovat. 
 
 2. Přejděte na spuštění, vyhledávání v prostředí Windows PowerShell, klikněte pravým tlačítkem na prostředí Windows PowerShell a potom vyberte spustit jako správce.
 
@@ -100,7 +100,7 @@ Tento krok se nevztahuje na Windows 2012 nebo Windows 2008 R2. Používá funkci
 
   Pokud ztráty je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V této situaci pokud je virtuální počítač ve virtuální síti a má vlastní server DNS, ujistěte se, že server DNS je schopný přeložit kms.core.windows.net. Nebo zvolit, které řešení kms.core.windows.net serverem DNS.
 
-  Všimněte si, že pokud odeberete všechny servery DNS z virtuální sítě, virtuální počítače používat interní DNS služby Azure. This service can resolve kms.core.windows.net.
+  Všimněte si, že pokud odeberete všechny servery DNS z virtuální sítě, virtuální počítače používat interní DNS služby Azure. Tato služba může vyřešit kms.core.windows.net.
   
 Také ověřte, že brána firewall hosta nebyl nakonfigurován způsobem, který by blokovat pokusy o aktivaci.
 
@@ -126,7 +126,7 @@ Ano.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší platnost období aktivace systému Windows? 
  
-Když poskytnutá lhůta vyprší a systému Windows není ještě aktivována, se zobrazí další oznámení o aktivaci služby Windows Server 2008 R2 a novějších verzích Windows. Tapeta plochy zůstane černé a Windows Update bude instalovat, zabezpečení a jenom důležité aktualizace, ale není nepovinný aktualizace. Najdete v části oznámení v dolní části [licenční podmínky](http://technet.microsoft.com/en-us/library/ff793403.aspx) stránky.   
+Když poskytnutá lhůta vyprší a systému Windows není ještě aktivována, se zobrazí další oznámení o aktivaci služby Windows Server 2008 R2 a novějších verzích Windows. Tapeta plochy zůstane černé a Windows Update bude instalovat, zabezpečení a jenom důležité aktualizace, ale není nepovinný aktualizace. Najdete v části oznámení v dolní části [licenční podmínky](http://technet.microsoft.com/library/ff793403.aspx) stránky.   
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.

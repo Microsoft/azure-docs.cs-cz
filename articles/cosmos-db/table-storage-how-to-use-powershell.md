@@ -1,12 +1,12 @@
 ---
-title: "Provedení operace úložiště Azure Table pomocí prostředí PowerShell | Microsoft Docs"
-description: "Provedení operace úložiště Azure Table pomocí prostředí PowerShell"
+title: Provedení operace úložiště Azure Table pomocí prostředí PowerShell | Microsoft Docs
+description: Provedení operace úložiště Azure Table pomocí prostředí PowerShell
 services: cosmos-db
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: c09809e9cf513dbb9420f675bbf431c176f740bd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0f6ceaa976263164c468eb573b119dd84c0d2429
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provedení operace úložiště Azure Table pomocí prostředí Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -47,10 +47,10 @@ Install-Module AzureRmStorageTable
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
@@ -75,7 +75,7 @@ New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte účet standardního úložiště pro obecné účely s místně redundantní úložiště (LRS) pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získá kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když funguje na účet úložiště, můžete odkazovat na kontext místo opakovaně přihlašovací údaje.
+Vytvořte účet standardního úložiště pro obecné účely s místně redundantní úložiště (LRS) pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získá kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
 ```powershell
 $storageAccountName = "pshtablestorage"

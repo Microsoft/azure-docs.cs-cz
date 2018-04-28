@@ -1,8 +1,8 @@
 ---
-title: "Ladění pravidla výkonu Azure Data Lake Store | Microsoft Docs"
-description: "Ladění pravidla výkonu Azure Data Lake Store"
+title: Ladění pravidla výkonu Azure Data Lake Store | Microsoft Docs
+description: Ladění pravidla výkonu Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Ladění výkonu Azure Data Lake Store
 
@@ -42,7 +42,7 @@ Ať používáte místní počítače nebo virtuální počítače v Azure, měl
 
 ### <a name="network-connectivity-to-azure-data-lake-store"></a>Síťové připojení k Azure Data Lake Store
 
-Síťové připojení mezi zdrojem dat a Azure Data Lake store v některých případech může být kritická místa. Pokud je zdroj dat na místě, zvažte použití vyhrazených odkaz s [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) . Pokud je zdroj dat v Azure, výkon bude nejlepší, když jsou data ve stejné oblasti Azure jako Data Lake Store.
+Síťové připojení mezi zdrojem dat a Azure Data Lake store v některých případech může být kritická místa. Pokud je zdroj dat na místě, zvažte použití vyhrazených odkaz s [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Pokud je zdroj dat v Azure, výkon bude nejlepší, když jsou data ve stejné oblasti Azure jako Data Lake Store.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástrojů přijímání dat pro maximální paralelizace
 
@@ -142,6 +142,6 @@ Kromě výše uvedených obecné pokyny každá aplikace má jiné parametry, kt
 | [MapReduce v HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>mapreduce.map.Memory</li><li>Mapreduce.job.Maps</li><li>mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm v HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí vykonavatele spout</li><li>Počet instancí vykonavatele bolt </li><li>Počet funkcí spout úlohy</li><li>Počet úloh bolt</li></ul>|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled Azure Data Lake Storu](data-lake-store-overview.md)
 * [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

@@ -1,12 +1,12 @@
 ---
-title: "Integrace Azure Service Fabric se službou API Management | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak rychle začít se službou Azure API Management a Service Fabric."
+title: Integrace Azure Service Fabric se službou API Management | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak rychle začít se službou Azure API Management a Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 430e813b89f3e0004c517ef77f1028e00ebe5404
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f209e992c4562f11727613c58e1e94483af03bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Kurz: Nasazení služby API Management s využitím Service Fabric
 Tento kurz je čtvrtou částí série.  Nasazení služby Azure API Management s využitím Service Fabric je pokročilý scénář.  Služba API Management je užitečná v případě, že potřebujete publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end služby Service Fabric. Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být brána bezstavová služba navržená pro příjem provozu, například aplikace ASP.NET Core, služba Event Hubs, služba IoT Hub nebo služba Azure API Management. 
@@ -59,7 +59,7 @@ Když teď máte v Azure zabezpečený [cluster s Windows](service-fabric-tutori
 Před spouštěním příkazů Azure se přihlaste ke svému účtu Azure a vyberte své předplatné.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
@@ -142,7 +142,7 @@ Pro účely tohoto kurzu nasaďte základní webový server, který vrací zprá
 
    Ve vašem clusteru Service Fabric v Azure by teď měla být spuštěná bezstavová služba v Javě s názvem `fabric:/EchoServerApplication/EchoServerService`.
 
-5. Otevřete prohlížeč a zadejte do něj adresu http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Měl by se zobrazit text „[version 1.0]Hello World!!!“ .
+5. Otevřete prohlížeč a zadejte http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage. Měla by se zobrazit zpráva „[version 1.0]Hello World!!!“. .
 
 ## <a name="download-and-understand-the-resource-manager-templates"></a>Stažení a pochopení šablon Resource Manageru
 Stáhněte a uložte následující šablony Resource Manageru a soubor parametrů:

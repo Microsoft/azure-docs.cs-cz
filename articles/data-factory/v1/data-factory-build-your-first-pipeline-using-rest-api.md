@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4c9b4408e6ac92a2f86a10f63ddd254486b82b3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b24d4b15d83d746c5a514725bcd474828c62001
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
   4. Přiřaďte aplikaci **ADFGetStartedApp** k roli **Přispěvatel Data Factory**.
 * Nainstalujte [Azure PowerShell](/powershell/azure/overview).
 * Spusťte **PowerShell** a potom spusťte následující příkaz. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu.
-  1. Spusťte příkaz **Login-AzureRmAccount** a zadejte uživatelské jméno a heslo, které používáte k přihlášení na webu Azure Portal.
+  1. Spusťte příkaz **Connect-AzureRmAccount** a zadejte uživatelské jméno a heslo, které používáte k přihlášení na webu Azure Portal.
   2. Spuštěním příkazu **Get-AzureRmSubscription** zobrazte všechna předplatná pro tento účet.
   3. Spuštěním rutiny **Get-AzureRmSubscription -SubscriptionName NazevPredplatnehoAzure | Set-AzureRmContext** vyberte předplatné, se kterým chcete pracovat. Místo **NazevPredplatnehoAzure** uveďte název svého předplatného Azure.
 * Spuštěním následujícího příkazu v prostředí PowerShell vytvořte skupinu prostředků Azure s názvem **ADFTutorialResourceGroup**:

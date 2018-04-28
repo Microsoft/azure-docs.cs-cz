@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ac869cc45d352bdeed16bb3ca926ec7a921d1f75
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB vazby pro Azure Functions
 
@@ -38,7 +38,7 @@ Vazby Cosmos DB verze funkcí jsou součástí 1.x [Microsoft.Azure.WebJobs.Exte
 
 ## <a name="trigger"></a>Trigger
 
-Aktivační událost DB Cosmos Azure používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) tak, aby naslouchala na změny napříč oddíly. Informační kanál změnu publikuje vložení a aktualizace, není odstranění. 
+Aktivační událost DB Cosmos Azure používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) tak, aby naslouchala na změny napříč oddíly. Informační kanál změnu publikuje vložení a aktualizace, není odstranění. Pro každý vložení nebo aktualizace provedené v kolekci monitorovaných je volána aktivační událost. 
 
 ## <a name="trigger---example"></a>Aktivační událost – příklad
 
@@ -159,18 +159,24 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** || musí být nastavena na `cosmosDBTrigger`. |
-|**Směr** || musí být nastavena na `in`. Tento parametr je nastaven automaticky při vytváření aktivační události na portálu Azure. |
-|**name** || Název proměnné používá v kódu funkce, která představuje seznam dokumentů se změnami. | 
-|**connectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, který obsahuje připojovací řetězec použitý pro připojení k účtu Azure Cosmos DB monitorovány. |
+|**type** || musí být nastavena na `cosmosDBTrigger`. |
+|**direction** || musí být nastavena na `in`. Tento parametr je nastaven automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** || Název proměnné používá v kódu funkce, která představuje seznam dokumentů se změnami. | 
+|**ConnectionStringSetting**|**ConnectionStringSetting** | Název nastavení aplikace, který obsahuje připojovací řetězec použitý pro připojení k účtu Azure Cosmos DB monitorovány. |
 |**databaseName**|**DatabaseName**  | Název databáze Azure Cosmos DB s kolekcí monitorovány. |
-|**collectionName** |**Název_kolekce** | Název kolekce, který je monitorován. |
+|**Název_kolekce** |**Název_kolekce** | Název kolekce, který je monitorován. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Volitelné) Název nastavení aplikace, který obsahuje připojovací řetězec k službě, která kolekci zapůjčení. Pokud není nastavena, `connectionStringSetting` hodnota se používá. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. Připojovací řetězec pro kolekci zapůjčení musí mít oprávnění k zápisu.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Volitelné) Název databáze, který obsahuje kolekci používá k ukládání zapůjčení. Pokud není nastavena hodnota `databaseName` nastavení se používá. Tento parametr je automaticky nastaven při vytvoření vazby na portálu. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Volitelné) Název kolekce používá k ukládání zapůjčení. Pokud není nastavena hodnota `leases` se používá. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Volitelné) Pokud nastavíte hodnotu `true`, kolekci zapůjčení se automaticky vytvoří, pokud ještě neexistuje. Výchozí hodnota je `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (Volitelné) Definuje množství jednotky žádosti přiřadit při vytvoření kolekce zapůjčení. Toto nastavení je pouze použité při `createLeaseCollectionIfNotExists` je nastaven na `true`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu.
-| |**LeaseOptions** | Konfigurace možností zapůjčení nastavením vlastnosti v instanci systému [ChangeFeedHostOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.changefeedprocessor.changefeedhostoptions) třídy.
+|**CreateLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Volitelné) Pokud nastavíte hodnotu `true`, kolekci zapůjčení se automaticky vytvoří, pokud ještě neexistuje. Výchozí hodnota je `false`. |
+|**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Volitelné) Definuje množství jednotky žádosti přiřadit při vytvoření kolekce zapůjčení. Toto nastavení je pouze použité při `createLeaseCollectionIfNotExists` je nastaven na `true`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu.
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Volitelné) Pokud nastavíte, přidá předponu zapůjčení vytvořené v kolekci zapůjčení pro tuto funkci umožňuje efektivně dvě samostatné funkce Azure sdílet stejné zapůjčení kolekci pomocí jiné předpony.
+|**FeedPollDelay**| **FeedPollDelay**| (Volitelné) Pokud sadu, definuje, v milisekundách, zpoždění mezi dotazování oddíl pro nové změny v informačním kanálu se nečekaně po všechny aktuální změny. Výchozí hodnota je 5000 (5 sekund).
+|**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, který ji úlohu Vypočítat, pokud oddíly jsou rovnoměrně rozdělené mezi instancí známé hostitele. Výchozí hodnota je 13000 (13 sekund).
+|**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud během tohoto intervalu neobnovíte zapůjčení, může to způsobit vypršení platnosti, a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
+|**LeaseRenewInterval**| **LeaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly, které jsou aktuálně uchovávat instance. Výchozí hodnota je 17000 (17 sekund).
+|**CheckpointFrequency**| **CheckpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi body obnovení zapůjčení. Výchozí hodnota je vždy po úspěšném volání funkce.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální množství přijatých položek pro volání funkce.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -474,15 +480,15 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ**     || musí být nastavena na `documentdb`.        |
-|**Směr**     || musí být nastavena na `in`.         |
-|**name**     || Název parametru vazby, který představuje dokumentu ve funkci.  |
+|**type**     || musí být nastavena na `documentdb`.        |
+|**direction**     || musí být nastavena na `in`.         |
+|**Jméno**     || Název parametru vazby, který představuje dokumentu ve funkci.  |
 |**databaseName** |**DatabaseName** |Databáze obsahující dokumentu.        |
-|**collectionName** |**Název_kolekce** | Název kolekce, která obsahuje dokument. |
-|**id**    | **ID** | ID dokumentu pro načtení. Tato vlastnost podporuje [vazby výrazy](functions-triggers-bindings.md#binding-expressions-and-patterns). Obě není nastavený **id** a **sqlQuery** vlastnosti. Pokud není nastavený buď jednu, je načíst celou kolekci. |
+|**Název_kolekce** |**Název_kolekce** | Název kolekce, která obsahuje dokument. |
+|**ID**    | **ID** | ID dokumentu pro načtení. Tato vlastnost podporuje [vazby výrazy](functions-triggers-bindings.md#binding-expressions-and-patterns). Obě není nastavený **id** a **sqlQuery** vlastnosti. Pokud není nastavený buď jednu, je načíst celou kolekci. |
 |**sqlQuery**  |**SqlQuery**  | Dotaz služby Azure Cosmos DB SQL použitý k načtení více dokumentů. Vlastnost podporuje runtime vazby, jako v následujícím příkladě: `SELECT * FROM c where c.departmentId = {departmentId}`. Obě není nastavený **id** a **sqlQuery** vlastnosti. Pokud není nastavený buď jednu, je načíst celou kolekci.|
 |**Připojení**     |**ConnectionStringSetting**|Název nastavení aplikace obsahující připojovacího řetězce Azure Cosmos DB.        |
-|**partitionKey**|**Klíč oddílu**|Určuje hodnotu klíče oddílu pro vyhledávání. Může zahrnovat vázané parametry.|
+|**Klíč oddílu**|**Klíč oddílu**|Určuje hodnotu klíče oddílu pro vyhledávání. Může zahrnovat vázané parametry.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -746,13 +752,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ**     || musí být nastavena na `documentdb`.        |
-|**Směr**     || musí být nastavena na `out`.         |
-|**name**     || Název parametru vazby, který představuje dokumentu ve funkci.  |
+|**type**     || musí být nastavena na `documentdb`.        |
+|**direction**     || musí být nastavena na `out`.         |
+|**Jméno**     || Název parametru vazby, který představuje dokumentu ve funkci.  |
 |**databaseName** | **DatabaseName**|Databáze obsahující kolekci, kde se má vytvořit dokumentu.     |
-|**collectionName** |**Název_kolekce**  | Název kolekce, kde se má vytvořit dokumentu. |
+|**Název_kolekce** |**Název_kolekce**  | Název kolekce, kde se má vytvořit dokumentu. |
 |**CreateIfNotExists**  |**CreateIfNotExists**    | Logická hodnota označující, zda kolekce se vytvoří při neexistuje. Výchozí hodnota je *false* s vyhrazenou propustností, který obsahuje náklady důsledky se vytváří nové kolekce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/documentdb/).  |
-|**partitionKey**|**Klíč oddílu** |Když `CreateIfNotExists` hodnotu true, definuje cestu ke klíči oddílu pro vytvořenou kolekci.|
+|**Klíč oddílu**|**Klíč oddílu** |Když `CreateIfNotExists` hodnotu true, definuje cestu ke klíči oddílu pro vytvořenou kolekci.|
 |**CollectionThroughput**|**CollectionThroughput**| Když `CreateIfNotExists` hodnotu true, definuje [propustnost](../cosmos-db/set-throughput.md) vytvořené kolekce.|
 |**Připojení**    |**ConnectionStringSetting** |Název nastavení aplikace obsahující připojovacího řetězce Azure Cosmos DB.        |
 
@@ -769,7 +775,7 @@ Ve výchozím nastavení když zapíšete do výstupního parametru ve funkci, s
 
 | Vazba | Referenční informace |
 |---|---|
-| CosmosDB | [Kódy chyb CosmosDB](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [Kódy chyb CosmosDB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>Další postup
 

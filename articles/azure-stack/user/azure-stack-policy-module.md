@@ -1,11 +1,11 @@
 ---
-title: "Použití modulu zásad Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, jak omezit předplatné služby Azure se bude chovat, jako je předplatné Azure zásobníku"
+title: Použití modulu zásad Azure zásobníku | Microsoft Docs
+description: Zjistěte, jak omezit předplatné služby Azure se bude chovat, jako je předplatné Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 937ef34f-14d4-4ea9-960b-362ba986f000
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: mabrigg
-ms.openlocfilehash: 71f17a460f4a81a98e2cdef183acb29f721d584e
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 10df87ec6d30e74356b0ff0f44b8745f8c7b8bf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Správa Azure zásad pomocí modulu zásad Azure zásobníku
 
@@ -41,7 +41,7 @@ Modul zásad zásobník Azure umožňuje nakonfigurovat předplatné služby Azu
 Tento příkaz lze použít výchozí zásady Azure zásobníku u vašeho předplatného Azure. Dřív, než spustíte, nahraďte *název předplatného Azure* s předplatným Azure.
 
 ```PowerShell
-Login-AzureRmAccount
+Add-AzureRmAccount
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -53,7 +53,7 @@ New-AzureRmPolicyAssignment -Name AzureStack -PolicyDefinition $policy -Scope /s
 Můžete použít zásady v podrobnější metoda.  Například můžete mít další prostředky spuštěná ve stejném předplatném.  Použití zásad pro určité skupiny zdrojů, což umožňuje testování aplikace pro Azure zásobníku pomocí prostředků Azure, můžete určit obor. Dřív, než spustíte, nahraďte *název předplatného Azure* názvem svého předplatného Azure.
 
 ```PowerShell
-Login-AzureRmAccount
+Add-AzureRmAccount
 $rgName = 'myRG01'
 $s = Select-AzureRmSubscription -SubscriptionName "<Azure Subscription Name>"
 $policy = New-AzureRmPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
@@ -66,7 +66,7 @@ Jakmile nasadíte zásady Azure, obdržíte chybu při pokusu o nasazení na pro
 
 ![Výsledek prostředků nasazení se nezdařilo z důvodu omezení zásad](./media/azure-stack-policy-module/image1.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
 
 [Nasazení šablon pomocí rozhraní příkazového řádku Azure](azure-stack-deploy-template-command-line.md)

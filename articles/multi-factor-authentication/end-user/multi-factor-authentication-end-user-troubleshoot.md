@@ -1,9 +1,9 @@
 ---
-title: "Řešení potíží s dvoustupňové ověřování | Microsoft Docs"
-description: "Tento dokument se poskytují uživatelům informace o co dělat, pokud se problém se službou Azure Multi-Factor Authentication."
+title: Řešení potíží s dvoustupňové ověřování | Microsoft Docs
+description: Tento dokument se poskytují uživatelům informace o co dělat, pokud se problém se službou Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-keywords: "vícefaktorové ověřování klienta, problém s ověřováním, ID korelace"
-documentationcenter: 
+keywords: vícefaktorové ověřování klienta, problém s ověřováním, ID korelace
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,13 +16,13 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 840f4f9e3616f5a60ebbbb0ad33cee9a67958989
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995430a5c8a388358fcfb7c8c9bac978450df411
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňové ověření
+# <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
 Tento článek obsahuje odpovědi na nejčastější otázky, které uživatelé požádat o dvoustupňovém ověřování.
 
 ## <a name="why-do-i-have-to-perform-two-step-verification-can-i-turn-it-off"></a>Proč musím provádět dvoustupňové ověřování? Můžete vypnout jeho nastavení?
@@ -87,7 +87,7 @@ Pokud nemáte nakonfigurován jinou metodu, obraťte se na podporu společnosti 
 Pokud máte často zpoždění z důvodu chybné buňky signál, doporučujeme použít [aplikaci Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na vašem smartphonu. Aplikace může generovat náhodné zabezpečovací kódy, které používáte k přihlášení a tyto kódy nevyžadují žádné buňky signál nebo připojení k Internetu.
 
 ## <a name="app-passwords-are-not-working"></a>Hesla aplikací nejsou práce
-Zkontrolujte, zda jste správně zadali heslo aplikace. Heslo generovaného aplikace nahrazuje normální heslo, ale jenom pro starší aplikací klasické pracovní plochy, které nepodporují dvoustupňové ověřování. Pokud stále nefunguje, zkuste přihlášení a [vytvořit nové heslo aplikace](multi-factor-authentication-end-user-app-passwords.md).  Pokud stále nepomůže, obraťte se na podporu společnosti a potom kliknul [odstranit vašich dosavadních hesel aplikací](../multi-factor-authentication-manage-users-and-devices.md) a vytvořte novou.
+Zkontrolujte, zda jste správně zadali heslo aplikace. Heslo generovaného aplikace nahrazuje normální heslo, ale jenom pro starší aplikací klasické pracovní plochy, které nepodporují dvoustupňové ověřování. Pokud stále nefunguje, zkuste přihlášení a [vytvořit nové heslo aplikace](multi-factor-authentication-end-user-app-passwords.md).  Pokud stále nepomůže, obraťte se na podporu společnosti a potom kliknul [odstranit vašich dosavadních hesel aplikací](../../active-directory/authentication/howto-mfa-userdevicesettings.md) a vytvořte novou.
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Odpověď na Můj problém I nebyl nalezen.
 Pokud jste se pokusili postup řešení, ale jsou stále spuštěná na problémy, obraťte se na podporu vaší společnosti. Jejich by mohli pomoct.

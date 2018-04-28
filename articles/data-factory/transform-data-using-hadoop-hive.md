@@ -3,21 +3,20 @@ title: Transformace dat pomocí aktivity Hadoop Hive v Azure Data Factory | Micr
 description: Zjistěte, jak pomocí aktivity Hive v objektu pro vytváření dat Azure ke spouštění dotazů Hive v clusteru HDInsight na vyžádání nebo vaše vlastní.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 637a9ce68cc1c8ac2ef0af8a606668fb4da64fb8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 9346b995a7114688e357d1605d28c5a3d01d4afb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop Hive v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +66,7 @@ Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Fact
 | linkedServiceName   | Referenční dokumentace ke clusteru HDInsight registrován jako propojené služby ve službě Data Factory. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku. | Ano      |
 | scriptLinkedService | Odkaz na propojenou službu úložiště Azure používají k ukládání ke spuštění skriptu Hive. Pokud tato propojená služba nezadáte, použije se propojené služby Azure Storage definované v propojené službě HDInsight. | Ne       |
 | scriptPath          | Zadejte cestu k souboru skriptu, který je uložený ve službě Azure Storage, na které odkazuje scriptLinkedService. Název souboru je malá a velká písmena. | Ano      |
-| getDebugInfo        | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
+| getdebuginfo –        | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
 | Argumenty           | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje             | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
 

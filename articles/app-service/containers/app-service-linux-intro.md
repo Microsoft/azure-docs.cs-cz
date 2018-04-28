@@ -1,5 +1,5 @@
 ---
-title: Seznámení se službou App Service v Linuxu | Dokumentace Microsoftu
+title: Seznámení se službou App Service v Linuxu | Microsoft Docs
 description: Seznamte se se službou Azure App Service v Linuxu.
 keywords: azure app service, linux, oss
 services: app-service
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7800c2e72b1bfd78f83bf7b90a35e47f6109a014
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -32,22 +32,13 @@ App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšen�
 
 | Jazyk | Podporované verze |
 |---|---|
-| Node.js | 4.4, 4.5, 6.2, 6.6, 6.9–6.11, 8.0, 8.1 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
 | Java* | 8.0 |
-| PHP | 5.6, 7.0 |
+| PHP | 5.6, 7.0, 7.2 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-
-* Podpora funkce Preview
-
-### <a name="preview-supported-java-runtimes"></a>Preview: podporované moduly runtime Java
-
-Ve službě App Service v Linuxu jsou k dispozici následující moduly runtime Java:
-
-| Modul runtime | Verze |
-|---|---|
-| Apache Tomcat | 8.5 |
-| Apache Tomcat | 9.0 |
+| Přejít | 1.0 |
+| Apache Tomcat | 8.5, 9.0 |
 
 Další podrobnosti najdete v tématu [Vytvoření webové aplikace v Javě ve službě App Service v Linuxu](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java).
 
@@ -84,10 +75,7 @@ Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkčn�
 
 Některé funkce, například integrace virtuálních sítí, ověřování pomocí Azure Active Directory nebo prostřednictvím třetí strany nebo rozšíření webu Kudu, ještě nejsou dostupné. Jakmile budou tyto funkce dostupné, aktualizujeme naši dokumentaci a blog, abychom vás informovali o změnách.
 
-Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic a Standard](https://azure.microsoft.com/pricing/details/app-service/plans/), a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Toto jsou další důležitá omezení služby App Service v Linuxu:
-
-* Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux.
-* Při vytváření služby Web App for Containers ve skupině prostředků, která obsahuje službu Web Apps mimo Linux, musíte vytvořit plán služby App Service v jiné skupině prostředků než stávající plán služby App Service.
+Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic a Standard](https://azure.microsoft.com/pricing/details/app-service/plans/), a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c3622b4699ef532f204231c76aa3436be3676763
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Nové výstrahy na základě zkušeností uživatelů Azure monitorování
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 Výstrahy má nové prostředí. Starší výstrahy prostředí je nyní na kartě výstrahy (klasické). Nové výstrahy prostředí má následující výhody přes prostředí výstrahy (klasické):
 
--   **Lepší oznámení systému**: použijte všechny novější výstrahy [skupiny akcí]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups), které jsou s názvem skupiny oznámení a akce, které lze znovu použít ve více výstrah.  Classic metriky výstrahy a starší výstrahy analýzy protokolů nepoužívejte skupiny akcí. 
+-   **Lepší oznámení systému**: použijte všechny novější výstrahy [skupiny akcí]( https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups), které jsou s názvem skupiny oznámení a akce, které lze znovu použít ve více výstrah.  Classic metriky výstrahy a starší výstrahy analýzy protokolů nepoužívejte skupiny akcí. 
 - **Jednotné prostředí pro vytváření A** – všechny výstrahy vytvoření metrik, protokoly a aktivity protokolu na Azure monitorů, analýzy protokolů a Application Insights je na jednom místě. 
 - **Zobrazení aktivováno analýzy protokolů výstrahy na portálu Azure** – můžete nyní také najdete aktivováno výstrahy analýzy protokolů v rámci vašeho předplatného. Dříve byly tyto samostatné portálu. 
 - **Oddělení Fired výstrahy a výstrahu pravidla** – výstraha pravidla (definice podmínku, která aktivuje výstrahu) a jsou rozlišené aktivováno výstrahy (instance pálení pravidlo výstrahy), takže zobrazení provozu a konfigurace jsou oddělené.
@@ -77,12 +77,12 @@ Cílem prostředí výstrahy je možné jednotné místo pro zobrazit a spravova
 > [!NOTE]
 > Aktivní výstrahy ukazuje výstrahy jsou omezeny na podporované metrika a aktivity protokolu výstrah; Přehled služby Azure monitorování zobrazuje počet aktivní výstrahy, včetně těch, které ve starší výstrahách Azure
 
- ![alerts-overview](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
+ ![Přehled výstrah](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
 ### <a name="alert-rules-management"></a>Pravidla výstrah správy
 **Monitorování – výstrahy > pravidla** je jediné stránce Spravovat všechny výstrahy pravidla ve vašich předplatných Azure. Zobrazí seznam všech výstrah pravidel (povolit nebo zakázat) a může být seřazeny podle cílové prostředky, skupiny prostředků, název pravidla nebo stavu. Pravidla výstrah můžete také povolení nebo zakázání nebo upravit z této stránky.  
 
- ![alerts-rules](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
+ ![pravidla výstrah](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
 ## <a name="one-alert-authoring-experience-across-all-monitoring-sources"></a>Jedna výstraha zážitky ze všech zdrojů monitorování
@@ -104,7 +104,7 @@ Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Infor
 | **Typ signálu** | **Monitorování zdroje** | **Popis** | 
 |-------------|----------------|-------------|
 | Metrika | Azure monitorování | Označuje taky jako [metriky výstrahy téměř v reálném čase](monitoring-near-real-time-metric-alerts.md), budou podporovat vyhodnocení metriky podmínky s četností až 1 minutu a povolit pro více metriky a komplexní metriky pravidla. Seznam typů podporovaných prostředků je k dispozici [zde](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported). |
-| Metrika | Azure monitorování | [Starší classic metriky výstrahy](monitoring-overview-alerts.md) nejsou podporovány v nové výstrahy prostředí. Můžete je vyhledat podle výstrahy (klasické) na portálu Azure. Classic výstrahy podporovat některé typy metriky, které dosud nebyla přesunuta novější výstrah. Úplný seznam najdete v tématu [podporované metriky](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| Metrika | Azure monitorování | [Starší classic metriky výstrahy](monitoring-overview-alerts.md) nejsou podporovány v nové výstrahy prostředí. Můžete je vyhledat podle výstrahy (klasické) na portálu Azure. Classic výstrahy podporovat některé typy metriky, které dosud nebyla přesunuta novější výstrah. Úplný seznam najdete v tématu [podporované metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
 | Logs  | Log Analytics | Přijímat oznámení nebo spustit automatizované akce, pokud vyhledávací dotaz protokolu nad daty metrika nebo událostí splňuje určitá kritéria. Starší výstrahy analýzy protokolů jsou stále k dispozici, ale jsou [kopírovány do nové prostředí](monitoring-alerts-extend.md). Kromě toho [náhled z *analýzy protokolů zaznamená jako metriky* ](monitoring-alerts-extend-tool.md) je k dispozici. Verze preview umožňuje provést některé typy protokolů a jejich převedení na metriky, kde můžete lze pak výstraha na pomocí nové výstrahy prostředí. Ve verzi preview je užitečné, pokud máte protokoly mimo Azure, které chcete získat spolu s nativní metrik Azure monitorování. |
 | Protokol aktivit | Protokoly aktivity (Obecné) | Obsahuje záznamy všechny Create, Update a Delete akce prováděné prostřednictvím vybraná cílová (skupiny prostředků nebo prostředků nebo předplatného). |
 | Protokol aktivit  | Service Health | Nepodporuje se v nové prostředí pro výstrahy. V tématu [vytvářet aktivity protokolu upozornění na oznámení o službách](monitoring-activity-log-alerts-on-service-notifications.md).  |

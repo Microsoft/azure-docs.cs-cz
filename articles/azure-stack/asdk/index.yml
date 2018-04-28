@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentaci Azure zásobníku Development Kit"
+title: Dokumentaci Azure zásobníku Development Kit
 metadata:
   document_id: 
-  title: "Referenční dokumentace rozhraní API Azure zásobníku Development Kit dokumentace k – kurzy,"
-  description: "Zjistěte, jak nasadit a používat Azure zásobníku Development Kit."
+  title: Referenční dokumentace rozhraní API Azure zásobníku Development Kit dokumentace k – kurzy,
+  description: Zjistěte, jak nasadit a používat Azure zásobníku Development Kit.
   services: azure-stack
   author: jeffgilb
   manager: femila
@@ -12,34 +12,34 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/16/2018
+  ms.date: 04/13/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: e95cf07386dd2c0ef6fe3a1133c8d727b7f929b3
-  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+  ms.openlocfilehash: a981164b82ede0695fce83f76e886cc0aa5b80c4
+  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/17/2018
+  ms.lasthandoff: 04/23/2018
 abstract:
-  description: "Azure zásobníku Development Kit (ASDK) je jedním uzlem nasazení Azure zásobníku, která můžete stáhnout a použít zdarma. ASDK je určená a poskytuje prostředí, ve kterém můžete vyhodnotit Azure zásobníku a vývoj moderních aplikací pomocí rozhraní API a nástrojů konzistentní s Azure v testovacím prostředí. <br/><br/>Pokud jste Azure zásobníku subjektu, který spravuje infrastrukturu integrované systémy a nabízí služby, přečtěte si naše <a href=\"/azure/azure-stack/\">operátor dokumentaci</a>."
+  description: Azure zásobníku Development Kit (ASDK) je jedním uzlem nasazení Azure zásobníku, která můžete stáhnout a použít zdarma. ASDK je určená a poskytuje prostředí, ve kterém můžete vyhodnotit Azure zásobníku a vývoj moderních aplikací pomocí rozhraní API a nástrojů konzistentní s Azure v testovacím prostředí. <br/><br/>Pokud jste Azure zásobníku subjektu, který spravuje infrastrukturu integrované systémy a nabízí služby, přečtěte si naše <a href="/azure/azure-stack/">operátor dokumentaci</a>.<br/><br/>Pokud jste zásobník Azure uživatele, který používá služby nebo sestavení aplikací pro Azure zásobníku, přečtěte si naše <a href="/azure/azure-stack/user">dokumentaci pro uživatele</a>.
 sections:
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Zjistěte, jak na přidání služeb do vašeho nasazení ASDK."
+    text: Zjistěte, jak na přidání služeb do vašeho nasazení ASDK.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-deploy\">Nasazení ASDK</a>"
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-marketplace-item\">Přidání položky zásobníku Azure marketplace.</a>"
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-offer-services\">Nabídka služeb IaaS</a>"
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-subscribe-services\">Přihlášení k odběru nabídky</a>"
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-update-offers\">Aktualizace nabídky a plány</a>"
-    - html: "<a href=\"/azure/azure-stack/asdk/asdk-create-vm-template\">Vytvoření virtuálního počítače ze šablony</a>"
-- title: "Referenční informace"
+    - html: <a href="/azure/azure-stack/asdk/asdk-deploy">Nasazení ASDK</a>
+    - html: <a href="/azure/azure-stack/asdk/asdk-marketplace-item">Přidání položky zásobníku Azure marketplace.</a>
+    - html: <a href="/azure/azure-stack/asdk/asdk-offer-services">Nabídka služeb IaaS</a>
+    - html: <a href="/azure/azure-stack/asdk/asdk-subscribe-services">Přihlášení k odběru nabídky</a>
+    - html: <a href="/azure/azure-stack/asdk/asdk-update-offers">Aktualizace nabídky a plány</a>
+    - html: <a href="/azure/azure-stack/asdk/asdk-create-vm-template">Vytvoření virtuálního počítače ze šablony</a>
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
-      html: "<p><a href=\"/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10\">Azure Stack PowerShell</a></p><p><a href=\"/cli/azure/?view=azure-cli-2017-03-09-profile\">Zásobník Azure CLI</a></p>"
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Zásobník Azure CLI</a></p>

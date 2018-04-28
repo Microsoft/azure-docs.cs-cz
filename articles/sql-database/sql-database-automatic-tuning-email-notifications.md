@@ -1,6 +1,6 @@
 ---
-title: "Automatické ladění e-mailem oznámení s postupy Průvodce – Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database analyzuje dotazu SQL a automaticky přizpůsobí zatížení uživatele."
+title: Automatické ladění e-mailem oznámení s postupy Průvodce – Azure SQL Database | Microsoft Docs
+description: Azure SQL Database analyzuje dotazu SQL a automaticky přizpůsobí zatížení uživatele.
 services: sql-database
 author: danimir
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: a2799e45fbb54531289a89082f13e5ce0856c376
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8891e8b9fbf3ce8422036e8add900504ea7e4162
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -101,7 +101,7 @@ $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_W
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
 # Define the resource types
 $resourceTypes = ("Microsoft.Sql/servers/databases")
@@ -246,7 +246,7 @@ Finální výstup automatizovaných e-mailu, vypadá podobně jako následujíc�
 
 K vytvoření e-mailových oznámení založené na konkrétní události ladění a několika příjemcům, pro víc předplatných nebo databáze, v závislosti na vlastní scénáře řešení může přizpůsobit. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zjistěte více v tom, jak automatické ladění můžete zvýšit výkon databáze, najdete v části [automatické ladění ve službě Azure SQL Database](sql-database-automatic-tuning.md).
 - Pokud chcete povolit automatické ladění v databázi SQL Azure ke správě velikosti pracovní zátěže, najdete v části [povolit automatické ladění](sql-database-automatic-tuning-enable.md).

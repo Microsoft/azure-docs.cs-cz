@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: 34bdbf6e98d5232bf924f3f32a2acb3460a7737f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 445b18dee9efa9561ba1274ef59a9a426332d745
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 Virtuální počítač Microsoft Data vědecké účely je předem nainstalovaná a nakonfigurovaná s několik oblíbených nástrojů, které se běžně používají k analýze dat a strojové učení image virtuálního počítače (VM) systému Windows Azure. Nástroje sady jsou:
 
-* [Azure Machine Learning](../preview/index.yml) Workbench
+* [Azure Machine Learning](../service/index.yml) Workbench
 * [Microsoft Machine Learning serveru](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
 * Anaconda distribuci jazyka Python
 * Poznámkový blok Jupyter (s R, Python, jádra PySpark)
@@ -192,7 +192,7 @@ Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazov�
 Tady jsou některé další kroky, chcete-li pokračovat, učení a zkoumání. 
 
 * Prozkoumejte různé vědě nástrojů data na vědecké zpracování dat virtuálního počítače tak, že kliknete nabídky start v seznamu v nabídce nástroje se odhlašuje.
-* Další informace o služby Azure Machine Learning a Workbench návštěvou produktu [stránku rychlý start a kurzy](../preview/index.yml). 
+* Další informace o služby Azure Machine Learning a Workbench návštěvou produktu [stránku rychlý start a kurzy](../service/index.yml). 
 * Přejděte na **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** ukázek pomocí knihovny RevoScaleR v R, který podporuje analýzy dat škálované enterprise.  
 * Přečtěte si článek: [10 způsobů, jak na vědecké zpracování dat virtuálního počítače](http://aka.ms/dsvmtenthings)
 * Naučte se vytvářet koncová analytická řešení systematičtěji pomocí [proces vědecké účely dat Team](../team-data-science-process/index.yml).

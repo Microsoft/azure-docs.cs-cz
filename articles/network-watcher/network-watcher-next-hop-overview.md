@@ -1,11 +1,11 @@
 ---
-title: "Úvod do dalšího směrování v sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje přehled sledovací proces sítě další funkce směrování"
+title: Úvod do dalšího směrování v sledovací proces sítě Azure | Microsoft Docs
+description: Tento článek obsahuje přehled sledovací proces sítě další funkce směrování.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac
 ms.service: network-watcher
 ms.devlang: na
@@ -14,44 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: bb2ca0486b3b3d27a77b70927cb3cbfbeac12c7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbb782e700781dcfedbbd340c7d10db53767b035
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="introduction-to-next-hop-in-azure-network-watcher"></a>Úvod do dalšího směrování v sledovací proces sítě Azure
+# <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Použít další segment k diagnostikování problémů směrování virtuálního počítače
 
-Přenosy z virtuálního počítače se odesílají do cílového umístění v závislosti na účinné postupy spojené s síťový adaptér. Další směrování získá typ dalšího směrování a IP adresa z paketu z konkrétní virtuální počítač a síťový adaptér. To pomůže určete, jestli je paket směrovat do cílového umístění nebo je provoz probíhá černým dírkového. Nesprávná konfigurace trasy uživatelem, kde je přesměrován na místní umístění nebo virtuální zařízení provoz, může způsobit problémy s připojením. Další směrování také vrátí hodnotu směrovací tabulka přidružené k dalším místě směrování. Při dotazování další směrování, pokud trasy, která je definována jako trasy definované uživatelem, bude vrácen danou trasu. V opačném případě vrátí další segment "Systémová trasa".
+Přenosy z virtuálního počítače (VM) se odesílají do cílového umístění v závislosti na účinné postupy spojené s síťové rozhraní (NIC). Další směrování získá typ dalšího směrování a IP adresa z paketu z konkrétní virtuální počítač a síťový adaptér. Znalost dalšího směrování vám pomůže určit, pokud je provoz směrovat do určené cílové, nebo zda nikde odesílání přenosů. Nesprávná konfigurace trasy, kde je přenášená na místní umístění, nebo virtuální zařízení, může způsobit problémy s připojením. Další směrování také vrátí hodnotu směrovací tabulka přidružené k dalším místě směrování. Pokud trasa je definován jako trasy definované uživatelem, je vrácena danou trasu. Jinak vrátí dalšího směrování **systémová trasa**.
 
-![dalšího směrování – přehled][1]
+![dalšího směrování – přehled](./media/network-watcher-next-hop-overview/figure1.png)
 
-Následuje seznam další typy směrování, které mohou být vráceny při dotazování dalším místě směrování.
+Další směrování, které mohou být vráceny další směrování schopnosti jsou následující:
 
 * Internet
 * VirtualAppliance
 * VirtualNetworkGateway
 * VnetLocal
-* HyperNetGateway
 * VnetPeering
 * Žádný
 
-### <a name="next-steps"></a>Další kroky
+Další informace o každé další typ směrování, najdete v části [Přehled směrování](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-Další informace o použití další segment najít problémy s připojením k síti, navštivte stránky [zkontrolujte další směrování na virtuálním počítači](network-watcher-check-next-hop-portal.md)
+## <a name="next-steps"></a>Další postup
 
-<!--Image references-->
-[1]: ./media/network-watcher-next-hop-overview/figure1.png
-
-
-
-
-
-
-
-
-
-
-
-
-
+Další informace o použití další segment k diagnostikování problémů směrování sítě virtuálních počítačů, najdete v tématu [síť Virtuálních diagnostikovat problémy se směrováním](diagnose-vm-network-routing-problem.md).

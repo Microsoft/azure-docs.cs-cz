@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/26/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 044c901799ff7acae1e27602b84802f6b5f70f05
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d72d5223373043648aeb3d783477781dbce35f6d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="run-hive-queries-using-powershell"></a>Spouštění dotazů Hive pomocí prostředí PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -45,7 +45,7 @@ Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně sp
 
 Při spouštění dotazů Hive v vzdáleného clusteru HDInsight, se používají následující rutiny:
 
-* `Add-AzureRmAccount`: Ověřuje prostředí Azure PowerShell k předplatnému Azure.
+* `Connect-AzureRmAccount`: Ověřuje prostředí Azure PowerShell k předplatnému Azure.
 * `New-AzureRmHDInsightHiveJobDefinition`: Vytvoří *úlohy definice* pomocí zadané příkazy HiveQL.
 * `Start-AzureRmHDInsightJob`: Odešle definici úlohy do HDInsight a spuštění úlohy. A *úlohy* se vrátí objekt.
 * `Wait-AzureRmHDInsightJob`: Používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo je překročena doba čekání.

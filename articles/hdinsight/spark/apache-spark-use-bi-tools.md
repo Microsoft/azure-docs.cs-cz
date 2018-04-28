@@ -1,9 +1,9 @@
 ---
-title: "Spark BI pomocí nástrojů vizualizace data v Azure HDInsight | Microsoft Docs"
-description: "Pomocí nástrojů vizualizace dat pro analýzu pomocí Apache Spark BI v clusterech prostředí HDInsight"
+title: Spark BI pomocí nástrojů vizualizace data v Azure HDInsight | Microsoft Docs
+description: Pomocí nástrojů vizualizace dat pro analýzu pomocí Apache Spark BI v clusterech prostředí HDInsight
 keywords: Apache spark bi, spark bi vizualizace dat spark, spark business intelligence
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: jgao
-ms.openlocfilehash: 97305ec6774e89e776653adbcdcf86b1cd63642f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0e728e17a64acd990b301bac8139c7bb395a3098
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI nástroje vizualizaci dat pomocí Azure HDInsight
 
@@ -44,7 +42,7 @@ Poznámkového bloku Jupyter, který jste vytvořili v [předchozí kurzu](apach
     SHOW TABLES
     ```
 
-    Výstup bude vypadat takto:
+    Výstup bude vypadat následovně:
 
     ![Zobrazení tabulky v Spark](./media/apache-spark-use-bi-tools/show-tables.png)
 
@@ -58,7 +56,7 @@ Poznámkového bloku Jupyter, který jste vytvořili v [předchozí kurzu](apach
     SELECT * FROM hvac LIMIT 10
     ```
 
-    Výstup bude vypadat takto:
+    Výstup bude vypadat následovně:
 
     ![Zobrazit řádky z tabulky TVK v Spark](./media/apache-spark-use-bi-tools/select-limit.png)
 
@@ -94,7 +92,7 @@ První kroky při práci se službou Spark se připojte ke clusteru v Power BI D
     ![Načíst data do Power BI Desktop z HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "načíst data do Power BI z Apache Spark BI")
 
 
-2. Zadejte `Spark` do vyhledávacího pole vyberte **Azure HDInsight Spark (Beta)**a potom klikněte na **Connect**.
+2. Zadejte `Spark` do vyhledávacího pole vyberte **Azure HDInsight Spark (Beta)** a potom klikněte na **Connect**.
 
     ![Načíst data do Power BI z Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "načíst data do Power BI z Apache Spark BI")
 

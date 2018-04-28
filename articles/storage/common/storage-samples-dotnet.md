@@ -1,12 +1,12 @@
 ---
-title: "Ukázek Azure Storage pomocí rozhraní .NET | Microsoft Docs"
-description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště .NET."
+title: Ukázek Azure Storage pomocí rozhraní .NET | Microsoft Docs
+description: Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí knihovny klienta úložiště .NET.
 services: storage
 documentationcenter: na
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: 74777ed14ebb41ad31657f814e86724ff1e5e62e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e6973f0decc448657d869afb8823dd03c62d272
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-samples-using-net"></a>Ukázek Azure Storage pomocí rozhraní .NET
 
@@ -26,11 +26,11 @@ ms.lasthandoff: 10/11/2017
 
 Následující tabulka obsahuje přehled o našem úložišti ukázky a pokryté v každé ukázkové scénáře. Kliknutím na odkazy k zobrazení odpovídající ukázkový kód v Githubu.
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Ukázkový kód</th></tr></thead><tbody> 
+<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Objekt BLOB</b></td>
 <td>Append – objekt Blob</td> 
-<td><a href="https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Příklad CloudBlobContainer.GetAppendBlobReference – metoda</a></td> 
+<td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Příklad CloudBlobContainer.GetAppendBlobReference – metoda</a></td> 
 </tr> 
 <tr> 
 <td>Objekt Blob bloku</td>
@@ -164,7 +164,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázky a pokryté
 </tr> 
 <tr> 
 <td rowspan="7"><b>Tabulka</b></td>
-<td>Vytvoření tabulky</td> 
+<td>Vytvořit tabulku</td> 
 <td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Správa souběžnosti použití služby Azure Storage – ukázková aplikace</a></td> 
 </tr> 
 <tr> 
@@ -210,7 +210,7 @@ Pokud hledáte pokyny, jak nainstalovat a začít pracovat s knihovny klienta Az
 * [Začínáme se službou Azure tabulky v rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Začínáme se službou Azure souborů v rozhraní .NET](../storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o ukázky pro jiné jazyky:
 

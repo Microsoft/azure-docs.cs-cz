@@ -1,32 +1,32 @@
 ---
-title: "Konfigurovat životnosti tokenu v Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nastavit dobu platnosti pro tokeny vydané službou Azure AD."
+title: Konfigurovat životnosti tokenu v Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak nastavit dobu platnosti pro tokeny vydané službou Azure AD.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
-ms.author: billmath
+ms.date: 04/19/2018
+ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovat životnosti tokenu v Azure Active Directory (Public Preview)
 Můžete zadat dobu životnosti tokenem vydaným službou Azure Active Directory (Azure AD). Můžete nastavit životnosti tokenu pro všechny aplikace ve vaší organizaci, pro aplikaci víceklientské (více organizace) nebo pro objekt určité služby ve vaší organizaci.
 
-> [!NOTE]
-> Tato funkce je aktuálně ve verzi Public Preview. Připravte se na obnovit nebo odeberte všechny změny. Tato funkce je k dispozici v libovolné předplatné služby Azure Active Directory během verzi Public Preview. Ale když je tato funkce obecně dostupná, některé aspekty funkce může vyžadovat [Azure Active Directory Premium](active-directory-get-started-premium.md) předplatné.
+> [!IMPORTANT]
+> Po sluchu od zákazníků ve verzi Preview jsme plánování nahradit tuto funkci pomocí nové funkce v Azure Active Directory podmíněného přístupu.  Po dokončení nové funkce bude tato funkce nakonec zastaralá po určité době oznámení.  Pokud použijete zásady konfigurovat doba platnosti tokenu, připravte přepnout do nové funkce podmíněného přístupu, jakmile je k dispozici. 
 >
 >
 
@@ -45,19 +45,19 @@ Zásady můžete určit jako výchozí zásady pro vaši organizaci. Zásady se 
 Můžete nastavit dobu životnosti tokenu zásady pro tokeny obnovení, tokeny přístupu, tokeny relace a tokeny typu ID.
 
 ### <a name="access-tokens"></a>Přístupové tokeny
-Klienti používat pro přístup k chráněnému prostředku přístupových tokenů. Přístupový token lze použít pouze pro konkrétní kombinaci uživatele, klienta a prostředků. Přístupové tokeny nejde odvolat a jsou platné až do vypršení jejich platnosti. Škodlivý objektu actor, který má získat token přístupu můžete použít pro rozsah celé jeho životnosti. Úprava životnost přístupový token je kompromis mezi zlepšení výkonu systému a zvýšení množství času, klient zachová přístup po uživatelský účet je zakázán. Vylepšené systému výkonu se dosáhne snižuje počet, kolikrát klient potřebuje získat nový přístupový token.
+Klienti používat pro přístup k chráněnému prostředku přístupových tokenů. Přístupový token lze použít pouze pro konkrétní kombinaci uživatele, klienta a prostředků. Přístupové tokeny nejde odvolat a jsou platné až do vypršení jejich platnosti. Škodlivý objektu actor, který má získat token přístupu můžete použít pro rozsah celé jeho životnosti. Úprava životnost přístupový token je kompromis mezi zlepšení výkonu systému a zvýšení množství času, klient zachová přístup po uživatelský účet je zakázán. Vylepšené systému výkonu se dosáhne snižuje počet, kolikrát klient potřebuje získat nový přístupový token.  Výchozí hodnota je 1 hodina – po 1 hod., klient musí použít obnovovací token (obvykle bezobslužná) získat nové obnovovací token a přístup k tokenu. 
 
 ### <a name="refresh-tokens"></a>Obnovovacích tokenů
-Když klient získá přístupový token pro přístup k chráněnému prostředku, klient přijme token obnovení a přístupový token. Token obnovení slouží k získání nového přístupu nebo aktualizace tokenu páry když vyprší platnost aktuální přístupový token. Token obnovení je vázán na kombinaci uživatele a klienta. Obnovovací token se dají odvolávat a platnosti tokenu je zaškrtnuta možnost pokaždé, když se používá token.
+Když klient získá přístupový token pro přístup k chráněnému prostředku, obdrží klient také token obnovení. Token obnovení slouží k získání nového přístupu nebo aktualizace tokenu páry když vyprší platnost aktuální přístupový token. Token obnovení je vázán na kombinaci uživatele a klienta. Token obnovení může být [kdykoliv odvolat](develop/active-directory-token-and-claims.md#token-revocation), a kontroluje platnost tokenu pokaždé, když se používá token.  
 
-Je důležité rozlišovat mezi důvěrné klienty a veřejné. Další informace o různých typech klientů najdete v tématu [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
+Je důležité rozlišovat mezi důvěrné klienty a veřejné, protože to ovlivní, jak dlouho je možné obnovovacích tokenů. Další informace o různých typech klientů najdete v tématu [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Token životnosti s tokeny obnovení důvěrné klienta
-Důvěrné klienti jsou aplikace, které můžete bezpečně uložit heslo klienta (tajný klíč). Mohou prokázat, že požadavky přicházejí z klientské aplikace a nikoli z škodlivý objektu actor. Například webová aplikace je důvěrné klienta, protože tajný klíč klienta může ukládat na webovém serveru. Nevystavené. Protože tyto toky jsou bezpečnější, je výchozí doby platnosti tokenů aktualizace vydané tyto toky `until-revoked`, nelze změnit pomocí zásad a nebude na resetování hesla dobrovolná odvolán.
+Důvěrné klienti jsou aplikace, které můžete bezpečně uložit heslo klienta (tajný klíč). Mohou prokázat, že požadavky přicházejí od aplikace zabezpečené klienta a nikoli z škodlivý objektu actor. Například webová aplikace je důvěrné klienta, protože tajný klíč klienta může ukládat na webovém serveru. Nevystavené. Protože tyto toky jsou bezpečnější, je výchozí doby platnosti tokenů aktualizace vydané tyto toky `until-revoked`, nelze změnit pomocí zásad a nebude na resetování hesla dobrovolná odvolán.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Token životnosti s tokeny obnovení veřejné klienta
 
-Veřejné klientů nelze bezpečně uložit heslo klienta (tajný klíč). Aplikace pro iOS nebo Android nelze například obfuskováním tajný klíč z vlastníka prostředku, bude považován za veřejné klienta. Nastavení zásad pro prostředky zabrání získat nový pár tokenu přístupu nebo aktualizace tokeny obnovení z veřejné klientů starší než během zadaného období. (K tomu použijte vlastnost aktualizovat Token maximální neaktivní doba.) Zásady můžete používat i nastavit dobu, jejichž překročení se už přijata obnovovacích tokenů. (K tomu použijte vlastnost aktualizovat Token maximální stáří.) Můžete upravit dobu životnosti tokenu obnovení řídit, kdy a jak často je potřeba zadat přihlašovací údaje, místo se bezobslužně k novému ověření, při použití veřejných klientskou aplikaci uživatele.
+Veřejné klientů nelze bezpečně uložit heslo klienta (tajný klíč). Aplikace pro iOS nebo Android nelze například obfuskováním tajný klíč z vlastníka prostředku, bude považován za veřejné klienta. Nastavení zásad pro prostředky zabrání získat nový pár tokenu přístupu nebo aktualizace tokeny obnovení z veřejné klientů starší než během zadaného období. (K tomu použít vlastnost aktualizovat Token maximální neaktivní doba (`MaxInactiveTime`).) Zásady můžete používat i nastavit dobu, jejichž překročení se už přijata obnovovacích tokenů. (K tomu použijte vlastnost aktualizovat Token maximální stáří.) Můžete upravit dobu životnosti tokenu obnovení řídit, kdy a jak často je potřeba zadat přihlašovací údaje, místo se bezobslužně k novému ověření, při použití veřejných klientskou aplikaci uživatele.
 
 ### <a name="id-tokens"></a>ID tokeny
 ID tokeny jsou předány weby a nativních klientů. ID tokeny obsahovat profil informací o uživateli. ID token je vázána na konkrétní kombinaci uživatele a klienta. ID tokeny považovány za platný až do vypršení jejich platnosti. Obvykle aplikace webového odpovídá uživatele je vydán dobu platnosti relace v aplikaci na dobu životnosti tokenu ID pro uživatele. Můžete upravit dobu životnosti tokenu ID řídit, jak často webové aplikace skončí relace aplikace a jak často se vyžaduje, aby uživatel nové ověření vyžadováno s Azure AD (bezobslužná nebo interaktivní).
@@ -79,10 +79,10 @@ Zásady můžete nastavit dobu, po první relaci token vydán nad kterým je tok
 | --- | --- | --- | --- | --- | --- |
 | Životnost tokenu přístupu |AccessTokenLifetime |Přístupové tokeny, tokeny typu ID, typu SAML2 tokeny |1 hodina |10 minut |1 den |
 | Aktualizace tokenu maximální doba neaktivní |MaxInactiveTime |Obnovovacích tokenů |90 dnů |10 minut |90 dnů |
-| Single-Factor aktualizace tokenu maximální stáří |MaxAgeSingleFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolat |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu Multi-Factor aktualizace |MaxAgeMultiFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolat |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu Single-Factor relace |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny relace (trvalá nebo zajišťováno) |Dokud odvolat |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu Multi-Factor relace |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny relace (trvalá nebo zajišťováno) |Dokud odvolat |10 minut |Until-revoked<sup>1</sup> |
+| Single-Factor aktualizace tokenu maximální stáří |MaxAgeSingleFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolat |10 minut |Dokud odvolat<sup>1</sup> |
+| Maximální stáří tokenu Multi-Factor aktualizace |MaxAgeMultiFactor |Obnovovacích tokenů (pro všechny uživatele) |Dokud odvolat |10 minut |Dokud odvolat<sup>1</sup> |
+| Maximální stáří tokenu Single-Factor relace |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny relace (trvalá nebo zajišťováno) |Dokud odvolat |10 minut |Dokud odvolat<sup>1</sup> |
+| Maximální stáří tokenu Multi-Factor relace |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny relace (trvalá nebo zajišťováno) |Dokud odvolat |10 minut |Dokud odvolat<sup>1</sup> |
 
 * <sup>1</sup>365 dnů je maximální délku explicitní, které lze nastavit pro tyto atributy.
 * <sup>2</sup>Pokud **MaxAgeSessionSingleFactor** není nastaven, má tato hodnota **MaxAgeSingleFactor** hodnotu. Pokud ani parametr je nastaven, vlastnost přijímá výchozí hodnota (dokud odvolat).
@@ -108,6 +108,8 @@ Můžete vytvořit a pak mu přiřaďte zásadu životnost tokenu na konkrétní
 Další informace o vztah mezi objekty aplikací a hlavní objekty služby najdete v tématu [aplikace a služby hlavní objekty ve službě Azure Active Directory](active-directory-application-objects.md).
 
 V době, kdy se používá token je vyhodnocena token platnosti. Zásada s nejvyšší prioritou na aplikaci, která je přistupuje projeví.
+
+Všechny timespans použít se zde jsou formátovaného podle jazyka C# [časový interval](https://msdn.microsoft.com/library/system.timespan) objekt - D.HH:MM:SS.  Tak bude 80 dní až 30 minut `80.00:30:00`.  Úvodní D můžete vyřadit, pokud nula, takže 90 minut by `00:90:00`.  
 
 > [!NOTE]
 > Tady je příklad scénáře.
@@ -438,7 +440,7 @@ Odstraní zadanou zásadu.
 ### <a name="application-policies"></a>Zásady aplikací
 Následující rutiny můžete použít pro zásady aplikací.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
+#### <a name="add-azureadapplicationpolicy"></a>Přidat AzureADApplicationPolicy
 Odkazy zadanou zásadu k aplikaci.
 
 ```PowerShell

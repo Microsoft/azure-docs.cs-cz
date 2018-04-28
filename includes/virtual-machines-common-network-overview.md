@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 14aa0002ff88678bb54a3abed8bf7eeed3b717f4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b0ea0e55653e7b6087e21bd531ba3f6649d4967
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -48,7 +48,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření síťového 
 | Azure Portal | Když vytvoříte virtuální počítač na webu Azure Portal, síťové rozhraní se vytvoří automaticky (nejde použít síťovou kartu vytvořenou samostatně). Portál vytvoří virtuální počítač s jedinou síťovou kartou. Pokud chcete vytvořit virtuální počítač s více než jedním síťovým rozhraním, musíte použít jinou metodu. |
 | [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | Pomocí [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) s parametrem **-PublicIpAddressId** poskytnete identifikátor veřejné IP adresy, kterou jste vytvořili dřív. |
 | [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | Pokud chcete použít identifikátor veřejné IP adresy, kterou jste vytvořili dřív, použijte příkaz [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) s parametrem **--public-ip-address**. |
-| [Šablona](../articles/virtual-network/virtual-network-deploy-multinic-arm-template.md) | Jako vodítko při nasazování síťového rozhraní pomocí šablony použijte článek věnovaný [síťovému rozhraní ve virtuální síti s veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet). |
+| [Šablona](../articles/virtual-network/template-samples.md) | Jako vodítko při nasazování síťového rozhraní pomocí šablony použijte článek věnovaný [síťovému rozhraní ve virtuální síti s veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet). |
 
 ## <a name="ip-addresses"></a>IP adresy 
 
@@ -70,7 +70,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření IP adresy.
 | [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Veřejné IP adresy jsou ve výchozím nastavení dynamické a adresy, které jsou k nim přidružené, se mohou změnit, pokud se příslušný virtuální počítač zastaví nebo odstraní. Pokud chcete zajistit, aby virtuální počítač vždycky používal stejnou veřejnou IP adresu, vytvořte statickou veřejnou IP adresu. Ve výchozím nastavení portál při vytváření virtuálního počítače přiřadí síťovému rozhraní dynamickou privátní IP adresu. Tuto IP adresu můžete změnit na statické po vytvoření virtuálního počítače.|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | Použijte [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) s parametrem **-AllocationMethod** Dynamic nebo Static. |
 | [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | Použijte [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) s parametrem **--allocation-method** Dynamic nebo Static. |
-| [Šablona](../articles/virtual-network/virtual-network-deploy-static-pip-arm-template.md) | Jako vodítko při nasazování veřejné IP adresy pomocí šablony použijte článek věnovaný [síťovému rozhraní ve virtuální síti s veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet). |
+| [Šablona](../articles/virtual-network/template-samples.md) | Jako vodítko při nasazování veřejné IP adresy pomocí šablony použijte článek věnovaný [síťovému rozhraní ve virtuální síti s veřejnou IP adresou](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet). |
 
 Vytvořenou veřejnou IP adresu můžete přidružit k virtuálnímu počítači tak, že ji přiřadíte síťovému rozhraní.
 
@@ -112,7 +112,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření skupiny zabe
 | [Azure Portal](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md) | Když vytvoříte virtuální počítač na webu Azure Portal, automaticky se vytvoří skupina NSG a přidruží se k síťovému rozhraní, které tento portál vytvořil. Název této skupiny NSG je kombinací názvu virtuálního počítače a řetězce **-nsg**. Tato skupina NSG obsahuje jedno příchozí pravidlo s prioritou 1 000, nastavenou službou RDP, protokolem TCP, portem 3389 a akcí nastavenou na Povolit. Pokud chcete k tomuto virtuálnímu počítači povolit další příchozí provoz, musíte do této skupiny NSG přidat další pravidla. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Použijte [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityRuleConfig) a zadejte požadované informace o pravidle. K vytvoření NSG použijte [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmNetworkSecurityGroup). Ke konfiguraci NSG pro podsíť použijte [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/Set-AzureRmVirtualNetworkSubnetConfig). K přidání NSG do virtuální sítě použijte [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork). |
 | [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | K úvodnímu vytvoření NSG použijte [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create). Pro přidání pravidel k NSG použijte [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create). K přidání NSG do podsítě použijte [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update). |
-| [Šablona](../articles/virtual-network/virtual-networks-create-nsg-arm-template.md) | Jako vodítko při nasazování skupiny zabezpečení sítě pomocí šablony použijte článek věnovaný [vytvoření skupiny zabezpečení sítě](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create). |
+| [Šablona](../articles/virtual-network/template-samples.md) | Jako vodítko při nasazování skupiny zabezpečení sítě pomocí šablony použijte článek věnovaný [vytvoření skupiny zabezpečení sítě](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create). |
 
 ## <a name="load-balancers"></a>Nástroje pro vyrovnávání zatížení
 
@@ -163,7 +163,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření virtuálníh
 | [Azure CLI](../articles/virtual-machines/linux/create-cli-complete.md) | Vytvořit a připojit virtuální počítač do virtuální sítě, podsítě a síťový adaptér, který vytvořit jako jednotlivé kroky. |
 | [Šablona](../articles/virtual-machines/windows/ps-template.md) | Jako vodítko při nasazování virtuálního počítače pomocí šablony použijte článek věnovaný [velmi jednoduchému nasazení virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows). |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Specifické pro virtuální počítač pokyny o tom, jak spravovat virtuální sítě Azure pro virtuální počítače najdete v tématu [Windows](../articles/virtual-machines/windows/tutorial-virtual-network.md) nebo [Linux](../articles/virtual-machines/linux/tutorial-virtual-network.md) kurzy.
 
 Existují také kurzy o tom, jak virtuální počítače Vyrovnávání zatížení a vytvořit vysoce dostupné aplikace pro [Windows](../articles/virtual-machines/windows/tutorial-load-balancer.md) nebo [Linux](../articles/virtual-machines/linux/tutorial-load-balancer.md).

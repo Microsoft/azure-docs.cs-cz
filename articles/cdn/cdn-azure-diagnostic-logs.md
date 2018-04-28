@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -113,7 +113,7 @@ Následující příklad ukazuje postup povolení diagnostických protokolů pro
 
 Nejdřív se přihlaste a vyberte předplatné:
 
-    Login-AzureRmAccount 
+    Connect-AzureRmAccount 
 
     Select-AzureSubscription -SubscriptionId 
 

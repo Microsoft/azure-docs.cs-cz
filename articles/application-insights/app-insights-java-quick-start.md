@@ -1,8 +1,8 @@
 ---
-title: "Rychlý start pro Azure Application Insights | Dokumentace Microsoftu"
-description: "Pokyny pro rychlé nastavení webové aplikace v Javě pro monitorování s využitím Application Insights"
+title: Rychlý start pro Azure Application Insights | Microsoft Docs
+description: Pokyny pro rychlé nastavení webové aplikace v Javě pro monitorování s využitím Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: daf7fb88b41ca21ea08e1368215578971032e47d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0198614f34b5e4ad31d9cf19f6799913dc71e21f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -26,8 +26,8 @@ Tento rychlý start vás provede přidáním sady Application Insights SDK do ex
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-- Nainstalujte si Oracle JRE 1.6 nebo novější nebo Zulu JRE 1.6 nebo novější.
-- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Oxygen (4.7).
+- Instalace JRE 1.7 nebo 1.8
+- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento rychlý start používá Eclipse Oxygen (4.7).
 - Budete potřebovat předplatné Azure a dynamický webový projekt v Javě.
  
 Pokud dynamický webový projekt v Javě nemáte, můžete si ho vytvořit pomocí [rychlého startu pro vytvoření webové aplikace v Javě](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java).
@@ -63,7 +63,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Formulář Nový prostředek App Insights](./media/app-insights-java-quick-start/000-j.png)
 
-2. Zkopírujte ```http://dl.microsoft.com/eclipse``` do pole Práce s. Zaškrtněte **Azure Toolkit for Java**, vyberte **Application Insights Plugin for Java** >  **a zrušte zaškrtnutí** Contact all update sites during install to find required software (Během instalace kontaktovat všechny weby aktualizace a zjistit požadovaný software).
+2. Zkopírujte ```http://dl.microsoft.com/eclipse``` do pole Práce s. Zaškrtněte **Azure Toolkit for Java**, vyberte **Application Insights Plugin for Java** > **a zrušte zaškrtnutí**Contact all update sites during install to find required software (Během instalace kontaktovat všechny weby aktualizace a zjistit požadovaný software).
 
 3. Po dokončení instalace se zobrazí výzva k **restartování prostředí Eclipse**.
 

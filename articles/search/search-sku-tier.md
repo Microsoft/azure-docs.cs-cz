@@ -1,25 +1,19 @@
 ---
-title: "Zvolte SKU nebo cenovou úroveň pro službu Azure Search | Microsoft Docs"
-description: "Vyhledávání systému Azure se dá zřídit na tyto identifikátory SKU: volné, Basic a Standard, kde Standard je k dispozici v různých konfigurace prostředků a kapacity úrovně."
+title: Zvolte SKU nebo cenovou úroveň pro službu Azure Search | Microsoft Docs
+description: 'Vyhledávání systému Azure se dá zřídit na tyto identifikátory SKU: volné, Basic a Standard, kde Standard je k dispozici v různých konfigurace prostředků a kapacity úrovně.'
 services: search
-documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6fe41a8c4d184fef4d1bb0a12fed44a49ef8a6da
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Zvolte SKU nebo cenovou úroveň pro službu Azure Search.
 Ve službě Azure Search [je služba zřízena](search-create-service-portal.md) na konkrétní cenová úroveň nebo SKU. Mezi možnosti patří **volné**, **základní**, nebo **standardní**, kde **standardní** je k dispozici v několika konfigurace a kapacity.
@@ -56,7 +50,7 @@ Odhady v dolním má následující kroky zjednodušit proces:
 ## <a name="sku-descriptions"></a>Popisy SKU
 Následující tabulka obsahuje popis každého vrstvy.
 
-| Úroveň | Primární scénáře |
+| Vrstva | Primární scénáře |
 | --- | --- |
 | **Volné** |Sdílené služby, bez poplatků, používat pro vyhodnocení, šetření nebo malé úlohy. Vzhledem k tomu, že jsou sdílena s další odběratele, propustnost dotazu a indexování se liší podle uživatele, kteří je pomocí služby. Kapacita je malý (50 MB nebo 3 indexy s až 10 000 dokumentů. každý). |
 | **Basic** |Malé produkční úlohy na vyhrazeném hardwaru. Vysoce dostupný. Kapacita je až 3 repliky a 1 oddílu (2 GB). |
@@ -78,9 +72,9 @@ Následující graf je podmnožinou omezení z [omezení služby ve službě Azu
 | Smlouva SLA |Ne <sup>1</sup> |Ano |Ano |Ano |Ano |Ano |
 | Omezení indexu |3 |5 |50 |200 |200 |1000 <sup>2</sup> |
 | Omezení dokumentů vztahuje |10 000 celkem |1 milion pro službu |15 milionů na oddíly |60 milionů na oddíly |120 milionů na oddíly |1 milion na index |
-| Maximální oddíly |Není k dispozici |1 |12 |12 |12 |3 <sup>2</sup> |
+| Maximální oddíly |neuvedeno |1 |12 |12 |12 |3 <sup>2</sup> |
 | Velikost oddílu |Celkový počet 50 MB |2 GB pro službu |25 GB na oddíly |100 GB na oddíl (až do maximálního počtu 1.2 TB pro službu) |200 GB na oddíl (až do maximálního počtu 2.4 TB pro službu) |200 GB (až do maximálního počtu 600 GB pro službu) |
-| Maximální repliky |Není k dispozici |3 |12 |12 |12 |12 |
+| Maximální repliky |neuvedeno |3 |12 |12 |12 |12 |
 
 <sup>1</sup> volné vrstvy a preview funkce není součástí smlouvy o úrovni služeb (SLA). Pro všechny fakturovatelné úrovně SLA projeví při zřizování dostatečná redundance pro vaši službu. Dvě nebo více replik jsou požadovány pro SLA dotazu (načíst). Tři nebo více replik jsou požadovány pro dotazy a indexování smlouvy o úrovni služeb (pro čtení a zápis). Počet oddílů není k posouzení SLA. 
 

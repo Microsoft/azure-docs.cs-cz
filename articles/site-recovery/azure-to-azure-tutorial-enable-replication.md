@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure (Preview)
 
@@ -77,7 +74,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Odchozí připojení pro rozsahy IP adres
 
-Při použití proxy serveru, pravidel NSG nebo brány firewall založených na IP adresách k řízení odchozího připojení je potřeba přidat na seznam povolených následující rozsahy IP adres. Seznam rozsahů si můžete stáhnout na následujících odkazech:
+Pokud chcete řídit odchozí připojení pomocí IP adres místo adres URL, přidejte na seznam povolených pro brány firewall založené na protokolu IP, proxy servery nebo pravidla NSG odpovídající rozsahy datacenter, adresy Office 365 a adresy koncových bodů služby.
 
   - [Rozsahy IP adres datacentra Microsoft Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [Rozsahy IP adres datacentra Windows Azure v Německu](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ Při použití proxy serveru, pravidel NSG nebo brány firewall založených na 
   - [Adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP adresy koncových bodů služby Site Recovery](https://aka.ms/site-recovery-public-ips)
 
-Pomocí těchto seznamů ve své síti nakonfigurujte řízení přístupu k sítím. Požadovaná pravidla NSG můžete vytvořit pomocí tohoto [skriptu](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702).
+Požadovaná pravidla NSG můžete vytvořit pomocí tohoto [skriptu](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702).
 
 ## <a name="verify-azure-vm-certificates"></a>Ověření certifikátů virtuálních počítačů Azure
 
@@ -105,7 +102,7 @@ Azure Site Recovery poskytuje pro řízení operací správy Site Recovery tři 
 
 - **Čtenář Site Recovery** – Tato role má oprávnění zobrazit všechny operace správy Site Recovery. Tato role je nejvhodnější pro vedoucí monitorování IT, kteří můžou monitorovat aktuální stav ochrany a vydávat lístky podpory.
 
-Další informace o [předdefinovaných rolích Azure RBAC](../active-directory/role-based-access-built-in-roles.md)
+Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access-control/built-in-roles.md)
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -144,9 +141,9 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 - **Účty úložiště mezipaměti:** Site Recovery používá účet úložiště ve zdrojové oblasti. Do tohoto účtu se odešlou změny zdrojových virtuálních počítačů před replikací o cílového umístění.
 
-- **Cíl účty úložiště (Pokud je zdrojový počítač nepoužívá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří nový účet úložiště v cílová oblast pro zrcadlení zdrojový účet úložiště virtuálního počítače.
+- **Cílové účty úložiště (pokud zdrojový virtuální počítač nepoužívá spravované disky):** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti nový účet úložiště zrcadlící účet úložiště zdrojového virtuálního počítače.
 
-- **Repliky spravované disky (Pokud zdrojového virtuálního počítače používá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří repliky spravované disky v oblasti cíl pro zrcadlení zdrojového Virtuálního počítače spravované disků se stejným typem úložiště (Standard nebo premium) jako spravované zdrojového virtuálního počítače disk.
+- **Repliky spravovaných disků (pokud zdrojový virtuální počítač používá spravované disky):** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti repliky spravovaných disků zrcadlící spravované disky zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako u spravovaných disků zdrojového virtuálního počítače.
 
 - **Cílové skupiny dostupnosti:** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu dostupnosti s příponou asr. Skupiny dostupnosti můžete přidávat pouze v případě, že jsou virtuální počítače ve zdrojové oblasti součástí sady.
 
@@ -176,7 +173,7 @@ Pokud chcete přepsat výchozí nastavení zásad replikace, klikněte na **Při
 
 3. V části **Nastavení** > **Replikované položky** můžete zobrazit stav virtuálních počítačů a průběh počáteční replikace. Kliknutím na virtuální počítač přejdete k podrobnostem o jeho nastavení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pro virtuální počítač Azure nakonfigurovali zotavení po havárii. Dalším krokem je test vaší konfigurace.
 

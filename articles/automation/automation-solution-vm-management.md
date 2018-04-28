@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) ve službě Azure Automation
 
@@ -54,16 +54,15 @@ Proveďte následující kroky k přidání spuštění a zastavení virtuální
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 1. **Přidat řešení** se zobrazí stránka. Zobrazí se výzva ke konfiguraci řešení, než můžete ho importovat do vašeho předplatného automatizace.
+
    ![Stránka Přidat řešení pro správu virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+
 1. Na **přidat řešení** vyberte **prostoru**. Vyberte pracovní prostor analýzy protokolů, propojené stejného předplatného Azure, zda má účet Automation v. Pokud nemáte pracovního prostoru, vyberte **vytvořit nový pracovní prostor**. Na **pracovním prostorem OMS** stránky, proveďte následující kroky:
    * Zadejte název pro nový **pracovní prostor OMS**.
    * Vyberte **předplatné** propojení s výběrem z rozevíracího seznamu, pokud výchozí vybraný není vhodná.
    * Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte nějaký existující.
    * Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada centrální**, **střed**, **východní USA**, **Japonsko – východ**, **jihovýchodní Asie**, **Spojené království – jih**, a **západní Evropa**.
-   * Vyberte možnost u položky **Cenová úroveň**. Řešení nabízí dvě úrovně: **volné** a **na uzel (OMS)**. Úroveň Free limit je množství shromažďovaných dat denně, dobu uchování a minut runtime úlohy sady runbook. Vrstvě podle uzlu nemá na množství dat denně shromážděných omezení.
-
-        > [!NOTE]
-        > I když za GB (samostatně) placené vrstvy se zobrazí jako možnost, není použitelný. Pokud ji vyberete a pokračujte vytvoření tohoto řešení v rámci vašeho předplatného, dojde k chybě. Problém bude odstraněn po oficiálním vydání tohoto řešení. Toto řešení pouze používá automatizace úloh minut a přijímání protokolu. Nepřidává žádné další další uzly pro vaše prostředí.
+   * Vyberte možnost u položky **Cenová úroveň**. Vyberte **za GB (samostatně)** možnost. Byl aktualizován analýzy protokolů [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a vrstvě za GB je jedinou možností.
 
 1. Po zadání požadovaných informací na **pracovním prostorem OMS** klikněte na tlačítko **vytvořit**. V části jeho průběh můžete sledovat **oznámení** v nabídce, která vám vrací **přidat řešení** stránky po dokončení.
 1. Na **přidat řešení** vyberte **účet Automation**. Pokud vytváříte nový pracovní prostor analýzy protokolů, budete muset taky vytvořit nový účet Automation se k ní přidružena. Vyberte **vytvořit účet Automation**a na **účet Automation přidat** stránky, zadejte následující:
@@ -80,6 +79,9 @@ Proveďte následující kroky k přidání spuštění a zastavení virtuální
    * Zadejte **seznamu vyloučení virtuálních počítačů (string)**. Toto je název jednoho nebo více virtuálních počítačů z cílové skupiny prostředků. Můžete zadat více než jeden název a oddělit každou oddělte čárkou (hodnoty nejsou malá a velká písmena). Pomocí zástupného znaku je podporována. Tato hodnota je uložena v **External_ExcludeVMNames** proměnné.
    * Vyberte **plán**. Toto je opakovaný datum a čas spuštění a zastavení virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je plán nakonfigurovaná na časové pásmo UTC. Vybrat jinou oblast, není k dispozici. Konfigurace plánu pro konkrétní časové pásmo po dokončení konfigurace řešení, najdete v části [úprava plán spuštění a vypnutí](#modify-the-startup-and-shutdown-schedule).
    * Pro příjem **e-mailová oznámení** z Sendgridu, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** ale rozhodnout později, že chcete dostávat e-mailová oznámení, můžete aktualizovat **External_EmailToAddress** proměnná s platnou e-mailové adresy oddělené čárkou a potom Upravit proměnnou **External_IsSendEmail** s hodnotou **Ano**.
+
+> [!IMPORTANT]
+> Výchozí hodnota pro **cílové názvy ResourceGroup** je **&ast;**. To cílí všechny virtuální počítače v předplatném. Pokud nechcete, aby řešení pro všechny virtuální počítače ve vašem předplatném tato hodnota se musí aktualizovat, aby seznam názvy skupin prostředků před povolením plány.
 
 1. Po nakonfigurování počátečního nastavení potřebné pro řešení, klikněte na tlačítko **OK** zavřete **parametry** a vyberte **vytvořit**. Po ověření jsou všechna nastavení, je řešení nasazeno do vašeho předplatného. Tento proces může trvat několik sekund a v jeho průběh můžete sledovat **oznámení** z nabídky.
 
@@ -175,7 +177,7 @@ Následující tabulka uvádí sady runbook nasadit do vašeho účtu Automation
 
 Zahrnout všechny nadřízené runbooky *WhatIf* parametr. Pokud nastavíte hodnotu **True**, *WhatIf* podporuje s podrobnostmi o přesné chování sada runbook provede při spuštění bez *WhatIf* parametr a ověří správnou probíhá virtuální počítače cílem. Sady runbook pouze provede jeho definované akce při *WhatIf* parametr je nastaven na **False**.
 
-|**Runbook** | **Parametry** | **Popis**|
+|**sady runbook** | **Parametry** | **Popis**|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volat z nadřízeného runbooku. Tato sada runbook vytvoří výstrahy na základě za prostředků pro scénář AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla výstrah na virtuálních počítačích v cílových skupinách, předplatné nebo prostředek. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
@@ -190,7 +192,7 @@ Zahrnout všechny nadřízené runbooky *WhatIf* parametr. Pokud nastavíte hodn
 
 Následující tabulka uvádí proměnných vytvořené v účtu Automation. Pouze upravte proměnné předponu **externí**. Úprava proměnné předponu **interní** způsobí, že nežádoucí účinky.
 
-|**Variable** | **Popis**|
+|**Proměnná** | **Popis**|
 ---------|------------|
 |External_AutoStop_Condition | Podmíněný operátor vyžaduje pro konfiguraci stavu před spuštěním výstrahu. Přípustné hodnoty jsou **GreaterThan**, **GreaterThanOrEqual**, **LessThan**, a **LessThanOrEqual**.|
 |External_AutoStop_Description | Výstrahu, kterou chcete zastavit virtuální počítač, pokud procento využití procesoru překročí prahovou hodnotu.|
@@ -226,7 +228,7 @@ Všechny plány, by neměla být povolena, protože to může vytvořit překrý
 |Scheduled_StopVM | Uživatelem definované denně | Ke spuštění sady runbook Scheduled_Parent s parametrem *Zastavit* každý den v určeném čase. Automaticky zastaví všechny virtuální počítače, které splňují pravidla definované proměnné asset. Měli byste povolit související plán **naplánovaná-StartVM**.|
 |Scheduled_StartVM | Uživatelem definované denně | Ke spuštění sady runbook Scheduled_Parent s parametrem *spustit* každý den v určeném čase.  Všechny virtuální počítače, které splňují pravidla definované odpovídající proměnné se automaticky spustí. Měli byste povolit související plán **naplánovaná StopVM**.|
 |Sekvencování StopVM | 1:00 AM (UTC), každý pátek | Ke spuštění sady runbook Sequenced_Parent s parametrem *Zastavit* každý pátek v určeném čase. Postupně (vzestupně) zastaví všechny virtuální počítače s značky **SequenceStop** definované odpovídající proměnné. Informace naleznete v sekci sady Runbook další podrobnosti o značky hodnoty a proměnné asset. Měli byste povolit související plán **Sequenced-StartVM**.|
-|Sequenced-StartVM | 1:00 PM (UTC), každé pondělí | Ke spuštění sady runbook Sequenced_Parent s parametrem *spustit* každé pondělí v určeném čase. Postupně (sestupně) začíná značku ze všech virtuálních počítačů **SequenceStart** definované odpovídající proměnné. Informace naleznete v sekci sady Runbook další podrobnosti o značky hodnoty a proměnné asset. Měli byste povolit související plán **Sequenced StopVM**.|
+|Sekvencování StartVM | 1:00 PM (UTC), každé pondělí | Ke spuštění sady runbook Sequenced_Parent s parametrem *spustit* každé pondělí v určeném čase. Postupně (sestupně) začíná značku ze všech virtuálních počítačů **SequenceStart** definované odpovídající proměnné. Informace naleznete v sekci sady Runbook další podrobnosti o značky hodnoty a proměnné asset. Měli byste povolit související plán **Sequenced StopVM**.|
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 

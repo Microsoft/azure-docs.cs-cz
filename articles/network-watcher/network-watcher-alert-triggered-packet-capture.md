@@ -1,11 +1,11 @@
 ---
-title: "Pomocí zachytáváním paketů provádět monitorování proaktivní sítě pomocí výstrah a Azure Functions | Microsoft Docs"
-description: "Tento článek popisuje, jak vytvořit zaznamenání výstrahy spouštěná paketů s sledovací proces sítě Azure"
+title: Pomocí zachytáváním paketů provádět monitorování proaktivní sítě pomocí výstrah a Azure Functions | Microsoft Docs
+description: Tento článek popisuje, jak vytvořit zaznamenání výstrahy spouštěná paketů s sledovací proces sítě Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c96ca70b9b6a82dcccec443ac0b1e06f96a2396
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použít zachytáváním paketů pro monitorování proaktivní sítě pomocí výstrah a Azure Functions
 
@@ -61,7 +61,7 @@ Tento scénář provede následující akce:
 * Vytvoří Azure funkci, která se spouští zachytáváním paketů.
 * Vytvoří pravidlo výstrahy na virtuálním počítači a nakonfiguruje pravidlo výstrahy pro volání funkce Azure.
 
-## <a name="create-an-azure-function"></a>Vytvoření Azure funkce
+## <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
 Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvořit zachytáváním paketů.
 
@@ -289,7 +289,7 @@ V následujícím příkladu je prostředí PowerShell kód, který můžete pou
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert

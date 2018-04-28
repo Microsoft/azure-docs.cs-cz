@@ -1,11 +1,11 @@
 ---
-title: "Služba Azure AD v2.0 .NET webové přihlášení aplikace Začínáme | Microsoft Docs"
-description: "Postup vytvoření webové aplikace MVC .NET, která podepisuje uživatele přihlašují pomocí Account Microsoft i osobní a pracovní nebo školní účty."
+title: Služba Azure AD v2.0 .NET webové přihlášení aplikace Začínáme | Microsoft Docs
+description: Postup vytvoření webové aplikace MVC .NET, která podepisuje uživatele přihlašují pomocí Account Microsoft i osobní a pracovní nebo školní účty.
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>Přidání přihlašování do webové aplikace .NET MVC
 S koncovým bodem v2.0 můžete rychle přidat ověřování do vaší webové aplikace s podporou pro oba osobní účty Microsoft a pracovní nebo školní účty.  V aplikacích ASP.NET web můžete to provést pomocí middlewaru OWIN společnosti Microsoft, zahrnutá v rozhraní .NET Framework 4.5.

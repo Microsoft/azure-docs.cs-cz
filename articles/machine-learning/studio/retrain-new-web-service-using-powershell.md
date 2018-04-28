@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7fa93e138bc9feb66c200597119bb12dbaf00480
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 865243a10bd5043ca04c392c043b37772271f68f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Přeučování nového správce prostředků na základě webové službě pomocí rutin prostředí PowerShell správu Machine Learning
-Pokud jste přeučování novou webovou službu, je aktualizovat definice prediktivní webové služby, chcete-li nový trained model.  
+Pokud jste přeučování novou webovou službu, je aktualizovat definice prediktivní webové služby, chcete-li nový trained model.
 
 ## <a name="prerequisites"></a>Požadavky
-Musíte vytvořit výukový experiment a prediktivní experiment, jak je znázorněno v [Machine Learning Přeučování modelů prostřednictvím kódu programu](retrain-models-programmatically.md). 
+Musíte vytvořit výukový experiment a prediktivní experiment, jak je znázorněno v [Machine Learning Přeučování modelů prostřednictvím kódu programu](retrain-models-programmatically.md).
 
 > [!IMPORTANT]
-> Prediktivní experiment musí být nasazený jako počítač Azure Resource Manager (Nový) na základě učení webové služby. K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md). 
+> Prediktivní experiment musí být nasazený jako počítač Azure Resource Manager (Nový) na základě učení webové služby.
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md).
 
 Další informace o nasazení webové služby, najdete v části [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
 
@@ -48,7 +49,7 @@ Postup, kterým jsou:
 6. Aktualizovat webovou službu pomocí nové definice webové služby
 
 ## <a name="sign-in-to-your-azure-resource-manager-account"></a>Přihlaste se k účtu Azure Resource Manager
-Musíte se nejdřív přihlásit k účtu Azure z v prostředí PowerShell pomocí [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) rutiny.
+Musíte se nejdřív přihlásit k účtu Azure z v prostředí PowerShell pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
 
 ## <a name="get-the-web-service-definition"></a>Získat definice webové služby
 V dalším kroku získat voláním webové služby [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) rutiny. Definice webové služby je interní reprezentací pro cvičný model webové služby a není přímo změn. Ujistěte se, že jsou načítání definice webové služby prediktivní experiment a není experimentu školení.

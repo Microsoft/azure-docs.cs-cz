@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
+ms.date: 04/24/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f87487c4ee56ae90eb5825b0e77610fac73bd3fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Volitelné deklarace identity ve službě Azure AD (preview)
 
@@ -65,7 +65,9 @@ Níže jsou uvedeny sadu volitelné deklarací identity ve výchozím nastavení
 | `fwd`                      | IP adresa.  Přidá původní adresu IPv4 klienta, který (uvnitř virtuální sítě)                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | Země uživatele                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | Země prostředků klienta                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
+| `acct`    | Stav účtu uživatele v klientovi.  Pokud je uživatel členem skupiny klienta, je hodnota `0`.  Pokud jsou hosta, hodnota je `1`.  | JWT, SAML | | |
 | `upn`                      | UserPrincipalName deklarace identity.  I když tento požadavek je automaticky zahrnuty, můžete je zadat jako deklaraci identity volitelné připojit další vlastnosti, jimiž upravíte jeho chování v případě, že uživatel guest. | JWT, SAML  |           | Další vlastnosti: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>Volitelné deklarace identity v2.0
 Tyto deklarace identity jsou vždy součástí tokeny verze 1.0, ale jsou odebrány z v2.0 tokenů, pokud požadovaný.  Tyto deklarace platí pouze pro tokeny Jwt (ID tokeny a přístupové tokeny).  
 
@@ -78,9 +80,9 @@ Tyto deklarace identity jsou vždy součástí tokeny verze 1.0, ale jsou odebr�
 | `pwd_exp`     | Čas vypršení platnosti hesla        | Datum a čas, kdy vyprší platnost hesla.                                                                                    |       |
 | `pwd_url`     | Adresy URL pro změnu hesla             | Adresu URL, která uživatel navštívit změnit své heslo.                                                                        |       |
 | `in_corp`     | Uvnitř podnikové sítě        | Signály, pokud je klient přihlášení z podnikové sítě. Pokud tomu tak není, deklarace identity není zahrnutý                     |       |
-| `nickname`    | Nickname                        | Další jméno pro uživatele, nezávisle na jméno nebo příjmení.                                                             |       |                                                                                                                |       |
+| `nickname`    | Přezdívka                        | Další jméno pro uživatele, nezávisle na jméno nebo příjmení.                                                             |       |                                                                                                                |       |
 | `family_name` | Příjmení                       | Jak jsou definovány v objektu uživatele Azure AD, poskytuje poslední jméno, příjmení nebo příjmení uživatele. <br>"family_name": "Lukeš" |       |
-| `given_name`  | Jméno                      | Poskytuje první nebo "zadány" jméno uživatele, nastavené na objekt uživatele Azure AD.<br>"given_name": "Frank"                   |       |
+| `given_name`  | Jméno                      | Poskytuje první nebo "zadány" jméno uživatele, nastavené na objekt uživatele Azure AD.<br>"given_name": "Jan"                   |       |
 
 ### <a name="additional-properties-of-optional-claims"></a>Další vlastnosti volitelné deklarací identity
 

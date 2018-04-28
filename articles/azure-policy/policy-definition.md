@@ -3,17 +3,17 @@ title: Azure definice strukturu zásad. | Microsoft Docs
 description: Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaká opatření se mají provést.
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
-ms.date: 01/17/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/18/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8b89e1c8ccfcfd7b53ecdd9172590424d1c7ae4c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -67,7 +67,7 @@ Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samp
 ## <a name="mode"></a>Mode
 
 **Režimu** Určuje, jaké typy prostředků se vyhodnotí pro zásadu. Podporované režimy jsou:
-* `all`: vyhodnocení skupiny prostředků a všechny typy prostředků 
+* `all`: vyhodnocení skupiny prostředků a všechny typy prostředků
 * `indexed`: pouze vyhodnotit typy prostředků, které podporují značky a umístění
 
 Doporučujeme, abyste nastavili **režimu** k `all` ve většině případů. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, budete muset zadat **režimu** parametr ručně. Pokud definice zásady neobsahuje **režimu** hodnota je výchozí hodnota je `indexed` pro zpětné kompatibility.
@@ -346,8 +346,8 @@ Vlastnost aliasy používáte pro přístup k vlastnosti specifické pro typ pro
 
 | Alias | Popis |
 | ----- | ----------- |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Nastavte celkový sdílené DTU fondu elastické databáze. |
-| servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Nastavte edici elastického fondu. |
+| servery nebo elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Nastavte celkový sdílené DTU fondu elastické databáze. |
+| servery nebo elasticpools | Microsoft.Sql/servers/elasticPools/edition | Nastavte edici elastického fondu. |
 
 **Microsoft.Storage/storageAccounts.**
 

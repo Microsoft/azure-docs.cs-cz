@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 5d1af5ae008fb2811f1ae59396a03833b8c1b15f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ff8b8ffc66ea4c90ca2f11edc36aac670f24eac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -208,7 +208,7 @@ Tato část obsahuje příklady o různých způsobech skriptových akcí může
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Použití akce skriptu z šablon Azure Resource Manageru
 
-Akce skriptu lze pomocí šablon Azure Resource Manager. Příklad, naleznete v části [ https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/ ](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
+Akce skriptu lze pomocí šablon Azure Resource Manager. Příklad, naleznete v části [ https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/ ](https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/).
 
 V tomto příkladu je přidána akce skriptu, pomocí následujícího kódu:
 

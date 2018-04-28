@@ -1,13 +1,13 @@
 ---
-title: "Referenční informace pro vývojáře JavaScript pro Azure Functions | Microsoft Docs"
-description: "Pochopit, jak vyvíjet funkce pomocí jazyka JavaScript."
+title: Referenční informace pro vývojáře JavaScript pro Azure Functions | Microsoft Docs
+description: Pochopit, jak vyvíjet funkce pomocí jazyka JavaScript.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů"
+editor: ''
+tags: ''
+keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
 ms.devlang: nodejs
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e593f58f6b92e562067401381cfce06d5fb18e29
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka vývojáře Azure funkce JavaScript
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Možnosti JavaScript Azure Functions umožňuje snadno exportovat funkci, která se předá jako `context` objekt pro komunikaci s modulem runtime a pro příjem a odesílání dat přes vazby.
 
@@ -119,7 +118,7 @@ Umožňuje zapisovat do protokolů streamování konzoly na výchozí úrovni tr
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **Chyba (_zpráva_)**   | Zapíše chyba úroveň protokolování nebo nižší.   |
-| **warn(_message_)**    | Zapíše do varovná úroveň protokolování nebo nižší. |
+| **warn (_zpráva_)**    | Zapíše do varovná úroveň protokolování nebo nižší. |
 | **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
 | **verbose (_zpráva_)** | Zapíše na podrobné úrovni protokolování.           |
 
@@ -211,7 +210,7 @@ HTTP a aktivační události webhooku a HTTP výstupu vazby používají žádos
 | _Text_        | Objekt, který obsahuje text žádosti.               |
 | _Záhlaví_     | Objekt, který obsahuje hlavičky žádosti.                   |
 | _– Metoda_      | Metoda HTTP požadavku.                                |
-| _originalUrl_ | Adresa URL požadavku.                                        |
+| _PůvodníAdresaURL_ | Adresa URL požadavku.                                        |
 | _params_      | Objekt, který obsahuje parametry směrování žádosti. |
 | _Dotaz_       | Objekt, který obsahuje parametry dotazu.                  |
 | _rawBody_     | Tělo zprávy jako řetězec.                           |

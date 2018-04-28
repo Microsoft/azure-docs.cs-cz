@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub Glosář termínů | Microsoft Docs"
-description: "Příručka vývojáře – Glosář běžných termínů týkající se Azure IoT Hub."
+title: Azure IoT Hub Glosář termínů | Microsoft Docs
+description: Příručka vývojáře – Glosář běžných termínů týkající se Azure IoT Hub.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 828489510cea16ebba1944c0e6d1fc88f9375fc7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 V tomto článku jsou uvedeny některé z běžných termínů používaných v článcích IoT Hub.
@@ -36,7 +36,7 @@ V tomto článku jsou uvedeny některé z běžných termínů používaných v 
 ## <a name="azure-iot-device-sdks"></a>Azure SDK zařízení IoT
 Existují _sady SDK pro zařízení_ k dispozici více jazyků, které vám umožní vytvořit [aplikací pro zařízení](#device-app) které komunikují s služby IoT hub. IoT Hub kurzy vám ukážou, jak používat tyto sady SDK zařízení. Zdrojový kód a další informace o zařízení sady SDK můžete najít v této Githubu [úložiště](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-service-sdks"></a>Azure IoT service SDKs
+## <a name="azure-iot-service-sdks"></a>Služby sady SDK služby Azure IoT
 Existují _služby sady SDK_ k dispozici více jazyků, které vám umožní vytvořit [back-end aplikace](#back-end-app) které komunikují s služby IoT hub. IoT Hub kurzy vám ukážou, jak používat tyto služby SDK. Zdrojový kód a další informace o sadách SDK služby můžete najít v této Githubu [úložiště](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -110,6 +110,9 @@ Data zařízení odkazuje na zařízení data uložená ve službě IoT Hub [reg
 ## <a name="device-identity"></a>Identita zařízení
 Identita zařízení je jedinečný identifikátor přiřazený k každé zařízení registrovaná v [registru identit](#identity-registry).
 
+## <a name="module-identity"></a>Modul identity
+Identita modulu je jedinečný identifikátor přiřazený k každý modul, který patří do zařízení. Modul identity se registruje v [registru identit](#identity-registry).
+
 ## <a name="device-management"></a>Správa zařízení
 Správa zařízení zahrnuje celý životní spojené se správou zařízení ve vašem řešení IoT, včetně plánování, zřizování, konfiguraci, monitorování a vyřazení.
 
@@ -125,14 +128,17 @@ Zřizování zařízení je proces přidávání počáteční [data zařízení
 ## <a name="device-twin"></a>Dvojče zařízení
 A [dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON, který ukládá informace o stavu zařízení například metadata, konfigurace a podmínky. [IoT Hub](#iot-hub) potrvají dvojče zařízení pro každé zařízení, která zřídit ve službě IoT hub. Dvojčata zařízení umožňují synchronizovat [zařízení podmínky](#device-condition) a konfigurací mezi zařízením a řešení back-end. Můžete dotazovat dvojčata zařízení dotaz na stav dlouhotrvající operace a vyhledat konkrétní zařízení.
 
-## <a name="device-twin-queries"></a>Dotazy twin zařízení
-[Dotazy twin zařízení](iot-hub-devguide-query-language.md) načítat informace z vašeho dvojčata zařízení pomocí dotazovacího jazyka SQL jako IoT Hub. Stejný dotaz jazyk IoT Hub můžete použít k načtení informací o [úlohy](#job) spuštěná ve službě IoT hub.
+## <a name="module-twin"></a>Modul twin
+Podobně jako u dvojče zařízení, modul twin je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub trvá twin modulu pro každou identitu modulu, který zřídíte pod identitou zařízení ve službě IoT hub. Modul dvojčata umožňují synchronizovat modul podmínky a konfigurací mezi modul a back-end řešení. Modul dvojčata vyhledat konkrétní moduly a dotaz na stav dlouhotrvající operace se můžete dotazovat.
+
+## <a name="twin-queries"></a>Dotazy Twin
+[Zařízení a modul dotazů twin](iot-hub-devguide-query-language.md) použít k načtení informací z dvojčata zařízení nebo modul dvojčata dotazovacího jazyka SQL jako IoT Hub. Stejný dotaz jazyk IoT Hub můžete použít k načtení informací o [úlohy](#job) spuštěná ve službě IoT hub.
 
 ## <a name="device-twin-rest-api"></a>Rozhraní API REST Twin zařízení
 Můžete použít [zařízení Twin REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) z řešení back-end ke správě vašeho dvojčata zařízení. Rozhraní API umožňuje načíst a aktualizovat [dvojče zařízení](#device-twin) vlastnosti a vyvolání [přímé metody](#direct-method). Obvykle, měli byste použít jeden z vyšší úrovni [služby sady SDK](#azure-iot-service-sdks) jak je znázorněno v kurzech IoT Hub.
 
-## <a name="device-twin-synchronization"></a>Synchronizace zařízení twin
-Používá dvojici synchronizaci zařízení [potřeby vlastnosti](#desired-properties) ve vaší dvojčata zařízení ke konfiguraci zařízení a načíst [hlášené vlastnosti](#reported-properties) z vašich zařízení k uložení v dvojče zařízení.
+## <a name="twin-synchronization"></a>Synchronizace Twin
+Twin synchronizace používá [potřeby vlastnosti](#desired-properties) v dvojčata zařízení nebo modul dvojčata ke konfiguraci zařízení nebo moduly a načíst [hlášené vlastnosti](#reported-properties) z nich uložit twin.
 
 ## <a name="direct-method"></a>Přímá metoda
 A [přímá metoda](iot-hub-devguide-direct-methods.md) je způsob můžete aktivovat metodu spusťte na zařízení tak, že volání rozhraní API ve službě IoT hub.

@@ -1,13 +1,13 @@
 ---
-title: "Ověření propustnost sítě VPN do virtuální sítě Microsoft Azure | Microsoft Docs"
-description: "Účelem tohoto dokumentu je pomoct uživatele ověřit propustnost sítě ze svých místních prostředků pro virtuální počítač Azure."
+title: Ověření propustnost sítě VPN do virtuální sítě Microsoft Azure | Microsoft Docs
+description: Účelem tohoto dokumentu je pomoct uživatele ověřit propustnost sítě ze svých místních prostředků pro virtuální počítač Azure.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: jasmc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cad7719eb077d7aca9c1db5741a5fe1e0ca910a2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Postup ověření propustnost sítě VPN do virtuální sítě
 
@@ -121,7 +121,7 @@ Stáhněte si [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip)
 ## <a name="address-slow-file-copy-issues"></a>Řeší problémy kopie pomalé souboru
 Může dojít k pomalé souboru kopírování při pomocí Průzkumníka Windows nebo přetahování a vkládání přes relaci protokolu RDP. Tento problém je obvykle kvůli jedno nebo obě následující faktory:
 
-- Při kopírování souborů aplikace kopírování souboru, jako je například Průzkumník Windows a protokolu RDP, nepoužívejte více vláken. Pro lepší výkon použijte aplikaci kopie Vícevláknová souborového [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx) kopírovat soubory pomocí 16 nebo 32 vláken. Chcete-li změnit počet vláken pro kopírování souborů v Richcopy, klikněte na tlačítko **akce** > **možnosti kopírování** > **kopírování souboru**.<br><br>
+- Při kopírování souborů aplikace kopírování souboru, jako je například Průzkumník Windows a protokolu RDP, nepoužívejte více vláken. Pro lepší výkon použijte aplikaci kopie Vícevláknová souborového [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) kopírovat soubory pomocí 16 nebo 32 vláken. Chcete-li změnit počet vláken pro kopírování souborů v Richcopy, klikněte na tlačítko **akce** > **možnosti kopírování** > **kopírování souboru**.<br><br>
 ![Pomalé souboru kopie problémy](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - Nedostatečná rychlost čtení/zápis disku virtuálního počítače. Další informace najdete v tématu [řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
 
@@ -134,7 +134,7 @@ Tracert pro trasování k Microsoft Azure hraniční zařízení použijte k ur�
 Z místní sítě, spusťte *tracert* do virtuální IP adresu brány Azure nebo virtuálních počítačů. Jakmile se zobrazí pouze * vrátí, víte, bylo dosaženo Azure okraj. Když se názvy DNS, které zahrnují "MSN" vrátil, víte, že jste dosáhli páteřní společnosti Microsoft.<br><br>
 ![Kontrola latence](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace a nápovědu najdete na následujících odkazech:
 
 - [Optimalizovat propustnost sítě pro virtuální počítače Azure](../virtual-network/virtual-network-optimize-network-bandwidth.md)

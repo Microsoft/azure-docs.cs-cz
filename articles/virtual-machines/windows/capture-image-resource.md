@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 8195c5e86e6e8d7e2a0bd059820998692667eca8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4445787fd559c6d0a6dfc891910cb9a139a6907e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvořte bitovou kopii spravované zobecněný virtuálního počítače v Azure
 
@@ -40,7 +40,7 @@ Ujistěte se, že role serveru spuštěná na tomto počítači jsou podporován
 
 1. Přihlaste se k virtuálnímu počítači Windows.
 2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a poté spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
 4. V **možnosti vypnutí**, vyberte **vypnutí**.
 5. Klikněte na **OK**.
    
@@ -66,7 +66,7 @@ Ujistěte se, že role serveru spuštěná na tomto počítači jsou podporován
 Vytvoření bitové kopie přímo z virtuálního počítače zajistí, že image obsahuje všechny disky, které jsou spojené s virtuálním Počítačem, včetně disku operačního systému a všech datových disků. Tento příklad ukazuje, jak vytvořit spravované obrázek z virtuálního počítače, aby používá ke správě disků.
 
 
-Než začnete, ujistěte se, že máte nejnovější verzi modulu AzureRM.Compute prostředí PowerShell. Tento článek vyžaduje AzureRM verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Než začnete, ujistěte se, že máte nejnovější verzi modulu AzureRM.Compute prostředí PowerShell. Tento článek vyžaduje AzureRM verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 
 > [!NOTE]

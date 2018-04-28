@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3035d0e8642310698274e4351a95013e204e2f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí
 
@@ -48,8 +48,8 @@ Konfiguraci, kterou zadáte, je možné rozdělit do dvou kategorií:
 
 Při vytváření instancí s názvem aplikace v Service Fabric, máte možnost předat parametry. Způsob, jakým se závisí na tom, jak vytvořit instanci aplikace.
 
-  - V prostředí PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny používá parametry aplikace jako zatřiďovací tabulku.
-  - Pomocí sfctl, [ `sfctl application create` ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) příkaz přebírá parametry jako řetězec formátu JSON. Skript install.sh používá sfctl.
+  - V prostředí PowerShell [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny používá parametry aplikace jako zatřiďovací tabulku.
+  - Pomocí sfctl, [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) příkaz přebírá parametry jako řetězec formátu JSON. Skript install.sh používá sfctl.
   - Visual Studio poskytuje sadu parametr soubory ve složce parametry v projektu aplikace. Tyto soubory parametr se používá při publikování ze sady Visual Studio, pomocí sady Visual Studio Team Service nebo Team Foundation Server. V sadě Visual Studio soubory parametrů jsou předávány FabricApplication.ps1 nasazení skriptu.
 
 ## <a name="next-steps"></a>Další postup

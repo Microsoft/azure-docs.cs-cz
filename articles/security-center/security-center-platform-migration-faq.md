@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 04/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 197b1a844291f2bef2dd35001d1e6b8807ac9805
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6a88fbadd8fbf05a4942e42b535770f6f068af28
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>Migrace platformy Security Center – nejčastější dotazy
 V časná června 2017 začal Azure Security Center pomocí agenta Microsoft Monitoring Agent shromažďovat a ukládat data. Další informace najdete v tématu [Azure Security Center platformy migrace](security-center-platform-migration.md). Tyto nejčastější dotazy odpovídá na dotazy týkající se migrace platformy.
@@ -122,8 +122,6 @@ Vyberte existující pracovní prostor analýzy protokolů:
    >
 
    - Vyberte **zrušit** na tlačítko Storno.
-
-      ![Překonfigurujte monitorovaných virtuální počítače][6]
 
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>Co když Microsoft Monitoring Agent byl již nainstalován jako rozšíření ve virtuálním počítači?
 Security Center nemůže přepsat existující připojení k pracovním prostorům, uživatele. Security Center ukládá data zabezpečení z virtuálního počítače v pracovním prostoru již připojen. Security Center aktualizuje na verzi rozšíření zahrnují ID prostředků Azure pro podporu Security Center využití virtuálního počítače.
@@ -248,4 +246,3 @@ Další informace o migraci platformy Security Center najdete v tématu
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
-[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

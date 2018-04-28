@@ -5,25 +5,25 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 12/20/2017
+ms.date: 04/16/2018
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 484b82b79d796536a2c9a527b42e90f4e37c7bda
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5fe9282dd10bd6bdc41c63718a884a92da4d7c6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady SDK pro zařízení jazyka C pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows simulovat zařízení X.509 a pomocí vzorového kódu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT. 
 
-Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
+Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 [!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
@@ -51,7 +51,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
     cd cmake
     ```
 
-6. Spuštěním následujícího příkazu vytvořte v sadě Visual Studio řešení pro klienta zřizování.
+6. Vzorový kód k zajištění ověření prostřednictvím ověřování X.509 používá certifikát X.509. Spuštěním následujícího příkazu sestavte specifickou verzi sady SDK pro platformu vašeho vývojového klienta a váš [mechanismus ověřování](concepts-security.md#attestation-mechanism) (certifikát X.509). Zároveň se vygeneruje řešení v sadě Visual Studio pro simulované zařízení. 
 
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
@@ -62,7 +62,7 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
 <a id="portalenroll"></a>
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>Vytvoření položky registrace zařízení ve službě Device Provisioning
+## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Vytvoření certifikátu zařízení X.509 podepsaného svým držitelem a položky jednotlivé registrace
 
 1. Otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho v sadě Visual Studio.
 
@@ -72,18 +72,18 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
 
 4. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu zřizování.
 
-4. Otevřete okno **Správa registrací** pro vaši službu. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. 
+5. V okně s přehledem služby Device Provisioning vyberte **Správa registrací**. Vyberte kartu **Jednotlivé registrace** a klikněte na tlačítko **Přidat** v horní části. 
 
-5. V části **Přidat položku seznamu registrací** zadejte následující informace:
+6. Na panelu **Přidat registraci** zadejte následující informace:
     - Jako *Mechanismus* ověření identity vyberte **X.509**.
-    - V části *Soubor .pem nebo .cer certifikátu* vyberte soubor certifikátu **_X509testcert.pem_** vytvořený v předchozích krocích pomocí widgetu *Průzkumník souborů*.
+    - V části *Soubor .pem nebo .cer primárního certifikátu* klikněte na *Vyberte soubor* a vyberte soubor certifikátu **X509testcert.pem** vytvořený v předchozích krocích.
     - Volitelně můžete zadat následující informace:
-        - Vyberte centrum IoT propojené s vaší zřizovací službou.
-        - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
-        - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
+      - Vyberte centrum IoT propojené s vaší zřizovací službou.
+      - Zadejte jedinečné ID zařízení. Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. 
+      - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
     - Jakmile budete hotovi, klikněte na tlačítko **Uložit**. 
 
-    ![Zadání informací o registraci zařízení X.509 v okně portálu](./media/quick-create-simulated-device-x509/enter-device-enrollment.png)  
+    [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
 
    Po úspěšné registraci se vaše zařízení X.509 zobrazí jako **riot-device-cert** ve sloupci *ID registrace* na kartě *Jednotlivé registrace*. 
 

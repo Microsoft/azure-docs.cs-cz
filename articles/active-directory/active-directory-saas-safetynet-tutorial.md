@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b304a198ce1791a14094eea4cad3b6de870c80ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df0b578448e1f943d45233f7d36ebf4b9cb09fad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Kurz: Azure Active Directory integrace s SafetyNet
 
@@ -117,33 +117,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.predictivesolutions.com`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory SafetyNet klienta](mailto:dev@predictivesolutions.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory SafetyNet klienta](mailto:dev@predictivesolutions.com) k získání těchto hodnot.
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_certificate.png)
+
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-safetynet-tutorial/tutorial_general_400.png)
 
-6. Ke generování **adresu URL metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **SafetyNet** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-    
-7. Konfigurace jednotného přihlašování na **SafetyNet** straně, budete muset odeslat vygenerovaného **adresu URL metadat** k [tým podpory SafetyNet](mailto:dev@predictivesolutions.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Konfigurace jednotného přihlašování na **SafetyNet** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory SafetyNet](mailto:dev@predictivesolutions.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

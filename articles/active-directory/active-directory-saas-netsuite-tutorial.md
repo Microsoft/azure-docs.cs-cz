@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Netsuite | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Netsuite."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Netsuite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 23e39f20f5b3faa4f6cfba57508d1649e2bbdaa3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ecbadd45f964e4d4d36dcf67cf85cd878f012150
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Kurz: Azure Active Directory integrace s Netsuite
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-netsuite-tutorial/tutorial_netsuite_url.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs``https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
+    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:   `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
     > [!NOTE] 
     > Tyto nejsou skutečné hodnoty. Tyto hodnoty aktualizujte s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Netsuite](http://www.netsuite.com/portal/services/support.shtml) k získání těchto hodnot.
@@ -183,7 +183,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. Klikněte na tlačítko **novou roli**.
 
-    d. Zadejte **název** pro novou roli a vyberte **jednoho přihlášení pouze** zaškrtávací políčko.
+    d. Zadejte **název** pro novou roli.
       
       ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
 
@@ -193,7 +193,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-sso.png)
 
-    g. Vyberte **nastavit až SAM jednotné přihlašování**a potom klikněte na **přidat**.
+    g. Vyberte **nastavit až SAML jednotné přihlašování**a potom klikněte na **přidat**.
 
     h. Klikněte na **Uložit**.
 
@@ -205,7 +205,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-manage-users.png)
 
-    kB. Vyberte testovací uživatele. Pak klikněte na tlačítko **upravit**.
+    k. Vyberte testovací uživatele. Pak klikněte na tlačítko **upravit**.
       
        ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Netsuite-tutorial/ns-edit-user.png)
 
@@ -215,10 +215,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     m. Klikněte na **Uložit**.
     
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
@@ -290,9 +286,9 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-K testování vaše nastavení jednotného přihlašování, otevřete Panel přístupu na [https://myapps.microsoft.com](https://myapps.microsoft.com/), přihlaste se k testovací účet a klikněte na tlačítko **Netsuite**.
+K testování vaše nastavení jednotného přihlašování, otevřete Panel přístupu na [ https://myapps.microsoft.com ](https://myapps.microsoft.com/), přihlaste se k testovací účet a klikněte na tlačítko **Netsuite**.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

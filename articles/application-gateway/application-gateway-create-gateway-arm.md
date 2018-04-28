@@ -1,10 +1,10 @@
 ---
-title: "Vytvoření služby application gateway - prostředí Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí Azure PowerShell."
+title: Vytvoření služby application gateway - prostředí Azure PowerShell | Microsoft Docs
+description: Postup vytvoření služby application gateway pomocí Azure PowerShell.
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurepowershell
@@ -12,11 +12,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: 7f78e54b16da024c233a7943e82fd50f41c5503a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d0956a4e7e6f9cd6a1b075efc2b87c27d3660233
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-using-azure-powershell"></a>Vytvoření služby application gateway pomocí Azure PowerShell
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Chcete-li najít verzi, spusťte `Get-Module -ListAvailable AzureRM` . Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Chcete-li najít verzi, spusťte `Get-Module -ListAvailable AzureRM` . Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -36,7 +36,7 @@ Vytvořit skupinu prostředků Azure pomocí [New-AzureRmResourceGroup](/powersh
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
 Vytvoření konfigurací podsítě pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvoření virtuální sítě pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfigurací podsítě. A nakonec vytvořte na veřejnou IP adresu pomocí [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
 
@@ -59,11 +59,11 @@ New-AzureRmPublicIpAddress `
   -Name myAGPublicIPAddress `
   -AllocationMethod Dynamic
 ```
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Je také nainstalovat službu IIS na virtuálních počítačích, chcete-li ověřit, že aplikační brány byl úspěšně vytvořen.
 
-### <a name="create-two-virtual-machines"></a>Vytvořte dva virtuální počítače
+### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
 Vytvoření síťové rozhraní s [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Vytvoření konfiguraci virtuálního počítače s [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig). Když spustíte následující příkazy, budete vyzváni k zadání pověření. Zadejte *azureuser* pro uživatelské jméno a *Azure123456!* pro heslo. Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
@@ -192,7 +192,7 @@ New-AzureRmApplicationGateway `
 
 ## <a name="test-the-application-gateway"></a>Testování služby application gateway
 
-Použití [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+Použití [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -210,5 +210,5 @@ Remove-AzureRmResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste vytvořili skupinu prostředků, síťové prostředky a back-end serverů. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
+V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a servery back-end. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
 

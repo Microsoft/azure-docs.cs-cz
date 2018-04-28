@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ServiceNow | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceNow."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceNow.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Azure Active Directory integrace s ServiceNow
 
@@ -119,37 +119,21 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Budete muset aktualizovat tyto hodnoty z skutečné přihlašovací adresa URL a identifikátor, který je vysvětlen později v tomto kurzu.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+4. Na **SAML podpisový certifikát** část, proveďte následující kroky: 
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+
+    a. Klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku, jak tuto adresu Url aplikace federační Metadata se použije později v tomto kurzu.
+
+    b. Klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-servicenow-tutorial/tutorial_general_400.png)
 
-6. Ke generování **Metadata** adresu url, proveďte následující kroky:
+6. Přihlásit se k vaší aplikaci ServiceNow jako správce.
 
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/appregistrations.png)
-
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/endpointicon.png)
-    
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/endpoint.png)
-
-    d. Nyní přejděte na **ServiceNow** vlastnosti a zkopírujte **ID aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
-
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  Kopírování generované hodnoty v poznámkovém bloku jako tato metadata, adresa URL se použije později v tomto kurzu.
-
-7. Přihlásit se k vaší aplikaci ServiceNow jako správce.
-
-8. Aktivovat **integrace - více jeden přihlašování instalační program zprostředkovatele** modulu plug-in podle následující další kroky:
+7. Aktivovat **integrace - více jeden přihlašování instalační program zprostředkovatele** modulu plug-in podle následující další kroky:
 
     a. V navigačním podokně na levé straně, hledání **definice systému** z panelu Hledat a pak klikněte na **modulů plug-in**.
 
@@ -163,9 +147,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. Klikněte **aktivovat** tlačítko.
 
-9. Existují dva způsoby, ve kterém **ServiceNow** může být nakonfigurovaná automaticky a ručně.
+8. Existují dva způsoby, ve kterém **ServiceNow** může být nakonfigurovaná automaticky a ručně.
 
-10. Pro konfiguraci **ServiceNow** automaticky podle níže uvedených pokynů
+9. Pro konfiguraci **ServiceNow** automaticky podle níže uvedených pokynů
 
     a. Vraťte se na **ServiceNow** Signle přihlášení na stránce na portálu Azure.
 
@@ -201,15 +185,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     * Klikněte na **aktivovat** v pravém horním rohu stránky.
 
-11. Pro konfiguraci **ServiceNow** ručně postupujte níže uvedených pokynů
+10. Pro konfiguraci **ServiceNow** ručně postupujte níže uvedených pokynů
 
-12. Přihlásit se k vaší aplikaci ServiceNow jako správce.
+11. Přihlásit se k vaší aplikaci ServiceNow jako správce.
 
-13. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **vlastnosti**.
+12. V navigačním podokně na levé straně, hledání **jednotného přihlašování k více zprostředkovatele** z panelu Hledat a pak klikněte na **vlastnosti**.
 
     ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "konfigurovat adresu URL aplikace")
 
-14. Na **více jednotného přihlašování k vlastnosti zprostředkovatele** dialogové okno, proveďte následující kroky:
+13. Na **více jednotného přihlašování k vlastnosti zprostředkovatele** dialogové okno, proveďte následující kroky:
 
     ![Konfigurovat adresu URL aplikace](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "konfigurovat adresu URL aplikace")
 
@@ -265,7 +249,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Vyberte **URL** možnost **Import metadat zprostředkovatelů Identity** dialogové okno.
 
-    b. Zadejte **adresu URL metadat** vygenerovat z portálu Azure.
+    b. Zadejte **adresu Url aplikace federační Metadata** který jste zkopírovali z portálu Azure.
 
     c. Klikněte na **Importovat**.
 
@@ -358,7 +342,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificates.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
@@ -459,11 +443,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > Můžete konfigurovat Azure AD pro vydávání ID uživatele Azure AD (hlavní název uživatele) nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML přechodem na **ServiceNow > atributy > jednotné přihlašování** části portálu Azure a mapování pro požadované pole **nameidentifier** atribut. Hodnota uložená vybraného atributu ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například uživatelské_jméno)
 
     f. Klikněte na **Uložit**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace! Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
+ 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.

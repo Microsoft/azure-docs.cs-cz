@@ -1,25 +1,25 @@
 ---
-title: "Typy aplikací pro koncový bod v2.0 Azure Active Directory | Microsoft Docs"
-description: "Typy aplikací a scénáře podporované koncovým bodem v2.0 Azure Active Directory."
+title: Typy aplikací pro koncový bod v2.0 Azure Active Directory | Microsoft Docs
+description: Typy aplikací a scénáře podporované koncovým bodem v2.0 Azure Active Directory.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
-ms.author: dastrock
+ms.date: 04/17/2018
+ms.author: hpsin
 ms.custom: aaddev
-ms.openlocfilehash: b0344c1da626a8b4679a632db239fc9ded9d5ce6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikací pro koncový bod v2.0 Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu architektur moderní aplikace, všechny z nich založené na standardních protokolech [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvořit pomocí Azure AD v2.0, bez ohledu na to upřednostňovaný jazyk nebo platformu. Informace v tomto článku je navržená tak, které vám pomohou pochopit scénáře vysoké úrovně před [zahájení práce s kódem](active-directory-appmodel-v2-overview.md#getting-started).
@@ -120,4 +120,4 @@ V tomto toku aplikace komunikuje přímo s `/token` koncový bod k získání ko
 
 ![Démon tok ověřování aplikace](../../media/active-directory-v2-flows/convergence_scenarios_daemon.png)
 
-Vytvořit aplikaci démon, naleznete v dokumentaci pověření klienta v našich [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) část, nebo se pokuste [ukázkové aplikace .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Vytvořit aplikaci démon, najdete v článku [klienta pověření dokumentaci](active-directory-v2-protocols-oauth-client-creds.md), nebo to zkuste [ukázkové aplikace .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

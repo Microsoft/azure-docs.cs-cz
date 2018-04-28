@@ -1,11 +1,11 @@
 ---
-title: "Správa Azure CDN pomocí prostředí PowerShell | Microsoft Docs"
-description: "Další informace o použití rutin prostředí Azure PowerShell ke správě Azure CDN."
+title: Správa Azure CDN pomocí prostředí PowerShell | Microsoft Docs
+description: Další informace o použití rutin prostředí Azure PowerShell ke správě Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
 ms.service: cdn
 ms.workload: tbd
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5bd2eed7b34cafa43e8f38279890405d4ae55568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5634ecdec04f023d9eb901c4ad0fb21b13bcfdc1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí prostředí PowerShell
 PowerShell poskytuje jednu z metod nejpružnější ke správě profilů Azure CDN a koncové body.  Interaktivní nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz představuje některé z nejčastějších úloh, můžete provést pomocí prostředí PowerShell ke správě profilů Azure CDN a koncové body.
 
 ## <a name="prerequisites"></a>Požadavky
-Ke správě profilů Azure CDN a koncové body pomocí prostředí PowerShell, musí mít instalace modulu Azure PowerShell.  Další informace o instalaci prostředí Azure PowerShell a připojte se k Azure pomocí `Login-AzureRmAccount` rutiny, najdete v části [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Ke správě profilů Azure CDN a koncové body pomocí prostředí PowerShell, musí mít instalace modulu Azure PowerShell.  Další informace o instalaci prostředí Azure PowerShell a připojte se k Azure pomocí `Connect-AzureRmAccount` rutiny, najdete v části [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
 > [!IMPORTANT]
-> Musíte se přihlásit s `Login-AzureRmAccount` před spuštěním rutin prostředí Azure PowerShell.
+> Musíte se přihlásit s `Connect-AzureRmAccount` před spuštěním rutin prostředí Azure PowerShell.
 > 
 > 
 
@@ -62,7 +62,7 @@ Cmdlet          Unpublish-AzureRmCdnEndpointContent                2.0.0      Az
 ```
 
 ## <a name="getting-help"></a>Získání nápovědy
-Můžete získat pomoc s žádným z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help`poskytuje syntaxi a použití a volitelně zobrazuje příklady.
+Můžete získat pomoc s žádným z těchto rutin pomocí `Get-Help` rutiny.  `Get-Help` poskytuje syntaxi a použití a volitelně zobrazuje příklady.
 
 ```text
 PS C:\> Get-Help Get-AzureRmCdnProfile
@@ -121,7 +121,7 @@ Get-AzureRmCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 > 
 
 ## <a name="listing-existing-cdn-endpoints"></a>Výpis stávající koncové body CDN
-`Get-AzureRmCdnEndpoint`může načíst koncový bod jednotlivé nebo všechny koncové body v profilu.  
+`Get-AzureRmCdnEndpoint` může načíst koncový bod jednotlivé nebo všechny koncové body v profilu.  
 
 ```powershell
 # Get a single endpoint.
@@ -138,7 +138,7 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Where-Object { $_.ResourceState
 ```
 
 ## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření profilů CDN a koncové body
-`New-AzureRmCdnProfile`a `New-AzureRmCdnEndpoint` slouží k vytváření profilů CDN a koncové body.
+`New-AzureRmCdnProfile` a `New-AzureRmCdnEndpoint` slouží k vytváření profilů CDN a koncové body.
 
 ```powershell
 # Create a new profile
@@ -153,7 +153,7 @@ New-AzureRmCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku
 ```
 
 ## <a name="checking-endpoint-name-availability"></a>Kontrola dostupnosti název koncového bodu
-`Get-AzureRmCdnEndpointNameAvailability`Vrátí objekt, která udává, zda je název koncového bodu k dispozici.
+`Get-AzureRmCdnEndpointNameAvailability` Vrátí objekt, která udává, zda je název koncového bodu k dispozici.
 
 ```powershell
 # Retrieve availability
@@ -165,7 +165,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Přidání vlastní domény
-`New-AzureRmCdnCustomDomain`Přidá vlastního názvu domény do existující koncový bod.
+`New-AzureRmCdnCustomDomain` Přidá vlastního názvu domény do existující koncový bod.
 
 > [!IMPORTANT]
 > Musíte vytvořit CNAME u svého poskytovatele DNS jak je popsáno v [jak namapovat vlastní doménu na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Můžete otestovat mapování před změnou váš koncový bod pomocí `Test-AzureRmCdnCustomDomain`.
@@ -184,7 +184,7 @@ If($result.CustomDomainValidated){ New-AzureRmCdnCustomDomain -CustomDomainName 
 ```
 
 ## <a name="modifying-an-endpoint"></a>Úprava koncový bod
-`Set-AzureRmCdnEndpoint`upravuje existující koncový bod.
+`Set-AzureRmCdnEndpoint` upravuje existující koncový bod.
 
 ```powershell
 # Get an existing endpoint
@@ -199,7 +199,7 @@ Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## <a name="purgingpre-loading-cdn-assets"></a>Vymazání/vedlejší-loading CDN prostředky
-`Unpublish-AzureRmCdnEndpointContent`vyprazdňovat mezipaměti prostředky, zatímco `Publish-AzureRmCdnEndpointContent` předem načte prostředky na podporovaných koncových bodů.
+`Unpublish-AzureRmCdnEndpointContent` vyprazdňovat mezipaměti prostředky, zatímco `Publish-AzureRmCdnEndpointContent` předem načte prostředky na podporovaných koncových bodů.
 
 ```powershell
 # Purge some assets.
@@ -213,7 +213,7 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Unpublish-AzureRmCdnEndpointCon
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>Koncové body CDN spuštění nebo zastavení
-`Start-AzureRmCdnEndpoint`a `Stop-AzureRmCdnEndpoint` lze spustit a zastavit jednotlivé koncové body nebo skupiny koncových bodů.
+`Start-AzureRmCdnEndpoint` a `Stop-AzureRmCdnEndpoint` lze spustit a zastavit jednotlivé koncové body nebo skupiny koncových bodů.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -227,7 +227,7 @@ Get-AzureRmCdnProfile | Get-AzureRmCdnEndpoint | Start-AzureRmCdnEndpoint
 ```
 
 ## <a name="deleting-cdn-resources"></a>Odstranění prostředků CDN
-`Remove-AzureRmCdnProfile`a `Remove-AzureRmCdnEndpoint` slouží k odebrání profily a koncové body.
+`Remove-AzureRmCdnProfile` a `Remove-AzureRmCdnEndpoint` slouží k odebrání profily a koncové body.
 
 ```powershell
 # Remove a single endpoint

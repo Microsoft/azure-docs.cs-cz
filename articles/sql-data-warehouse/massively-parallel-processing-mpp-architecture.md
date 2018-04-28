@@ -2,19 +2,19 @@
 title: Azure SQL Data Warehouse – architektura MPP | Microsoft Docs
 description: Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost.
 services: sql-data-warehouse
-author: acomet
+author: ronortloff
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 04/11/2018
-ms.author: acomet
-ms.reviewer: mausher
-ms.openlocfilehash: a0dad8afa87b3424c8561b2aaf44fbe0f5d5dae6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: e8fef156f4b78c9f7241c9eb9623e061f5a31fe7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - masivně paralelní zpracování architektura (MPP)
 Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost. 

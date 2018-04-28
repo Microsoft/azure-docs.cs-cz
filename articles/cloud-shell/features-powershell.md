@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 5c4cb6230d8509830d25caaf497e4e63ac7e5806
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Funkce a nástroje pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -77,7 +77,7 @@ Pomocí [PowerShellGet](https://docs.microsoft.com/powershell/module/powershellg
 Po instalaci jsou moduly automaticky trvalé napříč relacemi cloudové prostředí.
 
 > [!TIP]
-> Moduly uživatelé nainstalují se ukládají do `$Home\CloudDrive\.pscloudshell\WindowsPowerShell` složky. Symbolický odkaz na tato složka se vytvoří ve složce Dokumenty uživatele (`$home\Documents\WindowsPowerShell`).
+> Moduly uživatelé nainstalují se ukládají do `$Home\clouddrive\.pscloudshell\WindowsPowerShell` složky. Symbolický odkaz na tato složka se vytvoří ve složce Dokumenty uživatele (`$home\Documents\WindowsPowerShell`).
 
 ![](media/features-powershell/powershellget-module.png)
 
@@ -90,11 +90,11 @@ Tyto příkazy jsou postavená na vzdálenou komunikaci prostředí PowerShell a
 
 |**Kategorie**    |**Název**                                 |
 |----------------|-----------------------------------------|
-|Nástroje Azure     |[Prostředí Azure PowerShell (5.6.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.30)](https://docs.microsoft.com/cli/azure)|
+|Nástroje Azure     |[Prostředí Azure PowerShell (5.7.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Rozhraní příkazového řádku Azure (2.0.31)](https://docs.microsoft.com/cli/azure)|
 |Textové editory    |VIM<br> nano                             |
-|Správce balíčků |PowerShellGet<br> PackageManagement<br> npm<br> pip |
+|Správce balíčků |PowerShellGet<br> PackageManagement<br> npm<br> PIP |
 |Správa zdrojového kódu  |Git                                      |
-|Databáze       |[SqlServer module](https://www.powershellgallery.com/packages/SqlServer)<br> [Nástroj SQLCMD](https://docs.microsoft.com/sql/tools/sqlcmd-utility)      |
+|Databáze       |[Modul SQL Server](https://www.powershellgallery.com/packages/SqlServer)<br> [Nástroj SQLCMD](https://docs.microsoft.com/sql/tools/sqlcmd-utility)      |
 |Testovací nástroje      |Pester                                   |
 
 ## <a name="language-support"></a>Podpora jazyků
@@ -102,8 +102,8 @@ Tyto příkazy jsou postavená na vzdálenou komunikaci prostředí PowerShell a
 |**Jazyk**|**Verze**|
 |------------|-----------|
 |.NET        |4.6        |
-|Node.js     |6.10       |
-|PowerShell  |5.1 a [6.0.2](https://github.com/PowerShell/powershell/releases)       |
+|Node.js     |8.9.4       |
+|PowerShell  |5.1 a [6.1.0-preview.1](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>Další postup

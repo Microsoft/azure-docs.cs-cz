@@ -1,26 +1,24 @@
 ---
-title: "Nastavení zálohování HBase a Phoenix a replikace - Azure HDInsight | Microsoft Docs"
-description: "Nastavení replikace pro HBase a Phoenix a zálohování."
+title: Nastavení zálohování HBase a Phoenix a replikace - Azure HDInsight | Microsoft Docs
+description: Nastavení replikace pro HBase a Phoenix a zálohování.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0385e85f7924da73132ae82fa776be274928e535
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 575a6db9fd9e5ae2d1fab98192143174df3578a0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace HBase a Phoenix v HDInsight
 
@@ -107,11 +105,11 @@ Cílovou adresu se skládá z následujících tří částí:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>`je čárkami oddělený seznam uzly ZooKeeper, například:
+* `<ZooKeeperQuorum>` je čárkami oddělený seznam uzly ZooKeeper, například:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>`na výchozí 2181, HDInsight a `<ZnodeParent>` je `/hbase-unsecure`, takže kompletní `<destinationAddress>` by:
+* `<Port>` na výchozí 2181, HDInsight a `<ZnodeParent>` je `/hbase-unsecure`, takže kompletní `<destinationAddress>` by:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 

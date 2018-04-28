@@ -1,8 +1,8 @@
 ---
-title: "Scénáře dat obsahující Data Lake Store | Microsoft Docs"
-description: "Pochopit různé scénáře a nástroje pro použití, která data můžete požity, zpracování, staženy a vizualizována v Data Lake Store"
+title: Scénáře dat obsahující Data Lake Store | Microsoft Docs
+description: Pochopit různé scénáře a nástroje pro použití, která data můžete požity, zpracování, staženy a vizualizována v Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: bd69d3c353c7f44efb37e2359412aa3a9f3e8f8d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f8cd666af9e05b543b6794612ec5acf6f8a27756
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Požadavky na velkých objemů dat pomocí Azure Data Lake Store
 Existují čtyři fáze klíče v zpracování velkých objemů dat:
@@ -40,8 +40,8 @@ To představuje menší sady dat, které se používá pro vytváření prototyp
 
 | Zdroj dat | Ingestování pomocí |
 | --- | --- |
-| Místní počítač |<ul> <li>[Azure Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Pomocí nástrojů Data Lake pro Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
-| Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp běžící v clusteru HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| Místní počítač |<ul> <li>[Azure Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI a platformy 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Pomocí nástrojů Data Lake pro Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Objekt Blob úložiště Azure |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Nástroj AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp běžící v clusteru HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Datové proudy
 Reprezentuje data, která může být generována různých zdrojů, jako je například aplikace, zařízení, senzorů, atd. Tato data můžete konzumaci do Data Lake Store pomocí různých nástrojů. Tyto nástroje se obvykle zachycení a zpracování dat na základě událostí událostí v reálném čase a zapište si událostí v dávkách do Data Lake Store tak, že můžete mít další zpracovány.
@@ -61,7 +61,7 @@ Zdrojem může také data z relační databáze. Období čas relačních datab�
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Data protokolu webového serveru (nahrávání pomocí vlastních aplikací)
 Tento typ datové sady je konkrétně označuje, protože analýzy dat protokolu webového serveru se běžně používá pro velké objemy dat aplikace a vyžaduje velké svazky protokolových souborů k odeslání do Data Lake Store. Zápis vlastní skripty nebo aplikace pro nahrávání těchto dat můžete použít některý z následujících nástrojů.
 
-* [Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI a platformy 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK služby Azure Data Lake Store](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
@@ -121,7 +121,7 @@ V takových případech můžete použít některý z následujících možnost�
 
 Následující metody můžete také psát vlastní skript nebo aplikace ke stahování dat z Data Lake Store.
 
-* [Azure Cross-platform CLI 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI a platformy 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [.NET SDK služby Azure Data Lake Store](data-lake-store-get-started-net-sdk.md)
 
@@ -131,4 +131,4 @@ Směs služby slouží k vytvoření vizuální znázornění dat uložených v 
 ![Vizualizace dat v Data Lake Store](./media/data-lake-store-data-scenarios/visualize-data.png "vizualizaci dat v Data Lake Store")
 
 * Můžete spustit pomocí [Azure Data Factory pro přesun dat z Data Lake Store k Azure SQL Data Warehouse](../data-factory/copy-activity-overview.md)
-* Potom můžete [Power BI integrovat Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md) vizuální znázornění dat vytvořit.
+* Potom můžete [Power BI integrovat Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) vizuální znázornění dat vytvořit.

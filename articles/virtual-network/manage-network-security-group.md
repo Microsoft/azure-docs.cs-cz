@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: ba7c0400e59d8c747553479eb5474978a629dfdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -31,7 +31,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="work-with-network-security-groups"></a>Práce se skupinami zabezpečení sítě
@@ -119,9 +119,9 @@ Je omezena na tom, kolik pravidel na skupinu zabezpečení sítě můžete vytvo
     |Nastavení  |Hodnota  |Podrobnosti  |
     |---------|---------|---------|
     |Zdroj     | Vyberte **žádné**, **IP adresy**, nebo **služby značky**.        | Pokud vyberete **IP adresy**, pak musíte zadat **zdrojové IP adresy nebo CIDR rozsahy**. Můžete zadat jednu hodnotu nebo seznam oddělený čárkami obsahující více hodnot. Příkladem víc hodnot je 10.0.0.0/16, 192.188.1.1. Existují omezení počtu hodnot, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti. Pokud vyberete **výrobní číslo**, pak je nutné vybrat jeden výrobní číslo. Výrobní číslo je identifikátor předdefinované kategorii IP adres. Další informace o dostupných služeb značky a co jednotlivé značky představuje, najdete v části [služby značky](security-overview.md#service-tags)        |
-    |Rozsahy portů zdroje     | Zadejte jediný port, jako třeba 80, rozsah portů, jako třeba 1024-65535, nebo seznamu jednoho porty a rozsahy portů, jako je například 80, 1024 až 65535. Zadejte hvězdičku umožnit provoz z jakéhokoli portu. | Porty a rozsahy zadejte, jaký provoz porty povolený nebo zakázaný pravidlem. Existují omezení počtu portů, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti.  |
+    |Rozsahy zdrojových portů     | Zadejte jediný port, jako třeba 80, rozsah portů, jako třeba 1024-65535, nebo seznamu jednoho porty a rozsahy portů, jako je například 80, 1024 až 65535. Zadejte hvězdičku umožnit provoz z jakéhokoli portu. | Porty a rozsahy zadejte, jaký provoz porty povolený nebo zakázaný pravidlem. Existují omezení počtu portů, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti.  |
     |Cíl     | Vyberte **žádné**, **IP adresy**, nebo **virtuální sítě**.        | Pokud vyberete **IP adresy**, pak musíte zadat **rozsahy cílové IP adresy nebo CIDR**. Podobně jako **zdroj** a **zdrojové IP adresy nebo CIDR rozsahy**, můžete zadat jeden nebo více adres nebo rozsahy a existují omezení počtu můžete zadat. Výběr **virtuální síť**, což je služba značku, znamená to, že provoz je povoleno pro všechny IP adresy v adresním prostoru virtuální sítě.        |
-    |Cílový port rozsahů     | Zadejte jednu hodnotu, nebo seznam hodnot oddělených čárkami. | Podobně jako **zdroje rozsahy portů**, můžete zadat jeden nebo více porty a rozsahy a existují omezení počtu můžete zadat. |
+    |Rozsahy cílových portů     | Zadejte jednu hodnotu, nebo seznam hodnot oddělených čárkami. | Podobně jako **zdroje rozsahy portů**, můžete zadat jeden nebo více porty a rozsahy a existují omezení počtu můžete zadat. |
     |Protocol (Protokol)     | Vyberte **žádné**, **TCP**, nebo **UDP**.        |         |
     |Akce     | Vyberte **povolit** nebo **Odepřít**.        |         |
     |Priorita     | Zadejte hodnotu mezi 100-4096 jedinečný pro všechna pravidla zabezpečení v rámci skupinu zabezpečení sítě. |Pravidla se zpracovávají v pořadí podle priority. Čím nižší je číslo, tím vyšší je priorita. Doporučujeme ponechat mezera mezi čísel priority při vytváření pravidel, například 100, 200, 300. Nechat mezery umožňuje snadno přidávat v budoucnu pravidla, které byste mohli potřebovat zajistit vyšší nebo nižší než existující pravidla.         |

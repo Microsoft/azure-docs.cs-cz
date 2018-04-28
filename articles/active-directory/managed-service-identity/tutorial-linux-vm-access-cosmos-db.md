@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 507986e4fa83e1821b1d7a1938b356feee81e9d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692bc5eb401ccda36ef42006de509144170f7757
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Používat pro přístup k databázi Azure Cosmos MSI virtuálních počítačů Linux 
 
@@ -113,7 +113,7 @@ Odpověď obsahuje podrobnosti o MSI přiřazené systému (Poznámka principalI
 ```
 ## <a name="grant-your-linux-vm-msi-access-to-the-cosmos-db-account-access-keys"></a>Udělit přístup MSI virtuálních počítačů Linux vaše přístupové klíče účtu Cosmos DB
 
-Cosmos DB nenabízí nativní podporu ověřování Azure AD.  Můžete však použít MSI k načtení přístupový klíč Cosmos databáze ze Správce prostředků a pak pomocí klíče pro přístup k databázi Cosmos.  V tomto kroku udělíte, že váš systém přiřazenou MSI přístup klíče pro účet Cosmos DB.
+Cosmos DB nenabízí nativní podporu ověřování Azure AD. Můžete však použít MSI k načtení přístupový klíč Cosmos databáze ze Správce prostředků a pak pomocí klíče pro přístup k databázi Cosmos. V tomto kroku udělíte přístup MSI klíče k účtu Cosmos DB.
 
 K udělení přístupu identity MSI k účtu Cosmos DB v správce Azure Resource Manager pomocí rozhraní příkazového řádku Azure, aktualizujte hodnoty pro `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, a `<COSMOS DB ACCOUNT NAME>` pro vaše prostředí. Nahraďte `<MSI PRINCIPALID>` s `principalId` vlastnost vrácený `az resource show` v [načíst principalID virtuálních počítačů Linux MSI](#retrieve-the-principalID-of-the-linux-VM's-MSI).  Cosmos DB podporuje dvě úrovně podrobnosti při použití přístupových klíčů: pro čtení a zápis k účtu a přístup jen pro čtení k účtu.  Přiřazení `DocumentDB Account Contributor` role, pokud chcete získat klíče pro čtení a zápis pro účet, nebo přiřadit `Cosmos DB Account Reader Role` role, pokud chcete získat klíče jen pro čtení pro účet:
 
@@ -149,7 +149,7 @@ K dokončení těchto kroků, potřebujete klientem SSH. Pokud používáte syst
 4. Použijte CURL k získání přístupu tokenu pro Azure Resource Manager: 
      
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
  
     > [!NOTE]

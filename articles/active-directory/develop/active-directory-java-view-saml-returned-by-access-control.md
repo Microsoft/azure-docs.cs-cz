@@ -1,25 +1,24 @@
 ---
-title: "Zobrazení SAML vrácený službě Řízení přístupu (Java)"
-description: "Zjistěte, jak chcete-li zobrazit SAML vrácený službě Řízení přístupu v aplikace Java hostované v Azure."
+title: Zobrazení SAML vrácený službě Řízení přístupu (Java)
+description: Zjistěte, jak chcete-li zobrazit SAML vrácený službě Řízení přístupu v aplikace Java hostované v Azure.
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: 
+manager: mbaldwin
 ms.assetid: 6cd216f9-eb43-46b4-b30d-f194d0ae2d48
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: d239145806be19d2199314fa351d1121f52203c8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 28c43b27d58d78036dd832fb4f95f2bc9958441c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>Postup zobrazení SAML vrácený službě Řízení přístupu Azure
 Tento průvodce vám ukáže, jak chcete zobrazit základní zabezpečení kontrolního výrazu SAML (Markup Language) vrátíte zpět do aplikace služby Řízení přístupu (ACS) Azure. V příručce vychází [postup ověření webového uživatele s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md) tématu, tím, že poskytuje kód, který zobrazí informace o tomto SAML. Hotová aplikace bude vypadat podobně jako následující.
@@ -184,7 +183,7 @@ Upravit **index.jsp** použít následující kód.
 1. Spusťte aplikaci v emulátoru počítače nebo nasadit do Azure, pomocí kroků popsaných v [postup ověření webového uživatele s Azure přístup k řízení služby pomocí Eclipse](active-directory-java-authenticate-users-access-control-eclipse.md).
 2. Spusťte prohlížeč a otevřete webovou aplikaci. Po přihlášení do aplikace se zobrazí informace o SAML, včetně assertion zabezpečení poskytované poskytovatelem identity.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 K dalšímu prozkoumat funkce služby ACS a experimentovat s sofistikovanější scénáři, najdete v tématu [2.0 služby Řízení přístupu][Access Control Service 2.0].
 
 [Prerequisites]: #pre

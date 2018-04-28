@@ -1,23 +1,23 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s FreshGrade | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FreshGrade."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FreshGrade.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f9cdf73643a8aa18506e59eff513b98282f60832
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4062f7c7a0f789cef6d0c415d73127d13e646f7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Kurz: Azure Active Directory integrace s FreshGrade
 
@@ -103,66 +103,41 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
 
 3. Na **FreshGrade domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
       | |
       |--|
-      | `https://<subdomain>.freshgrade.com/login` |    
+      | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
       | |
       |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |      
+      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory FreshGrade klienta](mailTo:support@freshgrade.com) k získání těchto hodnot. 
- 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory FreshGrade klienta](mailTo:support@freshgrade.com) k získání těchto hodnot.
 
-
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
-
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_certificate.png) 
-
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_metadataurl.png)
+     
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_general_400.png)
 
 6. Na **FreshGrade konfigurace** klikněte na tlačítko **konfigurace FreshGrade** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png) 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-7. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **FreshGrade** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-8. Konfigurace jednotného přihlašování na **FreshGrade** straně, budete muset odeslat **adresu URL metadat** a **SAML jeden přihlašování adresa URL služby** k [FreshGrade tým podpory ](mailTo:support@freshgrade.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Konfigurace jednotného přihlašování na **FreshGrade** straně, budete muset odeslat **adresu Url aplikace federační Metadata** a **SAML jeden přihlašování adresa URL služby** k [ Tým podpory FreshGrade](mailTo:support@freshgrade.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -236,7 +211,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici FreshGrade na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci FreshGrade.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

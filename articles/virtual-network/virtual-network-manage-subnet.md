@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 550fe16c5997947b528d284b7afdce9af0b7a56b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00b0635d894ff8a41c810345cfa94363029e78e8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidat, změnit nebo odstranit podsíť virtuální sítě
 
@@ -31,14 +31,14 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="add-a-subnet"></a>Přidat podsíť
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *virtuální sítě* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ho.
 2. Ze seznamu virtuálních sítí vyberte virtuální síť, kterou chcete přidat podsíť, kterou chcete.
-3. V části **nastavení**, vyberte **podsítě**.
+3. V části **NASTAVENÍ** vyberte **Podsítě**.
 4. Vyberte **+ podsítě**.
 5. Zadejte hodnoty následujících parametrů:
     - **Název**: název musí být jedinečný v rámci virtuální sítě.
@@ -57,7 +57,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *virtuální sítě* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ho.
 2. Seznam virtuálních sítí vyberte virtuální síť, která obsahuje podsíť, kterou chcete změnit nastavení pro.
-3. V části **nastavení**, vyberte **podsítě**.
+3. V části **NASTAVENÍ** vyberte **Podsítě**.
 4. V seznamu podsítí vyberte podsíť, kterou chcete změnit nastavení pro. Můžete změnit následující nastavení:
 
     - **Rozsah adres:** Pokud nenajdete žádné prostředky nasazené v rámci podsítě, můžete změnit rozsah adres. Pokud neexistují žádné prostředky v podsíti, musíte buď přesunout prostředky k jiné podsíti, nebo nejprve odstraňte z podsítě. Kroky, které je třeba provést přesuňte nebo odstraňte prostředku se liší v závislosti na prostředek. Naučit se přesuňte nebo odstraňte prostředky, které jsou v podsítích, přečtěte si dokumentaci pro každý typ prostředku, který chcete přesunout nebo odstranit. V tématu omezení **rozsahu adres** v kroku 5 [přidat podsíť](#add-a-subnet).
@@ -76,7 +76,7 @@ Podsíť může odstranit pouze v případě, že neexistují žádné prostřed
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *virtuální sítě* do vyhledávacího pole. Když **virtuální sítě** nezobrazí ve výsledcích hledání, vyberte ho.
 2. Seznam virtuálních sítí vyberte virtuální síť, která obsahuje podsítě, kterou chcete odstranit.
-3. V části **nastavení**, vyberte **podsítě**.
+3. V části **NASTAVENÍ** vyberte **Podsítě**.
 4. V seznamu podsítí, vyberte **...** , na pravé straně, pro podsíť chcete odstranit
 5. Vyberte **odstranit**a potom vyberte **Ano**.
 

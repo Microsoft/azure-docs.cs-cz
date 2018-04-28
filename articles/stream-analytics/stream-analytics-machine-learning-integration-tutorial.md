@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 63648dfe02a0b5ed00d0a7206a6aabbe200f94c4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy postojích pomocí Azure Stream Analytics nebo Azure Machine Learning
 Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning. Používáte model Machine Learning postojích analytics z webu Cortana Intelligence Gallery a analyzovat data streamovaná text určení skóre postojích v reálném čase. Pomocí Cortana Intelligence Suite umožňuje provedení této úlohy bez obav o rozbor všech vytváření model postojích analytics.
@@ -25,7 +25,7 @@ Můžete použít co dozvíte z tohoto článku pro scénáře, jako je napřík
 * Vyhodnocení komentáře na fóra, blogy a videa. 
 * Mnoho dalších v reálném čase, prediktivní vyhodnocování scénářů.
 
-Ve scénáři reálného by získat data přímo z datového proudu Twitter. Pro zjednodušení tento kurz, jsme jste jej tak, aby úlohy streamování Analytics získá tweetů ze souboru CSV v úložišti objektů Blob Azure. Můžete vytvořit svůj vlastní soubor CSV, nebo můžete použít ukázkový soubor CSV, jak je znázorněno na následujícím obrázku:
+Ve scénáři reálného by získat data přímo z datového proudu Twitter. Pro zjednodušení tento kurz, je zapsán tak, aby úlohy streamování Analytics získá tweetů ze souboru CSV v úložišti objektů Blob Azure. Můžete vytvořit svůj vlastní soubor CSV, nebo můžete použít ukázkový soubor CSV, jak je znázorněno na následujícím obrázku:
 
 ![Ukázka tweetů v souboru CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
@@ -36,10 +36,10 @@ Následující obrázek ukazuje tuto konfiguraci. Jak jsme uvedli, realističtě
 ![Přehled integrace Stream Analytics Machine Learning](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-1.png)  
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, ujistěte se, že máte následující:
+Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Aktivní předplatné Azure.
-* Soubor CSV s některá data v ní. Si můžete stáhnout soubor uvedena výše z [Githubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), nebo můžete vytvořit svůj vlastní soubor. V tomto článku předpokládáme, že používáte soubor z Githubu.
+* Soubor CSV s některá data v ní. Si můžete stáhnout soubor uvedena výše z [Githubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv), nebo můžete vytvořit svůj vlastní soubor. V tomto článku se předpokládá, že používáte soubor z Githubu.
 
 Na vysoké úrovni k dokončení úkolů ukázáno v tomto článku jste takto:
 
@@ -157,7 +157,7 @@ Nyní můžete vytvořit úlohu služby Stream Analytics, která načte tweetů 
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |**Alias pro výstup** | Použijte název `datainput` a vyberte **vyberte objekt blob úložiště ze svého předplatného**       |
+   |**Alias pro výstup** | Použijte název `datamloutput` a vyberte **vyberte objekt blob úložiště ze svého předplatného**       |
    |**Účet úložiště**  |  Vyberte účet úložiště, které jste vytvořili dříve.  |
    |**kontejner**  | Vyberte kontejner, který jste vytvořili dříve (`azuresamldemoblob`)        |
    |**Formát serializace událostí**  |  Vyberte **sdíleného svazku clusteru**       |
@@ -200,12 +200,13 @@ Stream Analytics používá k ověření vstupu a zpracovat dotaz deklarativní,
 
     ```
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     Dotaz, vyvolá funkce, které jste vytvořili dříve (`sentiment`) Chcete-li provést analýzu postojích na každý tweet ve vstupu. 
@@ -213,11 +214,11 @@ Stream Analytics používá k ověření vstupu a zpracovat dotaz deklarativní,
 4. Klikněte na tlačítko **Uložit** Uložte dotaz.
 
 
-## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spustit úlohu služby Stream Analytics a zkontrolujte výstup
+## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
 Nyní můžete spustit úlohu služby Stream Analytics.
 
-### <a name="start-the-job"></a>Spustit úlohu
+### <a name="start-the-job"></a>Spuštění úlohy
 1. Vraťte se do okna Přehled úlohy.
 
 2. Klikněte na tlačítko **spustit** v horní části okna.

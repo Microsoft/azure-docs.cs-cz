@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s cloudovými službami službou Azure Cloud Services a technologií ASP.NET | Dokumentace Microsoftu"
-description: "Naučte se vytvářet vícevrstvé aplikace s použitím technologie ASP.NET MVC a Azure. Aplikace běží v cloudové službě a obsahuje webovou roli a roli pracovního procesu. Používá nástroj Entity Framework, službu Azure SQL Database a fronty a objekty blob služby Azure Storage."
+title: Začínáme s cloudovými službami službou Azure Cloud Services a technologií ASP.NET | Dokumentace Microsoftu
+description: Naučte se vytvářet vícevrstvé aplikace s použitím technologie ASP.NET MVC a Azure. Aplikace běží v cloudové službě a obsahuje webovou roli a roli pracovního procesu. Používá nástroj Entity Framework, službu Azure SQL Database a fronty a objekty blob služby Azure Storage.
 services: cloud-services, storage
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279),  [službu objektů blob Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
+Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), [službu Azure Blob service](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
 
 V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit do Azure a spustit v cloudu a jak ji sestavit od nuly. Pokud chcete, můžete začít tím, že ji sestavíte od nuly, potom ji otestujete a nakonec provedete kroky nasazení.
 
@@ -34,15 +34,15 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 
 Aplikace používá [způsob práce zaměřený na fronty](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
-## <a name="alternative-architecture-websites-and-webjobs"></a>Alternativní architektura: weby a webové úlohy
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu na [webu Azure](/services/web-sites/) a použití funkce [webových úloh](http://go.microsoft.com/fwlink/?LinkId=390226) (momentálně ve verzi Preview) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro webové úlohy Azure](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternativní architektura: Web Apps a WebJobs
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure Web Apps](/azure/app-service/) a použití funkce [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
 * Vytvoření projektu cloudových služeb sady Visual Studio s webovou rolí a rolí pracovního procesu technologie ASP.NET MVC.
 * Postup místního testování projektu cloudových služeb pomocí emulátoru úložiště Azure.
 * Postup publikování cloudového projektu do cloudové služby Azure a testování pomocí účtu úložiště Azure.
-* Odeslání souborů a jejich uložení do služby objektů blob Azure.
+* Odeslání souborů a jejich uložení do služby Azure Blob service.
 * Používání služby front Azure pro komunikaci mezi vrstvami.
 
 ## <a name="prerequisites"></a>Požadavky

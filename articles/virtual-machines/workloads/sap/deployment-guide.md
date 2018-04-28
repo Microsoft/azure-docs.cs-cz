@@ -1,13 +1,13 @@
 ---
-title: "Nasazení virtuálních počítačů Azure pro SAP NetWeaver | Microsoft Docs"
-description: "Informace o nasazení SAP software na virtuální počítače s Linuxem v Azure."
+title: Nasazení virtuálních počítačů Azure pro SAP NetWeaver | Microsoft Docs
+description: Informace o nasazení SAP software na virtuální počítače s Linuxem v Azure.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 2b3c93abcfe8f1f18719dd5ce79211deccef44db
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2b141c96ad3f71cf35ddfbd08ce1eff14e36d8d0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů Azure pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -117,8 +117,8 @@ ms.lasthandoff: 03/09/2018
 [deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc (Připojit virtuální počítač k doméně místní - pouze v systému Windows)
 [deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 (Linux)
 [deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d (Stáhnout, nainstalovat a povolit agenta virtuálního počítače Azure)
-[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
-[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
+[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Prostředí Azure PowerShell)
+[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Rozhraní příkazového řádku Azure)
 [deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (Konfigurace rozšíření Azure rozšířené monitorování pro SAP)
 [deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (Kontrola připravenosti Azure rozšířené monitorování pro SAP)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (Kontrola stavu Azure monitorování infrastruktury)
@@ -234,7 +234,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]:https://support.sap.com/pam (Matice dostupnosti produktu SAP)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
@@ -291,7 +291,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -895,7 +895,7 @@ Chcete-li nainstalovat Azure rozšířené monitorování rozšíření pro SAP 
 
     ```powershell
     $env = Get-AzureRmEnvironment -Name <name of the environment>
-    Login-AzureRmAccount -Environment $env
+    Connect-AzureRmAccount -Environment $env
     Set-AzureRmContext -SubscriptionName <subscription name>
 
     Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
@@ -1005,15 +1005,15 @@ Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu 
 
 2.  Zkontrolujte výstup Azure rozšířené monitorování rozšíření.
 
-  a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
+  a.  Spustit `more /var/lib/AzureEnhancedMonitor/PerfCounters`
 
    **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
 
- b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
+ b. Spustit `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
 
    **Očekávaný výsledek**: vrátí jeden řádek, kde je chyba **žádné**, například **3; konfigurace; Chyba; 0; 0; žádná; 0; 1456416792; tst-servercs;**
 
-  c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
+  c. Spustit `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
 
     **Očekávaný výsledek**: vrátí jako prázdný nebo neexistuje.
 
@@ -1021,29 +1021,29 @@ Pokud předchozí kontroly nebyla úspěšná, spusťte tyto další kontroly:
 
 1.  Ujistěte se, že příkaz waagent nainstalován a povolen.
 
-  a.  Spusťte `sudo ls -al /var/lib/waagent/`.
+  a.  Spustit `sudo ls -al /var/lib/waagent/`
 
       **Očekávaný výsledek**: obsahuje seznam obsahu, který příkaz waagent adresáře.
 
-  b.  Spusťte `ps -ax | grep waagent`.
+  b.  Spustit `ps -ax | grep waagent`
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobnou: `python /usr/sbin/waagent -daemon`
 
 3.   Ujistěte se, zda je rozšíření monitorování rozšířeného Azure nainstalovaná a spuštěná.
 
-  a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`.
+  a.  Spustit `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
 
     **Očekávaný výsledek**: uvádí obsah adresáře Azure rozšířeného rozšíření monitorování.
 
-  b. Spusťte `ps -ax | grep AzureEnhanced`.
+  b. Spustit `ps -ax | grep AzureEnhanced`
 
      **Očekávaný výsledek**: Zobrazí jednu položku podobnou: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 3. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup `saposcol`.
 
-  a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
+  a.  Spustit `/usr/sap/hostctrl/exe/saposcol -d`
 
-  b.  Spusťte `dump ccm`.
+  b.  Spustit `dump ccm`
 
   c.  Zkontrolujte, zda **Virtualization_Configuration\Enhanced monitorování přístupu** metrika **true**.
 
@@ -1058,7 +1058,7 @@ Pokud některé z monitorování dat není správně, jak je uvedeno testem pops
 2.  Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí, spusťte rutinu `Get-AzureRmEnvironment`. Chcete-li použít globální Azure, vyberte **AzureCloud** prostředí. Azure v Číně, vyberte **AzureChinaCloud**.
   ```powershell
   $env = Get-AzureRmEnvironment -Name <name of the environment>
-  Login-AzureRmAccount -Environment $env
+  Connect-AzureRmAccount -Environment $env
   Set-AzureRmContext -SubscriptionName <subscription name>
   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
   ```

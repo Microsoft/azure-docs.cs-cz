@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db81baa5df13c8c5ca38e0e1ab2dffda1e31370a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zabránit neočekávané poplatky s Azure fakturace a náklady na správu
 
@@ -29,7 +29,7 @@ Při registraci v Azure existuje několik věcí, které vám pomohou získat le
 
 - Pokud je vaše předplatné bezplatnou zkušební verzi, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)Azure v otevřené (AIO) nebo BizSpark, vaše předplatné automaticky zakázán, když vaše kredity se používají. Další informace o [limitů útraty](#spending-limit) -li se vyhnout předplatného unexpectantly zakázána.
 
-- Pokud jste se zaregistrovali k [bezplatný účet Azure](https://azure.microsoft.com/en-us/free/), [mohou používat některé z nejčastěji používané služby Azure zadarmo po dobu 12 měsíců](billing-create-free-services-included-free-account.md). Společně s doporučení uvedených níže, najdete v části [vyhnout, získávání účtovat zdarma účet](billing-avoid-charges-free-account.md).
+- Pokud jste se zaregistrovali k [bezplatný účet Azure](https://azure.microsoft.com/free/), [mohou používat některé z nejčastěji používané služby Azure zadarmo po dobu 12 měsíců](billing-create-free-services-included-free-account.md). Společně s doporučení uvedených níže, najdete v části [vyhnout, získávání účtovat zdarma účet](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Získat odhadované náklady před přidáním služeb Azure
 

@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/29/2018
-ms.openlocfilehash: 536a75118e1005ddc0bb5814e2367e1ced808305
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 04/22/2018
+ms.openlocfilehash: b3fe97343d844eb5c030cf0aaa9da2a6f54a2472
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků na používání služby Azure databáze migrace
 Existuje několik předpokladů, vyžaduje se pro zajištění, že služba migrace databáze Azure běží bez problémů při provádění migrace databáze. Některé požadované součásti aplikaci ve všech scénářích (cílový Zdroj páry) podporována službou, zatímco jiné požadavky, které jsou jedinečné pro konkrétní scénář.
@@ -54,9 +54,9 @@ Při použití služby Azure Service migrace databáze k systému SQL Server do 
 - Pokud používáte více pojmenované instance systému SQL Server pomocí dynamické porty, budete pravděpodobně chtít povolit službu SQL Browser a povolení přístupu k portu UDP 1434 přes vaší brány firewall tak, aby služba migrace databáze Azure může připojit k pojmenovaná instance na svůj zdroj Server.
 - Zajistěte, aby přihlášení použít k připojení systému SQL Server zdrojové a cílové spravované Instance členové role serveru sysadmin.
 - Vytvoření sdílené síťové složky, službu Azure databáze migrace můžete použít k zálohování zdrojové databáze.
-- Ujistěte se, zda má účet služby spuštění instance systému SQL Server zdrojové oprávnění k zápisu ve sdílené síťové složce, kterou jste vytvořili.
-- Poznamenejte si uživatel systému Windows (a heslo), který má oprávnění Úplné řízení ve sdílené síťové složce, kterou jste vytvořili výše. Služba Azure databáze migrace zosobňuje přihlašovací údaje uživatele pro nahrání záložní soubory do kontejneru úložiště Azure pro operaci obnovení.
-- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru (Preview)](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Je nutné vybrat všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) v okně zásady při vytváření identifikátor URI SAS.
+- Ujistěte se, že účtu služby, zdroj je instance systému SQL Server oprávnění k zápisu ve sdílené síťové složce, kterou jste vytvořili a že účet počítače pro zdrojový server má přístup pro čtení a zápis k téže sdílené složky.
+- Ujistěte se, poznamenejte uživatelem systému Windows (a heslo), který má oprávnění Úplné řízení na sdílené síťové složce, kterou jste vytvořili. Služba Azure databáze migrace zosobňuje přihlašovací údaje uživatele pro nahrání záložní soubory do kontejneru úložiště Azure pro operaci obnovení.
+- Vytvořte kontejner objektů blob a načíst jeho identifikátoru URI SAS pomocí kroků v článku [prostředků spravovat Azure Blob Storage pomocí Storage Exploreru](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Je nutné vybrat všechna oprávnění (pro čtení, zápisu, odstranit, seznamu) v okně zásady při vytváření identifikátor URI SAS.
 
    > [!NOTE]
    > Úplný seznam požadovaných součástí pro používání služby Azure databáze migrace k provedení migrace ze systému SQL Server na instanci spravované databáze Azure SQL, najdete v části kurzu [migrace systému SQL Server na instanci spravované databáze Azure SQL ](https://aka.ms/migratetomiusingdms).

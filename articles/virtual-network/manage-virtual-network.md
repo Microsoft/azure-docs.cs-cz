@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: c5f3dbd1aa26cbe656b2ff89106819d228cf447d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změnit nebo odstranit virtuální síť
 
@@ -36,14 +36,14 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
 1. Vyberte **+ vytvořit prostředek** > **sítě** > **virtuální síť**.
 2. Zadejte nebo vyberte hodnoty pro následující nastavení a potom vyberte **vytvořit**:
-    - **Název**: název musí být jedinečný v [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vyberte možnost pro vytvoření virtuální sítě. Název nelze změnit po vytvoření virtuální sítě. Můžete vytvořit několik virtuálních sítí v čase. Pojmenování návrhy, najdete v části [konvence vytváření názvů](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Tyto zásady vytváření názvů vám pomohou lépe spravovat více virtuálních sítí.
+    - **Název**: název musí být jedinečný v [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vyberte možnost pro vytvoření virtuální sítě. Název nelze změnit po vytvoření virtuální sítě. Můžete vytvořit několik virtuálních sítí v čase. Pojmenování návrhy, najdete v části [konvence vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions). Tyto zásady vytváření názvů vám pomohou lépe spravovat více virtuálních sítí.
     - **Adresní prostor**: adresní prostor virtuální sítě se skládá z jedné nebo více nepřekrývají rozsahy adres, které jsou určené v notaci CIDR. Rozsah adres, které definujete může být veřejné nebo privátní (RFC 1918). Zda je jako veřejné nebo soukromé definovat rozsah adres, rozsah adres je dostupný jenom z v rámci virtuální sítě od vzájemně propojena virtuální sítě a od všech sítích na pracovišti, které jste se připojili k virtuální síti. Nelze přidat následující rozsahy adres:
         - 224.0.0.0/4 (vícesměrové vysílání)
         - 255.255.255.255/32 (vysílání)

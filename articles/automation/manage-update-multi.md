@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ce3d0501900cf8b60daee9aff6eeeaf62fa29409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -27,9 +27,9 @@ Správa aktualizací umožňuje spravovat aktualizace a opravy pro počítače s
 
 Pokud chcete použít správu aktualizací, budete potřebovat:
 
-* Účet Azure Automation Spustit jako Pokyny pro jeho vytvoření najdete v tématu [Začínáme s Azure Automation](automation-offering-get-started.md).
+- Účet Azure Automation Spustit jako Pokyny pro jeho vytvoření najdete v tématu [Začínáme s Azure Automation](automation-offering-get-started.md).
 
-* Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
+- Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -37,11 +37,11 @@ Správa aktualizací je podporována v následujících operačních systémech.
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 nebo novější a nasazení aktualizací do Windows Serveru 2008 R2 SP1 a novějšího Nano Server není podporován.
+- Windows Server 2008 nebo novější a nasazení aktualizací do Windows Serveru 2008 R2 SP1 a novějšího Nano Server není podporován.
 
   Podpora pro nasazování aktualizací do Windows Serveru 2008 R2 SP1 vyžaduje .NET Framework 4.5 a Windows Management Framework 5.0 nebo novější.
 
-* Klientské operační systémy Windows nejsou podporované.
+- Klientské operační systémy Windows nejsou podporované.
 
 Agenti Windows musí být buď nakonfigurovaní na komunikaci se službou Windows Server Update Services (WSUS), nebo musí mít přístup ke službě Microsoft Update.
 
@@ -51,12 +51,15 @@ Agenti Windows musí být buď nakonfigurovaní na komunikaci se službou Window
 
 ### <a name="linux"></a>Linux
 
-* CentOS 6 (x86/x64) a 7 (x64)  
-* Red Hat Enterprise 6 (x86/x64) a 7 (x64)  
-* SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)  
-* Ubuntu 12.04 LTS a novější (x86/x64)   
+- CentOS 6 (x86/x64) a 7 (x64)
 
-> [!NOTE]  
+- Red Hat Enterprise 6 (x86/x64) a 7 (x64)
+
+- SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)
+
+- Ubuntu 12.04 LTS a novější (x86/x64)
+
+> [!NOTE]
 > Pokud se chcete zabránit tomu, aby se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci balíčku Unattended-Upgrade tak, aby automatické aktualizace byly zakázány. Další informace najdete v [tématu věnovaném automatickým aktualizacím v příručce k Ubuntu Serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 Agenty Linux musí mít přístup k úložišti aktualizací.
@@ -65,16 +68,15 @@ Toto řešení nepodporuje OMS agenta pro Linux nakonfigurovaný tak, aby sestav
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolení správy aktualizací pro virtuální počítače Azure
 
-1. Na webu Azure Portal otevřete účet Automation.
-2. V levém podokně vyberte **Správa aktualizací**.
-3. V horní části okna vyberte **Přidat virtuální počítač Azure**.
-   ![Karta Přidat virtuální počítač Azure](./media/manage-update-multi/update-onboard-vm.png)
-4. Vyberte virtuální počítač, který chcete připojit. Zobrazí se dialogové okno **Povolit správu aktualizací**.
-5. Vyberte **Povolit**.
+Na portálu Azure otevřete účet Automation a vyberte **Správa aktualizací**.
 
-   ![Dialogové okno Povolit správu aktualizací](./media/manage-update-multi/update-enable.png)
+V horní části okna vyberte **Přidat virtuální počítač Azure**.
 
-Správa aktualizací pro váš virtuální počítač je povolena.
+![Přidat virtuální počítač Azure kartu](./media/manage-update-multi/update-onboard-vm.png)
+
+Vyberte virtuální počítač, který chcete připojit. Zobrazí se dialogové okno **Povolit správu aktualizací**. Vyberte **povolit** se budou registrovat virtuální počítač. Po dokončení registrace je povolena Správa aktualizací pro virtuální počítač.
+
+![Dialogové okno Povolit správu aktualizací](./media/manage-update-multi/update-enable.png)
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení správy aktualizací pro počítače a virtuální počítače jiné než Azure
 
@@ -83,14 +85,22 @@ Pokyny k povolení správy aktualizací pro počítače a virtuální počítač
 Pokyny k povolení správy aktualizací pro počítače a virtuální počítače s Linuxem jiné než Azure najdete v tématu věnovaném [připojení počítačů s Linuxem k Log Analytics](../log-analytics/log-analytics-agent-linux.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Zobrazení počítačů připojených k účtu Automation
-Jakmile pro vaše počítače povolíte správu aktualizací, můžete o nich zobrazit související informace kliknutím na **Počítače**. K dispozici jsou informace o počítači, jako například *Název*, *Dodržování předpisů*, *Prostředí*, *Typ operačního systému*, *Kritické aktualizace a aktualizace zabezpečení* a *Další aktualizace*. 
+
+Jakmile pro vaše počítače povolíte správu aktualizací, můžete o nich zobrazit související informace kliknutím na **Počítače**. Informace o počítači, jako *název*, *dodržování předpisů*, *prostředí*, *typ operačního systému*, *kritická a aktualizace zabezpečení* , *Další aktualizace*, a *aktualizace agenta připravenosti* jsou k dispozici.
 
   ![Zobrazení karty Počítače](./media/manage-update-multi/update-computers-tab.png)
 
 Pro počítače, u kterých byla správa aktualizací povolená nedávno, tyto informace ještě nemusely být vyhodnocené. Stav dodržování předpisů pro tyto počítače bude *Nevyhodnoceno*.  Tady je seznam hodnot pro stav dodržování předpisů:
-* Odpovídající – Počítače, kterým nechybí kritické aktualizace nebo aktualizace zabezpečení.
-* Neodpovídající – Počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
-* Nevyhodnoceno – Data o posouzení aktualizací nebyla z počítače přijata v očekávaném časovém rámci.  Pro počítače s Linuxem to jsou poslední tři hodiny a pro počítače s Windows to je posledních 12 hodin.  
+
+- Odpovídající – Počítače, kterým nechybí kritické aktualizace nebo aktualizace zabezpečení.
+
+- Neodpovídající – Počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
+
+- Nevyhodnoceno – Data o posouzení aktualizací nebyla z počítače přijata v očekávaném časovém rámci.  Pro počítače s Linuxem to jsou poslední tři hodiny a pro počítače s Windows to je posledních 12 hodin.
+
+Chcete-li zobrazit stav agenta, klikněte na odkaz v **aktualizace agenta připravenosti** sloupce. Otevře se stránka hybridní pracovní proces, který se zobrazí stav hybridní pracovní proces. Následující obrázek ukazuje příklad agenta, který nebyl připojen k správě aktualizací po delší dobu.
+
+![Zobrazení karty Počítače](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -122,29 +132,30 @@ Může trvat 30 minut až 6 hodin, než se na řídicím panelu zobrazí aktuali
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu.
 Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Naplánujte nové nasazení aktualizací pro jeden nebo více virtuálních počítačů výběrem **Naplánovat nasazení aktualizací** v horní části dialogového okna **Správa aktualizací**. V podokně **Nové nasazení aktualizace** zadejte následující údaje:
+Naplánujte nové nasazení aktualizací pro jeden nebo více virtuálních počítačů výběrem **Naplánovat nasazení aktualizací** v horní části dialogového okna **Správa aktualizací**.
+V podokně **Nové nasazení aktualizace** zadejte následující údaje:
 
-* **Název:** Zadejte jedinečný název pro identifikaci nasazení aktualizace.
-* **Typ operačního systému:** Vyberte Windows nebo Linux.
-* **Počítače k aktualizaci:** Vyberte virtuální počítače, které chcete aktualizovat.
+- **Název:** Zadejte jedinečný název pro identifikaci nasazení aktualizace.
+- **Typ operačního systému:** Vyberte Windows nebo Linux.
+- **Počítače, které chcete aktualizovat**: vyberte virtuální počítače, které chcete aktualizovat. Připravenost počítače se zobrazí v **aktualizace agenta připravenosti** sloupce. To umožňuje zobrazit stav počítače před naplánování nasazení aktualizace.
 
   ![Podokno Nové nasazení aktualizace](./media/manage-update-multi/update-select-computers.png)
 
-* **Klasifikace aktualizací:** Vyberte typy softwaru, které bude nasazení aktualizace zahrnovat. Typy klasifikace jsou:
-  * Důležité aktualizace
-  * Aktualizace zabezpečení
-  * Kumulativní aktualizace
-  * Balíčky funkcí
-  * Aktualizace Service Pack
-  * Aktualizace definic
-  * Nástroje
-  * Aktualizace
-* **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete ale zadat i jiný čas.
+- **Klasifikace aktualizací:** Vyberte typy softwaru, které bude nasazení aktualizace zahrnovat. Popis typů klasifikace najdete v tématu [klasifikace aktualizací](automation-update-management.md#update-classifications). Typy klasifikace jsou:
+  - Důležité aktualizace
+  - Aktualizace zabezpečení
+  - Kumulativní aktualizace
+  - Balíčky funkcí
+  - Aktualizace Service Pack
+  - Aktualizace definic
+  - Nástroje
+  - Aktualizace
+- **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete ale zadat i jiný čas.
    Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. Pokud chcete nastavit plán opakování, klikněte na možnost **Opakuje se** v části **Opakování**.
 
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
 
-* **Časové období údržby (minuty):** Zadejte časové období, ve kterém má dojít k nasazení aktualizace. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
+- **Časové období údržby (minuty):** Zadejte časové období, ve kterém má dojít k nasazení aktualizace. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
 Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit**. Vrátíte se na řídicí panel stavu. V tabulce **Naplánováno** se zobrazí plán nasazení, který jste právě vytvořili.
 
@@ -164,9 +175,9 @@ Pokud chcete zobrazit řídicí panel pro nasazení aktualizace, vyberte dokonč
 V podokně **Aktualizovat výsledky** se zobrazí celkový počet aktualizací a výsledky nasazení na virtuálním počítači.
 V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace. Výsledkem instalace může být jedna z následujících hodnot:
 
-* Nebyl provedený pokus: Aktualizace se nenainstalovala, protože na základě definovaného časového období údržby nebyl k dispozici dostatek času.
-* Úspěch: Aktualizace byla úspěšná.
-* Neúspěch: Aktualizace se nezdařila.
+- Nebyl provedený pokus: Aktualizace se nenainstalovala, protože na základě definovaného časového období údržby nebyl k dispozici dostatek času.
+- Úspěch: Aktualizace byla úspěšná.
+- Neúspěch: Aktualizace se nezdařila.
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 
@@ -176,5 +187,4 @@ Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o správě aktualizací – včetně protokolů, výstupní a chyby – viz [řešení pro správu aktualizovat v Azure](../operations-management-suite/oms-solution-update-management.md).
-
+- Další informace o správě aktualizací – včetně protokolů, výstupní a chyby – viz [řešení pro správu aktualizovat v Azure](../operations-management-suite/oms-solution-update-management.md).

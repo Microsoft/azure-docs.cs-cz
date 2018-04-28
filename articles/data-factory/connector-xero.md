@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Kopírování dat z Xero pomocí Azure Data Factory (Beta)
 
@@ -55,7 +55,7 @@ Pro Xero propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **Xero** | Ano |
 | hostitel | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
 | consumerKey | Uživatelský klíč přidružené k aplikaci Xero. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| privateKey | Najdete v části privátní klíč z soubor .pem, který byl vytvořen pro vaši aplikaci privátní Xero [vytvoření páru veřejného a privátního klíče RSA](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Zahrnout všechny text z soubor .pem, včetně endings(\n) řádku systému Unix, viz následující ukázka.<br/>Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| privateKey | Najdete v části privátní klíč z soubor .pem, který byl vytvořen pro vaši aplikaci privátní Xero [vytvoření páru veřejného a privátního klíče RSA](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka: k **generovat privatekey.pem s numbits 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 není podporován. Zahrnout všechny text z soubor .pem, včetně endings(\n) řádku systému Unix, viz následující ukázka.<br/><br/>Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat jsou šifrované pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, zda název hostitele je požadováno v certifikátu serveru tak, aby odpovídaly název hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli pro ověření totožnosti serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
@@ -196,7 +196,7 @@ Následující tabulky může být dotazován pouze s kompletní schématu:
 - Complete.Contacts_Contact_ osob 
 - Complete.Credit_Note_Line_Items 
 - Complete.Credit_Notes_Line_Items_Tracking 
-- Complete.Expense_Claim_ Payments 
+- Complete.Expense_Claim_ plateb 
 - Complete.Expense_Claim_Receipts 
 - Complete.Invoice_Line_Items 
 - Complete.Invoices_Line_Items_Tracking

@@ -1,5 +1,5 @@
 ---
-title: Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Dokumentace Microsoftu
+title: Přehled SQL Serveru na virtuálních počítačích Azure s Linuxem | Microsoft Docs
 description: Zjistěte, jak spouštět úplné edice SQL Serveru na virtuálních počítačích Azure s Linuxem. Získáte přímé odkazy na všechny image virtuálních počítačů s Linuxem a SQL Serverem a související obsah.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 03/22/2018
+ms.date: 04/10/2018
 ms.author: jroth
-ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c24536d8d5647e4a2c19afa17c35050e1f11c20
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 
@@ -24,27 +24,16 @@ ms.lasthandoff: 03/23/2018
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-Toto téma popisuje možnosti spouštění SQL Serveru na virtuálních počítačích Azure s Linuxem a uvádí [odkazy na image na portálu](#create).
+SQL Server na virtuálních počítačích Azure umožňuje používat plné verze SQL Serveru v cloudu, aniž by bylo potřeba spravovat jakýkoli místní hardware. Pokud platíte průběžně, pro virtuální počítače s SQL Serverem se také zjednoduší náklady na licencování.
 
-> [!NOTE]
-> Pokud jste již obeznámeni s SQL Serverem a chcete jenom zjistit, jak nasadit virtuální počítač s Linuxem a SQL Serverem, přečtěte si téma [Zřízení virtuálního počítače s Linuxem a SQL Serverem v Azure](provision-sql-server-linux-virtual-machine.md). Případně pokud chcete vytvořit virtuální počítač s Windows a SQL Serverem, přečtěte si téma [Zřízení virtuálního počítače s Windows a SQL Serverem v Azure](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md).
+Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru.
 
-Pokud jste správce databáze nebo vývojář, nabízejí virtuální počítače Azure způsob, jak lokální úlohy aplikace SQL Serveru přesunout do cloudu.
+## <a id="create"></a> Začínáme s virtuálními počítači SQL
 
-## <a name="scenarios"></a>Scénáře
-
-Existuje mnoho důvodů, kvůli kterým byste se mohli rozhodnout, že jako hostitele dat budete využívat Azure. Pokud vyvíjíte nebo migrujete svou aplikaci do Azure, zlepší se také výkon pro vyhledávání back-endových dat v Azure. Budete mít automaticky přístup k většímu počtu datových center pro dosažení globální působnosti a zotavení po havárii. Data také získají vysoké zabezpečení a odolnost.
-
-SQL Server běžící na virtuálních počítačích Azure je jednou z možností, jak ukládat relační data v Azure. Můžete také použít službu Azure SQL Database. Další informace o výběru mezi SQL Serverem na virtuálních počítačích a službou Azure SQL Database najdete v tématu [Výběr možnosti cloudového SQL Serveru: Azure SQL Database (PaaS) nebo SQL Server na virtuálních počítačích Azure (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
-
-## <a id="create"></a>Vytvoření nového virtuálního počítače s SQL Serverem
-
-Podrobné pokyny k vytvoření nového virtuálního počítače SQL najdete v kurzu [Zřízení virtuálního počítače s Linuxem a SQL Serverem v Azure](provision-sql-server-linux-virtual-machine.md).
-
-Následující tabulka obsahuje matici nejnovějších imagí SQL Serveru v galerii virtuálních počítačů. Po kliknutí na odkaz se začne vytvářet nový virtuální počítač SQL se zadanou verzí, edicí a operačním systémem.
+Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s požadovanou verzí, vydáním a operačním systémem. Následující oddíly poskytují přímé odkazy na image v galerii virtuálních počítačů s SQL Serverem na webu Azure Portal.
 
 > [!TIP]
-> Pokud chcete lépe porozumět cenám virtuálních počítačů a SQL pro tyto image, podívejte se na [stránku s cenami virtuálních počítačů s Linuxem a SQL Serverem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Další informace pro lepší pochopení cen imagí SQL najdete na [stránce s cenami virtuálních počítačů s Linuxem a SQL Serverem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 | Verze | Operační systém | Edice |
 | --- | --- | --- |
@@ -65,6 +54,33 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 | SLES | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ne](./media/sql-server-linux-virtual-machines-overview/no.png) | ![ne](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | Ubuntu | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ano](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
+## <a name="related-products-and-services"></a>Související produkty a služby
+
+### <a name="linux-virtual-machines"></a>Virtuální počítače s Linuxem
+
+* [Přehled služby Virtual Machines](../overview.md)
+
+### <a name="storage"></a>Úložiště
+
+* [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
+
+### <a name="networking"></a>Sítě
+
+* [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
+* [IP adresy v Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../portal-create-fqdn.md)
+
+### <a name="sql"></a>SQL
+
+* [Dokumentace k SQL Serveru na Linuxu](https://docs.microsoft.com/sql/linux)
+* [Porovnání Azure SQL Database](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o konfiguraci a používání SQL Serveru v Linuxu najdete v tématu [Přehled SQL Serveru v Linuxu](https://docs.microsoft.com/sql/linux/sql-server-linux-overview).
+Začínáme s SQL Serverem na virtuálních počítačích Azure s Linuxem:
+
+* [Vytvoření virtuálního počítače s SQL Serverem na webu Azure Portal](provision-sql-server-linux-virtual-machine.md)
+
+Odpovědi na nejčastější dotazy o virtuálních počítačích SQL s Linuxem:
+
+* [SQL Server na Azure Virtual Machines s Linuxem – nejčastější dotazy](sql-server-linux-faq.md)

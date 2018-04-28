@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace hesel jednotné přihlašování pro jiný Galerie applicationn | Microsoft Docs"
-description: "Jak nakonfigurovat vlastní aplikace bez Galerie pro zabezpečení založené na heslech jednotné přihlašování, když není uveden v galerii aplikací Azure AD"
+title: Postup konfigurace hesel jednotné přihlašování pro jiný Galerie applicationn | Microsoft Docs
+description: Jak nakonfigurovat vlastní aplikace bez Galerie pro zabezpečení založené na heslech jednotné přihlašování, když není uveden v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fd93b3fa5b601a276047feab67758fe1a29d4e27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b928d71fbff232ae93dbf3d24517e7efc4cf8bfd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotné přihlašování pro aplikace bez Galerie
 
@@ -112,6 +112,8 @@ Pokud chcete konfigurovat jednotné přihlašování pro aplikace, postupujte ta
 10. Přiřazení uživatelů k aplikaci.
 
 11. Kromě toho můžete taky zadat přihlašovací údaje jménem uživatele výběrem řádky uživatelů a kliknete na **pověření aktualizace** a zadání uživatelského jména a hesla jménem uživatele. Uživatelé, jinak se výzva k zadání sami přihlašovací údaje při spuštění.
+
+12. **Volitelné:** pro určité aplikace sociálních médií jako Twitteru a Facebooku, je také možnost Povolit automatické Změna hesla pro aplikaci vybrané frekvencí. Chcete-li povolit tuto vyberte **chci, aby Azure AD automaticky spravovat tohoto uživatele nebo skupiny heslo** při zadání přihlašovacích údajů jménem uživatele nebo skupinu. Vyberte **výměny frekvenci (v týdny)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Přiřazení uživatele k aplikaci přímo
 

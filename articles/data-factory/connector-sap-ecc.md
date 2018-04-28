@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -57,7 +57,7 @@ Pro SAP ECC propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **SapEcc** | Ano |
-| Adresa URL | Adresa url služby SAP ECC OData. | Ano |
+| url | Adresa url služby SAP ECC OData. | Ano |
 | uživatelské jméno | Uživatelské jméno používané pro připojení k prostředí SAP ECC. | Ne |
 | heslo | Heslo jako prostý text, který používá pro připojení k prostředí SAP ECC. | Ne |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
@@ -124,7 +124,7 @@ Ke zkopírování dat z SAP ECC, nastavte typ zdroje v aktivitě kopírování d
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **SapEccSource** | Ano |
-| query | Možnosti dotazu OData k filtrování dat Příklad: "$select = název, popis a $top = 10".<br/><br/>SAP ECC konektor zkopíruje data z adresy URL pro kombinované: (adresa url zadaná v propojené službě) / (cesty zadané v datové sadě)? (dotaz zadaný ve zdroji aktivita kopírování). Odkazovat na [OData pro adresy URL součásti](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ano |
+| query | Možnosti dotazu OData k filtrování dat Příklad: "$select = název, popis a $top = 10".<br/><br/>SAP ECC konektor zkopíruje data z adresy URL pro kombinované: (adresa url zadaná v propojené službě) / (cesty zadané v datové sadě)? (dotaz zadaný ve zdroji aktivita kopírování). Odkazovat na [OData pro adresy URL součásti](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad:**
 
@@ -170,15 +170,15 @@ Při kopírování dat z SAP ECC, následující mapování se používají ODat
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Dvojitý |
-| Edm.Single | Svobodný/svobodná |
+| Edm.Single | Jednoduchá |
 | Edm.Guid | Řetězec |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Řetězec |
-| Edm.Time | TimeSpan |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.Time | Časový interval |
+| Edm.DateTimeOffset | Datový typ DateTimeOffset |
 
 > [!NOTE]
 > Nyní nejsou podporovány komplexními datovými typy.

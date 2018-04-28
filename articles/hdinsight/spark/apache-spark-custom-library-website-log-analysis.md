@@ -1,8 +1,8 @@
 ---
-title: "Analýza webových protokolů pomocí knihovny Python ve Sparku - Azure | Microsoft Docs"
-description: "Tento poznámkový blok ukazuje, jak analyzovat data protokolu vlastní knihovny pomocí Spark v Azure HDInsight."
+title: Analýza webových protokolů pomocí knihovny Python ve Sparku - Azure | Microsoft Docs
+description: Tento poznámkový blok ukazuje, jak analyzovat data protokolu vlastní knihovny pomocí Spark v Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 8c61c70f-fe7f-4f0f-a4ab-0cccee5668c9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: 544a11f5d9e92f081a8ae494529b7d8ef19551fa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 00940d4eb438fceb683eca8663d0d23f53ff7ff3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Analýza webových protokolů pomocí vlastní knihovna Python s clusterem Spark v HDInsight
 

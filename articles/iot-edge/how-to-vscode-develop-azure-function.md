@@ -10,10 +10,10 @@ ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>Pomocí kódu v jazyce Visual Studio pro vývoj a nasazení Azure Functions okraj Azure IoT
 
@@ -136,7 +136,7 @@ Následující kroky zobrazení můžete jak vytvořit modul IoT Edge založené
 
 8. Uložte soubor.
 
-### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Vytvoření bitové kopie Docker a publikujete ho v registru
+### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Vytvoření image Dockeru a její publikování do registru
 
 1. V průzkumníku VS Code rozbalte složku **Docker**. Pak rozbalte složku pro vaši kontejnerovou platformu – **linux-x64** nebo **windows-nano**.
 2. Klikněte pravým tlačítkem na soubor **Dockerfile** a pak klikněte na **Sestavit image Dockeru s modulem IoT Edge**. 

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD vrstvené heslo zabezpečení | Microsoft Docs"
-description: "Vysvětluje, jak Azure AD vynucuje silná hesla a chrání hesla uživatelů z zločinci,"
+title: Azure AD vrstvené heslo zabezpečení | Microsoft Docs
+description: Vysvětluje, jak Azure AD vynucuje silná hesla a chrání hesla uživatelů z zločinci,
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Víceúrovňová způsob zabezpečení hesel Azure AD
 
@@ -84,4 +84,4 @@ Informace o vytvoření nového ve službě Azure Active Directory, naleznete v 
 
 * [Postup aktualizace vlastního hesla](active-directory-passwords-update-your-own-password.md)
 * [Základy správy identit Azure](fundamentals-identity.md)
-* [Aktivita resetování zprávu o heslo](active-directory-passwords-reporting.md)
+* [Aktivita resetování zprávu o heslo](authentication/howto-sspr-reporting.md)

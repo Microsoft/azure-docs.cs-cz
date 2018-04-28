@@ -1,25 +1,25 @@
 ---
-title: "Nainstalovat bránu dat místní - Azure Logic Apps | Microsoft Docs"
-description: "Než budete přistupovat ke zdrojům dat místně, nainstalujte bránu místní dat pro přenos dat rychlý a šifrování mezi zdrojů dat na místní a aplikacích logiky"
-keywords: "přístup k datům na místní, přenos dat, šifrování, zdroje dat"
+title: Nainstalovat bránu dat místní - Azure Logic Apps | Microsoft Docs
+description: Než budete přistupovat ke zdrojům dat místně, nainstalujte bránu místní dat pro přenos dat rychlý a šifrování mezi zdrojů dat na místní a aplikacích logiky
+keywords: přístup k datům na místní, přenos dat, šifrování, zdroje dat
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Nainstalujte bránu dat na místě pro Azure Logic Apps
 
@@ -59,7 +59,7 @@ Informace o tom, jak používat bránu s jinými službami, najdete v těchto č
 * Rozhraní .NET 4.5 framework
 * 64bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
-Doporučená
+**Doporučená**
 
 * 8 jader procesoru
 * 8 GB paměti
@@ -242,6 +242,11 @@ Takže když uživatel v cloudu komunikuje element, který je připojen k místn
 6. Výsledky jsou odesílány ze zdroje dat zpět k bráně a ke cloudové službě brány. Cloudové služby Brána pak použije výsledky.
 
 <a name="faq"></a>
+
+## <a name="tenant-level-administration"></a>Úroveň správy klienta 
+
+Aktuálně neexistuje žádné jediné místo, kde správci klientů můžou spravovat všechny brány, které jiní uživatelé nainstalován a nakonfigurován.  Pokud jste správce klienta, doporučujeme, abyste se požádat uživatele ve vaší organizaci můžete přidat jako správce pro všechny brány, který se má nainstalovat. To vám umožňuje spravovat všechny brány ve vaší organizaci prostřednictvím stránky nastavení brány, nebo přes [příkazy prostředí PowerShell](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

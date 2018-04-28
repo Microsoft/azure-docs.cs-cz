@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9b182935ad6a328afa4ee25049b3651f62277d45
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure databázi PostgreSQL cenové úrovně
 
@@ -21,9 +21,9 @@ Můžete vytvořit databázi Azure pro PostgreSQL server v jednom ze tří různ
 
 |    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
 |:---|:----------|:--------------------|:---------------------|
-| Výpočetní generování | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
+| Výpočetní generování | Gen 4, 5. generace | Gen 4, 5. generace | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Paměť na vCore | Směrný plán | 2x Basic | 2 x obecné účely |
+| Paměť na vCore | Směrný plán | 2 x Basic | 2 x obecné účely |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
@@ -36,7 +36,8 @@ Chcete-li zvolte cenovou úroveň, použijte jako výchozí bod v následující
 | Obecné použití | Většina obchodní úlohy, které vyžadují vyrovnáváním paměťovou a výpočetní s škálovatelná propustnost vstupu/výstupu. Mezi příklady patří servery pro hostování webové a mobilní aplikace a jiné podnikové aplikace.|
 | Paměťově optimalizované | Databáze vysoce výkonné úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnosti. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakcí a analytické aplikací.|
 
-Po vytvoření serveru počet vCores lze změnit nahoru nebo dolů v sekundách. Také můžete samostatně upravit velikost úložiště nahoru a dobu uchovávání záloh nahoru nebo dolů s žádné výpadky aplikací. Další informace najdete v části "Škálovat prostředky".
+Po vytvoření serveru počet vCores lze změnit nahoru nebo dolů (v rámci stejné cenové úrovně) během několika sekund. Také můžete samostatně upravit velikost úložiště nahoru a dobu uchovávání záloh nahoru nebo dolů s žádné výpadky aplikací. Po vytvoření serveru nelze změnit typ úložiště pro zálohy nebo cenovou úroveň. Další informace najdete v tématu [škálovat prostředky](#scale-resources) části.
+
 
 ## <a name="compute-generations-vcores-and-memory"></a>Výpočetní generace, vCores a paměti
 
@@ -53,16 +54,18 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Západní USA 2 |  | X |
 | Střední Kanada | X | X |
 | Východní Kanada | X | X |
-| Brazílie – jih | X |  |
+| Brazílie – jih | X | X |
 | Severní Evropa | X | X |
 | Západní Evropa | X | X |
 | Spojené království – západ |  | X |
 | Spojené království – jih |  | X |
 | Východní Asie | X |  |
-| Jihovýchodní Asie | X |  |
+| Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
+| Austrálie – jihovýchod |  | X |
 | Střed Indie | X |  |
 | Indie – západ | X |  |
+| Indie – jih |  | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
 | Korea – jih |  | X |
@@ -90,7 +93,7 @@ Služba automaticky provede zálohování serveru. Doba uchování minimální z
 
 ## <a name="scale-resources"></a>Škálování prostředků
 
-Po vytvoření serveru, můžete nezávisle změnit vCores, velikost úložiště a dobu uchovávání záloh. Po vytvoření serveru nelze změnit typ úložiště pro zálohy nebo cenovou úroveň. vCores a období uchovávání záloh můžete škálovat nahoru nebo dolů. Velikost úložiště může být pouze zvýšena. Škálování prostředků můžete udělat buď prostřednictvím portálu nebo rozhraní příkazového řádku Azure. Příklad škálování pomocí rozhraní příkazového řádku Azure, naleznete v části [sledování a škálování Azure Database PostgreSQL serveru pomocí rozhraní příkazového řádku Azure](scripts/sample-scale-server-up-or-down.md).
+Po vytvoření serveru, můžete nezávisle změnit vCores, velikost úložiště a dobu uchovávání záloh. Po vytvoření serveru nelze změnit typ úložiště pro zálohy nebo cenovou úroveň. Počet vCores můžete škálovat nahoru nebo dolů v rámci stejné cenovou úroveň. Doba uchovávání záloh můžete škálovat nahoru nebo dolů z 7 na 35 dní. Velikost úložiště může být pouze zvýšena.  Škálování prostředků můžete udělat buď prostřednictvím portálu nebo rozhraní příkazového řádku Azure. Příklad škálování pomocí rozhraní příkazového řádku Azure, naleznete v části [sledování a škálování Azure Database PostgreSQL serveru pomocí rozhraní příkazového řádku Azure](scripts/sample-scale-server-up-or-down.md).
 
 Při změně počtu vCores kopii původního serveru se vytvoří se nové přidělení výpočetní. Po nový server je spuštěný a funkční, připojení se přepnutí na nový server. Během okamžiku, kdy systému přepne na nový server žádná nová připojení lze navázat a jsou všechny nepotvrzené transakce vráceny zpět. Toto okno se liší, ale ve většině případů je méně než minutu.
 

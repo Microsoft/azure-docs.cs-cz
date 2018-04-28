@@ -1,6 +1,6 @@
 ---
-title: "Ověření konfigurace účtu Azure Automation."
-description: "Tento článek popisuje způsob ověření, že konfigurace vašeho účtu Automation je nastavená správně."
+title: Ověření konfigurace účtu Azure Automation.
+description: Tento článek popisuje způsob ověření, že konfigurace vašeho účtu Automation je nastavená správně.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5359a12d5b241eff80203c9e9bf04107ce4d3159
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b8e1f2923657965f4bab89e7a0f5f08faa1d27e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Test ověření účtu Azure Automation Spustit jako
 Po úspěšném vytvoření účtu Automation můžete provést jednoduchý test a zkontrolovat, že se jde úspěšně ověřit v nasazení Azure Resource Manager nebo Azure Classic pomocí nově vytvořeného nebo aktualizovaného účtu Automation Spustit jako.    
@@ -27,7 +27,7 @@ Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
            -ServicePrincipal `
            -TenantId $servicePrincipalConnection.TenantId `
            -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -58,7 +58,7 @@ Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](
        Write-Output ("")
     } 
 
-Všimněte si, že rutina používaná pro ověřování v runbooku – **Add-AzureRmAccount**, používá sadu parametrů *ServicePrincipalCertificate*.  Ověřování provádí pomocí certifikátu objektu služby a ne pomocí přihlašovacích údajů.  
+Všimněte si, rutina, kterou používá pro ověřování v sadě runbook - **Connect-AzureRmAccount**, používá *ServicePrincipalCertificate* sadu parametrů.  Ověřování provádí pomocí certifikátu objektu služby a ne pomocí přihlašovacích údajů.  
 
 Při můžete [spuštění sady runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) k ověření účtu spustit jako [úlohy runbooku](automation-runbook-execution.md) vytvoření úlohy se zobrazí stránka a stav úlohy se zobrazí v **Souhrn úlohy** dlaždici. Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Když pracovní proces úlohu přijme, změní se stav na *Spouštění*, a když se runbook skutečně spustí, změní se na *Spuštěno*.  Po dokončení úlohy runbooku by se měla zobrazit zpráva **Dokončeno**.
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 5d08c752af23845a31428b16ee3de594044b4129
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 171265d996c9fe4eb10ac354347f5725dadd0203
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -44,7 +44,7 @@ Zbývající část tohoto článku se soustředí na obecných pokynů pro spu�
 
 ## <a name="general-linux-installation-notes"></a>Poznámky k instalaci obecné Linux
 * Formát VHDX není podporován v Azure, pouze **pevný virtuální pevný disk**.  Disk můžete převést do formátu virtuálního pevného disku pomocí Správce technologie Hyper-V nebo rutiny convert-VHD prostředí. Pokud používáte VirtualBox to znamená výběr **pevnou velikost** oproti výchozí přidělí dynamicky při vytváření disku.
-* Azure podporuje pouze virtuální počítače generace 1. Virtuální počítač generace 1 můžete převést z VHDX do formátu souboru virtuálního pevného disku a dynamicky se zvětšující pevné velikosti disku. Ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [by měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://technet.microsoft.com/en-us/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Azure podporuje pouze virtuální počítače generace 1. Virtuální počítač generace 1 můžete převést z VHDX do formátu souboru virtuálního pevného disku a dynamicky se zvětšující pevné velikosti disku. Ale nemůžete změnit generaci virtuálního počítače. Další informace najdete v tématu [by měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 * Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB.
 * Při instalaci systému Linux je *doporučená* použít standardní oddíly spíše než LVM (často výchozí pro mnoho instalace). Tím se vyhnete LVM název je v konfliktu s klonovaný virtuální počítače, zvlášť pokud někdy musí být připojen k virtuálnímu počítači jiné identické pro řešení potíží s disk s operačním systémem. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mohou být použity na datové disky.
 * Vyžaduje se podpora jádra pro připojení systémy souborů UDF. Při prvním spuštění v Azure je předána zřizování konfigurace do virtuálního počítače s Linuxem pomocí formátu UDF média, který je připojen k Host. Azure Linux agent musí být schopný se připojit a načíst jeho konfiguraci a zřídit virtuální počítač v systému souborů UDF.

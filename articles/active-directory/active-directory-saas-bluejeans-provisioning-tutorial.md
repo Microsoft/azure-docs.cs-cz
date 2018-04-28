@@ -1,8 +1,8 @@
 ---
-title: "Kurz: Konfigurace BlueJeans pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do BlueJeans."
+title: 'Kurz: Konfigurace BlueJeans pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do BlueJeans.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: 55a907bdab57ce73533361782a3890466e3076ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9b071d166f741df523d6343ba771b7a29cd4a303
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro zřizování automatické uživatelů
 
@@ -112,7 +112,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD zřizování služby vyt
 
     ![BlueJeans zřizování](./media/active-directory-saas-bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
 
-7. V **e-mailové oznámení** pole, zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování chyba a zaškrtněte políčko **odeslat e-mailové oznámení, když dojde k selhání**.
+7. V **e-mailové oznámení** pole, zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování chyba a zaškrtnutím políčka - **odeslat e-mailové oznámení, když dojde k selhání**.
 
     ![BlueJeans zřizování](./media/active-directory-saas-bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
@@ -143,6 +143,10 @@ Tato část vás provede kroky pro konfiguraci Azure AD zřizování služby vyt
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupiny definované v **oboru** v **nastavení** části. Počáteční synchronizace trvá déle provést než následné synchronizace, ke kterým dochází přibližně každých 40 minut, dokud běží zřizování služby Azure AD. Můžete použít **podrobnosti synchronizace** oddílu monitorovat průběh a odkazech zřízení aktivity zprávu, která popisuje všechny akce prováděné při zřizování na BlueJeans služby Azure AD.
 
 Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](./active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Omezení konektoru
+
+* Bluejeans neumožňuje uživatelská jména, které delší než 30 znaků.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

@@ -1,11 +1,11 @@
 ---
-title: "Povolit aplikacím načíst tajné klíče Azure zásobníku Key Vault | Microsoft Docs"
-description: "Pomocí ukázkové aplikace pro práci s Azure zásobníku Key Vault"
+title: Povolit aplikacím načíst tajné klíče Azure zásobníku Key Vault | Microsoft Docs
+description: Pomocí ukázkové aplikace pro práci s Azure zásobníku Key Vault
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
 ms.author: mabrigg
-ms.openlocfilehash: 50103dca21d047c5cee211b2250e750739131bc1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
-ms.translationtype: MT
+ms.openlocfilehash: c32667f240c9e825a82b1e9623c672b00ac999ed
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Ukázkovou aplikaci, která používá klíče a tajné klíče uložené v trezoru klíčů
 
@@ -72,7 +72,7 @@ $TenantID = Get-AzsDirectoryTenantId `
   -EnvironmentName AzureStackUser
 
 # Sign in to the user portal.
-Login-AzureRmAccount `
+Connect-AzureRmAccount `
   -EnvironmentName "AzureStackUser" `
   -TenantId $TenantID `
   
@@ -136,12 +136,12 @@ Stažení ukázky klíče trezoru z Azure [Key Vault klienta ukázky](https://ww
 
 Otevřete soubor HelloKeyVault\App.config a nahraďte hodnoty <appSettings> element s **VaultUrl**, **AuthClientId**, a **AuthClientSecret** hodnoty vrácená skriptem předchozí. Všimněte si, že ve výchozím nastavení souboru App.config obsahuje zástupný symbol pro *AuthCertThumbprint*, ale použít *AuthClientSecret* místo. Po nastavení nahradíte, znovu sestavte řešení a spusťte aplikaci.
 
-![Nastavení aplikace](media/azure-stack-kv-sample-app/appconfig.png)
+![Nastavení aplikací](media/azure-stack-kv-sample-app/appconfig.png)
  
 Aplikace přihlášení do služby Azure AD a pak používá tento token k ověření v zásobníku Azure key vault. Aplikace provede operací, jako je vytvářet, šifrování, zabalení a odstraňovat na klíčů a tajných klíčů služby key vault. Můžete také předat konkrétní parametry, jako *šifrování* a *dešifrovat* aplikaci, která zajišťuje, že aplikace provede pouze operace u trezoru. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Nasazení virtuálního počítače s heslem Key Vaultu](azure-stack-kv-deploy-vm-with-secret.md)
 
 [Nasadit virtuální počítač s certifikátem Key Vault](azure-stack-kv-push-secret-into-vm.md)

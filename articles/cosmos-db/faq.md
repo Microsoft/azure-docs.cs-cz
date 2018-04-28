@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 0118e78ee7240c139ff808582d6b9b47c6b64b4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -114,7 +114,7 @@ Hodnota PreferredLocations lze nastavit pro žádného z regionů Azure, ve kter
 ### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Je všechno, co I měli vzít v potaz při distribuci dat po celém světě prostřednictvím datových centrech Azure? 
 Azure Cosmos DB přes všechny oblasti Azure, jak je uvedeno v nachází [oblastí Azure](https://azure.microsoft.com/regions/) stránky. Vzhledem k tomu, že je základní služby, má každý nový datacenter přítomnosti Azure Cosmos DB. 
 
-Když nastavíte oblast, mějte na paměti, že Azure Cosmos DB respektuje suverénní a government cloudy. To znamená pokud vytvoříte účet v svrchovaných oblasti, nelze replikovat mimo danou svrchovaných oblast. Podobně nelze povolit replikaci do jiných umístění svrchovaných z mimo účtu. 
+Když nastavíte oblast, mějte na paměti, že Azure Cosmos DB respektuje suverénní a government cloudy. To znamená pokud vytvoříte účet v [svrchovaných oblast](https://azure.microsoft.com/global-infrastructure/), nelze replikovat mimo který [svrchovaných oblast](https://azure.microsoft.com/global-infrastructure/). Podobně nelze povolit replikaci do jiných umístění svrchovaných z mimo účtu. 
 
 ## <a name="develop-against-the-sql-api"></a>Vývoj rozhraní SQL API
 
@@ -170,6 +170,9 @@ Ano, protože Azure Cosmos DB je služba RESTful, odkazy na zdroje jsou neměnn�
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Je k dispozici místní instance systému SQL API?
 Ano. [Emulátoru DB Cosmos Azure](local-emulator.md) poskytuje zachováním emulace služby Cosmos DB. Podporuje funkce, které jsou shodné s Azure Cosmos databáze, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekce a provádění uložené procedury a triggery. Můžete vyvíjet a testovat aplikace pomocí emulátoru DB Cosmos Azure a jejich nasazení do Azure v globálním měřítku tím, že změníte koncového bodu připojení pro Azure Cosmos DB jednu konfiguraci.
 
+### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč se dlouho s plovoucí desetinnou čárkou v dokumentu zaokrouhlené při pohledu z Průzkumníku dat na portálu. 
+Toto je omezení jazyka JavaScript. JavaScript používá jako zadaný v IEEE 754 čísla s plovoucí desetinnou čárkou formát s dvojitou přesností a bezpečně může představovat hodnoty mezi-(253 - 1) a 253 – 1 (tj, 9007199254740991) jenom.
+
 ## <a name="develop-against-the-api-for-mongodb"></a>Vývoj pro rozhraní API pro MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co je Azure API DB Cosmos pro MongoDB?
 Rozhraní API Azure Cosmos DB pro MongoDB je vrstvu kompatibility, která umožňuje aplikacím snadno a transparentně komunikovat s nativní databázový stroj Azure Cosmos DB pomocí existující, podporované komunity Apache MongoDB rozhraní API a ovladačů. Vývojáři teď můžete použít existující řetězy MongoDB nástroje a dovednosti vytvářet aplikace, které využívá výhod Azure Cosmos DB. Vývojáři těžit z jedinečných funkcích Azure Cosmos DB, mezi které patří automatické indexování, zálohování údržby, smlouvy o úrovni finančně zálohovány služeb (SLA) a tak dále.
@@ -215,10 +218,10 @@ Existují určité rozdíly chování, které uživatelé pocházejících z Azu
 Z hlediska rozhraní REST API existuje několik možností koncových bodů nebo dotazu, které nepodporuje rozhraní API služby Azure Cosmos DB tabulky:
 | Metodu nebo metody REST | Možnost koncový bod/dotazu REST | Adresy URL dokumentu | Vysvětlení |
 | ------------| ------------- | ---------- | ----------- |
-| GET, PUT | /? restype =service@comp= vlastnosti| [Nastavit vlastnosti služby Table](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) a [získat vlastnosti služby Table](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Tento koncový bod se používá k nastavení pravidla CORS, konfigurace úložiště analýzy a nastavení protokolování. Protokolování a analýza jsou zpracovávány jinak v Azure DB Cosmos než úložiště tabulek Azure a CORS není aktuálně podporována. |
-| MOŽNOSTI | /<table-resource-name> | [Požadavek tabulky před letu CORS](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je část CORS, která Azure Cosmos DB v současné době nepodporuje. |
+| GET A PUT | /? restype =service@comp= vlastnosti| [Nastavit vlastnosti služby Table](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) a [získat vlastnosti služby Table](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Tento koncový bod se používá k nastavení pravidla CORS, konfigurace úložiště analýzy a nastavení protokolování. Protokolování a analýza jsou zpracovávány jinak v Azure DB Cosmos než úložiště tabulek Azure a CORS není aktuálně podporována. |
+| MOŽNOSTI | / < název tabulky zdroje > | [Požadavek tabulky před letu CORS](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Toto je část CORS, která Azure Cosmos DB v současné době nepodporuje. |
 | GET | /? restype =service@comp= statistiky | [Získat statistiky služby Table](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Poskytuje informace o tom, jak rychle replikuje data mezi primární a sekundární repliky. Toto není nutné Cosmos DB jako replikace je součástí zápisy. |
-| GET, PUT | /mytable? comp = seznamu acl | [Získejte tabulku seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) a [nastavit tabulky seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | To získá a nastaví zásady uložené přístupu používat ke správě podpisy sdíleného přístupu (SAS). I když SAS se podporuje, jsou nastavit a spravovat jinak. |
+| GET A PUT | /mytable? comp = seznamu acl | [Získejte tabulku seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) a [nastavit tabulky seznamu ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | To získá a nastaví zásady uložené přístupu používat ke správě podpisy sdíleného přístupu (SAS). I když SAS se podporuje, jsou nastavit a spravovat jinak. |
 
 Kromě toho rozhraní API služby Azure Cosmos DB tabulka podporuje jenom formátu JSON, není ATOM.
 
@@ -229,7 +232,7 @@ Pro .NET SDK konkrétně, existují některé třídy a metody, které databázi
 | Třída | Nepodporované – metoda |
 |-------|-------- |
 | CloudTableClient | \*ServiceProperties * |
-|                  | \*ServiceStats* |
+|                  | \*ServiceStats * |
 | CloudTable | Měli * |
 |            | GetPermissions * |
 | TableServiceContext | * (Tato třída je ve skutečnosti zastaralý) |

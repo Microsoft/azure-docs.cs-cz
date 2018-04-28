@@ -5,21 +5,21 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
+ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c4b05044b0894e565ec4136f368314cb22041a7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
-Řešení správy aktualizací ve službě Azure automation umožňuje spravovat aktualizace zabezpečení operačního systému pro Windows a Linux počítače nasazené v Azure, místní prostředí nebo jiných poskytovatelů cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+Řešení správy aktualizací ve službě Azure automation umožňuje spravovat aktualizace operačního systému pro Windows a Linux počítače nasazené v Azure, místní prostředí nebo jiných poskytovatelů cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
 Správu aktualizací pro virtuální počítače můžete povolit přímo ze svého účtu [Azure Automation](automation-offering-get-started.md).
-Informace o povolení správy aktualizací pro virtuální počítače z účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md).
+Informace o povolení správy aktualizací pro virtuální počítače z účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro jeden virtuální počítač na stránce virtuální počítač na portálu Azure. Tento scénář je k dispozici pro obě [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -46,16 +46,16 @@ V den a čas, který zadáte v nasazení aktualizací, spustí cílové počíta
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
-Následující tabulka uvádí seznam podporovaných operačních systémů: 
+Následující tabulka uvádí seznam podporovaných operačních systémů:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat vyhodnocování         |
-|Windows Server 2008 R2 SP1 a vyšší     |Prostředí Windows PowerShell 4.0 nebo vyšší se vyžaduje ([stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).<br> Windows PowerShell 5.1 ([stáhnout 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) se doporučuje pro větší spolehlivost.         |
+|Windows Server 2008 R2 SP1 a vyšší     |Prostředí Windows PowerShell 4.0 nebo vyšší se vyžaduje ([stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell 5.1 ([stáhnout 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) se doporučuje pro větší spolehlivost.         |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 12.04 LTS a novější x86/x64       |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
 
 ### <a name="unsupported-client-types"></a>Nepodporovaný klient typy
 
@@ -122,7 +122,7 @@ Heartbeat
 
 Na počítači s Windows můžete zkontrolovat následující k ověření připojení agenta s analýzy protokolů:
 
-1. Otevřete Microsoft Monitoring Agent v Ovládacích panelech a na **Azure Log Analytics** agenta na kartě zobrazí zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojila k analýze protokolů** .   
+1. Otevřete Microsoft Monitoring Agent v Ovládacích panelech a na **Azure Log Analytics** agenta na kartě zobrazí zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojila k analýze protokolů** .
 2. Otevřete protokol událostí systému Windows, přejděte do **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ze zdrojového konektoru Service Connector. Tyto události znamenat počítač zaregistrován s pracovní prostor analýzy protokolů a přijímá konfigurace.
 
 Pokud agenta není schopna komunikovat s analýzy protokolů a je nakonfigurován pro komunikaci přes internet prostřednictvím brány firewall nebo proxy server, potvrzení, brány firewall nebo proxy server byl správně nakonfigurován kontrolou [konfiguraci sítě pro Agent webu Windows](../log-analytics/log-analytics-agent-windows.md) nebo [konfiguraci sítě pro agenta systému Linux](../log-analytics/log-analytics-agent-linux.md).
@@ -145,7 +145,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému pro agenty Windows a inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a zahajuje instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.<br>Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Do pracovního prostoru analýzy protokolů se předají data ze skupiny pro správu. |
+| Skupina pro správu Operations Manageru |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu.</br>Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Do pracovního prostoru analýzy protokolů se předají data ze skupiny pro správu. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -196,6 +196,30 @@ Kliknutím na vytvořit nové nasazení aktualizace **nasazení aktualizace plá
 |Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně opakování|
 | Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut a více než 6 hodin |
 
+## <a name="update-classifications"></a>Klasifikace aktualizací
+
+Následující tabulka obsahuje seznam klasifikace aktualizací v správy aktualizací společně s definici pro každé klasifikace.
+
+### <a name="windows"></a>Windows
+
+|Klasifikace  |Popis  |
+|---------|---------|
+|Důležité aktualizace     | Aktualizaci pro určitý problém, která řeší kritickou nesouvisející zabezpečení chybu.        |
+|Aktualizace zabezpečení     | Aktualizaci pro problém produktu, související se zabezpečením.        |
+|Kumulativní aktualizace     | Úhrnnou sadu oprav hotfix, které jsou spojených oprav pro snadné nasazení.        |
+|Balíčky funkcí     | Nové funkce produktu, distribuované mimo vydání produktu.        |
+|Aktualizace Service Pack     | Úhrnnou sadu oprav hotfix, které se použijí pro aplikaci.        |
+|Aktualizace definic     | Aktualizace jiných souborů definic virů či.        |
+|Nástroje     | Nástroj nebo funkci sloužící k dokončení jedné nebo více úloh.        |
+|Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalována.        |
+
+### <a name="linux"></a>Linux
+
+|Klasifikace  |Popis  |
+|---------|---------|
+|Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro určitý problém nebo problém s produktu, související se zabezpečením.         |
+|Další aktualizace     | Všechny další aktualizace, které nejsou kritické ve své podstatě aktualizace nebo aktualizace zabezpečení.        |
+
 ## <a name="search-logs"></a>Protokoly vyhledávání
 
 Kromě podrobností, které jsou k dispozici na portálu můžete provést hledání protokoly. S **sledování změn** otevřený, klikněte na stránce **analýzy protokolů**, otevře se **hledání protokolů** stránky
@@ -206,13 +230,13 @@ Následující tabulka obsahuje ukázkový protokol hledání aktualizace zázna
 
 | Dotaz | Popis |
 | --- | --- |
-|Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi<br>Přidejte jednu z těchto omezit operačního systému:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;kde počítač == "ContosoVM1.contoso.com"<br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
-| Událost<br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false <br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími požadovanými důležitými aktualizacemi nebo aktualizacemi zabezpečení |
-| Aktualizace<br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false<br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích |
-| UpdateRunProgress<br>&#124;kde InstallationStatus == "se nezdařilo" <br>&#124;shrnout AggregatedValue = count() pomocí počítače, název, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci<br>Přidejte jednu z těchto omezit operačního systému:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Aktualizace<br>&#124;kde OSType == "Linux"<br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")<br>&#124;shrnout AggregatedValue = count() počítačem. |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení | 
-| UpdateRunProgress<br>&#124;kde UpdateRunName == "DeploymentName"<br>&#124;shrnout AggregatedValue = count() počítačem.|Počítače aktualizované při této hromadné postupné aktualizaci (nahraďte hodnotu názvem vašeho nasazení aktualizací) | 
+|Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;kde počítač == "ContosoVM1.contoso.com"</br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
+| Událost</br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false </br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími požadovanými důležitými aktualizacemi nebo aktualizacemi zabezpečení |
+| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích |
+| UpdateRunProgress</br>&#124;kde InstallationStatus == "se nezdařilo" </br>&#124;shrnout AggregatedValue = count() pomocí počítače, název, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Aktualizace</br>&#124;kde OSType == "Linux"</br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")</br>&#124;shrnout AggregatedValue = count() počítačem. |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení |
+| UpdateRunProgress</br>&#124;kde UpdateRunName == "DeploymentName"</br>&#124;shrnout AggregatedValue = count() počítačem.|Počítače aktualizované při této hromadné postupné aktualizaci (nahraďte hodnotu názvem vašeho nasazení aktualizací) |
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 
@@ -248,18 +272,18 @@ Pokud při pokusech o připojení řešení nebo virtuálního počítače doch�
 
 | Zpráva | Důvod | Řešení |
 |----------|----------|----------|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.InvalidOperationException: {"Zpráva":"Počítač už je<br>registrovaný k jinému účtu. "} | Počítač už je připojený k jinému pracovnímu prostoru pro řešení Update Management | Proveďte vyčištění starých artefaktů [odstraněním hybridních runbooků](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---><br>System.Net.WebException: Nadřízené připojení<br>bylo uzavřeno: Došlo k neočekávané<br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:<br>Klient a server nemůžou komunikovat,<br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
-| Certifikát předložený službou <wsid>.oms.opinsights.azure.com<br>nebyl vydaný certifikační autoritou<br>používanou pro služby Microsoft. Kontakt<br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící<br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br>registrace se nezdařila s výjimkou<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---><br>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem | Ověřte, že má systémový účet<br>oprávnění ke čtení ze složky:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>System.InvalidOperationException: {"Zpráva":"Počítač už je</br>registrovaný k jinému účtu. "} | Počítač už je připojený k jinému pracovnímu prostoru pro řešení Update Management | Proveďte vyčištění starých artefaktů [odstraněním hybridních runbooků](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
+| Nelze zaregistrovat počítač pro správu opravy, registrace se nezdařila s výjimkou</br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---></br>System.Net.WebException: Nadřízené připojení</br>bylo uzavřeno: Došlo k neočekávané</br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:</br>Klient a server nemůžou komunikovat,</br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Certifikát předložený službu \<wsid\>. oms.opinsights.azure.com</br>nebyl vydaný certifikační autoritou</br>používanou pro služby Microsoft. Kontakt</br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící</br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---></br>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem | Ověřte, že má systémový účet</br>oprávnění ke čtení ze složky:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>Další postup
 
 Pokračujte v kurzu se dozvíte, jak spravovat aktualizace pro virtuální počítače Windows.
 
 > [!div class="nextstepaction"]
-> [Spravovat aktualizace a opravy pro virtuální počítače Windows Azure](automation-tutorial-troubleshoot-changes.md)
+> [Spravovat aktualizace a opravy pro virtuální počítače Windows Azure](automation-tutorial-update-management.md)
 
 * K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../log-analytics/log-analytics-log-searches.md).
 * [Vytvářejte výstrahy](../log-analytics/log-analytics-alerts.md) při zjištění, že v počítačích chybí důležité aktualizace nebo že má počítač zakázané automatické aktualizace.

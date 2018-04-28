@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace připojení S2S VPN aktivní aktivní pro brány sítě VPN: Azure Resource Manager: prostředí PowerShell | Microsoft Docs"
-description: "Tento článek vás provede procesem konfigurace aktivní aktivní připojení s Azure VPN Gateway pomocí Azure Resource Manageru a prostředí PowerShell."
+title: 'Konfigurace připojení S2S VPN aktivní aktivní pro brány sítě VPN: Azure Resource Manager: prostředí PowerShell | Microsoft Docs'
+description: Tento článek vás provede procesem konfigurace aktivní aktivní připojení s Azure VPN Gateway pomocí Azure Resource Manageru a prostředí PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: yushwang
-ms.openlocfilehash: 41cca764335f21bed60fe968288bc8b8274f3215
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c09abe97d34b7220d76481a403165f1b7e07fcaa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurace připojení S2S VPN aktivní aktivní službou Azure VPN Gateways
 
@@ -94,7 +94,7 @@ Ujistěte se, že jste přešli do režimu prostředí PowerShell, aby bylo mož
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
@@ -229,7 +229,7 @@ Následující příklad uvádí parametry, které budete zadávat do protokolu 
 
 Připojení by se mělo vytvořit po několika minutách a relaci partnerského vztahu protokolu BGP se spustí po vytvoření připojení protokolu IPsec. Tento příklad, pokud byl nakonfigurován pouze jeden zařízení VPN místní, což vede k diagramu níže:
 
-![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
+![aktivní aktivní crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Krok 3 – připojení dvě místní zařízení VPN k bráně VPN aktivní aktivní
 Pokud máte dva zařízení VPN ve stejné místní síti, můžete dosáhnout duální redundance připojením bránu Azure VPN a druhý zařízení VPN.
@@ -276,7 +276,7 @@ Podobně níže seznamy parametry zadejte, který bude do druhé zařízení sí
 
 Jakmile se navázat připojení (tunely), budete mít dva redundantní zařízení VPN a tunely připojení vaší místní sítí a Azure:
 
-![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![Dual redundance crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>Část 3 – vytvoření aktivní aktivní připojení VNet-to-VNet
 V této části vytvoříme připojení k aktivní aktivní VNet-to-VNet s protokolem BGP. 
@@ -372,7 +372,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 Po dokončení těchto kroků, připojení vytvoří pár minut a protokolu BGP bude relaci partnerského vztahu až po dokončení připojení VNet-to-VNet s duální redundance:
 
-![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
+![aktivní aktivní v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
 ## <a name ="aaupdate"></a>Aktualizovat existující bránu sítě VPN
 
@@ -416,7 +416,7 @@ V tomto kroku povolení režimu aktivní aktivní a aktualizujte bránu. V pří
 
 * Starší verze SKU nelze změnit na jednu z nové skladových položek pomocí tohoto kroku. Pouze můžete změnit velikost starší verze SKU pro jiné podporované starší verze SKU. Například nelze verze SKU z Standard do VpnGw1 (i když VpnGw1 je podporována pro aktivní aktivní) protože Standard je starší verze SKU a VpnGw1 je aktuální identifikátor SKU. Další informace o SKU změny velikosti a migrace najdete v tématu [SKU brány](vpn-gateway-about-vpngateways.md#gwsku).
 
-* Pokud chcete změnit velikost aktuální identifikátor SKU, například VpnGw1 k VpnGw3, můžete tak učinit pomocí tohoto kroku, protože SKU jsou ve stejné řada SKU. Chcete-li to provést, použijte hodnota:```-GatewaySku VpnGw3```
+* Pokud chcete změnit velikost aktuální identifikátor SKU, například VpnGw1 k VpnGw3, můžete tak učinit pomocí tohoto kroku, protože SKU jsou ve stejné řada SKU. Chcete-li to provést, použijte hodnota: ```-GatewaySku VpnGw3```
 
 Pokud používáte to ve vašem prostředí, pokud je nebudete muset změnit velikost brány, nebude muset zadat - GatewaySku. Všimněte si v tomto kroku musí nastavit brána objekt v prostředí PowerShell pro aktivaci skutečné aktualizace. Tato aktualizace může trvat 30 až 45 minut, i když nejsou Změna velikosti brány.
 

@@ -1,25 +1,23 @@
 ---
-title: "Sada nástrojů pro kognitivní s Azure HDInsight Spark pro přímý learning | Microsoft Docs"
-description: "Zjistěte, jak lze použít model natrénujete hloubkové learning kognitivní nástrojů Microsoft pro datovou sadu pomocí rozhraní API Python Spark v clusteru Azure HDInsight Spark."
+title: Sada nástrojů pro kognitivní s Azure HDInsight Spark pro přímý learning | Microsoft Docs
+description: Zjistěte, jak lze použít model natrénujete hloubkové learning kognitivní nástrojů Microsoft pro datovou sadu pomocí rozhraní API Python Spark v clusteru Azure HDInsight Spark.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: ebbbcd7a1d61ba0eac13a184aa48cacb800524e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7afb891642e3e53da5eb1e17ee654fb5fb42c313
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použít Microsoft kognitivní Toolkit hloubkové učení modelu s clusteru Azure HDInsight Spark
 
@@ -75,9 +73,9 @@ Pokyny o tom, jak pomocí portálu Azure ke spuštění akce skriptu najdete v t
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Nahrajte do clusteru Azure HDInsight Spark poznámkového bloku Jupyter
 
-Pokud chcete používat Microsoft kognitivní Toolkit s clusteru Azure HDInsight Spark, je nutné načíst poznámkového bloku Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do clusteru Azure HDInsight Spark. Tento poznámkový blok je k dispozici na webu GitHub na [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
+Pokud chcete používat Microsoft kognitivní Toolkit s clusteru Azure HDInsight Spark, je nutné načíst poznámkového bloku Jupyter **CNTK_model_scoring_on_Spark_walkthrough.ipynb** do clusteru Azure HDInsight Spark. Tento poznámkový blok je k dispozici na webu GitHub na [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration).
 
-1. Naklonujte úložiště GitHub [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Pokyny ke klonování najdete v tématu [klonování úložiště](https://help.github.com/articles/cloning-a-repository/).
+1. Naklonujte úložiště GitHub [ https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration ](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration). Pokyny ke klonování najdete v tématu [klonování úložiště](https://help.github.com/articles/cloning-a-repository/).
 
 2. Z portálu Azure, otevřete okno clusteru Spark, které jste už zřízené, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na **Poznámkový blok Jupyter**.
 

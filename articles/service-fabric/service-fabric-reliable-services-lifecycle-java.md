@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: pakunapa;
-ms.openlocfilehash: 4270bf0b8002b5328241c6d31f399511fc38274e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9c2ce75b2bfb4b8ddab11ac94e5a8e50c2fad6ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reliable-services-lifecycle"></a>Životní cyklus Reliable Services
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Služby, které není řádně zpracovávat zrušení může mít několik probl
 
 Protože se stavové služby, je také pravděpodobné, že služby používají [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md). V Service Fabric při snížení úrovně primární jeden z nejdůležitějších věcí, které se stane, se zruší se oprávnění k zápisu do základní stav. To vede ke druhé sadě problémy, které mohou ovlivnit služby životního cyklu. Kolekce návratový výjimky založené na načasování a jestli je přesouvání repliky nebo vypnutí. Je důležité tyto výjimky správně zpracovat. 
 
-Výjimky vyvolané Service Fabric se buď trvalé [(`FabricException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception) nebo přechodný [(`FabricTransientException`)](https://docs.microsoft.com/en-us/java/api/system.fabric.exception._fabric_transient_exception). Trvalé výjimky by měl zaznamenána a vyvolána. Přechodný výjimky opakovat lze na základě logiky opakování.
+Výjimky vyvolané Service Fabric se buď trvalé [(`FabricException`)](https://docs.microsoft.com/java/api/system.fabric.exception) nebo přechodný [(`FabricTransientException`)](https://docs.microsoft.com/java/api/system.fabric.exception._fabric_transient_exception). Trvalé výjimky by měl zaznamenána a vyvolána. Přechodný výjimky opakovat lze na základě logiky opakování.
 
 Důležitou součástí testování a ověření spolehlivé služby je zpracování výjimek, které pocházejí z pomocí `ReliableCollections` ve spojení s událostmi služby životního cyklu. Doporučujeme vždy spustit služby zatížení. Je také vhodné provést upgrady a [chaos testování](service-fabric-controlled-chaos.md) před nasazením do produkčního prostředí. Tyto základní postup pomůže, ujistěte se, že služby je implementovaná správně a zda je správně zpracovává události životního cyklu.
 

@@ -26,7 +26,7 @@
 ## [Zobrazení souvisejících datových prostředků](data-catalog-how-to-view-related-data-assets.md) 
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=data-catalog)
 ## [REST](/rest/api/datacatalog/)
 ## [Reference k syntaxi služby Search](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Koncepce pro vývojáře](data-catalog-developer-concepts.md)

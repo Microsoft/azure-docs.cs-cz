@@ -11,11 +11,11 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 189f19a3a3f588df8844a552abda73827eb45191
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbb8deeab8368d9c0e6d29c8d7e1e2e0a8805d60
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Další machine learning produkty a služby od Microsoftu
 
@@ -77,7 +77,7 @@ Služba Správa modelů ve službě Azure Machine Learning se dá použít k př
 Sadu Cognitive Toolkit použijte v případě, že chcete sestavit model využívající hloubkové učení.  Sada Cognitive Toolkit se dá používat v kterékoli z předchozích služeb.
 
 ## <a name="azure-cognitive-services"></a>Kognitivní služby Azure
-[Služby Azure kognitivní](https://docs.microsoft.com/en-us/azure/#pivot=products&panel=ai) je sada o 30 rozhraní API, které umožňují vytvářet aplikace, které používají přirozené metod komunikace. Tato rozhraní API umožňují aplikací najdete v článku, nás, Předčítání, pochopit a interpretovat musí uživatel s několika řádků kódu. Do svých aplikací můžete snadno přidávat inteligentní funkce, jako jsou tyto: 
+[Služby Azure kognitivní](https://docs.microsoft.com/azure/#pivot=products&panel=ai) je sada o 30 rozhraní API, které umožňují vytvářet aplikace, které používají přirozené metod komunikace. Tato rozhraní API umožňují aplikací najdete v článku, nás, Předčítání, pochopit a interpretovat musí uživatel s několika řádků kódu. Do svých aplikací můžete snadno přidávat inteligentní funkce, jako jsou tyto: 
 
 - Rozpoznávání emocí a pocitů
 - Rozpoznávání obrazu a řeči

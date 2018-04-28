@@ -9,11 +9,11 @@ ms.custom: mvc,business continuity
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementace geograficky distribuované databáze
 
@@ -380,4 +380,17 @@ Nainstalujte [Maven](https://maven.apache.org/download.cgi) pomocí oficiální 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Aktivní geografická replikace a skupiny převzetí služeb při selhání](sql-database-geo-replication-overview.md).
+V tomto kurzu jste se naučili nakonfigurovat u databáze SQL Azure a aplikace převzetí služeb při selhání do vzdálené oblasti a potom svůj plán převzetí služeb při selhání otestovat.  Naučili jste se tyto postupy: 
+
+> [!div class="checklist"]
+> * Vytvoření uživatelů databáze a udělení oprávnění
+> * Nastavení pravidla brány firewall na úrovni databáze
+> * Vytvoření skupiny převzetí služeb při selhání geografické replikace
+> * Vytvoření a kompilace aplikace v Javě pro dotazování databáze SQL Azure
+> * Provedení postupu zotavení po havárii
+
+V dalším kurzu se dozvíte, jak vytvořit spravovanou instanci.
+
+> [!div class="nextstepaction"]
+>[Vytvoření spravované instance](sql-database-managed-instance-create-tutorial-portal.md)
+

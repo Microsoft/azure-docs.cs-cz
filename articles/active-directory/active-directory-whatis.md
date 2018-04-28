@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.custom: it-pro
-ms.openlocfilehash: 003ce2edda3e2069eb7e05f58ecc2e208c818946
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01183a2c85b748d593146f6b52a7d4dbd34524cb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 Azure Active Directory (Azure AD) je více klientů, cloudového adresáře společnosti Microsoft a služba identity management, který kombinuje základní adresářová služba, Správa přístupu aplikací a ochrany identit v jediném řešení. Azure AD také nabízí bohatou a založených na standardech platformu, která umožňuje vývojářům k poskytování řízení přístupu k jejich aplikacím na základě centralizovaných zásad a pravidla.
@@ -55,7 +55,7 @@ K vylepšení služby Azure Active Directory, můžete přidat placené možnost
 > Počet možností Azure Active Directory jsou k dispozici prostřednictvím "platím průběžně" edice:
 >
 > * Active Directory B2C je řešení správy identit a přístupu pro aplikace určených. Další informace najdete v tématu [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
-> * Azure Multi-Factor Authentication umožňuje použít pro uživatele, nebo v zprostředkovatele ověřování. Další informace najdete v tématu [co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
+> * Azure Multi-Factor Authentication umožňuje použít pro uživatele, nebo v zprostředkovatele ověřování. Další informace najdete v tématu [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 >
 
 ## <a name="how-can-i-get-started"></a>Jak můžu začít?

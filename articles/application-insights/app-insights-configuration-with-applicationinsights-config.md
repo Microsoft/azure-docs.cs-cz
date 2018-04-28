@@ -1,8 +1,8 @@
 ---
 title: Odkaz na soubor ApplicationInsights.config - Azure | Microsoft Docs
-description: "Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a dalších parametrů."
+description: Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a dalších parametrů.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: OlegAnaniev-MSFT
 editor: mrbullwinkle
 manager: carmonm
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počet balíčků NuGet. [Základní balíček](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrie Application insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automaticky sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat telemetrii moduly a inicializátory a nastavit parametry pro některé z nich.
@@ -52,7 +52,7 @@ Můžete taky napsat vlastní závislost sledování kódu pomocí [TrackDepende
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Telemetrii Diagnostics Application Insights
-`DiagnosticsTelemetryModule` Sestavy chyb v samotný kód instrumentace Application Insights. Například pokud kód nelze získat přístup k čítače výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Trasování telemetrie sleduje tento modul se zobrazí v [diagnostické vyhledávání][diagnostic]. Sends diagnostic data to dc.services.vsallin.net.
+`DiagnosticsTelemetryModule` Sestavy chyb v samotný kód instrumentace Application Insights. Například pokud kód nelze získat přístup k čítače výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Trasování telemetrie sleduje tento modul se zobrazí v [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
 * [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud máte pouze instalaci tohoto balíčku, není soubor ApplicationInsights.config vytvoří automaticky.
@@ -263,6 +263,91 @@ Pokud chcete odeslat sadu událostí na jiný prostředek, můžete nastavit kl�
 ```
 
 Chcete-li získat nový klíč, [vytvoření nového prostředku na portálu služby Application Insights][new].
+
+
+
+## <a name="applicationid-provider"></a>ApplicationId zprostředkovatele
+
+_K dispozici od v2.6.0_
+
+Účelem tohoto zprostředkovatele je k vyhledání Id aplikací podle kód instrumentace. Id aplikace je součástí RequestTelemetry a DependencyTelemetry a používá k určení korelace na portálu.
+
+Toto je k dispozici nastavením `TelemetryConfiguration.ApplicationIdProvider` v kódu nebo v konfiguraci.
+
+### <a name="interface-iapplicationidprovider"></a>Rozhraní: IApplicationIdProvider
+
+```csharp
+public interface IApplicationIdProvider
+{
+    bool TryGetApplicationId(string instrumentationKey, out string applicationId);
+}
+```
+
+
+Poskytujeme dva implementace v [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) sdk: `ApplicationInsightsApplicationIdProvider` a `DictionaryApplicationIdProvider`.
+
+### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
+
+Toto je obálku kolem našem rozhraní Api profilu. Bude omezení, požadavky a výsledky mezipaměti.
+
+Tohoto zprostředkovatele se přidá do konfiguračního souboru při instalaci buď [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) nebo [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
+
+Tato třída obsahuje volitelná vlastnost `ProfileQueryEndpoint`.
+Ve výchozím nastavení to je nastavena na `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
+Pokud potřebujete nakonfigurovat proxy server pro tuto konfiguraci, doporučujeme, abyste proxy základní adresu a včetně "/ api/profily / {0} / appId". Všimněte si, že {0}' je nahrazena za běhu na základě požadavku klíč instrumentace.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace pomocí souboru ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Příklad konfigurace prostřednictvím kódu:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApplicationIdProvider();
+```
+
+### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
+
+Toto je statický poskytovatele, který bude záviset na nakonfigurovaných klíč instrumentace nebo páry Id aplikace.
+
+Tato třída má vlastnost `Defined` tedy slovník < řetězec, řetězec > klíč instrumentace na páry Id aplikace.
+
+Tato třída obsahuje volitelná vlastnost `Next` který můžete použít ke konfiguraci jiného zprostředkovatele použít, pokud se požaduje kód instrumentace, který neexistuje v konfiguraci.
+
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace pomocí souboru ApplicationInsights.config:
+```xml
+<ApplicationInsights>
+    ...
+    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.DictionaryApplicationIdProvider, Microsoft.ApplicationInsights">
+        <Defined>
+            <Type key="InstrumentationKey_1" value="ApplicationId_1"/>
+            <Type key="InstrumentationKey_2" value="ApplicationId_2"/>
+        </Defined>
+        <Next Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights" />
+    </ApplicationIdProvider>
+    ...
+</ApplicationInsights>
+```
+
+#### <a name="example-configuration-via-code"></a>Příklad konfigurace prostřednictvím kódu:
+```csharp
+TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationIdProvider{
+ Defined = new Dictionary<string, string>
+    {
+        {"InstrumentationKey_1", "ApplicationId_1"},
+        {"InstrumentationKey_2", "ApplicationId_2"}
+    }
+};
+```
+
+
+
 
 ## <a name="next-steps"></a>Další postup
 [Další informace o rozhraní API][api].

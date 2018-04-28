@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1fe8a52a946b7e70a845e26b80dec94176c346f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d56b27a040420d049f567ac0de9289b1e72f3ea9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Příchozí přenos HTTPS na Azure Container Service (AKS)
 
@@ -23,11 +23,11 @@ Tento dokument vás provede ukázkové nasazení [NGINX příjem příchozích d
 
 ## <a name="prerequisite"></a>Požadavek
 
-Instalace rozhraní příkazového řádku Helm – viz Helm CLI [dokumentace] [helm rozhraní příkazového řádku] postup instalace.
+Instalace rozhraní příkazového řádku Helm – viz rozhraní příkazového řádku Helm [dokumentace] [ helm-cli] postup instalace.
 
 ## <a name="install-an-ingress-controller"></a>Nainstalovat řadič příjem příchozích dat
 
-K instalaci řadičem NGINX příjem příchozích dat použijte Helm. Viz řadič příjem příchozích dat NGINX [dokumentace] [ nginx-ingress] nasazení podrobné informace. 
+K instalaci řadičem NGINX příjem příchozích dat použijte Helm. Viz řadič příjem příchozích dat NGINX [dokumentace] [ nginx-ingress] nasazení podrobné informace.
 
 Aktualizujte graf úložiště.
 
@@ -76,13 +76,7 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
 ```
 
-V případě potřeby spusťte následující příkaz k načtení plně kvalifikovaný název domény. Aktualizujte hodnotu IP adresu s třídou řadiči příjem příchozích dat.
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
-```
-
-Řadičem příjem příchozích dat je nyní přístupné prostřednictvím plně kvalifikovaný název domény.
+Příjem příchozích dat řadiče by teď měly být přístupné prostřednictvím plně kvalifikovaný název domény.
 
 ## <a name="install-kube-lego"></a>Nainstalujte KUBE LEGO
 
@@ -181,13 +175,14 @@ Všimněte si také, že připojení je šifrovaná a že se používá certifik
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o softwaru ukázáno v tomto dokumentu. 
+Další informace o softwaru ukázáno v tomto dokumentu.
 
+- [Helm rozhraní příkazového řádku][helm-cli]
 - [Řadič NGINX příjem příchozích dat][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-client]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

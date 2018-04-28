@@ -1,24 +1,18 @@
 ---
-title: "Filtry ve službě Azure Search | Microsoft Docs"
-description: "Filtrovat podle identity uživatele zabezpečení, jazyk, geografického umístění nebo číselné hodnoty omezit výsledky vyhledávání na dotazy do služby Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure."
-services: search
-documentationcenter: 
+title: Filtry ve službě Azure Search | Microsoft Docs
+description: Filtrovat podle identity uživatele zabezpečení, jazyk, geografického umístění nebo číselné hodnoty omezit výsledky vyhledávání na dotazy do služby Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: heidist
-ms.openlocfilehash: 2e8721684b1d4ed0e7392d85ea1df0f595860a05
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
-ms.translationtype: MT
+ms.openlocfilehash: 82da742e6512e0acc8278a255c7e4e0516eaa8cb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="filters-in-azure-search"></a>Filtry ve službě Azure Search 
 
@@ -52,9 +46,9 @@ Ukázkové scénáře patří:
 
 Pokud chcete ve výsledcích hledání narrowing vliv, nejsou zvoleného pouze filtry. Tyto možnosti může být lépe vyhovovat, v závislosti na váš cíl:
 
- + `searchFields`parametr dotazu váže hodnotu vyhledávání konkrétních polí. Například pokud indexu poskytuje samostatná pole pro angličtinu a slovenštinu popisy, můžete searchFields cílové pole, která chcete použít pro fulltextové vyhledávání. 
+ + `searchFields` parametr dotazu váže hodnotu vyhledávání konkrétních polí. Například pokud indexu poskytuje samostatná pole pro angličtinu a slovenštinu popisy, můžete searchFields cílové pole, která chcete použít pro fulltextové vyhledávání. 
 
-+ `$select`parametr slouží k určení pole, která chcete zahrnout do výsledku nastavit, efektivně ořezávání odpověď před odesláním do volající aplikace. Tento parametr upřesnění dotazu nebo snížit kolekce dokumentů, ale pokud je vaším cílem granulární odpověď, tento parametr je, zvažte možnost. 
++ `$select` parametr slouží k určení pole, která chcete zahrnout do výsledku nastavit, efektivně ořezávání odpověď před odesláním do volající aplikace. Tento parametr upřesnění dotazu nebo snížit kolekce dokumentů, ale pokud je vaším cílem granulární odpověď, tento parametr je, zvažte možnost. 
 
 Další informace o buď parametru najdete v tématu [vyhledávání dokumentů > požádat o > parametrů dotazu](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
@@ -161,7 +155,7 @@ Textové řetězce rozlišují velká a malá písmena. Neexistuje žádné niž
 
 | Přístup | Popis | 
 |----------|-------------|
-| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkci poskytování čárkami oddělený seznam řetězců pro dané pole. Řetězce tvoří kritéria filtru, které se použijí pro každé pole v oboru pro dotaz. <br/><br/>`search.in(f, ‘a, b, c’)`je sémanticky ekvivalentní `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`kromě toho, že provede mnohem rychlejší, když se seznam hodnot je velká.<br/><br/>Doporučujeme, abyste **Hledat.v** funkce pro [filtrů zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry tvořený nezpracovaný text odpovídal na hodnoty v dané pole. Tento přístup je určený pro rychlost. Můžete očekávat subsecond doba odezvy pro několika set k tisícům hodnot. Když neexistuje žádné explicitní omezení počtu položek, které lze předat funkci, v závislosti na počtu řetězce, které zadáte zvyšování latence. | 
+| [Search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkci poskytování čárkami oddělený seznam řetězců pro dané pole. Řetězce tvoří kritéria filtru, které se použijí pro každé pole v oboru pro dotaz. <br/><br/>`search.in(f, ‘a, b, c’)` je sémanticky ekvivalentní `f eq ‘a’ or f eq ‘b’ or f eq ‘c’`kromě toho, že provede mnohem rychlejší, když se seznam hodnot je velká.<br/><br/>Doporučujeme, abyste **Hledat.v** funkce pro [filtrů zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry tvořený nezpracovaný text odpovídal na hodnoty v dané pole. Tento přístup je určený pro rychlost. Můžete očekávat subsecond doba odezvy pro několika set k tisícům hodnot. Když neexistuje žádné explicitní omezení počtu položek, které lze předat funkci, v závislosti na počtu řetězce, které zadáte zvyšování latence. | 
 | [Search.IsMatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. Umožňuje víc kombinací filtr dotazu v jedné žádosti. Můžete také použít ho *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |  
 | [$filter = operátor řetězec pole](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | Výraz uživatelem definované skládá z pole, operátory a hodnoty. | 
 
@@ -171,7 +165,7 @@ Textové řetězce rozlišují velká a malá písmena. Neexistuje žádné niž
 
 Dokumenty, které obsahují číselná pole (ceny, velikost, SKU, ID) zadejte tyto hodnoty ve výsledcích hledání, pokud je pole označeno `retrievable`. Tady je bod je že tento fulltextové vyhledávání, samotné není použitelný pro číselné pole typů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nejprve zkuste **Průzkumník služby Search** portálu k odesílání dotazů s **$filter** parametry. [Real majetku sample index](search-get-started-portal.md) poskytuje zajímavé výsledky pro následující filtrované dotazy při vkládání do panelu Hledat:
 
@@ -198,7 +192,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 Chcete-li pracovat s další příklady, přečtěte si téma [syntaxe výrazu filtru OData > Příklady](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Jak úplné textové vyhledávání funguje ve službě Azure Search](search-lucene-query-architecture.md)
 + [Hledání dokumentů rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

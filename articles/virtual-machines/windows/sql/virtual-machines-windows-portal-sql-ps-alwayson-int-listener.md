@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace vždy na naslouchací procesy skupiny dostupnosti – Microsoft Azure | Microsoft Docs"
-description: "Naslouchací procesy skupiny dostupnosti nakonfigurujte na modelu Azure Resource Manager, pomocí interní nástroj pro jednu nebo více IP adres."
+title: Konfigurace vždy na naslouchací procesy skupiny dostupnosti – Microsoft Azure | Microsoft Docs
+description: Naslouchací procesy skupiny dostupnosti nakonfigurujte na modelu Azure Resource Manager, pomocí interní nástroj pro jednu nebo více IP adres.
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurovat jeden nebo více vždy na dostupnosti naslouchací procesy skupiny - Resource Manager
 Toto téma ukazuje, jak:
@@ -48,10 +48,10 @@ Konfigurace brány Windows Firewall pro povolení přístupu k SQL serveru. Prav
 > 
 > 
 
-Následující skript prostředí PowerShell vytvoří interní nástroj, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu pro nástroj pro vyrovnávání zatížení. Pokud chcete spustit skript, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Login-AzureRMAccount` pro přihlášení k prostředí PowerShell. Pokud máte víc předplatných Azure, použijte `Select-AzureRmSubscription ` nastavte předplatné. 
+Následující skript prostředí PowerShell vytvoří interní nástroj, nakonfiguruje pravidla Vyrovnávání zatížení a nastaví IP adresu pro nástroj pro vyrovnávání zatížení. Pokud chcete spustit skript, otevřete Windows PowerShell ISE a vložte skript v podokně skriptu. Použití `Connect-AzureRmAccount` pro přihlášení k prostředí PowerShell. Pokud máte víc předplatných Azure, použijte `Select-AzureRmSubscription ` nastavte předplatné. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
@@ -112,7 +112,7 @@ Front-end port je port, který aplikace použít pro připojení k instanci syst
 Následující skript přidá novou IP adresu do existující pro vyrovnávání zatížení. ILB používá port naslouchacího procesu pro front-end port Vyrovnávání zatížení. Port, který SQL Server naslouchá na může být tento port. Pro výchozí instance systému SQL Server je port 1433. Pravidlo pro skupinu dostupnosti Vyrovnávání zatížení vyžaduje plovoucí IP (přímá odpověď ze serveru), tak back-end port je stejný jako front-end port. Aktualizujte proměnné pro vaše prostředí. 
 
 ```powershell
-# Login-AzureRmAccount
+# Connect-AzureRmAccount
 # Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name

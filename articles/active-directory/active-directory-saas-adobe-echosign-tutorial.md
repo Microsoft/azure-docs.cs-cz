@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Adobe přihlašovací | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Adobe přihlášení."
+title: 'Kurz: Azure Active Directory integrace s Adobe přihlašovací | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Adobe přihlášení.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/24/2017
+ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrace s Adobe přihlášení
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.echosign.com/`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.echosign.com/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.echosign.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html) k získání těchto hodnot. 
@@ -129,40 +129,31 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
 
-
 7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti Adobe přihlášení jako správce.
 
-8. V nabídce v horní části, klikněte na tlačítko **účet**a klikněte v navigačním podokně na levé straně, **SAML nastavení** pod **nastavení účtu**.
+8. V nabídce SAML, klikněte na tlačítko **nastavení účtu**a potom klikněte na **SAML nastavení**.
    
-   ![Účet](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "účtu")
+    ![Účet](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "účtu")
 
-9. V části Nastavení SAML proveďte následující kroky:
+9. V **SAML nastavení** část, proveďte následující kroky:
+  
+    ![Nastavení SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "nastavení SAML")
    
-   ![Nastavení SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "nastavení SAML")
+    a. Jako **SAML režimu**, vyberte **SAML povinné**.
    
-   a. Jako **SAML režimu**, vyberte **SAML povinné**.
+    b. Vyberte **povolit Adobe přihlašovací účet správci přihlásit pomocí svých přihlašovacích údajů přihlašovací Adobe**.
    
-   b. Vyberte **povolit správci účtu EchoSign přihlásit pomocí svých přihlašovacích údajů EchoSign**.
-   
-   c. Jako **vytvoření uživatele**, vyberte **automaticky přidat uživatele ověřeného pomocí SAML**.
+    c. Jako **vytvoření uživatele**, vyberte **automaticky přidat uživatele ověřeného pomocí SAML**.
 
-10. Přesunete na následujících kroků:
-
-       ![Nastavení SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789522.png "nastavení SAML")
-
-    a. Vložení **SAML Entity ID**, který jste zkopírovali z portálu Azure do **IdP Entity ID** textové pole.
+    d. Vložení **SAML Entity ID**, který jste zkopírovali z portálu Azure do **Entity ID-Vystavitel URL** textové pole.
     
-    b. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **IdP přihlašovací adresa URL** textové pole.
+    e. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **koncový bod adresy URL/jednotného přihlášení** textové pole.
    
-    c. Vložení **Sign-Out URL**, který jste zkopírovali z portálu Azure do **adresy URL odhlašovací IdP** textové pole.
+    f. Vložení **Sign-Out URL**, který jste zkopírovali z portálu Azure do **koncový bod adresy URL/SLO odhlášení** textové pole.
 
-    d. Otevřete váš stažené **Certificate(Base64)** souboru v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **IdP certifikát** textbox
+    g. Otevřete váš stažené **Certificate(Base64)** souboru v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **IdP certifikát** textbox
 
-    e. Klikněte na tlačítko **uložit změny**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    h. Klikněte na tlačítko **uložit změny**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -208,15 +199,15 @@ Pokud chcete povolit uživatelům Azure AD přihlášení na Adobe přihlašová
 
 2. V nabídce v horní části, klikněte na tlačítko **účet**a klikněte v navigačním podokně na levé straně, **uživatelé a skupiny**a potom klikněte na **vytvořte nového uživatele**.
    
-   ![Účet](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "účtu")
+    ![Účet](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "účtu")
    
 3. V **vytvořit nového uživatele** část, proveďte následující kroky:
    
-   ![Vytvoření uživatele](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "vytvoření uživatele")
+    ![Vytvoření uživatele](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "vytvoření uživatele")
    
-   a. Typ **e-mailovou adresu**, **křestní jméno**, a **příjmení** platného účtu AAD chcete mají být zahrnuty do související textových polí.
+    a. Typ **e-mailovou adresu**, **křestní jméno**, a **příjmení** platného účtu AAD chcete mají být zahrnuty do související textových polí.
    
-   b. Klikněte na tlačítko **vytvořit uživatele**.
+    b. Klikněte na tlačítko **vytvořit uživatele**.
 
 >[!NOTE]
 >Držitel účtu Azure Active Directory obdrží e-mail, který obsahuje odkaz pro potvrzení účtu před stane aktivní. 
@@ -256,7 +247,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 Když kliknete na dlaždici Adobe přihlašovací na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Adobe přihlášení.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

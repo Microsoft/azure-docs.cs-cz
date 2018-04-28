@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Shmoop pro škol | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shmoop pro škol."
+title: 'Kurz: Azure Active Directory integrace s Shmoop pro škol | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Shmoop pro škol.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 48db70834f96adbb7097457caca8489ea1a57da5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Azure Active Directory integrace s Shmoop pro školy
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je
 Konfigurace integrace Azure AD s Shmoop pro školy, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- Shmoop pro škol jednotného přihlašování na povoleno předplatného
+- Shmoop pro škol jednotné přihlašování povolené předplatné
 
 > [!NOTE]
 > Nedoporučujeme používat produkčním prostředí pro testování kroky v tomto kurzu.
@@ -80,8 +80,6 @@ V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlaš
 
 Azure AD pro jednotné přihlašování pro práci, musí vědět, kdo příslušného uživatele v Shmoop pro škol je pro uživatele ve službě Azure AD. Jinými slovy budete muset vytvořit propojení mezi uživatele Azure AD a související uživatelské v Shmoop pro škol.
 
-V Shmoop pro školy, zadejte **uživatelské jméno** hodnotu stejnou hodnotu **uživatelské jméno** ve službě Azure AD. Nyní jste vytvořili odkaz relace.
-
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Shmoop pro školy, proveďte následující stavební bloky:
 
 1. [Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on) umožňující uživatelům používat tuto funkci.
@@ -108,9 +106,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující:`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
 
-    b. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující:`https://schools.shmoop.com/<uniqueid>`
+    b. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se [tým podpory Shmoop pro škol klienta](mailto:support@shmoop.com) k získání těchto hodnot. 
@@ -126,7 +124,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu | Hodnota atributu |
     | -------------- | --------------- |
-    | Role           | User.assignedroles |
+    | role           | user.assignedroles |
 
     a. Chcete-li otevřít **přidat atribut** dialogové okno, vyberte **přidat atribut**.
     
@@ -146,31 +144,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Ke generování **Metadata** adresu URL, proveďte následující kroky:
+7. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
 
-    a. Vyberte **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
-   
-    b. Chcete-li otevřít **koncové body** dialogové okno, vyberte **koncové body**.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-    c. Vyberte tlačítko Kopírovat, pokud chcete zkopírovat **dokument FEDERAČNÍCH METADAT** adresy URL a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
-     
-    d. Přejděte na stránku vlastností **Shmoop pro škol**. Zkopírujte **ID aplikace** pomocí **kopie** tlačítko. Ho vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.   
-
-8. Konfigurace jednotného přihlašování na **Shmoop pro škol** straně, budete muset odeslat **adresu URL metadat** k [tým podpory Shmoop pro škol](mailto:support@shmoop.com).
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com) při k nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě a přístup k vložený dokumentace prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace v [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+8. Konfigurace jednotného přihlašování na **Shmoop pro škol** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory Shmoop pro škol](mailto:support@shmoop.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -249,7 +227,7 @@ Když vyberete **Shmoop pro škol** dlaždici na přístupovém panelu budete by
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů pro postup pro integraci aplikací SaaS Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -1,11 +1,11 @@
 ---
-title: "Příprava image virtuálního počítače Azure pro použití s inicializací cloudu | Microsoft Docs"
-description: "Tom, jak připravit bitovou kopii existující virtuální počítač Azure pro nasazení s inicializací cloudu"
+title: Příprava image virtuálního počítače Azure pro použití s inicializací cloudu | Microsoft Docs
+description: Tom, jak připravit bitovou kopii existující virtuální počítač Azure pro nasazení s inicializací cloudu
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 2eb7510d4e76e4996e83f351a62c0b025b487df2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače s Linuxem Azure pro použití s inicializací cloudu
 Tento článek ukazuje, jak využít existující virtuální počítač Azure a připravit opakovaně nasazeném a připravené k použití init cloudu. Výsledný obraz lze použít k nasazení nového virtuálního počítače nebo sady škálování virtuálního počítače – buď z nich může pak dále přizpůsobit podle cloudu init v době nasazení.  Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure. Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)
@@ -43,22 +43,20 @@ Aktualizace `cloud_init_modules` kapitoly `/etc/cloud/cloud.cfg` zahrnout násle
 
 Zde je ukázka jaké univerzální `cloud_init_modules` vypadá části.
 ```bash
- cloud_config_modules:
- - mounts
- - locale
- - set-passwords
- - rh_subscription
- - yum-add-repo
- - package-update-upgrade-install
- - timezone
- - puppet
- - chef
- - salt-minion
- - mcollective
- - disable-ec2-metadata
- - runcmd
+cloud_init_modules:
+ - migrator
+ - bootcmd
+ - write-files
+ - growpart
+ - resizefs
  - disk_setup
  - mounts
+ - set_hostname
+ - update_hostname
+ - update_etc_hosts
+ - rsyslog
+ - users-groups
+ - ssh
 ```
 Počet úloh souvisejících se zřizováním a zpracování dočasné disky je třeba aktualizovat v `/etc/waagent.conf`. Spusťte následující příkazy aktualizace příslušná nastavení. 
 ```bash
@@ -72,6 +70,28 @@ Povolit Azure jenom jako zdroj dat pro Azure Linux Agent tak, že vytvoříte no
 ```bash
 # This configuration file is provided by the WALinuxAgent package.
 datasource_list: [ Azure ]
+```
+
+Přidáte konfiguraci, kterou chcete vyřešit chyby registrace nezpracovaných název hostitele.
+```bash
+cat > /etc/cloud/hostnamectl-wrapper.sh <<\EOF
+#!/bin/bash -e
+if [[ -n $1 ]]; then
+  hostnamectl set-hostname $1
+else
+  hostname
+fi
+EOF
+
+chmod 0755 /etc/cloud/hostnamectl-wrapper.sh
+
+cat > /etc/cloud/cloud.cfg.d/90-hostnamectl-workaround-azure.cfg <<EOF
+# local fix to ensure hostname is registered
+datasource:
+  Azure:
+    hostname_bounce:
+      hostname_command: /etc/cloud/hostnamectl-wrapper.sh
+EOF
 ```
 
 Pokud vaše stávající image Azure má odkládací soubor nakonfigurovaný a chcete změnit konfiguraci souboru odkládacího souboru pro nové bitové kopie pomocí cloudu init, budete muset odebrat existující odkládací soubor.
@@ -126,7 +146,7 @@ az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Mezi další cloudu init změny konfigurace naleznete v následujících tématech:
  
 - [Přidání další uživatele Linux do virtuálního počítače](cloudinit-add-user.md)

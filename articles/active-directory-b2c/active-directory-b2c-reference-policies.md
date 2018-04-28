@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Předdefinované zásady
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlašování
 
-Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace a přihlášení. Příjemci knihovny jsou vedla dolů správné cesty (registrace nebo přihlášení) v závislosti na kontextu. Také popisuje obsah tokeny, které aplikace se zobrazí po úspěšné zápisy nebo přihlášení.  Ukázka kódu pro zásady registrace nebo přihlášení je [k dispozici zde](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Doporučuje se použití této zásady prostřednictvím zásad přihlašování a registrační zásadě.  
+Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace a přihlášení. Příjemci knihovny jsou vedla dolů správné cesty (registrace nebo přihlášení) v závislosti na kontextu. Také popisuje obsah tokeny, které aplikace se zobrazí po úspěšné zápisy nebo přihlášení.  Ukázka kódu pro **registrace nebo přihlášení** zásady [k dispozici zde](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Doporučuje se používají tuto zásadu přes **registrace** zásad nebo **přihlášení** zásad.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -85,16 +85,16 @@ Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak lze propojit zásady registrace nebo přihlášení se zásady resetování hesel?
-Při vytváření zásad registrace nebo přihlášení (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz není automaticky aktivační událost heslo resetovat zásady. 
+Při vytváření **registrace nebo přihlášení** zásad (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz není automaticky aktivační událost heslo resetovat zásady. 
 
 Místo toho kód chyby **`AADB2C90118`** se vrátí do vaší aplikace. Aplikace je potřeba zpracovat tomto kódu chyby vyvoláním zásad resetování hesel konkrétní. Další informace najdete v tématu [vzorku, který ukazuje přístup propojení zásad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Použít zásadu registrace nebo přihlášení nebo registraci zásady a zásady přihlášení?
-Doporučujeme použití registrace nebo přihlášení zásady prostřednictvím registrace zásad a přihlášení.  
+Doporučujeme vám, že používáte **registrace nebo přihlášení** zásady u **registrace** zásad a **přihlášení** zásad.  
 
-Zásady registrace nebo přihlášení k dispozici další možnosti než zásady přihlášení. Také umožňuje používat přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
+**Registrace nebo přihlášení** zásad k dispozici další možnosti, než **přihlášení** zásad. Také umožňuje používat přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
 
-Zásady přihlášení se doporučuje, pokud nepotřebujete k lokalizaci zásad, pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
+**Přihlášení** zásad se doporučuje, pokud nepotřebujete k lokalizaci zásad, pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
 
 ## <a name="next-steps"></a>Další postup
 * [Token, relace a jednotné přihlašování](active-directory-b2c-token-session-sso.md)

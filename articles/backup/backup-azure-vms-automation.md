@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b5869e44e22fab1e996fcd58b4258849603a711
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Pomocí rutin AzureRM.RecoveryServices.Backup zálohování virtuálních počítačů
 
@@ -79,9 +79,9 @@ Chcete-li začít:
     Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
     Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
     ```
-3. Účet přihlášení pro vaši Azure pomocí **Login-AzureRmAccount**. Tato rutina se vyvolá na webové stránce vás vyzve k zadání přihlašovacích údajů účtu: 
-    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v **Login-AzureRmAccount** rutiny, pomocí **-přihlašovacích údajů** parametr.
-    - Pokud jste poskytovatel CSP partnera práce jménem klienta, zadejte zákazníka jako klient, pomocí jejich název primární domény tenantID nebo klienta. Příklad: **Login-AzureRmAccount-klienta "fabrikam.com"**
+3. Účet přihlášení pro vaši Azure pomocí **Connect-AzureRmAccount**. Tato rutina se vyvolá na webové stránce vás vyzve k zadání přihlašovacích údajů účtu: 
+    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v **Connect-AzureRmAccount** rutiny, pomocí **-přihlašovacích údajů** parametr.
+    - Pokud jste poskytovatel CSP partnera práce jménem klienta, zadejte zákazníka jako klient, pomocí jejich název primární domény tenantID nebo klienta. Příklad: **Connect-AzureRmAccount-klienta "fabrikam.com"**
 4. Přidružte odběr, který chcete používat s účtem, protože účet může mít několik odběrů:
 
     ```PS

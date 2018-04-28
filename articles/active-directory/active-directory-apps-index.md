@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ffb8e822644ba8f0bccc3e81edc4da6085ff3ec7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2c9a60aaa627a41d023e5d5d7464046df5b55b05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -43,7 +43,7 @@ Tato část poskytuje rychlý přístup k příslušné příručky pro řešen�
 | Federované jednotné přihlašování |[Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md) |
 | Založené na heslech jednotné přihlašování |[Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Proxy aplikací |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
-| Jednotné přihlašování mezi místní AD a Azure AD |[Řešení potíží s synchronizaci hodnoty Hash hesla](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží s zpětný zápis hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Jednotné přihlašování mezi místní AD a Azure AD |[Řešení potíží s synchronizaci hodnoty Hash hesla](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží s zpětný zápis hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamické členství ve skupinách |[Řešení potíží s dynamické členství ve skupinách](active-directory-accessmanagement-troubleshooting.md) |
 
 ## <a name="single-sign-on-sso"></a>Jednotné přihlašování
@@ -96,7 +96,7 @@ Pokud vaše organizace udržuje Windows Server Active Directory místní společ
 | Přehled na volby jednotného přihlašování k dispozici v Azure AD Connect a také informace o správě hybridní prostředí |[Přihlášení uživatele na možnosti v Azure AD Connect](active-directory-aadconnect-user-signin.md) |
 | Obecné pokyny pro správu prostředí s oběma místní služby Active Directory a Azure Active Directory |[Aspekty návrhu Azure AD hybridní Identity](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrace místních identit s Azure Active Directory](active-directory-aadconnect.md) |
 | Pokyny k povolení jednotného přihlašování pomocí synchronizace hesla |[Implementace synchronizace hesel s Azure AD Connect](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Řešení potíží s synchronizace hesel](https://support.microsoft.com/en-us/kb/2855271) |
-| Pokyny k použití zpětný zápis hesla k povolení přihlášení SSO |[Začínáme se správou hesel ve službě Azure AD](active-directory-passwords-getting-started.md)<br /><br />[Řešení potíží se zpětným zápisem hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| Pokyny k použití zpětný zápis hesla k povolení přihlášení SSO |[Začínáme se správou hesel ve službě Azure AD](authentication/quickstart-sspr.md)<br /><br />[Řešení potíží se zpětným zápisem hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Pokyny k povolení jednotného přihlašování pomocí poskytovatelů identit třetích stran |[Seznam zprostředkovatelů Identity kompatibilní třetích stran, které slouží k povolení jednotného přihlašování](https://aka.ms/ssoproviders) |
 | Jak uživatelé Windows 10 můžete využívat výhod jednotné přihlašování přes Azure AD Join |[Rozšíření cloudových funkcí na Windows 10 zařízení pomocí služby Azure Active Directory Join](active-directory-azureadjoin-overview.md) |
 
@@ -184,9 +184,9 @@ Přístupový Panel Azure AD je, kde se koncoví uživatelé můžou spouštět 
 | Článek Průvodce |  |
 |:---:| --- |
 | Porovnání různé možnosti, které jsou k dispozici pro nasazení aplikace přihlášení pro uživatele |[Nasazení služby Azure AD integrovaných aplikací pro uživatele](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
-| Přehled na přístupovém panelu a jeho mobilních ekvivalentní MyApps |[Úvod do přístupového panelu a MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
+| Přehled na přístupovém panelu a jeho mobilních ekvivalentní MyApps |[Úvod do přístupového panelu a MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Jak získat přístup z webu Office 365 aplikace Azure AD. |[Pomocí Spouštěč aplikace Office 365](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
-| Jak získat přístup z mobilní aplikace Intune Managed Browser aplikace Azure AD. |[Spravovaný prohlížeč Intune](https://technet.microsoft.com/en-us/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
+| Jak získat přístup z mobilní aplikace Intune Managed Browser aplikace Azure AD. |[Spravovaný prohlížeč Intune](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Jak získat přístup k zahájení jednotné přihlašování pomocí přímých odkazů aplikace Azure AD. |[Získávání přímé odkazy přihlašování pro vaše aplikace](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Přístupový Panel je k dispozici pro [všechny edice služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).

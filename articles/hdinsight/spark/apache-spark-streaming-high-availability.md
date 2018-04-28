@@ -1,26 +1,24 @@
 ---
-title: "Vytvoření vysoce dostupné úlohy streamování Spark v YARN - Azure HDInsight | Microsoft Docs"
-description: "Jak nastavit vysílání datového proudu Spark pro scénář vysokou dostupností."
+title: Vytvoření vysoce dostupné úlohy streamování Spark v YARN - Azure HDInsight | Microsoft Docs
+description: Jak nastavit vysílání datového proudu Spark pro scénář vysokou dostupností.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ramoha
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: f916f9939ac9683a2ee162ba4d2105f66187b111
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0a738d7e26384523e9da9c8c79e12729330fe6f7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Vytvořit úlohy streamování Spark vysoké dostupnosti se YARN
 
@@ -117,7 +115,7 @@ To Shrneme, pomocí vytváření kontrolních bodů + WAL + spolehlivé příjem
 
 * Měli segmentovat dlouho běžící úlohy.  Při aplikaci na datové proudy Spark odeslání do clusteru, musí být definovány YARN fronty, kde má být úloha spuštěna. Můžete použít [Plánovač kapacity YARN](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) dlouho běžící úlohy do fronty oddělení.
 
-* Řádné ukončení aplikace streamování. Pokud vaše posuny jsou známé, a všechny stav aplikace je uložených externě, můžete programově zastavit streamování aplikace na příslušné místo. Jeden technik je použít "vláken háky" v Spark, kontrolou pro externí příznak každých  *n*  sekund. Můžete použít také *značky souboru* , je vytvořena na HDFS při spouštění aplikace a potom odebrat, pokud chcete zastavit. Značky přístup, soubor použijte samostatné vlákno v aplikaci Spark, který volá kód podobná této:
+* Řádné ukončení aplikace streamování. Pokud vaše posuny jsou známé, a všechny stav aplikace je uložených externě, můžete programově zastavit streamování aplikace na příslušné místo. Jeden technik je použít "vláken háky" v Spark, kontrolou pro externí příznak každých *n* sekund. Můžete použít také *značky souboru* , je vytvořena na HDFS při spouštění aplikace a potom odebrat, pokud chcete zastavit. Značky přístup, soubor použijte samostatné vlákno v aplikaci Spark, který volá kód podobná této:
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)

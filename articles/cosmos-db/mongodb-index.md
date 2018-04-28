@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: sngun
-ms.openlocfilehash: bfcaf809daa4d95828a85ce93aae213248bbbb89
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c2f2a2cf971779e593d0ac3dd0db504c5e4eb8bf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB: Dokumentace k MongoDB rozhraní API
 
@@ -51,7 +51,6 @@ Tyto kurzy jsou větší, než – elementy QuickStart úroveň. V kurzů k sest
 ### <a name="create-a-console-app"></a>Vytvořte aplikaci konzoly
 
 - [Node.js](mongodb-samples.md) 
-- [.NET](tutorial-develop-mongodb.md)
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 

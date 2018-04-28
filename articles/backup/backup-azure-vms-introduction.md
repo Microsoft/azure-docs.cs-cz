@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: markgal;trinadhk;sogup
+ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
 Tento článek obsahuje výkonu a prostředků návrhy vám pomohou naplánovat zálohování infrastrukturu virtuálních počítačů. Definuje také klíčových aspektů služby zálohování; Tyto aspekty může být velmi důležité při určování vaší architektury plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, najdete v článku [virtuální počítače dokumentaci](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -99,7 +99,8 @@ Při čtení a kopírování dat je využita pro práci ve většině případů
 
 * Doba potřebná pro [instalovat nebo aktualizovat rozšíření zálohování](backup-azure-arm-vms.md).
 * Čas snímek, což je čas potřebný k aktivaci snímku. Snímky jsou aktivované blízko naplánovaný čas zálohování.
-* Doba čekání ve frontě. Vzhledem k tomu, že služba zálohování je zpracování záloh z více zákazníků, kopírování zálohování dat ze snímku do zálohování nebo trezor služeb zotavení nemusí spustit okamžitě. V dobu ve špičce zatížení, čekání lze roztáhnout až osm hodin z důvodu počet záloh zpracovává. Celkový čas zálohování virtuálních počítačů je však méně než 24 hodin pro denní zásady zálohování.
+* Doba čekání ve frontě. Vzhledem k tomu, že služba zálohování je zpracování záloh z více zákazníků, kopírování zálohování dat ze snímku do zálohování nebo trezor služeb zotavení nemusí spustit okamžitě. V dobu ve špičce zatížení, čekání lze roztáhnout až osm hodin z důvodu počet záloh zpracovává. Celkový čas zálohování virtuálních počítačů je však méně než 24 hodin pro denní zásady zálohování. <br>
+**To obsahuje platné pouze pro přírůstkové zálohy a ne pro první zálohy. První čas zálohování je úměrná a může být větší než 24 hodin v závislosti na množství dat a dochází k zálohování čas.**
 * Doba přenosu dat, čas potřebný k trezoru úložiště služby zálohování výpočetní přírůstkové změny z předchozí zálohy a přenést tyto změny.
 
 ### <a name="why-am-i-observing-longer12-hours-backup-time"></a>Proč se sledování longer(>12 hours) zálohování čas?

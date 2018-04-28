@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d59f34a276332fddcbdd093747a7d42a7ba21c13
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>Pomocí hloubkového učení virtuálního počítače
 
@@ -35,9 +35,12 @@ Kromě ukázky na základě framework sadu komplexní návody také zadat, kter�
 
 - [Postupy: Průvodce k vytvoření řešení začátku do konce ke zjištění produkty v rámci bitové kopie](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce bitové kopie je technika, můžete vyhledat a klasifikovat objekty v rámci bitové kopie. Tato technologie se může mají být předány obrovské výnosu mnoho reálného života obchodní domény. Například prodejců slouží tento postup k určení, který produkt a zákazník má převzata z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
 
+- [S názvem extrakce entity z PubMed přehledů](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) tento kurz ukazuje, jak extrahovat pojmenované entity, jako je nedovolenému názvů nebo nákazy, z nestrukturovaných textu. Nastaví vlastní slovo vložení na svátek text z 18 milionů PubMed přehledů, používá tento model k sestavení modelu opakující neuronové sítě dlouho krátkodobé paměti (LSTM) pro extrakci entity a ukazuje, že lze překonat specifické pro doménu slovo vložení modelu Obecná aplikace word vložení pro extrakci entity.
+
+- [Přímý učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) tento kurz ukazuje, jak ke cvičení hloubkové learning model pro zjištění zvuk události na [datovou sadu urbanistické zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) a poskytují přehled o tom, jak pracovat s daty zvuk.
+
 - [Klasifikaci dokumentů text](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvářet a cvičení architektury dva různé neuronové sítě: hierarchická pozornost sítě a dlouho paměti krátké termín (LSTM) sítě. Tyto neuronové sítě použít rozhraní API Keras hloubkové kurzů klasifikovat dokumenty text. Keras je front-end na tři nejoblíbenější hloubkového učení architektury: Microsoft kognitivní Toolkit, TensorFlow a Theano.
 
 ## <a name="next-steps"></a>Další postup
 
 [Ukázky stránky](dsvm-samples-and-walkthroughs.md) poskytuje odkazy na příklady kódu, který je předem zavedené ve virtuálním počítači pro každou z rozhraní vám pomohou rychle začít. 
-

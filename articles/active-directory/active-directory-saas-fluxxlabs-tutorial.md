@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 5288ae3deaf82e76accb9c9584c250c7dbe2c9ca
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0bba820c14c5eddc6db99923e3fb1de58c110f4c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace s Fluxx Labs
 
@@ -114,16 +114,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     |-------------|------------|
     | Výroba | `https://<subdomain>.fluxx.io` |
     | Předvýroba | `https://<subdomain>.preprod.fluxxlabs.com`|
-    | Fázování    | `https://<subdomain>.stage.fluxxlabs.com`|
-    
+        
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
 
     | Prostředí | Vzor adresy URL|
     |-------------|------------|
     | Výroba | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Předvýroba | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-    | Fázování    | `https://<subdomain>.stage.fluxxlabs.com/auth/saml/callback`|
-    
+        
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Fluxx Labs](mailto:travis@fluxxlabs.com) k získání těchto hodnot.
 
@@ -141,11 +139,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 7. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti Fluxx Labs jako správce.
 
-8. V pravém horním rohu stránky klikněte na **ikonu nastavení** a potom **správce**.
+8. Vyberte **správce** níže **nastavení** části.
 
     ![Konfigurace Fluxx Labs](./media/active-directory-saas-fluxxlabs-tutorial/config1.png)
 
-9. V panelu Správce vyberte **moduly plug-in** > **integrace** a pak vyberte **SAML SSO-(Enabled)**
+9. V panelu Správce vyberte **moduly plug-in** > **integrace** a pak vyberte **SAML SSO-(Disabled)**
 
     ![Konfigurace Fluxx Labs](./media/active-directory-saas-fluxxlabs-tutorial/config2.png)
     
@@ -159,13 +157,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **cesta zpětné volání** textovému poli, typ **/auth/saml/callback**.
 
-    d. V **adresa Url služby příjemce Assertion** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    d. V **Assertion příjemce služby Url(Single Sign-On URL)** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
 
-    e. V **vystavitele** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
+    e. V **cílová skupina (SP Entity ID)** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
 
-    f. V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte jej do **IDP Cert** textové pole.
+    f. V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte jej do **certifikát zprostředkovatele Identity** textové pole.
 
-    g.  V **identifikátor název formátu** textovému poli, zadejte hodnotu `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    g. V **identifikátor název formátu** textovému poli, zadejte hodnotu `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
 
     h. Klikněte na **Uložit**.
 
@@ -212,23 +210,21 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k testovacímu prostř
 
 1. Přihlaste se k serveru vaší společnosti Fluxx Labs jako správce.
 
-2. Na řídicím panelu klikněte na níže zobrazené ikonu Otevřít **nové osobě** karty.
+2. Klikněte na níže zobrazené **ikonu**.
+
+    ![Konfigurace Fluxx Labs](./media/active-directory-saas-fluxxlabs-tutorial/config6.png)
+
+3. Na řídicím panelu klikněte na níže zobrazené ikonu Otevřít **nové osoby** karty.
 
     ![Konfigurace Fluxx Labs](./media/active-directory-saas-fluxxlabs-tutorial/config4.png)
 
-3. Na **nové osobě** část, proveďte následující kroky:
+4. Na **nové osoby** část, proveďte následující kroky:
     
     ![Konfigurace Fluxx Labs](./media/active-directory-saas-fluxxlabs-tutorial/config5.png)
 
-    a. V **přihlášení** textovému poli, zadejte e-mailu uživatele jako Azure_Admin.
+    a. Fluxx Labs použijte e-mailu jako jedinečný identifikátor pro přihlášení SSO. Naplnění **jednotné přihlašování UID** pole s e-mailovou adresu uživatele, který odpovídá e-mailovou adresu, která používají jako přihlašovací údaje pomocí jednotného přihlašování.
 
-    b. V **heslo** textovému poli, zadejte heslo účtu Azure_Admin.
-
-    c. V **Potvrdit heslo** textovému poli, znovu zadejte heslo účtu Azure_Admin.
-
-    d. Fluxx Labs použijte e-mailu jako jedinečný identifikátor pro přihlášení SSO. Naplnění **jednotné přihlašování UID** pole s e-mailovou adresu uživatele, který odpovídá e-mailovou adresu, která používají jako přihlašovací údaje pomocí jednotného přihlašování.
-
-    e. Klikněte na tlačítko **vytvoření osoby**.
+    b. Klikněte na **Uložit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
@@ -285,4 +281,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-fluxxlabs-tutorial/tutorial_general_203.png
-

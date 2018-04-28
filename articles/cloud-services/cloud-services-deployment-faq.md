@@ -1,11 +1,11 @@
 ---
-title: "Problémy při nasazení pro Microsoft Azure Cloud Services – nejčastější dotazy | Microsoft Docs"
-description: "V tomto článku jsou uvedené nejčastější dotazy o nasazení pro Microsoft Azure Cloud Services."
+title: Problémy při nasazení pro Microsoft Azure Cloud Services – nejčastější dotazy | Microsoft Docs
+description: V tomto článku jsou uvedené nejčastější dotazy o nasazení pro Microsoft Azure Cloud Services.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: effc0eb872a1f63e32c1958234c173a53c381620
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy při nasazení pro Azure Cloud Services: Časté otázky (FAQ)
 
@@ -79,4 +79,4 @@ Vzhledem k tomu, že Cloudová služba se klasický prostředek, který není p�
 
 Na portálu classic balíčku byl odeslán na vrstvu rozhraní API správy přímo a pak by vrstvu rozhraní API dočasně přesuňte balíček do účtu interní úložiště.  Tento proces způsobuje problémy, výkon a škálovatelnost, protože vrstvu rozhraní API služby nebyl navržen jako služba nahrávání souboru.  Na portálu Azure (modelu nasazení Resource Manager) jsme mít vynechá dočasné krok nejdříve odeslat do rozhraní API vrstvy, výsledkem je rychlejší a spolehlivější nasazení. 
 
-Jako náklady je velmi malé a můžete znovu použít stejný účet úložiště napříč všechna nasazení. Můžete použít [kalkulačky náklady na úložiště](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) k určení nákladů pro nahrání balíčku služby (CSPKG), stáhněte si CSPKG a pak odstraňte CSPKG. 
+Jako náklady je velmi malé a můžete znovu použít stejný účet úložiště napříč všechna nasazení. Můžete použít [kalkulačky náklady na úložiště](https://azure.microsoft.com/pricing/calculator/#storage1) k určení nákladů pro nahrání balíčku služby (CSPKG), stáhněte si CSPKG a pak odstraňte CSPKG. 

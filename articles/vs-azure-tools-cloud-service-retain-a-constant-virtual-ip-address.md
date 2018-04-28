@@ -2,23 +2,20 @@
 title: Postup zachovat konstantní virtuální IP adresy pro cloudové služby Azure | Microsoft Docs
 description: Zjistěte, jak zajistit, že virtuální IP adresy (VIP) cloudové služby Azure nemění.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 6d81e68552b023f2c30e4fc4616d6fa52831c451
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c02e80a97fe5943019f446299e370bf029a01ff4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Zachovat konstantní virtuální IP adresy pro cloudové služby Azure
 Při aktualizaci Cloudová služba, která je hostovaná v Azure, musíte může zajistit, že virtuální adresy IP (VIP) služby nemění. Mnoho služby domény pro použití v systému DNS (Domain Name) pro registraci názvů domén. DNS funguje pouze v případě, že virtuální IP adresa zůstala stejná. Můžete použít **Průvodci publikováním** v nástroje Azure k zajištění, že VIP cloudové služby nezmění. když ho aktualizujete. Další informace o tom, jak používat správu domény DNS pro cloudové služby najdete v tématu [konfigurace vlastního názvu domény pro cloudové služby Azure](cloud-services/cloud-services-custom-domain-name-portal.md).

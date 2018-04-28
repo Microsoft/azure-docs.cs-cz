@@ -1,26 +1,26 @@
 ---
-title: "Monitorování clusteru služby Azure Container Service pomocí služby Sysdig"
-description: "Cluster služby Azure Container Service můžete monitorovat pomocí služby Sysdig."
+title: Monitorování clusteru služby Azure Container Service pomocí služby Sysdig
+description: Cluster služby Azure Container Service můžete monitorovat pomocí služby Sysdig.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Monitorování clusteru služby Azure Container Service pomocí služby Sysdig
 
 V tomto článku nasadíme na všechny agentské uzly v clusteru služby Azure Container Service agenty služby Sysdig. Pro tuto konfiguraci potřebujete účet se službou Sysdig. 
 
 ## <a name="prerequisites"></a>Požadavky
-[Nasaďte](container-service-deployment.md) a [připojte](../container-service-connect.md) cluster nakonfigurovaný službou Azure Container Service. Prozkoumejte [uživatelské rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte na [http://app.sysdigcloud.com](http://app.sysdigcloud.com) a vytvořte si cloudový účet služby Sysdig. 
+[Nasaďte](container-service-deployment.md) a [připojte](../container-service-connect.md) cluster nakonfigurovaný službou Azure Container Service. Prozkoumejte [uživatelské rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte na [ http://app.sysdigcloud.com ](http://app.sysdigcloud.com) nastavit účet Sysdig cloudu. 
 
 ## <a name="sysdig"></a>Sysdig
 Sysdig je monitorovací služba, která vám umožňuje monitorovat kontejnery v rámci vašeho clusteru. Služba Sysdig pomáhá s odstraňováním potíží, ale obsahuje taky základní monitorovací metriky procesoru, sítí, paměti a vstupně-výstupních procesů. Služba Sysdig nabízí přehled o tom, které kontejnery jsou nejvytíženější nebo využívají nejvíc paměti a výkonu procesoru. To zjistíte v části „Přehled“, který je v současné době dostupný v beta verzi. 
@@ -30,7 +30,7 @@ Sysdig je monitorovací služba, která vám umožňuje monitorovat kontejnery v
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Konfigurace nasazení služby Sysdig s uživatelským rozhraním Marathon
 Tento postup vám ukáže, jak nakonfigurovat aplikace služby Sysdig a nasadit je do clusteru pomocí Marathonu. 
 
-Otevřete uživatelské rozhraní DC/OS prostřednictvím adresy [http://localhost:80/](http://localhost:80/). V uživatelském rozhraní DC/OS potom vlevo dole přejděte na položku „Universe“ vyhledejte „Sysdig“.
+Přístup přes uživatelské rozhraní DC/OS [ http://localhost:80/ ](http://localhost:80/) jednou v uživatelském rozhraní DC/OS přejděte na "základní soubor", který je ve spodní levé a poté vyhledejte "Sysdig."
 
 ![Sysdig v rozhraní DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig1.png)
 

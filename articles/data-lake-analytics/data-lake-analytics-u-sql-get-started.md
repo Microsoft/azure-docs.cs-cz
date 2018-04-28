@@ -1,8 +1,8 @@
 ---
-title: "Začínáme s jazykem U-SQL | Microsoft Docs"
-description: "Naučte se základy jazyka U-SQL."
+title: Začínáme s jazykem U-SQL | Microsoft Docs
+description: Naučte se základy jazyka U-SQL.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-u-sql"></a>Začínáme s jazykem U-SQL
 U-SQL je jazyk, který kombinuje deklarativní SQL s imperativní jazyka C# k umožňují zpracování dat v jakémkoli měřítku. Prostřednictvím funkce škálovatelné a distribuovaných dotazů U-SQL můžete efektivně analyzovat data napříč relační úložiště, jako je například Azure SQL Database. Pomocí U-SQL můžete zpracovat nestrukturovaných dat tak, že použití schématu na čtení a vložení vlastní logiky a funkcí UDF. Navíc U-SQL zahrnuje rozšíření, která poskytuje jemně odstupňovanou kontrolu nad postup provést ve velkém měřítku. 
@@ -60,8 +60,8 @@ Všimněte si znaky otazníku vedle data, zadejte `Duration` pole. Znamená to, 
 
 ### <a name="key-concepts"></a>Klíčové koncepty
 * **Sada řádků proměnné**: každý výraz dotazu, který vytvoří sadu řádků lze přiřadit k proměnné. U-SQL se následující T-SQL proměnné pojmenování (`@searchlog`, například) ve skriptu.
-* **EXTRAHOVAT** – klíčové slovo čte data ze souboru a definuje schéma pro čtení. `Extractors.Tsv`je integrované Extraktor U-SQL pro soubory karta oddělených hodnot. Můžete vyvíjet vlastní extraktory.
-* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()`je integrované outputter U-SQL vytvořte soubor oddělených čárkou. Můžete vyvíjet vlastní outputters.
+* **EXTRAHOVAT** – klíčové slovo čte data ze souboru a definuje schéma pro čtení. `Extractors.Tsv` je integrované Extraktor U-SQL pro soubory karta oddělených hodnot. Můžete vyvíjet vlastní extraktory.
+* **Výstup** zapisuje data ze sady řádků do souboru. `Outputters.Csv()` je integrované outputter U-SQL vytvořte soubor oddělených čárkou. Můžete vyvíjet vlastní outputters.
 
 ### <a name="file-paths"></a>Cesty k souborům
 
@@ -226,8 +226,8 @@ V klauzuli NUTNOSTI U-SQL umožňuje omezit výstup do skupin, které splňují 
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Agregace pokročilé scénáře, najdete v dokumentaci odkaz na U-SQL pro [agregovat, analytické a odkazovat na funkce](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)
+Agregace pokročilé scénáře, najdete v dokumentaci odkaz na U-SQL pro [agregovat, analytické a odkazovat na funkce](https://msdn.microsoft.com/library/azure/mt621335.aspx)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

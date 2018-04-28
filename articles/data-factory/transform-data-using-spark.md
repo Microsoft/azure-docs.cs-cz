@@ -3,21 +3,20 @@ title: Transformace dat pomocí aktivity Spark v Azure Data Factory | Microsoft 
 description: Zjistěte, jak k transformaci dat tak, že spustíte Spark programy kanál služby Azure data factory pomocí Spark aktivity.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 3b877a9ae8fe58314171c8b556a7005e98dc3a33
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Spark v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -74,11 +73,11 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 | SparkJobLinkedService | Azure Storage propojená služba, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružený k clusteru HDInsight. Hodnota této vlastnosti lze pouze propojenou službu úložiště Azure. | Ne       |
 | rootPath              | Kontejner objektů Blob v Azure a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. Struktura složek najdete části (další části) Další informace o struktuře této složky. | Ano      |
 | entryFilePath         | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. | Ano      |
-| className             | Hlavní třídy aplikace Java/Spark      | Ne       |
+| Název třídy             | Hlavní třídy aplikace Java/Spark      | Ne       |
 | Argumenty             | Seznam argumentů příkazového řádku pro Spark program. | Ne       |
 | proxyUser             | Uživatelský účet zosobnění spuštění programu Spark | Ne       |
 | sparkConfig           | Zadejte hodnoty pro vlastnosti konfigurace Spark vypsané v tomto tématu: [Spark konfigurace – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne       |
-| getDebugInfo          | Určuje, kdy soubory protokolu Spark se zkopírují do úložiště Azure používá HDInsight cluster (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
+| getdebuginfo –          | Určuje, kdy soubory protokolu Spark se zkopírují do úložiště Azure používá HDInsight cluster (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
 
 ## <a name="folder-structure"></a>Struktura složek
 Spark úlohy jsou extensible více než úlohy Pig nebo Hive. Pro úlohy Spark, můžete zadat více závislostí, jako jar balíčky (umístěné v jazyce java cesty pro třídy), soubory python (umístit na PYTHONPATH) a všechny další soubory.
@@ -89,7 +88,7 @@ Vytvořte následující strukturu složek ve službě Azure Blob storage, na kt
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (uživatel root)            | Kořenová cesta úlohy Spark v úložišti propojená služba | Ano      | Složka |
 | &lt;Uživatelem definované &gt; | Cesta k souboru položka úlohy Spark | Ano      | File   |
-| ./jars                | Všechny soubory v této složce se nahrála a umístit na cestě třídy java clusteru | Ne       | Složka |
+| . / jars                | Všechny soubory v této složce se nahrála a umístit na cestě třídy java clusteru | Ne       | Složka |
 | . / pyFiles             | Všechny soubory v této složce se nahrála a umístit do PYTHONPATH clusteru | Ne       | Složka |
 | . / soubory               | Všechny soubory v této složce se nahrála a umístit na vykonavatele pracovní adresář | Ne       | Složka |
 | . / archivy            | Všechny soubory v této složce nekomprimované | Ne       | Složka |

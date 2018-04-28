@@ -1,11 +1,11 @@
 ---
-title: "Zásady omezení přístupu služby Azure API Management | Microsoft Docs"
-description: "Další informace o omezení zásady přístupu, které jsou k dispozici pro použití v Azure API Management."
+title: Zásady omezení přístupu služby Azure API Management | Microsoft Docs
+description: Další informace o omezení zásady přístupu, které jsou k dispozici pro použití v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fbb4f8a15ee7ee8b6cecbe76391e2b2a7e4be1b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -57,7 +57,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
-|check-header|Kořenový element.|Ano|  
+|Kontrola – hlavička|Kořenový element.|Ano|  
 |hodnota|Povolená hodnota hlavičky protokolu HTTP. Víc elementů hodnota zadaná, kontroly považuje úspěšné, pokud některá z hodnot shody.|Ne|  
   
 ### <a name="attributes"></a>Atributy  
@@ -66,7 +66,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |----------|-----------------|--------------|-------------|  
 |se nezdařila zkontrolujte chybových zpráv|Chybová zpráva pro vrátit v textu odpovědi HTTP, pokud hlavička neexistuje nebo má neplatnou hodnotu. Tuto zprávu musí mít žádné speciální znaky správně řídicí sekvencí.|Ano|neuvedeno|  
 |failed-check-httpcode|Kód stavu HTTP vrátit, pokud hlavička neexistuje nebo má neplatnou hodnotu.|Ano|neuvedeno|  
-|header-name|Název záhlaví HTTP ke kontrole.|Ano|neuvedeno|  
+|název hlavičky|Název záhlaví HTTP ke kontrole.|Ano|neuvedeno|  
 |Ignorovat případu|Lze nastavit na hodnotu True nebo False. Pokud je nastaven na hodnotu True případ se ignoruje, pokud hodnota hlavičky se porovná sadu přijatelných hodnot.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
@@ -88,8 +88,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ```xml  
 <rate-limit calls="number" renewal-period="seconds">  
-    <api name="name" calls="number" renewal-period="seconds">  
-        <operation name="name" calls="number" renewal-period="seconds" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </rate-limit>  
 ```  
@@ -113,8 +113,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |Nastavte limit|Kořenový element.|Ano|  
-|rozhraní api|Přidáte jeden nebo víc z těchto prvků do volání míru omezení na rozhraní API v rámci produktu. Produkt a rozhraní API volat rychlost, kterou omezení platí nezávisle.|Ne|  
-|operace|Přidáte jeden nebo víc z těchto elementů k omezení na rychlost volání operace v rámci rozhraní API. Produktu, rozhraní API a operace četnosti, kterou omezení platí nezávisle.|Ne|  
+|rozhraní api|Přidáte jeden nebo víc z těchto prvků do volání míru omezení na rozhraní API v rámci produktu. Produkt a rozhraní API volat rychlost, kterou omezení platí nezávisle. Rozhraní API může být buď přes odkazovaný `name` nebo `id`. Pokud oba atributy jsou k dispozici, `id` se použije a `name` budou ignorovány.|Ne|  
+|operace|Přidáte jeden nebo víc z těchto elementů k omezení na rychlost volání operace v rámci rozhraní API. Produktu, rozhraní API a operace četnosti, kterou omezení platí nezávisle. Operaci lze odkazovat buď prostřednictvím `name` nebo `id`. Pokud oba atributy jsou k dispozici, `id` se použije a `name` budou ignorovány.|Ne|  
   
 ### <a name="attributes"></a>Atributy  
   
@@ -243,8 +243,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ```xml  
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">  
-    <api name="name" calls="number" bandwidth="kilobytes">  
-        <operation name="name" calls="number" bandwidth="kilobytes" />  
+    <api name="API name" id="API id" calls="number" renewal-period="seconds" />  
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />  
     </api>  
 </quota>  
 ```  
@@ -268,8 +268,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |kvóta|Kořenový element.|Ano|  
-|rozhraní api|Přidáte jeden nebo víc z těchto elementů zavést kvóty na rozhraní API v rámci produktu. Produkt a rozhraní API kvóty platí nezávisle.|Ne|  
-|operace|Přidáte jeden nebo víc z těchto elementů zavést kvóty na operace v rámci rozhraní API. Kvóty produktu, rozhraní API a operace platí nezávisle.|Ne|  
+|rozhraní api|Přidáte jeden nebo víc z těchto elementů zavést kvóty volání na rozhraní API v rámci produktu. Produkt a kvóty volání rozhraní API platí nezávisle. Rozhraní API může být buď přes odkazovaný `name` nebo `id`. Pokud oba atributy jsou k dispozici, `id` se použije a `name` budou ignorovány.|Ne|  
+|operace|Přidáte jeden nebo víc z těchto elementů zavést kvóty volání na operace v rámci rozhraní API. Kvóty volání produktu, rozhraní API a operace platí nezávisle. Operaci lze odkazovat buď prostřednictvím `name` nebo `id`. Pokud oba atributy jsou k dispozici, `id` se použije a `name` budou ignorovány.|Ne|  
   
 ### <a name="attributes"></a>Atributy  
   
@@ -485,30 +485,30 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 |Element|Popis|Požaduje se|  
 |-------------|-----------------|--------------|  
-|validate-jwt|Kořenový element.|Ano|  
+|ověřit token jwt|Kořenový element.|Ano|  
 |cílové skupiny|Obsahuje seznam deklarací identity přijatelné cílové skupiny, které mohou existovat na tokenu. Pokud nejsou více hodnot cílové skupiny, pak se pokus o každé hodnotě dokud všechny jsou vyčerpány (v takovém případě ověření selže) nebo dokud jeden neuspěje. Je třeba zadat alespoň jednu cílovou skupinu.|Ne|  
 |Vystavitel podpisového klíče|Seznam kódováním Base64 zabezpečení klíčů používaných k ověření podepsané tokeny. Pokud nejsou více zabezpečení klíčů, pak se pokus o každý klíč dokud všechny jsou vyčerpány (v takovém případě ověření selže) nebo dokud jeden neuspěje (je to užitečné pro výměnu tokenů). Mezi klíčové prvky mít volitelný `id` atribut použitý k porovnání `kid` deklarací identity.|Ne|  
 |vystavitele|Seznam přijatelné objektů, které vydán token. Pokud jsou přítomny více hodnot vystavitele, pak se pokus o každé hodnotě dokud všechny jsou vyčerpány (v takovém případě ověření selže) nebo dokud jeden neuspěje.|Ne|  
 |Konfigurace openid|Element použit k určení kompatibilní endpoint konfigurace Open ID, ze kterého lze získat podpisového klíče a vystavitele.|Ne|  
 |požadované deklarace identity|Obsahuje seznam deklarací identity nacházet na tokenu mohla být považovány za platné očekávání. Když `match` je atribut nastaven na `all` každá hodnota deklarace identity v zásady musí být v tokenu pro ověření úspěšné. Když `match` je atribut nastaven na `any` nejméně jedna deklarace identity musí být v tokenu pro ověření úspěšné.|Ne|  
-|zumo-master-key|Hlavní klíč pro tokeny vydané službou Azure Mobile Services|Ne|  
+|záhlaví zumo hlavního klíče|Hlavní klíč pro tokeny vydané službou Azure Mobile Services|Ne|  
   
 ### <a name="attributes"></a>Atributy  
   
 |Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|clock-skew|Timespan. Slouží k určení očekávané maximální časový rozdíl mezi systémovými hodinami vydavatel tokenu a instanci služby API Management.|Ne|0 sekund|  
+|hodiny zkosení|Časový interval. Slouží k určení očekávané maximální časový rozdíl mezi systémovými hodinami vydavatel tokenu a instanci služby API Management.|Ne|0 sekund|  
 |se nezdařilo ověření chybových zpráv|Chybová zpráva pro vrátí v textu odpovědi HTTP, pokud položka JWT neprojde ověřením. Tuto zprávu musí mít žádné speciální znaky správně řídicí sekvencí.|Ne|Výchozí chybovou zprávu, závisí na ověření problém, například "JWT nejsou k dispozici."|  
-|failed-validation-httpcode|Kód stavu HTTP vrátit, pokud není položka JWT projít ověřením.|Ne|401|  
-|header-name|Název záhlaví HTTP, která uchovává token.|Buď `header-name` nebo `query-parameter-name` musí být zadaný; ale ne pomocí obou.|neuvedeno|  
+|se nezdařilo httpcode ověření|Kód stavu HTTP vrátit, pokud není položka JWT projít ověřením.|Ne|401|  
+|název hlavičky|Název záhlaví HTTP, která uchovává token.|Buď `header-name` nebo `query-parameter-name` musí být zadaný; ale ne pomocí obou.|neuvedeno|  
 |id|`id` Atributu u `key` element umožňuje zadejte řetězec, který bude odpovídat proti `kid` deklarací identity v tokenu (pokud existuje) a zjistěte, příslušný klíč k ověření podpisu.|Ne|neuvedeno|  
 |Shoda|`match` Atributu u `claim` element určuje, zda každá hodnota deklarace identity v zásady musí být přítomen v tokenu pro ověření úspěšné. Možné hodnoty:<br /><br /> -                          `all` -Každá hodnota deklarace identity v zásady musí být v tokenu pro ověření úspěšné.<br /><br /> -                          `any` -Hodnota nejméně jedna deklarace identity musí být přítomen v tokenu pro ověření úspěšné.|Ne|all|  
-|query-paremeter-name|Název parametr dotazu tokenem.|Buď `header-name` nebo `query-paremeter-name` musí být zadaný; ale ne pomocí obou.|neuvedeno|  
+|Název dotazu paremeter|Název parametr dotazu tokenem.|Buď `header-name` nebo `query-paremeter-name` musí být zadaný; ale ne pomocí obou.|neuvedeno|  
 |požadovat čas vypršení platnosti|Logická hodnota. Určuje, zda deklaraci identity vypršení platnosti je vyžadováno v tokenu.|Ne|true (pravda)|
 |require-scheme|Název tokenu scheme, například "Nosiče". Když tento atribut nastavený, zásady zajistí, že zadané schéma je k dispozici v Hodnota hlavičky ověřování.|Ne|neuvedeno|
 |Vyžadovat podepsané tokeny|Logická hodnota. Určuje, jestli je potřeba být podepsaný token.|Ne|true (pravda)|  
 |Oddělovač|Řetězec. Určuje oddělovače (například ",") má být použit pro extrahování sadu hodnot z více hodnot deklarací identity.|Ne|neuvedeno| 
-|Adresa URL|Otevřete adresu URL koncového bodu ID konfigurace ze které lze získat metadata Open ID konfigurace. Odpověď by měla odpovídat specifikací definovaným na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Pro Azure Active Directory použít následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahraďte název vašeho adresáře klienta, například `contoso.onmicrosoft.com`.|Ano|neuvedeno|  
+|url|Otevřete adresu URL koncového bodu ID konfigurace ze které lze získat metadata Open ID konfigurace. Odpověď by měla odpovídat specifikací definovaným na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Pro Azure Active Directory použít následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahraďte název vašeho adresáře klienta, například `contoso.onmicrosoft.com`.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
  Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

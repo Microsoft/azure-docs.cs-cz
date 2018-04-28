@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2018
+ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 810e3e8af5295348ba73b4f7433e3203f47f4554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 109bd61963b918f2a20c48a5bf7bd89dc353db96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru DB Cosmos Azure pro místní vývoj a testování
 
@@ -478,6 +478,10 @@ Chcete-li shromažďovat trasování ladění, spusťte následující příkazy
 ## <a name="change-list"></a>Seznam změn
 
 Číslo verze můžete zkontrolovat tak, že kliknete pravým tlačítkem na ikonu emulátoru místního na hlavním panelu a klikněte na o položku nabídky.
+
+### <a name="1220-released-on-april-20-2018"></a>1.22.0. Vydala 20 duben 2018
+
+Kromě aktualizace služeb emulátoru parita s cloudovými službami Cosmos DB, jsme zahrnuli vylepšené prostředí PowerShell dokumentace a některé ostatní opravy chyb.
 
 ### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 vydala 27 března 2018
 

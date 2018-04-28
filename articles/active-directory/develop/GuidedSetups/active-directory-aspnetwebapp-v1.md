@@ -1,24 +1,24 @@
 ---
-title: "Azure AD v1 webového serveru technologie ASP.NET Začínáme | Microsoft Docs"
-description: "Implementace přihlašování společnosti Microsoft na řešení technologie ASP.NET s tradiční webovou aplikací využívajících prohlížeč pomocí OpenID Connect standard"
+title: Azure AD v1 webového serveru technologie ASP.NET Začínáme | Microsoft Docs
+description: Implementace přihlašování společnosti Microsoft na řešení technologie ASP.NET s tradiční webovou aplikací využívajících prohlížeč pomocí OpenID Connect standard
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET
@@ -280,7 +280,7 @@ Kromě toho zobrazí tabulku včetně všech deklarací identity uživatele zahr
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Test přístupu k metodě, která má *[Authorize]* atribut (volitelné)
 V tomto kroku byste otestovat přístup k řadiči deklarace identity jako anonymní uživatel:<br/>
 Vyberte propojení na odhlášení uživatele a dokončete proces přihlášení.<br/>
-Teď v prohlížeči zadejte http://localhost:{port}/deklarace identity pro přístup k řadiči, která je chráněná pomocí `[Authorize]` atribut
+Teď v prohlížeči zadejte http://localhost:{port}/claims pro přístup k řadiči, která je chráněná pomocí `[Authorize]` atribut
 
 #### <a name="expected-results"></a>Očekávané výsledky
 Měli byste obdržet řádku by bylo potřeba ověření zobrazíte zobrazení.

@@ -1,12 +1,12 @@
 ---
-title: "Doporučení zabezpečení Azure Advisor | Microsoft Docs"
-description: "Pomocí Azure Advisor k vylepšení zabezpečení vašich Azure nasazení."
+title: Doporučení zabezpečení Azure Advisor | Microsoft Docs
+description: Pomocí Azure Advisor k vylepšení zabezpečení vašich Azure nasazení.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea6fc67a0f5bdfe09435a00c4d2651f312695d25
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: e8a2350744e7b967cc19d0e73686f32edf980eac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-security-recommendations"></a>Doporučení zabezpečení Advisor
 
@@ -26,7 +26,7 @@ Azure Advisor vám poskytne konzistentní, konsolidované zobrazení doporučen�
 
 Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provede procesem konfigurace ovládacích prvků, které potřebujete. 
 
-Další informace o doporučení zabezpečení najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](https://azure.microsoft.com/en-us/documentation/articles/security-center-recommendations/).
+Další informace o doporučení zabezpečení najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučení zabezpečení v Azure Advisor
 
@@ -34,7 +34,7 @@ Další informace o doporučení zabezpečení najdete v tématu [Správa doporu
 
 2.  Na řídicím panelu služby Advisor, klikněte na **zabezpečení** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do služby Advisor](advisor-overview.md)

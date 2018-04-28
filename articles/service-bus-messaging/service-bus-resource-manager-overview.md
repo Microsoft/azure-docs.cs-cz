@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: 876b1c30c09f31958555ff3dee769d8dd443a60d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Vytvoření služby Service Bus prostředků pomocí šablony Azure Resource Manager
 
@@ -163,7 +163,7 @@ Další informace najdete v tématu [parametry](../azure-resource-manager/resour
 Z řádku prostředí PowerShell spusťte následující příkaz:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zobrazí se výzva k přihlášení k účtu Azure. Po přihlášení, spusťte následující příkaz k zobrazení dostupných předplatných:

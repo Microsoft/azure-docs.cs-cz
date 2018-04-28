@@ -1,11 +1,11 @@
 ---
-title: "Vytváření filtrů pomocí Azure Media Services REST API | Microsoft Docs"
-description: "Toto téma popisuje, jak vytvářet filtry, takže vašeho klienta můžete použít datový proud určité části datového proudu. Služba Media Services vytvoří dynamické manifesty k dosažení této selektivní streamování."
+title: Vytváření filtrů pomocí Azure Media Services REST API | Microsoft Docs
+description: Toto téma popisuje, jak vytvářet filtry, takže vašeho klienta můžete použít datový proud určité části datového proudu. Služba Media Services vytvoří dynamické manifesty k dosažení této selektivní streamování.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 98df3b6592ed865fc0eb4b942d298b26e930365f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: ce234d23c30f08f2c98c855b148bc98e90d118cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Vytváření filtrů s Azure Media Services REST API
 > [!div class="op_single_selector"]
@@ -62,12 +62,12 @@ Hlavičky požadavku
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
-Text žádosti 
+Tělo požadavku 
 
     {  
        "Name":"GlobalFilter",
@@ -115,12 +115,12 @@ Hlavičky požadavku
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
-Text žádosti 
+Tělo požadavku 
 
     {   
        "Name":"AssetFilter", 
@@ -165,7 +165,7 @@ Chcete-li seznam filtrů, použijte následující HTTP požadavků:
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     Host: media.windows.net 
 
@@ -176,7 +176,7 @@ Chcete-li seznam filtrů, použijte následující HTTP požadavků:
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -188,7 +188,7 @@ Chcete-li seznam filtrů, použijte následující HTTP požadavků:
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000
 
@@ -210,7 +210,7 @@ Hlavičky požadavku:
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -250,7 +250,7 @@ Hlavičky požadavku:
     Content-Type: application/json 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
@@ -288,7 +288,7 @@ Chcete-li odstranit globální filtr, použijte následující požadavky HTTP:
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN>  
     x-ms-version: 2.17 
     Host: media.windows.net 
 
@@ -302,7 +302,7 @@ Chcete-li odstranit místní AssetFilter, použijte následující požadavky HT
     MaxDataServiceVersion: 3.0 
     Accept: application/json 
     Accept-Charset: UTF-8 
-    Authorization: Bearer <token value> 
+    Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-version: 2.17 
     Host: media.windows.net 
 

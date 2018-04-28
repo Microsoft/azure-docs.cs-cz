@@ -2,19 +2,19 @@
 title: Použití služby Azure Stream Analytics s SQL Data Warehouse | Microsoft Docs
 description: Tipy pro používání Azure Stream Analytics s datovým skladem SQL Azure pro vývoj řešení.
 services: sql-data-warehouse
-author: ckarst
+author: kavithaj
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 04/12/2018
-ms.author: cakarst
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 597953be29241d3c92f9d4e0d256fcb7a1643ccc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 76cbbddca70d3bc8091dbea383213446adac533e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Použití služby Azure Stream Analytics s SQL Data Warehouse
 Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latencí, vysoce dostupných, škálovatelných komplexní zpracování událostí přes streamování dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistíte, jak vytvořit-komplexní řešení pomocí služby Stream Analytics podle [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.

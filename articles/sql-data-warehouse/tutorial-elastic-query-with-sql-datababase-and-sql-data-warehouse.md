@@ -1,29 +1,24 @@
 ---
-title: "Kurz elastické dotazu s Azure SQL Data Warehouse | Microsoft Docs"
-description: "Další informace o použití elastické dotazu s Azure SQL Data Warehouse"
+title: 'Kurz: Elastické dotaz s Azure SQL Data Warehouse | Microsoft Docs'
+description: Tento kurz používá funkci elastické dotazu pro dotaz Azure SQL Data Warehouse z databáze SQL Azure.
 services: sql-data-warehouse
-documentationcenter: NA
 author: hirokib
-manager: johnmac
-editor: 
-ms.assetid: e2dc8f3f-10e3-4589-a4e2-50c67dfcf67g
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 11/03/2017
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/14/2018
 ms.author: elbutter
-ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: igorstan
+ms.openlocfilehash: a31f035b5ec086a046028956c4a9c0de0d6a313d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-elastic-query-with-sql-data-warehouse"></a>Konfigurace elastického dotazu s datovým skladem SQL
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>Kurz: Použití elastické dotazu pro přístup k datům v Azure SQL Data Warehouse z databáze SQL Azure
 
-V tomto kurzu se dozvíte, jak odeslat dotaz z databáze SQL pro SQL Data Warehouse pomocí elastické dotazu. Elastické dotaz je funkce, které existuje mezi produkty Azure SQL. Další informace o elastické dotazu jako koncept najdete v tématu [ **použití elastické dotazu s SQL Data Warehouse**][How to use Elastic Query with SQL Data Warehouse].
+Tento kurz používá funkci elastické dotazu pro dotaz Azure SQL Data Warehouse z databáze SQL Azure. 
 
 ## <a name="prerequisites-for-the-tutorial"></a>Předpoklady pro kurz
 
@@ -128,7 +123,7 @@ V několika dalších krocích vytvoříme tabulku v našem instance datového s
 
 5. Pozorovat, že máte nyní definici externí tabulky ve vaší **instance databáze serveru SQL**.
 
-   ![definici externí tabulky elastické dotazu](./media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
+   ![definici externí tabulky elastické dotazu](media/sql-data-warehouse-elastic-query-with-sql-database/elastic-query-external-table.png)
 
 
 6. Odešlete tento dotaz, který se dotazuje instance datového skladu. Měli byste obdržet pěti hodnot, které jste vložili v kroku 2. 
@@ -143,15 +138,5 @@ SELECT * FROM [dbo].[OrderInformation];
 
 Blahopřejeme, jste nastavili velmi základy elastické dotazu. 
 
-
-
-
-<!--Image references-->
-
-<!--Article references-->
-
-[How to use Elastic Query with SQL Data Warehouse]: ./how-to-use-elastic-query-with-sql-data-warehouse.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
+## <a name="next-steps"></a>Další postup
+Doporučení, najdete v části [osvědčené postupy pro použití elastické dotazu s Azure SQL Data Warehouse](how-to-use-elastic-query-with-sql-data-warehouse.md).

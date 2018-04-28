@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 6bc2c63e75e9c750da852b77e4486666c3fc8561
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
 
@@ -356,7 +356,7 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 
 
 -   [Je povoleno protokolování](/azure/machine-learning/studio/web-services-logging) pro Machine Learning webové služby.
-- pomocí [Machine Learning](/azure/machine-learning/preview/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, která poskytuje možnost k předvídání do sady řešení. [Integrace nástroje workbench](/azure/machine-learning/preview/using-git-ml-project) můžete zjednodušit správu experimenty.
+- pomocí [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) workbench vyžaduje vývoj experimenty, která poskytuje možnost k předvídání do sady řešení. [Integrace nástroje workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) můžete zjednodušit správu experimenty.
 
 ## <a name="security"></a>ZABEZPEČENÍ
 

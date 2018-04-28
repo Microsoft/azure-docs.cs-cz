@@ -1,8 +1,8 @@
 ---
-title: "Azure nástrojů pro IntelliJ: ladění aplikace vzdáleně v HDInsight Spark | Microsoft Docs"
-description: "Další informace o použití nástrojů HDInsight v Azure nástrojů pro IntelliJ pro vzdálené ladění aplikací Spark, které běží na clustery HDInsight prostřednictvím sítě VPN."
+title: 'Azure nástrojů pro IntelliJ: ladění aplikace vzdáleně v HDInsight Spark | Microsoft Docs'
+description: Další informace o použití nástrojů HDInsight v Azure nástrojů pro IntelliJ pro vzdálené ladění aplikací Spark, které běží na clustery HDInsight prostřednictvím sítě VPN.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 55fb454f-c7dc-46de-a978-e242e9a94f4c
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 315a879368e522cc17eeff7be766f0c8a38d470b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6ca69ccab6c9b526c86f6f7a8998089e52c6c939
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Ladění aplikací Spark v HDInsight prostřednictvím sítě VPN vzdáleně pomocí nástrojů Azure pro IntelliJ
 

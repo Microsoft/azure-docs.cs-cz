@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/07/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bc2c696dceb3ed4741c10a5c611bd2d438b71bd5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understanding-cost-management-reports"></a>Principy náklady na správu sestav
 
@@ -115,7 +115,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
         - Místo
     - **Typ zdarma**
         - Vyberte typ poplatků záporný nebo kladnou nebo obojí.
-    - **Tenancy**
+    - **Klientů**
         - Jestli je počítač běží jako vyhrazený počítač.
     -   **Typ použití**
           - Typ použití může být poplatků jednorázové nebo opakované poplatky.
@@ -167,7 +167,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
 
     ![formáty zobrazení](./media/understanding-cost-reports/display-formats.png)
 
-13. **Multi-color**
+13. **Více barev**
 
     Použití více barvu, která nastavení barvy grafy v sestavě.
 

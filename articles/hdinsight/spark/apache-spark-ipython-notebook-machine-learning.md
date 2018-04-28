@@ -1,8 +1,8 @@
 ---
-title: "Sestavení aplikace strojového učení Apache Spark v Azure HDInsight | Microsoft Docs"
-description: "Podrobné pokyny o tom, jak sestavit aplikaci strojové učení Apache Spark HDInsight Spark clusterů pomocí poznámkového bloku Jupyter"
+title: Sestavení aplikace strojového učení Apache Spark v Azure HDInsight | Microsoft Docs
+description: Podrobné pokyny o tom, jak sestavit aplikaci strojové učení Apache Spark HDInsight Spark clusterů pomocí poznámkového bloku Jupyter
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: f584ca5e-abee-4b7c-ae58-2e45dfc56bf4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 2f7dcb9bea05a79a6647b549896c8107f9e830af
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 95daab2bd7bc57d01bc9e3c05404958edd71eecc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Sestavení aplikace strojového učení Apache Spark v Azure HDInsight
 
@@ -185,7 +183,7 @@ V této aplikaci používáte Spark [ML kanálu](https://spark.apache.org/docs/2
 10. Vypněte poznámkového bloku k uvolnění prostředků. To provedete kliknutím na položku **Zavřít a zastavit** z nabídky **Soubor** v poznámkovém bloku. Tato akce vypnutí a zavření poznámkového bloku.
 
 ## <a name="anaconda"></a>Použít Anaconda scikit-další knihovny pro Spark machine learning
-Clustery Apache Spark v HDInsight zahrnují knihovnami Anaconda. To zahrnuje také **scikit-Další** knihoven pro machine learning. Knihovny také obsahuje různé datové sady, které můžete použít k vytvoření ukázkové aplikace přímo z poznámkového bloku Jupyter. Příklady použití scikit-další knihovny najdete [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Clustery Apache Spark v HDInsight zahrnují knihovnami Anaconda. To zahrnuje také **scikit-Další** knihoven pro machine learning. Knihovny také obsahuje různé datové sady, které můžete použít k vytvoření ukázkové aplikace přímo z poznámkového bloku Jupyter. Příklady použití scikit-další knihovny najdete [ http://scikit-learn.org/stable/auto_examples/index.html ](http://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="seealso"></a>Viz také
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)

@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2017
+ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f82e436e25d01bbfa09ec1e8a2efcdf0be8c006
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 81c5b6051b8e1b1812e47cfcb64538c25ee8bfe5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Prohlídka Analytics ve službě Application Insights
 [Analýza](app-insights-analytics.md) je výkonný vyhledávání funkcí [Application Insights](app-insights-overview.md). Tyto stránek popisují dotazovací jazyk analýzy protokolů.
@@ -33,7 +33,7 @@ Otevřete Analytics z vaší aplikace [okno Přehled](app-insights-dashboards.md
 
 ![Otevřete portal.azure.com otevřete prostředek Application Insights a klikněte na Analytics.](./media/app-insights-analytics-tour/001.png)
 
-## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Trvat](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): Zobrazit mi n řádků
+## <a name="takehttpsdocsloganalyticsiodocslanguage-referencetabular-operators-show-me-n-rows"></a>[Trvat](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators): Zobrazit mi n řádků
 Datové body, které protokolu operace uživatele (obvykle HTTP přijatých požadavků ve vaší webové aplikace) jsou uložené v tabulce s názvem `requests`. Každý řádek je telemetrie datový bod, který přijal od Application Insights SDK ve vaší aplikaci.
 
 Začněme prověřením několik ukázkových řádky v tabulce:
@@ -68,7 +68,7 @@ Pokud chcete kombinovat data z více aplikací služby Application Insights, pou
     
 ```
 
-## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Horní](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) a [řazení](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
+## <a name="tophttpsdocsloganalyticsiodocslanguage-referencetabular-operatorstop-operator-and-sorthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssort-operator"></a>[Horní](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) a [řazení](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator)
 `take` je užitečné k získání ukázku rychlé výsledků, ale zobrazuje řádky z tabulky seřazeny. Chcete-li získat seřazené zobrazení, použijte `top` (pro ukázku) nebo `sort` (přes celé tabulky).
 
 Zobrazte první n řádky, seřazené podle konkrétního sloupce:
@@ -94,7 +94,7 @@ Výsledkem bude stejná, ale bude spuštěná trochu pomaleji. (Můžete také n
 
 Záhlaví sloupců v tabulce zobrazení lze také seřadit výsledky na obrazovce. Ale samozřejmě platí, pokud jste použili `take` nebo `top` načíst jenom součást tabulky, kliknutím na záhlaví sloupce bude pouze změnit pořadí záznamy jste načíst.
 
-## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Kde](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): filtrování na podmínce
+## <a name="wherehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorswhere-operator-filtering-on-a-condition"></a>[Kde](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator): filtrování na podmínce
 
 Podíváme se, jenom požadavků, které vrátil kód konkrétní výsledku:
 
@@ -173,7 +173,7 @@ Další příklady:
 [Dat a časů odkaz](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime).
 
 
-## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): vyberte, přejmenování a výpočetní sloupců
+## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): vyberte, přejmenování a výpočetní sloupců
 Použití [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) k výběru pouze sloupce, které chcete:
 
 ```AIQL
@@ -207,7 +207,7 @@ Také můžete přejmenovat sloupce a definovat nové:
 Výrazy může zahrnovat všechny běžných operátorů (`+`, `-`,...), a rozsah užitečné funkce.
 
 ## <a name="extend"></a>Rozšíření
-Pokud chcete přidat sloupce do již existující, použijte [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
+Pokud chcete přidat sloupce do již existující, použijte [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator):
 
 ```AIQL
 
@@ -216,7 +216,7 @@ Pokud chcete přidat sloupce do již existující, použijte [ `extend` ](https:
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Pomocí [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) je míň podrobné než [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) Pokud chcete zachovat existující sloupce.
+Pomocí [ `extend` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/extend-operator) je míň podrobné než [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) Pokud chcete zachovat existující sloupce.
 
 ### <a name="convert-to-local-time"></a>Převést na místní čas
 
@@ -229,8 +229,7 @@ Pomocí [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_e
     | extend localTime = timestamp - 8h
 ```
 
-
-## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Shrnout](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): agregovat skupiny řádků
+## <a name="summarizehttpsdocsloganalyticsiodocslanguage-referencetabular-operatorssummarize-operator-aggregate-groups-of-rows"></a>[Shrnout](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator): agregovat skupiny řádků
 `Summarize` použije zadanou *agregační funkce* přes skupiny řádků.
 
 Například čas trvá odpovědět na požadavek webové aplikace je uvedená v poli `duration`. Podívejme se, Průměrná doba odezvy pro všechny požadavky:
@@ -268,7 +267,7 @@ Shrnutí itemCount proto poskytuje dobrý odhad původní počet událostí.
 
 K dispozici je také `count()` agregace (a počet operaci) pro případy, kdy Opravdu chcete počet řádků ve skupině.
 
-Je rozsah [funkce agregace](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
+Je rozsah [funkce agregace](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
 
 ## <a name="charting-the-results"></a>Vytváření grafů výsledky
 ```AIQL
@@ -409,7 +408,7 @@ Poslední řádek je potřeba převést na typ datetime. Aktuálně osy x grafu 
 
 ![](./media/app-insights-analytics-tour/290.png)
 
-## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Percentily](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
+## <a name="percentileshttpsdocsloganalyticsiodocslanguage-referenceaggregation-functionspercentiles"></a>[Percentily](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/percentiles())
 Jaké rozsahy doby trvání zahrnují různá procenta relace?
 
 Pomocí výše uvedeném dotazu, ale nahraďte poslední řádek:
@@ -470,7 +469,7 @@ Výjimky související s požadavek, který vrátil neplatnou odpověď najdete 
 Je vhodné použít `project` vyberte právě sloupce je třeba před provedením spojení.
 V klauzulích stejné jsme přejmenovat sloupec časového razítka.
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Umožní](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): přiřadit výsledek proměnné
+## <a name="lethttpsdocsloganalyticsiodocslanguage-referencequery-statementslet-statement-assign-a-result-to-a-variable"></a>[Umožní](https://docs.loganalytics.io/docs/Language-Reference/Query-statements/Let-statement): přiřadit výsledek proměnné
 
 Použití `let` oddělit části předchozí výrazu. Výsledky jsou stejné jako:
 
@@ -541,7 +540,7 @@ Například pokud vaše aplikace obsahuje:
 ```csharp
 
     var dimensions = new Dictionary<string, string>
-                     {{"p1", "v1"},{"p2", "v2"}};
+                     {{"p1", "v1"},{"p2.d2", "v2"}};
     var measurements = new Dictionary<string, double>
                      {{"m1", 42.0}, {"m2", 43.2}};
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
@@ -554,7 +553,6 @@ K extrakci v Analytics tyto hodnoty:
     customEvents
     | extend p1 = customDimensions.p1,
       m1 = todouble(customMeasurements.m1) // cast to expected type
-
 ```
 
 Chcete-li ověřit, zda je vlastní dimenze určitého typu:
@@ -565,6 +563,18 @@ Chcete-li ověřit, zda je vlastní dimenze určitého typu:
     | extend p1 = customDimensions.p1,
       iff(notnull(todouble(customMeasurements.m1)), ...
 ```
+
+### <a name="special-characters"></a>Speciální znaky
+
+Pro identifikátory s speciální znaky nebo klíčová slova jazyka v jejich názvy, budete muset přistupovat k nim prostřednictvím `['` a `']` nebo pomocí `["` a `"]`.
+
+```AIQL
+
+    customEvents
+    | extend p2d2 = customDimensions.['p2.d2'], ...
+```
+
+[Referenční dokumentace pravidel pojmenování identifikátor](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>Řídicí panely
 Aby bylo možné shromáždit všechny vaše nejdůležitější grafů a tabulek je budete moct připnout výsledky na řídicí panel.

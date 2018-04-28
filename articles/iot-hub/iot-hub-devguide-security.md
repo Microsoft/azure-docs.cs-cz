@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -136,7 +136,7 @@ Zde jsou očekávaných hodnot:
 | --- | --- |
 | {podpis} |Řetězec podpisu HMAC SHA256 ve tvaru: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč je dekódovat z formátu base64 a použít jako klíč, aby prováděly výpočty HMAC SHA256. |
 | {resourceURI} |Předpony identifikátoru URI (podle segmentu) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádné protocol). Například `myHub.azure-devices.net/devices/device1`. |
-| {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epoch na 1. ledna pod hodnotou 1970. |
+| {vypršení platnosti} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epoch na 1. ledna pod hodnotou 1970. |
 | {Adresu URL-kódovaný resourceURI} |Nižší případ kódování URL prostředku malá identifikátor URI |
 | {policyName} |Název zásady sdíleného přístupu, na který odkazuje tento token. Chybějící Pokud token odkazuje na přihlašovací údaje registru zařízení. |
 
@@ -358,7 +358,7 @@ Další informace o ověřování pomocí certifikační autority najdete v tém
 
 ### <a name="c-support"></a>C\# podpory
 
-**RegistryManager** třída poskytuje programový způsob, jak registrovat zařízení. Konkrétně **AddDeviceAsync** a **UpdateDeviceAsync** metody umožňují zaregistrovat a aktualizujte zařízení v registru identit služby IoT Hub. Tyto dvě metody přijímají **zařízení** instance jako vstup. **Zařízení** třída zahrnuje **ověřování** vlastnost, která vám umožní určit primární a sekundární X.509 kryptografické otisky certifikátu. Kryptografický otisk představuje hodnotu hash SHA-1 (uložené pomocí binární kódování DER) X.509 certifikátu. Máte možnost určení primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. Primární a sekundární kryptografické otisky jsou podporovány pro zpracování scénáře výměnu certifikátů.
+**RegistryManager** třída poskytuje programový způsob, jak registrovat zařízení. Konkrétně **AddDeviceAsync** a **UpdateDeviceAsync** metody umožňují zaregistrovat a aktualizujte zařízení v registru identit služby IoT Hub. Tyto dvě metody přijímají **zařízení** instance jako vstup. **Zařízení** třída zahrnuje **ověřování** vlastnost, která vám umožní určit primární a sekundární X.509 kryptografické otisky certifikátu. Kryptografický otisk představuje hodnotu hash SHA256 (uložené pomocí binární kódování DER) X.509 certifikátu. Máte možnost určení primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. Primární a sekundární kryptografické otisky jsou podporovány pro zpracování scénáře výměnu certifikátů.
 
 Zde je ukázka C\# fragment kódu registrovat zařízení pomocí kryptografický otisk certifikátu X.509:
 

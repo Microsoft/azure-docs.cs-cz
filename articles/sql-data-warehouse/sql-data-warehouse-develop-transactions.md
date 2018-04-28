@@ -2,19 +2,19 @@
 title: Použití transakcí v Azure SQL Data Warehouse | Microsoft Docs
 description: Tipy pro provádění transakcí v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-author: ronortloff
+author: ckarst
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
-ms.author: rortloff
+ms.date: 04/17/2018
+ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 168fd15b5f93f59328a4b6a2d68b52500074c410
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7fa3d19cc0fca81616969773a40c3d3dbccc4a26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Použití transakcí v SQL Data Warehouse
 Tipy pro provádění transakcí v Azure SQL Data Warehouse na vývoj řešení.
@@ -36,7 +36,7 @@ V následující tabulce následující předpoklady byly provedeny:
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap za distribuční (GiB) | Počet distribuce | MAXIMÁLNÍ velikost transakce (GiB) | # Řádků na jeden distribuce | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | OD DW100 |1 |60 |60 |4,000,000 |240,000,000 |
-| DW200 |1,5 |60 |90 |6 000 000 |360,000,000 |
+| DW200 |1.5 |60 |90 |6 000 000 |360,000,000 |
 | DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
 | DW400 |3 |60 |180 |12,000,000 |720,000,000 |
 | DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |

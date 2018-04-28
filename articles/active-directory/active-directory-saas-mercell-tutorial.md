@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d009e8bdf513b10198aac826236ff44376ed630
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 60432e18c9496ff6fc5431fcd7b73aa5f4c9696c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Kurz: Azure Active Directory integrace s Mercell
 
@@ -99,7 +99,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_samlbase.png)
 
 3. Na **Mercell domény a adresy URL** část, proveďte následující kroky:
@@ -107,36 +107,16 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Mercell domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_url.png)
 
     V **identifikátor** textovému poli, zadejte adresu URL: `https://my.mercell.com/`
- 
-4. Klikněte na tlačítko **Uložit** tlačítko.
+
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mercell-tutorial/tutorial_metadataurl.png)
+     
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-mercell-tutorial/tutorial_general_400.png)
 
-5. Ke generování **adresu URL metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Mercell** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Konfigurace jednotného přihlašování na **Mercell** straně, budete muset odeslat vygenerovaného **adresu URL metadat** k [tým podpory Mercell](mailto:webmaster@mercell.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Konfigurace jednotného přihlašování na **Mercell** straně, budete muset odeslat vygenerovaného **adresu Url aplikace federační Metadata** k [tým podpory Mercell](mailto:webmaster@mercell.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

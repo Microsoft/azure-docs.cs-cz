@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f44d8cc48d6bfee909c04b20136cd2be6f828a0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžnou integraci a nasazení v Azure Data Factory
 
@@ -92,7 +92,7 @@ Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizova
 
     a.  Přidání těchto tajných klíčů do souboru parametrů:
 
-        -   Vytvořit kopii souboru parametry, který je odeslat do větve publikování a nastavte hodnoty parametrů, které chcete získat z trezoru klíčů v následujícím formátu:
+       -   Vytvořit kopii souboru parametry, který je odeslat do větve publikování a nastavte hodnoty parametrů, které chcete získat z trezoru klíčů v následujícím formátu:
 
         ```json
         {
@@ -102,24 +102,24 @@ Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizova
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   Pokud použijete tuto metodu, tajný klíč pocházejí z trezoru klíčů automaticky.
+       -   Pokud použijete tuto metodu, tajný klíč pocházejí z trezoru klíčů automaticky.
 
-        -   Soubor parametrů musí být ve větvi publikovat.
+       -   Soubor parametrů musí být ve větvi publikovat.
 
     b.  Přidat [úlohy Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
 
-        -   Vyberte **úlohy** kartě, vytvořit nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
+       -   Vyberte **úlohy** kartě, vytvořit nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
 
-        -   V úloze Key Vault, vyberte předplatné, ve které jste vytvořili trezor klíčů, zadejte přihlašovací údaje v případě potřeby a potom vyberte trezor klíčů.
+       -   V úloze Key Vault, vyberte předplatné, ve které jste vytvořili trezor klíčů, zadejte přihlašovací údaje v případě potřeby a potom vyberte trezor klíčů.
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Přidáte úloha nasazení Azure Resource Manager:
 

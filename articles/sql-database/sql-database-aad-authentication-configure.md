@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace ověřování Azure Active Directory - SQL | Microsoft Docs"
-description: "Zjistěte, jak se připojit k databázi SQL, spravované Instance a SQL Data Warehouse pomocí Azure Active Directory Authentication – po dokončení konfigurace Azure AD."
+title: Konfigurace ověřování Azure Active Directory - SQL | Microsoft Docs
+description: Zjistěte, jak se připojit k databázi SQL, spravované Instance a SQL Data Warehouse pomocí Azure Active Directory Authentication – po dokončení konfigurace Azure AD.
 services: sql-database
 author: GithubMirek
 manager: craigg
@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: e8decbe2c8ed4bed6cfb71308510d031fc242faa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurovat a spravovat ověřování Azure Active Directory s databází SQL, spravované Instance nebo SQL Data Warehouse
 
@@ -72,7 +72,7 @@ Vaše spravované Instance potřebuje oprávnění ke čtení úspěšně prové
 
 6.  Nyní můžete správce Azure AD vaší spravované Instance. K tomu, na stránky pro správu služby Active Directory, klikněte na **nastavit správce** příkaz.
 
-    ![set-admin](./media/sql-database-aad-authentication/set-admin.png)
+    ![set – správce](./media/sql-database-aad-authentication/set-admin.png)
 
 7. Na stránce přidat správce, vyhledejte uživatele, vyberte uživatele nebo skupinu, správce a pak klikněte na tlačítko **vyberte**. 
 
@@ -100,8 +100,8 @@ Vaše spravované Instance potřebuje oprávnění ke čtení úspěšně prové
 Tyto dva postupy ukazují, jak zřídit správce Azure Active Directory pro server Azure SQL na portálu Azure a pomocí prostředí PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
-1. V [portál Azure](https://portal.azure.com/), v pravém horním rohu klikněte na připojení k rozevírací seznam možných Active Directory. Vyberte správný služby Active Directory jako výchozí Azure AD. Tento krok odkazy přidružení předplatné služby Active Directory s Azure SQL serveru a ujistěte se, že stejného předplatného. používá se pro Azure AD a SQL Server. (Server Azure SQL můžete hostování, Azure SQL Database nebo Azure SQL Data Warehouse.)   
-    ![choose-ad][8]   
+1. V [portál Azure](https://portal.azure.com/), v pravém horním rohu klikněte na připojení k rozevírací seznam možných Active Directory. Vyberte správný služby Active Directory jako výchozí Azure AD. Tento krok odkazy přidružené předplatné Active Directory s Azure SQL serveru a ujistěte se, že stejného předplatného. používá se pro Azure AD a SQL Server. (Server Azure SQL můžete hostování, Azure SQL Database nebo Azure SQL Data Warehouse.)   
+    ![Zvolte ad][8]   
     
 2. V levém banner vyberte **servery SQL**, vyberte vaše **systému SQL server**a potom v **systému SQL Server** klikněte na tlačítko **správce Active Directory**.   
 3. V **správce Active Directory** klikněte na tlačítko **nastavit správce**.   
@@ -127,7 +127,7 @@ Pokud chcete spustit rutiny prostředí PowerShell, musíte mít prostředí Azu
 
 Pokud chcete zřídit správce Azure AD, spusťte následující příkazy prostředí Azure PowerShell:
 
-* Add-AzureRmAccount
+* Připojit AzureRmAccount
 * Select-AzureRmSubscription
 
 Rutiny používají k zřizovat a spravovat správce Azure AD:
@@ -183,7 +183,7 @@ Správce služby Azure AD můžete také vytvářet voláním rozhraní příkaz
 | Příkaz | Popis |
 | --- | --- |
 |[vytvoření ad správce az sql serveru](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Zřídí správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. (Musí být z aktuálního předplatného.) |
-|[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
+|[AZ sql server ad správce odstranit](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Odebere správce Azure Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 |[AZ sql server ad správce seznamu](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) |Vrací informace o aktuálně nakonfigurován pro server Azure SQL nebo Azure SQL Data Warehouse správce Azure Active Directory. |
 |[aktualizace ad správce az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) |Aktualizace správce Active Directory pro server Azure SQL nebo Azure SQL Data Warehouse. |
 
@@ -208,7 +208,7 @@ Můžete splňovat tyto požadavky podle:
 Ověřování Azure Active Directory vyžaduje, aby uživatelé databázi vytvořit, protože uživatelé databáze s omezením. Uživatel databáze s omezením na základě identity služby Azure AD, je uživateli databáze, který nemá přihlášení v hlavní databázi, a který se mapuje na identity v adresáři služby Azure AD, která souvisí s databází. Identita služby Azure AD může být individuální uživatelský účet nebo skupinu. Další informace o uživatele databáze s omezením naleznete v tématu [obsažené uživatelů databáze provádění vaše přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Uživatelé databáze (s výjimkou správci) nelze vytvořit pomocí portálu. Role RBAC nebudou rozšířeny do systému SQL Server, SQL Database nebo SQL Data Warehouse. Azure role RBAC slouží ke správě prostředků Azure a nevztahují na oprávnění databáze. Například **SQL serveru Přispěvatel** role neuděluje přístup k připojení k SQL Database nebo SQL Data Warehouse. Přímo v databázi pomocí příkazů Transact-SQL musí udělit oprávnění k přístupu.
+> Uživatelé databáze (s výjimkou správci) nelze vytvořit pomocí portálu Azure. Role RBAC nebudou rozšířeny do systému SQL Server, SQL Database nebo SQL Data Warehouse. Azure role RBAC slouží ke správě prostředků Azure a nevztahují na oprávnění databáze. Například **SQL serveru Přispěvatel** role neuděluje přístup k připojení k SQL Database nebo SQL Data Warehouse. Přímo v databázi pomocí příkazů Transact-SQL musí udělit oprávnění k přístupu.
 >
 
 Chcete-li vytvořit Azure AD na základě obsažené databáze uživatele (jiné než na správce serveru, který vlastní databáze), připojení k databázi s identitou služby Azure AD jako uživatel s alespoň **ALTER ANY uživatele** oprávnění. Pak použijte následující syntaxi jazyka Transact-SQL:
@@ -277,14 +277,15 @@ Tuto metodu použijte, pokud jsou přihlášení k systému Windows pomocí při
 
     ![Vyberte název databáze][13]
 
-## <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
+## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
 
-Tuto metodu použijte, pokud připojíte přes hlavní název služby Azure AD pomocí služby Azure AD spravované domény. Můžete ji použít i pro federované účet bez přístupu k doméně, například při práci se vzdáleně.
+Tuto metodu použijte, pokud připojíte přes hlavní název služby Azure AD pomocí služby Azure AD spravované domény. Můžete ji použít i pro federované účty bez přístupu k doméně, například při práci se vzdáleně.
 
-Tuto metodu použijte, pokud jste přihlášení k systému Windows pomocí přihlašovacích údajů z domény, která není sdružených se službou Azure, nebo pomocí ověřování Azure AD pomocí služby Azure AD na základě počáteční nebo domény klienta.
+Tuto metodu použijte k ověření pro SQL databáze nebo datového skladu s Azure AD pro nativní z federovaní uživatelé, Azure AD.
+Nativní uživatele je explicitně vytvořené ve službě Azure AD a ověřovaného pomocí uživatelského jména a hesla, když se Federovaný uživatel je uživatelem systému Windows jejichž domény je sdružených se službou Azure AD. Druhá metoda (pomocí uživatele a heslo) lze použít, když uživatel chce použít jeho pověření systému windows, ale jeho místní počítač není připojený k doméně (tj. pomocí vzdáleného přístupu). V takovém případě uživatelem systému Windows může svědčit o jeho účet domény a heslo a pro SQL databáze nebo datového skladu pomocí federovaného přihlašovacích údajů, můžete ověřovat.
 
 1. Spustit Management Studio nebo nástrojů Data a v **připojit k serveru** (nebo **připojit k databázovém stroji**) dialogu **ověřování** vyberte  **Active Directory – heslo**.
-2. V **uživatelské jméno** zadejte jméno uživatele Azure Active Directory ve formátu  **username@domain.com** . Toto musí být účet ze služby Azure Active Directory nebo účet z domény vytvořit federaci s Azure Active Directory.
+2. V **uživatelské jméno** zadejte jméno uživatele Azure Active Directory ve formátu **username@domain.com**. Toto musí být účet ze služby Azure Active Directory nebo účet z domény vytvořit federaci s Azure Active Directory.
 3. V **heslo** pole, zadejte heslo uživatele pro účet služby Azure Active Directory nebo federované účet domény.
 
     ![Vyberte možnost ověřování hesla služby AD][12]
@@ -309,7 +310,7 @@ conn.Open();
 
 Klíčové slovo připojovacího řetězce ``Integrated Security=True`` není podporována pro připojení k databázi SQL Azure. Při vytváření připojení ODBC, musíte se k odebrání mezer a nastavení ověřování pro 'ActiveDirectoryIntegrated'.
 
-### <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
+### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
 
 Chcete-li připojit k databázi pomocí integrované ověřování a identita Azure AD, musí být nastavena – klíčové slovo ověřování Active Directory heslo. Připojovací řetězec musí obsahovat identifikátor ID uživatele nebo uživatele a heslo/PWD klíčová slova a hodnoty. Následující ukázka kódu C# používá rozhraní ADO .NET.
 
@@ -350,7 +351,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Přehled řízení a přístupu pro SQL Database najdete v tématu věnovaném [řízení a přístupu k SQL Database](sql-database-control-access.md).
 - Přehled přihlášení, uživatelů a databázových rolí ve službě SQL Database najdete v tématu věnovaném [přihlášením, uživatelům a databázovým rolím](sql-database-manage-logins.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).

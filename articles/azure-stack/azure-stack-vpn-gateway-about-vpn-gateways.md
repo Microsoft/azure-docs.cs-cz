@@ -1,11 +1,11 @@
 ---
-title: "O službě VPN gateway pro Azure zásobníku | Microsoft Docs"
-description: "Další informace o a konfiguraci brány VPN, které používáte pro Azure zásobníku."
+title: O službě VPN gateway pro Azure zásobníku | Microsoft Docs
+description: Další informace o a konfiguraci brány VPN, které používáte pro Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ba9642d8c51f57623aded44b84d7127334806bc1
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O službě VPN gateway pro Azure zásobníku
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/02/2017
 
 Před odesláním síťový provoz mezi virtuální sítě Azure a místními servery, musíte vytvořit bránu virtuální sítě pro virtuální síť.
 
-Brána VPN je typem brány virtuální sítě, která odesílá šifrovaný síťový provoz přes veřejné spojení. Brány sítě VPN můžete odesílat provoz bezpečně mezi virtuální sítě v zásobníku Azure a virtuální sítě v Azure nebo mezi virtuální sítě a jiné síti, která je připojena k zařízení VPN.
+Brána VPN je typem brány virtuální sítě, která odesílá šifrovaný síťový provoz přes veřejné spojení. Brány sítě VPN můžete použít k posílání provozu bezpečně mezi virtuální sítě v zásobníku Azure a virtuální sítě v Azure. Můžete také odeslat provoz bezpečně mezi virtuální sítí a jiné síti, která je připojena k zařízení VPN.
 
 Při vytváření brány virtuální sítě musíte určit typ brány, který chcete vytvořit. Azure zásobníku podporuje jeden typ brány virtuální sítě: typ 'Vpn'.
 
@@ -46,10 +46,10 @@ Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných 
 Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření úspěšného připojení zásadní. Informace o jednotlivých prostředcích a nastavení pro bránu VPN najdete v tématu [nastavení brány sítě VPN o pro Azure zásobníku](azure-stack-vpn-gateway-settings.md). Můžete získat informace, které vám pomohou pochopit, brány typy, typy sítě VPN, typy připojení, podsítě brány, brány místní sítě a různým dalším nastavením prostředků, které můžete vzít v úvahu.
 
 ### <a name="deployment-tools"></a>Nástroje pro nasazení
-Prostředky můžete začít vytvářet a konfigurovat pomocí konfiguračního nástroje, jako je například Azure Portal. Později se můžete rozhodnout používat ke konfiguraci dalších prostředků nebo úpravám stávajících prostředků jiný nástroj, třeba PowerShell. V současné době nelze konfigurovat všechny prostředky a nastavení prostředků pomocí webu Azure Portal. Pokyny v článcích pro každou topologii připojení určují, kdy je zapotřebí specifický konfigurační nástroj.
+Můžete vytvořit a nakonfigurovat prostředky pomocí jednoho konfiguračního nástroje, jako je například portál Azure. Později se může přepnout na jiný nástroj jako prostředí PowerShell k konfigurujte další prostředky, nebo úpravě existujících prostředků v případě potřeby. V současné době nelze konfigurovat všechny prostředky a nastavení prostředků pomocí webu Azure Portal. Pokyny v článcích pro každou topologii připojení určují, kdy je zapotřebí specifický konfigurační nástroj.
 
 ## <a name="connection-topology-diagrams"></a>Diagramy topologie připojení
-Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. V následujících oddílech si můžete prohlédnout diagramy topologie a informace o následujících připojení brány sítě VPN. Následující oddíly obsahují tabulky, které uvádějí:
+Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Určete, jakou konfiguraci nejlepší vyhovuje vašim potřebám. V následujících oddílech si můžete prohlédnout diagramy topologie a informace o následujících připojení brány sítě VPN. Následující oddíly obsahují tabulky, které uvádějí:
 
 - dostupný model nasazení,
 - dostupné konfigurační nástroje,
@@ -78,7 +78,7 @@ Když vyberete bránu vyšší skladová položka jako standardní přes Basic n
 
 Azure zásobník nepodporuje bránu UltraPerformance SKU, které používá výhradně s Express Route.
 
-Při výběru SKU zvažte následující informace:
+Když vyberete SKU, zvažte následující:
 - Azure zásobník nepodporuje brány na základě zásad.
 - Základní SKU nepodporuje protokol BGP (Border Gateway).
 - Brána ExpressRoute VPN existovat vedle sebe konfigurace nejsou podporovány v Azure zásobníku
@@ -87,13 +87,14 @@ Při výběru SKU zvažte následující informace:
 ## <a name="estimated-aggregate-throughput-by-sku"></a>Odhadovaná agregovaná propustnost podle typů SKU
 Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost podle SKU brány.
 
-|   | Propustnost brány sítě VPN *(1)* |Brána sítě VPN maximální počet tunelových propojení IPsec |
+|   | Propustnost brány sítě VPN *(1)* | Tunelových propojení IPsec brány sítě VPN maximální *(2)* |
 |-------|-------|-------|
-|**Základní SKU** ***(2)***    | 100 Mb/s  | 10    |
+|**Základní SKU** ***(3)***    | 100 Mb/s  | 10    |
 |**Standardní SKU**       | 100 Mb/s  | 10    |
-|**SKU pro vysoký výkon** | 200 Mb/s    | 30    |
+|**SKU pro vysoký výkon** | 200 Mb/s    | 5 |
 ***(1)***  Propustnost VPN není zaručenou propustnost pro připojení mezi různými místy přes Internet. Jedná se o maximální možné měření propustnosti.  
-***(2)***  Protokol BGP není podporován pro základní SKU.
+***(2)***  Číslo tunely maximální počet je celkový počet jedno nasazení Azure zásobníku pro všechna předplatná.  
+***(3)***  Protokol BGP není podporován pro základní SKU.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [nastavení pro brány VPN](azure-stack-vpn-gateway-settings.md) pro Azure zásobníku.

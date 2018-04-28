@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 694818709bd1b756198c87692df23b0b35972bdd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Správa svazku ceny a data ve službě Application Insights
 
@@ -32,6 +32,9 @@ Pokud máte dotazy týkající se fungování ceny pro službu Application Insig
 ## <a name="pricing-plans"></a>Cenových plánů
 
 Aktuální ceny měny a oblasti, najdete v části [ceny Application Insights][pricing].
+
+> [!NOTE]
+> V dubnu 2018 jsme [zavedená](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro Azure monitorování. Tento model přijme jednoduchého modelu "průběžnými platbami" v celém portfoliu kompletní monitorování služby. Další informace o [nový cenový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přesun k tomuto modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vaší způsobů využití a [postupy, který se přidá do nového modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model).
 
 ### <a name="basic-plan"></a>Základní plán
 

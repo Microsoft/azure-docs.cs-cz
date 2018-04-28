@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 99595eb1f9a1eab1db51796632d58df35bf45be6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4a303db638b8ea304db5cba4075b0b102eedd0f3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>Pomocí sady .NET SDK pro přístup k rozhraní API služby Azure Mobile Engagement
 > [!IMPORTANT]
-> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
 > 
 
 Azure Mobile Engagement poskytuje sadu rozhraní API pro správu zařízení, kampaní Reach/nabízených atd. Pro interakci s Tato rozhraní API, poskytujeme také můžete [soubor Swagger](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) , můžete pomocí nástrojů můžete vygenerovat pomocí sady SDK pro preferovaný jazyk. Doporučujeme používat [AutoRest](https://github.com/Azure/AutoRest) nástroj pro generování vaší sady SDK z našich souboru Swagger.
 
 > [!NOTE]
-> Službu Azure Mobile Engagement vyřadíme z provozu v březnu 2018. V současnosti je dostupná jenom pro stávající zákazníky. Další informace najdete v tématu [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Službu Azure Mobile Engagement vyřadíme z provozu v březnu 2018. V současnosti je dostupná jenom pro stávající zákazníky. Další informace najdete v tématu [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 Vytvořili jsme .NET SDK podobným způsobem, který umožňuje pracovat s Tato rozhraní API pomocí obálku C# a nemusíte dělat vyjednávání tokenu ověřování a aktualizujte sami.  
 
@@ -54,7 +54,7 @@ Tato ukázka prochází sadu kroků se používat sadu .NET SDK:
         const string SUBSCRIPTION_ID = "<Your Subscription Id>";
    
         // This is the Azure Resource group concept for grouping together resources 
-        //  see here: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
+        //  see here: https://azure.microsoft.com/documentation/articles/resource-group-portal/
         const string RESOURCE_GROUP = "";
    
         // For Mobile Engagement operations
@@ -104,7 +104,7 @@ Tato ukázka prochází sadu kroků se používat sadu .NET SDK:
         private async static Task CreateCampaign()
         {
             //  Refer to the Announcement Campaign format from here - 
-            //      https://msdn.microsoft.com/en-us/library/azure/mt683751.aspx
+            //      https://msdn.microsoft.com/library/azure/mt683751.aspx
             // Make sure you are passing all the non-optional parameters
             Campaign parameters = new Campaign(
                 name:"WelcomeCampaign",
@@ -114,7 +114,7 @@ Tato ukázka prochází sadu kroků se používat sadu .NET SDK:
                 deliveryTime:"any"
                 );
    
-            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/en-us/library/azure/mt683742.aspx
+            // Refer to the Campaign Kinds from here - https://msdn.microsoft.com/library/azure/mt683742.aspx
             CampaignStateResult result = 
                 await engagementClient.Campaigns.CreateAsync(CampaignKinds.Announcements, parameters);
             Console.WriteLine("Campaign Id '{0}' was created successfully and it is in '{1}' state", result.Id, result.State);

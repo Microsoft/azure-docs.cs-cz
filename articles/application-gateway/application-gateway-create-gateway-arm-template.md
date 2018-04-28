@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby Azure Application Gateway - šablony | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny pro vytvoření služby Azure Application Gateway pomocí šablony Azure Resource Manageru."
+title: Vytvoření služby Azure Application Gateway - šablony | Microsoft Docs
+description: Tato stránka obsahuje pokyny pro vytvoření služby Azure Application Gateway pomocí šablony Azure Resource Manageru.
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Vytvoření služby Application Gateway pomocí šablony Azure Resource Manageru
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell](application-gateway-create-gateway.md)
 > * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
@@ -76,7 +76,7 @@ Z webu GitHub si můžete stáhnout existující šablonu Azure Resource Manager
    * **name**. Název prostředku. Všimněte si použití `[parameters('applicationGatewayName')]`, což znamená, že název je poskytován jako vstup vámi nebo ze souboru parametrů během nasazování.
    * **properties**. Seznam vlastností prostředku. Tato šablona používá při vytváření služby Application Gateway virtuální síť a veřejnou IP adresu.
 
-1. Přejděte zpět na [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
+1. Přejděte zpět na [ https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/ ](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Klikněte na tlačítko **azuredeploy-Parameters.JSON tímto kódem**a potom klikněte na **RAW**.
 1. Uložte soubor do místní složky v počítači.
 1. Otevřete soubor, který jste uložili, a upravte hodnoty parametrů. K nasazení služby Application Gateway popsané v tomto scénáři použijte následující hodnoty.
@@ -129,7 +129,7 @@ Pokud jste prostředí Azure PowerShell nikdy nepoužívali, navštivte: [postup
 1. Přihlášení k prostředí PowerShell
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Zkontrolujte předplatná pro příslušný účet.
@@ -230,7 +230,7 @@ Remove-AzureRmResourceGroup -Name appgatewayRG
 az group delete --name appgatewayRG
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete konfigurovat přesměrování zpracování SSL, přečtěte si článek [Konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
 

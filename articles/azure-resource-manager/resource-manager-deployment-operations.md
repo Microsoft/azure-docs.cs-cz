@@ -1,32 +1,31 @@
 ---
-title: "Operace nasazení s Azure Resource Manager | Microsoft Docs"
-description: "Popisuje postup zobrazení operace nasazení Azure Resource Manager s portálem, prostředí PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API."
+title: Operace nasazení s Azure Resource Manager | Microsoft Docs
+description: Popisuje postup zobrazení operace nasazení Azure Resource Manager s portálem, prostředí PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API.
 services: azure-resource-manager,virtual-machines
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 01/13/2017
+ms.date: 04/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 26c2c333a97abff75f6b4caefb1e351dea826081
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Operace nasazení zobrazení pomocí Azure Resource Manageru
 
-
 Můžete zobrazit činnosti pro nasazení prostřednictvím portálu Azure. Můžete mít nejvíc zajímat zobrazení operace, když jste obdrželi chybu během nasazení, tento článek zaměřuje na zobrazení operace, které selhaly. Na portálu poskytuje rozhraní, které vám umožňuje snadno najít chyby a zjistit potenciální opravy.
 
-Lze řešit potíže s nasazením prohlížením protokolů auditu nebo operace nasazení. Toto téma ukazuje obě metody. Nápovědu k řešení chyb při konkrétní nasazení naleznete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
+Lze řešit potíže s nasazením prohlížením protokolů auditu nebo operace nasazení. Tento článek ukazuje obě metody. Nápovědu k řešení chyb při konkrétní nasazení naleznete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portál
 Pokud chcete zobrazit operace nasazení, použijte následující kroky:
@@ -136,21 +135,19 @@ Pokud chcete zobrazit operace nasazení, použijte následující kroky:
 1. Získat celkový stav nasazení pomocí **skupiny azure nasazení zobrazit** příkaz.
 
   ```azurecli
-  azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-  Jedna z hodnot vrácených je **correlationId**. Tato hodnota se používá ke sledování související události a může být užitečné při práci se službou technické podpory k řešení nasazení.
+1. Jedna z hodnot vrácených je **correlationId**. Tato hodnota se používá ke sledování související události a může být užitečné při práci se službou technické podpory k řešení nasazení.
 
   ```azurecli
-  "properties": {
-    "provisioningState": "Failed",
-    "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
+  az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-2. Pokud chcete zobrazit operace pro nasazení, použijte:
+1. Pokud chcete zobrazit operace pro nasazení, použijte:
 
   ```azurecli
-  azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
+  az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
 ## <a name="rest"></a>REST

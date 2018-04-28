@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: fe6dd9545be17453be38ce9afd5836aa07882ce6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 72eb329c03893f801e112ad33bca0c57c5ee46a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Informační kanál procesor změnu .NET SDK: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -41,6 +41,11 @@ ms.lasthandoff: 04/16/2018
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="stable-builds"></a>Stabilní sestavení
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* Opravy v odhad čekající práci.
+
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Zlepšení stability.
 * Podpora pro ruční vytváření kontrolních bodů.
@@ -63,6 +68,23 @@ ms.lasthandoff: 04/16/2018
 * GA SDK
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.14.1 a níže.
 
+### <a name="pre-release-builds"></a>Předběžné verze sestavení
+
+### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* Nové rozhraní API v2:
+  * Tvůrce vzor flexibilní konstrukce procesoru: Třída ChangeFeedProcessorBuilder.
+    * Může trvat libovolnou kombinací parametrů.
+    * Může trvat instance DocumentClient pro monitorování a/nebo zapůjčení kolekci (není k dispozici v v1).
+  * IChangeFeedObserver.ProcessChangesAsync nyní trvá CancellationToken.
+  * IRemainingWorkEstimator - zbývající práce odhadu dá se použít samostatně z procesoru.
+  * Nové body rozšiřitelnosti:
+    * IParitionLoadBalancingStrategy - pro vlastní Vyrovnávání zatížení oddílů mezi instancemi procesoru.
+    * ILease, ILeaseManager - pro správu vlastní zapůjčení.
+    * IPartitionProcessor – vlastní zpracování změny na oddíl.
+* Protokolování - používá [LibLog](https://github.com/damianh/LibLog) knihovny.
+* 100 % zpětně kompatibilní s rozhraním API v1.
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21.1 a vyšší.
+
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat
 Microsoft bude poskytovat oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.
 
@@ -74,6 +96,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.3.2](#1.3.2) |18. dubna 2018 |--- |
 | [1.3.1](#1.3.1) |13. března 2018 |--- |
 | [1.2.0](#1.2.0) |31. října 2017 |--- |
 | [1.1.1](#1.1.1) |29 srpen 2017 |--- |

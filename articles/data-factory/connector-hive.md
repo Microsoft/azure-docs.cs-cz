@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b216b334f07a59f7c159bc804116f2190f3bf6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 758da9ceb86e26d373f71e4f89a47d67d1cefe2d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 
@@ -46,7 +46,7 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **Hive** | Ano |
 | hostitel | IP adresa nebo název hostitele serveru Hive, oddělené podle ';' pro více hostitelů (pouze v případě serviceDiscoveryMode je povolit).  | Ano |
-| port | Port TCP, který používá Hive server naslouchat pro připojení klientů.  | Ne |
+| port | Port TCP, který používá Hive server naslouchat pro připojení klientů. Pokud se připojit k Azure HDInsights, zadejte port jako 443. | Ano |
 | serverType | Typ serveru Hive. <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
 | thriftTransportProtocol | Přenosový protokol pro použití v Thrift vrstvy. <br/>Povolené hodnoty jsou: **binární**, **SASL**, **HTTP** | Ne |
 | authenticationType. | Metodu ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **anonymní**, **uživatelské jméno**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
@@ -78,8 +78,7 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

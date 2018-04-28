@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik;aljo
-ms.openlocfilehash: 37425f8a076be2579726e5a83bec3da8c6eb5fff
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 948b1bb2ce5a19007906262a4efb0ecca8e40482
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Fabric samostatné služby pro systém Windows Server
 V [Stáhnout](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatný balíček, zjistíte, následující soubory:
@@ -47,7 +47,7 @@ V [Stáhnout](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samo
 | ClusterConfig.Windows.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení zabezpečení, více počítače (nebo virtuálního počítače) clusteru pomocí zabezpečení systému Windows, včetně informací pro každý počítač, který je v zabezpečené clusteru. Cluster je zabezpečená pomocí [Windows identity](https://msdn.microsoft.com/library/ff649396.aspx). |
 | ClusterConfig.x509.DevCluster.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro zabezpečené, tři uzly, jeden počítač (nebo virtuální počítač) vývoj cluster, včetně informací pro každý uzel v clusteru. Cluster zabezpečené pomocí x509 certifikáty. |
 | ClusterConfig.x509.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro cluster zabezpečené, více počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru zabezpečené. Cluster zabezpečené pomocí x509 certifikáty. |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro cluster zabezpečené, více počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru zabezpečené. Cluster zabezpečené pomocí [skupinové účty spravované služby](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro cluster zabezpečené, více počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru zabezpečené. Cluster zabezpečené pomocí [skupinové účty spravované služby](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Ukázky konfigurace clusteru
 Nejnovější verze šablon konfigurace clusteru najdete na GitHub stránce: [ukázky konfigurace clusteru samostatné](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

@@ -34,7 +34,7 @@
 ### [Řešení potíží při sníženém výkonu Azure Traffic Manageru](traffic-manager-troubleshooting-degraded.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure CLI](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)

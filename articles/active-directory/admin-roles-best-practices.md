@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 09ee56627f6c254362d9fbc3c665494418efb1dc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro nasazení hybridními a cloudovými ve službě Azure AD
 
@@ -118,7 +118,7 @@ Vyhodnoťte účty, které jsou přiřazené ani vhodné k roli globálního spr
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnout vícefaktorové ověřování a zaregistrujte všechny ostatní účty vysoce privilegovaných jednoho uživatele nefederovaných správce 
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazené na jeden nebo více rolí Správce služby Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a SharePoint Správce služby online. Pomocí průvodce povolit [Multi-Factor Authentication (MFA) pro účtů správce](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) a ujistěte se, že tito uživatelé zaregistrovali na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Další informace naleznete v části kroky 2 a 3 průvodce [chránit přístup k datům a službám Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlášení pro všechny jednotlivé uživatele, kteří jsou trvale přiřazené na jeden nebo více rolí Správce služby Azure AD: Globální správce, správce privilegovaných rolí, správce Exchange Online a SharePoint Správce služby online. Pomocí průvodce povolit [Multi-Factor Authentication (MFA) pro účtů správce](authentication/howto-mfa-userstates.md) a ujistěte se, že tito uživatelé zaregistrovali na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Další informace naleznete v části kroky 2 a 3 průvodce [chránit přístup k datům a službám Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Fáze 2: Zmírnit útok nejčastěji používané techniky
 
@@ -164,8 +164,8 @@ Azure AD doporučuje vyžadovat vícefaktorové ověřování (MFA) pro všechny
 
 Zapněte:
 
-* [MFA pro účty vysoce ohrožení](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md) například účty pro vedení osoby v organizaci 
-* [MFA pro každý účet správce přidružený jednotlivého uživatele](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) pro jiné připojené aplikace SaaS 
+* [MFA pro účty vysoce ohrožení](authentication/multi-factor-authentication-security-best-practices.md) například účty pro vedení osoby v organizaci 
+* [MFA pro každý účet správce přidružený jednotlivého uživatele](authentication/howto-mfa-userstates.md) pro jiné připojené aplikace SaaS 
 * Vícefaktorové ověřování pro všechny správce pro aplikace Microsoft SaaS, včetně správců v rolích spravované v systému Exchange Online a portálu Office
 
 Pokud používáte Windows Hello pro firmy, požadavek na vícefaktorové ověřování můžete splnit pomocí přihlášení Windows Hello v prostředí. Další informace najdete v tématu [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 

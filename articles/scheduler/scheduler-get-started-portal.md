@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se Schedulerem na webu Azure Portal | Dokumentace Microsoftu"
-description: "Začínáme se Schedulerem na portálu Azure"
+title: Začínáme se Schedulerem na webu Azure Portal | Dokumentace Microsoftu
+description: Začínáme se Schedulerem na portálu Azure
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Začínáme se Schedulerem na portálu Azure
 Ve službě Azure Scheduler je vytváření plánovaných úloh snadné. V tomto kurzu se naučíte, jak vytvořit úlohu. Taky poznáte možnosti Scheduleru pro sledování a správu.
@@ -105,7 +105,7 @@ Můžete kliknout na běh a zobrazí se **Podrobnosti historie** včetně komple
    ![][job-history-details]
 
 ### <a name="users"></a>Uživatelé
-Řízení přístupu na základě role ve službě Azure Scheduler umožňuje přesnou správu přístupu. Pokud se chcete naučit používat kartu Uživatelé, přečtěte si témě [Řízení přístupu Azure na základě rolí](../active-directory/role-based-access-control-configure.md).
+Řízení přístupu na základě role ve službě Azure Scheduler umožňuje přesnou správu přístupu. Pokud se chcete naučit používat kartu Uživatelé, přečtěte si témě [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="see-also"></a>Viz také
  [Co je Scheduler?](scheduler-intro.md)

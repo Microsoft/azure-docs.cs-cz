@@ -110,6 +110,8 @@
                   href: azure-stack-version-profiles-azurecli2.md
                 - name: PŘEJÍT
                   href: azure-stack-version-profiles-go.md
+                - name: Ruby
+                  href: azure-stack-version-profiles-ruby.md
                 - name: Rozhraní API podporuje profily poskytovatele prostředků
                   href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: Použití modulu zásad

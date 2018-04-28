@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2018
+ms.date: 04/27/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 4066e10512695e02f6b4b495803171e69b3897ae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 139ee04d0a77dde826eed74f11b5338ea2870429
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integraci aplikací SaaS s Azure Active Directory
 
@@ -58,6 +58,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-alcumus-info-tutorial.png)| [Informace o Alcumus Exchange](active-directory-saas-alcumus-info-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-allocadia-tutorial.png)| [Allocadia](active-directory-saas-allocadia-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS)](active-directory-saas-amazon-web-service-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-aws-multi-accounts-tutorial.png)| [Amazon Web Services (AWS) připojit více účtů](active-directory-saas-aws-multi-accounts-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-amplitude-tutorial.png)| [Amplitudě](active-directory-saas-amplitude-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-anaplan-tutorial.png)| [Anaplan](active-directory-saas-anaplan-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-andromedascm-tutorial.png)| [Andromeda](active-directory-saas-andromedascm-tutorial.md)|
@@ -77,6 +78,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-atomiclearning-tutorial.png)| [Atomic učení](active-directory-saas-atomiclearning-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-attendancemanagementservices-tutorial.png)| [Návštěvnosti služby správy](active-directory-saas-attendancemanagementservices-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask síti na pracovišti](active-directory-saas-autotaskworkplace-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-awardspring-tutorial.png)| [AwardSpring](active-directory-saas-awardspring-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-bamboo-hr-tutorial.png)| [BambooHR](active-directory-saas-bamboo-hr-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-bambubysproutsocial-tutorial.png)| [Bambu podle sociálního výhonek](active-directory-saas-bambubysproutsocial-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [BC v cloudu](active-directory-saas-bcinthecloud-tutorial.md)|
@@ -133,7 +135,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-confluencemicrosoft-tutorial.png)| [Jednotné přihlašování SAML soutoku společností Microsoft](active-directory-saas-confluencemicrosoft-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-contractworks-tutorial.png)| [ContractWorks](active-directory-saas-contractworks-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-convercent-tutorial.png)| [Convercent](active-directory-saas-convercent-tutorial.md)|
-| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-cornerstone-ondemand-tutorial.png)| [Základním kamenem OnDemand](active-directory-saas-cornerstone-ondemand-tutorial.md)|[Základním kamenem OnDemand - zřizování uživatelů](active-directory-saas-successcenter-provisioning-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-cornerstone-ondemand-tutorial.png)| [Základním kamenem OnDemand](active-directory-saas-cornerstone-ondemand-tutorial.md)|[Základním kamenem OnDemand - zřizování uživatelů](active-directory-saas-cornerstone-ondemand-provisioning-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-coupa-tutorial.png)| [Coupa](active-directory-saas-coupa-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-cs-stars-tutorial.png)| [CS hvězdičkami](active-directory-saas-cs-stars-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-cylanceprotect-tutorial.png)| [CylancePROTECT](active-directory-saas-cylanceprotect-tutorial.md)|
@@ -175,6 +177,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-filecloud-tutorial.png)| [FileCloud](active-directory-saas-filecloud-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-filesanywhere-tutorial.png)| [FilesAnywhere](active-directory-saas-filesanywhere-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-firmplay-tutorial.png)| [FirmPlay - hájící zájmy zaměstnanec pro o přijetí](active-directory-saas-firmplay-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-fiscalnote-tutorial.png)| [FiscalNote](active-directory-saas-fiscalnote-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-five9-tutorial.png)| [Five9 Plus adaptér (CTI, kontaktujte agentů)](active-directory-saas-five9-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-flatter-files-tutorial.png)| [Plošší soubory](active-directory-saas-flatter-files-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-floqast-tutorial.png)| [FloQast](active-directory-saas-floqast-tutorial.md)|
@@ -218,6 +221,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-imagerelay-tutorial.png)| [Předávání bitové kopie](active-directory-saas-imagerelay-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-imageworks-tutorial.png)| [OBRÁZEK FUNGUJE](active-directory-saas-imageworks-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-impacriskmanager-tutorial.png)| [IMPAC riziko Manager](active-directory-saas-impacriskmanager-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-infogix-tutorial.png)| [Řídí Infogix Data3Sixty](active-directory-saas-infogix-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-inforretailinformationmanagement-tutorial.png)| [Některá informací prodejní informace správy](active-directory-saas-inforretailinformationmanagement-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-inkling-tutorial.png)| [Inkling](active-directory-saas-inkling-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-innotas-tutorial.png)| [Innotas](active-directory-saas-innotas-tutorial.md)|
@@ -390,6 +394,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-sciquest-spend-director-tutorial.png)| [SciQuest tráví ředitel](active-directory-saas-sciquest-spend-director-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-screensteps-tutorial.png)| [ScreenSteps](active-directory-saas-screensteps-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-sd-elements-tutorial.png)| [Elementy SD](active-directory-saas-sd-elements-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-secretserver-on-premises-tutorial.png)| [Tajný serveru (místní)](active-directory-saas-secretserver-on-premises-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-securedeliver-tutorial.png)| [ZABEZPEČENÉ DORUČIT](active-directory-saas-securedeliver-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-sedgwickcms-tutorial.png)| [Sedgwick CMS](active-directory-saas-sedgwickcms-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-sensoscientific-tutorial.png)| [Bezdrátové SensoScientific teploty monitorování systému](active-directory-saas-sensoscientific-tutorial.md)|
@@ -479,12 +484,13 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-workrite-tutorial.png)| [Workrite](active-directory-saas-workrite-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-workstars-tutorial.png)| [Workstars](active-directory-saas-workstars-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](active-directory-saas-xaitporter-tutorial.md)|
-| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters OnDemand](active-directory-saas-xmatters-ondemand-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters OnDemand](active-directory-saas-xmatters-ondemand-tutorial.md)|[xMatters OnDemand - zřizování uživatelů](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-yardielearning-tutorial.png)| [E-učení Yardi](active-directory-saas-yardielearning-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-yardione-tutorial.png)| [YardiOne](active-directory-saas-yardione-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](active-directory-saas-yodeck-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-yonyx-tutorial.png)| [Interaktivní příručky Yonyx](active-directory-saas-yonyx-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-youearnedit-tutorial.png)| [YouEarnedIt](active-directory-saas-youearnedit-tutorial.md)|
-| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](active-directory-saas-zendesk-tutorial.md)|
+| ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](active-directory-saas-zendesk-tutorial.md)|[Zendesk - zřizování uživatelů](active-directory-saas-zendesk-provisioning-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-ziflow-tutorial.png)| [Ziflow](active-directory-saas-ziflow-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-zivver-tutorial.png)| [ZIVVER](active-directory-saas-zivver-tutorial.md)|
 | ![Logo](./media/active-directory-saas-tutorial-list/active-directory-saas-zoho-mail-tutorial.png)| [Zoho](active-directory-saas-zoho-mail-tutorial.md)|

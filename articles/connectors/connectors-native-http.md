@@ -1,11 +1,11 @@
 ---
-title: "Komunikovat s žádný koncový bod přes protokol HTTP - Azure Logic Apps | Microsoft Docs"
-description: "Vytvoření aplikace logiky, která může komunikovat s žádný koncový bod přes protokol HTTP"
+title: Komunikovat s žádný koncový bod přes protokol HTTP - Azure Logic Apps | Microsoft Docs
+description: Vytvoření aplikace logiky, která může komunikovat s žádný koncový bod přes protokol HTTP
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-the-http-action"></a>Začínáme s akce HTTP
 
@@ -113,7 +113,7 @@ A * znamená, že je povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Metoda * |metoda |Příkaz protokolu HTTP k použití |
+| Metoda * |method |Příkaz protokolu HTTP k použití |
 | IDENTIFIKÁTOR URI * |identifikátor uri |Identifikátor URI pro požadavek HTTP |
 | Záhlaví |hlavičky |Objekt JSON zahrnují hlaviček protokolu HTTP |
 | Tělo |hlavní část |Požadavek HTTP |
@@ -126,12 +126,12 @@ Níže jsou uvedeny podrobnosti výstup pro odpověď HTTP.
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Záhlaví |Objekt |Hlavičky odpovědi |
-| Tělo |Objekt |Objekt odpovědi |
-| Stavový kód |celá čísla |Stavový kód protokolu HTTP |
+| Záhlaví |objekt |Hlavičky odpovědi |
+| Tělo |objekt |Objekt odpovědi |
+| Stavový kód |celá čísla |Stavový kód HTTP |
 
 ## <a name="authentication"></a>Authentication
-Funkce Logic Apps umožňuje používat různé typy ověřování proti koncových bodů protokolu HTTP. Můžete použít tento ověřování s **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, a  **[Webhooku protokolu HTTP](connectors-native-webhook.md)**  konektory. Následující typy ověřování se dají konfigurovat:
+Funkce Logic Apps umožňuje používat různé typy ověřování proti koncových bodů protokolu HTTP. Můžete použít tento ověřování s **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, a **[Webhooku protokolu HTTP](connectors-native-webhook.md)** konektory. Následující typy ověřování se dají konfigurovat:
 
 * [Základní ověřování](#basic-authentication)
 * [Ověřování certifikátu klienta](#client-certificate-authentication)
@@ -144,13 +144,13 @@ A * znamená, že je povinné pole.
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Type* |type |Typ ověřování (musí být `Basic` pro základní ověřování) |
-| Username* |uživatelské jméno |Uživatelské jméno k ověření |
+| Typ * |type |Typ ověřování (musí být `Basic` pro základní ověřování) |
+| Uživatelské jméno * |uživatelské jméno |Uživatelské jméno k ověření |
 | Heslo * |heslo |Heslo k ověření |
 
 > [!TIP]
 > Pokud chcete použít heslo, které nelze načíst z definice, použití `securestring` parametr a `@parameters()`  
->  [funkce definice pracovního postupu](http://aka.ms/logicappdocs).
+>  [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Příklad:
 
@@ -168,13 +168,13 @@ Následující objekt ověřování je potřeba pro ověřování pomocí certif
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Type* |type |Typ ověřování (musí být `ClientCertificate` pro klientské certifikáty SSL) |
-| PFX* |pfx |Obsah kódováním Base64 soubor Personal Information Exchange (PFX) |
+| Typ * |type |Typ ověřování (musí být `ClientCertificate` pro klientské certifikáty SSL) |
+| PFX* |Soubor PFX |Obsah kódováním Base64 soubor Personal Information Exchange (PFX) |
 | Heslo * |heslo |Heslo pro přístup k souboru PFX |
 
 > [!TIP]
 > Chcete-li použít parametr, který nebude možné číst v definici po uložení aplikaci logiky, můžete použít `securestring` parametr a `@parameters()`  
->  [funkce definice pracovního postupu](http://aka.ms/logicappdocs).
+>  [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
 
 Příklad:
 
@@ -191,14 +191,14 @@ Následující objekt ověřování je potřeba pro ověřování Azure AD OAuth
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Type* |type |Typ ověřování (musí být `ActiveDirectoryOAuth` pro Azure AD OAuth) |
-| Tenant* |tenant |Identifikátor klienta pro klienta Azure AD |
-| Audience* |Cílová skupina |Prostředek se požaduje autorizaci používat. Příklad: `https://management.core.windows.net/` |
+| Typ * |type |Typ ověřování (musí být `ActiveDirectoryOAuth` pro Azure AD OAuth) |
+| Klienta * |tenant |Identifikátor klienta pro klienta Azure AD |
+| Cílová skupina * |Cílová skupina |Prostředek se požaduje autorizaci používat. Příklad: `https://management.core.windows.net/` |
 | Klient ID * |clientId |Identifikátor klienta pro aplikaci Azure AD |
 | Tajný klíč * |Tajný kód |Tajný klíč klienta, který požaduje tokenu |
 
 > [!TIP]
-> Můžete použít `securestring` parametr a `@parameters()` [funkce definice pracovního postupu](http://aka.ms/logicappdocs) použít parametr, který nebude možné číst v definici po uložení.
+> Můžete použít `securestring` parametr a `@parameters()` [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow) použít parametr, který nebude možné číst v definici po uložení.
 > 
 > 
 

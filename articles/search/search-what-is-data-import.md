@@ -1,25 +1,18 @@
 ---
-title: "Import dat ve službě Azure Search | Dokumentace Microsoftu"
-description: "Naučte se nahrát data do indexu ve službě Azure Search."
+title: Import dat ve službě Azure Search | Dokumentace Microsoftu
+description: Naučte se nahrát data do indexu ve službě Azure Search.
+author: HeidiSteen
+manager: cgronlun
 services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: aa8d47c1-4ae6-4209-a8ce-48d5a9474707
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/05/2018
-ms.author: ashmaka
-ms.openlocfilehash: 8394475572502df9d57256dc5123fcdfa72765a6
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
-ms.translationtype: HT
+ms.author: heidist
+ms.openlocfilehash: e54b89d31042d43a14379dea6daffd3e7763a64a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-in-azure-search"></a>Indexování ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -72,7 +65,7 @@ Rychlý způsob, jak provést předběžnou kontrolu při odeslání dokumentu, 
 > [!TIP]
 > Jako výchozí bod můžete využít celou řadu [ukázek kódu pro Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) zahrnujících vložené nebo snadno dostupné datové sady. Na portálu také najdete ukázkový indexer a zdroj dat, obsahující datovou sadu malé realitní kanceláře (s názvem realestate-us-sample). Když spustíte předkonfigurovaný indexer na ukázkový zdroj dat, vytvoří se index a načtou se do něj dokumenty, na které se můžete dotazovat pomocí Průzkumníka služby Search nebo pomocí vlastního kódu.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Průvodce portálem: vytvoření, načtení a dotazování indexu](search-get-started-portal.md)

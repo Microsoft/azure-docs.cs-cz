@@ -1,11 +1,11 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro rozhraní Graph API | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní Graph API."
+title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní Graph API | Microsoft Docs
+description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní Graph API.
 services: cosmos-db
-keywords: "globální distribuční, grafu, gremlin"
-documentationcenter: 
+keywords: global distribution, graph, gremlin
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 1806bde383f04747f1f0fef46e5cf4d38de1e939
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: 273b5aeafbf67016259da787f4dfef078ec0a669
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní Graph API
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Graph API
 
-V tomto článku jsme ukazují, jak pomocí portálu Azure nastavit globální distribuční databázi Cosmos Azure a potom se připojte pomocí rozhraní Graph API.
+V tomto článku si ukážeme, jak pomocí webu Azure Portal nastavit globální distribuci služby Azure Cosmos DB a pak se k ní připojit pomocí rozhraní Graph API.
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí [rozhraní Graph API](graph-introduction.md)
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní [Graph API](graph-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>Připojování k upřednostňovaná oblast pomocí rozhraní Graph API pomocí sady .NET SDK
+## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>Připojení k preferované oblasti pomocí rozhraní Graph API s použitím sady .NET SDK
 
-Rozhraní Graph API je k dispozici jako rozšíření knihovny nad rozhraní SQL API.
+Rozhraní Graph API je k dispozici jako knihovna rozšíření nad rámec rozhraní SQL API.
 
-Aby bylo možné využít výhod [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat seznam seřazený předvoleb oblastí se používá k provádění operací dokumentu. Tento krok můžete provést nastavením zásad pro připojení. Na základě konfigurace účtu Azure Cosmos DB, aktuální místní dostupnosti a seznamu předvoleb zadán, bude vybrána optimální koncový bod SDK k provedení operace zápisu a operace čtení.
+Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. To je možné provést nastavením zásady připojení. V závislosti na konfiguraci účtu služby Azure Cosmos DB, aktuální regionální dostupnosti a zadaného seznamu preferencí zvolí sada SDK optimální koncový bod, který bude provádět operace čtení a zápisu.
 
-Tento seznam předvoleb je zadána při inicializaci připojení pomocí sady SDK. Sady SDK přijmout volitelný parametr "PreferredLocations" tedy uspořádaný seznam oblastí Azure.
+Tento seznam preferencí se zadává při inicializaci připojení pomocí sad SDK. Sady SDK přijímají volitelný parametr PreferredLocations, což je seřazený seznam oblastí Azure.
 
-* **Zapíše**: Sada SDK automaticky odesílá všech zápisů do aktuální oblasti zápisu.
-* **Přečte**: všechny operace čtení jsou odesílány první dostupné oblasti v seznamu PreferredLocations. Pokud se požadavek nezdaří, dojde k selhání klienta dolů v seznamu k další oblasti a tak dále. Sady SDK pouze pokus o čtení z oblastí, zadaný v PreferredLocations. Ano například pokud Cosmos DB účet je k dispozici v tři oblasti, ale klient určuje pouze dva z oblasti bez zápisu pro PreferredLocations, pak žádný čtení se zpracovávají mimo oblast zápisu, i v případě převzetí služeb při selhání.
+* **Zápisy:** Sada SDK automaticky odesílá všechny operace zápisu do aktuální oblasti pro zápis.
+* **Čtení:** Všechny operace čtení se odesílají do první dostupné oblasti v seznamu PreferredLocations. Pokud požadavek selže, klient přejde k další oblasti v seznamu atd. Sady SDK se pokouší číst pouze z oblastí uvedených v seznamu PreferredLocations. Takže pokud je například účet služby Cosmos DB dostupný ve třech oblastech, ale v seznamu PreferredLocations klienta jsou uvedené pouze dvě oblasti jen pro čtení, z oblasti pro zápis se číst nebude, a to ani v případě převzetí služeb při selhání.
 
-Aplikace můžete ověřit aktuální koncový bod zápisu a čtení koncový bod vybrali SDK kontrolou dvě vlastnosti WriteEndpoint a ReadEndpoint dostupné ve verzi sady SDK 1.8 a výše. Pokud není nastavena vlastnost PreferredLocations, jsou z oblasti aktuální zápisu zpracovat všechny požadavky.
+Aplikace může ověřit aktuální koncový bod pro čtení a koncový bod pro zápis, které sada SDK zvolila, kontrolou dvou vlastností WriteEndpoint a ReadEndpoint, které jsou dostupné v sadě SDK verze 1.8 a novější. Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se obsluhují z aktuální oblasti pro zápis.
 
-### <a name="using-the-sdk"></a>Pomocí sady SDK
+### <a name="using-the-sdk"></a>Použití sady SDK
 
-Například v sadě SDK .NET `ConnectionPolicy` parametr pro `DocumentClient` konstruktor má vlastnost s názvem `PreferredLocations`. Tuto vlastnost lze nastavit na seznam názvů oblast. Zobrazení názvů pro [oblasti Azure] [ regions] lze zadat jako součást `PreferredLocations`.
+Například v sadě .NET SDK má parametr `ConnectionPolicy` pro konstruktor `DocumentClient` vlastnost `PreferredLocations`. Tuto vlastnost je možné nastavit na seznam názvů oblastí. V rámci vlastnosti `PreferredLocations` je možné zadat zobrazované názvy [oblastí Azure][regions].
 
 > [!NOTE]
-> Adresy URL pro koncové body by se neměla považovat jako dlohotrvající konstanty. Služba může aktualizovat tyto v libovolném bodě. Sada SDK zpracovává tuto změnu automaticky.
+> Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
 >
 
@@ -79,20 +79,20 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuční pomocí rozhraní API SQL
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní SQL API
 
-Nyní můžete přejít k dalším kurzu se dozvíte, jak vyvíjet místně pomocí emulátoru místního Azure Cosmos DB.
+Teď můžete přejít k dalšímu kurzu, ve kterém se naučíte vyvíjet místně s využitím místního emulátoru služby Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vývoj místně pomocí emulátoru](local-emulator.md)
+> [Místní vývoj s využitím emulátoru](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

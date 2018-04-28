@@ -1,25 +1,19 @@
 ---
-title: "Příklady dotazů Lucene pro službu Azure Search | Microsoft Docs"
-description: "Syntaxe dotazů Lucene přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšovat skóre termín, regulární výraz vyhledávání a hledání pomocí zástupných znaků."
-services: search
-documentationcenter: 
+title: Příklady dotazů Lucene pro službu Azure Search | Microsoft Docs
+description: Syntaxe dotazů Lucene přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšovat skóre termín, regulární výraz vyhledávání a hledání pomocí zástupných znaků.
 author: LiamCa
-manager: pablocas
-editor: 
+manager: jlembicz
 tags: Lucene query analyzer syntax
-ms.assetid: 147f360d-a5ce-4d7b-a909-c8b65bfb748c
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: liamca
-ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: c83b3b0d9c0cc99ba8a76dc4a6b2f83ed6de49dc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Příklady syntaxe dotazů Lucene pro tvorbu dotazů ve službě Azure Search
 Při vytváření dotazů pro službu Azure Search, můžete použít buď výchozí [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) nebo alternativním [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analyzátor dotazů Lucene podporuje složitější konstruktory dotazu, jako jsou dotazy v rámci pole, přibližné vyhledávání, vyhledávání blízkých výrazů, termín zvyšovat skóre a hledání regulárního výrazu.
@@ -117,7 +111,7 @@ Hledání regulárního výrazu najde shoda na základě obsahu mezi lomítka "/
 
 * `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-Adresa URL pro tento příklad nebude správně vykreslovat na stránce. Jako alternativní řešení zkopírujte adresu URL níže a vložte jej do adresu URL prohlížeče:`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+Adresa URL pro tento příklad nebude správně vykreslovat na stránce. Jako alternativní řešení zkopírujte adresu URL níže a vložte jej do adresu URL prohlížeče: `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 ## <a name="wildcard-search-example"></a>Příklad hledání zástupný znak
 Obecně rozpoznaná syntaxe můžete použít pro více (\*) nebo jednoduchého vyhledávání pomocí zástupných znaků znaku (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jeden termín a ne frázi.
@@ -128,12 +122,12 @@ Obecně rozpoznaná syntaxe můžete použít pro více (\*) nebo jednoduchého 
 
 Nelze použít * nebo? symbol jako první znak hledání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkuste zadat analyzátor dotazů Lucene ve vašem kódu. Následující odkazy popisují, jak nastavit vyhledávací dotazy pro rozhraní .NET a REST API. Odkazy pomocí jednoduché syntaxe výchozí, budete muset použít naučili v tomto článku k určení **typ**.
 
 * [Dotazování indexu Azure Search pomocí .NET SDK](search-query-dotnet.md)
 * [Dotazování indexu Azure Search pomocí REST API](search-query-rest-api.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
  [Jak úplné textové vyhledávání funguje ve službě Azure Search](search-lucene-query-architecture.md)

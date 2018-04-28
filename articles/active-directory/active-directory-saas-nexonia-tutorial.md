@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Nexonia | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nexonia."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nexonia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>Kurz: Azure Active Directory integrace s Nexonia
 
@@ -95,7 +95,7 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Nexonia, je tř
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Nexonia.
 
   > [!Note]
-   > Pokud máte problémy v integraci a odkazovat to [odkaz](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery) pro Průvodce odstraňováním potíží s. Pokud ještě nebyly nalezeny řešení, pak vyvolat žádost o podporu z portálu Azure.
+   > Pokud máte problémy v integraci a odkazovat to [odkaz](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) pro Průvodce odstraňováním potíží s. Pokud ještě nebyly nalezeny řešení, pak vyvolat žádost o podporu z portálu Azure.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Nexonia, proveďte následující kroky:**
 
@@ -111,9 +111,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Nexonia domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-nexonia-tutorial/tutorial_nexonia_url.png)
 
-    a. V **identifikátor** textovému poli, typ a hodnotu:`Nexonia`
+    a. V **identifikátor** textovému poli, typ a hodnotu: `Nexonia`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE] 
     > Adresa URL odpovědi hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Nexonia](https://nexonia.zendesk.com/hc/requests/new) k získání hodnoty.

@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Spravovat prostředky pro jednu databázi v databázi SQL Azure
 
@@ -80,7 +80,7 @@ Nastavení nebo změna úrovně služeb databáze Azure SQL, úrovně výkonu a 
 |[Vytvoření databáze (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Vytvoří novou databázi. Musíte být připojení k hlavní databázi a vytvořte novou databázi.|
 | [Příkaz ALTER DATABASE (databáze Azure SQL)](/sql/t-sql/statements/alter-database-azure-sql-database) |Upravuje Azure SQL database. |
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (vrstva služby), cíl služby (cenové úrovně) a název elastického fondu, pokud existuje, pro databázi Azure SQL nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi serveru Azure SQL Database, vrátí informace na všechny databáze. Pro Azure SQL Data Warehouse musí být připojen k hlavní databázi.|
-|[sys.database_usage (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|Uvádí počet, typ a doba trvání databází na serveru Azure SQL Database.|
+|[Sys.database_usage (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|Uvádí počet, typ a doba trvání databází na serveru Azure SQL Database.|
 
 Následující příklad ukazuje maximální velikost pro databázi se změnit pomocí příkazu ALTER DATABASE:
 
@@ -109,6 +109,6 @@ Nastavit nebo změnit databáze Azure SQL úrovně služeb, úrovně výkonu a m
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o úrovních služeb, úrovně výkonu a objemy úložiště, najdete v tématu [úrovních služeb](sql-database-service-tiers.md).
+- Další informace o úrovních služeb, úrovně výkonu a objemy úložiště, najdete v tématu [[na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 - Další informace o elastické fondy najdete v tématu [elastické fondy](sql-database-elastic-pool.md).
 - Další informace o [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md)

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kanálu CI/CD v Azure pomocí Team Services | Microsoft Docs
-description: Naučte se vytvořit kanál Visual Studio Team Services pro průběžnou integraci a doručení, které nasadí webové aplikace do služby IIS na virtuální počítač s Windows
+title: Kurz – vytvoření kanálu CI/CD v Azure pomocí Team Services | Microsoft Docs
+description: V tomto kurzu zjistěte, jak vytvořit kanál Visual Studio Team Services pro průběžnou integraci a doručení, které nasadí webové aplikace do služby IIS na virtuální počítač s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Vytvoření kanálu průběžnou integraci s Visual Studio Team Services a služby IIS
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Kurz: Vytvoření kanálu průběžnou integraci s Visual Studio Team Services a služby IIS
 K automatizaci sestavení, testování a fáze nasazení pro vývoj aplikací, můžete použít průběžnou integraci a nasazení (CI/CD) kanálu. V tomto kurzu vytvoříte kanál CI/CD pomocí Visual Studio Team Services a virtuálního počítače (VM) s Windows v Azure, který spouští IIS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ K automatizaci sestavení, testování a fáze nasazení pro vývoj aplikací, m
 > * Vytvořit verzi definice k publikování nové webové nasazení balíčků do služby IIS
 > * Testování CI/CD kanálu
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 
 ## <a name="create-project-in-team-services"></a>Vytvoření projektu v Team Services
@@ -94,29 +94,30 @@ Kukátko jako sestavení je naplánováno na hostovaného agenta, pak začne ses
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 Pokud chcete zadat platformu pro spouštění vaší webové aplikace ASP.NET, je nutné virtuálního počítače s Windows, který spouští IIS. Team Services používá k interakci s instancí služby IIS jako potvrdíte nějaký kód a aktivaci sestavení agenta.
 
-Vytvoření virtuálního počítače Windows serveru 2016 pomocí [tento ukázkový skript](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json). Jak dlouho trvá několik minut, než skript, který chcete spustit a vytvořit virtuální počítač. Po vytvoření virtuálního počítače, otevřete port 80 pro webový provoz s [přidat AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermresourcegroup) následujícím způsobem:
+Vytvoření virtuálního počítače s Windows Server 2016 s [nové AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* v *východní USA* umístění. Skupina prostředků *myResourceGroupVSTS* a vytvoří se také podpůrné síťovým prostředkům. Povolit webový provoz, TCP port *80* je otevřen k virtuálnímu počítači. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které má být použit jako přihlašovací údaje pro virtuální počítač:
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 Chcete-li připojit k virtuálnímu počítači, získat veřejnou IP adresu s [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) následujícím způsobem:
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 Vytvořte relaci vzdálené plochy k virtuálnímu počítači:

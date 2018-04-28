@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b29fd8a576b4360b8465cc59db606fb1a8f2a02d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 33e9b68973aa399123fa9e62a2d0eea77c55add0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 
@@ -97,7 +97,7 @@ Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před j
 12. Kliknutím na tuto úlohu chcete-li otevřít podokno úloha, která jste si zobrazili při spuštění sady runbook. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Krok 5 – přidání ověřování ke správě prostředků Azure
-Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. Chcete ho spravovat prostředky Azure. Nebudete moci v případě, že pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v to udělat [požadavky](#prerequisites). Můžete to udělat pomocí **Add-AzureRMAccount** rutiny.
+Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. Chcete ho spravovat prostředky Azure. Nebudete moci v případě, že pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v to udělat [požadavky](#prerequisites). Můžete to udělat pomocí **Connect-AzureRmAccount** rutiny.
 
 1. Kliknutím na **Upravit** v podokně MyFirstRunbook-Workflow otevřete textový editor.
 2. Není nutné **Write-Output** řádek už, proto pokračujte a odstraňte ji.
@@ -106,7 +106,7 @@ Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. 
 
    ```powershell-interactive
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
 5. Klikněte na tlačítko **testovací podokno** tak, aby mohli runbook otestovat.
@@ -115,13 +115,13 @@ Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Krok 6 – přidání kódu pro spuštění virtuálního počítače
 Teď, když runbook umí ověřit vašeho předplatného Azure, můžete spravovat prostředky. Můžete přidat příkaz ke spuštění virtuálního počítače. Můžete vybrat jakýkoli virtuální počítač ve vašem předplatném Azure a teď jste hardcoding, název sady runbook.
 
-1. Po *Add-AzureRmAccount* zadejte *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* a nezapomeňte zadat název a název skupiny prostředků virtuálního počítače, který chcete spustit.  
+1. Po *Connect-AzureRmAccount*, typ *Start-AzureRmVM-Name 'VMName' - ResourceGroupName 'NameofResourceGroup'* název a název skupiny prostředků virtuálního počítače spustit.  
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
    {
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    }
    ```
@@ -141,7 +141,7 @@ vaše sada runbook aktuálně spouští virtuální počítač tento pevně zak�
      [string]$ResourceGroupName
     )  
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
    }
    ```

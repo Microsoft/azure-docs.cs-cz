@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
 ms.openlocfilehash: 3ad5a5e0e5ea2cccfc70c3fac946a18cb1942a8b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Úvod do Azure Cosmos DB: Graph API
 
@@ -85,7 +85,7 @@ Azure Cosmos DB nabízí následující možnosti odlišné ve srovnání s jin�
 
  Ukládat heterogenní vrcholy a okrajů a dotazování pomocí známé syntaxe Gremlin těchto dokumentů. Azure Cosmos DB využívá vysoce souběžnou uvolnění zámku, strukturovaná protokolu technologii indexování automaticky indexuje všechny obsah. Tato funkce umožňuje bohaté dotazy v reálném čase a traversals bez potřeba specifikovat parametry schématu, sekundární indexy nebo zobrazení. Další informace v [dotazovat grafy pomocí Gremlin](gremlin-support.md).
 
-* Plně spravovaná
+* S plnou správou
 
  Azure Cosmos DB eliminuje potřeba spravovat prostředky databáze a počítačů. Jako plně spravovaná služba Microsoft Azure není nutné spravovat virtuální počítače, nasadit a konfigurovat software, spravovat škálování nebo řešit komplexní datové vrstvě upgrady. Každý grafu je automaticky zálohovat a chránit proti místní selhání. Můžete snadno přidat účet Azure Cosmos DB a zřídit kapacitu podle potřeby tak, aby se můžete soustředit na svou aplikaci, ne provoz a správu databáze.
 

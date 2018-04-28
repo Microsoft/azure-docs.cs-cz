@@ -1,6 +1,6 @@
 ---
-title: "Správa prostředí Statistika řady čas Azure pomocí šablon Azure Resource Manager | Microsoft Docs"
-description: "Tento článek popisuje, jak ke správě prostředí Azure časové řady Statistika programově pomocí Azure Resource Manager."
+title: Správa prostředí Statistika řady čas Azure pomocí šablon Azure Resource Manager | Microsoft Docs
+description: Tento článek popisuje, jak ke správě prostředí Azure časové řady Statistika programově pomocí Azure Resource Manager.
 services: time-series-insights
 ms.service: time-series-insights
 author: sandshadow
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 12/08/2017
-ms.openlocfilehash: b09d4a1aea56a4e306f80a1b43d519d313fd73ab
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytvoření statistiky časové řady prostředků pomocí šablony Azure Resource Manager
 
@@ -153,7 +153,7 @@ Další informace najdete v tématu [parametry](../azure-resource-manager/resour
 Z řádku prostředí PowerShell spusťte následující příkaz:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zobrazí se výzva k přihlášení k účtu Azure. Po přihlášení, spusťte následující příkaz k zobrazení dostupných předplatných:
@@ -170,7 +170,7 @@ Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>Nastavit skupinu prostředků
 
-Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzureRmResourceGroup** příkaz. Zadejte název skupiny prostředků a umístění, do kterého chcete použít. Například:
+Pokud nemáte existující prostředek skupiny, vytvořte novou skupinu prostředků s **New-AzureRmResourceGroup** příkaz. Zadejte název skupiny prostředků a umístění, do kterého chcete použít. Příklad:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
@@ -266,9 +266,10 @@ Outputs                 :
 
 Také obsahuje šablony rychlý start domovské stránky na webu GitHub **nasadit do Azure** tlačítko. Na něj kliknete, otevře se stránka vlastní nasazení na portálu Azure. Z této stránky zadejte nebo vyberte hodnoty pro každý z parametrů z [povinné parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) nebo [volitelné parametry](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) tabulky. Po vyplnění nastavení kliknutím **nákupu** tlačítko zahájí nasazení šablony.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Informace o správě prostřednictvím kódu programu časové řady Přehled prostředků pomocí rozhraní REST API najdete v tématu [Správa Insights řady času](https://docs.microsoft.com/rest/api/time-series-insights-management/).

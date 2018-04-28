@@ -1,6 +1,6 @@
 ---
-title: "Spolehlivé kolekce prostředků infrastruktury služby transakce a uzamčení režimy v Azure | Microsoft Docs"
-description: "Azure Service Fabric spolehlivé stavu Manager a spolehlivé kolekce transakce a uzamyká."
+title: Spolehlivé kolekce prostředků infrastruktury služby transakce a uzamčení režimy v Azure | Microsoft Docs
+description: Azure Service Fabric spolehlivé stavu Manager a spolehlivé kolekce transakce a uzamyká.
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9d431d94a6df9636a48e1b2aaa59aaa576e2dc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a uzamčení režimy v Azure Service Fabric spolehlivé kolekce
 
 ## <a name="transaction"></a>Transakce
 Transakce je posloupnost operací provést jako jednu logickou jednotku práce.
-Transakce musí mít květy ACID následující vlastnosti. (viz: https://technet.microsoft.com/en-us/library/ms190612)
+Transakce musí mít květy ACID následující vlastnosti. (viz: https://technet.microsoft.com/library/ms190612)
 * **Nedělitelnost**: transakce musí být atomické jednotky práce. Jinými slovy se provádí jeho změny dat, nebo žádná z nich probíhá.
 * **Konzistence**: Po dokončení transakce musí zůstat všechna data v konzistentním stavu. Všechny interních datových strukturách musí být správné na konci transakce.
 * **Izolace**: úpravy provedené souběžných transakcí musí být izolované od změny provedené při dalších souběžných transakcí. Úroveň izolace, používat pro operace v rámci ITransaction je určen podle IReliableState provádění této operace.
@@ -34,13 +34,13 @@ Transakce musí mít květy ACID následující vlastnosti. (viz: https://techne
 Úroveň izolace definuje úroveň, do které musí být transakce izolované od změny provedené při dalších transakcí.
 Existují dvě úrovně izolace, které jsou podporovány v spolehlivé kolekce:
 
-* **Opakovatelných čtení**: Určuje, že příkazy nelze číst data, která byla upravena, ale ještě nebyly potvrzeny podle dalších transakcí a že žádné další transakce můžete upravit data, která byla přečtena aktuální transakce, dokud nebude dokončeno aktuální transakci. Další podrobnosti najdete v tématu [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+* **Opakovatelných čtení**: Určuje, že příkazy nelze číst data, která byla upravena, ale ještě nebyly potvrzeny podle dalších transakcí a že žádné další transakce můžete upravit data, která byla přečtena aktuální transakce až do aktuální transakce dokončení. Další podrobnosti najdete v tématu [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 * **Snímek**: Určuje, že data načtená žádné příkazem v transakci je stavu transakční konzistence verzi data, která byla na začátku transakce.
   Transakce poznáte pouze změny dat, které nebyly potvrzeny před zahájením transakce.
   Změny dat provedené dalších transakcí po začátku aktuální transakce nejsou viditelné pro příkazy v aktuální transakci.
   Výsledný efekt působí, jako kdyby příkazy v transakci získat snímek potvrdit dat tak, jak byly na začátku transakce.
   Snímky jsou konzistentní v rámci spolehlivé kolekce.
-  Další podrobnosti najdete v tématu [https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx).
+  Další podrobnosti najdete v tématu [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
 
 Spolehlivé kolekce automaticky zvolte úroveň izolace použitou pro danou operaci čtení v závislosti na operaci a role repliky v době vytvoření transakce.
 Následuje tabulka, která znázorňuje úrovni výchozí nastavení izolace pro operace spolehlivé slovník a fronty.
@@ -87,7 +87,7 @@ Jedna nebo obě operací v tomto případě bude časový limit.
 
 Tento scénář vzájemného zablokování je skvělým příkladem jak aktualizační zámek může zabránit zablokování.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Spolehlivé služby oznámení](service-fabric-reliable-services-notifications.md)
 * [Spolehlivé služby zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)

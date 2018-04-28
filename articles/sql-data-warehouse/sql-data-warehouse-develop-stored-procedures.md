@@ -2,19 +2,19 @@
 title: Použití uložených procedur v Azure SQL Data Warehouse | Microsoft Docs
 description: Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-author: ronortloff
+author: ckarst
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
-ms.author: rortloff
+ms.date: 04/17/2018
+ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 74e943548ff97a04231e2affb645daa1e4b826a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5659e8f29d87c48c447a5cb81c836b0be9dabd45
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Použití uložených procedur v SQL Data Warehouse
 Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení.

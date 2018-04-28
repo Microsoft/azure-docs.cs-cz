@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Postup rozšíření výstrahy (kopie) od OMS do Azure
 Od **14 může 2018**, všechny zákazníky používající výstrahy, které jsou nakonfigurované v [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), bude rozšířeno do Azure. Výstrahy, které jsou rozšířené Azure chovají stejným způsobem jako v OMS. Možnosti monitorování zůstanou beze změn. Rozšíření výstrahy vytvořené v OMS do Azure poskytuje řadu výhod. Další informace o výhodách a proces prodloužení výstrahy od OMS do Azure najdete v tématu [rozšířit výstrahy z OMS Azure](monitoring-alerts-extend.md).
@@ -221,7 +221,7 @@ A nakonec, pokud jsou všechny výstrahy v pracovním prostoru zadaný již napl
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží 
-Během procesu rozšíří výstrahy od OMS do Azure, může být občasné problémy, které brání vytvoření nezbytných systému [skupiny akcí](monitoring-action-groups.md). V takovém případě se zobrazí na portálu OMS prostřednictvím banner v části výstrah a volání GET provádí API chybovou zprávu.
+Během procesu rozšíří výstrahy od OMS do Azure, může být občasné problém, který zabrání vytvoření nezbytných systému [skupiny akcí](monitoring-action-groups.md). V takovém případě se zobrazí na portálu OMS prostřednictvím banner v části výstrah a volání GET provádí API chybovou zprávu.
 
 Postup nápravy pro jednotlivé chyby v následujícím seznamu jsou:
 1. **Chyba: Předplatné není zaregistrované používání oboru názvů 'microsoft.insights'**: ![stránky portálu nastavení výstrah OMS s registrace chybová zpráva](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
@@ -236,6 +236,14 @@ Postup nápravy pro jednotlivé chyby v následujícím seznamu jsou:
     a. Pokud obor uzamknout je povoleno, omezení žádné nové změny v předplatné nebo skupinu prostředků obsahující pracovní prostor analýzy protokolů (OMS); v systému se nepodařilo rozšířit výstrahy (kopie) do Azure a vytvoření skupin potřebné akce.
     
     b. Chcete-li vyřešit, odstraňte *jen pro čtení* zámku na vaše předplatné nebo prostředek skupiny obsahující pracovním prostoru; pomocí portálu Azure, Powershell, rozhraní příkazového řádku Azure nebo rozhraní API. Chcete-li další informace najdete podívejte se na článek [využití prostředků zámku](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Po vyřešení podle pokynů v článku kroky OMS rozšíří upozornění do Azure v rámci naplánované spuštění následujícího dne; bez nutnosti jakéhokoli akce nebo spuštění.
+
+3. **Chyba: Zásady nachází na úrovni předplatného nebo prostředků skupiny**: ![stránky portálu nastavení výstrah OMS s zásad chybová zpráva](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a. Když [zásad Azure](../azure-policy/azure-policy-introduction.md) se použije, omezení nové prostředky v předplatné nebo skupinu prostředků obsahující pracovní prostor analýzy protokolů (OMS); systému se nepodařilo rozšířit výstrahy (kopie) do Azure a vytvoření skupin potřebné akce.
+    
+    b. Vyřešíte upravit zásady způsobuje *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* chybu, která brání vytváření nových prostředků na vaše předplatné nebo prostředek skupiny obsahující pracovním prostoru. Pomocí portálu Azure, Powershell, rozhraní příkazového řádku Azure nebo rozhraní API; můžete auditovat akce k vyhledání příslušné zásady způsobující selhání. Chcete-li další informace najdete podívejte se na článek [prohlížení protokolů aktivity akce](../azure-resource-manager/resource-group-audit.md). 
     
     c. Po vyřešení podle pokynů v článku kroky OMS rozšíří upozornění do Azure v rámci naplánované spuštění následujícího dne; bez nutnosti jakéhokoli akce nebo spuštění.
 

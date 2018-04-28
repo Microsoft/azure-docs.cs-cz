@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 32f991f0b0017e673828b1ceb832511e118efa92
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 173d151c2b86db621ee452e68b06baa709f86cdc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Učení klíčové koncepty pracovního postupu prostředí Windows PowerShell pro automatizaci sady runbook 
 Runbooky ve službě Azure Automation se implementují jako pracovní postupy prostředí Windows PowerShell.  Pracovní postup prostředí Windows PowerShell je podobná skript prostředí Windows PowerShell, ale existují některé významné rozdíly, které mohou být pro nového uživatele matoucí.  Když tento článek je určený k usnadnění psaní sady runbook pomocí prostředí PowerShell. pracovní postup, doporučujeme, abyste že zápisu sady runbook pomocí prostředí PowerShell, pokud potřebujete kontrolní body.  Existuje několik rozdílů v syntaxi při autorizaci sad runbook PowerShell Workflow a tyto rozdíly vyžaduje trochu další práci psaní efektivní pracovních postupů.  
@@ -228,7 +228,7 @@ Následující stejný kód ukazuje, jak to postarají ve vašich runboocích pr
     workflow CreateTestVms
     {
        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-       $null = Add-AzureRmAccount -Credential $Cred
+       $null = Connect-AzureRmAccount -Credential $Cred
 
        $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
 
@@ -243,7 +243,7 @@ Následující stejný kód ukazuje, jak to postarají ve vašich runboocích pr
           $Cred = $null
           Checkpoint-Workflow
           $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-          $null = Add-AzureRmAccount -Credential $Cred
+          $null = Connect-AzureRmAccount -Credential $Cred
          }
      }
 

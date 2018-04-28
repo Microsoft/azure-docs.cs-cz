@@ -2,18 +2,19 @@
 title: Analyzovat vaše úlohy – Azure SQL Data Warehouse | Microsoft Docs
 description: Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: sqlmojo
+author: kevinvngo
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/11/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 609a0d72aa646054273e1a8ea8e02e3c3ae95dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyzovat vaše úlohy v Azure SQL Data Warehouse
 Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
@@ -229,16 +230,6 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment].
+Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
-<!--Image references-->
 
-<!--Article references-->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[nové sestavení indexů ke zlepšení kvality segment]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-
-<!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
-
-<!--Other Web references-->

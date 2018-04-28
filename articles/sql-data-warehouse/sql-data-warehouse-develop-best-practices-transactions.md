@@ -2,19 +2,19 @@
 title: Optimalizace transakcí pro Azure SQL Data Warehouse | Microsoft Docs
 description: Informace o optimalizaci výkonu transakcí kódu v Azure SQL Data Warehouse a současně minimalizujete její rizik dlouho odvolání.
 services: sql-data-warehouse
-author: ronortloff
+author: ckarst
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
-ms.author: rortloff
+ms.date: 04/19/2018
+ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 55fc317dc9e7a1401aef8c5431ba04d86822d333
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59467c0cd93141cef56e1c9d2f36b0870a589712
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakce v Azure SQL Data Warehouse
 Informace o optimalizaci výkonu transakcí kódu v Azure SQL Data Warehouse a současně minimalizujete její rizik dlouho odvolání.

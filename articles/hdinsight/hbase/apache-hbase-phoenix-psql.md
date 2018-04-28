@@ -1,27 +1,25 @@
 ---
-title: "Hromadné načítání do Apache Phoenix pomocí psql - Azure HDInsight | Microsoft Docs"
-description: "Použijte nástroj psql načíst hromadné načítání dat do Phoenix tabulek."
+title: Hromadné načítání do Apache Phoenix pomocí psql - Azure HDInsight | Microsoft Docs
+description: Použijte nástroj psql načíst hromadné načítání dat do Phoenix tabulek.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 0a623113ee9f3fe2c0f5f616ecd79b8311a8ffc1
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 2c192707c6cf8f84d2ca1c0307770cadd5cdb8bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="bulk-load-data-into-phoenix-using-psql"></a>Hromadné načítání dat do Phoenix pomocí psql
+# <a name="bulk-load-data-into-phoenix-using-psql"></a>Hromadné načtení dat do Phoenixu s využitím psql
 
 [Apache Phoenix](http://phoenix.apache.org/) je open source, massively parallel relační databáze založená na [HBase](../hbase/apache-hbase-overview.md). Phoenix poskytuje dotazy podobné jazyku SQL nad HBase. Phoenix používá JDBC ovladače umožníte uživatelům k vytvoření, odstranění a alter SQL tabulky, indexy, zobrazení a pořadí a upsert řádky jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL, místo použití prostředí MapReduce zkompilovat dotazy, k vytvoření aplikací s nízkou latencí nad HBase. Phoenix přidá společné procesorů k podpoře spouštění klienta zadaný kód v adresním prostoru serveru, provádění kódu umístěny společně s daty. Tím se minimalizují přenos dat klienta nebo serveru.  Pro práci s daty pomocí Phoenix v HDInsight, nejprve vytvořit tabulky a pak do nich můžete načíst data.
 

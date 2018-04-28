@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/15/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
@@ -25,9 +25,12 @@ V tomto kurzu se dozvíte, jak připravit místní infrastrukturu VMware v pří
 > * Kontrola požadavků na servery VMware
 > * Kontrola požadavků na virtuální počítače VMware
 
-V této sérii kurzů ukazujeme, jak pomocí služby Azure Site Recovery zálohovat jeden virtuální počítač. Pokud plánujete ochranu více virtuálních počítačů VMware, měli byste si pro replikaci VMware stáhnout [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner). Tento nástroj shromažďuje informace o kompatibilitě virtuálních počítačů, discích jednotlivých virtuálních počítačů a četnosti změn dat na jednotlivých discích. Tento nástroj pokrývá i požadavky na šířku pásma sítě a infrastrukturu Azure potřebnou k úspěšné replikaci a testovacímu převzetí služeb při selhání. [Další informace](site-recovery-deployment-planner.md) o používání tohoto nástroje.
+V této sérii kurzů ukazujeme, jak pomocí služby Azure Site Recovery replikovat jeden virtuální počítač. 
 
 Tento kurz je druhou částí série. Ujistěte se, že jste [nastavili komponenty Azure](tutorial-prepare-azure.md), jak je popsáno v předchozím kurzu.
+
+Pokud replikujete více virtuálních počítačů, stáhněte si [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner) pro replikaci VMware. [Další informace](site-recovery-deployment-planner.md).
+
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Příprava účtu pro automatické zjišťování
 

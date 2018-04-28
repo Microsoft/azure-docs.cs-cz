@@ -1,6 +1,6 @@
 ---
-title: "Prostředí PowerShell pro koncové body služby virtuální sítě a pravidla v SQL | Microsoft Docs"
-description: "Poskytuje skriptů prostředí PowerShell k vytváření a správě koncových bodů virtuální služby pro vaši databázi SQL Azure."
+title: Prostředí PowerShell pro koncové body služby virtuální sítě a pravidla v SQL | Microsoft Docs
+description: Poskytuje skriptů prostředí PowerShell k vytváření a správě koncových bodů virtuální služby pro vaši databázi SQL Azure.
 services: sql-database
 author: MightyPen
 manager: jhubbard
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 489d1044de49c63ac7e1423708cc0638355ab1b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5fcf33d3d54b118c1c25f1467a496da3644a2345
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Pomocí prostředí PowerShell vytvořit koncový bod služby virtuální a pravidla pro databázi SQL Azure
 
@@ -50,6 +50,9 @@ V následujícím seznamu jsou pořadí jiné *hlavní* rutin, které je třeba 
 - Můžete již přihlášení do Azure, například prostřednictvím [portál Azure][http-azure-portal-link-ref-477t].
 - Již můžete spustit skripty prostředí PowerShell.
 
+> [!NOTE]
+> Ujistěte se, že jsou koncové body služby povolena pro virtuální síť nebo podsíť, kterou chcete přidat na Server, v opačném případě, že vytvoření pravidla brány Firewall virtuální sítě se nezdaří.
+
 #### <a name="one-script-divided-into-four-chunks"></a>Jeden skript rozdělená do čtyř bloků
 
 Naše ukázkový skript prostředí PowerShell je rozdělené do posloupnost menší skripty. Rozdělení usnadňuje učení a poskytuje flexibilitu. V jejich uvedené pořadí musí být spuštěny skripty. Pokud nemáte čas teď spustit skripty, zobrazí se výstup naše skutečné testovací po skriptu 4.
@@ -79,7 +82,7 @@ Tato první skript prostředí PowerShell přiřadí hodnoty proměnné. Násled
 ###########################################################
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 ###########################################################
 ##  Assignments to variables used by the later scripts.  ##
@@ -519,7 +522,7 @@ Toto prostředí PowerShell skriptu neaktualizuje nic, pokud odpověď ano, poku
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
 
 $yesno = Read-Host 'Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]';
-if ('yes' -eq $yesno) { Login-AzureRmAccount; }
+if ('yes' -eq $yesno) { Connect-AzureRmAccount; }
 
 # Assignments to variables used by the later scripts.
 # You can EDIT these values, if necessary.

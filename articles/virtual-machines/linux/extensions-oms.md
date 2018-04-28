@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: danis
-ms.openlocfilehash: 2927e2e64c78ac01a5ed9aa49a88e599ea36deb2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f04a9b812a86f999d5c0ec52be85f77158094c27
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>OMS rozšíření virtuálního počítače pro Linux
 
@@ -66,7 +66,7 @@ Azure Security Center automaticky zřídí agenta OMS a připojí ho do pracovn�
 
 Rozšíření OMS agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
 
-## <a name="extension-schema"></a>Rozšíření schématu
+## <a name="extension-schema"></a>Schéma rozšíření
 
 Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta OMS. Rozšíření vyžaduje ID a klíč pracovního prostoru z cílového pracovního prostoru analýzy protokolů; Tyto hodnoty mohou být [nalezen v pracovním prostoru analýzy protokolů](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) na portálu Azure. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač. Všimněte si, že **workspaceId** a **workspaceKey** malých a velkých písmen.
 
@@ -207,4 +207,4 @@ Další informace o odstraňování potíží naleznete na [Průvodce odstraňov
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/support/faq/).

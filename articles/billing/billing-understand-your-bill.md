@@ -1,11 +1,11 @@
 ---
-title: "Porozumět vaší faktuře pro Azure"
-description: "Zjistěte, jak číst a porozumět využívání a fakturovaná částka u předplatného Azure"
-services: 
-documentationcenter: 
+title: Porozumět vaší faktuře pro Azure
+description: Zjistěte, jak číst a porozumět využívání a fakturovaná částka u předplatného Azure
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ec4fd970c6b552d87e006f9e0ab55d3495c9b0c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
 Chcete-li vysvětlení faktury Azure, porovnejte faktury s podrobné soubor denní využití a správu sestav náklady na portálu Azure.
@@ -102,7 +102,7 @@ Pokud jste [platíte podle fakturace](billing-how-to-pay-by-invoice.md), odeslá
 [Vytvořit lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) požádat o stav platby. 
 
 ## <a name="tips-for-cost-management"></a>Tipy pro náklady na správu
-- Odhad nákladů pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) a [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator)a získat [podrobné informace o cenách pro každou službu](https://azure.microsoft.com/en-us/pricing/).
+- Odhad nákladů pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) a [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator)a získat [podrobné informace o cenách pro každou službu](https://azure.microsoft.com/pricing/).
 - [Nastavit výstrahy fakturace](billing-set-up-alerts.md).
 - [Zkontrolujte využití a náklady na portálu Azure pravidelně](billing-getting-started.md#costs).
 

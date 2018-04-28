@@ -3,16 +3,16 @@ title: Upgrade kontejneru registru Classic Azure
 description: Využít výhod rozšířená sada funkcí Basic, Standard a Premium spravuje upgradu vaší nespravované kontejneru registru Classic registrech kontejneru.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 084dfc8f87aaea4b5bbad7cb5fdb9d445d566206
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade kontejneru registru Classic
 
@@ -27,7 +27,7 @@ Spravované registrech poskytují:
 * Integrace služby Azure Active Directory [jednotlivých přihlášení](container-registry-authentication.md#individual-login-with-azure-ad)
 * Podpora odstranění bitové kopie a značka
 * [Geografická replikace](container-registry-geo-replication.md)
-* [Webhooks](container-registry-webhook.md)
+* [Webhooky](container-registry-webhook.md)
 
 Většina všech Classic registru závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) pomocí transparentního zpracování úložiště obrázků za vás. Účet samostatného úložiště není vytvořená ve svého vlastního předplatného.
 

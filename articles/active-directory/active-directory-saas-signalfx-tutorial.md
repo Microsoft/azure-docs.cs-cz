@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SignalFx | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SignalFx."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SignalFx.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 50a86a01c22450ae2d92e6743fb6de7e652d4017
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Azure Active Directory integrace s SignalFx
 
@@ -122,7 +122,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
     | User.FirstName          | user.givenname |
-    | User.email          | user.mail |
+    | User.email          | User.Mail |
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
@@ -140,49 +140,33 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     e. Klikněte na tlačítko **OK**.
  
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+6. Na **SAML podpisový certifikát** část, proveďte následující kroky: 
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
+
+    a. Klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+
+    b. Klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-signalfx-tutorial/tutorial_general_400.png)
 
-8. Ke generování **adresu url metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **SignalFx** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. Na **SignalFx konfigurace** klikněte na tlačítko **konfigurace SignalFx** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID** z **Stručná referenční příručka části.**
+8. Na **SignalFx konfigurace** klikněte na tlačítko **konfigurace SignalFx** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID** z **Stručná referenční příručka části.**
 
     ![Konfigurace SignalFx](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-10. Přihlašování k webu společnosti SignalFx jako správce.
+9. Přihlašování k webu společnosti SignalFx jako správce.
 
-11. V SignalFx na nahoře klikněte na **integrace** chcete otevřít stránku integrace.
+10. V SignalFx na nahoře klikněte na **integrace** chcete otevřít stránku integrace.
 
     ![Integrace SignalFx](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_intg.png)
 
-12. Klikněte na **Azure Active Directory** dlaždici v části **přihlášení služby** části.
+11. Klikněte na **Azure Active Directory** dlaždici v části **přihlášení služby** části.
  
     ![SignalFx saml](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_saml.png)
 
-13. Klikněte na **nové integrace** a v části **nainstalovat** kartě proveďte následující kroky:
+12. Klikněte na **nové integrace** a v části **nainstalovat** kartě proveďte následující kroky:
  
     ![SignalFx samlintgpage](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -194,12 +178,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. V **URL vystavitele** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
 
-    e. V **adresu URL metadat** textovému poli, Vložit **adresu url metadat** vzor, který se mají vygenerovat z portálu Azure.
+    e. V **adresu URL metadat** textovému poli, Vložit **adresu Url aplikace federační Metadata** který jste zkopírovali z portálu Azure.
 
     f. Klikněte na **Uložit**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

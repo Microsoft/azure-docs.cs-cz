@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Podporované topologie | Microsoft Docs"
-description: "Toto téma podrobnosti podporované a nepodporované topologie pro Azure AD Connect"
+title: 'Azure AD Connect: Podporované topologie | Microsoft Docs'
+description: Toto téma podrobnosti podporované a nepodporované topologie pro Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1034c000-59f2-4fc8-8137-2416fa5e4bfe
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: 8003951fb0c80bda56de4718cbe94526dc118b61
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: MT
+ms.openlocfilehash: f47cf18f70572ad93f5075c2f2c883d80af8220e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), které využívají synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek obsahuje podporované a nepodporované konfigurace.
@@ -35,6 +35,11 @@ Tady je legendu pro obrázky v článku:
 | Azure AD Connect synchronizační server, podrobné |![Azure AD Connect synchronizační server, podrobné](./media/active-directory-aadconnect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/active-directory-aadconnect-topologies/LegendAAD.png) |
 | Nepodporované scénáře |![Nepodporované scénáře](./media/active-directory-aadconnect-topologies/LegendUnsupported.png) |
+
+
+> [!IMPORTANT]
+> Microsoft nepodporuje úpravy nebo operační synchronizace Azure AD Connect mimo konfigurace nebo akce, které jsou popsané dříve. Některé z těchto konfigurací nebo akce, může dojít nekonzistentní nebo v nepodporovaném stavu synchronizace Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
+
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>Jediná doménová struktura, jeden klient Azure AD
 ![Topologie pro jednu doménovou strukturu a jednoho klienta](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)

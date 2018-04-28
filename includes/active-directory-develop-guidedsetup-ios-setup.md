@@ -2,7 +2,7 @@
 
 Tato část obsahuje podrobné pokyny pro vytvoření nového projektu do ukazují, jak integrovat aplikace pro iOS (Swift) s *přihlášení se společností Microsoft* , může se dotázat webovým rozhraním API, které vyžadují token.
 
-> Stáhněte si tento ukázkový projekt XCode místo dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) a pokračujte [krok konfigurace](#create-an-application-express) před provedením konfigurace ukázka kódu.
+> Stáhněte si tento ukázkový projekt XCode místo dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) a pokračujte [krok konfigurace](#register-your-application) před provedením konfigurace ukázka kódu.
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Nainstalujte Carthage ke stažení a sestavení MSAL

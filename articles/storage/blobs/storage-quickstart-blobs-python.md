@@ -1,19 +1,19 @@
 ---
-title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Pythonu | Microsoft Docs
-description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Pythonu | Microsoft Docs
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: a3b081e34886d4075ae3c88e412d732578d1ce26
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 88f148e7ea175e928ee9f35b8728994a738e10da
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
@@ -43,7 +43,7 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
+V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníkovi řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
 
 ```python 
 block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
@@ -182,4 +182,4 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](./storage-python-how-to-use-blob-storage.md)
  
-Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

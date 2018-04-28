@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 27c4a169a906f8e53a5548a38e3f680fd38155b3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 15c580a026495d11ffdeb161d4bf0793850040f5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro webové aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -84,7 +84,7 @@ Zatímco všech tří umístění úložiště poskytují stejnou základní inf
 > Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těchto systémů úložiště. Například Visual Studio 2013 obsahuje Průzkumníka úložiště, který slouží k prozkoumání tabulky nebo objekt blob úložiště a HDInsight můžete přístup k datům uloženým v úložišti objektů blob. Je také možné zapsat aplikaci, která přistupuje k službě Azure Storage pomocí jednoho z [sady Azure SDK](/downloads/#).
 >
 > [!NOTE]
-> Diagnostika se dá taky povolit z prostředí Azure PowerShell pomocí **Set-AzureWebsite** rutiny. Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Diagnostika se dá taky povolit z prostředí Azure PowerShell pomocí **Set-AzureWebsite** rutiny. Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -113,7 +113,7 @@ Chcete-li stáhnout soubory protokolů, spustit novou instanci třídy Azure Pow
 Tento příkaz uloží protokoly pro webovou aplikaci určeného **-název** parametr do souboru s názvem **logs.zip** v aktuálním adresáři.
 
 > [!NOTE]
-> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+> Pokud jste nenainstalovali prostředí Azure PowerShell nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
 >
 >
 
@@ -125,7 +125,7 @@ Chcete-li stáhnout soubory protokolů pomocí rozhraní příkazového řádku 
 Tento příkaz uloží protokoly pro webovou aplikaci s názvem "webappname" do souboru s názvem **diagnostics.zip** v aktuálním adresáři.
 
 > [!NOTE]
-> Pokud jste nenainstalovali rozhraní příkazového řádku Azure (Azure CLI), nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postup pomocí příkazového řádku Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Pokud jste nenainstalovali rozhraní příkazového řádku Azure (Azure CLI), nebo nenakonfigurovali ho na používání vašeho předplatného Azure, najdete v části [postup pomocí příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 

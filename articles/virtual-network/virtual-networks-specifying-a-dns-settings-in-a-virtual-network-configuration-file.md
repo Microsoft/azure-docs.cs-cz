@@ -3,7 +3,7 @@ title: Zadání nastavení DNS v konfiguračním souboru virtuální sítě | Mi
 description: Postup změny nastavení serveru DNS ve virtuální síti pomocí konfiguračního souboru virtuální síť v klasickém modelu nasazení
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: 8e6cfc285b3fb23944dfa0189bb492a9b8fa9a88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ed7f02d3e389db3bc772c4fcb00a7b3877d60173
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Zadání nastavení DNS v konfiguračním souboru virtuální sítě
 Soubor konfigurace sítě má dva elementy, které můžete použít k určení nastavení systému DNS (Domain Name): **DnsServers** a **DnsServerRef**. Můžete přidat seznam serverů DNS zadáním jejich IP adresy a odkazovat na názvy **DnsServers** element. Pak můžete použít **DnsServerRef** elementu, který chcete určit, které položky serveru DNS z elementu DnsServers budou použity pro jiné síťové lokality v rámci virtuální sítě.

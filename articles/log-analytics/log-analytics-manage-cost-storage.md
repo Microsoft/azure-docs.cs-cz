@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 865b0e485480f5ee7d676d3a6c90cb51fd50d19c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Správa nákladů kontrolou datový svazek a uchovávání v analýzy protokolů
 Analýzy protokolů je navržený tak, aby škálování a podpora shromažďování, indexování a ukládání masivní objemy dat za den z jakéhokoli zdroje ve vašem podniku nebo nasazené v Azure.  To může být primární ovladač pro vaši organizaci, je základní ovladač nakonec efektivitu nákladů. Za tímto účelem je jeho důležité si uvědomit, že náklady na pracovním prostoru Analytisc protokolu není právě na základě objemu dat shromažďovaných, je také závislý na plán vybraný a jak dlouho jste se rozhodli uložit data generovaná z připojených zdrojů.  
@@ -38,7 +38,7 @@ Jako poskytuje odhad množství dat, které shromáždí naleznete v dokumentaci
 Pokud jste na "Free" cenovou úroveň, je omezený na 7 dní uchovávání dat. Pro "Za GB (samostatně)" nebo "za-(OMS)" úrovně uzlu za posledních 31 dní je k dispozici data shromážděná a uchování je možné zvýšit až na 2 roky. Pokud vyberete delší dobu uchovávání účtovány poplatky. Plánu úrovně Free má denní limit přijímání 500 MB, a najít konzistentně překročit objemy povolené svazku, můžete změnit pracovní prostor za GB nebo úrovně uzlu za ke shromažďování dat nad rámec tohoto limitu. Můžete změnit typ vašeho plánu kdykoli a další informace o cenách najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
 > [!NOTE]
-> V dubnu 2018 jsme [zavedená](https://azure.microsoft.com/en-us/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro Azure monitorování. Tento model přijme jednoduchého modelu "průběžnými platbami" v celém portfoliu kompletní monitorování služby. Další informace o [nový cenový model](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přesun k tomuto modelu](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vaší způsobů využití a [postupy, který se přidá do nového modelu](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
+> V dubnu 2018 jsme [zavedená](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro Azure monitorování. Tento model přijme jednoduchého modelu "průběžnými platbami" v celém portfoliu kompletní monitorování služby. Další informace o [nový cenový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přesun k tomuto modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vaší způsobů využití a [postupy, který se přidá do nového modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
 
 Bez ohledu na cenovou modelu nebo vrstvy Správa objem dat je fundmental řízení náklady. Kromě zajištění dostatečného možnost volby a konfigurace specifického řešení, v rámci analýzy protokolů jsou dva způsoby, ve kterých můžete objem dat být omezené a lépe řídit náklady jedná se o denní uchování zakončení a data.  
 

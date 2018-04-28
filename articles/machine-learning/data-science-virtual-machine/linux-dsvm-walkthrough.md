@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Vědecké zpracování dat pomocí datové vědy virtuální počítač s Linuxem v Azure
 Tento návod ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely. Virtuální počítač pro vědecké účely Data Linux (DSVM) je bitová kopie virtuálního počítače, která je k dispozici v Azure, který je předem nainstalovaná s kolekcí nástrojů pro běžně používané k analýze dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřízení virtuálního počítače Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače lze snadno začít provádění vědecké zpracování dat v minutách, bez nutnosti instalace a konfigurace každého nástroje jednotlivě. Můžete snadno škálování virtuálních počítačů, v případě potřeby a zastavte ji když není používán. Proto tento prostředek je elastické a nákladově efektivní.
@@ -264,7 +264,7 @@ XGBoost můžete také volat z pythonu nebo příkazového řádku.
 Pro vývoj pomocí Python se nainstalovaly v DSVM distribuce Anaconda Python 2.7 a 3.5.
 
 > [!NOTE]
-> Zahrnuje distribuční Anaconda [Condas](http://conda.pydata.org/docs/index.html), který slouží k vytvoření vlastního prostředí pro jazyk Python, které mají různé verze nebo balíčky nainstalované v nich.
+> Zahrnuje distribuční Anaconda [Conda](http://conda.pydata.org/docs/index.html), který slouží k vytvoření vlastního prostředí pro jazyk Python, které mají různé verze nebo balíčky nainstalované v nich.
 >
 >
 
@@ -316,6 +316,24 @@ Publikování modelu AzureML:
 
 ## <a name="jupyterhub"></a>Jupyterhub
 Anaconda distribuce v DSVM se dodává s poznámkového bloku Jupyter, prostředí napříč platformami sdílet kód Python, R nebo Dita a analýzy. Poznámkového bloku Jupyter přistupuje prostřednictvím JupyterHub. Přihlášení pomocí místních Linux uživatelské jméno a heslo v ***https://\<název DNS virtuálního počítače nebo IP adresu\>: 8000 /***. Všechny konfigurační soubory pro JupyterHub se nacházejí v adresáři **/etc/jupyterhub**.
+
+> [!NOTE]
+> Pomocí Správce balíčků Python (prostřednictvím `pip` příkaz) z poznámkového bloku Jupyter v aktuální jádra, následující příkaz je možné použít buňky kódu, například:
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> K použití instalačního programu Conda (prostřednictvím `conda` příkaz) z poznámkového bloku Jupyter v aktuální jádra, následující příkaz je možné použít buňky kódu, například:
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 Několik ukázkových poznámkových bloků jsou již nainstalovány ve virtuálním počítači:
 

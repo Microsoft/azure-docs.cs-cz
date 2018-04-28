@@ -1,8 +1,8 @@
 ---
 title: Konfigurace zdroje dat v Azure Log Analytics | Microsoft Docs
-description: "Zdroje dat zadat data, analýzy protokolů shromažďuje z agentů a dalších připojené zdroje.  Tento článek popisuje základní informace o tom, jak analýzy protokolů používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje k dispozici různé datové zdroje."
+description: Zdroje dat zadat data, analýzy protokolů shromažďuje z agentů a dalších připojené zdroje.  Tento článek popisuje základní informace o tom, jak analýzy protokolů používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje k dispozici různé datové zdroje.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v analýzy protokolů
 Analýzy protokolů shromažďuje data z vaší připojené zdroje a ukládá je v pracovní prostor analýzy protokolů.  Data, která se shromažďují z každé je definována zdroje dat, který nakonfigurujete.  Data v analýzy protokolů se ukládají jako sada záznamů.  Všechny zdroje dat, vytvoří záznamy určitého typu pomocí jednotlivých typů má svou vlastní sadu vlastností.
@@ -29,16 +29,19 @@ Zdroje dat se liší od [řešení pro správu](log-analytics-add-solutions.md),
 
 
 ## <a name="summary-of-data-sources"></a>Souhrn datových zdrojů
-Zdroje dat, které jsou aktuálně k dispozici v analýzy protokolů jsou uvedeny v následující tabulce.  Každý má odkaz na samostatný článek poskytuje podrobnosti pro tento zdroj dat.
+Následující tabulka uvádí zdroje dat, které jsou aktuálně k dispozici v analýzy protokolů.  Každý má odkaz na samostatný článek poskytuje podrobnosti pro tento zdroj dat.   Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. Vysvětlení sloupců, najdete v části [podrobnosti kolekce dat pro řešení pro správu v Azure](../monitoring/monitoring-solutions-inventory.md).
 
-| Zdroj dat | Typ události | Popis |
-|:--- |:--- |:--- |
-| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) |\<Název protokolu\>_CL |Textové soubory v systému Windows nebo Linux agenty obsahujícího informace o protokolu. |
-| [Protokoly událostí systému Windows](log-analytics-data-sources-windows-events.md) |Událost |Události shromážděné z počítače se systémem Windows událostí přihlášení. |
-| [Čítače výkonu systému Windows](log-analytics-data-sources-performance-counters.md) |Výkonu |Čítače výkonu shromážděných z počítače se systémem Windows. |
-| [Čítače výkonu systému Linux](log-analytics-data-sources-performance-counters.md) |Výkonu |Čítače výkonu shromážděné z počítače se systémem Linux. |
-| [Protokoly IIS](log-analytics-data-sources-iis-logs.md) |W3CIISLog |Internetová informační služba protokoly ve formátu W3C. |
-| [Syslog](log-analytics-data-sources-syslog.md) |Syslog |Události procesu Syslog na počítačích systému Windows nebo Linux. |
+
+| Zdroj dat | Platforma | Agent monitorování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | v případě přijetí |
+| [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | v případě přijetí |
+| [Protokoly IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund. |
+| [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund. |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: na přijetí |
+| [Protokoly událostí systému Windows](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | v případě přijetí |
+
 
 ## <a name="configuring-data-sources"></a>Konfigurace zdroje dat
 Konfigurace zdroje dat z **Data** nabídky v analýzy protokolů **Upřesnit nastavení**.  Jakákoli konfigurace se doručí na všech připojených zdrojů v pracovním prostoru.  Veškeré agenty nelze aktuálně vyloučit z této konfigurace.
@@ -61,7 +64,7 @@ Pokud agenta nemůže připojit k analýze protokolů nebo Operations Manager, b
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
 Všechna data shromažďovaná společností analýzy protokolů je uloženo v pracovním prostoru jako záznamy.  Zaznamenává shromážděné z různých zdrojů dat. bude mít vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro každý zdroj dat a řešení podrobnosti pro každý typ záznamu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [řešení](log-analytics-add-solutions.md) , přidání funkce do analýzy protokolů a také shromažďovat data do pracovního prostoru.
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
 * Konfigurace [výstrahy](log-analytics-alerts.md) jako proaktivně upozornění na kritický data shromážděná ze zdrojů dat a řešení.

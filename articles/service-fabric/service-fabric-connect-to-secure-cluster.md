@@ -1,11 +1,11 @@
 ---
-title: "Zabezpečené připojení ke clusteru Azure Service Fabric | Microsoft Docs"
-description: "Popisuje, jak k ověření přístupu klientů k cluster Service Fabric a postupy pro zabezpečení komunikace mezi klienty a cluster."
+title: Zabezpečené připojení ke clusteru Azure Service Fabric | Microsoft Docs
+description: Popisuje, jak k ověření přístupu klientů k cluster Service Fabric a postupy pro zabezpečení komunikace mezi klienty a cluster.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 0ce01b62fde690934d97fdefb7720e1be5512f4a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -89,25 +89,32 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Připojení ke clusteru zabezpečené pomocí klientského certifikátu
-Spusťte následující příkaz prostředí PowerShell pro připojení k zabezpečení clusteru, který používá klientské certifikáty k autorizaci přístupu správce. Zadejte kryptografický otisk certifikátu clusteru a kryptografický otisk certifikátu klienta, kterému byla udělena oprávnění pro správu clusteru. Podrobnosti o certifikátu musí odpovídat certifikát na uzlech clusteru.
+Spusťte následující příkaz prostředí PowerShell pro připojení k zabezpečení clusteru, který používá klientské certifikáty k autorizaci přístupu správce. 
+
+#### <a name="connect-using-certificate-common-name"></a>Připojení pomocí běžný název certifikátu
+Zadejte běžný název certifikátu clusteru a běžný název certifikátu klienta, kterému byla udělena oprávnění pro správu clusteru. Podrobnosti o certifikátu musí odpovídat certifikát na uzlech clusteru.
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName <certificate common name>  `
+    -FindType FindBySubjectName `
+    -FindValue <certificate common name> `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
-
-*ServerCertThumbprint* je kryptografický otisk certifikátu serveru nainstalované na uzlech clusteru. *FindValue* je kryptografický otisk certifikátu klienta správce.
-Když jsou vyplněna parametry, vypadá příkaz v následujícím příkladu: 
-
+*Možností ServerCommonName* je běžný název certifikátu serveru nainstalované na uzlech clusteru. *FindValue* je běžný název certifikátu Správce klienta. Když jsou vyplněna parametry, vypadá příkaz v následujícím příkladu:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `
-          -StoreLocation CurrentUser -StoreName My
+$ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
+$certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
+
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName $certCN  `
+    -FindType FindBySubjectName `
+    -FindValue $certCN `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Připojení ke clusteru zabezpečené pomocí služby Windows Active Directory

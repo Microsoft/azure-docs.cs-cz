@@ -3,21 +3,20 @@ title: Transformace dat pomocí činnost MapReduce s Hadoop v Azure Data Factory
 description: Zjistěte, jak ke zpracování dat systémem Hadoop MapReduce programy v clusteru Azure HDInsight ze služby Azure data factory.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 7c736f08e35f217be1ab7eef0a06ce418025973a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: ecaa9b612dcf7760987b8b8438808b0a961ef193
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí činnost MapReduce s Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,11 +71,11 @@ V tématu [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-usin
 | description       | Text popisující, co se používá aktivitu pro | Ne       |
 | type              | Pro činnost MapReduce typ aktivity je HDinsightMapReduce | Ano      |
 | linkedServiceName | Referenční dokumentace ke clusteru HDInsight registrován jako propojené služby ve službě Data Factory. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku. | Ano      |
-| className         | Název třídy, které by šlo spustit         | Ano      |
+| Název třídy         | Název třídy, které by šlo spustit         | Ano      |
 | jarLinkedService  | Odkaz na propojenou službu úložiště Azure používají k ukládání souborů Jar. Pokud tato propojená služba nezadáte, použije se propojené služby Azure Storage definované v propojené službě HDInsight. | Ne       |
 | jarFilePath       | Zadejte cestu k souborům Jar uložené ve službě Azure Storage, na které odkazuje jarLinkedService. Název souboru je malá a velká písmena. | Ano      |
 | jarlibs           | Pole cesty k souborům knihovny Jar odkazuje úlohu ve službě Azure Storage definované v jarLinkedService řetězec. Název souboru je malá a velká písmena. | Ne       |
-| getDebugInfo      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve jarLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
+| getdebuginfo –      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve jarLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
 | Argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
 

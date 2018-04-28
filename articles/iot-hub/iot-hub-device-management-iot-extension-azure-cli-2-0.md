@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: ceace7331c7548c5b4e27f8529152fd69d5469cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1bf2c10c5267157f6d74962c00d587a6956fc574
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI 2.0 pro správu zařízení Azure IoT Hub
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 04/03/2018
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nové rozšíření IoT, které přidá do funkcí open source [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 obsahuje příkazy pro interakci s Azure resource manager a správa koncových bodů. Například můžete 2.0 rozhraní příkazového řádku Azure k vytvoření virtuálního počítače Azure nebo služby IoT hub. Rozšíření rozhraní příkazového řádku umožňuje služby Azure k posílení rozhraní příkazového řádku Azure udělíte přístup k další možnosti specifickou pro službu. Rozšíření IoT poskytuje vývojářům IoT příkazového řádku přístup k funkcím služby IoT Hub, IoT okraj a IoT Hub zařízení zřizování služby.
+[Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nové rozšíření IoT, které přidá do funkcí open source [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Azure CLI 2.0 obsahuje příkazy pro interakci s Azure resource manager a správa koncových bodů. Například můžete 2.0 rozhraní příkazového řádku Azure k vytvoření virtuálního počítače Azure nebo služby IoT hub. Rozšíření rozhraní příkazového řádku umožňuje služby Azure k posílení rozhraní příkazového řádku Azure udělíte přístup k další možnosti specifickou pro službu. Rozšíření IoT poskytuje vývojářům IoT příkazového řádku přístup k funkcím služby IoT Hub, IoT okraj a IoT Hub zařízení zřizování služby.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -62,7 +62,7 @@ Spusťte 2.0 rozhraní příkazového řádku Azure a IoT rozšíření pro Azur
 
 - [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/)
 
-- Nainstalujte rozhraní příkazového řádku Azure 2.0. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows). Můžete také postupujte podle pokynů pro instalaci [Microsoft Docs](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) nastavení Azure CLI 2.0 ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. 
+- Nainstalujte rozhraní příkazového řádku Azure 2.0. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows). Můžete také postupujte podle pokynů pro instalaci [Microsoft Docs](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nastavení Azure CLI 2.0 ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –version`. 
 
 - Nainstalujte rozšíření IoT. Nejjednodušším způsobem je spustit příkaz `az extension add --name azure-cli-iot-ext`. Soubor [Readme rozšíření IoT](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) obsahuje popis několika způsobů instalace rozšíření.
 

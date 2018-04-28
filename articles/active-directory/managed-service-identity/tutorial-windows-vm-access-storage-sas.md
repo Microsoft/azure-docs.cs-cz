@@ -1,8 +1,8 @@
 ---
-title: "Použití Windows virtuální počítač MSI pro přístup k úložišti Azure pomocí pověření SAS"
-description: "Kurz ukazuje, jak používat pro přístup k Azure Storage, pomocí pověření SAS místo přístupový klíč účtu úložiště Windows virtuálního počítače spravované služby Identity (MSI)."
+title: Použití Windows virtuální počítač MSI pro přístup k úložišti Azure pomocí pověření SAS
+description: Kurz ukazuje, jak používat pro přístup k Azure Storage, pomocí pověření SAS místo přístupový klíč účtu úložiště Windows virtuálního počítače spravované služby Identity (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: c12cf5e5c8f103434b973ccd7e50ea96b405d541
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 88d09bac87c474359f5ece93b6fe0340d9565833
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Použití virtuálních počítačů spravovaných identitu služby Windows pro přístup k úložišti Azure pomocí pověření SAS
 
@@ -58,7 +58,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows. Můžete také
 
 ## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI pro virtuální počítač.  
+Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. V pozadí, povolení MSI provádí dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači.
 
 1. Přejděte do skupiny prostředků vašeho nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
 2. V části virtuální počítač "Nastavení" na levém panelu klikněte na **konfigurace**.
@@ -66,10 +66,6 @@ Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, a
 4. Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.
 
     ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Pokud chcete zkontrolovat rozšíření, které jsou ve virtuálním počítači, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, **ManagedIdentityExtensionforWindows** se zobrazí v seznamu.
-
-    ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
@@ -121,7 +117,7 @@ Musíte použít rutiny Powershellu pro Azure Resource Manager v této části. 
 4. Pomocí Powershellu Invoke-WebRequest, vytvořte žádost na místní koncový bod MSI se získat přístupový token pro Azure Resource Manager.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]

@@ -1,23 +1,19 @@
 ---
 title: Upgrade na Azure Search .NET SDK verze 3 | Microsoft Docs
 description: Upgrade na Azure Search .NET SDK verze 3
-services: search
-documentationcenter: 
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 48238788e06057ccaba41d1d3f500b5c10c93cb7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 161d22e0ff4ec4ab28107919a80ecc48cd027967
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Upgrade na Azure Search .NET SDK verze 3
 Pokud používáte verzi 2.0 preview nebo starší z [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace k používání verze 3.
@@ -56,7 +52,7 @@ Pokud vaše sestavení selže, měli byste vidět chyby sestavení takto:
 
 Dalším krokem je odstranění této chyby sestavení. V tématu [nejnovější změny ve verzi 3](#ListOfChanges) podrobné informace o co způsobí, že chyba a jeho řešení.
 
-Může se zobrazit další sestavení upozornění související s zastaralé metody nebo vlastnosti. Upozornění bude obsahovat pokyny o tom, jak používat místo zastaralé funkce. Například, pokud vaše aplikace používá `IndexingParameters.Base64EncodeKeys` vlastnost, měli byste obdržet upozornění, která uvádí, že`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Může se zobrazit další sestavení upozornění související s zastaralé metody nebo vlastnosti. Upozornění bude obsahovat pokyny o tom, jak používat místo zastaralé funkce. Například, pokud vaše aplikace používá `IndexingParameters.Base64EncodeKeys` vlastnost, měli byste obdržet upozornění, která uvádí, že `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Jakmile vyřešili všechny chyby sestavení, vám do vaší aplikace využívat výhod nových funkcí, nechcete-li provádět změny. Nové funkce v sadě SDK jsou podrobně popsané na [co je nového ve verzi 3](#WhatsNew).
 
@@ -125,7 +121,7 @@ index.Analyzers = new Analyzer[]
 
 Může se zobrazit chyby sestavení související s metody nebo vlastnosti, které byly označeny jako zastaralé ve verzi 2.0 preview a následně odebrat verze 3. Pokud narazíte na takové chyby, zde je způsob jejich řešení:
 
-- Pokud používáte tento konstruktor: `ScoringParameter(string name, string value)`, použijte místo toho tato:`ScoringParameter(string name, IEnumerable<string> values)`
+- Pokud používáte tento konstruktor: `ScoringParameter(string name, string value)`, použijte místo toho tato: `ScoringParameter(string name, IEnumerable<string> values)`
 - Pokud jste používali `ScoringParameter.Value` vlastnosti, použijte `ScoringParameter.Values` vlastnost nebo `ToString` metoda místo.
 - Pokud jste používali `SearchRequestOptions.RequestId` vlastnosti, použijte `ClientRequestId` vlastnost místo.
 

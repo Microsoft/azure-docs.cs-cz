@@ -1,19 +1,19 @@
 ---
-title: "Vytvoření zařízení transparentní brány s hranou Azure IoT | Microsoft Docs"
-description: "Použít k vytvoření zařízení transparentní brány, který dokáže zpracovat informace pro více zařízení Azure IoT Edge"
+title: Vytvoření zařízení transparentní brány s hranou Azure IoT | Microsoft Docs
+description: Použít k vytvoření zařízení transparentní brány, který dokáže zpracovat informace pro více zařízení Azure IoT Edge
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0378cb2964a496a2bfe5a0bc08296cbab462a409
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>Vytvoření IoT hraničním zařízením, která funguje jako brána transparentní – náhled
 
@@ -73,10 +73,10 @@ Můžete použít ukázkové prostředí Powershell a skriptů Bash popsané v [
 
 ### <a name="bash"></a>Bash
 
-Vytvořte nový certifikát zařízení:
+Vytvořte nový certifikát zařízení.  **NECHCETE** název `myGatewayCAName` být stejný jako název hostitele brány.  To způsobí, že certifikát klienta proti selhání těchto certifikátů.
 
    ```bash
-   ./certGen.sh create_edge_device_certificate myGateway
+   ./certGen.sh create_edge_device_certificate myGatewayCAName
    ```
 
 Se vytváří nové soubory:.\certs\new-edge-device.* obsahuje veřejný klíč a PFX a.\private\new-edge-device.key.pem obsahuje privátní klíč zařízení.
@@ -84,6 +84,7 @@ Se vytváří nové soubory:.\certs\new-edge-device.* obsahuje veřejný klíč 
 V `certs` adresáře, spusťte následující příkaz získat úplný řetěz veřejný klíč zařízení:
 
    ```bash
+   cd ./certs
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
@@ -116,11 +117,11 @@ Zadejte informace o zařízení a certifikátu do hraniční IoT runtime.
 V systému Linux pomocí Bash výstup:
 
    ```bash
-   sudo iotedgectl setup --connection-string {device connection string}
-        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
-        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
-        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem
-        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem
+   sudo iotedgectl setup --connection-string {device connection string} \
+        --edge-hostname {gateway hostname, e.g. mygateway.contoso.com} \
+        --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem \
+        --device-ca-chain-cert-file {full path}/certs/new-edge-device-full-chain.cert.pem \
+        --device-ca-private-key-file {full path}/private/new-edge-device.key.pem \
         --owner-ca-cert-file {full path}/certs/azure-iot-test-only.root.ca.cert.pem
    ```
 

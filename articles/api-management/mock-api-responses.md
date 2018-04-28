@@ -1,11 +1,11 @@
 ---
-title: "Model odpovědi rozhraní API pomocí portálu Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak nastavit zásady na rozhraní API, tak, aby vracel mocked odpovědi pomocí rozhraní API správy (APIM). Tato metoda endables vývojářům pokračovat v provádění a v případě, že back-end není k dispozici k odeslání odpovědi skutečné testování instanci služby API Management."
+title: Napodobení odpovědí rozhraní API pomocí webu Azure Portal | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí služby API Management (APIM) nastavit zásadu pro rozhraní API tak, aby vracelo imitaci odpovědi. Tato metoda umožňuje vývojářům pokračovat v implementaci a testování instance služby API Management i v případě, že není k dispozici back-end, který by odesílal skutečné odpovědi.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,92 +14,90 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: e485071b026c52eb23532639546ad475fc92cde3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="mock-api-responses"></a>Imitované odpovědi rozhraní API
+# <a name="mock-api-responses"></a>Napodobení odpovědí API
 
-Rozhraní API back-end lze importovat do rozhraní API APIM nebo vytvořit a spravovat ručně. Kroky v tomto kurzu ukazují, jak použít APIM k vytvoření prázdné rozhraní API a spravovat ji ručně. Tento kurz ukazuje, jak nastavit zásady na rozhraní API, tak, aby vracel mocked odpověď. Tato metoda umožňuje vývojářům pokračovat v provádění a testování APIM instance, i když není k dispozici k odeslání odpovědi skutečné back-end. Možnost model až odpovědí může být užitečné v různých scénářích:
+Back-endová rozhraní API je možné importovat do rozhraní API služby APIM nebo vytvářet a spravovat ručně. Postup v tomto kurzu ukazuje, jak pomocí služby APIM vytvořit prázdné rozhraní API a ručně ho spravovat. V tomto kurzu se dozvíte, jak nastavit zásadu pro rozhraní API tak, aby vracelo imitaci odpovědi. Tato metoda umožňuje vývojářům pokračovat v implementaci a testování instance služby APIM i v případě, že není k dispozici back-end, který by odesílal skutečné odpovědi. Možnost napodobovat odpovědi může být užitečná v řadě scénářů:
 
-+ Když průčelí rozhraní API za slouží nejprve a back-end implementace dodává se později. Nebo back-end je vyvíjen paralelně.
-+ Pokud back-end není dočasně provozních nebo nebylo možné škálovat.
++ Když se jako první navrhuje fasáda rozhraní API a back-endová implementace proběhne později. Případně vývoj back-endu probíhá paralelně.
++ Když back-end dočasně není v provozu nebo neumožňuje škálování.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření testu rozhraní API 
-> * Přidat operaci do rozhraní API testu
-> * Povolit mocking odpovědi
-> * Testování mocked rozhraní API
+> * Vytvoření testovacího rozhraní API 
+> * Přidání operace do testovacího rozhraní API
+> * Povolení napodobování odpovědí
+> * Test imitace rozhraní API
 
-![Odpověď mocked operace](./media/mock-api-responses/mock-api-responses01.png)
+![Napodobení odpovědi operace](./media/mock-api-responses/mock-api-responses01.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete následující rychlý start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
+Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 
-## <a name="create-a-test-api"></a>Vytvoření testu rozhraní API 
+Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéhokoli back-endu. Také ukazuje, jak do rozhraní API přidat operaci. Zavolání operace po dokončení kroků v této části způsobí chybu. Po dokončení postupu v části Povolení napodobování odpovědí už se chyby zobrazovat nebudou.
 
-Postup v této části ukazují, jak vytvořit prázdnou rozhraní API s žádné back-end. Také ukazuje, jak přidat operaci do rozhraní API. Volání operace po dokončení kroků v této části vyvolá chybu. Zobrazí se žádné chyby a po dokončení kroků v části "Povolit mocking odpověď".
-
-1. Vyberte **rozhraní API** z pod **API MANAGEMENT**.
-2. V nabídce vlevo vyberte **+ přidat rozhraní API**.
-3. Vyberte **prázdné API** ze seznamu.
-4. Zadejte "*Test API*" pro **zobrazovaný název**.
-5. Zadejte "*neomezená*" pro **produkty**.
+1. V části **API MANAGEMENT** vyberte **rozhraní API**.
+2. V levé nabídce vyberte **+ Přidat rozhraní API**.
+3. Vyberte ze seznamu **Prázdné rozhraní API**.
+4. Jako **Zobrazovaný název** zadejte *Testovací rozhraní API*.
+5. V části **Produkty** zadejte *Neomezeno*.
 6. Vyberte **Vytvořit**.
 
-## <a name="add-an-operation-to-the-test-api"></a>Přidat operaci do rozhraní API testu
+## <a name="add-an-operation-to-the-test-api"></a>Přidání operace do testovacího rozhraní API
 
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
-2. Klikněte na tlačítko **+ operace přidání**.
+2. Klikněte na **+ Přidat operaci**.
 
-    ![Odpověď mocked operace](./media/mock-api-responses/mock-api-responses02.png)
+    ![Napodobení odpovědi operace](./media/mock-api-responses/mock-api-responses02.png)
 
     |Nastavení|Hodnota|Popis|
     |---|---|---|
-    |**Adresa URL** (příkazu HTTP)|GET|Můžete se z jednoho z předdefinovaných příkazy HTTP.|
-    |**ADRESA URL** |*/Test*|Cestu adresy URL pro rozhraní API. |
-    |**Zobrazovaný název**|*Volání testu*|Název, který se zobrazí v **portál pro vývojáře**.|
-    |**Popis**||Zadejte popis, operace, která slouží k poskytování dokumentaci pro vývojáře, kteří používají toto rozhraní API v **portál pro vývojáře**.|
-    |**Dotaz** karta||Můžete přidat parametry dotazu. Kromě toho poskytuje název a popis, můžete zadat hodnoty, které lze přiřadit k tento parametr. Jedna z hodnot může být označen jako výchozí (volitelné).|
-    |**Žádosti o** karta||Můžete definovat typy obsahu požadavku, příklady a schémat. |
-    |**Odpověď** karta|Informace o kroky podle této tabulky.|Zadejte kódy stavu odpovědi, typy obsahu, příklady a schémat.|
+    |**Adresa URL** (příkaz HTTP)|GET|Můžete zvolit některý z předdefinovaných příkazů HTTP.|
+    |**Adresa URL** |*/test*|Cesta URL k rozhraní API. |
+    |**Zobrazovaný název**|*Test call*|Název, který se zobrazí na **portálu pro vývojáře**.|
+    |**Popis**||Zadejte popis operace, který se na **portálu pro vývojáře** použije jako dokumentace pro vývojáře používající toto rozhraní API.|
+    |Karta **Dotaz**||Můžete přidat parametry dotazu. Kromě zadání názvu a popisu můžete do tohoto parametru zadat hodnoty, které je možné přiřadit. Jedna z hodnot může být označená jako výchozí (volitelné).|
+    |Karta **Požadavek**||Můžete definovat typy obsahu, příklady a schémata požadavku. |
+    |Karta **Odpověď**|Viz kroky uvedené pod touto tabulkou.|Definujte stavový kód, typy obsahu, příklady a schémata odpovědi.|
 
-3. Vyberte **odpovědi** kartě nachází v adrese URL, zobrazovaný název a popis pole.
-4. Klikněte na tlačítko **+ přidat odpovědi**.
-5. Vyberte **200 OK** ze seznamu.
-6. V části **reprezentace** záhlaví na pravé straně, vyberte **+ přidat reprezentace**.
-7. Zadejte "*application/json*" do vyhledávacího pole a vyberte **application/json** typ obsahu.
-8. V **ukázka** text zadejte "*{"sampleField":"test"}*".
+3. Vyberte kartu **Odpověď**, která se nachází pod poli Adresa URL, Zobrazovaný název a Popis.
+4. Klikněte na **+ Přidat odpověď**.
+5. Vyberte ze seznamu **200 OK**.
+6. Pod záhlavím **Reprezentace** na pravé straně vyberte **+ Přidat reprezentaci**.
+7. Do vyhledávacího pole zadejte *application/json* a vyberte typ obsahu **application/json**.
+8. Do textového pole **Ukázka** zadejte *{ 'sampleField' : 'test' }*.
 9. Vyberte **Uložit**.
 
-## <a name="enable-response-mocking"></a>Povolit mocking odpovědi
+## <a name="enable-response-mocking"></a>Povolení napodobování odpovědí
 
-1. Vyberte rozhraní API, které jste vytvořili v kroku "Vytvoření rozhraní API testu".
-2. Vyberte testovací operace, které jste přidali.
-2. V okně na pravé straně klikněte **návrhu** kartě.
-3. V **zpracování příchozích** okně klikněte na ikonu tužky.
-4. V **Mocking** vyberte **statické odpovědi** pro **Mocking chování**.
-5. V **API Management vrátí následující odpověď:** textového pole, typ **200 OK, aplikace nebo json**. Tento výběr určuje, že vaše rozhraní API by měla vrátit odpověď ukázku, kterou jste zadali v předchozí části.
+1. Vyberte rozhraní API, které jste vytvořili v kroku Vytvoření testovacího rozhraní API.
+2. Vyberte testovací operaci, kterou jste přidali.
+2. V pravém okně klikněte na kartu **Návrh**.
+3. V okně **Vstupní zpracování** klikněte na ikonu tužky.
+4. Na kartě **Napodobování** v části **Chování při napodobování** vyberte **Statické odpovědi**.
+5. Do textového pole **API Management vrátí následující odpověď:** zadejte **200 OK, application/json**. Tento výběr určuje, že by vaše rozhraní API mělo vracet ukázku odpovědi, kterou jste definovali v předchozí části.
 6. Vyberte **Uložit**.
 
-## <a name="test-the-mocked-api"></a>Testování mocked rozhraní API
+## <a name="test-the-mocked-api"></a>Test imitace rozhraní API
 
-1. Vyberte rozhraní API, které jste vytvořili v kroku "Vytvoření rozhraní API testu".
-2. Otevřete **Test** kartě.
-3. Ujistěte se, **testování volání** rozhraní API je vybrána.
+1. Vyberte rozhraní API, které jste vytvořili v kroku Vytvoření testovacího rozhraní API.
+2. Otevřete kartu **Test**.
+3. Ujistěte se, že je vybrané rozhraní API **Test call**.
 
     > [!TIP]
-    > Žlutý pruh s textem **Mocking je povoleno** označuje, že odpovědí vrácená z rozhraní API správy odešle mocking zásady a není odpověď skutečné back-end.
+    > Žlutý pruh s textem **Napodobování je povoleno** značí, že odpovědi vracené ze služby API Management vrací zásady napodobování, a nejedná se tedy o skutečné odpovědi back-endu.
 
-3. Vyberte **odeslat** aby testu volání.
-4. **Odpověď HTTP** zobrazí kód JSON zadaný jako ukázka v první části tohoto kurzu.
+3. Vyberte **Odeslat** a proveďte testovací volání.
+4. V **odpovědi HTTP** se zobrazí JSON zadaný jako ukázka v první části tohoto kurzu.
 
 ## <a name="video"></a>Video
 
@@ -111,12 +109,12 @@ Postup v této části ukazují, jak vytvořit prázdnou rozhraní API s žádn�
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření testu rozhraní API
-> * Přidat operaci do rozhraní API testu
-> * Povolit mocking odpovědi
-> * Testování mocked rozhraní API
+> * Vytvoření testovacího rozhraní API
+> * Přidání operace do testovacího rozhraní API
+> * Povolení napodobování odpovědí
+> * Test imitace rozhraní API
 
-Přechodu na další kurz:
+Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Transformace a chránit publikované rozhraní API](transform-api.md)
+> [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

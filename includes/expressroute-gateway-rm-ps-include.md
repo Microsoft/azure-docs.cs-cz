@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7e33d4ed7100287ef6b22aa4c90fd52671363902
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v následujícím seznamu odkaz konfigurace. Názvy a další nastavení jsou také popsány v tomto seznamu. Tento seznam nepoužívá přímo v žádném z kroků, i když přidáme proměnné na základě hodnot v tomto seznamu. Seznam, aby používal jako odkaz, můžete zkopírovat nahraďte hodnoty vlastními.
 
 **Seznam odkazů konfigurace**
 
-* Virtual Network Name = "TestVNet"
+* Název virtuální sítě = "TestVNet"
 * Virtuální adresní prostor sítě = 192.168.0.0/16
 * Skupina prostředků = "TestRG"
 * Subnet1 Name = "FrontEnd" 
@@ -36,7 +36,7 @@ Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v násled
 1. Připojení k předplatnému Azure.
 
   ```powershell 
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   Get-AzureRmSubscription 
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```

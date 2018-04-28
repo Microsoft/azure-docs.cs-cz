@@ -1,6 +1,6 @@
 ---
-title: "Postup vytvoření DSVM a HDI jako výpočetní cíle pro Azure ML"
-description: "Vytvoření clusteru DSVM a HDI Spark jako výpočetní cíle pro Azure ML experimenty."
+title: Postup vytvoření DSVM a HDI jako výpočetní cíle pro Azure ML
+description: Vytvoření clusteru DSVM a HDI Spark jako výpočetní cíle pro Azure ML experimenty.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Vytvoření clusteru DSVM a HDI Spark jako výpočetní cíle
 
@@ -148,7 +148,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Rozbalte disk operačního systému DSVM
-Virtuální počítač s Linuxem v Azure obvykle dodává s diskem operačního systému 30 GB. Pokud se použije jako výpočetní cíl pro Azure ML, ho můžete konzumaci rychle Docker modul stahování dolů imagí Dockeru a sestavování conda vrstvy nad ho. Je vhodné k tomu chyba "disk plný", jsou právě spuštění rozšíření disk operačního systému na větší velikost (jako je například 200 GB). Referenční dokumentace [způsob, jak rozbalit virtuální pevné disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](../../virtual-machines/linux/expand-disks.md) se dozvíte, jak k tomu snadno z příkazového řádku azure. 
+Ubuntu DSVM se dodává s 50 GB místa na disku operačního systému a data 100 GB místa na disku. Docker ukládá jeho bitové kopie na datový disk jako více místa je k dispozici. Pokud se použije jako výpočetní cíl pro Azure ML, lze tento disk pomocí modulu Docker stahování dolů imagí Dockeru a sestavování conda vrstvy nad ho. Musíte může k tomu chyba "disk plný", jsou právě spuštění rozšíření se disku na větší velikost (jako je například 200 GB). Referenční dokumentace [způsob, jak rozbalit virtuální pevné disky na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure](../../virtual-machines/linux/expand-disks.md) se dozvíte, jak k tomu snadno z příkazového řádku azure. 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Vytvoření serveru Apache Spark pro cluster Azure HDInsight na portálu Azure
 

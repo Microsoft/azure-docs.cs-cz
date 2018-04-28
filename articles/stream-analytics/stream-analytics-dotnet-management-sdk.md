@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: 541ad08a21b118e463969fa3240374c3646bf50e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b57e22b979d0e47d294a89d41a945a665beacdc0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa .NET SDK: Nastavení a spuštění úloh analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
 Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API služby Stream Analytics pro .NET pomocí .NET SDK služby správy. Nastavení projektu, vytvořte vstupní a výstupní zdrojů, transformace a spuštění a zastavení úloh. Pro úlohy analýzy může Streamovat data z úložiště objektů Blob nebo z centra událostí.
@@ -45,7 +45,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Nastavení služby vstupní zdroj a cíl výstupu používat. Další pokyny najdete v tématu [vstupy přidat](stream-analytics-add-inputs.md) nastavit ukázka vstup a [přidejte výstupy](stream-analytics-add-outputs.md) nastavit ukázkový výstup.
+* Nastavení služby vstupní zdroj a cíl výstupu úlohy se připojit k.
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
 Chcete-li vytvořit úlohu analytics použít rozhraní API analýzy datového proudu pro platformu .NET, nejprve nastavte projekt.

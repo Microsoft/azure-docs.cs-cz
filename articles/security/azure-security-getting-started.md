@@ -1,6 +1,6 @@
 ---
-title: "Začínáme s Microsoft Azure zabezpečení | Microsoft Docs"
-description: "Tento článek obsahuje přehled o funkcích zabezpečení Microsoft Azure a obecné požadavky pro organizace, které provádíte migraci jejich prostředky do poskytovatele cloudových služeb."
+title: Začínáme s Microsoft Azure zabezpečení | Microsoft Docs
+description: Tento článek obsahuje přehled o funkcích zabezpečení Microsoft Azure a obecné požadavky pro organizace, které provádíte migraci jejich prostředky do poskytovatele cloudových služeb.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
-ms.translationtype: MT
+ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Začínáme se zabezpečením Microsoft Azure
 Při vytvoření nebo migraci IT prostředky do poskytovatele cloudových služeb, jsou spoléhat na dané organizace dalo k ochraně vašich aplikací a dat se službami a ovládací prvky poskytují ke správě zabezpečení vaše cloudové prostředky.
@@ -45,7 +45,7 @@ K dalším možnostem správy identit a přístupu patří následující:
 * Azure AD podporuje [jednotné přihlašování (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) k aplikacím SaaS bez ohledu na to, kde jsou hostované. Některé aplikace jsou federované pomocí Azure AD, jiné používají jednotné přihlašování pomocí hesla. Federované aplikace můžou také podporovat zřizování uživatelů a ukládání hesel do trezoru.
 * Přístup k datům v rámci [Azure Storage](https://azure.microsoft.com/services/storage/) je řízen prostřednictvím ověřování. Každý účet úložiště má primární klíč ([klíč účtu úložiště](https://msdn.microsoft.com/library/azure/ee460785.aspx), nebo SAK) a sekundární tajný klíč (sdílený přístupový podpis, nebo SAS).
 * Azure AD poskytuje Identity jako služby pomocí federování pomocí [Active Directory Federation Services](../active-directory/fundamentals-identity.md), synchronizace a replikace s místních adresářů.
-* [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) je služba služby Multi-Factor authentication, která od uživatelů vyžaduje přihlášení ověřili pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Můžete použít s Azure AD k zabezpečené místní prostředků s Azure Multi-Factor Authentication server a také se vlastní aplikace a adresáře pomocí sady SDK.
+* [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) je služba služby Multi-Factor authentication, která od uživatelů vyžaduje přihlášení ověřili pomocí mobilní aplikace, telefonního hovoru nebo textové zprávy. Můžete použít s Azure AD k zabezpečené místní prostředků s Azure Multi-Factor Authentication server a také se vlastní aplikace a adresáře pomocí sady SDK.
 * [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umožňuje připojit virtuální počítače Azure k doméně bez nasazení řadiče domény. Může přihlásit do těchto virtuálních počítačů pomocí svoje podnikové přihlašovací údaje služby Active Directory a spravovat virtuální počítače připojené k doméně pomocí zásad skupiny k vynucení směrné plány zabezpečení na všechny vaše virtuální počítače Azure.
 * [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) poskytuje službu správy vysokou dostupností globální identity pro určených aplikace, která je škálovatelná pro stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Uživatele můžete přihlásit ke všem aplikacím, které prostřednictvím přizpůsobitelné pomocí svých účtů na sociálních nebo vytvořením nové přihlašovací údaje.
 
@@ -186,7 +186,7 @@ Azure má kontrolních mechanismů pro zabezpečení na místě implementovat ke
 * Přístup společnosti Microsoft k průnikům testování zahrnuje "[síťových adaptérů Red](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)," což zahrnuje Odborníci v oblasti zabezpečení Microsoft napadení (bez zákazníka) za provozu produkční systémy v Azure k testování obranu proti reálného, pokročilé, trvalé hrozby.
 * Integrované nasazovací systémy zvládají distribuci a instalaci oprav zabezpečení v rámci celé platformy Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/)
 
 [Blog týmu zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/)

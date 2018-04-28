@@ -1,9 +1,9 @@
 ---
-title: "Monitorování výkonu aplikací Java webů v systému Linux - Azure | Microsoft Docs"
-description: "Rozšířené monitorování výkonu aplikací z vašeho webu Java pomocí modulu plug-in CollectD pro službu Application Insights."
+title: Monitorování výkonu aplikací Java webů v systému Linux - Azure | Microsoft Docs
+description: Rozšířené monitorování výkonu aplikací z vašeho webu Java pomocí modulu plug-in CollectD pro službu Application Insights.
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: cde0fc020f1774e0e7669e7573e4aaff3534b34c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 56e30ff4ee7765cd0950293999d93a9cf1fe5d36
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: metriky výkonu Linux ve službě Application Insights
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: eb4ebe0b1c0e4799aea6401b068d881e5aa47026
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8af5c124332fcc0c919b419f68235c52456c01cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak pomocí prostředí Azure PowerShell s Resource 
 
 Šablony Resource Manageru, který nasazujete, může to být místní soubor na počítači, nebo externí soubor, který je umístěný v úložišti, jako je Githubu. Šablona nasazení v tomto článku je k dispozici v [Ukázka šablony](#sample-template) oddílu, nebo jako [Šablona účtu úložiště na webu GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
-V případě potřeby nainstalujte modul Azure PowerShell pomocí pokynů v [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure.
+V případě potřeby nainstalujte modul Azure PowerShell podle pokynů, které najdete v [průvodci pro Azure PowerShell](/powershell/azure/overview), a pak se připojte k Azure spuštěním příkazu `Connect-AzureRmAccount`.
 
 <a id="deploy-local-template" />
 
@@ -43,7 +43,7 @@ Při nasazování prostředků do Azure, můžete:
 Následující příklad vytvoří skupinu prostředků a nasadí šablonu z místního počítače:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
  

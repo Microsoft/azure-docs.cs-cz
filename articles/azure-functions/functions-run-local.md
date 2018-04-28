@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: f3278c064a01e3dea1d7a629b4a7b2e846a71208
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód a testovat místně na Azure Functions
 
@@ -31,45 +31,88 @@ Pokud jste Azure Functions Visual Studio C# vývojář, také [se integruje s Vi
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Nástroje Azure základní funkce] je místní verzi modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Není emulátor ani simulátor. Je stejný modul runtime, který zajišťuje funkce v Azure. Existují dvě verze nástrojů pro základní funkce Azure, jeden pro verze 1.x modulu runtime a jeden pro verze 2.x. Obě verze jsou uvedeny jako [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm).
+[Nástroje Azure základní funkce] je místní verzi modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Není emulátor ani simulátor. Je stejný modul runtime, který zajišťuje funkce v Azure. Existují dvě verze nástroje základní funkce Azure:
 
->[!NOTE]  
-> Než nainstalujete jednu z verzí, je nutné [nainstalovat NodeJS](https://docs.npmjs.com/getting-started/installing-node), což zahrnuje npm. Verze 2.x nástroje, jenom na Node.js 8.5 a novější verze podporují. 
++ [Verze 1.x](#v1): podporuje verze 1.x modulu runtime. Tuto verzi je podporována pouze na počítačích s Windows a je nainstalovat z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm).
++ [Verze 2.x](#v2): podporuje verze 2.x modulu runtime. Tato verze podporuje [Windows](#windows-npm), [systému macOS](#brew), a [Linux](#linux). Používá správce balíčku specifické pro platformu nebo npm pro instalaci. 
 
-### <a name="version-2x-runtime"></a>Verze 2.x runtime
+### <a name="v1"></a>Verze 1.x
 
-Verze 2.x nástroje používá modulu runtime Azure Functions 2.x, která je založená na .NET Core. Tato verze je podporována na všech platformách .NET Core 2.x podporuje. Tuto verzi použít pro vývoj pro různé platformy a kdy Functions runtime 2.x je vyžadován. 
+Původní verzi nástroje používá modul runtime 1.x funkce. Tato verze rozhraní .NET Framework (4.7.1) používá a je podporován pouze v počítačích se systémem Windows. Před instalací nástroje verze 1.x musíte [nainstalovat NodeJS](https://docs.npmjs.com/getting-started/installing-node), což zahrnuje npm.
 
->[!IMPORTANT]   
-> Před instalací nástroje základní funkce Azure, [nainstalujte .NET Core 2.0](https://www.microsoft.com/net/core).  
->
-> Azure Functions runtime 2.0 je ve verzi preview a aktuálně ne všechny funkce Azure Functions podporované. Další informace najdete v tématu [Azure Functions za běhu 2.0 známé problémy](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues) 
-
- Použijte následující příkaz k instalaci nástroje verze 2.0:
-
-```bash
-npm install -g azure-functions-core-tools@core
-```
-
-Při instalaci na použití Ubuntu `sudo`, a to takto:
-
-```bash
-sudo npm install -g azure-functions-core-tools@core
-```
-
-Při instalaci v systému macOS a Linux, musíte zahrnout `unsafe-perm` příznak následujícím způsobem:
-
-```bash
-sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
-```
-
-### <a name="version-1x-runtime"></a>Verze runtime 1.x
-
-Původní verzi nástroje používá modul runtime 1.x funkce. Tato verze používá rozhraní .NET Framework a je podporován pouze na počítačích s Windows. Použijte následující příkaz k instalaci nástroje 1.x verze:
+Použijte následující příkaz k instalaci nástroje 1.x verze:
 
 ```bash
 npm install -g azure-functions-core-tools
 ```
+
+### <a name="v2"></a>Verze 2.x
+
+>[!NOTE]
+> Azure Functions runtime 2.0 je ve verzi preview a aktuálně ne všechny funkce Azure Functions podporované. Další informace najdete v tématu [verze Azure Functions](functions-versions.md) 
+
+Verze 2.x nástroje používá modulu runtime Azure Functions 2.x, která je založená na .NET Core. Tato verze není podporována na všech platformách podporuje 2.x .NET Core, včetně [Windows](#windows-npm), [systému macOS](#brew), a [Linux](#linux).
+
+#### <a name="windows-npm"></a>Windows
+
+Následující kroky pomocí npm nainstalujte základní nástroje v systému Windows. Můžete také použít [Chocolatey](https://chocolatey.org/). Další informace najdete v tématu [jádra nástroje readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+
+1. Nainstalujte [.NET Core 2.0 pro Windows](https://www.microsoft.com/net/download/windows).
+
+2. Nainstalujte [Node.js], což zahrnuje npm. Verze 2.x nástroje, jenom na Node.js 8.5 a novější verze podporují.
+
+3. Nainstalujte sadu nástrojů jádra:
+
+  ```bash
+  npm install -g azure-functions-core-tools@core
+  ```
+
+#### <a name="brew"></a>Systému MacOS s Homebrew
+
+Následující kroky použijte k instalaci nástroje jádra systému macOS Homebrew.
+
+1. Nainstalujte [rozhraní .NET 2.0 jádra pro systému macOS](https://www.microsoft.com/net/download/macos).
+
+1. Nainstalujte [Homebrew](https://brew.sh/), pokud je ještě není nainstalován.
+
+2. Nainstalujte sadu nástrojů jádra:
+
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools 
+    ```
+
+#### <a name="linux"></a> Linux (Ubuntu/Debian) s byt č
+
+Následující postup použijte [byt č](https://wiki.debian.org/Apt) při instalaci nástrojů základní distribuční Ubuntu/Debian Linux. Další Linuxových distribucích najdete v článku [jádra nástroje readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
+
+1. Nainstalujte [.NET Core 2.0 pro Linux](https://www.microsoft.com/net/download/linux).
+
+1. Zaregistrujte kód product key společnosti Microsoft jako důvěryhodný:
+
+  ```bash
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  ```
+
+2.  Nastavte balíček kanálu, nahraďte `<version>` v následujícím příkazu s názvem příslušnou verzi z tabulky:
+
+  ```bash
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo apt-get update
+  ```
+
+  | Distribuce systému Linux | `<version>` |
+  | --------------- | ----------- |
+  | Ubuntu 17.10    | `artful`    |
+  | Ubuntu č. 17.04    | `zesty`     |
+  | Ubuntu 16.04/Linux Mátová 18    | `xenial`  |
+
+3. Nainstalujte sadu nástrojů jádra:
+
+  ```bash
+  sudo apt-get install azure-functions-core-tools
+  ```
 
 ## <a name="run-azure-functions-core-tools"></a>Spuštění nástrojů Azure Functions jádra
  
@@ -137,15 +180,19 @@ Soubor local.settings.json ukládá nastavení aplikace, řetězce připojení a
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
 | **isEncrypted** | Pokud nastavíte hodnotu **true**, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je **false**. |
-| **Hodnoty** | Kolekce nastavení aplikace používá při místním spuštění. **AzureWebJobsStorage** a **AzureWebJobsDashboard** jsou příklady; úplný seznam najdete v tématu [referenční příručka k nastavení aplikace](functions-app-settings.md).  |
+| **Hodnoty** | Kolekce nastavení aplikace používá při místním spuštění. **AzureWebJobsStorage** a **AzureWebJobsDashboard** jsou příklady; úplný seznam najdete v tématu [referenční příručka k nastavení aplikace](functions-app-settings.md). Mnoho triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace, jako například **připojení** pro aktivační událost úložiště objektů Blob. Pro tyto vlastnosti je třeba definované v nastavení aplikace **hodnoty** pole. To platí také na žádnou vlastnost vazby, kterou můžete nastavit na název nastavení aplikace zabalení hodnota mezi znaky procenta, například `%AppSettingName%`. |
 | **Hostitel** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. | 
 | **LocalHttpPort** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
 | **CORS** | Definuje zdroje povolené pro [(CORS) pro sdílení prostředků různého původu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje se zadávají jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporováno, což umožňuje požadavky od jakýkoli původ. |
 | **ConnectionStrings** | Obsahuje databázové připojovací řetězce pro funkcí. Připojovací řetězce v tento objekt se přidají do prostředí s typem zprostředkovatele **System.Data.SqlClient**.  | 
 
-Většina triggerů a vazeb mít **připojení** vlastnost, která se mapuje na název nastavení aplikace nebo proměnné prostředí. Pro každou vlastnost připojení musí být definována v souboru local.settings.json nastavení aplikace. 
+Tato nastavení lze také přečíst v kódu jako proměnné prostředí. Další informace najdete v části proměnných prostředí z těchto témat pro specifický jazyk odkaz:
 
-Tato nastavení lze také přečíst v kódu jako proměnné prostředí. V jazyce C#, použijte [System.Environment.GetEnvironmentVariable](https://msdn.microsoft.com/library/system.environment.getenvironmentvariable(v=vs.110).aspx) nebo [ConfigurationManager.AppSettings](https://msdn.microsoft.com/library/system.configuration.configurationmanager.appsettings%28v=vs.110%29.aspx). V jazyce JavaScript, použijte `process.env`. Bylo nastaveno jako systémové proměnné prostředí mají přednost před hodnot v souboru local.settings.json. 
++ [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
++ [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
++ [F#](functions-reference-fsharp.md#environment-variables)
++ [Java](functions-reference-java.md#environment-variables) 
++ [JavaScript](functions-reference-node.md#environment-variables)
 
 Nastavení v souboru local.settings.json používají funkce nástroje jenom, při místním spuštění. Ve výchozím nastavení tato nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepínač [při publikování](#publish) a ujistěte se, tato nastavení jsou přidány do aplikaci funkce v Azure.
 
@@ -275,7 +322,7 @@ Následující příklad je stejný funkce volat z požadavek POST předávání
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Všimněte si, že lze provádět získat požadavky z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL aplikaci Fiddler, Postman nebo podobné nástroj testování HTTP.  
+Můžete nastavit získat požadavky z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL aplikaci Fiddler, Postman nebo podobné nástroj testování HTTP.  
 
 #### <a name="non-http-triggered-functions"></a>Jiným protokolem než HTTP aktivované funkce
 Pro všechny typy funkcí než aktivace protokolu HTTP a pomocí webhooků můžete otestovat funkcí místně voláním koncového bodu správy. Volání metody tento koncový bod s požadavek HTTP POST na místním serveru aktivuje funkce. Volitelně můžete předat data testovací spuštění v textu požadavku POST. Tato funkce je podobná **Test** na portálu Azure.  
@@ -361,3 +408,4 @@ Do souboru žádost chyb nebo funkce [otevřete potíže Githubu](https://github
 
 [Nástroje Azure základní funkce]: https://www.npmjs.com/package/azure-functions-core-tools
 [portál Azure]: https://portal.azure.com 
+[Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

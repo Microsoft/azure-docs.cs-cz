@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s ověřováním pro Mobile Apps v Xamarin iOS"
-description: "Další informace o použití mobilní aplikace ověřovat uživatele vaší aplikace Xamarin iOS prostřednictvím řady různých zprostředkovatelů identity, včetně AAD, Google, Facebook, Twitter a Microsoft."
+title: Začínáme s ověřováním pro Mobile Apps v Xamarin iOS
+description: Další informace o použití mobilní aplikace ověřovat uživatele vaší aplikace Xamarin iOS prostřednictvím řady různých zprostředkovatelů identity, včetně AAD, Google, Facebook, Twitter a Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 1649d2bf4f3429f2f5f56bdabdfe9a015a115893
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Přidání ověřování do aplikace Xamarin.iOS
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -116,7 +116,7 @@ V této části upravíte aplikace zobrazíte obrazovka pro přihlášení, než
             return ResumeWithURL != null && ResumeWithURL(url);
         }
 6. Otevřete **Info.plist** souboru, přejděte na **URL typy** v **Upřesnit** části. Teď nakonfigurovat **identifikátor** a **schémata URL** typ adresy URL a klikněte na tlačítko **přidat adresu URL typu**. **Schémata URL** by měla být stejná jako vaše {url_scheme_of_your_app}.
-7. V sadě Visual Studio nebo Xamarin Studio připojený k hostiteli sestavení Xamarin na počítači Mac, spuštění klientského projektu cílení na emulátoru nebo zařízení. Ověřte, že aplikace zobrazí žádná data.
+7. V sadě Visual Studio, připojený k hostiteli Mac nebo Visual Studio pro Mac spuštění klientského projektu cílení na emulátoru nebo zařízení. Ověřte, že aplikace zobrazí žádná data.
    
     Proveďte aktualizaci gesto přidáváním dolů v seznamu položek, které způsobí, že přihlašovací obrazovce se objeví. Jakmile úspěšně jste zadali platné přihlašovací údaje, aplikace se zobrazí seznam položek todo a data můžete provádět aktualizace.
 

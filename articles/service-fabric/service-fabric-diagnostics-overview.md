@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2018
+ms.date: 04/25/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
 
@@ -33,19 +33,20 @@ Monitorování aplikací sleduje, jak jsou používány funkce a součásti vaš
 
 Service Fabric podporuje mnoho možností pro instrumentace kódu aplikace s správné trasování a telemetrií. Doporučujeme vám, že používáte Application Insights (AI). AI na integraci s Service Fabric zahrnuje tooling prostředí pro portál Visual Studio a Azure, stejně jako určité metriky Service Fabric, poskytnutí prostředí komplexní protokolování se na pole. Když mnoho protokoly jsou automaticky vytvořen a shromážděné pro vás pomocí AI, doporučujeme vám, že přidáte další vlastní protokolování pro vaše aplikace k vytvoření bohatší možnosti diagnostiky. Viz informace o seznámení se službou Application Insights s Service Fabric v [analýza události s Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
 
-![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
-
 ## <a name="platform-cluster-monitoring"></a>Monitorování platformy (Cluster)
 Monitorování cluster Service Fabric je důležité zajistit, že platformy a všechny úlohy běží tak, jak má. Jedním z cílů Service Fabric je udržovat aplikace odolné vůči selhání hardwaru. Tento cíl je dosaženo pomocí služeb systému platformy možnost ke zjišťování problémů s infrastrukturou a rychle převzetí služeb při selhání úlohy na jiné uzly v clusteru. Ale v tomto případě, co v případě systému služeb sami mají problémy? Nebo pokud při pokusu o přesunutí zatížení, jsou pravidla pro umístění služby došlo k porušení? Monitorování clusteru umožňuje udržení informovanosti o aktivity probíhající v clusteru, což pomáhá s diagnostikou problémy a jejich oprava efektivně. Některé klíče, který má být hledání věci:
 * Způsob, jakým očekáváte, z hlediska umístění vašich aplikací a vyrovnávání práce mimo cluster chová Service Fabric? 
 * Jsou provedeny uživatele akce v clusteru potvrzeny a provést u podle očekávání? To je obzvláště důležité, když škálování clusteru.
 * Service Fabric zpracovává vaše data a vaše služba služba komunikace uvnitř clusteru správně?
 
-Service Fabric nabízí komplexní sadu událostí předinstalované prostřednictvím kanálů Data & zasílání zpráv a funkčnosti. V systému Windows, ty jsou ve formě jednoho zprostředkovatele trasování událostí pro Windows se sadou relevantní `logLevelKeywordFilters` umožňuje výběr mezi různé kanály. V systému Linux všechny události platformy pocházet prostřednictvím LTTng a jsou vloženy do jedné tabulky, ze kterých mohou být filtrovány podle potřeby. 
+Service Fabric nabízí komplexní sadu událostí mimo pole. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) je přístupný prostřednictvím rozhraní API EventStore nebo provozní kanál (kanál událostí vystavené platformu). 
+* EventStore - EventStore (k dispozici v systému Windows verze 6.2 nebo novější, Linux stále probíhá od datum poslední aktualizace v tomto článku), zpřístupní tyto události prostřednictvím sada rozhraní API (dostupné prostřednictvím koncové body REST nebo prostřednictvím klientské knihovny). Další informace o EventStore na [EventStore přehled](service-fabric-diagnostics-eventstore.md).
+* Nejsou k dispozici z jednoho zprostředkovatele trasování událostí pro Windows se sadou relevantní Service Fabric události kanálů - na Windows Service Fabric události `logLevelKeywordFilters` umožňuje výběr mezi dat & zasílání zpráv a Operational kanály – to je způsob, ve kterém jsme oddělit odchozí Služba Fabric události filtrovanou na podle potřeby. V systému Linux Service Fabric události pocházet prostřednictvím LTTng a jsou vloženy do jedné tabulky úložiště, ze kterých mohou být filtrovány podle potřeby. Tyto kanály obsahovat kurátorované, strukturovaných události, které lze použít pro lepší pochopení stav clusteru. Diagnostika jsou povolené ve výchozím nastavení v okamžiku vytvoření clusteru, které vytvoření tabulky Azure Storage níž jsou odesílány události z těchto kanálů pro vás k dotazování v budoucnu. 
 
-Tyto kanály obsahovat kurátorované, strukturovaných události, které lze použít pro lepší pochopení stav clusteru. Diagnostika jsou povolené ve výchozím nastavení v okamžiku vytvoření clusteru, které vytvoření tabulky Azure Storage níž jsou odesílány události z těchto kanálů pro vás k dotazování v budoucnu. Si můžete přečíst informace o monitorování clusteru na [platformy úrovně událostí a protokolu generování](service-fabric-diagnostics-event-generation-infra.md).
+Doporučujeme pomocí EventStore pro rychlé analýzy a získat snímku představu o tom, jak váš cluster pracuje a pokud událostem dochází jako očekává. Pro shromažďování protokolů a událostí generovaných cluster, obvykle doporučujeme používat [rozšíření Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). To se integruje s Service Fabric analýzy, analýzy protokolů OMS Service Fabric specifického řešení, které poskytuje vlastní řídicí panel pro monitorování clusterů Service Fabric a umožňuje dotazování události vašeho clusteru a nastavit výstrahy. Další informace o to v [analýza události s OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
-Pro shromažďování protokolů a událostí generovaných cluster, obvykle doporučujeme používat [rozšíření Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). To se integruje s konkrétní řešení OMS Log Analytics Service Fabric, Service Fabric analýzy, který poskytuje vlastní řídicí panel pro sledování clusterů Service Fabric a umožňuje dotazování události vašeho clusteru a nastavit výstrahy. Další informace o to v [analýza události s OMS](service-fabric-diagnostics-event-analysis-oms.md). 
+ Si můžete přečíst informace o monitorování clusteru na [platformy úrovně událostí a protokolu generování](service-fabric-diagnostics-event-generation-infra.md).
+
 
  ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 

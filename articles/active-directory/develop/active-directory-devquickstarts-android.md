@@ -1,11 +1,11 @@
 ---
-title: "Začínáme se službou Azure AD Android | Microsoft Docs"
-description: "Jak vytvářet aplikace platformy Android, který se integruje s Azure AD pro přihlášení a volání služby Azure AD chráněný pomocí OAuth2.0 rozhraní API."
+title: Začínáme se službou Azure AD Android | Microsoft Docs
+description: Jak vytvářet aplikace platformy Android, který se integruje s Azure AD pro přihlášení a volání služby Azure AD chráněný pomocí OAuth2.0 rozhraní API.
 services: active-directory
 documentationcenter: android
 author: danieldobalian
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 6c949c07c95c5d965b31725bce4ab2deac646bca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.openlocfilehash: 8ea69fbc95b9d9b2452f041e99c46d223581bdac
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Začínáme se službou Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -28,7 +28,7 @@ Pokud vyvíjíte aplikace pracovní plochy, Azure Active Directory (Azure AD) je
 
 Pro Android klientů, kteří potřebují přístup k chráněným prostředkům Azure AD poskytuje službě Active Directory Authentication Library (ADAL). Jediný účel ADAL je snadno pro aplikaci, kterou chcete získat přístupové tokeny. K předvedení, jak je snadné, jsme budete sestavit Android seznam úkolů aplikaci, která:
 
-* Získá přístup k tokeny pro volání rozhraní API seznamu úkolů pomocí [protokol ověřování OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Získá přístup k tokeny pro volání rozhraní API seznamu úkolů pomocí [protokol ověřování OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
 * Získá seznam úkolů uživatele.
 * Provede odhlášení uživatele.
 
@@ -37,7 +37,7 @@ Abyste mohli začít, musíte klienta služby Azure AD, ve kterém můžete vytv
 ## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>Krok 1: Stáhněte a spusťte ukázkový server Node.js REST API se seznamem úkolů
 Ukázka TODO rozhraní API REST Node.js se zapíše speciálně pro práci s naše existující vzorek pro vytváření jednoho klienta úkolů REST API pro Azure AD. Toto je předpokladem pro rychlý Start.
 
-Informace o tom, jak nastavit tuto možnost najdete v tématu naše stávající ukázky v [Microsoft Azure Active Directory ukázka REST API Service pro Node.js](active-directory-devquickstarts-webapi-nodejs.md).
+Informace o tom, jak nastavit tuto možnost najdete v tématu naše stávající ukázky v [Azure služby Active Directory ukázka REST API pro Node.js](active-directory-devquickstarts-webapi-nodejs.md).
 
 
 ## <a name="step-2-register-your-web-api-with-your-azure-ad-tenant"></a>Krok 2: Registrace webového rozhraní API s klientovi Azure AD
@@ -81,8 +81,8 @@ Pokud chcete vytvořit s Maven, můžete použít pom.xml na nejvyšší úrovni
 
 1. Klonování tohoto úložiště do adresáře podle vašeho výběru:
 
-  `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
-2. Postupujte podle kroků v [požadavky pro nastavení prostředí Maven pro Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android).
+  `$ git clone https://github.com/Azure-Samples/active-directory-android.git`  
+2. Postupujte podle kroků v [požadavky pro nastavení prostředí Maven pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Maven).
 3. Nastavte emulátoru s SDK 19.
 4. Přejděte do kořenové složky, které jste naklonovali úložiště.
 5. Spusťte tento příkaz: `mvn clean install`
@@ -101,12 +101,12 @@ Provedli jsme ho snadno, mají několik možností použití knihovny ADAL v pro
 * Pokud používáte Android Studio, můžete použít formát balíčku AAR a odkazovat na binární soubory.
 
 ### <a name="option-1-source-zip"></a>Možnost 1: Zdroj Zip
-Chcete-li stáhnout kopii zdrojového kódu, klikněte na tlačítko **stáhnout ZIP** na pravé straně stránky. Nebo můžete [stáhnout z webu GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz).
+Chcete-li stáhnout kopii zdrojového kódu, klikněte na tlačítko **stáhnout ZIP** na pravé straně stránky. Nebo můžete [stáhnout z webu GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android/releases).
 
 ### <a name="option-2-source-via-git"></a>Možnost 2: Zdroj pomocí Gitu
 Chcete-li získat zdrojový kód sady SDK prostřednictvím Git, zadejte:
 
-    git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
+    git clone https://github.com/AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
 ### <a name="option-3-binaries-via-gradle"></a>Možnost 3: Binární soubory přes Gradle
@@ -167,7 +167,7 @@ Můžete získat na soubor JAR z úložiště Maven a umístěte jej do **knihov
             ....
         <application/>
 
-4. Vytvoření instance kontextu AuthenticationContext v hlavní aktivitě. Podrobnosti o toto volání jsou nad rámec tohoto tématu, ale můžete začít funkčním prohlížením [ukázka Android Native Client](https://github.com/AzureADSamples/NativeClient-Android). V následujícím příkladu je SharedPreferences výchozí mezipaměti a autorita ve formě `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
+4. Vytvoření instance kontextu AuthenticationContext v hlavní aktivitě. Podrobnosti o toto volání jsou nad rámec tohoto tématu, ale můžete začít funkčním prohlížením [ukázka Android Native Client](https://github.com/AzureAD/azure-activedirectory-library-for-android). V následujícím příkladu je SharedPreferences výchozí mezipaměti a autorita ve formě `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
@@ -232,27 +232,11 @@ Následuje vysvětlení parametrů:
 Pomocí tohoto návodu, byste měli mít, co je potřeba úspěšně integraci se službou Azure Active Directory. Další příklady tato práce, najdete v článku AzureADSamples nebo úložišti na Githubu.
 
 ## <a name="important-information"></a>Důležité informace
-### <a name="customization"></a>Přizpůsobení
-Vaše prostředky aplikace můžete přepsat projektu prostředky knihovny. To se stane, když sestavuje vaší aplikace. Z tohoto důvodu můžete přizpůsobit ověřování aktivity rozložení požadovaným způsobem. Ujistěte se, že zachovat ID ovládacích prvků, že používá ADAL (webového zobrazení).
 
 ### <a name="broker"></a>Zprostředkovatel
-Aplikace portál společnosti Microsoft Intune poskytuje komponentu zprostředkovatele. Účet je vytvořen v AccountManager. Typ účtu je "com.microsoft.workaccount." AccountManager umožňuje jenom jeden účet jednotné přihlašování. Vytvoří soubor cookie jednotného přihlašování pro uživatele po dokončení zařízení výzvu pro jednu z aplikací.
+Aplikace portál společnosti Intune nebo Microsoft Authenticator poskytuje komponentu zprostředkovatele. Účet je vytvořen v AccountManager. Typ účtu je "com.microsoft.workaccount." AccountManager umožňuje jenom jeden účet jednotné přihlašování. Vytvoří soubor cookie jednotného přihlašování pro uživatele po dokončení zařízení výzvu pro jednu z aplikací.
 
-ADAL používá zprostředkovatele účtu, pokud jeden uživatelský účet je vytvořen v tato ověřovací data a můžete zvolit nepoužívání přeskočit ho. Můžete přeskočit zprostředkovatele uživatele pomocí:
-
-   `AuthenticationSettings.Instance.setSkipBroker(true);`
-
-Je třeba zaregistrovat speciální RedirectUri pro použití zprostředkovatele. RedirectUri je ve formátu `msauth://packagename/Base64UrlencodedSignature`. Vaše RedirectUri pro vaši aplikaci můžete získat pomocí skriptu brokerRedirectPrint.ps1 nebo mContext.getBrokerRedirectUri volání rozhraní API. Podpis se vztahuje k podepisování certifikátů.
-
-Aktuální model zprostředkovatele je pro jednoho uživatele. Kontextu AuthenticationContext poskytuje metodu API získat zprostředkovatele uživatele.
-
-   `String brokerAccount =  mContext.getBrokerUser(); //Broker user is returned if account is valid.`
-
-Manifest aplikace by měla mít následující oprávnění k používání AccountManager účtů. Podrobnosti najdete v tématu [AccountManager informace na webu Android](http://developer.android.com/reference/android/accounts/AccountManager.html).
-
-* GET_ACCOUNTS
-* USE_CREDENTIALS
-* MANAGE_ACCOUNTS
+Další informace o konfiguraci pomocí zprostředkovatele, najdete v článku věnovaném [článku wikiwebu zprostředkovatele](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Broker). 
 
 ### <a name="authority-url-and-ad-fs"></a>Adresa URL autority a AD FS
 Active Directory Federation Services (AD FS) není rozpoznán jako produkční služby tokenů zabezpečení, takže budete muset zapnout zjišťování instance a předá hodnotu false v konstruktoru kontextu AuthenticationContext.
@@ -287,69 +271,15 @@ Toto jsou primární zdroje informací pro diagnostiku problémů:
 
 Všimněte si, že jsou ID korelace centrální diagnostiku v knihovně. Můžete nastavit vaše korelace požadavku ID na základě požadavků, pokud chcete ke korelaci ADAL s dalšími operacemi v kódu. Pokud není nastavený ID korelace, ADAL vygeneruje náhodné. Všechny zprávy protokolu a volání síť pak bude být označený ID korelace. Vygenerovaný sám sebou ID změny na každý požadavek.
 
-#### <a name="exceptions"></a>Výjimky
+#### <a name="errors--exceptions"></a>Chyby a výjimky
 Výjimky jsou první diagnostiky. Pokusíme se poskytují užitečné chybové zprávy. Pokud zjistíte, ten, který není užitečné, oznamte problém a dejte nám vědět. Zahrnují informace o zařízení, jako je například modelu a číslo SDK.
+
+Další informace o chybách, které vaše aplikace by měla řídit, najdete v článku věnovaném [osvědčené postupy pro zpracování chyb](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling). 
 
 #### <a name="logs"></a>Logs
 Můžete nakonfigurovat knihovně k vygenerování zprávy protokolu, které můžete použít pro usnadnění diagnostiky problémů. Konfigurace protokolování tím, že provedete následující volání pro zpětné volání, které ADAL použije k ručně vypnout každé zprávě protokolu je generovaná konfigurace.
 
-    Logger.getInstance().setExternalLogger(new ILogger() {
-        @Override
-        public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) {
-        ...
-        // You can write this to log file depending on level or error code.
-        writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);
-        }
-    }
-
-Jak je znázorněno v následujícím kódu, mohou být zprávy zapisovány do vlastního souboru protokolu. Bohužel neexistuje žádný standardní způsob získání protokolů ze zařízení. Existují některé služby, které vám mohou pomoci s to. Vám může také vytvořte vlastní, například odeslání souboru na server.
-
-    private syncronized void writeToLogFile(Context ctx, String msg) {
-       File directory = ctx.getDir(ctx.getPackageName(), Context.MODE_PRIVATE);
-       File logFile = new File(directory, "logfile");
-       FileOutputStream outputStream = new FileOutputStream(logFile, true);
-       OutputStreamWriter osw = new OutputStreamWriter(outputStream);
-       osw.write(msg);
-       osw.flush();
-       osw.close();
-    }
-
-Toto jsou úrovní protokolování:
-* Chyba (výjimek)
-* Warn (upozornění)
-* Informace o (informační účely)
-* Verbose (podrobnosti)
-
-Můžete nastavit úroveň protokolu takto:
-
-    Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
-
- Všechny zprávy protokolu jsou odesílány logcat, kromě všech zpětná volání vlastního protokolu.
-Můžete získat protokolu do souboru logcat následujícím způsobem:
-
-    adb logcat > "C:\logmsg\logfile.txt"
-
- Podrobnosti o adb příkazů najdete v tématu [logcat informace na webu Android](https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat).
-
-#### <a name="network-traces"></a>Trasování sítě
-Různé nástroje můžete zaznamenávat provoz protokolu HTTP, který generuje ADAL.  To je velmi užitečné, pokud jste obeznámeni s protokolem OAuth, nebo pokud potřebujete poskytovat diagnostické informace do společnosti Microsoft nebo jiné kanály podpory.
-
-Fiddler je nejjednodušší nástroj trasování HTTP. Pomocí následujících odkazů pro ni nastavit až správně záznamů ADAL síťový provoz. Pro trasování nástroje, jako je Fiddler nebo Charlese být užitečné je nutné nakonfigurovat ji k zaznamenání nešifrované přenosy protokolu SSL.  
-
-> [!NOTE]
-> Trasování generované tímto způsobem může obsahovat vysoce důvěrné informace, například přístupové tokeny, uživatelská jména a hesla. Pokud používáte produkční účty, nesdílí toto trasování s třetími stranami. Pokud budete muset zadat trasování uživateli, aby bylo možné získat podporu, reprodukujte problém pomocí dočasného účtu s uživatelských jmen a hesel, která vás sdílení.
-
-* Z webu Telerik webu: [nastavení si aplikaci Fiddler pro Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
-* Z Githubu: [nakonfigurovat aplikaci Fiddler pravidla pro ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
-
-### <a name="dialog-mode"></a>Dialogové okno režimu
-Metoda acquireToken bez aktivity podporuje řádku dialogové okno.
-
-### <a name="encryption"></a>Šifrování
-ADAL šifruje tokeny a úložiště v SharedPreferences ve výchozím nastavení. Můžete si prohlédnout třídy StorageHelper a zobrazit podrobnosti. Android zavedl Android úložiště klíčů pro 4.3 (rozhraní API 18) bezpečné uložení privátního klíče. ADAL použije tento 18 rozhraní API a vyšší. Pokud chcete pomocí knihovny ADAL pro nižší verze sady SDK, budete muset zadat tajný klíč v AuthenticationSettings.INSTANCE.setSecretKey.
-
-### <a name="oauth2-bearer-challenge"></a>Výzvy nosiče OAuth2
-Třída AuthenticationParameters poskytuje funkci k získání authorization_uri z výzvy nosiče OAuth2.
+Zapnutí protokolování, najdete v článku věnovaném [protokolování článku wikiwebu](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Logging).
 
 ### <a name="session-cookies-in-webview"></a>Soubory cookie relace ve webovém zobrazení
 Android webové zobrazení nevymaže soubory cookie relace po zavření aplikace. Která dokáže zpracovat pomocí ukázkový kód:
@@ -361,21 +291,10 @@ Android webové zobrazení nevymaže soubory cookie relace po zavření aplikace
 
 Podrobnosti o souborech cookie najdete v tématu [CookieSyncManager informace na webu Android](http://developer.android.com/reference/android/webkit/CookieSyncManager.html).
 
-### <a name="resource-overrides"></a>Přepsání prostředků
-Knihovna ADAL zahrnuje anglické řetězce pro zprávy ProgressDialog. Aplikace je měli přepsat, pokud chcete, aby lokalizovaných řetězců.
-
-     <string name="app_loading">Loading...</string>
-     <string name="broker_processing">Broker is processing</string>
-     <string name="http_auth_dialog_username">Username</string>
-     <string name="http_auth_dialog_password">Password</string>
-     <string name="http_auth_dialog_title">Sign In</string>
-     <string name="http_auth_dialog_login">Login</string>
-     <string name="http_auth_dialog_cancel">Cancel</string>
-
 ### <a name="ntlm-dialog-box"></a>Dialogové okno protokolu NTLM
 ADAL verze 1.1.0 podporuje dialogu protokolu NTLM, který zpracovává se pomocí onReceivedHttpAuthRequest událost z WebViewClient. Můžete přizpůsobit rozložení a řetězce pro dialogové okno.
 
-### <a name="cross-app-sso"></a>Cross-app SSO
+### <a name="cross-app-sso"></a>Jednotné přihlašování napříč aplikacemi
 Další informace [postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL](active-directory-sso-android.md).  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

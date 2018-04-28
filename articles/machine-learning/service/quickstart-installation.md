@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 0a24adb94930024f6eaaa5ac270ae7fc35520132
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Rychlý start: Instalace služeb Azure Machine Learning a začátek práce s nimi
 Služby Azure Machine Learning (Preview) představují komplexní integrované řešení pro datové vědy a pokročilé analýzy. Pomáhá profesionálním datovým vědcům připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
@@ -64,7 +64,7 @@ Ke zřízení účtů služeb Azure Machine Learning použijte web Azure Portal:
    Skupina prostředků | _Vaše skupina prostředků_ | Použijte existující skupinu prostředků ve vašem předplatném nebo zadejte název a vytvořte pro tento účet Experimentování novou skupinu prostředků. 
    Umístění | _Oblast nejbližší vašim uživatelům_ | Zvolte umístění co nejblíže vašim uživatelům a datovým prostředkům.
    Počet licencí | 2 | Zadejte počet licencí. Informace o tom, jak [licence ovlivňují ceny](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Pro účely tohoto rychlého startu potřebujete jenom dvě licence. Licence je možné podle potřeby přidávat nebo odebírat na webu Azure Portal.
-   Účet úložiště | _Jedinečný název_ | Vyberte **Vytvořit nový** a zadejte název pro vytvoření [účtu úložiště Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal). Název musí být dlouhý 3 až 24 znaků a může obsahovat pouze alfanumerické znaky. Případně vyberte **Použít existující** a z rozevíracího seznamu vyberte existující účet úložiště. Účet úložiště je povinný a slouží k ukládání artefaktů projektu a dat historie spuštění. 
+   Účet úložiště | _Jedinečný název_ | Vyberte **Vytvořit nový** a zadejte název pro vytvoření [účtu úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal). Název musí být dlouhý 3 až 24 znaků a může obsahovat pouze alfanumerické znaky. Případně vyberte **Použít existující** a z rozevíracího seznamu vyberte existující účet úložiště. Účet úložiště je povinný a slouží k ukládání artefaktů projektu a dat historie spuštění. 
    Účet aplikace Workspace pro experimentování | IrisGarden<br/>(název používaný v kurzech) | Zadejte název pracovního prostoru pro tento účet. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
    Přiřazení vlastníka pracovního prostoru | _Váš účet_ | Jako vlastníka pracovního prostoru vyberte svůj vlastní účet.
    Vytvoření účtu služby Správa modelů | **zaškrtnutí** |Vytvořte účet služby Správa modelů už teď, aby byl tento prostředek k dispozici, až budete chtít nasadit a spravovat své modely jako webové služby fungující v reálném čase. <br/><br/>I když je to volitelné, doporučujeme vytvořit účet služby Správa modelů zároveň s účtem Experimentování.

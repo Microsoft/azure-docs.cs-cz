@@ -3,7 +3,7 @@ title: Virtuální počítače v šablonu Azure Resource Manager | Microsoft Azu
 description: Další informace o tom, jak je definován prostředek virtuálního počítače v šablonu Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: davidmu
-ms.openlocfilehash: 43cd6322bb03b5c781a890c3280247cbb2d118f6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 50fb5eeea5e3d6a2f991e92ae9c188822ddb40b0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šablonu Azure Resource Manager
 
@@ -162,7 +162,7 @@ Verze rozhraní API, které zadáte v šabloně ovlivňuje vlastnosti, které de
 Použijte tyto příležitosti pro získání nejnovější verze rozhraní API:
 
 - Rozhraní API REST - [zobrazit seznam všech poskytovatelů prostředků](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
+- PowerShell – [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Rozhraní příkazového řádku Azure 2.0 - [az zprostředkovatele zobrazit](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parametry a proměnné

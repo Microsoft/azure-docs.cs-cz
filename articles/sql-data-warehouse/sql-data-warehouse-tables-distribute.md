@@ -1,42 +1,38 @@
 ---
-title: "Návrh pokyny pro distribuované tabulky – Azure SQL Data Warehouse | Microsoft Docs"
-description: "Doporučení pro navrhování distribuovat algoritmu hash a kruhového dotazování tabulky v Azure SQL Data Warehouse."
+title: Návrh distribuovaných tabulky pokyny - Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení pro navrhování distribuovat algoritmu hash a kruhového dotazování distribuované tabulky v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny pro návrh distribuovaných tabulek v Azure SQL Data Warehouse
+Doporučení pro navrhování distribuovat algoritmu hash a kruhového dotazování distribuované tabulky v Azure SQL Data Warehouse.
 
-Tento článek obsahuje doporučení pro návrh distribuovaných tabulek v Azure SQL Data Warehouse. Distribuovat algoritmu hash tabulky zlepšit výkon dotazu na tabulky faktů velké a jsou zaměřeny tohoto článku. Kruhové dotazování tabulky jsou užitečné pro zlepšení rychlost načítání. Tyto možnosti návrhu, které mají významný dopad na vylepšení dotazů a načítání výkonu.
+Tento článek předpokládá, že jste obeznámeni s distribuci dat a koncepty přesun dat v SQL Data Warehouse.  Další informace najdete v tématu [Azure SQL Data Warehouse - masivně paralelní zpracování () architektura MPP](massively-parallel-processing-mpp-architecture.md). 
 
-## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste obeznámeni s distribuci dat a koncepty přesun dat v SQL Data Warehouse.  Další informace najdete v tématu [architektura](massively-parallel-processing-mpp-architecture.md) článku. 
+## <a name="what-is-a-distributed-table"></a>Co je distribuované tabulky?
+Distribuované tabulka se zobrazí jako jednu tabulku, ale řádky jsou ve skutečnosti ukládat v rámci 60 distribuce. Řádky jsou distribuované s hash nebo algoritmus kruhového dotazování.  
+
+**Distribuovat algoritmu hash tabulky** zlepšit výkon dotazu na tabulky faktů velké a jsou zaměřeny tohoto článku. **Kruhové dotazování tabulky** jsou užitečné pro zlepšení rychlost načítání. Tyto možnosti návrhu, které mají významný dopad na vylepšení dotazů a načítání výkonu.
+
+Další možností úložiště table je replikaci malé tabulky pro všechny výpočetní uzly. Další informace najdete v tématu [návrh pokyny pro replikované tabulky](design-guidance-for-replicated-tables.md). Rychle vybrat mezi tři možnosti, najdete v části tabulky distribuované [tabulky přehled](sql-data-warehouse-tables-overview.md). 
 
 Jako součást návrh tabulky Pochopte, co nejvíce o vašich dat a jak je dotazován data.  Například zvažte tyto otázky:
 
 - Jak velká je tabulka?   
 - Jak často se aktualizují v tabulce?   
 - Je nutné provést tabulkami faktů a dimenzí v datovém skladu?   
-
-## <a name="what-is-a-distributed-table"></a>Co je distribuované tabulky?
-Distribuované tabulka se zobrazí jako jednu tabulku, ale řádky jsou ve skutečnosti ukládat v rámci 60 distribuce. Řádky jsou distribuované s hash nebo algoritmus kruhového dotazování. 
-
-Další možností úložiště table je replikaci malé tabulky pro všechny výpočetní uzly. Další informace najdete v tématu [návrh pokyny pro replikované tabulky](design-guidance-for-replicated-tables.md). Rychle vybrat mezi tři možnosti, najdete v části tabulky distribuované [tabulky přehled](sql-data-warehouse-tables-overview.md). 
 
 
 ### <a name="hash-distributed"></a>Hodnota hash distribuované
@@ -67,7 +63,7 @@ Zvažte použití rozdělení kruhového dotazování pro tabulku v následujíc
 - Pokud je méně důležité než jiné spojení v dotazu spojení
 - Pokud je tabulka dočasné pracovní tabulky
 
-Tento kurz [načítání dat z objektu blob úložiště Azure](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do pracovní tabulky pomocí kruhového dotazování.
+Tento kurz [data taxicab zatížení New Yorku k Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načítání dat do pracovní tabulky pomocí kruhového dotazování.
 
 
 ## <a name="choosing-a-distribution-column"></a>Výběr distribuční sloupce
@@ -91,7 +87,7 @@ WITH
 ;
 ``` 
 
-Výběr sloupce distribuce je rozhodnutí o návrhu důležité, protože hodnoty v tomto sloupci určují, jak jsou distribuovány řádky. Nejlepší volbou závisí na několika faktorech a obvykle zahrnuje kompromisy. Ale když nebude sloupci nejlepší poprvé, můžete použít [vytvořit tabulku AS vyberte funkce CTAS ()](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) opětovné vytvoření tabulky se sloupcem jiný distribuční. 
+Výběr sloupce distribuce je rozhodnutí o návrhu důležité, protože hodnoty v tomto sloupci určují, jak jsou distribuovány řádky. Nejlepší volbou závisí na několika faktorech a obvykle zahrnuje kompromisy. Ale když nebude sloupci nejlepší poprvé, můžete použít [vytvořit tabulku AS vyberte funkce CTAS ()](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) opětovné vytvoření tabulky se sloupcem jiný distribuční. 
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Zvolte distribuční sloupec, který nevyžaduje aktualizace
 Distribuční sloupce nelze aktualizovat, není-li odstranit řádek a vložit nový řádek aktualizovanými hodnotami. Proto vyberte sloupec s statické hodnoty. 
@@ -129,7 +125,7 @@ Když navrhujete tabulku distribuovat algoritmu hash, dalším krokem je načís
 Po načtení dat do tabulky distribuovat algoritmu hash, zkontrolujte, jak se řádky rovnoměrně mezi 60 distribuce. Řádky za distribuční se může lišit až 10 % bez znatelný dopad na výkon. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Určete, jestli tabulka obsahuje data zkreslit
-Rychlý způsob, jak zkontrolovat pro zkosení dat je použití [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Následující kód SQL vrátí počet řádků tabulky, které jsou uložené v každé z 60 distribuce. Vyrovnáváním výkonu by měl být řádky v tabulce distribuované, rovnoměrně rozloženy všechny distribuce.
+Rychlý způsob, jak zkontrolovat pro zkosení dat je použití [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql). Následující kód SQL vrátí počet řádků tabulky, které jsou uložené v každé z 60 distribuce. Vyrovnáváním výkonu by měl být řádky v tabulce distribuované, rovnoměrně rozloženy všechny distribuce.
 
 ```sql
 -- Find data skew for a distributed table

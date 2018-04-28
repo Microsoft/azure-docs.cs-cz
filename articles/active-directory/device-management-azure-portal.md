@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a4bdea4844c4aaa9990d619d59326a83cf0aef6c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Správa zařízení pomocí portálu Azure
 
@@ -74,7 +74,7 @@ Stránka nastavení zařízení můžete konfigurovat:
 
 - **Uživatelé mohou registrovat svá zařízení s Azure AD** -je nutné nakonfigurovat toto nastavení umožňuje zařízení, aby vyhovoval [zaregistrován](device-management-introduction.md#azure-ad-registered-devices) s Azure AD. Pokud vyberete **žádné**, zařízení není povoleno zaregistrovat, které nejsou připojené k Azure AD nebo hybridní připojený k Azure AD. Registrace s Microsoft Intune nebo správy mobilních zařízení (MDM) pro Office 365 vyžaduje registraci. Pokud jste nakonfigurovali některou z těchto služeb **všechny** je vybraná a **NONE** není k dispozici...
 
-- **Vyžadovat vícefaktorového ověřování pro připojení zařízení** – můžete zvolit, jestli uživatelé musí poskytnout druhý ověřovací faktor k [spojení](device-management-introduction.md#azure-ad-joined-devices) své zařízení do služby Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste při registraci zařízení, které vyžadují služby Multi-Factor authentication. Než povolíte službu Multi-Factor authentication pro tuto službu, je nutné zajistit, že aplikace Multi-Factor authentication je nakonfigurován pro uživatele, kteří registrovat svá zařízení. Další informace o službám různých Azure Multi-Factor authentication, naleznete v části [Začínáme s Azure Multi-Factor authentication](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
+- **Vyžadovat vícefaktorového ověřování pro připojení zařízení** – můžete zvolit, jestli uživatelé musí poskytnout druhý ověřovací faktor k [spojení](device-management-introduction.md#azure-ad-joined-devices) své zařízení do služby Azure AD. Výchozí hodnota je **ne**. Doporučujeme, abyste při registraci zařízení, které vyžadují služby Multi-Factor authentication. Než povolíte službu Multi-Factor authentication pro tuto službu, je nutné zajistit, že aplikace Multi-Factor authentication je nakonfigurován pro uživatele, kteří registrovat svá zařízení. Další informace o službám různých Azure Multi-Factor authentication, naleznete v části [Začínáme s Azure Multi-Factor authentication](authentication/concept-mfa-whichversion.md). 
 
 - **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet zařízení, které uživatel může mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, budou se moct přidávat další zařízení, dokud jeden nebo více existující zařízení se odeberou. Uvozovky zařízení se počítá pro všechna zařízení, které jsou připojené k Azure AD nebo dnes zaregistrovat Azure AD. Výchozí hodnota je **20**.
 

@@ -1,10 +1,10 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Form.com | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Form.com."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Form.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e4de55d99fce1cb1feff18a784eb029d3cb6a404
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0b1d990337c7c5caaee79bc8e3280c2690fc47b0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Kurz: Azure Active Directory integrace s Form.com
 
@@ -101,16 +101,16 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_samlbase.png)
 
 3. Na **Form.com domény a adresy URL** část, proveďte následující kroky:
 
     ![Form.com domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.wa-form.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.wa-form.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.form.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.form.com`
 
     c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
@@ -118,46 +118,26 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
     | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, adresa URL odpovědi a identifikátor. Obraťte se na [tým podpory Form.com klienta](https://form.com/about/company/contact-us/) k získání těchto hodnot. 
- 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, adresa URL odpovědi a identifikátor. Obraťte se na [tým podpory Form.com klienta](https://form.com/about/company/contact-us/) k získání těchto hodnot.
 
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_certificate.png) 
-
-5. Ke generování **adresu URL metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
+4. Na **SAML podpisový certifikát** část, proveďte následující kroky:
     
-    ![Konfigurace appreg](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurace Endpointcon](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpointicon.png)
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-formcom-tutorial/tutorial_metadataurl.png)
 
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurace koncového bodu](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_endpoint.png)
+    a. Klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+
+    b. Klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
      
-    d. Nyní přejděte na stránku vlastností **Form.com** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurace appid](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Klikněte na tlačítko **Uložit** tlačítko.
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-formcom-tutorial/tutorial_general_400.png)
 
-7. Na **Form.com konfigurace** klikněte na tlačítko **konfigurace Form.com** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Na **Form.com konfigurace** klikněte na tlačítko **konfigurace Form.com** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurace Form.com](./media/active-directory-saas-formcom-tutorial/tutorial_form.com_configure.png) 
 
-8. Konfigurace jednotného přihlašování na **Form.com** straně, budete muset odeslat stažené **certifikátu (Base64)**, **adresu URL metadat**, a **SAML jednotné přihlašování Adresa URL služby** k [tým podpory Form.com](https://form.com/about/company/contact-us/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+7. Konfigurace jednotného přihlašování na **Form.com** straně, budete muset odeslat stažené **certifikátu (Base64)**, **adresu Url aplikace federační Metadata**, a **SAML Jednotné přihlašování adresa URL služby** k [tým podpory Form.com](https://form.com/about/company/contact-us/). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -232,7 +212,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Form.com na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Form.com.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

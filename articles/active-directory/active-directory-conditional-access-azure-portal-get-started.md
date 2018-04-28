@@ -1,12 +1,12 @@
 ---
-title: "Začínáme s podmíněným přístupem v Azure Active Directory | Microsoft Docs"
-description: "Otestujte podmíněný přístup pomocí podmínku umístění."
+title: Začínáme s podmíněným přístupem v Azure Active Directory | Microsoft Docs
+description: Otestujte podmíněný přístup pomocí podmínku umístění.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Začínáme s podmíněným přístupem v Azure Active Directory
 
@@ -30,7 +30,7 @@ Toto téma obsahuje pokyny pro testování podmíněného přístupu na základ�
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Jeden požadavek na běžné v mnoha organizacích je pouze vyžadovat vícefaktorové ověřování pro přístup k aplikacím, který neprovádí k podnikovému intranetu. S Azure Active Directory můžete snadno dosažení tohoto cíle konfigurací zásady podmíněného přístupu na základě polohy. Toto téma poskytuje podrobné pokyny ke konfiguraci související zásad. Využívá zásady [důvěryhodné IP adresy](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) k rozlišení mezi pokusy o přístup z podnikové síti je intranetu a všechny ostatní umístění.
+Jeden požadavek na běžné v mnoha organizacích je pouze vyžadovat vícefaktorové ověřování pro přístup k aplikacím, který neprovádí k podnikovému intranetu. S Azure Active Directory můžete snadno dosažení tohoto cíle konfigurací zásady podmíněného přístupu na základě polohy. Toto téma poskytuje podrobné pokyny ke konfiguraci související zásad. Využívá zásady [důvěryhodné IP adresy](authentication/howto-mfa-mfasettings.md#trusted-ips) k rozlišení mezi pokusy o přístup z podnikové síti je intranetu a všechny ostatní umístění.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -47,7 +47,7 @@ Chcete-li tento scénář otestovat, je potřeba:
 
 - Konfigurovat důvěryhodné IP adresy
 
-Pokud potřebujete další podrobnosti o důvěryhodné IP adresy, přečtěte si [důvěryhodné IP adresy](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+Pokud potřebujete další podrobnosti o důvěryhodné IP adresy, přečtěte si [důvěryhodné IP adresy](authentication/howto-mfa-mfasettings.md#trusted-ips).
 
 
 ## <a name="policy-configuration-steps"></a>Postup konfigurace zásad

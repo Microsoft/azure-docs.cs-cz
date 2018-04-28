@@ -1,11 +1,11 @@
 ---
-title: "Automatizované SaaS zřizování uživatelů aplikace ve službě Azure AD | Microsoft Docs"
-description: "Úvod do Azure AD můžete použít jak pro automatické zřizování, zrušit a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS jiných výrobců."
+title: Automatizované SaaS zřizování uživatelů aplikace ve službě Azure AD | Microsoft Docs
+description: Úvod do Azure AD můžete použít jak pro automatické zřizování, zrušit a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS jiných výrobců.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 56af1915326429b37f87dbaa397e1c9b832c675a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
@@ -176,7 +176,7 @@ Když do karantény, četnost přírůstkové synchronizace postupně snížena 
 
 Výkon se liší v závislosti na tom, jestli je vaše úlohy zřizování provádění počáteční synchronizace nebo přírůstkové synchronizace.
 
-U počáteční synchronizace bude v době potřebné k dokončení přímo závislé na tom, kolik uživatelů, skupin a členy skupiny se nacházejí ve zdrojovém systému. Velmi malé zdrojových systémů se stovkami objektů může dokončení počáteční synchronizace v řádu minut. Zdrojových systémů s stovky tisíc nebo milióny kombinované objektů však může trvat velmi dlouho.
+U počáteční synchronizace bude v době potřebné k dokončení přímo závislé na tom, kolik uživatelů, skupin a členy skupiny se nacházejí ve zdrojovém systému. Velmi malé zdrojových systémů se stovkami objektů může dokončení počáteční synchronizace v řádu minut. Zdrojových systémů s stovky tisíc nebo milióny kombinované objektů však bude trvat déle.
 
 Pro přírůstkové synchronizace době potřebné závisí na číslo v tomto synchronizačním cyklu byly zjištěny změny. Pokud jsou menší než 5 000 uživatele nebo byly zjištěny změny členství ve skupině, můžete tyto často synchronizovat v rámci cyklu 40 minutu. 
 

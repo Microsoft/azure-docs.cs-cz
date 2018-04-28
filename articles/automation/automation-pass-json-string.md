@@ -9,11 +9,11 @@ ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: dd90c15ca70b08a010215a10f35abb3706825dea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 43f11b6e89b45fae94d0f7b10f0348468593956e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 
@@ -60,7 +60,7 @@ Param(
 
 # Connect to Azure account   
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
+Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
     -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
 # Convert object to actual JSON
@@ -79,7 +79,7 @@ Spusťte následující příkazy prostředí PowerShell:
 
 1. Přihlaste se k Azure:
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
     Zobrazí se výzva k zadání přihlašovacích údajů Azure.
 1. Získat obsah souboru JSON a převeďte ho na řetězec:

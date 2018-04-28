@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: e1dfd7ec4a2475142423f00a457a909989a36bea
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be7db6f8a69731dec83ba94aecc272bc1df17892
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Vytvořit virtuální síť partnerský vztah - různé modely nasazení, stejného předplatného. 
 
@@ -161,7 +161,7 @@ Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řá
 
     > [!WARNING]
     > Import konfiguračního souboru změněné sítě může způsobit změny existující virtuální sítě (klasické) v rámci vašeho předplatného. Ujistěte se, můžete přidat pouze předchozí virtuální sítě a změníte nebo odeberte všechny existující virtuální sítě ze svého předplatného. 
-5. Přihlaste se k Azure a vytvoření virtuální sítě (Resource Manager) tak, že zadáte `login-azurermaccount` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#requirements-and-constraints).
+5. Přihlaste se k Azure a vytvoření virtuální sítě (Resource Manager) tak, že zadáte `Connect-AzureRmAccount` příkaz. Účet, ke kterému se přihlásíte, musí mít potřebná oprávnění k vytvoření virtuální sítě partnerského vztahu. Seznam oprávnění najdete v tématu [virtuální sítě partnerského vztahu oprávnění](virtual-network-manage-peering.md#requirements-and-constraints).
 6. Vytvořte skupinu prostředků a virtuální síť (Resource Manager). Zkopírujte skript, vložte jej do prostředí PowerShell a potom stiskněte klávesu `Enter`.
 
     ```powershell
@@ -211,7 +211,7 @@ Po dokončení tohoto kurzu, můžete chtít odstranit z prostředků, které js
 2. Na **myResourceGroup** okně klikněte **odstranit** ikonu.
 3. Potvrďte odstranění, v **název skupiny prostředků typu** zadejte **myResourceGroup**a potom klikněte na **odstranit**.
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
 
 1. Pomocí Azure CLI 2.0 odstranit virtuální síť (Resource Manager) pomocí následujícího příkazu:
 

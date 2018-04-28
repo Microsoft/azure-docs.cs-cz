@@ -1,6 +1,6 @@
 ---
-title: "Testování pera | Microsoft Docs"
-description: "Článek obsahuje přehled průnikům testování procesu (pentest) a jak provádět pentest proti vaší aplikace běžící v Azure infrastruktury."
+title: Testování pera | Microsoft Docs
+description: Článek obsahuje přehled průnikům testování procesu (pentest) a jak provádět pentest proti vaší aplikace běžící v Azure infrastruktury.
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 5f2a72d133218e72d1db86b787c998cc50269d3a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1b7b6604de80beadf15dabe0d2da1d7a2e5fabd6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="pen-testing"></a>Testování pera
 Jednou z výhod používání Azure pro testování aplikací a nasazení je, můžete rychle získat prostředí vytvořili.  Nemusíte si dělat starosti o žádanek, získávání a "stáčení a překrývání" vlastní místní hardware.
@@ -34,7 +34,7 @@ Co dělat?
 Od 15. června 2017, Microsoft už vyžaduje schválení před vést průnikům testy s prostředky Azure. Doporučujeme, aby vyplnit se zákazníky, kteří chtějí oficiálně dokumentu nadcházející průnikům testování oznámeních podporujících zapojení uživatelů s Microsoft Azure [Azure Service průnikům testování oznámení formuláře](https://portal.msrc.microsoft.com/en-us/engage/pentest). Tento proces se vztahuje pouze k Microsoft Azure a nemusí platit pro všechny ostatní cloudové služby Microsoftu. 
 
 >[!IMPORTANT] 
->Při odesílání oznámení o chybách společnosti Microsoft pera testování aktivity se už nevyžaduje zákazníky stále splňovat [Microsoft Cloud Unified průnikům testování pravidla zapojení](https://technet.microsoft.com/en-us/mt784683). 
+>Při odesílání oznámení o chybách společnosti Microsoft pera testování aktivity se už nevyžaduje zákazníky stále splňovat [Microsoft Cloud Unified průnikům testování pravidla zapojení](https://technet.microsoft.com/mt784683). 
 
 Standardní testy, které můžete provádět, zahrnují:
 

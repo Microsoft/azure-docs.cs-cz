@@ -1,34 +1,36 @@
 ---
-title: "Obnovení disku virtuálního počítače pomocí služby Azure Backup | Microsoft Docs"
-description: "Zjistěte, jak obnovit disk a vytvořit obnovený virtuální počítač v Azure pomocí služeb Backup a Recovery Services."
+title: Obnovení disku virtuálního počítače pomocí služby Azure Backup | Microsoft Docs
+description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální počítač v Azure pomocí služeb Backup a Recovery Services.
 services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 2/14/2018
+ms.date: 4/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 571d40c46771f43ad5ea78fe92398de09e87393c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2b82725362517d12dd4e7df7b2bb083fa107253
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Obnovení disku a vytvoření obnoveného virtuálního počítače v Azure
-Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače. V tomto kurzu se naučíte:
+Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Výpis a výběr bodů obnovení
 > * Obnovení disku z bodu obnovení
 > * Vytvoření virtuálního počítače z obnoveného disku
+
+Informace o obnovení disku a vytvoření chráněného počítače pomocí PowerShellu najdete v tématu [Zálohování a obnovení virtuálních počítačů Azure pomocí PowerShellu](backup-azure-vms-automation.md#restore-an-azure-vm).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

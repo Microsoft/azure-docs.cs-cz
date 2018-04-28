@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 6d82e67e546c8c2079d1feced6e10954fe67a83d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 55017b139ce89fa74a8105da05792024ecee86b2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Správa clusterů HDInsight pomocí Ambari REST API
 
@@ -509,7 +509,7 @@ Nyní když se podíváte na webovému uživatelskému rozhraní Ambari, službu
     $resp.Content
     ```
     
-    Odpověď je stejný jako v následujícím příkladu:
+    Odpověď bude podobná jako v následujícím příkladu:
    
     ```json
     {

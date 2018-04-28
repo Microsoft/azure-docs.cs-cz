@@ -1,26 +1,26 @@
 ---
-title: "Ukázky šablony zásad | Microsoft Docs"
-description: "Ukázky JSON pro zásad Azure"
+title: Ukázky šablony zásad | Microsoft Docs
+description: Ukázky JSON pro zásad Azure
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: azure-policy
 ms.devlang: na
 ms.topic: samples
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 01/17/2018
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="templates-for-azure-policy"></a>Šablony pro Azure zásad
 
@@ -59,7 +59,7 @@ Následující tabulka obsahuje odkazy na šablony json Azure zásady. Tyto uká
 | [Použijte schválené podsíť pro síťová rozhraní virtuálních počítačů](scripts/use-approved-subnet-vm-nics.md) | Vyžaduje, aby používal síťových rozhraní schválené podsítě. Zadáte ID schválené podsítě. |
 | [Použít schválené vNet pro síťová rozhraní virtuálních počítačů](scripts/use-approved-vnet-vm-nics.md) | Vyžaduje, aby síťových rozhraní použít schválené virtuální síť. Zadáte ID schválené virtuální sítě. |
 |**Značky**||
-| [Fakturace značky zásad Initiative](scripts/billing-tags-policy-init.md) | Vyžaduje, aby hodnoty stanovené značky pro náklady center a název produktu. Používá integrované zásady pro použití a vynutit požadované značky. Můžete zadat požadované hodnoty pro značek.  |
+| [Fakturace značky zásad Initiative](scripts/billing-tags-policy-init.md) | Vyžaduje, aby hodnoty stanovené značky pro náklady center a název produktu. S využitím předdefinovaných zásad používá a vynucuje požadované značky. Pro značky zadáte požadované hodnoty.  |
 | [Vynutit značku a její hodnotu na skupiny prostředků](scripts/enforce-tag-rg.md) | Vyžaduje značky a hodnoty pro skupinu prostředků. Zadáte název požadované značky a hodnotu.  |
 |**SQL**||
 | [Auditování SQL DB úroveň nastavení kontroly](scripts/audit-sql-db-audit-setting.md) | Audity nastavení auditování databáze SQL, pokud tato nastavení se neshodují zadané nastavení. Zadáte hodnotu, která určuje, zda nastavení auditu by měl být povoleno nebo zakázáno.  |

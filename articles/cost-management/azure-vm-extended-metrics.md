@@ -1,20 +1,20 @@
 ---
-title: "Přidání rozšířené metriky pro virtuální počítače Azure | Microsoft Docs"
-description: "Tento článek vám umožňuje povolit a konfigurovat metriky rozšířené diagnostiky pro virtuální počítače Azure."
+title: Přidání rozšířené metriky pro virtuální počítače Azure | Microsoft Docs
+description: Tento článek vám umožňuje povolit a konfigurovat metriky rozšířené diagnostiky pro virtuální počítače Azure.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 91797aaab1dca96e78643f57776eb16d336e894b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
 

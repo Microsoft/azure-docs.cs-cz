@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblémové Single Sign-On - GDPR dodržování předpisů | Microsoft Docs"
-description: "Tento článek se zabývá bezproblémové jednotného přihlašování k Azure Active Directory (Azure AD) a GDPR dodržování předpisů."
+title: Ochrana osobních údajů uživatelů a Azure AD bezproblémové jednotného přihlašování | Microsoft Docs
+description: Tento článek se zabývá bezproblémové jednotného přihlašování k Azure Active Directory (Azure AD) a GDPR dodržování předpisů.
 services: active-directory
-keywords: "Co je Azure AD Connect, GDPR, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect, GDPR, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,27 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 0c7ed376accb1eed01106358491e925d3b8126c5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-ad-seamless-single-sign-on-gdpr-compliance"></a>Azure AD bezproblémové jednotné přihlašování: dodržování předpisů GDPR
+# <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a Azure AD bezproblémové jednotné přihlašování
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Přehled
 
-V květnu 2018, ochrany osobních údajů Evropského zákona, [obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), je kvůli vstoupily v platnost. GDPR ukládá nové pravidel na společnosti, organizace státní správy, bez zisku a organizace nabídka zboží a služeb na osoby ve Evropské unie (EU), nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. GDPR platí bez ohledu na to, kde se nacházíte. 
-
-Produkty a služby Microsoftu jsou dnes, které vám pomůžou GDPR požadavkům. Další informace o zásadách Microsoft Privacy na [Centrum zabezpečení](https://www.microsoft.com/trustcenter).
 
 Azure AD bezproblémové SSO vytvoří následující typ protokolu, která může obsahovat EUII:
 
 - Soubory protokolu trasování Azure AD Connect.
 
-GDPR dodržování předpisů pro bezproblémové jednotné přihlašování lze dosáhnout dvěma způsoby:
+Dodržování předpisů o ochraně osobních údajů uživatele pro bezproblémové jednotné přihlašování lze dosáhnout dvěma způsoby:
 
 1.  Na žádost extrahovat data pro osoby a odstranění dat z osoba ze zařízení.
 2.  Zkontrolujte, že žádná data se uchovávají za 48 hodin.
@@ -64,7 +63,7 @@ Další informace o souvisejících s požadavky na Azure AD Connect GDPR najdet
 
 Pokud je povoleno protokolování auditu, může tento produkt generovat protokolů zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu, přečtěte si to [článku](https://technet.microsoft.com/library/dd277403.aspx).
 
-## <a name="next-steps"></a>Další kroky
-
+## <a name="next-steps"></a>Další postup
+* [Zkontrolujte nastavení zásad Microsoft Privacy na Centrum zabezpečení](https://www.microsoft.com/trustcenter)
 - [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-sso.md) – zjistěte, jak řešit obvyklé problémy s funkcí.
 - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – pro vyplnění žádosti o nové funkce.

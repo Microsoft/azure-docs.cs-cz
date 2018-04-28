@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: larryfr
-ms.openlocfilehash: b96f457bc13ae3e412580096a1f9be865e64cb74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 970ccf19b5668bd57118fcabc5018c60352ebde7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Pomocí klienta Beeline s Apache Hive
 
@@ -252,10 +252,17 @@ Najít plně kvalifikovaný název domény headnode, použijte informace v [spra
 
 Spark poskytuje svou vlastní implementaci systému HiveServer2, která se někdy označuje jako serveru Spark Thrift. Tato služba používá Spark SQL při překladu místo Hive a může poskytovat lepší výkon v závislosti na svůj dotaz.
 
-Pro připojení k serveru Spark Thrift Spark na clusteru HDInsight, použijte port `10002` místo `10001`. Například, `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
+__Připojovací řetězec__ použít při připojení přes internet se mírně liší. Místo obsahující `httpPath=/hive2` je `httpPath/sparkhive2`. Následuje příklad připojení přes internet:
 
-> [!IMPORTANT]
-> Serveru Spark Thrift není přímo přístupné přes internet. Můžete pouze připojit k němu z relace SSH nebo ve stejné virtuální síti Azure jako HDInsight cluster.
+```bash 
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Pokud se připojujete přímo z hlavního uzlu clusteru, nebo z prostředků ve stejné virtuální síti Azure jako HDInsight cluster, port `10002` se mají použít pro serveru Spark Thrift místo `10001`. Následuje příklad připojovat přímo k hlavnímu uzlu:
+
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
+```
 
 ## <a id="summary"></a><a id="nextsteps"></a>Další kroky
 

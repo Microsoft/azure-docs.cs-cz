@@ -12,26 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f982e859892965379b7ffb08e15dd1cf51b9801f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací na výpočetní uzly pomocí balíčků aplikací Batch
 
 Funkci balíčků aplikací Azure Batch poskytuje snadnou správu úloh aplikací a jejich nasazení na výpočetní uzly ve fondu. Pomocí balíčků aplikací můžete odeslat a spravovat více verzí aplikací, které vaše úkoly spouštět, včetně jejich podpůrné soubory. Můžete pak automaticky nasadit jednu nebo více těchto aplikací na výpočetní uzly ve fondu.
 
-V tomto článku se dozvíte, jak odesílat a spravovat balíčky aplikací na portálu Azure. Potom se dozvíte, jak k instalaci na výpočetní uzly fondu s [Batch .NET] [ api_net] knihovny.
+V tomto článku zjistěte, jak nahrát a spravovat balíčky aplikací na portálu Azure. Pak zjistíte, jak k instalaci na výpočetní uzly fondu s [Batch .NET] [ api_net] knihovny.
 
 > [!NOTE]
 > 
 > Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
 >
-> Rozhraní API pro vytváření a správě balíčků aplikací jsou součástí [rozhraní Batch Management .NET] [[api_net_mgmt]] knihovny. Rozhraní API pro instalaci balíčků aplikací na výpočetním uzlu jsou součástí [Batch .NET] [ api_net] knihovny.  
+> Rozhraní API pro vytváření a správě balíčků aplikací jsou součástí [rozhraní Batch Management .NET] [ api_net_mgmt] knihovny. Rozhraní API pro instalaci balíčků aplikací na výpočetním uzlu jsou součástí [Batch .NET] [ api_net] knihovny. Porovnatelný z hlediska funkcí jsou k dispozici rozhraní API služby Batch pro jiné jazyky. 
 >
 > Funkci balíčků aplikací v rámci popsaného nahrazuje funkci aplikace Batch k dispozici v předchozích verzích služby.
 > 
@@ -39,13 +39,6 @@ V tomto článku se dozvíte, jak odesílat a spravovat balíčky aplikací na p
 
 ## <a name="application-package-requirements"></a>Požadavky na balíček aplikace
 Chcete-li použít balíčky aplikací, je potřeba [propojení účtu Azure Storage](#link-a-storage-account) k účtu Batch.
-
-Tato funkce byla zavedena v [Batch REST API] [ api_rest] verze 2015-12-01.2.2 a odpovídající [Batch .NET] [ api_net] knihovní verze 3.1.0. Doporučujeme vám, že vždy používáte nejnovější verzi rozhraní API při práci se službou Batch.
-
-> [!NOTE]
-> Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací.
->
->
 
 ## <a name="about-applications-and-application-packages"></a>O aplikacích a balíčky aplikací
 V rámci Azure Batch *aplikace* odkazuje na sadu verzí binární soubory, které lze automaticky staženy na výpočetní uzly ve fondu. *Balíčku aplikace* odkazuje *konkrétní sadu* těchto binárních souborů a představuje daný *verze* aplikace.
@@ -85,31 +78,31 @@ Pomocí balíčků aplikací váš fond spouštěcí úkol nemá k určení dlou
 >
 
 ## <a name="upload-and-manage-applications"></a>Odesílat a spravovat aplikace
-Můžete použít [portál Azure] [ portal] nebo [rozhraní Batch Management .NET](batch-management-dotnet.md) knihovny ke správě balíčků aplikací v účtu Batch. V následujících částech několik nejprve ukážeme, jak propojit účet úložiště a pak zabývat přidáním aplikací a balíčků a jejich pomocí portálu pro správu.
+Můžete použít [portál Azure] [ portal] nebo rozhraní API služby Batch Management ke správě balíčků aplikací v účtu Batch. V následujících částech několik nejprve ukážeme, jak propojit účet úložiště a pak zabývat přidáním aplikací a balíčků a jejich pomocí portálu pro správu.
 
 ### <a name="link-a-storage-account"></a>Odkaz účet úložiště
-Pokud chcete používat balíčky aplikací, je nutné nejprve propojit účtu Azure Storage k účtu Batch. Pokud ještě nemáte nakonfigurovaný účet úložiště, portálu Azure zobrazí upozornění poprvé kliknete **aplikace** dlaždice v nástroji **účet Batch** okno.
+Chcete-li použít balíčky aplikací, je nutné nejprve propojit [účet úložiště Azure](batch-api-basics.md#azure-storage-account) k účtu Batch. Pokud ještě nemáte nakonfigurovaný účet úložiště, portálu Azure zobrazí upozornění první kliknutí **aplikace** v účtu Batch.
 
-> [!IMPORTANT]
-> Batch aktuálně podporuje *pouze* **pro obecné účely** typ účtu úložiště, jak je popsáno v kroku 5, [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account)v [účty Azure storage](../storage/common/storage-create-storage-account.md). Při propojení účtu Azure Storage k účtu Batch, propojte *pouze* **pro obecné účely** účet úložiště.
-> 
-> 
+
 
 ![Upozornění: nakonfigurován žádný účet úložiště, na portálu Azure][9]
 
-Služba Batch používá přidružený účet úložiště pro uložení balíčků vaší aplikace. Po připojení dva účty Batch můžete automaticky nasadit balíčky uložených v propojeném účtu úložiště pro výpočetní uzly. Odkaz účet úložiště k účtu Batch, klikněte na tlačítko **nastavení účtu úložiště** na **upozornění** okna a pak klikněte na tlačítko **účet úložiště** na **účet úložiště** okno.
+Služba Batch používá přidružený účet úložiště pro uložení balíčků vaší aplikace. Po připojení dva účty Batch můžete automaticky nasadit balíčky uložených v propojeném účtu úložiště pro výpočetní uzly. Odkaz účet úložiště k účtu Batch, klikněte na tlačítko **účet úložiště** na **upozornění** okna a pak klikněte na tlačítko **účet úložiště** znovu.
 
 ![Zvolte okně účtu úložiště na portálu Azure][10]
 
-Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s vaším účtem Batch a vyberte ho sem. Podrobnosti o tom, jak vytvořit účet úložiště, najdete v části "Vytvoření účtu úložiště" v [účty Azure Storage](../storage/common/storage-create-storage-account.md). Po vytvoření účtu úložiště, můžete pak propojit se vašeho účtu Batch pomocí **účet úložiště** okno.
+Doporučujeme vytvořit účet úložiště *konkrétně* pro použití s vaším účtem Batch a vyberte ho sem. Po vytvoření účtu úložiště, můžete pak propojit se vašeho účtu Batch pomocí **účet úložiště** okno.
 
-> [!WARNING]
-> Služba Batch používá Azure Storage k ukládání balíčky aplikací jako objekty BLOB bloku. Jste [účtován jako normální] [ storage_pricing] pro data objektů blob bloku. Je nutné vzít v úvahu velikost a počet balíčky aplikací a pravidelně odstraňuje zastaralá balíčky, chcete-li minimalizovat náklady.
+> [!NOTE] 
+> Balíčky aplikací aktuálně nelze použít s účtem úložiště Azure, který je nakonfigurovaný s [pravidla brány firewall](../storage/common/storage-network-security.md).
+> 
+
+Služba Batch používá Azure Storage k ukládání balíčky aplikací jako objekty BLOB bloku. Jste [účtován jako normální] [ storage_pricing] pro data objektů blob bloku. Je nutné vzít v úvahu velikost a počet balíčky aplikací a pravidelně odstraňuje zastaralá balíčky, chcete-li minimalizovat náklady.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Zobrazit aktuální aplikace
-Chcete-li zobrazit aplikace v účtu Batch, klikněte na tlačítko **aplikace** položky nabídky v levé nabídce při prohlížení **účet Batch** okno.
+Chcete-li zobrazit aplikace v účtu Batch, klikněte na tlačítko **aplikace** položky nabídky v levé nabídce při zobrazení vaší **účet Batch**.
 
 ![Dlaždice aplikace][2]
 
@@ -117,18 +110,18 @@ Výběrem této možnosti nabídky otevře **aplikace** okno:
 
 ![Seznam aplikací][3]
 
-**Aplikace** ID každé aplikace zobrazuje v účtu a následující vlastnosti:
+Toto okno zobrazuje ID každé aplikace v účtu a následující vlastnosti:
 
 * **Balíčky**: číslo verze přidružené k této aplikaci.
 * **Výchozí verze**: verze aplikace nainstalovat, pokud neuvedete na verzi, když zadáte aplikací pro fond. Toto nastavení je volitelné.
 * **Povolit aktualizace**: hodnota, která určuje, zda balíček aktualizace, odstranění a přidání jsou povoleny. Pokud je nastavena v **ne**, balíček aktualizace a odstranění jsou zakázány pro aplikaci. Můžete přidat pouze nové verze balíčku aplikace. Výchozí hodnota je **Yes** (Ano).
 
 ### <a name="view-application-details"></a>Zobrazení podrobností o aplikaci
-Otevřete okno, které zahrnuje podrobné informace pro aplikaci, vyberte aplikaci v **aplikace** okno.
+Pokud chcete zobrazit podrobnosti o aplikaci, vyberte aplikaci v **aplikace** okno.
 
 ![Podrobnosti o aplikaci][4]
 
-V okně podrobností aplikace můžete nakonfigurovat následující nastavení pro vaši aplikaci.
+V podrobností o aplikaci můžete nakonfigurovat následující nastavení pro vaši aplikaci.
 
 * **Povolit aktualizace**: Určete, zda jeho balíčky aplikací můžete aktualizovat nebo odstranit. Později v tomto článku najdete v části "Aktualizace nebo odstranění balíčku aplikace".
 * **Výchozí verze**: Zadejte výchozí balíček aplikace pro nasazení na výpočetní uzly.
@@ -137,11 +130,11 @@ V okně podrobností aplikace můžete nakonfigurovat následující nastavení 
 ### <a name="add-a-new-application"></a>Přidejte novou aplikaci
 Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte ID aplikace nové, jedinečné. První balíček aplikace, který přidáte s novým ID aplikace také vytvoří novou aplikaci.
 
-Klikněte na tlačítko **přidat** na **aplikace** otevřete **novou aplikaci** okno.
+Klikněte na **Aplikace** > **Přidat**.
 
 ![Nové okno aplikace na portálu Azure][5]
 
-**Novou aplikaci** okno obsahuje následující pole k zadání nastavení pro novou aplikaci a balíček aplikace.
+**Novou aplikaci** okno poskytuje následující pole k zadání nastavení pro novou aplikaci a balíček aplikace.
 
 **Id aplikace**
 
@@ -165,28 +158,28 @@ Toto pole určuje verzi balíčku aplikace, které odesíláte. Řetězce verzi 
 
 Toto pole určuje soubor .zip, který obsahuje binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace. Klikněte **vyberte soubor** pole nebo na ikonu složky a vyhledejte a vyberte soubor .zip, který obsahuje soubory aplikace.
 
-Jakmile vyberete soubor, klikněte na tlačítko **OK** zahájíte nahrávání do úložiště Azure. Po dokončení operace odesílání na portálu zobrazí oznámení a zavře okno. V závislosti na rychlosti síťového připojení a velikost souboru, který odesíláte může tato operace chvíli trvat.
+Jakmile vyberete soubor, klikněte na tlačítko **OK** zahájíte nahrávání do úložiště Azure. Po dokončení operace nahrávání se zobrazí na portálu oznámení. V závislosti na rychlosti síťového připojení a velikost souboru, který odesíláte může tato operace chvíli trvat.
 
 > [!WARNING]
-> Nezavírejte okno **novou aplikaci** okno před dokončením operace odesílání. Díky tomu bude zastavení procesu nahrávání.
+> Nezavírejte okno **novou aplikaci** okno před dokončením operace odesílání. Díky tomu zastavení procesu nahrávání.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-Přidat novou verzi balíčku aplikace pro existující aplikace, vyberte aplikaci v **aplikace** okně klikněte na tlačítko **balíčky**, pak klikněte na tlačítko **přidat** otevřete **přidat balíček** okno.
+Pokud chcete přidat verze balíčku aplikace pro existující aplikace, vyberte aplikaci v **aplikace** windows a klikněte na **balíčky** > **přidat**.
 
 ![Přidejte balíček okna aplikací na portálu Azure][8]
 
 Jak vidíte, se pole shodují těch, které **novou aplikaci** okno, ale **id aplikace** pole je zakázána. Stejně jako u nové aplikace, zadejte **verze** pro nový balíček, přejděte do vaší **balíčku aplikace** .zip souboru a pak klikněte na **OK** pro nahrání balíčku.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
-Aktualizovat nebo odstranit existující balíček aplikace, otevřete okno Podrobnosti pro aplikace, klikněte na tlačítko **balíčky** otevřete **balíčky** okně klikněte na tlačítko **třemi tečkami** v řádku balíček aplikace, který chcete upravit a vyberte akci, kterou chcete provést.
+Aktualizovat nebo odstranit existující balíček aplikace, a otevřete tak podrobnosti pro aplikace, klikněte na tlačítko **balíčky**, klikněte **třemi tečkami** v řádku, kterou chcete upravit a vyberte balíček aplikace Akce, která chcete provést.
 
 ![Aktualizace nebo odstranění balíčku na portálu Azure][7]
 
 **Aktualizace**
 
-Když kliknete na tlačítko **aktualizace**, *balíček aktualizace* zobrazí se okno. Toto okno je podobná *nový balíček aplikace* okno, ale pouze pole výběr balíčku je povoleno, umožní vám to zadat nový soubor ZIP k odeslání.
+Když kliknete na tlačítko **aktualizace**, **balíček aktualizace** windows se zobrazí. Toto okno je podobná **nový balíček aplikace** okno, ale pouze pole výběr balíčku je povoleno, umožní vám to zadat nový soubor ZIP k odeslání.
 
 ![Okno balíček aktualizace na portálu Azure][11]
 
@@ -262,7 +255,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Na Linuxových uzlů formát se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#), se sloučí na podtržené v proměnné prostředí. Všimněte si také, že se zachová, i v případě ID aplikace. Příklad:
+Na Linuxových uzlů formát se mírně liší. Tečky (.) a pomlčky (-) a tyto znaky (#) se sloučí na podtržené v proměnné prostředí. Všimněte si také, že se zachová, i v případě ID aplikace. Příklad:
 
 ```
 Linux:
@@ -283,7 +276,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Při nahrávání balíčku aplikace, můžete zadat výchozí verze pro nasazení na výpočetní uzly. Pokud jste zadali výchozí verze pro aplikaci, můžete vynechat přípony verze při odkazu na aplikaci. V portálu Azure, v okně aplikace můžete určit výchozí verze aplikace, jak je znázorněno v [odesílat a spravovat aplikace](#upload-and-manage-applications).
+Při nahrávání balíčku aplikace, můžete zadat výchozí verze pro nasazení na výpočetní uzly. Pokud jste zadali výchozí verze pro aplikaci, můžete vynechat přípony verze při odkazu na aplikaci. Výchozí verze aplikace na portálu Azure, můžete zadat v **aplikace** okno, jak je znázorněno v [odesílat a spravovat aplikace](#upload-and-manage-applications).
 
 Například pokud nastavíte jako výchozí verze pro aplikace "2.7" *digestoru*a vaše úkoly odkazování následující proměnné prostředí, pak uzlů Windows, budou spuštěny verze 2.7:
 
@@ -348,7 +341,7 @@ Pomocí balíčků aplikací můžete pomoct vašim zákazníkům vyberte aplika
 
 ## <a name="next-steps"></a>Další postup
 * [Batch REST API] [ api_rest] taky poskytuje podporu pro práci s balíčky aplikací. Například najdete v článku [applicationPackageReferences] [ rest_add_pool_with_packages] element v [přidat fond na účet] [ rest_add_pool] informace o tom, jak zadat balíčků pro instalaci pomocí rozhraní REST API. V tématu [aplikace] [ rest_applications] podrobnosti o tom, jak získat informace o aplikaci pomocí rozhraní REST API služby Batch.
-* Zjistěte, jak programově [spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). [Rozhraní Batch Management .NET][api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu Batch aplikace nebo služby.
+* Zjistěte, jak programově [spravovat účty Azure Batch a kvóty pomocí rozhraní Batch Management .NET](batch-management-dotnet.md). [Rozhraní Batch Management .NET] [ api_net_mgmt] knihovny můžete povolit funkce vytváření a odstraňování účtu Batch aplikace nebo služby.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet

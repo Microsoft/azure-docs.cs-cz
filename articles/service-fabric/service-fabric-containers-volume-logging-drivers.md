@@ -1,11 +1,11 @@
 ---
 title: Azure Service Fabric Docker Compose (Preview) | Microsoft Docs
-description: "Azure Service Fabric přijme formát Docker Compose usnadnění orchestraci existující kontejnery pomocí Service Fabric. Podpora pro Docker Compose je aktuálně ve verzi preview."
+description: Azure Service Fabric přijme formát Docker Compose usnadnění orchestraci existující kontejnery pomocí Service Fabric. Podpora pro Docker Compose je aktuálně ve verzi preview.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 79b4700b0b0b6897c19117044d37623a2f6ea8df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 72ff8e99453d3067492d50c3e35396dba9f23c12
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Pomocí Docker svazku zásuvné moduly a protokolování ovladače v vašeho kontejneru
 Azure Service Fabric podporuje určení [Docker svazku zásuvné moduly](https://docs.docker.com/engine/extend/plugins_volume/) a [Docker protokolování ovladače](https://docs.docker.com/engine/admin/logging/overview/) pro vaši službu kontejneru. Může uchovávat vaše data v [Azure Files](https://azure.microsoft.com/services/storage/files/) při vašeho kontejneru je přesunout nebo restartováním jiného hostitele.
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter nepodporuje mapování SMB připojení zařízení k kontejnery ([, je podporována pouze v systému Windows Server verze. 1709](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Pomocí tohoto omezení zabrání mapování sítě svazku a Azure Files svazku ovladačů ve verzích, které jsou starší než. 1709. 
+> Windows Server 2016 Datacenter nepodporuje mapování SMB připojení zařízení k kontejnery ([, je podporována pouze v systému Windows Server verze. 1709](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/container-storage)). Pomocí tohoto omezení zabrání mapování sítě svazku a Azure Files svazku ovladačů ve verzích, které jsou starší než. 1709. 
 >   
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -101,7 +101,7 @@ V  **[portál Azure](https://portal.azure.com/)**, klikněte **služby App Servi
 
 Klikněte na název aplikace, ke které chcete přiřadit certifikát.
 
-V **nastavení**, klikněte na tlačítko **certifikáty SSL**.
+V **nastavení**, klikněte na tlačítko **nastavení SSL**.
 
 Klikněte na tlačítko **importovat aplikaci služby certifikát** a vyberte certifikát, který jste zakoupili.
 
@@ -166,7 +166,7 @@ Tuto volbu vyberte pouze pro [domény služby App Service, které jste zakoupili
 > [!TIP]
 > Ověřte v terminálu pomocí `curl -G http://<domain>/.well-known/pki-validation/starfield.html` by měl obsahovat odpověď `<verification-token>`.
 
-#### <a name="dns-txt-record-verification"></a>DNS TXT Record Verification
+#### <a name="dns-txt-record-verification"></a>Záznam ověření DNS TXT
 
 1. Pomocí Správce DNS vytvořit záznam TXT na `@` subdomény se hodnota rovná tokenu ověření domény.
 1. Klikněte na tlačítko **"Aktualizovat"** aktualizovat stav certifikátu po dokončení ověření.
@@ -206,5 +206,7 @@ Pokud váš certifikát SSL je nakonfigurovaný pro automatické obnovení, ale 
 
 ## <a name="more-resources"></a>Další zdroje informací
 
+* [Vynucení HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
+* [Vynutit TLS 1.1 nebo 1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
 * [Použít certifikát SSL v kódu aplikace v Azure App Service](app-service-web-ssl-cert-load.md)
 * [– Nejčastější dotazy: Certifikáty App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

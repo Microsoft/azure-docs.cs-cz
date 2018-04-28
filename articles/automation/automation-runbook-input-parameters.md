@@ -1,6 +1,6 @@
 ---
-title: "Vstupní parametry runbooku"
-description: "Vstupní parametry Runbooku zvýšíte flexibilitu sad runbook tím, že se můžete k předávání dat k sadě runbook, jakmile je spuštěno. Tento článek popisuje různé scénáře, kdy se používá vstupních parametrů v sadách runbook."
+title: Vstupní parametry runbooku
+description: Vstupní parametry Runbooku zvýšíte flexibilitu sad runbook tím, že se můžete k předávání dat k sadě runbook, jakmile je spuštěno. Tento článek popisuje různé scénáře, kdy se používá vstupních parametrů v sadách runbook.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a2ce87c300d3e9092794e6e437dc9919c7eb0f3c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 19b0e17807adc0e7a4522fd13cd85779cdbcafd6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -37,16 +37,16 @@ Prostředí Windows PowerShell podporuje další atributy vstupní parametry ne�
 
 Definici parametru v runboocích pracovního postupu Powershellu má následující obecné formulář, kde jsou několik parametrů oddělených čárkami.
 
-   ```powershell
-     Param
-     (
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name1 = <Default value>,
+```powershell
+Param
+(
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name1 = <Default value>,
 
-         [Parameter (Mandatory= $true/$false)]
-         [Type] Name2 = <Default value>
-     )
-   ```
+  [Parameter (Mandatory= $true/$false)]
+  [Type] $Name2 = <Default value>
+)
+```
 
 > [!NOTE]
 > Když definujete parametry, pokud neurčíte **povinné** atribut, pak ve výchozím nastavení, považuje volitelný parametr. Navíc pokud nastavíte výchozí hodnotu pro parametr v runboocích pracovního postupu Powershellu, bude zpracován pomocí prostředí PowerShell jako volitelný parametr, bez ohledu na to **povinné** hodnota atributu.
@@ -61,13 +61,16 @@ V této definici parametru parametry **$VMName** a **$resourceGroupName** jsou j
 
 Pokud vaše sada runbook má vstupní parametr typu objektu, použijte prostředí PowerShell zatřiďovací tabulku s (název, hodnotu) páry předat hodnotu. Například pokud máte v sadě runbook následující parametr:
 
-     [Parameter (Mandatory = $true)]
-     [object] $FullName
+```powershell
+[Parameter (Mandatory = $true)]
+[object] $FullName
+```
 
 Můžete poté předat parametr následující hodnotu:
 
-    @{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
-
+```powershell
+@{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
+```
 
 ## <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurace vstupní parametry v grafické runbooky
 
@@ -146,7 +149,7 @@ V popisku pod vstupní pole uvidíte atributy, které byly nastaveny pro paramet
   
   **Příklad:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”;”resourceGroupeName”=”WSVMClassicSG”}
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
@@ -155,7 +158,7 @@ V popisku pod vstupní pole uvidíte atributy, které byly nastaveny pro paramet
   
   **Příklad:**
   
-  ```
+  ```powershell
   $params = @{“VMName”=”WSVMClassic”; ”ServiceName”=”WSVMClassicSG”}
   
   Start-AzureAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” -Parameters $params
@@ -170,7 +173,7 @@ V popisku pod vstupní pole uvidíte atributy, které byly nastaveny pro paramet
 
 * **Azure Resource Manager metoda:** sady runbook můžete spustit pomocí sady SDK programovací jazyk. Níže je fragmentu kódu C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit všechny kódu v našem [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
   
-  ```
+  ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -189,7 +192,7 @@ V popisku pod vstupní pole uvidíte atributy, které byly nastaveny pro paramet
   ```
 * **Metoda modelu nasazení Azure classic:** sady runbook můžete spustit pomocí sady SDK programovací jazyk. Níže je fragmentu kódu C# pro spuštění sady runbook ve vašem účtu Automation. Můžete zobrazit všechny kódu v našem [úložiště GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
   
-  ```      
+  ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -209,7 +212,7 @@ V popisku pod vstupní pole uvidíte atributy, které byly nastaveny pro paramet
   
   Chcete-li spustit tuto metodu, vytvořit adresář k uložení parametry runbooku **VMName** a **resourceGroupName**a jejich hodnoty. Spusťte sadu runbook. Zde je fragment kódu jazyka C# pro volání metody, která je definována výše.
   
-  ```
+  ```csharp
   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
   // Add parameters to the dictionary.
@@ -239,7 +242,7 @@ Chcete-li předat parametry do úlohy runbooku, použijte textu požadavku. Jak 
 
 Pokud chcete spustit **Get-AzureVMTextual** runbooku, který byl vytvořen již dříve s **VMName** a **resourceGroupName** jako parametry, pomocí následujícího formátu JSON pro textu požadavku.
 
-   ```
+   ```json
     {
       "properties":{
         "runbook":{
@@ -268,7 +271,7 @@ Můžete vytvořit [webhooku](automation-webhooks.md) pro runbook a nakonfigurov
 
 ![Vytvoření webhooku a přiřazení parametry](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Při spuštění sady runbook pomocí webhooku, předdefinované vstupní parametr  **[Webhookdata](automation-webhooks.md#details-of-a-webhook)**  je odeslaný společně vstupní parametry, které jste definovali. Můžete kliknout na rozšíření **WebhookData** parametr další podrobnosti.
+Při spuštění sady runbook pomocí webhooku, předdefinované vstupní parametr **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** je odeslaný společně vstupní parametry, které jste definovali. Můžete kliknout na rozšíření **WebhookData** parametr další podrobnosti.
 
 ![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

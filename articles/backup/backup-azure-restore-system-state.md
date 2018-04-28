@@ -1,12 +1,12 @@
 ---
-title: "Zálohování Azure: Obnovení stavu systému na Windows Server | Microsoft Docs"
-description: "Krok podle kroku vysvětlení pro obnovení stavu systému Windows Server ze zálohy v Azure."
+title: 'Zálohování Azure: Obnovení stavu systému na Windows Server | Microsoft Docs'
+description: Krok podle kroku vysvětlení pro obnovení stavu systému Windows Server ze zálohy v Azure.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c673cca6a35cfdc0edaecdc69a797f48772d847c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje způsob obnovení zálohy stavu systému Windows Serv
 ## <a name="recover-system-state-files-to-the-same-server"></a>Obnovení stavu systému souborů na stejný server
 Následující kroky popisují, jak vrátit konfiguraci systému Windows Server do předchozího stavu. Vracení konfigurace serveru známé, stabilního stavu, může být velmi důležité. Následující postup obnovení stavu systému serveru z trezoru služeb zotavení. 
 
-1. Otevřete **Microsoft Azure Backup** modul snap-in. Pokud si nejste jisti, kde nainstalovaný modul snap-in, hledání se počítač nebo server pro **Microsoft Azure Backup**.
+1. Otevřete modul snap-in **Microsoft Azure Backup**. Pokud si nejste jisti, kde nainstalovaný modul snap-in, hledání se počítač nebo server pro **Microsoft Azure Backup**.
 
     Desktopová aplikace by se ve výsledcích hledání.
 
@@ -171,7 +171,7 @@ Jednou obnovily stavu systému jako soubory pomocí agenta služeb zotavení Azu
 Zálohování stavu systému zahrnuje data služby Active Directory. Použijte následující kroky k obnovení služby Active Directory Domain Services (AD DS) z jeho aktuální stav do předchozího stavu.
 
 1. Restartujte řadič domény v adresářových služeb obnovení režimu (DSRM).
-2. Postupujte podle kroků [sem](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx) použití rutiny zálohování serveru k obnovení služby AD DS.
+2. Postupujte podle kroků [sem](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) použití rutiny zálohování serveru k obnovení služby AD DS.
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží se nezdařilo obnovení stavu systému
@@ -216,5 +216,5 @@ Pokud předchozí proces použití stavu systému úspěšně nedokončí, použ
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Teď, když jste obnovit soubory a složky, můžete [spravovat zálohy](backup-azure-manage-windows-server.md).

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřesením, zatřesením pro Tweet – načíst zprávu Twitter s funkcemi Azure!
 
@@ -33,7 +33,7 @@ Dokončit [Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot
 
 Aktivní předplatné Azure. Pokud nemáte, můžete zaregistrovat pomocí jedné z těchto metod:
 
-* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/en-us/free/)
+* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/free/)
 * Deklarace identity vaší [kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jste předplatitelem MSDN nebo v sadě Visual Studio
 
 ## <a name="open-the-project-folder"></a>Otevřete složku projektu
@@ -44,10 +44,6 @@ Aktivní předplatné Azure. Pokud nemáte, můžete zaregistrovat pomocí jedn�
 - Spustí kód VS.
 - Připojení DevKit k vašemu počítači.
 
-VS Code automaticky vyhledá vaší DevKit a zobrazí úvodní stránka:
-
-![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_start.png)
-
 > [!NOTE]
 > Při spuštění VS Code, obdržíte chybovou zprávu, která Arduino IDE nebo balíček Příbuzná Tabule nelze najít. Pokud k této chybě dojde, zavřete VS Code a znovu spusťte Arduino IDE. VS Code by měl nyní vyhledejte cestu Arduino IDE správně.
 
@@ -57,7 +53,8 @@ Rozbalte levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3
 
 ![Mini solution příklady](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Pokud jste dojít zavřete podokno, můžete ho znovu otevřít. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
+> [!NOTE]
+> Příklad můžete také otevřít z palety příkaz. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
 
 ## <a name="provision-azure-services"></a>Zřídit služby Azure
 
@@ -68,7 +65,7 @@ V terminálu VS Code interaktivního příkazového řádku vás provede zřizov
 ![zřizování cloudové](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Pokud při pokusu o přihlášení k Azure, přestane reagovat stav načítání stránky, podívejte se na to [nejčastější dotazy týkající se krok] ({{"/docs/faq/#page-hangs-when-log-in-azure" | 
+> Pokud při pokusu o přihlášení k Azure, přestane reagovat stav načítání stránky, podívejte se na to [– nejčastější dotazy krok](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
  
 ## <a name="modify-the-hashtag"></a>Změnit #hashtag
 
@@ -125,7 +122,7 @@ Po inicializaci aplikace klikněte na tlačítko a verze A tlačítko a pak jemn
 ![Inicializace aplikace Arduino](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
 
 ### <a name="press-a-to-shake"></a>Stisknutím A zatřesením...
-![Press-A-to-shake](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
+![Stiskněte klávesu A k zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
 
 ### <a name="ready-to-shake"></a>Připraveno k zatřesením...
 ![Připraveno k zatřesením](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
@@ -137,7 +134,7 @@ Po inicializaci aplikace klikněte na tlačítko a verze A tlačítko a pak jemn
 ![Stiskněte klávesu B pro čtení](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
 
 ### <a name="display-a-random-tweet"></a>Zobrazte náhodných tweet...
-![Display-a-random-tweet](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
+![Zobrazení náhodné tweet](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
 
 - Stisknutím tlačítka A znovu a potom zatřesením pro nové tweet.
 - Stisknutím tlačítka B posuňte zbytek tweet.
@@ -159,7 +156,7 @@ Pro účely testování používá tento ukázkový projekt předem nakonfigurov
 3. Použití [některé nástroj](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) pro vygenerování tokenu nosiče Twitter z těchto dvou klíčů.
 
 4. V [portál Azure](https://portal.azure.com/){: cílový = "_blank"}, získat **skupiny prostředků** a najít funkce Azure (typ: služby App Service) pro svůj projekt "Zatřesením, zatřesením". Název obsahuje vždy 'zatřesením...' řetězec.
-  ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+  ![Funkce Azure](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. Aktualizujte kód pro `run.csx` v rámci **funkce > shakeshake cs** s vlastními token:
   ```csharp
@@ -167,7 +164,7 @@ Pro účely testování používá tento ukázkový projekt předem nakonfigurov
   string authHeader = "Bearer " + "[your own token]";
   ...
   ```
-  ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+  ![token služby Twitter.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Uložte tento soubor a klikněte na tlačítko **spustit**.
 
@@ -186,7 +183,7 @@ Tento stav se stane obvykle při prvním nasazení a spuštění ukázky, proto�
 
 Pokud dochází k problémům, podívejte se na [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo kontaktujte nás z následující kanály:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup

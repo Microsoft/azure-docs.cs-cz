@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/29/2017
+ms.date: 04/13/2018
 ms.author: sngun
-ms.openlocfilehash: 5b9206a7bbd0fe5afcb2c65f2270fc67dffee4e3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2e439b260ae2964aeab33c100db3f62e0bd06f33
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace SQL API s využitím Pythonu a webu Azure Portal
 
@@ -26,15 +26,13 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Tento rychlý start popisuje způsob vytvoření účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB, databáze dokumentů a kolekce pomocí webu Azure Portal. Pak vytvoříte a spustíte aplikaci konzoly využívající rozhraní [SQL Python API](sql-api-sdk-python.md).
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-* Navíc platí:
-    * Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
-    * Python Tools for Visual Studio z [GitHubu](http://microsoft.github.io/PTVS/). V tomto kurzu se používá Python Tools for VS 2015.
-    * Python 2.7 z webu [python.org](https://www.python.org/downloads/release/python-2712/)
+* [Python 3.6](https://www.python.org/downloads/) se složkami \<umístění instalace\>\Python36 a \<umístění instalace>\Python36\Scripts přidanými do vaší cesty. 
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -44,21 +42,41 @@ Tento rychlý start popisuje způsob vytvoření účtu rozhraní [SQL API](sql-
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
+## <a name="add-sample-data"></a>Přidání ukázkových dat
+
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
+
+## <a name="query-your-data"></a>Dotazování dat
+
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
+
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
 Teď naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.  
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-python-getting-started.git
     ```  
+    
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor DocumentDBGetStarted.py a zjistíte, že tyto řádky kódu vytvářejí prostředky Azure Cosmos DB. 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
 
+Všechny následující fragmenty kódu pocházejí ze souboru DocumentDBGetStarted.py.
 
 * Inicializuje se DocumentClient.
 
@@ -122,28 +140,55 @@ Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Klíče** a potom klikněte na **Klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru `DocumentDBGetStarted.py`.
+1. Na webu [Azure Portal](http://portal.azure.com/) ve svém účtu služby Azure Cosmos DB klikněte v levém navigačním panelu na **Klíče**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor **URI** a **Primary Key** do souboru DocumentDBGetStarted.py.
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
-2. Otevřete soubor `DocumentDBGetStarted.py`. 
+2. Otevřete soubor C:\git-samples\azure-cosmos-db-documentdb-python-getting-startedDocumentDBGetStarted.py v aplikaci Visual Studio Code. 
 
-3. Z portálu zkopírujte hodnotu identifikátoru URI (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče koncového bodu v souboru `DocumentDBGetStarted.py`. 
+3. Z portálu zkopírujte hodnotu identifikátoru **URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu klíče **endpoint** v souboru DocumentDBGetStarted.py. 
 
     `'ENDPOINT': 'https://FILLME.documents.azure.com',`
 
-4. Potom z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu `config.MASTERKEY` v souboru `DocumentDBGetStarted.py`. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+4. Pak z portálu zkopírujte hodnotu **PRIMARY KEY** a nastavte ji jako hodnotu **config.MASTERKEY** v souboru DocumentDBGetStarted.py. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
 
     `'MASTERKEY': 'FILLME',`
+
+5. Uložte soubor DocumentDBGetStarted.py.
     
 ## <a name="run-the-app"></a>Spuštění aplikace
-1. V sadě Visual Studio klikněte pravým tlačítkem na projekt v **Průzkumníku řešení**,vyberte aktuální prostředí Python a potom klikněte pravým tlačítkem myši.
 
-2. Vyberte Možnost Instalovat balíček Pythonu a potom zadejte **pydocumentdb**.
+1. V aplikaci Visual Studio Code vyberte **Zobrazení**>**Paleta příkazů**. 
 
-3. Stisknutím klávesy F5 spusťte aplikaci. Aplikace se zobrazí v prohlížeči. 
+2. Do příkazového řádku zadejte **Python: Select Interpreter** a pak vyberte verzi jazyka Python, kterou chcete používat.
 
-Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
+    Zápatí v aplikaci Visual Studio Code se aktualizuje a bude označovat, že je vybraný interpret. 
+
+3. Vyberte **Zobrazit** > **Integrovaný terminál**, aby se otevřel integrovaný terminál aplikace Visual Studio Code.
+
+4. V okně integrovaného terminálu zkontrolujte, že jste ve složce azure-cosmos-db-documentdb-python-getting-started. Pokud ne, spusťte následující příkaz, abyste do složky ukázky přešli. 
+
+    ```
+    cd "C:\git-samples\azure-cosmos-db-documentdb-python-getting-started"`
+    ```
+
+5. Spuštěním následujícího příkazu nainstalujte balíček pydocumentdb. 
+
+    ```
+    pip3 install pydocumentdb
+    ```
+
+    Pokud při pokusu o instalaci pydocumentdb dojde k chybě v podobě odepření přístupu, budete muset [spustit VS Code jako správce](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).
+
+6. Spusťte následující příkaz, kterým spustíte ukázku a vytvoříte a uložíte nové dokumenty v Azure Cosmos dB.
+
+    ```
+    python DocumentDBGetStarted.py
+    ```
+
+7. Pokud si chcete potvrdit, že nové dokumenty byly vytvořeny a uloženy, vyberte na webu Azure Portal **Průzkumník dat**, rozbalte položku **coll**, rozbalte položku **Documents** a pak vyberte dokument **server1**. Obsah dokumentu server1 odpovídá obsahu vrácenému v okně integrovaného terminálu. 
+
+    ![Zobrazení nových dokumentů na webu Azure Portal](./media/create-sql-api-python/azure-cosmos-db-confirm-documents.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -151,10 +196,7 @@ Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést ú
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

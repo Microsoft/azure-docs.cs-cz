@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6926ae6c67e3397006e95595a8dc28bab67256da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
 
@@ -45,7 +45,7 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **ServiceNow** | Ano |
-| endpoint | Koncový bod serveru ServiceNow (`http://ServiceNowData.com`).  | Ano |
+| endpoint | Koncový bod serveru ServiceNow (`http://<instance>.service-now.com`).  | Ano |
 | authenticationType. | Typ ověřování používat. <br/>Povolené hodnoty jsou: **základní**, **OAuth2** | Ano |
 | uživatelské jméno | Uživatelské jméno používané pro připojení k serveru ServiceNow pro ověřování Basic a OAuth2.  | Ne |
 | heslo | Heslo odpovídající uživatelské jméno pro ověřování Basic a OAuth2. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
@@ -63,7 +63,7 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
     "properties": {
         "type": "ServiceNow",
         "typeProperties": {
-            "endpoint" : "http://ServiceNowData.com",
+            "endpoint" : "http://<instance>.service-now.com",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 0074486d3d7fb58bc6e3adcbe4245ec53e7e4cde
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Pomocí nástroje Azure HDInsight pro Visual Studio Code
 
@@ -29,7 +29,7 @@ Další informace o použití nástroje Azure HDInsight pro Visual Studio Code (
 
 Následující položky jsou požadovány pro dokončení kroků v tomto článku:
 
-- HDInsight cluster.  Vytvoření clusteru s podporou naleznete v tématu [Začínáme s HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
+- HDInsight cluster. Vytvoření clusteru s podporou naleznete v tématu [Začínáme s HDInsight]( hdinsight-hadoop-linux-tutorial-get-started.md).
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
 - [Mono](http://www.mono-project.com/docs/getting-started/install/). Mono je pouze požadované pro systémy Linux a systému macOS.
 
@@ -100,7 +100,7 @@ Než skripty můžete odeslat ke clusterům HDInsight z VS Code, musíte buď p�
     - Odeslání PySpark dávkové skripty
     - Konfigurace sady
 
-**Propojení clusteru**
+<a id="linkcluster"></a>**Propojení clusteru**
 
 Můžete propojit normální clusteru pomocí Ambari spravované uživatelské jméno, také propojení clusteru hadoop zabezpečení pomocí uživatelského jména domény (například: user1@contoso.com).
 1. Otevřete paletu příkaz výběrem **CTRL + SHIFT + P**a potom zadejte **HDInsight: propojení cluster**.
@@ -112,7 +112,7 @@ Můžete propojit normální clusteru pomocí Ambari spravované uživatelské j
    ![Dialogové okno odkaz clusteru](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme propojené uživatelské jméno a heslo. 
+   > Propojené uživatelské jméno a heslo se použijí, pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru. 
    
 3. Cluster s podporou propojené můžete zobrazit pomocí příkazu **seznamu clusteru**. Teď můžete odeslat skript do tohoto propojené clusteru.
 
@@ -275,8 +275,50 @@ Nástroje HDInsight pro VS Code můžete také odeslat interaktivních dotazů P
 
 Po odeslání úlohy Python odeslání protokolů se objeví v **výstup** okno v produktu VS Code. **Adresa URL uživatelského rozhraní Spark** a **adresa URL uživatelského rozhraní Yarn** jsou také uvedeny. Adresu URL můžete otevřít ve webovém prohlížeči a sledovat stav úlohy.
 
-
+>[!NOTE]
+>PySpark3 již není podporována v Livy 0.4 (což je cluster spark 2.2 HDI). Pro jazyk python je podporována pouze "PySpark". Problém, který odeslání spark 2.2 selhat s python3 je znám.
    
+## <a name="livy-configuration"></a>Konfigurace Livy
+Livy konfigurace je podporovaná, může být nastavena v nastavení projektu ve složce pracovní prostor. Další podrobnosti najdete v tématu [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+
++ Nastavení projektu:
+
+    ![Konfigurace Livy](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ Podporované konfigurace Livy:   
+
+    **POST /batches**   
+    Text žádosti
+
+    | jméno | description | type | 
+    | :- | :- | :- | 
+    | soubor | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
+    | proxyUser | Uživatele k zosobnění při spuštění úlohy | řetězec | 
+    | Název třídy | Hlavní třídy aplikace Java/Spark | řetězec |
+    | argumentů | Argumenty příkazového řádku pro aplikaci | seznam řetězců | 
+    | Kromě souborů JAR | Kromě souborů JAR má být použit v této relaci | Seznam řetězců | 
+    | pyFiles | Soubory Python, který se má použít v této relaci | Seznam řetězců |
+    | souborů | soubory, který se má použít v této relaci | Seznam řetězců |
+    | driverMemory | Množství paměti pro proces ovladače | řetězec |
+    | driverCores | Počet jader, který má použít pro proces ovladače | celá čísla |
+    | executorMemory | Množství paměti podle vykonavatele procesu | řetězec |
+    | executorCores | Počet jader, který má použít pro každý prováděcího modulu | celá čísla |
+    | numExecutors | Počet vykonavatelů spusťte pro tuto relaci | celá čísla |
+    | Archivy | Archivy, který se má použít v této relaci | Seznam řetězců |
+    | Fronty | Název fronty YARN, ke kterému odeslání | řetězec |
+    | jméno | Název této relace | řetězec |
+    | conf | Vlastnosti konfigurace Spark | Mapa klíče = val |
+
+    Text odpovědi   
+    Vytvořený objekt Batch.
+
+    | jméno | description | type | 
+    | :- | :- | :- | 
+    | id | Id relace | celá čísla | 
+    | appId | Id aplikace tuto relaci |  Řetězec |
+    | appInfo | Informace o podrobné aplikace | Mapa klíče = val |
+    | Protokolu | Řádky protokolu | seznam řetězců |
+    | state |   Stav dávky | řetězec |
 
 
 ## <a name="additional-features"></a>Další funkce

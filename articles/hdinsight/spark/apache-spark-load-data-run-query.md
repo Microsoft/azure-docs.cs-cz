@@ -1,34 +1,32 @@
 ---
-title: "Spusťte interaktivní dotazy v clusteru Azure HDInsight Spark | Microsoft Docs"
-description: "Rychlý start k HDInsight Spark týkající se vytvoření clusteru Apache Spark ve službě HDInsight."
+title: Spusťte interaktivní dotazy v clusteru Azure HDInsight Spark | Microsoft Docs
+description: Rychlý start k HDInsight Spark týkající se vytvoření clusteru Apache Spark ve službě HDInsight.
 keywords: spark quickstart, interactive spark, interactive query, hdinsight spark, azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 78ab44a7afa6523e1e9e4082b3f45b1a28affe77
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 177fb47c72e9abbafcda69416643fbd3848373bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-interactive-queries-on-spark-clusters-in-hdinsight"></a>Spusťte interaktivní dotazy na clustery Spark v HDInsight
 
 Naučte se používat Poznámkový blok Jupyter ke spouštění interaktivních dotazů Spark SQL na clusteru Spark. 
 
-[Poznámkový blok Jupyter](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) je aplikace založené na prohlížeči, která rozšiřuje možnosti interaktivního pomocí konzoly na webu. Spark v HDInsight také zahrnuje [Zeppelin Poznámkový blok](apache-spark-zeppelin-notebook.md). Poznámkový blok Jupyter se používá v tomto kurzu.
+[Poznámkový blok Jupyter](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html) je aplikace založené na prohlížeči, která rozšiřuje možnosti interaktivního pomocí konzoly na webu. Spark v HDInsight také zahrnuje [poznámkový blok Zeppelin](apache-spark-zeppelin-notebook.md). V tomto kurzu se používá poznámkový blok Jupyter.
 
-Poznámkové bloky Jupyter v clusterech prostředí HDInsight podporují tři jádra - **PySpark**, **PySpark3**, a **Spark**. **PySpark** jádra se používá v tomto kurzu. Další informace o jádrech a výhody použití **PySpark**, najdete v části [clusterů jádra poznámkového bloku Jupyter použít s Apache Spark v HDInsight](apache-spark-jupyter-notebook-kernels.md). Pomocí poznámkového bloku Zeppelin naleznete v části [clusteru poznámkových bloků Zeppelin použít s Apache Spark v Azure HDInsight](./apache-spark-zeppelin-notebook.md).
+Poznámkové bloky Jupyter v clusterech HDInsight podporují tři jádra – **PySpark**, **PySpark3** a **Spark**. V tomto kurzu se používá jádro **PySpark**. Další informace o jádrech a výhody použití jádra **PySpark** najdete v tématu s popisem [použití jader poznámkových bloků Jupyter s clustery Apache Spark v HDInsight](apache-spark-jupyter-notebook-kernels.md). Pomocí poznámkového bloku Zeppelin naleznete v části [clusteru poznámkových bloků Zeppelin použít s Apache Spark v Azure HDInsight](./apache-spark-zeppelin-notebook.md).
 
 V tomto kurzu dotazování dat v souboru csv. Jako dataframe musí nejdřív načíst data do Spark. Potom můžete spouštět dotazy na dataframe pomocí poznámkového bloku Jupyter. 
 

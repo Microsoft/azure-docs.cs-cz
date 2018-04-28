@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 919b1bef1f1337ad188e26476da8c5a5ef029224
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 133c09ad1f81a122d089485f8793d7dddbd1488a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Nahrát zobecněný virtuální pevný disk a použít ho k vytvoření nové virtuální počítače v Azure
 
@@ -47,7 +47,7 @@ Ujistěte se, že role serveru spuštěná na tomto počítači jsou podporován
 
 1. Přihlaste se k virtuálnímu počítači Windows.
 2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a poté spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
 4. V **možnosti vypnutí**, vyberte **vypnutí**.
 5. Klikněte na **OK**.
    
@@ -107,7 +107,7 @@ Můžete také nahrát virtuální pevný disk na váš účet úložiště pomo
     Import a Export lze použít pro kopírování na standardní účet úložiště. Musíte zkopírovat z úložiště standard storage do prémiový účet úložiště pomocí nástroje, například AzCopy.
 
 > [!IMPORTANT]
-> Pokud používáte AzCopy odesílání svůj disk VHD do Azure, ujistěte se, jste nastavili [/BlobType:page](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) dřív, než spustíte odeslat skript. Pokud cílový objekt blob a není tato možnost zadána, ve výchozím nastavení, AzCopy vytvoří objekt blob bloku.
+> Pokud používáte AzCopy odesílání svůj disk VHD do Azure, ujistěte se, jste nastavili [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) dřív, než spustíte odeslat skript. Pokud cílový objekt blob a není tato možnost zadána, ve výchozím nastavení, AzCopy vytvoří objekt blob bloku.
 > 
 > 
 

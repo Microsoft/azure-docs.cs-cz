@@ -1,47 +1,47 @@
 ---
-title: "Azure Cosmos DB: Vývoj pomocí rozhraní API v jazyce Java Cassandra | Microsoft Docs"
-description: "Naučte se vyvíjet s rozhraním API Azure Cosmos DB Cassandra používá Java"
+title: 'Azure Cosmos DB: Vývoj v Javě s využitím rozhraní Cassandra API | Microsoft Docs'
+description: Naučte se vyvíjet v Javě s využitím rozhraní Cassandra API služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+tags: ''
 ms.assetid: 6732d883-835c-481f-98e1-287893530948
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 53987e5863d9fc11b4fa377295d198293819269c
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 8a4b26227b162268afd965f89ab2806b530e75be
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure CosmosDB: Vývoj pomocí Cassandra rozhraní API v jazyce Java
+# <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Vývoj v Javě s využitím rozhraní Cassandra API
 
-Azure Cosmos DB je globálně distribuované databáze více modelu služby společnosti Microsoft. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento kurz ukazuje, jak vytvořit účet Azure Cosmos DB pomocí portálu Azure a pak vytvořte Cassandra Table(sql-api-partition-data.md#partition-keys) pomocí [Cassandra API](cassandra-introduction.md). Definováním primární klíč při vytvoření tabulky, vaše aplikace připravena k pak moci bez obtíží škálujte podle rozšiřujícího se vaše data. 
+V tomto kurzu se dozvíte, jak pomocí webu Azure Portal vytvořit účet služby Azure Cosmos DB a pak pomocí rozhraní [Cassandra API](cassandra-introduction.md) vytvořit tabulku Cassandra (sql-api-partition-data.md#partition-keys). Když při vytváření tabulky definujete primární klíč, vaše aplikace bude připravená na bezproblémové škálování s ohledem na růst objemu dat. 
 
-Tento kurz obsahuje následující úlohy pomocí rozhraní API Cassandra:
+Tento kurz se zabývá následujícími úkony s použitím rozhraní Cassandra API:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB
-> * Vytvoření keyspace a tabulky s primárním klíčem
+> * Vytvoření prostoru klíčů a tabulky s primárním klíčem
 > * Vložení dat
 > * Dotazování dat
-> * Zkontrolujte SLA
+> * Ověření podmínek SLA
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přístup k rozhraní API služby Azure Cosmos DB Cassandra programu preview. Pokud jste ještě nenainstalovali pro přístup k ještě [nyní](https://aka.ms/cosmosdb-cassandra-signup).
+Přejděte k programu Azure Cosmos DB Cassandra API Preview. Pokud jste ještě nepožádali o přístup, [zaregistrujte se](https://aka.ms/cosmosdb-cassandra-signup).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternativně můžete [zkuste Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, bez poplatků a závazky.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
 Navíc platí: 
 
@@ -55,21 +55,21 @@ Navíc platí:
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
-Než bude možné vytvořit databázi dokumentů, musíte vytvořit účet Cassandra s Azure Cosmos DB.
+Než budete moct vytvořit databázi dokumentů, je potřeba pomocí služby Azure Cosmos DB vytvořit účet Cassandra.
 
 [!INCLUDE [cosmos-db-create-dbaccount-cassandra](../../includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď přejděme k práci s kódem. Pojďme klonovat Cassandra aplikace z Githubu, nastavení připojovacího řetězce a potom ho spusťte. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu git, jako je například git bash a použít `cd` příkaz Přejít do složky pro instalaci ukázkové aplikace. 
+1. Otevřete okno terminálu Git, třeba Git Bash, a pomocí příkazu `cd` přejděte do složky, do které chcete nainstalovat ukázkovou aplikaci. 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří kopii ukázková aplikace ve vašem počítači.
+2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -77,23 +77,23 @@ Teď přejděme k práci s kódem. Pojďme klonovat Cassandra aplikace z Githubu
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud vás zajímá učení vytváření databázových prostředků v kódu, můžete zkontrolovat následující fragmenty kódu. Jinak, můžete přeskočit na [aktualizovat připojovací řetězec](#update-your-connection-string). Tyto fragmenty kódu jsou převzaty z src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java.  
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). Všechny fragmenty kódu pocházejí ze souboru src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java.  
 
-* Jsou nastaveny Cassandra hostitelů, port, uživatelské jméno, heslo a možností protokolu SSL. Informace o připojovacím řetězci pochází z stránce připojovací řetězec na portálu Azure.
+* Je nastavený hostitel Cassandra, port, uživatelské jméno, heslo a možnosti SSL. Informace o připojovacím řetězci pocházejí ze stránky připojovacího řetězce na webu Azure Portal.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
    ```
 
-* `cluster` Připojí k rozhraní API služby Azure DB Cosmos Cassandra a vrátí relaci pro přístup.
+* Příkaz `cluster` se připojí k rozhraní Cassandra API služby Azure Cosmos DB a vrátí relaci pro přístup.
 
     ```java
     return cluster.connect();
     ```
 
-Následující fragmenty kódu jsou z src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java souboru.
+Následující fragmenty kódu pocházejí ze souboru src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java.
 
-* Vytvořte nový keyspace.
+* Vytvořte nový prostor klíčů.
 
     ```java
     public void createKeyspace() {
@@ -113,7 +113,7 @@ Následující fragmenty kódu jsou z src/main/java/com/azure/cosmosdb/cassandra
    }
    ```
 
-* Vložte entity uživatele pomocí objektu připravený příkaz.
+* Vložte entity uživatelů pomocí objektu připravených příkazů.
 
     ```java
     public PreparedStatement prepareInsertStatement() {
@@ -127,7 +127,7 @@ Následující fragmenty kódu jsou z src/main/java/com/azure/cosmosdb/cassandra
     }
     ```
 
-* Dotaz pro získání všech informací o uživateli.
+* Použijte dotaz pro získání informací o všech uživatelích.
 
     ```java
    public void selectAllUsers() {
@@ -140,7 +140,7 @@ Následující fragmenty kódu jsou z src/main/java/com/azure/cosmosdb/cassandra
     }
     ```
 
-* Dotaz se získat informace o jenom jednoho konkrétního uživatele.
+* Použijte dotaz pro získání informací o jednom uživateli.
 
     ```java
     public void selectUser(int id) {
@@ -153,61 +153,61 @@ Následující fragmenty kódu jsou z src/main/java/com/azure/cosmosdb/cassandra
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. To umožňuje aplikaci ke komunikaci s vaší hostované databází.
+Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází.
 
-1. V [portál Azure](http://portal.azure.com/), klikněte na tlačítko **připojovací řetězec**. 
+1. Na webu [Azure Portal](http://portal.azure.com/) klikněte na **Připojovací řetězec**. 
 
-    ![Zobrazení a zkopírování uživatelského jména z Azure stránky portálu, připojovací řetězec](./media/tutorial-develop-cassandra-java/keys.png)
+    ![Zobrazení a zkopírování uživatelského jména z webu Azure Portal, stránka Připojovací řetězec](./media/tutorial-develop-cassandra-java/keys.png)
 
-2. Použití ![Tlačítko Kopírovat](./media/tutorial-develop-cassandra-java/copy.png) tlačítko na pravé straně obrazovky zkopírujte hodnotu bod kontaktu.
+2. Pomocí tlačítka ![Tlačítko pro kopírování](./media/tutorial-develop-cassandra-java/copy.png) na pravé straně obrazovky zkopírujte hodnotu KONTAKTNÍ BOD.
 
-3. Otevřete `config.properties` soubor ze složky C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources. 
+3. Otevřete soubor `config.properties` ve složce C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources. 
 
-3. Vložit hodnotu bodu obraťte se na portálu přes `<Cassandra endpoint host>` na řádek 2.
+3. Vložte hodnotu KONTAKTNÍ BOD z portálu místo `<Cassandra endpoint host>` na řádku 2.
 
-    Řádek 2 config.properties by teď měl vypadat podobně jako 
+    Řádek 2 souboru config.properties by teď měl vypadat nějak takto: 
 
     `cassandra_host=cosmos-db-quickstarts.documents.azure.com`
 
-3. Přejděte zpět na portál a zkopírujte hodnotu uživatelského jména. Za hodnotu uživatelského jména z portálu přes `<cassandra endpoint username>` na řádku 4.
+3. Přejděte zpátky na portál a zkopírujte hodnotu UŽIVATELSKÉ JMÉNO. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<cassandra endpoint username>` na řádku 4.
 
-    Řádek 4 config.properties by teď měl vypadat podobně jako 
+    Řádek 4 souboru config.properties by teď měl vypadat nějak takto: 
 
     `cassandra_username=cosmos-db-quickstart`
 
-4. Přejděte zpět na portál a zkopírujte hodnotu heslo. Vložte hodnotu HESLA z portálu přes `<cassandra endpoint password>` na řádku 5.
+4. Přejděte zpátky na portál a zkopírujte hodnotu HESLO. Vložte hodnotu HESLO z portálu místo `<cassandra endpoint password>` na řádku 5.
 
-    Řádku 5 config.properties by teď měl vypadat podobně jako 
+    Řádek 5 souboru config.properties by teď měl vypadat nějak takto: 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. Na řádku 6, pokud chcete používat konkrétní certifikát SSL, potom můžete nahradit `<SSL key store file location>` s umístěním certifikátu protokolu SSL. Pokud není zadána hodnota, použije se JDK certifikát nainstalovaný na < JAVA_HOME >/prostředí jre/lib/zabezpečení nebo cacerts. 
+5. Pokud chcete použít konkrétní certifikát SSL, na řádku 6 nahraďte `<SSL key store file location>` umístěním certifikátu SSL. Pokud není uvedená hodnota, použije se certifikát JDK nainstalovaný v <JAVA_HOME>/jre/lib/security/cacerts. 
 
-6. Pokud jste změnili řádek 6 používat konkrétní certifikát SSL, aktualizujte řádek 7 používat heslo pro tento certifikát. 
+6. Pokud změníte řádek 6 pro použití konkrétního certifikátu SSL, aktualizujte řádek 7, aby používal heslo pro tento certifikát. 
 
 7. Uložte soubor config.properties.
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. V okně terminálu git `cd` azure-cosmosdb-cassandra-java-getting-started\java-examples složky.
+1. V okně terminálu Git přejděte příkazem `cd` do složky azure-cosmosdb-cassandra-java-getting-started\java-examples.
 
     ```git
     cd "C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples"
     ```
 
-2. V okně terminálu git pomocí následujícího příkazu vygenerujte soubor cosmosdb-cassandra-examples.jar.
+2. V okně terminálu Git použijte následující příkaz pro vytvoření souboru cosmosdb-cassandra-examples.jar.
 
     ```git
     mvn clean install
     ```
 
-3. V okně terminálu git spusťte následující příkaz a spusťte aplikaci Java.
+3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci v Javě.
 
     ```git
     java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
     ```
 
-    Okno terminálu zobrazí oznámení, že jsou vytvořeny keyspace a tabulka. Potom vybere a vrátí všechny uživatele v tabulce a zobrazí výstup a potom vybere řádek podle id a zobrazí hodnotu.  
+    Okno terminálu zobrazí oznámení o vytvoření prostoru klíčů a tabulky. Potom vybere a vrátí všechny uživatele v tabulce, zobrazí výstup a potom vybere řádek podle ID a zobrazí příslušnou hodnotu.  
     
     Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
 
@@ -221,16 +221,16 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 ## <a name="next-steps"></a>Další kroky
 
-V tento rychlý start jste zjistili, jak provést následující akce:
+V tomto rychlém startu jste se seznámili s následujícími postupy:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB
-> * Vytvoření keyspace a tabulky s primárním klíčem
+> * Vytvoření prostoru klíčů a tabulky s primárním klíčem
 > * Vložení dat
 > * Dotazování dat
-> * Najdete SLA
+> * Ověření podmínek SLA
 
-Nyní můžete importovat další data do Azure Cosmos DB kolekce. 
+Teď můžete do kolekce Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
-> [Importovat Cassandra data do Azure Cosmos DB](cassandra-import-data.md)
+> [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: e51dab1543c9c5c1c762134b3e73d608bcd523ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Spravovat pomocí šablony Azure Resource Manager analýzy protokolů
 Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory analýzy protokolů. Mezi příklady úloh, které můžete provádět s šablonami patří:
@@ -124,7 +124,7 @@ Tyto parametry nastavit výchozí hodnotu:
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která zahrnuje výsledek:<br><br> ![Příklad výsledků po dokončení nasazení](./media/log-analytics-template-workspace-configuration/template-output-01.png)
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvořit a nakonfigurovat pracovní prostor analýzy protokolů
+## <a name="configure-a-log-analytics-workspace"></a>Konfigurovat pracovní prostor analýzy protokolů
 Znázorňuje následující ukázka šablony postup:
 
 1. Přidat řešení do pracovního prostoru
@@ -230,7 +230,7 @@ Znázorňuje následující ukázka šablony postup:
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Galerie pro šablonu Azure rychlý start zahrnuje několik šablon pro analýzy 
 * [Nasazení virtuálního počítače s Linuxem pomocí rozšíření virtuálního počítače analýzy protokolů](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure Site Recovery.](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure Web Apps](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Monitorování pomocí existujícímu pracovnímu prostoru analýzy protokolů Azure SQL](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [Nasazení clusteru Service Fabric a monitorování s existující pracovní prostor analýzy protokolů](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Nasazení clusteru Service Fabric a vytvořit pracovní prostor analýzy protokolů ho chcete sledovat](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Přidat existující účet úložiště do OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Další postup
-* [Nasazení agentů do virtuálních počítačů Azure pomocí šablony Resource Manageru](log-analytics-azure-vm-extension.md)
+* [Nasazení agenta systému Windows k virtuálním počítačům Azure pomocí šablony Resource Manageru](../virtual-machines/windows/extensions-oms.md).
+* [Nasazení agenta systému Linux k virtuálním počítačům Azure pomocí šablony Resource Manageru](../virtual-machines/linux/extensions-oms.md).
 

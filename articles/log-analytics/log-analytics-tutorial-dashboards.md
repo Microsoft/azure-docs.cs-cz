@@ -1,11 +1,11 @@
 ---
-title: "Vytvářet a sdílet řídicí panely dat Azure Log Analytics | Microsoft Docs"
-description: "Tento kurz vám pomůže pochopit jak řídicí panely analýzy protokolů můžete vizualizovat všechny uložený protokol hledání, budete jeden přehledu zobrazení prostředí."
+title: Vytváření a sdílení řídicích panelů s daty Azure Log Analytics | Microsoft Docs
+description: Tento kurz vám pomůže porozumět způsobu, jakým řídicí panely Log Analytics vizualizují všechna vaše uložená prohledávání protokolů a poskytují jednotný přehled vašeho prostředí.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,63 +15,63 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: MT
+ms.openlocfilehash: f6a70f33b143a5b9354411af9717d2a21e24af0c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytvářet a sdílet řídicí panely dat analýzy protokolů
+# <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
-Analýzy protokolů řídicích panelů můžete vizualizovat všechny uložený protokol hledání, což vám umožní najít, korelaci a sdílet IT provozních dat v organizaci.  Tento kurz se zaměřuje na vytvoření vyhledávání protokolu, který se použije pro podporu sdílené řídicí panel, který budou mít přístup váš tým podpory IT operace.  Získáte informace o těchto tématech:
+Řídicí panely Log Analytics dokáží vizualizovat všechna vaše uložená prohledávání protokolů a poskytují možnost prohledávat, korelovat a sdílet provozní data IT v rámci organizace.  Tento kurz se zabývá vytvořením prohledávání protokolu, které se použije jako základ sdíleného řídicího panelu, ke kterému bude mít přístup váš tým podpory pro provoz IT.  Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit sdílený řídicí panel portálu Azure
-> * Vizualizace vyhledávání protokolu výkonu 
-> * Přidat hledání protokolů na sdílené řídicí panel 
-> * Přizpůsobení na dlaždici sdílené řídicí panel
+> * Vytvoření sdíleného řídicího panelu na webu Azure Portal
+> * Vizualizace prohledávání protokolu výkonu 
+> * Přidání prohledávání protokolu na sdílený řídicí panel 
+> * Přizpůsobení dlaždice na sdíleném řídicím panelu
 
-Pokud chcete provést v příkladu v tomto kurzu, musí mít existující virtuální počítač [připojené k pracovní prostor analýzy protokolů](log-analytics-quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](log-analytics-quick-collect-azurevm.md).  
  
-## <a name="log-in-to-azure-portal"></a>Přihlaste se k portálu Azure
-Přihlaste se k portálu Azure v [https://portal.azure.com](https://portal.azure.com). 
+## <a name="log-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
-## <a name="create-a-shared-dashboard"></a>Vytvořit sdílený řídicí panel
+## <a name="create-a-shared-dashboard"></a>Vytvoření sdíleného řídicího panelu
 
-Je první věcí, které se zobrazí po přihlášení k portálu Microsoft Azure [řídicí panel](../azure-portal/azure-portal-dashboards.md).<br> ![Řídicí panel portálu Azure](media/log-analytics-tutorial-dashboards/log-analytics-portal-dashboard.png)
+Po přihlášení k webu Microsoft Azure Portal jako první uvidíte [řídicí panel](../azure-portal/azure-portal-dashboards.md).<br> ![Řídicí panel Azure](media/log-analytics-tutorial-dashboards/log-analytics-portal-dashboard.png)
 
-Zde můžete najednou přenést provozních dat, která je nejdůležitější, aby IT napříč všechny vaše prostředky Azure, včetně telemetrie z Azure Log Analytics.  Předtím, než krok jsme do vizualizace hledání protokolů, můžeme nejprve vytvořit řídicí panel a její sdílení.  To umožňuje nám se získat stranou před použitím jsme naše příklad výkonu protokolu hledání, které se vykreslují jako spojnicový graf a přidejte ji do řídicího panelu.  
+Tady můžete kombinovat provozní data všech prostředků Azure, která jsou nejdůležitější pro IT, včetně telemetrie z Azure Log Analytics.  Než se pustíme do vizualizace prohledávání protokolu, vytvoříme nejprve řídicí panel a nastavíme jeho sdílení.  To nám umožní dát řídicí panel stranou, dokud na něj nepřidáme příklad prohledávání protokolu výkonu, které se vykreslí jako spojnicový graf.  
 
-Chcete-li vytvořit řídicí panel, vyberte **novým řídicím panelem** tlačítko vedle názvu aktuálního řídicího panelu.<br> ![Vytvořit nový řídicí panel portálu Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-01.png)
+Řídicí panel vytvoříte výběrem tlačítka **Nový řídicí panel** vedle názvu aktuálního řídicího panelu.<br> ![Vytvoření nového řídicího panelu na webu Azure Portal](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-01.png)
 
-Tato akce vytvoří řídicí panel nový, prázdný, privátní a vloží je do režimu přizpůsobení, kde můžete název řídicího panelu a přidání nebo změna uspořádání dlaždic. Umožňuje upravit název řídicího panelu a zadejte *ukázkový řídicí panel* pro tento kurz a pak vyberte **provádí přizpůsobení**.<br><br> ![Uložit přizpůsobené řídicí panel Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-02.png)
+Tato akce vytvoří nový, prázdný, privátní řídicí panel a přepne vás do režimu přizpůsobení, ve kterém můžete řídicí panel pojmenovat a přidat na něj dlaždice nebo změnit jejich uspořádání. Upravte název řídicího panelu, pro účely tohoto rychlého startu zadejte *Ukázkový řídicí panel*, a pak vyberte **Přizpůsobení dokončeno**.<br><br> ![Uložení přizpůsobeného řídicího panelu Azure](media/log-analytics-tutorial-dashboards/log-analytics-create-dashboard-02.png)
 
-Když vytváříte řídicí panel, je soukromé ve výchozím nastavení, což znamená, že jste jediná osoba, která můžete zobrazit. Chcete-li vidět další uživatelé, použijte **sdílenou složku** tlačítko, které se zobrazí spolu s jinými příkazy řídicího panelu.<br> ![Sdílení nové řídicího panelu na portálu Azure](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
+Když vytvoříte řídicí panel, ve výchozím nastavení je privátní. To znamená, že se zobrazí pouze vám. Pokud ho chcete zpřístupnit ostatním, použijte tlačítko **Sdílet**, které se zobrazí vedle dalších příkazů řídicího panelu.<br> ![Sdílení nového řídicího panelu na webu Azure Portal](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
 
-Zobrazí se výzva vybrat skupinu prostředků pro řídicí panel publikování a odběru. Pro usnadnění práce je portálu publikování prostředí příručky směrem vzor umístění řídicí panely ve skupině prostředků jste volali metodu **řídicí panely**.  Ověřte předplatném vybraném a pak klikněte na tlačítko **publikovat**.  Řídí přístup k informace zobrazené na řídicím panelu s [řízení přístupu na základě prostředků Azure](../active-directory/role-based-access-control-configure.md).   
+Zobrazí se výzva k výběru předplatného a skupiny prostředků, do kterých se má řídicí panel publikovat. Pro usnadnění práce vás prostředí pro publikování na portálu navede k umístění řídicích panelů do skupiny prostředků **dashboards** (řídicí panely).  Ověřte vybrané předplatné a pak klikněte na **Publikovat**.  Přístup k informacím zobrazeným na řídicím panelu se řídí pomocí [řízení přístupu na základě prostředku Azure](../role-based-access-control/role-assignments-portal.md).   
 
-## <a name="visualize-a-log-search"></a>Vizualizace hledání protokolů
+## <a name="visualize-a-log-search"></a>Vizualizace prohledávání protokolu
 
-Můžete vytvořit základní dotazů na jeden řádek z portálu hledání protokolů na portálu Azure. Portálu hledání protokolů můžete používat bez spuštění externí portál a slouží k provádění různých funkcí s protokolu hledání, včetně vytvoření pravidla výstrah, vytvoření skupin počítačů a export výsledků dotazu. 
+Na webu Azure Portal můžete vytvářet základní dotazy na jeden řádek z portálu pro prohledávání protokolů. Portál pro prohledávání protokolů můžete použít, aniž byste otevírali externí portál, a můžete pomocí něj provádět řadu funkcí s prohledáváními protokolů, včetně vytváření pravidel upozornění, vytváření skupin počítačů a exportování výsledků dotazu. 
 
-[Pokročilou analýzu portál](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) je vyhrazené portál, který poskytuje pokročilé funkce není k dispozici na portálu hledání protokolů. Funkce zahrnují možnost upravit dotaz na více řádků, selektivně spuštění kódu, závislé na kontextu Intellisense a inteligentní analýzy. Na portálu pokročilé analýzy bude vytvoření zobrazení výkonu v grafických formulářů, uložit pro budoucí vyhledávání a připnout na sdílené vytvořený řídicí panel.   
+[Portál pro pokročilou analýzu](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) je vyhrazený portál poskytující pokročilé funkce, které na portálu pro prohledávání protokolů nejsou k dispozici. Mezi tyto funkce patří možnost upravovat dotazy na několik řádků, selektivní spouštění kódu, funkce IntelliSense závislá na kontextu a inteligentní analýzy. Na portálu pro pokročilou analýzu vytvoříte zobrazení výkonu v grafické podobě, uložíte ho pro budoucí hledání a připnete ho na sdílený řídicí panel vytvořený dříve.   
 
-Spuštění portálu Advanced Analytics z odkaz na portálu hledání protokolů.<br> ![Spuštění portálu pokročilé analýzy](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
+Portál pro pokročilou analýzu otevřete přes odkaz na portálu pro prohledávání protokolů.<br> ![Otevření portálu pro pokročilou analýzu](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 
-V portálu analýzy zadejte následující dotaz vrátí pouze procesoru využití záznamy pro počítače se systémy Windows a Linux, seskupené podle počítače a TimeGenerated a v visual grafu zobrazí:
+Na portálu pro pokročilou analýzu zadejte následující dotaz, který vrátí pouze záznamy o využití procesoru pro počítače s Windows i Linuxem seskupené podle hodnot Computer a TimeGenerated a zobrazí je ve vizuálním grafu:
 
 ```
 Perf | where CounterName == "% Processor Time" and ObjectName == "Processor" and InstanceName == "_Total" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1m), Computer | render timechart
 ```
 
-Uložte dotaz tak, že vyberete **uložení dotazu** tlačítko v pravém horním rohu.<br> ![Uložení dotazu z portálu pokročilé analýzy](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> V **uložit dotaz** ovládací panely, zadejte název, jako *virtuálních počítačích Azure - využití procesoru* a pak klikněte na **Uložit**.  Tímto způsobem můžete vytvořit knihovnu běžné dotazy vyhledávání s nebo změnit, aniž byste museli znovu zcela zápisu.  Nakonec to připnout na sdílené řídicí panel vytvořený výběrem **Pin graf na řídicí panel Azure** tlačítko ze střední pravém horním rohu stránky.  
+Uložte dotaz výběrem tlačítka **Uložit dotaz** v pravém horním rohu.<br> ![Uložení dotazu na portálu pro pokročilou analýzu](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-02.png)<br><br> Na ovládacím panelu **Uložit dotaz** zadejte název, například *Virtuální počítače Azure – využití procesoru*, a klikněte na **Uložit**.  Tímto způsobem můžete vytvořit knihovnu běžných dotazů pro hledání nebo je upravovat, aniž byste je museli celé přepisovat.  Nakonec tento graf připněte na sdílený řídicí panel vytvořený dříve, a to výběrem tlačítka **Připnout graf na řídicí panel Azure** v pravém středním rohu stránky.  
 
-Teď, když máme dotazu připnuli k řídicímu panelu, si všimnete, že má obecný název a komentář pod ním.<br> ![Ukázkový řídicí panel Azure](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-01.png)<br><br>  Jsme měli přejmenujte jej na něco smysluplného, který můžete tyto zobrazení ho snadno pochopit.  Klikněte pravým tlačítkem na dlaždici a vyberte **úpravy dlaždice**.  Jakmile budete hotovi, přizpůsobení nadpisu a podnadpisu pro dlaždici, klikněte na možnost **aktualizace**.  Hlavička se zobrazí s žádostí o publikování změn nebo zrušení.  Klikněte na tlačítko **publikovat změny** a pak zavřete **upravit dlaždice** podokně ovládacího prvku.  
+Když teď máte dotaz připnutý na řídicím panelu, všimněte si, že je pod ním uvedený obecný název a komentář.<br> ![Ukázka řídicího panelu Azure](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-01.png)<br><br>  Měli bychom změnit název na něco smysluplného, co snadno pochopí uživatelé, kterým se zobrazí.  Klikněte pravým tlačítkem na dlaždici a vyberte **Upravit název**.  Jakmile budete hotovi s úpravou názvu a podnadpisu dlaždice, klikněte na **Aktualizovat**.  Zobrazí se banner s výzvou k publikování nebo zahození změn.  Klikněte na **Publikovat změny** a pak zavřete ovládací panel **Upravit název**.  
 
-![Dokončená konfigurace ukázkový řídicí panel](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
+![Dokončená konfigurace ukázkového řídicího panelu](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste zjistili, jak vytvořit řídicí panel portálu Azure a přidejte do ní hledání protokolů.  Přechod na další kurzu se dozvíte, jiné odpovědi, které můžete implementovat podle výsledků vyhledávání protokolu.  
+V tomto kurzu jste zjistili, jak vytvořit řídicí panel na webu Azure Portal a přidat na něj prohledávání protokolu.  V dalším kurzu se seznámíte s různými reakcemi, které můžete implementovat na základě výsledků prohledávání protokolu.  
 
 > [!div class="nextstepaction"]
-> [Reakce na události s výstrahami analýzy protokolů](log-analytics-tutorial-response.md)
+> [Reakce na události s využitím upozornění Log Analytics](log-analytics-tutorial-response.md)

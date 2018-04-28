@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: 45b148a9ccbd7c801821f23586810872a4a0d50d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory a služby Multi-Factor Authentication: ochrana osobních dat s ovládacími prvky identit a přístupu
 
@@ -125,7 +125,7 @@ Pokud mají vaši uživatelé licencí, které zahrnují Azure Multi-Factor Auth
 
 ![Uživatelé povolené ověřování MFA](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-Pokud aktuálně nemáte licencí, které budete muset projít procesem určení nejvhodnějšího typu nasazení pro váš scénář. Můžete spustit prohlížením článek s názvem [vybrat řešení pro Azure Multi-Factor Autehntication pro vás](../multi-factor-authentication/multi-factor-authentication-get-started.md). Pokud se rozhodnete, že je potřeba vytvořit aplikace Multi-Factor Authentication server. Můžete spustit pomocí následujících kroků:
+Pokud aktuálně nemáte licencí, které budete muset projít procesem určení nejvhodnějšího typu nasazení pro váš scénář. Můžete spustit prohlížením článek s názvem [vybrat řešení pro Azure Multi-Factor Autehntication pro vás](../active-directory/authentication/concept-mfa-whichversion.md). Pokud se rozhodnete, že je potřeba vytvořit aplikace Multi-Factor Authentication server. Můžete spustit pomocí následujících kroků:
 
 1. Vyberte **služby Active Directory** na portálu Azure (přihlášeni jako správce).
 
@@ -137,7 +137,7 @@ Pokud aktuálně nemáte licencí, které budete muset projít procesem určení
 
 4. Klikněte na **Uložit**.
 
-V tomto okně máte také možnost stažení serveru MFA. Můžete získat další podrobnosti o tom, jak upravit velikost a plánování nasazení najdete v článku [Začínáme s Azure Multi-Factor Authentication server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)
+V tomto okně máte také možnost stažení serveru MFA. Můžete získat další podrobnosti o tom, jak upravit velikost a plánování nasazení najdete v článku [Začínáme s Azure Multi-Factor Authentication server](../active-directory/authentication/howto-mfaserver-deploy.md)
 
 Další pokyny o tom, jak spravovat vaše zprostředkovatel vícefaktorového ověřování najdete v tématu [Začínáme s poskytovatele Azure Multi-Factor Auth.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)
 

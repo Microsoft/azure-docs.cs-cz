@@ -1,59 +1,59 @@
 ---
-title: "Azure Cosmos DB: Vývoj pomocí Graph API v rozhraní .NET | Microsoft Docs"
-description: "Naučte se vyvíjet s rozhraním API Azure Cosmos DB SQL pomocí rozhraní .NET"
+title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Graph API | Microsoft Docs'
+description: Naučte se vyvíjet v .NET s využitím rozhraní SQL API služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Vývoj pomocí Graph API v rozhraní .NET
+# <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Graph API
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento kurz ukazuje, jak vytvořit účet Azure Cosmos DB pomocí portálu Azure a vytvoření grafu databáze a kontejneru. Aplikace se pak vytvoří jednoduchý sociálních sítí s čtyři lidmi pomocí [rozhraní Graph API](graph-sdk-dotnet.md), pak prochází a dotazy pomocí Gremlin grafu.
+Tento kurz popisuje způsob vytvoření účtu služby Azure Cosmos DB pomocí webu Azure Portal a vytvoření databáze grafů a kontejneru. Aplikace pak pomocí rozhraní [Graph API](graph-sdk-dotnet.md) vytvoří jednoduchou sociální síť se čtyřmi lidmi a následně prochází a dotazuje graf pomocí Gremlin.
 
-Tento kurz obsahuje následující úlohy:
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos DB 
-> * Vytvoření grafu databáze a kontejneru
-> * Serializovat vrcholy a okrajů pro objekty .NET
-> * Přidejte vrcholy a okraje
-> * Dotaz pomocí Gremlin grafu
+> * Vytvoření databáze grafů a kontejneru
+> * Serializace vrcholů a hran do objektů .NET
+> * Přidávání vrcholů a hran
+> * Dotazování grafu pomocí Gremlin
 
-## <a name="graphs-in-azure-cosmos-db"></a>Grafy v Azure Cosmos DB
-Můžete vytvářet, aktualizovat a dotaz grafy pomocí Azure Cosmos DB [Microsoft.Azure.Graphs](graph-sdk-dotnet.md) knihovny. Knihovna Microsoft.Azure.Graph poskytuje jeden rozšiřující metodu `CreateGremlinQuery<T>` na `DocumentClient` třída na provedení dotazů Gremlin.
+## <a name="graphs-in-azure-cosmos-db"></a>Grafy ve službě Azure Cosmos DB
+Ve službě Azure Cosmos DB můžete vytvářet, aktualizovat a dotazovat grafy pomocí knihovny [Microsoft.Azure.Graphs](graph-sdk-dotnet.md). Knihovna Microsoft.Azure.Graphs obsahuje jednu rozšiřující metodu `CreateGremlinQuery<T>` nad třídou `DocumentClient` pro provádění dotazů Gremlin.
 
-Gremlin je funkční programovací jazyk, který podporuje zápis operace (DML) a operace dotazů a traversal. Mezi příklady v tomto článku získat vaše Začínáme s Gremlin nabídneme. V tématu [Gremlin dotazy](gremlin-support.md) podrobný návod Gremlin možnosti dostupné v Azure Cosmos DB. 
+Gremlin je funkcionální programovací jazyk, který podporuje operace zápisu (v jazyce DML) a operace dotazování a procházení. Tento článek obsahuje několik příkladů, které vám pomůžou s Gremlin začít. Podrobný popis možností Gremlin dostupných ve službě Azure Cosmos DB najdete v tématu věnovaném [dotazům Gremlin](gremlin-support.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 Ujistěte se prosím, že máte následující:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/). 
-    * Alternativně můžete použít [místní emulátoru](local-emulator.md) pro účely tohoto kurzu.
+    * Alternativně můžete pro tento kurz použít [místní emulátor](local-emulator.md).
 * Sadu [Visual Studio](http://www.visualstudio.com/).
 
-## <a name="create-database-account"></a>Vytvoření databázového účtu
+## <a name="create-database-account"></a>Vytvoření účtu databáze
 
-Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.  
+Začněme vytvořením účtu služby Azure Cosmos DB na webu Azure Portal.  
 
 > [!TIP]
-> * Již máte účet Azure Cosmos DB? Pokud ano, přeskočit na [nastavit řešení sady Visual Studio](#SetupVS)
-> * Pokud používáte emulátor DB Cosmos Azure, postupujte podle kroků v [emulátoru DB Cosmos Azure](local-emulator.md) nastavit emulátoru a přeskočit na [nastavení řešení v nástroji Visual Studio](#SetupVS). 
+> * Už máte účet služby Azure Cosmos DB? Pokud ano, přeskočte k části [Nastavení řešení v sadě Visual Studio](#SetupVS).
+> * Pokud používáte emulátor služby Azure Cosmos DB, nastavte emulátor pomocí postupu v tématu [Emulátor služby Azure Cosmos DB](local-emulator.md) a přeskočte k části [Nastavení řešení v sadě Visual Studio](#SetupVS). 
 >
 > 
 
@@ -62,33 +62,33 @@ Začněme vytvořením účtu Azure Cosmos DB na portálu Azure.
 ## <a id="SetupVS"></a>Nastavení řešení v sadě Visual Studio
 1. Otevřete na svém počítači sadu **Visual Studio**.
 2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.
-3. V **nový projekt** dialogovém okně, vyberte **šablony** / **Visual C#** / **konzolovou aplikaci (rozhraní .NET Framework)** , pojmenujte svůj projekt a potom klikněte na **OK**.
+3. V dialogovém okně **Nový projekt** vyberte **Šablony** / **Visual C#** / **Konzolová aplikace (.NET Framework)**, pojmenujte svůj projekt a klikněte na **OK**.
 4. V **Průzkumníku řešení** klikněte pravým tlačítkem na novou konzolovou aplikaci v rámci řešení sady Visual Studio a pak klikněte na **Spravovat balíčky NuGet**.
-5. V **NuGet** , klikněte na **Procházet**a typ **Microsoft.Azure.Graphs** do vyhledávacího pole a kontroly **zahrnují předprodejní verze**.
-6. Ve výsledcích hledání **Microsoft.Azure.Graphs** a klikněte na tlačítko **nainstalovat**.
+5. Na kartě **NuGet** klikněte na **Procházet**, do vyhledávacího pole zadejte **Microsoft.Azure.Graphs** a zaškrtněte možnost **Zahrnout předběžné verze**.
+6. Najděte ve výsledcích **Microsoft.Azure.Graphs** a klikněte na **Nainstalovat**.
    
    Pokud se vám zobrazí zpráva týkající se kontroly změn řešení, klikněte na **OK**. Pokud se vám zobrazí zpráva týkající se přijetí licence, klikněte na **Souhlasím**.
    
-    `Microsoft.Azure.Graphs` Knihovna poskytuje jeden rozšiřující metodu `CreateGremlinQuery<T>` pro provádění operací Gremlin. Gremlin je funkční programovací jazyk, který podporuje zápis operace (DML) a operace dotazů a traversal. Mezi příklady v tomto článku získat vaše Začínáme s Gremlin nabídneme. [Dotazy gremlin](gremlin-support.md) obsahuje podrobný návod Gremlin funkcí v Azure Cosmos DB.
+    Knihovna `Microsoft.Azure.Graphs` obsahuje jednu rozšiřující metodu `CreateGremlinQuery<T>` pro provádění operací Gremlin. Gremlin je funkcionální programovací jazyk, který podporuje operace zápisu (v jazyce DML) a operace dotazování a procházení. Tento článek obsahuje několik příkladů, které vám pomůžou s Gremlin začít. Podrobný popis možností Gremlin ve službě Azure Cosmos DB najdete v tématu věnovaném [dotazům Gremlin](gremlin-support.md).
 
 ## <a id="add-references"></a>Připojení aplikace
 
-Přidejte tyto dvě konstanty a *klienta* proměnné ve vaší aplikaci. 
+Přidejte do své aplikace tyto dvě konstanty a proměnnou *client*. 
 
 ```csharp
 string endpoint = ConfigurationManager.AppSettings["Endpoint"]; 
 string authKey = ConfigurationManager.AppSettings["AuthKey"]; 
 ``` 
-V dalším kroku head zpět do [portál Azure](https://portal.azure.com) získat adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu a primární klíč jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace. 
+Dále přejděte zpět na [Azure Portal](https://portal.azure.com) a získejte adresu URL koncového bodu a primární klíč. Adresa URL koncového bodu a primární klíč jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace. 
 
-Na portálu Azure přejděte ke svému účtu Azure Cosmos DB, klikněte na **klíče**a potom klikněte na **klíče pro čtení a zápis**. 
+Na webu Azure Portal přejděte do svého účtu služby Azure Cosmos DB, klikněte na **Klíče** a pak na **Klíče pro čtení i zápis**. 
 
-Zkopírujte URI z portálu a vložte ji přes `Endpoint` ve výše uvedené vlastnosti koncového bodu. Poté zkopírujte primární klíč z portálu a vložte ji do `AuthKey` vlastnost výše. 
+Zkopírujte identifikátor URI z portálu a vložte ho místo `Endpoint` ve výše uvedené vlastnosti endpoint. Pak zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do výše uvedené vlastnosti `AuthKey`. 
 
-![Snímek obrazovky portálu Azure používá v kurzu k vytvoření aplikace v jazyce C#. Ukazuje Azure DB Cosmos účtů tlačítkem klíče v Azure Cosmos DB navigaci a hodnotami URI a primární klíč v okně klíče](./media/tutorial-develop-graph-dotnet/keys.png) 
+![Snímek obrazovky webu Azure Portal, který se v kurzu používá k vytvoření aplikace v jazyce C#. Ukazuje účet služby Azure Cosmos DB se zvýrazněným tlačítkem KLÍČE v navigaci služby Azure Cosmos DB a zvýrazněnými hodnotami IDENTIFIKÁTOR URI a PRIMÁRNÍ KLÍČ v okně Klíče.](./media/tutorial-develop-graph-dotnet/keys.png) 
  
 ## <a id="instantiate"></a>Vytvoření instance DocumentClient 
-Dál vytvořte novou instanci třídy **DocumentClient**.  
+Dále vytvořte novou instanci **DocumentClient**.  
 
 ```csharp 
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey); 
@@ -96,15 +96,15 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>Vytvoření databáze 
 
-Teď vytvořte Azure DB Cosmos [databáze](sql-api-resources.md#databases) pomocí [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) metoda nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) metodu  **DocumentClient** třídy z [SQL .NET SDK](sql-api-sdk-dotnet.md).  
+Teď vytvořte [databázi](sql-api-resources.md#databases) Azure Cosmos DB pomocí metody [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) nebo [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) třídy **DocumentClient** v sadě [SQL SDK pro .NET](sql-api-sdk-dotnet.md).  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
 ``` 
  
-## <a name="create-a-graph"></a>Vytvoření grafu. 
+## <a name="create-a-graph"></a>Vytvoření grafu 
 
-Dále vytvořte kontejner grafu pomocí použití [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metoda nebo [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metodu **DocumentClient** třídy. Kolekce je kontejner entit grafu. 
+Dále vytvořte kontejner grafu pomocí metody [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) nebo [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) třídy **DocumentClient**. Kolekce je kontejner entit grafu. 
 
 ```csharp 
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
@@ -113,15 +113,15 @@ DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync
     new RequestOptions { OfferThroughput = 1000 }); 
 ``` 
 
-## <a id="serializing"></a>Serializovat vrcholy a okrajů pro objekty .NET
-Používá Azure Cosmos DB [GraphSON přenosový formát](gremlin-support.md), která definuje schéma JSON pro vrcholy, okraje a vlastností. .NET SDK služby Azure Cosmos DB zahrnuje JSON.NET jako závislost, a to umožňuje nám k serializaci nebo deserializaci GraphSON do objektů .NET, které jsme můžete pracovat v kódu.
+## <a id="serializing"></a>Serializace vrcholů a hran do objektů .NET
+Azure Cosmos DB používá [přenosový formát GraphSON](gremlin-support.md), který definuje schéma JSON pro vrcholy, hrany a vlastnosti. Sada .NET SDK služby Azure Cosmos DB zahrnuje jako závislost JSON.NET a díky tomu můžeme serializovat a deserializovat GraphSON do objektů .NET, se kterými pracujeme v kódu.
 
-Jako příklad umožňuje pracovat s jednoduché sociálních sítí čtyři osoby. Podíváme na tom, jak vytvořit `Person` vrcholy, přidejte `Knows` vztahy mezi nimi, potom dotaz a procházení graf tak, aby najde "friend friend" relace. 
+Jako příklad budeme pracovat s jednoduchou sociální sítí se čtyřmi lidmi. Podíváme se na to, jak vytvořit vrcholy `Person`, přidat vztahy `Knows` mezi nimi a pak dotazováním a procházením grafu vyhledat vztahy „přítel přítele“. 
 
-`Microsoft.Azure.Graphs.Elements` Obor názvů obsahuje `Vertex`, `Edge`, `Property` a `VertexProperty` třídy pro deserializaci GraphSON odpovědí dobře definované objekty .NET.
+Obor názvů `Microsoft.Azure.Graphs.Elements` poskytuje třídy `Vertex`, `Edge`, `Property` a `VertexProperty` pro deserializaci odpovědí GraphSON do dobře definovaných objektů .NET.
 
-## <a name="run-gremlin-using-creategremlinquery"></a>Spustit Gremlin pomocí CreateGremlinQuery
-Gremlin, například SQL, podporuje čtení, zápisu a operace dotazů. Například následující fragment kódu ukazuje, jak vytvořit vrcholy, okraje, provádět některé ukázkové dotazy s pomocí `CreateGremlinQuery<T>`a asynchronně iteraci v rámci těchto výsledků pomocí `ExecuteNextAsync` a ' HasMoreResults.
+## <a name="run-gremlin-using-creategremlinquery"></a>Spuštění Gremlin pomocí CreateGremlinQuery
+Gremlin stejně jako SQL podporuje operace čtení, zápisu a dotazování. Například následující fragment kódu ukazuje, jak vytvořit vrcholy, hrany, provést několik ukázkových dotazů pomocí `CreateGremlinQuery<T>` a asynchronně iterovat těmito výsledky pomocí `ExecuteNextAsync` a HasMoreResults.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
@@ -166,9 +166,9 @@ foreach (KeyValuePair<string, string> gremlinQuery in gremlinQueries)
 }
 ```
 
-## <a name="add-vertices-and-edges"></a>Přidejte vrcholy a okraje
+## <a name="add-vertices-and-edges"></a>Přidávání vrcholů a hran
 
-Podívejme se na Gremlin příkazy uvedené v předchozí části podrobněji. První jsme některé vrcholy pomocí na Gremlin `addV` metoda. Například následující fragment vytváří vrchol "Thomas rodinu" typu "Osoba", s vlastnostmi pro křestní jméno, příjmení a stáří.
+Podívejme se podrobněji na příkazy Gremlin uvedené v předchozí části. Nejprve přidáme několik vrcholů pomocí metody Gremlin `addV`. Například následující fragment kódu vytvoří vrchol Thomas Andersen typu Person (Osoba) s vlastnostmi pro jméno, příjmení a věk.
 
 ```cs
 // Create a vertex
@@ -182,7 +182,7 @@ while (createVertexQuery.HasMoreResults)
 }
 ```
 
-Poté vytvoříme některé okraje mezi tyto vrcholy pomocí na Gremlin `addE` metoda. 
+Pak mezi těmito vrcholy vytvoříme několik hran pomocí metody Gremlin `addE`. 
 
 ```cs
 // Add a "knows" edge
@@ -196,7 +196,7 @@ while (create.HasMoreResults)
 }
 ```
 
-Aktualizujeme existující vrchol pomocí `properties` krok v Gremlin. Jsme přeskočit volání spuštění dotazu prostřednictvím `HasMoreResults` a `ExecuteNextAsync` pro zbytek příklady.
+Stávající vrchol můžeme upravit pomocí kroku `properties` v Gremlin. Volání pro provedení dotazu prostřednictvím `HasMoreResults` a `ExecuteNextAsync` ve zbývajících příkladech přeskočíme.
 
 ```cs
 // Update a vertex
@@ -205,7 +205,7 @@ client.CreateGremlinQuery<Vertex>(
     "g.V('thomas').property('age', 45)");
 ```
 
-Můžete vložit okraje a vrcholy pomocí Gremlin na `drop` krok. Zde je fragment kódu, který ukazuje, jak odstranit vrchol a okraj. Pamatujte, že vyřazení vrchol kaskádové odstranění přidružené okrajů.
+Hrany a vrcholy můžete zrušit pomocí kroku Gremlin `drop`. Tady je fragment kódu, který ukazuje odstranění vrcholu a hrany. Mějte na paměti, že při zrušení vrcholu se provede kaskádové odstranění přidružených hran.
 
 ```cs
 // Drop an edge
@@ -215,15 +215,15 @@ client.CreateGremlinQuery(graphCollection, "g.E('thomasKnowsRobin').drop()");
 client.CreateGremlinQuery(graphCollection, "g.V('robin').drop()");
 ```
 
-## <a name="query-the-graph"></a>Dotaz grafu
+## <a name="query-the-graph"></a>Dotazování grafu
 
-Můžete provádět dotazy a také pomocí Gremlin traversals. Například následující fragment kódu ukazuje, jak můžete zjistit, kolik vrcholy v grafu:
+Pomocí Gremlin můžete provádět také dotazy a procházení. Například následující fragment kódu ukazuje, jak vypočítat počet vrcholů v grafu:
 
 ```cs
 // Run a query to count vertices
 IDocumentQuery<int> countQuery = client.CreateGremlinQuery<int>(graphCollection, "g.V().count()");
 ```
-Můžete nastavit filtry, pomocí na Gremlin `has` a `hasLabel` kroky a zkombinovat pomocí `and`, `or`, a `not` k vytvoření složitějších filtrů:
+Můžete provádět filtrování pomocí kroků Gremlin `has` a `hasLabel` a jejich kombinací pomocí operátorů `and`, `or` a `not` vytvářet složitější filtry:
 
 ```cs
 // Run a query with filter
@@ -232,7 +232,7 @@ IDocumentQuery<Vertex> personsByAge = client.CreateGremlinQuery<Vertex>(
   "g.V().hasLabel('person').has('age', gt(40))");
 ```
 
-Můžete promítnout některé vlastnosti ve výsledcích dotazu pomocí `values` kroku:
+Do výsledků dotazu můžete promítnout určité vlastnosti pomocí kroku `values`:
 
 ```cs
 // Run a query with projection
@@ -241,7 +241,7 @@ IDocumentQuery<string> firstNames = client.CreateGremlinQuery<string>(
   $"g.V().hasLabel('person').values('firstName')");
 ```
 
-Zatím jste pouze viděli operátory dotazu, které fungují v některé z databází. Grafy jsou rychlé a efektivní pro operace traversal, když potřebujete přejít na související okraje a vrcholy. Umožňuje najít všechny přátelích Thomas. Provedeme to pomocí na Gremlin `outE` krok najdete všechny odesílací okrajů z Thomas pak procházení k v vrcholy z těchto hran pomocí Gremlin na `inV` krok:
+Zatím jsme viděli pouze operátory dotazu, které fungují v jakékoli databázi. Grafy jsou rychlé a efektivní pro operace procházení, kdy potřebujete přecházet k souvisejícím hranám a vrcholům. Teď najdeme všechny přátele Thomase. Provedeme to pomocí kroku Gremlin `outE`, kterým vyhledáme všechny vnější hrany od Thomase, a pak pomocí kroku Gremlin `inV` přejdeme z těchto hran k vnitřním vrcholům:
 
 ```cs
 // Run a traversal (find friends of Thomas)
@@ -250,7 +250,7 @@ IDocumentQuery<Vertex> friendsOfThomas = client.CreateGremlinQuery<Vertex>(
   "g.V('thomas').outE('knows').inV().hasLabel('person')");
 ```
 
-Další dotaz provádí dvěma segmenty směrování k vyhledání všech Thomas. "přátelích přátel,", voláním `outE` a `inV` dvakrát. 
+Další dotaz provádí dva segmenty směrování a dvojím zavoláním kroků `outE` a `inV` vyhledá všechny přátele přátel Thomase. 
 
 ```cs
 // Run a traversal (find friends of friends of Thomas)
@@ -259,9 +259,9 @@ IDocumentQuery<Vertex> friendsOfFriendsOfThomas = client.CreateGremlinQuery<Vert
   "g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')");
 ```
 
-Můžete vytvořit složitější dotazy a implementovat logiku traversal výkonné grafu pomocí Gremlin, včetně kombinování filtru výrazů, provádění opakování pomocí `loop` kroku a implementuje pomocí podmíněného navigace `choose` krok. Další informace o co můžete dělat s [Gremlin podporu](gremlin-support.md)!
+Pomocí Gremlin můžete vytvářet i složitější dotazy a implementovat výkonnou logiku procházení grafů, včetně kombinování výrazů filtru, provádění smyček pomocí kroku `loop` a implementace podmíněné navigace pomocí kroku `choose`. Získejte další informace o tom, co můžete provádět díky [podpoře Gremlin](gremlin-support.md).
 
-Je to, v tomto kurzu pro Azure Cosmos DB je dokončena! 
+To je vše, tento kurz služby Azure Cosmos DB je u konce. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -272,14 +272,14 @@ Pokud nebudete tuto aplikaci nadále používat, pomocí následujícího postup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Vytvoření účtu Azure Cosmos DB 
-> * Vytvoření grafu databáze a kontejneru
-> * Serializovaná vrcholy a okrajů pro objekty .NET
-> * Přidání vrcholy a okraje
-> * Dotaz pomocí Gremlin grafu
+> * Vytvořili jste účet služby Azure Cosmos DB. 
+> * Vytvořili jste databázi grafů a kontejner.
+> * Serializovali jste vrcholy a hrany do objektů .NET.
+> * Přidali jste vrcholy a hrany.
+> * Dotazovali jste graf pomocí Gremlin.
 
 Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 

@@ -1,11 +1,11 @@
 ---
-title: "H264 jednou přenosovou rychlostí 4K Media Encoder Standard přednastavených - Azure | Microsoft Docs"
-description: "Téma nabízí přehled ** jednou přenosovou rychlostí H264 přednastavených úloha 4 kB **."
+title: H264 jednou přenosovou rychlostí 4K Media Encoder Standard přednastavených - Azure | Microsoft Docs
+description: Téma nabízí přehled **H264 jednou přenosovou rychlostí 4K** přednastavení úloh.
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8e437aea-8193-49a0-9ff2-4fd391c80972
 ms.service: media-services
 ms.workload: media
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 64c68363d4ba89e9ebbcaca8ff45d12f771e3a8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a3c733649ed8f4a50738ea54539bdb938602cc8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 s jednou přenosovou rychlostí 4 kB
-`Media Encoder Standard`definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  Toto téma ukazuje `H264 Single Bitrate 4K` přednastavení ve formátu XML a JSON.  
   
  Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 18000 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
   
 > [!NOTE]
->  Měli byste obdržet jednotku rezervovanou Premium kóduje typ s 4 kB. Další informace najdete v tématu [postup škálování kódování](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+>  Měli byste obdržet jednotku rezervovanou Premium kóduje typ s 4 kB. Další informace najdete v tématu [postup škálování kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
  XML  
   

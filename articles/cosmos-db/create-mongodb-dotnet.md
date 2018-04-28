@@ -1,5 +1,5 @@
 ---
-title: 'Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Dokumentace Microsoftu'
+title: 'Databáze Azure Cosmos: Sestavení webové aplikace v prostředí .NET s rozhraním API MongoDB | Microsoft Docs'
 description: Představuje ukázku kódu .NET, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB databáze Azure Cosmos.
 services: cosmos-db
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/19/2018
 ms.author: sngun
-ms.openlocfilehash: ab14261e939063c5e50050774d1aae3edf1bef19
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a63a8577bda951613f60102475396f72ea1a4bdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Databáze Azure Cosmos: Sestavení webové aplikace s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal
 
@@ -43,8 +43,19 @@ Pokud ještě nemáte sadu Visual Studio, stáhněte si sadu [Visual Studio 2017
 
 Nejprve stáhněte ukázkovou aplikaci MongoDB API z GitHubu. Tato aplikace implementuje seznam úkolů s modelem úložiště dokumentů MongoDB.
 
-1. Otevřete okno terminálu Git, jako je třeba Git Bash, a pomocí `cd` přejděte do pracovního adresáře.
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. 
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
@@ -54,7 +65,9 @@ Pokud nechcete použít git, můžete [projekt stáhnout také jako soubor ZIP](
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Ještě jednou se stručně podívejme na to, co se v aplikaci děje. Otevřete soubor **Dal.cs** v adresáři **DAL** a zjistíte, že tyto řádky kódu vytvářejí prostředky databáze Azure Cosmos. 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+
+Všechny následující fragmenty kódu pocházejí ze souboru Dal.cs v adresáři DAL.
 
 * Inicializuje se klient Mongo.
 
@@ -110,7 +123,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
     
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
 
-1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
+1. V sadě Visual Studio klikněte v **Průzkumníkovi řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
 
 2. Do pole **Procházet** v NuGetu zadejte *MongoDB.Driver*.
 
@@ -126,10 +139,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fcdcc4cf948550467257fa6cbe9287cd26d49962
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4089fe636ad25f97fe78f0bd10553b93d768321d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopírování dat z Spark pomocí Azure Data Factory 
 
@@ -47,9 +47,9 @@ Pro Spark propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **Spark** | Ano |
 | hostitel | IP adresa nebo název hostitele serveru Spark  | Ano |
-| port | Port TCP, který používá Spark server naslouchat pro připojení klientů.  | Ano |
+| port | Port TCP, který používá Spark server naslouchat pro připojení klientů. Pokud se připojit k Azure HDInsights, zadejte port jako 443. | Ano |
 | serverType | Typ serveru Spark. <br/>Povolené hodnoty jsou: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Ne |
-| thriftTransportProtocol | Přenosový protokol pro použití v Thrift vrstvy. <br/>Povolené hodnoty jsou: **binární**, **SASL**, ** HTTP ** | Ne |
+| thriftTransportProtocol | Přenosový protokol pro použití v Thrift vrstvy. <br/>Povolené hodnoty jsou: **binární**, **SASL**, **HTTP** | Ne |
 | authenticationType. | Metodu ověřování pro přístup k serveru Spark. <br/>Povolené hodnoty jsou: **anonymní**, **uživatelské jméno**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | uživatelské jméno | Uživatelské jméno, který používáte pro přístup k serveru Spark.  | Ne |
 | heslo | Heslo odpovídající uživateli. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
@@ -76,8 +76,7 @@ Pro Spark propojené služby jsou podporovány následující vlastnosti:
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

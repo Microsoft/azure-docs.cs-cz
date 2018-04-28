@@ -1,8 +1,8 @@
 ---
-title: "Vývoj uživatelem definované operátory U-SQL (UDO) | Microsoft Docs"
-description: "Další informace jak vyvíjet uživatelem definované operátory k použití a znovu použít v úloh Data Lake Analytics. "
+title: Vývoj uživatelem definované operátory U-SQL (UDO) | Microsoft Docs
+description: 'Další informace jak vyvíjet uživatelem definované operátory k použití a znovu použít v úloh Data Lake Analytics. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: kfile
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c0164d9f1e40778d3ce0dc7e947f6d2807234468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definované operátory U-SQL (UDO)
 Další informace jak vyvíjet uživatelem definované operátory při zpracování dat v rámci úlohy U-SQL.
@@ -130,5 +130,5 @@ Pokyny týkající se vývoje pro obecné účely sestavení pro U-SQL najdete v
 2. Rozbalte ukázky, rozbalte výstupy a potom dvakrát klikněte na **ovladače.csv**.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Rozšíření výrazy U-SQL pomocí uživatelského kódu](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
+* [Rozšíření výrazy U-SQL pomocí uživatelského kódu](https://msdn.microsoft.com/library/azure/mt621316.aspx)
 * [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

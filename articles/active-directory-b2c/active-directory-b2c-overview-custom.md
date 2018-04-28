@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Vlastní zásady
 
@@ -64,7 +64,7 @@ Azure AD B2C komunikuje s zprostředkovatelů identity jiných systémů, uživa
 
 ### <a name="identity-experience-framework"></a>Architektura prostředí identit
 
-Plně konfigurovatelné řízená zásadami, cloudové platformy Azure, které orchestrují vztah důvěryhodnosti mezi entity (široce zprostředkovatelů deklarací) v standardní protokol formáty například OpenIDConnect, OAuth, SAML, WSFed a několik nestandardní ty (např. REST API-based systému systému deklarací výměnu). Vytvoří I2E uživatelsky přívětivý, whitelabelled vyskytne, která podporují HTML, CSS a javascript.  Rozhraní prostředí Identity v současné době je k dispozici pouze v rámci služby Azure AD B2C a úlohy týkající se CIAM seřazený podle priority.
+Plně konfigurovatelné řízená zásadami, cloudové platformy Azure, které orchestrují vztah důvěryhodnosti mezi entity (široce zprostředkovatelů deklarací) v standardní protokol formáty například OpenIDConnect, OAuth, SAML, WSFed a několik nestandardní ty (např. REST API-based systému systému deklarací výměnu). I2E vytvoří uživatelsky přívětivý, s popiskem white možností, které podporují HTML, CSS a javascript.  Rozhraní prostředí Identity v současné době je k dispozici pouze v rámci služby Azure AD B2C a úlohy týkající se CIAM seřazený podle priority.
 
 ### <a name="built-in-policies"></a>Předdefinované zásady
 

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby application gateway s brány firewall webových aplikací – Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí prostředí Azure PowerShell."
+title: Vytvoření služby application gateway s brány firewall webových aplikací – Azure PowerShell | Microsoft Docs
+description: Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí prostředí Azure PowerShell.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,22 +11,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: fe36076988e65837340ec70982de788e532c455d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 662e8bc8b1119022cf88bf40108bb8d1e680f122
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-azure-powershell"></a>Vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí Azure PowerShell
 
 Prostředí Azure PowerShell můžete použít k vytvoření [Aplikační brána](application-gateway-introduction.md) s [brány firewall webových aplikací](application-gateway-web-application-firewall-overview.md) (firewall webových aplikací), který používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end serverů. Firewall webových aplikací používá [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) pravidla k ochraně vaší aplikace. Mezi tato pravidla patří ochranu před útoky, například typu Injektáž SQL a útoky skriptování mezi weby a hijacks relace. 
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení sítě
 > * Vytvoření služby application gateway s povolen firewall webových aplikací
-> * Vytvoření sady škálování virtuálního počítače
+> * Vytvoření škálovací sady virtuálních počítačů
 > * Vytvoření účtu úložiště a konfiguraci diagnostiky
 
 ![Příklad brány firewall webových aplikací](./media/application-gateway-web-application-firewall-powershell/scenario-waf.png)
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -45,7 +45,7 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
 Vytvoření konfigurací podsítě s názvem *myBackendSubnet* a *myAGSubnet* pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořit virtuální síť s názvem *myVNet* pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfigurací podsítě. A nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
 
@@ -153,7 +153,7 @@ $appgw = New-AzureRmApplicationGateway `
   -WebApplicationFirewallConfig $wafConfig
 ```
 
-## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 V tomto příkladu vytvoříte škálování virtuálních počítačů, nastavit zajistit servery pro tento fond back-end v aplikační brány. Můžete přiřadit měřítka nastaven fond back-end při konfiguraci nastavení IP adresy.
 
@@ -252,7 +252,7 @@ Set-AzureRmDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>Testování služby application gateway
 
-Můžete použít [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+Můžete použít [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -267,7 +267,7 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Nastavení sítě
 > * Vytvoření služby application gateway s povolen firewall webových aplikací
-> * Vytvoření sady škálování virtuálního počítače
+> * Vytvoření škálovací sady virtuálních počítačů
 > * Vytvoření účtu úložiště a konfiguraci diagnostiky
 
 Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.

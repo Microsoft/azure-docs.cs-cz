@@ -11,11 +11,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorování a optimalizace výkonu
 
@@ -49,8 +49,8 @@ Můžete také umožňují Azure SQL database k [automaticky optimalizovat výko
 
 ## <a name="improving-database-performance-with-more-resources"></a>Zvýšení výkonu databáze s další prostředky
 
-Nakonec pokud nejsou žádné řešitelné položky, které může zlepšit výkon vaší databáze, můžete změnit objem prostředků, které jsou k dispozici ve službě Azure SQL Database. Další zdroje informací můžete přiřadit změnou [vrstvy služby](sql-database-service-tiers.md) samostatná databáze nebo zvýšení jednotky Edtu fondu elastické databáze kdykoli.
-1. Pro samostatné databáze, můžete [Změna úrovně služeb](sql-database-service-tiers.md) na vyžádání ke zlepšení výkonu databáze.
+Nakonec pokud nejsou žádné řešitelné položky, které může zlepšit výkon vaší databáze, můžete změnit objem prostředků, které jsou k dispozici ve službě Azure SQL Database. Můžete přiřadit více prostředků změnou [vrstvy služby DTU](sql-database-service-tiers-dtu.md) samostatná databáze nebo zvýšení jednotky Edtu fondu elastické databáze kdykoli. Případně pokud používáte [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md), můžete změnit úroveň služby nebo zvýšit prostředky přidělené vaší databáze. 
+1. Pro samostatné databáze, můžete [Změna úrovně služeb](sql-database-service-tiers-dtu.md) nebo [výpočetní prostředky](sql-database-service-tiers-vcore.md)na vyžádání ke zlepšení výkonu databáze.
 2. V případě více databází, zvažte použití [elastické fondy](sql-database-elastic-pool-guidance.md) prostředky automaticky škálovat.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Ladění a refactor aplikace nebo kódu databáze

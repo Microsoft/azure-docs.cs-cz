@@ -1,24 +1,19 @@
 ---
-title: "Indexování úložiště tabulek Azure s Azure Search | Microsoft Docs"
-description: "Naučte se indexovat data uložená ve službě Azure Table storage s Azure Search"
-services: search
-documentationcenter: 
+title: Indexování úložiště tabulek Azure s Azure Search | Microsoft Docs
+description: Naučte se indexovat data uložená ve službě Azure Table storage s Azure Search
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 1cc27411-d0cc-40ed-8aed-c7cb9ab402b9
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 04/10/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a171bdd11cd2de030937927eef34d5ad9e0507af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Index úložiště tabulek Azure s Azure Search
 Tento článek ukazuje, jak používat Azure Search k indexu data uložená ve službě Azure Table storage.
@@ -52,7 +47,7 @@ Pro tabulku indexování, zdroje dat musí mít následující vlastnosti:
 
 Vytvoření zdroje dat:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -84,7 +79,7 @@ Index určuje pole v dokumentu, atributy, a jiných objektů, které utvářejí
 
 Pokud chcete vytvořit index:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -103,7 +98,7 @@ Indexer zdroje dat se připojí pomocí cílový index vyhledávání a poskytuj
 
 Po vytvoření indexu a zdroj dat, jste připraveni vytvořit indexeru:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -136,7 +131,7 @@ Při nastavování tabulky indexer spouštět podle plánu, ho Reindexuje pouze 
 
 K označení, že určitých dokumentů je třeba odebrat z indexu, můžete použít strategie obnovitelného odstranění. Místo odstraněním řádku, přidání vlastnosti do znamenat, že se má odstranit a nastavit zásadu obnovitelného odstranění duplicit na zdroji dat. Například tyto zásady domnívá, že je-li vlastnost řádek odstranění řádku `IsDeleted` s hodnotou `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

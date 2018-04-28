@@ -1,11 +1,11 @@
 ---
-title: "Automatizované skript pro vytvoření aplikace webového portálu Service Manager pro připojení s konektorem správy IT služby v Azure | Microsoft Docs"
-description: "Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu připojit s konektorem správy IT služby ve službě Azure a centrálně monitorovat a spravovat ITSM pracovní položky."
+title: Automatizované skript pro vytvoření aplikace webového portálu Service Manager pro připojení s konektorem správy IT služby v Azure | Microsoft Docs
+description: Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu připojit s konektorem správy IT služby ve službě Azure a centrálně monitorovat a spravovat ITSM pracovní položky.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 34ec15781776fc8373cd6c9dafa75010e942e167
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e65f64939826a97eae0fca0fe3ae220f5479d2b4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatizované skriptu
 
@@ -126,7 +126,7 @@ if(!$siteNamePrefix)
     $siteNamePrefix = "smoc"
 }
 
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 $context = Set-AzureRmContext -SubscriptionName $azureSubscriptionName -WarningAction SilentlyContinue
 
@@ -206,7 +206,7 @@ catch
     # Delete the deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
-    Write-Host "Faiure occured in Azure AD application....Try again!!"
+    Write-Host "Failure occured in Azure AD application....Try again!!"
 
     exit
 

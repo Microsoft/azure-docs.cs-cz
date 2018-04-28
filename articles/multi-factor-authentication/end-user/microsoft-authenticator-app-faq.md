@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Authenticator aplikaci Nápověda a podpora | Microsoft Docs"
-description: "Poskytuje seznam Časté otázky a odpovědi týkající se aplikace Microsoft Authentication a ověřování Azure Multi-Factor Authentication."
+title: Microsoft Authenticator aplikaci Nápověda a podpora | Microsoft Docs
+description: Poskytuje seznam Časté otázky a odpovědi týkající se aplikace Microsoft Authentication a ověřování Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
@@ -15,15 +15,15 @@ ms.date: 03/08/2018
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e9c152fddbfcd603a84caf2c168ec4f12368dcfa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikace Microsoft Authenticator – nejčastější dotazy
 
-Tento článek obsahuje odpovědi na běžné otázky, které obdržíme o aplikaci Microsoft Authenticator. Pokud nevidíte odpověď na svoji otázku, přejděte k [fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Máme také jiné – nejčastější dotazy o konkrétní funkci v aplikaci [přihlásit pomocí vašeho telefonu – nejčastější dotazy](microsoft-authenticator-app-phone-signin-faq.md).
+Tento článek obsahuje odpovědi na časté otázky týkající se aplikace Microsoft Authenticator. Pokud nevidíte odpověď na svoji otázku, přejděte k [fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Kromě toho můžete zkontrolovat jiné – nejčastější dotazy o konkrétní funkci v aplikaci [přihlásit pomocí vašeho telefonu – nejčastější dotazy](microsoft-authenticator-app-phone-signin-faq.md).
 
 Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je doporučenou aplikaci, když používáte Azure Multi-Factor Authentication. Je k dispozici pro aplikaci Microsoft Authenticator [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
@@ -33,9 +33,9 @@ Aplikace Microsoft Authenticator nahradit aplikaci Azure Authenticator a je dopo
 
 Microsoft Authenticator ukládá informace o účtu, který vytvoříte, když přidáte účet. Pokud používáte ověřovací, protokolů diagnostiky se vytvoří pro účely ladění a ukládá užitečné data v pomáhá společnosti Microsoft diagnostikovat problémy s nepředpokládaného. Měli přístup k datům protokolu otevřením **pomoci** > **odeslat protokoly** > **zobrazit protokoly**.
 
-Data můžete odstranit odstraněním účtu dlaždice. Tato akce odstraní všechny informace o účtu používá aplikace, včetně protokolů. 
+Data můžete odstranit odstraněním účtu dlaždice. Odstranění účtu dlaždice také odstraní všechny informace o účtu používá aplikace, včetně protokolů. 
 
-Další informace o tom, jak společnost Microsoft používá vaše data, navštivte: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
+Další informace o tom, jak společnost Microsoft používá vaše data najdete na adrese: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Jaké jsou kódy v aplikaci pro? Proč čísla zachovat počítání?
 
@@ -57,7 +57,7 @@ Pokud neobdržíte oznámení vůbec, zkontrolujte v následujících případec
 - Můžete přijímat oznámení z jiných aplikací? Pokud ne, může být problém s připojeních k síti na váš telefon nebo kanál oznámení z Android nebo Apple. První možností můžete vyřešit v nastavení telefonu, ale budete muset obraťte se na svého poskytovatele služeb pro pomoc s druhou možnost.
 - Můžete přijímat oznámení pro některé účty v aplikaci, ale jiné ne? Pokud ano, odeberte problematické účet z vaší aplikace a přidejte ji znovu povolte nabízená oznámení.
 
-Pokud se pokusilo tyto návrhy, ale i nadále s problémy, pošlete nám svoje protokoly pro diagnostiku. Přejděte do nastavení aplikace a pak vyberte **Nápověda a zpětnou vazbu** a **odeslání protokolů s**. Potom pokračujte [fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) a dejte nám vědět, co problém zobrazeny a jak jste se pokusili, pokud.
+Pokud se pokusilo tyto tipy pro řešení potíží, ale i nadále s problémy, můžete odeslat protokolů pro diagnostiku. Přejděte do nastavení aplikace a pak vyberte **Nápověda a zpětnou vazbu** a **odeslání protokolů s**. Potom pokračujte [fórum aplikace Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) a dejte nám vědět, co problém zobrazeny a jak jste se pokusili, pokud.
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Aplikace Microsoft Authenticator již používám pro ověřovací kódy. Jak přepnout na jedním kliknutím nabízená oznámení?
 Schválení přihlášení prostřednictvím nabízených oznámení je dostupná jenom pro osobní účty Microsoft nebo pracovní a školní účty Microsoft, nikoli pro účty třetích stran jako Google nebo Facebook. Pokud máte pracovní nebo školní účet Microsoft, vaše organizace můžete zrušit zaškrtnutí tohoto políčka.
@@ -69,13 +69,15 @@ Pokud používáte Microsoft Authenticator pro váš pracovní nebo školní ú�
 ### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>Fungují jedním kliknutím nabízená oznámení pro účty třetích stran?
 Ne, nabízená oznámení pracovat pouze s účty Microsoft a účty služby Azure Active Directory. Pokud vaše práce nebo škola používá účty Azure AD, se může tuto funkci zakázat.  
 
-### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>Moje zařízení I obnovena ze zálohy a Můj účet kódy jsou chybí nebo nepracuje. Co se přihodilo?
-Z bezpečnostních důvodů jsme nemáte účty obnovit ze zálohy aplikace.  Po obnovení aplikace, odstraňte vaše účty a znovu přidejte.
+### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>I tu nového zařízení nebo zařízení obnovit ze zálohy. Jak nastavím Moje účty v aplikaci Microsoft Authenticator znovu?
+Pokud používáte zařízení se systémem iOS, jste zapnuli **automatické zálohování**a jste vytvořili zálohu svých účtů na zařízení původní; můžete použít tuto zálohu k obnovení přihlašovací údaje účtu na nové zařízení. Další informace najdete v tématu [zálohování a obnovení přihlašovací údaje účtu v aplikaci Microsoft Authenticator](microsoft-authenticator-app-backup-and-recovery.md) článku. 
 
-### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>Zobrazí chybové nového zařízení. Jak odebrat aplikaci Microsoft Authenticator z původního zařízení a přesunout do nového?
-Přidávání do nového zařízení aplikaci Microsoft Authenticator neodebere automaticky ji z jiných zařízení. Spravovat zařízení, která jsou nakonfigurované pro váš účet, najdete na stejný web, který můžete použít ke správě dvoustupňové ověřování a odebrat starý aplikace.
+### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>I ztráty zařízení nebo přesunout do nového zařízení. Jak se ujistěte se, že oznámení není nadále přejít na staré zařízení?  
+Přidání aplikace Microsoft Authenticator do nového zařízení s iOS nebudou automaticky odebrat aplikace z vašeho původního zařízení. I odstranění aplikace z vašeho původního zařízení není dost. Musí jak odstranit aplikace z vašeho původního zařízení a sdělte Microsoft nebo organizaci zapomněli staré zařízení a zrušení její registrace z vašeho účtu.
+- **Chcete-li odebrat aplikace ze zařízení pomocí osobního účtu Microsoft.** Přejděte do oblasti dvoustupňové ověření vašeho [zabezpečení účtu](https://account.microsoft.com/security) stránce a vyberte k vypnutí možnosti ověřování pro vaše staré zařízení.  
+- **Chcete-li aplikaci odebrat ze zařízení pomocí pracovního nebo školního účtu Microsoft.** Přejděte do oblasti dvoustupňové ověření vašeho [MyApps](https://myapps.microsoft.com/) stránku nebo na vlastní portál vaší organizace a vypnout ověřování pro vaše staré zařízení. 
 
-Pro osobní účty Microsoft, tento web je vaše [zabezpečení účtů](https://account.microsoft.com/security) stránky. Pro pracovní nebo školní účty Microsoft, tento web může být buď [MyApps](https://myapps.microsoft.com) nebo vlastní portál, který vaše organizace nastavila.
+
 
 ### <a name="how-do-i-remove-an-account-from-the-app"></a>Jak odebrat účet z aplikace?
 * iOS: Z hlavní obrazovky prstem na dlaždici účtu vlevo. Vyberte **Odstranit**.
@@ -85,14 +87,14 @@ Pro osobní účty Microsoft, tento web je vaše [zabezpečení účtů](https:/
 Pokud máte zařízení, které je registrované ve vaší organizaci, musíte provést další krok pro svůj účet odeberte. U těchto zařízení se automaticky registruje aplikaci Microsoft Authenticator jako správce zařízení. Pokud chcete úplně odinstalovat aplikaci, musíte nejprve zrušit registraci aplikace v nastavení aplikace.
 
 ### <a name="why-does-the-app-request-so-many-permissions"></a>Proč aplikace požadavku mnoho oprávnění?
-Tady je seznam oprávnění, která jsme může požádat o úplnou a jak se používají v aplikaci. Konkrétní oprávnění, která se zobrazí závisí na typu telefon, který máte.
+Tady je seznam oprávnění, která můžete být požádáni o úplné a jak se používají v aplikaci. Konkrétní oprávnění, která se zobrazí závisí na typu telefon, který máte.
 
-* **Fotoaparát**: jsme použijte fotoaparát k skenovat kódy QR, když přidáte pracovní, školní nebo účet jiných společností než Microsoft.
-* **Kontakty a phone**: když se přihlásíte pomocí svého osobního účtu Microsoft, pokusíme se zjednoduší proces podle hledání existujících účtů, které používáte na váš telefon.
-* **SMS**: když se přihlásíte pomocí svého osobního účtu Microsoft poprvé, musíme Ujistěte se, zda vaše telefonní číslo odpovídá máme na záznam. Jsme odeslání textové zprávy na telefon kam jste stáhli aplikace. Zpráva obsahuje kód pro ověření číslice 6-8. Místo žádostí o najít tento kód a zadejte ho v aplikaci, jsme vyhledání v textovou zprávu za vás.
-* **Zakreslit nad jinými aplikacemi**: Když obdržíte oznámení ověřit vaši identitu, zobrazuje se tohoto oznámení nad jiné aplikace, které můžou běžet.
+* **Fotoaparát**: umožňuje skenovat kódy QR, když přidáte pracovní, školní nebo účet jiných společností než Microsoft.
+* **Kontakty a phone**: využívají ke zjednodušení procesu podle hledání existujících účtů na váš telefon, když se přihlásíte pomocí svého osobního účtu Microsoft.
+* **SMS**: používá k zajištění toho, vaše telefonní číslo odpovídá číslu na záznam. Při přihlašování pomocí účtu Microsoft osobní poprvé.  Jsme odeslání textové zprávy na telefon kam jste stáhli aplikaci, která zahrnuje ověřovací kód 6-8 číslic. Místo žádostí o najít tento kód a zadejte ho v aplikaci, je ve službě textovou zprávu za vás.
+* **Zakreslit nad jinými aplikacemi**: oznámení můžete získat, který ověřuje identitu se zobrazí také v jiné aplikaci, která může být spuštěna.
 * **Přijímat data z Internetu**: Toto oprávnění je požadována pro odesílání oznámení.
-* **Zabránit phone z režimu spánku**: když si zaregistrujete zařízení ve vaší organizaci, můžou změnit zásady na váš telefon.
+* **Zabránit phone z režimu spánku**: když si zaregistrujete zařízení ve vaší organizaci, vaší organizace můžete změnit zásady na váš telefon.
 * **Řízení vibrace**: můžete zvolit, jestli chcete vibracím při každém přijetí oznámení ověřit vaši identitu.
 * **Používat otisk prstu hardware**: Některé pracovní a školní účty vyžadovat další kód PIN, kdykoli ověřit vaši identitu. PRO usnadnění procesu nám umožňují používat otisk prstu místo zadávání kódu PIN.
 * **Zobrazení síťových připojení**: Když přidáte účet Microsoft, aplikace vyžaduje připojení k síti nebo Internetu.

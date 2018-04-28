@@ -1,18 +1,18 @@
 ---
-title: "Azure kontejneru registru ověřování s objekty služby"
-description: "Zjistěte, jak poskytnout přístup k bitové kopie v registru vaší privátní kontejneru pomocí Azure Active Directory instanční objekt."
+title: Azure kontejneru registru ověřování s objekty služby
+description: Zjistěte, jak poskytnout přístup k bitové kopie v registru vaší privátní kontejneru pomocí Azure Active Directory instanční objekt.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 97036ecabceb12b87b76c6ecb7e521157cbef827
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 2dd96880292f98d6635ae5223b34cf3b78c81e16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure kontejneru registru ověřování s objekty služby
 
@@ -38,6 +38,13 @@ Pro jednotlivý přístup k registru, například pokud jste ručně pro vyžád
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
+## <a name="sample-scripts"></a>Ukázkové skripty
+
+Předchozí ukázkové skripty pro rozhraní příkazového řádku Azure na Githubu, naleznete jako dobře verze pro Azure PowerShell:
+
+* [Azure CLI][acr-scripts-cli]
+* [Prostředí Azure PowerShell][acr-scripts-psh]
+
 ## <a name="next-steps"></a>Další postup
 
 Jakmile máte objekt služby, že jste udělen přístup ke kontejneru registr, můžete použít její přihlašovací údaje do vaší aplikace a služby pro interakci registru.
@@ -48,6 +55,8 @@ Při konfiguraci jednotlivých aplikacím používat přihlašovací údaje hlav
 * [Ověření pomocí Azure kontejneru registru z instancí Azure kontejneru (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
+[acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
+[acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az_acr_login

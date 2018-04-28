@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 46d4962040a78942adbad443d5cbde64755ddadf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 855cb159474836e4c015f84d7d57546b5e1a2e99
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Některá data ukládá podpora šifrování dat v klidovém stavu. Doporučujem
 Transparentní dat šifrování (TDE) v Azure SQL Data Warehouse pomáhá chránit před ohrožením škodlivých aktivit provedením v reálném čase šifrování a dešifrování dat v klidovém stavu. Toto chování je pro klienta transparentní. Další informace najdete v tématu [zabezpečení databáze v SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database podporuje také transparentní šifrování dat (šifrování TDE), která pomáhá chránit před ohrožením škodlivých aktivit provedením v reálném čase šifrování a dešifrování dat, bez nutnosti změny aplikace. Toto chování je pro klienta transparentní. Další informace najdete v tématu [transparentní šifrování dat pro databázi SQL a datový sklad](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Azure SQL Database podporuje také transparentní šifrování dat (šifrování TDE), která pomáhá chránit před ohrožením škodlivých aktivit provedením v reálném čase šifrování a dešifrování dat, bez nutnosti změny aplikace. Toto chování je pro klienta transparentní. Další informace najdete v tématu [transparentní šifrování dat pro databázi SQL a datový sklad](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Azure Data Lake Store taky zajišťuje šifrování dat uložených v účtu. Když je povolené, Data Lake Store automaticky šifruje data před uložením a dešifruje před načtení, což transparentní klientovi, který přistupuje k datům. Další informace najdete v tématu [zabezpečení v Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
@@ -86,7 +86,7 @@ Amazon Redshift podporuje šifrování clusteru pro neaktivní uložená data. D
 Salesforce podporuje šifrování štítu platformy, která umožňuje šifrování všech souborů, přílohy a vlastní pole. Další informace najdete v tématu [Princip toku webového serveru pro ověřování OAuth](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Hybridní scénáře
-Hybridní scénáře vyžadují integraci s vlastním hostováním runtime být nainstalovaný v místní síti, ve virtuální síti (Azure) nebo uvnitř virtuální privátní cloud (Amazon). Modul runtime vlastním hostováním integrace musí být mít přístup k místní datové úložiště. Další informace o vlastním hostováním integrace modulu runtime najdete v tématu [jak vytvořit a nakonfigurovat hostovanou na vlastním integrace runtime](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime). 
+Hybridní scénáře vyžadují integraci s vlastním hostováním runtime být nainstalovaný v místní síti, ve virtuální síti (Azure) nebo uvnitř virtuální privátní cloud (Amazon). Modul runtime vlastním hostováním integrace musí být mít přístup k místní datové úložiště. Další informace o vlastním hostováním integrace modulu runtime najdete v tématu [jak vytvořit a nakonfigurovat hostovanou na vlastním integrace runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
 
 ![Integrace s vlastním hostováním runtime kanály](media/data-movement-security-considerations/data-management-gateway-channels.png)
 

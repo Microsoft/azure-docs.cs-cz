@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: edd13e9372643769060f43e952737154d812292d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e55438c629b861e8dc095892c6c519855cd5e632
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="alias-server-names"></a>Názvy serverů alias
 
@@ -25,7 +25,7 @@ Názvy serverů alias jsou vhodné pro:
 - Uživatelé na jiné servery v různých časech dne. 
 - Uživatelé v různých oblastech instancí, které jsou geograficky co nejblíže jako při použití Azure Traffic Manager. 
 
-Žádný koncový bod protokolu HTTP, který vrátí platný název serveru Azure Analysis Services může sloužit jako alias.
+Žádný koncový bod HTTPS, který vrátí platný název serveru Azure Analysis Services může sloužit jako alias. Koncový bod musí podporovat protokol HTTPS přes port 443 a port nesmí být zadaný v identifikátoru URI.
 
 ![Alias odkazu formátu](media/analysis-services-alias/aas-alias-browser.png)
 

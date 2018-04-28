@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření a úprava okruhu ExpressRoute: prostředí PowerShell: Azure Resource Manager | Microsoft Docs"
-description: "Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute."
+title: 'Vytvoření a úprava okruhu ExpressRoute: prostředí PowerShell: Azure Resource Manager | Microsoft Docs'
+description: Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
 ms.service: expressroute
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0d45e97cc42826375a99df16a73c9a7b0c359224
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Video – portál Azure](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -42,7 +42,7 @@ Tento článek popisuje postup vytvoření okruhu Azure ExpressRoute pomocí rut
 Chcete-li zahájit konfiguraci, přihlaste se k účtu Azure. Pomůže vám pomůže s připojením v následujících příkladech:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zkontrolujte předplatná pro příslušný účet:
@@ -245,7 +245,7 @@ Get-AzureRmExpressRouteCircuit
 ```
 
 
-Odpověď je stejný jako v následujícím příkladu:
+Odpověď bude podobná jako v následujícím příkladu:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -407,7 +407,7 @@ Váš okruh ExpressRoute můžete odstranit tak, že spustíte následující p�
 Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vytvoření okruhu, ujistěte se, abyste provedli následující další kroky:
 

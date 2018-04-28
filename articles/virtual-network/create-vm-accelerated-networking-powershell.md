@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f3c8853331121fc1e267f6c569279f7d8df907b5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí Accelerated sítě
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Virtuální počítače musí být vytvořeny pomocí Accelerated sítě povolené. Tato funkce nelze povolit na existujících virtuálních počítačů. Proveďte následující kroky k povolení Zrychlený sítě:
 >   1. Odstranění virtuálního počítače
 >   2. Znovu vytvořte virtuální počítač s Zrychlený sítě povolené
@@ -52,7 +52,7 @@ Zrychlený sítě je podporována v nejvíce obecné účely a velikostí optima
 Další informace o instance virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="regions"></a>Oblasti
-K dispozici ve všech veřejných oblastí Azure a cloudu Azure Government. 
+K dispozici ve všech veřejných oblastí Azure a cloudu Azure Government.
 
 ## <a name="limitations"></a>Omezení
 Při použití této funkce, existují tato omezení:
@@ -65,11 +65,11 @@ I když tento článek obsahuje kroky k vytvoření virtuálního počítače po
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps) verze 5.1.1 nebo novější. Chcete-li najít aktuálně nainstalovanou verzi, spusťte `Get-Module -ListAvailable AzureRM`. Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AzureRM z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM). V relaci prostředí PowerShell přihlásit k účtu Azure pomocí [Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount).
+Nainstalujte [prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps) verze 5.1.1 nebo novější. Chcete-li najít aktuálně nainstalovanou verzi, spusťte `Get-Module -ListAvailable AzureRM`. Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AzureRM z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM). V relaci prostředí PowerShell přihlásit k účtu Azure pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount).
 
 V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Názvy parametrů příklad zahrnuté *myResourceGroup*, *myNic*, a *Můjvp*.
 
-Vytvořte skupinu prostředků s [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
+Vytvořte skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *centralus* umístění:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "centralus"
@@ -200,13 +200,13 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>Zkontrolujte, zda že je instalován ovladač v operačním systému
 
-Po vytvoření virtuálního počítače v Azure, připojení k virtuálnímu počítači a zkontrolujte, že je ovladač nainstalovaná v systému Windows. 
+Po vytvoření virtuálního počítače v Azure, připojení k virtuálnímu počítači a zkontrolujte, že je ovladač nainstalovaná v systému Windows.
 
 1. Z internetového prohlížeče, otevřete Azure [portál](https://portal.azure.com) a přihlaste se pomocí účtu Azure.
 2. Do pole, která obsahuje text *vyhledávání prostředků* v horní části portálu Azure, zadejte *Můjvp*. Když **Můjvp** se zobrazí ve výsledcích hledání klikněte na něj. Pokud **vytváření** se zobrazí v části **Connect** tlačítko Azure ještě nebyla dokončena vytváření virtuálního počítače. Klikněte na tlačítko **připojit** v levém horním rohu přehled až po už vidět **vytváření** pod **připojit** tlačítko.
 3. Zadejte uživatelské jméno a heslo zadané v [vytvořit virtuální počítač](#create-the-virtual-machine). Pokud jste ještě nikdy nepřipojili k virtuální počítač s Windows v Azure, najdete v části [připojit k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 4. Klikněte pravým tlačítkem na tlačítko Start systému Windows a klikněte na tlačítko **Správce zařízení**. Rozbalte **síťové adaptéry** uzlu. Potvrďte, že **Mellanox ConnectX 3 virtuální adaptér Ethernet funkce** se zobrazí, jak je znázorněno na následujícím obrázku:
-   
+
     ![Správce zařízení](./media/create-vm-accelerated-networking/device-manager.png)
 
 Pro virtuální počítač je nyní k dispozici Zrychlený sítě.

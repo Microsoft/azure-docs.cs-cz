@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-networking"></a>Síť Azure
 
@@ -37,7 +37,7 @@ Azure poskytuje celou řadu možností sítě, které lze použít společně ne
 
 Prostředky Azure jako virtuální počítače, cloudové služby, sady škálování virtuálních počítačů a prostředí Azure App Service můžete vzájemně komunikovat soukromě přes virtuální síť Azure (VNet). Virtuální síť je to logická izolace cloudu Azure vyhrazeného pro vaše [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Můžete implementovat více virtuálních sítí v rámci každé předplatné Azure a Azure [oblast](https://azure.microsoft.com/regions). Každý virtuální sítě je izolovaná od jiných virtuálních sítí. Pro každý virtuální síť můžete:
 
-- Zadejte vlastní prostor privátní IP adresy pomocí veřejné a privátní adresy (RFC 1918). Prostředky Azure přiřadí připojen k virtuální síti privátní IP adresy z adresního prostoru, který přiřadíte.
+- Zadání vlastního adresního prostoru privátních IP adres pomocí veřejných a privátních (RFC 1918) adres. Prostředky Azure přiřadí připojen k virtuální síti privátní IP adresy z adresního prostoru, který přiřadíte.
 - Segment sítě VNet do jedné nebo více podsítí a přidělovat část adresní prostor virtuální sítě pro každou podsíť.
 - Můžete použít Azure překlad nebo zadejte vlastní server DNS pro použití prostředky, které jsou připojené k virtuální síti.
 
@@ -64,7 +64,7 @@ Následující obrázek znázorňuje samostatný bod připojení site mezi více
 
 ![Point-to-Site](./media/networking-overview/point-to-site.png)
 
-Toto připojení mezi jednoho počítače a virtuální sítě. Tento typ připojení je skvělé, pokud jste se právě Začínáme s Azure, nebo pro vývojáře, protože nevyžaduje skoro žádné nebo vůbec žádné změny k vaší existující síti. Je také vhodné, pokud se připojujete ze vzdáleného umístění, jako je například z konference nebo domovský. Připojení point-to-site jsou často vázány pomocí připojení site-to-site pomocí stejné brány virtuální sítě. Připojení k poskytování šifrovanou komunikaci prostřednictvím Internetu mezi počítačem a virtuální sítě používá protokol SSTP. Latence pro síť VPN point-to-site nepředvídatelným, protože provoz prochází přes Internet.
+Toto připojení mezi jednoho počítače a virtuální sítě. Tento typ připojení je skvělý, pokud teprve začínáte s Azure, nebo pro vývojáře, protože nevyžaduje téměř nebo vůbec žádné změny vaší stávající sítě. Je také vhodné, pokud se připojujete ze vzdáleného umístění, jako je například z konference nebo domovský. Připojení point-to-site jsou často vázány pomocí připojení site-to-site pomocí stejné brány virtuální sítě. Připojení k poskytování šifrovanou komunikaci prostřednictvím Internetu mezi počítačem a virtuální sítě používá protokol SSTP. Latence pro síť VPN point-to-site nepředvídatelným, protože provoz prochází přes Internet.
 
 **Site-to-site (protokolu IPsec/IKE tunelového připojení sítě VPN)**
 
@@ -155,7 +155,7 @@ Můžete nasadit a nakonfigurovat Azure síťových prostředků s žádným z n
 
 ## <a name="pricing"></a>Ceny
 
-Některé síťové služby Azure mají poplatků, zatímco jiné jsou volné. Zobrazení [virtuální síť](https://azure.microsoft.com/pricing/details/virtual-network), [brány VPN](https://azure.microsoft.com/pricing/details/vpn-gateway), [Application Gateway](https://azure.microsoft.com/en-us/pricing/details/application-gateway/), [nástroj pro vyrovnávání zatížení](https://azure.microsoft.com/pricing/details/load-balancer), [sledovací proces sítě](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) a [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) ceny stránky pro další informace.
+Některé síťové služby Azure mají poplatků, zatímco jiné jsou volné. Zobrazení [virtuální síť](https://azure.microsoft.com/pricing/details/virtual-network), [brány VPN](https://azure.microsoft.com/pricing/details/vpn-gateway), [Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/), [nástroj pro vyrovnávání zatížení](https://azure.microsoft.com/pricing/details/load-balancer), [sledovací proces sítě](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) a [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) ceny stránky pro další informace.
 
 ## <a name="next-steps"></a>Další postup
 

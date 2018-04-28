@@ -1,13 +1,13 @@
 ---
-title: "Jak bezpečně migraci uživatelů mezi licence k produktům pomocí na základě skupiny licencování v Azure Active Directory | Microsoft Docs"
-description: "Popisuje doporučený postup pro migraci uživatelů mezi jiným produktem licence (Office 365 Enterprise E1 a E3) pomocí na základě skupiny licencí"
+title: Jak bezpečně migraci uživatelů mezi licence k produktům pomocí na základě skupiny licencování v Azure Active Directory | Microsoft Docs
+description: Popisuje doporučený postup pro migraci uživatelů mezi jiným produktem licence (Office 365 Enterprise E1 a E3) pomocí na základě skupiny licencí
 services: active-directory
-keywords: "Licencování Azure AD"
-documentationcenter: 
+keywords: Licencování Azure AD
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/07/2018
 ms.author: piotrci
-ms.openlocfilehash: bb27b3fb739bbcea56026733b41e6cadf21b8953
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 068457044af7af7a55bdbcc4043da3028a68b2d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Jak bezpečně migraci uživatelů mezi licence k produktům pomocí na základě skupiny licencí
 
@@ -27,7 +27,7 @@ Tento článek popisuje doporučené metody pro přesun uživatelů mezi licence
 
 -   Jednoduchá migrace mezi licence na produkty, které neobsahují žádný konfliktní plány služby, jako je migrace mezi Office 365 Enterprise E3 a Office 365 Enterprise E5.
 
--   Složitější migrace mezi produkty, které obsahují některé konfliktní plány služby, jako je migrace mezi Office 365 Enterprise E1 a Office 365 Enterprise E3. Další informace o konfliktech najdete v tématu [plány služby konfliktní](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) a [služby plány, které nelze přiřadit ve stejnou dobu](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
+-   Složitější migrace mezi produkty, které obsahují některé konfliktní plány služby, jako je migrace mezi Office 365 Enterprise E1 a Office 365 Enterprise E3. Další informace o konfliktech najdete v tématu [plány služby konfliktní](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans) a [služby plány, které nelze přiřadit ve stejnou dobu](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time).
 
 Tento článek obsahuje ukázkový kód prostředí PowerShell, který lze použít k provedení kroků migrace a ověření. Kód je zvláště užitečná pro rozsáhlé operace, kde není možné provést kroky ručně.
 
@@ -37,7 +37,7 @@ Než začnete s migrací, je důležité si ověřit, že určité předpoklady 
 -   Uživatelé mají *zdroj licence* přiřazené pomocí na základě skupin licencí. Licence pro produkt přesunout směrem od jsou zděděno od skupiny jednoho zdroje a nejsou přímo přiřazeny.
 
     >[!NOTE]
-    >Pokud licence jsou také přiřazen přímo, můžete zabraňují použití *cíl licence*. Další informace o [přímé a skupiny přiřazení licence](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Můžete chtít použít [skript prostředí PowerShell](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) ke kontrole, pokud uživatelé mají přímé licence.
+    >Pokud licence jsou také přiřazen přímo, můžete zabraňují použití *cíl licence*. Další informace o [přímé a skupiny přiřazení licence](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses). Můžete chtít použít [skript prostředí PowerShell](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group) ke kontrole, pokud uživatelé mají přímé licence.
 
 -   Máte dostatek dostupné licence pro produkt, cílový. Pokud nemáte k dispozici dostatek licencí, nemusí získat někteří uživatelé *cíl licence*. Můžete [Zkontrolujte počet dostupných licencí](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products).
 
@@ -54,7 +54,7 @@ Migrace cílem je používat na základě skupiny licencí Chcete-li změnit už
 
 3.  Přidáte skupinu uživatelů k cílové skupině. Na základě skupiny licencí převezme změn a přiřadí *cíl licence*. Proces může trvat delší dobu, v závislosti na velikosti dávky a dalšími aktivitami v klientovi.
 
-4.  Ověřte, že je plně zpracování dávky uživatelů podle na základě skupiny licencí. Potvrďte, že každý uživatel *cíl licence* přiřazen. Zkontrolujte, jestli uživatelé nebyla skončili v chybovém stavu, jako je v konfliktu s jinými produkty nebo nedostatečná dostatek licencí. Další informace o chybách najdete v tématu [licencování řešení problému skupiny služby Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Ověřte, že je plně zpracování dávky uživatelů podle na základě skupiny licencí. Potvrďte, že každý uživatel *cíl licence* přiřazen. Zkontrolujte, jestli uživatelé nebyla skončili v chybovém stavu, jako je v konfliktu s jinými produkty nebo nedostatečná dostatek licencí. Další informace o chybách najdete v tématu [licencování řešení problému skupiny služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  V tomto okamžiku uživatelé mají obě *zdroj licence* a *cíl licence* přiřazen.
 
@@ -175,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>Migraci uživatelů mezi produkty, které mají konfliktní plány služeb
-Migrace cílem je používat na základě skupiny licencí Chcete-li změnit uživatelských licencí z *zdroj licence* (v tomto příkladu: Office 365 Enterprise E1) k *cíl licence* (v tomto příkladu: Office 365 Enterprise E3). Tyto dva produkty v tomto scénáři obsahují konfliktní plány služby, takže budete muset vyřešit konflikt bezproblémově migrovat uživatele. Další informace o tyto konflikty najdete v tématu [licencování řešení problému skupiny služby Active Directory: konfliktní plány služby](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). V průběhu migrace by uživatelé ztratit přístup na služby nebo data. Migrace se provádí v malé "dávky." Můžete ověřit výsledek pro každou dávku a minimalizovat oboru veškeré problémy, které mohou nastat během procesu. Celkově platí tento proces je následující:
+Migrace cílem je používat na základě skupiny licencí Chcete-li změnit uživatelských licencí z *zdroj licence* (v tomto příkladu: Office 365 Enterprise E1) k *cíl licence* (v tomto příkladu: Office 365 Enterprise E3). Tyto dva produkty v tomto scénáři obsahují konfliktní plány služby, takže budete muset vyřešit konflikt bezproblémově migrovat uživatele. Další informace o tyto konflikty najdete v tématu [licencování řešení problému skupiny služby Active Directory: konfliktní plány služby](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans). V průběhu migrace by uživatelé ztratit přístup na služby nebo data. Migrace se provádí v malé "dávky." Můžete ověřit výsledek pro každou dávku a minimalizovat oboru veškeré problémy, které mohou nastat během procesu. Celkově platí tento proces je následující:
 
 1.  Uživatelé jsou členy skupiny zdroje a dědí *zdroj licence* z dané skupiny.
 
@@ -183,7 +183,7 @@ Migrace cílem je používat na základě skupiny licencí Chcete-li změnit už
 
 3.  Přidáte skupinu uživatelů k cílové skupině. Na základě skupiny licencí převezme změny a pokusí se přiřadit *cíl licence*. Přiřazení selže kvůli konfliktům mezi službami v tyto dva produkty. Na základě skupiny licencování zaznamenává selhání jako chyba u každého uživatele. Proces může trvat delší dobu, v závislosti na velikosti dávky a dalšími aktivitami v klientovi.
 
-4.  Ověřte, že je plně zpracování dávky uživatelů podle na základě skupiny licencí. Potvrďte, že každý uživatel konflikt chyba zaznamenávají. Zkontrolujte, jestli některé uživatele nebylo skončili ve stavu došlo k neočekávané chybě. Další informace o chybách najdete v tématu [licencování řešení problému skupiny služby Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
+4.  Ověřte, že je plně zpracování dávky uživatelů podle na základě skupiny licencí. Potvrďte, že každý uživatel konflikt chyba zaznamenávají. Zkontrolujte, jestli některé uživatele nebylo skončili ve stavu došlo k neočekávané chybě. Další informace o chybách najdete v tématu [licencování řešení problému skupiny služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal).
 
 5.  V tomto okamžiku stále uživatelé mají *zdroj licence* a konflikt chybu pro *cíl licence*. Uživatelé ještě nemáte *cíl licence* přiřazen.
 
@@ -317,7 +317,7 @@ Tato část obsahuje kód prostředí PowerShell, které je nutné spustit skrip
 >[!WARNING]
 >Tento kód slouží jako příklad pro demonstrační účely. Pokud máte v úmyslu použít ve vašem prostředí, zvažte nejdřív testování kód v malém měřítku, nebo v samostatné testovacím klientem. Možná budete muset upravit kód, který vyhoví konkrétním požadavkům vašeho prostředí.
 
-Ke spouštění kódu, postupujte podle pokynů v [Azure AD PowerShell v1.0 knihovny](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). Před spuštěním skriptu, spusťte `connect-msolservice` rutiny pro přihlášení ke klientovi.
+Ke spouštění kódu, postupujte podle pokynů v [Azure AD PowerShell v1.0 knihovny](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0). Před spuštěním skriptu, spusťte `connect-msolservice` rutiny pro přihlášení ke klientovi.
 
 ```
 # BEGIN: Helper functions that are used in the scripts.

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7d263dbb89b10876c3a1deb330f969c598addd6a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -33,9 +33,9 @@ Tento článek vychází z rutin prostředí Azure PowerShell verze 3.0.0. Prost
 Pokud chcete používat Azure PowerShell ke správě prostředků služby Batch, proveďte následující operace.
 
 * [Nainstalujte a nakonfigurujte Azure PowerShell.](/powershell/azure/overview)
-* Spusťte rutinu **Login-AzureRmAccount**, abyste připojili své předplatné (rutiny služby Azure Batch jsou dodávané v modulu Azure Resource Manager):
+* Spuštěním rutiny **Connect-AzureRmAccount** se připojte ke svému předplatnému (rutiny služby Azure Batch jsou dodávané v modulu Azure Resource Manager):
   
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 * **Zaregistrujte se u poskytovatele oboru názvů služby Batch**. Tuto operaci stačí provést jen **jednou za předplatné**.
   
     `Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch`

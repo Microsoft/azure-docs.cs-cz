@@ -1,8 +1,8 @@
 ---
-title: "Pomocí šablony Azure můžete vytvořit HDInsight a Data Lake Store | Microsoft Docs"
-description: "Pomocí šablony Azure Resource Manager můžete vytvořit a použít clustery HDInsight s Azure Data Lake Store"
+title: Pomocí šablony Azure můžete vytvořit HDInsight a Data Lake Store | Microsoft Docs
+description: Pomocí šablony Azure Resource Manager můžete vytvořit a použít clustery HDInsight s Azure Data Lake Store
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c5afc96cc8101345f00b5d435e9f393d22672de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bc20504865fa59cafc199305f9810fb4c3d99524
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Data Lake Store pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Postupujte podle pokynů v odkazu zmíněné vyžadují prostředí PowerShell. 
 
 ```
 # Log in to your Azure account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List all the subscriptions associated to your account
 Get-AzureRmSubscription
@@ -80,7 +80,7 @@ Pokud chcete mít jistotu, že je dostupný z clusteru HDInsight, který nahraje
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Spuštění testu úloh na clusteru HDInsight pomocí Data Lake Store
 Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy v clusteru k testování clusteru HDInsight můžete získat přístup k Data Lake Store. To pokud chcete udělat, budeme se spustí úlohy Hive vzorku, který vytvoří tabulku pomocí ukázkových dat, který jste dříve nahráli do Data Lake Store.
 
-V této části se SSH do služby clusteru HDInsight Linux a spustit ukázkový dotaz Hive. Pokud používáte klienta se systémem Windows, doporučujeme používat **PuTTY**, který si můžete stáhnout z [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části se SSH do služby clusteru HDInsight Linux a spustit ukázkový dotaz Hive. Pokud používáte klienta se systémem Windows, doporučujeme používat **PuTTY**, který si můžete stáhnout z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o použití klienta PuTTY, najdete v části [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -116,7 +116,7 @@ Další informace o použití klienta PuTTY, najdete v části [použití SSH se
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>Přístup k Data Lake Store pomocí příkazů HDFS
 Po konfiguraci clusteru HDInsight pomocí Data Lake Store, můžete pro přístup do obchodu příkazů HDFS prostředí.
 
-V této části se SSH do HDInsight Linux clusteru a spusťte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme používat **PuTTY**, který si můžete stáhnout z [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části se SSH do HDInsight Linux clusteru a spusťte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme používat **PuTTY**, který si můžete stáhnout z [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o použití klienta PuTTY, najdete v části [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -137,6 +137,6 @@ Found 1 items
 Můžete také `hdfs dfs -put` příkazu do Data Lake Store nahrát některé soubory a pak použijte `hdfs dfs -ls` ověřit, zda soubory byly úspěšně nahrál.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Kopírování dat z úložiště objektů BLOB Azure do Data Lake Store](data-lake-store-copy-data-wasb-distcp.md)
 * [Použití Data Lake Store s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

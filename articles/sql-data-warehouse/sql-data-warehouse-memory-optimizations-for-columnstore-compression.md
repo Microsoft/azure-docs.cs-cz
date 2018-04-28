@@ -2,23 +2,19 @@
 title: Zlepšení výkonu index columnstore – Azure SQL Data Warehouse | Microsoft Docs
 description: Snižte požadavky na paměť nebo zvýšení dostupné paměti maximalizovat počet řádků, které columnstore index zkomprimuje do každé skupiny řádků.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 6484f457731bb1b97f01df339eaf1b0aebf924c1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Tím se maximalizuje quality rowgroup pro columnstore
 
@@ -38,7 +34,7 @@ Během hromadné načtení nebo columnstore index opětovném sestavení někdy 
 
 Pokud nastal nedostatek paměti pro komprimovat alespoň 10 000 řádků do každé skupiny řádků, SQL Data Warehouse, vygeneruje se chyba.
 
-Další informace o hromadné načítání, najdete v části [hromadné načtení do clusterovaný index columnstore](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Další informace o hromadné načítání, najdete v části [hromadné načtení do clusterovaný index columnstore](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Postup sledování kvality skupiny řádků
 
@@ -153,11 +149,3 @@ Předpokládejme, že zjistíte, je nutné, aby 700 MB paměti pro získání vy
 
 Další způsoby, jak zlepšit výkon v SQL Data Warehouse, najdete v tématu [přehled výkonnostní](sql-data-warehouse-overview-manage-user-queries.md).
 
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->

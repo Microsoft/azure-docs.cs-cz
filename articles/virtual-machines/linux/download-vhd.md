@@ -3,7 +3,7 @@ title: Stáhnout Linux virtuální pevný disk z Azure | Microsoft Docs
 description: Stáhněte si Linux virtuální pevný disk pomocí rozhraní příkazového řádku Azure a webu Azure portal.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: davidmu
-ms.openlocfilehash: d177e8de7ace571c57a0b8b39c8834fb5b115365
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.author: cynthn
+ms.openlocfilehash: d62fe702e42929fde2bb2a0dee4ea2cc8621ff99
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stáhnout Linux virtuální pevný disk z Azure
 

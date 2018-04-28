@@ -1,19 +1,19 @@
 ---
-title: "Správě Azure Kubernetes clusteru pomocí webového uživatelského rozhraní"
-description: "V Azure Container Service pomocí Kubernetes webového uživatelského rozhraní"
+title: Správě Azure Kubernetes clusteru pomocí webového uživatelského rozhraní
+description: V Azure Container Service pomocí Kubernetes webového uživatelského rozhraní
 services: container-service
 author: bburns
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d5a3906e5e26c9ed0a6cf356000c3d81f00de72c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0680551d3a87c942574a4eac70fa380cc1e9b5d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Pomocí Azure Container Service Kubernetes webového uživatelského rozhraní
 

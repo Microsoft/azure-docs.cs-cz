@@ -10,11 +10,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje aplikace SQL Database
 V tomto článku se seznámíte se základními předpoklady, které by měl mít vývojář na zřeteli při zapisování kódu pro připojení ke službě Azure SQL Database.
@@ -29,12 +29,12 @@ K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odk
 * Další informace: [knihovny připojení k databázi SQL a SQL Server](sql-database-libraries.md).
 
 ## <a name="tools"></a>Nástroje 
-Můžete využít opensourcové nástroje, jako je [cheetah](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli) nebo [VS Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Můžete taky použít Portál pro správu Azure, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
+Můžete využít open source nástroje, jako je [gepard](https://github.com/wunderlist/cheetah), [rozhraní příkazového řádku sql](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Můžete taky použít Portál pro správu Azure, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
 ## <a name="resource-limitations"></a>Omezení prostředků
 Azure SQL Database spravuje prostředky dostupné pro databázi pomocí dvou různých mechanismů: řízení prostředků a vynucení limitů.
 
-* Další informace: [limitů prostředků Azure SQL Database](sql-database-service-tiers.md).
+* Další informace: [limitů modelu na základě DTU databáze SQL Azure prostředků](sql-database-dtu-resource-limits.md) a [limitů modelu na základě vCore prostředků Azure SQL Database (preview)](sql-database-vcore-resource-limits.md).
 
 ## <a name="security"></a>Zabezpečení
 Azure SQL Database poskytuje prostředky pro omezení přístupu, ochranu dat a sledování aktivit služby SQL Database.

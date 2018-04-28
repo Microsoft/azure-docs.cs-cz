@@ -1,8 +1,8 @@
 ---
-title: "Protokolování v Azure Key Vault | Dokumentace Microsoftu"
-description: "Tento kurz vám pomůže začít s protokolováním v Azure Key Vault."
+title: Protokolování v Azure Key Vault | Dokumentace Microsoftu
+description: Tento kurz vám pomůže začít s protokolováním v Azure Key Vault.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -52,7 +52,7 @@ K dokončení tohoto kurzu potřebujete:
 ## <a id="connect"></a>Připojení k předplatným
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Azure PowerShell získá všechna předplatná přidružená k tomuto účtu a ve výchozím nastavení použije první předplatné.
 
@@ -133,7 +133,7 @@ Chcete-li vypsat všechny objekty blob v tomto kontejneru, zadejte:
     Get-AzureStorageBlob -Container $container -Context $sa.Context
 Výstup bude vypadat nějak takto:
 
-**Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
+**Identifikátor URI kontejneru: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 **Název**
 

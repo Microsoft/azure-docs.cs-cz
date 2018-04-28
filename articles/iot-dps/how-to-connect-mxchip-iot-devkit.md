@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: d60c5766b22e31c33d0dd4a743fa297470109ac6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7fe1cd003bd7e6b681989324a42a076f4fd2f7df
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Použít automatické zřizování Azure IoT Hub zařízení zřizování služby k registraci MXChip IoT DevKit službou IoT Hub
 
@@ -54,7 +54,7 @@ Pro připojení k zařízení zřizování instance služby, kterou jste vytvoř
 4. Otevřete Visual Studio Code, připojte DevKit k počítači a pak otevřete složku, která obsahuje kód, který jste naklonovali.
 
 5. Otevřete **DevKitDPS.ino**. Najít a nahradit `[Global Device Endpoint]` a `[ID Scope]` s hodnotami právě uvedených dolů.
-  ![Koncový bod distribučních bodů](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) můžete nechat **registrationId** prázdné. Aplikace generuje za vás na základě verze MAC adres a firmware. Pokud chcete přizpůsobit ID registrace, musíte používat jenom alfanumerické znaky a malých písmen a pomlčku kombinací s maximálně 128 znaků. Další informace najdete v tématu [spravovat registrace zařízení pomocí portálu Azure](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments).
+  ![Koncový bod distribučních bodů](./media/how-to-connect-mxchip-iot-devkit/endpoint.png) můžete nechat **registrationId** prázdné. Aplikace generuje za vás na základě verze MAC adres a firmware. Pokud chcete přizpůsobit ID registrace, musíte používat jenom alfanumerické znaky a malých písmen a pomlčku kombinací s maximálně 128 znaků. Další informace najdete v tématu [spravovat registrace zařízení pomocí portálu Azure](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 6. Použít rychlé otevřete v produktu VS Code (Windows: `Ctrl+P`, systému macOS: `Cmd+P`) a typ *úkolů zařízení – nahrání* sestavit a odeslat do DevKit kód.
 

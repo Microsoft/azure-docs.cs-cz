@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 487eca98b9be20faaa52c0a8952e84c6027ee1f0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd5dc6a50b521f883dfb453127a4e41b5e46ff15
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Sítě rozšíření virtuálního počítače sledovacích procesů agenta pro Linux
 
 ## <a name="overview"></a>Přehled
 
-[Azure sledovací proces sítě](https://docs.microsoft.com/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
+[Azure sledovací proces sítě](/azure/network-watcher/) je sítě výkonu monitorování, diagnostiku a analýzy služba, která umožňuje monitorování pro sítě Azure. Rozšíření sítě sledovacích procesů agenta virtuálního počítače není pro některé funkce sledovací proces sítě na virtuálních počítačích Azure. To zahrnuje Zachytávání síťových přenosů na vyžádání a další pokročilé funkce.
 
 Tento dokument podrobně popisuje možnosti nasazení pro rozšíření sítě sledovacích procesů agenta virtuálního počítače pro Linux a podporované platformy. Instalace agenta není přerušit nebo vyžadovat restartování virtuálního počítače.
 
@@ -40,7 +40,7 @@ Rozšíření agenta sledovací proces sítě může být spuštěn proti tyto L
 | Ubuntu | 16.04 LTS, 14.04 LTS a 12.04 LTS |
 | Debian | 7 a 8 |
 | RedHat | 6.x a 7.x |
-| Oracle Linux | 7x |
+| Oracle Linux | 7 x |
 | SuSE | 11 a 12 |
 | OpenSuse | 7.0 |
 | CentOS | 7.0 |
@@ -49,9 +49,9 @@ Všimněte si, že se v tuto chvíli nepodporuje CoreOS.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Některé funkce sítě sledovacích procesů agenta vyžaduje, aby cílový virtuální počítač připojen k Internetu. Bez možnosti navázat odchozí připojení některé funkce sítě sledovacích procesů agenta nebude fungovat správně nebo nedostupná. Další podrobnosti najdete v tématu [sledovací proces sítě dokumentaci](https://review.docs.microsoft.com/azure/network-watcher/).
+Některé funkce sítě sledovacích procesů agenta vyžaduje, aby cílový virtuální počítač připojen k Internetu. Bez možnosti navázat odchozí připojení některé funkce sítě sledovacích procesů agenta nebude fungovat správně nebo nedostupná. Další podrobnosti najdete v tématu [sledovací proces sítě dokumentaci](/azure/network-watcher/).
 
-## <a name="extension-schema"></a>Rozšíření schématu
+## <a name="extension-schema"></a>Schéma rozšíření
 
 Následujícím kódu JSON znázorňuje schéma pro rozšíření sítě sledovacích procesů agenta. Rozšíření ani jeden z nich vyžaduje ani podporuje nastavení uživatelem zadané v tuto chvíli a spoléhá na jeho výchozí konfigurace.
 
@@ -112,4 +112,4 @@ Výstupu spuštění rozšíření se zaznamenává soubory, které jsou v násl
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete v dokumentaci sledovací proces sítě nebo se obraťte na Azure odborníky [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/en-us/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/en-us/support/faq/).
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete v dokumentaci sledovací proces sítě nebo se obraťte na Azure odborníky [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/support/faq/).

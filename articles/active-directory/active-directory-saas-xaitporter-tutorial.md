@@ -1,10 +1,10 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s XaitPorter | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a XaitPorter."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a XaitPorter.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 2012d990f7cdcb8c12da5f16db518b261b06a5b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e18850d902e5a11da904af719e598c4e247ce0d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Kurz: Azure Active Directory integrace s XaitPorter
 
@@ -108,38 +108,22 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![XaitPorter domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.xaitporter.com/saml/login`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.xaitporter.com/saml/login`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.xaitporter.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.xaitporter.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory XaitPorter klienta](https://www.xait.com/support/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory XaitPorter klienta](https://www.xait.com/support/) k získání těchto hodnot.
+     
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku. 
 
-4. Klikněte na tlačítko **Uložit** tlačítko.
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_certificate.png) 
+
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-xaitporter-tutorial/tutorial_general_400.png)
 
-5. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **XaitPorter** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Zadejte **IP adresu** nebo **adresu URL metadat** k [tým podpory SmartRecruiters](https://www.smartrecruiters.com/about-us/contact-us/)tak, aby XaitPorter můžete zajistit, že IP adresa je dostupný z vašeho XaitPorter Konfigurace seznamu povolených IP adres na jejich stranu instance. 
+6. Zadejte **IP adresu** nebo **adresu Url aplikace federační Metadata** k [SmartRecruiters tým podpory](https://www.smartrecruiters.com/about-us/contact-us/)tak, aby XaitPorter můžete zajistit, že IP adresa je dostupný z vašeho Konfigurace seznamu povolených IP adres na jejich stranu XaitPorter instance. 
 
 7. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti XaitPorter jako správce.
 
@@ -157,15 +141,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Vyberte **povolit jednotné přihlašování, ověřování**.
 
-    b. V **nastavení zprostředkovatele Identity** textovému poli, vložte **adresu URL metadat** který jste zkopírovali z Azure a klikněte na tlačítko **načíst**.
+    b. V **nastavení zprostředkovatele Identity** textovému poli, vložte **adresu Url aplikace federační Metadata** který jste zkopírovali z portálu Azure a klikněte na tlačítko **načíst**.
 
     c. Vyberte **povolit automatické vytvoření uživatelů**.
 
     d. Klikněte na **OK**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -240,7 +220,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici XaitPorter na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci XaitPorter.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -1,25 +1,20 @@
 ---
-title: "Správa Azure Search pomocí skriptů prostředí Powershell | Microsoft Docs"
-description: "Správa služby Azure Search pomocí skriptů prostředí PowerShell. Vytvořit nebo aktualizovat službu Azure Search a spravovat klíče správce Azure Search"
-services: search
-documentationcenter: 
-author: seansaleh
-manager: mblythe
-editor: 
+title: Správa Azure Search pomocí skriptů prostředí Powershell | Microsoft Docs
+description: Správa služby Azure Search pomocí skriptů prostředí PowerShell. Vytvořit nebo aktualizovat službu Azure Search a spravovat klíče správce Azure Search
+author: HeidiSteen
+manager: cgronlun
 tags: azure-resource-manager
-ms.assetid: 9b3dc1f2-3619-4235-ba1f-d2d6f5c45dd5
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: powershell
+ms.devlang: powershell
+ms.topic: conceptual
 ms.date: 08/15/2016
-ms.author: seasa
-ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.author: heidist
+ms.openlocfilehash: 974f2df8c4c9c9730f176a1e8472199960b359f6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Správa služby Azure Search pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -37,7 +32,7 @@ Tyto příkazy paralelní možnostmi správy dostupnými v [REST API správy slu
 
 Nejdřív musíte přihlášení k Azure pomocí tohoto příkazu:
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Zadejte e-mailovou adresu účtu Azure a jeho heslo v dialogovém okně pro přihlášení Microsoft Azure.
 
@@ -135,6 +130,6 @@ Je teď vytvořená služby, můžete provést další kroky: sestavení [index]
 * [Vytvoření indexu Azure Search na portálu Azure](search-create-index-portal.md)
 * [Dotazování indexu Azure Search pomocí Průzkumník služby Search na portálu Azure](search-explorer.md)
 * [Nastavte indexer načíst data z jiných služeb](search-indexer-overview.md)
-* [Jak používat Azure Search v rozhraní .NET](search-howto-dotnet-sdk.md)
+* [Použití služby Azure Search v rozhraní .NET](search-howto-dotnet-sdk.md)
 * [Analýza provozu Azure Search](search-traffic-analytics.md)
 

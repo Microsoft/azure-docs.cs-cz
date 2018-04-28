@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efb7f7cf911ad5dc753afffd077c473cc0faaf74
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 09eb2e723be80fd623ad53c9bda8271ef8846a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálního počítače a funkce pro Windows
 
@@ -110,7 +110,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzureRmVMExtension` Příkaz můžete použít ke spuštění všech rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzureRmVMExtension](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
+`Set-AzureRmVMExtension` Příkaz můžete použít ke spuštění všech rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzureRmVMExtension](https://msdn.microsoft.com/library/mt603745.aspx).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -284,4 +284,4 @@ Rozšíření může být odebrán také pomocí portálu Azure. Postupujte nás
 | Rozšíření vlastních skriptů pro Windows |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Windows](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Rozšíření DSC pro Windows |Rozšíření prostředí PowerShell DSC (Desired State Configuration) |[Rozšíření DSC pro Windows](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření diagnostiky Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozšíření pro přístup virtuálních počítačů Azure |Spravovat uživatele a přihlašovací údaje |[Rozšíření pro přístup virtuálních počítačů pro Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozšíření pro přístup virtuálních počítačů Azure |Spravovat uživatele a přihlašovací údaje |[Rozšíření pro přístup virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

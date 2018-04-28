@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d5bad277e6a54b23f0e3ef7321e82d212ae885d3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3c46df85f95377f5740526542ac1baf5a8fd77c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device---preview"></a>Vývoj a nasazení modul Python IoT Edge na simulovaného zařízení – náhled
 
@@ -29,7 +29,7 @@ Moduly IoT Edge můžete nasadit kód, který implementuje obchodní logiku př�
 Modul IoT okraj, který vytvoříte v tomto kurzu filtruje data teploty generována zařízení. Pouze odešle zprávy proti proudu pokud teplota překročí zadanou prahovou hodnotu. Tento typ analýzy na hranici je užitečné při snižování množství dat oznamovat a uložit v cloudu. 
 
 > [!IMPORTANT]
-> Modul Python aktuálně pouze může být spuštěn v kontejnerech Linux amd64. Nelze spuštěná v systému Windows kontejnery nebo založené na ARM kontejnerů. 
+> Aktuálně modul Python lze spustit pouze v kontejnerech Linux amd64; nelze ho spustit v systému Windows kontejnery nebo založené na ARM kontejnerů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Modul IoT okraj, který vytvoříte v tomto kurzu filtruje data teploty generov�
 * [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
 * [Docker](https://docs.docker.com/engine/installation/) na stejném počítači, který má Visual Studio Code. Edice Community (CE) je dostačující pro účely tohoto kurzu. 
 * [Python](https://www.python.org/downloads/).
-* [PIP](https://pip.pypa.io/en/stable/installing/#installation) pro instalaci balíčků Python.
+* [PIP](https://pip.pypa.io/en/stable/installing/#installation) pro instalaci balíčků Python (obvykle součástí instalace Python).
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 V tomto kurzu pomocí rozšíření Azure IoT Edge pro VS Code sestavíte modul a ze souborů vytvoříte **image kontejneru**. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  
@@ -57,10 +57,10 @@ Pro účely tohoto kurzu můžete použít jakýkoli registr kompatibilní s Doc
 ## <a name="create-an-iot-edge-module-project"></a>Vytvoření projektu modulu IoT Edge
 Následující kroky ukazují, jak vytvořit modul IoT Edge Python pomocí kódu v jazyce Visual Studio a rozšíření Azure IoT okraj.
 1. V sadě Visual Studio Code vyberte **zobrazení** > **integrované terminálu** otevřete integrované terminálu VS Code.
-2. Integrované terminálu, zadejte následující příkaz pro instalaci (nebo aktualizujte) **cookiecutter**:
+2. Integrované terminálu, zadejte následující příkaz pro instalaci (nebo aktualizujte) **cookiecutter** (doporučujeme, že to buď do virtuálního prostředí, nebo jako uživatel instalaci ukazuje následující obrázek):
 
     ```cmd/sh
-    pip install -U cookiecutter
+    pip install --upgrade --user cookiecutter
     ```
 
 3. Vytvořte projekt pro nový modul. Následující příkaz vytvoří složce projektu **FilterModule**, s kontejner úložiště. Parametr `image_repository` by měl být ve tvaru `<your container registry name>.azurecr.io/filtermodule` Pokud používáte Azure kontejneru registru. V aktuální pracovní složce zadejte následující příkaz:
@@ -78,11 +78,11 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge Python pomocí kódu
     import json
     ```
 
-8. Přidat `TEMPERATURE_THRESHOLD` a `TWIN_CALLBACKS` v části globální čítače. Prahová hodnota teploty nastaví hodnotu, která nesmí být větší než teplota měřená v pořadí pro data k odeslání do služby IoT Hub.
+8. Přidat `TEMPERATURE_THRESHOLD`, `RECEIVE_CALLBACKS`, a `TWIN_CALLBACKS` v části globální čítače. Prahová hodnota teploty nastaví hodnotu, která nesmí být větší než teplota měřená v pořadí pro data k odeslání do služby IoT Hub.
 
     ```python
     TEMPERATURE_THRESHOLD = 25
-    TWIN_CALLBACKS = 0
+    TWIN_CALLBACKS = RECEIVE_CALLBACKS = 0
     ```
 
 9. Aktualizovat funkce `receive_message_callback` s níže obsah.
@@ -97,16 +97,16 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge Python pomocí kódu
         message_buffer = message.get_bytearray()
         size = len(message_buffer)
         message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+        print("    Data: <<<{}>>> & Size={:d}".format(message_text, size))
         map_properties = message.properties()
         key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
+        print("    Properties: {}".format(key_value_pair))
         RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
+        print("    Total calls received: {:d}".format(RECEIVE_CALLBACKS))
         data = json.loads(message_text)
         if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
             map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+            print("Machine temperature {} exceeds threshold {}".format(data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
         hubManager.forward_event_to_output("output1", message, 0)
         return IoTHubMessageDispositionResult.ACCEPTED
     ```
@@ -118,14 +118,14 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge Python pomocí kódu
     def device_twin_callback(update_state, payload, user_context):
         global TWIN_CALLBACKS
         global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
+        print("\nTwin callback called with:\nupdateStatus = {}\npayload = {}\ncontext = {}".format(update_state, payload, user_context))
         data = json.loads(payload)
         if "desired" in data and "TemperatureThreshold" in data["desired"]:
             TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
         if "TemperatureThreshold" in data:
             TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
         TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        print("Total calls confirmed: {:d}\n".format(TWIN_CALLBACKS))
     ```
 
 11. Ve třídě `HubManager`, přidejte nový řádek, kterým `__init__` metoda pro inicializaci `device_twin_callback` funkce, které jste právě přidali.

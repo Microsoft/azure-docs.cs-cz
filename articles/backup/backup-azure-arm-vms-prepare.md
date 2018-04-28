@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 70c1553c166cc334f9db03c78139181c6f5c0553
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
-Tento článek obsahuje kroky pro přípravu prostředí pro zálohování Azure Resource Manager nasadit virtuální počítač (VM). Postupy v postupech pomocí portálu Azure. Ukládání dat záloh virtuálního počítače v trezoru služeb zotavení. Trezor obsahuje záložní data pro classic a Resource Manager nasazené virtuální počítače.
+Tento článek obsahuje kroky pro přípravu prostředí pro zálohování Azure Resource Manager nasadit virtuální počítač (VM). Postupy v postupech pomocí portálu Azure. Při zálohování virtuálního počítače, body obnovení, nebo zálohovaná data jsou uložené v trezoru služeb zotavení. Trezory služeb zotavení ukládat zálohovaná data pro classic a Resource Manager nasazené virtuální počítače.
 
 > [!NOTE]
 > Azure má dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../azure-resource-manager/resource-manager-deployment-model.md).
 
 Před chránit (nebo zálohování) virtuálních počítačů nasazených Resource Managerem zkontrolujte existují tyto požadavky:
 
-* Vytvoření trezoru služeb zotavení (nebo identifikovat existující trezor služeb zotavení) *ve stejné oblasti jako virtuální počítač*.
+* Vytvoření nebo určení trezoru služeb zotavení *ve stejné oblasti jako virtuální počítač*.
 * Vyberte scénář, definování zásad zálohování a určení položek k ochraně.
-* Kontrola instalace agenta virtuálního počítače na virtuálním počítači.
+* Kontrola instalace agenta virtuálního počítače (rozšíření) na virtuálním počítači.
 * Zkontrolujte síťové připojení.
 * Virtuální počítače s Linuxem, pokud chcete přizpůsobit zálohování prostředí pro zálohování konzistentní s aplikací, postupujte podle [postup konfigurace skripty snímek před a po pořízení snímku](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
@@ -51,7 +51,7 @@ Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení
 * Zálohování virtuálních počítačů s více než 16 datových disků není podporována.
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a žádný definovaný koncový bod není podporována.
 * Zálohování virtuálních počítačů Linux zašifrovaná pomocí šifrování Linux Unified klíč instalační program (LUKS) není podporována.
-* Není doporučeno, zálohování virtuálních počítačů, které obsahují sdílené svazky clusteru (CSV) nebo souborový Server škálovaný na konfiguraci. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Zálohování Azure nepodporuje konzistence více virtuálních počítačů. 
+* Není doporučeno, zálohování virtuálních počítačů, které obsahují sdílené svazky clusteru (CSV) nebo souborový Server škálovaný na konfiguraci. Když dokončíte, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Zálohování Azure nepodporuje konzistence více virtuálních počítačů. 
 * Zálohovaná data neobsahuje sítě připojené jednotky připojené k virtuálnímu počítači.
 * Nahrazení existujícího virtuálního počítače během obnovení se nepodporuje. Pokud se pokusíte obnovit virtuální počítač, když virtuální počítač existuje, operaci obnovení se nezdaří.
 * Mezi oblastmi zálohování a obnovení nejsou podporovány.
@@ -167,7 +167,7 @@ Předtím, než zaregistrujete virtuálního počítače k trezoru služeb zotav
 
    ![Tlačítko "Povolit zálohování"](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-Jakmile povolíte úspěšně zálohování, zásady zálohování se spustí podle plánu. Pokud chcete generovat úlohu zálohování na vyžádání pro zálohování virtuálních počítačů, vidět [aktivuje úloha zálohování](./backup-azure-arm-vms.md#triggering-the-backup-job).
+Jakmile povolíte úspěšně zálohování, zásady zálohování se spustí podle plánu. Pokud chcete generovat úlohu zálohování na vyžádání pro zálohování virtuálních počítačů, vidět [aktivuje úloha zálohování](./backup-azure-vms-first-look-arm.md#initial-backup).
 
 Pokud máte potíže s registrací virtuální počítač, zobrazíte následující informace o instalaci agenta virtuálního počítače a na připojení k síti. Pravděpodobně ani nepotřebujete následující informace Pokud chráníte virtuální počítače vytvořené v Azure. Ale pokud jste migrovali virtuální počítače Azure, ujistěte se, zda správně nainstalovaný agent virtuálního počítače a virtuální počítač může komunikovat se službou virtuální sítě.
 
@@ -208,6 +208,10 @@ Seznam povolených adres rozsahy IP datové centrum Azure, najdete v článku [w
 Připojení k úložišti konkrétní oblasti můžete povolit pomocí [služby značky](../virtual-network/security-overview.md#service-tags). Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidlo, které blokuje přístup k Internetu. 
 
 ![Skupina NSG s značky úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Následující video vás provede krok za krokem postup konfigurace služby značky: 
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 > [!WARNING]
 > Značky služby úložiště jsou k dispozici pouze v určitých oblastí a jsou ve verzi preview. Seznam oblastí naleznete v tématu [služby značky pro úložiště](../virtual-network/security-overview.md#service-tags).

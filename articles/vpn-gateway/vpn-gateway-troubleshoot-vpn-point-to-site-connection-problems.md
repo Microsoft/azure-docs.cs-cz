@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 503dcd87bf87ffb204b03780fc11f30825ac35ef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy Azure připojení point-to-site
 
@@ -63,7 +63,7 @@ Další informace o tom, jak nainstalovat certifikát klienta najdete v tématu 
 
 Když se pokusíte připojit k virtuální sítě Azure s použitím klienta VPN, zobrazí se následující chybová zpráva:
 
-**Přijatá zpráva byla neočekávané nebo chybně formátovaný. (Error 0x80090326)**
+**Přijatá zpráva byla neočekávané nebo chybně formátovaný. (Chyba 0x80090326)**
 
 ### <a name="cause"></a>Příčina
 
@@ -318,7 +318,7 @@ K této chybě dojde, pokud má nesprávné nastavení serveru RADIUS, který js
 
 ### <a name="solution"></a>Řešení
 
-Ujistěte se, že je správně nakonfigurovaný RADIUS server. Další informace najdete v tématu [ověřování RADIUS integraci s Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md).
+Ujistěte se, že je správně nakonfigurovaný RADIUS server. Další informace najdete v tématu [ověřování RADIUS integraci s Azure Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-dir-radius.md).
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Chyba 405" při stahování kořenový certifikát z brány sítě VPN
 

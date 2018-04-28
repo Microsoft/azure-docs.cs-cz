@@ -1,5 +1,5 @@
 ---
-title: Partnerské vztahy virtuálních sítí v Azure | Dokumentace Microsoftu
+title: Partnerské vztahy virtuálních sítí v Azure | Microsoft Docs
 description: Seznamte se s partnerskými vztahy virtuálních sítí v Azure.
 services: virtual-network
 documentationcenter: na
@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 69264ac7ffe8124b964a10c11aacaca5c712fd63
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dcb46c7127590f1986fe1fd66c2f6ac4fd8b107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
-Partnerské vztahy virtuálních sítí umožňují bezproblémové propojení dvou [virtuálních sítí](virtual-networks-overview.md) Azure. Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu v zásadě stejně jako mezi virtuálními počítači ve stejné virtuální síti pouze přes *privátní* IP adresy. 
+Partnerské vztahy virtuálních sítí umožňují bezproblémové propojení dvou [virtuálních sítí](virtual-networks-overview.md) Azure. Po navázání partnerského vztahu se virtuální sítě pro účely připojení jeví jako jedna síť. Provoz mezi virtuálními počítači v partnerských virtuálních sítích je směrován přes páteřní infrastrukturu Microsoftu v zásadě stejně jako mezi virtuálními počítači ve stejné virtuální síti pouze přes *privátní* IP adresy. Azure podporuje:
+* VNet peering – propojení virtuálních sítí ve stejné oblasti Azure
+* Globální VNet peering – propojení virtuálních sítí z různých oblastí Azure
 
-Mezi výhody použití partnerských vztahů virtuálních sítí patří:
+Mezi výhody partnerských vztahů virtuálních sítí (místních i globálních) patří:
 
 * Provoz mezi partnerskými virtuálními sítěmi je privátní. Provoz mezi virtuálními sítěmi probíhá na páteřní síti Microsoftu. Komunikace mezi partnerskými virtuálními sítěmi nevyžaduje veřejný internet, brány ani šifrování.
 * Nízká latence a velká šířka pásma při propojení prostředků v různých virtuálních sítích.

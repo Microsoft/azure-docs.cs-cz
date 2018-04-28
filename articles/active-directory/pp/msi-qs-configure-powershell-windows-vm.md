@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace MSI ve virtuálním počítači Azure pomocí prostředí PowerShell"
-description: "Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí prostředí PowerShell."
+title: Postup konfigurace MSI ve virtuálním počítači Azure pomocí prostředí PowerShell
+description: Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí prostředí PowerShell.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: cb87dd88c0425383243edcf12b946cb1821aabe5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9a466a5c695277a7b5833f997e2ad7281c962f3f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí prostředí PowerShell
 
@@ -61,10 +61,10 @@ Pro vytvoření virtuálního počítače povoleným MSI:
 
 Pokud potřebujete povolit MSI na existující virtuální počítač:
 
-1. Přihlaste se k Azure pomocí `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure pomocí `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. Nejdřív načíst vlastnosti virtuálního počítače pomocí `Get-AzureRmVM` rutiny. Chcete-li povolit MSI, použijte `-IdentityType` přepínač na [aktualizace-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny:
@@ -85,10 +85,10 @@ Pokud potřebujete povolit MSI na existující virtuální počítač:
 
 Pokud máte virtuální počítač, který už nepotřebuje MSI, můžete použít `RemoveAzureRmVMExtension` rutiny odebrat MSI z virtuálního počítače:
 
-1. Přihlaste se k Azure pomocí `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure pomocí `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. Použití `-Name` přepínač s [odebrat AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) rutiny zadat stejný název, který jste použili při přidání rozšíření:

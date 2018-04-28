@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 132242e7f1eb516d53b6a31a24095094eed58668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d382d1198d84555035d348ac66881c24249c4d95
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru FTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Pro službu FTP propojené jsou podporovány následující vlastnosti:
 | enableSsl | Určete, zda chcete pomocí funkce FTP přes kanál SSL/TLS.<br/>Povolené hodnoty jsou: **true** (výchozí), **false**. | Ne |
 | enableServerCertificateValidation | Určete, zda chcete povolit ověřování certifikátu serveru SSL při použití FTP přes kanál SSL/TLS.<br/>Povolené hodnoty jsou: **true** (výchozí), **false**. | Ne |
 | authenticationType. | Zadejte typ ověřování.<br/>Povolené hodnoty jsou: **základní**, **anonymní** | Ano |
-| userName | Zadejte uživatele, který má přístup k serveru FTP. | Ne |
+| Uživatelské jméno | Zadejte uživatele, který má přístup k serveru FTP. | Ne |
 | heslo | Zadejte heslo pro uživatele (uživatelské jméno). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
@@ -119,11 +119,16 @@ Ke zkopírování dat z FTP, nastavte vlastnost typu datové sady, která **sdí
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
 | folderPath | Cesta ke složce. Příklad: složku nebo podsložku / |Ano |
-| fileName | Zadejte název souboru do **folderPath** Pokud chcete zkopírovat z konkrétní soubor. Pokud nezadáte žádnou hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce jako zdroj. |Ne |
-| fileFilter | Zadejte filtr pro umožňuje vybrat podmnožinu souborů v folderPath, nikoli všech souborů. Platí, pouze pokud není zadán název souboru. <br/><br/>Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileFilter": "*.log"`<br/>-Příklad 2: `"fileFilter": 2017-09-??.txt"` |Ne |
+| fileName | **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"` |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
 | useBinaryTransfer | Určete, zda chcete použít režim binární přenosu. Hodnoty jsou true pro binárního režimu (výchozí) a na hodnotu false pro ASCII. |Ne |
+
+>[!TIP]
+>Pokud chcete zkopírovat všechny soubory ve složce, zadejte **folderPath** pouze.<br>Pokud chcete zkopírovat jeden soubor s daným názvem, zadejte **folderPath** s částí složky a **fileName** s názvem souboru.<br>Pokud chcete zkopírovat podmnožinu souborů ve složce, zadejte **folderPath** s částí složky a **fileName** s filtrem zástupný znak.
+
+>[!NOTE]
+>Pokud jste používali vlastnost "fileFilter" pro filtr souborů, je stále podporovány jako-se, když jsou navrhované nová funkce filtru, který byl přidán do "název souboru" do budoucna.
 
 **Příklad:**
 

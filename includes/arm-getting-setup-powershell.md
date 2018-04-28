@@ -26,7 +26,7 @@ Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro pře
 
 Otevřete příkazový řádek prostředí Azure PowerShell a přihlaste se k Azure pomocí tohoto příkazu.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Pokud máte víc předplatných Azure, můžete seznam vašich předplatných Azure pomocí tohoto příkazu.
 

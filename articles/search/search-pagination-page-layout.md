@@ -1,32 +1,27 @@
 ---
-title: "Postup stránkování výsledků vyhledávání ve službě Azure Search | Microsoft Docs"
-description: "Stránkování ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure."
-services: search
-documentationcenter: 
+title: Postup stránkování výsledků vyhledávání ve službě Azure Search | Microsoft Docs
+description: Stránkování ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: a0a1d315-8624-4cdf-b38e-ba12569c6fcc
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak v Azure Search stránkovat výsledky hledání
 Tento článek obsahuje pokyny týkající se používání rozhraní API REST služby vyhledávání Azure k implementaci standardní elementy stránka s výsledky hledání, například celkový počet, načtení dokumentu, pořadí řazení a navigace.
 
-V každém případě dál uvedených souvisejících se stránkami možnosti, které přispívají data nebo informace na stránce s výsledky hledání jsou zadaná pomocí [vyhledávání dokumentů](http://msdn.microsoft.com/library/azure/dn798927.aspx) požadavky odeslané do služby Azure Search. Žádosti o zahrnovat příkaz GET, cestu a parametry dotazu, které informovat o tom, co je požadované služby a postup formulovali odpovědi.
+V každém případě dál uvedených souvisejících se stránkami možnosti, které přispívají data nebo informace na stránce s výsledky hledání jsou zadaná pomocí [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. Žádosti o zahrnovat příkaz GET, cestu a parametry dotazu, které informovat o tom, co je požadované služby a postup formulovali odpovědi.
 
 > [!NOTE]
-> Počet elementů, například adresa URL služby a cesta, příkaz HTTP, zahrnuje žádost platná `api-version`a tak dále. Jako stručný výtah jsme oříznut příklady ke zvýraznění syntaxe, které se týkají stránkování. Najdete v tématu [rozhraní REST API služby Azure Search](http://msdn.microsoft.com/library/azure/dn798935.aspx) dokumentace podrobnosti o žádosti o syntaxi.
+> Počet elementů, například adresa URL služby a cesta, příkaz HTTP, zahrnuje žádost platná `api-version`a tak dále. Jako stručný výtah jsme oříznut příklady ke zvýraznění syntaxe, které se týkají stránkování. Najdete v tématu [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice) dokumentace podrobnosti o žádosti o syntaxi.
 > 
 > 
 
@@ -64,7 +59,7 @@ Chcete-li vrátit podmnožinu pole vedle sebe rozložení:
 
 Bitové kopie a mediálních souborů nejsou přímo s možností vyhledávání a by měly být uložené v jiné platformy úložiště, jako je například úložiště objektů Blob v Azure, jak snížit náklady. V indexu a dokumenty zadejte pole, které obsahuje adresu URL externí obsah. Pak můžete toto pole jako odkaz na obrázek. Adresu URL do bitové kopie musí být v dokumentu.
 
-Načtení stránky produktu popis pro **onClick** událostí, použijte [vyhledávání dokumentů](http://msdn.microsoft.com/library/azure/dn798929.aspx) předávání v klíči dokumentu pro načtení. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*. 
+Načtení stránky produktu popis pro **onClick** událostí, použijte [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) předávání v klíči dokumentu pro načtení. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
@@ -73,7 +68,7 @@ Pořadí řazení často výchozí nastavení relevance, ale je běžné, aby al
 
  ![][3]
 
-Ve službě Azure Search, řazení podle `$orderby` výrazu pro všechna pole, které jsou uloženy jako`"Sortable": true.`
+Ve službě Azure Search, řazení podle `$orderby` výrazu pro všechna pole, které jsou uloženy jako `"Sortable": true.`
 
 Relevance důrazně souvisí s profily vyhodnocování. Můžete vyhodnocování výchozí, což závisí na text analýzy a statistiky zařadit všechny výsledky, pořadí s vyšší skóre přejít do dokumentů s více nebo silnější odpovídá na hledaný termín.
 
@@ -86,7 +81,7 @@ Vytvoříte metodu, která přijme jako vstup možnost vybrané řazení a vrát
  ![][5]
 
 > [!NOTE]
-> Při vyhodnocování výchozí stačí pro mnoho scénářů, doporučujeme místo vytvoření relevance na základě vlastní profil vyhodnocování. Vlastní profil vyhodnocování poskytuje způsob, jak nárůst položky, které jsou více užitečné k vaší firmě. V tématu [přidat profil vyhodnocování](http://msdn.microsoft.com/library/azure/dn798928.aspx) Další informace. 
+> Při vyhodnocování výchozí stačí pro mnoho scénářů, doporučujeme místo vytvoření relevance na základě vlastní profil vyhodnocování. Vlastní profil vyhodnocování poskytuje způsob, jak nárůst položky, které jsou více užitečné k vaší firmě. V tématu [přidat profil vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) Další informace. 
 > 
 > 
 
@@ -100,12 +95,12 @@ Můžete odeslat filtr s nebo bez výrazu vyhledávání. Například následuj�
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-V tématu [vyhledávání dokumentů (API služby Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx) Další informace o `$filter` výrazy.
+V tématu [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) Další informace o `$filter` výrazy.
 
 ## <a name="see-also"></a>Viz také
-* [Rozhraní API REST služby vyhledávání systému Azure](http://msdn.microsoft.com/library/azure/dn798935.aspx)
-* [Operace indexu](http://msdn.microsoft.com/library/azure/dn798918.aspx)
-* [Operace dokumentu](http://msdn.microsoft.com/library/azure/dn800962.aspx)
+* [Rozhraní API REST služby vyhledávání systému Azure](https://docs.microsoft.com/rest/api/searchservice)
+* [Operace indexu](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+* [Operace dokumentu](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
 * [Kurzy o službě Azure Search a video](search-video-demo-tutorial-list.md)
 * [Fasetové navigace ve službě Azure Search](search-faceted-navigation.md)
 

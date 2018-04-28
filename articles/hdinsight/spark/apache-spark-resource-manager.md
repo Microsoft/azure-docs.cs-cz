@@ -1,8 +1,8 @@
 ---
-title: "Správa prostředků v clusteru Apache Spark v Azure HDInsight | Microsoft Docs"
-description: "Další informace o použití spravovat prostředky pro clustery Spark v Azure HDInsight pro dosažení vyššího výkonu."
+title: Správa prostředků v clusteru Apache Spark v Azure HDInsight | Microsoft Docs
+description: Další informace o použití spravovat prostředky pro clustery Spark v Azure HDInsight pro dosažení vyššího výkonu.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9da7d4e3-458e-4296-a628-77b14643f7e4
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 914811812b7e01f7b58f92c85cb5a16580c45796
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: afefec77d9d79ad97fa351bc8b0710894c242d76
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 
@@ -157,7 +155,7 @@ Jak je znázorněno na začátek článku, spustíte uživatelské rozhraní Yar
 
 2. Klikněte na tlačítko **ukončení aplikace** v pravém horním rohu, pak klikněte na **OK**.
 
-    ![Kill App2](./media/apache-spark-resource-manager/kill-app2.png "Kill App2")
+    ![Příkaz kill počítači App2](./media/apache-spark-resource-manager/kill-app2.png "Kill počítači App2")
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)

@@ -1,33 +1,29 @@
 ---
-title: "Řešení potíží s Azure SQL Data Warehouse | Microsoft Docs"
-description: "Řešení potíží s datovým skladem Azure SQL."
+title: Řešení potíží s Azure SQL Data Warehouse | Microsoft Docs
+description: Řešení potíží s datovým skladem Azure SQL.
 services: sql-data-warehouse
-documentationcenter: NA
 author: kevinvngo
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/15/2018
-ms.author: kevin;barbkess
-ms.openlocfilehash: 0829d448e8b925d0dcc032ed143d8fff42ab1b69
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 27445eb754a5e985485db101c9d0fe1ba8aa2451
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s datovým skladem Azure SQL
-Toto téma uvádí některé z běžnějších řešení potíží otázky, které jsme od vás odpověď od našich zákazníků.
+Toto téma obsahuje řešení problémů s otázka.
 
 ## <a name="connecting"></a>Připojování
 | Problém | Řešení |
 |:--- |:--- |
-| Přihlášení uživatele 'Přihlášení NT AUTHORITY\ANONYMOUS' se nezdařilo. (Microsoft SQL Server, Error: 18456) |K této chybě dojde, když uživatel s AAD pokusu o připojení k hlavní databázi, ale nemá uživatel v předloze.  Chcete-li tento problém, buď zadejte SQL Data Warehouse, které chcete připojit v době připojení nebo přidejte uživatele do hlavní databáze.  V tématu [Přehled zabezpečení] [ Security overview] další podrobnosti najdete v článku. |
-| Server hlavní "uživatelské_jméno" není možné získat přístup k databázi "hlavní" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlášení uživatele 'Uživatelské_jméno' se nezdařilo. (Microsoft SQL Server, Error: 916) |K této chybě dojde, když uživatel s AAD pokusu o připojení k hlavní databázi, ale nemá uživatel v předloze.  Chcete-li tento problém, buď zadejte SQL Data Warehouse, které chcete připojit v době připojení nebo přidejte uživatele do hlavní databáze.  V tématu [Přehled zabezpečení] [ Security overview] další podrobnosti najdete v článku. |
+| Přihlášení uživatele 'Přihlášení NT AUTHORITY\ANONYMOUS' se nezdařilo. (Microsoft SQL Server, chyba: 18456) |K této chybě dojde, když uživatel s AAD pokusu o připojení k hlavní databázi, ale nemá uživatel v předloze.  Chcete-li tento problém, buď zadejte SQL Data Warehouse, které chcete připojit v době připojení nebo přidejte uživatele do hlavní databáze.  V tématu [Přehled zabezpečení] [ Security overview] další podrobnosti najdete v článku. |
+| Server hlavní "uživatelské_jméno" není možné získat přístup k databázi "hlavní" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlášení uživatele 'Uživatelské_jméno' se nezdařilo. (Microsoft SQL Server, chyba: 916) |K této chybě dojde, když uživatel s AAD pokusu o připojení k hlavní databázi, ale nemá uživatel v předloze.  Chcete-li tento problém, buď zadejte SQL Data Warehouse, které chcete připojit v době připojení nebo přidejte uživatele do hlavní databáze.  V tématu [Přehled zabezpečení] [ Security overview] další podrobnosti najdete v článku. |
 | Chyba CTAIP |Této chybě může dojít při přihlášení byla vytvořena v hlavní databázi SQL serveru, ale není v databázi SQL Data Warehouse.  Pokud dojde k této chybě, podívejte se na [Přehled zabezpečení] [ Security overview] článku.  Tento článek vysvětluje, jak vytvořit přihlášení a uživatele na serveru a postup vytvoření uživatele v databázi SQL Data Warehouse. |
 | Blokováno bránou Firewall |Databáze Azure SQL jsou chráněny server a databáze úrovně brány firewall, aby známé pouze IP adresy, které mají přístup k databázi. Bránu firewall jsou ve výchozím nastavení, což znamená, že je potřeba explicitně povolit a IP adresu nebo rozsah adres zabezpečené před připojením.  Při konfiguraci brány firewall pro přístup, postupujte podle kroků v [konfigurovat přístup k serveru brány firewall pro vaše IP adresa klienta] [ Configure server firewall access for your client IP] v [zřizování pokyny][Provisioning instructions]. |
 | Nelze se připojit s nástrojem pro nebo ovladače |SQL Data Warehouse doporučuje použít [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio], nebo [sqlcmd] [ sqlcmd] k dotazování na data. Další informace o ovladače a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] a [připojit k Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] články. |
@@ -87,44 +83,44 @@ Další pomoc při hledání řešení vašeho problému tady jsou některé pro
 <!--Image references-->
 
 <!--Article references-->
-[Security overview]: ./sql-data-warehouse-overview-manage-security.md
-[SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
-[SSDT for Visual Studio]: ./sql-data-warehouse-install-visual-studio.md
-[Drivers for Azure SQL Data Warehouse]: ./sql-data-warehouse-connection-strings.md
-[Connect to Azure SQL Data Warehouse]: ./sql-data-warehouse-connect-overview.md
-[Vytvoření lístku podpory]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
-[DWU]: ./sql-data-warehouse-overview-what-is.md
-[request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
-[Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md
-[Configure server firewall access for your client IP]: ./sql-data-warehouse-get-started-provision.md
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[Table sizes]: ./sql-data-warehouse-tables-overview.md#table-size-queries
-[Unsupported table features]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
-[Unsupported data types]: ./sql-data-warehouse-tables-data-types.md#unsupported-data-types
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
-[Rebuild indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Workload management]: ./resource-classes-for-workload-management.md
-[Using CTAS to work around unsupported UPDATE and DELETE syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
-[UPDATE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
-[DELETE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
-[MERGE workarounds]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
-[Stored procedure limitations]: ./sql-data-warehouse-develop-stored-procedures.md#limitations
-[Authentication to Azure SQL Data Warehouse]: ./sql-data-warehouse-authentication.md
-[Working around the PolyBase UTF-8 requirement]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
+[Security overview]: sql-data-warehouse-overview-manage-security.md
+[SSMS]: /sql/ssms/download-sql-server-management-studio-ssms
+[SSDT for Visual Studio]: sql-data-warehouse-install-visual-studio.md
+[Drivers for Azure SQL Data Warehouse]: sql-data-warehouse-connection-strings.md
+[Connect to Azure SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Vytvoření lístku podpory]: sql-data-warehouse-get-started-create-support-ticket.md
+[Scaling your SQL Data Warehouse]: sql-data-warehouse-manage-compute-overview.md
+[DWU]: sql-data-warehouse-overview-what-is.md
+[request a quota increase]: sql-data-warehouse-get-started-create-support-ticket.md
+[Learning how to monitor your queries]: sql-data-warehouse-manage-monitor.md
+[Provisioning instructions]: sql-data-warehouse-get-started-provision.md
+[Configure server firewall access for your client IP]: sql-data-warehouse-get-started-provision.md
+[SQL Data Warehouse best practices]: sql-data-warehouse-best-practices.md
+[Table sizes]: sql-data-warehouse-tables-overview.md#table-size-queries
+[Unsupported table features]: sql-data-warehouse-tables-overview.md#unsupported-table-features
+[Unsupported data types]: sql-data-warehouse-tables-data-types.md#unsupported-data-types
+[Overview]: sql-data-warehouse-tables-overview.md
+[Data types]: sql-data-warehouse-tables-data-types.md
+[Distribute]:/sql-data-warehouse-tables-distribute.md
+[Index]: sql-data-warehouse-tables-index.md
+[Partition]: sql-data-warehouse-tables-partition.md
+[Statistics]: sql-data-warehouse-tables-statistics.md
+[Temporary]: sql-data-warehouse-tables-temporary.md
+[Poor columnstore index quality]: sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[Rebuild indexes to improve segment quality]: sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[Workload management]: resource-classes-for-workload-management.md
+[Using CTAS to work around unsupported UPDATE and DELETE syntax]: sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
+[UPDATE workarounds]: sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
+[DELETE workarounds]: sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
+[MERGE workarounds]: sql-data-warehouse-develop-ctas.md#replace-merge-statements
+[Stored procedure limitations]: sql-data-warehouse-develop-stored-procedures.md#limitations
+[Authentication to Azure SQL Data Warehouse]: sql-data-warehouse-authentication.md
+
 
 <!--MSDN references-->
-[sys.database_principals]: https://msdn.microsoft.com/library/ms187328.aspx
-[CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
-[sqlcmd]: https://azure.microsoft.com/en-us/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
+[sys.database_principals]: /sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql
+[CREATE FUNCTION]: /sql/t-sql/statements/create-function-sql-data-warehouse
+[sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
 [Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/

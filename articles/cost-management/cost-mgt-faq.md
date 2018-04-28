@@ -1,20 +1,20 @@
 ---
-title: "Nejčastější dotazy pro Azure náklady na správu | Microsoft Docs"
-description: "Poskytuje odpovědi na některé běžné otázky o Azure náklady na správu."
+title: Nejčastější dotazy pro Azure náklady na správu | Microsoft Docs
+description: Poskytuje odpovědi na některé běžné otázky o Azure náklady na správu.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: troubleshooting
 ms.service: cost-management
-manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Nejčastější dotazy pro Azure náklady na správu
 
@@ -89,9 +89,9 @@ Pokud změníte e-mailovou adresu v Cloudyn z výchozí adresu v Azure, můžete
 
 Doporučujeme vytvořit aspoň dva účty správců Cloudyn, v případě, že jeden z účtů získá uzamčen.
 
-Pokud nemůžete se přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL Azure náklady na správu pro přihlášení k Cloudyn. Use [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Pokud nemůžete se přihlásit k portálu Cloudyn, ujistěte se, že používáte správnou adresu URL Azure náklady na správu pro přihlášení k Cloudyn. Použití [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Adresa URL https://app.cloudyn.com přímé Cloudyn nepoužívejte.
+Nepoužívejte přímá adresa URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak lze aktivovat neaktivovaných účtů s přihlašovacími údaji Azure?
 
@@ -116,9 +116,9 @@ Chcete-li přidat další účty CSP na entitu, vyberte **MSP přístup** místo
 
 Můžete mít více účtů Azure používají různé měny. Náklady na sestavy v Cloudyn ale nezobrazovat více než jeden typ Měna na sestavu.
 
-Pokud máte více předplatných, pomocí různých měn, nadřazená entita a jeho podřízené entity měny se zobrazují v USD  **$** . Naše navrhované osvědčeným postupem je vyhýbat se používání různých měny ve stejné hierarchii entity. Jinými slovy Všechna předplatná uspořádány do strukturu entity měli používat současně.
+Pokud máte více předplatných, pomocí různých měn, nadřazená entita a jeho podřízené entity měny se zobrazují v USD **$**. Naše navrhované osvědčeným postupem je vyhýbat se používání různých měny ve stejné hierarchii entity. Jinými slovy Všechna předplatná uspořádány do strukturu entity měli používat současně.
 
-Cloudyn automaticky zjišťuje vaše předplatné Měna smlouvy Enterprise a uvede správně v sestavách.  Však Cloudyn zobrazí pouze USD  **$**  pro zprostředkovatele kryptografických služeb a účtů Azure web přímo.
+Cloudyn automaticky zjišťuje vaše předplatné Měna smlouvy Enterprise a uvede správně v sestavách.  Však Cloudyn zobrazí pouze USD **$** pro zprostředkovatele kryptografických služeb a účtů Azure web přímo.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Co jsou Cloudyn data aktualizujte časové osy?
 

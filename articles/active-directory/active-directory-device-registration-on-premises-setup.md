@@ -1,11 +1,11 @@
 ---
-title: "Nastavení místního podmíněného přístupu v Azure Active Directory | Microsoft Docs"
-description: "Podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2."
+title: Nastavení místního podmíněného přístupu v Azure Active Directory | Microsoft Docs
+description: Podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 Pokud požadujete uživatelům připojení k pracovní ploše svých osobních zařízení pro službu Azure Active Directory (Azure AD) device registration service, můžete svoje zařízení označit jako známé pro vaši organizaci. Toto je podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
@@ -89,7 +89,7 @@ Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat službu Azure
 | Dokončení druhé části "Povolení zpětného zápisu zařízení v Azure AD Connect." Po dokončení se vraťte do této příručce. |[Povolení zpětného zápisu zařízení v Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Nepovinné] Část 4: Povolení služby Multi-Factor Authentication
-Důrazně doporučujeme nakonfigurovat jednu z několik možností pro službu Multi-Factor Authentication. Pokud chcete vyžadovat Vícefaktorové ověřování, přečtěte si téma [vybrat řešení zabezpečení Multi-Factor Authentication pro vás](../multi-factor-authentication/multi-factor-authentication-get-started.md). Obsahuje popis jednotlivých řešení a odkazy, které vám pomohou při konfiguraci řešení podle svého výběru.
+Důrazně doporučujeme nakonfigurovat jednu z několik možností pro službu Multi-Factor Authentication. Pokud chcete vyžadovat Vícefaktorové ověřování, přečtěte si téma [vybrat řešení zabezpečení Multi-Factor Authentication pro vás](authentication/concept-mfa-whichversion.md). Obsahuje popis jednotlivých řešení a odkazy, které vám pomohou při konfiguraci řešení podle svého výběru.
 
 ## <a name="part-5-verification"></a>Část 5: ověření
 Nasazení je nyní dokončen a můžete vyzkoušet některé scénáře. Pomocí následujících odkazů experimentovat se službou a seznámit se s jeho funkce.
@@ -156,7 +156,7 @@ Adresu URL uživatelům sdělit mnoha různými způsoby. Například jedna meto
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Připojení zařízení s Windows 8.1 pomocí registrace zařízení služby Azure Active Directory
 1. Na zařízení s Windows 8.1, vyberte **nastavení počítače** > **sítě** > **síti na pracovišti**.
-2. Zadejte uživatelské jméno ve formátu UPN. například  **dan@contoso.com** .
+2. Zadejte uživatelské jméno ve formátu UPN. například **dan@contoso.com**.
 3. Vyberte **připojení**.
 4. Pokud budete vyzváni, přihlaste se pomocí přihlašovacích údajů. Zařízení je teď připojené.
 
@@ -186,7 +186,7 @@ Následující kroky ukazují, jak implementovat tento scénář.
 1. Otevřete nástroj konzoly MMC AD FS a pak vyberte **služby AD FS** > **vztahy důvěryhodnosti** > **vztahy důvěryhodnosti předávající strany**.
 2. Vyhledejte aplikaci, na který se vztahuje toto nové pravidlo přístupu. Klikněte pravým tlačítkem na aplikaci a potom vyberte **upravit pravidla deklarací identity**.
 3. Vyberte **autorizační pravidla vystavování** a pak vyberte **přidat pravidlo**.
-4. Z **pravidlo deklarace identity** šablony rozevíracího seznamu, vyberte **povolení nebo odmítnutí uživatele na příchozí deklarace identity základě**. Potom vyberte **Další**.
+4. Z **pravidlo deklarace identity** šablony rozevíracího seznamu, vyberte **povolení nebo odmítnutí uživatele na příchozí deklarace identity základě**. Pak vyberte **Další**.
 5. V **název pravidla deklarací** zadejte **povolení přístupu z registrovaných zařízení**.
 6. Z **typ příchozí deklarace** rozevíracího seznamu vyberte **je registrovaný uživatel**.
 7. V **hodnota příchozí deklarace** zadejte **true**.

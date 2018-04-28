@@ -1,6 +1,6 @@
 ---
-title: "Použití Powershellu ke správě Traffic Manageru v Azure | Microsoft Docs"
-description: "Pomocí prostředí PowerShell pro správce provozu pomocí Azure Resource Manageru"
+title: Použití Powershellu ke správě Traffic Manageru v Azure | Microsoft Docs
+description: Pomocí prostředí PowerShell pro správce provozu pomocí Azure Resource Manageru
 services: traffic-manager
 documentationcenter: na
 author: kumudd
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manager
 
@@ -58,11 +58,11 @@ Následující tabulka popisuje parametry:
 
 | Parametr | Popis |
 | --- | --- |
-| Name (Název) |Název prostředků pro prostředek profil Traffic Manageru. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název se liší od názvu DNS pro dotazy DNS. |
-| Název skupiny prostředků |Název skupiny prostředků obsahující profil prostředků. |
+| Název |Název prostředků pro prostředek profil Traffic Manageru. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název se liší od názvu DNS pro dotazy DNS. |
+| ResourceGroupName |Název skupiny prostředků obsahující profil prostředků. |
 | TrafficRoutingMethod |Určuje metodu směrování provozu umožňuje určit, kterému koncovému bodu je vrácený v odpovědi dotaz DNS. Možné hodnoty jsou 'Výkonu', "Vážená" nebo "Priority". |
 | RelativeDnsName |Určuje název hostitele část názvu DNS, který poskytuje tento profil služby Traffic Manager. Tato hodnota je v kombinaci s názvem domény DNS, který se používá k vytvoření plně kvalifikovaný název domény (FQDN) profilu Azure Traffic Managerem. Například nastavení hodnoty "contoso" bude "contoso.trafficmanager.net." |
-| HODNOTA TTL |DNS Time-to-Live (TTL), určuje v sekundách. Tato hodnota TTL informuje překladače místní DNS a klienty DNS, jak dlouho chcete mezipaměť odpovědí DNS pro tento profil služby Traffic Manager. |
+| TTL |DNS Time-to-Live (TTL), určuje v sekundách. Tato hodnota TTL informuje překladače místní DNS a klienty DNS, jak dlouho chcete mezipaměť odpovědí DNS pro tento profil služby Traffic Manager. |
 | MonitorProtocol |Určuje protokol, který se použít k monitorování stavu koncový bod. Možné hodnoty jsou "HTTP" a "HTTPS". |
 | MonitorPort |Určuje port TCP používá k monitorování stavu koncový bod. |
 | MonitorPath |Určuje cestu k názvu domény koncový bod, který je použít k testu pro koncový bod stavu. |
@@ -122,7 +122,7 @@ V každém případě:
 * Zadání 'Weight' je volitelný. Váhu používají jenom Pokud je profil je nakonfigurovaný na použití metodu směrování provozu 'Vážená'. Jinak jsou ignorovány. -Li zadána, hodnota musí být číslo v rozsahu od 1 do 1000. Výchozí hodnota je '1'.
 * Zadání "Priority" je volitelný. Priority používají jenom Pokud je profil je nakonfigurovaný na použití metodu směrování provozu "Priority". Jinak jsou ignorovány. Platné hodnoty jsou od 1 do 1000 s nižšími hodnotami, která znamená vyšší prioritu. Pokud je zadán pro jeden koncový bod, musí být zadán pro všechny koncové body. Pokud tento parametr vynechán, se použijí výchozí hodnoty od '1' v pořadí, jsou uvedeny koncových bodů.
 
-### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Příklad 1: Přidání koncových bodů webové aplikace pomocí`Add-AzureRmTrafficManagerEndpointConfig`
+### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Příklad 1: Přidání koncových bodů webové aplikace pomocí `Add-AzureRmTrafficManagerEndpointConfig`
 
 V tomto příkladu jsme vytvořte profil Traffic Manageru a přidejte dva koncové body webové aplikace pomocí `Add-AzureRmTrafficManagerEndpointConfig` rutiny.
 
@@ -134,7 +134,7 @@ $webapp2 = Get-AzureRMWebApp -Name webapp2
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName webapp2ep -TrafficManagerProfile $profile -Type AzureEndpoints -TargetResourceId $webapp2.Id -EndpointStatus Enabled
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
-### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání koncového bodu publicIpAddress pomocí`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání koncového bodu publicIpAddress pomocí `New-AzureRmTrafficManagerEndpoint`
 
 V tomto příkladu je prostředek veřejné IP adresy do profil služby Traffic Manager. Veřejná IP adresa musí mít název DNS nakonfigurovaný a mohou být vázány na síťový adaptér virtuálního počítače nebo ke službě Vyrovnávání zatížení.
 
@@ -153,7 +153,7 @@ Při zadání externí koncové body:
 * Pokud se používá metodu směrování provozu 'Výkonu', 'EndpointLocation' je povinný. V opačném případě je volitelný. Hodnota musí být [platný oblast Azure název](https://azure.microsoft.com/regions/).
 * 'Weight' a 'prioritu, jsou volitelné.
 
-### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Přidání externí koncové body pomocí `Add-AzureRmTrafficManagerEndpointConfig` a`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Přidání externí koncové body pomocí `Add-AzureRmTrafficManagerEndpointConfig` a `Set-AzureRmTrafficManagerProfile`
 
 V tomto příkladu jsme vytvořit profil Traffic Manageru, přidejte dva externí koncové body a potvrďte změny.
 
@@ -164,7 +164,7 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName us-endpoint -TrafficManage
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání externí koncové body pomocí`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání externí koncové body pomocí `New-AzureRmTrafficManagerEndpoint`
 
 V tomto příkladu přidáme externí koncový bod do existujícího profilu. Profil je zadán pomocí názvy skupin profilu a prostředků.
 
@@ -183,7 +183,7 @@ Vnořené koncových bodů jsou nakonfigurované v nadřazené profil, pomocí k
 * 'Weight' a 'prioritu, jsou volitelné, jako koncové body Azure.
 * Parametr 'MinChildEndpoints' je volitelné. Výchozí hodnota je '1'. Pokud počet dostupných koncových bodů klesne pod touto prahovou hodnotou, profil nadřazené zvažuje profilu podřízené 'snížený výkon a přesměruje přenosy na dalších koncových bodů v nadřazené profilu.
 
-### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Přidání vnořené koncové body pomocí `Add-AzureRmTrafficManagerEndpointConfig` a`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Přidání vnořené koncové body pomocí `Add-AzureRmTrafficManagerEndpointConfig` a `Set-AzureRmTrafficManagerProfile`
 
 V tomto příkladu jsme vytvoření nové Traffic Manager podřízenými a nadřazenými profilů, přidat podřízené jako koncový bod vnořené do nadřazené a potvrďte změny.
 
@@ -196,13 +196,25 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 Jako stručný výtah v tomto příkladu jsme nepřidali žádné další koncové body nadřazená nebo podřízená profily.
 
-### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání vnořené koncové body pomocí`New-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Příklad 2: Přidání vnořené koncové body pomocí `New-AzureRmTrafficManagerEndpoint`
 
 V tomto příkladu přidáme stávající profil podřízené jako vnořené koncový bod do existujícího profilu nadřazené. Profil je zadán pomocí názvy skupin profilu a prostředků.
 
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
 New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceGroupName MyRG -Type NestedEndpoints -TargetResourceId $child.Id -EndpointStatus Enabled -EndpointLocation "North Europe" -MinChildEndpoints 2
+```
+
+## <a name="adding-endpoints-from-another-subscription"></a>Přidání koncových bodů z jiné předplatné
+
+Správce provozu můžete pracovat s koncovými body z různých předplatných. Potřebujete přepnout do předplatného s koncovým bodem, který chcete přidat k načtení potřebné vstup do Traffic Manageru. Potom potřebujete přepnout předplatných s profilem správce provozu a encpoint přidejte do ní. Následující příklad ukazuje, jak to provést pomocí veřejnou IP adresu.
+
+```powershell
+Set-AzureRmContext -SubscriptionId $EndpointSubscription
+$ip = Get-AzureRmPublicIpAddress -Name $IpAddresName -ResourceGroupName $EndpointRG
+
+Set-AzureRmContext -SubscriptionId $trafficmanagerSubscription
+New-AzureRmTrafficManagerEndpoint -Name $EndpointName -ProfileName $ProfileName -ResourceGroupName $TrafficManagerRG -Type AzureEndpoints -TargetResourceId $ip.Id -EndpointStatus Enabled
 ```
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Aktualizovat koncový bod Traffic Manager
@@ -212,7 +224,7 @@ Existují dva způsoby, jak aktualizovat existující koncový bod Traffic Manag
 1. Získat pomocí profilu Traffic Manageru `Get-AzureRmTrafficManagerProfile`, aktualizovat vlastnosti koncového bodu v rámci profilu a provést změny v nástroji `Set-AzureRmTrafficManagerProfile`. Tato metoda má výhodu v podobě bude možné aktualizovat více než jeden koncový bod v rámci jedné operace.
 2. Získat pomocí koncového bodu Traffic Manager `Get-AzureRmTrafficManagerEndpoint`, aktualizovat vlastnosti koncový bod a provést změny v nástroji `Set-AzureRmTrafficManagerEndpoint`. Tato metoda je jednodušší, protože nevyžaduje indexování do pole koncových bodů v profilu.
 
-### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Aktualizace koncové body pomocí `Get-AzureRmTrafficManagerProfile` a`Set-AzureRmTrafficManagerProfile`
+### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Příklad 1: Aktualizace koncové body pomocí `Get-AzureRmTrafficManagerProfile` a `Set-AzureRmTrafficManagerProfile`
 
 V tomto příkladu jsme změnit prioritu na dva koncové body v rámci stávající profil.
 
@@ -223,7 +235,7 @@ $profile.Endpoints[1].Priority = 1
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Příklad 2: Aktualizace k koncový bod pomocí `Get-AzureRmTrafficManagerEndpoint` a`Set-AzureRmTrafficManagerEndpoint`
+### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Příklad 2: Aktualizace k koncový bod pomocí `Get-AzureRmTrafficManagerEndpoint` a `Set-AzureRmTrafficManagerEndpoint`
 
 V tomto příkladu jsme změnit váhu jeden koncový bod v existující profil.
 
@@ -306,7 +318,7 @@ Toto pořadí lze také přesměrovat:
 Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzureRmTrafficManagerProfile [-Force]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Monitorování správce provozu](traffic-manager-monitoring.md)
 

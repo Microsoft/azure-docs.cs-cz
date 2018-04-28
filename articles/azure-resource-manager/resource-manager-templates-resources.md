@@ -1,6 +1,6 @@
 ---
-title: "Struktura šablony Azure Resource Manager a syntaxe | Microsoft Docs"
-description: "Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON."
+title: Prostředky šablony Azure Resource Manager | Microsoft Docs
+description: Popisuje části zdroje šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddílu prostředků šablon Azure Resource Manager
 
@@ -42,9 +42,9 @@ Můžete definovat prostředky s následující strukturou:
       "comments": "<your-reference-notes>",
       "copy": {
           "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
+          "count": <number-of-iterations>,
           "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
+          "batchSize": <number-to-deploy-serially>
       },
       "dependsOn": [
           "<array-of-related-resource-names>"
@@ -59,6 +59,21 @@ Můžete definovat prostředky s následující strukturou:
               }
           ]
       },
+      "sku": {
+          "name": "<sku-name>",
+          "tier": "<sku-tier>",
+          "size": "<sku-size>",
+          "family": "<sku-family>",
+          "capacity": <sku-capacity>
+      },
+      "kind": "<type-of-resource>",
+      "plan": {
+          "name": "<plan-name>",
+          "promotionCode": "<plan-promotion-code>",
+          "publisher": "<plan-publisher>",
+          "product": "<plan-product>",
+          "version": "<plan-version>"
+      },
       "resources": [
           "<array-of-child-resources>"
       ]
@@ -68,7 +83,7 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| Podmínka | Ne | Logická hodnota, která určuje, jestli je nasazené prostředku. |
+| podmínka | Ne | Logická hodnota, která určuje, jestli je nasazené prostředku. |
 | apiVersion |Ano |Verze rozhraní REST API pro vytvoření prostředku. |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). |
 | jméno |Ano |Název prostředku. Název musí splňovat omezení součást URI definované v RFC3986. Kromě toho služby Azure, které zveřejňují názvu prostředku třetí stranou ověřit název, který má Ujistěte se, zda není pokus o zfalšovat jiné identity. |
@@ -78,11 +93,14 @@ Můžete definovat prostředky s následující strukturou:
 | Kopírovat |Ne |V případě potřeby více než jednu instanci počet zdrojů pro vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky do nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazené, než je nasazený tento prostředek. Správce prostředků vyhodnotí závislosti mezi prostředky a nasadí je ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, jsou nasazeny současně. Hodnota může být čárkami oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Zobrazit seznam pouze těch prostředků, které jsou nasazeny v této šabloně. Prostředky, které nejsou v této šabloně definovány již musí existovat. Vyhněte se přidání nepotřebné závislostí, jak mohou zpomalit nasazení a vytvoření cyklické závislosti. Pokyny v závislosti na nastavení najdete v tématu [definování závislostí v šablonách Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifických prostředků. Hodnoty pro vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku REST API operaci (metoda PUT) k vytvoření prostředku. Můžete také zadat pole kopie vytvořit více instancí vlastnosti. |
+| SKU | Ne | Některé prostředky povolit hodnoty, které definují SKU pro nasazení. Například můžete zadat typ redundance pro účet úložiště. |
+| Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasazujete. Například můžete zadat typ Cosmos DB k vytvoření. |
+| plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat pro marketplace bitovou kopii virtuálního počítače. | 
 | prostředků |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
 
 ## <a name="resource-specific-values"></a>Hodnoty v závislosti na prostředek
 
-**ApiVersion**, **typ**, a **vlastnosti** se liší pro jednotlivé typy prostředků. Chcete-li určit hodnoty těchto vlastností, přečtěte si téma [odkaz na šablonu](/azure/templates/).
+**ApiVersion**, **typ**, a **vlastnosti** elementy se liší pro jednotlivé typy prostředků. **Sku**, **druhu**, a **plán** prvky jsou dostupné pro některé typy prostředků, ale ne všechny. Chcete-li určit hodnoty těchto vlastností, přečtěte si téma [odkaz na šablonu](/azure/templates/).
 
 ## <a name="resource-names"></a>Názvy prostředků
 Obecně platí pracujete s tři typy názvy prostředků ve službě Správce prostředků:
@@ -388,7 +406,7 @@ Při práci s prostředky, může být užitečné následující informace:
    > 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkcích, které můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
 * Pokud chcete kombinovat několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).

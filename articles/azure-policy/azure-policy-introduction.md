@@ -1,21 +1,21 @@
 ---
-title: Přehled služby Azure Policy | Dokumentace Microsoftu
+title: Přehled služby Azure Policy | Microsoft Docs
 description: Azure Policy je služba v Azure, pomocí které vytváříte, přiřazujete a spravujete definice zásad ve svém prostředí Azure.
 services: azure-policy
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.reviewer: nini
-ms.date: 03/29/2018
+ms.date: 04/18/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f9cd00aec025748170a6576fe3ee4dbf794edfdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9b948721c9190b38d0770fd38739d53d252f513d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -53,13 +53,17 @@ Ve službě Azure Policy nabízíme několik integrovaných zásad, které máte
 - **Vynucovat použití značky a její hodnoty:** Tato zásada vynucuje použití požadované značky a její hodnoty pro prostředek.
 - **Nepovolené typy prostředků:** Tato zásada umožňuje zadat typy prostředků, které vaše organizace nemůže nasazovat.
 
-Jakékoli z těchto zásad můžete přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.
+Jakékoli z těchto zásad můžete přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI. Po změně definice zásad se budou zásady opakovaně vyhodnocovat přibližně jednou za hodinu.
 
 Další informace o strukturách definic zásad najdete v článku [Struktura definic zásad](policy-definition.md).
 
 ## <a name="policy-assignment"></a>Přiřazení zásad
 
-Přiřazení zásady je definice zásady, která byla přiřazena, aby proběhla v rámci zadaného oboru. Tento obor může sahat od skupiny pro správu až po skupinu prostředků. Termín *obor* označuje všechny skupiny prostředků, předplatná nebo skupiny pro správu, ke kterým je definice zásady přiřazená. Všechny podřízené prostředky dědí přiřazení zásad. Takže pokud se použije zásada na skupinu prostředků, použije se na všechny prostředky v této skupině prostředků. Z přiřazení zásad však můžete vyloučit určitý podobor. Například v oboru předplatného můžete přiřadit zásadu, která brání vytváření síťových prostředků. V rámci tohoto předplatného však vyloučíte jednu skupinu prostředků, která je určená pro síťovou infrastrukturu. Přístup k této skupině síťových prostředků udělíte uživatelům, kterým důvěřujete s vytvářením síťových prostředků.
+Přiřazení zásady je definice zásady, která byla přiřazena, aby proběhla v rámci zadaného oboru. Tento obor může sahat od skupiny pro správu až po skupinu prostředků. Termín *obor* označuje všechny skupiny prostředků, předplatná nebo skupiny pro správu, ke kterým je definice zásady přiřazená. Všechny podřízené prostředky dědí přiřazení zásad. Takže pokud se použije zásada na skupinu prostředků, použije se na všechny prostředky v této skupině prostředků. Z přiřazení zásad však můžete vyloučit určitý podobor.
+
+Například v oboru předplatného můžete přiřadit zásadu, která brání vytváření síťových prostředků. V rámci tohoto předplatného však vyloučíte jednu skupinu prostředků, která je určená pro síťovou infrastrukturu. Přístup k této skupině síťových prostředků udělíte uživatelům, kterým důvěřujete s vytvářením síťových prostředků.
+
+V jiné situaci můžete například chtít přiřadit zásady seznamu povolených typů prostředků na úrovni skupiny správy. A potom přiřadit mnohem mírnější zásady, které povolují více typů prostředků, u podřízené skupiny správy nebo dokonce přímo u předplatných. To ale nebude fungovat, protože zásady představují systém, kdy se explicitně zamítá. Místo toho musíte podřízenou skupinu správy nebo předplatné vyloučit z přiřazení zásad na úrovni skupiny správy. Potom přiřadíte mnohem mírnější zásady na úrovni podřízené skupiny správy nebo předplatného. Stručně řečeno, pokud je výsledkem nějaké zásady zamítnutí prostředku, je jediným způsobem, jak prostředek povolit, změna zásad zamítnutí.
 
 Další informace o nastavování definic a přiřazení zásad najdete v tématu [Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků v prostředí Azure](assign-policy-definition.md).
 

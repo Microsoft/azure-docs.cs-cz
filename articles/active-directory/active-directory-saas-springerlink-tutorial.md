@@ -1,10 +1,10 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Springer odkaz | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Springer odkaz."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Springer odkaz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e532659be9b8aef303a20900465d16a7641d8cfe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b004bec7c022662a1c90f54079af4fd25c84fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Kurz: Azure Active Directory integrace s Springer odkaz
 
@@ -107,45 +107,25 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Springer odkaz domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`https://fsso.springer.com`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://fsso.springer.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:`https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL: `https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**. Pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Springer odkaz domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku. 
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_certificate.png)    
+
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
 
-6. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Springer odkaz** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Konfigurace jednotného přihlašování na **Springer odkaz** straně, budete muset odeslat vygenerovaného **adresu URL metadat** k [tým podpory Springer odkaz](mailto:identity@springernature.com).
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-
+7. Konfigurace jednotného přihlašování na **Springer odkaz** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory Springer odkaz](mailto:identity@springernature.com).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -216,7 +196,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Springer odkaz na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Springer odkaz.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

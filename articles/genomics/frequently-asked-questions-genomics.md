@@ -1,7 +1,7 @@
 ---
-title: "Microsoft Genomics: Časté otázky | Microsoft Docs"
+title: 'Microsoft Genomics: Časté otázky | Microsoft Docs'
 titleSuffix: Azure
-description: "Odpovědi na běžné otázky zákazníků, požádejte o Genomics společnosti Microsoft."
+description: Odpovědi na běžné otázky zákazníků, požádejte o Genomics společnosti Microsoft.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -11,15 +11,15 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2077eeb5177b07c458476ae900f81b72e35f0dc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b3f30dc5d185615370a8273f71554f784d286cd9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="microsoft-genomics-common-questions"></a>Genomics Microsoft: Časté otázky
 
-Tento článek obsahuje seznam horní, které se týkají dotazy, které byste mohli Genomics Microsoft. Další informace o službě Microsoft Genomics najdete v tématu [co je Microsoft Genomics?](overview-what-is-genomics.md) 
+Tento článek obsahuje seznam nejčastějších dotazů, které vám mohou mít s Genomics společnosti Microsoft. Další informace o službě Microsoft Genomics najdete v tématu [co je Microsoft Genomics?](overview-what-is-genomics.md). Další informace o řešení problémů najdete v tématu naše [Průvodce odstraňováním potíží](troubleshooting-guide-genomics.md). 
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Co je SLA pro Microsoft Genomics?
@@ -57,7 +57,7 @@ Klíč účtu úložiště se používá k vytvoření krátkodobé přístupov�
 ## <a name="what-genome-references-can-i-use"></a>Jaké genomu odkazuje mohu použít?
 
 Podporují se tyto odkazy:
- |Referenční informace              | Hodnota`-pa/--process-args` |
+ |Referenční informace              | Hodnota `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -74,13 +74,13 @@ Prázdné znaky se ignoruje.
 
  |Argument příkazového řádku            | Řádek konfiguračního souboru |
  |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://URL*    |
+ |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
  |`-k/--access-key KEY`            | *access_key:Key*              |      
  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s Microsoft Genomics pomocí následující prostředky:
-- Začínáme spuštěním prvního pracovního postupu pomocí služby Microsoft Genomics. [Spuštění pracovního postupu pomocí služby Microsoft Genomics](quickstart-run-genomics-workflow-portal.md)
+- Začínáme spuštěním prvního pracovního postupu pomocí služby Microsoft Genomics. [Spuštění pracovního postupu pomocí služby Microsoft Genomics ](quickstart-run-genomics-workflow-portal.md)
 - Odeslat vlastní data pro zpracování pomocí služby Microsoft Genomics: [spárovat FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [více FASTQ nebo BAM](quickstart-input-multiple.md) 
 

@@ -1,11 +1,11 @@
 ---
-title: "Zřizování Průvodce pro virtuální počítače SQL serveru pomocí prostředí Azure PowerShell | Microsoft Docs"
-description: "Obsahuje kroky a příkazy prostředí PowerShell pro vytvoření virtuálního počítače Azure s obrázky Galerie virtuálního počítače systému SQL Server."
+title: Zřizování Průvodce pro virtuální počítače SQL serveru pomocí prostředí Azure PowerShell | Microsoft Docs
+description: Obsahuje kroky a příkazy prostředí PowerShell pro vytvoření virtuálního počítače Azure s obrázky Galerie virtuálního počítače systému SQL Server.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit virtuální počítače systému SQL Server v prostředí Azure PowerShell
 
@@ -31,10 +31,10 @@ Tento článek vyžaduje prostředí Azure PowerShell verze modulu 3,6 nebo nov�
 
 ## <a name="configure-your-subscription"></a>Konfigurovat předplatné
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Add-AzureRmAccount**.
+1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Connect-AzureRmAccount**.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Měla by se objevit obrazovka pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.
@@ -327,7 +327,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 Můžete také trvale odstranit všechny prostředky přidružené k virtuálnímu počítači odstraněním příslušné skupiny prostředků na portálu příkazem **Remove-AzureRmResourceGroup**. Tím trvale odstraníte i virtuální počítač, proto tento příkaz používejte opatrně.
 
 ## <a name="example-script"></a>Ukázkový skript
-Následující skript obsahuje dokončení skriptu prostředí PowerShell pro účely tohoto kurzu. Se předpokládá, že máte již instalace předplatné Azure pro použití s **Add-AzureRmAccount** a **Select-AzureRmSubscription** příkazy.
+Následující skript obsahuje dokončení skriptu prostředí PowerShell pro účely tohoto kurzu. Se předpokládá, že máte již instalace předplatné Azure pro použití s **Connect-AzureRmAccount** a **Select-AzureRmSubscription** příkazy.
 
 ```PowerShell
 # Variables

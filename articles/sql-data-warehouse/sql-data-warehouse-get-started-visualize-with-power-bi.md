@@ -1,36 +1,22 @@
 ---
-title: "Vizualizace dat SQL Data Warehouse pomocí Power BI – Microsoft Azure"
-description: "Vizualizace dat SQL Data Warehouse pomocí Power BI"
+title: Vizualizace dat SQL Data Warehouse pomocí Power BI – Microsoft Azure
+description: Vizualizace dat SQL Data Warehouse pomocí Power BI
 services: sql-data-warehouse
-documentationcenter: NA
-author: mlee3gsd
-manager: jhubbard
-editor: 
-ms.assetid: d7fb89d1-da1d-4788-a111-68d0e3fda799
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: integrate
-ms.date: 10/31/2016
-ms.author: martinle;barbkess
-ms.openlocfilehash: a41393730143b14e91318a61858d989fff3786c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 52581a87caac419a79caab647cc9c5a4ee7453ba
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
-> [!div class="op_single_selector"]
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
-> * [SSMS](sql-data-warehouse-query-ssms.md)
-> 
-> 
-
 V tomto kurzu si ukážeme, jak se pomocí Power BI připojit k SQL Data Warehouse a vytvořit pár základních vizualizací.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
@@ -40,80 +26,70 @@ V tomto kurzu si ukážeme, jak se pomocí Power BI připojit k SQL Data Warehou
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
-* SQL Data Warehouse s předem načtenou databází AdventureWorksDW. Ke zřízení této konfigurace použijte článek [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse] a zvolte načtení ukázkových dat. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně][load sample data manually].
+* SQL Data Warehouse s předem načtenou databází AdventureWorksDW. Ke zřízení datového skladu, najdete v části [vytvořit SQL Data Warehouse](create-data-warehouse-portal.md) a zvolte Načíst ukázková data. Pokud už máte datový sklad, ale nemáte ukázková data, můžete [načíst WideWorldImportersDW](load-data-wideworldimportersdw.md).
 
 ## <a name="1-connect-to-your-database"></a>1. Připojení k databázi
 Pokud chcete otevřít Power BI a připojit se ke své databázi AdventureWorksDW, postupujte takto:
 
-1. Přihlaste se k webu [Azure Portal][Azure portal].
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Databáze SQL** a zvolte databázi AdventureWorks služby SQL Data Warehouse.
    
-    ![Vyhledání databáze][1]
+    ![Vyhledání databáze](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
 3. Klikněte na tlačítko Otevřít v Power BI.
    
-    ![Tlačítko Power BI][2]
+    ![Tlačítko Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png)
 4. Teď by se vám měla zobrazit stránka pro připojení k SQL Data Warehouse s webovou adresou vaší databáze. Klikněte na Další.
    
-    ![Připojení Power BI][3]
-5. Zadejte své uživatelské jméno a heslo pro SQL Server Azure a budete plně připojení k vaší databázi SQL Data Warehouse.
+    ![Připojení Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png)
+5. Zadejte uživatelské jméno pro server Azure SQL a heslo.
    
-    ![Přihlášení k Power BI][4]
-6. Až se zaregistrujete v Power BI, klikněte v levém okně na datovou sadu AdventureWorksDW. Tím se otevře databáze.
+    ![Přihlášení Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
+6. Chcete-li otevřít databázi, klikněte na datovou sadu AdventureWorksDW v levém okně.
    
-    ![Otevření databáze AdventureWorksDW v Power BI][5]
+    ![Otevření databáze AdventureWorksDW v Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
 ## <a name="2-create-a-report"></a>2. Vytvoření sestavy
 Teď můžete pomocí Power BI analyzovat ukázková data databáze AdventureWorksDW. K provedení analýzy má databáze AdventureWorksDW zobrazení s názvem AggregateSales. Toto zobrazení obsahuje několik klíčových metrik pro analýzu prodeje společnosti.
 
 1. Pokud budete chtít vytvořit mapu částek prodeje podle PSČ, klikněte v podokně polí napravo na zobrazení AggregateSales a tím ho rozbalte. Kliknutím vyberte sloupce PostalCode a SalesAmount.
    
-    ![Výběr sloupce AggregateSales v Power BI][6]
+    ![Power BI vybere AggregateSales](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
    
-    Power BI automaticky rozpozná, že se jedná o zeměpisné údaje, a umístí vám je na mapu.
+    Power BI automaticky rozpoznána zeměpisné údaje a umístí jej v mapování.
    
-    ![Mapa Power BI][7]
-2. Tento krok vytvoří pruhový graf, který zobrazí částku prodeje na příjem zákazníka. Toto můžete vytvořit v rozbaleném zobrazení AggregateSales. Klikněte na pole SalesAmount. Přetáhněte pole Customer Income (Příjem zákazníka) nalevo do části Axis (Osa).
+    ![Mapa Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png)
+
+2. Tento krok vytvoří pruhový graf, který zobrazí částku prodeje na příjem zákazníka. Pokud chcete vytvořit pruhový graf, přejděte rozbaleném zobrazení AggregateSales. Klikněte na pole SalesAmount. Přetáhněte pole Customer Income (Příjem zákazníka) nalevo do části Axis (Osa).
    
-    ![Výběr osy v Power BI][8]
+    ![Power BI vybere osy](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png)
    
-    Pruhový graf jsme přesunuli vlevo.
+    Pruhový graf přes doleva.
    
-    ![Pruhový graf v Power BI][9]
-3. Tento krok vytvoří spojnicový graf zobrazující prodejní částku k datu objednávky. Toto můžete vytvořit v rozbaleném zobrazení AggregateSales. Klikněte na SalesAmount a OrderDate. Ve sloupci Visualizations (Vizualizace) klikněte na ikonu spojnicového grafu (je to první ikona na druhém řádku pod vizualizacemi).
+    ![Pruhový graf v Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png)
+3. Tento krok vytvoří spojnicový graf zobrazující prodejní částku k datu objednávky. Chcete-li vytvořit spojnicový graf, přejděte na v rozbaleném zobrazení AggregateSales. Klikněte na SalesAmount a OrderDate. Ve sloupci vizualizace klikněte na ikonu spojnicového grafu, což je první ikona na druhém řádku pod vizualizacemi.
    
-    ![Výběr spojnicového grafu v Power BI][10]
+    ![Power BI vybere spojnicový graf](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
    
     Teď máte sestavu zobrazující tři různé vizualizace dat.
    
-    ![Spojnicový graf v Power BI][11]
+    ![Spojnicový graf v Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png)
 
 Kdykoli můžete rozdělanou práci uložit tak, že kliknete na **Soubor** a vyberete **Uložit**.
 
-## <a name="next-steps"></a>Další kroky
-Vyzkoušeli jste si tedy práci s ukázkovými daty a teď se podívejte, jak na [vývoj][develop], [načítání][load] nebo [migraci][migrate]. Nebo se podívejte na [web Power BI][Power BI website].
+## <a name="using-direct-connnect"></a>Pomocí přímé spojení jednotlivých
+Jako s Azure SQL Database, SQL Data Warehouse přímé připojení umožňuje přenos logické směrem dolů vedle analytické možnosti Power BI. Přímé připojení dotazy jsou odeslán zpět do Azure SQL Data Warehouse v v reálném čase jako zkoumat data.  Tato funkce v kombinaci s škálování služby SQL Data Warehouse umožňuje vytvářet dynamické sestavy v minutách proti terabajtů data. Kromě toho zavedení Open in tlačítko Power BI umožňuje uživatelům připojovat přímo Power BI do jejich SQL Data Warehouse bez shromažďovat informace z dalších částí Azure.
 
-<!--Image references-->
-[1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
-[2]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-button.png
-[3]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png
-[4]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png
-[5]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png
-[6]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png
-[7]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png
-[8]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png
-[9]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png
-[10]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png
-[11]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-line.png
-[12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
+Při používání přímé připojení:
 
-<!--Article references-->
-[migrate]: sql-data-warehouse-overview-migrate.md
-[develop]: sql-data-warehouse-overview-develop.md
-[load]: sql-data-warehouse-overview-load.md
-[load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+* Pokud se připojujete, zadejte název plně kvalifikovaný serveru.
+* Ujistěte se, že jsou pravidla brány firewall pro databázi nakonfigurovaná na povolit přístup ke službám Azure.
+* Všechny akce, jako výběrem sloupce nebo přidáním filtru, dotazuje přímo do datového skladu.
+* Dlaždice se aktualizuje automaticky a přibližně každých 15 minut.
+* Modul otázky A odpovědi není k dispozici pro přímé připojení datové sady.
+* Změny schématu jsou automaticky součástí.
+* Všechny dotazy přímé připojení bude vyprší po 2 minut.
 
-<!--Other-->
-[Azure portal]: https://portal.azure.com/
-[Power BI website]: http://www.powerbi.com/
+Těchto omezení a poznámky může změnit, protože zlepšení činnosti koncových.
+
+## <a name="next-steps"></a>Další postup
+Vyzkoušeli jste si tedy práci s ukázkovými daty a teď se podívejte, jak na [vývoj](sql-data-warehouse-overview-develop.md), [načítání](design-elt-data-loading.md) nebo [migraci](sql-data-warehouse-overview-migrate.md). Nebo se podívejte na [web Power BI](http://www.powerbi.com/).

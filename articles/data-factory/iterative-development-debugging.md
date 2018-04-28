@@ -4,7 +4,7 @@ description: Naučte se vyvíjet a ladit kanály pro vytváření dat interaktiv
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,11 +12,11 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: adb5ffd65d4b2b591abba5d4b3481b7ca08de579
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterační vývoji a ladění pomocí Azure Data Factory
 
@@ -45,9 +45,17 @@ Při testování běží, není nutné publikovat změny k objektu pro vytváře
 
 ## <a name="setting-breakpoints-for-debugging"></a>Nastavení zarážek pro ladění
 
-Objekt pro vytváření dat umožňuje taky ladění, dokud se nedostanete konkrétní aktivitu v kanálu plátna. Právě umístí zarážku aktivity, do kterého chcete otestovat a vyberte **ladění**. Objekt pro vytváření dat zajišťuje, že test běží pouze do aktivity zarážek na plátně kanálu. To *ladění, dokud* funkce je užitečná, když nechcete, aby k testování celého kanálu, ale jenom podmnožinu aktivity v kanálu.
+Objekt pro vytváření dat umožňuje taky ladění, dokud se nedostanete konkrétní aktivitu na plátně kanálu. Právě umístí zarážku aktivity, do kterého chcete otestovat a vyberte **ladění**. Objekt pro vytváření dat zajišťuje, že test běží pouze do aktivity zarážek na plátně kanálu. To *ladění, dokud* funkce je užitečná, když nechcete, aby k testování celého kanálu, ale jenom podmnožinu aktivity v kanálu.
 
 ![Zarážky na plátně kanálu](media/iterative-development-debugging/iterative-development-image4.png)
+
+Pokud chcete nastavit zarážky, vyberte prvek na plátně kanálu. A *ladění, dokud* možnost se zobrazí jako prázdný červené kolečko v pravém horním rohu elementu.
+
+![Před nastavením zarážku na vybraný element](media/iterative-development-debugging/iterative-development-image5.png)
+
+Po výběru *ladění, dokud* možnost, změní se na vyplněný červené kolečko udávajících na zarážce je povoleno.
+
+![Po nastavení boru přerušení na vybraný element](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>Další postup
 [Průběžnou integraci a nasazení v Azure Data Factory](continuous-integration-deployment.md)

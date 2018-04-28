@@ -2,24 +2,19 @@
 title: Pomocí smyčky T-SQL v Azure SQL Data Warehouse | Microsoft Docs
 description: Tipy pro pomocí smyčky T-SQL a nahrazení kurzory v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: ''
-ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 2e49a0de0e4a6aba6639f7f3100f41c8db254220
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 8d51c8f18d7c00d21fcc057efcda73e2a6b46cc7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Pomocí smyčky T-SQL v SQL Data Warehouse
 Tipy pro pomocí smyčky T-SQL a nahrazení kurzory v Azure SQL Data Warehouse na vývoj řešení.

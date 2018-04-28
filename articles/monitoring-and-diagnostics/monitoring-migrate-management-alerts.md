@@ -1,12 +1,12 @@
 ---
-title: "Migrace Azure výstrahy na události správy do protokolu upozornění | Microsoft Docs"
-description: "Výstrahy na události správy budou odebrány říjen 1. Připravte migraci existujícího výstrahy."
+title: Migrace Azure výstrahy na události správy do protokolu upozornění | Microsoft Docs
+description: Výstrahy na události správy budou odebrány říjen 1. Připravte migraci existujícího výstrahy.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.openlocfilehash: 08a457029d3721f5c38dbcd2d2aab7d09a241d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cc02664a345da49c276a6876d5cdfaf5bdb8477
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace Azure výstrahy na události správy do protokolu činnosti výstrahy
 
@@ -38,7 +38,7 @@ Azure monitorování (dříve Statistika Azure) nabízí možnost vytvořit výs
 Následující skript prostředí PowerShell vrátí seznam všech výstrah v události správy, které máte v vašeho předplatného, jakož i podmínky nastavit pro jednotlivé výstrahy.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 $alerts = $null
 foreach ($rg in Get-AzureRmResourceGroup ) {
   $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -113,7 +113,7 @@ Pokud chcete vytvořit oznámení nové aktivity na protokolu, můžete buď:
 Výstrahy na události správy, které jste předtím vytvořili, nebude se migrovat automaticky aktivity protokolu výstrah. Budete muset použít předchozí skript prostředí PowerShell k zobrazení seznamu výstrahy na události správy jste nakonfigurovali a ručně je znovu vytvořit jako aktivity protokolu výstrahy. To je třeba provést před říjen 1, po jejímž uplynutí výstrahy na události správy se už nebude zobrazovat ve vašem předplatném Azure. Jiné typy výstrah, Azure, včetně monitorování Azure metriky výstrah, Application Insights výstrahy a upozornění analýzy protokolů jsou tato změna nemá vliv. Pokud máte nějaké otázky, post v komentářích níže.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o [protokol aktivit](monitoring-overview-activity-logs.md)
 * Konfigurace [aktivity protokolu výstrahy prostřednictvím portálu Azure](monitoring-activity-log-alerts.md)

@@ -1,11 +1,11 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k databázi SQL | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – webovou aplikaci připojit k databázi SQL"
+title: Ukázkový skript Azure PowerShellu – Připojení webové aplikace k databázi SQL | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Připojení webové aplikace k databázi SQL
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: syntaxc4
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.service: app-service
@@ -16,17 +16,17 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5312bf6b81d1cc48490b71c3f77323cca23e1559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: ffd907d14265a43fd769aaa751fb3678c3c30dea
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="connect-a-web-app-to-a-sql-database"></a>Webovou aplikaci připojit k databázi SQL
+# <a name="connect-a-web-app-to-a-sql-database"></a>Připojení webové aplikace k databázi SQL
 
-V tomto scénáři se dozvíte, jak vytvářet Azure SQL database a webové aplikace Azure. Potom propojíte databáze SQL pro webovou aplikaci pomocí nastavení aplikace.
+V tomto scénáři se dozvíte, jak vytvořit databázi SQL Azure a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojíte databázi SQL s webovou aplikací.
 
-V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure.
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Connect-AzureRmAccount` vytvořte připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,7 +34,7 @@ V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukc
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků, webovou aplikaci a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,20 +42,20 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nový AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Nové AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Vytvoří plán služby App Service. |
-| [Nové AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
-| [Nový AzureRMSQLServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří databáze SQL serveru. |
-| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro server databáze SQL. |
-| [Nový AzureRMSQLDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří databázi nebo elastické databáze. |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Vytvoří plán služby App Service. |
+| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
+| [New-AzureRMSQLServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Vytvoří server služby SQL Database. |
+| [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro server služby SQL Database. |
+| [New-AzureRMSQLDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Vytvoří databázi nebo elastickou databázi. |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Upraví konfiguraci webové aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).
+Další ukázky Azure PowerShellu pro Azure App Service Web Apps najdete v [ukázkách Azure PowerShellu](../app-service-powershell-samples.md).

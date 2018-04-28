@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b50c9f059d82d9378fba8db663aa2e8dce0273f5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 239478a9e697d9eed474a9bfcc0d12fb6a05faee
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
 Existující účet Automation můžete aktualizovat z webu Azure Portal nebo pomocí PowerShellu, pokud jste postupovali takto:
@@ -177,7 +177,7 @@ Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
         return
     }
         
-    Login-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName 
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
         
     # Create a Run As account by using a service principal

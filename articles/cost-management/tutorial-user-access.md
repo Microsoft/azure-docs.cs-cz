@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/09/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db5cdecc57cf07876ca8d4e981860615643cfd79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Kurz: Přiřazení přístupu k datům služby Cost Management
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 I když vy už přístup správce máte, můžou ho potřebovat i další spolupracovníci z vaší organizace. Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte možnost **User Management** (Správa uživatelů). Kliknutím na **Add New User** (Přidat nového uživatele) přidejte nového uživatele.
 
-Zadejte požadované informace o uživateli. Pole hesla můžete nechat prázdné, aby si mohl uživatel při prvním přihlášení nastavit nové heslo. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců.
+Zadejte požadované informace o uživateli. Přihlašovací ID musí být platná e-mailová adresa. Vyberte možnost Allow User Management (Povolit správu uživatelů), aby mohl uživatel vytvářet a upravovat jiné uživatele. Povolením možnosti Allow Recipient Lists Management (Povolit správu seznamů příjemců) umožníte uživateli upravovat seznamy příjemců. Pokud vyberete možnost **Notify user by email** (Oznámit uživateli e-mailem), služba Cloudyn uživateli e-mailem zašle odkaz s přihlašovacími údaji. Při prvním přihlášeni si uživatel nastaví heslo.
 
 V části **User has admin access** (Uživatel má přístup správce) je vybraná kořenová entita vaší organizace. Nechte vybranou kořenovou entitu a uložte informace o uživateli. Výběrem kořenové entity dáte uživateli oprávnění správce nejen ke kořenové entitě v rámci stromu, ale také ke všem entitám zařazeným pod ní.  
   ![Přidání nového uživatele s přístupem správce](.\media\tutorial-user-access\new-admin-access.png)
@@ -64,7 +64,7 @@ Při vytváření stromu se zamyslete nad tím, jak chcete nebo potřebujete roz
 
 Při registraci smlouvy Azure nebo účtu ve službě Cloudyn proběhlo zkopírování vašich dat prostředků Azure včetně využití, výkonu, fakturace a dat značek z vašich odběrů do účtu služby Cloudyn. Strom entit je ale potřeba vytvořit ručně. Pokud jste přeskočili registraci Azure Resource Manageru, jsou na portálu Cloudyn dostupná jenom fakturační data a pár sestav prostředků.
 
-Na portálu Cloudyn klikněte v pravém horním rohu na **Settings** (Nastavení) a vyberte **Cloud Accounts** (Účty v cloudu). Začnete s jednou entitou (kořenovou entitou) a pod ní začnete vytvářet strom entit. Tady je příklad hierarchie entit, která se můžete po dokončení stromu podobat řadě organizací v oblasti IT:
+Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). Začnete s jednou entitou (kořenovou entitou) a pod ní začnete vytvářet strom entit. Tady je příklad hierarchie entit, která se můžete po dokončení stromu podobat řadě organizací v oblasti IT:
 
 ![Strom entit](.\media\tutorial-user-access\entity-tree.png)
 

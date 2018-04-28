@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -42,7 +42,7 @@ Virtuální sítě Azure mají NSG toku protokoly, které poskytují informace o
 - **Síťové protokoly zabezpečení skupiny (NSG) toku**: vám umožní zobrazit informace o příchozí a odchozí provoz IP prostřednictvím skupinu zabezpečení sítě. Skupina NSG toku protokoly jsou zapsány ve formátu json a zobrazit odchozí a příchozí tok na základě pravidla na síťový adaptér toku se vztahuje na 5 řazené kolekce členů informace o toku (zdrojové nebo cílové IP adresy, zdrojový nebo cílový port a protokol), a pokud přenos byl povolen nebo byl odepřen. Další informace o toku protokolů NSG najdete v tématu [protokolů NSG toku](network-watcher-nsg-flow-logging-overview.md).
 - **Analýza protokolu**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytnutá prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako jsou například analýzy výkonu monitorování a přenosy dat sítě jsou vytvořeny pomocí analýzy protokolů jako základ. Další informace najdete v tématu [protokolu analýzy](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Přihlaste se pracovní prostor analýzy**: instance analýzy protokolů, které jsou uložená data, která se týkají k účtu Azure. Další informace o pracovních prostorech analýzy protokolů, najdete v části [vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Sledovací proces sítě**: místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni sítě scénář v Azure. Chcete-li toku protokolů NSG zapnout a vypnout s sledovací proces sítě. Další informace najdete v tématu [sledovací proces sítě](network-watcher-monitoring-overview.md#network-watcher).
+- **Sledovací proces sítě**: místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni sítě scénář v Azure. Chcete-li toku protokolů NSG zapnout a vypnout s sledovací proces sítě. Další informace najdete v tématu [sledovací proces sítě](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak funguje Analýza provozu 
 

@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c4c85395856756e8ec6a788aa958b479a297892d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fb5c2e16e696ba9eecf4346a0c4e7bc05aacf39f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Omezení modelu prostředků na základě DTU databáze SQL Azure
 
@@ -32,31 +32,28 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 | Maximální počet možností úložiště (GB) | 2 |
 | Maximální úložiště OLTP v paměti (GB) |neuvedeno |
 | Maximální počet souběžných pracovních procesů (počet požadavků) | 30 |
-| Maximální počet souběžných přihlášení | 30 |
 | Maximální počet souběžných relací | 300 |
 |||
 
 ### <a name="standard-service-tier"></a>Úroveň služeb Standard
 | **Úroveň výkonu** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| Maximální počet jednotek Dtu ** | 10 | 20 | 50 | 100 |
+| Maximální počet DTU | 10 | 20 | 50 | 100 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) * | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |
 | Maximální počet souběžných pracovních procesů (počet požadavků)| 60 | 90 | 120 | 200 |
-| Maximální počet souběžných přihlášení | 60 | 90 | 120 | 200 |
 | Maximální počet souběžných relací |600 | 900 | 1200 | 2400 |
 ||||||
 
 ### <a name="standard-service-tier-continued"></a>Úroveň služby na úrovni Standard (pokračování)
 | **Úroveň výkonu** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| Maximální počet jednotek Dtu ** | 200 | 400 | 800 | 1600 | 3000 |
+| Maximální počet DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Zahrnuté úložiště (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximální počet možností úložiště (GB) * | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Maximální úložiště OLTP v paměti (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno |neuvedeno |
 | Maximální počet souběžných pracovních procesů (počet požadavků)| 400 | 800 | 1600 | 3200 |6000 |
-| Maximální počet souběžných přihlášení | 400 | 800 | 1600 | 3200 |6000 |
 | Maximální počet souběžných relací |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
@@ -68,18 +65,15 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 | Maximální počet možností úložiště (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4 096 | 4 096 |
 | Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (počet požadavků)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
-| Maximální počet souběžných přihlášení | 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
 
 > [!IMPORTANT]
-> \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+> - Úložiště velikosti větší než velikost zahrnuté úložiště jsou ve verzi preview a poplatkům použít. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
->\* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Asie – jihovýchod, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> - Ve vrstvě | Premium je více než 1 TB úložiště aktuálně k dispozici v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Střední Kanada, Východní Kanada, střed USA, Francie centrální, Německo centrální, Japonsko – východ, Japonsko – Západ, Korejská centrální Střed USA – sever, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Spojené království – Jih, Spojené království – Západ, East2 USA, západ USA, Virginia verze pro státní správu USA a západní Evropa. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > 
->\*\* Maximální počet jednotek Dtu na databázi na 200 Dtu a vyšší počínaje Standard jsou ve verzi preview.
->
 
 
 ## <a name="single-database-change-storage-size"></a>Izolované databáze: Změna velikosti úložiště
@@ -97,7 +91,7 @@ Následující video ukazuje, dynamická změna úroveň výkonu zvýšit dostup
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-Se změnou úrovně služeb nebo úrovně výkonu databáze se vytvoří replika původní databáze na nové úrovni výkonu a následně se přepnou připojení na repliku. Během tohoto procesu se neztratí žádná data, ale během krátké chvíle, kdy se přepíná na repliku, jsou zakázána připojení k databázi, takže může dojít k vrácení některých probíhajících transakcí zpět. Doba pro přechod se liší, ale je obecně méně než 30 sekundách 99 % času je v části 4 sekundy. Pokud máte velké množství transakcí pohybující se v okamžiku připojení jsou zakázané, může být delší dobu pro přechod. 
+Se změnou úrovně služeb nebo úrovně výkonu databáze se vytvoří replika původní databáze na nové úrovni výkonu a následně se přepnou připojení na repliku. Během tohoto procesu se neztratí žádná data, ale během krátké chvíle, kdy se přepíná na repliku, jsou zakázána připojení k databázi, takže může dojít k vrácení některých probíhajících transakcí zpět. Doba pro přechod se liší, ale je méně než 30 sekundách 99 % času. Pokud máte velké množství transakcí pohybující se v okamžiku připojení jsou zakázané, může být delší dobu pro přechod. 
 
 Délka trvání celého procesu vertikálního navyšování kapacity závisí na velikosti a úrovni služeb databáze před změnou a po ní. Například 250 GB databázi, která mění k, z a do vrstvy standardní služby, by se měla dokončit v rámci šest hodin. Pro databázi stejnou velikost, která je změna úrovně výkonu v rámci úroveň služeb Premium by se měla dokončit škálování do tří hodin.
 
@@ -142,7 +136,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
-| Maximální počet souběžných přihlášení na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
 | Možnosti min Edtu na databázi | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 |
 | Možnosti Max Edtu na databázi | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
@@ -158,7 +151,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | 
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 | 
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Maximální počet souběžných přihlášení na fond | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Možnosti min Edtu na databázi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Možnosti Max Edtu na databázi | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
@@ -174,7 +166,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | neuvedeno | neuvedeno | neuvedeno | neuvedeno | neuvedeno | 
 | Maximální počet databází pro každý fond | 500 | 500 | 500 | 500 | 500 | 
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Maximální počet souběžných přihlášení na fond | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Možnosti min Edtu na databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
 | Možnosti Max Edtu na databázi | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 | 
@@ -190,7 +181,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | 1 | 2 | 4 | 10 | 12 | 
 | Maximální počet databází pro každý fond | 50 | 100 | 100 | 100 | 100 | 
 | Maximální počet souběžných pracovních procesů na fond (požadavky) | 200 | 400 | 800 | 1600 | 2400 | 
-| Maximální počet souběžných přihlášení na fond | 200 | 400 | 800 | 1600 | 2400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Minimální počet eDTU na databázi | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1 000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 | 
 | Maximální počet eDTU na databázi | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1 000 | 25, 50, 75, 125, 250, 500, 1000, 1500 |
@@ -206,7 +196,6 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databází pro každý fond | 100 | 100 | 100 | 100 | 100 | 
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Maximální počet souběžných přihlášení na fond | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | Možnosti min Edtu na databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 | 
 | Možnosti Max Edtu na databázi | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 | 
@@ -214,9 +203,9 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 ||||||||
 
 > [!IMPORTANT]
-> \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/). Úložiště velikosti větší než velikost zahrnuté úložiště jsou ve verzi preview a poplatkům použít. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).
+> -  Úložiště velikosti větší než velikost zahrnuté úložiště jsou ve verzi preview a poplatkům použít. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/). Úložiště velikosti větší než velikost zahrnuté úložiště jsou ve verzi preview a poplatkům použít. Podrobnosti najdete v tématu [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Asie – jihovýchod, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> -  Ve vrstvě | Premium je více než 1 TB úložiště aktuálně k dispozici v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Střední Kanada, Východní Kanada, střed USA, Francie centrální, Německo centrální, Japonsko – východ, Japonsko – Západ, Korejská centrální Střed USA – sever, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Spojené království – Jih, Spojené království – Západ, East2 USA, západ USA, Virginia verze pro státní správu USA a západní Evropa. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 >
 
 Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve fondu obdrží stejné množství prostředků ke zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Pokud je minimální počet DTU na databázi nastaven na nenulovou hodnotu, pro každou databázi bude garantováno spravedlivé sdílení prostředků elastického fondu je společně s libovolným množstvím prostředků.
@@ -229,7 +218,7 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 |:--- |:--- |
 | Maximální počet eDTU na databázi |Maximální počet eDTU, které může využívat libovolná databáze ve fondu za předpokladu, že jsou dostupné v závislosti na využití ostatními databázemi ve fondu. Maximální počet eDTU na databázi není garancí prostředků pro databázi. Toto nastavení je globální a platí pro všechny databáze ve fondu. Nastavte maximální počet eDTU na databázi dostatečně vysoký, aby databáze zvládly využití ve špičkách. Očekává se určitý stupeň předimenzování, protože fond obecně předpokládá studené a horké vzory používání, při nichž nenastávají špičky u všech databází ve stejnou chvíli. Předpokládejme například, že využití ve špičce na databázi je 20 eDTU a špička v jednu chvíli nastává pouze u 20 % ze 100 databází ve fondu. Pokud je maximální počet eDTU na databázi nastaven na 20 eDTU, je rozumné fond 5krát předimenzovat a nastavit počet eDTU na fond na 400. |
 | Minimální počet eDTU na databázi |Minimální počet eDTU garantovaných pro každou databázi ve fondu. Toto nastavení je globální a platí pro všechny databáze ve fondu. Minimální počet eDTU na databázi může být nastaven na 0, což je i výchozí hodnota. Tato vlastnost je nastavena na libovolnou hodnotu mezi 0 a průměrným využitím eDTU na databázi. Násobek počtu databází ve fondu a minimálním počtem eDTU na databázi nemůže překročit počet eDTU na fond. Pokud je například ve fondu 20 databází a minimální počet eDTU na databázi je nastaven na 10 eDTU, pak musí být počet eDTU na fond alespoň 200 eDTU. |
-| Maximální počet úložiště na databázi |Maximální velikost nastavený uživatelem databáze ve fondu. Ve fondu databáze sdílet úložiště přidělené fondu, takže velikost databáze dosáhnout je omezena na menší ze zbývajících fond úložiště a velikost databáze. Maximální velikost databáze odkazuje na maximální velikost datové soubory a nezahrnuje místo využité soubory protokolu. |
+| Maximální počet úložiště na databázi |Maximální velikost nastavený uživatelem databáze ve fondu. Však sdílet databáze ve fondu úložiště přidělené fondu. I v případě celkové maximální úložiště **na databázi* je nastaven jako větší než celkový úložiště k dispozici **místa na fondu*, celkového místa ve skutečnosti používané všechny databáze, nebude možné delší než limit fondu k dispozici. Maximální velikost databáze odkazuje na maximální velikost datové soubory a nezahrnuje místo využité soubory protokolu. |
 |||
  
 ## <a name="elastic-pool-change-storage-size"></a>Elastický fond: Změna velikosti úložiště

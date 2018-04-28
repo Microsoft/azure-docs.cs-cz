@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: bacf59cd7be637110125a51b64c708e755a8958d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3737ea08e593ae1018489633e23e80e1099296ae
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Postup vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure
 
@@ -46,7 +46,7 @@ Můžete také generalize virtuálního počítače s Linuxem pomocí `sudo waag
 
 1. Přihlaste se k virtuálnímu počítači Windows.
 2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a poté spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
 4. V **možnosti vypnutí**, vyberte **vypnutí**.
 5. Klikněte na **OK**.
    
@@ -62,7 +62,7 @@ Můžete také generalize virtuálního počítače s Linuxem pomocí `sudo waag
 1. Otevřete prostředí Azure PowerShell a přihlaste se k účtu Azure.
    
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
    
     Automaticky otevírané okno otevře zadat přihlašovací údaje účtu Azure.

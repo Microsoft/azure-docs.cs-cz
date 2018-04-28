@@ -1,12 +1,12 @@
 ---
-title: "Data zkosení problémy můžete vyřešit pomocí nástroje Azure Data Lake pro Visual Studio | Microsoft Docs"
-description: "Řešení potíží s možná řešení problémů zkosení dat pomocí nástroje Azure Data Lake pro Visual Studio."
+title: Data zkosení problémy můžete vyřešit pomocí nástroje Azure Data Lake pro Visual Studio | Microsoft Docs
+description: Řešení potíží s možná řešení problémů zkosení dat pomocí nástroje Azure Data Lake pro Visual Studio.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/16/2016
 ms.author: yanacai
-ms.openlocfilehash: 9b284ef33be4b935569fc368d81ddf040b2c2b7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1d33b5d2392832899fd30636e9d40231fc74ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Data zkosení problémy můžete vyřešit pomocí nástroje Azure Data Lake pro Visual Studio
 
@@ -49,13 +49,13 @@ Místo použití pouze _stavu_ jako klíč oddílu, můžete použít více než
 
 ### <a name="option-4-use-round-robin-distribution"></a>Možnost 4: Použití distribučních kruhového dotazování
 
-Pokud nemůžete najít příslušný klíč pro oddíl a distribuci, můžete zkusit použít distribuci kruhového dotazování. Kruhové dotazování distribuční zpracovává všechny řádky stejně a náhodně umístí je do odpovídajících intervalů. Získá rovnoměrně data, ale ztratí polohu informace, nevýhodou, který může také snížit výkon úlohy pro některé operace. Kromě toho agregace zkreslilo klíče chcete přesto provést, problém zkosení dat zachová. Další informace o distribuci kruhového dotazování, najdete v části distribuce tabulky U-SQL v [CREATE TABLE (U-SQL): vytvoření tabulky se schématem](https://msdn.microsoft.com/en-us/library/mt706196.aspx#dis_sch).
+Pokud nemůžete najít příslušný klíč pro oddíl a distribuci, můžete zkusit použít distribuci kruhového dotazování. Kruhové dotazování distribuční zpracovává všechny řádky stejně a náhodně umístí je do odpovídajících intervalů. Získá rovnoměrně data, ale ztratí polohu informace, nevýhodou, který může také snížit výkon úlohy pro některé operace. Kromě toho agregace zkreslilo klíče chcete přesto provést, problém zkosení dat zachová. Další informace o distribuci kruhového dotazování, najdete v části distribuce tabulky U-SQL v [CREATE TABLE (U-SQL): vytvoření tabulky se schématem](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch).
 
 ## <a name="solution-2-improve-the-query-plan"></a>Řešení 2: Plán dotazu zlepšit
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>Možnost 1: Použití příkazu CREATE STATISTICS
 
-U-SQL obsahuje příkaz CREATE STATISTICS tabulky. Tento příkaz poskytuje další informace k Optimalizátor dotazů o data charakteristiky, třeba hodnotu rozdělení, které jsou uložené v tabulce. Pro většinu dotazů Optimalizátor dotazů již generuje nezbytné statistiku plán dotazu vysoké kvality. V některých případech budete muset zlepšit výkon dotazu tak, že vytvoříte další statistiky s CREATE STATISTICS nebo změnou návrhu dotazu. Další informace najdete v tématu [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/en-us/library/azure/mt771898.aspx) stránky.
+U-SQL obsahuje příkaz CREATE STATISTICS tabulky. Tento příkaz poskytuje další informace k Optimalizátor dotazů o data charakteristiky, třeba hodnotu rozdělení, které jsou uložené v tabulce. Pro většinu dotazů Optimalizátor dotazů již generuje nezbytné statistiku plán dotazu vysoké kvality. V některých případech budete muset zlepšit výkon dotazu tak, že vytvoříte další statistiky s CREATE STATISTICS nebo změnou návrhu dotazu. Další informace najdete v tématu [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx) stránky.
 
 Příklad kódu:
 

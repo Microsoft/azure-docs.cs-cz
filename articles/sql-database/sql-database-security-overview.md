@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 6a66c9fe3716935a717dca984d1995ca371d9499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: b45e1434d648096a67c2f12046960926d2c7640d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -39,7 +39,7 @@ Existují i jiné možnosti šifrování dat:
 Data zjišťování a klasifikace (momentálně ve verzi preview) poskytuje pokročilé možnosti integrovaný do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivá data v databázích máte. Zjišťování a klasifikace co nejvíce citlivými daty (business, finanční, zdravotní péče, osobní údaje, atd.) můžete přehrát hrají roli v ochrany vzrůstem informace vaší organizace. Může sloužit jako infrastruktury pro:
 
 - Různé scénáře zabezpečení, jako jsou monitorování (auditování) a výstrah na neobvyklé přístup k citlivým datům.
-- Řízení přístupu k a posílení zabezpečení databáze, které obsahují vysoce citlivá data.
+- Řízení přístupu k a posílení zabezpečení, databáze obsahující vysoce citlivá data.
 - Vám pomáhá s splnění standardů data o ochraně osobních údajů a dodržování legislativních požadavků.
 
 Další informace najdete v tématu [Začínáme s SQL DB Data zjišťování a klasifikace](sql-database-data-discovery-and-classification.md). 
@@ -66,7 +66,7 @@ Autorizace určuje, co může uživatel provádět ve službě Azure SQL Databas
 Zabezpečení na úrovni řádku umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například členství ve skupině nebo kontext spuštění). Další informace najdete v tématu [Zabezpečení na úrovni řádku](https://msdn.microsoft.com/library/dn765131).
 
 ### <a name="dynamic-data-masking"></a>Dynamické maskování dat 
-Databáze SQL dynamická data maskování omezuje ohrožení citlivých dat pomocí maskování uživatelům bez oprávnění. Dynamické maskování automaticky dat zjistí potenciálně citlivá data v databázi SQL Azure a poskytuje řešitelné doporučení k maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database dynamická data maskování](sql-database-dynamic-data-masking-get-started.md) lze použít k omezení rizika citlivá data.
+Databáze SQL dynamická data maskování omezuje ohrožení citlivých dat pomocí maskování uživatelům bez oprávnění. Dynamické maskování automaticky dat zjistí potenciálně citlivá data v databázi SQL Azure a poskytuje řešitelné doporučení k maskování těchto polí s minimálním dopadem na aplikační vrstvu. Funguje tak, že maskuje citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění. Další informace najdete v tématu [Začínáme s SQL Database dynamická data maskování](sql-database-dynamic-data-masking-get-started.md).
 
 ## <a name="proactive-monitoring"></a>Proaktivní monitorování
 Služba SQL Database chrání vaše data poskytováním možností auditování a detekce hrozeb. 

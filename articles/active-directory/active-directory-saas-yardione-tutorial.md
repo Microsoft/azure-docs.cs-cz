@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s YardiOne | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a YardiOne."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a YardiOne.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 252763c6112026b7af697783034555e8d96ca6a4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d7df167bd5988c297f4ff338bfecf49bdc941797
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>Kurz: Azure Active Directory integrace s YardiOne
 
@@ -111,37 +111,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `http://<y1-subdomain>.yardione.com/yAuth2/trust`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory YardiOne klienta](https://clientcentral.yardi.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory YardiOne klienta](https://clientcentral.yardi.com) k získání těchto hodnot.
+     
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku. 
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-yardione-tutorial/tutorial_yardione_certificate.png) 
  
-4. Klikněte na tlačítko **Uložit** tlačítko.
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-yardione-tutorial/tutorial_general_400.png)
 
-5. Ke generování **adresu url metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-yardione-tutorial/tutorial_yardione_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-yardione-tutorial/tutorial_yardione_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-yardione-tutorial/tutorial_yardione_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **YardiOne** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-yardione-tutorial/tutorial_yardione_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Konfigurace jednotného přihlašování na **YardiOne** straně, budete muset odeslat vygenerovaného **adresu url metadat** k [tým podpory YardiOne](https://clientcentral.yardi.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Konfigurace jednotného přihlašování na **YardiOne** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory YardiOne](https://clientcentral.yardi.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

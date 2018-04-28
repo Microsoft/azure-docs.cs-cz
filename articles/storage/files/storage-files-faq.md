@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e203787bffa80b324508f7df8f8e7a8c62355695
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Časté otázky k Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (také označovaný jako systém souborů běžné Internet nebo CIFS). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
@@ -103,7 +103,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 * <a id="afs-conflict-resolution"></a>**Pokud stejný soubor se změnil na dvou serverech přibližně ve stejnou dobu, co se stane?**  
     Synchronizace služby Azure soubor používá strategie simple řešení konfliktů: jsme zachovat oba změny u souborů, které se změnilo na dva servery ve stejnou dobu. Nedávno napsané změnu ponechá původní název souboru. Starší soubor má počítač "zdroj" a číslo konflikt připojeným k názvu. Postupuje tuto taxonomii: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\< ext\>  
 
     Například by první konflikt CompanyReport.docx jako CompanyReport CentralServer.docx, pokud CentralServer kde starší zápisu došlo k chybě. Druhý konflikt by se jmenovala CompanyReport. CentralServer 1.docx.
 
@@ -171,9 +171,9 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 * <a id="afs-files-excluded"></a>
 **Které soubory nebo složky se automaticky vyloučí pomocí synchronizace souboru Azure?**  
     Ve výchozím nastavení vyloučí synchronizace souboru Azure následující soubory:
-    * desktop.ini
-    * thumbs.db
-    * ehthumbs.db
+    * Desktop.ini
+    * Thumbs.DB
+    * ehthumbs.DB
     * ~$\*.\*
     * \*.laccdb
     * \*TMP.
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
     Ve výchozím nastavení jsou také vyloučit následující složky:
 
     * \System volume Information
-    * \$RECYCLE.BIN
+    * \$RECYKLUJTE. KOŠ
     * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -257,7 +257,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
     Ano. Soubory Azure můžete uchovávat maximálně 200 sdílené složky snímků. Sdílené složky snímků nepočítá kvóta pro sdílenou složku, takže není žádné omezení za sdílené složky na celkové místo, které používají všechny snímky sdílené složky. Limity účtu úložiště se stále účtují. Po 200 sdílené složky snímků je nutné odstranit starší snímky k vytvoření nové sdílené složky snímků.
 * <a id="snapshot-cost"></a>
 **Kolik sdílet náklady na snímku?**  
-    Standardní transakce a náklady na úložiště standard se uplatní na snímku. Snímky jsou ve své podstatě přírůstkové. Základní snímku je sdílená složka sám sebe. Všechny následné snímky jsou přírůstkové a uloží pouze rozdílový z předchozího snímku. To znamená, že rozdílové změny, které se zobrazí v kusovníku bude minimální, pokud je minimální, vaše klidové vytížení. V tématu [cenová stránky](https://azure.microsoft.com/en-us/pricing/details/storage/files/) pro standardní soubory Azure informace o cenách. V dnešní době způsob, jak můžete prohlížet velikost používané ve sdílené složce snímků je tak, že porovnáte fakturovaná kapacitu s použít kapacity. Pracujeme na nástrojů ke zlepšení generování sestav.
+    Standardní transakce a náklady na úložiště standard se uplatní na snímku. Snímky jsou ve své podstatě přírůstkové. Základní snímku je sdílená složka sám sebe. Všechny následné snímky jsou přírůstkové a uloží pouze rozdílový z předchozího snímku. To znamená, že rozdílové změny, které se zobrazí v kusovníku bude minimální, pokud je minimální, vaše klidové vytížení. V tématu [cenová stránky](https://azure.microsoft.com/pricing/details/storage/files/) pro standardní soubory Azure informace o cenách. V dnešní době způsob, jak můžete prohlížet velikost používané ve sdílené složce snímků je tak, že porovnáte fakturovaná kapacitu s použít kapacity. Pracujeme na nástrojů ke zlepšení generování sestav.
 
 
 ### <a name="create-share-snapshots"></a>Vytvoření sdílené složky snímků

@@ -1,11 +1,11 @@
 ---
-title: "Operační systém a opravy chyb za běhu v Azure App Service | Microsoft Docs"
-description: "Popisuje, jak Azure App Service aktualizace operačního systému a moduly runtime a jak můžete získat aktualizovat oznámení."
+title: Operační systém a opravy chyb za běhu v Azure App Service | Microsoft Docs
+description: Popisuje, jak Azure App Service aktualizace operačního systému a moduly runtime a jak můžete získat aktualizovat oznámení.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 869bd0e3f684ff4a2291e189cf247daedfb74922
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a opravy chyb za běhu v Azure App Service
 
@@ -93,7 +93,7 @@ Následující tabulka ukazuje postup verzí systému Windows a language runtime
 | Verze Pythonu | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br> `python --version` |
 
 > [!NOTE]
-> Přístup k umístění v registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde informace o ["KB" opravy]((https://technet.microsoft.com/security/bulletins.aspx)) je uložen, je uzamčené.
+> Přístup k umístění v registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde informace o ["KB" opravy]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) je uložen, je uzamčené.
 >
 >
 

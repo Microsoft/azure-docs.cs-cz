@@ -171,7 +171,7 @@
 ## [Osvědčené postupy pro App Service](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)
-## [Ceny](https://azure.microsoft.com/en-us/pricing/details/app-service/)
+## [Ceny](https://azure.microsoft.com/pricing/details/app-service/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=mobile-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)

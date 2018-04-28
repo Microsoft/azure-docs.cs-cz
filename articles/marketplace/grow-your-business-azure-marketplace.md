@@ -1,31 +1,31 @@
 ---
-title: "Růst společnosti pomocí Azure Marketplace"
-description: "Podrobný průvodce a publikování kontrolní seznamy pro nové zdroje pro Azure Marketplace"
+title: Růst společnosti pomocí Azure Marketplace
+description: Podrobný průvodce a publikování kontrolní seznamy pro nové zdroje pro Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 85baba61d5603539641f45f7ab1d722ca98514ad
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fd51ad8289ac03bf7b4d2a5bd0222db98bcf6737
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>Růst společnosti pomocí Azure Marketplace
 
 Poté, co jste vytvořených technické prostředky pro vaše výpis Azure Marketplace, můžete zvýšit počet uživatelů, než dorazí do vaší aplikace a růstu využití vašeho produktu podle následující doporučené postupy pro marketing. 
 
 >[!NOTE]
->Další informace o proces publikování a technické požadavky, přečtěte si [Průvodce publikování webu Azure Marketplace a AppSource](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide).
+>Další informace o proces publikování a technické požadavky, přečtěte si [Průvodce publikování webu Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
 ## <a name="how-marketing-helps"></a>Jak pomáhá marketing
 
@@ -203,7 +203,7 @@ Podrobné sestavy zobrazit údaje zákazníka, jako je název společnosti a zem
 - Prodejce
 - Jméno
 - Příjmení
-- E-mail
+- Email
 - Název společnosti
 - Datum transakce
 - Název předplatného

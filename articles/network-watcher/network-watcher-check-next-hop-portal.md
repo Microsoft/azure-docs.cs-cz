@@ -1,11 +1,11 @@
 ---
-title: "Najít další segment s Azure sítě sledovacích procesů další segment - portálu Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak můžete najít, co je typ dalšího směrování a ip adresu pomocí dalšího přechodu pomocí portálu Azure"
+title: Najít další segment s Azure sítě sledovacích procesů další segment - portálu Azure | Microsoft Docs
+description: Tento článek popisuje, jak můžete najít, co je typ dalšího směrování a ip adresu pomocí dalšího přechodu pomocí portálu Azure
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>Zjistěte, co typ dalšího směrování je pomocí funkce další směrování v sledovací proces sítě Azure pomocí portálu
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-check-next-hop-portal.md)
+> - [Azure Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
@@ -76,7 +76,7 @@ Pokud vlastní trasy byla použita pro směrování tento provoz, trasy definova
 
 ![získat další směrování výsledky][2]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak zkontrolovat nastavení skupiny zabezpečení sítě prostřednictvím kódu programu, navštivte stránky [NSG auditování s sledovací proces sítě](network-watcher-nsg-auditing-powershell.md)
 

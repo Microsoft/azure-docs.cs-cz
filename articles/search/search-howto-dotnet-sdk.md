@@ -1,51 +1,54 @@
 ---
-title: "Jak používat Azure Search z aplikace .NET | Microsoft Docs"
-description: "Jak používat Azure Search z aplikace .NET"
-services: search
-documentationcenter: 
+title: Jak používat Azure Search z aplikace .NET | Microsoft Docs
+description: Jak používat Azure Search z aplikace .NET
 author: brjohnstmsft
 manager: jlembicz
-editor: 
-ms.assetid: 93653341-c05f-4cfd-be45-bb877f964fcb
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 05/22/2017
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 7273ae6a698f2af52e78ea2aae9ca5cd80f6a2b1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak používat Azure Search z aplikace .NET
 Tento článek je návod, které vám pomůžou s spuštěná [Azure Search .NET SDK](https://aka.ms/search-sdk). Můžete implementovat bohaté vyhledáváním do vaší aplikace pomocí Azure Search .NET SDK.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Novinky ve službě Azure vyhledávání SDK
-Sada SDK se skládá z Klientská knihovna `Microsoft.Azure.Search`. Umožňuje spravovat indexy, indexery a zdroje dat a také nahrát a správě dokumentů a spouštět dotazy, aniž by museli řešit podrobnosti protokolu HTTP a JSON.
+Sada SDK se skládá z několika klientské knihovny, které vám umožní spravovat vaše indexy, zdrojů dat, indexery a synonymum mapuje, a také nahrávání a správě dokumentů a spouštět dotazy, aniž by museli řešit podrobnosti protokolu HTTP a JSON. Tyto knihovny klienta se distribuují jako balíčky NuGet.
 
-Definuje klientské knihovny tříd jako `Index`, `Field`, a `Document`, stejně jako operací, jako `Indexes.Create` a `Documents.Search` na `SearchServiceClient` a `SearchIndexClient` třídy. Tyto třídy jsou uspořádány do následujících oborů názvů:
+Hlavní balíček NuGet je `Microsoft.Azure.Search`, což je meta balíček, který obsahuje všechny ostatní balíčky jako závislosti. Tento balíček použijte, pokud budete právě začínat nebo pokud víte, že aplikace bude vyžadovat všechny funkce Azure Search.
+
+Další balíčky NuGet v sadě SDK jsou:
+ 
+  - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikaci .NET používání služby Azure Search a potřebujete jenom dotaz nebo aktualizovat dokumenty ve vašem indexy. Pokud také potřebujete vytvořit nebo aktualizovat indexy, synonymum mapy nebo jiným prostředkům úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
+  - `Microsoft.Azure.Search.Service`: Tento balíček používejte, pokud vyvíjíte automatizace v rozhraní .NET pro správu indexů Azure Search, synonymum mapy, indexery, zdroje dat nebo jiným prostředkům na úrovni služby. Pokud potřebujete jenom dotazu nebo aktualizace dokumentů ve vašem indexy, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
+  - `Microsoft.Azure.Search.Common`: Vyžaduje na knihovny .NET vyhledávání Azure běžné typy. Neměli byste potřebovat pro tento balíček použít přímo v aplikaci; Smyslem je pouze má být použit jako závislost.
+
+Různé klientské knihovny definování tříd jako `Index`, `Field`, a `Document`, stejně jako operací, jako `Indexes.Create` a `Documents.Search` na `SearchServiceClient` a `SearchIndexClient` třídy. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Aktuální verze rozhraní .NET SDK služby Azure Search je nyní všeobecně dostupná. Pokud chcete poskytnout zpětnou vazbu, abychom mohli začlenit v příští verzi, navštivte prosím naše [zpětné vazby stránky](https://feedback.azure.com/forums/263029-azure-search/).
 
-.NET SDK podporuje verzi `2016-09-01` z [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tato verze teď zahrnuje podporu pro vlastní analyzátorů a objektů Blob v Azure a Azure Table podpora indexeru. Zobrazit náhled funkce, které jsou *není* jsou součástí této verze, jako je podpora pro indexování soubory JSON a sdíleného svazku clusteru v [preview](search-api-2016-09-01-preview.md) a dostupný prostřednictvím [4.0.1-preview verzi .NET SDK](https://aka.ms/search-sdk-preview).
+.NET SDK podporuje verzi `2017-11-11` z [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Tato verze teď zahrnuje podporu pro synonyma, jakož i přírůstkové vylepšení indexery. Zobrazit náhled funkce, které jsou *není* součástí této verze, jako je podpora pro indexování pole JSON a soubory sdíleného svazku clusteru, jsou v [preview](search-api-2016-09-01-preview.md) a dostupný prostřednictvím [verze 4.0 preview .NET SDK](https://aka.ms/search-sdk-preview).
 
 Tato sada SDK nepodporuje [operace správy](https://docs.microsoft.com/rest/api/searchmanagement/) jako je například vytváření a škálování služby vyhledávání a správa klíče rozhraní API. Pokud potřebujete ke správě prostředků vyhledávání z aplikace .NET, můžete použít [SDK služby Azure Search .NET správu](https://aka.ms/search-mgmt-sdk).
 
 ## <a name="upgrading-to-the-latest-version-of-the-sdk"></a>Upgrade na nejnovější verzi sady SDK
-Pokud už používáte starší verzi .NET SDK služby Azure Search a chcete upgradovat na novou verzi všeobecně dostupná, [v tomto článku](search-dotnet-sdk-migration.md) vysvětluje, jak.
+Pokud už používáte starší verzi .NET SDK služby Azure Search a chcete upgradovat na novou verzi všeobecně dostupná, [v tomto článku](search-dotnet-sdk-migration-version-5.md) vysvětluje, jak.
 
 ## <a name="requirements-for-the-sdk"></a>Požadavky pro sadu SDK
-1. Visual Studio 2017.
+1. Sada Visual Studio 2017.
 2. Vlastní službu Azure Search. Chcete-li použít sadu SDK, budete potřebovat název služby a jeden či více klíčů rozhraní API. [Vytvoření služby v portálu](search-create-service-portal.md) vám pomohou dokončit tyto kroky.
-3. Stáhněte si sadu Azure Search .NET SDK [balíček NuGet](http://www.nuget.org/packages/Microsoft.Azure.Search) pomocí "Správa balíčků NuGet" v sadě Visual Studio. Právě vyhledejte název balíčku `Microsoft.Azure.Search` na NuGet.org.
+3. Stáhněte si sadu Azure Search .NET SDK [balíček NuGet](http://www.nuget.org/packages/Microsoft.Azure.Search) pomocí "Správa balíčků NuGet" v sadě Visual Studio. Právě vyhledejte název balíčku `Microsoft.Azure.Search` v NuGet.org (nebo jeden z dalších balíčku názvy výše, pokud potřebujete jenom podmnožinu funkcí).
 
-.NET SDK služby Azure Search podporuje aplikace cílené na rozhraní .NET Framework 4.6 a .NET Core.
+.NET SDK služby Azure Search podporuje aplikace cílený na rozhraní .NET Framework 4.5.2 a vyšší, a také .NET Core.
 
 ## <a name="core-scenarios"></a>Základní scénáře
 Existuje několik věcí, které musíte udělat v aplikaci vyhledávání. V tomto kurzu nabídneme tyto základní scénáře:
@@ -582,7 +585,7 @@ A tady jsou výsledky, které zahrnují všechna pole, protože jsme nezadali `S
 
 Dokončení tohoto kroku kurzu, ale není tady zastavit. **Další kroky** poskytuje další zdroje dalších informací o službě Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Projděte si referenční materiály pro [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [REST API](https://docs.microsoft.com/rest/api/searchservice/).
 * Prohloubit vašich znalostí prostřednictvím [videa a jiné ukázky a výukové programy](search-video-demo-tutorial-list.md).
 * Zkontrolujte [konvence vytváření názvů](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) další pravidla pro pojmenovávání různé objekty.

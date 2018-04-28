@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: daa5043a948e660b6c3e685e933855afff8f7671
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 228d2852d9554d378dc663e74460da7ab80d4b24
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem pomocí Azure PowerShellu
 
@@ -40,10 +40,10 @@ Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. 
 
 ## <a name="configure-powershell"></a>Konfigurace prostředí PowerShell
 
-1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Add-AzureRmAccount**.
+1. Otevřete PowerShell a navažte přístup ke svému účtu spuštěním příkazu **Connect-AzureRmAccount**.
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. Měla by se objevit obrazovka pro zadání přihlašovacích údajů. Použijte stejný e-mail a heslo, pomocí kterých se přihlašujete na webu Azure Portal.

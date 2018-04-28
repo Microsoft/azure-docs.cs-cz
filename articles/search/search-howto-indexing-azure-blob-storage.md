@@ -1,24 +1,19 @@
 ---
 title: Indexování úložiště objektů Blob v Azure s Azure Search
 description: Naučte se indexovat Azure Blob Storage a rozbalte text z dokumentů s Azure Search
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 03/22/2018
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 976b1c6b65036faeff3c4cc21e91ccf798eb0df3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů v úložišti objektů Blob v Azure s Azure Search
 Tento článek ukazuje, jak používat Azure Search k indexování dokumentů (například soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené v úložišti objektů Blob Azure. Nejprve vysvětluje základní informace o nastavení a konfiguraci indexer objektů blob. Poté nabízí podrobnější zkoumání chování, a scénáře, můžete se setkat.
@@ -54,7 +49,7 @@ Pro objekt blob indexování, zdroj dat musí mít následující požadované v
 
 Vytvoření zdroje dat:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -86,7 +81,7 @@ Index určuje pole v dokumentu, atributy, a jiných objektů, které utvářejí
 
 Zde je postup vytvoření indexu s vyhledávat `content` pole pro uložení textu extrahoval z objektů blob:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -105,7 +100,7 @@ Indexer zdroje dat se připojí pomocí cílový index vyhledávání a poskytuj
 
 Jakmile byly vytvořeny index a zdroj dat, jste připraveni vytvořit indexeru:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -176,7 +171,7 @@ V tomto příkladu vytvoříme `metadata_storage_name` pole jako klíč dokument
 
 Aby to všechny společně, zde je, jak můžete přidat mapování polí a povolit kódování base-64 klíčů pro existujícího indexeru:
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -202,7 +197,7 @@ Můžete řídit, které objekty BLOB jsou indexované a který se přeskočí.
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Index pouze objekty BLOB s konkrétní přípony souborů
 Může indexovat pouze objekty BLOB s příponami názvů souborů, zadejte pomocí `indexedFileNameExtensions` indexer konfigurační parametr. Hodnota je řetězec obsahující oddělený čárkami seznam přípon souborů (s úvodní tečky). Například do indexu pouze. PDF a. Objekty BLOB DOCX, postupujte takto:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -214,7 +209,7 @@ Může indexovat pouze objekty BLOB s příponami názvů souborů, zadejte pomo
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Vyloučení objektů BLOB s konkrétní přípony souborů
 Objekty BLOB s konkrétní přípony názvů souborů můžete vyloučit z indexování pomocí `excludedFileNameExtensions` konfigurační parametr. Hodnota je řetězec obsahující oddělený čárkami seznam přípon souborů (s úvodní tečky). Například do indexu všech objektů BLOB s výjimkou těch, které se. PNG a. Rozšíření JPEG, postupujte takto:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -236,7 +231,7 @@ Můžete řídit, které části objekty BLOB jsou indexované pomocí `dataToEx
 
 Například indexovat pouze metadata úložiště, použijte:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -259,7 +254,7 @@ Výše uvedených parametrů konfigurace platí pro všechny objekty BLOB. V ně
 
 Ve výchozím nastavení zastaví indexeru objektů blob při výskytu objekt blob se nepodporovaný typ obsahu (například obrázek). Samozřejmě můžete použít `excludedFileNameExtensions` parametr tak, aby přeskočil určité typy obsahu. Může ale muset objekty BLOB index bez znalosti všechny možné typy obsahu předem. Chcete-li pokračovat, indexování při zjistil se nepodporovaný typ obsahu, nastavte `failOnUnsupportedContentType` konfigurace parametru `false`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -297,7 +292,7 @@ Pro podporu odstraňování dokumentů, použijte s "obnovitelného odstranění
 
 Například následující zásady zvažuje objekt blob odstranit, pokud má vlastnost metadat `IsDeleted` s hodnotou `true`:
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -344,7 +339,7 @@ Tato možnost fungovala všechny indexery a další součásti muset odsouhlasen
 
 Pokud všechny objekty BLOB obsahují stejné kódování prostý text, může výrazně zlepšit výkon indexování pomocí **text analýza režimu**. Chcete-li použít text analýza režimu, nastavte `parsingMode` vlastnosti konfigurace `text`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

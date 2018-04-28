@@ -1,12 +1,11 @@
 ---
-title: "Globální distribuční kurz pro Azure Cosmos DB pro tabulku API | Microsoft Docs"
-description: "Zjistěte, jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API tabulky."
+title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní Table API | Microsoft Docs
+description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní Table API.
 services: cosmos-db
-keywords: "globální distribuční tabulky"
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+keywords: global distribution, Table
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,46 +13,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/13/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 40c0bfe913e1396194de00cf6fa1d1ff823b1d0e
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
-ms.translationtype: MT
+ms.openlocfilehash: f877baa33d94dad07250da9a10209555dbca65c9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Jak nastavit globální distribuční databázi Cosmos Azure pomocí rozhraní API pro tabulky
+# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 
-Tento článek obsahuje následující úlohy: 
+Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurovat globální distribuční [tabulky rozhraní API](table-introduction.md)
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní [Table API](table-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Připojování k upřednostňovaná oblast pomocí rozhraní API pro tabulky
+## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Připojení k preferované oblasti pomocí rozhraní Table API
 
-Aby bylo možné využít výhod [globální distribuční](distribute-data-globally.md), klientské aplikace můžete zadat seznam seřazený předvoleb oblastí se používá k provádění operací dokumentu. To můžete provést nastavením [TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations) vlastnost. Sadu SDK Azure Cosmos DB tabulky API vybere nejlepší koncového bodu pro komunikaci se na základě konfigurace účtu, aktuální místní dostupnosti a seznamu zadaný předvoleb.
+Aby mohly využívat [globální distribuci](distribute-data-globally.md), můžou mít klientské aplikace určený seřazený seznam preferovaných oblastí, které se mají použít k provádění operací s dokumenty. Můžete to provést nastavením vlastnosti [TableConnectionPolicy.PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.table.tableconnectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_CosmosDB_Table_TableConnectionPolicy_PreferredLocations). Sada SDK rozhraní Table API služby Azure Cosmos DB vybere nejlepší koncový bod pro komunikaci na základě konfigurace účtu, aktuální dostupnosti oblastí a zadaného seznamu preferencí.
 
-PreferredLocations by měla obsahovat čárkami oddělený seznam upřednostňovaných (více funkci) umístění pro čtení. Každá instance klienta můžete určit podmnožinu těchto oblastí v upřednostňovaném pořadí pro čtení s nízkou latencí. Oblasti musí mít název pomocí jejich [zobrazované názvy](https://msdn.microsoft.com/library/azure/gg441293.aspx), například `West US`.
+Seznam PreferredLocations by měl obsahovat čárkami oddělený seznam upřednostňovaných (vícenásobné navádění) umístění pro čtení. Každá instance klienta může určit podmnožinu těchto oblastí v upřednostňovaném pořadí pro zajištění nízké latence čtení. Oblasti musí být pojmenované pomocí jejich [zobrazovaného názvu](https://msdn.microsoft.com/library/azure/gg441293.aspx), například `West US`.
 
-Všechny operace čtení jsou odesílány první dostupné oblasti v seznamu PreferredLocations. Pokud se požadavek nezdaří, klient se nezdaří dolů v seznamu další oblasti a tak dále.
+Všechny operace čtení se odesílají do první dostupné oblasti v seznamu PreferredLocations. Pokud požadavek selže, klient přejde k další oblasti v seznamu atd.
 
-Sada SDK se pokusí přečíst z regionů zadaný v PreferredLocations. Ano například pokud databázový účet je k dispozici v tři oblasti, ale klient pouze určuje pro PreferredLocations dvou oblastí bez zápisu, pak žádný čtení se zpracuje mimo oblast zápisu, i v případě převzetí služeb při selhání.
+Sada SDK se pokouší číst z oblastí uvedených v seznamu PreferredLocations. Takže pokud je například účet databáze dostupný ve třech oblastech, ale v seznamu PreferredLocations klienta jsou uvedené pouze dvě oblasti jen pro čtení, z oblasti pro zápis se číst nebude, a to ani v případě převzetí služeb při selhání.
 
-Sada SDK automaticky odesílá všech zápisů do aktuální oblasti zápisu.
+Sada SDK automaticky odesílá všechny operace zápisu do aktuální oblasti pro zápis.
 
-Pokud není nastavena vlastnost PreferredLocations, bude z oblasti aktuální zápisu zpracovat všechny požadavky.
+Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budou obsluhovat z aktuální oblasti pro zápis.
 
-Je to, že dokončení tohoto kurzu. Můžete naučit ke správě konzistence účtu globálně replikované načtením [úrovně konzistence v Azure Cosmos DB](consistency-levels.md). A další informace o tom, jak globální replikace databáze v Azure Cosmos DB funguje, najdete v části [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující:
+V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Nakonfigurujte globální distribuci pomocí portálu Azure
-> * Nakonfigurujte globální distribuci pomocí rozhraní API služby Azure Cosmos DB tabulky
+> * Konfigurace globální distribuce pomocí webu Azure Portal
+> * Konfigurace globální distribuce pomocí rozhraní Table API služby Azure Cosmos DB
 

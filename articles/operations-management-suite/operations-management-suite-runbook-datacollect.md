@@ -1,11 +1,11 @@
 ---
-title: "Shromažďování dat analýzy protokolů se sadou runbook ve službě Azure Automation | Microsoft Docs"
-description: "Podrobný kurz, který provede procesem vytvoření sady runbook ve službě Azure Automation ke shromažďování dat do úložiště OMS pro analýzu podle analýzy protokolů."
+title: Shromažďování dat analýzy protokolů se sadou runbook ve službě Azure Automation | Microsoft Docs
+description: Podrobný kurz, který provede procesem vytvoření sady runbook ve službě Azure Automation ke shromažďování dat do úložiště OMS pro analýzu podle analýzy protokolů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromáždit data Log Analytics s runbook služby automatizace Azure
 Můžete shromáždit významné množství dat v analýzy protokolů z různých zdrojů včetně [zdroje dat](../log-analytics/log-analytics-data-sources.md) na agentech a také [data shromážděná z Azure](../log-analytics/log-analytics-azure-storage.md).  Když potřebujete-li shromažďovat data, není přístupná prostřednictvím těchto zdrojů je standardní existují scénáře.  V těchto případech můžete použít [rozhraní API sady kolekcí dat protokolu HTTP](../log-analytics/log-analytics-data-collector-api.md) při zápisu dat k analýze protokolů z libovolného klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -65,14 +65,14 @@ Galerie prostředí PowerShell ale nabízí rychlou možnost k nasazení modul p
 
 | Vlastnost | Hodnota ID pracovního prostoru | Hodnota klíče pracovního prostoru |
 |:--|:--|:--|
-| Name (Název) | ID pracovního prostoru | WorkspaceKey |
+| Název | ID pracovního prostoru | WorkspaceKey |
 | Typ | Řetězec | Řetězec |
 | Hodnota | Vložte ID pracovního prostoru pracovní prostor analýzy protokolů. | Vkládání pomocí primární nebo sekundární klíč pracovního prostoru analýzy protokolů. |
 | Šifrované | Ne | Ano |
 
 
 
-## <a name="3-create-runbook"></a>3. Vytvoření sady runbook
+## <a name="3-create-runbook"></a>3. Vytvoření runbooku
 
 Automatizace Azure má editoru na portálu, kde můžete upravit a otestujte svůj runbook.  Máte možnost použít editor skriptů pro práci s [prostředí PowerShell přímo](../automation/automation-edit-textual-runbook.md) nebo [vytvořit grafický runbook](../automation/automation-graphical-authoring-intro.md).  V tomto kurzu bude fungovat se skript prostředí PowerShell. 
 
@@ -97,7 +97,7 @@ Automatizace Azure má editoru na portálu, kde můžete upravit a otestujte sv�
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -184,9 +184,9 @@ Nejběžnější způsob spuštění sady runbook, která shromažďuje data mon
 
 | Vlastnost | Hodnota |
 |:--|:--|
-| Name (Název) | AutomationJobs-každou hodinu |
-| Spustí | Vyberte, kdykoli se alespoň 5 minut po aktuálním čase. |
-| Opakování | Opakování |
+| Název | AutomationJobs-každou hodinu |
+| Spuštění | Vyberte, kdykoli se alespoň 5 minut po aktuálním čase. |
+| Opakování | Opakující se |
 | Opakovat každých | 1 hodina |
 | Sada vypršení platnosti | Ne |
 
@@ -205,12 +205,12 @@ Při spuštění sady runbook [se vytvoří úloha](../automation/automation-run
 2. Měli byste vidět v seznamu úloh pro pokaždé, když sada runbook byla spuštěna.
 3. Klikněte na jednu z úlohy zobrazíte její podrobnosti.
 4. Klikněte na **všechny protokoly** k zobrazení protokolů a výstup z runbooku.
-5. Posuňte se dolů, chcete-li položku Najít podobná následující obrázek.<br>![Verbose](media/operations-management-suite-runbook-datacollect/verbose.png)
+5. Posuňte se dolů, chcete-li položku Najít podobná následující obrázek.<br>![Podrobné](media/operations-management-suite-runbook-datacollect/verbose.png)
 6. Kliknutím na tuto položku, chcete-li zobrazit podrobné json data, která byla odeslána k analýze protokolů.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Použití [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) vytvoření zobrazení zobrazení data, která jste shromážděných do úložiště analýzy protokolů.
 - Balíček svoji sadu runbook v [řešení pro správu](operations-management-suite-solutions-creating.md) distribuovat zákazníkům.
 - Další informace o [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/).

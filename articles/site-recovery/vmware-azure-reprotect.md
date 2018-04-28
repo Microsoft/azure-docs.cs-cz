@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aec87625cd00b11b41c248eecf7af650ae57036f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Znovu nastavte ochranu počítačů z Azure do místního serveru
 
@@ -39,6 +39,8 @@ Pokud jste použili šablonu pro vytvoření virtuálního počítače, ujistět
 - Ujistěte se, že otevřít následující porty pro převzetí služeb při selhání a navrácení služeb po obnovení.
 
     ![Porty pro převzetí služeb při selhání a navrácení služeb po obnovení](./media/vmware-azure-reprotect/failover-failback.png)
+
+- Můžete si přečíst všechny požadavky na porty a adresy URL povolených [sem](vmware-azure-deploy-configuration-server.md#prerequisites)
 
 ## <a name="deploy-a-process-server-in-azure"></a>Nasadit procesový server v Azure
 

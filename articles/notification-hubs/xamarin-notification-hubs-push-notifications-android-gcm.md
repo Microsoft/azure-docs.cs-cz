@@ -1,9 +1,9 @@
 ---
-title: "Začínáme s centrem oznámení pro aplikace Xamarin Android | Dokumentace Microsoftu"
-description: "V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Xamarin Android."
+title: Začínáme s centrem oznámení pro aplikace Xamarin Android | Dokumentace Microsoftu
+description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Xamarin Android.
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 1cb6fbc82c493e17815dc60ddcff183a47513bc6
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 7fee7813bbdcf902d5f5ae2d0af7540c8899ad25
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-notification-hubs-for-xamarinandroid-apps"></a>Začínáme se službou Notification Hubs pro aplikace Xamarin.Android
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -95,6 +95,20 @@ Nejprve vytvoříte nový projekt.
 3. Vyhledejte balíček **Xamarin.Firebase.Messaging** a přidejte ho do projektu.
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>Nastavte centra oznámení v projektu
+
+#### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
+
+Otevřete soubor **AndroidManifest.xml** a vložte následující elementy `<receiver>` do elementu `<application>`:
+
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+          <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="${applicationId}" />
+          </intent-filter>
+        </receiver>
+
 1. Shromážděte následující informace pro aplikaci Android a centrum oznámení:
    
    * **Připojovací řetězec naslouchání:** Na řídicím panelu na webu [Azure Portal] zvolte **Zobrazit připojovací řetězce**. Zkopírujte připojovací řetězec *DefaultListenSharedAccessSignature* pro tuto hodnotu.

@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/02/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5b881c17b6ad1c9a7e46492f8549f563cfd6d796
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Použití profilů verze rozhraní API s přejděte v Azure zásobníku
 
@@ -82,7 +80,7 @@ Spustit ukázku kódu přejděte v zásobníku Azure:
   ```
 
   3. Pokud není k dispozici, vytvořit odběr a uložte ID předplatného pro pozdější použití. Informace o vytvoření odběru naleznete v tématu [vytvoření odběrů nabídky v Azure zásobníku](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm). 
-  4. Vytvoření instančního objektu s obor "Předplatného" a **vlastníka** role. Uložte ID a tajný klíč objektu služby. Informace o vytvoření objektu služby pro Azure zásobníku najdete v tématu [vytvoření instančního objektu](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Nastavení prostředí Azure zásobníku.
+  4. Vytvoření instančního objektu s obor "Předplatného" a **vlastníka** role. Uložte objekty služby ID a tajný klíč. Informace o vytvoření objektu služby pro Azure zásobníku najdete v tématu [vytvoření instančního objektu](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad). Nastavení prostředí Azure zásobníku.
   5. Importujte modulu služby z profilu přejděte SDK do vašeho kódu. Aktuální verze profilu zásobník Azure je **2017-03-09**. Například k importu modulu sítě z **2017-03-09** profilu typu: 
 
   ````go
@@ -129,7 +127,7 @@ Prvku Authorizer musí být nastavena jako prvek authorizer pro klienta prostře
 
 Tato část představuje běžné způsob, jak získat tokeny prvku authorizer v zásobníku Azure pomocí pověření klienta:
 
-  1. Pokud objekt služby s roli vlastníka na odběru je k dispozici, tento krok přeskočte. V opačném případě vytvoření instančního objektu [pokyny]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals) a přiřaďte ho roli "vlastník" obor k vašemu předplatnému [pokyny]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Uložte ID hlavní aplikace služby a tajný klíč. 
+  1. Pokud objekt služby s roli vlastníka na odběru je k dispozici, tento krok přeskočte. V opačném případě vytvoření instančního objektu [pokyny]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) a přiřaďte ho roli "vlastník" obor k vašemu předplatnému [pokyny]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal). Uložte ID hlavní aplikace služby a tajný klíč. 
 
   2. Import **adal** balíček z AutoRest přejděte ve vašem kódu. 
   

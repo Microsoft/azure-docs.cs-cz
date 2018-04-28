@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 121bd8a21e74a836fcca74af97fc20cae297d9a2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 13b1c5b9ae05a6c2d11420812efc1af17912aa28
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odeslání zprávy na MQTT server
 
@@ -46,20 +46,13 @@ Dokončit [Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot
 2. Spustí kód VS.
 
 3. Připojení DevKit k vašemu počítači.
-    VS Code automaticky zjišťuje vaší DevKit a otevře na následujících stránkách:
-    * Úvodní stránka DevKit.
-    * Příklady Arduino: Praktických vzorků, které vám pomůžou začít s vaší DevKit.
-
-    ![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/vscode-start.png)
 
 ## <a name="open-the-mqttclient-sample"></a>Otevřete ukázku MQTTClient
 
 Rozbalte levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > MQTT**a vyberte **MQTTClient**. Otevře se nové okno VS Code s složce projektu v ní.
 
-![Příklady složky](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/examples.png)
-
 > [!NOTE]
-> Pokud jste dojít zavřete podokno, můžete ho znovu otevřít. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
+> Příklad můžete také otevřít z palety příkaz. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Vytvoření a odeslání nákresu Arduino do DevKit
 
@@ -88,7 +81,7 @@ Sériové monitorování zobrazí všechny zprávy odeslané podle nákresu uká
 
 Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následující kanály:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
@@ -101,4 +94,4 @@ Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https:
 Teď, když jste se naučili konfigurace vaší Iot DevKit MXChip jako klient MQTT a používat k odesílání zpráv do broker MQTT MQTT klientské knihovny, tady jsou navrhované další kroky:
 
 * [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

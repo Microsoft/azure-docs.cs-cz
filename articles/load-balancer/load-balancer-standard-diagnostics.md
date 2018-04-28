@@ -1,6 +1,6 @@
 ---
-title: Pro vyrovnávání zatížení Azure standardní - diagnostiky | Microsoft Docs
-description: Pomocí dostupné informace o stavu a metrik pro diagnostiku pro standardní Vyrovnávání zatížení Azure
+title: Azure diagnostics nástroj pro vyrovnávání zatížení | Microsoft Docs
+description: Použijte k dispozici informace o stavu a metrik pro diagnostiku pro standardní Vyrovnávání zatížení Azure.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,202 +15,208 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: Kumud
-ms.openlocfilehash: 7d60925381abe617f6e2fac51176b8e30517c3ba
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9d5d596254f673b86650e8d9754dacdb70be0666
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Diagnostika stavu a metrik pro nástroj pro vyrovnávání zatížení
 
-Azure standardní nástroj pro vyrovnávání zatížení poskytuje následující možnosti diagnostiky pro vaše prostředky:
-* Multidimenzionální metrika: Nástroj pro vyrovnávání zatížení poskytuje nové vícerozměrných diagnostické funkce pro veřejné a vnitřní konfigurace pro vyrovnávání zatížení. To vám umožňuje monitorovat, spravovat a řešení potíží s prostředky pro vyrovnávání zatížení.
+Azure standardní nástroj pro vyrovnávání zatížení poskytuje následující možnosti diagnostiky vaše prostředky:
+* **Multidimenzionální metriky**: poskytuje nové vícerozměrných diagnostické funkce pro veřejné a interní zatížení konfigurací služby Vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
 
-* Stav prostředku: Na stránce nástroje pro vyrovnávání zatížení na portálu Azure a stav prostředků stránky (v části monitorování) vystavit stav prostředku pro konfiguraci veřejné nástroje pro vyrovnávání zatížení standardní služby Vyrovnávání zatížení.
+* **Stav prostředku**: Vyrovnávání zatížení stránky na portálu Azure a stav prostředků stránky (v části monitorování) vystavit části stav prostředku pro konfiguraci služby Vyrovnávání zatížení veřejnou standardní Vyrovnávání zatížení.
 
-Tento článek poskytuje stručný přehled tyto možnosti a způsoby, jak je použít pro nástroj pro vyrovnávání zatížení.
+Tento článek poskytuje stručný přehled těchto funkcí a nabízí způsoby, jak je používat pro nástroj pro vyrovnávání zatížení.
 
 ## <a name = "MultiDimensionalMetrics"></a>Multidimenzionální metriky
 
-Azure nástroj pro vyrovnávání zatížení poskytuje nové vícerozměrných metriky prostřednictvím nové metriky Azure (preview) na portálu a pomáhá vám v reálném čase diagnostiky přehledy o vašich prostředků pro vyrovnávání zatížení. 
+Azure Vyrovnávání zatížení poskytuje nové vícerozměrných metriky prostřednictvím nové metriky Azure (preview) na portálu Azure, a pomáhá vám v reálném čase diagnostiky přehledy zatížení vyrovnávání prostředků. 
 
-Následující metriky jsou dnes k dispozici pro různé konfigurace standardní nástroje pro vyrovnávání zatížení (LB):
+Různých konfiguracích nástroj pro vyrovnávání zatížení zadejte následující metriky:
 
 | Metrika | Typ prostředku | Popis | Doporučené agregace |
 | --- | --- | --- | --- |
-| Dostupnost VIP (cesta dostupnost dat) | Veřejné LB | Nástroj pro vyrovnávání zatížení nepřetržitě vykonává cesty data z v rámci oblasti na front-endu nástroj pro vyrovnávání zatížení až SDN zásobníku, který podporuje virtuální počítač. Také v pořádku instancí zůstanou, následuje měření stejnou cestu jako Vyrovnávání zatížení sítě provoz vaší aplikace. Také ověřuje cestu datům, která je používána zákazníky. Měření neviditelná do vaší aplikace a nebudou v konfliktu s dalšími operacemi.| Průměr |
-| Dostupnost vyhrazené IP adresy (stav testu) |  Veřejné a interní LB | Nástroj pro vyrovnávání zatížení používá distribuované stavu zjišťování služby, která monitoruje stav váš koncový bod aplikace podle nastavení konfigurace. Tato metrika poskytuje agregaci nebo na koncový bod filtrované zobrazení každé jednotlivé instance koncového bodu nástroji pro vyrovnávání zatížení fondu.  Uvidíte, jak nástroj pro vyrovnávání zatížení zobrazení stavu aplikace podle vašeho Konfigurace testu stavu. |  Průměr |
-| SYN paketů |  Veřejné LB | Nástroj pro vyrovnávání zatížení nepodporuje ukončit připojení TCP nebo interakci s TCP nebo UDP paketů toky. Toky a jejich metodou handshake jsou vždy mezi zdrojovým a instance virtuálního počítače. Chcete-li lépe vyřešit vaše scénáře protokolu TCP, je nutné používat SYN čítače pakety zjistit, kolik připojení TCP se pokusy. Metrika hlásí počet paketů TCP SYN, které byly přijaty.| Průměr |
-| Překládat pomocí SNAT připojení |  Veřejné LB |Nástroj pro vyrovnávání zatížení hlásí počet odchozí toky, které jsou masqueraded do front-endu veřejnou IP adresu. Překládat pomocí SNAT porty jsou vyčerpatelným prostředků. Tato metrika mohou poskytnout údaj o tom, jak výraznou je vaše aplikace spoléhat na překládat pomocí SNAT pro odchozí toky původu.  Čítače pro úspěšné i neúspěšné odchozí toky překládat pomocí SNAT hlášení a slouží k řešení potíží a pochopení stavu odchozích toků.| Průměr |
-| Čítače bajtů |  Veřejné a interní LB | Nástroj pro vyrovnávání zatížení sestavy dat zpracovaných za front-endu.| Průměr |
-| Čítače paketů |  Veřejné a interní LB | Nástroj pro vyrovnávání zatížení hlásí paketů zpracovaných za front-endu.| Průměr |
+| Dostupnost VIP (cesta dostupnost dat) | Nástroj pro vyrovnávání zatížení veřejnou | Standardní Vyrovnávání zatížení nepřetržitě vykonává cesty data z v rámci oblasti na zatížení vyrovnávání front-endu, abyste SDN zásobníku, který podporuje virtuální počítač. Také v pořádku instancí zůstanou, následuje měření stejnou cestu jako Vyrovnávání zatížení sítě provoz vaší aplikace. Cesta data, která vašim zákazníkům použít také byl ověřen. Měření neviditelná do vaší aplikace a nebudou v konfliktu s dalšími operacemi.| Průměr |
+| Dostupnost vyhrazené IP adresy (stav testu) |  Nástroj pro vyrovnávání zatížení veřejné a interní | Nástroj pro vyrovnávání zatížení používá Distribuovaná služba zjišťování stavu, která monitoruje stav váš koncový bod aplikace podle nastavení konfigurace. Tato metrika poskytuje agregaci ani na koncový bod filtrované zobrazení každý koncový bod instance ve fondu nástroje pro vyrovnávání zatížení. Jak nástroj pro vyrovnávání zatížení zobrazení stavu aplikace, můžete zobrazit podle vaší konfigurace testu stavu. |  Průměr |
+| SYN (synchronizovat) paketů |  Nástroj pro vyrovnávání zatížení veřejnou | Nástroj pro vyrovnávání zatížení nepodporuje ukončit připojení protokolu TCP (Transmission Control) nebo interakci s TCP nebo UDP paketů toky. Toky a jejich metodou handshake jsou vždy mezi zdrojovým a instance virtuálního počítače. Chcete-li lépe vyřešit vaše scénáře protokolu TCP, je nutné používat SYN čítače pakety zjistit, kolik připojení TCP se pokusy. Metrika hlásí počet paketů TCP SYN, které byly přijaty.| Průměr |
+| Překládat pomocí SNAT připojení |  Nástroj pro vyrovnávání zatížení veřejnou |Nástroj pro vyrovnávání zatížení hlásí počet odchozí toky, které jsou masqueraded na veřejné IP adresy front-endu. Zdroj síťové adresy překlad (překládat pomocí SNAT) porty jsou vyčerpatelným prostředků. Tato metrika mohou poskytnout údaj o tom, jak výraznou je vaše aplikace spoléhat na překládat pomocí SNAT pro odchozí toky původu. Čítače pro úspěšné i neúspěšné odchozí toky překládat pomocí SNAT hlášení a slouží k řešení potíží a pochopení stavu odchozích toků.| Průměr |
+| Čítače bajtů |  Nástroj pro vyrovnávání zatížení veřejné a interní | Nástroj pro vyrovnávání zatížení sestavy dat zpracovaných za front-endu.| Průměr |
+| Čítače paketů |  Nástroj pro vyrovnávání zatížení veřejné a interní | Nástroj pro vyrovnávání zatížení hlásí paketů zpracovaných za front-endu.| Průměr |
 
-### <a name="view-load-balancer-metrics-in-the-portal"></a>Nástroj pro vyrovnávání zatížení metriky zobrazit na portálu
+### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Zobrazit vaše metriky Vyrovnávání zatížení na portálu Azure
 
-Portál Azure poskytuje metriky Vyrovnávání zatížení prostřednictvím stránky metriky (Preview), která je k dispozici na stránce prostředek pro vyrovnávání zatížení pro určitý prostředek pro vyrovnávání zatížení a také na stránce monitorování Azure. 
+Portál Azure zpřístupní metriky Vyrovnávání zatížení prostřednictvím stránky metriky (preview), která je k dispozici na obou zatížení vyrovnávání prostředků stránky pro určitý prostředek a monitorování Azure stránky. 
 
-Chcete-li zobrazit metriky pro vaše prostředky standardní Vyrovnávání zatížení, procházet metrik (preview) na jednom z těchto umístění, vyberte (prostředek pro vyrovnávání zatížení Pokud v části monitorování stránky) zadejte metrika z rozevíracího seznamu nastavte příslušný typ agregace a volitelně Nakonfigurujte požadované filtrování a seskupení a budete moci zobrazit Historický přehled pro metriku v zadané podmínkách.
+Chcete-li zobrazit metriky pro vaše prostředky nástroj pro vyrovnávání zatížení:
+1. Přejít na stránku metriky (preview) a proveďte jednu z následujících akcí:
+   * Na stránce prostředků nástroje pro vyrovnávání zatížení v rozevíracím seznamu vyberte typ metriky.
+   * Na stránce monitorování Azure vyberte prostředek pro vyrovnávání zatížení.
+2. Nastavte typ odpovídající agregace.
+3. Volitelně nakonfigurujte požadované filtrování a seskupení.
 
 ![Metriky náhled pro nástroj pro vyrovnávání zatížení](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*Obrázek - DIP dostupnosti / stav testu stavu Metrika pro vyrovnávání zatížení*
+*Obrázek: Dostupnost vyhrazené IP adresy a metriky stav kontroly stavu pro nástroj pro vyrovnávání zatížení*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načtení vícerozměrných metriky programově pomocí rozhraní API
 
-Rozhraní API pokyny pro načítání Multi-Dimensional metrika definice a hodnoty jsou k dispozici v [monitorování Walkthrouh rozhraní API REST > Multi-Dimensional rozhraní API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)
+Pokyny k rozhraní API pro načítání vícerozměrných definice metrik a hodnoty, najdete v části [monitorování REST API služby Azure návod](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
 
 ### <a name = "DiagnosticScenarios"></a>Běžné scénáře diagnostiky a doporučené zobrazení
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cesta k datům nahoru a k dispozici pro moje VIP pro vyrovnávání zatížení?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Je cestu k datům a k dispozici pro moje vyrovnávání zátěže virtuální adresy IP?
 
-Metrika dostupnosti VIP popisuje stav cestu k datům v rámci oblasti pro hostitele výpočetního, kde se nachází virtuální počítače. Je health reflexe infrastruktury Azure. Tato metrika se používá k můžete použít:
+Metrika dostupnosti VIP popisuje stav cestu k datům v rámci oblasti pro hostitele výpočetního, kde se nachází virtuální počítače. Metrika je odraz stav infrastruktury Azure. Můžete použít metrika na:
 - Monitoruje dostupnost externí služby
-- Prozkoumat podrobněji a zjistit, zda je v pořádku platformy, na kterém je nasazený vaší služby, nebo zda hostovaný operační systém nebo instanci aplikace jsou v pořádku
-- Zjistěte, jestli událost souvisí s služby nebo základní roviny data. Nezaměňujte to s stav testu ("DIP dostupnosti").
+- Prozkoumat podrobněji a zjistit, jestli je v pořádku platformy, na kterém je nasazený služby nebo zda je v pořádku hostovaný operační systém nebo instanci aplikace.
+- Zjistěte, jestli událost souvisí s služby nebo základní roviny data. Nezaměňujte tato metrika se stav testu ("DIP dostupnosti").
 
 Pokud chcete získat dostupnost virtuálních IP adres pro vaše prostředky nástroj pro vyrovnávání zatížení:
-- Zkontrolujte, zda že je vybrán správný prostředek pro vyrovnávání zatížení. 
-- Vyberte **VIP dostupnosti** z **metrika** rozevíracího seznamu. 
-- Vyberte **průměr** pro **agregace**. 
-- Kromě toho přidáte filtr na virtuální adresy IP adresu nebo port VIP jako dimenze se vyžaduje front-endovou IP adresou nebo front-endový port a skupinu vybraných dimenzí.
+1. Zkontrolujte, zda že je vybrán zdroj nástroje pro vyrovnávání zatížení správné. 
+2. V **metrika** rozevíracího seznamu vyberte **VIP dostupnosti**. 
+3. V **agregace** rozevíracího seznamu vyberte **průměr**. 
+4. Kromě toho přidat filtr na virtuální adresy IP adresu nebo port VIP jako dimenze s požadované front-end IP adresu nebo front-end port a seskupovat je vybraných dimenzí.
 
 ![Zjišťování virtuálních IP adres](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Obrázek - VIP pro vyrovnávání zatížení zjišťování podrobnosti*
+*Obrázek: VIP pro vyrovnávání zatížení zkušební fáze podrobnosti*
 
-Metrika je generován aktivní, integrované měření. Testování služby v rámci oblasti pochází přenosy dat pro toto měření se aktivuje, jakmile vytvoříte nasazení s veřejnou front-endovou a bude pokračovat, dokud neodeberete front-endu. 
+Metrika je generován aktivní, integrované měření. Testování služby v rámci oblasti pochází provoz pro měření. Služba je aktivována, jakmile vytvoříte nasazení s veřejných front end a pokračuje, dokud neodeberete front-endu. 
 
 >[!NOTE]
->Interní frontends nejsou podporovány v tuto chvíli. 
+>Interní front-end nejsou podporovány v tuto chvíli. 
 
-Generuje se pravidelně paket odpovídající front-endové a pravidlo vaše nasazení. Přenosech oblasti ze zdroje hostitele, kde je umístěn virtuální počítač ve fondu back-end. Vyrovnávání zatížení infrastruktury provede stejné operace překlad a vyrovnávání zatížení, stejně jako pro všechny ostatní přenosy. Tento test je integrované v zatížení vyrovnáváním koncový bod. Jakmile tato kontrola na hostitele výpočetního dorazí, kde se nachází v pořádku virtuálního počítače ve fondu back-end, vygeneruje hostitele výpočetního odpověď k testování služby. Virtuální počítač nejsou vidět tento provoz.
+Generuje se pravidelně paket odpovídající front-endu vašeho nasazení a pravidla. Přenosech oblasti ze zdroje hostitele, kde je umístěn virtuální počítač ve fondu back-end. Infrastruktury nástroje pro vyrovnávání zatížení provádí stejné operace překlad a vyrovnávání zatížení, stejně jako pro všechny ostatní přenosy. Tento test je integrovaná na koncový bod služby Vyrovnávání zatížení sítě. Po sondy na hostitele výpočetního dorazí, kde se nachází v pořádku virtuálního počítače ve fondu back-end, hostitele výpočetního generuje odpovědi ke službě testování. Virtuální počítač nejsou vidět tento provoz.
+
 Dostupnost VIP selže z následujících důvodů:
 - Nasazení nemá žádné virtuální počítače v pořádku, zbývající ve fondu back-end. 
-- Výpadek infrastruktury došlo k chybě, způsobí, že dostupnost virtuálních IP adres k selhání.
+- Došlo k výpadku infrastruktury.
 
-Můžete použít [metriku dostupnosti VIP společně s stav testu k diagnostickým účelům](#vipavailabilityandhealthprobes).
+Pro účely diagnostiky, můžete použít [metriku dostupnosti VIP společně s stav testu](#vipavailabilityandhealthprobes).
 
 Použití **průměrná** jako agregace pro většinu scénářů.
 
-#### <a name="are-the-backend-instances-for-my-vip-responding-to-probes"></a>Instance back-end pro moje VIP neodpovídá na sondy?
+#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>Instance back-end pro moje VIP neodpovídá na sondy?
 
-Metrika stav testu stavu stav nasazení vaší aplikace popisuje, jak nakonfigurovat při konfiguraci test stavu nástroje pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení používá k určení kam má posílat nové toky stav kontroly stavu. Sondy stavu pocházejí z adresy infrastrukturu Azure a jsou viditelné v rámci hostovaného operačního systému virtuálního počítače.
+Metrika stav testu stavu stav nasazení vaší aplikace popisuje, jak nakonfigurovat při konfiguraci test stavu systému nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení používá k určení kam má posílat nové toky stav kontroly stavu. Sondy stavu pocházejí z adresy infrastrukturu Azure a jsou viditelné v rámci hostovaného operačního systému virtuálního počítače.
 
-Chcete-li získat dostupnost vyhrazené IP adresy pro vaše prostředky nástroj pro vyrovnávání zatížení
-- Vyberte **DIP dostupnosti** metriky s **průměr** typ agregace. 
-- Filtr použijte u požadované virtuální IP adresy IP adresu nebo port (nebo obě).
+Pokud chcete získat dostupnost vyhrazené IP adresy pro vaše prostředky nástroj pro vyrovnávání zatížení:
+1. Vyberte **DIP dostupnosti** metriky s **průměr** typ agregace. 
+2. Filtr použijte u požadované virtuální IP adresy IP adresu nebo port (nebo obě).
 
 ![Dostupnost vyhrazené IP adresy](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
 
-*Obrázek - dostupnosti VIP pro vyrovnávání zatížení*
+*Obrázek: Dostupnost VIP pro vyrovnávání zatížení*
 
 Sondy stavu selhat z následujících důvodů:
-- Pokud nakonfigurujete test stavu na port, který je nenaslouchá nebo neodpovídá nebo se nesprávný protokol. Pokud vaše služba používá pravidla DSR (plovoucí IP adresy), musíte zajistit, že vaše služba naslouchá na IP adresu konfigurace protokolu IP na síťový adaptér a není právě na zpětné smyčky nakonfigurované front-endovou IP adresu.
-- Pokud váš test není povolen podle skupinu zabezpečení sítě, brána firewall operačního systému hosta Virtuálního počítače nebo aplikační vrstvu filtry.
+- Konfigurace test stavu na port, který je nenaslouchá nebo neodpovídá nebo je nesprávný protokol. Pokud vaše služba používá přímá odpověď ze serveru (DSR nebo plovoucí IP adresa) pravidla, ujistěte se, že služba naslouchá na IP adresu konfigurace protokolu IP v Síťovém a nikoli jen na zpětné smyčky, který je nakonfigurovaný s front-end IP adresy.
+- Skupina zabezpečení sítě, brána firewall operačního systému hosta Virtuálního počítače nebo vrstvy filtry aplikace není povolená vaší testu.
 
 Použití **průměrná** jako agregace pro většinu scénářů.
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Jak zkontrolovat statistiku Moje odchozí připojení? 
 
-Metrika překládat pomocí SNAT připojení popisuje objem úspěšné i neúspěšné (pro [odchozí toky](https://aka.ms/lboutbound)).
+Metrika připojení překládat pomocí SNAT popisuje objem úspěšné i neúspěšné připojení pro [odchozí toky](https://aka.ms/lboutbound).
 
-Neúspěšné připojení svazku, který je větší než nula označuje vyčerpání port překládat pomocí SNAT. Musí prošetřily a zjistěte, co může být příčinou selhání. Vyčerpání port překládat pomocí SNAT manifesty jako selhání navázat [odchozí toky](https://aka.ms/lboutbound). Přečtěte si článek na odchozí připojení k pochopení scénáře, mechanismy v práci a jak zmírnit / design předejdete vyčerpání port překládat pomocí SNAT. 
+Neúspěšné připojení hlasitosti větší než nula označuje vyčerpání port překládat pomocí SNAT. Chcete-li zjistit, co může být příčinou selhání musíte prozkoumat další. Vyčerpání port překládat pomocí SNAT manifesty jako selhání navázat [odchozího toku](https://aka.ms/lboutbound). Přečtěte si článek o odchozí připojení pochopit scénáře a mechanismy v práci a k zjistěte, jak zmírnit a navrhnout předejdete vyčerpání port překládat pomocí SNAT. 
 
-Chcete-li získat překládat pomocí SNAT připojení statistiky,
-- Vyberte **připojení překládat pomocí SNAT** typ metriky a **součet** jako agregace. 
-- skupiny ve **stav připojení** pro úspěšné i neúspěšné připojení překládat pomocí SNAT počty reprezentována pomocí různých odvětví. 
+Pokud chcete získat statistiku překládat pomocí SNAT připojení:
+1. Vyberte **připojení překládat pomocí SNAT** typ metriky a **součet** jako agregace. 
+2. Seskupit podle **stav připojení** pro úspěšné i neúspěšné počtů překládat pomocí SNAT připojení, které jsou reprezentované pomocí různých odvětví. 
 
 ![Překládat pomocí SNAT připojení](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*Obrázek - počet připojení překládat pomocí SNAT nástroje pro vyrovnávání zatížení*
+*Obrázek: Počet připojení překládat pomocí SNAT nástroje pro vyrovnávání zatížení*
 
 
-#### <a name="how-do-i-check-inbound--outbound-connection-attempts-for-my-service"></a>Jak zkontrolovat pokusy o příchozí / odchozí připojení pro mé služby?
+#### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Jak zkontrolovat pokusy o příchozí nebo odchozí připojení pro mé služby?
 
-Metrika SYN pakety popisuje objem TCP SYN paketů, které se zobrazila, nebo byly odeslány (pro [odchozí toky](https://aka.ms/lboutbound)) přidružené k dané front-endu. Tato metrika slouží k pochopení TCP pokusy o připojení k službě.
-Celkový počet použijte jako agregace pro většinu scénářů.
+Metriky pakety SYN popisuje objem TCP SYN paketů, které se zobrazila, nebo byly odeslány (pro [odchozí toky](https://aka.ms/lboutbound)) přidružené určité front-endu. Tato metrika vám pomůže pochopit TCP pokusy o připojení k službě.
+
+Použití **celkový** jako agregace pro většinu scénářů.
 
 ![SYN připojení](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*Obrázek - počet SYN nástroje pro vyrovnávání zatížení*
+*Obrázek: Počet SYN nástroje pro vyrovnávání zatížení*
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Jak zkontrolovat Moje spotřeba šířky pásma sítě? 
 
-Bajtů / čítače paketů metrika popisuje svazku bajtů a pakety odesílat nebo přijímat na základě na front-endové služby.
+Bajty a čítače paketů, Metrika popisuje svazku bajtů a paketů, které jsou odesílat nebo přijímat služby na základě end na popředí.
+
 Použití **celkový** jako agregace pro většinu scénářů.
 
-Chcete-li získat statistiky počet bajtů nebo paketu
-- Vyberte **počet bajtů** nebo **počet** metriky typ s **průměr** jako agregace. 
-- Použijte filtr na konkrétní front-endovou IP, front-endový port nebo back-end IP nebo portu nejistá. 
-- nebo získání celkové statistiky pro prostředek pro vyrovnávání zatížení bez jakéhokoli filtrování.
-
-
-Některá zobrazení příklad pro metriky s různými konfiguracemi-
+Pokud chcete získat statistiky počet bajtů nebo paketu:
+1. Vyberte **počet bajtů** nebo **počet** metriky typu, s **průměr** jako agregace. 
+2. Proveďte jednu z následujících akcí:
+   * Použijte filtr na konkrétní front-end IP adresu, front-end port, back-end IP nebo back-end port.
+   * Získání celkové statistiky pro vaše prostředek pro vyrovnávání zatížení bez jakéhokoli filtrování.
 
 ![Počet bajtů](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*Obrázek – počet bajtů pro vyrovnávání zatížení*
+*Obrázek: Počet bajtů pro vyrovnávání zatížení*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>Jak mohu diagnostikovat Moje nasazení nástroje pro vyrovnávání zatížení?
 
-Kombinace VIP dostupnosti & testy stavu metriky pro jeden graf může umožní určete, kam vyhledat potíže a problém vyřešit. Můžete získat záruku toho, že Azure pracuje správně a použijte ji jednoznačně určit konfigurace nebo je hlavní příčinou aplikace.
+Pomocí kombinace dostupnosti virtuálních IP adres a stav testu metriky na jednom grafu můžete určit, kde vyhledat potíže a problém vyřešit. Můžete získat záruku toho, že Azure pracuje správně a použít tyto znalosti jednoznačně určit, že konfigurace nebo aplikací je hlavní příčinu.
 
 Stav testu metriky vám pomůže pochopit, jak Azure zobrazení stavu nasazení podle konfiguraci, kterou jste zadali. Prohlížení sondy stavu služby je vždy skvělé prvním krokem při monitorování nebo zjišťování příčinu.
 
-Můžete provádět další krok a použít VIP dostupnosti metriky a získáte přehled o tom, jak Azure zobrazení stavu základní data roviny zodpovědná za konkrétní nasazení. Když zkombinujete oba metriky, můžete izolovat, kde může být chyby, jak je ukázáno v tomto příkladu:
+Můžete provádět ho další krok a použít VIP dostupnosti metriky a získáte přehled o tom, jak Azure zobrazení stavu základní roviny data, která je odpovědná za konkrétní nasazení. Když zkombinujete oba metriky, můžete izolovat, kde může být chyby, jak je ukázáno v tomto příkladu:
 
 ![Diagnostika VIP](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*Obrázek – kombinace vyhrazené IP adresy a VIP metrikách dostupnosti*
+*Obrázek: Kombinování vyhrazené IP adresy a VIP metrikách dostupnosti*
 
-Graf zobrazuje následující informace:
-- Samotný infrastruktury byl v pořádku, infrastrukturu hostování virtuálních počítačů byla dostupná a více než jeden virtuální počítač byl uveden do back-end. To vyplývá z modré trasování pro VIP dostupnosti, která ukazuje na 100 %. 
-- Stav testu (DIP dostupnosti) je však na 0 % na začátku grafu podle oranžové trasování. Oblasti v kroužku v red označuje, kde testy stavu (DIP dostupnosti) jsou v pořádku a okamžiku zákazníka nasazení bylo nemůže přijímat nové toky.
+Grafu zobrazí následující informace:
+- Samotný infrastruktury byl v pořádku, infrastrukturu hostování virtuálních počítačů byla dostupná a více než jeden virtuální počítač byl uveden do back-end. Tyto informace je indikován blue trasování pro VIP dostupnosti, která na 100 %. 
+- Stav testu (DIP dostupnosti) je však na 0 procent na začátku grafu, jak oranžové trasování. Oblasti v kroužku v zelená označuje, kde stav (DIP dostupnosti) jsou v pořádku, a v okamžiku nasazení zákazníka se moci přijímat nové toky.
 
-Graf povoleno zákazníka k nasazení na své vlastní řešení bez nutnosti uhodnout nebo požádejte podporu, zda byly další problémy, ke kterým dochází. Zákazníka služby nebyl k dispozici, protože nebylo možné sondy stavu z důvodu nesprávnou konfiguraci nebo aplikaci, která selhala.
+Graf umožňuje zákazníkům řešení nasazení ve svých vlastních bez nutnosti uhodnout nebo požádejte podporu, zda dochází k další problémy. Službu nebylo k dispozici, protože nebylo možné sondy stavu z důvodu nesprávnou konfiguraci nebo aplikaci, která selhala.
 
 ### <a name = "Limitations"></a>Omezení
 
-- Dostupnost VIP je aktuálně dostupné jen pro veřejné frontends.
+Dostupnost VIP je aktuálně k dispozici pouze pro elementy end veřejných front.
 
 ## <a name = "ResourceHealth"></a>Stav prostředku
 
 Stav pro prostředky. nástroj pro vyrovnávání zatížení je vystaven přes existující **stav prostředku** pod **sledování > Stav služby**.
 
 >[!NOTE]
->Stav prostředku pro vyrovnávání zatížení je aktuálně dostupné pro veřejné konfigurace pouze standardní Vyrovnávání zatížení. Interní nástroj pro vyrovnávání zatížení prostředkům nebo prostředkům základní SKU Vyrovnávání zatížení nezveřejňují stav prostředku.
+>Stav prostředku pro vyrovnávání zatížení je aktuálně dostupné pro pouze veřejné konfigurace nástroj pro vyrovnávání zatížení. Interní služby load vyrovnávání prostředků nebo prostředky základní SKU služby Vyrovnávání zatížení nezveřejňují stav prostředku.
 
-Pro zobrazení stavu prostředků veřejný Standard pro vyrovnávání zatížení
- - Přejděte do **monitorování > služby stavu**.
+Pro zobrazení stavu prostředků veřejného nástroj pro vyrovnávání zatížení:
+1. Vyberte **monitorování** > **služby stavu**.
 
-  ![Stránka Sledování](./media/load-balancer-standard-diagnostics/LBHealth1.png)
+   ![Stránka Sledování](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Obrázek – stav služby u monitorování, Azure*
+   *Obrázek: Stav služby odkaz na Azure monitorování*
 
- - Vyberte **stav prostředku** a ujistěte se, zda správný, **ID předplatného** a **typ prostředku = nástroj pro vyrovnávání zatížení** je vybrána.
+2. Vyberte **stav prostředku**a potom zkontrolujte, zda **ID předplatného** a **typ prostředku = nástroj pro vyrovnávání zatížení** jsou vybrány.
 
-  ![Stav prostředku](./media/load-balancer-standard-diagnostics/LBHealth3.png)
+   ![Stav prostředku](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *Obrázek – vyberte prostředek pro zobrazení stavu*
+   *Obrázek: Vyberte prostředek pro zobrazení stavu*
 
- - Klikněte na nástroj pro vyrovnávání zatížení prostředků ze seznamu zobrazíte stav jejich historie.
+3. V seznamu vyberte prostředek pro vyrovnávání zatížení můžete zobrazit jeho historických stav.
 
     ![Stav služby Vyrovnávání zatížení](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *Obrázek – zobrazení stavu prostředků pro vyrovnávání zatížení*
+   *Obrázek: Zobrazení stavu prostředků pro vyrovnávání zatížení*
  
-Následující tabulka uvádí stav různých prostředků a jejich popisy. 
+V následující tabulce jsou uvedené různé stavy stavu prostředků a jejich popisy: 
 
 | Stav prostředku | Popis |
 | --- | --- |
-| Dostupný | Prostředek veřejný Standard pro vyrovnávání zatížení je v pořádku a k dispozici |
-| Není k dispozici. | Veřejný Standard pro vyrovnávání zatížení prostředku není v pořádku. Diagnostika stavu prostřednictvím Azure monitorování > metriky. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*) |
-| Unknown | Stav prostředku pro veřejné standardní nástroj pro vyrovnávání zatížení dosud nebyla aktualizována. (*Také to může znamenat, že prostředek není veřejný Standard pro vyrovnávání zatížení*)  |
+| Dostupné | Prostředek veřejné standardního zatížení vyrovnávání je v pořádku a k dispozici. |
+| Není k dispozici | Prostředek veřejné standardního zatížení vyrovnávání není v pořádku. Diagnostika stavu výběrem **Azure monitorování** > **metriky**.<br>(*Není k dispozici* stav také může znamenat, že prostředek není připojen k nástroj pro vyrovnávání zatížení veřejnou standardní.) |
+| Neznámý | Stav prostředku prostředku nástroje pro vyrovnávání zatížení veřejné standardní dosud nebyla aktualizována.<br>(*Neznámé* stav také může znamenat, že prostředek není připojen k nástroj pro vyrovnávání zatížení veřejnou standardní.)  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-standard-overview.md)
-- Další informace o [odchozí nástroje pro vyrovnávání zatížení připojení](https://aka.ms/lboutbound)
+- Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
+- Další informace o vaší [odchozí připojením ke službě Vyrovnávání zatížení](https://aka.ms/lboutbound).
 
 

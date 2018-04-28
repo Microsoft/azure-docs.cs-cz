@@ -1,26 +1,23 @@
 ---
-title: "Nastavení služby Cloud App Discovery v Azure Active Directory | Microsoft Docs"
-description: "Najít a spravovat aplikace s Cloud App Discovery poskytnout možné použít informace o použití cloudu a stínové IT."
+title: Nastavení služby Cloud App Discovery v Azure Active Directory | Microsoft Docs
+description: Najít a spravovat aplikace s Cloud App Discovery poskytnout možné použít informace o použití cloudu a stínové IT.
 services: active-directory
-keywords: "cloud app discovery,. Správa aplikací"
-documentationcenter: 
+keywords: cloud app discovery,. Správa aplikací
+documentationcenter: ''
 author: curtand
 manager: mtillman
 tags: ignite
-ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 04/25/2018
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: 4a0cb1b7793c846f98ae4e89b99b4bda984cd5e4
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: e46098d93360c809ba0aef46ed8244acf5af7196
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Nastavení ve službě Azure AD Cloud App Discovery
 
@@ -86,6 +83,7 @@ Aby bylo možné úspěšně vygenerovat sestavu Cloud App Discovery, protokolů
 * Cisco Meraki – adresy URL protokolu
 * Clavister NGFW (Syslog)
 * Dell Sonicwall
+* Digitální přístroje i filtru
 * Fortinet Fortigate
 * Juniper SRX
 * Juniper SSG
@@ -107,7 +105,7 @@ Pokud váš protokol není podporovaný, vyberte **jiných** jako **zdroj dat** 
 
 ## <a name="data-attributes-according-to-vendor-documentation"></a>Atributy datového (podle dokumentaci od dodavatele)
 
-| Zdroj dat         | Adresa URL cílové aplikace | Cílové aplikace IP adresu | Uživatelské jméno | Původní IP adresy | Celkový provoz | Odeslané bajty |
+| Zdroj dat         | Adresa URL cílové aplikace | Cílové aplikace IP adresu | Uživatelské jméno | Původní IP adresy | Celkový přenos | Odeslané bajty |
 |-----------------------------------------|----------------|---------------|----------|-----------|---------------|----------------|
 | Barracuda                               | **Ano**        | **Ano**       | **Ano**  | **Ano**   | Ne            | Ne             |
 | Blue Coat                               | **Ano**        | Ne            | **Ano**  | **Ano**   | **Ano**       | **Ano**        |
@@ -123,7 +121,7 @@ Pokud váš protokol není podporovaný, vyberte **jiných** jako **zdroj dat** 
 | Juniper SSG                             | Ne             | **Ano**       | Ne       | **Ano**   | **Ano**       | **Ano**        |
 | McAfee SWG                              | **Ano**        | Ne            | Ne       | **Ano**   | **Ano**       | **Ano**        |
 | MS TMG                                  | **Ano**        | Ne            | **Ano**  | **Ano**   | **Ano**       | **Ano**        |
-| Palo Alto Networks                      | **Ano**        | **Ano**       | **Ano**  | **Ano**   | **Ano**       | **Ano**        |
+| Palo Alto Networks                      | Ne             | **Ano**       | **Ano**  | **Ano**   | **Ano**       | **Ano**        |
 | Sophos                                  | **Ano**        | **Ano**       | **Ano**  | **Ano**   | **Ano**       | Ne             |
 | Olihně (společný)                          | **Ano**        | Ne            | **Ano**  | **Ano**   | Ne            | **Ano**        |
 | Olihně (nativní)                          | **Ano**        | Ne            | **Ano**  | **Ano**   | Ne            | **Ano**        |
@@ -132,7 +130,7 @@ Pokud váš protokol není podporovaný, vyberte **jiných** jako **zdroj dat** 
 | Zscaler                                 | **Ano**        | **Ano**       | **Ano**  | **Ano**   | **Ano**       | **Ano**        |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Chcete-li pokračovat nastavit Cloud App Discovery ve službě Azure AD pomocí následujících odkazů.
 
 * [Vytvoření sestav snímků](cloudappdiscovery-set-up-snapshots.md)

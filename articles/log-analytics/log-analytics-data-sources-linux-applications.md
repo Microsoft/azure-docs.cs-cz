@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů 
 Tento článek obsahuje podrobné informace pro konfiguraci [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítače výkonu pro konkrétní aplikace.  Aplikace, zahrnuté v tomto článku jsou:  
 
 - [MySQL](#MySQL)
-- [Apache HTTP Server](#apache-http-server)
+- [Serveru Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
 Pokud MySQL nebo MariaDB serveru je zjištěn v počítači, pokud je nainstalován OMS agent, se automaticky nainstaluje zprostředkovatele pro Server databáze MySQL monitorování výkonu. Tento zprostředkovatel připojí k místnímu serveru MySQL nebo MariaDB vystavit statistiku výkonu. Přihlašovací údaje uživatele MySQL musí nakonfigurovat tak, aby zprostředkovatel můžete přístup k serveru databáze MySQL.
@@ -53,7 +53,7 @@ Položky v souboru ověřování jsou popsané v následující tabulce.
 | Vazby – adresy| Adresa-aktuální MySQL vazby. |
 | uživatelské jméno| Uživatel MySQL lze použít k monitorování instance serveru MySQL. |
 | Kódováním base64, pomocí hesla| Heslo uživatele monitorování MySQL kódovaný jako Base64. |
-| AutoUpdate| Určuje, jestli se znovu zkontrolujte změny v souboru my.cnf a při upgraduje se zprostředkovatel OMI MySQL přepsat soubor MySQL OMI ověřování. |
+| Pomocí funkce Automatické aktualizace| Určuje, jestli se znovu zkontrolujte změny v souboru my.cnf a při upgraduje se zprostředkovatel OMI MySQL přepsat soubor MySQL OMI ověřování. |
 
 ### <a name="default-instance"></a>Výchozí instance
 Soubor MySQL OMI ověřování můžete definovat výchozí instance a číslo portu provádět správu více instancí databáze MySQL na jednom hostiteli systému Linux jednodušší.  Instance s portem 0 je označený jako výchozí instanci. Všechny další instance zdědí vlastnosti nastavit z výchozí instanci, pokud určí různé hodnoty. Například pokud je přidána instance databáze MySQL naslouchání na portu '3308', vazby adresu výchozí instance, uživatelské jméno a heslo kódováním Base64 použije sledovat instance naslouchá na 3308 a zkuste to. Pokud instanci na 3308 je vázána na jinou adresu a používá stejný MySQL dvojici uživatelské jméno a heslo je potřeba jenom adresy vazby a zdědí vlastnosti.
@@ -78,9 +78,9 @@ Následující tabulka obsahuje podrobnosti o syntaxi použití mycimprovauth.
 
 | Operace | Příklad: | Popis
 |:--|:--|:--|
-| pomocí funkce Automatické aktualizace *false\|true* | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor ověřování na restartovat nebo aktualizovat. |
+| pomocí funkce Automatické aktualizace *true nebo false* | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor ověřování na restartovat nebo aktualizovat. |
 | výchozí *vazby adresu uživatelské jméno, heslo* | mycimprovauth výchozí 127.0.0.1 kořenové pwd | Nastaví výchozí instance databáze MySQL OMI soubor pro ověření.<br>Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64. |
-| Odstranit *výchozí\|port_num* | mycimprovauth 3308 | Odstraní zadanou instanci buď výchozí nebo číslo portu. |
+| Odstranit *výchozí nebo port_num* | mycimprovauth 3308 | Odstraní zadanou instanci buď výchozí nebo číslo portu. |
 | nápověda | mycimprov nápovědy | Vytiskne seznam příkazů použít. |
 | Tisk | mycimprov tisku | Vytiskne snadno MySQL OMI číst soubor pro ověření. |
 | Aktualizovat port_num *vazby adresu uživatelské jméno, heslo* | mycimprov aktualizace 3307 127.0.0.1 kořenové pwd | Aktualizuje zadaný instanci nebo přidá instanci, pokud neexistuje. |
@@ -99,8 +99,8 @@ Uživatel MySQL vyžaduje přístup k následující dotazy ke shromažďování
 
 Uživatel MySQL taky vyžaduje vyberte přístup k následující výchozí tabulky.
 
-- information_schema
-- mysql. 
+- INFORMATION_SCHEMA
+- databáze MySQL. 
 
 Tato oprávnění lze udělit spuštěním následujících příkazů grant.
 
@@ -157,11 +157,11 @@ Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze pr
 | Apache HTTP Server | Nečinných pracovních procesů |
 | Apache HTTP Server | Protokol PCT vytížených pracovních procesů |
 | Apache HTTP Server | Celkový počet Pct procesoru |
-| Apache Virtual Host | Chyby za minutu - klienta |
-| Apache Virtual Host | Chyby za minutu - Server |
-| Apache Virtual Host | KB každý požadavek |
-| Apache Virtual Host | Žádosti o KB za sekundu |
-| Apache Virtual Host | Počet požadavků za sekundu |
+| Apache virtuální hostitel | Chyby za minutu - klienta |
+| Apache virtuální hostitel | Chyby za minutu - Server |
+| Apache virtuální hostitel | KB každý požadavek |
+| Apache virtuální hostitel | Žádosti o KB za sekundu |
+| Apache virtuální hostitel | Počet požadavků za sekundu |
 
 
 

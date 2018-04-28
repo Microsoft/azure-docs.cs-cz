@@ -1,24 +1,26 @@
 ---
 title: Upgrade na nejnovější generování Azure SQL Data Warehouse | Microsoft Docs
-description: Kroky pro upgrade na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
+description: Upgrade na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
-ms.services: sql-data-warehouse
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 724f027f3f43cd0ad846210b511c8fc1af27153f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
+Upgrade na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
 
-Teď můžete plynule upgradovat na optimalizovat pro výpočetní úroveň výkonu na portálu Azure. Pokud máte optimalizovaný pro pružnost datového skladu, doporučuje se, že upgradujete pro nejnovější generování Azure hardware a architekturu rozšířené úložiště. Bude moct využívat výhod vyšší výkon a vyšší škálovatelnost a neomezené sloupcovém úložiště. 
+## <a name="why-upgrade"></a>Proč upgradovat?
+Teď můžete plynule upgradovat na optimalizovat pro výpočetní úroveň výkonu na portálu Azure. Pokud máte optimalizovaný pro pružnost datového skladu, se doporučuje upgrade. Upgradem, můžete použít nejnovější generování Azure hardwaru a rozšířená architektura úložiště. Můžete využít výhod vyšší výkon, vyšší škálovatelnost a neomezené sloupcovém úložiště. 
 
 ## <a name="applies-to"></a>Platí pro
 Tento upgrade se vztahuje na datových skladů v optimalizovaný pro úroveň výkonu pružnost.
@@ -28,12 +30,6 @@ Tento upgrade se vztahuje na datových skladů v optimalizovaný pro úroveň v�
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Než začnete
-
-> [!NOTE]
-> Od verze 3/30, musíte mít [auditování na úrovni serveru](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-8) vypnuté před spuštěním upgradu.
-> 
->
-
 > [!NOTE]
 > Pokud vaše stávající optimalizována pro pružnost datového skladu není v oblasti, kde je optimalizovaná pro výpočetní je k dispozici, můžete [geografické obnovení optimalizovaný pro výpočet](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) pomocí prostředí PowerShell v podporované oblasti.
 > 

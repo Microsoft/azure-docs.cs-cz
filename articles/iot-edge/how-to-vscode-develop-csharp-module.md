@@ -10,10 +10,10 @@ ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 48c6cacebdeb7505c8dc2bcaed099c33862589ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-a-c-module-with-azure-iot-edge"></a>Použití kódu v jazyce Visual Studio k vývoji modulu jazyka C# s hranou Azure IoT
 Tento článek obsahuje podrobné pokyny pro používání [Visual Studio Code](https://code.visualstudio.com/) jako hlavní vývojový nástroj k vývoji a nasazení moduly Azure IoT okraj. 
@@ -251,7 +251,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na rozhra
 
     ![Snímek obrazovky Průzkumník kódu VS](./media/how-to-vscode-develop-csharp-module/build-module.png)
 
-### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Vytvoření bitové kopie Docker a publikujete ho v registru
+### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Vytvoření image Dockeru a její publikování do registru
 
 1. V Průzkumníku kód VS rozbalte **Docker** složky. Pak rozbalte složku pro vaši kontejnerovou platformu – **linux-x64** nebo **windows-nano**.
 2. Klikněte pravým tlačítkem myši **soubor Docker** soubor a vyberte **sestavení IoT Edge modulu Docker image**. 

@@ -1,8 +1,8 @@
 ---
-title: "Kurz: Konfigurace základním kamenem OnDemand pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do základním kamenem OnDemand."
+title: 'Kurz: Konfigurace základním kamenem OnDemand pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do základním kamenem OnDemand.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.openlocfilehash: 8aed9bdcdd54f2f0ef3cd81f979635e5716f0b5f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Kurz: Konfigurace základním kamenem OnDemand pro zřizování automatické uživatelů
 

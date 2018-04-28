@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby application gateway s protokoly HTTP do HTTPS přesměrování - prostředí Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření služby application gateway s přesměrovaného provoz z HTTP do HTTPS pomocí Azure PowerShell."
+title: Vytvoření služby application gateway s protokoly HTTP do HTTPS přesměrování - prostředí Azure PowerShell | Microsoft Docs
+description: Postup vytvoření služby application gateway s přesměrovaného provoz z HTTP do HTTPS pomocí Azure PowerShell.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,17 +11,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: davidmu
-ms.openlocfilehash: a831171b267cca1ffdbf8eef33baafa71dd9bd79
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d67ed204ee263c139b09232b63ad18a85af1e82e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Vytvoření služby application gateway s protokoly HTTP do HTTPS přesměrování pomocí Azure PowerShell
 
 Můžete vytvořit prostředí Azure PowerShell [Aplikační brána](application-gateway-introduction.md) s certifikát pro ukončení protokolu SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS v aplikační brány. V tomto příkladu můžete také vytvořit [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro fond back-end aplikační brány, který obsahuje dvě instance virtuálního počítače. 
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořit certifikát podepsaný svým držitelem
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzureRmAccount` vytvořit připojení s Azure.
+Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Connect-AzureRmAccount` vytvořit připojení s Azure.
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
 
@@ -72,7 +72,7 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
 Vytvoření konfigurací podsítě pro *myBackendSubnet* a *myAGSubnet* pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořit virtuální síť s názvem *myVNet* pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfigurací podsítě. A nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
 
@@ -257,7 +257,7 @@ Add-AzureRmApplicationGatewayRequestRoutingRule `
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 V tomto příkladu vytvoříte škálování virtuálních počítačů, nastavit zajistit servery pro tento fond back-end v aplikační brány. Můžete přiřadit měřítka nastaven fond back-end při konfiguraci nastavení IP adresy.
 
@@ -320,7 +320,7 @@ Update-AzureRmVmss `
 
 ## <a name="test-the-application-gateway"></a>Testování služby application gateway
 
-Můžete použít [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče. Například http://52.170.203.149
+Můžete použít [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získat veřejnou IP adresu aplikační brány. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://52.170.203.149.
 
 ```powershell
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -328,7 +328,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![Upozornění zabezpečení](./media/tutorial-http-redirect-powershell/application-gateway-secure.png)
 
-Chcete-li přijímat upozornění, pokud použijete certifikát podepsaný svým držitelem zabezpečení, vyberte **podrobnosti** a potom **přejděte na webovou stránku**. Zabezpečené webu služby IIS se následně zobrazí jako v následujícím příkladu:
+Chcete-li přijímat upozornění, pokud použijete certifikát podepsaný svým držitelem zabezpečení, vyberte **podrobnosti** a potom **přejděte na webovou stránku**. Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
 ![Otestovat základní adresu URL v aplikační brány](./media/tutorial-http-redirect-powershell/application-gateway-iistest.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 413485fc764000dadca1a2cccf9ee0de7e9046aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -32,10 +32,10 @@ Vždy, když existují aktualizace pro rozšíření virtuální počítač (VM)
 |  | Název položky | Popis | Vydavatel | OS Type |
 | --- | --- | --- | --- | --- |
 |![Rozšíření IaaS SQL](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření IaaS SQL ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>Toto rozšíření nasazení žádné systému SQL Server, na položku Windows Marketplace stáhnout – toto rozšíření je požadovaná.</b> | Microsoft | Windows |
-|![Rozšíření vlastních skriptů](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření vlastních skriptů ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Tuto aktualizaci můžete stáhněte na verzi v poli vlastní skript rozšíření pro Windows.</b> | Microsoft | Windows |
+|![Rozšíření vlastních skriptů](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření vlastních skriptů ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>Tuto aktualizaci můžete stáhněte na verzi v poli vlastní skript rozšíření pro Windows.</b> | Microsoft | Windows |
 |![Rozšíření DSC prostředí PowerShell](media/azure-stack-marketplace-azure-items/dsc.png) | [ Rozšíření DSC prostředí PowerShell ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>Tuto aktualizaci můžete stáhněte na integrované verzi rozšíření DSC prostředí PowerShell. Aktualizovat o podporu verze protokolu TLS 1.2.</b> | Microsoft | Windows |
-| ![Rozšíření Microsoft Antimalware](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření Microsoft Antimalware ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Antimalware od Microsoftu pro Azure je řešení jednoho agenta pro aplikace a prostředí klientovi, určený ke spouštění na pozadí bez lidského zásahu. | Microsoft | Windows |
-|![Rozšíření vlastních skriptů](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření vlastních skriptů ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>Tuto aktualizaci můžete stáhněte na integrované verzi rozšíření vlastních skriptů pro Linux. Existuje více verzí tohoto rozšíření a byste měli stahovat 1.5.2.1 a 2.0.x. </b> | Microsoft | Linux |
+| ![Rozšíření Microsoft Antimalware](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření Microsoft Antimalware ](https://docs.microsoft.com/azure/security/azure-security-antimalware)| Antimalware od Microsoftu pro Azure je řešení jednoho agenta pro aplikace a prostředí klientovi, určený ke spouštění na pozadí bez lidského zásahu. | Microsoft | Windows |
+|![Rozšíření vlastních skriptů](media/azure-stack-marketplace-azure-items/cse.png) | [ Rozšíření vlastních skriptů ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>Tuto aktualizaci můžete stáhněte na integrované verzi rozšíření vlastních skriptů pro Linux. Existuje více verzí tohoto rozšíření a byste měli stahovat 1.5.2.1 a 2.0.x. </b> | Microsoft | Linux |
 | ![Rozšíření docker](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Docker rozšíření pro virtuální počítače s Linuxem. | Microsoft | Linux |
 | ![Virtuální počítač přístup pro Linux](media/azure-stack-marketplace-azure-items/cse.png) | [ Virtuální počítač přístup pro Linux ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>Tuto aktualizaci můžete stáhněte na ve verzi VMAccess pro Linux rozšíření. Tato aktualizace je důležité, pokud máte v úmyslu použít Debian virtuální počítače s Linuxem.</b> | Microsoft | Linux |
 | ![Rozšíření zálohování Acronis pro Linux](media/azure-stack-marketplace-azure-items/acronis.png) | [ Rozšíření zálohování Acronis pro Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Acronis zálohování rozšíření pro Microsoft Azure je součástí rodiny Acronis zálohování dat ochrany produktů. | Mezinárodní GmbH Acronis. | Linux |

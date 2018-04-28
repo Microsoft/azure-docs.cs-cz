@@ -1,25 +1,18 @@
 ---
-title: "Videa, ukázky a výukové programy ve službě Azure Search | Microsoft Docs"
-description: "Centrální seznam všech videa, ukázky, ukázky a výukové programy vytvořené pro službu Azure Search, hostované cloudové služby v MIcrosoft Azure."
-services: search
-documentationcenter: 
+title: Videa, ukázky a výukové programy ve službě Azure Search | Microsoft Docs
+description: Centrální seznam všech videa, ukázky, ukázky a výukové programy vytvořené pro službu Azure Search, hostované cloudové služby v Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71a8abcebb95f2d34dee2f26dc2c7f341465a55
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Vyhledávání systému Azure: kód ukázky, ukázky, kurzy a videa
 Rychle se zorientujte rychlejší s následující videa, ukázky, kurzy a ukázkových aplikací.
@@ -28,10 +21,10 @@ Rychle se zorientujte rychlejší s následující videa, ukázky, kurzy a ukáz
 
 Pokud začínáte do služby Azure Search, začněte zde. Všechny tyto prostředky, můžete zkontrolovat v o jednu hodinu.
 
-| Název | Popis | Datum |
+| Nadpis | Popis | Datum |
 |-------|-------------|------|
 | [Podívejte se na toto video Úvod](https://channel9.msdn.com/Events/Connect/2016/138) | 9m38s Úvod do funkcí, služeb a dotazy. | Listopadu 2016 |
-| [Vytvoření služby](search-get-started-portal.md) | Kroky pro nastavení služby Azure Search na portálu. | 2017 února |
+| [ Vytvoření služby](search-get-started-portal.md) | Kroky pro nastavení služby Azure Search na portálu. | 2017 února |
 | [Dotazování indexu](search-get-started-portal.md) | Vytvořte a dotazování indexu pomocí předdefinovaných ukázková data. Nástroje na portálu jsou rychlý způsob, jak Další informace o typy dotazů a parametry hledání. | 2017 února |
 | [Další krok:<br/> kódu v rozhraní .NET](search-howto-dotnet-sdk.md) | C# návodu se dozvíte, jak se připojit, index a dotazování pomocí knihovny Azure Search .NET. | Listopadu 2016 |
 | [Další krok:<br/> kód v REST](search-create-index-rest-api.md) | Zkontrolujte volání REST a datové části JSON pro vytvoření indexu Azure Search na jakékoli platformě a programovací jazyk. | Prosinec 2016 |

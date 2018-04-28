@@ -1,11 +1,11 @@
 ---
-title: "AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs | Microsoft Docs"
-description: "Protokol Průvodce výrazy a popis protokolu AMQP 1.0 v Azure Service Bus a Event Hubs"
+title: AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs | Microsoft Docs
+description: Protokol Průvodce výrazy a popis protokolu AMQP 1.0 v Azure Service Bus a Event Hubs
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 9af578cef9a89b4ae953b26f261f99593b79deb2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Průvodci Azure Service Bus a Event Hubs protokolu AMQP 1.0
 
@@ -205,13 +205,15 @@ V souhrnu následující části obsahují schéma přehled performative toku b�
 
 Následující části popisují, které vlastnosti z standardní zprávy části AMQP se používají Service Bus a jak jsou mapovány na sadu rozhraní API služby Service Bus.
 
+Jakákoli vlastnost, která aplikace potřebuje definuje by měly být namapované do AMQP na `application-properties` mapy.
+
 #### <a name="header"></a>záhlaví
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
 | trvanlivý |- |- |
-| Priorita |- |- |
-| Hodnota TTL |Hodnota Time to live pro tuto zprávu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| priorita |- |- |
+| ttl |Hodnota Time to live pro tuto zprávu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
 | první nabyvatel |- |- |
 | Počet doručení |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
@@ -219,12 +221,12 @@ Následující části popisují, které vlastnosti z standardní zprávy část
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
-| id zprávy |Definované aplikací, vlastní identifikátor této zprávy. Použít pro vyhledávání duplicit. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| id zprávy |Definované aplikací, vlastní identifikátor této zprávy. Použít pro vyhledávání duplicit. |[messageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | id uživatele |Identifikátor uživatele definované aplikací, není interpretovat Service Bus. |Není k dispozici prostřednictvím rozhraní API Service Bus. |
 | na |Identifikátor cílové definované aplikací, není interpretovat Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | Předmět |Identifikátor účel definované aplikací zprávy není interpretovat Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | odpověď pro |Indikátor definované aplikací odpovědi path není interpretovat Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
-| id korelace |Identifikátor korelace definované aplikací, není interpretovat Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
+| id korelace |Identifikátor korelace definované aplikací, není interpretovat Service Bus. |[correlationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | Typ obsahu |Definované aplikací ukazatel typu obsahu pro tělo, není interpretovat Service Bus. |[Typ obsahu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
 | kódování obsahu |Definované aplikací kódování obsahu indikátor pro tělo, není interpretovat Service Bus. |Není k dispozici prostřednictvím rozhraní API Service Bus. |
 | absolutní čas vypršení platnosti |Deklaruje, na které absolutní prostřednictvím rychlých zprávy vyprší. Na vstupu (záhlaví TTL pozorovanou), ignorována autoritativní na výstup. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
@@ -232,6 +234,80 @@ Následující části popisují, které vlastnosti z standardní zprávy část
 | id skupiny |Identifikátor definované aplikací pro související sadu zpráv. Použít pro Service Bus relace. |[ID relace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
 | skupiny pořadí |Čítač identifikace relativní pořadové číslo zprávy v relaci. Ignorovat služby Service Bus. |Není k dispozici prostřednictvím rozhraní API Service Bus. |
 | odpověď na skupiny id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
+
+#### <a name="message-annotations"></a>Zpráva poznámky
+
+Existuje několik dalších služby sběrnice zpráv vlastností, které nejsou součástí vlastností zpráv AMQP a se předají jako `MessageAnnotations` na zprávu.
+
+| Klíč poznámky mapy | Využití | Název rozhraní API |
+| --- | --- | --- |
+| x opt naplánované zařazování běhu | Deklaruje, po kterém by zpráva objeví u entity |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt--klíč oddílu | Klíč definované aplikací, který určuje oddíl, který zpráva by měla zobrazovat v. | [Klíč oddílu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt prostřednictvím--klíč oddílu | Aplikace klíč oddílu hodnota definovaná při transakci je použít k odeslání zprávy prostřednictvím fronty přenosu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-zařazených do fronty time | Služby definované čas UTC představující skutečný čas enqueuing zprávy. Na vstupu ignorována. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt--číslo sekvence | Jedinečné číslo definované na služby přiřazené zprávu. | [SequenceNumber –](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x opt posunutí | Služby definované zařazených do fronty pořadové číslo zprávy. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt uzamčena – dokud | Služby definované. Datum a čas, do kterého se zamkne zprávy do fronty předplatného. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-nedoručených zpráv source | Služby definované. Pokud z fronty nedoručených zpráv, zdroj na původní zprávu o doručení zprávy. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+
+### <a name="transaction-capability"></a>Transakce funkce
+
+Transakce skupiny dvou nebo více operací společně do v provádění oboru. Vzhledem k povaze tuto transakci Ujistěte se, že všechny operace, které patří do dané skupiny operací úspěšné, nebo selže společně.
+Operace, které jsou seskupené podle identifikátoru `txn-id`.
+
+Pro interakci s transakcí, klient funguje `transaction controller` který určuje operace, které by měl být seskupeny dohromady. Služba Service Bus funguje jako `transactional resource` a provede práci, jak vyžádala `transaction controller`.
+
+Klient a služba komunikovat přes `control link` což navázání klientem. `declare` a `discharge` odeslání zpráv adaptérem pomocí ovládacího prvku odkazu přidělit a dokončení transakcí v uvedeném pořadí (reprezentují rozhraničení transakční pracovní). Skutečné odeslat a přijmout neprovádí se u tohoto odkazu. Každý transakční požadovaná operace je explicitně označeny požadovanou `txn-id` a proto může docházet na libovolný odkaz na připojení. Pokud ovládací prvek odkazu je zavřená, když existuje jiný ukončen transakcí, které ji vytvořit, pak tyto transakce jsou okamžitě vrácena zpět, a pokusí provést další transakční práci s nimi povede k selhání. Zprávy na ovládací prvek odkazu nesmí být před vyrovnané.
+
+Každé připojení má zahájíte vlastní ovládací prvek odkazu být schopni začínat a končit transakce. Definuje speciální cíl, který funguje jako službu `coordinator`. Klient nebo řadič vytváří řízení odkaz na tento cíl. Ovládací prvek odkazu je mimo hranice entity, tj., stejného řízení propojení lze použít k zahájení a plnit transakcí pro více entit.
+
+#### <a name="starting-a-transaction"></a>Spouštění transakce
+
+Zahájení práce transakcí. musíte získat kontroleru `txn-id` z koordinátorem. Dělá to pomocí odesílání `declare` typ zprávy. Pokud deklaraci úspěšné, koordinátorem odpoví dispozice výsledek `declared` který představuje přiřazená `txn-id`.
+
+| Klient (řadič) | | Service Bus (koordinátor) |
+| --- | --- | --- |
+| připojení)<br/>název = {název odkazu}<br/>... ,<br/>role =**odesílatele**,<br/>Cíl =**Coordinator**<br/>) | ------> |  |
+|  | <------ | připojení)<br/>název = {název odkazu}<br/>... ,<br/>target=Coordinator()<br/>) |
+| přenos)<br/>id dodání = 0,...)<br/>{AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | (dispozice <br/> nejprve = 0, poslední = 0, <br/>Stav =**Declared**()<br/>**txn id**= {id transakce}<br/>))|
+
+#### <a name="discharging-a-transaction"></a>Výkonu transakce
+
+Řadičem skončí transakční pracovní odesláním `discharge` zprávu koordinátorem. Řadičem označuje, že si přeje potvrzení nebo vrácení změn transakční pracovní nastavením `fail` příznak na vyřízení textu. Pokud koordinátorem nelze dokončit vyřízení, zpráva se odmítne kvůli tento výsledek provádění `transaction-error`.
+
+> Poznámka: selhání = true odkazuje na vrácení transakce a selhání = false odkazuje na potvrzení.
+
+| Klient (řadič) | | Service Bus (koordinátor) |
+| --- | --- | --- |
+| přenos)<br/>id dodání = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | (dispozice <br/> nejprve = 0, poslední = 0, <br/>Stav = deklarované ()<br/>txn id = {id transakce}<br/>))|
+| | . . . <br/>Transakční pracovní<br/>na dalších připojeních<br/> . . . |
+| přenos)<br/>id dodání = 57,...)<br/>{AmqpValue)<br/>**Plnit (txn id = 0,<br/>nezdaří = false)**)}| ------> |  |
+| | <------ | (dispozice <br/> nejprve = 57, poslední = 57, <br/>Stav =**funkce Accepted()**)|
+
+#### <a name="sending-a-message-in-a-transaction"></a>Odesílání zprávy v transakci
+
+Všechny transakční práce lze provést pomocí stavu transakční doručení `transactional-state` , představuje txn-id. V případě odesílání zpráv, transakční stavu probíhá podle rámce přenosu zprávy. 
+
+| Klient (řadič) | | Service Bus (koordinátor) |
+| --- | --- | --- |
+| přenos)<br/>id dodání = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | (dispozice <br/> nejprve = 0, poslední = 0, <br/>Stav = deklarované ()<br/>txn id = {id transakce}<br/>))|
+| přenos)<br/>zpracování = 1,<br/>doručení id = 1, <br/>**Stav =<br/>TransactionalState (<br/>txn id = 0)**)<br/>{datová část}| ------> |  |
+| | <------ | (dispozice <br/> nejprve = 1, poslední = 1, <br/>Stav =**TransactionalState (<br/>txn id = 0,<br/>outcome=Accepted()**))|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>Uvolnění zpráv v transakci
+
+Zpráva dispozice zahrnuje operace, jako je `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer`. Chcete-li provést tyto operace v rámci transakce, předat `transactional-state` s dispozice.
+
+| Klient (řadič) | | Service Bus (koordinátor) |
+| --- | --- | --- |
+| přenos)<br/>id dodání = 0,...)<br/>{AmqpValue (Declare())}| ------> |  |
+|  | <------ | (dispozice <br/> nejprve = 0, poslední = 0, <br/>Stav = deklarované ()<br/>txn id = {id transakce}<br/>))|
+| | <------ |přenos)<br/>zpracování = 2,<br/>id dodání = 11, <br/>Stav = null)<br/>{datová část}|  
+| (dispozice <br/> nejprve = 11, poslední = 11, <br/>Stav =**TransactionalState (<br/>txn id = 0,<br/>outcome=Accepted()**))| ------> |
+
 
 ## <a name="advanced-service-bus-capabilities"></a>Pokročilé funkce služby Service Bus
 
@@ -284,10 +360,10 @@ Zpráva odpovědi má následující vlastnosti aplikace:
 
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
-| operace |Ne |Řetězec |**PUT tokenu** |
-| type |Ne |Řetězec |Typ tokenu, který provádí požadavek put. |
-| jméno |Ne |Řetězec |"Cílová skupina" na které se vztahuje token. |
-| vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
+| operace |Ne |řetězec |**PUT tokenu** |
+| type |Ne |řetězec |Typ tokenu, který provádí požadavek put. |
+| jméno |Ne |řetězec |"Cílová skupina" na které se vztahuje token. |
+| konec platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 *Název* identifikuje vlastnost entity, k němuž musí být token přidruženy. V Service Bus je cesta k fronta nebo téma/odběr. *Typ* vlastnosti jsou uvedeny typy tokenů:
 
@@ -304,7 +380,7 @@ Zpráva odpovědi má následující *vlastnosti aplikace* hodnoty
 | Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
 | Stavový kód |Ne |celá čísla |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Ano |Řetězec |Popis stavu. |
+| Popis stavu |Ano |řetězec |Popis stavu. |
 
 Klient může volat *put token* opakovaně a pro všechny entity v infrastrukturu zasílání zpráv. Tokeny jsou vymezeny do aktuálního klienta a ukotvené na aktuální připojení, což znamená, že server zahodí všechny tokeny, zachované při přerušení připojení.
 
@@ -316,7 +392,20 @@ Po vytvoření připojení a relace připojení na odkazy *$cbs* uzel a odesíl�
 
 Klient je následně zodpovědná pro udržování přehledu o vypršení platnosti tokenu. Když vyprší platnost tokenu, Service Bus neprodleně zahodí všechny odkazy na připojení k příslušné entity. Chcete-li tomu zabránit, klient může nahradit token pro uzel s novou kdykoli prostřednictvím virtuální *$cbs* uzlu správy se stejným *put token* gesty a bez získávání cestě datové části provoz, který probíhá na jiné odkazy.
 
-## <a name="next-steps"></a>Další kroky
+### <a name="send-via-functionality"></a>Odesílání prostřednictvím funkce
+
+[Odesílání prostřednictvím / Transfer odesílatele](service-bus-transactions.md#transfers-and-send-via) je funkce, které umožňuje, aby služba sběrnici dál danou zprávu do cílové entity prostřednictvím jinou entitou. To se používá hlavně k provádění operací napříč entity v jedné transakci.
+
+Pomocí této funkce vytvoření odesílatele a vytvořit odkaz `via-entity`. Při navazování odkaz, je předán navázat true cíl zprávy/přenosů na tento odkaz Další informace. Po připojení proběhlo úspěšně, všechny zprávy odeslané na tento odkaz se automaticky předají do *cílové entity* prostřednictvím *prostřednictvím entity*. 
+
+> Poznámka: Ověřování se provádí pro obě *prostřednictvím entity* a *cílové entity* před navázáním tento odkaz.
+
+| Klient | | Service Bus |
+| --- | --- | --- |
+| připojení)<br/>název = {název odkazu}<br/>role = odesílatele,<br/>Zdroj = {id klienta odkaz},<br/>Cíl =**{prostřednictvím entity}**,<br/>**Vlastnosti = map [(<br/>com.microsoft:transfer. cílové adresy =<br/>{cílové entity})]** ) | ------> | |
+| | <------ | připojení)<br/>název = {název odkazu}<br/>role = příjemce,<br/>Zdroj = {id klienta odkaz},<br/>cíl = {prostřednictvím entity},<br/>Vlastnosti mapy [() =<br/>com.Microsoft:Transfer. cílové adresy =<br/>{cílové entity})] ) |
+
+## <a name="next-steps"></a>Další postup
 
 Další informace o protokolu AMQP, získáte pomocí následujících odkazů:
 

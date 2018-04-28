@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev
-ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úlohy vědecké účely dat: zkoumání, modelování a nasazení
 
 Úlohy vědecké účely typické dat zahrnují zkoumání dat, modelování a nasazení. Tento článek ukazuje, jak používat **interaktivní zkoumání dat, analýzu a vytváření sestav (IDEAR)** a **automatizované modelování a vytváření sestav (AMAR)** nástrojů k dokončení několik běžných úloh dat vědecké účely například interaktivní zkoumání dat, analýzy dat, vytváření sestav a vytváření modelu. Popisuje také možnosti nasazení modelu do provozního prostředí pomocí různých platforem sadách a data, například následující:
 
-- [Azure Machine Learning](../preview/index.yml)
+- [Azure Machine Learning](../service/index.yml)
 - [SQL Server službou ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/28/2018
 
 Vědecký pracovník dat můžete provádět zkoumání a vytváření sestav v mnoha různými způsoby: pomocí knihoven nebo balíčků, které jsou k dispozici pro jazyk Python (například matplotlib) nebo s R (ggplot nebo mřížky, např.). Datových vědců můžete přizpůsobit podle potřeby zkoumání dat u konkrétních scénářů takový kód. Požadavky pro práci s strukturovaných dat se liší, pro Nestrukturovaná data, jako je například textu nebo obrázků. 
 
-Produkty, jako je Azure Machine Learning Workbench také obsahují [Rozšířená data přípravy](../preview/tutorial-bikeshare-dataprep.md) pro data wrangling a zkoumání, včetně vytváření funkce. Uživatel se měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite svých potřeb. 
+Produkty, jako je Azure Machine Learning Workbench také obsahují [Rozšířená data přípravy](../desktop-workbench/tutorial-bikeshare-dataprep.md) pro data wrangling a zkoumání, včetně vytváření funkce. Uživatel se měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite svých potřeb. 
 
 Dodávky na konci této fáze je zkoumání dat sestavy. Sestavy by měl poskytovat poměrně rozsáhlé zobrazení data, která se použije pro modelování a jestli je vhodné pro pokračujte krokem modelování dat hodnocení. Nástroje Team datové vědy procesu (TDSP) popsané v následujících částech pro zkoumání poloautomatických, modelování a vytváření sestav také poskytují zkoumání standardizované dat a modelování sestavy. 
 
@@ -75,7 +75,7 @@ Další informace najdete v tématu [automatizované modelování a vytváření
 ### <a name="model-management"></a>Správa modelů
 Po které se sestavily více modelů, obvykle potřebujete mít systém pro registraci a správu modelů. Obvykle je nutné kombinaci skripty nebo rozhraní API a back-end databáze nebo Správa verzí systému. Několik možností, které mohou být užitečné pro tyto úlohy správy jsou:
 
-1. [Azure Machine Learning - modelu služby správy](../preview/index.yml)
+1. [Azure Machine Learning - modelu služby správy](../service/index.yml)
 2. [ModelDB od MIT](https://mitdbg.github.io/modeldb/) 
 3. [SQL seerver jako systém správy modelu](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
@@ -88,7 +88,7 @@ Produkční nasazení umožňuje modelu pro hraje aktivní roli v podniku. Predi
 Existují různé přístupy a platformy pro modely uvedení do produkčního prostředí. Tady je několik možností:
 
 
-- [Model nasazení v nástroji Azure Machine Learning](../preview/model-management-overview.md)
+- [Model nasazení v nástroji Azure Machine Learning](../desktop-workbench/model-management-overview.md)
 - [Nasazení modelu v systému SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

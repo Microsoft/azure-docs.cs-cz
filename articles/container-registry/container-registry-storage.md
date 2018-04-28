@@ -3,16 +3,16 @@ title: Úložiště bitové kopie v registru kontejner Azure
 description: Podrobnosti o tom, jak vaše Docker kontejneru Image jsou uložené v registru kontejner Azure, včetně zabezpečení, redundance a kapacity.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: df46712889a3eba54f1a2288ba93c82b21b92deb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Kontejner úložiště bitové kopie v registru kontejner Azure
 

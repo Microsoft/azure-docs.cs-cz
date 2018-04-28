@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 9a4489c575de9f63740c68bda8cbf921592402ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f783b08b25b7dd00351537f4dd404d9c8d02044d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure
 
@@ -38,7 +38,7 @@ Pokud chcete spravovat přiřazení rolí pomocí rozhraní příkazového řád
 
 ## <a name="list-role-definitions"></a>Definice rolí seznamu
 
-K zobrazení seznamu všech definic rolí k dispozici, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list):
+K zobrazení seznamu všech definic rolí k dispozici, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list
@@ -95,7 +95,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 
 ### <a name="list-actions-of-a-role-definition"></a>Seznam akcí definici role
 
-K zobrazení seznamu akce definici role, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list):
+K zobrazení seznamu akce definici role, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list):
 
 ```azurecli
 az role definition list --name <role_name>
@@ -185,7 +185,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 
 ### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
 
-K zobrazení seznamu přiřazení rolí pro konkrétního uživatele, použijte [seznamu přiřazení role az](/cli/azure/role/assignment#az_role_assignment_list):
+K zobrazení seznamu přiřazení rolí pro konkrétního uživatele, použijte [seznamu přiřazení role az](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --assignee <assignee>
@@ -214,7 +214,7 @@ az role assignment list --all --assignee patlong@contoso.com --output json | jq 
 
 ### <a name="list-role-assignments-for-a-resource-group"></a>Seznam přiřazení rolí pro skupinu prostředků.
 
-K zobrazení seznamu přiřazení rolí, které pro skupinu prostředků, použijte [seznamu přiřazení role az](/cli/azure/role/assignment#az_role_assignment_list):
+K zobrazení seznamu přiřazení rolí, které pro skupinu prostředků, použijte [seznamu přiřazení role az](/cli/azure/role/assignment#az-role-assignment-list):
 
 ```azurecli
 az role assignment list --resource-group <resource_group>
@@ -243,7 +243,7 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 
 ### <a name="create-a-role-assignment-for-a-user"></a>Umožňuje vytvořit přiřazení role pro uživatele
 
-Chcete-li vytvořit přiřazení role pro uživatele v oboru skupiny prostředků, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit přiřazení role pro uživatele v oboru skupiny prostředků, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
@@ -257,13 +257,13 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 
 ### <a name="create-a-role-assignment-for-a-group"></a>Umožňuje vytvořit přiřazení role pro skupinu
 
-Chcete-li vytvořit přiřazení role pro skupinu, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit přiřazení role pro skupinu, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-Následující příklad přiřadí *čtečky* role *Ann Mack Team* skupiny s ID 22222222-2222-2222-2222-222222222222 na obor předplatného. Chcete-li získat ID skupiny, můžete použít [seznam skupiny ad az](/cli/azure/ad/group#az_ad_group_list) nebo [zobrazit skupiny ad az](/cli/azure/ad/group#az_ad_group_show).
+Následující příklad přiřadí *čtečky* role *Ann Mack Team* skupiny s ID 22222222-2222-2222-2222-222222222222 na obor předplatného. Chcete-li získat ID skupiny, můžete použít [seznam skupiny ad az](/cli/azure/ad/group#az-ad-group-list) nebo [zobrazit skupiny ad az](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -277,13 +277,13 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ### <a name="create-a-role-assignment-for-an-application"></a>Umožňuje vytvořit přiřazení role pro aplikaci
 
-Chcete-li vytvořit roli pro aplikaci, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_create):
+Chcete-li vytvořit roli pro aplikaci, použijte [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create):
 
 ```azurecli
 az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
 ```
 
-Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role aplikace s 44444444-4444-4444-4444-444444444444 ID objektu na *pharma. prodej projectforecast* skupiny prostředků rozsah. Chcete-li získat ID objektu aplikace, můžete použít [seznamu aplikací ad az](/cli/azure/ad/app#az_ad_app_list) nebo [zobrazení aplikací ad az](/cli/azure/ad/app#az_ad_app_show).
+Následující příklad přiřadí *Přispěvatel virtuálních počítačů* role aplikace s 44444444-4444-4444-4444-444444444444 ID objektu na *pharma. prodej projectforecast* skupiny prostředků rozsah. Chcete-li získat ID objektu aplikace, můžete použít [seznamu aplikací ad az](/cli/azure/ad/app#az-ad-app-list) nebo [zobrazení aplikací ad az](/cli/azure/ad/app#az-ad-app-show).
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
@@ -291,7 +291,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>Odebrat přiřazení role
 
-Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení role az](/cli/azure/role/assignment#az_role_assignment_delete):
+Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
@@ -303,7 +303,7 @@ Následující příklad odebere *Přispěvatel virtuálních počítačů* při
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
 ```
 
-Následující příklad odebere *čtečky* roli z *Ann Mack Team* skupiny s ID 22222222-2222-2222-2222-222222222222 na obor předplatného. Chcete-li získat ID skupiny, můžete použít [seznam skupiny ad az](/cli/azure/ad/group#az_ad_group_list) nebo [zobrazit skupiny ad az](/cli/azure/ad/group#az_ad_group_show).
+Následující příklad odebere *čtečky* roli z *Ann Mack Team* skupiny s ID 22222222-2222-2222-2222-222222222222 na obor předplatného. Chcete-li získat ID skupiny, můžete použít [seznam skupiny ad az](/cli/azure/ad/group#az-ad-group-list) nebo [zobrazit skupiny ad az](/cli/azure/ad/group#az-ad-group-show).
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -313,7 +313,7 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ### <a name="list-custom-roles"></a>Vlastní role seznamu
 
-K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list).
+K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list).
 
 Obě následující příklady seznamu všechny vlastní role v aktuálním předplatném:
 
@@ -344,7 +344,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 
 ### <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 
-Chcete-li vytvořit vlastní roli, použijte [vytvoření definice role az](/cli/azure/role/definition#az_role_definition_create). Definice role může být popis JSON nebo cestu k souboru, který obsahuje popis JSON.
+Chcete-li vytvořit vlastní roli, použijte [vytvoření definice role az](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cestu k souboru, který obsahuje popis JSON.
 
 ```azurecli
 az role definition create --role-definition <role_definition>
@@ -386,7 +386,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ### <a name="update-a-custom-role"></a>Aktualizovat vlastní role
 
-Chcete-li aktualizovat vlastní role, nejprve použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list) načíst definici role. Za druhé proveďte požadované změny k definici role. Nakonec použijte [aktualizaci definice role az](/cli/azure/role/definition#az_role_definition_update) se uložit definici aktualizované role.
+Chcete-li aktualizovat vlastní role, nejprve použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list) načíst definici role. Za druhé proveďte požadované změny k definici role. Nakonec použijte [aktualizaci definice role az](/cli/azure/role/definition#az-role-definition-update) se uložit definici aktualizované role.
 
 ```azurecli
 az role definition update --role-definition <role_definition>
@@ -429,7 +429,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ### <a name="delete-a-custom-role"></a>Odstranit vlastní roli
 
-Chcete-li odstranit vlastní roli, použijte [odstranit definici role az](/cli/azure/role/definition#az_role_definition_delete). Chcete-li zadat role, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit role ID, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list).
+Chcete-li odstranit vlastní roli, použijte [odstranit definici role az](/cli/azure/role/definition#az-role-definition-delete). Chcete-li zadat role, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit role ID, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
 az role definition delete --name <role_name or role_id>

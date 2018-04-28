@@ -1,28 +1,26 @@
 ---
-title: "Vytvoření kanálu Apache Spark machine learning - Azure HDInsight | Microsoft Docs"
-description: "V knihovně Apache Spark strojové učení k vytvoření datových kanálů."
+title: Vytvoření kanálu Apache Spark machine learning - Azure HDInsight | Microsoft Docs
+description: V knihovně Apache Spark strojové učení k vytvoření datových kanálů.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: maxluk
-ms.openlocfilehash: 238ab5f940fbea836b75e20b015ae16f22eef3e9
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 75fdc427be42ff8895cde8add7c7b0623da6a808
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Vytvoření kanálu Spark machine learning
+# <a name="create-a-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Sparku
 
 Apache Spark škálovatelné machine learning knihovny (MLlib) přináší modelování funkcí distribuovaném prostředí. Balíček Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) je sada vysoké úrovně rozhraní API založený na DataFrames. Tato rozhraní API vám pomůžou vytvářet a ladit kanály praktické strojové učení.  *Spark machine learning* odkazuje na tato MLlib DataFrame rozhraní API, ne starší na základě RDD kanálu rozhraní API.
 
@@ -36,7 +34,7 @@ Každá instance bezstavové Transformer nebo odhadu má svůj vlastní jedineč
 
 ## <a name="pipeline-example"></a>Příklad kanálu
 
-K předvedení praktická použití kanálu ML, tento příklad používá vzorku `HVAC.csv` datový soubor, který obsahuje předem načtený na výchozí úložiště pro váš cluster HDInsight, Azure Storage nebo Data Lake Store. Chcete-li zobrazit obsah souboru, přejděte na `/HdiSamples/HdiSamples/SensorSampleData/hvac` adresáře. `HVAC.csv`obsahuje sadu časy se cílem a skutečný teploty pro TVK (*vytápění, ventilace a klimatizace*) systémy v různých budovy. Cílem je trénování modelu na základě dat a vytvářet prognózy teploty o dané sestavení.
+K předvedení praktická použití kanálu ML, tento příklad používá vzorku `HVAC.csv` datový soubor, který obsahuje předem načtený na výchozí úložiště pro váš cluster HDInsight, Azure Storage nebo Data Lake Store. Chcete-li zobrazit obsah souboru, přejděte na `/HdiSamples/HdiSamples/SensorSampleData/hvac` adresáře. `HVAC.csv` obsahuje sadu časy se cílem a skutečný teploty pro TVK (*vytápění, ventilace a klimatizace*) systémy v různých budovy. Cílem je trénování modelu na základě dat a vytvářet prognózy teploty o dané sestavení.
 
 Následující kód:
 

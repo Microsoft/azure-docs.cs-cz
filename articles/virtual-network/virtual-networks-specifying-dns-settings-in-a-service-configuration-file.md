@@ -3,7 +3,7 @@ title: Určení nastavení DNS v konfiguračním souboru služby | Microsoft Doc
 description: určení vlastních nastavení DNS pro virtuální síť pomocí konfigurační soubor služby
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 76e2e4736ed6d69946aa5f42312554e1a346e076
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 009206f1e0ba848538ed2c666032a63051d062e4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>Určení nastavení DNS v konfiguračním souboru služby
 ## <a name="dns-elements"></a>Elementy DNS

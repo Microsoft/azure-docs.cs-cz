@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0476865b19cd078b05e5def4a51c2df17315daa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizovat vývojářským účtům pomocí služby Azure Active Directory v Azure API Management
 
@@ -100,6 +100,11 @@ Tento článek ukazuje, jak povolit přístup k portálu pro vývojáře pro už
 31. Přepnout zpět do aplikace API Management. 
 
     V **zprostředkovatele identity přidat** okno, vložte klíč v **tajný klíč klienta** textové pole.
+
+    > [!IMPORTANT]
+    > Zkontrolujte, zda aktualizace **tajný klíč klienta** před vypršením platnosti klíče. 
+    >  
+    >
 32. **Zprostředkovatele identity přidat** okno obsahuje také **klientům povoleno** textové pole. Zde zadejte domény instancí Azure AD, u kterých chcete udělit přístup k rozhraním API v instanci služby API Management. Více domén můžete oddělit vložení znaků newline, mezery nebo čárkami.
 
     Můžete zadat více doménách **klientům povoleno** části. Než každý uživatel může přihlásit z jiné doméně než původní domény, kde byla aplikace registrovaná, globální správce jiné domény, musí udělit oprávnění pro aplikaci pro přístup k datům adresáře. Udělit oprávnění, má globální správce:

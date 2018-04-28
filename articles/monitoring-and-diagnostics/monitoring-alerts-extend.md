@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozšíření výstrahy (kopie) z portálu OMS do Azure
 Portál Operations Management Suite (OMS) zobrazí pouze analýzy protokolů výstrahy.  Nové prostředí výstrahy má teď integrované výstrahy prostředí mezi různé služby a částí v Microsoft Azure. Nové prostředí, které jsou k dispozici jako **výstrahy** v části monitorování Azure ve službě Azure portál obsahuje aktivitu protokolu výstrahy, metriky výstrahy a upozornění protokolu pro analýzy protokolů a Application Insights. 
@@ -43,7 +43,7 @@ Pokud výstrahy v pracovním prostoru analýzy protokolů získat naplánováno 
  ![Během plánované doby akce uživatele na výstrahy přesměrován na Azure](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Rozšíření výstrahy z portálu OMS do Azure není účtován a využití Azure výstrahy pro dotaz na základě analýzy protokolů výstrahy nebude platit při použití v rámci omezení a podmínky uvedené v [Azure monitorování cenové zásady](https://azure.microsoft.com/en-us/pricing/details/monitor/)  
+> Rozšíření výstrahy z portálu OMS do Azure není účtován a využití Azure výstrahy pro dotaz na základě analýzy protokolů výstrahy nebude platit při použití v rámci omezení a podmínky uvedené v [Azure monitorování cenové zásady](https://azure.microsoft.com/pricing/details/monitor/)  
 
 Uživatelé mohou využívat výhod rozšíření výstrahy před tímto datem; podle odpojit zvolit možnost, aby se daly spravovat v Azure výstrahy.
 

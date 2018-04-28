@@ -2,23 +2,20 @@
 title: Vytváření řetězců filtru pro návrháře tabulky | Microsoft Docs
 description: Vytváření řetězců filtru pro návrháře tabulky
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
-ms.service: storage
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/18/2016
 ms.author: ghogen
-ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 7390e8f463d14f2e74e05263e970665a0199029a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>Vytváření řetězců filtru pro návrháře tabulky
 ## <a name="overview"></a>Přehled
@@ -31,7 +28,7 @@ Pro všechny typy vlastností jsou podporovány následující logické operáto
 
 | Logický operátor | Popis | Příklad řetězec filtru |
 | --- | --- | --- |
-| eq |Rovná |Město eq 'Redmond. |
+| EQ |Rovná |Město eq 'Redmond. |
 | gt |Více než |Cena gt 20 |
 | ge |Je větší nebo rovno |Cena ge 10 |
 | lt |Méně než |Cena lt 20 |

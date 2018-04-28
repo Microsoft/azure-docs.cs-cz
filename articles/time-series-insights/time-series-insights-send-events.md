@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 04/09/2018
-ms.openlocfilehash: c29b90e703a66cbbc25227f9a4307c74d82b03b5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b418d1114cf6b906dcdee46bbf7e094cbc4a0521
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spusťte ukázkové aplikace nabízené události. Pokud máte existující centra událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazit prostředí v [časové řady Insights](https://insights.timeseries.azure.com).
@@ -59,7 +59,7 @@ Ujistěte se, při hromadné odesílání historických dat TSI mít referenčn�
 
 Ke správě referenční data, není webové uživatelské rozhraní v Průzkumníku TSI a je programový API jazyka C#. Průzkumník TSI má visual uživatelské prostředí pro nahrávání souborů nebo vložení v existující odkaz datové sady jako formátu JSON nebo CSV. Pomocí rozhraní API můžete vytvořit vlastní aplikaci v případě potřeby.
 
-Další informace o správě referenční data v časové řady přehledy, najdete v článku [článku data](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o správě referenční data v časové řady přehledy, najdete v článku [článku data](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="create-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
 1. Pokud jste ještě nevytvořili zdroj událostí, postupujte podle [těchto pokynů](time-series-insights-how-to-add-an-event-source-eventhub.md) a vytvořte ho.
@@ -312,7 +312,7 @@ Pokud toto pole událostí jako datové části nabízené TSI, bude uložen jak
 
 chId měr jednotky 24 modul těžba ropy přetížení PSI 25 CALC čerpadla míra bbl za minutu
 
-Další informace o správě referenční data v časové řady přehledy, najdete v článku [článku data](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o správě referenční data v časové řady přehledy, najdete v článku [článku data](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 Dalším problémem s první datové části je, že časové razítko je uvedena v milisekundách. TSI přijímá pouze ve formátu ISO časová razítka. Jedno řešení je ponechte výchozí chování časové razítko v TSI, který má používat časové razítko zařazených do fronty.
 

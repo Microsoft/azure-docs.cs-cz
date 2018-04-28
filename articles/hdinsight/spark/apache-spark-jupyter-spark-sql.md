@@ -1,9 +1,9 @@
 ---
-title: "Vytvoření clusteru Apache Spark ve službě Azure HDInsight | Dokumentace Microsoftu"
-description: "Rychlý start k HDInsight Spark týkající se vytvoření clusteru Apache Spark ve službě HDInsight."
+title: Vytvoření clusteru Apache Spark ve službě Azure HDInsight | Dokumentace Microsoftu
+description: Rychlý start k HDInsight Spark týkající se vytvoření clusteru Apache Spark ve službě HDInsight.
 keywords: spark quickstart, interactive spark, interactive query, hdinsight spark, azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: 91f41e6a-d463-4eb4-83ef-7bbb1f4556cc
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: baad137a6f982df987faf95d7c7c595698e8e399
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
-ms.translationtype: HT
+ms.openlocfilehash: 1fdae7d6e47ff70e83e8153cdc22c0b2881d2743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Vytvoření clusteru Apache Spark ve službě Azure HDInsight
 
@@ -134,7 +132,7 @@ Příklad čtení dat ze souboru CSV místo tabulky Hive najdete v části [Spou
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 V tomto článku jste zjistili, jak vytvořit cluster HDInsight Spark a spustit základní dotaz Spark SQL. Přejděte k dalšímu článku a zjistěte, jak pomocí clusteru HDInsight Spark spouštět interaktivní dotazy na ukázková data.
 

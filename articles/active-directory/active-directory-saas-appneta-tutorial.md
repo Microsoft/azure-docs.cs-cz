@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 9049c98803056ce459ef22869100166cbd232cc3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6c06b2819516664a367ca31925366eabd05e688e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Azure Active Directory integrace s AppNeta sledování výkonu
 
@@ -130,7 +130,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | název| user.jobtitle|
 
     > [!NOTE]
-    > "skupinami" odkazuje na skupinu zabezpečení v Appneta, která se mapuje na Role ve službě Azure AD. Naleznete [to](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-enterprise-app-role-management) doc, která vysvětluje, jak vytvořit vlastní role ve službě Azure AD.
+    > "skupinami" odkazuje na skupinu zabezpečení v Appneta, která se mapuje na Role ve službě Azure AD. Naleznete [to](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) doc, která vysvětluje, jak vytvořit vlastní role ve službě Azure AD.
         
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 

@@ -22,7 +22,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
 1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a následujícím způsobem vyberte své předplatné:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Nastavte název skupiny prostředků a název virtuálního počítače následujícím způsobem:
@@ -65,7 +65,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
 1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a následujícím způsobem vyberte své předplatné:
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Nastavte název skupiny prostředků a název virtuálního počítače následujícím způsobem:
@@ -109,7 +109,7 @@ V tomto článku jsme pomocí modulů Azure Resource Manageru v PowerShellu roz�
 Unamanged disky:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
@@ -122,7 +122,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 Managed Disks:
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'

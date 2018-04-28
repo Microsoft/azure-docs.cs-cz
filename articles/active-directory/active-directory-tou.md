@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům.  Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů.
@@ -96,7 +96,7 @@ Pokud chcete začít s auditováním použijte následující postup:
 2. Klikněte na Zobrazit protokoly auditu.</br>
 ![Událost auditu](media/active-directory-tou/tou8.png)
 3.  Na obrazovce protokolů auditu Azure AD můžete pomocí rozevíracích seznamů filtrovat informace a najít tak konkrétní údaje protokolu auditu.
-![Událost auditu](media/active-directory-tou/tou9.png)
+[Událost auditu](media/active-directory-tou/tou9.png)
 4.  Tyto informace můžete také stáhnout jako soubor .csv a použít místně.
 
 ## 

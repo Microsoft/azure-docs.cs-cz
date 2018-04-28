@@ -1,19 +1,19 @@
 ---
-title: "Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery."
+title: Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7580db2a2fd41c124443b26257f1b946adcc068c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6c86a98dd819b91608be04f1466dc1e6764ee4b9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -27,8 +27,8 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii do Azure pro míst
 
 Tento kurz je třetí částí série. Tento kurz předpokládá, že jste už dokončili úlohy z předchozích kurzů:
 
-* [Příprava Azure](tutorial-prepare-azure.md)
-* [Příprava VMware v místním prostředí](vmware-azure-tutorial-prepare-on-premises.md)
+* [Příprava Azure](tutorial-prepare-azure.md). Tento kurz popisuje nastavení účtu úložiště Azure a sítě, ověření správných oprávnění účtu Azure a vytvoření trezoru služby Recovery Services.
+* [Příprava VMware v místním prostředí](vmware-azure-tutorial-prepare-on-premises.md). V tomto kurzu připravíte účty, aby služba Site Recovery měla přístup k serverům VMware za účelem zjištění virtuálních počítačů a volitelného provedení nabízené instalace komponenty služby mobility Site Recovery při povolení replikace virtuálního počítače. Také se ujistíte, že vaše servery a virtuální počítače VMware splňují požadavky služby Site Recovery.
 
 Než začnete, doporučujeme [zkontrolovat architekturu](vmware-azure-architecture.md) určenou pro scénáře zotavení po havárii.
 
@@ -43,8 +43,6 @@ Než začnete, doporučujeme [zkontrolovat architekturu](vmware-azure-architectu
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-> [!TIP]
-> Doporučenou metodou pro nasazení konfiguračního serveru určeného k ochraně virtuálních počítačů VMware je použít model nasazení využívající OVF, jak je navrženo v tomto článku. V případě, že ve vaší organizaci platí omezení bránící nasazení šablony OVF, můžete [konfigurační server nainstalovat pomocí souboru UnifiedSetup.exe](physical-manage-configuration-server.md).
 
 Pro nastavení zdrojového prostředí potřebujete jeden vysoce dostupný místní počítač, který bude hostovat místní komponenty Site Recovery. Mezi tyto komponenty patří konfigurační server, procesový server a hlavní cílový server:
 
@@ -53,6 +51,10 @@ Pro nastavení zdrojového prostředí potřebujete jeden vysoce dostupný míst
 - Hlavní cílový server zpracovává replikační data během navrácení služeb z Azure po obnovení.
 
 Pokud chcete nastavit konfigurační server jako vysoce dostupný virtuální počítač VMware, stáhněte připravenou šablonu OVF (Open Virtualization Format) a importujte ji do VMware. Tím vytvoříte požadovaný virtuální počítač. Jakmile nastavíte konfigurační server, zaregistrujte ho do vybraného trezoru. Po registraci služba Site Recovery zjistí místní virtuální počítače VMware.
+
+> [!TIP]
+> V tomto kurzu se k vytvoření virtuálního počítače VMware s konfiguračním serverem používá šablona OVF. Pokud nemůžete použít tento postup, můžete provést [ruční instalaci](physical-manage-configuration-server.md). 
+
 
 ### <a name="download-the-vm-template"></a>Stažení šablony virtuálního počítače
 
@@ -103,7 +105,7 @@ Pokud chcete na konfigurační server přidat další síťový adaptér, uděle
 7. Nástroj provede několik úloh konfigurace a pak restartuje počítač.
 8. Znovu se přihlaste k počítači. Automaticky se spustí průvodce správou konfiguračního serveru.
 
-### <a name="configure-settings-and-connect-to-vmware"></a>Konfigurace nastavení a připojení k VMware
+### <a name="configure-settings-and-add-the-vmware-server"></a>Konfigurace nastavení a přidání serveru VMware
 
 1. V průvodci správou konfiguračního serveru vyberte **Nastavit připojení** a pak vyberte síťový adaptér, který bude přijímat provoz replikace. Potom vyberte **Uložit**. Po dokončení konfigurace není možné toto nastavení změnit.
 2. V části **Vyberte trezor služby Recovery Services** vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.

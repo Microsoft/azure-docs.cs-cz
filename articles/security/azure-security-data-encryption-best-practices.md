@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 159bdf681761b9fc46f77cbcf25a210db11d1d9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Doporučené postupy zabezpečení služby Azure Data a šifrování
 Jeden z klíčů do ochrany dat v cloudu je monitorování účtů pro možné stavy, která může nastat vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Pro účely služby Azure data bude šifrování osvědčené postupy pro zabezpečení a doporučení ohledně stavy následující data:
@@ -50,15 +50,15 @@ Azure data zabezpečení a šifrování osvědčené postupy popsané v tomto č
 * Vynutit šifrování dat na úrovni souborů
 
 ## <a name="enforce-multi-factor-authentication"></a>Vynutit ověřování Multi-Factor Authentication
-Prvním krokem při přístupu k datům a řízení v nástroji Microsoft Azure je k ověření uživatele. [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) je metoda ověření identity uživatele pomocí jiné metody než jenom uživatelské jméno a heslo. Toto ověřování metoda pomáhá chránit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení.
+Prvním krokem při přístupu k datům a řízení v nástroji Microsoft Azure je k ověření uživatele. [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) je metoda ověření identity uživatele pomocí jiné metody než jenom uživatelské jméno a heslo. Toto ověřování metoda pomáhá chránit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení.
 
 Povolením Azure MFA pro uživatele přidáte druhou vrstvu zabezpečení uživatelská přihlášení a transakce. V takovém případě transakci může získávat přístup k dokumentu umístěná na souborovém serveru nebo ve vaší službě SharePoint Online. Azure MFA také pomáhá IT, které sníží pravděpodobnost, že ohrožené pověření bude mít přístup k dat organizace.
 
 Například: Pokud vynutit Azure MFA pro uživatele a nakonfigurujte ho na použití telefonního hovoru nebo textové zprávy jako ověřování, pokud dojde k ohrožení bezpečnosti přihlašovací údaje uživatele, útočník nebudou mít přístup k jakémukoli prostředku, vzhledem k tomu, že nebudete mít přístup k telefonu uživatele. Organizace, které nepřidávejte tento další vrstvu ochrany identit budou náchylnější pro útoku krádeží přihlašovacích údajů, což může vést k ohrožení zabezpečení dat.
 
-Jeden alternativou pro organizace, které chcete zachovat ověřování řízení místní je použít [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), označované taky jako MFA na místě. Pomocí této metody přesto bude možné vynutit ověřování Multi-Factor authentication, a zajistit přitom ochranu MFA server místní.
+Jeden alternativou pro organizace, které chcete zachovat ověřování řízení místní je použít [Azure Multi-Factor Authentication Server](../active-directory/authentication/howto-mfaserver-deploy.md), označované taky jako MFA na místě. Pomocí této metody přesto bude možné vynutit ověřování Multi-Factor authentication, a zajistit přitom ochranu MFA server místní.
 
-Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Factor Authentication v cloudu](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Factor Authentication v cloudu](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě Role pomocí
 Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení. To je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Azure na základě rolí řízení přístupu (RBAC) slouží k přiřazení oprávnění pro uživatele, skupiny a aplikace v určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role.

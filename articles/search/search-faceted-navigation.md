@@ -1,24 +1,18 @@
 ---
-title: "Jak implementovat Fasetové navigace ve službě Azure Search | Microsoft Docs"
-description: "Přidejte Fasetové navigace k aplikacím, které se integrují s Azure Search, hostované cloudové vyhledávací službu v Microsoft Azure."
-services: search
-documentationcenter: 
+title: Jak implementovat Fasetové navigace ve službě Azure Search | Microsoft Docs
+description: Přidejte Fasetové navigace k aplikacím, které se integrují s Azure Search, hostované cloudové vyhledávací službu v Microsoft Azure.
 author: HeidiSteen
-manager: mblythe
-editor: 
-ms.assetid: cdf98fd4-63fd-4b50-b0b0-835cb08ad4d3
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetové navigace je filtrační mechanismus, který poskytuje řízené samotným přejít k podrobnostem navigace ve vyhledávání aplikací. Termín "Fasetové navigace, může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie použito pro filtrování výsledků.
@@ -54,7 +48,7 @@ Výchozí bod je stránku aplikace, která poskytuje Fasetové navigace, obvykle
 1. Dotaz odeslaných do služby Azure Search určuje struktuře Fasetové navigace přes jeden nebo více parametrů dotazu omezující vlastnosti. Například může zahrnovat dotaz `facet=Rating`, případně s `:values` nebo `:sort` možnost pro další upřesnění prezentaci.
 2. Prezentační vrstva vykreslí stránky vyhledávání, který poskytuje Fasetové navigace, pomocí omezujícími vlastnostmi zadanými v žádosti.
 3. Zadané strukturu Fasetové navigace, která zahrnuje hodnocení, kliknutí na tlačítko "4" k označení, že by se měly zobrazit jenom produkty s hodnocení 4 nebo vyšší. 
-4. V odpovědi aplikace odešle dotaz, který zahrnuje`$filter=Rating ge 4` 
+4. V odpovědi aplikace odešle dotaz, který zahrnuje `$filter=Rating ge 4` 
 5. Prezentační vrstva aktualizací stránky zobrazující snížené výslednou sadu, obsahující pouze tyto položky, které splňují nová kritéria (v tomto případě produkty hodnocení 4 a vyšší).
 
 Omezující vlastnost je parametr dotazu, ale Nezaměňujte se vstupem dotazu. Se nikdy nepoužívá jako kritéria pro výběr v dotazu. Místo toho představit omezující vlastnost parametry dotazu jako vstupy pro navigační strukturu, která se dodává zpět v odpovědi. Pro každý parametr dotazu omezující vlastnosti, které poskytnete vyhodnotí Azure Search, kolik dokumenty jsou v částečné výsledky pro každou hodnotu omezující vlastnosti.
@@ -301,7 +295,7 @@ Obecně platí Pokud zjistíte, že výsledky omezující vlastnost konzistentn�
 
 Pro každé Fasetové pole v navigačním stromu je výchozí limit 10 hodnot. Toto výchozí nastavení má smysl pro navigační struktury, protože udržuje seznam hodnot spravovat velikost. Přiřazením hodnoty počítat můžete přepsat výchozí nastavení.
 
-* `&facet=city,count:5`Určuje, že pouze měst prvních pět najít v horní části seřazeny výsledky se vrátí jako výsledek omezující vlastnosti. Vezměte v úvahu ukázkový dotaz s hledaný termín "letiště" a odpovídá 32. Pokud dotaz Určuje `&facet=city,count:5`, jsou zahrnuty pouze prvních pět jedinečný města s největším dokumenty ve výsledcích hledání ve výsledcích omezující vlastnosti.
+* `&facet=city,count:5` Určuje, že pouze měst prvních pět najít v horní části seřazeny výsledky se vrátí jako výsledek omezující vlastnosti. Vezměte v úvahu ukázkový dotaz s hledaný termín "letiště" a odpovídá 32. Pokud dotaz Určuje `&facet=city,count:5`, jsou zahrnuty pouze prvních pět jedinečný města s největším dokumenty ve výsledcích hledání ve výsledcích omezující vlastnosti.
 
 Všimněte si rozdíl mezi omezující vlastnost výsledky a výsledky hledání. Výsledky hledání jsou všechny dokumenty, které odpovídají dotazu. Omezující vlastnost výsledky jsou odpovídá pro každou hodnotu omezující vlastnosti. V příkladu se výsledky hledání obsahují města názvy, které nejsou v seznamu omezující vlastnost klasifikace (v našem příkladu 5). Po vymazání omezující vlastnosti, nebo zvolte jiné omezující vlastnosti kromě města se vidět výsledky, které jsou odfiltrována prostřednictvím Fasetové navigace. 
 
@@ -340,7 +334,7 @@ Používání faset přes rozsah hodnot je běžné aplikace požadavek vyhledá
 Vyhledávání systému Azure zjednodušuje vytváření rozsahu tím, že poskytuje dva přístupy pro výpočty rozsah. Pro oba přístupy vytvoří Azure Search příslušné rozsahy zadané vstupních hodnot, které jste zadali. Například pokud zadáte hodnoty rozsahu 10 | 20 | 30, automaticky vytvoří rozsahy 0-10, 10 20, 20-30. Aplikace můžete volitelně odebrat žádné intervaly, které jsou prázdné. 
 
 **Způsob 1: Použijte parametr interval**  
-Pokud chcete nastavit omezující vlastnosti ceníku v přírůstcích po 10, zadali byste:`&facet=price,interval:10`
+Pokud chcete nastavit omezující vlastnosti ceníku v přírůstcích po 10, zadali byste: `&facet=price,interval:10`
 
 **Způsob 2: Použijte seznam hodnot**  
 Číselná data můžete seznam hodnot.  Vezměte v úvahu rozsah omezující vlastnosti `listPrice` pole, vykresluje následujícím způsobem:

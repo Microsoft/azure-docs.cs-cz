@@ -8,7 +8,7 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD 
 1. Přihlaste se k předplatnému Azure, pomocí následujícího příkazu:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
@@ -17,7 +17,7 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD 
     Get-AzureRMSubscription
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```powershell
     Select-AzureRMSubscription `

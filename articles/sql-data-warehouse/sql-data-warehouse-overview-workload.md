@@ -1,25 +1,20 @@
 ---
-title: "Další informace o operacích Azure SQL Data Warehouse | Microsoft Docs"
-description: "Pružnost služby SQL Data Warehouse vám umožňuje zvýšit, snížit nebo pozastavit výpočetní výkon pomocí posuvné stupnice jednotek datového skladu (DWU). Tento článek vysvětluje metriky datového skladu a jejich vztah k jednotkám DWU. "
+title: Další informace o operacích Azure SQL Data Warehouse | Microsoft Docs
+description: 'Pružnost služby SQL Data Warehouse vám umožňuje zvýšit, snížit nebo pozastavit výpočetní výkon pomocí posuvné stupnice jednotek datového skladu (DWU). Tento článek vysvětluje metriky datového skladu a jejich vztah k jednotkám DWU. '
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: design
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 21e1f687e152cf91bd32389e0d5aa0dabd463b2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-warehouse-workload"></a>Úlohy datového skladu
 Úlohami datového skladu se rozumí všechny operace, které na datovém skladu probíhají. Úlohy datového skladu zahrnují celý proces načtení dat do skladu, provedení analýzy a vytvoření sestav na datovém skladu, správy dat v datovém skladu a exportu dat z datového skladu. Hloubka a šířka těchto složek je často úměrná úrovni vyspělosti datového skladu.
@@ -65,7 +60,7 @@ Jednou z možností, jak zpřístupnit data pro sestavy a analýzy, je odesílá
 * Pokud jde o generování sestav, každou noc můžete snímkem denních dat naplnit servery sestav jen pro čtení. Tato možnost dává zákazníkům větší šířku a současně snižuje nároky na výpočetní prostředky datového skladu. Z hlediska zabezpečení vám datová tržiště umožňují snížit počet uživatelů, kteří mají přístup k datovému skladu.
 * Pokud jde o analýzy, můžete buď vytvořit analytickou datovou krychli na datovém skladu a spustit analýzu na datovém skladu, nebo můžete předběžně zpracovat data a exportovat je do serveru pro analýzu k další analýze.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data].
 
 <!--Image references-->

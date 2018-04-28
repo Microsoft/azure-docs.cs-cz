@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Azure zabezpečení dokumenty white paper
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/05/2018
 |[Zabezpečení sítě Azure](azure-network-security.md)|Vás seznámí s širokou škálu ovládací prvky sítě, které můžete konfigurovat pro zvýšení zabezpečení řešení, které můžete nasadit v Azure. Zaměřuje se zákazníkem ovládacích prvků zabezpečení sítě.|
 |[Provozní zabezpečení Azure](azure-operational-security.md)|Azure poskytuje komplexní pohled na straně zákazníka provozní bezpečnostních technologií a služeb, které jsou k dispozici.|
 |[Technické možnosti zabezpečení Azure](azure-security-technical-capabilities.md)|Zaměřuje se na podporu Azure Storage, databáze SQL Azure, model virtuální počítač Azure a nástroje a infrastruktura funkce zabezpečení, které spravují všechny.|
-|[Příručka zabezpečení Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Poskytuje přehled jednotlivých funkcí zabezpečení, které lze použít s Azure Storage. Popisuje správu roviny zabezpečení, zabezpečení dat rovině, šifrování v klidovém stavu, v cestě a analytika úložiště šifrování.|
+|[Příručka zabezpečení Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Poskytuje přehled jednotlivých funkcí zabezpečení, které lze použít s Azure Storage. Popisuje správu roviny zabezpečení, zabezpečení dat rovině, šifrování v klidovém stavu, v cestě a analytika úložiště šifrování.|
 |[Klasifikace dat podle připravenosti na cloud](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |Tento dokument ke stažení představuje základní informace o klasifikaci dat a její hodnotu v kontextu cloud computing. Organizace hodnocením cloud computing pro budoucí použití nebo organizace aktuálně využívají cloudové služby a hledají způsoby, jak optimalizovat data správy odstraní využívat většinu z tohoto dokumentu.|
 |[Zásady správného řízení v Azure](governance-in-azure.md)|Popisuje funkce zabezpečení a zásad správného řízení integrovaný do Azure. Jsou uvedené hlavní zásad správného řízení problémy: zásady, procesy a postupy implementace cíle vaší organizace; zabezpečení a průběžné dodržování standardů organizace; monitorování a výstrahy.
 |[Izolace ve veřejném cloudu Azure](azure-isolation.md)|Popisuje, jak Azure poskytuje izolace proti škodlivým i škodlivý uživatele. Slouží jako vodítko pro architekturu řešení cloud tím, že nabízí různé možnosti izolace pro architekty. Hlavním cílem je na ovládací prvky zabezpečení zákazníka přístupem a nebude pokoušet o adresu SLA, ceny modely a DevOps postupem aspekty.|

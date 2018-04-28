@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 76149ce3864811cf2b5648f8dc0aa214e5820d9f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Zřídit hluboká učení virtuálního počítače na Azure 
 
@@ -44,9 +44,9 @@ Tady jsou kroky k vytvoření instance služby hloubkové Virtual Machine Learni
       6. **Umístění**: Vyberte datové centrum, která je nejvhodnější. Obvykle je datové centrum, které má většina vašich dat, nebo je nejblíže vašemu fyzické umístění pro nejrychlejší přístup k síti. 
       
 > [!NOTE]
-> Vzhledem k tomu, že DLVM je zřízený v instancích virtuálního počítače Azure NC-Series GPU, musíte zvolit jedno z umístění v Azure, který má grafickými procesory. Aktuálně jsou umístění, které mají virtuální počítače GPU: **Východ USA, severní jihu USA, Jižní střední USA, západní USA 2, Severní Evropa, západní Evropa**. Nejnovější seznam, zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/en-us/regions/services/) a vyhledejte **NC-Series** pod **výpočetní**. 
+> DLVM podporuje všechny NC a ND řady instancí GPU virtuálních počítačů. Při zřizování DLVM, musíte zvolit jedno z umístění v Azure, který má grafickými procesory. Zkontrolujte [produkty Azure podle oblasti stránky](https://azure.microsoft.com/regions/services/) stránky pro dostupná umístění a vyhledejte **NC-Series**, **NCv2-Series**, **NCv3-Series** , nebo **a Series** pod **výpočetní**. 
 
-   2. **Nastavení**: vyberte jednu z NC-Series GPU velikost virtuálního počítače, který splňuje požadavek na funkční a náklady na omezení. Vytvořte účet úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **Nastavení**: vyberte jednu z řady NC (NC NCv2, NCv3) nebo ND série GPU velikostí virtuálních počítačů, která splňuje požadavek na funkční a náklady na omezení. Vytvořte účet úložiště pro virtuální počítač.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Souhrn**: Zkontrolujte, zda jsou všechny informace, které jste zadali správné.
    5. **Kupte si**: klikněte na tlačítko **koupit** zahájíte přidělení přístupových práv. Je k dispozici odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní pro velikost serveru, který jste zvolili v **velikost** krok. 

@@ -1,13 +1,13 @@
 ---
-title: "Příprava infrastruktury Azure pro vysokou dostupnost SAP použití clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky pro instance SAP ASC nebo SCS | Microsoft Docs"
-description: "Příprava infrastruktury Azure pro vysokou dostupnost SAP pomocí pro SAP ASC nebo SCS instance clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky"
+title: Příprava infrastruktury Azure pro vysokou dostupnost SAP použití clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky pro instance SAP ASC nebo SCS | Microsoft Docs
+description: Příprava infrastruktury Azure pro vysokou dostupnost SAP pomocí pro SAP ASC nebo SCS instance clusteru převzetí služeb při selhání se systémem Windows a soubor sdílené složky
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f9e2108a7714dcbfd4f2db583cb6ee4b803f65a
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2945f731a71a66d2594eb31afb50d1ae775a2b42
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Připravit infrastrukturu Azure pro zajištění vysoké dostupnosti SAP pomocí systému Windows převzetí služeb při selhání clusteru a sdílení souborů pro SAP ASC nebo SCS instance
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/16/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností více SID SAP)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -212,7 +212,7 @@ Tento článek popisuje kroky přípravy infrastrukturu Azure, které jsou potř
 
 Než začnete s instalací, projděte si v následujícím článku:
 
-* [Průvodce architekturou: instance clusteru SAP ASC nebo SCS při selhání Windows clusteru pomocí sdílené složky][sap-high-availability-guide-wsfc-shared-disk]
+* [Průvodce architekturou: instance clusteru SAP ASC nebo SCS při selhání Windows clusteru pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Názvy hostitelů a IP adresy
@@ -227,7 +227,7 @@ Než začnete s instalací, projděte si v následujícím článku:
 
 **Tabulka 1**: ASC nebo SCS clusteru
 
-| SAP \<SID > | Čísla instance SAP ASC nebo SCS |
+| SAP \<SID &GT; | Čísla instance SAP ASC nebo SCS |
 | --- | --- |
 | PR1 | 00 |
 
@@ -341,6 +341,6 @@ _**Obrázek 2**: obrazovky uživatelského rozhraní pro šablonu správce prost
 
 V **typ účtu úložiště** vyberte **Storage úrovně Premium**. Všechna ostatní nastavení jsou stejné jako nastavení pro spravovaný disky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nainstalujte SAP NetWeaver vysokou dostupnost systému Windows převzetí služeb při selhání clusteru a sdílení souborů pro SAP ASC nebo SCS instance][sap-high-availability-installation-wsfc-file-share]

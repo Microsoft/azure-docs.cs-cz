@@ -3,7 +3,7 @@ title: Resetovat heslo nebo konfigurace vzdálené plochy na virtuální počít
 description: Zjistěte, jak resetovat heslo k účtu nebo služeb vzdálené plochy na virtuální počítač s Windows pomocí portálu Azure nebo Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
-author: danielsollondon
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
-ms.author: danis
-ms.openlocfilehash: 038fc81fd46f81a454ec908e2156579ff8d41ee6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 26a213d490ee3f661735ff5b893b0a5f5f9906da
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Obnovení služby Vzdálená plocha nebo jeho heslo pro přihlášení do systému Windows virtuálního počítače
 Pokud se nemůžete připojit k virtuálnímu počítači (VM) systému Windows, můžete resetovat heslo místního správce nebo resetovat konfiguraci služby Vzdálená plocha (nejsou podporovány na řadiče domény systému Windows). Portál Azure nebo rozšíření pro přístup virtuálních počítačů v prostředí Azure PowerShell můžete použít k resetování hesla. Po přihlášení do virtuálního počítače byste měli obnovit heslo pro daného uživatele.  
@@ -54,24 +54,24 @@ Vyberte **jenom resetování konfigurace** v rozevírací nabídce klikněte **a
 
 
 ## <a name="vmaccess-extension-and-powershell"></a>Rozšíření VMAccess a prostředí PowerShell
-Ujistěte se, že máte [nejnovější modul prostředí PowerShell nainstalovaný a nakonfigurovaný](/powershell/azure/overview) a přihlášení k předplatnému Azure s `Login-AzureRmAccount` rutiny.
+Ujistěte se, že máte [nejnovější modul prostředí PowerShell nainstalovaný a nakonfigurovaný](/powershell/azure/overview) a přihlášení k předplatnému Azure s `Connect-AzureRmAccount` rutiny.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Resetovat heslo k účtu místního správce**
-Resetování správce heslo nebo uživatelské jméno s [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny prostředí PowerShell. Vytvořte přihlašovací údaje účtu takto:
+Resetování správce heslo nebo uživatelské jméno s [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny prostředí PowerShell. 
 
 ```powershell
-$cred=Get-Credential
+$SubID = "<SUBSCRIPTION ID>" 
+$RgName = "<RESOURCE GROUP NAME>" 
+$VmName = "<VM NAME>" 
+$Location = "<LOCATION>" 
+ 
+Connect-AzureRmAccount 
+Select-AzureRMSubscription -SubscriptionId $SubID 
+Set-AzureRmVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
 ```
 
 > [!NOTE] 
 > Pokud zadáte jiný název než aktuální účet místního správce na vašem virtuálním počítači, bude rozšíření VMAccess přidejte účet místního správce s tímto názvem a přiřaďte zadané heslo k tomuto účtu. Pokud existuje účet místního správce na vašem virtuálním počítači, resetuje heslo a pokud je účet zakázán, rozšíření VMAccess povolí ho.
-
-
-Následující příklad aktualizace virtuálního počítače s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup` k zadané přihlašovací údaje.
-
-```powershell
-Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -UserName $cred.GetNetworkCredential().UserName -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
-```
 
 ### <a name="reset-the-remote-desktop-service-configuration"></a>**Resetovat konfiguraci služby Vzdálená plocha**
 Obnovte vzdálený přístup k virtuálnímu počítači pomocí [Set-AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) rutiny prostředí PowerShell. Následující příklad resetuje rozšíření pro přístup s názvem `myVMAccess` ve virtuálním počítači s názvem `myVM` v `myResourceGroup` skupiny prostředků:

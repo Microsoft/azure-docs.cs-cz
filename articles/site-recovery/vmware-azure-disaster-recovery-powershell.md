@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 2a0f183770a07cd05963e88c672452cfeb80e567
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikovat a převzít služby virtuálních počítačů VMware do Azure pomocí prostředí PowerShell
 
@@ -42,10 +42,10 @@ Než začnete, potřebujete:
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure
 
-Přihlaste se k předplatnému Azure, pomocí rutiny Login-AzureRmAccount
+Přihlaste se k předplatnému Azure, pomocí rutiny Connect-AzureRmAccount
 
 ```azurepowershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 Vyberte předplatné Azure, které chcete replikovat virtuální počítače VMware. Použijte rutinu Get-AzureRmSubscription získat přístup k seznamu předplatných Azure, které máte. Vyberte předplatné Azure, postup při použití rutiny Select-AzureRmSubscription.
 
@@ -347,9 +347,9 @@ Nyní replikovat následující virtuální počítače pomocí nastavení zadan
 
 |Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolu  |Zásada           |Účet pro instalaci služby Mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílové podsíti  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Podsíť 1       |
-|CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Podsíť 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Podsíť 1       |   
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |Automatické obnovení systému vnet                 |Podsíť 1       |
+|CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |Automatické obnovení systému vnet                 |Podsíť 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |Automatické obnovení systému vnet                 |Podsíť 1       |   
 
  
 ```azurepowershell

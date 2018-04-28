@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Systému SQL Server uložené procedury aktivity
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -43,7 +43,7 @@ Aktivita uložené procedury můžete vyvolat uloženou proceduru v jednom z ná
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server Database.  Pokud používáte systém SQL Server, nainstalujte Brána pro správu dat na stejném počítači, který je hostitelem databáze nebo na samostatný počítač, který má přístup k databázi. Brána pro správu dat je, že komponenty, která se připojuje data způsobem, zabezpečení a správě zdroje na místní nebo na virtuální počítač Azure s cloudovými službami. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) článku.
+- Databáze systému SQL Server.  Pokud používáte systém SQL Server, nainstalujte Brána pro správu dat na stejném počítači, který je hostitelem databáze nebo na samostatný počítač, který má přístup k databázi. Brána pro správu dat je, že komponenty, která se připojuje data způsobem, zabezpečení a správě zdroje na místní nebo na virtuální počítač Azure s cloudovými službami. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) článku.
 
 > [!IMPORTANT]
 > Při kopírování dat do Azure SQL Database nebo SQL Server, můžete nakonfigurovat **SqlSink** v aktivitě kopírování k vyvolání uložené procedury pomocí **sqlWriterStoredProcedureName** vlastnost. Další informace najdete v tématu [vyvolat uloženou proceduru z aktivity kopírování](data-factory-invoke-stored-procedure-from-copy-activity.md). Podrobnosti o vlastnosti, viz následující články konektor: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [systému SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Volání uložené procedury při kopírování dat do Azure SQL Data Warehouse pomocí aktivity kopírování není podporována. Ale aktivity uložené procedury můžete vyvolat uloženou proceduru v SQL Data Warehouse. 
@@ -161,7 +161,7 @@ Všimněte si následujících vlastností:
 
 - **Typ** je nastavena na **SqlServerStoredProcedure**. 
 - **StoredProcedureName** v typu vlastnosti nastavena na **sp_sample** (název uložené procedury).
-- **StoredProcedureParameters** část obsahuje jeden parametr s názvem **hodnoty DataTime**. Název a malá a velká písmena parametr ve formátu JSON musí odpovídat názvu a velká a malá písmena parametru v definici uložené procedury. Pokud je třeba předat hodnotu null pro parametr, použijte syntaxi: `"param1": null` (všechny malá písmena).
+- **StoredProcedureParameters** část obsahuje jeden parametr s názvem **data a času**. Název a malá a velká písmena parametr ve formátu JSON musí odpovídat názvu a velká a malá písmena parametru v definici uložené procedury. Pokud je třeba předat hodnotu null pro parametr, použijte syntaxi: `"param1": null` (všechny malá písmena).
  
 1. Pokud tlačítko nevidíte, klikněte na panelu nástrojů na **... Další** na panelu příkazů a klikněte na **nový kanál**.
 2. Zkopírujte a vložte následující fragment kódu JSON:   

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 7c340f60bc648909d073821f1987036da9633458
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Trezor záloh upgradovat na trezor služeb zotavení
 Tento článek obsahuje přehled jaké trezor služeb zotavení poskytuje, často kladené otázky týkající se upgradu existující zálohy trezoru do trezoru služeb zotavení a kroků po upgradu. Trezor služeb zotavení je ekvivalentem Azure Resource Manager, kde zálohovaných dat úložiště záloh. Data je obvykle kopie dat, nebo informace o konfiguraci pro virtuální počítače (VM), úlohy, servery nebo pracovní stanice, jestli místně nebo v Azure.
@@ -60,7 +60,7 @@ Druhý obrazovky zobrazuje v nápovědě, odkazy, které vám pomůžou začít 
 Trezor služeb zotavení podporuje zadání informace o časovém pásmu v zásady zálohování. Po úspěšném upgradu trezoru přejděte do zásady zálohování z nabídky Nastavení trezoru a aktualizovat informace o časovém pásmu pro každé ze zásad nakonfigurovaná v trezoru. Tato obrazovka ukazuje již časový plán zálohování, zadaný jako na místní časové pásmo použít při vytvoření zásady. 
 
 ## <a name="enhanced-security"></a>Rozšířené zabezpečení
-Úložiště záloh upgradován do trezoru služeb zotavení, nastavení zabezpečení pro tento trezor jsou automaticky zapnuté. Při nastavení zabezpečení jsou u určité operace, třeba odstranění zálohy, nebo změna přístupového hesla o vyžadují [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN kód. Další informace o lepší zabezpečení, najdete v článku [funkcí zabezpečení k ochraně hybridní zálohy](backup-azure-security-feature.md). Pokud je zapnuta lepší zabezpečení, mají být uchována data nahoru na 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníci se účtují úložiště těchto dat zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, serveru Azure Backup a System Center Data Protection Manager. 
+Úložiště záloh upgradován do trezoru služeb zotavení, nastavení zabezpečení pro tento trezor jsou automaticky zapnuté. Při nastavení zabezpečení jsou u určité operace, třeba odstranění zálohy, nebo změna přístupového hesla o vyžadují [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN kód. Další informace o lepší zabezpečení, najdete v článku [funkcí zabezpečení k ochraně hybridní zálohy](backup-azure-security-feature.md). Pokud je zapnuta lepší zabezpečení, mají být uchována data nahoru na 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníci se účtují úložiště těchto dat zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, serveru Azure Backup a System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>Shromažďování dat pro váš trezoru
 Jednou budete upgradovat do trezoru služeb zotavení, konfigurace sestav pro zálohování Azure (pro virtuální počítače IaaS a služeb zotavení Microsoft Azure agent) a mít přístup k sestavám pomocí Power BI. Další informace o shromažďování dat, najdete v článku [konfigurace služby Azure Backup sestavy](backup-azure-configure-reports.md).

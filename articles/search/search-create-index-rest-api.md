@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: e871fa8cd2228067b3a1511b74ff7a425d1dc9fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -83,12 +83,12 @@ Upozorňujeme, že právě jedno pole v indexu typu `Edm.String` musí být urč
 Výše uvedená definice indexu používá pro pole `description_fr` analyzátor jazyka, protože je určené k ukládání francouzského textu. Další informace o analyzátorech jazyka najdete v [tématu jazykové podpory](https://docs.microsoft.com/rest/api/searchservice/Language-support) a příslušném [příspěvku na blogu](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 ## <a name="issue-the-http-request"></a>Vydání žádosti HTTP
-1. Použijte definici indexu jako text žádosti a vydejte žádost HTTP POST do adresy URL koncového bodu služby Azure Search. V adrese URL nezapomeňte použít název služby jako název hostitele a vložit správné `api-version` jako parametr řetězce dotazu (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2016-09-01`).
+1. Použijte definici indexu jako text žádosti a vydejte žádost HTTP POST do adresy URL koncového bodu služby Azure Search. V adrese URL nezapomeňte použít název služby jako název hostitele a vložit správné `api-version` jako parametr řetězce dotazu (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2017-11-11`).
 2. V hlavičkách žádostí zadejte `Content-Type` jako `application/json`. V hlavičce `api-key` budete taky muset zadat klíč správce služby, který jste identifikovali v kroku I.
 
 Abyste mohli vydat níže uvedenou žádost, budete muset zadat vlastní název služby a klíč rozhraní API:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [api-key]
 
@@ -97,7 +97,7 @@ V případě úspěšné žádosti by se měl zobrazit stavový kód 201 (vytvo�
 
 Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP DELETE. Takto bychom například odstranili index „hotels“:
 
-    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2016-09-01
+    DELETE https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11
     api-key: [api-key]
 
 

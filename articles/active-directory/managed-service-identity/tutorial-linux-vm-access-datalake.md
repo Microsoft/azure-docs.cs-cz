@@ -1,11 +1,11 @@
 ---
-title: "Identita spravované služby, pro virtuální počítač s Linuxem používat pro přístup k Azure Data Lake Store"
-description: "Kurz ukazuje, jak spravovat službu Identity (MSI) pro virtuální počítač s Linuxem používat pro přístup k Azure Data Lake Store."
+title: Identita spravované služby, pro virtuální počítač s Linuxem používat pro přístup k Azure Data Lake Store
+description: Kurz ukazuje, jak spravovat službu Identity (MSI) pro virtuální počítač s Linuxem používat pro přístup k Azure Data Lake Store.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: bef549a0cb8a876bbf8fbf281a6c2d1d489736af
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8b7e6cbd4bc7cfef349e9cebd9e4db537701a877
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Identita spravované služby, pro virtuální počítač s Linuxem používat pro přístup k Azure Data Lake Store
 
@@ -58,16 +58,13 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. Můžete také
 
 ## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači
 
-MSI pro virtuální počítač můžete získat přístupové tokeny z Azure AD bez nutnosti uvést přihlašovací údaje do vašeho kódu. Povolení MSI nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači, a umožňuje MSI ve službě Správce prostředků Azure.  
+Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení spravovat Identity služby na virtuálním počítači, nemá dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači.
 
 1. Pro **virtuálního počítače**, vyberte virtuální počítač, který chcete povolit MSI v.
 2. V levém podokně vyberte **konfigurace**.
 3. Zobrazí **identita spravované služby**. Registrovat a povolit MSI, vyberte **Ano**. Pokud chcete zakázat, vyberte **ne**.
    ![Výběr "Registrovat s Azure Active Directory"](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 4. Vyberte **Uložit**.
-5. Pokud chcete zkontrolovat, jaká rozšíření se na tento virtuální počítač Linux, vyberte **rozšíření**. Pokud je povoleno MSI, **ManagedIdentityExtensionforLinux** se zobrazí v seznamu.
-
-   ![Seznam přípon](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udělit přístup virtuálních počítačů do Azure Data Lake Store
 
@@ -105,7 +102,7 @@ K dokončení těchto kroků, potřebujete klientem SSH. Pokud používáte syst
 3. V okně terminálu pomocí cURL, vytvořte žádost na místní koncový bod MSI získat přístupový token pro systém souborů Data Lake Store. Identifikátor prostředku pro Data Lake Store je "https://datalake.azure.net/".  Je důležité zahrnout do adresy koncové lomítko identifikátor prostředku.
     
    ```bash
-   curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   
+   curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   
    ```
     
    Úspěšná odpověď vrátí přístupový token, který použijete k ověření do Data Lake Store:

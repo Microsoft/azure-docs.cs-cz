@@ -1,6 +1,6 @@
 ---
-title: "Ověření Azure Active Directory - SQL Azure (přehled) | Microsoft Docs"
-description: "Další informace o tom, jak používat Azure Active Directory k ověřování připojení k databázi SQL, spravované Instance a datový sklad SQL"
+title: Ověření Azure Active Directory - SQL Azure (přehled) | Microsoft Docs
+description: Další informace o tom, jak používat Azure Active Directory k ověřování připojení k databázi SQL, spravované Instance a datový sklad SQL
 services: sql-database
 author: GithubMirek
 manager: craigg
@@ -9,18 +9,18 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: cfad53a3f86450163b2e29d5e4d4ed2726ecb0bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Pomocí ověřování Azure Active Directory k ověřování připojení k databázi SQL, spravované Instance nebo SQL Data Warehouse
 Ověřování Azure Active Directory je mechanismus připojit k Microsoft Azure SQL Database a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). Při ověřování Azure AD můžete centrálně spravovat identity uživatelů, databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID poskytuje jednotné místo pro správu uživatelů databáze a zjednodušuje správu oprávnění. Výhody patří:
 
 * Nabízí alternativu k ověřování serveru SQL Server.
 * Pomáhá zastavit šíření identit uživatelů mezi servery databáze.
-* Umožňuje otočení heslo na jednom místě
+* Umožňuje otočení heslo na jednom místě.
 * Zákazníci můžete spravovat oprávnění databáze pomocí skupin externí (Azure AD).
 * Ukládání hesel se může eliminovat tím, že umožňuje integrované ověřování systému Windows a jiných forem ověřování podporovaných službou Azure Active Directory.
 * K ověření identity na úrovni databáze používá Azure AD authentication uživatele databáze s omezením.
@@ -75,7 +75,7 @@ Související s spravované instanci Azure AD omezení:
 - Správce služby Azure AD mohou vytvářet databáze, jen uživatele Azure AD jsou vymezeny do jedné databáze a nemají toto oprávnění
 - Vlastnictví databáze:
   - Objekt zabezpečení Azure AD nemůže změnit vlastnictví pro databázi (vlastnosti AUTORIZACE ON databáze) a nelze ji nastavit jako vlastníka.
-  - U databází vytvořených správcem služby Azure AD je nastaven žádný vlastnictví (owner_sid pole v sys.sysdatabases je 0x1)
+  - U databází vytvořených správcem služby Azure AD je nastaven žádný vlastnictví (owner_sid pole v sys.sysdatabases je 0x1).
 - Agent serveru SQL nelze spravovat, když se přihlásí pomocí objektů služby Azure AD. 
 - Nelze zosobnit správce Azure AD pomocí EXECUTE AS
 - Připojení DAC nepodporuje objekty zabezpečení Azure AD. 

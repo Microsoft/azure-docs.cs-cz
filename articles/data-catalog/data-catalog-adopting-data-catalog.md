@@ -1,12 +1,12 @@
 ---
-title: "Metody a procesy pro zavádění služby Azure Data Catalog | Dokumentace Microsoftu"
-description: "Tento článek představuje přístup a proces pro organizace uvažující o přijmutí služby Azure Data Catalog, včetně definování vize, identifikace klíčových případů obchodního použití a výběr pilotního projektu."
+title: Metody a procesy pro zavádění služby Azure Data Catalog | Dokumentace Microsoftu
+description: Tento článek představuje přístup a proces pro organizace uvažující o přijmutí služby Azure Data Catalog, včetně definování vize, identifikace klíčových případů obchodního použití a výběr pilotního projektu.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
 Tento článek vám pomůže přijmout službu **Azure Data Catalog** ve vaší organizaci. Chcete-li úspěšně přijmout službu **Azure Data Catalog**, budete se muset zaměřit na tři klíčové položky: definovat svou vizi, identifikovat klíčové případy obchodního použití v rámci vaší organizace a zvolit pilotní projekt.
@@ -142,7 +142,7 @@ Zde jsou některé tipy, jak začít:
 Než pilotní tým přejde na používání katalogu Data Catalog, naplánujte zahajovací schůzku a prodiskutujte očekávání pro pilotní projekt a poskytněte počáteční školení.
 
 ### <a name="set-expectations"></a>Nastavte očekávání
-Nastavení výjimek a cílů pomáhá podnikovým uživatelům zaměřit se na konkrétní výsledky. Pokud chcete udržet dynamiku projektu, přiřazujte pravidelné úkoly (například denně nebo týdně podle rozsahu a doby trvání pilotního projektu). Jednou z nejcennějších možností katalogu Data Catalog jsou crowdsourcingové datové prostředky, takže firemní uživatelé mohou mít prospěch ze znalostí podnikových dat. Skvělé přiřazení úkolu je pro každého člena pilotního týmu zaregistrovat nebo opatřit poznámkami alespoň jeden zdroj dat, který použili. Viz [Registrace zdroje dat](data-catalog-get-started.md) a [Postup přidání poznámek ke zdrojům dat](data-catalog-get-started.md).
+Nastavení očekávání a cílů pomáhá podnikovým uživatelům zaměřit se na konkrétní výsledky. Pokud chcete udržet dynamiku projektu, přiřazujte pravidelné úkoly (například denně nebo týdně podle rozsahu a doby trvání pilotního projektu). Jednou z nejcennějších možností katalogu Data Catalog jsou crowdsourcingové datové prostředky, takže firemní uživatelé mohou mít prospěch ze znalostí podnikových dat. Skvělé přiřazení úkolu je pro každého člena pilotního týmu zaregistrovat nebo opatřit poznámkami alespoň jeden zdroj dat, který použili. Viz [Registrace zdroje dat](data-catalog-get-started.md) a [Postup přidání poznámek ke zdrojům dat](data-catalog-get-started.md).
 
 V pravidelných intervalech se setkávejte s týmem, abyste posoudili některé poznámky. Dobré poznámky o zdrojích dat jsou jádrem úspěšného přijetí katalogu Data Catalog, protože poskytují smysluplný přehled zdrojů dat v centrálním umístění. Bez dobrých poznámek zůstanou znalosti o zdrojích dat roztroušené po celém podniku. Viz [Postup přidání poznámek ke zdrojům dat](data-catalog-get-started.md).
 

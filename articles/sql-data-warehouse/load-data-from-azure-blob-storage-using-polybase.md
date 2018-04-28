@@ -1,31 +1,24 @@
 ---
-title: 'Kurz: Načítání dat pomocí PolyBase – Z Azure Storage Blob do služby Azure SQL Data Warehouse | Microsoft Docs'
-description: Kurz, který používá Azure Portal a aplikaci SQL Server Management Studio k načtení dat taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse.
+title: 'Kurz: Taxicab New Yorku zatížení dat do Azure SQL Data Warehouse | Microsoft Docs'
+description: Kurz používá Azure portal a SQL Server Management Studio načíst New Yorku Taxicab data z veřejné Azure blob do Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: ''
 author: ckarst
-manager: jhubbard
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.custom: mvc,develop data warehouses
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/16/2018
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
 ms.author: cakarst
-ms.reviewer: barbkess
-ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.reviewer: igorstan
+ms.openlocfilehash: fb918cc70a3a3d21e86c9d530e264199794886f1
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Kurz: Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Kurz: Taxicab New Yorku zatížení dat do Azure SQL Data Warehouse
 
-PolyBase je standardní technologie načítání pro přesun dat do služby SQL Data Warehouse. V tomto kurzu pomocí PolyBase načtete data taxislužby města New York z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
+Tento kurz používá PolyBase k načtení dat New Yorku Taxicab z veřejné blob Azure do Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
 
 > [!div class="checklist"]
 > * Vytvoření datového skladu na webu Azure Portal
@@ -50,7 +43,7 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Vytvoření prázdného datového skladu SQL
 
-Datový sklad SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků](performance-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Datový sklad SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
 
 Pomocí následujících kroků vytvořte prázdný datový sklad SQL. 
 
@@ -170,7 +163,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
-Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. [Maximální hodnoty paměti](performance-tiers.md#memory-maximums) se definují v závislosti na [úrovni výkonu](performance-tiers.md) a [třídě prostředků](resource-classes-for-workload-management.md). 
+Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální paměť hodnoty jsou definovány podle [úroveň výkonu](memory-and-concurrency-limits.md#performance-tiers), [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md), a [Třída prostředků](resource-classes-for-workload-management.md). 
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
@@ -221,7 +214,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC20.
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Vytvoření externích tabulek pro ukázková data
 
-Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Tento kurz ukazuje, jak pomocí [PolyBase](/sql/relational-databases/polybase/polybase-guide) načíst data taxislužby města New York z úložiště objektů blob v Azure. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
+Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. V tomto kurzu se dozvíte, jak používat externí tabulky k načtení New Yorku taxíkem souboru cab dat z objektu blob úložiště Azure. Informace o přesunu dat do Azure Blob Storage nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v části s [přehledem načítání](sql-data-warehouse-overview-load.md).
 
 Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. 
 
@@ -599,7 +592,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Vytvořili jste externí tabulky pro definici struktury dat uložených v Azure Storage Blob a pak jste pomocí příkazu PolyBase CREATE TABLE AS SELECT načetli data do svého datového skladu. 
 
 Provedli jste tyto akce:

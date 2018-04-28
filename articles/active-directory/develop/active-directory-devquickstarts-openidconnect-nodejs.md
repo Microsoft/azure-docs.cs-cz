@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Začínáme se službou Azure AD Node.js webové aplikace
 Tady používáme Passport:
@@ -331,7 +331,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
 
 2. V kořenovém adresáři vytvořte trasu `/routes/user.js`.
 
-                ```JavaScript
+    ```JavaScript
                 /*
                  * GET users listing.
                  */
@@ -339,7 +339,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
                 exports.list = function(req, res){
                   res.send("respond with a resource");
                 };
-                ```
+    ```
 
  Tyto předají požadavek na našem zobrazení, včetně uživatele, pokud je k dispozici.
 
@@ -356,7 +356,7 @@ Nyní `app.js` dokončení. Musíme jednoduše přidat trasy a zobrazení, kter�
     <% } %>
     ```
 
-4. Vytvořte `/views/account.ejs` zobrazení pod kořenovým adresářem, takže jsme můžete zobrazit další informace, `passport-azuread` pozastavil v požadavku uživatele.
+4. Vytvořte `/views/account.ejs` zobrazení pod kořenovým adresářem, takže jsme můžete zobrazit další informace, `passport-azure-ad` pozastavil v požadavku uživatele.
 
     ```Javascript
     <% if (!user) { %>

@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bc6c98784195aaf80cb6ca32ef29f75666099b06
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Postup nasazení Linux Hybrid Runbook Worker
 
@@ -36,7 +36,7 @@ Než budete pokračovat, musíte svůj účet Automation je spojena se pracovní
 
 1.  Povolte "Automation Hybrid Worker" řešení v Azure. To můžete provést buď:
 
-   1. Přidat **Automation Hybrid Worker** řešení k předplatnému pomocí postupu v [řešení pro správu přidat analýzy protokolů do pracovního prostoru](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions).
+   1. Přidat **Automation Hybrid Worker** řešení k předplatnému pomocí postupu v [řešení pro správu přidat analýzy protokolů do pracovního prostoru](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions).
    2. Spusťte následující rutinu:
 
         ```powershell

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 5d68df424fbedbb9f0d17b87ceb243b079b3da14
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 412098ad6b8a6620b165b6cecaa0d0b3ee05f63e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Řízení přístupu na základě rolí pro StorSimple
 
@@ -45,7 +45,7 @@ V následujícím příkladu Začneme s předdefinovaná role **čtečky** umož
 
 2. Přihlásí se k Azure.
 
-    `Login-AzureRMAccount`
+    `Connect-AzureRmAccount`
 
 3. Role čtenáře exportujte jako šablonu JSON ve vašem počítači.
 
@@ -113,7 +113,7 @@ Další informace, přejděte na [vytvořit vlastní role RBAC pomocí prostřed
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Ukázkový výstup pro vytvoření vlastní role pomocí prostředí PowerShell
 
 ```
-PS C:\WINDOWS\system32> Login-AzureRMAccount
+PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
 Environment           : AzureCloud
 Account               : john.doe@contoso.com

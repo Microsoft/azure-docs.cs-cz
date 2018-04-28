@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření služby application gateway s interním přesměrování - prostředí Azure PowerShell | Microsoft Docs"
-description: "Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu vhodné back-end serverů pomocí prostředí Azure Powershell."
+title: Vytvoření služby application gateway s interním přesměrování - prostředí Azure PowerShell | Microsoft Docs
+description: Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu vhodné back-end serverů pomocí prostředí Azure Powershell.
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: davidmu
-ms.openlocfilehash: c319d4f9aa3f607bccdc7237ce1f678b338180d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c0da7920692673ce414d76932fe23280d3b217dd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Vytvoření služby application gateway s interním přesměrování pomocí Azure PowerShell
 
 Prostředí Azure Powershell můžete použít ke konfiguraci [webové přenosy přesměrování](application-gateway-multi-site-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu definujete fondu back-end pomocí škálovací sadu virtuálních počítačů. Nakonfigurujete naslouchací procesy a pravidla založená na domény, které vlastníte a ujistěte se, že web přenos dorazí na odpovídajícímu fondu adres. V tomto kurzu se předpokládá, že vlastníte více domén a používá příklady *www.contoso.com* a *www.contoso.org*.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení sítě
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Chcete-li najít verzi, spusťte ` Get-Module -ListAvailable AzureRM` . Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 3.6 nebo novější. Chcete-li najít verzi, spusťte ` Get-Module -ListAvailable AzureRM` . Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -45,7 +45,7 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
 Vytvoření konfigurací podsítě pro *myBackendSubnet* a *myAGSubnet* pomocí [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořit virtuální síť s názvem *myVNet* pomocí [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfigurací podsítě. A nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Tyto prostředky se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky.
 
@@ -224,7 +224,7 @@ Add-AzureRmApplicationGatewayRequestRoutingRule `
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="create-virtual-machine-scale-set"></a>Vytvoření škálovací sadu virtuálních počítačů
+## <a name="create-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která podporuje fondu back-end, který jste vytvořili. Sada škálování, který vytvoříte jmenuje *myvmss* a obsahuje dvě instance virtuálního počítače, na kterých je nainstalovat službu IIS. Můžete přiřadit měřítka nastaven fond back-end při konfiguraci nastavení IP adresy.
 
@@ -299,7 +299,7 @@ Zadejte název domény do panelu Adresa prohlížeče. Například http://www.co
 
 ![Testování serveru contoso v aplikační brány](./media/tutorial-internal-site-redirect-powershell/application-gateway-iistest.png)
 
-Změnit adresu na vaše jiné domény, například http://www.contoso.org a jste měli vidět, že provoz byl přesměrován zpět na naslouchací proces pro www.contoso.com.
+Změnit adresu na vaší domény, například http://www.contoso.org a měli byste vidět, že provoz byl přesměrován zpět na naslouchací proces pro www.contoso.com.
 
 ## <a name="next-steps"></a>Další postup
 

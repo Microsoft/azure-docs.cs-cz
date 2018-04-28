@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: ba57530c5708216ca7c990025d513144dcdf82a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -42,8 +42,6 @@ Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a př
 |Azure SQL Database (jedna nebo fond) |**Elastické fondy**: pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace své stávající místní aplikace do víceklientské aplikace SaaS, navrhnout elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>**Jedna databáze**: pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
 |Virtuální počítač SQL IaaS|Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
 |||
-
-<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>Jak programově identifikovat a spravovat Instance
 
@@ -224,5 +222,5 @@ Spravované Instance povolení správce systému a zaměřit se na čem nejvíc 
 
 - Pro funkce a porovnání seznamu, najdete v části [společné funkce SQL](sql-database-features.md).
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-vnet-configuration.md).
-- Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-tutorial-portal.md).
+- Kurz, který vytvoří instanci spravované a obnoví databázi ze záložního souboru, najdete v části [vytvořit instanci spravované](sql-database-managed-instance-create-tutorial-portal.md).
 - Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).

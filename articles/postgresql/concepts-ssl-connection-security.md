@@ -1,20 +1,20 @@
 ---
-title: "Konfigurace připojení SSL ve službě Azure Database pro PostgreSQL"
-description: "Pokyny a informace pro konfiguraci Azure databáze PostgreSQL a přidružené aplikace odpovídajícím způsobem používat připojení SSL."
+title: Konfigurace připojení SSL ve službě Azure Database pro PostgreSQL
+description: Pokyny a informace pro konfiguraci Azure databáze PostgreSQL a přidružené aplikace odpovídajícím způsobem používat připojení SSL.
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
 manager: kfile
 ms.service: postgresql
-ms.custom: 
+ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurace připojení SSL ve službě Azure Database pro PostgreSQL
 Azure databázi PostgreSQL upřednostní připojení vaší klientské aplikace do služby PostgreSQL pomocí Secure Sockets Layer (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
@@ -98,7 +98,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>Pro Windows
 Instalace OpenSSL na počítači s Windows můžete udělat následujícími způsoby:
-1. **(Doporučeno)**  Pomocí integrované funkce Bash pro systém Windows ve Windows 10 a vyšší, OpenSSL instaluje ve výchozím nastavení. Najdete pokyny k povolení funkce Bash pro Windows v systému Windows 10 [zde](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+1. **(Doporučeno)**  Pomocí integrované funkce Bash pro systém Windows ve Windows 10 a vyšší, OpenSSL instaluje ve výchozím nastavení. Najdete pokyny k povolení funkce Bash pro Windows v systému Windows 10 [zde](https://msdn.microsoft.com/commandline/wsl/install_guide).
 2. Prostřednictvím stahování k aplikaci Win32/64 poskytované komunitou. Když OpenSSL Software Foundation neposkytuje ani neschvaluje žádné konkrétní instalační služba systému Windows, poskytují seznam k dispozici instalační programy [zde](https://wiki.openssl.org/index.php/Binaries).
 
 ### <a name="decode-your-certificate-file"></a>Dekódovat soubor certifikátu

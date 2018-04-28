@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ef86af61284bb208cc8c469e3fe75bd4f4bdc5bf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční dokumentace - IoT Hub kvóty a omezení
 
@@ -45,8 +45,8 @@ Následující tabulka obsahuje vynucené omezení. Hodnoty se vztahují k rozbo
 | Cloud zařízení obdrží<sup>1</sup> <br/> (jenom když zařízení používá protokol HTTPS)| 16.67/sec/Unit (1000/minimální/unit) | 16.67/sec/Unit (1000/minimální/unit) | 833.33/sec/Unit (50000/minimální/unit) |
 | Nahrání souboru | 1.67 souboru nahrávání oznámení/sec/jednotka (min/100/unit) | 1.67 souboru nahrávání oznámení/sec/jednotka (min/100/unit) | 83.33 souboru odesílání oznámení/sec/jednotky (5000/minimální/unit) |
 | Přímé metody<sup>1</sup> | 160KB/sec/jednotka<sup>2</sup> | 480KB/sec/jednotka<sup>2</sup> | 24MB za sekundu nebo jednotku<sup>2</sup> | 
-| Přečte dvojče zařízení<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
-| Aktualizace zařízení twin<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
+| Twin (zařízení a modul) čtení<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
+| Twin aktualizace (zařízení a modul)<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
 | Úlohy operations<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (min/100/unit) | 1.67/sec/Unit (min/100/unit) | 83.33/sec/Unit (5000/minimální/unit) |
 | Úlohy na zařízení operaci propustnost<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
 

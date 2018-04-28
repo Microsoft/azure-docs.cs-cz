@@ -3,7 +3,7 @@ title: Nakonfigurujte virtuální síť Azure (klasický) - sítě konfiguračn�
 description: Naučte se vytvářet a upravovat virtuální sítě (klasické) exportováním, změna a Import konfiguračního souboru sítě.
 services: virtual-network
 documentationcenter: ''
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 4349f6ef28ef8667802a81df1fee133ff3f56e51
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ed47a5d1449ba634f90e93a82f15daf6e44a553e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (klasické) pomocí konfiguračního souboru sítě
 > [!IMPORTANT]

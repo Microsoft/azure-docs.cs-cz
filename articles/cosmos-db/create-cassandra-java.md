@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Cassandra API s využitím Javy – Azure Cosmos DB | Dokumentace Microsoftu'
+title: 'Rychlý start: Cassandra API s využitím Javy – Azure Cosmos DB | Microsoft Docs'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a Javy.
 services: cosmos-db
 author: SnehaGunda
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: f132c20f1bcb2de2af708e87f869fbe06fe6914b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 577b3e86f4a126dd38598ac09c48ff895e5fa93b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Javy a Azure Cosmos DB
 
@@ -54,13 +54,19 @@ Než budete moct vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 Teď přejděme k práci s kódem. Teď naklonujeme aplikaci Cassandra z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete okno terminálu Git, třeba Git Bash, a pomocí příkazu `cd` přejděte do složky, do které chcete nainstalovat ukázkovou aplikaci. 
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
+3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started.git
@@ -204,7 +210,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     
     Teď můžete otevřít Průzkumníka dat na webu Azure Portal a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
 
-    ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-java/data-explorer.png)
+    ![Zobrazení dat v Průzkumníkovi dat](./media/create-cassandra-java/data-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -216,7 +222,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos DB, databáze Cassandra a kolekce pomocí Průzkumníku dat a spuštění aplikace, která to samé udělá programově. Teď můžete do kolekce Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos DB, databáze Cassandra a kolekce pomocí Průzkumníka dat a spuštění aplikace, která to samé udělá programově. Teď můžete do kolekce Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2018
   ms.author: jdial
-  ms.openlocfilehash: 80704fedebafe097d199a4f00fba04f51adfe2d9
-  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.openlocfilehash: 1290371373b2373bb935ef81d722e0596df01e42
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/05/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
   description: Naučte se používat Azure Virtual Network. Rychlá zprovoznění, kurzy, ukázky a další materiály vám ukážou, jak nasadit virtuální síť, řídit filtrování a směrování provozu a připojit virtuální síť k jiným virtuálním sítím.
 sections:
@@ -92,6 +92,6 @@ sections:
     - title: Příkazový řádek
       html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
     - title: Jazyky
-      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/virtual-network/">Reference k rozhraní REST API</a></p>

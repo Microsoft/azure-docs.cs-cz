@@ -2,23 +2,20 @@
 title: Začínáme s fronty úložiště a Visual Studio připojené služeb (webové úlohy projekty) | Microsoft Docs
 description: Jak začít pracovat po připojení k účtu úložiště pomocí sady Visual Studio pomocí Azure Queue storage v projektu webové úlohy připojený služby.
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 52c089d2657d61ee42730a00def060dec74439fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 332d682147ba832f631052d8348039f74b46c438
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služeb (webové úlohy projekty)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -81,7 +78,7 @@ Můžete použít **QueueTrigger** s následujícími typy:
 
 * **Řetězec**
 * Typ objektů POCO serializovanou jako JSON
-* **byte[]**
+* **Byte]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Algoritmus dotazování
@@ -300,7 +297,7 @@ Pokud potřebujete nějakou práci ve vašem funkci před vazby objektu blob na 
 * **TextWriter**
 * **řetězec** (přečíst)
 * **na řetězce** (zapisovat; vytvoří objekt blob jenom v případě, že parametr řetězce je jinou hodnotu než null, pokud funkce vrátí hodnotu)
-* POCO (read)
+* Objektů POCO (čtení)
 * out objektů POCO (zápisu; vždycky vytvoří objekt blob, vytvoří jako objektu null, pokud parametr objektů POCO má hodnotu null, pokud funkce vrátí hodnotu)
 * **CloudBlobStream** (write)
 * **ICloudBlob** (čtení nebo zápisu)

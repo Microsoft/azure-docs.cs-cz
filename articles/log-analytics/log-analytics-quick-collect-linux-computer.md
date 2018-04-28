@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z místních počítačů s Linuxem pomocí Azure Log Analytics | Dokumentace Microsoftu
+title: Shromažďování dat z místních počítačů s Linuxem pomocí Azure Log Analytics | Microsoft Docs
 description: Zjistěte, jak nasadit agenta Log Analytics pro Linux a povolit shromažďování dat z tohoto operačního systému pomocí Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 92d2cb0cb21cbbb0e72f9704ac92cc36670385fc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 30bb21ebd6b19f4cc52e364039b9be8a9a7695e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Shromažďování dat z počítače s Linuxem hostovaného ve vašem prostředí
 [Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  

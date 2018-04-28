@@ -1,4 +1,4 @@
-Pokud chcete ve své aplikaci povolit jemné resetování hesla, budete muset vytvořit zásadu resetování hesel. Všimněte si, že možnost resetování hesel v rámci celého tenanta je specifikovaná [zde](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tato zásada popisuje prostředí, kterými uživatelé budou procházet při resetování hesla, a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
+Pokud chcete povolit podrobné heslo resetovat ve vaší aplikaci, použijte **resetování hesla** zásad. Všimněte si, že možnost resetování hesel v rámci celého tenanta je specifikovaná [zde](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tato zásada popisuje možnosti, které zákazníci budou projít během resetování hesla a obsah tokeny, které aplikace se zobrazí při úspěšném dokončení.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

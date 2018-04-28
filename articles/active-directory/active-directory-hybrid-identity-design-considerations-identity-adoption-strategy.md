@@ -1,11 +1,11 @@
 ---
-title: "Návrhu hybridní identity - strategii přijetí Azure | Microsoft Docs"
-description: "Azure Active Directory pomocí podmíněného řízení přístupu, zkontroluje konkrétní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek je uživatel ověřený a přistupovat k aplikaci."
-documentationcenter: 
+title: Návrhu hybridní identity - strategii přijetí Azure | Microsoft Docs
+description: Azure Active Directory pomocí podmíněného řízení přístupu, zkontroluje konkrétní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek je uživatel ověřený a přistupovat k aplikaci.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategií hybridní identity přijetí řešení hybridní identity splňovat obchodní požadavky, které se zabývá:
@@ -90,7 +90,7 @@ Musí být také vědět, jaké funkce nebudete mít k dispozici:
 * Přechod Office pasivní ověřování umožňuje, aby byla možná čistý IdPs SAML 2.0, ale podpora bude na základě klienta klienta
 
 > [!NOTE]
-> Nejaktuálnější seznamu najdete v tématu https://aka.ms/ssoproviders článku.
+> Pro nejaktuálnější seznamu najdete v článku https://aka.ms/ssoproviders.
 > 
 > 
 
@@ -196,7 +196,7 @@ I když vám může mít vyrovnané na řešení pro strategie, přesto potřebu
 | Místní AD |Server Multi-Factor Authentication |
 
 > [!NOTE]
-> Také se ujistěte, že vybrané možnosti návrhu služby Multi-Factor authentication podporuje funkce, které jsou požadovány pro návrhu.  Další informace najdete v tématu [zvolte Multi-Factor Authentication řešení pro vás](../multi-factor-authentication/multi-factor-authentication-get-started.md#what-am-i-trying-to-secure).
+> Také se ujistěte, že vybrané možnosti návrhu služby Multi-Factor authentication podporuje funkce, které jsou požadovány pro návrhu.  Další informace najdete v tématu [zvolte Multi-Factor Authentication řešení pro vás](authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure).
 > 
 > 
 

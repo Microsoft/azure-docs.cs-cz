@@ -9,15 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Dotaz příkladů běžných vzorů využití Stream Analytics
+
 ## <a name="introduction"></a>Úvod
-Dotazy v Azure Stream Analytics jsou vyjádřeny v jazyce SQL jako dotaz. Tyto dotazy jsou dokumentovány v článku [Stream Analytics query referenční informace k jazyku](https://msdn.microsoft.com/library/azure/dn834998.aspx) průvodce. Tento článek popisuje řešení několik běžné typy dotazů, na základě reálného scénářů. Je pracuje a bude aktualizován s novou vzory průběžně.
+Dotazy v Azure Stream Analytics jsou vyjádřeny v jazyce SQL jako dotaz. Jazykové konstrukty jsou dokumentovány v článku [Stream Analytics query referenční informace k jazyku](https://msdn.microsoft.com/library/azure/dn834998.aspx) průvodce. 
+
+Návrhu dotazu lze vyjádřit jednoduché průchozí logiku pro přesun dat událostí z jeden vstupní datový proud do jiného úložiště dat výstup. Nebo ji můžete provést odpovídající a dočasné analysis bohaté vzor pro výpočet agregace v různých časových oken jako ukázka TollApp. Data z několika vstupů pro kombinovat streamování událostí a proveďte vyhledávání proti statická referenční data pro obohacení hodnoty události lze propojit. Také můžete zapsat data do více výstupů.
+
+Tento článek popisuje řešení několik běžné typy dotazů, na základě reálného scénářů. Je pracuje a bude aktualizován s novou vzory průběžně.
 
 ## <a name="query-example-convert-data-types"></a>Příklad dotazu: Převést datové typy
 **Popis**: definování typů vlastností v vstupního datového proudu.
@@ -25,14 +30,14 @@ Například váhy car pochází na vstupního datového proudu jako řetězce a 
 
 **Vstup**:
 
-| Make | Čas | Váha |
+| Ujistěte se | Čas | Váha |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Výstup**:
 
-| Make | Váha |
+| Ujistěte se | Váha |
 | --- | --- |
 | Honda |3000 |
 
@@ -55,7 +60,7 @@ Například zkontrolujte, že výsledek vrátí desky licencí, které se začí
 
 **Vstup**:
 
-| Make | LicensePlate | Čas |
+| Ujistěte se | LicensePlate | Čas |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -63,7 +68,7 @@ Například zkontrolujte, že výsledek vrátí desky licencí, které se začí
 
 **Výstup**:
 
-| Make | LicensePlate | Čas |
+| Ujistěte se | LicensePlate | Čas |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -85,7 +90,7 @@ Zadejte například, že řetězec popis Ujistěte se, kolik aut stejného byla 
 
 **Vstup**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -120,7 +125,7 @@ Například analyzovat data pro upozornění na základě prahové hodnoty a arc
 
 **Vstup**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -130,7 +135,7 @@ Například analyzovat data pro upozornění na základě prahové hodnoty a arc
 
 **Output1**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -140,7 +145,7 @@ Například analyzovat data pro upozornění na základě prahové hodnoty a arc
 
 **Output2**:
 
-| Make | Čas | Počet |
+| Ujistěte se | Čas | Počet |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -191,7 +196,7 @@ Například kolik jedinečný díky automobilů předána stánek projedou v okn
 
 **Vstup**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -227,14 +232,14 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
 
 **Vstup**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Výstup**:
 
-| Make | Čas |
+| Ujistěte se | Čas |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -255,7 +260,7 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
 
 **Vstup**:
 
-| LicensePlate | Make | Čas |
+| LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -267,7 +272,7 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
 
 **Výstup**:
 
-| LicensePlate | Make | Čas |
+| LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -285,7 +290,7 @@ Předchozí car na cestách projedou je třeba vytvořit stejný jako aktuální
 
 Teď umožňuje změnit problém a najít první auto konkrétní značky v intervalu každých 10 minut.
 
-| LicensePlate | Make | Čas |
+| LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -309,7 +314,7 @@ Teď umožňuje změnit problém a najít první auto konkrétní značky v inte
 
 **Vstup**:
 
-| LicensePlate | Make | Čas |
+| LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -321,7 +326,7 @@ Teď umožňuje změnit problém a najít první auto konkrétní značky v inte
 
 **Výstup**:
 
-| LicensePlate | Make | Čas |
+| LicensePlate | Ujistěte se | Čas |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -355,7 +360,7 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
 
 **Vstup**:
 
-| Make | LicensePlate | Čas |
+| Ujistěte se | LicensePlate | Čas |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -364,7 +369,7 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
 
 **Výstup**:
 
-| Make | Čas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Ujistěte se | Čas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -417,7 +422,7 @@ Předpokládejme například, že chyby výsledkem všechny aut, které mají ne
 
 **Vstup**:
 
-| Make | Čas | Váha |
+| Ujistěte se | Čas | Váha |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -463,7 +468,7 @@ Například generovat událost každých 5 sekund, která generuje sestavy napos
 
 **Vstup**:
 
-| t | hodnota |
+| T | hodnota |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -474,7 +479,7 @@ Například generovat událost každých 5 sekund, která generuje sestavy napos
 
 **Výstup (prvních 10 řádků)**:
 
-| windowend | lastevent.t | lastevent.value |
+| windowend | lastevent.t | lastevent.Value |
 | --- | --- | --- |
 | 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
 | 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
@@ -571,7 +576,7 @@ WHERE
     AND t2.maxPower > 10
 ````
 
-**Vysvětlení**: první dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) najít maximální hodnotu senzoru napájení pro každé zařízení během posledních 3 minut. Druhý dotazu je připojený k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A pak zadaný podmínky jsou splněny, je vygenerována výstraha pro zařízení.
+**Vysvětlení**: první dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) najít maximální hodnotu senzoru napájení pro každé zařízení během posledních 3 minut. Druhý dotazu je připojený k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A pak zadaný podmínky jsou splněny, je vygenerována výstraha pro zařízení.
 
 
 ## <a name="get-help"></a>Podpora

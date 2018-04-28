@@ -1,4 +1,26 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 794fd51c38f66b24193c7da7a145d58f7a225b30
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
 > Stáhněte si tento ukázkový projekt místo dávají přednost? 
@@ -7,7 +29,7 @@
 > nebo
 > - [Stažení souborů projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) pro místní webový server, jako je například Python
 >
-> A potom přejděte na [krok konfigurace](#create-an-application-express) konfigurace ukázka kódu před jeho provedením.
+> A potom přejděte na [krok konfigurace](#register-your-application) konfigurace ukázka kódu před jeho provedením.
 
 ## <a name="prerequisites"></a>Požadavky
 Místní webový server jako [Python http.server](https://www.python.org/downloads/), [http server](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), nebo služba IIS Express integrace s [Visual Studio 2017](https://www.visualstudio.com/downloads/) je potřeba spustit tuto s průvodcem instalací. 
@@ -18,10 +40,10 @@ Pokyny v této příručce jsou založené na Python a Visual Studio 2017, ale N
 
 > ### <a name="option-1-visual-studio"></a>Možnost 1: Visual Studio 
 > Pokud používáte Visual Studio a vytvořit nový projekt, postupujte podle následujících kroků a vytvořte nové řešení sady Visual Studio:
-> 1.    V sadě Visual Studio:`File` > `New` > `Project`
-> 2.    V části `Visual C#\Web`, vyberte možnost`ASP.NET Web Application (.NET Framework)`
+> 1.    V sadě Visual Studio:  `File` > `New` > `Project`
+> 2.    V části `Visual C#\Web`, vyberte možnost `ASP.NET Web Application (.NET Framework)`
 > 3.    Název aplikace a klikněte na tlačítko *OK*
-> 4.    V části `New ASP.NET Web Application`, vyberte možnost`Empty`
+> 4.    V části `New ASP.NET Web Application`, vyberte možnost `Empty`
 
 <p/><!-- -->
 

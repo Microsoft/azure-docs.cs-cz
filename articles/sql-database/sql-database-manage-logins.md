@@ -1,7 +1,7 @@
 ---
-title: "Přihlašovací údaje Azure SQL | Dokumentace Microsoftu"
-description: "Informace o správě zabezpečení služby SQL Database – postupy správy přístupu k databázím a zabezpečení přihlašování prostřednictvím hlavního účtu na úrovni serveru"
-keywords: "zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi"
+title: Přihlašovací údaje Azure SQL | Dokumentace Microsoftu
+description: Informace o správě zabezpečení služby SQL Database – postupy správy přístupu k databázím a zabezpečení přihlašování prostřednictvím hlavního účtu na úrovni serveru
+keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 1f512cdbb0275e9ae2d868a326df0e4e5dd2ee24
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 54bf692f35e2529fe7d0b14684c9acc7d66b9903
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>Řízení a udělování přístupu k databázi
 
@@ -75,7 +75,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 1. Pomocí účtu správce se připojte k hlavní databázi.
 2. Volitelný krok: Vytvořte přihlášení s ověřováním SQL Serveru pomocí příkazu [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx). Ukázka příkazu:
    
-   ```
+   ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
    ```
    
@@ -86,15 +86,15 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 
 3. V hlavní databázi vytvořte uživatele pomocí příkazu [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx). Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku). Ukázky příkazů:
    
-   ```
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-   CREATE USER Tran WITH PASSWORD = '<strong_password>';
-   CREATE USER Mary FROM LOGIN Mary; 
+   ```sql
+   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
+   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
 4. Do databázové role **dbmanager** přidejte nového uživatele pomocí příkazu [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx). Ukázky příkazů:
    
-   ```
+   ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
    ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
    ```
@@ -114,21 +114,25 @@ Obecně platí, že účty bez oprávnění správce nepotřebují přístup k h
 
 Pokud chcete vytvářet uživatele, připojte se k databázi a spusťte podobné příkazy jako v následujících příkladech:
 
-```
+```sql
 CREATE USER Mary FROM LOGIN Mary; 
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Na začátku může uživatele vytvořit jenom jeden ze správců nebo vlastník databáze. Jestliže chcete autorizovat další uživatele, aby mohli vytvářet nové uživatele, udělte vybraným uživatelům oprávnění `ALTER ANY USER` pomocí příkazu, jako je například tento:
 
-```
+```sql
 GRANT ALTER ANY USER TO Mary;
 ```
 
 Pokud chcete dalším uživatelům umožnit úplnou kontrolu databáze, přidejte je do pevné databázové role **db_owner** pomocí příkazu `ALTER ROLE`.
 
+```sql
+ALTER ROLE db_owner ADD MEMBER Mary; 
+```
+
 > [!NOTE]
-> Běžným důvodem pro vytváření uživatelů databáze s ověřováním na základě přihlášení je, že máte uživatele s ověřováním SQL Serveru, kteří potřebují přístup k několika databázím. Uživatelé s ověřováním na základě přihlášení jsou vázáni s určitým přihlášením a pouze s jedním heslem, které se pro toto přihlášení udržuje. Uživatelé databází s omezením jsou v jednotlivých databázích jednotlivými entitami a pro každého se v každé databázi udržuje vlastní heslo. To může být pro uživatele databází s omezením matoucí, pokud neudržují stejná hesla.
+> Jeden běžným důvodem k vytvoření databáze uživatele podle logického serveru přihlášení je pro uživatele, kteří potřebují přístup k více databází. Vzhledem k tomu, že obsažené uživatelů databáze jsou jednotlivé entity, každou databázi udržuje vlastní uživatelské a vlastní heslo. To může způsobit režijní náklady na jako uživatel musí pak si každý heslo pro každou databázi, a může stát untenable, pokud bylo nutné měnit více hesel pro mnoho databází. Ale při použití přihlášení serveru SQL a vysokou dostupnost (aktivní geografickou replikaci a převzetí služeb při selhání skupiny), přihlášení serveru SQL musí být nastavit ručně na každém serveru. Jinak hodnota uživatel databáze se nebudou mapovat k serveru přihlášení po dojde k selhání a nebudou mít přístup k databázi post převzetí služeb při selhání. Další informace o konfiguraci přihlášení pro geografická replikace, najdete v tématu [konfigurovat a spravovat zabezpečení Azure SQL Database geografické obnovení nebo převzetí služeb při selhání](sql-database-geo-replication-security-config.md).
 
 ### <a name="configuring-the-database-level-firewall"></a>Konfigurace brány firewall na úrovni databáze
 Uživatelé bez oprávnění správce by v rámci osvědčených postupů měli mít do databází, které používají, přístup pouze přes bránu firewall. Místo toho, abyste autorizovali jejich IP adresy pomocí brány firewall na úrovni serveru a umožnili jim tak přístup do všech databází, nakonfigurujte bránu firewall na úrovni databáze pomocí příkazu [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx). Bránu firewall na úrovni databáze nemůžete nakonfigurovat pomocí portálu.
@@ -164,7 +168,7 @@ Při správě přihlášení a uživatelů ve službě SQL Database mějte na pa
 * Při provádění příkazů `CREATE/ALTER/DROP LOGIN` a `CREATE/ALTER/DROP DATABASE` v aplikaci ADO.NET není dovolené používat příkazy s parametry. Další informace viz [Příkazy a parametry](https://msdn.microsoft.com/library/ms254953.aspx).
 * Při provádění příkazů `CREATE/ALTER/DROP DATABASE` a `CREATE/ALTER/DROP LOGIN` musí být každý příkaz jediným příkazem v dávce Transact-SQL. V opačném případě dojde k chybě. Následující příkaz Transact-SQL například zkontroluje, jestli databáze existuje. Pokud existuje, volá příkaz `DROP DATABASE`, který ji odebere. Příkaz `DROP DATABASE` ale není jediným příkazem v dávce, a proto provedení následujícího příkazu Transact-SQL způsobí chybu.
 
-  ```
+  ```sql
   IF EXISTS (SELECT [name]
            FROM   [sys].[databases]
            WHERE  [name] = N'database_name')

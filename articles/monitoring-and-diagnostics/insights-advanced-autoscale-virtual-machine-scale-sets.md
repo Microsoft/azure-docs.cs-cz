@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
-ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1ac5c4c44386fc05e3ee87ccdbbc4f652a94a1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Pokročilé škálování konfigurace pomocí šablony Resource Manageru pro škálovatelné sady virtuálních počítačů
 Můžete v škálování a horizontální sady škálování virtuálního počítače na základě výkonu metriky prahových hodnot, podle plánu opakování, nebo podle konkrétní data. Můžete také nakonfigurovat e-mailu a webhooku oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty ve Škálovací sadě virtuálních počítačů pomocí šablony Resource Manageru.
@@ -35,7 +35,7 @@ V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.
 1. Nasaďte nové škálování nastavit s nastavením základní škálování. Tento článek používá jeden z Galerie pro rychlý start Azure, který má Windows pomocí šablony základní škálování sady škálování. Sady škálování Linux fungovat stejným způsobem.
 2. Jakmile se vytvoří sada škálování, přejděte do prostředků sady škálování z Průzkumníka prostředků Azure. Zobrazí následující uzlu Microsoft.Insights.
 
-    ![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Průzkumník Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
     Provádění šablony vytvořil výchozí nastavení automatického škálování s názvem **'autoscalewad'**. Na pravé straně můžete zobrazit úplnou definici tohoto nastavení automatického škálování. V takovém případě výchozí nastavení automatického škálování se dodává s pravidlo Škálováním na více systémů a škálování v % na základě využití procesoru.  
 
@@ -200,7 +200,7 @@ V tomto návodu použijeme [Průzkumníka prostředků Azure](https://resources.
             }
           }
     ```
-    Podporované pole a jejich hodnoty, najdete v tématu [dokumentace k REST API škálování](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx). Vaše nastavení automatického škálování nyní obsahuje tři profily vysvětlené dřív.
+    Podporované pole a jejich hodnoty, najdete v tématu [dokumentace k REST API škálování](https://msdn.microsoft.com/library/azure/dn931928.aspx). Vaše nastavení automatického škálování nyní obsahuje tři profily vysvětlené dřív.
 
 7. Nakonec, podívejte se na škálování **oznámení** části. Oznámení o automatickém škálování umožňují provádějí tři věci, pokud škálování nebo v akci je úspěšně spuštěné.
    - Oznámit správce a spolusprávci předplatného

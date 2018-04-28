@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce Azure Marketplace a AppSource vydavatele
 
@@ -253,7 +253,7 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 
 |**Požadavek**  | **Podrobnosti**  |**Možnost publikování**  |
 |---------|---------|---------|
-|**Bezplatné zkušební období a zkušební verze**     |  Zákazník musí být schopen používají vaši aplikaci zdarma po omezenou dobu.<br><br>To znamená, zákazník nebude platit poplatky licence nebo předplatné pro svůj produkt ani náklady na základní Microsoft první strany produktu nebo služby. Protože všechny možnosti zkušební verze se nasadí do odběru produktů Microsoft vydavatele a vydavatele výhradně řídí optimalizaci zkušební nákladů a správu.<br><br>Můžete vybrat bezplatnou zkušební verzi, interaktivní ukázku, nebo vyzkoušejte. Bez ohledu na to, co si zvolíte musí bezplatné zkušební verze nabídnout zákazníkům minimální množství čas na vyzkoušení aplikace pro bez dalších nákladů.<br><br>Zahájíte proces vytváření test jednotky oslovení cloudmarketplace@microsoft.com. <br><br>Všimněte si, že Azure Marketplace SaaS zkušební vyskytne musí umožňují uživatelům přihlásit se pomocí přihlašovacích služby Active Directory. [Další informace](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Zkušební verze      | 
+|**Bezplatné zkušební období a zkušební verze**     |  Zákazník musí být schopen používají vaši aplikaci zdarma po omezenou dobu.<br><br>To znamená, zákazník nebude platit poplatky licence nebo předplatné pro svůj produkt ani náklady na základní Microsoft první strany produktu nebo služby. Protože všechny možnosti zkušební verze se nasadí do odběru produktů Microsoft vydavatele a vydavatele výhradně řídí optimalizaci zkušební nákladů a správu.<br><br>Můžete vybrat bezplatnou zkušební verzi, interaktivní ukázku, nebo vyzkoušejte. Bez ohledu na to, co si zvolíte musí bezplatné zkušební verze nabídnout zákazníkům minimální množství čas na vyzkoušení aplikace pro bez dalších nákladů.<br><br>Zahájíte proces vytváření test jednotky oslovení cloudmarketplace@microsoft.com. <br><br>Všimněte si, že Azure Marketplace SaaS zkušební vyskytne musí umožňují uživatelům přihlásit se pomocí přihlašovacích služby Active Directory. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences). |   Zkušební verze      | 
 | **Snadno konfigurovat, kompletních řešení**    |  Aplikace musí být snadno a rychle konfiguraci a nastavení.       |  Zkušební verze       |
 |**Dostupnosti nebo provozu**    |    Aplikace SaaS nebo platformy, musí mít nejméně 99,9 % dostupnost.     |    Zkušební verze     |
 |**Azure Active Directory**    |    Vaši nabídku musíte povolit, že Azure Active Directory (Azure AD) federované jednotné přihlašování (SSO) s souhlasu povolena.      |  Zkušební verze|
@@ -264,7 +264,7 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 |**Požadavek**  |**Podrobnosti** |**Možnost publikování**  |
 |---------|---------|---------|
 |**Fakturace a měření**    |  Virtuální počítač musí podporovat model použití vlastní licence nebo na základě využití, měsíční fakturace.       |    Transakce    |
-|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Transakce      |
+|**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Transakce      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Konkrétní požadavky na publikování služby Consulting Services
 
@@ -277,7 +277,7 @@ Každý zákazník se smlouvou Enterprise může přidat Azure do své smlouvy p
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Pomocí služby Azure Active Directory povolit zkušební verze
 Azure Active Directory je Cloudová služba identity, která umožňuje ověřování s Microsoft pracovní nebo školní účet pomocí standardních protokolů: OAuth a OpenID Connect. Další informace o Azure AD na [webová stránka produktu](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft ověří všechny Marketplace uživatelů s Azure AD. Pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební období výpis v Marketplace a je přesměrován na zkušební prostředí, můžete zřídit uživatele přímo do zkušební verzi, bez nutnosti další krok přihlášení. [Token, který vaše aplikace obdrží z Azure AD během ověřování](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci. Pak můžete automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. 
+Microsoft ověří všechny Marketplace uživatelů s Azure AD. Pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební období výpis v Marketplace a je přesměrován na zkušební prostředí, můžete zřídit uživatele přímo do zkušební verzi, bez nutnosti další krok přihlášení. [Token, který vaše aplikace obdrží z Azure AD během ověřování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelského účtu ve vaší aplikaci. Pak můžete automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. 
 
 Chcete-li povolit jedním kliknutím ověřování do aplikace nebo zkušební verze pomocí služby Azure AD:
 
@@ -292,20 +292,20 @@ Pokud podporujete dnes Azure AD:
 
 - Registrace vaší aplikace na portálu Azure.
 - Povolte funkci podpory víceklientské architektury v Azure AD získat zkušební prostředí jedním kliknutím.
-- [Další informace](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).
+- [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 
 Pokud jste novým uživatelem Federovanému služby Azure AD:
 
 - Registrace vaší aplikace na portálu Azure.
-- Vývoj jednotné přihlašování s Azure AD pomocí [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
+- Vývoj jednotné přihlašování s Azure AD pomocí [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 - Povolte funkci podpory víceklientské architektury v Azure AD získat zkušební prostředí jedním kliknutím.
-- [Další informace](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
+- [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Certifikovat svoji integraci služby Azure AD pro Marketplace: jedním klientské aplikace
 
 Pro jednoho klienta aplikace několika způsoby:
 
-- Přidání uživatelů do vašeho adresáře jako uživatele typu Host pomocí [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Přidání uživatelů do vašeho adresáře jako uživatele typu Host pomocí [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 - Ručně zřídit zkušební verze pro zákazníky prostřednictvím mě kontaktu.
 - Vývoj testovací jednotku na zákazníka.
 - Vytvoření ukázkové víceklientské ukázkovou aplikaci pomocí jednotného přihlašování.
@@ -316,11 +316,11 @@ Pro AppSource aplikace, které rozšiřují Office, Dynamics a Power BI můžete
 
 |Produkt |Informace o publikování  |
 |---------|---------|
-|Office 365     |    Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 Finance a operace  |   Když vytváříte pro Enterprise Edition, zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Dynamics 365 pro zákaznické Engagement |Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/en-us/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    Další informace o [Cortana v AppSource](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
+|Office 365     |    Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
+|Dynamics 365 Finance a operace  |   Když vytváříte pro Enterprise Edition, zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
+|Dynamics 365 pro zákaznické Engagement |Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
+|Power BI   |     Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/power-bi/developer/office-store).    |
+|Cortana Intelligence     |    Další informace o [Cortana v AppSource](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
 |AppSource konzultace ohledně nabídky     |  Zkontrolujte [pokyny a zjistěte, jak odeslat nabídku](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
 
 
@@ -522,11 +522,11 @@ Když vytváříte účet společnosti, postupujte podle následujících pokyn�
 
 Vývojářského účtu by měly být dostupné především z důvěryhodných počítačů. To je zásadní, protože existuje omezení počtu kódů generovaných každý účet za týden. Použití důvěryhodných počítačů umožňuje také bezproblémové přihlašování uživatelů.
 
-Další informace o zabezpečení a další vývojáře účet pokyny najdete v tématu [otevírání vývojářského účtu](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
+Další informace o zabezpečení a další vývojáře účet pokyny najdete v tématu [otevírání vývojářského účtu](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account).
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>Pokyny pro Microsoft IDs ve federované domény Azure AD
 
-Váš účet organizace můžete federovaný prostřednictvím [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/). Pokud se pokusíte vytvořit ID společnosti Microsoft s podnikovým e-mailovou adresu vrátí chybu. Pokud dojde k chybě, nejprve zkontrolujte se svým týmem IT a ujistěte se, že to tak je. Jedná se o známý problém a pracujeme na jeho řešení. 
+Váš účet organizace můžete federovaný prostřednictvím [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/). Pokud se pokusíte vytvořit ID společnosti Microsoft s podnikovým e-mailovou adresu vrátí chybu. Pokud dojde k chybě, nejprve zkontrolujte se svým týmem IT a ujistěte se, že to tak je. Jedná se o známý problém a pracujeme na jeho řešení. 
 
 Jako alternativní řešení, doporučujeme vytvořit novou e-mailovou adresu v @outlook.com domény a vytvořte pravidlo. Postupujte následovně:
 
@@ -562,7 +562,7 @@ Po dokončení poslední krok, aplikace Outlook odešle všechny e-mailů a komu
 5. Pro **typ účtu**, vyberte **společnosti** a pak vyberte **Další** tlačítko.
 
    >[!IMPORTANT]
-   >Abyste lépe pochopili typy účtů a která je nejvhodnější pro můžete zvolit, najdete v části [účet typy, umístění a poplatků](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees).
+   >Abyste lépe pochopili typy účtů a která je nejvhodnější pro můžete zvolit, najdete v části [účet typy, umístění a poplatků](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
 
 6. Pro **zobrazovaný název vydavatele**, zadejte zobrazovaný název (obvykle název vaší společnosti).
 

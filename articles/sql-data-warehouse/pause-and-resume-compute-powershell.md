@@ -1,74 +1,70 @@
 ---
-title: "Rychlý úvod: Pozastavení a obnovení výpočetní v Azure SQL Data Warehouse – prostředí PowerShell | Microsoft Docs"
-description: "Prostředí PowerShell úlohy, které pozastavit výpočetní pro Azure SQL Data Warehouse abyste ušetřili náklady. Když budete chtít použít datový sklad, obnovit výpočty."
+title: 'Rychlý úvod: Pozastavení a obnovení výpočetní v Azure SQL Data Warehouse – prostředí PowerShell | Microsoft Docs'
+description: Pomocí Powershellu pozastavit výpočetní v Azure SQL Data Warehouse abyste ušetřili náklady. Když budete chtít použít datový sklad, obnovit výpočty.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: 
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 01/25/2018
-ms.author: barbkess
-ms.openlocfilehash: b1f5c10fe294b44a9853f16e1866b77cf74a1479
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ef341a1528bf759461abfb7cfc6d878fd8a44cb4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>Rychlý úvod: Pozastavení a obnovení výpočetní pro Azure SQL Data Warehouse v prostředí PowerShell
-Pomocí prostředí PowerShell můžete pozastavit výpočetní pro Azure SQL Data Warehouse abyste ušetřili náklady. [Obnovit výpočty](sql-data-warehouse-manage-compute-overview.md) když budete chtít použít datový sklad.
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý úvod: Pozastavení a obnovení výpočetní v Azure SQL Data Warehouse pomocí prostředí PowerShell
+Pomocí Powershellu pozastavit výpočetní v Azure SQL Data Warehouse abyste ušetřili náklady. [Obnovit výpočty](sql-data-warehouse-manage-compute-overview.md) když budete chtít použít datový sklad.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.1.1 nebo novější. Spustit ` Get-Module -ListAvailable AzureRM` najít verzi můžete nyní k dispozici. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps.md). 
+Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento rychlý start předpokládá, že již máte datový sklad SQL, který můžete pozastavit a obnovit. Pokud potřebujete vytvořit, můžete použít [vytvořit a připojit - portál](create-data-warehouse-portal.md) k vytvoření datového skladu názvem **mySampleDataWarehouse**. 
+Tento rychlý start předpokládá, že již máte datový sklad SQL, který můžete pozastavit a obnovit. Pokud potřebujete vytvořit, můžete použít [vytvořit a připojit - portál](create-data-warehouse-portal.md) k vytvoření datového skladu názvem **mySampleDataWarehouse**.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
-Chcete-li zobrazit předplatné, které používáte, spusťte [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Pokud chcete zobrazit, které předplatné používáte, spusťte příkaz [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Pokud budete muset použít jiné předplatné než výchozí, spusťte [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
+Pokud musíte použít jiné než výchozí předplatné, spusťte příkaz [Select-AzureRmSubscription](/powershell/module/azurerm.profile/select-azurermsubscription).
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-data-warehouse-information"></a>Vyhledat informace o datovém skladu
+## <a name="look-up-data-warehouse-information"></a>Vyhledání informací o datovém skladu
 
-Najděte název databáze, název serveru a skupinu prostředků pro datový sklad, který máte v úmyslu pozastavení a obnovení. 
+Vyhledejte název databáze, název serveru a skupinu prostředků pro datový sklad, jehož provoz chcete pozastavit a obnovit.
 
-Postupujte podle těchto kroků se najít informace o umístění pro datový sklad.
+Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na tlačítko **databází SQL** v levé straně na portálu Azure.
-3. Vyberte **mySampleDataWarehouse** z **databází SQL** stránky. Otevře se datového skladu.
+2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Otevře se datový sklad.
 
-    ![Název a prostředek skupiny serverů](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
+    ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Poznamenejte si název datového skladu, což je název databáze. Také poznamenejte si název serveru a skupině prostředků. Můžete 
+4. Poznamenejte si název datového skladu, což je název databáze. Také poznamenejte si název serveru a skupinu prostředků. Můžete
 5.  Tyto v příkazech pozastavení a obnovení.
-6. Pokud je server foo.database.windows.net, použijte pouze první část jako název serveru v rutin prostředí PowerShell. Na předchozím obrázku je úplný název serveru NovyServer 20171113.database.windows.net. Vyřaďte přípona a použít **NovyServer 20171113** jako název serveru ve výsledcích rutiny Powershellu.
+6. Pokud využíváte server foo.database.windows.net, v rutinách PowerShellu používejte jako název serveru jen jeho první část. Na předchozím obrázku je úplný název serveru newserver-20171113.database.windows.net. Vyřaďte přípona a použít **NovyServer 20171113** jako název serveru ve výsledcích rutiny Powershellu.
 
 ## <a name="pause-compute"></a>Pozastavit výpočetní
-Abyste ušetřili náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databáze v noci a o víkendech, můžete pozastavit tyto v době a obnovit během dne. Zatímco databáze byla pozastavena, je bezplatná za výpočetní prostředky. Nicméně můžete pokračovat účtovat poplatek za úložiště. 
+Abyste ušetřili náklady, můžete pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databáze v noci a o víkendech, můžete pozastavit tyto v době a obnovit během dne. Zatímco databáze byla pozastavena, je bezplatná za výpočetní prostředky. Nicméně můžete pokračovat účtovat poplatek za úložiště.
 
 Chcete-li pozastavit databázi, použijte [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) rutiny. Následující příklad pozastaví datového skladu s názvem **mySampleDataWarehouse** hostovaná na serveru s názvem **NovyServer 20171113**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
 
@@ -107,10 +103,10 @@ $resultDatabase
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a uložená data v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně. 
+Účtují se vám poplatky za jednotky datového skladu a uložená data v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
 - Pokud chcete zachovat data v úložišti, pozastavte výpočetní.
-- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit. 
+- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
 
 Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 

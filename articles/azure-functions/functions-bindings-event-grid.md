@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
@@ -213,9 +213,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON |Popis|
 |---------|---------|----------------------|
-| **Typ** | Vyžaduje - musí být nastavena na `eventGridTrigger`. |
-| **Směr** | Vyžaduje - musí být nastavena na `in`. |
-| **name** | Požadovaná proměnná používá v kódu funkce pro parametr, který přijímá data události. |
+| **type** | Vyžaduje - musí být nastavena na `eventGridTrigger`. |
+| **direction** | Vyžaduje - musí být nastavena na `in`. |
+| **Jméno** | Požadovaná proměnná používá v kódu funkce pro parametr, který přijímá data události. |
 
 ## <a name="usage"></a>Využití
 
@@ -337,6 +337,9 @@ Alternativně můžete odeslat HTTP PUT se zadat hodnotu klíče sami.
 
 ## <a name="local-testing-with-requestbin"></a>Místní testování pomocí RequestBin
 
+> [!NOTE]
+> RequestBin lokality není momentálně k dispozici, ale můžete použít tento způsob se https://hookbin.com místo. Pokud této lokality je vypnutý, můžete použít [ngrok](#local-testing-with-ngrok).
+
 K testování aktivační procedury událostí mřížky místně, musíte získat požadavků HTTP mřížky událostí doručit od jejich původ v cloudu do místního počítače. Jeden způsob, jak to udělat, je zachycení požadavků online a ručně je odešlete na místním počítači:
 
 2. [Vytvoření koncového bodu RequestBin](#create-a-RequestBin-endpoint).
@@ -348,7 +351,7 @@ Po dokončení testování, můžete použít stejné předplatné pro produkčn
 
 ### <a name="create-a-requestbin-endpoint"></a>Vytvoření koncového bodu RequestBin
 
-RequestBin je otevřený nástroj, který přijímá požadavky protokolu HTTP a textu žádosti se dozvíte. http://requestb.in Zvláštní zacházení podle mřížky událostí Azure získá adresu URL. Usnadňuje testování mřížky událostí odesílá události na adresu URL RequestBin bez nutnosti správné odpovědí na požadavky na ověření předplatného. Dva testovací nástroje mají stejné zacházení: http://webhookinbox.com a http://hookbin.com.
+RequestBin je otevřený nástroj, který přijímá požadavky protokolu HTTP a textu žádosti se dozvíte. http://requestb.in Zvláštní zacházení podle mřížky událostí Azure získá adresu URL. Usnadňuje testování mřížky událostí odesílá události na adresu URL RequestBin bez nutnosti správné odpovědí na požadavky na ověření předplatného. Jeden jiný nástroj testování se zpracuje stejným způsobem: http://hookbin.com.
 
 RequestBin není určen pro použití vysoké propustnosti. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
 

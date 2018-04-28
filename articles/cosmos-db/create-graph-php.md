@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4c7046c335039f5bc689790aaf53f5dff65991d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafu pomocí PHP a portálu Azure
 
@@ -42,24 +42,7 @@ Než budete moct vytvořit databázi grafu, je potřeba pomocí služby Azure Co
 
 ## <a name="add-a-graph"></a>Přidání grafu
 
-Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
-
-1. Klikněte na **Průzkumník dat** > **Nový graf**.
-
-    Úplně vpravo se zobrazí oblast **Přidat graf**. Pokud ji nevidíte, možná se budete muset posunout doprava.
-
-    ![Průzkumník dat na portálu Azure – stránka Přidat graf](./media/create-graph-php/azure-cosmosdb-data-explorer-graph.png)
-
-2. Na stránce **Přidat graf** zadejte nastavení pro nový graf.
-
-    Nastavení|Navrhovaná hodnota|Popis
-    ---|---|---
-    ID databáze|sample-database|Jako název nové databáze zadejte *sample-database*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky `/ \ # ?` ani koncové mezery.
-    ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. Názvy grafů mají stejné požadavky na znaky jako ID databází.
-    Kapacita úložiště|Pevná (10 GB)|Nechte zadanou výchozí hodnotu **Pevná (10 GB)**. Tato hodnota je kapacita úložiště databáze.
-    Propustnost|400 RU/s|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.
-
-3. Po vyplnění formuláře klikněte na **OK**.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -85,7 +68,7 @@ Teď přejděme k práci s kódem. Naklonujeme aplikaci Graph API z GitHubu, na
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru `connect.php` ve složce C:\git-samples\azure-cosmos-db-graph-php-getting-started\. Jinak můžete přeskočit k části [Aktualizace připojovacího řetězce](#update-your-connection-information). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru connect.php ve složce C:\git-samples\azure-cosmos-db-graph-php-getting-started\. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
 
 * Objekt `connection` konzoly Gremlin se inicializuje na začátku souboru `connect.php` pomocí objektu `$db`.
 
@@ -122,7 +105,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
     ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-php/keys.png)
 2. Otevřete soubor `connect.php` a na řádek 8 místo `your_server_address` vložte hodnotu identifikátoru URI.
 
-    Inicializace objektu Connection by teď měla vypadat nějak takto:
+    Inicializace objektu Connection by teď měla vypadat podobně jako v následujícím kódu:
 
     ```php
     $db = new Connection([
@@ -138,11 +121,11 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 3. Pokud se účet databáze grafů vytvořil 20. prosince 2017 nebo později, v názvu hostitele změňte `graphs.azure.com` na `gremlin.cosmosdb.azure.com`.
 
-4. Změňte parametr `username` v objektu Connection na název vaší databáze a grafu. Pokud jste použili doporučené hodnoty `sample-database` a `sample-graph`, měl by vypadat takto:
+4. Změňte parametr `username` v objektu Connection na název vaší databáze a grafu. Pokud jste použili doporučené hodnoty `sample-database` a `sample-graph`, měl by vypadat jako v následujícím kódu:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
-    Takto by teď měl vypadat celý objekt Connection:
+    Celý objekt Connection by teď měl vypadat jako v následujícím kódu:
 
     ```php
     $db = new Connection([
@@ -158,7 +141,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
 5. Na portálu Azure pomocí tlačítka pro kopírování zkopírujte PRIMÁRNÍ KLÍČ a vložte ho místo `your_primary_key` v parametru password.
 
-    Inicializace objektu Connection by teď měla vypadat takto:
+    Inicializace objektu Connection by teď měla vypadat jako v následujícím kódu:
 
     ```php
     $db = new Connection([
@@ -203,19 +186,19 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat
 
-Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
+Teď můžete přejít zpět do Průzkumníka dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
 1. Klikněte na **Průzkumník dat**, rozbalte **sample-graph**, klikněte na **Graf** a potom klikněte na **Použít filtr**. 
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
+   ![Vytváření nových dokumentů v Průzkumníkovi dat na portálu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
 2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte uživatele **ben** a všimněte si, že je propojený s uživatelem robin. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
+   ![Nové vrcholy v grafu v Průzkumníkovi dat na webu Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
 3. Teď přidáme několik nových uživatelů. Klikněte na tlačítko **Nový vrchol** a přidejte do grafu data.
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png)
+   ![Vytváření nových dokumentů v Průzkumníkovi dat na portálu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. Zadejte popisek *person* (osoba).
 
@@ -228,7 +211,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
     tech (technologie) | java | 
 
     > [!NOTE]
-    > V tomto rychlém startu vytváříme kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
+    > V tomto rychlém startu vytvoříte kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
 
 6. Klikněte na **OK**. Možná bude nutné zvětšit obrazovku, aby se tlačítko **OK** zobrazilo v dolní části obrazovky.
 
@@ -250,19 +233,19 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte ho zpátky na `g.V()`, klikněte na **Použít filtr** a znovu zobrazte všechny výsledky.
 
-12. Teď můžeme propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na tlačítko Upravit vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se zobrazila oblast **Vlastnosti**.
+12. Teď můžete propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na tlačítko Upravit vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se zobrazila oblast **Vlastnosti**.
 
    ![Změna cíle vrcholu v grafu](./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na symbol zaškrtnutí.
 
-   ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
+   ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníkovi dat](./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-   ![Dva propojené vrcholy v Průzkumníku dat](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
+   ![Dva propojené vrcholy v Průzkumníkovi dat](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
+   Tím je dokončená část tohoto rychlého startu, která se věnuje vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 
@@ -274,7 +257,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníka dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

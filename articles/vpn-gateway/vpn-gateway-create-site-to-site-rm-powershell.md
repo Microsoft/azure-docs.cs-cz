@@ -1,5 +1,5 @@
 ---
-title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site: PowerShell | Dokumentace Microsoftu'
+title: 'Připojení místní sítě k virtuální síti Azure: Síť VPN typu Site-to-Site: PowerShell | Microsoft Docs'
 description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí PowerShellu.
 services: vpn-gateway
 documentationcenter: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6ee23beaa450129be7c173da9efc687cc3790a15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee4e200fa57a38249b0be2997de7e3268a9302cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 
@@ -52,7 +52,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Rutiny PowerShellu se často aktualizují a obvykle bude třeba rutiny PowerShellu aktualizovat, abyste získali nejnovější funkce. Pokud rutiny PowerShellu neaktualizujete, zadané hodnoty nemusí fungovat. 
 
 Verzi, kterou používáte, zjistíte spuštěním rutiny Get-Module -ListAvailable AzureRM. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
-Pokud používáte PowerShell místně, je také potřeba spuštěním rutiny Login-AzureRmAccount vytvořit připojení k Azure.
+Pokud používáte PowerShell místně, je také potřeba spuštěním příkazu Connect-AzureRmAccount vytvořit připojení k Azure.
 
 
 ### <a name="example"></a>Příklady hodnot

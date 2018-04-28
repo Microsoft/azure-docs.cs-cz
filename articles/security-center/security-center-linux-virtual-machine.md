@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center a virtuální počítače Azure s Linuxem | Dokumentace Microsoftu"
-description: "Tento dokument vám pomůže porozumět tomu, jak Azure Security Center může zabezpečit službu Azure Virtual Machines."
+title: Azure Security Center a virtuální počítače Azure s Linuxem | Dokumentace Microsoftu
+description: Tento dokument vám pomůže porozumět tomu, jak Azure Security Center může zabezpečit službu Azure Virtual Machines.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0df4fca59575bd8e18e91fea2066a9e694ed320d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a2afe61020382b3d32fe3f07cf8ad8d0e6604b1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure Security Center a virtuální počítače s Linuxem
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -32,7 +32,7 @@ Security Center pomáhá chránit data virtuálních počítačů v Azure tím, 
 * Zabezpečení systému a chybějící kritické aktualizace
 * Doporučení ochrany koncových bodů
 * Ověření šifrování disku
-* Síťové útoky (k dispozici pouze ve [standardní verzi](https://azure.microsoft.com/en-us/pricing/details/security-center/))
+* Síťové útoky (k dispozici pouze ve [standardní verzi](https://azure.microsoft.com/pricing/details/security-center/))
 
 Security Center kromě toho, že pomáhá chránit vaše virtuální počítače Azure, také poskytuje monitorování a správu zabezpečení pro služby Cloud Services, App Services, Virtual Networks a další. 
 

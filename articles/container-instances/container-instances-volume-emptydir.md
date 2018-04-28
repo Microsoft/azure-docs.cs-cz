@@ -1,18 +1,18 @@
 ---
-title: "Připojit emptyDir svazek v Azure kontejner instancí"
-description: "Zjistěte, jak připojit svazek emptyDir ke sdílení dat mezi kontejnery v kontejneru skupiny v Azure kontejner instancí"
+title: Připojit emptyDir svazek v Azure kontejner instancí
+description: Zjistěte, jak připojit svazek emptyDir ke sdílení dat mezi kontejnery v kontejneru skupiny v Azure kontejner instancí
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 01b44f357d160a48852ee843cd8bebd138e95dfc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 89289a7a0bb5c486c662d528c5014bdbd8eebaca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Připojit emptyDir svazek v Azure kontejner instancí
 
@@ -41,6 +41,7 @@ Nejprve naplnit `volumes` pole ve skupině kontejneru `properties` část šablo
 
 Například následující šablony Resource Manageru vytvoří skupině kontejneru, která obsahuje dvě kontejnery, každý z které připojení zařízení *emptyDir* svazku:
 
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
 Příklad nasazení kontejneru instance pomocí šablony Azure Resource Manager, najdete v sekci [nasazení skupiny více kontejnerů v Azure kontejner instancí](container-instances-multi-container-group.md).

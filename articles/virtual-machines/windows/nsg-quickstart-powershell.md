@@ -1,11 +1,11 @@
 ---
-title: "Otevřete porty, které se virtuální počítač pomocí Azure PowerShell | Microsoft Docs"
-description: "Zjistěte, jak otevřít port / create koncového bodu váš virtuální počítač s Windows pomocí režimu nasazení Azure resource Manageru a prostředí Azure PowerShell"
+title: Otevřete porty, které se virtuální počítač pomocí Azure PowerShell | Microsoft Docs
+description: Zjistěte, jak otevřít port / create koncového bodu váš virtuální počítač s Windows pomocí režimu nasazení Azure resource Manageru a prostředí Azure PowerShell
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d9918992ef1ac46b3b000480b6be7e984f0858e1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b8eb36e4abad12cb46493846a024da00f9146d40
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Postup otevření portů a koncové body k virtuálnímu počítači v Azure pomocí prostředí PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -29,7 +29,7 @@ Vytvořte skupinu zabezpečení sítě a seznamu ACL pravidel potřebujete [nejn
 Přihlaste se k účtu Azure:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 V následujících příkladech nahraďte názvy parametrů s vlastními hodnotami. Názvy parametrů příklad zahrnuté *myResourceGroup*, *myNetworkSecurityGroup*, a *myVnet*.
@@ -92,7 +92,7 @@ Rychlé příkazy umožňují zprovoznění s provoz do virtuálního počítač
 
 Pro vysokou dostupnost webové aplikace měli byste umístit virtuální počítače za pro vyrovnávání zatížení Azure. Nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů s skupinu zabezpečení sítě, která poskytuje filtrování provozu. Další informace najdete v tématu [jak načíst vyvážit virtuální počítače s Linuxem v Azure k vytvoření vysoce dostupné aplikace](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto příkladu jste vytvořili jednoduché pravidlo umožňující přenos HTTP. Můžete najít informace o vytváření podrobnější prostředí v těchto článcích:
 
 * [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)

@@ -1,26 +1,26 @@
 ---
 title: SAP HANA operace v Azure | Microsoft Docs
-description: "Provozní příručka pro SAP HANA systémy, které jsou nasazeny na virtuálních počítačích Azure."
+description: Provozní příručka pro SAP HANA systémy, které jsou nasazeny na virtuálních počítačích Azure.
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: juergent
 manager: patfilot
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2017
+ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cb715960a516c6b2ca16376c12cb6f796e0b395
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 959a483d293caa45180c946e92ac824fc56db084
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA na Azure provozní příručky
 Tento dokument obsahuje pokyny pro operační systémy SAP HANA, které jsou nasazeny na Azure nativní virtuální počítače (VM). Tento dokument není určen k nahrazení standardní SAP dokumentace, která zahrnuje následující obsah:
@@ -106,16 +106,16 @@ Následující tabulka znázorňuje konfiguraci typů virtuálních počítačů
 
 
 
-| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S15 |
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S20 |
 | E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x S20 | 1 x S6 | 1 x S6 | 1 x S30 |
-| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
+| M64s | 1000 giB | 1000 MB/s | 2 x P30 | 1 x S30 | 1 x S6 | 1 x S6 |2 x S30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 3 x S30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
+| M128s | 2000 giB | 2000 MB/s |3 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x S30 | 1 x S6 | 1 x S6 | 2 x S50 |
 
 
@@ -132,16 +132,16 @@ Pokud chcete využívat [jeden virtuální počítač Azure SLA k Virtuálním p
 > [!NOTE]
 > Pro produkční scénáře, zkontrolujte, zda určitý typ virtuálního počítače je podporován pro SAP HANA SAP v [SAP dokumentaci IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html).
 
-| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/protokolu a/hana/data<br /> rozdělená s LVM nebo MDADM | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 128 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P15 |
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P20 |
 | E64v3 | 443 GiB | 1200 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
 | GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x P20 | 1 x P6 | 1 x P6 | 1 x P30 |
-| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64s | 1000 giB | 1000 MB/s | 2 x P30 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128s | 2000 giB | 2000 MB/s |3 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
 
@@ -161,11 +161,11 @@ Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradn
 
 Doporučené konfigurace vypadat podobně jako:
 
-| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/dat | /hana/log | / hana/sdílené | / root svazku | / usr/sap | hana/backup |
+| VIRTUÁLNÍ POČÍTAČ SKU | Paměť RAM | Max. VIRTUÁLNÍ POČÍTAČ VSTUPNĚ-VÝSTUPNÍCH OPERACÍ<br /> Propustnost | / hana/dat | / hana/protokolu | / hana/sdílené | / root svazku | / usr/sap | Hana/zálohování |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64s | 1000 giB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
 | M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
+| M128s | 2000 giB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P40 |
 | M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 2 x P50 |
 
 Zjistil, zda bude propustnost úložiště pro jiné navrhované svazky se zatížením, které chcete spustit. Pokud zatížení vyžaduje vyšší svazky pro /hana/data a /hana/log, je potřeba zvýšit počet Azure Premium Storage virtuální pevné disky. Změna velikosti svazku s více virtuálních pevných disků než uvedené zvýší propustnost IOPS a vstupně-výstupní operace v rámci typ virtuálního počítače Azure.
@@ -177,7 +177,7 @@ Existují omezení Azure Premium Storage VHD na virtuální počítač, který m
 - 16 virtuálních pevných disků pro M128xx virtuálních počítačů
 - 8 virtuální pevné disky pro M64xx virtuálních počítačů
 
-Podrobnější pokyny o tom, jak povolit zápis akcelerátoru Azure najdete v článku [Azure zápisu akcelerátoru pro nasazení SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator).
+Podrobnější pokyny o tom, jak povolit zápis akcelerátoru Azure najdete v článku [zápisu akcelerátoru](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 Podrobnosti a omezení pro zápis akcelerátoru Azure naleznete v dokumentaci stejné.
 

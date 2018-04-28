@@ -1,25 +1,20 @@
 ---
 title: Indexování zdroj dat Azure Cosmos DB pro službu Azure Search | Microsoft Docs
 description: Tento článek ukazuje, jak vytvořit indexer Azure Search s datovým zdrojem Azure Cosmos DB.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: ''
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: search
-ms.date: 03/23/2018
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fcc77104103cea91f5eecb972e1d6e872c933015
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojování Cosmos databáze s Azure Search pomocí indexerů
 
@@ -78,7 +73,7 @@ Tento článek ukazuje, jak používat rozhraní REST API. Pokud se přihlásít
 ## <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 Chcete-li vytvořit zdroj dat, proveďte příspěvku na:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -106,7 +101,7 @@ Text žádosti obsahuje definice zdroje dat, která by měla obsahovat následuj
   
   * **název**: vyžaduje. Zadejte id kolekce databáze pro indexování.
   * **dotaz**: volitelné. Můžete zadat dotaz na narovnání libovolný dokument JSON na ploché schéma, které mohou indexu Azure Search. Pro MongoDB kolekce dotazy nejsou podporovány. 
-* **dataChangeDetectionPolicy**: Recommended. V tématu [indexování dokumentů změnit](#DataChangeDetectionPolicy) části.
+* **dataChangeDetectionPolicy**: doporučené. V tématu [indexování dokumentů změnit](#DataChangeDetectionPolicy) části.
 * **dataDeletionDetectionPolicy**: Optional. V tématu [indexování dokumentů odstranit](#DataDeletionDetectionPolicy) části.
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Pomocí dotazů na obrazec indexované dat
@@ -151,7 +146,7 @@ Pokud již nemáte, vytvořte cílový index Azure Search. Můžete vytvořit in
 
 Následující příklad vytvoří index s polem id a popis:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -182,7 +177,7 @@ Zajistěte, aby schéma cílový index kompatibilní s schéma dokumentů JSON z
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapování mezi JSON datové typy a typy dat vyhledávání systému Azure
 | JSON datového typu | Typy polí kompatibilní cílový index |
 | --- | --- |
-| Logická hodnota (Bool) |Edm.Boolean, Edm.String |
+| Logická hodnota (Bool) |Edm.Boolean Edm.String |
 | Čísla, která vypadat podobně jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
 | Čísla této vypadají plovoucí body |Edm.Double, Edm.String |
 | Řetězec |Edm.String |
@@ -197,7 +192,7 @@ Zajistěte, aby schéma cílový index kompatibilní s schéma dokumentů JSON z
 
 Jakmile byly vytvořeny index a zdroj dat, jste připraveni vytvořit indexeru:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -216,7 +211,7 @@ Další informace o rozhraní API Indexer vytvořit, podívejte se na [vytvořit
 ### <a name="running-indexer-on-demand"></a>Spuštění indexeru na vyžádání
 Kromě spuštění pravidelně podle plánu, lze indexer také vyvolat na vyžádání:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -228,7 +223,7 @@ Můžete sledovat stav indexer v portálu nebo pomocí získat Indexer stav rozh
 ### <a name="getting-indexer-status"></a>Získání stavu indexeru
 Můžete načíst historii stavu a spuštění indexeru:
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2016-09-01
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
 
 Odpověď obsahuje celkový stav indexer, indexer poslední (nebo probíhající) volání a historii poslední indexer volání.
@@ -302,7 +297,7 @@ Pokud používáte vlastní dotaz, ujistěte se, že vlastnost odkazuje `softDel
 
 Následující příklad vytvoří zdroj dat s zásadu obnovitelného odstranění:
 
-    POST https://[Search service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [Search service admin key]
 

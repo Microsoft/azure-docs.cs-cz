@@ -1,13 +1,13 @@
 ---
-title: "Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver | Microsoft Docs"
-description: "Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver"
+title: Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver | Microsoft Docs
+description: Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5654dac7-4204-4387-b312-3d8b2898eb3a
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855fc155bbdef9a3a0ab8415067102e607fab0f9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f8e8f1bc6f43c78e500e198a222fd29051138505
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -237,7 +237,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -290,7 +290,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -810,18 +810,18 @@ Některé aspekty pomocí naslouchací proces skupiny dostupnosti jsou:
 
 [comment]: <> (Blog staré TODO)
 [comment]: <> (Podrobné kroky a životní potřeby instalace konfigurace aplikace AlwaysOn na Azure se nejlépe došlo při s návodem k dispozici kurzu [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
-[comment]: <> (Předkonfigurované nastavení AlwaysOn prostřednictvím Azure galerii < https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Předkonfigurované nastavení AlwaysOn prostřednictvím Azure galerii <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
 [comment]: <> (Vytváření naslouchací proces skupiny dostupnosti se nejlépe popisuje v kurzu [this][virtual-machines-windows-classic-ps-sql-int-listener])
 [comment]: <> (Zabezpečení koncových bodů sítě s seznamy ACL vysvětlení najdete nejlépe tady:)
-[comment]: <> (*    <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
+[comment]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
+[comment]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>) 
 
 Je možné nasadit v různých oblastech Azure a SQL Server vždy na skupině dostupnosti. Tato funkce využívá připojení k Azure VNet-to-Vnet ([podrobnosti][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (Blog staré TODO)
-[comment]: <> (Instalační program skupin dostupnosti AlwaysOn serveru SQL v takové situaci je zde popsán: < https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
+[comment]: <> (Instalační program skupin dostupnosti AlwaysOn serveru SQL v takové situaci je zde popsán: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.) 
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>Souhrn na vysoké dostupnosti SQL serveru v Azure
 Vzhledem k tomu, že Azure Storage je ochrana obsahu, je jeden menší důvod se trvat na bitovou kopii hot standby. To znamená, že váš scénář vysoké dostupnosti je potřeba chránit pouze proti v následujících případech:

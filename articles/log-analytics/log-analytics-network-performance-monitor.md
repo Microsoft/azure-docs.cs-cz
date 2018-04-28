@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
@@ -158,7 +158,7 @@ Nakonfigurujte možnosti, které chcete:
 
 - [Sledování výkonu](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
 - [Monitorování koncového bodu služby](log-analytics-network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute Monitor](log-analytics-network-performance-monitor-expressroute.md#configuration)
+- [Monitorování ExpressRoute](log-analytics-network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -249,6 +249,24 @@ Topologie, zobrazí se v mapě je topologie vrstvy 3 a neobsahuje vrstvy 2 zař�
 ## <a name="log-analytics-search"></a>Hledání analýzy protokolů 
 
 Všechna data, která je graficky zveřejněné prostřednictvím řídicího panelu monitorování výkonu sítě a procházení stránek je také k dispozici nativně [analýzy protokolů hledání](log-analytics-log-search-new.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Také můžete vytvořit vlastní výstrahy a zobrazení a export dat do aplikace Excel, Power BI nebo ke sdílení odkaz.  **Běžné dotazy** oblasti v řídicím panelu má některá užitečná dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+
+## <a name="alerts"></a>Výstrahy
+
+Sledování výkonu sítě používá výstrahy možnosti [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+
+To znamená, že všechny výstrahy je spravovat pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+
+Pokud jste uživatelem NPM vytváření výstrahu prostřednictvím OMS: 
+1. Zobrazí se odkaz, který vás přesměruje na portál Azure. Klikněte na něj získat přístup k portálu.
+2. Klikněte na dlaždici řešení pro sledování výkonu sítě. 
+3. Přejděte ke konfiguraci.  
+4. Vyberte testovací, kterou chcete vytvořit upozornění na a postupujte podle níže uvedené kroky.
+
+Pokud jste uživatelem NPM vytváření výstrahu prostřednictvím portálu Azure:  
+1. Můžete přímo zadat e-mailu nebo můžete vytvořit výstrah pomocí akce skupiny.
+2. Pokud zvolíte možnost přímo zadat e-mailu, akce skupiny s názvem **NPM e-mailu ActionGroup** je vytvořena a id e-mailu se přidá do této skupiny akce.
+3. Pokud se rozhodnete použít skupiny akce, je nutné vybrat skupinu dříve vytvořená akce. Zjistěte, jak vytvořit skupinu akcí [sem.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+4. Po úspěšném vytvoření výstrahy můžete spravovat výstrahy odkaz ke správě upozornění. 
 
 ##<a name="pricing"></a>Ceny
 

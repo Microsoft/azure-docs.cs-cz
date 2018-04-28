@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 4/6/2018
 ms.author: raiye
-ms.openlocfilehash: 5631fb8df6453cf7a1806947f0e29ab7fff7093e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-guest-os"></a>Azure Guest OS
+# <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačního systému Azure v následujících tabulkách. Vyhledávání, zjistěte, pokud konkrétní aktualizace se týká hostovaného operačního systému, kterou používáte. Aktualizace vždy obsahují dál pro konkrétní [rodiny] [ family-explain] byly zavedeny v.
 
 ## <a name="march-guest-os"></a>Dne hostovaného operačního systému.
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Rel 18-03 | [4088787], [4088776] |Zabezpečení systému Windows 10 |5.17 |13. března 2018 |
-| Rel 18-03 | [4088878], [4088880], [4088879] |Pouze zabezpečení systému Windows |2.72, 3.59, 4.52 |13. března 2018 |
-| Rel 18-03 | [4089187] |Internet Explorer |2.72, 3.59, 4.52 |13. března 2018 |
-| Rel 18-03 | [4074595] |Flash |3.59, 4.52, 5.17 |13. března 2018 |
+| Relativní 18-03 | [4088787], [4088776] |Zabezpečení systému Windows 10 |5.17 |13. března 2018 |
+| Relativní 18-03 | [4088878], [4088880], [4088879] |Pouze zabezpečení systému Windows |2.72, 3.59, 4.52. |13. března 2018 |
+| Relativní 18-03 | [4089187] |Internet Explorer |2.72, 3.59, 4.52. |13. března 2018 |
+| Relativní 18-03 | [4074595] |Flash |3.59, 4.52, 5.17 |13. března 2018 |
 | neuvedeno | [4074598] |Souhrn bez zabezpečení února |2.72 |13. února 2018 |
 | neuvedeno | [4074593] |Souhrn bez zabezpečení února |3.59 |13. února 2018 |
-| neuvedeno | [4074594] |Souhrn bez zabezpečení února |4.52 |13. února 2018 |
-| neuvedeno | [4074837] |Timezone update |2.72, 3.59, 4.52 |13. února 2018 |
+| neuvedeno | [4074594] |Souhrn bez zabezpečení února |4.52. |13. února 2018 |
+| neuvedeno | [4074837] |Aktualizace časového pásma |2.72, 3.59, 4.52. |13. února 2018 |
 
 
 ## <a name="february-guest-os"></a>Února hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Rel 18-02 | [4074590], [4074588] |Zabezpečení systému Windows 10 |5.16 |13. února 2018 |
-| Rel 18-02 | [4074587], [4074589], [4074597] |Pouze zabezpečení systému Windows |2.71, 3.58, 4.51 |13. února 2018 |
-| Rel 18-02 | [4074736] |Internet Explorer |2.71, 3.58, 4.51 |13. února 2018 |
-| Rel 18-02 | [4074595] |Flash |3.58, 4.51, 5.16 |13. února 2018 |
+| Relativní 18-02 | [4074590], [4074588] |Zabezpečení systému Windows 10 |5.16 |13. února 2018 |
+| Relativní 18-02 | [4074587], [4074589], [4074597] |Pouze zabezpečení systému Windows |2.71, 3,58, 4.51 |13. února 2018 |
+| Relativní 18-02 | [4074736] |Internet Explorer |2.71, 3,58, 4.51 |13. února 2018 |
+| Relativní 18-02 | [4074595] |Flash |3,58, 4.51, 5.16 |13. února 2018 |
 | neuvedeno | [4056894] |Souhrn bez zabezpečení leden |2.71 |4. ledna 2018 |
-| neuvedeno | [4056896] |Souhrn bez zabezpečení leden |3.58 |4. ledna 2018 |
+| neuvedeno | [4056896] |Souhrn bez zabezpečení leden |3,58 |4. ledna 2018 |
 | neuvedeno | [4056895] |Souhrn bez zabezpečení leden |4.51 |4. ledna 2018 |
 | neuvedeno | [4054176], [4054172] |Souhrn leden .NET |2.71 |4. ledna 2018 |
-| neuvedeno | [4054175], [4054171] |Souhrn leden .NET |3.58 |4. ledna 2018 |
+| neuvedeno | [4054175], [4054171] |Souhrn leden .NET |3,58 |4. ledna 2018 |
 | neuvedeno | [4054177], [4054170] |Souhrn leden .NET |4.51 |4. ledna 2018 |
 
 ## <a name="january-guest-os"></a>Leden hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Rel 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení systému Windows |2.70, 3.57, 4.50 |3. ledna 2018 |
-| Rel 18-01 | [4056890], [4056892] |Pouze zabezpečení systému Windows |5.15 |3. ledna 2018 |
+| Relativní 18-01 | [4056898], [4056897], [4056899] |Pouze zabezpečení systému Windows |2.70, 3.57, 4.50 |3. ledna 2018 |
+| Relativní 18-01 | [4056890], [4056892] |Pouze zabezpečení systému Windows |5.15 |3. ledna 2018 |
 | neuvedeno | [4054518] |Souhrn bez zabezpečení prosinec |2.70 |12 prosinec 2017 |
 | neuvedeno | [4054520] |Souhrn bez zabezpečení prosinec |3.57 |12 prosinec 2017 |
 | neuvedeno | [4054519] |Souhrn bez zabezpečení prosinec |4.50 |12 prosinec 2017 |
@@ -77,7 +77,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="november-guest-os"></a>Listopad hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Relativní 17 11 | [4048953] |Windows 10 updates |5.13 |14. listopadu 2017 |
+| Relativní 17 11 | [4048953] |Aktualizace Windows 10. |5.13 |14. listopadu 2017 |
 | Relativní 17 11 | [4048960], [4048962], [4048961] |Pouze zabezpečení systému Windows |2.68, 3.55, 4.48 |14. listopadu 2017 |
 | Relativní 17 11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14. listopadu 2017 |
 | Relativní 17 11 | [4048951] |Flash |3.55, 4.48, 5.13 |14. listopadu 2017 |
@@ -91,7 +91,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="october-guest-os"></a>Říjen hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Relativní 17 10 | [4041691] |Windows 10 updates |5.12 |10. října 2017 |
+| Relativní 17 10 | [4041691] |Aktualizace Windows 10. |5.12 |10. října 2017 |
 | Relativní 17 10 | [4041678], [4041679], [4041687] |Pouze zabezpečení systému Windows |2.67, 3.54, 4.47 |10. října 2017 |
 | Relativní 17 10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |10. října 2017 |
 | Relativní 17 10 | [4041681], [4041690], [4041693] |Měsíční souhrny Windows |2.67, 3.54, 4.47 |10. října 2017 |
@@ -105,7 +105,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="september-guest-os"></a>Září hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Relativní 17 09 | [4038782] |Windows 10 updates |5.11 |12. září 2017 |
+| Relativní 17 09 | [4038782] |Aktualizace Windows 10. |5.11 |12. září 2017 |
 | Relativní 17 09 | [4038779], [4038786], [4038793] |Pouze zabezpečení systému Windows |2.66, 3.53, 4.46 |12. září 2017 |
 | Relativní 17 09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Aktualizace platformy .NET září |2.66, 3.53, 4.46 |12. září 2017 |
 | Relativní 17 09 | [4036586] |Aplikace Internet explorer |2.66, 3.53, 4.46 |12. září 2017 |
@@ -117,7 +117,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Relativní 17 07 | [4034658] |Windows 10 updates |5.10 |8 srpen 2017 |
+| Relativní 17 07 | [4034658] |Aktualizace Windows 10. |5.10 |8 srpen 2017 |
 | Relativní 17 07 | [4034679] |Pouze zabezpečení systému Windows |2.65 |8 srpen 2017 |
 | Relativní 17 07 | [4034672] |Pouze zabezpečení systému Windows |4.45 |8 srpen 2017 |
 | Relativní 17 07 | [4034666] |Pouze zabezpečení systému Windows |3.52 |8 srpen 2017 |
@@ -131,7 +131,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 ## <a name="july-guest-os"></a>Července hostovaného operačního systému
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
 | --- | --- | --- | --- | --- |
-| Relativní 17 07 | [4025339] |Windows 10 updates |5.9 |11 července 2017 |
+| Relativní 17 07 | [4025339] |Aktualizace Windows 10. |5.9 |11 července 2017 |
 | Relativní 17 07 | [4025337] |Pouze zabezpečení systému Windows |2.64 |11 července 2017 |
 | Relativní 17 07 | [4025333] |Pouze zabezpečení systému Windows |4.44 |11 července 2017 |
 | Relativní 17 07 | [4025343] |Pouze zabezpečení systému Windows |3.51 |11 července 2017 |
@@ -153,7 +153,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | Relativní 17 06 | [4022719], [4022724], [4022726] |Měsíční souhrny Windows |2.63, 3.50, 4.43 |13. června 2017 |
 | Relativní 17 06 | [4022730] |Aktualizace zabezpečení pro Adobe Flash Playeru |3.50, 4.43, 5.8 |13. června 2017 |
 | Relativní 17 06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Znovu vydání CVE. 2017 0167 |4.43, 5.8 |11. dubna 2017 |
-| neuvedeno | [4023136] |Timezone update  |2.63, 3.50, 4.43 |13. června 2017 |
+| neuvedeno | [4023136] |Aktualizace časového pásma  |2.63, 3.50, 4.43 |13. června 2017 |
 | neuvedeno | [4019264] |Může se zabezpečením souhrn |2.63 |13. června 2017 |
 | neuvedeno | [4014545] |Může se zabezpečením souhrn rozhraní .NET |2.63 |11. dubna 2017 |
 | neuvedeno | [4014508] |Může se zabezpečením souhrn rozhraní .NET |2.63 |9 může 2017 |
@@ -244,7 +244,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | MS16-145 |[3204062] |Kumulativní aktualizace zabezpečení pro Microsoft Edge |5.4 |13 DEC 2016 |
 | MS16-146 |[3204066]   |Aktualizace zabezpečení pro součást Microsoft grafiky|2.58, 3.46, 4.39, 5.4 |13 DEC 2016 |
 | MS16-147 |[3204063]   |Aktualizace zabezpečení pro Microsoft Uniscribe|2.58, 3.46, 4.39, 5.4 |13 DEC 2016 |
-| MS16-149 |[3205655]   |Aktualizace zabezpečení pro Microsoft Windows|2.58, 3.46, 4.39, 5.4 |13 DEC 2016 |
+| MS16 149 |[3205655]   |Aktualizace zabezpečení pro Microsoft Windows|2.58, 3.46, 4.39, 5.4 |13 DEC 2016 |
 | MS16-150 |[3205642]   |Aktualizace zabezpečení pro režim zabezpečení jádra |5.4 |13 DEC 2016 |
 | MS16-151 |[3205651]   |Aktualizace zabezpečení pro ovladače režimu jádra|2.58, 3.46, 4.39, 5.4 |13 DEC 2016 |
 | MS16-152 |[3199709]   |Aktualizace zabezpečení pro jádro systému Windows |5.4 |13 DEC 2016 |
@@ -259,13 +259,13 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Kumulativní aktualizace zabezpečení pro Microsoft Edge |5.3 |8 listopadu 2016 |
 | MS16-130 |[3199172] |Aktualizace zabezpečení pro Microsoft Windows |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
-| MS16-131 |[3199151]   |Aktualizace zabezpečení pro ovládací prvek Microsoft Video |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
-| MS16-132 |[3199120] |Aktualizace zabezpečení pro součást Microsoft |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
+| MS16 131 |[3199151]   |Aktualizace zabezpečení pro ovládací prvek Microsoft Video |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
+| MS16 132 |[3199120] |Aktualizace zabezpečení pro součást Microsoft |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
 | MS16-134 |[3193706] |Aktualizace zabezpečení pro běžné ovladač systému souborů protokolu |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
-| MS16-135 |[3199135] |Aktualizace zabezpečení pro ovladače režimu jádra |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
+| MS16 135 |[3199135] |Aktualizace zabezpečení pro ovladače režimu jádra |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
 | MS16-137 |[3199173]   |Aktualizace zabezpečení pro metody ověřování systému Windows |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
-| MS16-138 |[3199647] |Aktualizace zabezpečení Microsoft virtuální pevný disk |5.3, 4.38, 3.45 |8 listopadu 2016 |
-| MS16-139 |[3199720] |Aktualizace zabezpečení pro jádro systému Windows |2.57 |Listopadu 8.2016 |
+| MS16 138 |[3199647] |Aktualizace zabezpečení Microsoft virtuální pevný disk |5.3, 4.38, 3.45 |8 listopadu 2016 |
+| MS16 139 |[3199720] |Aktualizace zabezpečení pro jádro systému Windows |2.57 |Listopadu 8.2016 |
 | MS16-140 |[3193479] |Aktualizace zabezpečení pro správce spouštění |5.3, 4.38, 3.45 |8 listopadu 2016 |
 | MS16-142 |[3198467] |Kumulativní aktualizace zabezpečení pro Internet Explorer |2.57, 4.38, 5.3 |8 listopadu 2016 |
 | neuvedeno |[3192321] |Turecko končí dodržování letního času |5.3, 4.38, 3.45, 2.57 |8 listopadu 2016 |
@@ -790,9 +790,9 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 [4014567]: http://support.microsoft.com/kb/4014567
 [4015550]: http://support.microsoft.com/kb/4015550
 [4013418]: http://support.microsoft.com/kb/4013418
-[4022345]: https://technet.microsoft.com/en-us/library/security/4022345.aspx
-[4022344]: https://technet.microsoft.com/en-us/library/security/4022344.aspx
-[4021279]: https://technet.microsoft.com/en-us/library/security/4021279.aspx
+[4022345]: https://technet.microsoft.com/library/security/4022345.aspx
+[4022344]: https://technet.microsoft.com/library/security/4022344.aspx
+[4021279]: https://technet.microsoft.com/library/security/4021279.aspx
 
 
 [4015217]: http://support.microsoft.com/kb/4015217

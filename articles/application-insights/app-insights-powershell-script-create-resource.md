@@ -1,6 +1,6 @@
 ---
-title: "Skript prostředí PowerShell pro vytvoření prostředek Application Insights | Microsoft Docs"
-description: "Automatizovat vytváření prostředků Application Insights."
+title: Skript prostředí PowerShell pro vytvoření prostředek Application Insights | Microsoft Docs
+description: Automatizovat vytváření prostředků Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: 376bcb542e4e83c2464d9f3f53ea71965ce79c33
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d06b44246b694c0d2a83503ecd1ae0cedfadd9ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Rutina PowerShell pro vytvoření prostředku Application Insights
 
@@ -36,7 +36,7 @@ Například pokud vyvíjíte aplikace mobilních zařízení, je pravděpodobné
 ## <a name="script-to-create-an-application-insights-resource"></a>Skript pro vytvoření prostředek Application Insights
 Zobrazit specifikace příslušné rutiny:
 
-* [Nové AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
+* [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 *Skript prostředí PowerShell*  
@@ -51,7 +51,7 @@ Zobrazit specifikace příslušné rutiny:
 # If running manually, uncomment before the first 
 # execution to login to the Azure Portal:
 
-# Add-AzureRmAccount / Login-AzureRmAccount
+# Connect-AzureRmAccount / Connect-AzureRmAccount
 
 # Set the name of the Application Insights Resource
 
@@ -109,7 +109,7 @@ Existují dva způsoby, jak zpřístupnit iKey k sadě SDK:
   * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Vytvoření služby Application Insights a web test prostředky ze šablon](app-insights-powershell.md)
 * [Nastavení monitorování diagnostiky Azure pomocí prostředí PowerShell](app-insights-powershell-azure-diagnostics.md) 
 * [Nastavit upozornění pomocí prostředí PowerShell](app-insights-powershell-alerts.md)

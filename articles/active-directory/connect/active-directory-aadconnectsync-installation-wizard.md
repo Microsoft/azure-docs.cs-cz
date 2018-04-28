@@ -1,12 +1,12 @@
 ---
-title: "Znovu spustit Azure AD Connect Průvodce instalací | Microsoft Docs"
-description: "Vysvětluje, jak funguje Průvodce instalací druhá, když jej spustíte."
-keywords: "Průvodce instalací služby Azure AD Connect vám umožní nakonfigurovat nastavení údržby druhý čas spuštění"
+title: Znovu spustit Azure AD Connect Průvodce instalací | Microsoft Docs
+description: Vysvětluje, jak funguje Průvodce instalací druhá, když jej spustíte.
+keywords: Průvodce instalací služby Azure AD Connect vám umožní nakonfigurovat nastavení údržby druhý čas spuštění
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a5a55b15bbffbcfa18e07e251180820e3d9cb6d8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: opětovným spuštěním Průvodce instalací
 Při prvním spuštění Průvodce instalací služby Azure AD Connect, se vás provede procesem konfigurace instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti pro údržbu.
@@ -79,7 +79,7 @@ Na změnu stavu, vyberte tuto možnost a vyberte nebo zrušte výběr zaškrtáv
 ![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Změna přihlašovacích údajů uživatele
-Tato možnost umožňuje změnit z synchronizaci hesla k federaci nebo naopak. Nelze změnit na **nekonfigurujte**.
+Tato možnost umožňuje změnit metoda přihlašování uživatele do a z synchronizace hodnot hash hesel, předávací ověřování nebo federace. Nelze změnit na **nekonfigurujte**.
 
 Další informace o této možnosti najdete v tématu [přihlášení uživatele](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 

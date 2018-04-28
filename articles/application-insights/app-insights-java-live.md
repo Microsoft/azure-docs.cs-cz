@@ -1,9 +1,9 @@
 ---
-title: "Application Insights pro webové aplikace v jazyce Java, které jsou již za provozu"
-description: "Spustit monitorování webové aplikace, která je již spuštěna na serveru"
+title: Application Insights pro webové aplikace v jazyce Java, které jsou již za provozu
+description: Spustit monitorování webové aplikace, která je již spuštěna na serveru
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 12f3dbb9-915f-4087-87c9-807286030b0b
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 152e21bd9fc6db424c3caff4ce425e54ecab11e2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b8ddd43fb19b3800840180c458268301b5ec26f6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights pro webové aplikace v jazyce Java, které jsou již za provozu
 
@@ -45,7 +45,7 @@ Budete potřebovat předplatné [Microsoft Azure](https://azure.com).
 
 ## <a name="2-download-the-sdk"></a>2. Stažení sady SDK
 1. Stáhněte si [Application Insights SDK pro jazyk Java](https://aka.ms/aijavasdk). 
-2. Na serveru extrahujte obsah sady SDK k adresáři, ze které jsou načtena binární soubory vašeho projektu. Pokud používáte Tomcat, se tento adresář by obvykle v části`webapps/<your_app_name>/WEB-INF/lib`
+2. Na serveru extrahujte obsah sady SDK k adresáři, ze které jsou načtena binární soubory vašeho projektu. Pokud používáte Tomcat, se tento adresář by obvykle v části `webapps/<your_app_name>/WEB-INF/lib`
 
 Všimněte si, že je potřeba tento postup opakujte pro každou instanci serveru a pro každou aplikaci.
 
@@ -131,7 +131,7 @@ A při zobrazení vlastností požadavku, uvidíte telemetrické události souvi
 
 [Další informace o metrikách.](app-insights-metrics-explorer.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Přidání telemetrických údajů do webových stránek](app-insights-javascript.md) monitorování zobrazení stránek a metrik uživatele.
 * [Nastavit testy webu](app-insights-monitor-web-app-availability.md) a ujistěte se vaše aplikace zůstává aktivní a reagující.
 * [Zaznamenat trasování protokolu](app-insights-java-trace-logs.md)

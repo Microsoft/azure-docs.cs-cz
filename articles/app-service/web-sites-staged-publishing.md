@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c02b7a74eea6973d6ccfbc1cc59d15bfd5cb5b77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ec2399c955f718186bbedc0e4bad61ccc61fd972
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí v Azure App Service
 <a name="Overview"></a>
@@ -30,7 +30,7 @@ Při nasazení vaší webové aplikace, webové aplikace na Linuxu, mobilní bac
 * Nasazení aplikace do patice nejprve a odkládací do provozu zajišťuje, že jsou všechny instance přihrádky jestli před prohazují do produkčního prostředí. Tím se eliminuje výpadek při nasazení aplikace. Přesměrování provozu je bezproblémové a jsou v důsledku operace prohození vyřadit žádné požadavky. Tento celý pracovní postup je možné automatizovat tak, že nakonfigurujete [Prohodit automaticky](#Auto-Swap) při swap předběžné ověření není potřeba.
 * Po prohození slot s dříve dvoufázové instalace aplikace teď má předchozí produkční aplikaci. Pokud změny, které jsou vzájemně zaměněny na produkční slot není podle očekávání, můžete provést stejný prohození okamžitě k získání "poslední známé funkční web" zpět.
 
-Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [omezení služby App](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#app-service-limits).
+Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [omezení služby App](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits).
 
 * Pokud vaše aplikace obsahuje více sloty, nelze změnit úroveň.
 * Škálování není k dispozici pro nevýrobní prostředí sloty.
@@ -54,7 +54,7 @@ Aplikace musí být spuštěna v **standardní** nebo **Premium** vrstvy v pořa
    
     ![Zdroj konfigurace][ConfigurationSource1]
    
-    Při prvním přidání slotu, budou mít pouze dvě možnosti: klonování konfigurace z výchozí přihrádky v produkčním prostředí nebo vůbec.
+    Při prvním přidání slotu, máte dvě možnosti: klonování konfigurace z výchozí přihrádky v produkčním prostředí nebo vůbec.
     Po vytvoření několik sloty, bude možné klonovat konfiguraci z slotu než v provozním prostředí:
    
     ![Konfigurace zdroje][MultipleConfigurationSources]
@@ -67,8 +67,8 @@ Po vytvoření slotu nasazení není k dispozici žádný obsah. Můžete nasadi
 
 <a name="AboutConfiguration"></a>
 
-## <a name="configuration-for-deployment-slots"></a>Konfigurace pro nasazovací sloty
-Když naklonovat konfiguraci z jiného slotu nasazení klonovaného konfigurace je upravovat. Kromě toho některé konfigurace – elementy bude postupovat podle obsahu mezi prohození (ne slotu konkrétní) při další konfigurace – elementy zůstanou v stejný slot. po prohození (slotu konkrétní). Následující seznamy shrnují konfiguraci, která se změní při Prohodit sloty.
+## <a name="which-settings-are-swapped"></a>Nastavení, které jsou vzájemně zaměněny?
+Když naklonovat konfiguraci z jiného slotu nasazení klonovaného konfigurace je upravovat. Kromě toho některé konfigurace – elementy bude postupovat podle obsahu mezi prohození (ne slotu konkrétní) při další konfigurace – elementy zůstanou v stejný slot. po prohození (slotu konkrétní). Následující seznamy shrnují nastavení, která při Prohodit sloty změnit.
 
 **Nastavení, které jsou vzájemně zaměněny**:
 
@@ -87,7 +87,7 @@ Když naklonovat konfiguraci z jiného slotu nasazení klonovaného konfigurace 
 * Nastavení škálování
 * Webové úlohy plánovače
 
-Konfigurace aplikaci nastavení nebo připojovací řetězec chtěl slot (není vzájemně zaměněny), přístup **nastavení aplikace** okno pro konkrétní pozici, pak vyberte **nastavení slotu** pole pro konfigurační prvky, které by měl přilepit přihrádky. Všimněte si, že označíte konfigurační prvek jako slotu konkrétní má za následek vytvoření tohoto prvku jako není swappable napříč všechny nasazovací sloty přidružené aplikaci.
+Konfigurace aplikaci nastavení nebo připojovací řetězec chtěl slot (není vzájemně zaměněny), přístup **nastavení aplikace** okno pro konkrétní pozici, pak vyberte **nastavení slotu** pole pro konfigurační prvky, které by měl přilepit přihrádky. Označení konfigurační prvek jako slotu konkrétní má za následek vytvoření tohoto prvku jako není swappable napříč všechny nasazovací sloty přidružené aplikaci.
 
 ![Nastavení slotu][SlotSettings]
 
@@ -123,13 +123,13 @@ Pro klíčové úlohy, kterou chcete ověřit které aplikace se chová podle o�
 
 Při použití **prohození s náhledem** možnost (najdete v části [Prohodit sloty nasazení](#Swap)), služby App Service provede následující akce:
 
-- Uchová cílový slot beze změny, není ovlivněná existující zatížení na této pozici (například výroba).
+- Uchová cílový slot beze změny, není ovlivněná existující zatížení na této pozici (například produkční).
 - Aplikuje konfigurační prvky z cílového slotu na zdrojový slot, včetně specifické pro slot připojovací řetězce a nastavení aplikace.
 - Restartování pracovních procesů na zdrojový slot, pomocí těchto zmíněnými konfigurace – elementy.
 - Po dokončení prohození: Přesune warmed vedlejší-up zdrojový slot v cílovém slotu. Přesunutí cílového slotu na zdrojový slot jako ruční prohození.
 - Když zrušíte prohození: znovu použije konfigurace prvků na zdrojový slot na zdrojový slot.
 
-Můžete zobrazit náhled, přesně jak aplikace se bude chovat s konfigurací cílový slot. Po dokončení ověření dokončíte odkládacího souboru v samostatném kroku. Tento krok má výhodu na zdrojový slot již jestli s požadovanou konfigurací a klienti nebudou mít žádné výpadky.  
+Můžete zobrazit náhled, přesně jak aplikace se bude chovat s konfigurací cílový slot. Po dokončení ověření dokončíte odkládacího souboru v samostatném kroku. Tento krok má výhodu na zdrojový slot již jestli s požadovanou konfigurací a klienti nemáte prostředí žádné výpadky.  
 
 Ukázky pro rutiny prostředí Azure PowerShell k dispozici pro více fáze prohození jsou součástí rutin Azure Powershellu pro část sloty nasazení.
 
@@ -153,7 +153,7 @@ Konfigurace automatického Prohodit pro slot je snadné. Postupujte následovně
     ![][Autoswap1]
 2. Vyberte **na** pro **Prohodit automaticky**, vyberte požadovaný cíl slot v **automaticky Prohodit Slot**a klikněte na tlačítko **Uložit** na panelu příkazů. Ujistěte se, že konfigurace pro přihrádky přesně konfigurace určené pro cílový slot.
    
-    **Oznámení** karta bude flash zelená **úspěch** po dokončení operace.
+    **Oznámení** kartě bliká zelená **úspěch** po dokončení operace.
    
     ![][Autoswap2]
    
@@ -165,22 +165,32 @@ Konfigurace automatického Prohodit pro slot je snadné. Postupujte následovně
 
 <a name="Rollback"></a>
 
-## <a name="to-rollback-a-production-app-after-swap"></a>Vrátit zpět produkční aplikaci po swap
+## <a name="roll-back-a-production-app-after-swap"></a>Vrácení produkční aplikace po swap
 Pokud žádné chyby se zjišťují v produkčním prostředí po prohození slotů, vrátit přihrádkách zpátky do stavu před swap odkládací stejné dva sloty okamžitě.
 
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Vlastní warm-up před swap
-Některé aplikace může vyžadovat vlastní warm-up akce. `applicationInitialization` Konfiguračního prvku v souboru web.config. můžete zadat vlastní inicializaci akce dříve, než je žádost o přijetí. Operace přepnutí vyčká pro tuto vlastní warm-up pro dokončení. Zde je fragment ukázkový soubor web.config.
+Některé aplikace může vyžadovat vlastní warm-up akce. `applicationInitialization` Konfiguračního prvku v souboru web.config. můžete zadat vlastní inicializaci akce dříve, než je žádost o přijetí. Operace přepnutí čeká tento vlastní warm-up pro dokončení. Zde je fragment ukázkový soubor web.config.
 
     <applicationInitialization>
         <add initializationPage="/" hostName="[app hostname]" />
         <add initializationPage="/Home/About" hostname="[app hostname]" />
     </applicationInitialization>
 
+## <a name="monitor-swap-progress"></a>Probíhá prohození monitorování
+
+Operace přepnutí někdy trvá delší dobu, například když aplikaci, která je vzájemně zaměněny má warm-up dlouhou dobu. Můžete získat další informace o operacích odkládacího souboru v [protokol aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) v [portál Azure](https://portal.azure.com).
+
+Na stránce aplikace portálu, v levém navigačním panelu, vyberte **protokol aktivit**.
+
+Operace prohození se zobrazí v protokolu dotazu jako `Slotsswap`. Můžete ho rozbalte a vyberte jednu z dílčích operací nebo chyby a zobrazit podrobnosti.
+
+![Protokol aktivit pro prohození slotů](media/web-sites-staged-publishing/activity-log.png)
+
 <a name="Delete"></a>
 
-## <a name="to-delete-a-deployment-slot"></a>Chcete-li odstranit slotu nasazení
+## <a name="delete-a-deployment-slot"></a>Odstranit slotu nasazení
 V okně pro slot nasazení, otevřete okno slotu nasazení, klikněte na **přehled** (výchozí stránka) a klikněte na tlačítko **odstranit** na panelu příkazů.  
 
 ![Odstranit slotu nasazení][DeleteStagingSiteButton]
@@ -189,41 +199,47 @@ V okně pro slot nasazení, otevřete okno slotu nasazení, klikněte na **přeh
 
 <a name="PowerShell"></a>
 
-## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>Rutiny Azure PowerShell pro nasazovací sloty
+## <a name="automate-with-azure-powershell"></a>Automatizovat pomocí prostředí Azure PowerShell
+
 Prostředí Azure PowerShell je modul, který poskytuje rutiny pro správu Azure pomocí prostředí Windows PowerShell, včetně podpory pro správu nasazovací sloty ve službě Azure App Service.
 
 * Informace o instalaci a konfiguraci prostředí Azure PowerShell a týkající se ověřování Azure PowerShell s předplatným Azure najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell Microsoft](/powershell/azure/overview).  
 
 - - -
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
-```
+```PowerShell
 New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-a-deployment-slot"></a>Vytvořte slot nasazení
-```
+```PowerShell
 New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-a-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Zahájení prohození s náhledem (více fáze prohození) a použít konfiguraci cílového slotu na zdrojový slot
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-a-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Zrušit čeká na prohození (prohození s zkontrolujte) a obnovit konfiguraci slotu zdroje
-```
+```PowerShell
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>Prohodit sloty nasazení
-```
+```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+```
+
+### <a name="monitor-swap-events-in-the-activity-log"></a>Monitorování odkládacího souboru události v protokolu aktivit
+```PowerShell
+Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
@@ -237,53 +253,14 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 
 <a name="CLI"></a>
 
-## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>Azure příkazy rozhraní příkazového řádku (Azure CLI) pro nasazovací sloty
-Rozhraní příkazového řádku Azure poskytuje příkazy a platformy pro práci s Azure, včetně podpory pro správu služby App Service nasazovací sloty.
+## <a name="automate-with-azure-cli"></a>Automatizovat pomocí rozhraní příkazového řádku Azure
 
-* Pokyny týkající se instalace a konfigurace rozhraní příkazového řádku Azure, včetně informací o tom, jak připojit k předplatnému Azure, rozhraní příkazového řádku Azure najdete v části [instalace a konfigurace rozhraní příkazového řádku Azure](../cli-install-nodejs.md).
-* Chcete-li seznam příkazů, které jsou k dispozici pro službu Azure App Service v Azure CLI, volejte `azure site -h`.
+Pro [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-cli) příkazy pro nasazovací sloty, najdete v části [az webapp nasazovací slot](/cli/azure/webapp/deployment/slot).
 
-> [!NOTE] 
-> Pro [Azure CLI 2.0](https://github.com/Azure/azure-cli) příkazy pro nasazovací sloty, najdete v části [az webapp nasazovací slot](/cli/azure/webapp/deployment/slot).
-
-- - -
-### <a name="azure-site-list"></a>seznam webů Azure
-Informace o aplikacích v aktuálním předplatném volání **seznam webů azure**, jako v následujícím příkladu.
-
-`azure site list webappslotstest`
-
-- - -
-### <a name="azure-site-create"></a>Vytvoření Azure lokality
-Chcete-li vytvořit slotu nasazení, volejte **azure lokality vytvořit** a zadejte název existující aplikaci a název slotu chcete vytvořit, jako v následujícím příkladu.
-
-`azure site create webappslotstest --slot staging`
-
-Pokud chcete povolit zdrojového kódu pro nový slot, použijte **– git** možnost, jako v následujícím příkladu.
-
-`azure site create --git webappslotstest --slot staging`
-
-- - -
-### <a name="azure-site-swap"></a>swap Azure lokality
-Chcete-li aktualizované nasazení slot na produkční aplikaci, použijte **azure lokality swap** příkazu provést operaci přepnutí, jako v následujícím příkladu. Na produkční aplikaci nebude mít žádný výpadek ani ho určitým studený start.
-
-`azure site swap webappslotstest`
-
-- - -
-### <a name="azure-site-delete"></a>odstranění webu Azure
-Pokud chcete odstranit slot nasazení, který již není potřeba, použijte **odstranění azure webu** příkazu, jako v následujícím příkladu.
-
-`azure site delete webappslotstest --slot staging`
-
-- - -
-> [!NOTE]
-> Sledujte webovou aplikaci v akci. [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/) okamžitě a vytvořit krátkodobou úvodní aplikaci – nepožaduje se žádná platební karta a bez jakýchkoli závazků.
-> 
-> 
-
-## <a name="next-steps"></a>Další kroky
-[Azure App Service webové aplikace – blok webového přístupu k testovacím nasazovací sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-[Úvod do služby App Service v systému Linux](../app-service/containers/app-service-linux-intro.md)
-[bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/)
+## <a name="next-steps"></a>Další postup
+[Azure App Service webové aplikace – blok webového přístupu k testovacím nasazovací sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Úvod do služby App Service v systému Linux](../app-service/containers/app-service-linux-intro.md)  
+[Bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->
 [QGAddNewDeploymentSlot]:  ./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png

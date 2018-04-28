@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 13c3c948fbe24d5536b32967c8394060ee898377
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Přidat streamování data vstup nebo referenční data do úlohy Stream Analytics
 Zjistěte, jak spojit zdroje dat do vaší úlohy Stream Analytics jako vysílání datového proudu vstupní data ze služby Event Hubs nebo odkaz na data z úložiště objektů Blob.
@@ -49,12 +49,12 @@ Chcete-li přidat vstup do úlohy Stream Analytics:
     ![Přidat vstup datového streamu dat](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)  
 4. Zadejte popisný název pro tento vstup do pole vstupní Alias.  Tento název se použije v dotazu vaše úlohy později na odkazovat na vstup.
    
-    Vyplňte zbytek vlastnosti požadované připojení pro připojení ke zdroji dat. Tato pole se liší podle typu vstupu a zdroj typu a jsou definovány podrobně [zde](stream-analytics-create-a-job.md).  
+    Vyplňte zbytek vlastnosti požadované připojení pro připojení ke zdroji dat. 
    
     ![Přidat vstup datového centra událostí](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
 5. Zadejte nastavení serializace pro vstupní data:
    
-   * Abyste měli jistotu, dotazy fungovaly podle očekávání, zadejte **formát serializace událostí** příchozích dat.  Formáty podporované serializace jsou JSON, CSV a Avro.
+   * Abyste měli jistotu, dotazy fungovaly podle očekávání, zadejte **formát serializace událostí** příchozích dat.  Formáty podporované serializace jsou JSON, CSV a Avro. Zkontrolujte prosím zarovnaná s specifikace formátu JSON a neobsahuje 0 na desetinná čísla.
    * Ověřte **kódování** pro data.  V tuto chvíli je jediným podporovaným formátem kódování UTF-8.
      
      ![Nastavení serializace dat pro vložení dat](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  

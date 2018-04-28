@@ -3,17 +3,17 @@ title: Nasazení skupiny více kontejnerů v Azure kontejner instancí
 description: Postup nasazení kontejneru skupiny pomocí několika kontejnerů v Azure kontejner instancí.
 services: container-instances
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 58fd4c18df5ec0a5d02be0e6e89cb2b4af26b20e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5447598286e6f0dd8578af11f1789a8c5f477d5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-container-group"></a>Nasazení kontejneru skupiny
 
@@ -108,7 +108,7 @@ V této ukázce skupina kontejneru s dvěma kontejnery veřejnou IP adresu, port
 }
 ```
 
-Použít privátní kontejneru registru bitovou kopii, přidáte objekt v dokumentu JSON v následujícím formátu.
+Použít privátní kontejneru registru bitovou kopii, přidáte objekt v dokumentu JSON v následujícím formátu. Příklad implementace této konfigurace, najdete v článku [odkaz na šablonu ACI Resource Manager] [ template-reference] dokumentaci.
 
 ```json
 "imageRegistryCredentials": [
@@ -134,7 +134,7 @@ Nasazení šablony s [vytvořit nasazení skupiny az] [ az-group-deployment-crea
 az group deployment create --resource-group myResourceGroup --name myContainerGroup --template-file azuredeploy.json
 ```
 
-Během pár sekund měli byste obdržet počáteční reakce z Azure.
+Během několika sekund by se měla zobrazit první odezva z Azure.
 
 ## <a name="view-deployment-state"></a>Zobrazení stavu nasazení
 
@@ -152,7 +152,7 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="view-logs"></a>Zobrazit protokoly
+## <a name="view-logs"></a>Zobrazení protokolů
 
 Zobrazit výstup protokolu kontejneru pomocí [az kontejneru protokoly] [ az-container-logs] příkaz. `--container-name` Argument určuje kontejner, ze kterého protokoly pro vyžádání obsahu. V tomto příkladu je zadána první kontejneru.
 
@@ -210,3 +210,4 @@ Tento článek popsané kroky potřebné pro nasazení s více kontejnerů Azure
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
+[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups

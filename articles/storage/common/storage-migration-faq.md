@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 4fb84c95da061991711fe51326ccd95295fbdcc3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9bde8657e435f1c759eceb26682e650605012a89
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy o migraci úložiště Azure
 
@@ -76,7 +76,7 @@ Postupujte následovně:
 
 1.  Vytvoření kontejneru (složka) v cílovém objektu blob.
 
-2.  Použití [AzCopy](https://azure.microsoft.com/en-us/blog/azcopy-5-1-release/) zkopírovat obsah z původní kontejner objektů blob do kontejneru různých objektů blob.
+2.  Použití [AzCopy](https://azure.microsoft.com/blog/azcopy-5-1-release/) zkopírovat obsah z původní kontejner objektů blob do kontejneru různých objektů blob.
 
 **Jak vytvořit skript prostředí PowerShell pro přesun dat z jedné Azure sdílené složky do jiné ve službě Azure Storage?**
 

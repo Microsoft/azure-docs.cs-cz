@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénáře monitorování v trvanlivý funkce – ukázka počasí sledovacích procesů
 
@@ -38,7 +38,7 @@ Tato ukázka monitoruje aktuální počasí umístění a upozorní uživatele p
 * Monitorování můžete ukončit, pokud nějaká podmínka je dosažená nebo ukončeno jiným procesem.
 * Monitorování může trvat parametry. Ukázka ukazuje, jak lze použít stejný postup počasí monitorování pro všechny požadované umístění a telefonní číslo.
 * Monitorování jsou škálovatelné. Protože každé monitorování orchestration instance, bez nutnosti vytvářet nové funkce a definovat další kód lze vytvořit více monitorů.
-* Monitorování snadno integrovat do větší pracovních postupů. Monitorování může být jeden oddíl složitější funkce orchestration, nebo [dílčí orchestration](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-sub-orchestrations).
+* Monitorování snadno integrovat do větší pracovních postupů. Monitorování může být jeden oddíl složitější funkce orchestration, nebo [dílčí orchestration](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations).
 
 ## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 

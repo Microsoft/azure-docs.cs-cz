@@ -10,14 +10,14 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 178eba46e0d128c8d93f2ba664a4a0916889fbbd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1a40eb8c3ac842976ffb1da42650466725b35e6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Databáze jednotky transakce (Dtu) a jednotky transakcí elastické databáze (Edtu)
-Tento článek vysvětluje jednotky databázové transakce (DTU) a elastické jednotky databázové transakce (eDTU). Popisuje také, co se stane při dosažení maximálního počtu DTU nebo eDTU.  
+Tento článek vysvětluje jednotky databázové transakce (DTU) a elastické jednotky databázové transakce (eDTU). Popisuje také, co se stane při dosažení maximálního počtu DTU nebo eDTU. Konkrétní informace o cenách, najdete v části [Azure SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 ## <a name="what-are-database-transaction-units-dtus"></a>Jaké jsou jednotky transakcí databáze (Dtu)?
 Pro jednu databázi Azure SQL na úrovni výkonu specifických v rámci [vrstvy služby](sql-database-single-database-resources.md), Microsoft zaručuje úroveň prostředky pro tuto databázi (bez ohledu na jakékoli jiné databáze v cloudu Azure) a poskytuje předvídatelný úroveň výkonu. Toto množství prostředků počítá se jako počet jednotky transakcí databáze nebo Dtu a je určena připojené výpočty, úložiště a vstupně-výstupní operace prostředky. Poměr mezi tyto prostředky se původně určený [OLTP srovnávacího testu zatížení](sql-database-benchmark-overview.md) navržený tak, aby Typická reálného OLTP úloh. Pokud vaše úlohy překročí množství kterýkoli z těchto prostředků, vaše propustnost je omezenému – což pomalejší výkon a vypršení časových limitů. Prostředky používané velikosti pracovní zátěže nemá dopad na prostředky, které jsou k dispozici pro ostatní databází SQL v cloudu Azure a prostředků používá jiné úlohy nemá dopad na prostředky, které jsou k dispozici k vaší databázi SQL.
@@ -32,12 +32,12 @@ Chcete-li získat podrobnější přehled o spotřeby prostředků (DTU) vašich
 - Přejděte na podrobné informace o dotazu, zobrazit historii využití prostředků a text.
 - Výkon přístupu k ladění doporučení, které se zobrazí akce prováděné [Poradce pro funkci SQL Database](sql-database-advisor.md).
 
-[Změnit úrovně služeb](sql-database-service-tiers.md) můžete kdykoli s minimální odstávkou aplikace (obecně v průměru méně než čtyři sekundy). Mnoha firmám a aplikacím stačí vytváření databází a nastavování výkonu na vyžádání, zejména v případě, že jsou vzorce používání relativně předvídatelné. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. V tomto scénáři použijete fondu elastické databáze s počtem jednotek Edtu, která jsou sdílena mezi několika databáze ve fondu.
+Můžete změnit [DTU úrovně služeb](sql-database-service-tiers-dtu.md) kdykoli s minimálními výpadky do vaší aplikace (obvykle průměrování než čtyři sekund). Mnoha firmám a aplikacím stačí vytváření databází a nastavování výkonu na vyžádání, zejména v případě, že jsou vzorce používání relativně předvídatelné. Ale pokud vaše vzorce používání předvídatelné nejsou, může být správa nákladů a údržba obchodního modelu velmi těžká. V tomto scénáři použijete fondu elastické databáze s počtem jednotek Edtu, jež jsou sdílena mezi více databází ve fondu.
 
 ![Úvod do služby SQL Database: DTU izolované databáze podle úrovní](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>Jaké jsou jednotky transakcí elastické databáze (Edtu)?
-Spíše než poskytují vyhrazené sadu prostředků (Dtu) k databázi SQL, která je neustále dostupná bez ohledu na to, jestli není potřeba, můžete umístit do databáze [elastický fond](sql-database-elastic-pool.md) na databázi SQL serveru, který sdílí fond prostředků mezi tyto databáze. Sdílené prostředky v elastickém fondu měří elastické jednotky transakcí databáze nebo Edtu. Elastické fondy poskytují jednoduché a nákladově efektivní řešení správy výkonnostních cílů pro více databází, jejichž vzory používání se značně liší a nelze je předvídat. V elastickém fondu, může zaručit, že žádné jedna databáze používá všechny prostředky ve fondu a také že minimální objem prostředků je vždy k dispozici do databáze v elastickém fondu. 
+Spíše než poskytují vyhrazené sadu prostředků (Dtu) k databázi SQL, která je neustále dostupná bez ohledu na to, jestli není potřeba, můžete umístit do databáze [elastický fond](sql-database-elastic-pool.md) na databázi SQL serveru, který sdílí fondu zdrojů mezi tyto databáze. Sdílené prostředky v elastickém fondu měří elastické jednotky transakcí databáze nebo Edtu. Elastické fondy poskytují jednoduché a nákladově efektivní řešení správy výkonnostních cílů pro více databází, jejichž vzory používání se značně liší a nelze je předvídat. V elastickém fondu, může zaručit, že žádné jedna databáze používá všechny prostředky ve fondu a také že minimální objem prostředků je vždy k dispozici do databáze v elastickém fondu. 
 
 ![Úvod do služby SQL Database: eDTU podle vrstvy a úrovně](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
@@ -55,6 +55,7 @@ Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití.
 Úrovně výkonu se kalibrují a řídí tak, aby poskytovaly zdroje potřebné ke spuštění vaší úlohy databáze až po maximální limity, které jsou pro vybranou úroveň služeb či úroveň výkonu povoleny. Pokud úloha dosahuje limity pro procesory / datový vstup/výstup / vstup/výstup protokolu, budete i nadále využívat prostředky na maximální povolené úrovni; je ale pravděpodobné, že se u vašich dotazů zvýší latence. Tyto limity nevedou k žádným chybám, ale mohou zpomalit zpracování úlohy, pokud se zpomalení nezvýší natolik, že začne docházet k vypršení časového limitu dotazů. Pokud dosahujete limitů pro maximální povolený počet souběžných relací/požadavků uživatelů (pracovních vláken), zobrazují se explicitní chyby. V tématu [limitů prostředků Azure SQL Database]( sql-database-dtu-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) informace o limitu prostředků než procesoru, paměti, vstupně-výstupní operace dat a transakce protokolu vstupně-výstupní operace.
 
 ## <a name="next-steps"></a>Další postup
-* V tématu [vrstvy služby](sql-database-service-tiers.md) pro informace o Dtu a Edtu, které jsou k dispozici pro izolované databáze a pro elastické fondy, stejně jako omezení na prostředky než procesoru, paměti, vstupně-výstupní operace dat a transakce protokolu vstupně-výstupní operace.
+* V tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) pro informace o Dtu a Edtu, které jsou k dispozici pro izolované databáze a pro elastické fondy, stejně jako omezení na prostředky než procesoru, paměti, vstupně-výstupní operace dat a transakce protokolu vstupně-výstupní operace.
+* V tématu [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) informace o úrovně přidělení a služby na základě vCore prostředků. 
 * Chcete-li pochopit svou spotřebu (DTU), přečtěte si článek [SQL Database Query Performance Insight](sql-database-query-performance.md).
 * Chcete-li lépe pochopit metodiku používanou úlohou srovnávacího testu OLTP k určení kombinace pro jednotku DTU, přečtěte si článek [Přehled srovnávacích testů SQL Database](sql-database-benchmark-overview.md).

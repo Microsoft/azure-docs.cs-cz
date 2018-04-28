@@ -1,9 +1,9 @@
 ---
-title: "Filtrování a předběžného zpracování v Azure Application Insights SDK | Microsoft Docs"
-description: "Zápis procesorů Telemetrie a inicializátory telemetrická data sady SDK, filtrovat nebo přidání vlastnosti do data před odesláním telemetrie na portál Application Insights."
+title: Filtrování a předběžného zpracování v Azure Application Insights SDK | Microsoft Docs
+description: Zápis procesorů Telemetrie a inicializátory telemetrická data sady SDK, filtrovat nebo přidání vlastnosti do data před odesláním telemetrie na portál Application Insights.
 services: application-insights
-documentationcenter: 
-author: beckylino
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
-ms.author: borooji;mbullwin
-ms.openlocfilehash: 3f621010c1c36445ad35d81d96a2e5aefc46b10c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin; borooji
+ms.openlocfilehash: 06f116fc5096fe4bda9c8433c3a33726acb67eea
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžného zpracování telemetrie Application Insights SDK
 
@@ -218,7 +218,7 @@ Inicializátory telemetrická data použít k definování globální vlastnosti
 
 Například Application Insights pro webové balíček shromažďuje telemetrická data o požadavcích HTTP. Ve výchozím nastavení, označuje jako neúspěšný každá žádost s kódem odpovědi > = 400. Ale pokud budete chtít 400 považovat za úspěšné, můžete zadat inicializátoru telemetrická data, která nastaví vlastnost úspěch.
 
-Pokud zadáte inicializátoru telemetrie, nazývá metod Track*() vždy, když je volána. To zahrnuje metody, které jsou volány moduly standardní telemetrie. Podle konvence nenastavujte tyto moduly jakákoli vlastnost, která již byla nastavena pomocí inicializátoru.
+Pokud zadáte inicializátoru telemetrie, nazývá se vždy, když se nazývají metod Track*(). To zahrnuje metody, které jsou volány moduly standardní telemetrie. Podle konvence nenastavujte tyto moduly jakákoli vlastnost, která již byla nastavena pomocí inicializátoru.
 
 **Zadejte vaše inicializátoru**
 
@@ -356,7 +356,7 @@ Jaký je rozdíl mezi procesory telemetrie a inicializátory telemetrie?
 
 ## <a name="sdk-code"></a>Kód SDK
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [SADY SDK TECHNOLOGIE ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Další kroky

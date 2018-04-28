@@ -1,26 +1,26 @@
 ---
-title: "Podmínky umístění v Azure Active Directory podmíněného přístupu | Microsoft Docs"
-description: "Další informace o použití podmínku umístění k řízení přístupu k vaší cloudové aplikace založené na síťovém umístění uživatele."
+title: Podmínky umístění v Azure Active Directory podmíněného přístupu | Microsoft Docs
+description: Další informace o použití podmínku umístění k řízení přístupu k vaší cloudové aplikace založené na síťovém umístění uživatele.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2018
+ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 842fe8c194f1c88c7dabb073e0fa7b7806d92d44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Podmínky umístění v Azure Active Directory podmíněného přístupu 
 
@@ -43,7 +43,14 @@ Umístění je štítek pro umístění v síti, buď představuje umístění s
 
 Pomocí pojmenovaného umístění můžete vytvořit logické skupiny rozsahů adres IP, jiných zemí a oblastí. 
 
- Název umístění obsahuje následující součásti:
+Můžete získat přístup k vaší pojmenované umístění v **spravovat** části stránky podmíněného přístupu.
+
+![Umístění](./media/active-directory-conditional-access-locations/02.png)
+
+ 
+
+
+Pojmenované umístění má následující komponenty:
 
 ![Umístění](./media/active-directory-conditional-access-locations/42.png)
 
@@ -68,13 +75,13 @@ Počet pojmenované umístění, které můžete konfigurovat, je omezené velik
 
 ## <a name="trusted-ips"></a>Důvěryhodné IP adresy
 
-Můžete také nakonfigurovat reprezentující místní intranet vaší organizace v rozsahy IP adres [nastavení služby Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Tato funkce umožňuje nakonfigurovat až 50 rozsahy IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).  
+Můžete také nakonfigurovat reprezentující místní intranet vaší organizace v rozsahy IP adres [nastavení služby Multi-Factor authentication](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Tato funkce umožňuje nakonfigurovat až 50 rozsahy IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
 Pokud máte důvěryhodné IP adresy nakonfigurované, se zobrazují jako **důvěryhodné IP adresy MFA** v seznamu místa pro podmínku umístění.   
 
 ### <a name="skipping-multi-factor-authentication"></a>Přeskočení vícefaktorového ověřování
 
-Na stránce nastavení služby Multi-Factor authentication service můžete identifikovat uživatele podnikové sítě intranet výběrem **vynechat službu Multi-Factor authentication pro žádosti od federovaných uživatelů v mém intranetu**. Toto nastavení určuje, že uvnitř podnikové sítě deklarace identity, které se objeví službou AD FS, musí důvěryhodnou a používá k identifikaci uživatele, že je v podnikové síti. Další informace najdete v tématu [povolit funkci důvěryhodné IP adresy pomocí podmíněného přístupu](../multi-factor-authentication/multi-factor-authentication-whats-next.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+Na stránce nastavení služby Multi-Factor authentication service můžete identifikovat uživatele podnikové sítě intranet výběrem **vynechat službu Multi-Factor authentication pro žádosti od federovaných uživatelů v mém intranetu**. Toto nastavení určuje, že uvnitř podnikové sítě deklarace identity, které se objeví službou AD FS, musí důvěryhodnou a používá k identifikaci uživatele, že je v podnikové síti. Další informace najdete v tématu [povolit funkci důvěryhodné IP adresy pomocí podmíněného přístupu](authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 Po zkontrolování tuto možnost, včetně umístění s názvem **MFA důvěryhodné IP adresy** budou platit pro všechny zásady s tímto vybrané.
 
@@ -112,7 +119,7 @@ Tato možnost platí pro:
 
 ### <a name="selected-locations"></a>Vybraná umístění
 
-Pomocí této možnosti můžete vybrat jeden nebo více umístění s názvem. Pro zásady se toto nastavení použít uživatel potřebuje k připojení z vybraného umístění. Kde kliknutí **vyberte** otevře se ovládací prvek výběru pojmenované sítě, který zobrazí seznam pojmenované sítě. V seznamu také ukazuje, zda umístění v síti byl označen jako důvěryhodné. Pojmenované umístění nazývá **MFA důvěryhodné IP adresy** se používá k zahrnují nastavení IP adresy, které lze nakonfigurovat na stránce nastavení služby Multi-Factor authentication service.
+Pomocí této možnosti můžete vybrat jeden nebo více umístění s názvem. Pro zásady se toto nastavení použít uživatel potřebuje k připojení z vybraného umístění. Když kliknete na tlačítko **vyberte** otevře se ovládací prvek výběru pojmenované sítě, který zobrazí seznam pojmenované sítě. V seznamu také ukazuje, zda umístění v síti byl označen jako důvěryhodné. Pojmenované umístění nazývá **MFA důvěryhodné IP adresy** se používá k zahrnují nastavení IP adresy, které lze nakonfigurovat na stránce nastavení služby Multi-Factor authentication service.
 
 ## <a name="what-you-should-know"></a>Důležité informace
 

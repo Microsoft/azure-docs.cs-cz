@@ -1,24 +1,19 @@
 ---
-title: "Aspekty výkonu a optimalizace Azure Search | Microsoft Docs"
-description: "Vyladění výkonu Azure Search a nakonfigurujte optimálního škálování"
-services: search
-documentationcenter: 
+title: Aspekty výkonu a optimalizace Azure Search | Microsoft Docs
+description: Vyladění výkonu Azure Search a nakonfigurujte optimálního škálování
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89c0352723f1ed00784250b566902028af853d10
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Aspekty výkonu a optimalizace Azure Search
 Skvělé vyhledáváním je klíčem k úspěchu pro mnoho mobilních a webových aplikací. Z nemovitosti používat car tržišť online katalogů, rychlé vyhledávání a relevantní výsledky ovlivní zkušeností zákazníků. Tento dokument je určený pro pomoc zjistíte, že osvědčené postupy pro postup co nejlépe využít Azure Search, zejména pro pokročilé scénáře s sofistikované požadavky pro škálovatelnost, vícejazyčné podpory, nebo vlastní hodnocení.  Kromě toho tento dokument popisuje internals a popisuje přístupy, které efektivně fungoval v aplikacích reálného zákazníka.
@@ -98,7 +93,7 @@ Služba Azure Search nabízí možnost analyzovat a monitorovat výkon služby p
 
 STA je cenným nástrojem pochopit latence sazby z tohoto hlediska Azure Search.  Vzhledem k tomu, že metriky výkonu dotazu protokolována jsou založená na dobu, kterou dotazem vyžádá mají být plně zpracovány ve službě Azure Search (od okamžiku, kdy je požadavek na odeslání), budete moci použít k určení, pokud jsou problémy s latencí z výpisů na straně služby Azure Search IDE služby, například kvůli latence sítě.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o omezení cenové úrovně a služby pro každé z nich najdete v tématu [omezení ve službě Azure Search služby](search-limits-quotas-capacity.md).
 
 Navštivte [plánování kapacity](search-capacity-planning.md) Další informace o oddílu a repliky kombinace.

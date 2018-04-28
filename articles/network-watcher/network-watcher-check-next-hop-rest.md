@@ -1,11 +1,11 @@
 ---
-title: "Najít další segment s síť Azure sledovacích procesů další segment - REST | Microsoft Docs"
-description: "Tento článek popisuje, jak můžete najít, co je typ dalšího směrování a ip adresu pomocí dalšího přechodu pomocí REST API služby Azure"
+title: Najít další segment s síť Azure sledovacích procesů další segment - REST | Microsoft Docs
+description: Tento článek popisuje, jak můžete najít, co je typ dalšího směrování a ip adresu pomocí dalšího přechodu pomocí REST API služby Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2216c059-45ba-4214-8304-e56769b779a6
 ms.service: network-watcher
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: b541cd5cb7e49468af2c522b16c3a3b9fe75fd54
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-aure-network-watcher-using-azure-rest-api"></a>Zjistěte, co typ dalšího směrování je pomocí funkce další směrování v sledovací proces sítě Azure pomocí rozhraní REST API Azure
 
 > [!div class="op_single_selector"]
-> - [portál Azure Portal](network-watcher-check-next-hop-portal.md)
+> - [Azure Portal](network-watcher-check-next-hop-portal.md)
 > - [PowerShell](network-watcher-check-next-hop-powershell.md)
 > - [CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
@@ -127,7 +127,7 @@ Níže jsou výsledky ve formátu json.
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Jakmile jste moct zjistit další směrování pro virtuální počítač, můžete zobrazit zabezpečení síťových prostředků navštívíte [zobrazení zabezpečení – přehled](network-watcher-security-group-view-overview.md)
 

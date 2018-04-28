@@ -1,53 +1,55 @@
 ---
-title: Úvod do Azure Storage | Dokumentace Microsoftu
-description: Úvod do Azure Storage, datového úložiště v cloudu od Microsoftu.
+title: Seznámení se službou Azure Storage – cloudové úložiště v Azure | Microsoft Docs
+description: Azure Storage je řešení cloudového úložiště Microsoftu. Poskytuje vysoce dostupné, zabezpečené, odolné, široce škálovatelné a redundantní úložiště pro datové objekty.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: get-started-article
-ms.date: 03/06/2018
+ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="introduction-to-microsoft-azure-storage"></a>Úvod do Microsoft Azure Storage
+# <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
-Microsoft Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Microsoft se stará o údržbu a řeší za vás kritické problémy.
+Azure Storage je řešení cloudového úložiště Microsoftu pro scénáře moderního datového úložiště. Nabízí široce škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro cloud, úložiště pro přenos zpráv zajišťující spolehlivé zasílání zpráv a úložiště NoSQL. Azure Storage je:
 
-Azure Storage se skládá ze tří datových služeb: Blob Storage, File Storage a Queue Storage. Blob Storage podporuje Storage úrovně Standard i Premium a Storage úrovně Premium využívají jenom SSD pro zajištění nejvyššího možného výkonu. Další funkcí je studené úložiště, které umožňuje ukládat velké objemy zřídka využívaných dat s nižšími náklady.
+- **Odolné a vysoce dostupné:** Redundance zajišťuje, že vaše data budou v případě krátkodobého selhání hardwaru v bezpečí. Můžete se také rozhodnout data replikovat napříč několika datacentry nebo geografickými oblastmi, abyste se ochránili i proti místní pohromě nebo přírodní katastrofě. Data replikovaná tímto způsobem zůstávají v případě nečekaného výpadku vysoce dostupná. 
+- **Zabezpečené:** Všechna data a zapsaná do služby Azure Storage jsou touto službou šifrovaná. Azure Storage poskytuje jemně odstupňované řízení přístupu k datům.
+- **Škálovatelné:** Azure Storage je navržené pro širokou škálovatelnost, aby splňovalo požadavky dnešních aplikací na datové úložiště a výkon. 
+- **Spravované:** Microsoft Azure se stará o údržbu a řeší za vás veškeré kritické problémy.
+- **Přístupné:** Data ve službě Azure Storage jsou přístupná prostřednictvím protokolu HTTP nebo HTTPS odkudkoli na světě. Microsoft poskytuje sady SDK pro Azure Storage v mnoha různých jazycích – .NET, Java, Node.js, Python, PHP, Ruby, Go a další – a také vyspělé rozhraní REST API. Azure Storage podporuje skriptování v Azure PowerShellu nebo Azure CLI. A web Azure Portal a Průzkumník služby Azure Storage nabízí snadná vizuální řešení pro práci s daty.  
 
-V tomto článku jsou probrána následující témata:
-* služby Azure Storage
-* typy účtů úložiště
-* přístup k objektům blob, frontám a souborům
-* šifrování
-* replikace
-* přenos dat do nebo z úložiště
-* velký počet dostupných klientských knihoven pro úložiště
+## <a name="azure-storage-services"></a>Služby Azure Storage
 
-Informace o zprovoznění s využitím Azure Storage najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
+Azure Storage zahrnuje tyto datové služby: 
 
-## <a name="introducing-the-azure-storage-services"></a>Seznámení se službami Azure Storage
+- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data.
+- [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro nasazení v cloudu nebo místní nasazení.
+- [Fronty Azure](../queues/storage-queues-introduction.md): spolehlivé úložiště pro přenos zpráv mezi součástmi aplikace. 
+- [Tabulky Azure](../../cosmos-db/table-storage-overview.md): úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
 
-Pokud chcete použít některou ze služeb, které poskytuje Azure Storage (Blob Storage, File Storage nebo Queue Storage), musíte nejdřív vytvořit účet úložiště. Potom v tomto účtu úložiště můžete přenést data do nebo z konkrétní služby.
+Ke každé službě získáte přístup z účtu uložiště. Než začnete, přečtěte si článek [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Bloby jsou v podstatě soubory podobné těm, které ukládáte ve svém počítači (nebo tabletu, mobilním zařízení atd.). Mohou to být obrázky, soubory Microsoft Excelu, soubory HTML, virtuální pevné disky (VHD), velké objemy dat, jako jsou protokoly nebo zálohy databází – prakticky cokoli. Objekty blob se ukládají v kontejnerech, které jsou obdobou složek.
+Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Blob Storage je optimalizované pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data. 
 
-Když uložíte soubory ve službě Blob Storage, můžete k nim přistupovat z libovolného místa na světě pomocí adres URL, rozhraní REST nebo některé z klientských knihoven pro úložiště Azure SDK. Klientské knihovny pro úložiště jsou dostupné pro řadu jazyků, včetně Node.js, Javy, PHP, Ruby, Pythonu a .NET.
+Blob Storage je ideální pro:
 
-Existují tři typy objektů blob – objekty blob bloku, objekty blob stránky (používané pro soubory VHD) a doplňovací objekty blob.
+* Poskytování obrázků nebo dokumentů přímo do prohlížeče
+* Ukládání souborů pro distribuovaný přístup
+* Streamování videa a zvuku
+* Ukládání dat pro zálohování a obnovování, zotavení po havárii a pro archivaci
+* Ukládání dat, které bude analyzovat místní nebo v Azure hostovaná služba
 
-* Objekty blob bloku se používají k uložení obyčejných souborů až do velikosti 4,7 TB.
-* Objekty blob stránky se používají k uložení souborů s náhodným přístupem až do velikosti 8 TB. Používají se pro soubory VHD, které zálohují virtuální počítače.
-* Doplňovací objekty blob jsou tvořené bloky podobně jako objekty blob bloku, ale jsou optimalizované pro doplňovací operace. Využívají se k takovým věcem, jako je protokolování informací z několika virtuálních počítačů do stejného objektu blob.
+Přístup k objektům ve službě Blob Storage je prostřednictvím protokolů HTTP nebo HTTPS možný odkudkoli na světě. Uživatelé nebo klientské aplikace mohou získat přístup k objektům blob prostřednictvím adres URL, [rozhraní REST API služby Azure Storage](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api), [Azure PowerShellu](https://docs.microsoft.com/powershell/module/azure.storage), [Azure CLI](https://docs.microsoft.com/cli/azure/storage) nebo klientské knihovny služby Azure Storage. Klientské knihovny úložiště jsou dostupné pro řadu jazyků, mezi které patří [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client), [Java](https://docs.microsoft.com/java/api/overview/azure/storage/client), [Node.js](http://azure.github.io/azure-storage-node), [Python](https://azure-storage.readthedocs.io/en/latest/index.html), [PHP](http://azure.github.io/azure-storage-php/) a [Ruby](http://azure.github.io/azure-storage-ruby).
 
-V případě velkých datových sad, kde stahování nebo ukládání dat do Blob Storage přes internet není vzhledem k síťovým omezením reálné, můžete sadu pevných disků zaslat společnosti Microsoft, která data exportuje nebo importuje přímo v datovém centru. Další informace najdete v tématu [Přenos dat do Blob Storage pomocí služby Microsoft Azure Import/Export](../storage-import-export-service.md).
+Další informace službě Blob Storage získáte v článku o [seznámení s úložištěm objektů v Azure](../blobs/storage-blobs-introduction.md).
 
 ## <a name="azure-files"></a>Soubory Azure
 Služba [Soubory Azure](../files/storage-files-introduction.md) umožňuje nastavit vysoce dostupné sdílené složky souborů sítě, ke kterým je možný přístup pomocí standardního protokolu SMB (Server Message Block). To znamená, že několik virtuálních počítačů může sdílet stejné soubory s oprávněním ke čtení i zápisu. Soubory můžete číst také pomocí rozhraní REST nebo klientských knihoven pro úložiště.
@@ -64,15 +66,21 @@ Sdílené složky můžete použít pro řadu běžných scénářů:
 
 V současné době se nepodporuje ověřování založené na Active Directory ani seznamy ACL, někdy v budoucnu se ale podporovat budou. K ověřování přístupu ke sdílené složce se používají přihlašovací údaje účtu úložiště. To znamená, že všichni s připojenou sdílenou složkou k ní budou mít úplná oprávnění ke čtení i zápisu.
 
+Další informace o službě Soubory Azure najdete v tématu [Seznámení se Soubory Azure](../files/storage-files-introduction.md).
+
 ## <a name="queue-storage"></a>Queue Storage
 
 Služba front Azure se využívá k ukládání a načítání zpráv. Fronty zprávy mohou mít velikost až 64 kB a jedna fronta může obsahovat miliony zpráv. Fronty se obecně používají k ukládání seznamů zpráv, které mají být zpracovány asynchronně.
 
 Řekněme například, že chcete zákazníkům umožnit odesílání obrázků a pro každý obrázek chcete vytvořit miniatury. Můžete nechat zákazníky při odesílání obrázků čekat na to, až tyto miniatury vytvoříte. Alternativou může být použití fronty. Když zákazník dokončí nahrávání, zapište zprávu do fronty. Potom nechte funkci Azure Functions, aby načetla tuto zprávu z fronty a vytvořila miniatury. Jednotlivé části tohoto zpracování je možné škálovat samostatně. Získáte tak větší kontrolu při jeho vylaďování pro vaše využití.
 
+Další informace o službě Fronty Azure najdete v tématu o [seznámení s Frontami](../queues/storage-queues-introduction.md).
+
 ## <a name="table-storage"></a>Úložiště Table
 
 Azure Table Storage je teď součástí služby Azure Cosmos DB. Dokumentaci ke službě Azure Table Storage najdete v tématu [Přehled služby Azure Table Storage](../../cosmos-db/table-storage-overview.md). Kromě existující služby Azure Table Storage je k dispozici také nabídka nového rozhraní API tabulky Azure Cosmos DB, které poskytuje tabulky s optimalizovanou propustností, globální distribuci a automatické sekundární indexy. Další informace a možnost vyzkoušet si nové prostředí úrovně Premium najdete na stránce [Rozhraní API tabulky Azure Cosmos DB](https://aka.ms/premiumtables).
+
+Další informace o službě Table Storage získáte v tématu s [přehledem o službě Azure Table Storage](../../cosmos-db/table-storage-overview.md).
 
 ## <a name="disk-storage"></a>Diskové úložiště
 
@@ -95,9 +103,9 @@ Existují dva typy účtů úložiště pro obecné účely.
 
 Nejčastěji používanými účty úložiště jsou standardní účty, které je možné použít pro všechny typy dat. Účty úložiště úrovně Standard k ukládání dat používají magnetická média.
 
-#### <a name="premium-storage"></a>Storage úrovně Premium
+#### <a name="premium-storage"></a>Premium Storage
 
-Storage úrovně Premium poskytuje vysoce výkonné úložiště pro objekty blob stránky, které se primárně využívají pro soubory VHD. Účty úložiště úrovně Premium k ukládání dat používají SSD. Microsoft doporučuje používat Storage úrovně Premium pro všechny vaše virtuální počítače.
+Premium Storage poskytuje vysoce výkonné úložiště pro objekty blob stránky, které se primárně využívají pro soubory VHD. Účty služby Premium Storage k ukládání dat používají SSD. Microsoft doporučuje používat Premium Storage pro všechny vaše virtuální počítače.
 
 ### <a name="blob-storage-accounts"></a>Účty služby Blob Storage
 
@@ -167,101 +175,33 @@ Podrobné informace o cenách pro Azure Storage najdete na [stránce s cenami](h
 ## <a name="storage-apis-libraries-and-tools"></a>Rozhraní API, knihovny a nástroje služby Storage
 Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytvářet požadavky HTTP/HTTPS. Azure Storage dále nabízí programovací knihovny pro několik oblíbených jazyků. Tyto knihovny zjednodušují spoustu aspektů práce s Azure Storage, protože se starají o drobnosti jako synchronní a asynchronní vyvolání, dávkování operací, řízení výjimek, automatické opakování pokusů, operační chování atd. Knihovny jsou aktuálně dostupné pro následující jazyky a platformy, další se připravují:
 
-### <a name="azure-storage-data-services"></a>Datové služby Azure Storage
-* [REST API služby Storage](/rest/api/storageservices/)
-* [Klientská knihovna pro úložiště pro .NET](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
+### <a name="azure-storage-data-api-and-library-references"></a>API pro data služby Azure Storage a odkazy na knihovny
+* [REST API služby Storage](https://docs.microsoft.com/rest/api/storageservices/)
+* [Klientská knihovna pro úložiště pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+* [Klientská knihovna pro úložiště pro Javu/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
+* [Klientská knihovna pro úložiště pro Node.js](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [Klientská knihovna pro úložiště pro Python](https://github.com/Azure/azure-storage-python)
+* [Klientská knihovna pro úložiště pro PHP](https://github.com/Azure/azure-storage-php)
+* [Klientská knihovna pro úložiště pro Ruby](https://github.com/Azure/azure-storage-ruby)
 * [Klientská knihovna pro úložiště pro C++](https://github.com/Azure/azure-storage-cpp)
-* [Klientská knihovna pro úložiště pro Javu/Android](https://azure.microsoft.com/develop/java/)
-* [Klientská knihovna pro úložiště pro Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [Klientská knihovna pro úložiště pro PHP](https://azure.microsoft.com/develop/php/)
-* [Klientská knihovna pro úložiště pro Python](https://azure.microsoft.com/develop/python/)
-* [Klientská knihovna pro úložiště pro Ruby](https://azure.microsoft.com/develop/ruby/)
-* [Rutiny pro úložiště pro PowerShell](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-* [Příkazy úložiště pro CLI 2.0](/cli/azure/storage)
+
+### <a name="azure-storage-management-api-and-library-references"></a>API pro správu služby Azure Storage a odkazy na knihovny
+* [REST API pro poskytovatele prostředků úložiště](https://docs.microsoft.com/rest/api/storagerp/)
+* [Klientská knihovna pro .NET pro poskytovatele prostředků úložiště](https://docs.microsoft.com/dotnet/api/overview/azure/storage/management)
+* [REST API pro správu služeb úložiště (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
+
+### <a name="azure-storage-data-movement-api-and-library-references"></a>API pro přenos dat služby Azure Storage a odkazy na knihovny
+* [REST API pro službu Import/export úložiště](https://docs.microsoft.com/rest/api/storageimportexport/)
+* [Klientská knihovna pro .NET pro přesun dat v úložišti](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
+
+### <a name="tools-and-utilities"></a>Nástroje
+* [Rutiny Azure PowerShell pro Azure Storage](https://docs.microsoft.com/powershell/module/azure.storage)
+* [Rutiny Azure CLI pro Azure Storage](https://docs.microsoft.com/cli/azure/storage)
+* [Nástroj příkazového řádku AzCopy](http://aka.ms/downloadazcopy)
+* [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
+* [Klientské nástroje pro Azure Storage](../storage-explorers.md)
+* [Azure Developer Tools](https://azure.microsoft.com/tools/)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o službě Blob Storage](../blobs/storage-blobs-introduction.md)
-* [Další informace o službě File Storage](../storage-files-introduction.md)
-* [Další informace o službě Queue Storage](../queues/storage-queues-introduction.md)
-
 Informace o zprovoznění s využitím Azure Storage najdete v tématu [Vytvoření účtu úložiště](storage-quickstart-create-account.md).
-
-<!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
-
-Azure Storage resources can be accessed by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
-
-### Azure Storage data services
-* [Storage Services REST API](https://docs.microsoft.com/rest/api/storageservices/)
-* [Storage Client Library for .NET](https://docs.microsoft.com/dotnet/api/?view=azurestorage-8.1.1)
-* [Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp)
-* [Storage Client Library for Java/Android](https://azure.microsoft.com/develop/java/)
-* [Storage Client Library for Node.js](http://dl.windowsazure.com/nodestoragedocs/index.html)
-* [Storage Client Library for PHP](https://azure.microsoft.com/develop/php/)
-* [Storage Client Library for Python](https://azure.microsoft.com/develop/python/)
-* [Storage Client Library for Ruby](https://azure.microsoft.com/develop/ruby/)
-* [Storage Cmdlets for PowerShell](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
-
-### Azure Storage management services
-* [Storage Resource Provider REST API Reference](/rest/api/storagerp/)
-* [Storage Resource Provider Client Library for .NET](/dotnet/api/microsoft.azure.management.storage)
-* [Storage Resource Provider Cmdlets for PowerShell 1.0](/powershell/module/azure.storage)
-* [Storage Service Management REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
-
-### Azure Storage data movement services
-* [Storage Import/Export Service REST API](../storage-import-export-service.md)
-* [Storage Data Movement Client Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
-
-### Tools and utilities
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
-* [Azure Storage Client Tools](../storage-explorers.md)
-* [Azure SDKs and Tools](https://azure.microsoft.com/tools/)
-* [Azure Storage Emulator](http://www.microsoft.com/download/details.aspx?id=43709)
-* [Azure PowerShell](/powershell/azure/overview)
-* [AzCopy Command-Line Utility](http://aka.ms/downloadazcopy)
-
-## Next steps
-To learn more about Azure Storage, explore these resources:
-
-### Documentation
-* [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
-* [Create a storage account](../storage-create-storage-account.md)
-
--->
-
-### <a name="for-administrators"></a>Pro správce
-* [Použití Azure Powershell s Azure Storage](storage-powershell-guide-full.md)
-* [Použití Azure CLI s Azure Storage](../storage-azure-cli.md)
-
-### <a name="for-net-developers"></a>Pro vývojáře v rozhraní .NET
-* [Začínáme s úložištěm Azure Blob pomocí rozhraní .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [Vývoj pro Soubory Azure pomocí .NET](../files/storage-dotnet-how-to-use-files.md)
-* [Začínáme s úložištěm Azure Table pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Začínáme s úložištěm Azure Queue pomocí rozhraní .NET](../storage-dotnet-how-to-use-queues.md)
-
-### <a name="for-javaandroid-developers"></a>Pro vývojáře v Javě a Androidu
-* [Používání úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Vývoj pro Soubory Azure pomocí Javy](../files/storage-java-how-to-use-file-storage.md)
-* [Používání úložiště Table z Javy](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Používání úložiště Queue z Javy](../storage-java-how-to-use-queue-storage.md)
-
-### <a name="for-nodejs-developers"></a>Pro vývojáře v Node.js
-* [Používání úložiště Blob z Node.js](../blobs/storage-nodejs-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Node.js](../../cosmos-db/table-storage-how-to-use-nodejs.md)
-* [Používání úložiště Queue z Node.js](../storage-nodejs-how-to-use-queues.md)
-
-### <a name="for-php-developers"></a>Pro vývojáře v PHP
-* [Používání úložiště Blob z PHP](../blobs/storage-php-how-to-use-blobs.md)
-* [Používání úložiště Table z PHP](../../cosmos-db/table-storage-how-to-use-php.md)
-* [Používání úložiště Queue z PHP](../storage-php-how-to-use-queues.md)
-
-### <a name="for-ruby-developers"></a>Pro vývojáře v Ruby
-* [Používání úložiště Blob z Ruby](../blobs/storage-ruby-how-to-use-blob-storage.md)
-* [Používání úložiště Table z Ruby](../../cosmos-db/table-storage-how-to-use-ruby.md)
-* [Používání úložiště Queue z Ruby](../storage-ruby-how-to-use-queue-storage.md)
-
-### <a name="for-python-developers"></a>Pro vývojáře v Pythonu
-* [Používání úložiště Blob z Pythonu](../blobs/storage-python-how-to-use-blob-storage.md)
-* [Vývoj pro Soubory Azure pomocí Pythonu](../files/storage-python-how-to-use-file-storage.md)
-* [Používání úložiště Table z Pythonu](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Používání úložiště Queue z Pythonu](../storage-python-how-to-use-queue-storage.md)

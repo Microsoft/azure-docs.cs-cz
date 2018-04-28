@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery pro odstraňování potíží v Azure do Azure replikace problémy a chyby | Microsoft Docs"
-description: "Řešení potíží s chyb a problémů při replikaci virtuálních počítačů Azure pro zotavení po havárii"
+title: Azure Site Recovery pro odstraňování potíží v Azure do Azure replikace problémy a chyby | Microsoft Docs
+description: Řešení potíží s chyb a problémů při replikaci virtuálních počítačů Azure pro zotavení po havárii
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení problémů replikace virtuálního počítače Azure do Azure
 
@@ -199,6 +199,17 @@ Pokud chcete povolit replikaci na virtuálním počítači, musí být stav zři
 
 - Pokud **provisioningState** je **se nezdařilo**, obraťte se na podporu s podrobnostmi o řešení.
 - Pokud **provisioningState** je **aktualizace**, jiné rozšíření pro získávání může nasadit. Zkontrolujte, zda jsou všechny probíhající operace na virtuálním počítači, počkejte na jejich dokončení, a opakujte obnovení lokality se nezdařilo **povolit replikaci** úlohy.
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ Chyba služby Stínová kopie svazku (kód chyby 151025)
+**Kód chyby** | **Možné příčiny** | **Recommendations** (Doporučení)
+--- | --- | ---
+151025<br></br>**Zpráva**: Instalace rozšíření obnovení lokality se nezdařila. | -'Aplikace modelu COM + systému, služby zakázána.</br></br>-Služba Stínová kopie svazku je zakázána.| Nastavení služeb "aplikace modelu COM + systému" a Stínová kopie svazku pro automatický nebo ruční spouštění režimu.
+
+### <a name="fix-the-problem"></a>Opravte problém
+
+Můžete otevřít konzolu "Službami" a zajistit 'aplikace COM + systému, a Stínová kopie svazku nejsou nastavené na "Zakázáno" pro "Typ spuštění".
+  ![COM – Chyba](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>Další postup
 [Replikace virtuálních počítačů Azure](site-recovery-replicate-azure-to-azure.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 0f19ed89e49b34ff4b8abf5d22e7d59b89fd6d72
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows, který má několik síťových adaptérů
 Virtuální počítače (VM) v Azure může mít několik virtuálních síťových karet (NIC) připojené k nim. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek popisuje, jak vytvořit virtuální počítač, který má několik síťových adaptérů, které jsou k němu připojen. Můžete také zjistěte, jak přidat nebo odebrat síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -235,7 +235,7 @@ Můžete také použít `copyIndex()` číslo připojit k názvu zdroje. Potom m
 "name": "[concat('myNic', copyIndex())]", 
 ```
 
-Kompletní příklad, jak si můžete přečíst [vytvoření několik síťových adaptérů pomocí šablony Resource Manageru](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+Kompletní příklad, jak si můžete přečíst [vytvoření několik síťových adaptérů pomocí šablony Resource Manageru](../../virtual-network/template-samples.md).
 
 Přidání tras pro sekundární síťové adaptéry operačního systému pomocí kroků v [konfigurace operačního systému pro několik síťových adaptérů](#configure-guest-os-for-multiple-nics).
 

@@ -10,18 +10,18 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b1ac34c97d94f0b8759cb3e6f229ba0f7a2be7c9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Databáze SQL Azure můžete emitování metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
 * **Úložiště Azure**: používá k archivaci obrovské objemy telemetrie malé cenu.
 * **Azure Event Hubs**: používá pro integraci telemetrie databáze SQL se vlastní řešení monitorování nebo aktivní kanály.
-* **Azure Log Analytics**: používá pro řešení monitorování v se na pole s vytváření sestav, výstrahy a zmírnění možnosti.
+* **Azure Log Analytics**: používá pro řešení monitorování v se na pole s vytváření sestav, výstrahy a zmírnění možnosti. Toto je funkce [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 

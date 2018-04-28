@@ -9,11 +9,11 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak používat dávkování pro zvýšení výkonu aplikací databáze SQL
 Dávkování operací do Azure SQL Database výrazně zvyšuje výkon a škálovatelnost aplikací. Chcete-li pochopit výhody, první část tohoto článku popisuje některé ukázkové výsledky testů, porovnávající postupného a dávkové požadavky na databázi SQL. Zbývající část článek ukazuje techniky, scénáře a požadavky umožňují použít dávkování úspěšně v aplikacích Azure.
@@ -32,9 +32,9 @@ Jednou z výhod používání databáze SQL je, že nemáte ke správě serverů
 První část papíru prověří různé dávkování techniky pro aplikace .NET, které používají SQL Database. Poslední dvě části se věnují dávkování pokyny a scénáře.
 
 ## <a name="batching-strategies"></a>Dávkování strategie
-### <a name="note-about-timing-results-in-this-topic"></a>Všimněte si o výsledcích časování v tomto tématu
+### <a name="note-about-timing-results-in-this-article"></a>Všimněte si o výsledcích časování v tomto článku
 > [!NOTE]
-> Výsledky nejsou srovnávacích testů, ale jsou určené k zobrazení **relativní výkon**. Časování jsou založené na v průměru minimálně 10 test spustí. Operace se vloží do prázdná tabulka. Tyto testy byly měřená pre-V12 a jejich nemusí odpovídat nutně propustnosti, kterou může docházet v databázi V12 pomocí nové [úrovních služeb](sql-database-service-tiers.md). Relativní výhodou dávkování technika by mělo být podobné.
+> Výsledky nejsou srovnávacích testů, ale jsou určené k zobrazení **relativní výkon**. Časování jsou založené na v průměru minimálně 10 test spustí. Operace se vloží do prázdná tabulka. Tyto testy byly měřená pre-V12 a jejich nemusí odpovídat nutně propustnosti, kterou může docházet v databázi V12 pomocí nové [DTU úrovně služeb](sql-database-service-tiers-dtu.md) nebo [úrovně služeb vCore](sql-database-service-tiers-vcore.md). Relativní výhodou dávkování technika by mělo být podobné.
 > 
 > 
 
@@ -209,7 +209,7 @@ Hromadné kopírování SQL je další způsob vložení velkých objemů dat do
         }
     }
 
-Existují případy, kdy je hromadné kopírování upřednostňované nad parametry s hodnotou tabulky. Podívejte se na tabulku porovnání s hodnotou tabulky parametrů versus BULK INSERT operace v tématu [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
+Existují případy, kdy je hromadné kopírování upřednostňované nad parametry s hodnotou tabulky. Podívejte se na tabulku porovnání s hodnotou tabulky parametrů versus BULK INSERT operace v článku [zavolat parametry](https://msdn.microsoft.com/library/bb510489.aspx).
 
 Zobrazit následující výsledky testů ad-hoc výkon dávkování s **SqlBulkCopy** v milisekundách.
 
@@ -592,7 +592,7 @@ Dále vytvořte uloženou proceduru nebo napsat kód, který používá příkaz
 Další informace najdete v dokumentaci a příklady příkazu MERGE. I když můžete provést stejný pracovní v kroku více uložené volání procedury s oddělené INSERT a operace aktualizace, příkazu MERGE je efektivnější. Kód databáze můžete také vytvořit volání jazyka Transact-SQL, která pomocí příkazu MERGE přímo bez nutnosti dvě volání databáze pro příkaz INSERT a UPDATE.
 
 ## <a name="recommendation-summary"></a>Souhrnná doporučení
-Následující seznam obsahuje souhrn dávkování doporučení popsané v tomto tématu:
+Následující seznam obsahuje souhrn dávkování doporučení popsaných v tomto článku:
 
 * Pokud chcete zvýšit výkon a škálovatelnost databáze SQL aplikace pomocí ukládání do vyrovnávací paměti a dávkování.
 * Pochopení kompromisy mezi dávkování nebo ukládání do vyrovnávací paměti a odolnost. Při selhání role riziko ztráty nezpracované dávku důležitých podnikových dat vyváží výkon výhodou dávkování.

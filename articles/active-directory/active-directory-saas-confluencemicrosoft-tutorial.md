@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML soutoku microsoftem | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování SAML soutoku společností Microsoft."
+title: 'Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML soutoku microsoftem | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování SAML soutoku společností Microsoft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c89be4917bb266bcd0244f2409bfa703dd3e523c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML soutoku společností Microsoft
 
@@ -118,7 +118,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
 3. Na **jednotné přihlašování SAML soutoku Microsoft Domain a adresy URL** část, proveďte následující kroky:
@@ -131,29 +131,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Port je volitelný, v případě, že je adresa URL s názvem. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in soutoku, který je vysvětlen později v tomto kurzu.
 
-4. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
     
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpoint.png)
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
-    d. Nyní přejděte na stránku vlastností **jednotné přihlašování SAML soutoku Microsoft** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>` a zkopírujte tuto hodnotu v poznámkovém bloku, jak se později používá pro konfiguraci modulu plug-in.
-
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_general_400.png)
@@ -175,11 +159,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 10. Proveďte následující kroky na stránce konfigurace:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon52.png)
- 
+
     > [!TIP]
     > Zkontrolujte, zda je namapovaný na aplikaci tak, aby se nezobrazí žádná chyba při řešení metadata jen jeden certifikát. Pokud mají k dispozici víc certifikátů, správce získá chybu při řešení metadata.
 
-    a. V **adresu URL metadat** vložit **adresu URL metadat** generované z Azure AD a klikněte na tlačítko **vyřešit** tlačítko. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
+    a. V **adresu URL metadat** textovému poli, vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure a klikněte na tlačítko **vyřešit** tlačítko. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
 
     b. Kopírování **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložte je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textových polí v uvedeném pořadí v **jednotné přihlašování SAML soutoku Microsoft Domain a adresy URL** části na portálu Azure.
 
@@ -202,10 +186,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     > [!NOTE]
     > Další informace o instalaci a řešení potíží najdete v článku [MS soutoku jednotné přihlašování konektor správce průvodce](ms-confluence-jira-plugin-adminguide.md) a také [– nejčastější dotazy](ms-confluence-jira-plugin-faq.md) pro vaše pomoc
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -323,4 +303,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_203.png
-

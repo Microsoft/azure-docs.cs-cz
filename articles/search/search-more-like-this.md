@@ -1,27 +1,23 @@
 ---
-title: "moreLikeThis ve službě Azure Search (preview) | Microsoft Docs"
-description: "Předběžná dokumentace pro funkci moreLikeThis (preview), který je v rozhraní API REST služby Azure Search."
-services: search
-documentationCenter: na
+title: moreLikeThis ve službě Azure Search (preview) | Microsoft Docs
+description: Předběžná dokumentace pro funkci moreLikeThis (preview), který je v rozhraní API REST služby Azure Search.
 authors: mhko
 manager: jlembicz
-editor: na
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: nateko
-ms.openlocfilehash: 20f6a1166d47799f15275cb5b6a9ea4934ae57e2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 29d9a478ca2e91e658d7d0f52e7a193ba694bc16
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis ve službě Azure Search (preview)
 
-`moreLikeThis=[key]`je parametr dotazu v [rozhraní API služby Search](https://docs.microsoft.com/rest/api/searchservice/search-documents). Zadáním `moreLikeThis` parametr ve vyhledávací dotaz, můžete najít dokumenty, které jsou podobné dokumentu určeného klíč dokumentu. Při hledání požadavku s `moreLikeThis`, dotazu je generována hledané výrazy, které popisují dokument nejlépe extrahovat z daného dokumentu. Vygenerovaný dotaz pak slouží k podání žádosti o vyhledávání. Ve výchozím nastavení, obsah všech `searchable` pole jsou považovány za, pokud `searchFields` parametr se používá k omezení pole. `moreLikeThis` Parametr nelze použít s parametrem vyhledávání `search=[string]`.
+`moreLikeThis=[key]` je parametr dotazu v [rozhraní API služby Search](https://docs.microsoft.com/rest/api/searchservice/search-documents). Zadáním `moreLikeThis` parametr ve vyhledávací dotaz, můžete najít dokumenty, které jsou podobné dokumentu určeného klíč dokumentu. Při hledání požadavku s `moreLikeThis`, dotazu je generována hledané výrazy, které popisují dokument nejlépe extrahovat z daného dokumentu. Vygenerovaný dotaz pak slouží k podání žádosti o vyhledávání. Ve výchozím nastavení, obsah všech `searchable` pole jsou považovány za, pokud `searchFields` parametr se používá k omezení pole. `moreLikeThis` Parametr nelze použít s parametrem vyhledávání `search=[string]`.
 
 ## <a name="examples"></a>Příklady 
 

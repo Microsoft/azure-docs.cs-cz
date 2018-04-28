@@ -1,11 +1,11 @@
 ---
-title: "Spravovat mezipaměť Redis systému Azure pomocí Azure Powershellu | Microsoft Docs"
-description: "Zjistěte, jak k provádění úloh správy pro Azure Redis Cache pomocí Azure PowerShell."
+title: Spravovat mezipaměť Redis systému Azure pomocí Azure Powershellu | Microsoft Docs
+description: Zjistěte, jak k provádění úloh správy pro Azure Redis Cache pomocí Azure PowerShell.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Spravovat mezipaměť Redis systému Azure pomocí Azure Powershellu
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Pokud jste již Azure PowerShell nainstalovali, musíte mít prostředí Azure P
 
 Nejdřív musíte být přihlášení do Azure pomocí tohoto příkazu.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Zadejte e-mailovou adresu účtu Azure a jeho heslo v dialogovém okně sign-in Microsoft Azure.
 
@@ -66,18 +66,18 @@ Například pro získání nápovědy pro `New-AzureRmRedisCache` rutiny, zadejt
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Jak se připojit k ostatních cloudů
-Ve výchozím nastavení Azure je prostředí `AzureCloud`, který představuje instanci globální cloudu Azure. Chcete-li se připojit k jiné instanci, použijte `Add-AzureRmAccount` s `-Environment` nebo -`EnvironmentName` přepínač příkazového řádku s názvem prostředí nebo požadované prostředí.
+Ve výchozím nastavení Azure je prostředí `AzureCloud`, který představuje instanci globální cloudu Azure. Chcete-li se připojit k jiné instanci, použijte `Connect-AzureRmAccount` s `-Environment` nebo -`EnvironmentName` přepínač příkazového řádku s názvem prostředí nebo požadované prostředí.
 
 Chcete-li zobrazit seznam dostupných prostředí, spusťte `Get-AzureRmEnvironment` rutiny.
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Pro připojení k Azure Government cloudu
 Pokud chcete připojit ke cloudu Azure Government, použijte jednu z následujících příkazů.
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 nebo
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 K vytvoření mezipaměti se v cloudu Azure Government, použijte jednu z následujících umístění.
 
@@ -89,11 +89,11 @@ Další informace o Cloud vlády Azure najdete v tématu [Microsoft Azure Govern
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Pro připojení k Azure Cloud Čína
 Pro připojení k Azure Cloud Čína, použijte jednu z následujících příkazů.
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 nebo
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 K vytvoření mezipaměti se v Číně cloudu Azure, použijte jednu z následujících umístění.
 
@@ -105,12 +105,12 @@ Další informace o cloudu Číně Azure najdete v tématu [AzureChinaCloud pro 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Pro připojení k Microsoft Azure v Německu
 Pro připojení k Microsoft Azure v Německu, použijte jednu z následujících příkazů.
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 nebo
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 K vytvoření mezipaměti se v Microsoft Azure v Německu, použijte jednu z následujících umístění.
 
@@ -136,21 +136,21 @@ Následující tabulka obsahuje vlastnosti a popisy pro běžně používané pa
 | StaticIP |Při hostování vaší mezipaměti ve virtuální síti, určuje jedinečnou IP adresu v mezipaměti v podsíti. Pokud není zadaná, jeden z podsítě vybrali za vás. | |
 | Podsíť |Při hostování vaší mezipaměti ve virtuální síti, určuje název podsítě, ve které chcete nasadit do mezipaměti. | |
 | VirtualNetwork |Při hostování vaší mezipaměti ve virtuální síti, určuje ID prostředku sítě vnet, ve které chcete nasadit do mezipaměti. | |
-| KeyType |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupové klíče. Platné hodnoty jsou: primární, sekundární | |
+| Typ_klíče. |Určuje, které přístupový klíč se znovu vygenerovat při obnovování přístupové klíče. Platné hodnoty jsou: primární, sekundární | |
 
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
 | Vlastnost | Popis | Cenové úrovně |
 | --- | --- | --- |
-| rdb-backup-enabled |Jestli [trvalosti dat Redis](cache-how-to-premium-persistence.md) je povoleno |Pouze Premium |
+| Povolit zálohování RDB |Jestli [trvalosti dat Redis](cache-how-to-premium-persistence.md) je povoleno |Pouze Premium |
 | RDB úložiště připojovacího řetězce |Připojovací řetězec k účtu úložiště pro [trvalosti dat Redis](cache-how-to-premium-persistence.md) |Pouze Premium |
-| rdb-backup-frequency |Četnost záloh pro [trvalosti dat Redis](cache-how-to-premium-persistence.md) |Pouze Premium |
+| četnost záloh RDB |Četnost záloh pro [trvalosti dat Redis](cache-how-to-premium-persistence.md) |Pouze Premium |
 | vyhrazené maxmemory |Nakonfiguruje [paměti vyhrazené](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) pro procesy bez ukládání do mezipaměti |Standard a Premium |
 | maxmemory zásady |Nakonfiguruje [zásady vyřazení](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) mezipaměti |Všechny cenové úrovně |
 | oznámení události keyspace |Nakonfiguruje [oznámení keyspace](cache-configure.md#keyspace-notifications-advanced-settings) |Standard a Premium |
-| hash-max-ziplist-entries |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
-| hash-max-ziplist-value |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
-| set-max-intset-entries |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
-| zset-max-ziplist-entries |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
+| Hodnota hash-max-ziplist – položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
+| max-ziplist hodnota hash |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
+| set-max-intset – položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
+| zset-max-ziplist – položky |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
 | zset-max-ziplist-value |Nakonfiguruje [optimalizace paměti](http://redis.io/topics/memory-optimization) pro malé agregační datové typy |Standard a Premium |
 | databáze |Konfiguruje počet databází. Tuto vlastnost lze nastavit pouze při vytváření mezipaměti. |Standard a Premium |
 
@@ -327,7 +327,7 @@ Příkaz aktualizuje maxmemory zásady pro Redis Cache s názvem myCache.
 <a name="scale"></a>
 
 ## <a name="to-scale-a-redis-cache"></a>Škálování mezipaměti Redis
-`Set-AzureRmRedisCache`umožňuje škálovat mezipamětí Azure Redis instance, kdy `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti. 
+`Set-AzureRmRedisCache` umožňuje škálovat mezipamětí Azure Redis instance, kdy `Size`, `Sku`, nebo `ShardCount` jsou upraveny vlastnosti. 
 
 > [!NOTE]
 > Změna velikosti mezipaměti pomocí prostředí PowerShell je za stejné omezení a pokyny jako škálování mezipaměti z portálu Azure. Je možné škálovat na jinou cenovou úroveň, s následujícími omezeními.

@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/16/2018
 ms.author: babanisa
-ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v mřížce Azure událostí
 
@@ -20,7 +20,7 @@ Hlavní koncepty v mřížce událostí Azure jsou:
 
 ## <a name="events"></a>Události
 
-Událost je nejmenší množství informací, která plně popisuje něco, kterým došlo v systému.  Každý událost má běžné informace, jako jsou: Zdroj události, čas události trvalo místní a jedinečný identifikátor.  Každé události má také konkrétní informace, které jsou pouze relevantní pro konkrétní typ události. Například událost o nový soubor vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, jako `lastTimeModified` hodnotu. Nebo událost o virtuální počítač restartování obsahuje název virtuálního počítače a důvody, proč restartování. Každá událost je omezená na 64 KB dat.
+Událost je nejmenší množství informací, která plně popisuje něco, kterým došlo v systému. Každý událost má běžné informace, jako jsou: Zdroj události, čas události trvalo místní a jedinečný identifikátor. Každé události má také konkrétní informace, které jsou pouze relevantní pro konkrétní typ události. Například událost o nový soubor vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, jako `lastTimeModified` hodnotu. Nebo událost o virtuální počítač restartování obsahuje název virtuálního počítače a důvody, proč restartování. Každá událost je omezená na 64 KB dat.
 
 ## <a name="event-sourcespublishers"></a>Zdroje nebo zdroje událostí
 
@@ -32,7 +32,7 @@ Vydavatelé zařadit do témata události. Téma obsahuje koncový bod kde vydav
 
 Témata týkající se systému jsou předdefinované témata poskytovaném službami Azure. Vlastní témata jsou aplikace a témata třetích stran.
 
-Při navrhování vaší aplikace, vytvořte vlastní heslo pro každou kategorii související události. Představte si třeba aplikaci, která odesílá události související s Změna uživatelských účtů a zpracování objednávky. Není pravděpodobné že žádné obslužné rutiny události chce, aby obě kategorie události. Vytvořte dva vlastní témata a nechat obslužné rutiny událostí přihlášení k odběru tomu, které je zajímají. Když se přihlásíte k odběru vlastní tématu, obslužné rutiny události lze filtrovat podle typu události.
+Při navrhování vaší aplikace, budete mít flexibilitu při rozhodování o tom, kolik témata týkající se vytvoření. Pro velká řešení vytvořte vlastní heslo pro každou kategorii související události. Představte si třeba aplikaci, která odesílá události související s Změna uživatelských účtů a zpracování objednávky. Není pravděpodobné že žádné obslužné rutiny události chce, aby obě kategorie události. Vytvořte dva vlastní témata a nechat obslužné rutiny událostí přihlášení k odběru tomu, které je zajímají. Pro řešení pro malé dáváte přednost poslat jedno téma všechny události. Pro typy událostí, které chtějí můžete filtrovat události odběratele.
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 
@@ -40,7 +40,7 @@ Předplatné dá pokyn událostí mřížky, na které události se na téma má
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Z hlediska mřížce událost obslužné rutiny události je na místě, kde událost je odeslána. Obslužná rutina trvá některé další akce ke zpracování události.  Událost mřížky podporuje více typů odběratele. V závislosti na typu odběratele následuje událostí mřížky různé mechanismy pro zaručit doručení události.  Pro obslužné rutiny událostí webhooku protokolu HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud služba fronty je schopna úspěšně zpracovat nabízené zprávy do fronty.
+Z hlediska mřížce událost obslužné rutiny události je na místě, kde událost je odeslána. Obslužná rutina trvá některé další akce ke zpracování události. Událost mřížky podporuje více typů odběratele. V závislosti na typu odběratele následuje událostí mřížky různé mechanismy pro zaručit doručení události. Pro obslužné rutiny událostí webhooku protokolu HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud služba fronty je schopna úspěšně zpracovat nabízené zprávy do fronty.
 
 ## <a name="filters"></a>Filtry
 

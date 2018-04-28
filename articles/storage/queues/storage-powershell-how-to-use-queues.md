@@ -1,12 +1,12 @@
 ---
-title: "Provádění operací na Azure Queue storage pomocí prostředí PowerShell | Microsoft Docs"
-description: "Jak provádět operace v Azure Queue storage pomocí prostředí PowerShell"
+title: Provádění operací na Azure Queue storage pomocí prostředí PowerShell | Microsoft Docs
+description: Jak provádět operace v Azure Queue storage pomocí prostředí PowerShell
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bad9f1f3fd5737e865a8f4d1d15ab3d5eb68b4cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provedení operace úložiště Azure Queue pomocí prostředí Azure PowerShell
 
@@ -38,15 +38,15 @@ Neexistují žádné rutiny prostředí PowerShell pro roviny data pro fronty. P
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
 
-Pokud si nejste jisti umístění, které chcete použít, můžete seznam dostupných umístění. Jakmile se zobrazí v seznamu, najít ten, který chcete použít. Toto cvičení použijete **eastus**. Uložit v proměnné **umístění** pro budoucí použití.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použijete **eastus**. Uložit v proměnné **umístění** pro budoucí použití.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -64,9 +64,9 @@ $resourceGroup = "howtoqueuesrg"
 New-AzureRmResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-## <a name="create-storage-account"></a>Vytvořit účet úložiště
+## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Vytvořte účet standardního úložiště pro obecné účely s místně redundantní úložiště (LRS) pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získá kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když funguje na účet úložiště, můžete odkazovat na kontext místo opakovaně přihlašovací údaje.
+Vytvořte účet standardního úložiště pro obecné účely s místně redundantní úložiště (LRS) pomocí [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Získá kontext účtu úložiště, který definuje účet úložiště, který se má použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -171,13 +171,13 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li odebrat všechny prostředky, které jste vytvořili v tomto cvičení, odeberte skupinu prostředků. To také odstraní všechny prostředky obsažené v rámci skupiny. V takovém případě odebere účtu úložiště vytvořeném a skupině prostředků, sám sebe.
+Chcete-li odebrat všechny prostředky, které jste vytvořili v tomto cvičení, odeberte skupinu prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účtu úložiště vytvořeném a skupině prostředků, sám sebe.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto postupu článku jste se dozvěděli o základní správu fronty úložiště pomocí prostředí PowerShell, včetně postup:
 
@@ -190,7 +190,7 @@ V tomto postupu článku jste se dozvěděli o základní správu fronty úloži
 > * Odstranění fronty
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Rutiny prostředí PowerShell služby Microsoft Azure Storage
-* [Rutiny prostředí PowerShell úložiště](/powershell/module/azurerm.storage#storage)
+* [Rutiny PowerShellu pro úložiště](/powershell/module/azurerm.storage#storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

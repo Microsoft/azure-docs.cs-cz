@@ -1,23 +1,23 @@
 ---
-title: Jaké jsou jednotky datového skladu (Dwu, cDWUs) v Azure SQL Data Warehouse? | Dokumenty Microsoft
-description: Výkon škálování možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu, cDWUs, nebo pozastavení a obnovení výpočetní prostředky, abyste ušetřili náklady.
+title: Jednotky datového skladu (Dwu, cDWUs) v Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení pro výběr ideální počet jednotky datového skladu (Dwu, cDWUs) k optimalizaci ceny a výkonu a jak změnit počet jednotek.
 services: sql-data-warehouse
-author: sqlmojo
+author: ronortloff
 manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
-ms.date: 04/09/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 56d59be2074a3047ce19fde3e808354266040864
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 94791e4dc3d3c841dde4685d34d4e3fdaf7d9af7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
----
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUs)
-Popisuje, jednotky datového skladu (Dwu) a výpočetní jednotky datového skladu (cDWUS) pro Azure SQL Data Warehouse. Zahrnout doporučení pro výběr ideální počet jednotky datového skladu a jak chcete změnit číslo z nich. 
+Doporučení pro výběr ideální počet jednotky datového skladu (Dwu, cDWUs) k optimalizaci ceny a výkonu a jak změnit počet jednotek. 
 
 ## <a name="what-are-data-warehouse-units"></a>Jaké jsou jednotky datového skladu?
 S SQL Data Warehouse procesoru, paměti a vstupně-výstupní operace jsou seskupeny do jednotky škálování výpočetní názvem jednotky datového skladu (Dwu). DWU představuje abstraktní, normalizovaný měření výpočetních prostředků a výkonu. Tak, že změníte úroveň služby změnit počet jednotek Dwu, které jsou přiděleny na systém, který naopak upraví výkon a náklady, vašeho systému. 
@@ -28,7 +28,7 @@ Výkon jednotky datového skladu je založena na tyto metriky úlohy datového s
 
 - Jak rychle můžete dotazu standardní datového skladu naskenovat velký počet řádků a potom proveďte komplexní agregaci? Tato operace je náročná na výkon vstupně-výstupních operací a procesoru.
 - Jak rychle dokáže datového skladu přijímat data z úložiště objektů BLOB Azure nebo Azure Data Lake? Tato operace je síť a náročné na prostředky procesoru. 
-- Jak rychle můžete [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL příkazu zkopírujte tabulku? Tato operace vyžaduje čtení dat z úložiště, distribuci mezi uzly zařízení a zápis do úložiště znovu. Tato operace je procesoru, vstupně-výstupních operací a sítě náročné.
+- Jak rychle můžete [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL příkazu zkopírujte tabulku? Tato operace vyžaduje čtení dat z úložiště, distribuci mezi uzly zařízení a zápis do úložiště znovu. Tato operace je procesoru, vstupně-výstupních operací a sítě náročné.
 
 Zvýšení Dwu:
 - Lineárně změní výkon systému pro prohledávání, agregace a funkce CTAS příkazy
@@ -36,19 +36,19 @@ Zvýšení Dwu:
 - Zvyšuje maximální počet souběžných dotazů a sloty souběžnosti.
 
 ## <a name="service-level-objective"></a>Cíl na úrovni služby
-Cíl na úrovni služby (SLO) je škálovatelnost nastavení, které určuje úroveň nákladů a výkonu datového skladu. Úrovně služeb pro optimalizovaný pro škálování vrstvy výpočetní výkon se měří v výpočetní jednotky datového skladu (cDWU), například DW2000c. Optimalizováno pro úrovně služeb pružnost se měří v Dwu, například DW2000. 
+Cíl na úrovni služby (SLO) je škálovatelnost nastavení, které určuje úroveň nákladů a výkonu datového skladu. Úrovně služeb pro Gen2 se měří v výpočetní jednotky datového skladu (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v Dwu, například DW2000. 
 
 V T-SQL SERVICE_OBJECTIVE nastavení určuje úroveň služby a úroveň výkonu pro datový sklad.
 
 ```sql
---Optimized for Elasticity
+--Gen1
 CREATE DATABASE myElasticSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000'
 )
 ;
 
---Optimized for Compute
+--Gen2
 CREATE DATABASE myComputeSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000c'
@@ -60,12 +60,12 @@ WITH
 
 Každá úroveň výkonu používá mírně různých Měrná jednotka pro jejich jednotky datového skladu. Tento rozdíl se projeví na faktuře jako jednotka škálování překládá přímo k fakturaci.
 
-- Optimalizovaná pro úroveň výkonu pružnost se měří v jednotky datového skladu (Dwu).
-- Optimalizovaná pro výpočetní výkon vrstvy se měří v výpočetní jednotky datového skladu (cDWUs). 
+- Gen1 datové sklady se měří v jednotky datového skladu (Dwu).
+- Gen2 data warehousesr se měří v výpočetní jednotky datového skladu (cDWUs). 
 
-Počet Dwu a cDWUs podporovat škálování výpočetní nahoru nebo dolů a pozastavení výpočetní při nemusíte používat datového skladu. Tyto operace jsou všechny na vyžádání. Optimalizovaná pro výpočet úroveň výkonu také používá místní mezipaměti na disku na výpočetních uzlech ke zlepšení výkonu. Při škálování nebo pozastavit systému, je mezipaměť zneplatněna a období zahájení práce s mezipaměti se proto vyžaduje, aby je dosaženo optimální výkon.  
+Počet Dwu a cDWUs podporovat škálování výpočetní nahoru nebo dolů a pozastavení výpočetní při nemusíte používat datového skladu. Tyto operace jsou všechny na vyžádání. Gen2 používá místní mezipaměti na disku na výpočetních uzlech ke zlepšení výkonu. Při škálování nebo pozastavit systému, je mezipaměť zneplatněna a období zahájení práce s mezipaměti se proto vyžaduje, aby je dosaženo optimální výkon.  
 
-Jako zvýšíte jednotky datového skladu, jsou lineárně zvýšení výpočetních prostředků. Optimalizovaná pro výpočet úroveň výkonu poskytuje nejlepší výkon dotazů a nejvyšší škálování ale s vyšší cenu položky. Je určený pro firmy, které mají konstantní vyžádání výkonu. Tyto systémy zkontrolujte většina použití mezipaměti. 
+Jako zvýšíte jednotky datového skladu, jsou lineárně zvýšení výpočetních prostředků. Gen2 poskytuje nejlepší výkon dotazů a nejvyšší škálování, ale má vyšší cenu položky. Je určený pro firmy, které mají konstantní vyžádání výkonu. Tyto systémy zkontrolujte většina použití mezipaměti. 
 
 ### <a name="capacity-limits"></a>Omezení kapacity
 Má každý systém SQL server (například myserver.database.windows.net) [jednotka DTU (Database Transaction)](../sql-database/sql-database-what-is-a-dtu.md) kvótu, která umožňuje konkrétní počet jednotky datového skladu. Další informace najdete v tématu [limity kapacity úlohy správy](sql-data-warehouse-service-capacity-limits.md#workload-management).
@@ -76,20 +76,19 @@ Ideální počet jednotky datového skladu velmi mnohem závisí na velikosti pr
 
 Postup pro vyhledání nejlepší DWU pro úlohy:
 
-1. Během vývoje Začněte výběrem menší DWU pomocí optimalizovaná pro úroveň výkonu pružnost.  Vzhledem k tomu, že problém v této fázi je funkční ověření, je optimalizovaný pro úroveň výkonu pružnost přiměřené možnost. Je to dobrý výchozí bod DW200. 
+1. Začněte tím, že vyberete menší DWU. 
 2. Při testování načítání dat do systému, sledování počet Dwu vybrané ve srovnání s výkonu a zjistíte, monitorujte výkon aplikace.
-3. Určete veškeré další požadavky pro pravidelné období aktivity ve špičce. Pokud úlohy zobrazuje důležité vrcholů a žlaby aktivity a je důvodem k často škálování a potom upřednostnit optimalizovaná pro úroveň výkonu pružnost.
-4. Pokud potřebujete více než 1 000 DWU, pak upřednostnit optimalizovaný pro výpočetní výkon vrstvě vzhledem k tomu, že to poskytuje nejlepší výkon.
+3. Určete veškeré další požadavky pro pravidelné období aktivity ve špičce. Pokud úlohy zobrazuje důležité vrcholů a žlaby aktivity a je důvodem k často škálování.
 
 SQL Data Warehouse je systém Škálováním na více systémů, který můžete zřídit obrovské objemy výraznou objemy dat výpočetní a dotazů. Zobrazíte možnosti true pro škálování, zejména u větší Dwu, doporučujeme škálování sadu dat, jako je přizpůsobit pro zajistěte, abyste měli dostatek dat ke kanálu procesorů. Pro testování škálování, doporučujeme používat alespoň 1 TB.
 
 > [!NOTE]
 >
-> Výkon dotazů pouze hodnota se zvyšuje s další paralelizace Pokud práci můžete rozdělit mezi výpočetní uzly. Pokud zjistíte, že škálování není změna výkon, musíte k vyladění váš návrh tabulky nebo své dotazy. Dotaz ladění pokyny, naleznete v následujících [výkonu](sql-data-warehouse-overview-manage-user-queries.md) články. 
+> Výkon dotazů pouze hodnota se zvyšuje s další paralelizace Pokud práci můžete rozdělit mezi výpočetní uzly. Pokud zjistíte, že škálování není změna výkon, musíte k vyladění váš návrh tabulky nebo své dotazy. Dotaz ladění pokyny, najdete v části [spravovat dotazy uživatele](sql-data-warehouse-overview-manage-user-queries.md). 
 
 ## <a name="permissions"></a>Oprávnění
 
-Změna jednotky datového skladu vyžaduje oprávnění popsaná v [ALTER DATABASE][ALTER DATABASE]. 
+Změna jednotky datového skladu vyžaduje oprávnění popsaná v [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). 
 
 ## <a name="view-current-dwu-settings"></a>Aktuální nastavení DWU zobrazení
 
@@ -117,14 +116,16 @@ Chcete-li změnit Dwu nebo cDWUs:
 
 2. V části **škálování**, jezdce doleva nebo přímo na změnit nastavení DWU.
 
-3. Klikněte na **Uložit**. Zobrazí potvrzovací zpráva. Klikněte na tlačítko **Ano** potvrďte nebo **žádné** zrušit.
+3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na **Ano** ji potvrďte nebo ji kliknutím na **Ne** zrušte.
 
 ### <a name="powershell"></a>PowerShell
-Chcete-li změnit Dwu nebo cDWUs, použijte rutinu prostředí PowerShell [Set-AzureRmSqlDatabase] [Set-AzureRmSqlDatabase]. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, která je hostovaná na serveru MyServer.
+Chcete-li změnit Dwu nebo cDWUs, použijte [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) rutiny prostředí PowerShell. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, která je hostovaná na serveru MyServer.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
+
+Další informace najdete v tématu [rutiny prostředí PowerShell pro datový sklad SQL](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 ### <a name="t-sql"></a>T-SQL
 Pomocí T-SQL můžete zobrazit aktuální nastavení DWU nebo cDWU, změňte nastavení a zkontrolovat průběh. 
@@ -132,7 +133,7 @@ Pomocí T-SQL můžete zobrazit aktuální nastavení DWU nebo cDWU, změňte na
 Chcete-li změnit Dwu nebo cDWUs:
 
 1. Připojení k databázi hlavní přidružené k logické databáze SQL serveru.
-2. Použití [ALTER DATABASE] [ ALTER DATABASE] příkaz TSQL. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW. 
+2. Použití [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) příkaz TSQL. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -142,7 +143,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>Rozhraní REST API
 
-Chcete-li změnit jednotkami Dwu, použijte [vytvoření nebo aktualizace databáze] [vytvoření nebo aktualizace databáze] REST API. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, který je hostován na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li změnit jednotkami Dwu, použijte [vytvoření nebo aktualizace databáze](/rest/api/sql/databases/createorupdate) REST API. Následující příklad nastaví DW1000 cíle na úrovni služby pro databázi MySQLDW, který je hostován na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -155,6 +156,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
+Další příklady REST API najdete v tématu [rozhraní REST API pro SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
 
 ## <a name="check-status-of-dwu-changes"></a>Zkontrolujte stav DWU změn
 
@@ -196,40 +198,7 @@ Při zahájení operace škálování systému nejprve ukončí všechny otevře
 - Pro operaci vertikální snížení kapacity, nepotřebné uzly odpojit z úložiště a připojte k zbývající uzly.
 
 ## <a name="next-steps"></a>Další postup
-Najdete v následujících článcích, které vám pomohou pochopit některé pojmy další klíče výkonu:
-
-* [Správa úloh a souběžnost][Workload and concurrency management]
-* [Přehled návrhu tabulky][Table design overview]
-* [distribuce tabulky][Table distribution]
-* [Tabulka indexování][Table indexing]
-* [Vytváření oddílů tabulky][Table partitioning]
-* [Statistiky tabulky][Table statistics]
-* [Doporučené postupy][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
+Další informace o správě výkonu najdete v tématu [třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md) a [omezení paměti a souběžnost](memory-and-concurrency-limits.md).
 
 
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./resource-classes-for-workload-management.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]:../role-based-access-control/built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/

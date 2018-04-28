@@ -3,7 +3,7 @@ title: Azure Service Fabric výkonu monitorování | Microsoft Docs
 description: Další informace o čítače výkonu pro monitorování a Diagnostika Azure Service Fabric clusterů.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 3784cb6f713c5ce476ab980122ee6ec9fa3ebc59
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/16/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 54837b2a43f93f43d089a2fdf35d8b74ecacfc3e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
@@ -75,7 +75,7 @@ Service Fabric generuje vyžadovat značné množství vlastní čítače výkon
 
 V aplikacích nasazujete do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric spolehlivé aktéři diagnostiky](service-fabric-reliable-actors-diagnostics.md)).
 
-Pokud používáte vzdálenou komunikaci služby, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítače, které mají shromažďovat čítače z. 
+Pokud používáte spolehlivé služby, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítače, které mají shromažďovat čítače z. 
 
 Pokud používáte spolehlivé kolekcí, doporučujeme přidání `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` ke shromažďování latenci průměrná potvrzení za metrika transakce.
 
@@ -83,4 +83,4 @@ Pokud používáte spolehlivé kolekcí, doporučujeme přidání `Avg. Transact
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
-* Shromažďování metrik výkonu prostřednictvím [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)
+* Shromažďování metrik výkonu prostřednictvím [agenta OMS](service-fabric-diagnostics-oms-agent.md)

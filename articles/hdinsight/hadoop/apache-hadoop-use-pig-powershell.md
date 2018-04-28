@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c54670b11c0a2a3c5379abe4a43431445daa1a5a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c06289625ab18dad134c235fc28fd5c775955eb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Pomocí prostředí Azure PowerShell ke spuštění úlohy Pig s HDInsight
 
@@ -44,7 +44,7 @@ Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně sp
 
 Při spuštění úlohy Pig na vzdálený cluster HDInsight, se používají následující rutiny:
 
-* **Login-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
+* **Připojit AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
 * **Nové AzureRmHDInsightPigJobDefinition**: vytvoří *úlohy definice* pomocí zadané příkazy Pig Latin.
 * **Spuštění AzureRmHDInsightJob**: odešle definici úlohy do HDInsight a spuštění úlohy. A *úlohy* se vrátí objekt.
 * **Počkejte AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. Se čeká na dokončení úlohy nebo byla překročena doba čekání.

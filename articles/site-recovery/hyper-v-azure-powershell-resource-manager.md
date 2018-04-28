@@ -1,6 +1,6 @@
 ---
-title: "Replikace virtuálních počítačů technologie Hyper-V přes PowerShell a Azure Resource Manager | Microsoft Docs"
-description: "Automatizovat replikaci virtuálních počítačů Hyper-V do Azure s Azure Site Recovery pomocí Powershellu a Azure Resource Manager."
+title: Replikace virtuálních počítačů technologie Hyper-V přes PowerShell a Azure Resource Manager | Microsoft Docs
+description: Automatizovat replikaci virtuálních počítačů Hyper-V do Azure s Azure Site Recovery pomocí Powershellu a Azure Resource Manager.
 services: site-recovery
 author: bsiva
 manager: abhiag
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: bsiva
-ms.openlocfilehash: 4304cad9dc6aab7eb95885815a3ceb636ca6ff52
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 18ed9566cd265ef851f914a59e10f6973bdc0d86
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí prostředí PowerShell a Azure Resource Manager
 
@@ -45,9 +45,9 @@ Kromě toho konkrétní příklad popsané v tomto článku má následující p
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Přihlaste se k účtu Azure
 
-1. Otevřete konzolu prostředí PowerShell a spusťte tento příkaz k přihlášení k účtu Azure. Rutina otevře na webové stránce vás vyzve k zadání přihlašovacích údajů účtu: **Login-AzureRmAccount**.
-    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v **Login-AzureRmAccount** rutiny, pomocí **-přihlašovacích údajů** parametr.
-    - Pokud jste poskytovatel CSP partnera práce jménem klienta, zadejte zákazníka jako klient, pomocí jejich název primární domény tenantID nebo klienta. Příklad: **Login-AzureRmAccount-klienta "fabrikam.com"**
+1. Otevřete konzolu prostředí PowerShell a spusťte tento příkaz k přihlášení k účtu Azure. Rutina otevře na webové stránce vás vyzve k zadání přihlašovacích údajů účtu: **Connect-AzureRmAccount**.
+    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v **Connect-AzureRmAccount** rutiny, pomocí **-přihlašovacích údajů** parametr.
+    - Pokud jste poskytovatel CSP partnera práce jménem klienta, zadejte zákazníka jako klient, pomocí jejich název primární domény tenantID nebo klienta. Příklad: **Connect-AzureRmAccount-klienta "fabrikam.com"**
 2. Přidružte odběr, který chcete použít s účet, protože účet může mít několik odběrů:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
@@ -132,7 +132,7 @@ Než začnete, Upozorňujeme, že zadaný účet úložiště by měl být ve st
         $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
 3. Kontejner ochrany přidružte k zásadě replikace, následujícím způsobem:
 
-     $Policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $PolicyName   $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $Policy -PrimaryProtectionContainer $protectionContainer
+     $Policy = get-AzureRmSiteRecoveryPolicy - FriendlyName $PolicyName $associationJob = Start AzureRmSiteRecoveryPolicyAssociationJob-zásady $Policy - PrimaryProtectionContainer $protectionContainer
 
 4. Počkejte na úlohu přidružení úspěšně dokončit.
 

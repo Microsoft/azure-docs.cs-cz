@@ -1,8 +1,8 @@
 ---
-title: "Ladění pravidla výkonu Hive Azure Data Lake Store | Microsoft Docs"
-description: "Ladění pravidla výkonu Hive Azure Data Lake Store"
+title: Ladění pravidla výkonu Hive Azure Data Lake Store | Microsoft Docs
+description: Ladění pravidla výkonu Hive Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 57bd8758c2ae24922a959c9ce3893aad90dfe7e1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Pokyny pro Hive v HDInsight a Azure Data Lake Store optimalizace výkonu
 
@@ -88,6 +88,6 @@ Pokud chcete zkontrolovat, pokud jste jsou získávání omezené, musíte povol
 ## <a name="further-information-on-hive-tuning"></a>Další informace o ladění Hive
 
 Tady je několik blogy, které vám pomůžou optimalizovat dotazy Hive:
-* [Optimalizace dotazů Hive pro Hadoop v HDInsight](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Optimalizace dotazů Hive pro Hadoop v HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
 * [Řešení potíží s výkon dotazů Hive](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 * [Ignite obraťte na optimalizaci Hive v HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

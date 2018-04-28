@@ -1,25 +1,20 @@
 ---
-title: "Sledování využití a statistické údaje ve službě Azure Search | Microsoft Docs"
-description: "Sledování spotřeby a index velikost prostředků pro službu Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure."
-services: search
-documentationcenter: 
+title: Sledování využití a statistické údaje ve službě Azure Search | Microsoft Docs
+description: Sledování spotřeby a index velikost prostředků pro službu Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
+services: search
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 286569eef8e17909ecab017b67b0ffc044a4bfe4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="monitoring-an-azure-search-service"></a>Monitorování služby Azure Search
 
@@ -89,45 +84,45 @@ Po zkopírování dat do účtu úložiště dat formátu JSON a jeho místě v 
 
 Neexistuje jeden objekt blob, za hodinu na kontejneru.
 
-Příklad cesty:`resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Příklad cesty: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
 #### <a name="log-schema"></a>Schéma protokolu
 Objekty BLOB protokoly obsahovat protokolů přenosů služby vyhledávání.
 Každý objekt blob má jeden kořenový objekt názvem **záznamy** obsahující pole objektů protokolu.
 Každý objekt blob má záznamy na všechny operace, ke kterým došlo během tutéž hodinu.
 
-| Name (Název) | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| time |Data a času |"2015-12-07T00:00:43.6872559Z" |Časové razítko operace |
-| resourceId |Řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>SKUPINYPROSTŘEDKŮ/VÝCHOZÍ NEBO ZPROSTŘEDKOVATELE NEBO<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ NEBO SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
-| operationName |Řetězec |"Query.Search" |Název operace |
-| operationVersion |Řetězec |"2015-02-28" |Použít verze rozhraní api |
-| category |Řetězec |"OperationLogs" |Konstantní |
-| resultType |Řetězec |"ÚSPĚCH" |Možné hodnoty: úspěch nebo neúspěch |
+| time |datetime |"2015-12-07T00:00:43.6872559Z" |Časové razítko operace |
+| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>SKUPINYPROSTŘEDKŮ/VÝCHOZÍ NEBO ZPROSTŘEDKOVATELE NEBO<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ NEBO SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
+| operationName |řetězec |"Query.Search" |Název operace |
+| operationVersion |řetězec |"2015-02-28" |Použít verze rozhraní api |
+| category |řetězec |"OperationLogs" |Konstantní |
+| resultType |řetězec |"ÚSPĚCH" |Možné hodnoty: úspěch nebo neúspěch |
 | resultSignature |celá čísla |200 |Kód výsledku HTTP |
 | durationMS |celá čísla |50 |Doba trvání operace v milisekundách |
-| properties |Objekt |najdete v následující tabulce |Objekt obsahující data specifická pro operace |
+| properties |objekt |najdete v následující tabulce |Objekt obsahující data specifická pro operace |
 
 **Vlastnosti schématu**
-| Name (Název) | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| Popis |Řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
-| Dotaz |Řetězec |"? hledání = AzureSearch & $count = true & verze api-version = 2015-02-28" |Parametry dotazu |
+| Popis |řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
+| Dotaz |řetězec |"? hledání = AzureSearch & $count = true & verze api-version = 2015-02-28" |Parametry dotazu |
 | Dokumenty |celá čísla |42 |Počet zpracovaných dokumentů |
-| indexName |Řetězec |"testindex" |Název přidružené k operaci indexu |
+| indexName |řetězec |"testindex" |Název přidružené k operaci indexu |
 
 #### <a name="metrics-schema"></a>Metriky schématu
-| Name (Název) | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad: | Poznámky |
 | --- | --- | --- | --- |
-| resourceId |Řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>SKUPINYPROSTŘEDKŮ/VÝCHOZÍ NEBO ZPROSTŘEDKOVATELE NEBO<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ NEBO SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
-| metricName |Řetězec |"Latence" |Název metriky |
-| time |Data a času |"2015-12-07T00:00:43.6872559Z" |časové razítko operace |
-| Průměr |celá čísla |64 |Průměrná hodnota nezpracovaná ukázky metriky časový interval |
-| minimální |celá čísla |37 |Minimální hodnota nezpracovaná ukázky metriky časový interval |
-| Maximální počet |celá čísla |78 |Maximální hodnota, která nezpracovaná ukázky metriky časový interval |
-| Celkový počet |celá čísla |258 |Celkové hodnoty nezpracovaná ukázky metriky časový interval |
-| Počet |celá čísla |4 |Počet nezpracovaných vzorků sloužící ke generování metriku |
-| časovými úseky |Řetězec |"PT1M" |Časový úsek metriky v ISO 8601. |
+| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>SKUPINYPROSTŘEDKŮ/VÝCHOZÍ NEBO ZPROSTŘEDKOVATELE NEBO<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ NEBO SEARCHSERVICES/SEARCHSERVICE" |vaše id prostředku |
+| metricName |řetězec |"Latence" |Název metriky |
+| time |datetime |"2015-12-07T00:00:43.6872559Z" |časové razítko operace |
+| průměr |celá čísla |64 |Průměrná hodnota nezpracovaná ukázky metriky časový interval |
+| minimum |celá čísla |37 |Minimální hodnota nezpracovaná ukázky metriky časový interval |
+| maximum |celá čísla |78 |Maximální hodnota, která nezpracovaná ukázky metriky časový interval |
+| celkem |celá čísla |258 |Celkové hodnoty nezpracovaná ukázky metriky časový interval |
+| počet |celá čísla |4 |Počet nezpracovaných vzorků sloužící ke generování metriku |
+| časovými úseky |řetězec |"PT1M" |Časový úsek metriky v ISO 8601. |
 
 Všechny metriky oznamuje v intervalech jedné minuty. Každý metrika uvádí minimální, maximální a průměrné hodnoty za minutu.
 
@@ -144,7 +139,7 @@ Poskytuje službě Azure Search [balíček obsahu Power BI](https://app.powerbi.
 
 ![Řídicí panel Power BI pro službu Azure Search][4]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zkontrolujte [škálování repliky a oddíly, které](search-limits-quotas-capacity.md) pokyny o tom, jak vyrovnávání přidělení replik pro existující službu a oddíly.
 
 Navštivte [Správa služby Search v Microsoft Azure](search-manage.md) Další informace o správě služby, nebo [výkonu a optimalizace](search-performance-optimization.md) pro ladění pokyny.

@@ -1,8 +1,8 @@
 ---
-title: "Zálohování aplikace v Azure"
-description: "Naučte se vytvářet zálohy aplikací ve službě Azure App Service."
+title: Zálohování aplikace v Azure
+description: Naučte se vytvářet zálohy aplikací ve službě Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](app-service-web-overview.md) umožňuje snadno vytvářet zálohy aplikaci ručně nebo podle plánu. Aplikace můžete obnovit do snímku do předchozího stavu pomocí přepsal stávající aplikace nebo při obnovování jiné aplikaci. 
@@ -30,14 +30,14 @@ Informace o obnovení ze zálohy aplikace najdete v tématu [obnovení aplikace 
 ## <a name="what-gets-backed-up"></a>Co se zálohuje
 Služby App Service můžete zálohovat následující informace na účtu úložiště Azure a kontejner, který jste nakonfigurovali aplikaci používat. 
 
-* Konfigurace aplikací
+* Konfigurace aplikace
 * Obsah souboru
 * Databáze připojenou k aplikaci
 
 Funkce zálohování podporuje následující databáze řešení: 
-   - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [Azure databáze pro databázi MySQL (Preview)](https://azure.microsoft.com/en-us/services/mysql)
-   - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL Database](https://azure.microsoft.com/services/sql-database/)
+   - [Azure databáze pro databázi MySQL (Preview)](https://azure.microsoft.com/services/mysql)
+   - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/services/postgres)
    - [MySQL v aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 
@@ -71,13 +71,13 @@ Funkce zálohování podporuje následující databáze řešení:
 ![klikněte na tlačítko Konfigurovat.](./media/web-sites-backup/ClickConfigure1.png)
 3. V **konfigurace zálohování** klikněte na tlačítko **úložiště: není nakonfigurováno** ke konfiguraci účtu úložiště.
    
-    ![Zvolte účet úložiště][ChooseStorageAccount]
+    ![Výběr účtu úložiště][ChooseStorageAccount]
 4. Vyberte cíl zálohování tak, že vyberete **účet úložiště** a **kontejneru**. Účet úložiště musí patřit do stejného předplatného jako aplikace, které chcete zálohovat. Pokud chcete, můžete vytvořit nový účet úložiště nebo nový kontejner v příslušné stránky. Když jste hotovi, klikněte na tlačítko **vyberte**.
    
-    ![Zvolte účet úložiště](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
+    ![Výběr účtu úložiště](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
 5. V **konfigurace zálohování** stránce, je stále ponechány otevřené, můžete nakonfigurovat **příkaz Backup Database**, vyberte databáze, které chcete zahrnout do zálohy (databáze SQL nebo MySQL) a pak klikněte na tlačítko **OK**.  
    
-    ![Zvolte účet úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
+    ![Výběr účtu úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
    > Pro databázi se objeví v tomto seznamu, musí existovat jeho připojovací řetězec v **připojovací řetězce** části **nastavení aplikace** stránky pro vaši aplikaci.
@@ -97,7 +97,7 @@ Jakmile je nakonfigurovaný účet úložiště a kontejneru, můžete spustit r
 ## <a name="configure-automated-backups"></a>Konfigurace automatického zálohování
 1. V **konfigurace zálohy** nastavte **naplánovaná zálohování** k **na**. 
    
-    ![Zvolte účet úložiště](./media/web-sites-backup/05ScheduleBackup1.png)
+    ![Výběr účtu úložiště](./media/web-sites-backup/05ScheduleBackup1.png)
 2. Nastavte plán zálohování, které se zobrazí možnosti, **naplánované zálohování** k **na**, podle potřeby nakonfigurujte plán zálohování a klikněte na **OK**.
    
     ![Povolit automatické zálohování][SetAutomatedBackupOn]
@@ -154,7 +154,7 @@ V kořenovém souboru ZIP je uložena záloha databáze pro aplikaci. Pro datab�
 > 
 > 
 
-## <a name="automate-with-scripts"></a>Automatizovat pomocí skriptů
+## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
 Můžete automatizovat správu záloh pomocí skriptů, pomocí [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo [prostředí Azure PowerShell](/powershell/azure/overview).
 

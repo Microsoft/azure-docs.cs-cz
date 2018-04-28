@@ -1,6 +1,6 @@
 ---
 title: Matici podpory pro replikaci technologie Hyper-V do Azure | Microsoft Docs
-description: "Poskytuje souhrn podporovaných součásti a požadavky pro replikaci technologie Hyper-V do Azure s Azure Site Recovery"
+description: Poskytuje souhrn podporovaných součásti a požadavky pro replikaci technologie Hyper-V do Azure s Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 9078b56ae9c5582aa21201c168974eb6cc7a4ed6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Podporu pro replikaci technologie Hyper-V do Azure.
 
@@ -74,7 +74,7 @@ Azure ExpressRoute | Ano | Ano
 Interní nástroj pro vyrovnávání zatížení | Ano | Ano
 ELB | Ano | Ano
 Azure Traffic Manager | Ano | Ano
-Multi-NIC | Ano | Ano
+Více síťovými Kartami | Ano | Ano
 Rezervovaná IP adresa | Ano | Ano
 IPv4 | Ano | Ano
 Zachovat zdrojové IP adresy | Ano | Ano
@@ -87,7 +87,7 @@ Koncové body služby Azure virtuální sítě<br/><br/> (Brány firewall úlož
 --- | --- | --- | ---
 NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
-SAN (ISCSI) | Ano | Ano
+SÍŤ SAN (ISCSI) | Ano | Ano
 S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM pro CLARiiON | Ano | Ano
 
 ## <a name="hyper-v-vm-guest-storage"></a>Úložiště hosta virtuálního počítače technologie Hyper-V
@@ -97,7 +97,7 @@ S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br
 VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano
 2. generace virtuálních počítačů | Ano | Ano
-EFI/UEFI| Ano | Ano
+ROZHRANÍM EFI/UEFI| Ano | Ano
 Sdílený disk clusteru | Ne | Ne
 Šifrované disku | Ne | Ne
 NFS | Není k dispozici | Není k dispozici
@@ -123,7 +123,7 @@ Studeného úložiště | Ne | Ne
 Horkého úložiště| Ne | Ne
 Objekty blob bloku | Ne | Ne
 Šifrování v klidovém stavu (SSE)| Ano | Ano
-Storage úrovně Premium | Ano | Ano
+Premium Storage | Ano | Ano
 Import a export služby | Ne | Ne
 Virtuální sítě služby koncové body Azure (Azure Storage brány firewall a virtuální sítě) na cíl, aby účet úložiště mezipaměti používané pro replikaci dat | Ne | Ne
 
@@ -151,7 +151,7 @@ Velikost datového disku virtuálního pevného disku | Až 4095 GB | Pokud nepo
 Síťové adaptéry | Podporuje se více adaptérů |
 Sdílený virtuální pevný disk | Nepodporuje se | Pokud nepodporované Kontrola předpokladů selže.
 FC disku | Nepodporuje se | Pokud nepodporované Kontrola předpokladů selže.
-Formát pevného disku | VHD <br/><br/> VHDX | Při selhání do Azure, Site Recovery automaticky převede na virtuální pevný disk VHDX. Pokud žádnou zpět na místní, virtuální počítače nadále používat formát VHDX.
+Formát pevného disku | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | Při selhání do Azure, Site Recovery automaticky převede na virtuální pevný disk VHDX. Pokud žádnou zpět na místní, virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Než povolíte replikaci pro virtuální počítač, musí se zakázat nástroj BitLocker.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
 Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 se typ disku operačního systému basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku jsou podporovány.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
@@ -170,7 +170,7 @@ Pokud chcete mít jistotu, že vaše nasazení je kompatibilní s nastavením v 
 
 **Název** | **Popis** | **Podrobnosti**
 --- | --- | --- | --- | ---
-Zprostředkovatel Azure Site Recovery | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Technologie Hyper-V s nástrojem Virtual Machine Manager: nainstalované na serverech nástroje Virtual Machine Manager<br/><br/> Technologie Hyper-V bez nástroje Virtual Machine Manager: nainstalovány na hostitelích technologie Hyper-V| Nejnovější verzi: 5.1.2700.1 (k dispozici na portálu Azure)<br/><br/> [Nejnovější funkce a opravy](https://aka.ms/latest_asr_updates)
+Zprostředkovatel Azure Site Recovery | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Technologie Hyper-V s nástrojem Virtual Machine Manager: nainstalované na serverech nástroje Virtual Machine Manager<br/><br/> Technologie Hyper-V bez nástroje Virtual Machine Manager: nainstalovány na hostitelích technologie Hyper-V| Nejnovější verzi: 5.1.2700.1 (k dispozici na portálu Azure)<br/><br/> [Nejnovější funkce a opravy](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agent služeb zotavení Microsoft Azure | Koordinuje replikaci mezi virtuální počítače Hyper-V a Azure<br/><br/> Nainstalována na místní servery Hyper-V (s nebo bez nástroje Virtual Machine Manager) | Nejnovější verze agenta z portálu k dispozici
 
 
@@ -178,5 +178,5 @@ Agent služeb zotavení Microsoft Azure | Koordinuje replikaci mezi virtuální 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Zjistěte, jak [Příprava Azure](tutorial-prepare-azure.md) pro zotavení po havárii virtuálních počítačů technologie Hyper-V na místě. 

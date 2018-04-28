@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření služby Azure IoT Hub pomocí rutiny prostředí PowerShell | Microsoft Docs"
-description: "Jak používat rutiny prostředí PowerShell k vytvoření služby IoT hub."
+title: Vytvoření služby Azure IoT Hub pomocí rutiny prostředí PowerShell | Microsoft Docs
+description: Jak používat rutiny prostředí PowerShell k vytvoření služby IoT hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1d22e1a20d18e06686f893b1f4ae22e6373633b3
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e7dbfabadf72b8abece02907cd16644ef95e67a9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>Vytvoření služby IoT hub pomocí rutiny New-AzureRmIotHub
 
@@ -39,7 +39,7 @@ Pro absolvování tohoto kurzu potřebujete:
 V příkazovém řádku prostředí PowerShell zadejte následující příkaz k přihlášení k předplatnému Azure:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
@@ -48,7 +48,7 @@ Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístu
 Get-AzureRMSubscription
 ```
 
-Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření centra IoT. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
 ```powershell
 Select-AzureRMSubscription `
@@ -110,7 +110,7 @@ Alternativně můžete odebrat skupinu prostředků a všechny prostředky, kter
 Remove-AzureRmResourceGroup -Name MyIoTRG1
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nyní jste nasadili služby IoT hub pomocí rutiny prostředí PowerShell, můžete chtít Další:
 
@@ -124,7 +124,7 @@ Další informace o vývoji pro Centrum IoT, naleznete v následujících člán
 
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

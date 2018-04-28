@@ -1,12 +1,12 @@
 ---
-title: "Přehled zabezpečení certifikační Autority X.509 Azure IoT Hub | Microsoft Docs"
-description: "Přehled – jak ověřovat zařízení do služby IoT Hub pomocí X.509 certifikačních autorit."
+title: Přehled zabezpečení certifikační Autority X.509 Azure IoT Hub | Microsoft Docs
+description: Přehled – jak ověřovat zařízení do služby IoT Hub pomocí X.509 certifikačních autorit.
 services: iot-hub
 documentationcenter: .net
 author: eustacea
 manager: arjmands
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 11f340ebe1719c680cce5f6ad34150d3717c57d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Zařízení ověřování pomocí certifikátů X.509 certifikační Autority
 
@@ -69,7 +69,7 @@ Přečtěte si zde postup [zaregistrujte svůj certifikát certifikační Autori
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Postup vytvoření zařízení v IoT Hub
 
-Vylučovat zařízení zosobnění, IoT Hub vyžaduje, abyste mohli ho vědět, jaká zařízení se očekává.  To uděláte tak, že vytvoříte záznam zařízení v registru zařízení IoT Hub.  Tento proces je automatizováno při používání služby IoT Hub [služba zřizování zařízení](https://azure.microsoft.com/en-us/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (distribučních bodů). 
+Vylučovat zařízení zosobnění, IoT Hub vyžaduje, abyste mohli ho vědět, jaká zařízení se očekává.  To uděláte tak, že vytvoříte záznam zařízení v registru zařízení IoT Hub.  Tento proces je automatizováno při používání služby IoT Hub [služba zřizování zařízení](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (distribučních bodů). 
 
 Přečtěte si zde postup [ruční vytvoření zařízení IoT hub](iot-hub-security-x509-get-started.md#createdevice).
 

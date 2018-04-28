@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fbf3c66979730a9162c56e8583f0a32977a0310d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cbc1efaee7404c3ffc82acea0846136c43eba2a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
 
@@ -82,13 +82,13 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
 5. K vytvoření žádosti jeden certifikát s více alternativní názvy subjektu, včetně těch, které potřebné pro PaaS služby:
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IncludePaaS
     ````
 
 6. Pro vytvoření jednotlivých certifikátu Podepisování žádostí pro každý název DNS bez PaaS služeb:
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory
     ````
 
 7. Zkontrolujte výstup:
@@ -112,4 +112,6 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
 8.  Odeslání **. No** souboru vygenerovaného na certifikační Autorita (interní nebo veřejná).  Do výstupního adresáře **Start-AzsReadinessChecker** obsahuje CSR(s) potřebné k odeslání certifikační autoritě.  Obsahuje taky podřízené adresáře, který obsahuje soubory INF používá při generování žádosti o certifikát, jako odkaz. Ujistěte se, že certifikační Autorita vygeneruje certifikáty pomocí generovaného žádost, které splňují [požadavky na Azure zásobníku PKI](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Další postup
+
 [Příprava certifikátů PKI zásobník Azure](azure-stack-prepare-pki-certs.md)
+

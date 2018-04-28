@@ -1,25 +1,24 @@
 ---
-title: "Postup použití řízení přístupu (Java) | Microsoft Docs"
-description: "Zjistěte, jak vyvíjet a použití řízení přístupu s Java v Azure."
+title: Postup použití řízení přístupu (Java)
+description: Zjistěte, jak vyvíjet a použití řízení přístupu s Java v Azure.
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: mtillman
-editor: 
+manager: mbaldwin
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/11/2018
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bd65da490bf3d7e17bf6ff36e76e306842d50653
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Jak ověřovat uživatele webové službě Řízení přístupu Azure pomocí prostředí Eclipse
 Tento průvodce vám ukáže, jak používat řízení přístupu Azure Service (ACS) v rámci sady nástrojů Azure pro Eclipse. Další informace o služby ACS, najdete v článku [další kroky](#next_steps) části.
@@ -116,14 +115,14 @@ V této úloze nakonfigurujete ACS rozpoznat jako platný aplikace RP webové ap
    
    1. V **název**, zadejte název RP. Pro účely tohoto kurzu, zadejte **webové aplikace Azure**.
    2. V **režimu**, vyberte **zadejte nastavení ručně**.
-   3. V **sféry**, zadejte identifikátor URI, na které se vztahuje tokenu zabezpečení vydaného služby ACS. Pro tuto úlohu, zadejte **adrese http://localhost: 8080 /**.
+   3. V **sféry**, zadejte identifikátor URI, na které se vztahuje tokenu zabezpečení vydaného služby ACS. Pro tuto úlohu, zadejte **http://localhost:8080/**.
       ![Předávající strany sféru pro použití v emulátoru služby výpočty][relying_party_realm_emulator]
-   4. V **vrátí adresu URL,** zadejte adresu URL, na kterou ACS vrátí token zabezpečení. Pro tuto úlohu, zadejte **http://localhost:8080/MyACSHelloWorld/index.jsp**
-      ![předávající strany návratovou adresu URL pro použití v emulátoru služby výpočty][relying_party_return_url_emulator]
+   4. V **vrátí adresu URL,** zadejte adresu URL, na kterou ACS vrátí token zabezpečení. Pro tuto úlohu, zadejte ** http://localhost:8080/MyACSHelloWorld/index.jsp ** 
+       ![předávající strany návratovou adresu URL pro použití v emulátoru služby výpočty][relying_party_return_url_emulator]
    5. Přijměte výchozí hodnoty v ostatních polích.
 4. Klikněte na **Uložit**.
 
-Nyní jste úspěšně nakonfigurovali webové aplikace v jazyce Java při spuštění v emulátor výpočtů v Azure (na adrese http://localhost: 8080 /) jako RP v oboru názvů služby ACS. Dále vytvořte pravidla, která ke zpracování deklarace pro RP se používá služby ACS.
+Nyní jste úspěšně nakonfigurovali webové aplikace v jazyce Java při spuštění v emulátor výpočtů v Azure (v http://localhost:8080/) být RP v oboru názvů služby ACS. Dále vytvořte pravidla, která ke zpracování deklarace pro RP se používá služby ACS.
 
 ## <a name="create-rules"></a>Vytvoření pravidel
 V této úloze definujete pravidel, která určují, jak deklarace identity jsou předávány z IP adres vaší RP. Pro účely tohoto průvodce můžeme jednoduše nakonfiguruje ACS kopírovat vstupní typy a hodnoty přímo v token výstupu bez jejich změně nebo filtrování.

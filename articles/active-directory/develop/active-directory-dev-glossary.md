@@ -1,11 +1,11 @@
 ---
-title: "Glosář pro vývojáře Azure Active Directory | Microsoft Docs"
-description: "Seznam podmínek pro běžně používané funkce a koncepty pro vývojáře Azure Active Directory."
+title: Glosář pro vývojáře Azure Active Directory | Microsoft Docs
+description: Seznam podmínek pro běžně používané funkce a koncepty pro vývojáře Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.devlang: na
@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 81e0778a0ae168170436213d8aa48c8d60575da2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář vývojáře Azure Active Directory
 Tento článek obsahuje definice pro některé základní koncepty vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoj aplikací pro Azure AD.
 
-## <a name="access-token"></a>Přístupový token
+## <a name="access-token"></a>přístupový token
 Typ [token zabezpečení](#security-token) vydaný [serveru ověřování](#authorization-server)a používá [klientská aplikace](#client-application) pro přístup [chráněný server prostředků](#resource-server). Obvykle ve formě [JSON Web Token (JWT)][JWT], token ztělesňuje autorizace udělit klienta pomocí [vlastník prostředku](#resource-owner), pro požadovanou úroveň přístupu. Token obsahuje všechny použitelné [deklarace identity](#claim) o subjektu, povolení klientská aplikace můžete použít jako formu přihlašovacích údajů při přístupu k danému prostředku. Také to eliminuje potřebu vlastníka prostředku vystavit přihlašovací údaje do klienta.
 
 Přístupové tokeny jsou někdy označovány jako "Uživatele + aplikace" nebo "Aplikaci jen", v závislosti na reprezentované přihlašovací údaje. Například, když používá klientská aplikace:
@@ -79,7 +79,7 @@ Podle definice [OAuth2 autorizace Framework][OAuth2-Role-Def], příslušné k u
 
 V případě integrace aplikací Azure AD, Azure AD implementuje roli serveru autorizace pro aplikace Azure AD a služby Microsoft rozhraní API, například [Microsoft Graph API][Microsoft-Graph].
 
-## <a name="claim"></a>Deklarace identity
+## <a name="claim"></a>deklarace identity
 A [token zabezpečení](#security-token) obsahuje deklarace identity, které poskytují kontrolní výrazy o jedné entity (například [klientská aplikace](#client-application) nebo [vlastník prostředku](#resource-owner)) k jiné entitě (například [server prostředků](#resource-server)). Deklarace identity jsou páry název/hodnota, které předávání faktů o token subjektu (například objekt zabezpečení, která byla ověřena pomocí [serveru ověřování](#authorization-server)). Daný token obsahuje deklarace identity jsou závislé na několika proměnných, včetně typ tokenu, typ pověření pro ověření předmět konfigurace aplikace, atd.
 
 V tématu [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
@@ -105,7 +105,7 @@ V tématu [jak se přihlásit žádné uživatele Azure AD pomocí vzoru vícekl
 ## <a name="native-client"></a>Nativní klient systému
 Typ [klientská aplikace](#client-application) je nativní aplikace na zařízení. Vzhledem k tomu, že veškerý kód se spustí na zařízení, bude považován za "veřejná" klienta z důvodu jeho nemohou k uložení pověření soukromě nebo jako s důvěrnými. V tématu [OAuth2 klienta typy a profily] [ OAuth2-Client-Types] další podrobnosti.
 
-## <a name="permissions"></a>Oprávnění
+## <a name="permissions"></a>oprávnění
 A [klientská aplikace](#client-application) získá přístup k [server prostředků](#resource-server) deklarováním žádosti o oprávnění. K dispozici jsou dva typy:
 
 * "Delegovaný" oprávnění, které určují [obor](#scopes) přistupovat pomocí delegovaného autorizace z přihlášeného [vlastník prostředku](#resource-owner), jsou uvedené k prostředku v době spuštění jako ["spojovací bod služby" deklarace identity](#claim) v klienta [přístupový token](#access-token).
@@ -147,15 +147,15 @@ Když jste registrace nebo aktualizovat aplikaci v [portál Azure][AZURE-portal]
 
 V tématu [aplikací a hlavní objekty služeb] [ AAD-App-SP-Objects] Další informace.
 
-## <a name="sign-in"></a>Přihlášení
+## <a name="sign-in"></a>přihlášení
 Proces [klientská aplikace](#client-application) inicializaci ověřování koncového uživatele a zaznamenávání související stav, za účelem získání [token zabezpečení](#security-token) a obor relace aplikace na tento stav. Stavu může obsahovat artefaktů, jako jsou informace o profilu uživatele a informace odvozené z tokenu deklarací identity.
 
 Funkce přihlášení aplikace se obvykle používá k implementaci jednotného přihlašování (SSO). Ho může také předcházet "registrace" funkce, jako vstupní bod pro koncové uživatele k získání přístupu k aplikaci (při prvním přihlášení). Registrace funkce slouží ke shromažďování a zachovat další stav specifická pro uživatele a může vyžadovat [souhlas uživatele](#consent).
 
-## <a name="sign-out"></a>odhlášení
+## <a name="sign-out"></a>adresa URL
 Proces zrušení ověřovací přidružené koncového uživatele, odpojení stavu uživatele [klientská aplikace](#client-application) během relaci [přihlášení](#sign-in)
 
-## <a name="tenant"></a>Klienta
+## <a name="tenant"></a>tenant
 Instance adresáře služby Azure AD se označuje jako klient služby Azure AD. Poskytuje několik funkcí, včetně:
 
 * Služba registru pro integrované aplikace
@@ -176,7 +176,7 @@ Podobně jako objekt zabezpečení služby se používá k reprezentaci instanci
 ## <a name="web-client"></a>Webový klient
 Typ [klientská aplikace](#client-application) , která se spouští všechny kódu na webovém serveru a může fungovat jako "důvěrné informace" klienta bezpečně uloží pověření uživatele na serveru. V tématu [OAuth2 klienta typy a profily] [ OAuth2-Client-Types] další podrobnosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Příručka vývojáře pro Azure AD] [ AAD-Dev-Guide] je cílová stránka pro použití při vývoji všechny Azure AD související témata, včetně přehledu [integraci aplikací] [ AAD-How-To-Integrate] a základní informace o [ověřování Azure AD a scénáře podporované ověřování][AAD-Auth-Scenarios].  Taky můžete najít ukázky kódu & kurzy o tom, jak získat rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah, včetně žádostí pro nové definice nebo aktualizuje existující!
@@ -203,7 +203,7 @@ Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozt
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
-[O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
+[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3

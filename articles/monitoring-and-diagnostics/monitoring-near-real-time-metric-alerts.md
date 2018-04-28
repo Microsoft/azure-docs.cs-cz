@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6d440a49cb30210d3c0eed7d24e4811cc56925b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Novější metriky výstrahy pro služby Azure na portálu Azure
 Azure monitorování teď podporuje nový typ metriky výstrahy. Novější výstrahy se liší od [classic metriky výstrahy](insights-alerts-portal.md) několika způsoby:
@@ -35,7 +35,7 @@ Naučte se vytvářet upozornění na novější metriky na portálu Azure, najd
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, prostředí PowerShell, rozhraní příkazového řádku, REST podporu
-V současné době můžete vytvořit novější metriky výstrahy pouze v portálu Azure nebo REST API. Podpora konfigurace novější výstrah pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) je již brzy.
+V současné době můžete vytvořit novější metriky výstrahy pouze na portálu Azure [REST API](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template) nebo [šablony Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) je již brzy.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
 Novější metriky výstrahy podporují generování výstrah pro metriky, které používají dimenze. Dimenze můžete použít k filtrování vaší metrika se používá k správnou úroveň. Všechny podporované metriky společně s příslušné dimenze můžete prozkoumali a vizualizována z [monitorování Azure – metriky Explorer (Preview)](monitoring-metric-charts.md).
@@ -46,23 +46,29 @@ Tady je úplný seznam Azure monitorování metriky zdroje nepodporuje novějš�
 |---------|---------|----------------|
 |Microsoft.ApiManagement/service     | Ano        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
 |Microsoft.Automation/automationAccounts     |     Ano   | [Účty Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
-|Microsoft.Batch/batchAccounts | Nevztahuje se.| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
-|Microsoft.Cache/Redis     |    Nevztahuje se.     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
-|Microsoft.Compute/virtualMachines     |    Nevztahuje se.     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets     |   Nevztahuje se.      |[Sady škálování virtuálního počítače](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Batch/batchAccounts | neuvedeno| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
+|Microsoft.Cache/Redis     |    neuvedeno     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Compute/virtualMachines     |    neuvedeno     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |[Sady škálování virtuálního počítače](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.ContainerInstance/containerGroups | Ano| [Skupiny kontejnerů](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.DataFactory/datafactories| Ano| [Data Factory V1](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories     |   Ano     |[Data Factory V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
-|Microsoft.DBforMySQL/servers     |   Nevztahuje se.      |[Databáze pro databázi MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/servers     |    Nevztahuje se.     | [DB pro PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.DBforMySQL/servers     |   neuvedeno      |[Databáze pro databázi MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    neuvedeno     | [DB pro PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  Ano      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
-|Microsoft.Logic/workflows     |     Nevztahuje se.    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
-|Microsoft.Network/applicationGateways     |    Nevztahuje se.     | [Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
-|Microsoft.Network/publicipaddresses     |  Nevztahuje se.       |[Veřejná IP adresa Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
-|Microsoft.Search/searchServices     |   Nevztahuje se.      |[Služby vyhledávání](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
+|Microsoft.KeyVault/vaults| Ne | [trezory](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
+|Microsoft.Logic/workflows     |     neuvedeno    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
+|Microsoft.Network/applicationGateways     |    neuvedeno     | [Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | neuvedeno| [Zóny DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
+|Microsoft.Network/loadBalancers (pouze pro standardní SKU)| Ano| [Nástroje pro vyrovnávání zatížení](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
+|Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejná IP adresa Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
+|Microsoft.Search/searchServices     |   neuvedeno      |[Služby vyhledávání](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [pro služby souborového](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft.StreamAnalytics/streamingjobs     |  Nevztahuje se.       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
-|Microsoft.CognitiveServices/accounts     |    Nevztahuje se.     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.OperationalInsights/workspaces (Preview) | Ano|[Pracovní prostory analýzy protokolů](#log-analytics-logs-as-metrics-for-alerting)|
 
 
@@ -88,7 +94,7 @@ Název metriky/podrobnosti  |Dimenze podporována  | Typ protokolu  |
 |   Average_ % volného místa    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
 | Average_Available MB     |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
 | Average_ % potvrzených bajtů v použití    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
-| Average_Bytes Received/sec    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
+| Average_Bytes přijatých za sekundu    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
 |  Average_Bytes odeslaných za sekundu    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
 |  Average_Bytes celkem/s    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
 |  Average_ % času procesoru    |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítačů výkonu systému Windows      |
@@ -147,7 +153,7 @@ Název metriky/podrobnosti  |Dimenze podporována  | Typ protokolu  |
 |    Average_Uptime |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítače výkonu systému Linux      |
 |    Average_Users  |     Ano – počítače, ObjectName, InstanceName, Cesta_k_čítači a SourceSystem    |   Čítače výkonu systému Linux      |
 |    Prezenční signál  |     Ano – počítače, OSType, verzi a SourceComputerId    |   Záznamy prezenčního signálu |
-|    Aktualizovat |     Ano – počítače, produktů, klasifikace, UpdateState, volitelné & schválené    |   Správa aktualizací |
+|    Aktualizace |     Ano – počítače, produktů, klasifikace, UpdateState, volitelné & schválené    |   Update Management |
 
 
 

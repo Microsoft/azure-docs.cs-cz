@@ -1,36 +1,32 @@
 ---
-title: "Azure AD Connect Health a nařízení ochrany dat obecné | Microsoft Docs"
-description: "Tento dokument popisuje, jak zajistit dodržování předpisů GDPR službou Azure AD Connect."
+title: Azure AD Connect Health a ochrana osobních údajů uživatele | Microsoft Docs
+description: Tento dokument popisuje ochraně osobních údajů uživatelů s Azure AD Connect Health.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bf26e91308cfec0dc8ede20e683919b5764a4868
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR dodržování předpisů a Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>Ochrana osobních údajů uživatelů a Azure AD Connect Health 
 
-[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR ukládá nové pravidel na společnosti, organizace státní správy, bez zisku a jinými organizacemi, které nabízejí zboží a služeb na osoby ve EU, nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. 
-
-Produkty a služby Microsoftu jsou dnes, které vám pomůžou GDPR požadavkům. Další informace o zásadách Microsoft Privacy na [Centrum zabezpečení](https://www.microsoft.com/trustcenter).
-
-Azure AD Connect Health monitoruje služby infrastruktury a synchronizace místního identity. Také poskytuje přehledy a povrchy výstrahy. Společnost Microsoft se zavazuje GDPR nedodržování předpisů napříč cloudové služby může 2018 zahájení vynucení a zajistit záruky související GDPR v jeho smluvními závazky. 
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
-> Tento článek popisuje GDPR dodržování předpisů v Azure AD Connect Health. Informace o dodržování předpisů GDPR v Azure AD Connect, najdete v části [GDPR dodržování předpisů a Azure AD Connect](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
+>Tento článek se zabývá Azure AD Connect Health a uživatele o ochraně osobních údajů.  Informace o Azure AD Connect a uživatele o ochraně osobních údajů najdete v článku [zde](../../active-directory/connect/active-directory-aadconnect-gdpr.md).
 
-## <a name="gdpr-classification"></a>GDPR klasifikace
+## <a name="user-privacy-classification"></a>Klasifikace ochrany osobních údajů uživatele
 Azure AD Connect Health, které patří do **procesor dat** kategorie klasifikace GDPR. Jako procesor dat kanál poskytuje služby zpracování dat služby a klíče partnery a koncoví uživatelé. Azure AD Connect Health negeneruje uživatelská data a nemá žádnou nezávislé kontrolu nad jaké osobní údaje se shromažďují a jak se používají. Načtení dat, agregace, analýzu a vytváření sestav v Azure AD Connect Health jsou založeny na existující místní data. 
 
 ## <a name="data-retention-policy"></a>Zásady uchovávání dat
@@ -67,5 +63,5 @@ Chcete-li znovu povolte sledování v Azure AD Connect Health pro dříve odstra
 
 ## <a name="next-steps"></a>Další postup
 * [Zkontrolujte nastavení zásad Microsoft Privacy na Centrum zabezpečení](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect a GDPR](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
-* [Operace služby Azure AD Connect Health](active-directory-aadconnect-health-operations.md)
+* [Azure AD Connect a ochraně osobních údajů uživatelů](../../active-directory/connect/active-directory-aadconnect-gdpr.md)
+

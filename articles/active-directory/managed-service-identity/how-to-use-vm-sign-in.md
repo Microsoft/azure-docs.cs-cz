@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Azure virtuálního počítače spravované služby Identity pro přihlášení"
-description: "Podrobné pokyny a příklady pro použití, přihlaste se objektu služby MSI virtuálních počítačů Azure pro skript klienta a prostředku přístup."
+title: Jak používat Azure virtuálního počítače spravované služby Identity pro přihlášení
+description: Podrobné pokyny a příklady pro použití, přihlaste se objektu služby MSI virtuálních počítačů Azure pro skript klienta a prostředku přístup.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4df404bbf56efbc3bb68f006f8aa0c7cdf0e86ac
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ec8c9de6ecd81900c4104abf58ecbe032e43fad9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro přihlášení 
 
@@ -51,7 +51,7 @@ Následující skript ukazuje, jak:
 2. Volání správce prostředků Azure a získat ID Virtuálního počítače službu objektu zabezpečení. Rozhraní příkazového řádku se stará o správu tokenu získávání nebo použití pro vás automaticky. Nezapomeňte nahradit název virtuálního počítače pro `<VM-NAME>`.  
 
    ```azurecli
-   az login --msi
+   az login --identity
    
    spID=$(az resource list -n <VM-NAME> --query [*].identity.principalId --out tsv)
    echo The MSI service principal ID is $spID
@@ -61,20 +61,11 @@ Následující skript ukazuje, jak:
 
 Následující skript ukazuje, jak:
 
-1. Získejte přístupový token MSI pro virtuální počítač.  
-2. Použití tokenu přístupu pro přihlášení ke službě Azure AD, v části odpovídající objektu služby MSI.   
-3. Volání rutiny Azure Resource Manager získat informace o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
+1. Přihlaste se k Azure AD v rámci objektu služby MSI Virtuálního počítače  
+2. Volání rutiny Azure Resource Manager získat informace o virtuálním počítači. Prostředí PowerShell se stará o správu využití tokenu pro vás automaticky.  
 
    ```azurepowershell
-   # Get an access token for the MSI
-   $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token `
-                                 -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
-   $content =$response.Content | ConvertFrom-Json
-   $access_token = $content.access_token
-   echo "The MSI access token is $access_token"
-
-   # Use the access token to sign in under the MSI service principal. -AccountID can be any string to identify the session.
-   Login-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
+   Add-AzureRmAccount -identity
 
    # Call Azure Resource Manager to get the service principal ID for the VM's MSI. 
    $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
@@ -84,14 +75,14 @@ Následující skript ukazuje, jak:
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 
-V tématu [služeb Azure, podpora Azure AD ověření](overview.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují Azure AD a byly testovány s MSI a jejich odpovídající ID prostředku.
+V tématu [služeb Azure, podpora Azure AD ověření](services-support-msi.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují Azure AD a byly testovány s MSI a jejich odpovídající ID prostředku.
 
 ## <a name="error-handling-guidance"></a>Pokyny pro zpracování chyb 
 
 Odpovědi, například následující může znamenat, že MSI Virtuálního počítače nebyla nakonfigurována správně:
 
 - Prostředí PowerShell: *Invoke-WebRequest: Nelze se připojit ke vzdálenému serveru*
-- Rozhraní příkazového řádku: *MSI: Nepodařilo se načíst token zabezpečení ze (http://localhost:50342/oauth2/token) s chybou "HTTPConnectionPool (hostitele = localhost, port = 50342)* 
+- Rozhraní příkazového řádku: *MSI: se nepovedlo získat token z 'http://localhost:50342/oauth2/token' s chybou "HTTPConnectionPool (hostitele = localhost, port = 50342)* 
 
 Pokud se zobrazí jednu z těchto chyb, vraťte se do virtuálního počítače Azure v [portál Azure](https://portal.azure.com) a:
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 447c07a5a5e75c5f70a2310c596d52ce439f6033
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f4d69145eb9c1dd941beeafc9cc8793f96a541d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -54,6 +54,12 @@ ms.lasthandoff: 04/16/2018
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Cosmos DB .NET SDK služby Azure základní má parity funkcí s nejnovější verzi [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
+
+* Přidané vlastnosti ConsistencyLevel k FeedOptions.
+* Přidání JsonSerializerSettings RequestOptions a FeedOptions.
+* Přidání EnableReadRequestsFallback k ConnectionPolicy.
 
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 

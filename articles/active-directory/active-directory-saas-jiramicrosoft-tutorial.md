@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Microsoft Azure Active Directory jednotné přihlašování pro JIRA | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Microsoft Azure Active Directory jednotné přihlašování pro JIRA."
+title: 'Kurz: Azure Active Directory integrace s Microsoft Azure Active Directory jednotné přihlašování pro JIRA | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Microsoft Azure Active Directory jednotné přihlašování pro JIRA.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: ceb36b78b72c45e9af59724d1f1c79789ef24b24
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ade72311977d1a9f40eb0750afd9d906b883d6c6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira"></a>Kurz: Azure Active Directory integrace s Microsoft Azure Active Directory jednotné přihlašování pro JIRA
 
@@ -115,7 +115,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_singlesign-onforjira_samlbase.png)
 
 3. Na **Microsoft Azure Active Directory jednotné přihlašování JIRA domény a adresy URL** část, proveďte následující kroky:
@@ -128,29 +128,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Port je volitelný, v případě, že je adresa URL s názvem. Tyto hodnoty jsou přijímány během konfigurace modulu plug-in Jira, který je vysvětlen později v tomto kurzu.
- 
-4. Ke generování **Metadata** adresu url, proveďte následující kroky:
 
-    a. Klikněte na tlačítko **registrace aplikace**.
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
     
-    ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\endpoint.png)
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-msaadssojira-tutorial/tutorial_metadataurl.png)
      
-    d. Nyní přejděte na stránku vlastností **Microsoft Azure Active Directory jednotné přihlašování pro JIRA** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>` a zkopírujte tuto hodnotu v poznámkovém bloku, jak se později používá pro konfiguraci modulu plug-in.
-
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](.\media\active-directory-saas-msaadssojira-tutorial\tutorial_general_400.png)
@@ -175,34 +159,30 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     > [!TIP]
     > Zkontrolujte, zda je namapovaný na aplikaci tak, aby se nezobrazí žádná chyba při řešení metadata jen jeden certifikát. Pokud máte víc certifikátů, při řešení metadata, získá správce k chybě.
- 
-    a. V **adresu URL metadat** vložit **adresu URL metadat** generované z Azure AD a klikněte na tlačítko **vyřešit** tlačítko. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
+
+    a. V **adresu URL metadat** textovému poli, vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure a klikněte na tlačítko **vyřešit** tlačítko. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
 
     b. Kopírování **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložte je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textových polí v uvedeném pořadí v **Microsoft Azure Active Directory jednotné přihlašování JIRA domény a adresy URL** části na portálu Azure.
 
     c. V **přihlašovací jméno tlačítko** zadejte název vaší organizace chce, aby se uživatelům zobrazit na přihlašovací obrazovku tlačítka.
 
-    d. V **SAML uživatele ID umístění** vyberte buď **ID uživatele je v elementu NameIdentifier příkaz subjektu** nebo **ID uživatele je v elementu atribut**.  Toto ID musí být JIRA id uživatele. Pokud neodpovídá id uživatele, systém nedovolí přihlášení uživatelů. 
+    d. V **SAML uživatele ID umístění** vyberte buď **ID uživatele je v elementu NameIdentifier příkaz subjektu** nebo **ID uživatele je v elementu atribut**.  Toto ID musí být JIRA id uživatele. Pokud neodpovídá id uživatele, systém nedovolí přihlášení uživatelů.
 
     > [!Note]
     > Výchozí umístění SAML ID uživatele je identifikátor jména. Můžete to změnit na možnost atribut a zadejte odpovídající název.
 
-    e. Pokud vyberete **ID uživatele je v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde je očekávána Id uživatele. 
+    e. Pokud vyberete **ID uživatele je v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde je očekávána Id uživatele.
 
     f. Pokud používáte federované domény (například služby AD FS atd.) s Azure AD, potom klikněte na **povolit zjišťování domovské sféry** řádku a nakonfigurovat **název domény**.
     
     g. V **název domény** zadejte název domény zde v případě přihlášení na základě služby AD FS.
 
-    h. Zkontrolujte **povolit jednotné přihlašování se** Pokud se chcete odhlásit z Azure AD, když se uživatel neodhlásí z JIRA. 
+    h. Zkontrolujte **povolit jednotné přihlašování se** Pokud se chcete odhlásit z Azure AD, když se uživatel neodhlásí z JIRA.
 
     i. Klikněte na tlačítko **Uložit** tlačítko pro uložení nastavení.
 
     > [!NOTE]
     > Další informace o instalaci a řešení potíží najdete v článku [MS JIRA jednotné přihlašování konektor správce průvodce](ms-confluence-jira-plugin-adminguide.md) a také [– nejčastější dotazy](ms-confluence-jira-plugin-faq.md) pro vaše pomoc
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

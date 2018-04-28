@@ -11,11 +11,11 @@ ms.workload: Active
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 37bbbf8ea5a5d8439b300d0740e4f1a048e98e91
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatické zálohování databáze SQL
 
@@ -44,13 +44,16 @@ Můžete použít tyto zálohy na:
 Geografická replikace úložiště záloh dochází na základě plánu replikace Azure Storage.
 
 ## <a name="how-long-do-you-keep-my-backups"></a>Jak dlouho necháte Moje zálohování?
-Doba uchování, která je založená na má každá záloha databáze SQL [vrstvy služeb](sql-database-service-tiers.md) databáze. Doba uchování pro databázi v:
+Každá záloha databáze SQL má určitou dobu uchování, která je založena na úroveň služby databázi a liší se mezi [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md). 
 
+
+### <a name="database-retention-for-dtu-based-purchasing-model"></a>Doba uchování databáze na základě DTU nákupní model
+Doba uchování pro databázi v na základě DTU nákupní model, závisí na vrstvu služeb. Doba uchování databáze pro:
 
 * Úroveň služby na úrovni Basic je 7 dní.
 * Úroveň služby na úrovni Standard je 35 dní.
 * Úroveň služeb Premium je 35 dnů.
-* Obecné účely vrstvy je možné konfigurovat pomocí maximální 35 dní (7 dnů ve výchozím nastavení) *
+* Pro obecné účely vrstvy je možné konfigurovat pomocí maximální 35 dní (7 dnů ve výchozím nastavení) *
 * Kritické obchodní vrstvy (preview) je možné konfigurovat pomocí maximální 35 dní (7 dnů ve výchozím nastavení) *
 
 \* Během preview doba uchovávání záloh není Konfigurovatelný a je nastaven na 7 dní.
@@ -63,7 +66,13 @@ Pokud odstraníte databázi, SQL Database udržuje zálohování stejným způso
 
 > [!IMPORTANT]
 > Pokud odstraníte serveru Azure SQL, který je hostitelem databází SQL, všechny databáze, které patří k serveru budou také odstraněny a nelze jej obnovit. Nelze obnovit odstraněné serveru.
-> 
+
+### <a name="database-retention-for-the-vcore-based-purchasing-model-preview"></a>Uchování databáze pro nákupní model (preview) na základě vCore
+
+Úložiště pro zálohování databáze je přidělen pro podporu bodem v možnostech doba obnovení (Možnosti PITR) a dlouhou dobu uchování zleva doprava databáze SQL. Toto úložiště je přidělen samostatně pro každou databázi a účtován jako dva samostatné za databáze poplatky. 
+
+- **Možnosti PITR**: jednotlivé databáze zálohy se zkopírují do úložiště RA-GRS jsou automaticky. Velikost úložiště zvyšuje dynamicky vytvářené nových záloh.  Úložiště využívané týdenními úplnými zálohami, denními rozdílovými zálohami a zálohami protokolů transakcí se kopíruje každých 5 minut. Spotřeba úložiště závisí na míru změn databáze a dobu uchování. Můžete nakonfigurovat doby uchování samostatné pro každou databázi mezi 7 až 35 dnů. Velikost minimální úložiště rovna 1 x velikost dat je k dispozici bez dalších poplatků. Pro většinu databáze je toto množství dost pro ukládání záloh 7 dní. Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **Zleva doprava**: SQL Database nabízí možnost konfigurace dlouhodobé uchovávání úplných záloh pro až 10 let. Pokud je LTR zásada povolena, tato zálohy se ukládají do úložiště RA-GRS automaticky, ale můžete řídit, jak často se zkopírují zálohy. Chcete-li splnit požadavky různých kompatibility, můžete vybrat odlišných období uchování pro týdenní, měsíční nebo roční zálohy. Tato konfigurace bude definovat, jak velké úložiště se použije pro zálohy zleva doprava. Cenová Kalkulačka zleva doprava. můžete použít k zjištění přibližné hodnoty náklady na úložiště zleva doprava. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>Jak prodloužit dobu uchovávání záloh?
 
@@ -76,7 +85,7 @@ Jakmile přidáte zásad zleva doprava k databázi pomocí portálu Azure nebo r
 Když je povolené šifrování TDE pro Azure SQL database, jsou šifrované zálohování. Ve výchozím nastavení povolené šifrování TDE nastaveny všechny nové databáze Azure SQL. Další informace o šifrování TDE najdete v tématu [transparentní šifrování dat s Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>Automatické zálohování jsou kompatibilní s GDPR?
-Pokud záloha obsahuje osobní data, která je předmětem obecné Data Protection nařízení (GDPR), je nutné použít rozšířené bezpečnostní opatření k ochraně dat před neoprávněným přístupem. Pro dosažení souladu s GDPR, potřebujete způsob, jak spravovat data žádosti vlastníků dat bez nutnosti pro přístup k zálohování.  Pro krátkodobé zálohování může být jedno řešení tak, aby zkrátil zálohování povolené okna v části 30 dní, což je čas na dokončení žádosti o přístup data.  Pokud delší období zálohy, se doporučuje jenom "pseudonymních" data ukládat v zálohování. Například pokud data o osoby je nutné odstranit nebo aktualizovat, nebude vyžadovat odstranění nebo aktualizaci existující zálohy. Můžete najít další informace o osvědčených postupech GDPR v [řízení dat pro dodržování předpisů GDPR](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html).
+Pokud záloha obsahuje osobní data, která je předmětem obecné Data Protection nařízení (GDPR), je nutné použít rozšířené bezpečnostní opatření k ochraně dat před neoprávněným přístupem. Pro dosažení souladu s GDPR, potřebujete způsob, jak spravovat data žádosti vlastníků dat bez nutnosti pro přístup k zálohování.  Pro krátkodobé zálohy, může být jedno řešení tak, aby zkrátil zálohování povolené okna v části 30 dní, což je čas na dokončení žádosti o přístup data.  Pokud delší období zálohy, se doporučuje jenom "pseudonymních" data ukládat v zálohování. Například pokud data o osoby je nutné odstranit nebo aktualizovat, nebude vyžadovat odstranění nebo aktualizaci existující zálohy. Můžete najít další informace o osvědčených postupech GDPR v [řízení dat pro dodržování předpisů GDPR](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html).
 
 ## <a name="next-steps"></a>Další postup
 

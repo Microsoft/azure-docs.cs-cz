@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač konzoly sériového portu (preview) 
 
@@ -109,7 +109,7 @@ Pokud potřebujete aktivovat Windows spouštěcí zavaděč zobrazí výzvu pro 
 
 Tato část obsahuje příklady příkazů pro provádění běžných úloh ve scénářích, kde budete muset použít speciální konzoly pro správu přístup k virtuálnímu počítači, například když potřebujete RDP řešení potíží s připojením.
 
-Speciální konzoly pro správu byl zahrnut ve všech verzích Windows od Windows Server 2003, ale ve výchozím nastavení vypnutá. Speciální konzoly pro správu závisí na `sacdrv.sys` ovladač jádra `Special Administration Console Helper` služby (`sacsvr`) a `sacsess.exe` procesu. Další informace najdete v tématu [nouzové správy služeb nástroje a nastavení](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+Speciální konzoly pro správu byl zahrnut ve všech verzích Windows od Windows Server 2003, ale ve výchozím nastavení vypnutá. Speciální konzoly pro správu závisí na `sacdrv.sys` ovladač jádra `Special Administration Console Helper` služby (`sacsvr`) a `sacsess.exe` procesu. Další informace najdete v tématu [nouzové správy služeb nástroje a nastavení](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 Speciální konzoly pro správu můžete připojit k vaší běžícím operačním systému prostřednictvím sériového portu. Při spuštění CMD z Speciální konzoly pro správu, `sacsess.exe` spustí `cmd.exe` v rámci vaší běžícím operačním systému. Uvidíte, že v úloze správce, pokud jste protokolu RDP pro virtuální počítač ve stejné času jste připojeni k Speciální konzoly pro správu pomocí funkce konzoly sériového portu. CMD přístup přes Speciální konzoly pro správu je stejný `cmd.exe` používat při připojení prostřednictvím protokolu RDP. Stejné příkazy a nástroje jsou k dispozici, včetně možnosti z této instance CMD spusťte PowerShell. Prostředí Windows Recovery Environment (WinRE) v tomto Speciální konzoly pro správu je vám umožní správu spuštěné operačním systému, kde WinRE se spustí do jiné, minimální OS, je hlavní rozdíl mezi Speciální konzoly pro správu. Když virtuální počítače Azure přístup WinRE, s funkcí konzoly sériového portu nepodporují virtuální počítače Azure lze spravovat prostřednictvím Speciální konzoly pro správu.
 
@@ -266,11 +266,11 @@ Tento příklad vrátí verzi souboru virtuální síťový adaptér ovladače, 
 #### <a name="scan-for-system-file-corruption"></a>Vyhledat poškození systému souborů
 `sfc /scannow`
 
-Viz také [oprava bitové kopie systému Windows](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Viz také [oprava bitové kopie systému Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="scan-for-system-file-corruption"></a>Vyhledat poškození systému souborů
 `dism /online /cleanup-image /scanhealth`
 
-Viz také [oprava bitové kopie systému Windows](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Viz také [oprava bitové kopie systému Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
 #### <a name="export-file-permissions-to-text-file"></a>Exportovat do textového souboru oprávnění k souboru
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 #### <a name="save-file-permissions-to-acl-file"></a>Uložit oprávnění k souboru do seznamu ACL souboru
@@ -516,7 +516,7 @@ V rámci svého virtuálního počítače Azure, chcete-li zobrazit podrobnosti,
 
 Připojení k síti v pořádku hosta, dotazování instance metadata vyžaduje, protože ji provede volání REST prostřednictvím Azure hostitele ve službě metadata instance. Proto pokud budete moci dotazu instance metadata, která sdělí, že je schopen komunikovat přes síť do služby Azure hostovaná Host.
 
-Další informace najdete v tématu [služby Azure Instance metadat](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service).
+Další informace najdete v tématu [služby Azure Instance metadat](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
 
 #### <a name="instance-metadata"></a>Instance metadat
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

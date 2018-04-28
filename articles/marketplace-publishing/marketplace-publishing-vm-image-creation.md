@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea92275b26da4ac72f76b438f632bd1c048beb10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Průvodce pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede procesem přípravy virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základ pro vaše SKU. Proces se liší v závislosti na tom, jestli tím SKU systémem Linux nebo systému Windows. Tento článek se týká obou scénářů. Tento postup lze provést paralelně s [vytváření účtů a registrace][link-acct-creation].
@@ -514,11 +514,11 @@ Po vytvoření nabídku a SKU, měli byste zadat podrobnosti bitové kopie, kter
 
 |Problém|Zpráva o selhání|Napravit|Dokumentace k propojení|
 |---|---|---|---|
-|Chyba při kopírování bitové kopie - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizace, pomocí SAS adresa Url, které se doporučuje nástroje|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování bitové kopie - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizovat adresu Url SAS s počátečním a koncovým datem na něm|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování bitové kopie - "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS|Aktualizovat adresu Url SAS s oprávněními nastavenými jako "Číst" a "seznamu|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování bitové kopie - SAS url obsahovat prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizujte adresu Url SAS, bez mezer|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Chyba při kopírování bitové kopie – Chyba autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob kvůli chybě autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování bitové kopie - "?" nebyl nalezen v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizace, pomocí SAS adresa Url, které se doporučuje nástroje|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování bitové kopie - parametry "st" a "se" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizovat adresu Url SAS s počátečním a koncovým datem na něm|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování bitové kopie - "sp = rl" není v adrese url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS|Aktualizovat adresu Url SAS s oprávněními nastavenými jako "Číst" a "seznamu|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování bitové kopie - SAS url obsahovat prázdné znaky v názvu virtuálního pevného disku|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob pomocí zadaný identifikátor Uri pro SAS.|Aktualizujte adresu Url SAS, bez mezer|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Chyba při kopírování bitové kopie – Chyba autorizace adres Url SAS|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout blob kvůli chybě autorizace|Znovu vygenerovat adresu SAS Url|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Chyba při kopírování bitové kopie – adresa Url SAS "st" a "se" parametry nemají specifikace úplné data a času|Chyba: Kopírování bitové kopie. Nepodařilo se stáhnout objektů blob z důvodu nesprávné SAS adresa Url |Parametry Start SAS adresa Url a koncové datum ("st", "se") musí mít specifikace úplné datum a čas, jako je například 11-02-2017T00:00:00Z a ne jen data nebo zkrácení verze po dobu. Je možné setkat tento scénář pomocí Azure CLI 2.0 (az příkaz). Nezapomeňte zadat specifikace úplné datum a čas a znovu je obnovovat SAS adresa Url.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Další krok

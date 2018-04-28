@@ -1,11 +1,11 @@
 ---
-title: "Upgradovat samostatné clusteru Azure Service Fabric na Windows serveru | Microsoft Docs"
-description: "Upgrade Azure Service Fabric kód nebo konfigurace, který spouští samostatný cluster Service Fabric, včetně nastavení režimu aktualizace clusteru."
+title: Upgradovat samostatné clusteru Azure Service Fabric na Windows serveru | Microsoft Docs
+description: Upgrade Azure Service Fabric kód nebo konfigurace, který spouští samostatný cluster Service Fabric, včetně nastavení režimu aktualizace clusteru.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: c95c1827d0433dcb61eace34e7a905a5610c7781
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3354fab5f664391520e721586712e5035ff79cb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Upgradovat samostatné Azure Service Fabric clusteru v systému Windows Server 
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ Upravte konfiguraci clusteru a nastavte následující vlastnost na *false* pře
 
         "fabricClusterAutoupgradeEnabled": false,
 
-Podrobnosti využití najdete v tématu [příkaz Start-ServiceFabricClusterConfigurationUpgrade Powershellu](https://msdn.microsoft.com/en-us/library/mt788302.aspx). Ujistěte se, že jste před zahájením upgradu configuration aktualizujte 'clusterConfigurationVersion' ve vašem formátu JSON.
+Podrobnosti využití najdete v tématu [příkaz Start-ServiceFabricClusterConfigurationUpgrade Powershellu](https://msdn.microsoft.com/library/mt788302.aspx). Ujistěte se, že jste před zahájením upgradu configuration aktualizujte 'clusterConfigurationVersion' ve vašem formátu JSON.
 
 ```powershell
 
@@ -226,7 +226,7 @@ Technicky jsou podporovány čtyř možností:
 * Upgrade kryptografický otisk vystavitelů certifikátů: CN certifikátu je cesta k upgradu = A, IssuerThumbprint = IT1 (primární) -> certifikátů CN = A, IssuerThumbprint = IT1 IT2 (primární) -> CN certifikátu = A, IssuerThumbprint = IT2 (primární).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak přizpůsobit některé [nastavení clusteru Service Fabric](service-fabric-cluster-fabric-settings.md).
 * Zjistěte, jak [škálování vašeho clusteru a odhlašování](service-fabric-cluster-scale-up-down.md).
 * Další informace o [upgradů aplikací](service-fabric-application-upgrade.md).

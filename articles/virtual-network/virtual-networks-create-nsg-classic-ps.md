@@ -3,7 +3,7 @@ title: Vytvořte skupinu zabezpečení sítě (klasické) pomocí prostředí Po
 description: Zjistěte, jak vytvořit a nasadit skupinu zabezpečení sítě (klasické) pomocí prostředí PowerShell
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 40dcb05f17ed9a044e09c03f421e592826de33d8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ecb977660ed99a3cea2a71a867f50822b23e568c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>Vytvořit skupinu zabezpečení sítě (klasické) pomocí prostředí PowerShell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

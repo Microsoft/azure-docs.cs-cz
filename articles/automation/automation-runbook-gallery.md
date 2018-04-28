@@ -1,6 +1,6 @@
 ---
-title: "Galerie Runbooků a modulů pro Azure Automation."
-description: "Runbooky a moduly od společnosti Microsoft a komunitou jsou k dispozici pro instalaci a použití ve vašem prostředí Azure Automation.  Tento článek popisuje, jak přistupovat k těmto prostředkům a přispívání do Galerie runbooků."
+title: Galerie Runbooků a modulů pro Azure Automation.
+description: Runbooky a moduly od společnosti Microsoft a komunitou jsou k dispozici pro instalaci a použití ve vašem prostředí Azure Automation.  Tento článek popisuje, jak přistupovat k těmto prostředkům a přispívání do Galerie runbooků.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6a9298c0b7331bfa8af76eb904d256f6302816bf
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fe0e38e384f9f3d40bc6f7556cdb5e6dee9b4395
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie Runbooků a modulů pro Azure Automation.
 Místo vytvoření vlastní sady runbook a modulů ve službě Azure Automation, můžete zpřístupnit různé scénáře, které jste již vytvořili společností Microsoft a komunitou.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete používat jako výchozí bod a je upravit pro vaše konkrétní požadavky.
@@ -25,7 +25,7 @@ Můžete získat runbooků [Galerie Runbooků](#runbooks-in-runbook-gallery) a m
 Lze importovat pouze přímo z Galerie sady Runbook pomocí portálu Azure. Nelze provést tuto funkci pomocí prostředí Windows PowerShell.
 
 > [!NOTE]
-> Je třeba ověřit obsah jakékoli sady runbook můžete získat z Galerie Runbooků a buďte velmi opatrní při instalaci a spustil je v produkčním prostředí. |
+> Je třeba ověřit obsah jakékoli sady runbook můžete získat z Galerie Runbooků a buďte velmi opatrní při instalaci a spustil je v produkčním prostředí.
 > 
 > 
 

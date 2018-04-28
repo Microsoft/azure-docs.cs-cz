@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5e4df176104111f44ca95df2b2d5d1c81ed3a4e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 
@@ -72,7 +72,7 @@ Odpověď: Ano, pokud jste [pomocí vlastních šifrovacích klíčů](storage-s
 
 **Otázka: je ve výchozím nastavení povolené šifrování služby úložiště po vytvoření účtu úložiště?**
 
-Odpověď: Ano, je ve výchozím nastavení pro všechny účty úložiště – Azure Resource Manager a klasický povolené šifrování služby úložiště (pomocí klíče spravovaný společností Microsoft). Co povolena pro všechny služby také – úložiště objektů Blob, úložiště Table, Queue storage a Azure Files.
+Odpověď: Ano, je povolené šifrování služby úložiště ve výchozím nastavení pro všechny účty úložiště a pro všechny služby Azure Storage.
 
 **Otázka: jak se to liší od Azure Disk Encryption?**
 

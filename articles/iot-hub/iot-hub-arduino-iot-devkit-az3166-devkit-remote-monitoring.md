@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b288595ca06c3a3cccb72082658f1927f2ae558a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Připojení MXChip IoT DevKit Azure IoT Suite pro vzdálené monitorování
 
@@ -35,7 +35,7 @@ Dokončit [Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot
 
 Aktivní předplatné Azure. Pokud jeden nemáte, můžete zaregistrovat pomocí jedné z těchto dvou metod:
 
-* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/en-us/free/)
+* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30 dnů](https://azure.microsoft.com/free/)
 * Deklarace identity vaší [kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) jste předplatitelem MSDN nebo v sadě Visual Studio
 
 ## <a name="create-an-azure-iot-suite"></a>Vytvoření Azure IoT Suite
@@ -116,7 +116,7 @@ ID zařízení IoT hub můžete změnit pomocí následujících [Tato příruč
 
 Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se obraťte na nás z následující kanály:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup
@@ -124,4 +124,4 @@ Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https:
 Teď, když jste se naučili postup DevKit zařízení připojit k vaší Azure IoT Suite a vizualizovat data snímačů, tady jsou navrhované další kroky:
 
 * [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

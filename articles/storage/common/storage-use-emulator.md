@@ -1,8 +1,8 @@
 ---
-title: "Použití emulátoru úložiště Azure pro vývoj a testování | Microsoft Docs"
-description: "Emulátor úložiště Azure poskytuje volné místní vývojové prostředí pro vývoj a testování aplikací s Azure Storage. Zjistěte, jak jsou žádosti o ověření, jak se připojit k emulátoru z vaší aplikace a jak pomocí nástroje příkazového řádku."
+title: Použití emulátoru úložiště Azure pro vývoj a testování | Microsoft Docs
+description: Emulátor úložiště Azure poskytuje volné místní vývojové prostředí pro vývoj a testování aplikací s Azure Storage. Zjistěte, jak jsou žádosti o ověření, jak se připojit k emulátoru z vaší aplikace a jak pomocí nástroje příkazového řádku.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -27,7 +27,7 @@ Emulátor úložiště Microsoft Azure poskytuje místní prostředí, které em
 ## <a name="get-the-storage-emulator"></a>Získat emulátor úložiště
 Emulátor úložiště je k dispozici jako součást [Microsoft Azure SDK](https://azure.microsoft.com/downloads/). Emulátor úložiště můžete nainstalovat také pomocí [samostatný instalační program systému](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (přímé ke stažení). Pokud chcete nainstalovat emulátor úložiště, musí mít oprávnění správce v počítači.
 
-Emulátor úložiště aktuálně běží jenom v systému Windows. Pro ty zvažování emulátor úložiště pro Linux, jednou z možností je komunity udržovat, emulátor úložiště s otevřeným zdrojem [Azurite](https://github.com/arafato/azurite).
+Emulátor úložiště aktuálně běží jenom v systému Windows. Pro ty zvažování emulátor úložiště pro Linux, jednou z možností je komunity udržovat, emulátor úložiště s otevřeným zdrojem [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Data vytvořená v jedné verzi emulátoru úložiště nemusí být dostupný, pokud používáte jinou verzi. Pokud potřebujete zachovat data pro z dlouhodobého hlediska, doporučujeme uložit data v účtu úložiště Azure, a nikoli v emulátoru úložiště.

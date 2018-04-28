@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 03/28/2018
+ms.date: 04/12/2018
 ms.topic: tutorial
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4d98ce103bed7f9d14eb45422b70ceca1328afaa
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f151a8fbcdc20124467a1db290f6a05f574e4fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Zřízení zařízení pro centrum IoT pomocí služby Azure IoT Hub Device Provisioning
 
-V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím **_seznamů registrací_**. V tomto kurzu získáte informace o následujících postupech:
+V předchozím kurzu jste se naučili nastavit zařízení pro připojení ke službě Device Provisioning. V tomto kurzu zjistíte, jak pomocí této služby zřídit zařízení pro jedno centrum IoT s využitím automatického zřizování a **_seznamů registrací_**. V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
 > * Registrace zařízení
@@ -42,18 +42,18 @@ Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízen�
     - *Ověřovací klíč*, který je jedinečný pro každou simulaci nebo čip TPM a který získáte od výrobce čipu TPM.  Další informace najdete v tématu [Vysvětlení ověřovacího klíče TPM](https://technet.microsoft.com/library/cc770443.aspx).
     - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. U zařízení založených na TPM můžete ID registrace získat přímo z TMP, například jako hodnotu hash SHA-256 ověřovacího klíče TPM.
 
-    ![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)
+    [![Informace o registraci TPM na portálu](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - Pro zařízení založená na X.509 potřebujete:
     - [Certifikát vydaný pro simulaci nebo čip X.509](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *certifikát podpisovatele* daného zařízení pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát*. 
 
-    ![Informace o registraci X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-device-enrollment.png)
+    [![Přidání jednotlivé registrace pro ověření X.509 na portálu](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsoby:
 
 - **Skupiny registrací** představují skupinu zařízení, která sdílí konkrétní mechanismus ověřování. Skupinu registrací doporučujeme použít pro velké množství zařízení, která sdílí požadovanou počáteční konfiguraci, nebo pro zařízení, která budou patřit do stejného tenanta.
 
-    ![Skupiny registrací pro X.509 na portálu](./media/tutorial-provision-device-to-hub/x509-enrollment-groups.png)
+    [![Přidání skupinové registrace pro ověření X.509 na portálu](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
 - **Jednotlivé registrace** představují záznamy jednotlivých zařízení, která se můžou zaregistrovat do služby Device Provisioning. Jednotlivé registrace můžou jako mechanismus ověřování využívat certifikáty X.509 nebo tokeny SAS (na skutečném nebo virtuálním zařízení TPM). Jednotlivé registrace doporučujeme použít pro zařízení, která vyžadují jedinečnou počáteční konfiguraci, a zařízení, která jako mechanismus ověřování můžou využívat pouze tokeny SAS prostřednictvím skutečného nebo virtuálního zařízení TPM. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.
 

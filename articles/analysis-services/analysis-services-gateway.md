@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d327f016237890b506f45c4c494bd08ad2f71bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abd2d2c8e220a946d08774f8e55ea968008c1757
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místní zdroje dat s Azure místní brány dat
 Místní data brána funguje jako mostu, zajištění zabezpečených dat přenos mezi místní zdroje dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery Azure Analysis Services ve stejné oblasti, nejnovější verzi brány taky spolupracuje se službou Azure Logic Apps, Power BI, Power aplikace a Flow společnosti Microsoft. S jednou bránou můžete přidružit více služeb ve stejné oblasti. 
@@ -82,6 +82,11 @@ Můžete vynutit bránu a komunikovat s Azure Service Bus pomocí protokolu HTTP
     <value>Https</value>
 </setting>
 ```
+
+## <a name="tenant-level-administration"></a>Úroveň správy klienta 
+
+Aktuálně neexistuje žádné jediné místo, kde správci klientů můžou spravovat všechny brány, které jiní uživatelé nainstalován a nakonfigurován.  Pokud jste správce klienta, doporučuje že se požádat uživatele ve vaší organizaci můžete přidat jako správce pro všechny brány, který se má nainstalovat. To vám umožňuje spravovat všechny brány ve vaší organizaci prostřednictvím stránky nastavení brány, nebo přes [příkazy prostředí PowerShell](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters). 
+
 
 ## <a name="faq"></a>Nejčastější dotazy
 

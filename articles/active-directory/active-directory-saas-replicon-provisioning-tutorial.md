@@ -1,8 +1,8 @@
 ---
-title: "Kurz: Konfigurace Replicon pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do Replicon."
+title: 'Kurz: Konfigurace Replicon pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřízení uživatelských účtů do Replicon.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: 8d612012505ea43a3635650c6a38fe993b8e57f6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c7ec58b0da3a918729733809d326e6f2e5916c9d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Replicon pro zřizování automatické uživatelů
 
@@ -109,13 +109,13 @@ Tato část vás provede kroky pro konfiguraci Azure AD zřizování služby vyt
 
     *   V **heslo správce** pole, naplnit heslo odpovídající uživatelské jméno správce.
 
-    *   V **CompanyId** pole, naplnit ID společnosti klienta služby Replicon. Příklad: CompanyID založeného na pod přihlášení, je Contoso.
+    *   V **CompanyId** pole, naplnit ID společnosti klienta služby Replicon. Příklad: CompanyID podle přihlášení pod je Contoso.
 
     ![Replicon přihlášení](./media/active-directory-saas-replicon-provisioning-tutorial/RepliconLogin.png)
 
     *   V **domény** pole, naplnit doméně, jak je popsáno v kroku 6.
     
-6. Získat **serviceEndpointRootURL** pro vaše Replicon klienta podle kroků uvedených v, účet [pomůže Service Replicon](https://www.replicon.com/help/determining-the-url-for-your-service-calls). Při získávání adresu URL, **domény** subdoménou **serviceEndpointRootURL** jako zvýrazněné. 
+6. Získat **serviceEndpointRootURL** pro vaše Replicon klienta účet podle kroků v [pomůže Service Replicon](https://www.replicon.com/help/determining-the-url-for-your-service-calls). Při získávání adresu URL, **domény** subdoménou **serviceEndpointRootURL** jako zvýrazněné. 
 
     ![Zřizování replicon](./media/active-directory-saas-replicon-provisioning-tutorial/RepliconEndpoint.png)
 

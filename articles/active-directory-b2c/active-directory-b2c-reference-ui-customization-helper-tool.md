@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Pomocná nástroj používaný k předvedení stránce uživatelské rozhraní (UI) přizpůsobení funkce
 Tento článek je Pomocníka pro [hlavní článek přizpůsobení uživatelského rozhraní](active-directory-b2c-reference-ui-customization.md) v Azure Active Directory (Azure AD) B2C. Následující kroky popisují postup vykonávat funkci přizpůsobení uživatelského rozhraní stránky pomocí ukázkový kód HTML a CSS obsah, který nabízíme.
@@ -29,7 +29,7 @@ Ukázkový obsah nabízíme slouží k customze dvě stránky v [zásady registr
 ## <a name="register-an-application"></a>Registrace aplikace
 Budete muset [zaregistrovat aplikaci](active-directory-b2c-app-registration.md) v svého klienta B2C, který můžete použít ke spuštění vaše zásady. Po registraci vaší aplikace, máte několik možností, které můžete použít ke spuštění ve skutečnosti svojí registrační zásadě:
 
-* Jeden z Azure AD B2C úvodní aplikace uvedené v části "Začínáme" sestavení [přihlásit registrace a přihlašování uživatelů aplikace](active-directory-b2c-overview.md#get-started).
+* Jeden z Azure AD B2C úvodní aplikace uvedené v části "Začínáme" sestavení [přihlásit registrace a přihlašování uživatelů aplikace](active-directory-b2c-overview.md).
 * Použijte předem připravený [Azure AD B2C Playground](https://aadb2cplayground.azurewebsites.net) aplikace. Pokud chcete použít playground, je nutné zaregistrovat aplikaci v svého klienta B2C pomocí **identifikátor URI pro přesměrování** `https://aadb2cplayground.azurewebsites.net/`.
 * Použití **spustit nyní** na vaše zásady v tlačítko [portál Azure](https://portal.azure.com/).
 
@@ -39,7 +39,7 @@ Chcete-li přizpůsobit vzhled a chování zásad, musíte nejprve vytvořit sou
 Pro účely tohoto kurzu byl již vytvořen některé ukázkový obsah a hostované v Azure Blob Storage. Ukázkový obsah je velmi základní přizpůsobení v motivu fiktivní společnosti "Adresář Wingtip Toys". Můžete vyzkoušet na ve vlastních zásad, postupujte takto:
 
 1. Přihlaste se ke klientovi [portál Azure](https://portal.azure.com/) a přejděte do okna s funkcemi B2C.
-2. Klikněte na tlačítko **zásady registrace nebo přihlášení** a pak klikněte na zásady (například "b2c\_1\_přihlašovací\_až\_přihlašovací\_v").
+2. Klikněte na tlačítko **zásady registrace nebo přihlášení**vaše zásady a klikněte na Upravit (například "b2c\_1\_přihlašovací\_až\_přihlašovací\_v").
 3. Klikněte na tlačítko **přizpůsobení uživatelského rozhraní stránky** a potom **stránku registrace nebo přihlášení Unified**.
 4. Přepnutí **použití vlastní stránku** přepnout **Ano**. V **vlastní stránku URI** zadejte `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/unified.html`. Klikněte na **OK**.
 5. Klikněte na tlačítko **stránku pro přihlášení místní účet**. Přepnutí **použít vlastní šablonu** přepnout **Ano**. V **vlastní stránku URI** zadejte `https://wingtiptoysb2c.blob.core.windows.net/b2c/wingtip/selfasserted.html`.

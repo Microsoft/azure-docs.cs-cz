@@ -17,17 +17,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 18f580f1eae31c9bf3626e100217467bb48ca881
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage (Preview)
+# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
 
 Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V současné době podporuje Průzkumník služby Azure Storage účty SQL, MongoDB, Graph a Table.
-
-V tomto článku se dozvíte, jak použít Průzkumníka služby Storage ke správě služby Azure Cosmos DB.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -75,8 +73,11 @@ Alternativním způsobem, jak se připojit ke službě Azure Cosmos DB, je použ
     ![Připojovací řetězec](./media/storage-explorer/connection-string.png)
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Připojení ke službě Azure Cosmos DB pomocí místního emulátoru
+
 Pomocí následujících kroků se připojte ke službě Azure Cosmos DB pomocí emulátoru, který aktuálně podporuje pouze účet SQL.
+
 1. Nainstalujte emulátor a spusťte ho. Pokyny k instalaci emulátoru najdete v tématu [Emulátor služby Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator).
+
 2. V levém stromě vyhledejte **Místní a připojené**, klikněte pravým tlačítkem na **Účty služby Cosmos DB** a zvolte **Připojit k emulátoru služby Cosmos DB...**
 
     ![Připojení ke službě Cosmos DB pomocí emulátoru](./media/storage-explorer/emulator-entry.png)
@@ -84,7 +85,6 @@ Pomocí následujících kroků se připojte ke službě Azure Cosmos DB pomocí
 3. Aktuálně se podporuje pouze rozhraní SQL API. Vložte **Připojovací řetězec**, zadejte **Popisek účtu**, klikněte na **Další** a zkontrolujte souhrn a pak se kliknutím na **Připojit** připojte k účtu služby Azure Cosmos DB. Informace o načtení připojovacího řetězce najdete v tématu popisujícím [Získání připojovacího řetězce](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![Dialogové okno Připojení ke službě Cosmos DB pomocí emulátoru](./media/storage-explorer/emulator-dialog.png)
-
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Správa prostředků Azure Cosmos DB
@@ -208,8 +208,111 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
     ![Uložená procedura](./media/storage-explorer/stored-procedure.png)
 * Operace týkající se **triggerů** a **funkcí definovaných uživatelem** jsou podobné **uloženým procedurám**.
 
+## <a name="troubleshooting"></a>Řešení potíží
+
+[Azure Cosmos DB v Průzkumníku služby Storage](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) je samostatná aplikace umožňující připojení k účtům služby Azure Cosmos DB hostovaným v Azure a suverénních cloudech z Windows, macOS nebo Linuxu. Umožňuje správu entit Azure Cosmos DB, manipulaci s daty, aktualizace uložených procedur a triggerů, stejně jako dalších entit Azure, jako jsou objekty blob a fronty služby Storage.
+
+Toto jsou řešení běžných problémů, ke kterým dochází ve službě Azure Cosmos DB v Průzkumníku služby Storage.
+
+### <a name="sign-in-issues"></a>Problémy s přihlášením
+
+Než budete pokračovat, zkuste svou aplikaci restartovat a podívejte se, jestli se tím problém nevyřeší.
+
+#### <a name="self-signed-certificate-in-certificate-chain"></a>Certifikát podepsaný svým držitelem v řetězu certifikátů
+
+Tato chyba se může zobrazit z několika důvodů, z nichž dva nejčastější jsou tyto:
+
++ Nacházíte se za transparentním proxy serverem, což znamená, že někdo (například vaše IT oddělení) zachycuje přenosy HTTP, dešifruje je a pak je šifruje pomocí certifikátu podepsaného svým držitelem.
+
++ Používáte software, jako je například antivirový software, který do přijímaných zpráv protokolu HTTPS vkládá certifikát SSL podepsaný svým držitelem.
+
+Pokud Průzkumník služby Storage narazí na některý z těchto certifikátů podepsaných svým držitelem, už nemůže mít jistotu, že se s přijímanými zprávami protokolu HTTPS nemanipulovalo. Pokud však máte kopii příslušného certifikátu podepsaného svým držitelem, můžete Průzkumníku služby Storage sdělit, aby mu důvěřoval. Pokud si nejste jisti, kdo certifikát vkládá, můžete to sami zkusit zjistit provedením následujících kroků:
+
+1. Nainstalujte OpenSSL.
+     - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (stačí jakákoli z odlehčených verzí)
+     - Mac a Linux: Mělo by být součástí operačního systému.
+2. Spusťte OpenSSL.
+    - Windows: Přejděte do adresáře instalace, pak do složky **/bin/** a dvakrát klikněte na soubor **openssl.exe**.
+    - Mac a Linux: V terminálu spusťte příkaz **openssl**.
+3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
+4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jisti, které certifikáty jsou podepsané svým držitelem, hledejte certifikáty, jejichž předmět (s:) je stejný jako vystavitel (i:).
+5.  Jakmile najdete nějaké certifikáty podepsané svým držitelem, zkopírujte u jednotlivých certifikátů veškerý text začínající na **-----BEGIN CERTIFICATE-----** a končící na **-----END CERTIFICATE-----** (včetně) a zkopírujte ho do nového souboru .cer.
+6.  Otevřete Průzkumníka služby Storage a přejděte do části **Úpravy** > **Certifikáty SSL** > **Importovat certifikáty**. Pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory .cer, které jste vytvořili.
+
+Pokud se vám podle výše uvedeného postupu nepodaří najít žádné certifikáty podepsané svým držitelem, můžete získat další nápovědu odesláním zpětné vazby.
+
+#### <a name="unable-to-retrieve-subscriptions"></a>Nelze načíst předplatná
+
+Pokud se vám po úspěšném přihlášení nedaří načíst vaše předplatná:
+
+- Přihlaste se k webu [Azure Portal](http://portal.azure.com/) a ověřte, že má váš účet přístup k předplatným.
+- Ujistěte se, že jste se přihlásili s použitím správného prostředí ([Azure](http://portal.azure.com/), [Azure (Čína)](https://portal.azure.cn/), [Azure (Německo)](https://portal.microsoftazure.de/), [Azure pro vládu USA](http://portal.azure.us/) nebo vlastní prostředí nebo Azure Stack).
+- Pokud se nacházíte za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
+- Zkuste účet odebrat a znovu přidat.
+- Zkuste z domovského adresáře (např. C:\Users\ContosoUser) odstranit následující soubory a pak znovu přidat účet:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Při přihlašování sledujte případné chybové zprávy v konzole vývojářských nástrojů (F12).
+
+![konzola](./media/storage-explorer/console.png)
+
+#### <a name="unable-to-see-the-authentication-page"></a>Ověřovací stránka se nezobrazuje 
+
+Pokud se vám nezobrazuje ověřovací stránka:
+
+- V závislosti na rychlosti vašeho připojení může načtení přihlašovací stránky nějakou dobu trvat. Počkejte alespoň minutu, než dialogové okno ověřování zavřete.
+- Pokud se nacházíte za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
+- Stisknutím klávesy F12 otevřete konzolu pro vývojáře. V konzole pro vývojáře sledujte odpovědi a podívejte se, jestli nenajdete nějaké vodítko k tomu, proč ověřování nefunguje.
+
+#### <a name="cannot-remove-account"></a>Účet se nedá odebrat
+
+Pokud nemůžete odebrat účet nebo pokud odkaz na opětovné ověření nic nedělá:
+
+- Zkuste z domovského adresáře odstranit následující soubory a pak znovu přidat účet:
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- Pokud chcete odebrat prostředky služby Storage připojené sdíleným přístupovým podpisem, odstraňte:
+  - Složku %AppData%/StorageExplorer ve Windows.
+  - Složku /Users/<vaše_jméno>/Library/Applicaiton Support/StorageExplorer v systému Mac.
+  - Složku ~/.config/StorageExplorer v Linuxu.
+  - Pokud tyto soubory odstraníte, **budete muset zadat všechny své přihlašovací údaje znovu**.
+
+
+### <a name="httphttps-proxy-issue"></a>Problém s proxy HTTP/HTTPS
+
+Při konfiguraci proxy HTTP/HTTPS v Průzkumníku služby Azure Storage nemůžete v levém stromu vypsat uzly služby Azure Cosmos DB. Jedná se o známý problém, který bude opravený v další vydané verzi. Prozatím můžete jako alternativní řešení použít Průzkumníka dat služby Azure Cosmos DB na webu Azure Portal. 
+
+### <a name="development-node-under-local-and-attached-node-issue"></a>Problém s uzlem Vývoj v uzlu Místní a připojené
+
+Po kliknutí na uzel Vývoj v uzlu Místní a připojené v levém stromu nedojde k žádné reakci.  Jedná se o očekávané chování. Místní emulátor služby Azure Cosmos DB bude podporovaný v další vydané verzi.
+
+![Uzel Vývoj](./media/storage-explorer/development.png)
+
+### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Chyba připojení účtu služby Azure Cosmos DB v uzlu Místní a připojené
+
+Pokud se po připojení účtu služby Azure Cosmos DB v uzlu Místní a připojené zobrazí následující chyba, zkontrolujte, jestli používáte správný připojovací řetězec.
+
+![Chyba připojení účtu služby Azure Cosmos DB v uzlu Místní a připojené](./media/storage-explorer/attached-error.png)
+
+### <a name="expand-azure-cosmos-db-node-error"></a>Chyba rozbalení uzlu služby Azure Cosmos DB
+
+Při pokusu o rozbalení uzlů v levém stromu se může zobrazit následující chyba. 
+
+![Chyba rozbalení](./media/storage-explorer/expand-error.png)
+
+Vyzkoušejte následující návrhy:
+
+- Zkontrolujte, jestli neprobíhá zřizování účtu služby Azure Cosmos DB, a zkuste to znovu po úspěšném vytvoření účtu.
+- Pokud je účet v uzlu Rychlý přístup nebo Místní a připojené, zkontrolujte, jestli se účet neodstranil. Pokud ano, musíte uzel odebrat ručně.
+
+## <a name="contact-us"></a>Kontaktujte nás
+
+Pokud vám žádné z předchozích řešení nepomohlo, požádejte o pomoc s řešením problému odesláním e-mailu s podrobnostmi o problému týmu vývojářských nástrojů pro službu Azure Cosmos DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)).
+
 ## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na následující video a zjistěte, jak používat službu Azure Cosmos DB v Průzkumníku služby Azure Storage: [Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage (Preview)](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 

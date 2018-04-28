@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s LearnUpon | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LearnUpon."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LearnUpon.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 40e6df0db7651488642e774512f55fbd6805809a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2796f280b2f95504be5f9691098bff07fdd93393
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Kurz: Azure Active Directory integrace s LearnUpon
 
@@ -110,14 +110,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_url.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.learnupon.com/saml/consumer`
+    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE] 
     > Upozorňujeme, že se nejedná skutečné hodnoty. budete muset aktualizovat tuto hodnotu s skutečná adresa URL odpovědi. Chcete-li získat tuto hodnotu, obraťte se na [tým podpory LearnUpon](https://www.learnupon.com/features/support/).
 
 
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Raw)** a potom uložte soubor certifikátu v počítači.
+4. Na **SAML podpisový certifikát** část, vyhledejte **kryptografický otisk** – to bude přidán do nastavení LearnUpon SAML.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-learnupon-tutorial/tutorial_learnupon_certificate.png) 
 
@@ -165,7 +165,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     a. V **křestní jméno identifikátor formátu** textovému poli, zadejte hodnotu, která sděluje nám v vaší kontrolního výrazu SAML firstname uživatelé nachází – například: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
   
-    b. V **poslední formát názvu identifikátor** textovému poli, zadejte hodnotu, která sděluje nám v vaší kontrolního výrazu SAML lastname uživatelé nachází – například: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    b. V **poslední formát názvu identifikátor** textovému poli, zadejte hodnotu, která sděluje nám v vaší kontrolního výrazu SAML lastname uživatelé nachází – například: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -248,7 +248,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici LearnUpon na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci LearnUpon.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

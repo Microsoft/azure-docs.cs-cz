@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
-ms.openlocfilehash: b6e68b4c93e6385367b5aab01bebe1d29b7b9d13
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01dd31c1dfd9a91483c0ac9eaca1c80410463731
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí prostředí PowerShell
 
@@ -41,7 +41,7 @@ Prostředí Azure PowerShell poskytuje *rutiny* které umožňují vzdáleně sp
 
 Při spouštění úloh MapReduce v vzdáleného clusteru HDInsight, se používají následující rutiny.
 
-* **Login-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
+* **Připojit-AzureRmAccount**: ověřuje prostředí Azure PowerShell k předplatnému Azure.
 
 * **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří novou *úlohy definice* pomocí zadané informace o MapReduce.
 

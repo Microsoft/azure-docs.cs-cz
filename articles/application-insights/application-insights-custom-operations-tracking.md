@@ -1,6 +1,6 @@
 ---
-title: "Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights | Microsoft Docs"
-description: "Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights"
+title: Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights | Microsoft Docs
+description: Sledování vlastní operace pomocí .NET SDK služby Azure Application Insights
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastní operace s Application Insights .NET SDK
 
@@ -413,7 +413,7 @@ async Task BackgroundTask()
 }
 ```
 
-V tomto příkladu `telemetryClient.StartOperation` vytvoří `RequestTelemetry` a výplní kontext korelace. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánované operace. Tak dlouho, dokud `BackgroundTask` spustí ve stejném asynchronní řízení toku jako příchozí žádosti, je vztažen v této operaci nadřazené. `BackgroundTask`a všechny vnořené telemetrie položky se automaticky korelační s požadavkem, který způsobuje její neočekávané, i po ukončení požadavku.
+V tomto příkladu `telemetryClient.StartOperation` vytvoří `RequestTelemetry` a výplní kontext korelace. Řekněme, že máte nadřazené operace, který byl vytvořen příchozích požadavků, které naplánované operace. Tak dlouho, dokud `BackgroundTask` spustí ve stejném asynchronní řízení toku jako příchozí žádosti, je vztažen v této operaci nadřazené. `BackgroundTask` a všechny vnořené telemetrie položky se automaticky korelační s požadavkem, který způsobuje její neočekávané, i po ukončení požadavku.
 
 Při spuštění úlohy ze vlákně na pozadí, který nemá všechny operace (`Activity`) přidružený `BackgroundTask` nemá některé z nadřazených. Ale ho můžete vnořené operace. Všechny položky telemetrie nahlásila úlohy jsou korelována `RequestTelemetry` vytvořené v `BackgroundTask`.
 
@@ -450,11 +450,11 @@ public async Task RunMyTaskAsync()
 
 Uvolnění operace způsobí, že na zastavit, operace, můžete to provést místo volání `StopOperation`.
 
-*Upozornění*: v některých případech může unhanded výjimka [zabránit](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally) `finally` má být volána, nemusí být sledován operace.
+*Upozornění*: v některých případech může unhanded výjimka [zabránit](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` má být volána, nemusí být sledován operace.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Paralelní zpracování operací a sledování
 
-`StopOperation`zastaví pouze operace, která byla spuštěna. Pokud aktuální běžící operace neodpovídá ten, který chcete zastavit, `StopOperation` se nic nestane. Tato situace může dojít, pokud spustíte více operací paralelně ve stejném kontextu spuštění:
+`StopOperation` zastaví pouze operace, která byla spuštěna. Pokud aktuální běžící operace neodpovídá ten, který chcete zastavit, `StopOperation` se nic nestane. Tato situace může dojít, pokud spustíte více operací paralelně ve stejném kontextu spuštění:
 
 ```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");

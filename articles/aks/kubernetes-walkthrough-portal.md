@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Container Service (AKS)
 
@@ -83,6 +83,11 @@ Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
 
+Zadejte předplatné (pokud jste tak dosud neučinili).
+```azurecli-interactive
+az account set -s SUBSCRIPTION_NAME
+```
+
 Spusťte příkaz [az aks get-credentials][az-aks-get-credentials], abyste mohli nakonfigurovat klienta kubectl pro připojení k vašemu clusteru Kubernetes.
 
 Zkopírujte následující příkaz a vložte ho do služby Cloud Shell. V případě potřeby změňte název skupiny prostředků a clusteru.
@@ -110,7 +115,7 @@ aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
 
 Soubor manifestu Kubernetes definuje požadovaný stav clusteru, včetně toho, které image kontejnerů mají být spuštěné. V tomto příkladu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote.
 
-Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující kód YAML. Pokud pracujete ve službě Azure Cloud Shell, můžete tento soubor vytvořit pomocí editoru vi nebo Nano, stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému.
+Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující kód YAML. Pokud pracujete ve službě Azure Cloud Shell, vytvořte tento soubor pomocí editoru vi nebo Nano, stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -211,13 +216,13 @@ Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Teď můžete přejít na externí IP adresu a zobrazit aplikaci Azure Vote.
+Teď přejděte na externí IP adresu a zobrazte aplikaci Azure Vote.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
 
-Když už cluster nepotřebujete, můžete odstranit skupinu prostředků clusteru, čímž odstraníte všechny související prostředky. To můžete provést na portálu Azure výběrem skupiny prostředků a kliknutím na tlačítko Odstranit. Případně můžete použít příkaz [az group delete][az-group-delete] ve službě Cloud Shell.
+Když už cluster nepotřebujete, odstraňte skupinu prostředků clusteru, čímž odstraníte všechny související prostředky. To můžete provést na portálu Azure výběrem skupiny prostředků a kliknutím na tlačítko Odstranit. Případně můžete použít příkaz [az group delete][az-group-delete] ve službě Cloud Shell.
 
 ```azurecli-interactive
 az group delete --name myAKSCluster --no-wait

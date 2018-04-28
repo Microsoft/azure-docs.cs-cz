@@ -8,13 +8,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bb0b9e3db4637a6b872c7fed9653a16457b848db
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -94,14 +94,14 @@ Chcete-li kopírovat data z Amazonu S3, nastavte vlastnost typu datové sady, kt
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **AmazonS3Object** |Ano |
 | bucketName | Název sady S3. |Ano |
-| key | Klíč objektu S3. Platí, pouze pokud není zadán předponu. |Ne |
-| Předpona | Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí, pouze pokud není zadán klíč. |Ne |
+| key | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"` |Ne |
+| Předpona | Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí jenom v případě, že není zadána vlastnost "klíč". |Ne |
 | verze | Verze objektu S3, pokud je povolena Správa verzí S3. |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat nebo vygenerování soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
 
-> [!NOTE]
-> **bucketName + klíč** Určuje umístění objektu S3, kde sady je kořenový kontejner pro objekty S3 a klíč je úplná cesta k objektu S3.
+>[!TIP]
+>Pokud chcete zkopírovat všechny soubory ve složce, zadejte **bucketName** sady a **předponu** pro část složky.<br>Pokud chcete zkopírovat jeden soubor s daným názvem, zadejte **bucketName** sady a **klíč** pro část plus souboru název složky.<br>Pokud chcete zkopírovat podmnožinu souborů ve složce, zadejte **bucketName** sady a **klíč** pro složku část plus zástupný filtr.
 
 **Příklad: pomocí předpony**
 

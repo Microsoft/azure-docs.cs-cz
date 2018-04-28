@@ -1,12 +1,12 @@
 ---
-title: "Zálohování Azure: Obnovení virtuálních počítačů pomocí portálu Azure | Microsoft Docs"
-description: "Obnovení virtuálního počítače Azure z bodu obnovení pomocí portálu Azure"
+title: 'Zálohování Azure: Obnovení virtuálních počítačů pomocí portálu Azure | Microsoft Docs'
+description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí portálu Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "obnovení zálohy; Postup obnovení; bod obnovení;"
+editor: ''
+keywords: obnovení zálohy; Postup obnovení; bod obnovení;
 ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Obnovení virtuálních počítačů pomocí portálu Azure
 Ochrana dat pomocí snímky dat na definovaných intervalech. Tyto snímky jsou známé jako body obnovení a byly uloženy do trezory služeb zotavení. Pokud je nutné opravit nebo znovu vytvořit virtuální počítač (VM), můžete obnovit virtuální počítač z jakýchkoli bodů obnovení uložené. Pokud obnovíte bod obnovení, můžete:
@@ -109,7 +109,7 @@ Poskytuje portálu **rychle vytvořit** možnost pro obnovený virtuální poč�
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Vytvoření nového virtuálního počítače z bodu obnovení
 1. Pokud si nejste již existuje, [vyberte bod obnovení](#restore-a vm-with-special-network-configurations) předtím, než začnete vytvářet nový virtuální počítač z bodu obnovení. Až vyberete bod obnovení na **obnovit konfiguraci** okno, zadejte nebo vyberte hodnoty pro každý z těchto polí:
 
-    a. **Obnovit typu**. Vytvoření virtuálního počítače.
+    a. **Obnovit typu**. Vytvoří virtuální počítač.
 
     b. **Název virtuálního počítače**. Zadejte název pro virtuální počítač. Název musí být jedinečný do skupiny prostředků (pro nasazení Azure Resource Manager VM) nebo cloudové služby (pro klasické virtuální počítač). Virtuální počítač nelze nahradit, pokud již existuje v rámci předplatného.
 
@@ -211,7 +211,7 @@ Zálohování Azure umožňuje obnovení zálohy virtuálních počítačů na s
 ## <a name="restore-domain-controller-vms"></a>Obnovení řadiče domény virtuální počítače
 Zálohování řadiče domény (DC) je podporované scénáře s zálohování virtuálních počítačů. Ale musíte být opatrní během procesu obnovení. Proces obnovení správný závisí na strukturu domény. V nejjednodušším případě máte u jednoho řadiče domény v jedné doméně. Běžně pro produkční zatížení, máte na jednu doménu s více řadičů domény, případně s některé řadiče domény na místě. Nakonec můžete mít doménová struktura s více domén. 
 
-Z hlediska Active Directory je virtuální počítač Azure jako další virtuální počítač na moderní podporovaném hypervisoru. Hlavní rozdíl s místními hypervisory je, že je v Azure k dispozici žádné konzoly virtuálního počítače. Konzola je vyžadována pro určité scénáře, jako je obnovení pomocí obnovení úplné obnovení (BMR) – typ zálohování. Obnovení virtuálního počítače z trezoru záloh je však úplné nahrazení pro úplné obnovení systému. Directory režimu obnovení služeb (DSRM) je také k dispozici, proto všechny scénáře obnovení služby Active Directory je přijatelná. Další informace najdete v tématu [aspekty zálohování a obnovení pro virtualizované řadiče domény](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) a [plánování obnovení doménové struktury služby Active Directory](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
+Z hlediska Active Directory je virtuální počítač Azure jako další virtuální počítač na moderní podporovaném hypervisoru. Hlavní rozdíl s místními hypervisory je, že je v Azure k dispozici žádné konzoly virtuálního počítače. Konzola je vyžadována pro určité scénáře, jako je obnovení pomocí obnovení úplné obnovení (BMR) – typ zálohování. Obnovení virtuálního počítače z trezoru záloh je však úplné nahrazení pro úplné obnovení systému. Directory režimu obnovení služeb (DSRM) je také k dispozici, proto všechny scénáře obnovení služby Active Directory je přijatelná. Další informace najdete v tématu [aspekty zálohování a obnovení pro virtualizované řadiče domény](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) a [plánování obnovení doménové struktury služby Active Directory](https://technet.microsoft.com/library/planning-active-directory-forest-recovery(v=ws.10).aspx).
 
 ### <a name="single-dc-in-a-single-domain"></a>Jednoho řadiče domény v jedné doméně
 Virtuální počítač může být obnovena (např. žádné jiné virtuální počítače) z portálu Azure nebo pomocí prostředí PowerShell.
@@ -242,7 +242,7 @@ Pokud chcete znovu vytvořit plně virtuální počítače po obnovení na disku
 
    a. Vytvoření virtuálního počítače v rámci cloudové služby s [nástroj pro vyrovnávání zatížení pro vnitřní](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
 
-   b. Vytvoření virtuálního počítače pro připojení k [nástroj pro vyrovnávání zatížení internetového](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/).
+   b. Vytvoření virtuálního počítače pro připojení k [nástroj pro vyrovnávání zatížení internetového](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
    c. Vytvoření virtuálního počítače s [několik síťových adaptérů](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 

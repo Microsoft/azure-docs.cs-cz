@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cba5d5d6547421ed2d665fc78e35a654eda5fda6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3f0d3ae6786e9f63f0e4eb025118d0d217eced64
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>Vytvoření serveru služby Azure Analysis Services pomocí PowerShellu
 
 Tento rychlý start popisuje použití PowerShellu z příkazového řádku k vytvoření serveru Azure Analysis Services ve [skupině prostředků Azure](../azure-resource-manager/resource-group-overview.md) ve vašem předplatném Azure.
 
-Tato úloha vyžaduje modul Azure PowerShell verze 4.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Tato úloha vyžaduje modul Azure PowerShell verze 4.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud chcete provést instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 > [!NOTE]
 > Vytvoření serveru může znamenat, že se vám začne fakturovat nová služba. Další informace najdete v tématu [Ceny služby Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
@@ -38,14 +38,14 @@ Import-Module AzureRM.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se ke svému předplatnému Azure pomocí příkazu [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount). Postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) příkaz. Postupujte podle pokynů na obrazovce.
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
- 
+
 [Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina. Při vytváření serveru je potřeba zadat skupinu prostředků ve vašem předplatném. Pokud skupinu prostředků ještě nemáte, můžete vytvořit novou pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v oblasti USA – západ.
 
 ```powershell
@@ -70,6 +70,6 @@ Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myReso
 ```
 
 ## <a name="next-steps"></a>Další postup
-[Správa služby Azure Analysis Services pomocí PowerShellu](analysis-services-powershell.md)   
-[Nasazení modelu ze sady SSDT](analysis-services-deploy.md)   
-[Vytvoření modelu na webu Azure Portal](analysis-services-create-model-portal.md)
+[Správa Azure Analysis Services pomocí prostředí PowerShell](analysis-services-powershell.md)
+[nasadit model z rozšíření SSDT](analysis-services-deploy.md)
+[vytvoření modelu na portálu Azure](analysis-services-create-model-portal.md)

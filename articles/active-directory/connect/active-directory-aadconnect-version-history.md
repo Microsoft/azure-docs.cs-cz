@@ -12,29 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 04/17/2018
 ms.author: billmath
-ms.openlocfilehash: 5308803bb36024ee2373cf07ec46f798eb7192c5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
+
 
 Tento článek je určen, abyste mohli sledovat verze, které byly vydány a zjistit, jestli je potřeba aktualizovat na nejnovější verzi, nebo ne.
 
 Toto je seznam Příbuzná témata:
 
-
-
-Téma |  Detaily
+Téma |  Podrobnosti
 --------- | --------- |
 Kroky pro upgrade z Azure AD Connect | Různých způsobů [upgrade z předchozí verze na nejnovější](active-directory-aadconnect-upgrade-previous-version.md) verzi Azure AD Connect.
 Požadovaná oprávnění | Oprávnění potřebná k použití aktualizace, najdete v části [účty a oprávnění](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Stáhněte si | [Stažení Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="117510"></a>1.1.751.0
+Stav 4/12/2018: vydané pouze ke stažení
+
+>[!NOTE]
+>Toto je oprava hotfix pro Azure AD Connect
+
+### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
+#### <a name="fixed-issues"></a>Opravené problémy
+Opravit chyby, kde došlo k zjišťování instance automatické Azure pro klienty Číně příležitostně selhání.  
+
+### <a name="ad-fs-management"></a>Správa služby AD FS
+#### <a name="fixed-issues"></a>Opravené problémy
+
+Došlo k potížím s logikou opakování konfigurace, která by způsobilo ArgumentException – s oznámením "položku se stejným klíčem již byla přidána."  To by způsobilo selhání všech operací opakování.
 
 ## <a name="117500"></a>1.1.750.0
 Stav 3/22/2018: vydané pro automatický upgrade a stahování.
@@ -99,8 +113,7 @@ Stav: Vydané vyberte zákazníků
 Změny se postará o následující:
 1. Expresní instalace
 2. Vlastní instalace s automatické vytvoření účtu
-
-* Změnit instalační program, není třeba oprávnění správce systému na čistou instalaci Azure AD Connect
+3. Změnit instalační program, není třeba oprávnění správce systému na čistou instalaci Azure AD Connect
 
 * Přidat nový nástroj pro řešení potíží se synchronizací pro konkrétní objekt. Je k dispozici v části Možnosti řešení potíží s objekt synchronizace Azure AD Connect Průvodce řešení potíží s další úlohy. V současné době tento nástroj kontroluje následující:
 
@@ -139,7 +152,7 @@ Uzamčení přístup k účtu služby AD DS implementací následující oprávn
 *   Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou položky řízení přístupu konkrétním do sebe sama. Chceme zachovat výchozí oprávnění při přechodu do sebe sama.
 *   Přiřadíte tato konkrétní oprávnění:
 
-Typ     | Jméno                          | Přístup               | Platí pro
+Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTÉM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
@@ -482,7 +495,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Vybrat|
+    |CertVersion|CertSignatureAlgorithmOid|Vyberte|
     |CertKeyAlgorithmParams|CertHashString|Kde|
     |||S|
 
@@ -490,7 +503,7 @@ CBool(
 
   * MV schématu byly přidány následující atributy:
     * Skupiny: název účtu
-    * Group: domainNetBios
+    * Skupiny: domainNetBios
     * Skupiny: domainFQDN
     * Uživatel: distinguishedName
 
@@ -501,7 +514,7 @@ CBool(
     * Uživatel: OnPremisesDistinguishedName
 
 * Skript rutiny ADSyncDomainJoinedComputerSync má nyní nový volitelný parametr s názvem AzureEnvironment. Parametr slouží k určení, které oblasti odpovídající klienta Azure Active Directory je hostován v. Platné hodnoty patří:
-  * AzureCloud (default)
+  * AzureCloud (výchozí)
   * AzureChinaCloud
   * AzureGermanyCloud
   * USGovernment
@@ -533,7 +546,7 @@ Vydáno: 2017 může
 
 **Opravené problémy:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 
 * Opravit problém, který způsobuje automatický Upgrade i v případě, že zákazník má zakázanou funkci pomocí rutiny Set-ADSyncAutoUpgrade proběhnout na server Azure AD Connect. Pomocí této opravy automatický Upgrade proces na serveru stále kontroluje pro upgrade pravidelně, ale stažený instalační program ctí konfigurace automatického upgradu.
 * Během upgradu nástroje DirSync na místě vytvoří Azure AD Connect účtu služby Azure AD má být používána konektoru služby Azure AD pro synchronizaci se službou Azure AD. Po vytvoření účtu se pomocí účtu služby Azure AD ověřuje Azure AD Connect. V některých případech ověřování selže kvůli přechodným potížím, které způsobí, že DirSync místního upgradu k selhání s chybou *"došlo k chybě provádění úlohy konfigurace AAD Sync: AADSTS50034: pro přihlášení do této aplikace, musí být účet Přidat k adresáři xxx.onmicrosoft.com."* Pokud chcete zlepšit odolnost upgradu nástroje DirSync, Azure AD Connect nyní pokusí krok ověřování.
@@ -550,7 +563,7 @@ Synchronizace Azure AD Connect
 
 **Nové funkce nebo vylepšení:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 * Byly implementovány změny pravidlo synchronizace – následující změny pravidlo synchronizace:
   * Aktualizované výchozí synchronizační pravidlo nastavené není export atributy **userCertificate** a **userSMIMECertificate** Pokud máte více než 15 hodnoty atributů.
   * Atributy AD **employeeID** a **msExchBypassModerationLink** jsou teď součástí je sada pravidel pro výchozí synchronizace.
@@ -590,7 +603,7 @@ Vydáno: Dubna 2017
 
 **Opravené problémy:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 * Opravit problém, kde plánovače synchronizace přeskočí krok celý sync, pokud jeden nebo více konektorů chybí profil spuštění pro tento krok synchronizace. Například jste ručně přidali konektor bez vytvoření rozdílový Import spuštění profilu pro něj pomocí Synchronization Service Manager. Tato oprava zajistí, že plánovače synchronizace nadále spustit rozdílový Import pro ostatní konektory.
 * Byl opraven problém synchronizační službu kde okamžitě ukončí, zpracování profil spuštění, když je zaznamená problém s jedním z kroků spuštění. Tato oprava zajišťuje, že služba synchronizace přeskočí, který krok spustit a pokračuje ve zpracování s ostatními. Například máte rozdílový Import spuštění profilu pro AD connector s více kroků spuštění (jeden pro každou místní AD domény). Synchronizační služba spustí rozdílový Import s ostatními doménami AD i v případě, že jeden z nich má problémy se síťovým připojením.
 * Opravit problém, který způsobí, že Azure AD Connector. aktualizace lze vynechat během automatický Upgrade.
@@ -606,7 +619,7 @@ Plochy jednotného přihlašování
 
 **Nové funkce nebo vylepšení:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 * Azure AD Connect Sync teď podporuje použití virtuální účet služby, účet spravované služby a skupinový účet spravované služby jako svůj účet služby. To platí pro nové instalace služby Azure AD Connect jenom. Při instalaci Azure AD Connect:
     * Ve výchozím nastavení Průvodce Azure AD Connect se vytvoří virtuální účet služby a použije jako svůj účet služby.
     * Pokud instalujete na řadiči domény, Azure AD Connect spadne zpět na předchozí chování, kde se vytvoří účet uživatele domény a místo toho použije jako svůj účet služby.
@@ -632,7 +645,7 @@ Vydáno: 2017 března
 
 **Opravené problémy:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 * Byl opraven problém, což způsobí, že průvodce Azure AD Connect nezdaří, pokud zobrazovaný název konektor služby Azure AD neobsahuje počáteční doméně onmicrosoft.com přiřazené klientovi Azure AD.
 * Byl opraven problém, což způsobí, že průvodce Azure AD Connect k selhání při navazování připojení k databázi SQL, pokud heslo účtu synchronizační služby obsahuje speciální znaky, třeba apostrof, dvojtečkou a místa.
 * Byl opraven problém, který způsobuje chybu "dimage má element anchor, který se liší od obrázku" na serveru Azure AD Connect v pracovním režimu, po které jste vyloučili dočasně místní AD objekt ze synchronizace a poté ji znovu zahrnuté pro synchronizaci.
@@ -651,7 +664,7 @@ Resetování hesla
 
 **Nové funkce nebo vylepšení:**
 
-Synchronizace Azure AD Connect
+Synchronizace služby Azure AD Connect
 * Rutina Get-ADSyncScheduler nyní vrátí novou vlastnost typu Boolean s názvem SyncCycleInProgress. Pokud je vrácená hodnota true, znamená to, že je cyklus plánované synchronizace v průběhu.
 * Cílovou složku pro uložení instalace služby Azure AD Connect a protokoly instalace se přesunul z %localappdata%\AADConnect do %programdata%\AADConnect ke zlepšení dostupnosti souborů protokolu.
 

@@ -1,24 +1,23 @@
 ---
-title: "Vytvoření Azure webových a pracovních rolí pro jazyk PHP | Microsoft Docs"
-description: "Pokyny pro vytváření webových a pracovních rolí PHP v cloudové službě Azure a konfigurace modulu PHP runtime."
-services: 
+title: Vytvoření Azure webových a pracovních rolí pro jazyk PHP
+description: Pokyny pro vytváření webových a pracovních rolí PHP v cloudové službě Azure a konfigurace modulu PHP runtime.
+services: ''
 documentationcenter: php
-author: rmcmurray
-manager: erikre
-editor: 
+author: msangapu
+manager: cfowler
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/11/2018
+ms.author: msangapu
+ms.openlocfilehash: b9f350870dde71666d269aaae9cb7c14aaac5aad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-create-php-web-and-worker-roles"></a>Postup vytvoření PHP webových a pracovních rolí
 ## <a name="overview"></a>Přehled
@@ -202,7 +201,7 @@ Chcete-li zastavit emulátorů, spusťte tento příkaz:
 ## <a name="publish-your-application"></a>Publikování aplikace
 Pro publikování aplikace, musíte nejdříve naimportovat vaše nastavení publikování pomocí [Import AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) rutiny. Potom můžete publikovat aplikace pomocí [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) rutiny. Informace o přihlašování najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
 
 [Azure SDK pro jazyk PHP]: /develop/php/common-tasks/download-php-sdk/

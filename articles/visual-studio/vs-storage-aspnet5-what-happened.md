@@ -2,23 +2,20 @@
 title: Co se stalo s projektu ASP.NET 5 (Visual Studio připojené služby) | Microsoft Docs
 description: Popisuje, co se stane po připojení k účtu úložiště Azure v projektu Visual Studio ASP.NET 5 pomocí sady Visual Studio připojené služby
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: e7caa9fa-c780-45eb-a546-299fc1c68455
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-what-happened
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 16da7e7a2d61cffb95d22a85669c8f91f28ae476
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f99ba4b6c954ae9faa87b9604c06e94c56e4f631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Co se stalo s projektu ASP.NET 5 (Visual Studio Azure Storage připojeno services)?
 ## <a name="references-added"></a>Přidanými referencemi

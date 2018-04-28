@@ -9,11 +9,11 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
@@ -43,7 +43,7 @@ Azure SQL Database má následující technologie v paměti:
 
 Indexy columnstore a OLTP v paměti se součástí produktu SQL Server od 2012 a 2014, v uvedeném pořadí. Azure SQL Database a SQL Server sdílet stejné implementaci technologií v paměti. Do budoucna, nové funkce pro tyto technologie jsou vydávány v Azure SQL Database nejprve před jejich vydání v systému SQL Server.
 
-Toto téma popisuje aspekty OLTP v paměti a columnstore indexy, které jsou specifické pro Azure SQL Database a obsahuje také ukázku:
+Tento článek popisuje aspekty OLTP v paměti a columnstore indexy, které jsou specifické pro Azure SQL Database a také obsahuje ukázky:
 - Dopad tyto technologie uvidíte na omezení velikosti úložiště a data.
 - Uvidíte, jak spravovat přesouvání databází, které používají tyto technologie mezi různé cenové úrovně.
 - Zobrazí se dvou vzorcích, které ilustrují použití OLTP v paměti, jakož i indexy columnstore ve službě Azure SQL Database.
@@ -92,7 +92,7 @@ S elastické fondy úložiště OLTP v paměti je sdílet všechny databáze ve 
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Velikost dat a úložiště pro indexy columnstore
 
-Indexy Columnstore nejsou povinné, aby se vešla do paměti. Proto je krytky pouze na velikost indexy maximální celkovou velikost databáze, která je popsána v [úrovně služeb SQL Database](sql-database-service-tiers.md) článku.
+Indexy Columnstore nejsou povinné, aby se vešla do paměti. Proto krytky pouze na velikost indexy je maximální celkovou velikost databáze, která je popsána v [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) články.
 
 Při použití Clusterované indexy columnstore sloupcovém komprese se používá pro základní tabulka úložiště. Tato komprese může výrazně snížit nároky na úložiště dat uživatele, což znamená, že můžete začlenit další data v databázi. A komprese může být zvýšena další s [sloupcovém archivace komprese](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression). Komprese, můžete dosáhnout závisí na povaze data, ale 10krát komprese není.
 
@@ -223,8 +223,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Jediným rozdílem mezi následující dva *uložené procedury* je, že první postup používá verzích paměťově optimalizované tabulky, zatímco druhý postup používá regulární tabulky na disku:
 
-- SalesLT**.**usp_InsertSalesOrder**_inmem**
-- SalesLT**.**usp_InsertSalesOrder**_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 V této části najdete postup používání užitečný v **ostress.exe** nástroj provést dvě uložené procedury na stressful úrovních. Jak dlouho trvá pro spustí dvě přízvuk dokončíte, můžete porovnat.

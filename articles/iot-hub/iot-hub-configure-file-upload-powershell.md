@@ -1,11 +1,11 @@
 ---
-title: "Pomocí prostředí Azure PowerShell ke konfiguraci nahrávání souborů | Microsoft Docs"
-description: "Postup použití rutin prostředí Azure PowerShell ke konfiguraci služby IoT hub, aby soubor ukládání z připojených zařízení. Obsahuje informace o konfiguraci cílového účtu úložiště Azure."
+title: Pomocí prostředí Azure PowerShell ke konfiguraci nahrávání souborů | Microsoft Docs
+description: Postup použití rutin prostředí Azure PowerShell ke konfiguraci služby IoT hub, aby soubor ukládání z připojených zařízení. Obsahuje informace o konfiguraci cílového účtu úložiště Azure.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c6966fd4a60681643c2a690013035bde20abee78
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22d331342504aa7cc3d4fe86777ef9c2595a27ac
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace centra IoT nahrávání souborů pomocí prostředí PowerShell
 
@@ -35,12 +35,12 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavit váš účet Azure
 
-Přihlaste se k účtu Azure a vybrat své předplatné.
+Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. V řádku prostředí PowerShell, spusťte **Login-AzureRmAccount** rutiny:
+1. V řádku prostředí PowerShell, spusťte **Connect-AzureRmAccount** rutiny:
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup do všech předplatná Azure přidružená přihlašovacích údajů. Pomocí následujícího příkazu zobrazíte seznam předplatných Azure, které je k dispozici pro použití:
@@ -49,7 +49,7 @@ Přihlaste se k účtu Azure a vybrat své předplatné.
     Get-AzureRMSubscription
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů ke správě služby IoT hub. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```powershell
     Select-AzureRMSubscription `
@@ -123,7 +123,7 @@ Set-AzureRmIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o možnostech nahrávání souboru Centrum IoT najdete v tématu [nahrání souborů ze zařízení][lnk-upload].
 
@@ -136,7 +136,7 @@ Další informace o správě Azure IoT Hub na následujících odkazech:
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 * [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [lnk-upload]: iot-hub-devguide-file-upload.md

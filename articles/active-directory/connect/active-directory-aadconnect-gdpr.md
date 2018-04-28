@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect a nařízení ochrany dat obecné | Microsoft Docs
+title: Azure AD Connect a uživatele o ochraně osobních údajů | Microsoft Docs
 description: Tento dokument popisuje, jak zajistit dodržování předpisů GDPR službou Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -11,36 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR dodržování předpisů a Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
 
-V květnu 2018, ochrany osobních údajů Evropského zákona, [obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), je kvůli vstoupily v platnost. GDPR ukládá nové pravidel na společnosti, organizace státní správy, bez zisku a organizace nabídka zboží a služeb na osoby ve Evropské unie (EU), nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. GDPR platí bez ohledu na to, kde se nacházíte. 
-
-Produkty a služby Microsoftu jsou dnes, které vám pomůžou GDPR požadavkům. Další informace o zásadách Microsoft Privacy na [Centrum zabezpečení](https://www.microsoft.com/trustcenter)
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Tento článek se zabývá Azure AD Connect a GDPR dodržování předpisů.  Informace o Azure AD Connect Health a GDPR dodržování předpisů najdete v článku [zde](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
+>Tento článek se zabývá Azure AD Connect a uživatele o ochraně osobních údajů.  Informace o Azure AD Connect Health a uživatele o ochraně osobních údajů najdete v článku [zde](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Data obecné ochrany nařízení dodržování předpisů pro instalace Azure AD Connect jsou dostupné dvěma způsoby:
+Dodržování předpisů o ochraně osobních údajů uživatelů pro Azure AD Connect instalace lze dosáhnout dvěma způsoby:
 
 1.  Na žádost extrahovat data pro osoby a odstranění dat z osoba ze zařízení
 2.  Zkontrolujte, že žádná data se uchovávají za 48 hodin.
 
 Tým služby Azure AD Connect doporučuje druhá možnost vzhledem k tomu, že je mnohem jednodušší na implementaci a údržbu.
 
-Server synchronizace služby Azure AD Connect se ukládají následující data, která jsou v oboru pro GDPR dodržování předpisů:
+Server synchronizace služby Azure AD Connect se ukládají následující data o ochraně osobních údajů uživatele:
 1.  Data o osoby v **databáze Azure AD Connect**
 2.  Data **protokolu událostí systému Windows** soubory, které může obsahovat informace o osoby
 3.  Data **protokolové soubory instalace Azure AD Connect** , může obsahovat o osoby
 
-GDPR kompatibilní, Azure AD Connect Zákazníci by měl používat následující pokyny:
+Azure AD Connect zákazníci měli pomocí následujících pokynů při odebírání uživatelská data:
 1.  Odstraňte obsah složky, která obsahuje soubory protokolu instalace Azure AD Connect v pravidelných intervalech – minimálně každých 48 hodin
 2.  Tento produkt také vytvořit protokoly událostí.  Další informace o protokolech protokoly událostí, naleznete [dokumentaci](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
@@ -82,5 +80,5 @@ Pomocí následujících kroků plánování skript, který chcete spustit každ
 
 
 ## <a name="next-steps"></a>Další postup
-- [Integrace místních identit s Azure Active Directory](active-directory-aadconnect.md).
-- [Azure AD Connect Health a GDPR](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)
+* [Zkontrolujte nastavení zásad Microsoft Privacy na Centrum zabezpečení](https://www.microsoft.com/trustcenter)
+- [Azure AD Connect Health a ochraně osobních údajů uživatelů](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)

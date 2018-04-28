@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4d33fc513b3a2aaa70a3402a42b31efe63c62dd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0047ff742b4a2fd46739c40d08e7c07b69896fae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní API pro SQL: stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -52,6 +52,12 @@ ms.lasthandoff: 04/16/2018
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
+
+* Přidané vlastnosti ConsistencyLevel k FeedOptions.
+* Přidání JsonSerializerSettings RequestOptions a FeedOptions.
+* Přidání EnableReadRequestsFallback k ConnectionPolicy.
+
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
 * Mezi oddílu pořadí opraven KeyNotFoundException pro dotazy v nestandardních případech.
@@ -293,6 +299,7 @@ Služba odmítne všechny požadavky pro Azure DB Cosmos pomocí vyřazeno sady 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.22.0](#1.22.0) |19. dubna 2018 |--- |
 | [1.21.1](#1.20.1) |09 března 2018 |--- |
 | [1.20.2](#1.20.1) |21. února 2018 |--- |
 | [1.20.1](#1.20.1) |05 února 2018 |--- |

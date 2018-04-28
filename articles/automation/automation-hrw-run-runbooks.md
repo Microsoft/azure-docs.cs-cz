@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 043a4efe85f45998f1dbf112044feb9996b50dd0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6fc89469e1a9b2d7142e38f7aea5596fc9adb4e4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker.
 
@@ -137,7 +137,7 @@ Import-PfxCertificate -FilePath $CertPath -CertStoreLocation Cert:\LocalMachine\
 # Test that authentication to Azure Resource Manager is working
 $RunAsConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
 
-Add-AzureRmAccount `
+Connect-AzureRmAccount `
     -ServicePrincipal `
     -TenantId $RunAsConnection.TenantId `
     -ApplicationId $RunAsConnection.ApplicationId `

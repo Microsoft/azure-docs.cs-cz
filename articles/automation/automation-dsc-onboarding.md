@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0da6bd56a684657d8275ca8c781847f31f8e05c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 10e0e0df4bf71c7a21a3cc06b5b1c16930d54ec6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Registrace počítačů pro správu Azure Automation DSC.
 
@@ -53,7 +53,7 @@ K vyhledání adresu URL pro registraci a klíče pro účet služby Automation 
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
 Add-AzureAccount
-Add-AzureRmAccount
+Connect-AzureRmAccount
 
 # fill in correct values for your VM/Automation account here
 $VMName = ""
@@ -329,7 +329,7 @@ Obecně zařadit do provozu žádné počítače do Azure Automation DSC, [metak
 Pokud výchozí nastavení správce místní konfigurace DSC prostředí PowerShell odpovídá váš případ použití a chcete zařadit počítače tak, aby se jak načítat z a nahlásit Azure Automation DSC, rutiny Azure Automation poskytují zjednodušenou metodu generování metaconfigurations DSC potřebné:
 
 1. Otevřete konzolu PowerShell nebo ISE prostředí PowerShell jako správce v počítači ve vašem místním prostředí.
-2. Připojte se k Azure Resource Manager pomocí **Add-AzureRmAccount**
+2. Připojit k Azure Resource Manager pomocí **Connect-AzureRmAccount**
 3. Stáhněte metaconfigurations PowerShell DSC pro počítače, které chcete zařadit do provozu z účtu Automation, ke které chcete zařadit uzly:
 
     ```powershell

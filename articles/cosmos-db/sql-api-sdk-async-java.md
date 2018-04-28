@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: a8e4ac763b9a16210d62fc080aaf8917c1eefc33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -55,6 +55,16 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Byla přidána podpora back přetížení v dotazu.
+* Přidaná podpora pro id klíče rozsahu oddílu v dotazu.
+* Opravu, která umožňuje větší token pokračování v hlavičce žádosti (bugfix githubu #24).
+* netty závislostí upgradovat na 4.1.22.Final zajistit JVM vypne po dokončení hlavního vlákna.
+* Opravte předejdete předání relace token při čtení hlavní prostředky.
+* Přidat další příklady.
+* Přidat další testu typovou úlohou scénáře.
+* Soubory hlaviček pevné Java pro správné javadoc generování.
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK s podporou začátku do konce neblokující vstupně-výstupní operace pomocí [Netty knihovny](http://netty.io/) v režimu brány. 
 
@@ -69,6 +79,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |20 duben 2018|--- |
 | [1.0.0](#1.0.0) |27. února 2018|--- |
 
 ## <a name="faq"></a>Nejčastější dotazy

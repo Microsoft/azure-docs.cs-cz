@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: rimman
-ms.openlocfilehash: 182f9fcfd03d736f66dd8ca11720c88c9f5b36fc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -209,38 +209,6 @@ Příklad:
 5. Zaznamenejte poplatků jednotek žádosti vlastních skriptů (uložené procedury, triggery, funkce definované uživatelem), využít aplikací
 6. Vypočítejte jednotky požadované žádosti dané odhadovaný počet operací, které předpokládáte spouštět každou sekundu.
 
-## <a id="GetLastRequestStatistics"></a>Použijte příkaz GetLastRequestStatistics MongoDB rozhraní API
-Rozhraní API MongoDB podporuje vlastního příkazu *getLastRequestStatistics*, pro načítání poplatky požadavku pro danou operaci.
-
-Například v prostředí Mongo provést operaci chcete ověřit žádost zdarma pro.
-```
-> db.sample.find()
-```
-
-Potom spusťte příkaz *getLastRequestStatistics*.
-```
-> db.runCommand({getLastRequestStatistics: 1})
-{
-    "_t": "GetRequestStatisticsResponse",
-    "ok": 1,
-    "CommandName": "OP_QUERY",
-    "RequestCharge": 2.48,
-    "RequestDurationInMilliSeconds" : 4.0048
-}
-```
-
-Myslete na to, jedné metody odhadnout velikost vyhrazenou propustností požadované aplikací je záznam zřizování jednotky žádosti přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a pak odhadnout počet operací, které předpokládáte provést každou sekundu.
-
-> [!NOTE]
-> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte poplatků jednotek žádosti příslušné operace spojené s každou *typ* typické položky.
-> 
-> 
-
-## <a name="use-mongodb-api-portal-metrics"></a>Použití portálu metriky rozhraní API MongoDB
-Nejjednodušší způsob, jak získat dobrý odhad požadavku poplatky jednotky pro vaši databázi MongoDB rozhraní API je použití [portál Azure](https://portal.azure.com) metriky. S *počet požadavků, které* a *požadavek poplatků* grafy, můžete získat odhad kolik jednotek žádosti každý je náročné operace a kolik jednotek žádosti, které budou využívat relativně k jinému.
-
-![Rozhraní API MongoDB portálu metriky][6]
-
 ## <a name="a-request-unit-estimate-example"></a>V příkladu odhad jednotek žádosti
 Vezměte v úvahu následující ~ 1 KB dokumentu:
 
@@ -344,9 +312,6 @@ Pokud používáte klienta SDK rozhraní .NET a LINQ dotazů a potom ve většin
 
 Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků, nemusí stačit výchozí chování opakování a vyvolá výjimku klienta `DocumentClientException` stavem code 429 k aplikaci. V takových případech můžete zvážit zpracování opakování chování a logiku zpracování rutiny chyb aplikace nebo zvyšte zřízené propustnosti pro kontejner.
 
-## <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení omezení vyhrazenou propustností v rozhraní API MongoDB
-Aplikace, které překračují zřízená propustnost pro kontejner bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí ho preventivně požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
-
 ## <a name="next-steps"></a>Další postup
 Další informace o vyhrazenou propustností s databázemi Azure Cosmos DB najdete v těchto zdrojích:
 
@@ -361,4 +326,3 @@ Začínáme s škálování a výkon testování pomocí Azure Cosmos DB, najdet
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/api-for-mongodb-metrics.png

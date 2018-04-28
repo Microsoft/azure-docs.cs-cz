@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
 
@@ -52,7 +52,7 @@ Logický server Azure Database:
 - Poskytuje koncový bod připojení pro přístup k databázi (<serverName>.database.windows.net).
 - Poskytuje přístup k metadatům, která se vztahují k obsaženým prostředkům, přes zobrazení dynamických zpráv díky připojení k hlavní databázi. 
 - Poskytuje oboru pro zásady správy, které platí pro její databáze - přihlášení, brány firewall, audit, hrozby detekce atd. 
-- Je omezené na základě kvótu v rámci nadřazeného předplatného (šesti serverů na jedno předplatné, ve výchozím nastavení - [najdete v části předplatné omezuje zde](../azure-subscription-service-limits.md))
+- Je omezené na základě kvótu v rámci nadřazeného předplatného (dvacet servery podle předplatného ve výchozím nastavení - [najdete v části předplatné omezuje zde](../azure-subscription-service-limits.md))
 - Poskytuje oboru pro DTU nebo vCore kvót a kvóty databáze pro prostředky, které obsahuje (jako je například 45 000 DTU)
 - Je v rozsahu správy verzí pro možnosti zapnuta obsažených prostředků 
 - Hlavní přihlášení na úrovni serveru můžou spravovat všechny databáze na serveru.
@@ -65,11 +65,11 @@ K ochraně vašich dat [brány firewall SQL Database](sql-database-firewall-conf
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí portálu Azure
 
-Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. Existuje více metod pro získání nového formuláře SQL serveru tak, že vytvoříte nový server SQL nebo jako součást vytvoření nové databáze. 
+Můžete vytvořit skupinu prostředků Azure SQL database předem nebo při vytváření samotný server. 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Vytvořit prázdný SQL server (logický server)
 
-K vytvoření serveru (bez databáze) Azure SQL Database pomocí [portál Azure](https://portal.azure.com), přejděte do prázdného formuláře SQL server (logický server).  
+K vytvoření serveru (bez databáze) Azure SQL Database pomocí [portál Azure](https://portal.azure.com), přejděte do prázdného formuláře (logického) serveru SQL.  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Vytvoření databáze SQL prázdné nebo ukázku
 
@@ -95,7 +95,7 @@ Chcete-li spravovat stávající databázi, přejděte na **databází SQL** a k
 >
 
 > [!TIP]
-> Azure portálu rychlý úvodní kurz, najdete v části [vytvoření Azure SQL database na portálu Azure](sql-database-get-started-portal.md).
+> Azure quickstart portálu, najdete v části [vytvoření Azure SQL database na portálu Azure](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí prostředí PowerShell
@@ -120,7 +120,7 @@ Chcete-li vytvořit a spravovat server Azure SQL, databáze a brány firewall po
 | New-AzureRmSqlServerVirtualNetworkRule | Vytvoří [ *pravidlo virtuální sítě*](sql-database-vnet-service-endpoint-rule-overview.md)založená na podsíť, která je koncový bod služby virtuální sítě. |
 
 > [!TIP]
-> Rychlý úvodní kurz prostředí PowerShell, najdete v části [vytvářet izolované databáze Azure SQL pomocí prostředí PowerShell](sql-database-get-started-portal.md). Příklad skriptů prostředí PowerShell, najdete v části [použít PowerShell k vytvoření jedné databáze Azure SQL a nakonfigurujte pravidlo brány firewall](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jeden SQL databáze pomocí prostředí PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> Rychlé spuštění prostředí PowerShell najdete v části [vytvářet izolované databáze Azure SQL pomocí prostředí PowerShell](sql-database-get-started-portal.md). Příklad skriptů prostředí PowerShell, najdete v části [použít PowerShell k vytvoření jedné databáze Azure SQL a nakonfigurujte pravidlo brány firewall](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jeden SQL databáze pomocí prostředí PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí rozhraní příkazového řádku Azure
@@ -150,7 +150,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall se [rozhran
 |[Odstranit pravidlo brány firewall serveru sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Odstraní pravidlo brány firewall|
 
 > [!TIP]
-> Rychlý úvodní kurz Azure CLI, najdete v části [vytvářet izolované databáze Azure SQL pomocí rozhraní příkazového řádku Azure](sql-database-get-started-cli.md). Příklad skriptů příkazového řádku Azure CLI, najdete v části [použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a nakonfigurujte pravidlo brány firewall](scripts/sql-database-create-and-configure-database-cli.md) a [použití rozhraní příkazového řádku pro sledování a škálování jedné databáze SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Rychlé spuštění příkazového řádku Azure CLI, najdete v části [vytvářet izolované databáze Azure SQL pomocí rozhraní příkazového řádku Azure](sql-database-get-started-cli.md). Příklad skriptů příkazového řádku Azure CLI, najdete v části [použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a nakonfigurujte pravidlo brány firewall](scripts/sql-database-create-and-configure-database-cli.md) a [použití rozhraní příkazového řádku pro sledování a škálování jedné databáze SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí jazyka Transact-SQL
@@ -181,7 +181,7 @@ Vytvoření a Správa serveru Azure SQL, databáze a brány firewall pomocí jaz
 
 
 > [!TIP]
-> Rychlý úvodní kurz pomocí SQL Server Management Studio v systému Windows, najdete v části [Azure SQL Database: pomocí SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý úvodní kurz pomocí kódu v jazyce Visual Studio v systému macOS, Linux nebo Windows, najdete v části [Azure SQL Database: použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
+> Rychlý start pomocí SQL Server Management Studio v systému Windows, najdete v části [Azure SQL Database: pomocí SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start pomocí kódu v jazyce Visual Studio v systému macOS, Linux nebo Windows, najdete v části [Azure SQL Database: použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí rozhraní REST API
 

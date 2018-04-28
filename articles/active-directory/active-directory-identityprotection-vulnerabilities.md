@@ -1,9 +1,9 @@
 ---
-title: "Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection | Microsoft Docs"
-description: "Přehled chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection."
+title: Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection | Microsoft Docs
+description: Přehled chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection.
 services: active-directory
-keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 65b1ae76794c812f9fcf2955d09e023195ef6342
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, může útočník zneužít. Doporučujeme, abyste tyto nedostatky ke zlepšení postavení zabezpečení vaší organizace a útočníkům zabránit v jejich využití.
@@ -38,7 +38,7 @@ Ověřování Azure Multi-Factor authentication poskytuje druhou vrstvu zabezpe�
 
 Doporučujeme vám, že vyžadujete ověřování Azure Multi-Factor Authentication pro přihlášení uživatele. Služba Multi-Factor authentication hrají roli klíče v zásadách podmíněného přístupu na základě riziko k dispozici prostřednictvím Identity Protection.
 
-Další podrobnosti najdete v tématu [co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
+Další podrobnosti najdete v tématu [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Nespravované cloudové aplikace
 Toto ohrožení zabezpečení pomáhá identifikovat nespravované cloudových aplikací ve vaší organizaci.

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
-ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3eecf8918e6628071e44cc588b1826df68a00f10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v Azure nezávislé cloudy pomocí prostředí PowerShell
 
 Většina lidí používá veřejném cloudu Azure pro jejich globální nasazení Azure. Existují také některé nezávislé nasazení Microsoft Azure z důvodů suverenity a tak dále. Tato nezávislé nasazení jsou označovány jako "prostředí." V následujícím seznamu jsou aktuálně k dispozici nezávislé cloudy.
 
-* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Cloud vlády Azure](https://azure.microsoft.com/features/gov/)
 * [Čína cloudu Azure provozované v Číně společností 21Vianet](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Němčině cloudu Azure](../../germany/germany-welcome.md)
 
 ## <a name="using-an-independent-cloud"></a>Pomocí nezávislé cloudu 
 
@@ -48,7 +48,7 @@ Get-AzureRmEnvironment
 Přihlaste se ke svému účtu, který má přístup do cloudu, ke kterému chcete připojit a nastavte prostředí. Tento příklad ukazuje, jak se přihlaste účtu, který používá cloudu Azure Government.   
 
 ```powershell
-Login-AzureRmAccount –Environment AzureUSGovernment
+Connect-AzureRmAccount –Environment AzureUSGovernment
 ```
 
 Pro přístup k cloudu Čína, použijte prostředí **AzureChinaCloud**. Chcete-li získat přístup k cloudu němčina, použijte **AzureGermanCloud**.
@@ -61,7 +61,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 Následující tabulka uvádí umístění vrátil němčině cloudu.
 
-|Umístění | DisplayName |
+|Umístění | displayName |
 |----|----|
 | germanycentral | Německo – střed|
 | germanynortheast | Německo – severovýchod | 
@@ -85,11 +85,10 @@ Tento příkaz vrátí následující výsledky.
 
 | Název| StorageEndpointSuffix|
 |----|----|
-|AzureChinaCloud | core.chinacloudapi.cn|
+| AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
-| AzureUSGovernment | core.usgov.cloudapi.net |
-
+| AzureUSGovernment | Core.usgovcloudapi.NET |
 
 Chcete-li načíst všechny vlastnosti pro zadaného prostředí, volejte **Get-AzureRmEnvironment** a zadejte název cloudu. Tento fragment kódu vrátí seznam hodnot vlastnosti; Vyhledejte **StorageEndpointSuffix** v seznamu. V následujícím příkladu se pro Cloud němčina.
 

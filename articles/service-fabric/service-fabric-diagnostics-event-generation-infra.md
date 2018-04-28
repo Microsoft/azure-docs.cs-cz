@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>Monitorování clusteru a platforma
 
 Je důležité ke sledování na úrovni platformy k určení, zda hardware a cluster chovají podle očekávání. Když Service Fabric můžete ponechat aplikací, které běží při selhání hardwaru, ale potřebujete diagnostikovat, zda k chybě dochází v aplikaci nebo v odpovídající infrastruktury. Také měli byste sledovat clusterů lépe plánovat kapacitu, pomoc při rozhodování o o přidání nebo odebrání hardwaru.
 
-Service Fabric nabízí následující protokolu kanály out-of-the-box:
+Service Fabric poskytuje několik událostí strukturovaných platformy, jako "[události Service Fabric](service-fabric-diagnostics-events.md)," prostřednictvím EventStore a různými protokolu kanály out-of-the-box. 
 
-* **Provozní**  
+EventStore umožňuje přístup k vaší clusteru události na základě za entity (včetně clusteru, uzly, aplikací, služeb, oddíly, repliky a kontejnery entity) a zpřístupňuje je přes rozhraní REST API a knihovny Service Fabric klienta. Použít EventStore k monitorování vaší clustery pro vývoj/testování a získání bodu v čase Principy stavu produkčních clusterů. Další informace o to v [EventStore přehled](service-fabric-diagnostics-eventstore.md).
+
+Service Fabric obsahuje také že protokol následující kanály out-of-the-box pro nastavení kanál monitorovat produkčních clusterů:
+
+* [**Provozní**](service-fabric-diagnostics-event-generation-operational.md)  
 Základní operace provádí Service Fabric a cluster, včetně události pro uzel objevuje, nové nasazení aplikace nebo upgradu vrácení zpět, atd.
 
 * **Provozní – podrobné**  

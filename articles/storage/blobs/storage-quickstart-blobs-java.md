@@ -1,19 +1,19 @@
 ---
-title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Javy | Microsoft Docs
-description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Javy | Microsoft Docs
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Javu k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 0513dc73912b095c8045f37c7e1d9d06db3ab7e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cbf9014f9a2776cb6dcffabacc5a8a270419a534
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Javy
 
@@ -224,6 +224,6 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](storage-java-how-to-use-blob-storage.md)
 
-Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md).
+Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md).
 
 Další ukázky v Javě najdete v tématu [Ukázky služby Azure Storage s použitím Javy](../common/storage-samples-java.md).

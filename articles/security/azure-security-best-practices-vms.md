@@ -3,7 +3,7 @@ title: Osvědčené postupy zabezpečení virtuální počítač Azure
 description: Tento článek obsahuje celou řadu osvědčené postupy zabezpečení pro použití ve virtuálních počítačích, které jsou umístěné v Azure.
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Doporučené postupy pro zabezpečení virtuálního počítače Azure
 

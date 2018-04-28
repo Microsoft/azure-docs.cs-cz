@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: eb2035f6e667a9b3ab642d42cb9bb5ecf5c86fb1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 3680777439678a93b1283cf94b9f8a173965feeb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image vlastní virtuálního počítače v Azure zásobníku
 
@@ -81,7 +81,7 @@ Chcete-li přidat bitovou kopii do Azure Marketplace zásobníku, proveďte nás
         -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
         -EnvironmentName AzureStackAdmin
 
-      Login-AzureRmAccount `
+      Connect-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
         -TenantId $TenantID
       ```
@@ -109,7 +109,7 @@ Chcete-li přidat bitovou kopii do Azure Marketplace zásobníku, proveďte nás
           -ADFS `
           -EnvironmentName AzureStackAdmin
 
-        Login-AzureRmAccount `
+        Connect-AzureRmAccount `
           -EnvironmentName "AzureStackAdmin" `
           -TenantId $TenantID
         ```
@@ -162,7 +162,7 @@ Remove-AzsVMImage `
 | **osDiskLocalPath** |Místní cesta k disku operačního systému virtuálního pevného disku, který odesíláte jako image virtuálního počítače do protokolů Azure. |
 | **dataDiskLocalPaths** |Volitelné pole místní cesty pro datové disky, které mohou být nahrány jako součást image virtuálního počítače. |
 | **CreateGalleryItem** |Logický příznak, který určuje, jestli se mají vytvořit položku Marketplace. Ve výchozím nastavení je nastavena na **true**. |
-| **title** |Zobrazovaný název položky Marketplace. Ve výchozím nastavení je nastavena na `Publisher-Offer-Sku` hodnotu image virtuálního počítače. |
+| **Název** |Zobrazovaný název položky Marketplace. Ve výchozím nastavení je nastavena na `Publisher-Offer-Sku` hodnotu image virtuálního počítače. |
 | **Popis** |Popis položky Marketplace. |
 | **location** |Umístění, kde image virtuálního počítače je nutné ji publikovat. Ve výchozím nastavení je tato hodnota nastavena **místní**.|
 | **osDiskBlobURI** |(Volitelné) Tento skript také přijímá úložiště objektů Blob identifikátor URI pro `osDisk`. |
@@ -186,7 +186,7 @@ Bitové kopie musí být schopen odkazovat úložiště objektů Blob identifik�
 
    * Když nahrajete [image virtuálního počítače Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), je nezbytné nahradit **přihlášení k Azure** s krokem [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](azure-stack-powershell-configure-admin.md) krok.  
 
-   * Úložiště objektů Blob identifikátor URI, kde můžete nahrát bitovou kopii si poznamenejte. Identifikátor URI úložiště objektů Blob má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*VHD.
+   * Úložiště objektů Blob identifikátor URI, kde můžete nahrát bitovou kopii si poznamenejte. Identifikátor URI úložiště objektů Blob má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
    * Zpřístupněte objektu blob anonymně, přejděte do kontejneru objektů blob účet úložiště kde byl odeslán image virtuálního počítače virtuální pevný disk. Vyberte **Blob**a potom vyberte **zásady přístupu**. Volitelně můžete místo toho vygenerovat sdílený přístupový podpis kontejneru a vložit jako součást identifikátor URI objektu blob.
 

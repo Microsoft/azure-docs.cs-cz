@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite – nejčastější dotazy | Microsoft Docs"
-description: "Nejčastější dotazy k sadě IoT Suite"
+title: Azure IoT Suite – nejčastější dotazy | Microsoft Docs
+description: Nejčastější dotazy k sadě IoT Suite
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c79c90c4f6c28153d4d299015a06a6bc37145081
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 49e94e771deb4582b922400d81e8388faf164f40
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Nejčastější dotazy k sadě IoT Suite
 
@@ -33,6 +33,12 @@ Zdrojový kód je uložena v následující úložišť GitHub:
 * [Vzdálené monitorování předkonfigurované řešení (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [Předkonfigurované řešení prediktivní údržby](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [Připojené objekt pro vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory)
+
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-preconfigured-solutions"></a>Jaké sady SDK můžete použít pro vývoj klientů zařízení pro předkonfigurované řešení?
+
+Odkazy na sady SDK zařízení IoT jiným jazykem (C, .NET, Java, Node.js, Python) najdete v [SDK služby Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdks) úložišť GitHub.
+
+Pokud používáte zařízení DevKit, můžete najít prostředky a ukázky v [sady SDK pro IoT DevKit](https://github.com/Microsoft/devkit-sdk) úložiště GitHub.
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-preconfigured-solutions"></a>Nové architektury mikroslužeb je k dispozici pro všechny tři předkonfigurovaná řešení?
 

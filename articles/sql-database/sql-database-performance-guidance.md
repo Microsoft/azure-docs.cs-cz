@@ -9,26 +9,26 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: c9a04f6ebbca60e969d608e0ad92839b5e04d772
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Ladění výkonu v Azure SQL Database
 
 Databáze SQL Azure poskytuje [doporučení](sql-database-advisor.md) , můžete použít ke zlepšení výkonu databáze, nebo můžete nechat Azure SQL Database [automaticky přizpůsobit do vaší aplikace](sql-database-automatic-tuning.md) a změny, zlepší výkon vašich úloh.
 
 Ve službě nemáte žádná doporučení použít a máte problémy s výkonem, můžete použít následující metody ke zlepšení přínos:
-1. Zvýšit [úrovních služeb](sql-database-service-tiers.md) a poskytnout další zdroje k vaší databázi.
-2. Ladění aplikace a použít některé osvědčené postupy, které může zlepšit výkon. 
-3. Optimalizujte databázi změnou indexy a dotazy efektivněji pracovat s daty.
+- Zvýšení úrovně služeb v vaše [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) , vaše [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) poskytnout další zdroje k vaší databázi.
+- Ladění aplikace a použít některé osvědčené postupy, které může zlepšit výkon. 
+- Optimalizujte databázi změnou indexy a dotazy efektivněji pracovat s daty.
 
-Tyto jsou ruční metody, protože je potřeba rozhodnout se, jak [úrovních služeb](sql-database-service-tiers.md) by zvolte nebo potřebovali byste přepisovat kód aplikace nebo databáze a implementaci změny.
+Tyto jsou ruční metody, protože je potřeba rozhodnout se, jak [limitů prostředků na základě DTU modelu](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore modelu (preview)](sql-database-vcore-resource-limits.md) podle svých potřeb. Jinak potřebovali byste přepisování aplikace nebo kódu databáze a nasazení změn.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zvýšení úrovně výkonu databáze
 
-Databáze SQL Azure nabízí dva modely nákupu, na základě vCore nákupní model a na základě v základní nákupní model. Každý model obsahuje více [úrovních služeb](sql-database-service-tiers.md) ze kterých si můžete vybrat. Každé úrovni služeb výhradně izoluje prostředky, můžete použít SQL database a zaručuje, předvídatelný výkon této úrovně služeb. V tomto článku jsme nabízí pokyny, které vám pomohou vybrat úroveň služby pro aplikaci. Můžeme také popisují způsoby, abyste mohli vyladit aplikace k plnému využití z databáze SQL Azure.
+Databáze SQL Azure nabízí dva modely nákupu, [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) ze kterých si můžete vybrat. Každé úrovni služeb výhradně izoluje prostředky, můžete použít SQL database a zaručuje, předvídatelný výkon této úrovně služeb. V tomto článku jsme nabízí pokyny, které vám pomohou vybrat úroveň služby pro aplikaci. Můžeme také popisují způsoby, abyste mohli vyladit aplikace k plnému využití z databáze SQL Azure.
 
 > [!NOTE]
 > Tento článek se zaměřuje na pokyny výkonu pro izolované databáze ve službě Azure SQL Database. Pokyny výkonu související s elastické fondy najdete v tématu [cenové a výkonové požadavky pro elastické fondy](sql-database-elastic-pool-guidance.md). Upozorňujeme ale, můžete použít řadu vyladění doporučení v tomto článku pro databáze v elastickém fondu a získejte výhody podobné výkonu.
@@ -48,7 +48,7 @@ Databáze SQL Azure nabízí dva modely nákupu, na základě vCore nákupní mo
 
 ### <a name="service-tier-capabilities-and-limits"></a>Možnosti vrstvy služby a omezení
 
-V jednotlivých úrovních služby nastavena úroveň výkonu, máte možnost platit pouze pro potřebnou kapacitu. Můžete [upravit kapacity](sql-database-service-tiers.md), nahoru nebo dolů, jako změny zatížení. Například pokud vaše databáze úlohy vysoké během nákupní sezóny zpět školy, můžete zvýšit úroveň výkonu pro databázi nastavit dobu, červenec prostřednictvím září. Ho může snížit, až skončí vaše sezóny ve špičce. Můžete minimalizovat platíte pomocí optimalizace cloudového prostředí, abyste sezónnosti vaší firmy. Tento model se také funguje dobře pro cykly verze softwaru produktu. Test tým může přidělit kapacity při testování spustí a poté uvolněte tuto kapacitu, při jejich dokončení testování. V žádosti o modelu kapacitu platíte kapacity ho potřebujete, a vyhnout se výdaje na vyhrazených prostředcích, které můžou používat jenom občas.
+V jednotlivých úrovních služby nastavena úroveň výkonu, máte možnost platit pouze pro potřebnou kapacitu. Můžete [upravit kapacity](sql-database-service-tiers-dtu.md), nahoru nebo dolů, jako změny zatížení. Například pokud vaše databáze úlohy vysoké během nákupní sezóny zpět školy, můžete zvýšit úroveň výkonu pro databázi nastavit dobu, červenec prostřednictvím září. Ho může snížit, až skončí vaše sezóny ve špičce. Můžete minimalizovat platíte pomocí optimalizace cloudového prostředí, abyste sezónnosti vaší firmy. Tento model se také funguje dobře pro cykly verze softwaru produktu. Test tým může přidělit kapacity při testování spustí a poté uvolněte tuto kapacitu, při jejich dokončení testování. V žádosti o modelu kapacitu platíte kapacity ho potřebujete, a vyhnout se výdaje na vyhrazených prostředcích, které můžou používat jenom občas.
 
 ### <a name="why-service-tiers"></a>Proč úrovních služeb?
 I když každé zatížení databáze se může lišit, účelem úrovně služeb je poskytnout předvídatelnost výkonu na různé úrovně výkonu. Zákazníci s požadavky na prostředky ve velkém měřítku databáze můžete pracovat ve více vyhrazené výpočetním prostředí.
@@ -270,7 +270,8 @@ Některé aplikace jsou náročné na zápis. Někdy můžete snížit celkové 
 Některé databázových aplikací mít úlohy náročné na čtení. Ukládání do mezipaměti vrstvy může vést ke snížení zatížení databáze a může potenciálně snížit úroveň výkonu, které jsou potřebné k podpoře databáze pomocí Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte úlohy náročné na čtení, můžete číst data jednou (nebo případně jednou za aplikační vrstvy počítače, v závislosti na tom, jak je nakonfigurovaná) a potom tato data mimo vaší databázi SQL. Toto je způsob, jak snížit zatížení databáze (procesoru a vstupů/výstupů pro čtení), ale není vliv na transakční konzistence, protože data se načten z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích určité úrovně, ke kterému je přijatelné, není, platí pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie pro ukládání do mezipaměti aplikační vrstvy.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o úrovních služeb najdete v tématu [výkon a možnosti databáze SQL](sql-database-service-tiers.md)
+* Další informace o úrovních služeb na základě DTU najdete v tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [limitů prostředků na základě DTU modelu](sql-database-dtu-resource-limits.md)
+* Další informace o úrovních služeb na základě vCore najdete v tématu [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) a [limitů prostředků na základě vCore (preview)](sql-database-vcore-resource-limits.md)
 * Další informace o elastické fondy najdete v tématu [co je Azure elastickém fondu?](sql-database-elastic-pool.md)
 * Informace o výkonu a Elastická fondy najdete v tématu [při vzít v úvahu fondu elastické databáze](sql-database-elastic-pool-guidance.md)
 

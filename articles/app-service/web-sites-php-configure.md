@@ -1,24 +1,23 @@
 ---
-title: Nakonfigurovat PHP ve službě Azure App Service Web Apps | Microsoft Docs
+title: Nakonfigurovat PHP ve službě Azure App Service Web Apps
 description: Zjistěte, jak nakonfigurovat výchozí instalace PHP nebo přidat vlastní instalace PHP pro webové aplikace v Azure App Service.
 services: app-service
 documentationcenter: php
-author: cephalin
+author: msangapu
 manager: cfowler
-editor: ''
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: cephalin
-ms.openlocfilehash: a9059be43a6188b81b57f1503bba241b3138e114
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 04/11/2018
+ms.author: msangapu
+ms.openlocfilehash: 3dbd41756ede8577fee43d9758e39eb36130a6ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Nakonfigurovat PHP ve službě Azure App Service Web Apps
 
@@ -50,7 +49,7 @@ Verze PHP 7.0 a PHP 7.2 jsou také k dispozici, ale není povoleno ve výchozím
 
 1. Otevřete prostředí Azure PowerShell a přihlásit k účtu:
 
-        PS C:\> Login-AzureRmAccount
+        PS C:\> Connect-AzureRmAccount
 1. Nastavte verzi PHP pro webovou aplikaci.
 
         PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
@@ -195,11 +194,11 @@ Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/ph
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
 >
 
-[bezplatná zkušební verze]: https://www.windowsazure.com/pricing/free-trial/
+[bezplatnou zkušební verzi]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[Seznam php.ini direktivy]: http://www.php.net/manual/en/ini.list.php
-[.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
+[seznam php.ini direktivy]: http://www.php.net/manual/en/ini.list.php
+[. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
 [ini_set()]: http://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png

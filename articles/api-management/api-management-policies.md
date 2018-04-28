@@ -1,11 +1,11 @@
 ---
-title: "Zásady služby Azure API Management | Microsoft Docs"
-description: "Další informace o zásady, které jsou k dispozici pro použití v Azure API Management."
+title: Zásady služby Azure API Management | Microsoft Docs
+description: Další informace o zásady, které jsou k dispozici pro použití v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 7304ade9c47034b6cb76eb87126f09fb5af65c8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 Tato část obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](api-management-howto-policies.md).  
@@ -47,7 +47,7 @@ Tato část obsahuje odkaz pro následující zásady služby API Management. In
     -   [Nastavená proměnná](api-management-advanced-policies.md#set-variable) -zachovat hodnotu do proměnné s názvem kontext pro pozdější přístup.  
     -   [Nastaví metodu požadavku](api-management-advanced-policies.md#SetRequestMethod) -vám umožní změnit metodu protokolu HTTP pro žádost.  
     -   [Nastavit stavový kód](api-management-advanced-policies.md#SetStatus) -změní stavový kód protokolu HTTP se zadanou hodnotou.  
-    -   [Trasování](api-management-advanced-policies.md#Trace) -přidá řetězec do [rozhraní API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) výstup.  
+    -   [Trasování](api-management-advanced-policies.md#Trace) -přidá řetězec do [rozhraní API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) výstup.  
     -   [Počkejte](api-management-advanced-policies.md#Wait) -čeká pro uzavřené [odeslán požadavek na](api-management-advanced-policies.md#SendRequest), [získat hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey), nebo [řízení toku](api-management-advanced-policies.md#choose) zásady k dokončení než budete pokračovat.  
 -   [Zásady ověřování](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Ověřování Basic](api-management-authentication-policies.md#Basic) -ověření pomocí back-end službu pomocí základního ověřování.  

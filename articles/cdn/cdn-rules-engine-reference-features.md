@@ -3,7 +3,7 @@ title: Pravidla ve službě Azure CDN modul funkce | Microsoft Docs
 description: Referenční dokumentace pro Azure CDN pravidla modul funkce.
 services: cdn
 documentationcenter: ''
-author: Lichard
+author: dksimpson
 manager: akucer
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
-ms.author: rli
-ms.openlocfilehash: fd670e3b01812b7fa8fc708a02d02210b598ac6a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: v-deasim
+ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Pravidla ve službě Azure CDN modul funkce
 Tento článek obsahuje seznam podrobný popis dostupných funkcí pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
 
-Je třetí součást pravidla funkce. Funkce definuje typ akce, který se použije pro typ požadavku identifikovaný sadu podmínek shodu.
+Je třetí součást pravidla funkce. Funkce definuje typ akce, který se použije pro typ požadavku, která je identifikovaná sadu podmínek shodu.
 
 ## <a name="access-features"></a>Získat přístup k funkcím
 
@@ -515,16 +515,16 @@ Informace o klíči:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Ladění hlavičky odpovědi v mezipaměti
-**Účel:** Určuje, zda odpověď může obsahovat hlavičku X-ES-Debug odpovědi, který obsahuje informace o zásady ukládání do mezipaměti pro požadovaný prostředek.
+**Účel:** Určuje, zda může zahrnovat odpověď [hlavičky X-ES-Debug odpovědi](cdn-http-debug-headers.md), který obsahuje informace o zásady ukládání do mezipaměti pro požadovaný prostředek.
 
 Ladění odpovědi v mezipaměti, záhlaví budou zahrnuty v odpovědi, pokud jsou splněny obě následující:
 
-- Funkce hlavičky ladění odpověď mezipaměti byla povolena na požadované žádosti.
-- Výše uvedený požadavek definuje sadu hlavičky odpovědi mezipaměti ladění, které budou zahrnuty v odpovědi.
+- Byla povolena funkce ladění hlavičky odpovědi mezipaměti na zadaný požadavek.
+- Zadaný požadavek definuje sadu hlavičky odpovědi mezipaměti ladění, které budou zahrnuty v odpovědi.
 
-Ladění odpověď mezipaměti, které mohou být vyžádány hlavičky zahrnutím následující hlavičku a požadované direktivy v požadavku:
+Ladění odpověď mezipaměti, které mohou být vyžádány hlavičky zahrnutím následující hlavičku a direktivy zadaný v požadavku:
 
-X-ES Debug: _Directive1_,_Directive2_,_DirectiveN_
+`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Příklad:**
 
@@ -624,7 +624,7 @@ Odebrat| Zajišťuje, že `Expires` hlavičky není součástí hlavičky odpov�
 ### <a name="external-max-age"></a>Externí Max-Age
 **Účel:** určuje maximální stáří interval pro prohlížeč na opětovné ověření mezipaměti POP. Jinými slovy množství času, který bude uplynout, než můžete zkontrolovat v prohlížeči pro novou verzi prostředek z bodu POP.
 
-Povolení této funkce bude generovat `Cache-Control: max-age` a `Expires` hlaviček z bodů POP a odešlete je klienta HTTP. Ve výchozím nastavení bude tato záhlaví přepsat nebyla vytvořena v původním serveru. Ale způsob zpracování hlavička Cache-Control a funkce vyprší platnost zacházení záhlaví lze toto chování změnit.
+Povolení této funkce bude generovat `Cache-Control: max-age` a `Expires` hlaviček z bodů POP a odešlete je klienta HTTP. Ve výchozím nastavení bude tato záhlaví přepsat tyto hlavičky vytvořené na zdrojový server. Ale způsob zpracování hlavička Cache-Control a funkce vyprší platnost zacházení záhlaví lze toto chování změnit.
 
 Informace o klíči:
 
@@ -706,7 +706,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže b�
 Informace o klíči:
 
 - Definujte sadu povolených H.264 přípony názvů souborů oddělených mezerami v možnost přípony souborů. Přípony souborů možnost přepíše výchozí chování. Podpora MP4 a F4V udržujte zahrnutím tyto přípony názvů souborů, když nastavení této možnosti. 
-- Nezapomeňte použít tečku při zadávání každou příponu názvu souboru (například .f4v MP4).
+- Obsahovat tečku, když zadáte každou příponu názvu souboru (například _.mp4_, _.f4v_).
 
 **Výchozí chování:** progresivní stahování HTTP podporuje média MP4 a F4V ve výchozím nastavení.
 
@@ -727,7 +727,7 @@ Zakázáno|Obnoví výchozí chování. Výchozí chování je zabránit požada
 
 Pro všechny přenosy produkční důrazně doporučujeme opustit tuto funkci ve svém výchozím zakázáno stavu. Původ servery, jinak nebude Stíněný, z koncoví uživatelé, kteří mohou nechtěně aktivovat mnoho požadavků bez mezipaměti, při aktualizaci webové stránky, nebo z mnoha přehrávače oblíbených médií, které jsou kódované hlavička ne mezipaměti s každou video žádost odeslat. Tuto funkci však může být užitečné pro použití určitých mimo produkční pracovní nebo testování adresářů, aby bylo možné povolit čerstvého obsahu, který mají být vyžádány na vyžádání ze zdrojového serveru.
 
-Stav mezipaměti, která bude hlášena, pro požadavek, který může být přesměrovaní na zdrojový server z důvodu této funkce je TCP_Client_Refresh_Miss. Stavy mezipaměti zprávu, která je k dispozici v základní reporting modulu, poskytuje statistické údaje podle stavu mezipaměti. To umožňuje sledovat počet a procento žádostí, které jsou předávány na zdrojový server z důvodu této funkce.
+Stav mezipaměti, který je hlášen pro požadavek, který může být přeposílán zdrojový server z důvodu této funkce je `TCP_Client_Refresh_Miss`. Stavy mezipaměti zprávu, která je k dispozici v základní reporting modulu, poskytuje statistické údaje podle stavu mezipaměti. Tato sestava umožňuje sledovat počet a procento žádostí, které jsou předávány na zdrojový server z důvodu této funkce.
 
 **Výchozí chování:** zakázané.
 
@@ -858,7 +858,7 @@ Zakázáno|Obnoví výchozí chování. Výchozí chování je ignorovat řetěz
 ### <a name="maximum-keep-alive-requests"></a>Udržování požadavky (maximum)
 **Účel:** definuje maximální počet požadavků pro zachování připojení, než je uzavřený.
 
-Nastavení maximální počet požadavků na nízkou hodnotu, se důrazně nedoporučuje a může způsobit snížení výkonu.
+Nastavení maximální počet požadavků na nízkou hodnotu se nedoporučuje a může způsobit snížení výkonu.
 
 Informace o klíči:
 
@@ -884,9 +884,9 @@ Na hlavička požadavku je možné provádět jednu z následujících akcí:
 
 Možnost|Popis|Příklad:
 -|-|-
-Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky žádosti.|**Žádosti o hodnotu hlavičky (klient):**Value1 <br/> **Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** Value1Value2
-Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Žádosti o hodnotu hlavičky (klient):**Value1 <br/>**Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** hodnota2 <br/>
-Odstranění|Odstraní určenou hlavičku požadavku.|**Žádosti o hodnotu hlavičky (klient):**Value1 <br/> **Změňte konfiguraci klienta hlavička požadavku:** odstranit v hlavičce žádosti. <br/>**Výsledek:** hlavičku zadaný požadavek nebude předají na zdrojový server.
+Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky žádosti.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/> **Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** Value1Value2
+Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/>**Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** hodnota2 <br/>
+Odstranění|Odstraní určenou hlavičku požadavku.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/> **Změňte konfiguraci klienta hlavička požadavku:** odstranit v hlavičce žádosti. <br/>**Výsledek:** hlavičku zadaný požadavek nebude předají na zdrojový server.
 
 Informace o klíči:
 
@@ -922,8 +922,8 @@ Na hlavičku odpovědi je možné provádět jednu z následujících akcí:
 
 Možnost|Popis|Příklad:
 -|-|-
-Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**Value1 <br/> **Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** Value1Value2
-Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):**Value1 <br/>**Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** hodnota2 <br/>
+Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/> **Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** Value1Value2
+Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/>**Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** hodnota2 <br/>
 Odstranění|Odstraní zadané hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/> **Změňte konfiguraci klienta hlavička odpovědi:** odstranit dotyčném hlavičku odpovědi. <br/>**Výsledek:** zadané hlavičky odpovědi nebude předají do žadatel.
 
 Informace o klíči:
@@ -990,12 +990,22 @@ Informace o klíči:
 
 ---
 ### <a name="proxy-special-headers"></a>Speciálními záhlavími proxy
-**Účel:** definuje sadu hlaviček požadavků specifických CDN, které budou předány z bodu POP zdrojový server.
+**Účel:** definuje sadu [hlavičky požadavku HTTP specifické Verizon](cdn-verizon-http-headers.md) , budou předány z bodu POP zdrojový server.
 
 Informace o klíči:
 
-- Každá hlavička požadavku CDN konkrétní definované v tato funkce se předají na původním serveru.
-- Hlavička požadavku CDN konkrétní zabránit předávaná zdrojový server odebráním z tohoto seznamu.
+- Každá hlavička požadavku CDN konkrétní definované v tato funkce se předají na původním serveru. Vyloučené hlavičky nejsou dál.
+- Abyste zabránili předávaná hlavičku požadavku specifické CDN, odeberte ji ze seznamu oddělených mezerami v seznamu pole hlavičky.
+
+Následující hlavičky protokolu HTTP jsou součástí na výchozím seznamu:
+- prostřednictvím
+- X-předávaných pro
+- X předávaných Proto
+- X-hostitel
+- X Midgress
+- Seznam X brány
+- X-ES Name
+- Hostitel
 
 **Výchozí chování:** všechny hlavičky požadavku specifické CDN se předají na zdrojový server.
 

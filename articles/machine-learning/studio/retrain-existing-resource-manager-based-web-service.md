@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Přeučování existující prediktivní webovou službu
 Tento dokument popisuje proces retraining pro následující scénář:
@@ -26,8 +26,8 @@ Tento dokument popisuje proces retraining pro následující scénář:
 * Máte výukový experiment a prediktivní experiment, který jste nasadili jako operationalized webové služby.
 * Máte nová data, že chcete, aby vaši prediktivní webovou službu používat k provádění jeho vyhodnocování.
 
-> [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md). 
+> [!NOTE]
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md).
 
 Počínaje existující webovou službu a experimentů, je třeba postupovat podle těchto kroků:
 
@@ -54,7 +54,7 @@ Aktualizace výukový experiment:
 
 Spuštění experimentu.
 
-Dále je nutné nasadit výukový experiment jako webová služba, která vytváří modulu trained model a výsledky vyhodnocení modelu.  
+Dále je nutné nasadit výukový experiment jako webová služba, která vytváří modulu trained model a výsledky vyhodnocení modelu.
 
 V dolní části plátna experimentu, klikněte na tlačítko **nastavit webové služby**a potom vyberte **nasazení [nové] webové služby**. Webové služby Azure Machine Learning portál se otevře **nasazení webové služby** stránky. Zadejte název pro webovou službu, zvolte plán platby a pak klikněte na tlačítko **nasadit**. Metoda Batch Execution můžete použít pouze pro vytváření trénované modely.
 
@@ -84,7 +84,7 @@ Vyhledejte **apikey** deklarace:
 V **informace o základní spotřeby** části **spotřebě** stránky, vyhledejte primární klíč a zkopírujte ho do **apikey** deklarace.
 
 ### <a name="update-the-azure-storage-information"></a>Aktualizovat informace o Azure Storage
-Ukázkový kód BES se uloží soubor z místního disku (například "C:\temp\CensusIpnput.csv") do služby Azure Storage, procesy a zapíše výsledky zpět do služby Azure Storage.  
+Ukázkový kód BES se uloží soubor z místního disku (například "C:\temp\CensusIpnput.csv") do služby Azure Storage, procesy a zapíše výsledky zpět do služby Azure Storage.
 
 Po spuštění experimentu, výsledná pracovního postupu by měl vypadat přibližně takto:
 
@@ -126,7 +126,7 @@ Následuje příklad výstupu retraining:
 ## <a name="evaluate-the-retraining-results"></a>Vyhodnoťte retraining výsledky
 Při spuštění aplikace, zahrnuje adresu URL a token podpisů sdíleného přístupu, který jsou potřebné pro přístup k výsledky hodnocení.
 
-Zobrazí výsledky retrained modelu tím, že zkombinujete *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků výstup pro *output2* (jak je znázorněno na předchozím obrázku výstup retraining) a vkládání úplnou adresu URL do panelu Adresa prohlížeče.  
+Zobrazí výsledky retrained modelu tím, že zkombinujete *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků výstup pro *output2* (jak je znázorněno na předchozím obrázku výstup retraining) a vkládání úplnou adresu URL do panelu Adresa prohlížeče.
 
 Podívejte se na výsledky, abyste zjistili, jestli pro nově cvičný model provádí dostatečně dobře nahradit stávající.
 
@@ -136,7 +136,7 @@ Kopírování *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků 
 Pokud jste přeučování novou webovou službu, je aktualizovat definice prediktivní webové služby, chcete-li nový trained model. Definice webové služby je interní reprezentací pro cvičný model webové služby a není přímo změn. Ujistěte se, že jsou načítání definice webové služby prediktivní experiment a není experimentu školení.
 
 ## <a name="sign-in-to-azure-resource-manager"></a>Přihlaste se k Azure Resource Manager
-Musíte nejprve se přihlásit k účtu Azure z prostředí PowerShell pomocí [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) rutiny.
+Musíte nejprve se přihlásit k účtu Azure z prostředí PowerShell pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
 
 ## <a name="get-the-web-service-definition-object"></a>Získání objektu definice webové služby
 V dalším kroku získání objektu definice webové služby pomocí volání [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) rutiny.

@@ -1,43 +1,30 @@
 ---
-title: "Správa statistiky u tabulek v SQL Data Warehouse | Microsoft Docs"
-description: "Začínáme s statistiky pro tabulky v Azure SQL Data Warehouse."
+title: Vytváření, aktualizaci statistiky – Azure SQL Data Warehouse | Microsoft Docs
+description: Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 11/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Správa statistiky u tabulek v SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Přehled][Overview]
-> * [Datové typy][Data Types]
-> * [Distribuce][Distribute]
-> * [Index][Index]
-> * [Oddíl][Partition]
-> * [Statistiky][Statistics]
-> * [Dočasné][Temporary]
-> 
-> 
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistiky pro tabulky v Azure SQL Data Warehouse
+Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
 
+## <a name="why-use-statistics"></a>Proč používat statistiky?
 Více Azure SQL Data Warehouse ví o vašich dat, tím rychleji se spouštět dotazy na ho. Shromažďování statistik na vaše data a pak ho načítání do SQL Data Warehouse je jedním z nejdůležitějších kroků, které můžete provést za účelem optimalizace své dotazy. Je to proto Optimalizátor dotazů SQL Data Warehouse je na základě nákladů pro optimalizaci. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižší náklady, což je ve většině případů plán, který provede nejrychlejší. Například pokud pro optimalizaci odhadne, že datum, kdy jsou filtrování v dotazu vrátí jeden řádek, ho vyberte jiný plán než pokud odhadne, vybraným datem vrátí 1 milionu řádků.
 
 Proces vytváření a aktualizaci statistiky je aktuálně ruční proces, ale je snadné provést.  Brzy bude moct vytvářet a aktualizovat statistiku jednoho sloupce a indexy automaticky.  Pomocí následujících informací můžete výrazně automatizovat správu statistik na vaše data. 
 
-## <a name="getting-started-with-statistics"></a>Začínáme s statistiky
+## <a name="scenarios"></a>Scénáře
 Vytvoření jen Vzorkovaná statistiku pro každý sloupec je snadný způsob, jak začít pracovat. Zastaralé statistiky vést k výkonu zhoršené dotazu. Aktualizuje statistické údaje pro všechny sloupce s růstem data však může spotřebovat paměti. 
 
 Toto jsou doporučení pro různé scénáře:
@@ -94,7 +81,7 @@ WHERE
 
 **Datum sloupce** v datovém skladu, například obvykle třeba často aktualizace statistiky. Každé nové řádky času jsou načtená do datového skladu, nové zatížení kalendářní data nebo data transakcí se přidají. Tyto změnit distribuci dat a proveďte statistiku zastaralá.  Naopak statistiky o pohlaví sloupec v tabulce zákazníka může být nikdy potřeba aktualizovat. Za předpokladu, že distribuce je konstantní mezi odběrateli, přidávání nových řádků do tabulky variace není chystáte změnit rozdělení data. Ale pokud váš datový sklad obsahuje pouze jeden pohlaví a nový požadavek výsledkem více pohlaví, pak budete muset aktualizovat statistiku pohlaví sloupec.
 
-Další informace naleznete v části [statistiky] [ Statistics] na webu MSDN.
+Další informace najdete v tématu obecné pokyny pro [statistiky](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Implementace správy statistiky
 Často je vhodné rozšířit váš proces načítání dat zajistit, že se statistika aktualizuje na konci zatížení. Načtení dat je při tabulky nejčastěji změnit jejich velikost a jejich distribuci hodnoty. To je proto logické místo, kde můžete implementovat některé procesy správy.
@@ -107,7 +94,7 @@ Tyto zásady jsou zadané pro aktualizaci statistice během procesu načítání
 * Zvažte aktualizaci statické distribuční sloupce méně často.
 * Pamatujte si, že se každý objekt statistiky se aktualizuje v pořadí. Implementací `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro široké tabulky s mnoha objekty statistiky.
 
-Další informace naleznete v části [odhadu kardinality] [ Cardinality Estimation] na webu MSDN.
+Další informace najdete v tématu [odhadu kardinality](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Příklady: Vytvoření statistiky
 Tyto příklady ukazují, jak používat různé možnosti pro vytvoření statistiky. Možnosti, které používáte pro každý sloupec závisí na vlastnosti data a jak sloupec se použije v dotazech.
@@ -172,7 +159,7 @@ Můžete také kombinovat možnosti společně. Následující příklad vytvoř
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Úplný přehled najdete v tématu [CREATE STATISTICS] [ CREATE STATISTICS] na webu MSDN.
+Úplný přehled najdete v tématu [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
 
 ### <a name="create-multi-column-statistics"></a>Vytvoření statistiky více sloupci
 Vytvoření objektu vícesloupcového statistiky, jednoduše použijte v předchozích příkladech, ale zadat více sloupců.
@@ -362,9 +349,9 @@ Tento příkaz je snadno použitelný. Jenom nezapomeňte, že aktualizace *vše
 > 
 > 
 
-Implementace `UPDATE STATISTICS` postupu najdete v části [dočasných tabulek][Temporary]. Implementace metody se mírně liší od předchozí `CREATE STATISTICS` postup, ale výsledek je stejný.
+Implementace `UPDATE STATISTICS` postupu najdete v části [dočasných tabulek](sql-data-warehouse-tables-temporary.md). Implementace metody se mírně liší od předchozí `CREATE STATISTICS` postup, ale výsledek je stejný.
 
-Úplná syntaxe, najdete v části [Update Statistics] [ Update Statistics] na webu MSDN.
+Úplná syntaxe, najdete v části [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="statistics-metadata"></a>Statistiky metadat
 Existuje několik zobrazení systému a funkcí, které můžete použít k nalezení informací o statistikách. Například se zobrazí, pokud objekt statistiky může být zastaralý pomocí funkce statistiky date a zjistěte, kdy byly statistiky poslední vytvořil nebo aktualizoval.
@@ -374,21 +361,21 @@ Tato systémová zobrazení obsahují informace o statistiky:
 
 | zobrazení katalogu | Popis |
 |:--- |:--- |
-| [sys.columns][sys.columns] |Jeden řádek pro každý sloupec. |
-| [sys.objects][sys.objects] |Jeden řádek pro každý objekt v databázi. |
-| [sys.schemas][sys.schemas] |Jeden řádek pro každý schématu v databázi. |
-| [sys.stats][sys.stats] |Jeden řádek pro každý objekt statistiky. |
-| [sys.stats_columns][sys.stats_columns] |Jeden řádek pro každý sloupec v objektu statistiky. Odkazy Zpět na sys.columns. |
-| [sys.tables][sys.tables] |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
-| [sys.table_types][sys.table_types] |Jeden řádek pro každý typ dat. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Jeden řádek pro každý sloupec. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý objekt v databázi. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Jeden řádek pro každý schématu v databázi. |
+| [Sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Jeden řádek pro každý objekt statistiky. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Jeden řádek pro každý sloupec v objektu statistiky. Odkazy Zpět na sys.columns. |
+| [zobrazení Sys.Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Jeden řádek pro každou tabulku (zahrnuje externí tabulky). |
+| [Sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Jeden řádek pro každý typ dat. |
 
 ### <a name="system-functions-for-statistics"></a>Funkce systému pro statistiky
 Tyto funkce systému jsou užitečné pro práci s statistiky:
 
 | System – funkce | Popis |
 |:--- |:--- |
-| [STATS_DATE][STATS_DATE] |Datum poslední aktualizace objekt statistiky. |
-| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |Souhrn úrovně a podrobné informace o distribuci hodnot jako rozumí objekt statistiky. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum poslední aktualizace objekt statistiky. |
+| [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Souhrn úrovně a podrobné informace o distribuci hodnot jako rozumí objekt statistiky. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Zkombinovat do jednoho zobrazení statistiky sloupce a funkce
 Toto zobrazení přináší sloupce, které se týkají statistiky a výsledkem funkce STATS_DATE() společně.
@@ -476,37 +463,5 @@ Příkaz DBCC SHOW_STATISTICS() je více výhradně implementované v SQL Data W
 - Vlastní chyba 2767 není podporována.
 
 ## <a name="next-steps"></a>Další postup
-Další podrobnosti najdete v tématu [DBCC SHOW_STATISTICS] [ DBCC SHOW_STATISTICS] na webu MSDN.
+Pro další zlepšit výkon dotazů najdete v tématu [monitorování úlohy](sql-data-warehouse-manage-monitor.md)
 
-  Další informace najdete v článcích na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [vytváření oddílů tabulky][Partition]a [Dočasných tabulek][Temporary].
-  
-   Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].  
-
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->  
-[Cardinality Estimation]: https://msdn.microsoft.com/library/dn600374.aspx
-[CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
-[DBCC SHOW_STATISTICS]:https://msdn.microsoft.com/library/ms174384.aspx
-[Statistics]: https://msdn.microsoft.com/library/ms190397.aspx
-[STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
-[sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
-[sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.schemas]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.stats]: https://msdn.microsoft.com/library/ms177623.aspx
-[sys.stats_columns]: https://msdn.microsoft.com/library/ms187340.aspx
-[sys.tables]: https://msdn.microsoft.com/library/ms187406.aspx
-[sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
-[UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
-
-<!--Other Web references-->  

@@ -1,29 +1,28 @@
 ---
-title: "Další informace o protokoly autorizace podporované službou Azure AD v2.0 | Microsoft Docs"
-description: "Průvodce protokolů podporovaných koncového bodu v2.0 Azure AD."
+title: Další informace o protokoly autorizace podporované službou Azure AD v2.0 | Microsoft Docs
+description: Průvodce protokolů podporovaných koncového bodu v2.0 Azure AD.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce9a7cb14b933da23873d69e1f14a744d012a858
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 29d9e2d9ee05b755ef40179e0e75fb0c8a6b010b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoly - OAuth 2.0 & OpenID Connect
-Koncový bod v2.0, můžete použít Azure AD pro identity jako služba pomocí standardních protokolů, OpenID Connect a OAuth 2.0.  Služba je kompatibilní se standardy, může být drobné rozdíly mezi jakékoli dvě implementace těchto protokolů.  Zde uvedené informace budou užitečné, pokud zvolíte možnost zápisu kódu přímo zasláním & zpracování požadavků HTTP nebo použití 3. stran otevřete Knihovna zdrojů, nikoli pomocí jednoho z našich opensourcové knihovny.
-<!-- TODO: Need link to libraries above -->
+Koncový bod v2.0, můžete použít Azure AD pro identity jako služba pomocí standardních protokolů, OpenID Connect a OAuth 2.0.  Služba je kompatibilní se standardy, může být drobné rozdíly mezi jakékoli dvě implementace těchto protokolů.  Zde uvedené informace budou užitečné, pokud zvolíte možnost zápisu kódu přímo zasláním & zpracování HTTP požadavků nebo použít knihovnu 3. stran s otevřeným zdrojem, nikoli pomocí jednoho z našich [otevřete zdroje knihovny](active-directory-v2-libraries.md).
 
 > [!NOTE]
 > Ne všechny scénáře Azure Active Directory a funkce jsou podporovány koncového bodu v2.0.  Pokud chcete zjistit, pokud byste měli používat koncový bod v2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).

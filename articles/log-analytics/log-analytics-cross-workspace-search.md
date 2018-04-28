@@ -1,24 +1,24 @@
 ---
-title: "Vyhledávání všech prostředků s Azure Log Analytics | Microsoft Docs"
-description: "Tento článek popisuje, jak můžete dotazovat na prostředky z víc pracovních prostorů a app Insights aplikace v rámci vašeho předplatného."
+title: Vyhledávání všech prostředků s Azure Log Analytics | Microsoft Docs
+description: Tento článek popisuje, jak můžete dotazovat na prostředky z víc pracovních prostorů a app Insights aplikace v rámci vašeho předplatného.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 5485b1634013c73b58932aafa6e17d636558715d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Vyhledávání prostředků mezi protokolu v analýzy protokolů  
 
@@ -30,7 +30,7 @@ Teď se můžete dotazovat nejen napříč více analýzy protokolů pracovních
 Chcete-li jiný pracovní prostor v dotazu, použijte [ *prostoru* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace z Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  
 
 ### <a name="identifying-workspace-resources"></a>Identifikační prostředky prostoru
-Následující příklady ukazují dotazy napříč pracovních prostorů analýzy protokolů můžete vrátit souhrnnou počty podle jejich klasifikace z tabulky aktualizace z obou aktuální pracovní prostor potřebné aktualizace a jiné prostoru s názvem  *contosoretail it*. 
+Následující příklady ukazují dotazy napříč analýzy protokolů pracovní prostory k vrácení souhrnnou počty aktualizace z tabulky aktualizace v pracovním prostoru s názvem *contosoretail it*. 
 
 Identifikace pracovní prostor může být provedené z několika způsoby:
 

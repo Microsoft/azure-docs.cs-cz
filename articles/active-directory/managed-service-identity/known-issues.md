@@ -1,34 +1,30 @@
 ---
-title: "Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory"
-description: "Známé problémy s spravované identita služby pro Azure Active Directory."
+title: Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory
+description: Známé problémy s spravované identita služby pro Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
-
-### <a name="is-there-a-private-preview-available-for-additional-features"></a>Je privátní Preview verzi k dispozici pro další funkce?
-
-Ano. Pokud chcete, aby byla považována za pro registraci v privátní Preview verzi [najdete na naší stránce registrace](https://aka.ms/azuremsiprivatepreview).
 
 ### <a name="does-msi-work-with-azure-cloud-services"></a>Funguje s Azure Cloud Services MSI?
 
@@ -42,10 +38,24 @@ Ne, není s ADAL nebo MSAL ještě integrovaná MSI. Podrobnosti o získávání
 
 Prostředek, ke kterému je připojen k je hranicí zabezpečení identity. Například hranice zabezpečení u MSI virtuální počítač je virtuální počítač. Všechny kód spuštěný na tento virtuální počítač, je možné volat koncový bod MSI a žádosti o tokeny. Je podobné prostředí s jiným prostředkům, které podporují MSI.
 
+### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>Použít koncový bod virtuálního počítače IMDS MSI nebo koncový bod virtuálního počítače MSI rozšíření?
+
+Při použití Instalační služby MSI s virtuálními počítači, doporučujeme pomocí Instalační služby MSI IMDS koncový bod. Služba Azure Instance metadat je koncový bod REST přístupné pro všechny virtuální počítače IaaS vytvořit prostřednictvím Správce Azure Resource Manager. Některé z výhod pomocí Instalační služby MSI přes IMDS jsou:
+
+1. Všechny operační systémy podporované Azure IaaS můžete použít instalační služby MSI přes IMDS. 
+2. Už nemusíte instalovat rozšíření na vašem virtuálním počítači povolit MSI. 
+3. Certifikáty používané MSI již nejsou ve virtuálním počítači. 
+4. Koncový bod IMDS je dobře známé směrovat IP adresu, k dispozici pouze z virtuálního počítače. 
+
+Rozšíření virtuálního počítače MSI je stále dostupné k použití dnes; ale postoupíte jsme bude použita výchozí pomocí IMDS koncový bod. Rozšíření virtuálního počítače MSI se spustí na vyřazení plánu brzy. 
+
+Další informace o Azure Instance Metada Service najdete v tématu [IMDS dokumentace](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
 ### <a name="what-are-the-supported-linux-distributions"></a>Jaké jsou podporované distribuce systému Linux?
 
-Následující Linuxových distribucích podporují MSI: 
+Všechny Linuxových distribucích nepodporuje Azure IaaS můžete použít s MSI přes IMDS koncový bod. 
 
+Poznámka: Rozšíření virtuálního počítače MSI se podporuje jenom následující distribucí Linux:
 - Stabilní jádro operačního systému
 - CentOS 7.1
 - RedHat 7.2
@@ -108,3 +118,16 @@ Po spuštění virtuálního počítače značky lze odebrat pomocí následují
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
+
+## <a name="known-issues-with-user-assigned-msi-preview"></a>Známé problémy s uživatele přiřazené MSI *(Preview)*
+
+- Povolením systému je jediný způsob, jak odebrat všechny uživatele přiřazené souborů MSI přiřadit MSI. 
+- Zřizování rozšíření virtuálního počítače pro virtuální počítač mohou selhat z důvodu selhání vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu. 
+- Přidání MSI 'neexistující' způsobí selhání virtuálního počítače. *Poznámka: Oprava selhání přiřazení identity, pokud neexistuje MSI, se vrátit na více systémů*
+- Kurz pro Azure Storage je dostupná v centrální nám EUAP jenom v tuto chvíli. 
+- Vytvoření uživatele přiřazeny MSI speciální znaky (tj. podtržítko) v názvu, není podporováno.
+- Při přidání druhého uživatele přiřazené identity, clientID nemusí být dostupné pro žádosti o tokeny pro ni. Jako omezení rizik restartujte rozšíření virtuálního počítače MSI následující dvě bash příkazy:
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
+ - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
+- VMAgent v systému Windows v současné době nepodporuje uživatele přiřazené MSI. 
+- Pokud virtuální počítač má uživatel přiřazené MSI, ale žádný systém přiřazeny MSI, portálu uživatelské rozhraní zobrazí MSI jako povolené. Systém přiřazené MSI povolit, použijte šablonu Azure Resource Manager, Azure CLI nebo sady SDK.

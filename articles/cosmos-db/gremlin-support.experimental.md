@@ -14,10 +14,10 @@ ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.openlocfilehash: c5e904c741c96808555718b0d90368e1bf770ecb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
 Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
@@ -145,7 +145,7 @@ A hranici obsahuje následující informace, které pomůžou s odkazy na dalš�
 | --- | --- |
 | id | ID pro hranici. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
 | Popisek | Popisek okraj. Tato vlastnost je volitelná a slouží k popisu typu relace. |
-| inV | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
+| inventáře | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
 | properties | Kontejner uživatelem definované vlastnosti související s hranou. Každá vlastnost může mít více hodnot. |
 
 Každou vlastnost můžete ukládat víc hodnot v rámci pole. 

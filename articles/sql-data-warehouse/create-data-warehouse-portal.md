@@ -1,20 +1,20 @@
 ---
-title: Vytvoření a dotazování datového skladu SQL Azure – Azure Portal | Microsoft Docs
-description: Na webu Azure Portal vytvoříte službu Azure SQL Data Warehouse a pak ji budete dotazovat.
+title: 'Rychlý úvod: Vytvoření a Azure SQL Data Warehouse - dotaz na portálu Azure | Microsoft Docs'
+description: Vytvořte a dotazování datového skladu s Azure SQL Data Warehouse na portálu Azure.
 services: sql-data-warehouse
-author: hirokib
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.topic: quickstart
-ms.component: implement
-ms.date: 03/28/2018
-ms.author: elbutter
-ms.reviewer: jrj
-ms.openlocfilehash: 97738b37f81cac3e7eef263fecc2095c9ef4b7ff
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 284cfd3562a951da928697c91aa8234719056fa4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlé zprovoznění: Vytvoření a dotazování datového skladu SQL Azure na webu Azure Portal
 
@@ -22,9 +22,14 @@ Rychle vytvořte a dotazujte datový sklad SQL Azure pomocí webu Azure Portal.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
+> [!NOTE]
+> Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba.  Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+>
+>
+
 ## <a name="before-you-begin"></a>Než začnete
 
-Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
+Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -32,7 +37,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
-Datový sklad SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků](performance-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Datový sklad SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-servers-databases.md#what-is-an-azure-sql-logical-server). 
 
 Podle následujícího postupu vytvořte datový sklad SQL, který obsahuje ukázková data AdventureWorksDW. 
 
@@ -197,7 +202,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 4. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Právě jste vytvořili datový sklad a pravidlo brány firewall, připojili jste se ke svému datovému skladu a spustili jste několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 > [!div class="nextstepaction"]
 >[Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

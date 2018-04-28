@@ -1,5 +1,5 @@
 ---
-title: Horké, studené a archivní úložiště Azure pro objekty blob | Dokumentace Microsoftu
+title: Horké, studené a archivní úložiště Azure pro objekty blob | Microsoft Docs
 description: Horké, studené a archivní úložiště pro účty úložiště Azure.
 services: storage
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
 
@@ -102,7 +102,7 @@ V následující tabulce najdete porovnání studené, horké a archivní úrovn
 | **Škálovatelnost a cíle výkonnosti** | Stejné jako u účtů úložiště pro obecné účely | Stejné jako u účtů úložiště pro obecné účely | Stejné jako u účtů úložiště pro obecné účely |
 
 > [!NOTE]
-> Účty Blob Storage podporují stejné cíle výkonnosti a škálovatelnosti jako účty úložiště pro obecné účely. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage Scalability](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> Účty úložiště Blob podporují stejnou škálovatelnost a cíle výkonnosti jako účty úložiště pro obecné účely. Další informace najdete v tématu [Škálovatelnost a cíle výkonnosti Azure Storage Scalability](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
 
@@ -123,7 +123,7 @@ V tomto oddílu jsou předvedené následující scénáře s využitím webu Az
 
 5. V horní části okna klikněte na možnost Uložit.
 
-### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu blob v účtu GPv2 nebo Blob Storage
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změňte úroveň objektu blob v účtu GPv2 nebo Blob Storage.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 

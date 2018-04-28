@@ -3,7 +3,7 @@ title: Integrace aplikací s Azure Active Directory
 description: Postup přidání, aktualizace nebo odebrání aplikace v Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
-author: PatAltimore
+author: mtillman
 manager: mtillman
 editor: mbaldwin
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
-ms.author: bryanla
+ms.date: 04/18/2018
+ms.author: mtillman
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: 472a1746a338857d457a7b8d5e7fec3ddbf65895
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ebf6653fada0897c23ebb84ab14de1040a963552
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -56,7 +56,7 @@ Všechny aplikace, který chce využívat možnosti Azure AD musí být zaregist
 5. Po dokončení klikněte na tlačítko **vytvořit**. Azure AD přiřadí jedinečné ID aplikace do aplikace a se stránka hlavní registrace vaší aplikace. V závislosti na tom, zda je aplikace na web nebo nativní aplikaci najdete různé možnosti pro přidání dalších možností do vaší aplikace. Viz další část Přehled souhlasu a podrobnosti o povolení funkce další konfigurace v registraci vaší aplikace (přihlašovací údaje, oprávnění Povolit přihlášení pro uživatele z jiných klientů.)
 
   > [!NOTE]
-  > Ve výchozím nastavení, nově zaregistrovanou aplikaci konfigurace umožňuje **pouze** uživatelé z stejné klienta pro přihlášení k aplikaci.
+  > Ve výchozím nastavení je nově zaregistrovaný webové aplikace nakonfigurovaná umožňující **pouze** uživatelé z stejné klienta pro přihlášení k aplikaci.
   > 
   > 
 
@@ -65,7 +65,7 @@ Jakmile aplikaci byl registrován u služby Azure AD, bude pravděpodobně nutn�
 
 ### <a name="overview-of-the-consent-framework"></a>Přehled rozhraní souhlasu
 
-Rozhraní Azure AD souhlasu usnadňuje vývoj víceklientské web a nativní klientské aplikace, včetně vícevrstvé aplikace. Tyto aplikace povolí přihlášení uživatelské účty z tenanta služby Azure AD, liší od verze, kde je registrovaná aplikace. Také budou potřebovat pro přístup k webové rozhraní API, jako je například Microsoft Graph API (pro přístup k Azure Active Directory, Intune a službám Office 365) a rozhraní API jiných služeb společnosti Microsoft, kromě vlastní webové rozhraní API. Rozhraní je založena na uživatele nebo správce udělení souhlasu k aplikaci, která požaduje být registrováno v jejich adresáři, který může zahrnovat přístup k datům adresáře.
+Rozhraní Azure AD souhlasu usnadňuje vývoj víceklientské web a nativní klientské aplikace. Tyto aplikace povolí přihlášení uživatelské účty z tenanta služby Azure AD, liší od verze, kde je registrovaná aplikace. Také budou potřebovat pro přístup k webové rozhraní API, jako je například Microsoft Graph API (pro přístup k Azure Active Directory, Intune a službám Office 365) a rozhraní API jiných služeb společnosti Microsoft, kromě vlastní webové rozhraní API. Rozhraní je založena na uživatele nebo správce udělení souhlasu k aplikaci, která požaduje být registrováno v jejich adresáři, který může zahrnovat přístup k datům adresáře.
 
 Například pokud webovou aplikaci klienta potřebuje ke čtení informací z kalendáře o uživateli z Office 365, tento uživatel je potřeba nejdřív souhlas do klientské aplikace. Po lze souhlasu, nebudou klientská aplikace volání rozhraní Microsoft Graph API jménem uživatele, a podle potřeby použijte informace v kalendáři. [Microsoft Graph API](https://graph.microsoft.io) poskytuje přístup k datům v Office 365 (jako je například kalendáře a zprávy z Exchange, weby a seznamy ze služby SharePoint, dokumenty z Onedrivu, poznámkových bloků z aplikace OneNote, úlohy z Planner, sešity z aplikace Excel, atd.), a také uživatelé a skupiny z Azure AD a jiných datových objektů z více cloudových služeb Microsoftu. 
 
@@ -93,17 +93,17 @@ Následující kroky vám ukážou, jak souhlasu prostředí funguje pro vývoj�
 
 5. Jakmile uživatel uděluje souhlas, autorizační kód se vrátí do vaší aplikace, které je uplatněn získat přístupový token a aktualizujte token. Další informace o tomto toku najdete v tématu [webové aplikace do webové části rozhraní API v scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md#web-application-to-web-api).
 
-6. Jako správce můžete také souhlas přidělená oprávnění aplikace jménem všechny uživatele ve vašem klientovi. Správce souhlasu bránil zobrazení dialogu souhlasu pro každého uživatele v klientovi a provádí aplikace stránku [portál Azure](https://portal.azure.com). Z **nastavení** stránky pro vaši aplikaci, klikněte na tlačítko **požadovaných oprávnění** a klikněte na **udělit oprávnění** tlačítko. 
+6. Jako správce můžete také souhlas přidělená oprávnění aplikace jménem všechny uživatele ve vašem klientovi. Správce souhlasu bránil zobrazení dialogu souhlasu pro každého uživatele v klientovi a můžete udělat v [portál Azure](https://portal.azure.com) uživatelé s rolí správce. Z **nastavení** stránky pro vaši aplikaci, klikněte na tlačítko **požadovaných oprávnění** a klikněte na **udělit oprávnění** tlačítko. 
 
   ![Udělení oprávnění pro explicitní správce souhlasu](./media/active-directory-integrating-applications/grantpermissions.png)
     
   > [!NOTE]
-  > Udělení explicitní souhlas pomocí **udělit oprávnění** tlačítko je momentálně nevyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js. Aplikace, jinak selže, pokud se požaduje přístupový token.   
+  > Udělení explicitní souhlas pomocí **udělit oprávnění** tlačítko je momentálně nevyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js. Aplikace, jinak selže, pokud se požaduje přístupový token. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurovat klientskou aplikaci pro přístup k webové rozhraní API
 Aby webové nebo důvěrné klientskou aplikaci, aby mohli účastnit tok udělení autorizace, který vyžaduje ověření (a získat přístupový token) je potřeba vytvořit zabezpečené přihlašovací údaje. Výchozí metoda ověřování nepodporuje portál Azure je ID klienta a tajný klíč. Tato část obsahuje kroky konfigurace, které jsou nutné k zajištění tajný klíč s přihlašovacími údaji vašeho klienta.
 
-Kromě toho předtím, než klient může získat přístup k webové rozhraní API vystavené prostředků aplikace (například Microsoft Graph API), rozhraní souhlasu zajistí, klient získá udělení oprávnění, která je potřeba, na základě požadovaná oprávnění. Všechny aplikace ve výchozím nastavení, můžete vybrat oprávnění z "Windows Azure Active Directory" (rozhraní Graph API) a "Systém Windows Azure Service Management API." ["Přihlášení a čtení uživatelský profil" oprávnění rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) , vybere se také ve výchozím nastavení. Pokud váš klient je registrována v klientovi, který má předplatné Office 365 účty, jsou k dispozici pro výběr webovým rozhraním API a oprávnění pro služby SharePoint a Exchange Online. Můžete vybrat z [dva typy oprávnění](active-directory-dev-glossary.md#permissions) pro všechny potřeby webového rozhraní API:
+Kromě toho předtím, než klient může získat přístup k webové rozhraní API vystavené prostředků aplikace (například Microsoft Graph API), rozhraní souhlasu zajistí, klient získá udělení oprávnění, která je potřeba, na základě požadovaná oprávnění. Všechny aplikace ve výchozím nastavení, můžete vybrat oprávnění z "Windows Azure Active Directory" (rozhraní Graph API) a "Systém Windows Azure Service Management API." ["Přihlášení a čtení uživatelský profil" oprávnění rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) , vybere se také ve výchozím nastavení. Pokud váš klient je registrována v klientovi, který má předplatné Office 365 účty, jsou k dispozici pro výběr webového rozhraní API a oprávnění pro služby SharePoint a Exchange Online. Můžete vybrat z [dva typy oprávnění](active-directory-dev-glossary.md#permissions) pro všechny potřeby webového rozhraní API:
 
 - Oprávnění aplikací: Klientské aplikace potřebuje přístup k webové rozhraní API přímo jako samotný (žádný kontext uživatele). Tento typ oprávnění vyžaduje souhlas správce a není k dispozici pro nativní klientské aplikace.
 
@@ -120,7 +120,7 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
    ![Aktualizace registrace aplikace](./media/active-directory-integrating-applications/update-app-registration.png)
 
 4. Budete přesměrováni na stránku registrace hlavní aplikace, což otevře **nastavení** stránku pro aplikaci. Chcete-li přidat tajný klíč pro přihlašovací údaje vaší webové aplikace:
-  - Klikněte **klíče** části na **nastavení** stránky.  
+  - Klikněte **klíče** části na **nastavení** stránky. 
   - Přidejte popis pro váš klíč.
   - Vyberte jeden nebo dva roky doba trvání.
   - Klikněte na **Uložit**. Sloupec nejvíce vpravo bude obsahovat hodnotou klíče, po uložení změn konfigurace. **Nezapomeňte zkopírovat klíč** pro použití v kódu aplikace klienta, protože není přístupná jednou tuto stránku opustíte.
@@ -141,7 +141,7 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
 6. Po dokončení klikněte na tlačítko **vyberte** na tlačítko **povolit přístup** stránky, pak se **provádí** na tlačítko **přístup přidat rozhraní API** stránky. Vrátíte se **požadovaná oprávnění** stránky, kde je do seznamu rozhraní API přidat nový prostředek.
 
   > [!NOTE]
-  > Kliknutím **provádí** tlačítko taky automaticky nastaví oprávnění pro vaši aplikaci ve vašem adresáři na základě oprávnění k ostatním aplikacím, které jste nakonfigurovali.  Tato oprávnění aplikací můžete zobrazit prohlížením aplikace **nastavení** stránky.
+  > Kliknutím **provádí** tlačítko taky automaticky nastaví oprávnění pro vaši aplikaci ve vašem adresáři na základě oprávnění k ostatním aplikacím, které jste nakonfigurovali. Tato oprávnění aplikací můžete zobrazit prohlížením aplikace **nastavení** stránky.
   > 
   > 
 
@@ -182,7 +182,7 @@ Následující části se dozvíte, jak vystavit oborů přístupu změnou manif
   > Další obory později podle potřeby můžete vystavit. Zvažte, zda webového rozhraní API mohou být vystaveny víc oborů, které jsou spojené s celou řadu různých funkcí. Prostředek můžete řídit přístup k webovému rozhraní API v době běhu vyhodnocením oboru (`scp`) deklarace identity v přijatý přístupový token OAuth 2.0.
   > 
 
-6. Po dokončení klikněte na tlačítko **Uložit**. Webové rozhraní API je teď nakonfigurovaný na používání jiné aplikace ve vašem adresáři.  
+6. Po dokončení klikněte na tlačítko **Uložit**. Webové rozhraní API je teď nakonfigurovaný na používání jiné aplikace ve vašem adresáři. 
 
   ![Aktualizace registrace aplikace](./media/active-directory-integrating-applications/update-app-registration-manifest.png)
 
@@ -210,7 +210,7 @@ Další informace o aplikaci manifest obecné koncepty, najdete v části [pocho
 
 Jak už bylo zmíněno dříve, kromě vystavení nebo přístup k rozhraní API pro vaše vlastní aplikace, můžete zaregistrovat klientskou aplikaci pro přístup k rozhraní API vystavené zdrojů společnosti Microsoft. Rozhraní Microsoft Graph API, označuje jako "Microsoft Graph" v seznamu prostředků nebo rozhraní API na portálu, je k dispozici pro všechny aplikace, které jsou registrovány s Azure AD. Pokud registrujete klientskou aplikaci v klientovi, který obsahuje účty, které jste se přihlásili pro předplatné služeb Office 365, můžete taky přejít obory vystavené různé prostředky Office 365.
 
-Úplné informace o oborech vystavené Microsoft Graph API, najdete v článku [obory oprávnění | Koncepty Microsoft Graph API](https://graph.microsoft.io/docs/authorization/permission_scopes) článku.
+Úplné informace o oborech vystavené Microsoft Graph API, najdete v článku [Microsoft Graph oprávnění odkaz](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) článku.
 
 > [!NOTE]
 > Kvůli aktuálním omezením nativní klientské aplikace může volat pouze do Azure AD Graph API pokud používají oprávnění "Přístup k adresáři vaší organizace". Toto omezení neplatí pro webové aplikace.
@@ -247,7 +247,7 @@ Po provedení změny uživatelů a správců v jiných organizacích, mohou udě
 
 #### <a name="changing-the-application-to-support-multi-tenant"></a>Změna aplikace pro podporu více klientů
 
-Podporu pro více klientů aplikace založena na rozhraní Azure AD souhlasu. Souhlas je mechanismus, který umožňuje uživateli z jiného klienta, můžete udělit přístup aplikace k prostředkům zabezpečené uživatele klienta. Toto prostředí se označuje jako "souhlas uživatele."
+Podporu pro více klientů aplikace založena na rozhraní Azure AD souhlasu. Souhlas je mechanismus, který umožňuje uživateli z jiného klienta k udělení přístupu aplikace k prostředkům zabezpečené uživatele klienta. Toto prostředí se označuje jako "souhlas uživatele."
 
 Webové aplikace může také nabízí:
 
@@ -289,7 +289,7 @@ Ve výchozím nastavení je pro aplikace zakázaná implicitní Grant OAuth 2.0.
 Tato část popisuje postup odebrání registrace aplikace z vašeho klienta Azure AD.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Odebrání aplikace vytvořené ve vaší organizaci
-Zobrazit aplikace, které má vaše organizace registrované v části "Aplikací" filtr na stránce hlavní "registrace aplikace" vašeho klienta. Tyto aplikace jsou ty, které jste ručně zaregistrovat prostřednictvím portálu Azure nebo programově pomocí prostředí PowerShell nebo rozhraní Graph API. Přesněji řečeno jsou reprezentované pomocí k aplikaci a instanční objekt objektu v klientovi. Další informace najdete v tématu [objekty aplikací a hlavní objekty služeb](active-directory-application-objects.md).
+Aplikace, které vaše organizace zaregistrovala vyskytovat v části "Aplikací" filtr na stránce hlavní "registrace aplikace" vašeho klienta. Tyto aplikace jsou ty, které jste ručně zaregistrovat prostřednictvím portálu Azure nebo programově pomocí prostředí PowerShell nebo rozhraní Graph API. Přesněji řečeno jsou reprezentované pomocí k aplikaci a instanční objekt objektu v klientovi. Další informace najdete v tématu [objekty aplikací a hlavní objekty služeb](active-directory-application-objects.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>Odebrání aplikace klienta jedním z adresáře
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -309,13 +309,13 @@ Zobrazit aplikace, které má vaše organizace registrované v části "Aplikac�
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Odebráním víceklientské aplikace, autorizovat jiné organizaci
 Část aplikace, které se zobrazí v části "Všechny aplikace" filtru (s výjimkou registrace "Aplikací") na hlavní stránce "Registrace aplikace" vašeho klienta jsou víceklientským aplikacím. V technické podmínky tyto víceklientské aplikace z jiného klienta a registraci do vašeho klienta během procesu souhlasu. Přesněji řečeno jsou zobrazeny v pouze službu objektu zabezpečení ve vašem klientovi bez odpovídající objektu aplikace. Další informace o rozdílech mezi aplikací a hlavní objekty služby najdete v tématu [aplikace a služby hlavní objekty ve službě Azure AD](active-directory-application-objects.md).
 
-Chcete-li odebrat přístup k aplikaci víceklientské do vašeho adresáře (po s udělen souhlas), musíte odebrat správce společnosti jeho instanční objekt. Správce musí mít přístup globální správce a můžete odebrat prostřednictvím portálu Azure nebo použít [rutin prostředí Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151) k odebrání přístupu.
+Chcete-li odebrat přístup k aplikaci víceklientské do vašeho adresáře (po s udělen souhlas), musíte odebrat správce společnosti jeho instanční objekt. Správce musí mít přístup globálního správce a můžete ho odebrat prostřednictvím portálu Azure nebo použít [rutin prostředí Azure AD PowerShell](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o tom, jak funguje ověřování ve službě Azure AD najdete v tématu [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
 - Najdete v článku [Branding pokyny pro integrované aplikace](active-directory-branding-guidelines.md) tipy na visual pokyny pro vaši aplikaci.
 - Další informace o vztah mezi objekty aplikace a služby hlavní aplikace v tématu [objekty aplikací a hlavní objekty služeb](active-directory-application-objects.md).
 - Další informace o roli plní manifestu aplikace, najdete v části [pochopení manifest aplikace Azure Active Directory](active-directory-application-manifest.md)
-- Najdete v článku [Glosář vývojáře Azure AD](active-directory-dev-glossary.md) definice některých koncepty pro vývojáře Azure Active Directory (AD) jádra.
+- Najdete v článku [Glosář vývojáře Azure AD](active-directory-dev-glossary.md) definice některých koncepty pro vývojáře základní Azure AD.
 - Přejděte [Příručka pro vývojáře Active Directory](active-directory-developers-guide.md) přehled veškerý obsah pro vývojáře.
 

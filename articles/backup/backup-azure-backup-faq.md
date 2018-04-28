@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/11/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9226bef986a0fd2b6e8454cbd78b659feda401b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na časté otázky týkající se součástí Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -30,10 +30,10 @@ K rychlému procházení částmi tohoto článku použijte odkazy vpravo v čá
 ## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit? <br/>
-Ano. Od ledna 2018 je možné vytvořit až 25 trezorů služeb zotavení, za podporovanou oblast Azure Backup za předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
+Ano. Můžete vytvořit až 500 trezory služeb zotavení, za podporovanou oblast Azure Backup za předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Je nějak omezený počet serverů nebo počítačů, které lze zaregistrovat k trezoru? <br/>
-Můžete zaregistrovat až 200 Azure virtuálních počítačů na jeden trezor. Pokud používáte MAB agenta, můžete zaregistrovat až 50 MAB agentů na jeden trezor. A můžete zaregistrovat servery pro 50 serverů nebo DPM MAB do trezoru.
+Můžete zaregistrovat až 1000 Azure virtuálních počítačů na jeden trezor. Pokud používáte MAB agenta, můžete zaregistrovat až 50 MAB agentů na jeden trezor. A můžete zaregistrovat servery pro 50 serverů nebo DPM MAB do trezoru.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Pokud má moje organizace jeden trezor, jak mohu během obnovování dat izolovat data jednoho serveru od jiného?<br/>
 Všechny servery zaregistrované ke stejnému trezoru mohou obnovit data zálohovaná ostatními servery, *které používají stejné heslo* Máte-li servery, jejichž zálohovaná data chcete izolovat od ostatních serverů ve vaší organizaci, použijte pro tyto servery vyhrazené heslo. Například servery lidských zdrojů mohou používat jedno šifrovací heslo, účetní servery jiné a servery úložiště ještě jiné.

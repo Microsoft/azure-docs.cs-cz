@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/28/2017
 ms.author: maghan
-ms.openlocfilehash: 0ba30c72fd23526d4c4da964bcd3e37f3e507dea
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9f1c80bd0274a9d606e69b19170c62337b68c74a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="power-bi-embedded-documentation"></a>Dokumentace ke službě Power BI Embedded
 
@@ -134,7 +134,7 @@ Zjistěte, jak můžete přidat vizualizace dat a interaktivní sestavy do aplik
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://docs.microsoft.com/en-us/rest/api/power-bi-embedded/">Referenční informace k rozhraní REST API Azure Resource Manageru</a></p>
+                        <p><a href="https://docs.microsoft.com/rest/api/power-bi-embedded/">Referenční informace k rozhraní REST API Azure Resource Manageru</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt147898.aspx">REST API – referenční informace</a></p>
                     </div>
                 </div>

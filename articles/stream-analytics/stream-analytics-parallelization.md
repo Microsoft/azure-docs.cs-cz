@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: fae9d7f871dbb20f19bfd61576e017b3910ee8f4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využít paralelizace dotazu v Azure Stream Analytics
 Tento článek ukazuje, jak chcete využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak se škálovat úlohy Stream Analytics nakonfigurováním vstupní oddíly a ladění analytics definice dotazu.
@@ -29,21 +29,13 @@ Definice úlohy Stream Analytics obsahuje vstupy, dotaz a výstup. Vstupní hodn
 
 ### <a name="inputs"></a>Vstupy
 Veškerý vstup Azure Stream Analytics můžete využít výhod vytváření oddílů:
--   Centrum EventHub (třeba explicitně nastaven klíč oddílu)
--   IoT Hub (třeba explicitně nastaven klíč oddílu)
+-   Centrum EventHub (třeba nastavit klíč oddílu explicitně s PARTITION BY – klíčové slovo)
+-   IoT Hub (třeba nastavit klíč oddílu explicitně s PARTITION BY – klíčové slovo)
 -   Blob Storage
 
 ### <a name="outputs"></a>Výstupy
 
-Při práci s Stream Analytics můžete využít oddíly v výstupy:
--   Azure Data Lake Storage
--   Azure Functions
--   Tabulka Azure
--   Blob Storage
--   CosmosDB (třeba explicitně nastaven klíč oddílu)
--   Centrum EventHub (třeba explicitně nastaven klíč oddílu)
--   IoT Hub (třeba explicitně nastaven klíč oddílu)
--   Service Bus
+Při práci s Stream Analytics můžete využít výhod dělení na oddíly pro většinu výstup jímky. Další informace o oddílech výstup je k dispozici na [dělení části stránky výstup](https://review.docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs?branch=master#partitioning).
 
 Výstupy PowerBI, SQL a datový sklad SQL nepodporují dělení. Ale můžete můžete stále oddílu vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
 
@@ -56,7 +48,7 @@ Další informace o oddílech najdete v následujících článcích:
 ## <a name="embarrassingly-parallel-jobs"></a>Trapně paralelní úlohy
 *Paralelně zpracovatelné* úlohy je nejvíce škálovatelným scénář máme v Azure Stream Analytics. Připojí se jeden oddíl vstupu do jedné instance dotazu do jednoho oddílu výstupu. Tato paralelismus má následující požadavky:
 
-1. Pokud logika dotazu závisí na stejný klíč zpracovávaných stejnou instanci dotazu, musí se ujistěte, že události přejděte do stejného oddílu váš vstup. Pro službu event hubs to znamená, že data události musí mít **PartitionKey** hodnotu sady. Alternativně můžete použít odesílatelé oddílů. Pro úložiště objektů blob to znamená, že události budou odeslány do stejné složky oddílu. Pokud dotaz logiky nevyžaduje stejný klíč zpracování na stejnou instanci dotazu, můžete ignorovat tento požadavek. Příkladem této logiky, může být jednoduchý dotaz vyberte filtr projektu.  
+1. Pokud logika dotazu závisí na stejný klíč zpracovávaných stejnou instanci dotazu, musí se ujistěte, že události přejděte do stejného oddílu váš vstup. Pro službu Event Hubs nebo IoT Hub, to znamená, že data události musí mít **PartitionKey** hodnotu sady. Alternativně můžete použít odesílatelé oddílů. Pro úložiště objektů blob to znamená, že události budou odeslány do stejné složky oddílu. Pokud dotaz logiky nevyžaduje stejný klíč zpracování na stejnou instanci dotazu, můžete ignorovat tento požadavek. Příkladem této logiky, může být jednoduchý dotaz vyberte filtr projektu.  
 
 2. Jakmile data rozložená na vstupní straně, musí se ujistěte, že váš dotaz je rozdělený do oddílů. To vyžaduje, abyste použili **PARTITION BY** v všechny kroky. Jsou povoleny několik kroků, ale musí mít všechny oddíly pomocí stejného klíče. V současné době rozdělení klíč musí být nastavena na **PartitionId** v pořadí pro úlohu, která má být plně paralelní.  
 
@@ -66,6 +58,7 @@ Další informace o oddílech najdete v následujících článcích:
 
    * 8 oddíly vstupní centra událostí a Centrum událostí 8 výstupní oddíly
    * 8 oddíly vstupní centra událostí a výstup úložiště objektů blob  
+   * 8 Iot hub vstupní oddílů a 8 oddíly výstupu centra událostí
    * 8 oddíly vstupní úložiště objektů blob a výstup úložiště objektů blob  
    * 8 blob oddílů pro úložiště a 8 oddíly výstupu centra událostí  
 

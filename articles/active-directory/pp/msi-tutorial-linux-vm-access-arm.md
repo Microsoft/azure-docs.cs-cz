@@ -1,8 +1,8 @@
 ---
-title: "Použít virtuální počítač s Linuxem přiřazený uživatelem MSI pro přístup k Azure Resource Manager"
-description: "Kurz vás provede procesem pomocí User-Assigned spravované služby Identity (MSI) na virtuální počítač s Linuxem, přístup k Azure Resource Manager."
+title: Použít virtuální počítač s Linuxem přiřazený uživatelem MSI pro přístup k Azure Resource Manager
+description: Kurz vás provede procesem pomocí User-Assigned spravované služby Identity (MSI) na virtuální počítač s Linuxem, přístup k Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -15,10 +15,10 @@ ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c2b6d70e441dc3d300f49adff1c02d7cc65788d2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>Používat přiřazený uživatelem spravované služby Identity (MSI) na virtuální počítač s Linuxem, pro přístup k Azure Resource Manager
 
@@ -49,7 +49,7 @@ V tomto kurzu spustit příklady skriptu rozhraní příkazového řádku, máte
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvořit virtuální počítač s Linuxem do nové skupiny prostředků
 

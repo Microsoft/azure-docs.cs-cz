@@ -1,25 +1,18 @@
 ---
-title: "Jak spravovat souběžných zapíše k prostředkům ve službě Azure Search"
-description: "Zabrání se tím kolizím střední letecké na aktualizace nebo odstranění indexů Azure Search, indexery, zdroje dat pomocí optimistickou metodu souběžného."
-services: search
-documentationcenter: 
+title: Jak spravovat souběžných zapíše k prostředkům ve službě Azure Search
+description: Zabrání se tím kolizím střední letecké na aktualizace nebo odstranění indexů Azure Search, indexery, zdroje dat pomocí optimistickou metodu souběžného.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
-ms.openlocfilehash: aee1b7376d4829e3e2f5a232525e3c3cb4df9d8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5fa495c1266c847cabc0eb4e35b85132550bc3c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Jak spravovat souběžnosti ve službě Azure Search
 
@@ -211,7 +204,7 @@ Fragment získá index "hotels", zkontroluje verzi objektu na operaci aktualizac
         }
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zkontrolujte [synonyma C# ukázka](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) pro další kontext na tom, jak bezpečně aktualizovat existující index.
 
@@ -220,7 +213,7 @@ Zkuste upravit některou z následujících ukázek o značky etag binárním ro
 + [Rozhraní REST API ukázce na Githubu](https://github.com/Azure-Samples/search-rest-api-getting-started) 
 + [Ukázka sady .NET SDK na Githubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje "DotNetEtagsExplainer" projekt obsahující kód uvedený v tomto článku.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
   [Společné hlavičky požadavku a odpovědi HTTP](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)    
   [Stavové kódy HTTP](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) [indexu operací (REST API)](https://docs.microsoft.com/\rest/api/searchservice/index-operations)

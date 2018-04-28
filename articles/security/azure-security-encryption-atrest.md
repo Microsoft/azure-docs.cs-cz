@@ -3,7 +3,7 @@ title: Microsoft Azure Data šifrování na Rest | Microsoft Docs
 description: Tento článek obsahuje přehled Microsoft Azure data šifrování na rest, celkový možnosti a Obecné aspekty.
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování na Rest Azure dat
 Existuje několik nástrojů v rámci Microsoft Azure k ochraně dat podle potřeb zabezpečení a dodržování předpisů vaší společnosti. Tento dokument se zaměřuje na:
@@ -63,7 +63,7 @@ Umístění úložiště šifrovacích klíčů a řízení přístupu na tyto k
 
 Oprávnění k použití klíče uložené v Azure Key Vault, Správa nebo k nim získat přístup k šifrování na Rest šifrování a dešifrování, je možné přidělit k účtům Azure Active Directory. 
 
-### <a name="key-hierarchy"></a>Key Hierarchy
+### <a name="key-hierarchy"></a>Klíče hierarchie
 
 Více než jeden šifrovací klíč se používá v šifrování v implementaci rest. Asymetrické šifrování je užitečné pro navázání vztahu důvěryhodnosti a ověřování, které jsou potřebné pro přístup ke klíčům a správu. Symetrické šifrování je efektivnější pro hromadné šifrování a dešifrování, povolení pro silnější šifrování a lepší výkon. Kromě toho omezené použití jediný šifrovací klíč snižuje riziko ohrožení zabezpečení klíč a náklady na znova šifrovat při klíč se musí nahradit. Pokud chcete využít výhod asymetrické a symetrického šifrování a omezení použití a ohrožení jeden klíč, použijte na modely rest Azure šifrování klíče hierarchie skládá z následujících typů klíčů:
 
@@ -246,7 +246,7 @@ Azure Blob a soubor podporuje šifrování v klidovém stavu pro scénáře šif
 
 SQL Azure aktuálně podporuje šifrování v klidovém stavu straně Microsoft spravované služby a scénáře šifrování na straně klienta.
 
-Sever podporu pro šifrování je nyní k dispozici prostřednictvím funkce SQL názvem transparentní šifrování dat. Jakmile zákazník SQL Azure umožňuje šifrování TDE klíč se automaticky vytváří a spravují pro ně. Šifrování v klidovém stavu se dá nastavit na úrovni databáze nebo serveru. Od června 2017 [transparentní šifrování šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) bude povolená ve výchozím nastavení pro nově vytvořené databáze.
+Podpora pro šifrování na serveru je aktuálně k dispozici pomocí funkce SQL názvem transparentní šifrování dat. Jakmile zákazník SQL Azure umožňuje šifrování TDE klíč se automaticky vytváří a spravují pro ně. Šifrování v klidovém stavu se dá nastavit na úrovni databáze nebo serveru. Od června 2017 [transparentní šifrování šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) bude povolená ve výchozím nastavení pro nově vytvořené databáze.
 
 Šifrování na straně klienta dat SQL Azure je podporováno prostřednictvím [vždy šifrována](https://msdn.microsoft.com/library/mt163865.aspx) funkce. Vždy používá šifrovaný klíč, který vytvoří a uloží klientem. Zákazníci může ukládat hlavní klíč do úložiště certifikátů systému Windows, Azure Key Vault nebo místního modulu hardwarového zabezpečení. Pomocí SQL Server Management Studio, SQL uživatelé zvolit, jaké klíče, které se mají použít k šifrování sloupec.
 
@@ -256,9 +256,9 @@ Sever podporu pro šifrování je nyní k dispozici prostřednictvím funkce SQL
 |                                  | **Správa klíčů** | **Službu spravovat klíče** | **Zákazník spravované v trezoru klíčů** | **Zákazník spravované na místě** |        |
 | **Úložiště a databáze**            |                |                     |                              |                              |        |
 | Disk (IaaS)                      |                | -                   | Ano                          | Ano*                         | -      |
-| SQL Server (IaaS)                |                | Ano                 | Ano                          | Ano                          | Ano    |
-| Azure SQL (PaaS)                 |                | Ano                 | Preview                      | -                            | Ano    |
-| Úložiště Azure (objekty BLOB bloku nebo stránky) |                | Ano                 | Preview                      | -                            | Ano    |
+| Systému SQL Server (IaaS)                |                | Ano                 | Ano                          | Ano                          | Ano    |
+| Azure SQL (PaaS)                 |                | Ano                 | Ano                          | -                            | Ano    |
+| Úložiště Azure (objekty BLOB bloku nebo stránky) |                | Ano                 | Ano                          | -                            | Ano    |
 | Úložiště Azure (soubory)            |                | Ano                 | -                            | -                            | -      |
 | Úložiště Azure (tabulky, fronty)   |                | -                   | -                            | -                            | Ano    |
 | Cosmos DB (dokument DB)          |                | Ano                 | -                            | -                            | -      |
@@ -275,7 +275,7 @@ Sever podporu pro šifrování je nyní k dispozici prostřednictvím funkce SQL
 | Power BI                         |                | Ano                 | -                            | -                            | -      |
 | **Služby IoT**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | Ano    |
-| Service Bus                      |                | Ano (úroveň Premium)              | -                            | -                            | Ano    |
+| Service Bus                      |                | Ano              | -                            | -                            | Ano    |
 | Event Hubs                       |                | Ano             | -                            | -                            | -      |
 
 

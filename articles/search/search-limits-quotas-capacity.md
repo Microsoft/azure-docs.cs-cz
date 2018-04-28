@@ -1,25 +1,19 @@
 ---
 title: Omezení ve službě Azure Search služby | Microsoft Docs
 description: Omezení služby používá pro plánování kapacity a maximální limit na požadavky a odpovědi pro službu Azure Search.
-services: search
-documentationcenter: ''
 author: HeidiSteen
-manager: jhubbard
-editor: ''
-tags: azure-portal
-ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
+manager: cgronlun
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: heidist
-ms.openlocfilehash: 77ea75bf66f4b6ae6ec7d6ede4364db6b7fa82a0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby ve službě Azure Search
 Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) v **volné**, **základní**, nebo **Standardní** cenové úrovně.
@@ -77,7 +71,7 @@ Pro služby vztahují omezení dokumentů vztahuje platí následující maximá
 
 |  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+|  10,000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 > [!Note] 
 > Pro služby S3 s vysokou hustotou vytvořené po pozdní 2017 200 milionů dokumentů na oddíl odebral ale 1 milion dokumentů na index limit zůstanou.

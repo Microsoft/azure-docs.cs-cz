@@ -7,14 +7,14 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c6907e8eb4ae4bbfae76a5a220d670427afd703
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c6030d1951c22dddfe6df01225c63cf503a370ac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store k SQL Data Warehouse
 Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spustit ad hoc dotazy na data uložená v ADLS, doporučujeme importu dat do SQL Data Warehouse pro nejlepší výkon.
@@ -50,7 +50,7 @@ Abyste mohli připojit k Azure Data Lake Store, musíte **první** vytvoření a
 -- A: Create a Database Master Key.
 -- Only necessary if one does not already exist.
 -- Required to encrypt the credential secret in the next step.
--- For more information on Master Key: https://msdn.microsoft.com/en-us/library/ms174382.aspx?f=255&MSPPError=-2147217396
+-- For more information on Master Key: https://msdn.microsoft.com/library/ms174382.aspx?f=255&MSPPError=-2147217396
 
 CREATE MASTER KEY;
 
@@ -58,7 +58,7 @@ CREATE MASTER KEY;
 -- B: Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
--- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/en-us/library/mt270260.aspx
+-- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
 
 CREATE DATABASE SCOPED CREDENTIAL ADLCredential
 WITH

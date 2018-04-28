@@ -1,24 +1,19 @@
 ---
 title: Připojení databáze Azure SQL do Azure Search pomocí indexerů | Microsoft Docs
 description: Naučte se načítat data z databáze SQL Azure do indexu Azure Search pomocí indexerů.
-services: search
-documentationcenter: ''
 author: chaosrealm
-manager: pablocas
-editor: ''
-ms.assetid: e9bbf352-dfff-4872-9b17-b1351aae519f
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: a5198cc6e3b019fc6fd241f22c4da088f0839066
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 
@@ -66,7 +61,7 @@ V závislosti na několika různými faktory týkající se dat používání Az
 1. Vytvoření zdroje dat:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
+    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -85,7 +80,7 @@ V závislosti na několika různými faktory týkající se dat používání Az
 3. Vytvořte indexeru tak, že ho pojmenujete a odkazování na index zdrojové a cílové dat:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -98,7 +93,7 @@ V závislosti na několika různými faktory týkající se dat používání Az
 
 Indexer vytvořené v tomto případě nemá plán. Automaticky spustí, až když je vytvořena. Můžete ho spustit znovu v současně pomocí **spustit indexer** žádost:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
     api-key: admin-key
 
 Můžete přizpůsobit několik aspektů indexer chování, například velikost dávky a kolik dokumentů mohou být přeskočeny, než se nezdaří spuštění indexeru. Další informace najdete v tématu [vytvoření rozhraní API Indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
@@ -107,7 +102,7 @@ Budete muset povolit službám Azure připojit k vaší databázi. V tématu [p�
 
 Ke sledování indexer stavu a provádění historii (počet položek indexed, selhání atd.), použijte **indexer stav** žádost:
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2016-09-01
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
     api-key: admin-key
 
 Odpověď by měl vypadat takto:
@@ -149,7 +144,7 @@ Další informace o odpovědi můžete najít v [získání stavu indexeru](http
 ## <a name="run-indexers-on-a-schedule"></a>Indexery spouštět podle plánu
 Můžete také uspořádat indexeru pravidelně spouštět podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2016-09-01
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -288,9 +283,9 @@ Při použití konfigurace soft odstranění techniku, můžete určit zásadu o
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datové typy SQL a Azure Search
 | Datový typ SQL. | Cílový index povolené typy polí | Poznámky |
 | --- | --- | --- |
-| Bit |Edm.Boolean, Edm.String | |
+| Bit |Edm.Boolean Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
-| bigint |Edm.Int64, Edm.String | |
+| bigint |Edm.Int64 Edm.String | |
 | skutečné, float |Edm.Double, Edm.String | |
 | Smallmoney peníze desítková číslice |Edm.String |Vyhledávání systému Azure nepodporuje převod decimal typy do Edm.Double, protože by to ztratit přesnost |
 | Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění Collection(Edm.String) pole, pokud řetězec představuje pole JSON řetězců: `["red", "white", "blue"]` |

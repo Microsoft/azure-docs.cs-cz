@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c284bb3637415186a12c63d4eeb088ab5f23e2e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f85a7b018085ce30550bec21fe41ca3f9253da80
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-location-based-services---supported-languages"></a>Umístění Azure na základě Services – podporované jazyky
 Lokalizované služby Azure na základě umístění v různých jazycích rámci služeb.  Následující tabulka obsahuje podporované jazykové kódy pro každou službu.  
@@ -28,17 +28,17 @@ Lokalizované služby Azure na základě umístění v různých jazycích rámc
 
 | ID         | Název                   |  Mapy | Search | Směrování | Provoz incidenty | JS mapový ovládací prvek | Časové pásmo |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
-| af-ZA      | Afrikánština              |       |    ✓   |    ✓    |                   |                |     ✓     |
-| ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| af ZA      | Afrikánština              |       |    ✓   |    ✓    |                   |                |     ✓     |
+| ar (SA)      | arabština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | Evropa ES      | Baskičtina                 |       |        |         |                   |                |     ✓     |
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | ES certifikační autority      | Katalánština                |       |    ✓   |         |                   |                |     ✓     |
 | zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |                   |                |     ✓     |
-| zh-HanT    | Čínština (tradiční)  | zh-TW |  zh-TW |  zh-TW  |                   |      Zh-TW     |     ✓     |
+| zh-HanT    | Čínština (tradiční)  | zh-TW |  zh-TW |  zh-TW  |                   |      zh-TW.     |     ✓     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | dánština                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| NL -NL     | Holandština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NL-NL      | Holandština                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | Baskičtina        |       |    ✓   |         |                   |                |     ✓     |
 | en         | Angličtina                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et EE      | Estonština               |       |    ✓   |         |         ✓         |                |     ✓     |
@@ -52,7 +52,7 @@ Lokalizované služby Azure na základě umístění v různých jazycích rámc
 | Dobrý den IN      | Hindština                  |       |        |         |                   |                |     ✓     |
 | hu-HU      | Maďarština              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ID ID      | Indonéština             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
-| it-IT      | italština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| IT-IT      | italština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ja-JP      | Japonština               |       |        |         |                   |                |     ✓     |
 | kk-KZ      | Kazaština                 |       |        |         |                   |                |     ✓     |
 | ko-KR      | Korejština                 |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
@@ -67,13 +67,13 @@ Lokalizované služby Azure na základě umístění v různých jazycích rámc
 | ro-RO      | Rumunština               |       |        |         |         ✓         |                |     ✓     |
 | ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |        |         |                   |                |     ✓     |
-| sr-Latn-RS | Srbština (latinka)        |       |        |         |                   |                |     ✓     |
+| SR-Latn-RS | Srbština (latinka)        |       |        |         |                   |                |     ✓     |
 | sk-SK      | Slovenština              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | sl-SL      | Slovinština              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| es-ES      | Španělština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| ES-ES      | Španělština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | es-MX      | španělština (Mexiko)       |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
 | sv -SE     | švédština                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | TH TÝ      | Thajština                   |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | tr-TR      | turečtina                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| uk-UA      | Ukrajinština               |       |        |         |                   |                |     ✓     |
+| Spojené království – uživatelský Agent      | Ukrajinština               |       |        |         |                   |                |     ✓     |
 | vi-VN      | Vietnamština             |       |        |         |                   |                |     ✓     |

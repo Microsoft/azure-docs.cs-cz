@@ -1,8 +1,8 @@
 ---
 title: Migrace mezi oblastmi Azure Data Lake Store | Microsoft Docs
-description: "Další informace o migraci mezi oblastmi pro Azure Data Lake Store."
+description: Další informace o migraci mezi oblastmi pro Azure Data Lake Store.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Migrovat Data Lake Store v oblastech
 
@@ -45,11 +45,11 @@ Další důležité podrobnosti vzít v úvahu při plánování migrace jsou:
 
 * **Nástroje pro**. Doporučujeme vám, že používáte [aktivita služby Azure Data Factory kopie](../data-factory/connector-azure-data-lake-store.md) kopírovat soubory Data Lake Store. Objekt pro vytváření dat podporuje přesun dat s vysokým výkonem a spolehlivostí. Uvědomte si, že objekt pro vytváření dat zkopíruje pouze hierarchii složek a obsahu souborů. Budete muset použít ručně všech seznamech (ACL) používaných v starý účet nový účet. Další informace, včetně cíle výkonnosti pro nejlepší možný scénáře, najdete v článku [výkonu kopie aktivity a vyladění průvodce](../data-factory/copy-activity-performance.md). Pokud chcete data zkopírovat rychleji, možná budete muset používat další jednotky přesun dat v cloudu. Některé nástroje, jako je AdlCopy, nepodporují kopírování dat mezi oblastmi.  
 
-* **Šířka pásma poplatky**. [Šířka pásma poplatky](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) použít, protože data se přenáší z oblasti Azure.
+* **Šířka pásma poplatky**. [Šířka pásma poplatky](https://azure.microsoft.com/pricing/details/bandwidth/) použít, protože data se přenáší z oblasti Azure.
 
 * **Seznamy ACL na vaše data**. Zabezpečení dat v nové oblasti s použitím seznamů řízení přístupu k souborům a složkám. Další informace najdete v tématu [zabezpečení dat uložených v Azure Data Lake Store](data-lake-store-secure-data.md). Doporučujeme vám, že používáte migraci k aktualizaci a upravit vaše seznamy ACL. Můžete chtít použít nastavení podobná aktuální nastavení. Seznamy ACL, které se použijí na všechny soubory pomocí portálu Azure můžete zobrazit [rutiny prostředí PowerShell](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), nebo sady SDK.  
 
 * **Umístění služby analytics**. Pro nejlepší výkon analytické služby, jako je Azure Data Lake Analytics nebo Azure HDInsight, musí být ve stejné oblasti jako vaše data.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)

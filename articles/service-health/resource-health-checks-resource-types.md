@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a stav kontrol ve stavu prostředků Azure.
 Níže je úplný seznam všechny kontroly provedené prostřednictvím stav prostředku pro typy prostředků.
@@ -48,7 +48,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Lze účet přejít z v rámci datového centra?</li><li>Je k dispozici kognitivní poskytovatelem prostředků služby?</li><li>Je k dispozici služba kognitivní v příslušné oblasti?</li><li>Můžete přečíst na účet úložiště, která uchovává metadata prostředků provádět operace?</li><li>Bylo dosaženo kvóty volání rozhraní API?</li><li>Bylo dosaženo čtení limit volání rozhraní API?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
+## <a name="microsoftcomputevirtualmachines"></a>Microsoft.COMPUTE/virtualmachines
 |Spuštění kontroly|
 |---|
 |<ul><li>Je server hostování tohoto virtuálního počítače nahoru a systémem?</li><li>Spuštění operačního systému hostitele dokončil?</li><li>Kontejner virtuálního počítače je zřízený a zapnut?</li><li>Je k dispozici síťové připojení mezi hostitelem a účet úložiště?</li><li>Spouštění hostovaný operační systém dokončil?</li><li>Je k dispozici probíhající plánované údržby?</li></ul>|
@@ -75,7 +75,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |---|
 |<ul><li>Existuje byly všechny databáze nebo kolekce žádosti není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li><li>Existuje byly všechny žádosti dokument není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
+## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
 |Spuštění kontroly|
 |---|
 |<ul><li>Je připojen tunelového připojení sítě VPN?</li><li>Jsou konfliktům v konfiguraci připojení?</li><li>Jsou předsdílených klíčů správně nakonfigurovaná?</li><li>Je dostupná místní zařízení VPN?</li><li>Existují neshody v zásadách zabezpečení protokolu IPSec/IKE?</li><li>Správně zřízený, nebo ve stavu selhání, je připojení S2S VPN?</li><li>Správně zřízený, nebo ve stavu selhání, je připojení VNET-to-VNET?</li></ul>|
@@ -113,7 +113,7 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 ## <a name="microsoftwebserverfarms"></a>Microsoft.web/serverFarms
 |Spuštění kontroly|
 |---|
-|<ul><li>Hostitelský server je spuštěný a funkční?</li><li>Běží Internetová informační služba</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Webové služby plánování dosažitelný z v rámci datového centra?</li><li>Účet úložiště je hostitelem lokality obsah pro serverovou farmu, která je k dispozici??</li></ul>|
+|<ul><li>Hostitelský server je spuštěný a funkční?</li><li>Běží Internetová informační služba</li><li>Je spuštěn nástroj pro vyrovnávání zatížení?</li><li>Plán aplikační služby dosažitelný z v rámci datového centra?</li><li>Účet úložiště je hostitelem lokality obsah pro serverovou farmu, která je k dispozici??</li></ul>|
 
 ## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |Spuštění kontroly|

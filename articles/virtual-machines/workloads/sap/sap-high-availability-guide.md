@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e65f38b6fb4f5434c840af1866ccf09671111f3e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure vysoké dostupnosti virtuálních počítačů pro SAP NetWeaver
 
@@ -419,9 +419,9 @@ _**Obrázek 11:** nastavit parametry SAP vysokou dostupnost Azure Resource Manag
     * Cluster databázového systému: <*SAPSystemSID*> - db - <*číslo*>
 
   * **Síťové karty pro všechny virtuální počítače s přidružené IP adresy**:
-    * <*SAPSystemSID*>-nic-di-<*Number*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
-    * <*SAPSystemSID*>-nic-db-<*Number*>
+    * <*SAPSystemSID*> - nic - di - <*číslo*>
+    * <*SAPSystemSID*> - nic - ASC - <*číslo*>
+    * <*SAPSystemSID*> - nic - db - <*číslo*>
 
   * **Účty služby Azure storage (pouze nespravovaná disků)**
 
@@ -617,8 +617,8 @@ Pro místní nasazení je třeba tyto názvy vyhrazené hostitele a IP adresy:
 
 | Název role virtuálních hostitelů | Název virtuálního hostitele | Virtuální statickou IP adresu |
 | --- | --- | --- |
-| SAP ASC nebo SCS první clusteru virtuální hostitel název (pro správu clusteru) |pr1-ascs-vir |10.0.0.42 |
-| Název virtuálního hostitele instance SAP ASC nebo SCS |pr1-ascs-sap |10.0.0.43 |
+| SAP ASC nebo SCS první clusteru virtuální hostitel název (pro správu clusteru) |PR1. ASC vir |10.0.0.42 |
+| Název virtuálního hostitele instance SAP ASC nebo SCS |PR1. ASC sap |10.0.0.43 |
 | Databázového systému SAP druhý cluster virtuálního hostitele název (Správa clusteru) |pr1-dbms-vir |10.0.0.32 |
 
 Při vytváření clusteru, vytvořit názvy virtuálních hostitelů **pr1. ASC vir** a **pr1. databázového systému vir** a přidružené IP adresy, které spravují samotného clusteru. Informace o tom, jak to udělat najdete v tématu [shromažďovat uzly clusteru v konfiguraci clusteru][sap-ha-guide-8.12.1].
@@ -697,7 +697,7 @@ Pokud chcete vytvořit požadované interní služby load vyrovnávání koncov�
 
 | Název pravidla vyrovnávání služby nebo zatížení | Výchozí čísla portů | Konkrétní porty (ASC instance číslem instance 00) (YBRAT s 10) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
+| Zařadit Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
 | Server zpráv ABAP / *lbrule3600* |36 <*InstanceNumber*> |3600 |
 | Zpráva Vnitřní ABAP / *lbrule3900* |39 <*InstanceNumber*> |3900 |
 | Server HTTP zpráv nebo *Lbrule8100* |81 <*InstanceNumber*> |8100 |
@@ -715,8 +715,8 @@ Pak vytvořte tyto koncové body pro SAP NetWeaver Java SCS porty pro vyrovnáv�
 
 | Název pravidla vyrovnávání služby nebo zatížení | Výchozí čísla portů | Konkrétní porty (SCS instance číslem instance 01) (YBRAT s 11) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
-| Gateway Server / *lbrule3301* |33 <*InstanceNumber*> |3301 |
+| Zařadit Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
+| Server brány nebo *lbrule3301* |33 <*InstanceNumber*> |3301 |
 | Server zpráv Java / *lbrule3900* |39 <*InstanceNumber*> |3901 |
 | Server HTTP zpráv nebo *Lbrule8101* |81 <*InstanceNumber*> |8101 |
 | SAP spuštění služby SCS HTTP / *Lbrule50113* |5 <*InstanceNumber*> 13 |50113 |
@@ -773,7 +773,7 @@ Chcete-li přidat položky registru na obou uzlů clusteru instance SAP ASC nebo
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální): |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/en-us/library/cc957549.aspx](https://technet.microsoft.com/en-us/library/cc957549.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Tabulka 3:** změnit první parametr TCP/IP_
 
@@ -784,7 +784,7 @@ Pak přidejte této položky registru systému Windows na obou uzlů clusteru sy
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální): |
 | Hodnota |120000 |
-| Odkaz na dokumentaci |[https://technet.microsoft.com/en-us/library/cc957548.aspx](https://technet.microsoft.com/en-us/library/cc957548.aspx) |
+| Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabulka 4:** změnit druhý parametr protokolu TCP/IP_
 

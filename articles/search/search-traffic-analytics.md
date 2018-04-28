@@ -1,24 +1,18 @@
 ---
-title: "Analýza provozu vyhledávání pro službu Azure Search | Microsoft Docs"
-description: "Povolte Analýza provozu vyhledávání pro službu Azure Search, hostované cloudové vyhledávací službu v Microsoft Azure, k odemčení přehledy o vašich dat a jak pracují uživatelé."
+title: Analýza provozu vyhledávání pro službu Azure Search | Microsoft Docs
+description: Povolte Analýza provozu vyhledávání pro službu Azure Search, hostované cloudové vyhledávací službu v Microsoft Azure, k odemčení přehledy o vašich dat a jak pracují uživatelé.
+author: HeidiSteen
+manager: cgronlun
 services: search
-documentationcenter: 
-author: bernitorres
-manager: jlembicz
-editor: 
-ms.assetid: b31d79cf-5924-4522-9276-a1bb5d527b13
 ms.service: search
-ms.devlang: multiple
-ms.workload: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/05/2017
-ms.author: betorres
-ms.openlocfilehash: 303ca5c820f573dc0b58f1910f258403c3baad2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: heidist
+ms.openlocfilehash: ca0a00d078cd63aa8736ba9f9822fd812823304f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-search-traffic-analytics"></a>Co je analýza provozu vyhledávání
 Analýza provozu vyhledávání je vzor pro implementaci zpětné vazby pro vaši službu vyhledávání. Tento vzor popisuje potřebná data a jak shromažďovat pomocí Application Insights, vedoucí odvětví pro monitorování služeb ve více platformách.
@@ -139,7 +133,7 @@ Pokaždé, když je žádost o vyhledávání vydané určitým uživatelem, je 
 
 Pokaždé, když uživatel klikne na dokument, který je signál, musíte být přihlášeni pro účely analýzy vyhledávání. Použijte vlastní události Application Insights do protokolu tyto události se schématem následující:
 
-**ServiceName**: název vyhledávací služby (string) **SearchId**: Jedinečný identifikátor (guid) související vyhledávací dotaz **identifikátorů DocId**: identifikátor dokumentu (string) **pozice** : stránka s výsledky pořadí (int) dokumentu do vyhledávání
+**ServiceName**: název vyhledávací služby (string) **SearchId**: Jedinečný identifikátor (guid) související vyhledávací dotaz **identifikátorů DocId**: identifikátor dokumentu (string) **pozice**: stránka s výsledky pořadí (int) dokumentu do vyhledávání
 
 > [!NOTE]
 > Pozice odkazuje mohutnosti pořadí, v aplikaci. Jste volné nastavit toto číslo, dokud je vždy stejný, aby pro porovnání.

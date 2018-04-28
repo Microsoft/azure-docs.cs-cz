@@ -5,6 +5,7 @@
     - name: "Informace o\_službě Virtual Network"
       href: virtual-networks-overview.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření virtuální sítě – portál
       href: quick-create-portal.md

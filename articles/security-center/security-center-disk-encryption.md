@@ -1,11 +1,11 @@
 ---
-title: "Šifrování virtuálního počítače Azure | Dokumentace Microsoftu"
-description: "Tento dokument vám pomůže zašifrovat virtuální počítač Azure, pokud dostanete výstrahu od služby Azure Security Center."
+title: Šifrování virtuálního počítače Azure | Dokumentace Microsoftu
+description: Tento dokument vám pomůže zašifrovat virtuální počítač Azure, pokud dostanete výstrahu od služby Azure Security Center.
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Šifrování virtuálního počítače Azure
 Azure Security Center vás upozorní, pokud máte virtuální počítače, které nejsou šifrované. Tyto výstrahy se zobrazují jako upozornění s vysokou závažností. Doporučuje se tyto virtuální počítače zašifrovat.
@@ -92,8 +92,8 @@ Pomocí následujících kroků zašifrujte virtuální počítač Azure:
 1. Pokud jste zavřeli Integrované skriptovací prostředí (ISE) v prostředí PowerShell, otevřete jeho instanci se zvýšenými oprávněními. Pokud Integrované skriptovací prostředí (ISE) v prostředí PowerShell ještě není spuštěné, postupujte podle pokynů uvedených výše v tomto článku. Pokud jste skript zavřeli, otevřete **ADEPrereqScript.ps1** kliknutím na **Soubor** a **Otevřít** a výběrem tohoto skriptu ve složce **c:\AzureADEScript**. Pokud jste tento článek procházeli od začátku, přejděte k následujícímu kroku.
 2. V konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell (dolní podokno Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell) nastavte zadáním **cd c:\AzureADEScript** fokus na umístění skriptu a stiskněte **ENTER**.
 3. Nastavte na počítači zásady spouštění, aby bylo možné skript spustit. V konzole zadejte **Set-ExecutionPolicy Unrestricted** a stiskněte ENTER. Pokud se zobrazí dialogové okno s informacemi o důsledcích změny zásady spouštění, klikněte na **Ano všem** nebo **Ano** (pokud se zobrazí **Ano všem**, vyberte tuto možnost; pokud se nezobrazí **Ano všem**, klikněte na **Ano**).
-4. Přihlaste se ke svému účtu Azure. V konzole zadejte **Login-AzureRmAccount** a stiskněte **ENTER**. Zobrazí se dialogové okno pro zadání přihlašovacích údajů. (Zkontrolujte, že máte práva měnit virtuální počítače. Pokud tato práva nemáte, nebudete je moct zašifrovat. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Zkopírujte **ID předplatného** do Poznámkového bloku. Budete ho potřebovat v kroku 6.
-5. Zjistěte, k jakému předplatnému patří váš virtuální počítač, a dál zjistěte jeho umístění. Přejděte na [https://portal.azure.com](ttps://portal.azure.com) a přihlaste se.  Na levé straně stránky klikněte na **Virtual Machines**. Zobrazí se seznam vašich virtuálních počítačů a předplatná, ke kterým patří.
+4. Přihlaste se ke svému účtu Azure. V konzole zadejte **Connect-AzureRmAccount** a stiskněte **ENTER**. Zobrazí se dialogové okno pro zadání přihlašovacích údajů. (Zkontrolujte, že máte práva měnit virtuální počítače. Pokud tato práva nemáte, nebudete je moct zašifrovat. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Zkopírujte **ID předplatného** do Poznámkového bloku. Budete ho potřebovat v kroku 6.
+5. Zjistěte, k jakému předplatnému patří váš virtuální počítač, a dál zjistěte jeho umístění. Přejděte na adresu [https://portal.azure.com](ttps://portal.azure.com) a přihlaste se.  Na levé straně stránky klikněte na **Virtual Machines**. Zobrazí se seznam vašich virtuálních počítačů a předplatná, ke kterým patří.
 
    ![Virtuální počítače](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell. Nastavte kontext předplatného, ve kterém skript poběží. V konzole zadejte **Select-AzureRmSubscription –SubscriptionId <ID_předplatného>** (místo **< ID_předplatného>** zadejte aktuální ID předplatného) a stiskněte **ENTER**. Zobrazí se tyto informace: prostředí, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**.

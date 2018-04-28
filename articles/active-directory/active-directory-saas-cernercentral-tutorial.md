@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s centrální Cerner | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cerner střed."
+title: 'Kurz: Azure Active Directory integrace s centrální Cerner | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cerner střed.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 391994b8df73657dc75e8c9790356f443341159d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6481a96956fe82d47c3c0bb2f7f69a0df8d5b993
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Kurz: Azure Active Directory integrace s Cerner – střed
 
@@ -101,7 +101,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
 3. Na **Cerner centrální domény a adresy URL** část, proveďte následující kroky:
@@ -115,46 +115,24 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     
-
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/sso` |
     
-
-    > [!NOTE] 
+    > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Cerner střed](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) k získání těchto hodnot.
- 
-4. Klikněte na tlačítko **Uložit** tlačítko.
+
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_metadataurl.png)
+     
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-5. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Cerner střed** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Konfigurace jednotného přihlašování na **Cerner střed** straně, budete muset odeslat **adresu URL metadat** k [Cerner střed podporu](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Na straně aplikace k dokončení integrace je potřeba nakonfigurovat jednotné přihlašování.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Konfigurace jednotného přihlašování na **Cerner střed** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [Cerner střed podporu](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations). Na straně aplikace k dokončení integrace je potřeba nakonfigurovat jednotné přihlašování.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon. 
@@ -227,7 +205,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Cerner střed na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Cerner střed. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -247,4 +225,3 @@ Když kliknete na dlaždici Cerner střed na přístupovém panelu, můžete by 
 [201]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cernercentral-tutorial/tutorial_general_203.png
-

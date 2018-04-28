@@ -1,12 +1,12 @@
 ---
-title: "Použití Storage Exploreru (Preview) se službou Azure File Storage | Dokumentace Microsoftu"
-description: "Naučíte se, jak pomocí Storage Exploreru (Preview) pracovat se sdílenými složkami a soubory."
+title: Použití Průzkumníka služby Storage se službou Azure File Storage | Microsoft Docs
+description: Naučíte se, jak pomocí Průzkumníka služby Storage pracovat se sdílenými složkami a soubory.
 services: storage
 documentationcenter: na
 author: cawaMS
 manager: paulyuk
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="using-storage-explorer-preview-with-azure-file-storage"></a>Použití Storage Exploreru (Preview) se službou Azure File Storage
+# <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
-Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol SMB (Server Message Block). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Službu File Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pomocí Storage Exploreru (Preview) pracovat se sdílenými složkami a soubory.
+Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol SMB (Server Message Block). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Službu File Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pomocí Průzkumníka služby Storage pracovat se sdílenými složkami a soubory.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-- [Stažení a instalace Storage Exploreru (Preview)](http://www.storageexplorer.com/)
+- [Stažení a instalace Průzkumníka služby Storage](http://www.storageexplorer.com/)
 
 - [Připojení k účtu úložiště nebo službě Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -36,9 +36,9 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 Všechny soubory se musí nacházet ve sdílené složce, což je jednoduše logické seskupení souborů. Účet může obsahovat neomezený počet sdílených složek a v každé sdílené složce může být uložen neomezený počet souborů.
 
-Následující postup ukazuje vytvoření sdílené složky v Storage Exploreru (Preview).
+Následující postup ukazuje vytvoření sdílené složky v Průzkumníkovi služby Storage.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště, v rámci kterého chcete vytvořit sdílenou složku.
 
@@ -58,9 +58,9 @@ Následující postup ukazuje vytvoření sdílené složky v Storage Exploreru 
 
 Sdílené složky obsahují soubory a složky (ty také můžou obsahovat soubory).
 
-Následující postup ukazuje, jak zobrazit obsah sdílené složky v Storage Exploreru (Preview):
+Následující postup ukazuje, jak zobrazit obsah sdílené složky v Průzkumníkovi služby Storage:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
 
@@ -78,9 +78,9 @@ Následující postup ukazuje, jak zobrazit obsah sdílené složky v Storage Ex
 
 Sdílené složky můžete podle potřeby snadno vytvářet a odstraňovat. (Chcete-li odstranit jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
-Následující postup ukazuje odstranění sdílené složky v Storage Exploreru (Preview):
+Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi služby Storage:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete zobrazit.
 
@@ -96,11 +96,11 @@ Následující postup ukazuje odstranění sdílené složky v Storage Exploreru
 
 ## <a name="copy-a-file-share"></a>Kopírování sdílené složky
 
-Storage Explorer (Preview) umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Průzkumník služby Storage umožňuje zkopírování sdílené složky do schránky a následné vložení této sdílené složky do jiného účtu úložiště. (Chcete-li kopírovat jednotlivé soubory, přečtěte si část popisující [správu souborů ve sdílené složce](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
 
 Následující postup ukazuje kopírování sdílené složky z jednoho účtu úložiště do jiného.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete kopírovat.
 
@@ -120,7 +120,7 @@ Následující postup ukazuje kopírování sdílené složky z jednoho účtu �
 
 Následující postup ukazuje vytvoření sdíleného přístupového podpisu pro sdílenou složku:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete získat sdílený přístupový podpis.
 
@@ -146,7 +146,7 @@ Následující postup ukazuje vytvoření sdíleného přístupového podpisu pr
 
 Následující postup ukazuje jak spravovat (přidávat a odebírat) zásady přístupu pro sdílenou složku. Zásady přístupu slouží k vytvoření adres URL sdíleného přístupového podpisu, pomocí kterých můžou lidé během definovaného časového období přistupovat k prostředkům služby File Storage.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 
 2. V levém podokně rozbalte účet úložiště obsahující sdílenou složku, pro kterou chcete spravovat zásady přístupu.
 
@@ -180,7 +180,7 @@ Po vytvoření sdílené složky do ní můžete nahrát soubor, stáhnout soubo
 
 Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdílené složky.
 
-1.  Otevřete Storage Explorer (Preview).
+1.  Otevřete Průzkumníka služby Storage.
 
 2.  V levém podokně rozbalte účet úložiště obsahující sdílenou složku, kterou chcete spravovat.
 
@@ -258,6 +258,6 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na [nejnovější poznámky k verzi a videa pro Storage Explorer (Preview)](http://www.storageexplorer.com/).
+- Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com/).
 
 - Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).

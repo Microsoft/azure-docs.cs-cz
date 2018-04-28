@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 65cfbafbd5fbdd576f01b5cba638c1b5869f377b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5e51027455da1f8be34d99c79bc79bc37df57d14
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Připojit virtuální sítě z různé modely nasazení pomocí portálu
 
@@ -232,7 +232,7 @@ V těchto kroků můžete nakonfigurovat připojení z klasické virtuální sí
 Otevřete konzolu prostředí PowerShell se zvýšenými oprávněními a přihlaste se k účtu Azure. Po přihlášení, se stáhnou nastavení svého účtu, aby byly k dispozici pro prostředí Azure PowerShell. Následující rutina vás vyzve k zadání přihlašovací údaje pro účet Azure pro model nasazení Resource Manager:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Načtěte seznam předplatných Azure.

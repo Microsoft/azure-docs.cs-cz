@@ -1,25 +1,25 @@
 ---
-title: "Přehled plán, nabídka, kvóty a předplatné Azure zásobníku | Microsoft Docs"
-description: "Jako operátor cloudu chcete pochopit plány, nabídky, kvóty a předplatná Azure zásobníku."
+title: Přehled plán, nabídka, kvóty a předplatné Azure zásobníku | Microsoft Docs
+description: Jako operátor cloudu chcete pochopit plány, nabídky, kvóty a předplatná Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/22/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: fcf19f486ebdc739f3d5c7b25215ba8726462a56
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Přehled plánů, nabídek, kvót a předplatných
 
@@ -32,10 +32,10 @@ Nabízí obsahovat jeden nebo více plánů a každý plán zahrnuje jednu nebo 
 - množství těchto prostředků, které uživatelé můžou využívat.
 - oblasti, které mají přístup k prostředkům
 
-Při předvádění služby budete postupovat podle těchto kroků:
+Při předvádění službu, postupujte podle těchto kroků:
 
 1. Přidáte službu, kterou chcete poskytovat uživatelům.
-2. Vytvořte plán, který obsahuje jeden nebo více služeb. Při vytváření plánu, bude vyberte nebo vytvořte kvóty, které definují omezení prostředků každé služby v plánu.
+2. Vytvořte plán, který obsahuje jeden nebo více služeb. Při vytváření plánu, vyberte nebo vytvořte kvóty, které definují omezení prostředků každé služby v plánu.
 3. Vytvořte nabídku, který obsahuje jeden nebo více plány (včetně základní a plány volitelné rozšíření).
 
 Po vytvoření nabídky mohou vaši uživatelé přihlásit k službám a prostředkům, které poskytuje přístup. Uživatelé se mohou přihlásit k tolik nabídky požadovaným způsobem. Následující diagram ukazuje jednoduchý příklad uživatele, který se připojila ke dvěma nabídky. Každý nabídka má plán nebo dva a každý plán uděluje uživateli přístup ke službám.
@@ -52,13 +52,15 @@ Ke správě vašeho kapacitu cloudu, vyberte nebo vytvořte kvóty pro každou s
 
 Kvóty lze nakonfigurovat podle oblasti. Plán obsahující výpočetní služby z oblasti A může mít například kvótu dva virtuální počítače, 4 GB paměti RAM a 10 jader procesoru. V Development Kit zásobník Azure, pouze jedna oblast (s názvem *místní*) je k dispozici.
 
+Další informace o [typy kvót v zásobníku Azure](azure-stack-quota-types.md). 
+
 ### <a name="base-plan"></a>Základní plán
 
 Při vytváření nabídky, Správce služeb můžete zahrnout základního plánu. Tyto základní plány jsou zahrnuté ve výchozím nastavení, pokud se uživatel přihlásí na tuto nabídku. Pokud se uživatel přihlásí, kterým mají přístup všichni zprostředkovatelé prostředků zadaný v těchto plánech základní (s odpovídající kvóty).
 
 ### <a name="add-on-plans"></a>Doplňkové plány
 
-Můžete zahrnout také plány volitelné rozšíření nabídku. Plány rozšíření nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Rozšíření plány jsou další plány (s kvóty) k dispozici v nabídku, můžete k jejich odběry přidat odběratele. Například můžete nabízet základní plán s prostředků omezené zkušební verzi a plán rozšíření s více značné prostředky pro zákazníky, kteří se rozhodnete přijmout službu.
+Rozšíření plány jsou volitelné plány, které přidáte do nabídky. Plány rozšíření nejsou zahrnuté ve výchozím nastavení v rámci předplatného. Rozšíření plány jsou další plány (s kvóty) k dispozici v nabídku, můžete k jejich odběry přidat odběratele. Například můžete nabízet základní plán s prostředků omezené zkušební verzi a plán rozšíření s více značné prostředky pro zákazníky, kteří se rozhodnete přijmout službu.
 
 ## <a name="offers"></a>Nabídky
 

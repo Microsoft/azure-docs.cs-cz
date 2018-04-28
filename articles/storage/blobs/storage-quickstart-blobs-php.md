@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP | Microsoft Docs
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí PHP | Microsoft Docs
 description: Rychle se naučíte, jak přenášet objekty do a z úložiště objektů blob v Azure pomocí PHP.
 services: storage
 author: roygara
@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: be8e58cd998abf0105c3ef17bd3e192605f15ecd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 03aaa6b3440c1e20028078ee3d45c13cdd16cfea
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
@@ -214,4 +214,4 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [Centrum pro vývojáře PHP](https://azure.microsoft.com/en-us/develop/php/)
 
 
-Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

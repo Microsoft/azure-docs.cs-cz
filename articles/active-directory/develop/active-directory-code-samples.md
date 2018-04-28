@@ -1,138 +1,121 @@
 ---
-title: "Ukázky kódu Azure Active Directory | Microsoft Docs"
-description: "Index ukázky kódu Azure Active Directory, uspořádané podle scénáře."
+title: Ukázky kódu Azure Active Directory | Microsoft Docs
+description: Poskytuje index služby Azure Active Directory (koncový bod v1) ukázky kódu, uspořádané podle scénáře.
 services: active-directory
 documentationcenter: dev-center-name
-author: msmbaldwin
+author: jmprieur
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
-ms.author: mbaldwin
+ms.date: 04/24/2018
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 130d26828acd5394756c47f22217272338cc33e6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 046d633239b09ebdf21b5383b08684d81199d026
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-active-directory-code-samples"></a>Ukázky kódu Azure Active Directory
+# <a name="azure-active-directory-code-samples-v1-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod V1)
+
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Microsoft Azure Active Directory (Azure AD) můžete použít k přidání ověřování a autorizace do webových aplikací a webových rozhraní API. Tato část odkazy na ukázky, které ukazují, jak se provádí a fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázkový kód, najdete podrobné čtení-mi témata, které pomáhají s požadavky, instalace a nastavení. A kód je označeno jako komentář vám pomohou pochopit kritické oddíly.
+Microsoft Azure Active Directory (Azure AD) můžete použít k přidání ověřování a autorizace do webových aplikací a webových rozhraní API.
 
-Abyste pochopili základní scénáře pro každý typ ukázka, najdete v části scénáře ověřování pro Azure AD.
+Tato část obsahuje odkazy na ukázky, které můžete použít další informace o Azure AD V1 koncový bod. Tyto ukázky vám ukážou, jak se provádí společně s fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázkový kód, najdete podrobné čtení-mi témata, které pomáhají s požadavky, instalace a nastavení. A kód je označeno jako komentář vám pomohou pochopit kritické oddíly.
 
-Podílet se na naše ukázky na Githubu: [Microsoft Azure Active Directory ukázky a dokumentace](https://github.com/Azure-Samples?page=3&query=active-directory).
+> [!NOTE]
+> Pokud vás zajímá ukázky kódu Azure AD V2, přečtěte si téma [v2.0 ukázky kódu ve scénáři](active-directory-v2-code-samples.md).
 
-## <a name="web-browser-to-web-application"></a>Webový prohlížeč, aby webové aplikace
-Tyto ukázky ukazují, jak psát webové aplikace, která přesměruje prohlížeče uživatele pro jejich přihlášení k Azure AD.
+Abyste pochopili základní scénáře pro každý typ ukázka, najdete v části [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |Použijte OpenID Connect (ASP.Net OpenID Connect OWIN middleware) k ověřování uživatelů z klienta služby Azure AD. |
-| C#/.NET |[WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Více klientů .NET MVC webové aplikace používající OpenID Connect (ASP.Net OpenID Connect OWIN middleware) k ověřování uživatelů od víc klientů Azure AD. |
-| C#/.NET |[WebApp-WSFederation-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) |Použijte WS-Federation (WS-Federation OWIN ASP.Net middleware) k ověřování uživatelů z klienta služby Azure AD. |
-| C# nebo .NET Core |[WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) |Webové aplikace .NET MVC, která používá OpenID Connect přihlášení uživatele z jednoho klienta Azure Active Directory (Azure AD) pomocí ASP.NET Core OpenID Connect middleware. |
+Také můžete přispívat k naše ukázky na Githubu. Další informace, jak zjistit, [Microsoft Azure Active Directory ukázky a dokumentace](https://github.com/Azure-Samples?page=3&query=active-directory).
 
-## <a name="single-page-application-spa"></a>Jednostránkové aplikace (SPA)
-Tento příklad ukazuje, jak psát jednostránkové aplikace zabezpečené s Azure AD.  
+## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Desktop a mobile veřejné klientské aplikace volání Microsoft Graph nebo webového rozhraní API
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| JavaScript, C#/.NET |[SinglePageApp-DotNet](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |K zabezpečení na základě AngularJS jednostránkové aplikace implementuje pomocí technologie ASP.NET web API back-end pomocí ADAL pro JavaScript a Azure AD. |
+Následující ukázky zobrazit veřejné klientské aplikace (desktop nebo mobile aplikace), které přístup k Microsoft Graph nebo webového rozhraní API jménem uživatele.
 
-## <a name="native-application-to-web-api"></a>Nativní aplikace za účelem webového rozhraní API
-Tyto ukázky kódu ukazují, jak vytvářet nativního klienta aplikace, které volají webové rozhraní API, které jsou zabezpečené službou Azure AD. Používají [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) a [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+klientské aplikace | Platforma | Tok/Grant | Volání Microsoft Graph | Volání rozhraní API technologie ASP.NET nebo webové jádro ASP.NET 2.0
+------------------ | -------- | ---------- | -------------------- | -------------------------
+Desktop (WPF)           | .NET / C# | Interaktivní | [DotNet. nativní multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [DotNet. nativní plochy](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet. nativní aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-webapi ruční – – ověřování jwt](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Mobile (UWP)            | .NET / C#  | Interaktivní | [DotNet nativní uwp wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  [úložiště windows DotNet](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (jednoho klienta webového rozhraní API) </p> [DotNet webapi víceklientské windows úložiště](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (víceklientské webového rozhraní API)|
+Mobile (Android, iOS, UWP)   | .NET / C# (Xamarin) | Interaktivní | [DotNet. nativní multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+Mobile (Android)           | Android/Java | Interaktivní |   [Android](https://github.com/Azure-Samples/active-directory-android) |
+Mobile (iOS)           | iOS/Objective C | Interaktivní |   [nativeClient iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
+Plocha (konzola)          | .NET / C# | Uživatelské jméno nebo heslo </p> Integrované ověřování systému Windows | | [nativní bezobslužných pro DotNet.](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+Plocha (konzola)           | .NET core / C# | Profil zařízení | | [deviceprofile DotNet.](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| JavaScript |[NativeClient-MultiTarget-Cordova](https://github.com/Azure-Samples/active-directory-cordova-multitarget) |Použijte k vytvoření aplikace Apache Cordova, která volá webové rozhraní API a používá Azure AD pro ověřování ADAL modul plug-in pro Apache Cordova. |
-| C#/.NET |[NativeClient-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) |Aplikace WPF v rozhraní .NET, která volá webové rozhraní API, která je zabezpečena pomocí Azure AD. |
-| C#/.NET |[NativeClient-WindowsStore](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) |Aplikace Windows Store, která volá webové rozhraní API, která je zabezpečená službou Azure AD. |
-| C#/.NET |[NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) |Aplikaci pro Windows Store volání víceklientské webového rozhraní API, která je zabezpečená službou Azure AD. |
-| C#/.NET |[WebAPI-OnBehalfOf-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) |Nativní klientskou aplikaci, která volá webové rozhraní API, které získá token zastupovat původního uživatele a pak použije token volat jiné webové rozhraní API. |
-| C#/.NET |[NativeClient-WindowsPhone8.1](https://github.com/Azure-Samples/active-directory-dotnet-windowsphone-8.1) |Aplikace Windows Store pro Windows Phone 8.1, která volá webové rozhraní API, která je zabezpečená službou Azure AD. |
-| ObjC |[NativeClient-iOS](https://github.com/Azure-Samples/active-directory-ios) |Aplikace pro iOS, která volá webové rozhraní API, která vyžaduje Azure AD pro ověřování. |
-| C#/.NET |[WebAPI-ManuallyValidateJwt-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation) |Nativní klientskou aplikaci, která obsahuje logiku a zpracování token JWT v webového rozhraní API, místo použití OWIN middleware. |
-| C#/Xamarin |[NativeClient-Xamarin-Android](https://github.com/Azure-Samples/active-directory-xamarin-android) |Xamarin vazbu k nativní Azure AD Authentication Library (ADAL) pro Android knihovny. |
-| C#/Xamarin |[NativeClient-Xamarin-iOS](https://github.com/Azure-Samples/active-directory-xamarin-ios) |Xamarin vazbu k nativní Azure AD Authentication Library (ADAL) pro iOS. |
-| C#/Xamarin |[NativeClient-MultiTarget-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-multitarget) |Projekt Xamarin, který cílí pět platformy a volá webové rozhraní API, která je zabezpečená službou Azure AD. |
-| C#/.NET |[NativeClient-Headless-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-headless) |Nativní aplikace, který provede neinteraktivního ověřování a volá webové rozhraní API, která je zabezpečená službou Azure AD. |
+## <a name="web-applications"></a>Webové aplikace
 
-## <a name="web-application-to-web-api"></a>Webovou aplikaci pro webové rozhraní API
-Tyto ukázky kódu ukazují, jak používat [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) k sestavení webových aplikací tohoto volání webového rozhraní API, které jsou zabezpečené službou Azure AD.
+### <a name="web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity"></a>Webové aplikace přihlášení uživatele, volání Microsoft Graph nebo webového rozhraní API s identitu uživatele
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[WebApp-WebAPI-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect) |Volání webového rozhraní API s oprávněním přihlášeného uživatele. |
-| C#/.NET |[WebApp-WebAPI-OAuth2-AppIdentity-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity) |Volání webového rozhraní API se oprávnění aplikace. |
-| C#/.NET |[WebApp-WebAPI-OAuth2-UserIdentity-Dotnet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) |Přidat autorizační s [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) do stávající webovou aplikaci, můžete ho volání webového rozhraní API. |
-| JavaScript |[WebAPI-Nodejs](https://github.com/Azure-Samples/active-directory-node-webapi) |Nastavte službu REST API, která je integrovaná s Azure AD pro rozhraní API ochrany. Obsahuje server Node.js pomocí webového rozhraní API. |
-| C#/.NET |[WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-multitenant-openidconnect) |Víceklientské MVC webové aplikace používající OpenID Connect (ASP.Net OpenID Connect OWIN middleware) k ověřování uživatelů z klienta služby Azure AD. Autorizační kód používá k volání rozhraní Graph API. |
+ Platforma | Pouze přihlášení uživatele | Volání Microsoft Graph nebo AAD Graph| Volá jiné technologie ASP.NET nebo ASP.NET Core 2.0 webového rozhraní API
+ -------- | ------------------- | --------------------- | -------------------------
+ASP.NET 4.5 | [webApp-openidconnect-dotnet.](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp-v1) </p> [WebApp-WSFederation-dotNet.](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) | [DotNet webapp víceklientské openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) (AAD graf) |
+Jádro ASP.NET 2.0 | [DotNet webapp openidconnect aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi víceklientské openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) (AAD graf) | [DotNet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
+ASP.NET 4.5 | [DotNet-webapp-webapi-oauth2-identity uživatele](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | |
+Python | | [Python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
+Java | | [Java. webapp openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
+PHP | | [PHP-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
 
-## <a name="server-or-daemon-application-to-web-api"></a>Server nebo démon aplikaci pro webové rozhraní API
-Tyto ukázky kódu ukazují, jak sestavit aplikaci démon nebo server, která se získá prostředky z webového rozhraní API pomocí [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) a [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Webové aplikace demonstraci řízení přístupu na základě role (autorizace)
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[Daemon-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon) |Konzolové aplikace volá webové rozhraní API. Pověření klienta je heslo. |
-| C#/.NET |[Daemon-CertificateCredential-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) |Konzolovou aplikaci, která volá webové rozhraní API. Pověření klienta je certifikát. |
+Následující ukázky ukazují, jak implementovat řízení přístupu na základě rolí, které se používá k omezení oprávnění některých funkcí webové aplikace na určité uživatele. V závislosti na tom, jestli patří do skupiny Azure Active Directory nebo role mají oprávnění uživatele.
 
-## <a name="calling-microsoft-graph-api"></a>Volání metody Microsoft Graph API
-Tyto ukázky kódu ukazují, jak vytvářet aplikace, které volají Microsoft Graph API ke čtení a zápis dat adresáře.
+Platforma | Ukázka | Popis
+ -------- | ------------------- | ---------------------
+ASP.NET 4.5 | [DotNet. webapp groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) | Webové aplikace MVC rozhraní .NET 4.5, která používá Azure AD **skupiny** pro ověřování
+ASP.NET 4.5 | [DotNet. webapp roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Webové aplikace MVC rozhraní .NET 4.5, která používá Azure AD **role** pro ověřování
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[WebApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/aspnet-snippets-sample) |Webové aplikace, která používá rozhraní Microsoft Graph API pro přístup k datům adresáře Azure AD. |
-| C#/.NET |[UWPApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/uwp-csharp-snippets-sample) |Tato aplikace pro univerzální platformu Windows se dozvíte, jak získat přístup k více prostředkům, včetně Microsoft Azure Active Directory (AD) a rozhraní API Office 365, tím, že požadavky na rozhraní Graph API Microsoft v aplikaci pro Windows 10. |
+## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Démon procesu aplikace (přístup k webovým rozhraním API s identitu aplikace)
 
-## <a name="calling-azure-ad-graph-api"></a>Volání rozhraní API Azure AD Graph
-Tyto ukázky kódu ukazují, jak vytvářet aplikace, které volají Azure AD Graph API ke čtení a zápis dat adresáře.
+Následující ukázky zobrazit plochy nebo webové aplikace, které přístup k Microsoft Graph nebo webové rozhraní API bez uživatele (s identitou aplikace).
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| Java |[WebApp-GraphAPI-Java](https://github.com/Azure-Samples/active-directory-java-graphapi-web) |Webové aplikace, která používá rozhraní Graph API pro přístup k datům adresáře Azure AD. |
-| PHP |[WebApp-GraphAPI-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |Webové aplikace, která používá rozhraní Graph API pro přístup k datům adresáře Azure AD. |
-| C#/.NET |[ConsoleApp-GraphAPI-DiffQuery-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-diffquery) |Konzolovou aplikaci, která používá rozdílové dotazu v rozhraní Graph API k získání pravidelné změny uživatelské objekty v klient služby Azure AD. |
-| C#/.NET |[WebApp-GraphAPI-DirectoryExtensions-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-directoryextensions-web) |Aplikace MVC používá rozhraní Graph API dotazy lze generovat organizační diagram jednoduché společnosti. |
-| PHP |[WebApp-GraphAPI-DirectoryExtensions-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-directoryextensions-web) |Aplikace PHP, která volá rozhraní Graph API zaregistrovat rozšíření a potom číst, aktualizovat a odstraňovat hodnot v atributu rozšíření. |
+klientské aplikace | Platforma | Tok/Grant | Volání Microsoft Graph | Volání rozhraní API technologie ASP.NET nebo webové jádro ASP.NET 2.0
+------------------ | -------- | ---------- | -------------------- | -------------------------
+Démon procesu aplikace (konzola)          | .NET / C#  | Pověření klienta s tajný klíč aplikace nebo certifikát | | [Démon DotNet.](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [DotNet démon certifikát pověření](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
+Démon procesu aplikace (konzola)         | .NET core / C# | Pověření klienta s certifikátem| | [dotnetcore démon certifikát pověření](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
+Plocha            | Java | Přihlašovací údaje klienta |   [bezobslužných Java – nativní](https://github.com/azure-samples/active-directory-java-native-headless) |
+ASP.NET – webové aplikace  | .NET / C# | Přihlašovací údaje klienta |    | [DotNet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
-## <a name="authorization"></a>Autorizace
-Tyto ukázky kódu ukazují, jak používat Azure AD pro ověřování.
+## <a name="web-apis"></a>Webová rozhraní API
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) |Proveďte řízení přístupu na základě role (RBAC) pomocí deklarace skupiny Azure Active Directory v aplikaci, která je integrovaná se službou Azure AD. |
-| C#/.NET |[WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) |Proveďte řízení přístupu na základě role (RBAC) pomocí služby Azure Active Directory aplikační role v aplikaci, která je integrovaná se službou Azure AD. |
+### <a name="web-api-protected-by-azure-active-directory"></a>Webové rozhraní API, které jsou chráněné službou Azure Active Directory
 
-## <a name="legacy-walkthroughs"></a>Návody pro starší verze
-Tyto postupy používají mírně starší technologii, ale stále může být důležité.
+Následující příklad ukazuje, jak chránit node.js webového rozhraní API s Azure AD.
 
-| Jazyk nebo platformu | Ukázka | Popis |
-| --- | --- | --- |
-| C#/.NET |[Ověřování na základě rolí a na základě seznamu ACL v aplikaci Microsoft Azure AD](http://go.microsoft.com/fwlink/?LinkId=331694) |Proveďte ověření na základě role (RBAC) a autorizace na základě seznamu ACL v aplikaci, která je integrovaná se službou Azure AD. |
-| C#/.NET |[AAL - aplikace pro Windows Store službě REST - ověřování](http://go.microsoft.com/fwlink/?LinkId=330605) |Použití [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) (dříve vrstev AAL) pro Windows Store Beta pro přidání možností ověřování uživatele do aplikace pro Windows Store. |
-| C#/.NET |[ADAL – nativní aplikaci službě REST - ověřování pomocí AAD přes dialogové okno prohlížeče](http://go.microsoft.com/fwlink/?LinkId=259814) |Použití [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) pro přidání možností ověřování uživatele do klienta WPF. |
-| C#/.NET |[Ověřování ADAL – nativní aplikaci službě REST - pomocí služby ACS přes dialogové okno prohlížeče](http://code.msdn.microsoft.com/AAL-Native-App-to-REST-de57f2cc) |Použití [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) a [2.0 služby Řízení přístupu (ACS)](http://msdn.microsoft.com/library/azure/hh147631.aspx) pro přidání možností ověřování uživatele do klienta WPF. |
-| C#/.NET |[ADAL – ověření serveru na Server](http://go.microsoft.com/fwlink/?LinkId=259816) |Použití [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) zabezpečit volání služby z procesu straně server do služby MVC4 webové rozhraní API REST. |
-| C#/.NET |[Přidání přihlašování do webové aplikace pomocí služby Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) |Konfigurace aplikace .NET k provedení webové jednotné přihlašování s enterprise adresáře Azure AD. |
-| C#/.NET |[Vývoj víceklientské webových aplikací s Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) |Na Azure AD můžete přidat na jednotné přihlašování a možnosti přístupu directory jeden aplikace .NET pro práci v několika organizacích. |
-| JAVA |[Ukázková aplikace Java pro Azure AD Graph API](http://go.microsoft.com/fwlink/?LinkId=263969) |Pomocí rozhraní Graph API pro přístup k datům adresáře ze služby Azure AD. |
-| PHP |[Ukázková aplikace PHP pro Azure AD Graph API](http://code.msdn.microsoft.com/PHP-Sample-App-For-Windows-228c6ddb) |Pomocí rozhraní Graph API pro přístup k datům adresáře ze služby Azure AD. |
-| C#/.NET |[Ukázková aplikace pro Azure AD Graph API](http://go.microsoft.com/fwlink/?LinkID=262648) |Pomocí rozhraní Graph API pro přístup k datům adresáře ze služby Azure AD. |
-| C#/.NET |[Ukázková aplikace pro Azure AD Graph rozdílové dotazu](http://go.microsoft.com/fwlink/?LinkId=275398) |Použijte rozdílové dotazu v rozhraní Graph API k získání pravidelné změny uživatelské objekty v klient služby Azure AD. |
-| C#/.NET |[Ukázková aplikace pro integraci víceklientské cloudových aplikací pro Azure AD](http://go.microsoft.com/fwlink/?LinkId=275397) |Integrované víceklientské aplikace do Azure AD. |
-| C#/.NET |[Zabezpečení aplikaci pro Windows Store a webové služby REST pomocí služby Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) |Vytvoření jednoduché webové rozhraní API prostředky a klientské aplikace Windows Store pomocí služby Azure AD a [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md). |
-| C#/.NET |[Pomocí Graph API k dotazování služby Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-web) |Nakonfigurujte rozhraní Microsoft .NET aplikace pro používání Azure AD Graph API přístup k datům z klienta adresář služby Azure AD. |
+Platforma | Ukázka | Popis
+ -------- | ------------------- | ---------------------
+Node.js | [uzel webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |  NodeJS webové rozhraní API, která je zabezpečená pomocí služby Azure AD a přístupových tokenů OAuth 2.0.
+
+### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Webové rozhraní API volání Microsoft Graph nebo jiného webového rozhraní API
+
+Následující ukázky ukazují webového rozhraní API, která volá jinou webové rozhraní API. Druhý příklad ukazuje způsob zpracování podmíněného přístupu.
+
+ Platforma |  Volání Microsoft Graph | Volá jiné technologie ASP.NET nebo ASP.NET Core 2.0 webového rozhraní API
+ -------- |  --------------------- | -------------------------
+ASP.NET 4.5 | [DotNet. webapi onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) |[DotNet. webapi onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof)
+ASP.NET 4.5 | [DotNet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |[DotNet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca)
+
+## <a name="single-page-applications"></a>Jednostránkové aplikace
+
+Tento příklad ukazuje, jak psát jednostránkové aplikace zabezpečené s Azure AD.
+
+ Platforma |  Volání Microsoft Graph | Volá vlastní rozhraní API
+ -------- |  --------------------- | -------------------------
+JavaScript (úhlová) nebo ASP.NET 4.x |  | [angularjs singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)
+
+## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graph
+
+Ukázky a výukové programy, které ukazují různé vzorce pro Microsoft Graph API, včetně ověřování s Azure AD, najdete v části [Microsoft Graph komunity ukázky & kurzy](https://github.com/microsoftgraph/msgraph-community-samples).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-##### <a name="other-resources"></a>Další prostředky
+
 [Příručka pro vývojáře Azure Active Directory](active-directory-developers-guide.md)
 
 [Azure AD Graph API koncepční a referenční informace](https://msdn.microsoft.com/library/azure/hh974476.aspx)

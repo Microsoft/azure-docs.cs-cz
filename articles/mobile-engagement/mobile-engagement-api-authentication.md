@@ -14,15 +14,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 52843c926248627e4e530612cfe9326d4302eb95
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Ověření s Mobile Engagementem rozhraní REST API
 > [!IMPORTANT]
-> Na 3/31/2018 IT vyřadí Azure Mobile Engagement. Tato stránka bude odstraněna krátce po.
+> Azure Mobile Engagement se vyřadí z provozu 31. 3. 2018. Tato stránka bude odstraněna krátce potom.
 > 
 
 ## <a name="overview"></a>Přehled
@@ -67,7 +67,7 @@ Volitelně můžete také podle pokynů [ruční instalaci](mobile-engagement-ap
         Import-Module Azure
 3. Přihlaste se do Azure Resource Manageru z prostředí PowerShell spuštěním následujícího příkazu. Zadejte uživatelské jméno a heslo pro účet Azure: 
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 4. Pokud máte více předplatných, proveďte následující kroky:
 
     a. Získejte seznam všech vašich předplatných. Zkopírujte **SubscriptionId** odběru, který chcete použít. Zajistěte, aby že toto předplatné se aplikace Mobile Engagement. Chcete tuto aplikaci používat k interakci se rozhraní API. 

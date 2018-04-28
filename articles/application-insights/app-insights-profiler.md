@@ -1,8 +1,8 @@
 ---
-title: "Profil za provozu webové aplikace v Azure s Application Insights profileru | Microsoft Docs"
-description: "Identifikujte aktivní trase v kódu webového serveru s nízkými nároky profileru."
+title: Profil za provozu webové aplikace v Azure s Application Insights profileru | Microsoft Docs
+description: Identifikujte aktivní trase v kódu webového serveru s nízkými nároky profileru.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a4b1e30f1350a5e5886899069b05b8b87bb7000d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil za provozu Azure web apps s Application Insights
 
@@ -63,7 +63,7 @@ Informace najdete v tématu [verze preview profileru pro výpočetní prostředk
 
 ## <a name="view-profiler-data"></a>Zobrazení dat profileru
 
-Ujistěte se, že vaše aplikace přijímá provoz. Při provádění experiment, můžete vygenerovat požadavky na vaši webovou aplikaci pomocí [testování výkonu Application Insights](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test). Pokud jste povolili nově profileru, můžete spustit krátké zátěžového testu pro o 15 minut, který by měl generovat profileru trasování. Pokud jste předtím profileru povolené už nějakou dobu, udržování v paměti, že profileru spouští náhodně dvakrát každou hodinu a po dobu dvou minut pokaždé, když ji spustí. Doporučujeme nejprve spuštění zátěžového testu pro jednu hodinu a ujistěte se, že získají ukázková profiler trasování.
+Ujistěte se, že vaše aplikace přijímá provoz. Při provádění experiment, můžete vygenerovat požadavky na vaši webovou aplikaci pomocí [testování výkonu Application Insights](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud jste povolili nově profileru, můžete spustit krátké zátěžového testu pro o 15 minut, který by měl generovat profileru trasování. Pokud jste předtím profileru povolené už nějakou dobu, udržování v paměti, že profileru spouští náhodně dvakrát každou hodinu a po dobu dvou minut pokaždé, když ji spustí. Doporučujeme nejprve spuštění zátěžového testu pro jednu hodinu a ujistěte se, že získají ukázková profiler trasování.
 
 Po aplikaci obdrží některé provozy, přejděte na **výkonu** podokně, vyberte **provést akce** zobrazení profileru trasování, a pak vyberte **profileru trasování** tlačítko.
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3fee44e282424caa0a9e57dae1228d8af075e4a6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Správa zón DNS v Azure DNS pomocí Azure CLI 2.0
 
@@ -47,7 +47,7 @@ Před zahájením konfigurace ověřte, zda máte následující.
 
 ### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
-Otevřete okno konzoly a proveďte ověření pomocí svých přihlašovacích údajů. Další informace najdete v tématu [Přihlášení k Azure z rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+Otevřete okno konzoly a proveďte ověření pomocí svých přihlašovacích údajů. Další informace najdete v tématu [Přihlášení k Azure z rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 ```
 az login
@@ -68,7 +68,7 @@ az account set --subscription "subscription name"
 ```
 
 ### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Volitelné: K instalaci nebo použití zón DNS privátní Azure funkci (Public Preview)
-Ve verzi Public Preview vydání funkci zóny DNS privátní Azure prostřednictvím rozšíření pro rozhraní příkazového řádku Azure. Instalaci "dns" rozšíření rozhraní příkazového řádku Azure 
+Funkce Azure DNS Private Zones je vydaná ve verzi Public Preview prostřednictvím rozšíření Azure CLI. Nainstalujte rozšíření Azure CLI dns. 
 ```
 az extension add --name dns
 ``` 
@@ -143,30 +143,30 @@ Dalším příkladem je tato odpověď.
 }
 ```
 
-Všimněte si, že nejsou vrácené záznamy DNS `az network dns zone show`. Chcete-li seznam záznamů DNS, použijte `az network dns record-set list`.
+Všimněte si, že příkaz `az network dns zone show` nevrací záznamy DNS. Pokud chcete vypsat záznamy DNS, použijte příkaz `az network dns record-set list`.
 
 
-## <a name="list-dns-zones"></a>Seznam zón DNS
+## <a name="list-dns-zones"></a>Výpis zón DNS
 
-Chcete-li vytvořit výčet zóny DNS, použijte `az network dns zone list`. Nápovědu získáte příkazem `az network dns zone list --help`.
+Pokud chcete zobrazit výčet zón DNS, použijte příkaz `az network dns zone list`. Nápovědu získáte příkazem `az network dns zone list --help`.
 
-Zadání skupiny prostředků jsou uvedeny pouze pásma v rámci skupiny prostředků:
+Zadáním skupiny prostředků můžete vypsat pouze zóny v rámci této skupiny prostředků:
 
 ```azurecli
 az network dns zone list --resource-group MyResourceGroup
 ```
 
-Vynechání skupina prostředků obsahuje seznam všech zón v předplatném:
+Pokud skupinu prostředků vynecháte, vypíší se všechny zóny v předplatném:
 
 ```azurecli
 az network dns zone list 
 ```
 
-## <a name="update-a-dns-zone"></a>Aktualizaci zóny DNS
+## <a name="update-a-dns-zone"></a>Aktualizace zóny DNS
 
-Změny k prostředku zóny DNS lze provést pomocí `az network dns zone update`. Nápovědu získáte příkazem `az network dns zone update --help`.
+Změny prostředku zóny DNS je možné provádět pomocí příkazu `az network dns zone update`. Nápovědu získáte příkazem `az network dns zone update --help`.
 
-Tento příkaz nelze aktualizovat všechny sady záznamů DNS v rámci zóny (viz [postup záznamy DNS spravovat](dns-operations-recordsets-cli.md)). Toto pravidlo se používá pouze k aktualizaci vlastností prostředku zóny sám sebe. Tyto vlastnosti jsou aktuálně omezená na [Azure Resource Manager, značky'](dns-zones-records.md#tags) prostředku zóny.
+Tento příkaz neaktualizuje žádné sady záznamů DNS v rámci zóny (viz [Správa záznamů DNS](dns-operations-recordsets-cli.md)). Slouží pouze k aktualizaci vlastností samotného prostředku zóny. Tyto vlastnosti jsou aktuálně omezená na [Azure Resource Manager, značky'](dns-zones-records.md#tags) prostředku zóny.
 
 Následující příklad ukazuje, jak k aktualizaci značek u zóny DNS. Zadaná hodnota se nahradí stávající značky.
 
@@ -174,16 +174,16 @@ Následující příklad ukazuje, jak k aktualizaci značek u zóny DNS. Zadaná
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
 ```
 
-## <a name="delete-a-dns-zone"></a>Odstranit zónu DNS
+## <a name="delete-a-dns-zone"></a>Odstranění zóny DNS
 
-Zóny DNS lze odstranit pomocí `az network dns zone delete`. Nápovědu získáte příkazem `az network dns zone delete --help`.
+Zóny DNS je možné odstranit pomocí příkazu `az network dns zone delete`. Nápovědu získáte příkazem `az network dns zone delete --help`.
 
 > [!NOTE]
-> Odstranění zóny DNS se také odstraní všechny záznamy DNS v rámci zóny. Tuto operaci nelze vrátit zpět. Pokud je zóna DNS se používá, službám pomocí zóny selže při odstranění zóny.
+> Odstraněním zóny DNS dojde také k odstranění všech záznamů DNS v rámci dané zóny. Tato operace se nedá vrátit zpět. Pokud se zóna DNS používá, služby využívající tuto zónu při jejím odstranění selžou.
 >
->Chcete-li chránit proti náhodnému zóny odstranění, přečtěte si téma [jak chránit zóny DNS a záznamy](dns-protect-zones-recordsets.md).
+>Informace o ochraně před náhodným odstraněním zóny najdete v tématu [Ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md).
 
-Tento příkaz zobrazí výzvu k potvrzení. Volitelné `--yes` přepínač potlačí tuto výzvu.
+Tento příkaz zobrazí výzvu k potvrzení. Volitelný přepínač `--yes` tuto výzvu potlačí.
 
 Následující příklad ukazuje, jak odstranit zónu *contoso.com* ze skupiny prostředků *MyResourceGroup*.
 

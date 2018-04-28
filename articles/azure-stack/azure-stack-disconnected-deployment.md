@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/26/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 49697a57e59b652fed4997d57bc7ae15cc596cf7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Plánování rozhodnutí pro Azure zásobník Azure odpojené nasazení integrované systémy
 Poté, co jste se rozhodli [jak bude zásobník Azure integrovat do cloudového prostředí hybridní](azure-stack-connection-models.md), pak můžete dokončit svoje rozhodnutí o nasazení Azure zásobníku.
@@ -47,7 +47,7 @@ Azure zásobníku byl navržený tak, aby fungují lépe, když je připojený k
 |Výstrahy nápravy nebo zmírnění, odkazující online nápravy Průvodce|Není k dispozici – nápravy škod způsobených výstrahy odkazy využívající internetové adresy URL nebude fungovat.|
 |Syndikace Marketplace – možnost a vyberte a přidejte Galerie balíčky přímo z Azure Marketplace|Narušen – když nasadíte Azure zásobníku v odpojeném režimu (bez žádné připojení k Internetu), nelze stáhnout položky marketplace pomocí portálu Azure zásobníku. Můžete však použít [marketplace syndikace nástroj](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) ke stažení položky marketplace do počítače, který má připojení k Internetu a potom přenést do prostředí Azure zásobníku.|
 |Použití Azure Active Directory federation účty ke správě nasazení služby Azure zásobníku|Není k dispozici – tato funkce vyžaduje připojení k Azure. Místo toho je nutné použít služby AD FS s místní instancí Active Directory.|
-|Zprostředkovatelé prostředků, jako je například WebApps a SQL|Není k dispozici - poskytovatelů prostředků, jako je například WebApps a SQL vyžadují přístup k Internetu pro obsah.|
+|App Services|Narušen - WebApps může vyžadovat přístup k Internetu pro aktualizaci obsahu.|
 |Rozhraní příkazového řádku (CLI)|Narušen – rozhraní příkazového řádku omezila funkce z hlediska ověřování a zřizování zásad služby.|
 |Visual Studio – Cloud discovery|Narušen – Cloud Discovery bude zjišťovat buď jiný cloudy nebo nefungují vůbec.|
 |Visual Studio – služby AD FS|Narušen – pouze pro Visual Studio Enterprise podporuje služby AD FS.

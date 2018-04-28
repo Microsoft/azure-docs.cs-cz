@@ -14,15 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: magoedte
-ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 66c07b757a034501eb66a4b23fc4c75bb94f8b10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analýzy dat pro metriky mezi všechny prostředky webové aplikace Azure
 
 ![Symbol webové aplikace](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
+
+> [!NOTE]
+> Řešení Azure Web Apps Analytics je zastaralá.  Zákazníci, kteří již nainstalovali řešení můžete nadále používat ji, ale Azure Web Apps Analytics nelze přidat do žádné nové pracovní prostory.
+
 Řešení Azure Web Apps Analytics (Preview) poskytuje přehled vaší [Azure Web Apps](../app-service/app-service-web-overview.md) shromažďováním jiné metriky mezi všechny prostředky webové aplikace Azure. Pomocí tohoto řešení můžete analyzovat a vyhledejte metriky dat prostředků webové aplikace.
 
 Pomocí řešení, můžete zobrazit:
@@ -84,7 +88,7 @@ Po dokončení konfigurace řešení, začněte dat předávaných do pracovníh
 
 Když přidáte řešení Azure Web Apps analýzy do pracovního prostoru **Azure Web Apps Analytics** dlaždice se přidá na řídicí panel Přehled. Tuto dlaždici zobrazí počet Azure Web Apps, řešení má přístup k ve vašem předplatném Azure.
 
-![Azure Web Apps Analytics tile](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-tile.png)
+![Azure dlaždice analýzy webové aplikace](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-tile.png)
 
 ### <a name="view-azure-web-apps-analytics-information"></a>Zobrazit informace o Azure Web Apps Analytics
 

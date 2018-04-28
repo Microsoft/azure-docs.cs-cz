@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev
-ms.openlocfilehash: f22da892868a10ac18fdcd703249eaa172f8bf65
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47c8b9c9d364a7959066132a873b93c2bb001e26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>Předpověď sentimentu Twitter s word vkládaných pomocí procesu Team dat vědecké účely
 
-V tomto článku se dozvíte, jak efektivně spolupracovat s použitím _Word2Vec_ word vložení algoritmus a _postojích konkrétní aplikace Word vložení (SSWE)_ použitý algoritmus předpovědi sentimentu Twitter s [Azure Machine Learning](../preview/index.yml). Další informace o predikci polarita postojích Twitter, najdete v článku [MachineLearningSamples TwitterSentimentPrediction úložiště](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction) na Githubu. Klíč k usnadnění efektivní Týmová spolupráce v projektech vědecké zpracování dat je standardizovat strukturu a projektů s životního cyklu zavedených vědecké zpracování dat naleznete v dokumentaci. [Tým datové vědy procesu (TDSP)](overview.md) poskytuje tento typ strukturovaných [životního cyklu](lifecycle.md). 
+V tomto článku se dozvíte, jak efektivně spolupracovat s použitím _Word2Vec_ word vložení algoritmus a _postojích konkrétní aplikace Word vložení (SSWE)_ použitý algoritmus předpovědi sentimentu Twitter s [Azure Machine Learning](../service/index.yml). Další informace o predikci polarita postojích Twitter, najdete v článku [MachineLearningSamples TwitterSentimentPrediction úložiště](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction) na Githubu. Klíč k usnadnění efektivní Týmová spolupráce v projektech vědecké zpracování dat je standardizovat strukturu a projektů s životního cyklu zavedených vědecké zpracování dat naleznete v dokumentaci. [Tým datové vědy procesu (TDSP)](overview.md) poskytuje tento typ strukturovaných [životního cyklu](lifecycle.md). 
 
-Vytváření projektů vědecké zpracování dat pomocí _TDSP šablony_ poskytuje standardizovaná architekturu pro projekty Azure Machine Learning. Dřív, týmem TDSP vydané [úložiště GitHub pro strukturu TDSP projektů a šablon](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Nyní Machine Learning projekty, které jsou vytvářeny instance s [TDSP šablon pro Azure Machine Learning](https://github.com/amlsamples/tdsp) jsou povoleny. Pokyny najdete v tématu Jak používat [TDSP struktura projektů pomocí šablony TDSP](../preview/how-to-use-tdsp-in-azure-ml.md) v Azure Machine Learning. 
+Vytváření projektů vědecké zpracování dat pomocí _TDSP šablony_ poskytuje standardizovaná architekturu pro projekty Azure Machine Learning. Dřív, týmem TDSP vydané [úložiště GitHub pro strukturu TDSP projektů a šablon](https://github.com/Azure/Azure-TDSP-ProjectTemplate). Nyní Machine Learning projekty, které jsou vytvářeny instance s [TDSP šablon pro Azure Machine Learning](https://github.com/amlsamples/tdsp) jsou povoleny. Pokyny najdete v tématu Jak používat [TDSP struktura projektů pomocí šablony TDSP](../desktop-workbench/how-to-use-tdsp-in-azure-ml.md) v Azure Machine Learning. 
 
 
 ## <a name="twitter-sentiment-polarity-sample"></a>Ukázka polarita postojích služby Twitter.
@@ -131,7 +131,7 @@ Posledním krokem je nasazení modelu předpovědi vyškolení postojích k webo
 
 ![Řídicí panel Kubernetes](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-Další informace o procesu operationalization najdete v tématu [nasazení Azure Machine Learning model jako webovou službu](../preview/model-management-service-deploy.md).
+Další informace o procesu operationalization najdete v tématu [nasazení Azure Machine Learning model jako webovou službu](../desktop-workbench/model-management-service-deploy.md).
 
 ## <a name="conclusion"></a>Závěr
 
@@ -143,8 +143,8 @@ V tomto článku jste zjistili, jak k natrénování modelu vložení aplikace w
 * [Vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [Jak používat tým datové vědy procesu (TDSP) v Azure Machine Learning](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Šablony projektů TDSP pro Azure Machine Learning](https://aka.ms/tdspamlgithubrepo)
-* [Azure Machine Learning Workbench](../preview/index.yml)
+* [Azure Machine Learning Workbench](../service/index.yml)
 * [USA příjem sady dat z úložiště UCI ML](https://archive.ics.uci.edu/ml/datasets/adult)
-* [Rozpoznávání biolékařského entity pomocí TDSP šablon](../preview/scenario-tdsp-biomedical-recognition.md)
-* [Mikolov, Tomas, et al. "Distribuované reprezentace slova a slovní spojení a jejich Compositionality. Posune v neuronové informace systémy pro zpracování." 2013.](https://arxiv.org/abs/1310.4546)
+* [Rozpoznávání biolékařského entity pomocí TDSP šablon](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
+* [Mikolov Tomáši, a další. "Distribuované reprezentace slova a slovní spojení a jejich Compositionality. Posune v neuronové informace systémy pro zpracování." 2013.](https://arxiv.org/abs/1310.4546)
 * [Hmotný dlouhodobý, Duyu, a další. "Učení postojích konkrétní Word vložení pro klasifikaci postojích Twitter." ACL (1). 2014.](http://www.aclweb.org/anthology/P14-1146)

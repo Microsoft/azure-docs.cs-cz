@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d57c80e8e965e15d92736ec482247f02064f6009
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Azure Active Directory integrace s OpsGenie
 
@@ -31,7 +31,7 @@ Integrace OpsGenie s Azure AD poskytuje následující výhody:
 
 Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s OpsGenie, potřebujete následující položky:
 
@@ -59,7 +59,7 @@ Při konfiguraci integrace OpsGenie do služby Azure AD musíte přidat do sezna
 
 1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![Služba Active Directory][1]
+    ![Active Directory][1]
 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
@@ -112,33 +112,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://app.opsgenie.com/auth/login`
 
-4. Klikněte na tlačítko **Uložit** tlačítko.
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-5. Na **OpsGenie konfigurace** klikněte na tlačítko **konfigurace OpsGenie** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z části Stručná referenční příručka.
+6. Na **OpsGenie konfigurace** klikněte na tlačítko **konfigurace OpsGenie** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z části Stručná referenční příručka.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
-
-6. Ke generování **adresu URL metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **OpsGenie** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. Otevřete jiná instance prohlížeče a pak přihlásit k OpsGenie jako správce.
 
@@ -160,13 +144,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     a. V **SAML 2.0 Endpoint** textovému poli, vložte **jeden znak na adresu URL služby**hodnotu, která jste zkopírovali z portálu Azure.
     
-    b. V **adresu Url metadat:** textovému poli, vložte **adresu URL metadat**hodnotu, která jste zkopírovali z portálu Azure.
+    b. V **adresu Url metadat:** textovému poli, vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure.
     
     c. Klikněte na tlačítko **uložit změny**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -260,7 +240,7 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici OpsGenie na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci OpsGenie.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

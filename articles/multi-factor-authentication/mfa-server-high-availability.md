@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace serveru Azure MFA pro zajištění vysoké dostupnosti | Microsoft Docs"
-description: "Nasazení více instancí serveru Azure Multi-Factor Authentication Server v konfiguracích, které zajišťují vysokou dostupnost."
+title: Konfigurace serveru Azure MFA pro zajištění vysoké dostupnosti | Microsoft Docs
+description: Nasazení více instancí serveru Azure Multi-Factor Authentication Server v konfiguracích, které zajišťují vysokou dostupnost.
 services: multi-factor-authentication
 keywords: Azure MFA
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: c2f9a2422ea5a47edd80948073c7f7a6cb0d0945
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Nakonfigurujte Server Azure Multi-Factor Authentication pro zajištění vysoké dostupnosti
 
@@ -73,6 +73,6 @@ Mějte na paměti následující položky pro oblasti odpovídajícím způsobem
    ![Azure MFA serveru – portál User Portal a mobilní aplikace služby HA](./media/mfa-server-high-availability/mfaportal.png)
 3. Služba AD FS serverové farmy je zatížení vyrovnáváním a publikovány na Internetu prostřednictvím Vyrovnávání zatížení sítě proxy služby AD FS v hraniční síti. Každý Server služby AD FS používá agent služby AD FS komunikovat se servery vícefaktorového ověřování Azure pomocí jednu Vyrovnávání zatížení sítě adresu URL (mfaapp.contoso.com) přes port 443 protokolu TCP.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Instalace a konfigurace Azure MFA serveru](multi-factor-authentication-get-started-server.md)

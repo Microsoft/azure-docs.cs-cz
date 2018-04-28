@@ -1,6 +1,6 @@
 ---
-title: Vyvolání balíčku služby SSIS pomocí Azure Data Factory - aktivity uložené procedury | Microsoft Docs
-description: Tento článek popisuje, jak má být vyvolán balíček integrační služby SSIS (SQL Server) z kanál služby Azure Data Factory pomocí aktivity uložené procedury.
+title: Spusťte balíček SSIS pomocí aktivity uložené procedury v Azure Data Factory | Microsoft Docs
+description: Tento článek popisuje, jak spouštět balíček integrační služby SSIS (SQL Server) ze kanál služby Azure Data Factory pomocí aktivity uložené procedury.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 00a4401a9116d8ebbfefa56194fe45802bcf198e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčku služby SSIS pomocí aktivity uložené procedury v Azure Data Factory
-Tento článek popisuje, jak má být vyvolán balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity uložené procedury. 
+# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Spusťte balíček SSIS pomocí aktivity uložené procedury v Azure Data Factory
+Tento článek popisuje způsob spouštění balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity uložené procedury. 
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [balíčky SSIS vyvolání pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
@@ -85,12 +85,13 @@ V tomto kroku použijete rozhraní Data Factory vytvořit kanál. Přidání akt
 4. V okně **Nová propojená služba** proveďte následující kroky: 
 
     1. Vyberte **databáze Azure SQL** pro **typu**.
-    2. Vyberte svůj server Azure SQL, který je hostitelem databáze SSISDB **název serveru** pole.
-    3. Vyberte **SSISDB** pro **název databáze**.
-    4. Pro **uživatelské jméno**, zadejte jméno uživatele, který má přístup k databázi.
-    5. Pro **heslo**, zadejte heslo uživatele. 
-    6. Otestujte připojení k databázi kliknutím **testovací připojení** tlačítko.
-    7. Kliknutím na Uložit propojené služby **Uložit** tlačítko. 
+    2. Vyberte **výchozí** Runtime integrace Azure pro připojení k databázi SQL Azure, který je hostitelem `SSISDB` databáze.
+    3. Vyberte databázi SQL Azure, který je hostitelem databáze SSISDB pro **název serveru** pole.
+    4. Vyberte **SSISDB** pro **název databáze**.
+    5. Pro **uživatelské jméno**, zadejte jméno uživatele, který má přístup k databázi.
+    6. Pro **heslo**, zadejte heslo uživatele. 
+    7. Otestujte připojení k databázi kliknutím **testovací připojení** tlačítko.
+    8. Kliknutím na Uložit propojené služby **Uložit** tlačítko. 
 
         ![Propojená služba Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. V okně vlastností přepnout **uloženou proceduru** kartě z **účet SQL** kartě a proveďte následující kroky: 
@@ -121,14 +122,18 @@ V této části se aktivuje spuštění kanálu a jeho sledování.
 
 1. Chcete-li aktivovat kanálu spustit, klikněte na tlačítko **aktivační událost** na panelu nástrojů a klikněte na tlačítko **nyní spustit**. 
 
-    ![Aktivovat](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    ![Aktivovat](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+
 2. V okně **Spuštění kanálu** vyberte **Dokončit**. 
 3. Vlevo přepněte na kartu **Monitorování**. Zobrazí kanálu spustit a její stav se společně s dalšími informacemi (například čas spuštění spuštění). Pokud chcete zobrazení aktualizovat, klikněte na **Aktualizovat**.
 
     ![Spuštění kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
 3. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí jenom jedna aktivita spustit, protože kanál obsahuje pouze jednu aktivitu (aktivita uložené procedury).
 
-    ![Běh aktivit](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png) 4 můžete spustit následující **dotazu** proti SSISDB databáze serveru Azure SQL ověřit, jestli balíček provést. 
+    ![Spuštění aktivit](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+
+4. Můžete spustit následující **dotazu** proti SSISDB databáze serveru Azure SQL ověřit, jestli balíček provést. 
 
     ```sql
     select * from catalog.executions

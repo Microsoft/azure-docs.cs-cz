@@ -1,58 +1,67 @@
 ---
-title: Spusťte Azure Functions z úlohy Azure Stream Analytics
-description: Tento článek popisuje postup konfigurace Azure Functions jako výstupní jímku v úlohy Stream Analytics na jednotce událostí úlohy.
+title: 'Kurz: Spouštění Azure Functions pomocí úloh Azure Stream Analytics | Microsoft Docs'
+description: V tomto kurzu se naučíte nakonfigurovat Azure Functions jako výstupní jímku pro úlohy Stream Analytics.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
-ms.reviewer: jasonh
 manager: kfile
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 12/19/2017
-ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.topic: tutorial
+ms.custom: mvc
+ms.workload: data-services
+ms.date: 04/09/2018
+ms.author: jasonh
+ms.reviewer: jasonh
+ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spusťte Azure Functions z úlohy Azure Stream Analytics 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
-Azure Functions ze služby Azure Stream Analytics můžete spustit tak, že nakonfigurujete funkce jako jeden z jímky výstup do úlohy Stream Analytics. Funkce jsou událostmi, výpočetní na vyžádání prostředí, které umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran. Tato schopnost funkce reagovat na aktivační události je přirozené výstup do úlohy Stream Analytics.
+Azure Functions můžete spouštět z Azure Stream Analytics tak, že službu Functions nakonfigurujete jako jednu z výstupních jímek pro úlohu Stream Analytics. Služba Functions je událostmi řízené prostředí s výpočty na vyžádání, které umožňuje implementaci kódu aktivovaného událostmi, ke kterým dochází v Azure nebo ve službách třetích stran. Díky schopnosti reagovat na triggery je služba Functions přirozeným výstupem pro úlohy Azure Stream Analytics.
 
-Stream Analytics vyvolá funkce prostřednictvím protokolu HTTP aktivační události. Adaptér pro výstup funkce umožňuje uživatelům připojit funkce do služby Stream Analytics, tak, že události můžete spustit založená na dotazech Stream Analytics. 
+Stream Analytics volá službu Functions prostřednictvím triggerů HTTP. Adaptér pro výstup služby Functions umožňuje uživatelům připojit Functions k Stream Analytics tak, že události lze aktivovat na základě dotazů Stream Analytics. 
 
-Tento kurz ukazuje, jak připojit Stream Analytics k [Azure Redis Cache](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md), pomocí [Azure Functions](../azure-functions/functions-overview.md). 
+V tomto kurzu se naučíte:
 
-## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurace funkce spuštění úlohy Stream Analytics 
+> [!div class="checklist"]
+> * Vytvářet úlohy Stream Analytics
+> * Vytvořit funkci Azure
+> * Nakonfigurovat funkci Azure jako výstup pro vaši úlohu
 
-V této části ukazuje, jak nakonfigurovat spuštění funkci, která zapisuje data do Azure Redis Cache úlohy Stream Analytics. Úloha Stream Analytics načítá události z Azure Event Hubs a spustí dotaz, který volá funkci. Tato funkce čte data z úlohy Stream Analytics a zapíše ho do Azure Redis Cache.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-![Diagram znázorňující vztahy mezi služeb Azure](./media/stream-analytics-with-azure-functions/image1.png)
+## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurace úlohy Stream Analytics tak, aby spouštěla funkci 
 
-Následující kroky jsou nezbytné pro dosažení této úlohy:
-* [Vytvořit úlohu služby Stream Analytics službou Event Hubs jako vstup](#create-stream-analytics-job-with-event-hub-as-input)  
-* [Vytvořte instanci služby Azure Redis Cache](#create-an-azure-redis-cache)  
-* [Vytvoří funkci, v Azure Functions, který může zapsat data do Azure Redis Cache](#create-an-azure-function-that-can-write-data-to-the-redis-cache)    
-* [Aktualizace úlohy služby Stream Analytics s funkcí jako výstup](#update-the-stream-analytic-job-with-azure-function-as-output)  
-* [Zkontrolujte výsledky Azure Redis Cache](#check-redis-cache-for-results)  
+Tato část ukazuje, jak nakonfigurovat úlohu Stream Analytics tak, aby spouštěla funkci, která zapisuje data do Azure Redis Cache. Úloha Stream Analytics načítá události z Azure Event Hubs a spouští dotaz, který volá funkci. Tato funkce načítá data z úlohy Stream Analytics a zapisuje je do Azure Redis Cache.
 
-## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Vytvořit úlohu služby Stream Analytics službou Event Hubs jako vstup
+![Diagram znázorňující vztahy mezi službami Azure](./media/stream-analytics-with-azure-functions/image1.png)
 
-Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) kurzu vytváření centra událostí, spusťte aplikaci generátor události a vytvořit úlohu služby Stream Analytics. (Přeskočit kroky k vytvoření dotaz a výstup. Místo toho najdete v následujících částech k nastavení funkce výstupu.)
+K provedení této úlohy jsou nezbytné následující kroky:
+* [Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs](#create-stream-analytics-job-with-event-hub-as-input)  
+* [Vytvoření instance Azure Redis Cache](#create-an-azure-redis-cache)  
+* [Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache](#create-an-azure-function-that-can-write-data-to-the-redis-cache)    
+* [Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce](#update-the-stream-analytic-job-with-azure-function-as-output)  
+* [Kontrola výsledků v Azure Redis Cache](#check-redis-cache-for-results)  
 
-## <a name="create-an-azure-redis-cache-instance"></a>Vytvořte instanci služby Azure Redis Cache
+## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs
 
-1. Vytvoření mezipaměti ve službě Azure Redis Cache pomocí kroků popsaných v [vytvoření mezipaměti](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
+Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) vytvořte centrum událostí, spusťte aplikaci generátoru událostí a vytvořte úlohu Stream Analytics. (Přeskočte kroky pro vytvoření dotazu a výstupu. Místo toho nastavte výstup Functions pomocí následujících částí.)
 
-2. Po vytvoření mezipaměti, v části **nastavení**, vyberte **přístupové klíče**. Poznamenejte si **primární připojovací řetězec**.
+## <a name="create-an-azure-redis-cache-instance"></a>Vytvoření instance Azure Redis Cache
 
-   ![Snímek obrazovky z Azure Redis Cache připojovací řetězec](./media/stream-analytics-with-azure-functions/image2.png)
+1. Vytvořte mezipaměť v Azure Redis Cache postupem uvedeným v části [Vytvoření mezipaměti](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Vytvoří funkci, v Azure Functions, který může zapsat data do Azure Redis Cache
+2. Po vytvoření mezipaměti v části **Nastavení** vyberte **Přístupové klíče**. Poznamenejte si **primární připojovací řetězec**.
 
-1. Najdete v článku [vytvořit aplikaci function app](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) části dokumentace funkce. To vás provede procesem vytvoření funkce aplikace a [funkce aktivované protokolem HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function), pomocí jazyka CSharp.  
+   ![Snímek obrazovky s připojovacím řetězcem pro Azure Redis Cache](./media/stream-analytics-with-azure-functions/image2.png)
 
-2. Vyhledejte **run.csx** funkce. Aktualizujte jej s následujícím kódem. (Nezapomeňte nahradit "\<místo připojovacího řetězce redis cache\>" s Azure Redis Cache primární připojovací řetězec, který jste získali v předchozí části.)  
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache
+
+1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Provede vás postupem vytvoření aplikace funkcí a [funkce aktivované přes HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) pomocí jazyka CSharp.  
+
+2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. (Nezapomeňte nahradit text \<your redis cache connection string goes here\> primárním připojovacím řetězcem pro Azure Redis Cache, který jste získali v předchozí části.)  
 
    ```csharp
    using System;
@@ -103,7 +112,7 @@ Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real
 
    ```
 
-   Když Stream Analytics přijme "HTTP požadavku Entity příliš velké" výjimky z funkce, snižuje velikost dávky, který odesílá funkce. Ve funkci použijte následující kód zkontrolujte, že Stream Analytics neodešle nadměrné velikosti dávky. Ujistěte se, že jsou konzistentní s hodnotou zadanou v portálu Stream Analytics batch maximální počet a velikost hodnoty používané ve funkci.
+   Pokud Stream Analytics přijme z této funkce výjimku „HTTP Request Entity Too Large“ (Entita požadavku HTTP je příliš velká), sníží velikost dávek, které odesílá do Functions. Použijte ve funkci následující kód, který zkontroluje, jestli Stream Analytics neodesílá dávky nadměrné velikosti. Ujistěte se, že hodnoty maximálního počtu a velikosti pro dávku, které se používají ve funkci, jsou konzistentní s hodnotami zadanými na portálu Stream Analytics.
 
    ```csharp
    if (dataArray.ToString().Length > 262144)
@@ -112,7 +121,7 @@ Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real
       }
    ```
 
-3. V textovém editoru podle vaší volby, vytvořte soubor JSON s názvem **project.json**. Použít následující kód a uložte ho do místního počítače. Tento soubor obsahuje závislosti balíčku NuGet, požadované funkce jazyka C#.  
+3. V libovolném textovém editoru vytvořte soubor JSON s názvem **project.json**. Použijte následující kód a uložte ho do místního počítače. Tento soubor obsahuje závislosti balíčku NuGet, které vyžaduje funkce jazyka C#.  
    
    ```json
        {
@@ -128,35 +137,35 @@ Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real
 
    ```
  
-4. Přejděte zpět na portálu Azure. Z **funkce** kartě, přejděte na funkce. V části **nástroje pro vývoj**, vyberte **App Service Editor**. 
+4. Vraťte se na Azure Portal. Na kartě **Funkce platformy** vyhledejte danou funkci. V části **Vývojové nástroje** vyberte **App Service Editor**. 
  
-   ![Snímek obrazovky z aplikace služby editoru](./media/stream-analytics-with-azure-functions/image3.png)
+   ![Snímek obrazovky s App Service Editorem](./media/stream-analytics-with-azure-functions/image3.png)
 
-5. V editoru aplikace služby klikněte pravým tlačítkem na kořenový adresář a odeslat **project.json** souboru. Po úspěšném odeslání aktualizujte stránku. Teď byste měli vidět automaticky generovaný soubor s názvem **project.lock.json**. Automaticky generovaný soubor obsahuje odkazy na soubory .dll, které jsou určené v souboru project.json.  
+5. V App Service Editoru klikněte pravým tlačítkem myši na kořenový adresář a nahrajte soubor **project.json**. Po úspěšném nahrání aktualizujte stránku. Teď by se měl zobrazit automaticky vygenerovaný soubor s názvem **project.lock.json**. Automaticky vygenerovaný soubor obsahuje odkazy na soubory .dll, které jsou určené v souboru project.json.  
 
-   ![Snímek obrazovky z aplikace služby editoru](./media/stream-analytics-with-azure-functions/image4.png)
+   ![Snímek obrazovky s App Service Editorem](./media/stream-analytics-with-azure-functions/image4.png)
 
  
 
-## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Aktualizace úlohy služby Stream Analytics s funkcí jako výstup
+## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce
 
-1. Spusťte úlohu služby Stream Analytics na portálu Azure.  
+1. Otevřete úlohu Stream Analytics na portálu Azure Portal.  
 
-2. Přejděte do funkce a vyberte **přehled** > **výstupy** > **přidat**. Chcete-li přidat nový výstup, vyberte **funkce Azure** pro možnost jímky. Adaptér pro výstup nové funkce je k dispozici, s následujícími vlastnostmi:  
+2. Přejděte k dané funkci a vyberte **Přehled** > **Výstupy** > **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Nový adaptér pro výstup služby Functions je dostupný s následujícími vlastnostmi:  
 
    |**Název vlastnosti**|**Popis**|
    |---|---|
-   |Alias pro výstup| Popisný název, který používáte v dotazu úlohy k odkazu na výstup. |
-   |Možnost importu| Můžete použít funkci z aktuálního předplatného, nebo ručně zadejte nastavení, pokud se funkce nachází v jiné předplatné. |
-   |Function App| Název funkce aplikace. |
-   |Funkce| Název funkce v aplikaci funkce (název funkce run.csx).|
-   |Velikost dávky maximální|Nastaví maximální velikost pro každou dávku výstup, která se posílají funkce. Ve výchozím nastavení je tato hodnota nastavena na 256 KB.|
-   |Maximální počet dávek|Určuje maximální počet událostí v každé dávce, které je odesláno funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
-   |Klíč|Umožňuje používat funkce z jiné předplatné. Zadejte hodnotu klíče pro přístup k vaší funkci. Tato vlastnost je nepovinná.|
+   |Alias pro výstup| Popisný název, který v dotazu úlohy používáte k odkazu na výstup |
+   |Možnost importu| Můžete použít funkci z aktuálního předplatného nebo ručně zadat nastavení, pokud se funkce nachází v jiném předplatném. |
+   |Function App| Název vaší aplikace Functions |
+   |Funkce| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
+   |Maximální velikost dávky|Nastavuje maximální velikost pro každou výstupní dávku, která se odesílá do dané funkce. Ve výchozím nastavení je tato hodnota nastavená na 256 kB.|
+   |Maximální počet v dávce|Určuje maximální počet událostí v každé dávce, která se odesílá do dané funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
+   |Klíč|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
 
-3. Zadejte název pro alias pro výstup. V tomto kurzu jsme název **saop1** (můžete použít libovolný název zvoleného). Zadejte další podrobnosti.  
+3. Zadejte název aliasu pro výstup. V tomto kurzu používáme název **saop1** (můžete použít libovolný název). Zadejte další podrobnosti.  
 
-4. Otevřete úlohu služby Stream Analytics a aktualizujte následující dotaz. (Nezapomeňte nahradit text "saop1" Pokud výstupní jímku mít jiný název.)  
+4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. (Pokud jste určili pro výstupní jímku jiný název, nezapomeňte nahradit název saop1.)  
 
    ```sql
     SELECT 
@@ -169,25 +178,38 @@ Postupujte podle [odhalování podvodů v reálném čase](stream-analytics-real
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Spustit aplikaci telcodatagen.exe spuštěním následujícího příkazu na příkazovém řádku (použijte formát `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`):  
+5. Spusťte aplikaci telcodatagen.exe tak, že na příkazovém řádku spustíte následující příkaz (použijte formát `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`):  
    
-   **telcodatagen.exe 1000.2 2**
+   **telcodatagen.exe 1000 .2 2**
     
-6.  Spustíte úlohu služby Stream Analytics.
+6.  Spusťte úlohu Stream Analytics.
 
-## <a name="check-azure-redis-cache-for-results"></a>Zkontrolujte výsledky Azure Redis Cache
+## <a name="check-azure-redis-cache-for-results"></a>Kontrola výsledků v Azure Redis Cache
 
-1. Přejděte na portál Azure a najít Azure Redis Cache. Vyberte **konzoly**.  
+1. Přejděte na Azure Portal a vyhledejte Azure Redis Cache. Vyberte **Konzola**.  
 
-2. Použití [Redis cache příkazy](https://redis.io/commands) k ověření, že vaše data jsou v mezipaměti Redis. (Příkaz má formát {klíč} Get.) Příklad:
+2. Pomocí [příkazů mezipaměti Redis](https://redis.io/commands) ověřte, že vaše data jsou v mezipaměti Redis. (Příkaz má formát Get {klíč}.) Příklad:
 
-   **Získat "12/19/2017 21:32:24-123414732"**
+   **Get "12/19/2017 21:32:24 - 123414732"**
 
-   Tento příkaz má tisk hodnoty pro zadaný klíč:
+   Tento příkaz by měl vytisknout hodnotu pro zadaný klíč:
 
-   ![Snímek obrazovky z Azure Redis Cache výstup](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Snímek obrazovky s výstupem Azure Redis Cache](./media/stream-analytics-with-azure-functions/image5.png)
 
 ## <a name="known-issues"></a>Známé problémy
 
-Na portálu Azure, při pokusu o resetování velikost dávky maximální / hodnotu prázdný (výchozí), počet dávek maximální hodnota změní zpět na dříve zadanou hodnotu na Uložit. Ručně zadejte výchozí hodnoty pro tato pole v tomto případě.
+Když se na portálu Azure Portal provede pokus o resetování maximální velikosti dávky nebo maximálního počtu v dávce na prázdnou (výchozí) hodnotu, po uložení se tato hodnota změní zpět na dříve zadanou hodnotu. V tom případě zadejte výchozí hodnoty pro tato pole ručně.
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud plánujete používat tuto úlohu v budoucnu, můžete ji zastavit a znovu ji spustit později, až ji budete potřebovat. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené podle tohoto rychlého startu pomocí následujícího postupu:
+
+1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.  
+2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto kurzu jste vytvořili jednoduchou úlohu Stream Analytics, která spouští funkci Azure. Pokud chcete získat další informace o úlohách Stream Analytics, pokračujte dalším kurzem:
+
+> [!div class="nextstepaction"]
+> [Spouštění uživatelem definovaných funkcí jazyka JavaScript v úlohách Stream Analytics](stream-analytics-javascript-user-defined-functions.md)

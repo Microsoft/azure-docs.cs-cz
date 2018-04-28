@@ -1,8 +1,8 @@
 ---
-title: "Zkopírovat nebo přesunout data do služby Azure Storage s AzCopy v systému Linux | Microsoft Docs"
-description: "Pomocí AzCopy na nástroj Linux přesunutí nebo zkopírování dat do nebo z objektu blob a obsahu souborů. Kopírování dat do úložiště Azure z místních souborů, nebo zkopírujte data v rámci nebo mezi účty úložiště. Snadno migrujte data do úložiště Azure."
+title: Zkopírovat nebo přesunout data do služby Azure Storage s AzCopy v systému Linux | Microsoft Docs
+description: Pomocí AzCopy na nástroj Linux přesunutí nebo zkopírování dat do nebo z objektu blob a obsahu souborů. Kopírování dat do úložiště Azure z místních souborů, nebo zkopírujte data v rámci nebo mezi účty úložiště. Snadno migrujte data do úložiště Azure.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
@@ -12,48 +12,79 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 2fd89684176cd832b656dae8c8f94a6f1ccbbbe8
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí nástroje AzCopy v systému Linux
 
-AzCopy je nástroj příkazového řádku pro kopírování dat z úložiště Microsoft Azure Blob, soubor a tabulky, jednoduché příkazy určené pro optimální výkon. Může kopírovat data mezi systém souborů a účet úložiště nebo mezi účty úložiště.  
+AzCopy je nástroj příkazového řádku pro kopírování dat z úložiště objektů Blob v Microsoft Azure a soubor jednoduché příkazy určené pro optimální výkon. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
 
-Existují dvě verze nástroje AzCopy, které si můžete stáhnout. AzCopy v systému Linux je sestaven pomocí rozhraní .NET Framework Core, které cílí platformy Linux nabídky stylu POSIX možnosti příkazového řádku. [AzCopy v systému Windows](../storage-use-azcopy.md) je obsažena v rozhraní .NET Framework a nabízí možnosti příkazového řádku Windows stylu. Tento článek se zabývá AzCopy v systému Linux.
+Existují dvě verze nástroje AzCopy, které si můžete stáhnout. AzCopy v systému Linux cílí platformy Linux nabídky stylu POSIX možnosti příkazového řádku. [AzCopy v systému Windows](../storage-use-azcopy.md) styl Windows nabízí možnosti příkazového řádku. Tento článek se zabývá AzCopy v systému Linux. 
+
+> [!NOTE]  
+> Od verze nástroje AzCopy 7.2 se závislostí .NET Core spojených s tímto balíčkem AzCopy. Pokud používáte verzi 7,2 nebo novější, již nebudou muset nainstalovat .NET Core jako nezbytný předpoklad.
 
 ## <a name="download-and-install-azcopy"></a>Stáhněte a nainstalujte AzCopy
+
 ### <a name="installation-on-linux"></a>Instalace v systému Linux
 
-Článek obsahuje příkazy pro různé verze Ubuntu.  Použití `lsb_release -a` příkaz potvrďte oprav a kódové označení. 
+> [!NOTE]
+> Možná budete muset nainstalovat rozhraní .NET Core 2.1 závislosti zvýrazněných v tomto [článku .NET Core předpoklady](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) v závislosti na vaší distribuce. Pro všeobecně distribuce jako Ubuntu 16.04 a RHEL 7 Toto není obvykle nutné.
 
-AzCopy v systému Linux vyžaduje základní rozhraní .NET framework (verze 2.0) na platformě. Najdete v pokynech k instalaci na [.NET Core](https://www.microsoft.com/net/download/linux) stránky.
+Instalace nástroje AzCopy v systému Linux (v7.2 nebo novější) je stejně snadná jako extrahování balíčku vkládání a spuštění skriptu install. 
 
-Jako příklad nainstalujme na Ubuntu 16.04 .NET Core. Nejnovější Průvodce instalací, najdete v článku [.NET Core v systému Linux](https://www.microsoft.com/net/download/linux) instalační stránka.
-
-
+**RHEL 6 na základě distribuce**: [stáhnout odkaz](https://aka.ms/downloadazcopylinuxrhel6)
 ```bash
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
-sudo apt-get install dotnet-sdk-2.0.2
-```
-
-Po instalaci .NET Core, stáhněte a nainstalujte AzCopy.
-
-```bash
-wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinuxrhel6
 tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-Po instalaci nástroje AzCopy v systému Linux můžete odebrat extrahované soubory. Případně pokud nemáte oprávnění superuživatele, můžete také spustit pomocí skriptu prostředí 'azcopy' ve složce extrahované AzCopy. 
+**Všechny ostatní Linuxových distribucích**: [stáhnout odkaz](https://aka.ms/downloadazcopylinux64)
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
 
+Po instalaci nástroje AzCopy v systému Linux můžete odebrat extrahované soubory. Případně, pokud nemáte oprávnění superuživatele můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
+
+### <a name="alternative-installation-on-ubuntu"></a>Alternativní instalace na Ubuntu
+
+**Ubuntu 14.04**
+
+Přidejte výstižný zdroj pro produkt úložiště Linux společnosti Microsoft a nainstalujte AzCopy:
+
+```bash
+sudo echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod/ trusty main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
+
+**Ubuntu 16.04**
+
+Přidejte výstižný zdroj pro produkt úložiště Linux společnosti Microsoft a nainstalujte AzCopy:
+
+```bash
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod/ xenial main" > azure.list
+sudo cp ./azure.list /etc/apt/sources.list.d/
+apt-key adv --keyserver packages.microsoft.com --recv-keys B02C46DF417A0893
+```
+
+```bash
+sudo apt-get update
+sudo apt-get install azcopy
+```
 
 ## <a name="writing-your-first-azcopy-command"></a>Zápis vaše první příkaz AzCopy
 Základní syntaxe pro příkazy AzCopy je:
@@ -193,7 +224,7 @@ azcopy \
     --dest-key <key>
 ```
 
-Pokud zadaný cílový kontejner neexistuje, AzCopy ji vytvoří a odešle soubor do ní.
+Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje.
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Jediný soubor nahrát do virtuálního adresáře
 
@@ -205,6 +236,14 @@ azcopy \
 ```
 
 Pokud zadaný virtuální adresář neexistuje, AzCopy nahrávání souboru v názvu objektu blob virtuálního adresáře (*například*, `vd/abc.txt` v předchozím příkladu).
+
+### <a name="redirect-from-stdin"></a>Přesměrování z stdin –
+
+```azcopy
+gzip myarchive.tar -c | azcopy \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/mydir/myarchive.tar.gz \
+    --dest-key <key>
+```
 
 ### <a name="upload-all-files"></a>Odeslat všechny soubory.
 
@@ -379,7 +418,7 @@ azcopy \
     --sync-copy
 ```
 
-`--sync-copy`může generovat další odchozí nákladů ve srovnání s asynchronní kopírování. Doporučený přístup je pro tuto možnost použijte virtuální počítač Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
+`--sync-copy` může generovat další odchozí nákladů ve srovnání s asynchronní kopírování. Doporučený přístup je pro tuto možnost použijte virtuální počítač Azure, který je ve stejné oblasti jako váš účet úložiště zdroj předejdete odchozí náklady.
 
 ## <a name="file-download"></a>Soubor: stažení
 ### <a name="download-single-file"></a>Stáhnout jedním souborem
@@ -601,10 +640,31 @@ Možnost `--parallel-level` určuje počet souběžných kopie operací. Ve výc
 >[!TIP]
 >Pokud chcete zobrazit úplný seznam parametrů AzCopy, podívejte se na 'azcopy – Nápověda' nabídky.
 
-## <a name="known-issues-and-best-practices"></a>Známé problémy a doporučené postupy
-### <a name="error-net-sdk-20-is-not-found-in-the-system"></a>Chyba: .NET SDK 2.0 není v systému nalezena.
-AzCopy závisí na rozhraní .NET 2.0 SDK od verze AzCopy 7.0. Před touto verzí použít AzCopy .NET Core 1.1. Pokud se vyskytne chyba s oznámením, že rozhraní .NET 2.0 jádra není nainstalována v systému, budete muset nainstalovat nebo upgradovat pomocí [pokyny k instalaci .NET Core](https://www.microsoft.com/net/learn/get-started/linuxredhat).
+## <a name="installation-steps-for-azcopy-71-and-earlier-versions"></a>Postup instalace AzCopy 7.1 a starší verze
 
+AzCopy v systému Linux (v7.1 a starší) vyžaduje rozhraní .NET Core. Pokyny k instalaci jsou k dispozici na [instalace .NET Core](https://www.microsoft.com/net/core#linuxubuntu) stránky.
+
+Například začněte tím, že na Ubuntu 16.10 instalaci .NET Core. Nejnovější Průvodce instalací, najdete v článku [.NET Core v systému Linux](https://www.microsoft.com/net/core#linuxubuntu) instalační stránka.
+
+
+```bash
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.0.0
+```
+
+Po instalaci .NET Core, stáhněte a nainstalujte AzCopy.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux
+tar -xf azcopy.tar.gz
+sudo ./install.sh
+```
+
+Po instalaci nástroje AzCopy v systému Linux můžete odebrat extrahované soubory. Případně pokud nemáte oprávnění superuživatele, můžete také spustit `azcopy` pomocí azcopy skriptu prostředí v extrahovanou složku.
+
+## <a name="known-issues-and-best-practices"></a>Známé problémy a doporučené postupy
 ### <a name="error-installing-azcopy"></a>Chyba při instalaci nástroje AzCopy
 Pokud narazíte na potíže s instalací AzCopy, můžete se pokusit spustit AzCopy pomocí skriptů bash ve extrahované `azcopy` složky.
 
@@ -618,16 +678,34 @@ Při kopírování objektů BLOB nebo soubory s AzCopy, mějte na paměti, že j
 
 Pokud nelze zabránit jiné aplikace z zápis do objektů BLOB nebo soubory, když se kopírují, pak mějte na paměti, že v době dokončení úlohy, kopírované prostředky buď již nemá úplné parita s prostředky zdroje.
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a>Jedna instance nástroje AzCopy spusťte na jednom počítači.
-AzCopy je navržen chcete maximalizovat využití prostředků vašeho počítače urychlit přenos dat, doporučujeme spustit pouze jedna instance nástroje AzCopy na jednom počítači a zadejte možnost `--parallel-level` Pokud potřebujete více souběžných operací. Další podrobnosti, zadejte `AzCopy --help parallel-level` na příkazovém řádku.
+### <a name="running-multiple-azcopy-processes"></a>Spuštění více procesů AzCopy
+Více procesů AzCopy můžete spustit také na jednoho klienta zajištění, že používáte jiný deníku složek. Použití jedné deníku složku pro více procesů AzCopy není podporováno.
+
+1. proces:
+```azcopy
+azcopy \
+    --source /mnt/myfiles1 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles1 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal1"
+```
+
+2. proces:
+```azcopy
+azcopy \
+    --source /mnt/myfiles2 \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/myfiles2 \
+    --dest-key <key> \
+    --resume "/mnt/myazcopyjournal2"
+```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o Azure Storage a AzCopy najdete v následujících zdrojích informací:
+Další informace o službě Azure Storage a AzCopy najdete v následujících zdrojích informací:
 
 ### <a name="azure-storage-documentation"></a>Dokumentace k Azure Storage:
-* [Úvod do Azure Storage](../storage-introduction.md)
+* [Seznámení se službou Azure Storage](../storage-introduction.md)
 * [vytvořit účet úložiště](../storage-create-storage-account.md)
-* [Spravovat objekty BLOB pomocí Průzkumníka úložiště](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
+* [Správa objektů blob pomocí Průzkumníka služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Použití Azure CLI 2.0 s Azure Storage](../storage-azure-cli.md)
 * [Používání úložiště Blob z jazyka C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Používání úložiště Blob z Javy](../blobs/storage-java-how-to-use-blob-storage.md)

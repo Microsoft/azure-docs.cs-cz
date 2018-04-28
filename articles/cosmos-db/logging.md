@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0b49a23de62385a8aa362680dde845512d9302fc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6bad6c7cd641a2ef5461ee37b89c0bdc6a221017
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
@@ -140,7 +140,7 @@ Pokud jste již Azure PowerShell nainstalovali a neznáte jeho verzi, z typu kon
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. Prostředí Azure PowerShell získá všechna předplatná, která jsou přidružená k tomuto účtu a ve výchozím nastavení, použije první.

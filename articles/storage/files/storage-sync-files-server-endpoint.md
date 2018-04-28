@@ -1,8 +1,8 @@
 ---
-title: "Přidat nebo odebrat server koncový bod synchronizace souboru Azure (preview) | Microsoft Docs"
-description: "Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files."
+title: Přidat nebo odebrat server koncový bod synchronizace souboru Azure (preview) | Microsoft Docs
+description: Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Přidat nebo odebrat server koncový bod synchronizace souboru Azure (preview)
 Azure File Sync (Preview) umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
@@ -49,7 +49,7 @@ Následující informace jsou požadovány podle **přidat koncový bod serveru*
 Vyberte **vytvořit** k přidání koncového bodu serveru. Soubory v oboru názvů skupiny synchronizace bude nyní sesynchronizovávat. 
 
 ## <a name="remove-a-server-endpoint"></a>Odstranit koncový bod serveru
-Když je povolené pro koncový bod serveru, cloudové vrstvení bude *vrstvy* soubory do vaší sdílené složky Azure File. To umožňuje místní sdílené složky tak, aby fungoval jako mezipaměť, nikoli úplnou kopii datovou sadu, aby efektivní využití místa na souborovém serveru. Ale pokud serveru koncového bodu se odebere při vrstvené soubory stále místně na serveru, tyto soubory se stanou nelze získat přístup. Proto v případě, že se požaduje přístup k souborům, je nutné odvolat všechny vrstvené soubory ze souborů Azure před pokračováním v zrušení registrace. 
+Když je povolené pro koncový bod serveru, cloudové vrstvení bude *vrstvy* soubory do vaší sdílené složky Azure File. To umožňuje místní sdílené složky tak, aby fungoval jako mezipaměť, nikoli úplnou kopii datovou sadu, aby efektivní využití místa na souborovém serveru. Ale **serveru koncového bodu se odebere při vrstvené soubory stále místně na serveru,-li tyto soubory budou nepřístupné**. Proto v případě, že se požaduje přístup k souborům ve sdílených složkách na místě, je nutné odvolat všechny vrstvené soubory ze souborů Azure než budete pokračovat v odstraňování serveru koncového bodu. 
 
 To můžete provést pomocí rutiny prostředí PowerShell, jak je uvedeno níže:
 

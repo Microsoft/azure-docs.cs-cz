@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ba721091c2eb0c67171a6d3106468a05f9be1f8f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fe383d172def4916338db86c5fba641d75813e9b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="my-first-graphical-runbook"></a>Můj první grafický runbook
 
@@ -117,6 +117,10 @@ Teď, když máte proměnnou, do které se uloží ID předplatného, můžete r
 1. Není nutné **zápisu textový výstup Hello World** už nepotřebujeme, takže klikněte na výpustky (...) a vyberte **odstranit**.
 1. V ovládacím prvku Knihovna rozbalte **ASSETY**, **Připojení** a výběrem možnosti **Přidat na plátno** přidejte **AzureRunAsConnection** na plátno.
 1. V ovládacím prvku knihovna zadejte **Connect-AzureRmAccount** do textového pole hledání.
+
+   > [!IMPORTANT]
+   > **Přidat-AzureRmAccount** je nyní alias **Connect-AzureRMAccount**. Při hledání vaše knihovna položek, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo můžete aktualizovat moduly v účtu Automation.
+
 1. Přidat **Connect-AzureRmAccount** na plátno.
 1. Najeďte ukazatelem myši nad položku **Get Run As Connection**, dokud se v dolní části obrazce nezobrazí kruh. Klikněte na kruh a přetáhněte šipku na **Connect-AzureRmAccount**. Šipka, kterou jste vytvořili, je *odkazem*. Sada runbook začíná **získat připojení spustit jako** a spusťte **Connect-AzureRmAccount**.<br> ![Vytvoření propojení mezi aktivitami](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. Na plátně vyberte **Connect-AzureRmAccount** a v podokně ovládacího prvku konfigurace zadejte **přihlášení k Azure** v **popisek** textové pole.
@@ -135,9 +139,6 @@ Teď, když máte proměnnou, do které se uloží ID předplatného, můžete r
 1. Po výběru sady parametrů se zobrazí na stránce konfigurace parametru aktivity. Klikněte na **ID předplatného**.
 1. Na stránce hodnota parametru vyberte **variabilní prostředek** pro **zdroj dat** a vyberte **AzureSubscriptionId** ze seznamu a pak klikněte na tlačítko **OK** dvakrát.
 1. Pozastavte ukazatel myši nad možností **Přihlášení k Azure**, dokud se v dolní části obrazce nezobrazí kruh. Klikněte na kruh a přetáhněte šipku na **Zadat ID předplatného**.
-
-> [!IMPORTANT]
-> **Přidat-AzureRmAccount** je nyní alias **Connect-AzureRMAccount**. Při hledání vaše knihovna položek, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRMAccount**, nebo můžete aktualizovat moduly v účtu Automation.
 
 Váš runbook by měl v tuto chvíli vypadat následovně: <br>![Konfigurace ověření runbooku](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

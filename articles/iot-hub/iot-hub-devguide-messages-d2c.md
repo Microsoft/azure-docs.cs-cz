@@ -1,11 +1,11 @@
 ---
-title: "Pochopení zasílání zpráv typu zařízení cloud Azure IoT Hub | Microsoft Docs"
-description: "Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu zařízení cloud. Obsahuje informace o odeslání telemetrie a bez telemtry dat a doručování zpráv pomocí směrování."
+title: Pochopení zasílání zpráv typu zařízení cloud Azure IoT Hub | Microsoft Docs
+description: Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu zařízení cloud. Obsahuje informace o odeslání telemetrie a bez telemtry dat a doručování zpráv pomocí směrování.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Odesílání zpráv typu zařízení cloud do služby IoT Hub
 
@@ -32,7 +32,7 @@ Zařízení cloud zasílání zpráv službou IoT Hub má následující vlastno
 * Zprávy typu zařízení cloud jsou odolné a udržení ve výchozím nastavení služby IoT hub **zprávy nebo události** koncový bod pro až sedm dní.
 * Zprávy typu zařízení cloud může být maximálně 256 KB a mohou být seskupeny do dávky k optimalizaci odešle. Dávky může být maximálně 256 KB.
 * Jak je popsáno v [řízení přístupu ke službě IoT Hub] [ lnk-devguide-security] oddíl, IoT Hub umožňuje na zařízení ověřování a řízení přístupu.
-* IoT Hub můžete vytvořit až 10 vlastní koncové body. Doručování zpráv do koncových bodů podle trasy nakonfigurované ve službě IoT hub. Další informace najdete v tématu [pravidla směrování](#routing-rules).
+* IoT Hub můžete vytvořit až 10 vlastní koncové body. Doručování zpráv do koncových bodů podle trasy nakonfigurované ve službě IoT hub. Další informace najdete v tématu [pravidla směrování](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
 * IoT Hub umožňuje miliony současně připojených zařízení (viz [kvóty a omezení][lnk-quotas]).
 * IoT Hub neumožňuje libovolný dělení. Zprávy typu zařízení cloud jsou rozdělena na oddíly na základě jejich zdrojového **deviceId**.
 

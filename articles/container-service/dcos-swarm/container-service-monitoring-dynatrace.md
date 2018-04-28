@@ -1,19 +1,19 @@
 ---
-title: "Cluster Azure DC/OS monitorování - Dynatrace"
-description: "Monitorování clusteru Azure Container Service DC/OS s Dynatrace. Nasaďte Dynatrace OneAgent pomocí řídicího panelu DC/OS."
+title: Cluster Azure DC/OS monitorování - Dynatrace
+description: Monitorování clusteru Azure Container Service DC/OS s Dynatrace. Nasaďte Dynatrace OneAgent pomocí řídicího panelu DC/OS.
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Monitorování clusteru Azure Container Service DC/OS s Dynatrace SaaS/spravované
 
@@ -27,12 +27,12 @@ Následující obrázek znázorňuje Dynatrace uživatelského rozhraní:
 ![Dynatrace uživatelského rozhraní](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>Požadavky 
-[Nasazení](container-service-deployment.md) a [připojit](./../container-service-connect.md) do clusteru s podporou konfigurovat tak, že Azure Container Service. Prozkoumejte [uživatelské rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte na [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) nastavit účet Dynatrace SaaS.  
+[Nasazení](container-service-deployment.md) a [připojit](./../container-service-connect.md) do clusteru s podporou konfigurovat tak, že Azure Container Service. Prozkoumejte [uživatelské rozhraní Marathon](container-service-mesos-marathon-ui.md). Přejděte na [ https://www.dynatrace.com/trial/ ](https://www.dynatrace.com/trial/) nastavit účet Dynatrace SaaS.  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Konfigurace nasazení Dynatrace pomocí Marathonu
 Tyto kroky ukazují, jak nakonfigurovat a nasadit aplikace Dynatrace ke clusteru pomocí Marathonu.
 
-1. Přístup přes uživatelské rozhraní DC/OS [http://localhost:80 /](http://localhost:80/). Jednou v uživatelském rozhraní DC/OS, přejděte na **Universe** kartě a poté vyhledejte **Dynatrace**.
+1. Přístup přes uživatelské rozhraní DC/OS [ http://localhost:80/ ](http://localhost:80/). Jednou v uživatelském rozhraní DC/OS, přejděte na **Universe** kartě a poté vyhledejte **Dynatrace**.
 
     ![Dynatrace v Universe DC/OS](./media/container-service-monitoring-dynatrace/dynatrace-universe.png)
 
@@ -52,6 +52,6 @@ Tyto kroky ukazují, jak nakonfigurovat a nasadit aplikace Dynatrace ke clusteru
 
     ![Konfigurace Dynatrace v DC/OS Universe-instance](./media/container-service-monitoring-dynatrace/dynatrace-config2.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Jakmile jste nainstalovali balíček, přejděte zpět na řídicí panel Dynatrace. Použití jiné metriky pro kontejnery můžete prozkoumat v rámci clusteru. 

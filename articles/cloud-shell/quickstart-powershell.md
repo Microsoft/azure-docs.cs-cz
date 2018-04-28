@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Rychlý start pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -274,13 +274,13 @@ K ověření na serverech nebo virtuálních počítačů pomocí protokolu SSH,
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Pomocí vlastního profilu pro stávající nastavení GIT a SSH
 
-Vzhledem k tomu, že relace nezůstanou zachována při odhlášení uložit vaše `$env:USERPROFILE\.ssh` do adresáře `CloudDrive` nebo vytvořte symlink při získá spuštění prostředí cloudu.
-Přidejte následující fragment kódu ve vašem profile.ps1 vytvořit symlink k CloudDrive.
+Vzhledem k tomu, že relace nezůstanou zachována při odhlášení uložit vaše `$env:USERPROFILE\.ssh` do adresáře `clouddrive` nebo vytvořte symlink při získá spuštění prostředí cloudu.
+Přidejte následující fragment kódu ve vaší profile.ps1 vytvořit symlink k `clouddrive`.
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +347,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Použití Azure souborů k ukládání dat
 
-Můžete vytvořit skript, například `helloworld.ps1`a uložte ho do vaší `CloudDrive` používat napříč relacemi prostředí.
+Můžete vytvořit skript, například `helloworld.ps1`a uložte ho do vaší `clouddrive` používat napříč relacemi prostředí.
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-Při použití prostředí PowerShell v prostředí cloudu, při příštím `helloworld.ps1` soubor bude existovat v rámci `CloudDrive` adresář, který připojí vaše soubory Azure sdílenou složku.
+Při použití prostředí PowerShell v prostředí cloudu, při příštím `helloworld.ps1` soubor bude existovat v rámci `clouddrive` adresář, který připojí vaše soubory Azure sdílenou složku.
 
 ## <a name="use-custom-profile"></a>Použít vlastní profil
 
-Prostředí PowerShell můžete přizpůsobit tak, že vytvoříte prostředí PowerShell profily - `profile.ps1` nebo `Microsoft.PowerShell_profile.ps1`. Uložte ji pod `CloudDrive` tak, aby mohou být načteny v každé relaci prostředí PowerShell při spuštění prostředí cloudu.
+Prostředí PowerShell můžete přizpůsobit tak, že vytvoříte prostředí PowerShell profily - `profile.ps1` nebo `Microsoft.PowerShell_profile.ps1`. Uložte ji pod `clouddrive` tak, aby mohou být načteny v každé relaci prostředí PowerShell při spuštění prostředí cloudu.
 
 Postup vytvoření profilu, použijte [o profily][profile].
 
@@ -373,7 +373,7 @@ Chcete-li klonovat úložiště Git v prostředí cloudu, je potřeba vytvořit 
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-Vzhledem k tomu, že relací v prostředí cloudu se nezachovají, pokud se odhlásíte nebo vypršení časového limitu relace, nebude existovat konfiguračním souboru Git při dalším přihlášení. Pokud chcete, aby vaše konfigurace Git zachovat, je nutné uložit vaše .gitconfig k vaší `CloudDrive` a zkopírujte jej, nebo vytvořte symlink při získá spuštění prostředí cloudu. Následující fragment kódu v profile.ps1, použít k vytvoření symlink k `CloudDrive`.
+Vzhledem k tomu, že relací v prostředí cloudu se nezachovají, pokud se odhlásíte nebo vypršení časového limitu relace, nebude existovat konfiguračním souboru Git při dalším přihlášení. Pokud chcete, aby vaše konfigurace Git zachovat, je nutné uložit vaše .gitconfig k vaší `clouddrive` a zkopírujte jej, nebo vytvořte symlink při získá spuštění prostředí cloudu. Následující fragment kódu v profile.ps1, použít k vytvoření symlink k `clouddrive`.
 
  ``` PowerShell
  

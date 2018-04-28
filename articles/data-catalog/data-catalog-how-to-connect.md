@@ -1,12 +1,12 @@
 ---
-title: "Postup připojení ke zdrojům dat | Microsoft Docs"
-description: "Postupy: článek zvýraznění jak se připojit ke zdrojům dat zjištěným s Azure Data Catalog."
+title: Postup připojení ke zdrojům dat | Microsoft Docs
+description: 'Postupy: článek zvýraznění jak se připojit ke zdrojům dat zjištěným s Azure Data Catalog.'
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: b5bed534d9fa1a64b0e90c268407281724185ce8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod
@@ -43,12 +43,12 @@ Při použití "Otevřít v..." nabídky pro zdroje dat na portálu Azure Data C
 
 | Otevřít v aplikaci | Příponu souboru / protocol | Verze podporované aplikace |
 | --- | --- | --- |
-| Excel |.odc |Excel 2010 nebo novější |
-| Aplikace Excel (horní 1000) |.odc |Excel 2010 nebo novější |
-| Power Query |.xlsx |Nainstalované aplikace Excel 2016 nebo aplikaci Excel 2010 nebo Excel 2013 doplněk Power Query pro doplněk aplikace Excel |
+| Excel |ODC |Excel 2010 nebo novější |
+| Aplikace Excel (horní 1000) |ODC |Excel 2010 nebo novější |
+| Power Query |XLSX |Nainstalované aplikace Excel 2016 nebo aplikaci Excel 2010 nebo Excel 2013 doplněk Power Query pro doplněk aplikace Excel |
 | Power BI Desktop |.pbix |Power BI Desktop července 2016 nebo novější |
-| SQL Server Data Tools |vsweb:// |Visual Studio 2013 Update 4 nebo novější s nástrojů systému SQL Server nainstalován |
-| Správce sestav |http:// |V tématu [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
+| SQL Server Data Tools |vsweb: / / |Visual Studio 2013 Update 4 nebo novější s nástrojů systému SQL Server nainstalován |
+| Správce sestav |http:// |V tématu [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
 
 ## <a name="your-data-your-tools"></a>Data, vaše nástroje
 Možnosti dostupné v nabídce bude záviset na typu dat asset aktuálně vybrané. Samozřejmě, ne všechny možné nástroje bude součástí "Otevřít v..." nabídce, ale je stále snadné připojení ke zdroji dat pomocí libovolného nástroje klienta. Vybrání datový prostředek v **Azure Data Catalog** portálu umístění dokončení se zobrazí v podokně vlastností.

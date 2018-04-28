@@ -1,13 +1,13 @@
 ---
 title: Azure Service Bus vazby pro Azure Functions
-description: "Pochopit, jak používat Azure Service Bus triggerů a vazeb v Azure Functions."
+description: Pochopit, jak používat Azure Service Bus triggerů a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 02a34111fbab62884c9ecbfc084a55d21d775182
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
 
@@ -217,9 +217,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | Musí být nastavena na "serviceBusTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**Směr** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**name** | neuvedeno | Název proměnné, která představuje zprávu fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
+|**type** | neuvedeno | Musí být nastavena na "serviceBusTrigger". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
 |**queueName**|**QueueName**|Název fronty k monitorování.  Nastavte jenom v případě, že monitorování fronty, ne pro téma.
 |**topicName**|**TopicName**|Název tématu, které chcete monitorovat. Nastavte jenom v případě, že monitorování téma, ne pro frontu.|
 |**subscriptionName**|**Název_předplatného**|Název odběru k monitorování. Nastavte jenom v případě, že monitorování téma, ne pro frontu.|
@@ -236,6 +236,8 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro zpr
 * `byte[]` -Vhodné pro binární data.
 * Vlastní typ – Pokud zpráva obsahuje formát JSON, Azure Functions se pokusí rekonstruovat JSON data.
 * `BrokeredMessage` -Vám deserializovat zprávu s [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metoda.
+
+Tyto parametry jsou určené pro Azure Functions verze 1.x; pro 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
 
 V jazyce JavaScript, přístup k fronta nebo téma zprávy pomocí `context.bindings.<name from function.json>`. Zprávy služby Service Bus je předán do funkce jako řetězec nebo objekt JSON.
 
@@ -456,9 +458,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | Musí být nastavena na "sběrnice". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**Směr** | neuvedeno | Musí být nastavena na "out". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**name** | neuvedeno | Název proměnné, která představuje fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
+|**type** | neuvedeno | Musí být nastavena na "sběrnice". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction** | neuvedeno | Musí být nastavena na "out". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje fronta nebo téma v kódu funkce. Chcete-li funkce návratovou hodnotu nastavte na "$return". | 
 |**queueName**|**QueueName**|Název fronty.  Nastavte jenom v případě, že odeslání zprávy do fronty, není pro téma.
 |**topicName**|**TopicName**|Název tématu, které chcete monitorovat. Nastavte jenom v případě, že odesílání zpráv tématu, ne pro frontu.|
 |**Připojení**|**Připojení**|Název nastavení aplikace, který obsahuje připojovací řetězec sběrnice služeb, který chcete použít pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu. Například pokud nastavíte `connection` na "MyServiceBus" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyServiceBus." Pokud necháte `connection` prázdná, připojovací řetězec sběrnice služeb výchozí modul runtime funkce používá v nastavení aplikace, s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků, zobrazuje se v [získat přihlašovací údaje správu](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). Připojovací řetězec musí být v případě oboru názvů Service Bus, bez omezení konkrétní fronty nebo téma.|
@@ -479,6 +481,8 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro vaz
 * `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytvoření více zpráv. Zprávu se vytvoří při volání `Add` metoda.
 
 Asynchronní funkcí, použití návratovou hodnotu nebo `IAsyncCollector` místo `out` parametr.
+
+Tyto parametry jsou určené pro Azure Functions verze 1.x; pro 2.x, použijte [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage`.
 
 V jazyce JavaScript, přístup k fronta nebo téma pomocí `context.bindings.<name from function.json>`. Řetězec, bajtové pole nebo objekt jazyka Javascript (deserializovat do formátu JSON) můžete přiřadit k `context.binding.<name>`.
 

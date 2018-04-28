@@ -12,46 +12,51 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 5446f00b698fbe1fe1bae9c52bf3e73fe0d1c506
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 86597defad7c76d41065270030a4c77ee901b014
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell v Azure zásobníku 
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: Vytvořte virtuální počítač s Linuxem serveru pomocí prostředí PowerShell v Azure zásobníku
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Prostředí Azure PowerShell slouží k vytváření a správě prostředků v Azure zásobníku z příkazového řádku nebo ve skriptech.  Tato příručka údaje pomocí prostředí PowerShell k vytvoření virtuálního počítače s Ubuntu server v Azure zásobníku.
+Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí Azure PowerShell zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače.  Tento článek také poskytuje postup:
 
-## <a name="prerequisites"></a>Požadavky 
+* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
+* Vyčistěte nepoužité zdroje.
 
-* Ověřte, že vaše operátor zásobník Azure má přidaná bitovou kopii "Ubuntu Server 16.04 LTS" do zásobníku Azure marketplace.  
+## <a name="prerequisites"></a>Požadavky
 
-* Azure zásobníku vyžaduje konkrétní verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro zásobník Azure PowerShell, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [ Nainstalujte](azure-stack-powershell-install.md) a [konfigurace](azure-stack-powershell-configure-user.md) prostředí PowerShell.    
+* **Bitovou kopii systému Linux v zásobníku Azure marketplace**
 
-* Veřejný klíč SSH, název id_rsa.pub by se vytvořit v adresáři .ssh profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH naleznete v tématu [vytváření SSH klíčů v systému Windows](../../virtual-machines/linux/ssh-from-windows.md).  
+   Zásobník Azure marketplace neobsahuje bitovou kopii systému Linux ve výchozím nastavení. Získat operátor zásobník Azure zajistit **Ubuntu Server 16.04 LTS** bitové kopie je nutné. Operátor můžete použít postup popsaný v tématu [stáhnout položky marketplace z Azure do Azure zásobníku](../azure-stack-download-azure-marketplace-item.md) článku.
+
+* Azure zásobníku vyžaduje konkrétní verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro zásobník Azure PowerShell, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [ Nainstalujte](azure-stack-powershell-install.md) a [konfigurace](azure-stack-powershell-configure-user.md) prostředí PowerShell.
+
+* Veřejný klíč SSH s id_rsa.pub název uložené v adresáři .ssh profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH naleznete v tématu [vytváření SSH klíčů v systému Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, do které zásobník Azure jsou nasadit a spravovat prostředky. Z vaší development kit nebo zásobník Azure integrovaný systém spusťte následující blok kódu a vytvořte skupinu prostředků. Přiřadili jsme hodnoty pro všechny proměnné v tomto dokumentu, můžete použít jejich nebo přiřadit jinou hodnotu.
+Skupina prostředků je logický kontejner, kde můžete nasadit a spravovat prostředky Azure zásobníku. Z vaší development kit nebo zásobník Azure integrovaný systém spusťte následující blok kódu a vytvořte skupinu prostředků. Hodnoty se přiřazují pro všechny proměnné v tomto dokumentu, můžete použít tyto hodnoty, nebo přiřadit nové hodnoty.
 
 ```powershell
 # Create variables to store the location and resource group names.
 $location = "local"
-$ResourceGroupName = "myResourceGroup" 
+$ResourceGroupName = "myResourceGroup"
 
 New-AzureRmResourceGroup `
   -Name $ResourceGroupName `
-  -Location $location 
+  -Location $location
 ```
 
 ## <a name="create-storage-resources"></a>Vytvořit prostředky úložiště
 
-Vytvořte účet úložiště a kontejner úložiště pro uložení image Ubuntu Server 16.04 LTS.
+Vytvoření účtu úložiště a pak vytvořte kontejner úložiště pro bitovou kopii Ubuntu Server 16.04 LTS.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -73,7 +78,7 @@ Set-AzureRmCurrentStorageAccount `
 $containerName = 'osdisks'
 $container = New-AzureStorageContainer `
   -Name $containerName `
-  -Permission Blob 
+  -Permission Blob
 ```
 
 ## <a name="create-networking-resources"></a>Vytvoření síťových prostředků
@@ -106,7 +111,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Vytvoření skupiny zabezpečení sítě a pravidla skupiny zabezpečení sítě
 
-Skupina zabezpečení sítě zabezpečí virtuálního počítače pomocí příchozí a odchozí pravidla. Umožňuje vytvořit pravidlo pro příchozí pro port 3389, umožňuje příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 až povolit příchozí webové přenosy.
+Skupina zabezpečení sítě zabezpečí virtuálního počítače pomocí příchozí a odchozí pravidla. Vytvořte příchozí pravidlo pro port 3389, umožňuje příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 až povolit příchozí webový provoz.
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -125,6 +130,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 ```
 
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Vytvoření síťové karty pro virtuální počítač
+
 Síťová karta připojuje virtuální počítač k podsíti, skupině zabezpečení sítě a veřejné IP adrese.
 
 ```powershell
@@ -135,11 +141,12 @@ $nic = New-AzureRmNetworkInterface `
   -Location $location `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id `
-  -NetworkSecurityGroupId $nsg.Id 
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení, která se používají při nasazení virtuálního počítače, jako je image virtuálního počítače, jeho velikost a konfigurace ověřování.
+
+Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení používané při nasazení virtuálního počítače. Příklad: přihlašovací údaje uživatele, velikosti a image virtuálního počítače.
 
 ```powershell
 # Define a credential object.
@@ -152,13 +159,13 @@ $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_D1"
 $VirtualMachine = New-AzureRmVMConfig `
   -VMName $VmName `
-  -VMSize $VmSize 
+  -VMSize $VmSize
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Linux `
   -ComputerName "MainComputer" `
-  -Credential $cred 
+  -Credential $cred
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `
@@ -173,13 +180,13 @@ $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
   $vmName.ToLower(), `
   $osDiskName
 
-# Sets the operating system disk properties on a virtual machine. 
+# Sets the operating system disk properties on a virtual machine.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -Name $osDiskName `
   -VhdUri $OsDiskUri `
   -CreateOption FromImage | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id 
+  Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 # Configure SSH Keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
@@ -193,27 +200,28 @@ Add-AzureRmVMSshPublicKey -VM $VirtualMachine `
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
-  -VM $VirtualMachine 
+  -VM $VirtualMachine
 ```
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Po dokončení nasazení vytvořte připojení SSH k virtuálnímu počítači. Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1), který vrátí veřejnou IP adresu virtuálního počítače.
+Po nasazení virtuálního počítače, nakonfigurujte připojení SSH pro virtuální počítač. Použijte příkaz [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1), který vrátí veřejnou IP adresu virtuálního počítače.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Ze systému pomocí protokolu SSH nainstalována použijte následující příkaz pro připojení k virtuálnímu počítači. Pokud pracujete v systému Windows, můžete použít [Putty](http://www.putty.org/) k vytvoření připojení.
+Z klientského systému pomocí protokolu SSH nainstalována použijte následující příkaz pro připojení k virtuálnímu počítači. Pokud pracujete v systému Windows, můžete použít [Putty](http://www.putty.org/) k vytvoření připojení.
 
 ```
 ssh <Public IP Address>
 ```
 
-Po zobrazení výzvy přihlašovací uživatelské jméno je azureuser. Pokud jste při vytváření klíčů SSH zadali heslo, musíte zadat i to.
+Po zobrazení výzvy zadejte azureuser jako přihlášení uživatele. Pokud jste použili heslo při vytvoření klíče SSH, budete muset zadat heslo.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud již nepotřebujete, můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) příkaz, který má odeberte skupinu zdrojů, virtuální počítač, a všechny související prostředky:
+
+Vyčistěte prostředky, které už nepotřebujete. Můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) příkaz k odebrání těchto prostředků. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -221,4 +229,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili jednoduchý systém Linux virtuálního počítače. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tento rychlý start jste nasadili základní virtuální počítač server Linux. Další informace o virtuálních počítačích Azure zásobníku, přejděte na [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).

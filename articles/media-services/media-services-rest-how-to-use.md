@@ -1,11 +1,11 @@
 ---
-title: "Přehled rozhraní REST API služby Media Services operations | Microsoft Docs"
-description: "Přehled Media Services REST API"
+title: Přehled rozhraní REST API služby Media Services operations | Microsoft Docs
+description: Přehled Media Services REST API
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: juliako;johndeu
-ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 472408f1c367984d5f4e0e435366c4a0af2e5b34
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled rozhraní REST API operations Media Services
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -42,7 +42,7 @@ Při používání REST, platí následující aspekty.
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
         x-ms-version: 2.17
-        Authorization: Bearer <token> 
+        Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
         {
@@ -116,7 +116,7 @@ Podrobnosti o tom, jak získat podrobnosti požadovaného ověření pro váš �
 
 Informace o psaní kódu, který se připojuje ke službě REST API pomocí ověřování Azure AD, najdete v článku [ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services se zbytkem](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další používání ověřování Azure AD s Media Services REST API najdete v tématu [ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services se zbytkem](media-services-rest-connect-with-aad.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services

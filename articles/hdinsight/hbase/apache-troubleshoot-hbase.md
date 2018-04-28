@@ -1,23 +1,21 @@
 ---
-title: "Řešení potíží s HBase pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se práce s HBase a Azure HDInsight."
+title: Řešení potíží s HBase pomocí Azure HDInsight | Microsoft Docs
+description: Získejte odpovědi na časté otázky týkající se práce s HBase a Azure HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinver
 manager: ashitg
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 7/7/2017
 ms.author: nitinver
-ms.openlocfilehash: cd6315c192ad3c33d43406993b1a3e6bd6ec7e4d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 04d8e37791c12078754a661f7a1aa8a76a6b3c44
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Řešení potíží s HBase pomocí Azure HDInsight
 
@@ -47,7 +45,7 @@ Aby nepřiřazené oblasti zpět k normálním stavu, proveďte následující k
 
 Možnou příčinou problémů vypršení časového limitu při použití `hbck` příkaz může být, že několik oblasti jsou ve stavu "v přechodném stavu" po dlouhou dobu. Jako offline v uživatelském rozhraní HBase hlavní najdete v těchto oblastech. Vzhledem k tomu, že vysoký počet oblastí se pokouší přechodu, hlavní HBase může časový limit a být schopen převést těmito oblastmi zpět do režimu online.
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Přihlaste se ke clusteru HDInsight HBase pomocí protokolu SSH.
 2. Chcete-li připojit pomocí prostředí ZooKeeper, spusťte `hbase zkcli` příkaz.
@@ -128,7 +126,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzlů je menší než nebo blízko Multi-Factor replikace HDFS.
 
-### <a name="resolution-steps"></a>Kroky řešení 
+### <a name="resolution-steps"></a>Postup řešení 
 
 1. Získáte stav HDFS v clusteru HDInsight spuštěním následujících příkazů:
 
@@ -213,7 +211,7 @@ Změny velikosti clusteru HDInsight se dolů k velmi několika uzlů. Počet uzl
 
 ## <a name="how-do-i-fix-jdbc-or-sqlline-connectivity-issues-with-apache-phoenix"></a>Jak opravit JDBC nebo SQLLine připojením k problémům s Apache Phoenix?
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 Pro připojení k Phoenix, je nutné zadat IP adresu aktivní uzel ZooKeeper. Ujistěte se, že služba ZooKeeper sqlline.py, které se pokouší o připojení, není spuštěná.
 1. Přihlaste se ke clusteru HDInsight pomocí protokolu SSH.
@@ -278,7 +276,7 @@ Během spouštění HMaster nemá základní `list` příkazu u těchto složek.
 
 V protokolech serveru oblast pokuste se identifikovat časovou osu vytvoření souboru a zjistěte, pokud byl proces havárií v době, kdy byl vytvořen soubor. (Obraťte se na podporu HBase vám pomůže to). Tento pomůže nám poskytují robustnější mechanismy, takže se můžete vyhnout stiskne to chyb a ujistěte se proces řádné vypnutí systému.
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 Zkontrolujte zásobník volání a určete složku, ke které může být příčinou problému (například se může být složce WALs nebo ve složce tmp). V Průzkumníku cloudu, nebo pomocí příkazů HDFS, poté zkuste najít soubor problém. Obvykle se jedná \*-renamePending.json souboru. ( \*-RenamePending.json soubor je soubor deníku, který se používá k implementaci operaci atomic přejmenování v ovladači WASB. Z důvodu chyby v této implementaci těchto souborů může být zbyly poté, co mimoprocesových atd.) Vynutit odstranění tohoto souboru v Průzkumníku cloudu nebo pomocí příkazů HDFS. 
 
@@ -294,7 +292,7 @@ Po spuštění těchto příkazů, HMaster by měl spustit okamžitě.
 
 Může se zobrazit zpráva na váš cluster Linux, která označuje, že *hbase: meta* tabulka není online. Spuštění `hbck` může zobrazit zprávu, že "hbase: meta tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Tento problém může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokolech HMaster může zobrazit zpráva: "žádná adresa serveru uvedené v hbase: meta pro oblast hbase: zálohování \<název oblasti\>".  
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. V prostředí HBase zadejte následující příkazy (skutečné hodnoty pro změnu podle vhodnosti):  
 
@@ -333,7 +331,7 @@ Tomuto problému může dojít, pokud máte mnoho tabulek a oblasti, které neby
 
 Jde o známý problém se službou HMaster. Spuštění úlohy obecné clusteru může trvat dlouhou dobu. HMaster vypne vzhledem k tomu, že v tabulce oboru názvů není dosud přiřazen. K tomu dochází jenom v situacích, ve kterém velké množství dat, unflushed existuje a není dostatečná vypršení časového limitu pěti minut.
   
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. V uživatelském rozhraní Ambari, přejděte do **HBase** > **konfigurací**. V souboru vlastní hbase-site.xml přidejte následující nastavení: 
 
@@ -411,7 +409,7 @@ Z důvodu náhlému vypnutí nemusí být vydání port spojených s procesem, p
    ... 15 more
    ```
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Pokuste se snížit zatížení serverů oblast HBase před spuštěním restartování. 
 2. Můžete taky (Pokud kroku 1 vám nepomohly), pokuste se restartovat servery oblast na pracovních uzlech ručně pomocí následujících příkazů:

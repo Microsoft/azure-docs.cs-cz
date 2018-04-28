@@ -1,6 +1,6 @@
 ---
-title: "Nasazení Resource Manager a klasický | Microsoft Docs"
-description: "Popisuje rozdíly mezi modelem nasazení Resource Manager a classic (nebo Service Management) modelu nasazení."
+title: Nasazení Resource Manager a klasický | Microsoft Docs
+description: Popisuje rozdíly mezi modelem nasazení Resource Manager a classic (nebo Service Management) modelu nasazení.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager oproti nasazení classic: pochopení modely nasazení a stav svých prostředků
 V tomto článku se dozvíte o Azure Resource Manageru a model nasazení classic. Resource Manager a modely nasazení classic představují dva různé způsoby nasazení a správě řešení Azure. Práce s nimi prostřednictvím dvě rozhraní API sady a nasazené prostředky může obsahovat důležitých rozdílů. Dva modely nejsou vzájemně kompatibilní. Tento článek popisuje tyto rozdíly.
@@ -108,7 +108,7 @@ Následující tabulka popisuje změny v interakci poskytovatele prostředků v�
 | Účty úložiště |Virtuální počítač vyžaduje účet úložiště, který ukládá virtuální pevné disky pro operační systém, dočasné a dalších datových disků. |Virtuální počítač vyžaduje účet úložiště pro uložení jeho disky v úložišti objektů blob. |
 | Skupiny dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
 | Skupiny vztahů |Skupiny vztahů byly nezbytné k vytváření služeb Virtual Network. Se zavedením regionálních služeb Virtual Network přestaly být nutné. |Abychom to zjednodušili, koncept skupin vztahů neexistuje v rozhraních API, které se vystavují prostřednictvím správce Azure Resource Manager. |
-| Vyrovnávání zatížení |Vytvoření cloudové služby nabízí implicitní nástroj pro vyrovnávání zatížení nasazených služeb Virtual Machines. |Nástroj pro vyrovnávání zatížení je prostředek vystavený poskytovatelem Microsoft.Network. Primární síťové rozhraní služeb Virtual Machines, které potřebuje vyrovnávání zatížení, musí odkazovat na nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžou být interní nebo externí. Na instanci služby Vyrovnávání zatížení odkazuje na fond back-end IP adresy, které zahrnují síťový adaptér virtuálního počítače (volitelné) a odkazuje adrese služby Vyrovnávání zatížení veřejných nebo privátních IP (volitelné). [Další informace.](../virtual-network/resource-groups-networking.md) |
+| Vyrovnávání zatížení |Vytvoření cloudové služby nabízí implicitní nástroj pro vyrovnávání zatížení nasazených služeb Virtual Machines. |Nástroj pro vyrovnávání zatížení je prostředek vystavený poskytovatelem Microsoft.Network. Primární síťové rozhraní služeb Virtual Machines, které potřebuje vyrovnávání zatížení, musí odkazovat na nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžou být interní nebo externí. Na instanci služby Vyrovnávání zatížení odkazuje na fond back-end IP adresy, které zahrnují síťový adaptér virtuálního počítače (volitelné) a odkazuje adrese služby Vyrovnávání zatížení veřejných nebo privátních IP (volitelné). |
 | Virtuální IP adresa |Cloudové služby získá výchozí VIP (virtuální IP adresy), když je virtuální počítač přidán do cloudové služby. Virtuální IP adresa je adresa přidružená k implicitnímu nástroji pro vyrovnávání zatížení. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. Dynamické veřejné IP adresy lze přiřadit k nástroji pro vyrovnávání zatížení. Veřejné IP adresy můžete zabezpečit pomocí skupin zabezpečení. |
 | Vyhrazená IP adresa |IP adresu můžete v Azure vyhradit a přidružit ji ke cloudové službě, abyste zajistili, že IP adresa zůstane dynamická. |Veřejnou IP adresu můžete vytvořit v režimu statické a nabízí stejné funkce jako rezervovanou IP adresu. |
 | Veřejná IP adresa (PIP) na virtuální počítač |Veřejné IP adresy může být také přidružen k virtuálnímu počítači přímo. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. |
@@ -147,7 +147,7 @@ Automatizace a skripty, které jste vytvořili pokračovat v práci pro existuj�
 
 Ucelenou sadu úvodních šablon najdete na [rychlých šablonách správce Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Provede procesem vytvoření šablony, která definuje virtuální počítač, účet úložiště a virtuální sítě, najdete v tématu [názorný Průvodce šablonou Resource Manageru](resource-manager-template-walkthrough.md).
 * Příkazy pro nasazení šablony najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 

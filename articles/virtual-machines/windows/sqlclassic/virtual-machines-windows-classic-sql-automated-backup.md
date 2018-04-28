@@ -1,11 +1,11 @@
 ---
-title: "Automatizované zálohování pro virtuální počítače serveru SQL (klasické) | Microsoft Docs"
-description: "Vysvětluje funkci automatizované zálohování pro SQL Server běžící ve virtuálních počítačích Azure pomocí Resource Manager. "
+title: Automatizované zálohování pro virtuální počítače serveru SQL (klasické) | Microsoft Docs
+description: 'Vysvětluje funkci automatizované zálohování pro SQL Server běžící ve virtuálních počítačích Azure pomocí Resource Manager. '
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: 05f5ec690fbf1ea2f4f6a6d927685d7a34ac9273
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bca1c6c357527a32de499ac9207b1bb734dad7b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované zálohování pro SQL Server na virtuálních počítačích Azure (klasický)
 > [!div class="op_single_selector"]
@@ -48,13 +48,13 @@ Pomocí automatizovaného zálohování, zvažte následující požadavky:
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> Automatizované zálohování pro SQL Server 2016 je podporována u virtuálních počítačů Resource Manager. Další informace najdete v tématu [v2 automatizované zálohování pro SQL Server 2016 virtuální počítače Azure (Resource Manager)](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
+> Automatizované zálohování pro SQL Server 2016 je podporována u virtuálních počítačů Resource Manager. Další informace najdete v tématu [v2 automatizované zálohování pro SQL Server 2016 virtuální počítače Azure (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Konfigurace databáze**:
 
 * Cílové databáze musí mít úplném modelu obnovení.
 
-**Azure PowerShell**:
+**Prostředí Azure PowerShell**:
 
 * [Nainstalujte nejnovější příkazy prostředí Azure PowerShell](/powershell/azure/overview).
 

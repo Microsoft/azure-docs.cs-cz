@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a6a9b4d2fa0f9baa751c74e3444f44b4013265fe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 79b84e3231886f62bf5978195562339d5c3275b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidat, změnit nebo odebrat IP adresy pro rozhraní sítě Azure
 
@@ -34,7 +34,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 ## <a name="add-ip-addresses"></a>Přidání IP adres
@@ -129,7 +129,7 @@ Kromě primární konfiguraci IP adresy rozhraní sítě může obsahovat nula n
 
 Následující typy IP adresy, které můžete přiřadit [konfigurace protokolu IP](#ip-configurations):
 
-### <a name="private"></a>Privátní
+### <a name="private"></a>Private
 
 Privátní [IPv4](#ipv4) adresy povolit virtuální počítač ke komunikaci s další prostředky ve virtuální síti nebo jiné připojených sítích. Virtuální počítač nelze oznamovat příchozí k ani může virtuální počítač komunikovat s privátního odchozí [IPv6](#ipv6) adresu s jednou výjimkou. Virtuální počítač může komunikovat s nástrojem pro vyrovnávání zatížení Azure pomocí adresy IPv6. Další informace najdete v tématu [podrobnosti a omezení pro protokol IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
 
@@ -150,7 +150,7 @@ Podle předchozího postupu, přiřazené k síťovému rozhraní v rámci Azure
 
 Kromě povolení komunikovat s jiným prostředkům v rámci stejné, nebo připojené virtuální sítě virtuálního počítače, privátní IP adresu taky umožňuje virtuálnímu počítači komunikovat odchozí k Internetu. Odchozí připojení se zdrojovou adresu sítě přeložit v Azure nepředvídatelným veřejné IP adresy. Další informace o Azure odchozí připojení k Internetu, přečtěte si [Azure odchozí připojení k Internetu](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. Nemůžete komunikovat příchozí privátní IP adresu virtuálního počítače z Internetu. Pokud váš odchozí připojení vyžadují předvídatelnou veřejnou IP adresu, přidružte prostředek veřejné IP adresy pro síťové rozhraní.
 
-### <a name="public"></a>Veřejné
+### <a name="public"></a>Public
 
 Veřejné IP adresy přiřazené prostřednictvím prostředek veřejné IP adresy povolit příchozí připojení k virtuálnímu počítači z Internetu. Odchozí připojení k Internetu používat předvídatelný IP adresu. V tématu [pochopení odchozí připojení v Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) podrobnosti. Může přiřadit konfiguraci IP adres veřejnou IP adresu, ale nejsou potřeba. Pokud nepřiřadíte veřejnou IP adresu do virtuálního počítače tím, že přidružíte prostředek veřejné IP adresy, virtuálního počítače může komunikovat stále odchozí k Internetu. V takovém případě privátní IP adresa je adresa sítě zdroj přeložit v Azure nepředvídatelným veřejné IP adresy. Další informace o veřejné IP adresy prostředky, najdete v části [prostředek veřejné IP adresy](virtual-network-public-ip-address.md).
 

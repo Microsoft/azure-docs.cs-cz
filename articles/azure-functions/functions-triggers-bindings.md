@@ -3,7 +3,7 @@ title: Triggerů a vazeb v Azure Functions
 description: Další informace o použití triggerů a vazeb v Azure Functions k připojení vašeho provádění kódu k online události a cloudové služby.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,12 +14,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
-ms.author: glenga
-ms.openlocfilehash: d008e94186dd3c5a18c92617ebddfffa966358d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: tdykstra
+ms.openlocfilehash: 56b0f8e24dfc38b542f4bbfc7975f1704d70f22c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkce triggerů a vazeb koncepty
 
@@ -476,7 +476,7 @@ Například aktivační procedury fronty Azure storage podporuje následující 
 * ID
 * InsertionTime
 * NextVisibleTime
-* PopReceipt
+* Vlastnosti PopReceipt
 
 Tyto hodnoty metadata jsou dostupné v *function.json* vlastnosti souboru. Předpokládejme například, použít aktivační událost fronty a zprávy ve frontě obsahuje název objektu blob, které chcete číst. V *function.json* souboru, můžete použít `queueTrigger` metadata vlastnost v objektu blob `path` vlastnost, jak je znázorněno v následujícím příkladu:
 

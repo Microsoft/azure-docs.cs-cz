@@ -1,26 +1,24 @@
 ---
-title: "Migrace clusteru služby HBase na novou verzi - Azure HDInsight | Microsoft Docs"
+title: Migrace clusteru služby HBase na novou verzi - Azure HDInsight | Microsoft Docs
 description: Postup migrace clustery HBase na novou verzi.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 15d23d0ccf816ca355103ad7fd0d6124f1c5c226
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 3ca982e7fc0ce56bee2ee2e193c82a78fac44362
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>Migrace clusteru služby HBase na novou verzi
 
@@ -48,17 +46,17 @@ Tady je matice verze kompatibility příkladu, kde Y označuje kompatibility a N
 
 | Typ kompatibility | Hlavní verze| Podverze | Oprava |
 | --- | --- | --- | --- |
-| Klient-Server přenosová kompatibility | N | Ano | Ano |
-| Servery kompatibility | N | Ano | Ano |
-| Kompatibilita formátů souborů | N | Ano | Ano |
-| Kompatibilita klientského rozhraní API | N | Ano | Ano |
-| Binární kompatibilitu klienta | N | N | Ano |
+| Klient-Server přenosová kompatibility | Ne | Ano | Ano |
+| Servery kompatibility | Ne | Ano | Ano |
+| Kompatibilita formátů souborů | Ne | Ano | Ano |
+| Kompatibilita klientského rozhraní API | Ne | Ano | Ano |
+| Binární kompatibilitu klienta | Ne | Ne | Ano |
 | **Serverové omezené rozhraní API kompatibility** |  |  |  |
-| Stable | N | Ano | Ano |
-| Vyvíjející se | N | N | Ano |
-| Nestabilním | N | N | N |
-| Závislost kompatibility | N | Ano | Ano |
-| Provozní kompatibility | N | N | Ano |
+| Stable | Ne | Ano | Ano |
+| Vyvíjející se | Ne | Ne | Ano |
+| Nestabilním | Ne | Ne | Ne |
+| Závislost kompatibility | Ne | Ano | Ano |
+| Provozní kompatibility | Ne | Ne | Ano |
 
 > [!NOTE]
 > Žádné nekompatibility ukončování řádků by měl popsané v poznámkách k verzi verze HBase.

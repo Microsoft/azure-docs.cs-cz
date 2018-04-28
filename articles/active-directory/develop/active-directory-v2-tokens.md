@@ -1,25 +1,25 @@
 ---
 title: Azure Active Directory v2.0 tokeny odkaz | Microsoft Docs
-description: "Typy tokenů a deklaracích identity vysílaných koncového bodu Azure AD v2.0"
+description: Typy tokenů a deklaracích identity vysílaných koncového bodu Azure AD v2.0
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4a408fb40c976c6e06f00d074504de6a3ec29bd1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Přehled v2.0 tokeny služby Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) vysílá několik typů tokeny zabezpečení v každé [tok ověřování](active-directory-v2-flows.md). Tento odkaz popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -49,7 +49,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> Pro postup, chcete-li prověřit deklarací identity ve ukázkový token pro ID, vložte ukázkový token pro ID do [calebb.net](http://calebb.net/).
+> Pro postup, chcete-li prověřit deklarací identity ve ukázkový token pro ID, vložte ukázkový token pro ID do [jwt.ms](http://jwt.ms/).
 >
 >
 
@@ -61,21 +61,20 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | vydané v |`iat` |`1452285331` |Čas, kdy byl token vydán, reprezentované v čase epoch. |
 | čas vypršení platnosti |`exp` |`1452289231` |V čase epoch reprezentované okamžikem, kdy se token platný. Aplikace by měl ověřit správnost dobu životnosti tokenu pomocí této deklarace identity. |
 | Neplatný před |`nbf` |`1452285331` |Čas, kdy začne platit, token reprezentované v čase epoch. Je obvykle stejné jako čas vystavení. Aplikace by měl ověřit správnost dobu životnosti tokenu pomocí této deklarace identity. |
-| Verze |`ver` |`2.0` |Verze ID tokenu, jak je definované ve službě Azure AD. Pro koncový bod v2.0, hodnota je `2.0`. |
-| ID klienta |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Identifikátor GUID, který představuje, do které uživatel z tenanta Azure AD. Identifikátor GUID pro pracovní a školní účty, je ID neměnné klienta organizace, které uživatel patří. Pro osobní účty, hodnota je `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
+| verze |`ver` |`2.0` |Verze ID tokenu, jak je definované ve službě Azure AD. Pro koncový bod v2.0, hodnota je `2.0`. |
+| ID tenanta |`tid` |`b9419818-09af-49c2-b0c3-653adc1f376e` |Identifikátor GUID, který představuje, do které uživatel z tenanta Azure AD. Identifikátor GUID pro pracovní a školní účty, je ID neměnné klienta organizace, které uživatel patří. Pro osobní účty, hodnota je `9188040d-6c67-4c5b-b112-36a304b66dad`. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
 | Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Kód hash je součástí tokeny typu ID jenom v případě, že je ID token vydán s kódem autorizace OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Přístup k tokenu hash je součástí ID tokeny pouze, pokud je ID token vydán s přístupový token OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 | hodnotu Nonce |`nonce` |`12345` |Hodnotu nonce je strategie pro minimalizaci útoky opětovného přehrání tokenu. Vaše aplikace může určit hodnotu nonce v jednom požadavku autorizace pomocí `nonce` parametr dotazu. Hodnota zadáte v požadavku je vygenerované v ID token `nonce` deklarace identity, ponechat beze změny. Aplikace můžete ověřit hodnoty s hodnotou zadanou v žádosti, která přidruží token konkrétní ID relace aplikace. Aplikace by měla provést toto ověření během procesu ověření tokenu ID. |
 | jméno |`name` |`Babe Ruth` |Deklarace identity názvu poskytuje čitelná pro člověka hodnotu, která identifikuje předmět tokenu. Hodnota není musí být jedinečný, je měnitelný a je určený pro použití pouze pro účely zobrazení. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
-| E-mailu |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Primární e-mailovou adresu, přidružené k účtu uživatele, pokud existuje. Její hodnota je měnitelný a může časem změnit. `email` Obor je vyžadováno k přijímat tuto deklaraci. |
+| e-mail |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Primární e-mailovou adresu, přidružené k účtu uživatele, pokud existuje. Její hodnota je měnitelný a může časem změnit. `email` Obor je vyžadováno k přijímat tuto deklaraci. |
 | upřednostňované uživatelské jméno |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Primární uživatelské jméno představující uživatele v koncového bodu v2.0. To může být e-mailovou adresu, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Její hodnota je měnitelný a může časem změnit. Vzhledem k tomu, že je měnitelný, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
 | Předmět |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Objekt zabezpečení, o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nemůže být přiřazeny nebo znovu použít. To lze použít ke kontrole autorizace bezpečně, například když token slouží pro přístup k prostředkům a slouží jako klíč v tabulkách databáze. Protože subjektem je vždy k dispozici v tokeny, problémy s Azure AD, doporučujeme používat tuto hodnotu v systému pro obecné účely povolení. Předmět je však identifikátor pairwise – je jedinečné pro ID konkrétní aplikace.  Proto pokud jeden uživatel přihlásí do dvou různých aplikací pomocí dva identifikátory ID jiného klienta, tyto aplikace se zobrazí dvě různé hodnoty pro deklarace identity subjektu.  To se může nebo nemusí být potřeby v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
 | ID objektu |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Neměnné identifikátor pro objekt sady Microsoft identity, v takovém případě uživatelský účet.  Je také slouží ke kontrole autorizace bezpečně a jako klíč v tabulkách databáze. Toto ID jednoznačně identifikuje uživatele ve všech aplikacích – dvě různé aplikace přihlášení stejný uživatel obdrží stejnou hodnotu do `oid` deklarací identity.  To znamená, že ho lze použít při vytváření dotazů na služeb Microsoft online services, jako je například Microsoft Graph.  Microsoft Graph vrátí toto ID `id` vlastnost pro daný uživatelský účet.  Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` obor je vyžadováno k přijímat tuto deklaraci. Všimněte si, že pokud jeden uživatel existuje v několika klientech, uživatel bude obsahovat ID jiný objekt v každém klientovi – i když se uživatel přihlašuje do každého účtu se stejnými pověřeními, jsou považovány za různé účty. |
 
 ### <a name="access-tokens"></a>Přístupové tokeny
-V současné době přístupové tokeny vydané koncovým bodem v2.0 mohou být spotřebovávána pouze Microsoft Services. Vaše aplikace nebude nutné provádět žádné ověření nebo kontroly přístupových tokenů pro některý z aktuálně podporované scénáře. Přístupové tokeny lze považovat za zcela neprůhledný. Jsou jenom řetězce, které vaše aplikace může předat do společnosti Microsoft v požadavky HTTP.
 
-V blízké budoucnosti koncového bodu v2.0 zavedete možnost pro přijímání přístupové tokeny z jiných klientů v aplikaci. V té době aktualizují informace v tomto tématu odkaz na informace, které potřebujete pro vaši aplikaci k provedení ověření tokenu přístupu a další podobné úlohy.
+Koncový bod v2.0 umožňuje aplikacím jiných výrobců, které jsou registrovány k vydání tokenů přístupu k zabezpečeným prostředkům, například webovým rozhraním API Azure AD. Další informace o nastavení aplikace k vydání tokenů přístupu najdete v tématu [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md). Při registraci aplikace s koncovým bodem v2.0, můžete zadat vývojář úrovně přístupu, názvem **obory**, pro které přístup může vydávány tokeny. Například **calendars.read** obor definovaný v Microsoft Graph API uděluje oprávnění ke čtení kalendáře uživatele. Když aplikace obdrží z koncového bodu v2.0 token přístupu, musíte ověřit podpis tokenu, vystavitele, cílové skupiny, čas vypršení platnosti a další deklarace identity, v závislosti na vašem scénáři. 
 
 Pokud budete požadovat token přístupu z koncového bodu v2.0, koncový bod v2.0 také vrátí hodnotu metadata o tokenu přístupu pro vaši aplikaci používat. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný. Vaše aplikace používá tato metadata provést inteligentní ukládání do mezipaměti přístupové tokeny bez nutnosti analyzovat otevřete přístupový token, sám sebe.
 

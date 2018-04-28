@@ -1,24 +1,18 @@
 ---
-title: "Začínáme s Azure Search v Javě | Dokumentace Microsoftu"
-description: "Jak vytvořit hostovanou cloudovou vyhledávací aplikaci v Azure pomocí programovacího jazyka Java."
+title: Začínáme s Azure Search v Javě | Dokumentace Microsoftu
+description: Jak vytvořit hostovanou cloudovou vyhledávací aplikaci v Azure pomocí programovacího jazyka Java.
 services: search
-documentationcenter: 
-author: EvanBoyle
-manager: pablocas
-editor: v-lincan
-ms.assetid: 8b4df3c9-3ae5-4e3a-b4bb-74b516a91c8e
+author: jj09
+manager: jlembicz
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/14/2016
-ms.author: evboyle
-ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
-ms.translationtype: HT
+ms.author: jjed
+ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -91,7 +85,7 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a klíče api-key
 1. V **Prohlížeči projektu**, dvakrát klikněte na soubor **config.properties**, abyste upravili nastavení konfigurace obsahující název serveru a klíč api-key.
 2. Podívejte se na postup uvedený dříve v tomto článku, kde jste našli adresu URL služby a klíč api-key v [webu Azure Portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do souboru **config.properties**.
-3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Název služby (první komponenta adresy URL http://název_služby.search.windows.net) dále nahrazuje položku „service name“ ve stejném souboru.
+3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Další, název služby (první komponenta adresy URL http://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
    
     ![][5]
 
@@ -159,7 +153,7 @@ Může taky zkusit kterýkoli z těchto výrazů:
 * Pembroke
 * goose +cape
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Toto je první kurz služby Azure Search založený na Javě a sadě dat USGS. Postupně ho budeme rozšiřovat o ukázky dalších vyhledávacích funkcí, které by se vám ve vlastních řešeních mohly hodit.
 
 Pokud již máte základní vědomosti o službě Azure Search, můžete tuto ukázku použít jako odrazový můstek pro další experimentování, případně rozšíření [stránky vyhledávání](search-pagination-page-layout.md) nebo implementaci [fasetové navigace](search-faceted-navigation.md). Můžete taky zdokonalit stránku výsledků hledání přidáním počtů a dávkováním dokumentů, aby se výsledky daly procházet po stránkách.

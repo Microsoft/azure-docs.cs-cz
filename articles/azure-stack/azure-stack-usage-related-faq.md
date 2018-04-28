@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f0df9b02e7672faec3a1d94997c9b27ffca275e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Nejčastější dotazy v zásobníku Azure využití rozhraní API
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se rozhraní API služby Azure zásobníku využití.
@@ -44,7 +44,7 @@ Využití je hlášené pro následující zprostředkovatele prostředků:
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Počet požadavků za 10 000's |Fronty žádostí o služby (v 10,000s). |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Příchozí přenos dat v GB |Příchozí data služby fronty v GB. |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Odchozí v GB |Odchozí data fronty služby v GB |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*hodin   | Celkové kapacity databáze při vytváření. Při volání využití rozhraní API s dnech, měřidlo vrátí MB násobí hodnotou počet hodin. |
+| **SQL RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*hodin   | Celkové kapacity databáze při vytváření. Při volání využití rozhraní API s dnech, měřidlo vrátí MB násobí hodnotou počet hodin. |
 | **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*hodin    | Celkové kapacity databáze při vytváření. Při volání využití rozhraní API s dnech, měřidlo vrátí MB násobí hodnotou počet hodin. |
 | **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Základní virtuální počítač velikost hodiny |Virtuální základní hodiny | Počet jader virtuální násobí hodnotou hodiny, které virtuální počítač spustil. |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Velikost virtuálního počítače s Windows – hodiny |Virtuální základní hodiny | Počet jader virtuální násobí hodnotou hodin, po které byl virtuální počítač spuštěn. |
@@ -68,7 +68,7 @@ Využití je hlášené pro následující zprostředkovatele prostředků:
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Jak Azure zásobníku využití rozhraní API porovnání [rozhraní API pro Azure využití](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (momentálně ve verzi public preview)?
 * Rozhraní API klienta využití je konzistentní s Azure API, s jednou výjimkou: *showDetails* příznak aktuálně není podporována v zásobníku Azure.
 * Rozhraní API poskytovatele využití se vztahuje pouze na Azure zásobníku.
-* V současné době [RateCard API](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) který je k dispozici v Azure, která není k dispozici v zásobníku Azure.
+* V současné době [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) který je k dispozici v Azure, která není k dispozici v zásobníku Azure.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Jaký je rozdíl mezi časem využití a vykazovaného časového?
 Sestavy využití dat mají dva hlavní časové hodnoty:

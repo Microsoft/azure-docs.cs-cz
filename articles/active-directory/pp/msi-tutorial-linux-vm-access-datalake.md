@@ -1,11 +1,11 @@
 ---
-title: "Jak používat Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Data Lake Store"
-description: "Kurz ukazuje, jak používat pro přístup k Azure Data Lake Store Linux virtuálního počítače spravované služby Identity (MSI)."
+title: Jak používat Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Data Lake Store
+description: Kurz ukazuje, jak používat pro přístup k Azure Data Lake Store Linux virtuálního počítače spravované služby Identity (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Používat pro přístup k Azure Data Lake Store Linux virtuálního počítače spravované služby Identity (MSI)
 
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak používat a spravovat službu Identity (MSI) pro
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvořit virtuální počítač s Linuxem do nové skupiny prostředků
 
@@ -187,7 +187,7 @@ Blahopřejeme!  Jste ověřeni pro systém souborů Data Lake Store pomocí MSI 
 ## <a name="related-content"></a>Související obsah
 
 - Přehled MSI najdete v tématu [identita spravované služby přehled](msi-overview.md).
-- Pro správu operations Data Lake Store využívá Azure Resource Manager.  Další informace o používání virtuálních počítačů MSI k ověření do Resource Manager, najdete v tématu [používat Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Resource Manager](msi-tutorial-linux-vm-access-arm.md).
+- Pro správu operations Data Lake Store využívá Azure Resource Manager.  Další informace o používání virtuálních počítačů MSI k ověření do Resource Manager, najdete v tématu [používat Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - Další informace o [ověřování s Data Lake Store pomocí Azure Active Directory](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
 - Další informace o [operací systému souborů v Azure Data Lake Store pomocí rozhraní REST API](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) nebo [rozhraní API webhdfs, které FileSystem](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md).
 - Další informace o [řízení přístupu v Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).

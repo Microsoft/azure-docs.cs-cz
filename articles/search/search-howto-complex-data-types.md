@@ -1,25 +1,19 @@
 ---
-title: "Postup modelu komplexní datové typy ve službě Azure Search | Microsoft Docs"
-description: "Vnořené nebo hierarchické datové struktury můžete modelován v indexu Azure Search pomocí plochou řádků a typu dat kolekce."
-services: search
-documentationcenter: 
-author: LiamCa
-manager: pablocas
-editor: 
+title: Postup modelu komplexní datové typy ve službě Azure Search | Microsoft Docs
+description: Vnořené nebo hierarchické datové struktury můžete modelován v indexu Azure Search pomocí plochou řádků a typu dat kolekce.
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
-ms.assetid: e4bf86b4-497a-4179-b09f-c1b56c3c0bb2
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
-ms.author: liamca
-ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Postup modelu komplexní datové typy ve službě Azure Search
 Externích datových sad, které používá k naplnění indexu Azure Search někdy obsahovat hierarchické nebo vnořená používání dílčích struktur, které nejsou v tabulkovém řádků přehledně rozdělení. Příkladem takových struktury může zahrnovat více umístění a telefonních čísel pro jednoho zákazníka, více barvy a velikosti pro jednu SKU, více autorů jeden knihy a tak dále. V modelování podmínky, můžete se setkat těchto struktur, označuje jako *komplexními datovými typy*, *složené datové typy*, *složené datové typy*, nebo *agregace datové typy*, a další.
@@ -102,7 +96,7 @@ Za předpokladu, že jste vytvořili index a načíst data, můžete prověřit 
 * Získáte počet lidí, kteří pracují v Home Office.  
 * Osob, které fungují na Home Office zobrazit jaké ostatních kancelářích fungují společně s počet uživatelů v každé lokalitě.  
 
-Kde tato technika spadá rozdělovat je, když je potřeba udělat hledání, které kombinuje id umístění jak popis umístění. Například:
+Kde tato technika spadá rozdělovat je, když je potřeba udělat hledání, které kombinuje id umístění jak popis umístění. Příklad:
 
 * Najít všechny osoby, které mají Home Office a mají ID umístění na 4.  
 
@@ -117,7 +111,7 @@ Pokud si Vzpomínáte, původní obsah hledá takto:
 
 Ale nyní, když budeme mít oddělené data do samostatných polí, jsme nijak starostí, protože pokud Home Office pro Jen Campbell má vztah k `locationsID 3` nebo `locationsID 4`.  
 
-Chcete-li zpracovávat tento případ, definujte jiné pole v indexu, které se kombinuje všechna data do jedné kolekce.  Pro náš příklad jsme bude volat v tomto poli `locationsCombined` a jsme dojde k oddělení obsah s `||` však můžete zvolit jakékoli oddělovač, který se domníváte, že by jedinečnou sadu znaků pro obsah. Například: 
+Chcete-li zpracovávat tento případ, definujte jiné pole v indexu, které se kombinuje všechna data do jedné kolekce.  Pro náš příklad jsme bude volat v tomto poli `locationsCombined` a jsme dojde k oddělení obsah s `||` však můžete zvolit jakékoli oddělovač, který se domníváte, že by jedinečnou sadu znaků pro obsah. Příklad: 
 
 ![Ukázková data, 2 řádky s oddělovačem](./media/search-howto-complex-data-types/sample-data-2.png)
 
@@ -127,7 +121,7 @@ Pomocí této `locationsCombined` pole, jsme teď zvládne i další dotazy, nap
 * Vyhledejte lidem, kteří pracují v Home Office s umístěním Id "4". 
 
 ## <a name="limitations"></a>Omezení
-Tato metoda je užitečná pro různé scénáře, ale není možné v každém případě ho.  Například:
+Tato metoda je užitečná pro různé scénáře, ale není možné v každém případě ho.  Příklad:
 
 1. Pokud nemáte sadu statických polí v komplexního datového typu a se žádný způsob, jak všechny možné typy mapování na jedno pole. 
 2. Aktualizace vnořených objektů vyžaduje další práci k určení toho, co přesně je aktualizovat v indexu Azure Search

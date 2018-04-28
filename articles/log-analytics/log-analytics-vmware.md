@@ -1,11 +1,11 @@
 ---
-title: "Řešení VMware monitorování v Log Analytics | Microsoft Docs"
-description: "Informace o jak řešení VMware monitorování vám mohou pomoci sledovat hostitelích ESXi a spravovat protokoly."
+title: Řešení VMware monitorování v Log Analytics | Microsoft Docs
+description: Informace o jak řešení VMware monitorování vám mohou pomoci sledovat hostitelích ESXi a spravovat protokoly.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware monitorování (Preview) v analýzy protokolů
 
 ![VMware – symbol](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> Řešení VMware monitorování je zastaralá.  Zákazníci, kteří již nainstalovali řešení můžete nadále používat ji, ale VMware monitorování nelze přidat do žádné nové pracovní prostory.
 
 Řešení VMware monitorování v analýzy protokolů je řešení, které vám pomůže vytvořit centralizované protokolování a monitorování přístup pro velké protokoly VMware. Tento článek popisuje, jak můžete řešení, zaznamenat a spravovat hostitele ESXi na jednom místě pomocí řešení. Pomocí tohoto řešení uvidíte podrobná data pro všechny hostitele ESXi na jednom místě. Se zobrazí počty nejvyšší událostí, stav a trendy hostitelů virtuálních počítačů a ESXi poskytované prostřednictvím protokolů hostitele ESXi. Řešení potíží s zobrazením a hledání centralizované protokoly hostitele ESXi. A můžete vytvářet výstrahy založené na protokolu vyhledávací dotazy.
 

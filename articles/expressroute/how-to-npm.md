@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0d8bee936717a5668e16fbd66d416fcc4e738814
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace programu Sledování výkonu sítě pro ExpressRoute
 
@@ -73,7 +73,7 @@ Vytvořte pracovní prostor v odběru, který má propojení virtuálních sít�
 1. V [portál Azure](https://portal.azure.com), vyberte odběr, který má virtuální sítě peered pro váš okruh ExpressRoute. Potom v seznamu služeb v Hledat **Marketplace** pro sledování výkonu sítě. V vrácení, klikněte na tlačítko Otevřít **sledování výkonu sítě** stránky.
 
    >[!NOTE]
-   >Můžete vytvořit nový pracovní prostor nebo použít stávající pracovní prostor.  Pokud chcete použít existujícímu pracovnímu prostoru, je nutné zajistit, že v pracovním prostoru se migroval na nový dotazovací jazyk. [Další informace...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Můžete vytvořit nový pracovní prostor nebo použít stávající pracovní prostor.  Pokud chcete použít existujícímu pracovnímu prostoru, je nutné zajistit, že v pracovním prostoru se migroval na nový dotazovací jazyk. [Další informace...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![portál](.\media\how-to-npm\3.png)<br><br>
@@ -118,7 +118,7 @@ Doporučujeme nainstalovat aspoň dva agenty na každé straně připojení Expr
   >
   
   >[!NOTE]
-  >Agenti nabídnutých nástrojem SCOM (zahrnuje [MMA](https://technet.microsoft.com/en-us/library/dn465154(v=sc.12).aspx)) nemusí být schopna zjistit konzistentně jejich umístění, pokud jsou hostované v Azure.  Doporučujeme vám, že nepoužíváte tyto agenty v sítě Azure Vnet monitorování ExpressRoute.
+  >Agenti nabídnutých nástrojem SCOM (zahrnuje [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)) nemusí být schopna zjistit konzistentně jejich umístění, pokud jsou hostované v Azure.  Doporučujeme vám, že nepoužíváte tyto agenty v sítě Azure Vnet monitorování ExpressRoute.
   >
   >
 
@@ -154,7 +154,7 @@ Konfigurace nastavení proxy serveru pro službu Microsoft Monitoring Agent pomo
 3. Klikněte na kartu **Nastavení proxy serveru**.
 4. Vyberte **použít proxy server** a zadejte adresu URL a číslo portu, pokud je zapotřebí. Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo pro přístup k proxy serveru.
 
-  ![proxy](.\media\how-to-npm\11.png)
+  ![Proxy server](.\media\how-to-npm\11.png)
 
 ### <a name="verifyagent"></a>2.4: ověření připojení agenta
 

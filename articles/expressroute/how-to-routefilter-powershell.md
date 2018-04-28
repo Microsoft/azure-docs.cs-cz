@@ -1,13 +1,13 @@
 ---
-title: "Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoftu: prostředí PowerShell | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit filtry tras pro Microsoft Peering pomocí prostředí PowerShell"
+title: 'Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoftu: prostředí PowerShell | Microsoft Docs'
+description: Tento článek popisuje, jak nastavit filtry tras pro Microsoft Peering pomocí prostředí PowerShell
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6e767166ecf248aa0e7fc16dc21361394e03107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Nastavit filtry směrování pro partnerský vztah Microsoftu: prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Abyste mohli připojit filtry tras se službami Office 365 na ně, musí mít op
 > 
 > 
 
-### <a name="workflow"></a>Pracovní postup
+### <a name="workflow"></a>pracovní postup
 
 Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, musíte provést následující kroky konfigurace:
 
@@ -84,14 +84,14 @@ Před zahájením konfigurace, ujistěte se, že splňují následující krité
 
  - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů v [vytvoření a úprava konfigurace partnerského vztahu](expressroute-circuit-peerings.md)
 
-### <a name="log-in-to-your-azure-account"></a>Přihlaste se k účtu Azure
+### <a name="log-in-to-your-azure-account"></a>Přihlaste se ke svému účtu Azure.
 
 Před zahájením této konfigurace se musíte přihlásit ke svému účtu Azure. Tato rutina vás vyzve k zadání přihlašovacích údajů k vašemu účtu Azure. Po přihlášení se stáhne nastavení účtu, aby bylo dostupné v Azure PowerShellu.
 
 Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Pokud máte více předplatných Azure, zkontrolujte předplatná pro daný účet.

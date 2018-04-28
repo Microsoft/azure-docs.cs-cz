@@ -8,18 +8,19 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 9d1763697e93ea0bd5eaeaeb92f5f882f39a6c64
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/25/2018
+ms.openlocfilehash: 6dd96ee96201b05e4b272214983e955fcc5b9125
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 Referenční data (také označované jako vyhledávací tabulky) je omezené datovou sadou, která je statická nebo zpomalení změna ve své podstatě, použít k vyhledávání nebo ke korelaci s datového proudu. Chcete-li použít referenčních dat ve vaší úloze Azure Stream Analytics, obvykle použijete [referenční datové připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. Stream Analytics používá úložiště objektů Blob v Azure jako vrstva úložiště pro referenční Data, a s odkazem na objekt pro vytváření dat Azure data transformovat a zkopíruje do úložiště objektů Blob v Azure, použít jako referenční Data z [libovolný počet založené na cloudu a místní úložiště dat](../data-factory/copy-activity-overview.md). Referenční data je modelovaná jako pořadí objektů BLOB (definovanou v konfiguraci vstupní) ve vzestupném pořadí podle data a času, zadaný v názvu objektu blob. Ho **pouze** podporuje přidání na konec pořadí pomocí data a času **větší** než určenému poslední objektů blob v pořadí.
 
 Stream Analytics má **limit 100 MB na objekt blob** ale úloh může zpracovat více objektů BLOB odkaz pomocí **vzorek cesty** vlastnost.
 
+Podpora pro kompresi není k dispozici pro referenční data. 
 
 ## <a name="configuring-reference-data"></a>Konfigurace referenční data
 Ke konfiguraci referenční data, musíte nejprve vytvořit vstup typu **referenční Data**. Následující tabulka vysvětluje každou vlastnost, která budete muset zadat při vytváření referenční data, zadejte jeho popis:
@@ -91,16 +92,9 @@ Pokud referenční data pomalu změna datové sady, potom podpora pro obnovení 
 2. Objekty BLOB referenční data jsou **není** seřadí čas objektu blob "Poslední změny", ale pouze pomocí data a času zadaný v objektu blob název pomocí {date} a {time} nahrazení.
 3. Abyste se vyhnuli nutnosti seznamu velkého počtu objektů BLOB, zvažte odstranění velmi staré objekty BLOB, pro které bude již nebude provedeno zpracování. Upozorňujeme, že může přejít ASA muset znovu zpracovat malou v některých scénářích, jako je restartování.
 
-## <a name="get-help"></a>Podpora
-Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
-
 ## <a name="next-steps"></a>Další postup
-Přečetli jste si úvod do služby Stream Analytics, spravované služby pro analýzy datových proudů z platformy Internet věcí. Další informace o této službě najdete v následujících článcích:
-
-* [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+> [!div class="nextstepaction"]
+> [Rychlý úvod: Vytvoření úlohy Stream Analytics pomocí portálu Azure](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

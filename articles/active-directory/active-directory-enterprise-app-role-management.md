@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 58656e2aa3b052d9bd9aa14edeb6215858d55ea4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d869a21230661e473ffff6bbdb1ea29b1ea336d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurace Role deklarace identity vystavené v tokenu SAML pro podnikové aplikace v Azure Active Directory
 
@@ -52,90 +52,94 @@ Pokud vaše aplikace očekává vlastní role být předán odpověď SAML, bude
 
     ![Aplikace v seznamu výsledků](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. Po přidání aplikace, přejděte do **vlastnosti** stránky a zkopírujte **ID objektu**
+5. Po přidání aplikace, přejděte do **vlastnosti** stránky a zkopírujte **ID objektu**.
 
-    ![Stránky vlastností](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
+    ![Stránky vlastností](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.PNG)
 
 6. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
     a. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
 
-    b. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
+    b. Musíte mít dostatečná oprávnění pro vytváření rolí. Klikněte na **oprávnění k úpravě** získat požadovaná oprávnění. 
+
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
+
+    c. Vyberte následující oprávnění ze seznamu (Pokud nemáte tyto již) a klikněte na "Upravit oprávnění" 
+
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    d. To vás vyzve k znovu přihlásit a přijměte souhlasu. Po přijetí souhlasu, se protokolují do systému znovu.
+
+    e. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
     Pokud používáte více adresářů, pak postupujte podle tohoto vzoru `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    c. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
+    f. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    d. Vlastnost appRoles extrahujte z hlavní objektu služby.
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    g. Vlastnost appRoles extrahujte z hlavní objektu služby. 
 
-    e. Je nutné generovat nové role pro vaši aplikaci nyní. Role služby Azure AD generátor si můžete stáhnout z [zde](https://app.box.com/s/jw6m9p9ehmf4ut5jx8xhcw87cu09ml3y).
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
-    f. Otevřete generátor Azure AD a proveďte následující kroky –
+    > [!Note]
+    > Pokud používáte vlastní aplikace (bez galerie), zobrazí dvě výchozí role - msiam_access a uživatele. V případě aplikace Galerie msiam_access je pouze výchozí role. Není nutné žádné změny ve výchozích rolí.
 
-    ![Generátor Azure AD](./media/active-directory-enterprise-app-role-management/azure_ad_role_generator.png)
-    
-    Zadejte **název Role**, **popis Role**, a **hodnota Role**. Klikněte na tlačítko **přidat** přidejte roli
-    
-    Jakmile jste přidali všechny požadované role, klikněte na tlačítko **generování**
-    
-    Kopírovat obsah kliknutím **kopírování obsahu**
+    h. Teď je potřeba generovat nové role pro vaši aplikaci. 
 
-    > [!NOTE] 
-    > Ujistěte se, že máte **msiam_access** je v roli generovaného odpovídající role uživatele a id.
+    i. Níže JSON je příkladem appRoles objektu. Vytvořte objekt podobné k přidání rolí, které chcete pro vaši aplikaci. 
 
-    g. Přejděte zpět do vaší Průzkumníka grafu. Změnit metodu z **získat** k **oprava**. Oprava objekt zabezpečení služby do mají potřeby appRoles aktualizací appRoles vlastnost zkopírovaný hodnotami. Klikněte na tlačítko **spuštění dotazu**.
-
-    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-patch.png)
-
-    > [!NOTE]
-    > Tady je příklad appRoles objektu. 
     ```
     {
        "appRoles": [
-    {
-        "allowedMemberTypes": [
-        "User"
-        ],
-        "description": "msiam_access",
-        "displayName": "msiam_access",
-        "id": "7dfd756e-8c27-4472-b2b7-38c17fc5de5e",
-        "isEnabled": true,
-        "origin": "Application",
-        "value": null
-    },
-    {
-        "allowedMemberTypes": [
-        "User"
-        ],
-        "description": "teacher",
-        "displayName": "teacher",
-        "id": "6478ffd2-5dbd-4584-b2ce-137390b09b60",
-        "isEnabled": ,
-        "origin": "ServicePrincipal",
-        "value": "teacher"
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "msiam_access",
+            "displayName": "msiam_access",
+            "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
+            "isEnabled": true,
+            "origin": "Application",
+            "value": null
+        },
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "Administrators Only",
+            "displayName": "Admin",
+            "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
+            "isEnabled": true,
+            "origin": "ServicePrincipal",
+            "value": "Administrator"
+        }
+    ],
     }
-    ] 
-    }   
     ```
-7. Po objektu služby je nainstalována oprava s více rolí, jsme můžete přiřadit uživatele k příslušné role. To lze provést tak, že přejdete na portál a přejdete na příslušné aplikace. Potom kliknutím na **uživatelů a skupin** karty v horní části. Tento proces se zobrazí seznam všech uživatelů nebo skupin.
+    > [!Note]
+    > Můžete přidat pouze nové role po **msiam_access** pro operace opravy. Také můžete přidat libovolný počet rolí tak, jak chcete podle potřeby vaší organizace. Azure AD bude odesílat **hodnotu** z těchto rolí jako hodnota deklarace identity v odpověď SAML.
+    
+    j. Přejděte zpět do vaší aplikace Explorer graf a změňte metodu z **získat** k **oprava**. Oprava objekt zabezpečení služby do mají požadovaných rolí aktualizací appRoles vlastnost podobné výše uvedeném v příkladu. Klikněte na tlačítko **spustit dotaz** k provedení operace opravy. Zpráva o úspěšném provedení potvrdí vytvoření role.
 
-    ![Konfigurovat jednotné přihlašování přidat](./media/active-directory-enterprise-app-role-management/userrole.png)
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-    a. Chcete-li přiřadit roli s žádným uživatelem, právě vybrat konkrétní uživatele nebo skupinu a klikněte na **přiřadit** tlačítko v dolní části stránky.
+7. Po objektu služby je nainstalována oprava s více rolí, můžete přiřadit uživatele do odpovídajících rolí. To lze provést tak, že přejdete na portál a přejdete na příslušné aplikace. Klikněte na **uživatelů a skupin** karty v horní části. Rutina Vypíše seznam všech uživatelů a skupin, které jsou již přiřazena k aplikaci. Můžete přidat nové uživatele na novou roli a můžete také vybrat stávajícího uživatele a klikněte na tlačítko **upravit** Chcete-li změnit roli.
 
-    ![Konfigurovat jednotné přihlašování přidat](./media/active-directory-enterprise-app-role-management/userandgroups.png)
+    ![Konfigurovat jednotné přihlašování přidat](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
-    b. Kliknutím na tlačítko, která přináší automaticky otevíraného okna Vybrat roli z různých rolích, které jsou definovány pro příslušné instanční objekt.
+     Chcete-li přiřadit roli s žádným uživatelem, vyberte novou roli a klikněte na **přiřadit** tlačítko v dolní části stránky.
 
-    c. Vyberte požadované role a klikněte na Odeslat.
+    ![Konfigurovat jednotné přihlašování přidat](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
+
+    > [!Note]
+    > Upozorňujeme, že je potřeba aktualizovat relaci na portálu Azure zobrazíte nové role.
 
 8. Po přiřazení role pro uživatele, je potřeba aktualizovat **atributy** můžete definovat vlastní mapování **role** deklarací identity.
 
@@ -143,7 +147,7 @@ Pokud vaše aplikace očekává vlastní role být předán odpověď SAML, bude
     
     | Název atributu | Hodnota atributu |
     | -------------- | ----------------|    
-    | Název role      | user.assignedrole |
+    | Název role      | User.assignedrole |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -151,7 +155,7 @@ Pokud vaše aplikace očekává vlastní role být předán odpověď SAML, bude
 
     ![Nakonfigurujte jeden atribut přihlášení](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textovému poli, zadejte název atributu, podle potřeby. V tomto příkladu jsme použili **název Role** jako deklarace identity názvu.
 
     c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
 
@@ -163,91 +167,93 @@ Pokud vaše aplikace očekává vlastní role být předán odpověď SAML, bude
 
 ## <a name="update-existing-role"></a>Aktualizovat existující roli
 
-1. Chcete-li aktualizovat existující roli, proveďte následující kroky –
+Chcete-li aktualizovat existující roli, proveďte následující kroky –
 
-    a. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
+1. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
-    b. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
+2. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
     
-    c. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
+3. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
-        
+    
     Pokud používáte více adresářů, pak postupujte podle tohoto vzoru `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
-    
-    d. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
+4. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
     
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-    e. Vlastnost appRoles extrahujte z hlavní objektu služby.
+5. Vlastnost appRoles extrahujte z hlavní objektu služby.
     
-    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
     
-    f. Pokud chcete aktualizovat existující roli, postupujte podle následujících kroků:
+6. Pokud chcete aktualizovat existující roli, postupujte podle následujících kroků:
 
     ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
     
     * Změnit metodu z **získat** k **oprava**.
 
-    * Zkopírujte existující role z aplikace a vložte je do **text žádosti**.
-    
-    * Aktualizujte hodnotu role nahrazením **popis Role**, **hodnota Role**, a **Role displayname** podle požadavků vaší organizace.
-    
+    * Zkopírujte existující role a vložte je do **text žádosti**.
+
+    * Aktualizujte hodnotu role aktualizací **popis Role**, **hodnota Role** nebo **Role displayname** podle potřeby.
+
     * Po dokončení aktualizace všechny požadované role, klikněte na tlačítko **spustit dotaz**.
         
 ## <a name="delete-existing-role"></a>Odstraňte existující roli
 
 Pokud chcete odstranit existující roli, proveďte následující kroky:
 
-a. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
+1. Otevřete [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
-b. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
+2. Přihlaste se k webu Explorer grafu pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho klienta.
 
-c. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
+3. Změnit na verzi **beta** a načtení seznamu objektů služby z vašeho klienta pomocí následující dotaz:
     
-`https://graph.microsoft.com/beta/servicePrincipals`
+    `https://graph.microsoft.com/beta/servicePrincipals`
     
-Pokud používáte více adresářů, pak postupujte podle tohoto vzoru `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, pak postupujte podle tohoto vzoru `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer1-updated.png)
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-d. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
+4. Ze seznamu načtených objekty služby získáte, které budete muset upravit. Ctrl + F můžete použít také k vyhledání aplikace z uvedených ServicePrincipals. Vyhledejte **id objektu**, který jste zkopírovali ze stránky vlastností a používat následující dotaz k získání do příslušného objektu služby.
      
-`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
-    
-e. Vlastnost appRoles extrahujte z hlavní objektu služby.
-    
-![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-approles.png)
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-f. Pokud chcete odstranit existující roli, postupujte podle následujících kroků:
-
-![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchdelete.png)
-
-Změnit metodu z **získat** k **oprava**.
-
-Zkopírujte existující role z aplikace a vložte je do **text žádosti**.
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-Nastavte **hodnotu IsEnabled** hodnotu **false** pro roli, která chcete odstranit
+5. Vlastnost appRoles extrahujte z hlavní objektu služby.
+    
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 
-Klikněte na tlačítko **spuštění dotazu**.
-    
-> [!NOTE] 
-> Ujistěte se, že máte **msiam_access** je v roli generovaného odpovídající role uživatele a id.
-    
-g. Až to proces výše, zachovat jako metodu **oprava** a vložte obsah zbývající role **text žádosti** a klikněte na tlačítko **spustit dotaz**.
-    
-![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-patchfinal.png)
+6. Pokud chcete odstranit existující roli, postupujte podle následujících kroků:
 
-h. Po spuštění dotazu se odstraní roli.
+    ![Dialogové okno Průzkumníka grafu](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
+
+    * Změnit metodu z **získat** k **oprava**.
+
+    * Zkopírujte existující role z aplikace a vložte je do **text žádosti**.
+        
+    * Nastavte **hodnotu IsEnabled** hodnotu **false** pro roli, která chcete odstranit
+
+    * Klikněte na tlačítko **spuštění dotazu**.
     
-> [!NOTE]
-> Roli musí být nejprve zakázána předtím, než může být odebrán. 
+    > [!NOTE] 
+    > Ujistěte se, že máte **msiam_access** je v roli generovaného odpovídající role uživatele a id.
+    
+7. Jakmile role je zakázaná, odstranit tento blok role z části appRoles, zachovat jako metodu **oprava** a klikněte na tlačítko **spustit dotaz**.
+    
+8. Po spuštění dotazu se odstraní roli.
+    
+    > [!NOTE]
+    > Roli musí být nejprve zakázána předtím, než může být odebrán. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Odkazovat [dokumentace k aplikaci ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-tutorial-list) pro další kroky.
+Odkazovat [dokumentace k aplikaci ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) pro další kroky.
 
 <!--Image references-->
 <!--Image references-->

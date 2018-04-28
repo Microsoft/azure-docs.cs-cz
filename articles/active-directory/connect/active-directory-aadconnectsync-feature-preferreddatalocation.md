@@ -1,32 +1,27 @@
 ---
-title: "Synchronizace služby Azure Active Directory Connect: konfigurujte upřednostňovaný data umístění pro geograficky více možností v Office 365 | Microsoft Docs"
-description: "Popisuje, jak uvést vaše prostředky uživatele služeb Office 365 blízko uživatele s Azure Active Directory Connect sync."
+title: 'Synchronizace služby Azure Active Directory Connect: konfigurujte upřednostňovaný data umístění pro geograficky více možností v Office 365 | Microsoft Docs'
+description: Popisuje, jak uvést vaše prostředky uživatele služeb Office 365 blízko uživatele s Azure Active Directory Connect sync.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 04/16/2018
 ms.author: billmath
-ms.openlocfilehash: a5ebd61539af7116b8f92cdf9404cd2b5cdea193
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace služby Azure Active Directory Connect: konfigurujte upřednostňovaný data umístění pro prostředky Office 365
 Účelem tohoto tématu je pro vás provede procesem konfigurace atribut pro umístění upřednostňované dat v Azure Active Directory (Azure AD) připojit synchronizace. Když někdo používá více geograficky možnosti v Office 365, můžete použít k určení geografického umístění dat uživatele v Office 365 tento atribut. (Podmínky *oblast* a *geograficky* se zcela zaměnitelným významem používají.)
-
-> [!IMPORTANT]
-> Více geograficky je aktuálně ve verzi preview. Pokud se chcete zapojit do programu preview, obraťte se na zástupce společnosti Microsoft.
->
->
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>Povolit synchronizaci umístění upřednostňované dat
 Ve výchozím nastavení jsou Office 365 prostředky pro vaše uživatele nachází ve stejném geograficky redundantním jako klientovi Azure AD. Například pokud se váš klient nachází v Severní Americe, pak poštovní schránky Exchange uživatele jsou také umístěny v Severní Americe. Pro mezinárodní společnosti nemusí být optimální.
@@ -34,7 +29,7 @@ Ve výchozím nastavení jsou Office 365 prostředky pro vaše uživatele nachá
 Nastavením atributu **preferredDataLocation**, můžete definovat geograficky uživatele. Můžete mít uživatele služeb Office 365 prostředky, například poštovní schránky a OneDrive, ve stejném geograficky redundantním jako uživatel a stále máte jednoho klienta pro celou organizaci.
 
 > [!IMPORTANT]
-> Způsobilé k více geograficky, musí mít minimálně 5 000 licencí v rámci vašeho předplatného Office 365.
+> Více geograficky je aktuálně k dispozici zákazníkům s minimálně 5 000 předplatné služeb Office 365. Obraťte se na podrobnosti zástupce společnosti Microsoft.
 >
 >
 
@@ -46,16 +41,16 @@ Oblastech v Office 365, které jsou k dispozici pro více geograficky jsou:
 | --- | --- |
 | Asie a Tichomoří | APC |
 | Austrálie | AUSTRÁLIE |
-| Kanada | CAN |
+| Kanada | MŮŽETE |
 | Evropské unie | EUR |
 | Indie | IND |
 | Japonsko | JPN |
-| Jižní Korea | KOR |
+| Korea | KOR |
 | Spojené království | GBR |
-| Spojené státy americké | OSOBY |
+| Spojené státy | OSOBY |
 
 * Pokud geograficky není uvedený v této tabulce (například Jižní Amerika), pak jej nelze použít pro více geograficky.
-* Indie a Jižní Korea oblastech jsou dostupné jenom pro zákazníky s fakturační adresy a zakoupených v těchto oblastech.
+* Indie geograficky je pouze k dispozici pro zákazníky s fakturační adresu a v této geografické zakoupených licencí.
 * Ne všechny úlohami Office 365 podporují použití nastavení geograficky uživatele.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Podporu Azure AD Connect pro synchronizaci
@@ -125,9 +120,9 @@ Pravidla synchronizace příchozích dat umožňuje hodnotu atributu mají být 
 3. Chcete-li vytvořit nové příchozí pravidlo, vyberte **přidat nové pravidlo**.
 4. V části **popis** kartě, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Detaily |
+    | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Jméno | *Zadejte název* | Například "v ze služby Active Directory – uživatel preferredDataLocation" |
+    | Název | *Zadejte název* | Například "v ze služby Active Directory – uživatel preferredDataLocation" |
     | Popis | *Zadejte vlastní popis* |  |
     | Připojený systém | *Vyberte místní konektor služby Active Directory* |  |
     | Typ objektu systému připojené | **Uživatel** |  |
@@ -140,7 +135,7 @@ Pravidla synchronizace příchozích dat umožňuje hodnotu atributu mají být 
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    |Přímé | preferredDataLocation | Vyberte zdrojový atribut | Nezaškrtnuto | Aktualizovat |
+    |Přímý | PreferredDataLocation | Vyberte zdrojový atribut | Nezaškrtnuto | Aktualizace |
 
 7. Chcete-li vytvořit příchozí pravidlo, vyberte **přidat**.
 
@@ -154,9 +149,9 @@ Pravidlo odchozí synchronizace umožňuje hodnotu atributu z úložiště metav
 3. Vyberte **přidat nové pravidlo**.
 4. V části **popis** kartě, zadejte následující konfiguraci:
 
-    | Atribut | Hodnota | Detaily |
+    | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Jméno | *Zadejte název* | Například "Out do služby Azure AD – uživatel preferredDataLocation" |
+    | Název | *Zadejte název* | Například "Out do služby Azure AD – uživatel preferredDataLocation" |
     | Popis | *Zadejte popis* ||
     | Připojený systém | *Vyberte konektoru služby Azure AD* ||
     | Typ objektu systému připojené | **Uživatel** ||
@@ -177,7 +172,7 @@ Pravidlo odchozí synchronizace umožňuje hodnotu atributu z úložiště metav
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    | Přímé | preferredDataLocation | preferredDataLocation | Nezaškrtnuto | Aktualizovat |
+    | Přímý | PreferredDataLocation | PreferredDataLocation | Nezaškrtnuto | Aktualizace |
 
 7. Zavřít **přidat** vytvoření odchozí pravidla.
 

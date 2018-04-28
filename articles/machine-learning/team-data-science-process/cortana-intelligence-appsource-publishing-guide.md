@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams
-ms.openlocfilehash: 1a5671eda967c1bba585d31b001bb465526709f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3817d58cd61fb349d7815984420d0deb1ae0edd9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Průvodce publikování webu Cortana Intelligence AppSource
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 03/28/2018
 AppSource je jediným místem, kde pracovníci s rozhodovací pravomocí (BDMs) ke zjištění a bezproblémově zkuste obchodní řešení nebo aplikace vytvořené partnery a vyhodnotit společností Microsoft. Kukátko [toto video](https://youtu.be/hpq_Y9LuIB8) se dozvíte, jak funguje AppSource. 
 
 Jako Partner společnosti Microsoft můžete skutečně využívat výhod publikování na AppSource, pokud máte:
-- Integrované inteligentního řešení nebo aplikace pomocí [Cortana Intelligence Suite](https://azure.microsoft.com/en-us/suites/cortana-intelligence-suite/?cdn=disable).
+- Integrované inteligentního řešení nebo aplikace pomocí [Cortana Intelligence Suite](https://azure.microsoft.com/suites/cortana-intelligence-suite/?cdn=disable).
 - Aplikace nebo řešení řeší konkrétní obchodních problémů.
 - Jste vytvořili, moduly nebo duševního vlastnictví, která vašim zákazníkům můžete opakovaně použít poměrně rychle předvídatelný způsobem.
 

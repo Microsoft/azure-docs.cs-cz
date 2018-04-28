@@ -12,18 +12,18 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 51fd3e12344fb20056012c00d6b38edf0355b0a4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Registrace zařízení X.509 do služby IoT Hub Device Provisioning pomocí sady SDK služby pro jazyk C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
 
-Tyto kroky ukazují, jak prostřednictvím kódu programu vytvořit skupinu registrací pro certifikát X.509 zprostředkující nebo kořenové certifikační autority pomocí sady [SDK služby pro jazyk C#](https://github.com/Azure/azure-iot-sdk-csharp) a ukázkové aplikace C# .NET Core. Skupina registrací řídí přístup ke službě zřizování pro zařízení, která ve svém řetězu certifikátů sdílejí společný podpisový certifikát. Další informace najdete v tématu [Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Další informace o používání infrastruktury veřejných klíčů (PKI) založené na certifikátech X.509 se službami Azure IoT Hub a Device Provisioning najdete v tématu [Přehled zabezpečení pomocí certifikátu webu X.509](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview). Přestože postup v tomto článku funguje na počítačích s Windows i Linuxem, v tomto článku se používá vývojový počítač s Windows.
+Tyto kroky ukazují, jak prostřednictvím kódu programu vytvořit skupinu registrací pro certifikát X.509 zprostředkující nebo kořenové certifikační autority pomocí sady [SDK služby pro jazyk C#](https://github.com/Azure/azure-iot-sdk-csharp) a ukázkové aplikace C# .NET Core. Skupina registrací řídí přístup ke službě zřizování pro zařízení, která ve svém řetězu certifikátů sdílejí společný podpisový certifikát. Další informace najdete v tématu [Řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). Další informace o používání infrastruktury veřejných klíčů (PKI) založené na certifikátech X.509 se službami Azure IoT Hub a Device Provisioning najdete v tématu [Přehled zabezpečení pomocí certifikátu webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). Přestože postup v tomto článku funguje na počítačích s Windows i Linuxem, v tomto článku se používá vývojový počítač s Windows.
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
@@ -33,7 +33,7 @@ Tyto kroky ukazují, jak prostřednictvím kódu programu vytvořit skupinu regi
 4. Potřebujete soubor .pem nebo .cer obsahující veřejnou část certifikátu X.509 zprostředkující nebo kořenové certifikační autority, který je už uložený a ověřený ve vaší službě zřizování. Sada [SDK služby Azure IoT pro jazyk C](https://github.com/Azure/azure-iot-sdk-c) obsahuje nástroje, které vám můžou pomoci vytvořit řetěz certifikátů X.509, nahrát kořenový nebo zprostředkující certifikát z tohoto řetězu a ověřit certifikát provedením testování vlastnictví pomocí této služby. Pokud chcete tyto nástroje použít, stáhněte do pracovní složky na svém počítači obsah složky [azure-iot-sdk-c/tools/CACertificates](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) a postupujte podle kroků v souboru [azure-iot-sdk-c\tools\CACertificates\CACertificateOverview.md](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md). Kromě nástrojů v sadě SDK pro jazyk C ukazuje [Ukázka ověření certifikátu skupiny](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample) v sadě **SDK služby pro jazyk C#**, jak provést test vlastnictví s použitím existujícího certifikátu X.509 zprostředkující nebo kořenové certifikační autority. 
 
   > [!IMPORTANT]
-  > Certifikáty vytvořené pomocí nástrojů sady SDK jsou navržené pro použití pouze pro vývoj. Informace o získání certifikátů vhodných pro produkční kód najdete v tématu věnovaném [získání certifikátu webu X.509](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) v dokumentaci ke službě Azure IoT Hub.
+  > Certifikáty vytvořené pomocí nástrojů sady SDK jsou navržené pro použití pouze pro vývoj. Informace o získání certifikátů vhodných pro produkční kód najdete v tématu věnovaném [získání certifikátu webu X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) v dokumentaci ke službě Azure IoT Hub.
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>Získání připojovacího řetězce pro službu zřizování
 
@@ -45,7 +45,7 @@ Pro ukázku v tomto rychlém startu potřebujete připojovací řetězec pro va�
 
 ## <a name="create-the-enrollment-group-sample"></a>Vytvoření ukázky skupiny registrací 
 
-Kroky v této části ukazují, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá skupinu registrací. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání skupiny registrací také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji s využitím IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](https://docs.microsoft.com/en-us/windows/iot-core/).
+Kroky v této části ukazují, jak vytvořit konzolovou aplikaci .NET Core, která do vaší služby zřizování přidá skupinu registrací. S určitými úpravami můžete pomocí tohoto postupu vytvořit pro přidání skupiny registrací také konzolovou aplikaci [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot). Další informace o vývoji s využitím IoT Core najdete v [dokumentaci pro vývojáře pro Windows IoT Core](https://docs.microsoft.com/windows/iot-core/).
 1. V sadě Visual Studio přidejte k novému řešení projekt konzolové aplikace Visual C# .NET Core pomocí šablony projektu **Konzolová aplikace (.NET Core)**. Zkontrolujte, zda máte verzi rozhraní .NET Framework 4.5.1 nebo novější. Pojmenujte projekt **CreateEnrollmentGroup**.
 
     ![Nový klasický desktopový projekt Visual C# pro systém Windows](media//quick-enroll-device-x509-csharp/create-app.png)

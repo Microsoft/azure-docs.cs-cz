@@ -1,55 +1,57 @@
 ---
-title: "Azure zásobníku úvodní – vytvoření virtuálního počítače portálu"
-description: "Azure zásobníku rychlý Start – vytvoření virtuálního počítače s Linuxem pomocí portálu"
+title: Azure zásobníku úvodní – vytvoření virtuálního počítače portálu
+description: Azure zásobníku rychlý Start – vytvoření virtuálního počítače s Linuxem pomocí portálu
 services: azure-stack
 cloud: azure-stack
 author: brenduns
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 12/11/2017
+ms.date: 04/24/2018
 ms.author: brenduns
-ms.reviewer: 
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d4aef23e2de327fabb1f0304d8a3db1497d55827
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 2ea07f04d4c566c0add39d75cad3d3a4ed81c6c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Vytvoření virtuální počítač s Linuxem pomocí portálu Azure zásobníku
+# <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý úvod: vytvoření serveru virtuální počítač s Linuxem pomocí portálu Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Virtuální počítače Azure zásobníku lze vytvořit pomocí portálu Azure zásobníku. Tato metoda poskytuje založené na prohlížeči uživatelské rozhraní pro vytvoření a konfigurace virtuálního počítače a všechny související prostředky. Tento rychlý start ukazuje, jak rychle vytvořit virtuální počítač s Linuxem a na něj nainstalovat webový server.
+Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí portálu Azure zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje postup:
+
+* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
+* Nainstalujte NGINX webového serveru.
+* Vyčistěte vašich prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Bitovou kopii systému Linux v zásobníku Azure marketplace**
 
-   Zásobník Azure marketplace neobsahuje bitovou kopii systému Linux ve výchozím nastavení. Tak, než vytvoříte virtuální počítač s Linuxem, ujistěte se, že operátor zásobník Azure stáhla **Ubuntu Server 16.04 LTS** bitovou kopii pomocí kroků popsaných v [stáhnout z Azure do Azure položky marketplace. Zásobník](../azure-stack-download-azure-marketplace-item.md) tématu.
+   Zásobník Azure marketplace neobsahuje bitovou kopii systému Linux ve výchozím nastavení. Než vytvoříte virtuální počítač s Linuxem serveru, ujistěte se, že operátor zásobník Azure poskytuje **Ubuntu Server 16.04 LTS** bitové kopie je nutné. Operátor můžete použít postup popsaný v tématu [stáhnout položky marketplace z Azure do Azure zásobníku](../azure-stack-download-azure-marketplace-item.md) článku.
 
 * **Přístup k klientem SSH**
 
-   Pokud používáte sadu Azure zásobníku Development Kit (ASDK), nemusí mít přístup k klientem SSH ve vašem prostředí. Pokud je to tento případ, můžete mezi více balíčků, které zahrnují klientem SSH. Například můžete nainstalovat PuTTY, která zahrnuje služby Klient SSH a generátor klíče SSH (puttygen.exe). Další informace o možných parametrech najdete v tématu Azure článek týkající se následující: [jak klíče použití SSH se systémem Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Pokud používáte sadu Azure zásobníku Development Kit (ASDK), nemusí mít přístup k klientem SSH. Pokud potřebujete klienta, existuje více balíčků, které zahrnují klientem SSH. Například PuTTY obsahuje služby Klient SSH a generátor klíče SSH (puttygen.exe). Další informace o balíčcích, k dispozici, najdete v následujícím článku na Azure: [jak klíče použití SSH se systémem Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
-   Tento rychlý start využívá PuTTY generování klíčů SSH a připojit k virtuálnímu počítači Linux. Chcete-li stáhnout a nainstalovat PuTTY, přejděte na [http://www.putty.org/](http://www.putty.org).
+   Tento rychlý start využívá PuTTY generování klíčů SSH a připojit k virtuálnímu počítači server Linux. Chcete-li stáhnout a nainstalovat PuTTY, přejděte na [ http://www.putty.org/ ](http://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
-Je nutné dvojici klíčů SSH k dokončení tento rychlý start. Pokud máte existující pár klíčů SSH, můžete tento krok přeskočit.
+Je nutné dvojici klíčů SSH na dokončení všech kroků v tomto článku. Pokud máte existující dvojici klíčů SSH, můžete tento krok přeskočit.
 
 1. Přejděte do složky instalace PuTTY (výchozí umístění je ```C:\Program Files\PuTTY```) a spusťte ```puttygen.exe```.
-2. Ujistěte se, v okně generátor klíče PuTTY **typ klíče pro generování** je nastaven na **RSA**a **počet bitů v generovaný klíč** je nastaven na **2048**. Až budete připravení, klikněte na tlačítko **generování**.
+2. Ujistěte se, v okně generátor klíče PuTTY **typ klíče pro generování** je nastaven na **RSA**a **počet bitů v generovaný klíč** je nastaven na **2048**. Až budete připraveni, klikněte na tlačítko **generování**.
 
-   ![puttygen.exe](media/azure-stack-quick-linux-portal/Putty01.PNG)
+   ![Generátor klíč konfigurace puTTY](media/azure-stack-quick-linux-portal/Putty01.PNG)
 
-3. Dokončete proces generování klíčů, umístěte ukazatel myši v rámci okna Generátor klíče PuTTY.
-4. Po dokončení generování klíčů, klikněte na tlačítko **uložit veřejný klíč** a **uložit privátní klíč** pro veřejné a soukromé klíče ukládají do souborů.
+3. Chcete-li vygenerovat klíč, umístěte ukazatel myši náhodně v okně generátor klíče PuTTY.
+4. Po dokončení generování klíčů, klikněte na tlačítko **uložit veřejný klíč** a pak klikněte na **uložit privátní klíč** uložení klíče do souborů.
 
-   ![PuTTY klíče](media/azure-stack-quick-linux-portal/Putty02.PNG)
-
-
+   ![PuTTY klíč generátor výsledky](media/azure-stack-quick-linux-portal/Putty02.PNG)
 
 ## <a name="sign-in-to-the-azure-stack-portal"></a>Přihlaste se k portálu Azure zásobníku
 
@@ -65,42 +67,46 @@ Přihlaste se k portálu Azure zásobníku. Na adresu na portálu Azure zásobn�
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
 3. Klikněte na možnost **Vytvořit**.
 
-4. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH**. Když vložte veřejný klíč SSH (který jste si předtím uložili do souboru), vezměte v potaz odebrat všechny začínat ani končit mezerou prázdné. Jakmile budete hotovi, klikněte na **OK**.
+4. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH**. Vložte veřejný klíč SSH, který jste uložili a potom klikněte na **OK**.
 
-   ![Základní informace o virtuálním počítači](media/azure-stack-quick-linux-portal/linux-01.PNG)
+   >[!NOTE]
+ Zajistěte, aby že se klíče odebrat všechny začínat ani končit mezerou prázdné.
+
+   ![Základy panelu – Konfigurace virtuálního počítače](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
 5. Vyberte **D1_V2** pro virtuální počítač.
 
-   ![Velikost počítače](media/azure-stack-quick-linux-portal/linux-02.PNG)
+   ![Velikost panelu – zvolte velikost virtuálního počítače](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
 6. Na **nastavení** , ponechejte výchozí hodnoty a klikněte na tlačítko **OK**.
 
 7. Na **Souhrn** klikněte na tlačítko **OK** ke spuštění nasazení virtuálního počítače.
 
-
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-1. Klikněte na tlačítko **Connect** na stránce virtuálního počítače. Zobrazí řetězec připojení SSH, které je možné se připojit k virtuálnímu počítači.
+1. Klikněte na tlačítko **Connect** na stránce virtuálního počítače. Zobrazí řetězec připojení SSH, který je třeba se připojit k virtuálnímu počítači.
 
    ![Připojit virtuální počítač](media/azure-stack-quick-linux-portal/linux-03.PNG)
 
 2. Otevřete PuTTY.
-3. Na **konfigurace PuTTY** obrazovce, v části **kategorie**, rozbalte položku **SSH** a pak klikněte na **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste si předtím uložili.
+3. Na **konfigurace PuTTY** obrazovky, které budete používat **kategorie** okna posun nahoru nebo dolů. Přejděte dolů k položce **SSH**, rozbalte položku **SSH**a potom klikněte na **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste uložili.
 
-   ![PuTTY privátní klíč](media/azure-stack-quick-linux-portal/Putty03.PNG)
-4. V části **kategorie**, vraťte se na začátek a klikněte na **relace**.
-5. V **název hostitele (nebo IP adresa)** pole, vložte připojovací řetězec z portálu Azure zásobníku, kterou jste viděli dříve. V tomto příkladu je řetězec ```asadmin@192.168.102.34```.
- 
-   ![Relace puTTY](media/azure-stack-quick-linux-portal/Putty04.PNG)
-6. Klikněte na tlačítko **otevřete** otevřít relaci k virtuálnímu počítači.
+   ![Vyberte PuTTY privátní klíč](media/azure-stack-quick-linux-portal/Putty03.PNG)
 
-   ![Linus relace](media/azure-stack-quick-linux-portal/Putty05.PNG)
+4. Posuňte se v **kategorie** okna a pak klikněte na tlačítko **relace**.
+5. V **název hostitele (nebo IP adresa)** pole, vložte připojovací řetězec, se na portálu Azure zásobníku. V tomto příkladu je řetězec ```asadmin@192.168.102.34```.
 
-## <a name="install-nginx"></a>Instalace serveru NGINX
+   ![Konfigurace puTTY připojovací řetězec](media/azure-stack-quick-linux-portal/Putty04.PNG)
 
-Pomocí následujícího skriptu bash k aktualizaci zdroje balíčků a instalovat nejnovější balíček NGINX na virtuálním počítači. 
+6. Klikněte na tlačítko **otevřete** otevřít relaci pro virtuální počítač.
 
-```bash 
+   ![Linux relace](media/azure-stack-quick-linux-portal/Putty05.PNG)
+
+## <a name="install-the-nginx-web-server"></a>Instalace webového serveru se NGINX
+
+Použijte následující bash příkazy k aktualizaci zdroje balíčků a instalovat nejnovější balíček NGINX na virtuálním počítači.
+
+```bash
 #!/bin/bash
 
 # update package source
@@ -110,35 +116,31 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Až budete hotoví, ukončení relace SSH a vrátí stránku přehled virtuálního počítače na portálu Azure zásobníku.
+Po dokončení instalace NGINX relace SSH zavřete a otevřete stránce Přehled virtuálního počítače na portálu Azure zásobníku.
 
+## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
-## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz 
-
-Skupina zabezpečení sítě (NSG) zabezpečuje příchozí a odchozí provoz. Při vytvoření virtuálního počítače z portálu Azure zásobníku se na port 22 pro SSH připojení vytvoří pravidlo pro příchozí. Protože tento virtuální počítač je hostitelem webového serveru, musí být vytvořenou pro port 80 pravidlo NSG.
+Skupina zabezpečení sítě (NSG) zabezpečuje příchozí a odchozí provoz. Při vytvoření virtuálního počítače na portálu Azure zásobníku se na port 22 pro SSH připojení vytvoří pravidlo pro příchozí. Protože tento virtuální počítač je hostitelem webového serveru, je potřeba vytvořit umožnit webové přenosy na portu 80 pravidlo NSG.
 
 1. Na virtuálním počítači **přehled** klikněte na název **skupiny prostředků**.
-2. Vyberte **skupinu zabezpečení sítě** pro virtuální počítač. NSG můžete identifikovat pomocí sloupce **Typ**. 
+2. Vyberte **skupinu zabezpečení sítě** pro virtuální počítač. NSG můžete identifikovat pomocí sloupce **Typ**.
 3. V levé nabídce v části **nastavení**, klikněte na tlačítko **příchozí pravidla zabezpečení**.
 4. Klikněte na tlačítko **Add** (Přidat).
-5. Do pole **Název** zadejte **http**. Zkontrolujte, že **Rozsah portů** je nastavený na 80 a **Akce** je nastavená na **Povolit**. 
-6. Klikněte na **OK**.
-
+5. Do pole **Název** zadejte **http**. Zkontrolujte, že **Rozsah portů** je nastavený na 80 a **Akce** je nastavená na **Povolit**.
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
 
-NGINX nainstalován, a port 80 otevřete na virtuálním počítači webový server je nyní přístupný na veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu naleznete na stránce Přehled virtuálního počítače na portálu Azure zásobníku.
+NGINX nainstalován, a port 80 otevřete na virtuálním počítači můžete přístup k webovému serveru, pomocí veřejnou IP adresu virtuálního počítače. (Veřejná IP adresa se zobrazí na stránce Přehled virtuálního počítače.)
 
 Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
 
-![Výchozí web NGINX](media/azure-stack-quick-linux-portal/linux-04.PNG)
-
+![Úvodní stránka NGINX webového serveru](media/azure-stack-quick-linux-portal/linux-04.PNG)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky. To pokud chcete udělat, vyberte skupinu prostředků ze strany virtuálního počítače a klikněte na tlačítko **odstranit**.
+Vyčistěte prostředky, které už nepotřebujete. Pokud chcete odstranit virtuální počítač a jeho prostředky, vyberte skupinu prostředků na stránce virtuálního počítače a pak klikněte na tlačítko **odstranit**.
 
 ## <a name="next-steps"></a>Další postup
 
-V této úvodní jste nasazení jednoduché virtuální počítač s Linuxem, pravidla skupiny zabezpečení sítě a instalaci webového serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
-
+V této úvodní jste nasadili základní server virtuální počítač s Linuxem pomocí webového serveru. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).

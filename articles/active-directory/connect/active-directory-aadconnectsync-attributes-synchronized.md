@@ -1,11 +1,11 @@
 ---
-title: "Atributy se synchronizují přes Azure AD Connect | Microsoft Docs"
-description: "Obsahuje seznam atributy, které jsou synchronizovány do Azure Active Directory."
+title: Atributy se synchronizují přes Azure AD Connect | Microsoft Docs
+description: Obsahuje seznam atributy, které jsou synchronizovány do Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -39,10 +39,10 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Název atributu | Uživatel | Poznámka |
 | --- |:---:| --- |
 | accountEnabled |X |Určuje, zda je povoleno účet. |
-| cn |X | |
+| CN |X | |
 | displayName |X | |
 | objectSID |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
-| pwdLastSet |X |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | sourceAnchor |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
 | usageLocation |X |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
 | userPrincipalName |X |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
@@ -55,7 +55,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | altRecipient |X | | |Vyžaduje Azure AD Connect sestavení 1.1.552.0 nebo po. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
@@ -177,7 +177,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
 | authOrig |X |X |X | |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
@@ -209,7 +209,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | iniciály |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail |X |X |X | |
+| E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
 | Správce |X |X | | |
@@ -234,7 +234,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | postOfficeBox |X |X | |Tento atribut není aktuálně spotřebovávána SharePoint Online. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Odvozené z groupType |
@@ -248,7 +248,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | thumbnailphoto |X |X | | |
 | název |X |X | | |
 | unauthOrig |X |X |X | |
-| Adresa URL |X |X | | |
+| url |X |X | | |
 | usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
 | userPrincipalName |X | | |UPN je přihlašovací Identifikátor uživatele. Nejčastěji jako [e-mailu] stejnou hodnotu. |
 | wWWHomePage |X |X | | |
@@ -258,7 +258,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | co |X |X | | |
 | Společnosti |X |X | | |
 | Oddělení |X |X | | |
@@ -269,7 +269,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Telefon domů |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| mail |X |X |X | |
+| E-mailu |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | Správce |X |X | | |
@@ -289,7 +289,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | PSČ |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
@@ -306,9 +306,9 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
-| cn |X | |X |Běžné jméno nebo alias. Předpona, nejčastěji [e-mailu] hodnoty. |
+| CN |X | |X |Běžné jméno nebo alias. Předpona, nejčastěji [e-mailu] hodnoty. |
 | displayName |X |X |X |Řetězec, který představuje název často zobrazené jako popisný název (křestní jméno příjmení). |
-| mail |X |X |X |úplné e-mailovou adresu. |
+| E-mailu |X |X |X |úplné e-mailovou adresu. |
 | Člen | | |X | |
 | objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X |mechanických vlastnost. Používá Azure AD. Obsahuje všechny sekundární e-mailové adresy pro uživatele. |
@@ -323,15 +323,15 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | description |X |X |X | |
 | displayName |X |X |X | |
-| mail |X |X |X | |
+| E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
 | Člen | | |X | |
 | objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | securityEnabled | | |X |Odvozené z groupType |
 | sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
 | usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
@@ -342,7 +342,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
 | c |X |X | | |
-| cn |X | |X | |
+| CN |X | |X | |
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
@@ -359,7 +359,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | physicalDeliveryOfficeName |X |X | | |
 | PSČ |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | securityEnabled | | |X |Odvozené z groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
@@ -381,16 +381,16 @@ Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD se
 | Název atributu | Uživatel | Kontakt | Skupina | Poznámka |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Určuje, zda je povoleno účet. |
-| cn |X | |X | |
+| CN |X | |X | |
 | displayName |X |X |X | |
 | givenName |X |X | | |
-| mail |X | |X | |
+| E-mailu |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
 | Člen | | |X | |
 | objectSID |X | | |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používat synchronizaci hesla i federací. |
+| pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |mechanických vlastnost. Neměnné identifikátor Udržovat vztah mezi přidá a Azure AD. |
 | usageLocation |X | | |mechanických vlastnost. Země daného uživatele. Použít pro přiřazení licence. |
@@ -439,7 +439,7 @@ Tyto atributy se synchronizují z místní služby Active Directory do Azure AD,
 | Název atributu | PublicFolder | Poznámka |
 | --- | :---:| --- |
 | displayName | X |  |
-| mail | X |  |
+| E-mailu | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |
@@ -452,7 +452,7 @@ Objekty zařízení jsou vytvořeny ve službě Active Directory. Tyto objekty l
 | --- |:---:| --- |
 | altSecurityIdentities |X | |
 | displayName |X | |
-| dn |X | |
+| rozlišující název |X | |
 | msDS-CloudAnchor |X | |
 | msDS-DeviceID |X | |
 | msDS-DeviceObjectVersion |X | |
@@ -462,7 +462,7 @@ Objekty zařízení jsou vytvořeny ve službě Active Directory. Tyto objekty l
 | msDS-KeyCredentialLink |X |Jenom se schématem systému Windows Server 2016 AD |
 | msDS-IsCompliant |X | |
 | msDS-IsEnabled |X | |
-| msDS-IsManaged |X | |
+| msDS-ismanaged – |X | |
 | msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Poznámky

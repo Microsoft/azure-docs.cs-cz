@@ -1,26 +1,26 @@
 ---
-title: "Podmínky v Azure Active Directory podmíněného přístupu | Microsoft Docs"
-description: "Zjistěte, jak používá přiřazení podmíněného přístupu Azure Active Directory k aktivaci zásadu."
+title: Podmínky v Azure Active Directory podmíněného přístupu | Microsoft Docs
+description: Zjistěte, jak používá přiřazení podmíněného přístupu Azure Active Directory k aktivaci zásadu.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/27/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b3096fbec6a7cc30d1ae3452b6c8b872cf3aec8f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Podmínky v Azure Active Directory podmíněného přístupu 
 
@@ -45,17 +45,23 @@ Tento článek poskytuje přehled podmínky a jak se používají v zásadách p
 
 Podmínka uživatelů a skupin je povinné v zásadách podmíněného přístupu. V zásadách můžete buď vyberte **všichni uživatelé** nebo vyberte konkrétní uživatele a skupiny.
 
-![Řízení](./media/active-directory-conditional-access-conditions/02.png)
+![Řízení](./media/active-directory-conditional-access-conditions/111.png)
 
 Když vyberete:
 
-- **Všichni uživatelé**, vaše zásada se použije pro všechny uživatele s v adresáři. To zahrnuje uživatele typu Host.
+- **Všichni uživatelé**, vaše zásady platí pro všechny uživatele v adresáři. To zahrnuje uživatele typu Host.
 
-- **Vyberte uživatele a skupiny**, můžete vybrat konkrétní skupiny uživatelů. Například můžete vybrat skupinu, která obsahuje všichni členové oddělení lidských zdrojů, když máte aplikaci HR vybrán jako cloudové aplikace. 
+- **Vyberte uživatele a skupiny**, můžete nastavit následující možnosti:
 
-- Skupiny, může být jakýkoli typ skupiny ve službě Azure AD, včetně dynamické nebo přiřazené zabezpečení a distribučních skupin.
+    - **Všechny uživatele typu Host** -umožňuje cílových zásad pro uživatele typu Host B2B. Tato podmínka odpovídá libovolného uživatelského účtu s *userType* atribut nastaven na *hosta*. Toto nastavení můžete použít v případech, kdy je zásada má být použita, jakmile je účet vytvořený v tok pozvání ve službě Azure AD.
 
-Můžete také vyloučit konkrétní uživatele nebo skupiny ze zásady. Jeden běžný případ použití jsou účty služby, pokud vaše zásady vynucují v službu Multi-Factor authentication. 
+    - **Role Directory** -Umožňuje cílit zásady podle přiřazení role uživatele. Tato podmínka podporuje role directory například *globálního správce* nebo *heslo správce*.
+
+    - **Uživatelé a skupiny** -umožňuje cíl konkrétní skupiny uživatelů. Například můžete vybrat skupinu, která obsahuje všichni členové oddělení lidských zdrojů, když máte aplikaci HR vybrán jako cloudové aplikace.
+
+Skupiny, může být jakýkoli typ skupiny ve službě Azure AD, včetně dynamické nebo přiřazené zabezpečení a distribučních skupin
+
+Můžete také vyloučit konkrétní uživatele nebo skupiny ze zásady. Jeden běžný případ použití jsou účty služby, pokud vaše zásady vynucují funkci vícefaktorového ověřování (MFA). 
 
 Cílení na konkrétní skupiny uživatelů je užitečná pro nasazení nových zásad. V nové zásady by měl cíl pouze počáteční sadu uživatelů k ověření zásad chování. 
 
@@ -71,7 +77,7 @@ Podmínka cloudové aplikace je povinné v zásadách podmíněného přístupu.
 
 Můžete vybrat:
 
-- **Všechny cloudových aplikací** směrný plán zásad má být použita k celé organizaci. Běžně používá pro tento výběr je zásada, která vyžaduje vícefaktorové ověřování při přihlašování riziko je zjištěna všech cloudových aplikací.
+- **Všechny cloudových aplikací** směrný plán zásad má být použita k celé organizaci. Běžně používá pro tento výběr je zásada, která vyžaduje vícefaktorové ověřování při přihlašování riziko je zjištěna všech cloudových aplikací. Zásady použité **všech cloudových aplikací** platí pro přístup do všech webových stránek a služeb. Toto nastavení není omezeno na cloudové aplikace, které se zobrazují na **vyberte cloudových aplikací** seznamu.
 
 - Jednotlivých cloudových aplikací k určitým službám cíl zásad. Například může vyžadovat uživatelé měli [zařízení kompatibilní s](active-directory-conditional-access-policy-connected-applications.md) pro přístup k SharePoint Online. Když přistupují k obsahu služby SharePoint, například Microsoft Teams je tato zásada také použitá k jiným službám. 
 
@@ -105,6 +111,17 @@ Platforma je charakterizovaná operačního systému, který běží na vašem z
 
 
 Společné pro tento stav je zásadu, která omezuje přístup na vašich cloudových aplikací pro případ použití [důvěryhodné zařízení](active-directory-conditional-access-policy-connected-applications.md#trusted-devices). Další scénáře včetně podmínku platformy zařízení, najdete v části [podmíněného přístupu na základě aplikace Azure Active Directory](active-directory-conditional-access-mam.md).
+
+
+
+## <a name="device-state"></a>Stav zařízení
+
+Podmínka stavu zařízení umožňuje připojený hybridní Azure AD a zařízení označená jako kompatibilní, které se mají vyloučit ze zásad podmíněného přístupu. To je užitečné, když zásadu použít pouze na nespravovaném zařízení k zajištění zabezpečení další relace. Například pouze vynuťte ovládacího prvku relace Microsoft Cloud App Security když je zařízení nespravovaná. 
+
+
+![Podmínky](./media/active-directory-conditional-access-conditions/112.png)
+
+Pokud chcete zablokovat přístup pro nespravovaná zařízení, měli byste implementovat [podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md).
 
 
 ## <a name="locations"></a>Umístění

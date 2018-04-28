@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření vlastní test paměti - Azure Application Gateway - prostředí PowerShell | Microsoft Docs"
-description: "Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí prostředí PowerShell ve službě Správce prostředků"
+title: Vytvoření vlastní test paměti - Azure Application Gateway - prostředí PowerShell | Microsoft Docs
+description: Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí prostředí PowerShell ve službě Správce prostředků
 services: application-gateway
 documentationcenter: na
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 344d6922d1649449e26f2500e538b5a0b440476d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5d17a05f964367ff12a58c3e301a1741181003fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastní test paměti pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -39,10 +39,10 @@ V tomto článku přidejte vlastní test paměti existující application gatewa
 
 ### <a name="sign-in-and-create-resource-group"></a>Přihlaste se a vytvořte skupinu prostředků
 
-1. Použití `Login-AzureRmAccount` k ověření.
+1. Použití `Connect-AzureRmAccount` k ověření.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 1. Získáte předplatná pro příslušný účet.
@@ -202,7 +202,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o konfiguraci, navštivte stránky snižování zátěže protokolu SSL: [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
 

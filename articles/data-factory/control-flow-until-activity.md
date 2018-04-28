@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 14abd3f069cb5cd49265a6b27e4b1c4363a21441
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3462bfda5437ed66f58025deb98e4dbb3860f1d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivity v Azure Data Factory
 Dokud aktivity nabízí stejné funkce, která DNT – dokud opakování ve smyčce struktura poskytuje programovací jazyky. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -253,7 +253,7 @@ Nastaví kanál **folderPath** na hodnotu buď **outputPath1** nebo **outputPath
 Těchto příkazů se předpokládá, že máte uložené soubory JSON do složky: C:\ADF. 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription "<Your subscription name>"
 
 $resourceGroupName = "<Resource Group Name>"

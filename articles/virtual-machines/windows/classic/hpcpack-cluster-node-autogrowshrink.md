@@ -1,10 +1,10 @@
 ---
-title: "Uzly clusteru HPC Pack škálování | Microsoft Docs"
-description: "Automaticky zvýšit nebo snížit počet výpočetních uzlů clusteru HPC Pack v Azure"
+title: Uzly clusteru HPC Pack škálování | Microsoft Docs
+description: Automaticky zvýšit nebo snížit počet výpočetních uzlů clusteru HPC Pack v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automaticky zvýšit nebo snížit prostředků clusteru HPC Pack v Azure podle zatížení clusteru
 Pokud nasazujete Azure "shluků" uzly v clusteru HPC Pack nebo vytváření clusteru HPC Pack ve virtuálních počítačích Azure, můžete způsob, jak automaticky zvětšovat a zmenšovat prostředků clusteru jako uzly nebo jader podle zatížení v clusteru. Škálování prostředků clusteru tímto způsobem umožňuje efektivněji používat vašich prostředků Azure a kontrolovat náklady.
@@ -50,13 +50,13 @@ Aktuálně lze pouze automaticky zvýšit nebo snížit HPC Pack výpočetní uz
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     Pokud váš účet je ve více než jednoho klienta Azure Active Directory nebo předplatné Azure, můžete spustit následující příkaz pro vybrat správný klienta a předplatné:
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     Spusťte následující příkaz k zobrazení aktuálně vybraného klienta a předplatného:
@@ -186,19 +186,19 @@ Ve výchozím nastavení **SoaJobGrowThreshold** je nastaven na 50000 a **SoaReq
 * **HPC Pack 2012 R2 Update 1 nebo novější clusteru** – **AzureAutoGrowShrink.ps1** skriptu je nainstalován ve složce % CCP_HOME % Koš. Z hlavního uzlu clusteru může být nasazena místně nebo ve virtuálním počítači Azure. V tématu [nastavení hybridního clusteru pomocí sady HPC Pack](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md) začít pracovat se hlavnímu uzlu místní a uzly Azure "shluků". Najdete v článku [skript nasazení HPC Pack IaaS](hpcpack-cluster-powershell-script.md) rychle nasazení clusteru HPC Pack ve virtuálních počítačích Azure nebo použijte [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/).
 * **Prostředí Azure PowerShell 1.4.0** -skript aktuálně závisí na konkrétní verzi prostředí Azure PowerShell.
 * **Pro cluster s Azure burst uzly** – spusťte tento skript na klientském počítači, kde je nainstalován HPC Pack nebo z hlavního uzlu. Pokud běží na klientském počítači, zajistěte, že nastavíte proměnnou $env: CCP_SCHEDULER tak, aby odkazoval k hlavnímu uzlu. Uzly Azure "shluků" musí být přidaný do clusteru, ale může být ve stavu není nasazen.
-* **Pro cluster s podporou nasazené ve virtuálních počítačích Azure (modelu nasazení Resource Manager)** -pro cluster s podporou virtuálních počítačů Azure nasazené v modelu nasazení Resource Manager, skript podporuje dvě metody pro ověřování Azure: přihlásit k účtu Azure a spustit skript pokaždé, když (spuštěním `Login-AzureRmAccount`, nebo nakonfigurovat hlavní název služby k ověřování pomocí certifikátu. HPC Pack poskytne skript **ConfigARMAutoGrowShrinkCert.ps** k vytvoření objektu služby pomocí certifikátu. Skript vytvoří aplikaci služby Azure Active Directory (Azure AD) a hlavní název služby a přiřadí role Přispěvatel instanční objekt. Chcete-li spustit skript, otevřete prostředí Azure PowerShell jako správce a spusťte následující příkazy:
+* **Pro cluster s podporou nasazené ve virtuálních počítačích Azure (modelu nasazení Resource Manager)** -pro cluster s podporou virtuálních počítačů Azure nasazené v modelu nasazení Resource Manager, skript podporuje dvě metody pro ověřování Azure: přihlásit k účtu Azure a spustit skript pokaždé, když (spuštěním `Connect-AzureRmAccount`, nebo nakonfigurovat hlavní název služby k ověřování pomocí certifikátu. HPC Pack poskytne skript **ConfigARMAutoGrowShrinkCert.ps** k vytvoření objektu služby pomocí certifikátu. Skript vytvoří aplikaci služby Azure Active Directory (Azure AD) a hlavní název služby a přiřadí role Přispěvatel instanční objekt. Chcete-li spustit skript, otevřete prostředí Azure PowerShell jako správce a spusťte následující příkazy:
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```
 
     Další podrobnosti o **ConfigARMAutoGrowShrinkCert.ps1**spusťte `Get-Help .\ConfigARMAutoGrowShrinkCert.ps1 -Detailed`,
 
-* **Pro cluster s podporou nasazené ve virtuálních počítačích Azure (modelu nasazení classic)** -spuštění skriptu na hlavního uzlu virtuálního počítače, protože závisí na **Start-HpcIaaSNode.ps1** a **Stop-HpcIaaSNode.ps1** skripty, které jsou nainstalovány existuje. Tyto skripty navíc vyžadují certifikát pro správu Azure nebo soubor nastavení publikování (viz [spravovat výpočetní uzly v prostředí HPC Pack clusteru v Azure](hpcpack-cluster-node-manage.md)). Zajistěte, aby všechny výpočetním uzlu je třeba virtuální počítače jsou již přidán do clusteru. Mohou být v zastaveném stavu.
+* **Pro cluster s podporou nasazené ve virtuálních počítačích Azure (modelu nasazení classic)** -spuštění skriptu na hlavního uzlu virtuálního počítače, protože závisí na **Start-HpcIaaSNode.ps1** a **Stop-HpcIaaSNode.ps1** skriptů které se instalují existuje. Tyto skripty navíc vyžadují certifikát pro správu Azure nebo soubor nastavení publikování (viz [spravovat výpočetní uzly v prostředí HPC Pack clusteru v Azure](hpcpack-cluster-node-manage.md)). Zajistěte, aby všechny výpočetním uzlu je třeba virtuální počítače jsou již přidán do clusteru. Mohou být v zastaveném stavu.
 
 
 

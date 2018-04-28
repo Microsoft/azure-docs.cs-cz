@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 8d984c17ab373428b13ed59a598ca8ae4e88136a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 04/16/2018
+ms.openlocfilehash: 30fa7e081c24339b7fa9f572d9feb25a0f920a86
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-and-analysis"></a>Stream Analytics výstupy: možnosti pro úložiště a analýzy
 Při vytváření úlohy Stream Analytics, zvažte, jak se využívá výsledných datech. Jak můžete zobrazit výsledky úlohu služby Stream Analytics a kde je můžete uložit?
@@ -290,6 +290,8 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Oddělovač |Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 | Formát |Platí jenom pro typ formátu JSON. Řádcích: Určuje, že výstup je formátován tak, že každý objekt JSON oddělených nový řádek. Pole určuje, zda je výstup naformátovaný jako pole objektů JSON. |
 
+Počet oddílů je [na základě Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.
+
 ## <a name="service-bus-topics"></a>Témata služby Service Bus
 Zatímco fronty služby Service Bus poskytují způsob komunikace k jedné z odesílatele k příjemce, [témata služby Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) zadejte formuláři na více komunikace.
 
@@ -305,6 +307,8 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Formát serializace události |Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro. |
  | Encoding |Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. Znakové sady UTF-8 v tuto chvíli je jediným podporovaným formátem kódování |
 | Oddělovač |Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
+
+Počet oddílů je [na základě Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuované databáze, více modelu služby, aby neomezenou elastické škálování nabízí kolem celém světě, plnohodnotný dotazovací a automatické indexování přes vázané na schéma datové modely, garantované s nízkou latencí a špičkový komplexní SLA. Další informace o možnosti kolekce Cosmos DB Stream Analytics, naleznete [Stream Analytics s DB Cosmos jako výstup](stream-analytics-documentdb-output.md) článku.
@@ -326,7 +330,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos
 | Klíč oddílu | Volitelné. To je potřeba jenom Pokud používáte tokenu {partition} ve vzoru názvu vaší kolekce.<br/> Klíč oddílu je název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí.<br/> Pro výstup jedinou kolekci všechny libovolný výstupního sloupce lze například ID oddílu. |
 | ID dokumentu |Volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.  
 
-## <a name="azure-functions-in-preview"></a>Azure Functions (ve verzi preview)
+## <a name="azure-functions"></a>Azure Functions
 Azure Functions je výpočetní služba bez serveru umožňující spouštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran.  Tato schopnost Azure Functions reagovat na aktivační události usnadňuje přirozené výstup Azure Stream Analytics. Tento výstup adaptér umožňuje uživatelům připojení k Azure Functions Stream Analytics a spusťte skript nebo část kódu v reakci na celou řadu událostí.
 
 Azure Stream Analytics vyvolá Azure Functions prostřednictvím protokolu HTTP aktivační události. Nový adaptér výstup funkce Azure je k dispozici následující konfigurovatelné vlastnosti:
@@ -335,13 +339,30 @@ Azure Stream Analytics vyvolá Azure Functions prostřednictvím protokolu HTTP 
 | --- | --- |
 | Function App |Název aplikace Azure Functions |
 | Funkce |Název funkce v aplikaci funkce Azure |
-| Velikost dávky maximální |Tuto vlastnost lze nastavit maximální velikost každé dávky výstup, které je odesláno funkce Azure. Ve výchozím nastavení tato hodnota je 256 KB |
-| Maximální počet dávek  |Jako název značí, tato vlastnost umožňuje určit maximální počet událostí v každé dávce, která se odešlou do Azure Functions. Počet maximální dávky výchozí hodnota je 100 |
+| Maximální velikost dávky |Tuto vlastnost lze nastavit maximální velikost každé dávky výstup, které je odesláno funkce Azure. Ve výchozím nastavení tato hodnota je 256 KB |
+| Maximální počet v dávce  |Jako název značí, tato vlastnost umožňuje určit maximální počet událostí v každé dávce, která se odešlou do Azure Functions. Počet maximální dávky výchozí hodnota je 100 |
 | Klíč |Pokud chcete používat funkci Azure z jiné předplatné, můžete tak učinit zadáním klíče pro přístup k vaší – funkce |
 
 Všimněte si, že když Azure Stream Analytics obdrží 413 (http požadavku Entity příliš velký) výjimky z funkce Azure, snižuje velikost dávky, který odesílá Azure Functions. V kódu funkce Azure používejte výjimku a ujistěte se, že Azure Stream Analytics neodešle nadměrné velikosti dávky. Taky se ujistěte, že jsou konzistentní s hodnotou zadanou v portálu Stream Analytics batch maximální počet a velikost hodnoty používané ve funkci. 
 
 Také v situaci, kde není žádná událost cílová stránka časové okno, nevygeneruje žádný výstup. V důsledku toho není computeResult funkce volána. Toto chování je konzistentní s integrovanou agregační funkce vracející.
+
+## <a name="partitioning"></a>Dělení
+
+Následující tabulka shrnuje podporu oddílu a počet výstupních zapisovače pro každý typ výstupu:
+
+| Typ výstupu | Vytváření oddílů podpory | Klíč oddílu  | Počet modulů pro zápis výstupu | 
+| --- | --- | --- | --- |
+| Azure Data Lake Store | Ano | Použití {date} a {time} tokeny v předponu vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Stejné jako vstup. | 
+| Azure SQL Database | Ne | Žádný | Není k dispozici. | 
+| Azure Blob Storage | Ano | Použití {date} a {time} tokeny v vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Stejné jako vstup. | 
+| Centra událostí Azure | Ano | Ano | Stejné jako výstup oddíly centra událostí. |
+| Power BI | Ne | Žádný | Není k dispozici. | 
+| Azure Table Storage | Ano | Všechny výstupního sloupce.  | Stejné jako vstupní nebo předchozí krok. | 
+| Témata sběrnice Azure | Ano | Automaticky vybrali. Počet oddílů je založen na [Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.| Stejné jako výstup.  |
+| Fronty Azure Service Bus | Ano | Automaticky vybrali. Počet oddílů je založen na [Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.| Stejné jako výstup. |
+| Azure Cosmos DB | Ano | Ve vzoru názvu kolekce pomocí tokenu {partition}. Hodnota {partition} je založena na klauzuli PARTITION BY v dotazu. | Stejné jako vstup. |
+| Azure Functions | Ne | Žádný | Není k dispozici. | 
 
 
 ## <a name="get-help"></a>Podpora

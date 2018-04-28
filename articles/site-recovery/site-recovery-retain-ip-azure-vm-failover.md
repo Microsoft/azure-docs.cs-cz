@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3e23bab6d67cc4911dd46c226ebc9b87e40e2fa2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Uchování IP adresu pro převzetí služeb při selhání virtuálního počítače Azure
 
@@ -34,20 +34,20 @@ Zadaný požadavek IP uchování (například pro vazby aplikace), společnost A
 
 Zde je, jak síťovou architekturu vypadá před převzetí služeb při selhání:
 - Virtuální počítače aplikace jsou hostované v Azure východní Asie, využívá virtuální síť Azure s 10.1.0.0/16 prostor adres. Tato virtuální síť je s názvem **zdroj VNet**.
-- Úlohy aplikací jsou rozděleny mezi tři podsítě – 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24, v uvedeném pořadí s názvem **podsíť 1**, **podsíť 2**, **podsíť 3**.
+- Úlohy aplikací jsou rozděleny mezi tři podsítě – 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24, v uvedeném pořadí s názvem **podsíť 1**, **podsíť 2**, **podsíť 3**.
 - Azure jihovýchodní Asie je cílová oblast a má obnovení virtuální síť, která napodobuje konfiguraci adresy prostoru a podsítě zdroje. Tato virtuální síť je s názvem **obnovení VNet**.
-- Uzlech replik, jako jsou ty, které vyžaduje pro Always On, řadič domény, atd. jsou umístěny ve virtuální síti s adresu 20.1.0.0/16 místo uvnitř 4 podsíť s 20.1.0.0/24 adresu. Název virtuální sítě **virtuální síť Azure** a je v Azure jihovýchodní Asie.
+- Uzlech replik, jako jsou ty, které vyžaduje pro Always On, řadič domény, atd. jsou umístěny ve virtuální síti s adresu 10.2.0.0/16 místo uvnitř 4 podsíť s 10.2.4.0/24 adresu. Název virtuální sítě **virtuální síť Azure** a je v Azure jihovýchodní Asie.
 - **Zdroj VNet** a **virtuální síť Azure** jsou propojeny pomocí připojení site-to-site VPN.
 - **Virtuální síť obnovení** není připojen k žádné virtuální síti.
 - **Společnosti A** přiřadí/ověřuje cílová IP adresa pro replikované položky. V tomto příkladu cílová IP adresa je stejný jako zdrojové IP adresy pro každý virtuální počítač.
 
-![Připojení k Azure do Azure před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover.png)
+![Připojení k Azure do Azure před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Oblasti úplnou převzetí služeb při selhání
 
 V případě výpadku regionální **společnosti A** můžete obnovit jeho celého nasazení snadno a rychle pomocí Azure Site Recovery výkonné [plány obnovení](site-recovery-create-recovery-plans.md). S již nastaven cílová IP adresa pro každý virtuální počítač před převzetí služeb při selhání, **společnosti A** může orchestraci převzetí služeb při selhání a automatizovat navázání připojení mezi virtuální sítí obnovení a virtuální síť Azure, jak je znázorněno v následujícím obrázku.
 
-![Připojení k Azure do Azure oblasti úplnou převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover.png)
+![Připojení k Azure do Azure oblasti úplnou převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 V závislosti na požadavcích aplikace, může být připojení mezi oběma virtuálními sítěmi na cílová oblast zavedené před, během (jako přechodný krok) nebo po převzetí služeb při selhání. Použití [plány obnovení](site-recovery-create-recovery-plans.md) přidat skripty a definovat pořadí převzetí služeb při selhání.
 
@@ -62,23 +62,23 @@ Lepší způsob, jak účet pro požadavky na úrovni podsítě aplikace převze
 Do architektury jednotlivých žádostí o odolnost, by měl obsahovat aplikace svůj vlastní vyhrazený virtuální sítě a navázat připojení mezi těmito virtuálními sítěmi podle potřeby. To umožňuje izolované aplikační převzetí služeb při selhání a přitom zachovat původní privátní IP adresy.
 
 Konfigurace pre-převzetí služeb při selhání pak vypadá takto:
-- Virtuální počítače aplikace jsou hostované v Azure východní Asie, využívá virtuální síť Azure s 10.1.0.0/16 prostoru adres pro první aplikaci a 15.1.0.0/16 pro druhou aplikaci. Virtuální sítě jsou pojmenované **zdroj VNet1** a **zdroj VNet2** pro aplikaci první a druhý v uvedeném pořadí.
+- Virtuální počítače aplikace jsou hostované v Azure východní Asie, využívá virtuální síť Azure s 10.1.0.0/16 prostoru adres pro první aplikaci a 10.2.0.0/16 pro druhou aplikaci. Virtuální sítě jsou pojmenované **zdroj VNet1** a **zdroj VNet2** pro aplikaci první a druhý v uvedeném pořadí.
 - Každý virtuální sítě je dále rozdělit na dvě podsítě.
 - Azure jihovýchodní Asie je cílová oblast a má virtuální sítě obnovení VNet1 obnovení a obnovení VNet2.
-- Uzlech replik, jako jsou ty, které vyžaduje pro Always On, řadič domény, atd. jsou umístěny ve virtuální síti s 20.1.0.0/16 prostoru adres uvnitř **podsíť 4** s 20.1.0.0/24 adresu. Virtuální sítě se označuje jako virtuální síť Azure a je v Azure jihovýchodní Asie.
+- Uzlech replik, jako jsou ty, které vyžaduje pro Always On, řadič domény, atd. jsou umístěny ve virtuální síti s 10.3.0.0/16 prostoru adres uvnitř **podsíť 4** s 10.3.4.0/24 adresu. Virtuální sítě se označuje jako virtuální síť Azure a je v Azure jihovýchodní Asie.
 - **Zdroj VNet1** a **virtuální síť Azure** jsou propojeny pomocí připojení site-to-site VPN. Podobně **zdroj VNet2** a **virtuální síť Azure** jsou také připojené prostřednictvím připojení VPN typu site-to-site.
 - **Zdroj VNet1** a **VNet2 zdroje** jsou také připojené prostřednictvím S2S VPN v tomto příkladu. Vzhledem k tomu, že dvě virtuální sítě jsou ve stejné oblasti, partnerský vztah virtuální sítě lze také místo S2S VPN.
 - **Obnovení VNet1** a **obnovení VNet2** není připojen k žádné virtuální síti.
 - Pokud chcete zkrátit cíli času obnovení (RTO), jsou nakonfigurované brány sítě VPN na **obnovení VNet1** a **VNet2 obnovení** před převzetí služeb při selhání.
 
-![Připojení k Azure do Azure izolované aplikace před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover.png)
+![Připojení k Azure do Azure izolované aplikace před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
 V případě situaci po havárii, která ovlivňuje pouze jednu aplikaci (v tomto příkladu, který byl součástí zdroje VNet2) můžete společnosti A obnovit příslušné takto:
 - Připojení VPN mezi **zdroj VNet1** a **zdroj VNet2**a mezi **zdroj VNet2** a **virtuální síť Azure** jsou odpojené.
 - Připojení k síti VPN se vytvoří mezi **zdroj VNet1** a **obnovení VNet2**a mezi **obnovení VNet2** a **virtuální síť Azure**.
 - Virtuální počítače z **zdroj VNet2** jsou převzal **obnovení VNet2**.
 
-![Připojení k Azure do Azure izolované aplikace po převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover.png)
+![Připojení k Azure do Azure izolované aplikace po převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 Výše izolované převzetí služeb při selhání můžete příklad rozšířit tak, aby zahrnout další aplikace a síťové připojení. Doporučuje se podle modelu podobné jako připojení, pokud je to možné, při přebírání služeb při selhání ze zdroje k cíli.
 
@@ -92,13 +92,13 @@ Druhý scénář jsme zvažte **společnosti B** má součástí infrastruktury 
 
 Zde je, jak síťovou architekturu vypadá před převzetí služeb při selhání:
 - Virtuální počítače aplikace jsou hostované v Azure východní Asie, využívá virtuální síť Azure s 10.1.0.0/16 prostor adres. Tato virtuální síť je s názvem **zdroj VNet**.
-- Úlohy aplikací jsou rozděleny mezi tři podsítě – 10.1.0.0/24, 10.1.1.0/24, 10.1.2.0/24, v uvedeném pořadí s názvem **podsíť 1**, **podsíť 2**, **podsíť 3**.
+- Úlohy aplikací jsou rozděleny mezi tři podsítě – 10.1.1.0/24, 10.1.2.0/24, 10.1.3.0/24, v uvedeném pořadí s názvem **podsíť 1**, **podsíť 2**, **podsíť 3**.
 - Azure jihovýchodní Asie je cílová oblast a má obnovení virtuální síť, která napodobuje konfiguraci adresy prostoru a podsítě zdroje. Tato virtuální síť je s názvem **obnovení VNet**.
 - Virtuální počítače v Azure východní Asie jsou připojené do místního datového centra prostřednictvím ExpressRoute nebo VPN typu Site-to-Site.
 - Pokud chcete zkrátit cíli času obnovení (RTO), zřídí společnosti B brány o obnovení virtuální sítě v Azure jihovýchodní Asie před převzetí služeb při selhání.
 - **Společnosti B** přiřadí/ověřuje cílová IP adresa pro replikované položky. V tomto příkladu cílová IP adresa je stejný jako zdrojové IP adresy pro každý virtuální počítač
 
-![Připojení na místní do Azure před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover.png)
+![Připojení na místní do Azure před převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Oblasti úplnou převzetí služeb při selhání
 
@@ -106,7 +106,7 @@ V případě výpadku regionální **společnosti B** můžete obnovit jeho cel�
 
 Původní připojení mezi východní Asie Azure a místního datového centra by měl být odpojen před navázáním připojení mezi jihovýchodní Asie Azure a místního datového centra. Místní směrování je také překonfigurovat tak, aby odkazoval cílová oblast a bran post převzetí služeb při selhání.
 
-![Připojení na místní do Azure po převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover.png)
+![Připojení na místní do Azure po převzetí služeb při selhání](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
 ### <a name="subnet-failover"></a>Podsíť převzetí služeb při selhání
 

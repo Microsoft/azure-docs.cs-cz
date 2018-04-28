@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9ed679c555d9bb363ffb4d896e791dcbd1b90f8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -259,7 +259,7 @@ Zobrazí čas naplánované aktualizace na těchto místech:
 
 Kartě Domů nástroje správu Správce konfigurace brány dat zobrazí plán aktualizací a čas posledního bráně byl nainstalován aktualizovány.
 
-![Aktualizace plánu](media/data-factory-data-management-gateway/UpdateSection.png)
+![Plán aktualizací](media/data-factory-data-management-gateway/UpdateSection.png)
 
 Můžete instalovat aktualizace hned, nebo počkat pro bránu, aby se automaticky aktualizovaly v naplánovaném čase. Například následující obrázek ukazuje oznámení zobrazí v aplikaci Správce konfigurace brány společně s tlačítko aktualizace, které lze klepnout a nainstalujte ji okamžitě.
 
@@ -484,7 +484,7 @@ Tato část popisuje, jak vytvořit a registrovat bránu pomocí rutin prostřed
 2. Přihlaste se k účtu Azure tak, že spustíte následující příkaz a zadání přihlašovacích údajů Azure.
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Použití **New-AzureRmDataFactoryGateway** rutiny pro vytvoření logické brány následujícím způsobem:
 

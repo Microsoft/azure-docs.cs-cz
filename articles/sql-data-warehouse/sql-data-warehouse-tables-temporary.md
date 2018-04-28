@@ -1,41 +1,26 @@
 ---
-title: "Dočasné tabulky v SQL Data Warehouse | Microsoft Docs"
-description: "Začínáme s dočasných tabulek v Azure SQL Data Warehouse."
+title: Dočasné tabulky v SQL Data Warehouse | Microsoft Docs
+description: Základní pokyny pro používání dočasných tabulek a označuje se zásadami relace úrovni dočasných tabulek.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Dočasné tabulky v SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Přehled][Overview]
-> * [Datové typy][Data Types]
-> * [Distribuce][Distribute]
-> * [Index][Index]
-> * [Oddíl][Partition]
-> * [Statistiky][Statistics]
-> * [Dočasné][Temporary]
-> 
-> 
-
-Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformace, které jsou přechodné mezilehlých výsledků. V SQL Data Warehouse existovat dočasné tabulky na úrovni relace.  Jsou viditelné pro relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení této relaci.  Dočasné tabulky nabízejí výhody výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou v Azure SQL Data Warehouse poněkud liší od Azure SQL Database, jako jsou dostupné z kdekoli v této relaci, včetně uvnitř i mimo ni uložené procedury.
-
 Tento článek obsahuje základní pokyny pro používání dočasných tabulek a zvýrazní se zásadami relace úrovni dočasných tabulek. Pomocí informací v tomto článku vám může pomoct rozčlenění kódu, vylepšení – opětovné použití a usnadnění údržby kódu na moduly.
+
+## <a name="what-are-temporary-tables"></a>Jaké jsou dočasné tabulky?
+Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformace, které jsou přechodné mezilehlých výsledků. V SQL Data Warehouse existovat dočasné tabulky na úrovni relace.  Jsou viditelné pro relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení této relaci.  Dočasné tabulky nabízejí výhody výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou v Azure SQL Data Warehouse poněkud liší od Azure SQL Database, jako jsou dostupné z kdekoli v této relaci, včetně uvnitř i mimo ni uložené procedury.
 
 ## <a name="create-a-temporary-table"></a>Vytvořit dočasnou tabulku.
 Dočasné tabulky se vytváří pomocí prefixu názvem tabulky `#`.  Příklad:
@@ -112,7 +97,7 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS`je výkonný příkazu a má výhodu, probíhá efektivní v jeho použití místa protokolu transakcí. 
+> `CTAS` je výkonný příkazu a má výhodu, probíhá efektivní v jeho použití místa protokolu transakcí. 
 > 
 > 
 
@@ -231,21 +216,6 @@ DROP TABLE #stats_ddl;
 ## <a name="temporary-table-limitations"></a>Dočasné tabulky omezení
 SQL Data Warehouse zavádí několik omezení při implementaci dočasných tabulek.  V současné době pouze relace vymezená dočasných tabulek jsou podporovány.  Globální dočasné tabulky nejsou podporovány.  Kromě toho zobrazení nelze vytvořit v dočasných tabulkách.
 
-## <a name="next-steps"></a>Další kroky
-Další informace najdete v článcích na [tabulky přehled][Overview], [tabulky datové typy][Data Types], [distribuci tabulku] [ Distribute], [Indexování tabulku][Index], [vytváření oddílů tabulky] [ Partition] a [Zachování statistiky tabulky][Statistics].  Další informace o osvědčených postupech najdete v tématu [SQL Data Warehouse osvědčené postupy][SQL Data Warehouse Best Practices].
+## <a name="next-steps"></a>Další postup
+Další informace o vývoji tabulky najdete v tématu [tabulky přehled](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

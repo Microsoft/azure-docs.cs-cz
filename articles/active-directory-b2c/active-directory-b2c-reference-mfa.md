@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 0f560a02a51239cff0a7d4057ec7beb2f0f5c5c5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f439c65d9b4fbeb78623312c426767f89dfd9fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Povolení služby Multi-Factor Authentication v aplikacích určených uživatelům
-Azure Active Directory (Azure AD) B2C se integruje přímo s [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) tak, že přidáte druhou vrstvu zabezpečení do prostředí registrace a přihlašování v aplikacích určených uživatelům. A můžete to provést bez nutnosti napsat jediný řádek kódu. Momentálně podporujeme telefonního hovoru a textové zprávy ověření. Pokud jste již vytvořili zásady registrace a přihlášení, stále můžete povolit službu Multi-Factor Authentication.
+Azure Active Directory (Azure AD) B2C se integruje přímo s [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) tak, že přidáte druhou vrstvu zabezpečení do prostředí registrace a přihlašování v aplikacích určených uživatelům. A můžete to provést bez nutnosti napsat jediný řádek kódu. Momentálně podporujeme telefonního hovoru a textové zprávy ověření. Pokud jste již vytvořili zásady registrace a přihlášení, stále můžete povolit službu Multi-Factor Authentication.
 
 > [!NOTE]
 > Služba Multi-Factor Authentication lze povolit taky při vytváření zásad registrace a přihlášení, nikoli pouze úpravou existující zásady.

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 01de1020cd485b3cf91e5d5bc2e175df2bcad111
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopírovat data z databáze Cosmos Azure pomocí Azure Data Factory
 
@@ -168,7 +168,6 @@ Ke zkopírování dat do Azure Cosmos DB, nastavte typ jímky v aktivitě kopír
 |:--- |:--- |:--- |
 | type | Vlastnost typ jímky kopie aktivity musí nastavena: **DocumentDbCollectionSink** |Ano |
 | nestingSeparator |Budete potřebovat speciální znak v názvu sloupce zdroj označíte, že vnořených dokumentů. <br/><br/>Například `Name.First` ve výstupní datovou sadu struktura generuje následující strukturu JSON v dokumentu Cosmos DB:`"Name": {"First": "[value maps to this column from source]"}` po nestedSeparator tečkou. |Ne (výchozí hodnota je tečkou `.`) |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace.<br/><br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
 
 **Příklad:**
 

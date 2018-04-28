@@ -1,19 +1,19 @@
 ---
-title: "Správa clusteru Azure DC/OS pomocí rozhraní REST API Marathonu"
-description: "Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní REST API Marathonu."
+title: Správa clusteru Azure DC/OS pomocí rozhraní REST API Marathonu
+description: Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní REST API Marathonu.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>Správa kontejnerů DC/OS přes rozhraní REST API Marathonu
 
@@ -27,7 +27,7 @@ Než si projdete tyto příklady, budete potřebovat cluster DC/OS nakonfigurova
 * [Připojení ke clusteru Azure Container Service](../container-service-connect.md)
 
 ## <a name="access-the-dcos-apis"></a>Přístup k rozhraní API DC/OS
-Až se připojíte ke clusteru Azure Container Service, budete mít na DC/OS a související rozhraní REST API přístup přes adresu http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například Marathon koncové body k dispozici na adrese identifikátory URI počínaje `http://localhost/marathon/v2/`. 
+Po připojení ke clusteru Azure Container Service, můžete přístup k DC/OS a související rozhraní REST API prostřednictvím http://localhost:local-port. Příklady v tomto dokumentu předpokládají, že máte k dispozici tunel na portu 80. Například Marathon koncové body k dispozici na adrese identifikátory URI počínaje `http://localhost/marathon/v2/`. 
 
 Další informace o různých rozhraních API najdete v dokumentaci Mesosphere pro rozhraní [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) a [Chronos API](https://mesos.github.io/chronos/docs/api.html) a v dokumentaci Apache pro rozhraní [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
@@ -120,7 +120,7 @@ Můžete použít rozhraní API Marathonu horizontální navýšení kapacity ne
 Z tunelového propojení spusťte následující příkaz pro horizontální škálování aplikace.
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ a pak ID aplikace, která se bude škálovat. Pokud používáte ukázku Nginx, která je zde k dispozici, identifikátor URI by byl http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ následuje Identifikátor aplikace škálování. Pokud používáte ukázku Nginx, která se zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -179,7 +179,7 @@ Rozhraní Marathon API je možné použít i k nasazením aplikací se škálov�
 Spusťte následující příkaz pro horizontální škálování aplikace:
 
 > [!NOTE]
-> Identifikátor URI je http://localhost/marathon/v2/apps/ a pak ID aplikace, která se bude škálovat. Pokud používáte ukázku Nginx, která je zde k dispozici, identifikátor URI by byl http://localhost/marathon/v2/apps/nginx.
+> Identifikátor URI je http://localhost/marathon/v2/apps/ následuje Identifikátor aplikace škálování. Pokud používáte ukázku Nginx poskytuje zde, identifikátor URI by http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -187,7 +187,7 @@ Spusťte následující příkaz pro horizontální škálování aplikace:
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Další informace o koncových bodech Mesos HTTP](http://mesos.apache.org/documentation/latest/endpoints/)
 * [Další informace o rozhraní REST API Marathonu](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

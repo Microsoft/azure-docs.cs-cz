@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1207ae8160739bcf27a651880dd58ea6893ebf37
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3153c57d6504346f6985823860623dc37977b79f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Správa disků v Azure pomocí Azure CLI
 
@@ -84,11 +84,11 @@ Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje n
 
 ### <a name="premium-disk"></a>Disk Premium
 
-Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Storage úrovně Premium podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na tři typy (P10, P20 a P30) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost disku menší než 128 GB, typ disku je P10. Pokud je velikost disku mezi 129 až 512 GB, jde o typ (velikost) P20. V případě velikosti větší než 512 GB jde o typ P30.
+Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Premium Storage podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na tři typy (P10, P20 a P30) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost disku menší než 128 GB, typ disku je P10. Pokud je velikost disku mezi 129 až 512 GB, jde o typ (velikost) P20. V případě velikosti větší než 512 GB jde o typ P30.
 
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 
-|Typ disku pro Storage úrovně Premium | P10 | P20 | P30 |
+|Typ disku pro Premium Storage | P10 | P20 | P30 |
 | --- | --- | --- | --- |
 | Velikost disku (zaokrouhluje se nahoru) | 128 GB | 512 GB | 1 024 GB (1 TB) |
 | Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 500 | 2 300 | 5 000 |
@@ -108,16 +108,17 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create]( /cli/azure/vm#az_vm_create). Pomocí argumentu `--datadisk-sizes-gb` je možné určit, že se má vytvořit další disk a připojit k virtuálnímu počítači. Pokud chcete vytvořit a připojit více než jeden disk, použijte seznam hodnot velikostí disků oddělený mezerami. V následujícím příkladu se virtuální počítač vytvoří se dvěma datovými disky, které budou mít oba velikost 128 GB. Vzhledem k velikosti disků 128 GB se oba tyto disky nakonfigurují jako typ P10, který poskytuje maximálně 500 IOPS na disk.
+Vytvořte virtuální počítač pomocí příkazu [az vm create]( /cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *myVM*, přidá uživatelský účet s názvem *azureuser* a vygeneruje klíče SSH, pokud ještě neexistují. Pomocí argumentu `--datadisk-sizes-gb` je možné určit, že se má vytvořit další disk a připojit k virtuálnímu počítači. Pokud chcete vytvořit a připojit více než jeden disk, použijte seznam hodnot velikostí disků oddělený mezerami. V následujícím příkladu se virtuální počítač vytvoří se dvěma datovými disky, které budou mít oba velikost 128 GB. Vzhledem k velikosti disků 128 GB se oba tyto disky nakonfigurují jako typ P10, který poskytuje maximálně 500 IOPS na disk.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroupDisk \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
-  --data-disk-sizes-gb 128 128 \
-  --generate-ssh-keys
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --data-disk-sizes-gb 128 128
 ```
 
 ### <a name="attach-disk-to-existing-vm"></a>Připojení disku k existujícímu virtuálnímu počítači

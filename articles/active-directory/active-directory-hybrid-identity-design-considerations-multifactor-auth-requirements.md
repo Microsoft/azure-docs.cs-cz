@@ -1,11 +1,11 @@
 ---
-title: "Návrhu hybridní identity - požadavky vícefaktorového ověřování Azure | Microsoft Docs"
-description: "Azure Active Directory pomocí podmíněného řízení přístupu, zkontroluje konkrétní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek je uživatel ověřený a přistupovat k aplikaci."
-documentationcenter: 
+title: Návrhu hybridní identity - požadavky vícefaktorového ověřování Azure | Microsoft Docs
+description: Azure Active Directory pomocí podmíněného řízení přístupu, zkontroluje konkrétní podmínky, kterou vyberete při ověřování uživatele a před povolením přístupu k aplikaci. Po splnění těchto podmínek je uživatel ověřený a přistupovat k aplikaci.
+documentationcenter: ''
 services: active-directory
 author: femila
 manager: billmath
-editor: 
+editor: ''
 ms.assetid: 9c59fda9-47d0-4c7e-b3e7-3575c29beabe
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bbdf60ed22a720f4f735108da79fe3b2ace1660a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 998aebfc38c4a0971a5071faebdeae4dbca86690
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Stanovení požadavků na službu Multi-Factor authentication pro vaše řešení hybridní identity
 V tomto světě mobility s uživateli přístup k datům a aplikacím v cloudu a z jakéhokoli zařízení se stává zabezpečení tyto informace prvořadým.  Každý den je nové titulku o porušení zabezpečení.  I když není zaručeno, proti takové narušení, služba Multi-Factor authentication, poskytuje další úroveň zabezpečení, aby se zabránilo tyto narušení.
 Začít vyhodnocování požadavků organizace pro službu Multi-Factor authentication. To znamená co je organizace pokusu o zabezpečení.  Toto testování je důležité určit technické požadavky pro nastavení a povolení organizace uživatele u služby Multi-Factor authentication.
 
 > [!NOTE]
-> Pokud nejste obeznámeni s MFA a jakým způsobem, důrazně doporučujeme, abyste si přečetli článek [co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) před pokračujte ve čtení v této části.
+> Pokud nejste obeznámeni s MFA a jakým způsobem, důrazně doporučujeme, abyste si přečetli článek [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) před pokračujte ve čtení v této části.
 > 
 > 
 

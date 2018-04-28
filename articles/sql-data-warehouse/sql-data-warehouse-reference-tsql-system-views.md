@@ -1,27 +1,24 @@
 ---
-title: Zobrazení systému SQL Data Warehouse | Microsoft Docs
-description: Odkazy na systémové zobrazení obsahu pro SQL Data Warehouse.
+title: Zobrazení systému – Azure SQL Data Warehouse | Microsoft Docs
+description: Odkazy na dokumentaci pro systémová zobrazení, které jsou podporovány v Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
-ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 01/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 96bd74a9c68cc77d35832836afa966958ed37264
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 59929a851bca967e36e5d4cf9a02a20dae117928
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="system-views"></a>Systémová zobrazení
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporovány v Azure SQL Data Warehouse
+Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
+
 ## <a name="sql-data-warehouse-catalog-views"></a>Zobrazení katalogu SQL Data Warehouse
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](http://msdn.microsoft.com/library/mt203892.aspx)
@@ -65,7 +62,7 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
-* [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
+* [Sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>Zobrazení katalogu systému SQL Server
 * [sys.all_columns](http://msdn.microsoft.com/library/ms177522.aspx)
@@ -73,10 +70,10 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.all_parameters](http://msdn.microsoft.com/library/ms190340.aspx)
 * [sys.all_sql_modules](http://msdn.microsoft.com/library/ms184389.aspx)
 * [sys.all_views](http://msdn.microsoft.com/library/ms189510.aspx)
-* [sys.assemblies](http://msdn.microsoft.com/library/ms189790.aspx)
+* [Sys.Assemblies](http://msdn.microsoft.com/library/ms189790.aspx)
 * [sys.assembly_modules](http://msdn.microsoft.com/library/ms180052.aspx)
 * [sys.assembly_types](http://msdn.microsoft.com/library/ms178020.aspx)
-* [sys.certificates](http://msdn.microsoft.com/library/ms189774.aspx)
+* [Sys.Certificates](http://msdn.microsoft.com/library/ms189774.aspx)
 * [sys.check_constraints](http://msdn.microsoft.com/library/ms187388.aspx)
 * [sys.columns](http://msdn.microsoft.com/library/ms176106.aspx)
 * [sys.computed_columns](http://msdn.microsoft.com/library/ms188744.aspx)
@@ -102,17 +99,17 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.numbered_procedures](http://msdn.microsoft.com/library/ms179865.aspx)
 * [sys.objects](http://msdn.microsoft.com/library/ms190324.aspx)
 * [sys.parameters](http://msdn.microsoft.com/library/ms176074.aspx)
-* [sys.partition_functions](http://msdn.microsoft.com/library/ms187381.aspx)
+* [Sys.partition_functions](http://msdn.microsoft.com/library/ms187381.aspx)
 * [sys.partition_parameters](http://msdn.microsoft.com/library/ms175054.aspx)
 * [sys.partition_range_values](http://msdn.microsoft.com/library/ms187780.aspx)
 * [sys.partition_schemes](http://msdn.microsoft.com/library/ms189752.aspx)
-* [sys.partitions](http://msdn.microsoft.com/library/ms175012.aspx)
+* [Sys.Partitions](http://msdn.microsoft.com/library/ms175012.aspx)
 * [sys.procedures](http://msdn.microsoft.com/library/ms188737.aspx)
 * [sys.schemas](http://msdn.microsoft.com/library/ms176011.aspx)
 * [sys.securable_classes](http://msdn.microsoft.com/library/ms408301.aspx)
 * [sys.sql_expression_dependencies](http://msdn.microsoft.com/library/bb677315.aspx)
 * [sys.sql_modules](http://msdn.microsoft.com/library/ms175081.aspx)
-* [sys.stats](http://msdn.microsoft.com/library/ms177623.aspx)
+* [Sys.stats](http://msdn.microsoft.com/library/ms177623.aspx)
 * [sys.stats_columns](http://msdn.microsoft.com/library/ms187340.aspx)
 * [sys.symmetric_keys](https://msdn.microsoft.com/library/ms189446.aspx)
 * [sys.synonyms](https://msdn.microsoft.com/library/ms189458.aspx)
@@ -128,8 +125,8 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.system_sql_modules](http://msdn.microsoft.com/library/ms188034.aspx)
 * [sys.system_views](http://msdn.microsoft.com/library/ms187764.aspx)
 * [sys.systypes](https://msdn.microsoft.com/library/ms175109.aspx)
-* [sys.sysusers](https://msdn.microsoft.com/library/ms179871.aspx)
-* [sys.tables](http://msdn.microsoft.com/library/ms187406.aspx)
+* [Sys.sysusers](https://msdn.microsoft.com/library/ms179871.aspx)
+* [zobrazení Sys.Tables](http://msdn.microsoft.com/library/ms187406.aspx)
 * [sys.types](http://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
@@ -223,24 +220,14 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 
 ## <a name="sql-server-informationschema-views"></a>SQL Server INFORMATION_SCHEMA zobrazení
 * [CHECK_CONSTRAINTS](http://msdn.microsoft.com/library/ms189772.aspx)
-* [COLUMNS](http://msdn.microsoft.com/library/ms188348.aspx)
+* [SLOUPCE](http://msdn.microsoft.com/library/ms188348.aspx)
 * [PARAMETRY](http://msdn.microsoft.com/library/ms173796.aspx)
 * [RUTINY](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHÉMATA](https://msdn.microsoft.com/library/ms182642.aspx)
 * [TABULKY](http://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
-* [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
+* [ZOBRAZENÍ](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v článku [SQL Data Warehouse odkaz přehled] [SQL Data Warehouse odkaz přehled].
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
+Další informace najdete v části [příkazů T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [elementů jazyka T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).

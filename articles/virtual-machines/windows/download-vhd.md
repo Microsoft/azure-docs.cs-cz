@@ -3,7 +3,7 @@ title: Stáhněte si Windows virtuálního pevného disku z Azure | Microsoft Do
 description: Stáhněte si Windows virtuální pevný disk pomocí portálu Azure.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: davidmu
-ms.openlocfilehash: c9a75890af86a5342debe1d6fdb18f5e9bd2b227
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 83d6715d6d8178e273131a6bc123627126644271
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stáhněte si Windows virtuálního pevného disku z Azure
 
@@ -37,7 +37,7 @@ Chcete-li použít virtuální pevný disk jako bitovou kopii k vytvoření dal�
 2.  [Připojte se k Virtuálnímu](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 3.  Ve virtuálním počítači otevřete okno příkazového řádku jako správce.
 4.  Změňte adresář na *%windir%\system32\sysprep* a spusťte sysprep.exe.
-5.  V dialogovém okně Nástroj pro přípravu systému vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je vybrána.
+5.  V dialogovém okně Nástroj pro přípravu systému vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je vybrána.
 6.  V možnosti vypnutí, vyberte **vypnutí**a potom klikněte na **OK**. 
 
 Pokud chcete použít virtuální pevný disk jako disk pro novou instanci třídy na existující virtuální počítač nebo datový disk, proveďte tyto kroky:

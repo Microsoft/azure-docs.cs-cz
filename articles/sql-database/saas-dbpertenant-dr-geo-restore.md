@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 928ff9b2519f6e92b091d9fd6b4ea0a7bca94d2b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: a677e6eb583e293f83df824804aa4cd6f8f5d778
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="recover-a-multi-tenant-saas-application-using-geo-restore-from-database-backups"></a>Obnovit víceklientské aplikace SaaS pomocí geografické obnovení ze zálohy databáze
 
@@ -68,7 +68,7 @@ Tyto problémy řešeny v tomto kurzu, pomocí funkce Azure SQL Database a platf
 
 ## <a name="get-the-disaster-recovery--scripts"></a>Získat skripty pro zotavení po havárii 
 
-Zotavení po Havárii skripty použité v tomto kurzu jsou k dispozici v [SaaS lístky Wingtip databáze za klienta úložiště GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/feature-DR-georestore). Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) kroky, jak stáhnout a odblokování skripty správy Wingtip lístků.
+Zotavení po Havárii skripty použité v tomto kurzu jsou k dispozici v [SaaS lístky Wingtip databáze za klienta úložiště GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) kroky, jak stáhnout a odblokování skripty správy Wingtip lístků.
 > [!IMPORTANT]
 > Podobně jako všechny lístky Wingtip správu skripty skripty zotavení po Havárii jsou ukázka kvality a není určen k použití v produkčním prostředí.   
 

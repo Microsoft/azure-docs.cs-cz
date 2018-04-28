@@ -1,11 +1,11 @@
 ---
-title: "Předběžné načtení prostředků na koncový bod Azure CDN | Microsoft Docs"
-description: "Zjistěte, jak předem načíst obsah uložený v mezipaměti na koncový bod Azure CDN."
+title: Předběžné načtení prostředků na koncový bod Azure CDN | Microsoft Docs
+description: Zjistěte, jak předem načíst obsah uložený v mezipaměti na koncový bod Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: mazha
-ms.openlocfilehash: e00205ddcaab277029d7185d0158a64818d0d49b
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: bf3161d756759e4b278e48ad7a49615e4a73d17f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -67,6 +67,6 @@ Tento kurz vás provede předběžné načítání obsahu v mezipaměti na všec
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Vyprázdnění koncového bodu Azure CDN](cdn-purge-endpoint.md)
-* [Azure CDN REST API – referenční informace: předem načíst obsah na koncový bod](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API – referenční informace: Vymazat obsah z koncového bodu](https://docs.microsoft.com/en-us/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN REST API – referenční informace: předem načíst obsah na koncový bod](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API – referenční informace: Vymazat obsah z koncového bodu](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

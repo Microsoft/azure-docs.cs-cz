@@ -3,7 +3,7 @@ title: Ochrana virtuálních počítačů nasadit v Azure zásobníku | Microsof
 description: Pokyny k ochraně virtuálních počítačů nasazených v zásobníku Azure.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -11,20 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 02get-started-article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.topic: get-started-article
+ms.date: 04/25/2018
+ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b49a8650611472b5e35c4bdf8373a1d7e3a45589
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure zásobníku
-
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
 Tento článek popisuje pokyny o tom, jak chránit virtuální počítače uživatele nasazené v Azure zásobníku.
 
 K ochraně proti ztrátě informací a neplánované výpadky, potřebujete implementovat plán zálohování obnovení nebo zotavení po havárii pro vaše uživatele aplikace a data. Tento plán je jedinečný pro každou aplikaci, ale následuje rozhraní podle vaší organizace komplexní provozní kontinuitu a strategii (BC/DR) zotavení po havárii. Obecné vzory a postupy pro aplikaci dostupnosti a odolnosti najdete v části [návrh odolný aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency) architektura centra Azure.
@@ -43,7 +40,7 @@ Každý cloud Azure zásobníku se nasadí do jednoho datového centra. Samostat
  
 Plánování strategie zálohování obnovení a zotavení po havárii pro každou aplikaci k určení cíle pro každou aplikaci. To vám pomůže vaší organizace správně velikost kapacity úložiště vyžaduje místní a projektu spotřebu ve veřejném cloudu. 
 
-|  | Global Azure | Azure zásobník nasazený do datacentru CSP a provozují zprostředkovatele kryptografických služeb | Azure zásobník nasazený do datového centra zákazníka a provozují zákazníka |
+|  | Globální Azure | Azure zásobník nasazený do datacentru CSP a provozují zprostředkovatele kryptografických služeb | Azure zásobník nasazený do datového centra zákazníka a provozují zákazníka |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | **Azure zásobník nasazený do datacentru CSP a provozují zprostředkovatele kryptografických služeb** | Virtuální počítače uživatele se nasadí do zásobníku Azure CSP zpracovat. Virtuální počítače uživatele jsou obnovena ze zálohy nebo převzetí služeb při selhání přímo do Azure. | Zprostředkovatel kryptografických služeb funguje primární a sekundární instance zásobník Azure ve svých vlastních datových centrech. Virtuální počítače uživatele jsou obnovena nebo převzetí služeb při selhání mezi dvěma instancemi Azure zásobníku. | Zprostředkovatel kryptografických služeb pracuje Azure zásobníku v primární lokalitě. Datovým centrem zákazníka je cílem obnovení nebo převzetí služeb při selhání. |
 | **Azure zásobník nasazený do datového centra zákazníka a provozují zákazníka** | Virtuální počítače uživatele se nasadí do zákazník provozovat zásobník Azure. Virtuální počítače uživatele jsou obnovena ze zálohy nebo převzetí služeb při selhání přímo do Azure. | Zákazník funguje primární a sekundární instance zásobník Azure ve svých vlastních datových centrech. Virtuální počítače uživatele jsou obnovena nebo převzetí služeb při selhání mezi dvěma instancemi Azure zásobníku. | Zákazník funguje Azure zásobníku v primární lokalitě. Datacentru CSP na je cílem obnovení nebo převzetí služeb při selhání. |
@@ -60,11 +57,11 @@ Plánovaný bod obnovení je maximální délka trvání dojít ke ztrátě dat,
  
 Plánovaná doba obnovení a cíl bodu obnovení jsou obchodní požadavky. Posouzení rizika, můžete definovat RTO aplikace a plánovaný bod obnovení. Další běžné metrika **střední čas k obnovení** (MTTR), což je průměrná doba, která je potřebná pro obnovení po selhání aplikace. MTTR je empirický fakt o systému. Pokud MTTR překročí RTO, pak selhání v systému způsobí nepřijatelné narušení činnosti firmy, protože nebude možné obnovit systém v definovaném čase RTO.
 
-### <a name="backup-restore"></a>Backup-restore
+### <a name="backup-restore"></a>Obnovit zálohování
 
 Nejběžnější schéma ochrany pro aplikace založené na virtuální počítač je použít zálohovací software. Zálohování virtuálních počítačů obvykle zahrnuje operačního systému, konfigurace operačního systému, binární soubory aplikace a data aplikací. Zálohy jsou vytvořené pomocí pořízení snímku svazky, disky nebo celý virtuální počítač. S Azure zásobníku máte flexibilitu zálohování z v kontextu hostovaný operační systém nebo z Azure zásobníku úložiště a výpočetní rozhraní API. Azure zásobník nepodporuje pořízení zálohy na úrovni hypervisoru. 
  
-![Backup-restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Zálohování restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
  
 Obnovení aplikace vyžaduje obnovení jeden nebo více virtuálních počítačů na stejném cloudu nebo do nového cloudu. Ve vašem datovém centru nebo veřejného cloudu, můžete vybrat v cloudu. Které cloudové cílíte je zcela v rámci vlastního ovládacího prvku a je založena na požadavky na ochranu osobních údajů a suverenity vaše data. 
  
@@ -147,7 +144,8 @@ Důležité informace pro vaše nasazení Azure zásobníku:
 ## <a name="next-steps"></a>Další postup 
 
 V tomto článku jsme zahrnutých pokyny o tom, jak chránit virtuální počítače uživatele nasazené v Azure zásobníku. Další informace o tom, jak chránit virtuální počítače pomocí služeb Azure najdete v části:
- - [Azure Backup Server podpora pro Azure zásobníku](https://docs.microsoft.com/en-us/azure/backup/ ) 
- - [Azure Site Recovery podpora pro Azure zásobníku](https://docs.microsoft.com/en-us/azure/site-recovery/)  
+ - [Zálohování souborů a aplikací v zásobníku Azure pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Azure Backup Server podpora pro Azure zásobníku](https://docs.microsoft.com/azure/backup/ ) 
+ - [Azure Site Recovery podpora pro Azure zásobníku](https://docs.microsoft.com/azure/site-recovery/)  
  
 Další informace o partnera produkty, které nabízejí ochranu virtuálních počítačů v zásobníku Azure, najdete v tématu "[chrání aplikace a data v Azure zásobníku](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."

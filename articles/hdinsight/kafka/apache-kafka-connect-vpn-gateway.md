@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: 53502257d85c88195a40b7bda033483bd97ff3f4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1ddfbbb5efb73f968c9ef42396be45fce12ff47a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Kafka v HDInsight pomocí virtuální sítě Azure
 
@@ -92,7 +92,7 @@ Postupujte podle kroků v této části vytvořit následující konfiguraci:
 2. Otevřete příkazovém řádku prostředí PowerShell a použít následující kód k přihlášení k předplatnému Azure:
 
     ```powershell
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
     # If you have multiple subscriptions, uncomment to set the subscription
     #Select-AzureRmSubscription -SubscriptionName "name of your subscription"
     ```

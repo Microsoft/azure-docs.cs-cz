@@ -1,11 +1,11 @@
 ---
-title: "Nainstalujte panely prohlížeče aplikace přístup rozšíření - Azure | Microsoft Docs"
-description: "Opravte běžné chyby při instalaci rozšíření přístup k panelu prohlížeče."
+title: Nainstalujte panely prohlížeče aplikace přístup rozšíření - Azure | Microsoft Docs
+description: Opravte běžné chyby při instalaci rozšíření přístup k panelu prohlížeče.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: c49cfad5f362f4402be476066f0e8c0158f20d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření přístup k panelu prohlížeče
 
@@ -37,7 +37,6 @@ Pro jednotné přihlašování založené na heslech můžete použít některý
 - **Hraniční**: v systému Windows 10 Anniversary Edition nebo novějším. 
 - **Chrome**: v systému Windows 7 nebo novější a v systému MacOS X nebo novější.
 - **Firefox 26.0 nebo novější**: v systému Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
-- **Internet Explorer 8, 9, 10, 11**: na Windows 7 nebo novější (omezená podpora).
 
 ## <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření přístup k panelu prohlížeče
 

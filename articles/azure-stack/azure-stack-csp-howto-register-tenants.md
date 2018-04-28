@@ -1,11 +1,11 @@
 ---
-title: "Přidat klienty pro využití a fakturace do protokolů Azure | Microsoft Docs"
-description: "Kroky potřebné koncový uživatel přidat do Azure zásobníku spravuje poskytovatele cloudové služby."
+title: Přidat klienty pro využití a fakturace do protokolů Azure | Microsoft Docs
+description: Kroky potřebné koncový uživatel přidat do Azure zásobníku spravuje poskytovatele cloudové služby.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 67e5a67d7cd5caf6bd4d2625969b139411d62696
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.openlocfilehash: fd5a8afe82bab5ca4e735a2483d90b84e234b8dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidat klienta pro využití a fakturace k Azure zásobníku
 
@@ -58,7 +58,7 @@ Aktualizace registrace s předplatným nové zákazníka. Azure sestavy využit�
 > Chcete-li provést tento krok, musíte mít [zaregistrovat Azure zásobníku](azure-stack-register.md).
 
 1. Otevřete prostředí Windows PowerShell s řádku se zvýšenými oprávněními a spusťte:  
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. Zadejte přihlašovací údaje Azure.
 3. V relaci prostředí PowerShell spusťte příkaz:
 
@@ -70,7 +70,7 @@ Aktualizace registrace s předplatným nové zákazníka. Azure sestavy využit�
 | --- | --- | 
 |registrationSubscriptionID | Předplatné Azure, která byla použita pro počáteční registraci zásobník Azure. |
 | customerSubscriptionID | Předplatné Azure (ne Azure Stack) patřící do zákazníka k registraci. Musí být vytvořené v nabídku CSP; v praxi to znamená přes Partnerské centrum. Pokud zákazník má více než jednoho klienta Azure Active Directory, musí být vytvořeny toto předplatné v klientovi, který se použije k přihlášení do Azure zásobníku.
-| resourceGroup | Skupina prostředků v Azure, ve kterém je uložený registrace. 
+| Skupina prostředků | Skupina prostředků v Azure, ve kterém je uložený registrace. 
 | registrationName | Název registrace do Azure zásobníku. Je objekt uložená v Azure. | 
 
 

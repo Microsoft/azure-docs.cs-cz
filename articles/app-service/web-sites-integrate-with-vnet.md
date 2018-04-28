@@ -1,8 +1,8 @@
 ---
-title: "Integrace aplikace pomocí virtuální sítě Azure"
-description: "Ukazuje, jak připojit aplikace v Azure App Service k nový nebo existující virtuální síť Azure"
+title: Integrace aplikace pomocí virtuální sítě Azure
+description: Ukazuje, jak připojit aplikace v Azure App Service k nový nebo existující virtuální síť Azure
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
 editor: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83f5c64926eb9b718463c415a5478af374245f31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace pomocí virtuální sítě Azure
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi ve [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Pokud jste obeznámeni s virtuální sítí Azure (virtuální sítě), toto je funkce, která umožňuje umístit mnoho vašich prostředků Azure v Internetu jiných routeable síti, která můžete řídit přístup ke. Tyto sítě můžete pak připojené k vaší místní sítě pomocí různých technologií, sítě VPN. Další informace o virtuálních sítí Azure, spusťte s informacemi, zde: [Přehled virtuálních sítí Azure][VNETOverview]. 
@@ -57,7 +57,8 @@ Zde jsou některé věci, třeba vzít v úvahu před připojením k virtuální
 
 * Integrace virtuální sítě funguje pouze s aplikacemi ve **standardní**, **Premium**, nebo **izolovaná** ceny plánu. Pokud povolíte funkci a pak vertikálně váš plán služby App Service na nepodporované cenový plán aplikace ztratí připojení k virtuálním sítím používají. 
 * Pokud cílový virtuální síti již existuje, musí mít point-to-site VPN povoleny v rámci brány dynamického směrování, než může být připojen k aplikaci. Pokud vaše brána je nakonfigurovaná se statickým směrováním, nelze povolit point-to-site virtuální privátní sítě (VPN).
-* Virtuální sítě musí být ve stejném předplatném jako služba Plan(ASP) vaší aplikace. 
+* Virtuální sítě musí být ve stejném předplatném jako služba Plan(ASP) vaší aplikace.
+* Pokud vaše brána už existuje s point-to-site povoleno a není v základní SKU, musí být IKEV2 zakázáno v konfiguraci point-to-site.
 * Aplikace, které se integrují s virtuální sítě pomocí DNS, který je zadán pro tuto virtuální síť.
 * Ve výchozím nastavení aplikace integrační pouze směrovat provoz do virtuální sítě podle tras, které jsou definovány ve vaší virtuální síti. 
 
@@ -101,11 +102,11 @@ Pokud chcete vytvořit novou virtuální síť, který je nakonfigurovaný s br�
 Chcete-li vytvořit virtuální sítě Resource Manageru pomocí integrace rozhraní virtuální sítě, jednoduše vyberte **vytvořit novou virtuální síť** a zadejte:
 
 * Název virtuální sítě
-* Blok adres virtuální sítě
-* Název podsítě.
+* Blok adres služby Virtual Network
+* Název podsítě
 * Blok adres podsítě
 * Blok adres brány
-* Blok adres Point-to-Site
+* Blok adres point-to-site
 
 Pokud chcete této virtuální sítě pro připojení k jiným sítím, pak byste neměli výběr prostor IP adres, který se překrývá s tyto sítě. 
 
@@ -133,20 +134,20 @@ Skrytě této funkce vytvoří nad technologie VPN Point-to-Site k připojení a
 
 ![][4]
 
-Pokud jste nenakonfigurovali DNS server s vaší virtuální síti, aplikace bude muset použít IP adresy k dosažení prostředků ve virtuální síti. Při použití IP adresy, mějte na paměti, že je hlavní výhody použití této možnosti umožňuje použít privátní adresy v rámci vaší privátní sítě. Pokud nastavíte aplikace až použití veřejných IP adres pro jeden virtuální počítače a potom nepoužíváte funkci integrace virtuální sítě a komunikují přes internet.
+Některé z dalších výhod služby App Service Environment jsou, které můžete použít na základě Dv2 pracovníci s až 14 GB paměti RAM. Další výhodou je, že je možné škálovat systému podle svých potřeb. Na rozdíl od více klientů prostředích, kde je omezený na 20 instancí vaší ASP v App Service Environment můžete škálovat instance až 100 ASP.
 
-## <a name="managing-the-vnet-integrations"></a>Správa integrace virtuální sítě
-Možnost připojit a odpojit k virtuální síti je na úrovni aplikace. Operace, které můžou ovlivnit integrace virtuální sítě mezi více aplikacemi jsou na úrovni ASP. Z uživatelského rozhraní, které se zobrazí na úrovni aplikace můžete získat podrobnosti o ve virtuální síti. Většina těchto informací se také zobrazuje na úrovni ASP. 
+## <a name="managing-the-vnet-integrations"></a>Jednou z věcí, kterou poskytuje App Service Environment, který není v rámci integrace virtuální sítě je, že služby App Service Environment může fungovat s připojení VPN pomocí ExpressRoute.
+Zatímco je, že některé použít případu překrývají, žádný z těchto funkcí můžete nahradit všechny ostatní. Zároveň budete vědět, jaké funkci používat, je vázaný na vašim potřebám. Pokud jste vývojář a jednoduše chcete spustit lokalitu v Azure a jeho přístup k databázi na pracovní stanici v rámci svého stolu, je ta nejjednodušší cesta používat hybridní připojení. Pokud jsou velké organizace, která chce velký počet webových vlastností v veřejnosti cloud a spravovat ve vlastní síti a potom chcete pomocí služby App Service Environment. 
 
 ![][5]
 
-Na stránce stav funkce sítě se zobrazí, pokud vaše aplikace je připojená k virtuální síti. Pokud vaše Brána virtuální sítě je vypnutý z jakéhokoliv důvodu, potom zobrazí jako není připojen. 
+Pokud máte několik služby App Service hostované aplikace a jednoduše má přístup k prostředkům ve vaší virtuální síti, je tento způsob si integrace virtuální sítě. Kromě případů použití, jsou některé jednoduchost související aspekty. 
 
-Informace, které máte teď k dispozici v aplikaci, kterou úroveň uživatelského rozhraní integrace virtuální sítě je stejný jako podrobné informace, které můžete získat z ASP. Zde jsou tyto položky:
+Pokud virtuální sítě je již připojen k síti na pracovišti, pak pomocí integrace virtuální sítě nebo služby App Service Environment je snadný způsob, jak využívat místních prostředků. Na druhé straně Pokud virtuální sítě není připojen k síti na pracovišti je mnohem víc zásahů, pokud chcete nastavit s2s VPN s vaší virtuální sítě ve srovnání s instalací HCM.
 
-* Název virtuální sítě - tento odkaz otevře virtuální síť Azure uživatelského rozhraní
-* Umístění – tento údaj zohledňuje umístění virtuální sítě. Je možné integrovat virtuální sítě v jiném umístění.
-* Stav certifikátu – jsou certifikáty sloužící k zabezpečení připojení VPN mezi virtuální sítí a aplikace. Tento údaj zohledňuje testu zajistit, že jsou synchronizované.
+* Nad rámec funkční rozdíly, existuje jsou také ceny rozdíly.
+* Funkce služby App Service Environment je prémiový nabídky služeb ale nabízí nejvíce sítě možnosti konfigurace kromě dalších funkcí. Integrace virtuální sítě můžete použít s Standard nebo Premium soubory ASP a je ideální pro bezpečné použití prostředky ve virtuální síti ze víceklientské služby App Service.
+* Hybridní připojení se aktuálně závisí na BizTalk účtu, který má cenové úrovně, které spustit volné a potom získat progresivně nákladnější založenou na velikosti, které potřebujete. Pokud jde o práce v sítích s mnoha Přestože, neexistuje žádné jiné funkce, jako je hybridní připojení, která můžete povolit přístup k prostředkům do samostatných sítí a více než 100.
 * Stav brány. - musí být jako vašich bran dolů z jakéhokoliv důvodu pak aplikace nemají přístup k prostředkům ve virtuální síti. 
 * Adresní prostor sítě VNet - to je pro vaši virtuální síť adresní prostor IP adres. 
 * Přejděte na webu adresní prostor – to je bod do lokality adresní prostor IP adres pro virtuální síť. Vaše aplikace zobrazí komunikace jako pocházející z jednoho z IP adresy v tento adresní prostor. 
@@ -263,7 +264,7 @@ Teď Pokud hostované virtuální sítě virtuálních počítačů dosáhnout v
 Služby App Service můžete integrovat s virtuální síť Azure pomocí prostředí PowerShell. Připraveno ke spuštění skriptu, najdete v části [aplikaci v Azure App Service připojit k virtuální síti Azure](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
 ## <a name="hybrid-connections-and-app-service-environments"></a>Hybridní připojení a služby App Service Environment
-Existují tři funkce, které umožňují přístup k prostředkům hostované virtuální sítě. Jsou:
+Existují tři funkce, které umožňují přístup k prostředkům hostované virtuální sítě. Jsou to tyto:
 
 * Integrace virtuální sítě
 * Hybridní připojení

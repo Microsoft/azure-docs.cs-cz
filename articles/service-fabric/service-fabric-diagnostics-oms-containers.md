@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 7a775b6d23c144c81650bb3608ee6a117475a9ba
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1de7e58eecc80e306920ab17884290dfddf8efa8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Monitorování kontejnery s analýzy protokolů
  
-Tento článek popisuje kroky potřebné k nastavení kontejneru monitorování pro váš cluster. Další informace najdete v tématu [monitorování kontejnery v Service Fabric](service-fabric-diagnostics-event-analysis-oms.md#monitoring-containers). Pokud chcete zobrazit podrobný kurz na to, můžete navíc dodržíte [monitorování Windows kontejnerů v Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+Tento článek popisuje kroky potřebné k nastavení analýzy protokolů OMS kontejneru řešení monitorování, chcete-li zobrazit události kontejneru. Cluster pro shromažďování událostí v kontejneru, naleznete v tématu to [podrobný kurz](service-fabric-tutorial-monitoring-wincontainers.md).
 
 ## <a name="set-up-the-container-monitoring-solution"></a>Nastavení monitorování řešení kontejneru
 
@@ -35,9 +35,22 @@ Tento článek popisuje kroky potřebné k nastavení kontejneru monitorování 
 
     ![Přidání řešení kontejnerů](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Vytvořte řešení uvnitř ve stejném pracovním prostoru, který již byl vytvořen pro cluster. Tato změna se automaticky aktivuje agenta spustit shromažďování dat docker na kontejnery. V asi 15 minut nebo tak měli byste vidět řešení světla až s příchozí protokoly a statistiky.
+3. Vytvořte řešení uvnitř ve stejném pracovním prostoru, který již byl vytvořen pro cluster. Tato změna se automaticky aktivuje agenta spustit shromažďování dat docker na kontejnery. V asi 15 minut nebo tak měli byste vidět řešení světla až s příchozí protokoly a statistiky. jak je znázorněno na obrázku níže.
+
+    ![Řídicí panel základní OMS](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+
+Agenta umožňuje kolekce několik specifické pro kontejner protokoly, které mohou být dotazována v OMS, nebo použít k ukazatele vizualizovaných výkonu. Typy protokolu, které byly shromážděny jsou:
+
+* ContainerInventory: obsahuje informace o umístění kontejneru, název a obrázků
+* ContainerImageInventory: informace o nasazené bitové kopie, včetně ID nebo velikosti
+* ContainerLog: specifické chybové protokoly, protokoly docker (stdout atd.) a ostatní položky
+* ContainerServiceLog: docker démon příkazy, které byly spuštěny
+* Výkonu: čítače včetně kontejneru vstupně-výstupních operací a vlastní metriky z hostitelských počítačích disku procesoru, paměti, síťového provozu,
+
+
 
 ## <a name="next-steps"></a>Další postup
+* Další informace o [řešení kontejnery na OMS](../log-analytics/log-analytics-containers.md).
 * Další informace o kontejneru orchestration v Service Fabric - [Service Fabric a kontejnery](service-fabric-containers-overview.md)
 * Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
 * Konfigurace analýzy protokolů nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) pravidla, která pomáhají při zjišťování a Diagnostika

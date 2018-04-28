@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 2ea8c3119366d86c3aabf1faa0d71f1ba3610f41
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c6472dcde55a7b642ced7bbf0d93893df9208e0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzální ověřování se službou SQL Database a SQL Data Warehouse (SSMS podporu vícefaktorového ověřování)
 Azure SQL Database a Azure SQL Data Warehouse podporují připojení pomocí SQL Server Management Studio (SSMS) *Universal ověřování služby Active Directory*. 
@@ -25,7 +25,7 @@ Azure SQL Database a Azure SQL Data Warehouse podporují připojení pomocí SQL
 
 - `Active Directory - Universal with MFA` ověřování je interaktivní metoda, která podporuje také *Azure Multi-Factor Authentication* (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý proces přihlašování. Zajišťuje silné ověřování s celou řadu možností snadno ověřování (telefonní hovor, textová zpráva, čipové karty s PIN kód nebo oznámení mobilní aplikace), což umožňuje uživatelům zvolit metodu dávají přednost. Interaktivní vícefaktorového ověřování s Azure AD může způsobit v místním dialogovém okně pro ověření.
 
-Popis služby Multi-Factor Authentication najdete v tématu [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md).
+Popis služby Multi-Factor Authentication najdete v tématu [Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md).
 Postup konfigurace najdete v tématu [nakonfigurovat databázi SQL Azure Multi-Factor authentication pro SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
 
 ### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD domain Název nebo klienta parametr ID   

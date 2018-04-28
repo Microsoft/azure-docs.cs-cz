@@ -1,19 +1,19 @@
 ---
-title: "Připojit Azure Files svazek v Azure kontejner instancí"
-description: "Zjistěte, jak připojit Azure Files svazek k uchování stavu s instancemi Azure kontejneru"
+title: Připojit Azure Files svazek v Azure kontejner instancí
+description: Zjistěte, jak připojit Azure Files svazek k uchování stavu s instancemi Azure kontejneru
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 98be7e65c2280aa58cf904cbca265f87610eff55
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 239150c1e752ce6a4f2a19fa1192cd1a910ebea9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojit sdílenou složku Azure v Azure kontejner instancí
 
@@ -22,7 +22,7 @@ Ve výchozím nastavení jsou bezstavové instancí kontejnerů Azure. Pokud kon
 > [!NOTE]
 > Připojení Azure Files složky je aktuálně omezeno na kontejnery Linux. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
 
-## <a name="create-an-azure-file-share"></a>Vytvořte sdílenou složku Azure
+## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 
 Před použitím sdílenou složku Azure s Azure kontejner instancí, je třeba ji vytvořit. Spusťte následující skript pro vytvoření účtu úložiště pro hostování sdílené složky a sdílené složky sám sebe. Název účtu úložiště musí být globálně jedinečné, takže skript přidá do základní řetězec náhodná hodnota.
 
@@ -83,7 +83,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` Hodnota musí být jedinečný v rámci oblasti Azure vytvořit instanci kontejneru. Aktualizujte hodnotu v předchozím příkazu, pokud se zobrazí **Popisek názvu DNS** chybová zpráva při spuštění příkazu.
+Hodnota `--dns-name-label` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci kontejneru. Aktualizujte hodnotu v předchozím příkazu, pokud se zobrazí **Popisek názvu DNS** chybová zpráva při spuštění příkazu.
 
 ## <a name="manage-files-in-mounted-volume"></a>Správa souborů v připojeného svazku
 

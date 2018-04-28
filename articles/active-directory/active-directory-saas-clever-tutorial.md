@@ -1,10 +1,10 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Clever | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clever."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clever.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 1aad242ff1e9161ad5dfbecd01a44d8fb3c93cbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Kurz: Azure Active Directory integrace s Clever
 
@@ -101,37 +101,38 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-clever-tutorial/tutorial_clever_samlbase.png)
 
 3. Na **inteligentní domény a adresy URL** část, proveďte následující kroky:
 
     ![Inteligentní domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-clever-tutorial/tutorial_clever_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://clever.com/in/<companyname>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://clever.com/in/<companyname>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://clever.com/<companyname>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `https://clever.com/oauth/saml/metadata.xml`
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory inteligentní klienta](https://clever.com/about/contact/) k získání těchto hodnot.
+    > [!NOTE]
+    > Přihlášení hodnota adresy URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory inteligentní klienta](https://clever.com/about/contact/) získat tuto hodnotu.
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
-
-    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-clever-tutorial/tutorial_clever_certificate.png)
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_metadataurl.png)
 
 5. Inteligentní aplikace očekává SAML kontrolní výrazy ve specifickém formátu, který můžete přidat mapování vlastní atribut vyžaduje vaše **atributy tokenu SAML** konfigurace.
 
     Následující snímek obrazovky ukazuje příklad pro tento.
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png) 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_07.png)
 
 6. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
     
     | Název atributu  | Hodnota atributu |
-    | --------------- | -------------------- |    
-    | clever.student.credentials.District\_uživatelské jméno  | User.userPrincipalName |
-    | FirstName  | User.givenName |
-    | Příjmení  | User.Surname |    
+    | --------------- | -------------------- |
+    | clever.Teacher.credentials.district_username|user.userprincipalname|
+    | clever.student.credentials.district_username| user.userprincipalname |
+    | FirstName  | user.givenname |
+    | Příjmení  | user.surname |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -145,56 +146,35 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     d. Ponechte **Namespace** textové pole prázdné.
     
-    d. Klikněte na tlačítko **OK**.     
-
-5. Klikněte na tlačítko **Uložit** tlačítko.
+    d. Klikněte na tlačítko **OK**.
+    
+7. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-clever-tutorial/tutorial_general_400.png)
 
-8. Ke generování **Metadata** adresu url, proveďte následující kroky:
+8. V okně prohlížeče jiný web Přihlaste se k webu inteligentní společnosti jako správce.
 
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Clever** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-clever-tutorial/tutorial_clever_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-9. V okně prohlížeče jiný web Přihlaste se k webu inteligentní společnosti jako správce.
-
-10. Na panelu nástrojů klikněte na tlačítko **rychlé přihlášení**.
+9. Na panelu nástrojů klikněte na tlačítko **rychlé přihlášení**.
 
     ![Rychlé přihlášení](./media/active-directory-saas-clever-tutorial/ic798984.png "rychlé přihlášení")
 
-11. Na **rychlé přihlášení** proveďte následující kroky:
-      
+    > [!NOTE]
+    > Chcete-li otestovat jednotné přihlašování, budete muset kontaktovat [tým podpory inteligentní klienta](https://clever.com/about/contact/) pro povolení jednotného přihlašování Office 365 v back-end.
+
+10. Na **rychlé přihlášení** proveďte následující kroky:
+    
       ![Rychlé přihlášení](./media/active-directory-saas-clever-tutorial/ic798985.png "rychlé přihlášení")
-      
+    
       a. Typ **přihlašovací adresa URL**.
-      
+    
       >[!NOTE]
       >**Přihlašovací adresa URL** je vlastní hodnota. Obraťte se na [tým podpory inteligentní klienta](https://clever.com/about/contact/) získat tuto hodnotu.
-      
+    
       b. Jako **systém identit**, vyberte **služby AD FS**.
 
-      c. Typ **adresu URL metadat** v **adresu URL metadat** textové pole.
-      
+      c. V **adresu URL metadat** textovému poli, vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure.
+    
       d. Klikněte na **Uložit**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -227,12 +207,12 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-clever-test-user"></a>Vytvoření inteligentní zkušebního uživatele
 
 Pokud chcete povolit uživatelům Azure AD přihlášení k Clever, musí být zřízená do Clever.
 
-V případě Clever, pracovat s [tým podpory inteligentní klienta](https://clever.com/about/contact/) přidat uživatele do inteligentní platformy. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
+V případě Clever, pracovat s [tým podpory inteligentní klienta](https://clever.com/about/contact/) přidat uživatele do inteligentní platformy. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování.
 
 >[!NOTE]
 >Můžete použít jakékoli jiné nástroje vytvoření inteligentní uživatelského účtu nebo rozhraní API poskytované Clever ke zřízení uživatelských účtů Azure AD.
@@ -241,17 +221,17 @@ V případě Clever, pracovat s [tým podpory inteligentní klienta](https://cle
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Clever.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Clever, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Clever**.
 
-    ![Odkaz Clever v seznamu aplikací](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)  
+    ![Odkaz Clever v seznamu aplikací](./media/active-directory-saas-clever-tutorial/tutorial_clever_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -266,15 +246,15 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici inteligentní na přístupovém panelu jste měli získat automaticky přihlášení k aplikaci inteligentní.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

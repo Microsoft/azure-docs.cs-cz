@@ -1,24 +1,18 @@
 ---
-title: "Filtry omezující vlastnosti ve službě Azure Search | Microsoft Docs"
-description: "Filtrujte kritéria, na základě identity uživatele zabezpečení, jazyk, geografického umístění nebo číselné hodnoty omezit výsledky vyhledávání na dotazy do služby Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure."
-services: search
-documentationcenter: 
+title: Filtry omezující vlastnosti ve službě Azure Search | Microsoft Docs
+description: Filtrujte kritéria, na základě identity uživatele zabezpečení, jazyk, geografického umístění nebo číselné hodnoty omezit výsledky vyhledávání na dotazy do služby Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Jak vytvořit filtr omezující vlastnosti ve službě Azure Search 
 
@@ -113,7 +107,7 @@ Následující fragment kódu přidá kategorie filtru, pokud uživatel vybere z
 if (categoryFacet != "")
   filter = "category eq '" + categoryFacet + "'";
 ```
-Pomocí rozhraní REST API, žádost by být kloubové jako `$filter=category eq 'c1'`. Chcete-li kategorie pole s více hodnotami, použijte následující syntaxi:`$filter=category/any(c: c eq 'c1')`
+Pomocí rozhraní REST API, žádost by být kloubové jako `$filter=category eq 'c1'`. Chcete-li kategorie pole s více hodnotami, použijte následující syntaxi: `$filter=category/any(c: c eq 'c1')`
 
 ## <a name="tips-and-workarounds"></a>Tipy a řešení
 

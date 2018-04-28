@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Pochopení IoT Edge moduly použití, nakonfigurovaná a znovu použít – náhled
 
@@ -168,7 +168,7 @@ Manifest nasazení můžete zadat požadované vlastnosti pro dvojici modulu ka�
 
 Pokud nezadáte požadované vlastnosti modul twin v manifestu nasazení, IoT Hub nezmění twin modulu jakýmkoli způsobem a nebudete moci nastavit požadované vlastnosti prostřednictvím kódu programu.
 
-Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Odkazovat [twin zařízení – Příručka vývojáře](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) Další informace.   
+Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Odkazovat [twin zařízení – Příručka vývojáře](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) Další informace.   
 
 ## <a name="deployment-manifest-example"></a>Příklad nasazení manifestu
 

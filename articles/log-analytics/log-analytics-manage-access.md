@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -77,7 +77,7 @@ Ve výchozím se správcem pracovního prostoru stává účet Microsoft nebo ú
 Existují dva modely oprávnění, které řídí přístup k pracovnímu prostoru Log Analytics:
 
 1. Starší uživatelské role Log Analytics
-2. [Přístup na základě rolí Azure](../active-directory/role-based-access-control-configure.md)
+2. [Přístup na základě rolí Azure](../role-based-access-control/role-assignments-portal.md)
 
 Následující tabulka shrnuje možná nastavení přístupu pomocí jednotlivých modelů oprávnění:
 
@@ -104,7 +104,7 @@ Následující aktivity také vyžadují oprávnění Azure:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Správa přístupu k Log Analytics pomocí oprávnění Azure
-Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md).
+Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 Azure má pro Log Analytics dvě předdefinované role uživatele:
 - Čtenář Log Analytics
@@ -156,7 +156,7 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 - Skupina prostředků – Přístup ke všem pracovním prostorům v rámci skupiny prostředků
 - Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
-Pomocí [vlastních rolí](../active-directory/role-based-access-control-custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+Pomocí [vlastních rolí](../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Role uživatele Azure a role uživatele portálu Log Analytics
 Pokud máte k pracovnímu prostoru Log Analytics alespoň oprávnění Azure ke čtení, můžete otevřít portál OMS kliknutím na úlohu **Portál OMS** při procházení pracovního prostoru Log Analytics.
@@ -174,7 +174,7 @@ Vaše přiřazení role na portálu OMS se určuje následujícím způsobem:
 | Pro předplatná spravovaná poskytovatelem Cloud Solution Provider (CSP) <br> Účet, pomocí kterého jste přihlášeni, je ve službě Azure Active Directory propojené s pracovním prostorem. | Správce | Obvykle zákazník poskytovatele CSP |
 | Pro předplatná spravovaná poskytovatelem Cloud Solution Provider (CSP) <br> Účet, pomocí kterého jste přihlášeni, není ve službě Azure Active Directory propojené s pracovním prostorem. | Přispěvatel | Obvykle poskytovatel CSP |
 
-<sup>1</sup> Další informace o definicích rolí najdete v tématu [Oprávnění Azure](../active-directory/role-based-access-control-custom-roles.md). Při vyhodnocování rolí není akce `*` stejná jako `Microsoft.OperationalInsights/workspaces/*`.
+<sup>1</sup> Další informace o definicích rolí najdete v tématu [Oprávnění Azure](../role-based-access-control/custom-roles.md). Při vyhodnocování rolí není akce `*` stejná jako `Microsoft.OperationalInsights/workspaces/*`.
 
 Ohledně webu Azure Portal je třeba pamatovat na několik věcí:
 

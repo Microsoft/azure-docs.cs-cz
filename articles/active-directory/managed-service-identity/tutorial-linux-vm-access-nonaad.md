@@ -1,8 +1,8 @@
 ---
-title: "Používat pro přístup k Azure Key Vault MSI virtuálních počítačů Linux"
-description: "Kurz vás provede procesem pomocí Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Resource Manager."
+title: Používat pro přístup k Azure Key Vault MSI virtuálních počítačů Linux
+description: Kurz vás provede procesem pomocí Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 8d962475fc2b40f042e1e746d892442b0275643b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fe38a423ffc40da21299b727c37532b9f0001d59
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Používat pro přístup k Azure Key Vault Linux virtuálního počítače spravované služby Identity (MSI) 
 
@@ -57,7 +57,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. Můžete také
 
 ## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI pro virtuální počítač.  
+Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení spravovat Identity služby na virtuálním počítači, nemá dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači.
 
 1. Vyberte **virtuálního počítače** , které chcete povolit MSI v.
 2. V levém navigačním panelu klikněte na tlačítko **konfigurace**.
@@ -65,11 +65,6 @@ Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, a
 4. Ujistěte se, kliknete na tlačítko **Uložit** konfiguraci uložíte.
 
     ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. Pokud chcete zkontrolovat, jaká rozšíření jsou v tomto **virtuálního počítače s Linuxem**, klikněte na tlačítko **rozšíření**. Pokud je povoleno MSI, **ManagedIdentityExtensionforLinux** se zobrazí v seznamu.
-
-    ![Obrázek alternativní text](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
-
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Udělit přístup virtuálních počítačů tajného klíče uložené v Key Vault  
 
@@ -108,7 +103,7 @@ K dokončení těchto kroků, potřebujete klientem SSH.  Pokud používáte sys
     Níže je CURL požadavek na přístupový token.  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true  
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true  
     ```
     Odpověď obsahuje přístupový token, je třeba získat přístup správce prostředků. 
     

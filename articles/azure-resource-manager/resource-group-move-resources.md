@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -121,7 +121,6 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Kognitivní služby
 * Content Moderator
 * Data Catalog
-* Data Factory
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -163,11 +162,14 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * AD Domain Services
 * Hybridní AD Health Service
 * Application Gateway
+* Azure Database for MySQL
 * BizTalk Services
+* Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
 * Container Service
-* ExpressRoute
+* Data Factory
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
+* ExpressRoute
 * Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
 * Spravované aplikace
 * Najdete v části spravované disky - [omezení virtuální počítače](#virtual-machines-limitations)

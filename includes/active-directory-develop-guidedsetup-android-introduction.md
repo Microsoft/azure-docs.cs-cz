@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>Volání Microsoft Graph API z aplikace pro Android
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Přihlášení uživatele a všechna rozhraní Microsoft Graph API z aplikace pro Android
 
 Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Graph API Microsoft nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace pro Android.
 
 Po dokončení průvodce, vaše aplikace bude moci přijímat přihlášení osobní účty (včetně outlook.com, live.com a dalších) a pracovním a školním účtům v jakémkoli společnosti nebo organizace, která využívá Azure Active Directory. Aplikace pak zavolá rozhraní API, který je chráněný službou Azure Active Directory koncový bod v2.  
 
-## <a name="how-this-sample-works"></a>Fungování této ukázky
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázková aplikace generované tímto průvodcem
 ![Fungování této ukázky](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 Ukázkové aplikace, které vytvoříte v této příručce je založena na scénář, kde aplikace pro Android se používá k dotazování webové rozhraní API, které přijímá tokeny z koncového bodu Azure Active Directory v2 (Microsoft Graph API, v tomto případě). V tomto scénáři aplikace přidá získal token na požadavky HTTP přes autorizační hlavičky. Knihovna ověřování společnosti Microsoft (MSAL) zpracovává získání tokenu a obnovení pro vás.

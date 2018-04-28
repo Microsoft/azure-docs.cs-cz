@@ -1,21 +1,21 @@
 ---
-title: "Spuštění paralelní úlohy – Azure Batch .NET"
-description: "Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET"
+title: Spuštění paralelní úlohy – Azure Batch .NET
+description: Kurz – Paralelní překódování multimediálních souborů pomocí aplikace ffmpeg ve službě Azure Batch s využitím klientské knihovny Batch .NET
 services: batch
 author: dlepow
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1100f8fddcd2f802b5f38e0b9789bc9ec359e03a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 57fc70d5b47f18affa90e1153884e8af23d937ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -38,7 +38,7 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](http://ffmpeg.org/) paralel
 
 * [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 nebo novější verze). 
 
-* Účet Batch a propojený účet úložiště pro obecné účely. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
+* Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
 * [64bitová verze aplikace ffmpeg 3.4 pro Windows](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Stáhněte soubor zip na místní počítač. Pro účely tohoto kurzu potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat. 
 
@@ -187,7 +187,7 @@ Na nahrávání souborů se podílejí dvě metody v souboru `Program.cs`:
 
 Podrobnosti o nahrávání souborů jako objektů blob do účtu úložiště pomocí .NET najdete v tématu [Začínáme s úložištěm objektů blob v Azure s použitím .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
-### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
 Na účtu Batch potom příklad pomocí volání `CreatePoolIfNotExist` vytvoří fond výpočetních uzlů. Tato definovaná metoda používá metodu [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady objekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) určuje odkaz [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) na image Windows Serveru publikovanou v Azure Marketplace. Batch podporuje širokou škálu imagí virtuálních počítačů v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 

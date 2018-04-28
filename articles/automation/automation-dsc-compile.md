@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 04a8a8970df26638f2c19171864a3c4095ac7769
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b085a75acc4d7744587f0c93482435b5b8c28fc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilování konfigurace v Azure Automation DSC.
 
@@ -294,7 +294,7 @@ Konfigurace podepsaný uzlu je ověřováno místně na spravovaný uzel DSC age
 > [!NOTE]
 > Soubor konfigurace uzlu musí být větší než 1 MB tak, aby ji bylo možné importovat do Azure Automation.
 
-Zjistěte, jak podepsat konfigurace uzlu v https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
+Zjistěte, jak podepsat konfigurace uzlu v https://msdn.microsoft.com/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Import konfigurace uzlu na portálu Azure
 

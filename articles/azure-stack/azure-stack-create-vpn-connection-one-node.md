@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure zásobníku Development Kit
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ Následující diagram znázorňuje, by měla vypadat konfigurace připojení po
 K dokončení konfigurace připojení, ověřte, zda máte následující položky, než začnete:
 
 * Dva servery a další nezbytné součásti, které splňují požadavky na hardware Azure zásobníku Development Kit, jak je popsáno v [rychlý start: vyhodnocení Development Kit zásobník Azure](azure-stack-deploy-overview.md). 
-* [Azure zásobníku Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) balíček pro nasazení.
+* [Azure zásobníku Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) balíček pro nasazení.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Nasazení prostředí Azure zásobníku Development Kit
 K dokončení konfigurace připojení, je nutné nasadit dvě prostředí Azure zásobníku Development Kit.
@@ -53,7 +53,7 @@ Následující tabulka shrnuje konfiguraci sítě pro obě prostředí Azure zá
 |---------|---------|---------|
 |Název virtuální sítě     |VNET-01|VNET-02 |
 |Adresní prostor virtuální sítě |10.0.10.0/23|10.0.20.0/23|
-|Název podsítě     |Subnet-01|Subnet-02|
+|Název podsítě     |Podsíť-01|Podsíť-02|
 |Rozsah adres podsítě|10.0.10.0/24 |10.0.20.0/24 |
 |Podsíť brány     |10.0.11.0/24|10.0.21.0/24|
 |Externí adresu BGPNAT     |         |         |

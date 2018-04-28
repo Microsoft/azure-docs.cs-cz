@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Konfigurace služby Salesforce pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a služby Salesforce."
+title: 'Kurz: Konfigurace služby Salesforce pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a služby Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b5a85dd7d4ac6bdabcbab49f654ebfe4adae73cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce pro zřizování automatické uživatelů
 
@@ -27,9 +27,13 @@ Cílem tohoto kurzu je zobrazit kroky potřebné k provedení v Salesforce a Azu
 
 Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
 
-*   Klienta služby Azure Active directory.
-*   Pro pracovní nebo Salesforce pro vzdělávací organizace musí mít platný klient pro služby Salesforce. Bezplatný zkušební účet můžete použít buď služby.
-*   Uživatelský účet v Salesforce s oprávněními správce týmu.
+*   Klienta služby Azure Active directory
+*   Klientovi Salesforce.com
+
+>[!IMPORTANT] 
+>Pokud používáte zkušební účet Salesforce.com, pak nebude možné nakonfigurovat zřizování automatizované uživatelů. Zkušebními účty nemají potřebná přístupová oprávnění rozhraní API povoleno, dokud se zakoupili. Obejít toto omezení můžete získat pomocí bezplatného [vývojářský účet](https://developer.salesforce.com/signup) k dokončení tohoto kurzu.
+
+Pokud používáte prostředí izolovaného prostoru služby Salesforce, přejděte na téma [izolovaného prostoru Salesforce integrace kurzu](https://go.microsoft.com/fwLink/?LinkID=521879).
 
 ## <a name="assigning-users-to-salesforce"></a>Přiřazování uživatelů do služby Salesforce
 
@@ -89,7 +93,7 @@ Cílem této části se popisují postup povolení zřizování uživatelů slu�
 
 10. Zkopírujte token, přejděte do okna vaší služby Azure AD a vložte ji do **tajný klíč tokenu** pole.
 
-11. **URL klienta** musí být zadán, pokud je instance služby Salesforce na Cloud vlády Salesforce. Jinak je volitelné. Zadejte URL klienta formátu https://your-instance.my.salesforce.com, nahraďte názvem vaší instance služby Salesforce vaše instance.
+11. **URL klienta** musí být zadán, pokud je instance služby Salesforce na Cloud vlády Salesforce. Jinak je volitelné. Zadejte adresu URL klienta pomocí formátu https://your-instance.my.salesforce.com, nahraďte názvem vaší instance služby Salesforce vaše instance.
 
 12. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Salesforce.
 

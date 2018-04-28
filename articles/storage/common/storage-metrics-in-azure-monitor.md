@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: e8e9f9c0cbe044b2aa459898f2d3900db10d200a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 5316013631670ab3612e441e64e2f330f01941b7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-storage-metrics-in-azure-monitor-preview"></a>Azure Storage metrics v nástroji Sledování Azure (preview)
 
@@ -28,23 +28,23 @@ Monitorování Azure poskytuje jednotné uživatelské rozhraní pro monitorová
 
 ## <a name="access-metrics"></a>Metriky přístup
 
-Azure monitorování poskytuje několik způsobů metriky přístup. Se dostanete z [portál Azure](https://portal.azure.com), rozhraní API Správce Azure monitorování (REST a rozhraní .net) a řešení pro analýzu například analýzy protokolů a centra událostí. Další informace najdete v tématu [Azure monitorování metriky](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Azure monitorování poskytuje několik způsobů metriky přístup. Se dostanete z [portál Azure](https://portal.azure.com), rozhraní API Správce Azure monitorování (REST a rozhraní .net) a řešení pro analýzu například operace Management Suite a Event Hubs. Další informace najdete v tématu [Azure monitorování metriky](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Ve výchozím nastavení jsou povolené metriky a dostanete nejnovější 30 dní od data. Pokud potřebujete zachování dat pro delší časové období, můžete archivovat metriky dat do účtu Azure Storage. Toto je nakonfigurováno v [nastavení pro diagnostiku](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) v Azure monitorování.
+Ve výchozím nastavení jsou povolené metriky a dostanete za posledních 30 dní data. Pokud potřebujete zachování dat pro delší časové období, můžete archivovat metriky dat do účtu Azure Storage. Toto je nakonfigurováno v [nastavení pro diagnostiku](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) v Azure monitorování.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Metriky přístup k portálu Azure
 
-Metriky můžete sledovat v čase na portálu Azure. Tady je příkladem zobrazujícím postup zobrazení **UsedCapacity** na úrovni účtu.
+Metriky můžete sledovat v čase na portálu Azure. Následující příklad ukazuje, jak zobrazit **UsedCapacity** na úrovni účtu.
 
 ![snímek obrazovky přístup k metriky na portálu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-Pro podporu dimenze metriky musí filtrovat s hodnotou požadované dimenze. Tady je příkladem zobrazujícím postup zobrazení **transakce** na úrovni účtu s **úspěch** typ odpovědi.
+Pro podporu dimenze metriky musí filtrovat s hodnotou požadované dimenze. Následující příklad ukazuje, jak zobrazit **transakce** na úrovni účtu s **úspěch** typ odpovědi.
 
 ![snímek obrazovky přístup k metriky s dimenzí na portálu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
 ### <a name="access-metrics-with-the-rest-api"></a>Metriky přístup pomocí rozhraní REST API
 
-Poskytuje Azure monitorování [rozhraní REST API](/rest/api/monitor/) číst metriky definice a hodnoty. V této části se dozvíte, jak číst metriky pro úložiště. ID prostředku se používá v všechna rozhraní API REST. Další informace, přečtěte si [seznámení s ID prostředku pro služby v úložišti](#understanding-resource-id-for-services-in-storage).
+Poskytuje Azure monitorování [rozhraní REST API](/rest/api/monitor/) číst metriky definice a hodnoty. V této části se dozvíte, jak číst metriky pro úložiště. ID prostředku se používá v všechna rozhraní API REST. Další informace, přečtěte si prosím [seznámení s ID prostředku pro služby v úložišti](#understanding-resource-id-for-services-in-storage).
 
 Následující příklad ukazuje, jak používat [ArmClient](https://github.com/projectkudu/ARMClient) na příkazovém řádku zjednodušit testování pomocí rozhraní REST API.
 
@@ -139,9 +139,151 @@ Následující odpověď obsahuje metriky hodnoty ve formátu JSON:
 
 ```
 
-## <a name="billing-for-metrics"></a>Fakturace metriky
+### <a name="access-metrics-with-the-net-sdk"></a>Metriky přístup pomocí .net SDK
 
-Použití metriky v Azure monitorování je aktuálně zdarma. Ale pokud používáte další řešení pro příjem dat metriky, může být fakturuje podle těchto řešení. Například fakturuje se podle Azure Storage archivujete metriky dat do účtu Azure Storage. Nebo se účtují podle analýzy protokolů, pokud stream metriky dat k analýze protokolů pro účely provádění pokročilých analýz.
+Poskytuje Azure monitorování [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) číst metriky definice a hodnoty. [Ukázkový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje způsob použití sady SDK s odlišnými parametry. Budete muset použít `0.18.0-preview` nebo novější verze pro úložiště metriky. ID prostředku se používá v rozhraní .net SDK. Další informace, přečtěte si prosím [seznámení s ID prostředku pro služby v úložišti](#understanding-resource-id-for-services-in-storage).
+
+Následující příklad ukazuje, jak používat Azure Monitor .net SDK číst metriky pro úložiště.
+
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>Účet úrovně metriky definice seznamu pomocí .net SDK
+
+Následující příklad ukazuje, jak seznam metriky definice na úrovni účtu:
+
+```csharp
+    public static async Task ListStorageMetricDefinition()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        Using metrics in Azure Monitor is currently free. However, if you use additional solutions ingesting metrics data, you may be billed by these solutions. For example, you are billed by Azure Storage if you archive metrics data to an Azure Storage account. Or you are billed by Operation Management Suite (OMS) if you stream metrics data to OMS for advanced analysis.
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+        IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
+
+        foreach (var metricDefinition in metricDefinitions)
+        {
+            //Enumrate metric definition:
+            //    Id
+            //    ResourceId
+            //    Name
+            //    Unit
+            //    MetricAvailabilities
+            //    PrimaryAggregationType
+            //    Dimensions
+            //    IsDimensionRequired
+        }
+    }
+
+```
+
+Pokud chcete zobrazit seznam definice metrik pro objekt blob, table, soubor nebo fronty, zadejte jiné ID prostředku pro každou službu s rozhraním API.
+
+#### <a name="read-metric-values-with-the-net-sdk"></a>Číst metriky hodnoty pomocí .net SDK
+
+Následující příklad ukazuje, jak číst `UsedCapacity` data na úrovni účtu:
+
+```csharp
+    public static async Task ReadStorageMetricValue()
+    {
+        // Resource ID for storage account
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+
+        Response = await readOnlyClient.Metrics.ListAsync(
+            resourceUri: resourceId,
+            timespan: timeSpan,
+            interval: System.TimeSpan.FromHours(1),
+            metric: "UsedCapacity",
+
+            aggregation: "Average",
+            resultType: ResultType.Data,
+            cancellationToken: CancellationToken.None);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
+
+V výše příklad, pokud chcete načíst hodnoty metriky pro objekt blob, table, soubor nebo fronty, je nutné zadat jiné ID prostředku pro každou službu s rozhraním API.
+
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>Načíst vícerozměrných metriky hodnoty pomocí .net SDK
+
+Multidimenzionální metrik budete muset definovat meta filtr dat, pokud si chcete přečíst metriky data na konkrétní hodnotu dimenze.
+
+Následující příklad ukazuje, jak číst data metriky na metrika podpora více dimenze:
+
+```csharp
+    public static async Task ReadStorageMetricValueTest()
+    {
+        // Resource ID for blob storage
+        var resourceId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default";
+        var subscriptionId = "{SubscriptionID}";
+        //How to identify Tenant ID, Application ID and Access Key: https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
+        var tenantId = "{TenantID}";
+        var applicationId = "{ApplicationID}";
+        var accessKey = "{AccessKey}";
+
+        MonitorClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
+
+        Microsoft.Azure.Management.Monitor.Models.Response Response;
+
+        string startDate = DateTime.Now.AddHours(-3).ToString("o");
+        string endDate = DateTime.Now.ToString("o");
+        string timeSpan = startDate + "/" + endDate;
+        // It's applicable to define meta data filter when a metric support dimension
+        // More conditions can be added with the 'or' and 'and' operators, example: BlobType eq 'BlockBlob' or BlobType eq 'PageBlob'
+        ODataQuery<MetadataValue> odataFilterMetrics = new ODataQuery<MetadataValue>(
+            string.Format("BlobType eq '{0}'", "BlockBlob"));
+
+        Response = readOnlyClient.Metrics.List(
+                        resourceUri: resourceId,
+                        timespan: timeSpan,
+                        interval: System.TimeSpan.FromHours(1),
+                        metric: "BlobCapacity",
+                        odataQuery: odataFilterMetrics,
+                        aggregation: "Average",
+                        resultType: ResultType.Data);
+
+        foreach (var metric in Response.Value)
+        {
+            //Enumrate metric value
+            //    Id
+            //    Name
+            //    Type
+            //    Unit
+            //    Timeseries
+            //        - Data
+            //        - Metadatavalues
+        }
+    }
+
+```
 
 ## <a name="understanding-resource-id-for-services-in-azure-storage"></a>Seznámení s ID prostředku pro služby ve službě Azure Storage
 
@@ -187,8 +329,7 @@ GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
 `
 
 ## <a name="capacity-metrics"></a>Metriky kapacity
-
-Hodnoty metrik kapacity jsou odesílány monitorování Azure každou hodinu. Hodnota se aktualizuje denně. Časový úsek definuje časový interval, pro které jsou uvedené hodnoty metrik. Podporované časovým intervalem pro všechny metriky kapacity je jedna hodina (PT1H).
+Hodnoty metrik kapacity jsou odesílány monitorování Azure každou hodinu. Hodnoty se aktualizuje denně. Časový úsek definuje časový interval, pro které jsou uvedené hodnoty metrik. Podporované časovým intervalem pro všechny metriky kapacity je jedna hodina (PT1H).
 
 Úložiště Azure poskytuje následující metriky kapacity v Azure monitorování.
 
@@ -196,7 +337,7 @@ Hodnoty metrik kapacity jsou odesílány monitorování Azure každou hodinu. Ho
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| UsedCapacity | Velikost úložiště používá účet úložiště. Pro účty úložiště standard storage je součet hodnot kapacity používá objekt blob, table, souboru a fronty. Pro prémiové účty úložiště a účty úložiště Blob je to stejné jako BlobCapacity. <br/><br/> Jednotka: bajtů <br/> Typ agregace: Průměrná <br/> Příklad hodnoty: 1024 |
+| UsedCapacity | Velikost úložiště používá účet úložiště. Pro účty úložiště standard storage je součet hodnot kapacity používá objekt blob, table, souboru a fronty. Pro prémiové účty úložiště a účty úložiště Blob je stejný jako BlobCapacity. <br/><br/> Jednotka: bajtů <br/> Typ agregace: Průměrná <br/> Příklad hodnoty: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
@@ -252,16 +393,16 @@ Transakce metriky odešlou ze služby Azure Storage do Azure monitorování kaž
 | Název dimenze | Popis |
 | ------------------- | ----------------- |
 | BlobType | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob** a **PageBlob**. Append – objekt Blob je součástí BlockBlob. |
-| ResponseType | Typ odpovědi transakce. Dostupné hodnoty: <br/><br/> <li>ServerOtherError: Popisuje ty, které jsou s výjimkou všechny ostatní chyby na straně serveru </li> <li> ServerBusyError: Ověřit požadavek, který vrátil kód stavu HTTP 503. (Není podporováno ještě) </li> <li> ServerTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Časový limit došlo k chybě serveru. </li> <li> ThrottlingError: Součet klientské a serverové omezení chyby (se odebere, jakmile jsou podporovány ServerBusyError a ClientThrottlingError) </li> <li> AuthorizationError: Ověřený požadavek, který se nezdařilo z důvodu neoprávněného přístupu dat nebo k chybě autorizace. </li> <li> NetworkError: Ověřeného požadavku, která se nezdařila z důvodu chyby sítě. Nejčastěji dochází, když klient předčasně ukončí připojení, vypršení časového limitu. </li> <li>  ClientThrottlingError: Chyba omezení straně klienta (nepodporované ještě) </li> <li> ClientTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Pokud časový limit sítě klienta nebo časový limit požadavku je nastavena na hodnotu nižší, než bylo očekáváno pomocí služby úložiště, je očekávané časový limit. Jinak jsou považovány za ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby klienta s výjimkou ty, které jsou popsány. </li> <li> Úspěch: Úspěšné žádosti|
+| Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty: <br/><br/> <li>ServerOtherError: Popisuje ty, které jsou s výjimkou všechny ostatní chyby na straně serveru </li> <li> ServerBusyError: Ověřit požadavek, který vrátil kód stavu HTTP 503. </li> <li> ServerTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Časový limit došlo k chybě serveru. </li> <li> AuthorizationError: Ověřený požadavek, který se nezdařilo z důvodu neoprávněného přístupu dat nebo k chybě autorizace. </li> <li> NetworkError: Ověřeného požadavku, která se nezdařila z důvodu chyby sítě. Nejčastěji dochází, když klient předčasně ukončí připojení, vypršení časového limitu. </li> <li>    ClientThrottlingError: Chyba omezení na straně klienta. </li> <li> ClientTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Pokud časový limit sítě klienta nebo časový limit požadavku je nastavena na hodnotu nižší, než bylo očekáváno pomocí služby úložiště, je očekávané časový limit. Jinak jsou považovány za ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby klienta s výjimkou ty, které jsou popsány. </li> <li> Úspěch: Úspěšné žádosti|
 | GeoType | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují primární i sekundární. Se vztahuje na přístup pro čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární klienta. |
-| ApiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>Getblob –</li> Všechny názvy operací, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| apiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>Getblob –</li> Všechny názvy operací, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
 
-Pro podporu metriky dimenze je třeba zadat hodnotu dimenze zobrazíte odpovídající hodnoty metrik. Například, pokud se podíváte na **transakce** hodnota pro úspěšné odpovědi, budete muset filtrovat **ResponseType** dimenze s **úspěch**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt Blob bloku, budete muset filtrovat **BlobType** dimenze s **BlockBlob**.
+Pro podpůrné dimenze metriky je třeba zadat hodnotu dimenze zobrazíte odpovídající hodnoty metrik. Například, pokud se podíváte na **transakce** hodnota pro úspěšné odpovědi, budete muset filtrovat **ResponseType** dimenze s **úspěch**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt Blob bloku, budete muset filtrovat **BlobType** dimenze s **BlockBlob**.
 
 ## <a name="service-continuity-of-legacy-metrics"></a>Abyste zabránili výpadkům provozu starší verze metrik
 
-Starší verze metriky jsou k dispozici souběžně s Azure monitorování spravované metriky. Podporu stejné uchová, dokud končí službu na starší verze metrik Azure Storage. Koncová plán jsme přečte po oficiálně vydáváme Azure monitorování spravované metriky.
+Starší verze metriky jsou k dispozici souběžně s Azure monitorování spravované metriky. Podporu stejné uchová, dokud končí službu na starší verze metrik Azure Storage.
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další postup
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)

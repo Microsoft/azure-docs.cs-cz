@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
-ms.openlocfilehash: f7b7cce84f8ff7be14120568e710432be639ce8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 052d81f8170273bb0e40572322349550e7219363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla
 
@@ -28,7 +28,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Svého klienta B2C je nutné připojit k účtu Azure. Můžete vytvořit bezplatný účet Azure [zde](https://azure.microsoft.com/en-us/).
+- Svého klienta B2C je nutné připojit k účtu Azure. Můžete vytvořit bezplatný účet Azure [zde](https://azure.microsoft.com/).
 - Je třeba [Microsoft Visual Studio](https://www.visualstudio.com/) nebo podobné program zobrazovat a upravovat ukázkový kód.
 
 ## <a name="create-an-azure-ad-b2c-directory"></a>Vytvoření adresáře Azure AD B2C
@@ -194,7 +194,7 @@ public partial class Startup
                 },
 
                 // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
-                Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
+                Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );
     }

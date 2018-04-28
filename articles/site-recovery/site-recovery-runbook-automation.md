@@ -1,11 +1,11 @@
 ---
-title: "Přidat Azure Automation runbook do plánů obnovení v Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak Azure Site Recovery můžete rozšířit plánů obnovení pomocí Azure Automation. Zjistěte, jak dokončit složité úlohy během obnovení do Azure."
+title: Přidat Azure Automation runbook do plánů obnovení v Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak Azure Site Recovery můžete rozšířit plánů obnovení pomocí Azure Automation. Zjistěte, jak dokončit složité úlohy během obnovení do Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: ecece14d-5f92-4596-bbaf-5204addb95c2
 ms.service: site-recovery
 ms.devlang: powershell
@@ -14,11 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/09/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 4802215f903eb196afbf05637ad5e38dbbbc09a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 942c7f13c5cb37017f8907c9f0c94493af53d008
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání sad Azure Automation runbook do plánů obnovení
 V tomto článku jsme popisují, jak Azure Site Recovery integruje se službou Azure Automation můžete rozšířit plánu obnovení. Plány obnovení můžete orchestraci obnovení virtuálních počítačů, které jsou chráněné službou Site Recovery. Plány obnovení fungovat pro replikaci do sekundární cloudu i pro replikaci do Azure. Plány obnovení také pomoci zajistit, aby obnovení **přesné**, **repeatable**, a **automatizované**. Pokud jste převzetí služeb při selhání virtuálních počítačů do Azure, integraci s Azure Automation rozšiřuje plánu obnovení. Můžete ho spuštění sady runbook, které nabízí výkonné automatizace úloh.
@@ -200,7 +200,7 @@ V následujícím příkladu jsme nové způsobem a vytvořte [komplexní promě
 1. V prostředí PowerShell Přihlaste se k předplatnému Azure:
 
     ```
-    login-azurermaccount
+    Connect-AzureRmAccount
     $sub = Get-AzureRmSubscription -Name <SubscriptionName>
     $sub | Select-AzureRmSubscription
     ```

@@ -3,7 +3,7 @@ title: Řídit směrování v Azure Virtual Network - PowerShell – Classic | M
 description: Zjistěte, jak řídit směrování v virtuální sítě pomocí prostředí PowerShell | Classic
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 870beabc3f238764e362dc99565f350a2329f4ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 930676a396ae316ec761ba5d03ad1a1d0fd7a425
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Řídit směrování a použití virtuálních zařízení (klasické) pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Azure CLI](tutorial-create-route-table-cli.md)
-> * [Šablona](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (Classic)](virtual-network-create-udr-classic-ps.md)
 > * [Rozhraní příkazového řádku (Classic)](virtual-network-create-udr-classic-cli.md)
 

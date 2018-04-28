@@ -1,25 +1,25 @@
 ---
-title: "Typy kvót v zásobníku Azure | Microsoft Docs"
-description: "Projděte si různé kvóty typy, které jsou dostupné pro služby a prostředky v Azure zásobníku."
+title: Typy kvót v zásobníku Azure | Microsoft Docs
+description: Projděte si různé kvóty typy, které jsou dostupné pro služby a prostředky v Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/23/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: xiaofmao
+ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót v Azure zásobníku
 
@@ -35,16 +35,18 @@ ms.lasthandoff: 02/21/2018
 | Nastaví maximální počet dostupnosti | 10 | Maximální počet sad dostupnosti, které lze vytvořit v tomto umístění. |
 | Nastaví maximální počet škálování virtuálních počítačů | 20 | Maximální počet sady škálování virtuálního počítače, které lze vytvořit v tomto umístění. |
 
-> [!NOTE]
-> Výpočetní kvóty nejsou vynucená v této verzi technical preview.
-> 
-> 
+
 
 ## <a name="storage-quota-types"></a>Typy kvótu úložiště
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
 | Maximální kapacita (GB) |500 |Celkový úložný kapacity, které mohou být spotřebovávána předplatné v tomto umístění. |
 | Celkový počet účtů úložiště |20 |Maximální počet účtů úložiště, které předplatné můžete vytvořit v tomto umístění. |
+
+> [!NOTE]  
+> Může trvat až dvě hodiny před vynucením nového kvótu úložiště. 
+> 
+> 
 
 ## <a name="network-quota-types"></a>Typy síťových kvóty
 | **Položka** | **Výchozí hodnota** | **Popis** |

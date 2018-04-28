@@ -1,11 +1,11 @@
 ---
-title: "Jak vyžadovat vícefaktorové ověřování | Microsoft Docs"
-description: "Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA) pro privilegované identity pomocí rozšíření Azure Active Directory Privileged Identity Management."
+title: Jak vyžadovat vícefaktorové ověřování | Microsoft Docs
+description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA) pro privilegované identity pomocí rozšíření Azure Active Directory Privileged Identity Management.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1e3dc4ad-3a6a-4a52-8417-3ca4f84ae05c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: faee62bdaca3f80fdd8f6be8aaf28c881314333a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 42552b4b8a7b2704a94786518f411f922dbd6a81
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Jak vyžadovat vícefaktorové ověřování v Azure AD Privileged Identity Management
 Doporučujeme vyžadovat vícefaktorové ověřování (MFA) pro všechny správce. Tím se snižuje riziko útoků z důvodu ohroženými heslo.
@@ -41,11 +41,11 @@ Kromě toho můžete změnit požadavek vícefaktorového ověřování pro urč
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Jak Azure AD PIM ověří vícefaktorového ověřování
 Existují dvě možnosti pro ověřování MFA, když uživatel aktivuje roli.
 
-Nejjednodušší možnost je moct spolehnout na Azure MFA pro uživatele, kteří jsou aktivací privilegované role. Uděláte to tak, nejdřív zkontrolujte, zda tito uživatelé mají licenci, pokud je to nutné a zaregistrovali pro Azure MFA. Další informace o tom, jak to udělat najdete v [Začínáme s Azure Multi-Factor Authentication v cloudu](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md). Je doporučeno, ale není vyžadována, že nakonfigurujete Azure AD k vynucení vícefaktorového ověřování pro tyto uživatele při přihlášení. Je to proto, že budou provedeny kontroly vícefaktorového ověřování pomocí Azure AD PIM sám sebe.
+Nejjednodušší možnost je moct spolehnout na Azure MFA pro uživatele, kteří jsou aktivací privilegované role. Uděláte to tak, nejdřív zkontrolujte, zda tito uživatelé mají licenci, pokud je to nutné a zaregistrovali pro Azure MFA. Další informace o tom, jak to udělat najdete v [Začínáme s Azure Multi-Factor Authentication v cloudu](authentication/howto-mfa-getstarted.md). Je doporučeno, ale není vyžadována, že nakonfigurujete Azure AD k vynucení vícefaktorového ověřování pro tyto uživatele při přihlášení. Je to proto, že budou provedeny kontroly vícefaktorového ověřování pomocí Azure AD PIM sám sebe.
 
-Případně pokud se uživatelé ověřují místně může mít zprostředkovatele identity je zodpovědná za vícefaktorového ověřování. Pokud jste nakonfigurovali federační služby AD do vyžadují ověřování pomocí čipové karty před přístupem k Azure AD, například [zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md) obsahuje pokyny pro konfiguraci služby AD FS k posílání deklarací identit do služby Azure AD. Když uživatel pokusí o aktivaci role, Azure AD PIM přijme, že MFA již byl ověřen pro uživatele, jakmile obdrží odpovídající deklarace identity.
+Případně pokud se uživatelé ověřují místně může mít zprostředkovatele identity je zodpovědná za vícefaktorového ověřování. Pokud jste nakonfigurovali federační služby AD do vyžadují ověřování pomocí čipové karty před přístupem k Azure AD, například [zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS](authentication/howto-mfa-adfs.md) obsahuje pokyny pro konfiguraci služby AD FS k posílání deklarací identit do služby Azure AD. Když uživatel pokusí o aktivaci role, Azure AD PIM přijme, že MFA již byl ověřen pro uživatele, jakmile obdrží odpovídající deklarace identity.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

@@ -3,7 +3,7 @@ title: Azure vazby fronty úložiště pro Azure Functions
 description: Pochopit, jak použít aktivační událost Azure Queue storage a výstupní vazby v Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
-ms.author: glenga
+ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: bdbbb80ff1b367a0da37094e787d03d23a7d4d59
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d140822b47325e8749d3b2788b47cf820f720a39
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure vazby fronty úložiště pro Azure Functions
 
@@ -220,9 +220,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno| musí být nastavena na `queueTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**Směr**| neuvedeno | V *function.json* pouze souboru. musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**name** | neuvedeno |Název proměnné, která představuje ve frontě v kód funkce.  | 
+|**type** | neuvedeno| musí být nastavena na `queueTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction**| neuvedeno | V *function.json* pouze souboru. musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** | neuvedeno |Název proměnné, která představuje ve frontě v kód funkce.  | 
 |**queueName** | **QueueName**| Název fronty pro cyklické dotazování. | 
 |**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
@@ -454,9 +454,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**Směr** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**name** | neuvedeno | Název proměnné, která představuje ve frontě v kód funkce. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
+|**type** | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje ve frontě v kód funkce. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
 |**queueName** |**QueueName** | Název fronty. | 
 |**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
@@ -483,7 +483,7 @@ V funkce jazyka JavaScript, použijte `context.bindings.<name>` pro přístup ke
 
 | Vazba |  Referenční informace |
 |---|---|
-| Fronta | [Kódy chyb fronty](https://docs.microsoft.com/en-us/rest/api/storageservices/queue-service-error-codes) |
+| Fronta | [Kódy chyb fronty](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | Objekt BLOB, tabulky, fronty | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Objekt BLOB, tabulky, fronty |  [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

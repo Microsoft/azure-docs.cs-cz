@@ -1,24 +1,23 @@
 ---
 title: Použití zobrazení T-SQL v Azure SQL Data Warehouse | Microsoft Docs
-description: ccccc
-services: Tips for using T-SQL views in Azure SQL Data Warehouse for developing solutions.
+description: Tipy pro používání zobrazení T-SQL v Azure SQL Data Warehouse na vývoj řešení.
+services: sql-data-warehouse
 author: ronortloff
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
+ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 249eaf07c5cd4ae918b6a95b1555f7198c7a23a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 28280a067e7008c20361e0a0041c81ba84e7f74c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Zobrazení v Azure SQL Data Warehouse
 Tipy pro používání zobrazení T-SQL v Azure SQL Data Warehouse na vývoj řešení. 
-
 
 ## <a name="why-use-views"></a>Proč používat zobrazení?
 Zobrazení lze mnoha různými způsoby ke zlepšení kvality vašeho řešení.  V tomto článku klade důraz několik příkladů, jak zlepšit komunikaci oddělení řešení pomocí zobrazení a také omezení, které je potřeba zvážit.

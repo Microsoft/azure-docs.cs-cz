@@ -1,11 +1,11 @@
 ---
-title: "Převést aplikací Azure Cloud Services na mikroslužeb | Microsoft Docs"
-description: "Tato příručka porovná bezstavové služby Cloud Services – webové a rolí pracovního procesu a Service Fabric můžete migrovat z cloudové služby do Service Fabric."
+title: Převést aplikací Azure Cloud Services na mikroslužeb | Microsoft Docs
+description: Tato příručka porovná bezstavové služby Cloud Services – webové a rolí pracovního procesu a Service Fabric můžete migrovat z cloudové služby do Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodu Web a rolí pracovního procesu na bezstavové služby Service Fabric
 Tento článek popisuje, jak migrovat Service Fabric bezstavové služby Cloud Services – webové a rolí pracovního procesu. Je to ta nejjednodušší cesta migrace z cloudové služby na Service Fabric pro aplikace, jejichž přehled architektury přechází zůstane zhruba stejná.
@@ -53,7 +53,7 @@ Rozhraní API nabídka podobně jako vstupní body služby Role pracovního proc
 | Zpracování |`Run()` |`RunAsync()` |
 | Spuštění virtuálního počítače |`OnStart()` |neuvedeno |
 | Zastavení virtuálního počítače |`OnStop()` |neuvedeno |
-| Otevřete naslouchací proces pro požadavky klientů |neuvedeno |<ul><li> `CreateServiceInstanceListener()`pro bezstavové</li><li>`CreateServiceReplicaListener()`pro stateful</li></ul> |
+| Otevřete naslouchací proces pro požadavky klientů |neuvedeno |<ul><li> `CreateServiceInstanceListener()` pro bezstavové</li><li>`CreateServiceReplicaListener()` pro stateful</li></ul> |
 
 ### <a name="worker-role"></a>Role pracovního procesu
 ```csharp
@@ -121,7 +121,7 @@ Cloudové služby prostředí rozhraní API poskytuje informace a funkce pro akt
 | --- | --- | --- |
 | Nastavení konfigurace a oznámení o změně |`RoleEnvironment` |`CodePackageActivationContext` |
 | Lokální úložiště |`RoleEnvironment` |`CodePackageActivationContext` |
-| Informace o koncovém |`RoleInstance` <ul><li>Aktuální instance:`RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`pro aktuální uzel adresu</li><li>`FabricClient`a `ServicePartitionResolver` pro koncový bod zjišťování služby</li> |
+| Informace o koncovém |`RoleInstance` <ul><li>Aktuální instance: `RoleEnvironment.CurrentRoleInstance`</li><li>Další role a instance: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` pro aktuální uzel adresu</li><li>`FabricClient` a `ServicePartitionResolver` pro koncový bod zjišťování služby</li> |
 | Emulace prostředí |`RoleEnvironment.IsEmulated` |neuvedeno |
 | Událost souběžných změny |`RoleEnvironment` |neuvedeno |
 
@@ -207,7 +207,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Spuštění úlohy
 Spuštění úlohy se akcí, které předtím, než aplikaci spustí. Úloha spuštění se obvykle používá ke spouštění skriptů instalace použitím zvýšených oprávnění. Cloudové služby a Service Fabric podporu spuštění úloh. Hlavní rozdíl je, že v cloudové služby, úloha spuštění je vázaný na virtuální počítač protože je součástí instanci role, zatímco v Service Fabric úloha spuštění je vázaný na služby, která není vázaný na žádné konkrétní virtuální počítač.
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | Umístění konfigurace |ServiceDefinition.csdef |
 | Oprávnění |"omezený" nebo "se zvýšenými oprávněními" |

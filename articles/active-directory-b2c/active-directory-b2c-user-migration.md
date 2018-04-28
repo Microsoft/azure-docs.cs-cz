@@ -11,17 +11,17 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
-ms.openlocfilehash: be80ea534be6de4fad2b072cf531669f45eda527
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47f813839a5495591356e5ecd461902fa8745c65
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
-Když migrujete zprostředkovatele identity do Azure Active Directory B2C (Azure AD B2C), možná budete také muset migrovat uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z kteréhokoli zprostředkovatele identity do Azure AD B2C. Článek by neměl být doporučený, ale místo toho popisuje dvě několik přístupů. Vývojář je zodpovědná za vhodnosti obou těchto přístupů.
+Když migrujete zprostředkovatele identity do Azure Active Directory B2C (Azure AD B2C), možná budete také muset migrovat uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z kteréhokoli zprostředkovatele identity do Azure AD B2C. Článek by neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnosti obou těchto přístupů.
 
 ## <a name="user-migration-flows"></a>Toky migrace uživatele
-S Azure AD B2C, můžete migrovat uživateli prostřednictvím [rozhraní Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet). Proces migrace uživatele, které patří do dvou toky:
+S Azure AD B2C, můžete migrovat uživateli prostřednictvím [Azure AD Graph API][B2C-GraphQuickStart]. Proces migrace uživatele, které patří do dvou toky:
 
 * **Před migrací**: Tento tok platí, pokud máte buď zrušte přístup k přihlašovacím údajům uživatele (uživatelské jméno a heslo) nebo přihlašovací údaje jsou šifrované, ale lze je dešifrovat. Proces před migrací zahrnuje čtení z původního zprostředkovatele identity uživatelů a vytváření nových účtů v adresáři Azure AD B2C.
 
@@ -32,15 +32,15 @@ S Azure AD B2C, můžete migrovat uživateli prostřednictvím [rozhraní Graph 
 V obou toky je nejprve spustit proces před migrací, čtení uživatelů z původního zprostředkovatele identity a vytvořit nové účty v adresáři Azure AD B2C. Pokud nemáte heslo, vytvoříte účet pomocí náhodně generovaný heslo. Pak požádejte uživatele, chcete-li změnit heslo, nebo při prvním přihlášení uživatele, Azure AD B2C požádá uživatele, aby ho resetovat.
 
 ## <a name="password-policy"></a>Zásady hesel
-Zásady hesel Azure AD B2C (pro lokální účty) je založena na zásady služby Azure AD. Azure AD B2C registrace nebo přihlášení a heslo resetovat zásady použití síly hesla "silné" a není vypršení platnosti hesla. Další informace najdete v tématu [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx).
+Zásady hesel Azure AD B2C (pro lokální účty) je založena na zásady služby Azure AD. Azure AD B2C registrace nebo přihlášení a heslo resetovat zásady použití síly hesla "silné" a není vypršení platnosti hesla. Další informace najdete v tématu [zásady hesel služby Azure AD][AD-PasswordPolicies].
 
-Pokud účty, které chcete migrovat pomocí slabší síly hesla, než [silné heslo sílu vynucováno Azure AD B2C](https://msdn.microsoft.com/library/azure/jj943764.aspx), můžete zakázat požadavek na silné heslo. Chcete-li změnit výchozí zásady hesel, nastavte `passwordPolicies` vlastnost `DisableStrongPassword`. Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem: 
+Pokud účty, které chcete migrovat pomocí slabší síly hesla, než [silné heslo sílu vynucováno Azure AD B2C][AD-PasswordPolicies], můžete zakázat požadavek na silné heslo. Chcete-li změnit výchozí zásady hesel, nastavte `passwordPolicies` vlastnost `DisableStrongPassword`. Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
-## <a name="step-1-use-graph-api-to-migrate-users"></a>Krok 1: Použití Graph API pro migraci uživatelů
+## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>Krok 1: Použití Azure AD Graph API pro migraci uživatelů
 Vytváření účtu uživatele Azure AD B2C prostřednictvím rozhraní Graph API (heslo nebo s náhodné heslo). Tato část popisuje proces vytváření uživatelských účtů v adresáři Azure AD B2C pomocí rozhraní Graph API.
 
 ### <a name="step-11-register-your-application-in-your-tenant"></a>Krok 1.1: Registrace vaší aplikace ve vašem klientovi
@@ -48,15 +48,15 @@ Ke komunikaci s rozhraní Graph API, nejprve musí mít účet služby s oprávn
 
 Nejprve zaregistrujte aplikaci migrace ve službě Azure AD. Pak vytvořte klíč pomocí aplikace (tajný klíč aplikace) a nastavte aplikaci s oprávnění k zápisu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal][Portal].
 
 2. Zvolte služby Azure AD **B2C** klienta tak, že vyberete svůj účet v horní pravé části okna.
 
 3. V levém podokně vyberte **Azure Active Directory** (ne Azure AD B2C). Pokud chcete ji najít, možná budete muset vybrat možnost **více služeb**.
 
-4. Vyberte **registrace aplikace**.
+4. Vyberte **Registrace aplikací**.
 
-5. Vyberte **nové registrace aplikace**.
+5. Vyberte **Registrace nové aplikace**.
 
     ![Registrace nové aplikace](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
 
@@ -97,10 +97,10 @@ Nyní máte aplikace s oprávněními k vytváření, čtení a aktualizaci uži
 > Musíte použít účet správce klienta B2C, který je *místní* klienta B2C. Syntaxe názvu účtu není *admin@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
-> Následující skript prostředí PowerShell vyžaduje [Azure Active Directory PowerShell verze 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+> Následující skript prostředí PowerShell vyžaduje [Azure Active Directory PowerShell verze 2][AD-Powershell].
 
 V tento skript prostředí PowerShell postupujte takto:
-1. Připojení k online službě. Chcete-li tak učinit, spusťte `Connect-AzureAD` rutiny v prostředí Windows PowerShell, příkazový řádek a zadejte svoje přihlašovací údaje. 
+1. Připojení k online službě. Chcete-li tak učinit, spusťte `Connect-AzureAD` rutiny v prostředí Windows PowerShell, příkazový řádek a zadejte svoje přihlašovací údaje.
 
 2. Použití **ID aplikace** přiřadit role správce účtu uživatele aplikace. Tyto role mají dobře známé identifikátory, tak, aby všechny musíte udělat zadejte vaše **ID aplikace** ve skriptu.
 
@@ -135,7 +135,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 Změna `$AppId` hodnotu s Azure AD **ID aplikace**.
 
 ## <a name="step-2-pre-migration-application-sample"></a>Krok 2: Ukázka aplikace před migrací
-[Stáhnout a spustit ukázkový kód](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). Můžete ho stáhnout jako soubor ZIP.
+[Stáhnout a spustit ukázkový kód][UserMigrationSample]. Můžete ho stáhnout jako soubor ZIP.
 
 ### <a name="step-21-edit-the-migration-data-file"></a>Krok 2.1: Upravit soubor dat migrace
 Ukázková aplikace používá soubor JSON, který obsahuje data fiktivní uživatele. Po vás ukázku úspěšně spustíte můžete změnit kód, který využívají data z vlastní databáze. Nebo můžete exportovat profil uživatele do souboru JSON a poté nastavte aplikaci používat tento soubor.
@@ -147,8 +147,8 @@ Chcete-li upravit soubor JSON, otevřete `AADB2C.UserMigration.sln` řešení sa
 Jak vidíte, soubor obsahuje seznam entitami uživatelů. Každá entita uživatel má následující vlastnosti:
 * e-mail
 * displayName
-* firstName
-* lastName
+* FirstName
+* Příjmení
 * heslo (nesmí být prázdné)
 
 > [!NOTE]
@@ -161,10 +161,9 @@ V části `AADB2C.UserMigration` projekt, otevřete *App.config* souboru. Násle
 <appSettings>
     <add key="b2c:Tenant" value="{Your Tenant Name}" />
     <add key="b2c:ClientId" value="{The ApplicationID from above}" />
-    <add key="b2c:ClientSecret" value="{The Key from above}" />
+    <add key="b2c:ClientSecret" value="{The Client Secret Key from above}" />
     <add key="MigrationFile" value="{Name of a JSON file containing the users' data; for example, UsersData.json}" />
     <add key="BlobStorageConnectionString" value="{Your connection Azure table string}" />
-    
 </appSettings>
 ```
 
@@ -174,7 +173,7 @@ V části `AADB2C.UserMigration` projekt, otevřete *App.config* souboru. Násle
 >
 
 ### <a name="step-23-run-the-pre-migration-process"></a>Krok 2.3: Spusťte proces před migrací
-Klikněte pravým tlačítkem myši `AADB2C.UserMigration` řešení a pak znovu sestavit ukázku. Pokud jste úspěšné, teď byste měli mít `UserMigration.exe` spustitelný soubor umístěný ve `AADB2C.UserMigration\bin\Debug`. Pokud chcete spustit proces migrace, použijte jednu z následujících parametrů příkazového řádku:
+Klikněte pravým tlačítkem myši `AADB2C.UserMigration` řešení a pak znovu sestavit ukázku. Pokud jste úspěšné, teď byste měli mít `UserMigration.exe` spustitelný soubor umístěný ve `AADB2C.UserMigration\bin\Debug\net461`. Pokud chcete spustit proces migrace, použijte jednu z následujících parametrů příkazového řádku:
 
 * K **migrovat uživatele s heslem**, použijte `UserMigration.exe 1` příkaz.
 
@@ -186,10 +185,10 @@ Klikněte pravým tlačítkem myši `AADB2C.UserMigration` řešení a pak znovu
 Ověření migrace, použijte jednu z následujících dvou metod:
 
 * Chcete-li vyhledat uživatele podle zobrazovaného názvu, použijte portál Azure:
-    
+
     a. Otevřete **Azure AD B2C**a potom vyberte **uživatelů a skupin**.
 
-    b. Do vyhledávacího pole zadejte zobrazovaný název uživatele a zobrazte profil uživatele. 
+    b. Do vyhledávacího pole zadejte zobrazovaný název uživatele a zobrazte profil uživatele.
 
 * Chcete-li načíst uživatele tak, že přihlášení e-mailovou adresu, použijte této ukázkové aplikaci:
 
@@ -198,20 +197,13 @@ Ověření migrace, použijte jednu z následujících dvou metod:
     ```Console
         UserMigration.exe 3 {email address}
     ```
-        
-    > [!TIP]
-    > Můžete také uložit výstup do souboru JSON pomocí následujícího příkazu:
-    >
-    >```Console
-    >    UserMigration.exe 3 {email address} >> UserProfile.json
-    >```
 
     > [!TIP]
-    > Můžete také načíst uživatele podle zobrazovaného názvu pomocí následujícího příkazu: `UserMigration.exe 4 <Display name>`.
+    > Můžete také načíst uživatele podle zobrazovaného názvu pomocí následujícího příkazu: `UserMigration.exe 4 "<Display name>"`.
 
-    b. Otevřete *UserProfile.json* souboru v editoru JSON. S kódem jazyka Visual Studio, můžete ho naformátovat dokumentu JSON výběrem Shift + Alt + F nebo výběrem **formátovat dokument** v místní nabídce.
+    b. Otevřete soubor UserProfile.json v editoru JSON zobrazíte informace o uživateli.
 
-    ![The UserProfile.json file](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
+    ![Soubor UserProfile.json](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
 ### <a name="step-25-optional-environment-cleanup"></a>Krok 2.5: Vyčištění prostředí (volitelné)
 Pokud chcete vyčistit až klientovi Azure AD a odebrat uživatele z adresáře služby Azure AD, spusťte `UserMigration.exe 5` příkaz.
@@ -232,8 +224,8 @@ Chcete-li získat odkaz na vaše zásady resetování hesel, postupujte takto:
 
 2. Vyberte svou aplikaci.
 
-    >[!NOTE]
-    >Spustit nyní vyžaduje alespoň jedné aplikace do být preregistered u klienta. Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článek nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku. 
+    > [!NOTE]
+    > Spustit nyní vyžaduje alespoň jedné aplikace do být preregistered u klienta. Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme] [ B2C-GetStarted] článek nebo [registrace aplikace] [ B2C-AppRegister] článku.
 
 3. Vyberte **spustit nyní**a potom zkontrolujte zásady.
 
@@ -244,15 +236,15 @@ Chcete-li získat odkaz na vaše zásady resetování hesel, postupujte takto:
 ## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Krok 4: (Volitelné) změnu vaše zásady ke kontrole a nastavení migrace stavu uživatele
 
 > [!NOTE]
-> Chcete-li zkontrolovat a změnit migrace stavu uživatele, musíte použít vlastní zásadu. Další informace najdete v tématu [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md).
+> Chcete-li zkontrolovat a změnit migrace stavu uživatele, musíte použít vlastní zásadu. Pokyny k instalaci z [začít pracovat s vlastními zásadami] [ B2C-GetStartedCustom] musí být vyplněna.
 >
 
-Když uživatelé se pokusí přihlásit se bez nejprve resetuje se heslo, vaše zásady by měl vrátit popisný chybová zpráva. Příklad: 
->*Vašeho hesla vypršela. Aby to udělal, vyberte odkaz resetovat heslo.* 
+Když uživatelé se pokusí přihlásit se bez nejprve resetuje se heslo, vaše zásady by měl vrátit popisný chybová zpráva. Příklad:
+>*Vašeho hesla vypršela. Aby to udělal, vyberte odkaz resetovat heslo.*
 
-Tento volitelný krok vyžaduje použití vlastních zásad Azure AD B2C, jak je popsáno v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
+Tento volitelný krok vyžaduje použití vlastních zásad Azure AD B2C, jak je popsáno v [Začínáme s vlastními zásadami] [ B2C-GetStartedCustom] článku.
 
-V této části změnit zásady tak, aby zkontrolovat stav migrace uživatelů na přihlášení. Pokud uživatel nebyl změnit heslo, vrátí chybovou zprávu protokolu HTTP 409 uživateli výzvu k výběru **zapomněli jste heslo?** odkaz. 
+V této části změnit zásady tak, aby zkontrolovat stav migrace uživatelů na přihlášení. Pokud uživatel nebyl změnit heslo, vrátí chybovou zprávu protokolu HTTP 409 uživateli výzvu k výběru **zapomněli jste heslo?** odkaz.
 
 Chcete-li sledovat Změna hesla, použijte Azure table. Když spustíte proces před migrací s parametrem příkazového řádku `2`, vytvořit entitu uživatele v Azure tabulce. Služby provede následující akce:
 
@@ -264,86 +256,68 @@ Chcete-li sledovat Změna hesla, použijte Azure table. Když spustíte proces p
 >Pro zjednodušení ukázce používáme Azure table. V některé z databází nebo jako vlastní vlastnost v účtu Azure AD B2C můžete uložit stav migrace.
 
 ### <a name="41-update-your-application-setting"></a>4.1: aktualizace nastavení vaší aplikace
-1. Chcete-li otestovat ukázkové rozhraní RESTful API, otevřete `AADB2C.UserMigration.sln` řešení sady Visual Studio v sadě Visual Studio. 
+1. Chcete-li otestovat ukázkové rozhraní RESTful API, otevřete `AADB2C.UserMigration.sln` v sadě Visual Studio.
 
-2. V `AADB2C.UserMigration.API` projekt, otevřete *App.config* souboru. Nastavení aplikace nahraďte vlastní hodnotu:
+2. V `AADB2C.UserMigration.API` projekt, otevřete *appSettings.JSON určený* souboru. Nahraďte konfigurovaných v nastavení [krok 2.2](#step-22-configure-the-application-settings):
 
-    ```XML
-    <appSettings>
-        <add key="BlobStorageConnectionString" value="{The Azure Blob storage connection string"} />
-    </appSettings>
+    ```json
+    {
+        "BlobStorageConnectionString": "{The Azure Blob storage connection string}",
+        ...
+    }
     ```
 
 ### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Krok 4.2: Nasazení webové aplikace do služby Azure App Service
-Publikování vaši rozhraní API služby Azure App Service. Další informace najdete v tématu [nasazení vaší aplikace do Azure App Service](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy).
+V Průzkumníku řešení klikněte pravým tlačítkem na `AADB2C.UserMigration.API`, vyberte "Publikování...". Postupujte podle pokynů k publikování do služby Azure App Service. Další informace najdete v tématu [nasazení vaší aplikace do Azure App Service][AppService-Deploy].
 
-### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Krok 4.3: Přidejte technické profilu a technické profil ověření do vaší zásady 
-1. V pracovním adresáři, otevřete *TrustFrameworkExtensions.xml* soubor rozšíření zásad. 
-
-2. Vyhledejte `<ClaimsProviders>` uzel a potom v uzlu, přidejte následující fragment kódu XML. Ujistěte se, chcete-li změnit hodnotu `ServiceUrl` tak, aby odkazoval na vaši adresu URL koncového bodu. 
+### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Krok 4.3: Přidejte technické profilu a technické profil ověření do vaší zásady
+1. V Průzkumníku řešení rozbalte "Řešení položky" a otevřete *TrustFrameworkExtensions.xml* soubor zásad.
+2. Změna `TenantId`, `PublicPolicyUri` a `<TenantId>` pole z `yourtenant.onmicrosoft.com` na název vašeho klienta.
+3. V části `<TechnicalProfile Id="login-NonInteractive">` elementu, nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` a `IdentityExperienceFrameworkAppId` ID aplikace nakonfigurované v [Začínáme s vlastními zásadami][B2C-GetStartedCustom].
+4. V části `<ClaimsProviders>` uzlu najít následující fragment kódu XML. Změňte hodnotu `ServiceUrl` tak, aby odkazoval na adresu URL aplikace služby Azure.
 
     ```XML
     <ClaimsProvider>
-        <DisplayName>REST APIs</DisplayName>
-        <TechnicalProfiles>
-    
+      <DisplayName>REST APIs</DisplayName>
+      <TechnicalProfiles>
+
         <TechnicalProfile Id="LocalAccountSignIn">
-            <DisplayName>Local account just in time migration</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
+          <DisplayName>Local account just in time migration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
             <Item Key="ServiceUrl">http://{your-app}.azurewebsites.net/api/PrePasswordReset/LoalAccountSignIn</Item>
             <Item Key="AuthenticationType">None</Item>
             <Item Key="SendClaimsIn">Body</Item>
-            </Metadata>
-            <InputClaims>
+          </Metadata>
+          <InputClaims>
             <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="email" />
-            </InputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+          </InputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-    
+
         <TechnicalProfile Id="LocalAccountPasswordReset">
-            <DisplayName>Local account just in time migration</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
+          <DisplayName>Local account just in time migration</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
             <Item Key="ServiceUrl">http://{your-app}.azurewebsites.net/api/PrePasswordReset/PasswordUpdated</Item>
             <Item Key="AuthenticationType">None</Item>
             <Item Key="SendClaimsIn">Body</Item>
-            </Metadata>
-            <InputClaims>
+          </Metadata>
+          <InputClaims>
             <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
-            </InputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+          </InputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-        </TechnicalProfiles>
-    </ClaimsProvider>
-    
-    <ClaimsProvider>
-        <DisplayName>Local Account</DisplayName>
-        <TechnicalProfiles>
-    
-        <!-- This technical profile uses a validation technical profile to authenticate the user. -->
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-            <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="LocalAccountSignIn" />
-            </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-    
-        <TechnicalProfile Id="LocalAccountWritePasswordUsingObjectId">
-            <ValidationTechnicalProfiles>
-            <ValidationTechnicalProfile ReferenceId="LocalAccountPasswordReset" />
-            </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-    
-        </TechnicalProfiles>
+      </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
 Předchozí technické profil definuje jeden vstupní deklaraci identity: `signInName` (Odeslat jako e-mailu). Na přihlášení deklarace identity posílá RESTful koncový bod.
 
-Po definování technické profil pro vaše rozhraní RESTful API, řekněte vaše zásady Azure AD B2C volat technické profilu. Fragment kódu XML přepsání `SelfAsserted-LocalAccountSignin-Email`, která je definována v základní zásady. Také přidá fragment kódu XML `ValidationTechnicalProfile`, s ReferenceId odkazující na váš profil technické `LocalAccountUserMigration`. 
+Po definování technické profil pro vaše rozhraní RESTful API, řekněte vaše zásady Azure AD B2C volat technické profilu. Fragment kódu XML přepsání `SelfAsserted-LocalAccountSignin-Email`, která je definována v základní zásady. Také přidá fragment kódu XML `ValidationTechnicalProfile`, s ReferenceId odkazující na váš profil technické `LocalAccountUserMigration`.
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>Krok 4.4: Nahrajte zásady klienta
-1. V [portál Azure](https://portal.azure.com), přepnout [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a potom vyberte **Azure AD B2C**.
+1. V [portál Azure][Portal], přepnout [kontextu klienta služby Azure AD B2C][B2C-NavContext]a potom vyberte **Azure AD B2C**.
 
 2. Vyberte **Identity rozhraní Framework**.
 
@@ -367,9 +341,9 @@ Po definování technické profil pro vaše rozhraní RESTful API, řekněte va�
 ### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Krok 4.6: (Volitelné) řešení REST API
 Můžete zobrazit a sledování informací o protokolování v skoro v reálném čase.
 
-1. V nabídce nastavení RESTful aplikace v části **monitorování**, vyberte **diagnostické protokoly**. 
+1. V nabídce nastavení RESTful aplikace v části **monitorování**, vyberte **diagnostické protokoly**.
 
-2. Nastavit **protokolování aplikací (systém souborů)** k **na**. 
+2. Nastavit **protokolování aplikací (systém souborů)** k **na**.
 
 3. Nastavte **úroveň** k **podrobné**.
 
@@ -381,11 +355,23 @@ Můžete zobrazit a sledování informací o protokolování v skoro v reálném
 
 6. Zkontrolujte výstup rozhraní RESTful API.
 
-Další informace najdete v tématu [streamování protokoly a konzole](https://docs.microsoft.com/azure/app-service-web/web-sites-streaming-logs-and-console).
+Další informace najdete v tématu [streamování protokoly a konzole][AppService-Log].
 
 > [!IMPORTANT]
 > Diagnostické protokoly můžete použijte pouze během vývoje a testování. Výstup rozhraní RESTful API může obsahovat důvěrné informace, které by neměly být vystaveny v produkčním prostředí.
 >
 
 ## <a name="optional-download-the-complete-policy-files"></a>(Volitelné) Stáhnout soubory dokončení zásad
-Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návod, doporučujeme vám vytvořit váš scénář pomocí vlastních zásad pro soubory. Pro vaši informaci uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration). 
+Po dokončení [začít pracovat s vlastními zásadami] [ B2C-GetStartedCustom] návod, doporučujeme vám vytvořit váš scénář pomocí vlastních zásad pro soubory. Pro vaši informaci uvádíme [ukázkové soubory zásad][UserMigrationSample].
+
+[AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
+[AD-Powershell]: https://docs.microsoft.com/azure/active-directory/install-adv2
+[AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
+[AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
+[B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration
+[B2C-GetStarted]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started
+[B2C-GetStartedCustom]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom
+[B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
+[B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
+[Portal]: https://portal.azure.com/
+[UserMigrationSample]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration

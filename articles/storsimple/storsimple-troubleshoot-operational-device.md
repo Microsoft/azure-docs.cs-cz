@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s nasazené zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak diagnostikovat a opravit chyby, ke kterým došlo v zařízení StorSimple, který je aktuálně nasazená a funkční."
+title: Řešení potíží s nasazené zařízení StorSimple | Microsoft Docs
+description: Popisuje, jak diagnostikovat a opravit chyby, ke kterým došlo v zařízení StorSimple, který je aktuálně nasazená a funkční.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 4639e749cfaa6b38fa6b91ddebfc17924c1d5bd6
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Řešení potíží provozní zařízení StorSimple
 > [!NOTE]
-> Portálu classic pro StorSimple je zastaralý. Váš správce zařízení StorSimple se automaticky přesune na nový portál Azure podle plánu vyřazení. Obdržíte e-mailu a portálu oznámení pro přesunutí. Tento dokument také vyřadí brzy k dispozici. Dotazy týkající se přechodu, najdete v části [– nejčastější dotazy: přesunout do portálu Azure](storsimple-8000-move-azure-portal-faq.md).
+> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Přehled
 Tento článek obsahuje pokyny k odstraňování problémů užitečná pro řešení problémů s konfigurací, můžete setkat po zařízení StorSimple je nasazen a provozní. Popisuje běžné problémy, možné příčiny a doporučené kroky, aby pomáhal vyřešit problémy, které se můžete setkat při spuštění Microsoft Azure StorSimple. Tyto informace platí pro místní fyzického zařízení StorSimple a virtuální zařízení StorSimple.
@@ -62,8 +62,8 @@ Chyby jsou uvedeny v pořadí.
 | 390061 |Systém je zaneprázdněn nebo není k dispozici. |Počkejte několik minut a potom akci opakujte. Pokud potíže potrvají, požádejte prosím podporu Microsoftu pro další kroky. |
 | 390143 |Došlo k chybě s kódem chyby 390143. (Neznámá chyba.) |Pokud potíže potrvají, kontaktujte prosím Microsoft Support pro další kroky. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud jste schopni vyřešit problém, [kontaktovat Microsoft Support](storsimple-contact-microsoft-support.md) o pomoc. 
 
-[1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

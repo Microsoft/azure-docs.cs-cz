@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory B2C: Přidejte zprostředkovatele služby Azure AD pomocí vlastních zásad | Microsoft Docs"
-description: "Další informace o vlastních zásad Azure Active Directory B2C"
+title: 'Azure Active Directory B2C: Přidejte zprostředkovatele služby Azure AD pomocí vlastních zásad | Microsoft Docs'
+description: Další informace o vlastních zásad Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Přihlaste se pomocí účtů služby Azure AD
 
@@ -46,12 +46,12 @@ Chcete-li povolit přihlášení pro uživatele z konkrétní organizace Azure A
 > Používáme "contoso.com" pro organizační klienta Azure AD a "fabrikamb2c.onmicrosoft.com" jako klienta Azure AD B2C v následujících pokynech.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na horním panelu vyberte svůj účet. Z **Directory** seznamu, vyberte organizační klienta Azure AD, ve které chcete zaregistrovat aplikaci (contoso.com).
-1. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
-1. Vyberte **nové registrace aplikace**.
-1. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
-1. Vyberte **webovou aplikaci nebo API** pro typ aplikace.
-1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+2. Na horním panelu vyberte svůj účet. Z **Directory** seznamu, vyberte organizační klienta Azure AD, ve které chcete zaregistrovat aplikaci (contoso.com).
+3. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
+4. Vyberte **Registrace nové aplikace**.
+5. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
+6. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
+7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
     >Hodnota pro "yourtenant" musí být psaný malými písmeny v **přihlašovací adresa URL**.
@@ -60,10 +60,10 @@ Chcete-li povolit přihlášení pro uživatele z konkrétní organizace Azure A
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Uložit ID aplikace.
-1. Vyberte nově vytvořenou aplikaci.
-1. V části **nastavení** vyberte **klíče**.
-1. Vytvořte nový klíč a uložte jej. Budete ho používat v krocích v další části.
+8. Uložit ID aplikace.
+9. Vyberte nově vytvořenou aplikaci.
+10. V části **nastavení** vyberte **klíče**.
+11. Zadejte popis klíče, vyberte dobu trvání a poté klikněte na tlačítko **Uložit**. Hodnota klíče se zobrazí. Zkopírujte jej, protože ho použijete v krocích v další části.
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Přidat klíč Azure AD do Azure AD B2C
 
@@ -219,6 +219,6 @@ Teď je potřeba aktualizovat soubor předávající stranu, který zahájí ces
 
 Testování vlastních zásad, které jste právě nahráli otevřením její okno a kliknutím na **spustit nyní**. K diagnostikování problémů, přečtěte si informace o [řešení potíží s](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Poskytnutí zpětné vazby k [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

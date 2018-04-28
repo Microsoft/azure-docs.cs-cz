@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6a340cb3d73e0aaa86a5b7beb555133daed39d8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Škálování Azure Analysis Services
 
@@ -22,7 +22,7 @@ Se Škálováním na více systémů, můžete dotazy klienta rozdělena mezi v�
 
 V typické serveru nasazení jednoho serveru slouží jako zpracování server i server dotazu. Počet dotazů klienta na modely na vašem serveru překračuje dotaz zpracování jednotky (QPU) pro váš server plán nebo zpracování modelu nastane ve stejnou dobu jako dotaz vysoké zatížení, může snížit výkon. 
 
-Se Škálováním na více systémů můžete vytvořit fond dotazu s replikami až sedm další dotaz (osm celkem, včetně serveru). Je možné škálovat počet replik dotazu splňovat požadavky na QPU v kritické dobu a kdykoli můžete oddělit zpracování server z fondu dotazu. 
+Se Škálováním na více systémů můžete vytvořit fond dotazu s replikami až sedm další dotaz (osm celkem, včetně serveru). Je možné škálovat počet replik dotazu splňovat požadavky na QPU v kritické dobu a kdykoli můžete oddělit zpracování server z fondu dotazu. Všechny repliky dotazu se vytvoří ve stejné oblasti jako váš server.
 
 Bez ohledu na počet replik dotazu, který máte ve fondu dotazu nejsou úloh zpracování rozdělené mezi repliky dotazu. Jeden server slouží jako server zpracování. Dotaz repliky sloužit pouze na dotazy na modely synchronizovat mezi každou repliku ve fondu dotazu. 
 
@@ -73,11 +73,17 @@ Použití **synchronizace** operaci.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-Aby bylo možné spustit synchronizaci z prostředí PowerShell, [aktualizovat na nejnovější](https://github.com/Azure/azure-powershell/releases) modulu AzureRM 5.01 nebo vyšší. Použití [synchronizace AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Před použitím prostředí PowerShell, [instalovat nebo aktualizovat modul nejnovější AzureRM](https://github.com/Azure/azure-powershell/releases). 
+
+Pokud chcete nastavit počet replik dotaz, použít [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Zadejte nepovinný `-ReadonlyReplicaCount` parametr.
+
+Spustit synchronizaci, použijte [synchronizace AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+
+
 
 ## <a name="connections"></a>Připojení
 
-Na stránce Přehled váš server jsou dva názvy serverů. Pokud jste zatím nenakonfigurovali Škálováním na více systémů pro server, oba názvy serverů fungovat stejně. Jakmile nakonfigurujete Škálováním na více systémů pro server, musíte zadat název serveru vhodné v závislosti na typu připojení. 
+Na stránce Přehled váš server jsou dva názvy serverů. Pokud jste zatím nenakonfigurovali Škálováním na více systémů pro server, oba názvy serverů fungovat stejně. Jakmile nakonfigurujete Škálováním na více systémů pro server, je třeba zadat název příslušného serveru v závislosti na typu připojení. 
 
 Pro připojení klienta koncového uživatele, jako jsou Power BI Desktop, Excel a vlastních aplikací, použijte **název serveru**. 
 

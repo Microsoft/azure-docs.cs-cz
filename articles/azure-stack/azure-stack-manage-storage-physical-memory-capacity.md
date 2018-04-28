@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/03/2018
+ms.date: 04/17/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: 34b03cf1fda29706936968ab93cb35a6a2510c65
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: af253525ce5a77ece72e810642abcaf7931e39d8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Spravovat kapacita fyzické paměti pro Azure zásobníku
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 Pokud chcete zvýšit kapacitu celkově dostupné paměti zásobník Azure, můžete přidat další paměť. V zásobníku Azure fyzický server se také označuje jako *uzlu jednotky škálování*. Všechny uzly jednotek škálování, které jsou členy jednotky škálování jednoho musí mít stejné množství paměti.
 
 > [!note]  
-> Než budete pokračovat, vyhledejte v dokumentaci výrobce hardwaru pro případ, upgraduje paměti, že výrobce podporuje fyzické paměti upgradu. Smlouva OEM dodavatele hardwaru podpory může vyžadovat, že dodavatele provádět umístění rack fyzického serveru a aktualizaci firmwaru zařízení.
+> Než budete pokračovat, vyhledejte v dokumentaci výrobce hardwaru a zjistěte, zda dodavatele podporuje upgrade fyzické paměti. Smlouva OEM dodavatele hardwaru podpory může vyžadovat provádějí umístění rack fyzického serveru a aktualizaci firmwaru zařízení.
 
 Následující vývojový diagram znázorňuje obecný postup pro přidání paměti do každého uzlu jednotky škálování.
 

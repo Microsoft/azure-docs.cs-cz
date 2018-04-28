@@ -1,9 +1,9 @@
 ---
-title: "Používat k odesílání, úlohy Spark clusteru v Azure HDInsight Livy Spark | Microsoft Docs"
-description: "Naučte se používat k odesílání úloh Spark vzdáleně do clusteru Azure HDInsight Apache Spark REST API."
+title: Používat k odesílání, úlohy Spark clusteru v Azure HDInsight Livy Spark | Microsoft Docs
+description: Naučte se používat k odesílání úloh Spark vzdáleně do clusteru Azure HDInsight Apache Spark REST API.
 keywords: Apache spark rest api, livy spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -11,21 +11,19 @@ tags: azure-portal
 ms.assetid: 2817b779-1594-486b-8759-489379ca907d
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 05a50488793482ef761f34f4729c52181bc3eaf4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 29cf245a03b38be4f5396a3c83c966a27cf038f3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Použití Apache Spark REST API vzdálené úlohy do clusteru HDInsight Spark
 
-Další informace o použití Livy, Apache Spark REST API, které se používá k odesílání vzdálené úloh do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/).
+Další informace o použití Livy, Apache Spark REST API, které se používá k odesílání vzdálené úloh do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
 
 Livy můžete použít ke spuštění interaktivních Spark nutný nebo odesílat dávkové úlohy můžou běžet na Spark. V tomto článku bude zmíněn pomocí Livy odesílat dávkové úlohy. Fragmenty kódu v tomto článku pomocí cURL provádět volání rozhraní REST API ke koncovému bodu Livy Spark.
 

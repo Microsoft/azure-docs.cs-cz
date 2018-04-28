@@ -1,11 +1,11 @@
 ---
-title: "Funkce zabezpečení k ochraně hybridní zálohování, které používají Azure Backup | Microsoft Docs"
-description: "Další informace o použití funkce zabezpečení v Azure Backup zabezpečit zálohy"
+title: Funkce zabezpečení k ochraně hybridní zálohování, které používají Azure Backup | Microsoft Docs
+description: Další informace o použití funkce zabezpečení v Azure Backup zabezpečit zálohy
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 47bc8423-0a08-4191-826d-3f52de0b4cb8
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: pajosh
-ms.openlocfilehash: f856303d4abf05178eb11a242b87390ff1484e1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2529d19dbf0ca0fb59f5abe48be3e8b14e862e29
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení k ochraně hybridní zálohování, které používají Azure Backup
 Pochybnostmi problémy se zabezpečením, jako je malware, Ransomware, který a narušení, se zvyšuje. Tyto problémy se zabezpečením může být drahé z hlediska peníze a data. Ochrana před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek obsahuje informace o povolení a používání těchto funkcí pomocí agenta služeb zotavení Azure a serveru Azure Backup. Tyto funkce patří:
@@ -55,7 +55,7 @@ Při vytváření trezoru služeb zotavení, můžete použít všechny funkce z
     ![Vlastnosti trezoru služeb zotavení – snímek obrazovky](./media/backup-azure-security-feature/security-settings-update.png)
 
     Aktualizace odkaz otevře **nastavení zabezpečení** okno, které poskytuje přehled funkcí a můžete je povolit.
-5. Z rozevíracího seznamu **nakonfigurovali ověřování Azure Multi-Factor Authentication?**, vyberte hodnotu pro potvrzení, pokud jste povolili [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md). Pokud je povolena, zobrazí se výzva k ověření z jiného zařízení (například mobilní telefon), při přihlášení k portálu Azure.
+5. Z rozevíracího seznamu **nakonfigurovali ověřování Azure Multi-Factor Authentication?**, vyberte hodnotu pro potvrzení, pokud jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Pokud je povolena, zobrazí se výzva k ověření z jiného zařízení (například mobilní telefon), při přihlášení k portálu Azure.
 
    Když provedete kritické operace zálohování, je nutné zadat zabezpečení PIN kódu, dostupné na portálu Azure. Povolení ověřování Azure Multi-Factor Authentication přidává další vrstvu zabezpečení. Jenom oprávnění uživatelé s platné přihlašovací údaje Azure a ověřit z druhé zařízení, můžete přístup k portálu Azure.
 6. Chcete-li uložit nastavení zabezpečení, vyberte **povolit** a klikněte na tlačítko **Uložit**. Můžete vybrat **povolit** pouze po výběru hodnoty z **nakonfigurovali ověřování Azure Multi-Factor Authentication?** seznamu v předchozím kroku.
@@ -106,7 +106,7 @@ Obvykle když kritické operace, správce předplatného je odeslat e-mail s ozn
 
 Funkce zabezpečení, které jsou uvedené v tomto článku poskytují mechanismy obrana proti cílenými útoky. Je důležité Pokud se stane útoku, tyto funkce získáte možnost obnovit data.
 
-## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
+## <a name="troubleshooting-errors"></a>Řešení chyb
 | Operace | Detaily chyby | Řešení |
 | --- | --- | --- |
 | Změny zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste operaci po nějaké době zopakovat. Pokud se problém opakuje, obraťte se prosím na podporu Microsoftu. |**Příčina:**<br/>Tato chyba pochází, když je nastavení zabezpečení povoleno, pokusíte snížit rozsah uchování nižší než minimální výše uvedené hodnoty a na nepodporovanou verzi (podporované verze jsou určené v první poznamenejte si tento článek). <br/>**Doporučená akce:**<br/> V takovém případě by měl nastavit dobu uchování výše zadaná minimální doba uchovávání období (sedm dní denně, čtyři týdny týdně, tři týdny, měsíčně nebo jeden rok pro roční) Chcete-li pokračovat pomocí zásad související aktualizace. Volitelně žádoucí bude aktualizovat agenta zálohování, Azure Backup Server nebo UR aplikace DPM, můžete využít všech aktualizací zabezpečení. |

@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/23/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1ea65c9c1f69c8eec77eb498a5963b0d77ce57f1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verze rozhraní API v Azure zásobníku
 
@@ -38,19 +36,32 @@ Toto téma vám pomůže:
 ## <a name="summary-of-api-profiles"></a>Souhrn rozhraní API profilů
 
 - Profily rozhraní API se používají k vyjádření sadu zprostředkovatelé prostředků Azure a jejich verze rozhraní API.
-- Profily rozhraní API byly vytvořeny pro vývojáře k vytvoření šablony napříč několika Cloudech Azure. Jsou navrženy splňují vaše potřebu rozhraní kompatibilní a stabilní.
+- Profily rozhraní API byly vytvořeny pro vývojáře k vytvoření šablony napříč několika Cloudech Azure. Jsou navrženy splňují vaše potřeby pro rozhraní kompatibilní a stabilní.
 - Profily jsou vydávány čtyřikrát za rok.
 - Jsou tři profil zásady vytváření názvů:
-    - **latest**  
+    - **Nejnovější**  
         Nejnovější verze rozhraní API vydané v Azure.
     - **yyyy-mm-dd-hybrid**  
-    Vydání na pololetní cadence, tato verze zaměřuje na konzistenci a stabilitu napříč více cloudy.
+    Vydání na pololetní cadence, tato verze zaměřuje na konzistenci a stabilitu napříč více cloudy. Tento profil cílí optimální kompatibility zásobník Azure. 
     - **yyyy-mm-dd-profile**  
     Je umístěna mezi optimální stability a nejnovější funkce.
 
+### <a name="api-profiles-and-azure-stack-compatibility"></a>Profily rozhraní API a kompatibility Azure zásobníku
+
+Nejnovější rozhraní API profily nejsou kompatibilní s Azure zásobníku. Zásady vytváření názvů vám pomůže identifikovat profily pro použití v řešení Azure zásobníku.
+
+**Nejnovější**  
+Tento profil je aktuální verze rozhraní API v globální Azure, která nebude fungovat v Azure zásobníku nalezen. Tento profil má největší počet nejnovější změny. Profil převádí z produkce stability a kompatibilitu s ostatních cloudů. Pokud se pokoušíte použít aktuální verze rozhraní API, je to profilu, který byste měli používat.
+
+**Rrrr mm-dd hybridní**  
+Tento profil je vydala března a září každý rok. Tento profil má optimální stability a kompatibilitu s různými cloudy. Tento profil je určena pro cílové jak globální Azure a Azure zásobníku. Verze rozhraní API služby Azure, uvedené v tomto profilu budou stejné jako ty, které jsou uvedeny v zásobníku Azure. Můžete vyvíjet kódu pro hybridní cloudové řešení pro tento profil.
+
+**yyyy-mm-dd-profile**  
+Tento profil je vydané pro globální Azure v červnu a dne. Tento profil nebude fungovat s Azure zásobníku; bude mnoho nejnovější změny. Při jeho umístěné za optimální stability a nejnovější funkce, je rozdíl mezi nejnovější a tento profil, že nejnovější bude vždy sestávat ze nejnovější verze rozhraní API bez ohledu na to, kdy byl vydán rozhraní API. Pokud je nová verze rozhraní API se vytvoří pro rozhraní API výpočetní zítra, této verze rozhraní API budou zobrazeny v nejnovější profilu, ale není v profilu rrrr mm-dd profil jako tento profil je vytvořeno předem. Vysvětluje aktuální verze vydané před června nebo prosinec.
+
 ## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager API profily
 
-Azure zásobníku nepoužívá nejnovější verzi z verzí rozhraní API v globální Azure nalezen. Při vytváření vlastní řešení, budete muset najít verze rozhraní API pro každý poskytovatel prostředků v Azure, který je kompatibilní s Azure zásobníku.
+Azure zásobníku nepoužívá nejnovější verzi rozhraní API verze najít v globální Azure. Při vytváření vlastní řešení, budete muset najít verze rozhraní API pro každý poskytovatel prostředků v Azure, který je kompatibilní s Azure zásobníku.
 
 Spíše než výzkum každý poskytovatel prostředků a konkrétní verzi podporovanou serverem zásobník Azure, můžete použít profil aplikace API. Profil určuje sadu zprostředkovatelé prostředků a verze rozhraní API. Sady SDK nebo nástroj vytvořené pomocí sady SDK, se vrátí k cílové verze rozhraní api-zadaná v profilu. Pomocí profilů rozhraní API můžete zadat verze profilu, který se vztahuje na šablonu celý a v době běhu Azure Resource Manager vybere správnou verzi prostředku.
 
@@ -67,14 +78,13 @@ Jako vývojář můžete se zaměřit na zápis vašeho řešení. Místo analý
 Můžete najít ukázky kódu můžete integrovat řešení preferovaný jazyk zásobníkem Azure s použitím profilů. V současné době najdete pokyny a ukázky pro následující jazyky:
 
 - **PowerShell**  
-Můžete použít **AzureRM.Bootstrapper** modulu, které jsou k dispozici prostřednictvím Galerie prostředí PowerShell získat rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API.  
-Informace najdete v tématu [profily verze rozhraní API pomocí prostředí PowerShell pro](azure-stack-version-profiles-powershell.md).
+Můžete použít **AzureRM.Bootstrapper** modulu, které jsou k dispozici prostřednictvím Galerie prostředí PowerShell získat rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API. Informace najdete v tématu [profily verze rozhraní API pomocí prostředí PowerShell pro](azure-stack-version-profiles-powershell.md).
 - **Azure CLI 2.0**  
-Můžete aktualizovat konfiguraci prostředí použít profil pro konkrétní verzi rozhraní API zásobník Azure.  
-Informace v tématu [profily verze pomocí rozhraní API pro Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+Můžete aktualizovat konfiguraci prostředí použít profil pro konkrétní verzi rozhraní API zásobník Azure. Informace v tématu [profily verze pomocí rozhraní API pro Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
-V sadě SDK přejděte profil je kombinaci různých typů prostředků s různými verzemi z jiné služby. profily jsou k dispozici v části profily nebo cestu s jejich verze v **rrrr-MM-DD** formátu.  
-Informace v tématu [profily verze pomocí rozhraní API pro přejděte](azure-stack-version-profiles-go.md).
+V sadě SDK přejděte profil je kombinaci různých typů prostředků s různými verzemi z jiné služby. profily jsou k dispozici v části profily nebo cestu s jejich verze v **rrrr-MM-DD** formátu. Informace najdete v tématu [profily verze pomocí rozhraní API pro přejděte](azure-stack-version-profiles-go.md).
+- **Ruby**  
+Ruby SDK pro Azure Resource Manager zásobníku poskytuje nástroje, které vám pomohou vytvářet a spravovat infrastrukturu. Zprostředkovatelé prostředků v sadě SDK zahrnují výpočty, virtuální sítě a úložiště s Ruby jazyk. Informace najdete v tématu [profily verze rozhraní API pro použití s Ruby](azure-stack-version-profiles-ruby.md)
 
 ## <a name="next-steps"></a>Další postup
 * [Instalace PowerShellu pro Azure Stack](azure-stack-powershell-install.md)

@@ -1,37 +1,37 @@
 ---
-title: "Vytvoření aplikace Azure Service Fabric typu kontejner | Dokumentace Microsoftu"
-description: "Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric.  Sestavíte image Dockeru s aplikací v Pythonu, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner."
+title: Vytvoření aplikace Azure Service Fabric typu kontejner | Dokumentace Microsoftu
+description: Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric. Sestavíte image Dockeru s aplikací v Pythonu, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
 editor: vturecek
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/19/2018
+ms.date: 4/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 20f9be1a0274b40a684fe12207cf9fe1f33969c8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 679fb066441fd75d5e12f9374d012f50c6f65966
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric.  Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/).  Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 ## <a name="prerequisites"></a>Požadavky
 Vývojový počítač s:
 * Visual Studio 2015 nebo Visual Studio 2017.
 * [Sada Service Fabric SDK a nástroje](service-fabric-get-started.md).
-*  Docker pro Windows.  [Získejte Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). To se vyžaduje pro spuštění imagí Dockeru založených na Windows.
+*  Docker pro Windows. [Získejte Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
 Cluster Windows se třemi nebo více uzly spuštěnými na Windows Serveru 2016 s kontejnery – [Vytvořte cluster](service-fabric-cluster-creation-via-portal.md) nebo [vyzkoušejte Service Fabric zdarma](https://aka.ms/tryservicefabric).
 
@@ -48,7 +48,7 @@ Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
 Sestavte image založenou na [imagi Pythonu](https://hub.docker.com/_/python/), která se nachází na Docker Hubu.
 
-Definujte kontejner Dockeru v souboru Dockerfile. Soubor Dockerfile obsahuje pokyny k nastavení prostředí uvnitř kontejneru, načtení aplikace, kterou chcete pustit, a mapování portů. Soubor Dockerfile je vstupem příkazu `docker build`, který vytvoří image.
+Zadejte kontejner Dockeru v souboru Dockerfile. Soubor Dockerfile obsahuje pokyny k nastavení prostředí uvnitř kontejneru, načtení aplikace, kterou chcete spustit, a mapování portů. Soubor Dockerfile je vstupem příkazu `docker build`, který vytvoří image.
 
 Vytvořte prázdný adresář a soubor *Dockerfile* (bez přípony souboru). Do souboru *Dockerfile* přidejte následující a uložte změny:
 
@@ -77,13 +77,13 @@ CMD ["python", "app.py"]
 
 Další informace najdete v [referenčních informacích k souboru Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
-## <a name="create-a-simple-web-application"></a>Vytvoření jednoduché webové aplikace
-Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací „Hello World!“.  Ve stejném adresáři vytvořte soubor *requirements.txt*.  Přidejte do něj následující a uložte změny:
+## <a name="create-a-basic-web-application"></a>Vytvoření základní webové aplikace
+Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací `Hello World!`. Ve stejném adresáři vytvořte soubor *requirements.txt*. Přidejte do něj následující a uložte změny:
 ```
 Flask
 ```
 
-Vytvořte také soubor *app.py* a přidejte do něj následující:
+Vytvořte také soubor *app.py* a přidejte do něj následující fragment kódu:
 
 ```python
 from flask import Flask
@@ -107,7 +107,7 @@ Spuštěním příkazu `docker build` vytvořte image spouštějící vaši webo
 docker build -t helloworldapp .
 ```
 
-Tento příkaz sestaví novou image podle pokynů ve vašem souboru Dockerfile a pojmenuje ji (označení -t) „helloworldapp“. Sestavení image si z Docker Hubu přetáhne základní image a vytvoří novou image, která přidá vaši aplikaci nad základní image.  
+Tento příkaz sestaví novou image podle pokynů ve vašem souboru Dockerfile a pojmenuje ji (označení -t) `helloworldapp`. Pro sestavení image kontejneru se nejprve z Docker Hubu stáhne základní image, do které se přidá aplikace. 
 
 Po dokončení příkazu pro sestavení spusťte příkaz `docker images` a zobrazte informace o nové imagi:
 
@@ -119,7 +119,7 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
-Než image nahrajete do registru kontejneru, ověřte ji místně.  
+Než image nahrajete do registru kontejneru, ověřte ji místně. 
 
 Spusťte aplikaci:
 
@@ -134,7 +134,7 @@ Po spuštění kontejneru vyhledejte jeho IP adresu, abyste se ke spuštěnému 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Připojte se ke spuštěnému kontejneru.  Otevřete webový prohlížeč a přejděte na vrácenou IP adresu, například http://172.31.194.61. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu, například http://172.31.194.61. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 Pokud chcete kontejner zastavit, spusťte:
 
@@ -175,14 +175,14 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Vytvoření kontejnerizované služby v sadě Visual Studio
 Sada Service Fabric SDK a nástroje poskytují šablonu služby, která vám pomůže s vytvořením kontejnerizované aplikace.
 
-1. Spusťte Visual Studio.  Vyberte **Soubor** > **Nový** > **Projekt**.
+1. Spusťte Visual Studio. Vyberte **Soubor** > **Nový** > **Projekt**.
 2. Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte na **OK**.
 3. Ze seznamu **šablon služeb** vyberte **Kontejner**.
 4. Do pole **Název image** zadejte „myregistry.azurecr.io/samples/helloworldapp“, tedy image, kterou jste nahráli do úložiště kontejnerů.
 5. Zadejte název služby a klikněte na **OK**.
 
 ## <a name="configure-communication"></a>Konfigurace komunikace
-Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru ServiceManifest.xml přidejte element `Endpoint` s protokolem, portem a typem. Pro účely tohoto článku kontejnerizovaná služba naslouchá na portu 8081.  V tomto příkladu se používá pevný port 8081.  Pokud port není zadaný, zvolí se v rozsahu portů aplikace náhodně.  
+Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru ServiceManifest.xml přidejte element `Endpoint` s protokolem, portem a typem. V tomto příkladu se používá pevný port 8081. Pokud port není zadaný, zvolí se v rozsahu portů aplikace náhodně. 
 
 ```xml
 <Resources>
@@ -192,7 +192,7 @@ Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru Ser
 </Resources>
 ```
 
-Když Service Fabric definuje koncový bod, publikuje ho ve službě pojmenování.  Ostatní služby spuštěné v clusteru mohou tento kontejner vyhledat.  Ke komunikaci mezi kontejnery můžete také využít [reverzní proxy server](service-fabric-reverseproxy.md).  Komunikace se provede tak, že se reverznímu proxy serveru poskytne port pro naslouchání HTTP a název služeb, se kterými chcete komunikovat, jako proměnné prostředí.
+Když Service Fabric definuje koncový bod, publikuje ho ve službě pojmenování. Ostatní služby spuštěné v clusteru mohou tento kontejner vyhledat. Ke komunikaci mezi kontejnery můžete také využít [reverzní proxy server](service-fabric-reverseproxy.md). Komunikace se provede tak, že se reverznímu proxy serveru poskytne port pro naslouchání HTTP a název služeb, se kterými chcete komunikovat, jako proměnné prostředí.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurace a nastavení proměnných prostředí
 Proměnné prostředí je možné zadat pro každý balíček kódu v manifestu služby. Tato funkce je dostupná pro všechny služby, bez ohledu na to, jestli jsou nasazené jako kontejnery, procesy nebo spustitelné soubory typu Host. Hodnoty proměnných prostředí můžete přepsat v manifestu aplikace, nebo je můžete zadat v průběhu nasazení jako parametry aplikace.
@@ -219,7 +219,7 @@ Tyto proměnné prostředí je možné přepsat v manifestu aplikace:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Konfigurace mapování portu kontejneru na port hostitele a zjišťování mezi kontejnery
-Nakonfigurujte port hostitele používaný ke komunikaci s kontejnerem. Vazba portu mapuje port, na kterém služba naslouchá uvnitř kontejneru, na port na hostiteli. Přidejte element `PortBinding` do `ContainerHostPolicies` v souboru ApplicationManifest.xml.  Pro účely tohoto článku je `ContainerPort` nastaven na 80 (kontejner zpřístupňuje port 80, jak je uvedené v souboru Dockerfile) a `EndpointRef` je „Guest1TypeEndpoint“ (koncový bod dříve definovaný v manifestu služby).  Příchozí požadavky na službu na portu 8081 se mapují na port 80 v kontejneru.
+Nakonfigurujte port hostitele používaný ke komunikaci s kontejnerem. Vazba portu mapuje port, na kterém služba naslouchá uvnitř kontejneru, na port na hostiteli. Přidejte element `PortBinding` do `ContainerHostPolicies` v souboru ApplicationManifest.xml. Pro účely tohoto článku je `ContainerPort` nastaven na 80 (kontejner zpřístupňuje port 80, jak je uvedené v souboru Dockerfile) a `EndpointRef` je „Guest1TypeEndpoint“ (koncový bod dříve definovaný v manifestu služby). Příchozí požadavky na službu na portu 8081 se mapují na port 80 v kontejneru.
 
 ```xml
 <ServiceManifestImport>
@@ -249,9 +249,9 @@ Nakonfigurujte ověřování registru kontejneru přidáním `RepositoryCredenti
 </ServiceManifestImport>
 ```
 
-Doporučujeme šifrovat heslo úložiště pomocí certifikátu šifrování, který je nasazený na všechny uzly clusteru. Když Service Fabric nasadí balíček služby do clusteru, certifikát šifrování se použije k dešifrování šifrovaného textu.  Rutina Invoke-ServiceFabricEncryptText se používá k vytvoření šifrovaného textu pro heslo, který se přidá do souboru ApplicationManifest.xml.
+Doporučujeme šifrovat heslo úložiště pomocí certifikátu šifrování, který je nasazený na všechny uzly clusteru. Když Service Fabric nasadí balíček služby do clusteru, certifikát šifrování se použije k dešifrování šifrovaného textu. Rutina Invoke-ServiceFabricEncryptText se používá k vytvoření šifrovaného textu pro heslo, který se přidá do souboru ApplicationManifest.xml.
 
-Následující skript vytvoří nový certifikát podepsaný svým držitelem a vyexportuje ho do souboru PFX.  Certifikát se naimportuje do existujícího trezoru klíčů a potom nasadí do clusteru Service Fabric.
+Následující skript vytvoří nový certifikát podepsaný svým držitelem a vyexportuje ho do souboru PFX. Certifikát se naimportuje do existujícího trezoru klíčů a potom nasadí do clusteru Service Fabric.
 
 ```powershell
 # Variables.
@@ -273,7 +273,7 @@ Select-AzureRmSubscription -SubscriptionId $subscriptionId
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
 | Export-PfxCertificate -FilePath $filepath -Password $certpwd
 
-# Import the certificate to an existing key vault.  The key vault must be enabled for deployment.
+# Import the certificate to an existing key vault. The key vault must be enabled for deployment.
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
@@ -319,7 +319,7 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
    >
 
 ## <a name="configure-resource-governance"></a>Konfigurace zásad správného řízení prostředků
-[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků je možné nastavit pro tyto prostředky: Memory, MemorySwap, CpuShares (relativní váha CPU), MemoryReservationInMB, BlkioWeight (relativní váha BlockIO).  V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný.  Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků je možné nastavit pro tyto prostředky: Memory, MemorySwap, CpuShares (relativní váha CPU), MemoryReservationInMB, BlkioWeight (relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ```xml
 <ServiceManifestImport>
@@ -332,7 +332,7 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurace dockeru HEALTHCHECK 
 
-Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru **dockerfile** použitém při generování image kontejneru. 
+Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru. 
 
 ![HealthCheckHealthy][3]
 
@@ -359,18 +359,18 @@ Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
 Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
 
-Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster.  Příklad: containercluster.westus2.cloudapp.azure.com:19000. Koncový bod připojení ke klientu najdete v okně Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
+Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Příklad: containercluster.westus2.cloudapp.azure.com:19000. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
 Klikněte na **Publikovat**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ a sledujte nasazení aplikace.  Aplikace se nasadí, ale bude v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což v závislosti na velikosti image může nějakou dobu trvat): ![Chyba][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ a postupujte podle pokynů k nasazení aplikace. Aplikace se nasadí, ale bude v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což v závislosti na velikosti image může nějakou dobu trvat): ![Chyba][1]
 
 Aplikace je připravena, když je ve stavu ```Ready```: ![Připraveno][2]
 
 Otevřete prohlížeč a přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:8081. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ## <a name="clean-up"></a>Vyčištění
-Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](service-fabric-cluster-delete.md).  [Party clustery](https://try.servicefabric.azure.com/) se automaticky odstraní po několika hodinách.
+Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](service-fabric-cluster-delete.md). [Party clustery](https://try.servicefabric.azure.com/) se automaticky odstraní po několika hodinách.
 
 Po nahrání image do registru kontejneru můžete odstranit místní image z vývojového počítače:
 
@@ -379,9 +379,9 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="specify-os-build-version-specific-container-images"></a>Zadání imagí kontejneru pro konkrétní verze sestavení operačního systému 
+## <a name="specify-os-build-specific-container-images"></a>Zadání imagí kontejneru pro konkrétní sestavení operačního systému 
 
-Kontejnery Windows Serveru (režim izolace procesů) nemusí být kompatibilní s novějšími verzemi operačního systému. Například kontejnery Windows Serveru sestavené s využitím Windows Serveru 2016 nefungují na Windows Serveru verze 1709. Proto se může stát, že pokud jsou uzly clusteru aktualizované na nejnovější verzi, služby kontejneru sestavené s využitím dřívějších verzí operačního systému můžou selhat. Aby bylo možné se této situaci při použití modulu runtime verze 6.1 a novější vyhnout, Service Fabric podporuje zadávání několika imagí operačního systému pro jeden kontejner a jejich označení pomocí verzí sestavení operačního systému (získané spuštěním `winver` v příkazovém řádku Windows).  Doporučuje se nejdřív aktualizovat manifesty aplikací a zadat přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizovat operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
+Kontejnery Windows Serveru (režim izolace procesů) nemusí být kompatibilní s novějšími verzemi operačního systému. Například kontejnery Windows Serveru sestavené s využitím Windows Serveru 2016 nefungují na Windows Serveru verze 1709. Proto se může stát, že pokud jsou uzly clusteru aktualizované na nejnovější verzi, služby kontejneru sestavené s využitím dřívějších verzí operačního systému můžou selhat. Aby bylo možné se této situaci při použití modulu runtime verze 6.1 a novější vyhnout, Service Fabric podporuje zadávání několika imagí operačního systému pro jeden kontejner a jejich označení pomocí verzí sestavení operačního systému (získané spuštěním `winver` v příkazovém řádku Windows). Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
 
 
 ```xml
@@ -405,7 +405,7 @@ Verze sestavení pro Windows Server 2016 je 14393 a verze sestavení pro Windows
    > Funkce označování verze sestavení operačního systému jsou dostupné jenom pro Service Fabric ve Windows.
    >
 
-Pokud základním operačním systémem virtuálního počítače je sestavení 16299 (verze 1709), Service Fabric vybere image kontejneru, která odpovídá této verzi Windows Serveru.  Pokud manifest aplikace obsahuje kromě označených imagí kontejneru také neoznačenou image, Service Fabric bude předpokládat, že tato neoznačená image funguje napříč verzemi. Doporučuje se image kontejneru explicitně označovat.
+Pokud základním operačním systémem virtuálního počítače je sestavení 16299 (verze 1709), Service Fabric vybere image kontejneru, která odpovídá této verzi Windows Serveru. Pokud manifest aplikace obsahuje kromě označených imagí kontejneru také neoznačenou image, Service Fabric bude předpokládat, že tato neoznačená image funguje napříč verzemi. Image kontejnerů označujte explicitně, abyste se vyhnuli problémům během upgradování.
 
 Neoznačená image kontejneru bude fungovat jako přepsání image kontejneru uvedené v souboru ServiceManifest. Takže image myregistry.azurecr.io/samples/helloworldappDefault přepíše název image myregistry.azurecr.io/samples/helloworldapp v souboru ServiceManifest.
 
@@ -509,7 +509,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.   Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 ```json
 {
@@ -528,7 +528,7 @@ Výchozí časový interval je nastavený na 10 sekund. Vzhledem k tomu, že je 
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurace modulu runtime pro odebrání nepoužívaných imagí kontejneru
 
-Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru.  Pokud chcete tuto funkci povolit, aktualizujte část `Hosting` v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
+Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Pokud chcete tuto funkci povolit, aktualizujte část `Hosting` v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
 
 
 ```json
@@ -554,7 +554,7 @@ Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerI
 
 ## <a name="configure-container-image-download-time"></a>Konfigurace doby stahování image kontejneru
 
-Ve výchozím nastavení modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přidělí 20 minut. Pro většinu imagí kontejnerů to stačí. U větších imagí nebo při pomalém síťovém připojení může být potřeba prodloužit čas, po který se čeká, než dojde ke zrušení stahování a extrakce imagí. Můžete k tomu použít atribut **ContainerImageDownloadTimeout** v části **Hosting** manifestu clusteru, jak ukazuje následující fragment kódu:
+Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přidělí 20 minut. Pro většinu imagí kontejnerů to stačí. U větších imagí nebo při pomalém síťovém připojení může být potřeba prodloužit čas, po který se čeká, než dojde ke zrušení stahování a extrakce imagí. Tento časový limit se nastavuje pomocí atributu **ContainerImageDownloadTimeout** v části **Hosting** manifestu clusteru, jak ukazuje následující fragment kódu:
 
 ```json
 {
@@ -577,8 +577,25 @@ Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když atribut **ContainersRetentionCount** není zadaný, nezachovají se žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce se doporučuje použít omezení umístění a cílit službu kontejneru na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
+Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když atribut **ContainersRetentionCount** není zadaný, nezachovají se žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce použijte omezení umístění, aby služba kontejneru cílila na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
 
+## <a name="start-the-docker-daemon-with-custom-arguments"></a>Spuštění démona Dockeru s vlastními argumenty
+
+V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona Dockeru s vlastními argumenty. Pokud zadáte vlastní argumenty, Service Fabric do modulu Dockeru nepředá žádné další argumenty s výjimkou argumentu `--pidfile`. Proto by se `--pidfile` nemělo předávat jako argument. Kromě toho by tento argument měl umožnit, aby démon Dockeru i nadále naslouchal kanálu s výchozím názvem ve Windows (nebo unixovému soketu domény v Linuxu), aby se zajistila komunikace Service Fabric s démonem. Vlastní argumenty se předávají v manifestu clusteru v části **Hosting** v rámci části **ContainerServiceArguments**, jak ukazuje následující fragment kódu: 
+ 
+
+```json
+{ 
+   "name": "Hosting", 
+        "parameters": [ 
+          { 
+            "name": "ContainerServiceArguments", 
+            "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
+          } 
+        ] 
+} 
+
+```
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).

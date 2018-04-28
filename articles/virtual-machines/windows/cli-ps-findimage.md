@@ -1,11 +1,11 @@
 ---
-title: "Vyberte bitové kopie virtuálního počítače s Windows v Azure | Microsoft Docs"
-description: "Další informace o použití prostředí Azure PowerShell k určení vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů."
+title: Vyberte bitové kopie virtuálního počítače s Windows v Azure | Microsoft Docs
+description: Další informace o použití prostředí Azure PowerShell k určení vydavatele, nabídky, SKU a verze pro Image Marketplace virtuálních počítačů.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
-ms.openlocfilehash: 6d88eea96d95ac998575b9b034ac970eabc38913
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 858b5976ef422ab410f42c44f94473aa4fd10970
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Postup nalezení bitové kopie virtuálního počítače s Windows v Azure Marketplace s prostředím Azure PowerShell
 
@@ -30,9 +30,9 @@ Ujistěte se, zda je nainstalován a nakonfigurován nejnovější [modul Azure 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
 ## <a name="table-of-commonly-used-windows-images"></a>Tabulka běžně používané bitových kopií systému Windows
-| Vydavatel | Nabídka | SKU |
+| Vydavatel | Nabídka | Skladová jednotka (SKU) |
 |:--- |:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2016 Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer |WindowsServer |2016 datového centra s kontejnery |
 | MicrosoftWindowsServer |WindowsServer |2016-Nano-Server |
@@ -40,8 +40,8 @@ Ujistěte se, zda je nainstalován a nakonfigurován nejnovější [modul Azure 
 | MicrosoftWindowsServer |WindowsServer |2008-R2-SP1 |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2016 |
-| MicrosoftSQLServer |SQL2016-WS2016 |Podnik |
-| MicrosoftSQLServer |SQL2014SP2-WS2012R2 |Podnik |
+| MicrosoftSQLServer |SQL2016-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2014SP2-WS2012R2 |Enterprise |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |
 | MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |
 
@@ -80,7 +80,7 @@ Vyplňte zvolený název SKU a spusťte následující příkazy:
 
 ```powershell
 $skuName="<SKU>"
-Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku skuName | Select Version
+Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
 Z výstupu `Get-AzureRMVMImage` příkazů, můžete vybrat verzi image k nasazení nového virtuálního počítače.

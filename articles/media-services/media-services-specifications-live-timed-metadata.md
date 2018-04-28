@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9c8472e74cab779e417e68316a6125d40410ef1c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace vypršel časový limit Metadata v živé vysílání datového proudu
 
@@ -46,7 +46,7 @@ Klíčová slova "musíte", "Nesmí", "REQUIRED", "SHALL", "Není se", "SHOULD",
 | HLS               | Protokol Apple HTTP Live Streaming.                                                                                                                                                                                               |
 | POMLČKA              | Dynamické adaptivní datové proudy přes protokol HTTP                                                                                                                                                                                             |
 | Smooth            | Smooth protokol pro streamování                                                                                                                                                                                                        |
-| MPEG2-TS          | Datové proudy MPEG 2 Transport                                                                                                                                                                                                         |
+| MPEG2 TS          | Datové proudy MPEG 2 Transport                                                                                                                                                                                                         |
 | RTMP              | Protokol v reálném čase multimédií                                                                                                                                                                                                    |
 | uimsbf            | Celé číslo bez znaménka, nejvýznamnější nejprve bitů.                                                                                                                                                                                    |
 
@@ -70,7 +70,7 @@ Jednoduchý režim RTMP služba Media Services podporuje do jedné zprávy cue t
 | Cue        | Řetězec     | Požaduje se | Zprávy událostí.  Musí být "SpliceOut" určit jednoduchý režim splice.                                              |
 | id         | Řetězec     | Požaduje se | Jedinečný identifikátor popisující uživatele programu splice nebo segmentu. Identifikuje této instance zprávy                            |
 | Doba trvání   | Číslo     | Požaduje se | Doba trvání uživatele programu splice. Jednotky jsou zlomků sekund.                                                                |
-| Uplynulý čas    | Číslo     | Nepovinné | Při signál Probíhá opakování za účelem podpory naladit, v tomto poli musí být množství času prezentace, které uplynul od začátku uživatele programu splice. Jednotky jsou zlomků sekund. Při použití jednoduchého režimu, tato hodnota by neměla překročit původní trvání uživatele programu splice.                                                  |
+| elapsed    | Číslo     | Nepovinné | Při signál Probíhá opakování za účelem podpory naladit, v tomto poli musí být množství času prezentace, které uplynul od začátku uživatele programu splice. Jednotky jsou zlomků sekund. Při použití jednoduchého režimu, tato hodnota by neměla překročit původní trvání uživatele programu splice.                                                  |
 | time       | Číslo     | Požaduje se | Musí být čas uživatele programu splice, časem prezentace. Jednotky jsou zlomků sekund.                                     |
 
 ---------------------------
@@ -83,7 +83,7 @@ Jednoduchý režim RTMP služba Media Services podporuje do jedné zprávy cue t
 | type       | Řetězec     | Požaduje se | Název URN nebo adresa URL identifikace schéma zpráva; například "urn: Příklad: signalizace: 1.0".  Zprávy [SCTE – 35] musí se jednat "urn: scte:scte35:2013a:bin" v pořadí pro zprávy zasílané klientům HLS, Smooth a Dash v souladu s [SCTE-67].  |
 | id         | Řetězec     | Požaduje se | Jedinečný identifikátor popisující uživatele programu splice nebo segmentu. Identifikuje této instance zprávy.  Zprávy s ekvivalentní sémantiku musí mít stejnou hodnotu.|
 | Doba trvání   | Číslo     | Požaduje se | Doba trvání události nebo ad uživatele programu splice – segmentu, pokud je znám. Pokud je neznámý, hodnota musí být 0.                                                                 |
-| Uplynulý čas    | Číslo     | Nepovinné | Při Chcete-li ladit Probíhá opakování signál ad [SCTE – 35], v tomto poli musí být množství času prezentace, které uplynul od začátku uživatele programu splice. Jednotky jsou zlomků sekund. V režimu [SCTE – 35] Tato hodnota může překročit původní zadaná doba trvání uživatele programu splice nebo segmentu.                                                  |
+| elapsed    | Číslo     | Nepovinné | Při Chcete-li ladit Probíhá opakování signál ad [SCTE – 35], v tomto poli musí být množství času prezentace, které uplynul od začátku uživatele programu splice. Jednotky jsou zlomků sekund. V režimu [SCTE – 35] Tato hodnota může překročit původní zadaná doba trvání uživatele programu splice nebo segmentu.                                                  |
 | time       | Číslo     | Požaduje se | Splice – prezentace čas události nebo ad.  Prezentace čas a dobu trvání by MĚL zarovnat s datového proudu přístup body (SAP) typu 1 nebo 2, jak jsou definovány v [ISO-14496-12] přílohy I. Odchozí HLS, čas a dobu trvání zarovnán s hranicemi segmentu. Prezentace čas a dobu trvání různých událostí zprávy v rámci stejného datového proudu událostí se nesmí překrývat. Jednotky jsou zlomků sekund.
 
 ---------------------------
@@ -105,7 +105,7 @@ Zhuštěný sledování musí být deklarován v poli Live Manifest serveru s \<
 | manifestOutput     | Logická hodnota        | Požaduje se      | MUSÍ být "PRAVDA", k označení, že zhuštěných sledovat budou vloženy do manifestu Smooth klienta.                                                                                                                                                               |
 | Podtyp            | Řetězec         | Požaduje se      | MUSÍ být čtyři znakové kódu "DATA".                                                                                                                                                                                                                         |
 | Schéma             | Řetězec         | Požaduje se      | MUSÍ být název URN nebo adresa URL identifikace schéma zpráva; například "urn: Příklad: signalizace: 1.0". Zprávy [SCTE – 35] musí se jednat "urn: scte:scte35:2013a:bin" v pořadí pro zprávy zasílané klientům HLS, Smooth a Dash v souladu s [SCTE-67]. |
-| trackName          | Řetězec         | Požaduje se      | MUSÍ být název zhuštěných sledovat. TrackName slouží k rozlišení různých datových proudů událostí s stejné schéma. Každý datový proud událostí jedinečný musí mít název jedinečný sledovat.                                                                           |
+| TrackName          | Řetězec         | Požaduje se      | MUSÍ být název zhuštěných sledovat. TrackName slouží k rozlišení různých datových proudů událostí s stejné schéma. Každý datový proud událostí jedinečný musí mít název jedinečný sledovat.                                                                           |
 | Časová osa          | Číslo         | Nepovinné      | MUSÍ být časový rámec dráhy nadřazené.                                                                                                                                                                                                                      |
 
 -------------------------------------
@@ -401,13 +401,13 @@ Technologie Smooth Streaming ingestování vyžaduje, které musí obsahovat pol
 
 **[DASH]**  ISO/IEC 23009-1 2014 – informačních technologií – dynamické adaptivní datové proudy přes protokol HTTP (pomlčka) – část 1: formáty popis a segment média prezentace, 2. vydání
 
-**[HLS]** [“HTTP Live Streaming”, draft-pantos-http-live-streaming-14, October 14, 2014,](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
+**[HLS]**  ["HTTP živé streamování", draft-pantos-http-live-streaming-14, 14. října 2014](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
 **[MS-SSTR]**  [(Microsoft Smooth Streaming Protocol), 15 může 2014](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 **[AMF0]**  ["Akce zpráva formátu AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE FMP4]**  [Služby azure Media Services fragmentovaných MP4 Live Ingestování specifikace](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE FMP4]**  [Služby azure Media Services fragmentovaných MP4 Live Ingestování specifikace](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]**  ISO/IEC 14496 – 12: část 12 ISO média základní formát souboru, čtvrtý 2012 edice-07-15.
 

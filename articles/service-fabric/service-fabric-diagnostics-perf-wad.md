@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9e8ef7243fcef990dae6ddc6509cd31b3f36e3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -44,7 +44,9 @@ Shromažďování čítačů výkonu prostřednictvím WAD, budete muset upravit
 
     `scheduledTransferPeriod` Definuje, jak frquently hodnoty čítačů, které byly shromážděny přenesou do tabulky úložiště Azure a žádné nakonfigurované jímky. 
 
-3. Přidání čítačů výkonu chcete shromažďovat k `PerformanceCounterConfiguration` , byla deklarována v předchozím kroku. Jednotlivé čítače, které chcete shromažďovat je definovaná pomocí `counterSpecifier`, `sampleRate`, `unit`, `annotation`a všechny relevantní `sinks`. Tady je příklad konfigurace s čítač pro *celkový čas procesoru* (množství času procesoru bylo používáno pro operace zpracování) a *Service Fabric objektu Actor metoda volání za sekundu*, jeden z čítače výkonu vlastní Service Fabric. Odkazovat na [spolehlivé čítače výkonu objektu Actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) a [spolehlivé čítače výkonu služby](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) pro úplný seznam čítače výkonu vlastní Service Fabric.
+3. Přidání čítačů výkonu chcete shromažďovat k `PerformanceCounterConfiguration` , byla deklarována v předchozím kroku. Jednotlivé čítače, které chcete shromažďovat je definovaná pomocí `counterSpecifier`, `sampleRate`, `unit`, `annotation`a všechny relevantní `sinks`.
+
+Tady je příklad konfigurace s čítač pro *celkový čas procesoru* (množství času procesoru bylo používáno pro operace zpracování) a *Service Fabric objektu Actor metoda volání za sekundu*, jeden z čítače výkonu vlastní Service Fabric. Odkazovat na [spolehlivé čítače výkonu objektu Actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) a [spolehlivé čítače výkonu služby](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters) pro úplný seznam čítače výkonu vlastní Service Fabric.
 
  ```json
  "WadCfg": {
@@ -112,9 +114,8 @@ Shromažďování čítačů výkonu prostřednictvím WAD, budete muset upravit
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po dokončení upgradu zavedením (trvá mezi 15 – 45 minut), WAD by měl být shromažďování čítačů výkonu a je pošlete na tabulku s názvem WADPerformanceCountersTable v účtu úložiště přidruženého k vašemu clusteru.
+5. Po dokončení upgradu zavedením (trvá mezi 15 – 45 minut), WAD by měl být shromažďování čítačů výkonu a je pošlete na tabulku s názvem WADPerformanceCountersTable v účtu úložiště přidruženého k vašemu clusteru. V tématu čítače výkonu ve službě Application Insights podle [přidávání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Další postup
-* V tématu čítače výkonu ve službě Application Insights podle [přidávání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
 * Shromažďujte další čítače výkonu pro váš cluster. V tématu [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md) seznam čítačů, které mají shromažďovat.
 * [Použití monitorování a Diagnostika pomocí šablony virtuálního počítače s Windows a Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md) provést další změny vašeho `WadCfg`, včetně konfiguraci účtů úložiště pro odesílat data diagnostiky.

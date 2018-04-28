@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API pomocí
 
@@ -29,16 +29,16 @@ U klientů B2C existují dva primární režimy komunikaci pomocí rozhraní Gra
 * Pro interaktivní, jedno spuštění úlohy by měla fungovat jako účet správce v klientovi B2C při provádění úlohy. Tento režim vyžaduje správce a přihlaste se pomocí přihlašovacích údajů, před kterou správce může provádět volání rozhraní Graph API.
 * Pro automatizované, nepřetržité úlohy měli byste použít nějaký typ účtu služby, abyste poskytli potřebná oprávnění k provádění úloh správy. Ve službě Azure AD to provedete tak, že registrace aplikace a ověřování do služby Azure AD. To se provádí pomocí **ID aplikace** používající [udělení pověření klienta OAuth 2.0](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api). V takovém případě aplikace funguje jako samostatně, nikoli jako uživatel, k volání rozhraní Graph API.
 
-V tomto článku probereme, jak provádět případ automatizované použití. K předvedení, jsme budete sestavení rozhraní .NET 4.5 `B2CGraphClient` který provede uživatele vytvořit, číst, aktualizovat a odstranit operace. Klient bude mít rozhraní příkazového řádku Windows (CLI), který umožňuje vyvolání různé metody. Kód je však zapsána do chovat neinteraktivní, automatizované způsobem.
+V tomto článku zjistěte, jak provést případ automatizované použití. Budete sestavení rozhraní .NET 4.5 `B2CGraphClient` který provede uživatele vytvořit, číst, aktualizovat a odstranit operace. Klient bude mít rozhraní příkazového řádku Windows (CLI), který umožňuje vyvolání různé metody. Kód je však zapsána do chovat neinteraktivní, automatizované způsobem.
 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Získání klienta Azure AD B2C
-Předtím, než můžete vytvořit aplikace nebo uživatele, nebo vůbec komunikovat s Azure AD, budete potřebovat klienta Azure AD B2C a účet globálního správce v klientovi. Pokud nemáte klienta již, [Začínáme s Azure AD B2C](active-directory-b2c-get-started.md).
+Před vytvořením aplikace nebo uživatele, musíte klienta Azure AD B2C. Pokud nemáte klienta již, [Začínáme s Azure AD B2C](active-directory-b2c-get-started.md).
 
 ## <a name="register-your-application-in-your-tenant"></a>Registrace vaší aplikace ve vašem klientovi
-Až budete mít klienta B2C, budete muset registrace vaší aplikace pomocí [portálu Azure](https://portal.azure.com).
+Až budete mít klienta B2C, budete muset zaregistrovat aplikaci pomocí [portál Azure](https://portal.azure.com).
 
 > [!IMPORTANT]
-> Použít rozhraní Graph API pomocí svého klienta B2C, budete muset registraci vyhrazené aplikace pomocí Obecné *registrace aplikace* nabídky na portálu Azure **není** Azure AD B2C  *Aplikace* nabídky. Nelze znovu použít už existující B2C aplikace, které jste zaregistrovali v Azure AD B2C *aplikace* nabídky.
+> Použít rozhraní Graph API pomocí svého klienta B2C, budete muset registraci aplikace pomocí *registrace aplikace* službu na portálu Azure **není** Azure AD B2C *aplikace*nabídky. Podle následujících pokynů můžete vést k nabídce příslušná. Nelze znovu použít stávající aplikace B2C, které je registrované v Azure AD B2C *aplikace* nabídky.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Výběrem účtu v pravém horním rohu stránky zvolte vašeho klienta Azure AD B2C.
@@ -47,7 +47,8 @@ Až budete mít klienta B2C, budete muset registrace vaší aplikace pomocí [po
     1. Vyberte **webová aplikace nebo rozhraní API** jako typ aplikace.    
     2. Zadejte **libovolná adresa URL přihlašování** (například https://B2CGraphAPI) jako není relevantní pro tento příklad.  
 5. Budou aplikace teď objeví v seznamu aplikací, klikněte na ho získat **ID aplikace** (také označované jako ID klienta). Zkopírujte jej, protože ho budete potřebovat v další části.
-6. V nabídce nastavení, klikněte na **klíče** a přidejte nový klíč (také označovaný jako sdílený tajný klíč klienta). Také zkopírujte jej pro použití v další části.
+6. V nabídce nastavení, klikněte na tlačítko **klíče**.
+7. V **hesla** části, zadejte popis klíče a vyberte dobu trvání a pak klikněte na tlačítko **Uložit**. Zkopírujte hodnoty klíče (také označovaný jako sdílený tajný klíč klienta) pro použití v další části.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurace vytvářet, číst a aktualizovat oprávnění pro vaši aplikaci
 Teď je potřeba nakonfigurovat vaše aplikace a získejte potřebná oprávnění k vytvářet, číst, aktualizovat a odstraňovat uživatele.

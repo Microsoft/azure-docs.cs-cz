@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cc64ef8d820db6a072b708323eb110d62ed0a83c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
@@ -112,7 +112,7 @@ Jak vidíte, virtuální síť Azure poskytuje virtuální počítače pro přip
 
 -   Místní připojení
 
--   Filtrování přenosu
+-   Filtrování provozu
 
 -   Směrování
 
@@ -124,7 +124,7 @@ Azure poskytuje interní překlad adres pro virtuální počítače a [cloudové
 
 Můžete implementovat více virtuálních sítí v rámci každé Azure [předplatné](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json) a Azure [oblast](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json). Každý virtuální sítě je izolovaná od jiných virtuálních sítí. Pro každý virtuální síť můžete:
 
--   Zadejte vlastní prostor privátní IP adresy pomocí veřejné a privátní adresy (RFC 1918). Prostředky Azure přiřadí připojené k virtuální síti privátní IP adresy z adresního prostoru, můžete přiřadit.
+-   Zadání vlastního adresního prostoru privátních IP adres pomocí veřejných a privátních (RFC 1918) adres. Prostředky Azure přiřadí připojené k virtuální síti privátní IP adresy z adresního prostoru, můžete přiřadit.
 
 -   Segment sítě VNet do jedné nebo více podsítí a přidělovat část adresní prostor virtuální sítě pro každou podsíť.
 
@@ -160,17 +160,17 @@ Virtuální sítě může být připojen k [místní](https://docs.microsoft.com
 
 Do místní sítě lze připojit k virtuální síti pomocí libovolnou kombinaci těchto možností:
 
-- **Point-to-site virtuální privátní sítě (VPN):** navázat mezi jeden počítač připojený k síti a virtuální sítě. Tento typ připojení je skvělé, pokud jste se právě Začínáme s Azure, nebo pro vývojáře, protože nevyžaduje skoro žádné nebo vůbec žádné změny k vaší existující síti. Připojení k poskytování šifrovanou komunikaci prostřednictvím Internetu mezi Počítačem a virtuální sítě používá protokol SSTP. Latence pro síť VPN point-to-site nepředvídatelným, protože přenosy dat prochází přes Internet.
+- **Point-to-site virtuální privátní sítě (VPN):** navázat mezi jeden počítač připojený k síti a virtuální sítě. Tento typ připojení je skvělý, pokud teprve začínáte s Azure, nebo pro vývojáře, protože nevyžaduje téměř nebo vůbec žádné změny vaší stávající sítě. Připojení k poskytování šifrovanou komunikaci prostřednictvím Internetu mezi Počítačem a virtuální sítě používá protokol SSTP. Latence pro síť VPN point-to-site nepředvídatelným, protože přenosy dat prochází přes Internet.
 
 - **Site-to-site VPN:** mezi zařízení VPN a služby Azure VPN Gateway. Tento typ připojení umožňuje jakémukoli prostředku místní autorizaci pro přístup k virtuální síti. Připojení je VPN pomocí protokolu IPsec/IKE, která poskytuje šifrovanou komunikaci prostřednictvím Internetu mezi místní zařízení a brána Azure VPN. Latence pro připojení site-to-site nepředvídatelným, protože přenosy dat prochází přes Internet.
 
-- **Azure ExpressRoute:** navázat mezi vaší sítí a Azure prostřednictvím partnerem ExpressRoute. Toto připojení je soukromé. Provoz neprochází Internetu. Latence pro připojení typu ExpressRoute je předvídatelný, protože provoz není procházení Internetu. Další informace o všech předchozích možností připojení, přečtěte si [diagramy topologie připojení](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Azure ExpressRoute:** Vytváří se mezi vaší sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé. Provoz neprochází Internetu. Latence pro připojení typu ExpressRoute je předvídatelný, protože provoz není procházení Internetu. Další informace o všech předchozích možností připojení, přečtěte si [diagramy topologie připojení](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Filtrování přenosu**
 
 Instance role virtuálního počítače a cloudové služby [přenos v síti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) je možné filtrovat příchozí a odchozí zdrojové IP adresy a portu, cílové IP adresy a portu a protokolu.
 
-Můžete filtrovat síťový provoz mezi podsítěmi pomocí jedné nebo obou z následujících možností:
+Síťový provoz mezi podsítěmi můžete filtrovat pomocí jedné nebo obou z následujících možností:
 
 - **Skupin zabezpečení (NSG) sítě:** každou NSG může obsahovat více pravidel příchozí a odchozí zabezpečení, které umožňují filtrovat provoz ve zdrojové a cílové IP adresy, portu a protokolu. Můžete použít skupinu NSG pro každý síťový adaptér ve virtuálním počítači. Můžete taky použít skupinu NSG k podsíti síťový adaptér nebo jiných prostředků Azure je připojen k. Další informace o skupinách Nsg, najdete [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
@@ -180,7 +180,7 @@ Můžete filtrovat síťový provoz mezi podsítěmi pomocí jedné nebo obou z 
 
 Volitelně můžete přepsat výchozí Azure směrování konfiguraci vlastních tras, nebo pomocí trasy protokolu BGP prostřednictvím brány sítě.
 
-Azure vytvoří směrovací tabulky, které umožňují prostředky připojenými k žádné podsíti v žádné virtuální sítě pro komunikaci mezi sebou, ve výchozím nastavení. Můžete implementovat jednu nebo obě z následujících možností přepsat výchozí trasy, které vytvoří Azure:
+Azure vytvoří směrovací tabulky, které umožňují prostředky připojenými k žádné podsíti v žádné virtuální sítě pro komunikaci mezi sebou, ve výchozím nastavení. K přepsání výchozích tras, které Azure vytváří, můžete implementovat jednu nebo obě z následujících možností:
 
 - **Trasy definované uživatelem:** můžete vytvořit vlastní směrovací tabulky s trasami, které tuto kontrolu, kde provoz se směruje na pro každou podsíť. Další informace o trasy definované uživatelem, přečtěte si [trasy definované uživatelem](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 

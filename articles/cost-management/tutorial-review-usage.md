@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 820fea1aa2eb93fb383dca4def9ed607515c29b8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -41,7 +41,7 @@ Všechna data o využití a nákladech můžete zkontrolovat na portálu Cloudyn
 
 ## <a name="track-usage-and-cost-trends"></a>Sledování trendů využití a nákladů
 
-Pomocí průběžných sestav můžete sledovat částky utracené za využití a náklady. Pokud si chcete prohlédnout trendy, použijte sestavu Actual Cost Over Time (Skutečné náklady v průběhu času). V nabídce sestav v horní části portálu klikněte na položky **Cost (Náklady)** > **Cost Analysis (Analýza nákladů)** > **Actual Cost Over Time (Skutečné náklady v průběhu času)**. Když sestavu otevřete poprvé, nejsou v ní použité žádné skupiny ani filtry.
+Pomocí průběžných sestav můžete sledovat částky utracené za využití a náklady. Pokud si chcete prohlédnout trendy, použijte sestavu Actual Cost Over Time (Skutečné náklady v průběhu času). V nabídce v horní části portálu klikněte na položky **Cost** > **Cost Analysis** > **Actual Cost Over Time** (Náklady > Analýza nákladů > Skutečné náklady v průběhu času). Když sestavu otevřete poprvé, nejsou v ní použité žádné skupiny ani filtry.
 
 Toto je příklad sestavy:
 
@@ -69,7 +69,7 @@ Potíž je v tom, že za svoji stávající infrastrukturu už zaplatily. Uživa
 
 Sestava Cost Effective Sizing Recommendations (Doporučení nákladově efektivního nastavení velikosti) určuje potenciální roční úspory tak, že porovnává kapacitu typů instancí virtuálních počítačů s historickými daty o využití CPU a paměti.  
 
-V nabídce sestav v horní části portálu klikněte na **Optimizer (Optimalizace)** > **Pricing Optimization (Optimalizace cen)** > **Cost Effective Sizing Recommendations (Doporučení nákladově efektivního nastavení velikosti)**. Filtrujte poskytovatele podle Azure, aby se zobrazily jenom virtuální počítače Azure. Následuje příklad.
+V nabídce v horní části portálu klikněte na **Optimizer** > **Sizing Optimization** > **Cost Effective Sizing Recommendations** (Optimalizace > Optimalizace velikosti > Doporučení nákladově efektivního nastavení velikosti). Filtrujte poskytovatele podle Azure, aby se zobrazily jenom virtuální počítače Azure. Následuje příklad.
 
 ![Virtuální počítače Azure](./media/tutorial-review-usage/sizing01.png)
 
@@ -87,9 +87,9 @@ Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivi
 
 Ostatní účastníky můžete automaticky upozorňovat na anomálie ve výdajích a rizika nadměrných výdajů. Upozornění můžete snadno a rychle vytvořit pomocí sestav, které podporují výstrahy na základě prahových hodnot rozpočtu a nákladů.
 
-Upozornění na jakékoli výdaje můžete vytvořit pomocí kterékoli sestavy nákladů. V tomto příkladu budete pomocí sestavy Actual Cost Over Time (Skutečné náklady v průběhu času) upozorňovat na to, že se výdaje blíží k celkové výši rozpočtu. V nabídce sestav v horní části portálu klikněte na položky **Cost (Náklady)** > **Cost Analysis (Analýza nákladů)** > **Actual Cost Over Time (Skutečné náklady v průběhu času)**. U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). V pravé horní části sestavy klikněte na **Actions** (Akce) a potom vyberte **Schedule report** (Naplánovat sestavu).
+Upozornění na jakékoli výdaje můžete vytvořit pomocí kterékoli sestavy nákladů. V tomto příkladu budete pomocí sestavy Actual Cost Over Time (Skutečné náklady v průběhu času) upozorňovat na to, že se výdaje blíží k celkové výši rozpočtu. K vytvoření upozornění je potřeba provést všechny následující kroky. V nabídce v horní části portálu klikněte na položky **Cost** > **Cost Analysis** > **Actual Cost Over Time** (Náklady > Analýza nákladů > Skutečné náklady v průběhu času). U položky **Groups** (Skupiny) nastavte hodnotu **Service** (Služba) a u položky **Filter on the service** (Filtrovat podle služby) hodnotu **Azure/VM** (Azure / virtuální počítač). V pravé horní části sestavy klikněte na **Actions** (Akce) a potom vyberte **Schedule report** (Naplánovat sestavu).
 
-Na kartě **Scheduling** (Plánování) si naplánujte, že se vám má sestava s požadovanou frekvencí zasílat e-mailem. Součástí sestavy v e-mailu budou všechny značky, seskupení a filtry, které jste použili. Klikněte na kartu **Threshold** (Prahová hodnota) a vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). Pokud jste měli celkový rozpočet 500 000 USD a chtěli jste dostat oznámení, když se náklady přiblíží polovině, vytvořte výstrahu **Red alert** (Červená výstraha) na částce 250 000 USD a výstrahu **Yellow alert** (Žlutá výstraha) na částce 240 000 USD. Potom vyberte počet po sobě jdoucích výstrah. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. Uložte naplánovanou sestavu.
+Na kartě **Scheduling** (Plánování) si naplánujte, že se vám má sestava s požadovanou frekvencí zasílat e-mailem. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Součástí sestavy v e-mailu budou všechny značky, seskupení a filtry, které jste použili. Klikněte na kartu **Threshold** (Prahová hodnota) a vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). Pokud jste měli celkový rozpočet 500 000 USD a chtěli jste dostat oznámení, když se náklady přiblíží polovině, vytvořte výstrahu **Red alert** (Červená výstraha) na částce 250 000 USD a výstrahu **Yellow alert** (Žlutá výstraha) na částce 240 000 USD. V zadávaných hodnotách nepoužívejte čárky. Potom vyberte počet po sobě jdoucích výstrah. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. Uložte naplánovanou sestavu.
 
 ![Příklad sestavy](./media/tutorial-review-usage/schedule-alert01.png)
 

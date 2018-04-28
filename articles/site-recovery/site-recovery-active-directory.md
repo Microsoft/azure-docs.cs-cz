@@ -1,19 +1,19 @@
 ---
-title: "Ochrana služby Active Directory a DNS s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak implementovat řešení zotavení po havárii pro službu Active Directory pomocí Azure Site Recovery."
+title: Ochrana služby Active Directory a DNS s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak implementovat řešení zotavení po havárii pro službu Active Directory pomocí Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ebddd3f68605df94bd06bef1fec785f740c3b023
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Pomocí Azure Site Recovery k ochraně služby Active Directory a DNS
 
@@ -57,16 +57,16 @@ Pro virtuální počítač, který je hostitelem řadiče domény nebo DNS v Sit
 Vytvoření řadiče domény v sekundární lokalitě. Při povýšení serveru role řadiče domény, zadejte název stejné domény, který se používá v primární lokalitě. Můžete použít **Active Directory Sites and Services** modul snap-in ke konfiguraci nastavení v objektu propojení lokalit, do které jsou přidány webů. Konfigurací nastavení na propojení lokalit, můžete určit, kdy dojde k replikaci mezi dvěma lokalitami a jak často dochází. Další informace najdete v tématu [plánování replikace mezi lokalitami](https://technet.microsoft.com/library/cc731862.aspx).
 
 ### <a name="site-to-azure-protection"></a>Ochrana serveru Azure
-První, [vytvořit řadič domény v virtuální sítě Azure](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Při povýšení serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
+Nejprve vytvořte řadič domény v virtuální sítě Azure. Při povýšení serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
 
-Potom [překonfigurovat server DNS pro virtuální síť](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) použít DNS server v Azure.
+Překonfigurujte server DNS pro virtuální síť použít DNS server v Azure.
 
 ![Síť Azure](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Ochrana Azure do Azure
-První, [vytvořit řadič domény v virtuální sítě Azure](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Při povýšení serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
+Nejprve vytvořte řadič domény v virtuální sítě Azure. Při povýšení serveru role řadiče domény, zadejte se stejným názvem domény, který se používá v primární lokalitě.
 
-Potom [překonfigurovat server DNS pro virtuální síť](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network) použít DNS server v Azure.
+Překonfigurujte server DNS pro virtuální síť použít DNS server v Azure.
 
 ## <a name="test-failover-considerations"></a>Aspekty testovací převzetí služeb při selhání
 Abyste se vyhnuli vlivu na úlohy v produkčním prostředí, dojde k převzetí služeb při selhání v síti, která bude izolovaná od produkční sítě.

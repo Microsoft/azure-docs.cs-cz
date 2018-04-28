@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 72a823ef04ad69d1d3b40377c32a02bacb8328c2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6d2681ad05890fc5f9f2821245e0f0280bf45a5f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Spravovat konec platnosti úložiště objektů Azure Blob v Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -148,7 +148,7 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>Nastavení hlavičky Cache-Control pomocí jiných metod
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-S [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/), můžete zobrazit a upravit vaše prostředky úložiště objektů blob, včetně vlastnosti, jako *CacheControl* vlastnost. 
+S [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), můžete zobrazit a upravit vaše prostředky úložiště objektů blob, včetně vlastnosti, jako *CacheControl* vlastnost. 
 
 Chcete-li aktualizovat *CacheControl* vlastnost objektu blob s Azure Storage Explorer:
    1. Vyberte objekt blob a potom vyberte **vlastnosti** v místní nabídce. 
@@ -168,8 +168,8 @@ azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .
 ### <a name="azure-storage-services-rest-api"></a>Azure storage services REST API
 Můžete použít [Azure storage services REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) explicitně nastavit *x-ms-blob-cache-control* vlastnost pomocí následující operace na vyžádání:
   
-   - [Uveďte objektů Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
-   - [Uveďte seznam blokovaných položek](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [Uveďte objektů Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
+   - [Uveďte seznam blokovaných položek](https://msdn.microsoft.com/library/azure/dd179467.aspx)
    - [Nastavit vlastnosti objektů Blob](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Testování hlavička Cache-Control

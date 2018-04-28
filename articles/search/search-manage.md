@@ -1,25 +1,19 @@
 ---
 title: Služba správy pro službu Azure Search na portálu Azure
 description: Spravujte Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure, pomocí portálu Azure.
-services: search
-documentationcenter: ''
 author: HeidiSteen
-manager: jhubbard
-editor: ''
+manager: cgronlun
 tags: azure-portal
-ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: d19683291e001c3c3f2a7bfc5c203b5121a8a418
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 896a12db1ac196b6de1e57dde9b5910e11dcc8c7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Služba správy pro službu Azure Search na portálu Azure
 > [!div class="op_single_selector"]

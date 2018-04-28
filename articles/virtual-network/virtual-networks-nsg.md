@@ -1,5 +1,5 @@
 ---
-title: Skupiny zabezpečení sítě v Azure | Dokumentace Microsoftu
+title: Skupiny zabezpečení sítě v Azure | Microsoft Docs
 description: Zjistěte, jak izolovat a řídit tok provozu ve virtuálních sítích pomocí distribuované brány firewall v Azure používající skupiny zabezpečení sítě.
 services: virtual-network
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3a581111587d0fe3cba04cd05272b3154374ce52
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ca0a1cd9766d3ad76d0fe5dd29a34ec40ea276
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Filtrování provozu sítě s použitím skupin zabezpečení sítě
 
@@ -50,8 +50,8 @@ Pravidla NSG obsahují následující vlastnosti:
 | **Protokol** |Protokol, kterému musí pravidlo odpovídat. |TCP, UDP nebo * |Použití hodnoty * jako protokolu zahrnuje protokol ICMP (pouze provoz typu East-West), UDP a TCP a může snížit počet pravidel, která budete potřebovat.<br/>Použití hodnoty * ale současně může znamenat příliš široký záběr, a proto se doporučuje ověřit, zda je použití hodnoty * skutečně nutné. |
 | **Rozsah zdrojových portů** |Rozsah zdrojových portů, kterému musí pravidlo odpovídat. |Jedno číslo portu od 1 do 65535, rozsah portů (např. 1–65535) nebo * (pro všechny porty). |Zdrojové porty můžou být dočasné. Pokud váš klientský program nepoužívá konkrétní port, ve většině případů použijte hodnotu *.<br/>Snažte se co nejvíc používat rozsahy portů, aby nebylo třeba víc pravidel.<br/>Není možné seskupit s použitím čárky více portů nebo rozsahů portů. |
 | **Rozsah cílových portů** |Rozsah cílových portů, kterému musí pravidlo odpovídat. |Jedno číslo portu od 1 do 65535, rozsah portů (např. 1–65535) nebo \* (pro všechny porty). |Snažte se co nejvíc používat rozsahy portů, aby nebylo třeba víc pravidel.<br/>Není možné seskupit s použitím čárky více portů nebo rozsahů portů. |
-| **Předpona zdrojové adresy** |Předpona zdrojové adresy nebo značka, které musí pravidlo odpovídat. |Jedna IP adresa (např. 10.10.10.10), podsíť IP (např. 192.168.1.0/24), [výchozí značka](#default-tags) nebo * (pro všechny adresy). |Zvažte použití rozsahů, výchozích značek a hodnoty *, abyste snížili počet pravidel. |
-| **Předpona cílové adresy** |Předpona cílové adresy nebo značka, které musí pravidlo odpovídat. | Jedna IP adresa (např. 10.10.10.10), podsíť IP (např. 192.168.1.0/24), [výchozí značka](#default-tags) nebo * (pro všechny adresy). |Zvažte použití rozsahů, výchozích značek a hodnoty *, abyste snížili počet pravidel. |
+| **Předpona zdrojové adresy** |Předpona zdrojové adresy nebo značka, které musí pravidlo odpovídat. |Jedna IP adresa (např. 10.10.10.10), podsíť IP (např. 192.168.1.0/24), [značka služby](#service-tags) nebo * (pro všechny adresy). |Zvažte použití rozsahů, značek služby a hodnoty *, abyste snížili počet pravidel. |
+| **Předpona cílové adresy** |Předpona cílové adresy nebo značka, které musí pravidlo odpovídat. | Jedna IP adresa (např. 10.10.10.10), podsíť IP (např. 192.168.1.0/24), [výchozí značka](#service-tags) nebo * (pro všechny adresy). |Zvažte použití rozsahů, značek služby a hodnoty *, abyste snížili počet pravidel. |
 | **Směr** |Směr provozu, kterému musí pravidlo odpovídat. |Příchozí nebo odchozí. |Pravidla pro příchozí a odchozí provoz se zpracovávají odděleně podle směru. |
 | **Priorita** |Pravidla se kontrolují v pořadí podle priority. Jakmile se pravidlo aplikuje, u dalších pravidel se už shoda nekontroluje. | Číslo v rozsahu od 100 do 4096. | Doporučujeme u jednotlivých pravidel zadávat priority v krocích po 100, aby zůstal prostor pro vytváření nových pravidel v budoucnu. |
 | **Přístup** |Typ přístupu, který se použije v případě odpovídajícího pravidla. | Povolení nebo odepření. | Pamatujte, že pokud se pro paket nenajde pravidlo povolení, paket se zahodí. |
@@ -62,36 +62,13 @@ Skupiny zabezpečení sítě obsahují dvě sady pravidel: pro příchozí provo
 
 Na obrázku je znázorněno, jak se zpracovávají pravidla skupiny zabezpečení sítě.
 
-### <a name="default-tags"></a>Výchozí značky
-Výchozí značky jsou identifikátory poskytnuté systémem, které slouží k adresování určité kategorie IP adres. Výchozí značky můžete použít u libovolného pravidla ve vlastnostech **předpona zdrojové adresy** a **předpona cílové adresy**. Existují tři výchozí značky, které můžete použít:
+### <a name="default-tags"></a>Systémové značky
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** v případě klasického modelu): Tato značka zahrnuje adresní prostor virtuální sítě (rozsahy CIDR definované v Azure) a všechny připojené místní adresní prostory a připojené virtuální sítě Azure (místní sítě).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na IP adresu datacentra Azure, kde mají původ sondy stavu služby Azure Load Balancer.
-* **Internet** (Resource Manager) (**INTERNET** v případě klasického modelu): Tato značka označuje adresní prostor IP adres, který se nachází mimo virtuální síť a je dostupný prostřednictvím veřejného internetu. Rozsah zahrnuje [veřejný prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+Značky služby jsou identifikátory poskytnuté systémem, které slouží k adresování určité kategorie IP adres. Značky služby můžete použít u libovolného pravidla zabezpečení ve vlastnostech **předpona zdrojové adresy** a **předpona cílové adresy**. Přečtěte si další informace o [značkách služby](security-overview.md#service-tags).
 
-### <a name="default-rules"></a>Výchozí pravidla
-Všechny skupiny NSG obsahují sadu výchozích pravidel. Výchozí pravidla se nedají odstranit, ale protože je jim přiřazená nejnižší priorita, dají se přepsat pravidly, která vytvoříte. 
+### <a name="default-rules"></a>Výchozí pravidla zabezpečení
 
-Výchozí pravidla povolují a zakazují provoz následujícím způsobem:
-- **Virtuální síť:** Provoz směřující z virtuální sítě a do ní je povolený v příchozím i odchozím směru.
-- **Internet:** Je povolen odchozí provoz, ale příchozí provoz je blokován.
-- **Nástroj pro vyrovnávání zatížení:** Umožňuje službě Azure Load Balancer testovat stav virtuálních počítačů a instancí rolí. Pokud toto pravidlo přepíšete, sondy stavu služby Azure Load Balancer selžou, což může mít vliv na vaši službu.
-
-**Příchozí výchozí pravidla**
-
-| Název | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | Povolit |
-| AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | Povolit |
-| DenyAllInBound |65500 | * | * | * | * | * | Odepřít |
-
-**Odchozí výchozí pravidla**
-
-| Název | Priorita | Zdrojová IP adresa | Zdrojový port | Cílová IP adresa | Cílový port | Protocol (Protokol) | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | Povolit |
-| AllowVnetOutBound | 65001 | * | * | Internet | * | * | Povolit |
-| DenyAllOutBound | 65500 | * | * | * | * | * | Odepřít |
+Všechny skupiny NSG obsahují sadu výchozích pravidel zabezpečení. Výchozí pravidla se nedají odstranit, ale protože je jim přiřazená nejnižší priorita, dají se přepsat pravidly, která vytvoříte. Přečtěte si o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules) víc.
 
 ## <a name="associating-nsgs"></a>Přidružení skupin NSG
 Skupinu zabezpečení sítě můžete přidružit k virtuálním počítačům, síťovým kartám a podsítím, a to v závislosti na modelu nasazení, který používáte, následujícím způsobem:
@@ -127,7 +104,7 @@ Skupiny zabezpečení sítě můžete implementovat v modelu nasazení Resource 
 | PowerShell     | [Ano](virtual-networks-create-nsg-classic-ps.md) | [Ano](tutorial-filter-network-traffic.md) |
 | Rozhraní příkazového řádku Azure CLI **V1**   | [Ano](virtual-networks-create-nsg-classic-cli.md) | [Ano](tutorial-filter-network-traffic-cli.md) |
 | Rozhraní příkazového řádku Azure CLI **V2**   | Ne | [Ano](tutorial-filter-network-traffic-cli.md) |
-| Šablona Azure Resource Manageru   | Ne  | [Ano](virtual-networks-create-nsg-arm-template.md) |
+| Šablona Azure Resource Manageru   | Ne  | [Ano](template-samples.md) |
 
 ## <a name="planning"></a>Plánování
 Před implementací skupin NSG je nutné odpovědět na tyto otázky:

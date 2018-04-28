@@ -1,8 +1,8 @@
 ---
-title: "Co je na přístupovém panelu v Azure Active Directory? | Dokumenty Microsoft"
-description: "Další informace o použití variace přístupový panel (webový prohlížeč, aplikace pro Android, aplikace iPhone a iPad) pro přístup k aplikacím SaaS."
+title: Co je na přístupovém panelu v Azure Active Directory? | Dokumenty Microsoft
+description: Další informace o použití variace přístupový panel (webový prohlížeč, aplikace pro Android, aplikace iPhone a iPad) pro přístup k aplikacím SaaS.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -15,11 +15,11 @@ ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3c8ea85a0906071d6b30f176de7509e5f346b513
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -50,9 +50,7 @@ Dostanete tak, že přejdete do přístupového panelu `http://myapps.microsoft.
 
 Pokud máte vlastní branding nakonfigurovaný pro přihlašovací stránku, můžete načíst branding připojením domény vaší organizace na adresu URL (například `http://myapps.microsoft.com/<your domain>.com`).
 
-Můžete použít jakýkoli název aktivní nebo ověřené domény, který byl nakonfigurován na portálu Azure, jak je vidět tady:
-
-![Název domény Wingtip Toys][2]  
+Můžete použít jakýkoli název aktivní nebo ověřené domény, který byl nakonfigurován na portálu Azure, jak je vidět tady: ![adresář Wingtip Toys název domény][2]  
 
 Distribuujte adresu URL pro všechny uživatele, kteří se přihlašují k aplikacím, které jsou integrované s Azure AD.
 
@@ -75,7 +73,7 @@ Rozšíření přístup k panelu je aktuálně dostupné pro:
 - **Hraniční**: v systému Windows 10 Anniversary Edition nebo novějším. 
 - **Chrome**: v systému Windows 7 nebo novější a v systému MacOS X nebo novější.
 - **Firefox 26.0 nebo novější**: v systému Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
-- **Internet Explorer 8, 9, 10, 11**: na Windows 7 nebo novější (omezená podpora).
+- **Internet Explorer 11**: na Windows 7 nebo novější (omezená podpora).
 
 ## <a name="my-apps-secure-sign-in-extension"></a>Rozšíření Zabezpečené přihlašování pro Moje aplikace
 Pro přihlášení k založené na heslech jednotné přihlašování, musíte použít rozšíření. Po instalaci rozšíření se můžete přihlásit se k povolení dalších funkcí výběrem **Přihlaste se k Začínáme**. 

@@ -1,11 +1,11 @@
 ---
-title: "Připojení klasické virtuální sítě k virtuálním sítím Azure Resource Manager: prostředí PowerShell | Microsoft Docs"
-description: "Vytvoření připojení VPN mezi klasické virtuální sítě a virtuální sítě Resource Manager pomocí brány sítě VPN a prostředí PowerShell."
+title: 'Připojení klasické virtuální sítě k virtuálním sítím Azure Resource Manager: prostředí PowerShell | Microsoft Docs'
+description: Vytvoření připojení VPN mezi klasické virtuální sítě a virtuální sítě Resource Manager pomocí brány sítě VPN a prostředí PowerShell.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -69,7 +69,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
 Umístění = východní USA <br>
 Název veřejné IP adresy brány = gwpip <br>
 Brána místní sítě = ClassicVNetLocal <br>
-Virtual Network Gateway name = RMGateway <br>
+Název virtuální síťová brána = RMGateway <br>
 Konfigurace adresování IP brány = gwipconfig
 
 ## <a name="createsmgw"></a>Oddíl 1 – konfigurace klasické virtuální sítě
@@ -176,7 +176,7 @@ Pokud chcete vytvořit bránu VPN pro virtuální síť RM, postupujte podle ná
 1. Přihlaste se k účtu Azure v konzole PowerShell. Následující rutiny zobrazí výzvu pro přihlašovací údaje pro účet Azure. Po přihlášení, se stáhnou nastavení svého účtu, aby byly k dispozici pro prostředí Azure PowerShell.
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   Načtěte seznam předplatných Azure.
@@ -190,7 +190,7 @@ Pokud chcete vytvořit bránu VPN pro virtuální síť RM, postupujte podle ná
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. Vytvoření brány místní sítě. Ve virtuální síti brána místní sítě obvykle odkazuje na vaše místní umístění. V takovém případě místní síťová brána odkazuje na klasické virtuální síti. Zadejte jeho název, pomocí kterého můžete Azure na ni odkazuje a také zadat předponu adresního prostoru. Azure pomocí zadané předpony IP adresy rozpozná, jaký provoz má zasílat na vaše místní umístění. Pokud potřebujete upravit informace sem později, před vytvořením brány, můžete upravit hodnoty a znovu spusťte vzorku.
+2. Vytvořte bránu místní sítě. Ve virtuální síti brána místní sítě obvykle odkazuje na vaše místní umístění. V takovém případě místní síťová brána odkazuje na klasické virtuální síti. Zadejte jeho název, pomocí kterého můžete Azure na ni odkazuje a také zadat předponu adresního prostoru. Azure pomocí zadané předpony IP adresy rozpozná, jaký provoz má zasílat na vaše místní umístění. Pokud potřebujete upravit informace sem později, před vytvořením brány, můžete upravit hodnoty a znovu spusťte vzorku.
    
    **-Název** je název, kterou chcete přiřadit k odkazování na bránu místní sítě.<br>
    **-AddressPrefix** adresní prostor je pro klasické virtuální síti.<br>

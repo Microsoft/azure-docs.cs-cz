@@ -1,11 +1,11 @@
 ---
-title: "Velikost výchozí dočasné složky je příliš malá pro role | Microsoft Docs"
-description: "Cloudové služby role má omezené množství místa pro dočasné složky. Tento článek obsahuje některé návrhy na tom, jak zamezit nedostatku místa."
+title: Velikost výchozí dočasné složky je příliš malá pro role | Microsoft Docs
+description: Cloudové služby role má omezené množství místa pro dočasné složky. Tento článek obsahuje některé návrhy na tom, jak zamezit nedostatku místa.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ab0a7c43393aab10abbce095f801afc4ebaf6b87
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 177438c4d6b416584f1797ec1ce744fc484ef688
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Velikost výchozí dočasné složky je příliš malá v roli web nebo worker cloudové služby
 Dočasný adresář výchozí role pracovního procesu nebo webové služby cloud má maximální velikost 100 MB, který může dojít k úplné v určitém okamžiku. Tento článek popisuje, jak se vyhnout nedostatku místa pro tento dočasný adresář.
@@ -69,9 +69,9 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si blog, který popisuje [jak zvětšit velikost Azure webovou roli ASP.NET dočasnou složku](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
 
-Zobrazení [řešení potíží s články](/?tag=top-support-issue&product=cloud-services) pro cloudové služby.
+Zobrazení [řešení potíží s články](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/vs-azure-tools-debugging-cloud-services-overview.md) pro cloudové služby.
 
 Informace o tom potíží cloudové služby role pomocí Azure PaaS počítače diagnostická data, zobrazit [řady blogu kevina Williamson](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.component: implement
 ms.date: 04/11/2018
 ms.author: elbutter
-ms.reviewer: jrj
-ms.openlocfilehash: 909271792b73b5fdc517847db7cfd6c8cf2092bc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: igorstan
+ms.openlocfilehash: ceda0399ae98e2a36fd41b954a741e0379c77fe7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Doporučené postupy pro používání elastické dotazu v databázi SQL Azure pro přístup k datům v Azure SQL Data Warehouse
 Přečtěte si doporučené postupy pro používání elastické dotazu pro přístup k datům v Azure SQL Data Warehouse z databáze SQL Azure. 

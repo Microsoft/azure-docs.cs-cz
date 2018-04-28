@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 09/28/2017
+ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c28af5a9773cc362663831346b58f599aed6ea9a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověření řešení služby Batch se službou Active Directory
 
@@ -65,7 +65,7 @@ Použití **koncový bod prostředků Azure Batch** získat token pro ověřová
 
 Prvním krokem při používání služby Azure AD k ověření je registrace vaší aplikace v klient služby Azure AD. Registrace aplikace umožňuje volat Azure [Active Directory Authentication Library][aad_adal] (ADAL) z vašeho kódu. Knihovnu ADAL poskytuje rozhraní API pro ověřování s Azure AD z vaší aplikace. Registrace aplikace je vyžadován plánujete použít integrované ověřování nebo hlavní název služby.
 
-Při registraci vaší aplikace, můžete zadat informace o vaší aplikaci do služby Azure AD. Potom Azure AD poskytuje ID aplikace, které použijete k aplikaci přidružit Azure AD v době běhu. Další informace o ID aplikace, najdete v části [aplikace a služby hlavní objekty ve službě Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+Při registraci vaší aplikace, můžete zadat informace o vaší aplikaci do služby Azure AD. Potom Azure AD poskytuje ID aplikací (také nazývané *ID klienta*) k přidružení aplikace Azure AD za běhu použít. Další informace o ID aplikace, najdete v části [aplikace a služby hlavní objekty ve službě Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
 
 Pro registraci aplikace Batch, postupujte podle kroků v [přidání aplikace](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) kapitoly [integrace aplikací s Azure Active Directory][aad_integrate]. Když si zaregistrujete aplikaci jako nativní aplikaci, můžete zadat libovolný platný identifikátor URI pro **identifikátor URI pro přesměrování**. Nemusí být skutečné koncový bod.
 
@@ -81,7 +81,7 @@ ID klienta identifikuje klienta Azure AD, která poskytuje služby ověřování
 
 1. Na portálu Azure vyberte vaší služby Active Directory.
 2. Klikněte na **Vlastnosti**.
-3. Zkopírujte GUID hodnota zadaná pro ID adresáře. Tato hodnota se označuje taky jako ID klienta.
+3. Zkopírujte hodnotu GUID pro zadaný **ID adresáře**. Tato hodnota se označuje taky jako ID klienta.
 
 ![Zkopírujte ID adresáře sady](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -97,17 +97,17 @@ Jakmile jste [zaregistrovat aplikaci](#register-your-application-with-an-azure-a
 
     ![Vyhledávání pro název aplikace](./media/batch-aad-auth/search-app-registration.png)
 
-3. Otevřete **nastavení** okno pro vaši aplikaci. V **přístup pomocí rozhraní API** vyberte **požadovaná oprávnění**.
+3. Klikněte na aplikaci a klikněte na tlačítko **nastavení**. V **přístup pomocí rozhraní API** vyberte **požadovaná oprávnění**.
 4. V **požadovaná oprávnění** okně klikněte **přidat** tlačítko.
-5. V kroku 1 vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
+5. V **vybrat rozhraní API**, vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Novější tenanti služby Azure AD mohou používat tento název.
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch. 
-6. Jakmile zjistíte, rozhraní API služby Batch, vyberte ho a klikněte na **vyberte** tlačítko.
-6. V kroku 2, zaškrtněte políčko vedle **služby Azure Batch přístup** a klikněte na tlačítko **vyberte** tlačítko.
-7. Klikněte **provádí** tlačítko.
+6. Jakmile zjistíte, rozhraní API služby Batch, vyberte ho a klikněte na tlačítko **vyberte**.
+7. V **vyberte oprávnění**, zaškrtněte políčko vedle **služby Azure Batch přístup** a klikněte na tlačítko **vyberte**.
+8. Klikněte na **Done** (Hotovo).
 
-**Požadovaných oprávnění** okno teď zobrazuje, vaše aplikace Azure AD má přístup k ADAL a dávky služby rozhraní API. Jsou udělena oprávnění pro knihovnu ADAL automaticky při první registraci vaší aplikace s Azure AD.
+**Požadovaných oprávnění** windows nyní zobrazuje, vaše aplikace Azure AD má přístup k ADAL a dávky služby rozhraní API. Jsou udělena oprávnění pro knihovnu ADAL automaticky při první registraci vaší aplikace s Azure AD.
 
 ![Rozhraní API udělení oprávnění](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -126,7 +126,7 @@ Pomocí těchto kroků na portálu Azure:
 
 1. V levém navigačním podokně portálu Azure, zvolte **všechny služby**. Klikněte na tlačítko **registrace aplikace**.
 2. Vyhledejte název vaší aplikace v seznamu aplikace registrací.
-3. Zobrazení **nastavení** okno. V **přístup pomocí rozhraní API** vyberte **klíče**.
+3. Klikněte na aplikaci a klikněte na tlačítko **nastavení**. V **přístup pomocí rozhraní API** vyberte **klíče**.
 4. Vytvoření klíče, zadejte popis pro klíč. Pak vyberte dobu trvání pro klíč jeden nebo dva roky. 
 5. Klikněte **Uložit** tlačítko Vytvořit a zobrazit klíč. Zkopírujte hodnotu klíče na bezpečné místo, nebudou mít přístup k ho znovu po opuštění okna. 
 
@@ -152,14 +152,14 @@ ID klienta identifikuje klienta Azure AD, která poskytuje služby ověřování
 
 1. Na portálu Azure vyberte vaší služby Active Directory.
 2. Klikněte na **Vlastnosti**.
-3. Zkopírujte GUID hodnota zadaná pro ID adresáře. Tato hodnota se označuje taky jako ID klienta.
+3. Zkopírujte hodnotu GUID pro zadaný **ID adresáře**. Tato hodnota se označuje taky jako ID klienta.
 
 ![Zkopírujte ID adresáře sady](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Příklady kódu v této části ukazují, jak k ověření s pomocí integrovaného ověřování služby Azure AD a instanční objekt. Tyto příklady kódu pomocí rozhraní .NET, ale koncepty jsou podobné jako u ostatních jazyků.
+Příklady kódu v této části ukazují, jak k ověření s pomocí integrovaného ověřování služby Azure AD a instanční objekt. Většina tyto příklady kódu pomocí rozhraní .NET, ale koncepty jsou podobné jako u ostatních jazyků.
 
 > [!NOTE]
 > Azure AD ověřovací token platnost vyprší po jedné hodině. Při použití dlohotrvající **BatchClient** objektu, doporučujeme, abyste u každého požadavku vždy máte platný token načtení tokenu z ADAL. 
@@ -205,7 +205,7 @@ Zadejte ID aplikace (ID klienta) pro vaši aplikaci. ID aplikace je k dispozici 
 private const string ClientId = "<application-id>";
 ```
 
-Taky zkopírujte identifikátor URI, který jste zadali během procesu registrace přesměrování. Přesměrování, které URI zadaný v kódu musí odpovídat přesměrování identifikátor URI, který jste zadali při registraci aplikace:
+Taky zkopírujte přesměrování identifikátor URI, který jste zadali, je-li zaregistrovat aplikaci jako nativní aplikaci. Přesměrování, které URI zadaný v kódu musí odpovídat přesměrování identifikátor URI, který jste zadali při registraci aplikace:
 
 ```csharp
 private const string RedirectUri = "http://mybatchdatasample";
@@ -296,7 +296,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Vytvořit **BatchTokenCredentials** objekt, který přebírá delegáta jako parametr. Použít tyto přihlašovací údaje k otevření **BatchClient** objektu. Můžete jej pak použít **BatchClient** objekt pro následující operace proti služba Batch:
+Vytvořit **BatchTokenCredentials** objekt, který přebírá delegáta jako parametr. Použít tyto přihlašovací údaje k otevření **BatchClient** objektu. Pak použijte **BatchClient** objekt pro následující operace proti služba Batch:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -308,6 +308,65 @@ public static async Task PerformBatchOperations()
         await client.JobOperations.ListJobs().ToListAsync();
     }
 }
+```
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Příklad kódu: objektu služby Azure AD pomocí Batch Python
+
+K ověření pomocí objektu služby z Batch Python, instalaci a odkazují [azure-batch](https://pypi.org/project/azure-batch/) a [azure běžné](https://pypi.org/project/azure-common/) moduly.
+
+
+```python
+from azure.batch import BatchServiceClient
+from azure.common.credentials import ServicePrincipalCredentials
+```
+
+Pokud používáte hlavní název služby, je nutné zadat ID klienta. Pokud chcete načíst ID klienta, postupujte podle kroků uvedených v [získání ID tenanta pro Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+
+```python
+TENANT_ID = "<tenant-id>";
+```
+
+Reference pro koncový bod prostředků služby Batch.  
+
+```python
+RESOURCE = "https://batch.core.windows.net/";
+```
+
+Referenční vašeho účtu Batch:
+
+```python
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+```
+
+Zadejte ID aplikace (ID klienta) pro vaši aplikaci. ID aplikace je k dispozici z vaší aplikace registrace na portálu Azure:
+
+```python
+CLIENT_ID = "<application-id>";
+```
+
+Zadejte tajný klíč, který jste zkopírovali z portálu Azure:
+
+```python
+SECRET = "<secret-key>";
+```
+
+Vytvoření **ServicePrincipalCredentials** objektu:
+
+```python
+credentials = ServicePrincipalCredentials(
+    client_id=CLIENT_ID,
+    secret=SECRET,
+    tenant=TENANT_ID,
+    resource=RESOURCE
+)
+```
+
+Použít pověření hlavní služby k otevření **BatchServiceClient** objektu. Pak použijte **BatchServiceClient** objekt pro následující operace proti služby Batch.
+
+```python
+    batch_client = BatchServiceClient(
+    credentials,
+    base_url=BATCH_ACCOUNT_URL
+)
 ```
 
 ## <a name="next-steps"></a>Další postup

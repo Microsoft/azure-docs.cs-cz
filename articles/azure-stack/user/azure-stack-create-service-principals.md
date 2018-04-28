@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 00bd606fc1b0d2c075789addd1b601becf7a011b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6b53e46253edc063b1b7ae94bf2fac2781a0613a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Uveďte přístup aplikace k Azure zásobníku
 
@@ -105,7 +105,7 @@ Po vytvoření objektu služby musíte [přiřadit k roli](azure-stack-create-se
 Jakmile jste přiřazenou roli, můžete přihlásit do protokolů Azure pomocí objektu služby pomocí následujícího příkazu:
 
 ```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
+Connect-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
  -ServicePrincipal `
  -CertificateThumbprint $servicePrincipal.Thumbprint `
  -ApplicationId $servicePrincipal.ApplicationId ` 

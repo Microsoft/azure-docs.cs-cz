@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: f6c79550-5803-4e13-b541-e86c4abb420b
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4ff67ebcbac5b1b85345421b16036c96f8e807cc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro Eclipse
 
@@ -71,7 +69,7 @@ Uživatel může buď [Přihlaste se k předplatnému Azure](#Sign-in-to-your-Az
    
    ![Rozšiřování název clusteru, který najdete v části prostředky](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
-## <a name="link-a-cluster"></a>Odkaz clusteru
+<h2 id="linkcluster">Odkaz clusteru</h2>
 Můžete propojit normální clusteru pomocí Ambari spravované uživatelské jméno, také propojení clusteru hadoop zabezpečení pomocí uživatelského jména domény (například: user1@contoso.com).
 1. Klikněte na tlačítko **odkaz cluster** z **Azure Explorer**.
 
@@ -97,7 +95,7 @@ Můžete propojit normální clusteru pomocí Ambari spravované uživatelské j
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Nastavení projektu pro cluster služby HDInsight Spark Spark Scala
 
 1. V pracovním prostoru Eclipse IDE vyberte **soubor**, vyberte **nový**a potom vyberte **projektu**. 
-2. V průvodci Nový projekt rozbalte **HDInsight**, vyberte **Spark v HDInsight (Scala)**a potom vyberte **Další**.
+2. V průvodci Nový projekt rozbalte **HDInsight**, vyberte **Spark v HDInsight (Scala)** a potom vyberte **Další**.
 
    ![Výběr Spark v HDInsight (Scala) projektu](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 3. Průvodce vytvořením projektu Scala automaticky zjistí, zda jste nainstalovali Scala modulu plug-in. Vyberte **OK** pokračovat ve stahování Scala modul plug-in, a pak postupujte podle pokynů k restartování prostředí Eclipse.

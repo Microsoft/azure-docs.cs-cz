@@ -2,23 +2,19 @@
 title: Prostředky pro vývoj datového skladu v Azure | Microsoft Docs
 description: Vývoj koncepty, rozhodnutí o návrhu, doporučení a kódování techniky pro SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: barbkess
-editor: ''
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: develop
-ms.date: 03/22/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: c81a6f9af556a86f10d2482333fdc98f9cfb1454
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: d9a272b2f43e080cd44b7179fe6f9dc55507142b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a kódování techniky pro SQL Data Warehouse
 Prohlédněte si prostřednictvím tyto články vývoj lépe pochopit klíčových rozhodnutí, doporučení a kódování techniky pro SQL Data Warehouse.
@@ -33,7 +29,7 @@ V následujících článcích zvýrazněte koncepty a rozhodnutí o návrhu pro
 * [distribuce tabulky][table distribution]
 * [indexy tabulek][table indexes]
 * [Tabulka oddílů][table partitions]
-* [CTAS][CTAS]
+* [FUNKCE CTAS][CTAS]
 * [Statistiky][statistics]
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Doporučení pro vývoj a techniky kódování

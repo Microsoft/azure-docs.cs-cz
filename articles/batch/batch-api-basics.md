@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -79,10 +79,15 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 ## <a name="azure-storage-account"></a>Účet služby Azure Storage
 
-Většina řešení Batch pro ukládání souborů prostředků a výstupních souborů používá službu Azure Storage.  
+Většina řešení Batch pro ukládání souborů prostředků a výstupních souborů používá službu Azure Storage. Například úkoly služby Batch (včetně standardních úkolů, spouštěcích úkolů, úkolů přípravy úloh a úkolů uvolnění úloh) obvykle určují soubory prostředků, které jsou umístěné v účtu úložiště.
 
-Služba Batch aktuálně podporuje jenom účty úložiště pro obecné účely, jak popisuje krok 5 části [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) v tématu [Informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md). Úkoly služby Batch (včetně standardních úkolů, spouštěcích úkolů, úkolů přípravy úloh a úkolů uvolnění úloh) musí určovat soubory prostředků, které jsou umístěné jenom v účtech úložiště pro obecné účely.
+Služba Batch podporuje následující [možnosti účtu](../storage/common/storage-account-options.md) Azure Storage:
 
+* Účty pro obecné účely verze 2 (GPv2) 
+* Účty pro obecné účely verze 1 (GPv1)
+* Účty úložiště Blob
+
+Účet úložiště můžete ke svému účtu Batch přidružit při vytváření účtu Batch nebo později. Při výběru účtu úložiště zvažte své požadavky na náklady a výkon. Například možnosti účtu úložiště GPv2 a účtu úložiště objektů blob podporují ve srovnání s účty GPv1 vyšší [limity kapacity a škálovatelnosti](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Pokud chcete požádat o navýšení limitu úložiště, kontaktujte podporu Azure.) Tyto možnosti účtu můžou zlepšit výkon řešení Batch obsahujících velký počet paralelních úloh, které provádějí čtení z nebo zápis do účtu úložiště.
 
 ## <a name="compute-node"></a>Výpočetní uzel
 Výpočetní uzel je virtuální počítač Azure nebo virtuální počítač cloudové služby, který je vyhrazený pro zpracování části úloh vaší aplikace. Velikost uzlu určuje počet jader procesoru, kapacita paměti a velikost místního systému souborů, který je přidělen k uzlu. Fondy uzlů Windows nebo Linux můžete vytvořit pomocí služby Azure Cloud Services, imagí z webu [Azure Virtual Machines Marketplace][vm_marketplace] nebo vlastních imagí, které připravíte. Další informace o těchto možnostech najdete v následující části [Fond](#pool).
@@ -252,7 +257,7 @@ Při vytvoření úkolu můžete zadat:
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     Pokud vaše úkoly potřebují spustit aplikaci nebo skript, které nejsou v `PATH` uzlu nebo v referenčních proměnných prostředí, vyvolejte shell explicitně v příkazovém řádku úkolu.
-* **Soubory prostředků** obsahující data, která mají být zpracována. Tyto soubory se před provedením příkazového řádku úkolu automaticky zkopírují do uzlu ze služby Blob Storage v účtu Azure Storage pro obecné účely. Další informace najdete v částech [Spouštěcí úkol](#start-task) a [Soubory a adresáře](#files-and-directories).
+* **Soubory prostředků** obsahující data, která mají být zpracována. Tyto soubory se před provedením příkazového řádku úkolu automaticky zkopírují do uzlu z úložiště objektů blob v účtu Azure Storage. Další informace najdete v částech [Spouštěcí úkol](#start-task) a [Soubory a adresáře](#files-and-directories).
 * **Proměnné prostředí**, které jsou požadovány příslušnou aplikací. Další informace najdete v části [Nastavení prostředí pro úkoly](#environment-settings-for-tasks).
 * **Omezení**, za kterých by měl být proveden úkol. Mezi omezení patří například: maximální doba, po kterou smí úkol běžet, maximální počet pokusů o opakování neúspěšného úkolu a maximální doba, po kterou jsou zachovány soubory v pracovním adresáři úkolu.
 * **Balíčky aplikací** pro nasazení do výpočetního uzlu, na kterém je naplánováno spuštění úkolu. [Balíčky aplikací](#application-packages) poskytují možnost zjednodušeného nasazení a správy verzí aplikací, které provádějí vaše úkoly. Balíčky aplikací na úrovni úkolů jsou zvláště užitečné v prostředích sdíleného fondu, kde se různé úlohy spouštějí v jednom fondu a kde se fond po dokončení úlohy neodstraňuje. Pokud má vaše úloha méně úkolů, než je uzlů ve fondu, balíčky aplikací úkolů můžou omezit přenosy dat, protože se aplikace může nasadit jen na uzly, které úkoly budou skutečně provádět.

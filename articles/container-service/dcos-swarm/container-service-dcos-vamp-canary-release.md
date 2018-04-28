@@ -1,19 +1,19 @@
 ---
 title: Lesknice verze s Vamp na clusteru Azure DC/OS
-description: "Pomocí Vamp lesknice verze služby a použití inteligentního provoz filtrování v clusteru Azure Container Service DC/OS"
+description: Pomocí Vamp lesknice verze služby a použití inteligentního provoz filtrování v clusteru Azure Container Service DC/OS
 services: container-service
 author: gggina
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e23b316311ff88d1587da8d5ef777b91bfe0a2e9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Lesknice verze mikroslužeb s Vamp v clusteru Azure Container Service DC/OS
 
@@ -132,7 +132,7 @@ Tento scénář používá ukázkovou aplikaci monolitický názvem [ **Sávy**]
 
 1. Přejděte na **nasazení**.
 
-2. Klikněte na tlačítko **Přidat**.
+2. Klikněte na tlačítko **Add** (Přidat).
 
 3. Vložte následující matrici YAML. Tento plán, podle kterého obsahuje jeden cluster s variant pouze jedna služba, která nám změnit později:
 
@@ -286,7 +286,7 @@ Tento článek byl rychlý úvod do Vamp na cluster DC/OS. Pro začátek jste z�
 Můžeme také dotýkal na některé výkonné funkce Vamp: slučování hodnotu typu variant nové služby pro nasazení spuštěného a jeho zavedení postupně, pak filtrování provozu řešení známých nekompatibilita.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o správě Vamp akce prostřednictvím [Vamp REST API](http://vamp.io/documentation/api/api-reference/).
 

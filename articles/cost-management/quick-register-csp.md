@@ -1,20 +1,20 @@
 ---
-title: Registrace ve službě Azure Cost Management s použitím informací o partnerovi CSP | Dokumentace Microsoftu
+title: Registrace ve službě Azure Cost Management s použitím informací o partnerovi CSP | Microsoft Docs
 description: Použijte své informace o partnerovi CSP k registraci ve službě Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9e09961685ad688098970ae4ea73e1a90f6a95ca
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
@@ -34,7 +34,7 @@ Další informace najdete v tématu [Připojení k rozhraní API partnerského c
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
-## <a name="create-a-trial-registration"></a>Vytvoření registrace zkušební verze
+## <a name="register-with-azure-cost-management"></a>Registrace v Azure Cost Management
 
 1. Na webu Azure Portal klikněte v seznamu služeb na **Cost Management a fakturace**.
 2. V části **Přehled** klikněte na **Cost Management**.  

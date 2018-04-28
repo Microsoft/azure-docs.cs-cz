@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace prostředí PowerShell Azure zásobníku operátor | Microsoft Docs"
-description: "Informace o konfiguraci Azure zásobníku operátor prostředí PowerShell."
+title: Konfigurace prostředí PowerShell Azure zásobníku operátor | Microsoft Docs
+description: Informace o konfiguraci Azure zásobníku operátor prostředí PowerShell.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 37D9CAC9-538B-4504-B51B-7336158D8A6B
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 57aa5a1ccc45548c3e789b50c888f669df39d5f1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a8ab52de6c57e84bb2c90ce6bcf53ef1b92e30af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-the-azure-stack-operators-powershell-environment"></a>Konfigurace prostředí PowerShell Azure zásobníku operátor
 
@@ -48,7 +48,7 @@ $TenantID = Get-AzsDirectoryTenantId -AADTenantName "<mydirectorytenant>.onmicro
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
-Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 ````
 
 
@@ -63,7 +63,7 @@ $TenantID = Get-AzsDirectoryTenantId -ADFS -EnvironmentName AzureStackAdmin
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
-Login-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 ````
 
 ## <a name="test-the-connectivity"></a>Testovací připojení

@@ -2,23 +2,20 @@
 title: Konfigurace projektu Azure pomocí více konfigurace služby | Microsoft Docs
 description: Zjistěte, jak nakonfigurovat změnou ServiceDefinition.csdef, ServiceConfiguration.Local.cscfg a ServiceConfiguration.Cloud.cscfg souborů projektu Azure cloud service.
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: a4fb79ed-384f-4183-9f74-5cac257206b9
-ms.service: multiple
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: a4fb79ed-384f-4183-9f74-5cac257206b9
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 919568922ada2d842233ade029a54d474b4a1a0e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9047d7a8a6efdd41a48b6fa83b43a8c87d05d1de
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurace projektu Azure v sadě Visual Studio používat více konfigurace služby
 

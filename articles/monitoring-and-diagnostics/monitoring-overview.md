@@ -1,7 +1,7 @@
 ---
 title: Monitorování aplikací Azure a prostředky | Microsoft Docs
 description: Přehled služby společnosti Microsoft a funkce, které přispívají k dokončení monitorování strategii pro Azure služby a aplikace.
-author: robb
+author: rboucher
 manager: carmonm
 editor: ''
 services: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: c20e97e445dc79bdb65dcde40d323989005f5f5d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorování aplikací Azure a prostředky
 
@@ -63,9 +63,9 @@ Metriky, které jsou k dispozici, zadejte statistiku výkonu pro různé prostř
 Můžete také odeslat tyto metriky a trendů a podrobné analýzy protokolů Azure Log Analytics nebo vytvořit další pravidla výstrah jako proaktivně upozornění na důležité problémy v důsledku této analýzy.  
 
 > [!NOTE]
-> Odesílání vícerozměrných metriky k analýze protokolů prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+> Odesílání vícerozměrných metriky k analýze protokolů prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu k analýze protokolů metriku zastoupení jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
+> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Ale při exportu k analýze protokolů metriku zastoupení jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
 >
 >
 
@@ -161,6 +161,6 @@ Po výpadku hlášené pomocí mapy služeb provádět forenzní můžete identi
 ## <a name="next-steps"></a>Další postup
 Další informace o:
 
-* [Azure monitorování](https://azure.microsoft.com/en-us/services/monitor/) začít pracovat s základní metriky a výstrahy monitorování.
+* [Azure monitorování](https://azure.microsoft.com/services/monitor/) začít pracovat s základní metriky a výstrahy monitorování.
 * [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Pokud se snažíte diagnostikovat problémy ve vaší webové aplikaci služby App Service.
 * [Analýza protokolu](https://azure.microsoft.com/documentation/services/log-analytics/) pro analýzu shromážděná data monitorování a protokoly.

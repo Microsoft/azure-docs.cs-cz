@@ -3,21 +3,20 @@ title: Transformace dat pomocí aktivity uložené procedury v Azure Data Factor
 description: Vysvětluje, jak vyvolat uloženou proceduru v databázi nebo datový sklad SQL Azure z objektu pro vytváření dat kanál pomocí aktivity uložené procedury aplikace SQL Server.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 84ef1e48de17db6f8b3b6fa4bdea2b5ef0f2efe6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 729974d37351c12f551e165567bb11467a0dd963
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložené procedury serveru SQL v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +35,7 @@ Aktivita uložené procedury můžete vyvolat uloženou proceduru v jednom z ná
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server Database.  Pokud používáte systém SQL Server, nainstalujte modul runtime vlastním hostováním integrace ve stejném počítači, který je hostitelem databáze nebo na samostatný počítač, který má přístup k databázi. Integrace s vlastním hostováním runtime je, že komponenty, která připojí datového zdroje na místní nebo na virtuální počítač Azure s cloudovými službami v zabezpečený a spravovaný. V tématu [hostovanou na vlastním integrace runtime](create-self-hosted-integration-runtime.md) článku.
+- Databáze systému SQL Server.  Pokud používáte systém SQL Server, nainstalujte modul runtime vlastním hostováním integrace ve stejném počítači, který je hostitelem databáze nebo na samostatný počítač, který má přístup k databázi. Integrace s vlastním hostováním runtime je, že komponenty, která připojí datového zdroje na místní nebo na virtuální počítač Azure s cloudovými službami v zabezpečený a spravovaný. V tématu [hostovanou na vlastním integrace runtime](create-self-hosted-integration-runtime.md) článku.
 
 > [!IMPORTANT]
 > Při kopírování dat do Azure SQL Database nebo SQL Server, můžete nakonfigurovat **SqlSink** v aktivitě kopírování k vyvolání uložené procedury pomocí **sqlWriterStoredProcedureName** vlastnost. Podrobnosti o vlastnosti, viz následující články konektor: [Azure SQL Database](connector-azure-sql-database.md), [systému SQL Server](connector-sql-server.md). Volání uložené procedury při kopírování dat do Azure SQL Data Warehouse pomocí aktivity kopírování není podporována. Ale aktivity uložené procedury můžete vyvolat uloženou proceduru v SQL Data Warehouse. 

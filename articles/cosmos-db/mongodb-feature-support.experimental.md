@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
 ms.openlocfilehash: 0bae274a7bf849267aed92d1372bc26e86227cb2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
@@ -41,7 +41,7 @@ Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům r
 - getLastError
 - getMore
 - Vložení
-- update
+- Aktualizace
 
 ### <a name="authentication-commands"></a>Příkazy ověřování
 - odhlásit
@@ -58,7 +58,7 @@ Azure Cosmos DB podporuje následující databáze příkazy ke všem účtům r
 - listIndexes
 - dropIndexes
 - ConnectionStatus
-- reIndex
+- Opětovná indexace
 
 ### <a name="diagnostics-commands"></a>Příkazy diagnostiky
 - buildInfo

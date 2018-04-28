@@ -1,24 +1,19 @@
 ---
-title: "Upgrade na rozhraní API služby Azure Search služby REST verze 2016-09-01 | Microsoft Docs"
-description: "Upgrade na rozhraní API služby Azure Search služby REST verze 2016-09-01"
-services: search
-documentationcenter: 
+title: Upgrade na rozhraní API služby Azure Search služby REST verze 2016-09-01 | Microsoft Docs
+description: Upgrade na rozhraní API služby Azure Search služby REST verze 2016-09-01
 author: brjohnstmsft
-manager: pablocas
-editor: 
-ms.assetid: 6183fa6c-48bb-4af7-adae-4be3bc43c3ed
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: brjohnst
-ms.openlocfilehash: f6a189c2e314b91c490583a86d8bacca8ec78a0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: ea901462677d42d90007a2130825bd3b382407f2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrading-to-the-azure-search-service-rest-api-version-2016-09-01"></a>Upgrade na rozhraní API služby Azure Search služby REST verze 2016-09-01
 Pokud používáte verze 2015-02-28 nebo 2015-02-28 – Náhled [rozhraní REST API služby Azure Search](https://msdn.microsoft.com/library/azure/dn798935.aspx), tento článek vám pomůže při upgradu aplikace k používání všeobecně dostupná verze rozhraní API 2016-09-01.

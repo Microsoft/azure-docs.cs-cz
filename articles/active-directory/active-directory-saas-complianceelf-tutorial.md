@@ -1,10 +1,10 @@
 ---
-title: "Kurz: Azure Active Directory integrace s ELF dodržování předpisů | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ELF dodržování předpisů."
+title: 'Kurz: Azure Active Directory integrace s ELF dodržování předpisů | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ELF dodržování předpisů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f05c43e2d8f6e777ae128e90040d8d5c270c212b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 32cb676393558079baad9bb0fc26d2c4daaa3519
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Kurz: Azure Active Directory integrace s ELF dodržování předpisů
 
@@ -101,52 +101,33 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_samlbase.png)
 
 3. Na **domény ELF dodržování předpisů a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
 
     ![Dodržování předpisů ELF domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL jako:`https://sso.cordium.com`
+    V **identifikátor** textovému poli, zadejte adresu URL jako: `https://sso.cordium.com`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Dodržování předpisů ELF domény a adresy URL jednotného přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.complianceelf.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.complianceelf.com`
     
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tento hodnoty s skutečná adresa URL přihlašování. Obraťte se na [tým podpory dodržování předpisů ELF](mailto:support@complianceelf.com) získat tuto hodnotu.
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+    
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_metadataurl.png)
+     
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-complianceelf-tutorial/tutorial_general_400.png)
 
-6. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **dodržování předpisů ELF** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-complianceelf-tutorial/tutorial_complianceelf_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Konfigurace jednotného přihlašování na **dodržování předpisů ELF** straně, budete muset odeslat **adresu URL metadat** k [tým podpory dodržování předpisů ELF](mailto:support@complianceelf.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Konfigurace jednotného přihlašování na **ELF dodržování předpisů** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory dodržování předpisů ELF](mailto:support@complianceelf.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -221,7 +202,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici ELF dodržování předpisů na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ELF dodržování předpisů.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

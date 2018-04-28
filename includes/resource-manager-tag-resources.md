@@ -22,3 +22,10 @@
 7. Abyste zobrazili prostředky s určitou značkou, můžete vybrat připnutou značku z řídicího panelu.
 
      ![Připnutí značek na řídicí panel](./media/resource-manager-tag-resources/show-pinned-tag.png)
+
+
+Chcete-li hromadně přiřadit značky k více prostředkům:
+1. Z libovolného seznamu prostředků (např. všech prostředků, prostředků skupiny oveview);
+2. Zaškrtněte políčko pro prostředky, které chcete přiřadit značky;
+3. Vyberte možnost přiřazovat značky;
+4. Přidat názvy a hodnoty a vyberte přiřazení.

@@ -1,24 +1,19 @@
 ---
-title: "Indexování objekty BLOB JSON s indexer objektu blob Azure Search"
-description: "Indexování objekty BLOB JSON s indexer objektu blob Azure Search"
-services: search
-documentationcenter: 
+title: Indexování objekty BLOB JSON s indexer objektu blob Azure Search
+description: Indexování objekty BLOB JSON s indexer objektu blob Azure Search
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 57e32e51-9286-46da-9d59-31884650ba99
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: eugenesh
-ms.openlocfilehash: 2dac2c5980970946a6b9c26ee6ee8ac0f0344144
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
-ms.translationtype: MT
+ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objekty BLOB JSON s indexer objektu blob Azure Search
 Tento článek ukazuje, jak nakonfigurovat indexer Azure Search objektů blob k extrahování strukturovaných obsahu z JSON objektů BLOB v Azure Blob storage.
@@ -216,9 +211,9 @@ V následujícím příkladu je datové části plně zadaný indexer, včetně 
 ## <a name="help-us-make-azure-search-better"></a>Pomozte nám vylepšit Azure Search
 Pokud máte žádosti o funkce nebo vylepšení nápady, oslovení nám na našem [UserVoice lokality](https://feedback.azure.com/forums/263029-azure-search/).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Indexery ve službě Azure Search](search-indexer-overview.md)
 + [Indexování úložiště objektů Blob v Azure s Azure Search](search-howto-index-json-blobs.md)
 + [Indexování CSV objekty BLOB se indexer objektu blob Azure Search](search-howto-index-csv-blobs.md)
-+ [Kurz: Vyhledávání částečně strukturovaných dat z Azure Blob storage](search-semi-structured-data.md)
++ [Kurz: Vyhledávání částečně strukturovaných dat z Azure Blob storage ](search-semi-structured-data.md)

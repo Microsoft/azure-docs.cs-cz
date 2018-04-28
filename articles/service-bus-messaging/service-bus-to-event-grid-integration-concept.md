@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 1da2b6568125c61db2c4dda3bd81abb8f1a59ec7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fbea3d4b6bb82ac002550434d737f27c441d439e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -47,9 +47,9 @@ Service Bus v současné době odesílá události pro dva scénáře:
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
 
-Kromě toho využívá Service Bus standardní [mechanismy ověřování](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication) a zabezpečení služby Event Grid.
+Kromě toho využívá Service Bus standardní [mechanismy ověřování](https://docs.microsoft.com/azure/event-grid/security-authentication) a zabezpečení služby Event Grid.
 
-Další informace najdete v tématu [Schémata událostí služby Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/event-schema).
+Další informace najdete v tématu [Schémata událostí služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
 
 #### <a name="active-messages-available-event"></a>Událost Active Messages Available (Jsou k dispozici aktivní zprávy)
 
@@ -138,7 +138,7 @@ Nový odběr služby Event Grid vytvoříte následovně:
 
 ## <a name="azure-cli-instructions"></a>Pokyny pro Azure CLI
 
-Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 Spusťte následující kód:
 
@@ -154,7 +154,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>Pokyny pro PowerShell
 
-Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 ```PowerShell-interactive
 Connect-AzureRmAccount
@@ -175,10 +175,10 @@ Teď můžete prozkoumat další možnosti instalace nebo [otestovat tok událos
 ## <a name="next-steps"></a>Další kroky
 
 * [Příklady](service-bus-to-event-grid-integration-example.md) pro službu Service Bus a Event Grid.
-* Další informace o službě [Event Grid](https://docs.microsoft.com/en-us/azure/azure-functions/).
-* Další informace o službě [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/).
-* Další informace o [Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/).
-* Další informace o službě [Service Bus](https://docs.microsoft.com/en-us/azure/azure-functions/).
+* Další informace o službě [Event Grid](https://docs.microsoft.com/azure/azure-functions/).
+* Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
+* Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
+* Další informace o službě [Service Bus](https://docs.microsoft.com/azure/azure-functions/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

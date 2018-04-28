@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření účtu Batch na webu Azure Portal | Dokumentace Microsoftu"
-description: "Naučte se vytvořit účet Azure Batch na webu Azure Portal, abyste mohli spouštět velké paralelní úlohy v cloudu."
+title: Vytvoření účtu Batch na webu Azure Portal | Dokumentace Microsoftu
+description: Naučte se vytvořit účet Azure Batch na webu Azure Portal, abyste mohli spouštět velké paralelní úlohy v cloudu.
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Knihovna Batch Management .NET](batch-management-dotnet.md)
 >
 >
@@ -58,7 +58,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     d. **Umístění**: Oblast Azure, ve které chcete účet Batch vytvořit. Jako možnosti se zobrazí jenom oblasti, které podporuje vaše předplatné a skupina prostředků.
 
-    e. **Účet úložiště** (volitelné): Účet úložiště Azure pro obecné účely, který přidružíte k účtu Batch. Toto nastavení se doporučuje pro většinu účtů Batch. Další informace najdete v části [Propojený účet Azure Storage](#linked-azure-storage-account) dále v tomto článku.
+    e. **Účet úložiště** (volitelné): Účet Azure Storage, který přidružíte k účtu Batch. Toto nastavení se doporučuje pro většinu účtů Batch. Další informace najdete v části [Propojený účet Azure Storage](#linked-azure-storage-account) dále v tomto článku.
 
 4. Kliknutím na **Vytvořit** vytvořte účet.
 
@@ -85,11 +85,11 @@ Po vytvoření účtu na něj klikněte pro přístup k jeho nastavením a vlast
 
 ## <a name="linked-azure-storage-account"></a>Propojený účet Azure Storage
 
-S účtem Batch můžete propojit účet Azure Storage pro obecné účely, což je užitečné pro řadu scénářů. Funkce [balíčků aplikací](batch-application-packages.md) služby Batch využívá úložiště objektů blob v Azure, stejně jako knihovna [.NET Batch File Conventions](batch-task-output.md). Tyto volitelné funkce vám pomohou při nasazení aplikací spouštěných vašimi úkoly Batch a při zachování jimi vytvářených dat.
+S účtem Batch můžete propojit účet Azure Storage, což je užitečné pro řadu scénářů. Funkce [balíčků aplikací](batch-application-packages.md) služby Batch využívá úložiště objektů blob v Azure, stejně jako knihovna [.NET Batch File Conventions](batch-task-output.md). Tyto volitelné funkce vám pomohou při nasazení aplikací spouštěných vašimi úkoly Batch a při zachování jimi vytvářených dat.
 
-Doporučujeme vytvořit nový účet úložiště pro výhradní použití vaším účtem Batch. Azure Batch momentálně podporuje pouze typ účtu úložiště pro obecné účely. Tento typ účtu je popsaný v kroku 5 – [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) v článku [Informace o účtech úložiště Azure](../storage/common/storage-create-storage-account.md).
+Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
 
-![Vytvoření účtu úložiště pro obecné účely][storage_account]
+![Vytváření účtu úložiště][storage_account]
 
 > [!NOTE]
 > Při obnovování přístupových klíčů v propojeném účtu úložiště buďte velmi opatrní. Obnovte vždycky jenom jeden klíč účtu úložiště a na stránce propojeného účtu úložiště klikněte na **Synchronizovat klíče**. Počkejte 5 minut, aby se klíče rozšířily do výpočetních uzlů ve fondech, a potom v případě potřeby znovu vygenerujte a synchronizujte další klíč. Pokud byste obnovili (znovu vygenerovali) oba klíče najednou, výpočetní uzly by nedokázaly synchronizovat ani jeden klíč a vy byste ztratili přístup k účtu úložiště.

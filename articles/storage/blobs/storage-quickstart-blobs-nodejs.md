@@ -1,19 +1,19 @@
 ---
-title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Node.js | Microsoft Docs
-description: V tomto rychlém startu vytvoříte účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Node.js k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Node.js | Microsoft Docs
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Node.js k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js
 
@@ -82,7 +82,7 @@ const storage = require('azure-storage');
 - Modul *dotenv* načte proměnné prostředí definované v souboru *.env* do aktuálního kontextu spuštění.
 - Modul *path* se vyžaduje k určení absolutní cesty k souboru, který se má nahrát do úložiště objektů blob.
 - Modul *yargs* zveřejňuje jednoduché rozhraní pro přístup k argumentům příkazového řádku.
-- Modul *azure-storage* je modul sady [SDK služby Azure Storage](/nodejs/api/azure-storage) pro Node.js.
+- Modul *azure-storage* je modul sady [SDK služby Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) pro Node.js.
 
 Dále se inicializuje sada proměnných:
 
@@ -294,4 +294,4 @@ Tyto rychlé starty ukazují, jak odeslat soubor mezi místním diskem a úloži
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](storage-nodejs-how-to-use-blob-storage.md)
 
-Referenční informace k Node.js pro službu Azure Storage najdete v [balíčku azure-storage](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest).
+Referenční informace k Node.js pro službu Azure Storage najdete v [balíčku azure-storage](https://docs.microsoft.com/javascript/api/azure-storage).

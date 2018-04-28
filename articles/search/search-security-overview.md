@@ -1,24 +1,18 @@
 ---
 title: Zabezpečení dat a operace ve službě Azure Search | Microsoft Docs
 description: Zabezpečení služby Azure Search podle SOC 2 dodržování předpisů, šifrování, ověřování a identita přístupu pomocí uživatele a skupiny identifikátory zabezpečení v Azure Search filtry.
-services: search
-documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: ''
-ms.assetid: ''
+services: search
 ms.service: search
-ms.devlang: ''
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 95c1f209d51093c3f2bf2555f987983a85f2bf09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Zabezpečení a řízený přístup do služby Azure Search
 

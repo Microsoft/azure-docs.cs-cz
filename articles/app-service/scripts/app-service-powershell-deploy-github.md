@@ -1,11 +1,11 @@
 ---
-title: "Ukázkový skript prostředí PowerShell Azure – vytvoření webové aplikace a nasazení kódu z Githubu | Microsoft Docs"
-description: "Ukázkový skript prostředí PowerShell Azure – vytvoření webové aplikace a nasazení kódu z Githubu"
+title: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu z GitHubu | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu z GitHubu
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 573766f4b1256ec0ba85edd3742b16684db4bd10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 0fbda001d86c63c6ec045f7a3ac5ec1d10e15fe4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="create-a-web-app-and-deploy-code-from-github"></a>Vytvoření webové aplikace a nasazení kódu z Githubu
+# <a name="create-a-web-app-and-deploy-code-from-github"></a>Vytvoření webové aplikace a nasazení kódu z GitHubu
 
-Tento ukázkový skript vytvoří webovou aplikaci ve službě App Service se jeho souvisejících prostředků a poté nasadí kódu webové aplikace z veřejného úložiště GitHub (bez průběžné nasazování). Nasazení Githubu se průběžné nasazování, najdete v tématu [vytvořit webovou aplikaci s průběžné nasazování z Githubu](app-service-powershell-continuous-deployment-github.md).
+Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak nasadí kód vaší webové aplikace z veřejného úložiště GitHub (bez průběžného nasazování). Informace o nasazení z GitHubu s průběžným nasazováním najdete v tématu [Vytvoření webové aplikace s průběžným nasazováním z GitHubu](app-service-powershell-continuous-deployment-github.md).
 
-V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukce v nalezen [prostředí Azure PowerShell průvodce](/powershell/azure/overview)a poté spusťte `Login-AzureRmAccount` vytvořit připojení s Azure. Také je třeba odkaz na úložiště GitHub obsahující kódu webové aplikace.
+V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Connect-AzureRmAccount` vytvořte připojení k Azure. Potřebujete také odkaz na úložiště GitHub obsahující kód webové aplikace.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -33,7 +33,7 @@ V případě potřeby nainstalujte prostředí Azure PowerShell pomocí instrukc
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků, webové aplikace a všechny související prostředky.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků, webovou aplikaci a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -41,17 +41,17 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nový AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. |
-| [Nové AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Vytvoří plán služby App Service. |
-| [Nové AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upravuje prostředků ve skupině prostředků. |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Vytvoří plán služby App Service. |
+| [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
+| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upraví prostředek ve skupině prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky prostředí Azure Powershell pro Azure App Service Web Apps naleznete v [prostředí Azure PowerShell ukázky](../app-service-powershell-samples.md).
+Další ukázky Azure PowerShellu pro Azure App Service Web Apps najdete v [ukázkách Azure PowerShellu](../app-service-powershell-samples.md).

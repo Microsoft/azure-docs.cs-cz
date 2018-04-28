@@ -1,8 +1,8 @@
 ---
-title: "Konfigurace brány firewall úložiště Azure a virtuální sítě | Microsoft Docs"
-description: "Konfigurace zabezpečení sítě vrstev pro váš účet úložiště."
+title: Konfigurace brány firewall úložiště Azure a virtuální sítě | Microsoft Docs
+description: Konfigurace zabezpečení sítě vrstev pro váš účet úložiště.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: cbrooksmsft
 manager: cbrooks
 editor: cbrooks
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52d904e7a7e8e5d520d2abd799ef0ae7e99b9894
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace brány firewall úložiště Azure a virtuální sítě
 Úložiště Azure poskytuje vrstvený model zabezpečení umožňuje zabezpečit účtů úložiště na konkrétní sadu povolených sítí.  Pokud jsou nakonfigurovaná pravidla pro sítě, můžete jenom aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolených sítě, aplikace dál vyžadují správné autorizace (platný přístupový klíč nebo tokenu SAS) pro přístup k účtu úložiště.
@@ -37,11 +37,9 @@ Po síti pravidla se používají, se vynucuje pro všechny požadavky.  Tokeny 
 
 Přenosy disku virtuálního počítače (včetně připojení a odpojení operace a vstupně-výstupních operací na disku) je **není** vliv na pravidla sítě.  Pravidla pro sítě je chráněn REST přístup k objekty BLOB stránky.
 
-> [!NOTE]
-> Zálohování a obnovení virtuálních počítačů pomocí nespravované disků v účtech úložiště s pravidly sítě, použije se aktuálně nepodporuje.  Další informace najdete v tématu [omezení při zálohování a obnovení virtuálních počítačů](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)
->
-
 Klasické účty úložiště **nepodporují** podporu brány firewall a virtuální sítě.
+
+Zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště použít pravidla pro sítě je podporována prostřednictvím vytváření výjimku, jak je uvedeno v [výjimky](/storage/common/storage-network-security#exceptions) tohoto článku.  Výjimky brány firewall se nedají použít s spravované disky, jako jsou již spravovány nástrojem Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Změňte výchozí pravidlo přístupu k síti
 Ve výchozím nastavení účty úložiště přijmout připojení z klientů v síti.  Omezit přístup k vybrané sítě, musíte nejdřív změnit výchozí akci.
@@ -291,6 +289,7 @@ Pokud výjimky "Důvěryhodné služby Microsoft" je povoleno, tyto služby (př
 
 |Služba|Název zprostředkovatele prostředků|Účel|
 |:------|:---------------------|:------|
+|Azure Backup|Microsoft.Backup|Proveďte zálohování a obnovení nespravované disků v virtuální počítače IAAS. (není potřeba pro spravované disky). [Další informace](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Vytváření a artefaktů instalace vlastní image.  [Další informace](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|Povolte publikování událostí úložiště objektů Blob.  [Další informace](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archivní data s zaznamenat centra událostí.  [Další informace](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|

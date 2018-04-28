@@ -1,12 +1,12 @@
 ---
-title: "Služby App Service v Azure zásobníku: poruch aktualizace domény | Microsoft Docs"
-description: "Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání"
+title: 'Služby App Service v Azure zásobníku: poruch aktualizace domény | Microsoft Docs'
+description: Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 851747263879aa89fabe8b168876238a004ea8b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 34823b856b48af66ab81dda3359d2e50289f8d2f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
 
@@ -55,7 +55,7 @@ Chcete-li znovu distribuovat sady škálování nasazuje pro poskytovatele prost
 2. Každá sada škálování Další.  Například pokud máte tři existující instance v sadě škálování musí vertikální navýšení kapacity 6 tak, aby tři nové instance, se zřídí napříč doménami selhání.
     a. [Nastavení prostředí správce Azure zásobníku v prostředí PowerShell](azure-stack-powershell-configure-admin.md) b. Použijte tento příklad pro rozšíření Škálováním škálovací sadu:
         ```powershell
-                Login-AzureRMAccount -EnvironmentName AzureStackAdmin 
+                Connect-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
                 # Get current scale set
                 $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
@@ -77,7 +77,7 @@ Chcete-li znovu distribuovat sady škálování nasazuje pro poskytovatele prost
 
 5. Opakujte tyto kroky pro **každý** škálovací sadu virtuálních počítačů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete také zkusit dalších [platforma jako služba (PaaS) služby](azure-stack-tools-paas-services.md).
 

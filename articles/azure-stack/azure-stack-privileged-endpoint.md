@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f176e0689c630a406ab6e2f82e9320a214ff8a1a
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9fb928b7cb8e1a83734b64a8b9c19bc3cf3203ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegované koncový bod v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Jako operátor zásobník Azure měli byste použít správce portálu, prostředí PowerShell nebo rozhraní API Správce Azure Resource Manageru pro nejvíce každodenní úlohy správy. Ale pro některé méně běžné operace, budete muset použít *privilegované koncový bod* (období). OBDOBÍ je předem nakonfigurovaný vzdálené konzoly prostředí PowerShell, který poskytuje akorát, funkce, které vám pomohou provést požadované úlohy. Koncový bod používá [JEA prostředí PowerShell (jen dostatečně správy)](https://docs.microsoft.com/en-us/powershell/jea/overview) vystavit jenom omezenou sadu rutin. Pro přístup období a vyvolání omezenou sadu rutin, se používá účet s nízkou úrovní oprávnění. Jsou vyžadovány žádné účty správce. Pro dodatečné zabezpečení není povoleno skriptování.
+Jako operátor zásobník Azure měli byste použít správce portálu, prostředí PowerShell nebo rozhraní API Správce Azure Resource Manageru pro nejvíce každodenní úlohy správy. Ale pro některé méně běžné operace, budete muset použít *privilegované koncový bod* (období). OBDOBÍ je předem nakonfigurovaný vzdálené konzoly prostředí PowerShell, který poskytuje akorát, funkce, které vám pomohou provést požadované úlohy. Koncový bod používá [JEA prostředí PowerShell (jen dostatečně správy)](https://docs.microsoft.com/powershell/jea/overview) vystavit jenom omezenou sadu rutin. Pro přístup období a vyvolání omezenou sadu rutin, se používá účet s nízkou úrovní oprávnění. Jsou vyžadovány žádné účty správce. Pro dodatečné zabezpečení není povoleno skriptování.
 
 OBDOBÍ můžete použít k provedení následujících úloh:
 
@@ -87,7 +87,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že dos
 
     Řadu tyto rutiny jsou určena pouze pro prostředí integrovaný systém (například rutiny související s integrací datacenter). V ASDK ověření následující rutiny:
 
-    - Clear-Host
+    - Clear hostitel
     - Zavřít PrivilegedEndpoint
     - Ukončení PSSession
     - Get-AzureStackLog
@@ -99,7 +99,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že dos
     - Objekt míry
     - Nové CloudAdminUser
     - Odchozí výchozí
-    - Remove-CloudAdminUser
+    - Odebrat CloudAdminUser
     - Select-Object
     - Set-CloudAdminUserPassword
     - Test-AzureStack
@@ -108,7 +108,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že dos
 
 ## <a name="tips-for-using-the-privileged-endpoint"></a>Tipy pro používání privilegovaných koncový bod 
 
-Jak je uvedeno nahoře, je období [JEA prostředí PowerShell](https://docs.microsoft.com/en-us/powershell/jea/overview) koncový bod. Při současném poskytování silné zabezpečení vrstvy, snižuje koncový bod JEA některé základní funkce prostředí PowerShell, jako je například skriptování nebo kartě dokončení. Pokud se pokusíte žádný druh operace skriptu, operace selže s chybou **ScriptsNotAllowed**. Toto je očekávané chování.
+Jak je uvedeno nahoře, je období [JEA prostředí PowerShell](https://docs.microsoft.com/powershell/jea/overview) koncový bod. Při současném poskytování silné zabezpečení vrstvy, snižuje koncový bod JEA některé základní funkce prostředí PowerShell, jako je například skriptování nebo kartě dokončení. Pokud se pokusíte žádný druh operace skriptu, operace selže s chybou **ScriptsNotAllowed**. Toto je očekávané chování.
 
 Ano například pokud chcete získat seznam parametrů pro danou rutinu, můžete spusťte následující příkaz:
 
@@ -116,7 +116,7 @@ Ano například pokud chcete získat seznam parametrů pro danou rutinu, můžet
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternativně můžete použít [Import-PSSession](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) rutiny Import všechny rutiny období do aktuální relace v místním počítači. Díky tomu všechny rutiny a funkce období jsou nyní k dispozici na místním počítači, společně s dokončování pomocí tabulátorů a další obecně skriptování. 
+Alternativně můžete použít [Import-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Import-PSSession?view=powershell-5.1) rutiny Import všechny rutiny období do aktuální relace v místním počítači. Díky tomu všechny rutiny a funkce období jsou nyní k dispozici na místním počítači, společně s dokončování pomocí tabulátorů a další obecně skriptování. 
 
 Chcete-li importovat období relaci na místním počítači, proveďte následující kroky:
 

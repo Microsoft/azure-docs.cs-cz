@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 25cb758d6d897e03884f77459620e69600a78511
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 
@@ -51,7 +51,7 @@ K nástrojům patří [hrají Operations Manager](http://docs.pivotal.io/pivotal
 
 Kromě kanály podpory pro OSS CR výše uvedené licenci PCF vás opravňuje k Pivotal požádat o podporu. Společnost Microsoft a Pivotal také povolili podporu pracovních postupů, které vám umožní buď strany požádejte o pomoc a mít dotazu směrovány odpovídajícím způsobem v závislosti na tom, kde je problém.
 
-## <a name="azure-service-broker"></a>Azure Service Broker
+## <a name="azure-service-broker"></a>Zprostředkovatele služby Azure
 
 Umožňuje Foundry cloudu ["dvanácti factor aplikace"](https://12factor.net/) metody, která se zvýší úroveň čistou oddělit bezstavové aplikace, procesy a stavové služby zálohování. [Zprostředkovatelé služeb](https://docs.cloudfoundry.org/services/api.html) nabízejí konzistentní způsob, jak zřídit a vytvořte vazbu základní služby pro aplikace. [Služby Azure service broker](https://github.com/Azure/meta-azure-service-broker) obsahuje některé z klíčových služeb Azure prostřednictvím tohoto kanálu, včetně úložiště Azure a Azure SQL.
 
@@ -65,5 +65,5 @@ Cloud Foundry je skvěle hodí pro vývoj agilní softwaru, včetně použití p
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nasazení Foundry hrají cloudu z Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
+- [Nasazení Foundry hrají cloudu z Azure Marketplace](https://azure.microsoft.com/marketplace/partners/pivotal/pivotal-cloud-foundryazure-pcf/)
 - [Nasazení aplikace do cloudu Foundry v Azure](./cloudfoundry-deploy-your-first-app.md)

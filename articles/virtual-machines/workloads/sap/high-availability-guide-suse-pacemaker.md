@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 8db6857ba40f128c78e42eedba80e0d0062bbb27
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c82380c20c9ec631d9fea338404a25f167277701
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení kardiostimulátor na SUSE Linux Enterprise Server v Azure
 
@@ -52,6 +52,14 @@ Nejprve musíte vytvořit virtuálnímu počítači cíle iSCSI, pokud nemáte j
    sudo zypper update
    </code></pre>
 
+1. Odebrat balíčky
+
+   Aby se zabránilo známý problém s targetcli a SLES 12 SP3, odinstalujte následující balíčky. Chyby o balíčcích, které nelze nalézt, můžete ignorovat.
+   
+   <pre><code>
+   sudo zypper remove lio-utils python-rtslib python-configshell targetcli
+   </code></pre>
+   
 1. Instalovat balíčky cíl iSCSI
 
    <pre><code>
@@ -61,9 +69,7 @@ Nejprve musíte vytvořit virtuálnímu počítači cíle iSCSI, pokud nemáte j
 1. Zapněte službu iSCSI target
 
    <pre><code>   
-   sudo systemctl enable target
    sudo systemctl enable targetcli
-   sudo systemctl start target
    sudo systemctl start targetcli
    </code></pre>
 
@@ -99,7 +105,6 @@ sudo targetcli iscsi/iqn.2006-04.<b>cl1</b>.local:<b>cl1</b>/tpg1/acls/ create i
 
 # save the targetcli changes
 sudo targetcli saveconfig
-sudo systemctl restart target
 </code></pre>
 
 ### <a name="set-up-sbd-device"></a>Nastavit SBD zařízení

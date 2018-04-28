@@ -1,24 +1,25 @@
 ---
-title: "Konfigurace prostředí PowerShell Azure zásobník uživatele | Microsoft Docs"
-description: "Konfigurace prostředí PowerShell Azure zásobník uživatele"
+title: Konfigurace prostředí PowerShell Azure zásobník uživatele | Microsoft Docs
+description: Konfigurace prostředí PowerShell Azure zásobník uživatele
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F4ED2238-AAF2-4930-AA7F-7C140311E10F
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 4/26/2017
 ms.author: mabrigg
-ms.openlocfilehash: 0bd5b4a98fee7a5d914e53e49a9517f5d3682a88
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.reviewer: Balsu.G
+ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurace prostředí PowerShell Azure zásobník uživatele
 
@@ -124,6 +125,6 @@ Teď, když jste všechno My nastavení, umožňuje vytvářet prostředky v rá
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vývoj šablon pro Azure zásobníku](azure-stack-develop-templates.md)
 * [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

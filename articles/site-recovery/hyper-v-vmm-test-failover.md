@@ -1,6 +1,6 @@
 ---
-title: "Spustit procházení zotavení po Havárii virtuálních počítačů technologie Hyper-V do sekundární lokality pomocí Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak spustit procházení DR pro virtuální počítače Hyper-V v cloudech VMM do sekundárního datacentra, pomocí Azure Site Recovery."
+title: Spustit procházení zotavení po Havárii virtuálních počítačů technologie Hyper-V do sekundární lokality pomocí Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak spustit procházení DR pro virtuální počítače Hyper-V v cloudech VMM do sekundárního datacentra, pomocí Azure Site Recovery.
 services: site-recovery
 author: ponatara
 manager: abhemraj
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ponatara
-ms.openlocfilehash: a586eac3be39a4d3fb35dff7a4b1cc40f32f2720
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c389776f62db5fd04f67ef22822e21fd4aee368f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spustit procházení DR pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -45,17 +45,24 @@ Při spuštění testu převzetí služeb budete vyzváni k výběru nastavení 
 
 **Možnost** | **Podrobnosti** 
 --- | --- 
-None | Testovací virtuální počítač se vytvoří na hostitele, na kterém je umístěn repliku virtuálního počítače. Nebyla přidána do cloudu a není připojen k žádné síti.<br/><br/> Na počítači můžete připojit k síti virtuálních počítačů po jeho vytvoření.
+**None** | Testovací virtuální počítač se vytvoří na hostitele, na kterém je umístěn repliku virtuálního počítače. Nebyla přidána do cloudu a není připojen k žádné síti.<br/><br/> Na počítači můžete připojit k síti virtuálních počítačů po jeho vytvoření.
 **Použít existující** | Testovací virtuální počítač se vytvoří na hostitele, na kterém je umístěn repliku virtuálního počítače. Není přidáno do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která bude izolovaná od produkční sítě.<br/><br/>Pokud používáte síť založená na síti VLAN, doporučujeme vytvořit samostatnou logickou síť (nepoužívá se v produkčním prostředí) v nástroji VMM pro tento účel. Tato logická síť se používá k vytvoření sítě virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť má být přidružen alespoň jeden ze síťových adaptérů ve všech serverech technologie Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>Pro logické sítě VLAN musí být izolované síťové lokality, které přidáte k logické síti.<br/><br/>Pokud používáte logické sítě na základě virtualizace sítě systému Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. 
 **Vytvoření sítě** | Dočasné testovací síti se vytvoří automaticky v závislosti na nastavení, které určíte v **logické sítě** a její související síťové lokality.<br/><br/> Převzetí služeb při selhání ověří, že byly vytvořeny virtuální počítače. |Tuto možnost používejte, pokud plán obnovení používá více než jedna síť virtuálních počítačů.<br/><br/> Pokud používáte Windows virtualizace sítě, tato možnost umožňuje automatické vytvoření sítě virtuálních počítačů se stejným nastavením (podsítí a fondy IP adres) v síti virtuálního počítače repliky. Tyto sítě virtuálních počítačů se automaticky vyčistí po dokončení testu převzetí služeb.<br/><br/> Testovací virtuální počítač je vytvořen na hostiteli, na kterém se nachází virtuální počítač repliky. Není přidáno do cloudu.
 
 ### <a name="best-practices"></a>Osvědčené postupy
 
 - Testování produkční síť způsobí, že výpadky v produkčním prostředí. Požádejte uživatele, není pro použití související aplikace v průběhu postupu zotavení po havárii.
-- Testovací síti nemusí shodovat s typem logická síť VMM používá pro testovací převzetí služeb při selhání. Ale nefungují některé kombinace: – Pokud replika používá DHCP a sítí VLAN izolace, síť virtuálních počítačů pro repliku nepotřebuje fond statických adres IP. Proto pro testovací převzetí služeb pomocí virtualizace sítě systému Windows nebude fungovat, protože nejsou k dispozici žádné fondy adres. 
-        -Testovací převzetí služeb při selhání nebude fungovat, pokud síť repliky pomocí bez izolace a testovací síti pomocí virtualizace sítě systému Windows. To je proto síti bez izolace nemá podsítě potřebné pro vytvoření síť virtualizace sítě systému Windows.
+
+- Testovací síti nemusí shodovat s typem logická síť VMM používá pro testovací převzetí služeb při selhání. Ale nefungují některé kombinace:
+
+     - Pokud replika používá DHCP a sítí VLAN izolace, síť virtuálních počítačů pro repliku nepotřebuje fond statických adres IP. Proto pro testovací převzetí služeb pomocí virtualizace sítě systému Windows nebude fungovat, protože nejsou k dispozici žádné fondy adres. 
+        
+     - Testovací převzetí služeb při selhání nebude fungovat, pokud síť repliky pomocí bez izolace a testovací síti pomocí virtualizace sítě systému Windows. To je proto síti bez izolace nemá podsítě potřebné pro vytvoření síť virtualizace sítě systému Windows.
+        
 - Doporučujeme vám, že nepoužíváte síť, kterou jste vybrali pro mapování sítě pro testovací převzetí služeb při selhání.
+
 - Jak jsou repliky virtuální počítače připojené k namapované sítě virtuálních počítačů po převzetí služeb při selhání závisí na konfiguraci sítě virtuálních počítačů v konzole nástroje VMM.
+
 
 ### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Síť virtuálních počítačů konfigurovanou bez izolace nebo izolace sítě VLAN
 
@@ -83,7 +90,7 @@ Pokud chcete jednoduše zkontrolujte, že virtuálního počítače při selhán
 - Pokud spustíte testovací převzetí služeb s možností automaticky vytvořit síť virtuálních počítačů, budete muset přidat prostředky infrastruktury k síti automaticky vytvořený, před spuštěním testu převzetí služeb. V plánu obnovení může to usnadnit přidáním manuální krok před skupiny-1 v plánu obnovení, který se chystáte použít pro testovací převzetí služeb. Pak přidejte prostředky infrastruktury k síti automaticky vytvořené před spuštěním testu převzetí služeb.
 
 
-### <a name="prepare-dhcp"></a>Prepare DHCP
+### <a name="prepare-dhcp"></a>Příprava DHCP
 Pokud součástí virtuálních počítačů testovací převzetí služeb při selhání používal protokol DHCP, vytvořit testovací server DHCP v rámci izolované sítě pro účely testovací převzetí služeb při selhání.
 
 

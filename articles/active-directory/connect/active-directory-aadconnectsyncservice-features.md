@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: eb2a670735db8a72163967d89d0359b4b89a3e2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce služby Azure AD Connect sync
 Funkce synchronizace služby Azure AD Connect má dvě součásti:
@@ -31,7 +31,7 @@ Toto téma vysvětluje, jak tyto funkce **služba Azure AD Connect sync** práci
 Tato nastavení jsou konfigurována pomocí [Azure Active Directory modul pro prostředí Windows PowerShell](https://aka.ms/aadposh). Stáhněte a nainstalujte samostatně z Azure AD Connect. Rutiny popsané v tomto tématu se zavedly v [verze března 2016 (sestavení 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud nemáte rutiny popsané v tomto tématu nebo nevedou stejný výsledek, zkontrolujte, že spustíte na nejnovější verzi.
 
 Chcete-li zobrazit konfigurace v adresáři služby Azure AD, spusťte `Get-MsolDirSyncFeatures`.  
-![Get-MsolDirSyncFeatures result](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
+![Get-MsolDirSyncFeatures výsledek](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
 
 Mnoho z těchto nastavení můžete změnit jenom přes Azure AD Connect.
 
@@ -56,7 +56,7 @@ Následující nastavení jsou nakonfigurované přes Azure AD Connect a nelze z
 | DeviceWriteback |[Azure AD Connect: Povolení zpětného zápisu zařízení](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Synchronizace Azure AD Connect: rozšíření adresáře](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umožňuje atributu umístí do karantény, pokud je duplicitní jiného objektu, nikoli celý objekt selhání během exportu. |
-| PasswordSync |[Implementace synchronizace hesel s synchronizace Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| PasswordSync |[Implementace synchronizaci hodnoty hash hesla s synchronizace Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[Ve verzi Preview: Zpětný zápis skupin](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Není aktuálně podporováno. |
 
@@ -88,7 +88,7 @@ V minulosti aktualizace pomocí služby synchronizace z místního atribut UserP
 
 Další podrobnosti najdete v tématu [uživatelská jména v Office 365, Azure nebo Intune se neshodují místní UPN nebo alternativním přihlašovacím ID](https://support.microsoft.com/kb/2523192).
 
-Povolení této funkce umožňuje synchronizační modul aktualizovat userPrincipalName, pokud je změněné místní a používat synchronizaci hesla. Pokud používáte federace, tato funkce není podporována.
+Povolení této funkce umožňuje synchronizační modul aktualizovat userPrincipalName, pokud je změněné na místě a pomocí synchronizace hodnot hash hesel. Pokud používáte federace, tato funkce není podporována.
 
 Tato funkce je na ve výchozím nastavení pro nově vytvořený adresáře Azure AD. Se zobrazí, pokud je tato funkce povolená pro vás spuštěním:  
 

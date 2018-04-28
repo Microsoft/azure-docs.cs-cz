@@ -3,21 +3,20 @@ title: Transformace dat pomocí Hadoop streamované aktivitě v Azure Data Facto
 description: Vysvětluje, jak používat streamované aktivitě Hadoop v Azure Data Factory k transformaci dat spuštěním streamování Hadoop programy na clusteru Hadoop.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 7c882e6fd826adb415b0452c9b441405d2ff90d7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: c0143b4f2d6858883ac11df18f7844802c667404
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí Hadoop streamované aktivitě v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -85,7 +84,7 @@ Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Fact
 | filePath          | Zadejte pole cesty k Mapper, kombinační, a programy reduktorem uložené ve službě Azure Storage, na které se odkazuje fileLinkedService. V této cestě se rozlišují velká a malá písmena. | Ano      |
 | Vstup             | Určuje WASB cestu k souboru vstupního souboru Mapper. | Ano      |
 | output            | Určuje cestu WASB do výstupního souboru pro reduktorem. | Ano      |
-| getDebugInfo      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
+| getdebuginfo –      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
 | Argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       | 
 

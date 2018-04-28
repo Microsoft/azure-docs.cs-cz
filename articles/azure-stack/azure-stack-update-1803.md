@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-stack-1803-update"></a>Azure Stack 1803 update
+# <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy*
 
@@ -44,10 +44,11 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, znám
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
+- Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
 
-- [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/en-us/help/4103348)
 
+- Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall zajistit [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí monitorování Azure, která zahrnuje změnu protokolů auditu na protokoly aktivity. Díky této změně portu 13012 se teď používá a je třeba také otevřít.  
 
 ### <a name="new-features"></a>Nové funkce 
 Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobníku.
@@ -169,7 +170,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
     - *Povolte:*
  
       ```powershell    
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Add-AzureRmAccount -EnvironmentName AzureStackAdmin
       
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
       
@@ -199,7 +200,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
         ```powershell
         
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Add-AzureRmAccount -EnvironmentName AzureStackAdmin
         
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
         

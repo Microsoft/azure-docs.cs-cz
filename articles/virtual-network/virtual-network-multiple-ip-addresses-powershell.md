@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bfc8f432e868c03d101ca7bfbc6b59f6e98ce29b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4c74833933642ec67bdd2a77d073b083d54a3038
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Přiřadit více IP adres virtuálních počítačů pomocí prostředí PowerShell
 
@@ -27,14 +27,14 @@ ms.lasthandoff: 04/16/2018
 
 Tento článek vysvětluje, jak vytvořit virtuální počítač (VM) pomocí modelu nasazení Azure Resource Manager pomocí prostředí PowerShell. Nelze přiřadit více IP adres k prostředkům, které jsou vytvořené pomocí modelu nasazení classic. Další informace o modelech nasazení Azure, najdete [pochopit modely nasazení](../resource-manager-deployment-model.md) článku.
 
-[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Vytvoření virtuálního počítače s více IP adres
 
 Kroky, které následují vysvětlují, jak vytvořit příklad virtuálních počítačů s více IP adres, jak je popsáno v tomto scénáři. Změňte hodnoty proměnných podle potřeby týkající se vaší implementace.
 
 1. Otevřete příkazový řádek prostředí PowerShell a dokončit zbývající kroky v této části v rámci jedné relace prostředí PowerShell. Pokud ještě nemáte prostředí PowerShell nainstalovaný a nakonfigurovaný, proveďte kroky v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) článku.
-2. Přihlášení k účtu s `login-azurermaccount` příkaz.
+2. Přihlášení k účtu s `Connect-AzureRmAccount` příkaz.
 3. Nahraďte *myResourceGroup* a *westus* s názvem a umístění dle vlastního výběru. Vytvořte skupinu prostředků. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
     ```powershell

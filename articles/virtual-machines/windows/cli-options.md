@@ -3,7 +3,7 @@ title: Použití Azure CLI v systému Windows | Microsoft Docs
 description: Použití Azure CLI v systému Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
-ms.author: nepeters
-ms.openlocfilehash: 6eaad8bc4374cf84ee248e6f4b1be20fd4dfd955
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.author: cynthn
+ms.openlocfilehash: ece7806dd757ee5169a25ac83590aa4a740d6dcc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Použití Azure CLI v systému Windows
 

@@ -1,29 +1,91 @@
 ---
-title: Správa clusterů HDInsight připojený k doméně - Azure | Microsoft Docs
+title: Správa clusterů HDInsight připojený k doméně – Azure
 description: Zjistěte, jak Správa clusterů HDInsight připojený k doméně
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.assetid: 6ebc4d2f-2f6a-4e1e-ab6d-af4db6b4c87c
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/11/2018
-ms.author: bhanupr
-ms.openlocfilehash: 44202541557a7513e0068f52289a637f6e48f43f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 9875d9884f04d26ebfbd44e858beb272c2306958
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Správa clusterů HDInsight připojený k doméně
 Další uživatelé a role v doméně HDInsight a Správa clusterů HDInsight připojený k doméně.
+
+## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
+
+Můžete propojit normální clusteru pomocí Ambari spravované uživatelské jméno, také propojení clusteru hadoop zabezpečení pomocí uživatelského jména domény (například: user1@contoso.com).
+1. Otevřete paletu příkaz výběrem **CTRL + SHIFT + P**a potom zadejte **HDInsight: propojení cluster**.
+
+   ![příkaz clusteru odkaz](./media/apache-domain-joined-manage/link-cluster-command.png)
+
+2. Zadejte HDInsight adresu URL clusteru služby -> vstup-uživatelské jméno > zadejte heslo -> vyberte typ clusteru -> ho ukazuje úspěch informace pokud předány ověření.
+   
+   ![Dialogové okno odkaz clusteru](./media/apache-domain-joined-manage/link-cluster-process.png)
+
+   > [!NOTE]
+   > Propojené uživatelské jméno a heslo se použijí, pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru. 
+   
+3. Cluster s podporou propojené můžete zobrazit pomocí příkazu **seznamu clusteru**. Teď můžete odeslat skript do tohoto propojené clusteru.
+
+   ![propojené clusteru](./media/apache-domain-joined-manage/linked-cluster.png)
+
+4. Také můžete zrušit propojení cluster pomocí vložení **HDInsight: zrušení propojení cluster** z palety příkaz.
+
+## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí IntelliJ
+
+Můžete propojit normální clusteru pomocí Ambari spravované uživatelské jméno, také propojení clusteru hadoop zabezpečení pomocí uživatelského jména domény (například: user1@contoso.com). 
+1. Klikněte na tlačítko **odkaz cluster** z **Azure Explorer**.
+
+   ![odkaz clusteru kontextové nabídky](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**. Je třeba zkontrolovat uživatelské jméno a heslo, pokud se tu selhání ověření. Volitelně můžete přidat účet úložiště, klíč k úložišti, pak vyberte kontejner z kontejneru úložiště. Informace o úložiště je pro Průzkumníka úložiště v levém stromu
+   
+   ![Dialogové okno odkaz clusteru](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme klíč propojené úložiště, uživatelské jméno a heslo.
+   > ![Průzkumník úložišť v IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
+
+   
+3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu, pokud vstupní informace jsou správná. Teď můžete odeslat žádost této propojené clusteru.
+
+   ![propojené clusteru](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Také můžete zrušit propojení clusteru z **Azure Explorer**.
+   
+   ![Odpojit clusteru](./media/apache-domain-joined-manage/unlink.png)
+
+## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí Eclipse
+
+Můžete propojit normální clusteru pomocí Ambari spravované uživatelské jméno, také propojení clusteru hadoop zabezpečení pomocí uživatelského jména domény (například: user1@contoso.com).
+1. Klikněte na tlačítko **odkaz cluster** z **Azure Explorer**.
+
+   ![odkaz clusteru kontextové nabídky](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+
+2. Zadejte **název clusteru**, **uživatelské jméno** a **heslo**, pak klikněte na tlačítko OK propojení clusteru. Volitelně můžete zadat účet úložiště, klíč úložiště a pak vyberte kontejner úložiště pro Průzkumník úložišť pro práci v levém stromové zobrazení
+   
+   ![Dialogové okno odkaz clusteru](./media/apache-domain-joined-manage/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené cluster používáme klíč propojené úložiště, uživatelské jméno a heslo.
+   > ![Průzkumník úložišť v prostředí Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
+
+3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu po kliknutí na tlačítko OK, pokud vstupní informace jsou správná. Teď můžete odeslat žádost této propojené clusteru.
+
+   ![propojené clusteru](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+
+4. Také můžete zrušit propojení clusteru z **Azure Explorer**.
+   
+   ![Odpojit clusteru](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Přístup k clusterů s balíček zabezpečení organizace.
 
@@ -33,10 +95,10 @@ Zabezpečení a uživatelských izolace jsou důležité pro cluster HDInsight s
 
 |Úloha|Scénář|Metoda přístupu|
 |--------|--------|-------------|
-|Hadoop|Hive – úlohy interaktivních/dotazů |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|Úlohy interaktivních nebo dotazů, interaktivní PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin s Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Hadoop|Hive – úlohy interaktivních/dotazů |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Spark|Úlohy interaktivních nebo dotazů, interaktivní PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin s Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Spark|Scénáře batch – Spark odeslání, PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
-|Interaktivní dotazu (LLAP)|Interaktivní|<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Interaktivní dotazu (LLAP)|Interaktivní|<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Všechny|Instalace vlastní aplikace|<ul><li>[Akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
 

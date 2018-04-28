@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2016
+ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 905eb170d2458f92469034b1cbf38ccd017d8f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě
 Eclipse je jedním z nejčastěji používaných integrovaných vývojových prostředí (IDE) pro vývojáře v jazyce Java. V tomto článku probereme možnosti nastavení vývojového prostředí Eclipse pro práci s Azure Service Fabric. Zjistíte, jak v Eclipse nainstalovat modul plug-in Service Fabric, vytvořit aplikaci Service Fabric a nasadit ji do místního nebo vzdáleného clusteru Service Fabric. 
@@ -34,20 +34,22 @@ Modul plug-in Service Fabric můžete nainstalovat do Eclipse. Tento modul plug-
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. 
 
-1.  Ujistěte se, že používáte verzi Eclipse Neon nebo novější a že máte nainstalovanou nejnovější verzi Buildship (1.0.17 nebo novější):
-    -   Verze nainstalovaných komponent můžete v Eclipse zkontrolovat v části **Help** > **Installation Details** (Nápověda > Podrobnosti o instalaci).
-    -   Pokud chcete aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
-    -   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse, přejděte do části **Help** > **Check for Updates** (Nápověda > Vyhledat aktualizace).
+Nainstalujte Eclipse Neon nebo novější verzi z [webu Eclipse](https://www.eclipse.org).  Nainstalujte také Buildship verze 2.2.1 nebo novější (modul plug-in Service Fabric není kompatibilní se staršími verzemi Buildshipu):
+-   Verze nainstalovaných komponent můžete v Eclipse zkontrolovat v části **Help** > **About Eclipse** > **Installation Details** (Nápověda > O Eclipse > Podrobnosti o instalaci).
+-   Pokud chcete aktualizovat Buildship, přečtěte si téma [Eclipse Buildship: Moduly plug-in Eclipse pro Gradle][buildship-update].
+-   Pokud chcete zkontrolovat a nainstalovat aktualizace pro Eclipse, přejděte do části **Help** > **Check for Updates** (Nápověda > Vyhledat aktualizace).
 
-2.  Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse, přejděte do části **Help** > **Install New Software** (Nápověda > Instalace nového softwaru).
-  1.    Do pole **Work with** (Pracovat s) zadejte **http://dl.microsoft.com/eclipse**.
-  2.    Klikněte na tlačítko **Add** (Přidat).
-
-         ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
-  3.    Vyberte modul plug-in Service Fabric a potom klikněte na **Další**.
-  4.    Dokončete instalaci a přijměte licenční podmínky pro software společnosti Microsoft.
-
-Pokud už máte modul plug-in Service Fabric nainstalovaný, ověřte, že používáte nejnovější verzi. Pokud chcete vyhledat dostupné aktualizace, přejděte k části **Help** > **Installation Details** (Nápověda => Podrobnosti o instalaci). V seznamu nainstalovaných modulů plug-in vyberte Service Fabric a potom klikněte na **Aktualizovat**. Nainstalují se dostupné aktualizace.
+Pokud chcete nainstalovat modul plug-in Service Fabric v Eclipse, přejděte do části **Help** > **Install New Software** (Nápověda > Instalace nového softwaru).
+1. Do pole **Work with** (Pracovat s) zadejte **http://dl.microsoft.com/eclipse**.
+2. Klikněte na tlačítko **Add** (Přidat).
+    ![Modul plug-in Service Fabric pro Eclipse][sf-eclipse-plugin-install]
+3. Vyberte modul plug-in Service Fabric a potom klikněte na **Další**.
+4. Dokončete instalaci a přijměte licenční podmínky pro software společnosti Microsoft.
+  
+Pokud už máte modul plug-in Service Fabric nainstalovaný, nainstalujte nejnovější verzi. 
+1. Pokud chcete vyhledat dostupné aktualizace, přejděte do části **Help** > **About Eclipse** > **Installation Details** (Nápověda > O Eclipse > Podrobnosti o instalaci). 
+2. V seznamu nainstalovaných modulů plug-in vyberte Service Fabric a potom klikněte na **Aktualizovat**. Nainstalují se dostupné aktualizace.
+3. Jakmile aktualizujete modul plug-in Service Fabric, aktualizujte také projekt Gradle.  Klikněte pravým tlačítkem na **build.gradle** a vyberte **Aktualizovat**.
 
 > [!NOTE]
 > Pokud je instalace nebo aktualizace modulu plug-in Service Fabric pomalá, může být důvodem nastavení Eclipse. Eclipse shromažďuje metadata o všech změnách, aby aktualizoval weby, které jsou registrované pro vaši instanci Eclipse. Pokud chcete proces vyhledávání a instalace aktualizace modulu plug-in Service Fabric urychlit, přejděte k části **Available Software Sites** (Dostupné softwarové servery). Zrušte zaškrtnutí políček pro všechny weby kromě políčka odkazujícího na umístění modulu plug-in Service Fabric (http://dl.microsoft.com/eclipse/azure/servicefabric)).

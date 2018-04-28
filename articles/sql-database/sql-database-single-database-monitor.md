@@ -10,14 +10,14 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c9fa74304e8672bc18f403aae138a3c1dbea3d4e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e56a40e1afef9c622d14804cb7f845b7b6edae6a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitorování výkonu databáze ve službě Azure SQL Database
-Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda má databáze nadbytečnou kapacitu nebo zda má naopak potíže s vyčerpáním prostředků, a podle toho se můžete rozhodnout, zda je třeba změnit úroveň výkonu nebo [úroveň služeb](sql-database-service-tiers.md) vaší databáze. Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
+Monitorování výkonu databáze SQL v Azure začíná sledováním využití prostředků relativně ke zvolené úrovni výkonu databáze. Monitorování vám pomůže určit, zda vaše databáze má přebytečnou kapacitou, nebo má potíže s, protože prostředky jsou podle toho, se a pak rozhodnout, zda je čas změnit úroveň výkonu a vaše databáze v úrovních služeb [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md). Databázi můžete monitorovat pomocí grafických nástrojů na [portálu Azure](https://portal.azure.com) nebo pomocí [zobrazení dynamické správy SQL](https://msdn.microsoft.com/library/ms188754.aspx).
 
 > [!TIP]
 > Použití [inteligentního Statistika SQL Azure](sql-database-intelligent-insights.md) pro automatické monitorování výkon databáze. Jakmile se zjistí problém s výkonem, diagnostiky protokol je generovaný s podrobnostmi a kořenové příčina Analysis (RCA) problému. Doporučení pro zlepšení výkonu je zadat, pokud je to možné.
@@ -31,7 +31,7 @@ Na [portálu Azure](https://portal.azure.com/) můžete monitorovat využití iz
 * Procento datových V/V
 * Procento velikosti databáze
 
-Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v **monitorování** grafu s dalšími informacemi na **metrika** okno. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Podrobnosti o jednotkách DTU najdete v článku o [úrovních služeb](sql-database-service-tiers.md).
+Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v **monitorování** grafu s dalšími informacemi na **metrika** okno. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Najdete v článku [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) články pro další informace o úrovních služeb.  
 
 ![Monitorování výkonu databáze v rámci úrovně služeb](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 

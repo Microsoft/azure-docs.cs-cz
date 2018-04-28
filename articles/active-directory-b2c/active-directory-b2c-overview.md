@@ -1,6 +1,6 @@
 ---
-title: Web správy cloudových identit a mobilní aplikace Azure AD B2C | Microsoft Docs
-description: Vývoj aplikací určených uživatelům pomocí Azure Active Directory B2C
+title: Co je Azure Active Directory B2C? | Dokumenty Microsoft
+description: Další informace o tom, jak můžete vytvořit a spravovat vaše aplikace přihlašování pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -9,71 +9,110 @@ editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 6385a4e4b89cf889b71db6e09010dfe3a674336a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Soustřeďte se na svoji aplikaci, o registraci a přihlašování se postaráme my
+# <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
-Azure AD B2C je cloudové řešení správy identit pro webové a mobilní aplikace. Jedná se o vysoce dostupnou globální službu, která je škálovatelná pro stovky milionů identit. Řešení Azure AD B2C je postavené na platformě zabezpečené na podnikové úrovni a chrání tak vaše aplikace, firmu i zákazníky.
+Azure Active Directory (Azure AD) B2C je služba pro správu identit, která umožňuje přizpůsobení a řízení způsobu, jakým se zákazníci registrují, přihlašují a jakým při používání vašich aplikací spravují své profily. To zahrnuje mimo jiné aplikace vyvinuté pro iOS, Android a .NET. Azure AD B2C umožňuje tyto akce při ochraně identity vašich zákazníků ve stejnou dobu.
 
-Při minimální konfiguraci řešení Azure AD B2C umožňuje vaší aplikaci ověřovat tyto typy účtů:
+Můžete nakonfigurovat aplikaci registrovanou v Azure AD B2C k provádění různých akcí správy identit. Tady je několik příkladů:
 
-* **Sociální účty** (jako je Facebook, Google, LinkedIn a další)
-* **Účty organizací** (využívající protokoly s otevřenými standardy, OpenID Connect nebo SAML)
-* **Místní účty** (e-mailová adresa a heslo nebo uživatelské jméno a heslo)
+- Povolit zákazníka se zaregistrujte používat zaregistrovanou aplikaci
+- Povolit zákazníka zaregistrujete přihlásit a začít používat aplikaci
+- Povolit zákazník zaregistrujete upravovat svůj profil
+- Povolit službu Multi-Factor authentication v aplikaci
+- Povolit zákazník si zaregistrovat a přihlásit se pomocí poskytovatelů identit konkrétní
+- Udělení přístupu z vaší aplikace pro rozhraní API, který můžete vytvořit
+- Přizpůsobení vzhledu a chování registrace a přihlášení
+- Spravovat jedné relace přihlášení pro vaši aplikaci
 
-## <a name="get-started"></a>Začínáme
+## <a name="what-do-i-need-to-think-about-before-using-azure-ad-b2c"></a>Co je potřeba myslet před použitím Azure AD B2C?
 
-Nejdřív pomocí návodu v tématu [Vytvoření tenanta Azure AD B2C](active-directory-b2c-get-started.md) získejte vlastního tenanta.
+- Jak se má zákazník pro interakci s Moje aplikace?
+- Co je uživatelské rozhraní (UI) možnosti, které chcete poskytnout zákazníkům?
+- Které zprostředkovatelů identity chcete zákazníky vybírat v mé aplikaci?
+- Vyžaduje proces přihlášení další rozhraní API pro spustit?
 
-Zvolte svůj scénář vývoje aplikací:
+### <a name="customer-interaction"></a>Zásahu zákazníka
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| <center>![Mobilní aplikace a aplikace počítače](../active-directory/develop/media/active-directory-developers-guide/NativeApp_Icon.png)<br />Mobilní aplikace a aplikace počítače</center> | [Přehled](active-directory-b2c-reference-oauth-code.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><br />[iOS](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal)<br /><br />[Android](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | [.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)<br /><br />[Xamarin](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) |  |
-| <center>![Web Apps](../active-directory/develop/media/active-directory-developers-guide/Web_app.png)<br />Web Apps</center> | [Přehled](active-directory-b2c-reference-oidc.md)<br /><br />[ASP.NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)<br /><br />[Jádro ASP.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | [Node.js](active-directory-b2c-devquickstarts-web-node.md) |  |
-| <center>![Jednostránkové aplikace](../active-directory/develop/media/active-directory-developers-guide/SPA.png)<br />Jednostránkové aplikace</center> | [Přehled](active-directory-b2c-reference-spa.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)<br /><br /> |  |  |
-| <center>![Webová rozhraní API](../active-directory/develop/media/active-directory-developers-guide/Web_API.png)<br />Webová rozhraní API</center> | [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)<br /><br /> [Jádro ASP.NET](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)<br /><br /> [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | [Volání webového rozhraní API .NET](active-directory-b2c-devquickstarts-web-api-dotnet.md) |
+Azure AD B2C podporuje [OpenID Connect](https://openid.net/connect/) pro všechny zákazníka dojde. Aplikace v Azure AD B2C implementaci OpenID Connect, zahájí této cesty uživatele zasláním požadavků na ověření do Azure AD B2C. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu zákazníka.
 
-## <a name="whats-new"></a>Co je nového
+Každá aplikace, která používá Azure AD B2C musí být zaregistrován v klienta Azure AD B2C pomocí portálu Azure. Proces registrace shromažďuje a přiřazuje hodnoty do vaší aplikace. Tyto hodnoty zahrnují ID aplikace, které jednoznačně identifikuje aplikaci a přesměrování identifikátor URI, který slouží k přímé odpovědi na jiné místo.
 
-Pravidelně kontrolujte tuto stránku, abyste se dovědět o budoucích změnách Azure Active Directory B2C. O všech aktualizacích také tweetujeme na @AzureAD.
+Interakce každé aplikace, postupuje podle podobného vzoru:
 
-* Vedle funkce Předdefinované zásady (všeobecná dostupnost) je teď ve veřejné verzi Preview dostupná funkce [Vlastní zásady](active-directory-b2c-overview-custom.md).  Vlastní zásady jsou pro profesionály pracující identitami, kteří potřebují mít kontrolu nad složením jejich prostředí identit.
-* Ve veřejné verzi Preview je teď dostupná funkce [Přístupový token](https://azure.microsoft.com/en-us/blog/azure-ad-b2c-access-tokens-now-in-public-preview).
-* Proběhlo oznámení [všeobecné dostupnosti služby Azure AD B2C pro Evropu](https://azure.microsoft.com/en-us/blog/azuread-b2c-ga-eu/).
-* Projděte si naši rostoucí knihovnu [ukázek kódů na GitHubu](https://github.com/Azure-Samples?q=b2c)!
+1. Aplikace přesměruje o spuštění zásadu.
+2. Zákazník vykoná zásadu podle definice zásady.
+3. Aplikace obdrží token zabezpečení.
+4. Aplikace používá token zabezpečení se pokusit o přístup k chráněnému prostředku.
+5. Server prostředků ověří token zabezpečení, aby ověřil, zda lze udělit přístup.
+6. Aplikace se pravidelně aktualizuje token zabezpečení.
 
-## <a name="how-to-articles"></a>Články s návody
+Tyto kroky můžou mírně lišit v závislosti na typu aplikace, které vytváříte.
 
-Další informace o použití konkrétních funkcí Azure Active Directory B2C:
+Azure AD B2C komunikuje pomocí poskytovatelů identit, zákazníky, jinými systémy a s místním adresáři v pořadí k dokončení úkolu identity. Například přihlásit zákazníků, zaregistrovat nový zákazník nebo resetovat heslo. Základní platforma, která vytváří více stran vztah důvěryhodnosti a dokončení těchto kroků se nazývá rozhraní prostředí Identity. Toto rozhraní a zásady (také nazývané cesty uživatele nebo zásady důvěryhodnosti Framework) explicitně definuje aktéři, akce, protokoly a pořadí kroků dokončete.
 
-* Nastavení [Facebooku](active-directory-b2c-setup-fb-app.md), [Google+](active-directory-b2c-setup-goog-app.md), [účtu Microsoft](active-directory-b2c-setup-msa-app.md), účtů [Amazon](active-directory-b2c-setup-amzn-app.md), a [inkedIn](active-directory-b2c-setup-li-app.md) pro použití v aplikacích určených uživatelům.
-* [Použití vlastních atributů ke sběru informací o uživatelích](active-directory-b2c-reference-custom-attr.md).
-* [Povolení Azure Multi-Factor Authentication v aplikacích určených uživatelům](active-directory-b2c-reference-mfa.md).
-* [Nastavení samoobslužného resetování hesla pro uživatele](active-directory-b2c-reference-sspr.md).
-* [Přizpůsobení vzhledu a chování registrace a přihlášení a dalších stránek určených uživatelům](active-directory-b2c-reference-ui-customization.md), které obsluhuje Azure Active Directory B2C.
-* [Využijte Azure Active Directory Graph API k programovému vytváření, čtení, aktualizaci a mazání uživatelů](active-directory-b2c-devquickstarts-graph-dotnet.md) ve svém klientu Azure Active Directory B2C.
+Azure AD B2C chrání před útoky DOS a heslo útoky na vaše aplikace několika způsoby. Azure AD B2C používá detekce a zmírnění techniky, jako třeba SYN soubory cookie a rychlost a připojení limity pro ochranu před útoky DoS prostředků. Zmírnění dopadů je rovněž obsažena pro útoky hrubou silou heslo a slovníkovým útokům heslo.
+
+#### <a name="built-in-policies"></a>Předdefinované zásady
+
+Každý požadavek zaslaný do Azure AD B2C Určuje zásadu. Zásady řídí chování jak vaše aplikace komunikuje s Azure AD B2C. Předdefinované zásady jsou předdefinované pro běžné úkoly, identity, jako například registrace, přihlášení a úpravy profilu.  Například registrační zásadě můžete řídit chování konfigurací následujícího nastavení:
+
+- Sociální účty, které zákazníka můžete použít k registraci pro aplikaci
+- Data shromážděná z zákazníkovi, jako je jméno nebo PSČ
+- Ověřování pomocí služby Multi-Factor Authentication
+- Vzhled a chování registrace všechny stránky
+- Informace o aplikaci vrácena
+
+#### <a name="custom-policies"></a>Vlastní zásady 
+
+[Vlastní zásady](active-directory-b2c-overview-custom.md) jsou konfigurační soubory, které definují chování rozhraní prostředí Identity ve vašem klientovi Azure AD B2C. Vlastní zásady se dá plně upravit k dokončení mnoho úloh. Vlastní zásady je reprezentován jako jednoho nebo několika souborů ve formátu XML odkazující na sebe navzájem v hierarchické řetězu. 
+
+Více vlastních zásad různých typů lze použít v klientovi služby Azure AD B2C, podle potřeby a lze opětovně použít napříč aplikacemi. Tato možnost umožňuje definování a úprava činnosti identity zákazníků s minimální nebo žádný změny kódu. Zásady můžete použít tak, že přidáte parametr speciální dotazu na požadavky HTTP ověřování.
+
+Vlastní zásady můžete použít k řízení cesty uživatele těmito způsoby:
+
+- Definování interakci s rozhraními API zachytit dodatečné informace, zkontrolujte zákazníka, která poskytuje deklarace identity nebo aktivovat externí procesy.
+- Změna chování na základě deklarací z rozhraní API nebo z deklarací identity v adresáři, jako *migrationStatus*.
+- Jakýkoli pracovní postup nevztahuje integrovaných zásad. Shromažďování Další informace od zákazníka během přihlašování uživatelů a provádění povolení například zkontrolujte přístup k prostředku.
+
+### <a name="identity-providers"></a>Zprostředkovatelé identit
+
+Zprostředkovatele identity je služba, která ověřuje identit zákazníka a vydává tokeny zabezpečení. V Azure AD B2C můžete nakonfigurovat několik poskytovatelů identit ve vašem klientovi, jako je například účet Microsoft, Facebook nebo Amazon ostatních. 
+
+Konfigurace zprostředkovatele identity ve vašem klientovi Azure AD B2C, musí záznam identifikátor aplikace nebo identifikátor klienta a tajný klíč heslo nebo klienta z aplikace zprostředkovatele identity, které vytvoříte. Tento identifikátor a heslo jsou potom použít ke konfiguraci vaší aplikace.
+
+### <a name="user-interface-experience"></a>Uživatelského rozhraní
+
+Většina obsah HTML a CSS, který zákazníkům lze řídit. Pomocí funkce přizpůsobení uživatelského rozhraní stránky přizpůsobit vzhled a chování žádné zásady. Můžete také udržovat značky a visual konzistenci mezi aplikací a Azure AD B2C.
+
+Azure AD B2C spuštěním kódu v prohlížeči zákazníka a používá moderní přístup názvem sdílení prostředků různých původů (CORS). Nejdřív zadejte adresu URL v zásadách s přizpůsobený obsah HTML. Azure AD B2C sloučí elementy uživatelského rozhraní pomocí obsah HTML, který je načten z vaší adresy URL a potom zobrazí stránku zákazník.
+
+Můžete odeslat parametry do Azure AD B2C v řetězci dotazu. Pomocí předání parametru váš koncový bod HTML, můžete dynamicky měnit obsah stránky. Například můžete změnit obrázek pozadí na Azure AD B2C registrace nebo přihlášení stránky, na základě parametr, který můžete předat z webu nebo mobilních aplikací.
+
+## <a name="how-do-i-get-started-with-azure-ad-b2c"></a>Jak můžu začít pracovat s Azure AD B2C?
+
+V Azure AD B2C klient představuje vaší organizace a je adresáře uživatelů. Každý klient Azure AD B2C je oddělený od ostatních klientů Azure AD B2C. Klienta obsahuje informace o zákazníci, kteří jsou přihlášeni k vaší aplikaci používat. Například hesla, data profilu a oprávnění.
+
+Potřebujete připojit k předplatnému Azure povolit všechny funkce a platit poplatky za používání klienta služby Azure AD B2C. Povolit Azure AD B2C zákazníků k přihlášení do aplikace, je nutné zaregistrovat aplikaci v klienta Azure AD B2C.
+
+Než začnete konfigurovat aplikace pomocí Azure AD B2C, musíte nejprve vytvořit klienta Azure AD B2C a registrace vaší aplikace. Pro registraci aplikace, proveďte kroky v [kurz: zaregistrovat aplikaci k povolení registrace a přihlášení pomocí Azure AD B2C](tutorial-register-applications.md).
+  
+Pokud jste vývojář webové aplikace ASP.NET, nastavení aplikace k ověření účty pomocí kroků v [kurz: Povolit webových aplikací k ověření s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-web-app.md).
+
+Pokud vaše jsou vývojář aplikace pracovní plochy nastavit aplikaci pro ověření účty pomocí kroků v [kurz: povolení aplikace k ověření s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-desktop-app.md).
+
+Pokud jste vývojář jednostránkové aplikace pomocí Node.js, nastavte aplikaci k ověření účty pomocí kroků v [kurz: Povolit jednostránkové aplikace k ověření s účty pomocí Azure AD B2C](active-directory-b2c-tutorials-spa.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Následující odkazy jsou užitečné při prozkoumávání služby do hloubky:
+Spusťte konfiguraci vaší aplikace pro prostředí registrace a přihlášení a pokračovat v tomto kurzu.
 
-* Viz [Informace o cenách Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
-* Projděte si naše [ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory&term=b2c) pro Azure Active Directory B2C. 
-* Získejte pomoc na Stack Overflow pomocí značky [azure-ad-b2c](http://stackoverflow.com/questions/tagged/azure-ad-b2c).
-* Sdělte nám své myšlenky pomocí [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) chceme je slyšet!
-* Přečtěte si [Referenci protokolu Azure AD B2C](active-directory-b2c-reference-protocols.md).
-* Přečtěte si [Referenci tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md).
-* Přečtěte si [Nejčastější dotazy k Azure Active Directory B2C](active-directory-b2c-faqs.md).
-* [Podávejte požadavky na podporu pro Azure Active Directory B2C](active-directory-b2c-support.md).
-
-## <a name="get-security-updates-for-our-products"></a>Získejte bezpečnostní aktualizace našich produktů
-
-Doporučujeme vám získávat oznámení o bezpečnostních incidentech tak, že navštívíte [tuto stránku](https://technet.microsoft.com/security/dd252948) a přihlásíte se k odběru služby Security Advisory Alerts.
-
+> [!div class="nextstepaction"]
+> [Kurz: Zaregistrujte aplikaci k povolení registrace a přihlášení pomocí Azure AD B2C](tutorial-register-applications.md)

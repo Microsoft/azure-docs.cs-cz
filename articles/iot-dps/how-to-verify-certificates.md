@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: dd54ca5a172bdb65b7781f2fb764b00f50e5df28
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb37ce7e61796494be0a9282afdc620b0ca5886a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Postup ověření vlastnictví pro certifikáty certifikační Autority X.509 s služby zřizování zařízení
 
@@ -58,7 +58,7 @@ Společnost Microsoft poskytuje nástroje a ukázky, které vám mohou pomoci vy
 
 - **Sady SDK Azure IoT Hub C** poskytuje prostředí PowerShell (Windows) a skripty Bash (Linux), vám pomůže vytvořit certifikáty certifikační Autority a listu pro vývoj a k provádění ověření z – u sebe pomocí ověřovací kód. Si můžete stáhnout [soubory](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) relevantní pro váš systém pracovní složky a postupujte podle pokynů [readme certifikáty certifikační Autority pro správu](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) k provedení ověření vlastnictví na certifikát Certifikační autority. 
 - **Azure IoT Hub C# SDK** obsahuje [skupiny certifikát ověření ukázka](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), které můžete provést ověření u sebe.
-- Můžete podle kroků v [skriptů prostředí PowerShell ke správě certifikátů certifikační Autority podepsané X.509](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates) článku dokumentace IoT Hub, konkrétně skript uvedený v části s názvem [ověření u sebe vaší Certifikát certifikační Autority X.509](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
+- Můžete podle kroků v [skriptů prostředí PowerShell ke správě certifikátů certifikační Autority podepsané X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates) článku dokumentace IoT Hub, konkrétně skript uvedený v části s názvem [ověření u sebe vaší Certifikát certifikační Autority X.509](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-create-certificates#signverificationcode).
  
 > [!IMPORTANT]
 > Kromě provádí ověření u sebe, skripty prostředí PowerShell a Bash citovalo dříve také umožňují vytvořit kořenových certifikátů, zprostředkující certifikáty a listu certifikáty, které lze použít k ověřování a zřízení zařízení. Tyto certifikáty by měl použít pro vývoj jenom. Musí být nikdy použity v produkčním prostředí. 

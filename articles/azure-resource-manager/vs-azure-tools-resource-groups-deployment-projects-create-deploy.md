@@ -1,6 +1,6 @@
 ---
-title: "Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu"
-description: "Pomocí sady Visual Studio můžete vytvořit projekt skupiny prostředků Azure a nasadit tyto prostředky do Azure."
+title: Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu
+description: Pomocí sady Visual Studio můžete vytvořit projekt skupiny prostředků Azure a nasadit tyto prostředky do Azure.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2017
+ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d647206b882059e0651223dc84f2ad2a314f8a87
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 Pomocí sady Visual Studio a [Azure SDK](https://azure.microsoft.com/downloads/) můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Nebo můžete definovat virtuální počítač, virtuální síť a účet úložiště a nasadit tuto infrastrukturu spolu se skriptem, který se spouští na virtuálním počítači. Projekt nasazení **skupiny prostředků Azure** umožňuje nasadit všechny potřebné prostředky v rámci jedné opakovatelné operace. Další informace o nasazení a správě prostředků najdete v tématu [Přehled Azure Resource Manageru](resource-group-overview.md).
@@ -148,7 +148,7 @@ Nyní jste připraveni svůj projekt nasadit. Když nasadíte projekt skupiny pr
 5. Stisknutím tlačítka **Nasadit** nasadíte projekt do Azure. Otevře se powershellová konzola mimo instanci sady Visual Studio. Po zobrazení výzvy zadejte v powershellové konzole heslo správce SQL Serveru. **Konzola PowerShellu může být skrytá za jinými položkami nebo minimalizovaná na hlavním panelu.** Najděte ji, vyberte ji a zadejte heslo.
    
    > [!NOTE]
-   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Rutiny Azure PowerShell jsou zapotřebí k úspěšnému nasazení skupin prostředků. Pokud k tomu budete vyzváni, nainstalujte je.
+   > Sada Visual Studio vás může požádat o instalaci rutin Azure PowerShell. Rutiny Azure PowerShell jsou zapotřebí k úspěšnému nasazení skupin prostředků. Pokud k tomu budete vyzváni, nainstalujte je. Další informace najdete v článku [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-azurerm-ps).
    > 
    > 
 6. Nasazení může zabrat několik minut. V oknech **Výstup** se zobrazí stav nasazení. Po dokončení nasazení vám poslední zpráva oznámí úspěšné nasazení. Bude vypadat zhruba následovně:
@@ -216,6 +216,102 @@ V tomto okamžiku jste nasadili infrastrukturu pro vaši aplikaci, ale zatím ne
     
      ![zobrazení nasazené aplikace](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
+## <a name="add-an-operations-dashboard-to-your-deployment"></a>Přidání řídicího panelu operací do nasazení
+Teď, když jsme vytvořili řešení, je čas na poslední krok, kterým je jeho zprovoznění. Nejste omezeni pouze na prostředky dostupné prostřednictvím rozhraní sady Visual Studio. Můžeme využít sdílené řídicí panely, které se definují jako prostředky v JSON. Provedeme to tak, že upravíme šablonu a přidáme vlastní prostředek. 
+
+1. Otevřete soubor WebsiteSqlDeploy.json a přidejte následující bok kódu za prostředek účtu úložiště, ale před uzavírající závorku ] části resources (prostředky).
+
+```json
+    ,{
+      "properties": {
+        "lenses": {
+          "0": {
+            "order": 0,
+            "parts": {
+              "0": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "resourceGroup",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "id",
+                      "value": "[resourceGroup().id]",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/ResourceGroupMapPinnedPart"
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 4,
+                  "y": 0,
+                  "rowSpan": 3,
+                  "colSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension[azure]/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "__Customizations__\n\nUse this dashboard to create and share the operational views of services critical to the application performing. To customize simply pin components to the dashboard and then publish when you're done. Others will see your changes when you publish and share the dashboard.\n\nYou can customize this text too. It supports plain text, __Markdown__, and even limited HTML like images <img width='10' src='https://portal.azure.com/favicon.ico'/> and <a href='https://azure.microsoft.com' target='_blank'>links</a> that open in a new tab.\n",
+                        "title": "Operations",
+                        "subtitle": "[resourceGroup().name]"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "model": {
+            "timeRange": {
+              "value": {
+                "relative": {
+                  "duration": 24,
+                  "timeUnit": 1
+                }
+              },
+              "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+            }
+          }
+        }
+      },
+      "apiVersion": "2015-08-01-preview",
+      "name": "[concat('ARM-',resourceGroup().name)]",
+      "type": "Microsoft.Portal/dashboards",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "hidden-title": "[concat('OPS-',resourceGroup().name)]"
+      }
+    }
+}
+```
+
+2. Znovu nasaďte skupinu prostředků. Když se podíváte na řídicí panel na webu Azure Portal, uvidíte, že se sdílený řídicí panel přidal do seznamu nabízených možností. 
+
+    ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+
+
+
+   > [!NOTE] 
+   > Přístup k řídicímu panelu je možné spravovat pomocí skupin řízení přístupu na základě role. Přizpůsobení je možné do prostředku publikovat i po jeho nasazení. Mějte na paměti, že po opětovném nasazení se skupina prostředků v šabloně resetuje na výchozí hodnotu. Měli byste zvážit aktualizaci šablony s použitím přizpůsobení. Nápovědu k tomu, jak to provést, najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../azure-portal/azure-portal-dashboards-create-programmatically.md).
+
+
+    ![Vlastní řídicí panel](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
+    
+    
 ## <a name="next-steps"></a>Další kroky
 * Další informace o správě prostředků prostřednictvím tohoto portálu najdete v článku [Použití webu Azure Portal ke správě prostředků Azure](resource-group-portal.md).
 * Další informace o šablonách najdete v tématu o [vytváření šablon Azure Resource Manageru](resource-group-authoring-templates.md).

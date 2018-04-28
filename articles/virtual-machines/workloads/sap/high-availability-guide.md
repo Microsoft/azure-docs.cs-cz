@@ -1,13 +1,13 @@
 ---
-title: "Azure vysoké dostupnosti virtuálních počítačů pro SAP NetWeaver | Microsoft Docs"
-description: "Průvodce vysokou dostupností pro SAP NetWeaver ve virtuálních počítačích Azure"
+title: Azure vysoké dostupnosti virtuálních počítačů pro SAP NetWeaver | Microsoft Docs
+description: Průvodce vysokou dostupností pro SAP NetWeaver ve virtuálních počítačích Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: da1289b7b86f6f8016920c28890189db8ccb2511
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -366,7 +366,7 @@ ms.lasthandoff: 03/09/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam (Matice dostupnosti produktu SAP)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -420,7 +420,7 @@ ms.lasthandoff: 03/09/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -700,9 +700,9 @@ _**Obrázek 11:** nastavit parametry SAP vysokou dostupnost Azure Resource Manag
     * Cluster databázového systému: <*SAPSystemSID*> - db - <*číslo*>
 
   * **Síťové karty pro všechny virtuální počítače s přidružené IP adresy**:
-    * <*SAPSystemSID*>-nic-di-<*Number*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
-    * <*SAPSystemSID*>-nic-db-<*Number*>
+    * <*SAPSystemSID*> - nic - di - <*číslo*>
+    * <*SAPSystemSID*> - nic - ASC - <*číslo*>
+    * <*SAPSystemSID*> - nic - db - <*číslo*>
 
   * **Účty úložiště Azure**
 
@@ -896,8 +896,8 @@ Pro místní nasazení je třeba tyto názvy vyhrazené hostitele a IP adresy:
 
 | Název role virtuálních hostitelů | Název virtuálního hostitele | Virtuální statickou IP adresu |
 | --- | --- | --- |
-| SAP ASC nebo SCS první clusteru virtuální hostitel název (pro správu clusteru) |pr1-ascs-vir |10.0.0.42 |
-| Název virtuálního hostitele instance SAP ASC nebo SCS |pr1-ascs-sap |10.0.0.43 |
+| SAP ASC nebo SCS první clusteru virtuální hostitel název (pro správu clusteru) |PR1. ASC vir |10.0.0.42 |
+| Název virtuálního hostitele instance SAP ASC nebo SCS |PR1. ASC sap |10.0.0.43 |
 | Databázového systému SAP druhý cluster virtuálního hostitele název (Správa clusteru) |pr1-dbms-vir |10.0.0.32 |
 
 Při vytváření clusteru, vytvořit názvy virtuálních hostitelů **pr1. ASC vir** a **pr1. databázového systému vir** a přidružené IP adresy, které spravují samotného clusteru. Informace o tom, jak to udělat najdete v tématu [shromažďovat uzly clusteru v konfiguraci clusteru][sap-ha-guide-8.12.1].
@@ -976,7 +976,7 @@ Pokud chcete vytvořit požadované interní služby load vyrovnávání koncov�
 
 | Název pravidla vyrovnávání služby nebo zatížení | Výchozí čísla portů | Konkrétní porty (ASC instance číslem instance 00) (YBRAT s 10) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
+| Zařadit Server / *lbrule3200* |32 <*InstanceNumber*> |3200 |
 | Server zpráv ABAP / *lbrule3600* |36 <*InstanceNumber*> |3600 |
 | Zpráva Vnitřní ABAP / *lbrule3900* |39 <*InstanceNumber*> |3900 |
 | Server HTTP zpráv nebo *Lbrule8100* |81 <*InstanceNumber*> |8100 |
@@ -994,8 +994,8 @@ Pak vytvořte tyto koncové body pro SAP NetWeaver Java SCS porty pro vyrovnáv�
 
 | Název pravidla vyrovnávání služby nebo zatížení | Výchozí čísla portů | Konkrétní porty (SCS instance číslem instance 01) (YBRAT s 11) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
-| Gateway Server / *lbrule3301* |33 <*InstanceNumber*> |3301 |
+| Zařadit Server / *lbrule3201* |32 <*InstanceNumber*> |3201 |
+| Server brány nebo *lbrule3301* |33 <*InstanceNumber*> |3301 |
 | Server zpráv Java / *lbrule3900* |39 <*InstanceNumber*> |3901 |
 | Server HTTP zpráv nebo *Lbrule8101* |81 <*InstanceNumber*> |8101 |
 | SAP spuštění služby SCS HTTP / *Lbrule50113* |5 <*InstanceNumber*> 13 |50113 |
@@ -1233,7 +1233,7 @@ Konfigurace určující sdílenou složku clusteru zahrnuje tyto úlohy:
 
   _**Obrázek 38:** potvrzení, že jste jste změnili konfiguraci clusteru_
 
-Po úspěšném nainstalování clusteru převzetí služeb při selhání systému Windows, třeba změny provedené některé prahové hodnoty pro přizpůsobení převzetí služeb při selhání detekce podmínky v Azure. Parametry, které chcete změnit, jsou popsané v tomto blogu: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/. Za předpokladu, že dva virtuální počítače, které sestavení konfigurace clusteru systému Windows pro ASC nebo SCS jsou ve stejné podsíti, je nutné změnit tak, aby tyto hodnoty následujících parametrů:
+Po úspěšném nainstalování clusteru převzetí služeb při selhání systému Windows, třeba změny provedené některé prahové hodnoty pro přizpůsobení převzetí služeb při selhání detekce podmínky v Azure. Parametry, které chcete změnit, jsou popsané v tomto blogu: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Za předpokladu, že dva virtuální počítače, které sestavení konfigurace clusteru systému Windows pro ASC nebo SCS jsou ve stejné podsíti, je nutné změnit tak, aby tyto hodnoty následujících parametrů:
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 

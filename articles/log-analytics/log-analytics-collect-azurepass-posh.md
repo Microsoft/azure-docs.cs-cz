@@ -1,12 +1,12 @@
 ---
-title: "Shromažďování metrik Azure PaaS prostředků s Log Analytics | Microsoft Docs"
-description: "Zjistěte, jak povolit kolekce metriky prostředků Azure PaaS pomocí prostředí PowerShell pro uchování a analýzu v analýzy protokolů."
+title: Shromažďování metrik Azure PaaS prostředků s Log Analytics | Microsoft Docs
+description: Zjistěte, jak povolit kolekce metriky prostředků Azure PaaS pomocí prostředí PowerShell pro uchování a analýzu v analýzy protokolů.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8a2c04c2f79f310b7e70e7add7a8d5f318f056d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik Azure PaaS prostředků s analýzy protokolů
 
@@ -57,7 +57,7 @@ Proveďte následující kroky ke stažení a spuštění skriptu.
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
-3. Spustit `Login-AzureRmAccount` vytvořit připojení s Azure.   
+3. Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.   
 4. Spusťte následující skript `.\Enable-AzureRmDiagnostics.ps1` bez parametrů Povolit shromažďování dat z konkrétní prostředek v rámci vašeho předplatného, nebo s parametrem `-ResourceGroup <myResourceGroup>` určete prostředku v určité skupiny zdrojů.   
 5. Ze seznamu vyberte odpovídající předplatné, pokud máte více než jednu, tak, že zadáte správnou hodnotu.<br><br> ![Vyberte předplatné, které vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> Jinak automaticky vybere jeden odběr k dispozici.
 6. V dalším kroku skript vrátí seznam pracovních prostorů analýzy protokolů zaregistrován v rámci předplatného.  Vyberte příslušný ze seznamu.<br><br> ![Vyberte pracovní prostor vrátil skript](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 

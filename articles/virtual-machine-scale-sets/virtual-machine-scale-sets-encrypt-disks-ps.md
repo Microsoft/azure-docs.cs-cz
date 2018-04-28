@@ -1,13 +1,13 @@
 ---
-title: "Šifrování disku sadách škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Další informace o použití prostředí Azure PowerShell k šifrování instance virtuálních počítačů a připojené disky v sady škálování virtuálního počítače"
+title: Šifrování disku sadách škálování virtuálního počítače Azure | Microsoft Docs
+description: Další informace o použití prostředí Azure PowerShell k šifrování instance virtuálních počítačů a připojené disky v sady škálování virtuálního počítače
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d24189e94cade36eca3349c1f46810ee6daa2a49
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>Šifrování operačního systému a připojené datové disky v škálovací sadu virtuálních počítačů
 K ochraně a ochrany dat v klidovém stavu pomocí technologie oborový standard šifrování, podporují sady škálování virtuálního počítače Azure Disk Encryption (ADE). Šifrování lze povolit pro Windows a Linux virtuálního počítače sady škálování. Další informace najdete v tématu [Azure Disk Encryption pro systém Windows a Linux](../security/azure-security-disk-encryption.md).
@@ -41,7 +41,7 @@ Tento článek vyžaduje prostředí Azure PowerShell verze modulu 5.3.0 nebo no
 Registrace vaší Azure subsription pro verze preview šifrování disku pro virtuální počítač s více sadami s [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature): 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
@@ -80,13 +80,13 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Nastavte nejprve, správce, uživatelské jméno a heslo pro instance virtuálních počítačů s [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Nejprve pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce instancí virtuálních počítačů:
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). K distribuci přenosů k jednotlivým instancím virtuálních počítačů, se také vytvoří nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení obsahuje pravidla, která distribuovat přenosy na portu TCP 80, jakož i povolit vzdálené plochy přenosy na portu TCP 3389 a vzdálenou komunikaci prostředí PowerShell na portu TCP 5985:
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí rutiny [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985:
 
 ```powershell
 $vmssName="myScaleSet"
@@ -154,5 +154,5 @@ Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste použili prostředí Azure PowerShell k šifrování škálovací sadu virtuálních počítačů. Můžete také [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) nebo šablon pro [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) nebo [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).

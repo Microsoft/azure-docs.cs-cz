@@ -1,18 +1,18 @@
 ---
-title: "Použít Ansible ke správě vašeho Azure dynamické inventáře"
-description: "Další informace o použití Ansible ke správě vašeho Azure dynamické inventáře"
+title: Použít Ansible ke správě vašeho Azure dynamické inventáře
+description: Další informace o použití Ansible ke správě vašeho Azure dynamické inventáře
 ms.service: ansible
-keywords: "ansible, azure, devops, bash, cloudshell, dynamické inventáře"
+keywords: ansible, azure, devops, bash, cloudshell, dynamické inventáře
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f29f4ec64b79738cae2ad684610f4817739825a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Použít Ansible ke správě vašeho Azure dynamické inventáře
 Ansible lze načítat informace o inventáři z různých zdrojů (včetně cloudové zdroje, jako je Azure) do *dynamické inventáře*. V tomto článku, můžete použít [prostředí cloudu Azure](./ansible-run-playbook-in-cloudshell.md) konfigurace dynamické inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jeden z těchto virtuálních počítačů a nainstalujte Nginx s příznakem virtuálního počítače.
@@ -27,7 +27,7 @@ Ansible lze načítat informace o inventáři z různých zdrojů (včetně clou
 
 1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otevřete [cloudové prostředí](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+1. Otevřete [cloudové prostředí](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Vytvořte skupinu prostředků Azure pro uložení virtuálních počítačů pro účely tohoto kurzu.
 

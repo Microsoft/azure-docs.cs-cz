@@ -1,8 +1,8 @@
 ---
-title: "Hybridní identita: Porovnání nástrojů pro integraci adresáře | Dokumentace Microsoftu"
-description: "Tato stránka nabízí komplexní tabulku porovnávající různé nástroje integrace adresáře, které lze použít pro integraci adresáře."
+title: 'Hybridní identita: Porovnání nástrojů pro integraci adresáře | Dokumentace Microsoftu'
+description: Tato stránka nabízí komplexní tabulku porovnávající různé nástroje integrace adresáře, které lze použít pro integraci adresáře.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 04/27/2018
 ms.author: billmath
-ms.openlocfilehash: 78ca910b4dfd5a706d2f1df7f70291fb48f096f5
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybridní identita: Porovnání nástrojů pro integraci adresáře
 V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  Tento dokument vám poskytne ucelený přehled těchto nástrojů a porovnání funkcí, které jsou v nich dostupné.
@@ -43,16 +43,14 @@ PP = Public Preview
 | Připojení k jedné místní doménové struktuře AD |● |● |● |● |● |
 | Připojení k několika místním doménovým strukturám AD |● |● | |● |● |
 | Připojení k několika místním Exchange Orgs |● | | | | |
-| Připojení k jednomu místnímu adresáři LDAP |●* | | |● |● |
-| Připojení k několika místním adresářům LDAP |●*  | | |● |● |
-| Připojení k místním adresářům AD a LDAP |●* | | |● |● |
+| Připojení k jednomu místnímu adresáři LDAP | | | |● |● |
+| Připojení k několika místním adresářům LDAP |  | | |● |● |
+| Připojení k místním adresářům AD a LDAP | | | |● |● |
 | Připojení k vlastním systémům (tj. SQL, Oracle, MySQL atd.) |FR | | |● |● |
 | Synchronizace atributů definovaných zákazníkem (rozšíření adresáře) |● | | | | |
 | Připojení k místním HR (tj, SAP, Oracle eBusiness, PeopleSoft) |FR | | |● |● |
 | Podporuje pravidla synchronizace FIM a konektory pro zřizování do místních systémů. | | | |● |● |
-&#42; Aktuálně jsou dostupné dvě podporované možnosti.  Jsou to tyto:
-   1. Můžete použít obecný konektor LDAP a povolit ho mimo Azure AD Connect.  Tato operace je složitá a vyžaduje partnera pro onboarding a smlouvu Premier Support.  Tato možnost umožňuje pracovat s jednotlivými adresáři LDAP i s několika adresáři současně.
-   2. Můžete vyvíjet vlastní řešení pro přesun objektů ze LDAP do služby Active Directory.  Potom tyto objekty synchronizujete s využitím Azure AD Connect.  Jako možné řešení pro přesun objektů se dá využít MIM nebo FIM.
+
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Synchronizace z cloudu do místního prostředí
 | Funkce | Azure Active Directory Connect | Služby synchronizace Azure Active Directory | Synchronizační nástroj služby Azure Active Directory (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |

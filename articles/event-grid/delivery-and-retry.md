@@ -1,24 +1,26 @@
 ---
-title: "Azure mřížky události doručení a zkuste to znovu"
-description: "Popisuje, jak Azure událostí mřížky doručí události a jak zpracovává nedoručených zpráv."
+title: Azure mřížky události doručení a zkuste to znovu
+description: Popisuje, jak Azure událostí mřížky doručí události a jak zpracovává nedoručených zpráv.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručení zpráv událostí mřížky a zkuste to znovu 
 
 Tento článek popisuje, jak Azure událostí mřížky zpracovává události, když není potvrdí doručení.
 
-Událost mřížky poskytuje trvanlivý doručení. Zajišťuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají okamžitě registrované webhooku každého předplatného. Webhook, jehož není potvrdil přijetí události do 60 sekund od první pokus o doručení, události mřížky opakuje doručení události.
+Událost mřížky poskytuje trvanlivý doručení. Zajišťuje každou zprávu alespoň jednou pro každé předplatné. Události se posílají okamžitě registrované webhooku každého předplatného. Webhook, jehož není potvrdil přijetí události do 60 sekund od první pokus o doručení, události mřížky opakuje doručení události. 
+
+V současné době mřížky událostí odesílá všechny události jednotlivě odběratelům. Odběratel obdrží pole s jednu událost.
 
 ## <a name="message-delivery-status"></a>Stav doručení zpráv
 
@@ -40,9 +42,9 @@ Následující kódy odpovědi HTTP znamenat, že události doručení pokus se 
 - 404 – Nenalezeno
 - 408 časový limit požadavku.
 - 414 URI příliš dlouhý
-- 500 Internal Server Error
-- 503 Služba nedostupná
-- Vypršel časový limit 504 brány
+- 500 – Interní chyba serveru
+- 503 – Nedostupná služba
+- 504 – Časový limit brány
 
 Další kód odpovědi nebo nedostatek odpověď znamená chybu. Událost mřížky opakuje doručení. 
 
@@ -50,7 +52,7 @@ Další kód odpovědi nebo nedostatek odpověď znamená chybu. Událost mří�
 
 Událost mřížky používá zásady opakování exponenciálního omezení rychlosti pro odeslání události. Pokud vaše webhooku neodpovídá nebo vrací kód chyby, opakování mřížky události doručení podle plánu, následující:
 
-1. 10 sekund.
+1. 10 sekund
 2. 30 sekund
 3. 1 minuta
 4. 5 minut

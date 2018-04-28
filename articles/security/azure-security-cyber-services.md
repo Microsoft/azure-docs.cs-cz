@@ -1,6 +1,6 @@
 ---
-title: "Služby společnosti Microsoft v počítačové bezpečnosti | Microsoft Docs"
-description: "Článek poskytuje základní informace o službách společnosti Microsoft týkající se počítačové bezpečnosti a jak získat další informace o těchto službách."
+title: Služby společnosti Microsoft v počítačové bezpečnosti | Microsoft Docs
+description: Článek poskytuje základní informace o službách společnosti Microsoft týkající se počítačové bezpečnosti a jak získat další informace o těchto službách.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 058cda5dd2e7e8026410a14d08d5714ce92822cd
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 5502f315a29e6bcc31038c7c05e779925fe295f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Služby společnosti Microsoft v počítačové bezpečnosti
+
 Microsoft Services poskytuje komplexní přístup k zabezpečení, identity a počítačové bezpečnosti. Microsoft Services poskytuje řadu zabezpečení a identita služby v rámci strategie, plánování, implementaci a probíhající podpory. Tyto služby může pomoci podnikoví zákazníci implementovat řešení pro komplexní zabezpečení, které jsou zarovnané s svých strategických cílů.
 
 S přímým přístupem k produktu vývojové týmy můžeme vytvářet řešení, které se integrují a zlepšit nejnovější zabezpečení a identity funkce našich produktů a pomáhá chránit obchodní a implementovat inovace našeho zákazníka.

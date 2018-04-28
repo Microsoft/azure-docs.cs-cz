@@ -1,6 +1,6 @@
 ---
-title: "Odstranění trezoru Site Recovery"
-description: "Zjistěte, jak odstranit trezoru Azure Site Recovery v závislosti na scénáři Site Recovery."
+title: Odstranění trezoru Site Recovery
+description: Zjistěte, jak odstranit trezoru Azure Site Recovery v závislosti na scénáři Site Recovery.
 service: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 89ab1e7c8b2fa0f4014ecfa0e677b398e601e6fa
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 62792747b4efe2de4c22af6f0886503d7d63ed44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="delete-a-site-recovery-vault"></a>Odstranění trezoru Site Recovery
 Odstranění trezoru služby Azure Site Recovery můžete zabránit závislosti. Akce, které je třeba provést lišit v závislosti na scénáři Site Recovery: VMware do Azure, technologie Hyper-V (s nebo bez System Center Virtual Machine Manager) a Azure, Azure Backup. Pokud chcete odstranit úložiště použitého v zálohování Azure, najdete v části [odstranit úložiště záloh v Azure](../backup/backup-azure-delete-vault.md).
@@ -65,7 +65,7 @@ Odstranění trezoru, postupujte podle kroků doporučených pro váš scénář
 
 K odstranění trezoru Site Recovery, i když jsou chráněné položky, použijte tyto příkazy:
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     Select-AzureRmSubscription -SubscriptionName "XXXXX"
 

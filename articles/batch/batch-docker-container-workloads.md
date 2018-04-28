@@ -1,6 +1,6 @@
 ---
-title: "Kontejner zatížení v Azure Batch | Microsoft Docs"
-description: "Zjistěte, jak ke spouštění aplikací z kontejneru bitové kopie v Azure Batch."
+title: Kontejner zatížení v Azure Batch | Microsoft Docs
+description: Zjistěte, jak ke spouštění aplikací z kontejneru bitové kopie v Azure Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: a26d786ffcb74bb28fb9bd065e49398d52d2b662
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: fc8af53b0e0cfbe19a6509e8d126646badd0abbb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit v Azure Batch – aplikace typu kontejner
 
@@ -34,7 +34,7 @@ Tento článek předpokládá znalost koncepty kontejner Docker a postup vytvoř
     * Batch Java SDK verze 3.0
     * Batch Node.js SDK verze 3.0
 
-* Účty: Na účtu Azure, musíte vytvořit účet Batch a volitelně účet úložiště pro obecné účely.
+* Účty: Na účtu Azure, musíte vytvořit účet Batch a volitelně účet úložiště Azure.
 
 * Podporované image virtuálního počítače. Kontejnery jsou podporovány pouze ve fondech vytvořené pomocí konfigurace virtuálního počítače z bitové kopie, které jsou podrobně popsané v následující části, "podporováno bitové kopie virtuálních počítačů."
 

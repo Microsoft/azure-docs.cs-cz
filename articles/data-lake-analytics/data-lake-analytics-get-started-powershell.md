@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +39,13 @@ Tento kurz předpokládá, že jste už s používáním Azure Powershellu obez
 Přihlášení pomocí názvu předplatného:
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 Místo názvu předplatného můžete také pro přihlášení použít ID předplatného:
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 Pokud se vám to podaří, výstup tohoto příkazu vypadá jako následující text:
@@ -96,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-Odešlete skript.
+Odešlete text skriptu pomocí rutiny `Submit-AdlJob` a parametru `-Script`.
 
 ```
 $job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
 ```
 
-Nebo můžete tento skript uložit jako soubor a odeslat ho následujícím příkazem:
+Jako alternativu můžete odeslat soubor skriptu pomocí parametru `-ScriptPath`:
 
 ```
 $filename = "d:\test.usql"
@@ -110,20 +110,19 @@ $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
 ```
 
-
-Získejte stav konkrétní úlohy. Tuto rutinu používejte, dokud neuvidíte, že se úloha dokončila.
+Získejte stav úlohy pomocí rutiny `Get-AdlJob`. 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Namísto opakovaného volání rutiny Get-AdlAnalyticsJob, dokud se úloha nedokončí, můžete použít rutinu Wait-AdlJob.
+Místo opakovaného volání rutiny Get-AdlJob, dokud se úloha nedokončí, použijte rutinu `Wait-AdlJob`.
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-Stáhněte výstupní soubor.
+Stáhněte výstupní soubor pomocí rutiny `Export-AdlStoreItem`.
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

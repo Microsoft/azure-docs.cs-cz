@@ -1,8 +1,8 @@
 ---
 title: Aplikace Microsoft Dynamics CRM a Azure Application Insights | Microsoft Docs
-description: "Získáte telemetrická data z Microsoft Dynamics CRM Online pomocí Application Insights. Postup instalace, získávání dat, vizualizace a export."
+description: Získáte telemetrická data z Microsoft Dynamics CRM Online pomocí Application Insights. Postup instalace, získávání dat, vizualizace a export.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ced4f62b4f27ede28c61e8d2670432ddd7b76f9b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Návod: Povolení Telemetrie pro aplikaci Microsoft Dynamics CRM Online pomocí Application Insights
 Tento článek ukazuje, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Budeme zabývat dokončení proces přidávání skript Application Insights do vaší aplikace, zaznamenávání dat a vizualizace dat sady.
@@ -60,7 +60,7 @@ Do monitorování vaší aplikace, přidejte Application Insights SDK do aplikac
     ![Otevřete textový editor](./media/app-insights-sample-mscrm/00004.png)
 2. Zkopírujte kód z Application Insights. Při kopírování, nezapomeňte ignorovat značek skriptu. Naleznete níže – snímek obrazovky:
 
-    ![Nastavte klíč instrumentace](./media/app-insights-sample-mscrm/00005.png)
+    ![Nastavte klíč instrumentace](./media/app-insights-sample-mscrm/000005.png)
 
     Tento kód obsahuje klíč instrumentace, který identifikuje prostředek vaší aplikace statistiky.
 3. Uložte a publikovat.

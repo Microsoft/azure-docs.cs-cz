@@ -1,6 +1,6 @@
 ---
-title: "Nasazení se konfigurační server pro obnovení po havárii VMware s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak nasadit konfigurační server pro obnovení po havárii VMware s Azure Site Recovery"
+title: Nasazení se konfigurační server pro obnovení po havárii VMware s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nasadit konfigurační server pro obnovení po havárii VMware s Azure Site Recovery
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 99b368ca364bd7c5bebfc00c2df0f04333293388
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -108,6 +108,11 @@ Pokud chcete přidat další síťový adaptér na konfiguračním serveru, při
 8. V **konfigurace virtuálního počítače pověření**, zadejte uživatelské jméno a heslo používané můžete automaticky nainstalovat službu Azure Site Recovery Mobility na počítačích, pokud je zapnutá replikace. Když chcete replikovat počítače s Windows, je nutné, aby na nich měl tento účet oprávnění místního správce. U počítačů s Linuxem zadejte údaje superuživatele.
 9. Vyberte **dokončení konfigurace** k dokončení registrace. 
 10. Jakmile bude registrace dokončená, zkontrolujte Azure Portal, jestli je ve vybraném trezoru na stránce **Zdroj** uvedený konfigurační server a VMware server. Pak vyberte **OK** a nakonfigurujte nastavení cíle.
+
+
+## <a name="upgrade-the-configuration-server"></a>Upgrade na konfiguračním serveru
+
+Konfigurační server upgradovat na nejnovější verzi, přečtěte si téma kroky uvedené v [sem](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
 
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování

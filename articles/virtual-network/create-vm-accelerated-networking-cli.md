@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5e657d3c171b63734ad4bf6c0097a3142993360
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvořit virtuální počítač s Linuxem pomocí Accelerated sítě
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/16/2018
 >   2. Znovu vytvořte virtuální počítač pomocí Accelerated sítě povolené.
 >
 
-V tomto kurzu zjistěte, jak vytvořit virtuální počítač (VM) s Linuxem pomocí Accelerated sítě. Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
+V tomto kurzu zjistěte, jak vytvořit virtuální počítač (VM) s Linuxem pomocí Accelerated sítě. Pokud chcete vytvořit virtuální počítač s Windows pomocí Accelerated sítě, najdete v části [vytvoření virtuálního počítače s Windows pomocí Accelerated sítě](create-vm-accelerated-networking-powershell.md). Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
 
 ![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -78,7 +78,7 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location centralus
 ```
 
-Musíte vybrat podporovanou oblast Linux uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
+Vyberte podporované oblasti Linux uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
 Vytvořte virtuální síť pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Následující příklad vytvoří virtuální síť s názvem *myVnet* s jednou podsítí:
 
@@ -141,7 +141,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nic"></a>Vytvoření virtuálního počítače a připojte síťový adaptér
-Při vytváření virtuálního počítače, zadejte na síťový adaptér jste vytvořili pomocí `--nics`. Je nutné vybrat velikost a distribuce uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+Při vytváření virtuálního počítače, zadejte na síťový adaptér jste vytvořili pomocí `--nics`. Vyberte velikost a distribuce uvedené v [Linux accelerated sítě](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* s UbuntuLTS bitové kopie a velikost, která podporuje Accelerated sítě (*Standard_DS4_v2*):
 
@@ -158,7 +158,7 @@ az vm create \
 
 Seznam všech velikostí virtuálních počítačů a vlastnosti najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Po vytvoření virtuálního počítače, je vrácen výstup podobný výstupu v následujícím příkladu. Poznamenejte si **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači v postupných krocích.
+Po vytvoření virtuálního počítače, je vrácen výstup podobný výstupu v následujícím příkladu. Poznamenejte si hodnotu **publicIpAddress**. Tato adresa se používá pro přístup k virtuálnímu počítači v postupných krocích.
 
 ```azurecli
 {

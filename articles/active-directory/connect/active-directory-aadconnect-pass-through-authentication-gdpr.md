@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect – předávací ověřování – dodržování předpisů GDPR | Microsoft Docs"
-description: "Tento článek se zabývá předávací ověřování Azure Active Directory (Azure AD) a GDPR dodržování předpisů."
+title: Ochrana osobních údajů uživatelů a Azure předávací ověřování služby Active Directory | Microsoft Docs
+description: Tento článek se zabývá předávací ověřování Azure Active Directory (Azure AD) a GDPR dodržování předpisů.
 services: active-directory
-keywords: "Azure AD Connect předávací ověřování, GDPR, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Azure AD Connect předávací ověřování, GDPR, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/28/2018
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Azure předávací ověřování služby Active Directory: Dodržování předpisů GDPR
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Ochrana osobních údajů uživatelů a Azure předávací ověřování služby Active Directory
+
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Přehled
-
-V květnu 2018, ochrany osobních údajů Evropského zákona, [obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm), je kvůli vstoupily v platnost. GDPR ukládá nové pravidel na společnosti, organizace státní správy, bez zisku a organizace nabídka zboží a služeb na osoby ve Evropské unie (EU), nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. GDPR platí bez ohledu na to, kde se nacházíte. 
-
-Produkty a služby Microsoftu jsou dnes, které vám pomůžou GDPR požadavkům. Další informace o zásadách Microsoft Privacy na [Centrum zabezpečení](https://www.microsoft.com/trustcenter).
 
 Azure AD předávací ověřování vytvoří následující typy protokolů, které může obsahovat EUII:
 
@@ -35,7 +34,7 @@ Azure AD předávací ověřování vytvoří následující typy protokolů, kt
 - Soubory protokolu trasování ověření agenta.
 - Soubory protokolu událostí systému Windows.
 
-GDPR dodržování předpisů pro předávací ověřování lze dosáhnout dvěma způsoby:
+Ochrana osobních údajů uživatele pro předávací ověřování dostupný dvěma způsoby:
 
 1.  Na žádost extrahovat data pro osoby a odstranění dat z osoba ze zařízení.
 2.  Zkontrolujte, že žádná data se uchovávají za 48 hodin.
@@ -103,5 +102,6 @@ Při plánování tohoto skriptu ke spuštění každých 48 hodin, postupujte t
 
 Pokud je povoleno protokolování auditu, může tento produkt generovat protokolů zabezpečení pro řadiče domény. Další informace o konfiguraci zásad auditu, přečtěte si to [článku](https://technet.microsoft.com/library/dd277403.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+* [Zkontrolujte nastavení zásad Microsoft Privacy na Centrum zabezpečení](https://www.microsoft.com/trustcenter)
 - [**Řešení potíží s** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – zjistěte, jak řešit obvyklé problémy s funkcí.

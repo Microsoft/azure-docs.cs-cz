@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7c36d2ead9ca9e1ebd08d3d5a9c4901e46d42c00
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená schopnost přístup ke všem aplikacím a prostředkům, které musíte udělat podnikání, po přihlášení pouze po pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, bez nutnosti ověřování (zadejte například heslo) ještě jednou.
@@ -75,7 +75,7 @@ V obou případech přihlašovací údaje jsou uložené v šifrovaném stavu v 
 Jednotné přihlašování založené na heslech spoléhá na rozšíření prohlížeče bezpečně načítat aplikace a informace o uživateli z Azure AD a použít ji ke službě. Tuto funkci podporovat většinu aplikací SaaS jiných výrobců, které jsou podporovány službou Azure AD.
 
 Pro jednotné přihlašování založené na heslech může být prohlížeče koncového uživatele:
-* Internet Explorer 8, 9, 10, 11 – v systému Windows 7 nebo novější
+* Internet Explorer 11 – Windows 7 nebo novější.
 * Hraniční Windows 10 Anniversary Edition nebo novější. 
 * Chrome – V systému Windows 7 nebo novější a v systému MacOS X nebo novější
 * Firefox 26.0 nebo později – do systému Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější

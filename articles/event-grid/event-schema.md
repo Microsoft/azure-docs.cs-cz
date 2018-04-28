@@ -6,19 +6,21 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure schématu události událostí mřížky
 
 Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události obsahují sadu pěti řetězec požadované vlastnosti a objekt požadovaná data. Vlastnosti jsou společné pro všechny události z libovolného vydavatele. Datový objekt obsahuje vlastnosti, které jsou specifické pro každý vydavatele. Témata systému tyto vlastnosti jsou specifické pro poskytovatele prostředků, jako je například Azure Storage nebo Azure Event Hubs.
 
-Události se posílají do Azure událostí mřížky ve pole, která může obsahovat více objektů událostí. Pokud existuje jenom jedna událost, má pole o délce 1. Pole může mít celková velikost až 1 MB. Každá událost v poli je omezená na 64 KB.
+Zdroje událostí odesílají události do Azure událostí mřížky v pole, která může obsahovat více objektů událostí. Při publikování události mřížky téma události, může mít pole Celková velikost až 1 MB. Každá událost v poli je omezená na 64 KB. Pokud událost nebo pole přesahuje omezení velikosti, obdržíte odpověď **413 datové části příliš velký**.
+
+Mřížky událostí odesílá události odběratelům v pole, které obsahuje jednu událost. Toto chování může v budoucnu změnit.
 
 Můžete najít schéma JSON pro událost událostí mřížky a každý Azure vydavatele datová část [úložiště schématu události](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 
@@ -81,7 +83,7 @@ Všechny události obsahovat stejné nejvyšší úrovně následující data:
 | -------- | ---- | ----------- |
 | Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
 | Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
+| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |

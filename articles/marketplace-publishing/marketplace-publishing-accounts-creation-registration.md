@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření a registrace účtu vydavatele | Microsoft Docs"
-description: "Pokyny pro vytvoření účtu Microsoft Developer, takže po schválení můžete prodeje různých nabízejí typy na webu Azure Marketplace."
+title: Vytvoření a registrace účtu vydavatele | Microsoft Docs
+description: Pokyny pro vytvoření účtu Microsoft Developer, takže po schválení můžete prodeje různých nabízejí typy na webu Azure Marketplace.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 Tento článek vás provede procesem vytvoření nezbytné účtu a procesu registrace se schválené Microsoft Developer pro Azure Marketplace.
@@ -37,7 +37,7 @@ Adresa, která tvoří uživatelské jméno musí být ve vaší doméně a ří
 Při vytváření účtu společnosti, postupujte podle následujících pokynů, pokud víc než jedna osoba potřebovat přístup k účtu přihlášením pomocí účtu Microsoft, který otevírá účet.
 
 > [!Important]
-> Důležité k více uživatelům povolit přístup k účtu Dev Center, vám doporučujeme používat Azure Active Directory přiřadit role pro jednotlivé uživatele, kteří mohou mít přístup k účtu po přihlášení pomocí svých osobních přihlašovací údaje Azure AD. Další informace najdete v tématu [spravovat uživatelé s účtem](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Důležité k více uživatelům povolit přístup k účtu Dev Center, vám doporučujeme používat Azure Active Directory přiřadit role pro jednotlivé uživatele, kteří mohou mít přístup k účtu po přihlášení pomocí svých osobních přihlašovací údaje Azure AD. Další informace najdete v tématu [spravovat uživatelé s účtem](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Vytvoření účtu Microsoft pomocí e-mailovou adresu, která patří do domény vaší společnosti, ale nechcete jeden uživatel – třeba windowsapps@fabrikam.com.
 * Omezte přístup k tomuto účtu Microsoft na nejmenší možný počet vývojáři.
@@ -49,7 +49,7 @@ Při vytváření účtu společnosti, postupujte podle následujících pokynů
 
 Vývojářského účtu by měly být dostupné především z důvěryhodných počítačů. To je zásadní, protože existuje omezení počtu kódů generovaných každý účet za týden. Umožňuje také bezproblémové přihlašování uživatelů.
 
-Další informace o zabezpečení a další vývojáře účet pokyny, klikněte na tlačítko [zde](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Další informace o zabezpečení a další vývojáře účet pokyny, klikněte na tlačítko [zde](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Pokyny
 1. Otevřete na nové Chrome Incognito nebo Internet Explorer InPrivate procházení relace a ujistěte se, že nejste přihlášení k existujícímu účtu.
@@ -68,7 +68,7 @@ Microsoft Developer Center slouží k registraci jednou informace společnosti. 
 >
 >
 
-| Profil pro vývojáře | Chcete-li spustit konceptu | Pracovní | Publikování bezplatné a šablona řešení | Publikování komerční |
+| Profil pro vývojáře | Chcete-li spustit konceptu | Fázování | Publikování bezplatné a šablona řešení | Publikování komerční |
 | --- | --- | --- | --- | --- |
 | Registraci společnosti |Musí mít |Musí mít |Musí mít |Musí mít |
 | Daňové číslo profilu |Nepovinné |Nepovinné |Nepovinné |Musí mít |
@@ -226,7 +226,7 @@ Pokud jsou přidány jako spolusprávce v publikační portálu, pak se můžete
 
     ![Kreslení](media/marketplace-publishing-accounts-creation-registration/imgDeleteAdmin_03.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když váš účet je vytvořená a zaregistrovaná, zajistěte splnění nebo splňovat všechny požadavky netechnické publikování vaši nabídku kontrolou [netechnické předpoklady](marketplace-publishing-pre-requisites.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech

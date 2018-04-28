@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: f0c6c54b0f168f87ff122dee70a091fdcb96014e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9d1e2f801db2ed7edf262f8a5f221057ef791106
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalení a nasazení existující spustitelný soubor do Service Fabric
 Když balení existující spustitelný soubor jako [spustitelný soubor hosta](service-fabric-guest-executables-introduction.md), můžete buď používat šablony projektů Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu vytvářejí nové šablona projektu pro vás.
@@ -43,7 +43,7 @@ Visual Studio poskytuje šablony služby Service Fabric vám pomůžou nasadit d
 4. Zadejte název služby a klikněte na **OK**.
 5. Pokud vaše služba musí koncový bod pro komunikaci, můžete nyní přidat protokol, port a typ souboru ServiceManifest.xml. Například: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Teď můžete použít balíček a publikovat akce s místním clusteru tak, že ladění řešení v sadě Visual Studio. Až bude připravený, můžete publikovat aplikaci do vzdáleného clusteru nebo řešení správy zdrojového kódu se změnami.
-7. Čtení [zkontrolujte běžící aplikaci](#check-your-running-application) zjistit, jak zobrazit hosta spustitelný soubor služby spuštěné v Service Fabric Exploreru.
+7. Čtení [zkontrolujte běžící aplikaci](#check-your-running-application) chcete zjistit, jak chcete-li zobrazit hosta spustitelný soubor služby spuštěné v Service Fabric Exploreru.
 
 Návod příklad najdete v tématu [vytvoření první aplikace spustitelné hosta pomocí sady Visual Studio](quickstart-guest-app.md).
 
@@ -123,7 +123,7 @@ Tady je příklad `ServiceManifest.xml` souboru:
 
 V následujících částech projít různé části souboru, který je potřeba aktualizovat.
 
-#### <a name="update-servicetypes"></a>Update ServiceTypes
+#### <a name="update-servicetypes"></a>Aktualizace ServiceTypes
 ```xml
 <ServiceTypes>
   <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true" />
@@ -156,7 +156,7 @@ Se jenom jeden SetupEntryPoint, takže skripty instalace musí být seskupeny do
 
 V předchozím příkladu běží SetupEntryPoint batch soubor s názvem `LaunchConfig.cmd` který je umístěný v `scripts` podadresáři adresáři kódu (za předpokladu, že WorkingFolder element je nastaven na hodnotu základu kódu).
 
-#### <a name="update-entrypoint"></a>Update EntryPoint
+#### <a name="update-entrypoint"></a>EntryPoint aktualizace
 ```xml
 <EntryPoint>
   <ExeHost>

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace na sady škálování virtuálního počítače
-Ke spuštění aplikací v instancích virtuálního počítače (VM) v sadě škálování, musíte nejprve nainstalovat součásti aplikace a požadované soubory. Tento článek představuje způsoby, jak vytvořit vlastní image virtuálního počítače pro instance v škálování nastavit nebo automatické spouštění skriptů instalace v existující instance virtuálních počítačů. Také zjistíte, jak spravovat aplikace nebo aktualizace operačního systému v rámci sady škálování.
+Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsoby, jak vytvořit vlastní image virtuálního počítače pro instance v škálování nastavit nebo automatické spouštění skriptů instalace v existující instance virtuálních počítačů. Také zjistíte, jak spravovat aplikace nebo aktualizace operačního systému v rámci sady škálování.
 
 
 ## <a name="build-a-custom-vm-image"></a>Sestavení vlastní image virtuálního počítače
@@ -42,7 +42,7 @@ Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních p
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace pro Windows virtuálního počítače pomocí prostředí PowerShell DSC
-[Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. Konfigurace DSC definovat, co je potřeba nainstalovat na počítači a postup konfigurace hostitele. Modul Místní Configuration Manager (LCM) běží na každý cílový uzel, který zpracovává požadovaná akce na základě stisknutí konfigurací.
+[Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. Konfigurace DSC definovat, co je potřeba nainstalovat na počítači a postup konfigurace hostitele. Modul Místní Configuration Manager (LCM) běží na každý cílový uzel, který zpracovává požadovaná akce na základě stisknutí konfigurací.
 
 Rozšíření DSC prostředí PowerShell umožňuje přizpůsobit instance virtuálních počítačů v škálování, nastavte pomocí prostředí PowerShell. V následujícím příkladu:
 

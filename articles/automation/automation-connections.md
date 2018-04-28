@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d319768f88a03f4736c3b69276cfb4bf82fd9100
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d2c2cc2964b8223a564d45359f332597a1ca1f87
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -23,7 +23,7 @@ Při vytváření připojení, je nutné zadat *typ připojení*. Typ připojen�
 >[!NOTE]
 >Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, připojení, certifikátů a zašifrované proměnné. Tyto prostředky jsou zašifrovány a uložené ve službě Azure Automation pomocí jedinečný klíč, který se vygeneruje pro každý účet automation. Tento klíč je uložený v Key Vault. Před uložením o zabezpečený prostředek, je klíč načtený ze Key Vault a pak použije k zašifrování asset.
 
-## <a name="windows-powershell-cmdlets"></a>Windows PowerShell Cmdlets
+## <a name="windows-powershell-cmdlets"></a>Rutiny prostředí Windows PowerShell
 
 Rutiny v následující tabulce se používají k vytváření a Správa připojení Automation pomocí prostředí Windows PowerShell. Se dodávají jako součást [modul Azure PowerShell](/powershell/azure/overview) která je k dispozici pro použití v runbooků služeb automatizace a konfigurace DSC.
 
@@ -90,7 +90,7 @@ Následující vzorové příkazy ukazují, jak používat účet Spustit jako, 
 
 ```powershell
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
 ```
 
 ### <a name="graphical-runbook-samples"></a>Ukázky grafický runbook

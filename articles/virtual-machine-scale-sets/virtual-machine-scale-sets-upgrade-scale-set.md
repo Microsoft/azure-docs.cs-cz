@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: bfbcf8ff3f24b69b49b9a2bd5d567e1ead57d974
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Upravit škálovací sadu virtuálních počítačů
 V průběhu životního cyklu aplikací musíte upravit nebo aktualizovat vaše škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci sady škálování nebo změnit konfiguraci aplikace. Tento článek popisuje, jak upravit existující měřítku nastavit pomocí rozhraní REST API, prostředí Azure PowerShell nebo Azure CLI 2.0.
@@ -373,12 +373,12 @@ Pokud je aplikace nasazená na měřítko nastavit prostřednictvím rozšířen
 Také je běžné pro aplikace pro nasazení pomocí vlastní image. Tento scénář je popsaná v následující části.
 
 ### <a name="os-updates"></a>Aktualizace operačního systému
-Pokud používáte Image platformy Azure, můžete aktualizovat image změnou *elementu imageReference* (Další informace najdete v tématu [dokumentace k REST API](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte Image platformy Azure, můžete aktualizovat image změnou *elementu imageReference* (Další informace najdete v tématu [dokumentace k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
 > S Image platformy je běžné zadejte "nejnovější" pro verzi referenční bitové kopie. Když vytvoříte, škálovat a obnovení z Image, virtuální počítače jsou vytvořeny pomocí na nejnovější dostupnou verzi. Ale ho **nemá** znamená, že bitovou kopii operačního systému se automaticky aktualizuje časem jako jsou vydávány nové verze bitové kopie. Samostatné funkce je aktuálně ve verzi preview, která poskytuje automatické upgrady operačního systému. Další informace najdete v tématu [automatické upgrady operačního systému dokumentaci](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Pokud používáte vlastní Image, image můžete aktualizovat aktualizací *elementu imageReference* ID (Další informace najdete v tématu [dokumentace k REST API](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Pokud používáte vlastní Image, image můžete aktualizovat aktualizací *elementu imageReference* ID (Další informace najdete v tématu [dokumentace k REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Příklady
 

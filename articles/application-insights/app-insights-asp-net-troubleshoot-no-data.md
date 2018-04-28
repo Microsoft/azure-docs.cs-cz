@@ -1,6 +1,6 @@
 ---
-title: "Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET"
-description: "Není zobrazuje data ve službě Azure Application Insights? Zkuste sem."
+title: Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
+description: Není zobrazuje data ve službě Azure Application Insights? Zkuste sem.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 951a3217d795df6360cd3cfa2d47db08c11f978e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé Moje telemetrie
@@ -65,7 +65,7 @@ Vypadá to, došlo k chybě při byly instalaci Application Insights nebo může
 
 V Průzkumníku řešení klikněte pravým tlačítkem na projekt a zvolte **Application Insights > Konfigurovat Application Insights**. Zobrazí dialogové okno se žádostí, můžete se přihlásit k Azure a buď vytvořte prostředek Application Insights, nebo znovu použijte stávající.
 
-## <a name="NuGetBuild"></a>"Balíčky NuGet chybí" na serveru Moje sestavení
+## <a name="NuGetBuild"></a> "Balíčky NuGet chybí" na serveru Moje sestavení
 *Všechno, co sestavení OK při I mě ladění na můj vývojovém počítači, ale zobrazí se chyba NuGet na buildovacím serveru.*
 
 Najdete v tématu [obnovení balíčků NuGet](http://docs.nuget.org/Consume/Package-Restore) a [automatické obnovení balíčků](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
@@ -124,7 +124,7 @@ Oprava:
     Zde se zobrazí některé souhrnné grafy. Klikněte na tlačítko prostřednictvím je chcete zobrazit podrobněji.
 * V sadě Visual Studio při ladění aplikace, klikněte na tlačítko Application Insights.
 
-## <a name="q03"></a>Žádná data serveru (nebo žádná data na všechny)
+## <a name="q03"></a> Žádná data serveru (nebo žádná data na všechny)
 *I spustili mé aplikace a pak otevřít službu Application Insights v Microsoft Azure, ale všechny grafy zobrazují, zjistěte, jak shromažďovat...' nebo "Není nakonfigurovaná."* Nebo, *jenom zobrazení stránky a uživatelská data, ale žádná data serveru.*
 
 * Spusťte svoji aplikaci v režimu ladění v sadě Visual Studio (F5). Pomocí aplikace tak, aby se vygenerování nějaké telemetrie. Zkontrolujte, zda se zobrazí události zaznamenané v okně výstupu sady Visual Studio. 

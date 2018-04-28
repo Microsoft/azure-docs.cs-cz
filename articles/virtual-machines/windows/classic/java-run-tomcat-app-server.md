@@ -1,11 +1,10 @@
 ---
-title: "Aplikační server Java spustit na virtuálním počítači Azure classic | Microsoft Docs"
-description: "Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a ukazuje, jak vytvořit Windows virtuální počítač a nakonfigurovat jej pro spuštění aplikačního serveru Apache Tomcat."
+title: Aplikační server Java spustit na virtuálním počítači Azure classic
+description: Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a ukazuje, jak vytvořit Windows virtuální počítač a nakonfigurovat jej pro spuštění aplikačního serveru Apache Tomcat.
 services: virtual-machines-windows
 documentationcenter: java
 author: rmcmurray
-manager: erikre
-editor: 
+manager: mbaldwin
 tags: azure-service-management
 ms.assetid: d627aa09-f7d6-4239-8110-f8fc5111b939
 ms.service: virtual-machines-windows
@@ -13,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: vm-windows
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 04/11/2018
 ms.author: robmcm
-ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e13228a707e7dae4a4c2505154d01215c40b4716
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Jak spouštět javový aplikační server na virtuálním počítači vytvořeném pomocí modelu klasického nasazení
 > [!IMPORTANT]
@@ -84,7 +83,7 @@ Tento kurz používá k instalaci Tomcat jako aplikační server Java.
 
 Otevřete příkazový řádek na virtuálním počítači a spuštění příkazu můžete spustit ručně Tomcat **net&nbsp;spustit&nbsp;Tomcat8**.
 
-Jakmile je spuštěna Tomcat, dostanete Tomcat zadáním adresy URL <adrese http://localhost: 8080> v prohlížeči virtuálního počítače.
+Jakmile je spuštěna Tomcat, dostanete Tomcat zadáním adresy URL <http://localhost:8080> v prohlížeči virtuálního počítače.
 
 Tomcat spuštěna z externích počítačů najdete potřebujete vytvořit koncový bod a otevřít port.
 
@@ -113,7 +112,7 @@ Tomcat spuštěna z externích počítačů najdete potřebujete vytvořit konco
 6. Pro **typ pravidla**, vyberte **Port**a potom klikněte na **Další**.  
    ![Nový port příchozí pravidlo][NewRulePort]
 7. Na **protokol a porty** obrazovku, vyberte **TCP**, zadejte **8080** jako **konkrétní místního portu**a pak klikněte na tlačítko  **Další**.  
-  ![Nové příchozí pravidlo][NewRuleProtocol]
+  ![Nové příchozí pravidlo ][NewRuleProtocol]
 8. Na **akce** obrazovku, vyberte **povolit připojení**a potom klikněte na **Další**.
    ![Nová akce příchozí pravidlo][NewRuleAction]
 9. Na **profil** obrazovky, ujistěte se, že **domény**, **privátní**, a **veřejné** jsou vybrané a pak klikněte na tlačítko **Další**.

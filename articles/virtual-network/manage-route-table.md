@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 73b0c35ac81d9b32cd56a6fd23119f3889867499
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d6a4701c0318edf8292c777615196a2170a68750
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
@@ -31,10 +31,10 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.2.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.26 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
-## <a name="create-a-route-table"></a>Vytvořit směrovací tabulku
+## <a name="create-a-route-table"></a>Vytvoření směrovací tabulky
 
 Je omezena na tom, kolik směrovací tabulky, můžete vytvořit na umístění Azure a předplatné. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -82,7 +82,7 @@ Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabule
 - Azure CLI: [aktualizace směrovací tabulku az sítě](/cli/azure/network/route-table/route#az_network_route_table_update)
 - PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
-## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení tabulku směrování pro podsíť
+## <a name="associate-a-route-table-to-a-subnet"></a>Přidružení směrovací tabulky k podsíti
 
 Podsíť může mít žádnou nebo jednu směrovací tabulku přidružené k němu. Směrovací tabulka může být přidružena k nula nebo více podsítí. Vzhledem k tomu, že směrovací tabulky nejsou přidružené k virtuálním sítím, je nutné přidružit směrovací tabulka pro každou podsíť, které chcete přidružené k tabulce směrování. Všechny odchozího provozu z podsítě se směruje podle tras, které jste vytvořili v rámci směrovací tabulky [výchozí trasy](virtual-networks-udr-overview.md#default), a šíření tras z místní sítě, pokud je virtuální síť připojená k (brány virtuální sítě Azure ExpressRoute nebo VPN, pokud pomocí protokolu BGP brána sítě VPN). Můžete přidružit pouze směrovací tabulku do podsítí ve virtuálních sítích, které se nacházejí ve stejné oblasti Azure a předplatné jako tabulku směrování.
 
@@ -125,14 +125,14 @@ Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zruš
 - Azure CLI: [odstranit az sítě-tabulka směrování](/cli/azure/network/route-table/route#az_network_route_table_delete)
 - Prostředí PowerShell: [AzureRmRouteTable odstranění](/powershell/module/azurerm.network/delete-azurermroutetable) 
 
-## <a name="create-a-route"></a>Vytvořit trasu
+## <a name="create-a-route"></a>Vytvoření trasy
 
 Je omezena na tom, kolik tras ve směrovací tabulce můžete vytvořit na umístění Azure a předplatné. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** se zobrazí ve výsledcích hledání, vyberte ho.
 2. Vyberte ze seznamu, který chcete přidat trasu k směrovací tabulka.
 3. Vyberte **trasy**v části **nastavení**.
-4. Vyberte **+ přidat**.
+4. Vyberte **+ Přidat**.
 5. Zadejte jedinečný **název** trasy do směrovací tabulky.
 6. Zadejte **předpona adresy**, v notaci CIDR, který chcete přesměrovat provoz na. Předpona, která nemůže být v víc tras ve směrovací tabulka duplikovaný, přestože předponu můžou být v rámci jiné předpony. Například pokud jste definovali 10.0.0.0/16 jako předpony v jednoho z nich, můžete definovat další směrování s předponou adresy 10.0.0.0/24. Azure vybere trasu pro provoz na základě nejdelší shody předpony. Další informace o tom, jak Azure vybere trasy, najdete v části [Přehled směrování](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 7. Vyberte **typ dalšího směrování**. Podrobný popis všechny další typy směrování, najdete v části [Přehled směrování](virtual-networks-udr-overview.md).

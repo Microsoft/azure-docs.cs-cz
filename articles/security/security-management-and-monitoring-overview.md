@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 99e7a7746ae3f229614c8ac3d059b422a4ee6f74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 66a3a31574778bb1238498b523d51dc0d32ac22f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Správa zabezpečení Azure a Přehled monitorování
 Azure nabízí mechanismy zabezpečení, které pomáhají při správy a monitorování cloudových služeb Azure a virtuálních počítačů. Tento článek obsahuje přehled těchto klíčových funkcí zabezpečení a služeb. Jsou uvedeny odkazy na články, které poskytují podrobnosti o jednotlivých tak další informace.
@@ -75,8 +75,8 @@ Azure Multi-Factor authentication (MFA) je metoda ověřování, který vyžaduj
 Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-* [Jak funguje Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Co je Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md)
+* [Jak funguje Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes vyhrazené soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.

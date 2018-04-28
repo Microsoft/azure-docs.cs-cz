@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 78449a527f5ee1410530ded18a11cb8c6a5dded5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -104,11 +104,15 @@ ms.lasthandoff: 04/16/2018
 
         Informace o zdroji se zobrazuje na řídicím panelu; však nejsou žádné související toku statistiky. Data k dispozici z důvodu toky žádná komunikace mezi prostředky. Počkejte 60 minut a znovu zkontrolovat stav. Pokud jste si jisti, že neexistuje toky komunikace mezi zdroje a poté vyšší riziko z hlediska v [fórum hlas uživatele](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-14.  Jak je cenově Analýza provozu?
+14. Můžete nakonfigurovat analytics provozu pomocí prostředí PowerShell nebo šablonu Azure Resource Manager?
+
+    Ne, analýza provozu se dá nakonfigurovat jenom pomocí portálu Azure.
+
+15.  Jak je cenově Analýza provozu?
 
         Analýza provozu je – měření podle objemu rozšíření snížené protokoly a ukládání rozšířené protokolů v pracovním prostoru analýzy protokolů. Zatímco ve verzi preview, není účtován Analýza provozu rozšíření snížené protokoly, ale uchovávání dat v pracovním prostoru podléhá fakturace publikované tempem. Tato odpověď bude aktualizován, jakmile ceny pro provoz analytics je k dispozici.
 
-15.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
+16.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
 
         Tato stránka geografické mapy obsahuje dvě hlavní části:
     

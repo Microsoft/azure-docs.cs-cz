@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f41d8f508bb6ee5b50b7f304c703c4d9bed75d8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8f3d97e26b71c2e17753943f7004d7eb7ee19e44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Kurz: Azure Active Directory integrace s Cisco cloudu
 
@@ -117,33 +117,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://<subdomain>.cloudapps.cisco.com`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a adresa URL přihlašování. Obraťte se na [tým podpory klient Cloud Cisco](mailto:cpr-ops@cisco.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a adresa URL přihlašování. Obraťte se na [tým podpory klient Cloud Cisco](mailto:cpr-ops@cisco.com) k získání těchto hodnot.
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+5. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
+
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-ciscocloud-tutorial/tutorial_general_400.png)
 
-6. Ke generování **adresu URL metadat**, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Cisco cloudu** a zkopírujte **ID aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Konfigurace jednotného přihlašování na **Cisco cloudu** straně, budete muset odeslat stažené **adresu URL metadat** k [tým podpory Cisco cloudu](mailto:cpr-ops@cisco.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Konfigurace jednotného přihlašování na **Cisco cloudu** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory Cisco cloudu](mailto:cpr-ops@cisco.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

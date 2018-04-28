@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: rogarana
-ms.openlocfilehash: ae1c6628492de208f7c11e0b4e9d3133774ae184
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 33ca8af49ed9c3a8e7133eedfd284a1b71a9a9f9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -46,10 +46,10 @@ Další informace o účtech úložiště najdete v tématu [Úvod do Storage](s
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Seznam účtů úložiště v předplatném
@@ -225,9 +225,9 @@ Rozhraní API tabulky DB Cosmos Azure poskytuje prémiových funkcí pro úloži
 
 Většina lidí používá veřejném cloudu Azure pro jejich globální nasazení Azure. Existují také některé nezávislé nasazení Microsoft Azure z důvodů suverenity a tak dále. Tato nezávislé nasazení jsou označovány jako "prostředí." Toto jsou k dispozici prostředí:
 
-* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+* [Cloud vlády Azure](https://azure.microsoft.com/features/gov/)
 * [Čína cloudu Azure provozované v Číně společností 21Vianet](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+* [Němčině cloudu Azure](../../germany/germany-welcome.md)
 
 Informace o tom, jak získat přístup k tyto cloudy a jejich úložiště pomocí prostředí PowerShell najdete v tématu [správu úložiště v Azure nezávislé cloudy pomocí prostředí PowerShell](storage-powershell-independent-clouds.md).
 

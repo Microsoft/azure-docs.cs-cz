@@ -1,12 +1,12 @@
 ---
-title: "Vyžadovat bezpečnému přenosu ve službě Azure Storage | Microsoft Docs"
-description: "Další informace o funkci \"Zabezpečení přenosu požadované\" pro Azure Storage a jak jej povolit."
+title: Vyžadovat bezpečnému přenosu ve službě Azure Storage | Microsoft Docs
+description: Další informace o funkci "Zabezpečení přenosu požadované" pro Azure Storage a jak jej povolit.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: Jason.Hogg
 editor: fhryo-msft
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.openlocfilehash: 797ac45a41cdf655e7465a01875a0394081c08a7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 0ec36864377d724795197851341cbb837f47c4c6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Vyžadovat bezpečnému přenosu ve službě Azure Storage
 
@@ -66,7 +66,7 @@ Pokud chcete vyžadovat zabezpečené přenos prostřednictvím kódu programu, 
 
 Tato ukázka vyžaduje prostředí Azure PowerShell verze modulu 4.1 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-Spustit `Login-AzureRmAccount` vytvořit připojení s Azure.
+Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.
 
  Zkontrolujte nastavení, použijte následující příkazový řádek:
 
@@ -122,5 +122,5 @@ Povolit nastavení, použijte následující příkazový řádek:
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení, které společně umožňují vývojářům vytvářet aplikace zabezpečené. Další podrobnosti, přejděte na [Průvodce zabezpečením úložiště](storage-security-guide.md).

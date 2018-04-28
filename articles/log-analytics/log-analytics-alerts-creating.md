@@ -1,8 +1,8 @@
 ---
-title: "Vytváření výstrah v OMS Log Analytics | Microsoft Docs"
-description: "Výstrahy v Log Analytics identifikovat důležité informace ve svém úložišti OMS a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje, jak vytvořit pravidlo výstrahy a podrobnosti o různé akce, které jejich zajištění může trvat."
+title: Vytváření výstrah v OMS Log Analytics | Microsoft Docs
+description: Výstrahy v Log Analytics identifikovat důležité informace ve svém úložišti OMS a můžete proaktivně upozorňují na problémy nebo vyvolání akce se pokusit o opravte je.  Tento článek popisuje, jak vytvořit pravidlo výstrahy a podrobnosti o různé akce, které jejich zajištění může trvat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,34 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b692822660ab12f89b274cea75727fb808d673f8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>Práce s pravidla výstrah v analýzy protokolů
-Výstrahy jsou vytvářeny pravidla výstrah, které automaticky spustit vyhledávání protokolu v pravidelných intervalech.  Uživatel vytvořit záznam výstrahy, pokud výsledky odpovídají konkrétním kritériím.  Pravidlo lze poté automaticky spouštět jednu nebo více akcí proaktivně oznámíme vám výstrahy nebo vyvolání jiný proces.   
+
+> [!NOTE]
+> Tento článek popisuje classic výstrahy analýzy protokolů, které jsou spravované na portálu OMS.  Výstrahy v analýzy protokolů jsou [rozšiřovanou do Azure](../monitoring-and-diagnostics/monitoring-alerts-extend.md).  Až bude vše Hotovo, pak bude vytvářet a upravovat pravidla výstrah na portálu Azure a Poznámka pomocí postupů v tomto článku.
+
+
+Upozornění se vytvářejí na základě pravidel upozornění, která automaticky a v pravidelných intervalech spouští prohledávání protokolů.  Uživatel vytvořit záznam výstrahy, pokud výsledky odpovídají konkrétním kritériím.  Pravidlo pak může automaticky spustit jednu nebo více akcí a proaktivně vás upozornit nebo vyvolat jiný proces.   
 
 Tento článek popisuje procesy vytvářet a upravovat pravidla výstrah pomocí portálu OMS.  Podrobnosti o různých nastavení a implementovat požadované logiku najdete v tématu [vysvětlení výstrah v analýzy protokolů](log-analytics-alerts.md).
 
->[!NOTE]
-> Momentálně nelze vytvořit nebo upravit pravidlo výstrahy pomocí portálu Azure. 
 
-## <a name="create-an-alert-rule"></a>Vytvořit pravidlo výstrahy
+## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
 Pokud chcete vytvořit pravidlo výstrahy pomocí portálu OMS, začněte vytvořením hledání protokolů pro záznamy, které by měla vyvolat výstrahu.  **Výstraha** tlačítko pak bude k dispozici, můžete vytvořit a nakonfigurovat pravidlo výstrahy.
 
 >[!NOTE]
-> Maximálně 250 pravidla výstrah lze vytvořit aktuálně v pracovním prostoru OMS. 
+> V pracovním prostoru analýzy protokolů můžete aktuálně vytvořit maximálně 250 pravidla výstrah. 
 
 1. Na stránce Přehled OMS, klikněte na tlačítko **hledání protokolů**.
 2. Vytvořit nový dotaz vyhledávání protokolu nebo zvolte hledání, uložený protokol. 
-3. Klikněte na tlačítko **výstrahy** v horní části stránky otevřete **přidat pravidlo výstrahy** obrazovky.
+3. Kliknutím na **Upozornění** v horní části stránky otevřete obrazovku **Přidat pravidlo upozornění**.
 4. Konfigurace výstrah pravidla pomocí informací v [podrobnosti pravidla výstrah](#details-of-alert-rules) níže.
-6. Klikněte na tlačítko **Uložit** k dokončení pravidlo výstrahy.  Zahájí se okamžitě spuštěna.
+6. Kliknutím na **Uložit** dokončete pravidlo upozornění.  Zahájí se okamžitě spuštěna.
 
 
 ## <a name="edit-an-alert-rule"></a>Upravit pravidlo výstrahy
@@ -66,7 +69,7 @@ Toto jsou základní nastavení pro pravidlo výstrahy a oznámení, která vytv
 
 | Vlastnost | Popis |
 |:--- |:---|
-| Name (Název) | Jedinečný název pro identifikaci pravidlo výstrahy. Tento název je součástí všech výstrah vytvořena pravidlem.  |
+| Název | Jedinečný název pro identifikaci pravidlo výstrahy. Tento název je součástí všech výstrah vytvořena pravidlem.  |
 | Popis | Volitelný popis pravidla výstrahy. |
 | Závažnost |Závažnost žádné výstrahy vytvořených tímto pravidlem. |
 
@@ -75,7 +78,7 @@ Vyhledávací dotaz a čas okně, které vrátí záznamy, které se vyhodnocuj�
 
 | Vlastnost | Popis |
 |:--- |:---|
-| Vyhledávací dotaz. | Toto je dotaz, který se má spustit.  Vrácené tímto dotazem záznamy se použije k určení, zda je vytvořena výstraha.<br><br>Vyberte **použít aktuální vyhledávací dotaz** aktuální dotaz nebo vyberte existující uložené hledání ze seznamu.  Syntaxe dotazu je uvedený v textovém poli, kde ji můžete upravit v případě potřeby. |
+| Vyhledávací dotaz | Toto je dotaz, který se má spustit.  Vrácené tímto dotazem záznamy se použije k určení, zda je vytvořena výstraha.<br><br>Vyberte **použít aktuální vyhledávací dotaz** aktuální dotaz nebo vyberte existující uložené hledání ze seznamu.  Syntaxe dotazu je uvedený v textovém poli, kde ji můžete upravit v případě potřeby. |
 | Časový interval |Určuje časový rozsah pro dotaz.  Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto rozsahu aktuální čas.  To může být libovolná hodnota 5 minut až 24 hodin.  To by měla být větší než nebo rovna hodnotě četnost výstrah.  <br><br> Například pokud časový interval je nastavena na 60 minut a spuštění dotazu: 15: 00, bude vrácen pouze záznamy vytvořené 12:15:00 až 1:15 hodin. |
 
 Když poskytujete časový interval pro pravidlo výstrahy, zobrazí se počet existující záznamy, které by odpovídaly kritériím hledání pro dané časové okno.  Můžete určit frekvenci, který vám poskytne počet výsledků, které byste očekávali.
@@ -88,7 +91,7 @@ Definuje, jak často je spouštět vyhledávací dotaz.
 | Frekvence výstrah | Určuje, jak často se má spustit dotaz. Může být libovolná hodnota 5 minut až 24 hodin. Musí být rovna nebo menší než časový interval.  Pokud hodnota je větší než časový interval, riskujete záznamů je vynechán.<br><br>Představte si třeba časové okno 30 minut a četnost 60 minut.  Pokud je v 1:00 spustit dotaz, vrátí záznamy 12:30 až 1:00 PM.  Při příštím spuštění dotazu by je 2:00, když měla by vrátit záznamy 1:30 až 2:00.  Všechny záznamy vytvořené 1:00 až 1:30 by nikdy vyhodnotí. |
 
 
-### <a name="generate-alert-based-on"></a>Generují výstrahu založenou na
+### <a name="generate-alert-based-on"></a>Generovat výstrahu na základě
 Definuje kritéria, která se vyhodnotí proti výsledky vyhledávání dotazu k určení, jestli by vytvořit výstrahu.  Tyto informace se liší v závislosti na typu pravidlo výstrahy, které vyberete.  Můžete získat podrobnosti o pro typy jiné pravidlo výstrahy z [vysvětlení výstrah v analýzy protokolů](log-analytics-alerts.md).
 
 | Vlastnost | Popis |
@@ -106,7 +109,7 @@ Definuje kritéria, která se vyhodnotí proti výsledky vyhledávání dotazu k
 | Vlastnost | Popis |
 |:--- |:---|
 | Agregovaná hodnota | Prahovou hodnotu, která každý agregovaná hodnota ve výsledcích musí být větší než bude považována za porušení. |
-| Aktivační událost upozornění na základě | Počet porušení u výstrahu, který se má vytvořit.  Můžete zadat **celkový počet narušení** pro libovolnou kombinaci narušení napříč výsledky nastavit nebo **po sobě jdoucích narušení** tak, aby vyžadovala, musí dojít k porušení v po sobě jdoucích vzorků. |
+| Výstraha aktivační události na základě | Počet porušení u výstrahu, který se má vytvořit.  Můžete zadat **celkový počet narušení** pro libovolnou kombinaci narušení napříč výsledky nastavit nebo **po sobě jdoucích narušení** tak, aby vyžadovala, musí dojít k porušení v po sobě jdoucích vzorků. |
 
 ### <a name="actions"></a>Akce
 Pravidla výstrah vždy vytvoří [výstrahy záznam](#alert-records) při splnění prahovou hodnotu.  Můžete také definovat jeden nebo více odpovědí ke spuštění jako e-mailu nebo spuštění sady runbook.
@@ -120,7 +123,7 @@ E-mailu akce odeslání e-mailu s detaily výstrahy jednoho nebo více příjemc
 |:--- |:---|
 | E-mailové oznámení |Zadejte **Ano** Pokud chcete e-mailů, když je výstraha. |
 | Předmět |Subjektu v e-mailu.  Tělo e-mailu se nedá změnit. |
-| Příjemce |Adresy všech příjemců e-mailu.  Pokud zadáte víc než jednou adresou, jednotlivé adresy oddělujte středníkem (;). |
+| Příjemci |Adresy všech příjemců e-mailu.  Pokud zadáte více než jednu adresu, oddělte adresy středníkem (;). |
 
 #### <a name="webhook-actions"></a>Akce Webhooku
 Akce Webhooku umožňují vyvolání externího procesu prostřednictvím jedné žádosti HTTP POST.
@@ -149,7 +152,7 @@ Runbook akce spuštění sady runbook ve službě Azure Automation.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Nainstalujte [řešení pro správu výstrah](log-analytics-solution-alert-management.md) k analýze výstrahy vytvořené v analýzy protokolů společně s shromáždit ze System Center Operations Manager (SCOM) výstrahy.
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) , mohou generovat výstrahy.
 * Dokončete průvodce pro [konfigurace webook](log-analytics-alerts-webhooks.md) s pravidlo výstrahy.  

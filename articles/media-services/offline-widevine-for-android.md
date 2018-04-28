@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace účtu pro offline datové proudy Widevine chráněný obsah, Azure"
-description: "Toto téma ukazuje postup konfigurace účtu Azure Media Services pro offline datové proudy Widevine chráněný obsah."
+title: Konfigurace účtu pro offline datové proudy Widevine chráněný obsah, Azure
+description: Toto téma ukazuje postup konfigurace účtu Azure Media Services pro offline datové proudy Widevine chráněný obsah.
 services: media-services
-keywords: "DASH, DRM, Widevine Offline režimu, ExoPlayer, Android"
-documentationcenter: 
+keywords: DASH, DRM, Widevine Offline režimu, ExoPlayer, Android
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine streamování pro Android
 
@@ -105,16 +105,16 @@ ExoPlayer verze 2.6 a vyšší zahrnuje mnoho tříd, které podporují offline 
 
 Následující seznam tříd usnadnění offline režimu v ExoPlayer SDK pro Android:
 
-- library/core/src/main/java/com/google/android/exoplayer2/drm/OfflineLicenseHelper.java  
+- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/DRM/OfflineLicenseHelper.Java  
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSession.java
-- library/core/src/main/java/com/google/android/exoplayer2/drm/DefaultDrmSessionManager.java
+- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/DRM/DefaultDrmSessionManager.Java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/DrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ErrorStateDrmSession.java
 - library/core/src/main/java/com/google/android/exoplayer2/drm/ExoMediaDrm.java
-- library/core/src/main/java/com/google/android/exoplayer2/offline/SegmentDownloader.java
-- library/core/src/main/java/com/google/android/exoplayer2/offline/DownloaderConstructorHelper.java 
-- library/core/src/main/java/com/google/android/exoplayer2/offline/Downloader.java
-- library/dash/src/main/java/com/google/android/exoplayer2/source/dash/offline/DashDownloader.java 
+- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/SegmentDownloader.Java
+- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/DownloaderConstructorHelper.Java 
+- Library/Core/src/Main/Java/COM/Google/Android/exoplayer2/offline/Downloader.Java
+- Library/Dash/src/Main/Java/COM/Google/Android/exoplayer2/Source/Dash/offline/DashDownloader.Java 
 
 Vývojáři by měla odkazovat [Příručka vývojáře ExoPlayer](https://google.github.io/ExoPlayer/guide.html) a odpovídající [Blog vývojářů](https://medium.com/google-exoplayer) během vývoje aplikace. Google nevydala plně zdokumentovaných odkaz implementace a ukázkový kód pro aplikace ExoPlayer nepodporuje Widevine do režimu offline v současné době, a proto je omezený na blog Příručka pro vývojáře a informace. 
 
@@ -172,7 +172,7 @@ To znamená, že musí mít obchodní logiky a klientů a zařízení informace 
 
 ### <a name="question"></a>Otázka
 
-Úrovně zabezpečení Widevine, Google [přehled architektury Widevine DRM doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentace, definuje tři různé úrovně zabezpečení. Ale v [dokumentace Azure Media Services na šablonu licence Widevine](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), jsou popsané pěti různé úrovně zabezpečení. Co je vztah nebo mapování mezi dvěma sadami různé úrovně zabezpečení?
+Úrovně zabezpečení Widevine, Google [přehled architektury Widevine DRM doc](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentace, definuje tři různé úrovně zabezpečení. Ale v [dokumentace Azure Media Services na šablonu licence Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), jsou popsané pěti různé úrovně zabezpečení. Co je vztah nebo mapování mezi dvěma sadami různé úrovně zabezpečení?
 
 ### <a name="answer"></a>Odpověď
 
@@ -182,7 +182,7 @@ V Google [přehled architektury Widevine DRM](https://storage.googleapis.com/wvd
 2.  Úroveň zabezpečení 2: Provádí šifrování (ale ne video zpracování) v rámci typu t: dešifrovaný vyrovnávací paměti jsou vráceny do domény aplikace a zpracovat prostřednictvím samostatné video hardwaru nebo softwaru. Na úrovni 2, ale kryptografické informace jsou stále zpracovávány pouze v rámci typu t.
 3.  Úroveň zabezpečení 3 nemá typu t na zařízení. K ochraně kryptografických informace a dešifrovaný obsah na hostitelský operační systém, mohou být přijata příslušné opatření. Úroveň 3 implementace může také zahrnovat kryptografický modul hardwaru, ale který jenom zvyšuje výkon, není zabezpečení.
 
-Současně, v [dokumentace Azure Media Services na šablonu licence Widevine](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview), vlastnost security_level content_key_specs může mít následující pěti různých hodnot (robustnost požadavky na klienta pro přehrávání):
+Současně, v [dokumentace Azure Media Services na šablonu licence Widevine](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview), vlastnost security_level content_key_specs může mít následující pěti různých hodnot (robustnost požadavky na klienta pro přehrávání):
 
 1.  Na základě softwaru whitebox kryptografických je povinný.
 2.  Kryptografických softwaru a zakódovaná dekodér je vyžadován.

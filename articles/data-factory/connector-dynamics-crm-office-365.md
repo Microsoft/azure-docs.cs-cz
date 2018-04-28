@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: e68f8d4405ae82cfaae59b1e4d9dcea8b361baff
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (běžných dat služby) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ Dynamics 365 konkrétně následující typy aplikací jsou podporované:
 - Dynamics 365 pro prodej
 - Dynamics 365 zákaznický servis
 - Dynamics 365 služby pole
-- Dynamics 365 for Project Service Automation
+- Dynamics 365 projektu služby Automation
 - Dynamics 365 pro Marketing
 
 Jiná aplikace typy, např. operace a Finance, talentu, nejsou podporována atd.
@@ -57,13 +57,13 @@ Následující části obsahují podrobnosti o vlastnosti, které se používaj�
 
 Následující vlastnosti jsou podporovány pro Dynamics propojené služby.
 
-### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 and Dynamics CRM Online
+### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 a Dynamics CRM Online
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **Dynamics**. | Ano |
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"Online"** pro Dynamics online. | Ano |
-| Název organizace | Název organizace Dynamics instance. | Ne, by měl určovat po více než jedna instance Dynamics přidružené k uživateli |
+| serviceUri | Adresu URL služby Dynamics vaší instanci, například `https://adfdynamics.crm.dynamics.com`. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Office 365"** pro Dynamics online. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k aplikaci Dynamics. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -71,6 +71,9 @@ Následující vlastnosti jsou podporovány pro Dynamics propojené služby.
 
 >[!IMPORTANT]
 >Při kopírování dat do Dynamics výchozí Runtime integrace Azure nelze použít ke spuštění kopírování. Jinými slovy, pokud vaše zdrojová propojené služby nemá zadaný integrace běhu, explicitně [vytvoření modulu Runtime integrace Azure](create-azure-integration-runtime.md#create-azure-ir) s umístěním téměř Dynamics instanci. Přidružte v propojené službě Dynamics jako v následujícím příkladu.
+
+>[!NOTE]
+>Dynamics konektor používá k Dynamics CRM nebo 365 Online instanci identifikovat pomocí vlastnosti volitelné "název organizace". Při udržuje ho pracuje, jsou navrhované místo toho zadat novou vlastnost "serviceUri" a získáte lepší výkon zjišťování pro instanci.
 
 **Příklad: Dynamics online pomocí ověřování Office 365**
 
@@ -82,7 +85,7 @@ Následující vlastnosti jsou podporovány pro Dynamics propojené služby.
         "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
-            "organizationName": "orga02d9c75",
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -106,7 +109,7 @@ Následující vlastnosti jsou podporovány pro Dynamics propojené služby.
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **Dynamics**. | Ano |
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"OnPremisesWithIfd"** pro Dynamics místně s IFD.| Ano |
-| hostName | Název hostitele serveru Dynamics místně. | Ano |
+| Název hostitele | Název hostitele serveru Dynamics místně. | Ano |
 | port | Port serveru Dynamics místně. | Ne, výchozí hodnota je 443 |
 | Název organizace | Název organizace Dynamics instance. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics místně s IFD. | Ano |

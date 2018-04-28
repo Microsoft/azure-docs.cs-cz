@@ -1,11 +1,11 @@
 ---
-title: "Jak používat pro přístup k Azure Data Lake Store Windows virtuálního počítače spravované služby Identity (MSI)"
-description: "Kurz ukazuje, jak používat pro přístup k Azure Data Lake Store Windows virtuálního počítače spravované služby Identity (MSI)."
+title: Jak používat pro přístup k Azure Data Lake Store Windows virtuálního počítače spravované služby Identity (MSI)
+description: Kurz ukazuje, jak používat pro přístup k Azure Data Lake Store Windows virtuálního počítače spravované služby Identity (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: be76fa089003a7e881bcddcfeeb628e4a704ce21
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2e0d7f7f8b63a199f921c28072bcd861711addfc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Používat pro přístup k Azure Data Lake Store Windows virtuálního počítače spravované služby Identity (MSI)
 
@@ -55,7 +55,7 @@ V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Můžete tak�
 
 ## <a name="enable-msi-on-your-vm"></a>Povolit MSI na vašem virtuálním počítači 
 
-Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: nainstaluje rozšíření virtuálního počítače MSI na vašem virtuálním počítači a umožňuje MSI ve službě Správce prostředků Azure.
+Virtuální počítač MSI umožňuje získat přístupové tokeny z Azure AD, aniž by bylo třeba uvést přihlašovací údaje do vašeho kódu. Povolení MSI informuje Azure k vytvoření spravovaného identity pro virtuální počítač. V pozadí, povolení MSI provádí dvě věci: zaregistruje virtuální počítač s Azure Active Directory k vytvoření jeho spravovanou identitu a nakonfiguruje identitu ve virtuálním počítači.
 
 1. Vyberte **virtuálního počítače** , které chcete povolit MSI v.  
 2. V levém navigačním panelu klikněte na tlačítko **konfigurace**. 
@@ -102,7 +102,7 @@ V tomto kurzu ověřovat Data Lake Store systém souborů, které požadavky RES
 4. Pomocí prostředí PowerShell na `Invoke-WebRequest`, vytvořte žádost na místní koncový bod MSI k získání tokenu přístupu pro Azure Data Lake Store.  Identifikátor prostředku pro Data Lake Store je "https://datalake.azure.net/".  Data Lake nepodporuje přesnou shodu v identifikátor prostředku a je důležité do adresy koncové lomítko.
 
    ```powershell
-   $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}
+   $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
    ```
     
    Převeďte odpověď z objektu JSON na objekt prostředí PowerShell. 

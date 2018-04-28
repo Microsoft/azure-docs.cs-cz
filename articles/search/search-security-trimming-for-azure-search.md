@@ -1,21 +1,18 @@
 ---
-title: "Filtry zabezpečení pro výsledky oříznutí ve službě Azure Search | Microsoft Docs"
-description: "Řízení přístupu na obsahu Azure Search pomocí filtrů zabezpečení a identity uživatele."
-ms.custom: 
-ms.date: 08/07/2017
+title: Filtry zabezpečení pro výsledky oříznutí ve službě Azure Search | Microsoft Docs
+description: Řízení přístupu na obsahu Azure Search pomocí filtrů zabezpečení a identity uživatele.
 ms.service: search
-ms.reviewer: 
-ms.suite: 
-ms.tgt_pltfrm: 
-caps.latest.revision: "26"
+ms.topic: conceptual
+services: search
+ms.date: 08/07/2017
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: dd26676b74431566b3631b8a79cd06bcf3022518
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Filtry zabezpečení pro výsledky oříznutí ve službě Azure Search
 
@@ -29,7 +26,7 @@ Tento článek ukazuje, jak provést filtrování zabezpečení pomocí následu
 > [!div class="checklist"]
 > * Vytvoření pole, které obsahuje hlavní identifikátory 
 > * Push nebo aktualizovat stávající dokumenty s relevantní identifikátory hlavního
-> * Vydat žádost o vyhledávání s `search.in``filter`
+> * Vydat žádost o vyhledávání s `search.in` `filter`
 
 >[!NOTE]
 > Proces načítání identifikátory hlavního není zahrnuté v tomto dokumentu. Měli byste ho získat od vašeho poskytovatele služeb identity.
@@ -155,7 +152,7 @@ Měli byste obdržet dokumenty zpět, kde `group_ids` obsahuje "group_id1" nebo 
 
 Toto je, jak můžete filtrovat výsledky podle identity uživatele a Azure Search `search.in()` funkce. Tuto funkci můžete předat hlavní identifikátory pro žádajícího uživatele tak, aby odpovídala hlavní identifikátory spojené s každou cílovém dokumentu. Pokud je žádost o vyhledávání, `search.in` funkce filtruje výsledky hledání, pro které žádný z objekty uživatele nemá přístup pro čtení. Identifikátory hlavního může představovat věcmi, jako jsou skupiny zabezpečení, role nebo i vlastní identitu uživatele.
  
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Řízení přístupu na základě identity Active Directory, které jsou pomocí filtrů Azure Search](search-security-trimming-for-azure-search-with-aad.md)
 + [Filtry ve službě Azure Search](search-filters.md)

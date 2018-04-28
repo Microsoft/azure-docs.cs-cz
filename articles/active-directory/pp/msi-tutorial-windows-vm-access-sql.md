@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 682998bb979c9b155b7b1389d8f605018ae135b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
 
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak používat a spravovat službu Identity (MSI) pro
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků.
 
@@ -101,7 +101,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, které můžete získat pomocí Azure PowerShell.  Nejprve stáhnout [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Login-AzureRmAccount`, a spusťte následující příkazy, které:
+V dalším kroku přidejte MSI Virtuálního počítače do skupiny.  Je třeba MSI **ObjectId**, které můžete získat pomocí Azure PowerShell.  Nejprve stáhnout [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Potom se přihlaste pomocí `Connect-AzureRmAccount`, a spusťte následující příkazy, které:
 - Ujistěte se, že je váš kontext relace nastaven na požadované předplatné Azure, pokud máte několik snímků.
 - Seznam dostupných prostředků ve vašem předplatném Azure, v ověřte správné prostředků skupiny a názvy virtuálních počítačů.
 - Získat vlastnosti Virtuálního počítače MSI, pomocí příslušnými hodnotami pro `<RESOURCE-GROUP>` a `<VM-NAME>`.

@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/24/2018
+ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Porovnání Azure Data Factory V1 a V2
 Tento článek porovnává verzi 1 a 2 Azure Data Factory. Úvodní informace o verzi 1 najdete v tématu [Úvod do Azure Data Factory](v1/data-factory-introduction.md). Úvodní informace o verzi 2 najdete v tématu [Úvod do Azure Data Factory (V2 – preview)](introduction.md).
@@ -139,11 +139,7 @@ Sady SDK aktualizované pro verzi 2 nejsou zpětně kompatibilní s klienty verz
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
-Vytváření a správa podřízených prostředků pro službu Data Factory v2:
-
--   K vytváření a správě prostředků v2 není možné použít roli přispěvatele služby Data Factory verze 1.
--   Standardní role přispěvatele ARM vytvořená pro prostředek služby Data Factory je dostatečná k vytváření a správě podřízených prostředků pro službu Data Factory v2 nasazenou pomocí PowerShellu nebo sad SDK. Není však dostatečná k vytváření a správě podřízených prostředků pro službu Data Factory v2 nasazenou z webu Azure Portal nebo pomocí šablony ARM.
--   Pokud chcete vytvářet a spravovat podřízené prostředky pro službu Data Factory v2 nasazenou z webu Azure Portal nebo pomocí šablony ARM, musíte být členem role Operátor úloh Automation na úrovni skupiny prostředků nebo na úrovni předplatného. Vaše organizace také může vytvořit vlastní roli, která v seznamu Akce obsahuje Microsoft.Resources/deployments/*, jak je popsáno v tématu [Vytváření vlastních rolí pro řízení přístupu na základě role Azure](../active-directory/role-based-access-control-custom-roles.md).
+K vytváření a správě prostředků služby Data Factory verze 2 je možné použít roli přispěvatele služby Data Factory verze 1.
 
 ## <a name="monitoring-experience"></a>Prostředí pro monitorování
 Ve V2 můžete k monitorování datových továren použít také [Azure Monitor](monitor-using-azure-monitor.md). Nové rutiny PowerShellu podporují monitorování prostředí [Integration Runtime](monitor-integration-runtime.md). Verze 1 i 2 podporují vizuální monitorování prostřednictvím monitorovací aplikace, kterou můžete spustit z webu Azure Portal.

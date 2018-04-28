@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 8f212797decdd967154584927984bc0a4e58f4ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7065ec97e1e02dfb4ee873993caac584f6a63ba6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatizaci prostředků v datovém centru nebo v cloudu s hybridní pracovní proces Runbooku
 
@@ -148,6 +148,12 @@ Jeden nebo více procesy Hybrid Runbook Worker můžete odebrat ze skupiny nebo 
 1. Na portálu Azure přejděte na svůj účet Automation.
 2. Z **nastavení** vyberte **klíče** a poznamenejte si hodnoty pro pole **URL** a **primární přístupový klíč**. Tyto informace jsou potřeba pro další krok.
 3. Otevřete relaci prostředí PowerShell v režimu správce a spusťte následující příkaz: `Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>`. Použití **-Verbose** přepínač pro podrobný protokol proces odebrání.
+
+Pokud chcete odstranit zastaralé počítače z vaší skupinu hybridních pracovních procesů, použijte nepovinný `machineName` parametr.
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
 
 > [!NOTE]
 > Microsoft Monitoring Agent nebude odstraněn z počítače, funkce a konfiguraci role hybridní pracovní proces Runbooku.

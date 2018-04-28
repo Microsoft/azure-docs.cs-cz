@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -46,11 +46,25 @@ K vytvoření App Service mobilního back-endu, buď použijte [rychlý úvodní
 
 Zpět v *Začínáme* okno, v části **vytvořit tabulku rozhraní API**, zvolte **C#** jako vaše **back-end jazyk**. Klikněte na tlačítko **Stáhnout**, extrahujte komprimované soubory projektu do místního počítače a otevřete řešení v sadě Visual Studio.
 
-### <a name="create-a-net-backend-using-visual-studio-2013-and-visual-studio-2015"></a>Vytvořit rozhraní .NET back-end pomocí Visual Studio 2013 a Visual Studio 2015
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>Vytvořit rozhraní .NET back-end pomocí Visual Studio 2017
+
+Nainstalujte Azure zatížení prostřednictvím Instalační program Visual Studio pro publikování do projektu Azure Mobile Apps ze sady Visual Studio. Po dokončení instalace sady SDK, vytvořte aplikaci ASP.NET pomocí následujících kroků:
+
+1. Otevřete **nový projekt** dialogové okno (z **soubor** > **nový** > **projekt...** ).
+2. Rozbalte položku **Visual C#** a vyberte **webové**.
+3. Vyberte **webové aplikace ASP.NET (rozhraní .NET Framework)**.
+4. Zadejte název projektu. Pak klikněte na **OK**.
+5. Vyberte **mobilní aplikace Azure** ze seznamu šablon.
+6. Klikněte na tlačítko **OK** k vytvoření řešení.
+7. Klikněte pravým tlačítkem na projekt v **Průzkumníku řešení** a zvolte **publikování...** , zvolte **služby App Service** jako cíl publikování.
+8. Postupujte podle pokynů k ověření a vybrat nový nebo existující službu aplikaci Azure k publikování.
+
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>Vytvořit rozhraní .NET back-end pomocí Visual Studio 2015
+
 Nainstalujte [Azure SDK for .NET][4] (verze 2.9.0 nebo novější) k vytvoření projektu Azure Mobile Apps v sadě Visual Studio. Po dokončení instalace sady SDK, vytvořte aplikaci ASP.NET pomocí následujících kroků:
 
-1. Otevřete **nový projekt** dialogové okno (z *soubor* > **nový** > **projekt...** ).
-2. Rozbalte položku **šablony** > **Visual C#**a vyberte **webové**.
+1. Otevřete **nový projekt** dialogové okno (z **soubor** > **nový** > **projekt...** ).
+2. Rozbalte položku **šablony** > **Visual C#** a vyberte **webové**.
 3. Vyberte **webové aplikace ASP.NET**.
 4. Zadejte název projektu. Pak klikněte na **OK**.
 5. V části *ASP.NET 4.5.2 šablony*, vyberte **mobilní aplikace Azure**. Zkontrolujte **hostitel v cloudu** vytvoření mobilního back-end v cloudu, do které můžete publikovat tento projekt.

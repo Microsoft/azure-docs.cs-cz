@@ -1,6 +1,6 @@
 ---
-title: "Monitorování a řešení potíží s aplikací cloudového úložiště v Azure | Microsoft Docs"
-description: "Použijte diagnostické nástroje, metriky a upozornění k monitorování a řešení potíží s cloudovou aplikací."
+title: Monitorování a řešení potíží s aplikací cloudového úložiště v Azure | Microsoft Docs
+description: Použijte diagnostické nástroje, metriky a upozornění k monitorování a řešení potíží s cloudovou aplikací.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 
@@ -41,11 +41,11 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 V nabídce vlevo vyberte **Skupiny prostředků**, pak **myResourceGroup** a v seznamu prostředků pak vyberte svůj účet úložiště.
 
-V části **Diagnostika** nastavte **Stav** na hodnotu **Zapnuto**. Ujistěte se, že jsou povolené možnosti **Metriky agregace objektů blob**, **Metriky objektů blob rozhraní API** a **Protokoly objektů blob**.
+V části **Diagnostika** nastavte **Stav** na hodnotu **Zapnuto**. Přesvědčte se, že všechny možnosti v části **Vlastnosti objektu blob** jsou povolené.
 
 Jakmile budete hotovi, klikněte na **Uložit**.
 
-![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/figure1.png)
+![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/contoso.png)
 
 ## <a name="enable-alerts"></a>Povolení upozornění
 

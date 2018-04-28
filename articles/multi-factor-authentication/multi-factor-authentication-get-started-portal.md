@@ -1,8 +1,8 @@
 ---
-title: "Portál User Portal pro Azure MFA Server | Dokumentace Microsoftu"
-description: "Toto je stránka Vícefaktorového ověřování Azure, která nabízí úvod do používání Azure MFA a uživatelského portálu."
+title: Portál User Portal pro Azure MFA Server | Dokumentace Microsoftu
+description: Toto je stránka Vícefaktorového ověřování Azure, která nabízí úvod do používání Azure MFA a uživatelského portálu.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -36,7 +36,7 @@ V závislosti na vašem prostředí můžete chtít portál User Portal nasadit 
 > [!NOTE]
 > Portál User Portal je k dispozici pouze v Azure Multi-Factor Authentication Serveru. Pokud používáte službu Multi-Factor Authentication v cloudu, odkažte své uživatele na témata [Nastavení účtu pro dvoustupňové ověřování](./end-user/multi-factor-authentication-end-user-first-time.md) nebo [Správa nastavení pro dvoustupňové ověřování](./end-user/multi-factor-authentication-end-user-manage-settings.md).
 
-## <a name="install-the-web-service-sdk"></a>Instalace sady SDK webové služby
+## <a name="install-the-web-service-sdk"></a>Instalaci sady SDK webové služby
 
 V obou scénářích, pokud sada SDK webové služby Azure Multi-Factor Authentication **není** na Azure Multi-Factor Authentication (MFA) Serveru nainstalovaná, proveďte následující kroky.
 

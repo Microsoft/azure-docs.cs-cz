@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -92,19 +92,19 @@ Následující tabulka uvádí komponenty Azure Backup s podporou pro Linux.
 | Server Azure Backup |<li>Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/> <li> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru </br></br> *Zálohování s konzistentními soubory není dostupné pro virtuální počítače Azure*  |
 | Zálohování virtuálních počítačů Azure IaaS |Zálohování konzistentní s aplikací pomocí [rozhraní s předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/> [Detailní obnovení souborů](backup-azure-restore-files-from-vm.md)<br/> [Obnovení všech disků virtuálního počítače](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Obnovení virtuálního počítače](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
 
-## <a name="using-premium-storage-vms-with-azure-backup"></a>Použití virtuálních počítačů služby Storage úrovně Premium s Azure Backup
-Azure Backup chrání virtuální počítače služby Storage úrovně Premium. Azure Premium Storage představuje úložiště využívající disky SSD (solid-state drive) určené pro podporu úloh náročných na množství vstupně-výstupních operací. Služba Storage úrovně Premium je zajímavá pro úlohy virtuálních počítačů. Další informace o službě Storage úrovně Premium najdete v článku [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../virtual-machines/windows/premium-storage.md).
+## <a name="using-premium-storage-vms-with-azure-backup"></a>Použití virtuálních počítačů služby Premium Storage s Azure Backup
+Azure Backup chrání virtuální počítače služby Premium Storage. Azure Premium Storage představuje úložiště využívající disky SSD (solid-state drive) určené pro podporu úloh náročných na množství vstupně-výstupních operací. Služba Premium Storage je zajímavá pro úlohy virtuálních počítačů. Další informace o službě Storage úrovně Premium najdete v článku [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../virtual-machines/windows/premium-storage.md).
 
-### <a name="back-up-premium-storage-vms"></a>Zálohování virtuálních počítačů služby Storage úrovně Premium
-Během zálohování virtuálních počítačů služby Storage úrovně Premium vytvoří služba Backup v účtu Storage úrovně Premium dočasné pracovní umístění s názvem „AzureBackup-“. Velikost pracovního umístění odpovídá velikosti snímku bodu obnovení. Ujistěte se, že je v účtu služby Storage úrovně Premium dostatek volného místa pro toto dočasné pracovní umístění. Další informace najdete v článku věnovaném [omezení služby Storage úrovně Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Po dokončení úlohy zálohování je pracovní umístění odstraněno. Cena úložiště použitého pro pracovní umístění je konzistentní s [Cenami Storage úrovně Premium](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+### <a name="back-up-premium-storage-vms"></a>Zálohování virtuálních počítačů služby Premium Storage
+Během zálohování virtuálních počítačů služby Premium Storage vytvoří služba Backup v účtu Premium Storage dočasné pracovní umístění s názvem „AzureBackup-“. Velikost pracovního umístění odpovídá velikosti snímku bodu obnovení. Ujistěte se, že je v účtu služby Premium Storage dostatek volného místa pro toto dočasné pracovní umístění. Další informace najdete v článku věnovaném [omezení služby Premium Storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Po dokončení úlohy zálohování je pracovní umístění odstraněno. Cena úložiště použitého pro pracovní umístění je konzistentní s [Cenami Premium Storage](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
 
 > [!NOTE]
 > Pracovní umístění neměňte, ani neupravujte.
 >
 >
 
-### <a name="restore-premium-storage-vms"></a>Obnovení virtuálních počítačů služby Storage úrovně Premium
-Virtuální počítače služby Storage úrovně Premium můžete obnovit do služby Storage úrovně Premium nebo Standard. Typickým procesem je obnovení bodu obnovení virtuálního počítače služby Storage úrovně Premium do služby Storage úrovně Premium. Nicméně obnovení bodu obnovení virtuálního počítače služby Storage úrovně Premium do služby Storage úrovně Standard může být cenově výhodnější, pokud z virtuálního počítače potřebujete jenom podmnožinu souborů.
+### <a name="restore-premium-storage-vms"></a>Obnovení virtuálních počítačů služby Premium Storage
+Virtuální počítače služby Premium Storage můžete obnovit do služby Premium Storage nebo Standard Storage. Typickým procesem je obnovení bodu obnovení virtuálního počítače služby Premium Storage do služby Premium Storage. Nicméně obnovení bodu obnovení virtuálního počítače služby Premium Storage do služby Storage úrovně Standard může být cenově výhodnější, pokud z virtuálního počítače potřebujete jenom podmnožinu souborů.
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Používání virtuálních počítačů se spravovanými disky se službou Azure Backup
 Azure Backup chrání virtuální počítače se spravovanými disky. Díky zpravovaným diskům už nemusíte spravovat účty úložiště virtuálních počítačů a zřizování virtuálních počítačů je výrazně zjednodušené.
@@ -219,7 +219,7 @@ Mezi běžné příklady chráněných instancí patří virtuální počítače
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Co je trezor služby Recovery Services?
-Trezor služby Recovery Services je entita online úložiště v Azure, která slouží k uchovávání dat, jako jsou záložní kopie, body obnovení a zásady zálohování. Trezory služby Recovery Services můžete používat pro uchovávání dat záloh u služeb Azure a místních serverů a pracovních stanic. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. V každém předplatném Azure můžete vytvořit až 25 trezorů služby Recovery Services pro každou oblast Azure. Pokud zvažujete, kam máte svá data ukládat, ne všechny oblasti jsou stejné. Informace o párování oblastí a další důležité informace o úložišti najdete v tématu popisujícím [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
+Trezor služby Recovery Services je entita online úložiště v Azure, která slouží k uchovávání dat, jako jsou záložní kopie, body obnovení a zásady zálohování. Trezory služby Recovery Services můžete používat pro uchovávání dat záloh u služeb Azure a místních serverů a pracovních stanic. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. V každém předplatném Azure můžete vytvořit až 500 trezorů služby Recovery Services pro každou oblast Azure. Pokud zvažujete, kam máte svá data ukládat, ne všechny oblasti jsou stejné. Informace o párování oblastí a další důležité informace o úložišti najdete v tématu popisujícím [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
 
 Trezory služby Backup, které byly založené na nástroji Azure Service Manager, byly první verzí trezorů. Trezory služby Recovery Services, které přidávají modelové funkce správce Azure Resource Manager, jsou druhou verzí trezorů. Úplný popis rozdílů funkcí najdete v článku [Přehled trezoru služby Recovery Services](backup-azure-recovery-services-vault-overview.md). Trezory služby Backup už není možné vytvářet a všechny existující trezory služby Backup se upgradovaly na trezory služby Recovery Services. Trezory upgradované na trezory služby Recovery Services můžete spravovat pomocí webu Azure Portal.
 

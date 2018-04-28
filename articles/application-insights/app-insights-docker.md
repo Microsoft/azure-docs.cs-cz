@@ -1,8 +1,8 @@
 ---
-title: "Monitorování aplikací Docker ve službě Azure Application Insights | Microsoft Docs"
-description: "Čítače výkonu docker, události a výjimek lze zobrazit na Application Insights, společně s telemetrii z kontejnerizované aplikací."
+title: Monitorování aplikací Docker ve službě Azure Application Insights | Microsoft Docs
+description: Čítače výkonu docker, události a výjimek lze zobrazit na Application Insights, společně s telemetrii z kontejnerizované aplikací.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorování Docker aplikací ve službě Application Insights
-Události životního cyklu a výkonu čítače z [Docker](https://www.docker.com/) kontejnery může být v grafu zobrazena na Application Insights. Nainstalujte [Application Insights](app-insights-overview.md) bitové kopie v kontejneru v hostiteli a zobrazí čítače výkonu pro hostitele, a také pro jiné bitové kopie.
+Události životního cyklu a výkonu čítače z [Docker](https://www.docker.com/) kontejnery může být v grafu zobrazena na Application Insights. Nainstalujte [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) bitové kopie v kontejneru v hostiteli a zobrazí čítače výkonu pro hostitele, a také pro jiné bitové kopie.
 
 Pomocí Docker distribuovat aplikace v lightweight kontejnery kompletní s všechny závislosti. Budete běží na jakýkoli počítač hostitele, který spouští modul Docker.
 
@@ -43,6 +43,10 @@ Při spuštění [Application Insights image](https://hub.docker.com/r/microsoft
 2. Přidat dlaždice Docker: Zvolte **přidat dlaždici**, přetáhněte dlaždici Docker z galerie a pak klikněte na tlačítko **provádí**. 
    
     ![Příklad](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> V podokně přehled ve službě Application Insights je nyní uzamčen a neumožňuje přidávat dlaždice z galerie. Můžete přesto přidat Docker dlaždice, jak je popsáno výše prostřednictvím rozhraní řídicího panelu Azure.
+
 3. Klikněte **Essentials** rozevíracího seznamu a zkopírujte klíč instrumentace. To slouží k říct sadě SDK, kam má posílat jeho telemetrie.
 
     ![Příklad](./media/app-insights-docker/02-props.png)
@@ -124,7 +128,7 @@ Chcete-li prozkoumat jednotlivé události, klikněte na tlačítko [vyhledává
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Application Insights pro jazyk Java](app-insights-java-get-started.md)
 * [Application Insights pro Node.js](app-insights-nodejs.md)

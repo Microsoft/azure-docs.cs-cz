@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 04/19/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -56,9 +56,10 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1802, znám
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-Po instalaci 1802 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).  
-- [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/help/4103348)
+Po instalaci 1802 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md). 
+- Oprava hotfix Azure zásobníku **1.0.180302.4**. [KB 4131152 - existující sady škálování virtuálního počítače se může stát nepoužitelným]( https://support.microsoft.com/help/4131152) 
 
+  Tato oprava také řeší problémy popsané v [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace zásobníku Azure](https://support.microsoft.com/help/4103348).
 
 
 ### <a name="new-features-and-fixes"></a>Nové funkce a opravy

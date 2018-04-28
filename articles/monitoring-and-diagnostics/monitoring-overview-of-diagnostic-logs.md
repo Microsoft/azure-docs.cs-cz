@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 884acc4885da3a321477c51f6d7b76748d797d9b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a využití dat protokolu z vašich prostředků Azure
 
@@ -59,14 +59,14 @@ Diagnostické protokoly prostředků pro jiné výpočetní, že prostředky jso
 Tato nastavení jsou konfigurována snadno prostřednictvím nastavení diagnostiky pro prostředek v portálu Azure, pomocí prostředí Azure PowerShell a rozhraní příkazového řádku nebo pomocí [REST API služby Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 > [!NOTE]
-> Odesílání vícerozměrných metriky prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+> Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu prostřednictvím nastavení pro diagnostiku metriku bude reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
+> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 
 > [!WARNING]
-> Diagnostické protokoly a metriky pro z hostovaného operačního systému vrstvy výpočetní prostředky (například virtuální počítače nebo Service Fabric) použití [samostatné mechanismus konfigurace a výběr výstupy](../azure-diagnostics.md).
+> Diagnostické protokoly a metriky z hostovaného operačního systému vrstvy výpočetní prostředky (například virtuální počítače nebo Service Fabric) použití [samostatné mechanismus konfigurace a výběr výstupy](../azure-diagnostics.md).
 
 ## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Postup povolení shromažďování diagnostických protokolů prostředků
 

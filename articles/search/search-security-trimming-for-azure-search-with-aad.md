@@ -1,24 +1,24 @@
 ---
-title: "Filtry zabezpečení pro oříznutí výsledky hledání Azure pomocí služby Active Directory identit | Microsoft Docs"
-description: "Řízení přístupu na obsahu Azure Search pomocí filtrů zabezpečení a identity služby Active Directory."
-services: search
+title: Filtry zabezpečení pro oříznutí výsledky hledání Azure pomocí služby Active Directory identit | Microsoft Docs
+description: Řízení přístupu na obsahu Azure Search pomocí filtrů zabezpečení a identity služby Active Directory.
 author: revitalbarletz
 manager: jlembicz
+services: search
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 7c1723e01c78132169d8975473a0e9f5466a066c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro ořezávání výsledky Azure Search pomocí identit služby Active Directory
 
 Tento článek ukazuje, jak používat identity zabezpečení Azure Active Directory (AAD) společně s filtry ve službě Azure Search oříznout výsledky vyhledávání založené na členství ve skupině uživatelů.
 
-Tento článek obsahuje následující úlohy:
+Tento článek se zabývá následujícími úkony:
 > [!div class="checklist"]
 - Vytváření AAD skupin a uživatelů
 - Přiřadit uživatele na skupinu, kterou jste vytvořili
@@ -185,7 +185,7 @@ Odpověď obsahuje filtrovaný seznam dokumentů, který se skládá z těch, kt
 
 V tomto návodu jste se dozvěděli techniky pro filtrování dokumenty ve výsledcích hledání Azure, pomocí AAD přihlášení ořezávání výsledky dokumenty, které neodpovídají filtr zadaný v požadavku.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Řízení přístupu na základě identit pomocí filtrů Azure Search](search-security-trimming-for-azure-search.md)
 + [Filtry ve službě Azure Search](search-filters.md)

@@ -18,11 +18,11 @@ ms.dyn365.ops.version: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: mcollier
-ms.openlocfilehash: a87f60b04806fb337a9b4558a67ffa11da661ad5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a2b33822a1208c2835b8eabfb6717edba08d1992
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování REST API
 V tomto článku se dozvíte, jak provést ověření, abyste mohli používat kódu [Microsoft referenční dokumentace rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -41,7 +41,7 @@ $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
 # Authenticate to a specific Azure subscription.
-Login-AzureRmAccount -SubscriptionId $subscriptionId
+Connect-AzureRmAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"

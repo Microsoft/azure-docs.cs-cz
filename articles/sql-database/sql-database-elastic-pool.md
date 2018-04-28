@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
 ms.topic: article
-ms.openlocfilehash: 930b5607f343b87adc253cc99d74ddf28235a50b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastických fondů pomáhají spravovat a škálování více databází Azure SQL
 
@@ -32,9 +32,9 @@ Elastické fondy tento problém vyřešit tím, že zajistí, že databáze zís
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Elastické fondy povolit vývojáře o zakoupení prostředků pro fond sdílí víc databází pro přizpůsobení nepředvídatelným období využití jednotlivých databází. Můžete nakonfigurovat prostředky pro fondu buď na základě [nákupní model (preview) na základě DTU](sql-database-service-tiers.md#dtu-based-purchasing-model) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers.md#vcore-based-purchasing-model-preview). Požadavek na prostředek pro fond je určen podle agregační využití její databáze. Množství zdrojů do fondu k dispozici je řízena nároky developer. Vývojář jednoduše přidá databází do fondu, nastaví minimální a maximální prostředky pro databáze (Dtu minumumn a maximální nebo minimální nebo maximální vCores podle svého výběru modelu resourceing) a poté nastaví prostředků fondu na základě svůj rozpočet. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
+Elastické fondy povolit vývojáře o zakoupení prostředků pro fond sdílí víc databází pro přizpůsobení nepředvídatelným období využití jednotlivých databází. Můžete nakonfigurovat prostředky pro fondu buď na základě [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md). Požadavek na prostředek pro fond je určen podle agregační využití její databáze. Množství zdrojů do fondu k dispozici je řízena nároky developer. Vývojář jednoduše přidá databází do fondu, nastaví minimální a maximální prostředky pro databáze (buď minimální a maximální počet jednotek Dtu nebo minimální nebo maximální vCores v závislosti na zvoleném resourcing modelu) a poté nastaví prostředků fondu na základě jejich nároky. Vývojáři mohou fondy využít k tomu, aby zajistili elegantní růst svých služeb od úsporného startupu až po zralé podnikání, a to ve stále se zvětšujícím měřítku.
 
-V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze využívat další prostředky ke splnění požadavků. Databáze v rámci světla zatížení využívat menší a databází žádné zatížení využívat žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Kromě toho můžete předem odhadnout náklady na fond. Další zdroje informací lze přidat na existující fond bez výpadků databáze s tím rozdílem, že databáze možná potřebujete přesunout zajistit další výpočetní prostředky pro novou rezervaci eDTU. Podobně pokud už nejsou potřeba další prostředky budou lze odebrat z existujícího fondu v libovolném bodě v čase. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
+V rámci fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci stanovených parametrů. V případě velkého zatížení může databáze využívat další prostředky ke splnění požadavků. Databáze v rámci světla zatížení využívat menší a databází žádné zatížení využívat žádné prostředky. Zřizováním prostředků pro celý fond, a nikoli pro jednotlivé databáze, se úkoly správy zjednodušují. Plus máte předvídatelný nároky pro fond. Další zdroje informací lze přidat na existující fond bez výpadků databáze s tím rozdílem, že databáze možná potřebujete přesunout zajistit další výpočetní prostředky pro novou rezervaci eDTU. Podobně pokud už nejsou potřeba další prostředky budou lze odebrat z existujícího fondu v libovolném bodě v čase. Navíc můžete databáze do fondu přidávat nebo je z něj odebírat. Pokud databáze podle předpokladu nedostatečně využívá prostředky, odeberte ji.
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Pokud byste zvážit elastického fondu SQL Database?
 
@@ -81,7 +81,7 @@ K tomu, aby fond se 100 jednotkami eDTU byl cenově výhodnější než použit�
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
 
-Sdílení zdroje, ne všechny databáze ve fondu současně pomocí zdroje až do limitu k dispozici pro izolované databáze. Méně databáze, který současně špičkovým, nižší fondu prostředků můžete nastavit a více nákladově efektivní stane fondu. Obecně platí více než 2 nebo 3 (nebo 67 %) databází ve fondu musí současně ve špičkách limitu jejich prostředky.
+Sdílení prostředků, ne všechny databáze ve fondu současně pomocí prostředky až do limitu k dispozici pro izolované databáze. Méně databáze, který současně špičkovým, nižší fondu prostředků můžete nastavit a více nákladově efektivní stane fondu. Obecně platí více než 2 nebo 3 (nebo 67 %) databází ve fondu musí současně ve špičkách limitu jejich prostředky.
 
 ***Na základě DTU nákupu příklad modelu***<br>
 Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu nastaví na více než 200 jednotek eDTU, bude nutné do fondu přidat další databáze S3, jinak náklady nebudou nižší než při použití úrovní výkonu pro izolované databáze.
@@ -98,10 +98,10 @@ Databáze S3, která ve špičce využívá 100 DTU a průměrně využívá 67 
 
 Velikost doporučené pro fond závisí na agregační prostředky potřebné pro všechny databáze ve fondu. To zahrnuje určení následující:
 
-* Maximální prostředků využívaných všechny databáze ve fondu (maximální počet jednotek Dtu nebo maximální vCores podle svého výběru resourceing modelu).
+* Maximální prostředků využívaných všechny databáze ve fondu (maximální počet jednotek Dtu nebo maximální vCores v závislosti na zvoleném resourcing modelu).
 * Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
-Úrovně služeb dostupné pro každý model prostředků, najdete v článku [na základě DTU nákupní model](sql-database-service-tiers.md#dtu-based-purchasing-model) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers.md#vcore-based-purchasing-model-preview).
+Úrovně služeb dostupné pro každý model prostředků, najdete v článku [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 
 SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Kromě těchto doporučení integrované prostředí odhaduje využití eDTU pro vlastní skupinu databází na serveru. Interaktivním přidáváním databází do fondu a jejich odebíráním díky tomu můžete prostřednictvím citlivostních analýz získat analýzy využití prostředků a rady týkající se požadované velikosti dřív, než potvrdíte požadované změny. Postupy najdete v tématu [Monitorování, správa a nastavení velikosti elastického fondu](sql-database-elastic-pool-manage-portal.md).
 
@@ -112,11 +112,11 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
    Na základě DTU nákupu modelu: maximální počet (<*celkový počet databází* X *průměrné využití DTU na databázi*>,<br>
    <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
 
-   Na základě vCore nákupu modelu: maximální počet (<*celkový počet databází* X *průměrné využití vCore na databázi*>,<br>
+   Na základě vCore nákupu modelu (preview): maximální počet (<*celkový počet databází* X *průměrné využití vCore na databázi*>,<br>
    <*Počet souběžně peaking databází* X *ve špičce vCore využití za DB*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
-3. Na základě DTU nákupu modelu trvat větší z odhadované eDTU z kroku 1 a 2 krok. Na základě vCore nákupu modelu trvat odhad vCore z kroku 1.
+3. Na základě DTU nákupu modelu trvat větší z odhadované eDTU z kroku 1 a 2 krok. Na základě vCore nákupu modelu (preview) trvat odhad vCore z kroku 1.
 4. Najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) a najít fondu nejmenší velikost, která je větší než odhad z kroku 3.
 5. Porovnejte cenu fondu z kroku 5 s cenou při použití odpovídajících úrovní výkonu pro izolované databáze.
 
@@ -269,17 +269,17 @@ Vytvoření a správa Elastická databáze SQL pomocí fondy tyto požadavky RES
 |[Elastické fondy - Get](/rest/api/sql/elasticpools/get)|Získá fondu elastické databáze.|
 |[Elastické fondy - seznamu serverem](/rest/api/sql/elasticpools/listbyserver)|Vrátí seznam hodnot elastické fondy na serveru.|
 |[Elastické fondy - aktualizace](/rest/api/sql/elasticpools/update)|Aktualizace existujícího elastického fondu.|
-|[Počet doporučených fondů elastické - Get](/rest/api/sql/recommendedelasticpools/get)|Získá recommented elastického fondu.|
+|[Počet doporučených fondů elastické - Get](/rest/api/sql/recommendedelasticpools/get)|Získá doporučené elastického fondu.|
 |[Počet doporučených fondů elastické - seznamu serverem](/rest/api/sql/recommendedelasticpools/listbyserver)|Vrátí počet doporučených fondů elastické.|
-|[Počet doporučených fondů elastické - seznamu metriky](/rest/api/sql/recommendedelasticpools/listmetrics)|Vrátí recommented metriky elastického fondu.|
+|[Počet doporučených fondů elastické - seznamu metriky](/rest/api/sql/recommendedelasticpools/listmetrics)|Vrátí doporučuje metriky elastického fondu.|
 |[Elastický fond aktivity](/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
 |[Fond elastické databáze aktivity](/rest/api/sql/elasticpooldatabaseactivities)|Vrátí aktivita u databází v elastickém fondu.|
 |[Databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
 |[Databáze - Get](/rest/api/sql/databases/get)|Získá databáze.|
 |[Databáze - získat elastického fondu](/rest/api/sql/databases/getbyelasticpool)|Získá databáze v elastickém fondu.|
-|[Získat doporučený fond Elastických databází –](/rest/api/sql/databases/getbyrecommendedelasticpool)|Získá databázi uvnitř recommented elastického fondu.|
+|[Získat doporučený fond Elastických databází –](/rest/api/sql/databases/getbyrecommendedelasticpool)|Získá uvnitř doporučený fond elastické databáze.|
 |[Databáze – seznam podle elastického fondu](/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam podle doporučených elastického fondu](/rest/api/sql/databases/listbyrecommendedelasticpool)|Vrátí seznam databází uvnitř recommented elastického fondu.|
+|[Databáze – seznam podle doporučených elastického fondu](/rest/api/sql/databases/listbyrecommendedelasticpool)|Vrátí seznam uvnitř doporučený fond elastických databází.|
 |[Databáze - seznamu serverem](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
 |[Databáze - aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 

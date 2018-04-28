@@ -1,11 +1,11 @@
 ---
-title: "Nastavení brány sítě VPN pro Azure zásobníku | Microsoft Docs"
-description: "Další informace o nastavení brány sítě VPN, které používáte pro Azure zásobníku."
+title: Nastavení brány sítě VPN pro Azure zásobníku | Microsoft Docs
+description: Další informace o nastavení brány sítě VPN, které používáte pro Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: 1eba5df93b461eb22ab8341b4498682957c9298a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení brány sítě VPN pro Azure zásobníku
 
@@ -45,16 +45,13 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ### <a name="gateway-skus"></a>Skladové jednotky (SKU) brány
 Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte SKU, které splňují vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA.
 
->[!NOTE]
-> Klasické virtuální sítě by měly i nadále používat staré SKU. Další informace o starých SKU brány najdete v tématu [Práce s SKU bran virtuálních sítí (staré SKU)](/azure/vpn-gateway/vpn-gateway-about-skus-legacy).
-
 Zásobník Azure nabízí následující SKU brány sítě VPN:
 
 |   | Propustnost brány sítě VPN |Brána sítě VPN maximální počet tunelových propojení IPsec |
 |-------|-------|-------|
-|**Basic SKU**  | 100 Mb/s  | 10    |
+|**Základní SKU**  | 100 Mb/s  | 10    |
 |**Standardní SKU**           | 100 Mb/s  | 10    |
-|**SKU pro vysoký výkon** | 200 Mb/s    | 30    |
+|**SKU pro vysoký výkon** | 200 Mb/s    | 5 |
 
 ### <a name="resizing-gateway-skus"></a>Změna velikosti SKU brány
 Azure zásobník nepodporuje velikosti SKU mezi podporované starší verze SKU.
@@ -90,11 +87,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 Když vytvoříte bránu virtuální sítě pro konfiguraci brány VPN, musíte zadat typ sítě VPN. Typ sítě VPN, který zvolíte, závisí na topologii připojení, který chcete vytvořit.  Typ sítě VPN můžete také závisí na hardwaru, který používáte. Konfigurace S2S vyžadují zařízení VPN. Některá zařízení VPN podporují pouze určitý typ sítě VPN.
 
 > [!IMPORTANT]  
-> V tomto okamžiku zásobník Azure podporuje pouze typ sítě VPN na základě trasy. Pokud vaše zařízení podporuje pouze sítě VPN na základě zásad, nejsou podporovány připojení na těchto zařízeních z Azure zásobníku.
+> V tomto okamžiku zásobník Azure podporuje pouze typ sítě VPN na základě trasy. Pokud vaše zařízení podporuje pouze sítě VPN na základě zásad, nejsou podporovány připojení na těchto zařízeních z Azure zásobníku.  Kromě toho Azure zásobník nepodporuje použití zásad na základě provoz selektory pro brány na základě trasy v tuto chvíli jako vlastní konfigurace zásad protokolu IPSec/IKE nejsou ještě podporováno.
 
 - **PolicyBased**: *(podporuje se v Azure, ale ne podle Azure zásobníku)* sítě VPN založené na zásadách šifrují pakety a směrují je do tunelových propojení IPsec na základě zásad IPsec nakonfigurovaných pomocí kombinace předpon adres mezi místní sítí a Azure VNet zásobníku. Zásada (nebo selektor provozu) se většinou určuje v konfiguraci zařízení VPN jako přístupový seznam.
 
-- **RouteBased**: sítě VPN RouteBased používají IP předávání nebo směrovací tabulce ke směrování paketů do svých příslušných rozhraní tunelových propojení "trasy". Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásada (nebo selektor provozu) pro sítě VPN RouteBased jsou nakonfigurované jako any-to-any (nebo zástupné znaky). Hodnota pro typ sítě VPN RouteBased je RouteBased.
+- **RouteBased**: sítě VPN RouteBased používají IP předávání nebo směrovací tabulce ke směrování paketů do svých příslušných rozhraní tunelových propojení "trasy". Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásada (nebo selektor provozu) pro sítě VPN RouteBased jsou nakonfigurované jako any-to-any (nebo zástupné znaky) pomocí výchozí a nelze je změnit. Hodnota pro typ sítě VPN RouteBased je RouteBased.
 
 Následující příklad PowerShell určuje parametr - VpnType jako RouteBased. Při vytváření brány se musíte ujistit, že parametr -VpnType odpovídá vaší konfiguraci.
 
@@ -110,7 +107,7 @@ Následující tabulka uvádí požadavky na brány sítě VPN.
 |--|--|--|--|--|
 | **Připojení Site-to-Site (S2S připojení)** | Nepodporuje se | Konfigurace sítě VPN RouteBased | Konfigurace sítě VPN RouteBased | Konfigurace sítě VPN RouteBased |
 | **Metoda ověřování**  | Nepodporuje se | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
-| **Maximální počet připojení S2S**  | Nepodporuje se | 10 | 10| 30|
+| **Maximální počet připojení S2S**  | Nepodporuje se | 10 | 10| 5|
 |**Podpora aktivního směrování (BGP)** | Nepodporuje se | Nepodporuje se | Podporováno | Podporováno |
 
 ### <a name="gateway-subnet"></a>Podsíť brány
@@ -160,7 +157,7 @@ Na rozdíl od Azure, která podporuje více nabízí jako iniciátor i respondé
 |Verze IKE |IKEv2 |
 |Šifrování a použití algoritmu hash algoritmy (šifrování)     | GCMAES256|
 |Šifrování a použití algoritmu hash algoritmy (ověřování) | GCMAES256|
-|Životnost SA (čas)  | 14 400 sekund |
+|Životnost SA (čas)  | 27 000 sekund |
 |Životnost SA (bajty) | 819,200       |
 |Metoda Perfect Forward Secrecy (PFS) |PFS2048 |
 |Detekce mrtvých partnerských zařízení | Podporováno|  

@@ -1,6 +1,6 @@
 ---
-title: "Přidání víceklientské aplikace pro galerii aplikací Azure AD | Microsoft Docs"
-description: "Vysvětluje, jak můžete vytvořit seznam zákaznických víceklientské aplikace v galerii aplikací Azure AD."
+title: Přidání víceklientské aplikace pro galerii aplikací Azure AD | Microsoft Docs
+description: Vysvětluje, jak můžete vytvořit seznam zákaznických víceklientské aplikace v galerii aplikací Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 82f7abbe5814f9b154b6888d5b599e7706eb879b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 51a088ccdcc018b85a70f72a5f88fab8de3c7363
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Přidání víceklientské aplikace pro galerii aplikací Azure AD
 
@@ -28,9 +28,9 @@ Azure Active Directory (Azure AD) je služba cloudových identit. [Galerii aplik
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Pokud vaše aplikace podporuje SAML nebo OpenIDConnect
 Pokud máte víceklientské aplikace, která má uvedené v galerii aplikací Azure AD, musíte nejprve provedete jistotu, že vaše aplikace podporuje jednu z následujících jeden přihlašování technologií:
 
-- **OpenID Connect**: tak, aby měl uvedené aplikace, vytvořte víceklientské aplikaci ve službě Azure AD a implementaci [framework souhlasu Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) pro vaši aplikaci. Poslat žádost o přihlášení k běžné koncový bod, tak, aby každý zákazník může poskytnout souhlas k aplikaci. Můžete řídit přístup uživatele na základě ID klienta a uživatele (UPN) přijaté v tokenu. Odeslání aplikace pomocí procesu uvedených v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: tak, aby měl uvedené aplikace, vytvořte víceklientské aplikaci ve službě Azure AD a implementaci [framework souhlasu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) pro vaši aplikaci. Poslat žádost o přihlášení k běžné koncový bod, tak, aby každý zákazník může poskytnout souhlas k aplikaci. Můžete řídit přístup uživatele na základě ID klienta a uživatele (UPN) přijaté v tokenu. Odeslání aplikace pomocí procesu uvedených v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-- **SAML**: Pokud aplikace podporuje SAML 2.0, může být aplikace uvedený v galerii. Postupujte podle pokynů v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **SAML**: Pokud aplikace podporuje SAML 2.0, může být aplikace uvedený v galerii. Postupujte podle pokynů v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Pokud vaše aplikace nepodporuje SAML nebo OpenIDConnect
 Do Galerie aplikací prostřednictvím heslo jeden přihlašování technologie stále dají integrovat aplikace, které nepodporují SAML nebo OpenIDConnect.
@@ -38,8 +38,8 @@ Do Galerie aplikací prostřednictvím heslo jeden přihlašování technologie 
 Heslo jednotné přihlašování, označované taky jako heslo překlenutí vyrovnávací paměti, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace. 
 
 Pokud chcete uvedení aplikace s touto technologií:
-1. Vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [heslo jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis). 
-2. Odeslání žádosti, jak je popsáno v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing).
+1. Vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [heslo jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). 
+2. Odeslání žádosti, jak je popsáno v [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 ## <a name="escalations"></a>Eskalací
 

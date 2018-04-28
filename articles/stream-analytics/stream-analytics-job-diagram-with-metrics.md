@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: e6b2b7f4c01a5280c2fb3a5c17158b8dcc2797d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Řízené daty ladění pomocí diagram úlohy
 
@@ -76,11 +76,11 @@ Pokud v předchozím kroku dotazu je vstupní procesoru, využít vstupní metri
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Jsme padají při čtení dat?
 
-*   **InputEventsSourcesBackloggedTotal** zjistíte, kolik další zprávy nutné čtení pro službu Event Hubs a Azure IoT Hub vstupy.
+*   **Vstupní nevyřízené události (celkem)** zjistíte, kolik další zprávy nutné čtení pro službu Event Hubs a Azure IoT Hub vstupy. Když tento počet je větší než 0, znamená to, že vaše úlohy nelze zpracovat data tak rychle, jak v Připravujeme. V takovém případě musíte zvýšit počet jednotek streamování a ujistěte se, že můžete paralelizovaná málo úlohu. Další informace v tomto uvidíte na [stránka paralelizace dotazu](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
 
 
 ## <a name="get-help"></a>Podpora
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Stream Analytics](stream-analytics-introduction.md)

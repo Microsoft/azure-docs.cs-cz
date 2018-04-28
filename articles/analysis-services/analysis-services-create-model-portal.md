@@ -5,25 +5,25 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 30a7f78e7bf13e6e6197e95b266dfd0d6b8f83c0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b1d4cffc3571297f2b74674156cb7f3bad7c2c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na portálu Azure
 
 Funkce Azure Analysis Services webová návrháře (preview) na portálu Azure poskytuje rychlý a snadný způsob, jak vytvořit a upravit tabulkové modely a dotazování modelu dat vpravo v prohlížeči. 
 
-Mějte na paměti, Návrhář webu je **preview**. Když se přidává nové funkce celou dobu, ve verzi preview, funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
+Mějte na paměti, Návrhář webu je **preview**. Funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 - Serveru Azure Analysis Services na úroveň Standard nebo Developer. Nové modelů vytvořených pomocí webové návrháře jsou DirectQuery, podporuje pouze tyto vrstvy.
-- Databáze SQL Azure, Azure SQL Data Warehouse nebo souboru Power BI Desktop (.pbix) jako zdroj dat. Nové modely vytvořené z Power BI Desktop podporu soubory databáze SQL Azure, Azure SQL Data Warehouse, Oracle a Teradata datové zdroje.
+- Databáze SQL Azure, Azure SQL Data Warehouse nebo souboru Power BI Desktop (.pbix) jako zdroj dat. Nové modely vytvořené pomocí Power BI Desktop soubory podpory Azure SQL Database a Azure SQL Data Warehouse.
 - Účet systému SQL Server a heslo pro připojení ke zdrojům dat databáze SQL Azure nebo Azure SQL Data Warehouse.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal

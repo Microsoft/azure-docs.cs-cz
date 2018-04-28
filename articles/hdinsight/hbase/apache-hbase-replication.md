@@ -1,24 +1,22 @@
 ---
-title: "Nastavení replikace clusteru HBase v Azure virtuální sítě | Microsoft Docs"
-description: "Zjistěte, jak nastavit replikace HBase z jedné verze HDInsight do jiného pro vyrovnávání zatížení, vysokou dostupnost, nula. výpadků migrace a aktualizací a zotavení po havárii."
+title: Nastavení replikace clusteru HBase v Azure virtuální sítě | Microsoft Docs
+description: Zjistěte, jak nastavit replikace HBase z jedné verze HDInsight do jiného pro vyrovnávání zatížení, vysokou dostupnost, nula. výpadků migrace a aktualizací a zotavení po havárii.
 services: hdinsight,virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b0a22815dc0bf0ea31e47efe5152498f9aa45de4
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase v Azure virtuální sítě
 
@@ -255,7 +253,7 @@ Můžete postupujte stejným způsobem, který je popsán v [povolit replikaci](
         -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
 
 
-## <a name="disable-replication"></a>Zakázat replikaci
+## <a name="disable-replication"></a>Zákaz replikace
 
 Zakázat replikace, použijte jiný skript akce skriptu z [Githubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Můžete postupujte stejným způsobem, který je popsán v [povolit replikaci](#enable-replication) volání akce skriptu. Použijte následující parametry:
 

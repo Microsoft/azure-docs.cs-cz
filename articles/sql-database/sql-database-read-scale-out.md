@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/17/2018
 ms.author: sashan
-ms.openlocfilehash: 0eda9012e6b6c7207d200a6e550b6bc0b0b09882
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6e82b851f7dc7e2b8c7fe996bff843c8f10f2978
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít jen pro čtení repliky načíst vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -32,7 +32,7 @@ Po povolení škálování pro čtení pro databázi aplikace připojení k data
 
 ## <a name="data-consistency"></a>Konzistence dat
 
-Jednou z výhod technologie AlwaysON serveru je, že repliky jsou vždycky ve stavu transakční konzistence stavu, ale v různých okamžicích v čase může existovat určité malé zpoždění mezi jiné repliky. Čtení Škálováním na více systémů podporuje relace úroveň konzistence. Znamená to, když relace jen pro čtení znovu připojí po chybě připojení kvůli nedostupnosti repliky, může být přesměrován na repliku, která není 100 % aktuální repliky pro čtení a zápis. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné. Je to proto znovu protokolu transakcí s replikami je asynchronní.
+Jednou z výhod Always ON je, že repliky jsou vždycky ve stavu transakční konzistence stavu, ale v různých okamžicích v čase může existovat určité malé zpoždění mezi jiné repliky. Čtení Škálováním na více systémů podporuje relace úroveň konzistence. Znamená to, když relace jen pro čtení znovu připojí po chybě připojení kvůli nedostupnosti repliky, může být přesměrován na repliku, která není 100 % aktuální repliky pro čtení a zápis. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relaci jen pro čtení, je možné, že nejnovější aktualizace nejsou okamžitě viditelné. Je to proto znovu protokolu transakcí s replikami je asynchronní.
 
 > [!NOTE]
 > Jsou nízkou latenci replikace v rámci oblasti a navíc není obvyklé situace.

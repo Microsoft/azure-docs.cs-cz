@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ed0718f2d9d5093442001005e43551e7e9749eef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="door-monitor"></a>Dvířka monitorování          
 
@@ -44,7 +44,7 @@ Dokončit [Příručka Začínáme]({{"/docs/get-started/" | absolute_url }}) na
 
 Aktivní předplatné Azure. Pokud jeden nemáte, můžete zaregistrovat pomocí jedné z těchto metod:
 
-* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30denní](https://azure.microsoft.com/en-us/free/).
+* Aktivovat [Bezplatný zkušební účet Microsoft Azure 30denní](https://azure.microsoft.com/free/).
 * Deklarace identity vaší [kreditu Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) Pokud jste webu MSDN nebo v sadě Visual Studio odběratele.
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Nasazení služby sendgrid vám umožňuje v Azure
@@ -69,7 +69,7 @@ Zobrazí se na následující stránce.
 
 Vyplnění registračního formuláře:
 
-  * **Skupina prostředků**: vytvoření skupiny prostředků k hostování služby sendgrid vám umožňuje, nebo použijte existující. V tématu [použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Skupina prostředků**: vytvoření skupiny prostředků k hostování služby sendgrid vám umožňuje, nebo použijte existující. V tématu [použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Název**: název služby sendgrid vám umožňuje. Vyberte jedinečný název, které se liší od jiných služeb, které by mohly být.
 
@@ -111,7 +111,7 @@ Zobrazí se na následující stránce.
 
 Vyplnění registračního formuláře:
 
-  * **Skupina prostředků**: vytvoření skupiny prostředků k hostování služby sendgrid vám umožňuje, nebo použijte existující. V tématu [použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Skupina prostředků**: vytvoření skupiny prostředků k hostování služby sendgrid vám umožňuje, nebo použijte existující. V tématu [použití skupin prostředků ke správě prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Název centra IOT**: název služby IoT hub. Vyberte jedinečný název, které se liší od jiných služeb, které by mohly být.
 
@@ -132,10 +132,6 @@ Vyplnění registračního formuláře:
 - Spustí kód VS.
 - Připojení DevKit k vašemu počítači.
 
-VS Code automaticky rozpozná vaší DevKit a otevřete úvodní stránka:
-
-![VSCode](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-start.png)
-
 > [!NOTE]
 > Při spuštění VS Code, může se zobrazit chybová zpráva s oznámením, že nelze najít Arduino IDE nebo balíček Příbuzná panelu. Pokud se zobrazí tato chyba, Zavřít VS Code, spusťte znovu Arduino IDE a VS Code by měl vyhledejte Arduino IDE cestu správně.
 
@@ -145,7 +141,8 @@ Rozbalte položku na levé straně **ARDUINO příklady** vyhledejte **příklad
 
 ![Mini solution příklady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Pokud jste dojít zavřete podokno, můžete ho znovu otevřít. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
+> [!NOTE]
+> Příklad můžete také otevřít z palety příkaz. Použití `Ctrl+Shift+P` (systému macOS: `Cmd+Shift+P`) Chcete-li spustit příkaz palety, zadejte **Arduino**a potom najděte a vyberte **Arduino: Příklady**.
 
 ### <a name="provision-azure-services"></a>Zřídit služby Azure
 
@@ -208,7 +205,7 @@ Po inicializaci `Door closed` se zobrazí na obrazovce. Pokud dojde ke změně v
 
 Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) nebo se připojte pomocí následující kanály:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Další postup
@@ -216,4 +213,4 @@ Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https:
 Jste se naučili postup DevKit zařízení připojit k vaší Azure IoT Suite a služby sendgrid vám umožňuje používat k odesílání e-mailu. Tady jsou navrhované další kroky:
 
 * [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

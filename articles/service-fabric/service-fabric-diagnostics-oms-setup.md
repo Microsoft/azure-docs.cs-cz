@@ -12,24 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/30/2018
+ms.date: 4/03/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 807c703eccf336236846212b8a0cadc20ec2bc4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3d6a47ba184b4bbbd290a61c581ae8b83b9361af
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení analýzy protokolů pro cluster
 
-Můžete nastavit pracovní prostor analýzy protokolů pomocí Azure Resource Manager, prostředí PowerShell nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manager nasazení pro budoucí použití, nastavení prostředí OMS pomocí stejné šablony. Nasazení prostřednictvím Marketplace je jednodušší, pokud již máte cluster nasadit s diagnostikou povolena. Pokud účet, do které nasazujete OMS nemají přístup na úrovni předplatného, nasaďte pomocí prostředí PowerShell nebo šablony Resource Manageru.
+Analýzy protokolů je naše doporučení pro sledování událostí na úrovni clusteru. Můžete nastavit pracovní prostor analýzy protokolů pomocí Azure Resource Manager, prostředí PowerShell nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manager nasazení pro budoucí použití, nastavení prostředí analýzy protokolů pomocí stejné šablony. Nasazení prostřednictvím Marketplace je jednodušší, pokud již máte cluster nasadit s diagnostikou povolena. Pokud nemáte přístup na úrovni předplatného v účtu, do které nasazujete, nasaďte pomocí prostředí PowerShell nebo šablony Resource Manageru.
 
 > [!NOTE]
-> Nastavení analýzy protokolů pro monitorování vašeho clusteru, musíte mít diagnostiky povoleno zobrazovat události na úrovni clusteru nebo platformu.
+> Nastavení analýzy protokolů pro monitorování vašeho clusteru, musíte mít diagnostiky povoleno zobrazovat události na úrovni clusteru nebo platformu. Odkazovat na [postup nastavení diagnostiky v clusterech Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [postup nastavení diagnostiky v clusterech Linux](service-fabric-diagnostics-event-aggregation-lad.md) Další informace
 
-## <a name="deploy-oms-by-using-azure-marketplace"></a>Nasazení OMS pomocí webu Azure Marketplace
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Nasazení pracovní prostor analýzy protokolů pomocí Azure Marketplace
 
-Pokud chcete přidat pracovním prostorem OMS po nasazení clusteru, přejděte na Azure Marketplace v portálu a vyhledejte **Service Fabric Analytics**:
+Pokud chcete přidat pracovní prostor analýzy protokolů po nasazení clusteru, přejděte na Azure Marketplace v portálu a vyhledejte **Service Fabric Analytics**. Toto je vlastní řešení pro nasazení Service Fabric, která obsahuje data, které jsou specifické pro Service Fabric. V tomto procesu vytvoříte řešení (řídicí panel k zobrazení statistiky) i prostoru (agregace v základních datech clusteru).
 
 1. Vyberte **nový** v levé navigační nabídce. 
 
@@ -39,7 +39,7 @@ Pokud chcete přidat pracovním prostorem OMS po nasazení clusteru, přejděte 
 
     ![Analýza SF OMS v Marketplace.](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. V okně vytváření Service Fabric Analytics vyberte **vyberte pracovní prostor** pro **pracovním prostorem OMS** pole a potom **vytvořit nový pracovní prostor**. Vyplňte požadované položky. Jediným požadavkem je, že předplatné pro cluster Service Fabric a pracovním prostorem OMS je stejný. Při ověření vaše záznamy vaším pracovním prostorem OMS spustí nasazení. Nasazení trvá jenom pár minut.
+4. V okně vytváření Service Fabric Analytics vyberte **vyberte pracovní prostor** pro **pracovním prostorem OMS** pole a potom **vytvořit nový pracovní prostor**. Vyplňte požadované položky. Jediným požadavkem je, že předplatné pro cluster Service Fabric a pracovního prostoru je stejný. Při ověření vaší položky pracovního prostoru spustí nasazení. Nasazení trvá jenom pár minut.
 
 5. Po dokončení vyberte **vytvořit** znovu v dolní části okna Vytvoření Service Fabric Analytics. Ujistěte se, že nový pracovní prostor se zobrazí v části **pracovním prostorem OMS**. Tato akce přidá řešení do pracovního prostoru, kterou jste vytvořili.
 
@@ -48,9 +48,9 @@ Pokud používáte systém Windows, pokračujte následujícími kroky pro přip
 >[!NOTE]
 >Povolení této funkce pro Linux clusterů ještě není k dispozici. 
 
-### <a name="connect-the-oms-workspace-to-your-cluster"></a>Pracovní prostor OMS připojit ke clusteru 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Pracovní prostor Log Analytics připojit ke clusteru 
 
-1. V pracovním prostoru musí být připojen k diagnostiky dat pocházejících z clusteru. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a přístup k portálu OMS.
+1. V pracovním prostoru musí být připojen k diagnostiky dat pocházejících z clusteru. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfWorkspace\>**  a přejděte na stránku s jeho Přehled. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a přístup k portálu OMS.
 
 2. V levém navigačním nabídce v části **zdroje dat pracovního prostoru**, vyberte **účtů úložiště protokolů**.
 
@@ -200,7 +200,7 @@ $WorkspaceName = "<OMS Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed

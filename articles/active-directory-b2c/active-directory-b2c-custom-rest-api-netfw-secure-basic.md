@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení vašich služeb RESTful pomocí základního ověřování protokolu HTTP
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 V [souvisejícím článku Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), vytvoření RESTful služby (webového rozhraní API), který se integruje se službou Azure Active Directory B2C cesty (Azure AD B2C) uživatele bez ověřování. 
 
 V tomto článku základní ověřování protokolu HTTP přidat k RESTful službě tak, aby jen ověření uživatelé, včetně B2C, můžete přístup k rozhraní API. Základní ověřování protokolu HTTP nastavte přihlašovací údaje uživatele (ID aplikace a tajný klíč aplikace) ve vlastních zásadách. 

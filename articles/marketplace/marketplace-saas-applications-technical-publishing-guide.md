@@ -1,29 +1,29 @@
 ---
-title: "Technical aplikací SaaS Azure Marketplace publikování průvodce"
-description: "Podrobný průvodce a publikování kontrolní seznamy pro publikování aplikací SaaS do Azure Marketplace"
+title: Technical aplikací SaaS Azure Marketplace publikování průvodce
+description: Podrobný průvodce a publikování kontrolní seznamy pro publikování aplikací SaaS do Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: 
+documentationcenter: ''
 author: BrentL-Collabera
-manager: 
+manager: ''
 editor: BrentL-Collabera
-ms.assetid: 
+ms.assetid: ''
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: pabutler
-ms.openlocfilehash: 64becc80192e69bd332d6657637c845acf93748b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: eb6db45ca0fcb6879aeaeaaf70715691cac438b0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>Aplikace SaaS, které se technické publikování průvodce
 
 Vítá vás technická aplikací SaaS Azure Marketplace publikování průvodce. Tato příručka je určená ke candidate a existující vydavatelů seznam svých aplikací a služeb v Azure Marketplace pomocí aplikace SaaS nabídky.  
-Chcete použít nabídka aplikace SaaS, když bude vaše řešení nasazeno v předplatného Azure a zákazníků se přihlaste se prostřednictvím rozhraní, které můžete navrhnout a spravovat aplikaci a otestovat. Dělá to pomocí [Azure Active Directory (Azure AD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) využít existující zkušební prostředí. Jinými slovy je bezplatnou zkušební verzi vedla zákazníka, hostovaného. Je důležité ke zveřejnění řešení způsobem, který dává příležitost prostředí řešení nezávisle na žádné zdarma nebo poplatek kupující cloudu a proto tento typ nabídky nabízí zkušební prostředí odpovídající jak zákazníci vyhledat cloudové řešení.  
+Chcete použít nabídka aplikace SaaS, když bude vaše řešení nasazeno v předplatného Azure a zákazníků se přihlaste se prostřednictvím rozhraní, které můžete navrhnout a spravovat aplikaci a otestovat. Dělá to pomocí [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) využít existující zkušební prostředí. Jinými slovy je bezplatnou zkušební verzi vedla zákazníka, hostovaného. Je důležité ke zveřejnění řešení způsobem, který dává příležitost prostředí řešení nezávisle na žádné zdarma nebo poplatek kupující cloudu a proto tento typ nabídky nabízí zkušební prostředí odpovídající jak zákazníci vyhledat cloudové řešení.  
 
 Přehled všech dalších nabídek na Marketplace, naleznete [Marketplace vydavatele průvodce](https://aka.ms/sellerguide).
 
@@ -31,8 +31,8 @@ Přehled všech dalších nabídek na Marketplace, naleznete [Marketplace vydava
 Technické požadavky pro SaaS aplikace jsou jednoduché. Vydavatelé pouze musí být integrované s Azure AD k publikování.  Integrace služby Azure AD s aplikacemi dobře zdokumentovat a společnost Microsoft poskytuje několik sady SDK a prostředky toho chcete dosáhnout.  
 
 Pokud chcete spustit, doporučujeme, abyste měli předplatné vyhrazené pro publikování vašeho webu Azure Marketplace umožňují izolovat práce z jiné iniciativy. Kromě toho, pokud není již nainstalován, doporučujeme, abyste měli následující nástroje v rámci vývojového prostředí: 
-- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)  
-- [Prostředí Azure powerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0)  
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)  
+- [Prostředí Azure powerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)  
 - [Nástroje pro vývojáře Azure (přečtěte si, co je k dispozici)](https://azure.microsoft.com/tools/)  
 - [Visual Studio Code](https://code.visualstudio.com/)  
 
@@ -41,11 +41,11 @@ Následující seznam uvádí odkazy na doporučené prostředků Azure AD, kter
 
 **Dokumentace**
 
-- [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+- [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-- [Integrace se službou Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+- [Integrace se službou Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-- [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 - [Průvodce Azure – zabezpečení a identita](https://azure.microsoft.com/roadmap/?category=security-identity)
 
