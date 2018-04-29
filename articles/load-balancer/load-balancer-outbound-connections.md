@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -146,12 +146,12 @@ V následující tabulce jsou uvedeny preallocations port překládat pomocí SN
 
 | Velikost fondu (instance virtuálních počítačů) | Předběžně přidělené překládat pomocí SNAT porty na konfiguraci protokolu IP|
 | --- | --- |
-| 1-50 | 1,024 |
-| 51-100 | 512 |
+| 1 – 50 | 1,024 |
+| 51 až 100 | 512 |
 | 101-200 | 256 |
-| 201-400 | 128 |
-| 401-800 | 64 |
-| 801-1,000 | 32 |
+| 201 – 400 | 128 |
+| 401 – 800 | 64 |
+| 1000 801 | 32 |
 
 >[!NOTE]
 > Při použití standardní Vyrovnávání zatížení s [více frontends](load-balancer-multivip-overview.md), [každou IP adresu front-endu vynásobí počet dostupných portů překládat pomocí SNAT](#multivipsnat) v předchozí tabulce. Například fond back-end 50 Virtuálního počítače s 2 pravidla vyrovnávání zátěže, každý s samostatný front-end IP adresy, bude používat porty překládat pomocí SNAT 2048 (2 x 1 024) na konfiguraci protokolu IP. Získáte v podrobnostech o [více frontends](#multife).
@@ -243,10 +243,11 @@ Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOAD
 
 ## <a name="limitations"></a>Omezení
 - DisableOutboundSnat není k dispozici možnost, při konfiguraci portálu pravidlo Vyrovnávání zatížení.  Místo toho použijte nástroje REST, šablonu nebo klienta.
+- Webové role pracovního procesu mimo virtuální síť, která může být dostupný, pokud slouží pouze k interním standardní pro vyrovnávání zatížení z důvodu vedlejším účinkem z jak funkce služby pre-VNet. Musíte žádné spoléhat na to jako u příslušné služby sám sebe nebo základní platformu mohou změnit bez předchozího upozornění. Musí vždy předpokládat, že je nutné v případě potřeby při použití k interní standardní pro vyrovnávání zatížení pouze explicitně vytvořit odchozí připojení. 
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md).
-- Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-standard-overview.md).
+- Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
 - Další informace o [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
 - Přečtěte si o některých dalších klíče [sítě možnosti](../networking/networking-overview.md) v Azure.

@@ -1,11 +1,11 @@
 ---
-title: "Tom, jak přiřadit MSI přístup k prostředku Azure, pomocí prostředí PowerShell"
-description: "Podrobné pokyny pro přiřazení MSI na jeden prostředek, přístup k jiný prostředek, pomocí prostředí PowerShell."
+title: Tom, jak přiřadit MSI přístup k prostředku Azure, pomocí prostředí PowerShell
+description: Podrobné pokyny pro přiřazení MSI na jeden prostředek, přístup k jiný prostředek, pomocí prostředí PowerShell.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c9f146e829e463fbdaf1bcff8747ffc5dd055ecb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ac8cca1e80defca33a879db5d4c160362314931a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>Přiřadit identita spravované služby (MSI) přístup k prostředku pomocí prostředí PowerShell
 
@@ -36,10 +36,10 @@ Také nainstalovat [prostředí Azure PowerShell verze 4.3.1](https://www.powers
 
 Po povolení MSI na prostředek Azure [například virtuální počítač Azure](msi-qs-configure-powershell-windows-vm.md):
 
-1. Přihlaste se k Azure pomocí `Login-AzureRmAccount` rutiny. Používáte účet, který je přidružen k předplatnému Azure, pod kterým jste nakonfigurovali soubor MSI:
+1. Přihlaste se k Azure pomocí `Connect-AzureRmAccount` rutiny. Používáte účet, který je přidružen k předplatnému Azure, pod kterým jste nakonfigurovali soubor MSI:
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. V tomto příkladu nabízíme virtuálního počítače Azure přístup k účtu úložiště. Nejprve používáme [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) získat objekt služby pro virtuální počítač s názvem "Můjvp", který byl vytvořen, když jsme povolené MSI. Potom používáme [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) Pokud chcete poskytnout virtuální počítač "Čtečky" přístup k účtu úložiště s názvem "myStorageAcct":
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3652e26bb775ae6ac1897bea529e7ae69d77cdbd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysoký poměr paměti procesor, který se výborně hodí pro servery relační databáze, středních a velkých mezipaměti a analýzy v paměti. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -22,14 +22,15 @@ Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysok�
 
 * Virtuální počítače D-series slouží ke spouštění aplikací, které potřebují vyšší výpočetní výkon a krátkodobý vysoký diskový výkon. Virtuální počítače řady D-series mají rychlejší procesory, vyšší poměr paměti na virtuální procesor a jednotky SSD (solid-state-drive) pro dočasné úložiště. Podrobnosti najdete v oznámení na blogu Azure: [Nové velikosti virtuálních počítačů D-Series](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).
 
-* Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Využívá nejnovější generaci procesorů Intel Xeon® E5-2673 v3 (Haswell) s frekvencí 2,4 GHz, kterou může technologie Intel Turbo Boost 2.0 zvýšit až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+* Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založena na nejnovější generace 2.4 v3® GHz Intel Xeon E5-2673 2,4 GHz (Haswell) nebo E5-2673 v4 2.3 GHz (Broadwell) procesorů a s 2.0 technologie Intel Turbo nárůst, můžete přejít až 3.1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
+* 2.3 GHz (Broadwell) procesoru Ev3-series funkce E5-2673 v4 v konfiguraci technologie hyper-threaded, poskytuje lepší nabízená hodnota pro nejobecnější účel úlohy a převedení Ev3 do zarovnání s obecné účely virtuální počítače většinu ostatních cloudů.  Paměť se rozšířila (z 7 GiB/virtuální procesory na 8 GiB/virtuální procesory) při omezení diskových a síťových byly upraveny na základě za jádra souladu s přechodem na Hyper-threadingem.  Ev3 je postupujte podle až do velikosti virtuálních počítačů velkého množství paměti D/Dv2 rodiny.
 
 ## <a name="esv3-series-sup1sup"></a>Esv3-series <sup>1</sup>
 
 ACU: 160–190
 
-Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Storage úrovně Premium. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
+Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Premium Storage. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
@@ -56,7 +57,7 @@ ACU: 160–190
 
 Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a s technologií Intel Turbo Boost 2.0 se jejich frekvence může zvýšit až na 3,5 GHz. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
-Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Storage úrovně Premium, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series. 
+Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disky Premium Storage, použijte velikosti ESv3. Měřiče cen a účtování pro velikosti ESv3 jsou stejné jako pro Ev3-series. 
 
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
@@ -106,7 +107,7 @@ ACU: 180–240
 | Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80 000 / 800 (2 112) |40 000 / 1 000 |8 / 16 000 |
 | Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> |32 |448 |896 |64 |160 000 / 1 600 (4 224) |80 000 / 2 000 |8 / 20 000 |
 
-<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady GS virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky. Podrobnosti viz článek [Storage úrovně Premium: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md). 
+<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady GS virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky. Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md). 
 
 <sup>2</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 
@@ -143,7 +144,7 @@ ACU: 210–250
 | Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80 000 / 640 (720) |64 000 / 960 |8 / 25000&nbsp;<sup>4</sup>
 
 
-<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady DSv2 virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Storage úrovně Premium: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady DSv2 virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 <sup>2</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 
@@ -163,7 +164,7 @@ ACU: 210–250
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
 | Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000          |
-| Standard_D15_v2&nbsp;<sup>1</sup> | 20        | 140         | 1 000          | 60000 / 937 / 468                                        | 64 / 64 x 500                       | 8 / 25000&nbsp;<sup>2</sup> |
+| Standard_D15_v2&nbsp;<sup>1</sup> | 20        | 140         | 1 000          | 60000 / 937 / 468                                        | 64 / 64 x 500                       | 8 / 25 000&nbsp;<sup>2</sup> |
 
 <sup>1</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka. 
 
@@ -184,7 +185,7 @@ ACU: 160
 | Standard_DS13 |8 |56 |112 |32 |32 000 / 256 (288) |25 600 / 256 |8 / 4 000 |
 | Standard_DS14 |16 |112 |224 |64 |64 000 / 512 (576) |51 200 / 512 |8 / 8000 |
 
-<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady DS virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Storage úrovně Premium: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady DS virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 
 

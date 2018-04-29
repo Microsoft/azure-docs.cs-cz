@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6c440acc68583860bc01fdb249833c4c4c6148d8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6bb67fa17ace2e662091c6b66a774baf9d7d8bfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-status"></a>Stav Azure
-[Azure stav](https://azure.microsoft.com/en-us/status/) poskytuje globální zobrazení stavu služby Azure. S Azure stav můžete získat nejnovějších informací o dostupnosti služby. Všem uživatelům přístup k Azure stav a můžete zobrazit všechny služby, které sestavy jejich stav služby. 
+[Azure stav](https://azure.microsoft.com/status/) poskytuje globální zobrazení stavu služby Azure. S Azure stav můžete získat nejnovějších informací o dostupnosti služby. Všem uživatelům přístup k Azure stav a můžete zobrazit všechny služby, které sestavy jejich stav služby. 
 
 ![Stránku stavu Azure](./media/azure-status-overview/azure-status.PNG)
 
@@ -31,12 +31,12 @@ Jako stavu služby Azure změny získá aktualizaci stránky Azure stav v reáln
 ![Aktualizace stavu Azure](./media/azure-status-overview/update.PNG)
 
 ## <a name="azure-status-history"></a>Historie stavu Azure
-Zatímco Azure stavové stránce se zobrazí vždy nejnovější informace o stavu, můžete zobrazit pomocí starší události [Azure stavové stránce Historie](https://azure.microsoft.com/en-us/status/history/).
+Zatímco Azure stavové stránce se zobrazí vždy nejnovější informace o stavu, můžete zobrazit pomocí starší události [Azure stavové stránce Historie](https://azure.microsoft.com/status/history/).
 
 Najdete v něm události až do 90 dnů v minulosti, včetně předběžný hlavní příčinu, omezení rizik a další kroky pro Azure.
 
 ## <a name="rss-feed"></a>Informační kanál RSS
-Také poskytuje Azure stav [informačního kanálu RSS](https://azure.microsoft.com/en-us/status/feed/) změny stavu služby Azure, které se můžete přihlásit k odběru.
+Také poskytuje Azure stav [informačního kanálu RSS](https://azure.microsoft.com/status/feed/) změny stavu služby Azure, které se můžete přihlásit k odběru.
 
 # <a name="next-steps"></a>Další kroky
 * Zjistěte, jak můžete získat více přizpůsobené zobrazení stavu Azure s [stav služby](./service-health-overview.md).

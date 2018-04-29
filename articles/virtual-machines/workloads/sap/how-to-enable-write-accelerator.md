@@ -17,17 +17,17 @@ ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 89a4216a3893892eedd6c216c7e0e5d51cf64749
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>Azure zápisu akcelerátoru pro nasazení SAP
 Azure akcelerátoru zápisu je funkce, které je získávání vrácena výhradně pro virtuální počítače M-Series. Zápis akcelerátoru Azure není k dispozici žádné další VM-Series v Azure, s výjimkou M-Series. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. 
 
 Funkce zápisu akcelerátoru Azure k dispozici pro nasazení řady M jako ve verzi public preview v:
 
-- Západní US2
+- Západní USA 2
 - Východní US2
 - Západní Evropa
 - Jihovýchodní Asie

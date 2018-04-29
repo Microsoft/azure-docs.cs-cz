@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Princip řešení identit Azure
 Microsoft Azure Active Directory (Azure AD) je identit a přístupu cloudové řešení pro správu poskytující adresářových služeb, zásad správného řízení identity a správa přístupu aplikací. Azure AD rychle [umožňuje jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) na hodnotu 1 000 je předem integrovaných aplikací komerční a vlastní v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Mnoho z těchto aplikací, které pravděpodobně již používáte například Office 365, Salesforce.com, pole, ServiceNow a během pracovního dne.
@@ -107,7 +107,7 @@ Tady jsou některé běžné scénáře přístupu a identit a doporučení, kte
 Jsme spousta skvělé prostředky online můžete zjistit všechno o Azure AD. Tady je seznam článků skvělý začátek:
 
 * [Povolení adresáře pro správu hybridní službou Azure AD Connect](active-directory-aadconnect.md)
-* [Další zabezpečení pro někdy připojené world](../multi-factor-authentication/multi-factor-authentication.md)
+* [Další zabezpečení pro někdy připojené world](authentication/multi-factor-authentication.md)
 * [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)
 * [Začínáme s generováním sestav Azure AD](active-directory-reporting-getting-started.md)
 * [Spravovat hesla k odkudkoli.](active-directory-passwords-update-your-own-password.md)

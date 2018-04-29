@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 360e395743dcf4b4bae98a756f6483dd0d269775
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro získání tokenu 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Tento článek obsahuje příklady různých kód a skript pro získání tokenu, jakož i pokyny k důležité oblastech, jako je zpracování vypršení platnosti tokenu a chyb protokolu HTTP. Doporučujeme použít identita spravované služby se IMDS koncového bodu, jak přestanou rozšíření koncový bod virtuálního počítače.
+
+Identita spravované služby poskytuje Azure služby automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+
+Tento článek obsahuje příklady různých kód a skript pro získání tokenu, jakož i pokyny k důležité oblastech, jako je zpracování vypršení platnosti tokenu a chyb protokolu HTTP. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,14 +35,14 @@ Pokud budete chtít použít v prostředí Azure PowerShell příkladech v tomto
 
 
 > [!IMPORTANT]
-> - Všechny ukázkový kód nebo skript v tomto článku předpokládá klienta běží na virtuálním počítači povolená MSI. Použijte funkci "Připojit" virtuální počítač na portálu Azure se vzdáleně připojit k virtuálnímu počítači. Informace o povolení MSI na virtuálním počítači, v [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md), nebo jeden z typu variant článků (pomocí prostředí PowerShell, rozhraní příkazového řádku, šablonu nebo Azure SDK). 
+> - Všechny ukázkový kód nebo skript v tomto článku předpokládá klienta běží na virtuální počítač s identitou spravované služby. Použijte funkci "Připojit" virtuální počítač na portálu Azure se vzdáleně připojit k virtuálnímu počítači. Informace o povolení MSI na virtuálním počítači, v [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md), nebo jeden z typu variant článků (pomocí prostředí PowerShell, rozhraní příkazového řádku, šablonu nebo Azure SDK). 
 
 > [!IMPORTANT]
-> - Hranice zabezpečení spravovat identity, je prostředek. Všechny kód nebo skripty spuštěna na virtuálním počítači povolená MSI, můžete požadovat a načíst tokeny. 
+> - Hranice zabezpečení Identita spravované služby je prostředek, který se používá na. Všechny kód nebo skripty spuštěny na virtuálním počítači můžete požadovat a načíst tokeny pro všechny spravované služby není dostupná žádná identita na něm. 
 
 ## <a name="overview"></a>Přehled
 
-Klientská aplikace může požádat o MSI [jen aplikace přístupový token](../develop/active-directory-dev-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle objektu služby MSI](overview.md#how-does-it-work). Jako takový není nutné pro klienta k registraci k získání tokenu přístupu v části vlastní instanční objekt. Token je vhodná pro použití jako token nosiče v [service-to-service volá vyžadují pověření klienta](../develop/active-directory-protocols-oauth-service-to-service.md).
+Klientská aplikace může požádat o identita spravované služby [jen aplikace přístupový token](../develop/active-directory-dev-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle objektu služby MSI](overview.md#how-does-it-work). Jako takový není nutné pro klienta k registraci k získání tokenu přístupu v části vlastní instanční objekt. Token je vhodná pro použití jako token nosiče v [service-to-service volá vyžadují pověření klienta](../develop/active-directory-protocols-oauth-service-to-service.md).
 
 |  |  |
 | -------------- | -------------------- |
@@ -48,7 +51,7 @@ Klientská aplikace může požádat o MSI [jen aplikace přístupový token](..
 | [Získat token pomocí přejděte](#get-a-token-using-go) | Příklad použití koncový bod MSI REST z přejděte klienta |
 | [Získat token pomocí Azure PowerShell](#get-a-token-using-azure-powershell) | Příklad použití koncový bod MSI REST z klienta PowerShell |
 | [Získat token pomocí CURL](#get-a-token-using-curl) | Příklad použití koncový bod MSI REST z klienta Bash/CURL |
-| [Zpracování vypršení platnosti tokenu](#handling-token-expiration) | Pokyny pro nakládání s vypršenou platností přístupové tokeny |
+| [Zpracování, ukládání tokenu do mezipaměti](#handling-token-caching) | Pokyny pro nakládání s vypršenou platností přístupové tokeny |
 | [Zpracování chyb](#error-handling) | Pokyny pro zpracování chyby protokolu HTTP vrácená z koncový bod tokenu MSI |
 | [ID prostředků pro služby Azure](#resource-ids-for-azure-services) | Získání ID prostředku pro podporované služby Azure |
 
@@ -56,10 +59,10 @@ Klientská aplikace může požádat o MSI [jen aplikace přístupový token](..
 
 Základní rozhraní pro získání tokenu přístupu je založena na REST, zpřístupnění pro všechny klientské aplikace spuštěna na virtuálním počítači, který může provádět volání HTTP REST. Toto je podobná programovací model Azure AD, s výjimkou klient používá koncový bod virtuálního počítače (vs Azure AD koncového bodu).
 
-Ukázková žádost používá koncový bod MSI Instance Metadata služby (IMDS) *(doporučeno)*:
+Ukázková žádost používá koncový bod Azure Instance Metadata služby (IMDS) *(doporučeno)*:
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
+GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
 | Element | Popis |
@@ -70,7 +73,7 @@ GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01
 | `resource` | Parametr řetězce dotazu, která udává, identifikátor ID URI aplikace cílového prostředku. Zobrazuje se taky v `aud` vydaný token deklarace identity (cílové skupiny). Tento příklad požadavky token pro přístup k Azure Resource Manager, která obsahuje identifikátor ID URI aplikace z https://management.azure.com/. |
 | `Metadata` | Pole hlavičky požadavku HTTP, vyžadují MSI jako zmírnění proti útoku serveru straně požadavek padělání (SSRF). Tato hodnota musí být nastavena na hodnotu true, všechny malými písmeny.
 
-Ukázková žádost pomocí koncový bod virtuálního počítače rozšíření MSI *(Chcete-li být zastaralé)*:
+Ukázková žádost pomocí koncový bod virtuálního počítače rozšíření identita spravované služby (MSI) *(Chcete-li být zastaralé)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -264,23 +267,25 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The MSI access token is $access_token
 ```
 
-## <a name="token-expiration"></a>Vypršení platnosti tokenu 
+## <a name="token-caching"></a>Ukládání tokenu do mezipaměti
 
-Pokud ve vašem kódu jsou ukládání tokenu, byste měli být připravení zpracovávat scénáře, kde prostředek ukázalo, že vypršela platnost tokenu. 
+Při subsystém identita spravované služby (MSI) používá (rozšíření virtuálního počítače IMDS nebo MSI) mezipaměti tokeny, doporučujeme také implementovat ukládání tokenu do mezipaměti v kódu. Výsledkem je měli byste pro scénáře, kde prostředek udává, že vypršela platnost tokenu. 
 
-Poznámka: Vzhledem k tomu, že subsystém IMDS MSI mezipaměti tokeny, na přenosová volá, aby Azure AD výsledky pouze tehdy, když:
-- dojde k neúspěšnému přístupu do mezipaměti z důvodu žádné token v mezipaměti
-- vypršela platnost tokenu
+Volání na přenosu do služby Azure AD způsobit pouze když:
+- z důvodu žádné token v mezipaměti subsystému MSI dojde k neúspěšnému přístupu do mezipaměti
+- vypršela platnost tokenu v mezipaměti
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Koncový bod MSI signály chyby přes pole Kód stavu záhlaví zprávy odpovědi HTTP, jako 4xx nebo 5xx chyb:
+Koncový bod identita spravované služby signály chyby přes pole Kód stavu záhlaví zprávy odpovědi HTTP, jako 4xx nebo 5xx chyb:
 
 | Stavový kód | Důvod chyby | Postupy: zpracování |
 | ----------- | ------------ | ------------- |
 | 429 příliš mnoho požadavků. |  Dosažen limit IMDS omezení. | Zkuste to znovu s exponenciálního omezení rychlosti. Viz příručka níže. |
 | došlo k chybě 4xx v požadavku. | Jeden nebo více parametrů žádosti bylo nesprávné. | Nezkoušejte zopakovat.  Zkontrolujte podrobnosti o chybě pro další informace.  4xx chyby jsou chyby při návrhu.|
 | 5xx přechodné chybě ze služby. | Dílčí systému MSI nebo Azure Active Directory vrátila přechodné chybě. | Je bezpečné opakujte po čekání minimálně 1 sekunda.  Pokud se znovu pokusíte příliš rychle nebo příliš často, může IMDS nebo Azure AD vrátí chybu maximální rychlost (429).|
+| 404 nebyl nalezen. | Aktualizuje se koncový bod IMDS. | Zkuste to znovu s Expontential omezení rychlosti. Viz příručka níže. |
+| timeout | Aktualizuje se koncový bod IMDS. | Zkuste to znovu s Expontential omezení rychlosti. Viz příručka níže. |
 
 Pokud dojde k chybě, obsahuje odpovídající text odpovědi HTTP JSON s podrobnosti o chybě:
 
@@ -303,11 +308,11 @@ Tato část popisuje možné chybové odpovědi. A "200 OK" ve stavu úspěšné
 |           | ACCESS_DENIED | Vlastník prostředku nebo autorizace server odepřel žádost. |  |
 |           | unsupported_response_type | Autorizace serveru nepodporuje získání tokenu přístupu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný rozsah je neplatný, neznámý nebo je nesprávný. |  |
-| 500 vnitřní chybu serveru | Neznámé | Nepodařilo se získat token ze služby Active directory. Podrobnosti najdete v tématu protokoly v  *\<cesta k souboru\>* | Ověřte, že je povoleno MSI ve virtuálním počítači. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů.<br><br>Také ověřte, že žádost HTTP GET URI správně naformátován, zejména prostředek, který je zadaný identifikátor URI v řetězci dotazu. Najdete v části "Ukázková žádost" v [předcházející části REST](#rest) příklad, nebo [služeb Azure, podpora Azure AD ověření](overview.md#azure-services-that-support-azure-ad-authentication) seznam služeb a jejich odpovídající ID prostředku.
+| 500 vnitřní chybu serveru | Neznámé | Nepodařilo se získat token ze služby Active directory. Podrobnosti najdete v tématu protokoly v  *\<cesta k souboru\>* | Ověřte, že je povoleno MSI ve virtuálním počítači. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů.<br><br>Také ověřte, že žádost HTTP GET URI správně naformátován, zejména prostředek, který je zadaný identifikátor URI v řetězci dotazu. Najdete v části "Ukázková žádost" v [předcházející části REST](#rest) příklad, nebo [služeb Azure, podpora Azure AD ověření](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředku.
 
-## <a name="throttling-guidance"></a>Omezení pokyny 
+## <a name="retry-guidance"></a>Opakujte pokyny 
 
-Omezení omezení se vztahuje na počet volání na koncový bod MSI IMDS. Překročení omezení prahovou hodnotu, koncový bod MSI IMDS omezuje žádné další požadavky omezení je v platnosti. Během této doby koncový bod MSI IMDS vrátí stavový kód HTTP 429 ("příliš mnoho požadavků"), a požadavky selžou. 
+Omezení omezení se vztahuje na počet volání na IMDS koncový bod. Překročení omezení prahovou hodnotu, koncový bod IMDS omezuje žádné další požadavky omezení je v platnosti. Během této doby koncový bod IMDS vrátí stavový kód HTTP 429 ("příliš mnoho požadavků"), a požadavky selžou. 
 
 Zkuste to znovu doporučujeme následující strategie: 
 
@@ -317,7 +322,7 @@ Zkuste to znovu doporučujeme následující strategie:
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
 
-V tématu [služeb Azure, podpora Azure AD ověření](overview.md#azure-services-that-support-azure-ad-authentication) seznam prostředků, které podporují Azure AD a byly testovány s MSI a jejich odpovídající ID prostředku.
+V tématu [služeb Azure, podpora Azure AD ověření](services-support-msi.md) seznam prostředků, které podporují Azure AD a byly testovány s MSI a jejich odpovídající ID prostředku.
 
 
 ## <a name="related-content"></a>Související obsah

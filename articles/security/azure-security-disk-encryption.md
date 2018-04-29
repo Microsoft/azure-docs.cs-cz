@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: devtiw
-ms.openlocfilehash: df13f23908aa787bfcc579340ed0aa6cb0d5ed29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS
 Microsoft Azure se důrazně zaměřuje na zajištění ochrany osobních údajů, suverenity data a umožňuje vám řízení vaší Azure hostované data prostřednictvím řadu pokročilých technologiích k šifrování, řídit a spravovat šifrovací klíče, řízení a audit přístupu k datům. To poskytuje Azure zákazníkům flexibilitu zvolit si řešení, které nejlépe vyhovuje potřebám své firmy. V tomto dokumentu jsme vás seznámí s nové řešení technologie "Azure Disk Encryption pro systém Windows a Linux IaaS virtuálního počítače je" k ochraně a ochranu dat, aby splňovaly vaše organizace zabezpečení a dodržování předpisů závazky. Dokumentu poskytuje podrobné pokyny k použití funkcí Azure disk encryption, včetně Podporované scénáře a uživatel dojde.
@@ -141,7 +141,7 @@ Než povolíte Azure Disk Encryption na virtuálních počítačích Azure IaaS 
 > [!NOTE]
 > Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalované dříve než povolíte šifrování v Azure. Můžete ji nainstalovat z webu Windows Update nainstalováním volitelnou aktualizaci rozhraní Microsoft .NET Framework 4.5.2 na x64 systémů Windows Server 2008 R2 ([KB2901983](https://support.microsoft.com/kb/2901983)).
 
-* Azure Disk Encryption využívá jenom podporované na konkrétní Azure Gallery Linuxových distribucích serveru a verze.  Seznam aktuálně podporovaných verzí, naleznete [Azure Disk Encryption – nejčastější dotazy](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
+* Azure Disk Encryption využívá jenom podporované na konkrétní Azure Gallery Linuxových distribucích serveru a verze.  Seznam aktuálně podporovaných verzí, naleznete [Azure Disk Encryption – nejčastější dotazy](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq).
 
 * Azure Disk Encryption vyžaduje, aby váš trezor klíčů a virtuální počítače jsou umístěny ve stejné oblasti Azure a předplatné.
 
@@ -783,7 +783,7 @@ Použití [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.aspx) 
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Požadavky pro šifrování disku operačního systému
 
-* Virtuální počítač musí používat kompatibilní s šifrování disku operačního systému distribučního popsaných [Azure Disk Encryption – nejčastější dotazy](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
+* Virtuální počítač musí používat kompatibilní s šifrování disku operačního systému distribučního popsaných [Azure Disk Encryption – nejčastější dotazy](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) 
 * Virtuální počítač musí být vytvořený z Marketplace image ve službě Správce prostředků Azure.
 * Virtuální počítač Azure s minimálně 4 GB paměti RAM (doporučená velikost je 7 GB).
 * (Pro RHEL a CentOS) Zakážete SELinux. Pokud chcete zakázat SELinux, najdete v části "4.4.2. Zakázání SELinux"v [Průvodce SELinux uživatele a správce](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) ve virtuálním počítači.

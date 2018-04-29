@@ -1,27 +1,25 @@
 ---
-title: "Optimalizace úlohy Spark pro výkon - Azure HDInsight | Microsoft Docs"
-description: "Zobrazuje běžné strategie pro nejlepší výkon ze clustery Spark."
+title: Optimalizace úlohy Spark pro výkon - Azure HDInsight | Microsoft Docs
+description: Zobrazuje běžné strategie pro nejlepší výkon ze clustery Spark.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 64ddb70f071a9fadc6fef64dcd3506c6d6255481
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 381f9ef2dac2c1dfdada32a917626b17c5969a98
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="optimize-spark-jobs"></a>Optimalizace úlohy Spark
+# <a name="optimize-spark-jobs"></a>Optimalizace sparkových úloh
 
 Informace o optimalizaci konfigurace clusteru Spark pro konkrétní úlohy.  Je nejběžnější výzvu přetížení paměti z důvodu nesprávné konfigurace (zejména nesprávné velikosti vykonavatelů), dlouhotrvající operace a úlohy, jejichž výsledkem kartézských operace. Můžete urychlit úlohy s příslušnou ukládání do mezipaměti a tím, že pro [data zkosení](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete monitorování a zkontrolujte dlouho běžící a spotřeba prostředků spuštěních úloh Spark.
 
@@ -66,8 +64,8 @@ Když vytvoříte nový cluster Spark, máte možnost vybrat jako váš cluster 
 | Typ úložiště | Systém souborů | Rychlost | Dočasná | Případy použití |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Ano | Přechodný clusteru |
-| Azure Data Lake Store | **adl:**//url/ | **Faster** | Ano | Přechodný clusteru |
-| Místní HDFS | **hdfs:**//url/ | **Fastest** | Ne | Interaktivní 24 hodin denně 7 clusteru |
+| Azure Data Lake Store | **adl:**//url/ | **Rychlejší** | Ano | Přechodný clusteru |
+| Místní HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
@@ -82,7 +80,7 @@ Spark poskytuje vlastní nativní ukládání do mezipaměti mechanismy, které 
     * Používá se v paměti a ukládání do mezipaměti SSD.
 
 * Místní HDFS (doporučeno)
-    * `hdfs://mycluster`cesta.
+    * `hdfs://mycluster` cesta.
     * Používá ukládání do mezipaměti SSD.
     * Data uložená v mezipaměti se při odstranění clusteru, které vyžadují opětovné sestavení mezipaměti ztratí.
 
@@ -164,9 +162,9 @@ V závislosti na vaší zatížení clusteru Spark, možná zjistíte, že jiné
 
 Zde jsou některé společné parametry, které můžete upravit:
 
-* `--num-executors`Nastaví odpovídající počet vykonavatelů.
-* `--executor-cores`Nastaví počet jader pro každý prováděcího modulu. Obvykle byste měli mít middle-sized vykonavatelů, jak využívat jinými procesy, některé dostupné paměti.
-* `--executor-memory`Nastaví velikost paměti pro každý prováděcího modulu, který řídí velikost haldy na rozhraní YARN. Nechte některé paměť pro spuštění režii.
+* `--num-executors` Nastaví odpovídající počet vykonavatelů.
+* `--executor-cores` Nastaví počet jader pro každý prováděcího modulu. Obvykle byste měli mít middle-sized vykonavatelů, jak využívat jinými procesy, některé dostupné paměti.
+* `--executor-memory` Nastaví velikost paměti pro každý prováděcího modulu, který řídí velikost haldy na rozhraní YARN. Nechte některé paměť pro spuštění režii.
 
 ### <a name="select-the-correct-executor-size"></a>Vyberte správný vykonavatele velikost
 

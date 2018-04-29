@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Dokumentace Microsoftu'
+title: 'Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Microsoft Docs'
 description: Obsahuje vzorový kód v jazyce Go, který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů.
 services: cosmos-db
 author: Durgaprasad-Budhwani
@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 5e8a85af7bfb3245f766b932397999726746dfa7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d5ac2f683308385b2bd4ca422cf00abaa37735fd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal
 
@@ -79,7 +79,9 @@ Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojova
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Ještě jednou se stručně podívejme na to, co se v souboru main.go děje. 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
+
+Všechny následující fragmenty kódu pocházejí ze souboru main.go.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Připojení aplikace v jazyce Go ke službě Azure Cosmos DB
 
@@ -218,9 +220,9 @@ if err != nil {
 
     ![Gogland zobrazující výstup aplikace](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
-## <a name="review-your-document-in-data-explorer"></a>Kontrola dokumentu v Průzkumníku dat
+## <a name="review-your-document-in-data-explorer"></a>Kontrola dokumentu v Průzkumníkovi dat
 
-Vraťte se na web Azure Portal a zobrazte dokument v Průzkumníku dat.
+Vraťte se na web Azure Portal a zobrazte dokument v Průzkumníkovi dat.
 
 1. V navigační nabídce vlevo klikněte na **Průzkumník dat (Preview)**, rozbalte **golang-coach**, **balíček** a pak klikněte na **Dokumenty**. Na kartě **Dokumenty** klikněte na \_id a zobrazte dokument v pravém podokně. 
 
@@ -234,10 +236,7 @@ Vraťte se na web Azure Portal a zobrazte dokument v Průzkumníku dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu z portálu Azure Portal všechny prostředky vytvořené podle tohoto rychlého startu:
-
-1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

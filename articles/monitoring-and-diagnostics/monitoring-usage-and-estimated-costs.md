@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f25c39b602449be3ab9d1cd7e67d6fcfc78afb17
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Sledování využití a odhadované náklady
 
@@ -39,12 +39,11 @@ Tady je jiné podobné využití a souhrn náklady. Tento příklad ukazuje pře
 
 ## <a name="new-pricing-model"></a>Nový cenový model
 
-V dubnu 2018 byl vydán nový cenový model monitorování. Jeho součástí ceny cloud zařízení, na základě spotřeby. Platíte jenom pro co používáte, aniž by na základě uzlu závazky. Podrobnosti o nový cenový model jsou k dispozici pro [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [analýzy protokolů](https://azure.microsoft.com/pricing/details/log-analytics/), a [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
+V dubnu 2018 [nové monitorování cenový model byl vydán](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Tato funkce cloud zařízení, na základě spotřeby ceny. Platíte jenom pro co používáte, aniž by na základě uzlu závazky. Podrobnosti o nový cenový model jsou k dispozici pro [výstrahy, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [analýzy protokolů](https://azure.microsoft.com/pricing/details/log-analytics/) a [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
-Pro zákazníky, kteří začít používat analýzy protokolů nebo Application Insights po 2. dubna 2018 nový cenový model je jedinou možností. Pro zákazníky, kteří už používají tyto služby se přesouvat na nový cenový model volitelné.
+Pro zákazníky registrace analýzy protokolů nebo Application Insights po 2. dubna 2018 nový cenový model je jedinou možností. Pro zákazníky, kteří už používají tyto služby se přesouvat na nový cenový model volitelné.
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Hodnocení dopadu nový cenový model
-
 Nový cenový model může mít různé dopady na každého zákazníka a to na základě jejich monitorování způsobů využití. Pro zákazníky, kteří používali před 2. dubna 2018, analýzy protokolů nebo Application Insights **využití a odhadované náklady** stránky v Azure monitorování Odhadne všechny změny v nákladech, pokud se přesouvají do nový cenový model. Poskytuje způsob, jak přesunout předplatné do nového modelu. Pro většinu zákazníků bude výhodné nový cenový model. Pro zákazníky s vzorce používání zejména vysoké dat nebo v oblastech vyšší náklady nemusí to být případ.
 
 Zobrazíte odhad náklady pro odběry, které jste zvolili na **využití a odhadované náklady** vyberte blue hlavičky v horní části stránky. Je vhodné provést tento jeden odběr současně, protože se jedná o úrovni, na které můžete používat nový cenový model.
@@ -71,11 +70,30 @@ Existuje jiné změny dat nasávaného analýzy protokolů nebo Application Insi
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Nové ceny modelu a oprávnění předplatné služby Operations Management Suite
 
-Zákazníci, kteří si zakoupili služby Microsoft Operations Management Suite E1 a E2 jsou způsobilé pro každý uzel data přijímání oprávnění pro [analýzy protokolů](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Pro příjem těchto oprávnění pro pracovní prostory analýzy protokolů nebo Application Insights prostředky v daném předplatném, že je předplatné cenový model musí zůstat v předběžné – duben 2018 cenový model. To je, kde jsou k dispozici "Podle uzlu (OMS)" cenová úroveň a Application Insights "Enterprise" cenových plánů analýzy protokolů. V závislosti na počtu uzlů sady, které vaše organizace koupila přesunutí, že některá předplatná na nový cenový model stále může být výhodné. Ale vyžaduje pečlivě zvážit.
+Zákazníci, kteří si zakoupili služby Microsoft Operations Management Suite E1 a E2 jsou způsobilé pro oprávnění přijímání dat podle uzlu pro [analýzy protokolů](https://www.microsoft.com/cloud-platform/operations-management-suite) a [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Chcete-li zobrazit tato oprávnění pro analýzy protokolů pracovních prostorů nebo prostředkům Application Insights v daném předplatném: 
+
+- Cenový model odběru musí zůstat v předběžné – duben 2018 modelu.
+- Log Analytics pracovních prostorů měli uzel můžete použít "za-(OMS)" cenová úroveň.
+- Application Insights prostředky měli používat "Podniku" ceny plánu.
+
+V závislosti na počtu uzlů sady, které vaše organizace koupila přesunutí některých odběrů nový cenový model může být výhodné, ale vyžaduje pečlivě zvážit. Obecně se doporučuje jednoduše zůstat v modelu 2018 pre duben, jak je popsáno výše.
+
+> [!WARNING]
+> Pokud vaše organizace koupila E1 Microsoft Operations Management Suite a E2, obvykle je nejvhodnější mějte cenový model 2018 pre duben vašich předplatných. 
+>
 
 ## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Změny při přesunování na nový cenový model
 
-Přesun předplatné do nový cenový model bude změnit cenovou úroveň pro každý analýzy protokolů na nové vrstvě za GB a přesune všechny (nazývané "pergb2018" ve službě Správce prostředků Azure). Tento přesun se také změní všechny prostředky Application Insights v plánu podnikového na základní plán. Odhad nákladů ukazuje důsledky tyto změny.
+Nový cenový model zjednodušuje analýzy protokolů a Application Insights ceny možností pouze jednu úroveň (nebo plánu). Přesun do nového cenovou modelu bude předplatné:
+
+- Změnit cenovou úroveň pro každý analýzy protokolů na nové vrstvě za GB (nazývané "pergb2018" ve službě Správce prostředků Azure)
+- Všechny prostředky Application Insights v plánu podnikového se změní na základní plán.
+
+Odhad nákladů ukazuje důsledky tyto změny.
+
+> [!WARNING]
+> Zde důležitá Poznámka: Pokud používáte k nasazení Azure Resource Manager nebo prostředí PowerShell [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) nebo [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) v předplatném byl přesunut do nového cenový model. Pokud zadáte cenovou úroveň nebo plán než "pergb2018" pro analýzy protokolů nebo "Základní" pro službu Application Insights, místo selhání nasazení kvůli určení neplatný cenová úroveň nebo plán, proběhne úspěšně **, ale bude používat pouze platné cenová úroveň nebo plán**. 
+>
 
 ## <a name="moving-to-the-new-pricing-model"></a>Přesunutí na nový cenový model
 

@@ -1,5 +1,5 @@
 ---
-title: 'Připojení virtuální sítě Azure k jiné virtuální síti: Portál | Dokumentace Microsoftu'
+title: 'Připojení virtuální sítě Azure k jiné virtuální síti: Portál | Microsoft Docs'
 description: Vytvořte připojení brány VPN mezi virtuálními sítěmi pomocí Resource Manageru a webu Azure Portal.
 services: vpn-gateway
 documentationcenter: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a95fdf078baa35eb9ca8ade462223b204be77d8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e72e9ff9be0b092bc9425828bab46ffd60f0822
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Konfigurace propojení brány VPN typu VNet-to-VNet pomocí webu Azure Portal
 
@@ -127,7 +127,7 @@ Po vytvoření virtuální sítě můžete přidat další adresní prostor a vy
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="gatewaysubnet"></a>3. Vytvoření podsítě brány
-Před vytvoření brány virtuální sítě pro vaši virtuální síť je nejprve potřeba vytvořit podsíť brány. Podsíť brány obsahuje IP adresy, které používá brána virtuální sítě. Pokud je to možné, je nejlepší vytvořit podsíť brány s použitím bloku CIDR /28 nebo /27, aby byl k dispozici dostatek IP adres pro plnění dalších požadavků na konfiguraci v budoucnu.
+Než vytvoříte bránu virtuální sítě pro vaši virtuální síť, nejprve musíte vytvořit podsíť brány. Podsíť brány obsahuje IP adresy, které používá brána virtuální sítě. Pokud je to možné, je nejlepší vytvořit podsíť brány s použitím bloku CIDR /28 nebo /27, aby byl k dispozici dostatek IP adres pro plnění dalších požadavků na konfiguraci v budoucnu.
 
 Pokud vytváříte tuto konfiguraci jako cvičení, při vytváření podsítě brány použijte tyto [příklady nastavení](#values).
 

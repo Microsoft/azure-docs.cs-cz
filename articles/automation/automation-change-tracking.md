@@ -9,11 +9,11 @@ ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledovat změny v prostředí s řešením sledování změn
 
@@ -23,18 +23,19 @@ Změny nainstalovaného softwaru, služby systému Windows, registru systému Wi
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-
 Chcete-li zahájit sledování změn, povolit řešení inventáře a sledování změn pro svůj účet Automation.
 
 1. Na portálu Azure přejděte na svůj účet Automation.
 1. Vyberte **sledování změn** pod **konfigurace**.
-2. Vyberte existující pracovní prostor analýzy protokolů nebo **vytvořit nový pracovní prostor** a klikněte na tlačítko **povolit**.
+1. Vyberte existující pracovní prostor analýzy protokolů nebo **vytvořit nový pracovní prostor** a klikněte na tlačítko **povolit**.
 
 To umožňuje řešení pro svůj účet automation. Řešení může trvat až 15 minut povolit. Modré banner vás upozorní, pokud je povoleno řešení. Přejděte zpět **sledování změn** můžete spravovat řešení.
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace sledování změn a inventáře
 
-Další informace jak připojit počítače k řešení najdete: [řešení automatizace registrace](automation-onboard-solutions-from-automation-account.md). Když povolíte nový soubor nebo klíč registru pro sledování, je povoleno sledování změn a inventáře.
+Další informace jak připojit počítače k řešení najdete: [řešení automatizace registrace](automation-onboard-solutions-from-automation-account.md). Jakmile máte registrace počítače do řešení pro sledování změn a inventáře můžete konfigurovat položky, které chcete sledovat. Když povolíte nový soubor nebo klíč registru pro sledování, je povoleno sledování změn a inventáře.
+
+Pro sledování změn v souborech v systému Windows a Linux, MD5 hodnoty hash souborů používají. Hodnoty hash tento pak slouží ke zjišťování, pokud došlo ke změně od poslední inventarizace.
 
 ### <a name="configure-linux-files-to-track"></a>Konfigurace souborů Linux ke sledování
 
@@ -109,6 +110,7 @@ Jiná omezení:
 ## <a name="known-issues"></a>Známé problémy
 
 Řešení sledování změn je aktuálně má následující problémy:
+
 * Aktualizace hotfix nejsou shromážděny v pro Windows 10 Creators Update a Windows Server 2016 základní RS3 počítače.
 
 ## <a name="change-tracking-data-collection-details"></a>Změňte podrobnosti pro kolekce dat sledování
@@ -117,13 +119,13 @@ Následující tabulka uvádí četnost shromažďování dat pro typy změn. Pr
 
 | **Změnit typ** | **Frekvence** |
 | --- | --- |
-| Registru systému Windows | 50 minut | 
-| Soubor systému Windows | 30 minut | 
-| Soubor Linux | 15 minut | 
-| Služby pro Windows | 30 minut | 
+| Registru systému Windows | 50 minut |
+| Soubor systému Windows | 30 minut |
+| Soubor Linux | 15 minut |
+| Služby pro Windows | 30 minut |
 | Démoni Linux | 5 minut |
-| Windows software | 30 minut | 
-| Softwaru platformy Linux | 5 minut | 
+| Windows software | 30 minut |
+| Softwaru platformy Linux | 5 minut |
 
 ### <a name="registry-key-change-tracking"></a>Sledování změn klíče registru
 
@@ -134,9 +136,9 @@ Následující tabulka uvádí četnost shromažďování dat pro typy změn. Pr
 > |---------|
 > |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování běžných automatické spuštění položky, které připojit přímo do Průzkumníka Windows a obvykle spuštění v rámci procesu Explorer.exe.    |
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
+> |**Nastavení HKEY\_místní\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování skripty, které spustí při spuštění.     |
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
+> |**Nastavení HKEY\_místní\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování skripty, které běží při vypnutí.     |
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje klíče, které jsou načteny před uživatel přihlásí k účtu systému Windows. Používá se pro 32bitové aplikace spuštěné na 64bitových počítačích.    |
@@ -162,9 +164,9 @@ Následující tabulka uvádí četnost shromažďování dat pro typy změn. Pr
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje 32bitové ovladače přidružené wavemapper, wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a čtyřznakového. Podobně jako v oddílu [ovladače] v systému. Soubor INI.|
 > |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitorování 32bitové ovladače přidružené wavemapper, wave1 a wave2, msacm.imaadpcm, .msadpcm, .msgsm610 a čtyřznakového pro 32bitové aplikace spuštěné na 64bitových počítačích. Podobně jako v oddílu [ovladače] v systému. Soubor INI.|
-> |**HKEY\_LOCAL\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
+> |**Nastavení HKEY\_místní\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam známých nebo běžně používané systémové knihovny DLL; Tento systém brání osobám v zneužitím slabé aplikace directory oprávnění podle vyřazením trojský kůň verze systémové knihovny DLL.|
-> |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
+> |**Nastavení HKEY\_místní\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje seznam balíčků schopný přijímat oznámení událostí z přihlášení do systému Windows, model podporu interaktivní přihlášení pro operační systém Windows.|
 
 ## <a name="use-change-tracking"></a>Pomocí sledování změn

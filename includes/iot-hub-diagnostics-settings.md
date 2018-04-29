@@ -4,13 +4,13 @@
 1. Vyberte **nastavení pro diagnostiku**.
 1. Vyberte **zapněte diagnostiku**.
 
-   ![Zapněte diagnostiku][1]
+   ![Zapnout diagnostiku][1]
 
 1. Zadejte nastavení pro diagnostiku název.
 1. Vyberte, kam chcete odeslat protokoly. Můžete vybrat libovolnou kombinaci těchto tří možností:
-   * Archivovat na účet úložiště
-   * Datový proud do centra událostí
-   * Poslat analýzy protokolů
+   * Archivovat v účtu úložiště
+   * Streamovat do centra událostí
+   * Odeslání do Log Analytics
 1. Zvolte operací, které chcete monitorovat a povolení protokolů pro tyto operace. Operace, které mohou vykazovat nastavení diagnostiky jsou:
    * Připojení
    * Zařízení telemetrie
@@ -28,7 +28,7 @@
 Pokud chcete zapnout nastavení diagnostiky pomocí prostředí PowerShell, použijte následující kód:
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```

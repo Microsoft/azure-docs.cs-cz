@@ -1,25 +1,22 @@
 ---
-title: Změny provedené na projekt MVC při připojení k Azure AD | Microsoft Docs
+title: Změny provedené na projekt MVC při připojení k Azure AD
 description: Popisuje, co se stane do projektu MVC při připojení k Azure AD pomocí sady Visual Studio připojené služby
 services: active-directory
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.service: active-directory
-ms.workload: web
-ms.tgt_pltfrm: vs-what-happened
-ms.devlang: na
-ms.topic: article
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 1925a32ce5745673c08af3f9cfe63090d4adfa23
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bd4a32575067b3de94935322ead9a7f0966d2969
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s MVC projektu (Visual Studio Azure Active Directory připojeno service)?
 
@@ -37,38 +34,38 @@ Ovlivňuje odkazy na projekt souboru *.NET) a `packages.config` (odkazů NuGet).
 
 | Typ | Referenční informace |
 | --- | --- |
-| .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
-| .NET; NuGet | Microsoft.Owin |
-| .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
-| .NET; NuGet | Microsoft.Owin.Security |
-| .NET; NuGet | Microsoft.Owin.Security.Cookies |
-| .NET; NuGet | Microsoft.Owin.Security.OpenIdConnect |
-| .NET; NuGet | Owin |
+| ROZHRANÍ .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
+| ROZHRANÍ .NET; NuGet | Microsoft.Owin |
+| ROZHRANÍ .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
+| ROZHRANÍ .NET; NuGet | Microsoft.Owin.Security |
+| ROZHRANÍ .NET; NuGet | Microsoft.Owin.Security.Cookies |
+| ROZHRANÍ .NET; NuGet | Microsoft.Owin.Security.OpenIdConnect |
+| ROZHRANÍ .NET; NuGet | Owin |
 | .NET        | System.IdentityModel |
-| .NET; NuGet | System.IdentityModel.Tokens.Jwt |
+| ROZHRANÍ .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 | .NET        | System.Runtime.Serialization |
 
 Další informace, pokud jste vybrali **čtení dat adresáře** možnost:
 
 | Typ | Referenční informace |
 | --- | --- |
-| .NET; NuGet | EntityFramework |
+| ROZHRANÍ .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 pouze) |
-| .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
-| .NET; NuGet | Microsoft.Data.Edm |
-| .NET; NuGet | Microsoft.Data.OData |
-| .NET; NuGet | Microsoft.Data.Services.Client |
-| .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| ROZHRANÍ .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| ROZHRANÍ .NET; NuGet | Microsoft.Data.Edm |
+| ROZHRANÍ .NET; NuGet | Microsoft.Data.OData |
+| ROZHRANÍ .NET; NuGet | Microsoft.Data.Services.Client |
+| ROZHRANÍ .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
 | .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms (Visual Studio 2015 pouze) |
-| .NET; NuGet | System.Spatial |
+| ROZHRANÍ .NET; NuGet | System.Spatial |
 
 Následující odkazy jsou odebrány (technologii ASP.NET 4 projekty pouze jako v sadě Visual Studio 2015):
 
 | Typ | Referenční informace |
 | --- | --- |
-| .NET; NuGet | Microsoft.AspNet.Identity.Core |
-| .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
-| .NET; NuGet | Microsoft.AspNet.Identity.Owin |
+| ROZHRANÍ .NET; NuGet | Microsoft.AspNet.Identity.Core |
+| ROZHRANÍ .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
+| ROZHRANÍ .NET; NuGet | Microsoft.AspNet.Identity.Owin |
 
 ## <a name="project-file-changes"></a>Změny souborů projektu
 

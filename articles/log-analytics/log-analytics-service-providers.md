@@ -1,11 +1,11 @@
 ---
-title: "Protokolu analýzy funkce pro poskytovatele služeb | Microsoft Docs"
-description: "Analýzy protokolů může pomoci spravovat poskytovatelé služeb (MSPs), velké podniky nezávislí výrobci softwaru (ISV) a poskytovatele hostitelských služeb, spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu."
+title: Protokolu analýzy funkce pro poskytovatele služeb | Microsoft Docs
+description: Analýzy protokolů může pomoci spravovat poskytovatelé služeb (MSPs), velké podniky nezávislí výrobci softwaru (ISV) a poskytovatele hostitelských služeb, spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Funkce analýzy protokolů pro poskytovatele služeb
 Analýzy protokolů může pomoct zprostředkovatelé spravované služby (MSPs), velké podniky, nezávislí dodavatelé softwaru (ISV) a poskytovatele hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -40,7 +40,7 @@ Jako *poskytovatele Cloud Solution Provider* můžete:
 Přihlásit se k předplatnému klienta, budete muset zadat identifikátor klienta. Identifikátor klienta je často poslední část e-mailovou adresu použili k přihlášení.
 
 * Na portálu OMS přidat `?tenant=contoso.com` v adrese URL pro portál. Například `mms.microsoft.com/?tenant=contoso.com`.
-* V prostředí PowerShell, použijte `-Tenant contoso.com` parametr při použití `Add-AzureRmAccount` rutiny
+* V prostředí PowerShell, použijte `-Tenant contoso.com` parametr při použití `Connect-AzureRmAccount` rutiny
 * Identifikátor klienta je automaticky přidáno, jakmile použijete `OMS portal` odkaz z portálu Azure otevřete a přihlaste se k portálu OMS pro vybraný pracovní prostor
 
 Jako *zákazníka* z poskytovatele cloudových řešení, můžete:

@@ -1,18 +1,18 @@
 ---
-title: "Zřídit fondech Azure Batch z vlastních bitových kopií | Microsoft Docs"
-description: "Můžete vytvořit dávce fondu vlastní image zřídit výpočetní uzly, které obsahují software a data, která je nutné pro vaši aplikaci. Vlastní Image jsou účinný způsob, jak nakonfigurovat výpočetních uzlů k spouštět úlohy Batch."
+title: Zřídit fondech Azure Batch z vlastních bitových kopií | Microsoft Docs
+description: Můžete vytvořit dávce fondu vlastní image zřídit výpočetní uzly, které obsahují software a data, která je nutné pro vaši aplikaci. Vlastní Image jsou účinný způsob, jak nakonfigurovat výpočetních uzlů k spouštět úlohy Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Spravované vlastní image použít k vytvoření fondu virtuálních počítačů 
 
@@ -40,7 +40,7 @@ Použití vlastní image nakonfigurované pro váš scénář poskytují několi
 
     
 ## <a name="prepare-a-custom-image"></a>Příprava vlastní image
-Můžete připravit bitovou kopii spravované z disku VHD, virtuální počítač Azure s spravované disky nebo snímek virtuálního počítače. 
+Můžete připravit bitovou kopii spravované z disku VHD, virtuální počítač Azure s spravované disky nebo snímek virtuálního počítače. Pro dávku doporučujeme vytvoření spravovaného image z virtuálního počítače s spravované disky nebo snímek virtuálního počítače. Spravované bitové kopie a základní prostředků pro fondy škálování by měla existovat a může být odebrán po odstranění fondu. 
 
 Příprava bitové kopie, mějte na paměti následující body:
 

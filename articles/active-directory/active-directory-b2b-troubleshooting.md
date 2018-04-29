@@ -1,13 +1,13 @@
 ---
-title: "Řešení potíží s Azure Active Directory s B2B spolupráce | Microsoft Docs"
-description: "Náhrad pro běžné problémy se spoluprací Azure Active Directory s B2B"
+title: Řešení potíží s Azure Active Directory s B2B spolupráce | Microsoft Docs
+description: Náhrad pro běžné problémy se spoluprací Azure Active Directory s B2B
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 588e154d35fda539ac6ee8803ed96e6cd9a3d1df
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 82c171c59b7f465afd760d50b36d17912ee7c8e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s spolupráce Azure Active Directory s B2B
 
@@ -63,7 +63,7 @@ Chcete-li tento problém vyřešit, musí správce externího uživatele synchro
 
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak se nepodporuje\#', která obvykle není platný znak, synchronizace se službou Azure AD?
 
-"\#" je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvané účet user@contoso.com stane user_contoso.com#EXT@fabrikam.onmicrosoft.com. Proto \# v UPN pocházejících z místní nejsou povoleny pro přihlášení k portálu Azure. 
+"\#" je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvané účet user@contoso.com stane user_contoso.com#EXT#@fabrikam.onmicrosoft.com. Proto \# v UPN pocházejících z místní nejsou povoleny pro přihlášení k portálu Azure. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Při přidávání externích uživatelů do skupiny synchronizované se zobrazí chyba
 

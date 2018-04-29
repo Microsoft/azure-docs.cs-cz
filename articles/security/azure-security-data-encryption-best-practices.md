@@ -3,8 +3,8 @@ title: Zabezpečení dat a šifrování osvědčené postupy | Microsoft Docs
 description: Tento článek obsahuje sadu osvědčené postupy pro zabezpečení dat a šifrování pomocí součástí možnosti Azure.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Doporučené postupy zabezpečení služby Azure Data a šifrování
+
 Jeden z klíčů do ochrany dat v cloudu je monitorování účtů pro možné stavy, která může nastat vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Pro účely služby Azure data bude šifrování osvědčené postupy pro zabezpečení a doporučení ohledně stavy následující data:
 
 * Na rest: To zahrnuje všechny informace, které kontejnerů, objektů úložiště a typy, které existují staticky na fyzickém médiu, být ho magnetické nebo optický disk.
@@ -50,6 +51,7 @@ Azure data zabezpečení a šifrování osvědčené postupy popsané v tomto č
 * Vynutit šifrování dat na úrovni souborů
 
 ## <a name="enforce-multi-factor-authentication"></a>Vynutit ověřování Multi-Factor Authentication
+
 Prvním krokem při přístupu k datům a řízení v nástroji Microsoft Azure je k ověření uživatele. [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) je metoda ověření identity uživatele pomocí jiné metody než jenom uživatelské jméno a heslo. Toto ověřování metoda pomáhá chránit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení.
 
 Povolením Azure MFA pro uživatele přidáte druhou vrstvu zabezpečení uživatelská přihlášení a transakce. V takovém případě transakci může získávat přístup k dokumentu umístěná na souborovém serveru nebo ve vaší službě SharePoint Online. Azure MFA také pomáhá IT, které sníží pravděpodobnost, že ohrožené pověření bude mít přístup k dat organizace.
@@ -61,6 +63,7 @@ Jeden alternativou pro organizace, které chcete zachovat ověřování řízen�
 Další informace o Azure MFA, najdete v článku [Začínáme s Azure Multi-Factor Authentication v cloudu](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě Role pomocí
+
 Omezení přístupu na základě [potřebovat znát](https://en.wikipedia.org/wiki/Need_to_know) a [nejnižší oprávnění](https://en.wikipedia.org/wiki/Principle_of_least_privilege) Principy zabezpečení. To je nutné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Azure na základě rolí řízení přístupu (RBAC) slouží k přiřazení oprávnění pro uživatele, skupiny a aplikace v určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role.
 
 Můžete využít [předdefinované role RBAC](../role-based-access-control/built-in-roles.md) v Azure přiřadit oprávnění pro uživatele. Zvažte použití *Přispěvatel účet úložiště* pro operátorům cloudu, kteří potřebují spravovat účty úložiště a *Classic Přispěvatel účet úložiště* rolí ke správě klasické účty úložiště. Operátoři cloudu, které potřebuje ke správě virtuálních počítačů a účet úložiště, zvažte přidá do *Přispěvatel virtuálních počítačů* role.
@@ -70,6 +73,7 @@ Organizace, které nebudou vynucovat řízení přístupu dat s využitím funkc
 Další informace o Azure RBAC přečíst v článku [řízení přístupu](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="encrypt-azure-virtual-machines"></a>Šifrování virtuálních počítačů Azure
+
 Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok k suverenity data o ochraně osobních údajů a dodržování předpisů a data. Azure Disk Encryption umožňuje správcům IT šifrování disků systému Windows a Linux IaaS virtuálního počítače (VM). Azure Disk Encryption využívá funkci oborový standard BitLocker systému Windows a DM-Crypt funkce systému Linux zajistit šifrování svazku operačního systému a datové disky.
 
 Můžete využít Azure Disk Encryption k ochraně a ochranu dat, aby splňovaly vaše požadavky na dodržování předpisů a zabezpečení organizace. Organizace měli také zvážit použití šifrování pro zmírnění rizika data související s neoprávněný přístup. Dále je doporučeno, šifrování jednotky před zápis do nich citlivá data.
@@ -125,6 +129,7 @@ Organizace, které nejsou pomocí šifrování na úrovni databáze může být 
 Další informace o šifrování SQL TDE přečíst v článku [transparentní šifrování dat s Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
 
 ## <a name="protect-data-in-transit"></a>Ochranu přenášených dat
+
 Základní součástí strategie ochrany dat by měly být ochrany dat během přenosu. Vzhledem k tomu, že data bude přesunutí a zpět z mnoho míst, obecné doporučení je vždy používat protokoly SSL/TLS pro výměnu dat v různých umístěních. V některých případech můžete chtít izolovat celý komunikační kanál mezi místní a cloudové infrastruktury pomocí virtuální privátní sítě (VPN).
 
 Pro přesun mezi vaší místní infrastruktury a Azure data měli byste zvážit příslušná bezpečnostní opatření, například HTTPS nebo VPN.
@@ -142,6 +147,7 @@ Organizace, které se nepodařilo ochranu přenášených dat budou náchylněj�
 Další informace o Azure VPN možnost přečíst v článku [plánování a návrhu pro bránu VPN](../vpn-gateway/vpn-gateway-plan-design.md).
 
 ## <a name="enforce-file-level-data-encryption"></a>Vynutit šifrování dat na úrovni souborů
+
 Další vrstvu zabezpečení, která může zvýšit úroveň zabezpečení pro vaše data, je šifrování souboru samostatně, bez ohledu na umístění souboru.
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) používá zásady šifrování, identity a autorizace, které pomáhají zabezpečit soubory a e-mailu. Azure RMS funguje napříč více zařízeními – telefony, tablety a počítače pomocí ochrany v rámci vaší organizace i mimo vaši organizaci. Tato možnost je možné, protože Azure RMS přidá úroveň ochrany, která zůstává s daty, i když opustí prostory vaší organizace.

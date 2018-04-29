@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: cbf9014f9a2776cb6dcffabacc5a8a270419a534
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 197777971b92ad9cd53e91602b88858a371ce1d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Javy
 
@@ -214,7 +214,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v Javě s využitím �
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
 
-- Další informace o klientské knihovně pro Javu najdete v [referenčních informacích k rozhraní Java API](https://docs.microsoft.com/en-us/java/api/overview/azure/storage).
+- Další informace o klientské knihovně pro Javu najdete v [referenčních informacích k rozhraní Java API](https://docs.microsoft.com/java/api/overview/azure/storage).
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob) napsané s využitím klientské knihovny pro Javu.
 
 ## <a name="next-steps"></a>Další kroky
@@ -224,6 +224,6 @@ V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním di
 > [!div class="nextstepaction"]
 > [Operace s úložištěm objektů blob – postupy](storage-java-how-to-use-blob-storage.md)
 
-Další informace o Průzkumníkovi služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md).
+Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md).
 
 Další ukázky v Javě najdete v tématu [Ukázky služby Azure Storage s použitím Javy](../common/storage-samples-java.md).

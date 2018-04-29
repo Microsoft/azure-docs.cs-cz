@@ -2,19 +2,19 @@
 title: Vytvoření TABLE AS SELECT (funkce CTAS) v Azure SQL Data Warehouse | Microsoft Docs
 description: Tipy pro psaní kódu s použitím příkazu Vytvořit tabulku AS vyberte funkce CTAS () v Azure SQL Data Warehouse na vývoj řešení.
 services: sql-data-warehouse
-author: ronortloff
+author: ckarst
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
-ms.author: rortloff
+ms.date: 04/17/2018
+ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: cb36cb7d3dd652608620283fe2ea2e6649406be5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9bff6b1216ae826203b24a2cdf8a3d7fd0fd586f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Pomocí CREATE TABLE AS SELECT (funkce CTAS) v Azure SQL Data Warehouse
 Tipy pro psaní kódu s použitím příkazu Vytvořit tabulku AS vyberte funkce CTAS () T-SQL v Azure SQL Data Warehouse na vývoj řešení.

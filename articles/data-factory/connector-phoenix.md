@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 56559adbc2ebd4e4379326607a28333d538504da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8cc6fa994c750f4718e6cc065819763d8be4f18c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopírování dat z Phoenix pomocí Azure Data Factory 
 
@@ -46,7 +46,7 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **Phoenix** | Ano |
 | hostitel | IP adresu nebo název hostitele serveru Phoenix. (to znamená, 192.168.222.160)  | Ano |
-| port | Port TCP, který používá Phoenix server naslouchat pro připojení klientů. Výchozí hodnota je 8765.  | Ne |
+| port | Port TCP, který používá Phoenix server naslouchat pro připojení klientů. Výchozí hodnota je 8765. Pokud se připojit k Azure HDInsights, zadejte port jako 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající Phoenix serveru. (to znamená, /gateway/sandbox/phoenix/version). Výchozí hodnota je `hbasephoenix` při použití WindowsAzureHDInsightService.  | Ne |
 | authenticationType. | Mechanismus ověřování používaný pro připojení k serveru Phoenix. <br/>Povolené hodnoty jsou: **anonymní**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | uživatelské jméno | Uživatelské jméno používané pro připojení k serveru Phoenix.  | Ne |
@@ -67,7 +67,7 @@ Phoenix propojené služby jsou podporovány následující vlastnosti:
         "type": "Phoenix",
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
-            "port" : "<port>",
+            "port" : "443",
             "httpPath" : "hbasephoenix",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",

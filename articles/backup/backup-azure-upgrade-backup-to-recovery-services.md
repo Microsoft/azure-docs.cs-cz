@@ -1,6 +1,6 @@
 ---
-title: "Upgrade trezor Backup do trezoru služeb zotavení | Microsoft Docs"
-description: "Pokyny a informace o podpoře k upgradu trezoru služby Azure Backup do trezoru služeb zotavení."
+title: Upgrade trezor Backup do trezoru služeb zotavení | Microsoft Docs
+description: Pokyny a informace o podpoře k upgradu trezoru služby Azure Backup do trezoru služeb zotavení.
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Upgrade trezor Backup do trezoru služeb zotavení
 
@@ -57,7 +57,7 @@ Můžete použít skripty prostředí PowerShell k upgradu vaší trezory Backup
 
 Pomocí následujícího skriptu k upgradu vaší trezorů. Následující ukázkový skript obsahuje vysvětlení parametrů.
 
-RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-umístění** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName**`<rgname>`
+RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-umístění** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
 
 **ID předplatného** -číslo ID předplatného úložiště, která se upgraduje.<br/>
 **VaultName** -název úložiště záloh, která se upgraduje.<br/>
@@ -84,7 +84,7 @@ Skript prostředí PowerShell vás vyzve k zadání přihlašovacích údajů. Z
 ### <a name="pre-requisites-checking"></a>Předpoklady kontrola
 Po zadání přihlašovacích údajů Azure, Azure kontroluje, zda vaše prostředí splňuje následující požadavky:
 
-- **Verze agenta minimální** -trezory Backup trezory služeb zotavení upgradujete agenta MARS nejméně verze 2.0.9083.0. Pokud máte položky zaregistrovat do trezoru zálohování s agentem starší než 2.0.9083.0, selže kontrola předpokladů. Pokud selže kontrola předpokladů, aktualizujte agenta a pokusit o upgrade trezoru znovu. Můžete si stáhnout nejnovější verzi agenta z [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Verze agenta minimální** -trezory Backup trezory služeb zotavení upgradujete agenta MARS nejméně verze 2.0.9083.0. Pokud máte položky zaregistrovat do trezoru zálohování s agentem starší než 2.0.9083.0, selže kontrola předpokladů. Pokud selže kontrola předpokladů, aktualizujte agenta a pokusit o upgrade trezoru znovu. Můžete si stáhnout nejnovější verzi agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **Úlohy konfigurace průběžné**: Pokud někdo konfiguruje úlohy pro úložiště záloh nastavit upgradovaná nebo registrace položku, selže kontrola předpokladů. Dokončení konfigurace, nebo dokončit registraci položku a pak spusťte proces upgradu trezoru.
 - **Model fakturace na základě úložiště**: trezory služeb zotavení podporují model fakturace na základě Instance. Pokud spustíte upgrade úložiště na úložiště záloh, který používá model fakturace na základě úložiště, zobrazí se výzva k upgradu model fakturace společně s trezoru. Jinak můžete aktualizovat model fakturace první, a poté spusťte upgrade trezoru.
 - Identifikujte skupinu prostředků pro trezor služeb zotavení. Abyste mohli využívat funkce nasazení Resource Manager, musíte umístit do trezoru služeb zotavení ve skupině prostředků. Pokud nevíte, které skupiny prostředků použít, zadejte název a proces upgradu pro vás vytvoří skupinu prostředků. Proces upgradu také přidruží trezoru novou skupinu prostředků.
@@ -106,7 +106,7 @@ Trezor služeb zotavení podporuje zadání informace o časovém pásmu v zása
 
 ## <a name="enhanced-security"></a>Rozšířené zabezpečení
 
-Úložiště záloh upgradován do trezoru služeb zotavení, nastavení zabezpečení pro tento trezor jsou automaticky zapnuté. Při nastavení zabezpečení jsou u určité operace, třeba odstranění zálohy, nebo změna přístupového hesla o vyžadují [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN kód. Další informace o lepší zabezpečení, najdete v článku [funkcí zabezpečení k ochraně hybridní zálohy](backup-azure-security-feature.md). 
+Úložiště záloh upgradován do trezoru služeb zotavení, nastavení zabezpečení pro tento trezor jsou automaticky zapnuté. Při nastavení zabezpečení jsou u určité operace, třeba odstranění zálohy, nebo změna přístupového hesla o vyžadují [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN kód. Další informace o lepší zabezpečení, najdete v článku [funkcí zabezpečení k ochraně hybridní zálohy](backup-azure-security-feature.md). 
 
 Pokud je zapnuta lepší zabezpečení, mají být uchována data nahoru na 14 dnů po informace o bodu obnovení se odstranil z trezoru. Zákazníci se účtují úložiště těchto dat zabezpečení. Uchovávání dat zabezpečení platí pro body obnovení pro agenta Azure Backup, serveru Azure Backup a System Center Data Protection Manager. 
 

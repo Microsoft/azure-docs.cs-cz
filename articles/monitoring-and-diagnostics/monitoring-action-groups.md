@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/20/2018
 ms.author: dukek
-ms.openlocfilehash: e3185b8d8ce97ffd04188b2b49a457bd14d5c6c8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akce na portálu Azure
 ## <a name="overview"></a>Přehled ##
@@ -93,7 +93,7 @@ Informace o tom, jak pomocí šablony Azure Resource Manager můžete nakonfigur
 
 <dt>Webhooku</dt>
 <dd>Může mít až 10 akce Webhooku ve skupině Akce
-<dd>Opakujte logiku - voláním webhooku se bude opakovat maximálně 3 při následující stavové kódy HTTP vrácené časy jsou: 408, 429, 503, 504</dd>
+<dd>Logika opakovaných pokusů - časový limit pro odpověď je 10 sekund. Voláním webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou: 408 429, 503, 504 nebo koncový bod HTTP neodpovídá. První opakování se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>Správa skupin akce ##

@@ -3,7 +3,7 @@ title: Co je síť Azure seznam řízení přístupu?
 description: Další informace o seznamy řízení přístupu v Azure
 services: virtual-network
 documentationcenter: na
-author: genli
+author: genlin
 manager: cshepard
 editor: ''
 tags: azure-service-management
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: b2239ae6393e74a518522594d36f7b9c30d2a6f7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0f22bae1e1e40d3ea735861b9a633ae46eae5c33
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Co je seznam řízení přístupu koncový bod?
 

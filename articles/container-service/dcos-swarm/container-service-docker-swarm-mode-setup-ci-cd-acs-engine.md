@@ -1,19 +1,19 @@
 ---
-title: "CI/CD s Azure Container Service modul a režim Swarm"
-description: "Použití stroj kontejneru služby Azure se Docker Swarm režimu, registru kontejner Azure a Visual Studio Team Services k poskytování nepřetržitě aplikace .NET Core více kontejneru"
+title: CI/CD s Azure Container Service modul a režim Swarm
+description: Použití stroj kontejneru služby Azure se Docker Swarm režimu, registru kontejner Azure a Visual Studio Team Services k poskytování nepřetržitě aplikace .NET Core více kontejneru
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Úplné kanálu CI nebo CD pro nasazení aplikace s více kontejnerů v Azure Container Service pomocí modulu služby ACS a Docker Swarm režimu pomocí Visual Studio Team Services
 
@@ -218,7 +218,7 @@ Verze pracovní postup se skládá z dvě úlohy, které přidáte.
 
 1. Nakonfigurujte úlohu bezpečně zkopírovat soubor vytvářené *nasazení* složky na Docker Swarm hlavního uzlu pomocí připojení SSH jste nakonfigurovali dříve. V následující obrazovku podrobnosti.
     
-    Zdrojová složka:```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
+    Zdrojová složka: ```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
 
     ![Visual Studio Team Services - verze spojovací bod služby](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
@@ -244,7 +244,7 @@ Verze pracovní postup se skládá z dvě úlohy, které přidáte.
 
 Teď, když jste hotovi s konfigurací, je otestovat, tento nový kanál CI/CD. Aktualizujte zdrojový kód a provést změny do úložiště GitHub je nejjednodušší způsob, jak otestovat. Několik sekund poté, co push kód, zobrazí se nové sestavení spuštěná ve Visual Studio Team Services. Po úspěšném dokončení novou verzi se aktivuje a nasadit novou verzi aplikace v clusteru Azure Container Service.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o CI/CD s Visual Studio Team Services najdete v tématu [služby VSTS sestavení přehled](https://www.visualstudio.com/docs/build/overview).
 * Další informace o modulu služby ACS, najdete v článku [úložiště GitHub modul ACS](https://github.com/Azure/acs-engine).

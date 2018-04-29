@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: e421797d85dd031b77788958db6b1df62a292a8a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: db910096f776f2f8710c0ac03f0378491018fc09
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží s 
 Tento článek vám pomůže najít a opravy chyb nebo selhání došlo jako součást pomocí aplikace Azure Machine Learning Workbench. 
@@ -137,7 +137,7 @@ Můžete také odstranit projekty a pracovní prostory v rámci aplikace Workben
 Pokud máte Windows 10 patří Creators aktualizace a vytvoření projektu v místní složce namapované na OneDrive, můžete zjistit, že všechny soubor nelze otevřít v Workbench. Toto je z důvodu chyby zaváděné aktualizace Creators patří, která způsobuje selhání ve složce OneDrive kódu node.js. Chybě bude opraven brzy službou Windows update, ale do té doby, prosím nevytvářejte projekty ve složce OneDrive.
 
 ## <a name="file-name-too-long-on-windows"></a>Název souboru příliš dlouho v systému Windows
-Pokud používáte Workbench v systému Windows, můžete narazit na výchozí maximální souboru 260 znaků názvu limit délky, která by mohla surface jako chyba "systém nemůže najít zadanou cestu". Můžete upravit nastavení klíče registru a povolit mnohem delší cestu název souboru. Zkontrolujte [v tomto článku](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) další podrobnosti o tom, jak nastavit _hodnotou MAX_PATH_ klíč registru.
+Pokud používáte Workbench v systému Windows, můžete narazit na výchozí maximální souboru 260 znaků názvu limit délky, která by mohla surface jako chyba "systém nemůže najít zadanou cestu". Můžete upravit nastavení klíče registru a povolit mnohem delší cestu název souboru. Zkontrolujte [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) další podrobnosti o tom, jak nastavit _hodnotou MAX_PATH_ klíč registru.
 
 ## <a name="interrupt-cli-execution-output"></a>Přerušení výstupu spuštění příkazového řádku
 Pokud ji experimentování spouštět s využitím `az ml experiment submit` nebo `az ml notebook start` a chcete přerušení výstup: 

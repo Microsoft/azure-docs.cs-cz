@@ -1,6 +1,6 @@
 ---
-title: "Služba Fabric zálohování a obnovení | Microsoft Docs"
-description: "Rámcová dokumentace pro Service Fabric zálohování a obnovení"
+title: Služba Fabric zálohování a obnovení | Microsoft Docs
+description: Rámcová dokumentace pro Service Fabric zálohování a obnovení
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: d276ce9233da9137c49faf8c4d975bd1dcf2ff81
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: dd8042620b6b9829e49f3124ecdee1c038f8c12f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení Reliable Services a Reliable Actors
 Azure Service Fabric je vysoká dostupnost platforma, která replikuje stav napříč několika uzly udržovat tento vysokou dostupnost.  Proto i v případě, že jeden uzel v clusteru selže, služby nadále k dispozici. Při této redundance v vytvořená poskytované platformou pravděpodobně dostatečná pro některé, v některých případech je žádoucí, aby službu, kterou chcete zálohovat data (na externí úložiště).
@@ -84,7 +84,7 @@ Uživatelé mohou zvýšit pravděpodobnost moci provést přírůstkové záloh
 Všimněte si, že tyto zvýšení hodnoty zvyšuje za využití disku repliky.
 Další informace najdete v tématu [spolehlivé konfigurace služeb](service-fabric-reliable-services-configuration.md)
 
-`BackupInfo`poskytuje informace o zálohování, včetně umístění složky pro uložení zálohy modulu runtime (`BackupInfo.Directory`). Funkce zpětného volání můžete přesunout `BackupInfo.Directory` externím obchodu nebo do jiného umístění.  Tato funkce také vrací logickou hodnotu, která určuje, zda bylo možné úspěšně přesunout do cílového umístění v zálohovací složce.
+`BackupInfo` poskytuje informace o zálohování, včetně umístění složky pro uložení zálohy modulu runtime (`BackupInfo.Directory`). Funkce zpětného volání můžete přesunout `BackupInfo.Directory` externím obchodu nebo do jiného umístění.  Tato funkce také vrací logickou hodnotu, která určuje, zda bylo možné úspěšně přesunout do cílového umístění v zálohovací složce.
 
 Následující kód ukazuje, jak `BackupCallbackAsync` metoda slouží k nahrání zálohování do úložiště Azure:
 
@@ -99,7 +99,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-V příkladu předcházející `ExternalBackupStore` je ukázka třída, která se používá k rozhraní s Azure Blob storage a `UploadBackupFolderAsync` je metoda, která komprimaci složce a umístí jej do úložiště objektů Blob v Azure.
+V předchozím příkladu `ExternalBackupStore` je ukázka třída, která se používá k rozhraní s Azure Blob storage a `UploadBackupFolderAsync` je metoda, která komprimaci složce a umístí jej do úložiště objektů Blob v Azure.
 
 Poznámky:
 
@@ -111,7 +111,7 @@ Obecně platí případech, kdy možná budete muset provést operaci obnovení 
 
   - Služba oddílu ke ztrátě dat. Například získá disku pro dvě ze tří repliky pro oddíl (včetně primární repliky) poškozený nebo vymazat. Nový primární možná muset obnovit data ze zálohy.
   - S celou službou bude ztracena. Například správcem odebere s celou službou a proto služby a data je nutné obnovit.
-  - Služba replikovaných dat poškozené aplikace (např. z důvodu chyb aplikaci). V takovém případě služby je třeba upgradovat nebo vrátit zpět na odebrat příčinu poškození, a -poškození dat musí být obnovena.
+  - Služba replikovaných dat poškozené aplikace (například z důvodu chyb aplikaci). V takovém případě služby je třeba upgradovat nebo vrátit zpět na odebrat příčinu poškození, a -poškození dat musí být obnovena.
 
 Zatímco řada přístupů je možné, nabízíme některé příklady použití `RestoreAsync` obnovení z výše uvedených scénářů.
 
@@ -141,15 +141,15 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-`RestoreDescription`předaná do `RestoreContext.RestoreAsync` volání obsahuje člena s názvem `BackupFolderPath`.
+`RestoreDescription` předaná do `RestoreContext.RestoreAsync` volání obsahuje člena s názvem `BackupFolderPath`.
 Při obnovení jedné úplné zálohování, to `BackupFolderPath` musí být nastavena na místní cestu složky, která obsahuje vaše úplné zálohování.
 Při obnovování úplnou zálohu a počet přírůstkové zálohování, `BackupFolderPath` musí být nastavena na místní cestu složky, která obsahuje není pouze úplné zálohování, ale také všechny přírůstkové zálohy.
-`RestoreAsync`můžete vyvolat volání `FabricMissingFullBackupException` Pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
+`RestoreAsync` můžete vyvolat volání `FabricMissingFullBackupException` Pokud `BackupFolderPath` zadané neobsahuje úplnou zálohu.
 Můžete také vyvolat `ArgumentException` Pokud `BackupFolderPath` má porušený řetězec přírůstkových záloh.
 Například, pokud obsahuje úplné zálohování první přírůstkové a třetí přírůstkové zálohování, ale ne druhý přírůstkové zálohování.
 
 > [!NOTE]
-> Ve výchozím nastavení do bezpečných RestorePolicy.  To znamená, že `RestoreAsync` rozhraní API se nezdaří s ArgumentException – pokud zjistí, že v zálohovací složce obsahuje stavu, který je starší než nebo rovno stavu obsažené v této replice.  `RestorePolicy.Force`můžete použít tak, aby přeskočil tuto kontrolu zabezpečení. To je zadaný jako součást `RestoreDescription`.
+> Ve výchozím nastavení do bezpečných RestorePolicy.  To znamená, že `RestoreAsync` rozhraní API se nezdaří s ArgumentException – pokud zjistí, že v zálohovací složce obsahuje stavu, který je starší než nebo rovno stavu obsažené v této replice.  `RestorePolicy.Force` můžete použít tak, aby přeskočil tuto kontrolu zabezpečení. To je zadaný jako součást `RestoreDescription`.
 > 
 
 ## <a name="deleted-or-lost-service"></a>Odstraněné nebo ke ztrátě služby
@@ -164,7 +164,7 @@ Z tohoto bodu implementace je stejný jako výše uvedené scénáře. Každý o
 ## <a name="replication-of-corrupt-application-data"></a>Replikace dat poškozený aplikací
 Pokud upgradu nově nasazené aplikace obsahuje chyby, které může způsobit poškození dat. Upgrade aplikace může například spuštění aktualizace každých telefonní číslo záznam v spolehlivé slovník s neplatný kód oblasti.  Neplatnými telefonními čísly v takovém případě bude replikován, protože nemá žádné informace o povaze data, která ukládají Service Fabric.
 
-První věc udělat po zjištění takové mimořádně závažných chyb, která způsobuje poškození dat je zmrazení služby na úrovni aplikace a pokud je to možné, upgradujte na verzi aplikační kód, který nemá chyb.  I po kódu služby vyřešen, data mohou být poškozena a proto může třeba obnovit data.  V takových případech nemusí být dostatečná k obnovení poslední zálohu, protože nejnovější zálohy také může být poškozený.  Proto je nutné nalézt poslední zálohy, která byla vytvořená před tu poškozená data.
+První věc udělat po zjištění takové mimořádně závažných chyb, která způsobuje poškození dat je zmrazení služby na úrovni aplikace a pokud je to možné, upgradujte na verzi aplikační kód, který nemá chyb.  Ale i po kódu služby vyřešen, data mohou být poškozena a proto může třeba obnovit data.  V takových případech nemusí být dostatečná k obnovení poslední zálohu, protože nejnovější zálohy také může být poškozený.  Proto je nutné nalézt poslední zálohy, která byla vytvořená před tu poškozená data.
 
 Pokud si nejste jisti, který zálohy jsou poškozené, můžete nasadit do nového clusteru Service Fabric a obnovit zálohy ovlivněných oddílů stejně jako výše "Odstraněno nebo ke ztrátě služby" scénář.  Pro každý oddíl spuštění obnovení zálohování z nejnovější na nejmenší. Po nalezení zálohy, která nemá poškození přesunutí nebo odstranění tohoto oddílu všechny zálohy, které byly novější (než zálohování). Tento postup opakujte pro každý oddíl. Teď, když `OnDataLossAsync` je volána v oddílu v clusteru výroby, bude poslední zálohy v externím úložišti nalezen jeden zachyceny proces výše.
 
@@ -222,12 +222,12 @@ Po přírůstkové zálohování, trvá přírůstkové zálohování může sel
   - Replika nikdy trvá úplné zálohování, vzhledem k tomu, že jsou primární.
   - Některé záznamy protokolu bylo zkráceno od poslední zálohy.
 
-Pokud je povoleno přírůstkové zálohování, `KvsActorStateProvider` nepoužívá ke správě svoje záznamy protokolu cyklické vyrovnávací paměti a pravidelně se zkrátí. Pokud nedojde k žádné zálohování uživatelem po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval můžete nakonfigurovat tak, že zadáte `logTrunctationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolování přírůstkové zálohování). Záznamy protokolu může získat také zkrácen, pokud primární repliky potřebujete k vytvoření jiné repliky odesláním všechna jeho data.
+Pokud je povoleno přírůstkové zálohování, `KvsActorStateProvider` nepoužívá ke správě svoje záznamy protokolu cyklické vyrovnávací paměti a pravidelně se zkrátí. Pokud nedojde k žádné zálohování uživatelem po dobu 45 minut, systém automaticky zkrátí záznamy protokolu. Tento interval můžete nakonfigurovat tak, že zadáte `logTrunctationIntervalInMinutes` v `KvsActorStateProvider` konstruktoru (podobně jako při povolování přírůstkové zálohování). Záznamy protokolu může získat také zkrácen, pokud primární repliky potřebuje k vytvoření jiné repliky odesláním všechna jeho data.
 
 Při provádění obnovení ze zálohy řetěz, spolehlivé služby, podobně jako BackupFolderPath by měl obsahovat podadresářů pomocí jednoho podadresáři obsahující úplnou zálohu a ostatní podadresáře obsahující přírůstkové zálohy. Rozhraní API obnovení vyvolá výjimku FabricException se příslušná chybová zpráva, pokud selže ověření řetěz záloh. 
 
 > [!NOTE]
-> `KvsActorStateProvider`možnost RestorePolicy.Safe aktuálně ignoruje. Podpora pro tuto funkci je plánované v nadcházející verzi.
+> `KvsActorStateProvider` možnost RestorePolicy.Safe aktuálně ignoruje. Podpora pro tuto funkci je plánované v nadcházející verzi.
 > 
 
 ## <a name="testing-backup-and-restore"></a>Testování zálohování a obnovení
@@ -241,10 +241,10 @@ Je důležité zajistit, že se záloha důležitých dat a lze obnovit z. To lz
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>Pod pokličkou: Další informace o zálohování a obnovení
 Zde je některé další informace o zálohování a obnovení.
 
-### <a name="backup"></a>Zálohování
+### <a name="backup"></a>Backup
 Správce spolehlivé stavu poskytuje možnost vytvořit konzistentní zálohování bez blokování všech pro čtení nebo zápisu operace. Uděláte to tak ho využívá mechanismus trvalosti kontrolního bodu a protokolu.  Správce spolehlivé stavu trvá přibližné (lightweight) kontrolní body v určitých bodech snížit zatížení z protokol transakcí a vylepšovat dobu obnovení.  Když `BackupAsync` je volána, spolehlivé správce stavu dá pokyn všechny objekty spolehlivé kopírovat jejich nejnovější soubory kontrolního bodu do místní složky zálohování.  Spolehlivé správce stavu pak zkopíruje všechny záznamy protokolu od ukazatele"počáteční" nejnovější záznam protokolu do zálohovací složky.  Vzhledem k tomu, že všechny záznamy protokolu až nejnovější záznam protokolu jsou zahrnuté do zálohy a spolehlivé správce stavu zachovává předběžné protokolování, spolehlivé správce stavu zaručuje, že jsou všechny transakce, potvrzeny (`CommitAsync` úspěšně vrátila) jsou zahrnuté do zálohy.
 
-Jakékoli transakce, která provádí po `BackupAsync` byla volána může nebo nemusí být v záloze.  Jakmile místní složce pro zálohování naplněné platformou (tj, místní bylo zálohování dokončeno modulem runtime), je vyvolána zálohování zpětného volání služby.  Tato zpětné volání je zodpovědná za přesunutí v zálohovací složce do externího umístění například Azure Storage.
+Jakékoli transakce, která provádí po `BackupAsync` byla volána může nebo nemusí být v záloze.  Jakmile naplněné v zálohovací složce místní platformou (tedy místní bylo zálohování dokončeno modulem runtime), je volána službou zálohování zpětného volání.  Tato zpětné volání je zodpovědná za přesunutí v zálohovací složce do externího umístění například Azure Storage.
 
 ### <a name="restore"></a>Obnovení
 Správce spolehlivé stavu poskytuje možnost obnovení ze zálohy pomocí `RestoreAsync` rozhraní API.  
@@ -255,17 +255,13 @@ To vyplývá, že pro implementátory StatefulService `RunAsync` dokud nebude vo
 Potom `OnDataLossAsync` bude volána pro nový primární.
 Dokud služby dokončí toto rozhraní API úspěšně (vrací hodnotu true nebo false) a dokončí příslušné změny konfigurace, rozhraní API bude udržovat volána po jednom.
 
-`RestoreAsync`nejprve zahodí všechny existující stav v primární replice, která byla volána na.  
-Spolehlivé správce stavu vytvoří spolehlivé objekty, které existují ve složce zálohy.  
-Dále jsou spolehlivé objekty pokyn k obnovení z jejich kontrolní body ve složce pro zálohování.  
-Nakonec spolehlivé správce stavu obnoví vlastní stavu ze záznamů protokolu ve složce pro zálohování a provede obnovení.  
-Jako součást procesu obnovení operace od "výchozí bod", které mají potvrzení záznamů protokolu ve složce zálohování se přehraje na virtuálním pevném spolehlivé objekty.  
-Tento krok zajistí, že obnovené stav je konzistentní.
+`RestoreAsync` nejprve zahodí všechny existující stav v primární replice, která byla volána na. Spolehlivé správce stavu vytvoří spolehlivé objekty, které existují ve složce zálohy. Dále jsou spolehlivé objekty pokyn k obnovení z jejich kontrolní body ve složce pro zálohování. Nakonec spolehlivé správce stavu obnoví vlastní stavu ze záznamů protokolu ve složce pro zálohování a provede obnovení. Jako součást procesu obnovení operace od "výchozí bod", které mají potvrzení záznamů protokolu ve složce zálohování se přehraje na virtuálním pevném spolehlivé objekty. Tento krok zajistí, že obnovené stav je konzistentní.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
   - [Spolehlivé služby rychlý start](service-fabric-reliable-services-quick-start.md)
   - [Spolehlivé služby oznámení](service-fabric-reliable-services-notifications.md)
   - [Spolehlivé služby konfigurace](service-fabric-reliable-services-configuration.md)
   - [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Pravidelné zálohování a obnovení v Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

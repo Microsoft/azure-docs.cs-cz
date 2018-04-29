@@ -3,17 +3,17 @@ title: Rychlý start – Vytvoření prvního kontejneru služby Azure Container
 description: V tomto rychlém startu pomocí webu Azure Portal nasadíte kontejner ve službě Azure Container Instances.
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: cb0c8c5f5730ae1f7a2e9b38c3ef3e04ee8cde67
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 34f1edf441a18e22bcbef0c827ab4301f97c1aa1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rychlý start: Vytvoření prvního kontejneru ve službě Azure Container Instances
 

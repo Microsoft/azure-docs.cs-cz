@@ -6,20 +6,20 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: f318f98479caed8efb4a3705939cb9ac0dd5b237
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v Azure do Azure replikace
 
 >[!NOTE]
 > Replikace obnovení lokality pro virtuální počítače Azure je aktuálně ve verzi preview.
 
-Tento článek obsahuje síťové pokyny, když jste replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné, pomocí [Azure Site Recovery](site-recovery-overview.md). 
+Tento článek obsahuje síťové pokyny, když jste replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné, pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -57,19 +57,18 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování na adres
 
 Pokud používáte proxy služby založenou na protokolu IP brány firewall nebo pravidla NSG k řízení odchozí připojení, musí být povoleny tyto rozsahy IP.
 
-- Všechny rozsahy IP adres, které odpovídají umístění zdroje.
-    - Si můžete stáhnout [rozsahy IP adres](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+- Všechny rozsahy IP adres, které odpovídají na účtech úložiště v oblasti zdroje
+    - Je nutné vytvořit [úložiště výrobní číslo](../virtual-network/security-overview.md#service-tags) na základě pravidla NSG pro oblast zdroje.
     - Budete muset povolit tyto adresy tak, aby data je možné zapsat do mezipaměti účet úložiště, z virtuálního počítače.
 - Všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
     - Pokud nové adresy se přidají do rozsahů Office 365 v budoucnu, musíte vytvořit nová pravidla NSG.
-- Koncový bod služby Site Recovery IP adresy. Tyto jsou k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips)a závisí na cílové umístění.
--  Můžete [stáhnout a použít tento skript](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702), aby automaticky vytvoří požadované pravidla v této skupině. 
+- Koncový bod služby Site Recovery IP adresy. Tyto jsou k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílové umístění.
+-  Můžete [stáhnout a použít tento skript](https://aka.ms/nsg-rule-script), aby automaticky vytvoří požadované pravidla v této skupině.
 - Doporučujeme vytvořit požadované pravidla NSG na testovací skupina NSG a ověřte, že před vytvořením pravidel u produkčních NSG neexistují žádné problémy.
-- Vytvořit požadovaný počet pravidel NSG, ujistěte se, že vaše předplatné je seznam povolených adres. Podporu kontaktní Azure o zvýšení limitu pravidla NSG v rámci vašeho předplatného.
 
-Rozsahy IP adres jsou následující:
 
->
+Rozsahy adres IP pro obnovení lokality jsou následující:
+
    **cíl** | **Obnovení lokality IP** |  **Site Recovery monitorování IP**
    --- | --- | ---
    Východní Asie | 52.175.17.132 | 13.94.47.61
@@ -99,50 +98,73 @@ Rozsahy IP adres jsou následující:
    Spojené království – sever | 51.142.209.167 | 13.87.102.68
    Korea – střed | 52.231.28.253 | 52.231.32.85
    Korea – jih | 52.231.298.185 | 52.231.200.144
-   
-   
-  
+
+
+
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
 
-Tento příklad ukazuje postup konfigurace pravidla NSG pro virtuální počítač k replikaci. 
+Tento příklad ukazuje postup konfigurace pravidla NSG pro virtuální počítač k replikaci.
 
-- Pokud používáte pravidla NSG k řízení odchozí připojení, použijte "Povolit HTTPS odchozí" pravidla pro všechny požadované rozsahy IP adres.
-- V příkladu se předpokládá, že umístění zdrojového virtuálního počítače je "Východ USA" a cílové umístění je "střed USA.
+- Pokud používáte pravidla NSG k řízení odchozí připojení, použijte "Povolit HTTPS odchozí" pravidel portu: 443 pro všechny požadované rozsahy IP adres.
+- V příkladu se předpokládá, že umístění zdrojového virtuálního počítače je "Východ USA" a cílové umístění je "Střední USA".
 
 ### <a name="nsg-rules---east-us"></a>Pravidla NSG - východní USA
 
-1. Vytvoření pravidla, které odpovídají [rozsahů adres IP USA – východ](https://www.microsoft.com/download/confirmation.aspx?id=41653). To je potřeba, aby data je možné zapsat do mezipaměti účet úložiště z virtuálního počítače.
-2. Vytvoření pravidel pro všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-3. Vytvoření pravidla, která odpovídají do cílového umístění:
+1. Vytvoření odchozí pravidla zabezpečení HTTPS (443) pro "Storage.EastUS" na NSG, jak je vidět na tomto snímku obrazovky.
+
+      ![úložiště – značka](./media/azure-to-azure-about-networking/storage-tag.png)
+
+2. Vytvářet odchozí pravidla HTTPS (443) pro všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+3. Vytvořte odchozí pravidla HTTPS (443) pro IP adresy obnovení lokality, která odpovídají do cílového umístění:
 
    **Umístění** | **Obnovení IP adresu serveru** |  **Obnovení monitorování IP adresa**
     --- | --- | ---
    Střed USA | 40.69.144.231 | 52.165.34.144
 
-### <a name="nsg-rules---central-us"></a>Pravidla NSG - střed USA 
+### <a name="nsg-rules---central-us"></a>Pravidla NSG - střed USA
 
 Tato pravidla jsou vyžadována, takže je možné povolit replikaci z oblasti target zdrojovém oblast post-převzetí služeb při selhání:
 
-* Pravidla, které odpovídají [rozsahy IP centrální USA](https://www.microsoft.com/download/confirmation.aspx?id=41653). Toto jsou požadované, tak, aby data je možné zapsat do mezipaměti účet úložiště z virtuálního počítače.
+1. Pro "Storage.CentralUS" v této skupině vytvořte odchozí pravidlo zabezpečení HTTPS (443).
 
-* Pravidla pro všechny rozsahy IP, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Vytvářet odchozí pravidla HTTPS (443) pro všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
 
-* Pravidla, které odpovídají umístění zdroje:
-    - Východ USA
-    - Lokality obnovení IP adresa: 13.82.88.226
-    - Obnovení monitorování IP adresu lokality: 104.45.147.24
+3. Vytvořte odchozí pravidla HTTPS (443) pro obnovení lokality IP adresy, které odpovídají umístění zdroje:
 
+   **Umístění** | **Obnovení IP adresu serveru** |  **Obnovení monitorování IP adresa**
+    --- | --- | ---
+   Střed USA | 13.82.88.226 | 104.45.147.24
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN 
+## <a name="network-virtual-appliance-configuration"></a>Konfigurace sítě virtuálního zařízení
+
+Pokud používáte virtuální zařízení sítě (NVAs) řídit odchozí síťový provoz z virtuálních počítačů, zařízení může získat omezena Pokud postupuje veškerý provoz replikace do hodnocení chyb zabezpečení. Doporučujeme, aby provoz replikace do hodnocení chyb zabezpečení nepřekračuje vytvoření koncového bodu sítě služby ve virtuální síti pro "Úložiště".
+
+### <a name="create-network-service-endpoint-for-storage"></a>Vytvoření koncového bodu sítě služby pro úložiště
+Koncový bod sítě služby ve virtuální síti můžete vytvořit pro "Úložiště" tak, aby provoz replikace, nenechává Azure hranic.
+
+- Vyberte virtuální sítě Azure a kliknutím na koncové body služby
+
+    ![koncový bod úložiště](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+
+- Klikněte na tlačítko "Přidat" a 'Přidat koncové body služby' kartě otevře
+- Vyberte 'Microsoft.Storage' v části "Služba" a požadované podsítí v rámci pole, podsítě a klikněte na tlačítko "přidat.
+
+>[!NOTE]
+>Účty úložiště použít pro automatické obnovení systému neomezují přístup k virtuální síti. By měly umožnit přístup z 'všechny sítě.
+
+## <a name="expressroutevpn"></a>ExpressRoute/VPN
 
 Pokud máte ExpressRoute nebo VPN připojení mezi místními a umístění Azure, postupujte podle pokynů v této části.
 
 ### <a name="forced-tunneling"></a>Vynucené tunelování
 
-Obvykle můžete definovat výchozí trasa (0.0.0.0/0), který vynutí odchozí přenosy z Internetu do procházet skrz místní umístění. To nedoporučujeme. Provoz replikace a komunikace služby Site Recovery neměli ponechat Azure hranic. Řešení je přidat trasy definované uživatelem (udr) pro [tyto rozsahy IP](#outbound-connectivity-for-azure-site-recovery-ip-ranges) tak, aby provoz replikace nelze přejít na místě.
+Obvykle můžete definovat výchozí trasa (0.0.0.0/0), který vynutí odchozí přenosy z Internetu do procházet skrz místní umístění nebo. To nedoporučujeme. Provoz replikace by neměl ponechte Azure hranic.
 
-### <a name="connectivity"></a>Připojení 
+Můžete [vytvoření koncového bodu sítě služby](#create-network-service-endpoint-for-storage) ve vaší virtuální sítě pro "Úložiště" tak, aby provoz replikace, nenechává Azure hranic.
+
+
+### <a name="connectivity"></a>Připojení
 
 Postupujte podle následujících pokynů pro připojení mezi cílové umístění a místní umístění:
 - Pokud aplikace potřebuje k připojení k místní počítače nebo pokud jsou klienti, kteří připojují k aplikaci z místního přes VPN nebo ExpressRoute, zajistěte, abyste měli alespoň [připojení site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) mezi vaší cílové oblasti Azure a místního datového centra.

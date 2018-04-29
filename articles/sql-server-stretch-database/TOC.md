@@ -22,7 +22,7 @@
 ### [Zakázání služby Stretch Database](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)

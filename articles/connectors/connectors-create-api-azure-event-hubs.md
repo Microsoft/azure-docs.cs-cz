@@ -1,14 +1,14 @@
 ---
-title: "Nastavení sledování událostí s Azure Event Hubs pro Azure Logic Apps | Microsoft Docs"
-description: "Monitorování datových proudů pro příjem událostí a odesílání událostí s logic apps pomocí Azure Event Hubs"
+title: Nastavení sledování událostí s Azure Event Hubs pro Azure Logic Apps | Microsoft Docs
+description: Monitorování datových proudů pro příjem událostí a odesílání událostí s logic apps pomocí Azure Event Hubs
 services: logic-apps
-keywords: "datový proud, monitorování událostí, služba event hubs"
+keywords: datový proud, monitorování událostí, služba event hubs
 author: ecfan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/06/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 076f7dd11ca8c153046727861ecb755e88f32b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8de56cd64f38791fb27d9bcce1e16641fb162c2f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Monitorování, příjem a odesílání událostí s konektorem služby Event Hubs
 
@@ -76,11 +76,28 @@ A [ *aktivační událost* ](../logic-apps/logic-apps-overview.md#logic-app-conc
 3. Vyberte centra událostí, monitorování a nastavte interval a četnost pro kdy mají být vyhledávána centra událostí.
 
     ![Zadejte centra událostí nebo skupiny uživatelů](./media/connectors-create-api-azure-event-hubs/select-event-hub.png)
+    
+    > [!NOTE]
+    > Všechny aktivační události centra událostí jsou *dlouho dotazování* aktivační události, které znamená, že když aktivační událost se aktivuje, aktivační událost zpracovává všechny události a potom počká, než 30 sekund pro další události se zobrazí události rozbočovače.
+    > Pokud žádné události přijme 30 sekund, spustit aktivační události je přeskočeno. Aktivační událost, jinak hodnota pokračuje v načítání událostí až do centra událostí je prázdný.
+    > Další cyklického dotazování aktivační události je založena na opakování intervalu zadaném ve vlastnosti aktivační události.
 
-    > [!TIP]
-    > Chcete-li můžete volitelně vybrat skupinu uživatelů pro čtení událostí, zvolte **zobrazit rozšířené možnosti**.
 
-4. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+4. Chcete-li volitelně vyberte některé z možností pokročilé aktivační událost, zvolte **zobrazit rozšířené možnosti**.
+
+    ![Aktivační událost rozšířené možnosti](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger-advanced.png)
+
+    | Vlastnost | Podrobnosti |
+    | --- | --- |
+    | Typ obsahu  |V rozevíracím seznamu vyberte typ obsahu, který se události. Ve výchozím nastavení je zaškrtnuté application/octet-stream. |
+    | Obsahu schématu |Zadejte schéma obsahu ve formátu JSON pro události, které se načítají z centra událostí. |
+    | Název skupiny uživatelů |Zadejte centra událostí [název skupiny příjemců](../event-hubs/event-hubs-features.md#consumer-groups) číst události. Když není zadaný název skupiny uživatelů, použije se výchozí skupina příjemců. |
+    | Klíč oddílu minimální |Zadejte minimální [oddílu](../event-hubs/event-hubs-features.md#partitions) ID ke čtení. Ve výchozím nastavení jsou všechny oddíly číst. |
+    | Klíč oddílu maximální |Zadejte maximální počet [oddílu](../event-hubs/event-hubs-features.md#partitions) ID ke čtení. Ve výchozím nastavení jsou všechny oddíly číst. |
+    | Počet maximální událostí |Zadejte hodnotu pro maximální počet událostí. Aktivační událost vrátí mezi jeden a počet událostí této vlastnosti. |
+    |||
+
+5. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
 
 Teď když aplikace logiky ověří vybrané centra událostí a najde nové události, aktivační událost spustí akce v aplikaci logiky nachází události.
 

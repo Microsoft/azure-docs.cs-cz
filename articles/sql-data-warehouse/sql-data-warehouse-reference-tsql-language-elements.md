@@ -1,29 +1,26 @@
 ---
-title: Elementy jazyka Transact-SQL SQL datového skladu | Microsoft Docs
-description: Seznam odkazů na referenční obsah pro elementy jazyka Transact-SQL použít pro SQL Data Warehouse.
+title: Elementy jazyka T-SQL - Azure SQL Data Warehouse | Microsoft Docs
+description: Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: ''
-ms.assetid: ea0b9a3e-e489-458e-addc-cc153e5cc158
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: reference
-ms.date: 10/31/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: dd9dc070c817a7276369a9be7126b0d48dc9e4eb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: bd7665798e5bf26c0e538deb713ef9696c84338c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="language-elements"></a>Elementy jazyka
+# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy jazyka T-SQL v Azure SQL Data Warehouse podporované
+Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podporovány.
+
 ## <a name="core-elements"></a>Základní prvky
-* [Syntaxe konvence](https://msdn.microsoft.com/library/ms177563.aspx)
+* [Syntaxe konvence](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [objekt pravidla pojmenování](https://msdn.microsoft.com/library/ms175874.aspx)
 * [vyhrazená slova](https://msdn.microsoft.com/library/ms189822.aspx)
 * [kolace](https://msdn.microsoft.com/library/ff848763.aspx)
@@ -32,21 +29,21 @@ ms.lasthandoff: 03/28/2018
 * [Datové typy](https://msdn.microsoft.com/library/ms187752.aspx)
 * [SPUŠTĚNÍ](https://msdn.microsoft.com/library/ms188332.aspx)
 * [Výrazy](https://msdn.microsoft.com/library/ms190286.aspx)
-* [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
+* [PŘÍKAZ KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [Alternativní řešení vlastnost IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx)
-* [PRINT](https://msdn.microsoft.com/library/ms176047.aspx)
+* [TISK](https://msdn.microsoft.com/library/ms176047.aspx)
 * [POUŽITÍ](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Dávky, tok řízení a proměnné
-* [BEGIN...END](https://msdn.microsoft.com/library/ms190487.aspx)
+* [ZAČNĚTE... END](https://msdn.microsoft.com/library/ms190487.aspx)
 * [ROZDĚLIT](https://msdn.microsoft.com/library/ms181271.aspx)
 * [DEKLARACE @local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
 * [IF...ELSE](https://msdn.microsoft.com/library/ms182717.aspx)
 * [RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx)
 * [SET@local_variable](https://msdn.microsoft.com/library/ms189484.aspx)
 * [THROW](https://msdn.microsoft.com/library/ee677615.aspx)
-* [TRY...CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
-* [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
+* [TRY... CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
+* [CHVÍLI](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátory
 * [+ (Přidat)](https://msdn.microsoft.com/library/ms178565.aspx)
@@ -66,12 +63,12 @@ ms.lasthandoff: 03/28/2018
 * [<> (Nerovná se)](https://msdn.microsoft.com/library/ms176020.aspx)
 * [! = (Nerovná se)](https://msdn.microsoft.com/library/ms190296.aspx)
 * [A](https://msdn.microsoft.com/library/ms188372.aspx)
-* [BETWEEN](https://msdn.microsoft.com/library/ms187922.aspx)
-* [EXISTS](https://msdn.microsoft.com/library/ms188336.aspx)
+* [MEZI](https://msdn.microsoft.com/library/ms187922.aspx)
+* [EXISTUJE](https://msdn.microsoft.com/library/ms188336.aspx)
 * [V](https://msdn.microsoft.com/library/ms177682.aspx)
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
-* [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
-* [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
+* [JAKO](https://msdn.microsoft.com/library/ms179859.aspx)
+* [NENÍ](https://msdn.microsoft.com/library/ms189455.aspx)
 * [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitové operátory
@@ -97,7 +94,7 @@ ms.lasthandoff: 03/28/2018
 * [ATAN](https://msdn.microsoft.com/library/ms181746.aspx)
 * [ATN2](https://msdn.microsoft.com/library/ms173854.aspx)
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
-* [CASE](https://msdn.microsoft.com/library/ms181765.aspx)
+* [PŘÍPAD](https://msdn.microsoft.com/library/ms181765.aspx)
 * [PŘETYPOVÁNÍ a převést](https://msdn.microsoft.com/library/ms187928.aspx)
 * [MEZNÍ HODNOTY](https://msdn.microsoft.com/library/ms189818.aspx)
 * [CHAR –](https://msdn.microsoft.com/library/ms187323.aspx)
@@ -115,9 +112,9 @@ ms.lasthandoff: 03/28/2018
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
 * [CURRENT_USER](https://msdn.microsoft.com/library/ms176050.aspx)
 * [DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx)
-* [DATALENGTH](https://msdn.microsoft.com/library/ms173486.aspx)
+* [DÉLKA_DAT](https://msdn.microsoft.com/library/ms173486.aspx)
 * [FUNKCE DATEADD](https://msdn.microsoft.com/library/ms186819.aspx)
-* [DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
+* [FUNKCE DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
 * [DATEFROMPARTS](https://msdn.microsoft.com/library/hh213228.aspx)
 * [FUNKCE DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
 * [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
@@ -147,7 +144,7 @@ ms.lasthandoff: 03/28/2018
 * [ISDATE](https://msdn.microsoft.com/library/ms187347.aspx)
 * [ISNULL](https://msdn.microsoft.com/library/ms184325.aspx)
 * [ISNUMERIC](https://msdn.microsoft.com/library/ms186272.aspx)
-* [LAG](https://msdn.microsoft.com/library/hh231256.aspx)
+* [FUNKCE LAG](https://msdn.microsoft.com/library/hh231256.aspx)
 * [LAST_VALUE](https://msdn.microsoft.com/library/hh231517.aspx)
 * [VÉST](https://msdn.microsoft.com/library/hh213125.aspx)
 * [LEFT](https://msdn.microsoft.com/library/ms177601.aspx)
@@ -157,11 +154,11 @@ ms.lasthandoff: 03/28/2018
 * [NIŽŠÍ](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
 * [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
-* [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
+* [MIN.](https://msdn.microsoft.com/library/ms179916.aspx)
 * [MĚSÍC](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
 * [NTILE](https://msdn.microsoft.com/library/ms175126.aspx)
-* [NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
+* [FUNKCI NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
 * [OBJECT_ID](https://msdn.microsoft.com/library/ms190328.aspx)
 * [OBJECT_NAME](https://msdn.microsoft.com/library/ms186301.aspx)
 * [OBJECTPROPERTY](https://msdn.microsoft.com/library/ms176105.aspx)
@@ -174,9 +171,9 @@ ms.lasthandoff: 03/28/2018
 * [PERCENTILE_DISC](https://msdn.microsoft.com/library/hh231327.aspx)
 * [PERCENT_RANK](https://msdn.microsoft.com/library/hh213573.aspx)
 * [PI](https://msdn.microsoft.com/library/ms189512.aspx)
-* [POWER](https://msdn.microsoft.com/library/ms174276.aspx)
+* [NAPÁJENÍ](https://msdn.microsoft.com/library/ms174276.aspx)
 * [QUOTENAME](https://msdn.microsoft.com/library/ms176114.aspx)
-* [RADIANS](https://msdn.microsoft.com/library/ms189742.aspx)
+* [RADIÁNECH](https://msdn.microsoft.com/library/ms189742.aspx)
 * [RAND –](https://msdn.microsoft.com/library/ms177610.aspx)
 * [POŘADÍ](https://msdn.microsoft.com/library/ms176102.aspx)
 * [NAHRADIT](https://msdn.microsoft.com/library/ms186862.aspx)
@@ -202,7 +199,7 @@ ms.lasthandoff: 03/28/2018
 * [STDEV](https://msdn.microsoft.com/library/ms190474.aspx)
 * [STDEVP](https://msdn.microsoft.com/library/ms176080.aspx)
 * [STR](https://msdn.microsoft.com/library/ms189527.aspx)
-* [STUFF](https://msdn.microsoft.com/library/ms188043.aspx)
+* [VLASTNÍ POLOŽKY](https://msdn.microsoft.com/library/ms188043.aspx)
 * [DÍLČÍ ŘETĚZEC](https://msdn.microsoft.com/library/ms187748.aspx)
 * [SOUČET](https://msdn.microsoft.com/library/ms187810.aspx)
 * [SUSER_SNAME](https://msdn.microsoft.com/library/ms174427.aspx)
@@ -219,9 +216,9 @@ ms.lasthandoff: 03/28/2018
 * [TYPE_NAME](https://msdn.microsoft.com/library/ms189750.aspx)
 * [TYPEPROPERTY](https://msdn.microsoft.com/library/ms188419.aspx)
 * [KÓDOVÁNÍ UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
-* [UPPER](https://msdn.microsoft.com/library/ms180055.aspx)
-* [USER](https://msdn.microsoft.com/library/ms186738.aspx)
-* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
+* [HORNÍ](https://msdn.microsoft.com/library/ms180055.aspx)
+* [UŽIVATEL](https://msdn.microsoft.com/library/ms186738.aspx)
+* [UŽIVATELSKÉ_JMÉNO](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
 * [ROK](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -258,14 +255,14 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="set-statements"></a>SET – příkazy
 * [SADA ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
-* [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
-* [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
+* [SADA ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
+* [SADA ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
 * [SET ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
 * [PARAMETRU ANSI_PADDING SADY](https://msdn.microsoft.com/library/ms187403.aspx)
 * [SADA ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
 * [SADA ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [SADA ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
-* [SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
+* [SADA CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [PŘÍKAZ SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
 * [PARAMETR SET DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
@@ -276,8 +273,8 @@ ms.lasthandoff: 03/28/2018
 * [SET ROWCOUNT](https://msdn.microsoft.com/library/ms188774.aspx)
 * [VELIKOST TEXTU SADY](https://msdn.microsoft.com/library/ms186238.aspx)
 * [NASTAVTE ÚROVEŇ IZOLACE TRANSAKCE](https://msdn.microsoft.com/library/ms173763.aspx)
-* [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
+* [SADA XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Další postup
-Odkaz na další TSQL, najdete v části [příkazů SQL Data Warehouse T-SQL](sql-data-warehouse-reference-tsql-statements.md).
+Další informace najdete v části [příkazů T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [systémová zobrazení v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
 

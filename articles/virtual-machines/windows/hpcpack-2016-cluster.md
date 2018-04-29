@@ -1,11 +1,11 @@
 ---
 title: Cluster HPC Pack 2016 v Azure | Microsoft Docs
-description: "Postup nasazení clusteru HPC Pack 2016 v Azure"
+description: Postup nasazení clusteru HPC Pack 2016 v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3dde6a68-e4a6-4054-8b67-d6a90fdc5e3f
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>Nasazení clusteru HPC Pack 2016 v Azure
 
@@ -56,7 +56,7 @@ Po vytvoření certifikátu v úložišti aktuálního uživatele pomocí modulu
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Nahrajte certifikát do trezoru služby Azure klíče
 
-Před nasazením clusteru HPC, nahrajte certifikát PFX, který chcete [Azure trezoru klíčů](../../key-vault/index.md) jako tajný klíč a záznam následující informace pro použití při nasazení: **název trezoru**, **trezoru Skupina prostředků**, **adresa URL certifikátu**, a **kryptografický otisk certifikátu**.
+Před nasazením clusteru HPC, nahrajte certifikát PFX, který chcete [Azure trezoru klíčů](../../key-vault/index.yml) jako tajný klíč a záznam následující informace pro použití při nasazení: **název trezoru**, **trezoru Skupina prostředků**, **adresa URL certifikátu**, a **kryptografický otisk certifikátu**.
 
 Následuje ukázkový skript Powershellu pro nahrání certifikátu, vytvoření trezoru klíčů a generovat požadované informace. Další informace o certifikátu se nahrávají na klíče trezoru služby Azure najdete v tématu [Začínáme s Azure Key Vault](../../key-vault/key-vault-get-started.md).
 
@@ -156,6 +156,6 @@ V závislosti na topologii clusteru, nasazení může trvat 30 minut nebo déle.
 
 3. Klikněte na tlačítko **Connect** chcete přihlásit k některé z hlavních uzlech pomocí vzdálené plochy s svoje uživatelské jméno zadané správce. Pokud jste nasadili cluster nachází v doméně služby Active Directory, je uživatelské jméno ve tvaru \<privateDomainName >\\\<adminUsername > (například hpc.local\hpcadmin).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Odesílání úloh do clusteru. V tématu [odeslání úlohy HPC HPC Pack clusteru v Azure](hpcpack-cluster-submit-jobs.md) a [spravovat cluster služby HPC Pack 2016 v Azure pomocí Azure Active Directory](hpcpack-cluster-active-directory.md).
 

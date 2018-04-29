@@ -1,11 +1,11 @@
 ---
-title: "Přehled cenových úrovní zasílání zpráv Azure Service Bus Premium a Standard | Dokumentace Microsoftu"
-description: "Úrovně zasílání zpráv Service Bus Premium a Standard"
+title: Přehled cenových úrovní zasílání zpráv Azure Service Bus Premium a Standard | Dokumentace Microsoftu
+description: Úrovně zasílání zpráv Service Bus Premium a Standard
 services: service-bus-messaging
 documentationcenter: .net
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: sethm
-ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: cf750f451351f729296991499f233b235b27a5e7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -33,7 +33,7 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Vysoká propustnost |Variabilní propustnost |
 | Předvídatelný výkon |Variabilní latence |
 | Pevné ceny |Variabilní průběžná cena  |
-| Možnost vertikálně navýšit a snížit kapacitu |– |
+| Možnost vertikálně navýšit a snížit kapacitu |neuvedeno |
 | Velikost zprávy do 1 MB |Velikost zprávy do 256 kB |
 
 **Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete koupit 1, 2 nebo 4 jednotky zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit podle libosti, ale fakturuje se podle 24hodinoví/denní sazby. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.
@@ -64,7 +64,7 @@ Využití zasílání zpráv na úrovni Premium je jednoduché a je podobné sta
 
 ![create-premium-namespace][create-premium-namespace]
 
-Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource Manageru](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/).
+Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource Manageru](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
 
 ## <a name="next-steps"></a>Další kroky
 

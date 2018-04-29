@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Trisotech digitální Enterprise Server | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Trisotech digitální Enterprise Server."
+title: 'Kurz: Azure Active Directory integrace s Trisotech digitální Enterprise Server | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Trisotech digitální Enterprise Server.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 82e88b0b2b7f04f2849bf5c3a780df3c8f1c9849
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a70962c63fdf9ab723ce437563a4670d536300aa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Azure Active Directory integrace s Trisotech digitální Enterprise Server
 
@@ -111,31 +111,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.trisotech.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Trisotech digitální Enterprise Server Client](mailto:support@trisotech.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Trisotech digitální Enterprise Server Client](mailto:support@trisotech.com) k získání těchto hodnot.
 
-4. Klikněte na tlačítko **Uložit** tlačítko.
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku. 
+
+    ![Odkaz ke stažení certifikátu](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_certificate.png)
+
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_general_400.png)
-
-5. Ke generování **Metadata** adresu url, proveďte následující kroky:
-
-    a. Klikněte na tlačítko **registrace aplikace**.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_appregistrations.png)
-   
-    b. Klikněte na tlačítko **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_endpointicon.png)
-
-    c. Klikněte na tlačítko Kopírovat kopírování **dokument FEDERAČNÍCH METADAT** adresy url a vložte do poznámkového bloku.
-    
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **Trisotech digitální Enterprise Server** a zkopírujte **Id aplikace** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
- 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-trisotechdigitalenterpriseserver-tutorial/tutorial_trisotechdigitalenterpriseserver_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí následujícího vzorce: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 6. V okně prohlížeče jiný web Přihlaste se na váš web společnosti Trisotech digitální konfigurace podnikového serveru jako správce.
 
@@ -153,21 +137,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Vyberte **zabezpečené Assertion Markup Language 2 (SAML 2)** z rozevíracího seznamu v **metodu ověřování**.
 
-    b. V **adresu URL metadat** textovému poli, Vložit **adresu URL metadat** hodnotu, kterou jste zkopírovali formuláři na portálu Azure.
+    b. V **adresu URL metadat** textovému poli, Vložit **adresu Url aplikace federační Metadata** hodnotu, kterou jste zkopírovali formuláři na portálu Azure.
 
     c. V **ID aplikace** textovému poli, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.trisotech.com`.
 
-    d. Klikněte na tlačítko **uložit**
+    d. Klikněte na **Uložit**.
 
     e. Zadejte název domény v **povolené domény (prázdný znamená everyone)** textovému poli, automaticky přiřadí licence pro uživatele odpovídající povolené domény
 
-    f. Klikněte na tlačítko **uložit**
+    f. Klikněte na **Uložit**.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
+ ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 

@@ -1,12 +1,12 @@
 ---
-title: "Zabezpečení databáze PaaS v Azure | Microsoft Docs"
+title: Zabezpečení databáze PaaS v Azure | Microsoft Docs
 description: " Další informace o zabezpečení Azure SQL Database a SQL Data Warehouse osvědčené postupy pro zabezpečení vašich PaaS webové a mobilní aplikace. "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ed15ff750e73179f6979d13e45ab27aeee5c82ab
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-databases-in-azure"></a>Zabezpečení databáze PaaS v Azure
 
@@ -51,7 +51,7 @@ Výhody používání ověřování Azure AD místo ověřování SQL patří:
 - Uživatelé databáze obsažené používá k ověření identity na úrovni databáze.
 - Podporuje ověřování na základě tokenu pro aplikace, připojení k databázi SQL.
 - Podporuje služby AD FS (federation domény) nebo ověřování nativní uživatele a heslo pro místní služby Azure AD bez synchronizace domény.
-- Podporuje připojení z SQL Server Management Studio, které používají Universal ověřování služby Active Directory, která zahrnuje [Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md). Vícefaktorové ověřování zahrnuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva, čipové karty s PIN kód nebo oznámení mobilní aplikace. Další informace najdete v tématu [SSMS podpora pro Azure AD MFA s SQL Database a SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+- Podporuje připojení z SQL Server Management Studio, které používají Universal ověřování služby Active Directory, která zahrnuje [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md). Vícefaktorové ověřování zahrnuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva, čipové karty s PIN kód nebo oznámení mobilní aplikace. Další informace najdete v tématu [SSMS podpora pro Azure AD MFA s SQL Database a SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
 
 Další informace o ověřování Azure AD najdete v tématu:
 
@@ -86,7 +86,7 @@ Azure SQL zajišťuje šifrování pro sloupce prostřednictvím [vždy šifrov�
 
 Abyste pomohli zabezpečit databázi například návrhu zabezpečení systému, šifrování důvěrné prostředky a vytváření brány firewall kolem databázové servery, můžete použít další bezpečnostní opatření.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tento článek seznámili kolekce SQL Database a SQL Data Warehouse osvědčené postupy zabezpečení pro zabezpečení vašich PaaS webové a mobilní aplikace. Další informace o zabezpečení vašich PaaS nasazení najdete v tématu:
 
 - [Zabezpečení nasazení PaaS](security-paas-deployments.md)

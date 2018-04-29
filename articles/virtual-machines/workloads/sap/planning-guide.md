@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cd12808f7e3bbb8a4edfe0d8de1e5b0a007770a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c2c3443f014f6c42ba9e8b68b21c2b9d0fdb1549
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -236,7 +236,7 @@ ms.lasthandoff: 04/05/2018
 [powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
+[resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/05/2018
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
+[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -535,7 +535,7 @@ Fyzická jednotka nezdaří, velmi úzce související fyzické infrastruktuře 
 
 Při nasazení více virtuálních počítačů v rámci jednoho systému SAP v služeb virtuálního počítače Microsoft Azure, můžete ovlivnit Kontroleru prostředků infrastruktury Azure k nasazení aplikace do různých domén selhání, a tím splňující požadavky smlouvy SLA pro Microsoft Azure. Distribuce domén selhání v jednotky škálování služby Azure (shromažďování stovky výpočetních uzlů nebo uzlů úložiště a sítě) nebo přiřazení virtuálních počítačů do konkrétní domény selhání je však něco přes které nemají přímou kontrolu. Aby bylo možné směrovat kontroleru prostředků infrastruktury Azure k nasazení sadu virtuálních počítačů přes různých domén selhání, budete muset přiřadit skupiny dostupnosti Azure virtuální počítače v době nasazení. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] v tomto dokumentu.
 
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgrade Domains
+#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Domén upgradu
 Domén upgradu představují logické jednotce, která vám pomoci určit, jak se virtuální počítač v rámci systému SAP, která se skládá z instancí SAP spuštěných v několika virtuálními počítači, aktualizuje. Když dojde k upgradu, Microsoft Azure projde proces aktualizace těchto domén upgradu po jednom. Tak, že se virtuální počítače v době nasazení v různých doménách upgradu, můžete chránit váš systém SAP částečně z potenciální výpadek. Chcete-li vynutit Azure k nasazení virtuálních počítačů v různých doménách Upgrade systému SAP, budete muset nastavit konkrétní atribut v době nasazení každého virtuálního počítače. Podobně jako u domén selhání, představuje jednotku škálování Azure je rozdělené do několika domén upgradu. Aby bylo možné směrovat řadičem prostředků infrastruktury Azure k nasazení sadu virtuálních počítačů v různých doménách upgradu, budete muset přiřadit skupiny dostupnosti Azure virtuální počítače v době nasazení. Další informace o Azure skupiny dostupnosti, naleznete v kapitole [skupiny dostupnosti Azure] [ planning-guide-3.2.3] níže.
 
 #### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Skupiny dostupnosti Azure
@@ -966,7 +966,7 @@ V tomto případě chceme nahrát VHD, s nebo bez operační systém v něm a p�
 
 **Powershell**
 
-* Přihlaste se k vašemu předplatnému s *Login-AzureRmAccount*
+* Přihlaste se k vašemu předplatnému s *Connect-AzureRmAccount*
 * Nastavte předplatné váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - najdete v části <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * Nahrání virtuálního pevného disku s *přidat AzureRmVhd* účet úložiště Azure - najdete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Volitelné) Vytvoření spravované disku z virtuálního pevného disku s *New-AzureRmDisk* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
@@ -993,7 +993,7 @@ V tomto případě chceme nahrát VHD, s nebo bez operační systém v něm a p�
 Nahrát na existující virtuální počítač nebo virtuální pevný disk z místní sítě chcete-li použít bitovou kopii virtuálního počítače Azure virtuálních počítačů nebo virtuální pevný disk budou muset splnit požadavky uvedené v kapitole [přípravy pro nasazení virtuálního počítače s bitovou kopii zákaznické pro SAP] [ planning-guide-5.2.2] tohoto dokumentu.
 
 * Použít *sysprep* v systému Windows nebo *příkaz waagent-deprovision* v systému Linux ke generalizaci virtuálního počítače – viz [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx) pro systém Windows nebo [jak zachytit virtuální počítač s Linuxem chcete použít jako šablony Resource Manageru] [ capture-image-linux-step-2-create-vm-image] pro Linux
-* Přihlaste se k vašemu předplatnému s *Login-AzureRmAccount*
+* Přihlaste se k vašemu předplatnému s *Connect-AzureRmAccount*
 * Nastavte předplatné váš kontext s *Set-AzureRmContext* a parametr ID předplatného nebo Název_předplatného - najdete v části <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
 * Nahrání virtuálního pevného disku s *přidat AzureRmVhd* účet úložiště Azure - najdete v tématu <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
 * (Volitelné) Vytvoření bitové kopie disku spravované z virtuálního pevného disku s *New-AzureRmImage* -najdete v části <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
@@ -1420,7 +1420,7 @@ $pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName
 $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
-* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
+* Vytvoří virtuální počítač. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
 
 ```powershell
 #####
@@ -1534,7 +1534,7 @@ az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --loca
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
-* Vytvoření virtuálního počítače. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
+* Vytvoří virtuální počítač. Pro scénář jenom pro Cloud bude mít každý virtuální počítač se stejným názvem. Identifikátor SID SAP instance SAP NetWeaver ve tyto virtuální počítače budou stejné také. V rámci skupiny prostředků Azure musí být jedinečný název virtuálního počítače, ale v různých skupinách prostředků Azure můžete spustit virtuální počítače se stejným názvem. Výchozí účet 'správce systému Windows nebo "kořenový" pro Linux nejsou platné. Nové uživatelské jméno správce proto musí být definován společně s heslem. Velikost virtuálního počítače taky musí být definován.
 
 ```
 #####

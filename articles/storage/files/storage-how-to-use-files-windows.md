@@ -1,5 +1,5 @@
 ---
-title: Připojení sdílené složky Azure a přístup k ní v systému Windows | Dokumentace Microsoftu
+title: Připojení sdílené složky Azure a přístup k ní v systému Windows | Microsoft Docs
 description: Připojení sdílené složky Azure a přístup k ní v systému Windows.
 services: storage
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 04/11/2018
 ms.author: renash
-ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e283619c7e634a1fbba5940e5c8545b0ee4de3d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Připojení sdílené složky Azure a přístup k ní v systému Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows a Windows Server. Tento článek ukazuje tři různé způsoby připojení sdílené složky Azure v systému Windows: pomocí uživatelského rozhraní Průzkumníka souborů, přes PowerShell a přes příkazový řádek. 
@@ -49,11 +49,20 @@ Sdílené složky Azure můžete připojit v instalaci Windows na virtuálním p
 
 * **Klíč účtu úložiště:** Pro připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Ujistěte se, že je otevřený port 445:** Služba Soubory Azure používá protokol SMB. Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače.
+* **Ujistěte se, že je otevřený port 445:** Služba Soubory Azure používá protokol SMB. Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače. Zda je port TCP 445 otevřený můžete zkontrolovat pomocí nástroje příkazového řádku Portqry. Pokud port TCP 445 zobrazí hodnotu „filtered“ filtrovaný, je port TCP blokovaný. Zde je příklad dotazu:
+
+    `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+
+    Pokud je port TCP 445 blokovaný pravidlem na síťové cestě, uvidíte následující výsledek:
+
+    `TCP port 445 (Microsoft-ds service): FILTERED`
+
+    Další informace o použití Portqry najdete v tématu [popisujícím nástroj příkazového řádku Portqry.exe](https://support.microsoft.com/help/310099).
+
 
 ## <a name="persisting-connections-across-reboots"></a>Zachování připojení mezi restartováními
 ### <a name="cmdkey"></a>CmdKey
-Nejjednodušším způsobem, jak navazovat trvalá připojení, je uložit přihlašovací údaje účtu úložiště ve Windows pomocí nástroje příkazového řádku CmdKey. Následuje příklad příkazového řádku pro trvalé uložení přihlašovacích údajů účtu úložiště na virtuálním počítači:
+Nejjednodušším způsobem, jak navázat trvalé připojení, je uložit přihlašovací údaje účtu úložiště ve Windows pomocí nástroje příkazového řádku CmdKey. Následuje příklad příkazového řádku pro trvalé uložení přihlašovacích údajů účtu úložiště na virtuálním počítači:
 ```
 C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
 ```
@@ -102,7 +111,7 @@ Po trvalém uložení přihlašovacích údajů už je při připojování ke sd
     
     ![Sdílená složka Azure je teď připojená](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. **Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části Umístění v síti a vyberete Odpojit**.
+7. **Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníkovi souborů kliknete pravým tlačítkem na položku sdílené složky v části Umístění v síti a vyberete Odpojit**.
 
 ## <a name="mount-the-azure-file-share-with-powershell"></a>Připojení sdílené složky Azure pomocí PowerShellu
 1. **Pomocí následujícího příkazu připojte sdílenou složku Azure:** Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<storage-account-key>`, `<desired-drive-letter>` správnými informacemi.

@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – spuštění úlohy služby Batch – .NET"
-description: "Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch .NET."
+title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
+description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch .NET.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: efa697482b5b27846f2be129998c100787466467
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b5431feec23e2e0681967a9fe0345edc1db567aa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -28,7 +28,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 * [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 nebo novější verze). 
 
-* Účet služby Batch a účet propojeného úložiště pro obecné účely. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
+* Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -143,7 +143,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 ...    
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
+### <a name="create-a-pool-of-compute-nodes"></a>Vytvořte fond výpočetních uzlů.
 
 K vytvoření fondu služby Batch aplikace používá metodu [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady objekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) určuje odkaz [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) na image Windows Serveru publikovanou v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 

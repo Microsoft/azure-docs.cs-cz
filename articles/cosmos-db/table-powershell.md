@@ -1,12 +1,12 @@
 ---
-title: "Provádění operací rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell | Microsoft Docs"
-description: "Jak provádět operace rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell"
+title: Provádění operací rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell | Microsoft Docs
+description: Jak provádět operace rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell
 services: storage
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Provádění operací rozhraní API služby Azure Cosmos DB tabulky s prostředím Azure PowerShell 
 
@@ -55,10 +55,10 @@ Získat účet databáze skupina název a prostředků z portálu. je nutné tyt
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-table-or-reference-a-table"></a>Vytvoří tabulku nebo zadejte odkaz na tabulku
@@ -100,7 +100,7 @@ Pokud jste vytvořili novou skupinu prostředků a vytvořit nový účet Azure 
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto postupu článku jste se dozvěděli o běžných operací rozhraní API tabulky pomocí prostředí PowerShell, včetně postup: 
 

@@ -1,6 +1,6 @@
 ---
-title: Testovací verze jednostránkové aplikace s povolenou službou Azure AD B2C
-description: Rychlý start pro vyzkoušení ukázkové jednostránkové aplikace využívající Azure Active Directory B2C k ověřování a registraci uživatelů.
+title: Rychlé spuštění – nastavení přihlášení pro jednostránkové aplikace pomocí Azure Active Directory B2C | Microsoft Docs
+description: Spusťte ukázku jednostránkové aplikace, která používá k poskytnutí přihlášení k účtu Azure Active Directory B2C.
 services: active-directory-b2c
 documentationcenter: ''
 author: davidmu1
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 02a0515ff7c461370f29a511ac576d857676cb2b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 96baf0297c3d2976f3d6fb112b0bd0ce077a186f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>Testovací verze jednostránkové aplikace s povolenou službou Azure AD B2C
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý úvod: Nastavení přihlášení pro jednostránkové aplikace pomocí Azure Active Directory B2C
 
 Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro zajištění ochrany vašich aplikací, firmy a zákazníků. Azure AD B2C umožňuje aplikacím provádět ověřování účtů na sociálních sítích a podnikových účtů s využitím protokolů s otevřenými standardy.
 

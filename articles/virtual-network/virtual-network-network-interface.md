@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c39f11eae08e74e1bb29a5587fa4a8f0ba7c6a5b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změnit nebo odstranit síťové rozhraní
 
@@ -216,7 +216,7 @@ Efektivní zabezpečení pravidla pro každé síťové rozhraní, který je př
 4. Vyberte **pravidla efektivní zabezpečení** pod **podporu + Poradce při potížích s**.
 5. Projděte si seznam pravidel efektivní zabezpečení k určení, pokud existují správné pravidla pro požadované příchozí a odchozí komunikaci. Další informace najdete v seznamu v [přehled skupiny zabezpečení sítě](security-overview.md).
 
-Tok IP ověřte, zda funkce sledovací proces sítě Azure také vám pomohou určit, pokud jsou pravidla zabezpečení znemožňuje komunikaci mezi virtuálním počítačem a koncový bod. Další informace najdete v tématu [IP tok ověření](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tok IP ověřte, zda funkce sledovací proces sítě Azure také vám pomohou určit, pokud jsou pravidla zabezpečení znemožňuje komunikaci mezi virtuálním počítačem a koncový bod. Další informace najdete v tématu [IP tok ověření](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Příkazy**
 
@@ -233,7 +233,7 @@ Efektivní trasy pro rozhraní sítě, který je připojen k virtuálnímu poč�
 4. Vyberte **efektivní trasy** pod **podporu + Poradce při potížích s**.
 5. Projděte si seznam efektivní trasy k určení, zda existují správné trasy pro požadované příchozí a odchozí komunikaci. Další informace najdete v seznamu v [Přehled směrování](virtual-networks-udr-overview.md).
 
-Další směrování funkci sledovací proces sítě Azure můžete také pomůže zjistit, pokud jsou trasy znemožňuje komunikaci mezi virtuálním počítačem a koncový bod. Další informace najdete v tématu [dalšího směrování](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další směrování funkci sledovací proces sítě Azure můžete také pomůže zjistit, pokud jsou trasy znemožňuje komunikaci mezi virtuálním počítačem a koncový bod. Další informace najdete v tématu [dalšího směrování](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Příkazy**
 

@@ -1,6 +1,6 @@
 ---
-title: Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview) | Microsoft Docs
-description: Správa objektů Blob v Azure kontejnerům a objektům BLOB pomocí Storage Exploreru (Preview)
+title: Správa prostředků Azure Blob Storage pomocí Storage Exploreru | Microsoft Docs
+description: Správa objektů Blob v Azure kontejnerům a objektům BLOB pomocí Průzkumníka úložiště
 services: storage
 documentationcenter: na
 author: cawa
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2207bac1ef7cb6393d7dc173f96ddda719bcdfdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru (Preview)
+# <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru
 ## <a name="overview"></a>Přehled
 [Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) je služba pro ukládání velkého objemu nestrukturovaných dat, jako je například textu nebo binárních dat, která jsou přístupná odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS.
-Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se naučíte používat Storage Explorer (Preview) pro práci s kontejnery objektů blob a objekty BLOB.
+Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte použití Průzkumníka úložiště pro práci s kontejnery objektů blob a objekty BLOB.
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* [Stažení a instalace Storage Exploreru (Preview)](http://www.storageexplorer.com)
+* [Stažení a instalace Průzkumníka služby Storage](http://www.storageexplorer.com)
 * [Připojení k účtu úložiště nebo službě Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 Všechny objekty BLOB se musí nacházet v kontejneru objektů blob, který je jednoduše logické seskupení objektů BLOB. Účet může obsahovat neomezený počet kontejnerů a každý kontejner můžete pojmout neomezený počet objektů BLOB.
 
-Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci Storage Explorer (Preview).
+Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci Storage Explorer.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů blob.
 3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a v místní nabídce - vyberte **vytvořit kontejner objektů Blob**.
 
@@ -51,9 +51,9 @@ Následující kroky ukazují, jak vytvořit kontejner objektů blob v rámci St
 ## <a name="view-a-blob-containers-contents"></a>Zobrazit obsah kontejner objektů blob
 Kontejnery objektů BLOB obsahovat objekty BLOB a složky (které mohou obsahovat také objekty BLOB).
 
-Následující kroky ukazují, jak zobrazit obsah kontejneru objektů blob v rámci Storage Explorer (Preview):
+Následující kroky ukazují, jak zobrazit obsah kontejneru objektů blob v rámci Storage Explorer:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete zobrazit.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete zobrazit a v místní nabídce - vyberte **otevřete Editor kontejner objektů Blob**.
@@ -67,9 +67,9 @@ Následující kroky ukazují, jak zobrazit obsah kontejneru objektů blob v rá
 ## <a name="delete-a-blob-container"></a>Odstranit kontejner objektů blob
 Kontejnery objektů BLOB můžete snadno vytvořit a odstraněn podle potřeby. (Chcete-li zjistit, jak odstranit jednotlivé objekty BLOB, informace naleznete v sekci [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
-Následující kroky ukazují, jak odstranit kontejner objektů blob v rámci Storage Explorer (Preview):
+Následující kroky ukazují, jak odstranit kontejner objektů blob v rámci Storage Explorer:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete zobrazit.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete odstranit a v místní nabídce - vyberte **odstranit**.
@@ -81,11 +81,11 @@ Následující kroky ukazují, jak odstranit kontejner objektů blob v rámci St
    ![Odstranit objekt blob kontejneru potvrzení][5]
 
 ## <a name="copy-a-blob-container"></a>Zkopírujte kontejner objektů blob
-Storage Explorer (Preview) umožňuje kopírovat kontejner objektů blob do schránky a vložte tento kontejner objektů blob do jiný účet úložiště. (Chcete-li zjistit, jak zkopírovat jednotlivé objekty BLOB, informace naleznete v sekci [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
+Storage Explorer umožňuje zkopírovat kontejner objektů blob do schránky a vložte tento kontejner objektů blob do jiný účet úložiště. (Chcete-li zjistit, jak zkopírovat jednotlivé objekty BLOB, informace naleznete v sekci [Správa objektů BLOB v kontejneru objektů blob](#managing-blobs-in-a-blob-container).)
 
 Následující kroky ukazují, jak zkopírovat kontejner objektů blob z jeden účet úložiště do druhého.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete kopírovat.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Klikněte pravým tlačítkem na kontejner objektů blob, které chcete kopírovat a v místní nabídce - vyberte **kontejner objektů Blob kopie**.
@@ -101,7 +101,7 @@ To znamená, že můžete klientovi udělit omezená oprávnění k objektům ve
 
 Následující kroky ukazují, jak vytvořit SAS pro kontejner objektů blob:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte obsahující kontejner objektů blob, pro kterou chcete získat SAS účtu úložiště.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Klikněte pravým tlačítkem na kontejner objektů blob požadované a v místní nabídce - vyberte **sdíleného přístupového podpisu**.
@@ -120,7 +120,7 @@ Následující kroky ukazují, jak vytvořit SAS pro kontejner objektů blob:
 ## <a name="manage-access-policies-for-a-blob-container"></a>Správa zásad přístupu pro kontejner objektů blob
 Následující kroky ukazují, jak spravovat (přidání a odebrání) získat přístup k zásadám pro kontejner objektů blob:
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte účet úložiště obsahující kontejner objektů blob, jejichž zásady přístupu, které chcete spravovat.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Vyberte kontejner objektů blob požadované a v místní nabídce - vyberte **spravovat zásady přístupu**.
@@ -140,7 +140,7 @@ Ve výchozím nastavení každý kontejner objektů blob nastavena na "Žádný 
 
 Následující kroky ukazují, jak k určení úrovně veřejný přístup pro kontejner objektů blob.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte účet úložiště obsahující kontejner objektů blob, jejichž zásady přístupu, které chcete spravovat.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Vyberte kontejner objektů blob požadované a v místní nabídce - vyberte **nastavit úroveň veřejný přístup**.
@@ -156,7 +156,7 @@ Po vytvoření kontejneru objektů blob, můžete nahrát objekt blob kontejneru
 
 Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejneru objektů blob.
 
-1. Otevřete Storage Explorer (Preview).
+1. Otevřete Průzkumníka služby Storage.
 2. V levém podokně rozbalte kontejner objektů blob obsahující účet úložiště, že které chcete spravovat.
 3. Rozbalte účet úložiště **kontejnery objektů Blob**.
 4. Dvakrát klikněte na kontejner objektů blob, který si přejete zobrazit.
@@ -212,7 +212,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v kontejne
      3. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další postup
-* Podívejte se na [nejnovější poznámky k verzi a videa pro Storage Explorer (Preview)](http://www.storageexplorer.com).
+* Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com).
 * Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

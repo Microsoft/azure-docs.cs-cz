@@ -1,11 +1,11 @@
 ---
-title: "Průběžnou integraci ve Visual Studio Team Services pomocí projekty skupiny prostředků Azure | Microsoft Docs"
-description: "Popisuje, jak nastavit průběžnou integraci ve Visual Studio Team Services pomocí projekty nasazení skupiny prostředků Azure v sadě Visual Studio."
+title: Průběžnou integraci ve Visual Studio Team Services pomocí projekty skupiny prostředků Azure | Microsoft Docs
+description: Popisuje, jak nastavit průběžnou integraci ve Visual Studio Team Services pomocí projekty nasazení skupiny prostředků Azure v sadě Visual Studio.
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
 manager: erickson-doug
-editor: 
+editor: ''
 ms.assetid: b81c172a-be87-4adc-861e-d20b94be9e38
 ms.service: azure-resource-manager
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Průběžnou integraci ve Visual Studio Team Services pomocí projekty nasazení skupiny prostředků Azure
 Pokud chcete nasadit šablonu Azure, můžete provádět úlohy v různých fázích: sestavení, testovací, kopírovat do Azure (také nazývané "Přípravy") a nasadit šablonu. Existují dva různé způsoby pro nasazení šablon pro Visual Studio Team Services (Visual Studio Team Services). Obě metody zadejte stejné výsledky, takže vybrat tu, které nejlépe vyhovuje pracovního postupu.
@@ -74,11 +74,11 @@ Následující postup vás provede kroky nutné ke konfiguraci průběžné nasa
       ![Hlavní možnosti služby][5]
    5. Přidat vaše údaje předplatného Azure **přidat předplatné Azure** dialogové okno. Je třeba zadat následující položky:
       
-      * Id předplatného
-      * Název odběru
+      * ID předplatného
+      * Název předplatného
       * Id objektu zabezpečení
       * Klíč objektu služby
-      * Id klienta
+      * ID tenanta
    6. Přidat název vaší volby **předplatné** pole název. Tato hodnota se zobrazí později v **předplatné Azure** rozevíracího seznamu ve Visual Studio Team Services. 
    7. Pokud si nejste jisti svoje ID předplatného Azure, můžete jeden z následujících příkazů ho Pokud chcete zjistit.
       
@@ -106,7 +106,7 @@ Následující postup vás provede kroky nutné ke konfiguraci průběžné nasa
    
    | Parametr | Popis |
    | --- | --- |
-   | -ResourceGroupLocation |Hodnota geografického umístění, kde je umístěna, například skupina prostředků **eastus** nebo **, východní USA,**. (Pokud je mezera v názvu, přidejte jednoduchých uvozovkách.) V tématu [oblasti Azure](https://azure.microsoft.com/en-us/regions/) Další informace. |
+   | -ResourceGroupLocation |Hodnota geografického umístění, kde je umístěna, například skupina prostředků **eastus** nebo **, východní USA,**. (Pokud je mezera v názvu, přidejte jednoduchých uvozovkách.) V tématu [oblasti Azure](https://azure.microsoft.com/regions/) Další informace. |
    | -ResourceGroupName |Název skupiny prostředků použít pro toto nasazení. |
    | -UploadArtifacts |Tento parametr, pokud jsou k dispozici, určuje, že artefaktů, které musí být nahrán do Azure z místního systému. Stačí nastavit tento přepínač. Pokud vaše šablony nasazení vyžaduje další artefakty, pomocí kterých chcete dvoufázové instalace pomocí skriptu prostředí PowerShell (například konfigurační skripty nebo vnořené šablony). |
    | -StorageAccountName |Název účtu úložiště používat k artefaktům fáze pro toto nasazení. Tento parametr se používá pouze pokud jsou pracovní artefaktů pro nasazení. Pokud je tento parametr zadaný, se vytvoří nový účet úložiště, pokud skript není vytvořili během předchozí nasazení. Pokud je zadán parametr, již musí existovat účet úložiště. |
@@ -177,7 +177,7 @@ Následující postup vás provede kroky nutné ke konfiguraci průběžné nasa
      ![Konfigurace úlohy nasazení skupiny prostředků Azure][17]
 7. Po přidání všechny požadované položky, Uložit definici sestavení a zvolte **fronty nového sestavení** v horní části.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Čtení [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md) Další informace o Azure Resource Manageru a skupin prostředků Azure.
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png

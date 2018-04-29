@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 04/17/2018
 ms.author: douglasl
-ms.openlocfilehash: ed0f992985b49e4d84ca42a2e9d73121466a2c74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8390284f969fe9375a70801724881db26806a1d8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Vlastní instalace pro modul runtime integrace Azure SSIS
 
@@ -36,6 +36,8 @@ Můžete nainstalovat součásti volné nebo bez licence i placené nebo licenco
     ```
 
 -   Nelze volat přímo `gacutil.exe` instalace sestavení v globální mezipaměti sestavení (GAC) v tuto chvíli. Jako alternativní řešení použít `gacinstall.cmd` (poskytuje se v kontejneru verzi Public Preview).
+
+-   Pokud potřebujete připojení k vaší IR Azure SSIS s vlastní instalace k virtuální síti, podporuje se jenom virtuální síť Azure Resource Manager. Klasické virtuální sítě není podporován.
 
 ## <a name="prerequisites"></a>Požadavky
 

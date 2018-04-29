@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetové navigace je filtrační mechanismus, který poskytuje řízené samotným přejít k podrobnostem navigace ve vyhledávání aplikací. Termín "Fasetové navigace, může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie použito pro filtrování výsledků.
@@ -61,7 +61,7 @@ Vzor kód aplikace, je použít omezující vlastnost parametry dotazu, který v
 
 ### <a name="query-basics"></a>Základy dotazů
 
-Ve službě Azure Search, požadavek se specifikuje prostřednictvím jeden nebo více parametrů dotazu (viz [vyhledávání dokumentů](http://msdn.microsoft.com/library/azure/dn798927.aspx) popis každé z nich). Žádný z parametrů dotazu jsou požadovány, ale musí mít alespoň jeden v pořadí pro dotaz platný.
+Ve službě Azure Search, požadavek se specifikuje prostřednictvím jeden nebo více parametrů dotazu (viz [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) popis každé z nich). Žádný z parametrů dotazu jsou požadovány, ale musí mít alespoň jeden v pořadí pro dotaz platný.
 
 Přesnost, porozuměl jsem jim jako možnost filtrování důležité přístupů je dosaženo pomocí jednoho nebo obou těchto výrazů:
 
@@ -228,7 +228,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Parametr dotazu omezující vlastnost nastavena na pole a v závislosti na typu dat, lze nastavit další parametry podle seznamu odděleného čárkami, který zahrnuje `count:<integer>`, `sort:<>`, `interval:<integer>`, a `values:<list>`. Seznam hodnot je podporována pro číselná data při nastavování rozsahů. V tématu [vyhledávání dokumentů (API služby Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx) podrobnosti o použití.
+Parametr dotazu omezující vlastnost nastavena na pole a v závislosti na typu dat, lze nastavit další parametry podle seznamu odděleného čárkami, který zahrnuje `count:<integer>`, `sort:<>`, `interval:<integer>`, a `values:<list>`. Seznam hodnot je podporována pro číselná data při nastavování rozsahů. V tématu [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) podrobnosti o použití.
 
 Společně s omezujícími vlastnostmi musí požadavek formulovali vaše aplikace také vytvořit filtry můžete zúžit sady candidate dokumentů na základě výběru hodnota omezující vlastnosti. Pro úložiště kolo Fasetové navigace poskytuje různá vodítka na otázky, jako *jaké typy kol, výrobců a barvy jsou k dispozici?*. Filtrování odpovědi na dotazy jako *red které přesný kol se Horská kola, v tomto cena rozsah?*. Když kliknete na tlačítko "Red" k označení, že by se měly zobrazit jenom Red produkty, zahrnuje další dotaz aplikace odešle `$filter=Color eq ‘Red’`.
 
@@ -306,7 +306,7 @@ Všimněte si rozdíl mezi omezující vlastnost výsledky a výsledky hledání
   V kódu prezentace měli byste vidět počet parametrů na omezující vlastnosti, které slouží k zobrazení počet výsledků omezující vlastnosti. Ve výsledcích omezující vlastnost počet označuje počet dokumentů, které odpovídají na omezující vlastnost termín nebo rozsah.
 * `&facet=City,count:12`<br/>
   V dotazu omezující vlastnosti můžete nastavit počet na hodnotu.  Výchozí hodnota je 10, ale můžete nastavit vyšší nebo nižší. Nastavení `count:12` získá horní 12 odpovídá ve výsledcích omezující vlastnosti podle počtu dokumentu.
-* "`@odata.count`"<br/>
+* `@odata.count`<br/>
   V odpovědi na dotaz tato hodnota určuje počet odpovídajících položek ve výsledcích hledání. V průměru je větší než součet výsledků omezující vlastnost kombinaci z důvodu přítomnosti položky, které odpovídají hledaný termín, ale obsahuje žádné odpovídající hodnota omezující vlastnosti.
 
 **Získat ve výsledcích omezující vlastnost**
@@ -329,7 +329,7 @@ Popisky jsou obvykle definovány v HTML nebo formátu (`index.cshtml` v ukázkov
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtr na základě rozsahu
-Používání faset přes rozsah hodnot je běžné aplikace požadavek vyhledávání. Rozsahy jsou podporovány pro číselná data a hodnoty DateTime. Další informace o jednotlivých přístupů v [vyhledávání dokumentů (API služby Azure Search)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Používání faset přes rozsah hodnot je běžné aplikace požadavek vyhledávání. Rozsahy jsou podporovány pro číselná data a hodnoty DateTime. Další informace o jednotlivých přístupů v [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 Vyhledávání systému Azure zjednodušuje vytváření rozsahu tím, že poskytuje dva přístupy pro výpočty rozsah. Pro oba přístupy vytvoří Azure Search příslušné rozsahy zadané vstupních hodnot, které jste zadali. Například pokud zadáte hodnoty rozsahu 10 | 20 | 30, automaticky vytvoří rozsahy 0-10, 10 20, 20-30. Aplikace můžete volitelně odebrat žádné intervaly, které jsou prázdné. 
 
@@ -362,7 +362,7 @@ Ve službě Azure Search jsou dvě funkce geoprostorové **geo.distance** a **ge
 * **Geo.distance** funkce vrací vzdálenost v kilometrech mezi dva body. Jeden bod je pole a druhá je konstanta předanou v rámci filtru. 
 * **Geo.intersects** funkce vrátí hodnotu true, pokud k danému bodu je v rámci dané mnohoúhelníku. Bod je pole a mnohoúhelníku je zadán jako seznam souřadnice předanou v rámci filtru konstantní.
 
-Můžete najít příklady filtru v [syntaxe výrazu OData (Azure Search)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
+Můžete najít příklady filtru v [syntaxe výrazu OData (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="tryitout"></a>
 
@@ -431,9 +431,9 @@ Pro další statistiky na zásadách návrhu pro fasetovou navigaci doporučujem
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

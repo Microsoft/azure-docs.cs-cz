@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d56b27a040420d049f567ac0de9289b1e72f3ea9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Příchozí přenos HTTPS na Azure Container Service (AKS)
 
@@ -182,7 +182,7 @@ Další informace o softwaru ukázáno v tomto dokumentu.
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

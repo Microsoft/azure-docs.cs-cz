@@ -13,25 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: jroth
-ms.openlocfilehash: e4f955a0880254cb67ccd3e46ad04b3685341263
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9d3fbbab76f16a8546c431d5acf913bf419edeb4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Osvědčené postupy z hlediska výkonu pro SQL Server na Azure Virtual Machines
 
 ## <a name="overview"></a>Přehled
 
-Tento článek obsahuje osvědčené postupy pro optimalizaci výkonu systému SQL Server na virtuálním počítači Microsoft Azure. Při spuštění systému SQL Server v Azure Virtual Machines, doporučujeme pokračovat pomocí stejného výkonu databáze ladění možnosti, které se vztahují k systému SQL Server v prostředí místní server. Výkon relační databáze ve veřejném cloudu však závisí na mnoha faktorech, například velikost virtuálního počítače a konfiguraci datových disků.
+Tento článek obsahuje pokyny pro optimalizaci výkonu systému SQL Server na virtuálním počítači Microsoft Azure. Při spuštění systému SQL Server v Azure Virtual Machines, doporučujeme pokračovat pomocí stejného výkonu databáze ladění možnosti, které se vztahují k systému SQL Server v prostředí místní server. Výkon relační databáze ve veřejném cloudu však závisí na mnoha faktorech, například velikost virtuálního počítače a konfiguraci datových disků.
 
-Při vytváření bitové kopie systému SQL Server, [zvažte zřizování virtuálních počítačů na portálu Azure](virtual-machines-windows-portal-sql-server-provision.md). Zřízené v portálu s Resource Managerem virtuálním počítačům systému SQL Server dodržujte doporučené postupy.
+[Bitové kopie systému SQL Server v portálu Azure zřídit](quickstart-sql-vm-create-portal.md) dodržujte doporučené postupy konfigurace úložiště. Další informace o konfiguraci úložiště naleznete v tématu [konfiguraci úložiště pro virtuální počítače serveru SQL](virtual-machines-windows-sql-server-storage-configuration.md). Po zřízení, zvažte použití jiných optimalizace popsané v tomto článku. Základní vaše volby na úlohy a ověřte prostřednictvím testování.
 
-Tento článek se zaměřuje na získávání *nejlepší* výkonu pro SQL Server na virtuálních počítačích Azure. Pokud vaše úlohy je méně náročné, nemusejí být nutné každých optimalizace uvedené níže. Zvažte požadavkům na výkon a vzory úlohy, jak vyhodnotit tato doporučení.
-
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+> [!TIP]
+> Tento článek se zaměřuje na získávání *nejlepší* výkonu pro SQL Server na virtuálních počítačích Azure. Pokud vaše úlohy je méně náročné, nemusejí být nutné každých optimalizace uvedené níže. Zvažte požadavkům na výkon a vzory úlohy, jak vyhodnotit tato doporučení.
 
 ## <a name="quick-check-list"></a>Rychlá kontrola seznamu
 
@@ -41,8 +40,8 @@ Následuje seznam Rychlá kontrola pro optimální výkon systému SQL Server na
 | --- | --- |
 | [Velikost virtuálního počítače](#vm-size-guidance) |[DS3](../sizes-general.md) nebo vyšší pro SQL Enterprise edition.<br/><br/>[DS2](../sizes-general.md) nebo vyšší verze SQL Standard a Web. |
 | [Úložiště](#storage-guidance) |Použití [Storage úrovně Premium](../premium-storage.md). Standardní úložiště se doporučuje jenom pro vývojové a testovací.<br/><br/>Zachovat [účet úložiště](../../../storage/common/storage-create-storage-account.md) a virtuální počítač SQL Server ve stejné oblasti.<br/><br/>Zakázat Azure [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) (geografická replikace) na účet úložiště. |
-| [Disky](#disks-guidance) |Použití minimálně 2 [P30 disky](../premium-storage.md#scalability-and-performance-targets) (1 pro soubory protokolů, 1 pro datové soubory a databáze TempDB).<br/><br/>Vyhněte se použití operačního systému nebo dočasné disků pro úložiště databáze nebo protokolování.<br/><br/>Povolte čtení ukládání do mezipaměti na disky hostující datové soubory a datové soubory databáze TempDB.<br/><br/>Nepovolujte ukládání do mezipaměti na disky hostování souboru protokolu.<br/><br/>Důležité: Zastavte službu systému SQL Server při změně nastavení do mezipaměti pro disk pro virtuální počítač Azure.<br/><br/>Prokládané více Azure datových disků získat vyšší propustnost vstupně-výstupní operace.<br/><br/>Formát s velikostí zdokumentovaných přidělení. |
-| [I/O](#io-guidance) |Povolte kompresi stránky databáze.<br/><br/>Povolte rychlé soubor inicializace pro datové soubory.<br/><br/>Omezit autogrow v databázi.<br/><br/>Zakažte autoshrink v databázi.<br/><br/>Přesunete všechny databáze na datové disky, včetně systémové databáze.<br/><br/>Přesun serveru SQL Server chyba protokolu a trasování souboru adresářů do datových disků.<br/><br/>Nastavte výchozí zálohování a databáze umístění souborů.<br/><br/>Povolte uzamčených stránek.<br/><br/>Použijte opravy výkonu systému SQL Server. |
+| [Disky](#disks-guidance) |Použití minimálně 2 [P30 disky](../premium-storage.md#scalability-and-performance-targets) (1 pro soubory protokolu a 1 pro datové soubory a databáze TempDB; nebo stripe dva nebo více disků a všechny soubory na jednom svazku úložiště).<br/><br/>Vyhněte se použití operačního systému nebo dočasné disků pro úložiště databáze nebo protokolování.<br/><br/>Povolte čtení ukládání do mezipaměti na disky hostující datové soubory a datové soubory databáze TempDB.<br/><br/>Nepovolujte ukládání do mezipaměti na disky hostování souboru protokolu.<br/><br/>Důležité: Zastavte službu systému SQL Server při změně nastavení do mezipaměti pro disk pro virtuální počítač Azure.<br/><br/>Prokládané více Azure datových disků získat vyšší propustnost vstupně-výstupní operace.<br/><br/>Formát s velikostí zdokumentovaných přidělení. |
+| [VSTUPNĚ-VÝSTUPNÍCH OPERACÍ](#io-guidance) |Povolte kompresi stránky databáze.<br/><br/>Povolte rychlé soubor inicializace pro datové soubory.<br/><br/>Omezit autogrowing v databázi.<br/><br/>Zakažte autoshrink v databázi.<br/><br/>Přesunete všechny databáze na datové disky, včetně systémové databáze.<br/><br/>Přesun serveru SQL Server chyba protokolu a trasování souboru adresářů do datových disků.<br/><br/>Nastavte výchozí zálohování a databáze umístění souborů.<br/><br/>Povolte uzamčených stránek.<br/><br/>Použijte opravy výkonu systému SQL Server. |
 | [Konkrétní funkce](#feature-specific-guidance) |Zálohovat přímo do úložiště objektů blob. |
 
 Další informace o *jak* a *proč* Chcete-li tyto optimalizace, přečtěte si podrobné informace a pokyny, které jsou uvedeny v následujících částech.
@@ -83,13 +82,13 @@ Výchozí nastavení ukládání do mezipaměti zásady na disk s operačním sy
 
 Na jednotce dočasné úložiště s názvem bez přípony, jako **D**: disk, není trvalý do Azure blob storage. Neukládejte databázové soubory uživatelů nebo souborů protokolů transakci uživatele na **D**: jednotky.
 
-D-series, Dv2-series a virtuální počítače G-series jednotku na těchto virtuálních počítačích je založená na SSD. Pokud vaše úlohy provede výrazně využívá databáze TempDB (např. pro dočasné objekty nebo komplexní spojení), ukládání databáze TempDB na **D** jednotky může mít za následek vyšší propustnost databáze TempDB a snížení latence databázi TempDB.
+D-series, Dv2-series a virtuální počítače G-series jednotku na těchto virtuálních počítačích je založená na SSD. Pokud vaše úlohy provede výrazně využívá databáze TempDB (například dočasné objekty nebo komplexní spojení), ukládání databáze TempDB na **D** jednotky může mít za následek vyšší propustnost databáze TempDB a snížení latence databázi TempDB.
 
 Pro virtuální počítače, které podporují službu Premium Storage (DS-series, DSv2-series a GS-series) doporučujeme uložit databázi TempDB na disk, který podporuje službu Premium Storage s čtení povoleno ukládání do mezipaměti. Existuje jedna výjimka do tohoto doporučení; Pokud vaše databáze TempDB využití je náročné na zápis, můžete dosáhnout vyšší výkon uložením databáze TempDB na místní **D** disku, který je taky založená na SSD na velikosti těchto počítačů.
 
 ### <a name="data-disks"></a>Datové disky
 
-* **Použití datových disků pro soubory protokolu a data**: Pokud nepoužíváte prokládání disků, použijte 2 Storage úrovně Premium [P30 disky](../premium-storage.md#scalability-and-performance-targets) kde jeden disk obsahuje soubory protokolu a dalších obsahuje data a soubory databáze TempDB. Každý disk úložiště Premium poskytuje řadu IOPs a šířky pásma (MB/s) v závislosti na jeho velikosti, jak je popsáno v následujícím článku: [pomocí úložiště Premium pro disky](../premium-storage.md). Pokud používáte disk proložení techniku, třeba prostory úložiště, je nutné umístit všechny soubory na stejném disku.
+* **Použití datových disků pro soubory protokolu a data**: Pokud nepoužíváte prokládání disků, použijte dva Storage úrovně Premium [P30 disky](../premium-storage.md#scalability-and-performance-targets) kde jeden disk obsahuje soubory protokolu a dalších obsahuje data a soubory databáze TempDB. Každý disk úložiště Premium poskytuje řadu IOPs a šířky pásma (MB/s) v závislosti na jeho velikosti, jak je popsáno v článku, [pomocí úložiště Premium pro disky](../premium-storage.md). Pokud používáte disk proložení techniku, třeba prostory úložiště, doporučujeme umístit všechna data a soubory protokolu na stejné jednotce.
 
    > [!NOTE]
    > Při zřizování virtuálního počítače s SQL serverem na portálu, máte možnost úpravy konfigurace úložiště. V závislosti na konfiguraci nakonfiguruje Azure jeden nebo více disků. Více disků jsou sloučeny do jednoho úložiště fondu s proložení. Soubory protokolu a data jsou společně umístěny v této konfiguraci. Další informace najdete v tématu [konfiguraci úložiště pro virtuální počítače serveru SQL](virtual-machines-windows-sql-server-storage-configuration.md).
@@ -112,16 +111,24 @@ Pro virtuální počítače, které podporují službu Premium Storage (DS-serie
 
   * Windows 2008 R2 nebo starší můžete použít dynamické disky (OS prokládané svazky) a velikost stripe je vždy 64 KB. Všimněte si, že tato možnost je zastaralé od verze Windows 8 nebo Windows Server 2012. Informace najdete v tématu příkazu podpory v [virtuální disková služba je přechodu do rozhraní API správy úložišť systému Windows](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx).
 
-  * Pokud používáte [prostory úložiště – přímé (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) se scénářem jako [instance clusteru převzetí služeb při selhání SQL serveru](virtual-machines-windows-portal-sql-create-failover-cluster.md), musíte nakonfigurovat jeden fond. Všimněte si, že i když jiné svazky mohou být vytvořeny na tomto jednoho fondu, budou všechny sdílet stejné vlastnosti, jako je například stejné zásady ukládání do mezipaměti. 
+  * Pokud používáte [prostory úložiště – přímé (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) se scénářem jako [instance clusteru převzetí služeb při selhání SQL serveru](virtual-machines-windows-portal-sql-create-failover-cluster.md), musíte nakonfigurovat jeden fond. Všimněte si, že i když jiné svazky mohou být vytvořeny na tomto jednoho fondu, budou všechny sdílet stejné vlastnosti, jako je například stejné zásady ukládání do mezipaměti.
 
   * Určete počet disků, které jsou přidružené k fondu úložiště podle vašeho očekávání zatížení. Uvědomte si, že různé velikosti virtuálních počítačů povolit různý počet připojených datových disků. Další informace najdete v tématu [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
   * Pokud nepoužíváte Storage úrovně Premium (scénáře vývoje/testování), doporučuje se přidat maximální počet datových disků, které podporuje vaše [velikost virtuálního počítače](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a používat prokládání disků.
 
-* **Ukládání do mezipaměti zásad**: datových disků pro Storage úrovně Premium, povolit čtení ukládání do mezipaměti na hostování datové soubory a soubory databáze TempDB dat pouze datových disků. Pokud nepoužíváte Storage úrovně Premium, nepovolujte žádné ukládání do mezipaměti na všech datových disků. Pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Model nasazení classic (ASM) najdete v tématu: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Model nasazení Azure Resource Manager najdete v tématu: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) a [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+* **Ukládání do mezipaměti zásad**: Všimněte si následujících doporučení pro ukládání do mezipaměti zásady v závislosti na konfiguraci úložiště.
 
-  > [!WARNING]
-  > Zastavte službu systému SQL Server při změně nastavení mezipaměti disků virtuálního počítače Azure, aby se zabránilo možnost nedošlo k poškození databáze.
+  * Pokud používáte samostatnou disků pro soubory protokolu a data, povolte čtení ukládání do mezipaměti na datové disky hostování datové soubory a datové soubory databáze TempDB. Výsledkem může významně zvýšit výkon výhody. Nepovolujte ukládání do mezipaměti na disku, na kterém je uložený soubor protokolu jako to způsobí, že menší snížení výkonu.
+
+  * Pokud používáte disk proložení, většina úloh výhod ukládání do mezipaměti pro čtení. Z důvodu zvýšení výkonu s prokládání disků toto doporučení platí i v případě, že soubor protokolu je na stejné jednotce. V některých úloh velkou zápisu může dosáhnout lepší výkon se žádné ukládání do mezipaměti. To se dá určit jenom prostřednictvím testování.
+
+  * Předchozí doporučení platí pro disky úložiště Premium. Pokud nepoužíváte Storage úrovně Premium, nepovolujte žádné ukládání do mezipaměti na všech datových disků.
+
+  * Pokyny ke konfiguraci ukládání do mezipaměti na disku naleznete v následujících článcích. Model nasazení classic (ASM) najdete v tématu: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) a [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Model nasazení Azure Resource Manager najdete v tématu: [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) a [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+
+     > [!WARNING]
+     > Zastavte službu systému SQL Server při změně nastavení mezipaměti disků virtuálního počítače Azure, aby se zabránilo možnost nedošlo k poškození databáze.
 
 * **Velikost alokační jednotky systému souborů NTFS**: při formátování datový disk, je doporučeno používat velikost 64 KB alokační jednotky pro data a soubory protokolu, jakož i databáze TempDB.
 

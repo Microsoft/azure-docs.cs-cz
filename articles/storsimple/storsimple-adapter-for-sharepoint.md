@@ -1,11 +1,11 @@
 ---
-title: "Instalace adaptéru StorSimple pro službu SharePoint | Microsoft Docs"
-description: "Popisuje, jak nainstalovat a nakonfigurovat nebo odebrat adaptér StorSimple pro službu SharePoint ve farmě serverů SharePoint."
+title: Instalace adaptéru StorSimple pro službu SharePoint | Microsoft Docs
+description: Popisuje, jak nainstalovat a nakonfigurovat nebo odebrat adaptér StorSimple pro službu SharePoint ve farmě serverů SharePoint.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Instalace a konfigurace zařízení StorSimple adaptéru pro službu SharePoint
 ## <a name="overview"></a>Přehled
@@ -252,7 +252,7 @@ Po přesunutí objekty BLOB zpět obsahu databáze systému SQL Server, použijt
 1. Otevřete ovládací panely a pak klikněte na **programy a funkce**.
 2. Vyberte **StorSimple adaptéru pro službu SharePoint**a potom klikněte na **odinstalovat**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Další informace o zařízení StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
@@ -261,4 +261,4 @@ Po přesunutí objekty BLOB zpět obsahu databáze systému SQL Server, použijt
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

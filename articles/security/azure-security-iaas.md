@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -52,7 +52,7 @@ V minulosti byl vaší hraniční sítě použít k řízení přístupu k firem
 
 Jeden z nejvíce výhodné kroků, které můžete provést k zabezpečení účtu je povolit dvoufaktorové ověřování. Dvoufaktorové ověřování představuje způsob ověřování pomocí něco kromě heslo. Pomáhá zmírnit riziko přístup někdo, kdo spravuje získat heslo jiného uživatele.
 
-[Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) pomáhá zabezpečit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace. Uživatelé zvolit metodu, která dávají přednost.
+[Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) pomáhá zabezpečit přístup k datům a aplikacím při splnění požadavků uživatelů pro jednoduchý proces přihlášení. Zajišťuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace. Uživatelé zvolit metodu, která dávají přednost.
 
 Nejjednodušší způsob, jak používat ověřování Multi-Factor Authentication je Microsoft Authenticator mobilní aplikaci, která lze použít v mobilních zařízení se systémem Windows, iOS a Android. Pomocí nejnovější verze Windows 10 a integraci místní služby Active Directory s Azure Active Directory (Azure AD) [Windows Hello pro firmy](../active-directory/active-directory-azureadjoin-passport-deployment.md) lze použít pro bezproblémové jednotného přihlašování k prostředkům Azure. V takovém případě zařízení s Windows 10 se používá jako druhý faktor ověřování.
 
@@ -118,7 +118,7 @@ Alternativně můžete použít [point-to-site](../vpn-gateway/vpn-gateway-howto
 >[!NOTE]
 >Změna konfigurace seznamů ACL skupiny Nsg nepovolíte přístup koncových bodů pro správu z Internetu, můžete použít buď možnost VPN.
 
-Další možností vhodné vzhledem k tomu je [Brána vzdálené plochy](../multi-factor-authentication/multi-factor-authentication-get-started-server-rdg.md) nasazení. Toto nasazení můžete použít k bezpečnému připojování k servery vzdálené plochy přes protokol HTTPS, při použití podrobnější ovládací prvky pro tato připojení.
+Další možností vhodné vzhledem k tomu je [Brána vzdálené plochy](../active-directory/authentication/howto-mfaserver-nps-rdg.md) nasazení. Toto nasazení můžete použít k bezpečnému připojování k servery vzdálené plochy přes protokol HTTPS, při použití podrobnější ovládací prvky pro tato připojení.
 
 Funkce, které by mít přístup k patří:
 
@@ -166,7 +166,7 @@ Všechny virtuální počítače v Azure IaaS by měl být zesílené zabezpeče
 
 Security Compliance Manager je bezplatný nástroj. Můžete ji rychle nakonfigurovat a spravovat stolní počítače, tradičního datacentra a privátních a veřejných cloudů pomocí zásad skupiny a System Center Configuration Manager.
 
-Security Compliance Manager poskytuje připravené nasadit zásady a Desired Configuration Management Pack konfigurace, které jsou testovány. Tyto standardní hodnoty jsou založeny na [doprovodné materiály zabezpečení Microsoft](https://technet.microsoft.com/en-us/library/cc184906.aspx) doporučení a odvětví osvědčené postupy. Pomáhají spravovat odlišily konfigurace, požadavky na dodržování předpisů adresu, a snížit bezpečnostní hrozby.
+Security Compliance Manager poskytuje připravené nasadit zásady a Desired Configuration Management Pack konfigurace, které jsou testovány. Tyto standardní hodnoty jsou založeny na [doprovodné materiály zabezpečení Microsoft](https://technet.microsoft.com/library/cc184906.aspx) doporučení a odvětví osvědčené postupy. Pomáhají spravovat odlišily konfigurace, požadavky na dodržování předpisů adresu, a snížit bezpečnostní hrozby.
 
 Security Compliance Manager můžete použít k importu aktuální konfiguraci počítače pomocí dvě různé metody. První můžete importovat zásady skupiny služby Active Directory. Druhý, můžete importovat konfiguraci "zlatá master" referenčního počítače pomocí [LocalGPO nástroj](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) zálohování místní zásady skupiny. Místní zásady skupiny můžete poté importovat do správce dodržování předpisů zabezpečení.
 

@@ -1,13 +1,13 @@
 ---
-title: "Návrh a implementaci databáze Oracle na platformě Azure | Microsoft Docs"
-description: "Návrh a implementaci k databázi Oracle v prostředí Azure."
+title: Návrh a implementaci databáze Oracle na platformě Azure | Microsoft Docs
+description: Návrh a implementaci k databázi Oracle v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b291066137df004625029aef12c3db4d5441a89c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementaci k databázi Oracle v Azure
 
@@ -136,7 +136,7 @@ Celkovou šířku propustnost je odhadovaný podle následující informace:
 
 ![Snímek obrazovky SQL * Net propustnost](./media/oracle-design/sqlnet_info.png)
 
-Podle potřeb šířky pásma sítě, existují různé typy brány můžete vybírat. Mezi ně patří basic VpnGw a Azure ExpressRoute. Další informace najdete v tématu [brány VPN stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?v=17.23h).
+Podle potřeb šířky pásma sítě, existují různé typy brány můžete vybírat. Mezi ně patří basic VpnGw a Azure ExpressRoute. Další informace najdete v tématu [brány VPN stránce s cenami](https://azure.microsoft.com/pricing/details/vpn-gateway/?v=17.23h).
 
 **Recommendations** (Doporučení)
 
@@ -231,7 +231,7 @@ Po nastavení a konfiguraci prostředí Azure, dalším krokem je zabezpečení 
 - [Konfigurace brány Golden Oracle](configure-oracle-golden-gate.md)
 - [Oracle zálohování a obnovení](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Vytvoření vysoce dostupné virtuální počítače](../../linux/create-cli-complete.md)
 - [Prozkoumejte ukázky rozhraní příkazového řádku Azure nasazení virtuálních počítačů](../../linux/cli-samples.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 7b6da166ddd53162ca1177e925f00291ae78de2a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a67edd4372cff70a3948e85033e806749d585eb5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Ukázek Azure PowerShell monitorování rychlý start
 Tento článek ukazuje ukázkové příkazy prostředí PowerShell, abyste měli přístup k funkcím Azure monitorování.
@@ -38,7 +38,7 @@ V příkladech v článku znázorňují, jak můžete použít rutiny Azure moni
 Nejdřív přihlaste k vašemu předplatnému Azure.
 
 ```PowerShell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 Zobrazí se přihlašovací obrazovka. Po přihlášení účtu, TenantID, a jsou zobrazeny výchozí ID předplatného. Všechny rutiny Azure fungovat v rámci vašeho předplatného výchozí. Chcete-li zobrazit seznam odběrů máte přístup, použijte následující příkaz:
@@ -150,7 +150,7 @@ Následující tabulka popisuje parametry a hodnoty použité k vytvoření výs
 | Název |simpletestdiskwrite |
 | Umístění tohoto pravidla výstrah |Východ USA |
 | ResourceGroup |montest |
-| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| TargetResourceId |/subscriptions/S1/resourceGroups/montest/providers/Microsoft.COMPUTE/virtualMachines/testconfig |
 | MetricName výstrahy, která je vytvořena |\PhysicalDisk (_celkem) \Disk zápisů za sekundu. Najdete v článku `Get-MetricDefinitions` rutiny o tom, jak získat přesné metriky názvy |
 | Operátor |GreaterThan |
 | Prahová hodnota (počet za sekundu za pro tato metrika) |1 |

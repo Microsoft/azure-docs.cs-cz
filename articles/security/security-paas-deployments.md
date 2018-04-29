@@ -1,12 +1,12 @@
 ---
-title: "Zabezpečení nasazení PaaS | Microsoft Docs"
+title: Zabezpečení nasazení PaaS | Microsoft Docs
 description: " Pochopit výhody zabezpečení PaaS a dalších cloudu modely služeb a další doporučené postupy pro zabezpečení vašeho nasazení Azure PaaS. "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
 editor: techlake
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 4629e0ab6bbc9554128a923e92b269df79446b18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -87,15 +87,15 @@ Následující možnost shrne obecné osvědčené postupy přístup pro správu
 
 - **Neztraťte klíče nebo přihlašovací údaje** zabezpečení klíčů a přihlašovacích údajů je nezbytné pro zabezpečení nasazení PaaS. Došlo ke ztrátě klíče a přihlašovací údaje jsou běžné potíže. Jeden dobrým řešením je použití centralizovaného řešení, kde klíče a tajné klíče mohou být uložené v modulech hardwarového zabezpečení (HSM). Azure poskytuje modul hardwarového zabezpečení v cloudu s [Azure Key Vault](../key-vault/key-vault-whatis.md).
 - **Nevkládejte do zdrojového kódu nebo Githubu přihlašovací údaje a jiné tajné** jediné, co horší než došlo ke ztrátě klíče a přihlašovací údaje má neoprávněná osoba získat přístup k nim. Útočníci mohou využít výhod robota technologie Najít klíče a tajné klíče uložené v kódu úložiště, jako je například Githubu. Neumísťujte klíče a tajné klíče v těchto veřejných úložišť zdrojového kódu.
-- **Chránit vaše rozhraní pro správu virtuálních počítačů v hybridním službám PaaS a IaaS** IaaS a PaaS služby spouštět na virtuálních počítačích (VM). V závislosti na typu služby, jsou k dispozici několik rozhraní pro správu této povolit vzdálené správě těchto virtuálních počítačů přímo. Vzdálená správa protokoly, jako [protokolu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokol RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), a [vzdáleného prostředí PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) lze použít. Doporučujeme obecně platí, že nepovolíte vzdálený přímý přístup k virtuálním počítačům z Internetu. Pokud je k dispozici, měli byste použít alternativních přístupech například pomocí virtuální privátní síť do virtuální sítě Azure. Pokud nejsou k dispozici alternativní přístupy a pak ověřte, že používáte komplexní přístupová hesla a pokud je k dispozici, dvojúrovňového ověřování (například [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)).
+- **Chránit vaše rozhraní pro správu virtuálních počítačů v hybridním službám PaaS a IaaS** IaaS a PaaS služby spouštět na virtuálních počítačích (VM). V závislosti na typu služby, jsou k dispozici několik rozhraní pro správu této povolit vzdálené správě těchto virtuálních počítačů přímo. Vzdálená správa protokoly, jako [protokolu Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell), [protokol RDP (Remote Desktop)](https://support.microsoft.com/kb/186607), a [vzdáleného prostředí PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) lze použít. Doporučujeme obecně platí, že nepovolíte vzdálený přímý přístup k virtuálním počítačům z Internetu. Pokud je k dispozici, měli byste použít alternativních přístupech například pomocí virtuální privátní síť do virtuální sítě Azure. Pokud nejsou k dispozici alternativní přístupy a pak ověřte, že používáte komplexní přístupová hesla a pokud je k dispozici, dvojúrovňového ověřování (například [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)).
 - **Silné ověřování a autorizace platformy**
 
   - Použijte federované identity ve službě Azure AD místo úložiště vlastní uživatele. Při použití federovaných identit, můžete využít přístupu na základě platformy a delegovat správu oprávnění identit partnerům. Přístup federovaných identit je obzvláště důležité ve scénářích, když zaměstnanci budou ukončeny a informace se musí projevit prostřednictvím více systémy identity a autorizace.
   - Použití platformy zadat mechanismy ověřování a autorizace místo vlastní kód. Důvodem je, že vývoj vlastní ověřovací kód může být chyba náchylné k chybám. Většina vaší vývojáři nejsou odborníky na zabezpečení a pravděpodobně potřeba mít na paměti odlišnosti a nejnovější vývoj ve ověřování a autorizace. Komerční kód (například ze společnosti Microsoft) je často hojně zabezpečení zkontrolovat.
-  - Používání služby Multi-Factor authentication. Služba Multi-Factor authentication je aktuální standard pro ověřování a autorizaci, protože při ní nedochází slabá místa zabezpečení vyplývajících z uživatelské jméno a heslo typy ověřování. Přístup k rozhraní správy Azure (portál vzdáleného prostředí PowerShell) a zákazníků, kterým čelí služby by měl určené a nakonfigurovaná pro použití [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md).
+  - Používání služby Multi-Factor authentication. Služba Multi-Factor authentication je aktuální standard pro ověřování a autorizaci, protože při ní nedochází slabá místa zabezpečení vyplývajících z uživatelské jméno a heslo typy ověřování. Přístup k rozhraní správy Azure (portál vzdáleného prostředí PowerShell) a zákazníků, kterým čelí služby by měl určené a nakonfigurovaná pro použití [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md).
   - Použijte standardní ověřovací protokoly, jako je například OAuth2 a protokolu Kerberos. Tyto protokoly byly hojně sdílené zkontrolovány a pravděpodobně jsou implementované jako součást vaší knihovny platformy pro ověřování a autorizaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jsme zaměřuje na výhody zabezpečení nasazení Azure PaaS. Dále se naučíte doporučené postupy pro zabezpečení vašich PaaS webové a mobilní řešení. Začneme s Azure App Service, Azure SQL Database a Azure SQL Data Warehouse. Dostupná články na doporučené postupy pro jinými službami Azure, bude k dispozici odkazy v následujícím seznamu:
 
 - [Azure App Service](security-paas-applications-using-app-services.md)

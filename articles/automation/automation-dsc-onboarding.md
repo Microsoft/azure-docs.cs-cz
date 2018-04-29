@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 10e0e0df4bf71c7a21a3cc06b5b1c16930d54ec6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Registrace počítačů pro správu Azure Automation DSC.
 
@@ -31,7 +31,7 @@ Azure Automation DSC umožňuje spravovat celou řadu počítače:
 Kromě toho pokud si nejste připravení spravovat konfiguraci počítače z cloudu, Azure Automation DSC lze také jako koncový bod pouze sestavy. Můžete nastavit (push) požadované konfigurace pomocí DSC na místě a zobrazte bohaté reporting podrobnosti o dodržování předpisů uzlu s požadovaný stav ve službě Azure Automation.
 
 > [!NOTE]
-> Správa virtuálních počítačů Azure s DSC je zahrnuta bez dalších poplatků, pokud je větší než 2.70 rozšíření virtuálního počítače DSC, nainstalovaná. Odkazovat [ **automatizace stránce s cenami** ](https://azure.microsoft.com/en-us/pricing/details/automation/) další podrobnosti.
+> Správa virtuálních počítačů Azure s DSC je zahrnuta bez dalších poplatků, pokud je větší než 2.70 rozšíření virtuálního počítače DSC, nainstalovaná. Odkazovat [ **automatizace stránce s cenami** ](https://azure.microsoft.com/pricing/details/automation/) další podrobnosti.
 
 
 Následující oddíly popisují, jak můžete připojit každý typ počítače do Azure Automation DSC.
@@ -195,7 +195,7 @@ Počítač je tento příkaz spuštěn z musí mít nejnovější verzi [WMF 5](
 
 ## <a name="generating-dsc-metaconfigurations"></a>Generování DSC metaconfigurations
 
-Obecně zařadit do provozu žádné počítače do Azure Automation DSC, [metakonfiguraci DSC](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) může být generována, při použití informuje DSC agenta na počítači, aby načítat z nebo nahlásit Azure Automation DSC. Metaconfigurations DSC pro Azure Automation DSC může být generována pomocí konfigurace DSC prostředí PowerShell nebo rutin prostředí PowerShell Azure Automation.
+Obecně zařadit do provozu žádné počítače do Azure Automation DSC, [metakonfiguraci DSC](https://msdn.microsoft.com/powershell/dsc/metaconfig) může být generována, při použití informuje DSC agenta na počítači, aby načítat z nebo nahlásit Azure Automation DSC. Metaconfigurations DSC pro Azure Automation DSC může být generována pomocí konfigurace DSC prostředí PowerShell nebo rutin prostředí PowerShell Azure Automation.
 
 > [!NOTE]
 > DSC metaconfigurations obsahovat všechna tajemství potřeba zařadit do počítače s Automation účet pro správu. Ujistěte se, zda jste správně chránit všechny metaconfigurations DSC, které vytvoříte, nebo je odstranit po použití.

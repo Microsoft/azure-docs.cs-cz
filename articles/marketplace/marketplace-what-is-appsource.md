@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbe859a2d069a20ba2e02d009dfb99b6126f8dea
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-appsource"></a>Co je AppSource
 AppSource umožňuje partnerům Microsoftu zjistitelnost své technologie a služby zákazníkům prostřednictvím podporovaných Microsoft online výkladní skříň. Jako vydavatel AppSource můžete zaujmout uživatele obchodní na AppSource najít, zkuste a get-obchodní aplikace SaaS, jakož i služby implementace pomoct jednotky obchodní výsledky a snižte hodnotu doby: 
@@ -42,23 +42,23 @@ Prostřednictvím AppSource můžete seznam aplikace nebo konzultační nabídka
 *   **Office 365**: moderní síti na pracovišti v cloudu. Zdarma Spolupracujte s Microsoft Word, PowerPoint, aplikace Excel a OneNote.
 
 ### <a name="office-365"></a>Office 365
-Aplikace pro Office jsou nyní k dispozici v AppSource! Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store "Office 365 - AppSource").
+Aplikace pro Office jsou nyní k dispozici v AppSource! Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store "Office 365 - AppSource").
 
 ### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 Finance a operace
-Při sestavování Enterprise Edition, zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source "Dynamics 365 Enterprise Edition - AppSource").  
+Při sestavování Enterprise Edition, zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source "Dynamics 365 Enterprise Edition - AppSource").  
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 pro zákaznické Engagement
-Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource "Dynamics 365 - AppSource").
+Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource "Dynamics 365 - AppSource").
 
 ### <a name="power-bi"></a>Power BI
-Vytvořte vlastní vizuály a zpřístupnit prostřednictvím AppSource. Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/en-us/power-bi/developer/office-store "Power BI - AppSource").
+Vytvořte vlastní vizuály a zpřístupnit prostřednictvím AppSource. Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/power-bi/developer/office-store "Power BI - AppSource").
 
 ### <a name="consulting-offers"></a>Konzultace ohledně nabídky
 Pokud nabízíte služby, které pomáhají uživatelům usnadňují digitální transformace nebo implementovat řešení nebo aplikace, můžete tuto službu nabízí jako konzultační nabídka na AppSource. 
 [Přečtěte si pokyny a zjistěte, jak odeslat nabídku](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf "AppSource - partnera výpis pokyny").
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
-[Příručka pro Cortana Intelligence AppSource publikování](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence AppSource - publikování průvodce")
+[Příručka pro Cortana Intelligence AppSource publikování](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide "Cortana Intelligence AppSource - publikování průvodce")
 
 ## <a name="azure-active-directory-integration"></a>Integrace Azure Active Directory
 Některé aplikace storefront AppSource nutných k integraci se službou Azure Active Directory (Azure AD) k publikování. Integrace aplikací s Azure AD je dobře zdokumentovat; Společnost Microsoft poskytuje několik sady SDK a další prostředky podle požadavků. 
@@ -76,17 +76,17 @@ Některé aplikace storefront AppSource nutných k integraci se službou Azure A
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>Tabulky: AppSource nabídky, které vyžadují Azure integrace služby Active Directory
 
 Původně, doporučujeme, aby **nastavení odběru vyhrazené pro publikování vašeho webu Azure Marketplace*** umožňuje izolovat práci z vaší jiné iniciativy. Kromě toho pokud jste ještě nenainstalovali následující nástroje, pak doporučujeme následující nástroje se přidat do vývojového prostředí: 
-*   [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest "Azure – rozhraní příkazového řádku")
-*   [Prostředí Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
+*   [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure – rozhraní příkazového řádku")
+*   [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
 *   Zkontrolujte nástroje dostupné v aplikaci [nástroje pro vývojáře Azure](https://azure.microsoft.com/tools/ "Azure – nástroje pro vývojáře") stránky
 *   [Visual Studio Code](https://code.visualstudio.com/ "sady Visual Studio Code - Main")
 
 Pokud jsou Začínáme s Azure AD, jsou odkazy na následující nejlepší zdroje: 
 
 **Dokumentace**
-*   [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide "Azure AD – Příručka pro vývojáře")
-*   [Integrace se službou Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate "integrace – Azure AD")
-*   [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications "integrace aplikací – Azure AD")
+*   [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide "Azure AD – Příručka pro vývojáře")
+*   [Integrace se službou Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate "integrace – Azure AD")
+*   [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications "integrace aplikací – Azure AD")
 *   [Průvodce Azure – zabezpečení a identita](https://azure.microsoft.com/roadmap/?category=security-identity "Azure plán – zabezpečení a identita")
 
 **Videa**

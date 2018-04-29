@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 1399455fb727c27e22da8c5525eec87e343d46cc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorovat pomocí monitorování Azure data Factory  
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[Další informace v tomto poli](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+[Další informace v tomto poli](https://msdn.microsoft.com/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>Schéma protokoly a události
 
@@ -285,7 +285,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |úroveň| Řetězec | Úroveň diagnostických protokolů. Nastavením této vlastnosti "Informační" | `Informational` |
 |operationName| Řetězec |Název aktivitu se stavem. Pokud je ve stavu počáteční prezenčního signálu, je `MyActivity -`. Pokud je ve stavu prezenčního signálu end, je `MyActivity - Succeeded` s konečného stavu | `MyActivity - Succeeded` |
 |pipelineName| Řetězec | Název kanálu | `MyPipeline` |
-|activityName| Řetězec | Název aktivity | `MyActivity` |
+|Název aktivity activityName| Řetězec | Název aktivity | `MyActivity` |
 |start| Řetězec | Spuštění aktivity při spuštění v časový interval, formátu UTC | `2017-06-26T20:55:29.5007959Z`|
 |konec| Řetězec | Konce aktivity při spuštění v časový interval, formátu UTC. Pokud nebyl ukončen aktivity ještě (protokolů diagnostiky pro spuštění aktivity), výchozí hodnota je `1601-01-01T00:00:00Z` nastavena.  | `2017-06-26T20:55:29.5007959Z` |
 
@@ -375,7 +375,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |category| Řetězec | Kategorie diagnostické protokoly. Nastavením této vlastnosti "PipelineRuns" | `PipelineRuns` |
 |úroveň| Řetězec | Úroveň diagnostických protokolů. Nastavením této vlastnosti "Informační" | `Informational` |
 |operationName| Řetězec |Název aktivační události s konečného stavu jestli se úspěšně aktivoval. "MyTrigger - bylo úspěšné" Pokud prezenční signál byla úspěšná| `MyTrigger - Succeeded` |
-|triggerName| Řetězec | Název aktivační události | `MyTrigger` |
+|Název aktivační události| Řetězec | Název aktivační události | `MyTrigger` |
 |triggerType| Řetězec | Typ aktivační události (ruční aktivační události nebo plán aktivační události) | `ScheduleTrigger` |
 |triggerEvent| Řetězec | Události Aktivační události | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |start| Řetězec | Začátek ještě efektivněji aktivační události v časový interval, formátu UTC | `2017-06-26T20:55:29.5007959Z`|

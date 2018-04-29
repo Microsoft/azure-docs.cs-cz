@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 09/07/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objekty BLOB JSON s indexer objektu blob Azure Search
 Tento článek ukazuje, jak nakonfigurovat indexer Azure Search objektů blob k extrahování strukturovaných obsahu z JSON objektů BLOB v Azure Blob storage.
@@ -36,7 +36,7 @@ Indexování objekty BLOB JSON je podobná extrakce běžný dokument v pracovn�
 
 Prvním krokem je k poskytování informací připojení zdroje dat používané indexeru. Zadaný typ zdroje dat sem jako `azureblob`, určuje, jaké chování extrakce dat jsou vyvolány indexeru. Pro objekt blob JSON indexování zdroj dat je, že definice je stejný pro dokumenty JSON a pole. 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -88,7 +88,7 @@ Konfigurace je k dispozici v těle operace indexer. Odvolat, že objekt zdroje d
 
 Plně zadaný požadavek může vypadat takto:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -190,7 +190,7 @@ Můžete také odkazovat na pole jednotlivé elementy pomocí index počítaný 
 
 V následujícím příkladu je datové části plně zadaný indexer, včetně mapování polí:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

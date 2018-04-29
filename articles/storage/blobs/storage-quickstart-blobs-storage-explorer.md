@@ -1,19 +1,19 @@
 ---
-title: Rychlý start Azure – Nahrávání, stahování a výpis objektů blob v Azure Storage pomocí Průzkumníka služby Azure Storage | Microsoft Docs
-description: V tomto rychlém startu pomocí Průzkumníka služby Azure Storage vytvoříte účet úložiště a kontejner. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage | Microsoft Docs
+description: V tomto rychlém startu použijete v úložišti objektů (blob) Průzkumníka služby Azure Storage. Pak použijete Průzkumníka služby Storage k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: f44d42b949eae0d017e3bba218234fd1e2ead78e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 176d2fffa9f9e3c43a4e5c922aed58cebdbe2b1d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Průzkumníka služby Azure Storage
 
@@ -67,7 +67,7 @@ Když vyberete **OK**, vybrané soubory se zařadí do fronty a postupně se nah
 
 ## <a name="view-blobs-in-a-container"></a>Zobrazení objektů blob v kontejneru
 
-V **Průzkumníku služby Storage** vyberte kontejner pod účtem úložiště. V hlavním podokně se zobrazí seznam objektů blob ve vybraném kontejneru.
+V **Průzkumníkovi služby Storage** vyberte kontejner pod účtem úložiště. V hlavním podokně se zobrazí seznam objektů blob ve vybraném kontejneru.
 
 ![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 

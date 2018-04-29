@@ -3,7 +3,7 @@ title: Transformace dat pomocí Azure Data Factory | Microsoft Docs
 description: Zjistěte, jak k transformaci dat nebo zpracování dat v Azure Data Factory pomocí Hadoop, Machine Learning nebo Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
 ms.service: data-factory
 ms.workload: data-services
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: shengc
-ms.openlocfilehash: 639a464a73000648b2f70cc7fe4aa0864d90efbc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: 4915e8aebf110b5ae799f409472b43b986a18b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 > [!div class="op_single_selector"]

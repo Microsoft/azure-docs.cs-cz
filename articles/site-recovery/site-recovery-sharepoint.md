@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replikovat vícevrstvé aplikace služby SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -53,7 +53,7 @@ Než začnete, ujistěte se, že rozumíte následující:
 
 ## <a name="sharepoint-architecture"></a>Architektura služby SharePoint
 
-Služby SharePoint můžete nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru k implementaci návrhu farmy, který splňuje specifické cíle a cílů. Typické velkých, vysoce vyžádání farmy služby SharePoint server podporující velký počet souběžných uživatelů a velký počet položek obsahu pomocí služby seskupování v rámci své strategie škálovatelnost. Tento postup zahrnuje službami na vyhrazené servery, seskupování tyto služby a škálování servery jako skupina. Následující topologie znázorňuje služby a serveru seskupení pro vrstvu tři serverové farmy služby SharePoint. Naleznete v dokumentaci k nástroji služby SharePoint a architektury řádku produktu podrobné informace o různé topologie služby SharePoint. Můžete najít další podrobnosti o nasazení služby SharePoint 2013 v [tento dokument](https://technet.microsoft.com/en-us/library/cc303422.aspx).
+Služby SharePoint můžete nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru k implementaci návrhu farmy, který splňuje specifické cíle a cílů. Typické velkých, vysoce vyžádání farmy služby SharePoint server podporující velký počet souběžných uživatelů a velký počet položek obsahu pomocí služby seskupování v rámci své strategie škálovatelnost. Tento postup zahrnuje službami na vyhrazené servery, seskupování tyto služby a škálování servery jako skupina. Následující topologie znázorňuje služby a serveru seskupení pro vrstvu tři serverové farmy služby SharePoint. Naleznete v dokumentaci k nástroji služby SharePoint a architektury řádku produktu podrobné informace o různé topologie služby SharePoint. Můžete najít další podrobnosti o nasazení služby SharePoint 2013 v [tento dokument](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 

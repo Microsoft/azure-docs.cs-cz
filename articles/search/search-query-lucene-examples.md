@@ -7,13 +7,13 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/21/2017
+ms.date: 04/20/2018
 ms.author: liamca
-ms.openlocfilehash: c83b3b0d9c0cc99ba8a76dc4a6b2f83ed6de49dc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 46e03834cb307ea103a8794616f6f38227881272
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Příklady syntaxe dotazů Lucene pro tvorbu dotazů ve službě Azure Search
 Při vytváření dotazů pro službu Azure Search, můžete použít buď výchozí [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) nebo alternativním [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analyzátor dotazů Lucene podporuje složitější konstruktory dotazu, jako jsou dotazy v rámci pole, přibližné vyhledávání, vyhledávání blízkých výrazů, termín zvyšovat skóre a hledání regulárního výrazu.
@@ -37,13 +37,13 @@ Zadejte všechny příklady v tomto článku **typ = úplné** parametr, která 
 
 **Příklad 1** – klikněte pravým tlačítkem na následující fragment dotazu a otevře se v nové stránky prohlížeče, který načte JSFiddle a spustí dotaz:
 
-* [& Typ = úplné & hledání = *](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
+* [& Typ = úplné & hledání = *](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
 V nové okno prohlížeče jsou zdroj JavaScript a HTML výstupu zobrazí vedle sebe. Skript odkazuje na celý dotaz (ne jenom fragmentu, jak je znázorněno v odkazu). Adresy URL pro každý příklad ukazuje celý dotaz. 
 
 Tento dotaz vrací dokumenty z New Yorku úlohy index (nycjobs načíst izolovaného prostoru služby). Dotaz jako stručný výtah určuje pouze obchodní názvy jsou vráceny. Úplné podkladového dotazu je následující:
 
-    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
+    http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
 
 **SearchFields** parametr omezí vyhledávání jenom pole název firmy. **Typ** je nastaven na **úplné**, což dává pokyn Azure Search pomocí analyzátoru dotazů Lucene pro tento dotaz.
 
@@ -63,7 +63,7 @@ Pole uvedené v **fieldname:searchterm** musí být prohledávatelné pole. V t�
 
 **Příklad 2** – klikněte pravým tlačítkem na tento dotaz vyhledává obchodní produkty s senior termín v je, ale ne méně zkušení následující fragment dotazu:
 
-* [& Typ = úplné & hledání = business_title:senior není méně zkušení](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
+* [& Typ = úplné & hledání = business_title:senior není méně zkušení](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
 
 ## <a name="fuzzy-search-example"></a>Příklad přibližné vyhledávání
 Vyhledá přibližné vyhledávání shody v podmínkách, které mají podobné konstrukce. Za [Lucene dokumentace](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), přibližné vyhledávání jsou založené na [Damerau Levenshtein vzdálenost](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
@@ -72,7 +72,7 @@ Chcete-li provést přibližné vyhledávání, připojte tilda "~" symbol na ko
 
 **Příklad 3** --klikněte pravým tlačítkem na následující fragment dotazu. Tento dotaz vyhledává úlohy se přidružení termín (kde je je zadáno chybně):
 
-* [& Typ = úplné & hledání = business_title:asosiate ~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
+* [& Typ = úplné & hledání = business_title:asosiate ~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
 
 > [!Note]
 > Přibližné dotazy nejsou [analyzovali](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis), což může být překvapivé, pokud očekáváte, rozklad nebo Lematizace. Lexikální analýzy se provádí pouze na dokončení podmínky (dotazu termín nebo frázi dotazu). Typy dotazů s podmínkami nekompletní (předponu dotazu, dotaz zástupný znak, regulární výraz dotazu, přibližné dotazu) se přidají přímo do stromu dotazu obcházení fázi analýzy. Pouze transformace provést podle podmínek neúplné dotazu je předpoklady.
@@ -83,11 +83,11 @@ Hledání blízkosti se používají k vyhledání podmínky, jsou blízko sebe 
 
 **Příklad 4** – klikněte pravým tlačítkem na dotaz. Hledání pro úlohy s označením "senior analytik", kde jsou oddělené oddělovačem více než jeden word:
 
-* [& Typ = úplné & hledání = business_title: "senior analytik" ~ 1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
+* [& Typ = úplné & hledání = business_title: "senior analytik" ~ 1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
 
 **Příklad 5** – zkuste ji znovu odebrat slova mezi termín "senior analytik".
 
-* [& Typ = úplné & hledání = business_title: "senior analytik" ~ 0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
+* [& Typ = úplné & hledání = business_title: "senior analytik" ~ 0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
 
 ## <a name="term-boosting-examples"></a>Termín zvyšovat skóre příklady
 Termín zvyšovat skóre odkazuje řazení vyšší, pokud obsahuje boosted termín, relativně k dokumenty, které neobsahují termín dokumentu. To se liší od vyhodnocování profily, profily vyhodnocování zvýšení určitá pole, nikoli konkrétní podmínky. Následující příklad pomáhá znázorňují rozdíl.
@@ -98,11 +98,11 @@ Chcete-li zvýšit termín, použijte pomocí kurzoru, "^", symbol faktor zesíl
 
 **Příklad 6** – klikněte pravým tlačítkem na dotaz. Vyhledejte úlohy s označením "počítač analytik", kde vidíte nebyly nalezeny žádné výsledky s počítači slova a analytických ještě analytik úlohy jsou v horní části výsledky.
 
-* [& Typ = úplné & hledání = business_title:computer analytika](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [& Typ = úplné & hledání = business_title:computer analytika](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 **Příklad 7** – zkuste to znovu, tento čas zvyšovat skóre výsledků s počítačem termín přes analytika termín pokud obě slova nejsou k dispozici.
 
-* [& Typ = úplné & hledání = business_title:computer ^ 2 analytika](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+* [& Typ = úplné & hledání = business_title:computer ^ 2 analytika](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
 ## <a name="regular-expression-example"></a>Příklad regulární výraz
 Hledání regulárního výrazu najde shoda na základě obsahu mezi lomítka "/", v popsáno, jak [Třída RegExp](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
@@ -111,14 +111,14 @@ Hledání regulárního výrazu najde shoda na základě obsahu mezi lomítka "/
 
 * `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-Adresa URL pro tento příklad nebude správně vykreslovat na stránce. Jako alternativní řešení zkopírujte adresu URL níže a vložte jej do adresu URL prohlížeče: `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+Adresa URL pro tento příklad nebude správně vykreslovat na stránce. Jako alternativní řešení zkopírujte adresu URL níže a vložte jej do adresu URL prohlížeče: `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 ## <a name="wildcard-search-example"></a>Příklad hledání zástupný znak
 Obecně rozpoznaná syntaxe můžete použít pro více (\*) nebo jednoduchého vyhledávání pomocí zástupných znaků znaku (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů s jeden termín a ne frázi.
 
 **Příklad 9** – klikněte pravým tlačítkem na dotaz. Vyhledejte úlohy, které obsahují předponu "programové', která by obsahovat obchodní názvy s podmínkami programování a programátory v ní.
 
-* [& Typ = úplné & $select = business_title & hledání = business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2016-09-01%26queryType=full%26$select=business_title%26search=business_title:prog*)
+* [& Typ = úplné & $select = business_title & hledání = business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2017-11-11%26queryType=full%26$select=business_title%26search=business_title:prog*)
 
 Nelze použít * nebo? symbol jako první znak hledání.
 

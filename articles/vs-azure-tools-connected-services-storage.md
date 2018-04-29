@@ -2,23 +2,20 @@
 title: Přidat Azure Storage pomocí připojené služby v sadě Visual Studio | Microsoft Docs
 description: Přidejte úložiště Azure do vaší aplikace pomocí dialogu Visual Studio přidat připojení služby
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 521ec044-ad4b-4828-8864-01decde2e758
-ms.service: storage
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: 521ec044-ad4b-4828-8864-01decde2e758
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/26/2017
 ms.author: ghogen
-ms.openlocfilehash: 3252d022222e1c31491a6b111e5e96f8c62ca915
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 3c5d3dc1d91a6f8bb1816b2985f86ec5c4a12e63
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Přidání úložiště Azure pomocí Visual Studio připojené Services
 Pomocí sady Visual Studio, připojením některý z těchto do služby Azure Storage pomocí **přidat připojení služby** dialogové okno:
@@ -27,7 +24,7 @@ Pomocí sady Visual Studio, připojením některý z těchto do služby Azure St
 - Rozhraní .NET back-end mobilní služby
 - Web ASP.NET nebo služby
 - ASP.NET základní služby
-- Azure WebJob service 
+- Služba Azure webové úlohy 
 
 Funkci připojené služby přidá všechny potřebné odkazy a kód připojení do projektu a odpovídajícím způsobem upravit konfigurační soubory. 
 
@@ -50,7 +47,7 @@ Po dokončení **přidat připojení služby** dialogové okno automaticky zobra
     
     ![Přidat existující účet úložiště do projektu](./media/vs-azure-tools-connected-services-storage/select-azure-storage-account.png)
 
-1. Chcete-li vytvořit účet úložiště: 
+1. Vytvoření účtu úložiště: 
    
    1. Vyberte **vytvořit nový účet úložiště** v dolní části dialogového okna.
 

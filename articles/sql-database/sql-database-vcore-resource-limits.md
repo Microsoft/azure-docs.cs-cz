@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 23bab643a88fe27eb34750f970f962041f8c18f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Azure SQL Database vCore na základě nákupu modelu omezení (preview)
 
@@ -40,8 +40,7 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 |Cíl IOPS|320|640|1280|2560|5120|
 |Latence vstupně-výstupní operace (přibližnou)|ms 5 – 7 (zápisu)
 |Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|3200|
-|Maximální počet souběžných přihlášení|200|400|800|1600|3200|
-|Maximální povolená relací|3000|3000|3000|3000|3000|
+|Maximální povolená relací|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -63,8 +62,7 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 |Cíl IOPS|5000|10000|20000|40000|80000|
 |Latence vstupně-výstupní operace (přibližnou)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|
 |Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|3200|
-|Maximální počet souběžných přihlášení|200|400|800|1600|3200|
-|Maximální povolená relací|3000|3000|3000|3000|3000|
+|Maximální povolená relací|30000|30000|30000|30000|30000|
 |Počet replik|3|3|3|3|3|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si Škálováním na více systémů|Ano|Ano|Ano|Ano|Ano|
@@ -117,10 +115,9 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |Cíl IOPS|320|640|1280|2560|5120|
 |Latence vstupně-výstupní operace (přibližnou)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|
 |Maximální počet souběžných pracovních procesů (počet požadavků)|210|420|840|1680|3360|
-|Maximální počet souběžných přihlášení|210|420|840|1680|3360|
-|Maximální povolená relací|3000|3000|3000|3000|3000|
+|Maximální povolená relací|30000|30000|30000|30000|30000|
 |Maximální počet fondu hustotu|100|200|500|500|500|
-|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
+|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Počet replik|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -128,7 +125,7 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |||
 
 ### <a name="business-critical-service-tier"></a>Obchodní vrstva kritické služby
-|Úroveň výkonu|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
+|Úroveň výkonu|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
 |:--- | --: |--: |--: |--: |--: |
 |Generování H i zápis|4|4|4|4|4|
 |vCores|1|2|4|8|16|
@@ -142,10 +139,9 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |Cíl IOPS|320|640|1280|2560|5120|
 |Latence vstupně-výstupní operace (přibližnou)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|
 |Maximální počet souběžných pracovních procesů (počet požadavků)|210|420|840|1680|3360|
-|Maximální počet souběžných přihlášení|210|420|840|1680|3360|
-|Maximální povolená relací|3000|3000|3000|3000|3000|
+|Maximální povolená relací|30000|30000|30000|30000|30000|
 |Maximální počet fondu hustotu|neuvedeno|50|100|100|100|
-|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0.25, 0.5, 1, 2, 4, 8, 16|
+|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|
 |Přečtěte si Škálováním na více systémů|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště záloh|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|

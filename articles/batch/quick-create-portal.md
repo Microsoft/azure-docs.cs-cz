@@ -1,6 +1,6 @@
 ---
-title: "Rychlý start Azure – spuštění úlohy služby Batch – portál"
-description: "Můžete se rychle naučit, jak na webu Azure Portal spustit úlohu služby Batch."
+title: Rychlý start Azure – spuštění úlohy služby Batch – portál
+description: Můžete se rychle naučit, jak na webu Azure Portal spustit úlohu služby Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a00c8ea07c31d2ab4ba2638f2a7e4adcf5ca4a10
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -37,7 +37,7 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 2. Zadejte hodnoty položek **Název účtu** a **Skupina prostředků**. Název účtu musí být jedinečný v rámci vybrané **lokality** Azure, smí obsahovat jenom malé znaky nebo číslice a musí mít délku 3–24 znaků. 
 
-3. V části **Účet úložiště** vyberte stávající obecný účet úložiště nebo vytvořte nový.
+3. V **Účtu úložiště** vyberte stávající účet úložiště nebo vytvořte nový.
 
 4. U ostatních nastavení nechejte výchozí hodnoty a kliknutím na **Vytvořit** vytvořte účet.
 

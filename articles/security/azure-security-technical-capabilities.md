@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0cef0a261b0362fcb9776e63c10e96aedc408b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -134,7 +134,7 @@ Pokud používáte Azure Active Directory B2C, vaši uživatelé mohou zaregistr
 
 #### <a name="device-registration"></a>Registrace zařízení
 
-[Registrace zařízení služby Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction) je základem pro zařízení na základě [podmíněného přístupu](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup) scénáře. Když je zařízení registrováno, poskytne mu nástroj registrace zařízení Azure AD zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a jeho atributy pak lze použít k vynucení zásad podmíněného přístupu u aplikací, které jsou hostovány na cloudu a v místním úložišti.
+[Registrace zařízení služby Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-introduction) je základem pro zařízení na základě [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) scénáře. Když je zařízení registrováno, poskytne mu nástroj registrace zařízení Azure AD zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a jeho atributy pak lze použít k vynucení zásad podmíněného přístupu u aplikací, které jsou hostovány na cloudu a v místním úložišti.
 
 V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, jako je například Intune, budou atributy zařízení ve službě Azure Active Directory jsou aktualizovány o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
 

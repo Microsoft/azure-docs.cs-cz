@@ -1,25 +1,20 @@
 ---
-title: "Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu"
-description: "Dotazování SQL Data Warehouse pomocí sady Visual Studio."
+title: Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu
+description: Dotazování SQL Data Warehouse pomocí sady Visual Studio.
 services: sql-data-warehouse
-documentationcenter: NA
-author: antvgski
-manager: jhubbard
-editor: 
-ms.assetid: daace889-95e5-4826-b2fc-047eac9d6d95
+author: kavithaj
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 1e44c6c3c47034a892753c69c5ef22a5eac18c0d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: kavithaj
+ms.reviewer: igorstan
+ms.openlocfilehash: 1bd3516661a73e7a6d9aaceed589a55cd650453e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -79,7 +74,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
    
     ![Výsledky dotazu][7]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
 
 Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory, najdete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].

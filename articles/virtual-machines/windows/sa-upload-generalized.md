@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 28caca06dd756732314f758e6acb4629f857dd91
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: be2ec6df33f5756dc080195bfad32e0c9079453c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrajte zobecněný virtuální pevný disk do Azure k vytvoření nového virtuálního počítače
 
@@ -51,7 +51,7 @@ Ujistěte se, že role serveru spuštěná na tomto počítači jsou podporován
 
 1. Přihlaste se k virtuálnímu počítači Windows.
 2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a poté spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
 4. V **možnosti vypnutí**, vyberte **vypnutí**.
 5. Klikněte na **OK**.
    
@@ -74,7 +74,7 @@ Pokud ještě nemáte prostředí PowerShell verze 1.4 nebo vyšší nainstalova
 1. Otevřete prostředí Azure PowerShell a přihlaste se k účtu Azure. Automaticky otevírané okno otevře zadat přihlašovací údaje účtu Azure.
    
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 2. Pořiďte si předplatné ID pro dostupných předplatných.
    

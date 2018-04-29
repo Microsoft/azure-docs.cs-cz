@@ -1,11 +1,11 @@
 ---
-title: "Přehled Azure Diagnostics | Microsoft Docs"
-description: "Použití Azure diagnostics pro ladění, měření výkonu, monitorování, analýza provozu v cloudových služeb, virtuální počítače a služby infrastruktury"
+title: Přehled Azure Diagnostics | Microsoft Docs
+description: Použití Azure diagnostics pro ladění, měření výkonu, monitorování, analýza provozu v cloudových služeb, virtuální počítače a služby infrastruktury
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Co je Azure Diagnostics
-Azure Diagnostics je funkce v rámci Azure, která umožňuje shromažďování diagnostických dat na nasazené aplikace. Můžete použít rozšíření diagnostiky z mnoha různých zdrojů. Aktuálně podporované jsou webové služby Azure Cloud a rolí pracovního procesu, virtuální počítače Azure systémem Microsoft Windows a Service Fabric. Jinými službami Azure mají své vlastní samostatné diagnostiky.
+Azure Diagnostics je funkce v rámci Azure, která umožňuje shromažďování diagnostických dat na nasazené aplikace. Můžete použít rozšíření diagnostiky z mnoha různých zdrojů. Aktuálně podporované jsou cloudové služby Azure (klasický) Web a rolí pracovního procesu, virtuální počítače sady škálování virtuálního počítače a Service Fabric. Jinými službami Azure mají různé diagnostiky metody. V tématu [Přehled monitorování v Azure](monitoring-overview.md). 
 
 ## <a name="data-you-can-collect"></a>Data, která můžete shromáždit
 Azure Diagnostics může shromažďovat následující typy dat:
@@ -35,19 +35,16 @@ Azure Diagnostics může shromažďovat následující typy dat:
 | Protokoly služby IIS |Informace o webů služby IIS |
 | Manifest na základě trasování událostí pro Windows |Události trasování pro Windows události vygenerované modulem jakýkoli proces |
 | Výpisy stavu systému |Informace o stavu procesu v případě při selhání aplikace |
-| Vlastní chybové protokoly |Protokoly vytvořené aplikace nebo služby |
+| Vlastní protokoly chyb |Protokoly vytvořené aplikace nebo služby |
 | Infrastrukturu Azure diagnostické protokoly |Informace o diagnostiky sám sebe |
 
-Rozšíření diagnostiky Azure může přenést tato data do účtu úložiště Azure nebo odeslat do služby, jako je [Application Insights](../application-insights/app-insights-cloudservices.md). Data můžete použít pro ladění a řešení potíží s měření výkonu, sledování využití prostředků, analýza provozu a plánování kapacity a auditování.
+Rozšíření diagnostiky Azure může přenést tato data do účtu úložiště Azure nebo odesílat jej do [Application Insights](../application-insights/app-insights-cloudservices.md). Můžete také Streamovat ho k [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md), který pak umožňuje poslat Centrum monitorování serveru mimo platformu Azure services. Data můžete použít pro ladění a řešení potíží s měření výkonu, sledování využití prostředků, analýza provozu a plánování kapacity a auditování.
 
 ## <a name="versioning"></a>Správa verzí
 V tématu [historie Správa verzí Azure Diagnostics](azure-diagnostics-versioning-history.md).
 
 ## <a name="next-steps"></a>Další postup
 Vyberte služby, která chcete shromažďovat diagnostiky na a pomocí následujících článků začít pracovat. Pomocí odkazů obecné Azure diagnostics pro referenční informace pro konkrétní úlohy.
-
-## <a name="web-apps"></a>Web Apps
-Všimněte si, že Web Apps nepoužívají Azure Diagnostics. Najít ekvivalentní informace na [webové aplikace](../app-service/web-sites-enable-diagnostic-log.md)
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloudové služby pomocí Azure Diagnostics
 * Pokud používáte Visual Studio, najdete v části [použijte ke sledování aplikace cloudové služby Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) začít pracovat. Jinak naleznete v tématu

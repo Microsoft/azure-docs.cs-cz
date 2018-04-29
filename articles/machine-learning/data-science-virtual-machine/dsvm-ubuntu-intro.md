@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 4715384a0c6eb24a6a4208ca387b8c4a9871d5c7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače vědecké účely Data pro Linux (Ubuntu)
 
@@ -95,7 +95,7 @@ Tady jsou kroky k vytvoření instance z virtuálního počítače vědecké ú�
    
    b. **Velikost**:
    
-   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte **Zobrazit vše** zobrazte další možnosti, velikostí virtuálních počítačů. Vyberte virtuální počítač NC třídy pro GPU školení.
+   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte **Zobrazit vše** zobrazte další možnosti, velikostí virtuálních počítačů. Vyberte NC nebo virtuálního počítače a třídy pro GPU školení. [Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
    
    c. **Nastavení**:
    

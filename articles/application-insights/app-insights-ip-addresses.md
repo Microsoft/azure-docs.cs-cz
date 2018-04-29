@@ -1,6 +1,6 @@
 ---
-title: "IP adresy používané při Application Insights a analýzy protokolů | Microsoft Docs"
-description: "Výjimky brány firewall serveru vyžadují Application Insights"
+title: IP adresy používané při Application Insights a analýzy protokolů | Microsoft Docs
+description: Výjimky brány firewall serveru vyžadují Application Insights
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b48b17b214f6ff22c7c68421ba8c89104c8b4b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f56810d6520edd19ce757a91712698714902e668
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané při Application Insights a analýzy protokolů
 [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Možná budete muset vědět tyto adresy, pokud je aplikace, kterou monitorujete hostované za bránou firewall.
@@ -48,7 +48,7 @@ Stav monitorování konfigurace – je potřeba pouze při provádění změn.
 | Konfigurace |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfigurace |`auth.gfx.ms` | |`443` |
 | Konfigurace |`login.live.com` | |`443` |
-| Instalace |`packages.nuget.org` , `nuget.org`, `api.nuget.org` | |`443` |
+| Instalace |`packages.nuget.org` , `nuget.org`, `api.nuget.org`, `az320820.vo.msecnd.net` (NuGet soubory ke stažení) | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
 | Účel | zprostředkovatele identity | IP adresa | Porty |
@@ -205,7 +205,7 @@ East US
 | --- | --- | --- | --- |
 | Portálu analýza | analytics.applicationinsights.io | dynamické | 80,443 |
 | CDN | applicationanalytics.azureedge.net | dynamické | 80,443 |
-| Media CDN | applicationanalyticsmedia.azureedge.net | dynamické | 80,443 |
+| Média CDN | applicationanalyticsmedia.azureedge.net | dynamické | 80,443 |
 
 Poznámka: *. vlastní domény applicationinsights.io týmem Application Insights.
 

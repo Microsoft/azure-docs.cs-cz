@@ -1,18 +1,18 @@
 ---
-title: "Referenční dokumentace schématu webhooku registru kontejner Azure"
-description: "Webhooku požadavku JSON datové části odkaz pro registru kontejner Azure."
+title: Referenční dokumentace schématu webhooku registru kontejner Azure
+description: Webhooku požadavku JSON datové části odkaz pro registru kontejner Azure.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Odkaz na Azure webhooku registru kontejneru
 
@@ -24,7 +24,7 @@ Informace o konfiguraci webhooky pro vaše registru kontejner Azure najdete v t�
 
 ## <a name="webhook-requests"></a>Webhooku požadavky
 
-### <a name="http-request"></a>Požadavek HTTP
+### <a name="http-request"></a>Požadavek protokolu HTTP
 
 Díky spouštěná webhooku protokolu HTTP `POST` požadavek na koncový bod adresy URL, jste zadali, když jste nakonfigurovali webhooku.
 
@@ -43,10 +43,10 @@ Webhooku se aktivuje, když bitovou kopii kontejneru vložena do úložiště.
 |Element|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
-|`timestamp`|Data a času|Čas, kdy byla aktivována událost webhooku.|
+|`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
 |`action`|Řetězec|Akce, která aktivuje událost webhooku.|
 |[cíl](#target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
-|[požadavek](#request)|Komplexní typ|Požadavek, který generuje události webhooku.|
+|[Požadavek](#request)|Komplexní typ|Požadavek, který generuje události webhooku.|
 
 ### <a name="target"></a>cíl
 
@@ -107,12 +107,12 @@ Webhooku se aktivuje, když úložiště nebo manifest se odstraní. Neaktivuje 
 |Element|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
-|`timestamp`|Data a času|Čas, kdy byla aktivována událost webhooku.|
+|`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
 |`action`|Řetězec|Akce, která aktivuje událost webhooku.|
 |[cíl](#delete_target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
-|[požadavek](#delete_request)|Komplexní typ|Požadavek, který generuje události webhooku.|
+|[Požadavek](#delete_request)|Komplexní typ|Požadavek, který generuje události webhooku.|
 
-### <a name="delete_target"></a>cíl
+### <a name="delete_target"></a> cíl
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
@@ -120,7 +120,7 @@ Webhooku se aktivuje, když úložiště nebo manifest se odstraní. Neaktivuje 
 |`digest`|Řetězec|Hodnotu hash obsahu, podle definice specifikace rozhraní API registru V2 HTTP.|
 |`repository`|Řetězec|Název úložiště.|
 
-### <a name="delete_request"></a>požadavek
+### <a name="delete_request"></a> Požadavek
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
@@ -160,6 +160,6 @@ az acr repository delete -n MyRegistry --repository MyRepository
 az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Pomocí webhooků registru kontejner Azure](container-registry-webhook.md)

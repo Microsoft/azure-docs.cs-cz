@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: bdb9bfaa85f526af0c5e42294a75664fa7137849
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2b105cd05ace9be6ad24d092f2b12c7ad092188e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -46,7 +46,7 @@ V tématu [Azure Storage – ceny](https://azure.microsoft.com/pricing/details/s
 > Premium Storage podporuje pouze místně redundantní úložiště (LRS). Informace o Premium Storage najdete v tématu [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
 
 ## <a name="changing-replication-strategy"></a>Změna strategie replikace
-Jsme vám umožňují změnit strategie replikace účtu úložiště pomocí [portál Azure](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jednoho z dalších [ Knihovny klienta Azure](https://docs.microsoft.com/en-us/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nevede výpadek.
+Jsme vám umožňují změnit strategie replikace účtu úložiště pomocí [portál Azure](https://portal.azure.com/), [prostředí Azure Powershell](storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), nebo jednoho z dalších [ Knihovny klienta Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Změna typu replikace účtu úložiště nevede výpadek.
 
    > [!NOTE]
    > V současné době nelze použít portál nebo rozhraní API převést svůj účet na ZRS. Ale plánujeme podporu migrace na ZRS z LRS, GRS a RA-GRS po ZRS je všeobecně dostupná. V tématu [Zónově redundantní úložiště (ZRS)](storage-redundancy-zrs.md) podrobnosti.

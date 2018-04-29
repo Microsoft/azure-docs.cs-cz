@@ -13,11 +13,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: c8f35656e9db07b596cd24ecb570fa0960f540b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b4370f63c2e5ccf466de7cb680377b12940a6efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-python"></a>Začínáme s Azure Table storage pomocí Python
 
@@ -42,7 +42,7 @@ Pro úspěšné absolvování tohoto kurzu potřebujete následující položky:
 
 - [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 nebo 3.6
 - [Tabulky Azure Cosmos DB sady SDK pro jazyk Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Tato sada SDK se připojí pomocí Azure Table storage a rozhraní API služby Azure DB Cosmos tabulky.
-- [Účet služby Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#create-a-storage-account) nebo [účet Azure Cosmos DB](https://azure.microsoft.com/en-us/try/cosmosdb/)
+- [Účet služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) nebo [účet Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -223,11 +223,11 @@ table_service.delete_table('tasktable')
 
 ## <a name="next-steps"></a>Další postup
 
-* [Časté otázky – vývoj s tabulkou rozhraní API](https://docs.microsoft.com/en-us/azure/cosmos-db/faq#develop-with-the-table-api)
+* [Časté otázky – vývoj s tabulkou rozhraní API](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
 * [Azure SDK DB Cosmos pro referenční dokumentace rozhraní API jazyka Python](https://azure.github.io/azure-cosmosdb-python/)
 * [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): bezplatná aplikace a platformy pro vizuální práci s daty Azure Storage ve Windows, systému macOS a Linux.
-* [Práce s Python v sadě Visual Studio (Windows)](https://docs.microsoft.com/en-us/visualstudio/python/overview-of-python-tools-for-visual-studio)
+* [Práce s Python v sadě Visual Studio (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 [py_commit_batch]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html
 [py_create_table]: https://azure.github.io/azure-cosmosdb-python/ref/azure.cosmosdb.table.tableservice.html

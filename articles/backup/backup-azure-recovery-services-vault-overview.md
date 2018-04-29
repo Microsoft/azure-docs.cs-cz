@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/15/2017
 ms.author: markgal;arunak;sogup
-ms.openlocfilehash: 2d25782ef73f8899587636b65ccd2d7870f89e6f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 12ecc7ab33dba2f4f9842a4fbd6491400024a4e5
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezory služeb zotavení
 
 Tento článek popisuje funkce trezoru služeb zotavení. Trezor služeb zotavení je entita úložiště v Azure, kde data. Data jsou obvykle kopie dat, nebo informace o konfiguraci pro virtuální počítače (VM), úlohy, servery nebo pracovní stanice. Trezory služeb zotavení můžete použít pro uložení zálohy dat pro různé služby Azure, jako jsou virtuální počítače IaaS (Linux nebo Windows) a databází Azure SQL. Obnovení služby trezory podporu System Center DPM, Windows Server, Server pro zálohování Azure a další. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. 
 
-V rámci předplatného Azure můžete vytvořit až pro 25 trezorů služeb zotavení každou oblast.
+V rámci předplatného Azure můžete vytvořit maximálně 500 trezory služeb zotavení jedno předplatné každou oblast.
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Trezory porovnáním různých služeb zotavení a trezory Backup
 

@@ -2,24 +2,19 @@
 title: Obnovit Azure SQL Data Warehouse (PowerShell) | Microsoft Docs
 description: Prostředí PowerShell úlohy pro obnovení Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: ''
-ms.assetid: ac62f154-c8b0-4c33-9c42-f480808aa1d2
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: backup-restore
-ms.date: 02/27/2018
-ms.author: barbkess
-ms.openlocfilehash: 6c4ed8415e60e32b7813bc27dd9aff620ddc65cc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 332b80d5c6dbe0b46a6fb793d3c0c04574744b19
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovit Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -57,7 +52,7 @@ $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.window
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
@@ -103,7 +98,7 @@ $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.window
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
@@ -138,7 +133,7 @@ Chcete-li obnovit databázi, použijte [obnovení-AzureRmSqlDatabase] [ Restore-
 6. Zkontrolujte stav databáze geografické obnovení.
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 

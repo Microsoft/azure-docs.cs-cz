@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 2682054dd132e33897602b60f0799b7cc10ea5f1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 3e897ecb4d42fe2165457c34faa4c1178178e4d3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Seskupení událostí a kolekce s použitím Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -195,7 +195,7 @@ Od tabulky naplněno rozšíření zvětšování dokud je dosáhl kvóty, možn
 ## <a name="log-collection-configurations"></a>Konfigurace protokolu kolekce
 Protokoly z další kanály jsou také k dispozici pro kolekci, zde jsou některé nejběžnější konfigurace, které lze provést v šabloně pro clustery spuštěná v Azure.
 
-* Provozní kanál - Base: Povolená ve výchozím nastavení, vysoké úrovně operací prováděných Service Fabric a cluster, včetně událostí pro uzel objevuje, novou aplikaci nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v části [provozní události kanál](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Provozní kanál - Base: Povolená ve výchozím nastavení, vysoké úrovně operací prováděných Service Fabric a cluster, včetně událostí pro uzel objevuje, novou aplikaci nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v části [provozní události kanál](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"

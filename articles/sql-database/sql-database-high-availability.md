@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e85db04206927eaf17cf52c11b536c75a47a088e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -87,9 +87,14 @@ Zóny redundantní verzi Architektura vysoké dostupnosti je zobrazená ve násl
 ## <a name="read-scale-out"></a>Přečtěte si Škálováním na více systémů
 Jak je popsáno, Premium a kritické obchodní (preview) služby využívají vrstev kvora sad a technologii AlwaysON pro zajištění vysoké dostupnosti v jedné oblasti i redundantní konfigurace zóny. Jednou z výhod AlwasyON je, že repliky jsou vždycky ve stavu transakční konzistence stavu. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace mohou využít výhod tuto další kapacitu pro obsluhu úlohy jen pro čtení bez jakýchkoli nákladů (čtení Škálováním na více systémů). Tímto způsobem dotazy jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Číst funkce škálování je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může využít tuto dodatečnou kapacitu bez připojení k primární. 
 
-Pokud chcete používat funkce škálování pro čtení s danou databází, je potřeba explicitně povolit ho při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda.
+Pokud chcete používat funkce škálování pro čtení s danou databází, musí explicitně ji aktivujete při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databází - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda.
 
-Po povolení škálování pro čtení pro databázi aplikace připojení k databázi přesměrováni do repliky pro čtení a zápis nebo repliku jen pro čtení této databáze podle `ApplicationIntent` vlastnost nakonfigurované do aplikace připojovací řetězec. Informace o `ApplicationIntent` vlastnost, najdete v části [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent) 
+Po povolení škálování pro čtení pro databázi aplikace připojení k databázi přesměrováni do repliky pro čtení a zápis nebo repliku jen pro čtení této databáze podle `ApplicationIntent` vlastnost nakonfigurované do aplikace připojovací řetězec. Informace o `ApplicationIntent` vlastnost, najdete v části [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
+
+Pokud je zakázán pro čtení Škálováním na více systémů nebo nastavte vlastnost ReadScale v vrstvou nepodporované služby, všechna připojení jsou směrované repliky pro čtení a zápis, nezávisle `ApplicationIntent` vlastnost.  
+
+> [!NOTE]
+> Je možné aktivovat čtení Škálováním na více systémů na standardní nebo obecné účely databáze, i když ho nebude mít za následek směrování jen pro čtení určena relace na samostatné repliku. Tomu je potřeba pro podporu existující aplikace, které mezi úrovně Standard/obecné účely a kritické Premium nebo obchodní škálovat nahoru a dolů.  
 
 Funkce pro čtení Škálováním na více systémů podporuje úrovně konzistence typu relace. Pokud relace jen pro čtení znovu připojí po připojení chyba způsobit podle nedostupnosti repliky, můžete přesměrovat na jinou repliku. Při nepravděpodobné, může být při zpracování datové sady, která je zastaralá. Podobně pokud aplikace zapisuje data pomocí relace pro čtení a zápis a okamžitě přečte pomocí relace jen pro čtení, je možné, že nová data není okamžitě viditelné.
 

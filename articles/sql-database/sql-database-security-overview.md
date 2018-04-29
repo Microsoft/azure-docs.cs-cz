@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: b45e1434d648096a67c2f12046960926d2c7640d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: ea76bc4cc182902fb5618d23358579ec229a5ef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -28,7 +28,7 @@ V tomto článku najdete základní informace o zabezpečení datové vrstvy apl
 Databáze SQL zabezpečuje vašich dat tím, že poskytuje šifrování dat v provozu s [Transport Layer Security](https://support.microsoft.com/kb/3135244), pro data v klidovém stavu s [transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)a pro data v použití s [ Funkce Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx). 
 
 > [!IMPORTANT]
->Všechna připojení ke službě Azure SQL Database vyžadují nepřetržité šifrování (SSL/TLS) příchozích a odchozích databázových dat. V připojovacím řetězci vaší aplikace, musíte zadat parametry k šifrování připojení a *není* důvěřovat certifikátu serveru (Pokud udělá se to pro vás zkopírujte připojovací řetězec mimo portál Azure), jinak hodnota připojení není ověřit identitu serveru a je náchylný na útoky "man-in-the-middle". Například u ovladače ADO.NET mají parametry připojovacího řetězce hodnoty **Encrypt=True** a **TrustServerCertificate=False**. 
+>Všechna připojení ke službě Azure SQL Database vyžadují nepřetržité šifrování (SSL/TLS) příchozích a odchozích databázových dat. V připojovacím řetězci vaší aplikace, musíte zadat parametry k šifrování připojení a *není* důvěřovat certifikátu serveru (Pokud udělá se to pro vás zkopírujte připojovací řetězec mimo portál Azure), jinak hodnota připojení není ověřit identitu serveru a je náchylný na útoky "man-in-the-middle". Například u ovladače ADO.NET mají parametry připojovacího řetězce hodnoty **Encrypt=True** a **TrustServerCertificate=False**. Informace o protokolu TLS a připojení najdete v tématu [aspekty TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 Existují i jiné možnosti šifrování dat:
 

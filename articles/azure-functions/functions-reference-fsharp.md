@@ -1,13 +1,13 @@
 ---
-title: "Azure funkce F # referenční informace pro vývojáře | Microsoft Docs"
-description: "Pochopit, jak vyvíjet Azure Functions pomocí F #."
+title: 'Azure funkce F # referenční informace pro vývojáře | Microsoft Docs'
+description: 'Pochopit, jak vyvíjet Azure Functions pomocí F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
 manager: jbronsk
-editor: 
-tags: 
-keywords: "Azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architekturu, F #"
+editor: ''
+tags: ''
+keywords: 'Azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architekturu, F #'
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: functions
 ms.devlang: fsharp
@@ -16,14 +16,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c84de3f38a49bc97fda04a7a4eb449a1f7d14bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions referenční informace pro vývojáře F #
-[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 F # pro Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Toky dat do funkce F # prostřednictvím argumenty funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k takové věci, jako funkce protokolovacího nástroje a zrušení tokenů.
 
@@ -82,7 +81,7 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     output <- input
 ```
 
-## <a name="async"></a>Async
+## <a name="async"></a>Asynchronní
 `async` Pracovní postup můžete použít, ale musí vrátit výsledek `Task`. To lze provést pomocí `Async.StartAsTask`, například:
 
 ```fsharp

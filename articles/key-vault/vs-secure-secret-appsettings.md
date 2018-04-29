@@ -1,24 +1,24 @@
 ---
-title: "Nastavení tajný aplikace pro webovou aplikaci bezpečně ukládání | Microsoft Docs"
-description: "Jak bezpečně uložit nastavení tajný aplikace, jako je například přihlašovací údaje Azure nebo třetích stran rozhraní API pro klíče pomocí ASP.NET základní zprostředkovatel úložiště klíčů, tajného klíče uživatele nebo .NET 4.7.1 konfigurace počítačů"
+title: Nastavení tajný aplikace pro webovou aplikaci bezpečně ukládání | Microsoft Docs
+description: Jak bezpečně uložit nastavení tajný aplikace, jako je například přihlašovací údaje Azure nebo třetích stran rozhraní API pro klíče pomocí ASP.NET základní zprostředkovatel úložiště klíčů, tajného klíče uživatele nebo .NET 4.7.1 konfigurace počítačů
 services: visualstudio
-documentationcenter: 
+documentationcenter: ''
 author: cawa
 manager: paulyuk
-editor: 
-ms.assetid: 
-ms.service: 
+editor: ''
+ms.assetid: ''
+ms.service: ''
 ms.workload: web, azure
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: eee882dc52ffc37067916dac29324efe0bc95b03
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložte nastavení tajný aplikace pro webovou aplikaci
 
@@ -145,7 +145,7 @@ Postupujte podle pokynů z oddílu ASP.NET základní konfigurace Key Vault pro 
 
 1. Nainstalujte následující balíček NuGet do projektu
 ```
-Microsoft.Configuration.ConfigurationBuilders.Azure.1.0.0-alpha1.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets.1.0.0-preview2.nupkg
 ```
 
 2. Definujte Key Vault konfigurace tvůrce v souboru Web.config. PUT v této části před *appSettings* části. Nahraďte *vaultName* byl název trezoru klíč, pokud Key Vault je ve veřejné Azure, nebo úplný identifikátor URI, pokud používáte svrchovaných cloudu.

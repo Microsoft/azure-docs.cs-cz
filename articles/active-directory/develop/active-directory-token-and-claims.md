@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d8a4ddd98086252f36eeb7034248e909fec1ac0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
-Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
+Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token. 
 
 ## <a name="types-of-tokens"></a>Typy tokenů
 Azure AD podporuje [protokol autorizace OAuth 2.0](active-directory-protocols-oauth-code.md), které využívá access_tokens a refresh_tokens.  Také podporuje ověřování a přihlásit se přes [OpenID Connect](active-directory-protocols-openid-connect-code.md), který představuje třetí typ tokenu, požadavku id_token.  Všechny tyto tokeny je reprezentován jako "nosný token".
@@ -52,7 +52,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | Deklarace identity JWT | Název | Popis |
 | --- | --- | --- |
-| `appid` |ID aplikace |Určuje aplikace, která je pomocí tokenu pro přístup k prostředkům. Aplikace může fungovat jako sám sebe nebo jménem uživatele. ID aplikace obvykle představuje objekt, aplikace, ale může také představovat objekt zabezpečení služby ve službě Azure AD. <br><br> **Příklad JWT hodnoty**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |Cílová skupina |Zamýšlený příjemce tokenu. Aplikace, která přijme token musí ověřte, zda hodnota cílové skupiny je správný a odmítnout všechny tokeny, určený pro jinou cílovou skupinu. <br><br> **Příklad SAML hodnoty**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Příklad JWT hodnoty**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |Application Authentication Context Class Reference |Určuje, jak došlo k ověření klienta. Pro veřejné klienta hodnota je 0. Pokud používáte ID klienta a tajný klíč klienta, hodnota je 1. <br><br> **Příklad JWT hodnoty**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference |Určuje, jak byla ověřena předmět, na rozdíl od klienta do Application Authentication Context Class Reference deklarace identity. Hodnota 0, označuje, že ověřování koncového uživatele nesplňuje požadavky ISO/IEC 29115. <br><br> **Příklad JWT hodnoty**: <br> `"acr": "0"` |
@@ -163,9 +162,8 @@ Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů.
   * Pohybem Změna hesla: Pokud správce určuje, že uživatel, chcete-li změnit své heslo nebo obnoví jeho, pak tokeny uživatele se zruší, pokud jejich bylo dosaženo pomocí hesla.  Viz poznámky níže výjimky. 
   * Porušení zabezpečení: V případě porušení zabezpečení (například místní úložiště hesel nedodržení) správce můžete odvolat všechny aktuálně vystavené tokeny obnovení.  Tato akce vynutí všem uživatelům znovu provést ověření. 
 
-Poznámka: 
-
-Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření).  Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
+> [!NOTE]
+>Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření).  Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 
