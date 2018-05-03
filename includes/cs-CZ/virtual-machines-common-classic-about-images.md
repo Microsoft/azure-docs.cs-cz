@@ -1,0 +1,12 @@
+
+
+Image se používají v Azure k poskytování nový virtuální počítač s operačním systémem. Image také může mít jeden nebo více datových disků. Bitové kopie jsou k dispozici z několika zdrojů:
+
+* Azure nabízí obrázků v [Marketplace](https://azure.microsoft.com/gallery/virtual-machines/). Existují nejnovější verze systému Windows Server a distribuce operačního systému Linux. Některé obrázky, obsahovat také aplikace, jako je například SQL Server. Výhody webu MSDN a průběžné platby MSDN Odběratelé, kteří mají přístup k další bitové kopie.
+* Komunitou s otevřeným zdrojem nabízí bitové kopie prostřednictvím [skladu virtuálních počítačů](http://vmdepot.msopentech.com/List/Index).
+* Také můžete ukládat a používat vlastní Image ve službě Azure zaznamenávání existující virtuální počítač Azure pro použití jako bitovou kopii nebo odešlou obrázek.
+
+## <a name="about-vm-images-and-os-images"></a>O Image virtuálních počítačů a bitové kopie operačního systému
+V Azure lze použít dva typy obrázků: *image virtuálního počítače* a *bitové kopie operačního systému*. Image virtuálního počítače obsahuje operační systém a všechny disky připojené k virtuálnímu počítači, když se vytvoří bitovou kopii. Image virtuálního počítače je novější typ obrázku. Než byly zavedeny Image virtuálních počítačů, bitovou kopii v Azure může mít pouze zobecněný operační systém a žádné další disky. Image virtuálního počítače, který obsahuje pouze zobecněný operační systém je v podstatě stejný jako původní typ bitovou kopii, bitovou kopii operačního systému.
+
+Můžete vytvořit vlastní Image, na základě virtuálního počítače v Azure nebo virtuálního počítače se systémem jinde, můžete zkopírovat a odeslat. Pokud chcete použít bitovou kopii k vytvoření více než jeden virtuální počítač, budete muset připravit pro použití jako bitovou kopii podle generalizací ho. Pokud chcete vytvořit bitovou kopii systému Windows Server, spusťte příkaz Sysprep na serveru, aby ho generalize před nahráním souboru VHD. Podrobnosti o nástroji Sysprep najdete v tématu [postup použití nástroje Sysprep: Úvod](http://go.microsoft.com/fwlink/p/?LinkId=392030) a [podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles). Zálohování virtuálního počítače před spuštěním nástroje Sysprep. Vytváření obrazem Linux se liší podle distribuce. Obvykle potřebujete spustit sadu příkazů, které jsou specifické pro distribuci a spustit Azure Linux Agent.
