@@ -1,24 +1,18 @@
 ---
-title: "Virtuální počítač SQL připojení do služby Azure Search | Microsoft Docs"
-description: "Povolit šifrované připojení a nakonfigurujte bránu firewall, aby umožňovaly připojení k systému SQL Server na virtuální počítač Azure (VM) z indexer na Azure Search."
-services: search
-documentationcenter: 
+title: Virtuální počítač SQL připojení do služby Azure Search | Microsoft Docs
+description: Povolit šifrované připojení a nakonfigurujte bránu firewall, aby umožňovaly připojení k systému SQL Server na virtuální počítač Azure (VM) z indexer na Azure Search.
 author: HeidiSteen
-manager: pablocas
-editor: 
-ms.assetid: 46e42e0e-c8de-4fec-b11a-ed132db7e7bc
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure
 Jak jsme uvedli v [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuálních počítačích SQL Azure** pro zkrácení) je podporováno ve službě Azure Search je ale několik předpoklady související se zabezpečením, která se postará o první. 
@@ -85,6 +79,6 @@ Třetí přístup přijatelná (ale zvlášť zabezpečené) slouží k zadání
 #### <a name="include-the-azure-search-portal-ip-addresses"></a>Zahrnout IP adresy portálu Azure Search
 Pokud používáte portál Azure k vytvoření indexer, logiky na portálu Azure Search také potřebuje přístup k virtuálnímu počítači Azure SQL při vytváření. IP adresy portálu Azure search najdete otestováním pomocí `stamp2.search.ext.azure.com`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 S konfigurací stranou můžete nyní zadejte SQL Server na virtuálním počítači Azure jako zdroj dat pro indexer Azure Search. V tématu [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) Další informace.
 

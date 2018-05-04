@@ -1,25 +1,25 @@
 ---
-title: "Začínáme s Azure Active Directory | Microsoft Docs"
-description: "Získání licence, přidejte název domény, vytvořte vlastní přihlašovací stránku a přidejte hesla pomocí samoobslužné služby resetovat v adresáři Azure Active Directory"
-keywords: 
+title: Začínáme s Azure Active Directory | Microsoft Docs
+description: Získání licence, přidejte název domény, vytvořte vlastní přihlašovací stránku a přidejte hesla pomocí samoobslužné služby resetovat v adresáři Azure Active Directory
+keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Začínáme s Azure AD
 Moderní identity managementu vyžaduje proporcionálních a konzistentní reliablity k zajištění dostupnosti probíhá aplikací a služeb pouze ověřené uživatele. Pro potřeby správy identity uživatelů, musí oddělení IT dostat adekvátní podporu způsob, jak poskytnout přístup k schválené, veřejné software jako služba (SaaS) aplikace, způsob, jak hostitele řádku interní obchodní aplikace a i prostředky pro zlepšení místní vývoj aplikací a využití. Všechny tyto požadavky nasměrujte potřeba řešení pro správu cloudových identit.      
@@ -81,7 +81,7 @@ Přiřazení na základě skupiny licencí můžete použít k nastavení pravid
 Zkontrolujte přiřazené a dostupných licencí v rámci **Azure Active Directory** > **licence** > **všechny produkty**.
 
 ## <a name="configure-self-service-password-reset"></a>Konfigurovat samoobslužné resetování hesla
-[Samoobslužného obnovení hesla (SSPR)](active-directory-passwords-getting-started.md) nabízí jednoduchý znamená pro správce IT, aby mohli uživatelé resetovat nebo odemknout jejich hesla nebo účty. Tento systém zahrnuje vytváření podrobných sestav, pomocí kterých můžete sledovat, kdy uživatelé systém používají, spolu s oznámeními, která upozorňují na zneužití.
+[Samoobslužného obnovení hesla (SSPR)](authentication/quickstart-sspr.md) nabízí jednoduchý znamená pro správce IT, aby mohli uživatelé resetovat nebo odemknout jejich hesla nebo účty. Tento systém zahrnuje vytváření podrobných sestav, pomocí kterých můžete sledovat, kdy uživatelé systém používají, spolu s oznámeními, která upozorňují na zneužití.
 
 ### <a name="verification-step"></a>Krok ověření
 Zkontrolujte povolené vlastnosti SSPR pod **Azure Active Directory** > **resetování hesla** zajistit správné uživatele a skupiny přiřazení byly provedeny. 

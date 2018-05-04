@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: sujayt
-ms.openlocfilehash: f318f98479caed8efb4a3705939cb9ac0dd5b237
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v Azure do Azure replikace
 
@@ -58,11 +58,11 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování na adres
 Pokud používáte proxy služby založenou na protokolu IP brány firewall nebo pravidla NSG k řízení odchozí připojení, musí být povoleny tyto rozsahy IP.
 
 - Všechny rozsahy IP adres, které odpovídají na účtech úložiště v oblasti zdroje
-    - Je nutné vytvořit [úložiště výrobní číslo](../virtual-network/security-overview.md#service-tags) na základě pravidla NSG pro oblast zdroje.
-    - Budete muset povolit tyto adresy tak, aby data je možné zapsat do mezipaměti účet úložiště, z virtuálního počítače.
+    - Vytvoření [úložiště výrobní číslo](../virtual-network/security-overview.md#service-tags) na základě pravidla NSG pro oblast zdroje.
+    - Povolit tyto adresy tak, aby data je možné zapsat do mezipaměti účet úložiště, z virtuálního počítače.
 - Všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncové body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-    - Pokud nové adresy se přidají do rozsahů Office 365 v budoucnu, musíte vytvořit nová pravidla NSG.
-- Koncový bod služby Site Recovery IP adresy. Tyto jsou k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílové umístění.
+    - Pokud rozsahy Office 365 se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla NSG.
+- Obnovení služby koncový bod IP adresy - k dispozici v lokalitě [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílové umístění.
 -  Můžete [stáhnout a použít tento skript](https://aka.ms/nsg-rule-script), aby automaticky vytvoří požadované pravidla v této skupině.
 - Doporučujeme vytvořit požadované pravidla NSG na testovací skupina NSG a ověřte, že před vytvořením pravidel u produkčních NSG neexistují žádné problémy.
 
@@ -98,8 +98,8 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Spojené království – sever | 51.142.209.167 | 13.87.102.68
    Korea – střed | 52.231.28.253 | 52.231.32.85
    Korea – jih | 52.231.298.185 | 52.231.200.144
-
-
+   Francie – střed | 52.143.138.106 | 52.143.136.55
+   Francie – jih | 52.136.139.227 |52.136.136.62
 
 
 ## <a name="example-nsg-configuration"></a>Příklad konfigurace NSG
@@ -153,42 +153,11 @@ Koncový bod sítě služby ve virtuální síti můžete vytvořit pro "Úloži
 >[!NOTE]
 >Účty úložiště použít pro automatické obnovení systému neomezují přístup k virtuální síti. By měly umožnit přístup z 'všechny sítě.
 
-## <a name="expressroutevpn"></a>ExpressRoute/VPN
-
-Pokud máte ExpressRoute nebo VPN připojení mezi místními a umístění Azure, postupujte podle pokynů v této části.
-
 ### <a name="forced-tunneling"></a>Vynucené tunelování
 
-Obvykle můžete definovat výchozí trasa (0.0.0.0/0), který vynutí odchozí přenosy z Internetu do procházet skrz místní umístění nebo. To nedoporučujeme. Provoz replikace by neměl ponechte Azure hranic.
-
-Můžete [vytvoření koncového bodu sítě služby](#create-network-service-endpoint-for-storage) ve vaší virtuální sítě pro "Úložiště" tak, aby provoz replikace, nenechává Azure hranic.
-
-
-### <a name="connectivity"></a>Připojení
-
-Postupujte podle následujících pokynů pro připojení mezi cílové umístění a místní umístění:
-- Pokud aplikace potřebuje k připojení k místní počítače nebo pokud jsou klienti, kteří připojují k aplikaci z místního přes VPN nebo ExpressRoute, zajistěte, abyste měli alespoň [připojení site-to-site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) mezi vaší cílové oblasti Azure a místního datového centra.
-
-- Pokud očekáváte velké množství přenosu mezi cílových oblast Azure a místního datového centra, měli byste vytvořit další [připojení ExpressRoute](../expressroute/expressroute-introduction.md) mezi cílovou oblast Azure a místního datového centra.
-
-- Pokud chcete zachovat IP adresy pro virtuální počítače po jejich převzetí služeb při selhání, zachovat připojení site na lokality nebo ExpressRoute cílová oblast v odpojeném stavu. Toto je zajistit, neexistuje žádný rozsah kolidovat mezi oblasti zdroj rozsahy IP adres a rozsahů IP cílová oblast.
-
-### <a name="expressroute-configuration"></a>Konfigurace ExpressRoute
-Postupujte podle těchto osvědčené postupy pro konfiguraci ExpressRoute:
-
-- Vytvoření okruhu ExpressRoute v oblasti pro zdroj i cíl. Pak musíte vytvořit spojení mezi:
-    - Virtuální síť zdroje a místní sítě prostřednictvím okruh ExpressRoute v oblasti zdroje.
-    - Cílový virtuální sítě a místní sítě prostřednictvím okruh ExpressRoute v oblasti cíl.
-
-
-- Jako součást standardní ExpressRoute můžete vytvořit okruhů ve stejné geopolitické oblasti. K vytvoření okruhy ExpressRoute v různých geopolitických oblastí, Azure ExpressRoute Premium je nutné, což zahrnuje přírůstkové náklady. (Pokud už používáte ExpressRoute Premium, že nejsou zpoplatněné.) Další podrobnosti najdete v tématu [dokumentu umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ExpressRoute ceny](https://azure.microsoft.com/pricing/details/expressroute/).
-
-- Doporučujeme použít jiný rozsahy IP adres v zdrojové a cílové oblasti. Okruh ExpressRoute, nebudou moct připojit k dvou virtuálních sítí Azure stejné rozsahů IP adres ve stejnou dobu.
-
-- Můžete vytvářet virtuální sítě pomocí stejné rozsahů IP v obou oblastech a pak vytvořte okruhy ExpressRoute v obou oblastí. V případě převzetí služeb při selhání události odpojte okruhu z virtuální sítě zdroje a připojte je okruh ve virtuální síti cíl.
-
- >[!IMPORTANT]
- > Pokud primární oblasti se úplně dolů, může selhat operace odpojení. Získání připojení ExpressRoute, nebude možné cílové virtuální síti.
+Můžete přepsat Azure výchozí systému trasu pro předpony adres 0.0.0.0/0 s [vlastní trasy](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrovat přenosy virtuálních počítačů pro virtuální zařízení místní síti (hodnocení chyb zabezpečení), ale tato konfigurace se nedoporučuje pro obnovení lokality replikace. Pokud používáte vlastní trasy, měli byste [vytvoření koncového bodu služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) ve vaší virtuální sítě pro "Úložiště" tak, aby provoz replikace, nenechává Azure hranic.
 
 ## <a name="next-steps"></a>Další postup
-Začněte chránit vaše úlohy [replikovat virtuální počítače Azure](site-recovery-azure-to-azure.md).
+- Začněte chránit vaše úlohy [replikovat virtuální počítače Azure](site-recovery-azure-to-azure.md).
+- Další informace o [IP adresu uchování](site-recovery-retain-ip-azure-vm-failover.md) převzetí služeb při selhání virtuálního počítače Azure.
+- Další informace o zotavení po havárii [virtuální počítače Azure prostřednictvím ExpressRoute ](azure-vm-disaster-recovery-with-expressroute.md).

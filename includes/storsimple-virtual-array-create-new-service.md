@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
-1.  Pomocí přihlašovacích údajů k účtu Microsoft se přihlaste na webu Azure Portal na této adrese URL: <https://portal.azure.com/>. Pokud nasazení zařízení na portál Government, přihlaste se na: <https://portal.azure.us/>
+1.  Pomocí pověření účtu Microsoft, přihlaste se k portálu Azure na této adrese URL: <https://portal.azure.com/>. Pokud nasazení zařízení na portál Government, přihlaste se na: <https://portal.azure.us/>
 
 2.  Na portálu Azure klikněte na tlačítko **+ vytvořit prostředek** &gt; **úložiště** &gt; **virtuální řady StorSimple**.
 
@@ -18,7 +18,7 @@
 
         -   Pokud máte existující úlohy v Azure, který chcete nasadit se zařízením StorSimple, doporučujeme vám, že používáte stejné datové centrum.
 
-        -   Správce zařízení StorSimple a Azure úložiště může být na dvě samostatná místa. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně. Pokud chcete vytvořit účet úložiště Azure, přejděte na webu Azure Portal do služby Azure Storage a postupujte podle kroků popsaných v tématu [Vytvoření účtu služby Azure Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account). Po vytvoření účtu jej přidejte do služby Správce zařízení StorSimple pomocí kroků popsaných v tématu [Konfigurace nového účtu úložiště pro službu](https://azure.microsoft.com/en-us/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service).
+        -   Správce zařízení StorSimple a Azure úložiště může být na dvě samostatná místa. V takovém případě je nutné vytvořit Správce zařízení StorSimple a účet úložiště Azure odděleně. Pokud chcete vytvořit účet úložiště Azure, přejděte na webu Azure Portal do služby Azure Storage a postupujte podle kroků popsaných v tématu [Vytvoření účtu služby Azure Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account). Po vytvoření účtu jej přidejte do služby Správce zařízení StorSimple pomocí kroků popsaných v tématu [Konfigurace nového účtu úložiště pro službu](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service).
 
         -   Pokud nasazujete virtuální zařízení na portálu Government, služba Správce zařízení StorSimple je k dispozici v nám Iowa a Virginia nám umístění.
 

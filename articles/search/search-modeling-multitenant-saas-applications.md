@@ -1,23 +1,19 @@
 ---
-title: "Modelování víceklientská ve službě Azure Search | Microsoft Docs"
-description: "Další informace o běžných návrhová schémata pro víceklientské aplikace SaaS při používání služby Azure Search."
-services: search
-manager: jhubbard
+title: Modelování víceklientská ve službě Azure Search | Microsoft Docs
+description: Další informace o běžných návrhová schémata pro víceklientské aplikace SaaS při používání služby Azure Search.
+manager: jlembicz
 author: ashmaka
-documentationcenter: 
-ms.assetid: 72e9696a-553b-47dc-9e05-a82db0ebf094
+services: search
 ms.service: search
 ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 765f9c4600f762efdd7d57681529751e99c13894
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Vzory pro víceklientské aplikace SaaS a Azure Search návrhu
 Víceklientské aplikace je ten, který poskytuje stejné funkce a služby pro libovolný počet klientů, kteří se nedají zobrazit ani sdílet data žádným jiným klientem. Tento dokument popisuje strategie izolace klienta pro víceklientské aplikace sestavené s Azure Search.
@@ -41,7 +37,7 @@ Přidávání a odebírání oddílů a repliky ve vám umožní kapacitu služb
 ### <a name="service-and-index-limits-in-azure-search"></a>Limity služby a index ve službě Azure Search
 Existuje několik různých [cenové úrovně](https://azure.microsoft.com/pricing/details/search/) ve službě Azure Search, každý z vrstvy má jiný [omezení a kvóty](search-limits-quotas-capacity.md). Některé z těchto omezení jsou na úrovni služby, některé jsou na úrovni index a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standardní2 | Standardní3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální replik pro službu |3 |12 |12 |12 |12 |
 | Maximální oddílů pro službu |1 |12 |12 |12 |3 |
@@ -130,7 +126,7 @@ Tato metoda umožňuje dosáhnout funkcionality samostatné uživatelské účty
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Služba Azure Search je poutavé volbou pro mnoho aplikací [Další informace o robustní možnosti služby](http://aka.ms/whatisazsearch). Při vyhodnocování různé návrhová schémata pro víceklientské aplikace, vezměte v úvahu [různých cenových úrovní](https://azure.microsoft.com/pricing/details/search/) a [omezení služby](search-limits-quotas-capacity.md) nejlépe přizpůsobit Azure Search, aby odpovídaly úlohy aplikací a architektury všech velikostí.
 
 Jakékoli dotazy týkající se Azure Search a víceklientské scénáře může přesměrovat k azuresearch_contact@microsoft.com.

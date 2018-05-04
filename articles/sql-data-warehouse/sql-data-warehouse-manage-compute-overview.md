@@ -2,24 +2,19 @@
 title: Správu výpočetních prostředků v Azure SQL Data Warehouse | Microsoft Docs
 description: Další informace o výkonu s více instancemi možnosti v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou Dwu nebo nižší poplatky za ponecháte datového skladu.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: ''
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
-ms.author: elbutter
-ms.openlocfilehash: ddd80f2ebfa9d06fcd47c41d337348e01ac112e9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ca6d34d3b670bfd05a9b65fe9e6b260120e3a5b8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočtů v Azure SQL Data Warehouse
 Další informace o správě výpočetních prostředků v Azure SQL Data Warehouse. Nižší náklady ponecháte datového skladu nebo změně velikosti datového skladu k splňovat požadavky na výkon. 
@@ -46,7 +41,7 @@ Následující tabulka ukazuje, jak změnit počet distribuce za výpočetní uz
 | 600  | 6                  | 10                           |
 | 1000 | 10                 | 6                            |
 | 1200 | 12                 | 5                            |
-| 1 500 | 15                 | 4                            |
+| 1500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |

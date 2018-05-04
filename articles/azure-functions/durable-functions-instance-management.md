@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: baea799dbab2625e64140a565064b3c41310b4ad
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -77,6 +77,7 @@ module.exports = function (context, input) {
 * **CreatedTime**: čas, kdy funkce orchestrator spuštění.
 * **LastUpdatedTime**: čas, kdy orchestration poslední kontrolní bod.
 * **Vstupní**: vstup funkce jako hodnotu JSON.
+* **CustomStatus**: vlastní orchestration stav ve formátu JSON. 
 * **Výstup**: výstup funkce jako hodnota JSON (Pokud je funkce byla dokončena). Pokud funkce orchestrator se nezdařilo, tato vlastnost bude obsahovat podrobnosti o chybě. Pokud funkci orchestrator bylo ukončeno, tato vlastnost bude obsahovat zadaný důvod pro ukončení (pokud existuje).
 * **RuntimeStatus**: jeden z následujících hodnot:
     * **Spuštění**: instance byl spuštěn.

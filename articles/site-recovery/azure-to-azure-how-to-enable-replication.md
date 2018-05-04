@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4479f7bbe657908d4c1ed94f5eaa00401efcb87e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Jiné oblasti Azure replikovat virtuální počítače Azure
 
@@ -48,7 +48,7 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je v
 4. V **nastavení**, případně je možné konfigurovat nastavení cílové lokality:
 
     - **Cílové umístění**: umístění, kde bude replikován zdrojová data virtuálního počítače. V závislosti na vaší umístění vybrané počítače se Site Recovery poskytuje seznam vhodný cílové oblasti. Doporučujeme, abyste cílové umístění stejné jako umístění trezoru služeb zotavení.
-    - **Cílová skupina prostředků**: skupině prostředků, na kterém jsou všechny patřit replikovaných virtuálních počítačů. Ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu prostředků v cílová oblast s názvem, který má příponu "Automatické obnovení systému". Skupiny prostředků vytvořené Azure Site Recovery již existuje, je znovu použít. Můžete také přizpůsobit, jak je znázorněno v následující části.
+    - **Cílová skupina prostředků**: skupině prostředků, na kterém jsou všechny patřit replikovaných virtuálních počítačů. Ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu prostředků v cílová oblast s názvem, který má příponu "Automatické obnovení systému". Skupiny prostředků vytvořené Azure Site Recovery již existuje, je znovu použít. Můžete také přizpůsobit, jak je znázorněno v následující části. Umístění cílová skupina prostředků může být jakékoli oblast Azure s výjimkou oblast, ve kterém jsou hostované virtuální počítače zdroj.
     - **Cílové virtuální sítě**: ve výchozím nastavení, Site Recovery vytvoří novou virtuální síť v oblasti cíl s názvem, který má příponu "Automatické obnovení systému". Toto je namapovaný na zdrojové síti a používat pro všechny budoucí ochranu. [Další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
     - **Cíl účty úložiště (Pokud váš zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení, Site Recovery vytvoří nový účet cílového úložiště mimicking konfiguraci zdrojového virtuálního počítače úložiště. V případě, že účet úložiště už existuje, je znovu použít.
     - **Repliky spravuje disky (Pokud se vaše zdrojového virtuálního počítače používá spravované disky)**: Site Recovery vytvoří nové repliky spravované disky v oblasti cíl pro zrcadlení zdrojového Virtuálního počítače spravované disků se stejným typem úložiště (Standard nebo premium), jako zdrojový virtuální počítač spravovaný disku.

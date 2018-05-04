@@ -110,6 +110,8 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Postup povolení akcelerátoru zápisu
+          href: how-to-enable-write-accelerator.md
         - name: Řešení potíží s připojenými virtuálními pevnými disky
           href: troubleshoot-vhds.md
     - name: Sítě
@@ -183,6 +185,8 @@
           href: move-vm.md
         - name: Změna velikosti virtuálního počítače
           href: change-vm-size.md
+        - name: Prohození disku operačního systému
+          href: os-disk-swap.md
         - name: Označení virtuálního počítače
           href: tag.md
         - name: Spouštění skriptů na virtuálním počítači

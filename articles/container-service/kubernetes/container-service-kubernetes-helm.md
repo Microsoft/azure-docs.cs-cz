@@ -1,19 +1,19 @@
 ---
-title: "Nasazení kontejnerů s Helm v Azure Kubernetes"
-description: "Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v Azure Container Service"
+title: Nasazení kontejnerů s Helm v Azure Kubernetes
+description: Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v Azure Container Service
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e9e214aeacde2f338d3e59507269d1eb4b689418
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 882e785968f94473e80c7a14e5a68498add37735
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Použít k nasazení kontejnerů v clusteru s podporou Kubernetes Helm
 
@@ -145,7 +145,7 @@ Nyní můžete standardní příkazy SQL k vytvoření databáze, tabulek atd. N
  
  
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o správě Kubernetes grafy, najdete v článku [Helm dokumentaci](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
 

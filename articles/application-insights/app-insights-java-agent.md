@@ -3,7 +3,7 @@ title: Monitorování výkonu pro webové aplikace v jazyce Java ve službě Azu
 description: Rozšířené výkon a sledování využití vašeho webu Java pomocí Application Insights.
 services: application-insights
 documentationcenter: java
-author: harelbr
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3a771da2a1ef0333d49e1d83530b3d3032a550d2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycení výjimky a časy spuštění metoda v webové aplikace v jazyce Java
 

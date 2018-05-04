@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Klíče účtu úložiště Azure Key Vault"
-description: "Klíče účtu úložiště poskytují seemless integrace mezi Azure Key Vault a klíče založené na přístup k účtu úložiště Azure."
+ms.assetid: ''
+title: Klíče účtu úložiště Azure Key Vault
+description: Klíče účtu úložiště poskytují seemless integrace mezi Azure Key Vault a klíče založené na přístup k účtu úložiště Azure.
 ms.topic: article
 services: key-vault
 ms.service: key-vault
@@ -9,11 +9,11 @@ author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: a3f8d540c7e4c8a86b151540980724777fd150fd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4f42a47a6d934bf0538efccbcf7f057fd28e2c03
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
@@ -136,7 +136,7 @@ $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup"
 $servicePrincipalId = $(Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
 ```
 
-Dále nastavte oprávnění pro **účtu** zajistit, že můžete spravovat všechna oprávnění úložišť v Key Vault. V následujícím příkladu je naše účet Azure  _developer@contoso.com_ .
+Dále nastavte oprávnění pro **účtu** zajistit, že můžete spravovat všechna oprávnění úložišť v Key Vault. V následujícím příkladu je naše účet Azure _developer@contoso.com_.
 
 ```powershell
 # Searching our Azure Active Directory for our account's ObjectId
@@ -189,7 +189,7 @@ Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Contain
 
 ### <a name="get-sas-tokens"></a>Získat tokeny SAS
 
-Získat odpovídající tokeny SAS a provádět volání do úložiště. `-SecretName` je vytvořený pomocí vstupu z `AccountName` a `Name` parametry při provedení [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/en-us/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition).
+Získat odpovídající tokeny SAS a provádět volání do úložiště. `-SecretName` je vytvořený pomocí vstupu z `AccountName` a `Name` parametry při provedení [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition).
 
 ```powershell
 $readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$readSasName").SecretValueText

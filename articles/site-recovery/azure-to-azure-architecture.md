@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffa60e24b93caaaefcab70c99fa2c76065d97233
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektura replikace Azure do Azure
 
@@ -46,7 +46,7 @@ Když povolíte replikaci virtuálního počítače Azure, v následujících zd
 
 **Prostředek** | **Podrobnosti**
 --- | ---
-**Cílová skupina prostředků** | Skupinu prostředků, do které patří replikované virtuální počítače po převzetí služeb při selhání.
+**Cílová skupina prostředků** | Skupinu prostředků, do které patří replikované virtuální počítače po převzetí služeb při selhání. Umístění skupiny prostředků může být v libovolné oblasti Azure s výjimkou oblasti Azure, ve kterém jsou hostované virtuální počítače zdroj.
 **Cílová virtuální síť** | Virtuální síť, ve kterém jsou replikované virtuální počítače umístěné po převzetí služeb při selhání. Mapování sítě se vytvoří mezi zdrojovými a cílovými virtuální sítě a naopak.
 **Účty úložiště mezipaměti** | Předtím, než změny zdrojů virtuálního počítače jsou replikovány do cílového účtu úložiště, jsou sledovány a odešle na účet úložiště mezipaměti v umístění zdroje. Tento krok zajistí minimální dopad na produkční aplikace běžící na virtuálním počítači.
 **Cíl účty úložiště (Pokud je zdroj, který nepoužívá virtuálních počítačů spravovaných disků)**  | Účty úložiště v cílovém umístění, do které se replikují data.

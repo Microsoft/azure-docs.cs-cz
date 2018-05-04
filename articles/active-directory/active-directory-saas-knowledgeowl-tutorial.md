@@ -15,8 +15,8 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 62dd5b4e213c3da5038e308f300685b1dad2b64d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: MT
+ms.sourcegitcommit: 4bc2aa08a116a0acca0af3b02b5c1d144d3cf9b1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/30/2018
 ---

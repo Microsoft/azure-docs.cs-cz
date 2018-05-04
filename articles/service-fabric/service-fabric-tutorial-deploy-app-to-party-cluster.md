@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f0d41dbc2438217cb4f382da7c44833379b9637
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace do clusteru Service Fabric v Azure
 V tomto kurzu, který je druhou částí série, se dozvíte, jak nasadit aplikaci Azure Service Fabric do nového clusteru v Azure přímo ze sady Visual Studio.
@@ -34,6 +34,7 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * [Sestavit aplikaci .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
 > * Nasadit aplikaci do vzdáleného clusteru
+> * [Přidat koncový bod HTTPS do front-end služby ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [Nakonfigurovat CI/CD pomocí Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 
@@ -103,4 +104,4 @@ V tomto kurzu jste se naučili:
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Nastavení průběžné integrace s Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [Povolení HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)

@@ -1,11 +1,11 @@
 ---
-title: "Nahrát na server certifikát služby Azure Service Management | Microsoft Docs"
-description: "Naučte se nahrát na server certifikát služby správy pro portál Azure."
+title: Nahrát na server certifikát služby Azure Service Management | Microsoft Docs
+description: Naučte se nahrát na server certifikát služby správy pro portál Azure.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: na
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: be548a8e823d4c7109951183886764738a66ecea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrajte certifikát pro správu služby Azure
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic poskytovaný platformou Azure. Mnoho programy a nástroje (například Visual Studio nebo sadu Azure SDK) použít tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. 
@@ -30,7 +30,7 @@ Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic
 
 Pokud vás zajímají další informace o Azure certifikáty (včetně vytváření certifikát podepsaný svým držitelem), najdete v části [Přehled certifikátů pro Azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).
 
-Můžete také použít [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) k ověření kódu klienta pro účely automatizace.
+Můžete také použít [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) k ověření kódu klienta pro účely automatizace.
 
 **Poznámka:** musí být v předplatném spolusprávce provádět žádné operace v rámci certifikáty pro správu. [Další informace](https://go.microsoft.com/fwlink/?linkid=849300) o tom, jak přidat nebo odebrat Spolusprávců z nového portálu Azure 
 

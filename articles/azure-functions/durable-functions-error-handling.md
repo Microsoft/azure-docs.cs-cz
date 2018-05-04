@@ -1,12 +1,12 @@
 ---
-title: "Zpracování chyb v trvanlivý funkce – Azure"
-description: "Zjistěte, jak se budou zpracovávat chyby v rozšíření trvanlivý funkce pro Azure Functions."
+title: Zpracování chyb v trvanlivý funkce – Azure
+description: Zjistěte, jak se budou zpracovávat chyby v rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ee5362d33bb9dadadb4194457cfd7726f4825f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 108c6020956b398effb8ba9dd4471190362359d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v trvanlivý funkce (Azure Functions)
 
@@ -26,7 +26,7 @@ Trvanlivý orchestrations funkce jsou implementované v kódu a může využíva
 
 ## <a name="errors-in-activity-functions"></a>Chyby ve funkcích aktivity
 
-Jakékoli výjimky vyvolané v funkci aktivity je zařazeno zpět na funkce produktu orchestrator a vyvolána jako `TaskFailedException`. Můžete napsat kód chyby zpracování a kompenzace, která vyhovuje vašim potřebám, funkce produktu orchestrator.
+Jakékoli výjimky vyvolané v funkci aktivity je zařazeno zpět na funkce produktu orchestrator a vyvolána jako `FunctionFailedException`. Můžete napsat kód chyby zpracování a kompenzace, která vyhovuje vašim potřebám, funkce produktu orchestrator.
 
 Zvažte například následující funkci orchestrator, která převádí prostředků z jednoho účtu:
 
@@ -80,7 +80,7 @@ public static async Task Run(DurableOrchestrationContext context)
         firstRetryInterval: TimeSpan.FromSeconds(5),
         maxNumberOfAttempts: 3);
 
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions);
+    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
     
     // ...
 }
@@ -132,7 +132,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 
 Pokud funkce orchestrator selže s nezpracovanou výjimku, se zaznamenávají podrobnosti o výjimce a instance dokončí s `Failed` stavu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak diagnostikovat problémy](durable-functions-diagnostics.md)

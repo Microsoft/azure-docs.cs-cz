@@ -36,7 +36,7 @@
 ##### [Jak to funguje?](active-directory-aadconnect-sso-how-it-works.md)
 ##### [Nejčastější dotazy](active-directory-aadconnect-sso-faq.md)
 ##### [Řešení problémů](active-directory-aadconnect-troubleshoot-sso.md)
-##### [GDPR](active-directory-aadconnect-sso-gdpr.md)
+##### [Ochrana osobních údajů uživatelů a bezproblémové jednotné přihlašování Azure AD](active-directory-aadconnect-sso-gdpr.md)
 #### [Předávací ověřování](active-directory-aadconnect-pass-through-authentication.md)
 ##### [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
@@ -46,7 +46,7 @@
 ##### [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Řešení problémů](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [Podrobné informace o zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
-##### [GDPR](active-directory-aadconnect-pass-through-authentication-gdpr.md)
+##### [Ochrana osobních údajů uživatelů a předávací ověřování služby Azure Active Directory](active-directory-aadconnect-pass-through-authentication-gdpr.md)
 ### [Podpora více domén pro federaci](active-directory-aadconnect-multiple-domains.md)
 ### [Automatický upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování](active-directory-aadconnect-federation-saml-idp.md)
@@ -54,7 +54,8 @@
 
 
 ## Správa synchronizace Azure AD Connect
-### [Dodržování předpisů GDPR a Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [Ochrana osobních údajů uživatelů a Azure AD Connect](active-directory-aadconnect-gdpr.md)
+### [Upřednostňované umístění dat pro prostředky O365](active-directory-aadconnectsync-feature-preferreddatalocation.md)
 ### [Prevence náhodného odstranění](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [Synchronizace hodnoty hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Účet služby Azure AD](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -91,7 +92,7 @@
 ### [Jak provést obnovení při dosažení 10GB limitu pro LocalDB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Synchronizace identit a odolnost duplicitních atributů](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)
 ## [Porty a protokoly, které vyžaduje hybridní identita](active-directory-aadconnect-ports.md)
 ## [Funkce ve verzi Preview](active-directory-aadconnect-feature-preview.md)

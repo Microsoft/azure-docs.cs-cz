@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 74ef8ae45215badf2b5a83cc2d82c3db1eef8980
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace pomocí rozhraní REST API
 Pomocí žádný programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vaše tabulkové modely služby Azure Analysis Services. To zahrnuje synchronizace repliky jen pro čtení pro dotaz Škálováním na více systémů. 
@@ -198,7 +198,7 @@ Zde je ukázka kódu C# pro začátek, [RestApiSample na Githubu](https://github
 1.  Klonovat nebo stáhnout úložišti. Otevřete RestApiSample řešení.
 2.  Vyhledejte řádek **klienta. BaseAddress =...** a poskytnout vaší [základní adresa URL](#base-url).
 
-Ukázka kódu můžete použít interaktivní přihlášení, uživatelské jméno a heslo, nebo [instanční objekt](#service-principle).
+Ukázka kódu můžete použít interaktivní přihlášení, uživatelské jméno a heslo, nebo [instanční objekt](#service-principal).
 
 #### <a name="interactive-login-or-usernamepassword"></a>Interaktivní přihlášení nebo uživatelské jméno a heslo
 
@@ -235,7 +235,7 @@ Tato forma ověřování vyžaduje aplikaci Azure vytvořit s potřebnými oprá
 
 #### <a name="service-principal"></a>Instanční objekt
 
-V tématu [vytvořit zásadu služby - portál Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md) a [přidat zásadu služby do role správce serveru](analysis-services-addservprinc-admins.md) Další informace o tom, jak vytvořit objekt služby a přiřazovat potřebná oprávnění v Azure AS . Po dokončení kroků, proveďte následující kroky:
+V tématu [vytvoření instančního objektu – portál Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md) a [přidat hlavní název služby do role správce serveru](analysis-services-addservprinc-admins.md) Další informace o tom, jak vytvořit objekt služby a přiřazovat potřebná oprávnění v Azure AS . Po dokončení kroků, proveďte následující kroky:
 
 1.  V ukázce kódu, Najít **řetězec autority =...** , nahraďte **běžné** ve vaší organizaci klienta ID.
 2.  Komentář nebo zrušte komentář u tak ClientCredential třída slouží k vytvoření instance objektu pověření. Ujistěte se, \<ID aplikace > a \<klíč aplikace > hodnot, ke kterým se přistupuje bezpečným způsobem nebo použít ověřování pomocí certifikátů pro objekty služby.

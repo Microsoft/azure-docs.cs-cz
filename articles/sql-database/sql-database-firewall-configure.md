@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: d68ae802e37b5d0b8421099894da43a0559f2fc2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f43e380d1af846a0c77d61b4e8827c8b45fb08a6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure pravidla brány firewall serveru úroveň a databáze SQL Database 
 
@@ -208,7 +208,7 @@ Pokud se přístup ke službě Microsoft Azure SQL Database nechová podle oček
 * **Konfigurace místní brány firewall:** Než bude váš počítač moci přistupovat ke službě Azure SQL Database, možná bude nutné vytvořit pro váš počítač výjimku brány firewall pro port TCP 1433. Pokud provádíte připojení v rámci cloudu Azure, možná bude nutné otevřít další porty. Další informace najdete v tématu **SQL Database: mimo vs uvnitř** části [porty nad rámec 1433 pro technologii ADO.NET 4.5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 * **Překlad adres (NAT):** Je možné, že kvůli překladu adres (NAT) se bude lišit IP adresa, kterou váš počítač používá pro připojení ke službě Azure SQL Database, a IP adresa, která se zobrazuje na vašem počítači v nastavení konfigurace IP adresy. Pokud chcete zobrazit IP adresu, kterou váš počítač používá pro připojení k Azure, přihlaste se na portál a přejděte na kartu **Konfigurovat** na serveru, který je hostitelem vaší databáze. V části **Povolené IP adresy** se zobrazí **Aktuální IP adresa klienta**. Kliknutím na **Přidat** mezi **Povolené IP adresy** umožníte tomuto počítači přístup k serveru.
 * **Změny seznamu povolených se ještě neprojevily:** Může trvat až pět minut, než se změny konfigurace brány firewall služby Azure SQL Database projeví.
-* **Přihlášení není autorizováno nebo bylo použito nesprávné heslo:** Pokud přihlášení nemá oprávnění k serveru služby Azure SQL Database nebo pokud bylo použito nesprávné heslo, připojení k serveru služby Azure SQL Database je zamítnuto. Vytvoření nastavení brány firewall klientům pouze poskytuje možnost pokusit se o připojení k vašemu serveru – každý klient musí dodat potřebné zabezpečené přihlašovací údaje. Další informace o přípravě přihlášení najdete v tématu Správa databází, přihlášení a uživatelů ve službě Azure SQL Database.
+* **Přihlášení není autorizováno nebo bylo použito nesprávné heslo:** Pokud přihlášení nemá oprávnění k serveru služby Azure SQL Database nebo pokud bylo použito nesprávné heslo, připojení k serveru služby Azure SQL Database je zamítnuto. Vytvoření nastavení brány firewall klientům pouze poskytuje možnost pokusit se o připojení k vašemu serveru – každý klient musí dodat potřebné zabezpečené přihlašovací údaje. Další informace o přípravě přihlášení najdete v tématu [Správa databází, přihlášení a uživatele ve službě Azure SQL Database](sql-database-manage-logins.md).
 * **Dynamická IP adresa:** Pokud vaše internetové připojení používá dynamické přidělování IP adres a máte problémy dostat se přes bránu firewall, můžete zkusit jedno z následujících řešení:
   
   * Požádejte svého poskytovatele internetových služeb (ISP) o rozsah IP adres přidělený vašim klientským počítačům, které přistupují k serveru služby Azure SQL Database, a následně přidejte tento rozsah IP adres jako pravidlo brány firewall.

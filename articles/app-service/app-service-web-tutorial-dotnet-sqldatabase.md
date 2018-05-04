@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
@@ -145,6 +145,9 @@ Vygeneruje se jedinečný název serveru. Tento název se použije jako součás
 Přidejte uživatelské jméno a heslo správce. Požadavky na složitost hesla najdete v tématu [Zásady hesel](/sql/relational-databases/security/password-policy).
 
 Toto uživatelské jméno a heslo si zapamatujte. Později je budete potřebovat ke správě instance logického serveru.
+
+> [!IMPORTANT]
+> Přestože je vaše heslo v připojovacích řetězcích maskované (v sadě Visual Studio i ve službě App Service), skutečnost, že se někde uchovává, rozšiřuje prostor pro útok na vaši aplikace. App Service může toto riziko odstranit pomocí [identit spravovaných služeb](app-service-managed-service-identity.md), které úplně odstraňují potřebu uchovávat tajné klíče v kódu nebo konfiguraci aplikace. Další informace najdete v části [Další kroky](#next-steps).
 
 ![Vytvoření instance SQL Serveru](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -413,8 +416,6 @@ Ve výchozím nastavení se na portálu zobrazí stránka **Přehled**. Tato str
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
@@ -427,7 +428,7 @@ V tomto kurzu jste se naučili:
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal
 
-V dalším kurzu se dozvíte, jak namapovat na webovou aplikaci vlastní název DNS.
+V dalším kurzu se dozvíte, jak snadno zlepšit zabezpečení připojení ke službě Azure SQL Database.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Zabezpečený přístup ke službě SQL Database s využitím identity spravované služby](app-service-web-tutorial-connect-msi.md)

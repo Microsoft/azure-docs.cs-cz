@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/03/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 81357bce92bb8bd2f77f7aaabc8e3b1d49047a1b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 **Poslední aktualizace dokumentů**: duben 3, 3:00 PM PST.
 
@@ -23,7 +23,7 @@ Microsoft nasadil jejich zmírnění napříč naší cloudové služby. Je chr�
 Kromě toho je Azure rozšíření použití [paměti zachování údržby](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) kdykoli je to možné, pozastavení virtuálního počítače pro až 30 sekund při aktualizaci hostitele nebo virtuálního počítače je přesunuta do již aktualizované hostitele.  Zachování údržby další paměť minimalizuje dopad na zákazníka a eliminuje potřebu restartování počítače.  Azure bude využívat tyto metody, při vytváření systémové aktualizace na hostitele.
 
 > [!NOTE] 
-> V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
+> V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
 >
 > Společnosti Intel mikrokódu adresy typu variant 2 spektrum ([CVE. 2017 5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) nebo vkládání cíl větev) k ochraně před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
 >

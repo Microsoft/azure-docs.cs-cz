@@ -7,9 +7,9 @@ Nejdřív je potřeba mít nejnovější [prostředí Azure PowerShell](http://m
 > 
 > 
 
-Spustit [ **Add-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) rutiny a zobrazí se přihlašovací obrazovka, zadat přihlašovací údaje. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
+Spustit [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) rutiny a zobrazí se přihlašovací obrazovka, zadat přihlašovací údaje. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
 
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
 
 Pokud máte více předplatných, pomocí [ **Set-AzureRmContext** ](http://msdn.microsoft.com/library/mt619263.aspx) rutiny vyberte, které předplatné má relace prostředí PowerShell použít. Pokud chcete zjistit, jaké předplatné používá aktuální relace prostředí PowerShell, spusťte rutinu [**Get-AzureRmContext**](http://msdn.microsoft.com/library/mt619265.aspx). Pokud chcete zobrazit všechna předplatná, spusťte rutinu [**Get-AzureRmSubscription**](http://msdn.microsoft.com/library/mt619284.aspx).
 

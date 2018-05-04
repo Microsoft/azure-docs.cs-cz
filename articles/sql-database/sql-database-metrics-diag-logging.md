@@ -10,11 +10,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Databáze SQL Azure můžete emitování metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
@@ -51,6 +51,7 @@ Můžete zřídit nového prostředku Azure nebo vybrat existující prostředek
 - [Vypršení časových limitů](sql-database-metrics-diag-logging.md#time-outs-dataset): obsahuje informace o časových limitů, ke kterým došlo v databázi.
 - [Blokování](sql-database-metrics-diag-logging.md#blockings-dataset): obsahuje informace o blokování události, ke kterým došlo v databázi.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): obsahuje inteligentního statistiky. [Další informace o statistice inteligentního](sql-database-intelligent-insights.md).
+- **Audit** / **SQLSecurityAuditEvents**: momentálně není k dispozici.
 
 Pokud vyberete Event Hubs nebo účet úložiště, můžete zadat zásady uchovávání informací. Tato zásada odstraňuje data, která je starší než zvolené časové období. Pokud zadáte analýzy protokolů, zásady uchovávání informací, závisí na vybraná cenová úroveň. Další informace najdete v tématu [analýzy protokolů ceny](https://azure.microsoft.com/pricing/details/log-analytics/). 
 

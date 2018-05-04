@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5e01ea901f1ba07c0ee5a99720c00c5f03574365
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: cf1842c6abbbfd767184d8f480a5f3a5fd654ed0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Vysvětlení výstrah v analýzy protokolů
 
@@ -67,7 +67,7 @@ Pravidla výstrah jsou definovány následující podrobnosti:
  
     - **False výstrahy**. Někdy výstrahy dotazy slouží k identifikaci absence událostí. Příkladem toho je zjišťování, pokud je virtuální počítač offline vyhledáním zmeškaných prezenčních signálů. Jako výše, pokud prezenční signál není k dispozici pro vyhledávání v rámci výstrahy časový interval, pak výstrahy je generována, protože data prezenčního signálu dosud nebyl s možností vyhledávání a proto chybí. Toto je stejný výsledek, jako by byl legálně offline virtuálního počítače a se žádná data prezenčního signálu generované ho. Provádění dotazu další den přes správný časový interval ukazuje, že nastaly prezenčních signálů a výstrahy se nezdařilo. Ve skutečnosti má vysílat prezenční signál nebyla ještě dostupná pro hledání kvůli výstrahy časový interval byl nastaven příliš malá.
 
-- **Frekvence**.  Určuje, jak často dotaz by měl být spuštěn a slouží k dosáhnete rychlejší reakce pro případ, normální výstrahy. Hodnota může být v rozmezí 5 minut a 24 hodin a musí být rovna nebo menší než výstrahy časový interval.  Pokud hodnota je větší než časový interval, riskujete záznamů je vynechán.<br>Pokud je cílem za spolehlivé pro zpozdí až 30 minut a normální zpoždění je 10 minut, časový interval by měl být jednu hodinu a hodnota frekvence by měla být 10 minut. To by spustí výstrahu s daty, která má 10 minut přijímání zpoždění mezi 10 a 20 minut od při generování dat výstrah.<br>Aby se zabránilo vytvoření více výstrah pro stejná data, protože je příliš široké, časový interval [potlačení výstrahy](log-analytics-tutorial-response.md#create-alerts) možnost můžete použít k potlačení výstrahy pro alespoň stejně dlouho jako časový interval.
+- **Frekvence**.  Určuje, jak často dotaz by měl být spuštěn a slouží k dosáhnete rychlejší reakce pro případ, normální výstrahy. Hodnota může být v rozmezí 5 minut a 24 hodin a musí být rovna nebo menší než výstrahy časový interval.  Pokud hodnota je větší než časový interval, riskujete záznamů je vynechán.<br>Pokud je cílem za spolehlivé pro zpozdí až 30 minut a normální zpoždění je 10 minut, časový interval by měl být jednu hodinu a hodnota frekvence by měla být 10 minut. To by spustí výstrahu s daty, která má 10 minut přijímání zpoždění mezi 10 a 20 minut od při generování dat výstrah.<br>Vyhněte se vytváření více výstrah pro stejná data, protože časový interval je příliš široké, možnost potlačení výstrahy lze potlačit oznámení pro alespoň stejně dlouho jako časový interval.
   
 - **Prahová hodnota**. Výsledky hledání protokolů se vyhodnocují k určení, zda má být vytvořena výstraha. Prahová hodnota se liší pro různé typy pravidla výstrah.
 

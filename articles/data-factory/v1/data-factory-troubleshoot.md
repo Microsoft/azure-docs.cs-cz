@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -34,7 +34,7 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
 2. Přihlaste se k účtu Azure, pomocí následujícího příkazu.
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Spusťte následující příkaz pro registraci zprostředkovatele služby Azure Data Factory.
 
@@ -45,7 +45,7 @@ Pokud se zobrazí tato chyba, poskytovatel prostředků Azure Data Factory není
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problém: Neoprávněným Chyba při spuštění rutiny služby Data Factory
 Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo účet Azure. Pomocí následujících rutin vyberte správné předplatné a účet Azure pro použití s Azure PowerShellem.
 
-1. Login-AzureRmAccount - použití správné uživatelské ID a heslo
+1. Připojit-AzureRmAccount - použití správné uživatelské ID a heslo
 2. Get-AzureRmSubscription - zobrazte všechna předplatná pro účet.
 3. Select-AzureRmSubscription &lt;název odběru&gt; -vyberte správné předplatné. Použijte stejný jako ten, který používáte pro vytváření dat na portálu Azure.
 

@@ -8,4 +8,4 @@ Funkce Mobile Apps služby Azure App Service používá [Azure Notification Hubs
 Nyní jste se připojili centra oznámení projektu back-end mobilní aplikace. Později nakonfigurujete toto centrum oznámení pro připojení k systému oznámení platformy (PNS) k zařízení.
 
 [portál Azure]: https://portal.azure.com/
-[Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/
+[Azure Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-push-notification-overview/

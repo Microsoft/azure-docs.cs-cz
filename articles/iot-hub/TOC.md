@@ -78,6 +78,7 @@
 #### [Kvóty a omezování](iot-hub-devguide-quotas-throttling.md)
 #### [Příklady cen](iot-hub-devguide-pricing.md)
 #### [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)
+#### [Vývoj pro mobilní zařízení](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [Podpora MQTT](iot-hub-mqtt-support.md)
 #### [Glosář](iot-hub-devguide-glossary.md)
 ### [Použití sady SDK pro zařízení IoT pro C](iot-hub-device-sdk-c-intro.md)

@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory pro vývojáře | Dokumentace Microsoftu"
-description: "Seznam všech příručky a referenční dokumentace článků v příručce pro vývojáře Azure Active Directory."
+title: Azure Active Directory pro vývojáře | Dokumentace Microsoftu
+description: Seznam všech příručky a referenční dokumentace článků v příručce pro vývojáře Azure Active Directory.
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fe5d344eaaecc40f6d1937943603eda0404a1ca9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Články v příručce pro vývojáře Azure AD
 Následuje seznam všech témat zahrnutých v příručce pro vývojáře Azure Active Directory.
@@ -43,7 +43,7 @@ Tyto články popisují konkrétní koncepty a funkce služby Azure Active Direc
 | [Řídicí panel pro prodejce Office 365](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | Jak publikovat aplikace na řídicí panel prodejce O365 |
 | [Visual Studio připojené služby](vs-active-directory-dotnet-getting-started.md)                                               | Jak používat Azure AD integrace s projekty MVC v sadě Visual Studio |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | Postup při integraci s místní službě Active Directory pomocí služby AD FS |
-| [Osvědčené postupy zpracování chyb pro ADAL](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Postup povolení protokolování a zpracování odolné chyb sestavení |
+| [Osvědčené postupy zpracování chyb pro ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Postup povolení protokolování a zpracování odolné chyb sestavení |
 
 ## <a name="reference"></a>Referenční informace
 Tyto články poskytují základ pro REST a knihovny pro ověřování rozhraní API, protokoly, chyb, ukázky kódu a koncové body.

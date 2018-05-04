@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 215874020395faebd70b6dd15a29f1bf23638a84
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Podporu pro replikaci z jedné oblasti Azure do jiného
 
@@ -30,7 +30,7 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 --- | ---
 **Azure Portal** | Podporováno
 **Portál Classic** | Nepodporuje se
-**PowerShell** | Aktuálně nepodporuje
+**PowerShell** | [Preview](azure-to-azure-powershell.md)
 **REST API** | Aktuálně nepodporuje
 **Rozhraní příkazového řádku** | Aktuálně nepodporuje
 
@@ -95,22 +95,22 @@ Níže podpora je dostupná pro jakoukoli úlohu spuštěnou na uvedených opera
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14.04 LTS | 9.11 | 3.13.0-24-Generic k 3.13.0-125-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-Generic k 3.13.0-132-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-Generic k 3.13.0-137-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-104-generic |
 14.04 LTS | 9.14 | 3.13.0-24-Generic k 3.13.0-141-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-112-generic |
-16.04 LTS | 9.11 | 4.4.0-21-Generic k 4.4.0-83-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-27-generic |
+14.04 LTS | 9.15. | 3.13.0-24-Generic k 3.13.0-143-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-116-generic |
 16.04 LTS | 9.12 | 4.4.0-21-Generic k 4.4.0-96-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-Generic k 4.4.0-104-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic |
 16.04 LTS | 9.14 | 4.4.0-21-Generic k 4.4.0-112-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-32-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1009-azure |
+16.04 LTS | 9.15. | 4.4.0-21-Generic k 4.4.0-116-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-37-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze Debian jádra pro virtuální počítače Azure
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 k 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14, 9.15. | 3.2.0-4-amd64 k 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14, 9.15. | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Podporované souborové systémy a konfigurace úložiště hosta na virtuálních počítačích Azure spuštěn operační systém Linux.
 
@@ -125,7 +125,7 @@ Můžete replikovat a obnovení virtuálních počítačů mezi všechny dvěma 
 **Zeměpisná clusteru** | **Oblasti Azure**
 -- | --
 Amerika | Východní Kanada, Kanada centrální, Jižní střed USA, střed USA – Západ, východní USA, Východ USA 2, západ USA, západní USA 2, střed USA, střed USA – sever
-Evropa | Spojené království – Západ, Spojené království – Jih, Severní Evropa, západní Evropa
+Evropa | Spojené království – Západ, Spojené království – Jih, Severní Evropa, západní Evropa, střední, Francie Francie – jih
 Asie | Indie – Jih, střed, jihovýchodní Asie, východní Asie, Japonsko – východ, Japonsko – Západ, Korejská – střed, Korejská jih
 Austrálie   | Austrálie – východ, Austrálie – jihovýchod
 Azure Government    | Virginia verze pro státní správu USA, USA verze pro státní správu Iowa, USA verze pro státní správu Arizona, Texas verze pro státní správu USA, DOD USA – východ, DOD USA – střed

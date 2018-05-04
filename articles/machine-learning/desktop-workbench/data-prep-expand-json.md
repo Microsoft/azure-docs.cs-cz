@@ -1,6 +1,6 @@
 ---
-title: "Rozbalte položku pomocí Azure Machine Learning Workbench transformace JSON"
-description: "V referenčním dokumentu pro transformaci, rozbalte položku JSON."
+title: Rozbalte položku pomocí Azure Machine Learning Workbench transformace JSON
+description: V referenčním dokumentu pro transformaci, rozbalte položku JSON.
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 21de94d2d0d3cc12aabcb8e9e8b0eec39b0a2710
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="expand-json-transformation"></a>Rozbalte JSON transformace
 **Rozbalte JSON** transformace umožňuje uživatelům rozbalte jako existující sloupec, který obsahuje platný text JSON do více sloupců.

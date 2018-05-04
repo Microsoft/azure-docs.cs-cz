@@ -111,6 +111,8 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: Azure Traffic Manager se službou Site Recovery
       href: concepts-traffic-manager-with-site-recovery.md
+    - name: ExpressRoute se službou Site Recovery
+      href: concepts-expressroute-with-site-recovery.md
     - name: Nejčastější dotazy
       href: site-recovery-faq.md
 - name: Návody
@@ -119,12 +121,14 @@
       items:
         - name: Sítě
           items:
-            - name: Správa sítě pro zotavení po havárii virtuálního počítače Azure (Preview)
+            - name: Správa sítě pro zotavení po havárii virtuálního počítače Azure
               href: azure-to-azure-about-networking.md
             - name: Příprava mapování sítě pro zotavení po havárii virtuálního počítače Azure
               href: azure-to-azure-network-mapping.md
             - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
               href: site-recovery-retain-ip-azure-vm-failover.md
+            - name: ExpressRoute se zotavení po havárii virtuálního počítače Azure
+              href: azure-vm-disaster-recovery-with-expressroute.md
         - name: Zotavení po havárii
           items:
             - name: Zotavení po havárii virtuálních počítačů Azure po migraci do Azure

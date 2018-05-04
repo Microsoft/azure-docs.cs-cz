@@ -6,13 +6,13 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: cb011ee54894f53cda81d9d116899dcaeb558b6d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 278539a2451eb15c7148b75497798e81f5370a57
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Vytvoření indexu pro dokumenty v několika jazycích ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Mnoho webových a mobilních aplikací slouží uživatelé po celém světě po
 
 Pokud je znám jazyk agenta zadání dotazu může být žádost o vyhledávání vymezena na konkrétní pole pomocí **searchFields** parametr dotazu. Následující dotaz bude vydaný pouze pro popis v polština:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
 
 Indexu z portálu, se můžete dotazovat pomocí **Průzkumník služby Search** vložit v podobné výše uvedeném dotazu. Průzkumník služby Search je dostupné na panelu příkazů v okně služby. V tématu [dotazování indexu Azure Search na portálu](search-explorer.md) podrobnosti.
 
@@ -77,7 +77,7 @@ Někdy není znám jazyk agenta zadání dotazu, v takovém případě dotazu m�
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
 Pokud jste vývojář .NET, Všimněte si, že můžete nakonfigurovat pomocí analyzátory jazyka [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). Nejnovější verze zahrnuje podporu pro analyzátory jazyka Microsoft také.
 

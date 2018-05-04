@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 1ba2f2be8db424bddfccdf374704ec7be5691feb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Přehled Azure monitorování
 Tento článek obsahuje přehled služby Azure monitorování v Microsoft Azure. Popisuje, co monitorování Azure nepodporuje a poskytuje odkazy na další informace o tom, jak používat Azure monitorování.  Pokud upřednostňujete video úvod, najdete v části Další kroky odkazy v dolní části tohoto článku. 
@@ -108,7 +108,7 @@ Příklady obsahují:
 
 ### <a name="store-and-archive"></a>Úložiště a archivu
 Některá data monitorování již uložené a k dispozici v monitorování Azure pro sadu časového intervalu. 
-- Metriky se uchovávají po dobu 30 dnů. 
+- Metriky se uchovávají po dobu 90 dnů. 
 - Položky protokolu aktivity se uchovávají po dobu 90 dnů. 
 - Diagnostické protokoly nejsou uložené ve všech. 
 

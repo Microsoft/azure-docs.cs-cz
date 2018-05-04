@@ -36,6 +36,7 @@
 ## [Registrace aplikace](active-directory-integrating-applications.md)
 ## [Aplikace s více tenanty](active-directory-devhowto-multi-tenant-overview.md)
 ## [Podmíněný přístup](active-directory-conditional-access-developer.md)
+## [Oprávnění](active-directory-permissions.md)
 ## OAuth a OpenID Connect
 ### [Protokol OpenID Connect](active-directory-protocols-openid-connect-code.md)
 ### [Grant kódu ověřování OAuth 2.0](active-directory-protocols-oauth-code.md)
@@ -69,9 +70,9 @@
 ## [Migrace ACS](active-directory-acs-migration.md)
 ## [Osvědčené postupy zpracování chyb pro ADAL](active-directory-devhowto-adal-error-handling.md)
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)
-## [Článek s ukázkami kódu](active-directory-code-samples.md)
+## [Ukázky kódu podle scénáře](active-directory-code-samples.md)
 ## [Glosář](active-directory-dev-glossary.md)
 ## [Protokoly pro ověřování](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -97,7 +98,8 @@
 ### Mobilní aplikace a aplikace počítače
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [.NET (Windows Desktop)](guidedsetups/active-directory-windesktop.md)
+#### [Desktopová aplikace .NET pro Windows](guidedsetups/active-directory-windesktop.md)
+#### [Univerzální platforma Windows](guidedsetups/active-directory-uwp-v2.md)
 ### Webové aplikace
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
@@ -109,8 +111,10 @@
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Průvodci
 ### [Registrace aplikace](active-directory-v2-app-registration.md)
+### [Reference k registraci aplikací](active-directory-v2-registration-portal.md)
 ## Referenční informace
 ### [Knihovny ověřování](active-directory-v2-libraries.md)
+### [Ukázky kódu v2.0 podle scénáře](active-directory-v2-code-samples.md)
 ### [Protokoly pro ověřování v2.0](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [Udělení autorizačního kódu OAuth 2.0](active-directory-v2-protocols-oauth-code.md)

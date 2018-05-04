@@ -1,5 +1,5 @@
 ---
-title: "Zabezpečení Azure funkce, které pomáhají se správou identit | Microsoft Docs"
+title: Zabezpečení Azure funkce, které pomáhají se správou identit | Microsoft Docs
 description: " Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které pomáhají se správou identit. Microsoft identit a přístupu řešení Nápověda pro správu IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu, povolení další úrovně ověřování, jako je vícefaktorové ověřování a zásady podmíněného přístupu. "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 921d7eef90a86216dc13804d3dc4dd216247fb87
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: dcfc295de39e909bf157edee4fec1ba51a583750
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 Microsoft identit a přístupu řešení Nápověda pro správu IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu, povolení další úrovně ověřování, jako je vícefaktorové ověřování a zásady podmíněného přístupu. Monitorování podezřelé aktivity přes pokročilé zabezpečení vytváření sestav a auditování, výstrahy, pomáhá zmírnit potenciální potíže se zabezpečením. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování k tisícům cloudové aplikace (SaaS) a přístup k webové aplikace můžete spustit místně.
@@ -75,8 +75,8 @@ Azure Multi-Factor authentication (MFA) je metoda ověřování, který vyžaduj
 Další informace:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Co je Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-* [Jak funguje Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Co je Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md)
+* [Jak funguje Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Sledování zabezpečení, výstrahy a sestavy na základě learning počítače
 Sledování zabezpečení a výstrah a na základě learning sestav počítače, které identifikují nekonzistentní přístupové vzorce vám umožní chránit vaši firmu. Přístup k Azure Active Directory a sestavy využití, které slouží k získat přehled o integrity a zabezpečení adresáři vaší organizace. Tyto informace a správce directory pomohou určit, kde může být bezpečnostním rizikům, tak, aby adekvátní můžete naplánovat zmírnění.

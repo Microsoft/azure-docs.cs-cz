@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0e89b93764f51873d991524a5e226464c224b649
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="set-throughput-for-azure-cosmos-db-containers"></a>Nastavit propustnost pro Azure Cosmos DB kontejnery
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Nastavování a získávání propustnost pro Azure Cosmos DB kontejnery
 
 Propustnost lze nastavit pro Azure Cosmos DB kontejnerů na portálu Azure nebo pomocí sady SDK klienta. 
 
@@ -96,6 +96,43 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
+## <a id="GetLastRequestStatistics"></a>Získat propustnost pomocí příkazu GetLastRequestStatistics MongoDB API
+
+Rozhraní API MongoDB podporuje vlastního příkazu *getLastRequestStatistics*, pro načítání poplatky požadavku pro danou operaci.
+
+Například v prostředí Mongo provést operaci chcete ověřit žádost zdarma pro.
+```
+> db.sample.find()
+```
+
+Potom spusťte příkaz *getLastRequestStatistics*.
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+Myslete na to, jedné metody odhadnout velikost vyhrazenou propustností požadované aplikací je záznam zřizování jednotky žádosti přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a pak odhadnout počet operací, které předpokládáte provést každou sekundu.
+
+> [!NOTE]
+> Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte poplatků jednotek žádosti příslušné operace spojené s každou *typ* typické položky.
+> 
+> 
+
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Získat propustnost pomocí portálu metriky rozhraní API MongoDB
+
+Nejjednodušší způsob, jak získat dobrý odhad požadavku poplatky jednotky pro vaši databázi MongoDB rozhraní API je použití [portál Azure](https://portal.azure.com) metriky. S *počet požadavků, které* a *požadavek poplatků* grafy, můžete získat odhad kolik jednotek žádosti každý je náročné operace a kolik jednotek žádosti, které budou využívat relativně k jinému.
+
+![Rozhraní API MongoDB portálu metriky][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení omezení vyhrazenou propustností v rozhraní API MongoDB
+Aplikace, které překračují zřízená propustnost pro kontejner bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí ho preventivně požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
+
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 
 **Můžete nastavit Moje propustnosti na méně než 400 RU/s**
@@ -109,3 +146,5 @@ Nedojde k rozšíření rozhraní API MongoDB nastavit propustnost. Doporučuje 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o zřizování a probíhající planetu měřítku s Cosmos DB, najdete v části [dělení a škálování s Cosmos DB](partition-data.md).
+
+[1]: ./media/set-throughput/api-for-mongodb-metrics.png

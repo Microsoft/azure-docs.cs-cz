@@ -1,26 +1,24 @@
 ---
-title: "Vytvoření úlohy streamování Spark se přesně-jednou událostí zpracování - Azure HDInsight | Microsoft Docs"
-description: "Jak nastavit vysílání datového proudu Spark pro zpracování událostí po a pouze jednou."
+title: Vytvoření úlohy streamování Spark se přesně-jednou událostí zpracování - Azure HDInsight | Microsoft Docs
+description: Jak nastavit vysílání datového proudu Spark pro zpracování událostí po a pouze jednou.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ramoha
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: ramoha
-ms.openlocfilehash: ebab9ebc92ae1dff8902d618d0a474ce2b2a0af3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 61162a845f6620d7c6e5662baedfdbfae9b9653a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Spark se přesně-jednou událostí zpracování
 
@@ -74,7 +72,7 @@ Kontrolní body jsou povolené v vysílání datového proudu Spark ve dvou kroc
 
 2. Na DStream dále zadáním intervalu kontrolního bodu (v sekundách). V příslušném intervalu data o stavu odvozené od vstupní událost jako trvalý, do úložiště. Setrvalý stav dat může snížit výpočet potřebné při opětovném sestavování stav ze zdroje událostí.
 
-    val lines = ssc.socketTextStream("hostname", 9999)  lines.checkpoint(30)  ssc.start()  ssc.awaitTermination()
+    Val řádky = ssc.socketTextStream ("název hostitele", 9999) lines.checkpoint(30) ssc.start() ssc.awaitTermination()
 
 ### <a name="use-idempotent-sinks"></a>Použití idempotent jímky
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: be4aa45c919f579355c6ac6c5682c1537e9cc0cb
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2b690978c2d67dbf26b74ecd38a408cece91566
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Interní virtuální sítě pomocí služby Azure API Management
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není dostupný na Internetu. Počet technologie VPN jsou k dispozici pro připojení. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
@@ -81,7 +81,7 @@ Při vytváření služby API Management, například s názvem "contoso", jsou 
 
    * portál Azure a portál pro vývojáře: contoso.portal.azure api.net
 
-   * Direct management endpoint: contoso.management.azure-api.net
+   * Koncový bod přímá správa: contoso.management.azure api.net
 
    * Git: contoso.scm.azure-api.net
 
@@ -115,7 +115,7 @@ Všechny koncové body služby můžete poté přistoupit z virtuálního počí
 Další informace naleznete v následujících článcích:
 * [Běžné problémy s konfigurací sítě při nastavení Azure API Management ve virtuální síti][Common network configuration problems]
 * [Nejčastější dotazy k virtuální síti](../virtual-network/virtual-networks-faq.md)
-* [Vytvoření záznamu DNS](https://msdn.microsoft.com/en-us/library/bb727018.aspx)
+* [Vytvoření záznamu DNS](https://msdn.microsoft.com/library/bb727018.aspx)
 
 [api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png

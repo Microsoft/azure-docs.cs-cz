@@ -1,19 +1,19 @@
 ---
-title: "Použít koncept s Azure Container Service a Azure registru kontejneru"
-description: "Vytvořte cluster ACS Kubernetes a službu Azure Container Registry, abyste mohli vytvořit první aplikaci v Azure pomocí nástroje Draft."
+title: Použít koncept s Azure Container Service a Azure registru kontejneru
+description: Vytvořte cluster ACS Kubernetes a službu Azure Container Registry, abyste mohli vytvořit první aplikaci v Azure pomocí nástroje Draft.
 services: container-service
 author: squillace
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 68ad44bae0856ff000f2847049a15a946d83c0a3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Použití nástroje Draft se službami Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
@@ -99,7 +99,7 @@ Když teď máte cluster, můžete importovat přihlašovací údaje pomocí př
 ## <a name="install-and-configure-draft"></a>Instalace a konfigurace nástroje Draft
 
 
-1. Koncept pro vaše prostředí na https://github.com/Azure/draft/releases stáhněte a nainstalujte do své CESTĚ, tak, aby bylo možné použít příkaz.
+1. Stáhnout koncept pro vaše prostředí na https://github.com/Azure/draft/releases a instalaci do své CESTĚ, můžete použít příkaz.
 2. Stáhněte si helm pro vaše prostředí na https://github.com/kubernetes/helm/releases a [nainstalovat do své CESTĚ, aby bylo možné použít příkaz](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Nakonfigurujte Draft pro použití vašeho registru a vytvoření subdomény pro každý diagram Helmu, který vytvoří. Ke konfiguraci nástroje Draft potřebujete:
   - Název služby Azure Container Registry (v tomto příkladu `draftacsdemo`).

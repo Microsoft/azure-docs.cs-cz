@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s QPrism | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a QPrism."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a QPrism.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Kurz: Azure Active Directory integrace s QPrism
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je
 Konfigurace integrace Azure AD s QPrism, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- QPrism jednotného přihlašování povolené předplatné
+- QPrism jednotné přihlašování povolené předplatné
 
 Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
 
@@ -103,41 +103,22 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![QPrism domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_url.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL, která používá následující vzorec:`https://<customer domain>.qmyzone.com/login`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL, která používá následující vzorec: `https://<customer domain>.qmyzone.com/login`
 
-    b. V **identifikátor** textového pole zadejte adresu URL, která používá následující vzorec:`https://<customer domain>.qmyzone.com/metadata.php`
+    b. V **identifikátor** textového pole zadejte adresu URL, která používá následující vzorec: `https://<customer domain>.qmyzone.com/metadata.php`
          
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem a adresa URL přihlašování. Obraťte se na [tým podpory QPrism klienta](mailto:qsupport-ce@quatrro.com) k získání těchto hodnot. 
 
-4. Ke generování **Metadata** adresu URL, postupujte takto:
+4. Na **SAML podpisový certifikát** části, klikněte na tlačítko Kopírovat kopírování **adresu Url aplikace federační Metadata** a vložte do poznámkového bloku.
 
-    a. Vyberte **registrace aplikace**.
-    
-    ![Konfigurace aplikace přihlašování registrace](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. Vyberte **koncové body** otevřete **koncové body** dialogové okno.  
-    
-    ![Konfigurace jednoho přihlášení koncového bodu](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
-
-    c. Vyberte tlačítko Kopírovat, pokud chcete zkopírovat **dokument FEDERAČNÍCH METADAT** adresu URL a vložte do poznámkového bloku.
-    
-    ![Konfigurace jednoho přihlášení koncového bodu](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d. Nyní přejděte na stránku vlastností **QPrism**a zkopírujte **ID aplikace** pomocí **kopie**. Potom ho vložte do poznámkového bloku.
- 
-    ![Konfigurace ID aplikace jednotného přihlašování](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e. Vygenerovat **adresu URL metadat** pomocí vzoru následující:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
+     ![Odkaz ke stažení certifikátu](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
 5. Vyberte **Uložit**.
 
     ![Konfigurovat jednotné přihlašování tlačítko Uložit](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. Konfigurace jednotného přihlašování na **QPrism** straně, odesílat **adresu URL metadat** k [tým podpory QPrism](mailto:qsupport-ce@quatrro.com). Jejich ověřte, zda SAML jeden přihlašování připojení správně nastaveny na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco k nastavení aplikace. Po přidání této aplikace z **služby Active Directory** > **podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup k vložený dokumentace prostřednictvím **konfigurace** v dolní části. Si můžete přečíst informace o funkci embedded dokumentace: [Azure AD vložených dokumentaci]( https://go.microsoft.com/fwlink/?linkid=845985).
+6. Konfigurace jednotného přihlašování na **QPrism** straně, budete muset odeslat **adresu Url aplikace federační Metadata** k [tým podpory QPrism](mailto:qsupport-ce@quatrro.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -212,7 +193,7 @@ V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomo
 Na přístupovém panelu když vyberete dlaždici QPrism můžete by měl získat automaticky přihlášeni do vaší aplikace QPrism.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

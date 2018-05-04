@@ -3,7 +3,7 @@ title: Azure zásobníku obsluhy zásad | Microsoft Docs
 description: Další informace o Azure zásobníku údržby zásad a jak zajistit, aby integrovaný systém v podporovaném stavu.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/18/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 160ba42c5cbdd3e8b999040cba8254d4c87f7c63
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad Azure zásobníku
 Tento článek popisuje údržby zásady pro Azure zásobníku integrované systémy a co je třeba udělat, aby byl váš systém v podporovaném stavu. 
@@ -55,6 +55,9 @@ Chcete-li pokračovat, pokud chcete získat podporu, musí udržovat nasazením 
 Například pokud je 1805 nejnovější dostupné aktualizace verze a předchozí dva balíčky aktualizací byly verze 1804 a 1803, 1803 i 1804 zůstanou na podporu. 1802 však není podporován. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud aktuální verze je 1805 a došlo bez uvolnění 1804, předchozí dva balíčky aktualizací 1803 a 1802 zůstanou na podporu.
 
 Balíčky aktualizací softwaru společnosti Microsoft jsou oddělené a vyžaduje, aby předchozí balíček aktualizace předpokladem je. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
+
+## <a name="get-support"></a>Získat podporu
+Azure zásobníku postupuje stejně podporu jako Azure. Podnikoví zákazníci mohou postupujte podle procesu popsaného v tématu [postup vytvoření žádosti o podporu Azure](/azure/azure-supportability/how-to-create-azure-support-request). Pokud jste zákazníkem služby poskytovatele cloudové služby (CSP), požádejte o podporu zprostředkovatelem kryptografických služeb.  Další informace najdete v tématu [Azure podporu nejčastější dotazy k](https://azure.microsoft.com/support/faq/). 
 
 
 ## <a name="next-steps"></a>Další postup

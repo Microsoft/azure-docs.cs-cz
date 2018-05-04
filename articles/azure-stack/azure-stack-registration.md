@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 676dff1ae651d4754b96da52a68a9c7a7f35c2b8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zaregistrovat Azure zásobník Azure
 Registrace [zásobník Azure](azure-stack-poc.md) s Azure vám umožní stáhnout položky marketplace z Azure a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Po registraci Azure zásobníku využití údajně Azure obchodování a zobrazí se v rámci předplatného použít pro registraci. 
@@ -94,7 +94,7 @@ Tyto kroky použijte k registraci zásobník Azure s Azure pomocí fakturační 
 2. V dalším kroku ve stejné relaci prostředí PowerShell, ujistěte se, že jste se přihlásili na správný kontext Azure PowerShell. Toto je účet azure, která byla použita k registraci poskytovatele prostředků Azure zásobníku výše. Spusťte prostředí PowerShell: 
 
   ```powershell 
-  Login-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
+  Add-AzureRmAccount -Environment "<Either AzureCloud or AzureChinaCloud>" 
   ``` 
 
 3. Ve stejné relaci prostředí PowerShell, spusťte **Set-AzsRegistration** rutiny. Spusťte prostředí PowerShell:  
@@ -147,7 +147,7 @@ Pokud registrujete v odpojeném prostředí Azure zásobníku (s bez připojení
 
   ```Powershell
   $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<your agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+  $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
   ```
   
   > [!TIP]  

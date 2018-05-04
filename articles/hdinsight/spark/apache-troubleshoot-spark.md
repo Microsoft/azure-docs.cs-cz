@@ -1,25 +1,23 @@
 ---
-title: "Řešení potíží Spark pomocí Azure HDInsight | Microsoft Docs"
-description: "Získejte odpovědi na časté otázky týkající se práce s Apache Spark a Azure HDInsight."
-keywords: "Azure HDInsight Spark, – nejčastější dotazy, řešení potíží s průvodce, běžné problémy, konfigurace aplikace, Ambari"
+title: Řešení potíží Spark pomocí Azure HDInsight | Microsoft Docs
+description: Získejte odpovědi na časté otázky týkající se práce s Apache Spark a Azure HDInsight.
+keywords: Azure HDInsight Spark, – nejčastější dotazy, řešení potíží s průvodce, běžné problémy, konfigurace aplikace, Ambari
 services: Azure HDInsight
 documentationcenter: na
 author: arijitt
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 25D89586-DE5B-4268-B5D5-CC2CE12207ED
 ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: b75aca7d9f78cb425099cc33034b44a80d7b6b81
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c097a346e64fa378f171e0a0fe03155551da98ed
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Řešení potíží Spark pomocí Azure HDInsight
 
@@ -27,7 +25,7 @@ Další informace o hlavních problémů a jejich řešení při práci s Apache
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Konfigurování aplikací Spark pomocí Ambari v clusterech
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 V prostředí HDInsight byly dříve nastavené hodnoty konfigurace pro tento postup. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
@@ -96,7 +94,7 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Konfigurování aplikací Spark v clusterech pomocí poznámkového bloku Jupyter
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
 
@@ -111,7 +109,7 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Konfigurování aplikací Spark pomocí Livy v clusterech
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
@@ -128,7 +126,7 @@ Tyto změny jsou platné pro celý cluster, ale je možné přepsat při odesíl
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Konfigurování odeslání spark aplikace pomocí Spark v clusterech
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
 
@@ -193,7 +191,7 @@ java.lang.OutOfMemoryError
 
 Nejpravděpodobnější příčinou této výjimky je, že není dostatek paměti haldy je přidělen k virtuálním počítačům Java (JVMs). Tyto JVMs jsou spouštěny jako vykonavatelů nebo ovladače jako součást aplikací Spark. 
 
-### <a name="resolution-steps"></a>Kroky řešení
+### <a name="resolution-steps"></a>Postup řešení
 
 1. Určit maximální velikost dat Spark aplikace zpracovává. Můžete nastavit odhad, založené na maximální velikost vstupních dat, mezilehlá data, která je produkovaný transformace dat vstupní a výstupní data, která je vytvořena, když aplikace je další transformace mezilehlá data. Tento proces může být iterační, pokud nelze provádět počáteční formální odhad. 
 

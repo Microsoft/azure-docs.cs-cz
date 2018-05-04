@@ -4,15 +4,14 @@ description: Přečtěte si dokument white paper věnovaný migraci místních d
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 04/08/2018
+ms.topic: conceptual
+ms.date: 04/21/2018
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: be322596da0c3e5ba18aa64285c437cdb823fc4b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 8ba490998ea5f20efca591327716a6e39e9c1ba8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrating-your-on-premises-workloads-to-azure"></a>Migrace místních úloh do Azure
 
@@ -27,11 +26,11 @@ V této sérii článků o migraci se dozvíte, jak naplánovat a sestavit strat
 
 **Scénář** | **Řešení** | **Služby** | **Článek** 
 --- | --- | --- | ---
-[Scénář 1: Zjišťování a posouzení](migrate-scenarios-assessment.md) | Zjištění místních aplikací a dat a posouzení vhodnosti jejich migrace do Azure | Data Migration Assistant, služba Azure Migrate  | Nově dostupné
-**Scénář 2: Migrace metodou „lift and shift“** | Přesun hostování interních aplikací do Azure. Optimalizace v Azure po migraci. | Azure Site Recovery, Azure Database Migration Service, Azure SQL Database Managed Instance | Nově dostupné
-**Scénář 3: Refaktorování a migrace** | Modernizace a refaktorování místních zákaznických aplikací během migrace do Azure. | Plánuje se | Plánováno
-**Scénář 4: Úprava architektury a migrace** | Úprava architektury a migrace zákaznických transakčních webů během migrace do Azure | Plánuje se | Plánováno
-**Scénář 5: Opětovné sestavení** |Opětovné sestavení a migrace zákaznických aplikací a dat do Azure | Plánuje se | Plánováno
+[Scénář 1: Zjišťování a posouzení](migrate-scenarios-assessment.md) | Zjišťovat a vyhodnocení místní aplikace, data a infrastruktury pro migraci na Azure | Data Migration Assistant, služba Azure Migrate  | Nově dostupné
+**[Scénář 2: Metody opětovného hostování aplikace](migrate-scenarios-lift-and-shift.md)** | Navýšení a shift aplikace do Azure. | Azure Site Recovery, Azure Database Migration Service, Azure SQL Database Managed Instance | Nově dostupné
+**Scénář 3: Refaktorovat aplikace** | Refaktorovat aplikace během migrace do Azure. | Plánuje se | Plánováno
+**Scénář 4: Rearchitect aplikace** | Rearchitect aplikace během migrace do Azure. | Plánuje se | Plánováno
+**Scénář 5: Opětovné sestavení aplikace** |Opětovné sestavení aplikace během migrace do Azure | Plánuje se | Plánováno
 
 
 

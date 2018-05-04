@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 29bfc914dd5c1f4c8b5405ff0e7202b767d032b8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Spravovat dlouhodobé uchovávání záloh Azure SQL Database
 
@@ -90,7 +90,7 @@ Následující části ukazují, jak pomocí prostředí PowerShell nakonfigurov
 # $resourceGroup = “{resource-group-name}” 
 # $dbName = ”{database-name}”
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $subId
 
 # get the server

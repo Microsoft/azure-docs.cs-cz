@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.author: davidste
-ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: e46a816b9a0d66991b8f619135b657a0d51ba395
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connector-version-release-history"></a>Historie vydaných verzí konektoru
 Konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manager (MIM) jsou často aktualizuje.
@@ -34,7 +34,7 @@ Související odkazy:
 * [Stáhněte si nejnovější konektory](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Obecné konektor LDAP](active-directory-aadconnectsync-connector-genericldap.md) referenční dokumentace
 * [Obecné konektor SQL](active-directory-aadconnectsync-connector-genericsql.md) referenční dokumentace
-* [Web Services Connector](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) referenční dokumentace
+* [Web Services Connector](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) referenční dokumentace
 * [PowerShell Connector](active-directory-aadconnectsync-connector-powershell.md) referenční dokumentace
 * [Konektoru Lotus Domino](active-directory-aadconnectsync-connector-domino.md) referenční dokumentace
 
@@ -103,7 +103,7 @@ Související odkazy:
 * Lotus Notes:
   * Pokud možnost **povolit vlastní udělení licence certifikátorům pro organizace nebo organizační jednotky** je po exportu toku Domino, ale v době exportu, exportují se všechny atributy zakázán konektoru selže při exportu (Update) KeyNotFoundException dochází k synchronizaci. 
     * K tomu dojde, protože operace přejmenování se nezdařila při pokusu změnit rozlišující název (uživatelské jméno atribut) změnou jeden z atributů níže:  
-      - LastName
+      - Příjmení
       - FirstName
       - Indexována
       - AltFullName

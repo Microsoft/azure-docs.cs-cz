@@ -61,6 +61,8 @@
           href: logic-apps-content-type.md
         - name: Zpracování chyb a výjimek
           href: logic-apps-exception-handling.md
+        - name: Zpracování velkých zpráv
+          href: logic-apps-handle-large-messages.md
         - name: Zabezpečení aplikací logiky
           href: logic-apps-securing-a-logic-app.md
         - name: Vývoj vlastních konektorů

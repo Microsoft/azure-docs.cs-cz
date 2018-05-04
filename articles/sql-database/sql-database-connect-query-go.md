@@ -11,23 +11,23 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: v-daveng
-ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Použití jazyka Go k dotazování databáze SQL Azure
 
-Tento rychlý úvodní kurz ukazuje použití jazyka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) k připojení k databázi SQL Azure. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.
+Tento rychlý start ukazuje, jak se pomocí jazyka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) připojit k databázi SQL Azure. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:
+Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.
+- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
 
 - Máte nainstalovaný jazyk Go a související software pro váš operační systém:
 

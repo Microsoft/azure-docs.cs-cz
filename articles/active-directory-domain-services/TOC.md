@@ -16,7 +16,7 @@
 ## [Úloha 2: Konfigurace nastavení sítě](active-directory-ds-getting-started-network.md)
 ## [Úloha 3: Konfigurace skupiny správců a povolení služby Azure AD Domain Services](active-directory-ds-getting-started-admingroup.md)
 ## [Úloha 4: Aktualizace nastavení DNS pro virtuální síť](active-directory-ds-getting-started-dns.md)
-## [Úloha 5: Povolení synchronizace hesel](active-directory-ds-getting-started-password-sync.md)
+## [Úloha 5: Povolení synchronizace hodnoty hash hesel](active-directory-ds-getting-started-password-sync.md)
 
 # Postup
 ## [Kontrola stavu spravované domény](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Související
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

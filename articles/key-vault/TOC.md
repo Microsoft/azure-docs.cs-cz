@@ -1,4 +1,4 @@
-# [Dokumentace ke službě Key Vault](index.md)
+# [Dokumentace ke službě Key Vault](index.yml)
 
 # Přehled
 ## [Přehled služby Key Vault](key-vault-overview.md)
@@ -9,13 +9,13 @@
 ## [Vytvoření služby Key Vault – Portál](quick-create-portal.md)
 
 # Kurzy
-## [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md)
-# Ukázky
-## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=key-vault)
-# Koncepty
+## [Čtení tajného kódu ze služby Key Vault ](tutorial-web-application-keyvault.md)
 ## [Začínáme se službou Key Vault](key-vault-get-started.md)
 ## [Nastavení obměny klíčů a auditování](key-vault-key-rotation-log-monitoring.md)
 ## [Použití služby Key Vault z webové aplikace](key-vault-use-from-web-application.md)
+# Ukázky
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=key-vault)
+# Koncepty
 ## [Světy zabezpečení](key-vault-ovw-security-worlds.md)
 ## [Obnovitelné odstranění](key-vault-ovw-soft-delete.md)
 ## [Klíče účtu úložiště](key-vault-ovw-storage-keys.md)
