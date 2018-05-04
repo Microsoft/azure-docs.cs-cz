@@ -18,7 +18,7 @@ ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 2d9e0fc50bed4e8301a24a062407b490d688803d
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
 ---

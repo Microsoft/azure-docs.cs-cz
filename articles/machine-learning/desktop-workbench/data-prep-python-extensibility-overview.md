@@ -1,6 +1,6 @@
 ---
-title: "Pomocí Azure Machine Learning Data přípravy rozšiřitelnost Python | Microsoft Docs"
-description: "Tento dokument obsahuje přehled a příklady podrobné informace o použití kód Python rozšířit funkce Příprava dat"
+title: Pomocí Azure Machine Learning Data přípravy rozšiřitelnost Python | Microsoft Docs
+description: Tento dokument obsahuje přehled a příklady podrobné informace o použití kód Python rozšířit funkce Příprava dat
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Rozšíření dat přípravy Python
 Azure Machine Learning Data přípravy jako způsob vyplnění funkce mezery mezi integrované funkce, zahrnuje rozšíření na více úrovních. V tomto dokumentu jsme popisují rozšiřitelnost prostřednictvím skript v jazyce Python. 

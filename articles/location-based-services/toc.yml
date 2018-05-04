@@ -1,3 +1,5 @@
+- name: Základy Azure IoT
+  href: ../iot-fundamentals/index.yml
 - name: Dokumentace k Azure Location Based Services
   href: index.yml
 - name: Přehled
@@ -47,6 +49,32 @@
       href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: Rozhraní API pro mapové ovládací prvky – Javascript
       href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Předkonfigurovaná řešení IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: Centrum pro vývojáře Azure IoT

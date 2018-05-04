@@ -1,108 +1,174 @@
 ---
-title: "Vytvoření, odkaz, odstranit nebo přesunout integrace účtu v Azure logic apps | Microsoft Docs"
-description: "Postup vytvoření účtu integrace a propojit s logic apps"
+title: Vytvářet a spravovat účty pro integraci pro řešení B2B - Azure Logic Apps | Microsoft Docs
+description: Vytvoření, odkaz, přesunout a odstranit účty pro integraci pro integraci podnikových a řešení B2B službou Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: anneta
-editor: 
+documentationcenter: ''
+author: ecfan
+manager: SyntaxC4
+editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/23/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: fb1d0ceb26c5ed792f22051e2af10a7572200bdc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/30/2018
+ms.author: ecfan; LADocs
+ms.openlocfilehash: 8e31a84d4508075dcb7a1d7ad8a64fa8e142681d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="what-is-an-integration-account"></a>Co je integrace účet?
+# <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Vytvářet a spravovat účty pro integraci B2B řešení s logic apps
 
-Účet integrace poskytuje způsob pro váš podnik integrace aplikací, konkrétně logiku aplikace přistupovat ke a spravovat artefaktů B2B, například obchodní partnery, smlouvy, map, schémata, certifikáty a tak dále. Pokud chcete poskytnout tento přístup, propojte si účet integraci do aplikace logiky po a ujistěte se, že mají obě integrace účet a logiku aplikace *stejného umístění Azure*.
+Před sestavením [integrace enterprise a řešení B2B](../logic-apps/logic-apps-enterprise-integration-overview.md) s [Azure Logic Apps](../logic-apps/logic-apps-overview.md), nejprve musí mít na účet integrace, což je kde vytvářet, ukládat a spravovat B2B artefaktů, jako například obchodní partnery, smlouvy, map, schémata, certifikáty a tak dále. Než můžete svou aplikaci logiky práce s artefakty ve vašem účtu integrace a používat konektory B2B aplikace logiky, jako je ověření XML, je potřeba [propojte si účet integrace](#link-account) do aplikace logiky. Je propojit, musí mít obě integrace účet a logiku aplikace *stejné* umístění Azure nebo oblast.
 
-## <a name="create-an-integration-account"></a>Vytvoření účtu pro integraci
+Tento článek ukazuje, jak k provedení těchto úloh:
 
-1. Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal"). 
+* Vytvoření účtu integrace.
+* Propojte si účet integrace se aplikace logiky.
+* Přesunutí účtu integrace do jiné Azure skupiny prostředků nebo předplatného.
+* Odstranění účtu integrace.
 
-2. Z hlavní nabídky Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "integraci" a potom vyberte **účty pro integraci**.
+Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
 
-   ![Vytvoření účtu integrace](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-3. V horní části stránky, zvolte **přidat**.
+Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure.
 
-   ![Vyberte Přidat](./media/logic-apps-enterprise-integration-accounts/account-3.png)
+## <a name="create-integration-account"></a>Vytvoření účtu integrace
 
-4. Název účtu integrace a vyberte předplatné Azure, kterou chcete použít. Můžete buď vytvořit novou **skupiny prostředků** nebo vyberte existující skupinu prostředků. Vyberte **umístění** k hostování účtu integrace a **cenová úroveň**. Až budete připraveni, zvolte **vytvořit**.
+1. Z hlavní nabídky Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "účty pro integraci" jako filtr a vyberte **účty pro integraci**.
 
-   ![Zadejte podrobnosti pro váš účet integrace](./media/logic-apps-enterprise-integration-accounts/account-4.png)
+   ![Najít účty pro integraci](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-   Azure zřídí účtu integrace ve vybraném umístění, které by se měla dokončit během jedné minuty.
+2. V části **účty pro integraci**, zvolte **přidat**.
 
-5. Aktualizujte stránku. Zobrazí váš nový účet integrace, které jsou uvedené.
+   ![Zvolte možnost "Přidat" k vytvoření účtu integrace](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
-   ![Zobrazí se váš nový účet integrace](./media/logic-apps-enterprise-integration-accounts/account-5.png) 
+3. Zadejte informace o vašem účtu integrace: 
 
-V dalším kroku propojte integrace účet, který jste vytvořili pro svou aplikaci logiky. 
+   ![Zadejte podrobnosti pro váš účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-## <a name="link-an-integration-account-to-a-logic-app"></a>Účet integrace propojit aplikaci logiky
+   | Vlastnost | Požaduje se | Příklad hodnoty | Popis | 
+   |----------|----------|---------------|-------------|
+   | Název | Ano | Test integrace account | Název účtu integrace. V tomto příkladu pomocí zadaného názvu. | 
+   | Předplatné | Ano | <*Název předplatného Azure*> | Název předplatného Azure k použití | 
+   | Skupina prostředků | Ano | Test integrace účet rg | Název [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k organizování související prostředky. V tomto příkladu vytvořte novou skupinu prostředků se zadaným názvem. | 
+   | Cenová úroveň | Ano | Free | Cenovou úroveň, kterou chcete použít. V tomto příkladu vyberte **volné**. | 
+   | Umístění | Ano | Západní USA | Oblast kam se mají ukládat informace o integraci účtu. Buď vyberte stejné umístění jako svou aplikaci logiky, nebo vytvoření aplikace logiky ve stejném umístění jako účet integrace. V tomto příkladu | 
+   | Log Analytics | Ne | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
+   ||||| 
 
-Umožnit logiky aplikace přístup k artefaktům B2B, jako je například obchodní partnery, smlouvy, mapy a schémata ve vašem účtu integrace propojit účet integrace do aplikace logiky. 
+4. Až budete připraveni, vyberte **připnout na řídicí panel**a zvolte **vytvořit**.
 
-1. Na portálu Azure vyberte svou aplikaci logiky a zkontrolujte umístění svou aplikaci logiky.
+   Po Azure nasadí do vybraného umístění, což obvykle ukončí během jedné minuty, váš účet integrace Azure otevře účtu integrace.
 
-   ![Vyberte svou aplikaci logiky, zkontrolujte umístění](./media/logic-apps-enterprise-integration-accounts/linkaccount-1.png)
+   ![Otevře účtu integrace Azure](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-created.png)
 
-2. V části **nastavení**, vyberte **integrace účet**.
+Teď aplikaci logiky můžete používat svůj účet integrace, musí propojit účet integraci do aplikace logiky.
 
-   ![Vyberte "Účet integrace"](./media/logic-apps-enterprise-integration-accounts/linkaccount-2.png)
+<a name="link-account"></a>
 
-3. Z **vyberte účet, integrace** seznamu, vyberte integrace účet, který chcete propojit do aplikace logiky. K dokončení propojení, zvolte **Uložit**.
+## <a name="link-to-logic-app"></a>Odkaz na aplikaci logiky
 
-   ![Vyberte svůj účet integrace](./media/logic-apps-enterprise-integration-accounts/linkaccount-3.png)
+Umožnit přístup vašich aplikací logiky na integraci účet, který obsahuje B2B artefaktů, jako je například obchodní partnery, smlouvy, mapy a schémat, musí váš účet integrace propojit aplikaci logiky. 
 
-   Zobrazí se oznámení, že zobrazuje svoji integraci do aplikace logiky je propojený účet a všechny artefakty ve vašem účtu integrace jsou nyní k dispozici pro svou aplikaci logiky.
+> [!NOTE]
+> Integrace účet a logiku aplikace, musí existovat ve stejné oblasti.
 
-   ![Aplikace logiky je propojený s vaším účtem integrace](./media/logic-apps-enterprise-integration-accounts/linkaccount-5.png)
+1. Na portálu Azure najít a otevřít aplikaci logiky.
 
-Teď, když je propojené účtu integrace aplikace logiky, můžete použít konektory B2B ve vaší aplikaci logiky. Některé běžné konektory B2B zahrnují ověření XML a plochý soubor kódování nebo dekódování.  
+2. V nabídce aplikace logiky v části **nastavení**, vyberte **nastavení pracovních postupů**. V **vyberte účet, integrace** vyberte integrace účet, který chcete propojit aplikaci logiky.
 
-## <a name="delete-your-integration-account"></a>Odstranění účtu integrace
+   ![Vyberte svůj účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-2.png)
 
-1. Z hlavní nabídky Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "integraci" a potom vyberte **účty pro integraci**.
+3. K dokončení propojení, zvolte **Uložit**.
 
-   ![Najít váš účet integrace](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+   ![Vyberte svůj účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-3.png)
 
-2. Vyberte integrační účet, který chcete odstranit.
+   Pokud váš účet integrace byl úspěšně propojen, Azure zobrazuje potvrzovací zpráva. 
 
-    ![Vyberte účet integrace odstranit](./media/logic-apps-enterprise-integration-accounts/account-5.png)
+   ![Azure potvrzuje úspěšné odkaz](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-5.png)
 
-3. V nabídce zvolte **odstranit**.
+Aplikace logiky teď můžete použít všechny a všechny artefakty v účtu integrace plus konektory B2B, jako je ověření XML a plochý soubor kódování nebo dekódování.  
 
-    ![Zvolte "Odstranit"](./media/logic-apps-enterprise-integration-accounts/delete.png)
+## <a name="unlink-from-logic-app"></a>Zrušit propojení aplikace logiky
 
-4. Potvrďte volbu Odstranit účet integrace.
+Propojení aplikace logiky na jiný účet integrace nebo nadále používat účet integrace s svou aplikaci logiky, můžete odstranit odkaz pomocí Průzkumníka prostředků Azure.
 
-## <a name="move-your-integration-account"></a>Přesunutí účtu integrace
+1. V prohlížeči přejděte na <a href="https://resources.azure.com" target="_blank">Průzkumníka prostředků Azure (https://resources.azure.com)</a>. Ujistěte se, že jste přihlášení pomocí stejných přihlašovacích údajů Azure.
 
-Pokud chcete přesunout účet integrace Azure jiné předplatné nebo prostředek skupiny, postupujte podle těchto kroků. Po přesunutí účtu integrace, ujistěte se, aktualizovat všechny skripty používat nové ID prostředku.
+   ![Průzkumník prostředků Azure](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 
-1. Z hlavní nabídky Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "integraci" a potom vyberte **účty pro integraci**.
+2. Do vyhledávacího pole zadejte název aplikace logiky, pak najít a vyberte svou aplikaci logiky.
 
-   ![Najít váš účet integrace](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+   ![Najděte a vyberte aplikaci logiky](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-2. Vyberte integrační účet, který chcete přesunout. V části **nastavení**, zvolte **vlastnosti**.
+3. V záhlaví okna Průzkumníka, zvolte **pro čtení a zápis**.
 
-   ![Vyberte účet integrace přesunout. V části Nastavení vyberte možnost Vlastnosti](./media/logic-apps-enterprise-integration-accounts/move.png)
+   ![Zapnout režim "Pro čtení a zápis"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-read-write-mode.png)
 
-3. Změňte skupinu prostředků nebo předplatného Azure, který je spojen s vaším účtem integrace.
+4. Na **Data** , zvolte **upravit**.
 
-   ![Vyberte skupiny prostředků změnu nebo změnu předplatného](./media/logic-apps-enterprise-integration-accounts/move-2.png)
+   ![Na kartě "Data" Vyberte "Upravit"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-edit.png)
+
+5. V editoru, najdete `integrationAccount` vlastnost pro integraci účtu a odstranit tuto vlastnost, která má tento formát:
+
+   ```json
+   "integrationAccount": {
+      "name": "<integration-account-name>",
+      "id": "<integration-account-resource-ID>",
+      "type": "Microsoft.Logic/integrationAccounts"  
+   },
+   ```
+
+   Příklad:
+
+   ![Najít definici vlastnosti "integrationAccount"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
+
+6. Na **Data** , zvolte **Put** uložte provedené změny. 
+
+   ![Zvolte "Put" se uložit změny](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
+
+7. Na portálu Azure v rámci aplikace logiky **nastavení pracovních postupů**, zkontrolujte, zda **integrace účet** vlastnost se teď zobrazí prázdné.
+
+   ![Zkontrolujte, že není propojený účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
+
+## <a name="move-integration-account"></a>Přesunutí účtu integrace
+
+Váš účet integrace můžete přesunout do jiné Azure předplatné nebo prostředek skupiny.
+
+1. V hlavní nabídce Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "účty pro integraci" jako filtr a vyberte **účty pro integraci**.
+
+   ![Najít váš účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
+
+2. V části **účty pro integraci**, vyberte účet integrace, který chcete přesunout. Na svoji integraci účet nabídce v části **nastavení**, zvolte **vlastnosti**.
+
+   ![V části "Nastavení" Vyberte možnost "Vlastnosti"](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-properties.png)
+
+3. Změňte skupinu prostředků Azure nebo předplatné pro váš účet integrace.
+
+   ![Zvolte "Změnit skupinu prostředků" nebo "Změnit předplatné"](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
+
+4. Když jste hotovi, ujistěte se, aktualizovat všechny skripty se nové ID prostředku pro artefakty.  
+
+## <a name="delete-integration-account"></a>Odstranění účtu integrace
+
+1. V hlavní nabídce Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "účty pro integraci" jako filtr a vyberte **účty pro integraci**.
+
+   ![Najít váš účet integrace](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
+
+2. V části **účty pro integraci**, vyberte účet integrace, který chcete odstranit. V nabídce účtu integrace zvolte **přehled**, zvolte **odstranit**. 
+
+   ![Vyberte účet integrace. Na stránce "Přehled" Vyberte "Odstranit"](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
+
+3. Chcete-li potvrdit, že chcete odstranit účet integrace, zvolte **Ano**.
+
+   ![Potvrďte volbu odstranit, zvolte tlačítko Ano.](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md "Další informace o integraci smlouvy enterprise")  
-
+* [Vytvoření obchodními partnery](../logic-apps/logic-apps-enterprise-integration-partners.md)
+* [Vytvoření smlouvy](../logic-apps/logic-apps-enterprise-integration-agreements.md)

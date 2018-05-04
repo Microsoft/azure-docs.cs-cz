@@ -1,6 +1,6 @@
 ---
-title: Přístup k vytváření sestav - Azure RBAC | Microsoft Docs
-description: Vygenerujte sestavu, která uvádí všechny změny v přístupu k vašemu předplatnému Azure pomocí řízení přístupu na základě rolí za posledních 90 dnů.
+title: Zobrazit protokoly aktivity pro RBAC změny v Azure | Microsoft Docs
+description: Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí za posledních 90 dnů.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,55 +11,133 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2017
+ms.date: 04/23/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deef89e62dcec3141be46549cc0fb34b33a6335a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5e09ccdc4942a39e54b760cb5ad78c035dbc05f8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="create-an-access-report-for-role-based-access-control"></a>Vytvoření sestavy přístup k řízení přístupu na základě rolí
-Vždy, když někdo uděluje nebo odvolá přístup v rámci vašich předplatných, změny se budou protokolovat do Azure událostí. Můžete vytvořit sestavy historie změn přístupu zobrazíte všechny změny za posledních 90 dnů.
+# <a name="view-activity-logs-for-role-based-access-control-changes"></a>Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí
 
-## <a name="create-a-report-with-azure-powershell"></a>Vytvoření sestavy pomocí prostředí Azure PowerShell
-K vytvoření sestavy historie změn přístupu v prostředí PowerShell, použijte [Get-AzureRMAuthorizationChangeLog](/powershell/module/azurerm.resources/get-azurermauthorizationchangelog) příkaz.
+Vždy, když někdo provede změny definice rolí nebo přiřazení rolí v rámci vašich předplatných, změny se budou protokolovat [protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) v administrativní kategorie. Můžete zobrazit protokoly aktivity zobrazíte všechny změny přístupu na základě rolí k řízení (RBAC) za posledních 90 dnů.
 
-Při volání tento příkaz můžete určit kterou vlastnost tohoto přiřazení uveden v seznamu, včetně následujících:
+## <a name="operations-that-are-logged"></a>Operace, které se protokolují
 
-| Vlastnost | Popis |
-| --- | --- |
-| **Akce** |Jestli byl přístup udělen nebo odebrán |
-| **volající** |Vlastník zodpovědná za změnu přístup |
-| **principalId** | Jedinečný identifikátor uživatele, skupiny nebo aplikace, kterému byla přiřazena role |
-| **PrincipalName** |Jméno uživatele, skupiny nebo aplikace |
-| **PrincipalType** |Jestli přiřazení byla pro uživatele, skupiny nebo aplikace |
-| **hodnoty vlastnosti roleDefinitionId** |Identifikátor GUID role, který byl udělen nebo odebrán |
-| **RoleName** |Role, který byl udělen nebo odebrán |
-| **Rozsah** | Jedinečný identifikátor předplatné, skupinu prostředků nebo prostředek, který se vztahuje na přiřazení | 
-| **ScopeName** |Název předplatné, skupinu prostředků nebo prostředek |
-| **ScopeType** |Jestli přiřazení byl v předplatné, skupinu prostředků nebo prostředek oboru |
-| **časové razítko** |Datum a čas, která byla změněna přístup |
+Zde jsou operací souvisejících s RBAC, které se zaznamenávají v protokolu aktivit:
 
-Příkaz v tomto příkladu jsou uvedeny všechny změny v přístupu v rámci předplatného pro posledních sedmi dnech:
+- Vytvořit nebo aktualizovat vlastní definici role
+- Odstranit definice rolí
+- Vytvořit přiřazení role
+- Odstranit přiřazení role
+
+## <a name="azure-portal"></a>Azure Portal
+
+Nejjednodušší způsob, jak začít pracovat se má zobrazit protokoly aktivity pomocí portálu Azure. Následující snímek obrazovky ukazuje příklad protokol činnosti filtrovanou zobrazíte **správy** kategorie spolu s definice role a operace přiřazení role. Zahrnuje také odkaz ke stažení protokolů do souboru CSV.
+
+![Protokoly aktivity portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
+
+Další informace najdete v tématu [zobrazit události v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+
+## <a name="azure-powershell"></a>Azure PowerShell
+
+Chcete-li zobrazit protokoly aktivity s prostředím Azure PowerShell, použijte [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) příkaz.
+
+Tento příkaz vypíše všechny změny v přiřazení role v rámci předplatného pro posledních sedmi dnech:
+
+```azurepowershell
+Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
+```
+
+Tento příkaz vypíše všechny změny definice role ve skupině prostředků pro posledních sedmi dnech:
+
+```azurepowershell
+Get-AzureRmLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
+```
+
+Tento příkaz zobrazí všechny změny definice role v rámci předplatného pro posledních sedmi dnech a přiřazení role a zobrazí výsledky v seznamu:
+
+```azurepowershell
+Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
+```
+
+```Example
+Caller                  : alain@example.com
+EventTimestamp          : 4/20/2018 9:18:07 PM
+$_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
+Properties              :
+                          statusCode     : Created
+                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+
+Caller                  : alain@example.com
+EventTimestamp          : 4/20/2018 9:18:05 PM
+$_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
+Properties              :
+                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
+                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast"}}
 
 ```
-Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
+
+## <a name="azure-cli"></a>Azure CLI
+
+Chcete-li zobrazit protokoly aktivity pomocí Azure CLI, použijte [az monitorování protokol aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkaz.
+
+Tento příkaz vypíše protokoly aktivit ve skupině prostředků od čas spuštění:
+
+```azurecli
+az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
 ```
 
-![Prostředí PowerShell Get-AzureRMAuthorizationChangeLog – snímek obrazovky](./media/change-history-report/access-change-history.png)
+Tento příkaz vypíše protokoly aktivity pro poskytovatele prostředků autorizace od čas spuštění:
 
-## <a name="create-a-report-with-azure-cli"></a>Vytvoření sestavy pomocí rozhraní příkazového řádku Azure
-K vytvoření sestavy historie změn přístupu v rozhraní příkazového řádku Azure (CLI), použijte `azure role assignment changelog list` příkaz.
+```azurecli
+az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
+```
 
-## <a name="export-to-a-spreadsheet"></a>Export do tabulky
-Pokud chcete sestavu uložit nebo manipulovat s daty, exportujte přístup změny do souboru CSV. Potom můžete zobrazit zprávu v tabulce ke kontrole.
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-![Protokol změn zobrazit jako tabulku – snímek obrazovky](./media/change-history-report/change-history-spreadsheet.png)
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete shromažďovat a analyzovat změny řízení přístupu na základě rolí pro všechny prostředky Azure. Analýzy protokolů má následující výhody:
+
+- Zápis složitých dotazů a logiku
+- Integrovat výstrahy, Power BI a další nástroje
+- Uložení dat po delší dobu uchovávání dat
+- Vytvořit křížový odkaz s další protokoly, jako je například zabezpečení, virtuální počítač a vlastní
+
+Zde jsou základní kroky, abyste mohli začít:
+
+1. [Vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
+
+1. [Nakonfigurujte řešení, analýzy protokolů aktivity](../log-analytics/log-analytics-activity.md#configuration) vašeho pracovního prostoru.
+
+1. [Zobrazit protokoly aktivity](../log-analytics/log-analytics-activity.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Analytics protokolu aktivit je kliknout na odkaz **analýzy protokolů** možnost.
+
+   ![Log Analytics možnost portálu](./media/change-history-report/azure-log-analytics-option.png)
+
+1. Volitelně můžete použít [hledání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [pokročilé analýzy portál](https://docs.loganalytics.io/docs/Learn) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možností najdete v tématu [stránky hledání protokolu nebo portálu pokročilé analýzy](../log-analytics/log-analytics-log-search-portals.md).
+
+Zde je dotaz, který vrátí nové přiřazení role uspořádané podle zprostředkovatel prostředků cíle:
+
+```
+AzureActivity
+| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
+| summarize count(), makeset(Caller) by TargetResourceAuthProvider
+```
+
+Zde je dotaz, který vrátí změny v přiřazení role v grafu zobrazí:
+
+```
+AzureActivity
+| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationName
+| render timechart
+```
+
+![Protokoly aktivity pomocí portálu Advanced Analytics – snímek obrazovky](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Další postup
-* Práce s [vlastní role v Azure RBAC](custom-roles.md)
-* Naučte se spravovat [RBAC Azure pomocí prostředí powershell](role-assignments-powershell.md)
-
+* [Zobrazení událostí v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Sledování aktivity předplatné s protokol činnosti Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

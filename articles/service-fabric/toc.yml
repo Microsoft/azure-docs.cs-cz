@@ -246,11 +246,13 @@
       items:
         - name: Přehled monitorování
           href: service-fabric-diagnostics-overview.md
-        - name: Události clusteru
+        - name: Monitorování clusteru
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
-            - name: Provozní kanál
-              href: service-fabric-diagnostics-event-generation-operational.md
+            - name: Události služby Service Fabric
+              href: service-fabric-diagnostics-events.md
+            - name: Přehled EventStoru
+              href: service-fabric-diagnostics-eventstore.md
             - name: Události Reliable Services
               href: service-fabric-reliable-services-diagnostics.md
             - name: Události Reliable Actors
@@ -507,6 +509,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Resource Manager
                   href: service-fabric-cluster-creation-via-arm.md
+                - name: Cluster využívající běžný název certifikátu
+                  href: service-fabric-create-cluster-using-cert-cn.md
             - name: Měřítko
               items:
                 - name: Ručně
@@ -519,6 +523,10 @@
               href: service-fabric-cluster-security-roles.md
             - name: Otevření portu v nástroji pro vyrovnávání zatížení
               href: create-load-balancer-rule.md
+            - name: Změna certifikátu clusteru na běžný název
+              href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+            - name: Ruční přesměrování certifikátů clusteru
+              href: service-fabric-cluster-rollover-cert-cn.md
             - name: Správa certifikátů clusteru
               href: service-fabric-cluster-security-update-certs-azure.md
             - name: Odstranění
@@ -567,6 +575,8 @@
               href: service-fabric-diagnostics-oms-containers.md
         - name: Monitorování clusterů
           items:
+            - name: Dotazování rozhraní API EventStoru
+              href: service-fabric-diagnostics-eventstore-query.md
             - name: Diagnostika Azure pro Windows
               href: service-fabric-diagnostics-event-aggregation-wad.md
             - name: Diagnostika Azure pro Linux
@@ -630,6 +640,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: Události služby Service Fabric
+      href: service-fabric-diagnostics-event-generation-operational.md
     - name: Konfigurace nastavení clusteru a zásad upgradu prostředků infrastruktury
       href: service-fabric-cluster-fabric-settings.md
     - name: Schéma XML modelu služeb

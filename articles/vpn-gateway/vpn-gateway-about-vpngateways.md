@@ -1,45 +1,44 @@
 ---
-title: 'Přehled o branách VPN: Vytváření připojení VPN mezi místy a virtuálními sítěmi Azure | Dokumentace Microsoftu'
-description: Tento článek vysvětluje, co je brána VPN, a ukazuje způsoby připojení k virtuálním sítím Azure pomocí připojení VPN přes internet. Součástí článku jsou diagramy základní konfigurace připojení.
+title: Azure VPN Gateway | Microsoft Docs
+description: Zjistěte, co je brána VPN a jak se pomocí ní můžete připojit k virtuálním sítím Azure. Zahrnuje řešení IPSec/IKE typu Site-to-Site mezi místními sítěmi a IPSec/IKE typu VNet-to-VNet a sítě VPN typu Point-to-Site.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
-tags: azure-resource-manager,azure-service-management
+tags: azure-resource-manager
+Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 405af7d1191e8ea3c0ba1c526f0c5a526aef795b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="about-vpn-gateway"></a>Informace o službě VPN Gateway
+# <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
-Služba VPN Gateway je typem brány virtuální sítě, která odesílá šifrovaný síťový provoz přes veřejné spojení do místního umístění. Brány VPN můžete použít také k posílání šifrovaného provozu mezi virtuálními sítěmi Azure po síti Microsoftu. Pokud chcete posílat šifrovaný síťový provoz mezi virtuální sítí Azure a místní sítí, musíte pro virtuální síť vytvořit bránu VPN.
-
-Každá virtuální síť může mít pouze jednu bránu VPN. Můžete ale vytvořit více připojení ke stejné bráně VPN. Příkladem je konfigurace připojení typu Multi-Site. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN, včetně sítí VPN typu Point-to-Site, sdílejí šířku pásma, která je pro tuto bránu dostupná.
+Brána VPN je specifický typ brány virtuální sítě, která se používá k posílání šifrovaného provozu mezi virtuální sítí Azure a místním umístěním přes veřejný internet. Bránu VPN můžete použít také k posílání šifrovaného provozu mezi virtuálními sítěmi Azure po síti Microsoftu. Každá virtuální síť může mít pouze jednu bránu VPN. K jedné bráně VPN však můžete vytvořit několik připojení. Když vytvoříte několik připojení ke stejné bráně VPN, všechny tunely VPN sdílejí dostupnou šířku pásma.
 
 ## <a name="whatis"></a>Co je brána virtuální sítě?
 
-Bránu virtuální sítě tvoří dva nebo více virtuálních počítačů nasazených v konkrétní podsíti, která se nazývá GatewaySubnet. Virtuální počítače, které se nachází v podsíti GatewaySubnet, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě GatewaySubnet byste nikdy neměli nasazovat další prostředky.
+Bránu virtuální sítě tvoří dva nebo více virtuálních počítačů nasazených v konkrétní podsíti, která se nazývá *podsíť brány*. Virtuální počítače, které se nachází v podsíti brány, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě brány byste nikdy neměli nasazovat další prostředky.
 
-Při vytvoření brány virtuální sítě pomocí brány typu VPN se vytvoří konkrétní typ brány virtuální sítě, která šifruje provoz – brána VPN. Vytvoření brány VPN může trvat až 45 minut. Důvodem je to, že virtuální počítače pro bránu VPN se nasazují do podsítě GatewaySubnet a konfigurují pomocí zadaného nastavení. SKU brány, kterou vyberete, určuje výkonnost virtuálních počítačů.
+Dokončení vytváření brány sítě VPN může trvat až 45 minut. Při vytvoření brány VPN se virtuální počítače brány nasadí do podsítě brány a nakonfigurují s použitím nastavení, které zadáte. Po vytvoření brány VPN můžete vytvořit tunelové propojení IPsec/IKE mezi touto bránou VPN a jinou bránou VPN (VNet-to-VNet) nebo tunelové propojení IPsec/IKE mezi místními sítěmi mezi bránou VPN a místním zařízením VPN (Site-to-Site). Můžete vytvořit také připojení VPN typu Point-to-Site (připojení VPN přes protokol IKEv2 nebo SSTP), které umožňuje připojení k virtuální síti ze vzdáleného umístění, například z konference nebo z domova.
 
 ## <a name="configuring"></a>Konfigurace služby VPN Gateway
 
-Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných se specifickými nastaveními. Většinu prostředků lze nakonfigurovat jednotlivě, nicméně v některých případech je třeba je konfigurovat v určitém pořadí.
+Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných se specifickými nastaveními. Většinu prostředků je možné nakonfigurovat jednotlivě, nicméně některé prostředky je potřeba konfigurovat v určitém pořadí.
 
 ### <a name="settings"></a>Nastavení
 
-Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření úspěšného připojení zásadní. Informace o jednotlivých prostředcích a nastaveních služby VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md). Tento článek obsahuje informace, které vám pomůžou pochopit typy bran, typy sítí VPN, typy připojení, podsítě brány, místní síťové brány a různá další nastavení prostředků, o kterých možná uvažujete.
+Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření úspěšného připojení zásadní. Informace o jednotlivých prostředcích a nastaveních služby VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md). Tento článek obsahuje informace, které vám pomůžou pochopit typy bran, skladové položky bran, typy sítí VPN, typy připojení, podsítě brány, místní síťové brány a různá další nastavení prostředků, o kterých možná uvažujete.
 
 ### <a name="tools"></a>Nástroje pro nasazení
 
@@ -47,7 +46,7 @@ Prostředky můžete začít vytvářet a konfigurovat pomocí konfiguračního 
 
 ### <a name="models"></a>Model nasazení
 
-Kroky při konfiguraci brány VPN se budou lišit v závislosti na modelu nasazení, který jste použili k vytvoření virtuální sítě. Například pokud jste virtuální síť vytvořili pomocí modelu nasazení Classic, budete při vytváření a konfiguraci brány VPN postupovat podle pokynů pro model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Pochopení modelů nasazení Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md).
+Pro Azure aktuálně existují dva modely nasazení. Kroky při konfiguraci brány VPN se budou lišit v závislosti na modelu nasazení, který jste použili k vytvoření virtuální sítě. Například pokud jste virtuální síť vytvořili pomocí modelu nasazení Classic, budete při vytváření a konfiguraci brány VPN postupovat podle pokynů pro model nasazení Classic. Další informace o modelech nasazení najdete v tématu [Pochopení modelů nasazení Resource Manager a Classic](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ### <a name="planningtable"></a>Plánovací tabulka
 
@@ -83,7 +82,7 @@ Připojení brány VPN typu Site-to-Site (S2S) je připojení přes tunel VPN pr
 
 ### <a name="Multi"></a>Multi-Site
 
-Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma. To se často označuje jako připojení „více lokalit“ (Multi-Site).
+Tento typ připojení je variací připojení Site-to-Site. Z brány virtuální sítě vytvoříte několik připojení VPN, obvykle pro připojení k několika místním lokalitám. Při práci s několika připojeními je nutné použít typ sítě VPN RouteBased (při práci s klasickými virtuálními sítěmi se označuje jako dynamická brána). Vzhledem k tomu, že virtuální síť může mít jenom jednu bránu virtuální sítě, všechna připojení prostřednictvím brány sdílejí dostupnou šířku pásma. Tento typ připojení se často označuje jako připojení „s více lokalitami“ (multi-site).
 
 ![Příklad propojení Multi-Site pomocí Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -130,11 +129,11 @@ Pokud virtuální síť splňuje určité požadavky, je možné k vytvoření p
 
 ## <a name="ExpressRoute"></a>ExpressRoute (soukromé připojení)
 
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
 Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet.
 
-Připojení typu ExpressRoute nepoužívá bránu sítě VPN, přestože brána virtuální sítě využívá jako součást požadované konfigurace. U připojení ExpressRoute je brána virtuální sítě nakonfigurovaná s typem ExpressRoute (a ne Vpn). Další informace o ExpressRoute najdete v [Technickém přehledu ExpressRoute](../expressroute/expressroute-introduction.md).
+Připojení ExpressRoute využívá jako součást požadované konfigurace bránu virtuální sítě. U připojení ExpressRoute je brána virtuální sítě nakonfigurovaná s typem ExpressRoute (a ne Vpn). I když se provoz přenášený přes okruh ExpressRoute ve výchozím nastavení nešifruje, je možné vytvořit řešení, které vám umožní přes okruh ExpressRoute posílat šifrovaný provoz. Další informace o ExpressRoute najdete v [Technickém přehledu ExpressRoute](../expressroute/expressroute-introduction.md).
 
 ## <a name="coexisting"></a>Současně existující připojení typu Site-to-Site a ExpressRoute
 

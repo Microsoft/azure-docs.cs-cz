@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/28/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 673564ef7b5ff02a3809154a4dcf1669c2ed798b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2728c354a84c4b13b0ad8509d038837733251975
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure
 
@@ -188,6 +188,10 @@ Azure CLI potvrdí vytvoření pravidla brány firewall a zobrazí výstup jako 
   "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"
 }
 ```
+
+> [!TIP] 
+> Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
+>
 
 ## <a name="connect-your-python-flask-application-to-the-database"></a>Připojení aplikace Python Flask k databázi
 

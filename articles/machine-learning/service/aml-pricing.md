@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: 5e057f3fe4a4ff06e0acac29b3dcd11fa901fc40
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="pricing-and-billing-for-azure-machine-learning-services"></a>Ceny a fakturace pro služby Azure Machine Learning
 
@@ -51,5 +51,5 @@ Faktur vytváří denně. Pro účely účtování začíná den o půlnoci UTC.
 - Application Insights
 - Azure Key Vault
 - Visual Studio Team Services
-- Azure Event Hub
+- Centra událostí Azure
 - Analýza Azure datového proudu pro další podrobnosti nebo ukázka faktury, naleznete [Azure stránce s cenami](https://azure.microsoft.com/pricing/details/machine-learning-services/). 

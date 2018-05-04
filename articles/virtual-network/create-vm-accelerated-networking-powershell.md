@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 105a32f37c0a6a212888f9ee8457844769b9a3c7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí Accelerated sítě
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/19/2018
 >   2. Znovu vytvořte virtuální počítač s Zrychlený sítě povolené
 >
 
-V tomto kurzu zjistěte, jak k vytvoření virtuálního počítače (VM) s Windows pomocí Accelerated sítě. Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
+V tomto kurzu zjistěte, jak k vytvoření virtuálního počítače (VM) s Windows pomocí Accelerated sítě. Vytvoření virtuálního počítače s Linuxem pomocí Accelerated sítě naleznete v tématu [vytvoření virtuálního počítače s Linuxem pomocí Accelerated sítě](create-vm-accelerated-networking-cli.md). Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
 
 ![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 

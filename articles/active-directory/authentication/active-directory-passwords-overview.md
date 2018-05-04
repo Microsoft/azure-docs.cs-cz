@@ -17,7 +17,7 @@ ms.author: joflore
 ms.custom: it-pro
 ms.openlocfilehash: 7d1103e0ab21d2eac336a0e460156d47012b2a86
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
 ---

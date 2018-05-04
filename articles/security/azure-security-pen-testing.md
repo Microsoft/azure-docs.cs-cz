@@ -16,7 +16,7 @@ ms.date: 03/13/2018
 ms.author: barclayn
 ms.openlocfilehash: 1b7b6604de80beadf15dabe0d2da1d7a2e5fabd6
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
 ---

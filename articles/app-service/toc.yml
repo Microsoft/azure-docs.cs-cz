@@ -187,6 +187,10 @@
           href: web-sites-create-web-jobs.md
         - name: Vývoj webových úloh pomocí VS
           href: websites-dotnet-deploy-webjobs.md
+        - name: Začínáme se sadou WebJobs SDK
+          href: webjobs-sdk-get-started.md
+        - name: Použití sady WebJobs SDK
+          href: webjobs-sdk-how-to.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -253,6 +257,8 @@
           href: app-service-web-troubleshoot-http-502-http-503.md
         - name: Řešení potíží s výkonem
           href: app-service-web-troubleshoot-performance-degradation.md
+        - name: Řešení potíží s doménami a certifikáty
+          href: app-service-web-troubleshoot-domain-ssl-certificates.md
         - name: Nejčastější dotazy
           items:
             - name: 'Nejčastější dotazy k dostupnosti, výkonu a aplikacím'

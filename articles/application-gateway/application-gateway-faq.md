@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: 41d679d7660cbc35d6af8f9afc1a36e6e5c5c541
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy pro službu Application Gateway
 
@@ -178,6 +178,11 @@ Ne, ale Application Gateway poskytuje metriky propustnosti, který slouží k up
 **Q. Podporuje ruční škálování nahoru/dolů příčina výpadku?**
 
 Neexistuje žádné výpadky, instancí jsou rozmístěny v upgradu domén a domén selhání.
+
+**Q. Provádí vyprazdňování připojení podpory brány aplikace?**
+
+Ano. Můžete nakonfigurovat vyprazdňování Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To vám umožní existující připojení pokračujte k odeslání do jejich předchozího cílové dokud toto připojení je ukončeno nebo konfigurovat vypršení časového limitu vyprší. Poznámka: Toto připojení vyprazdňování pouze počká pro aktuální připojení během letu na dokončení. Aplikační brána nemá žádné informace o stavu relace aplikace.
+
 
 **Q. Můžete změnit velikost instance ze střední velké bez přerušení?**
 

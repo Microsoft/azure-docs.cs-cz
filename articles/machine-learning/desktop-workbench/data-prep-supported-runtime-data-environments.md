@@ -1,6 +1,6 @@
 ---
-title: "Podporované kombinace prostředí provádění a dat pro Azure Machine Learning Data přípravy | Microsoft Docs"
-description: "Tento dokument obsahuje úplný seznam podporovaných kombinací jiné moduly runtime a zdroje dat pro Azure Machine Learning Data přípravy"
+title: Podporované kombinace prostředí provádění a dat pro Azure Machine Learning Data přípravy | Microsoft Docs
+description: Tento dokument obsahuje úplný seznam podporovaných kombinací jiné moduly runtime a zdroje dat pro Azure Machine Learning Data přípravy
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,20 +8,20 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: bdd1c51c915787d9e9522f6691ae0ff06d546484
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-matrix-for-this-release"></a>Podporované matice pro tuto verzi 
 Pokud váš kód načte data pomocí Azure Machine Learning Data zdroje nebo Azure Machine Learning Data přípravy, získávání buď Pandas nebo dataframe Spark, následující kombinace experimentu výpočetní prostředí a data umístění jsou podporovány:
 
-|     |Místní soubory  |Azure Blob Storage  |SQL Server database***  |
+|     |Místní soubory  |Azure Blob Storage  |Databáze systému SQL Server ***  |
 |---------|---------|---------|---------|---------|
 |Místní Python    |     Podporováno    |Nepodporuje se         | Nepodporuje se        |         |
 |Python docker (virtuální počítač s Linuxem)     |Podporované v souborech projektu pouze *         | Nepodporuje se        |        Nepodporuje se |         |

@@ -1,24 +1,24 @@
 ---
-title: "Přehled modelu zabezpečení a ověřování Azure Event Hubs | Microsoft Docs"
-description: "Ověřování a zabezpečení modelu přehled služby Event Hubs."
+title: Přehled modelu zabezpečení a ověřování Azure Event Hubs | Microsoft Docs
+description: Ověřování a zabezpečení modelu přehled služby Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
-ms.author: sethm;clemensv
-ms.openlocfilehash: bfe7b95236c1a5336c1bb3a93d0eb5ca880adabf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: 5264930dcb802c2a58abc179bdd0041acc9f58d0
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Ověřování a zabezpečení modelu přehled služby Event Hubs
 

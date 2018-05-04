@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3473cb5260773fda0534c4f0aca1db731cce74eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="templates-for-azure-policy"></a>Šablony pro Azure zásad
 
@@ -79,6 +79,9 @@ Následující tabulka obsahuje odkazy na šablony json Azure zásady. Tyto uká
 | [Typy povolené prostředků](scripts/allowed-res-types.md) | Zajišťuje, jsou nasazeny pouze typy schválené prostředků. Můžete určit pole typů prostředků, které jsou povoleny.  |
 | [Povolené účet úložiště SKU](scripts/allowed-stor-acct-skus.md) | Vyžaduje, aby používaly účty úložiště schválené SKU. Zadáte pole schválené SKU. |
 | [Použít značky a jeho výchozí hodnota](scripts/apply-tag-def-val.md) | Připojí zadaný název značky a hodnotu, pokud není k dispozici tuto značku. Zadáte název značky a použít hodnotu.  |
+| [Audit šifrování databáze SQL](scripts/sql-database-encryption-audit.md) | Audity, pokud databáze SQL neobsahuje transparentní šifrování dat povolené. |
+| [Nastavení auditování systému SQL Server audit](scripts/sql-server-audit.md) | Audity založené na tom, jestli jsou povolené toto nastavení auditu systému SQL server. |
+| [Vynucení šifrování Data Lake Store](scripts/enforce-datalakestore-encryption.md) | Odmítne účty Data Lake Store, které nemají povolené šifrování. |
 | [Vynutit značku a její hodnota](scripts/enforce-tag-val.md) | Vyžaduje zadaný název značky a hodnotu. Zadáte název značky a hodnotu vynutit.  |
 | [Není povoleno typy prostředků](scripts/not-allowed-res-type.md) | Zakáže nasazení typů zadaný prostředek. Můžete určit pole typů prostředků blokování.  |
 | [Vyžaduje systém SQL Server verze 12.0](scripts/req-sql-12.md) | Vyžaduje použití verze 12.0 serverech SQL.  |

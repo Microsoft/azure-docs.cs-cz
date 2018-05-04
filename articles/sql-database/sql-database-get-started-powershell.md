@@ -1,5 +1,5 @@
 ---
-title: 'Azure PowerShell: Vytvoření databáze SQL | Microsoft Docs'
+title: 'Azure PowerShell: Vytvoření databáze SQL | Dokumentace Microsoftu'
 description: Naučíte se vytvářet logický server služby SQL Database, pravidlo brány firewall na úrovni serveru a databáze na webu Azure Portal.
 keywords: kurz k sql database, vytvoření databáze sql
 services: sql-database
@@ -11,11 +11,11 @@ ms.devlang: PowerShell
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 205e2c075f98ebb6fe7bd6156fd255d25c434681
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5daead37e77bb798e8c870ea3c071823e4d03dce
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-powershell"></a>Vytvoření izolované databáze SQL Azure pomocí PowerShellu
 
@@ -88,7 +88,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 
 ## <a name="create-a-database-in-the-server-with-sample-data"></a>Vytvoření databáze s ukázkovými daty na serveru
 
-Vytvořte na serveru databázi s [úrovní výkonu S0](sql-database-service-tiers.md) pomocí příkazu [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase). Následující příklad vytvoří databázi s názvem `mySampleDatabase` a načte do této databáze ukázková data AdventureWorksLT. Nahraďte podle potřeby tyto předdefinované hodnoty (další kurzy Rychlý start v této kolekci vycházejí z hodnot v tomto rychlém startu).
+Vytvořte na serveru databázi s [úrovní výkonu S0](sql-database-service-tiers.md) pomocí příkazu [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase). Následující příklad vytvoří databázi s názvem `mySampleDatabase` a načte do této databáze ukázková data AdventureWorksLT. Tyto předdefinované hodnoty nahraďte podle potřeby (další rychlé starty v této kolekci jsou postavené na tomto rychlém startu).
 
 ```powershell
 New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
@@ -100,10 +100,10 @@ New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další kurzy Rychlý start v této kolekci vycházejí z tohoto rychlého startu.
+Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu.
 
 > [!TIP]
-> Pokud chcete pokračovat v práci s dalšími kurzy Rychlý start, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na portálu Azure Portal.
+> Pokud chcete pokračovat v práci s dalšími rychlými starty, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na portálu Azure Portal.
 >
 
 ```powershell

@@ -2,29 +2,29 @@
 documentType: LandingData
 title: Dokumentace k Azure Policy
 metadata:
-  title: "Dokumentace k Azure Policy – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a akce pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  title: Dokumentace k Azure Policy – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a akce pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   services: azure-policy
-  author: czeumault
-  manager: carolz
+  author: DCtheGeek
+  manager: carmonm
   ms.service: azure-policy
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.author: dacoulte
+  ms.openlocfilehash: 0ca9efe0c1c1871265da127acfd76e90126b59ad
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: "Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a akce pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a akce pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Další informace o vytváření, přiřazování a správě definic zásad v Azure"
+    text: Další informace o vytváření, přiřazování a správě definic zásad v Azure
   - type: list
     style: icon48
     items:
@@ -40,30 +40,30 @@ sections:
         src: https://docs.microsoft.com/media/common/cli.svg
       text: Azure CLI
       href: /azure/azure-policy/assign-policy-definition-cli
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Další informace o vytváření, přiřazování a správě definic zásad v Azure"
+    text: Další informace o vytváření, přiřazování a správě definic zásad v Azure
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">Vytváření a správa Azure Policy</a>"
-- title: "Ukázky"
+    - html: <a href="/azure/azure-policy/create-manage-policy">Vytváření a správa Azure Policy</a>
+- title: Ukázky
   items:
   - type: paragraph
-    text: "Následující ukázky JSON vám pomůžou vytvořit definice zásad v Azure."
+    text: Následující ukázky JSON vám pomůžou vytvořit definice zásad v Azure.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="https://docs.microsoft.com/cli/azure/policy">Azure CLI</a></p>
     - title: PowerShell
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

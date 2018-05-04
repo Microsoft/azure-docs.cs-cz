@@ -1,5 +1,5 @@
 ---
-title: 'Application Insights: jazyky, platformy a integrace | Microsoft Docs'
+title: 'Application Insights: jazyky, platformy a integrace | Dokumentace Microsoftu'
 description: Jazyky, platformy a integrace, které jsou k dispozici pro službu Application Insights
 services: application-insights
 documentationcenter: ''
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mbullwin
-ms.openlocfilehash: 7440bb38fc68ce49504188a40ca1aafbb1e07913
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fdc75c69008d2f448d8a077a42bfccd24db6579a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
@@ -39,11 +39,13 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [ASP.NET – pro aplikace, které jsou již nasazeny](app-insights-monitor-performance-live-website-now.md)
 * [Jádro ASP.NET](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (Centrum aplikací, HockeyApp)
+* [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)&#151; včetně webových a pracovních rolí
+* [Azure Cloud Services](app-insights-cloudservices.md)& #151; včetně webových a pracovních rolí
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
+* [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (Centrum aplikací, HockeyApp)
 * [J2EE](app-insights-java-get-started.md)
 * [J2EE – pro aplikace, které jsou již nasazeny](app-insights-java-live.md)

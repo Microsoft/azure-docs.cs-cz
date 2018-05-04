@@ -1,0 +1,127 @@
+- name: Dokumentace ke službě Application Gateway
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službách Application Gateway
+      href: overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Směrování webového provozu – portál
+      href: quick-create-portal.md
+    - name: Směrování webového provozu – PowerShell
+      href: quick-create-powershell.md
+    - name: Směrování webového provozu – Azure CLI
+      href: quick-create-cli.md
+- name: Kurzy
+  items:
+    - name: Správa webového provozu
+      href: tutorial-manage-web-traffic-cli.md
+    - name: Omezení webového provozu
+      href: tutorial-restrict-web-traffic-cli.md
+    - name: Zabezpečení pomocí protokolu SSL
+      href: tutorial-ssl-cli.md
+    - name: Hostování několika webů
+      href: tutorial-multiple-sites-cli.md
+    - name: Směrování podle adres URL
+      href: tutorial-url-route-cli.md
+    - name: Přesměrování webového provozu
+      href: tutorial-url-redirect-cli.md
+- name: Ukázky
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Koncepty
+  items:
+    - name: Brána firewall webových aplikací
+      href: waf-overview.md
+    - name: Směrování adres URL
+      href: url-route-overview.md
+    - name: Hostování několika webů
+      href: multiple-site-overview.md
+    - name: Ukončení protokolu SSL
+      href: ssl-overview.md
+    - name: Přesměrování adres URL
+      href: redirect-overview.md
+- name: Návody
+  items:
+    - name: Vytvoření služby Application Gateway
+      items:
+        - name: Šablona
+          href: create-vmss-template.md
+        - name: Webové aplikace – PowerShell
+          href: create-web-app.md
+    - name: Povolení ukončení protokolu SSL – portál
+      href: create-ssl-portal.md
+    - name: Hostování několika webů – portál
+      href: create-multiple-sites-portal.md
+    - name: Přesměrování externího provozu
+      items:
+        - name: Azure PowerShell
+          href: redirect-external-site-powershell.md
+        - name: Azure CLI
+          href: redirect-external-site-cli.md
+    - name: Přesměrování HTTP na HTTPS
+      items:
+        - name: Azure PowerShell
+          href: redirect-http-to-https-powershell.md
+        - name: Azure CLI
+          href: redirect-http-to-https-cli.md
+    - name: Přesměrování interního provozu
+      items:
+        - name: Azure PowerShell
+          href: redirect-internal-site-powershell.md
+        - name: Azure CLI
+          href: redirect-internal-site-cli.md
+    - name: Omezení webového provozu – portál
+      href: create-waf-portal.md
+    - name: Směrování na základě adresy URL – portál
+      href: create-url-route-portal.md
+    - name: Správa webového provozu s využitím Azure Powershellu
+      href: tutorial-manage-web-traffic-powershell.md
+    - name: Omezení webového provozu s využitím Azure Powershellu
+      href: tutorial-restrict-web-traffic-powershell.md
+    - name: Ukončení protokolu SSL s využitím Azure PowerShellu
+      href: tutorial-ssl-powershell.md
+    - name: Hostování několika webů s využitím Azure PowerShell
+      href: tutorial-multiple-sites-powershell.md
+    - name: Směrování webového provozu s využitím Azure Powershellu
+      href: tutorial-url-route-powershell.md
+    - name: Přesměrování webového provozu s využitím Azure Powershellu
+      href: tutorial-url-redirect-powershell.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/network/application-gateway
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/applicationgateway
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zdroje a prostředky
+  items:
+    - name: Tvorba šablon
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Komunitní šablony
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-application-gateway'
+    - name: Nejčastější dotazy
+      href: application-gateway-faq.md

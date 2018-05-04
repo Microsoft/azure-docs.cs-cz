@@ -1,6 +1,6 @@
 ---
-title: "Podporované zdroje dat, které jsou k dispozici přípravy dat Azure Machine Learning | Microsoft Docs"
-description: "Tento dokument obsahuje úplný seznam podporovaných zdrojů dat k dispozici pro přípravu dat Azure Machine Learning."
+title: Podporované zdroje dat, které jsou k dispozici přípravy dat Azure Machine Learning | Microsoft Docs
+description: Tento dokument obsahuje úplný seznam podporovaných zdrojů dat k dispozici pro přípravu dat Azure Machine Learning.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 7b42080ea4bf9a9e49f2695ab8746d9ead7348bd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Podporované zdroje dat pro přípravu Azure Machine Learning dat. 
 Tento článek popisuje aktuálně podporovaných zdrojů dat pro přípravu dat Azure Machine Learning.
@@ -74,7 +74,7 @@ Načtení souboru karta oddělených hodnot úložiště.
 - Kódování souborů
 - Řádky tak, aby přeskočil
 
-### <a name="excel-xlsxlsx"></a>Excel (.xls/.xlsx)
+### <a name="excel-xlsxlsx"></a>Aplikace Excel (.xls/.xlsx)
 Přečtěte si jeden listu aplikace Excel soubor současně zadáním názvu list nebo číslo.
 
 #### <a name="options"></a>Možnosti
@@ -86,7 +86,7 @@ Přečtěte si jeden listu aplikace Excel soubor současně zadáním názvu lis
 Načtení souboru JSON úložiště. Soubor je "průmětu" na čtení.
 
 #### <a name="options"></a>Možnosti
-- Žádné
+- Žádný
 
 ### <a name="parquet"></a>Parquet
 Číst Parquet datové sady, buď jeden soubor nebo složku.

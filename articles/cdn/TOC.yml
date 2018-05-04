@@ -16,6 +16,8 @@
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurace HTTPS pro vlastní doménu
       href: cdn-custom-ssl.md
+    - name: Nastavení pravidel ukládání
+      href: cdn-caching-rules-tutorial.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -156,6 +158,8 @@
           href: cdn-pop-locations.md
         - name: Lokality POP podle zkratek
           href: cdn-pop-abbreviations.md
+    - name: Principy fakturace Azure CDN
+      href: cdn-billing.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fórum MSDN

@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5e8ac9da4df2428191e8a7e6402f2ac06e695503
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru ve službě Azure Database pro databázi MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -68,14 +68,14 @@ Volba mezi konfigurace vašeho serveru pro místně redundantní zálohy nebo ge
 
 Při vytváření serveru prostřednictvím `az mysql server create` příkaz, `--geo-redundant-backup` parametr rozhodne svoji možnost redundance zálohování. Pokud `Enabled`, jsou provedeny geograficky redundantní zálohy. Nebo, pokud `Disabled` jsou provedeny místně redundantní zálohy. 
 
-Doba uchovávání záloh je nastavena parametrem `--backup-retention-days`. 
+Doba uchovávání záloh je nastavena parametrem `--backup-retention`. 
 
 Další informace o nastavení tyto hodnoty během vytváření najdete v tématu [Azure databáze MySQL server rychlý start rozhraní příkazového řádku pro](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Doba uchovávání záloh serveru lze změnit takto:
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 V předchozím příkladu změny období uchovávání záloh mydemoserver 10 dní.

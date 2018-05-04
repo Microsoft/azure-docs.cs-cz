@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: markgal;jimpark
+ms.author: markgal;jimpark;sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6a29e184a47e3b4304f9c4683e76feab3e75dd4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure do trezoru služeb zotavení
 
@@ -39,7 +39,9 @@ Další informace o ochraně virtuálních počítačů služby Premium Storage 
 Další informace o můžete a nelze zálohovat, naleznete v části [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 > [!NOTE]
-> Tento kurz předpokládá, že už máte virtuální počítač ve svém předplatném Azure a že jste zavedli opatření, která umožní službě zálohování přístup k virtuálnímu počítači.
+> Služba zálohování vytvoří skupinu samostatné prostředků než skupina prostředků virtuálního počítače k uložení kolekce bodu obnovení. Zákazníci by měli není zamknout skupině prostředků, který je vytvořený pro použití službou Backup.
+Formát názvu skupiny prostředků vytvořené služby Backup je: AzureBackupRG_`<Geo>`_`<number>`
+<br>Např: AzureBackupRG_northeurope_1
 >
 >
 

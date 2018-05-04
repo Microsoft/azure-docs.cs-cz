@@ -1,6 +1,6 @@
 ---
-title: "Postup konfigurace Azure Machine Learning Workbench pro práci s IDE?  | Dokumenty Microsoft"
-description: "Příručka ke konfiguraci Azure Machine Learning Workbench pro práci s vaší IDE."
+title: Postup konfigurace Azure Machine Learning Workbench pro práci s IDE?  | Dokumenty Microsoft
+description: Příručka ke konfiguraci Azure Machine Learning Workbench pro práci s vaší IDE.
 services: machine-learning
 author: svankam
 ms.author: svankam
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 8a4bb8d825f89b08e9b7514d67ae2d2512cceec9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Postup konfigurace Azure Machine Learning Workbench pro práci s IDE 
 

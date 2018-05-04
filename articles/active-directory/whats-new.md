@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -39,6 +39,217 @@ Azure AD obdrží vylepšení průběžně. Zůstane aktuální pomocí nejnově
 -   Plány pro změny
 
 Tato stránka se aktualizuje každý měsíc, takže pokroku pravidelně.
+
+
+## <a name="april-2018"></a>2018 duben
+ 
+
+
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C přístup tokenu jsou GA
+
+**Typ:** nová funkce  
+**Kategorie služby:** B2C - správu identit uživatelů  
+**Schopnosti produktu:** B2B/B2C
+ 
+
+Nyní máte přístup webového rozhraní API zabezpečené pomocí Azure AD B2C pomocí přístupových tokenů. Funkci přechází z verze public preview na všeobecné Vylepšila se uživatelské rozhraní pro konfiguraci Azure AD B2C aplikace a webové rozhraní API a další menší vylepšení byly provedeny.
+ 
+Další informace najdete v tématu [Azure AD B2C: žádajícího přístupové tokeny](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens).
+
+
+---
+ 
+
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Otestovat konfiguraci jednoho přihlašování pro aplikace založené na SAML
+
+**Typ:** nová funkce  
+**Kategorie služby:** podnikové aplikace  
+**Schopnosti produktu:** jednotného přihlašování
+ 
+
+Při konfiguraci SAML jednotného přihlašování k aplikacím založeným na budete moci testovat integraci na stránce konfigurace. Pokud dojde k chybě při přihlášení, můžete zadat chyby v testovacím prostředí a Azure AD poskytuje řešení kroky k vyřešení určitého problému.
+
+Další informace naleznete v tématu:
+
+- [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+- [Postup ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+
+---
+ 
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD podmínky použití má nyní za reporting uživatele
+
+**Typ:** nová funkce  
+**Kategorie služby:** podmínky použití  
+**Schopnosti produktu:** dodržování předpisů
+ 
+
+Správci teď můžete vybrat dané podmínky použití a zobrazit všechny uživatele, kteří souhlasili pro podmínky použití a co data a času je byla provedena.
+
+
+Další informace najdete v tématu [funkce Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+ 
+
+---
+ 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: Riziková IP adresa pro ochranu uzamčení extranetu služby AD FS 
+
+**Typ:** nová funkce  
+**Kategorie služby:** jiné  
+**Schopnosti produktu:** monitorování a vytváření sestav
+ 
+
+Teď podporuje se schopnost rozpoznat IP adres, který přesahuje prahovou hodnotu z neúspěšných přihlášení U/P na základě hodinových nebo denních Connect Health. Funkce poskytované verzí této funkce jsou:
+
+- Komplexní sestavy zobrazující IP adresu a počet neúspěšných přihlášení, které jsou generované na základě každou hodinu nebo denně s přizpůsobitelné prahovou hodnotu.
+- E mailové výstrahy zobrazuje, když konkrétní IP adresu byla překročena prahová hodnota neúspěšných přihlášení U/P na základě každou hodinu nebo denně.
+- Stažení možnost udělat podrobné analýzy dat
+
+
+Další informace najdete v tématu [rizikových IP sestavy](https://aka.ms/aadchriskyip).
+
+ 
+
+---
+ 
+
+### <a name="easy-app-config-with-metadata-file-or-url"></a>Konfigurace aplikace snadno se soubor metadat nebo adresa URL
+
+**Typ:** nová funkce  
+**Kategorie služby:** podnikové aplikace  
+**Schopnosti produktu:** jednotného přihlašování
+ 
+
+Na stránce aplikace Enterprise administrators můžete nahrát soubor metadata SAML konfigurace SAML na základě přihlášení pro aplikaci AAD galerie a Non-galerie.
+
+Kromě toho můžete použít Azure AD adresu URL metadat federace aplikace nakonfigurovat jednotné přihlašování se cílové aplikace.
+
+Další informace najdete v tématu [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
+ 
+
+---
+ 
+
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD podmínky použití obecně nyní k dispozici
+
+**Typ:** nová funkce  
+**Kategorie služby:** podmínky použití  
+**Schopnosti produktu:** dodržování předpisů
+ 
+
+Azure AD podmínky použití se přesunul z verze public preview na všeobecně dostupná.
+
+Další informace najdete v tématu [funkce Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+ 
+
+---
+ 
+
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolit nebo blokovat pozvánek uživatelům B2B z konkrétní organizací.
+
+**Typ:** nová funkce  
+**Kategorie služby:** B2B  
+**Schopnosti produktu:** B2B/B2C
+ 
+
+Nyní můžete určit, které partnerských organizacích, které chcete sdílet a Spolupracujte s spolupráce Azure AD B2B. K tomuto účelu můžete vytvořit seznam konkrétní povolit nebo odepřít domén. Domény blokován, pomocí těchto možností, zaměstnanci už odeslat pozvánky lidem v této doméně.
+
+To umožňuje řídit přístup k prostředkům, při povolování smooth prostředí pro schválení uživatelé.
+
+Tato funkce spolupráce B2B je k dispozici pro všechny zákazníky využívající Azure Active Directory a lze použít ve spojení s funkcí Azure AD Premium, jako je podmíněný přístup a identita ochrany pro podrobnější řízení kdy a jak přihlásit externí podnikoví uživatelé v a získat přístup.
+
+Další informace najdete v tématu [povolit nebo blokovat pozvánek uživatelům B2B z konkrétní organizací](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
+
+ 
+
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nové federované aplikace k dispozici v galerii aplikací Azure AD
+
+**Typ:** nová funkce  
+**Kategorie služby:** podnikové aplikace  
+**Schopnosti produktu:** 3. stran integrace
+ 
+
+V dubnu 2018 jsme přidali následující 13 nové aplikace v naší Galerie aplikace s federací podporu:
+
+
+
+Kritérium HCM, [FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), [tajný klíč serveru (místní)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), [dynamické signál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), [organizačního diagramu Nyní](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), [sledování výkonu AppNeta](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), [ Cisco Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), police, [SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+
+
+
+ Můžete najít seznam zde k dispozici kurzy: [ https://aka.ms/appstutorial ](https://aka.ms/appstutorial).
+
+Další informace najdete v tématu [uvedení aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+
+
+ 
+
+---
+ 
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Uživatelům udělit B2B ve službě Azure AD přístup k vaší místní aplikace (verze public preview)
+
+**Typ:** nová funkce  
+**Kategorie služby:** B2B  
+**Schopnosti produktu:** B2B/B2C
+ 
+
+Organizace pomocí možnosti spolupráce B2B Azure Active Directory (Azure AD), která pozvat uživatele typu Host z partnerských organizací do služby Azure AD že teď můžete zadat tito uživatelé B2B přístup k místním aplikacím. Tyto místní aplikace můžete použít ověřování založené na SAML nebo integrované ověřování systému Windows (IWA) s omezeným delegováním protokolu Kerberos (použitím KCD).
+
+Další informace najdete v tématu [uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises)
+ 
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Získání jednotného přihlašování k integraci kurzy z Azure Marketplace
+
+**Typ:** změněné funkce  
+**Kategorie služby:** jiné  
+**Schopnosti produktu:** 3. stran integrace
+ 
+
+Pokud aplikace, která je uvedena ve [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) podporuje SAML založené na jednotné přihlašování, kliknutím na tlačítko **ho získat** vám poskytne kurzu integrace přidružené s touto aplikací. 
+
+
+---
+
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Vyšší výkon služby Azure AD uživatele automatické zřizování pro aplikace SaaS
+
+**Typ:** změněné funkce  
+**Kategorie služby:** zřizování aplikace  
+**Schopnosti produktu:** 3. stran integrace
+ 
+
+Dříve, zákazníky, kteří používají zřizování konektory pro SaaS aplikace (například Salesforce, ServiceNow a pole) uživatelů Azure Active Directory mohla setkat velmi nízký výkon jejich klienty Azure AD obsahovala více než 100 000 uživatelů kombinované a skupiny a používali přiřazení uživatelů a skupin k určení uživatelů, kteří by měl být zřízená.
+
+Na 2. dubna velmi významných vylepšení výkonu byly nasazeny do zřizování služby Azure AD, která výrazně snížit množství času potřebné pro provedení počáteční synchronizace mezi Azure Active Directory a cíl aplikací SaaS.
+
+
+V důsledku toho mnoho zákazníků, měla aplikace, které trvalo počet dní nebo nikdy dokončen, jsou nyní v řádu minut nebo čas dokončení počáteční synchronizace.
+
+Další informace najdete v tématu [co se stane při zřizování?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)
+
+---
+ 
+
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Počítače připojené samoobslužné služby heslo resetovat z Windows 10 zámek obrazovky pro hybridní Azure AD
+
+**Typ:** změněné funkce  
+**Kategorie služby:** samoobslužného resetování hesla  
+**Schopnosti produktu:** ověření uživatele
+ 
+
+Aktualizovali jsme Windows 10 SSPR funkci tak, aby zahrnují podporu pro počítače, které jsou hybridní připojený k Azure AD. Tato funkce je k dispozici v systému Windows 10 RS4 umožňuje uživatelům obnovit své heslo na obrazovce uzamčení počítače s Windows 10. Uživatelé, kteří jsou povolené a zaregistrovat pro resetování hesla pomocí samoobslužné služby mohou tuto funkci využít.
+
+Další informace najdete v tématu [na obrazovce přihlášení pro vytvoření nového hesla služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
+ 
+
+---
+
+
 
 ## <a name="march-2018"></a>2018 března
  
@@ -362,7 +573,7 @@ Další informace najdete v tématu [přizpůsobení deklarace identity vystaven
 
 Pro usnadnění nasazení aplikace a snížit vaše režijní náklady na správu, teď podporujeme možnost publikovat aplikace pomocí zástupných znaků. K publikování aplikací se zástupnými znaky, můžete postupovat podle publikování toku standardní aplikace, ale použít zástupný znak v interní a externí adresy URL.
 
-Další informace najdete v tématu [aplikace zástupný znak v proxy aplikace služby Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)
+Další informace najdete v tématu [aplikace zástupný znak v proxy aplikace služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
 
  
 
@@ -503,7 +714,7 @@ Tyto aplikace budou přidány do konce dne
 
 - Microsoft PowerBI
 
-- Microsoft Launcher
+- Spouštěč Microsoft
 
 - Microsoft fakturace
 
@@ -521,7 +732,7 @@ Další informace naleznete v tématu:
 
 **Typ:** změněné funkce  
 **Kategorie služby:** podmínky použití  
-**Schopnosti produktu:** zásad správného řízení
+**Schopnosti produktu:** dodržování předpisů
  
 
 Jakmile se zobrazí podmínky použití, můžete nyní kliknout na **s potíže se zobrazením? Kliknutím sem**. Kliknutím na tento odkaz otevře podmínky použití nativně na vašem zařízení. Bez ohledu na velikost písma v dokumentu nebo velikost obrazovky zařízení můžete přiblížení a čtení dokumentu, podle potřeby. 
@@ -656,7 +867,7 @@ Další informace naleznete v tématu:
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
-**Schopnosti produktu:** zásad správného řízení nebo dodržování předpisů
+**Schopnosti produktu:** dodržování předpisů
  
 Nyní můžete přejít na Panel přístupu a zobrazit podmínky použití, který jste dříve přijali.
 
@@ -707,7 +918,7 @@ Další informace najdete v tématu [menšího přihlášení: je nové prostře
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
-**Schopnosti produktu:** zásad správného řízení nebo dodržování předpisů
+**Schopnosti produktu:** dodržování předpisů
  
 Možnost pro správce vyžaduje, aby jejich uživatelé rozbalte podmínky použití před vyjádření souhlasu s podmínkami.
 
@@ -864,7 +1075,7 @@ Další informace naleznete v tématu:
 
 **Typ:** nová funkce    
 **Kategorie služby:** podmínky použití  
-**Schopnosti produktu:** zásad správného řízení nebo dodržování předpisů
+**Schopnosti produktu:** dodržování předpisů
 
 
 
@@ -1045,7 +1256,7 @@ V Centru správy služby Azure AD můžete provádět následující akce:
 
 Následující aplikace byly přidány do seznamu [schválení klientských aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
-- Microsoft Planner
+- Plánovač Microsoft
 - Azure Information Protection 
 
 
@@ -1154,7 +1365,7 @@ Další informace najdete v tématu [referenční informace pro vytváření ses
 
 **Typ:** nová funkce  
 **Kategorie služby:** podmínky použití  
-**Schopnosti produktu:** zásad správného řízení nebo dodržování předpisů  
+**Schopnosti produktu:** dodržování předpisů  
 
 
 
@@ -1197,7 +1408,7 @@ Další informace najdete v tématu [Privileged Identity Management pro prostře
 
 **Typ:** nová funkce  
 **Kategorie služby:** přístup recenze  
-**Schopnosti produktu:** zásad správného řízení nebo dodržování předpisů  
+**Schopnosti produktu:** dodržování předpisů  
 
 
 

@@ -1,24 +1,24 @@
 ---
-title: "Jak nakonfigurovat ověřování služby Twitter pro vaši aplikaci aplikační služby"
-description: "Informace o konfiguraci ověřování služby Twitter pro vaši aplikaci aplikační služby."
+title: Jak nakonfigurovat ověřování služby Twitter pro vaši aplikaci aplikační služby
+description: Informace o konfiguraci ověřování služby Twitter pro vaši aplikaci aplikační služby.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: afde020b7817dc58ecea24eb4a09cf93d0986eb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6449f99fda9c1a612ed9f9134751ff76b25904c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Postup konfigurace aplikace služby App Service pomocí přihlášení služby Twitter.
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -27,7 +27,7 @@ Toto téma ukazuje, jak nakonfigurovat služby Azure App Service pomocí služby
 
 Dokončete postup v tomto tématu, musí mít účet služby Twitter, který má ověřenou e-mailovou adresu a telefonní číslo. Chcete-li vytvořit nový účet služby Twitter, přejděte na <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>.
 
-## <a name="register"></a>Aplikaci zaregistrovat u služby Twitter.
+## <a name="register"> </a>Registrace aplikace pomocí služby Twitter.
 1. Přihlaste se na [portál Azure]a přejděte k vaší aplikaci. Kopie vašeho **URL**. To použijete ke konfiguraci vaší aplikace služby Twitter.
 2. Přejděte na [Twitter vývojáři] web, přihlaste se pomocí přihlašovacích údajů účtu služby Twitter a klikněte na **vytvořit novou aplikaci**.
 3. Zadejte **název** a **popis** pro novou aplikaci. Vložení ve vaší aplikaci **URL** pro **webu** hodnotu. Potom **adresu URL zpětné volání**, vložte **adresu URL zpětné volání** jste zkopírovali dříve. Toto je vaše mobilní aplikace brána připojena cesta, */.auth/login/twitter/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
@@ -40,7 +40,7 @@ Dokončete postup v tomto tématu, musí mít účet služby Twitter, který má
    > 
    > 
 
-## <a name="secrets"></a>Twitter přidat informace do vaší aplikace
+## <a name="secrets"> </a>Přidání služby Twitter informace do aplikace
 1. Zpět v [portál Azure], přejděte k vaší aplikaci. Klikněte na tlačítko **nastavení**a potom **ověřování / autorizace**.
 2. Pokud ověřování / autorizace funkce není povolena, zapněte přepínač k **na**.
 3. Klikněte na tlačítko **Twitter**. Vložte v ID aplikace a tajný klíč aplikace pro hodnoty, které jste získali dříve. Pak klikněte na **OK**.
@@ -53,7 +53,7 @@ Dokončete postup v tomto tématu, musí mít účet služby Twitter, který má
 
 Nyní jste připraveni pro ověřování ve vaší aplikaci pomocí služby Twitter.
 
-## <a name="related-content"></a>Související obsah
+## <a name="related-content"> </a>Související obsah
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

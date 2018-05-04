@@ -4,7 +4,7 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](../articles/sql-database/sql-database-service-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../articles/azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](../articles/sql-database/sql-database-features.md). 
+Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](../articles/sql-database/sql-database-service-tiers-dtu.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../articles/azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](../articles/sql-database/sql-database-features.md). 
 
 Pomocí následujících kroků vytvořte prázdnou databázi SQL. 
 

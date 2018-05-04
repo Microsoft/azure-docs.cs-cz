@@ -61,8 +61,8 @@ Další podrobnosti o cloudu init v Azure:
 - [Vyzkoušejte si kurz na automatické konfigurace virtuálního počítače pomocí cloudu init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>PowerShell DSC
-[Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. DSC lze také v systému Linux pomocí [serveru infrastruktury OMI (Open Management Infrastructure)](https://collaboration.opengroup.org/omi/).
+## <a name="powershell-dsc"></a>Prostředí PowerShell DSC
+[Prostředí PowerShell požadovaného stavu konfigurace (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) je platforma pro správu k definování konfigurace cílových počítačů. DSC lze také v systému Linux pomocí [serveru infrastruktury OMI (Open Management Infrastructure)](https://collaboration.opengroup.org/omi/).
 
 Konfigurace DSC definovat, co je potřeba nainstalovat na počítači a postup konfigurace hostitele. Modul Místní Configuration Manager (LCM) běží na každý cílový uzel, který zpracovává požadovaná akce na základě stisknutí konfigurací. Server vyžádání obsahu je webová služba, která běží na hostiteli centrální k uložení konfigurace DSC a přidružených prostředků. Načítacího serveru komunikuje s modulem LCM na každém cílovém hostiteli a zadejte požadované konfigurace a tvorba sestav o dodržování předpisů.
 
@@ -130,5 +130,5 @@ Naučte se:
 - [Vytvoření vývoj infrastruktury na virtuální počítač s Linuxem v Azure pomocí volaných Githubu a Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Existuje mnoho různých možností použití nástrojů infrastruktury automation v Azure. Máte možnost používat tato zařízení používat řešení, které nejlépe vyhovuje potřebám a prostředí. Začínáme a vyzkoušejte některé z nástrojů, které jsou integrované v Azure najdete v tématu Jak automatizovat možnosti vlastního nastavení [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) nebo [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuálních počítačů.

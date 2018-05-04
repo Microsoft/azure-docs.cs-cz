@@ -1,6 +1,6 @@
 ---
-title: "Azure ML protokolování API – referenční informace | Microsoft Docs"
-description: "Protokolování referenční dokumentace rozhraní API."
+title: Azure ML protokolování API – referenční informace | Microsoft Docs
+description: Protokolování referenční dokumentace rozhraní API.
 services: machine-learning
 author: akshaya-a
 ms.author: akannava
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
 ms.openlocfilehash: 1906425c6657fb6232a9dc306b05f9171c9c7bef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="logging-api-reference"></a>Protokolování referenční dokumentace rozhraní API
 
@@ -83,6 +83,6 @@ $ az ml history info -r <runid> -a <artifact/path>
 # promote a particular artifact
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Provede [klasifikace iris tutoria, část 2](tutorial-classifying-iris-part-2.md) zobrazíte protokolování rozhraní API v akci.
 - Zkontrolujte [historii běhů použití a metrik Model v Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) pochopit podrobnější protokolování rozhraní API pro použití v historii spustit.

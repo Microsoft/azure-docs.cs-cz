@@ -1,6 +1,6 @@
 ---
-title: "Přehled funkcí Azure Machine Learning preview | Microsoft Docs"
-description: "Koncepční přehled funkce preview Azure Machine Learning, jako je například odběry, účty, pracovní prostory, projekty, atd."
+title: Přehled funkcí Azure Machine Learning preview | Microsoft Docs
+description: Koncepční přehled funkce preview Azure Machine Learning, jako je například odběry, účty, pracovní prostory, projekty, atd.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning---concepts"></a>Azure Machine Learning – koncepty
 
@@ -34,7 +34,7 @@ Tento článek definuje a popisuje koncepty, které potřebujete vědět, abyste
 - **Pracovní prostor:** pracovního prostoru je primární součásti pro sdílení a spolupráce v Azure ML. Projekty jsou seskupené v rámci pracovního prostoru. Pracovního prostoru je pak možné sdílet s více uživatelů, které byly přidány k experimentování účtu.
 
 
-- **Projekt:** v Azure Machine Learning projektu je logický kontejner pro všechny pracovní prováděná k vyřešení problému. Mapuje do jednoho souboru složky na váš místní disk, a můžete přidat soubory nebo sub složek na ni. Volitelně lze přidružit úložiště Git pro správy zdrojového kódu a spolupráci projektu.  
+- **Projekt:** v Azure Machine Learning projektu je logický kontejner pro všechny pracovní prováděná k vyřešení problému. Mapuje se na jedinou složku souborů na místním disku, do které můžete přidat jakékoli soubory nebo podsložky. Volitelně lze přidružit úložiště Git pro správy zdrojového kódu a spolupráci projektu.  
 
 - **Experiment:** v Azure ML experimentu je jeden nebo více soubory zdrojového kódu, které mohou být provedeny z jeden vstupní bod. Může obsahovat úlohy, jako je přijímání dat, funkce technikům, školení modelu nebo vyhodnocení modelu. V současné době podporuje Azure ML Python nebo pouze experimenty PySpark.
 

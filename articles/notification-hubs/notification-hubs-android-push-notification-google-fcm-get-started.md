@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: dc83ac568ddf3b7a70ec2d39c94c8bb2952c8386
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6768b3e55af5e497c9424bc09130c9dd0948968b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-android-apps-and-firebase-cloud-messaging"></a>Začínáme pracovat s Azure Notification Hubs pro aplikace pro Android a se službou Firebase Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -229,7 +229,7 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
                         regID = hub.register(FCM_token).getRegistrationId();
    
                         // If you want to use tags...
-                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+                        // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
                         // regID = hub.register(token, "tag1,tag2").getRegistrationId();
    
                         resultString = "New NH Registration Successfully - RegId : " + regID;
@@ -248,7 +248,7 @@ Vaše centrum oznámení je teď nakonfigurováno pro práci se službou Firebas
                         regID = hub.register(FCM_token).getRegistrationId();
    
                         // If you want to use tags...
-                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
+                        // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
                         // regID = hub.register(token, "tag1,tag2").getRegistrationId();
    
                         resultString = "New NH Registration Successfully - RegId : " + regID;

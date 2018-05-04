@@ -1,6 +1,6 @@
 ---
-title: "Použití transformací dat pro přípravu dat v Azure Machine Learning | Microsoft Docs"
-description: "Tento článek obsahuje úplný seznam transformací pro přípravu Azure Machine Learning dat. k dispozici."
+title: Použití transformací dat pro přípravu dat v Azure Machine Learning | Microsoft Docs
+description: Tento článek obsahuje úplný seznam transformací pro přípravu Azure Machine Learning dat. k dispozici.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Použití transformací dat pro přípravu dat v Azure Machine Learning
 
@@ -34,7 +34,7 @@ V místní nabídce se zobrazí pouze platné transformace pro datovému typu vy
 
 Malou podmnožinu kontextové transformace je k dispozici kliknutím pravým tlačítkem na buňku. Tyto transformace kopírování, nahraďte a filtrovat. Tyto jsou data typu vědět, takže možnosti pro číslo sloupce se liší od pro řetězcový sloupec.
 
-## <a name="derive-column-by-example"></a>Odvození sloupec příklad
+## <a name="derive-column-by-example"></a>Derive Column by Example (Odvodit sloupec podle příkladu)
 Vytvoří nový sloupec, jako odvozený jeden nebo více sloupců existující pomocí Tato transformace. Transformovat porovná vstupní sloupce (vybrané) a v příkladu zadané a pak určuje požadovanou výstup do nového sloupce. 
 
 Chcete-li použít tato transformace, vyberte jeden nebo více sloupců. Přidáte nový sloupec odvozené (prázdný) příklad. Zadejte příklad co chcete vidět v odvozených sloupců (za předpokladu, že je odvozený od ostatních sloupců) a "Podle příkladu" technologie pokusí vyplnit všechna ostatní buňky ve sloupci. 

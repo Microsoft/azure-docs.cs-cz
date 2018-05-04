@@ -9,11 +9,11 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: a3b703c96e309294e5327fb7fb013cbf28c369e4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2b47dfbac3ee5c91e416fb234468fe22aa936c4c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database? 
 
@@ -74,7 +74,7 @@ Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sq
 
 - **Azure Storage:** Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
 - **Centrum událostí Azure:** Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
-- **Azure Log Analytics:** Pro integrované řešení monitorování s možnostmi pro generování sestav, upozorňování a omezení rizik.
+- **Azure Log Analytics:** Pro integrované řešení monitorování s možnostmi generování sestav, upozorňování a omezování rizik. Tato funkce je součástí [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md).
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -84,8 +84,8 @@ Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](http://azure.mic
 
 - **[Automatické zálohování:](sql-database-automated-backups.md)** SQL Database automaticky provádí úplné a rozdílové zálohování a zálohování protokolů transakcí.
 - **[Obnovení k určitému bodu v čase:](sql-database-recovery-using-backups.md)** SQL Database podporuje obnovení k libovolnému bodu v čase v rámci doby uchování automatických záloh.
-- **[Aktivní geografická replikace:](sql-database-geo-replication-overview.md)** SQL Database umožňuje konfigurovat až čtyři sekundární databáze s možností čtení ve stejném datovém centru nebo v globálně distribuovaných datových centrech.  Pokud například máte aplikaci SaaS s databází katalogu s velkým počtem souběžných transakcí jen pro čtení, použijte geografickou replikaci a umožněte globální škálovaní operací čtení a odstraňte problémová místa v hlavní databázi způsobená úlohami čtení. 
-- **[Skupiny převzetí služeb při selhání:](sql-database-geo-replication-overview.md)** SQL Database umožňuje povolit vysokou dostupnost a vyrovnávání zatížení v globálním měřítku, včetně transparentní geografické replikace a převzetí služeb při selhání pro velké sady databází a elastické fondy. Skupiny převzetí služeb při selhání a aktivní geografická replikace umožňují vytváření globálně distribuovaných aplikací SaaS s minimálními nároky na správu. Veškeré komplexní monitorování, směrování a orchestraci převzetí služeb při selhání zajišťuje služba SQL Database.
+- **[Aktivní geografická replikace:](sql-database-geo-replication-overview.md)** SQL Database umožňuje konfigurovat až čtyři sekundární databáze s možností čtení ve stejném datovém centru nebo v globálně distribuovaných datových centrech.  Pokud například máte aplikaci SaaS s databází katalogu s velkým počtem souběžných transakcí jen pro čtení, použijte geografickou replikaci a umožněte globální škálovaní operací čtení a odstraňte problémová místa v hlavní databázi způsobená úlohami čtení. Aktivní geografická replikace umožňuje převzetí služeb při selhání jedné databáze. 
+- **[Skupiny převzetí služeb při selhání:](sql-database-geo-replication-overview.md)** SQL Database umožňuje povolit vysokou dostupnost a vyrovnávání zatížení v globálním měřítku, včetně transparentní geografické replikace a převzetí služeb při selhání pro velké sady databází a elastické fondy. Skupiny převzetí služeb při selhání a aktivní geografická replikace umožňují vytváření globálně distribuovaných aplikací SaaS s minimálními nároky na správu. Veškeré komplexní monitorování, směrování a orchestraci převzetí služeb při selhání zajišťuje služba SQL Database. Skupiny převzetí služeb při selhání umožňují převzetí služeb při selhání několika databází v rámci jedné skupiny. 
 - **[Zónově redundantní databáze:](sql-database-high-availability.md)** SQL Database umožňuje zřizování databází nebo elastických fondů na úrovni Premium nebo Pro důležité obchodní informace (Preview) napříč několika zónami dostupnosti. Vzhledem k tomu, že tyto databáze a elastické fondy mají z důvodu zajištění vysoké dostupnosti několik redundantních replik, umístění těchto replik do několika zón dostupnosti zajistí vyšší odolnost, včetně možnosti automatického obnovení bez ztráty dat v případě selhání na úrovni datacentra. Tato funkce je aktuálně ve verzi Preview. 
 
 ## <a name="built-in-intelligence"></a>Integrované inteligentní funkce
@@ -96,9 +96,9 @@ Se službou SQL Database získáte integrované inteligentní funkce, které vá
 
 SQL Database nabízí podrobné přehledy dotazů, které potřebujete monitorovat. SQL Database zjistí aspekty vaší databáze a umožní vám přizpůsobit schéma databáze vaší úloze. SQL Database poskytuje [doporučení pro optimalizaci výkonu](sql-database-advisor.md), kde můžete zkontrolovat akce optimalizace a použít je. 
 
-Neustálé monitorování databáze je však náročný a zdlouhavý úkol, zejména při práci s mnoha databázemi. Služba [Intelligent Insights](sql-database-intelligent-insights.md) dělá tuto práci za vás pomocí automatického monitorování výkonu služby SQL Database a informuje vás o problémech se snižováním výkonu, identifikuje původní příčinu problému a poskytuje doporučení pro vylepšení výkonu, pokud je to možné.
+Neustálé monitorování databáze je však náročný a zdlouhavý úkol, zejména při práci s mnoha databázemi. [Intelligent Insights](sql-database-intelligent-insights.md) dělá tuto práci za vás tím, že automaticky monitoruje výkon služby SQL Database a informuje vás o problémech se snižováním výkonu. Intelligent Insights pak může identifikovat původní příčinu a poskytnout doporučení pro vylepšení výkonu, pokud je to možné. 
 
-Efektivní správa velkého počtu databází může být nemožná i se všemi dostupnými nástroji a sestavami, které SQL Database a Azure Portal nabízí. Místo ručního monitorování a optimalizace databáze můžete zvážit delegování některých akcí monitorování a optimalizace do služby SQL Database pomocí [automatické optimalizace](sql-database-automatic-tuning.md). SQL Database automaticky aplikuje doporučení a testuje a ověřuje každou z akcí optimalizace pro zajištění stálého vylepšování výkonu. Díky tomu se služba SQL Database může automaticky přizpůsobit vaší úloze řízeným a bezpečným způsobem. Automatická optimalizace znamená, že se výkon vaší databáze pečlivě monitoruje a porovnává před a po každé akci optimalizace, a pokud se výkon nezlepší, akce optimalizace se vrátí zpět.
+Efektivní správa velkého počtu databází může být nemožná i se všemi dostupnými nástroji a sestavami, které SQL Database a Azure Portal nabízí. Místo ručního monitorování a optimalizace databáze můžete zvážit delegování některých akcí monitorování a optimalizace do služby SQL Database pomocí [automatické optimalizace](sql-database-automatic-tuning.md). SQL Database automaticky aplikuje doporučení a pak je testuje za účelem ověření zlepšení výkonu. Díky tomu se služba SQL Database může automaticky přizpůsobit vaší úloze řízeným a bezpečným způsobem. Tato automatická optimalizace znamená, že se výkon vaší databáze pečlivě monitoruje a porovnává před a po každé akci optimalizace, a pokud se výkon nezlepší, akce optimalizace se vrátí zpět.
 
 V současné době se mnoho našich partnerů provozujících [víceklientské aplikace SaaS](sql-database-design-patterns-multi-tenancy-saas-applications.md) nad službou SQL Database spoléhá na automatickou optimalizaci výkonu pro zajištění, že jejich aplikace budou mít vždy stabilní a předvídatelný výkon. Tato funkce pro ně výrazně snižuje riziko incidentu výkonu uprostřed noci. Vzhledem k tomu, že část jejich zákazníků také používá SQL Server, můžou navíc s využitím stejných doporučení indexování získaných ze služby SQL Database pomáhat svým zákazníkům s SQL Serverem.
 
@@ -154,7 +154,7 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
 - **[Azure Portal:](https://portal.azure.com/)** Webová aplikace pro správu všech služeb Azure. 
 - **[SQL Server Management Studio:](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** Bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Serveru až po službu SQL Database.
 - **[SQL Server Data Tools v sadě Visual Studio:](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** Bezplatná klientská aplikace ke stažení pro vývoj relačních databází SQL Serveru, databází Azure SQL, balíčků služby SSIS, datových modelů služby Analysis Services a sestav služby Reporting Services.
-- **[Visual Studio Code:](https://code.visualstudio.com/docs)** Bezplatný opensourcový editor kódu ke stažení pro Windows, MacOS a Linux, který podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Serveru, služby Azure SQL Database a služby SQL Data Warehouse.
+- **[Visual Studio Code:](https://code.visualstudio.com/docs)** Bezplatný opensourcový editor kódu ke stažení pro Windows, macOS a Linux, který podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Serveru, služby Azure SQL Database a služby SQL Data Warehouse.
 
 SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PHP, Ruby a .NET v systémech MacOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](sql-database-libraries.md) jako SQL Server.
 
@@ -170,7 +170,7 @@ SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PH
 
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/) najdete cenové kalkulačky a srovnání cen izolovaných databází a elastických fondů.
 
-- Tyto kurzy Rychlý start vám pomůžou začít:
+- Tyto rychlé starty vám pomůžou začít:
 
   - [Vytvoření databáze SQL na webu Azure Portal](sql-database-get-started-portal.md)  
   - [Vytvoření databáze SQL pomocí Azure CLI](sql-database-get-started-cli.md)

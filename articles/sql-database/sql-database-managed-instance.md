@@ -10,11 +10,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -67,9 +67,9 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 
 ![Jednotné přihlašování](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>na základě vCore nákupní model
+## <a name="vcore-based-purchasing-model-preview"></a>na základě vCore nákupní model (preview)
 
-Na základě vCore nákupní model poskytuje flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. Je také vhodné pro až na 30 procent úspor s modelem vCore [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Nákupní model (preview) na základě vCore poskytuje flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. Je také vhodné pro až na 30 procent úspor s modelem vCore [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
 Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru.
 - Logické CPU 4. generace jsou založené na procesorech Intel E5-2673 v3 (Haswell) 2,4 GHz.
@@ -186,7 +186,7 @@ Služba Azure databáze migrace je plně spravovaná služba navržených k povo
 Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Záloh uložených v objektu blob úložiště Azure můžete přímo obnovena do spravované Instance. Chcete-li obnovit existující databázi SQL do spravované instance, můžete:
 
 - Použití [služba migrace dat (DMS)](/sql/dma/dma-overview). Podívejte se kurz [migrací do Instance spravované pomocí služby pro migraci databáze Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) obnovit ze záložního souboru databáze
-- Použití [příkaz RESTORE T-SQL](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+- Použití [příkaz RESTORE T-SQL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Zobrazuje postup obnovení společnost Wide World Importers - záložní soubor standardní databáze, na adrese [obnovit záložní soubor do Instance spravované](sql-database-managed-instance-restore-from-backup-tutorial.md). Tento kurz ukazuje, že budete muset nahrát záložní soubor do úložiště Azure blog a zabezpečení pomocí klíč sdíleného přístupu podpis (SAS).
   - Informace o obnovení z adresy URL, najdete v článku [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
 - [Import ze souboru BACPAC souboru](sql-database-import.md)

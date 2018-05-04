@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/27/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cc833e456571b63fa03574808529c8c501d7ab5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -50,7 +50,7 @@ Pokud jste vytvořili účet Batch se režim přidělení fondu nastavený na **
 | [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu |4 x počet jader na uzel |
 | [Aplikace](batch-application-packages.md) na účtu Batch |20 |
 | Balíčky aplikací na jednu aplikaci |40 |
-| Velikost balíčku aplikace, (všechny) |Approx. 195GB<sup>1</sup> |
+| Velikost balíčku aplikace, (všechny) |Poli 195GB<sup>1</sup> |
 | Velikost maximální spuštění úloh | 32768 znaků<sup>2</sup> |
 | Úloha maximální doba platnosti | 7 dní<sup>3</sup> |
 | Výpočetní uzly ve fondu komunikaci mezi uzly povolena | 100 |

@@ -1,3 +1,5 @@
+- name: Základy Azure IoT
+  href: ../iot-fundamentals/index.yml
 - name: Dokumentace ke službě Azure IoT Hub Device Provisioning
   href: index.yml
 - name: Přehled
@@ -87,6 +89,8 @@
       href: concepts-security.md
     - name: Služba
       href: concepts-service.md
+    - name: Osvědčení TPM
+      href: concepts-tpm-attestation.md
 - name: Návody
   items:
     - name: Připojení sady MXChip IoT DevKit ke službě IoT Hub
@@ -117,6 +121,32 @@
   items:
     - name: REST
       href: /rest/api/iot-dps
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Předkonfigurovaná řešení IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: Azure IoT Hub

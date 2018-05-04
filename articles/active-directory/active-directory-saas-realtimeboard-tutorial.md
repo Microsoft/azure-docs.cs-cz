@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s RealtimeBoard | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RealtimeBoard."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RealtimeBoard.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 2796280d4c8d5d2b11424cba866500aee38414ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5734d9ae2f5633fc7386b5cb0754769af9bf96bc
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Kurz: Azure Active Directory integrace s RealtimeBoard
 
@@ -108,13 +108,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![RealtimeBoard domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL jako:`https://realtimeboard.com/`
+    V **identifikátor** textovému poli, zadejte adresu URL jako: `https://realtimeboard.com/`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-realtimeboard-tutorial/tutorial_realtimeboard_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://realtimeboard.com/sso/saml`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://realtimeboard.com/sso/saml`
 
 5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -124,7 +124,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-realtimeboard-tutorial/tutorial_general_400.png)
 
-7. Konfigurace jednotného přihlašování na **RealtimeBoard** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory RealtimeBoard](mailto:support@realtimeboard.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+7. Konfigurace jednotného přihlašování na **RealtimeBoard** straně, postupujte [RealtimeBoard pokyny](https://help.realtimeboard.com/support/solutions/articles/11000023465-saml-based-single-sign-on-)a použije data z vaší stažené **soubor XML s metadaty**.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -205,7 +205,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici RealtimeBoard na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci RealtimeBoard.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
 Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce. Datoví vědci pomocí nich můžou připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
@@ -120,7 +120,7 @@ Pokud společně se souborem modelu chcete nasadit i webovou službu, potřebuje
 
 Teď můžete začít připravovat své prostředí na zprovoznění modelu.
 
-## <a name="prepare-to-operationalize-locally"></a>Příprava na místní zprovoznění
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>Příprava na místní zprovoznění [pro vývoj a testování vaší služby]
 Pomocí nasazení v _místním režimu_ proveďte spuštění v kontejnerech Docker v místním počítači.
 
 _Místní režim_ můžete použít pro vývoj a testování. K provedení následujících kroků pro zprovoznění modelu je potřeba, aby byl modul Docker spuštěný místně. Pomocí příznaku `-h` na konci každého příkazu můžete zobrazit odpovídající zprávu nápovědy.
@@ -257,7 +257,7 @@ Teď můžete vytvořit webovou službu v reálném čase.
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>Vytvoření webové služby v reálném čase pomocí samostatných příkazů
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[Volitelná alternativa] Vytvoření webové služby v reálném čase pomocí samostatných příkazů
 Jako alternativu k příkazu **az ml service create realtime** uvedenému výše můžete také provést jednotlivé kroky samostatně. 
 
 Nejprve zaregistrujte model. Potom vygenerujte manifest, sestavte image Dockeru a vytvořte webovou službu. Tento přístup vám zajistí větší flexibilitu v každém kroku. Navíc můžete použít entity vygenerované v předchozích krocích a další entity vytvářet jenom v případě potřeby.

@@ -45,6 +45,8 @@
       href: container-instances-troubleshooting.md
     - name: Agenti sestavení Jenkins ve službě ACI
       href: container-instances-jenkins.md
+    - name: Monitorování využití procesoru a paměti
+      href: container-instances-monitor.md
     - name: Konfigurace svazků s daty
       items:
         - name: Soubory Azure

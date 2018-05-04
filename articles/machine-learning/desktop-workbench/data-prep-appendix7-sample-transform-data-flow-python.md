@@ -1,6 +1,6 @@
 ---
-title: "Příklad transformace dat toku transformace možné pomocí Azure Machine Learning Data přípravy | Microsoft Docs"
-description: "Tento dokument obsahuje sadu příklady transformace datového toku transformací možné pomocí Azure Machine Learning Příprava dat"
+title: Příklad transformace dat toku transformace možné pomocí Azure Machine Learning Data přípravy | Microsoft Docs
+description: Tento dokument obsahuje sadu příklady transformace datového toku transformací možné pomocí Azure Machine Learning Příprava dat
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: aa213a3b1a8949f0fca5e4bbb7ec5a6a775ae6ec
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>Ukázka vlastních dat toku transformací (Python) 
 Je název transformace v nabídce **transformace toku dat (skript)**. Před čtením této příloha, přečtěte si [Python rozšiřitelnost přehled](data-prep-python-extensibility-overview.md).

@@ -1,3 +1,4 @@
+# [Základy Azure IoT](../iot-fundamentals/index.yml)
 # [Dokumentace k sadě IoT Suite](index.md)
 
 # Přehled
@@ -94,10 +95,20 @@
 ## [Zabezpečení od počátku](securing-iot-ground-up.md)
 
 # Související
+## Řešení 
+### [Předkonfigurovaná řešení IoT Suite](/azure/iot-suite) 
+### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+## Služby platformy 
+### [IoT Hub](/azure/iot-hub) 
+### [Služba IoT Hub Device Provisioning](/azure/iot-dps)
+### [Sady SDK pro služby IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [Sady SDK pro zařízení IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
-## [IoT Hub](/azure/iot-hub/)
-## [Microsoft IoT Central](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # Zdroje a prostředky

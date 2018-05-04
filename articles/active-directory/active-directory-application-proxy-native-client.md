@@ -1,8 +1,8 @@
 ---
-title: "Publikování aplikací pro nativní klient – Azure AD | Microsoft Docs"
-description: "Popisuje postup povolení aplikace nativního klienta ke komunikaci s konektor Proxy aplikace Azure AD poskytnout zabezpečený vzdálený přístup k místní aplikace."
+title: Publikování aplikací pro nativní klient – Azure AD | Microsoft Docs
+description: Popisuje postup povolení aplikace nativního klienta ke komunikaci s konektor Proxy aplikace Azure AD poskytnout zabezpečený vzdálený přístup k místní aplikace.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0753db5c5accf67411a9968f56aa9ad2158bad89
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 823939e76bcf982d37b58595795dca84c1830e19
+ms.sourcegitcommit: 4bc2aa08a116a0acca0af3b02b5c1d144d3cf9b1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Postup povolení nativního klienta aplikace pro interakci s proxy aplikace
 
@@ -41,7 +41,7 @@ Nativní aplikace nakonfigurujte následujícím způsobem:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na **Azure Active Directory** > **registrace aplikace**.
-3. Vyberte **nové registrace aplikace**.
+3. Vyberte **Registrace nové aplikace**.
 4. Zadejte název pro vaši aplikaci, vyberte **nativní** jako typ aplikace a zadejte identifikátor URI přesměrování pro aplikaci. 
 
    ![Vytvořit novou registraci aplikace](./media/active-directory-application-proxy-native-client/create.png)
@@ -73,7 +73,7 @@ Upravte kód nativní aplikace v rámci ověřování služby Active Directory A
 ```
 // Acquire Access Token from AAD for Proxy Application
 AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/<Tenant ID>");
-AuthenticationResult result = authContext.AcquireToken("< External Url of Proxy App >",
+AuthenticationResult result = await authContext.AcquireTokenAsync("< External Url of Proxy App >",
         "<App ID of the Native app>",
         new Uri("<Redirect Uri of the Native App>"),
         PromptBehavior.Never);

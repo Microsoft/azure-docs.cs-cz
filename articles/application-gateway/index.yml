@@ -1,0 +1,75 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Application Gateway
+metadata:
+  title: Dokumentace ke službě Azure Application Gateway – kurzy, reference k rozhraní API
+  meta.description: Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.
+  services: application-gateway
+  author: davidmu1
+  manager: jeconnocfte
+  ms.service: application-gateway
+  ms.topic: landing-page
+  ms.date: 02/01/2018
+  ms.author: davidmu
+  ms.openlocfilehash: b49cebd1a9d6554d17a9237ff33c4fcbe0d9f4f7
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 04/28/2018
+abstract:
+  description: Naučte se nasadit kontroler doručování aplikací (ADC) Application Gateway jako službu. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení, což vám umožňuje vytvořit škálovatelný a vysoce dostupný webový front-end.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Naučte se spravovat webový provoz k vašim prostředkům s využitím Application Gateway:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg
+      text: Azure Portal
+      href: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: https://docs.microsoft.com/azure/application-gateway/quick-create-powershell
+    - image:
+        src: https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg
+      text: Azure CLI
+      href: https://docs.microsoft.com/azure/application-gateway/quick-create-cli
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak nasadit, spravovat a monitorovat službu Application Gateway v Azure.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">Správa webového provozu s využitím služby Application Gateway</a>
+    - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">Omezení webového provozu pomocí firewallu webových aplikací ve službě Application Gateway</a>
+    - html: <a href="/azure/application-gateway/tutorial-ssl-cli">Povolení ukončení protokolu SSL ve službě Application Gateway</a>
+    - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">Hostování několika webů s využitím služby Application Gateway</a>
+    - html: <a href="/azure/application-gateway/tutorial-url-route-cli">Směrování provozu na základě adresy URL ve službě Application Gateway</a>
+    - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">Přesměrování provozu na konkrétní servery ve fondu služeb Application Gateway</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Správa webového provozu s využitím služby Application Gateway
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
+    - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.js</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
+    - title: REST
+      html: <p><a href="https://msdn.microsoft.com/library/mt684941">Referenční informace k rozhraní REST API služby Compute</a></p>

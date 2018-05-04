@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ac6c3e428148a6609b264b0b8f8cff416b0fa4d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Scénář 1: Posouzení vhodnosti místních úloh k migraci do Azure
 
@@ -285,7 +285,7 @@ Než začnete, mějte na paměti, že kolektor v současné době podporuje jako
 5. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (plně kvalifikovaný název domény) nebo IP adresu vCenter Serveru.
     - V části **Uživatelské jméno** a **Heslo** zadejte přihlašovací údaje k účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů na serveru vCenter.
-    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1000 virtuálních počítačů. 
+    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. 
 
     ![Připojení k vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 

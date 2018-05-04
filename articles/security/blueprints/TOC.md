@@ -6,7 +6,7 @@
 ## [Povolení provozního zabezpečení](../azure-operational-security.md)
 ## [Zásady správného řízení v Azure](../governance-in-azure.md)
 ## [Izolace v cloudu Azure](../azure-isolation.md)
-## [Zabezpečení hybridní síťové architektury](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
+## [Zabezpečení hybridní síťové architektury](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json)
 ## [Technické možnosti zabezpečení](../azure-security-technical-capabilities.md)
 
 # [Zabezpečení a šifrování dat](../security-azure-encryption-overview.md)

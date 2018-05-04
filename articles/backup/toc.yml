@@ -69,16 +69,18 @@
               href: backup-mabs-unattended-install.md
         - name: Ochrana úloh
           items:
-            - name: Použití Azure Backup Serveru k zálohování serveru VMware
+            - name: Server VMware
               href: backup-azure-backup-server-vmware.md
-            - name: Použití Azure Backup Serveru k zálohování Exchange
+            - name: Výměna
               href: backup-azure-exchange-mabs.md
-            - name: Použití Azure Backup Serveru k zálohování sharepointové farmy
+            - name: Farmy služby SharePoint
               href: backup-azure-backup-sharepoint-mabs.md
-            - name: Použití Azure Backup Serveru k zálohování SQL
+            - name: SQL Server
               href: backup-azure-sql-mabs.md
             - name: Ochrana stavu systému a úplné obnovení systému
               href: backup-mabs-system-state-and-bmr.md
+            - name: Soubory a aplikace v Azure Stacku
+              href: backup-mabs-files-applications-azure-stack.md
         - name: Obnovení dat z Azure Backup Serveru
           href: backup-azure-alternate-dpm-server.md
     - name: Sdílená složky Azure

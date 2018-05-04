@@ -1,6 +1,6 @@
 ---
-title: "Zkoumat HockeyApp data ve službě Azure Application Insights | Microsoft Docs"
-description: "Analýza využití a výkonu vaší aplikace Azure pomocí Application Insights."
+title: Zkoumat HockeyApp data ve službě Azure Application Insights | Microsoft Docs
+description: Analýza využití a výkonu vaší aplikace Azure pomocí Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: cd185d799be5051340c2bfea44a1d1e69a1eb002
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat HockeyApp data ve službě Application Insights
 
 > [!NOTE]
-> Centrum aplikace Visual Studio je nyní doporučené službě společnosti Microsoft pro monitorování nových mobilních aplikací. [Zjistěte, jak nastavit aplikace s Center aplikace a služby Application Insights](app-insights-mobile-center-quickstart.md).
-> 
-> 
+> HockeyApp již není k dispozici pro nové aplikace. Existující HockeyApp nasazení budou i nadále fungovat. Centrum aplikace Visual Studio je nyní doporučené službě společnosti Microsoft pro monitorování nových mobilních aplikací. [Zjistěte, jak nastavit aplikace s Center aplikace a služby Application Insights](app-insights-mobile-center-quickstart.md).
 
 [HockeyApp](https://azure.microsoft.com/services/hockeyapp/) je služba pro monitorování provozu desktop a mobilní aplikace. Z HockeyApp můžete odeslat vlastní a trasování telemetrii ke sledování využití a pomoct s diagnostikou (kromě získávání data o chybách). Tento datový proud telemetrie lze dotazovat pomocí výkonného [Analytics](app-insights-analytics.md) funkce [Azure Application Insights](app-insights-overview.md). Kromě toho můžete [exportovat vlastní a trasování telemetrie](app-insights-export-telemetry.md). Chcete-li tyto funkce povolit, nastavte mostu, který předává HockeyApp vlastních dat do služby Application Insights.
 
@@ -57,10 +55,10 @@ A to je vše! Vlastní a trasování data shromážděná ve vaší aplikaci ins
 
 Stručně pojďme si shrnout každý z těchto funkcí, které jsou nyní k dispozici.
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 Analytics je výkonný nástroj pro zadávání dotazů ad-hoc vašich dat, který vám umožní diagnostikovat a analyzovat telemetrie a rychle zjistit hlavní příčiny a vzory.
 
-![Analýza](./media/app-insights-hockeyapp-bridge-app/05.png)
+![Analýzy](./media/app-insights-hockeyapp-bridge-app/05.png)
 
 * [Další informace o analýzy](app-insights-analytics-tour.md)
 
@@ -69,6 +67,6 @@ Průběžné Export umožňuje exportovat data do kontejner úložiště objekt�
 
 [Další informace o průběžné Export](app-insights-export-telemetry.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Pro data aplikace Analytics](app-insights-analytics-tour.md)
 

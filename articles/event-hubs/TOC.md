@@ -47,7 +47,7 @@
 ### [Vytvoření a nasazení centra událostí pomocí šablony Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=event-hubs)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=event-hubs)
 ## Java
 ### [com.microsoft.azure.eventhubs](/java/api/com.microsoft.azure.eventhubs)
 ### [com.microsoft.azure.eventprocessorhost](/java/api/com.microsoft.azure.eventprocessorhost)

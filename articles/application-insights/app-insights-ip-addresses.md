@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: f56810d6520edd19ce757a91712698714902e668
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6ea915ac10314f6304c98e40a50b26e3d1ee79eb
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané při Application Insights a analýzy protokolů
 [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Možná budete muset vědět tyto adresy, pokud je aplikace, kterou monitorujete hostované za bránou firewall.
@@ -49,11 +49,6 @@ Stav monitorování konfigurace – je potřeba pouze při provádění změn.
 | Konfigurace |`auth.gfx.ms` | |`443` |
 | Konfigurace |`login.live.com` | |`443` |
 | Instalace |`packages.nuget.org` , `nuget.org`, `api.nuget.org`, `az320820.vo.msecnd.net` (NuGet soubory ke stažení) | |`443` |
-
-## <a name="hockeyapp"></a>HockeyApp
-| Účel | zprostředkovatele identity | IP adresa | Porty |
-| --- | --- | --- | --- |
-| Data o chybách |gate.hockeyapp.net |104.45.136.42 |80, 443 |
 
 ## <a name="availability-tests"></a>Testy dostupnosti
 Toto je seznam adres, ze kterého [testy dostupnosti webu](app-insights-monitor-web-app-availability.md) spouštějí. Pokud chcete spustit testy webu ve vaší aplikaci, ale váš webový server je omezen na obsluhující konkrétní klientů, budete muset povolit příchozí provoz z našich dostupnosti testovací servery.
@@ -218,7 +213,7 @@ Poznámka: *. vlastní domény applicationinsights.io týmem Application Insight
 
 Poznámka: *. vlastní domény loganalytics.io tým analýzy protokolů.
 
-## <a name="application-insights-azure-portal-extension"></a>Application Insights rozšíření portálu Azure
+## <a name="application-insights-azure-portal-extension"></a>Portál Azure Statistika aplikací rozšíření
 
 | Účel | URI | IP adresa | Porty |
 | --- | --- | --- | --- |

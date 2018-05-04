@@ -14,18 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 918af6da62e0e3a1409528691bdd460b2ad61a3e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Konzultace ohledně služby Azure Marketplace
 Konzultační služby v Azure Marketplace poskytuje cílem propojení zákazníků s služby podporují a rozšířit jejich používání Azure partnery společnosti Microsoft. Azure Marketplace podporuje seznam všech nabídek konzultace ohledně služby od partnerů systému integrátor (SI) společnosti Microsoft. 
 
 Nabídky těchto konzultace ohledně služeb jsou specifické pro zákazníka oznámeních podporujících zapojení uživatelů. Jste pevné v rozsahu a doby trvání, můžete být pevné ceny nebo volné a mít definovanou výsledek. Potenciální zákazníci snadno vyžádat nechat se kontaktovat partnery. Partneři obdrží oznámení v jejich systému CRM a jejich cílem je reagovat na požadavky v rámci 48 hodin.
 
-Konzultační služby v Azure Marketplace vs AppSource výkladní skříň obchodní poutače marketplace jsou v souladu s cílové skupiny a cloudu produkty společnosti Microsoft, které pomáhají uživatelům najít požadované. Každý výkladní skříň nabízí specializované možnosti publikování můžete maximalizovat publikování investic. Následující tabulka shrnuje tyto možnosti:
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Konzultační služby v Azure Marketplace vs AppSource výkladní skříň
+Obchodní poutače marketplace jsou v souladu s cílové skupiny a cloudu produkty společnosti Microsoft, které pomáhají uživatelům najít požadované. Každý výkladní skříň nabízí specializované možnosti publikování můžete maximalizovat publikování investic. Následující tabulka shrnuje tyto možnosti:
 
 |         |Azure Marketplace  |AppSource |
 |---------|---------|---------|

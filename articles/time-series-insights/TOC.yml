@@ -1,3 +1,5 @@
+- name: Základy Azure IoT
+  href: ../iot-fundamentals/index.yml
 - name: Dokumentace ke službě Azure Time Series Insights
   href: index.yml
 - name: Přehled
@@ -57,16 +59,36 @@
       href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
     - name: Syntaxe dotazů
       href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Předkonfigurovaná řešení IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Azure Stream Analytics
+      href: /azure/stream-analytics/
 - name: Zdroje a prostředky
   items:
-    - name: Související služby
-      items:
-        - name: Azure IoT Suite
-          href: /azure/iot-suite/
-        - name: Azure Event Hubs
-          href: /azure/event-hubs/
-        - name: Azure Stream Analytics
-          href: /azure/stream-analytics/
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: Ceny

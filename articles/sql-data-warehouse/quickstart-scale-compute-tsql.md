@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí T-SQL
 
@@ -25,8 +25,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="before-you-begin"></a>Než začnete
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS).
-
-Předpokladem je, že jste dokončili [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md). Po dokončení rychlého startu Vytvoření a připojení už víte, jak se připojit: vytvořili jste datový sklad s názvem **mySampleDataWarehouse**, pravidlo brány firewall, které klientovi umožňuje přístup k serveru, a vše jste nainstalovali.
  
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
@@ -91,11 +89,42 @@ Změna jednotek datového skladu:
 1. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**.
 2. Ke změně cíle služby použijte příkaz T-SQL [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database). Spusťte následující dotaz a změňte cíl služby na DW300. 
 
-```Sql
-ALTER DATABASE mySampleDataWarehouse
-MODIFY (SERVICE_OBJECTIVE = 'DW300')
-;
-```
+    ```Sql
+    ALTER DATABASE mySampleDataWarehouse
+    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    ;
+    ```
+
+## <a name="monitor-scale-change-request"></a>Monitorování žádostí o změnu rozsahu
+K zobrazení průběhu předchozí žádosti o změnu můžete použít syntaxi T-SQL `WAITFORDELAY` a dotázat se na stav dynamického zobrazení správy (DMV) sys.dm_operation_status.
+
+Pokud se chcete dotázat na stav změny objektu služby:
+
+1. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**.
+2. Spuštěním následujícího dotazu se dotážete na stav DMV sys.dm_operation_status.
+
+    ```sql
+    WHILE 
+    (
+        SELECT TOP 1 state_desc
+        FROM sys.dm_operation_status
+        WHERE 
+            1=1
+            AND resource_type_desc = 'Database'
+            AND major_resource_id = 'MySampleDataWarehouse'
+            AND operation = 'ALTER DATABASE'
+        ORDER BY
+            start_time DESC
+    ) = 'IN_PROGRESS'
+    BEGIN
+        RAISERROR('Scale operation in progress',0,0) WITH NOWAIT;
+        WAITFOR DELAY '00:00:05';
+    END
+    PRINT 'Complete';
+    ```
+3. Výsledný výstup zobrazuje protokol dotazování stavu.
+
+    ![Stav operace](media/quickstart-scale-compute-tsql/polling-output.png)
 
 ## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
 
@@ -103,7 +132,7 @@ Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-S
 
 ## <a name="check-operation-status"></a>Kontrola stavu operace
 
-Informace o různých operacích správy ve službě SQL Data Warehouse získáte po spuštění následujícího dotazu v zobrazení dynamické správy [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Vrátí se například operace a její stav, který bude buď IN_PROGRESS, nebo COMPLETED.
+Informace o různých operacích správy ve službě SQL Data Warehouse získáte po spuštění následujícího dotazu v zobrazení dynamické správy [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
 
 ```sql
 SELECT *
@@ -112,7 +141,7 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySQLDW'
+    major_resource_id = 'MySampleDataWarehouse'
 ```
 
 

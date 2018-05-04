@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
-ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 9af578cef9a89b4ae953b26f261f99593b79deb2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 04/30/2018
+ms.author: clemensv
+ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Průvodci Azure Service Bus a Event Hubs protokolu AMQP 1.0
 

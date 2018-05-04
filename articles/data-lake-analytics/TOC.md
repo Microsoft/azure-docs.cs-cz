@@ -4,7 +4,7 @@
 ## [Co je služba Data Lake Analytics?](data-lake-analytics-overview.md)
 
 # Začínáme
-## [portál Azure Portal](data-lake-analytics-get-started-portal.md)
+## [Azure Portal](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
@@ -13,7 +13,7 @@
 # Postup
 
 ## Správa služby Data Lake Analytics
-### [portál Azure Portal](data-lake-analytics-manage-use-portal.md)
+### [Azure Portal](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
@@ -24,29 +24,33 @@
 ### [Úprava omezení kvót](data-lake-analytics-quota-limits.md)
 
 ## Vývoj programů U-SQL
-### [Základy U-SQL](data-lake-analytics-u-sql-get-started.md)
-### [Referenční příručka jazyka U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
-### [Katalog U-SQL](data-lake-analytics-u-sql-catalog.md)
-### [Uživatelsky definované operátory U-SQL](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-### [Rozšíření U-SQL pomocí Pythonu](data-lake-analytics-u-sql-python-extensions.md)
-### [Rozšíření U-SQL R](data-lake-analytics-u-sql-r-extensions.md)
-### [Kognitivní rozšíření U-SQL](data-lake-analytics-u-sql-cognitive.md)
-### [Analýza webových protokolů](data-lake-analytics-analyze-weblogs.md)
-### [Vlastní kód U-SQL pro Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
-### [U-SQL pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
-### [Export databáze U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
 
-## Ladění programů U-SQL
-### [Monitorování úloh a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-### [Řešení potíží s neobvykle se opakující úlohou](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
-### [Ladění kódu C# v U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
-### [Použití prohlížeče úloh a zobrazení úloh](data-lake-analytics-data-lake-tools-view-jobs.md)
-### [Použití zobrazení provádění vrcholů](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
-### [Místní spuštění a místní ladění ve VSCode](data-lake-tools-for-vscode-local-run-and-debug.md)
-### [Průvodce programovatelností U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
+### Jazyk U-SQL
+#### [Základy U-SQL](data-lake-analytics-u-sql-get-started.md)
+#### [Referenční příručka jazyka U-SQL](https://msdn.microsoft.com/library/azure/mt591959)
+#### [Katalog U-SQL](data-lake-analytics-u-sql-catalog.md)
+#### [Uživatelsky definované operátory U-SQL](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+#### [Rozšíření U-SQL pomocí Pythonu](data-lake-analytics-u-sql-python-extensions.md)
+#### [Rozšíření U-SQL R](data-lake-analytics-u-sql-r-extensions.md)
+#### [Kognitivní rozšíření U-SQL](data-lake-analytics-u-sql-cognitive.md)
+#### [Průvodce programovatelností U-SQL](data-lake-analytics-u-sql-programmability-guide.md)
+#### [Analýza webových protokolů](data-lake-analytics-analyze-weblogs.md)
+#### [Monitorování úloh a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+
+### Visual Studio
+#### [Použití prohlížeče úloh a zobrazení úloh](data-lake-analytics-data-lake-tools-view-jobs.md)
+#### [Ladění kódu C# v U-SQL](data-lake-analytics-debug-u-sql-jobs.md)
+#### [Řešení potíží s neobvykle se opakující úlohou](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
+#### [Použití zobrazení provádění vrcholů](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+#### [Export databáze U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
+
+### Visual Studio Code
+#### [U-SQL pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+#### [Vlastní kód U-SQL pro Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+#### [Místní spuštění a místní ladění ve VSCode](data-lake-tools-for-vscode-local-run-and-debug.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)

@@ -1,9 +1,9 @@
 ---
-title: Azure Data Lake Analytics Quota Limits
-description: "Zjistěte, jak upravit a zvýšit maximální kvóty v účtech Azure Data Lake Analytics (ADLA)."
+title: Maximální kvóty Azure Data Lake Analytics
+description: Zjistěte, jak upravit a zvýšit maximální kvóty v účtech Azure Data Lake Analytics (ADLA).
 services: data-lake-analytics
 keywords: Azure Data Lake Analytics
-documentationcenter: 
+documentationcenter: ''
 author: omidm1
 editor: omidm1
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
@@ -12,21 +12,25 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics Quota Limits
+# <a name="azure-data-lake-analytics-quota-limits"></a>Maximální kvóty Azure Data Lake Analytics
 
 Zjistěte, jak upravit a zvýšit maximální kvóty v účtech Azure Data Lake Analytics (ADLA). Znalost těchto mezních hodnot vám mohou pomoci porozumět chování vaší úlohy U-SQL. Všechny maximální kvóty jsou logicky, tak, že se obrátíte na podporu Azure můžete zvýšit maximální limit.
 
 ## <a name="azure-subscriptions-limits"></a>Omezení předplatných Azure
 
-**Maximální počet ADLA účty podle předplatného:** 5
+**Maximální počet ADLA účty podle předplatného podle oblastí:** 5
 
-Toto je maximální počet ADLA účty, které můžete vytvořit na jedno předplatné, každou oblast. Pokud se pokusíte vytvořit účet šesté ADLA, bude dojde k chybě "Bylo dosaženo maximální počet účtů Data Lake Analytics povoleno (5) v oblasti pod názvem odběru". V takovém případě můžete vyberte jinou oblast, pokud je to vhodné, nebo odstraňte všechny nepoužívané ADLA účty ve stejné oblasti, nebo kontaktujte Azure podporují a [otevřením lístku podpory](#increase-maximum-quota-limits) požádat o zvýšení kvóty.
+Pokud se pokusíte vytvořit účet šesté ADLA, bude dojde k chybě "Bylo dosaženo maximální počet účtů Data Lake Analytics povoleno (5) v oblasti pod názvem odběru". 
+
+Pokud chcete tento limit přesahují, můžete vyzkoušet tyto možnosti:
+* Zvolte jinou oblast, pokud je to vhodné
+* Požádejte podporu Azure podle [otevřením lístku podpory](#increase-maximum-quota-limits) požádat o zvýšení kvóty.
 
 ## <a name="adla-account-limits"></a>Limity účtu ADLA
 

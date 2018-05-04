@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
 ms.openlocfilehash: db8718b60cdd934e3301479489f21fe45f5578cd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning modelu dat kolekce API – referenční informace
 

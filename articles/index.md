@@ -6,11 +6,11 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: ea272619638c8794a17bcd62f818cc9f230167ef
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8ce6872615c25da7c479d1ad9d1cdb0c48b53112
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -966,7 +966,7 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                            <a href="https://azure.microsoft.com/features/xamarin">
                                                 <img src="media/index/logo_xamarin.svg" alt="" />
                                                 <p>Xamarin</p>
                                             </a>
@@ -3355,7 +3355,7 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/features/xamarin">
+                                <a href="https://azure.microsoft.com/features/xamarin">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3732,7 +3732,7 @@ Terraform </a>
                     </li>
                 </ul>
             </li>
-            <li>
+             <li>
                 <a href="#sdkstools">Sady SDK nebo nástroje</a>
                 <ul id="sdkstools">
                     <li>
@@ -3754,8 +3754,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Získat knihovny Azure pro .NET</a>
-                                                </h3>
+Azure pro vývojáře na platformě .NET </h3>
                                                 <p>
                                                     <a href="/dotnet/azure">Začínáme</a>
                                                 </p>
@@ -3778,8 +3777,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure">Získat knihovny Azure pro Python</a>
-                                                </h3>
+Azure pro vývojáře v Pythonu </h3>
                                                 <p>
                                                     <a href="/python/azure">Začínáme</a>
                                                 </p>
@@ -3802,8 +3800,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/nodejs/azure/">Získat knihovny Azure pro Node.js</a>
-                                                </h3>
+Azure pro vývojáře v Node.js </h3>
                                                 <p>
                                                     <a href="/javascript/azure/">Začínáme</a>
                                                 </p>
@@ -3826,8 +3823,7 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Získat knihovny Azure pro Javu</a>
-                                                </h3>
+Azure pro vývojáře v Javě </h3>
                                                 <p>
                                                     <a href="/java/azure">Začínáme</a>
                                                 </p>
@@ -3845,47 +3841,17 @@ Terraform </a>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-5.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">Získat sadu Ruby SDK</a>
-                                                </h3>
+Azure pro vývojáře v Go </h3>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Začínáme</a>
+                                                    <a href="/go/azure/">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Referenční materiály k rozhraní API</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Získat ukázky</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/develop/ruby/">Další informace</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="/go/azure/">Získat Go SDK</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="/go/azure/azure-sdk-go-qs-vm">Začínáme</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Referenční materiály</a>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3903,13 +3869,9 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/rest/api/">Začínáme s REST</a>
-                                                </h3>
+Rozhraní REST API platformy Azure </h3>
                                                 <p>
-                                                    <a href="/rest/api">Referenční materiály</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Získat ukázky</a>
+                                                    <a href="/rest/api">Referenční materiály k rozhraní API</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3932,15 +3894,12 @@ Terraform </a>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-Azure CLI 2.0 </h3>
+Azure CLI </h3>
                                                 <p>
                                                     <a href="/cli/azure">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/install-azure-cli">Azure CLI 2.0</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/cli/azure">Referenční materiály</a>
+                                                    <a href="/cli/azurereference-index">Referenční materiály</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3957,47 +3916,12 @@ Azure CLI 2.0 </h3>
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>PowerShell</h3>
+                                                <h3>Azure PowerShell</h3>
                                                 <p>
                                                     <a href="/powershell/azure/get-started-azureps">Začínáme</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">Stáhnout PowerShell</a>
-                                                </p>
-                                                <p>
                                                     <a href="/powershell/azure/overview">Referenční materiály</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-7.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-Azure CLI </h3>
-                                                <p>
-                                                    <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Začínáme</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/linux-azure-cli">Stáhnout Azure CLI pro Linux</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/mac-azure-cli">Stáhnout Azure CLI pro Mac</a>
-                                                </p>
-                                                <p>
-                                                    <a href="http://aka.ms/webpi-azure-cli">Stáhnout Azure CLI pro Windows</a>
-                                                </p>
-                                                <p>
-                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Referenční materiály</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4015,15 +3939,24 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-9.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_vs-code.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio Tools for Azure</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack">Visual Studio Code</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">Stáhnout</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice">App Service</a>
+                                                </p>
+                                                 <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb">Cosmos DB</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4041,10 +3974,9 @@ Azure CLI </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://github.com/Microsoft/DockerToolsDocs">Nástroje Dockeru</a>
-                                                </h3>
+Docker </h3>
                                                 <p>
-                                                    <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">Začínáme</a>
+                                                    <a href="/dotnet/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker">Visual Studio Tools for Docker</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Stáhnout pro Visual Studio</a>
@@ -4066,15 +3998,44 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="media/index/azure_dev-8.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_java.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Nástroje PowerShellu pro Visual Studio</a>
+Nástroje jazyka Java </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/api/overview/azure/maven/readme">Moduly plug-in Maven</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/java/azure/java-azure-tools">IntelliJ a Eclipse</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/java">Visual Studio Code</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure_dev-2.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="https://www.visualstudio.com/vs/python">Nástroje Python Tools</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Stáhnout</a>
+                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Visual Studio</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://code.visualstudio.com/docs/languages/python">Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -4133,30 +4094,6 @@ Nástroje SQL </h3>
                                                 </p>
                                                 <p>
                                                     <a href="http://go.microsoft.com/fwlink/?LinkId=708343">Stáhnout pro Windows</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cardSize">
-                                    <div class="cardPadding">
-                                        <div class="card">
-                                            <div class="cardImageOuter">
-                                                <div class="cardImage">
-                                                    <img src="media/index/azure_dev-2.svg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="cardText">
-                                                <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Nástroje Python Tools</a>
-                                                </h3>
-                                                <p>
-                                                    <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Začínáme se sadou Visual Studio</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://code.visualstudio.com/docs/languages/python">Začínáme se sadou Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>

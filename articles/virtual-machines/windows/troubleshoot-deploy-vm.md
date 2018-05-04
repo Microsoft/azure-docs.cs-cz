@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 84363a92445991d08a2593bb3ade863db06b8670
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 622d9f1f498435ae36d1b35b938b513849efc3c5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problémy s nasazení systému Windows virtuálního počítače v Azure
 
@@ -95,10 +95,6 @@ Ovladače pro virtuální počítače na bázi Windows, které jsou umístěné 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nelze najít instanci GPU v rámci virtuální počítač N-Series
 
 Abyste mohli využívat možnosti GPU Azure N-series virtuální počítače se systémem Windows Server 2016 nebo Windows Server 2012 R2, je nutné nainstalovat NVIDIA grafické ovladače pro každý virtuální počítač po nasazení. Informace o instalaci ovladačů je k dispozici pro [virtuálních počítačů Windows](n-series-driver-setup.md) a [virtuální počítače s Linuxem](../linux/n-series-driver-setup.md).
-
-## <a name="are-client-images-supported-for-n-series"></a>Jsou podporované Image klienta pro N-Series?
-
-Azure v současné době podporuje pouze N-Series na virtuálních počítačích s operačními systémy Windows Server a Linux.
 
 ## <a name="is-n-series-vms-available-in-my-region"></a>Je k dispozici N-Series virtuálních počítačů v mojí oblasti?
 

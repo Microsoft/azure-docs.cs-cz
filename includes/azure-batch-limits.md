@@ -2,8 +2,8 @@
 | --- | --- | --- |
 | Počet účtů Batch na oblast na předplatné | 1 - 3 |50 |
 | Vyhrazené jader na účtu Batch | 10 - 100 | Neuvedeno<sup>1</sup> |
-| Nízkou prioritu jader na účtu Batch | 10 - 100 | N/A<sup>2</sup> |
-| Aktivní úlohy a plány úloh<sup>3</sup> na účtu Batch | 20 - 100 | 5000<sup>4</sup> |
+| Nízkou prioritu jader na účtu Batch | 10 - 100 | NENÍ K DISPOZICI<sup>2</sup> |
+| Aktivní úlohy a plány úloh<sup>3</sup> na účtu Batch | 100 - 300 | 5000<sup>4</sup> |
 | Počet fondů na účet Batch | 20 - 100 | 2500 |
 
 > [!NOTE]

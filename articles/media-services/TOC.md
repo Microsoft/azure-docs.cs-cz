@@ -229,7 +229,7 @@
 ### [Logika opakování](media-services-retry-logic-in-dotnet-sdk.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=media-services)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [Azure PowerShell (správa služeb)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)

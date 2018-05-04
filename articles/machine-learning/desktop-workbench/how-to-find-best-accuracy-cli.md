@@ -1,6 +1,6 @@
 ---
-title: "Najít spustí s nejlepší přesnost a nejnižší doba trvání v Azure Machine Learning Workbench | Microsoft Docs"
-description: "Případ použití začátku do konce pro vyhledání nejlepší přesnost prostřednictvím rozhraní příkazového řádku pomocí Azure Machine Learning Workbench"
+title: Najít spustí s nejlepší přesnost a nejnižší doba trvání v Azure Machine Learning Workbench | Microsoft Docs
+description: Případ použití začátku do konce pro vyhledání nejlepší přesnost prostřednictvím rozhraní příkazového řádku pomocí Azure Machine Learning Workbench
 services: machine-learning
 author: totekp
 ms.author: kefzhou
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
 ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Najít spustí s nejlepší přesnost a nejnižší doba trvání
 Zadány více běží, je nalezení spustí s nejlepší přesnost jeden případ použití. Jeden ze způsobů je použití rozhraní příkazového řádku (CLI) s [JMESPath](http://jmespath.org/) dotazu. Další informace o tom, jak používat JMESPath v rozhraní příkazového řádku Azure najdete v tématu [JMESPath používat dotazy pomocí Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). V následujícím příkladu jsou vytvořeny čtyři spustí s přesnost hodnoty 0, 0,98, 1 a 1. Spustí se filtrují, pokud jsou v rozsahu `[MaxAccuracy-Threshold, MaxAccuracy]` kde `Threshold = .03`.

@@ -3,7 +3,7 @@ title: Zabezpečení jednostránkové aplikace pomocí implicitního toku Azure 
 description: Vytváření webových aplikací pomocí služby Azure AD v2.0 provádění implicitní tok pro jednostránkové aplikace.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: hpsin
 manager: mtillman
 editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b855dcaae99e16aa21a0e19ad37d933cb18c678a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: abd9471ca3f6dd5448eb5d969186f8200023683d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoly - SPA pomocí implicitního toku
 S koncovým bodem v2.0 můžete přihlásit uživatele do vaší jednostránkové aplikace s osobní i pracovní nebo školní účty od společnosti Microsoft. Jednostránkové a další aplikace JavaScript, spusťte především v prohlížeči řez pár zajímavé vyzve, pokud jde o ověřování:
@@ -47,6 +47,9 @@ Celý implicitní přihlášení toku vypadá zhruba takhle – všechny kroky j
 ## <a name="send-the-sign-in-request"></a>Odeslání žádosti o přihlášení
 Na začátku přihlášení uživatele do vaší aplikace, můžete odeslat [OpenID Connect](active-directory-v2-protocols-oidc.md) požadavek ověřování a získání přístupu `id_token` z koncového bodu v2.0:
 
+> [!IMPORTANT]
+> V pořadí, které se úspěšně žádosti o token ID registrace aplikací v [portálu pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](active-directory-v2-protocols-implicit.md)** povolené pro webového klienta.  Pokud není povolený, `unsupported_response` bude vrácena chyba: "pro vstupní parametr 'response_type' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je 'kód."
+
 ```
 // Line breaks for legibility only
 
@@ -69,16 +72,17 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametr |  | Popis |
 | --- | --- | --- |
 | tenant |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů.  Další podrobnosti naleznete v [protokolu Základy](active-directory-v2-protocols.md#endpoints). |
-| client_id |Požadované |ID aplikace, která na portál pro registraci ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) přiřazené vaší aplikace. |
-| response_type |Požadované |Musí zahrnovat `id_token` pro OpenID Connect přihlášení.  Může také zahrnovat response_type `token`. Pomocí `token` zde vám umožní aplikaci přijímat přístupového tokenu z koncového bodu authorize okamžitě bez nutnosti provádět další požadavek na koncový bod authorize. Pokud použijete `token` response_type, `scope` parametr musí obsahovat obor, která určuje, který prostředek vystavit token pro. |
-| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování. Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url. |
-| scope |Požadované |Seznam obory oddělených mezerami. Pro OpenID Connect, musí obsahovat rozsah `openid`, což znamená, že je na oprávnění "Přihlásit" v souhlasu uživatelského rozhraní. Volitelně můžete také chtít zahrnout `email` nebo `profile` [obory](active-directory-v2-scopes.md) pro získání přístupu k datům dalšího uživatele. V této žádosti o žádosti o souhlas k různým prostředkům může také zahrnovat další obory. |
-| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledný token zpět do vaší aplikace. Musí být `fragment` pro implicitní tok. |
-| state |Doporučená |Hodnota, zahrnuté v požadavku, který bude vrácen také v odpovědi tokenu. Může být řetězec o délce veškerý obsah, který chcete.  Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
-| hodnotu Nonce |Požadované |Hodnota, zahrnuté v požadavku, vygenerovaný aplikací, který bude zahrnut v výsledné požadavku id_token jako deklarace identity.  Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
-| řádku |nepovinné |Označuje typ interakce s uživatelem, který je vyžadován. Jedinými platnými hodnotami v tuto chvíli se "přihlášení", 'none' a 'souhlas'.  `prompt=login` Vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování.  `prompt=none` je opak - zajistí, že uživatel není uveden s žádné interaktivní výzvu jakkoli. Pokud požadavek nemůže být dokončena bez upozornění pomocí jednotného přihlašování, koncový bod v2.0 vrátí chybu.  `prompt=consent` Aktivuje se v dialogovém okně souhlas OAuth po přihlášení uživatele, požádá uživatele a udělit oprávnění k aplikaci. |
-| login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailovou adresu přihlašovací stránka pro uživatele, pokud znáte svoje uživatelské jméno předem. Často aplikace bude používat tento parametr během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
-| domain_hint |nepovinné |Může být jedna z `consumers` nebo `organizations`. Pokud zahrnuty, přeskočí proces zjišťování na základě e-mailu tento uživatel prochází na v2.0 přihlašovací stránky, což mírně zefektivnění činnost koncového uživatele.  Často aplikace bude používat tento parametr během opětovné ověření extrahováním `tid` deklarace identity z požadavku id_token.  Pokud `tid` deklarace, hodnota je `9188040d-6c67-4c5b-b112-36a304b66dad`, měli byste použít `domain_hint=consumers`.  Jinak použijte `domain_hint=organizations`. |
+| client_id |Požadované |Id aplikace, portálu pro registraci ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) přiřazené vaší aplikace. |
+| response_type |Požadované |Musí zahrnovat `id_token` pro OpenID Connect přihlášení.  Může také zahrnovat response_type `token`. Pomocí `token` zde vám umožní aplikaci přijímat přístupového tokenu z koncového bodu authorize okamžitě bez nutnosti provádět další požadavek na koncový bod authorize.  Pokud použijete `token` response_type, `scope` parametr musí obsahovat obor, která určuje, který prostředek vystavit token pro. |
+| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url. |
+| scope |Požadované |Seznam obory oddělených mezerami.  Pro OpenID Connect, musí obsahovat rozsah `openid`, což znamená, že je na oprávnění "Přihlásit" v souhlasu uživatelského rozhraní.  Volitelně můžete také chtít zahrnout `email` nebo `profile` [obory](active-directory-v2-scopes.md) pro získání přístupu k datům dalšího uživatele.  V této žádosti o žádosti o souhlas k různým prostředkům může také zahrnovat další obory. |
+| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledný token zpět do vaší aplikace.  Musí být `fragment` pro implicitní tok. |
+| state |Doporučená |Hodnota, zahrnuté v požadavku, který bude vrácen také v odpovědi tokenu.  Může být řetězec o délce veškerý obsah, který chcete.  Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
+| hodnotu Nonce |Požadované |Hodnota, zahrnuté v požadavku, vygenerovaný aplikací, který bude zahrnut v výsledné požadavku id_token jako deklarace identity.  Aplikace pak může ověřit tuto hodnotu zmírnit útoky opětovného přehrání tokenu.  Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
+| řádku |nepovinné |Označuje typ interakce s uživatelem, který je vyžadován.  Jedinými platnými hodnotami v tuto chvíli se "přihlášení", 'none' a 'souhlas'.  `prompt=login` Vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování.  `prompt=none` je opak - zajistí, že uživatel není uveden s žádné interaktivní výzvu jakkoli.  Pokud požadavek nemůže být dokončena bez upozornění pomocí jednotného přihlašování, koncový bod v2.0 vrátí chybu.  `prompt=consent` Aktivuje se v dialogovém okně souhlas OAuth po přihlášení uživatele, požádá uživatele a udělit oprávnění k aplikaci. |
+| login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailovou adresu přihlašovací stránka pro uživatele, pokud znáte svoje uživatelské jméno předem.  Často aplikace bude používat tento parametr během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
+| domain_hint |nepovinné |Může být jedna z `consumers` nebo `organizations`.  Pokud zahrnuty, přeskočí proces zjišťování na základě e-mailu tento uživatel prochází na v2.0 přihlašovací stránky, což mírně zefektivnění činnost koncového uživatele.  Často aplikace bude používat tento parametr během opětovné ověření extrahováním `tid` deklarace identity z požadavku id_token.  Pokud `tid` deklarace, hodnota je `9188040d-6c67-4c5b-b112-36a304b66dad` (Account Microsoft klienta příjemce), měli byste použít `domain_hint=consumers`.  Jinak použijte `domain_hint=organizations`. |
+
 
 V tomto okamžiku uživatel se vyzve k zadání přihlašovacích údajů a dokončení ověření.  Koncový bod v2.0 také zajistí, že uživatel souhlasí s tím oprávnění uvedené v `scope` parametr dotazu.  Pokud uživatel nebyla přijata některé z těchto oprávnění, požádá uživatele o souhlas pro požadovaná oprávnění.  Podrobnosti o [oprávnění, souhlasu a víceklientské aplikace jsou tady uvedené](active-directory-v2-scopes.md).
 
@@ -227,7 +231,7 @@ Jakmile se zobrazí access_token, nezapomeňte ověřit podpis tokenu a také n�
 Další informace o deklaracích identity, která je přítomen v tokenu přístupu najdete v tématu [odkaz tokenu koncový bod v2.0](active-directory-v2-tokens.md)
 
 ## <a name="refreshing-tokens"></a>Aktualizace tokeny
-Obě `id_token`s a `access_token`s vyprší po krátké době času, aby vaše aplikace musí být připraveno k aktualizaci těchto tokeny pravidelně.  Chcete-li aktualizovat buď typ tokenu, můžete provádět stejném požadavku skrytá iframe výše pomocí `prompt=none` parametru můžete řídit chování Azure AD.  Pokud chcete dostávat novou `id_token`, nezapomeňte použít `response_type=id_token` a `scope=openid`, jakož i `nonce` parametr.
+Implicitní grant neposkytuje obnovovacích tokenů.  Obě `id_token`s a `access_token`s vyprší po krátké době času, aby vaše aplikace musí být připraveno k aktualizaci těchto tokeny pravidelně.  Chcete-li aktualizovat buď typ tokenu, můžete provádět stejném požadavku skrytá iframe výše pomocí `prompt=none` parametru můžete řídit chování Azure AD.  Pokud chcete dostávat novou `id_token`, nezapomeňte použít `response_type=id_token` a `scope=openid`, jakož i `nonce` parametr.
 
 ## <a name="send-a-sign-out-request"></a>Odhlaste se žádost o odeslání
 OpenIdConnect `end_session_endpoint` umožňuje aplikaci k odeslání požadavku na koncový bod v2.0 ukončení relace uživatele a vymažete soubory cookie nastavte koncovým bodem v2.0.  Plně přihlášení uživatele z webové aplikace, aplikace by měla ukončení vlastní relaci s uživatele (obvykle zaškrtnutím nebo zrušením mezipamětí tokenů odstranit soubory cookie) a pak přesměrování prohlížeče:

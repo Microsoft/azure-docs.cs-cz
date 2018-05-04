@@ -10,23 +10,23 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: andrela
-ms.openlocfilehash: e91c80a3a4e44e2e02b77ed417d6b2d4b629fcf1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2e11b349bb1bc5b92c3876df5c14312efc0805b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Použití Javy k dotazování databáze SQL Azure
 
-Tento rychlý úvodní kurz ukazuje použití [Javy](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) k připojení k databázi SQL Azure a následné použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento rychlý start ukazuje použití [Javy](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) pro připojení k databázi SQL Azure a následné použití příkazů jazyka Transact-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý úvodní kurz, ujistěte se, že máte následující:
+Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý úvodní kurz.
+- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
 
 - Máte nainstalovanou Javu a související software pro váš operační systém:
 

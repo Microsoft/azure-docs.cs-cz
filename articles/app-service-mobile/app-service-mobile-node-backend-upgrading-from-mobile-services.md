@@ -1,11 +1,11 @@
 ---
-title: "Upgrade z mobilní služby Azure App Service - Node.js"
-description: "Zjistěte, jak snadno upgradovat aplikaci Mobile Services pro aplikaci služby mobilní aplikace"
+title: Upgrade z mobilní služby Azure App Service - Node.js
+description: Zjistěte, jak snadno upgradovat aplikaci Mobile Services pro aplikaci služby mobilní aplikace
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Upgrade existující Mobile Service Node.js Azure App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -61,12 +61,12 @@ Pak bude mít dvě verze této aplikace: ten, který zůstává stejný a slouž
 
 Odstranění může dojít, když nevidíte přenosy dat na původní migrované mobilní službě.
 
-## <a name="install-npm-package"></a>Nainstalujte požadavky
+## <a name="install-npm-package"></a> Nainstalujte požadavky
 [Uzel] musíte nainstalovat na místním počítači.  Musíte také nainstalovat balíček kompatibility.  Po instalaci uzlu spuštěním následujícího příkazu z nové cmd nebo příkazovém řádku prostředí PowerShell:
 
 ```npm i -g azure-mobile-apps-compatibility```
 
-## <a name="obtain-ams-scripts"></a>Získat skripty Azure Mobile Services
+## <a name="obtain-ams-scripts"></a> Získat skripty Azure Mobile Services
 * Přihlaste se k [portálu Azure].
 * Pomocí **všechny prostředky** nebo **App Services**, najít váš web Mobile Services.
 * V rámci lokality, klikněte na **nástroje** -> **Kudu** -> **přejděte** otevřete Kudu lokality.
@@ -76,14 +76,14 @@ Odstranění může dojít, když nevidíte přenosy dat na původní migrované
 
 To bude stahovat skripty ve formátu ZIP.  Vytvořte nový adresář na místním počítači a rozbalte `scripts.ZIP` soubor v adresáři.  Tím se vytvoří `scripts` adresáře.
 
-## <a name="scaffold-app"></a>Vygenerovat nový back-end Azure Mobile Apps
+## <a name="scaffold-app"></a> Vygenerovat nový back-end Azure Mobile Apps
 Spusťte následující příkaz z adresáře, která obsahuje adresář skriptů:
 
 ```scaffold-mobile-app scripts out```
 
 Tím se vytvoří vygenerované Azure Mobile Apps back-end v `out` adresáře.  Ačkoli to není vyžadováno, je vhodné zkontrolovat `out` adresář do úložiště zdrojového kódu podle svého výběru.
 
-## <a name="deploy-ama-app"></a>Nasazení váš back-end Azure Mobile Apps
+## <a name="deploy-ama-app"></a> Nasazení váš back-end Azure Mobile Apps
 Během nasazení budete muset provést následující:
 
 1. Vytvoření nové mobilní aplikace v [portálu Azure].
@@ -159,7 +159,7 @@ Pokud máte novou verzi klienta, která je připraveno, vyzkoušejte ji proti pr
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[služby App Service – ceny]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[služby App Service – ceny]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [konceptů ověřování]: ../app-service/app-service-authentication-overview.md
 [rychlý start ověřování]: app-service-mobile-auth.md

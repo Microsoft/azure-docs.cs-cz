@@ -1,6 +1,6 @@
 ---
-title: "Průvodce odstraňováním potíží s nasazení Azure Machine Learning | Microsoft Docs"
-description: "Řešení potíží s Příručka pro nasazení a vytvoření služby"
+title: Průvodce odstraňováním potíží s nasazení Azure Machine Learning | Microsoft Docs
+description: Řešení potíží s Příručka pro nasazení a vytvoření služby
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
 ms.openlocfilehash: 7b8d2f4fb52c6d4faed8e813779e3b01d1817355
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Nasazení služby a nastavení prostředí pro řešení potíží
 Následující informace vám mohou pomoci určit příčinu chyby při nastavování prostředí správy modelu.

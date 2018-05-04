@@ -1,6 +1,6 @@
 ---
-title: "Použít funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench | Microsoft Docs"
-description: "Tento článek pojednává o tom, jak používat funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench"
+title: Použít funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench | Microsoft Docs
+description: Tento článek pojednává o tom, jak používat funkci modelu dat kolekce v nástroji Azure Machine Learning Workbench
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
 ms.openlocfilehash: 2251f8d241f3ec47d46c04160caf997bcd025124
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Shromažďování dat modelu pomocí shromažďování dat
 
@@ -38,7 +38,7 @@ Spusťte následující příkaz:
 
     pip install azureml.datacollector
 
-## <a name="set-environment-variables"></a>Proměnné prostředí sady
+## <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
 Shromažďování dat modelu závisí na dvou proměnných prostředí. AML_MODEL_DC_STORAGE_ENABLED musí být nastavena na **true** (malá písmena.) a AML_MODEL_DC_STORAGE musí být nastaven připojovací řetězec pro účet úložiště Azure ve které chcete data uložit.
 

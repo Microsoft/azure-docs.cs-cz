@@ -1,7 +1,7 @@
+# [Základy Azure IoT](../iot-fundamentals/index.yml)
 # [Dokumentace ke službě IoT Hub](index.md)
 
 # Přehled
-## [Azure a IoT](iot-hub-what-is-azure-iot.md)
 ## [Co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
 ## [Přehled správy zařízení](iot-hub-device-management-overview.md)
 
@@ -169,7 +169,7 @@
 ##### [Vytvoření certifikátů – PowerShell](iot-hub-security-x509-create-certificates.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (služba)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (zařízení)](/dotnet/api/microsoft.azure.devices.client)
@@ -186,11 +186,18 @@
 ## [REST (úlohy)](https://docs.microsoft.com/rest/api/iothub/jobapi)
 
 # Související
-## [Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
-## [Služba Azure IoT Hub Device Provisioning](https://azure.microsoft.com/documentation/services/iot-dps/)
-## [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)
-## [Stream Analytics](https://azure.microsoft.com/documentation/services/stream-analytics/)
-## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
+## Řešení 
+### [Předkonfigurovaná řešení IoT Suite](/azure/iot-suite) 
+### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
+## Služby platformy 
+### [IoT Hub](/azure/iot-hub) 
+### [Služba IoT Hub Device Provisioning](/azure/iot-dps)
+### [Sady SDK pro služby IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
+### [Location Based Services](/azure/location-based-services) 
+### [Time Series Insights](/azure/time-series-insights) 
+## Edge 
+### [IoT Edge](/azure/iot-edge) 
+### [Sady SDK pro zařízení IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 
 
 # Zdroje a prostředky
 ## [Katalog zařízení Azure Certified for IoT](https://catalog.azureiotsuite.com/)

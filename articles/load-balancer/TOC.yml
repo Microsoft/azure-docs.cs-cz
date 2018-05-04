@@ -1,0 +1,172 @@
+- name: Dokumentace k nástroji pro vyrovnávání zatížení
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je nástroj pro vyrovnávání zatížení?
+      href: load-balancer-overview.md
+- name: Rychlý start
+  items:
+    - name: Vytvoření Load Balanceru úrovně Basic – portál
+      href: quickstart-create-basic-load-balancer-portal.md
+    - name: Vytvoření Load Balanceru úrovně Basic – Azure CLI
+      href: quickstart-create-basic-load-balancer-cli.md
+    - name: Vytvoření Load Balanceru úrovně Standard – portál
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Vytvoření Load Balanceru úrovně Standard – Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+- name: Ukázky
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+- name: Kurzy
+  items:
+    - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+    - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti
+      href: tutorial-load-balancer-standard-public-zonal-portal.md
+- name: Koncepty
+  items:
+    - name: Co je Load Balancer úrovně Standard?
+      href: load-balancer-standard-overview.md
+    - name: Testy paměti služby Load Balancer
+      href: load-balancer-custom-probe-overview.md
+    - name: Porty s vysokou dostupností
+      href: load-balancer-ha-ports-overview.md
+    - name: Podpora protokolu IPv6
+      href: load-balancer-ipv6-overview.md
+    - name: Několik front-endů
+      href: load-balancer-multivip-overview.md
+    - name: Odchozí připojení
+      href: load-balancer-outbound-connections.md
+    - name: Load Balancer úrovně Standard a zóny dostupnosti
+      href: load-balancer-standard-availability-zones.md
+    - name: Diagnostika a metriky Load Balanceru úrovně Standard
+      href: load-balancer-standard-diagnostics.md
+- name: Postup
+  items:
+    - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      items:
+        - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)
+          href: load-balancer-get-started-internet-az-powershell.md
+        - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (CLI)
+          href: load-balancer-get-started-internet-az-cli.md
+    - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard
+      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+      items:
+        - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (PowerShell)
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: Vytvoření zónového veřejného Load Balanceru úrovně Standard (CLI)
+          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+    - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti (CLI)
+      href: load-balancer-standard-public-zone-redundant-cli.md
+    - name: Vyrovnávání zatížení virtuálních počítačů v rámci zóny (CLI)
+      href: load-balancer-standard-public-zonal-cli.md
+    - name: Vytvoření Load Balancer úrovně Basic (šablona)
+      href: load-balancer-get-started-internet-arm-template.md
+    - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6
+      href: load-balancer-ipv6-internet-ps.md
+      items:
+        - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 (CLI)
+          href: load-balancer-ipv6-internet-cli.md
+        - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 (šablona)
+          href: load-balancer-ipv6-internet-template.md
+    - name: Konfigurace interního nástroje pro vyrovnávání zatížení
+      href: load-balancer-get-started-ilb-arm-portal.md
+      items:
+        - name: Konfigurace interního nástroje pro vyrovnávání zatížení (PowerShell)
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Konfigurace interního nástroje pro vyrovnávání zatížení (CLI)
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: Konfigurace interního nástroje pro vyrovnávání zatížení (šablona)
+          href: load-balancer-get-started-ilb-arm-template.md
+    - name: Konfigurace časového limitu nečinnosti protokolu TCP nástroje Load Balancer
+      href: load-balancer-tcp-idle-timeout.md
+    - name: Konfigurace distribučního režimu Load Balanceru
+      href: load-balancer-distribution-mode.md
+    - name: Kombinace služeb pro vyrovnávání zatížení
+      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: Použití několika konfigurací IP
+      href: load-balancer-multiple-ip.md
+      items:
+        - name: Použití několika konfigurací IP (CLI)
+          href: load-balancer-multiple-ip-cli.md
+        - name: Použití několika konfigurací IP (PowerShell)
+          href: load-balancer-multiple-ip-powershell.md
+    - name: Log Analytics pro Azure Load Balancer
+      href: load-balancer-monitor-log.md
+    - name: Konfigurace portů s vysokou dostupností pro interní nástroj pro vyrovnávání zatížení
+      href: load-balancer-configure-ha-ports.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
+          href: load-balancer-troubleshoot.md
+    - name: Články věnované modelu nasazení Classic
+      items:
+        - name: Odchozí připojení (Classic)
+          href: load-balancer-outbound-connections-classic.md
+    - name: Konfigurace více virtuálních IP adres cloudové služby
+      href: load-balancer-multivip.md
+      items:
+        - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services
+          href: load-balancer-get-started-ilb-classic-cloud.md
+          items:
+            - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (PowerShell)
+              href: load-balancer-get-started-ilb-classic-ps.md
+            - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (CLI)
+              href: load-balancer-get-started-ilb-classic-cli.md
+        - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (PowerShell Classic)
+          href: load-balancer-get-started-internet-classic-ps.md
+          items:
+            - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (cloud Classic)
+              href: load-balancer-get-started-internet-classic-cloud.md
+            - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (CLI Classic)
+              href: load-balancer-get-started-internet-classic-cli.md
+- name: Referenční informace
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.network
+    - name: Azure CLI
+      href: /cli/azure/network/lb
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.network.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Node.js
+      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+- name: Související
+  items:
+    - name: Application Gateway
+      href: /azure/application-gateway/
+    - name: ExpressRoute
+      href: /azure/expressroute/
+    - name: Virtual Network
+      href: /azure/virtual-network/
+    - name: VPN Gateway
+      href: /azure/vpn-gateway/
+    - name: Virtuální počítač
+      href: /azure/virtual-machines/
+    - name: Traffic Manager
+      href: /azure/traffic-manager/
+    - name: DNS
+      href: /azure/dns/
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=load-balancer'

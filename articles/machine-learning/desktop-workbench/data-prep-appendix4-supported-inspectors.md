@@ -1,6 +1,6 @@
 ---
-title: "Podporované kontroly, které jsou k dispozici v Azure Machine Learning Data přípravy | Microsoft Docs"
-description: "Tento dokument obsahuje úplný seznam kontroly, které jsou k dispozici pro přípravu Azure Machine Learning dat."
+title: Podporované kontroly, které jsou k dispozici v Azure Machine Learning Data přípravy | Microsoft Docs
+description: Tento dokument obsahuje úplný seznam kontroly, které jsou k dispozici pro přípravu Azure Machine Learning dat.
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 5d5797ede15be0779873f0a023433f0a915dd74a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Podporované inspektoři Azure Machine Learning datový přípravy ve verzi Preview
 Tento dokument popisuje sadu kontroly, které jsou k dispozici v této verzi preview.
@@ -39,7 +39,7 @@ Tato kontrola pro číselné sloupce, poskytuje celou řadu různých statistiky
 
 
 ### <a name="options"></a>Možnosti 
-- Žádné
+- Žádný
 
 ## <a name="histogram"></a>Histogram 
 Vypočítá a zobrazí histogram jednoho číselné sloupce. Výchozí počet kbelíků se počítá pomocí Scott na pravidla. Pravidlo však lze přepsat pomocí možnosti.

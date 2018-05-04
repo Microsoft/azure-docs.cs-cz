@@ -4,7 +4,7 @@ description: Naučte se vytvářet topologie Apache Storm, která používá Pyt
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 keywords: Apache storm python
 ms.assetid: edd0ec4f-664d-4266-910c-6ecc94172ad8
@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: ebfc9d5aa1c3a650a938c0a9f5fc3d047f90458d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0a8930da2d44714573155477d791dd9cb78d872a
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm v HDInsight používá Python
 

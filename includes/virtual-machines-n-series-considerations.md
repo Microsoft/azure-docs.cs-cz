@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: c1e57ea28f597293d8bb52207bbbb76892b1d5f5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3267f649e360c512a5523ce1d5948719a1969934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-* Dostupnost virtuálních počítačů N-series, najdete v části [produkty podle oblasti](https://azure.microsoft.com/en-us/regions/services/).
+* Dostupnost virtuálních počítačů N-series, najdete v části [produkty podle oblasti](https://azure.microsoft.com/regions/services/).
 
 * N-series virtuálních počítačů lze nasadit pouze v modelu nasazení Resource Manager.
 

@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
 ms.openlocfilehash: f56b651c40187e42361ac12f0cbf4e509385e0d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Přizpůsobení bitové kopie kontejneru, použít pro modely Azure ML
 

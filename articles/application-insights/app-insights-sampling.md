@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -38,7 +38,8 @@ Vzorkování snižuje náklady na provoz a data a umožňuje vyhnout se omezení
 ## <a name="types-of-sampling"></a>Typy vzorkování
 Existují tři metody vzorkování alternativní:
 
-* **Adaptivního vzorkování** automaticky přizpůsobí objem telemetrická data odesílaná ze sady SDK v aplikaci ASP.NET. Od verze sady SDK v 2.0.0-beta3 Toto je výchozí metoda vzorkování. Adaptivního vzorkování je aktuálně k dispozici pouze pro telemetrických dat na straně serveru technologie ASP.NET. 
+* **Adaptivního vzorkování** automaticky přizpůsobí objem telemetrická data odesílaná ze sady SDK v aplikaci ASP.NET. Od verze sady SDK v 2.0.0-beta3 Toto je výchozí metoda vzorkování. Adaptivního vzorkování je aktuálně k dispozici pouze pro telemetrických dat na straně serveru technologie ASP.NET. Pro Asp.NET Core aplikace které se budou zaměřovat úplné Framework, je k dispozici od verze 1.0.0 Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování. Pro Asp.NET Core aplikace které se budou zaměřovat NetCore je k dispozici z 2.2.0-beta1 sady Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování.
+
 * **Míry vzorkování** snižuje objem telemetrická data odesílaná ze svého technologie ASP.NET nebo Java serveru a z prohlížečů uživatelů. Můžete nastavit rychlost. Klient a server bude synchronizovat jejich vzorkování tak, že v hledání, mohou procházet mezi zobrazení související stránky a požadavky.
 * **Přijímání vzorkování** funguje na portálu Azure. Zahodí některé telemetrická data přenášená z vaší aplikace na vzorkovací frekvenci, který nastavíte. Nedojde k omezení přenosy telemetrie z vaší aplikace, ale umožňuje udržovat v rámci měsíční kvóta. Hlavní výhodou přijímání vzorkování je, že nastavíte vzorkovací frekvenci bez opětovného nasazení aplikace a funguje jednotně pro všechny servery a klienty. 
 
@@ -75,7 +76,7 @@ K dosažení cílový svazek, některé telemetrická generovaným se zahodí. A
 
 Metrika počítá jako je například rychlost požadavků a rychlost výjimka upraveny tak, aby kompenzovat vzorkovací frekvenci, aby zobrazovala přibližně správné hodnoty v Průzkumníku metrika.
 
-### <a name="update-nuget-packages"></a>Aktualizovat balíčky NuGet ###
+### <a name="update-nuget-packages"></a>Aktualizace balíčků NuGet ###
 
 Aktualizace vašeho projektu balíčky NuGet na nejnovější *předběžné verze* verzi Application Insights. V sadě Visual Studio, klikněte pravým tlačítkem na projekt v Průzkumníku řešení, zvolte spravovat balíčky NuGet, zkontrolujte **zahrnout předběžné verze** a vyhledejte Microsoft.ApplicationInsights.Web. 
 
@@ -335,7 +336,7 @@ Míry vzorkování funkce sady SDK v technologii ASP.NET verze z 2.0.0 a sady Ja
 
 Algoritmus vzorkování rozhodne, které telemetrie položky, chcete-li vyřadit a ty, které chcete zachovat (jestli je v sadě SDK nebo ve službě Application Insights). Rozhodnutí o vzorkování je založena na několik pravidel, která za cíl zachovat všechny body vzájemně souvisejících dat beze změn, udržování diagnostiky prostředí ve službě Application Insights, který je možné použít a spolehlivé i s menší datové sady. Například pokud vaše aplikace pro chybné žádosti odesílá další telemetrické položky (například výjimky a trasování, přihlášení z této žádosti), vzorkování nebude rozdělit tento požadavek a další telemetrií. Je buď udržuje nebo je zahodí všechny společně. Výsledkem je když se podíváte na podrobnosti požadavku ve službě Application Insights, vždy uvidíte žádost spolu s jeho položky přidružené telemetrie. 
 
-Pro aplikace, které definují "user" (který je nejčastější webové aplikace), vzorkování rozhodnutí vycházet z hodnota hash id uživatele, což znamená, že všechny telemetrická pro konkrétní uživatele, je buď zachovaná, nebo vyřadit. Pro typy aplikací, které nejsou definovat uživatele (například webové služby) rozhodnutí vzorkování podle id operace požadavku. Telemetrie položek, které mají ani id uživatele ani operaci nastavit (pro položky telemetrie příklad nahlásila asynchronní vláken s žádný kontext http) je nakonec vzorkování jednoduše zaznamená procento položek telemetrie každého typu. 
+Vzorkování rozhodnutí je založeno na id operace požadavku, což znamená, že všechny položky telemetrie patřící do určité operace je buď zachovaná, nebo vyřadit. Telemetrie položek, které nemají operaci id sady (pro položky telemetrie příklad nahlásila asynchronní vláken s žádný kontext http) vzorkování jednoduše zaznamená procento položek telemetrie každého typu. Před 2.5.0-beta2 .NET SDK a 2.2.0-beta3 ASP.NET Core SDK, byla rozhodnutí vzorkování podle hodnota hash id uživatele pro aplikace, které definují "user" (tedy nejobvyklejším webových aplikací). Pro typy aplikací, které neuvedli uživatele (například webové služby) byla rozhodnutí vzorkování podle id operace požadavku.
 
 Během zpět na zobrazení telemetrie, upraví službu Application Insights metriky stejnou vzorkování procentuální hodnotu, která byla použita v okamžiku kolekce, pro kompenzovat chybějící datové body. Proto při prohlížení telemetrii ve službě Application Insights, uživatelé se zobrazuje statisticky správné aproximace, které jsou velmi podobné reálná čísla.
 

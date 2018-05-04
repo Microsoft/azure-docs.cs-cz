@@ -9,11 +9,11 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: b09807e1fa7624ed134a24c7df4a61abf2a1d723
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-your-first-azure-sql-database-using-ssms"></a>Návrh první databáze SQL Azure pomocí SSMS
 
@@ -108,7 +108,7 @@ Služba SQL Database vytvoří bránu firewall na úrovni serveru, aby zabránil
 
 1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20170824.database.windows.net**) a možnosti pro další konfiguraci. 
 
-2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících kurzech Rychlý start. 
+2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. 
 
    ![název serveru](./media/sql-database-get-started-portal/server-name.png) 
 

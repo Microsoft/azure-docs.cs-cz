@@ -1,0 +1,102 @@
+---
+title: Rychlý start Azure – Vytvoření služby Key Vault pomocí rozhraní příkazového řádku | Microsoft Docs
+description: Rychlý start ukazující vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku
+services: key-vault
+author: barclayn
+manager: mbaldwin
+tags: azure-resource-manager
+ms.assetid: ''
+ms.service: key-vault
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 04/16/2018
+ms.author: barclayn
+ms.openlocfilehash: aaf8b93a41399b7754fb458d7d1d278a64f82139
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/23/2018
+---
+# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku
+
+Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Další informace o službě Key Vault najdete v tématu [Přehled](key-vault-overview.md). Azure CLI slouží k vytváření a správě prostředků Azure pomocí příkazů nebo skriptů. V tomto článku vytvoříte službu Key Vault. V tomto rychlém startu vytvoříte trezor klíčů. Po jeho vytvoření uložíte tajný klíč.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-try-it.md)]
+
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+
+Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, můžete zadat:
+
+```azurecli
+az login
+```
+
+Další informace o možnostech přihlášení přes rozhraní příkazového řádku najdete v tématu [Přihlášení pomocí Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *ContosoResourceGroup* v umístění *eastus*.
+
+```azurecli
+az group create --name 'ContosoResourceGroup' --location eastus
+```
+
+## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
+
+Dále ve skupině prostředků vytvořené v předchozím kroku vytvoříte službu Key Vault. Budete muset zadat několik informací:
+
+- V tomto rychlém startu používáme **Contoso-vault2**. Pro své testování musíte zadat jedinečný název.
+- Název skupiny prostředků **ContosoResourceGroup**
+- Umístění **Východní USA**
+
+```azurecli
+az keyvault create --name 'Contoso-Vault2' --resource-group 'ContosoResourceGroup' --location eastus
+```
+
+Výstup této rutiny zobrazuje vlastnosti nově vytvořené služby Key Vault. Poznamenejte si hodnoty dvou vlastností uvedených níže:
+
+- **Název trezoru:** V tomto příkladu je to **Contoso-Vault2**. Tento název budete používat pro další příkazy Key Vault.
+- **Identifikátor URI trezoru:** V tomto příkladu je to https://contoso-vault2.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+
+V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
+
+## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
+
+Pokud chcete do trezoru přidat tajný klíč, stačí provést několik dalších kroků. Toto heslo může používat aplikace. Heslo se bude nazývat **ExamplePassword** a bude uchovávat hodnotu **Pa$$w0rd**.
+
+Zadáním následujících příkazů vytvořte ve službě Key Vault tajný klíč **ExamplePassword**, který bude uchovávat hodnotu **Pa$$w0rd**:
+
+```azurecli
+az keyvault secret set --vault-name 'Contoso-Vault2' --name 'ExamplePassword' --value 'Pa$$w0rd'
+```
+
+Nyní na toto heslo, které jste přidali do služby Azure Key Vault, můžete odkazovat pomocí jeho identifikátoru URI. Aktuální verzi získáte pomocí **https://ContosoVault.vault.azure.net/secrets/ExamplePassword**. 
+
+Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
+
+```azurecli
+az keyvault secret show --name 'ExamplePassword' --vault-name 'Contoso-Vault2'
+```
+
+Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetli jste ho.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tyto prostředky zachovat.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#delete). Prostředky můžete odstranit následujícím způsobem:
+
+```azurecli
+az group delete --name ContosoResourceGroup
+```
+
+## <a name="next-steps"></a>Další kroky
+
+V tomto rychlém startu jste vytvořili službu Key Vault a uložili do ní tajný klíč. Další informace o službě Key Vault a jejím použití s vašimi aplikacemi najdete v kurzu pro webové aplikace pracující se službou Key Vault.
+
+> [!div class="nextstepaction"]
+> [Použití služby Azure Key Vault z webové aplikace](key-vault-use-from-web-application.md) Informace o čtení tajného klíče ze služby Key Vault pomocí webové aplikace s využitím [identity spravované služby](/active-directory/managed-service-identity/overview.md) najdete v následujícím kurzu [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md).

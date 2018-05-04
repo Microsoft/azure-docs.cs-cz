@@ -10,19 +10,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 6ad0f554161937a4fdb10179e2b310facbb91945
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžnou integraci a nasazení v Azure Data Factory
 
 Průběžnou integraci je postup testování každé změně, aby váš kód automaticky a co nejdříve. Průběžné nasazování následuje, testování, který se stane při průběžnou integraci a nabízených oznámení změny k pracovním nebo produkčním systému.
 
 Azure Data Factory průběžnou integraci a nasazení znamená přesunutí kanálů služby Data Factory z jednoho prostředí (vývoj, testovací, produkční) do jiné. Pokud chcete provést průběžnou integraci a nasazení, můžete použít integrace uživatelského rozhraní objektu pro vytváření dat pomocí šablon Azure Resource Manager. Rozhraní objektu pro vytváření dat může generovat šablony Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a dalších parametrů. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývoj, testovací, produkční). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
+
+Devět minutu úvod a ukázkový této funkce najdete v následujícím videu:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Vytvoření šablony Resource Manageru pro každé prostředí
 Vyberte **šablony ARM exportovat** Export šablony Resource Manageru pro vytváření dat ve vývojovém prostředí.

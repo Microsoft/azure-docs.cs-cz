@@ -1,24 +1,24 @@
 ---
-title: "Přehled Azure Event Hubs vyhrazené kapacity | Microsoft Docs"
-description: "Přehled Microsoft Azure Event Hubs vyhrazené kapacity."
+title: Přehled Azure Event Hubs vyhrazené kapacity | Microsoft Docs
+description: Přehled Microsoft Azure Event Hubs vyhrazené kapacity.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
-ms.author: sethm;babanisa
-ms.openlocfilehash: 563152a019464f3d0342383ff13e6ee1c87a22fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: 7009710328c96660accdcf9c88313ad92d25d41c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled služby Event Hubs vyhrazené
 

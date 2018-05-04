@@ -1,23 +1,23 @@
 ---
-title: "Instanční objekt pro cluster Azure Kubernetes"
-description: "Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v AKS"
+title: Instanční objekt pro cluster Azure Kubernetes
+description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v AKS
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: get-started-article
-ms.date: 02/24/2018
+ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a7c80b64a33f4f71c694f80bf3e68f39ecd01828
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Instanční objekty se službou Azure Container Service (AKS)
 
-Cluster AKS vyžaduje [instanční objekt služby Azure Active Directory][aad-service-principal] pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy][user-defined-routes] a [vrstva 4 služby Azure Load Balancer][azure-load-balancer-overview].
+Cluster AKS vyžaduje [instanční objekt služby Azure Active Directory][aad-service-principal] pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamickému vytváření a správě prostředků, jako je například [Azure Load Balancer][azure-load-balancer-overview].
 
 Tento článek ukazuje různé možnosti nastavení instančního objektu pro cluster Kubernetes ve službě AKS.
 
@@ -80,10 +80,10 @@ Při práci s instančními objekty služeb Azure AD a AKS mějte na paměti ná
 
 * Instanční objekt pro Kubernetes je součástí konfigurace clusteru. K nasazení clusteru ale nepoužívejte identitu.
 * Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes může být přidružený k jakémukoli platnému názvu aplikace Azure AD (například `https://www.contoso.org/example`). Adresa URL aplikace nemusí být skutečný koncový bod.
-* Při zadávání **ID klienta** instančního objektu můžete použít hodnotu `appId` (jak je ukázáno v tomto článku) nebo odpovídající `name` instančního objektu (například `https://www.contoso.org/example`).
+* Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId` (jak je ukázáno v tomto článku) nebo odpovídající `name` instančního objektu (například `https://www.contoso.org/example`).
 * Na hlavním virtuálním počítači a virtuálních počítačích uzlů v clusteru Kubernetes jsou pověření instančního objektu uložená v souboru `/etc/kubernetes/azure.json`.
-* Pokud použijete příkaz `az aks create` k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/acsServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
-* Při odstraňování clusteru AKS vytvořeného příkazem `az aks create` se instanční objekt, který se vytvořil automaticky, neodstraní. K jeho odstranění můžete použít příkaz `az ad sp delete --id $clientID`.
+* Pokud použijete příkaz `az aks create` k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
+* Při odstraňování clusteru AKS vytvořeného příkazem `az aks create` se instanční objekt, který se vytvořil automaticky, neodstraní. K jeho odstranění použijte příkaz `az ad sp delete --id $clientID`.
 
 ## <a name="next-steps"></a>Další kroky
 

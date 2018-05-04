@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: hero-article
 ms.date: 03/28/2017
-ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8bee80647d692b60898880a85652189a684426f7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Začínáme se zpracováním dat ze zařízení IoT pomocí služby Azure Stream Analytics
 V tomto kurzu se naučíte vytvořit logiku zpracování datového proudu ke shromáždění dat ze zařízení s platformou IoT (Internet věcí). Na skutečném případu použití platformy IoT si budete moci prohlédnout postup rychlého a ekonomického sestavení potřebného řešení.
@@ -27,19 +27,21 @@ Contoso, společnost působící v oboru automatizace průmyslu, zcela automatiz
 
 Samotná data jsou generována zařízením Texas Instruments SensorTag. Datová část dat je ve formátu JSON a vypadá takto:
 
-    {
-        "time": "2016-01-26T20:47:53.0000000",  
-        "dspl": "sensorE",  
-        "temp": 123,  
-        "hmdt": 34  
-    }  
+```json
+{
+    "time": "2016-01-26T20:47:53.0000000",  
+    "dspl": "sensorE",  
+    "temp": 123,  
+    "hmdt": 34  
+}  
+```
 
 V podobném scénáři z reálného prostředí by se jednalo o stovky podobných snímačů generujících události jako datový proud. V ideálním případě by bylo také nainstalováno nějaké zařízení sloužící jako brána k odesílání událostí do služby [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) nebo [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/). Úlohu Stream Analytics tyto události ze služby Event Hubs ingestuje a spustí dotazy na analýzu datových proudů v reálném čase. Poté můžete výsledky odeslat do jednoho z [podporovaných výstupů](stream-analytics-define-outputs.md).
 
 Pro snadnější použití tato příručka Začínáme poskytuje soubor ukázkových dat, která byla zaznamenána skutečnými zařízeními SensorTag. Na těchto ukázkových datech můžete spouštět dotazy a zobrazit výsledky. V následujících kurzech se naučíte připojovat své úlohy ke vstupům a výstupům a nasazovat je ve službě Azure.
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
-1. Na webu [Azure Portal](http://portal.azure.com) klikněte na symbol plus a do textového pole vpravo napište **STREAM ANALYTICS**. Ve výsledcích hledání vyberte **Úloha Stream Analytics**.
+1. Na webu [Azure Portal](https://portal.azure.com) klikněte na symbol plus a do textového pole vpravo napište **STREAM ANALYTICS**. Ve výsledcích hledání vyberte **Úloha Stream Analytics**.
    
     ![Vytvoření nové úlohy Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. Zadejte jedinečný název úlohy a ověřte, že je předplatné pro vaši úlohu správné. Potom vytvořte novou skupinu prostředků nebo vyberte existující skupinu v rámci svého předplatného.

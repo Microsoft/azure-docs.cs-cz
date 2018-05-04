@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f200e4ae019d918bfe7e8dfc3200a4568a50dfdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 773bfd3c4106bead85542970b3d27fd5dad25049
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, jejich změny nebo odstranění virtuální sítě partnerského vztahu
 
@@ -127,7 +127,7 @@ Pokud chcete, aby virtuální sítě pro komunikaci někdy, ale ne vždy místo 
 - Virtuální sítě můžete peered s jinou virtuální sítí a také být připojen k jiné virtuální síti s bránu virtuální sítě Azure. Pokud virtuální sítě jsou připojené prostřednictvím partnerského vztahu a bránu, provoz mezi virtuálními sítěmi toky prostřednictvím konfigurace partnerského vztahu, nikoli brány.
 - Za příchozí a výchozí přenos dat využívající partnerský vztah virtuálních sítí se účtuje nominální poplatek. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
 * <a name="cross-region"></a>Mohou párově virtuálních sítí ve stejné oblasti nebo v různých oblastech. Následující omezení neplatí, pokud jsou obě virtuální sítě v *stejné* oblasti, ale nastavují v případě, že virtuální sítě se kterými mají globálně partnerský: 
-    - Virtuální sítě může existovat pouze v následujících oblastech: západní centrální USA (Wyoming), západ USA 2 (Washington), střed USA (Iowa), USA – východ 2 (Virginia), Střední Kanada (Toronto), Východní Kanada (Quebec Město), jihovýchodní Asie (Singapur) Korejská – Jih (Buscan), jih Indie (Čennaj), centrální Indie (Pune), Indie – západ (Bombaj), UK Jih (Praha), Spojené království – západ (Cardiffu), západní Evropa (Nizozemí)
+    - Virtuální sítě může existovat v libovolné oblasti Azure veřejného cloudu, ale není v Azure národních cloudů.
     - Prostředky v jednu virtuální síť nemůže komunikovat s IP adresu k nástroji pro vyrovnávání zatížení Azure interní peered virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které komunikují s ním musí být ve stejné virtuální síti.
     - Nelze použít vzdálené Gateway nebo povolit přenosu brány. Používat vzdálený brány nebo povolit přenosu brány, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
 

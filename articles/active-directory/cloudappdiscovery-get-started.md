@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/25/2018
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: e46098d93360c809ba0aef46ed8244acf5af7196
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4ba0e384c17845a1298d283a947a4e04396d6da
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Nastavení ve službě Azure AD Cloud App Discovery
 
@@ -135,4 +135,4 @@ Chcete-li pokračovat nastavit Cloud App Discovery ve službě Azure AD pomocí 
 
 * [Vytvoření sestav snímků](cloudappdiscovery-set-up-snapshots.md)
 * [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-* [Použití vlastního analyzátoru protokolů](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)
+* [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)

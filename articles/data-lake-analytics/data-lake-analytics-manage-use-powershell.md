@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 69530ab2ad795eaf611cb749d8c439ab07cafeac
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 57bc38e6c825f0f62e41d2680e0a39da73d3c4d0
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -590,90 +590,8 @@ foreach ($sub in $subs)
 
 ## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Vytvoření účtu Data Lake Analytics pomocí šablony
 
-Můžete také použít šablonu skupiny prostředků Azure pomocí následujícího skriptu prostředí PowerShell:
+Můžete také použít šablonu skupiny prostředků Azure pomocí následující ukázka: [vytvoření účtu Data Lake Analytics pomocí šablony](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
-```powershell
-$subId = "<Your Azure Subscription ID>"
-
-$rg = "<New Azure Resource Group Name>"
-$location = "<Location (such as East US 2)>"
-$adls = "<New Data Lake Store Account Name>"
-$adla = "<New Data Lake Analytics Account Name>"
-
-$deploymentName = "MyDataLakeAnalyticsDeployment"
-$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update the JSON template path 
-
-# Log in to Azure
-Connect-AzureRmAccount -SubscriptionId $subId
-
-# Create the resource group
-New-AzureRmResourceGroup -Name $rg -Location $location
-
-# Create the Data Lake Analytics account with the default Data Lake Store account.
-$parameters = @{"adlAnalyticsName"=$adla; "adlStoreName"=$adls}
-New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rg -TemplateFile $armTemplateFile -TemplateParameterObject $parameters 
-```
-
-Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](../azure-resource-manager/resource-group-template-deploy.md) a [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
-
-**Příklad šablony**
-
-Uložit jako následující text `.json` souboru a pak použijte předchozí skript prostředí PowerShell použít šablonu. 
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "adlAnalyticsName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the Data Lake Analytics account to create."
-      }
-    },
-    "adlStoreName": {
-      "type": "string",
-      "metadata": {
-        "description": "The name of the Data Lake Store account to create."
-      }
-    }
-  },
-  "resources": [
-    {
-      "name": "[parameters('adlStoreName')]",
-      "type": "Microsoft.DataLakeStore/accounts",
-      "location": "East US 2",
-      "apiVersion": "2015-10-01-preview",
-      "dependsOn": [ ],
-      "tags": { }
-    },
-    {
-      "name": "[parameters('adlAnalyticsName')]",
-      "type": "Microsoft.DataLakeAnalytics/accounts",
-      "location": "East US 2",
-      "apiVersion": "2015-10-01-preview",
-      "dependsOn": [ "[concat('Microsoft.DataLakeStore/accounts/',parameters('adlStoreName'))]" ],
-      "tags": { },
-      "properties": {
-        "defaultDataLakeStoreAccount": "[parameters('adlStoreName')]",
-        "dataLakeStoreAccounts": [
-          { "name": "[parameters('adlStoreName')]" }
-        ]
-      }
-    }
-  ],
-  "outputs": {
-    "adlAnalyticsAccount": {
-      "type": "object",
-      "value": "[reference(resourceId('Microsoft.DataLakeAnalytics/accounts',parameters('adlAnalyticsName')))]"
-    },
-    "adlStoreAccount": {
-      "type": "object",
-      "value": "[reference(resourceId('Microsoft.DataLakeStore/accounts',parameters('adlStoreName')))]"
-    }
-  }
-}
-```
 
 ## <a name="next-steps"></a>Další postup
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

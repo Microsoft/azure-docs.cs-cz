@@ -1,6 +1,6 @@
 ---
-title: "Kombinovat sloupce podle příkladu transformace pomocí Azure Machine Learning Workbench"
-description: "V referenčním dokumentu pro transformaci 'kombinovat sloupce podle příkladu."
+title: Kombinovat sloupce podle příkladu transformace pomocí Azure Machine Learning Workbench
+description: V referenčním dokumentu pro transformaci 'kombinovat sloupce podle příkladu.
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -12,10 +12,10 @@ ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
 ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>Sloučení sloupců podle příkladu transformace
 Tato transformace umožňuje uživateli přidat nový sloupec kombinací hodnoty z více sloupců. Uživatele můžete určit oddělovač nebo příklady kombinované hodnoty k provedení této transformace. Když uživatel obsahuje příklady kombinaci, transformaci používá stejný **podle příkladu** modul, který se používá v **odvozena sloupec podle příkladu** transformace.

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ecf83dd21b0803a6ceb4139d117a8b989b070403
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6e2803410c50b47fdaa80654e5e6e61a3807fb43
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Kurz: Sestavení webové aplikace PHP s připojením k databázi MySQL v Azure
 
@@ -164,10 +164,10 @@ V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi M
 
 Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) vytvořte server v Azure Database for MySQL.
 
-V následujícím příkazu nahraďte zástupný text _&lt;mysql_server_name>_ názvem vašeho serveru MySQL (platné znaky jsou `a-z`, `0-9` a `-`). Tento název je součástí názvu hostitele serveru MySQL (`<mysql_server_name>.database.windows.net`) a musí být globálně jedinečný.
+V následujícím příkazu nahraďte zástupnou hodnotu *\<mysql_server_name>* jedinečným názvem serveru, zástupnou hodnotu *\<admin_user>* uživatelským jménem a zástupnou hodnotu *\<admin_password>* heslem. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<mysql_server_name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd!
+az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -179,14 +179,33 @@ Po vytvoření serveru MySQL se v Azure CLI zobrazí podobné informace jako v n
 
 ```json
 {
-  "administratorLogin": "adminuser",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql_server_name>.database.windows.net",
+  "additionalProperties": {},
+  "administratorLogin": "<admin_user>",
+  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
+  "fullyQualifiedDomainName": "<mysql_server_name>.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
-  "location": "northeurope",
+  "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
-  ...
+  "sku": {
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
+  "tags": null,
+  "type": "Microsoft.DBforMySQL/servers",
+  "userVisibleState": "Ready",
+  "version": "5.7"
 }
 ```
 
@@ -198,12 +217,16 @@ Ve službě Cloud Shell pomocí příkazu [`az mysql server firewall-rule create
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](app-service-ip-addresses.md#find-outbound-ips).
+>
+
 ### <a name="connect-to-production-mysql-server-locally"></a>Místní připojení k produkčnímu serveru MySQL
 
-V místním okně terminálu se připojte k serveru MySQL v Azure. U položky _&lt;mysql_server_name>_ použijte hodnotu, kterou jste zadali předtím. Po zobrazení výzvy k zadání hesla použijte heslo _My5up3r$tr0ngPa$w0rd!_, které jste zadali při vytváření databáze v Azure.
+V místním okně terminálu se připojte k serveru MySQL v Azure. U položky _&lt;mysql_server_name>_ použijte hodnotu, kterou jste zadali předtím. Po zobrazení výzvy k zadání hesla použijte heslo, které jste zadali při vytváření databáze v Azure.
 
 ```bash
-mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com-P 3306 -p
 ```
 
 ### <a name="create-a-production-database"></a>Vytvoření produkční databáze
@@ -245,7 +268,7 @@ APP_DEBUG=true
 APP_KEY=
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql_server_name>.database.windows.net
+DB_HOST=<mysql_server_name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql_server_name>
 DB_PASSWORD=MySQLAzure2017
@@ -341,7 +364,7 @@ Ve službě Cloud Shell můžete nastavit proměnné prostředí jako _nastaven�
 Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné texty _&lt;appname>_ a _&lt;mysql_server_name>_.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
 Pro přístup k nastavení můžete použít metodu PHP [getenv](http://www.php.net/manual/function.getenv.php). Kód Laravel používá pro metodu PHP `getenv` obálku [env](https://laravel.com/docs/5.4/helpers#method-env). Například konfigurace MySQL v souboru _config/database.php_ vypadá podobně jako v následujícím kódu:

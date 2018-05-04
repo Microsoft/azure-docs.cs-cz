@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 396f1d3d8c69ba3204d16f06d49656fd138a1126
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: 07ddf1c2b76230c8d753426d70098603ff14ec4d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popisující service fabric cluster
 Služba Fabric clusteru Resource Manager poskytuje několik mechanismů pro popis clusteru. Během doby běhu správce prostředků clusteru používá tyto informace k zajištění vysoké dostupnosti se služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizovat spotřeby prostředků v rámci clusteru.
@@ -39,7 +39,7 @@ Je důležité, aby domén selhání jsou správně nastaveny vzhledem k tomu, �
 > [!WARNING]
 > Je důležité, aby doména selhání informací uvedených na Service Fabric přesná. Například předpokládejme, že uzly clusteru Service Fabric běží uvnitř 10 virtuálních počítačů běžících na pět fyzických hostitelích. V takovém případě i když se 10 virtuálních počítačů, existují jenom 5 různých (nejvyšší úrovně) poruch domén. Sdílení na stejném fyzickém hostiteli způsobí, že virtuální počítače sdílet stejné kořenové domény selhání vzhledem k tomu, že virtuální počítače zaznamenat koordinované selhání, pokud se nezdaří jejich fyzického hostitele.  
 >
-> Service Fabric očekává domény selhání uzlu nechcete změnit. Další mechanismy pro zajištění vysoké dostupnosti virtuálních počítačů, jako [HA – VMs](https://technet.microsoft.com/en-us/library/cc967323.aspx) mohou způsobit konflikty s Service Fabric, které používají transparentní migraci virtuálních počítačů z jednoho hostitele na druhého. Tyto mechanismy nezadávejte překonfigurovat nebo oznámit kód spuštěný ve virtuálním počítači. Jako takový jsou **nepodporuje** jako prostředí pro spuštění Service Fabric clusterů. Service Fabric musí být používané technologie pouze vysokou dostupnost. Mechanismy, jako je migrace za provozu virtuálního počítače, sítě SAN, nebo jiné nejsou potřebné. Pokud se používá ve spojení s Service Fabric, tyto mechanismy _snížit_ aplikace dostupnost a spolehlivost vzhledem k tomu, že zavést další složitosti, přidejte centralizované zdroje selhání a využívat spolehlivost a strategie dostupnosti, které je v konfliktu s těmi, která v Service Fabric. 
+> Service Fabric očekává domény selhání uzlu nechcete změnit. Další mechanismy pro zajištění vysoké dostupnosti virtuálních počítačů, jako [HA – VMs](https://technet.microsoft.com/library/cc967323.aspx) mohou způsobit konflikty s Service Fabric, které používají transparentní migraci virtuálních počítačů z jednoho hostitele na druhého. Tyto mechanismy nezadávejte překonfigurovat nebo oznámit kód spuštěný ve virtuálním počítači. Jako takový jsou **nepodporuje** jako prostředí pro spuštění Service Fabric clusterů. Service Fabric musí být používané technologie pouze vysokou dostupnost. Mechanismy, jako je migrace za provozu virtuálního počítače, sítě SAN, nebo jiné nejsou potřebné. Pokud se používá ve spojení s Service Fabric, tyto mechanismy _snížit_ aplikace dostupnost a spolehlivost vzhledem k tomu, že zavést další složitosti, přidejte centralizované zdroje selhání a využívat spolehlivost a strategie dostupnosti, které je v konfliktu s těmi, která v Service Fabric. 
 >
 >
 

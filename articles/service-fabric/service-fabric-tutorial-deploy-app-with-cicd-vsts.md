@@ -1,12 +1,12 @@
 ---
-title: "Nasazení aplikace Azure Service Fabric s využitím průběžné integrace (Team Services) | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Visual Studio Team Services.  Nasazení aplikace do clusteru Service Fabric v Azure"
+title: Nasazení aplikace Azure Service Fabric s využitím průběžné integrace (Team Services) | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Visual Studio Team Services.  Nasazení aplikace do clusteru Service Fabric v Azure
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
-V tomto kurzu, který je třetí částí série, se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric pomocí Visual Studio Team Services.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
+V tomto kurzu, který je čtvrtou částí série, se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric pomocí Visual Studio Team Services.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
 
 Ve třetí části této série se naučíte:
 
@@ -36,6 +36,7 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * [Sestavit aplikaci .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
 > * [Nasadit aplikaci do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Přidat koncový bod HTTPS do front-end služby ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * Nakonfigurovat CI/CD pomocí Visual Studio Team Services
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 

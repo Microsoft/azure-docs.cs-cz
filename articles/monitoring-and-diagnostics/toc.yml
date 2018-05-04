@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: Akce webhooku pro výstrahy protokolu
           href: monitor-alerts-unified-log-webhook.md
+        - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
           href: monitoring-enable-alerts-using-template.md
         - name: Zkopírování upozornění z portálu OMS na web Azure Portal

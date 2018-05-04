@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -468,7 +468,7 @@ Pokud klienta služby Azure Active Directory se nachází v jedné z datových c
 
 **Řešení potíží s agenta**
 
-[Protokolu událostí systému Windows](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) v systému Windows Server obsahuje počítače, který je hostitelem agenta události pro všechny operace prováděné tímto agentem. Pokud chcete zobrazit tyto události:
+[Protokolu událostí systému Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) v systému Windows Server obsahuje počítače, který je hostitelem agenta události pro všechny operace prováděné tímto agentem. Pokud chcete zobrazit tyto události:
     
 1. Otevřete **Eventvwr.msc**.
 2. Vyberte **protokoly systému Windows > aplikace**.
@@ -491,7 +491,7 @@ Jakmile částí 1 – 3 byly dokončeny, můžete spustit službu zřizování 
 
 4. Kdykoli, zkontrolujte **protokoly auditu** na webu Azure portal zobrazíte jaké akce byla provedena zřizování služby. Protokoly auditu zobrazuje všechny události jednotlivých synchronizace provádí zřizování služby, například která bude číst z Workday a pak následně přidány nebo aktualizaci uživatelů do služby Active Directory. **[Naleznete v Průvodci zřizování generování sestav pro podrobné pokyny o tom, jak číst protokoly auditu](active-directory-saas-provisioning-reporting.md)**
 
-5.  Zkontrolujte [protokolu událostí systému Windows](https://technet.microsoft.com/en-us/library/cc722404(v=ws.11).aspx) na počítače Windows serveru, který je hostitelem agenta pro všechny nové chyby nebo upozornění. Tyto události je možné zobrazit spuštěním **Eventvwr.msc** na serveru a výběrem **protokoly systému Windows > aplikace**. Všechny zprávy týkající se zřizování se protokolují pod zdroj **AADSyncAgent**. 
+5.  Zkontrolujte [protokolu událostí systému Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) na počítače Windows serveru, který je hostitelem agenta pro všechny nové chyby nebo upozornění. Tyto události je možné zobrazit spuštěním **Eventvwr.msc** na serveru a výběrem **protokoly systému Windows > aplikace**. Všechny zprávy týkající se zřizování se protokolují pod zdroj **AADSyncAgent**. 
     
 
 6. Byla dokončena, bude zapisovat souhrnné zprávy o auditu **zřizování** kartě, jak je uvedeno níže.
@@ -819,7 +819,7 @@ Abyste mohli zůstat GDPR kompatibilní s dvěma způsoby:
 1. Na žádost extrahovat data pro osoby a odstranění dat z této osoby z protokolů událostí systému Windows. 
 2. Zachovat uchování protokolů událostí systému Windows jako zdroj proces AADSyncAgent v části 48 hodin
 
-Informace o tom, jak nakonfigurovat uchovávání dat pro protokol událostí systému Windows najdete v tématu [nastavení protokolu událostí](https://technet.microsoft.com/en-us/library/cc952132.aspx). Obecné informace o protokolu událostí systému Windows najdete v tématu [v tomto článku](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+Informace o tom, jak nakonfigurovat uchovávání dat pro protokol událostí systému Windows najdete v tématu [nastavení protokolu událostí](https://technet.microsoft.com/library/cc952132.aspx). Obecné informace o protokolu událostí systému Windows najdete v tématu [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
 
 ## <a name="next-steps"></a>Další postup

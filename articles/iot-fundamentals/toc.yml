@@ -1,0 +1,32 @@
+- name: Základy Azure IoT
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Úvod
+      href: iot-introduction.md
+    - name: Technologie a služby Azure IoT
+      href: iot-services-and-technologies.md
+- name: Řešení
+  items:
+    - name: Předkonfigurovaná řešení IoT Suite
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
+- name: Služby platformy
+  items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: Služba IoT Hub Device Provisioning
+      href: /azure/iot-dps
+    - name: Location Based Services
+      href: /azure/location-based-services
+    - name: Sady SDK pro služby
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+- name: Edge
+  items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: Sady SDK pro zařízení IoT
+      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

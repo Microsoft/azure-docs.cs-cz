@@ -24,6 +24,8 @@
           href: migrate-scenarios-overview.md
         - name: Scénář 1 – Posouzení vhodnosti místních prostředků k migraci do Azure
           href: migrate-scenarios-assessment.md
+        - name: Scénář 2 – Migrace do Azure metodou „lift and shift“
+          href: migrate-scenarios-lift-and-shift.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů

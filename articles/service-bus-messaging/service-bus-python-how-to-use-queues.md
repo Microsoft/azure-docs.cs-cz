@@ -1,24 +1,24 @@
 ---
-title: "Jak používat fronty Azure Service Bus s Pythonem | Microsoft Docs"
-description: "Naučte se používat fronty Azure Service Bus z Pythonu."
+title: Jak používat fronty Azure Service Bus s Pythonem | Microsoft Docs
+description: Naučte se používat fronty Azure Service Bus z Pythonu.
 services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: sethm;lmazuel
-ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: aa0f243f4a5bc3d84c580b950bcf0ed7a78362e7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak používat fronty Service Bus s Pythonem
 
@@ -107,7 +107,7 @@ Je také vypršení časového limitu přidružené zpráva uzamčená ve front�
 
 V případě, že aplikace spadne po zpracování zprávy, ale předtím, než **odstranit** metoda je volána, pak zpráva bude vysláním do aplikace odešle znovu. To se často označuje jako **zpracování nejméně jednou**, který je každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát stejnou zprávu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **MessageId** vlastnosti zprávy, která zůstane konstantní mezi pokusy o doručení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili základy front Service Bus, najdete v těchto článcích Další informace.
 
 * [Fronty, témata a odběry][Queues, topics, and subscriptions]

@@ -1,11 +1,11 @@
 ---
-title: "Práce s knihovnou klienta spravovaného App Service Mobile Apps (Windows | Microsoft Docs"
-description: "Další informace o použití klient .NET pro Azure App Service Mobile Apps s aplikacemi pro Windows a Xamarin."
+title: Práce s knihovnou klienta spravovaného App Service Mobile Apps (Windows | Microsoft Docs
+description: Další informace o použití klient .NET pro Azure App Service Mobile Apps s aplikacemi pro Windows a Xamarin.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: c80265432f4ee3120e3125b45712dc0e7a434708
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 2b7620611c4587d00612f98c86b5792984ff548b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -67,7 +67,7 @@ Informace o vytváření tabulek v váš back-end mobilní aplikace, najdete v �
 Použijte jednu z následujících metod k instalaci balíčku SDK spravovaného klienta pro mobilní aplikace od [NuGet][9]:
 
 * **Visual Studio** klikněte pravým tlačítkem na projekt, klikněte na tlačítko **spravovat balíčky NuGet**, vyhledejte `Microsoft.Azure.Mobile.Client` balíček a potom klikněte na **nainstalovat**.
-* **Xamarin Studio** klikněte pravým tlačítkem na projekt, klikněte na tlačítko **přidat** > **přidání balíčků NuGet**, vyhledejte `Microsoft.Azure.Mobile.Client `balíček a potom klikněte na **přidat balíček**.
+* **Xamarin Studio** klikněte pravým tlačítkem na projekt, klikněte na tlačítko **přidat** > **přidání balíčků NuGet**, vyhledejte `Microsoft.Azure.Mobile.Client `balíček a potom klikněte na tlačítko **přidat balíček** .
 
 V souboru hlavní aktivitu, nezapomeňte přidat následující **pomocí** příkaz:
 
@@ -614,8 +614,8 @@ Tento formulář je typu metoda volání a vyžaduje, aby **MarkAllResult** vrá
 Metoda InvokeApiAsync() přidá '/ api /' do rozhraní API, kterou chcete volat, pokud začíná rozhraní API lomítkem (/).
 Příklad:
 
-* `InvokeApiAsync("completeAll",...)`volání /api/completeAll na back-end
-* `InvokeApiAsync("/.auth/me",...)`volání /.auth/me na back-end
+* `InvokeApiAsync("completeAll",...)` volání /api/completeAll na back-end
+* `InvokeApiAsync("/.auth/me",...)` volání /.auth/me na back-end
 
 InvokeApiAsync můžete použít k volání žádné WebAPI, včetně těchto WebAPIs, které nejsou definovány s Azure Mobile Apps.  Při použití InvokeApiAsync() odpovídající hlavičky, včetně ověřování hlavičky, odešlou se žádostí.
 
@@ -651,7 +651,7 @@ Active Directory Authentication Library (ADAL) slouží k ověřování uživate
 2. V sadě Visual Studio nebo Xamarin Studio, otevřete projekt a přidejte odkaz na `Microsoft.IdentityModel.CLients.ActiveDirectory` balíček NuGet. Při hledání, zahrňte předběžné verze.
 3. Přidejte následující kód k vaší aplikaci, podle platformy, které používáte. V každé zkontrolujte následující náhrady:
 
-   * Nahraďte **INSERT. AUTORITY zde** s názvem klienta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu lze kopírovat z karty domény v Azure Active Directory v [portál Azure].
+   * Nahraďte **INSERT. AUTORITY zde** s názvem klienta, ve kterém jste zřídili vaší aplikace. Musí být ve formátu https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu lze kopírovat z karty domény v Azure Active Directory v [portál Azure].
    * Nahraďte **INSERT-RESOURCE-ID-zde** s ID klienta pro váš back-end mobilní aplikace. Můžete získat ID klienta z **Upřesnit** v části **nastavení Azure Active Directory** na portálu.
    * Nahraďte **INSERT klienta ID zde** s ID klienta, který jste zkopírovali z nativní klientskou aplikaci.
    * Nahraďte **vložení PŘESMĚROVÁNÍ URI zde** s vaší lokality */.auth/login/done* koncový bod, pomocí schéma HTTPS. Tato hodnota by měla být podobná *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -880,7 +880,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Pokud používáte zprostředkovatele identity než Facebook, změňte hodnotu [MobileServiceAuthenticationProvider] na hodnotu pro poskytovatele.
 
-V toku server Azure App Service spravuje tok ověřování OAuth zobrazením přihlašovací stránky vybraného zprostředkovatele.  Jakmile se identity vrátí zprostředkovatele služby Azure App Service generuje ověřovací token služby App Service. UserId[LoginAsync] metoda vrátí [MobileServiceUser], který poskytuje i [UserId] ověřeného uživatele a [MobileServiceAuthenticationToken], jako webového tokenu JSON (JWT). Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti. Další informace najdete v tématu [ukládání do mezipaměti ověřovací token](#caching).
+V toku server Azure App Service spravuje tok ověřování OAuth zobrazením přihlašovací stránky vybraného zprostředkovatele.  Jakmile se identity vrátí zprostředkovatele služby Azure App Service generuje ověřovací token služby App Service. [LoginAsync] metoda vrátí [MobileServiceUser], který poskytuje i [UserId] ověřeného uživatele a [MobileServiceAuthenticationToken], jako webového tokenu JSON (JWT). Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti. Další informace najdete v tématu [ukládání do mezipaměti ověřovací token](#caching).
 
 ### <a name="caching"></a>Ukládání do mezipaměti ověřovací token
 V některých případech volání metody přihlášení můžete zabránit po prvním úspěšném ověření ukládání ověřovací token od zprostředkovatele.  Aplikace Windows Store a UWP můžete použít [PasswordVault] pro ukládání do mezipaměti aktuální ověřovací token po úspěšného přihlášení, následujícím způsobem:
@@ -1082,7 +1082,7 @@ public class MyHandler : DelegatingHandler
 [1]: app-service-mobile-windows-store-dotnet-get-started.md
 [2]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [3]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-[4]: https://msdn.microsoft.com/en-us/library/azure/mt419521(v=azure.10).aspx
+[4]: https://msdn.microsoft.com/library/azure/mt419521(v=azure.10).aspx
 [5]: https://github.com/Azure-Samples
 [6]: http://www.newtonsoft.com/json/help/html/Properties_T_Newtonsoft_Json_JsonPropertyAttribute.htm
 [7]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
@@ -1090,7 +1090,7 @@ public class MyHandler : DelegatingHandler
 [9]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/
 [10]: http://www.symbolsource.org/
 [11]: http://www.symbolsource.org/Public/Wiki/Using
-[12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
+[12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [přidání ověřování do aplikace]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Offline synchronizací dat v Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
@@ -1099,35 +1099,35 @@ public class MyHandler : DelegatingHandler
 [jak nakonfigurovat App Service pro přihlášení služby Active Directory]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
-[MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
-[MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/en-us/library/azure/dn268408(v=azure.10).aspx
+[MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
+[MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/library/azure/dn268408(v=azure.10).aspx
 [MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
-[Funkce GetTable]: https://msdn.microsoft.com/en-us/library/azure/jj554275(v=azure.10).aspx
-[vytvoří odkaz na tabulku netypové]: https://msdn.microsoft.com/en-us/library/azure/jj554278(v=azure.10).aspx
-[DeleteAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296407(v=azure.10).aspx
-[IncludeTotalCount]: https://msdn.microsoft.com/en-us/library/azure/dn250560(v=azure.10).aspx
-[InsertAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296400(v=azure.10).aspx
-[InvokeApiAsync]: https://msdn.microsoft.com/en-us/library/azure/dn268343(v=azure.10).aspx
-[LoginAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296411(v=azure.10).aspx
-[LookupAsync]: https://msdn.microsoft.com/en-us/library/azure/jj871654(v=azure.10).aspx
-[OrderBy]: https://msdn.microsoft.com/en-us/library/azure/dn250572(v=azure.10).aspx
-[OrderByDescending]: https://msdn.microsoft.com/en-us/library/azure/dn250568(v=azure.10).aspx
-[ReadAsync]: https://msdn.microsoft.com/en-us/library/azure/mt691741(v=azure.10).aspx
-[trvat]: https://msdn.microsoft.com/en-us/library/azure/dn250574(v=azure.10).aspx
-[vyberte]: https://msdn.microsoft.com/en-us/library/azure/dn250569(v=azure.10).aspx
-[přeskočit]: https://msdn.microsoft.com/en-us/library/azure/dn250573(v=azure.10).aspx
-[metod UpdateAsync]: https://msdn.microsoft.com/en-us/library/azure/dn250536.(v=azure.10)aspx
+[Funkce GetTable]: https://msdn.microsoft.com/library/azure/jj554275(v=azure.10).aspx
+[vytvoří odkaz na tabulku netypové]: https://msdn.microsoft.com/library/azure/jj554278(v=azure.10).aspx
+[DeleteAsync]: https://msdn.microsoft.com/library/azure/dn296407(v=azure.10).aspx
+[IncludeTotalCount]: https://msdn.microsoft.com/library/azure/dn250560(v=azure.10).aspx
+[InsertAsync]: https://msdn.microsoft.com/library/azure/dn296400(v=azure.10).aspx
+[InvokeApiAsync]: https://msdn.microsoft.com/library/azure/dn268343(v=azure.10).aspx
+[LoginAsync]: https://msdn.microsoft.com/library/azure/dn296411(v=azure.10).aspx
+[LookupAsync]: https://msdn.microsoft.com/library/azure/jj871654(v=azure.10).aspx
+[OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
+[OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
+[ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
+[trvat]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[vyberte]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[přeskočit]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[metod UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserId]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Kde]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
+[Kde]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [portál Azure]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
-[Guid.NewGuid]: https://msdn.microsoft.com/en-us/library/system.guid.newguid(v=vs.110).aspx
+[Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows Dev Center]: https://dev.windows.com/en-us/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[Windows Live SDK]: https://msdn.microsoft.com/en-us/library/bb404787.aspx
+[Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [rozhraní API centra oznámení]: https://msdn.microsoft.com/library/azure/dn495101.aspx

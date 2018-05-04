@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 17b2f1b65463f87f81ffe06bae5ac559a84bcb2a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core v Service Fabric
-Tento kurz je čtvrtou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md). 
+Tento kurz je pátou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md). 
 
 Ve čtvrté části této série kurzů se naučíte:
 > [!div class="checklist"]
@@ -35,6 +35,7 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * [Sestavit aplikaci .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md)
 > * [Nasadit aplikaci do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Přidat koncový bod HTTPS do front-end služby ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [Nakonfigurovat CI/CD pomocí Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Nastavit monitorování a diagnostiku aplikace
 
@@ -104,8 +105,7 @@ Tady je postup nastavení balíčku NuGet:
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
     
-    2. Ve vnořeném příkazu *return* metody *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části *ConfigureServices* > *služby* přidejte mezi dvě deklarované služby Singleton následující kód: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`.
-    Tím se do vaší telemetrie přidá *kontext služby*, který umožňuje lepší porozumění zdroji telemetrie v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
+    2. Do vnořeného příkazu *return* metody *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části *ConfigureServices* > *services* přidejte mezi dvě deklarace služeb typu Singleton následující kód: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`. Tím se do vaší telemetrie přidá *kontext služby*, který vám umožní lépe porozumět zdroji telemetrických dat v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
     
     ```csharp
     return new WebHostBuilder()

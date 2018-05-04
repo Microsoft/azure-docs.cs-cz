@@ -1,6 +1,6 @@
 ---
-title: "Podrobný průvodce o tom, jak používat Azure Machine Learning Data přípravy | Microsoft Docs"
-description: "Tento dokument obsahuje přehled a podrobnosti o tom, jak vyřešit problémy dat pomocí Azure Machine Learning Data přípravy"
+title: Podrobný průvodce o tom, jak používat Azure Machine Learning Data přípravy | Microsoft Docs
+description: Tento dokument obsahuje přehled a podrobnosti o tom, jak vyřešit problémy dat pomocí Azure Machine Learning Data přípravy
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9fc0ae8929f12447123321a5c64ac89309c68dca
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-user-guide"></a>Uživatelská příručka k přípravě dat 
 Azure Machine Learning Data přípravy prostředí nabízí spoustu bohaté funkce. Tento článek obsahuje informace o části nejhlubší prostředí.

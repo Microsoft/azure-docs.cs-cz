@@ -1,12 +1,12 @@
 ---
-title: "Struktury projektů pomocí šablony procesu vědecké účely dat Team | Microsoft Docs"
-description: "Jak vytvořit instanci šablony tým datové vědy procesu (TDSP) v Azure Machine Learning, která struktura projekty pro spolupráci"
+title: Struktury projektů pomocí šablony procesu vědecké účely dat Team | Microsoft Docs
+description: Jak vytvořit instanci šablony tým datové vědy procesu (TDSP) v Azure Machine Learning, která struktura projekty pro spolupráci
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
 ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Struktura projektů pomocí šablony procesu Team dat vědecké účely
 
@@ -68,8 +68,8 @@ Chcete-li vytvořit nový projekt, otevřete Azure Machine Learning. V části *
 ### <a name="create-a-new-tdsp-structured-project"></a>Vytvoření nového projektu strukturovaná TDSP
    1. Zadejte parametry a informace v příslušné políčko nebo seznamu:
 
-      - název projektu
-      - Adresáři projektu
+      - Název projektu
+      - Adresář projektu
       - Popis projektu
       - Prázdnou cestu úložiště Git
       - Název pracovního prostoru
@@ -110,7 +110,7 @@ Poskytujeme také [ProjectLearnings](https://aka.ms/tdspamlgithubrepoprojectlear
 ### <a name="example-project-report"></a>Ukázková sestava projektu
 Můžete získat [příklad projektu sestavy](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md). Pomocí této sestavy projektu [USA příjem klasifikace ukázkový projekt](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) ukazuje, jak vytvořit a používat šablonu TDSP pro projekt vědecké účely data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pro usnadnění vaší znalosti o tom, jak používat TDSP strukturu a šablon v projektech Machine Learning, poskytujeme několik příkladů dokončený projekt v dokumentaci pro Machine Learning:
 
 - Příklad, který ukazuje, jak vytvořit projekt TDSP v Machine Learning, najdete v části [proces vědecké účely dat Team ukázkový projekt: klasifikovat příjmů z úplné zjišťování nám dat v Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome).

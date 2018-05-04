@@ -6,13 +6,13 @@ author: anasouma
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/30/2018
 ms.author: wielriac
-ms.openlocfilehash: 5d1ad1555cb1e01e363456af5c50ecd090ce7147
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 79590e1987ee29ca06f9fb103f548518b2c1c57e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Jedinečné funkce objektů BLOB stránky Azure
 
@@ -21,9 +21,6 @@ Azure Storage nabízí tři typy úložiště objektů blob: objekty BLOB bloku 
 Objekty BLOB stránky jsou kolekce stránek 512 bajtů, které poskytují možnost čtení/zápisu libovolný rozsah bajtů. Proto jsou ideální pro ukládání dat na základě indexu a zhuštěné struktury jako operačního systému a datové disky pro virtuální počítače a databáze objekty BLOB stránky. Například Azure SQL DB používá objekty BLOB stránek jako základní trvalé úložiště pro jeho databáze. Kromě toho objekty BLOB stránky jsou také často používají pro soubory s aktualizacemi, na základě rozsahu.  
 
 Klíčové funkce objektů BLOB stránky Azure jsou jeho rozhraní REST, odolnost základní úložiště a možnostech bezproblémové migrace do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho jsou aktuálně podporovány objekty BLOB stránky Azure na dva typy úložiště: Storage úrovně Premium a Standard Storage. Storage úrovně Premium je určený speciálně pro procesy vyžadující konzistentní vysoký výkon a nízkou latencí díky objekty BLOB stránky premium ideální pro databáze vysoké původce datového úložiště.  Standardní úložiště je nákladově efektivnější pro spuštění úlohy kterému latence nevadí.
-
-> [!WARNING]
-> Objekty BLOB stránky v Storage úrovně Premium jsou navrženy pro použití jako virtuální pevné disky pouze. Společnost Microsoft nedoporučuje ukládání dalších typů dat v objekty BLOB stránky v Storage úrovně Premium, jak může být výrazně větší náklady. Používejte objekty BLOB bloku pro ukládání dat, která není na disku VHD.
 
 ## <a name="sample-use-cases"></a>Ukázka případy použití
 

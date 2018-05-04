@@ -1,6 +1,6 @@
 ---
-title: "Nasazení do Azure IoT hraniční zařízení model Azure Machine Learning | Microsoft Docs"
-description: "Tento dokument popisuje, jak se dá modely Azure Machine Learning nasadit na zařízení Azure IoT okraj."
+title: Nasazení do Azure IoT hraniční zařízení model Azure Machine Learning | Microsoft Docs
+description: Tento dokument popisuje, jak se dá modely Azure Machine Learning nasadit na zařízení Azure IoT okraj.
 services: machine-learning
 author: tedway
 ms.author: tedway
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ms.openlocfilehash: ceab96b1ef28527c8aa2692b83d3609f133f339c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Model Azure Machine Learning nasadit do Azure IoT hraniční zařízení
 
@@ -31,11 +31,11 @@ Následují další skutečnosti, které je Poznámka:.
 ### <a name="add-registry-credentials-to-the-edge-runtime-on-your-edge-device"></a>Přidejte pověření registru do hraniční runtime v hraniční zařízení
 Na počítači, kde spouštíte IoT Edge přidáte přihlašovací údaje v registru, aby modul runtime může mít přístup ke kontejneru pro vyžádání obsahu.
 
-Pro systém Windows spusťte následující příkaz:
+V případě Windows spusťte následující příkaz:
 ```cmd/sh
 iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
 ```
-Pro Linux spusťte následující příkaz:
+V případě Linuxu spusťte následující příkaz:
 ```cmd/sh
 sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
 ```

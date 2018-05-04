@@ -6,20 +6,24 @@ documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: parakhj
+ms.assetid: 357d193a-e33b-469c-8a93-0a8f45a60a9f
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 04/27/2018
 ms.author: davidmu
-ms.openlocfilehash: 52cefd4fad96e94dd2cf0871fac12a9a4d74b96f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 46223f1ec6b82828983861dae26ec8d777b77b86
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="azure-active-directory-b2c-add-a-custom-openid-connect-identity-provider-in-built-in-policies"></a>Azure Active Directory B2C: Přidání vlastního zprostředkovatele identity OpenID Connect v integrovaných zásad
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, nástavbou OAuth 2.0, který slouží k bezpečně přihlášení uživatele. Většina poskytovatelů identit, které používají tento protokol, jako je Azure AD, jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní zprostředkovatelé identity OpenID Connect do integrovaných zásad.
+>[!NOTE]
+> Tato funkce je ve verzi public preview. Nepoužívejte funkci v produkčním prostředí.
+
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, nástavbou OAuth 2.0, který slouží k bezpečně přihlášení uživatele. Většina poskytovatelů identit, které používají tento protokol, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní zprostředkovatelé identity OpenID Connect do integrovaných zásad.
 
 ## <a name="configuring-a-custom-openid-connect-identity-provider"></a>Konfigurace vlastního zprostředkovatele identity OpenID Connect
 
@@ -68,7 +72,7 @@ Režim odpovědi definuje metodu, která se používá k odesílání dat zpět 
 * `query`: Kód nebo token, bude vrácen jako parametr dotazu.
 
 
-#### <a name="domain-hint"></a>Pomocný parametr domény
+#### <a name="domain-hint"></a>Nápověda domény
 
 Pomocný parametr domény umožňuje přeskočit přímo na přihlašovací stránce zadanou identitou poskytovatele, místo nutnosti vytvořit uživatele s výběrem v seznamu zprostředkovatelů identity k dispozici. Pokud chcete povolit tento druh chování, zadejte hodnotu pro pomocný parametr domény.
 
@@ -87,6 +91,6 @@ Pro každé mapování níže naleznete v dokumentaci zprostředkovatele vlastn�
 * `Surname`: Zadejte deklarace identity, která obsahuje příjmení uživatele.
 * `Email`: Zadejte deklarace identity, která poskytuje e-mailovou adresu uživatele.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přidat vlastní OpenID Connect poskytovatele identit pro vaše [předdefinovaných zásad](active-directory-b2c-reference-policies.md).

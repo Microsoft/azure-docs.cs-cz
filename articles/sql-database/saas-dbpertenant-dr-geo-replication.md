@@ -10,15 +10,15 @@ ms.custom: saas apps
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: c6f3da52643caa9aa1172db5b884c5336c409715
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b2b1b767b26d844046d545e3d587621c5d14995
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS pomocí geografická replikace databáze
 
-V tomto kurzu prozkoumejte úplné zotavení po havárii pro víceklientské aplikace SaaS implementovaná pomocí modelu databáze za klienta. Chcete-li chránit aplikace od výpadku, použijte [ _geografická replikace_ ](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) k vytvoření repliky pro databáze katalogu a klienta v oblast alternativní obnovení. Pokud dojde k výpadku, můžete rychle převzetí služeb při selhání na tyto repliky obnovit normální podnikové operace. V převzetí služeb při selhání databáze v oblasti původní stát sekundární repliky databáze v oblasti obnovení. Jakmile tyto repliky dostane zpět online budou automaticky aktualizovány stavu databáze v oblasti obnovení. Jakmile se výpadek vyřešen, selžou zpět do databáze v oblasti původní produkční.
+V tomto kurzu prozkoumejte úplné zotavení po havárii pro víceklientské aplikace SaaS implementovaná pomocí modelu databáze za klienta. Chcete-li chránit aplikace od výpadku, použijte [ _geografická replikace_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) k vytvoření repliky pro databáze katalogu a klienta v oblast alternativní obnovení. Pokud dojde k výpadku, můžete rychle převzetí služeb při selhání na tyto repliky obnovit normální podnikové operace. V převzetí služeb při selhání databáze v oblasti původní stát sekundární repliky databáze v oblasti obnovení. Jakmile tyto repliky dostane zpět online budou automaticky aktualizovány stavu databáze v oblasti obnovení. Jakmile se výpadek vyřešen, selžou zpět do databáze v oblasti původní produkční.
 
 Tento tento kurz popisuje, jak převzetí služeb při selhání a navrácení služeb po obnovení pracovních postupů. Dozvíte, jak:
 > [!div classs="checklist"]
@@ -82,7 +82,7 @@ V tomto kurzu použijete nejprve geografická replikace k vytvoření repliky Wi
 Později v samostatných navracení kroku, můžete převzetí služeb při selhání databáze katalogu a klientů v oblasti obnovení do původní oblasti. Aplikace a databáze zůstanou k dispozici v rámci navracení. Po dokončení v původní oblasti je plně funkční aplikaci.
 
 > [!Note]
-> Aplikace je obnovena do _spárované oblast_ oblasti, ve kterém je aplikace nasazená. Další informace najdete v tématu [Azure spárovat oblasti](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions).
+> Aplikace je obnovena do _spárované oblast_ oblasti, ve kterém je aplikace nasazená. Další informace najdete v tématu [Azure spárovat oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ## <a name="review-the-healthy-state-of-the-application"></a>Kontrola stavu v pořádku aplikace
 
@@ -103,7 +103,7 @@ Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální ap
 V této úloze spustit proces, který synchronizuje konfiguraci serverů, elastické fondy a databáze do katalogu klienta. Proces udržuje tyto informace v aktuálním stavu v katalogu.  Proces funguje s katalogem aktivní, zda v původní oblasti nebo v oblasti obnovení. Informace o konfiguraci se používá jako součást procesu obnovení k zajištění obnovení prostředí je v souladu s původní prostředí a, pak později během navracení zajistit původní oblast je konzistentní s veškeré změny provedené v obnovení prostředí. Katalog se také používá ke sledování stavu obnovení prostředků klienta
 
 > [!IMPORTANT]
-> Pro jednoduchost proces synchronizace a dalších dlouho běžící procesy obnovení a navracení implementované v těchto kurzech jako místní prostředí Powershell úlohy nebo relace, které běží pod vaše přihlášení uživatele klienta. Tokeny ověřování při přihlášení vyprší po několik hodin a pak se nezdaří úlohy. V případě produkční dlouho běžící procesy by měla být implementována jako spolehlivé služby Azure určitého druhu spuštěna pod hlavní název služby. V tématu [použití Azure PowerShell k vytvoření objektu služby pomocí certifikátu](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal).
+> Pro jednoduchost proces synchronizace a dalších dlouho běžící procesy obnovení a navracení implementované v těchto kurzech jako místní prostředí Powershell úlohy nebo relace, které běží pod vaše přihlášení uživatele klienta. Tokeny ověřování při přihlášení vyprší po několik hodin a pak se nezdaří úlohy. V případě produkční dlouho běžící procesy by měla být implementována jako spolehlivé služby Azure určitého druhu spuštěna pod hlavní název služby. V tématu [použití Azure PowerShell k vytvoření objektu služby pomocí certifikátu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
 1. V _prostředí PowerShell ISE_, otevřete soubor Modules\UserConfig.psm1 ...\Learning. Nahraďte `<resourcegroup>` a `<user>` na řádky 10 a 11 hodnota použitá při nasazení aplikace.  Uložte soubor!
 
@@ -181,7 +181,7 @@ Nyní Představte si v oblasti, ve kterém je aplikace nasazena a spusťte skrip
 
 2. Stisknutím klávesy **F5** spusťte skript.  
     * Skript se otevře v novém okně prostředí PowerShell a pak spustí řadu úloh prostředí PowerShell, které spustit souběžně. Tyto úlohy převzít databáze klienta do oblasti pro obnovení.
-    * Oblast pro obnovení je _spárované oblast_ přidružené k oblasti Azure, ve kterém je aplikace nasazena. Další informace najdete v tématu [Azure spárovat oblasti](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions). 
+    * Oblast pro obnovení je _spárované oblast_ přidružené k oblasti Azure, ve kterém je aplikace nasazena. Další informace najdete v tématu [Azure spárovat oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Monitorování stavu procesu obnovení v okně prostředí PowerShell.
     ![Proces převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -310,4 +310,4 @@ Další informace o technologiích, které poskytuje Azure SQL database k povole
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Další kurzy, které stavět na adresář Wingtip SaaS aplikace](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [Další kurzy, které stavět na adresář Wingtip SaaS aplikace](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

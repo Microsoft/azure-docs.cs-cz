@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f3278c064a01e3dea1d7a629b4a7b2e846a71208
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 2273a39f1c9da57072ca027e34c4acd6d86ea61a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód a testovat místně na Azure Functions
 
@@ -235,7 +235,7 @@ func new
 Například pokud chcete vytvořit aktivační událost jazyka JavaScript HTTP, spusťte tento příkaz:
 
 ```
-func new --language JavaScript --template HttpTrigger --name MyHttpTrigger
+func new --language JavaScript --template "HttpTrigger" --name MyHttpTrigger
 ```
 
 Chcete-li vytvořit funkci aktivovaného fronty, spusťte:

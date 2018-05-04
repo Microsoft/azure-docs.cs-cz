@@ -1,11 +1,11 @@
 ---
-title: "Jak používat JavaScript SDK pro Azure Mobile Apps"
-description: "Postup použití v Azure Mobile Apps"
+title: Jak používat JavaScript SDK pro Azure Mobile Apps
+description: Postup použití v Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 9494e40a27895def450de856bbf806573daedfdb
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Používání knihovny JavaScript klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -105,4 +105,4 @@ Po aktualizaci back-end, bude moci použít nové adresy URL zpětné smyčky ve
 
 [portál Azure]: https://portal.azure.com/
 [JavaScript SDK pro Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

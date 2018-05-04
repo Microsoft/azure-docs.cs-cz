@@ -86,5 +86,5 @@
 
 
 # Zdroje a prostředky
-## [Plány Azure do budoucna](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
+## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=developer-tools)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

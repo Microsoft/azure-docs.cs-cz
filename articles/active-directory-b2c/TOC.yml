@@ -112,6 +112,10 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: WeChat
               href: active-directory-b2c-setup-wechat-app.md
+            - name: Azure AD (jeden tenant)
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
+            - name: Vlastní OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
         - name: Nastavení samoobslužného resetování hesla
           href: active-directory-b2c-reference-sspr.md
         - name: Přizpůsobení uživatelského rozhraní
@@ -159,6 +163,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: Víc klientů
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: Konfigurace zprostředkovatelů SAML
               items:
                 - name: ADFS
@@ -195,12 +201,12 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: Povolení možnosti zůstat přihlášeni
                   href: active-directory-b2c-reference-kmsi-custom.md
-            - name: Sledování chování uživatele
-              href: active-directory-b2c-custom-guide-eventlogger-appins.md
             - name: Řešení potíží
               items:
                 - name: Shromažďování protokolů pomocí Application Insights
                   href: active-directory-b2c-troubleshoot-custom.md
+                - name: Sledování chování uživatelů
+                  href: active-directory-b2c-custom-guide-eventlogger-appins.md
         - name: Referenční informace
           items:
             - name: "Poznámky k\_verzi"

@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-description: Naučte se synchronizovat místní adresáře a povolit jednotné přihlašování. V dokumentaci se dozvíte, jak integrovat kompletní sadu možností pro správu identit.
 title: Dokumentace ke službě Azure Active Directory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Azure Active Directory (Azure AD) od Microsoftu je víceklientská cloudová adresářová služba a služba pro správu identit. V rámci jednoho řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,122 +10,31 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 04/13/2018
 ms.author: carolz
-ms.openlocfilehash: 39226c7ada2bf3672cb62b6a0def4191bee342c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 30019a733bd4869d22c060d0793423b71b0df166
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentace k Azure Active Directory
 
-Naučte se synchronizovat adresáře a povolit jednotné přihlašování pomocí Azure Active Directory (Azure AD). Kurzy, reference k rozhraní API a další dokumentace ukazují postupy integrace možností pro správu identit, včetně vícefaktorového ověřování, registrace zařízení, řízení přístupu na základě rolí, sledování a výstrah zabezpečení.
+Azure Active Directory (Azure AD) je víceklientská cloudová adresářová služba a služba pro správu identit.
 
-<ul class="panelContent cardsFTitle">
-    <li>
-        <a href="/azure/active-directory/active-directory-whatis">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/active-directory.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Přečtěte si o Azure Active Directory</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/documentation/videos/index/?services=active-directory">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Knihovna videí o Azure Active Directory</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/active-directory/active-directory-howto-tenant">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Začínáme se službou Azure Active Directory</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/active-directory/active-directory-get-started-premium">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Začínáme se službou Azure Active Directory Premium</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-       <li>
-        <a href="/azure/active-directory/develop/active-directory-developers-guide">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Vývoj aplikací se službou Azure Active Directory</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li> 
-</ul>
-
----
-
-<h2>Referenční informace</h2>
-<ul class="panelContent cardsW">
+<ul class="panelContent cardsF">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Příkazový řádek</h3>
-                        <p><a href="/powershell/azure/overview?azureadps=2.0">PowerShell</a></p>
+                        <h3>Základy</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-whatis">Co je Azure AD?</a><br/>
+                        <a href="/azure/active-directory/understand-azure-identity-solutions">Řešení identit</a><br/>
+                        <a href="/azure/active-directory/get-started-azure-ad">Začínáme</a><br/>
+                        <a href="/azure/active-directory/whats-new">Novinky</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -136,10 +45,15 @@ Naučte se synchronizovat adresáře a povolit jednotné přihlašování pomoc�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Jazyky</h3>
-                        <p><a href="/active-directory/adal/microsoft.identitymodel.clients.activedirectory">.NET</a></p>
-                        <p><a href="/java/api">Java</a></p>
-                   </div>
+                        <h3>Podnikoví uživatelé</h3>
+                        <p>
+                        <a href="/azure/active-directory/add-users-azure-active-directory">Uživatelé</a><br/>
+                        <a href="/azure/active-directory/active-directory-manage-groups">Skupiny</a><br/>
+                        <a href="/azure/active-directory/license-users-groups">Licence</a><br/>
+                        <a href="/azure/active-directory/active-directory-administer">Správa adresářů</a><br/>
+                        <a href="/azure/active-directory/active-directory-assign-admin-roles-azure-portal">Role správce</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,8 +63,159 @@ Naučte se synchronizovat adresáře a povolit jednotné přihlašování pomoc�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Ostatní</h3>
-                        <p><a href="/azure/active-directory/active-directory-service-limits-restrictions">Limity a omezení služby</a></p>
+                        <h3>Externí uživatelé</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b">B2B (Business-to-business)</a><br/>
+                        <a href="/azure/active-directory-b2c/">B2C (Business-to-customer)</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Authentication</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-passwords-overview">Hesla</a><br/>
+                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements">Multi-Factor Authentication</a><br/>
+                        <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
+                        <a href="/azure/active-directory/active-directory-certificate-based-authentication-get-started">Ověřování pomocí certifikátů</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Ochrana</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-identityprotection">Ochrana identit</a><br/>
+                        <a href="/azure/active-directory/active-directory-conditional-access-azure-portal">Podmíněný přístup</a><br/>
+                        <a href="/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access">Privileged Identity Management</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Zařízení</h3>
+                        <p>
+                        <a href="/azure/active-directory/device-management-introduction">Správa zařízení</a><br/>
+                        <a href="/azure/active-directory/device-management-azuread-registered-devices-windows10-setup">Zařízení s Windows 10</a><br/>
+                        <a href="/azure/active-directory/device-management-azuread-joined-devices-setup">Připojená zařízení</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Aplikace</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-enable-sso-scenario">Správa aplikací</a><br/>
+                        <a href="/azure/active-directory/cloudappdiscovery-get-started">Zjišťování aplikací</a><br/>
+                        <a href="/azure/active-directory/active-directory-coreapps-assign-user-azure-portal">Podnikové aplikace</a><br/>
+                        <a href="/azure/active-directory/active-directory-managing-access-to-apps">Přístup k aplikacím</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Ověřování pro vývojáře</h3>
+                        <p>
+                        <a href="/azure/active-directory/develop/active-directory-authentication-scenarios">Základy ověřování</a><br/>
+                        <a href="/azure/active-directory/develop/active-directory-integrating-applications">Integrace aplikací</a><br/>
+                        <a href="/azure/active-directory/managed-service-identity/overview">Spravovaná identita</a><br/>
+                        <a href="/azure/active-directory/develop/active-directory-code-samples">Ukázky kódu</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Referenční informace</h3>
+                        <p>
+                        <a href="/powershell/module/azurerm.resources#active_directory">Azure RM PowerShell</a><br/>
+                        <a href="/powershell/azure/active-directory/overview">Azure AD PowerShell</a><br/>
+                        <a href="/cli/azure/ad">Azure CLI</a><br/>
+                        <a href="https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview">Microsoft Graph</a><br/>
+                        <a href="/dotnet/api/overview/azure/activedirectory">.NET</a><br/>
+                        <a href="/java/api/overview/azure/activedirectory">Java</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Hybridní organizace</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview">Řešení hybridních identit</a><br/>
+                        <a href="/azure/active-directory/connect/active-directory-aadconnect">Místní integrace s adresářem</a><br/>
+                        <a href="/azure/active-directory/connect/active-directory-aadconnect-azure-adfs">Federation Services</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Dodržování předpisů a sestavy</h3>
+                        <p>
+                        <a href="/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview">Kontroly přístupu</a><br/>
+                        <a href="/azure/active-directory/active-directory-tou">Podmínky použití</a><br/>
+                        <a href="/azure/active-directory/active-directory-reporting-azure-portal">Sestavy</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Domény</h3>
+                        <p>
+                        <a href="/azure/active-directory-domain-services/">Domain Services</a>
+                        </p>
                     </div>
                 </div>
             </div>

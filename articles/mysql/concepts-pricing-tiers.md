@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 24f352d8743ba8ef72e141498589e1c6c14ff85e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 490b162bcab0656388ef0b211ea693809d446346
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -44,7 +44,7 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 
 | **Oblast Azure** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| Střed USA |  | X |
+| Střed USA | X |  |
 | Východ USA | X | X |
 | Východní USA 2 | X | X |
 | Střed USA – sever | X |  |
@@ -55,14 +55,16 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Východní Kanada | X | X |
 | Brazílie – jih | X | X |
 | Severní Evropa | X | X |
-| Západní Evropa | X | X |
+| Západní Evropa |  | X |
 | Spojené království – západ |  | X |
 | Spojené království – jih |  | X |
 | Východní Asie | X |  |
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
+| Austrálie – jihovýchod |  | X |
 | Střed Indie | X |  |
 | Indie – západ | X |  |
+| Indie – jih |  | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
 | Korea – jih |  | X |

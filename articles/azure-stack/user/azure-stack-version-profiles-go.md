@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/30/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 5b881c17b6ad1c9a7e46492f8549f563cfd6d796
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Použití profilů verze rozhraní API s přejděte v Azure zásobníku
 
@@ -33,7 +33,7 @@ Profil je kombinaci různých typů prostředků s různými verzemi z jiné slu
 V sadě SDK přejděte profily jsou k dispozici v části profily nebo cestu s jejich verze v **rrrr-MM-DD** formátu. Nyní, nejnovější zásobník Azure je verze profilu **2017-03-09**. Chcete-li importovat dané služby z profilu, musíte importovat jeho odpovídající modul z profilu. Například pro import **výpočetní** služby z **2017-03-09** profil:
 
 ````go
-import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compute" 
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
 ## <a name="install-azure-sdk-for-go"></a>Nainstalovat sadu Azure SDK pro přejděte

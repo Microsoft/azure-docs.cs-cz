@@ -74,8 +74,10 @@
       href: sql-database-servers-databases.md
     - name: Spravovaná instance
       href: sql-database-managed-instance.md
-    - name: Úrovně služby
-      href: sql-database-service-tiers.md
+    - name: Úrovně služeb na základě DTU
+      href: sql-database-service-tiers-dtu.md
+    - name: Úrovně služeb na základě virtuálních jader
+      href: sql-database-service-tiers-vcore.md
     - name: Škálování čtení na více instancí
       href: sql-database-read-scale-out.md
     - name: Omezení prostředků na základě DTU
@@ -412,8 +414,12 @@
               href: saas-tenancy-schema-management.md
             - name: Vytváření sestav napříč tenanty
               href: saas-tenancy-cross-tenant-reporting.md
-            - name: ETL pro analýzu
-              href: saas-tenancy-tenant-analytics.md
+            - name: Analýzy tenantů
+              items:
+                - name: S využitím SQL DB
+                  href: saas-tenancy-tenant-analytics.md
+                - name: S využitím SQL DW
+                  href: saas-tenancy-tenant-analytics-adf.md
             - name: Zotavení po havárii s využitím geografického obnovení
               href: saas-dbpertenant-dr-geo-restore.md
             - name: Zotavení po havárii s využitím geografické replikace databáze

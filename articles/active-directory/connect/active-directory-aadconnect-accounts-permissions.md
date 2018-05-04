@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 Průvodce instalací služby Azure AD Connect nabízí dva různé cesty:
@@ -58,7 +58,7 @@ Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívaj�
 
 | Oprávnění | Použít pro |
 | --- | --- |
-| <li>Replikovat změny adresáře</li><li>Replikace adresáře všechny změny |Synchronizace hesla |
+| <li>Replikovat změny adresáře</li><li>Replikace adresáře všechny změny |Synchronizace hodnot hash hesel |
 | Pro čtení a zápis všech vlastností uživatele |Hybridní importu a serveru Exchange |
 | Pro čtení a zápis všech iNetOrgPerson vlastnosti |Hybridní importu a serveru Exchange |
 | Skupina všech vlastností čtení/zápisu |Hybridní importu a serveru Exchange |
@@ -87,7 +87,7 @@ Oprávnění, která budete potřebovat, závisí na volitelné funkce povolíte
 | Funkce | Oprávnění |
 | --- | --- |
 | Funkce msDS-ConsistencyGuid |Oprávnění k zápisu do atribut msDS-ConsistencyGuid zdokumentována [koncepty návrhu - pomocí msDS-ConsistencyGuid jako sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
-| Synchronizace hesla |<li>Replikovat změny adresáře</li>  <li>Replikace adresáře všechny změny |
+| Synchronizace hodnot hash hesel |<li>Replikovat změny adresáře</li>  <li>Replikace adresáře všechny změny |
 | Hybridní nasazení systému Exchange |Oprávnění k zápisu do atributy zdokumentována [zpětný zápis hybridní Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) pro uživatele, skupiny a kontakty. |
 | Veřejné složky e-mailu Exchange |Oprávnění ke čtení pro atributy, které jsou dokumentovány v článku [veřejné složky e-mailu Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) pro veřejných složek. | 
 | Zpětný zápis hesla |Oprávnění k zápisu do atributy zdokumentována [Začínáme se správou hesel](../authentication/howto-sspr-writeback.md) pro uživatele. |

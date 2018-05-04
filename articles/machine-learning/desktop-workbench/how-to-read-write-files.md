@@ -1,6 +1,6 @@
 ---
-title: "Čtení a zápis velkých objemů dat souborů | Microsoft Docs"
-description: "Čtení a zápis velkých souborů ve experimenty Azure Machine Learning."
+title: Čtení a zápis velkých objemů dat souborů | Microsoft Docs
+description: Čtení a zápis velkých souborů ve experimenty Azure Machine Learning.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
 ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Uložením změn a práce s velkými soubory
 Ve službě Azure Machine Learning experimentování můžete nakonfigurovat různé provádění cílů. Některé cíle jsou místní, například v místním počítači nebo kontejner Docker v místním počítači. Ostatní jsou vzdálené, jako je například kontejner Docker na vzdáleném počítači nebo clusteru služby HDInsight. Další informace najdete v tématu [přehled Azure Machine Learning experimentovat služba provedení](experimentation-service-configuration.md). 
@@ -24,7 +24,7 @@ Předtím, než můžete spustit na cíl, musíte zkopírovat složce projektu v
 ## <a name="execution-isolation-portability-and-reproducibility"></a>Provádění izolace, přenositelnost a reprodukovatelnost
 Účelem tohoto návrhu je zajištění izolace, reprodukovatelnosti a přenositelnost spuštění. Pokud dvakrát spustit stejný skriptu na stejném nebo jiném výpočetní cíl, obdržíte stejné výsledky. Změny provedené při prvním spuštění by neměl určovat nastavení v druhé provádění. V tomto návrhu může výpočetní cíle považovat bezstavové výpočetních prostředků, každý s bez přidružení pro úlohy, které jsou spouštěny po ukončení práce.
 
-## <a name="challenges"></a>Problémy
+## <a name="challenges"></a>Výzvy
 I když tento návrh poskytuje výhody přenositelnosti a opakovatelnosti, přináší také některé jedinečné výzvy.
 
 ### <a name="persisting-state-changes"></a>Zachování změny stavu

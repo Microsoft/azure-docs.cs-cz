@@ -1,8 +1,8 @@
 ---
-title: "V Azure Data Lake Analytics pomocí U-SQL kognitivní funkcí | Microsoft Docs"
-description: "Další informace o použití intelligence kognitivní funkcí v U-SQL"
+title: V Azure Data Lake Analytics pomocí U-SQL kognitivní funkcí | Microsoft Docs
+description: Další informace o použití intelligence kognitivní funkcí v U-SQL
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Kurz: Začínáme s kognitivní možnosti U-SQL
 
@@ -37,8 +37,8 @@ K dispozici jsou následující možnosti kognitivní:
 
 Celkový proces je jednoduchý:
 
-* Použijte příkaz referenční sestavení pro povolení kognitivní funkcí pro skript U-SQL
-* Pomocí procesu ve vstupní sadě řádků pomocí kognitivní UDO, generovat výstup sady řádků
+* Použití `REFERENCE ASSEMBLY` příkaz k zajištění funkcí, kognitivní pro skript U-SQL
+* Použití `PROCESS` ve vstupní sadě řádků pomocí kognitivní UDO, generovat výstup sady řádků
 
 ### <a name="detecting-objects-in-images"></a>Zjišťování objektů v obrázcích
 
@@ -82,7 +82,7 @@ OUTPUT @tags_serialized
 ```
 Další příklady, podívejte se na **U-SQL nebo Cognitive ukázky** v **další kroky** části.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [U-SQL nebo kognitivní ukázky](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Pro úlohy Azure Data Lake Analytics pomocí U-SQL okno funkce](data-lake-analytics-use-window-functions.md)

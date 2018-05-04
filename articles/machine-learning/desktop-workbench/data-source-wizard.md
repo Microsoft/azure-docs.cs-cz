@@ -1,6 +1,6 @@
 ---
-title: "Zdroj dat Azure, Průvodce pro Azure Machine Learning | Microsoft Docs"
-description: "Popisuje nástroje AML workbench Průvodce zdrojem dat"
+title: Zdroj dat Azure, Průvodce pro Azure Machine Learning | Microsoft Docs
+description: Popisuje nástroje AML workbench Průvodce zdrojem dat
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
 ms.openlocfilehash: 4f9a2249142220f3c57cb2e479a175d4227749fd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-source-wizard"></a>Průvodce zdrojem dat #
 
@@ -22,7 +22,7 @@ Průvodce zdrojem dat je rychlý a snadný způsob, jak přizpůsobit datovou sa
 
 ## <a name="step-1-trigger-the-data-source-wizard"></a>Krok 1: Spuštění Průvodce zdrojem dat ## 
 
-K přenosu dat do projektu pomocí Průvodce zdrojem dat. Vyberte  **+**  tlačítko vedle pole hledání v zobrazení dat a vyberte zdroj dat přidat. 
+K přenosu dat do projektu pomocí Průvodce zdrojem dat. Vyberte **+** tlačítko vedle pole hledání v zobrazení dat a vyberte zdroj dat přidat. 
 
 ![Přidat zdroje dat](media/data-source-wizard/add-data-source.png)
 

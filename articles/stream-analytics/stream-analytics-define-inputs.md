@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/25/2018
-ms.openlocfilehash: 1fc1791d75355cc30f2ef43fc17e39a868e2c756
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 04/27/2018
+ms.openlocfilehash: 2b2ef68622f96d87a25d203d3d67aa0877397072
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Datový proud dat jako vstup do služby Stream Analytics
 
@@ -45,7 +45,7 @@ Azure Event Hubs poskytuje vysoce škálovatelné publikování a odběru ingest
 Výchozí časové razítko události pocházející ze služby Event Hubs v Stream Analytics je časové razítko, které události byly přijaty události rozbočovače, který je `EventEnqueuedUtcTime`. Zpracování dat jako použití časového razítka v případě, že datové části, je nutné použít datový proud [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
 ### <a name="consumer-groups"></a>Skupiny příjemců
-Měli byste nakonfigurovat každý centra událostí Stream Analytics vstup do mají svůj vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Event Hubs pět čtečky za skupiny příjemců na oddíl, je osvědčeným postupem určit skupinu uživatelů pro každou úlohu služby Stream Analytics. Je také maximální počet 20 skupiny příjemců za centra událostí. Další informace najdete v tématu [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
+Měli byste nakonfigurovat každý centra událostí Stream Analytics vstup do mají svůj vlastní skupiny příjemců. Pokud úloha obsahuje vlastní spojení nebo pokud obsahuje více vstupů, může číst některé vstup za více než jeden čtečky. Situace má dopad na počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Event Hubs pět čtečky za skupiny příjemců na oddíl, je osvědčeným postupem určit skupinu uživatelů pro každou úlohu služby Stream Analytics. Je také maximální počet 20 skupiny příjemců za centra událostí. Další informace najdete v tématu [řešení potíží s Azure Stream Analytics s příjemců u centra událostí](stream-analytics-event-hub-consumer-groups.md).
 
 ### <a name="stream-data-from-event-hubs"></a>Datový proud dat ze služby Event Hubs
 Následující tabulka popisuje každou vlastnost **nové vstup** na portálu Azure do vstupní datový proud dat z centra událostí:

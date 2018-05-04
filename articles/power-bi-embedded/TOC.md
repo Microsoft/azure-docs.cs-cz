@@ -28,7 +28,7 @@
 # Referenční informace
 ## Rozhraní API
 ### [Rozhraní REST API pro správu prostředků Azure](https://docs.microsoft.com/rest/api/power-bi-embedded/)
-### [Rozhraní REST API pro Power BI](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
+### [Rozhraní REST API pro Power BI](https://msdn.microsoft.com/library/mt147898.aspx)
 
 # Zdroje a prostředky
 ## [Komunita Power BI](http://community.powerbi.com/t5/Developer/bd-p/Developer)

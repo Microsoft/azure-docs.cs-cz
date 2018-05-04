@@ -1,3 +1,5 @@
+- name: Základy Azure IoT
+  href: ../iot-fundamentals/index.yml
 - name: Dokumentace k Azure IoT Edge
   href: index.yml
 - name: Přehled
@@ -51,6 +53,8 @@
           href: how-to-vscode-debug-csharp-module.md
         - name: Ladění služby Azure Functions
           href: how-to-vscode-debug-azure-function.md
+    - name: CI/CD ve VSTS
+      href: how-to-ci-cd.md
     - name: Ukládání dat na hraničních zařízeních
       href: sql-storage.md
     - name: Řešení potíží
@@ -76,6 +80,32 @@
       href: security.md
     - name: Glosář IoT Edge
       href: iot-edge-glossary.md
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Předkonfigurovaná řešení IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zdroje a prostředky
   items:
     - name: Katalog zařízení Azure Certified for IoT

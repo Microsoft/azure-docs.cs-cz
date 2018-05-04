@@ -42,7 +42,7 @@ Následující tabulka uvádí omezení, která se vztahují na prostředky slu�
 
 
 > [!NOTE]
-> Maximální počet zařízení, které se můžete připojit k jedné IoT hub je v současné době 500 000. Pokud chcete tento limit zvýšit, obraťte se na [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
+> Maximální počet zařízení, které se můžete připojit k jedné IoT hub je v současné době 500 000. Pokud chcete tento limit zvýšit, obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 Služba IoT Hub omezuje žádosti při překročení následujících kvót:
 

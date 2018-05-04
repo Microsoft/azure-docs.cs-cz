@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo;kgremban
-ms.openlocfilehash: c6182f878076bae27b18d0556a77c8d95677e9c1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5803d237a946a91536eb662a28416926f6f690fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>Směrování zpráv službou IoT Hub (Python)
 
@@ -294,5 +294,5 @@ Další informace o směrování zpráv do služby IoT Hub, najdete v části [o
 
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-free-trial]: https://azure.microsoft.com/free/
-[lnk-storage]: https://docs.microsoft.com/en-us/azure/storage/
+[lnk-storage]: https://docs.microsoft.com/azure/storage/
 [lnk-python-service-bus]: https://pypi.python.org/pypi/azure-servicebus

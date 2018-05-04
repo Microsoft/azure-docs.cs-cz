@@ -15,11 +15,11 @@ ms.date: 04/18/2018
 ms.author: mtillman
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: ebf6653fada0897c23ebb84ab14de1040a963552
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19eb8399c59efa94e68c0d334ba708f900ce841a
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -71,7 +71,7 @@ Například pokud webovou aplikaci klienta potřebuje ke čtení informací z ka
 
 Rozhraní framework souhlasu je založen na OAuth 2.0 a jeho různé toky, například kód grant a klient přihlašovací údaje pro autorizaci udělit, pomocí veřejného nebo důvěrné klientů. Pomocí standardu OAuth 2.0, Azure AD umožňuje vytvářet mnoho různých typů klientské aplikace, například na telefon, tablet, server nebo webovou aplikaci, a získat přístup k požadované prostředky.
 
-Další informace o používání rozhraní souhlasu s autorizací udělí OAuth2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](active-directory-protocols-oauth-code.md) a[scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md). Informace o získání autorizovaný přístup k Office 365 přes Microsoft Graph najdete v tématu [ověřování aplikací s Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+Další informace o používání rozhraní souhlasu s autorizací udělí OAuth2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](active-directory-protocols-oauth-code.md) a [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md). Informace o získání autorizovaný přístup k Office 365 přes Microsoft Graph najdete v tématu [ověřování aplikací s Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
 
 #### <a name="example-of-the-consent-experience"></a>Příklad souhlasu prostředí
 

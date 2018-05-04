@@ -1,8 +1,8 @@
 ---
-title: Co je Azure Application Insights? | Dokumentace Microsoftu
-description: "Správa výkonu aplikací a monitorování využití živých webových aplikací.  Rozpoznávání, třídění a diagnostika problémů a náhled na to, jak ostatní využívají vaše aplikace."
+title: Co je Azure Application Insights? | Dokumenty Microsoft
+description: Správa výkonu aplikací a monitorování využití živých webových aplikací.  Rozpoznávání, třídění a diagnostika problémů a náhled na to, jak ostatní využívají vaše aplikace.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
@@ -14,11 +14,11 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 05/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2e2a9e8491ad56bcbc42be64729715016f7ed17b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 6e4cc8b399a3d3b1db1c52aafc8a73edb784d13b
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center a HockeyApp může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -136,7 +136,7 @@ Začínáme při vývoji:
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 * Otázky a problémy:
   * [Řešení potíží][qna]
-  * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * Vaše návrhy:
   * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
@@ -151,13 +151,13 @@ Začínáme při vývoji:
 
 <!--Link references-->
 
-[android]: https://github.com/Microsoft/ApplicationInsights-Android
+[android]: app-insights-mobile-center-quickstart.md
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
 [greenbrown]: app-insights-asp-net.md
-[ios]: https://github.com/Microsoft/ApplicationInsights-iOS
+[ios]: app-insights-mobile-center-quickstart.md
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: app-insights-platforms.md

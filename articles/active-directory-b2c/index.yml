@@ -11,11 +11,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: 5ca78abe01132ec557b4722d457f7b76684ce3c0
-  ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+  ms.openlocfilehash: 000874bd089583cfc75dfa0a4d28769b91808a11
+  ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/18/2018
+  ms.lasthandoff: 04/30/2018
 abstract:
   description: Azure Active Directory (Azure AD) B2C je služba pro správu identit, která umožňuje přizpůsobení a řízení způsobu, jakým se zákazníci registrují, přihlašují a jakým při používání vašich aplikací spravují své profily. To zahrnuje mimo jiné aplikace vyvinuté pro iOS, Android a .NET. Azure AD B2C umožňuje tyto akce, zatímco zároveň chrání identity vašich zákazníků. Naučte se používat Azure AD B2C prostřednictvím našich rychlých startů, kurzů a ukázek.
   aside:
@@ -61,30 +61,6 @@ sections:
       html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Registrace aplikace</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">Udělení přístupu k rozhraní API</a></p>
     - title: Samostatná stránka
       html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Registrace aplikace</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Ověřování uživatelů</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">Udělení přístupu k rozhraní API</a></p>
-- title: Bezplatné školicí video od Pluralsightu
-  items:
-  - type: list
-    style: cards
-    className: cardsF
-    items:
-    - title: Správa identity, aplikace a síťových služeb
-      href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
-      html: <p>V modulu 6 se seznámíte s vytvořením tenanta, registrací aplikace a vytvářením zásad.</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/microsoft-azure-identity-application-network-services
-    - title: Zabezpečení aplikace bez serveru
-      href: https://www.pluralsight.com/courses/azure-serverless-applications
-      html: <p>V modulu 6 se dozvíte, proč byste k zabezpečení aplikace bez serveru měli použít Azure AD B2C.</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/azure-serverless-applications
-    - title: ASP.NET Core 2 a Azure AD B2C
-      href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
-      html: <p>V modulu 8 zjistíte, jak přidat možnosti registrace, přihlašování a úpravy profilu do aplikace ASP.NET Core 2.</p>
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/aspnet-core-identity-management-playbook
 - title: Ukázky
   items:
   - type: paragraph

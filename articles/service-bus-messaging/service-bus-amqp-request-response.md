@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: d72a4de8591898a55e4225ace154fd5ed53e6f91
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 847fe0c08d442388cfa506042272bb358058cb4c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 v Microsoft Azure Service Bus: na základě požadavku odpověď operace
 
@@ -69,7 +69,8 @@ role: RECEIVER,
 ### <a name="transfer-a-request-message"></a>Přenos zprávu požadavku  
 
 Přenáší zprávu požadavku.  
-  
+Stav transakce můžete volitelně přidat pro operace, které podporuje transakce.
+
 ```  
 requestLink.sendTransfer(  
         Message(  
@@ -79,8 +80,12 @@ requestLink.sendTransfer(
                 },  
                 application-properties: {  
                         "operation" -> "<operation>",  
-                },  
-        )  
+                }
+        ),
+        [Optional] State = transactional-state: {
+                txn-id: <txn-id>
+        }
+)
 ```  
   
 ### <a name="receive-a-response-message"></a>Zobrazí zprávu odpovědi  
@@ -195,7 +200,7 @@ Mapa představující zprávu musí obsahovat následující položky:
   
 ### <a name="schedule-message"></a>Plán zpráv  
 
-Naplánuje zprávy.  
+Naplánuje zprávy. Tato operace podporuje transakce.
   
 #### <a name="request"></a>Žádost  
 
@@ -217,8 +222,9 @@ Mapa představující zprávu musí obsahovat následující položky:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |id zprávy|řetězec|Ano|`amqpMessage.Properties.MessageId` jako řetězec|  
-|id relace|řetězec|Ano|`amqpMessage.Properties.GroupId as string`|  
-|klíč oddílu|řetězec|Ano|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|  
+|id relace|řetězec|Ne|`amqpMessage.Properties.GroupId as string`|  
+|klíč oddílu|řetězec|Ne|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|klíč prostřednictvím oddílu|řetězec|Ne|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |zpráva|pole bajtů|Ano|Kódování přenosu zpráv protokolu AMQP 1.0.|  
   
 #### <a name="response"></a>Odpověď  
@@ -465,7 +471,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
+|Název pravidla|řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
 |Popis pravidla|mapy|Ano|Popis pravidla uvedeného v další části.|  
   
 **Popis pravidla** mapy musí zahrnovat následující položky, kde **sql filtru** a **korelace filtru** se vzájemně vylučují:  
@@ -493,7 +499,7 @@ Mapy filtru sql musí zahrnovat následující položky:
 |Popisek|řetězec|Ne||  
 |id relace|řetězec|Ne||  
 |odpověď k relaci id|řetězec|Ne||  
-|content-type|řetězec|Ne||  
+|Typ obsahu|řetězec|Ne||  
 |properties|mapy|Ne|Mapuje sběrnice [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
 **Akce pravidla sql** mapy musí zahrnovat následující položky:  
@@ -526,7 +532,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
+|Název pravidla|řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -537,6 +543,85 @@ Zpráva odpovědi musí zahrnovat následující vlastnosti aplikace:
 |statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
 |Popis_stavu|řetězec|Ne|Popis stavu.|  
   
+### <a name="get-rules"></a>Získat pravidla
+
+#### <a name="request"></a>Žádost
+
+Zpráva požadavku musí zahrnovat následující vlastnosti aplikace:
+
+|Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+|operace|řetězec|Ano|`com.microsoft:enumerate-rules`|  
+|`com.microsoft:server-timeout`|uint|Ne|Operace serveru vypršení časového limitu v milisekundách.|  
+
+Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **mapy** s následující položky:  
+  
+|Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+|Horní|celá čísla|Ano|Počet pravidel načíst na stránce.|  
+|Přeskočit|celá čísla|Ano|Počet pravidel tak, aby přeskočil. Definuje počáteční index (+ 1) v seznamu pravidel. | 
+
+#### <a name="response"></a>Odpověď
+
+Zpráva odpovědi obsahuje následující vlastnosti:
+
+|Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+|statusCode|celá čísla|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – úspěch, jinak se nezdařilo|  
+|pravidla| pole mapy|Ano|Pole pravidla. Každé pravidlo je reprezentována mapy.|
+
+Každá položka mapy v poli obsahuje následující vlastnosti:
+
+|Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+|Popis pravidla|pole objektů popsané|Ano|`com.microsoft:rule-description:list` s AMQP popsané kód 0x0000013700000004| 
+
+`com.microsoft.rule-description:list` je pole objektů popsané. Pole zahrnuje následující položky:
+
+|Index|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+| 0 | pole objektů popsané | Ano | `filter` jak je uvedeno níže. |
+| 1 | pole popsané objektu | Ano | `ruleAction` jak je uvedeno níže. |
+| 2 | řetězec | Ano | Název pravidla. |
+
+`filter` může být buď z následujících typů:
+
+| Název popisovače | Popisovač kódu | Hodnota |
+| --- | --- | ---|
+| `com.microsoft:sql-filter:list` | 0x000001370000006 | Filtr SQL |
+| `com.microsoft:correlation-filter:list` | 0x000001370000009 | Korelace filtru |
+| `com.microsoft:true-filter:list` | 0x000001370000007 | Hodnota TRUE, filtr představující 1 = 1 |
+| `com.microsoft:false-filter:list` | 0x000001370000008 | False filtr představující 1 = 0 |
+
+`com.microsoft:sql-filter:list` je popsané pole, která zahrnuje:
+
+|Index|Typ hodnoty|Požaduje se|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+| 0 | řetězec | Ano | Výraz filtru SQL |
+
+`com.microsoft:correlation-filter:list` je popsané pole, která zahrnuje:
+
+|Index (pokud existuje)|Typ hodnoty|Hodnota obsahu|  
+|---------|----------------|--------------|--------------------|  
+| 0 | řetězec | ID korelace |
+| 1 | řetězec | ID zprávy |
+| 2 | řetězec | Akce |
+| 3 | řetězec | Zpáteční adresa |
+| 4 | řetězec | Štítek |
+| 5 | řetězec | ID relace |
+| 6 | řetězec | Odpovězte na ID relace|
+| 7 | řetězec | Typ obsahu |
+| 8 | Mapa | Mapy vlastností aplikace definovaná |
+
+`ruleAction` může být buď z následujících typů:
+
+| Název popisovače | Popisovač kódu | Hodnota |
+| --- | --- | ---|
+| `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Prázdný akce pravidla - žádné existuje akce pravidla |
+| `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | Akce pravidla SQL |
+
+`com.microsoft:sql-rule-action:list` je pole objektů popsané jejichž první položka je řetězec, který obsahuje výraz SQL akce pravidla.
+
 ## <a name="deferred-message-operations"></a>Operace odložené zpráv  
   
 ### <a name="receive-by-sequence-number"></a>Pořadové číslo, obdrží  
@@ -557,7 +642,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |pořadová čísla|pole dlouho|Ano|Pořadová čísla.|  
-|receiver-settle-mode|ubyte|Ano|**Příjemce vyrovnání** režimu tak, jak je uvedeno v protokolu AMQP 1.0 jádra.|  
+|příjemce. vyrovnání režimu|ubyte|Ano|**Příjemce vyrovnání** režimu tak, jak je uvedeno v protokolu AMQP 1.0 jádra.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -583,7 +668,7 @@ Mapa představující zprávu musí obsahovat následující položky:
   
 ### <a name="update-disposition-status"></a>Aktualizovat stav dispozice  
 
-Aktualizuje stav dispozice odložené zpráv.  
+Aktualizuje stav dispozice odložené zpráv. Tato operace podporuje transakce.
   
 #### <a name="request"></a>Žádost  
 
@@ -600,7 +685,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
 |---------|----------------|--------------|--------------------|  
 |Stav dispozice|řetězec|Ano|dokončené<br /><br /> opuštění<br /><br /> pozastaveno|  
 |Zámek tokeny|pole identifikátoru uuid|Ano|Tokeny zámku zpráva se bude aktualizovat stav dispozice.|  
-|deadletter-reason|řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
+|Důvod nedoručených zpráv|řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
 |Popis nedoručených zpráv|řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
 |vlastnosti upravit|mapy|Ne|Seznam Service Bus zprostředkované vlastnosti zprávy, které chcete upravit.|  
   

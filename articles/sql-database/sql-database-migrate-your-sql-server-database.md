@@ -9,11 +9,11 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 36548e4d088b809f4fb16d89aaa3ef0a802d6d5c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMS
 
@@ -112,7 +112,7 @@ Služba SQL Database vytvoří bránu firewall na úrovni serveru, aby zabránil
 
 1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20170824.database.windows.net**) a možnosti pro další konfiguraci. 
 
-2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících kurzech Rychlý start. 
+2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. 
 
    ![název serveru](./media/sql-database-get-started-portal/server-name.png) 
 

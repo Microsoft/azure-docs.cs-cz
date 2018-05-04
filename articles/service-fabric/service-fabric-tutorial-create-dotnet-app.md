@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: cbaca20c5226cd38b11288738b40cf7bf280e849
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7840dc86ec7753980bb2c35f932f132c50d65f9e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).  Pokud chcete, můžete se podívat na [video s průvodcem](https://channel9.msdn.com/Events/Connect/2017/E100) tímto kurzem.
@@ -37,6 +37,7 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * Sestavit aplikaci .NET pro Service Fabric
 > * [Nasadit aplikaci do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Přidat koncový bod HTTPS do front-end služby ASP.NET Core](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [Nakonfigurovat CI/CD pomocí Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-monitoring-aspnet.md)
 

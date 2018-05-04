@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 9b182935ad6a328afa4ee25049b3651f62277d45
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure databázi PostgreSQL cenové úrovně
 
@@ -45,7 +45,7 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 
 | **Oblast Azure** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| Střed USA |  | X |
+| Střed USA | X |  |
 | Východ USA | X | X |
 | Východní USA 2 | X | X |
 | Střed USA – sever | X |  |
@@ -56,7 +56,7 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Východní Kanada | X | X |
 | Brazílie – jih | X | X |
 | Severní Evropa | X | X |
-| Západní Evropa | X | X |
+| Západní Evropa |  | X |
 | Spojené království – západ |  | X |
 | Spojené království – jih |  | X |
 | Východní Asie | X |  |

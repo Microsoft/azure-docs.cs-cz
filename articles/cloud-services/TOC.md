@@ -92,7 +92,7 @@
 #### [Nasazení – nejčastější dotazy](cloud-services-deployment-faq.md)
 
 # Referenční informace
-## [Ukázky kódu](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
+## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=cloud-services)
 ## [Schéma .csdef XML](schema-csdef-file.md)
 ### [Schéma LoadBalancerProbe](schema-csdef-loadbalancerprobe.md)
 ### [Schéma WebRole](schema-csdef-webrole.md)

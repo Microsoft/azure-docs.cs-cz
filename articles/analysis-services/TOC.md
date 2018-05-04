@@ -1,18 +1,22 @@
 # [Dokumentace ke službě Analysis Services](index.md)
 
 # Přehled
-## [Informace o Analysis Services](analysis-services-overview.md)
-## [Podporované zdroje dat](analysis-services-datasource.md)
-## [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)
-## [Připojení k místním zdrojům dat](analysis-services-gateway.md)
-## [Úroveň kompatibility](analysis-services-compat-level.md)
-## [Vysoká dostupnost](analysis-services-bcdr.md)
+## [Co je služba Azure Analysis Services?](analysis-services-overview.md)
+
 
 # Začínáme
 ## [Vytvoření serveru na portálu Azure](analysis-services-create-server.md)
 ## [Vytvoření serveru s využitím Azure PowerShellu](analysis-services-create-powershell.md)
 ## [Nasazení modelu ze sady Visual Studio](analysis-services-deploy.md)
 ## [Vytvoření modelu na webu Azure Portal (Preview)](analysis-services-create-model-portal.md)
+
+# Koncepty
+## [Podporované zdroje dat](analysis-services-datasource.md)
+## [Připojení k místním zdrojům dat](analysis-services-gateway.md)
+## [Připojení k serverům](analysis-services-connect.md)
+## [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)
+## [Úroveň kompatibility](analysis-services-compat-level.md)
+## [Vysoká dostupnost](analysis-services-bcdr.md)
 
 # Postupy 
 ## [Instalace a konfigurace místní brány dat](analysis-services-gateway-install.md)

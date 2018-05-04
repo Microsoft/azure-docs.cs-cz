@@ -17,7 +17,7 @@ ms.author: celested
 ms.custom: aaddev
 ms.openlocfilehash: 281f50a942a9396bf1163f5a20feb98bf450e6eb
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
 ---

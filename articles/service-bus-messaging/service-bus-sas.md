@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
-ms.author: sethm;clemensv
-ms.openlocfilehash: 21e9e0a20842e365e40b71ac96888e7cd2056e52
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: sethm
+ms.openlocfilehash: 420f4573fbe8b5139a4e1e5fa4dea3404c4e099d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus řízení přístupu s podpisy sdíleného přístupu
 
@@ -254,7 +254,7 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 
 | Operace | Požadované deklarace identity | Deklarace oboru |
 | --- | --- | --- |
-| **Namespace** | | |
+| **obor názvů** | | |
 | Konfigurovat autorizační pravidlo na obor názvů |Spravovat |Každou adresu, obor názvů |
 | **Služba registru** | | |
 | Zobrazení výčtu privátní zásady |Spravovat |Každou adresu, obor názvů |
@@ -283,17 +283,17 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 | Odeslat do tématu |Odeslat |Každou adresu, platný tématu |
 | **Předplatné** | | |
 | Vytvoření odběru |Spravovat |Každou adresu, obor názvů |
-| Odstranit předplatné |Spravovat |../myTopic/Subscriptions/mySubscription |
+| Odstranit předplatné |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu odběrů |Spravovat |.. / myTopic/odběrů |
-| Získat předplatné popis |Spravovat |../myTopic/Subscriptions/mySubscription |
-| Chyby nebo celé zprávy po přijetí zprávy v režimu zamknutí funkce Náhled |Naslouchání |../myTopic/Subscriptions/mySubscription |
-| Odložení zprávu pro pozdější načtení |Naslouchání |../myTopic/Subscriptions/mySubscription |
-| Tato zpráva |Naslouchání |../myTopic/Subscriptions/mySubscription |
-| Zjištění stavu související s relací tématu |Naslouchání |../myTopic/Subscriptions/mySubscription |
-| Nastavit stav související s relací tématu |Naslouchání |../myTopic/Subscriptions/mySubscription |
+| Získat předplatné popis |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Chyby nebo celé zprávy po přijetí zprávy v režimu zamknutí funkce Náhled |Naslouchání |.. /myTopic/Subscriptions/mySubscription |
+| Odložení zprávu pro pozdější načtení |Naslouchání |.. /myTopic/Subscriptions/mySubscription |
+| Tato zpráva |Naslouchání |.. /myTopic/Subscriptions/mySubscription |
+| Zjištění stavu související s relací tématu |Naslouchání |.. /myTopic/Subscriptions/mySubscription |
+| Nastavit stav související s relací tématu |Naslouchání |.. /myTopic/Subscriptions/mySubscription |
 | **Pravidla** | | |
-| Vytvoření pravidla |Spravovat |../myTopic/Subscriptions/mySubscription |
-| Odstranění pravidla |Spravovat |../myTopic/Subscriptions/mySubscription |
+| Vytvoření pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Odstranění pravidla |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu pravidel |Spravovat nebo naslouchání |.. /myTopic/Subscriptions/mySubscription/Rules 
 
 ## <a name="next-steps"></a>Další postup

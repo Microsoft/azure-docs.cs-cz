@@ -1,35 +1,4 @@
-- name: Identita spravované služby (přiřazená uživatelem)
-  href: msi-overview.md
+- name: Použití MSI virtuálního počítače pro přístup k úložišti Azure
   items:
-    - name: Konfigurace MSI pro virtuální počítač Azure
-      items:
-        - name: Použití Azure CLI
-          href: msi-qs-configure-cli-windows-vm.md
-        - name: Pomocí sady Azure SDK
-          href: msi-qs-configure-sdk-windows-vm.md
-    - name: Udělení přístupu MSI k Resource Manageru
-      items:
-        - name: Použití Azure CLI
-          href: msi-howto-assign-access-cli.md
-    - name: Jak používat MSI virtuálních počítačů
-      items:
-        - name: Získání přístupového tokenu
-          href: msi-how-to-use-vm-msi-token.md
-        - name: Přihlášení k Azure CLI
-          href: msi-how-to-use-vm-msi-sign-in.md
-        - name: Použití se sadami Azure SDK
-          href: msi-how-to-use-vm-msi-sdk.md
-    - name: Použití MSI virtuálního počítače pro přístup k Azure Resource Manageru
-      items:
-        - name: Z virtuálního počítače s Linuxem
-          href: msi-tutorial-linux-vm-access-arm.md
-    - name: Použití MSI virtuálního počítače pro přístup ke službě Azure Cosmos DB
-      items:
-        - name: Z virtuálního počítače s Linuxem
-          href: msi-tutorial-linux-vm-access-cosmosdb.md
-    - name: Použití MSI virtuálního počítače pro přístup k úložišti Azure
-      items:
-        - name: Z virtuálního počítače s Linuxem pomocí přístupového klíče
-          href: msi-tutorial-linux-vm-access-storage.md
-    - name: Nejčastější dotazy a známé problémy
-      href: msi-known-issues.md
+    - name: Z virtuálního počítače s Linuxem pomocí přístupového klíče
+      href: msi-tutorial-linux-vm-access-storage.md

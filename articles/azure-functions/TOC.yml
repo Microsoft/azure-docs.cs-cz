@@ -97,6 +97,8 @@
           href: durable-functions-bindings.md
         - name: Kontrolní bod a opětovného přehrání
           href: durable-functions-checkpointing-and-replay.md
+        - name: Stav vlastní orchestrace
+          href: durable-functions-custom-orchestration-status.md
         - name: Správa instancí
           href: durable-functions-instance-management.md
         - name: HTTP API
@@ -181,6 +183,8 @@
           href: durable-functions-phone-verification.md
         - name: Testování částí
           href: durable-functions-unit-testing.md
+        - name: Publikování událostí
+          href: durable-functions-event-publishing.md
 - name: Referenční informace
   items:
     - name: Vazby

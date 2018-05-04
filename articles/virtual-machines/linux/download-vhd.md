@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d62fe702e42929fde2bb2a0dee4ea2cc8621ff99
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 93f165d08813506f9c4d4c0fbb885ddc958e8391
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stáhnout Linux virtuální pevný disk z Azure
 
@@ -35,7 +35,7 @@ Virtuální pevný disk nelze stáhnout ze služby Azure, pokud je připojen k s
 
 Chcete-li použít virtuální pevný disk jako bitovou kopii k vytvoření dalších virtuálních počítačů, proveďte tyto kroky:
 
-1. Použijte k připojení k němu a zrušit jejich zřízení se SSH, název účtu a veřejnou IP adresu virtuálního počítače. Můžete najít veřejnou IP adresu s [az sítě veřejné ip zobrazit](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show). + Uživatele parametr také odebere poslední účet zřízení uživatele. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere poslední účet zřízení uživatele:
+1. Použijte k připojení k němu a zrušit jejich zřízení se SSH, název účtu a veřejnou IP adresu virtuálního počítače. Můžete najít veřejnou IP adresu s [az sítě veřejné ip zobrazit](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). + Uživatele parametr také odebere poslední účet zřízení uživatele. Pokud jsou pečení přihlašovací údaje k virtuálnímu počítači, nechte si to + parametr uživatele. Následující příklad odebere poslední účet zřízení uživatele:
 
     ```bash
     ssh azureuser@<publicIpAddress>

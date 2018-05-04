@@ -21,6 +21,14 @@
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: Sestavování imagí kontejneru (Preview)
+      items:
+        - name: 1. Sestavení imagí v Azure
+          href: container-registry-tutorial-quick-build.md
+        - name: 2. Automatizace sestavování imagí
+          href: container-registry-tutorial-build-task.md
+        - name: 3. Sestavení aktualizací základních imagí
+          href: container-registry-tutorial-base-image-update.md
     - name: Geografická replikace (Preview)
       items:
         - name: 1. Příprava registru kontejneru
@@ -35,6 +43,8 @@
       href: container-registry-skus.md
     - name: Úložiště obrázků
       href: container-registry-storage.md
+    - name: Sestavení a opravy s využitím ACR Buildu
+      href: container-registry-build-overview.md
     - name: Geografická replikace (Preview)
       href: container-registry-geo-replication.md
     - name: Osvědčené postupy registru

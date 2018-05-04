@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -121,6 +121,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Kognitivní služby
 * Content Moderator
 * Data Catalog
+* Objekt pro vytváření dat – V1 můžete přesunout, ale přesun V2 (preview) nepodporuje.
 * Data Lake Analytics
 * Data Lake Store
 * DNS
@@ -147,7 +148,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Úložiště
 * Najdete v části úložiště (klasické) - [omezení nasazení Classic](#classic-deployment-limitations)
 * Stream Analytics - Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
-* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze.
+* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze. To zahrnuje databáze Azure SQL Database a Azure SQL Data Warehouse. 
 * Traffic Manager
 * Nelze přesunout virtuální počítače – virtuální počítače s spravované disky. V tématu [omezení virtuální počítače](#virtual-machines-limitations)
 * Virtuální počítače (klasické) - najdete v části [omezení nasazení Classic](#classic-deployment-limitations)
@@ -166,7 +167,6 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * BizTalk Services
 * Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
 * Container Service
-* Data Factory
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
 * ExpressRoute

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 0320ccdf2e7c7e032e153fa46605d98637246f31
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8af344f6aa3cd666d655405f927542850b770ae5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Kurz: Azure Active Directory integrace s nyní organizačního diagramu
 

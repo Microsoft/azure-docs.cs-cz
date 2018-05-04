@@ -10,11 +10,11 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: 3d82416b7382b8e09706fd7fb8af9e1d3fe79f01
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e95b5a6037c791f501a04ebe468b1c781805f693
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O disky úložiště pro virtuální počítače Windows Azure
 Stejně jako všechny ostatní počítače virtuálních počítačů v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure mít aspoň dva disky – disk operačního systému Windows a dočasný disk. Vytváření disku operačního systému z bitové kopie a disku operačního systému a image jsou virtuální pevné disky (VHD) uložené v účtu úložiště Azure. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky. 
@@ -70,7 +70,7 @@ fsutil behavior set DisableDeleteNotify 0
 ```
 
 > [!NOTE]
-> Poznámka: Podpora uvolnění dočasné paměti spustí s Windows serverem 2012 nebo Windows 8 a vyšší, najdete v tématu [nové rozhraní API umožňuje aplikacím odeslat "TRIM a zrušit mapování" pomocné parametry úložná média,](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
+> Poznámka: Podpora uvolnění dočasné paměti spustí s Windows serverem 2012 nebo Windows 8 a vyšší, viz [nové rozhraní API umožňuje aplikacím odeslat "TRIM a zrušit mapování" pomocné parametry úložná média,](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints).
 > 
 
 <!-- Might want to match next-steps from overview of managed disks -->

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: c0bc3c8774b68b49be95d5df86319a2e0463e6ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování na Rest Azure dat
 Existuje několik nástrojů v rámci Microsoft Azure k ochraně dat podle potřeb zabezpečení a dodržování předpisů vaší společnosti. Tento dokument se zaměřuje na:
@@ -236,10 +236,10 @@ Každý zákazník pomocí Azure infrastruktury jako služby (IaaS) funkce můž
 
 #### <a name="azure-storage"></a>Úložiště Azure
 
-Azure Blob a soubor podporuje šifrování v klidovém stavu pro scénáře šifrované na straně serveru, jakož i data zákazníků šifrovat (šifrování na straně klienta).
+Všechny služby Azure Storage (úložiště objektů Blob, úložiště Queue, Table storage a Azure Files) podporují šifrování na straně serveru v klidu, s některých služeb podporujících spravované zákazníkem klíčů a šifrování na straně klienta.  
 
-- Serverové: zákazníky používající úložiště objektů blob v Azure můžete povolit šifrování v klidovém stavu u každého účtu prostředků úložiště Azure. Jednou povolené šifrování na straně serveru se transparentně provádí k aplikaci. V tématu [šifrování služby úložiště Azure pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/storage-service-encryption) Další informace.
-- Klienta: je podporováno šifrování na straně klienta objektů BLOB Azure. Když pomocí šifrování na straně klienta zákazníkům šifrování dat a odesílání dat jako zašifrovaný objekt blob. Správu klíčů je potřeba zákazníka. V tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption) Další informace.
+- Serverové: Všechny služby úložiště Azure povolit šifrování na straně serveru ve výchozím nastavení pomocí klíče pro službu spravovat, což je transparentní pro aplikace. Další informace najdete v tématu [šifrování služby úložiště Azure pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob storage a Azure Files také podporují spravované zákazníkem klíče v Azure Key Vault. Další informace najdete v tématu [šifrování služby úložiště v Azure Key Vault klíče spravovaného zákazníkem](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Klienta: Azure BLOB, tabulek a podporují šifrování na straně klienta. Při použití šifrování na straně klienta, šifrování dat zákazníků a nahrajte data jako zašifrovaný objekt blob. Správu klíčů je potřeba zákazníka. Další informace najdete v tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="sql-azure"></a>SQL Azure
@@ -259,8 +259,8 @@ Podpora pro šifrování na serveru je aktuálně k dispozici pomocí funkce SQL
 | Systému SQL Server (IaaS)                |                | Ano                 | Ano                          | Ano                          | Ano    |
 | Azure SQL (PaaS)                 |                | Ano                 | Ano                          | -                            | Ano    |
 | Úložiště Azure (objekty BLOB bloku nebo stránky) |                | Ano                 | Ano                          | -                            | Ano    |
-| Úložiště Azure (soubory)            |                | Ano                 | -                            | -                            | -      |
-| Úložiště Azure (tabulky, fronty)   |                | -                   | -                            | -                            | Ano    |
+| Úložiště Azure (soubory)            |                | Ano                 | Ano                          | -                            | -      |
+| Úložiště Azure (tabulky, fronty)   |                | Ano                 | -                            | -                            | Ano    |
 | Cosmos DB (dokument DB)          |                | Ano                 | -                            | -                            | -      |
 | StorSimple                       |                | Ano                 | -                            | -                            | Ano    |
 | Backup                           |                | -                   | -                            | -                            | Ano    |

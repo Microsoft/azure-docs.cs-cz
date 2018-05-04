@@ -1,19 +1,19 @@
 ---
-title: "Vytváření a správa zásad pro vynucování dodržování předpisů v organizaci pomocí služby Azure Policy | Microsoft Docs"
-description: "Pomocí služby Azure Policy můžete vynucovat standardy, plnit legislativní požadavky na audit a dodržování předpisů, řídit náklady, udržovat konzistentní zabezpečení a výkon a uplatňovat principy návrhu v rámci celého podniku."
+title: Vytváření a správa zásad pro vynucování dodržování předpisů v organizaci pomocí služby Azure Policy | Microsoft Docs
+description: Pomocí služby Azure Policy můžete vynucovat standardy, plnit legislativní požadavky na audit a dodržování předpisů, řídit náklady, udržovat konzistentní zabezpečení a výkon a uplatňovat principy návrhu v rámci celého podniku.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/18/2018
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e50c2330c03e5fc36e608b672fe8390a1f19e99b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -372,7 +372,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Vyloučení prostředku nedodržujícího předpisy nebo zamítnutého prostředku s využitím vyloučení
 
-Ve výše uvedeném příkladu se po přiřazení definice zásady vyžadující SQL Server verze 12.0 zamítne vytvoření SQL Serveru s jinou verzí. V této části si projdete řešení zamítnutého pokusu o vytvoření SQL Serveru s jinou verzí pomocí žádosti o vyloučení. Vyloučení v podstatě brání vynucování zásad. Vyloučení se může vztahovat na skupinu prostředků nebo ho můžete zúžit na jednotlivé prostředky.
+Ve výše uvedeném příkladu se po přiřazení definice zásady vyžadující SQL Server verze 12.0 zamítne vytvoření SQL Serveru s jinou verzí než 12.0. V této části si projdete řešení zamítnutého pokusu o vytvoření SQL Serveru pomocí žádosti o vyloučení konkrétních prostředků. Vyloučení v podstatě brání vynucování zásad. V následujícím příkladu se povolí jakákoli verze SQL Serveru. Vyloučení se může vztahovat na skupinu prostředků nebo ho můžete zúžit na jednotlivé prostředky.
 
 1. V levém podokně vyberte **Přiřazení**.
 2. Projděte všechna přiřazení zásad a otevřete přiřazení *Vyžadovat SQL Server verze 12.0*.
@@ -384,7 +384,7 @@ Ve výše uvedeném příkladu se po přiřazení definice zásady vyžadující
 
 4. Klikněte na **Přiřadit**.
 
-V této části jste vyřešili zamítnutí pokusu o vytvoření SQL Serveru verze 12.0 tím, že jste zažádali o vyloučení příslušných prostředků.
+V této části jste vyřešili zamítnutí pokusu o vytvoření SQL Serveru tím, že jste zažádali o vyloučení příslušných prostředků.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

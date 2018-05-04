@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -122,7 +122,9 @@ Místní síťová brána si může vyměňovat trasy s bránou virtuální sít
 - **VPN:** Volitelně můžete použít protokol BGP. Podrobnosti najdete v tématu [Protokol BGP s připojeními VPN typu Site-to-Site](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí ve virtuální síti se přidá samostatná trasa pro každou inzerovanou předponu. Trasa se přidá s uvedeným zdrojem a typem dalšího segmentu směrování *Brána virtuální sítě*. 
- 
+
+Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují vlastní trasy](#custom-routes) s typem dalšího segmentu směrování VPN. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](/manage-route-table#create-a-route-table.md).
+
 ## <a name="how-azure-selects-a-route"></a>Jak Azure vybírá trasu
 
 Při odeslání odchozího provozu z podsítě vybere Azure trasu na základě cílové IP adresy pomocí algoritmu shody nejdelších předpon. Směrovací tabulka například obsahuje dvě trasy: Jedna trasa určuje předponu adresy 10.0.0.0/24, zatímco druhá trasa určuje předponu adresy 10.0.0.0/16. Azure směruje provoz určený pro adresu 10.0.0.5 na typ dalšího segmentu směrování určený v trase s předponou adresy 10.0.0.0/24, protože předpona 10.0.0.0/24 je delší než 10.0.0.0/16, přestože adresa 10.0.0.5 je v rozsahu obou předpon adres. Azure směruje provoz směřující na adresu 10.0.1.5 na typ dalšího segmentu směrování určený v trase s předponou adresy 10.0.0.0/16, protože adresa 10.0.1.5 není zahrnutá v předponě adresy 10.0.0.0/24, a proto je předpona adresy 10.0.0.0/16 nejdelší odpovídající předpona.

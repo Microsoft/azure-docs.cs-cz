@@ -14,8 +14,6 @@
 ## [Instalace jedné instance SAP HANA](hana-get-started.md)
 ## [Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL](cal-s4h.md)
 ## [Průvodce provozem SAP HANA v Azure](hana-vm-operations.md)
-### Postup
-#### [Azure Write Accelerator pro nasazení SAP](how-to-enable-write-accelerator.md)
 ## Dostupnost SAP HANA ve službě Azure Virtual Machines
 ### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
 ### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)

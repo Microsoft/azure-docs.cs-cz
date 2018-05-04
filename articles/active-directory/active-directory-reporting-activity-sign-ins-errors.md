@@ -1,25 +1,25 @@
 ---
-title: "Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Microsoft Docs"
-description: "Referenční informace ke kódům chyb v sestavě aktivit přihlašování."
+title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Dokumentace Microsoftu
+description: Referenční informace ke kódům chyb v sestavě aktivit přihlašování.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -47,7 +47,7 @@ Kliknutí na položku v zobrazeném seznamu otevře okno **Podrobnosti o aktivit
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins-errors/05.png "Aktivita přihlašování")
 
 
-Jako alternativu k portálu Azure Portal můžete pro přístup k datům přihlašování použít také [rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md).
+Jako alternativu k webu Azure Portal můžete pro přístup k datům přihlašování použít také [rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md).
 
 
 Následující část poskytuje úplný přehled o všech možných chybách a související popisy. 
@@ -65,6 +65,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50055|Neplatné heslo, zadáno prošlé heslo.|
 |50057|Uživatelský účet je neaktivní.|
 |50058|V zadaných přihlašovacích údajích nebyly nalezeny žádné informace o identitě uživatele nebo Uživatel nebyl nalezen v tenantovi nebo Byla odeslána žádost o přihlášení v tichém režimu, ale žádný uživatel není přihlášen nebo Službě se nepodařilo ověřit uživatele.|
+|50072|Uživatelé se musí zaregistrovat k druhému faktoru ověřování (interaktivní).|
 |50074|Uživatel neprošel ověřovacím testem MFA.|
 |50079|Uživatel se musí zaregistrovat k druhému faktoru ověřování.|
 |50089|Ověření tokenu toku se nezdařilo, protože platnost tokenu vypršela.|
@@ -97,7 +98,6 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |81013|Nepodařilo se najít objekt uživatele na základě informací v lístku Kerberos uživatele.|
 |90014|Používá se v různých případech, kdy v přihlašovacích údajích není přítomné očekávané pole.|
 |90093|Graph pro žádost vrátil kód chyby Zakázáno.|
-
 
 
 ## <a name="next-steps"></a>Další kroky

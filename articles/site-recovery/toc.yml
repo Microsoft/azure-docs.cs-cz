@@ -129,6 +129,8 @@
           items:
             - name: Zotavení po havárii virtuálních počítačů Azure po migraci do Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Zotavení po havárii virtuálních počítačů Azure s využitím PowerShellu
+              href: azure-to-azure-powershell.md
         - name: 'Replikace, převzetí služeb při selhání a navrácení služeb po obnovení'
           items:
             - name: Povolení replikace z Azure do Azure

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d6bc4f69386cc8a9119aa852693456f6465f59ce
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
 Tento článek ukazuje, jak automatizovat vytváření a aktualizace [Application Insights](app-insights-overview.md) prostředky automaticky pomocí nástroje Správa prostředků Azure. Může například uděláte jako součást procesu sestavení. Společně s základní prostředku Application Insights, můžete vytvořit [testy dostupnosti webu](app-insights-monitor-web-app-availability.md), nastavte [výstrahy](app-insights-alerts.md), nastavte [ceny schéma](app-insights-pricing.md)a vytvořte další prostředky Azure .
@@ -52,7 +52,6 @@ Vytvořte nový soubor .json – umožňuje volání `template1.json` v tomto p�
                 "allowedValues": [
                     "web",
                     "java",
-                    "HockeyAppBridge",
                     "other"
                 ],
                 "metadata": {
@@ -155,7 +154,7 @@ Vytvořte nový soubor .json – umožňuje volání `template1.json` v tomto p�
 ## <a name="create-application-insights-resources"></a>Vytvořit prostředky Application Insights
 1. V prostředí PowerShell Přihlaste se k Azure:
    
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. Spusťte příkaz takto:
    
     ```PS

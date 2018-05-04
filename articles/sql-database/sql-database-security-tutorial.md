@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 
-Služba SQL Database chrání vaše data omezením přístupu k databázi pomocí pravidel brány firewall, ověřovacími mechanismy vyžadujícími po uživatelích prokázání identity a autorizací přístupu k datům prostřednictvím členství a oprávnění na základě rolí, stejně jako prostřednictvím zabezpečení na úrovni řádku a dynamického maskování dat.
+SQL Database zajišťuje zabezpečení vašich dat prostřednictvím: 
+- Omezení přístupu k vaší databázi pomocí pravidel brány firewall 
+- Použití mechanismů ověřování vyžadujících identitu
+- Ověřování přístupu k datům prostřednictvím členství na základě role a oprávnění 
+- Zabezpečení na úrovni řádku
+- Dynamické maskování dat
+
+SQL Database zahrnuje také pokročilé monitorování, auditování a detekci hrozeb. 
 
 Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte: 
 
@@ -155,7 +162,7 @@ Transparentní šifrování dat služby Azure SQL Database automaticky šifruje 
 
 3. V případě potřeby nastavte **Šifrování dat** na ZAPNUTO a klikněte na **Uložit**.
 
-Na pozadí se spustí proces šifrování. Průběh můžete monitorovat po připojení ke službě SQL Database pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) dotazováním sloupce encryption_key v zobrazení `sys.dm_database_encryption_keys`.
+Na pozadí se spustí proces šifrování. Průběh můžete monitorovat po připojení ke službě SQL Database pomocí aplikace [SQL Server Management Studio](./sql-database-connect-query-ssms.md) a dotazováním sloupce encryption_state v zobrazení [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017). Stav 3 značí, že je databáze šifrovaná. 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>Povolení auditování služby SQL Database v případě potřeby
 

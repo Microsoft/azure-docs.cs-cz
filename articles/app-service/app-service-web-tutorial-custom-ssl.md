@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fd68658d2549e47f69005af4012c2c328e192631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -232,9 +232,17 @@ Vaše aplikace ve výchozím nastavení povoluje protokol [TLS](https://wikipedi
 
 V levém navigačním panelu na stránce vaší webové aplikace vyberte **Nastavení SSL**. Pak v části **Verze protokolu TLS** vyberte minimální požadovanou verzi protokolu TLS.
 
-![Vynucení HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+![Vynucení protokolu TLS 1.1 nebo 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Po dokončení operace bude vaše aplikace odmítat všechna připojení využívající nižší verze protokolu TLS.
+
+## <a name="renew-certificates"></a>Obnovení certifikátů
+
+Vaše příchozí IP adresa se může změnit při odstranění vazby, a to i v případě, že tato vazba je založená na protokolu IP. To je zvlášť důležité při obnovení certifikátu, který už vazbu založenou na protokolu IP má. Pokud chcete zabránit změně IP adresy vaší aplikace IP, postupujte podle těchto kroků v uvedeném pořadí:
+
+1. Nahrajte nový certifikát.
+2. Vytvořte vazbu nového certifikátu k požadované vlastní doméně. Starý certifikát neodstraňujte. Tato akce nahradí tuto vazbu (místo aby odebrala vazbu původní).
+3. Odstraňte starý certifikát. 
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
@@ -278,7 +286,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Veřejné certifikáty (volitelné)
-Do své webové aplikace můžete nahrát [veřejné certifikáty](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/). Veřejné certifikáty můžete použít také pro aplikace ve službě App Service Environments. Pokud potřebujete certifikát uložit do úložiště certifikátů na místním počítači, musíte použít webovou aplikaci ve službě App Service Environment. Další informace najdete v tématu [Konfigurace veřejných certifikátů pro webovou aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+[Veřejné certifikáty](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) můžete nahrát do vaší webové aplikace, takže aplikace bude mít přístup k externí službě, která vyžaduje ověření certifikátu.  Další informace o načtení a použití veřejného certifikátu v aplikaci najdete v tématu věnovaném [použití certifikátu SSL v kódu aplikace ve službě Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load).  Veřejné certifikáty můžete použít také pro aplikace v plánech App Service Environment. Pokud potřebujete certifikát uložit do úložiště certifikátů na místním počítači, musíte použít webovou aplikaci ve službě App Service Environment. Další informace najdete v tématu [Konfigurace veřejných certifikátů pro webovou aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Nahrání veřejného certifikátu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
