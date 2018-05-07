@@ -1,6 +1,6 @@
 ---
-title: "Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)"
-description: "Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)."
+title: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)
+description: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 945132dd5f7e51f05ceda89a9cb16315aabbda8a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 623ba423d4f60fee0d18ad9455cc06effeff482a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)
 
@@ -59,9 +59,11 @@ Poznamenejte si adresu IP.
 
  V případě potřeby adresu můžete načíst pomocí [seznam veřejné ip sítě az] [ az-network-public-ip-list] příkaz.
 
-```console
-$ az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```azurecli-interactive
+az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+```
 
+```console
 40.121.183.52
 ```
 
@@ -87,9 +89,11 @@ spec:
 
 Pokud statickou IP adresu nebyl vytvořen nebo byl vytvořen ve skupině prostředků nesprávný, vytvoření služby se nezdaří. K řešení potíží, vraťte se události vytvoření služby pomocí [kubectl popisují] [ kubectl-describe] příkaz.
 
-```console
-$ kubectl describe service azure-vote-front
+```azurecli-interactive
+kubectl describe service azure-vote-front
+```
 
+```console
 Name:                     azure-vote-front
 Namespace:                default
 Labels:                   <none>

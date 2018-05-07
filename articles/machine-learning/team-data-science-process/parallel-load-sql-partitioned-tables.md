@@ -1,9 +1,9 @@
 ---
-title: "Sestavení a optimalizovat tabulky pro rychlé paralelní import dat do systému SQL Server na virtuálním počítači Azure | Microsoft Docs"
-description: "Paralelní hromadný import dat pomocí tabulek oddílů SQL"
+title: Sestavení a optimalizovat tabulky pro rychlé paralelní import dat do systému SQL Server na virtuálním počítači Azure | Microsoft Docs
+description: Paralelní hromadný import dat pomocí tabulek oddílů SQL
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 77638ff52edbc2b782b21a4ca1c727a2b46f22f3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: 55c213e26d39f1f9c27fdeae89e651a5f99a98b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralelní hromadný import dat pomocí tabulek oddílů SQL
 Tento dokument popisuje, jak sestavit dělené tabulky pro rychlé paralelní hromadný import dat do databáze systému SQL Server. Pro velké objemy dat načítání nebo přenos k databázi SQL, import dat do databáze SQL a následné dotazy lze zvýšit pomocí *rozdělena na oddíly tabulky a zobrazení*. 

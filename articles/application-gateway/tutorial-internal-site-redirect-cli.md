@@ -1,9 +1,9 @@
 ---
-title: "Vytvoření služby application gateway s interním přesměrování - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu odpovídající pomocí rozhraní příkazového řádku Azure."
+title: Vytvoření služby application gateway s interním přesměrování - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu odpovídající pomocí rozhraní příkazového řádku Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,18 +11,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 4228a3f534a5dc58ab2efa3c5cf0edd4caee43c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 5bd9e8f2521120dd1d12eb9630663493b89f5844
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s interním přesměrování pomocí rozhraní příkazového řádku Azure
 
 Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [webové přenosy přesměrování](application-gateway-multi-site-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu vytvoříte fond back-end pomocí sady škálování virtuálních počítačů. Nakonfigurujete naslouchací procesy a pravidla založená na domény, které vlastníte a ujistěte se, že web přenos dorazí na odpovídajícímu fondu adres. V tomto kurzu se předpokládá, že vlastníte více domén a používá příklady *www.contoso.com* a *www.contoso.org*.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení sítě
@@ -47,7 +47,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *myResourceGro
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
 Vytvořit virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet* pomocí [vytvoření sítě vnet az](/cli/azure/network/vnet#az_net). Poté můžete přidat podsíť s názvem *myBackendSubnet* , je potřeba fondu back-end serverů pomocí [az sítě vnet podsíť vytváření](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_network_public_ip_create).
 
@@ -190,7 +190,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
@@ -212,7 +212,7 @@ Zadejte název domény do panelu Adresa prohlížeče. Například http://www.co
 
 ![Testování serveru contoso v aplikační brány](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-Změnit adresu na vaše jiné domény, například http://www.contoso.org a jste měli vidět, že provoz byl přesměrován zpět na naslouchací proces pro www.contoso.com.
+Změnit adresu na vaší domény, například http://www.contoso.org a měli byste vidět, že provoz byl přesměrován zpět na naslouchací proces pro www.contoso.com.
 
 ## <a name="next-steps"></a>Další postup
 

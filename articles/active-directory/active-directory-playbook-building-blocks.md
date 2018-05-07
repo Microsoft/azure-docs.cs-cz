@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
 
@@ -275,7 +275,7 @@ Přibližná doba na dokončeno: 60 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Instalace a konfigurace Azure AD Connect | Stavební blok: [synchronizace adresáře – synchronizace hodnot Hash hesel](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| Požadavky na schůzku ADLDS instance | [Technické informace o obecné konektor LDAP: Přehled obecné konektor LDAP](./connect/active-directory-aadconnectsync-connector-genericldap.md#overview-of-the-generic-ldap-connector) |
+| Požadavky na schůzku ADLDS instance | [Technické informace o obecné konektor LDAP: Přehled obecné konektor LDAP](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
 | Seznam úloh, které uživatelé používají a atributy přidružené tyto úlohy | [Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
@@ -283,7 +283,7 @@ Přibližná doba na dokončeno: 60 minut
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přidat generický konektor LDAP | [Technické informace o obecné konektor LDAP: vytvořit nový konektor](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
+| Přidat generický konektor LDAP | [Technické informace o obecné konektor LDAP: vytvořit nový konektor](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | Vytvoření profilů spuštění pro vytvořený konektor (úplný import, Rozdílový import, úplná synchronizace, rozdílová synchronizace, export) | [Vytvořit profil spuštění agenta správy](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Použití konektorů s Azure AD Connect Sync Správce služeb](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | Spustit úplný import profilu a ověřte, jestli jsou objekty v prostoru konektoru | [Vyhledejte objekt prostoru konektoru](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Použití konektorů s Azure AD Connect Sync Správce služeb: hledání prostoru konektoru](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
 | Vytvoření pravidla synchronizace, tak, aby objektů v Metaverse nezbytné atributy pro úlohy | [Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace: změny pravidla synchronizace](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizace Azure AD Connect: Principy deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Synchronizace Azure AD Connect: Principy výrazů deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: d1f9d1a9163eee0f3a6c3b418e5e8d4fec0581de
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: c5a9a56d444da232717b023cb7057b96c291c265
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -393,27 +393,27 @@ var authMethod = new DeviceAuthenticationWithX509Certificate("<device id>", x509
 var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
-## <a name="custom-device-authentication"></a>Ověřování vlastní zařízení
+## <a name="custom-device-and-module-authentication"></a>Vlastní zařízení a modulu ověřování
 
-Můžete použít Centrum IoT [registru identit] [ lnk-identity-registry] ke konfiguraci zařízení zabezpečovací pověření a přistupovat pomocí ovládacího prvku [tokeny][lnk-sas-tokens]. Pokud řešení IoT už má vlastní identitu registru nebo ověřování schématu, zvažte vytvoření *token služby* integrovat do této infrastruktury službou IoT Hub. Tímto způsobem můžete další funkce IoT ve vašem řešení.
+Můžete použít Centrum IoT [registru identit] [ lnk-identity-registry] ke konfiguraci zařízení nebo modulu zabezpečovací pověření a přistupovat pomocí ovládacího prvku [tokeny] [ lnk-sas-tokens]. Pokud řešení IoT už má vlastní identitu registru nebo ověřování schématu, zvažte vytvoření *token služby* integrovat do této infrastruktury službou IoT Hub. Tímto způsobem můžete další funkce IoT ve vašem řešení.
 
-Token služby je vlastní Cloudová služba. Používá služby IoT Hub *sdílené zásady přístupu* s **DeviceConnect** oprávnění k vytvoření *obor zařízení* tokeny. Tyto tokeny povolit zařízení pro připojení do služby IoT hub.
+Token služby je vlastní Cloudová služba. Používá služby IoT Hub *sdílené zásady přístupu* s **DeviceConnect** nebo **ModuleConnect** oprávnění k vytvoření *obor zařízení* nebo *obor modulu* tokeny. Tyto tokeny povolit zařízení a modul pro připojení do služby IoT hub.
 
 ![Kroky vzoru služby tokenů][img-tokenservice]
 
 Zde jsou hlavní kroky vzoru tokenu služby:
 
-1. Vytvoření služby IoT Hub sdílených zásad přístupu s **DeviceConnect** oprávnění pro službu IoT hub. Můžete vytvořit v tyto zásady [portál Azure] [ lnk-management-portal] nebo prostřednictvím kódu programu. Službu token tuto zásadu používá k podepisování tokenů, který vytváří.
-1. Pokud zařízení potřebuje přístup k službě IoT hub, vyžádá podepsaný token ze služby tokenu. Zařízení můžete ověřit se schématem registru nebo ověření vaše vlastní identity k určení identity zařízení, která služba token používá k vytvoření tohoto tokenu.
-1. Služba tokenu vrátí token. Token je vytvořená pomocí `/devices/{deviceId}` jako `resourceURI`, s `deviceId` jako ověřovaného zařízení. Služba tokenu použije k vytvoření tokenu zásady sdíleného přístupu.
-1. Zařízení na základě tokenu přímo službou IoT hub.
+1. Vytvoření služby IoT Hub sdílených zásad přístupu s **DeviceConnect** nebo **ModuleConnect** oprávnění pro službu IoT hub. Můžete vytvořit v tyto zásady [portál Azure] [ lnk-management-portal] nebo prostřednictvím kódu programu. Službu token tuto zásadu používá k podepisování tokenů, který vytváří.
+1. Když zařízení nebo modul potřebuje přístup k službě IoT hub, vyžádá podepsaný token ze služby tokenu. Zařízení můžete ověřit se schématem registru nebo ověření vaše vlastní identitu zjistit identitu zařízení a modulem, který služba token používá k vytvoření tohoto tokenu.
+1. Služba tokenu vrátí token. Token je vytvořená pomocí `/devices/{deviceId}` nebo `/devices/{deviceId}/module/{moduleId}` jako `resourceURI`, s `deviceId` jako zařízení ověřovaného nebo `moduleId` jako modul ověřovaného. Služba tokenu použije k vytvoření tokenu zásady sdíleného přístupu.
+1. Zařízení a modulem použije token přímo službou IoT hub.
 
 > [!NOTE]
 > Můžete použít třídu .NET [SharedAccessSignatureBuilder] [ lnk-dotnet-sas] nebo třída Java [IotHubServiceSasToken] [ lnk-java-sas] k vytvoření tokenu ve vaší Služba tokenu.
 
-Služba tokenu můžete podle potřeby nastavit vypršení platnosti tokenu. Když vyprší platnost tokenu, servery služby IoT hub připojení zařízení. Potom zařízení musíte požádat o nový token od služby tokenů. Čas vypršení platnosti krátké zvyšuje zatížení zařízení a služby tokenů.
+Služba tokenu můžete podle potřeby nastavit vypršení platnosti tokenu. Když vyprší platnost tokenu, servery služby IoT hub připojení zařízení a modulem. Potom zařízení a modulem musíte požádat o nový token od služby tokenů. Čas vypršení platnosti krátké zvyšuje zatížení na zařízení a modulem i služba tokenu.
 
-U zařízení pro připojení do vašeho centra, musí stále ho přidáte do registru identit služby IoT Hub – i když zařízení používá token a klíč zařízení pro připojení. Proto můžete nadále používat řízení přístupu podle zařízení povolením nebo zakázáním identit zařízení ve [registru identit][lnk-identity-registry]. Tento přístup snižuje rizika tokeny pomocí vypršení platnosti dlouhou dobu.
+Pro zařízení nebo modul pro připojení do vašeho centra, je nutné ho přidat do registru identit služby IoT Hub – Přestože it používá token a ne klíč pro připojení. Proto můžete dál používat řízení přístupu zařízení nebo na modulu povolením nebo zakázáním identit zařízení a modulem v [registru identit][lnk-identity-registry]. Tento přístup snižuje rizika tokeny pomocí vypršení platnosti dlouhou dobu.
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porovnání s vlastní bránu
 
@@ -431,7 +431,7 @@ Následující tabulka uvádí oprávnění, která můžete použít k řízen�
 | --- | --- |
 | **RegistryRead** |Uděluje přístup do registru identit pro čtení. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
 | **RegistryReadWrite** |Uděluje přístup čtení a zápisu do registru identit. Další informace najdete v tématu [registru identit][lnk-identity-registry]. <br/>Toto oprávnění je používán back-end cloudové služby. |
-| **ServiceConnect** |Uděluje přístup do cloudu komunikace a sledování koncových bodů služby přístupem. <br/>Udělí oprávnění přijímat zprávy typu zařízení cloud, odesílání zpráv typu cloud zařízení a načíst odpovídající potvrzování doručení. <br/>Uděluje oprávnění k načtení potvrzení o doručení pro soubor odešle. <br/>Uděluje oprávnění k přístupu k dvojčata zařízení, které chcete aktualizovat požadované vlastnosti a značky, načíst hlášené vlastnosti a spouštět dotazy. <br/>Toto oprávnění je používán back-end cloudové služby. |
+| **ServiceConnect** |Uděluje přístup do cloudu komunikace a sledování koncových bodů služby přístupem. <br/>Udělí oprávnění přijímat zprávy typu zařízení cloud, odesílání zpráv typu cloud zařízení a načíst odpovídající potvrzování doručení. <br/>Uděluje oprávnění k načtení potvrzení o doručení pro soubor odešle. <br/>Uděluje oprávnění k přístupu dvojčata aktualizace požadované vlastnosti a značky, načíst hlášené vlastnosti a spouštět dotazy. <br/>Toto oprávnění je používán back-end cloudové služby. |
 | **DeviceConnect** |Uděluje přístup k zařízení přístupem koncových bodů. <br/>Uděluje oprávnění k odesílání zpráv typu zařízení cloud a příjem zpráv typu cloud zařízení. <br/>Uděluje oprávnění k provedení nahrávání souborů ze zařízení. <br/>Uděluje oprávnění k přijímání oznámení vlastnost twin požadovaného zařízení a aktualizaci dvojče zařízení hlášené vlastnosti. <br/>Uděluje oprávnění k provedení soubor odešle. <br/>Toto oprávnění je používán zařízení. |
 
 ## <a name="additional-reference-material"></a>Odkaz na další materiály
@@ -482,7 +482,7 @@ Pokud chcete vyzkoušet některé konceptů popsaných v tomto článku, najdete
 [lnk-java-sas]: https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.auth._iot_hub_service_sas_token
 [lnk-tls-psk]: https://tools.ietf.org/html/rfc4279
 [lnk-protocols]: iot-hub-protocol-gateway.md
-[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: iot-hub-devguide-security.md#supported-x509-certificates
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
 [lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md

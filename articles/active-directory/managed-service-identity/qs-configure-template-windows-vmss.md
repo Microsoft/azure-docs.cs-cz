@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 64fe217cf3d845e6a09fe67d03648e79e8a4cadd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: b95f5bb2aa93fb29999994ccd83dc898f88f1072
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Nakonfigurujte identitu VMSS spravované služby pomocí šablony
 
@@ -36,7 +36,7 @@ V tomto článku se naučíte, jak provádět následující operace identita sp
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-S Azure portálu a skriptování, šablony Azure Resource Manager poskytuje schopnost nasadit nové nebo upravené zdroje, které jsou definované skupiny prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místní i založené na portálu, včetně:
+Stejně jako u Azure portálu a skriptování, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) šablony poskytují možnost nasazení nové nebo upravené zdroje, které jsou definované skupiny prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místní i založené na portálu, včetně:
 
    - Použití [vlastní šablonu z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), který umožňuje vytvořit šablonu od začátku, nebo ji založit na existující běžné nebo [šablony rychlý Start](https://azure.microsoft.com/documentation/templates/).
    - Odvozování z existující skupinu prostředků, tak, že vyexportujete šablonu buď z [původního nasazení](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), nebo z [aktuální stav nasazení](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -51,13 +51,11 @@ V této části bude povolit nebo zakázat systému přiřazené identity pomoc�
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss"></a>Povolit systém přiřazené identity během vytváření služby Azure VMSS nebo existující VMSS Azure
 
-1. Jestli přihlášení k Azure místně nebo prostřednictvím portálu Azure, pomocí účtu, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů.
-
-2. Po načtení šablony do editoru, vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředků zájmu v rámci `resources` části. Váš může vypadat mírně lišit od následující snímek obrazovky, v závislosti na editoru, kterou používáte, a jestli upravujete šablonu pro nové nasazení nebo existující.
+1. Načtení šablony do editoru, vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředků zájmu v rámci `resources` části. Váš může vypadat mírně lišit od následující snímek obrazovky, v závislosti na editoru, kterou používáte, a jestli upravujete šablonu pro nové nasazení nebo existující.
    
    ![Snímek obrazovky šablonu - najít virtuálního počítače](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-before-vmss.png) 
 
-3. Chcete-li povolit identitě systému přiřazen, přidejte `"identity"` vlastnost na stejné úrovni jako `"type": "Microsoft.Compute/virtualMachineScaleSets"` vlastnost. Použijte následující syntaxi:
+2. Chcete-li povolit identitě systému přiřazen, přidejte `"identity"` vlastnost na stejné úrovni jako `"type": "Microsoft.Compute/virtualMachineScaleSets"` vlastnost. Použijte následující syntaxi:
 
    ```JSON
    "identity": { 
@@ -65,7 +63,7 @@ V této části bude povolit nebo zakázat systému přiřazené identity pomoc�
    },
    ```
 
-4. (Volitelné) Přidání rozšíření MSI jako sad škálování virtuálních počítačů `extensionsProfile` elementu. Tento krok je nepovinný, protože identitu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny.  Použijte následující syntaxi:
+3. (Volitelné) Přidání rozšíření MSI jako sad škálování virtuálních počítačů `extensionsProfile` elementu. Tento krok je nepovinný, protože identitu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny.  Použijte následující syntaxi:
 
    >[!NOTE] 
    > Následující příklad předpokládá, že rozšíření sady škálování virtuálního počítače Windows (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux pomocí `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy.
@@ -89,7 +87,7 @@ V této části bude povolit nebo zakázat systému přiřazené identity pomoc�
             }
    ```
 
-5. Když jste hotovi, vaše šablona by měla vypadat podobně jako následující:
+4. Když jste hotovi, vaše šablona by měla vypadat podobně jako následující:
 
    ![Snímek obrazovky šablony po aktualizaci](../media/msi-qs-configure-template-windows-vmss/msi-arm-template-file-after-vmss.png) 
 
@@ -100,41 +98,18 @@ V této části bude povolit nebo zakázat systému přiřazené identity pomoc�
 
 Pokud máte škálování virtuálních počítačů, nastavte ho už vyžaduje systému přiřazené identity, ale stále potřebuje uživatel s přiřazenou identity:
 
-1. Jestli přihlášení k Azure místně nebo prostřednictvím portálu Azure, pomocí účtu, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů.
-
-2. Změnit typ identity na `'UserAssigned'`
+- Načtení šablony do editoru a změňte typ identity, který má `'UserAssigned'`
 
 ## <a name="user-assigned-identity"></a>Uživatel s přiřazenou identity
 
-V této části vytvoříte uživatel přiřazený VMSS Azure pomocí šablony Azure Resource Manager a identit.
+V této části je přiřadit identitu uživatele přiřazené VMSS Azure pomocí šablony Azure Resource Manager.
 
-### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vmss"></a>Vytvořit a přiřadit uživatele přiřazené Azure VMSS identity
+> [!Note]
+> Pro vytvoření identity uživatele přiřazené pomocí šablony Azure Resource Manager, najdete v části [vytvoření identity uživatele přiřazené](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. Provést první krok v části [povolit identita systémové přiřazené během vytváření služby Azure VMSS, na existující VMSS](qs-configure-template-windows-vmss.md#enable-system-assigned-identity-during-creation-of-an-azure-vmss-or-an-existing-azure-vmss).
+### <a name="assign-a-user-assigned-identity-to-an-azure-vmss"></a>Přiřazení uživatele přiřazené Azure VMSS identity
 
-2. V části proměnné, která obsahuje konfigurační proměnné pro vaše VMSS Azure přidejte záznam pro uživatelské jméno přiřazené identity podobný následujícímu.  To obsahuje hodnotu vaše uživatele přiřazené identity během procesu vytváření Azure VMSS:
-    
-    > [!IMPORTANT]
-    > Vytvoření uživatele přiřazené identity s speciální znaky (tj. podtržítko) v názvu není aktuálně podporován. Použijte alfanumerické znaky. Vraťte se zpět pro aktualizace.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmssPrefix": "vmss",
-        "vmssName": "[concat(variables('vmssPrefix'), uniquestring(resourceGroup().id,deployment().name))]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmssName'), 'id')]"
-    ```
-3. V části `resources` element přidejte následující položku pro vytvoření identity uživatele přiřazené:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-4. V části Další `resources` element přidejte následující položky lze přiřadit identitu uživatele přiřazené vaší VMSS:
+1. V části `resources` elementu, přidejte následující položky lze přiřadit identitu uživatele přiřazené vaší VMSS.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` s názvem identity uživatele přiřazené jste vytvořili.
 
     ```json
     {
@@ -144,13 +119,13 @@ V této části vytvoříte uživatel přiřazený VMSS Azure pomocí šablony A
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/, variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITY>)']"
             ]
         }
 
     }
     ```
-5. (Volitelné) Přidejte následující položku v části `extensionProfile` elementu, který chcete přiřadit vaše VMSS rozšíření spravované identity. Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny. Použijte následující syntaxi:
+2. (Volitelné) Přidejte následující položku v části `extensionProfile` elementu, který chcete přiřadit vaše VMSS rozšíření spravované identity. Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny. Použijte následující syntaxi:
    
     ```JSON
        "extensionProfile": {
@@ -169,11 +144,9 @@ V této části vytvoříte uživatel přiřazený VMSS Azure pomocí šablony A
                     }
                 }
    ```
-6.  Až skončíte, vaše šablona by měla vypadat podobně jako následující:
-    > [!NOTE]
-    > Šablona neobsahuje seznam všech proměnných potřebné k vytvoření vašeho VMSS.  `//other configuration variables...` používá se místo všech potřebných konfiguračních proměnných kvůli stručnosti.
-
-      ![Snímek obrazovky identitu uživatele přiřazené](../media/msi-qs-configure-template-windows-vmss/template-vmss-user-assigned-identity.png)
+3.  Až skončíte, vaše šablona by měla vypadat podobně jako následující:
+   
+      ![Snímek obrazovky identitu uživatele přiřazené](./media/qs-configure-template-windows-vmss/qs-configure-template-windows-final.PNG)
 
 ## <a name="next-steps"></a>Další postup
 

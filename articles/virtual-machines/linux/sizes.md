@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: 06dc8075318e3de10a75e7fc1c22e2bdf61afffc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2480a48670646d13f55b405d2594c5937d1b61ba
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Velikosti pro virtuální počítače s Linuxem v Azure
 Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spuštění vaše Linux aplikace a úlohy. Je také důležité informace o nasazení znát při plánování použití těchto prostředků. Tento článek je také k dispozici pro [virtuální počítače s Windows](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -27,11 +27,11 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 
 | Typ                     | Velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Obecné účely](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7,  | Vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. |
+| [Obecné účely](sizes-general.md)          | B, Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7  | Vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. |
 | [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)        | Fsv2 služby Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
 | [Optimalizované z hlediska paměti](sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Vysoký poměr paměť procesoru. Velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti.                 |
 | [Optimalizované z hlediska úložiště](sizes-storage.md)        | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
-| [GPU](sizes-gpu.md)            | VS, NC, NCv2, NCv3, ND            | Specializované virtuální počítače cílené pro velkou grafické vykreslování a úpravy videa, jakož i model školení a inferencing (a) s hloubkovým learning... K dispozici jeden nebo více grafickými procesory.       |
+| [GPU](sizes-gpu.md)            | VS, NC, NCv2, NCv3, ND            | Specializované virtuální počítače cílené pro velkou grafické vykreslování a úpravy videa, jakož i model školení a inferencing (a) s hloubkovým učení. K dispozici jeden nebo více grafickými procesory.       |
 | [Vysokovýkonné výpočetní prostředí](sizes-hpc.md) | H, A8-11          | Naše nejrychlejší a procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). 
 
 <br>
@@ -55,7 +55,7 @@ https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list
 
 Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
 
-## <a name="benchmark-scores"></a>Skóre srovnávacího testu
+## <a name="benchmark-scores"></a>Výsledky srovnávacích testů
 
 Další informace o výpočetní výkon pro virtuální počítače s Linuxem pomocí [CoreMark srovnávacího testu skóre](compute-benchmark-scores.md).
 

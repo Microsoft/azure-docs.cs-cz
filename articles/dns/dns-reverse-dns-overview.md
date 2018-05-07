@@ -1,22 +1,22 @@
 ---
-title: "Přehled zpětné DNS v Azure | Microsoft Docs"
-description: "Zjistěte, jak zpětné funguje DNS a jeho použití v Azure"
+title: Přehled zpětné DNS v Azure | Microsoft Docs
+description: Zjistěte, jak zpětné funguje DNS a jeho použití v Azure
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.author: kumud
+ms.openlocfilehash: 1ce14360d0f62a01172a8003e1d78a45885166f6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Přehled zpětné DNS a podpory v Azure
 
@@ -86,7 +86,7 @@ Zpětné vyhledávání pro IP adresu, 192.0.2.129' dotazy pro záznam PTR s ná
 
 ### <a name="ipv6"></a>IPv6
 
-Název zóny zpětného vyhledávání IPv6 by měl být ve tvaru:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Název zóny zpětného vyhledávání IPv6 by měl být ve tvaru: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Například. Při vytvoření zóny zpětného vyhledávání pro záznamy hostitele pro hostitele pomocí IP adresy, jsou 2001:db8:1000:abdc:: / 64 předpona, název zóny, by se vytvořily s izolace sítě předponu adresy (2001:db8:abdc::). Potom rozbalte předponu IPv6 sítě odebrat [nula komprese](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx), pokud byl použit tak, aby zkrátil předpona adresy IPv6 (2001:0db8:abdc:0000::). Pořadí, pomocí dobou jako oddělovače mezi každou hexadecimální číslo předponu, k vytvoření předponu odstínech sítě (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) a přidat příponu `.ip6.arpa`.
 

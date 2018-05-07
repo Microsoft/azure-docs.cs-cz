@@ -2,7 +2,7 @@
 title: Tým datové vědy procesu Team vést úlohy – Azure | Microsoft Docs
 description: Přehled úloh pro tým vést na datové vědě týmového projektu.
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 85589dfd60a32a28cecf427a7f5668dc36f8f5f2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: deguhath
+ms.openlocfilehash: d17c6c7543416d3f279b7e25152a421dd233a806
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="team-lead-tasks"></a>Tým realizace úlohy
 

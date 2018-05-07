@@ -3,8 +3,8 @@ title: Ukázky rozhraní příkazového řádku Azure brány aplikace Azure | Mi
 description: Ukázky rozhraní příkazového řádku Azure brány aplikace
 services: application-gateway
 documentationcenter: networking
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/30/2018
-ms.author: davidmu
+ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c733e7d2a874ec7081ae0bd4ce181460395845c8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10857e248382156f7f65b343e3eedb65229f6639
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-application-gateway-azure-cli-samples"></a>Ukázek Azure Application Gateway Azure CLI
 

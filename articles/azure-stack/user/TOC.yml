@@ -21,8 +21,12 @@
       href: azure-stack-quick-create-vm-linux-cli.md
 - name: Kurzy
   items:
-    - name: Nasazení aplikací v Azure a Azure Stacku
+    - name: Nasazení aplikací do Azure a Azure zásobníku
       href: azure-stack-solution-pipeline.md
+    - name: Konfigurace hybridní Cloudová identita
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Konfigurace připojení hybridního cloudu
+      href: azure-stack-solution-hybrid-connectivity.md
 - name: Návody
   items:
     - name: Použití portálu Azure Stack

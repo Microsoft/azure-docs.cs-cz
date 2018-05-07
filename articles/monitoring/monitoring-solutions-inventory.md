@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/01/2018
 ms.author: bwren
-ms.openlocfilehash: 2a8313640d2d0bd678d0e10da39c87de8cfce00b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti o shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od společnosti Microsoft k dispozici s odkazy na jejich podrobnou dokumentaci.  Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. 
@@ -53,7 +53,7 @@ Vysvětlení sloupců jsou následující:
 | [Analýza brány Azure aplikace](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
 | **Řešení pro správu** | **Platforma** | **Agent monitorování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence kolekce** |
 | [Skupina zabezpečení sítě Azure Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
-| [Analýza Azure SQL (Preview)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 10 minut |
+| [Analýza Azure SQL (Preview)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minuta |
 | [Backup](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | neuvedeno |
 | [Kapacitu a výkon (Preview)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |v případě přijetí |
 | [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |

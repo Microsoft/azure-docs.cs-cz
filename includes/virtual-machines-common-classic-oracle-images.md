@@ -22,6 +22,6 @@ Následuje seznam dostupných předkonfigurovaných imagí virtuálních počít
 * Oracle Linux 7.0.0.0.0
 * Oracle Linux 7.2.0.0.0
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 [Image virtuálních počítačů Oracle – Různé důležité informace](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 

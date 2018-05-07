@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 78148c6538efa06018628297a89681ec6ec3d32d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f643b1203283d7aac01aa8821a180c898f33ec25
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory
 
@@ -119,15 +119,15 @@ Po spuštění virtuálního počítače značky lze odebrat pomocí následují
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-msi-preview"></a>Známé problémy s uživatele přiřazené MSI *(Preview)*
+## <a name="known-issues-with-user-assigned-identities"></a>Známé problémy s přiřazené identity uživatelů
 
-- Povolením systému je jediný způsob, jak odebrat všechny uživatele přiřazené souborů MSI přiřadit MSI. 
+- Přiřazení uživatelských přiřazené Identity jsou jenom zohledněním pro virtuální počítač a VMSS. Důležité: Identita uživatele přiřazené přiřazení se změní v nadcházejících měsících.
+- Duplicitní přiřazené identit uživatelů ve stejném virtuálního počítače nebo VMSS, způsobí, že virtuální počítač nebo VMSS selhání. To zahrnuje identity, které jsou přidány s jinou velká a malá písmena. například MyUserAssignedIdentity a myuserassignedidentity. 
 - Zřizování rozšíření virtuálního počítače pro virtuální počítač mohou selhat z důvodu selhání vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu. 
-- Přidání MSI 'neexistující' způsobí selhání virtuálního počítače. *Poznámka: Oprava selhání přiřazení identity, pokud neexistuje MSI, se vrátit na více systémů*
-- Kurz pro Azure Storage je dostupná v centrální nám EUAP jenom v tuto chvíli. 
-- Vytvoření uživatele přiřazeny MSI speciální znaky (tj. podtržítko) v názvu, není podporováno.
-- Při přidání druhého uživatele přiřazené identity, clientID nemusí být dostupné pro žádosti o tokeny pro ni. Jako omezení rizik restartujte rozšíření virtuálního počítače MSI následující dvě bash příkazy:
+- Přidání identity uživatele 'neexistující' přiřazena způsobí selhání virtuálního počítače. 
+- Vytvoření uživatele přiřazené identity s speciální znaky (tj. podtržítko) v názvu, není podporováno.
+- Uživatel s přiřazenou identity názvy jsou omezeny na 24 znaků pro komplexní scénáře. Pro přiřazení se nezdaří přiřazeno identit uživatelů s názvy delší než 24 znaků.  
+- Při přidání druhého uživatele přiřazené identity, clientID nemusí být dostupné pro žádosti o tokeny pro rozšíření virtuálního počítače. Jako omezení rizik restartujte rozšíření virtuálního počítače MSI následující dvě bash příkazy:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- VMAgent v systému Windows v současné době nepodporuje uživatele přiřazené MSI. 
-- Pokud virtuální počítač má uživatel přiřazené MSI, ale žádný systém přiřazeny MSI, portálu uživatelské rozhraní zobrazí MSI jako povolené. Systém přiřazené MSI povolit, použijte šablonu Azure Resource Manager, Azure CLI nebo sady SDK.
+- Když virtuální počítač má uživatel přiřazené identity, ale žádný systém přiřazené identity, na portálu uživatelské rozhraní zobrazí MSI jako zakázané. Systém přiřazené identity povolit, použijte šablonu Azure Resource Manager, Azure CLI nebo sady SDK.

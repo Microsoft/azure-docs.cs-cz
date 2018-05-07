@@ -71,6 +71,7 @@
 #### [Správa identit zařízení](iot-hub-devguide-identity-registry.md)
 #### [Řízení přístupu k IoT Hubu](iot-hub-devguide-security.md)
 #### [Principy dvojčat zařízení](iot-hub-devguide-device-twins.md)
+#### [Principy dvojčat modulů](iot-hub-devguide-module-twins.md)
 #### [Vyvolání přímých metod v zařízení](iot-hub-devguide-direct-methods.md)
 #### [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md)
 #### [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md)
@@ -106,6 +107,9 @@
 #### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java back-end / zařízení Java](iot-hub-java-java-twin-getstarted.md)
 #### [Back-end Python / zařízení Python](iot-hub-python-twin-getstarted.md)
+### Začínáme s dvojčaty modulů
+#### [Back-end portálu / zařízení .NET](iot-hub-portal-csharp-module-twin-getstarted.md)
+#### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 ### Použití přímých metod
 #### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-direct-methods.md)
 #### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-direct-methods.md)

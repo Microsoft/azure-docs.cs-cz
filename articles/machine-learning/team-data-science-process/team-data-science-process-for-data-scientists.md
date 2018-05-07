@@ -3,7 +3,7 @@ title: Tým datové vědy proces pro datových vědců | Microsoft Docs
 description: Poskytuje pokyny k pochopení analýzy zatížení pomocí procesu vědecké účely Team dat a Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev
-ms.openlocfilehash: bcbfac6cfc23ea7b745ddaf95ee267377fe7ee20
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: deguhath
+ms.openlocfilehash: 9fb649c6c5635c17ae346af6c71ccd298215c787
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Proces vědecké účely Team dat pro datových vědců
 

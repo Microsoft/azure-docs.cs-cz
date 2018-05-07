@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2d9e0fc50bed4e8301a24a062407b490d688803d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 690bfa55166b6d5d4e418daa321fafad2f4b6293
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je nástroj pro vyrovnávání zatížení Azure?
 
@@ -73,7 +73,11 @@ Nástroj pro vyrovnávání zatížení poskytuje následující základní mož
 
 * **Aplikace lhostejné a transparentní**
 
-    Nástroj pro vyrovnávání zatížení nekomunikuje přímo s TCP nebo UDP nebo aplikační vrstvu a všechny TCP nebo může být podporovaný scénář aplikace založené na protokolu UDP. Například i když nástroj pro vyrovnávání zatížení nezavře TLS sám sebe, můžete vytvořit a škálovat TLS aplikace pomocí nástroje pro vyrovnávání zatížení a pak ukončit připojení protokolu TLS na virtuální počítač. Nástroj pro vyrovnávání zatížení nezavře tokem a metodou handshake protocol vždy odehrávat přímo mezi klientem a instance vybrané hodnoty hash fond back-end. Například metoda handshake TCP dochází vždy mezi klientem a vybraný virtuální počítač back-end. Odpověď na žádost o front-end je odpověď, aby se vygenerovala z back-end virtuálního počítače. Výkon odchozí sítě nástroje pro vyrovnávání zatížení je omezena pouze skladová položka virtuálních počítačů, které zvolíte, a zůstávají toky zachování připojení pro náročná období Pokud časový limit nečinnosti není přístupný.
+    Nástroj pro vyrovnávání zatížení nekomunikuje přímo s TCP nebo UDP nebo aplikační vrstvu a všechny TCP nebo může být podporovaný scénář aplikace založené na protokolu UDP.  Nástroj pro vyrovnávání zatížení neobsahuje ukončit nebo pocházejí toky, pracovat s datovou část toku, poskytuje žádná funkce brány vrstvy aplikace a metodou handshake protocol vždy odehrávat přímo mezi klientem a instance fond back-end.  Odpověď na příchozí tok je vždy odpověď z virtuálního počítače.  Při toku dorazí na virtuálním počítači, je také zachována původní zdrojovou IP adresu.  Pár příkladů dále upravit průhlednost:
+    - Metoda handshake TCP dochází vždy mezi klientem a vybraný virtuální počítač back-end. Odpověď na žádost o front-end je odpověď generované virtuálních počítačů v back-end. Měli byste použít příkaz ping TCP k ověření připojení pro tento scénář.  Použití [pspingu](https://docs.microsoft.com/en-us/sysinternals/downloads/psping) nebo [nmap](https://nmap.org) zkontrolujte, zda je úspěšné dohodnout s virtuálního počítače v pořádku. Všimněte si ICMP je jiný protokol IP než UDP nebo TCP a nejsou podporovány pro tento účel.
+    - Datové části aplikace jsou transparentní pro nástroj pro vyrovnávání zatížení a všechny UDP nebo TCP, na základě aplikace může být podporovaný. Pro úlohy, které vyžadují pro zpracování požadavku HTTP nebo zpracování datových částí vrstvy aplikace (například analýzy adres URL protokolu HTTP), měli byste použít vrstvy 7 vyrovnávání zátěže jako [Application Gateway](https://azure.microsoft.com/en-us/services/application-gateway).
+    - Protože nástroj pro vyrovnávání zatížení nerozlišuje datové části TCP a přesměrování zpracování protokolu TLS (dále jen "šifrování SSL") není k dispozici, můžete sestavit koncová šifrované scénáře použití služby Vyrovnávání zatížení a získání velké škálování pro TLS aplikace se ukončuje připojení TLS na virtuální počítač.  Například relace TLS vytvoření kapacity omezen pouze podle typu a počtu virtuálních počítačů, které přidáte do fondu back-end.  Pokud budete potřebovat "Snižování zátěže protokolu SSL", ošetření vrstvy aplikace nebo chcete delegovat správu certifikátů do Azure, měli byste použít nástroj pro vyrovnávání zatížení vrstvy 7 Azure [Application Gateway](https://azure.microsoft.com/en-us/services/application-gateway) místo.
+        
 
 * **Automatické překonfigurování**
 

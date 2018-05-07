@@ -21,10 +21,10 @@ Azure Load Balancer i služba Application Gateway směrují síťový provoz do 
 | Typ | Nástroj pro vyrovnávání zatížení Azure | Application Gateway |
 | --- | --- | --- |
 | Protokoly |UDP/TCP |HTTP, HTTPS a protokoly WebSocket |
-| Vyhrazení IP adres |Podporuje se |Nepodporuje se |
+| Vyhrazení IP adres |Podporováno |Nepodporuje se |
 | Režim vyrovnávání zatížení |Pětinásobné (zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port, typ protokolu). |Kruhové dotazování.<br>Směrování na základě adresy URL. |
 | Režim vyrovnávání zatížení (zdrojová IP adresa/spřažené relace). |Dvojnásobné (zdrojová IP adresa a cílová IP adresa), trojnásobné (zdrojová IP adresa, cílová IP adresa a port). Lze vertikálně zvýšit nebo snížit kapacitu podle počtu virtuálních počítačů. |Spřažení na základě souborů cookie.<br>Směrování na základě adresy URL. |
 | Sondy stavu |Výchozí hodnota: interval sondování – 15 sekund. Vyřazení ze smyčky: po dvou selháních za sebou. Podporuje uživatelem definované sondy. |Interval nečinnosti sondy – 30 sekund. Vyřazena ze smyčky po pěti selháních živého provozu za sebou nebo po jediném selhání sondy v režimu nečinnosti. Podporuje uživatelem definované sondy. |
-| Přesměrování zpracování SSL |Nepodporuje se |Podporuje se |
-| Směrování na základě adresy URL | Nepodporuje se | Podporuje se|
-| Zásady protokolu SSL | Nepodporuje se | Podporuje se|
+| Přesměrování zpracování SSL |Nepodporuje se |Podporováno |
+| Směrování na základě adresy URL | Nepodporuje se | Podporováno|
+| Zásady protokolu SSL | Nepodporuje se | Podporováno|

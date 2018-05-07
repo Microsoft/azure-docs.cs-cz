@@ -1,9 +1,9 @@
 ---
-title: "Návody pro provádění procesu vědecké účely Team dat v Azure | Microsoft Docs"
-description: "Jak kombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace."
+title: Návody pro provádění procesu vědecké účely Team dat v Azure | Microsoft Docs
+description: Jak kombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3a536c432f3a095d75beb57f8203f10afc074fdf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: 6d8b8a3f5fd2d3cb0d4fcc9e17e4ec35450c1570
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Návody pro spouštění procesu Team Data vědecké účely
 
@@ -39,7 +39,7 @@ Následuje stručný popis toho, co tyto příklady návod na jejich odpovídaj�
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
 

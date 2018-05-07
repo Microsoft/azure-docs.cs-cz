@@ -1,24 +1,24 @@
 ---
-title: "Platí pro předplatná Azure podle faktury | Microsoft Docs"
-description: "Popisuje, jak platit pro předplatná Azure podle faktury"
-services: 
-documentationcenter: 
+title: Platí pro předplatná Azure podle faktury | Microsoft Docs
+description: Popisuje, jak platit pro předplatná Azure podle faktury
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: b9f785a8f24c013f01dd429539239a7396a94953
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3bcd170ece7c85ee3fadaa952a539a7f2364ea48
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Odeslat žádost o předplatném Azure zaplatit, faktury
 

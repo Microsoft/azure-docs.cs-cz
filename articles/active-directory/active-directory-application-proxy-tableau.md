@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 480e1cd72bcb42d7f39a92fc49e7c3d66ecf05f8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9dbee65104776e191d33878d964da0cf1659e1ce
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikace služby Azure Active Directory a Tableau 
 
@@ -29,7 +29,7 @@ Azure Proxy aplikace Active Directory a Tableau společně Ujistěte se, že bud
 
 Tento scénář v tomto článku předpokládá, že máte:
 
-- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#reverse-proxy-server) nakonfigurované. 
+- [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) nakonfigurované. 
 
 - [Konektor Proxy aplikace](active-directory-application-proxy-enable.md) nainstalována. 
 

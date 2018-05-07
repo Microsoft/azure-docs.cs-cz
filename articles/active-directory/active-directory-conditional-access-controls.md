@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Řízení přístupu v Azure Active Directory podmíněného přístupu 
 
@@ -75,13 +75,13 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky z při
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované pouze z důvěryhodných zařízení. Vyžadování vyhovující zařízení je jednou z možností je nutné definovat je důvěryhodné zařízení. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, která jsou připojená k Azure Active Directory a jsou označeny jako kompatibilní řešení pro správu.
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované jenom z [zařízení spravovaná](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Vyžadování vyhovující zařízení je jednou z možností je nutné definovat spravované zařízení. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou [zaregistrován](device-management-introduction.md) do vaší Azure Active Directory a jsou označeny jako kompatibilní řešení pro správu.
 
 Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
-### <a name="domain-joined-device"></a>Zařízení připojených k doméně
+### <a name="hybrid-azure-ad-joined-device"></a>Zařízení připojeného k hybridní Azure AD
 
-Vyžadování, že je zařízení připojené k doméně jinou možnost, budete muset nakonfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se odkazuje na stolních počítačů, laptopů a tablety enterprise, které jsou připojeny k místní službě Active Directory systému Windows. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
+Vyžadování hybridním zařízení připojeného k Azure AD je další možností je nutné konfigurovat zásady podmíněného přístupu podle zařízení. Tento požadavek se odkazuje na stolních počítačů, laptopů a tablety enterprise, které jsou připojeny k místní službě Active Directory systému Windows. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou připojené k vaší místní Active Directory a Azure Active Directory.  
 
 Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 

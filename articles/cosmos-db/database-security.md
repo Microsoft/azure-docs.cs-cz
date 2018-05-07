@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a873aa9835ffab8b0d195d9fc9588167ea134128
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -78,7 +78,7 @@ Pojďme proniknout do každé z nich podrobně.
 |Reakce na útoky|Jakmile máte kontaktovat podporu Azure o ohlásit možný útok, proces reakcí na incidenty krok 5 je spuštěna. Cílem procesu krok 5 je po došlo k potížím se zamykáním a jestli je spuštěná šetření co nejdříve obnovit normální služby zabezpečení a operace.<br><br>Další informace v [odpověď zabezpečení společnosti Microsoft Azure v cloudu](https://aka.ms/securityresponsepaper).|
 |Geografického vymezení|Azure Cosmos DB zajišťuje řízení dat a dodržování předpisů pro svrchovaných oblasti (například Německo, Čína, nám verze pro státní správu).|
 |Chráněné pracoviště|Data v Azure Cosmos DB se ukládají na jednotkách SSD v chráněných datových centrech Azure.<br><br>Další informace v [globálních datových centrech společnosti Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|Šifrování protokolu HTTPS, SSL/TLS|Všechny interakce klienta služby Azure Cosmos DB jsou vynucené SSL/TLS 1.2. Všechny uvnitř datového centra a mezi replikace datacenter je také SSL/TLS 1.2 vynucené.|
+|Šifrování protokolu HTTPS, SSL/TLS|Všechny interakce klienta služby Azure Cosmos DB jsou podporující protokol SSL/TLS 1.2. Všechny uvnitř datového centra a mezi replikace datacenter je také SSL/TLS 1.2 vynucené.|
 |Šifrování v klidovém stavu|Všechna data uložena do Azure Cosmos DB zašifrovaná přinejmenším. Další informace v [Azure Cosmos DB šifrování v klidovém stavu](.\database-encryption-at-rest.md)|
 |Opravenou servery|Jako spravované databáze Azure Cosmos DB eliminuje potřebu spravovat a opravovat servery, které bylo dokončeno, automaticky.|
 |Účty pro správu s silná hesla|Je obtížné domníváte musíme i zmínili tento požadavek, ale na rozdíl od některých naše konkurenci, je možné mít účet správce bez hesla v Azure Cosmos DB.<br><br> Zabezpečení prostřednictvím protokolu SSL a HMAC tajný ověřování založené na certifikaci je zaručená v ve výchozím nastavení.|

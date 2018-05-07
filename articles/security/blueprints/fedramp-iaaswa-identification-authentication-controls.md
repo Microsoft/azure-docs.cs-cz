@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace - identifikace a ověření"
-description: "FedRAMP webové aplikace automatizace - identifikace a ověření"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace - identifikace a ověření
+description: FedRAMP webové aplikace automatizace - identifikace a ověření
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 21b5c453716f99be26c8dd6400bb3489477b4956
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="identification-and-authentication-ia"></a>Identifikace a ověření (IA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu identifikace a ověření, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění identifikace a zásady ověřování a přidružené mechanismy identifikace a ověřování; kontroluje a aktualizuje aktuální zásady identifikace a ověření [přiřazení: organizace definované frekvence]; Identifikace a ověřování postupů a [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2** informace systému, který jednoznačně identifikuje a ověřuje organizační uživatele (nebo procesy, které jednají jménem organizace uživatelů).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (1)** systém informace implementuje vícefaktorového ověřování pro přístup k síti k privilegovaným účtům.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (2)** systém informace implementuje vícefaktorového ověřování pro přístup k síti pro účty bez oprávnění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (3)** systém informace implementuje vícefaktorového ověřování pro místní přístup k privilegovaným účtům.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (4)** systém informace implementuje vícefaktorového ověřování pro místní přístup k účtům bez oprávnění.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (5)** organizace vyžaduje jednotlivce ověření při jednotlivých ověřovací data při zaměstnání ověřovací skupiny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (8)** systém informace implementuje odolné proti opětovného přehrání ověřovací mechanismy, které pro síťový přístup k privilegovaným účtům.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (9)** systém informace implementuje odolné proti opětovného přehrání ověřovací mechanismy, které pro přístup k síti pro účty bez oprávnění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (11)** informace systému implementuje vícefaktorového ověřování pro vzdálený přístup na privilegovaný a bez oprávnění účty tak, aby jednoho z faktorů zajišťuje odděleně od systému, aby měli přístup zařízení a zařízení splňuje [Přiřazení: organizace definované sílu mechanismus požadavky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-2 (12)** informace systému přijme a elektronicky ověřuje pověření ověřování osobní Identity (PIV).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-3** informace systému jednoznačně identifikuje a ověřuje [přiřazení: konkrétní definované organizace a typech zařízení] před vytvořením [výběr (jeden nebo více): místní; vzdálené; sítě] připojení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.a** organizace spravuje informace o systému identifikátory tím přijetí autorizace z [přiřazení: organizace definované pracovníky nebo rolí] přiřadit jednotlivcům, identifikátor skupiny, role nebo zařízení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.b** organizace spravuje informace o systému identifikátory výběrem identifikátor, který identifikuje jednotlivých uživatelů, skupiny, role nebo zařízení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.c** organizace spravuje informace o systému identifikátory přiřazením identifikátor určený jednotlivcům, skupiny, role nebo zařízení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.d** organizace spravuje informace o systému identifikátory tím, že zabrání opětovnému použití identifikátory pro [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4.e** Že organizace spravuje informace o systému identifikátory zakázáním identifikátor po [přiřazení: organizace definované časové období nečinnosti].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-4 (4)** organizace spravuje individuální identifikátory tím jedinečně identifikující každého uživatele jako [přiřazení: organizace definované vlastnosti identifikaci jednotlivých stav].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.a** organizace spravuje ověřovací moduly systému informace kontrolou jako součást počáteční authenticator distribuční, identity jednotlivce, skupiny, role nebo zařízení příjem ověřovacích.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.b** organizace spravuje ověřovací moduly systému informace vytvořením obsah ověřovací počáteční data pro ověřovací data definované v organizaci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.c** organizace spravuje ověřovací informace systému data tím zajistíte, že ověřovací data mají dostatečnou sílu mechanismus pro podle zamýšleného použití.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5** že organizace spravuje ověřovací moduly systému informace o vytvoření a implementace správní postupy pro počáteční authenticator distribuci pro ověřovací data ke ztrátě nebo ohrožení zabezpečení nebo je poškozena a odvolání Ověřovací data.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.e** Organizace spravuje ověřovací moduly systému informace tak, že změníte výchozí obsah ověřovací data před instalací systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.f** organizace spravuje ověřovací moduly systému informace vytvořením minimální a maximální doba života omezení a opakované použití podmínky pro ověřovací data.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.g** že organizace spravuje ověřovací moduly systému informace o změně nebo aktualizujte ověřovací data [přiřazení: organizace definované časové období podle typu authenticator].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.h** že organizace spravuje ověřovací moduly systému informace a obsah ověřovací chrání před neoprávněným sdílením a úpravy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.i** organizace spravuje ověřovací moduly systému informace vyžadováním jednotlivce provést, a s implementovat zařízení, konkrétní bezpečnostní ochrany k ochraně ověřovací data.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5.j** organizace spravuje ověřovací moduly systému informace změnou ověřovací data pro účty skupiny nebo role, pokud členství těm, které účty změny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .a** systému informace pro ověřování založené na heslech vynucuje složitost hesla minimální [přiřazení: požadavky organizace definované pro malá a velká písmena, počet znaků, kombinovat velká písmena, malá písmena, číslice a speciální znaky, včetně minimální požadavky pro každý typ].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .b** systému informace pro ověřování založené na heslech vynucuje minimálně tento počet znaků změněné při vytvoření nového hesla: [přiřazení: organizace definované číslo].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .c** ukládá informace systému, pro ověřování založené na heslech a přenáší pouze kryptograficky chráněné hesla.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .d** systému informace pro ověřování založené na heslech vynucuje heslo minimální a maximální doba života omezení [přiřazení: organizace definované čísla pro maximální doba života minimální, životnost].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -477,9 +477,9 @@ ms.lasthandoff: 02/11/2018
 
 #### <a name="authenticator-management--password-based-authentication"></a>Ověřovací data správy | Ověřování pomocí hesla
 
-**IA-5 (1).e** Informace o systému, pro ověřování založené na heslech zakáže opakované použití hesla pro [přiřazení: organizace definované číslo] generace.
+**.E IA-5 (1)** Informace o systému, pro ověřování založené na heslech zakáže opakované použití hesla pro [přiřazení: organizace definované číslo] generace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (1) .f** systému informace pro ověřování založené na heslech umožňuje použití dočasné heslo pro přihlášení k systému s o okamžitou změnu trvalé heslo.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -501,13 +501,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-ia-5-2a"></a>NIST 800-53 Control IA-5 (2).a
+ ### <a name="nist-800-53-control-ia-5-2a"></a>.A NIST 800-53 řízení IA-5 (2)
 
 #### <a name="authenticator-management--pki-based-authentication"></a>Ověřovací data správy | Ověřování na základě infrastruktury veřejných klíčů
 
 **IA-5 (2) .a** systému informace pro ověřování na základě infrastruktury veřejných KLÍČŮ ověří certifikace vytváření a ověření certifikační cesta na ukotvení přijatý vztahu důvěryhodnosti, včetně kontroly informace o stavu certifikátu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) .b** systému informace pro ověřování na základě infrastruktury veřejných KLÍČŮ vynucuje oprávnění přístupu k odpovídajícího privátního klíče.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -529,13 +529,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ### <a name="nist-800-53-control-ia-5-2c"></a>NIST 800-53 Control IA-5 (2).c
+ ### <a name="nist-800-53-control-ia-5-2c"></a>.C NIST 800-53 řízení IA-5 (2)
 
 #### <a name="authenticator-management--pki-based-authentication"></a>Ověřovací data správy | Ověřování na základě infrastruktury veřejných klíčů
 
 **IA-5 (2) .c** systému informace pro ověřování na základě infrastruktury veřejných KLÍČŮ mapuje ověřenou identitu účtu uživatele nebo skupinu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (2) .d** systému informace pro ověřování na základě infrastruktury veřejných KLÍČŮ implementuje místní mezipaměti dat odvolaných certifikátů pro podporu cesty zjišťování a ověření v případě nemohou přistupovat k informacím odvolání přes síť.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (3)** organizace vyžaduje, že registrace zpracovat přijímat [přiřazení: organizace definované typy nebo konkrétní ověřovací data] se provést [výběr: osobně; důvěryhodná třetí strana] před [přiřazení: autorita pro registraci definované organizace] s autorizací pomocí [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (4)** organizace využívá automatizované nástroje k určení, pokud jsou vyhovět dostatečně silné heslo ověřovací data [přiřazení: požadavky definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (6)** organizace chrání ověřovací data úměrná kategorie zabezpečení informací, ke kterému použití ověřovacích umožňuje přístup.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (7)** organizace zajišťuje, že nezašifrované statické ověřovací data nejsou součástí aplikace nebo skripty přístup nebo uložený na funkční klávesy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (8)** organizace implementuje [přiřazení: ochrana definované organizace zabezpečení] ke správě riziko ohrožení zabezpečení z důvodu osobu, která má účty na více systémů informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (11)** systému informace pro ověřování na základě tokenu hardwaru využívá mechanismy, které odpovídají [přiřazení: požadavky na definované organizace tokenu kvalitu].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-5 (13)** informace systém neumožňuje použití mezipaměti ověřovací data po [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-6** informace systému skryje zpětnou vazbu o informace o ověřování během procesu ověřování k ochraně informací z možných zneužití nebo používání neoprávněné osoby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-7** systém informace implementuje mechanismy pro ověřování, aby kryptografického modulu, které splňují požadavky na příslušných zákonů federal, objednávek vedení, direktivy, zásady, nařízení, standardů a pokyny, například ověřování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8** informace systému jednoznačně identifikuje a ověřuje-organizační uživatele (nebo procesy, které jednají jménem-organizační uživatele).
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (1)** informace systému přijme a elektronicky ověřuje pověření ověřování osobní Identity (PIV) z jiných federální úřady.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -717,7 +717,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (2)** informace systému přijímá pouze FICAM schválené pověření třetích stran.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -731,7 +731,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (3)** organizace využívá jenom schválení FICAM informace systému součásti v [přiřazení: systémy informace definované organizace] tak, aby přijímal přihlašovací údaje třetí strany.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -745,7 +745,7 @@ ms.lasthandoff: 02/11/2018
 
 **IA-8 (4)** informace systému vyhovuje vydané FICAM profily.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

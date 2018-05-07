@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 96fd86a2af3372f53973c95ee11ab35ccee1e63e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: de768bdfa75e80adbfde8a677ffe1d5f24d56472
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-list-and-delete-a-user-assigned-identity-using-azure-resource-manager"></a>Vytvoření seznamu a odstraňte identitu uživatele přiřazené pomocí Azure Resource Manager
 
@@ -52,7 +52,7 @@ S Azure portálu a skriptování, šablony Azure Resource Manager poskytuje scho
 Vytvoření uživatele přiřazené identity, použijte následující šablonu. Nahraďte `<USER ASSIGNED IDENTITY NAME>` hodnotu s vlastními hodnotami:
 
 > [!IMPORTANT]
-> Vytvoření uživatele přiřazené identity s speciální znaky (tj. podtržítko) v názvu není aktuálně podporován. Použijte alfanumerické znaky. Vraťte se zpět pro aktualizace.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+> Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v tématu [nejčastější dotazy a známé problémy](known-issues.md)
 
 ```json
 {

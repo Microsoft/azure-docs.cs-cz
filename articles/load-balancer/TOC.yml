@@ -22,6 +22,8 @@
       href: powershell-samples.md
 - name: Kurzy
   items:
+    - name: Vyrovnávání zatížení interního provozu do virtuálních počítačů
+      href: tutorial-load-balancer-basic-internal-portal.md
     - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti

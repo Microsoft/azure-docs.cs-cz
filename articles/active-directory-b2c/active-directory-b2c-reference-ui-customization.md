@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b202f30e5fb47bcd16f25c5961f8345dd0324139
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Přizpůsobení uživatelského rozhraní (UI) Azure AD B2C
 
@@ -332,7 +332,17 @@ Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pom
 
 ## <a name="localizing-your-html-content"></a>Lokalizace obsah HTML
 
-Je možné lokalizovat obsah HTML zapnutím ['Jazyk přizpůsobení'](active-directory-b2c-reference-language-customization.md).  Povolení této funkce umožňuje Azure AD B2C předávat parametr Open ID Connect `ui-locales`, na váš koncový bod.  Vaše servery obsahu můžete zajistit vlastní stránky HTML, které jsou specifické pro jazyk použít tento parametr.
+Existují dva způsoby k lokalizaci obsah HTML. Jedním ze způsobů je zapnout [jazyk přizpůsobení](active-directory-b2c-reference-language-customization.md). Povolení této funkce umožňuje Azure AD B2C předávat parametr Open ID Connect `ui-locales`, na váš koncový bod.  Vaše servery obsahu můžete použít tento parametr poskytnout vlastní stránky HTML, které jsou jenom určitých jazyků.
+
+Alternativně můžete načítat obsah z různých místech podle národního prostředí, který se používá. Váš koncový bod s povoleným CORS můžete nastavit strukturu složek jako hostitele obsahu pro konkrétní jazyky. Ten správný budete volat, pokud nechcete použít zástupný znak hodnotu `{Culture:RFC5646}`.  Předpokládejme například, že se jedná o stránku vlastní identifikátor URI:
+
+```
+https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
+```
+Můžete načíst stránku v `fr`. Pokud stránky vrátí kód HTML a CSS obsah, je stahování z:
+```
+https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
+```
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>Pamatujte při vytváření vlastní obsah
 

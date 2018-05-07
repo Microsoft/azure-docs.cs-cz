@@ -76,6 +76,8 @@
           href: stream-analytics-high-frequency-trading.md
         - name: Zpracování streamovaných dat IoT
           href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+        - name: Pravidla na základě prahových hodnot
+          href: stream-analytics-threshold-based-rules.md
     - name: Monitorování
       items:
         - name: Monitorování úloh – Azure Portal

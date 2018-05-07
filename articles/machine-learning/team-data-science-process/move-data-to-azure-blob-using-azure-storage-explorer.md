@@ -1,9 +1,9 @@
 ---
-title: "Přesun dat do a z úložiště objektů Blob s Azure Storage Explorer | Microsoft Docs"
-description: "Přesun dat z a do služby Azure Blob Storage pomocí nástroje Azure Storage Explorer"
+title: Přesun dat do a z úložiště objektů Blob s Azure Storage Explorer | Microsoft Docs
+description: Přesun dat z a do služby Azure Blob Storage pomocí nástroje Azure Storage Explorer
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 10bd283f-0875-4c67-af63-6492270b7656
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3db06eed16191ef906f2c565d78fd0063cdb2f7b
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: c20bf045b156400e38e111337908d76b3016c0ea
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Přesun dat do a z Azure Blob Storage pomocí Průzkumníka úložiště Azure
 Azure Storage Explorer je bezplatný nástroj od společnosti Microsoft, který umožňuje pracovat s daty Azure Storage ve Windows, systému macOS a Linux. Toto téma popisuje, jak použít jej k nahrávání a stahování dat z Azure blob storage. Nástroj si můžete stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/).

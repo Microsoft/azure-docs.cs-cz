@@ -4,7 +4,7 @@ description: Přehled privátní DNS, který je hostitelem služby v Microsoft A
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>Pomocí Azure DNS pro privátní domény
 Systému názvů domény nebo DNS, zodpovídá za překladu (nebo vyřešení) název služby na jeho IP adresu. Azure DNS je hostitelská služba domén DNS poskytnutí překladu názvů pomocí infrastruktury Microsoft Azure.  Kromě internetových domén DNS Azure DNS teď také podporuje privátní DNS domény jako funkce preview.  
@@ -75,7 +75,7 @@ Zóny DNS privátní je zdarma verzi public Preview. Při obecné dostupnosti si
 
 Naučte se vytvářet privátní zóny v Azure DNS pomocí [prostředí PowerShell](./private-dns-getstarted-powershell.md) nebo [rozhraní příkazového řádku](./private-dns-getstarted-cli.md).
 
-Přečíst na některé běžné scénáře [privátní zóny scénáře](./private-dns-scenarios.md) , může být dosaženo privátní zón v Azure DNS.
+Přečtěte si o několika obvyklých [scénářích privátních zón](./private-dns-scenarios.md), které se dají realizovat s využitím privátních zón v Azure DNS.
 
 Přečíst na [– nejčastější dotazy](./dns-faq.md#private-dns) pro některé běžné otázky a odpovědi na privátní zóny v Azure DNS, včetně konkrétní chování můžete očekávat, že pro určité typy operací. 
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 43c1907bf3f9bb8eea92dc02889df24a5a0cc9e3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Nižší úrovně zařízení připojená k řešení potíží s hybridní Azure Active Directory 
 
@@ -90,7 +90,7 @@ Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám 
     
     - Autoworkplace.exe není schopen bezobslužně ověření pomocí Azure AD ani AD FS. Může to být způsobeno problémy s připojením odesílací vázané sítě na Azure AD adresy URL (zkontrolujte, zda požadavky). Mohou být také že vícefaktorové ověřování (MFA) je povolen nebo nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaný na federačním serveru (postup kontroly konfigurace). Další možností je této stránce zjišťování domovské sféry čeká pro interakci s uživatelem, což zabraňuje **autoworkplace.exe** bezobslužně získat token.
     
-    - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` není k dispozici v nastavení intranetu IE zařízení, a **povolit aktualizace stavového řádku pomocí skriptu** není povolena pro zónu intranetu.
+    - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení intranetu IE zařízení, a **povolit aktualizace stavového řádku pomocí skriptu** není povolena pro zónu intranetu.
 
 - Bylo dosaženo kvóty
 

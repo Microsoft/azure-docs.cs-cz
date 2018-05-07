@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
-1. Pomocí přihlašovacích údajů k účtu Microsoft se přihlaste na portál Azure Classic na této adrese URL: [https://manage.windowsazure.com/](https://manage.windowsazure.com/).
+1. Pomocí pověření účtu Microsoft, přihlaste se k portálu Azure classic na této adrese URL: [ https://manage.windowsazure.com/ ](https://manage.windowsazure.com/).
 2. Na portálu Azure Classic klikněte na **Nový** > **Data Services** > **StorSimple Manager** > **Rychlý start**.
 3. Ve formuláři, který se zobrazí, proveďte následující akce:
    

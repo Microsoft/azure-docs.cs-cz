@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit, upravit nebo rozšířit JSON pro logiku aplikace definice - Azure Logic Apps | Microsoft Docs"
-description: "Vytváření a přizpůsobení definice aplikace logiky ve formátu JSON"
+title: Vytvořit, upravit nebo rozšířit JSON pro logiku aplikace definice - Azure Logic Apps | Microsoft Docs
+description: Vytváření a přizpůsobení definice aplikace logiky ve formátu JSON
 author: ecfan
 manager: SyntaxC4
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f37f600d001b110775d8ca0e78950e3b8743df82
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Vytvořit, upravit nebo přizpůsobit JSON definice aplikace logiky
 
@@ -39,7 +39,7 @@ Pro práci s definice aplikace logiky ve formátu JSON, otevřete editor zobraze
 
    Editor kódu zobrazení otevře a zobrazuje svou definici. aplikaci logiky ve formátu JSON.
 
-## <a name="edit-json---visual-studio"></a>Edit JSON - Visual Studio
+## <a name="edit-json---visual-studio"></a>Upravit JSON - sady Visual Studio
 
 Než začnete pracovat na svou definici. aplikaci logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje pro požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). K vytvoření aplikace logiky pomocí sady Visual Studio, zkontrolujte [rychlý start: automatizaci úloh a procesů službou Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
@@ -49,7 +49,7 @@ V sadě Visual Studio můžete otevřít logiku aplikace, které byly vytvořeny
 
 2. Vyberte a otevřete definici aplikace logiky, která ve výchozím nastavení, zobrazí se v [šablony Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment)s názvem **LogicApp.json**. Můžete používat a přizpůsobit této šablony pro nasazení do různých prostředích.
 
-3. Otevřete místní nabídku pro definici aplikace logiky a šablonu. Vyberte **otevřete pomocí návrháře aplikace logiky**.
+3. Otevřete místní nabídku pro definici aplikace logiky a šablonu. Vyberte **Otevřít pomocí Návrháře aplikace logiky**.
 
    ![Otevřete logiku aplikace v řešení sady Visual Studio](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
@@ -119,7 +119,7 @@ Zde je základní definice:
 
 ``` json
 {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "uri": {
@@ -170,7 +170,7 @@ Služba Logic Apps obsahuje různé funkce pro práci s řetězci. Předpokláde
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {
@@ -231,7 +231,7 @@ Tento pracovní postup například definuje některé kategorie jako parametry a
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "specialCategories": {
@@ -321,7 +321,7 @@ K formátování kalendářních dat, můžete použít formátování řetězce
 
 ``` json
 {
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "order": {
@@ -370,7 +370,7 @@ K formátování kalendářních dat, můžete použít formátování řetězce
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)

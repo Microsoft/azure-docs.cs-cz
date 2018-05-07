@@ -72,8 +72,8 @@ sql-database-elastic-pool.md
 
 | Počet eDTU na fond | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: | 
-| Zahrnuté úložiště na jeden fond (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
-| Maximální počet možností úložiště na jeden fond (GB) * | 2048 | 2560 | 3072 | 3548 | 4096|
+| Zahrnuté úložiště na jeden fond (GB) | 2 048 | 2560 | 3072 | 3548 | 4 096 |
+| Maximální počet možností úložiště na jeden fond (GB) * | 2 048 | 2560 | 3072 | 3548 | 4 096|
 | Maximální počet OLTP v paměti úložiště na jeden fond (GB) | 16 | 20 | 24 | 28 | 32 |
 | Maximální počet databází pro každý fond | 100 | 100 | 100 | 100 | 100 | 
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 3200 | 4000 | 4800 | 5600 | 6400 |

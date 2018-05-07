@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 05/01/2018
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Stávající infrastruktury serveru NPS integrovat Azure Multi-Factor Authentication
 
@@ -117,9 +117,9 @@ Když nasadíte rozšíření serveru NPS, použijte tyto faktory k vyhodnocení
 
 Můžete [zakázat nepodporované ověřování metody](howto-mfa-mfasettings.md#selectable-verification-methods) v Azure.
 
-### <a name="enable-users-for-mfa"></a>Povolit uživatelům pro MFA
+### <a name="register-users-for-mfa"></a>Registrace uživatelů pro MFA
 
-Před nasazením úplné rozšíření serveru NPS, musíte povolit MFA pro uživatele, které chcete provést dvoustupňové ověřování. Více okamžitě k testovací rozšíření, jako je nasadit, potřebujete účet alespoň jeden test, který je plně zaregistrován u služby Multi-Factor Authentication.
+Před nasazení a používání rozšíření serveru NPS, uživatelé, požadovaná pro dvoustupňové ověření musí být zaregistrovaný pro MFA. Více okamžitě k testovací rozšíření, jako je nasadit, potřebujete účet alespoň jeden test, který je plně zaregistrován u služby Multi-Factor Authentication.
 
 Získat účet testu, spuštění pomocí těchto kroků:
 1. Přihlaste se k [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) s testovací účet. 

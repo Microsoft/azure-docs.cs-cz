@@ -13,13 +13,13 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/05/2018
+ms.date: 05/02/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ddfbbb5efb73f968c9ef42396be45fce12ff47a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2740b5cf483fe3fbc2644510461863b939ffaae3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Kafka v HDInsight pomocí virtuální sítě Azure
 

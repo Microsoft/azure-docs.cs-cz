@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 57bc38e6c825f0f62e41d2680e0a39da73d3c4d0
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 96360eabefcbbdf36ef3bd83b0c6de45c1a6f3cc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -69,7 +69,7 @@ Save-AzureRmProfile -Path D:\profile.json
 Select-AzureRmProfile -Path D:\profile.json 
 ```
 
-## <a name="managing-accounts"></a>Správa účtů
+## <a name="manage-accounts"></a>Správa účtů
 
 ### <a name="create-a-data-lake-analytics-account"></a>Vytvoření účtu Data Lake Analytics
 
@@ -91,7 +91,7 @@ Jakmile budete mít k dispozici skupinu prostředků a účet Data Lake Store, v
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="get-information-about-an-account"></a>Získání informací o účtu
+### <a name="get-acount-information"></a>Získání informací o účet
 
 Získejte podrobnosti o účtu.
 
@@ -111,7 +111,7 @@ Zkontrolujte existenci určitého účtu Data Lake Store. Vrátí rutina `$true`
 Test-AdlStoreAccount -Name $adls
 ```
 
-### <a name="listing-accounts"></a>Výpis účtů
+### <a name="list-accounts"></a>Výpis účtů
 
 Seznam Data Lake Analytics účty v aktuálním předplatném.
 
@@ -125,48 +125,7 @@ Seznam Data Lake Analytics účtů v rámci určité skupiny zdrojů.
 Get-AdlAnalyticsAccount -ResourceGroupName $rg
 ```
 
-## <a name="managing-firewall-rules"></a>Správa pravidel brány firewall
-
-Zobrazí seznam pravidel brány firewall.
-
-```powershell
-Get-AdlAnalyticsFirewallRule -Account $adla
-```
-
-Přidejte pravidlo brány firewall.
-
-```powershell
-$ruleName = "Allow access from on-prem server"
-$startIpAddress = "<start IP address>"
-$endIpAddress = "<end IP address>"
-
-Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
-```
-
-Změňte pravidlo brány firewall.
-
-```powershell
-Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
-```
-
-Odeberte pravidlo brány firewall.
-
-```powershell
-Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
-```
-
-Povolit Azure IP adresy.
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
-```
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
-```
-
-## <a name="managing-data-sources"></a>Správa zdrojů dat
+## <a name="manage-data-sources"></a>Správa zdrojů dat
 Azure Data Lake Analytics teď podporuje následující zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
@@ -516,6 +475,48 @@ Write-Host '$subid' " = ""$adla_subid"" "
 Write-Host '$adla' " = ""$adla_name"" "
 Write-Host '$adls' " = ""$adla_defadlsname"" "
 ```
+
+## <a name="manage-firewall-rules"></a>Spravovat pravidla brány firewall
+
+### <a name="list-firewall-rules"></a>Seznam pravidel brány firewall
+
+```powershell
+Get-AdlAnalyticsFirewallRule -Account $adla
+```
+
+### <a name="add-a-firewall-rule"></a>Přidat pravidlo brány firewall
+
+```powershell
+$ruleName = "Allow access from on-prem server"
+$startIpAddress = "<start IP address>"
+$endIpAddress = "<end IP address>"
+
+Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
+
+### <a name="change-a-firewall-rule"></a>Změna pravidla brány firewall
+
+```powershell
+Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
+
+### <a name="remove-a-firewall-rule"></a>Odebrat pravidlo brány firewall
+
+```powershell
+Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
+```
+
+### <a name="allow-azure-ip-addresses"></a>Povolit Azure IP adresy.
+
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
+```
+
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
+```
+
 
 ## <a name="working-with-azure"></a>Práce s Azure
 

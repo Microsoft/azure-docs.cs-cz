@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření vlastní test paměti - Azure Application Gateway - portálu Azure | Microsoft Docs"
-description: "Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí portálu"
+title: Vytvoření vlastní test paměti - Azure Application Gateway - portálu Azure | Microsoft Docs
+description: Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí portálu
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 45737c1c378ec56a5e2bedec8c1f7b7bc7ba6225
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvořit vlastní test paměti pro službu Application Gateway pomocí portálu
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -52,8 +52,8 @@ Sondy jsou nakonfigurované ve dvou krocích prostřednictvím portálu. Prvním
   |---|---|---|
   |**Název**|customProbe|Tato hodnota je popisný název, který test, který je přístupný na portálu.|
   |**Protokol**|Protokol HTTP nebo HTTPS | Protokol, který používá test stavu.|
-  |**Hostitele**|jednofaktorovému contoso.com|Tato hodnota je název hostitele, který se používá pro kontrolu. Platí jenom v případě více lokalit je nakonfigurovaná na aplikační bránu, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače.|
-  |**Cesta**|/ nebo jiné cesty|Zbývající část úplnou adresu url pro vlastní test paměti. Platná cesta začíná '/'. Bude použita výchozí cesta http://contoso.com stačí použít '/' |
+  |**Hostitel**|jednofaktorovému contoso.com|Tato hodnota je název hostitele, který se používá pro kontrolu. Platí jenom v případě více lokalit je nakonfigurovaná na aplikační bránu, v opačném případě použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače.|
+  |**Cesta**|/ nebo jiné cesty|Zbývající část úplnou adresu url pro vlastní test paměti. Platná cesta začíná '/'. Pro výchozí cestu http://contoso.com použijte '/' |
   |**Interval (sekundy)**|30|Jak často se spustí sondy, aby kontrolovat stav. Není doporučeno nastavit nižší než 30 sekund.|
   |**Časový limit (sekundy)**|30|Množství času sondy čeká, než vyprší časový limit. Interval vypršení časového limitu musí být dostatečně vysoká, že volání protokolu http lze zajistit, že stránka stavu back-end je k dispozici.|
   |**Prahová hodnota špatného stavu**|3|Počet neúspěšných pokusech o považovat za není v pořádku. Prahová hodnota 0 znamená, pokud se nezdaří Kontrola stavu back-end je určen není v pořádku okamžitě.|
@@ -74,7 +74,7 @@ Po dokončení klikněte na tlačítko **Uložit** a nastavení se použijí.
 
 Výchozí kontroly kontroluje výchozí úroveň přístupu k webové aplikaci. Teď, když vlastní test paměti byl vytvořen, služby application gateway používá vlastní cestu definovanou pro sledování stavu pro back-end serverů. Podle kritérií, která byla definována, služby application gateway kontroluje cesta zadaná v sonda. Pokud volání hostitele a portu / cesta nevrací HTTP 200 399 stav odpovědi, server se dostala mimo otočení po dosažení prahová hodnota špatného stavu. Zjišťování bude pokračovat na není v pořádku instance k určení, kdy bude znovu v pořádku. Po přidání instance zpět do fondu serverů v pořádku provoz začne znovu předávaných do něj a zjišťování k instanci pokračuje v zadaném intervalu uživatele jako normální.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další postup konfigurace snižování zátěže protokolu SSL s Azure Application Gateway najdete v tématu [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-portal.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Pochopení dotazovací jazyk Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře – popis dotazu jazyka SQL jako IoT Hub používá k načtení informací o úlohách a dvojčata zařízení ze služby IoT hub.
+description: Příručka vývojáře – popis IoT Hub SQL jako dotaz jazyk používaný k načtení informací o úlohách a dvojčata zařízení a modulem ze služby IoT hub.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub dotazovacího jazyka pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
 Služba IoT Hub zajišťuje efektivní jazyka SQL jako k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs], a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
 
@@ -29,9 +29,9 @@ Služba IoT Hub zajišťuje efektivní jazyka SQL jako k načtení informací o 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>Dotazy twin zařízení
-[Dvojčata zařízení] [ lnk-twins] může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčata zařízení dotaz jako jeden dokument JSON obsahující všechny informace o dvojici zařízení.
-Předpokládejme například, že vaše dvojčata zařízení IoT hub mít následující strukturu:
+## <a name="device-and-module-twin-queries"></a>Zařízení a modul dotazů twin
+[Dvojčata zařízení] [ lnk-twins] a dvojčata modul může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dotazu dvojčata zařízení a modul dvojčata jako jeden dokument JSON obsahující všechny informace o dvojici.
+Předpokládejme například, splnit vaše dvojčata zařízení IoT hub s následující strukturou (twin modulu by být podobné právě s další moduleId):
 
 ```json
 {
@@ -82,6 +82,8 @@ Předpokládejme například, že vaše dvojčata zařízení IoT hub mít násl
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>Dotazy twin zařízení
 
 IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**.
 Následující dotaz načte tak celou sadu dvojčata zařízení:
@@ -158,6 +160,26 @@ Na dotazy projekce. umožňují vývojářům vrátit pouze vlastnosti, které j
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>Modul twin dotazy
+
+Dotazování na modulu dvojčata je podobná dotazu na dvojčata zařízení, ale pomocí jiný kolekce nebo obor názvů, tj. místo "zařízení z" můžete dotazovat
+
+```sql
+SELECT * FROM devices.modules
+```
+
+Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotaz modulu dvojčata mezi zařízeními, můžete udělat podle značky. Tento dotaz vrátí všechny dvojčata modulu ve všech zařízeních se stavem prohledávání:
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+Tento dotaz vrátí všechny modulu dvojčata prohledávání stavem, ale jenom na zadaný podmnožinu zařízení.
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>Příklad jazyka C#
@@ -537,7 +559,7 @@ Podporovány jsou následující operátory:
 | Logické |A, NEBO NE |
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 Při dotazování dvojčata a úlohám, které jediný podporovaný je funkce:
 
 | Funkce | Popis |
@@ -553,8 +575,8 @@ V podmínkách trasy jsou podporovány následující matematické funkce:
 | Power(x,y) | Vrátí hodnotu zadaného výrazu určenou mocninu (x ^ y).|
 | Square(x) | Vrátí druhou mocninu Zadaná číselná hodnota. |
 | CEILING(x) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
-| FLOOR(x) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
-| SIGN(x) | Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.|
+| Floor(x) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
+| Sign(x) | Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.|
 | SQRT(x) | Vrátí druhou odmocninu čísla zadaná číselná hodnota. |
 
 V podmínkách trasy jsou podporovány následující kontrola typu a přetypování funkce:
@@ -575,14 +597,14 @@ V podmínkách trasy jsou podporovány následující funkce řetězce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| CONCAT(x, y, …) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
+| CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
 | LENGTH(x) | Vrátí počet znaků ze zadaného řetězcového výrazu.|
 | LOWER(x) | Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
 | UPPER(x) | Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
 | Dílčí řetězec (string, spuštění [, délka]) | Vrátí část řetězcového výrazu od pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce. |
 | INDEX_OF (řetězec, fragment) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.|
-| STARTS_WITH(x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý. |
-| ENDS_WITH(x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý. |
+| STARTS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý. |
+| ENDS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý. |
 | CONTAINS(x,y) | Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
 
 ## <a name="next-steps"></a>Další postup

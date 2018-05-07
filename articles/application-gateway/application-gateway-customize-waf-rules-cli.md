@@ -1,29 +1,29 @@
 ---
-title: "Přizpůsobení pravidel brány firewall webových aplikací v Azure Application Gateway - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Tento článek obsahuje informace o tom, jak přizpůsobit pravidla brány firewall webových aplikací v Application Gateway pomocí Azure CLI 2.0."
+title: Přizpůsobení pravidel brány firewall webových aplikací v Azure Application Gateway - 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
+description: Tento článek obsahuje informace o tom, jak přizpůsobit pravidla brány firewall webových aplikací v Application Gateway pomocí Azure CLI 2.0.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
-ms.author: davidmu
-ms.openlocfilehash: 3051f71f269e409b76e6a19fdcd2feae2a04b8fa
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: b0bd79bb7ce584a9abaffbb6c30d6fbfe64f87c2
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Přizpůsobení pravidla brány firewall webových aplikací pomocí Azure CLI 2.0
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-customize-waf-rules-portal.md)
+> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
 > * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 
@@ -133,7 +133,7 @@ Následující příklad zakazuje pravidla `910018` a `910017` na aplikační br
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po dokončení konfigurace zakázaná pravidla, můžete naučit k zobrazení protokolů firewall webových aplikací. Další informace najdete v tématu [diagnostics Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 

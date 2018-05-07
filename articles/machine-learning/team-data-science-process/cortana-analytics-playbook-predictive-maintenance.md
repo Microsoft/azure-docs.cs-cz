@@ -1,8 +1,8 @@
 ---
-title: "V letecký s Azure – šablona Cortana Intelligence řešení prediktivní údržby | Microsoft Docs"
-description: "Šablona řešení s Microsoft Cortana Intelligence pro prediktivní údržby v letecký, nástrojů a Transport."
+title: Azure AI scénářem pro řešení prediktivní údržby | Microsoft Docs
+description: Komplexní popis vědecké zpracování dat, která pohání řešení prediktivní údržby v několika svislé odvětví.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/01/2018
 ms.author: fboylu
-ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Cortana Intelligence řešení šablony scénářem pro prediktivní údržby v letecký a jiné firmy
+# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>Azure AI scénářem pro řešení prediktivní údržby 
 ## <a name="executive-summary"></a>Shrnutí
 Prediktivní údržby je jednou z nejčastěji vyžadovaná aplikací prediktivní analýzy unarguable výhod, jako třeba obrovské množství úsporu nákladů. Cílem této scénářem je poskytuje odkaz pro řešení prediktivní údržby s důrazem na případy použití hlavní.
 Je připravená umožnit čtečky představu o nejběžnějších obchodní scénáře prediktivní údržby, výzvy opravňujících obchodních problémů pro takové řešení data potřebná k řešení těchto obchodních problémů, techniky prediktivního modelování pro sestavování řešení pomocí tyto údaje a osvědčené postupy s ukázkové architektury řešení.
@@ -97,7 +97,7 @@ Letecké motory jsou velmi citlivé a nákladné části zařízení a modul č�
 ##### <a name="business-value-of-the-predictive-model"></a>Obchodní hodnotu prediktivního modelu
 Klasifikace více třídy modelu bylo vytvořeno který předpovídá pravděpodobnost selhalo, protože některé součásti během příští měsíc. Díky využití architektury těchto řešení, airlines může snížit náklady na opravu součásti, zvýšit dostupnost součásti uložené, snížit inventáře úrovně související prostředky a zlepšit plánování údržby.
 
-### <a name="utilities"></a>Nástroje
+### <a name="utilities"></a>Veřejné služby
 #### <a name="use-case-1-atm-cash-dispense-failure"></a>Případ použití 1: Selhání obejít bez peněžních ATM
 ##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
 Vedení v asset náročné odvětví často stavu, zda je primární provozní riziko a jejich podniky neočekávané selhání jejich prostředků. Jako příklad selhání stroje například peněžními automaty v bankovnictví odvětví velmi problém je běžný, ke kterému dochází často. Těchto typů problémů vytvořit řešení prediktivní údržby velmi žádoucí pro operátory takové stroje. V tomto případě použití je problém předpovědi vypočítat pravděpodobnost, že získá ATM peněžních odvolání transakce přerušena z důvodu selhání ve enumenátor peněžních například uvíznutí papíru nebo selhání část. Zdroje hlavních dat pro tento případ jsou odečty snímačů, která shromažďují měření při peněžních poznámky jsou právě distribuován a také záznamy údržby shromážděných v čase. Data snímače zahrnuty odečty snímačů na každou transakci byla dokončena a také odečty snímačů za každou Poznámka distribuován. Měření odečty poskytuje senzor například mezery mezi poznámky, tloušťka, mějte na paměti příchodem vzdálenost atd. Data údržby zahrnuty kódy chyb a opravit informace. Ty se používají k identifikaci případů selhání.
@@ -230,7 +230,7 @@ Během generování funkce je třeba provést některé důležité kroky jako j
 
 Poslední funkce tabulky po funkce technici kroky popsané v předchozí části by měla vypadat přibližně následující schéma příklad dat po časovou jednotku za den:
 
-| ID prostředku | Čas | Funkce sloupců | Štítek |
+| ID assetu | Čas | Funkce sloupců | Štítek |
 | --- | --- | --- | --- |
 | 1 |1 den | | |
 | 1 |Den 2 | | |

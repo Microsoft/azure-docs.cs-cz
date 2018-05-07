@@ -4,7 +4,7 @@ description: Další informace o funkci přesměrování v Azure Application Gat
 services: application-gateway
 documentationcenter: na
 author: amsriva
-manager: timlt
+manager: jpconnock
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/19/2018
 ms.author: amsriva
-ms.openlocfilehash: f503998668f35ec5bc17db74ee74c4a26465ab04
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65c631ca9beb5eab5d8fe2b7e71daa0cf3b768fa
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Přehled přesměrování brány aplikace
 

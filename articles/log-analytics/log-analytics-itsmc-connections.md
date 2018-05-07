@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojit ITSM produkty nebo služby s konektoru služby správy IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktům a službám a konektor pro správu služby IT (ITSMC) v analýzy protokolů můžete centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -271,7 +271,10 @@ Jakmile uživatel je úspěšně vytvořen, stav **zkontrolujte kontrolní sezna
 
 > [!NOTE]
 
-> Konektor ITSM můžete odesílat incidenty ServiceNow bez některý z ostatních modulů nainstalovat na vaše instance ServiceNow. Pokud používáte modul EventManagement v instanci ServiceNow a chcete vytvořit události nebo výstrahy v ServiceNow pomocí konektoru, přidejte následující role uživatele integrace: - evt_mgmt_integration - evt_mgmt_operator  
+> Konektor ITSM můžete odesílat incidenty ServiceNow bez některý z ostatních modulů nainstalovat na vaše instance ServiceNow. Pokud používáte modul EventManagement v instanci ServiceNow a chcete vytvořit události nebo výstrahy v ServiceNow pomocí konektoru, přidejte následující role pro uživatele integrace:
+
+>    - evt_mgmt_integration
+>    - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>Připojit k službě, IT Provance konektoru Management v Azure

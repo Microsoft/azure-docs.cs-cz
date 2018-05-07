@@ -14,19 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: 105a32f37c0a6a212888f9ee8457844769b9a3c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6d7e41b2b631fcecefd835a10e9b91fd9bb3f17d
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Windows pomocí Accelerated sítě
-
-> [!IMPORTANT]
-> Virtuální počítače musí být vytvořeny pomocí Accelerated sítě povolené. Tato funkce nelze povolit na existujících virtuálních počítačů. Proveďte následující kroky k povolení Zrychlený sítě:
->   1. Odstranění virtuálního počítače
->   2. Znovu vytvořte virtuální počítač s Zrychlený sítě povolené
->
 
 V tomto kurzu zjistěte, jak k vytvoření virtuálního počítače (VM) s Windows pomocí Accelerated sítě. Vytvoření virtuálního počítače s Linuxem pomocí Accelerated sítě naleznete v tématu [vytvoření virtuálního počítače s Linuxem pomocí Accelerated sítě](create-vm-accelerated-networking-cli.md). Zrychlený sítě umožňuje jeden kořenový vstupně-výstupních operací virtualizace (SR-IOV) na virtuální počítače, výrazně zlepšit sítě. Tato cesta vysoce výkonné obchází hostitel datapath, snižuje latence, zpoždění a využití procesoru pro použití s nejnáročnější zatížení sítě v podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dva virtuální počítače a bez Zrychlený sítě:
 
@@ -43,23 +37,30 @@ Výhody Zrychlený sítě se vztahují pouze na virtuálním počítači, který
 * **Snižuje zpoždění:** virtuální přepínač zpracování závisí na množství zásady, které je nutné použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad do hardwaru, odstraní tento variabilita tím, že doručování paketů přímo k virtuálnímu počítači, odebrání hostitele do komunikace virtuálních počítačů a všechny softwaru přerušení a kontext přepínače.
 * **Snížení využití procesoru:** obcházení virtuální přepínač na hostiteli vede k menší využití procesoru při zpracování síťového provozu.
 
-## <a name="supported-operating-systems"></a>Podporované operační systémy
-Microsoft Windows Server 2012 R2 Datacenter a Windows Server 2016.
+## <a name="limitations-and-constraints"></a>Omezení a omezení
 
-## <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Zrychlený sítě je podporována v nejvíce obecné účely a velikostí optimalizovaných výpočetní instance s 4 nebo více Vcpu. V instancích například D/DSv3 nebo E/ESv3, které podporují Hyper-threadingem Accelerated sítě je podporována v instance virtuálních počítačů s 8 nebo více Vcpu. Jsou podporované řady: D/DSv2, D/DSv3, E nebo ESv3, F nebo služby Fs nebo Fsv2 a Ms a Mms.
+### <a name="supported-operating-systems"></a>Podporované operační systémy
+Podporovány jsou následující distribuce předinstalované z Galerie Azure: 
+* **Windows Server 2016 Datacenter** 
+* **Windows Server 2012 R2 Datacenter** 
+
+### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
+Zrychlený sítě je podporována v nejvíce obecné účely a velikostí optimalizovaných výpočetní instance s 2 nebo více Vcpu.  Tyto podporované řady jsou: D/DSv2 a F nebo služby Fs
+
+U instancí, které podporují Hyper-threadingem Accelerated sítě je podporována v instance virtuálních počítačů s 4 nebo více Vcpu. Jsou podporované řady: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms
 
 Další informace o instance virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="regions"></a>Oblasti
+### <a name="regions"></a>Oblasti
 K dispozici ve všech veřejných oblastí Azure a cloudu Azure Government.
 
-## <a name="limitations"></a>Omezení
-Při použití této funkce, existují tato omezení:
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Povolení Accelerated sítě na spuštění virtuálního počítače
+Podporovaná velikost virtuálního počítače bez použití Zrychlený sítě povolené může mít pouze funkci povolit, pokud je zastavena a navrácena.
 
-* **Vytvoření rozhraní sítě:** Accelerated sítě lze povolit pouze pro nový síťový adaptér. Nelze nastavit pro existující síťovou.
-* **Vytvoření virtuálního počítače:** A síťovým Adaptérem s Zrychlený sítě povolené lze připojit pouze k virtuálnímu počítači, když je vytvořen virtuální počítač. Síťový adaptér nelze připojit k existující virtuální počítač. Pokud Přidání virtuálního počítače do existující dostupnosti nastavena, všechny virtuální počítače v sadě dostupnosti musí také mít accelerated sítě povolené.
-* **Nasazení prostřednictvím Správce Azure Resource Manager pouze:** virtuálních počítačů (klasické) nelze nasadit pomocí Accelerated sítě.
+### <a name="deployment-through-azure-resource-manager"></a>Nasazení pomocí Azure Resource Manager
+Virtuální počítače (klasické) nelze nasadit pomocí Accelerated sítě.
+
+## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Vytvořte virtuální počítač Windows s Azure Zrychlený sítě
 
 I když tento článek obsahuje kroky k vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí prostředí Azure PowerShell, můžete také [vytvoření virtuálního počítače pomocí Zrychlený sítě pomocí portálu Azure](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Při vytváření virtuálního počítače na portálu, v části **nastavení**, vyberte **povoleno**v části **Accelerated sítě**. Možnost povolit Zrychlený sítě nebude se zobrazovat na portálu, pokud jste vybrali [podporovaný operační systém](#supported-operating-systems) a [velikost virtuálního počítače](#supported-vm-instances). Po vytvoření virtuálního počítače, které potřebujete k dokončení podle pokynů v [Přesvědčte se ovladače je nainstalována v operačním systému](#confirm-the-driver-is-installed-in-the-operating-system).
 
@@ -210,3 +211,91 @@ Po vytvoření virtuálního počítače v Azure, připojení k virtuálnímu po
     ![Správce zařízení](./media/create-vm-accelerated-networking/device-manager.png)
 
 Pro virtuální počítač je nyní k dispozici Zrychlený sítě.
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>Povolit Accelerated sítě na existující virtuální počítače
+Pokud jste vytvořili virtuální počítač bez Accelerated sítě, je možné povolit tuto funkci na existující virtuální počítač.  Virtuální počítač musí podporovat Accelerated sítě prostřednictvím splňuje následující požadavky, které jsou také uvedeny výše:
+
+* Virtuální počítač musí být podporovaná velikost Accelerated sítě
+* Virtuální počítač musí být podporovaná bitová kopie Galerie Azure (a verze jádra pro Linux)
+* Všechny virtuální počítače v nastavení dostupnosti nebo VMSS musí být zastavena navrácena před povolením Accelerated sítě na všechny síťové adaptéry
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>Jednotlivé virtuální počítače a virtuální počítače ve skupině dostupnosti nastavena
+Nejdřív zastavte nebo zrušit přidělení virtuálního počítače, nebo pokud skupiny dostupnosti, všechny virtuální počítače v sadě:
+
+```azurepowershell
+Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+    -Name "myVM"
+```
+
+Důležité, prosím Poznámka: Pokud je virtuální počítač vytvořený jednotlivě, bez nastavení dostupnosti, můžete pouze muset zastavit nebo navrácení jednotlivých virtuálních počítačů povolit Accelerated sítě.  Pokud váš virtuální počítač byl vytvořen pomocí nastavení dostupnosti, všechny virtuální počítače, které jsou obsažené v sadě dostupnosti bude nutné zastavit navrácena před povolením Accelerated sítě na žádném z síťovými adaptéry. 
+
+Po zastavení povolte Accelerated sítě na síťový adaptér virtuálního počítače:
+
+```azurepowershell
+$nic = Get-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
+    -Name "myNic"
+
+$nic.EnableAcceleratedNetworking = $true
+
+$nic | Set-AzureRmNetworkInterface
+```
+
+Restartujte váš virtuální počítač nebo, pokud v skupiny dostupnosti, všechny virtuální počítače v sadě a zkontrolujte, zda je povoleno Accelerated sítě: 
+
+```azurepowershell
+Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+    -Name "myVM"
+```
+
+### <a name="vmss"></a>VMSS
+VMSS se mírně liší, ale následuje témže pracovním postupu.  Nejdřív zastavte virtuální počítače:
+
+```azurepowershell
+Stop-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+    -VMScaleSetName "myScaleSet"
+```
+
+Jakmile jsou zastaveny virtuální počítače, aktualizujte vlastnost Accelerated sítě v části síťové rozhraní:
+
+```azurepowershell
+$vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet"
+
+$vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].EnableAcceleratedNetworking = $true
+
+Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+Poznámka: VMSS prosím má upgrady virtuálních počítačů, které aktualizace pomocí tří různých nastavení automatického, postupného a ruční.  V těchto pokynech je zásada nastavená na hodnotu automaticky tak, aby VMSS vyzvedne, až bude změny okamžitě po restartování.  Nastavte ji na automatické, aby změny jsou okamžitě zachyceny: 
+
+```azurecli
+$vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+
+Update-AzureRmVmss -ResourceGroupName "myResourceGroup" `
+    -VMScaleSetName "myScaleSet" `
+    -VirtualMachineScaleSet $vmss
+```
+
+Nakonec restartujte VMSS:
+
+```azurecli
+Start-AzureRmVmss -ResourceGroupName "myResourceGroup" ` 
+    -VMScaleSetName "myScaleSet"
+```
+
+Jednou budete restartovat, čekat na upgrade ukončíte, ale po dokončení, zobrazí se VF ve virtuálním počítači.  (Ujistěte se, že používáte podporovaná velikost operačního systému a virtuálních počítačů)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>Změna velikosti existujících virtuálních počítačů pomocí Accelerated sítě
+
+Virtuální počítače pomocí Accelerated sítě povolené jde změnit jenom pro virtuální počítače, které podporují Accelerated sítě.  
+
+Velikost virtuálního počítače s Accelerated sítě povolené nelze změnit na instanci virtuálního počítače, který nepodporuje Accelerated sítě pomocí operace změny velikosti.  Místo toho ke změně velikosti jednu z těchto virtuálních počítačů: 
+
+* Zastavení nebo Deallocate virtuálního počítače nebo pokud v sadě dostupnosti nebo VMSS, zastavení nebo navrácení všechny virtuální počítače v sadě nebo VMSS.
+* Zrychlený sítě musí být zakázáno na síťový adaptér virtuálního počítače nebo pokud se v dostupnosti sady nebo VMSS, všechny virtuální počítače v sadě nebo VMSS.
+* Jakmile Accelerated sítě je zakázaná, sada virtuálních počítačů nebo dostupnosti nebo VMSS lze přesunout do nové velikosti, která nepodporuje Accelerated sítě a restartování.  
+
+
+

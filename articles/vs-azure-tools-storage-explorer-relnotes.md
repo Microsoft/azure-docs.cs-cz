@@ -14,17 +14,112 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6274e4ebbc9f3c5b21c479b10e112459000fd28b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Poznámky k verzi Microsoft Azure Storage Explorer
 
-Tento článek obsahuje verze, kterou verzi poznámky pro Azure Storage Explorer 0.9.6 (Preview), a také poznámky k verzi pro předchozí verze.
+Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi, a také poznámky k verzi pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadno pracovat s daty Azure Storage ve Windows, systému macOS a Linux.
+
+## <a name="version-100"></a>Verze 1.0.0
+16/04/2018
+
+### <a name="download-azure-storage-explorer-100"></a>Stažení Azure Storage Explorer 1.0.0
+- [Azure Storage Explorer 1.0.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.0.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.0.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Nová
+* Vylepšené ověřování, které umožňuje Storage Explorer chcete použít stejný účet úložiště jako Visual Studio 2017. Chcete-li tuto funkci použít, musíte znovu přihlášení k vašemu účtům a znovu nastavit filtrované předplatných.
+* Pro účty Azure zásobníku zajišťoval AAD bude Storage Explorer nyní načíst předplatná Azure zásobníku, pokud je povoleno, cílový Azure zásobníku. Už musíte vytvořit vlastní přihlašovací prostředí.
+* Několik zkratky byly přidány k povolení rychlejší navigace. Ty zahrnují přepnutím různé panelů a přesun mezi editory. Najdete v nabídce Zobrazit další podrobnosti.
+* Zpětná vazba Průzkumníka úložiště je nyní umístěn na Githubu. Nedostanete naší stránce s problémy kliknutím na tlačítko zpětná vazba v dolní části doleva nebo přechodem na [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Nebojte se zaslat návrhy, hlášení problémů, Pokládejte otázky nebo nechte jakoukoli jinou formu zpětnou vazbu.
+* Pokud běží na problémy s certifikátem SSL a nepodařilo se najít certifikát problematické, teď můžete spustit Průzkumníka úložiště z příkazového řádku `--ignore-certificate-errors` příznak. Při spuštění se tento příznak bude ignorovat Storage Explorer chyby certifikátu protokolu SSL.
+* Je nyní možnost "Stáhnout" v místní nabídce pro objekt blob a soubor položky.
+* Vylepšení přístupu a podporu čtečky obrazovky. Pokud byste tedy spoléhat na funkce pro usnadnění přístupu, přečtěte si naše [usnadnění dokumentaci](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) Další informace.
+* Storage Explorer teď používá elektronovým 1.8.3
+
+### <a name="breaking-changes"></a>Nejnovější změny
+* Storage Explorer přepnul do nové knihovny ověřování. Jako součást přepínače do knihovny budete muset znovu přihlášení k vašemu účtům a znovu nastavte předplatné filtrované
+* Metoda použitá k šifrování citlivých dat došlo ke změně. To může vést k některé z položek rychlý přístup museli jej znovu přidat, nebo někteří z vás připojit prostředky museli být znovu připojit.
+
+### <a name="fixes"></a>Opravy
+* Někteří uživatelé za proxy podléhaly skupiny objektů blob nahrávání nebo stahování přerušeny 'Nelze přeložit' chybová zpráva. To byl opraven.
+* Podle potřeby přihlášení se při použití přímý odkaz, kliknutím na řádku "Přihlásit" by místní prázdné dialogové okno. To byl opraven.
+* V systému Linux, pokud se nepodařilo spustit z důvodu selhání procesu GPU Storage Explorer zobrazí teď zpráva havárie, vás vyzval k použití ' – zakázat gpu, přepínače a Storage Explorer se automaticky restartuje s přepínačem povolena.
+* Zásady přístupu neplatný byly těžko identity v dialogovém okně zásad přístupu. Zásady přístupu neplatné ID jsou nyní červeně pro větší přehled.
+* Protokol aktivit by měla mít někdy velké oblasti mezery mezi různé části aktivity. To byl opraven.
+* V editoru dotazů tabulky pokud zbývající klauzuli časové razítko v neplatném stavu a pak se pokusila upravit jinou klauzuli editoru ukotvením. Editor obnoví klauzuli časové razítko poslední platný stav při zjištění změny v jiné klauzuli.
+* Pokud jste pozastaví při psaní do vyhledávacího dotazu ve stromovém zobrazení, se začne hledání a fokus by odcizení v textovém poli. Nyní je třeba explicitně spustit hledání po stisknutí klávesy, zadejte"nebo kliknutím na tlačítko start vyhledávání.
+* Příkaz získat podpis sdíleného přístupu by se někdy zakázáno, pokud kliknete pravým tlačítkem na soubor do sdílené složky. To byl opraven.
+* Pokud uzel stromu prostředků s fokusem byl filtrovány při hledání, nelze kartě do stromu prostředků a použijte klávesy se šipkami přejděte stromu prostředků. Nyní Pokud uzel stromu cílených prostředků skryt, první uzel ve stromu prostředků bude automaticky zaměřit.
+* Navíc oddělovače by se někdy zobrazovat v panelu nástrojů editoru. To byl opraven.
+* Textové pole s popisem cesty někdy k přetečení. To byl opraven.
+* Editory objektů Blob a sdílenou složku by někdy neustále aktualizovat při nahrávání mnoho souborů najednou. To byl opraven.
+* Funkci "Složky statistika" měl žádný účel v zobrazení Správa snímky sdílené složky souborů. Teď byl zakázán.
+* Nabídka soubor v systému Linux, se neobjevil. To byl opraven.
+* Při nahrávání složku pro sdílenou složku, ve výchozím nastavení, byly nahrát obsah složky. Výchozí chování je nyní nahrát obsah složky do odpovídající složky ve sdílené složce.
+* Uspořádání tlačítek v dialogových oknech několik měl obrácený. To byl opraven.
+* Různé zabezpečení související s opravy.
+
+### <a name="known-issues"></a>Známé problémy
+* Ve výjimečných případech můžou uváznout stromu zaměřit na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Pokud je cílem zásobník Azure, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. To je proto zde používáme popsané řešení filtru Storno. 
+* Pokud si zvolíte nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby bylo možné používat Storage Explorer zapomněli rozhodnutí.
+* Přejmenování objekty BLOB (samostatně nebo v kontejneru objektů blob přejmenovat) nezachovává snímky. Během přejmenovat se zachovají všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity.
+* I když zásobník Azure aktuálně nepodporuje sdílených složek, sdílených složek uzel se objeví stále v připojené účtu úložiště Azure zásobníku.
+* Prostředí elektronovým používáno Průzkumníkem úložiště má potíže s hardwarovou akceleraci některé grafický procesor (grafický procesor). Pokud Storage Explorer je zobrazení prázdné hlavní okno (prázdná), můžete zkusit spustit Průzkumníka úložiště z příkazového řádku a zákaz akcelerace GPU přidáním `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele, Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset zajistit RSZ je aktuální – tento krok můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Předchozí verze
+
+* [Verze 0.9.6](#version-096)
+* [Verze 0.9.5](#version-095)
+* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
+* [Verze 0.9.2](#version-092)
+* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
+* [Verze 0.8.16](#version-0816)
+* [Verze 0.8.14](#version-0814)
+* [Verze 0.8.13](#version-0813)
+* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
+* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
+* [Verze 0.8.7](#version-087)
+* [Verze 0.8.6](#version-086)
+* [Verze 0.8.5](#version-085)
+* [Verze 0.8.4](#version-084)
+* [Verze 0.8.3](#version-083)
+* [Verze 0.8.2](#version-082)
+* [Verze 0.8.0](#version-080)
+* [Verze 0.7.20160509.0](#version-07201605090)
+* [Verze 0.7.20160325.0](#version-07201603250)
+* [Verze 0.7.20160129.1](#version-07201601291)
+* [Verze 0.7.20160105.0](#version-07201601050)
+* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>Verze 0.9.6
 02/28/2018
@@ -66,30 +161,6 @@ Tento článek obsahuje verze, kterou verzi poznámky pro Azure Storage Explorer
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Předchozí verze
-
-* [Verze 0.9.5](#version-095)
-* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
-* [Verze 0.9.2](#version-092)
-* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
-* [Verze 0.8.16](#version-0816)
-* [Verze 0.8.14](#version-0814)
-* [Verze 0.8.13](#version-0813)
-* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
-* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
-* [Verze 0.8.7](#version-087)
-* [Verze 0.8.6](#version-086)
-* [Verze 0.8.5](#version-085)
-* [Verze 0.8.4](#version-084)
-* [Verze 0.8.3](#version-083)
-* [Verze 0.8.2](#version-082)
-* [Verze 0.8.0](#version-080)
-* [Verze 0.7.20160509.0](#version-07201605090)
-* [Verze 0.7.20160325.0](#version-07201603250)
-* [Verze 0.7.20160129.1](#version-07201601291)
-* [Verze 0.7.20160105.0](#version-07201601050)
-* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>Verze 0.9.5
 02/06/2018

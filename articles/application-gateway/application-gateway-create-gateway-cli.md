@@ -1,22 +1,22 @@
 ---
-title: "Vytvoření služby application gateway - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí Azure CLI."
+title: Vytvoření služby application gateway - rozhraní příkazového řádku Azure | Microsoft Docs
+description: Postup vytvoření služby application gateway pomocí Azure CLI.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 791cc8bca95fc2264b485c23f30e24254067f513
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
@@ -38,7 +38,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *myResourceGro
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
 Vytvoření virtuální sítě a podsítě pomocí [vytvoření sítě vnet az](/cli/azure/vnet#az_vnet_create). Vytvořte na veřejnou IP adresu pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_public_ip_create).
 
@@ -60,13 +60,13 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Můžete taky nainstalovat NGINX virtuálních počítačů ověřte, zda je aplikační brána úspěšně vytvořila.
 
-### <a name="create-two-virtual-machines"></a>Vytvořte dva virtuální počítače
+### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
-Konfigurační soubor init cloudu můžete použít k instalaci NGINX a spuštění aplikace Node.js "Zdravím svět" na virtuální počítač s Linuxem. V aktuálním prostředí vytvořte soubor s názvem init.txt cloudu a zkopírujte a vložte následující konfigurace do prostředí. Je zkopírovat celý soubor cloudu init správně, obzvláště první řádek:
+K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
 
 ```yaml
 #cloud-config
@@ -110,7 +110,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Vytvořit síťových rozhraní s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create). Vytváření virtuálních počítačů s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create).
+Vytvořit síťových rozhraní s [vytvořit síťových adaptérů sítě az](/cli/azure/network/nic#az_network_nic_create). Vytvořte virtuální počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -160,7 +160,7 @@ Ho může trvat několik minut pro službu application gateway, který se má vy
 
 ## <a name="test-the-application-gateway"></a>Testování služby application gateway
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, použijte [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+Chcete-li získat veřejnou IP adresu brány, aplikace, použijte [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -182,5 +182,5 @@ az group delete --name myResourceGroupAG
  
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste vytvořili skupinu prostředků, síťové prostředky a back-end serverů. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
+V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a servery back-end. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
 

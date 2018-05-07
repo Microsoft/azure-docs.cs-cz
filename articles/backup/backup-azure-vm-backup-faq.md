@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 785ba078669886cf16041752bd7af5a957899d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Dotazy týkající se služby Azure Backup pro virtuální počítače
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám služby Azure Backup pro virtuální počítače. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -54,6 +54,9 @@ Ano. Úloha zálohování můžete zrušit, pokud je ve fázi "Pořízení sním
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>I na můj zálohovaná spravovaných disků na virtuální počítače povolit zámek skupinu prostředků. Budou moje zálohy stále fungovat?
 Pokud se uživatel uzamkne skupinu prostředků, není možné odstranit starší body obnovení služby zálohování. Z důvodu to nových záloh spustit selhání, jako je omezení maximální 18 body obnovení uložené z back-end. Pokud zálohování neúspěšné k interní chybě po uzamčení RG, postupujte podle těchto [kroky k odebrání obnovení bodu kolekce](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+
+### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Trvá zálohování zásad v úvahu letní ukládání Time(DST)?
+Ne. Upozorňujeme, že se zobrazí datum a čas v místním počítači podle místního času a podle aktuálního letní čas. Proto může být nakonfigurované dobu naplánovaných záloh liší od vašeho místního času z důvodu letního času.
 
 ## <a name="restore"></a>Obnovení
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Jak se rozhodnout mezi obnovením disků a úplným obnovením virtuálního počítače?

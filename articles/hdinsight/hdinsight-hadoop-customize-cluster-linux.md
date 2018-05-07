@@ -4,7 +4,7 @@ description: Přidáte vlastní komponenty ke clusterům HDInsight se systémem 
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
@@ -12,24 +12,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: ff8b8ffc66ea4c90ca2f11edc36aac670f24eac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
-HDInsight nabízí možnost konfigurace názvem **akce skriptu** vlastní skripty, které přizpůsobují clusteru, který spustí. Tyto skripty se používají k instalaci dalších součástí a změně nastavení konfigurace. Akce skriptu lze během nebo po vytvoření clusteru.
+HDInsight poskytuje konfigurace metodu s názvem **skript akce** vlastní skripty, chcete-li přizpůsobit clusteru, který spustí. Tyto skripty se používají k instalaci dalších součástí a změně nastavení konfigurace. Akce skriptu lze během nebo po vytvoření clusteru.
 
 > [!IMPORTANT]
 > Možnost používat akcí skriptů v již spuštěného clusteru je pouze k dispozici pro clustery HDInsight se systémem Linux.
 >
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Akce skriptu lze také publikovat na webu Azure Marketplace jako aplikace HDInsight. Některé příklady v tomto dokumentu ukazují, jak můžete instalovat aplikace HDInsight pomocí skriptu akce příkazů z prostředí PowerShell a .NET SDK. Další informace o aplikace HDInsight naleznete v tématu [HDInsight publikování aplikace do Azure Marketplace](hdinsight-apps-publish-applications.md).
+Akce skriptu lze také publikovat na webu Azure Marketplace jako aplikace HDInsight. Další informace o aplikace HDInsight naleznete v tématu [HDInsight publikování aplikace do Azure Marketplace](hdinsight-apps-publish-applications.md).
 
 ## <a name="permissions"></a>Oprávnění
 

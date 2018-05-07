@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f2b048d4fad1fae240904fef48842679accaa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 17e5ba3637b0ae36412e46166f7f178d4c82d179
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat z Azure databáze pro databázi MySQL pomocí Azure Data Factory
 
@@ -47,6 +47,13 @@ Pro databázi Azure pro službu MySQL propojené jsou podporovány následujíc�
 | type | Vlastnost typu musí být nastavena na: **AzureMySql** | Ano |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k databázi Azure pro instanci databáze MySQL. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+
+Typické připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
+
+| Vlastnost | Popis | Možnosti | Požaduje se |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | Tato možnost určuje, jestli ovladač používá šifrování SSL a ověření při připojování k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
+| useSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát Certifikační autority z úložiště důvěryhodnosti systému, nebo z určeného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povoleno nebo zakázáno (0) **(výchozí)** | Ne |
 
 **Příklad:**
 

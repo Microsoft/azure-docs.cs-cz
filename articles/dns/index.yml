@@ -1,0 +1,95 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure DNS
+metadata:
+  title: Dokumentace ke službě Azure DNS
+  meta.description: Learn how to manage your DNS records using Azure Domain Name System. Documentation shows how to set up and manage DNS zones and records for domain names.
+  services: dns
+  author: KumudD
+  manager: jeconnoc
+  layout: LandingPage
+  ms.assetid: na
+  ms.service: dns
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/26/2018
+  ms.author: kumud
+  ms.openlocfilehash: bb18530a0925b88475d2c0979e4e83b46bb777ca
+  ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/03/2018
+abstract:
+  description: Naučte se používat Azure DNS. Šablony Rychlý start, kurzy, ukázky a další materiály ukazují, jak nastavit a spravovat záznamy a zóny DNS pro názvy domén.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučíte se vytvářet záznamy a zóny DNS pro názvy domén.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/dns/dns-getstarted-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/dns/dns-getstarted-powershell
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/dns/dns-getstarted-cli
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučíte se delegovat názvy domén do Azure DNS a vytvářet vlastní záznamy DNS pro webovou aplikaci s využitím Azure DNS.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Delegování domény do Azure DNS</a>
+    - html: <a href="/azure/dns/dns-web-sites-custom-domain">Vytvoření vlastních záznamů DNS pro webovou aplikaci</a>
+- title: Bezplatné školicí video od Pluralsightu
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Implementace síťových služeb Microsoft Azure
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: Plánování a návrh síťových řešení Microsoft Azure
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: Administrace Microsoft Azure pro administrátory AWS
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Ukázky skriptů pro běžné úlohy
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dns/cli-samples">Azure CLI</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/resourcemanager/azurerm.dns">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/microsoft.azure.management.dns.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.dns">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/">Node.js</a></p><p><a href="http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0">Ruby</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/dns/">Reference k rozhraní REST API</a></p>

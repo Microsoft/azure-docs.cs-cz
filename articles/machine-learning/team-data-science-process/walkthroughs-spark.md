@@ -1,24 +1,24 @@
 ---
-title: "Návody pro HDInsight Spark v Azure pomocí PySpark a Scala | Microsoft Docs"
-description: "Příklady procesu Team dat vědecké účely, které provede prostřednictvím PySpark a Scala v Azure HDInsight Spark pro prediktivní analýzy."
+title: Návody pro HDInsight Spark v Azure pomocí PySpark a Scala | Microsoft Docs
+description: Příklady procesu Team dat vědecké účely, které provede prostřednictvím PySpark a Scala v Azure HDInsight Spark pro prediktivní analýzy.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 06498f55b38be98441ddceb8f1667c89d257f8fd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Návody vědecké účely dat HDInsight Spark v Azure pomocí PySpark a Scala
 
@@ -45,7 +45,7 @@ V tématu [Advanced zkoumání dat a modelování pomocí Spark](spark-advanced-
 [Pomocí Scala pomocí Spark v Azure](scala-walkthrough.md) návod používá data z New Yorku taxislužby předpovědět, zda je placené tip a rozsah objemy očekává zaplacení. Ukazuje, jak používat Scala pro pod dohledem strojového učení úlohy s Spark strojového učení knihovny (MLlib) a balíčky SparkML v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [proces vědecké účely dat](http://aka.ms/datascienceprocess): přijímání dat a zkoumání, vizualizace, funkce analýzy, modelování a spotřeba modelu. Modely vytvářeny zahrnují logistic a lineární regrese, náhodné doménové struktury a přechodu boosted stromy.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
 

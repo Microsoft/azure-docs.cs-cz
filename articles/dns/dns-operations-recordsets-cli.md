@@ -1,10 +1,10 @@
 ---
-title: "Správa záznamů DNS v Azure DNS pomocí Azure CLI 2.0 | Microsoft Docs"
-description: "Správa sad záznamů DNS a záznamy v Azure DNS při hostování vaší domény ve službě Azure DNS. Všechny příkazy rozhraní příkazového řádku 2.0 pro operace na sady záznamů a záznamy."
+title: Správa záznamů DNS v Azure DNS pomocí Azure CLI 2.0 | Microsoft Docs
+description: Správa sad záznamů DNS a záznamy v Azure DNS při hostování vaší domény ve službě Azure DNS. Všechny příkazy rozhraní příkazového řádku 2.0 pro operace na sady záznamů a záznamy.
 services: dns
 documentationcenter: na
 author: KumudD
-manager: carmonm
+manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
-ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Správa záznamů DNS a sady záznamů v Azure DNS pomocí Azure CLI 2.0
 
@@ -223,7 +223,7 @@ Nelze přidat, odebrat nebo upravit záznamy v automaticky vytvořený záznam N
 
 Na rozdíl od většině ostatních typů záznamů sadu záznamů CNAME obsahovat jenom jeden záznam.  Proto nelze nahradit aktuální hodnota přidávání nového záznamu a odebráním stávajícího záznamu, jako u jiných typů záznamů.
 
-Místo toho pokud chcete upravit záznam CNAME, použijte `az network dns record-set cname set-record`. Nápovědu najdete v tématu`az network dns record-set cname set-record --help`
+Místo toho pokud chcete upravit záznam CNAME, použijte `az network dns record-set cname set-record`. Nápovědu najdete v tématu `az network dns record-set cname set-record --help`
 
 V příkladu upraví sady záznamů CNAME *www* v zóně *contoso.com*, ve skupině prostředků *MyResourceGroup*, přejděte na položku "www.fabrikam.net" namísto jeho existující hodnoty:
 
@@ -292,7 +292,7 @@ az network dns record-set a delete --resource-group myresourcegroup --zone-name 
 
 Zobrazí se výzva k potvrzení operace odstranění. Chcete-li potlačit tuto výzvu, použijte `--yes` přepínače.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [zóny a záznamy v Azure DNS](dns-zones-records.md).
 <br>

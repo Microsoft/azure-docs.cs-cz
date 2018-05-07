@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů zabezpečení pracovníků plán, podle kterého - FedRAMP webové aplikace automatizace-"
-description: "FedRAMP webové aplikace automatizace – zabezpečení pracovníků"
+title: Zabezpečení Azure a dodržování předpisů zabezpečení pracovníků plán, podle kterého - FedRAMP webové aplikace automatizace-
+description: FedRAMP webové aplikace automatizace – zabezpečení pracovníků
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 2b9095d0420987f9cad758e3c883a9e2b5cd60c4
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="personnel-security-ps"></a>Zabezpečení pracovníků (PS)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] pracovníky zásady zabezpečení, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásady zabezpečení pracovníky a ovládací prvky zabezpečení přidružené pracovníky; kontroluje a aktualizuje aktuální zásady zabezpečení pracovníky [přiřazení: organizace definované frekvence]; a postupy zabezpečení pracovníků [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 2.a** organizace přiřadí označení riziko pro všechny organizace pozice.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 2.b** organizace vytváří blokování kritéria pro naplnění těchto pozic jednotlivce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 2.c** organizace kontroluje a aktualizuje označení pozice riziko [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 3.a** organizace obrazovky jednotlivce před autorizace přístupu k systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 3.b** organizace rescreens jednotlivce podle [přiřazení: organizace definované podmínky nutnosti rescreening a pokud rescreening je proto vyznačeno, četnost například rescreening].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-3 (3) .a** organizace zajistí, že jednotlivce přístup systému informace o zpracování, ukládání nebo přenášení informací vyžadující zvláštní ochranu autorizací platný přístup, které je ukázán podle přiřadili oficiální státní povinností.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-3 (3) .b** organizace zajistí, že jednotlivce přístup systému zpracování informací, uložení nebo přenos informace vyžadují zvláštní ochranu splňují [přiřazení: organizace definované blokování další pracovníky. kritéria].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.a** zakáže systému přístup k informacím v rámci organizace, při ukončení platnosti jednotlivých pracovních [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.b** organizace, při ukončení platnosti jednotlivých pracovních ukončí/odvolá všechny ověřovací data nebo přihlašovací údaje související s jednotlivých.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.c** provádí rozhovory ukončení, které obsahují informace o organizaci, při ukončení platnosti jednotlivých pracovních [přiřazení: témata týkající se zabezpečení informace definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.d** organizace, při ukončení platnosti jednotlivých pracovních načte všechny související se zabezpečením organizační informace týkající se systému vlastnost.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-4.e** Organizace, při ukončení platnosti jednotlivých pracovních uchovává přístup k informacím organizace a systémy informace dříve řízené ukončena jednotlivých.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 4.f** upozorní na organizaci při ukončení platnosti jednotlivých pracovních [přiřazení: organizace definované pracovníky nebo rolí] v [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-4 (2)** organizace využívá automatizované mechanismy pro upozornění [přiřazení: definované organizace pracovníky nebo rolí] při ukončení platnosti jednotlivce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.a** organizace zkontroluje a potvrdí probíhající provozní potřebu aktuální autorizací logický a fyzický přístup k zařízením, nebo informace o systémech, když jsou přiřazeny nebo přenést na jiné místo v rámci jednotlivce organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.b** organizace zahájí [přiřazení: organizace definované přenos nebo opětovné přiřazení akcí] v [přiřazení: organizace definované časové období následující akce formální přenosu].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5.c** organizace upraví autorizaci přístupu podle potřeby tak, aby odpovídaly změnám v provozu musí z důvodu změny přiřazení nebo přenos.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 5** organizace upozorní [přiřazení: organizace definované pracovníky nebo rolí] v [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.a** organizace vyvíjí a dokumenty přístup smlouvy systémů organizační údaje.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.b** organizace kontroluje a aktualizuje smlouvy přístupu [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 6.c** organizace zajišťuje, že jednotlivcům, kteří potřebují přístup k organizační údaje a informace o systémech podepsání smlouvy odpovídající přístup před udělením přístupu; a znovu podepsat dohody o přístupu k získání přístupu do organizace informačních systémů po aktualizaci dohody o přístupu nebo [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 7a** organizace vytváří požadavky na zabezpečení pracovníky včetně rolí zabezpečení a odpovědnosti pro poskytovatele třetích stran.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 7.b** organizace vyžaduje poskytovatelů třetích stran k dodržování zásad zabezpečení pracovníků a zavedených v organizaci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 7.c** organizace dokumenty pracovníky požadavky na zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 7.d** organizace vyžaduje poskytovatelů třetích stran pro upozornění [přiřazení: organizace definované pracovníky nebo rolí] pracovníky přenosy nebo ukončení třetích stran pracovníky, kteří mají firemní přihlašovací údaje a/nebo symboly nebo kteří mají oprávnění k systému informace v rámci [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS-7.e** Organizace monitorování kompatibility zprostředkovatele.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 8.a** organizace využívá formální sankce proces pro jednotlivce, které nejsou v souladu se zásadami zabezpečení zavedených informace a postupy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **PS 8.b** organizace upozorní [přiřazení: organizace definované pracovníky nebo rolí] v [přiřazení: organizace definované časové období] při formální zaměstnanec sankce proces je zahájen, identifikaci jednotlivých schválené a Důvod schvalovat.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

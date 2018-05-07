@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Zásobník datacenter integrace se službou Azure - Identity
 Zásobník Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je nutné provést před nasazením Azure zásobníku. Nasazení pomocí služby AD FS se také označuje jako nasazení Azure zásobníku v odpojeném režimu.
@@ -60,6 +60,8 @@ Požadavky:
 
 ## <a name="setting-up-graph-integration"></a>Nastavení integrace grafu
 
+Graf pouze podporuje integraci s jednou doménovou strukturou Active Directory. Pokud existuje několik doménových struktur, pouze struktuře zadaný v konfiguraci se použije k načtení uživatelů a skupin.
+
 Tyto informace se vyžaduje jako vstupy pro automatizaci parametry:
 
 
@@ -95,12 +97,14 @@ Pro tento postup použijte počítač v síti datového centra, který může ko
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Po zobrazení výzvy zadejte přihlašovací údaje pro uživatelský účet, který chcete použít pro službu grafu (například graphservice).
+   Po zobrazení výzvy zadejte přihlašovací údaje pro uživatelský účet, který chcete použít pro službu grafu (například graphservice). Vstup pro rutinu Register-DirectoryService musí být název doménové struktury nebo kořen domény v doménové struktuře a nikoli všech ostatních domén v doménové struktuře.
 
    > [!IMPORTANT]
    > Počkejte místní přihlašovací údaje (Get-Credential není podporována v privilegované koncového bodu) a zadejte přihlašovací údaje účtu grafu.
 
 #### <a name="graph-protocols-and-ports"></a>Graf protokoly a porty
+
+Grafu služby v zásobníku Azure používá následující protokoly a porty pro komunikaci s možností zápisu Server globální katalog (GC) a Center KDC (Key Distribution), může zpracovat žádosti o přihlášení v cílové doménové struktury služby Active Directory.
 
 Služba grafu v zásobníku Azure používá následující protokoly a porty pro komunikaci s cílem služby Active Directory:
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2ccde1a4eaff391dccf1b5f624257479acb263cb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -69,21 +69,20 @@ Pokud nemáte účet Azure Automation, vytvořte podle pokynů v tomto kroku. Po
 
 ### <a name="import-data-factory-modules"></a>Naimportovat moduly objektu pro vytváření dat
 
-1. Vyberte **moduly** v **SDÍLENÉ prostředky** v levé nabídce a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů. Pokud tam není, vyberte **procházet galerii** na panelu nástrojů.
+1. Vyberte **moduly** v **SDÍLENÉ prostředky** v levé nabídce a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů. Pokud nejsou v seznamu, vyberte **procházet galerii** na panelu nástrojů a pokračujte následujícími kroky.
 
-    ![Automatizace domovské stránky](./media/how-to-schedule-azure-ssis-integration-runtime/automation-modules.png)
-2. V **procházet galerii** zadejte **AzureRM.Profile** v okně vyhledávání a stiskněte klávesu **ENTER**. Vyberte **AzureRM.Profile** v seznamu. Potom klikněte na **Import** na panelu nástrojů. 
+    > [!IMPORTANT]
+    > V současné době můžete použít pouze **AzureRM.DataFactoryV2 0.5.2** a **AzureRM.Profile 4.5.0** moduly.
 
-    ![Vyberte AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/select-azurerm-profile.png)
-1. V **Import** vyberte **souhlasím s aktualizovat všechny moduly Azure** a klikněte na **OK**.  
+    ![Ověřte požadované moduly](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-    ![Import AzureRM.Profile](./media/how-to-schedule-azure-ssis-integration-runtime/import-azurerm-profile.png)
-4. Zavřete windows se můžete vrátit k **moduly** okno. Měli byste vidět stav importu v seznamu. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. Počkejte, až se zobrazí **stav** jako **dostupné**.
+2.  Přejděte do Galerie prostředí PowerShell pro [AzureRM.DataFactoryV2 0.5.2 modulu](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2), vyberte **nasadit do Azure Automation**, vyberte svůj účet Automation a pak vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** část v nabídce vlevo a počkejte, až se zobrazí **stav** z **AzureRM.DataFactoryV2 0.5.2**  modulu změnu **dostupné**.
 
-    ![Stav importu](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-profile.png)
-1. Opakujte kroky k importu **AzureRM.DataFactoryV2** modulu. Potvrďte, že je nastaven stav tohoto modulu **dostupné** než budete pokračovat. 
+    ![Ověření modulu pro vytváření dat](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-    ![Stav poslední importu](./media/how-to-schedule-azure-ssis-integration-runtime/module-list-with-azurerm-datafactoryv2.png)
+3.  Přejděte do Galerie prostředí PowerShell pro [AzureRM.Profile 4.5.0 modulu](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0), klikněte na **nasadit do Azure Automation**, vyberte svůj účet Automation a pak vyberte **OK**. Přejděte zpět na zobrazení **moduly** v **SDÍLENÉ prostředky** část v nabídce vlevo a počkejte, až se zobrazí **stav** z **AzureRM.Profile 4.5.0** modulu změnu **dostupné**.
+
+    ![Ověření modulu profilu](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-a-powershell-runbook"></a>Vytvoření runbooku v PowerShellu
 Následující postup popisuje kroky pro vytvoření sady runbook prostředí PowerShell. Skript přidružené k sadě runbook buď spustí nebo zastaví IR SSIS služby Azure podle příkaz, který určíte v parametru **operace** parametr. Tato část neposkytuje všechny podrobnosti pro vytvoření sady runbook. Další informace najdete v tématu [vytvoření sady runbook](../automation/automation-quickstart-create-runbook.md) článku.

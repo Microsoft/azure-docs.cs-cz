@@ -1,9 +1,9 @@
 ---
-title: "Sestavení a nasazení modelu strojového učení pomocí systému SQL Server na virtuálním počítači Azure | Microsoft Docs"
-description: "Proces pokročilou analýzu a technologie v akci"
+title: Sestavení a nasazení modelu strojového učení pomocí systému SQL Server na virtuálním počítači Azure | Microsoft Docs
+description: Proces pokročilou analýzu a technologie v akci
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Proces Team dat. vědecké účely v akci: pomocí SQL serveru
 V tomto kurzu vás provede procesem vytváření a nasazování modelu strojového učení pomocí systému SQL Server a veřejně dostupné datové sady – [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datovou sadu. Postup dodržovat standardní data vědecké účely pracovního postupu: ingestování a zkoumat data, pracovníka funkce pro usnadnění učení se pak sestavení a nasazení modelu.
@@ -75,8 +75,8 @@ Nastavení prostředí vědecké zpracování dat Azure:
    > [!NOTE]
    > Ukázkové skripty a poznámkových bloků IPython bude stažen do virtuálního počítače vědecké zpracování dat během procesu instalace. Po dokončení skriptu po instalaci virtuálního počítače, bude mít ukázky knihovna dokumentů Virtuálního počítače:  
    > 
-   > * Ukázku skripty:`C:\Users\<user_name>\Documents\Data Science Scripts`  
-   > * Ukázka IPython poznámkových bloků:`C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
+   > * Ukázku skripty: `C:\Users\<user_name>\Documents\Data Science Scripts`  
+   > * Ukázka IPython poznámkových bloků: `C:\Users\<user_name>\Documents\IPython Notebooks\DataScienceSamples`  
    >   kde `<user_name>` je váš virtuální počítač Windows přihlašovací jméno. Bude označujeme ukázkové složky jako **ukázkové skripty** a **poznámkových bloků IPython ukázka**.
    > 
    > 
@@ -578,7 +578,7 @@ V tomto cvičení jsme již prozkoumali a analýzou dat v systému SQL Server a 
    
     ![Azure Machine Learning Import dat][17]
 2. Vyberte **Azure SQL Database** jako **zdroj dat** v **vlastnosti** panelu.
-3. Zadejte název DNS databáze v **název databázového serveru** pole. Formát:`tcp:<your_virtual_machine_DNS_name>,1433`
+3. Zadejte název DNS databáze v **název databázového serveru** pole. Formát: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Zadejte **název databáze** v odpovídajícím poli.
 5. Zadejte **uživatelské jméno SQL** v ** aqccount uživatelského jména a hesla **heslo uživatelského účtu serveru**.
 7. V **databázový dotaz** upravit textová oblast, vložte dotaz, který extrahuje pole potřeby databáze (včetně všech počítané pole, jako je popisků) a nižší ukázky data na požadovanou velikost.

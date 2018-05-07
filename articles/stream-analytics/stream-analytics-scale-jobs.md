@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálování úlohu služby Azure Stream Analytics, pokud chcete zvýšit propustnost
 Tento článek ukazuje, jak ladit dotaz služby Stream Analytics chcete zvýšit propustnost pro úlohy streamování Analytics. V následujícím průvodci můžete škálovat vaše úloha zpracování větší zátěže a využít výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, paměť).
@@ -31,7 +31,8 @@ Pokud váš dotaz je ze své podstaty plně může běžet paralelně přes vstu
         - Pokud je problém z důvodu omezení jímka, budete muset zvýšit počet oddílů výstup (a také vstupní oddíly zachovat úlohy plně může běžet paralelně), nebo zvětšete velikost prostředky jímky (například počet jednotek žádosti pro CosmosDB).
     - V diagramu úlohy, je každý oddíl nevyřízených událostí Metrika pro každý vstupní. Pokud metriku nevyřízených událostí i nadále, je také jako ukazatel, že systémový prostředek je omezena (buď z důvodu omezení výstupní jímku nebo vysoké využití procesoru).
 4.  Jakmile zjistíte, jaké úlohu 6 SU dosáhnout omezení, že můžete odvodit lineárně kapacity zpracování úlohy a přidáte další služby SUs, za předpokladu, že nemáte žádná data zkreslit, provede určité oddíl "horkých".
->[!Note]
+
+> [!NOTE]
 > Vyberte správný počet jednotek streamování: protože Stream Analytics vytvoří uzel zpracování pro přidání jednotlivých 6 SU, je nejvhodnější počet uzlů dělitele počet vstupních oddílů, takže můžete oddíly rovnoměrně rozdělené mezi uzly.
 > Například máte měří vaší 6 SU úlohy můžete dosáhnout 4 MB/s zpracování rychlost a spočítat vstupní oddílu je 4. Můžete spustit úlohu s 12 SU k dosažení rychlost zpracování přibližně 8 MB/s nebo 24 SU k dosažení 16 MB/s. Potom se můžete rozhodnout, kdy se má zvýšit číslo SU pro úlohu na jakou hodnotu, v závislosti na vaší vstupní míry.
 

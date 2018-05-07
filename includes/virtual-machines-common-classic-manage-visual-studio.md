@@ -128,6 +128,6 @@ Jak nakonfigurovat virtuální počítač a na něj nainstalovat software, je do
 1. V Průzkumníku serveru, vyberte virtuální počítač, které chcete vypnout v **virtuální počítače Azure** uzlu.
 2. V místní nabídce vyberte buď **vypnutí** příkazu, nebo zvolte **konfigurace** zobrazit stránku konfigurace virtuálního počítače, a pak vyberte **vypnutí** tlačítko.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o vytváření virtuálních počítačů najdete v tématu [vytvořit virtuálním počítači systémem Linux](../articles/virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuálního počítače se systémem Windows na portálu Azure preview](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

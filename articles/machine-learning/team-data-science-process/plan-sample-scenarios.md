@@ -1,9 +1,9 @@
 ---
-title: "Určit pokročilou analýzu scénáře pro Azure Machine Learning | Microsoft Docs"
-description: "Vyberte odpovídající scénáře pro to advanced prediktivní analýzy v procesu Team Data vědecké účely."
+title: Určit pokročilou analýzu scénáře pro Azure Machine Learning | Microsoft Docs
+description: Vyberte odpovídající scénáře pro to advanced prediktivní analýzy v procesu Team Data vědecké účely.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 53aecc1e-5089-42cf-8d44-77678653f92d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b6a92f4f4615954902124c59adca25560182de6
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: 7b1b8f00e109776a3a5d3cc8c2224e8160b85704
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scénáře pro pokročilé analýzy ve službě Azure Machine Learning
 Tento článek popisuje řadu ukázkových zdrojů dat a cílové scénáře, které mohou být zpracována [tým datové vědy procesu (TDSP)](overview.md). TDSP poskytuje systematicky pro týmy spolupracovat na vytváření inteligentní aplikace. Scénáře, které jsou uvedeny v tomto tématu ilustrují možnosti dostupné v pracovním postupu zpracování dat, které jsou závislé na vlastností dat, umístění zdrojového a cílového úložiště v Azure.
@@ -35,7 +35,7 @@ Každý z těchto částí uvede vzorový scénář. Pro každý scénář, věd
 > **Pro všechny z následujících scénářů budete muset:**
 > <br/>
 > 
-> * [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md)
+> * [vytvořit účet úložiště](../../storage/common/storage-create-storage-account.md)
 >   <br/>
 > * [Vytvořit pracovní prostor služby Azure Machine Learning](../studio/create-workspace.md)
 > 

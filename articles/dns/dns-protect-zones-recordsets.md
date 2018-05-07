@@ -3,8 +3,8 @@ title: Ochrana zóny DNS a záznamy | Microsoft Docs
 description: Jak chránit zóny DNS a sady záznamů v Microsoft Azure DNS.
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
+author: KumudD
+manager: jeconnoc
 ms.assetid: 190e69eb-e820-4fc8-8e9a-baaf0b3fb74a
 ms.service: dns
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
-ms.author: jonatul
-ms.openlocfilehash: a23f5fa296be6d883229d3810e0387224b6708ff
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: kumud
+ms.openlocfilehash: d13556eb274990eadf58070c119a3e9960b90699
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chránit zóny DNS a záznamy
 

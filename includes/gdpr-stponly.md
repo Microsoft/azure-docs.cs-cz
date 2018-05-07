@@ -5,4 +5,4 @@ MS.Service: zásad azure ms.topic: zahrnují ms.date: 04/24/2018 ms.author: lizr
 ---
 
 >[!Note] 
->Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR oddílu v Centru zabezpečení služby](https://www.microsoft.com/en-us/TrustCenter/Privacy/gdpr/default.aspx).
+>Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR části portálu služby důvěřovat](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

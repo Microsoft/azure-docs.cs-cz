@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace - údržby"
-description: "FedRAMP webové aplikace automatizace - údržby"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace - údržby
+description: FedRAMP webové aplikace automatizace - údržby
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: de7dd5b4651f7f74d90d9d026af71cd676c720e6
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="maintenance-ma"></a>Údržby (MA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu údržby systému, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění údržby zásady systému a ovládací prvky přidružené systému údržby; kontroluje a aktualizuje aktuální zásady údržby systému [přiřazení: organizace definované frekvence]; a postupy údržby systému [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.a** organizace plánuje, provede, dokumenty a zkontroluje záznamy o údržbu a opravy na informace o součástech systému v souladu se specifikací výrobce nebo dodavatele nebo požadavků organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.b** organizace schvalovat a monitoruje všechny aktivity údržby, zda provést v lokalitě, nebo vzdáleně a jestli je zařízení servis v lokalitě nebo odebrat do jiného umístění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.c** organizace vyžaduje, aby [přiřazení: organizace definované pracovníky nebo rolí] explicitně schválit odebrání informace systému nebo součástí systému od organizace zařízení pro odlehlého údržby nebo oprav.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.d** organizace upraví zařízení k odebrání všech informací z přidružených média před odebrání od organizace zařízení pro odlehlého údržby nebo oprav.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2.e** Organizace kontroluje všechny kontrolní mechanismy zabezpečení potenciálně ovlivněné ověřit, zda ovládací prvky jsou stále funguje správně následující akce údržby nebo oprava.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 2.f** organizace zahrnuje [přiřazení: organizace definované informace týkající se údržby] v záznamech organizační údržby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2 (2) .a** organizace využívá automatizované mechanismy pro plán, chování a dokumentu údržbu a opravy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-2 (2) .b** organizace vytváří aktuální, přesné, a dokončení zaznamenává všechny akce údržby a opravu požadovali, naplánované v procesu a byla dokončena.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 3** organizace schválí, ovládací prvky a sleduje informace nástroje pro údržbu systému.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (1)** organizace zkontroluje nástroje údržby přenášejí do zařízení, Údržba pracovníky nesprávná nebo neoprávněné změny.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (2)** organizace kontroluje médium obsahující diagnostické a testovací programy pro škodlivý kód před média se používají v systému informace.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-3 (3)** organizace brání neoprávněným odebrání zařízení údržby ověření, že je žádné organizační informace obsažené na zařízení; úpravě nebo zničení obsahující organizační údaje zařízení; zachování zařízení v rámci služby. nebo získání výjimku z [přiřazení: organizace definované pracovníky nebo rolí] explicitně autorizace odebrání zařízení ze zařízení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.a** organizace schvalovat a monitoruje nemístních údržby a diagnostiky aktivity.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.b** organizace dovoluje nemístních údržby a diagnostických nástrojů pouze jako konzistentní s organizační zásady a popsané v plánu zabezpečení pro systém informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.c** organizace využívá silné ověřovací data v zařízení, které nejsou místní údržby a diagnostiky relací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 4.d** organizace udržuje záznamy pro příchozí data údržby a diagnostiky aktivity.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4.e** Organizace ukončí relace a připojení k síti po dokončení příchozí data údržby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (2)** dokumenty organizace v plánu zabezpečení pro informace o systému, zásady a postupy pro vytvoření a používání diagnostiky připojení a které nejsou místní údržby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (3)** organizace vyžaduje, aby z informace o systému, který implementuje zabezpečení schopností, který je porovnatelný z hlediska schopnosti implementované v systému probíhá údržba; nebo odebere provést nemístních údržby a diagnostické služby součást na obsloužení ze systému informace před nemístních údržby nebo diagnostické služby, upraví komponentu (s ohledem na organizace) před odebrání od zařízení, organizace, a poté, co je služba provést, zkontroluje a upraví komponentu (s ohledem na potenciálně škodlivého softwaru) před novým připojením součást do systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-4 (6)** systém informace implementuje kryptografických mechanismů k ochraně integrity a důvěrnosti nemístních údržby a diagnostiky komunikace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.a** organizace proces autorizace pracovníky údržby vytváří a udržuje seznam autorizovaných údržby organizace nebo pracovníky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.b** organizace zajistí, že-vyvedena pracovníky provádění údržby systému informace mají požadovaná oprávnění přístupu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 5.c** organizace označí organizační pracovníky s autorizací požadovaný přístup a technické způsobilosti dohlížet aktivity údržby pracovníků, kteří nemají potřebná přístupová oprávnění.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5 (1) .a** organizace implementuje postupy pro použití údržby pracovníky, kteří nemají chráněných příslušná bezpečnostní prostorů, nebo nejsou občanům USA, které zahrnují následující pracovníky údržby požadavky, kteří mají není potřeba povolení přístupu, chráněných prostorů nebo formální přístup schválení jsou vyvedena a pod dohledem během provádění údržby a diagnostiky aktivity systému informace schválené organizační pracovníky, kteří jsou plně vymazány, mají odpovídající povolení přístupu a jsou technicky kvalifikovaný; před inicializace údržby nebo diagnostiky aktivity pracovníky kdo není musel povolení přístupu, chráněných prostorů nebo schválení přístup formální, všechny volatile informace, které jsou součástí úložišť v rámci systému informace upravený a všechny stálé úložiště média se odeberou nebo fyzicky odpojen od serveru a zabezpečené.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA-5 (1) .b** organizace vyvíjí a implementuje alternativní bezpečnostní opatření zabezpečení v případě komponentu systémové informace nelze upravený, odebrán nebo odpojen od systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **MA 6** organizace získává údržby podporu nebo k výměně za chodu částí pro [přiřazení: komponent systému informace definované organizace] v [přiřazení: organizace definované časové období] selhání.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|

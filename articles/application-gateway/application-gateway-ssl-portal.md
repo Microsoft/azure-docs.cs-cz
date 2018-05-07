@@ -1,27 +1,27 @@
 ---
-title: "Vytvoření služby application gateway s ukončení protokolu SSL - portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak přidat certifikát pro ukončení protokolu SSL pomocí portálu Azure a vytvoření služby application gateway."
+title: Vytvoření služby application gateway s ukončení protokolu SSL - portálu Azure | Microsoft Docs
+description: Zjistěte, jak přidat certifikát pro ukončení protokolu SSL pomocí portálu Azure a vytvoření služby application gateway.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 10796000f913428e39a0ffbd0aa2cbe0c515eb7a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Vytvoření služby application gateway s ukončení protokolu SSL pomocí portálu Azure
 
 Na portálu Azure můžete použít k vytvoření [Aplikační brána](application-gateway-introduction.md) s certifikát pro ukončení protokolu SSL používaný virtuálních počítačů pro back-end serverů.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořit certifikát podepsaný svým držitelem
@@ -102,7 +102,7 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 3. Zadejte *myBackendSubnet* pro název podsítě a pak klikněte na tlačítko **OK**.
 
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Je také nainstalovat službu IIS na virtuálních počítačích, chcete-li ověřit, že aplikační brány byl úspěšně vytvořen.
 
@@ -113,15 +113,15 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 3. Pro virtuální počítač, zadejte tyto hodnoty:
 
     - *Můjvp* – pro název virtuálního počítače.
-    - *azureuser* – pro uživatelské jméno správce.
+    - *azureuser* – uživatelské jméno správce.
     - *Azure123456!* pro heslo.
     - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
-5. Vyberte **DS1_V2** pro velikost virtuálního počítače, a klikněte na tlačítko **vyberte**.
+5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
-7. Klikněte na tlačítko **zakázané** zakázat Diagnostika spouštění.
-8. Klikněte na tlačítko **OK**, zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
+8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
@@ -161,11 +161,11 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 
     ![Zaznamenejte veřejná IP adresa brány aplikace](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče. Přijmout upozornění zabezpečení, pokud se používá certifikát podepsaný svým držitelem, vyberte podrobnosti a potom přejděte na webovou stránku:
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Přijmout upozornění zabezpečení, pokud se používá certifikát podepsaný svým držitelem, vyberte podrobnosti a potom přejděte na webovou stránku:
 
     ![Upozornění zabezpečení](./media/application-gateway-ssl-portal/application-gateway-secure.png)
 
-    Zabezpečené webu služby IIS se následně zobrazí jako v následujícím příkladu:
+    Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
     ![Otestovat základní adresu URL v aplikační brány](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 

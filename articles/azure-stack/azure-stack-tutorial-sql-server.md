@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Databáze SQL zpřístupnit uživatelům Azure zásobníku
 Jako správce cloudu Azure zásobníku, můžete vytvořit nabídky, které uživatelům vytvoření databáze SQL, které můžete použít s jejich nativní cloudové aplikace, weby a úlohami (klienty). Tím, že tyto databáze vlastní, na vyžádání, založené na cloudu poskytuje uživatelům, můžete je uložit čas a prostředky. Pokud chcete nastavit tuto možnost, bude takto:
@@ -34,8 +34,8 @@ Jako správce cloudu Azure zásobníku, můžete vytvořit nabídky, které uži
 
 Proces nasazení je podrobně popsány v [databáze SQL pomocí na Azure zásobníku článku](azure-stack-sql-resource-provider-deploy.md)a se skládá z následujících kroků:
 
-1. [Nasazení poskytovatele prostředků SQL]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider).
-2. [Ověření nasazení]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
+1. [Nasazení poskytovatele prostředků SQL](azure-stack-sql-resource-provider-deploy.md).
+2. [Ověření nasazení](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal).
 3. Zadejte kapacitu připojením k hostování systému SQL server.
 
 ## <a name="create-an-offer"></a>Vytvoření nabídky

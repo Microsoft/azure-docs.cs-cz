@@ -3,7 +3,7 @@ title: Přístup k datové sady s knihovnou klienta Machine Learning Python | Mi
 description: Nainstalovat a používat klientské knihovny Python přístup k datům a spravovat Azure Machine Learning bezpečně z místního prostředí Python.
 services: machine-learning
 documentationcenter: python
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: f97fbb76ddf48fb3c7ec79b6b2ed8cee3e0ceabb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Ve verzi preview Klientská knihovna pro Microsoft Azure Machine Learning Python můžete povolit zabezpečený přístup k vaší Azure Machine Learning datové sady z místního prostředí Python a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -41,7 +41,7 @@ Klientská knihovna Python byl testován v následujících prostředích:
 Má závislost na následujících balíčků:
 
 * žádostí
-* python-dateutil
+* Python dateutil
 * pandas
 
 Doporučujeme použít distribuci jazyka Python, jako [Anaconda](http://continuum.io/downloads#all) nebo [zápoje](https://store.enthought.com/downloads/), které jsou součástí Python, IPython a nainstalované tři balíčky uvedené výše. I když IPython není nezbytně nutné, je skvělé prostředí pro manipulace a vizualizace dat interaktivně.

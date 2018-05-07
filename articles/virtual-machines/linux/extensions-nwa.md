@@ -3,7 +3,7 @@ title: Rozšíření virtuálního počítače Azure sítě sledovacích proces�
 description: Nasaďte agenta sledovací proces sítě na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dennisg
+author: gurudennis
 manager: amku
 editor: ''
 tags: azure-resource-manager
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: bd5dc6a50b521f883dfb453127a4e41b5e46ff15
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a33f183470ec3879344f0cfe335bab38f9ff30f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Sítě rozšíření virtuálního počítače sledovacích procesů agenta pro Linux
 
@@ -39,11 +39,12 @@ Rozšíření agenta sledovací proces sítě může být spuštěn proti tyto L
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS a 12.04 LTS |
 | Debian | 7 a 8 |
-| RedHat | 6.x a 7.x |
-| Oracle Linux | 7 x |
-| SuSE | 11 a 12 |
-| OpenSuse | 7.0 |
-| CentOS | 7.0 |
+| RedHat | 6 a 7 |
+| Oracle Linux | 6.8 + a 7 |
+| SUSE Linux Enterprise Server | 11 a 12 |
+| OpenSUSE přestupného | 42.3 + |
+| CentOS | 6.5 + a 7 |
+| CoreOS | 899.17.0+ |
 
 Všimněte si, že se v tuto chvíli nepodporuje CoreOS.
 

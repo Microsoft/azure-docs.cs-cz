@@ -6,13 +6,13 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 0e10b415f3d1c7ca502cfd63ebd27a6adcb69635
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizovat operačního systému a framework opravy s ACR sestavení
 
@@ -58,7 +58,7 @@ Protože ACR sestavení dynamicky zjišťuje základní image závislosti, při 
 Další informace o operačního systému a framework opravy v kurzu třetí sestavení ACR [automatické image je založený na aktualizace základní bitovou kopii s Azure Container registru sestavení](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Při sestavení ACR je ve verzi preview, sestavení aktivační událost aktualizace základní bitovou kopii, pouze když Image základní a aplikace jsou umístěny ve stejné registru kontejner Azure.
+> Počáteční verzi Preview sestavení aktivační událost základní image aktualizace pouze v případě, že Image základní a aplikace jsou umístěny ve stejné registru kontejner Azure.
 
 ## <a name="next-steps"></a>Další postup
 

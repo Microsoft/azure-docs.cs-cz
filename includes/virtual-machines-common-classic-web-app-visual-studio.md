@@ -8,7 +8,7 @@ Pokud chcete vytvořit virtuální počítač při vytvoření webové aplikace,
 2. V **nový projekt ASP.NET** dialogové okno, vyberte typ webové aplikace, které chcete a v části Azure v dialogovém okně (v pravém dolním rohu) ujistěte se, že **hostitel v cloudu** zaškrtávací políčko je vybrané (Toto zaškrtávací políčko je označeno **vytvořit vzdálené prostředky** některé instalace).
    
     ![][0]
-3. V tomto příkladu v rozevíracím seznamu v části Microsoft Azure, zvolte **virtuálního počítače (v1)**a klikněte **OK** tlačítko.
+3. V tomto příkladu v rozevíracím seznamu v části Microsoft Azure, zvolte **virtuálního počítače (v1)** a klikněte **OK** tlačítko.
 4. Pokud se zobrazí výzva, přihlaste se k Azure. **Vytvořit virtuální počítač** zobrazí se dialogové okno.
    
     ![][2]
@@ -34,7 +34,7 @@ Pokud chcete vytvořit virtuální počítač při vytvoření webové aplikace,
     
     ![][5]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete přizpůsobit publikované skripty, které jste vytvořili, přečtěte si podrobné informace v [pomocí skriptů prostředí PowerShell systému Windows k publikování pro vývoj a testovací prostředí](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG

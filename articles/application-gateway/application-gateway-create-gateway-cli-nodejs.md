@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření služby Azure Application Gateway - rozhraní příkazového řádku Azure 1.0 | Microsoft Docs"
-description: "Informace o vytvoření služby Application Gateway pomocí Azure CLI 1.0 ve službě Správce prostředků"
+title: Vytvoření služby Azure Application Gateway - rozhraní příkazového řádku Azure 1.0 | Microsoft Docs
+description: Informace o vytvoření služby Application Gateway pomocí Azure CLI 1.0 ve službě Správce prostředků
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: fe50fb3a7434702101dc5ae7a9dd176a33423119
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-create-gateway-portal.md)
+> * [Azure Portal](application-gateway-create-gateway-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell](application-gateway-create-gateway.md)
 > * [Šablona Azure Resource Manageru](application-gateway-create-gateway-arm-template.md)
@@ -67,7 +67,7 @@ Otevřete **Microsoft Azure příkazového řádku**a přihlaste se.
 azure login
 ```
 
-Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte do https://aka.ms/devicelogin ve prohlížeči a pokračujte v procesu přihlášení.
+Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte na https://aka.ms/devicelogin ve prohlížeči a pokračujte v procesu přihlášení.
 
 ![cmd zobrazující zařízení přihlášení][1]
 
@@ -148,7 +148,7 @@ azure network application-gateway create \
 Tento příklad vytvoří základní aplikační brána s výchozím nastavením pro naslouchací proces, fond back-end, nastavení http back-end a pravidla. Můžete upravit toto nastavení tak, aby vyhovovala vašemu nasazení po úspěšné přidělení přístupových práv.
 Pokud již máte webové aplikace definovaná pomocí fondu back-end v předchozích krocích po vytvoření, Vyrovnávání zatížení začne.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučte se vytvářet vlastní stavu sondy navštivte stránky [vytvořit vlastní stav testu](application-gateway-create-probe-portal.md)
 

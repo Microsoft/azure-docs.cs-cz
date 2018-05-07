@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 3a7c7663bc13b7169ec9d31aa21365219ec39059
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza události a vizualizace s Application Insights
 
@@ -32,7 +32,7 @@ Azure Application Insights je rozšiřitelná platforma pro monitorování aplik
 
 ## <a name="monitoring-in-app-insights"></a>Monitorování v nástroji App Insights
 
-Application Insights obsahuje s formátováním předinstalované s Service Fabric. Na stránce Přehled AI poskytuje základní informace o vaší služby, jako je například doba odezvy a počet zpracovaných požadavků. Kliknutím na tlačítko "Vyhledat" v horní části uvidíte seznam posledních požadavků v aplikaci. Kromě toho by být najdete zde chybné žádosti a diagnostikovat, jaké chyby mohlo dojít.
+Application Insights obsahuje s formátováním počáteční nastavení počítače při použití Service Fabric. Na stránce Přehled AI poskytuje základní informace o vaší služby, jako je například doba odezvy a počet zpracovaných požadavků. Kliknutím na tlačítko "Vyhledat" v horní části uvidíte seznam posledních požadavků v aplikaci. Kromě toho by být najdete zde chybné žádosti a diagnostikovat, jaké chyby mohlo dojít.
 
 ![Přehled AI](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
@@ -109,7 +109,7 @@ Zajistěte, aby proveďte požadované změny v filtry a také zahrnovat všechn
 
 Doporučuje se použít EventFlow a WAD jako řešení agregace, protože umožňují pro více modulární přístup k diagnostiky a monitorování, tj. Pokud chcete změnit vaše výstupy z EventFlow, vyžaduje nijak nemění skutečné instrumentace, stačí Jednoduchá změna konfiguračního souboru. Pokud však rozhodnete investovat do pomocí Application Insights a pravděpodobně nedojde ke změně na jiné platformě, by měla vypadat do aplikace pomocí AI na novou sadu SDK pro agregaci událostí a jejich odesláním AI. To znamená, že se již muset nakonfigurovat EventFlow odeslání dat do AI, ale místo toho nainstaluje balíček Service Fabric NuGet ApplicationInsight. Informace o balíčku naleznete [zde](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 
-[Podpora služby Application Insights pro Mikroslužeb a kontejnery](https://azure.microsoft.com/en-us/blog/app-insights-microservices/) uvedeny některé nové funkce, které se pracuje (aktuálně stále v beta), které umožňují, abyste měli bohatší možnosti monitorování se na pole s AI. Jedná se o závislost sledování (používá se při vytváření AppMap služeb a aplikací v clusteru a komunikace mezi nimi) a lepší korelace trasování pocházejících z vašich služeb (pomáhá v lepší přesným rozpoznáním problém v pracovním postupu aplikace nebo služby).
+[Podpora služby Application Insights pro Mikroslužeb a kontejnery](https://azure.microsoft.com/blog/app-insights-microservices/) uvedeny některé nové funkce, které se pracuje (aktuálně stále v beta), které umožňují, abyste měli bohatší možnosti monitorování se na pole s AI. Jedná se o závislost sledování (používá se při vytváření AppMap služeb a aplikací v clusteru a komunikace mezi nimi) a lepší korelace trasování pocházejících z vašich služeb (pomáhá v lepší přesným rozpoznáním problém v pracovním postupu aplikace nebo služby).
 
 Pokud jsou vývoj v rozhraní .NET a budou pravděpodobně používat některé z Service Fabric programovací modely a jsou ochotni použít AI jako svou platformu pro vizualizaci a analýzu dat událostí a protokolů, pak doporučujeme přejít prostřednictvím sady SDK AI trasy jako pracovní postup monitorování a Diagnostika. Čtení [to](../application-insights/app-insights-asp-net-more.md) a [to](../application-insights/app-insights-asp-net-trace-logs.md) začít pracovat s pomocí AI shromáždit a zobrazit protokoly.
 

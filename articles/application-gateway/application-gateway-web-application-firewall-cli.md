@@ -1,31 +1,31 @@
 ---
-title: "Vytvoření služby application gateway s brány firewall webových aplikací – rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí rozhraní příkazového řádku Azure."
+title: Vytvoření služby application gateway s brány firewall webových aplikací – rozhraní příkazového řádku Azure | Microsoft Docs
+description: Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí rozhraní příkazového řádku Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: 87125b68c81af07d0ecd9693fdf7e2dc00a93324
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí rozhraní příkazového řádku Azure
 
 Rozhraní příkazového řádku Azure můžete použít k vytvoření [Aplikační brána](application-gateway-introduction.md) s [brány firewall webových aplikací](application-gateway-web-application-firewall-overview.md) (firewall webových aplikací), který používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Firewall webových aplikací používá [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) pravidla k ochraně vaší aplikace. Mezi tato pravidla patří ochranu před útoky, například typu Injektáž SQL a útoky skriptování mezi weby a hijacks relace. 
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení sítě
 > * Vytvoření služby application gateway s povolen firewall webových aplikací
-> * Vytvoření sady škálování virtuálního počítače
+> * Vytvoření škálovací sady virtuálních počítačů
 > * Vytvoření účtu úložiště a konfiguraci diagnostiky
 
 ![Příklad brány firewall webových aplikací](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -44,7 +44,7 @@ Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují 
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
 Virtuální sítě a podsítě se používají k poskytování síťové připojení k službě application gateway a její přidružené prostředky. Vytvořit virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet* s [vytvoření sítě vnet az](/cli/azure/network/vnet#az_network_vnet_create) a [az sítě vnet podsíť vytváření](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* s [vytvoření veřejné sítě az-ip](/cli/azure/network/public-ip#az_network_public_ip_create).
 
@@ -100,7 +100,7 @@ Ho může trvat několik minut pro službu application gateway, který se má vy
 - *appGatewayFrontendIP* -přiřadí *myAGPublicIPAddress* k *appGatewayHttpListener*.
 - *rule1 New* – výchozí směrování pravidlo, které souvisí s *appGatewayHttpListener*.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která poskytuje dva servery pro fond back-end v aplikační brány. Jsou virtuální počítače ve škálovací sadě přidružené *myBackendSubnet* podsítě. Chcete-li vytvořit měřítko nastavte, můžete použít [vytvořit az vmss](/cli/azure/vmss#az_vmss_create).
 
@@ -129,7 +129,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfiguraci diagnostiky
@@ -163,7 +163,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 ## <a name="test-the-application-gateway"></a>Testování služby application gateway
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, použijte [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+Chcete-li získat veřejnou IP adresu brány, aplikace, použijte [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -182,7 +182,7 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Nastavení sítě
 > * Vytvoření služby application gateway s povolen firewall webových aplikací
-> * Vytvoření sady škálování virtuálního počítače
+> * Vytvoření škálovací sady virtuálních počítačů
 > * Vytvoření účtu úložiště a konfiguraci diagnostiky
 
 Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.

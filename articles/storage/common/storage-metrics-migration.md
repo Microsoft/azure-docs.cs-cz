@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c4dc9b231668315af16c625314c737fee99d672d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: da8eb0b9e2e5aba60b61a36d83f525c7ce4a7958
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-storage-metrics-migration"></a>Migrace metrik Azure Storage
 
@@ -117,7 +117,7 @@ Odpověď: Pokud jste vytvořili classic výstraha pravidla založená na starš
 
 * Bude nové metriky data uložená ve stejném účtu úložiště ve výchozím nastavení?
 
-Odpověď: Ne. Pokud potřebujete archivaci metriky dat k účtu úložiště, můžete použít [nastavení diagnostiky v Azure monitorování](https://azure.microsoft.com/blog/azure-monitor-multiple-diagnostic-settings/)
+Odpověď: Ne. Pokud potřebujete archivaci metriky dat k účtu úložiště, můžete použít [monitorování diagnostiky nastavení rozhraní API služby Azure](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)
 
 ## <a name="next-steps"></a>Další postup
 

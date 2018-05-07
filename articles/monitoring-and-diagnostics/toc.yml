@@ -73,6 +73,8 @@
           href: monitoring-enable-alerts-using-template.md
         - name: Zkopírování upozornění z portálu OMS na web Azure Portal
           href: monitoring-alerts-extend-tool.md
+        - name: Upozornění s dynamickými prahovými hodnotami
+          href: monitoring-alerts-dynamic-thresholds.md
     - name: Použití skupin akcí s upozorněními
       items:
         - name: Další informace o schématu webhooků

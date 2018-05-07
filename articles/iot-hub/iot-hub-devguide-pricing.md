@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 390e917990586642e55913a69873b1707e371de3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9b0d2df078c59c7d261fd3231450ddfb2fdcd88e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách Azure IoT Hub
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 04/03/2018
 | Zprávy typu cloud zařízení | Budou se účtovat úspěšně odeslaných zpráv v 4 KB bloků, například zprávu 6 KB je účtován 2 zprávy. |
 | Nahrávání souborů | Přenos souborů do úložiště Azure není – měření podle objemu službou IoT Hub. Zprávy pro zahájení a ukončení přenosu souborů budou účtovat podle messaged měřené v přírůstcích po 4 KB. Například 10 MB soubor je účtován dvě zprávy kromě náklady na úložiště Azure. |
 | Přímé metody | Metoda úspěšné požadavky budou účtovat v bloky 4 KB, odpovědi s neprázdný subjekty účtované v 4 KB bloky jako další zprávy. Požadavky na odpojený zařízení budou účtovat jako zprávy v bloky 4 KB. Metoda s 6 KB textu, jejímž výsledkem odpověď se žádný text ze zařízení, například účtován jako dvě zprávy. Metoda s 6 KB textu, jejímž výsledkem 1 KB odpověď od zařízení, je účtován jako dvě zprávy pro požadavek plus další zprávu pro odpověď. |
-| Čtení dvojčat zařízení | Dvojče zařízení čte ze zařízení a z řešení zpět end účtujeme jako zprávy v bloky o velikosti 512 bajtů. Například čtení twin 6 KB zařízení je účtován jako 12 zprávy. |
-| Aktualizace dvojče zařízení (značky a vlastnosti) | Aktualizace zařízení twin ze zařízení a z back-end řešení budou účtovat jako zprávy v bloky o velikosti 512 bajtů. Například čtení twin 6 KB zařízení je účtován jako 12 zprávy. |
-| Dotazy twin zařízení | Dotazy budou účtovat jako zprávy v závislosti na velikosti výsledek v bloky o velikosti 512 bajtů. |
+| Přečte zařízení a modul twin | Twin přečte z modulu nebo zařízení a řešení zpět end účtujeme jako zprávy v bloky o velikosti 512 bajtů. Například čtení twin 6 KB je účtován jako 12 zprávy. |
+| Aktualizace zařízení a modul twin (značky a vlastnosti) | Aktualizace Twin z modulu na zařízení a back-end řešení budou účtovat jako zprávy v bloky o velikosti 512 bajtů. Například čtení twin 6 KB je účtován jako 12 zprávy. |
+| Zařízení a modul dotazů twin | Dotazy budou účtovat jako zprávy v závislosti na velikosti výsledek v bloky o velikosti 512 bajtů. |
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | Není účtován. |
-| Operace úlohy na zařízení | Budou se účtovat normální úlohy operací (např. aktualizace twin zařízení a metody). Například úlohu výsledkem volání metody 1000 s požadavky 1 KB a prázdný text odpovědi je účtován 1000 zprávy. |
+| Operace úlohy na zařízení | Budou se účtovat normální úlohy operací (například twin aktualizace a metody). Například úlohu výsledkem volání metody 1000 s požadavky 1 KB a prázdný text odpovědi je účtován 1000 zprávy. |
 
 > [!NOTE]
 > Všech velikostí se vypočítávají zvažování velikost datové části v bajtech (protokol rámcovacích bude ignorován). Pro zprávy, které se mají vlastnosti a text, velikost se vypočítává způsobem, bez ohledu na protokol. Další informace najdete v tématu [IoT Hub – Příručka vývojáře pro zasílání zpráv][lnk-message-size].

@@ -46,12 +46,14 @@
           href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
     - name: Containers
       items:
-        - name: Řešení kontejnerů
+        - name: Přehled monitorování kontejnerů
+          href: monitoring-container-overview.md
+        - name: Výkon kontejneru AKS
+          href: monitoring-container-health.md
+        - name: Monitorování Dockeru a kontejnerů s Windows
           href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Monitorování aplikací Dockeru
           href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Aplikace profilu
-          href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=%2fazure%2fmonitoring%2ftoc.json
     - name: Databáze
       items:
         - name: Azure SQL

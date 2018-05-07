@@ -1,8 +1,8 @@
 ---
-title: "Ověřování služby služby: Data Lake Store s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory"
+title: 'Ověřování služby služby: Data Lake Store s Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b3f19bb92d1eeb214150bf118d546cd1c67cd78
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58f269fa9c153a37a792d9d4efdaf0bd74eb265a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Service-to-service ověřování s Data Lake Store pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -77,6 +77,9 @@ Pokud protokolování prostřednictvím kódu programu, je potřeba ID pro vaši
 7. V **přidat vlastní přístup** okně klikněte na tlačítko **OK**. Nově přidané skupiny s příslušnými oprávněními, jsou uvedeny v **přístup** okno.
    
     ![Přiřazení oprávnění k seskupení](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "přiřadit oprávnění k seskupení")
+
+> [!NOTE]
+> Pokud máte v plánu na omezení aplikace Azure Active Directory do určené složky, budete také muset na poskytnout tu samou aplikaci Azure Active directory **Execute** permisison do kořenového adresáře povolit přístup k vytvoření souboru prostřednictvím. NET SDK.
 
 > [!NOTE]
 > Pokud chcete vytvořit účet Data Lake Store pomocí sady SDK, je nutné přiřadit ke skupině prostředků, ve kterém vytvoříte účet Data Lake Store webové aplikace Azure AD jako role.

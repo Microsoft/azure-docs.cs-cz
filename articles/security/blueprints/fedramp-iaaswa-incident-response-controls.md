@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – reakce na incidenty"
-description: "FedRAMP webové aplikace automatizace – reakce na incidenty"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – reakce na incidenty
+description: FedRAMP webové aplikace automatizace – reakce na incidenty
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: bcdb2b151c4d14af59e8133bd871ef6c3c0b9f73
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="incident-response-ir"></a>Reakce na incidenty (IR)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu reakcí na incidenty, které řeší účel, oboru, role, odpovědnosti, správu závazků, koordinaci mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásady reakcí na incidenty a ovládací prvky přidružené reakcí na incidenty; kontroluje a aktualizuje aktuální zásady reakcí na incidenty [přiřazení: organizace definované frekvence]; a reakce na incidenty postupy [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.a** organizace poskytuje reakcí na incidenty školení pro uživatele systému informace konzistentní s přiřazenou rolích a zodpovědnostech nejdete v rámci [přiřazení: organizace definované časové období] převzetí role reakcí na incidenty nebo zodpovědnost.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.b** organizace poskytuje uživatelům informace o systému konzistentní s přiřazené role a zodpovědnosti, pokud to vyžaduje změny systému informace o školení reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 2.c** organizace poskytuje reakcí na incidenty školení pro uživatele systému informace konzistentní s přiřazené role a zodpovědnosti [přiřazení: organizace definované frekvence] po tomto datu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2 (1)** organizace začleňuje simulované události do školení k zajištění efektivní odpovědi pracovníky v situacích, krizové reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-2 (2)** organizace využívá automatizované mechanismy poskytnout prostředí školení důkladnější a realistické reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-3** organizace testy možností reakce na incidenty pro systémové informace [přiřazení: definované organizace frekvence] pomocí [přiřazení: definované organizace testy] k určení efektivitu reakcí na incidenty a dokumenty výsledky.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-3 (2)** organizace koordinuje testování pomocí organizační elementy zodpovědná za související plány reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.a** organizace implementuje incident zpracování funkci pro incidenty zabezpečení, která zahrnuje přípravy, zjišťování a analýzu, členství ve skupině, odstranění a obnovení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.b** organizace koordinuje incidentu zpracování aktivity s pohotovostní plánování aktivit.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 4.c** organizace zahrnuje poznatky získané za aktivity probíhající zpracování incidentů do postupů reakcí na incidenty, trénování a testování, a implementuje výsledná změní odpovídajícím způsobem.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (1)** organizace využívá automatizované mechanismy pro podporu incidentů zpracování procesu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (2)** organizace zahrnuje dynamické změny konfigurace [přiřazení: komponent systému informace definované organizace] jako součást funkce reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (3)** identifikuje organizace [přiřazení: organizace definované třídy incidentů] a [přiřazení: organizace definované akcí v reakci na třídy incidentů] zajistit pokračování organizační poslání a podnikovým funkcím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (4)** organizace korelaci informace o incidentu a jednotlivých incidentu odpovědi k dosažení celé organizaci perspektivou na incidentu sledování a odpovědi.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -242,7 +242,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (6)** organizace implementuje funkce incidentu zpracování pro vnitřními hrozbami.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -256,7 +256,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-4 (8)** organizace koordinuje s [přiřazení: organizace definované externími organizacemi] korelaci a sdílení [přiřazení: organizace definované informace o incidentu] k dosažení cross-organization perspektivou na incident sledování a efektivnější incidentu odpovědi.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -270,7 +270,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 5** organizace sleduje a dokumenty bezpečnostní incidenty v oblasti informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -284,7 +284,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-5 (1)** organizace využívá automatizované mechanismy pro pomoc při sledování incidenty zabezpečení a kolekce a analýzu informace o incidentu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -298,7 +298,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 6.a** organizace vyžaduje osob, které by mohly vzbuzovat podezření bezpečnostní incidenty v oblasti pro funkce organizační reakcí na incidenty v rámci sestavy [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -312,7 +312,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 6.b** organizace hlásí informace o incidentu zabezpečení pro [přiřazení: organizace definované autority].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -326,7 +326,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 6 (1)** organizace využívá automatizované mechanismy, které pomáhají při vytváření sestav bezpečnostní incidenty v oblasti.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -340,7 +340,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 7** organizace poskytuje reakcí na incidenty podpory prostředek, nedílnou součástí organizační reakcí na incidenty funkci, která nabízí vám může poradit a pomoci uživatelům informace o systému pro manipulaci a vytváření sestav zabezpečení incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -354,7 +354,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7 (1)** organizace využívá automatizované mechanismy pro zvýšení dostupnosti incidentu odpovědi související informace a podpora.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -368,7 +368,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7 (2) .a** organizace vytváří vztah přímé, spolupráci mezi její funkce reakcí na incidenty a externí zprostředkovatelé funkce ochrany systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -382,7 +382,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR-7 (2) .b** organizace identifikuje členové týmu organizační reakcí na incidenty na externí zprostředkovatele.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -396,7 +396,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.a** organizace sama vyvinula plán reakcí na incidenty, které poskytuje organizace s plán pro implementaci jeho schopnosti reakce na incidenty; popisuje strukturu a organizace schopností reakcí na incidenty; poskytuje podrobný postup pro jak schopností reakcí na incidenty zapadá do celkového organizace; vyhovovat jedinečným požadavkům organizace, které se týkají zvláště, velikost, struktura a funkce; Definuje zařaditelné do sestavy incidentů; poskytuje metriky pro měření schopností reakcí na incidenty v rámci organizace; Definuje prostředky a podpora správy, které jsou potřebné k efektivně spravovat a zralé reakcí na incidenty schopností; a je zkontrolovány a schváleny [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -410,7 +410,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.b** organizace distribuuje kopie plán reakcí na incidenty [přiřazení: reakce na incidenty definované organizace pracovníky (identifikuje podle názvu nebo podle role) a organizační elementy].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -424,7 +424,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.c** organizace zkontroluje plánu reakcí na incidenty [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -438,7 +438,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.d** organizace aktualizací systému/organizační změny a problémy vzniklé při plánování implementace, spuštění nebo testování plán reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -450,9 +450,9 @@ ms.lasthandoff: 02/11/2018
 
 #### <a name="incident-response-plan"></a>Plán reakcí na incidenty
 
-**IR-8.e** Organizace komunikuje změny plánu reakcí na incidenty [přiřazení: reakce na incidenty definované organizace pracovníky (identifikuje podle názvu nebo podle role) a organizační elementy].
+**8.e reakcí na Incidenty** Organizace komunikuje změny plánu reakcí na incidenty [přiřazení: reakce na incidenty definované organizace pracovníky (identifikuje podle názvu nebo podle role) a organizační elementy].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -466,7 +466,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 8.f** organizace chrání před neoprávněným sdílením a úpravy plánu reakcí na incidenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -480,7 +480,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.a** organizace odpoví na informace úniky určením za systému informace o konkrétní informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -494,7 +494,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.b** organizace reaguje na úniky informace výstrahy [přiřazení: organizace definované pracovníky nebo rolí] informací distribuována pomocí metody komunikace nejsou přiřazeny přepadového.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -508,7 +508,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.c** organizace odpoví na úniky informace tak, že izoluje napadené informace systému nebo součást systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -522,7 +522,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.d** organizace reaguje na informace úniky eradikaci informace z napadené informace systému nebo komponenty.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -534,9 +534,9 @@ ms.lasthandoff: 02/11/2018
 
 #### <a name="information-spillage-response"></a>Informace o prostředku odpovědi
 
-**IR-9.e** Organizace reaguje na úniky informace identifikující jiné systémy informace nebo součástí systému, které může být následně napadené.
+**9.e reakcí na Incidenty** Organizace reaguje na úniky informace identifikující jiné systémy informace nebo součástí systému, které může být následně napadené.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -550,7 +550,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR 9.f** organizace odpoví na informace úniky provedením dalších [přiřazení: akce definované organizace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -564,7 +564,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 9 (1)** organizace přiřadí [přiřazení: organizace definované pracovníky nebo rolí] s odpovědnost za neodpovídá na požadavky informace politím.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -578,7 +578,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 9 (2)** organizace poskytuje informace o prostředku odpovědi školení [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -592,7 +592,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 9 (3)** organizace implementuje [přiřazení: organizace definované postupy] zajistit, aby organizace pracovníky vliv informace úniky nadále provádět přiřazené úlohy při napadené systémy jsou probíhat. opravné akce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -606,7 +606,7 @@ ms.lasthandoff: 02/11/2018
 
 **IR – 9 (4)** organizace využívá [přiřazení: ochrana definované organizace zabezpečení] pro pracovníky vystavený informace není uvnitř přiřazené oprávnění přístupu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

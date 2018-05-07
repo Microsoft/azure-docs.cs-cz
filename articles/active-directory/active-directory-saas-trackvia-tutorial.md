@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s TrackVia | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TrackVia."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TrackVia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 54e830f2ead2887c941d81a97ed619ae5cb1c750
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Kurz: Azure Active Directory integrace s TrackVia
 
@@ -108,13 +108,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![TrackVia domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url.png)
 
-    V **identifikátor** textovému poli, zadejte hodnotu:`TrackVia`
+    V **identifikátor** textovému poli, zadejte hodnotu: `TrackVia`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![TrackVia domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://companyname.trackvia.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://companyname.trackvia.com`
      
     > [!NOTE] 
     > Přihlášení hodnota adresy URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory TrackVia klienta](mailto:support@trackvia.com) získat tuto hodnotu.
@@ -126,11 +126,22 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. Konfigurace jednotného přihlašování na **TrackVia** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory TrackVia](mailto:support@trackvia.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+7. Na **TrackVia konfigurace** klikněte na tlačítko **konfigurace TrackVia** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID** z **Stručná referenční příručka části.**
+
+    ![Konfigurace TrackVia](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. V okně jiný prohlížeč Přihlaste se k serveru vaší společnosti TrackVia jako správce.
+
+9. Klikněte na Trackvia **Můj účet** nastavení a potom vyberte **jednotné přihlašování** kartu, proveďte následující kroky:
+
+    ![Konfigurace TrackVia](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a. V **ID Entity zprostředkovatele Identity** textovému poli, vložte **SAML Entity ID** hodnotu, kterou jste zkopírovali z portálu Azure.
+
+    b. Vyberte **zvolit soubor** nahrát soubor metadat, který jste si stáhli z portálu Azure.
+
+    c. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -212,8 +223,6 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_01.png
@@ -227,4 +236,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-

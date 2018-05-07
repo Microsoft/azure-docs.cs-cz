@@ -1,10 +1,10 @@
 ---
-title: "Řešení potíží s degradovaný stav na Azure Traffic Manager"
-description: "Postup řešení potíží s profily Traffic Manager, když se zobrazí jako degradovaný stav."
+title: Řešení potíží s degradovaný stav na Azure Traffic Manager
+description: Postup řešení potíží s profily Traffic Manager, když se zobrazí jako degradovaný stav.
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
+documentationcenter: ''
+author: chadmath
+manager: cshepard
 ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: kumud
-ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: f5b2f471b13db67411f15f32abad5afc644c04ba
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s degradovaný stav na Azure Traffic Manager
 
@@ -43,12 +43,12 @@ Pokud se zobrazí stav z vaší Traffic Manager **neaktivní** stavu, pak oba ko
 Chcete-li vyřešit selhání testu, musíte nástroj, který ukazuje návratový stavový kód protokolu HTTP z test adresy URL. Nejsou k dispozici celou řadu nástrojů, které ukazují, nezpracovaná odpověď HTTP.
 
 * [Fiddler](http://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Navíc můžete použít síťové kartě Nástroje pro ladění F12 v Internet Exploreru zobrazíte odpovědi HTTP.
 
-V tomto příkladu chceme se zobrazí odpověď z našich test adresy URL: http://watestsdp2008r2.cloudapp.net:80/testu. Následující příklad PowerShell ukazuje problém.
+V tomto příkladu chceme se zobrazí odpověď z našich test adresy URL: http://watestsdp2008r2.cloudapp.net:80/Probe. Následující příklad PowerShell ukazuje problém.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

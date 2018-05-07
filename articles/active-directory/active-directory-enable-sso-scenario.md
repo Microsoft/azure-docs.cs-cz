@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: c6f01a16f5f60193c81a03a7374649f87eeb270a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e05b2d515b997e769306146a5390d4d44fd5cf50
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 Mimo pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:
@@ -111,6 +111,6 @@ S Azure AD můžete zabezpečit vaše aplikace s zásady granulární přístupu
 Abyste mohli začít, integrace aplikací s Azure AD, prohlédněte si [Příručka Začínáme integrace Azure Active Directory s aplikacemi, získávání](active-directory-integrating-applications-getting-started.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Článek Index pro správu aplikací v Azure Active Directory](active-directory-apps-index.md)
-[podrobný postup nasazení plán pro jednotné přihlašování do aplikace SaaS](http://aka.ms/ssodeploymentplan)
+* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
+* [Podrobný postup nasazení plán pro jednotné přihlašování do aplikace SaaS](http://aka.ms/ssodeploymentplan)
 

@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a hodnocení dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – zabezpečení a autorizace"
-description: "FedRAMP webové aplikace automatizace - vyhodnocení zabezpečení a autorizace"
+title: Zabezpečení Azure a hodnocení dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – zabezpečení a autorizace
+description: FedRAMP webové aplikace automatizace - vyhodnocení zabezpečení a autorizace
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: d1c9846589adaef0baeeaf16077c8e74bef1cd9f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="security-assessment-and-authorization-ca"></a>Vyhodnocení zabezpečení a autorizaci (CA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásady zabezpečení hodnocení a autorizace, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění ověřování a vyhodnocení zásad zabezpečení a přiřazený bezpečnostní hodnocení a autorizace kontrol; kontroluje a aktualizuje aktuální zásady ověřování a hodnocení zabezpečení [přiřazení: organizace definované frekvence]; a postupy zabezpečení a schváleny [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 2.a** organizace sama vyvinula plán hodnocení zabezpečení, který popisuje obor, hodnocení, včetně ovládacích prvků zabezpečení a rozšíření ovládacího prvku v části assessment; postupy posuzování použije k určení řízení zabezpečení efektivita; a hodnocení prostředí, assessment týmu a hodnocení role a odpovědnosti.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 2.b** organizace vyhodnocuje ovládací prvky zabezpečení v systému informace a jeho prostředí operace [přiřazení: organizace definované frekvence] k určení rozsahu, ke které ovládací prvky jsou implementované správně, operační jako zamýšlený a vytváření požadovaném výsledku s ohledem na schůzku navázat požadavky na zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -67,13 +67,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Netýká se |
 
 
- ## <a name="nist-800-53-control-ca-2c"></a>NIST 800-53 Control CA-2.c
+ ## <a name="nist-800-53-control-ca-2c"></a>NIST 800-53 řízení CA-2.c
 
 #### <a name="security-assessments"></a>Posouzení zabezpečení
 
 **Certifikační Autority 2.c** organizace vytvoří zprávu assessment zabezpečení, která dokumenty výsledky hodnocení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 2.d** organizace poskytuje výsledky hodnocení řízení zabezpečení pro [přiřazení: organizace definované jednotlivce nebo role].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-2 (1)** organizace využívá zkoušejících nebo týmy assessment s [přiřazení: organizace definované úrovně nezávislost] umožňuje provádět vyhodnocování řízení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-2 (2)** zahrnuje organizace v rámci zabezpečení hodnocení ovládací prvek, [přiřazení: organizace definované frekvence], [výběr: oznámené; neočekávané], [výběr (jeden nebo více): hlubší monitorování; zjišťování ohrožení zabezpečení; Uživatel se zlými úmysly testování; hodnocení vnitřních hrozeb; výkon nebo zatížení testování; [Přiřazení: organizace definované jiných forem vyhodnocení zabezpečení]].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-2 (3)** organizace přijímá výsledky hodnocení [přiřazení: informace definované organizace systému] provádí [přiřazení: organizace definované externí organizace] při posuzování splňuje [přiřazení: organizace definované požadavky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 3.a** organizace povolí připojení ze systému informace ke ostatními informačními systémy prostřednictvím smlouvy zabezpečení propojení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 3.b** oznamovat dokumenty organizace, pro každý propojování, vlastnosti rozhraní, požadavky na zabezpečení a povaha informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 3.c** organizace kontroluje a aktualizuje smlouvy zabezpečení propojení [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-3 (3)** organizace znemožňuje přímé připojení [přiřazení: organizace definované zjištění neklasifikovaného, mezinárodních zabezpečení systému] k externí síti bez použití [přiřazení; definované organizace hranic ochrany zařízení].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-3 (5)** organizace využívá [výběr: Povolit všechna, odepřít podle výjimka; odepřít all, povolení výjimky] zásady pro povolení [přiřazení: systémy informace definované organizace] pro připojení k systémům externí informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 5.a** organizace sama vyvinula plán akcí a milníky pro informace o systému dokumentu organizace plánované nápravné akce opravit slabá místa nebo nedostatky si poznamenali během vyhodnocení ovládacích prvků zabezpečení a na omezit nebo odstranit známých slabých míst v systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 5.b** organizace aktualizuje existující plán akce a milníky [přiřazení: organizace definované frekvence] na základě výsledků z vyhodnocování ovládací prvky zabezpečení, analýzy dopadu zabezpečení a průběžné monitorování aktivity.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 6.a** organizace přiřadí na vyšší úrovni vedení nebo manager jako povolující oficiální informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 6.b** organizace zajistí, že povolující oficiální povolí systém informace pro zpracování před zahájení operací.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 6.c** organizace aktualizací zabezpečení autorizace [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7a** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje zřízení [přiřazení: organizace definované metriky] mají být monitorovány.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7.b** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje zřízení [přiřazení: organizace definované frekvencí] pro monitorování a [přiřazení: organizace definované frekvencí] pro posuzování podpora tohoto monitorování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7.c** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje hodnocení řízení probíhající zabezpečení podle organizace strategie průběžné monitorování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7.d** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování program, který obsahuje probíhající zabezpečení stav sledování metrik organizace definované v souladu s organizační strategie průběžné monitorování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA-7.e** Organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje korelace a analýzu informací souvisejících se zabezpečením vygenerovaných vyhodnocování a sledování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7.f** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje akce reagující na adresu výsledky analýzy informace týkající se zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 7.g** organizace sama vyvinula strategie nepřetržité monitorování a implementuje nepřetržité monitorování aplikace, která obsahuje zprávy o stavu zabezpečení organizace a informace o systému [přiřazení: definované organizace pracovníky nebo rolí] [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-7 (1)** organizace využívá zkoušejících nebo týmy assessment s [přiřazení: organizace definované úrovně nezávislost] monitorování ovládací prvky zabezpečení v systému informace průběžně.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **CA – 7 (3)** organizace využívá analýzy trendů k určení, pokud zabezpečení řídí, implementace, je potřeba upravit frekvenci nepřetržité monitorování aktivity nebo typy aktivit používaných v nepřetržité monitorování procesu založené na základě zkušeností data.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 8** organizace provádí testování průnikům [přiřazení: organizace definované frekvence] na [přiřazení: systémy informace definované organizace nebo součástí systému].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority-8 (1)** organizace využívá agenta nezávislé průnikům nebo týmu průnikům k průnikům testování v systému informace nebo součástí systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 9.a** organizace autorizuje interní připojení [přiřazení: komponent systému informace definované organizace nebo třídy součástí] informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **Certifikační Autority 9.b** oznamovat dokumenty organizace, pro každé interní připojení, vlastnosti rozhraní, požadavky na zabezpečení a povaha informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

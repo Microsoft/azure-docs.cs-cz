@@ -190,18 +190,25 @@
               href: azure-stack-delegated-provider.md
             - name: Typy kvót
               href: azure-stack-quota-types.md
-        - name: Nabídka SQL nebo MySQL jako PaaS
+        - name: Přehled služeb PaaS
+          href: azure-stack-tools-paas-services.md
+        - name: Nabízejí SQL jako PaaS
+          href: azure-stack-sql-resource-provider.md
           items:
-            - name: Přehled služeb PaaS
-              href: azure-stack-tools-paas-services.md
-            - name: Nasazení poskytovatele prostředků MySQL
-              href: azure-stack-mysql-resource-provider-deploy.md
-            - name: Nasazení poskytovatele prostředků SQL
+            - name: Nasazení poskytovatele prostředků SQL serveru
               href: azure-stack-sql-resource-provider-deploy.md
             - name: Přidat hostitelskými servery
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: Vytvoření databáze SQL
               href: azure-stack-sql-resource-provider-databases.md
+            - name: Aktualizujte zprostředkovatele prostředků SQL serveru
+              href: azure-stack-sql-resource-provider-update.md
+            - name: Spravovat poskytovatele prostředků SQL serveru
+              href: azure-stack-sql-resource-provider-maintain.md
+            - name: Odebrat zprostředkovatele prostředků SQL serveru
+              href: azure-stack-sql-resource-provider-remove.md
+        - name: Nabídka MySQL jako PaaS
+          href: azure-stack-mysql-resource-provider-deploy.md
         - name: Nabídka App Service jako PaaS
           items:
             - name: Přehled App Service v Azure Stacku

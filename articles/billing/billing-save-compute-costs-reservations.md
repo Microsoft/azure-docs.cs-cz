@@ -1,23 +1,23 @@
 ---
-title: "Ušetřit peníze předem platebním pro virtuální počítače Azure – Azure | Microsoft Docs"
-description: "Další informace o vyhrazenou instanci virtuálního počítače Azure se uložit na náklady na virtuální počítače."
+title: Ušetřit peníze předem platebním pro virtuální počítače Azure – Azure | Microsoft Docs
+description: Další informace o vyhrazenou instanci virtuálního počítače Azure se uložit na náklady na virtuální počítače.
 services: billing
-documentationcenter: 
+documentationcenter: ''
 author: vikramdesai01
 manager: vikramdesai01
-editor: 
+editor: ''
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí virtuálního počítače 
 Vyhrazená instance virtuálních počítačů umožňují předem platí za jeden rok nebo tři roky výpočetní kapacitu a získat tak slevu na virtuálních počítačích, které používáte. Významně snižuje náklady na virtuální počítač – až 72 procent na průběžnými platbami ceny – s odběru splácených jeden rok nebo tři roky. Vyhrazená instance virtuálních počítačů je fakturační slevu a nemá vliv na stav modulu runtime virtuálních počítačů.

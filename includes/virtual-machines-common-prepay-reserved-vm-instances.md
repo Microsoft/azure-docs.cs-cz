@@ -1,3 +1,11 @@
+---
+ms.topic: include
+ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/03/2018
+---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>Předem pro virtuální počítače s instancí vyhrazené virtuálních počítačů
 
 Předem pro virtuální počítače a ušetřit peníze s vyhrazenou instancí virtuálního počítače. Další informace najdete v tématu [vyhrazenou instancí virtuálního počítače nabídky](https://azure.microsoft.com/pricing/reserved-vm-instances/).

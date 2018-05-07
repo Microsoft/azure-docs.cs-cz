@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: bb0b9e3db4637a6b872c7fed9653a16457b848db
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3747b53af0be02fb33e0c4b97ff01aaf505066d3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -93,7 +93,7 @@ Chcete-li kopírovat data z Amazonu S3, nastavte vlastnost typu datové sady, kt
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **AmazonS3Object** |Ano |
-| bucketName | Název sady S3. |Ano |
+| bucketName | Název sady S3. Zástupný filtr není podporován. |Ano |
 | key | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"` |Ne |
 | Předpona | Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí jenom v případě, že není zadána vlastnost "klíč". |Ne |
 | verze | Verze objektu S3, pokud je povolena Správa verzí S3. |Ne |

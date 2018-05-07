@@ -3,7 +3,7 @@ title: Pokročilé zkoumání dat a modelování pomocí Spark | Microsoft Docs
 description: Pomocí HDInsight Spark proveďte zkoumání dat a cvičení binární klasifikace a regrese modelů pomocí křížové ověření a hyperparameter optimalizace.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: f90d9a80-4eaf-437b-a914-23514390cd60
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: bradsev
-ms.openlocfilehash: 3d4cd29596b14e6de07fdf06191f7d69c2d39641
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: deguhath
+ms.openlocfilehash: 9f24d05a344e0042fa498b62c874617ba7466f8f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -85,9 +85,9 @@ Následující příklad kódu určuje umístění dat ke čtení a cesty k adre
     import datetime
     datetime.datetime.now()
 
-**OUTPUT**
+**VÝSTUP**
 
-datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
+DateTime.DateTime (2016, 4, 18, 17, 36, 27, 832799)
 
 ### <a name="import-libraries"></a>Importovat knihovny
 Importujte knihovny potřebné následujícím kódem:
@@ -188,7 +188,7 @@ Zde je kód pro přijímat data.
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 276.62 sekund
 
@@ -199,7 +199,7 @@ Jakmile data vstoupila v Spark, je dalším krokem v procesu vědecké účely d
 Tento kód a následné fragmenty použijte k dotazování na ukázkové a místní magic k vykreslení dat SQL magic.
 
 * **SQL magic (`%%sql`)** jádra PySpark HDInsight podporuje snadno vložené HiveQL dotazy proti sqlContext. (-O VARIABLE_NAME) argument potrvají výstup příkazu jazyka SQL jako Pandas DataFrame na serveru Jupyter. To znamená, že je k dispozici v místním režimu.
-*  **`%%local` Magic** slouží ke spouštění kódu místně na serveru Jupyter, což je headnode clusteru HDInsight. Obvykle použijete, `%%local` magic po `%%sql -o` magic slouží ke spuštění dotazu. Parametr -o by zachovat výstup příkazu jazyka SQL místně. Pak se `%%local` magic aktivuje další sadu fragmenty kódu ke spouštění místně na výstupu dotazů SQL, který obsahuje místně trvalé. Výstup se automaticky vizualizuje po spuštění kódu.
+* **`%%local` Magic** slouží ke spouštění kódu místně na serveru Jupyter, což je headnode clusteru HDInsight. Obvykle použijete, `%%local` magic po `%%sql -o` magic slouží ke spuštění dotazu. Parametr -o by zachovat výstup příkazu jazyka SQL místně. Pak se `%%local` magic aktivuje další sadu fragmenty kódu ke spouštění místně na výstupu dotazů SQL, který obsahuje místně trvalé. Výstup se automaticky vizualizuje po spuštění kódu.
 
 Tento dotaz načte služebních cest podle počtu osobní. 
 
@@ -240,7 +240,7 @@ Zde je kód k vykreslení služebních cest dle počtů osobní
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**OUTPUT**
+**VÝSTUP**
 
 ![Frekvence služebních cest podle počtu osobní](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
@@ -333,7 +333,7 @@ Tento kód ukazuje postup vytvořte novou funkci tak, že dělení časy provoz 
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**OUTPUT**
+**VÝSTUP**
 
 126050
 
@@ -384,7 +384,7 @@ Tady je kód pro index a kódování kategorií funkce:
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení nad buňku: 3.14 sekund
 
@@ -477,7 +477,7 @@ Tento kód vytvoří náhodné vzorky dat (25 % tady slouží). I když to není
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 0.31 sekund
 
@@ -518,7 +518,7 @@ Tady je kód, který škálování proměnné pro použití s regularized lineá
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 11.67 sekund
 
@@ -549,7 +549,7 @@ Ukládání do mezipaměti na vstupní data rámce objekty používá pro klasif
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT** 
+**VÝSTUP** 
 
 Doba k provedení nad buňku: 0,13 sekund
 
@@ -664,7 +664,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit logisti
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Koeficienty: [0.0082065285375-0.0223675576104,-0.0183812028036, - 3.48124578069e-05-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921,-0.664263411392,-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
 
@@ -717,7 +717,7 @@ Kód v této části ukazuje, jak vyhodnotit proti testovací data sada, včetn�
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Oblasti v rámci PR = 0.985336538462
 
@@ -770,7 +770,7 @@ Tady je kód vykreslení křivka ROC a provádět předpovědi.
     plt.show()
 
 
-**OUTPUT**
+**VÝSTUP**
 
 ![Křivka ROC logistic regression pro obecný přístup](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -797,7 +797,7 @@ Kód v této části ukazuje, jak uložit logistic regresní model pro použív�
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 34.57 sekund
 
@@ -853,7 +853,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit logisti
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 107.98 sekund
 
@@ -889,7 +889,7 @@ Tady je kód k vykreslení křivka ROC.
     plt.show()
 
 
-**OUTPUT**
+**VÝSTUP**
 
 ![Pomocí CrossValidator na MLlib křivka ROC logistic regression](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -938,7 +938,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit regrese
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Oblasti v rámci ROC = 0.985336538462
 
@@ -982,7 +982,7 @@ Kód v této části ukazuje, jak cvičení, vyhodnotit a uložte přechodu zvý
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT**
+**VÝSTUP**
 
 Oblasti v rámci ROC = 0.985336538462
 
@@ -1053,9 +1053,9 @@ Kód v této části ukazuje, jak používat škálovat funkce ke cvičení line
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT**
+**VÝSTUP**
 
-Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
+Koeficienty: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,-0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
 
 Zachytávat: 0.854507624459
 
@@ -1113,11 +1113,11 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit model n
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**OUTPUT**
+**VÝSTUP**
 
 RMSE = 0.931981967875
 
-R-sqr = 0.733445485802
+R sqr = 0.733445485802
 
 Doba k provedení výše buňky: 25.98 sekund
 
@@ -1164,7 +1164,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit přecho
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 RMSE = 0.928172197114
 
@@ -1199,7 +1199,7 @@ Tady je kód k vykreslení data s využitím serveru Jupyter.
     plt.axis([-1, 15, -1, 15])
     plt.show(ax)
 
-![Actual-vs-predicted-tip-amounts](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
+![Skutečný vs předpovědět tip objemy](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Dodatek: Další regresní úlohy křížového ověření pomocí parametru změny
 Tento dodatek obsahuje kódu, který ukazuje, jak to provést pomocí elastické net pro lineární regrese odchylka nákladů a jak to provést odchylka nákladů s parametr oblouku pomocí vlastní kód pro regresní náhodných doménové struktury.
@@ -1261,7 +1261,7 @@ Kód v této části ukazuje, jak křížové ověření pomocí elastické net 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 Doba k provedení výše buňky: 161.21 sekund
 
@@ -1286,7 +1286,7 @@ Tady je kód R sqr vypočítat.
     print("R-sqr = %s" % r2)
 
 
-**OUTPUT**
+**VÝSTUP**
 
 R sqr = 0.619184907088
 
@@ -1373,7 +1373,7 @@ Kód v této části ukazuje, jak křížové ověření pomocí parametru oblou
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**OUTPUT**
+**VÝSTUP**
 
 RMSE = 0.906972198262
 
@@ -1409,7 +1409,7 @@ Použití `unpersist()` odstranit objekty uložené v mezipaměti v paměti.
     oneHotTESTregScaled.unpersist()
 
 
-**OUTPUT**
+**VÝSTUP**
 
 PythonRDD [122] v RDD v PythonRDD.scala: 43
 
@@ -1424,7 +1424,7 @@ PythonRDD [122] v RDD v PythonRDD.scala: 43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**OUTPUT**
+**VÝSTUP**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 

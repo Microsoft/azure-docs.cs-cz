@@ -1,9 +1,9 @@
 ---
-title: "Přesun dat do nebo z Azure Blob Storage pomocí služby SSIS konektory | Microsoft Docs"
-description: "Přesun dat do nebo z Azure Blob Storage pomocí služby SSIS konektory."
+title: Přesun dat do nebo z Azure Blob Storage pomocí služby SSIS konektory | Microsoft Docs
+description: Přesun dat do nebo z Azure Blob Storage pomocí služby SSIS konektory.
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 24237173876f2b292141d9373b346721a489bc56
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 39feca23532264c1f4c17017f89b064af09e9c1c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí služby SSIS konektory
 [SQL Server Integration Services Feature Pack pro Azure](https://msdn.microsoft.com/library/mt146770.aspx) poskytuje součásti pro připojení k Azure, přenos dat mezi Azure a místní zdroje dat a zpracování dat uložených v Azure.
@@ -72,7 +72,7 @@ Parametry, které používá úlohy jsou popsány zde:
 | **BlobContainer** |Určuje název kontejneru objektů blob, který obsahovat odeslané soubory jako objekty BLOB. |
 | **BlobDirectory** |Určuje adresář objektu blob se uloží nahrávaný soubor jako objekt blob bloku. Objekt blob adresář je hierarchická struktura virtuální. Pokud již existuje objekt blob, it ia nahradit. |
 | **LocalDirectory** |Určuje místní adresář, který obsahuje soubory k odeslání. |
-| **Název souboru** |Určuje název filtr pro výběr souborů pomocí vzoru zadaný název. Například MySheet\*.xls\* obsahuje soubory, jako jsou MySheet001.xls a MySheetABC.xlsx |
+| **FileName** |Určuje název filtr pro výběr souborů pomocí vzoru zadaný název. Například MySheet\*.xls\* obsahuje soubory, jako jsou MySheet001.xls a MySheetABC.xlsx |
 | **TimeRangeFrom/TimeRangeTo** |Určuje časový rozsah filtr. Soubory upravené po *TimeRangeFrom* a před *TimeRangeTo* jsou zahrnuty. |
 
 > [!NOTE]

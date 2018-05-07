@@ -1,9 +1,9 @@
 ---
-title: "Přesun dat do Azure SQL Database pro Azure Machine Learning | Microsoft Docs"
-description: "Vytvoření tabulky SQL a načtení dat do tabulky SQL"
+title: Přesun dat do Azure SQL Database pro Azure Machine Learning | Microsoft Docs
+description: Vytvoření tabulky SQL a načtení dat do tabulky SQL
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 323861d078e9beeb197333dc7e2d0314014dfdb0
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 Toto téma popisuje možnosti pro přesun dat z plochých souborů (formáty CSV nebo TSV) nebo z data uložená v SQL serveru místně do Azure SQL database. Tyto úlohy pro přesun dat do cloudu jsou součástí procesu Team dat vědecké účely.
@@ -39,7 +39,7 @@ Následující tabulka shrnuje možnosti pro přesun dat do Azure SQL Database.
 ## <a name="prereqs"></a>Požadavky
 Postupů uvedených v tomto poli vyžadovat, že máte:
 
-* **Předplatné**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* **Předplatné**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * **Účtu úložiště Azure**. Používáte účet úložiště Azure pro ukládání dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-create-storage-account.md#create-a-storage-account). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. V tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
 * Přístup **databáze Azure SQL**. Pokud je potřeba nastavit Azure SQL Database, [Začínáme se službou Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci třídy Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
@@ -48,13 +48,13 @@ Postupů uvedených v tomto poli vyžadovat, že máte:
 
 Můžete přizpůsobit podle postupů popsaných v tomto poli na sadu svoje vlastní data, nebo postupujte podle kroků, jak je popsáno pomocí NYC taxíkem datovou sadu. Datová sada NYC taxíkem nahrát do místní databáze systému SQL Server, postupujte podle pokynů uvedených v [hromadně importovat Data do databáze serveru SQL](sql-walkthrough.md#dbload). Tyto pokyny jsou pro systém SQL Server na virtuální počítač Azure, ale postup pro odesílání na místní SQL Server je stejný.
 
-## <a name="file-to-azure-sql-database"></a>Přesun dat ze zdroje plochého souboru do databáze Azure SQL
+## <a name="file-to-azure-sql-database"></a> Přesun dat ze zdroje plochého souboru do databáze Azure SQL
 Data v plochých souborů (formátu CSV nebo TSV) lze přesunout do Azure SQL database pomocí hromadné vložení dotazu SQL.
 
-### <a name="bulk-insert-sql-query"></a>Hromadné vložení SQL dotazu
+### <a name="bulk-insert-sql-query"></a> Hromadné vložení SQL dotazu
 Kroky pro postup pomocí hromadného vkládání SQL dotazu jsou podobné těm, které jsou popsané v částech pro přesun dat z plochých souborů zdroje k systému SQL Server na virtuálním počítači Azure. Podrobnosti najdete v tématu [hromadné vložení dotazu SQL](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>Přesun dat z místního SQL serveru do Azure SQL database
+## <a name="sql-on-prem-to-sazure-sql-database"></a> Přesun dat z místního SQL serveru do Azure SQL database
 Pokud zdrojová data je uložená v SQL serveru místní, existují různé možnosti pro přesun dat do Azure SQL database:
 
 1. [Exportovat do plochý soubor](#export-flat-file)

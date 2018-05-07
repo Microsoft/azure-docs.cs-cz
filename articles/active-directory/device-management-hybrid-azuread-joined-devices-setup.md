@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 934b79977369e5cf8e6f09e85669c7fca299737c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -83,8 +83,20 @@ Ujistěte se, že následující adresy URL jsou přístupné z počítače v s�
 
 - https://device.login.microsoftonline.com
 
-Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, musíte implementací Proxy Auto-Discovery WPAD (Web) Chcete-li povolit počítače s Windows 10 k registraci do služby Azure AD.
+- Služba tokenů zabezpečení vaší organizace (federované domény)
 
+Pokud dosud neučinili, by měl být součástí uživatele místní intranet nastavení služby tokenů zabezpečení vaší organizace (pro federované domény).
+
+Pokud je vaše organizace používat bezproblémové jednotné přihlašování, následující adresy URL musí být dosažitelný z počítače ve vaší organizaci a musí být také přidat do zóny místního intranetu uživatele:
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- Navíc musí být povolené následující nastavení do zóny sítě intranet uživatele: "Povolit aktualizace stavového řádku pomocí skriptu."
+
+
+Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, je nutné implementovat Proxy Auto-Discovery WPAD (Web) Chcete-li povolit počítače s Windows 10 k registraci do služby Azure AD.
 
 ## <a name="configuration-steps"></a>Kroky konfigurace
 

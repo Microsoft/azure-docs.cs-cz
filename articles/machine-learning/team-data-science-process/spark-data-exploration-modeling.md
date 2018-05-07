@@ -3,7 +3,7 @@ title: Zkoumání dat a modelování pomocí Spark | Microsoft Docs
 description: Umožňující prezentovat funkce zkoumání a modelování dat sady nástrojů Spark MLlib v Azure.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: bradsev
-ms.openlocfilehash: c796cc5f19ac3a30d2cdf72b8fea2813a1586c1b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: d505d432897eb7f4e792b45a95ec91ce1802eeb8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Zkoumání a modelování dat pomocí Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -218,7 +218,7 @@ Jakmile data vstoupila v Spark, je dalším krokem v procesu vědecké účely d
 Tento kód a následné fragmenty použijte k dotazování na ukázkové a místní magic k vykreslení dat SQL magic.
 
 * **SQL magic (`%%sql`)** jádra PySpark HDInsight podporuje snadno vložené HiveQL dotazy proti sqlContext. (-O VARIABLE_NAME) argument potrvají výstup příkazu jazyka SQL jako Pandas DataFrame na serveru Jupyter. To znamená, že je k dispozici v místním režimu.
-*  **`%%local` Magic** slouží ke spouštění kódu místně na serveru Jupyter, což je headnode clusteru HDInsight. Obvykle použijete, `%%local` magic ve spojení s `%%sql` magic s parametrem -o. Parametr -o by zachovat výstup příkazu jazyka SQL místně a pak %% místní magic by aktivovat další sadu fragment kódu ke spouštění místně na výstupu dotazů SQL, který je místně trvalé
+* **`%%local` Magic** slouží ke spouštění kódu místně na serveru Jupyter, což je headnode clusteru HDInsight. Obvykle použijete, `%%local` magic ve spojení s `%%sql` magic s parametrem -o. Parametr -o by zachovat výstup příkazu jazyka SQL místně a pak %% místní magic by aktivovat další sadu fragment kódu ke spouštění místně na výstupu dotazů SQL, který je místně trvalé
 
 Výstup se automaticky vizualizuje po spuštění kódu.
 
@@ -962,7 +962,7 @@ Kód v této části ukazuje, jak cvičení, hodnocení a uložit regrese náhod
 
 RMSE = 0.891209218139
 
-R-sqr = 0.759661334921
+R sqr = 0.759661334921
 
 Doba k provedení výše buňky: 49.21 sekund
 
@@ -1013,7 +1013,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit přecho
 
 RMSE = 0.908473148639
 
-R-sqr = 0.753835096681
+R sqr = 0.753835096681
 
 Doba k provedení výše buňky: 34.52 sekund
 
@@ -1047,7 +1047,7 @@ Tady je kód k vykreslení data s využitím serveru Jupyter.
 
 **VÝSTUP:**
 
-![Actual-vs-predicted-tip-amounts](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
+![Skutečný vs předpovědět tip objemy](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="clean-up-objects-from-memory"></a>Vyčištění objektů z paměti
 Použití `unpersist()` odstranit objekty uložené v mezipaměti v paměti.
@@ -1085,7 +1085,7 @@ Spotřebovat a stanovení skóre nezávislé datové sadě služby popsané v [s
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**OUTPUT**
+**VÝSTUP**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 

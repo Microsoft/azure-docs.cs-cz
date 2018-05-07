@@ -20,7 +20,7 @@
 
 1. Zkopírujte do schránky heslo, které se zobrazí v okně bash nebo terminál.
 
-1. V prohlížeči přejděte na `http://localhost:8080`.
+1. V prohlížeči přejděte na adresu `http://localhost:8080`.
 
 1. Vložte heslo získali dříve do **hesla pro správu** pole a vyberte možnost **pokračovat**.
 

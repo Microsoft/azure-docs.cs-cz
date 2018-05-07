@@ -1,21 +1,21 @@
 ---
-title: "Vytvoření služby Application Gateway - portálu Azure | Microsoft Docs"
-description: "Postup vytvoření služby Application Gateway pomocí portálu Azure."
+title: Vytvoření služby Application Gateway - portálu Azure | Microsoft Docs
+description: Postup vytvoření služby Application Gateway pomocí portálu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>Vytvoření služby application gateway pomocí portálu Azure
 
@@ -64,7 +64,7 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 3. Zadejte *myBackendSubnet* pro název podsítě a pak klikněte na tlačítko **OK**.
 
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Je také nainstalovat službu IIS na virtuálních počítačích, chcete-li ověřit, že aplikační brány byl úspěšně vytvořen.
 
@@ -75,15 +75,15 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 3. Pro virtuální počítač, zadejte tyto hodnoty:
 
     - *Můjvp* – pro název virtuálního počítače.
-    - *azureuser* – pro uživatelské jméno správce.
+    - *azureuser* – uživatelské jméno správce.
     - *Azure123456!* pro heslo.
     - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
-5. Vyberte **DS1_V2** pro velikost virtuálního počítače, a klikněte na tlačítko **vyberte**.
+5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
-7. Klikněte na tlačítko **zakázané** zakázat Diagnostika spouštění.
-8. Klikněte na tlačítko **OK**, zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
+8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
@@ -123,7 +123,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 
     ![Zaznamenejte veřejná IP adresa brány aplikace](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
     ![Test aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
@@ -134,4 +134,4 @@ Pokud již nepotřebujete, odstraňte skupinu prostředků, aplikační brány a
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste vytvořili skupinu prostředků, síťové prostředky a back-end serverů. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.
+V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a servery back-end. Tyto prostředky se pak použít k vytvoření aplikační brány. Další informace o aplikačních bran a jejich přidružené prostředky, i nadále články s návody.

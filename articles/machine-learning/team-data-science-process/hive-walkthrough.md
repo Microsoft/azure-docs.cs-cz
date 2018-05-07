@@ -1,9 +1,9 @@
 ---
-title: "Prozkoumejte data v clusteru Hadoop a vytváření modelů v Azure Machine Learning | Microsoft Docs"
-description: "Pomocí procesu Team Data vědecké účely začátku do konce scénář nasazení clusteru služby HDInsight Hadoop pro sestavení a nasazení modelu."
+title: Prozkoumejte data v clusteru Hadoop a vytváření modelů v Azure Machine Learning | Microsoft Docs
+description: Pomocí procesu Team Data vědecké účely začátku do konce scénář nasazení clusteru služby HDInsight Hadoop pro sestavení a nasazení modelu.
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 6f16b7524bc8c268ed3a2314b8b88d25eb2f4325
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Proces Team dat. vědecké účely v akci: použití Azure HDInsight Hadoop clusterů
 V tomto návodu použijeme [tým datové vědy procesu (TDSP)](overview.md) ve scénáři s začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k uložení prozkoumat a funkce analýzu dat z veřejně dostupné [NYC taxíkem cest](http://www.andresmh.com/nyctaxitrips/) datové sady a dolů – ukázková data. Chcete-li pracovat s více třídami a binární klasifikace a úlohy prediktivní regrese, jsme vytvořit modely dat pomocí Azure Machine Learning. 
@@ -137,7 +137,7 @@ Příprava clusteru pro analýzu nahodilého dat, stahování souborů .hql obsa
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Tyto dva příkazy stáhnout všechny soubory .hql potřebné v tomto návodu k místnímu adresáři ***C:\temp &#92;*** v hlavního uzlu.
+Tyto dva příkazy stáhnout všechny soubory .hql potřebné v tomto návodu k místnímu adresáři ***C:\temp&#92;***  v hlavního uzlu.
 
 ## <a name="#hive-db-tables"></a>Vytvoření databáze Hive a tabulky rozdělena na oddíly po měsících
 > [!NOTE]

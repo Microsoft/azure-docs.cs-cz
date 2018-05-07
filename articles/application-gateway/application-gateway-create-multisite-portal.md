@@ -1,26 +1,26 @@
 ---
-title: "Vytvoření služby application gateway s více hostování lokality - portálu Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway, který je hostitelem více lokalit pomocí portálu Azure."
+title: Vytvoření služby application gateway s více hostování lokality - portálu Azure | Microsoft Docs
+description: Postup vytvoření služby application gateway, který je hostitelem více lokalit pomocí portálu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: f3dd092b2298bfc97cac30b8706e0588a466e1e0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Vytvoření služby application gateway s více lokality hostování pomocí portálu Azure
 
 Na portálu Azure můžete použít ke konfiguraci [hostování více webů](application-gateway-multi-site-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy pomocí sady škálování virtuálních počítačů. Nakonfigurujete naslouchací procesy a pravidla založená na domény, které vlastníte a ujistěte se, že web přenos dorazí na příslušné servery ve fondech. V tomto kurzu se předpokládá, že vlastníte více domén a používá příklady *www.contoso.com* a *www.fabrikam.com*.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
@@ -74,7 +74,7 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 3. Zadejte *myBackendSubnet* pro název podsítě a pak klikněte na tlačítko **OK**.
 
-## <a name="create-virtual-machines"></a>Vytváření virtuálních počítačů
+## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Na virtuální počítače k ověření, že je správně směrování provozu taky nainstalovat službu IIS.
 
@@ -83,15 +83,15 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 3. Pro virtuální počítač, zadejte tyto hodnoty:
 
     - *contosoVM* – pro název virtuálního počítače.
-    - *azureuser* – pro uživatelské jméno správce.
+    - *azureuser* – uživatelské jméno správce.
     - *Azure123456!* pro heslo.
     - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
-5. Vyberte **DS1_V2** pro velikost virtuálního počítače, a klikněte na tlačítko **vyberte**.
+5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
-7. Klikněte na tlačítko **zakázané** zakázat Diagnostika spouštění.
-8. Klikněte na tlačítko **OK**, zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
+8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
@@ -102,7 +102,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 2. Spusťte následující příkaz pro instalaci služby IIS na virtuálním počítači: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `

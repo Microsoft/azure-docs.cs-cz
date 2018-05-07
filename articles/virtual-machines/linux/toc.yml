@@ -113,7 +113,11 @@
         - name: Postup povolení akcelerátoru zápisu
           href: how-to-enable-write-accelerator.md
         - name: Řešení potíží s připojenými virtuálními pevnými disky
-          href: troubleshoot-vhds.md
+          items:
+            - name: Chyby odstraňování prostředků úložiště
+              href: storage-resource-deletion-errors.md
+            - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+              href: unexpected-reboots-attached-vhds.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací

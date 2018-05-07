@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 839cadffc37a1c4a6ceae77fbe1e01020c28fe1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -30,7 +30,7 @@ Zákazníci se nejvíc zajímat odolnost vlastní databáze a jsou méně zájem
 
 Databáze SQL pro data, používá místní úložiště (LS) založené na přímé připojené disky nebo virtuální pevné disky a vzdálené úložiště (r) založené na objekty BLOB stránky Azure Premium Storage. 
 - Místní úložiště se používá v Premium nebo kritické obchodní (preview) databází a elastické fondy, které jsou určené pro mise kritické aplikace OLTP s požadavky na vysokou IOPS. 
-- Vzdálené úložiště se používá pro úrovně služeb Basic a Standard, určený pro nároky zaměřené na konkrétní firemních procesů, které vyžadují úložiště a výpočetního výkonu nezávisle škálovat. Objekt blob jednostránkové používají pro databázi a soubory protokolu a mechanismy pro replikaci a převzetí služeb při selhání integrovanou úložiště.
+- Vzdálené úložiště se používá v Basic, Standard a obecné účely úrovně služeb, které jsou určené pro nároky zaměřené na konkrétní firemních procesů, které vyžadují úložiště a výpočetního výkonu nezávisle škálovat. Objekt blob jednostránkové používají pro databázi a soubory protokolu a mechanismy pro replikaci a převzetí služeb při selhání integrovanou úložiště.
 
 V obou případech replikace, detekce chyb a převzetí služeb při selhání mechanismy databáze SQL jsou plně automatizované a pracovat i bez lidského zásahu. Tato architektura umožňuje potvrdit data musí být nikdy ztraceny a že odolnost dat má přednost před všechno ostatní.
 
@@ -56,7 +56,7 @@ V této konfiguraci každou databázi do režimu online pomocí služby správy 
 
 ## <a name="remote-storage-configuration"></a>Konfigurace vzdáleného úložiště
 
-Pro vzdálené úložiště konfigurace (úrovně Basic a Standard) se přesně jedna kopie udržuje v vzdálené úložiště objektů blob, pomocí možnosti úložiště systémy odolnosti, redundanci a bit kroužkovitosti detekce. 
+Pro vzdálené úložiště konfigurace (úrovně Basic, Standard nebo obecné účely) se přesně jedna kopie udržuje v vzdálené úložiště objektů blob, pomocí možnosti úložiště systémy odolnosti, redundanci a bit kroužkovitosti detekce. 
 
 Architektura vysoké dostupnosti je znázorněno v následujícím diagramu:
  

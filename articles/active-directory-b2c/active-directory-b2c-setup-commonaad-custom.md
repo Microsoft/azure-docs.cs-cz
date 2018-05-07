@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/14/2018
 ms.author: parakhj
-ms.openlocfilehash: cff5c1eed374683ad3e2c1f1a69f6f172f36c536
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: d5e5ab1262a9d33fcf34cce91113f39c8c8936f4
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Umožňují uživatelům přihlásit se k poskytovateli identity více klientů Azure AD pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele, kteří používají společný koncový bod pro Azure Active Directory (Azure AD) prostřednictvím [vlastní zásady](active-directory-b2c-overview-custom.md).
+Tento článek ukazuje, jak povolit přihlášení pro uživatele, kteří používají víceklientské koncový bod pro Azure Active Directory (Azure AD) prostřednictvím [vlastní zásady](active-directory-b2c-overview-custom.md). Uživatelé mohou od víc klientů Azure AD pro přihlášení do Azure AD B2C bez konfigurace technické zprostředkovatele pro každého klienta. Ale hosta členy v některém z těchto klientů **nikoli** moct přihlásit. Pro tento, budete muset [individuálně konfigurovat každý klient](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
 > Používáme "contoso.com" pro organizační klienta Azure AD a "fabrikamb2c.onmicrosoft.com" jako klienta Azure AD B2C v následujících pokynech.
@@ -36,25 +36,22 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 K těmto krokům patří:
      
 1. Vytvoření Azure Active Directory B2C klienta (Azure AD B2C).
-2. Vytvoření aplikace Azure AD B2C.    
-3. Probíhá registrace dvě aplikace modul zásad.  
-4. Nastavení klíče. 
-5. Nastavení úvodní pack.
+1. Vytvoření aplikace Azure AD B2C.    
+1. Probíhá registrace dvě aplikace modul zásad.  
+1. Nastavení klíče. 
+1. Nastavení úvodní pack.
 
 ## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>Krok 1. Vytvoření aplikace pro více klientů Azure AD
 
-Povolit přihlášení pro uživatele, kteří používají víceklientské koncového bodu Azure AD, musíte mít aplikaci víceklientské zaregistrován v žádném z vašich klientů Azure AD. V tomto článku jsme vám ukáže, jak vytvořit aplikaci víceklientské služby Azure AD ve vašem klientovi Azure AD B2C. Potom povolte přihlášení pro uživatele pomocí tohoto víceklientské aplikace Azure AD.
-
->[!NOTE]
-> Pokud chcete uživatelům Azure AD **a uživatelé s účty Microsoft** se přihlásit, přeskočte tuto část a místo toho zaregistrovat aplikaci v [portál pro vývojáře společnosti Microsoft](https://apps.dev.microsoft.com).
+Povolit přihlášení pro uživatele, kteří používají víceklientské koncového bodu Azure AD, musíte mít aplikaci víceklientské zaregistrován v jednom z vašich klientů Azure AD. V tomto článku jsme vám ukáže, jak vytvořit aplikaci víceklientské služby Azure AD ve vašem klientovi Azure AD B2C. Potom povolte přihlášení pro uživatele pomocí tohoto víceklientské aplikace Azure AD.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na horním panelu vyberte svůj účet. Z **Directory** vyberte klienta Azure AD B2C zaregistrovat aplikaci Azure AD (fabrikamb2c.onmicrosoft.com).
-2. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
-3. Vyberte **Registrace nové aplikace**.
-4. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
-5. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
-6. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
+1. Vyberte **Registrace nové aplikace**.
+1. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
+1. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
+1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
     >Hodnota pro "yourtenant" musí být psaný malými písmeny v **přihlašovací adresa URL**.
@@ -82,8 +79,8 @@ Je třeba zaregistrovat klíč aplikace v Azure AD B2C nastavení. Použijte ná
    * Pro **název**, zvolte název, který odpovídá název vašeho klienta Azure AD (například `AADAppSecret`).  Předpona `B2C_1A_` se automaticky přidá k názvu klíče.
    * Vložte klíč vaší aplikace v **tajný klíč** pole.
    * Vyberte **podpis**.
-5. Vyberte **Vytvořit**.
-6. Potvrďte, že jste vytvořili klíč `B2C_1A_AADAppSecret`.
+1. Vyberte **Vytvořit**.
+1. Potvrďte, že jste vytvořili klíč `B2C_1A_AADAppSecret`.
 
 ## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>Krok 3. Přidání poskytovatele deklarací identity v základní zásady
 
@@ -114,11 +111,12 @@ Azure AD jako zprostředkovatele deklarací identity můžete definovat přidán
         <Item Key="HttpBinding">POST</Item>
         <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
         
-        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. If you would like only specific tenants to be able to sign in, uncomment the line below and update the GUIDs. -->
-        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item> -->
+        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
+        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
-        <!-- The commented key below specifies that users from any tenant can sign-in. Comment or remove the line below if using the line above. -->
-        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item>
+        <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
+        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+
       </Metadata>
       <CryptographicKeys>
       <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
@@ -150,14 +148,15 @@ Azure AD jako zprostředkovatele deklarací identity můžete definovat přidán
 1. Aktualizujte hodnotu pro `<Description>`.
 1. Nastavit `<Item Key="client_id">` ID aplikace z registrace mulity klienta aplikace Azure AD.
 
-### <a name="step-31-optional-restrict-access-to-specific-list-of-azure-ad-tenants"></a>Krok 3.1 [Nepovinné] omezení přístupu pro konkrétní seznam klientů Azure AD
-Můžete chtít aktualizovat seznam vystavitelů platný token a omezení přístupu ke konkrétní seznam klientů Azure AD uživatelům můžete přihlásit. Pokud chcete získat hodnoty, budete muset podívejte se na metadata pro každou z konkrétní klienty Azure AD, které chcete mít uživatelé přihlásit z. Formát dat vypadat takhle: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, kde `yourAzureADtenant` je název klienta Azure AD (contoso.com nebo žádným jiným klientem Azure AD).
+### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>Krok 3.1 omezení přístupu ke konkrétní seznam klientů Azure AD
+
+> [!NOTE]
+> Pomocí `https://sts.windows.net` hodnotu **ValidTokenIssuerPrefixes** bude povolit všechny uživatele Azure AD pro přihlášení do aplikace.
+
+Budete muset aktualizovat seznam vystavitelů platný token a omezení přístupu ke konkrétní seznam klientů Azure AD uživatelům můžete přihlásit. Pokud chcete získat hodnoty, budete muset podívejte se na metadata pro každou z konkrétní klienty Azure AD, které chcete mít uživatelé přihlásit z. Formát dat vypadat takhle: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, kde `yourAzureADtenant` je název klienta Azure AD (contoso.com nebo žádným jiným klientem Azure AD).
 1. Otevřete prohlížeč a přejděte na adresu URL metadat.
 1. V prohlížeči vyhledejte objekt 'vystavitele' a zkopírujte jeho hodnotu. Měl by vypadat třeba takto: `https://sts.windows.net/{tenantId}/`.
 1. Vložte hodnotu `ValidTokenIssuerPrefixes` klíč. Můžete přidat více, oddělte je čárkou. Příkladem je označeno jako komentář v ukázce výše XML.
-
-> [!NOTE]
-> Pomocí `https://sts.windows.net` jako hodnotu předpona bude povolit všechny uživatele Azure AD pro přihlášení do aplikace.
 
 ## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>Krok 4. Zaregistrujte poskytovatele deklarací identity účtu služby Azure AD
 
@@ -212,11 +211,11 @@ Teď je potřeba aktualizovat soubor předávající stranu, který zahájí ces
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Nahrajte zásady klienta
 
 1. V [portál Azure](https://portal.azure.com), přepnout [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a potom vyberte **Azure AD B2C**.
-2. Vyberte **Identity rozhraní Framework**.
-3. Vyberte **všechny zásady**.
-4. Vyberte **nahrát zásady**.
-5. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
-6. Nahrát `TrustFrameworkExtensions.xml` soubor a soubor RP (například `SignUpOrSignInWithAAD.xml`) a ujistěte se, že projít ověřením.
+1. Vyberte **Identity rozhraní Framework**.
+1. Vyberte **všechny zásady**.
+1. Vyberte **nahrát zásady**.
+1. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
+1. Nahrát `TrustFrameworkExtensions.xml` soubor a soubor RP (například `SignUpOrSignInWithAAD.xml`) a ujistěte se, že projít ověřením.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Testování spustit pomocí vlastních zásad
 

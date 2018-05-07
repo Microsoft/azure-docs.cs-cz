@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého ochrany - FedRAMP webové aplikace automatizace - fyzických a prostředí"
-description: "FedRAMP webové aplikace automatizace - ochrany fyzických a prostředí"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého ochrany - FedRAMP webové aplikace automatizace - fyzických a prostředí
+description: FedRAMP webové aplikace automatizace - ochrany fyzických a prostředí
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>Fyzických a prostředí ochrany (PE)
 
 > [!NOTE]
 > Tyto ovládací prvky jsou definovány NIST a USA Ministerstvo obchodu jako součást speciální publikace NIST 800-53 revize 4. Naleznete NIST 800-53 Rev. 4 informace o testování postupy a pokyny pro každý ovládací prvek.
 
-## <a name="nist-800-53-control-pe-1"></a>NIST 800-53 Control PE-1
+## <a name="nist-800-53-control-pe-1"></a>NIST 800-53 řízení PE-1
 
 #### <a name="physical-and-environmental-protection-policy-and-procedures"></a>Zásady ochrany fyzických a prostředí a postupy
 
 **PE-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásady ochrany fyzických a prostředí, která řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásady ochrany fyzických a prostředí a ovládací prvky přidružené ochrany fyzických a prostředí; kontroluje a aktualizuje aktuální zásady ochrany fyzických a prostředí [přiřazení: organizace definované frekvence]; a postupy ochrany fyzických a prostředí [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.a** organizace sama vyvinula, schválí a udržuje seznam uživatelé, kteří mají autorizovaný přístup k zařízením, které se nachází informace systému.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.b** organizace problémy přihlašovací údaje pro autorizaci pro přístup k zařízení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -67,13 +67,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Tento nástroj přístup datacenter je autoritativní zdroj výpis všichni pracovníci s autorizovaný přístup k určité datového centra. Nástroj je spojen s datacentra fyzického zabezpečení přístupu k řízení zařízení a povolí přístup podle úrovně přístupu, které jsou schváleny tým DCM. Úrovně přístupu jsou přiřazeny v nástroji Microsoft buď uživatele vydané Odznáček nebo oznámení dočasný přístup, který je přiřazen v datacentru pomocí nadřízeného řízení místnosti (řádku). Úrovně přístupu jsou schváleny tým DCM. Navíc přiřazovány fyzické odznaky přihlašovací údaje vyžadují některé oblasti datacentra registrace uživatele biometrických dat (ruční geometrie nebo otisků prstů). |
 
 
- ## <a name="nist-800-53-control-pe-2c"></a>NIST 800-53 Control PE-2.c
+ ## <a name="nist-800-53-control-pe-2c"></a>NIST 800-53 řízení PE-2.c
 
 #### <a name="physical-access-authorizations"></a>Povolení fyzický přístup
 
 **PE 2.c** organizace zkontroluje přístup k seznamu s podrobnostmi o oprávněným zařízením přístup jednotlivci [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 2.d** organizace odebere jednotlivce ze seznamu zařízení přístup, pokud už je vyžadován přístup.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.a** organizace vynucuje autorizací fyzického přístupu na [přiřazení: organizace definované přechodu odkazuje na funkci níž se nachází informace systému] kontrolou jednotlivý přístup autorizací před udělením přístup k zařízení; a řízení vstup/výstup pro zařízení s využitím [výběr (jeden nebo více): [přiřazení: organizace definované fyzický přístup řízení systémů nebo zařízení]; chrání].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.b** organizace udržuje protokoly auditu fyzický přístup [přiřazení: organizace definované vstupní/výstupní body].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -123,13 +123,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Všechny přístupy k zařízením datové centrum Azure jsou zaznamenána a auditovat. |
 
 
- ## <a name="nist-800-53-control-pe-3c"></a>NIST 800-53 Control PE-3.c
+ ## <a name="nist-800-53-control-pe-3c"></a>NIST 800-53 řízení PE-3.c
 
 #### <a name="physical-access-control"></a>Fyzický přístup ovládacího prvku
 
 **PE 3.c** poskytuje organizace [přiřazení: ochrana definované organizace zabezpečení] pro řízení přístupu k oblasti v rámci zařízení určená jako veřejně přístupná.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.d** doprovod návštěvníky organizace a monitoruje návštěvníka aktivity [přiřazení: organizace definované okolností, monitorování a nutnosti doprovod návštěvníka].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3.e** Organizace zabezpečuje klíče, kombinace a dalších zařízení fyzický přístup.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.f** inventáře organizace [přiřazení: organizace definované fyzický přístup zařízení] každých [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 3.g** organizace změní kombinace a klíče [přiřazení: organizace definované frekvence] nebo při klíče jsou ztraceny, dojde k ohrožení kombinace nebo jednotlivce jsou přenesených nebo byla ukončena.  
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-3 (1)** organizace vynucuje autorizací fyzický přístup k systému informace kromě fyzické prvky řízení přístupu pro zařízení na [přiřazení: definované organizace obsahující jeden nebo více součástí fyzické prostory. informace o systému].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -207,13 +207,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure další omezuje oblastí v datových centrech společnosti Microsoft, které obsahují důležité systémy (např. colocations, kritická prostředí, MDF místnostmi atd.) prostřednictvím různé mechanismy zabezpečení, jako je řízení přístupu elektronické, biometrických zařízení, a ovládací prvky Anti-passback. Přístup k Azure colocations jsou udělena jako samostatný, vyšší úroveň přístupu DCAT než jiné oblasti přístup datového centra. Kromě toho všechny Azure FTE a dodavatelů, kteří mají přístup k Azure Government colocations povinně oficiálně podstoupit blokování cloudu společnosti Microsoft a ověření přístupem USA před se autorizovaný přístup k prostředí. Další podrobnosti týkající se blokování cloud pro Azure Government colocations jsou uvedeny v části PS-03. |
 
 
- ## <a name="nist-800-53-control-pe-4"></a>NIST 800-53 Control PE-4
+ ## <a name="nist-800-53-control-pe-4"></a>NIST 800-53 řízení PE – 4
 
 #### <a name="access-control-for-transmission-medium"></a>Řízení přístupu pro přenosového média
 
 **PE 4** organizace řídí fyzický přístup k [přiřazení: informace definované organizace systému distribuce a přenosu řádky] v rámci organizace zařízení pomocí [přiřazení: ochrana definované organizace zabezpečení] .
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -221,13 +221,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Microsoft Azure implementovala řízení přístupu pro přenosového média prostřednictvím návrhu a vytvoření prostorách hlavní distribuční rámce (MDF) a colocations chránit informace systému distribuce a přenosu řádky z náhodných škod přerušení a fyzické manipulaci. Přístup k MDF místnostmi a colocations vyžadují dvoufaktorové ověřování (oznámení "BADGE" přístup a biometrických údajů). Tím se zajistí, že přístup je omezen na jen oprávněný personál (viz PE-2, PE 3). V rámci MDF jsou chráněny přenos a distribuci řádky z náhodných škod, přerušení a fyzické manipulaci prostřednictvím systému vedení, uzamčení stojany, klece nebo zásobník kabel. |
 
 
- ## <a name="nist-800-53-control-pe-5"></a>NIST 800-53 Control PE-5
+ ## <a name="nist-800-53-control-pe-5"></a>NIST 800-53 řízení PE-5
 
 #### <a name="access-control-for-output-devices"></a>Řízení přístupu pro výstupní zařízení
 
 **PE 5** organizace řídí fyzický přístup k informace systémová výstupní zařízení a zabránit neoprávněným osobám v získání výstupu.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 6.a** organizace sleduje fyzický přístup k zařízením, které se nachází systému informace ke zjišťování a reakce na incidenty fyzického zabezpečení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 6.b** organizace zkontroluje fyzický přístup k protokolům [přiřazení: organizace definované frekvence] a po výskytu [přiřazení: událostí definovaných organizace nebo potenciální označení událostí].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -263,13 +263,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Fyzický přístup k protokolům jsou zkontrolovány nepřetržitě a udržuje na následné investigativní revizi. |
 
 
- ## <a name="nist-800-53-control-pe-6c"></a>NIST 800-53 Control PE-6.c
+ ## <a name="nist-800-53-control-pe-6c"></a>NIST 800-53 řízení PE-6.c
 
 #### <a name="monitoring-physical-access"></a>Monitorování fyzického přístupu
 
 **PE 6.c** organizace koordinuje výsledky recenze a vyšetřování pomocí funkce organizační reakcí na incidenty. 
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6 (1)** organizace monitoruje fyzického narušení výstrahy a sledováním vybavení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-6 (4)** organizace sleduje fyzický přístup k systému informace kromě monitorování fyzického přístupu zařízení jako [přiřazení: definované organizace obsahující jednu nebo více součástí informací o fyzické prostory. systém].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 8.a** organizace udržuje návštěvníka přístup k záznamům v zařízení, kde se nachází systému informace pro [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 8.b** organizace zkontroluje přístup k záznamům v návštěvníka [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-8 (1)** organizace využívá automatizované mechanismy pro usnadnění Údržba a kontrola záznamů přístup návštěvníka.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -347,13 +347,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure udržuje datacenter přístup k záznamům v DCAT ve formě schválené DCAT požadavky. Požadavky DCAT můžete schválit pouze tým DCM. Úrovně přístupu v datovém centru nejsou přiřazeni a spravované v rámci DCAT. Přístup Datacenter je čtvrtletně zkontrolovat. Veškerý přístup k datových centrech Azure je zaznamenána DCAT a je k dispozici pro budoucí možné šetření. Návštěvníky je potřeba mít vyvedena za všech okolností. Přístup doprovodu v rámci datového centra je zaprotokolována v rámci alarmů monitorování systému a v případě potřeby můžete vztažen k návštěvníka pro budoucí revize. Návštěvník přístup kterou nepřetržitě kontrolují přiřazené doprovodu a supervisor místnosti řízení prostřednictvím průmyslové televize a alarmů systému pro monitorování. Návštěvníky nejsou k dispozici s přístupem a musí být doplněn jejich doprovod za všech okolností. |
 
 
- ## <a name="nist-800-53-control-pe-9"></a>NIST 800-53 Control PE-9
+ ## <a name="nist-800-53-control-pe-9"></a>NIST 800-53 řízení PE-9
 
 #### <a name="power-equipment-and-cabling"></a>Napájení zařízení a kabeláže
 
 **PE 9** organizace chrání power zařízení a power kabelů pro systém informace z poškození a odstranění.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -361,13 +361,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Microsoft Azure poskytuje ochranných prostory a příslušné označování pro kabely. V prostředí, které byly analyzovány pro ochranu před prostředí rizika, jako je krádež, ještě efektivněji, výbušnin, kouře, horních, prachu, musí být umístěny zařízení infrastruktury Microsoft Azure, například kabely, elektrický řádky a zálohování generátory vibrace, zemětřesení, škodlivé chemikálií, elektrické rušení, výpadky napájení, elektrický narušení (špičky). Všechny prostředky přenosné online službám (např. stojany, serverů, síťových zařízení) musí být uzamčena nebo zajištěny způsobem v místě, aby bylo možné zajistit ochranu proti odcizení nebo přesun škody. Napájení a informace o systému kabely v jakémkoli prostředí Microsoft Azure jsou správně označené a chráněná před zachycením nebo poškození. Napájení a informace o systému kabely jsou oddělené od sebe navzájem na všechny body v prostředí, aby se zabránilo narušení. |
 
 
- ## <a name="nist-800-53-control-pe-10a"></a>NIST 800-53 Control PE-10.a
+ ## <a name="nist-800-53-control-pe-10a"></a>NIST 800-53 řízení PE-10.a
 
 #### <a name="emergency-shutoff"></a>Nouzový přístupnými
 
 **PE 10.a** organizace poskytuje možnost vypnutím power informace systému nebo systémům, jednotlivé komponenty v případě nouze.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 10.b** organizace umístí nouzový přístupnými přepínače nebo zařízení ve [přiřazení: organizace definované umístění informace o systému nebo součást systému] k usnadnění přístupu snadná a bezpečná pro pracovníky.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -389,13 +389,13 @@ ms.lasthandoff: 02/11/2018
 | **Zprostředkovatel (Microsoft Azure)** | Microsoft Azure implementuje tento požadavek potřeby jejich zákazníků. Tlačítka EPO jsou strategicky umístit umožňující aktivace v případě nouze. Tlačítka EPO mohou být umístěny v colocations, obsazená zařízení centra operace (FOCs), nebo podle potřeby kódem místní ještě efektivněji. |
 
 
- ## <a name="nist-800-53-control-pe-10c"></a>NIST 800-53 Control PE-10.c
+ ## <a name="nist-800-53-control-pe-10c"></a>NIST 800-53 řízení PE-10.c
 
 #### <a name="emergency-shutoff"></a>Nouzový přístupnými
 
 **PE 10.c** organizace chrání před neoprávněným aktivace možnost přístupnými nouzový napájení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 11** organizace poskytuje krátkodobé nepřerušitelný zdroj napájení pro usnadnění [výběr (jeden nebo více): řádné vypnutí systému informace; přechod systému informace na dlouhodobé alternativní power] v případě služby Zdroj výpadku primární napájení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-11 (1)** organizace poskytuje dlouhodobé alternativní napájení pro informace o systému, který je schopné udržovat minimálně požadované provozní funkce v případě ztrátou rozšířené primární power zdroje.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-12** organizace používá a udržuje automatické nouzové osvětlení pro informace o systému, aktivuje se v případě výpadku napájení nebo přerušení a který pokrývá nouzový ukončí a trasy k vyprázdnění v zařízení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 13** organizace používá a udržuje ještě efektivněji potlačení detekce zařízení nebo systémy a pro systém informace o podporovaných zdroj nezávislé energie.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13 (1)** zahrnuje organizace aktivovat zjišťování zařízení nebo systémů informace systému které aktivovat automaticky a upozorňovat [přiřazení: organizace definované pracovníky nebo rolí] a [přiřazení: nouzové definované organizace respondéry] v případě ještě efektivněji.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13 (2)** organizace zahrnuje fire potlačení zařízení nebo systémů informace systému, které poskytují automatické oznámení žádné aktivace [přiřazení: organizace definované pracovníky nebo rolí] a [přiřazení: organizace definované nouzový respondéry].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-13 (3)** organizace využívá potlačení funkci Automatická ještě efektivněji pro informace o systému, pokud zařízení není přiřazeny zdroje trvale.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 14.a** organizace udržuje úrovně teploty a vlhkosti v zařízení, kde je umístěn v systému informace [přiřazení: definované organizaci přijatelné úrovni].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 14.b** organizace monitoruje teploty a vlhkosti úrovně [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-14 (2)** organizace používá teploty a vlhkosti, monitorování, které poskytuje upozornění na změny potenciálně škodlivého nebo upozornění pro pracovníky a vybavení.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 15** organizace chrání systémové informace z škod vzniklých v důsledku úniku horních tím, že poskytuje hlavní přístupnými nebo izolace ventily, které jsou přístupné, funguje správně a známé klíče osobám.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-15 (1)** organizace využívá automatizované mechanismy pro zjištění přítomnosti horních v blízkosti výstrahy a informace o systému [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE-16** organizace povolí, sleduje a ovládací prvky [přiřazení: organizace definované typy informace o systémových součástí] zadávání a ukončení zařízení a udržuje záznamy těchto položek.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 17.a** organizace využívá [přiřazení: kontrolních mechanismů pro zabezpečení organizace definované] v lokalitách alternativní práci.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 17.b** organizace vyhodnocuje jako vhodná, na účinnosti zabezpečení ovládací prvky v lokalitách alternativní pracovní.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 17** organizace poskytuje prostředky pro zaměstnance ke komunikaci s pracovníky informace o zabezpečení v případě incidenty zabezpečení nebo problémy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **PE 18** organizace umisťuje informace komponent systému v zařízení, chcete-li minimalizovat potenciální poškození [přiřazení: definované organizace fyzických a prostředí ohrožení] a minimalizovat možnost pro neoprávněný přístup přístup.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|

@@ -1,9 +1,9 @@
 ---
-title: "Vyčistěte a připravit data pro Azure Machine Learning | Microsoft Docs"
-description: "Předběžně zpracovat a vyčistit data připravit pro machine learning."
+title: Vyčistěte a připravit data pro Azure Machine Learning | Microsoft Docs
+description: Předběžně zpracovat a vyčistit data připravit pro machine learning.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Předběžné zpracování a vyčištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady je možné efektivně pro machine learning. Nezpracovaná data, je často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto údajů pro modelování může vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje Team Data vědecké účely procesu (TDSP) a obvykle postupujte podle počáteční zkoumání použito k vyhledávání a plánování předběžné zpracování požadované datové sady. Podrobné pokyny k procesu TDSP, najdete v části podle kroků uvedených v [proces vědecké účely dat Team](overview.md).

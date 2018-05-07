@@ -1,19 +1,19 @@
 ---
-title: "Výpočetní - rozšíření diagnostiky Linux | Microsoft Docs"
-description: "Postup konfigurace Azure Linux diagnostiky rozšíření (LAD) pro shromažďování metrik a protokolování událostí z virtuálních počítačů Linux běží v Azure."
+title: Výpočetní - rozšíření diagnostiky Linux | Microsoft Docs
+description: Postup konfigurace Azure Linux diagnostiky rozšíření (LAD) pro shromažďování metrik a protokolování událostí z virtuálních počítačů Linux běží v Azure.
 services: virtual-machines-linux
-author: jasonzio
-manager: anandram
+author: abhijeetgaiha
+manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: jasonzio
-ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: agaiha
+ms.openlocfilehash: 84be206ef02cca9cc321e9764c016ca79816edf5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití rozšíření diagnostiky Linux ke sledování metrik a protokoly
 
@@ -433,7 +433,7 @@ Třída procesoru metrik poskytuje informace o využití procesoru ve virtuáln�
 Čítač | Význam
 ------- | -------
 PercentIdleTime | Procento času během časového období agregace, procesory byly provádění jádra nečinné smyčky
-PercentProcessorTime | Procento doby provádění jiných než nečinných vláken
+percentProcessorTime | Procento doby provádění jiných než nečinných vláken
 PercentIOWaitTime | Procento doby čekání na dokončení operací vstupně-výstupní operace
 PercentInterruptTime | Procento doby provádění hardware a software přerušení a DPC (odložených volání procedur)
 PercentUserTime | Jiných než nečinných dobu, během časového období agregace procento času stráveného v uživatele více se střední důležitostí
@@ -694,7 +694,7 @@ Data odeslaná jímky JsonBlob se ukládají do objektů BLOB v účtu úložiš
 
 Kromě toho můžete tyto nástroje uživatelského rozhraní pro přístup k datům ve službě Azure Storage:
 
-* Visual Studio Server Explorer.
+* Průzkumníka serveru Visual Studio.
 * [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 Tento snímek relaci Microsoft Azure Storage Explorer zobrazuje generovaného tabulky služby Azure Storage a kontejnery z správně nakonfigurována rozšíření LAD 3.0 na testovací virtuální počítač. Obrázek neodpovídá přesně [Ukázková konfigurace LAD 3.0](#an-example-lad-30-configuration).

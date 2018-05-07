@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ede354516afbd34372215a08d633969cf74b1562
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -214,6 +214,7 @@ Existují určité rozdíly chování, které uživatelé pocházejících z Azu
 * Názvy tabulek ve službě Azure Table storage nejsou malá a velká písmena, ale jsou v rozhraní API služby Azure Cosmos DB tabulky
 * Některé z Azure Cosmos DB interní formátů kódování informace, například binární pole nejsou aktuálně efektivní, jako jeden mohly líbit. Proto to může způsobit neočekávané omezení na velikost dat. Například jeden nelze používají úplné 1 MB tabulka entity k uložení binární data, protože kódování zvyšuje velikost data.
 * Název vlastnosti entity "Id" aktuálně není podporována
+* TableQuery TakeCount není omezen na 1000
 
 Z hlediska rozhraní REST API existuje několik možností koncových bodů nebo dotazu, které nepodporuje rozhraní API služby Azure Cosmos DB tabulky:
 | Metodu nebo metody REST | Možnost koncový bod/dotazu REST | Adresy URL dokumentu | Vysvětlení |

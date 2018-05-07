@@ -11,17 +11,13 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Vlastní nastavení jazyka v Azure Active Directory B2C
-
->[!NOTE]
->Tato funkce je ve verzi public preview.
->
 
 Vlastní nastavení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje vaše zásady pro uložení různých jazycích, aby vyhovovaly potřebám vašeho zákazníka.  Společnost Microsoft poskytuje převody pro [36 jazyků](#supported-languages), ale můžete taky zadat vlastní překladů pro žádný jazyk. I v případě, že je dispozici prostředí pouze jeden jazyk, můžete přizpůsobit jakýkoli text na stránkách.  
 
@@ -49,7 +45,7 @@ Když povolíte vlastní nastavení jazyka v zásadách, můžete řídit jazyk 
 5. Přečtěte si informace v dialogovém okně a vyberte **Ano**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Vyberte jazyky, které ve vaší cesty uživatele jsou povolené. 
-Povolit sadu jazyky pro vaše uživatele cestu mají být převedeny na kdy `ui_locales` není zadán parametr.
+Povolit sadu jazyky pro vaše uživatele cestu mají být převedeny na vyžádání v prohlížeči bez `ui_locales` parametr.
 1. Zajistěte, aby vaše zásady jazyk přizpůsobení z předchozích pokynů zapnout.
 2. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
 3. Vyberte jazyk, který chcete podporovat.
@@ -102,7 +98,7 @@ Nahraďte `<ExtensionAttribute>` s názvem vaší atribut vlastní uživatele.
 Nahraďte `<ExtensionAttributeValue>` nové řetězcem, který se má zobrazit.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Zadejte seznam hodnot pomocí LocalizedCollections
-Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut.  `LocalizedCollections` je pole `Name` a `Value` páry. Chcete-li přidat `LocalizedCollections`, použijte následující formát:
+Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut.  `LocalizedCollections` je pole `Name` a `Value` páry. Pořadí položek bude pořadí, ve kterém jsou zobrazeny.  Chcete-li přidat `LocalizedCollections`, použijte následující formát:
 
 ```JSON
 {
@@ -153,9 +149,9 @@ Můžete načíst stránku v `fr`. Pokud stránky vrátí kód HTML a CSS obsah,
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>Přidat vlastní národní prostředí
+## <a name="add-custom-languages"></a>Přidat vlastní jazyky
 
-Můžete také přidat jazyky, které společnost Microsoft aktuálně neposkytuje překladů pro. Budete muset zadat překladů pro všechny řetězce v zásadách.
+Můžete také přidat jazyky, které společnost Microsoft aktuálně neposkytuje překladů pro. Budete muset zadat překladů pro všechny řetězce v zásadách.  Jazyk a národní prostředí kódy jsou omezeny na ty ve standardu ISO 639-1. 
 
 1. Z **upravit zásady** vyberte **jazyk přizpůsobení**.
 2. Vyberte **přidat vlastní jazyk** z horní části stránky.
@@ -165,6 +161,10 @@ Můžete také přidat jazyky, které společnost Microsoft aktuálně neposkytu
 6. Vyberte **povolit**, a zásady můžete nyní zobrazit tento jazyk pro vaše uživatele.
 7. Uložte jazyk.
 
+>[!IMPORTANT]
+>Budete muset povolit vlastní jazyky nebo nahrát přepsání pro něj před uložením.
+>
+
 ## <a name="additional-information"></a>Další informace
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>Popisky přizpůsobení uživatelského rozhraní stránky jako přepsání
@@ -172,7 +172,7 @@ Když povolíte jazyk přizpůsobení, vaše předchozích úprav pro popisky po
 ### <a name="up-to-date-translations"></a>Aktuální převody
 Společnost Microsoft se zavazuje poskytuje nejaktuálnější překladů pro vaše použití. Společnost Microsoft průběžně zvyšuje překlady a zajišťuje jejich dodržování předpisů pro vás. Společnost Microsoft bude identifikovat chyby a změny v globálních terminologie a bezproblémově zkontrolujte aktualizace, které budou fungovat v vám dobře slouží uživatele.
 ### <a name="support-for-right-to-left-languages"></a>Podpora jazyků zprava doleva
-Microsoft aktuálně neposkytuje podporu pro jazyky zprava doleva. Pokud potřebujete tuto funkci, prosím hlasovat pro něj [zpětnou vazbu Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
+Microsoft aktuálně neposkytuje podporu pro jazyky zprava doleva. Toho lze dosáhnout pomocí vlastní národní prostředí a změnit způsob, jakým se zobrazí řetězce pomocí šablon stylů CSS.  Pokud potřebujete tuto funkci, prosím hlasovat pro něj [zpětnou vazbu Azure](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag).
 ### <a name="social-identity-provider-translations"></a>Překlady zprostředkovatele sociální identity
 Společnost Microsoft poskytuje `ui_locales` OIDC parametru sociálních přihlášení. Ale někteří poskytovatelé sociálních identity, včetně Facebook a Google, nemusíte respektovat je. 
 ### <a name="browser-behavior"></a>Chování prohlížeče
@@ -182,7 +182,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 
 | Jazyk              | Kód jazyka |
 |-----------------------|---------------|
-| Bengálština                | bn            |
+| Bengálština                | Bn            |
 | Čeština                 | cs            |
 | dánština                | da            |
 | Němčina                | de            |
@@ -192,7 +192,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | Finština               | fi            |
 | Francouzština                | fr            |
 | Gudžarátština              | gu            |
-| Hindština                 | hi            |
+| Hindština                 | Ahoj            |
 | Chorvatština              | h            |
 | Maďarština             | hu            |
 | italština               | it            |
@@ -200,7 +200,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | Kannadština               | kn            |
 | Korejština                | ko            |
 | Malajálamština             | ml            |
-| Maráthština               | mr            |
+| Maráthština               | MR            |
 | Malajština                 | ms            |
 | Norská Bokmål      | nb            |
 | Holandština                 | nl            |
@@ -210,9 +210,9 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | Portugalština – Portugalsko | pt-pt         |
 | Rumunština              | ro            |
 | ruština               | ru            |
-| Slovenština                | sk            |
+| Slovenština                | Sk            |
 | švédština               | sv            |
-| Tamilština                 | ta            |
+| Tamilština                 | tových            |
 | Telugština                | te            |
 | Thajština                  | tý            |
 | turečtina               | tr            |

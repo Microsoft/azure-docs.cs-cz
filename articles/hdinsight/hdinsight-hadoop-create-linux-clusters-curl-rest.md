@@ -4,7 +4,7 @@ description: Naučte se vytvářet clustery HDInsight odesláním šablon Azure 
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 05/02/2018
 ms.author: larryfr
-ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9c2779c692e944bed62d7ae9b76bb8929e62e5f3
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů systému Hadoop pomocí REST API služby Azure
 

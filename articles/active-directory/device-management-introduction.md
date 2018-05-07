@@ -1,11 +1,11 @@
 ---
-title: "Úvod do správy zařízení v Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak Správa zařízení vám může pomoct získat kontrolu nad zařízení, která přistupují k prostředkům ve vašem prostředí."
+title: Úvod do správy zařízení v Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak Správa zařízení vám může pomoct získat kontrolu nad zařízení, která přistupují k prostředkům ve vašem prostředí.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Úvod do správy zařízení v Azure Active Directory
 
@@ -73,7 +73,7 @@ Pro zjednodušení je cílem Azure AD, které jsou připojené k zařízení:
 
 
 Jsou těchto cílů dosáhnout tím, že poskytuje uživatelům samoobslužné služby prostředí pro získání zařízení ve vlastnictví pracovní řídí služby Azure AD.  
-**Azure AD Join** je určená pro organizace, které jsou cloudu první / jenom pro cloud. Obvykle jsou to malé a střední firmy, které nemají místní infrastrukturu Windows Server Active Directory. 
+**Azure AD Join** je určená pro organizace, které chcete být první cloudu nebo jenom pro cloud. Neexistuje žádné omezení velikosti nebo typu organizace, které můžete nasadit připojení ke službě Azure AD. Azure AD Join funguje i i v hybridním prostředí a můžete povolit přístup k místním aplikacím a prostředkům.
 
 Implementace zařízení připojených k Azure AD poskytuje následující výhody:
 
@@ -81,11 +81,14 @@ Implementace zařízení připojených k Azure AD poskytuje následující výho
 
 - **Enterprise kompatibilní roaming** uživatelská nastavení napříč připojená. Uživatelé nepotřebují k připojení k účtu Microsoft (například Hotmail) zobrazíte nastavení mezi zařízeními.
 
-- **Přístup k Windows Store pro firmy** účtem AD. Uživatele můžete vybrat z inventář aplikací předem vybraná organizace.
+- **Přístup k Windows Store pro firmy** pomocí účtu Azure AD. Uživatele můžete vybrat z inventář aplikací předem vybraná organizace.
 
 - **Windows Hello** podporu pro zabezpečení a pohodlný přístup k pracovním prostředkům.
 
 - **Omezení přístupu** k aplikacím z jenom zařízení, které splňují zásady dodržování předpisů.
+
+- **Bezproblémový přístup k lokálním prostředkům** při zařízení má směrem pohledu na místní řadič domény.
+
 
 Při připojení k Azure AD je primárně určený pro organizace, které nemají místní infrastrukturu Windows Server Active Directory, jistě můžete také použít ve scénářích kde:
 
@@ -163,7 +166,7 @@ Jako pravidlo Flash měli byste použít:
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Chcete-li získat přehled o tom, jak spravovat zařízení na portálu Azure, přečtěte si téma [Správa zařízení pomocí portálu Azure](device-management-azure-portal.md)
 

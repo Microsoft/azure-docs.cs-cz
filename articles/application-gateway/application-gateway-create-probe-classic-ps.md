@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit vlastní test paměti - Azure Application Gateway - klasický prostředí PowerShell | Microsoft Docs"
-description: "Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí prostředí PowerShell v modelu nasazení classic"
+title: Vytvořit vlastní test paměti - Azure Application Gateway - klasický prostředí PowerShell | Microsoft Docs
+description: Naučte se vytvářet vlastní test paměti pro službu Application Gateway pomocí prostředí PowerShell v modelu nasazení classic
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-service-management
 ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
 ms.service: application-gateway
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: b167a0584740a4e583a35bd6d44ec5d616ba04f7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 97d1376dc7908b72d8e8ec15145229cf3cf4acae
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní test paměti pro Azure Application Gateway (klasické pomocí prostředí PowerShell)
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -151,7 +151,7 @@ Parametry konfigurace jsou:
 |---|---|
 |**Název** |Název odkazu pro vlastní test paměti. |
 * **Protokol** | Protokol použitý (možné hodnoty jsou protokolu HTTP nebo HTTPS).|
-| **Hostitele** a **cesta** | Dokončete cestu adresy URL, která je volána bránou aplikace k určení stavu instance. Například pokud máte web http://contoso.com/, poté vlastní test paměti můžete nakonfigurovat pro "http://contoso.com/path/custompath.htm" pro test kontroly tak, aby měl úspěšné odpovědi HTTP.|
+| **Hostitele** a **cesta** | Dokončete cestu adresy URL, která je volána bránou aplikace k určení stavu instance. Například, pokud máte web http://contoso.com/, pak je možné nakonfigurovat vlastní test paměti pro "http://contoso.com/path/custompath.htm" pro test kontroluje tak, aby měl úspěšné odpovědi HTTP.|
 | **Interval** | Nakonfiguruje interval kontroly testu v sekundách.|
 | **Časový limit** | Definuje časový limit testu pro kontrolu odpovědi HTTP.|
 | **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP, které jsou potřebné pro příznak instance back-end jako *není v pořádku*.|
@@ -205,7 +205,7 @@ Změna aktuální konfiguraci služby application gateway vyžaduje tři kroky: 
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete konfigurovat přesměrování zpracování Secure Sockets Layer (SSL), přečtěte si téma [konfigurace aplikační brány pro přesměrování zpracování SSL](application-gateway-ssl.md).
 

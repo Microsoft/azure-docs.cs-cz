@@ -9,15 +9,17 @@ ms.date: 04/30/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 285ee153a86270fe65846dc6a22786e007a8a595
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: ba5380813266b3baf981eaf39eda384ad8c91d5a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
 Definice zásad prostředků používané zásad Azure umožňuje vytvořit konvence pro prostředky ve vaší organizaci prostřednictvím popisu, když je tato zásada vynucená a jaká opatření se mají provést. Definováním konvence můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete zadat, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měli konkrétní značku. Zásady jsou zdědí všechny podřízené prostředky. Ano Pokud je zásada pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
+
+Schéma používá zásad Azure naleznete zde: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 JSON použijete k vytvoření definice zásady. Definice zásad obsahuje prvky pro:
 
@@ -184,7 +186,7 @@ Podmínka vyhodnocena jako jestli **pole** splňuje určitá kritéria. Jsou pod
 
 Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak (*) v hodnotě.
 
-Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [Image schválené virtuálních počítačů](scripts/allowed-custom-images.md).
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [povolit více vzory názvů](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pole
 Podmínky se vytváří pomocí pole. Pole představuje vlastnosti v datová část požadavku prostředku, který se používá k popisu stavu prostředku.  

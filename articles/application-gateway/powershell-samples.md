@@ -3,8 +3,8 @@ title: Ukázky aplikací Azure brány PowerShell | Microsoft Docs
 description: Ukázky PowerShell brány aplikace Azure
 services: application-gateway
 documentationcenter: networking
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/29/2018
-ms.author: davidmu
+ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d918ad530704baef4275fabeb6ce08e4732408e6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-application-gateway-powershell-samples"></a>Ukázek Azure Application Gateway prostředí PowerShell
 

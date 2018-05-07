@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -207,7 +207,7 @@ Došlo k chybě připojení 40914 má vztah k *pravidla virtuální sítě*, jak
 
 #### <a name="error-40615"></a>Chyba 40615
 
-*Text zprávy:* server: {0} požadovaný v přihlášení nelze otevřít. Klient s IP adresou objekt {1}' nemá povolen přístup k serveru.
+*Text zprávy:* nelze otevřít serveru '{0}' požadovaný v přihlášení. Klient s IP adresou{1}' není povolená pro přístup k serveru.
 
 *Popis chyby:* klient se pokouší o připojení z IP adresy, která nemá oprávnění pro připojení k serveru Azure SQL Database. Brány firewall serveru nemá žádné pravidlo adresy IP, která umožňuje klientům pro komunikaci z dané IP adresy k databázi SQL.
 
@@ -334,7 +334,7 @@ Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v po
 
 [vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
 
-[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.md
+[vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 
 

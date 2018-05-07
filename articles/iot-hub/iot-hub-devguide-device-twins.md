@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ef048967bc08fed1a108872d2d7eecc2a66993fa
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Rady pro pochopení a použít dvojčata zařízení IoT hub
 
@@ -187,7 +187,7 @@ Back-end řešení funguje na dvojče zařízení pomocí následující atomick
     deviceId | ID zařízení |
     hubName | Název centra IoT |
     operationTimestamp | [ISO8601] časové razítko operace |
-    iothub-message-schema | deviceLifecycleNotification |
+    schéma zprávy iothub | deviceLifecycleNotification |
     opType | "replaceTwin" nebo "updateTwin" |
 
     Vlastnosti zprávu systému mají předponu `'$'` symbol.
@@ -318,7 +318,7 @@ Příklad:
 
 Tyto informace jsou uchovávány v každé úrovni (ne jenom listy struktuře JSON) Chcete-li zachovat aktualizace, které se odebrat klíče objektu.
 
-## <a name="optimistic-concurrency"></a>Optimistickou metodu souběžného zpracování
+## <a name="optimistic-concurrency"></a>Optimistická souběžnost
 Značky, potřeby a jsou uvedeny vlastnosti všech optimistickou metodu souběžného podpory.
 Značky mají značku ETag dle [RFC7232], reprezentace JSON na značku, která představuje. Značky etag binárním rozsáhlým v operacích podmíněného aktualizace z back-end řešení slouží k zajištění konzistence.
 
@@ -352,6 +352,7 @@ Další témata referenční příručka vývojáře IoT Hub patří:
 ## <a name="next-steps"></a>Další postup
 Nyní jste se naučili o dvojčata zařízení, může zajímat v následujících tématech Příručka vývojáře IoT Hub:
 
+* [Rady pro pochopení a použití modulu dvojčata ve IoT Hub.][lnk-module-twins]
 * [Volání metody přímé na zařízení][lnk-methods]
 * [Plánování úloh na několika zařízeních][lnk-jobs]
 
@@ -385,5 +386,6 @@ Můžete vyzkoušet na některé z konceptů popsaných v tomto článku, najdet
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
+[lnk-module-twins]:iot-hub-devguide-module-twins.md
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png

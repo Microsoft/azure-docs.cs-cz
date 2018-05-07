@@ -4,7 +4,7 @@ description: Přehled běžných scénářů pro používání Azure DNS privát
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: fc6c871f89cd5f837eda741dfbadd64fd021bfbe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: de543913d4f8264fa8e5b3bca0c510c99c479cae
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Scénáře Azure privátní DNS zóny
 Zóny DNS privátní Azure překladu názvů v rámci virtuální sítě i mezi virtuálními sítěmi. V tomto článku se podíváme na některé běžné scénáře, které může být dosaženo pomocí této funkce. 

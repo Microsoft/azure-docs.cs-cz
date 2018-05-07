@@ -1,25 +1,25 @@
 ---
-title: "Konfigurace nasazení pro Azure zásobníku Development Kit (ASDK) příspěvků | Microsoft Docs"
-description: "Popisuje změny doporučené konfigurace po instalaci Azure zásobníku Development Kit (ASDK)."
+title: Konfigurace nasazení pro Azure zásobníku Development Kit (ASDK) příspěvků | Microsoft Docs
+description: Popisuje změny doporučené konfigurace po instalaci Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2183576e87aa2fb31f8be8f676a5aee7d52f68df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 Po [instalaci ASDK](asdk-install.md), existuje několik změny doporučené konfigurace po instalaci. 
@@ -37,7 +37,10 @@ Set-PSRepository `
 
  Prostřednictvím rozhraní API verze profily jsou nainstalované Azure AzureRM moduly kompatibilní zásobníku. Azure zásobníku vyžaduje profil verze rozhraní API 2017-03-09profil, který je k dispozici po instalaci modulu AzureRM.Bootstrapper. 
  
- Zásobník prostředí Azure PowerShell můžete nainstalovat s nebo bez připojení k Internetu k hostitelskému počítači ASDK:
+ S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete nainstalovat nejnovější modul Azure PowerShell zásobníku:
+
+> [!IMPORTANT]
+> Před instalací požadovanou verzi, ujistěte se, že jste [odinstalovat všechny existující modulů prostředí Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
 
 - **S připojením k Internetu** od ASDK hostitelského počítače. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na instalaci development kit:
 

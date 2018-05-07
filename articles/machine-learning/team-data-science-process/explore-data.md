@@ -1,9 +1,9 @@
 ---
-title: "Zkoumat data v procesu vědecké účely dat Team | Microsoft Docs"
-description: "Jak zkoumat data v různých prostředích úložiště."
+title: Zkoumat data v procesu vědecké účely dat Team | Microsoft Docs
+description: Jak zkoumat data v různých prostředích úložiště.
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 6eae8772-f479-4627-bb12-64f6d1440b22
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7983ec6f9ffcfcfa8e57181b8ec5db24a004f3f5
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: 31b4da0b6097e9e0bbefaa5f2a78ffaf0a4c5035
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Zkoumání dat v rámci vědeckého zkoumání týmových dat
 Tento dokument popisuje postup zkoumat data v čtyři jiného úložiště prostředí, které jsou obvykle používány v procesu vědecké účely dat:

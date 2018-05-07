@@ -1,39 +1,35 @@
 ---
-title: "Hostitelské servery v zásobníku Azure SQL | Microsoft Docs"
-description: "Postup přidání instance SQL pro zřizování prostřednictvím poskytovatele prostředků adaptér SQL"
+title: Hostitelské servery v zásobníku Azure SQL | Microsoft Docs
+description: Postup přidání instance SQL pro zřizování prostřednictvím poskytovatele prostředků adaptér SQL
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Přidání hostitelské servery pro použití adaptérem SQL
-
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
-
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 Instance SQL můžete použít na virtuální počítače uvnitř vaší [zásobník Azure](azure-stack-poc.md), nebo k nim mohla připojit instanci mimo prostředí Azure zásobníku, pokud poskytovatel prostředků. Obecné požadavky jsou:
 
 * SQL instance musí být vyhrazená pro použití úlohami RP a uživatele. Nelze použít instanci SQL, který se používá jakékoli další příjemce, včetně aplikační služby.
-* Adaptér RP není připojený k doméně a lze připojit pouze pomocí ověřování SQL.
-* Musíte nakonfigurovat účet s náležitými oprávněními pro použití RP.
-* RP a uživatelé třeba webové aplikace používat síť uživatele, takže není vyžadována možnost připojení k instanci serveru SQL v této síti. Tento požadavek se obvykle znamená, že IP adresa pro vaše instance SQL musí být ve veřejné síti.
-* Správa instance SQL a jejich hostitelů závisí na vás; RP neobsahuje provedení oprav, zálohování, přihlašovací údaje otočení atd.
+* Zprostředkovatel prostředků SQL virtuální počítač není připojený k doméně a lze připojit pouze pomocí ověřování SQL.
+* Musíte nakonfigurovat účet s náležitými oprávněními pro použití poskytovatelem prostředků.
+* Poskytovatel prostředků a uživatelé, třeba webové aplikace, využívají sítě uživatele, takže není vyžadována možnost připojení k instanci serveru SQL v této síti. Tento požadavek se obvykle znamená, že IP adresa pro vaše instance SQL musí být ve veřejné síti.
+* Správa instance SQL a jejich hostitelů závisí na vás; Zprostředkovatel prostředků neobsahuje provedení oprav, zálohování, přihlašovací údaje otočení atd.
 * SKU lze použít k vytvoření různé třídy dalo SQL, jako je například výkonu, vždycky na atd.
 
-
-Počet bitové kopie virtuálních počítačů SQL IaaS jsou k dispozici prostřednictvím funkce správy Marketplace. Zajistěte, aby vám vždy stáhnout nejnovější verzi rozšíření IaaS SQL před nasazením virtuálního počítače pomocí příslušné položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou k dispozici v Azure. Pro virtuální počítače SQL vytvořené z těchto bitových kopií, rozšíření IaaS a odpovídající portálu vylepšení poskytují funkce, jako je automatické opravy a možnosti zálohování.
+Počet bitové kopie virtuálních počítačů SQL IaaS jsou k dispozici prostřednictvím funkce správy Marketplace. Ověřte, že je vždy stáhnout nejnovější verzi **SQL IaaS rozšíření** před nasazením virtuálního počítače pomocí příslušné položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou k dispozici v Azure. Pro virtuální počítače SQL vytvořené z těchto bitových kopií, rozšíření IaaS a odpovídající portálu vylepšení poskytují funkce, jako je automatické opravy a možnosti zálohování.
 
 Existují další možnosti pro nasazení virtuálních počítačů SQL, včetně šablon v [galerii pro rychlý start Azure zásobníku](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -69,7 +65,7 @@ Pokud chcete přidat samostatný server, který je již zřízeno hostování, p
 
 3. Vyplňte formulář Podrobnosti připojení instanci služby SQL Server.
 
-  ![New Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+  ![Nové hostitelské serveru](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Volitelně můžete zahrnout název instance a číslo portu lze zadat, pokud instance není přiřazen k výchozí port 1433.
 
@@ -84,7 +80,10 @@ Pokud chcete přidat samostatný server, který je již zřízeno hostování, p
 
   Název SKU by měla odpovídat vlastnosti tak, aby uživatelé můžete umístit své databáze správně. Všechny hostitelské servery v SKU musí mít stejné funkce.
 
-    Příklad:
+> [!IMPORTANT]
+> Speciální znaky, včetně mezery a tečky, nejsou podporovány v **rodiny** nebo **vrstvy** názvy při vytváření SKU pro poskytovatele prostředků SQL a databáze MySQL.
+
+Příklad:
 
 ![Skladové položky](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
@@ -140,27 +139,6 @@ Pokud chcete přidat SQL Always On hostitelskými servery, postupujte takto:
 Vytvořte plány a nabízí chcete zpřístupnit databáze SQL pro uživatele. Přidání služby Microsoft.SqlAdapter k plánu a přidat buď existující kvótu nebo vytvořte novou. Pokud vytvoříte kvótu, zadáte kapacitu uživatelům.
 
 ![Vytvoření plánu a nabídky zahrnout databáze](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="maintenance-of-the-sql-adapter-rp"></a>Údržby SQL adaptéru RP
-
-Údržba instance SQL neplatí zde, s výjimkou informace o hesle otočení. Jste zodpovědní za použití dílčích oprav a zálohování nebo obnovení databáze serverů použít s adaptérem SQL.
-
-### <a name="patching-and-updating"></a>Opravy a aktualizace
- Adaptér SQL není servis jako součást zásobník Azure, protože se jedná o součást rozšíření. Microsoft bude poskytovat aktualizace adaptéru SQL podle potřeby. Adaptér SQL je vytvořena na _uživatele_ virtuálního počítače v rámci předplatného výchozí zprostředkovatel. Proto je potřeba zadat Windows opravy, proti antivirové atd. Windows aktualizovat balíčky, které jsou k dispozici jako součást cyklu opravy a aktualizace můžete použít pro instalaci aktualizací do virtuálního počítače Windows. Až bude vydaná aktualizovaná adaptér, skript je určen k použití aktualizace. Tento skript vytvoří nový virtuální počítač RP a migrujte nějaký stav, který už máte.
-
- ### <a name="backuprestoredisaster-recovery"></a>Zálohování nebo obnovení nebo zotavení po havárii
- Adaptér SQL není zálohován jako součást procesu Azure zásobníku BC-zotavení po Havárii, protože se jedná o součást rozšíření. Skripty se poskytnout pro usnadnění:
-- Zálohování nezbytné stavu informace (uložené v účtu úložiště Azure zásobníku)
-- V případě, že bude nezbytné celý zásobník obnovení, obnovení RP.
-Databázové servery musí nejprve obnovit (v případě potřeby), než je obnoven RP.
-
-### <a name="updating-sql-credentials"></a>Aktualizuje se přihlašovací údaje SQL
-
-Jste zodpovědní za vytváření a Správa účtů správce systému na serverech SQL. RP potřebuje účet s těmito oprávněními ke správě databáze jménem uživatelů – nepotřebuje přístup k datům v těchto databází. Pokud je potřeba aktualizovat hesla sa na serverech SQL, můžete změnit heslo používané RP funkce aktualizace RP rozhraní správce. Tato hesla jsou uloženy v Key Vault ve vaší instanci Azure zásobníku.
-
-Chcete-li upravit nastavení, klikněte na tlačítko **Procházet** &gt; **prostředky pro správu** &gt; **hostování servery SQL** &gt; **Přihlášeních SQL** a vyberte přihlašovací jméno. Změny musí provést na instanci SQL nejprve (a všechny repliky, a to v případě potřeby). V **nastavení** panelu a potom klikněte na **heslo**.
-
-![Aktualizovat heslo správce](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
 ## <a name="next-steps"></a>Další postup

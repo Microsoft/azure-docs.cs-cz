@@ -1,24 +1,24 @@
 ---
-title: "Služby k měření mapování zdarma účet – Azure | Microsoft Docs"
-description: "Pochopení služby k měření mapování pro služby zahrnuté do bezplatný účet."
-services: 
-documentationcenter: 
+title: Služby k měření mapování zdarma účet – Azure | Microsoft Docs
+description: Pochopení služby k měření mapování pro služby zahrnuté do bezplatný účet.
+services: ''
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 9d7e355e755f2bac8929ab16f7f71aa3b0702658
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 683a94f25e94faf0eee7c6aa5fbae52132d58f34
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Pochopení bezplatné služby k měření mapování
 
@@ -48,7 +48,7 @@ Všechny služby Azure vysílá využití proti motory, které Azure fakturačn�
 | SQL Database | Dny databáze Standard S0 – databáze SQL | Dny databáze Standard S0 - volné | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
 | Sdílené - šířky pásma ** | Odchozí přenosy dat (GB) | Přenos dat sítěmi (GB) – volné | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
-\*Pokud chcete vytvořit virtuálního počítače s Windows a vyberte spravovaného disku, bude využívat měření spravovaného disku v rámci virtuálního počítače.
+\* Pokud chcete vytvořit virtuálního počítače s Windows a vyberte spravovaného disku, bude využívat měření spravovaného disku v rámci virtuálního počítače.
 
 \** Sdílené měřidla, mohou být využívány prostřednictvím více služeb. Virtuální počítače a úložiště pro instanci emitování proti Out(GB) přenosu dat měření využití.
 

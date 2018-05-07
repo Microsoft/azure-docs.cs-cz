@@ -1,11 +1,11 @@
 ---
-title: "Připojení ochrany identit Azure Active Directory do Azure Security Center | Microsoft Docs"
-description: "Zjistěte, jak Azure Security Center umožňuje integraci s Azure Active Directory Identity Protection."
+title: Připojení ochrany identit Azure Active Directory do Azure Security Center | Microsoft Docs
+description: Zjistěte, jak Azure Security Center umožňuje integraci s Azure Active Directory Identity Protection.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 0d4b77c2-dba4-4e46-8f55-ab04ddd92496
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7562dd5e1c303a6cb97d25bda5aa080bb5643583
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: b15508acea92c165cba85e39ab907fa524088164
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Připojení ochrany identit Azure Active Directory do Azure Security Center
 Tento dokument vám pomůže nakonfigurovat integraci mezi službou ochrany identit Azure Active Directory (AD) a Azure Security Center.
@@ -43,7 +43,7 @@ Pokud už vaše organizace používá Azure AD Identity Protection, postupujte p
 
 Po dokončení této konfigurace, zobrazí se v Azure AD Identity Protection řešení **řešení zabezpečení** v části **připojené řešení**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste zjistili, jak se připojit k Centru zabezpečení Azure AD Identity Protection. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Propojení Microsoft Advanced Threat Analytics a Azure Security Center](security-center-ata-integration.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Správa svazku ceny a data ve službě Application Insights
 
@@ -40,11 +40,8 @@ Aktuální ceny měny a oblasti, najdete v části [ceny Application Insights][p
 
 Základní plán je výchozí ceny plán, když je vytvořen nový prostředek Application Insights. Základní plán je optimální pro všechny zákazníky kromě těch, kteří mají předplatné služby Operations Management Suite.
 
-* V základní plán budou se účtovat podle datový svazek. Datový svazek je počet bajtů přijatých Application Insights telemetrie. 
-    
-    Datový svazek se měří jako velikost nekomprimovaných balíček data JSON, který přijme Application Insights z vaší aplikace.
-
-    Pro [tabulková data importovat do Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), datový svazek se měří jako velikost nekomprimovaných souborů, které se odesílají do služby Application Insights.
+* V základní plán budou se účtovat podle datový svazek. Datový svazek je počet bajtů přijatých Application Insights telemetrie. Datový svazek se měří jako velikost nekomprimovaných balíček data JSON, který přijme Application Insights z vaší aplikace. Pro [tabulková data importovat do Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), datový svazek se měří jako velikost nekomprimovaných souborů, které se odesílají do služby Application Insights.
+* Aplikace data svazku poplatky jsou nyní ohlášeny nové fakturace měření s názvem **přijímání dat** od duben 2018. Toto je nový měření sdílet monitorování technologie, jako jsou aplikace přehledy a analýzy protokolů a aktuálně probíhá název služby **App Services** (a brzy změna na **analýzy protokolů**). 
 * [Živý datový proud metriky](app-insights-live-stream.md) dat není počítá o cenách pro účely.
 * [Průběžné export](app-insights-export-telemetry.md) a [konektor Azure Log Analytics](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) v základní plán od duben 2018 jsou k dispozici bez dalších poplatků.
 

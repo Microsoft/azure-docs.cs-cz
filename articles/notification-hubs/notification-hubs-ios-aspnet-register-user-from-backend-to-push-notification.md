@@ -1,11 +1,11 @@
 ---
-title: "Registrace aktuálního uživatele pro nabízená oznámení pomocí webového rozhraní API | Microsoft Docs"
-description: "Zjistěte, jak požádat o registraci nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs, když registrace se provádí pomocí rozhraní ASP.NET Web API."
+title: Registrace aktuálního uživatele pro nabízená oznámení pomocí webového rozhraní API | Microsoft Docs
+description: Zjistěte, jak požádat o registraci nabízených oznámení v aplikaci pro iOS pomocí Azure Notification Hubs, když registrace se provádí pomocí rozhraní ASP.NET Web API.
 services: notification-hubs
 documentationcenter: ios
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: fd56bb2dd627b31f00363851a4e76484aa382988
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 46eb0dab60856d774c8ad2bf7ab55e1ffc6ddb66
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrace aktuálního uživatele pro nabízená oznámení pomocí technologie ASP.NET
 > [!div class="op_single_selector"]
@@ -98,7 +98,7 @@ Toto téma ukazuje, jak požádat o registraci nabízených oznámení pomocí A
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
    
-    Inicializuje první řádek **DeviceInfo** typu singleton. Druhý řádek spustí registrace pro nabízená oznámení, které se již nachází je jste už dokončili [Začínáme s Notification Hubs] kurzu.
+    Inicializuje první řádek **DeviceInfo** typu singleton. Druhý řádek spustí registrace pro nabízená oznámení, který je již přítomen, pokud jste již dokončili [Začínáme s Notification Hubs] kurzu.
 7. V PushToUserAppDelegate.m, implementovat metodu **didRegisterForRemoteNotificationsWithDeviceToken** ve vaší AppDelegate a přidejte následující kód:
    
         self.deviceInfo.deviceToken = deviceToken;

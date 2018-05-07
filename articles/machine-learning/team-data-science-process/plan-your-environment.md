@@ -1,9 +1,9 @@
 ---
-title: "Scénáře identifikovat a naplánovat váš proces analytics - Azure | Microsoft Docs"
-description: "Plán pro pokročilou analýzu v úvahu řadu klíčové otázky."
+title: Scénáře identifikovat a naplánovat váš proces analytics - Azure | Microsoft Docs
+description: Plán pro pokročilou analýzu v úvahu řadu klíčové otázky.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 Jaké prostředky měli naplánovat při nastavení prostředí pro provádět pokročilé analýzy na datovou sadu? Tento článek navrhuje řadu otázky, snadněji identifikovat úlohy a prostředky, které jsou relevantní váš scénář. Pořadí kroků pro prediktivní analýzy popsané v [co je proces pro vědecké účely Data Team (TDSP)?](overview.md). Každý z těchto kroků pro úlohy, které jsou relevantní pro konkrétní scénář vyžaduje konkrétní prostředky. Klíčové otázky k identifikaci váš scénář se týkají dat logistiky charakteristiky, kvalitu nástroje a jazyky, které chcete provést analýzu a datové sady.
@@ -28,13 +28,13 @@ Jaké prostředky měli naplánovat při nastavení prostředí pro provádět p
 ## <a name="logistic-questions-data-locations-and-movement"></a>Logistic dotazy: dat – umístění a přesun
 Logistic dotazy se týkají umístění **zdroj dat**, **cílového místa** v Azure a požadavky pro přesun dat, včetně plánu, velikost a prostředků zahrnutých. Data možná potřebujete přesunout několikrát během analýzy. Obvyklým scénářem je přesunout místní data do určitou formu úložiště v Azure a pak do nástroje Machine Learning Studio.
 
-1. **Co je zdroj dat?** Je místní nebo v cloudu? Například:
+1. **Co je zdroj dat?** Je místní nebo v cloudu? Příklad:
    
    * Data jsou veřejně dostupné v adresa protokolu HTTP.
    * Data se nachází v místní nebo síťové umístění souboru.
    * Data jsou v databázi systému SQL Server.
    * Data jsou uložena v kontejneru úložiště Azure
-2. **Co je Azure cílové?** Kde nemusí být pro zpracování nebo modelování? Například:
+2. **Co je Azure cílové?** Kde nemusí být pro zpracování nebo modelování? Příklad:
    
    * Azure Blob Storage
    * Databáze SQL Azure
@@ -57,7 +57,7 @@ Tyto otázky jsou klíčem k plánování vašeho úložiště a zpracování pr
    * Číselné
    * Kategorické
    * Řetězce
-   * Binární
+   * Binární hodnota
 2. **Vaše data formátování?** Například:
    
    * Textový soubor s oddělovači (CSV) nebo plochých souborů oddělené tabulátory (TSV)

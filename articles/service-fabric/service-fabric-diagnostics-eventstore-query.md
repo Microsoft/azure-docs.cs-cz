@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: af97385981c61f32c4136921d3cf14a526fc6ddb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 698117f9f8f8ba955f5c182296af3fd32a4990ae
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Rozhraní API EventStore dotazu pro události clusteru
 
@@ -139,35 +139,35 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 Tady je několik příkladů na tom, jak můžete volat rozhraní API REST úložiště událostí zjistit stav clusteru.
 
-1. Upgrade clusteru:
+*Upgrade clusteru:*
 
 Pokud chcete zobrazit čas poslední clusteru byla úspěšně nebo pokus o upgrade poslední týden, můžete dát dotaz na rozhraní API pro nedávno provedených upgrady do clusteru, pomocí dotazu pro "ClusterUpgradeComplete" události EventStore: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeComplete`
 
-1. Problémy s upgradem clusteru:
+*Problémy s upgradem clusteru:*
 
 Podobně pokud byly nějaké problémy s poslední upgrade clusteru, můžete dotazovat pro všechny události pro entitu clusteru. Zobrazí se různé události, včetně zahájení upgrady a každý UD, pro kterou upgrade prostřednictvím úspěšně vrátit. Události pro bod, ve kterém se zobrazí také vrácení spuštěn a odpovídajících události stavu. Zde je dotaz, které se používají pro toto: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-1. Změny stavu uzlu:
+*Změny stavu uzlu:*
 
 Pokud chcete zobrazit, že se stav uzlu změní přes posledních několik dní – když uzly se nahoru nebo dolů, nebo byly aktivace nebo deaktivace (podle platformy, službu chaos, nebo z uživatelský vstup) – použijte následující dotaz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-1. Události aplikace:
+*Události aplikace:*
 
 Můžete také sledovat poslední nasazení aplikací a upgrady. Použijte tento dotaz zobrazíte všechny aplikace související události v clusteru: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-1. Historie stavu pro aplikaci:
+*Historie stavu pro aplikaci:*
 
 Kromě pouze na zobrazení události životního cyklu aplikací, můžete také zobrazit historická data na stav této konkrétní aplikace. To provedete tak, že zadáte název aplikace, pro které chcete shromažďovat data. Pomocí tohoto dotazu zobrazíte všechny události stavu aplikace: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.2-preview&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ProcessApplicationReport`. Pokud chcete zahrnout události stavu, které platnost vypršela (zmizel předaný za provozu (TTL) vypršela doba pro jejich), přidejte `,ExpiredDeployedApplicationEvent` na konec dotaz pro filtrování dva typy událostí.
 
-1. Historie stavu pro všechny služby v "Moje aplikace":
+*Historie stavu pro všechny služby v "Moje aplikace":*
 
 V současné době události sestavy stavu pro služby zobrazují jako `DeployedServiceHealthReportCreated` události v rámci odpovídající entity aplikací. Chcete-li zobrazit úspěšnost vašich služeb pro "App1", použijte následující dotaz: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServiceHealthReportCreated`
 
-1. Rekonfigurace oddílu:
+*Rekonfigurace oddílu:*
 
 Aby se zobrazily všechny přesuny oddílu, které bylo provedeno v clusteru, vyhledat `ReconfigurationCompleted` událostí. To vám může pomoci zjistit, co úlohy byla spuštěna na uzel v určitých časech, při diagnostikování vystaví v clusteru. Tady je ukázkový dotaz, který nemá který: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.2-preview&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigurationCompleted`
 
-1. Služba Chaos:
+*Služba Chaos:*
 
 Existuje událost pro při Chaos spuštěna nebo který je zastavena služba umístěné na úrovni clusteru. Pokud chcete zobrazit poslední používání Chaos služby, použijte následující dotaz: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.2-preview&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

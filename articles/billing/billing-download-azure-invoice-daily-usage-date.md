@@ -1,27 +1,27 @@
 ---
-title: "Stažení Azure fakturace faktury a denní data o využití | Microsoft Docs"
-description: "Popisuje postup stažení nebo zobrazení Azure fakturace faktury a denní data o využití."
-keywords: "fakturace faktury, stažení faktury, faktury azure, azure využití"
-services: 
-documentationcenter: 
+title: Stažení Azure fakturace faktury a denní data o využití | Microsoft Docs
+description: Popisuje postup stažení nebo zobrazení Azure fakturace faktury a denní data o využití.
+keywords: fakturace faktury, stažení faktury, faktury azure, azure využití
+services: ''
+documentationcenter: ''
 author: genlin
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eea55735d0e17de4fe543847d0d521b0e8c0c3f7
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 6fa9f9ae4ef2bd39f3c6d3ec7c6d757aa50b2fd1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturace faktury a dat o denním využití
 Vaše faktura z si můžete stáhnout [portál Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo jej odeslat e-mailem. Chcete-li stáhnout denní využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze některé role nemáte oprávnění k získání fakturace faktury a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturační informace najdete v tématu [spravovat přístup k Azure fakturace použití rolí](billing-manage-access.md).
@@ -90,7 +90,7 @@ Pouze správce účtu mají přístup k centru účtů Azure. Jiní správci fak
 
 Další informace o denní využití najdete v tématu [porozumět vaší faktuře pro Microsoft Azure](billing-understand-your-bill.md). Správa nákladů pomoc najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](billing-getting-started.md).
 
-## <a name="noinvoice"></a>Proč nevidím fakturu za poslední fakturační období?
+## <a name="noinvoice"></a> Proč nevidím fakturu za poslední fakturační období?
 
 Je možné, že nevidíte faktury z několika důvodů:
 

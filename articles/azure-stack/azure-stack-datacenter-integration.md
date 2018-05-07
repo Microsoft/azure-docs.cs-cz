@@ -1,25 +1,25 @@
 ---
-title: "Datacenter Obecné aspekty integrace pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Zjistěte, co můžete dělat teď plánování a přípravu integrace datového centra s několika uzly Azure zásobníku."
+title: Datacenter Obecné aspekty integrace pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Zjistěte, co můžete dělat teď plánování a přípravu integrace datového centra s několika uzly Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Aspekty Datacenter integrace pro Azure zásobníku integrované systémy
 Pokud byste chtěli v systému Azure zásobníku integrované, byste měli porozumět některé hlavní informace o plánování řešení nasazení a jak systému zapadá do vašeho datového centra. Tento článek obsahuje přehled těchto aspektů, který vám pomůže provádět rozhodnutí důležité infrastruktury pro systém Azure zásobníku více uzly. Pochopení těchto aspektů pomáhá při práci s dodavatele hardwaru, od výrobců OEM jako jejich nasazení do vašeho datového centra Azure zásobníku.  
@@ -50,7 +50,9 @@ Vyšší úroveň přístupu je potřeba pro řešení potíží, které nejsou 
 ## <a name="identity-considerations"></a>Aspekty identity
 
 ### <a name="choose-identity-provider"></a>Vyberte poskytovatele správy identit
-Musíte vzít v úvahu identity poskytovatele, kterého chcete použít pro nasazení zásobník Azure, Azure AD ani AD FS. Po nasazení bez opětovného nasazení úplnou nelze přepnout poskytovatelů identit.
+Musíte vzít v úvahu identity poskytovatele, kterého chcete použít pro nasazení zásobník Azure, Azure AD ani AD FS. Po nasazení bez opětovného nasazení úplnou nelze přepnout poskytovatelů identit. Pokud nejste vlastníkem účet Azure AD a používáte účet, které jste získali od poskytovatele cloudových služeb, a pokud se rozhodnete přepnout zprostředkovatele a použijte jiný Azure AD účet, v tomto okamžiku budete muset obraťte se na svého poskytovatele řešení k opětovnému nasazení řešení f nebo můžete na vaše náklady.
+
+
 
 Svou volbu zprostředkovatele identity nemá žádný vliv na klientské virtuální počítače, identitu systému a účty, které používají, zda bylo možné připojit doméně služby Active Directory atd. Toto je samostatný.
 

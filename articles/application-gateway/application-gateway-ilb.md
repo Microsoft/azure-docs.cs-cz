@@ -1,10 +1,10 @@
 ---
-title: "Azure Application Gateway pomocí nástroje pro vyrovnávání zatížení pro vnitřní | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny ke konfiguraci služby Azure Application Gateway s vyrovnáváním zatížení se vnitřní koncový bod"
+title: Azure Application Gateway pomocí nástroje pro vyrovnávání zatížení pro vnitřní | Microsoft Docs
+description: Tato stránka obsahuje pokyny ke konfiguraci služby Azure Application Gateway s vyrovnáváním zatížení se vnitřní koncový bod
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 7403d28e-909f-46a2-b282-43a8e942f53c
 ms.service: application-gateway
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: davidmu
-ms.openlocfilehash: 7ca9307e8a78f6dade4b231fa3a0d83a68af3f21
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 5d5e70d46121252c616d77d33ee82397e3a3ca84
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Vytvoření brány Application Gateway s interním nástrojem Load Balancer (ILB)
 
@@ -217,7 +217,7 @@ VirtualIPs    : {10.0.0.10}
 DnsName       : appgw-b2a11563-2b3a-4172-a4aa-226ee4c23eed.cloudapp.net
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete další informace o obecných možnostech vyrovnávání zatížení, přečtěte si část:
 
 * [Nástroj pro vyrovnávání zatížení Azure](https://azure.microsoft.com/documentation/services/load-balancer/)

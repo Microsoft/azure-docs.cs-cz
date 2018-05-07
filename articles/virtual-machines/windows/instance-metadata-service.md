@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: b3ecddbfdc37bc58294dff41b62e0505b90ca940
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f6eef8be28ed7e1a7c4be2316dbf670bde76a637
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Služba Azure Instance metadat
 
@@ -36,10 +36,10 @@ Služba je k dispozici v všeobecně dostupná oblastech Azure. Ne všechny verz
 
 Oblasti                                        | Dostupnost?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny všeobecně dostupná globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně k dispozici   | 2017-04-02, 2017-08-01, 2017-12-01
+[Všechny všeobecně dostupná globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecně k dispozici   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně k dispozici | 2017-04-02,2017-08-01
-[Azure China](https://www.azure.cn/)                                                           | Obecně k dispozici | 2017-04-02,2017-08-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně k dispozici | 2017-04-02,2017-08-01
+[Azure Čína](https://www.azure.cn/)                                                           | Obecně k dispozici | 2017-04-02,2017-08-01
+[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně k dispozici | 2017-04-02,2017-08-01
 
 Tato tabulka je aktualizován, jakmile jsou aktualizace služby a nebo nové podporované verze jsou k dispozici
 
@@ -287,7 +287,7 @@ location | Oblast Azure virtuální počítač běží v | 2017-04-02
 jméno | Název virtuálního počítače | 2017-04-02
 nabídka | Nabízí informace o image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici. | 2017-04-02
 Vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
-sku | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+SKU | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 verze | Verze bitové kopie virtuálního počítače | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 platformUpdateDomain |  [Aktualizace domény](manage-availability.md) je virtuální počítač spuštěný | 2017-04-02
@@ -300,13 +300,14 @@ resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource
 placementGroupId | [Umístění skupiny](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) váš virtuální počítač měřítka nastavit | 2017-08-01
 vmScaleSetName | [Název virtuálního počítače ScaleSet] (.. /.. / virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) váš virtuální počítač měřítka nastavit | 2017-12-01
 zóna | [Dostupnost zóny](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01 
-ipv4/privateIpAddress | Místní adresu IPv4 virtuálního počítače | 2017-04-02
-ipv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02
+IPv4/privateIpAddress | Místní adresu IPv4 virtuálního počítače | 2017-04-02
+IPv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02
 Adresa podsítě / | Adresa podsítě virtuálního počítače | 2017-04-02 
 Předpona podsítě / | Předpona podsítě, například 24 | 2017-04-02 
 ipv6/ipAddress | Místní adresu IPv6 virtuálního počítače | 2017-04-02 
 MacAddress | Adresa mac virtuálního počítače | 2017-04-02 
 scheduledevents | V tématu [naplánované události](scheduled-events.md) | 2017-08-01
+identity | (Preview) Identita spravované služby. V tématu [získat přístupový token](../../active-directory/managed-service-identity/how-to-use-vm-token.md) | 2018-02-01
 
 ## <a name="example-scenarios-for-usage"></a>Příklad scénáře použití  
 

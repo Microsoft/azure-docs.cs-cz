@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -79,7 +79,7 @@ Do vyhledávacího pole v horní části portálu, zadejte *skupin zabezpečení
 ### <a name="change-a-network-security-group"></a>Změnit skupinu zabezpečení sítě
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *skupin zabezpečení sítě* do vyhledávacího pole. Když **skupin zabezpečení sítě** nezobrazí ve výsledcích hledání, vyberte ho.
-2. Vyberte skupinu zabezpečení sítě, kterou chcete změnit. Nejběžnější změny jsou [přidání](#create-a-security-rule) nebo [odebrání](#delete-a-security-rule) pravidla zabezpečení a [Associating nebo zrušení přidružení skupiny zabezpečení sítě do nebo z podsítě nebo sítě rozhraní](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+2. Vyberte skupinu zabezpečení sítě, kterou chcete změnit. Nejběžnější změny jsou [přidání](#create-a-security-rule) nebo [odebrání](#delete-a-security-rule) pravidla zabezpečení a [Associating nebo zrušení přidružení skupiny zabezpečení sítě do nebo z podsítě nebo sítě rozhraní](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
 **Příkazy**
 

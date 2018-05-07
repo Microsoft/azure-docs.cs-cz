@@ -6,13 +6,13 @@ manager: jlembicz
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: 018388cd2bd85eb86ad7b62ee247bccd6329e9ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 88949f4cf0e4408f5d1e4d9c9a5833b041b5a5ab
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Upgrade na Azure Search .NET SDK verze 5
 Pokud používáte verzi 4.0 preview nebo starší z [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace k používání verze 5.
@@ -57,7 +57,7 @@ Většina významné narušující změně ve verze 5 je, že `Microsoft.Azure.S
  - `Microsoft.Azure.Search`: Toto je meta balíček, který obsahuje všechny ostatní balíčky Azure Search jako závislosti. Pokud provádíte upgrade ze starší verze sady SDK, jednoduše upgrade tohoto balíčku a nové sestavení by vám měly dostatečně k použití na novou verzi.
  - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikaci .NET používání služby Azure Search a potřebujete jenom dotaz nebo aktualizovat dokumenty ve vašem indexy. Pokud také potřebujete vytvořit nebo aktualizovat indexy, synonymum mapy nebo jiným prostředkům úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
  - `Microsoft.Azure.Search.Service`: Tento balíček používejte, pokud vyvíjíte automatizace v rozhraní .NET pro správu indexů Azure Search, synonymum mapy, indexery, zdroje dat nebo jiným prostředkům na úrovni služby. Pokud potřebujete jenom dotazu nebo aktualizace dokumentů ve vašem indexy, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
-- `Microsoft.Azure.Search.Common`: Vyžaduje na knihovny .NET vyhledávání Azure běžné typy. Neměli byste potřebovat pro tento balíček použít přímo v aplikaci; Smyslem je pouze má být použit jako závislost.
+ - `Microsoft.Azure.Search.Common`: Vyžaduje na knihovny .NET vyhledávání Azure běžné typy. Neměli byste potřebovat pro tento balíček použít přímo v aplikaci; Smyslem je pouze má být použit jako závislost.
  
 Tuto změnu je technicky nejnovější vzhledem k tomu, že mnoho typů byly přesunuty mezi sestavení. Z tohoto důvodu znovu sestavit aplikaci je nutné před upgradem na verzi 5 sady SDK.
 

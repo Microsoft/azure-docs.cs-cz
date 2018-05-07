@@ -10,17 +10,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 554618b055ce5afcc67f95afa0242d36e74fabc0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s cesta pravidla založená na směrování pomocí portálu Azure
 
 Na portálu Azure můžete použít ke konfiguraci [pravidla směrování na základě cesty adresy URL](application-gateway-url-route-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy používání virtuálních počítačů. Potom můžete vytvořit pravidla směrování pro Ujistěte se, že web přenos dorazí na příslušné servery ve fondech.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
@@ -82,16 +82,16 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 2. Klikněte na tlačítko **výpočetní** a pak vyberte **Windows Server 2016 Datacenter** v seznamu doporučený.
 3. Pro virtuální počítač, zadejte tyto hodnoty:
 
-    - *myVM1* – pro název virtuálního počítače.
-    - *azureuser* – pro uživatelské jméno správce.
+    - *myVM1* – název virtuálního počítače.
+    - *azureuser* – uživatelské jméno správce.
     - *Azure123456!* pro heslo.
     - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
-5. Vyberte **DS1_V2** pro velikost virtuálního počítače, a klikněte na tlačítko **vyberte**.
+5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
-7. Klikněte na tlačítko **zakázané** zakázat Diagnostika spouštění.
-8. Klikněte na tlačítko **OK**, zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
+8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
@@ -102,7 +102,7 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 2. Spusťte následující příkaz pro instalaci služby IIS na virtuálním počítači: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -153,7 +153,7 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 
     ![Zaznamenejte veřejná IP adresa brány aplikace](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče. Například http://http://40.121.222.19.
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://http://40.121.222.19.
 
     ![Otestovat základní adresu URL v aplikační brány](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 

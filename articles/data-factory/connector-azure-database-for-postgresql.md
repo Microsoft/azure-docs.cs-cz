@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 4aea42bd20f01b4dae9e940b0ed101020d64c00c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 365775f840f85efe1792f376880145c7e7db1312
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Kopírování dat z databáze Azure pro PostgreSQL pomocí Azure Data Factory 
 
@@ -47,6 +47,13 @@ Pro databázi Azure pro PostgreSQL propojené služby jsou podporovány následu
 | type | Vlastnost typu musí být nastavena na: **AzurePostgreSql** | Ano |
 | připojovací řetězec | Řetězec připojení rozhraní ODBC pro připojení k databázi Azure pro PostgreSQL. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+
+Typické připojovací řetězec je `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`. Další vlastnosti, které můžete nastavit na váš případ:
+
+| Vlastnost | Popis | Možnosti | Požaduje se |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (EM)| Metoda ovladače se používá k šifrování dat odesílaných mezi ovladače a databázový server. Například `ValidateServerCertificate=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** nebo 1 (SSL) / 6 (RequestSSL) | Ne |
+| ValidateServerCertificate (virtuální čipové karty) | Určuje, jestli ovladač ověří certifikátu, která je odeslána na databázovém serveru, pokud je povolené šifrování SSL (metoda šifrování = 1). Například `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** nebo 1 (povoleno) | Ne |
 
 **Příklad:**
 

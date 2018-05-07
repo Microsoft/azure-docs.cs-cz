@@ -44,8 +44,8 @@ sql-database-single-database-resources.md
 | **Úroveň výkonu** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximální počet DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
-| Maximální počet možností úložiště (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 | 4096 |
+| Zahrnuté úložiště (GB) | 500 | 500 | 500 | 500 | 4 096 | 4 096 |
+| Maximální počet možností úložiště (GB) * | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4 096 | 4 096 |
 | Maximální úložiště OLTP v paměti (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Maximální počet souběžných pracovních procesů (počet požadavků)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maximální počet souběžných přihlášení | 200 | 400 | 800 | 1600 | 2400 | 6400 |

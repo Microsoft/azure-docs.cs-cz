@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: 10b2bf863540330a57b5aecac438f2b9e4bc8a74
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7e489db0d9a65b850df41360ce11616d518c5265
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O službě VPN gateway pro Azure zásobníku
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
@@ -94,7 +94,7 @@ Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost
 |**SKU pro vysoký výkon** | 200 Mb/s    | 5 |
 ***(1)***  Propustnost VPN není zaručenou propustnost pro připojení mezi různými místy přes Internet. Jedná se o maximální možné měření propustnosti.  
 ***(2)***  Číslo tunely maximální počet je celkový počet jedno nasazení Azure zásobníku pro všechna předplatná.  
-***(3)***  Protokol BGP není podporován pro základní SKU.  
+***(3)***  Protokol BGP není podporován pro základní SKU.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [nastavení pro brány VPN](azure-stack-vpn-gateway-settings.md) pro Azure zásobníku.

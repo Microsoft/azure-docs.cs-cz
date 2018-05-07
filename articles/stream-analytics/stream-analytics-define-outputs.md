@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 10d7b5d3670bd7a5f289a6f9f2754ecc6aa18795
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Pochopení výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupů, které jsou k dispozici pro úlohu služby Azure Stream Analytics. Výstupy umožňují ukládat a uložte výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýza a datových skladů vaše data. 
@@ -59,7 +59,7 @@ Obnovit autorizace, **Zastavit** úlohu > přejděte na výstup do Data Lake Sto
 
 ![Autorizovat Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
-## <a name="sql-database"></a>Databáze SQL
+## <a name="sql-database"></a>SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) lze použít jako výstup pro data, která je povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics k zápisu do existující tabulky v databázi SQL Azure.  Schématu tabulky se musí přesně shodovat, pole a jejich typy se výstup z úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) dá se zadat taky jako výstupu prostřednictvím také možnost output databáze SQL. Následující tabulka uvádí názvy vlastností a jejich popis pro vytvoření databáze SQL výstup.
 
 | Název vlastnosti | Popis |
@@ -290,10 +290,10 @@ Následující tabulka shrnuje podporu oddílu a počet výstupních zapisovače
 | Azure Blob Storage | Ano | Použití {date} a {time} tokeny v vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní vytváření oddílů pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). | 
 | Centra událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Pokud výstup, který nadřazeného (předchozí) dotazu krok počet zapisovače stejným způsobem je zarovnán klíč oddílu centra událostí je stejný počet výstupní oddíly centra událostí. Každý zapisovače používá pro EventHub [EventHubSender třída](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí na konkrétní oddíl. </br> Pokud je klíč oddílu není v souladu s nadřazeného (předchozí) dotazu krok počet zapisovače centra událostí výstup stejný jako počet oddílů v této předchozí krok. Každý zapisovače používá EventHubClient [SendBatchAsync třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí na všechny oddíly výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. | 
-| Azure Table Storage | Ano | Všechny výstupního sloupce.  | Následuje vstupní vytváření oddílů pro [plně ochrnuté pacienty dotazy](stream-analytics-scale-jobs.md). | 
+| Azure Table Storage | Ano | Všechny výstupního sloupce.  | Následuje vstupní vytváření oddílů pro [plně paralelizovaná málo dotazy](stream-analytics-scale-jobs.md). | 
 | Témata sběrnice Azure | Ano | Automaticky vybrali. Počet oddílů je založen na [Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.| Stejný jako počet oddílů v tématu výstup.  |
 | Fronty Azure Service Bus | Ano | Automaticky vybrali. Počet oddílů je založen na [Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.| Stejný jako počet oddílů ve výstupní fronty. |
-| Azure Cosmos DB | Ano | Ve vzoru názvu kolekce pomocí tokenu {partition}. Hodnota {partition} je založena na klauzuli PARTITION BY v dotazu. | Následuje vstupní vytváření oddílů pro [plně ochrnuté pacienty dotazy](stream-analytics-scale-jobs.md). |
+| Azure Cosmos DB | Ano | Ve vzoru názvu kolekce pomocí tokenu {partition}. Hodnota {partition} je založena na klauzuli PARTITION BY v dotazu. | Následuje vstupní vytváření oddílů pro [plně paralelizovaná málo dotazy](stream-analytics-scale-jobs.md). |
 | Azure Functions | Ne | Žádný | Není k dispozici. | 
 
 ## <a name="output-batch-size"></a>Velikost dávky výstup

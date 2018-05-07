@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a plán, podle kterého - automatizace FedRAMP webové aplikace – sledování dodržování předpisů a školení"
-description: "Automatizace FedRAMP webové aplikace – sledování a školení"
+title: Zabezpečení Azure a plán, podle kterého - automatizace FedRAMP webové aplikace – sledování dodržování předpisů a školení
+description: Automatizace FedRAMP webové aplikace – sledování a školení
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: a019f76929ea3c7d27492f8a9d6b6994e471aabe
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="awareness-and-training-at"></a>Sledování a školení (na)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **NA-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] školení zásady, které řeší účel, oboru, role, odpovědnosti, závazků správy a sledování zabezpečení spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění povědomí o zabezpečení a zásady školení a přiřazený bezpečnostní sledování a ovládací prvky školení; kontroluje a aktualizuje aktuální povědomí o zabezpečení a zásad školení [přiřazení: organizace definované frekvence]; a sledování zabezpečení a školení postupy [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2.a** organizace poskytuje základní zabezpečení sledování školení pro uživatele systému informace (včetně manažeři vedoucích a dodavatelů) jako součást počáteční školení pro nové uživatele.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2.b** organizace poskytuje základní zabezpečení sledování školení pro uživatele systému informace (včetně manažeři vedoucích a dodavatelů) Pokud to vyžaduje změny systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **NA 2.c** organizace poskytuje základní zabezpečení sledování školení pro uživatele systému informace (včetně manažeři vedoucích a dodavatelů) [přiřazení: organizace definované frekvence] po tomto datu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-2 (2)** organizace zahrnuje sledování zabezpečení cvičení na rozpozná a vytváření sestav potenciální ukazatelů zevnitř.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3.a** organizace poskytuje školení na základě rolí zabezpečení pro pracovníky s přiřazené role zabezpečení a odpovědnosti před autorizace přístupu k systému informace nebo provádění přiděleny úkoly.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **NA 3.b** organizace poskytuje školení na základě rolí zabezpečení pro pracovníky s přiřazené role zabezpečení a odpovědnosti, pokud to vyžaduje změny systému informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **NA 3.c** organizace poskytuje školení na základě rolí zabezpečení pro pracovníky s přiřazené role zabezpečení a odpovědnosti [přiřazení: organizace definované frekvence] po tomto datu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3 (3)** organizace zahrnuje praktická cvičení v školení zabezpečení, která posílit školení cíle.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-3 (4)** organizace poskytuje školení jeho osobám v [přiřazení: organizace definované indikátory škodlivý kód] rozpoznat podezřelé komunikace a neobvyklé chování v systémech organizační údaje.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **NA 4.a** organizaci dokumenty a monitorování jednotlivých informace systému školení aktivity související se zabezpečením včetně základní zabezpečení sledování školení a konkrétní informace systému bezpečnostního školení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **AT-4.b** organizace zachová školení jednotlivé záznamy pro [přiřazení: organizace definované časové období].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

@@ -3,7 +3,7 @@ title: Připojování Microsoft Advanced Threat Analytics k Azure Security Cente
 description: Zjistěte, jak Azure Security Center umožňuje integraci s Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
 editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a3444b9d42ffdd5f81568f0e9e09557096b4415f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Připojování Microsoft Advanced Threat Analytics k Azure Security Center
 Tento dokument vám pomůže nakonfigurovat integraci mezi službou Microsoft Advanced Threat Analytics a Azure Security Center.

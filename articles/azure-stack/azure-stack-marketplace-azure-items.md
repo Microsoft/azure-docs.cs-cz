@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -82,6 +82,7 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 ## <a name="linux-distributions"></a>Distribuce systému Linux
 |  | Název položky | Popis | Vydavatel |
 | --- | --- | --- | --- |
+| ![Vymazat operačního systému Linux](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Vymazat operačního systému Linux](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Odkaz Linux distribuční optimalizované pro architekturu Intel. | Vymazat Linux projektu |
 | ![Kontejner Linux podle CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Kontejner Linux podle CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kontejner Linux je distribuce Linux moderní a minimální poskytuje snadný způsob, jak spouštět kontejnery, Správa clusterů a bezproblémově aktualizovat vaše servery – výpočetní všechny součásti, které umožňují skladu škálování. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server je nejoblíbenější Linux na světě pro cloudové prostředí. | Canonical |
 | ![Debian 8 "Klára"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Klára"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux je jednou z nejčastěji používané distribucích systému Linux. | credativ |

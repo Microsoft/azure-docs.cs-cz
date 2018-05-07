@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 281f50a942a9396bf1163f5a20feb98bf450e6eb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak se přihlásit žádné uživatele Azure Active Directory pomocí vzoru víceklientské aplikace
 Pokud nabízíte softwaru jako aplikace služby k mnoha organizacích, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení jakéhokoli klienta Azure Active Directory (AD). Tato konfigurace se nazývá provedení víceklientské vaší aplikace. Uživatelé v jakékoli klientovi Azure AD bude moci přihlásit k aplikaci po souhlas používat svůj účet s vaší aplikací.  
@@ -57,7 +57,8 @@ Pokud Azure AD přijme požadavek na / Common koncový bod, se uživatel přihl�
 
 Odpověď přihlášení do aplikace se pak obsahuje token reprezentující uživatele. Hodnota vystavitele v tokenu informuje co klienta uživatele je z aplikace. Pokud vrátí odpověď z / Common koncový bod, odpovídá hodnotě vystavitele v tokenu uživatele klienta. 
 
-> [! Koncový bod IMPORTANTNT] / Common není klienta a není vystavitele, je právě multiplexor. Při použití/Common, logiku aplikace k ověření tokeny musí aktualizovat, aby vzít v úvahu. 
+> [!IMPORTANT]
+> / Společný koncový bod není klienta a není vystavitele, je právě multiplexor. Při použití/Common, logiku aplikace k ověření tokeny musí aktualizovat, aby vzít v úvahu. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Aktualizujte kód pro zpracování více hodnot vystavitele
 Webové aplikace a webové rozhraní API přijímat a ověřovat tokeny z Azure AD.  
@@ -156,9 +157,6 @@ Uživatelé a správci můžete odvolat souhlas k vaší aplikaci kdykoli:
 * Správci odvolat přístup k aplikacím je odstranit z Azure AD pomocí [podnikové aplikace, které](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) části [portál Azure][AZURE-portal].
 
 Pokud správce souhlasí k aplikaci pro všechny uživatele v klientovi, uživatelé nelze odvolat přístup jednotlivě. Pouze správce můžete odvolat přístup a jenom pro celou aplikaci.
-
-### <a name="consent-and-protocol-support"></a>Podpora souhlasu a protokolů
-Souhlas se podporuje ve službě Azure AD pomocí OAuth, OpenID Connect, WS-Federation a protokoly SAML. Protokoly SAML a WS-Federation nepodporují `prompt=admin_consent` parametr, tak je možné pomocí OAuth a OpenID Connect jenom souhlas správce.
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Víceklientské aplikace a ukládání do mezipaměti přístupové tokeny
 Víceklientským aplikacím můžete také získat přístupové tokeny k volání rozhraní API, které jsou chráněné službou Azure AD. Běžnou chybou při použití s aplikací víceklientské Active Directory Authentication Library (ADAL) je původně žádosti o token pro uživatele s využitím/Common, obdrží odpověď a požádat o další token pro tomuto uživateli také pomocí/Common. Protože odpověď z Azure AD pochází z klienta, není nebo běžné, ADAL ukládá do mezipaměti token, že je z klienta. Další volání/Common získat přístupový token pro uživatele neúspěšných přístupů do položky mezipaměti a uživatel je vyzván se znovu přihlásit. Abyste se vyhnuli chybí mezipaměti, zkontrolujte, zda koncový bod klienta jsou provedeny následující volání pro již přihlášeného uživatele.

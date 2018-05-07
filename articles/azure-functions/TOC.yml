@@ -123,6 +123,8 @@
           href: durable-functions-versioning.md
         - name: Výkon a škálování
           href: durable-functions-perf-and-scale.md
+        - name: Zotavení po havárii a geografická distribuce
+          href: durable-functions-disaster-recovery-geo-distribution.md
 - name: Návody
   items:
     - name: Vývoj

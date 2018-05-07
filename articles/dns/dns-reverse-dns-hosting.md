@@ -1,22 +1,22 @@
 ---
-title: "Hostování zpětné zóny DNS vyhledávání v Azure DNS | Microsoft Docs"
-description: "Naučte se používat Azure DNS pro hostování zpětné vyhledávání zóny DNS pro vaše rozsahy IP adres"
+title: Hostování zpětné zóny DNS vyhledávání v Azure DNS | Microsoft Docs
+description: Naučte se používat Azure DNS pro hostování zpětné vyhledávání zóny DNS pro vaše rozsahy IP adres
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: d5dc152af6acb510e12cd42503b6128dc6492e89
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: kumud
+ms.openlocfilehash: c5d53838ffb77ff8d33fee9d10aea4a74f3c523c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitele zpětné vyhledávání zóny DNS v Azure DNS
 
@@ -52,7 +52,7 @@ Následující příklad ukazuje postup vytvoření třídy C zpětné zóny DNS
 
  ![Vyplněno "Vytvoření zóny DNS" podokně polí](./media/dns-reverse-dns-hosting/figure2.png)
 
-**Umístění skupiny prostředků** definuje umístění pro skupinu prostředků. Nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy "globální" a není zobrazen.
+**Umístění skupiny prostředků** definuje umístění pro skupinu prostředků. Nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a nezobrazuje se.
 
 Následující příklady ukazují, jak tuto úlohu dokončit pomocí prostředí Azure PowerShell a rozhraní příkazového řádku Azure.
 
@@ -83,7 +83,7 @@ Následující příklad ukazuje, jak vytvořit IPv6 zpětného vyhledávání z
 
  ![Vyplněno "Vytvoření zóny DNS" podokně polí](./media/dns-reverse-dns-hosting/figure3.png)
 
-**Umístění skupiny prostředků** definuje umístění pro skupinu prostředků. Nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy "globální" a není zobrazen.
+**Umístění skupiny prostředků** definuje umístění pro skupinu prostředků. Nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a nezobrazuje se.
 
 Následující příklady ukazují, jak tuto úlohu dokončit pomocí prostředí Azure PowerShell a rozhraní příkazového řádku Azure.
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 72d2eb9e6cf235a90c5b1cf1c125fb6719c65317
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ Pro Cassandra propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje Cassandra datovou sadu.
 
-Ke zkopírování dat z Cassandra, nastavte vlastnost typu datové sady, která **RelationalTable**. Podporovány jsou následující vlastnosti:
+Ke zkopírování dat z Cassandra, nastavte vlastnost typu datové sady, která **CassandraTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -173,11 +173,11 @@ Při kopírování dat z Cassandra, se používají následující mapování Ca
 |:--- |:--- |
 | ASCII |Řetězec |
 | BIGINT |Int64 |
-| OBJEKT BLOB |Byte[] |
+| OBJEKT BLOB |Byte] |
 | LOGICKÁ HODNOTA |Logická hodnota |
 | DECIMAL |Decimal |
 | DOUBLE |Dvojitý |
-| PLOVOUCÍ DESETINNÁ ČÁRKA |Svobodný/svobodná |
+| PLOVOUCÍ DESETINNÁ ČÁRKA |Jednoduchá |
 | INET |Řetězec |
 | INT |Int32 |
 | TEXT |Řetězec |
@@ -244,7 +244,7 @@ Následující tabulky popisují virtuální tabulky, které renormalize data ze
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
-| 3 |S1 |t |
+| 3 |S1 |T |
 
 **Tabulka "ExampleTable_vt_StringSet":**
 

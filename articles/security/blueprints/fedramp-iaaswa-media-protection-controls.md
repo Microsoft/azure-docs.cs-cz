@@ -1,6 +1,6 @@
 ---
-title: "Azure zabezpečení a ochrana média plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů"
-description: "FedRAMP webové aplikace automatizace - média ochrany"
+title: Azure zabezpečení a ochrana média plán, podle kterého - FedRAMP webové aplikace automatizace – dodržování předpisů
+description: FedRAMP webové aplikace automatizace - média ochrany
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 37812c2f7ee79685f9014a7999b4355e649ca6e1
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="media-protection-mp"></a>Média ochrany (PP)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásady ochrany média, které řeší účel, oboru, role, odpovědnosti, správu závazků, spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění zásady ochrany média a ovládací prvky ochrany přidružených médií; kontroluje a aktualizuje aktuální zásady ochrany média [přiřazení: organizace definované frekvence]; a postupy ochrany média [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-2** organizace omezuje přístup k [přiřazení: organizace definované typy médií digitální nebo jiných digitální] na [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 3.a** organizace označí média systému informace označující distribuční omezení, zpracování upozornění a informací o příslušné zabezpečení označení (pokud existuje).
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 3.b** stanoví organizace [přiřazení: organizace definované typy médií informace systému] z označení tak dlouho, dokud média zůstat v rámci [přiřazení: definované organizace řídí oblasti].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 4.a** organizace fyzicky ovládací prvky a bezpečně uloží [přiřazení: organizace definované typy médií digitální nebo jiných digitální] v [přiřazení: definované organizace řídí oblasti].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 4.b** organizace chrání média systému informace, dokud jsou zničen média nebo upravený pomocí schválených zařízení technik a postupů.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 5.a** organizace chrání a ovládací prvky [přiřazení: organizace definované typy médií informace systému] během přenosu mimo řízené oblastí pomocí [přiřazení: ochrana definované organizace zabezpečení].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 5.b** organizace udržuje odpovědnosti za pro média informace systému během přenosu mimo řízené oblasti.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 5.c** organizace dokumenty činnosti spojené s přenos médií informace o systému.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 5** organizace omezuje aktivity přidružené k přenosu informací média systému oprávněný personál.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-5 (4)** systém informace implementuje kryptografických mechanismů chránit důvěrnost a integritu informace uložené v digitálního média během přenosu mimo řízené oblasti.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 6.a** organizace upraví [přiřazení: média systému informace definované organizace] před uvolnění, vydání mimo organizační ovládací prvek, nebo verze pro opakované použití pomocí [přiřazení: techniky definované organizace čištění a postupy] v souladu s příslušné standardy federal a organizace a zásady.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP 6.b** organizace využívá čištění mechanismy s sílu a integrity úměrná kategorie zabezpečení nebo klasifikaci informací.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP – 6 (1)** organizace zkontroluje, schválí, sleduje, dokumenty a ověřuje akcí čištění a uvolnění média.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP – 6 (2)** organizace testy čištění zařízení a postupy [přiřazení: organizace definované frekvence] ověřit, že se se dosáhne určený čištění.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP – 6 (3)** nedestruktivní čištění techniky organizace se vztahuje na přenosném úložném zařízení ještě před takovým zařízením připojení k systému informace v následujících případech: [přiřazení: definované organizace okolnosti, které vyžadují čištění přenosná úložná zařízení].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-7** organizace [výběr: omezuje; znemožňuje] použití [přiřazení: organizace definované typy médií informace systému] na [přiřazení: systémy informace definované organizace nebo součástí systému] pomocí [přiřazení: Ochrana definovaná organizace zabezpečení].
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **MP-7 (1)** organizace zakáže použití přenosné úložné zařízení v systémech organizace, pokud taková zařízení osobní vlastník.
 
-**Odpovědnosti:**`Azure Only`
+**Odpovědnosti:** `Azure Only`
 
 |||
 |---|---|

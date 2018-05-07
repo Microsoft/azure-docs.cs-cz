@@ -4,7 +4,7 @@
 ## <a name="attach-an-empty-disk"></a>Připojení prázdného disku
 Prázdný disk se připojuje je jednoduchý způsob, jak přidat datový disk, protože Azure pro vás vytvoří soubor VHD a ukládá je v účtu úložiště.
 
-1. Klikněte na tlačítko **virtuálních počítačů (klasické)**a pak vyberte příslušný virtuální počítač.
+1. Klikněte na tlačítko **virtuálních počítačů (klasické)** a pak vyberte příslušný virtuální počítač.
 
 2. V nabídce nastavení, klikněte na tlačítko **disky**.
 
@@ -32,7 +32,7 @@ Prázdný disk se připojuje je jednoduchý způsob, jak přidat datový disk, p
 ## <a name="how-to-attach-an-existing-disk"></a>Postupy: připojit stávající disk
 Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostupný soubor .vhd. Použití [přidat AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) rutiny k nahrání souboru VHD do účtu úložiště. Po vytvoření a nahrát soubor VHD, můžete se připojit k virtuálnímu počítači.
 
-1. Klikněte na tlačítko **virtuálních počítačů (klasické)**a pak vyberte příslušný virtuální počítač.
+1. Klikněte na tlačítko **virtuálních počítačů (klasické)** a pak vyberte příslušný virtuální počítač.
 
 2. V nabídce nastavení, klikněte na tlačítko **disky**.
 

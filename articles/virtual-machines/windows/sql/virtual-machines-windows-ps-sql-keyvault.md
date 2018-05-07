@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/23/2017
+ms.date: 04/30/2018
 ms.author: jroth
-ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Resource Manager)
+
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Classic](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -29,7 +30,7 @@ ms.lasthandoff: 03/29/2018
 ## <a name="overview"></a>Přehled
 Existuje více funkcí šifrování systému SQL Server, například [transparentní šifrování dat (šifrování TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (Vymazat)](https://msdn.microsoft.com/library/ms173744.aspx), a [zálohu šifrovacího](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formuláře šifrování vyžadovat ke správě a ukládání kryptografických klíčů, které používáte pro šifrování. Službu službou Azure Key Vault (AZURE) slouží k vylepšení zabezpečení a správu tyto klíče v umístění zabezpečené a vysoce dostupné. [Konektor služby serveru SQL](http://www.microsoft.com/download/details.aspx?id=45344) umožňuje serveru SQL pro použití těchto klíčů z Azure Key Vault.
 
-Pokud jste s místním systémem SQL Server počítačů existuje jsou [kroky, pomocí kterých můžete pro přístup k Azure Key Vault z vašeho místního počítače systému SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure, můžete ušetřit čas pomocí *Azure Key Vault integrace* funkce.
+Pokud používáte systém SQL Server s místním počítačům, jsou [kroky, pomocí kterých můžete pro přístup k Azure Key Vault z vašeho místního počítače systému SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server ve virtuálních počítačích Azure, můžete ušetřit čas pomocí *Azure Key Vault integrace* funkce.
 
 Pokud je tato funkce povolena, automaticky se nainstaluje konektor serveru SQL, nakonfiguruje zprostředkovatele EKM. pro přístup k Azure Key Vault a vytvoří pověření umožňují přístup k trezoru. Pokud zvážení kroky v dokumentaci k výše uvedených v místě, uvidíte, že tato funkce automatizuje kroky 2 a 3. Jediné, co by se stále potřeba udělat ručně je vytvoření trezoru klíčů a klíče. Z tohoto místa se automatizované celé nastavení virtuálního počítače SQL. Po dokončení této instalace této funkce můžete spustit příkazů T-SQL zahájíte šifrování databáze nebo zálohy běžným způsobem.
 
@@ -39,7 +40,7 @@ Pokud je tato funkce povolena, automaticky se nainstaluje konektor serveru SQL, 
 Můžete povolit integrace se službou AZURE při zřizování nebo ho nakonfigurovat pro existující virtuální počítače.
 
 ### <a name="new-vms"></a>Nové virtuální počítače
-Pokud zřizujete nového virtuálního počítače systému SQL Server s Resource Managerem, portál Azure poskytuje krok k povolení integrace se službou Azure Key Vault. Funkce Azure Key Vault je dostupná pouze pro Enterprise, Developer a zkušební edice systému SQL Server.
+Pokud zřizujete nového virtuálního počítače systému SQL Server s Resource Managerem, portál Azure poskytuje způsob, jak povolit integrace se službou Azure Key Vault. Funkce Azure Key Vault je dostupná pouze pro Enterprise, Developer a zkušební edice systému SQL Server.
 
 ![Integrace se službou Azure Key Vault pro SQL](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 

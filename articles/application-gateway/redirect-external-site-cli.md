@@ -2,8 +2,8 @@
 title: Vytvoření aplikační brány s přesměrováním externích přenosů - rozhraní příkazového řádku Azure | Microsoft Docs
 description: Postup vytvoření služby application gateway, který přesměruje interní webové přenosy do fondu odpovídající pomocí rozhraní příkazového řádku Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 6bcc5528398d8dd952e789eb2cecaa0eba856135
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: victorh
+ms.openlocfilehash: a0132fa43f28997d80e391b7445eeb1809c19167
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway s externí přesměrování pomocí rozhraní příkazového řádku Azure
 

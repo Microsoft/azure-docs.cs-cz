@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ef0b1ce589bd19693d45a9e4f579ef260530a40
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 63bf7d5a0ad988ff7a6b498b4e91e90de97b507b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do Azure SQL database
 
@@ -87,7 +87,7 @@ V této části, čtení dat z tabulky (například **SalesLT.Address**), existu
 
     Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.  
 
-2. Následující fragment kódu vytvoří adresu URL JDBC, který můžete předat do dataframe Spark vytvoří rozhraní API `Properties` objekt pro uložení parametry. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
+2. Použijte následující fragment sestavit adresu URL JDBC, který můžete předat do dataframe Spark vytvoří rozhraní API `Properties` objekt pro uložení parametry. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 
        import java.util.Properties
 
@@ -96,7 +96,7 @@ V této části, čtení dat z tabulky (například **SalesLT.Address**), existu
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-3. Následující fragment vytváří dataframe s daty z tabulky v databázi Azure SQL. V tento fragment kódu, použijeme **SalesLT.Address** tabulku, která je k dispozici jako součást **AdventureWorksLT** databáze. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
+3. Následující fragment použijte k vytvoření dataframe s daty z tabulky v databázi Azure SQL. V tento fragment kódu, použijeme **SalesLT.Address** tabulku, která je k dispozici jako součást **AdventureWorksLT** databáze. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -141,7 +141,7 @@ V této části používáme ukázkový soubor CSV k dispozici v clusteru k vytv
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-3. Následující fragment kódu extrahuje schéma dat v HVAC.csv a používá schéma Pokud chcete načíst data ze souboru CSV v dataframe, `readDf`. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
+3. Následující fragment kódu extrahovat pomocí schématu dat v HVAC.csv a použití schématu pro načítání dat z sdíleného svazku clusteru v dataframe, `readDf`. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -165,6 +165,10 @@ V této části používáme ukázkový soubor CSV k dispozici v clusteru k vytv
 
     ![Připojit k databázi SQL pomocí aplikace SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "připojit k databázi SQL pomocí aplikace SSMS")
 
+7. Spuštění dotazu v aplikaci SSMS zobrazíte sloupců v tabulce.
+
+        SELECT * from hvactable
+
 ## <a name="stream-data-into-azure-sql-database"></a>Datový proud dat do databáze Azure SQL
 
 V této části jsme Streamovat data do **hvactable** , že jste již vytvořili v Azure SQL database v předchozí části.
@@ -184,7 +188,7 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
 3. Jsme Streamovat data z **HVAC.csv** do hvactable. Je k dispozici v clusteru na soubor HVAC.csv */HdiSamples/HdiSamples/SensorSampleData/TVK/*. V následující fragment kódu jsme nejprve get pro schéma data, která mají být prostřednictvím datového proudu. Poté vytvoříme streamování dataframe použití tohoto schématu. Vložte fragment kódu buňky a stiskněte **SHIFT + ENTER** ke spuštění.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readStreamDf = spark.readStream.schema(userSchema1).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
+       val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
 4. Výstup ukazuje schéma **HVAC.csv**. **Hvactable** má také stejné schéma. Výstup obsahuje seznam sloupců v tabulce.

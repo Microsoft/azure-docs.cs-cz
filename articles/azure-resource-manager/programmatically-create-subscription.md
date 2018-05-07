@@ -8,16 +8,16 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/18/2018
+ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: 8d495bf89697a5e14ff79953ab98f241ef8972e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8d1eb3229f22b2da3a356562250fedb3c35c4816
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Vytváření předplatných Azure Enterprise (preview) prostřednictvím kódu programu
 
@@ -65,19 +65,19 @@ Azure odpoví seznamu všech účtů registrace, ke kterým máte přístup do:
 {
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileOnboardingEng@contoso.com"
+        "principalName": "SignUpEngineering@contoso.com"
       }
     },
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileBackendEng@contoso.com"
+        "principalName": "BillingPlatformTeam@contoso.com"
       }
     }
   ]
@@ -98,8 +98,8 @@ Azure odpoví seznam adres ID objektů a e-mailové účty.
 
 ```azurepowershell
 ObjectId                               | PrincipalName
-<enrollmentAccountId>   | MobileOnboardingEng@contoso.com
-<enrollmentAccountId>   | MobileBackendEng@contoso.com
+747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
+4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -117,19 +117,19 @@ Azure odpoví seznam adres ID objektů a e-mailové účty.
 {
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileOnboardingEng@contoso.com"
+        "principalName": "SignUpEngineering@contoso.com"
       }
     },
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
-      "name": "<enrollmentAccountId>",
+      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "Microsoft.Billing/enrollmentAccounts",
       "properties": {
-        "principalName": "MobileBackendEng@contoso.com"
+        "principalName": "BillingPlatformTeam@contoso.com"
       }
     }
   ]
@@ -142,14 +142,14 @@ Použití `principalName` vlastnost k identifikaci účtu, který má odběry ú
 
 ## <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Vytvořte odběr pod účtem konkrétní registrace 
 
-Následující příklad vytvoří žádost o vytvoření odběru s názvem *Dev tým předplatné* a nabídka předplatného je *MS-AZR - 0017P* (regulární EA). Účet pro zápis je `<enrollmentAccountId>`, což je účet registrace pro MobileOnboardingEng@contoso.com. Přidá volitelně dva uživatele jako vlastníci RBAC pro předplatné.
+Následující příklad vytvoří žádost o vytvoření odběru s názvem *Dev tým předplatné* a nabídka předplatného je *MS-AZR - 0017P* (regulární EA). Účet pro zápis je `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (hodnotu zástupného symbolu, to je identifikátor GUID), což je účet registrace pro SignUpEngineering@contoso.com. Přidá volitelně dva uživatele jako vlastníci RBAC pro předplatné.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
 Použití `id` z `enrollmentAccount` v cestě požadavek na vytvoření odběru.
 
 ```json
-POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
+POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
 
 {
   "displayName": "Dev Team Subscription",
@@ -177,16 +177,17 @@ V odpovědi, můžete se vrátit `subscriptionOperation` objekt pro monitorován
 
 Pokud chcete používat tento modul preview, nainstalovat spuštěním `Install-Module AzureRM.Subscription -AllowPrerelease` první. Abyste měli jistotu, `-AllowPrerelease` funguje, nainstalujte nejnovější verzi PowerShellGet z [modulu Get PowerShellGet](/powershell/gallery/psget/get_psget_module).
 
-Použití [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) spolu s `enrollmentAccount` název jako `EnrollmentAccountObjectId` parametr k vytvoření nové předplatné. 
+Použití [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) spolu s `enrollmentAccount` ID jako objektu `EnrollmentAccountObjectId` parametr k vytvoření nové předplatné. 
 
 ```azurepowershell-interactive
-New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountId> -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
+New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
 | Název elementu  | Požaduje se | Typ   | Popis                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Ne      | Řetězec | Zobrazovaný název odběru. Pokud není zadáno, je nastavena na název nabídky, například "Microsoft Azure Enterprise."                                 |
 | `OfferType`   | Ano      | Řetězec | Nabídka předplatné. Jsou dvě možnosti pro EA [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí být [zapnutá pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
+| `EnrollmentAccountObjectId`      | Ano       | Řetězec | ID objektu registrace účet, který předplatné se vytvořil v rámci a účtován. Toto je identifikátor GUID hodnota, kterou můžete získat z `Get-AzureRmEnrollmentAccount`. |
 | `OwnerObjectId`      | Ne       | Řetězec | ID objektu každý uživatel, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno.  |
 | `OwnerSignInName`    | Ne       | Řetězec | E-mailovou adresu každý uživatel, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno. Můžete použít tento parametr místo `OwnerObjectId`.|
 | `OwnerApplicationId` | Ne       | Řetězec | ID aplikace instanční objekt, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno. Můžete použít tento parametr místo `OwnerObjectId`.| 
@@ -197,16 +198,17 @@ Pokud chcete zobrazit úplný seznam všech parametrů, najdete v části [New-A
 
 Chcete-li použít tuto příponu preview, nainstalujte jej spuštěním `az extension add --name subscription` první.
 
-Použití [az účet vytvořit](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) spolu s `enrollmentAccount` název jako `enrollment_account_name` parametr k vytvoření nové předplatné.
+Použití [vytvořit účet az](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) spolu s `enrollmentAccount` ID jako objektu `enrollment-account-object-id` parametr k vytvoření nové předplatné.
 
 ```azurecli-interactive 
-az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-name "<enrollmentAccountId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
+az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
 | Název elementu  | Požaduje se | Typ   | Popis                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Ne      | Řetězec | Zobrazovaný název odběru. Pokud není zadáno, je nastavena na název nabídky, například "Microsoft Azure Enterprise."                                 |
 | `offer-type`   | Ano      | Řetězec | Nabídka předplatné. Jsou dvě možnosti pro EA [MS-AZR - 0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR - 0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí být [zapnutá pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
+| `enrollment-account-object-id`      | Ano       | Řetězec | ID objektu registrace účet, který předplatné se vytvořil v rámci a účtován. Toto je identifikátor GUID hodnota, kterou můžete získat z `az billing enrollment-account list`. |
 | `owner-object-id`      | Ne       | Řetězec | ID objektu každý uživatel, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno.  |
 | `owner-upn`    | Ne       | Řetězec | E-mailovou adresu každý uživatel, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno. Můžete použít tento parametr místo `owner-object-id`.|
 | `owner-spn` | Ne       | Řetězec | ID aplikace instanční objekt, který chcete přidat jako vlastníka RBAC na předplatné, když je vytvořeno. Můžete použít tento parametr místo `owner-object-id`.| 
@@ -217,12 +219,12 @@ Pokud chcete zobrazit úplný seznam všech parametrů, najdete v části [vytvo
 
 ## <a name="delegate-access-to-an-enrollment-account-using-rbac"></a>Delegovat přístup k účtu registrace pomocí RBAC
 
-Umožnit jiný uživatel nebo instanční objekt schopnost vytvářet odběry proti určitého účtu, [jim poskytnout roli vlastníka RBAC v oboru účet zápisu](../active-directory/role-based-access-control-manage-access-rest.md). Následující příklad obsahuje uživatele v klientovi s `principalId` z `<userObjectId>` (pro MobileOnboardingEng@contoso.com) roli vlastníka na účet pro zápis. 
+Umožnit jiný uživatel nebo instanční objekt schopnost vytvářet odběry proti určitého účtu, [jim poskytnout roli vlastníka RBAC v oboru účet zápisu](../active-directory/role-based-access-control-manage-access-rest.md). Následující příklad obsahuje uživatele v klientovi s `principalId` z `<userObjectId>` (pro SignUpEngineering@contoso.com) roli vlastníka na účet pro zápis. 
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 
 ```json
-PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
+PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
 
 {
   "properties": {
@@ -238,7 +240,7 @@ Když jsou v rozsahu účtu registrace úspěšně přiřazeny roli vlastníka, 
   "properties": {
     "roleDefinitionId": "/providers/Microsoft.Billing/enrollmentAccounts/providers/Microsoft.Authorization/roleDefinitions/<ownerRoleDefinitionId>",
     "principalId": "<userObjectId>",
-    "scope": "/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>",
+    "scope": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "createdOn": "2018-03-05T08:36:26.4014813Z",
     "updatedOn": "2018-03-05T08:36:26.4014813Z",
     "createdBy": "<assignerObjectId>",
@@ -255,7 +257,7 @@ Když jsou v rozsahu účtu registrace úspěšně přiřazeny roli vlastníka, 
 Použití [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) k přidělit jinému uživateli vlastníka přístup ke svému účtu registrace.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>
+New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -263,7 +265,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Sc
 Použití [vytvořit přiřazení role az](../active-directory/role-based-access-control-manage-access-azure-cli.md) k přidělit jinému uživateli vlastníka přístup ke svému účtu registrace.
 
 ```azurecli-interactive 
-az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountId>
+az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 ----

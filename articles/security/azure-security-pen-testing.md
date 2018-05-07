@@ -3,7 +3,7 @@ title: Testování pera | Microsoft Docs
 description: Článek obsahuje přehled průnikům testování procesu (pentest) a jak provádět pentest proti vaší aplikace běžící v Azure infrastruktury.
 services: security
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
 editor: TomSh
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
 ms.author: barclayn
-ms.openlocfilehash: 1b7b6604de80beadf15dabe0d2da1d7a2e5fabd6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 27737c2b8b36772fc48db7a9cf97cb9a69c44cfc
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="pen-testing"></a>Testování pera
 Jednou z výhod používání Azure pro testování aplikací a nasazení je, můžete rychle získat prostředí vytvořili.  Nemusíte si dělat starosti o žádanek, získávání a "stáčení a překrývání" vlastní místní hardware.

@@ -1,9 +1,9 @@
 ---
-title: "Správa záznamů DNS v Azure DNS pomocí Azure PowerShell | Microsoft Docs"
-description: "Správa sad záznamů DNS a záznamy v Azure DNS při hostování vaší domény ve službě Azure DNS. Všechny příkazy prostředí PowerShell pro operace na sady záznamů a záznamy."
+title: Správa záznamů DNS v Azure DNS pomocí Azure PowerShell | Microsoft Docs
+description: Správa sad záznamů DNS a záznamy v Azure DNS při hostování vaší domény ve službě Azure DNS. Všechny příkazy prostředí PowerShell pro operace na sady záznamů a záznamy.
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: gwallace
-ms.openlocfilehash: fee96a77436f09e5cf2841b36b244e2d03f57f74
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: kumud
+ms.openlocfilehash: 511af342727dc46369ae70d60a7e9a3171bf986d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa záznamů DNS a sady záznamů v Azure DNS pomocí Azure PowerShell
 
@@ -379,17 +379,17 @@ Objekt sady záznamů lze také přesměrovat místo předávány jako parametr:
 Get-AzureRmDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzureRmDnsRecordSet
 ```
 
-## <a name="confirmation-prompts"></a>Potvrzení výzvy
+## <a name="confirmation-prompts"></a>Výzvy k potvrzení
 
-`New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet`, A `Remove-AzureRmDnsRecordSet` rutiny všechny podporují potvrzení výzvy.
+Všechny rutiny `New-AzureRmDnsRecordSet`, `Set-AzureRmDnsRecordSet` a `Remove-AzureRmDnsRecordSet` podporují výzvy k potvrzení.
 
 Každá rutina vyzve k potvrzení, pokud `$ConfirmPreference` proměnné předvoleb prostředí PowerShell má hodnotu `Medium` nebo nižší. Protože výchozí hodnota pro `$ConfirmPreference` je `High`, tyto výzvy nejsou zadána při pomocí výchozích nastavení prostředí PowerShell.
 
-Můžete přepsat aktuální `$ConfirmPreference` nastavení pomocí `-Confirm` parametr. Pokud zadáte `-Confirm` nebo `-Confirm:$True` , rutina vás vyzve k potvrzení před jeho spuštění. Pokud zadáte `-Confirm:$False` , rutina nezobrazí výzvu k potvrzení. 
+Aktuální nastavení `$ConfirmPreference` můžete přepsat pomocí parametru `-Confirm`. Pokud zadáte `-Confirm` nebo `-Confirm:$True`, rutina před spuštěním zobrazí výzvu k potvrzení. Pokud zadáte `-Confirm:$False`, rutina výzvu k potvrzení nezobrazí. 
 
-Další informace o `-Confirm` a `$ConfirmPreference`, najdete v části [o proměnné předvoleb](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
+Další informace o `-Confirm` a `$ConfirmPreference` najdete v tématu [Informace o proměnných předvoleb](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [zóny a záznamy v Azure DNS](dns-zones-records.md).
 <br>

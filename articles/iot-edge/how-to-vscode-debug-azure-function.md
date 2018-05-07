@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 3/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8c266a01375bf74fd4df9290255e84bc28e6089c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8bd3513e932540f2dd710e0ac1536e757c00a3e1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-visual-studio-code-to-debug-azure-functions-with-azure-iot-edge"></a>Pomocí Visual Studio Code funkce Azure s Azure IoT hranou ladění
 
@@ -21,6 +21,9 @@ Tento článek obsahuje podrobné pokyny pro používání [Visual Studio Code](
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení nebo zařízení IoT Edge můžete simulovat na vývojovém počítači.
+
+> [!NOTE]
+> Můžete ladit pouze funkce jazyka C# v kontejnerech linux amd64.
 
 Než následující pokyny v tomto článku, proveďte kroky v [vyvíjet IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md). Potom byste měli mít připravené následující položky:
 - Místní registru Docker na vývojovém počítači spuštěna. Je navržený pro použití místního registru Docker pro prototypu a účely testování. Můžete aktualizovat v registru kontejneru `module.json` souboru ve složce každý modul.

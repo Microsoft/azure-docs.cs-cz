@@ -1,24 +1,24 @@
 ---
-title: "Používání Hive v Azure HDInsight Hadoop data vědecké účely návody | Microsoft Docs"
-description: "Příklady procesu Team dat vědecké účely, které provede pomocí Hive v Azure HDInsight Hadoop pro prediktivní analýzy."
+title: Používání Hive v Azure HDInsight Hadoop data vědecké účely návody | Microsoft Docs
+description: Příklady procesu Team dat vědecké účely, které provede pomocí Hive v Azure HDInsight Hadoop pro prediktivní analýzy.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: cef2dac8651933765c83410579eafb23460960f9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: deguhath
+ms.openlocfilehash: 00a7c197223dcdd45181afbba98f66178b944c46
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Používání Hive v Azure HDInsight Hadoop data vědecké účely návody 
 
@@ -41,7 +41,7 @@ Tento scénář je implementovaná pomocí Hive se [clusteru Azure HDInsight Had
 [Použití Azure HDInsight Hadoop clusterů v sadě dat 1 TB](hive-criteo-walkthrough.md) návod používá veřejně dostupné [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) klikněte na datovou sadu, která předvídat, jestli je tip placené a rozsah objemy očekává. Tento scénář je implementovaná pomocí Hive se [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k uložení, prozkoumejte, funkci pracovníka a dolů ukázková data. Azure Machine Learning používá pro vytváření, trénování a určení skóre modelu binární klasifikace predikci, zda uživatel klikne na oznámení o inzerovaném programu. Průvodce se ukončí znázorňující k publikování některého z těchto modelů jako webovou službu.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
 

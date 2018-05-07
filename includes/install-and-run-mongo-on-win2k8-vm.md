@@ -77,7 +77,7 @@ Postupujte podle těchto kroků k instalaci a spuštění MongoDB ve virtuální
 
     ![Koncové body][Image7]
 
-13. Klikněte na tlačítko **Přidat**.
+13. Klikněte na tlačítko **Add** (Přidat).
 
 14. Přidat koncový bod s názvem "Mongo", protokol **TCP**a obě **veřejné** a **privátní** porty nastavena na "27017". MongoDB vzdálený přístup k otevření tohoto portu umožňuje.
 

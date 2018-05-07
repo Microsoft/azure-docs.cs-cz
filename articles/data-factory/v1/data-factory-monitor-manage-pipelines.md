@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 94b3c1e812bdf3345d5fb1f7308fb7a55be8f922
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů služby Azure Data Factory pomocí portálu Azure a prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -28,11 +28,13 @@ ms.lasthandoff: 03/29/2018
 > [!NOTE]
 > Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [sledování a Správa kanálů služby Data Factory v verze 2](../monitor-visually.md).
 
+Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí portálu Azure a prostředí PowerShell.
+
 > [!IMPORTANT]
 > Aplikace monitorování a správu poskytuje lepší podporu pro monitorování a správy datových kanálů a řešení potíží s problémy. Podrobnosti o použití této aplikace najdete v tématu [sledování a Správa kanálů služby Data Factory pomocí monitorování a správu aplikace](data-factory-monitor-manage-app.md). 
 
-
-Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí portálu Azure a prostředí PowerShell.
+> [!IMPORTANT]
+> Azure Data Factory verze 1 nyní používá nový [Azure monitorování výstrahy infrastruktury](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Původní výstrahy infrastruktury je zastaralý. V důsledku toho existující výstrahy nakonfigurován pro verze 1 dat, které objekty Factory přestane fungovat. Vaše existující výstrahy pro v1 datové továrny se nemigrují automaticky. Budete muset znovu vytvořit tyto výstrahy na nové výstrahy infrastruktury. Přihlaste se k Azure portálu a vyberte možnost **monitorování** k vytvoření nové výstrahy o metrikách (například spuštění neúspěšné nebo úspěšné spustí) pro vaši verzi 1 datové továrny.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Pochopit kanály a aktivity stavy
 Pomocí portálu Azure, můžete:
@@ -45,7 +47,7 @@ Tato část také popisuje, jak se řez datovou sadu přechází z jednoho stavu
 
 ### <a name="navigate-to-your-data-factory"></a>Přejděte do data factory
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na tlačítko **datové továrny** v nabídce na levé straně. Pokud ho nevidíte, klikněte na tlačítko **další služby >**a potom klikněte na **datové továrny** pod **INTELLIGENCE + analýzy** kategorie.
+2. Klikněte na tlačítko **datové továrny** v nabídce na levé straně. Pokud ho nevidíte, klikněte na tlačítko **další služby >** a potom klikněte na **datové továrny** pod **INTELLIGENCE + analýzy** kategorie.
 
    ![Procházet všechny > datové továrny](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. Na **datové továrny** okně vyberte služby data factory, která vás zajímá.
@@ -85,7 +87,7 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 
 <table>
 <tr>
-    <th align="left">Okres</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Pro spuštění řezu ještě nenastal čas.</td>
@@ -103,40 +105,40 @@ Dvojitým kliknutím **OutputBlobTable** v **Diagram**, zobrazí se všechny dat
 <td>ActivityResume</td><td>Aktivita je pozastavená a zpracování řezů nejde spustit, dokud je obnoveno aktivity.</td>
 </tr>
 <tr>
-<td>Zkusit znovu</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
+<td>Retry</td><td>Probíhá pokus o spuštění aktivity je zopakován.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká na opakovat.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování.</td><td>Ověřuje se</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování.</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Selhání</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
+<td rowspan="4">Selhalo</td><td>TimedOut</td><td>Provedení aktivity trvalo déle, než je povolené aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez zrušil akce uživatele.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření selhalo.</td>
+<td>Ověření</td><td>Ověření selhalo.</td>
 </tr>
 <tr>
 <td>-</td><td>Řez se nepodařilo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připravené</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
+<td>Připraveno</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
 </tr>
 <tr>
-<td>Vynecháno</td><td>Žádná</td><td>Řez se zpracovává.</td>
+<td>Vynecháno</td><td>Žádný</td><td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td>Žádná</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
+<td>Žádný</td><td>-</td><td>Řez měl dříve jiný stav, ale byla obnovena.</td>
 </tr>
 </table>
 
@@ -196,7 +198,8 @@ Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produc
 ## <a name="debug-pipelines"></a>Ladit kanály
 Azure Data Factory poskytuje bohaté možnosti pro ladění a řešení potíží kanály pomocí portálu Azure a prostředí Azure PowerShell.
 
-> [! Poznámka:}, že je mnohem snazší potíže chyby pomocí aplikace pro správu a monitorování. Podrobnosti o použití této aplikace najdete v tématu [sledování a Správa kanálů služby Data Factory pomocí monitorování a správu aplikace](data-factory-monitor-manage-app.md) článku. 
+> [!NOTE] 
+> Je mnohem snazší potíže chyby pomocí aplikace pro správu a monitorování. Podrobnosti o použití této aplikace najdete v tématu [sledování a Správa kanálů služby Data Factory pomocí monitorování a správu aplikace](data-factory-monitor-manage-app.md) článku. 
 
 ### <a name="find-errors-in-a-pipeline"></a>Vyhledejte chyby v kanálu
 Pokud se nezdaří spustit aktivitu v kanálu, datovou sadu, která je vytvořena v kanálu je v chybovém stavu z důvodu selhání. Můžete ladění a odstraňování chyb v Azure Data Factory pomocí následujících metod.
@@ -296,6 +299,35 @@ Typ 'aktualizace, je nastaven na 'UpstreamInPipeline", což znamená, že stavy 
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
+## <a name="create-alerts-in-the-azure-portal"></a>Vytvářet výstrahy na portálu Azure
+
+1.  Přihlaste se k Azure portálu a vyberte možnost **monitorování -> výstrahy** chcete otevřít stránku výstrahy.
+
+    ![Otevřete stránku výstrahy.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+
+2.  Vyberte **+ nové pravidlo výstrahy** vytvořit nové oznámení.
+
+    ![Vytvořit nové oznámení](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+
+3.  Definování **výstrahy podmínku**. (Nezapomeňte vybrat **datové továrny** v **filtrovat podle typu prostředku** pole.) Můžete také zadat hodnoty pro **dimenze**.
+
+    ![Definovat se výstražný stav - vyberte cíl](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+
+    ![Definovat podmínku upozornění – přidání kritérií výstrah](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+
+    ![Definovat podmínku upozornění – přidání upozornění logiky](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+
+4.  Definování **podrobnosti výstrahy**.
+
+    ![Zadejte podrobnosti výstrahy](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+
+5.  Definování **akce skupiny**.
+
+    ![Definování skupiny akce – vytvoření nové skupiny akce](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+
+    ![Definování skupiny akce – umožňuje nastavit vlastnosti](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+
+    ![Definování skupiny akce - vytvořit nové akce skupiny](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Přesunout objekt pro vytváření dat do jiné skupině prostředků nebo předplatného
 Objekt pro vytváření dat můžete přesunout na jinou skupinu prostředků nebo jiného předplatného pomocí **přesunout** příkazový řádek na domovské stránce objektu pro vytváření dat tlačítko.

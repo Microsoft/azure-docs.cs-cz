@@ -3,17 +3,17 @@ title: Kurz služby Azure Container Registry – Nasazení webové aplikace ze s
 description: Nasaďte linuxovou webovou aplikaci pomocí image kontejneru z geograficky replikovaného registru kontejneru Azure. Druhá část třídílné série.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c6ac8f22f128b350844af10f309fd3b93512d54d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Kurz: Nasazení webové aplikace ze služby Azure Container Registry
 

@@ -1,27 +1,27 @@
 ---
-title: "Vytvoření služby application gateway s brány firewall webových aplikací – portálu Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí portálu Azure."
+title: Vytvoření služby application gateway s brány firewall webových aplikací – portálu Azure | Microsoft Docs
+description: Postup vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí portálu Azure.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Vytvoření služby application gateway pomocí brány firewall webových aplikací pomocí portálu Azure
 
 Na portálu Azure můžete použít k vytvoření [Aplikační brána](application-gateway-introduction.md) s [brány firewall webových aplikací](application-gateway-web-application-firewall-overview.md) (firewall webových aplikací). Firewall webových aplikací používá [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) pravidla k ochraně vaší aplikace. Mezi tato pravidla patří ochranu před útoky, například typu Injektáž SQL a útoky skriptování mezi weby a hijacks relace.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření služby application gateway s povolen firewall webových aplikací
@@ -72,7 +72,7 @@ Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoř
 
 3. Zadejte *myBackendSubnet* pro název podsítě a pak klikněte na tlačítko **OK**.
 
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V tomto příkladu vytvoříte dva virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Je také nainstalovat službu IIS na virtuálních počítačích, chcete-li ověřit, že aplikační brány byl úspěšně vytvořen.
 
@@ -83,15 +83,15 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 3. Pro virtuální počítač, zadejte tyto hodnoty:
 
     - *Můjvp* – pro název virtuálního počítače.
-    - *azureuser* – pro uživatelské jméno správce.
+    - *azureuser* – uživatelské jméno správce.
     - *Azure123456!* pro heslo.
     - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
-5. Vyberte **DS1_V2** pro velikost virtuálního počítače, a klikněte na tlačítko **vyberte**.
+5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
 6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
-7. Klikněte na tlačítko **zakázané** zakázat Diagnostika spouštění.
-8. Klikněte na tlačítko **OK**, zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
+8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
@@ -132,7 +132,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, který se má použ�
 V tomto kurzu se Aplikační brána používá účet úložiště k ukládání dat za účelem odhalování a prevence. Analýzy protokolů nebo Centrum událostí můžete použít také k zaznamenání dat.
 
 1. Klikněte na tlačítko **nový** najít v levém horním rohu portálu Azure.
-2. Vyberte **úložiště**a potom vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta**.
+2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
 3. Zadejte název účtu úložiště, vyberte **použít existující** pro skupinu prostředků a potom vyberte **myResourceGroupAG**. V tomto příkladu je název účtu úložiště *myagstore1*. Přijměte výchozí hodnoty u ostatních nastavení a potom klikněte na **vytvořit**.
 
 ## <a name="configure-diagnostics"></a>Konfigurace diagnostiky
@@ -155,7 +155,7 @@ Konfigurace diagnostiky k záznamu dat do ApplicationGatewayAccessLog, Applicati
 
     ![Zaznamenejte veřejná IP adresa brány aplikace](./media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče.
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
     ![Test aplikační brány](./media/application-gateway-web-application-firewall-portal/application-gateway-iistest.png)
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/30/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 54faa5a50b3fe965bc7f95fc0da0fdda9388412f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: HT
+ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="write-accelerator"></a>Zápis akcelerátoru
 Zapsat že akcelerátoru výhradně je funkce disku pro M-Series virtuální počítače (VM) na Storage úrovně Premium s Azure spravované disky. Jako název stavy, je účelem funkce vstupně-výstupních operací latenci zápisů Azure Premium Storage. Zapsat že akcelerátoru je ideální kterých jsou k zachování disk způsobem vysoce původce pro moderní databáze vyžaduje aktualizace souborů protokolu.
@@ -42,7 +42,7 @@ Pokud používáte zápis akcelerátoru pro Azure disk nebo VHD, platí tato ome
 
 - Premium disku ukládání do mezipaměti musí být nastavena na hodnotu 'None' nebo "Jen pro čtení". Všechny ostatní režimy ukládání do mezipaměti nejsou podporovány.
 - Ještě není podporované snímku na disku akcelerátoru zápis povolen. Toto omezení blokuje služby zálohování Azure schopnost provádět snímky konzistentní aplikací všechny disky virtuálního počítače.
-- Menší velikost vstupně-výstupních operací trvá Zrychlený cestu. V zatížení načten situacích, kde je dat získávání hromadné nebo kde vyrovnávacích pamětí protokolu transakcí z různých databázového systému jsou vyplněny ve větší míře než získávání trvalé do úložiště, pravděpodobné, vstupně-výstupních operací zapsána do disk nejde Zrychlený cestu.
+- Menší velikost vstupně-výstupní operace (< = 32KiB) trvá Zrychlený cestu. V zatížení načten situacích, kde je dat získávání hromadné nebo kde vyrovnávacích pamětí protokolu transakcí z různých databázového systému jsou vyplněny ve větší míře než získávání trvalé do úložiště, pravděpodobné, vstupně-výstupních operací zapsána do disk nejde Zrychlený cestu.
 
 Existují omezení Azure Premium Storage VHD na virtuální počítač, který může podporovat zápis akcelerátoru. Aktuální omezení jsou:
 
@@ -105,7 +105,7 @@ Get-AzureRmVmss | Update-AzureRmVmss -OsDiskWriteAccelerator:$false
 
 Dva základní scénáře možnost skripty, jak je znázorněno v následující části.
 
-#### <a name="adding--new-disk-supported-by-write-accelerator"></a>Přidání nového disku nepodporuje zápis akcelerátoru
+#### <a name="adding-a-new-disk-supported-by-write-accelerator"></a>Přidání nového disku nepodporuje zápis akcelerátoru
 Tento skript můžete přidat nový disk k virtuálnímu počítači. Disk, který vytvořili pomocí tohoto skriptu bude používat zápis akcelerátoru.
 
 ```
@@ -157,6 +157,13 @@ Je nutné přizpůsobit názvy virtuálních počítačů, disk a skupinu prost�
 
 > [!Note]
 > Provádění skriptu výše odpojit disk zadaný, povolí zápis akcelerátoru proti disku a pak připojte disk
+
+### <a name="enabling-through-azure-portal"></a>Povolení prostřednictvím portálu Azure
+
+Můžete povolit zápis akcelerátoru přes portál, kde můžete určit disk nastavení ukládání do mezipaměti: 
+
+![Zápis akcelerátoru na portálu Azure](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
+
 
 ### <a name="enabling-through-rest-apis"></a>Povolení prostřednictvím rozhraní API Rest
 Abyste mohli nasadit prostřednictvím Rest API služby Azure, je potřeba nainstalovat Azure armclient

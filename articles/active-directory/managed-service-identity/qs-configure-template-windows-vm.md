@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 521c5a3c0ad55afa0b71628195be7782b0e43b67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 324a1e08e92a2c7ae76d7a6df56536540dc772a1
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurace služby Identita spravované virtuálního počítače pomocí šablony
 
@@ -34,7 +34,7 @@ V tomto článku se naučíte, jak provádět následující operace identita sp
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-S Azure portálu a skriptování, šablony Azure Resource Manager poskytuje schopnost nasadit nové nebo upravené zdroje, které jsou definované skupiny prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místní i založené na portálu, včetně:
+Stejně jako u Azure portálu a skriptování, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) šablony poskytují možnost nasazení nové nebo upravené zdroje, které jsou definované skupiny prostředků Azure. Několik možností, jak jsou k dispozici pro úpravy šablony a nasazení, místní i založené na portálu, včetně:
 
    - Použití [vlastní šablonu z Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), který umožňuje vytvořit šablonu od začátku, nebo ji založit na existující běžné nebo [šablony rychlý Start](https://azure.microsoft.com/documentation/templates/).
    - Odvozování z existující skupinu prostředků, tak, že vyexportujete šablonu buď z [původního nasazení](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), nebo z [aktuální stav nasazení](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
@@ -112,59 +112,14 @@ Pokud máte virtuální počítač, který už nepotřebuje identita spravované
 
 ## <a name="user-assigned-identity"></a>Uživatel s přiřazenou identity
 
-V této části vytvoříte virtuální počítač Azure pomocí šablony Azure Resource Manager a identity uživatele.
+V této části můžete přiřadit identitu uživatele přiřazené virtuálního počítače Azure pomocí šablony Azure Resource Manager.
 
- ### <a name="create-and-assign-a-user-assigned-identity-to-an-azure-vm"></a>Vytvořit a přiřadit uživatele přiřazené identity virtuálního počítače Azure
+> [!Note]
+> Pro vytvoření identity uživatele přiřazené pomocí šablony Azure Resource Manager, najdete v části [vytvoření identity uživatele přiřazené](how-to-manage-ua-identity-arm.md#create-a-user-assigned-identity).
 
-1. Provést první krok v části [povolit identita systémové přiřazen při vytvoření virtuálního počítače Azure, nebo na existující virtuální počítač](#enable-system-assigned-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm)
+ ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Přiřazení uživatele přiřazené identity virtuálního počítače Azure
 
-2.  V části proměnné, která obsahuje konfigurační proměnné pro virtuální počítač Azure přidejte záznam pro uživatelské jméno přiřazené identity podobný následujícímu.  Tím se vytvoří uživatel s přiřazenou identity během procesu vytváření virtuálního počítače Azure:
-    
-    > [!IMPORTANT]
-    > Vytvoření uživatele přiřazené identity s speciální znaky (tj. podtržítko) v názvu není aktuálně podporován. Použijte alfanumerické znaky. Vraťte se zpět pro aktualizace.  Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
-
-    ```json
-    "variables": {
-        "vmName": "[parameters('vmName')]",
-        //other vm configuration variables...
-        "identityName": "[concat(variables('vmName'), 'id')]"
-    ```
-
-3. V části `resources` elementu, přidejte následující položku pro vytvoření identity uživatele přiřazené:
-
-    ```json
-    {
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-        "name": "[variables('identityName')]",
-        "apiVersion": "2015-08-31-PREVIEW",
-        "location": "[resourceGroup().location]"
-    },
-    ```
-
-4. V části Další `resources` element přidejte následující položky lze přiřadit spravovanou identitu rozšíření virtuálního počítače:
-
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
-        "apiVersion": "2015-05-01-preview",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
-        }
-    }
-    ```
-5. Pak přidejte následující položku přiřazení vaše uživatele přiřazené identity virtuálního počítače:
-
+1. V části `resources` elementu, přidejte následující položku přiřadit identitu uživatele přiřazené k virtuálnímu počítači.  Nezapomeňte nahradit `<USERASSIGNEDIDENTITY>` s názvem identity uživatele přiřazené jste vytvořili.
     ```json
     {
         "apiVersion": "2017-12-01",
@@ -174,15 +129,36 @@ V této části vytvoříte virtuální počítač Azure pomocí šablony Azure 
         "identity": {
             "type": "userAssigned",
             "identityIds": [
-                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', variables('identityName'))]"
+                "[resourceID('Micrososft.ManagedIdentity/userAssignedIdentities/<USERASSIGNEDIDENTITYNAME>)']"
             ]
         },
     ```
-6.  Až skončíte, vaše šablona by měla vypadat podobně jako následující:
-    > [!NOTE]
-    > Šablona neobsahuje seznam všech proměnných potřebné k vytvoření virtuálního počítače.  `//other configuration variables...` používá se místo všech potřebných konfiguračních proměnných kvůli stručnosti.
+    
+2. (Volitelné) V části Další `resources` elementu, přidejte následující položky lze přiřadit spravovanou identitu rozšíření virtuálního počítače. Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny. Použijte následující syntaxi:
+    ```json
+    {
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+        "apiVersion": "2015-05-01-preview",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+        ],
+        "properties": {
+            "publisher": "Microsoft.ManagedIdentity",
+            "type": "ManagedIdentityExtensionForWindows",
+            "typeHandlerVersion": "1.0",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+                "port": 50342
+            }
+        }
+    }
+    ```
+    
+3.  Až skončíte, vaše šablona by měla vypadat podobně jako následující:
 
-      ![Snímek obrazovky identitu uživatele přiřazené](../media/msi-qs-configure-template-windows-vm/template-user-assigned-identity.png)
+      ![Snímek obrazovky identitu uživatele přiřazené](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
 
 
 ## <a name="related-content"></a>Související obsah

@@ -1,25 +1,25 @@
 ---
-title: "Opětovné aktivace zakázána pro studenty předplatné Azure | Microsoft Docs"
-description: "Vysvětluje, proč je zakázána vaší Azure pro studenty předplatné a jak ji znovu aktivovat."
-services: 
-documentationcenter: 
+title: Opětovné aktivace zakázána pro studenty předplatné Azure | Microsoft Docs
+description: Vysvětluje, proč je zakázána vaší Azure pro studenty předplatné a jak ji znovu aktivovat.
+services: ''
+documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2018
 ms.author: amberb
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4fcbfa1201e753044ea69f9dfff39728757c242c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7fe3573dcf3f057d843547b9e4114f3b74c6ab59
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč je můj Azure pro zakázané předplatné studenty a jak ji aktivovat?
 
@@ -56,6 +56,6 @@ Vaše Azure pro studenty platební vyprší na konci dobu 12 měsíců. Jakmile 
 
 Pokud jste zrušili omylem vaší Azure pro studenty předplatné, můžete ji aktivovat kontaktováním [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Až budete znovu aktivovat, budete mít stále přístup k zbývající kredit a bezplatné služby po dobu 12 měsíců od vaší registrační data.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktovat podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.

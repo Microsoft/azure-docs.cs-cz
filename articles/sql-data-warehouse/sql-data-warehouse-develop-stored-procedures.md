@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5659e8f29d87c48c447a5cb81c836b0be9dabd45
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ad8a599065a44469a3151813972b3d2561782c6
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Použití uložených procedur v SQL Data Warehouse
 Tipy pro implementaci uložené procedury v Azure SQL Data Warehouse na vývoj řešení.
@@ -31,7 +31,7 @@ Uložené procedury jsou vhodné pro zapouzdření kódu SQL; ukládání blízk
 
 SQL Data Warehouse poskytuje zjednodušenou a efektivní uložené procedury implementaci. Největší rozdíl oproti systému SQL Server je, že uložená procedura není předem zkompilovaný kód. V datových skladů je malá oproti době potřebné ke spouštění dotazů na velkých objemů dat dobu kompilace. Je důležité zajistit, že kód uložené procedury je správně optimalizovaná pro rozsáhlé dotazy. Cílem je uložit hodin, minut a sekund, není milisekundách. Je proto více vhodné zamyslet nad uložené procedury jako kontejnery pro logiku SQL.     
 
-Když SQL Data Warehouse provede uložené procedury, jsou příkazy SQL analyzovat, přeložit a optimalizované za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je y u dat spustit, se liší od odeslání dotazu.
+Když SQL Data Warehouse provede uložené procedury, jsou příkazy SQL analyzovat, přeložit a optimalizované za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je u dat spustit, se liší od odeslání dotazu.
 
 ## <a name="nesting-stored-procedures"></a>Vnoření uložené procedury
 Pokud uložené procedury volat jiné uložené procedury nebo provést dynamické SQL, pak vnitřní uložené procedury nebo volání kódu se označuje jako vnořený.
@@ -76,7 +76,6 @@ Jsou to tyto:
 * číslované uložené procedury
 * Rozšířené uložené procedury
 * CLR uložené procedury
-* 
 * možnost šifrování
 * možnost replikace
 * Parametry s hodnotou tabulky

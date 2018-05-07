@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b4baced183721d666354667f457f4cc5954b0d11
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (běžných dat služby) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -276,7 +276,11 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | ignoreNullValues | Označuje, zda Ignorovat hodnoty null ze vstupních dat (s výjimkou polí s klíči) během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE,**: ponechejte data v cílovém objektu beze změny, když provedete upsert nebo aktualizovat operace. Při operaci vložení, vložte definované výchozí hodnotu.<br/>- **False**: aktualizovat data v cílovém objektu na hodnotu NULL, když provedete upsert nebo aktualizovat operace. Při operaci vložení, vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
->Výchozí hodnota writeBatchSize jímka a aktivitě kopírování [parallelCopies](copy-activity-performance.md#parallel-copy) pro Dynamics sink jsou obě 10. Proto 100 záznamů se odešlou do Dynamics současně.
+>Výchozí hodnota jímky "**writeBatchSize**"a kopie aktivity"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" pro Dynamics sink jsou obě 10. Proto 100 záznamů se odešlou do Dynamics současně.
+
+Pro Dynamics 365 online, je omezeno na [2 volání souběžných batch na organizaci](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations). Pokud je tento limit překročen, je vyvolána "Zaneprázdněný Server" chybu předtím, než je někdy spustí první požadavek. Zachování "writeBatchSize" menší nebo rovna 10 by se tak takové omezení souběžných volání.
+
+Optimální kombinace "**writeBatchSize**"a"**parallelCopies**" závisí na schéma vaší entity například počet sloupců, velikost řádku, počet modulů plug-in nebo pracovní postupy nebo pracovního postupu aktivit připojili Chcete-li tyto volání, atd. Výchozí nastavení 10 writeBatchSize * 10 parallelCopies je doporučení podle služby Dynamics, která bude fungovat pro většinu entity Dynamics ale nemusí být nejlepší výkon. Úpravou kombinace v nastaveních aktivitu kopírování, abyste mohli vyladit výkon.
 
 **Příklad:**
 
@@ -322,12 +326,13 @@ Nakonfigurujte odpovídající datový typ objektu pro vytváření dat ve struk
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Dlouhé | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Logická hodnota | ✓ | ✓ |
+| AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | Datum a čas | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Dvojitý | ✓ | ✓ |
 | AttributeType.EntityName | Řetězec | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ | |
+| AttributeType.Lookup | Guid | ✓ | ✓ |
 | AttributeType.ManagedProperty | Logická hodnota | ✓ | |
 | AttributeType.Memo | Řetězec | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |

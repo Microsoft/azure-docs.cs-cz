@@ -1,11 +1,11 @@
 ---
-title: "Back endové služby pomocí klienta Secure certifikát ověřování – Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit back endové služby pomocí ověření klientského certifikátu ve službě Azure API Management."
+title: Back endové služby pomocí klienta Secure certifikát ověřování – Azure API Management | Microsoft Docs
+description: Zjistěte, jak zabezpečit back endové služby pomocí ověření klientského certifikátu ve službě Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: c3060765022cabcb877041927886b59d6725c7cf
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu ve službě Azure API Management
 API Management poskytuje možnost zabezpečený přístup ke službě back endové rozhraní API pomocí klientských certifikátů. Tato příručka ukazuje, jak ke správě certifikátů v rozhraní API portálu vydavatele a postup konfigurace rozhraní API používat certifikát pro přístup k jeho back endové službě.
 
-Informace o správě certifikátů pomocí rozhraní API REST API správy najdete v tématu [Azure API Management REST API certifikát entity][Azure API Management REST API Certificate entity].
+Informace o správě certifikátů pomocí rozhraní API REST API správy najdete v tématu <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API certifikát entity</a>.
 
 ## <a name="prerequisites"> </a>Požadavky
 Tento průvodce vám ukáže, jak nakonfigurovat instanci služby API Management používat ověřování pomocí certifikátu klienta pro přístup k službě back-end pro rozhraní API. Před provedením postupu v tomto tématu, byste měli mít služby back-end, který je nakonfigurován pro ověřování pomocí certifikátu klienta ([konfigurace ověřování pomocí certifikátu v weby Azure najdete v tomto článku] [ to configure certificate authentication in Azure WebSites refer to this article]), a mít přístup k certifikátu a heslo pro certifikát pro odesílání v portál vydavatele služby API Management.
@@ -58,7 +58,7 @@ Klikněte na tlačítko **nahrát** na kterou odešlete certifikát.
 > 
 > 
 
-![Certifikát se odeslal][api-management-certificate-uploaded]
+![Nahraný certifikát][api-management-certificate-uploaded]
 
 Po nahrání certifikátu se zobrazí na **klientské certifikáty** kartě. Pokud máte víc certifikátů, zajistěte, aby poznámku o předmět nebo poslední čtyři znaky kryptografický otisk, které se používají k výběru certifikátu, při konfiguraci rozhraní API používat certifikáty, jak je popsané v následující [konfigurace rozhraní API pro použití klientský certifikát pro ověřování brány] [ Configure an API to use a client certificate for gateway authentication] části.
 

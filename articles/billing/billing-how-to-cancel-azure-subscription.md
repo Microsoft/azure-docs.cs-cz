@@ -1,25 +1,25 @@
 ---
-title: "Zrušení předplatného Azure | Microsoft Docs"
-description: "Popisuje, jak zrušit předplatné Azure, jako je bezplatnou zkušební verzi"
-services: 
-documentationcenter: 
+title: Zrušení předplatného Azure | Microsoft Docs
+description: Popisuje, jak zrušit předplatné Azure, jako je bezplatnou zkušební verzi
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 51fe2ab891e86ae4bd7402622231af47f35aa01d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f9ff68d91e2ac3daba817f6d5e2bee0398d096e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure.
 

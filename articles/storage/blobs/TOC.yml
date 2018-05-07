@@ -108,34 +108,51 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Funkce objektů blob stránky
           href: storage-blob-pageblob-overview.md
-        - name: Premium Storage
+        - name: Disky Azure
           items:
-            - name: Linux
+            - name: Premium Storage
               items:
-                - name: Vysoce výkonná služba Premium Storage pro disky virtuálních počítačů
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
-                - name: Migrace na Premium Storage pomocí Azure Site Recovery
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: Návrh pro vysoký výkon
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
-            - name: Windows
+                - name: Linux
+                  items:
+                    - name: Vysoce výkonná služba Premium Storage pro disky virtuálních počítačů
+                      href: ../../virtual-machines/linux/premium-storage.md
+                    - name: Migrace na Premium Storage pomocí Azure Site Recovery
+                      href: ../../virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: Návrh pro vysoký výkon
+                      href: ../../virtual-machines/linux/premium-storage-performance.md
+                - name: Windows
+                  items:
+                    - name: Vysoce výkonná služba Premium Storage pro disky virtuálních počítačů
+                      href: ../../virtual-machines/windows/premium-storage.md
+                    - name: Migrace na Premium Storage pomocí Azure Site Recovery
+                      href: ../../virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery.md
+                    - name: Návrh pro vysoký výkon
+                      href: ../../virtual-machines/windows/premium-storage-performance.md
+            - name: Storage úrovně Standard
               items:
-                - name: Vysoce výkonná služba Premium Storage pro disky virtuálních počítačů
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
-                - name: Migrace na Premium Storage pomocí Azure Site Recovery
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
-                - name: Návrh pro vysoký výkon
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
-        - name: Storage úrovně Standard
-          items:
-            - name: Linux
+                - name: Linux
+                  items:
+                    - name: Storage úrovně Standard pro disky virtuálních počítačů
+                      href: ../../virtual-machines/linux/standard-storage.md
+                - name: Windows
+                  items:
+                    - name: Storage úrovně Standard pro disky virtuálních počítačů
+                      href: ../../virtual-machines/windows/standard-storage.md
+            - name: Řešení potíží s připojenými virtuálními pevnými disky
+              href: storage-troubleshoot-vhds.md
               items:
-                - name: Storage úrovně Standard pro disky virtuálních počítačů
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
-            - name: Windows
-              items:
-                - name: Storage úrovně Standard pro disky virtuálních počítačů
-                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
+                - name: Linux
+                  items:
+                    - name: Chyby odstraňování prostředků úložiště
+                      href: ../../virtual-machines/linux/storage-resource-deletion-errors.md
+                    - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+                      href: ../../virtual-machines/linux/unexpected-reboots-attached-vhds.md
+                - name: Windows
+                  items:
+                    - name: Chyby odstraňování prostředků úložiště
+                      href: ../../virtual-machines/windows/storage-resource-deletion-errors.md
+                    - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+                      href: ../../virtual-machines/windows/unexpected-reboots-attached-vhds.md
     - name: Zabezpečení
       items:
         - name: Příručka zabezpečení

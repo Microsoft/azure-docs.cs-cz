@@ -3,7 +3,7 @@ title: Ukázková data v kontejnerech objektů blob v Azure, SQL Server a tabule
 description: Jak chcete dynamicky prozkoumávat data uložená v různých enviromnents Azure.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: 3dede87191b2122168cc9ad2cdf0a27c5e4908b4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 73b0d3992627b7787ee46e61f62717a545c5b9e2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="heading"></a>Ukázková data v kontejnerech objektů blob v Azure, SQL Server a tabulek Hive
 Tento dokument obsahuje odkazy na články, které se týkají jak ukázková data, která je uložená v jednom ze tří různých Azure umístění:

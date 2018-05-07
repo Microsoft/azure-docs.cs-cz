@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 86597defad7c76d41065270030a4c77ee901b014
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1e2dbc6020dd317e96c4116811f8e3bf87680bfb
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: Vytvořte virtuální počítač s Linuxem serveru pomocí prostředí PowerShell v Azure zásobníku
 
@@ -28,6 +28,7 @@ ms.lasthandoff: 04/28/2018
 Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí Azure PowerShell zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače.  Tento článek také poskytuje postup:
 
 * Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
+* Instalace webového serveru se NGINX a zobrazit výchozí domovskou stránku.
 * Vyčistěte nepoužité zdroje.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -218,6 +219,26 @@ ssh <Public IP Address>
 ```
 
 Po zobrazení výzvy zadejte azureuser jako přihlášení uživatele. Pokud jste použili heslo při vytvoření klíče SSH, budete muset zadat heslo.
+
+## <a name="install-the-nginx-web-server"></a>Instalace webového serveru se NGINX
+
+Pokud chcete aktualizovat balíček prostředků a nainstalovat nejnovější balíček NGINX, spusťte následující skript:
+
+```bash
+#!/bin/bash
+
+# update package source
+apt-get -y update
+
+# install NGINX
+apt-get -y install nginx
+```
+
+## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
+
+NGINX nainstalován, a port 80 otevřete na virtuálním počítači můžete přístup k webovému serveru, pomocí veřejnou IP adresu virtuálního počítače. Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
+
+![Úvodní stránka NGINX webového serveru](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

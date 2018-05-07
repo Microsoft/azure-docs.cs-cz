@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – systém a získávání služby"
-description: "FedRAMP webové aplikace automatizace – systém a získávání služby"
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - FedRAMP webové aplikace automatizace – systém a získávání služby
+description: FedRAMP webové aplikace automatizace – systém a získávání služby
 services: security
 documentationcenter: na
 author: jomolesk
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 490632a77fd9fb72bda075b996c40378a394f389
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="system-and-services-acquisition-sa"></a>Systém a získávání služby (SA)
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-1** organizace sama vyvinula, dokumenty a šíří do [přiřazení: organizace definované pracovníky nebo rolí] zásadu pořízení systému a služeb, která řeší účel, oboru, role, odpovědnosti, správu závazků spolupráce mezi organizační entity a dodržování předpisů; a postupy pro usnadnění provádění systému a získávání zásad služby a přidružené systému a ovládací prvky služby pořízení; a kontroluje a aktualizuje aktuální systém a služeb získávání zásad [přiřazení: organizace definované frekvence]; získávání postupů systému a služeb a [přiřazení: organizace definované frekvence].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.a** organizace určuje požadavky na zabezpečení informace pro služby systému informace nebo informace systému při plánování zvláště nebo obchodní proces.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.b** organizace určuje, dokumenty a přiděluje prostředky potřebné k chránit systémové informace nebo informace systému služby v rámci svých kapitálové plánování a proces řízení investice.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -73,7 +73,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 2.c** organizace vytvoří položku diskrétní řádku pro zabezpečení informací v dokumentaci k rozpočtu a organizace programování.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.a** organizace spravuje systém informace pomocí [přiřazení: organizace definované systému vývojový životní cyklus], zahrnuje informace důležité informace o zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.b** organizace definuje a dokumentů. informace o zabezpečení rolích a zodpovědnostech nejdete v průběhu životního cyklu vývoj systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.c** organizace identifikuje osobu, která má informace o zabezpečení role a zodpovědnosti.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 3.d** organizace integruje proces správy bezpečnostní riziko organizační údaje o aktivitách životní cyklus vývoj systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 4** organizace zahrnuje následující požadavky, popisy a kritéria explicitně nebo odkaz, v kontraktu pořízení pro informace o systému, součást systému nebo informace systému služby v souladu s použít federální zákony Executive objednávky, direktivy, zásady, nařízení, standardy, pokyny, a organizační zvláště nebo obchodní potřeby: funkční požadavky na zabezpečení; požadavky na zabezpečení sílu; požadavky na zajištění zabezpečení; požadavky na dokumentaci týkající se zabezpečení požadavky na ochranu související se zabezpečením dokumentaci; Popis informace systému vývojového prostředí a prostředí, ve kterém je systém určený k provozu, a akceptační kritéria.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -157,7 +157,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (1)** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby zadejte popis funkční vlastností ovládacích prvků zabezpečení, které mají být použity.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -171,7 +171,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (2)** organizace vyžaduje vývojáře informace systému, součást systému, nebo obsahuje informace, vzhledem k zadání informací o návrhu a implementace pro ovládací prvky zabezpečení jako služby systému: [výběr (jeden nebo více): zabezpečení relevantní externího systému rozhraní; hlavnímu návrhu; nízké úrovně návrhu; zdrojový kód nebo hardwaru schémata; [Přiřazení: informace definované organizace návrh a implementace]] v [přiřazení: organizace definované úroveň podrobností].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (8)** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby vytvořit plán pro nepřetržité monitorování účinnost řízení zabezpečení, který obsahuje [přiřazení: organizace definované úroveň podrobností].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -199,7 +199,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (9)** organizace vyžaduje vývojáře informace systém, součást systému nebo služba system informace k identifikaci již v rané fázi v systému vývojový životní cyklus, funkce, porty, protokoly a služby určené organizace používá.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -213,7 +213,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-4 (10)** organizace využívá jenom produkty informačních technologií na seznam schválení FIPS 201 produktů pro funkci ověřování osobní Identity (PIV), které jsou implementované v rámci organizace informačních systémů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.a** organizace získá správce dokumentace pro informace o systému, součást systému nebo informace systému služba, která popisuje konfiguraci zabezpečení, instalace a operace systému, komponenty nebo služby; efektivní použití a údržby funkce nebo mechanismy zabezpečení; a známá zranitelná místa týkající se konfigurace a použití nástroje pro správu (tj, privilegovaný) funkce.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -241,7 +241,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.b** organizace získává dokumentace pro informace o systému, součást systému, uživatele nebo informace systému služby, který popisuje funkce nebo mechanismy zabezpečení dostupné pro uživatele a jak efektivně používat funkcí zabezpečení /Mechanisms; metody pro interakci s uživatelem, který umožňuje jednotlivcům použít systém, součást nebo služby bezpečnější způsobem; a odpovědnosti uživatele zachování zabezpečení systému, komponenty nebo služby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -255,7 +255,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5.c** organizace dokumenty pokouší získat informace o systému, součást systému nebo dokumentace ke službě informace o systému při této dokumentace je k dispozici nebo neexistující a trvá [přiřazení: akce definované organizace] v odpovědi.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 5** organizace chrání dokumentace podle potřeby, v souladu s strategie řízení rizik.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -283,7 +283,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-5.e** Organizace distribuuje dokumentaci [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -297,7 +297,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-8** organizace platí zabezpečení systému informace technici nevyužívá specifikace, návrh, vývoj, implementaci a úpravy informace o systému.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -311,7 +311,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.a** organizace vyžaduje, že poskytovatelé služeb systému externí informace v souladu s požadavky na zabezpečení organizace a společnosti využívají [přiřazení: kontrolních mechanismů pro zabezpečení organizace definované] v souladu s platné zákony federal, objednávky vedení, direktivy, zásady, nařízení, standardů a pokyny.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -325,7 +325,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.b** organizace definuje a dokumenty government dohledu a uživatelské role a zodpovědnosti s ohledem na externí informace systémových služeb.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -339,7 +339,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 9.c** organizace využívá [přiřazení: organizace definované procesy, metody a techniky] k monitorování dodržování předpisů pro zabezpečení řízení pomocí externí poskytovatelé průběžně.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -353,7 +353,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA – 9 (1) .a** organizace provádí organizační hodnocení rizik před získání nebo outsourcingu vyhrazené informace zabezpečení služeb.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -367,7 +367,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA – 9 (1) .b** organizace zajistí, že získání nebo outsourcingu vyhrazené informace zabezpečení služeb schválí [přiřazení: organizace definované pracovníky nebo rolí].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -381,7 +381,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA – 9 (2)** organizace vyžaduje poskytovatelům [přiřazení: externí informace definované organizace systémových služeb] k identifikaci funkce, porty, protokoly a dalším službám, vyžaduje se pro použití těchto služeb.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -395,7 +395,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA – 9 (4)** organizace využívá [přiřazení: ochrana definované organizace zabezpečení] zajistit, aby na zájmy [přiřazení: externí připojení poskytovatelé definované organizace] jsou konzistentní s a odrážet organizace zájmů.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -409,7 +409,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA – 9 (5)** organizace omezuje umístění [výběr (jeden nebo více): informace o zpracování; informace nebo data; informace o systémových služeb] na [přiřazení: organizace definované umístění] na základě [přiřazení: požadavky na definované organizace nebo podmínky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -423,7 +423,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.a** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby provádět správu konfigurace během systému, komponenty nebo služby [výběr (jeden nebo více): návrh; vývoj ; implementace; operace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -437,7 +437,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.b** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby dokumentu, spravovat a řídit integritu změny [přiřazení: organizace definované konfigurační položky v části Správa konfigurace].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -451,7 +451,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.c** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k implementaci pouze organizace schválené změny systému, komponenty nebo služby.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -465,7 +465,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 10.d** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby dokumentu schválené změny systému, součást nebo službu a potenciální dopad zabezpečení o těchto změnách.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -479,7 +479,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10.e** Organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby a sledovat nedostatky zabezpečení a řešení Chyba v rámci systému, komponenty nebo nálezy služby a sestavy, které [přiřazení: definované organizace pracovníky].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -493,7 +493,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-10 (1)** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby povolit ověření integrity součástí software a firmware.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -507,7 +507,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.a** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby vytvořit a implementovat plán vyhodnocení zabezpečení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -521,7 +521,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.b** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k provedení [výběr (jeden nebo více): jednotka, integrace, systému, regrese] testování nebo hodnocení v [přiřazení: Hloubka definované organizace a pokrytí];
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -535,7 +535,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.c** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby prokázat, spuštění plánu vyhodnocení zabezpečení a výsledky zabezpečení testování nebo hodnocení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -549,7 +549,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 11.d** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby implementujte proces nápravy ověřitelný chyba.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -563,7 +563,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11.e** Organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby a opravte chyby zjištěné při testování zabezpečení nebo vyhodnocení.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -577,7 +577,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (1)** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby využívat statické code analysis nástrojů k ručení běžné chyby a výsledky analýzy dokumentu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -591,7 +591,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (2)** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k provádění hrozby a ohrožení zabezpečení analýzy a následné testování nebo hodnocení jako integrovaný systém, součást, nebo Služba.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -605,7 +605,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-11 (8)** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby využívat dynamické code analysis nástrojů k ručení běžné chyby a výsledky analýzy dokumentu.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -619,7 +619,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 12** organizace chrání před hrozbami řetězu zadejte informace o systému, součást systému nebo informace systému služby díky využití architektury [přiřazení: ochrana definované organizace zabezpečení] jako součást o komplexní strategie zabezpečení obrany v spektra informace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -633,7 +633,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 15.a** organizace vyžaduje vývojáře informace systému, součást systému, nebo informace o systému služba podle zdokumentovaných vývoj zpracovat, explicitně řeší požadavky na zabezpečení; identifikuje standardy a nástroje používané v procesu vývoje; dokumenty možnosti určité nástroje a nástroj Konfigurace použité v procesu vývoje; dokumenty, spravuje a zajistí integritu změny procesu nebo nástroje používané při vývoji.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -647,7 +647,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 15.b** organizace zkontroluje vývoje, standardy, nástroje a možnosti nástroje/Konfigurace [přiřazení: organizace definované frekvence] určí, zda je proces, standardy, nástroje a možnosti/konfigurace nástroje vybrané a vzhledem k může stát odpovědí [přiřazení: požadavky na zabezpečení organizace definované].
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -661,7 +661,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA-16** organizace vyžaduje vývojáři informace systému, součást systému nebo informace systému služby poskytovat [přiřazení: organizace definované cvičení] na správné použití a operace implementované zabezpečení Funkce, ovládací prvky nebo mechanismy.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -675,7 +675,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17.a** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k vytváření návrhu specifikace a zabezpečení architekturu, která je konzistentní s a podporují organizace Architektura zabezpečení, což navázání v rámci a je integrovanou součástí architektury enterprise organizace.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -689,7 +689,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17.b** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k vytváření návrhu specifikace a zabezpečení architekturu, která popisuje požadované přesně a úplně funkce zabezpečení a přidělení kontrolních mechanismů pro zabezpečení mezi fyzické a logické součásti.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|
@@ -703,7 +703,7 @@ ms.lasthandoff: 02/11/2018
 
 **SA 17** organizace vyžaduje vývojáře informace systému, součást systému nebo informace systému služby k vytvoření specifikace návrhu a Architektura zabezpečení, která vyjadřuje využití jednotlivých funkcí zabezpečení mechanismy a služeb vzájemně spolupracují a zadejte požadované bezpečnostní funkce a jednotný přístup k ochraně.
 
-**Odpovědnosti:**`Customer Only`
+**Odpovědnosti:** `Customer Only`
 
 |||
 |---|---|

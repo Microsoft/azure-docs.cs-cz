@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 05/02/2018
 ms.author: magoedte
-ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ac956d638be1e79547ff931ba5b0c7e5de1ae65
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů
 
@@ -28,7 +28,7 @@ Azure Log Analytics můžete shromažďovat a provádění akcí na data z Windo
 * Vašem datovém centru jako fyzických serverech nebo virtuálních počítačů
 * Virtuální počítače ve službě hostovaných v cloudu jako Amazon Web Services (AWS)
 
-Počítače, které jsou hostované ve vašem prostředí může být přímo připojen k analýze protokolů, nebo pokud jsou již monitorování tyto počítače pomocí nástroje System Center Operations Manager 2012 R2 nebo 2016, může spravovat operace skupiny pro správu integrovat analýzy protokolů a dále udržovat strategie a procesy operace služeb.  
+Počítače, které jsou hostované ve vašem prostředí může být přímo připojen k analýze protokolů, nebo pokud jste již monitorujete tyto počítače se System Center Operations Manager 2012 R2, 2016 nebo verze 1801, můžete provést integraci Operations spravovat skupiny pro správu s Přihlaste se Analytics a dále udržovat procesy operations vaše IT služeb.  
 
 ## <a name="overview"></a>Přehled
 
@@ -36,15 +36,11 @@ Počítače, které jsou hostované ve vašem prostředí může být přímo p�
 
 Před analýza a funguje na shromážděná data, musíte nejprve nainstalovat a připojit agentů pro všechny počítače, které chcete odesílat data do služby analýzy protokolů. Můžete nainstalovat agenty na místní počítače pomocí instalačního programu, příkazového řádku nebo pomocí požadovaného stavu konfigurace (DSC) ve službě Azure Automation. 
 
-Agenta pro Linux a Windows komunikuje přes port 443 protokolu TCP odchozí službou analýzy protokolů a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [konfigurace agenta pro použití s proxy serverem nebo OMS brána](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway) pochopit změny konfigurace, které se musí provést. Pokud sledujete počítači pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2, může být vícedomé službou analýzy protokolů pro shromažďování dat a předání do služby a bude i nadále monitorovat pomocí [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s analýzy protokolů neobdrží konfigurace pro zdroje dat a dál shromážděná data prostřednictvím skupiny pro správu. Agent služby Windows může hlásit až čtyři pracovní prostory, zatímco agenta systému Linux podporuje pouze do jednoho pracovního prostoru generování sestav.  
+Agenta pro Linux a Windows komunikuje přes port 443 protokolu TCP odchozí službou analýzy protokolů a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, přečtěte si [v části předpoklady](#prerequisites) na Porozumějte konfiguraci sítě požadované.  Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [OMS brány](log-analytics-oms-gateway.md) a pak nakonfigurujte agenta připojit přes bránu k analýze protokolů. Agent pak může přijímat informace o konfiguraci a odesílat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešení, které jste povolili. 
 
-Agenta pro Linux a Windows není jenom pro připojení do analýzy protokolů, ale také podporuje připojení k Azure Automation hostitelů role pracovního procesu Hybrid Runbook a řešení pro správu jako je sledování změn a Správa aktualizací.  Další informace o roli hybridní pracovní proces Runbooku najdete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview).  
+Pokud sledujete počítači pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2, může být vícedomé službou analýzy protokolů pro shromažďování dat a předání do služby a bude i nadále monitorovat pomocí [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s analýzy protokolů neobdrží konfigurace pro zdroje dat a dál shromážděná data prostřednictvím skupiny pro správu. Agent služby Windows může hlásit až čtyři pracovní prostory, zatímco agenta systému Linux podporuje pouze do jednoho pracovního prostoru generování sestav.  
 
-Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, agent může být nakonfigurován pro připojení k bráně OMS shromážděná data v závislosti na řešení, které jste povolili odesílat a přijímat informace o konfiguraci. Další informace a kroky pro konfiguraci vašeho systému Linux nebo Windows agenta pro komunikaci přes bránu OMS ke službě Analýza protokolů najdete v tématu [počítače připojit k OMS pomocí brány OMS](log-analytics-oms-gateway.md). 
-
-> [!NOTE]
-> Agenta pro Windows podporuje jenom zabezpečení TLS (Transport Layer) 1.0 a 1.1.  
-> 
+Agenta pro Linux a Windows není jenom pro připojení k analýze protokolů, ale také podporuje Azure Automation hostitelů role pracovního procesu Hybrid Runbook a řešení pro správu jako je sledování změn a Správa aktualizací.  Další informace o roli hybridní pracovní proces Runbooku najdete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-offering-get-started.md#automation-architecture-overview).  
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, zkontrolujte následující podrobnosti k ověření, že splňují minimální požadavky na systém.
@@ -54,6 +50,9 @@ Pro agenta Windows oficiálně jsou podporovány následující verze operační
 
 * Windows Server 2008 Service Pack 1 (SP1) nebo novější
 * Windows 7 SP1 a novější.
+
+> [!NOTE]
+> Agenta pro Windows podporuje jenom zabezpečení TLS (Transport Layer) 1.0 a 1.1.  
 
 #### <a name="network-configuration"></a>Konfigurace sítě
 Informace o následující seznam konfigurace proxy a firewall informace požadované pro agenta systému Windows ke komunikaci s analýzy protokolů. Přenosy jsou odchozí z vaší sítě ke službě Analýza protokolů. 

@@ -1,24 +1,24 @@
 ---
-title: "Návody vědecké účely dat systému SQL Server pomocí R, Python a T-SQL | Microsoft Docs"
-description: "Příklady, které provede použití R, Python a T-SQL v systému SQL Server pro prediktivní analýzy."
+title: Návody vědecké účely dat systému SQL Server pomocí R, Python a T-SQL | Microsoft Docs
+description: Příklady, které provede použití R, Python a T-SQL v systému SQL Server pro prediktivní analýzy.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 3f7d6a0b7b1f874d87e10c490d0b48fe6e6083ef
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: deguhath
+ms.openlocfilehash: 1de293885c691aa7112eb9288eaa48554d81bdb2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>Návody vědecké účely dat systému SQL Server pomocí R, Python a T-SQL
 
@@ -47,7 +47,7 @@ Návody vědecké účely další data, které se spouští proces vědecké ú�
 [Použití T-SQL s SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) názorný postup obsahuje programátory v jazyce SQL s prostředím vytváření machine learning řešení v systému SQL Server. Ukazuje, jak začlenit Python do aplikace tak, že přidáte kód Python k uloženým procedurám.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace součástí klíče, které tvoří proces Team dat. vědecké účely, naleznete v [přehled tým datové vědy procesu](overview.md).
 

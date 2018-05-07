@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87396204933ca964634656f9eb84c6d245c0c6c0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Instalace rozšíření přístup k panelu prohlížeče
 
@@ -83,6 +83,12 @@ Můžete také stáhnout rozšíření pro Chrome a hraniční přímo z násled
    3. Vyhledejte aplikaci, která je k dispozici na portálu Moje aplikace.
    4. V seznamu výsledků hledání vyberte aplikaci.  
        Poslední tři aplikace poprvé, zobrazí se zobrazují v **nedávno použité** zástupce seznamu.
+       
+* Pokud chcete používat interní společnosti adresy URL při vzdálené, postupujte takto:
+    1. [Konfigurovat Proxy aplikací](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) na vašeho klienta
+    2. [Publikování aplikace](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) a adresu URL prostřednictvím Proxy aplikace
+    3. Nainstalujte rozšíření a přihlaste se k němu výběrem přihlášení začít
+    4. Nyní můžete vyhledat adresu URL interní společnosti i v průběhu vzdálené
 
 > [!NOTE]
 > Předchozí možnosti jsou dostupné pouze pro okraj a Chrome, Firefox.

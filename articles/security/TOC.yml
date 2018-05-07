@@ -162,44 +162,13 @@
         - name: Ochrana osobních údajů pomocí nástrojů pro vytváření sestav Azure
           href: protection-personal-data-azure-reporting-tools.md
     - name: FEDRAMP
-      href: ./blueprints/fedramp.md
       items:
-        - name: Přehled ovládacích prvků zabezpečení
-          href: ./blueprints/fedramp-controls-overview.md
-        - name: Řízení přístupu
-          href: ./blueprints/fedramp-access-controls.md
-        - name: Audit a zodpovědnost
-          href: ./blueprints/fedramp-audit-accountability-controls.md
-        - name: Přehled a školení
-          href: ./blueprints/fedramp-awareness-training-controls.md
-        - name: Správa konfigurace
-          href: ./blueprints/fedramp-configuration-manager-controls.md
-        - name: Plánování řešení nepředvídaných událostí
-          href: ./blueprints/fedramp-contingency-planning-controls.md
-        - name: Identifikace a ověřování
-          href: ./blueprints/fedramp-identification-authentication-controls.md
-        - name: Reakce na incidenty
-          href: ./blueprints/fedramp-incident-response-controls.md
-        - name: Údržba
-          href: ./blueprints/fedramp-maintenance-controls.md
-        - name: Ochrana médií
-          href: ./blueprints/fedramp-media-protection-controls.md
-        - name: Zabezpečení pracovníků
-          href: ./blueprints/fedramp-personnel-security-controls.md
-        - name: Fyzická ochrana a ochrana prostředí
-          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
-        - name: Plánování
-          href: ./blueprints/fedramp-planning-controls.md
-        - name: Posouzení rizik
-          href: ./blueprints/fedramp-risk-assessment-controls.md
-        - name: Posouzení zabezpečení a autorizace
-          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
-        - name: Ochrana systémů a komunikací
-          href: ./blueprints/fedramp-system-communications-protection-controls.md
-        - name: Integrita systémů a informací
-          href: ./blueprints/fedramp-system-information-integrity-controls.md
-        - name: Získávání systémů a služeb
-          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+        - name: Analýzy dat
+          href: ./blueprints/fedramp-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/fedramp-datawarehouse-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/fedramp-iaaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:

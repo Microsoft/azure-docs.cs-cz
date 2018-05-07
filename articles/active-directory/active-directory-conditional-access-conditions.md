@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b3096fbec6a7cc30d1ae3452b6c8b872cf3aec8f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Podmínky v Azure Active Directory podmíněného přístupu 
 
@@ -38,8 +38,10 @@ Kombinace vaše podmínky s ovládacími prvky přístup představuje zásady po
 
 ![Řízení](./media/active-directory-conditional-access-conditions/61.png)
 
-Tento článek poskytuje přehled podmínky a jak se používají v zásadách podmíněného přístupu. 
 
+Podmínek, které jste nenakonfigurovali v zásadách podmíněného přístupu se nepoužijí. Některé podmínky jsou [povinné](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work) použít zásady podmíněného přístupu do prostředí. 
+
+Tento článek poskytuje přehled podmínky a jak se používají v zásadách podmíněného přístupu. 
 
 ## <a name="users-and-groups"></a>Uživatelé a skupiny
 
@@ -110,7 +112,7 @@ Platforma je charakterizovaná operačního systému, který běží na vašem z
 Úplný seznam platforem podporovaných zařízení najdete v tématu [podmínku platformy zařízení](active-directory-conditional-access-technical-reference.md#device-platform-condition).
 
 
-Společné pro tento stav je zásadu, která omezuje přístup na vašich cloudových aplikací pro případ použití [důvěryhodné zařízení](active-directory-conditional-access-policy-connected-applications.md#trusted-devices). Další scénáře včetně podmínku platformy zařízení, najdete v části [podmíněného přístupu na základě aplikace Azure Active Directory](active-directory-conditional-access-mam.md).
+Společné pro tento stav je zásadu, která omezuje přístup na vašich cloudových aplikací pro případ použití [zařízení spravovaná](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Další scénáře včetně podmínku platformy zařízení, najdete v části [podmíněného přístupu na základě aplikace Azure Active Directory](active-directory-conditional-access-mam.md).
 
 
 
