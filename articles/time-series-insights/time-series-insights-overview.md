@@ -21,7 +21,7 @@ ms.lasthandoff: 04/20/2018
 
 Statistika řady čas je vytvořené pro ukládání, vizualizace a dotazování velké objemy dat řady čas, jako je například generovaná zařízeními IoT.  Pokud chcete uložit, spravovat, dotaz nebo vizualizovat data řady čas v cloudu, je pravděpodobné, práva pro přehledy časové řady.  
 
-! [Řady Statistika čas vývojový diagram] (media/overview/time-series-insights-flowchart.png)
+![Řady Statistika čas vývojový diagram] (media/overview/time-series-insights-flowchart.png)
 
 Statistika časové řady má čtyři klíčové úlohy:
 
@@ -68,7 +68,7 @@ Začínáme trvá méně než 5 minut.
 4.  Zobrazit vaše data v minutách pomocí Průzkumníka Statistika časové řady.
 
 ## <a name="time-series-insights-explorer"></a>Průzkumník Time Series Insights
-Tento diagram znázorňuje příklad časové řady datům přehledů zobrazit pomocí Průzkumník:! [Čas řady Statistika explorer] (media/time-series-insights-explorer/explorer4.png)
+Tento diagram znázorňuje příklad časové řady datům přehledů zobrazit pomocí Průzkumník: ![Čas řady Statistika explorer] (media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>Další postup
  - [Prozkoumat pomocí Průzkumníka časové řady statistiky v ukázce prostředí](./time-series-quickstart.md)
