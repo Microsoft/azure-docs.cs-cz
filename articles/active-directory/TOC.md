@@ -332,8 +332,7 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### 
-  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 ### [Řešení potíží s chybějící nebo nedostupnou položkou Active Directory](active-directory-troubleshooting.md)
