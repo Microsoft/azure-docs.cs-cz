@@ -1,11 +1,11 @@
 ---
-title: "Vlastní pravidla výstrah v Azure Security Center | Dokumentace Microsoftu"
-description: "Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center."
+title: Vlastní pravidla výstrah v Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: yurid
-ms.openlocfilehash: 10c5c3e6f714aac4c08cb810f54eb09c3d2bbe70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e43d925317e32d2fcbdeb75eff71de0cc5a91378
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.

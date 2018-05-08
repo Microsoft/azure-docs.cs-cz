@@ -1,25 +1,23 @@
 ---
-title: "Přehled použití adresáře tenanta Azure Active Directory | Dokumentace Microsoftu"
-description: "Vysvětluje, co je tenant služby Azure AD a jak spravovat Azure pomocí Azure Active Directory."
+title: Přehled použití adresáře tenanta Azure Active Directory | Dokumentace Microsoftu
+description: Vysvětluje, co je tenant služby Azure AD a jak spravovat Azure pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 0218365a21f241b5672774005cd6e0417fba358b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9da9380f9fd492284a3e82be44051f150f7b3c53
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-your-azure-ad-directory"></a>Správa adresáře služby Azure AD
 
