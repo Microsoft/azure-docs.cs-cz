@@ -1,13 +1,13 @@
 ---
-title: "Rychlý úvod: Ruční instalace jedné instance SAP HANA ve virtuálních počítačích Azure | Microsoft Docs"
-description: "Průvodce rychlým zahájením pro ruční instalaci jedné instance SAP HANA ve virtuálních počítačích Azure"
+title: 'Rychlý úvod: Ruční instalace jedné instance SAP HANA ve virtuálních počítačích Azure | Microsoft Docs'
+description: Průvodce rychlým zahájením pro ruční instalaci jedné instance SAP HANA ve virtuálních počítačích Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý úvod: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -48,7 +48,7 @@ V tomto okamžiku virtuálních počítačích Azure certifikovány SAP pro SAP 
 
 Pokud požadujete k získání SAP HANA instance nebo S nebo 4HANA nebo BW/4HANA systému nasazené v čase velmi rychlé, měli byste zvážit použití [knihovny zařízení cloudu SAP](http://cal.sap.com). Můžete najít dokumentaci o nasazení, například S nebo 4HANA systému prostřednictvím SAP CAL na platformě Azure v [Tato příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Je všechno, co je potřeba mít předplatné Azure a SAP uživatele, který lze registrovat pomocí knihovny zařízení SAP cloudu.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 ### <a name="sap-hana-backup"></a>Zálohování SAP HANA
 Informace o zálohování databáze SAP HANA na virtuálních počítačích Azure najdete v tématu:
 * [Příručce zálohování pro SAP HANA ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
@@ -251,7 +251,7 @@ Popis standardní systém souborů rozložení SAP HANA najdete v tématu [aktua
 
 Když instalujete SAP NetWeaver na standardní SLES/SLES pro bitovou kopii Galerie Azure 12 aplikace SAP, zobrazí se zpráva s informacemi o tom, že neexistuje žádná odkládacího souboru, jak je znázorněno na následujícím snímku obrazovky. Zavřete tuto zprávu, můžete ručně přidat odkládací soubor pomocí **dd**, **mkswap**, a **swapon**. Další informace jak, vyhledejte "Přidání odkládací soubor ručně" v [pomocí dělicí metody YaST](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) části dokumentace SUSE.
 
-Další možností je konfigurovat odkládacího souboru pomocí agenta virtuálního počítače s Linuxem. Další informace najdete v tématu [Azure Linux Agent uživatelská příručka](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další možností je konfigurovat odkládacího souboru pomocí agenta virtuálního počítače s Linuxem. Další informace najdete v tématu [Azure Linux Agent uživatelská příručka](../../extensions/agent-linux.md).
 
 ![Místní zpráva radí, že je nedostatečné velikosti odkládacího souboru](./media/hana-get-started/image010.jpg)
 

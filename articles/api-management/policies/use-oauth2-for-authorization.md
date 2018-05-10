@@ -3,7 +3,7 @@ title: Azure zásady správy rozhraní API-ukázka - OAuth2 použití k ověřov
 description: Azure API management zásad ukázka - demonstruje použití OAuth2 pro ověřování mezi bránou rozhraní a back-end. Ukazuje, jak získat přístupový token z AAD a předá je na back-end.
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 4d518d37997b3ef014b85a4371bb3842fcab4373
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 240f78bc66af681d0089c45229ab142adf515e60
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 pro autorizaci použít mezi bránou rozhraní a back-end
 
@@ -31,6 +31,8 @@ Následující skript používá vlastnosti, které se zobrazují v {{vlastnost}
 
 Vložte kód do **příchozí** bloku.
 
+[!code-xml[Main](../../../api-management-policy-samples/Snippets/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
+  
 ## <a name="next-steps"></a>Další postup
 
 Další informace o zásadách APIM:

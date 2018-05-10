@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Přehled živé streamování využívající Azure Media Services
 
@@ -54,7 +54,7 @@ Ve službě Azure Media Services se o zpracování všech funkcí živého strea
   > Použití průchozí metody je nejekonomičtější způsob, jak živě streamovat při pořádání několika událostí po delší dobu, když jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). RTP (MPEG-TS) je také podporována, pokud máte vyhrazené připojení k datovému centru Azure. Pro práci s kanály tohoto typu jsou známé následující kodéry s výstupu RTMP: Telestream Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Pro práci s kanály tohoto typu jsou známé následující kodéry s výstupu RTMP: Telestream Wirecast, FMLE. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 Od verze Media Services 2.10, když vytvoříte kanál, můžete zadat způsobem, který chcete použít pro kanál pro příjem vstupního datového proudu a zda chcete pro kanál provést kódování v reálném čase z datového proudu. Máte dvě možnosti:
 
@@ -68,7 +68,7 @@ Následující tabulka poskytuje vodítko k porovnání dvou kanál typy podporo
 | --- | --- | --- |
 | Jednou přenosovou rychlostí vstup je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení, počet vrstev |1080p, 8 vrstvy 60 + snímků za sekundu |720p, 6 vrstev, 30 snímků za sekundu |
-| Vstupní protokoly |RTMP funkce Smooth Streaming |RTMP, technologie Smooth Streaming a protokol RTP |
+| Vstupní protokoly |RTMP funkce Smooth Streaming |RTMP funkce Smooth Streaming |
 | Cena |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Live Video" |Najdete v článku [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximální doba běhu |Nepřetržitě |8 hodin |
 | Podpora pro vkládání slaty |Ne |Ano |

@@ -6,8 +6,8 @@ documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
 editor: ''
-ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19a1ae7ae7acc6fe09a529dd174363735343027e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro správu identit napříč doménami pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
@@ -35,7 +35,7 @@ Tato funkce slouží ve spojení s možností "přineste vlastní aplikace" v Az
 Existují dva případy použití pro pomocí SCIM v Azure Active Directory:
 
 * **Zřizování uživatelů a skupin na aplikace, které podporují SCIM** aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
-* **Vytvoření vlastního řešení zřizování pro aplikace, které podporují jiné zajišťování na základě rozhraní API** pro jiný SCIM aplikace, můžete vytvořit koncový bod SCIM pro převod mezi koncový bod Azure AD SCIM a jakéhokoli rozhraní API podporuje aplikace pro uživatele zřizování. Můžete vyvíjet koncový bod SCIM, poskytujeme knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak k poskytování koncový bod SCIM a převede SCIM zprávy.  
+* **Vytváření vlastních řešení zřizování pro aplikace, které podporují jiné založené na rozhraní API zřizování** pro jiný SCIM aplikace, můžete vytvořit koncový bod SCIM pro převod mezi koncový bod Azure AD SCIM a jakéhokoli rozhraní API aplikace podporuje pro zřizování uživatelů. Můžete vyvíjet koncový bod SCIM, neexistují knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak k poskytování koncový bod SCIM a převede SCIM zprávy.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Zřizování uživatelů a skupin na aplikace, které podporují SCIM
 Azure AD lze nakonfigurovat, aby automaticky přiřazen zřizování uživatelů a skupin k aplikacím, které implementují [systému pro správu identit napříč doménami 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) webové služby a přijímat tokeny nosičů OAuth pro ověřování. V rámci specifikace SCIM 2.0 aplikace musí splňovat tyto požadavky:
@@ -56,7 +56,7 @@ Aplikace, které podporují profilem SCIM popsané v tomto článku může být 
 **Připojení aplikace, která podporuje SCIM:**
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
-2. Přejděte do ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
+2. Přejděte do **Azure Active Directory > podnikové aplikace, které**a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
 3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu pro vytvoření objektu aplikace.
     
   ![][1]
@@ -131,12 +131,12 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
    FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
   ````
 8. V systému Windows v rámci **nastavení systému Windows > síť a Internet nastavení**, vyberte **brány Windows Firewall > Upřesnit nastavení**a vytvořit **příchozí pravidlo** , umožňuje příchozí přístup k portu 9000.
-9. Pokud je počítač Windows za směrovačem, je potřeba nakonfigurovat k provedení přístup překlad mezi její port 9000, který má přístup k Internetu a port 9000 na počítači Windows směrovači. To je potřeba pro Azure AD pro přístup k tomuto koncovému bodu v cloudu.
+9. Pokud je počítač Windows za směrovačem, je potřeba nakonfigurovat k provedení přístup překlad mezi její port 9000, který má přístup k Internetu a port 9000 na počítači Windows směrovači. Tato konfigurace je nutná pro přístup k tomuto koncovému bodu v cloudu Azure AD.
 
 **Postup registrace koncového bodu SCIM ukázka ve službě Azure AD:**
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
-2. Přejděte do ** Azure Active Directory > podnikové aplikace a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
+2. Přejděte do **Azure Active Directory > podnikové aplikace, které**a vyberte **novou aplikaci > všechny > aplikace bez Galerie**.
 3. Zadejte název pro vaši aplikaci a klikněte na tlačítko **přidat** ikonu pro vytvoření objektu aplikace. Objekt aplikace vytvořený je určený k reprezentaci cílové aplikaci jste by zajišťování, které a implementace jednotné přihlašování pro a nikoli pouze SCIM koncového bodu.
 4. Na obrazovce výsledné vyberte **zřizování** kartě v levém sloupci.
 5. V **režimu zřizování** nabídce vyberte možnost **automatické**.
@@ -144,7 +144,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
   ![][2]
   *Obrázek 4: Konfigurace zřizování na portálu Azure*
     
-6. V **URL klienta** pole, zadejte adresu URL a port váš koncový bod SCIM vystavené Internetu. To může být přibližně http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu zveřejněné IP adresu.  
+6. V **URL klienta** pole, zadejte adresu URL a port váš koncový bod SCIM vystavené Internetu. Položka je podobný http://testmachine.contoso.com:9000 nebo http://<ip-address>:9000/, kde < adresa > je Internetu zveřejněné IP adresu.  
 7. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte do nepovinný požadovaný token nosiče OAuth **tajný klíč tokenu** pole. Pokud toto pole je prázdné, bude obsahovat Azure AD tokenu nosiče OAuth, který je vydán z Azure AD s každou žádostí. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD-vydán token.
 8. Klikněte **Test připojení** tlačítko tak, aby měl Azure Active Directory, pokusí se připojit ke koncovému bodu SCIM. Pokud pokusy o selhání, zobrazí se informace o chybě.  
 9. Pokud pokusy o připojení k úspěšné aplikaci, pak klikněte na tlačítko **Uložit** uložit přihlašovací údaje správce.
@@ -239,7 +239,7 @@ Používání knihoven rozhraní příkazového řádku, vývojáře, kteří po
     }
     }
 
-Tato služba musí mít HTTP adresa a server ověřování certifikát které kořenové certifikační autority je jedním z těchto: 
+Tato služba musí mít HTTP adresa a server ověřování certifikát z nich kořenové certifikační autority je jedním z následujících názvů: 
 
 * CNNIC
 * Comodo
@@ -347,12 +347,12 @@ Vývojáři pomocí knihovny CLA od společnosti Microsoft pro vytváření SCIM
 ## <a name="user-and-group-schema"></a>Schéma uživatelů a skupin
 Azure Active Directory můžete zřídit dva typy prostředků, aby SCIM webové služby.  Tyto typy prostředků jsou uživatelé a skupiny.  
 
-Uživatel prostředky jsou označeny identifikátor schématu urn: ietf:params:scim:schemas:extension:enterprise:2.0:User, který je součástí této specifikace protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Výchozí mapování atributů uživatelům atributy urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků v Azure Active Directory je uvedené v tabulce 1, níže.  
+Uživatel prostředky jsou označeny identifikátor schématu "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User", který je součástí této specifikace protokolu: http://tools.ietf.org/html/draft-ietf-scim-core-schema.  Výchozí mapování atributů uživatelům atributy "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" prostředků v Azure Active Directory je uvedené v tabulce 1, níže.  
 
 Skupiny prostředků jsou identifikovány identifikátor schématu http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group.  Tabulka 2 níže znázorňuje výchozí mapování atributů skupin v Azure Active Directory na atributy http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group prostředky.  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabulka 1: Výchozí mapování atributů uživatele
-| Uživatele Azure Active Directory | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |
+| Uživatele Azure Active Directory | "název urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktivní |
 | displayName |displayName |
@@ -534,7 +534,7 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  Hodnota parametru dotazu atributy id, označuje, že, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtru a pak službu musí odpovědět s urn: ietf:params:scim:schemas:core:2.0:User nebo název urn: ietf:params:scim:schemas:extension:enterprise:2.0:User prostředků, včetně pouze hodnota atributu id tohoto zdroje.  Hodnota **id** atribut je znám žadatel. Hodnota parametru dotazu filtru; je součástí účelem žádostí o jeho je ve skutečnosti o minimální reprezentace daného prostředku, které splňují výraz filtru jako údaj o tom, zda existuje takový objekt.   
+  Hodnota parametru dotazu atributy "id", znamená, že neexistuje, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtru a pak službu očekává se, že odpoví "urn: ietf:params:scim:schemas:core:2.0: Uživatel"nebo"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"prostředků, včetně pouze hodnotu atributu"id"Tento prostředek.  Hodnota **id** atribut je znám žadatel. Hodnota parametru dotazu filtru; je součástí účelem žádostí o jeho je ve skutečnosti o minimální reprezentace daného prostředku, které splňují výraz filtru jako údaj o tom, zda existuje takový objekt.   
 
   Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody dotazu zprostředkovatele služby. Hodnota vlastnosti objektu zadaný jako hodnota argumentu parametry jsou následující: 
   

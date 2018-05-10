@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: c12b52c6b8862d00d51b51a5a120292f89c3ac1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -119,7 +119,7 @@ Při použití [standardní Vyrovnávání zatížení s dostupnost zóny](load-
 
 ### <a name="pat"></a>Port podvržený překládat pomocí SNAT (Jan)
 
-Pokud prostředek veřejné nástroje pro vyrovnávání zatížení je spojen s instancí virtuálních počítačů, je přepsaná každý zdroj odchozí připojení. Zdroj je přepisuje z virtuální sítě privátní adresní prostor IP adres, aby front-endu veřejná IP adresa služby Vyrovnávání zatížení. V veřejný adresní prostor IP adres 5-n-tice toku (zdrojové IP adresy, zdrojového portu, přenosového protokolu IP, cílové IP adresy, cílový port) musí být jedinečný.  
+Pokud prostředek veřejné nástroje pro vyrovnávání zatížení je spojen s instancí virtuálních počítačů, je přepsaná každý zdroj odchozí připojení. Zdroj je přepisuje z virtuální sítě privátní adresní prostor IP adres, aby front-endu veřejná IP adresa služby Vyrovnávání zatížení. V veřejný adresní prostor IP adres 5-n-tice toku (zdrojové IP adresy, zdrojového portu, přenosového protokolu IP, cílové IP adresy, cílový port) musí být jedinečný.  Podvržený překládat pomocí SNAT portu můžete použít s protokoly TCP nebo UDP IP.
 
 Dočasné porty (porty překládat pomocí SNAT) se používají k dosáhnout po přepisování privátní zdrojovou IP adresu, protože více toků pocházejí z jedné veřejné IP adresy. 
 

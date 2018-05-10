@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Koncepty Azure Media Services
 Toto téma poskytuje přehled konceptů nejdůležitější Media Services.
@@ -108,7 +108,7 @@ Informace o podporovaných kodéry najdete v tématu [kodéry](media-services-en
 Ve službě Azure Media Services kanál, který představuje kanálu pro zpracování obsahu živého streamování. Kanál, který obdrží živé vstupní datové proudy v jednom ze dvou způsobů:
 
 * Místní kodér za provozu odešle více přenosovými rychlostmi RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4) do kanálu. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming více přenosovými rychlostmi: MediaExcel, Ateme, představte si komunikace, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash kodéru služby Live, Telestream Wirecast, Teradek, Haivision a čase kodérů. Ingestované datové proudy prochází kanály bez kódování a překódování žádné další. Služba Media Services doručí datový proud zákazníkům na vyžádání.
-* Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTP (MPEG-TS)), RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4)) se odesílá do kanálu, který má povolené kódování v reálném čase pomocí služby Media Services provádět. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4)) se odesílá do kanálu, který má povolené kódování v reálném čase pomocí služby Media Services provádět. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 ### <a name="channel"></a>Kanál
 Ve službě Media Services [kanál](https://docs.microsoft.com/rest/api/media/operations/channel)s jsou zodpovědná za zpracování obsahu živého streamování. Kanál, který obsahuje vstupní koncový bod (ingestovanou adresu URL), pak poskytnete za provozu převaděč. Kanál přijímá živé vstupní datové proudy ze za provozu převaděč a zpřístupní se k vysílání datového proudu prostřednictvím jeden nebo více koncové body streamování. Kanály taky zadat koncový bod preview (URL náhledu), který používáte pro zobrazení náhledu a ověřit před další zpracování a doručení datového proudu.

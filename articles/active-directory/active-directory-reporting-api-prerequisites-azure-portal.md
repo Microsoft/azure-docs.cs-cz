@@ -12,37 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/03/2018
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 72372a37c4ddcc6135fc7477807e4ff94ae90c77
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky na přístup k službě Azure Active Directory, vytváření sestav rozhraní API
 
 [Azure Active Directory (Azure AD) rozhraní API pro vytváření sestav](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) poskytují programový přístup k datům prostřednictvím sady založené na REST API. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
 
-Generování sestav používá rozhraní API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) autorizovat přístup k webovému rozhraní API. 
+Generování sestav používá rozhraní API [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) autorizovat přístup k webovému rozhraní API.
+
+Pokud chcete připravit váš přístup k rozhraní API pro vytváření sestav, budete muset:
+
+1. Přiřazení rolí
+2. Registrace aplikace
+3. Udělit oprávnění
+4. Shromážděte nastavení konfigurace
+
+
+
+## <a name="assign-roles"></a>Přiřazení rolí
 
 Chcete-li získat přístup k data pro generování sestav prostřednictvím rozhraní API, musíte mít jeden z následujících role přiřazené:
 
 - Čtecí zařízení pro zabezpečení
+
 - Správce zabezpečení
+
 - Globální správce.
 
 
-Chcete-li připravit váš přístup k rozhraní API pro vytváření sestav, postupujte takto:
 
-1. Registrace aplikace 
-2. Udělit oprávnění 
-3. Shromážděte nastavení konfigurace 
 
-Pro dotazy, problémy nebo připomínky [souboru lístek podpory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
-
-## <a name="register-an-azure-active-directory-application"></a>Zaregistrovat aplikaci Azure Active Directory
+## <a name="register-an-application"></a>Registrace aplikace
 
 Je třeba zaregistrovat aplikaci, i když přistupujete k vytváření sestav rozhraní API pomocí skriptu. To vám dává **ID aplikace**, což je vyžadováno pro volání autorizace a umožňuje kódu přijímat tokeny.
 
@@ -86,7 +93,7 @@ V závislosti na rozhraní API, které chcete získat přístup musíte aplikaci
 
 | Rozhraní API | Oprávnění |
 | --- | --- |
-| Windows Azure Active Directory | Umožňuje získat oprávnění ke čtení dat adresáře. |
+| Windows Azure Active Directory | Čtení dat adresáře |
 | Microsoft Graph | Přečtěte si, že všechna data protokolu auditování |
 
 
@@ -145,11 +152,12 @@ V následující části jsou uvedené kroky pro obě rozhraní API. Pokud nechc
 
 
 ## <a name="gather-configuration-settings"></a>Shromážděte nastavení konfigurace 
+
 V této části se dozvíte, jak získat z adresáře následující nastavení:
 
-* Název domény
-* ID klienta
-* Tajný klíč klienta
+- Název domény
+- ID klienta
+- Tajný klíč klienta
 
 Je nutné tyto hodnoty při konfiguraci volání do rozhraní API pro generování sestav. 
 
@@ -219,6 +227,10 @@ Získat sdílený tajný klíč klienta aplikace, musíte vytvořit nový klíč
 
 
 ## <a name="next-steps"></a>Další kroky
-* Chcete pro přístup k datům z Azure AD reporting rozhraní API programové způsobem? Podívejte se na [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md).
-* Pokud chcete získat další informace o vytváření sestav Azure Active Directory, přečtěte si téma [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).  
+
+- [Získání dat pomocí Azure Active Directory, vytváření sestav rozhraní API s certifikáty](active-directory-reporting-api-with-certificates.md).
+
+- [Získal první dojem o rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Vytvořte vlastní řešení](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

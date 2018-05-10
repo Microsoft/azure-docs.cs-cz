@@ -1,25 +1,20 @@
 ---
-title: "Kód spolupráce Azure Active Directory s B2B a ukázky PowerShell | Microsoft Docs"
-description: "Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce"
+title: Kód spolupráce Azure Active Directory s B2B a ukázky PowerShell | Microsoft Docs
+description: Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/11/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6006dde5ea34db9881a02550e7aff33e48c6498e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53fba48725e0f4f496beee6eee96ff45847b633e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód spolupráce Azure Active Directory s B2B a ukázky prostředí PowerShell
 
@@ -28,7 +23,7 @@ Vám může hromadné pozvání externí uživatele organizaci z e-mailové adre
 
 1. Příprava. CSV soubor vytvořte nový soubor CSV a pojmenujte ji invitations.csv. V tomto příkladu soubor je uložen v C:\data a obsahuje následující informace:
   
-  Jméno                  |  InvitedUserEmailAddress
+  Název                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
   Pozvané Gmail B2B     | b2binvitee@gmail.com
   Pozvané B2B aplikace Outlook   | b2binvitee@outlook.com
@@ -233,15 +228,5 @@ namespace SampleInviteApp
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si naše další články ohledně spolupráce B2B ve službě Azure AD:
+- [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
-* [Delegovat pozvánek spolupráce B2B](active-directory-b2b-delegate-invitations.md)
-* [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
-* [Konfigurace aplikací SaaS pro spolupráci B2B](active-directory-b2b-configure-saas-apps.md)
-* [Tokeny uživatele spolupráce B2B](active-directory-b2b-user-token.md)
-* [Deklarace uživatele spolupráce B2B mapování](active-directory-b2b-claims-mapping.md)
-* [Externí sdílení Office 365](active-directory-b2b-o365-external-user.md)
-* [Aktuální omezení spolupráce B2B](active-directory-b2b-current-limitations.md)

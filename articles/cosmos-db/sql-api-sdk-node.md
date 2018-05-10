@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/3/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c219820fd5b8d5502bae394142dfbe80db1f59
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: ef80c99225a9045686ba8de3fe8fd7cf7070b5cd
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="1.14.4"/>1.14.4</a>
+* dokumentace npm pevné.
+
+### <a name="1.14.3"/>1.14.3</a>
+* Přidaná podpora pro výchozí opakování pokusů pro potíže s připojením.
+* Přidaná podpora číst změnu kolekce informačního kanálu.
+* Chyb konzistence pevné relace, která občas způsobila "čtení relace není k dispozici".
+* Přidaná podpora pro dotaz metriky.
+* Změnit maximální počet připojení protokolu http agenta.
 
 ### <a name="1.14.2"/>1.14.2</a>
 * Aktualizované dokumentace k odkazu na Azure DB Cosmos místo Azure DocumentDB.
@@ -193,6 +203,8 @@ Každá žádost o pomocí Cosmos DB, že je vyřazeno SDK odmítnuta službou.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.14.4](#1.14.4) |03 může 2018 |--- |
+| [1.14.3](#1.14.3) |03 může 2018 |--- |
 | [1.14.2](#1.14.2) |21 prosince 2017 |--- |
 | [1.14.1](#1.14.1) |10 listopadu 2017 |--- |
 | [1.14.0](#1.14.0) |9 listopadu 2017 |--- |

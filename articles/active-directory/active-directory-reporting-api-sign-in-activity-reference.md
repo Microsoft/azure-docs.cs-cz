@@ -1,32 +1,35 @@
 ---
-title: "Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Referenční dokumentace rozhraní API sestavy přihlašovací aktivita služby Azure Active Directory"
+title: Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API | Microsoft Docs
+description: Referenční dokumentace rozhraní API sestavy přihlašovací aktivita služby Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dbb95b5910def55437f05837986e850824fbe741
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API
-Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům sestavy přihlašovací aktivita pomocí kódu nebo související nástroje.
-Obor tohoto tématu je k poskytování referenční informace o **API sestavy aktivity přihlášení**.
 
-Přejděte na téma:
+> [!TIP] 
+> Podívejte se na nové rozhraní Microsoft Graph API pro [reporting](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), který nakonec nahradí toto rozhraní API. 
+
+Tento článek je součástí kolekce článků týkajících se služby Azure Active Directory (Azure AD) reporting rozhraní API. Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům auditování pomocí kódu nebo související nástroje.
+Rámec tohoto článku je poskytnout vám s referenční informace o **audit rozhraní API**.
+
+Přečtěte si:
 
 * [Přihlašovací aktivity](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
 * [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.
@@ -35,7 +38,7 @@ Přejděte na téma:
 ## <a name="who-can-access-the-api-data"></a>Kdo má přístup k rozhraní API data?
 * Uživatelé a objekty služby v roli správce zabezpečení nebo čtečky zabezpečení
 * Globální správci
-* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
+* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace aplikace lze nastavit pouze na základě oprávnění globálního správce)
 
 Pokud chcete konfigurovat přístup k aplikaci pro přístup k zabezpečení rozhraní API, jako jsou například události přihlášení, použijte tuto Powershellovou přidat aplikace objektu služby do role Čtenář zabezpečení
 
@@ -53,7 +56,7 @@ Přístup k této sestavě prostřednictvím rozhraní API pro vytváření sest
 * Byla dokončena [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Přístup k rozhraní API
-Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Aby PowerShell správně interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD, je nutné použít backtick (neboli: čárka) znak "řídicí" znak $. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (ie: $filter).
+Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Použít backtick (neboli: čárka) znak "řídicí" znak $ zajistit, že prostředí PowerShell můžete interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (například $filter).
 
 Graf Explorer je aktivní v tomto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
 
@@ -64,19 +67,18 @@ Toto rozhraní API pomocí následující základní identifikátor URI se můž
 
 
 
-Z důvodu objem dat toto rozhraní API může mít jeden milión vrácené záznamy. 
+Limit 1 000 000 záznamů vrácených z důvodu objem dat, je toto rozhraní API. 
 
-Toto volání se vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
-Chcete-li získat další dávky záznamů, použijte odkaz na další. Získat [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informace z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
+Toto volání se vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů. Chcete-li získat další dávky záznamů, použijte odkaz na další. Získat [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) informace z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
 
 ## <a name="supported-filters"></a>Podporované filtry
 Počet záznamů, které se vrátí pomocí rozhraní API můžete zúžit volání v podobě filtru.  
-Pro přihlášení rozhraní API související data, jsou podporovány následující filtry:
+Pro přihlášení rozhraní API související data jsou podporovány následující filtry:
 
-* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Tento filtr byste neměli používat, pokud chcete vrátit tisíce objektů.  
+* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Pokud chcete vrátit tisíc objektů, nepoužívejte tento filtr.  
 * **$filter =\<údajů filtru\>**  – Pokud chcete zadat typ záznamy, na kterých vám nejvíc záleží na základě pole podporovaný filtr
 
 ## <a name="supported-filter-fields-and-operators"></a>Pole podporovaný filtr a operátory
@@ -94,7 +96,7 @@ Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit fil
 > 
 > 
 
-Chcete-li zúžit rozsah vrácená data, můžete vytvořit kombinace podporované filtry a pole filtru. Například následující příkaz vrátí top 10 záznamy mezi 1. července 2016 a července 2016 6.:
+Chcete-li zúžit rozsah vrácená data, můžete vytvořit kombinace podporované filtry a pole filtru. Například následující příkaz vrátí top 10 záznamy mezi července 2016 1 a července 2016 6:
 
     https://graph.windows.net/contoso.com/activities/signinEvents?api-version=beta&$top=10&$filter=signinDateTime+ge+2016-07-01T17:05:21Z+and+signinDateTime+le+2016-07-07T00:00:00Z
 
@@ -121,7 +123,7 @@ Použití rozsahu dat.
 Parametr data a času musí být ve formátu UTC 
 
 - - -
-### <a name="userid"></a>ID uživatele
+### <a name="userid"></a>userId
 **Podporované operátory**: eq
 
 **Příklad**:

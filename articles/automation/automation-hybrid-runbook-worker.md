@@ -5,141 +5,44 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2018
+ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2cf4eecbc45e6d842b5a548c8f25ac49aa8fb216
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 36fa5f7c9cedc25f7cb446a504faccfb386bd019
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>Automatizaci prostředků v datovém centru nebo v cloudu s hybridní pracovní proces Runbooku
 
-Runbooky ve službě Azure Automation nemají přístup k prostředkům v ostatních cloudů nebo v místním prostředí, protože spustit i v cloudu Azure. Funkce hybridní pracovní proces Runbooku automatizace Azure umožňuje spuštění sad runbook přímo na počítači, který hostuje roli a s prostředky v prostředí pro správu těchto místních prostředků. Sady Runbook jsou uložené a spravované ve službě Azure Automation a pak doručí jeden nebo více určenými počítači.
+Runbooky ve službě Azure Automation se nemusí mít přístup k prostředkům v ostatních cloudů nebo v místním prostředí, protože spustit i v cloudu Azure. Funkce hybridní pracovní proces Runbooku automatizace Azure umožňuje spuštění sad runbook přímo na počítači, který hostuje roli a s prostředky v prostředí pro správu těchto místních prostředků. Sady Runbook jsou uložené a spravované ve službě Azure Automation a pak doručí jeden nebo více určenými počítači.
 
 Tato funkce je znázorněno na následujícím obrázku:
 
 ![Přehled hybridních služby Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Technický přehled aspektů hybridní pracovní proces Runbooku role a nasazení, naleznete v části [přehled architektury automatizace](automation-offering-get-started.md#automation-architecture-overview).
-
 ## <a name="hybrid-runbook-worker-groups"></a>Skupinám hybrid Runbook Worker
 
 Každý hybridní pracovní proces Runbooku je členem skupiny hybridní pracovní proces Runbooku, který zadáte při instalaci agenta. Skupina může obsahovat jednoho agenta, ale můžete nainstalovat více agentů ve skupině pro vysokou dostupnost.
 
-Při spuštění sady runbook pro Hybrid Runbook Worker, určete skupinu, která běží na. Členové skupiny určit, které pracovní obsluhuje požadavek. Nelze zadat konkrétní pracovního procesu.
+Při spuštění sady runbook pro Hybrid Runbook Worker, určete skupinu, která běží na. Každý pracovní ve skupině dotáže Azure Automation. Chcete-li zobrazit, pokud jsou k dispozici žádné úlohy. Pokud je k dispozici úlohu pak o první pracovní proces úlohy dojde ho. Nelze zadat konkrétní pracovního procesu.
 
-## <a name="relationship-to-service-management-automation"></a>Vztah k službě Service Management Automation
+## <a name="installing-a-hybrid-runbook-worker"></a>Instalace hybridní pracovní proces Runbooku
 
-[Service Management Automation (SMA)](https://technet.microsoft.com/library/dn469260.aspx) vám umožní spustit stejné sady runbook, které podporuje Azure Automation v místním datovém centru. SMA se nasazuje společně s Windows Azure Pack, protože Windows Azure Pack obsahuje grafické rozhraní pro správu SMA. Na rozdíl od Azure Automation SMA vyžaduje místní instalaci, která zahrnuje webových serverů k hostování rozhraní API, databáze tak, aby obsahovala sady runbook a SMA konfigurace a pracovní procesy Runbook Worker k provedení úlohy sady runbook. Automatizace Azure poskytuje tyto služby v cloudu a vyžaduje pouze, abyste mohli Udržovat procesy Hybrid Runbook Worker ve vašem místním prostředí.
+Proces instalace Hybrid Runbook worker se liší v závislosti na operačním systémem. Následující tabulka obsahuje odkazy na různé metody, které můžete použít k instalaci hybridní pracovní proces Runbooku. Instalace a konfigurace Windows Hybrid Runbook Worker, existují dvě metody k dispozici. Doporučený postup je použít runbook služby automatizace zcela automatizovat proces vyžadované ke konfiguraci počítači se systémem Windows. Druhý způsob je následující podrobný postup při ručně nainstalujte a nakonfigurujte roli. Pro počítače se systémem Linux spusťte skript v jazyce Python pro instalaci agenta na počítači
 
-Pokud jste stávajícího uživatele SMA, můžete přesunout runbooky Azure Automation, který se má použít s hybridní pracovní proces Runbooku s žádné změny, za předpokladu, že fungují své vlastní ověřování k prostředkům, jako jsou popsané v [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md). Runbooky ve službě SMA spustit v kontextu účtu služby na serveru pracovního procesu, který může poskytnout, ověření pro sady runbook.
-
-Můžete použít následující kritéria k určení, zda je vhodnější pro své požadavky na Azure Automation Hybrid Runbook Worker nebo Service Management Automation.
-
-* SMA vyžaduje místní instalaci jeho základní komponenty, které jsou připojené k Windows Azure Pack, pokud je potřeba doplnil o grafické rozhraní. Další místní prostředky, je potřeba s vyšší náklady na údržbu než Azure Automation, který potřebuje pouze agenta nainstalovaného na místní runbook Worker. Agenti jsou spravovány Azure, další snižují náklady na údržbu.
-* Služby Azure Automation ukládá jeho runbooky v cloudu a předá je do místní hybridní pracovní procesy Runbooku. Pokud vaše zásady zabezpečení nedovolují toto chování, měli byste použít SMA.
-* SMA se dodává s nástrojem System Center; a proto vyžaduje licenci System Center 2012 R2. Služby Azure Automation je založen na modelu vrstvené předplatného.
-* Automatizace Azure má pokročilé funkce jako je například grafické runbooky, které nejsou k dispozici ve službě SMA.
-
-## <a name="installing-the-windows-hybrid-runbook-worker"></a>Instalace služby Windows Hybrid Runbook Worker
-
-Instalace a konfigurace Windows Hybrid Runbook Worker, existují dvě metody k dispozici. Doporučený postup je použít runbook služby automatizace zcela automatizovat proces vyžadované ke konfiguraci počítači se systémem Windows. Druhý způsob je následující podrobný postup při ručně nainstalujte a nakonfigurujte roli.
+|Operační systém  |Typy nasazení  |
+|---------|---------|
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ruční](automation-windows-hrw-install.md#manual-deployment)        |
+|Linux     | [Python](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
 > Ke správě konfigurace serverů podpora roli hybridní pracovní proces Runbooku s potřeby konfigurace stavu (DSC), musíte je přidat jako uzly DSC. Další informace o připojování je pro správu s DSC, najdete v části [registrace počítačů pro správu Azure Automation DSC](automation-dsc-onboarding.md).
 >
->Pokud povolíte [řešení pro správu aktualizací](../operations-management-suite/oms-solution-update-management.md), jakékoli připojené k pracovní prostor analýzy protokolů počítač se systémem Windows je automaticky nakonfigurovaný jako hybridní pracovní proces Runbooku na podporu sady runbook, které jsou zahrnuté v tomto řešení. Však není registrován u žádné skupiny hybridní pracovní proces již definována v účtu Automation. Počítač lze přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation na podporu automatizace sady runbook, dokud používáte stejný účet pro řešení a členství ve skupině hybridní pracovní proces Runbooku. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
+>Pokud povolíte [řešení pro správu aktualizací](automation-update-management.md), libovolného počítače připojeného k pracovní prostor analýzy protokolů je automaticky nakonfigurovaný jako hybridní pracovní proces Runbooku na podporu sady runbook, které jsou zahrnuté v tomto řešení. Však není registrován u žádné skupiny hybridní pracovní proces již definována v účtu Automation. Počítač lze přidat do skupiny Hybrid Runbook Worker ve vašem účtu Automation na podporu automatizace sady runbook, dokud používáte stejný účet pro řešení a členství ve skupině hybridní pracovní proces Runbooku. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
 
-Zkontrolujte následující informace ohledně [požadavky na hardware a software](automation-offering-get-started.md#hybrid-runbook-worker) a [informace pro přípravu síti](automation-offering-get-started.md#network-planning) než začnete nasazovat hybridní pracovní proces Runbooku. Po úspěšném nasazení služby runbook worker, zkontrolujte [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md) se dozvíte, jak nakonfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí.
-
-### <a name="automated-deployment"></a>Automatické nasazení
-
-Proveďte následující kroky k automatizaci instalace a konfigurace role Windows hybridní pracovní proces.
-
-1. Stažení *New-OnPremiseHybridWorker.ps1* skript z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript) přímo v počítači s rolí hybridní pracovní proces Runbooku nebo z jiného počítače ve vašem prostředí a zkopírujte ho do pracovního procesu.
-
-   *New-OnPremiseHybridWorker.ps1* skriptu během provádění vyžaduje následující parametry:
-
-   * *AutomationAccountName* (povinné) – název účtu Automation.
-   * *AAResourceGroupName* (povinné) - název skupiny prostředků spojené s vaším účtem Automation.
-   * *OMSResourceGroupName* (volitelné) – název skupiny prostředků pro pracovní prostor OMS. Pokud není zadaný, použije se AAResourceGroupName.
-   * *HybridGroupName* (povinné) - název skupiny hybridní pracovní proces Runbooku, který zadáte jako cíl pro sady runbook, podporuje tento scénář.
-   * *ID předplatného* (povinné) – ID předplatného Azure, který váš účet automatizace je v.
-   * *WorkspaceName* (volitelné) – název pracovního prostoru analýzy protokolů. Pokud nemáte pracovní prostor analýzy protokolů, skript se vytvoří a nakonfiguruje jeden.
-
-     > [!NOTE]
-     > Aktuálně jsou pouze automatizace oblasti, které podporuje integraci s analýzy protokolů - **Austrálie – jihovýchod**, **východní USA 2**, **jihovýchodní Asie**, a  **Západní Evropa**. Pokud není váš účet Automation v jednom z těchto oblastí, skript vytvoří pracovní prostor analýzy protokolů ale ho vás varuje, že ho nelze propojit je společně.
-
-2. V počítači, spusťte **prostředí Windows PowerShell** z **spustit** obrazovky v režimu správce.
-3. Z příkazového řádku prostředí PowerShell, přejděte do složky, který obsahuje skript stáhli a provést změnou hodnoty parametrů *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*.
-
-     > [!NOTE]
-     > Zobrazí se výzva k ověření pomocí Azure po spuštění skriptu. Můžete **musí** Přihlaste se pomocí účtu, který je členem role Správci předplatného a spolusprávce předplatného.
-
-   ```powershell-interactive
-   .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
-   -OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
-   -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
-   ```
-
-4. Zobrazí se výzva k souhlas k instalaci **NuGet** a zobrazí se výzva k ověření pomocí přihlašovacích údajů Azure.
-
-5. Po dokončení skriptu skupinám Hybrid Worker okna se zobrazí nové skupiny a počet členů, nebo pokud existující skupiny, se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupinám Hybrid Worker** a vyberte **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** okně uvidíte každého člena skupiny uvedené.
-
-### <a name="manual-deployment"></a>Ruční nasazení
-
-Po provedení první dva kroky pro vaše prostředí automatizace a potom zopakujte zbývající kroky pro každý počítač pracovního procesu.
-
-#### <a name="1-create-log-analytics-workspace"></a>1. Vytvoření pracovního prostoru Log Analytics
-
-Pokud již nemáte pracovní prostor analýzy protokolů, vytvořte jednu pomocí pokynů v [pracovního prostoru Správa](../log-analytics/log-analytics-manage-access.md). Pokud již účet máte, můžete použít existujícímu pracovnímu prostoru.
-
-#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2. Přidat řešení služby Automation do pracovního prostoru analýzy protokolů
-
-Řešení do služby Log Analytics přidávají funkčnost. Řešení služby Automation přidá funkce pro Azure Automation, včetně podpory pro hybridní pracovní proces Runbooku. Když přidáte řešení do pracovního prostoru, automaticky vynutí součásti pracovního procesu na počítači agenta, který budete instalovat v dalším kroku.
-
-Postupujte podle pokynů v [přidat řešení pomocí Galerie řešení](../log-analytics/log-analytics-add-solutions.md) přidat **automatizace** řešení do pracovního prostoru analýzy protokolů.
-
-#### <a name="3-install-the-microsoft-monitoring-agent"></a>3. Instalace agenta Microsoft Monitoring Agent
-
-Microsoft Monitoring Agent připojí počítače k analýze protokolů. Při instalaci agenta na místním počítači a připojte ho do pracovního prostoru, bude automaticky stahovat komponent potřebných pro hybridní pracovní proces Runbooku.
-
-Postupujte podle pokynů v [počítače se systémem Windows se připojit k analýze protokolů](../log-analytics/log-analytics-windows-agent.md) instalace agenta na místním počítači. Tento proces pro více počítačů, které chcete přidat více pracovníků pro vaše prostředí, můžete opakovat.
-
-Můžete ověřit, že agent správně stáhla řešení služby Automation pokud obsahuje složku s názvem **AzureAutomationFiles** v C:\Program Files\Microsoft Monitoring Agent\Agent. Potvrďte verzi hybridní pracovní proces Runbooku, můžete přejít na C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ a Poznámka \\ *verze* podsložky.  
-
-#### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Nainstalovat prostředí runbooku a připojte se k Azure Automation.
-
-Když přidáte agenta k analýze protokolů, vynutí se řešení služby Automation **HybridRegistration** modulu PowerShell, který obsahuje **Add-HybridRunbookWorker** rutiny. Tuto rutinu použijete na počítač nainstalovat prostředí runbooku a zaregistrovat ho u automatizace Azure.
-
-Naimportujte modul, otevřete relaci prostředí PowerShell v režimu správce a spusťte následující příkazy:
-
-```powershell-interactive
-cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\HybridRegistration"
-Import-Module HybridRegistration.psd1
-```
-
-Spusťte **Add-HybridRunbookWorker** rutiny pomocí následující syntaxe:
-
-```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
-```
-
-Můžete získat informace požadované pro tuto rutinu kliknutím **klíče** možnost pod **nastavení účtu** ve vašem účtu Automation.
-
-* **GroupName** je název skupinu hybridních pracovních procesů Runbook. Pokud tato skupina již existuje v účtu automation, je aktuální počítač přidán do ní. Pokud již neexistuje, pak se přidá.
-* **Koncový bod** je **URL** pole **klíče** stránky.
-* **Token** je **primární přístupový klíč** v **klíče** stránky.
-
-Použití **-Verbose** přepínač s **Add-HybridRunbookWorker** získat podrobné informace o instalaci.
-
-#### <a name="5-install-powershell-modules"></a>5. Instalace modulů prostředí PowerShell
-
-Sady Runbook můžete použít některou z aktivity a rutin, které jsou definované v modulech nainstalovaných ve vašem prostředí Azure Automation. Tyto moduly se nenasadí automaticky pro místní počítače, když, je nutné nainstalovat ručně. Výjimkou je modul Azure, která je nainstalována ve výchozím nastavení poskytování přístupu k rutinám pro všechny služby Azure a aktivity pro Azure Automation.
-
-Vzhledem k tomu, že primárním účelem funkci hybridní pracovní proces Runbooku je ke správě místních prostředků, budete pravděpodobně muset nainstalovat moduly, které podporují tyto prostředky. Můžete se podívat do [instalaci modulů](http://msdn.microsoft.com/library/dd878350.aspx) informace o instalaci moduly prostředí Windows PowerShell. Moduly, které jsou nainstalovány musí být v umístění odkazuje proměnná prostředí PSModulePath tak, aby automaticky importují podle hybridní pracovní proces. Další informace najdete v tématu [úprava cesta instalace PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
+Zkontrolujte [informace pro plánování vaší sítě](#network-planning) než začnete nasazovat hybridní pracovní proces Runbooku. Po úspěšném nasazení služby runbook worker, zkontrolujte [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md) se dozvíte, jak nakonfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí.
 
 ## <a name="removing-hybrid-runbook-worker"></a>Odebrání hybridní pracovní proces Runbooku
 
@@ -156,16 +59,16 @@ Otevřete relaci prostředí PowerShell v režimu správce a spusťte následuj�
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
-### <a name="linux"></a>Linux
-
-```bash
-sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
-```
-
 Pokud chcete odstranit zastaralé počítače z vaší skupinu hybridních pracovních procesů, použijte nepovinný `machineName` parametr.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+### <a name="linux"></a>Linux
+
+```bash
+sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
@@ -176,15 +79,65 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 Odebrat skupinu, je nutné nejprve odebrat hybridní pracovní proces Runbooku z každý počítač, který je členem skupiny postupem uvedena výše a potom proveďte následující kroky k odebrání skupiny.
 
 1. Otevřete účet Automation na portálu Azure.
-1. V části **automatizace procesu**, vyberte **skupinám Hybrid worker**. Vyberte skupinu, kterou chcete odstranit. Po výběru konkrétní skupinu **skupinu hybridních pracovních procesů** zobrazí se okno Vlastnosti.
+1. V části **automatizace procesu**, vyberte **skupinám Hybrid worker**. Vyberte skupinu, kterou chcete odstranit. Po výběru konkrétní skupinu **skupinu hybridních pracovních procesů** zobrazí se stránka vlastností.
 
-   ![Skupina hybridních pracovních procesů Runbook okno](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+   ![Skupina hybridních pracovních procesů Runbook stránky](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. V okně Vlastnosti pro vybranou skupinu, klikněte na **odstranit**. Zobrazí se zpráva s žádostí o potvrzení této akce vyberte **Ano** Opravdu chcete pokračovat.
+1. Na stránce vlastnosti pro vybranou skupinu, klikněte na **odstranit**. Zobrazí se zpráva s žádostí o potvrzení této akce vyberte **Ano** Opravdu chcete pokračovat.
 
    ![Dialogové okno potvrzení odstranění skupiny](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
    Dokončení tohoto procesu může trvat několik sekund a průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
+
+## <a name="network-planning"></a>Konfigurace sítě
+
+### <a name="hybrid-worker-role"></a>Hybridní role pracovního procesu
+
+Pro Runbook Worker hybridní připojení k a zaregistrovat u analýzy protokolů musí mít přístup k adresám URL, které jsou popsané v této části a číslo portu. Toto je kromě [portů a adres URL potřebných pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení k analýze protokolů.
+
+Pokud používáte proxy server pro komunikaci mezi agentem a analýzy protokolů služby, zajistěte, aby byly dostupné s příslušnými prostředky. Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte nakonfigurovat bránu firewall tak, aby povolovala přístup.
+
+Následující portů a adres URL jsou vyžadovány pro roli hybridní pracovní proces Runbooku ke komunikaci s automatizace:
+
+* Port: Pouze TCP 443 je vyžadována pro odchozí přístup k Internetu.
+* Globální adresa URL: *.azure-automation.net
+* Globální adresa URL USA verze pro státní správu Virginia: *.azure automation.us
+* Služba agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+Pokud máte účet Automation, který je definován pro určitou oblast, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast.
+
+| **Oblast** | **Záznam DNS** |
+| --- | --- |
+| Západní střed USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice produkčnímu 1.azure-automation.net |
+| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
+| Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
+| Jihovýchodní Asie |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
+| Střed Indie |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
+| Japonsko – východ |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Austrálie – jihovýchod |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
+| Spojené království – jih | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice produkčnímu 1.azure-automation.net |
+| USA (Gov) – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice produkčnímu 1.azure-automation.us |
+
+Seznam IP adres oblasti namísto názvů oblast, stáhněte si [Azure Datacenter IP adresu](https://www.microsoft.com/download/details.aspx?id=41653) souboru XML z webu Microsoft Download Center.
+
+> [!NOTE]
+> Soubor XML adresu IP Datacentra Azure seznam rozsahů IP adres, které se používají v datových centrech Microsoft Azure. Výpočty, SQL a úložiště rozsahy jsou zahrnuty v souboru.
+>
+>Aktualizovaný soubor odeslání každý týden. Soubor odráží aktuálně nasazená rozsahy a žádné nadcházející změny rozsahy IP. Nové rozsahy, které se zobrazují v souboru nebudou používány v datacentru alespoň jeden týden.
+>
+> Je vhodné stáhnout nový soubor XML každý týden. Aktualizujte lokalitu se správně identifikují služby spuštěné v Azure. Azure ExpressRoute uživatelé Upozorňujeme, že tento soubor se používá k aktualizaci inzerování protokolu BGP (Border Gateway) Azure místa první týden v měsíci.
+
+### <a name="update-management"></a>Update Management
+
+Kromě standardní adresy a porty, které vyžaduje hybridní pracovní proces Runbooku že následující adresy se vyžaduje speciálně pro správu aktualizací. Komunikace na tyto adresy se provádí přes port 443.
+
+* *.ods.opinsights.azure.com
+* *.oms.opinsights.azure.com
+* ods.systemcenteradvisor.com
+* *.blob.core.windows.net/
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -194,7 +147,7 @@ Hybridní pracovní proces Runbooku závisí na agenta Microsoft Monitoring Agen
 
    Ověřte, zda že má počítač odchozí přístup k *.azure automation.net na portu 443.
 
-2. Hybridní pracovní proces běží na počítač má menší než minimální hardwarové [požadavky](automation-offering-get-started.md#hybrid-runbook-worker).
+2. Počítač, na kterém běží hybridní pracovní proces na má menší než minimální požadavky na hardware.
 
    Počítače se systémem hybridní pracovní proces Runbooku by měl splňovat minimální požadavky na hardware před označením ho k hostování této funkce. V závislosti na využití prostředků jiné procesy na pozadí a kolizí způsobené sady runbook během provádění, jinak počítač stane přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.
 
@@ -208,6 +161,8 @@ Hybridní pracovní proces Runbooku závisí na agenta Microsoft Monitoring Agen
     Příčinou může být proxy serveru nebo síťové brány firewall blokuje komunikaci s Microsoft Azure. Ověřte, zda že má počítač odchozí přístup k *.azure automation.net na porty 443.
 
 Protokoly se ukládají místně na každém hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete zkontrolovat, zda existují jakékoli upozornění nebo chybové události zapsané do **aplikace a služby Logs\Microsoft-SMA\Operations** a **aplikace a Správce služby Logs\Operations** protokolu událostí, které by signalizovat připojení nebo jiné problém ovlivňující registrace role Azure Automation nebo problém při provádění operací se Normální.
+
+Další pokyny o tom, jak vyřešit problémy s správy aktualizací najdete v tématu [správy aktualizací – řešení potíží](automation-update-management.md#troubleshooting)
 
 ## <a name="next-steps"></a>Další postup
 

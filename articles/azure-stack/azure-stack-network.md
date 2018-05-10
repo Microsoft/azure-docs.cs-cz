@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 752481186167fccb46d5bf3beb87c1507e0f4feb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o infrastruktuře síťový zásobník Azure vám pomohou rozhodnout, jak nejlépe zásobník Azure integrovat do stávajícího síťového prostředí. 
@@ -43,7 +43,7 @@ V následující tabulce jsou uvedeny logické sítě a přidružené podsítě 
 | Veřejná virtuální IP adresy | Azure zásobníku používá celkem 32 adres z této sítě. Osm veřejné IP adresy se používají pro malého služeb Azure zásobníku a zbývající používají klientské virtuální počítače. Pokud máte v úmyslu používat službu App Service a poskytovateli prostředků SQL, se používají 7 víc adres. | / 26 (62 hostitelé) – /22 (1022 hostitele)<br><br>Doporučená = /24 (254 hostitele) | 
 | Přepínač infrastruktury | Point-to-Point IP adresy pro účely směrování, vyhrazené přepínače rozhraní pro správu a zpětné smyčky adresy přiřazené k přepínači. | /26 | 
 | Infrastruktura | Používá se pro interní součásti zásobníku Azure ke komunikaci. | /24 |
-| Privátní | Použít pro sítě úložiště a privátní virtuální IP adresy. | /24 | 
+| Private | Použít pro sítě úložiště a privátní virtuální IP adresy. | /24 | 
 | BMC | Používá ke komunikaci s bmc na fyzických hostitelích. | /27 | 
 | | | |
 
@@ -70,7 +70,7 @@ To/24 síť je vyhrazená pro interní součásti zásobníku Azure, aby se mohl
 To/27 síť je malý rozsahu podsítě infrastruktury Azure zásobníku, již bylo zmíněno dříve, nevyžaduje veřejné IP adresy, ale vyžaduje přístup k Internetu prostřednictvím NAT nebo transparentní proxy server. Tato síť se přidělí pro nouzové obnovení konzoly System (ERCS), ERCS virtuální počítač vyžaduje přístup k Internetu během registrace do Azure a infrastruktura zálohování. Virtuální počítač ERCS musí být směrovatelné vaší síti pro správu pro účely odstraňování potíží.
 
 ### <a name="public-vip-network"></a>Veřejné síti VIP
-Veřejné síti VIP je přiřazen do síťového adaptéru v zásobníku Azure. Není logická síť na přepínači. SLB pomocí fondu adres a přiřadí/32 sítě pro úlohy klientů. V tabulce směrování přepínače jsou inzerovaný těchto 32 IP adres jako trasu k dispozici prostřednictvím protokolu BGP. Tato síť obsahuje externí dostupný nebo veřejné IP adresy. Infrastruktura zásobník Azure používá 8 adres z této veřejné síti VIP, přičemž zbývající se používá ho klientské virtuální počítače. Velikost sítě v této podsíti může být v rozsahu od minimálně /26 (64 hostitele) do maximálně /22 (1022 hostitele), doporučujeme, abyste naplánovali pro/24 sítě.
+Veřejné síti VIP je přiřazen do síťového adaptéru v zásobníku Azure. Není logická síť na přepínači. SLB pomocí fondu adres a přiřadí/32 sítě pro úlohy klientů. V tabulce směrování přepínače jsou inzerovaný těchto 32 IP adres jako trasu k dispozici prostřednictvím protokolu BGP. Tato síť obsahuje externí dostupný nebo veřejné IP adresy. Infrastruktury Azure zásobníku si vyhrazuje nejprve 31 adres z této veřejné síti VIP, přičemž zbývající se používá ho klientské virtuální počítače. Velikost sítě v této podsíti může být v rozsahu od minimálně /26 (64 hostitele) do maximálně /22 (1022 hostitele), doporučujeme, abyste naplánovali pro/24 sítě.
 
 ### <a name="switch-infrastructure-network"></a>Přepínač síti infrastruktury.
 To, 26 sítě je podsítě, která obsahuje podsítě/30 IP směrovatelné point-to-point (2 hostitele IP na) a vytváření, které jsou vyhrazené zpětných smyček nebo přepínač 32 podsítě pro integrované správy a ID směrovače protokolu BGP Tento rozsah IP adres musí být směrovatelné externě z řešení Azure zásobníku vašeho datového centra, mohou být privátní nebo veřejné IP adresy.

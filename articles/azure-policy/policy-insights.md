@@ -1,45 +1,43 @@
 ---
-title: Prostřednictvím kódu programu vytvoření zásad a zobrazit data o dodržování předpisů se zásadami Azure | Microsoft Docs
+title: Prostřednictvím kódu programu vytvoření zásad a zobrazit data o dodržování předpisů se zásadami Azure
 description: Tento článek vás provede prostřednictvím kódu programu vytváření a Správa zásad Azure zásady.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2018
+ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: bd0dbb1b6b44b34fc86b8c73fa586b1b4cf880f3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5737c33fc4c139e3b0a5535d371ef7cc1d11b9e6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvoření zásad a zobrazit data o dodržování předpisů
 
-Tento článek vás provede prostřednictvím kódu programu vytváření a Správa zásad. Také ukazuje, jak zobrazit stavy kompatibility prostředků a zásady. Definice zásad vynucovat různá pravidla a akce přes vaše prostředky. Vynucení zajišťuje, že prostředky zůstat kompatibilní s firemními standardy a smlouvy o úrovni služeb.
+Tento článek vás provede prostřednictvím kódu programu vytváření a Správa zásad. Také ukazuje, jak zobrazit stavy kompatibility prostředků a zásady. Definice zásad vynucovat různá pravidla a efekty přes vaše prostředky. Vynucení zajišťuje, že prostředky zůstat kompatibilní s firemními standardy a smlouvy o úrovni služeb.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že byly splněny následující požadavky:
 
 1. Pokud jste to ještě neudělali, nainstalujte [ARMClient](https://github.com/projectkudu/ARMClient). Je nástroj, který odešle požadavky HTTP využívající Azure Resource Manager rozhraní API.
-2. Aktualizujte modul AzureRM PowerShellu na nejnovější verzi. Další informace o nejnovější verzi najdete v tématu Azure PowerShell https://github.com/Azure/azure-powershell/releases.
+2. Aktualizujte modul AzureRM PowerShellu na nejnovější verzi. Další informace o nejnovější verzi najdete v tématu [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 3. Zaregistrujte zprostředkovatele prostředků zásady statistiky použití prostředí Azure PowerShell, abyste zajistili, že vaše předplatné funguje s poskytovatelem prostředků. Když chcete registrovat poskytovatele prostředků, musíte mít oprávnění k provedení operace akce registrace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.PolicyInsights
+  Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
   Další informace o registraci a zobrazení zprostředkovatelé prostředků najdete v tématu [zprostředkovatelé prostředků a typy](../azure-resource-manager/resource-manager-supported-services.md).
-4. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového řádku Azure. Můžete získat nejnovější verzi na [nainstalovat Azure CLI 2.0 v systému Windows](/azure/install-azure-cli-windows?view=azure-cli-latest).
+4. Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového řádku Azure. Můžete získat nejnovější verzi na [nainstalovat Azure CLI 2.0 v systému Windows](/cli/azure/install-azure-cli-windows).
 
 ## <a name="create-and-assign-a-policy-definition"></a>Vytvořte a přiřaďte definici zásady
 
 Prvním krokem k lepší viditelnost vašich prostředků je vytvořit a přiřadit zásady přes vaše prostředky. Dalším krokem je se dozvíte, jak programově vytvořit a přiřadit zásady. Příklad zásady audity účty úložiště, které jsou otevřené pro všechny veřejné sítě pomocí prostředí PowerShell, rozhraní příkazového řádku Azure a požadavky HTTP.
-
-Následující příkazy vytvoření definice zásady pro úroveň Standard. Úroveň Standard vám pomůže dosáhnout správy v odpovídajícím měřítku, hodnocení dodržování předpisů a nápravě. Další informace o cenových úrovní najdete v tématu [zásad Azure ceny](https://azure.microsoft.com/pricing/details/azure-policy).
 
 ### <a name="create-and-assign-a-policy-definition-with-powershell"></a>Vytvořte a přiřaďte definici zásady v prostředí PowerShell
 
@@ -68,7 +66,7 @@ Následující příkazy vytvoření definice zásady pro úroveň Standard. Úr
 2. Spusťte následující příkaz k vytvoření definice zásady pomocí souboru AuditStorageAccounts.json.
 
   ```azurepowershell-interactive
-  New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy AuditStorageAccounts.json
+  New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
   ```
 
   Příkaz vytvoří definici zásady s názvem _auditu úložiště účtů otevřete k veřejným sítím_. Další informace o dalších parametrů, které můžete použít, najdete v části [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
@@ -76,10 +74,8 @@ Následující příkazy vytvoření definice zásady pro úroveň Standard. Úr
 
   ```azurepowershell-interactive
   $rg = Get-AzureRmResourceGroup -Name 'ContosoRG'
-
   $Policy = Get-AzureRmPolicyDefinition -Name 'AuditStorageAccounts'
-
-  New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId –Sku @{Name='A1';Tier='Standard'}
+  New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
   ```
 
   Nahraďte _ContosoRG_ s názvem vaší skupiny určený prostředků.
@@ -124,7 +120,7 @@ Použijte následující postup k vytvoření definice zásady.
   armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
   ```
 
-  Nahraďte preceding_ &lt;subscriptionId&gt; s ID předplatného určený.
+  Nahradit předchozí &lt;subscriptionId&gt; s ID předplatného určený.
 
 Další informace o struktuře dotaz najdete v tématu [definice zásady – vytvoření nebo aktualizace](/rest/api/resources/policydefinitions/createorupdate).
 
@@ -140,10 +136,6 @@ Použijte následující postup k vytvoření přiřazení zásady a přiřazen�
           "parameters": {},
           "policyDefinitionId": "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks",
           "scope": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>"
-      },
-      "sku": {
-          "name": "A1",
-          "tier": "Standard"
       }
   }
   ```
@@ -192,7 +184,7 @@ az policy definition create --name 'audit-storage-accounts-open-to-public-networ
 3. Použijte následující příkaz k vytvoření přiřazení zásady. Nahradí informace z příkladu v &lt; &gt; symboly vlastními hodnotami.
 
   ```azurecli-interactive
-  az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
+  az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
   ```
 
 ID definice zásady můžete získat pomocí prostředí PowerShell pomocí následujícího příkazu:
@@ -211,38 +203,37 @@ Další informace o tom, jak můžete spravovat zásady prostředků pomocí roz
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
-V přiřazení prostředek je nevyhovující, pokud není postupujte podle zásad nebo iniciativy pravidla. Následující tabulka ukazuje, jak různé akce zásad práce s vyhodnocení podmínky pro výsledný stav dodržování předpisů:
+V přiřazení prostředek je nevyhovující, pokud není postupujte podle zásad nebo iniciativy pravidla. Následující tabulka ukazuje, jak jinou zásadu důsledky pracovat vyhodnocení podmínky pro výsledný stav dodržování předpisů:
 
-| **Stav prostředku** | **Akce** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
+| Stav prostředků | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nevyhovující předpisům |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
 | Nová | Audit, AuditIfNotExist\* | True | Nevyhovující předpisům |
 | Nová | Audit, AuditIfNotExist\* | False | Odpovídající |
 
-\* Akce Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE. Tyto akce také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
+\* Pokud příkaz tak, aby se vyžadovat připojení, DeployIfNotExist a AuditIfNotExist důsledky hodnotu TRUE. Důsledky také vyžadují existence podmínku, která má být FALSE jako nevyhovující. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 
 Abyste lépe pochopili, jak jsou prostředky označené jako nekompatibilní, použijeme v příkladu přiřazení zásad vytvořili výše.
 
 Předpokládejme například, že máte skupinu prostředků – ContsoRG, s některé úložiště účty (zvýrazněné červeně), které jsou viditelné na veřejných sítích.
 
-![Účty úložiště, které jsou zveřejněné na veřejných sítích](./media/policy-insights/resource-group01.png)
+![Účty úložiště, které jsou zveřejněné na veřejných sítích](media/policy-insights/resource-group01.png)
 
 V tomto příkladu potřebujete věnujte pozornost bezpečnostní rizika. Teď, když jste vytvořili přiřazení zásady, vyhodnotí se pro všechny účty úložiště ve skupině prostředků ContosoRG. Ho audity tři účty nevyhovující úložiště v důsledku toho změna stavy jejich k **nevyhovující.**
 
-![Auditovat účty nevyhovující úložiště](./media/policy-insights/resource-group03.png)
+![Auditovat účty nevyhovující úložiště](media/policy-insights/resource-group03.png)
 
 Prostředků ve skupině prostředků, které nejsou kompatibilní s přiřazení zásady pomocí následujícího postupu. V příkladu prostředky jsou účty úložiště ve skupině prostředků ContosoRG.
 
 1. Získání ID přiřazení zásady tak, že spustíte následující příkazy:
 
   ```azurepowershell-interactive
-  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object {$_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks'}
-
+  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks' }
   $policyAssignment.PolicyAssignmentId
   ```
 
-  Další informace o získání ID přiřazení zásady najdete v tématu [Get-AzureRMPolicyAssignment](https://docs.microsoft.com/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment).
+  Další informace o získání ID přiřazení zásady najdete v tématu [Get-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment).
 
 2. Spusťte následující příkaz, který mají ID prostředků nekompatibilní prostředky zkopírován do souboru JSON:
 
@@ -302,16 +293,6 @@ Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 ```
 
 Jako stavy zásady můžete zobrazit jenom události zásad u žádostí protokolu HTTP. Další informace o dotazování události zásad najdete v tématu [události zásad](/rest/api/policy-insights/policyevents) článku.
-
-## <a name="change-a-policy-assignments-pricing-tier"></a>Změna přiřazení zásad na cenové úrovně
-
-Můžete použít *Set-AzureRmPolicyAssignment* rutiny prostředí PowerShell k aktualizaci cen úroveň Standard nebo volné pro existující přiřazení zásad. Příklad:
-
-```azurepowershell-interactive
-Set-AzureRmPolicyAssignment -Id '/subscriptions/<subscriptionId/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/<policyAssignmentID>' -Sku @{Name='A1';Tier='Standard'}
-```
-
-Další informace o rutině najdete v tématu [Set-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Set-AzureRmPolicyAssignment).
 
 ## <a name="next-steps"></a>Další postup
 

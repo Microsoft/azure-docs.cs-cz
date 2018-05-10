@@ -1,32 +1,36 @@
 ---
-title: "Azure Active Directory auditu referenční dokumentace rozhraní API | Microsoft Docs"
-description: "Jak začít pracovat s rozhraním API auditování Azure Active Directory"
+title: Azure Active Directory auditu referenční dokumentace rozhraní API | Microsoft Docs
+description: Jak začít pracovat s rozhraním API auditování Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 44e46be8-09e5-4981-be2b-d474aaa92792
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5cdf80ff1cc49b1582302d411ee6fcc8f193c021
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 1bf86a9190039cdf0fe8dc435bdee4308b28cf29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory auditu referenční dokumentace rozhraní API
-Toto téma je součástí kolekce témat o službě Azure Active Directory, vytváření sestav rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům auditování pomocí kódu nebo související nástroje.
-Obor tohoto tématu je k poskytování referenční informace o **audit rozhraní API**.
 
-Přejděte na téma:
+> [!TIP] 
+> Podívejte se na nové rozhraní Microsoft Graph API pro [reporting](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit), který nakonec nahradí toto rozhraní API. 
+
+
+Tento článek je součástí kolekce článků týkajících se služby Azure Active Directory (Azure AD) reporting rozhraní API. Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům auditování pomocí kódu nebo související nástroje.
+Rámec tohoto článku je poskytnout vám s referenční informace o **audit rozhraní API**.
+
+Přečtěte si:
 
 * [Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
 
@@ -35,37 +39,36 @@ Přejděte na téma:
 
 Pro:
 
-- Nejčastější dotazy, přečtěte si naše [– nejčastější dotazy](active-directory-reporting-faq.md) 
+- Nejčastější dotazy, přečtěte si [– nejčastější dotazy](active-directory-reporting-faq.md) 
 
-- Problémy prosím [souboru lístek podpory](active-directory-troubleshooting-support-howto.md) 
+- Problémy, [souboru lístek podpory](active-directory-troubleshooting-support-howto.md) 
 
 
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Uživatelé v roli Správce zabezpečení nebo Čtenář zabezpečení
 * Globální správci
-* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace služby app lze pouze na základě oprávnění globálního správce)
+* Jakékoli aplikaci, která má oprávnění pro přístup k rozhraní API (autorizace aplikace lze nastavit pouze na základě oprávnění globálního správce)
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li získat přístup k této sestavě prostřednictvím rozhraní API pro vytváření sestav, musíte mít:
+Přístup k této sestavě prostřednictvím rozhraní API pro vytváření sestav, musíte mít:
 
 * [Lepší edici nebo Azure Active Directory volné](active-directory-editions.md)
 * Byla dokončena [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Přístup k rozhraní API
-Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Aby PowerShell správně interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD, je nutné použít backtick (neboli: čárka) znak "řídicí" znak $. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (ie: $filter).
+Můžete buď přístup toto rozhraní API prostřednictvím [Explorer grafu](https://graphexplorer2.cloudapp.net) nebo prostřednictvím kódu programu, například pomocí prostředí PowerShell. Použít backtick (neboli: čárka) znak "řídicí" znak $ zajistit, že prostředí PowerShell můžete interpretovat syntaxe filtru OData, který se používá při voláních REST grafu AAD. Backtick znak, který slouží jako [Powershellu řídicí znak](https://technet.microsoft.com/library/hh847755.aspx), povolení prostředí PowerShell provést literálu výklad znak $, a zamezit tak složitá jako název proměnné prostředí PowerShell (například $filter).
 
-Graf Explorer je aktivní v tomto tématu. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
+Graf Explorer je aktivní tohoto článku. V příkladu prostředí PowerShell najdete [skript prostředí PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Koncový bod rozhraní API
+
 Toto rozhraní API pomocí následující identifikátor URI se můžete dostat:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-Neexistuje žádné omezení počtu záznamů vrácených rozhraní API auditu Azure AD (pomocí stránkování OData).
-Pro uchování omezení pro vytváření sestav dat, podívejte se na [Reporting zásady uchovávání informací](active-directory-reporting-retention.md).
+Neexistuje žádné omezení pro počet záznamů, které se vrátí pomocí rozhraní API auditu Azure AD (pomocí stránkování OData). Uchování omezení data pro generování sestav, naleznete v části [Reporting zásady uchovávání informací](active-directory-reporting-retention.md).
 
-Toto volání se vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů.  
-Chcete-li získat další dávky záznamů, použijte odkaz na další. Získáte informace o skiptoken z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
+Volání vrátí data v dávkách. Má každé dávky nesmí být delší než 1 000 záznamů. Chcete-li získat další dávky záznamů, použijte **Další** odkaz. Získáte informace o tokenu přeskočit z první sady vrácené záznamy. Token přeskočit bude na konci výsledek nastaveno.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,14 +76,15 @@ Chcete-li získat další dávky záznamů, použijte odkaz na další. Získát
 
 
 ## <a name="supported-filters"></a>Podporované filtry
-Počet záznamů, které se vrátí pomocí rozhraní API můžete zúžit volání v podobě filtru.  
-Pro přihlášení rozhraní API související data, jsou podporovány následující filtry:
 
-* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Tento filtr byste neměli používat, pokud chcete vrátit tisíce objektů.     
+Počet záznamů, které jsou vráceny můžete zúžit voláním rozhraní API pomocí filtru.  
+Pro přihlášení rozhraní API související data jsou podporovány následující filtry:
+
+* **$top =\<počet vrácených\>**  – Pokud chcete omezit počet vrácených záznamů. Toto je náročná operace. Pokud chcete vrátit tisíc objektů, nepoužívejte tento filtr.     
 * **$filter =\<údajů filtru\>**  – Pokud chcete zadat typ záznamy, na kterých vám nejvíc záleží na základě pole podporovaný filtr
 
 ## <a name="supported-filter-fields-and-operators"></a>Pole podporovaný filtr a operátory
-Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit filtr příkaz, který může obsahovat jedno nebo kombinaci následující pole filtru:
+Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit filtr příkaz s jedním nebo kombinaci následující pole filtru:
 
 * [Datum](#activitydate) -definuje datum nebo rozsah dat
 * [kategorie](#category) – definuje kategorie, kterou chcete filtrovat.
@@ -95,7 +99,7 @@ Pokud chcete zadat typ záznamů, které se zajímáte o, můžete vytvořit fil
 * [cíl/upn](#targetupn) -definuje objektu actor v podobě název Princip objektu actor uživatele (UPN)   
 
 - - -
-### <a name="activitydate"></a>activityDate
+### <a name="activitydate"></a>Datum
 **Podporované operátory**: eq, ge, le, gt, lt
 
 **Příklad**:
@@ -130,7 +134,7 @@ data a času musí být ve formátu UTC
 
     $filter=category eq 'SSPR'
 - - -
-### <a name="activitystatus"></a>activityStatus
+### <a name="activitystatus"></a>ActivityStatus
 
 **Podporované hodnoty**:
 
@@ -213,7 +217,7 @@ Velká a malá písmena
 **Poznámky k**:
 
 * Velká a malá písmena
-* Je nutné přidat úplný obor názvů při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
+* Při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity přidat úplný obor názvů
 
 - - -
 ### <a name="targetobjectid"></a>cíl/objectId
@@ -234,10 +238,12 @@ Velká a malá písmena
 **Poznámky k**:
 
 * Velká a malá písmena 
-* Je nutné přidat úplný obor názvů při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
+* Při dotazování Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity přidat úplný obor názvů
 
 - - -
 ## <a name="next-steps"></a>Další kroky
-* Chcete příklady pro filtrovaný systému aktivity? Podívejte se [ukázky auditu rozhraní API služby Azure Active Directory](active-directory-reporting-api-audit-samples.md).
-* Opravdu chcete získat další informace o generování sestav rozhraní API Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md).
+
+- Chcete příklady pro filtrovaný systému aktivity? Podívejte se [ukázky auditu rozhraní API služby Azure Active Directory](active-directory-reporting-api-audit-samples.md).
+
+- Opravdu chcete získat další informace o generování sestav rozhraní API Azure AD? V tématu [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md).
 

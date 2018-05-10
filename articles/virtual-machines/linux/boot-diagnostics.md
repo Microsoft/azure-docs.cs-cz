@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: delhan
-ms.openlocfilehash: 0183da348a515787d9382df6db3df8524d584d93
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 38cc806cb77af60cda10f3aeac2e5ed13b445b8c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>Jak používat Diagnostika spouštění k řešení potíží s virtuální počítače s Linuxem v Azure
 
@@ -44,15 +44,20 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 - [FSTAB chyby](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Povolení diagnostiky na novém virtuálním počítači
-1. Při vytváření nového virtuálního počítače na portálu Preview vyberte z rozevíracího seznamu modelu nasazení **Azure Resource Manager**:
+1. Při vytváření nového virtuálního počítače z portálu Azure, vyberte **Azure Resource Manager** z rozevíracího seznamu model nasazení:
  
     ![Resource Manager](./media/boot-diagnostics/screenshot3.jpg)
 
-2. Nakonfigurujte možnost Monitorování pro výběr účtu úložiště, do kterého chcete tyto diagnostické soubory ukládat.
+2. V **nastavení**, povolte **spouštění diagnostiky**a potom vyberte účet úložiště, které chcete umístit tyto diagnostické soubory.
  
-    ![Vytvoření virtuálního počítače](./media/boot-diagnostics/screenshot4.jpg)
+    ![Vytvoření virtuálního počítače](./media/boot-diagnostics/create-storage-account.png)
 
-3. Pokud provádíte nasazení z šablony Azure Resource Manageru, přejděte do prostředku vašeho virtuálního počítače a připojte část s diagnostickým profilem. Nezapomeňte použít hlavičku verze rozhraní API s hodnotou 2015-06-15.
+    > [!NOTE]
+    > Spouštění diagnostiky funkce nepodporuje prémiový účet úložiště. Pokud používáte prémiový účet úložiště pro Diagnostika spouštění, může zobrazit chyba StorageAccountTypeNotSupported při spuštění virtuálního počítače. 
+    >
+    > 
+
+3. Pokud nasazujete z šablony Azure Resource Manager, přejděte do virtuálního počítače zdroje a připojte části Diagnostika profilu. Nezapomeňte použít hlavičku verze rozhraní API s hodnotou 2015-06-15.
 
     ```json
     {
@@ -74,11 +79,19 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
         }
     ```
 
-## <a name="update-an-existing-virtual-machine"></a>Aktualizace stávajícího virtuálního počítače
+Nasazení ukázkové virtuálního počítače s Diagnostika spouštění povolena, podívejte se na naše úložišti sem.
 
-Pokud chcete povolit Diagnostika spouštění prostřednictvím portálu, můžete také aktualizovat existujícího virtuálního počítače přes portál. Vyberte možnost Diagnostika spuštění a klikněte na Uložit. Restartujte virtuální počítač, aby se projevily změny.
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolit spuštění diagnostiky na existující virtuální počítač 
 
-![Aktualizace stávajícího virtuálního počítače](./media/boot-diagnostics/screenshot5.png)
+Pokud chcete povolit spouštění diagnostiky na existující virtuální počítač, postupujte takto:
+
+1. Přihlaste se k [portál Azure](https://portal.azure.com)a potom vyberte virtuální počítač.
+2. V **podpory a řešení potíží s**, vyberte **spouštění diagnostiky** > **nastavení**, změnit stav na **na**a potom Vyberte účet úložiště. 
+4. Ujistěte se, že je vybrána možnost spouštění diagnostiky a potom uložte změny.
+
+    ![Aktualizace stávajícího virtuálního počítače](./media/boot-diagnostics/enable-for-existing-vm.png)
+
+3. Restartujte virtuální počítač, aby se projevily změny.
 
 ## <a name="next-steps"></a>Další postup
 

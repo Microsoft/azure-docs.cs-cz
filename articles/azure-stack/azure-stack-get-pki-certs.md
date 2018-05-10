@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b65d0d88fd57dea59c79d2f72bab60967856e015
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
 
@@ -33,6 +33,8 @@ Nástroj pro kontrolu připravenosti zásobník Azure (AzsReadinessChecker) prov
     Určuje, zda žádosti o podepsání certifikátu bude žádost o jeden nebo více požadavků.
  - **Platforma jako služba**  
     Volitelně můžete požádat o platforma jako služba (PaaS) názvy se certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů Azure zásobníku - volitelné certifikáty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
+
+
 
 ## <a name="prerequisites"></a>Požadavky
 

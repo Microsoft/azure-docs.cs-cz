@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Ruční migraci Classic virtuálního počítače do nového ARM spravované disku virtuálního počítače z virtuálního pevného disku 
 
@@ -92,6 +92,8 @@ Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavi
 
 Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavit veškeré zpracování v aktuálním systému. Pak můžete získat do konzistentního stavu, které můžete migrovat na nové platformě. Doba trvání výpadku závisí množství dat na discích k migraci.
 
+Tato část vyžaduje prostředí Azure PowerShell verze modulu 6.0.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Budete také muset spustit `Connect-AzureRmAccount` vytvořit připojení s Azure.
+
 
 1.  Nastavte nejprve, běžné parametry:
 
@@ -121,11 +123,11 @@ Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavi
 
 2.  Vytvoření spravovaného disku operačního systému pomocí virtuálního pevného disku z klasického virtuálního počítače.
 
-    Zkontrolujte, zda jste zadali úplný identifikátor URI virtuálního pevného disku operačního systému na parametr $osVhdUri. Zadejte také **- AccountType** jako **PremiumLRS** nebo **StandardLRS** na základě typu disků (Standard nebo Premium) při migraci do.
+    Zkontrolujte, zda jste zadali úplný identifikátor URI virtuálního pevného disku operačního systému na parametr $osVhdUri. Zadejte také **- AccountType** jako **Premium_LRS** nebo **Standard_LRS** na základě typu disků (Standard nebo Premium) při migraci do.
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +136,14 @@ Připravte aplikaci výpadek. K provedení čisté migrace, budete muset zastavi
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  Vytvoření disku spravovaná data z datového souboru virtuálního pevného disku a přidat jej do nového virtuálního počítače.
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '

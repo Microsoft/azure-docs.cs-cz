@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eba67e6fe7d836d7b36d2bcd576eeaf4c70df970
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac43817fb3f253c35cd69a8ecd8931afca50892b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-configure-per-cloud-app-mfa-with-azure-active-directory-conditional-access"></a>Rychlý úvod: Nakonfigurujte jednotlivé cloudové aplikace MFA s podmíněným přístupem Azure Active Directory 
 
 
-Ke zjednodušení přihlašování uživatelů, můžete chtít povolit, aby Přihlaste se do vašich cloudových aplikací pomocí uživatelského jména a hesla. Mnoho prostředí však mít alespoň několik aplikací, pro které je třeba vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování. To může být pro příklad true, pro přístup k vaší organizaci e-mailovému systému nebo aplikace pro oddělení lidských zdrojů.  
+Ke zjednodušení přihlašování uživatelů, můžete chtít povolit je pro přihlášení ke cloudové aplikace pomocí uživatelského jména a hesla. Mnoho prostředí však mít alespoň několik aplikací, pro které je třeba vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování. To může být pro příklad true, pro přístup k vaší organizaci e-mailovému systému nebo aplikace pro oddělení lidských zdrojů.  
 
 Tento rychlý start ukazuje, jak vyžadovat vícefaktorové ověřování jenom pro sadu vybraných cloudových aplikací v prostředí pomocí [zásady podmíněného přístupu Azure AD](active-directory-conditional-access-azure-portal.md).
 
@@ -64,7 +64,7 @@ V zásadách můžete nastavit:
 |---     | --- |
 |Uživatelé a skupiny | Britta Simon |
 |Cloudové aplikace | Správa Microsoft Azure |
-|Udělení | Požadovat použití vícefaktorového ověřování |
+|Udělení | Vyžadovat vícefaktorové ověřování |
  
 
 ![Vytvoření zásad](./media/active-directory-conditional-access-app-based-mfa/12.png)
@@ -160,7 +160,7 @@ Když nakonfigurujete nástroj s **Britta Simon** jako uživatel a **Microsoft A
 
 1. Na [podmíněný přístup – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte na stránce v nabídce v horní části **co když**.  
  
-    ![Citlivostní analýza](./media/active-directory-conditional-access-app-based-mfa/14.png)
+    ![What If](./media/active-directory-conditional-access-app-based-mfa/14.png)
 
 2. Klikněte na tlačítko **uživatelé**, vyberte **Britta Simon**a potom klikněte na **vyberte**.
 

@@ -14,11 +14,11 @@ ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: fc7a67c644894606b09ed3ad594ff9f87b29f307
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -41,7 +41,7 @@ Následující role správce jsou k dispozici:
   > [!NOTE]
   > Nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, uživatel musí být také globálního správce.
   
-* **Správce služeb CRM**: uživatelé s touto rolí mají globální oprávnění v rámci aplikace Microsoft CRM Online, když se služba nachází, a také možnost spravovat lístky žádostí o podporu a sledovat stav služeb. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Správce služby Dynamics 365**: uživatelé s touto rolí mají globální oprávnění v rámci aplikace Microsoft CRM Online, když se služba nachází, a také možnost spravovat lístky žádostí o podporu a sledovat stav služeb. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Správci zařízení**: uživatelé s touto rolí stane správci místního počítače na všech zařízeních Windows 10, které jsou připojeny k Azure Active Directory. Nemají možnost spravovat objekty zařízení v Azure Active Directory.
 
@@ -126,12 +126,12 @@ Následující role správce jsou k dispozici:
 | --- | --- |
 | <p>Zobrazení informací o společnosti a uživatele</p><p>Spravovat lístky žádostí o podporu Office</p><p>Změna hesla pro uživatele a další technickou podporu správci</p>|<p>Provádět operace fakturace a nákupu produktů Office</p><p>Vytvoření a Správa zobrazení uživatele</p><p>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence</p><p>Spravovat domény</p><p>Spravovat informace o společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Zobrazení sestav</p>|
 
-### <a name="information-protection-administrator"></a>Správce informačních ochrany
+### <a name="information-protection-administrator"></a>Správce Information Protection
 V | Můžete provést
 -------- | ---------
 Azure Information Protection | <li>Konfigurace nastavení a popisky v zásadách globální a oboru<li>Konfigurovat a spravovat šablony ochrany<li>Aktivace nebo deaktivace ochrany--
  
-### <a name="reports-reader"></a>Čtečka sestavy 
+### <a name="reports-reader"></a>Čtenář sestav 
 Můžete provést | Nelze provést
 ------ | ----------
 Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení informací o společnosti a uživatele<br>Přístup k Office 365 použití řídicího panelu | Vytvoření a Správa zobrazení uživatele<br>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence<br>Delegovat role správců jiným uživatelům<br>Spravovat informace o společnosti

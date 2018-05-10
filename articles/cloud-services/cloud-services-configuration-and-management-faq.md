@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 05/08/2018
 ms.author: genli
-ms.openlocfilehash: cc43d1a0e07eac78a47e6f183c2fd066a489f4f4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd817750d6c6d43ae6973eb38b866b76921f33b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy se správou a konfigurace pro Azure Cloud Services: Časté otázky (FAQ)
 
@@ -34,6 +34,7 @@ Tento článek obsahuje nejčastější dotazy o konfiguraci a správě problém
 - [Jak můžu vygenerovat žádost (Podepsání certifikátu) bez "RDP-ing" v instanci?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Moje cloudové služby správy certifikátu vyprší. Jak jej obnovit?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
 - [Jak automatizovat instalaci hlavní SSL certifikát (.pfx) a zprostředkující certificate(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Jaký je účel certifikátu "Microsoft Azure Service Management pro MachineKey"?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **Sledování a protokolování**
 
@@ -103,6 +104,10 @@ Můžete použít následující příkazy prostředí PowerShell, obnovit certi
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavní SSL certifikát (.pfx) a zprostředkující certificate(.p7b)?
 
 Můžete automatizovat tato úloha pomocí spouštěcího skriptu (batch nebo cmd/PowerShell) a zaregistrujte spuštění skriptu v definičním souboru služby. Přidáte certifikát (soubor .p7b) i spouštěcí skript ve složce projektu ve stejném adresáři spouštěcího skriptu.
+
+### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>Jaký je účel certifikátu "Microsoft Azure Service Management pro MachineKey"?
+
+Tento certifikát se používá k šifrování klíče počítače na webové role Azure. Další informace, podívejte se na tento informační zpravodaj [https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731].
 
 Další informace najdete v následujících článcích:
 - [Jak nakonfigurovat a spustit úlohy spuštění pro cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: antonfr;mbullwin
-ms.openlocfilehash: c847052134b1d83cd606e0e2b51b63b580f7917c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 45d2f39ff7fb2e5a22cda74cd0c794db28e351f1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Výstrahy s dynamické mezní hodnoty v Azure monitorování (omezený Public Preview)
 
@@ -85,7 +85,7 @@ Výstrahy s dynamické prahové hodnoty můžete nakonfigurovat přes výstrah v
 
    Abyste snížili výstrahy nepůsobily generované přechodný špičky, doporučujeme použít nastavení "Počet porušení pro aktivování upozornění". Tato funkce umožňuje získat výstrahu pouze v případě, že porušení prahové hodnoty X po sobě nebo časy Y mimo poslední Z období. Příklad:
 
-    Ke spuštění výstrahy v případě problému průběžné pro 15 minut, po sobě jdoucích 3krát v daném časovém intervalu 5 minut, použijte následující nastavení:
+    Spustí výstrahu, pokud tento problém je souvislý 15 minut, po sobě jdoucích 3krát v daném časovém intervalu 5 minut, použijte následující nastavení:
 
    ![Vyhodnoceno na základě](./media/monitoring-alerts-dynamic-thresholds/0008.png)
 

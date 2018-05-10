@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace oznámení a e-mailových šablon ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak konfigurace oznámení a e-mailových šablon ve službě Azure API Management."
+title: Konfigurace oznámení a e-mailových šablon ve službě Azure API Management | Microsoft Docs
+description: Zjistěte, jak konfigurace oznámení a e-mailových šablon ve službě Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 228cbb103e13c478bea460bb04de43d6480bc60e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 60788f76dac58ead10e43e892d587a86bdd3fcad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurace oznámení a e-mailových šablon ve službě Azure API Management
 API Management nabízí možnost konfigurace oznámení pro konkrétní události a nakonfigurovat e-mailových šablon, které se používají ke komunikaci s správci a vývojáři instance služby API Management. Tento článek ukazuje, jak nakonfigurovat oznámení události, k dispozici a obsahuje základní informace o konfiguraci e-mailových šablon pro tyto události.
@@ -26,7 +26,7 @@ API Management nabízí možnost konfigurace oznámení pro konkrétní událost
 
 Pokud jste instanci služby API Management, proveďte následující rychlý start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
-## <a name="publisher-notifications"></a>Konfigurace oznámení
+## <a name="publisher-notifications"> </a>Konfigurace oznámení
 
 1. Vyberte vaše **API MANAGEMENT** instance.
 2. Klikněte na tlačítko **oznámení** Chcete-li zobrazit dostupné oznámení.
@@ -50,7 +50,7 @@ Pokud jste instanci služby API Management, proveďte následující rychlý sta
     ![Příjemců oznámení][api-management-email-addresses]
 4. Stiskněte **Přidat**.
 
-## <a name="email-templates"></a>Konfigurace šablon oznámení
+## <a name="email-templates"> </a>Konfigurace šablon oznámení
 API Management poskytuje šablony oznámení pro e-mailové zprávy, které se odesílají při správě a používání služby. Následující e-mailové šablony jsou k dispozici.
 
 * Odeslání aplikace Galerie schválení

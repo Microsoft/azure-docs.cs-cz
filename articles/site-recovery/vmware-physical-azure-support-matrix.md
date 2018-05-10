@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: fc5fceb0105726cdd7fc45df25c8a3a21d270502
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -22,7 +22,7 @@ Tento článek obsahuje souhrn podporovaných součásti a nastavení pro zotave
 
 **Scénář** | **Podrobnosti**
 --- | ---
-Virtuální počítače VMware | Replikace virtuálních počítačů VMware místně do Azure. Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.
+Virtuální počítače VMware | Replikace virtuálních počítačů VMware místně do Azure. Můžete nasadit tento scénář v portálu Azure nebo pomocí [prostředí PowerShell](vmware-azure-disaster-recovery-powershell.md).
 Fyzické servery | Replikace fyzických serversto Windows nebo Linuxem místní Azure. Můžete nasadit tento scénář v portálu Azure.
 
 ## <a name="on-premises-virtualization-servers"></a>Místní virtualizace serverů
@@ -101,7 +101,6 @@ Debian 8 | 9.14, 9.15. | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 
 --- | ---
 systémy souborů | ext3, ext4, XFS.
 Správce svazků | LVM2.
-Vícenásobný software | Mapovač zařízení.
 Zařízení úložiště Paravirtualized | Zařízení exportovaná paravirtualizovanými ovladači se nepodporují.
 Blokovat více fronty vstupně-výstupní operace zařízení | Nepodporuje se.
 Fyzické servery se řadič úložiště HP CCISS | Nepodporuje se.
@@ -162,7 +161,7 @@ Host server svazek s prokládané disku > 4 TB <br><br/>Správa logických svazk
 Host server - prostory úložiště | Ne
 Disk přidat nebo odebrat aktivní hosta/server | Ne
 Host server - vyloučení disku | Ano
-Multipath hosta/server (MPIO) | neuvedeno
+Multipath hosta/server (MPIO) | Ne
 
 > [!NOTE]
 > Rozhraní UEFI spouštění virtuálních počítačů VMware s Windows serverem 2012 nebo novější se dají migrovat na Azure. Platí následující omezení:

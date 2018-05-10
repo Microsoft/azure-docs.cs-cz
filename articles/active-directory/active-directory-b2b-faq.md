@@ -2,25 +2,19 @@
 title: Spolupráce Azure Active Directory s B2B nejčastější dotazy | Microsoft Docs
 description: Získejte odpovědi na nejčastější dotazy o spolupráci Azure Active Directory s B2B.
 services: active-directory
-documentationcenter: ''
-author: twooley
-manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 03/06/2018
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6160e3e6f23bf4eabb33295fa19323c71c7ed18d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -129,16 +123,5 @@ Informace o co licence potřeb vaší organizace používat Azure AD B2B najdete
 
 ### <a name="next-steps"></a>Další postup
 
-Projděte si naše další články ohledně spolupráce B2B ve službě Azure AD:
+- [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Jak Azure AD správci přidat uživatele spolupráce B2B?](active-directory-b2b-admin-add-users.md)
-* [Jak informační pracovníci přidat uživatele spolupráce B2B?](active-directory-b2b-iw-add-users.md)
-* [Elementy e-mail pozvánku spolupráce B2B](active-directory-b2b-invitation-email.md)
-* [Uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md)
-* [Licencování Azure AD s B2B spolupráce](active-directory-b2b-licensing.md)
-* [Řešení potíží s spolupráce Azure AD B2B](active-directory-b2b-troubleshooting.md)
-* [Spolupráce B2B Azure AD rozhraní API a přizpůsobení](active-directory-b2b-api.md)
-* [Vícefaktorové ověřování pro uživatele pro spolupráci B2B](active-directory-b2b-mfa-instructions.md)
-* [Přidání uživatelů spolupráce B2B bez Pozvánka](active-directory-b2b-add-user-without-invite.md)
-* [Rejstřík článků o správě aplikací ve službě Azure AD](active-directory-apps-index.md)

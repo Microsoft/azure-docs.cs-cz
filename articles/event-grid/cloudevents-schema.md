@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: a882073fce28be1b93a6c9118c40398062f61bc5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 84581de2819ec062a537d4a302f242085a4b3c2c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents s událostí mřížky
 
@@ -23,6 +23,8 @@ CloudEvents zjednodušuje interoperabilita tím, že poskytuje společné schém
 CloudEvents se sestavení pomocí několika [spolupracovníci](https://github.com/cloudevents/spec/blob/master/community/contributors.md), včetně společnosti Microsoft, prostřednictvím [cloudu nativní výpočetní Foundation](https://www.cncf.io/). Je aktuálně k dispozici jako verze 0,1.
 
 Tento článek popisuje použití schématu CloudEvents s událostí mřížky.
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="cloudevent-schema"></a>CloudEvent schématu
 
@@ -73,12 +75,6 @@ Další informace najdete v tématu [CloudEvents specifikace](https://github.com
 ## <a name="configure-event-grid-for-cloudevents"></a>Konfigurace událostí mřížky pro CloudEvents
 
 V současné době má mřížky událostí Azure preview podpora pro CloudEvents JSON formát vstupu a výstupu v **– Západ střední USA**, **střed USA**, a **Severní Evropa**.
-
-Pokud chcete používat CloudEvent, musíte povolit rozšíření pro rozhraní příkazového řádku Azure:
-
-```azurecli
-az extension add –-name eventgrid
-```
 
 Mřížky událostí můžete použít pro vstupní i výstupní událostí ve schématu CloudEvents. CloudEvents můžete použít pro systémové události, jako úložiště objektů Blob události a události služby IoT Hub a vlastních událostí. Také ho můžete převést tyto události v drátové síti a zpět.
 

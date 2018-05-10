@@ -7,6 +7,7 @@ author: jonbeck7
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
+keywords: Virtuální počítač, izolaci, izolované izolované izolaci virtuálních počítačů
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 68c3437ab0e94fc40dc4ad1b72625cc4c9bdfd79
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 69b8811e42c602591889fbb1dfa79992971b21c4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 

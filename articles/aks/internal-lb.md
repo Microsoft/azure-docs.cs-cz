@@ -3,17 +3,17 @@ title: Vytvoření Azure Kubernetes služby (AKS) interní zátěže
 description: Použijte Vyrovnávání zatížení interní s Azure Kubernetes služby (AKS).
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6a657df82e1670f7a9d604dd5166ab53bb38bf74
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použijte Vyrovnávání zatížení interní s Azure Kubernetes služby (AKS)
 

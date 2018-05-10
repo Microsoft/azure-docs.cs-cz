@@ -1,24 +1,24 @@
 ---
-title: "Správa přístupu k aplikacím pomocí služby Azure AD | Microsoft Docs"
-description: "Popisuje, jak Azure Active Directory umožňuje organizacím umožňuje určit aplikace, ke kterým má každý uživatel přístup."
+title: Správa přístupu k aplikacím pomocí služby Azure AD | Microsoft Docs
+description: Popisuje, jak Azure Active Directory umožňuje organizacím umožňuje určit aplikace, ke kterým má každý uživatel přístup.
 services: active-directory
-documentationcenter: 
-author: femila
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-editor: 
-ms.assetid: b0829f18-9e57-4107-925d-5f0457d81671
+editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: markvi
-ms.openlocfilehash: 363478cb1bb2637a8c4f9cf36505817b163df781
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: 41b5eaf0fabcc57349df6694696cd8b8b11b9447
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 Probíhající přístup správu, využití hodnocení a vytváření sestav nadále výzvu po integraci aplikace do systému identity vaší organizace. V řadě případů muset provést probíhající aktivní roli při správě přístupu k aplikacím správci IT nebo technickou podporu. V některých případech přiřazení provádí obecné nebo oddělení IT tým. Často se má rozhodnutí o přiřazení delegovat na pracovník s rozhodovací pravomocí, které vyžadují jejich schválení před IT díky přiřazení.  Jiných organizací investovat do integraci se stávajícím automatizované přístupu a identit a správy systému, jako je řízení přístupu na základě Role (RBAC) nebo na základě atributů řízení přístupu (ABAC). Integrace i vývoj pravidla jsou obvykle specializované a nákladné. Monitorování nebo generování sestav na buď způsob správy je vlastní samostatný, nákladná a komplexní investice.

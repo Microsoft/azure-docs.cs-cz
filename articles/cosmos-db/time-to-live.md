@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 61db8f85e73d2c071bdec0ace60911813fa4f0e8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s Hodnota time to live
 Aplikace můžete vytvářet a ukládat velká množství dat. Některé z těchto dat, jako například počítač generuje data, protokoly a uživatelské relace události, které informace jsou užitečné pouze omezenou dobu. Jakmile se změní na data přebytečných potřebám aplikace je bezpečné mazání tato data a snížit požadavkům na ukládání aplikace.
@@ -124,7 +124,7 @@ Hodnota TTL dokumentu můžete resetovat pomocí tohoto postupu všechny operace
     Document readDocument = response.Resource;
     readDocument.TimeToLive = 60 * 30 * 30; // update time to live
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="removing-ttl-from-a-document"></a>Odebrání TTL z dokumentu
 Pokud hodnotu TTL byla nastavena na dokument a již nechcete vypršení platnosti tohoto dokumentu, pak můžete načtení dokumentu, odeberte pole TTL a nahraďte dokumentů na serveru. Pokud pole TTL je odebrán z dokumentu, použijí se výchozí kolekce. Zastavení dokumentu z vypršení platnosti a není dědit z kolekce bude nutné nastavit hodnotu TTL na hodnotu -1.
@@ -136,7 +136,7 @@ Pokud hodnotu TTL byla nastavena na dokument a již nechcete vypršení platnost
     Document readDocument = response.Resource;
     readDocument.TimeToLive = null; // inherit the default TTL of the collection
     
-    response = await client.ReplaceDocumentAsync(salesOrder);
+    response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disabling-ttl"></a>Zakázání TTL
 Měla by být odstraněna zakázat TTL zcela na kolekci a ukončit proces na pozadí z vyhledávání pro dokumenty s vypršenou platností DefaultTTL vlastnost v kolekci. Odstraněním této vlastnosti se liší od nastavení na hodnotu -1. Nastavení pro nové dokumenty-1 znamená přidat do kolekce bude navždy za provozu, ale je možné přepsat na konkrétní dokumenty v kolekci. Odebrání tato vlastnost zcela z kolekce znamená, že žádné dokumenty vyprší, i když jsou dokumenty, které mají explicitně přepsat předchozí výchozí.

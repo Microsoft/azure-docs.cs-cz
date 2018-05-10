@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/11/2018
+ms.date: 5/9/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na časté otázky týkající se součástí Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Pro komentáře je potřeba účet Livefyre. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -67,12 +67,19 @@ Ano.
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>Mohu zaregistrovat svůj server DPM pro více trezorů? <br/>
 Ne. Server DPM nebo MABS lze zaregistrovat pouze pro jeden trezor.
 
-### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>Jaká verze aplikace System Center Data Protection Manager je podporována? <br/>
-Doporučujeme vám nainstalovat [nejnovějšího](http://aka.ms/azurebackup_agent) agenta Azure Backup na nejnovější kumulativní aktualizaci aplikace System Center Data Protection Manager (DPM). Od srpna 2016 je nejnovější aktualizací Kumulativní aktualizace 11.
+### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>Jaká verze aplikace System Center Data Protection Manager je podporována?
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Nainstaloval jsem agenta Azure Backup, aby chránil moje soubory a složky. Můžu nyní do Azure nainstalovat aplikaci System Center DPM, aby spolupracovala s agentem Azure Backup při ochraně místních aplikací a úloh virtuálního počítače? <br/>
-Když chcete používat Azure Backup se sadou System Center Data Protection Manager (DPM), nainstalujte nejprve DPM a až potom agenta Azure Backup. Instalace komponent služby Azure Backup v tomto pořadí zajistí, že agent Azure Backup bude fungovat s DPM. Instalovat agenta Azure Backup dříve než DPM se nedoporučuje ani nepodporuje.
+Doporučujeme vám nainstalovat [nejnovějšího](http://aka.ms/azurebackup_agent) agenta Azure Backup na nejnovější kumulativní aktualizaci aplikace System Center Data Protection Manager (DPM). 
+- Pro System Center DPM 2012 R2 [14 kumulativní aktualizace](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) je nejnovější aktualizace.
+- Pro System Center DPM 2016 [kumulativní aktualizaci 2](https://support.microsoft.com/en-us/help/3209593) je nejnovější aktualizace.
 
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Nainstaloval jsem agenta Azure Backup, aby chránil moje soubory a složky. Můžete nainstalovat System Center DPM k ochraně místní aplikace a úloh virtuálního počítače do Azure?
+
+Ano. Pro použití zálohování Azure se System Center Data Protection Manager (DPM), nejprve nainstalovat aplikaci DPM a pak nainstalujte agenta Azure Backup. Instalace komponent služby Azure Backup v tomto pořadí zajistí, že agent Azure Backup bude fungovat s DPM. Instalovat agenta Azure Backup dříve než DPM se nedoporučuje ani nepodporuje.
+
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete používat aplikace DPM k zálohování aplikace v zásobníku Azure?
+
+Ne. I když Azure Backup můžete použít k ochraně zásobník Azure, Azure Backup aktuálně nepodporuje použití aplikace DPM k zálohování aplikace v Azure zásobníku.
 
 ## <a name="how-azure-backup-works"></a>Jak funguje Azure Backup
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Pokud zruším úlohu zálohování poté, co již byla spuštěná, dojde k odstranění přenášených dat? <br/>

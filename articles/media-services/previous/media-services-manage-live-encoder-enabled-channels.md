@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f5bee7b85a423ba7a1b0b36b4b6910275551849c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="overview"></a>Přehled
 V Azure Media Services (AMS) **kanál** představuje cestu pro zpracování obsahu živého streamování. A **kanál** přijímat živé vstupní datové proudy v jednom ze dvou způsobů:
 
-* Místní kodér pro kódování v reálném čase odešle datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase pomocí služby Media Services, v jednom z následujících formátů: RTP (MPEG-TS), RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný soubor MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Místní kodér za provozu odešle více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) do kanálu, který není povoleno provádět kódování v reálném čase pomocí služby AMS. Ingestované datové proudy prochází **kanál**s bez dalšího zpracování. Tato metoda je volána **průchozí**. Můžete použít následující kodéry, které výstupu technologie Smooth Streaming více přenosovými rychlostmi: MediaExcel, Ateme, představte si komunikace, Envivio, Cisco a Elemental. Následující kodéry výstupu RTMP: Adobe Flash média Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek a čase kodérů.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
   
   > [!NOTE]
@@ -79,7 +79,7 @@ Počínaje 25 leden 2016 Media Services nasazuje aktualizace, která automaticky
 Prahová hodnota pro nepoužívané období je jmenovitě 12 hodin, ale mohou podléhat změnám.
 
 ## <a name="live-encoding-workflow"></a>Živý pracovní postup kódování
-Následující diagram představuje živé streamování pracovního postupu kde kanál, který přijímá datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP, technologie Smooth Streaming nebo RTP (MPEG-TS); kóduje pak datový proud na datový proud s více přenosovými rychlostmi. 
+Následující diagram představuje živé streamování pracovního postupu kde kanál, který přijímá datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo technologie Smooth Streaming; kóduje pak datový proud na datový proud s více přenosovými rychlostmi. 
 
 ![Živý pracovní postup][live-overview]
 
@@ -91,7 +91,7 @@ Následující část představuje obecné kroky, které jsou součástí proces
 > 
 > 
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér za provozu, který můžete výstup **jeden** datový proud přenosovou rychlostí v jednom z těchto protokolů: RTMP, technologie Smooth Streaming nebo RTP (MPEG-TS). 
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér za provozu, který můžete výstup **jeden** datový proud přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo technologie Smooth Streaming. 
    
     Tento krok můžete provést i po vytvoření kanálu.
 2. Vytvořte a spusťte kanál. 
@@ -125,48 +125,8 @@ Následující část představuje obecné kroky, které jsou součástí proces
 ### <a id="Ingest_Protocols"></a>Ingestování datových proudů
 Pokud **kodér typ** je nastaven na **standardní**, platné možnosti jsou:
 
-* **RTP** (MPEG-TS): datový proud přenosu MPEG-2 využívající RTP.  
 * Jednou přenosovou rychlostí **RTMP**
 * Jednou přenosovou rychlostí **fragmentovaný soubor MP4** (technologie Smooth Streaming)
-
-#### <a name="rtp-mpeg-ts---mpeg-2-transport-stream-over-rtp"></a>RTP (MPEG-TS) - MPEG-2 Transport Stream využívající RTP.
-Typický případ použití: 
-
-Professional televizního obvykle spolupracovat s vyšší kategorie místními kodéry od dodavatelů jako elementární technologie, Ericsson, Ateme, Imagine nebo Envivio k odesílání datového proudu. Často se používá ve spojení s IT oddělení a privátní sítě.
-
-Aspekty:
-
-* Použití jedné program přenosový stream (SPTS) vstupní důrazně doporučujeme. 
-* Můžete zadat až 8 zvukové datové proudy MPEG-2 TS pomocí přes protokol RTP. 
-* Datový proud videa by měl mít průměrná přenosovou rychlostí nižší než 15 MB/s
-* Agregační průměrná přenosovou rychlostí zvuk datové proudy musí mít míň než 1 MB/s
-* Podporované kodeky jsou následující:
-  
-  * MPEG-2 / H.262 Video 
-    
-    * Hlavní profilu (4:2:0)
-    * Vysoce profilu (4:2:0, 4:2:2)
-    * 422 profilu (4:2:0, 4:2:2)
-  * MPEG-4 AVC / H.264 Video  
-    
-    * Směrný plán, hlavní, vysoce profilu (8bitové 4:2:0)
-    * Vysoká 10 profilu (10 bitů 4:2:0)
-    * Vysoká 422 profilu (10 bitů 4:2:2)
-  * MPEG-2 AAC-LC zvuk 
-    
-    * Mono, stereofonním systémem, příkazu obklopit (5.1, 7.1)
-    * Balení ADTS styl MPEG-2
-  * Zvuk Dolby digitální (AC-3) 
-    
-    * Mono, stereofonním systémem, příkazu obklopit (5.1, 7.1)
-  * Zvuk MPEG (vrstvy II a III) 
-    
-    * Mono, stereofonním systémem
-* Doporučené všesměrové vysílání, které zahrnují kodéry:
-  
-  * Představte si komunikace Selenio ŠIF 1
-  * Představte si komunikace Selenio ŠIF 2
-  * Elemental za provozu
 
 #### <a id="single_bitrate_RTMP"></a>S jednou přenosovou rychlostí RTMP
 Aspekty:
@@ -232,36 +192,21 @@ Můžete definovat IP adresy, které se mohou připojit ke koncovému bodu náhl
 Tato část popisuje, jak pro kodér za provozu v rámci kanálu lze změnit nastavení, když **kódování typu** kanálu je nastaven na **standardní**.
 
 > [!NOTE]
-> Při vložení vícejazyčných stop a provádění kódování v reálném čase s Azure, je podporován pouze protokol RTP pro vícejazyčné vstup. Můžete definovat až 8 zvukové datové proudy MPEG-2 TS pomocí přes protokol RTP. Příjem více zvukových stop s RTMP nebo technologie Smooth streaming není aktuálně podporováno. Při provádění kódování v reálném čase s [místní live kóduje](media-services-live-streaming-with-onprem-encoders.md), neexistuje žádné takové omezení, protože ať posílá AMS prostřednictvím kanálu předá bez dalšího zpracování.
+> Váš informační kanál příspěvku může obsahovat pouze jediné zvukové stopy – příjem z více zvukových stop není aktuálně podporována. Při provádění kódování v reálném čase s [místní live kóduje](media-services-live-streaming-with-onprem-encoders.md), můžete odeslat příspěvek informačního kanálu v protokol Smooth Streaming obsahující více zvukových stop.
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Zdroj značky služby AD
 Můžete určit zdroj signálů reklamních značek. Výchozí hodnota je **rozhraní Api**, což naznačuje, že kodér za provozu v rámci kanálu naslouchat požadavkům k asynchronní **rozhraní API reklamní značky**.
 
-Není platná možnost **Scte35** (povolené, jenom Pokud je protokol pro streamování ingestování nastavená na protokol RTP (MPEG-TS). Pokud je zadána Scte35, budou za provozu kodér analyzovat SCTE 35 signály ze vstupního proudu RTP (MPEG-TS).
-
 ### <a name="cea-708-closed-captions"></a>CEA 708 uzavřený titulky
 Volitelné příznak, který informuje za provozu kodér ignorovat všechna data titulky CEA 708 vložený příchozí video. Když příznak nastaven na hodnotu false (výchozí), kodér rozpozná a CEA 708 data znovu vložit do výstupní datové proudy videa.
-
-### <a name="video-stream"></a>Datový proud videa
-Volitelné. Popisuje vstupní datový proud videa. Pokud toto pole není zadán, je použita výchozí hodnota. Toto nastavení je povoleno pouze v případě, že vstupní datový proud protokolu nastavena na RTP (MPEG-TS).
-
-#### <a name="index"></a>Index
-Index počítaný od nuly, který určuje, který vstupní video datový proud, měla by být zpracována kodérem za provozu v rámci kanálu. Toto nastavení platí jenom v případě ingestování datových proudů protokol je RTP (MPEG-TS).
-
-Výchozí hodnota je nula. Doporučujeme odeslat v jednom programu přenosový stream (SPTS). Pokud vstupní datový proud obsahuje více programy, za provozu kodér analyzuje Program Mapa tabulky (platba) ve vstupu, identifikuje vstupních hodnot, které mají název typu stream MPEG-2 Video nebo H.264 a uspořádá je v pořadí zadaném v platbě Index založený na nule pak umožňuje vyzvedne, až n tou položku tohoto uspořádání.
-
-### <a name="audio-stream"></a>Zvukový datový proud
-Volitelné. Popisuje vstupní datové proudy zvuk. Pokud toto pole nezadáte, použije výchozí hodnoty zadané. Toto nastavení je povoleno pouze v případě, že vstupní datový proud protokolu nastavena na RTP (MPEG-TS).
 
 #### <a name="index"></a>Index
 Doporučujeme odeslat v jednom programu přenosový stream (SPTS). Pokud vstupní datový proud obsahuje více programy, kodér za provozu v rámci kanálu analyzuje Program Mapa tabulky (platba) ve vstupu, identifikuje vstupních hodnot, které má název typu stream MPEG-2 AAC ADTS nebo AC-3 A systému nebo AC 3 systému-B nebo privátní PES MPEG-2 nebo zvuk MPEG-1 nebo ve zvukovém souboru MPEG-2 a uspořádá je v pořadí zadaném v platbě Index založený na nule pak umožňuje vyzvedne, až n tou položku tohoto uspořádání.
 
 #### <a name="language"></a>Jazyk
 Identifikátor jazyka zvuk datového proudu, který odpovídá s bitovou kopií ISO 639-2, jako je například ENG. Pokud není přítomný, výchozí hodnota je a (není definovaná).
-
-Může být až 8 nastaví datový proud zvuku zadaná, pokud vstupem pro kanál je MPEG-2 TS využívající RTP. Však může být žádné dvě položky se stejnou hodnotou indexu.
 
 ### <a id="preset"></a>Přednastavení systému
 Určuje přednastavení, které chcete použít kodérem za provozu v rámci tohoto kanálu. V současné době pouze povolená hodnota je **Default720p** (výchozí).
@@ -387,13 +332,11 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 * Se účtují pouze pokud je kanál v **systémem** stavu. Další informace najdete v části [to](media-services-manage-live-encoder-enabled-channels.md#states) části.
 * V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
 * Zajistěte, aby tak, aby měl koncový bod streamování, ze kterého chcete Streamovat obsah v **systémem** stavu.
-* Při vložení vícejazyčných stop a provádění kódování v reálném čase s Azure, je podporován pouze protokol RTP pro vícejazyčné vstup. Můžete definovat až 8 zvukové datové proudy MPEG-2 TS pomocí přes protokol RTP. Příjem více zvukových stop s RTMP nebo technologie Smooth streaming není aktuálně podporováno. Při provádění kódování v reálném čase s [místní live kóduje](media-services-live-streaming-with-onprem-encoders.md), neexistuje žádné takové omezení, protože ať posílá AMS prostřednictvím kanálu předá bez dalšího zpracování.
 * Předvolby kódování používá pojem "maximální kmitočet" 30 snímků za sekundu. Pokud vstup je 60fps / 59.97i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced na 30/29,97 fps. Pokud vstup je 50fps/50i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced až 25 fps. Pokud vstupní 25 snímků za sekundu, zůstane výstup 25 snímků za sekundu.
 * Nezapomeňte si zastavení YOUR kanály po dokončení. Pokud ne, bude pokračovat fakturace.
 
 ## <a name="known-issues"></a>Známé problémy
 * Doba spuštění kanálu bylo vylepšeno v průměru 2 minuty, ale v některých případech zvýšené poptávky může stále trvat až 20 +.
-* Podpora RTP je catered směrem professional televizního. Přečtěte si poznámky k RTP v [to](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/) blogu.
 * Projektem obrázků musí být v souladu omezeními popsanými [zde](media-services-manage-live-encoder-enabled-channels.md#default_slate). Pokud se pokusíte vytvořit kanál s výchozí kontejner, který je větší než 1920 × 1080, požadavek bude běh chybu.
 * Ještě jednou... Nezapomeňte kanály YOUR STOP po dokončení streamování. Pokud ne, bude pokračovat fakturace.
 

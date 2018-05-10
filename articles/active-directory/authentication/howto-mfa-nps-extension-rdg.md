@@ -10,13 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 839b248fb6410fd36a1741beb1ae3598fe93b0a3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-#  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
+# <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
 Tento článek obsahuje podrobné informace pro integraci infrastruktury Brána vzdálené plochy Azure Multi-Factor Authentication (MFA) pomocí serveru NPS (Network Policy Server) rozšíření pro Microsoft Azure. 
 
@@ -144,8 +144,8 @@ Pokud chcete používat vlastní certifikáty, musíte přidružit veřejný kl�
 Chcete-li použít skript, poskytnout rozšíření pomocí svých přihlašovacích údajů správce Azure AD a ID klienta Azure AD, který jste zkopírovali dříve. Spuštění skriptu na každý server NPS, kam jste nainstalovali rozšíření serveru NPS. Potom udělejte následující:
 
 1. Otevřete řádku prostředí Windows PowerShell pro správu.
-2. Zadejte v příkazovém prostředí PowerShell, **cd 'c:\Program Files\Microsoft\AzureMfa\Config'** a stiskněte klávesu **ENTER**.
-3. Typ _.\AzureMfsNpsExtnConfigSetup.ps1_a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Azure Active Directory PowerShell. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
+2. Zadejte v příkazovém prostředí PowerShell, `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`a stiskněte klávesu **ENTER**.
+3. Typ `.\AzureMfsNpsExtnConfigSetup.ps1`a stiskněte klávesu **ENTER**. Skript zkontroluje, zda je nainstalován modul Azure Active Directory PowerShell. Pokud nainstalovaná není, skript nainstaluje modul pro vás.
 
   ![Azure AD PowerShell](./media/howto-mfa-nps-extension-rdg/image4.png)
   

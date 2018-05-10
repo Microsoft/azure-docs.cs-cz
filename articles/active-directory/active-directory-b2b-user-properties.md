@@ -1,26 +1,20 @@
 ---
-title: "Vlastnosti uživatele spolupráce Azure Active Directory s B2B | Microsoft Docs"
-description: "Vlastnosti uživatelů služby Active Directory s B2B spolupráce se dají konfigurovat"
+title: Vlastnosti uživatele spolupráce Azure Active Directory s B2B | Microsoft Docs
+description: Vlastnosti uživatelů služby Active Directory s B2B spolupráce se dají konfigurovat
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/25/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e1eb709124262d55fc4c6a5bfd8c1ccb33fa8bb
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 401c001f897a926de1b7d68403b6945164f3333b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti uživatele spolupráce Azure Active Directory s B2B
 
@@ -93,16 +87,6 @@ Je možné vypnout výchozí omezení uživatele guest, tak, aby uživatel guest
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si naše další články ohledně spolupráce B2B ve službě Azure AD:
-
 * [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
-* [Delegovat pozvánek spolupráce B2B](active-directory-b2b-delegate-invitations.md)
-* [Uživatel spolupráce B2B auditování a vytváření sestav](active-directory-b2b-auditing-and-reporting.md)
-* [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
-* [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)
-* [Konfigurace aplikací SaaS pro spolupráci B2B](active-directory-b2b-configure-saas-apps.md)
 * [Tokeny uživatele spolupráce B2B](active-directory-b2b-user-token.md)
 * [Deklarace uživatele spolupráce B2B mapování](active-directory-b2b-claims-mapping.md)
-* [Externí sdílení Office 365](active-directory-b2b-o365-external-user.md)
-* [Aktuální omezení spolupráce B2B](active-directory-b2b-current-limitations.md)

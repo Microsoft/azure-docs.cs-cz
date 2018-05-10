@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fdfee4e06994de1b9a63996203b1a1b9fed9b768
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky v Azure Data Factory
 
@@ -90,7 +90,7 @@ K **importu a exportu souboru JSON jako-je do/z Azure Cosmos DB**, najdete v č�
 
 Pokud chcete analyzovat JSON soubory nebo zapisovat data ve formátu JSON, nastavte `type` vlastnost `format` části k **JsonFormat**. Můžete také zadat následující **nepovinné** vlastnosti v oddílu `format`. Postup konfigurace najdete v části [Příklad typu JsonFormat](#jsonformat-example).
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | filePattern |Určete vzor dat uložených v jednotlivých souborech JSON. Povolené hodnoty jsou **setOfObjects** a **arrayOfObjects**. **Výchozí hodnota** je **setOfObjects**. Podrobné informace o těchto vzorech najdete v tématu [Vzory souborů JSON](#json-file-patterns). |Ne |
 | jsonNodeReference | Pokud chcete iterovat a extrahovat data z objektů uvnitř pole se stejným vzorem, zadejte pro toto pole cestu JSON. Tato vlastnost se podporuje jenom pro kopírování dat ze souborů JSON. | Ne |
@@ -454,16 +454,16 @@ Je třeba počítat s následujícím:
 | Int16 | Krátké |
 | UInt16 | Int |
 | Int32 | Int |
-| UInt32 | Dlouhý |
-| Int64 | Dlouhý |
+| UInt32 | Dlouhé |
+| Int64 | Dlouhé |
 | UInt64 | Řetězec |
-| Jednoduchý | Plovoucí desetinná čárka |
-| Dvojitý | Dvojitý |
+| Jednoduchá | Float |
+| Double | Double |
 | Decimal | Decimal |
 | Řetězec | Řetězec |
 | DateTime | Časové razítko |
-| DateTimeOffset | Časové razítko |
-| TimeSpan | Časové razítko |
+| Datový typ DateTimeOffset | Časové razítko |
+| Časový interval | Časové razítko |
 | ByteArray | Binární hodnota |
 | Guid | Řetězec |
 | Char | Char(1) |
@@ -486,13 +486,13 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 Je třeba počítat s následujícím:
 
 * Komplexní datové typy se nepodporují (MAP, LIST).
-* Soubory Parquet mají tyto možnosti komprese: NONE, SNAPPY, GZIP a LZO. Data Factory podporuje čtení dat ze souborů ORC v libovolném z těchto komprimovaných formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
+* Soubory Parquet mají tyto možnosti komprese: NONE, SNAPPY, GZIP a LZO. Objekt pro vytváření dat podporuje čtení dat ze souboru Parquet v některém z těchto komprimované formátů. K načtení dat využívá kompresní kodek v metadatech. Při zápisu do souboru Parquet ale Data Factory využívá možnost SNAPPY, která je pro formát Parquet výchozí. V současnosti toto chování nejde potlačit.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Datový typ mapování pro Parquet soubory
 
 | Typ průběžných dat objektu pro vytváření dat | Primitivní typ parquet | Parquet původní typ (deserializovat) | Parquet původní typ (serializovat) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | Nevztahuje se. | Nevztahuje se. |
+| Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
 | SByte – | Int32 | int8 | int8 |
 | Bajtů | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -501,17 +501,17 @@ Je třeba počítat s následujícím:
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64 nebo binární | UInt64 | Decimal |
-| Jednoduchý | Plovoucí desetinná čárka | Nevztahuje se. | Nevztahuje se. |
-| Dvojitý | Dvojitý | Nevztahuje se. | Nevztahuje se. |
+| Jednoduchá | Float | neuvedeno | neuvedeno |
+| Double | Double | neuvedeno | neuvedeno |
 | Decimal | Binární hodnota | Decimal | Decimal |
 | Řetězec | Binární hodnota | Utf8 | Utf8 |
-| DateTime | Int96 | Nevztahuje se. | Nevztahuje se. |
-| TimeSpan | Int96 | Nevztahuje se. | Nevztahuje se. |
-| DateTimeOffset | Int96 | Nevztahuje se. | Nevztahuje se. |
-| ByteArray | Binární hodnota | Nevztahuje se. | Nevztahuje se. |
+| DateTime | Int96 | neuvedeno | neuvedeno |
+| Časový interval | Int96 | neuvedeno | neuvedeno |
+| Datový typ DateTimeOffset | Int96 | neuvedeno | neuvedeno |
+| ByteArray | Binární hodnota | neuvedeno | neuvedeno |
 | Guid | Binární hodnota | Utf8 | Utf8 |
 | Char | Binární hodnota | Utf8 | Utf8 |
-| CharArray | Nepodporováno | Nevztahuje se. | Nevztahuje se. |
+| CharArray | Nepodporuje se | neuvedeno | neuvedeno |
 
 ## <a name="compression-support"></a>Podporu komprese
 

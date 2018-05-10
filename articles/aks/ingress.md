@@ -3,17 +3,17 @@ title: Nakonfigurujte příchozí s clusterem Azure Kubernetes služby (AKS)
 description: Nainstalujte a nakonfigurujte řadič NGINX příjem příchozích dat v clusteru služby Azure Kubernetes služby (AKS).
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a6c9036a85e1c979d649896a9361e401f6f7cc0a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Příchozí přenos HTTPS pro službu Azure Kubernetes (AKS)
 

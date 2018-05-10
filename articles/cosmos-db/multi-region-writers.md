@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2da6b4e957c7e44f399866fd11853363f7424e7d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Více hlavní v globálním měřítku s Azure Cosmos DB 
  
@@ -22,6 +22,25 @@ Vývoj globálně distribuované aplikace, které reagují s místní latence p�
 ![Více hlavních architektura](./media/multi-region-writers/multi-master-architecture.png)
 
 S podporou více hlavních databázi Cosmos Azure můžete provést zápisy na kontejnery data (například kolekcí, grafy, tabulky) distribuované kdekoliv na světě. Můžete aktualizovat data v libovolné oblasti, která souvisí s vaším účtem databáze. Tyto aktualizace dat můžete rozšířit asynchronně. Kromě rychlý přístup a latence zápisu u ke svým datům, více hlavní taky nabízí praktické řešení pro převzetí služeb při selhání a vyrovnávání zatížení problémy. Souhrnně s Azure Cosmos DB získáte latence zápisu < 10 ms v 99th percentilu kdekoli v world, 99.999 % zápisu a čtení dostupnost kdekoli v celém světě a schopnost škálování obě zápisu a čtení propustnost kdekoli po celém světě.   
+
+> [!IMPORTANT]
+> Podpora více hlavních serverů je v privátní Preview verzi, používat verzi preview [zaregistrovat](#sign-up-for-multi-master-support) nyní.
+
+## <a name="sign-up-for-multi-master-support"></a>Registrace pro podporu více hlavních serverů
+
+Pokud již máte předplatné Azure, musíte se zaregistrovat chcete zapojit do programu preview více hlavních na portálu Azure. Pokud jste Azure ještě nepoužívali, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/free) kde získat dobu 12 měsíců volného přístupu k databázi Azure Cosmos. Pomocí následujících kroků si vyžádáte přístup k programu více hlavních preview.
+
+1. V [portál Azure](https://portal.azure.com), klikněte na tlačítko **vytvořit prostředek** > **databáze** > **Azure Cosmos DB**.  
+
+2. Na stránce nový účet zadejte název pro váš účet Azure Cosmos DB, vyberte rozhraní API, předplatné, skupinu prostředků a umístění.  
+
+3. Dále vyberte **zaregistrujte si verzi Preview ještě dnes** v rámci pole více předlohy Preview.  
+
+   ![Zaregistrujte si více hlavních preview](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+
+4. V **zaregistrujte si verzi Preview ještě dnes** podokně klikněte na tlačítko **OK**. Po odeslání žádosti se stav změní na **čekající na schválení** v okně vytváření účtu.  
+
+Po odeslání žádosti, obdržíte e-mail s oznámením, že vaše žádost byla schválena. Kvůli velkému počtu požadavků měli byste obdržet oznámení do jednoho týdne. Není nutné vytvořit lístek podpory pro dokončení požadavku. V pořadí, ve kterém bylo přijato projde kontrolou požadavků.
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>Publikování jednoduchý více hlavních příklad – obsahu  
 

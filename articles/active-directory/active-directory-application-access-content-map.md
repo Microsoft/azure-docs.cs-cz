@@ -1,22 +1,23 @@
 ---
-title: "Problémy se správou oprávnění a přístup k aplikaci\""
-description: "Problémy se správou oprávnění a přístup k aplikaci\""
+title: Problémy se správou oprávnění a přístup k aplikaci"
+description: Problémy se správou oprávnění a přístup k aplikaci"
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 18931ee2f4ef53dc40695ff63d41b07ff977a2a1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 472b2684fcd3762999c43eafe3d77be050d79fa8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="problems-managing-application-access-and-permissions"></a>Problémy se správou přístupu a oprávnění aplikace
 

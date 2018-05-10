@@ -9,11 +9,11 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Vytváření a nasazování text klasifikační modely pomocí Azure Machine Learning
 
@@ -137,7 +137,7 @@ df_test.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Popisek</th>
-      <th>Text</th>
+      <th>text</th>
     </tr>
   </thead>
   <tbody>
@@ -420,13 +420,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Zkontrolovat a nastavit parametry kroky jiném kanálu
 
-I když montáže scikit-další modelu předběžného zpracování probíhá před přizpůsobování pomocí kanálu preprocesor a kroky featurizer (transformaci). Proto odkaz na "kanál" pro školení. Při vyhodnocování, úplný kanál, včetně předběžného zpracování a scikit-další předpovědi modelu, se použije pro testování datové sady.
+Během cvičení, musí mít text a popisek sloupce. Když pro předpovědi je potřeba jenom textový sloupec. 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Zkontrolovat a nastavit parametry kroky jiném kanálu
+    
+Předtím, než podle modelu se obvykle nastavte parametry. 
 
 ***Příklad s text_word_ngrams*** 
-
-Předtím, než podle modelu se obvykle nastavte parametry. 
 
 Následující ukázky kódu ukazují, jak pro trénování modelu pomocí výchozí parametry kanálu a modelu. 
 
@@ -573,7 +574,7 @@ Použijte klasifikátor vyškolení text na základě testovací datové ke gene
     <tr style="text-align: right;">
       <th></th>
       <th>Popisek</th>
-      <th>Text</th>
+      <th>text</th>
       <th>pravděpodobnostech</th>
       <th>Předpověď</th>
     </tr>

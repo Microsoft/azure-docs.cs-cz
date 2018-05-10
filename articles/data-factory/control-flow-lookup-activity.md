@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 0a321de96b26b183432a30868829081c1656be3f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
-Vyhledávání aktivity slouží ke čtení nebo vyhledat záznam, název tabulky nebo hodnota z externího zdroje. Na tento výstup mohou dále odkazovat následující aktivity. 
 
-Aktivita vyhledávání je užitečné, pokud chcete dynamicky načíst seznam souborů, záznamy nebo tabulky z konfiguračního souboru nebo zdroj dat. Výstup z aktivity další lze ostatní aktivity k provedení určité zpracování na jen ty položky.
+Aktivita vyhledávání slouží k načtení datové sady z jakéhokoli zdroje dat podporována ADF.  Může být použita v následujícím scénáři:
+- Dynamicky určete, které objekty (soubory, tabulky a podobně) k provozu na následné aktivity, místo pevně kódováno název objektu
+
+Aktivita vyhledávání můžete číst a vrátí obsah konfigurační soubor, tabulku konfigurace nebo výsledek provedení dotazu nebo uložené proceduře.  Výstup z aktivity vyhledávání můžete použít v následných kopírování nebo aktivit transformace, pokud je hodnota typu singleton, nebo použít v příkazu ForEach aktivitu, pokud je pole atributů.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Azure Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
@@ -33,7 +35,7 @@ Následující zdroje dat jsou aktuálně podporovány pro vyhledávání:
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
-Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až do **10MB** velikost.
+Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až do **2MB** velikost.
 
 ## <a name="syntax"></a>Syntaxe
 

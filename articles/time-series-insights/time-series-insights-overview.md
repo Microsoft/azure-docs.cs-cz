@@ -11,17 +11,17 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
-ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f29fe50468aabadcf92d2ed3de3f9ec631d17f21
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure časové řady Insights?
 
 Statistika řady čas je vytvořené pro ukládání, vizualizace a dotazování velké objemy dat řady čas, jako je například generovaná zařízeními IoT.  Pokud chcete uložit, spravovat, dotaz nebo vizualizovat data řady čas v cloudu, je pravděpodobné, práva pro přehledy časové řady.  
 
-![Řady Statistika čas vývojový diagram] (media/overview/time-series-insights-flowchart.png)
+![Vývojový diagram časové řady statistiky](media/overview/time-series-insights-flowchart.png)
 
 Statistika časové řady má čtyři klíčové úlohy:
 
@@ -68,7 +68,7 @@ Začínáme trvá méně než 5 minut.
 4.  Zobrazit vaše data v minutách pomocí Průzkumníka Statistika časové řady.
 
 ## <a name="time-series-insights-explorer"></a>Průzkumník Time Series Insights
-Tento diagram znázorňuje příklad časové řady datům přehledů zobrazit pomocí Průzkumník: ![Čas řady Statistika explorer] (media/time-series-insights-explorer/explorer4.png)
+Tento diagram znázorňuje příklad časové řady datům přehledů zobrazit pomocí Průzkumník: ![explorer Statistika časové řady](media/time-series-insights-explorer/explorer4.png)
 
 ## <a name="next-steps"></a>Další postup
  - [Prozkoumat pomocí Průzkumníka časové řady statistiky v ukázce prostředí](./time-series-quickstart.md)

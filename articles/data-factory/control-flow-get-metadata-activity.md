@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/08/2018
 ms.author: shlo
-ms.openlocfilehash: 5c81c73bd563dd75103ed0fcb45cbc2205eed02a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 91ef3f9f15797c8c0c599e8c01070369e1af0b58
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
 GetMetaData – aktivita slouží k načtení **metadata** všech dat v Azure Data Factory. Tato aktivita je podporována pouze pro datové továrny verze 2. Dá se v následujících scénářích:
@@ -74,7 +74,10 @@ V seznamu polí GetMetaData – aktivita načíst lze zadat následující typy 
 | contentMD5 | Algoritmus MD5 souboru. Použít pouze souboru. |
 | Struktura | Struktura dat v souboru nebo tabulky relační databáze. Výstupní hodnota je seznam název sloupce a typ sloupce. |
 | Počet sloupců | Počet sloupců v souboru nebo relační tabulky. |
-| existuje| Jestli existuje soubor nebo složku nebo tabulku nebo ne. Poznámka: Pokud "existuje" je uveden v seznamu polí GetaMetadata že aktivity nebudou i v případě, že položka (soubor nebo složku nebo tabulky) neexistuje; Místo toho vrátí `exists: false` ve výstupu. |
+| existuje| Jestli existuje soubor nebo složku nebo tabulku nebo ne. Poznámka: Pokud "existuje" je uveden v seznamu polí GetaMetadata, aktivity nebudou i v případě, že položka (soubor nebo složku nebo tabulky) neexistuje; Místo toho vrátí `exists: false` ve výstupu. |
+
+>[!TIP]
+>Pokud chcete ověřit, jestli existuje soubor nebo složku nebo tabulku nebo Ne, zadejte `exists` v seznamu polí GetMetaData – aktivita pak můžete zkontrolovat `exists: true/false` výsledkem výstup aktivity. Pokud `exists` není nakonfigurované v seznamu polí, GetMetaData – aktivita selže, pokud objekt nebyl nalezen.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -107,10 +110,9 @@ V seznamu polí GetMetaData – aktivita načíst lze zadat následující typy 
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
@@ -123,12 +125,12 @@ GetMetaData – aktivita aktuálně můžete získat následující typy informa
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-Seznam polí | Seznam typů požadované informace metadat. Zobrazit podrobnosti v [Metadata možnosti](#metadata-options) části na podporované metadat. | Ne 
+Seznam polí | Seznam typů požadované informace metadat. Zobrazit podrobnosti v [Metadata možnosti](#metadata-options) části na podporované metadat. | Ano 
 Datové sady | Referenční datová sada je jejichž metadat aktivity mají být načteny aktivitou GetMetaData –. V tématu [podporované schopnosti](#supported-capabilities) části na podporované konektory a odkazovat na konektoru téma na datovou sadu syntaxe podrobnosti. | Ano
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
-GetMetaData – výsledků se zobrazí v výstup aktivity. Níže jsou uvedeny dvě ukázky s kompletní metadata možnosti vybrané v seznamu polí jako odkaz:
+GetMetaData – výsledků se zobrazí v výstup aktivity. Níže jsou uvedeny dvě ukázky s kompletní metadata možnosti vybrané v seznamu polí jako odkaz. Pokud chcete použít výsledek následné aktivity, použijte vzor `@{activity('MyGetMetadataActivity').output.itemName}`.
 
 ### <a name="get-a-files-metadata"></a>Získat metadata souboru
 

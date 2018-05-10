@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 1/4/2018
+ms.date: 5/8/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84e9e3b486e3c825e98530a30850e9f21ef41b91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 28c8ec09ad02e5c1175312f2735cd6f900f88cab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Python SDK Cosmos DB pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,9 @@ ms.lasthandoff: 05/07/2018
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
+* Přidaná podpora pro výchozí opakování pokusů pro potíže s připojením.
+
 ### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
 * Aktualizované dokumentace k odkazu na Azure DB Cosmos místo Azure DocumentDB.
 
@@ -138,6 +141,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno SDK odmítají službou.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |08 může 2018 |--- |
 | [2.3.1](#2.3.1) |21 prosince 2017 |--- |
 | [2.3.0](#2.3.0) |10 listopadu 2017 |--- |
 | [2.2.1](#2.2.1) |Září 29, 2017 |--- |

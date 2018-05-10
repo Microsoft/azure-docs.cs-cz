@@ -1,23 +1,24 @@
 ---
-title: "Tom, jak přiřadit MSI přístup k prostředku Azure, pomocí rozhraní příkazového řádku Azure"
-description: "Podrobné pokyny pro přiřazení MSI na jeden prostředek, přístup k jiný prostředek, pomocí rozhraní příkazového řádku Azure."
+title: Tom, jak přiřadit MSI přístup k prostředku Azure, pomocí rozhraní příkazového řádku Azure
+description: Podrobné pokyny pro přiřazení MSI na jeden prostředek, přístup k jiný prostředek, pomocí rozhraní příkazového řádku Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: ca228a99eec1d376e456f5730aaaf8c569620f43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 947e0140c7943954be5eb285bb7ec514b74e9022
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Přiřadit identita spravované služby (MSI) přístup k prostředku pomocí rozhraní příkazového řádku Azure
 

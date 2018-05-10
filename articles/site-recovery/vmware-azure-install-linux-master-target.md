@@ -1,19 +1,19 @@
 ---
-title: "Instalovat hlavní cílový server Linux převzetí služeb při selhání z Azure do místní | Microsoft Docs"
-description: "Před opětovnou ochranu virtuální počítač s Linuxem, potřebujete hlavní cílový server Linux. Zjistěte, jak k jeho instalaci."
+title: Instalovat hlavní cílový server Linux převzetí služeb při selhání z Azure do místní | Microsoft Docs
+description: Před opětovnou ochranu virtuální počítač s Linuxem, potřebujete hlavní cílový server Linux. Zjistěte, jak k jeho instalaci.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalovat hlavní cílový server Linux
 Po selhání virtuálních počítačů do Azure, můžete můžete navrácení služeb po obnovení virtuálních počítačů k místní lokalitě. Chcete-li navrácení služeb po obnovení, je potřeba znovu nastavte ochranu virtuálního počítače z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server příjem provozu. 
@@ -48,10 +48,10 @@ Vytvoření hlavního cíle podle následujících pokynů pro změnu velikosti:
 Jsou podporovány následující podporované Ubuntu jádra.
 
 
-|Kernel Series  |Podporovat až  |
+|Řada jádra  |Podporovat až  |
 |---------|---------|
-|4.4      |4.4.0-81-generic         |
-|4.8      |4.8.0-56-generic         |
+|4.4      |4.4.0-81-Generic         |
+|4.8      |4.8.0-56-Generic         |
 |4.10     |4.10.0-24-Generic        |
 
 
@@ -240,18 +240,13 @@ Pomocí následujících kroků můžete vytvořit disku pro uchování:
 
 1. Připojit nový disk 1 TB k virtuálnímu počítači hlavního cíle Linuxu a potom počítač spustit.
 
-2. Použití **vícenásobný -udou** příkaz Další funkce multipath ID disku pro uchování.
-    
-     `multipath -ll`
+2. Použití **vícenásobný -udou** příkaz Další funkce multipath ID disku pro uchování: **vícenásobný -le**
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![Vícenásobný ID](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. Formátování disku a pak vytvořit systém souborů na nový disk.
-
+3. Formátování disku a pak vytvořit systém souborů na nový disk: **mkfs.ext4 /dev/mapper/< vícenásobný id uchování disku >**.
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![Vytvoření systému souborů na disku](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Po vytvoření systému souborů, připojte disk uchovávání informací.
 
@@ -266,7 +261,7 @@ Pomocí následujících kroků můžete vytvořit disku pro uchování:
     
     Vyberte **vložit** zahájíte úpravy souboru. Vytvořte nový řádek a potom vložte následující text. Upravte vícenásobný ID disku na základě Identifikátoru zvýrazněná více cest z předchozí příkaz.
 
-     **/dev/mapper/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
+    **/dev/mapper/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
 
     Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončení) zavřete okno editor.
 
@@ -359,7 +354,7 @@ Zobrazí se **verze** pole obsahuje číslo verze se hlavní cíl.
     * ONBOOT = Ano
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po dokončení instalace a registrace hlavního cíle, zobrazí se hlavní cíl se zobrazují v **hlavní cíl** kapitoly **infrastruktura Site Recovery**, v části Konfigurace Přehled serveru.
 
 Teď můžete pokračovat s [vytvoření](vmware-azure-reprotect.md), za nímž následují navrácení služeb po obnovení.

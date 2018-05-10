@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
@@ -33,7 +33,7 @@ V prvního scénáře Contoso chce otestovat nového inteligentní žárovek za�
 | Název                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
 | Barva                    | Prázdné, červená, modrá            |
-| Také průraznost               | 0 až 100.                    |
+| Také průraznost               | 0 až 100                    |
 | Odhadovaný zbývající dobu životnosti | Odpočítávání 10 000 hodiny |
 
 *Telemetrie*
@@ -258,7 +258,11 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
 
 1. V **proměnné prostředí** část, upravte hodnotu **počítače\_IOTHUB\_CONNSTRING** proměnné jako připojovací řetězec služby IoT Hub jste si poznamenali dříve. Potom změny uložte.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **zařízení simulace** řešení a zvolte **nastavit projekty po spuštění**. Zvolte **jeden projekt po spuštění** a vyberte **SimulationAgent**. Pak klikněte na **OK**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **WebService** projektu, zvolte **vlastnosti**a potom vyberte **ladění**.
+
+1. V **proměnné prostředí** část, upravte hodnotu **počítače\_IOTHUB\_CONNSTRING** proměnné jako připojovací řetězec služby IoT Hub jste si poznamenali dříve. Potom změny uložte.
+
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **zařízení simulace** řešení a zvolte **nastavit projekty po spuštění**. Zvolte **jeden projekt po spuštění** a vyberte **WebService**. Pak klikněte na **OK**.
 
 1. Každý typ zařízení má soubor modelu JSON a související skripty v **služby/data/devicemodels** složky. V Průzkumníku řešení, zkopírujte **chladič** soubory a vytvořte **žárovek** souborů, jak je znázorněno v následující tabulce:
 
@@ -294,10 +298,12 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ Chcete-li omezit počet Simulovaná zařízení, která se připojují k řešen
 
 Nyní jste připraveni k testování nového typu simulované žárovek spuštěním projektu simulace zařízení místně.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na **SimulationAgent**, zvolte **ladění** a potom zvolte **spustit novou instanci**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na **WebService**, zvolte **ladění** a potom zvolte **spustit novou instanci**.
 
 1. Pokud chcete zkontrolovat, že jsou připojené dva Simulovaná zařízení do služby IoT Hub, otevřete v prohlížeči na portálu Azure.
 

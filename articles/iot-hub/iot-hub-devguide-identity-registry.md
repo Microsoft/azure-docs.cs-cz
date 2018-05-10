@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c90bc4945b613f386f98178949e5451e8fe3673
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: dce0114c19f6153d2cba789cdc00920d42834b2d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Pochopení registru identit ve službě IoT hub.
 
@@ -193,7 +193,7 @@ Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími 
 | Značka Etag |vyžaduje jen pro čtení |Řetězec představující na slabou značku ETag pro identitu zařízení dle [RFC7232][lnk-rfc7232]. |
 | ověřování |nepovinné |Složené objekt obsahující informace a zabezpečení materiály ověřování. |
 | auth.symkey |nepovinné |Objekt složený obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Požadované |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení se může připojit. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
+| status |povinné |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení se může připojit. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
 | statusReason |nepovinné |128 znaků dlouhý řetězec, který ukládá důvod stavu identity zařízení. Jsou povoleny všechny znaky UTF-8. |
 | statusUpdateTime |jen pro čtení |Dočasné ukazatele zobrazuje datum a čas poslední aktualizace stavu. |
 | Hodnota connectionState |jen pro čtení |Pole, která určuje stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje IoT Hub pohled na stav připojení zařízení. **Důležité**: Toto pole by měl použít pouze pro účely ladění nebo vývoj. Stav připojení je aktualizovat jenom pro zařízení pomocí MQTT nebo AMQP. Navíc je založena na úrovni protokolu příkazy ping (příkazy ping MQTT nebo AMQP příkazy ping) a může mít maximální zpoždění jenom 5 minut. Z těchto důvodů může být falešně pozitivních zjištění, například zařízení hlášené jako připojené, ale které jsou odpojené. |
@@ -205,7 +205,7 @@ Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími 
 
 ## <a name="module-identity-properties"></a>Vlastnosti modulu identity
 
-Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
+Modul identity jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
 | Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ Identit zařízení jsou reprezentovány jako dokumenty JSON s následujícími 
 | Značka Etag |vyžaduje jen pro čtení |Řetězec představující na slabou značku ETag pro identitu zařízení dle [RFC7232][lnk-rfc7232]. |
 | ověřování |nepovinné |Složené objekt obsahující informace a zabezpečení materiály ověřování. |
 | auth.symkey |nepovinné |Objekt složený obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Požadované |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení se může připojit. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
+| status |povinné |Slouží jako ukazatel přístup. Může být **povoleno** nebo **zakázané**. Pokud **povoleno**, zařízení se může připojit. Pokud **zakázané**, toto zařízení nemá přístup k žádný koncový bod směřujících zařízení. |
 | statusReason |nepovinné |128 znaků dlouhý řetězec, který ukládá důvod stavu identity zařízení. Jsou povoleny všechny znaky UTF-8. |
 | statusUpdateTime |jen pro čtení |Dočasné ukazatele zobrazuje datum a čas poslední aktualizace stavu. |
 | Hodnota connectionState |jen pro čtení |Pole, která určuje stav připojení: buď **připojeno** nebo **odpojeno**. Toto pole představuje IoT Hub pohled na stav připojení zařízení. **Důležité**: Toto pole by měl použít pouze pro účely ladění nebo vývoj. Stav připojení je aktualizovat jenom pro zařízení pomocí MQTT nebo AMQP. Navíc je založena na úrovni protokolu příkazy ping (příkazy ping MQTT nebo AMQP příkazy ping) a může mít maximální zpoždění jenom 5 minut. Z těchto důvodů může být falešně pozitivních zjištění, například zařízení hlášené jako připojené, ale které jsou odpojené. |

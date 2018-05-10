@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4d88004f37b40fa92e617545e1a94656744a7db0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -48,6 +48,8 @@ Klikněte na odkaz "zobrazení soubory. ve vaší funkci Azure (na portálu Azur
 ## <a name="endpoint-validation"></a>Koncový bod ověření
 
 První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se uživatel přihlásí k události, odešle událost mřížky událost ověření koncový bod s `validationCode` v datovou částí. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [prokázat koncový bod je platná a ve vlastnictví můžete](security-authentication.md#webhook-event-delivery). Pokud používáte [aktivační událost mřížky](../azure-functions/functions-bindings-event-grid.md) místo WebHook, jehož aktivuje funkce, koncový bod ověření zpracovává za vás. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL v `validationUrl` vlastnost a odesílání GET vyžádat buď prostřednictvím klienta REST nebo webový prohlížeč.
+
+Ruční ověřování je ve verzi preview. Pokud chcete použít, musíte nainstalovat [událostí mřížky rozšíření](/cli/azure/azure-cli-extensions-list) pro [2.0 rozhraní příkazového řádku AZ](/cli/azure/install-azure-cli). Můžete je nainstalovat `az extension add --name eventgrid`. Pokud používáte rozhraní API REST, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
 
 Chcete-li prostřednictvím kódu programu echo ověřovacího kódu, použijte následující kód:
 

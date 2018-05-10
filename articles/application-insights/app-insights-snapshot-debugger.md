@@ -10,13 +10,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 05/08/2018
 ms.author: mbullwin; pharring
-ms.openlocfilehash: a742dc3c3538cd9fc5053fd9cd9aeec740ec0394
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 0721fa42a8d770b82a4b18865b513569bcc8807f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladění snímků výjimky v aplikacích .NET
 
@@ -193,11 +193,12 @@ Vlastníky předplatného Azure můžete prohlédnout snímky. Ostatní uživate
 
 Udělit oprávnění, přiřaďte mu `Application Insights Snapshot Debugger` role pro uživatele, kteří bude kontrolovat snímky. Tato role může být přiřazena na jednotlivé uživatele nebo skupiny s vlastníky předplatného pro cílový prostředek Application Insights nebo jeho skupinu prostředků nebo předplatného.
 
-1. Otevřete okno řízení přístupu (IAM).
-1. Klikněte tlačítko Přidat +.
-1. Vyberte z rozevíracího seznamu rolí Application Insights snímku ladicí program.
+1. Přejděte do prostředku Application Insights na portálu Azure.
+1. Klikněte na tlačítko **přístup k ovládacímu prvku (IAM)**.
+1. Klikněte **+ přidat** tlačítko.
+1. Vyberte **Application Insights snímku ladicí program** z **role** rozevíracího seznamu.
 1. Vyhledejte a zadejte název pro uživatele, přidání.
-1. Klikněte na tlačítko Uložit přidejte uživatele k roli.
+1. Klikněte **Uložit** tlačítko Přidat uživatele k roli.
 
 
 > [!IMPORTANT]
@@ -267,22 +268,22 @@ Ale v Azure App Services, můžete deoptimize snímek kolekce aktivační metody
 
 Tyto tipy pomáhají při řešení problémů s ladicím programem snímku.
 
-## <a name="use-the-snapshot-health-check"></a>Použít kontrolu stavu snímku
-Pokud nevidíte snímků, které jsou k dispozici pro konkrétní výjimku, může být způsobeno několik příčin, například verze kolekce outdate snímku, každý den podle prahové hodnoty, snímku právě trvá dobu je možné odeslat a tak dále. Chcete-li usnadnění diagnostiky tyto problémy, jsme vytvořili snímku zkontrolujte stav služby ale analyzovat proto neexistuje žádný snímek.
+### <a name="use-the-snapshot-health-check"></a>Použít kontrolu stavu snímku
+Několik běžných problémů za následek otevřít ladění snímek, se nezobrazují. Použití zastaralé snímek kolekce služby, například; dosažení denního limitu nahrávání; nebo možná snímku právě trvá dlouhou dobu nahrát. Použijte kontrolu stavu snímku řešit běžné problémy.
 
-Pokud nevidíte snímků přidružených k výjimce, bude v okně prohlížeče trasování začátku do konce pro zadání Kontrola stavu snímku být odkaz.
+V podokně výjimka trasování začátku do konce zobrazení, které přejdete ke kontrole stavu snímku je odkaz.
 
 ![Zadejte kontrolu stavu snímku](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
 
-Pak se zobrazí interaktivní chat robota jako relace spuštění kontroly stavu u různých aspektů služby a nabídky avíza dokladů.
+Interaktivní rozhraní chat jako hledá běžné problémy a provede vás opravit je.
 
 ![Kontrola stavu](./media/app-insights-snapshot-debugger/healthcheck.png)
 
-Existují také několik provedení ručních kroků, které můžete provést při diagnostice stavu služby snímku. Naleznete v následujících částech:
+Pokud se problém nevyřeší, potom se podívejte na následující Ruční postup řešení potíží.
 
 ### <a name="verify-the-instrumentation-key"></a>Ověřte klíč instrumentace
 
-Ujistěte se, že používáte klíč instrumentace správné v k publikované aplikaci. Application Insights obvykle čte klíč instrumentace z soubor ApplicationInsights.config. Ověřte, zda že je hodnota stejná jako klíč instrumentace pro prostředek Application Insights, který se zobrazí na portálu.
+Ujistěte se, že používáte klíč instrumentace správné v k publikované aplikaci. Obvykle je pro klíč instrumentace čtení ze souboru ApplicationInsights.config souboru. Ověřte, zda že je hodnota stejná jako klíč instrumentace pro prostředek Application Insights, který se zobrazí na portálu.
 
 ### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgrade na nejnovější verzi balíčku NuGet
 
@@ -293,7 +294,7 @@ Pomocí Správce balíčků NuGet sady Visual Studio a ujistěte se, že použí
 Po vytvoření snímku se vytvoří soubor s minimálním (.dmp) na disku. Samostatné osoba procesu vytvoří tento soubor minimální výpis a odesílá, společně s všechny přidružené soubory PDB do úložiště Application Insights snímku ladicí program. Po úspěšném odeslání minimální výpis je odstraněn z disku. Na disku jsou uloženy soubory protokolu pro proces osoba. V prostředí služby App Service, můžete najít tyto protokoly v `D:\Home\LogFiles`. Použití serveru správy Kudu pro službu App Service k nalezení tyto soubory protokolu.
 
 1. Otevřete aplikaci aplikační služby na portálu Azure.
-2. Vyberte **Rozšířené nástroje** okno, nebo vyhledejte **Kudu**.
+2. Klikněte na tlačítko **Rozšířené nástroje**, nebo vyhledejte **Kudu**.
 3. Klikněte na tlačítko **přejděte**.
 4. V **konzolou pro ladění** rozevíracím seznamu vyberte **CMD**.
 5. Klikněte na tlačítko **LogFiles**.
@@ -401,7 +402,7 @@ Postupujte podle těchto kroků nakonfigurujete vaše cloudové služby role s v
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Výjimky se snímky hledat pomocí Application Insights
 
-Když je snímek vytvořen, aktivační výjimky se označí s ID snímku. Zda jsou zahrnuty jako vlastní vlastnost ID snímku, při hlášení telemetrie výjimek Application insights. V okně hledání Application Insights, můžete najít všechny telemetrická s `ai.snapshot.id` vlastní vlastnosti.
+Když je snímek vytvořen, aktivační výjimky se označí s ID snímku. Zda jsou zahrnuty jako vlastní vlastnost ID snímku, při hlášení telemetrie výjimek Application insights. Pomocí **vyhledávání** ve službě Application Insights můžete najít všechny telemetrická s `ai.snapshot.id` vlastní vlastnosti.
 
 1. Procházejte do zdroje Application Insights na portálu Azure.
 2. Klikněte na tlačítko **vyhledávání**.

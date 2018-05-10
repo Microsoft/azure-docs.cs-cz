@@ -91,10 +91,14 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: Ukázková aplikace služby KeyVault
               href: azure-stack-kv-sample-app.md
+        - name: Řešení šablon
+          items:
             - name: Řešení šablon
               items:
                 - name: Nasazení clusteru Service Fabric
                   href: azure-stack-solution-template-service-fabric-cluster.md
+                - name: Nasazení clusteru Kubernetes
+                  href: azure-stack-solution-template-kubernetes-deploy.md
     - name: Vytváření aplikací
       items:
         - name: Vývoj pro Azure Stack

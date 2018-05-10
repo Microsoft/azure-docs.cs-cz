@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5bc0fd3854488704f5368bfe1134d8fa9c959c9b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Řešení potíží s objekt, který není synchronizované s Azure AD
 
@@ -43,10 +43,10 @@ V horní polovině ukazuje všechny běží v chronologickém pořadí. Ve vých
 
 **Stav** je nejdůležitější informace a ukazuje nejzávažnějšího problém pro spuštění. Zde je stručný nejběžnější stavů v pořadí podle priority prozkoumat (kde * znamenat několik řetězců možná chyba).
 
-| Stav | Komentář |
+| Status | Poznámka |
 | --- | --- |
 | ukončeno-* |Spuštění se nepodařilo dokončit. Například pokud vzdálený systém je vypnutý a nelze kontaktovat. |
-| stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
+| Zastavit limit chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
 | dokončené -\*– chyby |Spustit dokončilo, ale nejsou chyby (méně než 5 000), které by se měly prozkoumat. |
 | dokončené -\*– upozornění |Spustit dokončena, ale některá data, není v očekávaném stavu. Pokud máte chyby, pak tato zpráva je obvykle jenom příznakem. Dokud nebude mít řešit chyby, by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
@@ -103,7 +103,7 @@ Na kartě rodokmenu můžete získat do úložiště metaverse kliknutím [vlast
 
 V dolní části všechny karty jsou dvě tlačítka: **Preview** a **protokolu**.
 
-### <a name="preview"></a>Předběžné
+### <a name="preview"></a>Preview
 Stránku s náhledem se používá k synchronizaci jeden jednoho objektu. Je vhodné, pokud jsou některá vlastní synchronizační pravidla pro řešení potíží a chcete projevily změny na jednoho objektu. Můžete vybrat mezi **úplné synchronizace** a **rozdílová synchronizace**. Můžete také vybrat mezi **generovat Preview**, který pouze změny uchová paměti, a **potvrdit Preview**, který aktualizovat úložiště metaverse a zpracuje všechny změny do prostor konektoru cíl.  
 ![Správce synchronizace služby](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
 Si můžete prohlédnout objekt a pravidlo, které se použijí pro tok konkrétní atribut.  
@@ -139,7 +139,7 @@ Měli byste konektor pro:
 - Každé doménové struktuře služby Active Directory uživatele je znázorněná. Tento zápis mohou zahrnovat foreignSecurityPrincipals a obraťte se na objekty.
 - Konektor ve službě Azure AD.
 
-Pokud chybí konektor služby Azure AD, přečtěte si [MV atributy](#MV-attributes) ověření kritéria pro se zřídí do služby Azure AD.
+Pokud chybí konektor služby Azure AD, přečtěte si [MV atributy](#mv-attributes) ověření kritéria pro se zřídí do služby Azure AD.
 
 Na této kartě můžete také přejít k [objektu prostoru konektoru](#connector-space-object-properties). Vyberte řádek a klikněte na tlačítko **vlastnosti**.
 

@@ -8,17 +8,17 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3bd3c4f6501000f2490bc26cf7c6ff0345d3e7cc
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
 Řešení správy aktualizací ve službě Azure automation umožňuje spravovat aktualizace operačního systému pro Windows a Linux počítače nasazené v Azure, místní prostředí nebo jiných poskytovatelů cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
-Správu aktualizací pro virtuální počítače můžete povolit přímo ze svého účtu [Azure Automation](automation-offering-get-started.md).
+Můžete povolit správu aktualizací pro virtuální počítače přímo z vašeho účtu Azure Automation.
 Informace o povolení správy aktualizací pro virtuální počítače z účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro jeden virtuální počítač na stránce virtuální počítač na portálu Azure. Tento scénář je k dispozici pro obě [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
 
 ## <a name="solution-overview"></a>Přehled řešení
@@ -37,6 +37,9 @@ Následující diagram znázorňuje koncepční zobrazení chování a tok dat z
 Poté, co počítač provede kontrolu shody aktualizací, agent předává informace hromadně k analýze protokolů. Na počítačích s Windows se kontrola kompatibility ve výchozím nastavení provádí každých 12 hodin. Kromě plánu vyhledávání se zahájí kontroly shody aktualizací do 15 minut, pokud je restartován Microsoft Monitoring Agent (MMA), před instalací aktualizace a po instalaci aktualizace. U počítače s Linuxem se kontrola aktualizací ve výchozím nastavení provádí každé 3 hodiny a také během 15 minut v případě restartování agenta MMA.
 
 Řešení podá zprávu o aktuálnosti počítače podle toho, s jakým zdrojem je nakonfigurována synchronizace. Pokud je počítač s Windows nakonfigurovaný tak, aby ukládal data do služby WSUS, v závislosti na času poslední synchronizace služby WSUS s Microsoft Update se výsledky můžou lišit od toho, co ukazuje Microsoft Update. Toto je stejný pro počítače Linux, které jsou nakonfigurovány k místním úložišti a veřejné úložišti sestavy.
+
+> [!NOTE]
+> Správa aktualizací vyžaduje určité adres URL a portů, aby byl povolen správně informuje o službu, najdete v části [sítě plánování hybridní pracovní procesy](automation-hybrid-runbook-worker.md#network-planning) Další informace o těchto požadavků.
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Do oboru nasazení pro počítače s Windows nejsou zahrnuty aktualizace klasifikované jako *Volitelné*, pouze požadované aktualizace. Plánované nasazení definuje, jaký cílové počítače přijímat příslušné aktualizace, buď explicitně zadat počítače, nebo výběrem [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) který je založen na protokolu hledání konkrétní sady počítačů. Zadáte také plán pro schválení a vyhrazení časového období, kdy je možné aktualizace nainstalovat. Aktualizace se instalují podle runbooků ve službě Azure Automation. Tyto runbooky není možné zobrazit a nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizací se vytvoří plán, který v zadanou dobu spustí hlavní runbook aktualizace pro zahrnuté počítače. Tento hlavní runbook spouští podřízený runbook na každém agentovi, který provádí instalaci požadovaných aktualizací.
 
@@ -192,7 +195,7 @@ Kliknutím na vytvořit nové nasazení aktualizace **nasazení aktualizace plá
 |Operační systém| Linux nebo Windows|
 | Počítače, které chcete aktualizovat |Zvolte hledání, uloženo nebo vyberte počítač z rozevíracího seznamu a vyberte jednotlivé počítače |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které budete potřebovat|
-|Aktualizace, které chcete vyloučit|Zadejte všechny články znalostní báze vyloučit bez předpony 'KB.|
+|Aktualizace k vyloučení|Zadejte všechny články znalostní báze vyloučit bez předpony 'KB.|
 |Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně opakování|
 | Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut a více než 6 hodin |
 
@@ -219,6 +222,17 @@ Následující tabulka obsahuje seznam klasifikace aktualizací v správy aktual
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro určitý problém nebo problém s produktu, související se zabezpečením.         |
 |Další aktualizace     | Všechny další aktualizace, které nejsou kritické ve své podstatě aktualizace nebo aktualizace zabezpečení.        |
+
+## <a name="ports"></a>Porty
+
+Následující adresy se vyžadují speciálně pro správu aktualizací. Komunikace na tyto adresy se provádí přes port 443.
+
+* *.ods.opinsights.azure.com
+* *.oms.opinsights.azure.com
+* ods.systemcenteradvisor.com
+* *.blob.core.windows.net
+
+Další informace o porty, které vyžaduje hybridní pracovní proces Runbooku [porty role hybridní pracovní proces](automation-hybrid-runbook-worker.md#hybrid-worker-role)
 
 ## <a name="search-logs"></a>Protokoly vyhledávání
 
@@ -273,9 +287,9 @@ Pokud při pokusech o připojení řešení nebo virtuálního počítače doch�
 | Zpráva | Důvod | Řešení |
 |----------|----------|----------|
 | Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>System.InvalidOperationException: {"Zpráva":"Počítač už je</br>registrovaný k jinému účtu. "} | Počítač už je připojený k jinému pracovnímu prostoru pro řešení Update Management | Proveďte vyčištění starých artefaktů [odstraněním hybridních runbooků](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|
-| Nelze zaregistrovat počítač pro správu opravy, registrace se nezdařila s výjimkou</br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---></br>System.Net.WebException: Nadřízené připojení</br>bylo uzavřeno: Došlo k neočekávané</br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:</br>Klient a server nemůžou komunikovat,</br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
-| Certifikát předložený službu \<wsid\>. oms.opinsights.azure.com</br>nebyl vydaný certifikační autoritou</br>používanou pro služby Microsoft. Kontakt</br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící</br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-offering-get-started.md#network-planning)|
+| Nelze zaregistrovat počítač pro správu opravy, registrace se nezdařila s výjimkou</br>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---></br>System.Net.WebException: Nadřízené připojení</br>bylo uzavřeno: Došlo k neočekávané</br>chybě při příjmu. ---> System.ComponentModel.Win32Exception:</br>Klient a server nemůžou komunikovat,</br>protože nepoužívají společný algoritmus. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-hybrid-runbook-worker.md#network-planning)|
+| Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-hybrid-runbook-worker.md#network-planning)|
+| Certifikát předložený službu \<wsid\>. oms.opinsights.azure.com</br>nebyl vydaný certifikační autoritou</br>používanou pro služby Microsoft. Kontakt</br>správce sítě a zjistěte, jestli nepoužívají proxy server bránící</br>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy server, brána nebo brána firewall blokuje komunikaci | [Zkontrolujte požadavky sítě](automation-hybrid-runbook-worker.md#network-planning)|
 | Nepodařilo se zaregistrovat počítač pro správu oprav,</br>registrace se nezdařila s výjimkou</br>AgentService.HybridRegistration.</br>PowerShell.Certificates.CertificateCreationException:</br>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---></br>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem | Ověřte, že má systémový účet</br>oprávnění ke čtení ze složky:</br>**C:\ProgramData\Microsoft\**</br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>Další postup

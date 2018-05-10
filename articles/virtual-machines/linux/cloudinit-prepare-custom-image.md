@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače s Linuxem Azure pro použití s inicializací cloudu
 Tento článek ukazuje, jak využít existující virtuální počítač Azure a připravit opakovaně nasazeném a připravené k použití init cloudu. Výsledný obraz lze použít k nasazení nového virtuálního počítače nebo sady škálování virtuálního počítače – buď z nich může pak dále přizpůsobit podle cloudu init v době nasazení.  Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure. Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)
@@ -136,7 +136,7 @@ Všechny Image platformy Azure mají Azure Linux Agent nainstalován, bez ohledu
 sudo waagent -deprovision+user -force
 ```
 
-Další informace o příkazech deprovision Azure Linux Agent najdete v tématu [Azure Linux Agent](agent-user-guide.md) další podrobnosti.
+Další informace o příkazech deprovision Azure Linux Agent najdete v tématu [Azure Linux Agent](../extensions/agent-linux.md) další podrobnosti.
 
 Ukončení relace SSH a pak z vašeho prostředí bash, spusťte následující příkazy AzureCLI navrácení, generalize a vytvořit novou bitovou kopii virtuálního počítače Azure.  Nahraďte `myResourceGroup` a `sourceVmName` s příslušné informace, které odpovídají vaše sourceVM.
 

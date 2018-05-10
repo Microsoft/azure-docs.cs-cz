@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 533a80edbb115dfd324db9e4488e5c66dc36667e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojení SSH pro virtuální počítač Azure Linux který selže, chyby, nebo bylo odmítnuto
 Existují různé příčiny, že dojde k chybám Secure Shell (SSH), selhání připojení SSH, nebo SSH bylo odmítnuto, při pokusu o připojení k virtuálnímu počítači (VM) Linux. Tento článek pomůže najít a opravit problémy. Portál Azure, rozhraní příkazového řádku Azure nebo rozšíření pro přístup virtuálních počítačů pro Linux můžete použít k řešení problémů s připojením.
@@ -80,7 +80,7 @@ Použít sledovací proces sítě [dalšího směrování](../../network-watcher
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 Pokud jste to ještě neudělali, nainstalujte nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 
-Pokud jste vytvořili a nahrát vlastní image disku Linux, zkontrolujte [Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verze 2.0.5 nebo novější je nainstalována. Pro virtuální počítače vytvořené pomocí Galerie obrázků toto rozšíření přístup k již instalovaných a konfigurace.
+Pokud jste vytvořili a nahrát vlastní image disku Linux, zkontrolujte [Microsoft Azure Linux Agent](../extensions/agent-windows.md) verze 2.0.5 nebo novější je nainstalována. Pro virtuální počítače vytvořené pomocí Galerie obrázků toto rozšíření přístup k již instalovaných a konfigurace.
 
 ### <a name="reset-ssh-configuration"></a>Obnovte konfiguraci SSH
 Můžete Nejdřív zkuste resetuje se konfigurace SSH výchozí hodnoty a restartování serveru SSH ve virtuálním počítači. Všimněte si, že to nezmění název uživatelského účtu, hesla nebo klíče SSH.
@@ -155,7 +155,7 @@ Pokud jste to ještě neudělali, [nainstalovat Azure CLI 1.0 a připojit se k p
 azure config mode arm
 ```
 
-Pokud jste vytvořili a nahrát vlastní image disku Linux, zkontrolujte [Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verze 2.0.5 nebo novější je nainstalována. Pro virtuální počítače vytvořené pomocí Galerie obrázků toto rozšíření přístup k již instalovaných a konfigurace.
+Pokud jste vytvořili a nahrát vlastní image disku Linux, zkontrolujte [Microsoft Azure Linux Agent](../extensions/agent-windows.md) verze 2.0.5 nebo novější je nainstalována. Pro virtuální počítače vytvořené pomocí Galerie obrázků toto rozšíření přístup k již instalovaných a konfigurace.
 
 ### <a name="reset-ssh-configuration"></a>Obnovte konfiguraci SSH
 Může být nesprávné konfigurace SSHD sám sebe nebo ve službě došlo k chybě. Můžete resetovat SSHD a ujistěte se, že samotný konfiguraci SSH je platný. Resetování SSHD musí být prvním krokem řešení potíží, které můžete provést.

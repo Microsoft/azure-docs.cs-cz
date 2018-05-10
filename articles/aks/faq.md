@@ -3,23 +3,23 @@ title: Nejčastější dotazy pro Azure Kubernetes Service
 description: Poskytuje odpovědi na některé běžné otázky o Azure Kubernetes Service.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/14/2018
+ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: 55006a3f0193c96849c52f87ab01dc13ac0c7a16
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes služby (AKS)
 
 Tento článek adresy časté otázky o Azure Kubernetes služby (AKS).
 
 > [!IMPORTANT]
-> Služba Azure Kubernetes (AKS) je aktuálně v **preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Azure Kubernetes Service (AKS) je aktuálně ve verzi **Preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 >
 
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Které oblasti Azure ještě dnes poskytovat služby Kubernetes Azure (AKS)?
@@ -28,9 +28,7 @@ Tento článek adresy časté otázky o Azure Kubernetes služby (AKS).
 - Východní Kanada
 - Střed USA
 - Východ USA
-- Jihovýchodní Asie
 - Západní Evropa
-- Západní USA 2
 
 ## <a name="when-will-additional-regions-be-added"></a>Pokud bude přidán další oblasti?
 

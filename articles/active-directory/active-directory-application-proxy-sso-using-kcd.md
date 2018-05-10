@@ -1,25 +1,25 @@
 ---
-title: "Jednotné přihlašování pomocí Proxy aplikace | Microsoft Docs"
-description: "Popisuje, jak poskytnout jednotné přihlašování pomocí proxy aplikace služby Azure AD."
+title: Jednotné přihlašování pomocí Proxy aplikace | Microsoft Docs
+description: Popisuje, jak poskytnout jednotné přihlašování pomocí proxy aplikace služby Azure AD.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d6f6894d495170221ad8334bc32ef141fb4e62b4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aee1c1ad44cada857ca0fc8fc42565448b5bfa46
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování Kerberos pro jednotné přihlašování pro vaše aplikace s Proxy aplikace
 
@@ -98,7 +98,7 @@ Tato možnost umožňuje řada organizací, které mají různé místní a clou
 * Interně mají několik domén (joe@us.contoso.com, joe@eu.contoso.com) a jednu doménu v cloudu (joe@contoso.com).
 * Interně mít název směrovat domény (joe@contoso.usa) a právní jeden v cloudu.
 * Nepoužívejte názvy domén interně (Jan)
-* Použít různé aliasy místní i v cloudu. Například joe-johns@contoso.com vs.joej@contoso.com  
+* Použít různé aliasy místní i v cloudu. Například joe-johns@contoso.com vs. joej@contoso.com  
 
 Pomocí Proxy aplikace můžete vybrat které identity používat k získání lístku protokolu Kerberos. Toto nastavení je na aplikaci. Některé z těchto možností jsou vhodné pro systémy, které nepřijímá formát e-mailové adresy, jiné jsou navržené pro alternativní přihlášení.
 

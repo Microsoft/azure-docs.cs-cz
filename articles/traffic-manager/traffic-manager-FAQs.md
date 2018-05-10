@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager nejčastější dotazy (FAQ)
 
@@ -29,6 +29,10 @@ ms.lasthandoff: 04/16/2018
 Jak je popsáno v [jak Traffic Manager funguje](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), Traffic Manager funguje na úrovni DNS. Odešle odpovědí DNS k nasměrování klientů na koncový bod příslušné služby. Klienti se potom připojují ke koncovému bodu služby přímo, nejsou prostřednictvím Správce provozu.
 
 Proto Traffic Manager neposkytuje na koncový bod nebo IP adresu pro klienty pro připojení k. Pokud chcete statickou IP adresu pro vaši službu, která musí být nakonfigurovaná na službu, není v Traffic Manageru.
+
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Typy přenosů, které je možné směrovat pomocí Traffic Manageru?
+Jak je popsáno v [jak Traffic Manager funguje](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works), koncový bod Traffic Manager může být internetové služby hostované uvnitř nebo mimo Azure. Proto Traffic Manager může směrovat přenosy pocházející z veřejného Internetu do sady koncových bodů, aby se také internet setkávají. Pokud máte koncové body, které jsou v privátní síti (například na interní verzi [nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md#internalloadbalancer)) nebo mít uživatele, které DNS požadavků Traffic Manageru nelze použít pro tyto přenosy tyto interní sítě.
+
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Podporuje Traffic Manager "rychlé" relace?
 
@@ -121,7 +125,7 @@ V oblasti lze přiřadit pouze jeden koncový bod v rámci profilu, pokud jeho p
 
 Ano, geografické směrování zadejte pouze verze rozhraní API 2017-03-01 a novější podporuje. Všechny starší verze rozhraní API nelze použít k vytvoření profilů geografické typ směrování nebo zeměpisné oblasti přiřadit koncové body. Pokud starší verze rozhraní API slouží k načtení profilů z předplatného Azure, není vrácen žádný profil geografické typ směrování. Kromě toho, pokud používáte starší verze rozhraní API vrátil žádný profil, má koncové body s přiřazením zeměpisnou oblast, nemá jeho přiřazení geografické oblasti vidět.
 
-## <a name="real-user-measurements"></a>Real User Measurements
+## <a name="real-user-measurements"></a>Měření reálných uživatelů
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Jaké jsou výhody používání reálného měření uživatele?
 Při použití metody směrování podle výkonu Traffic Manager vybere nejlepší oblast Azure pro koncovým uživatelům se připojit k zkontrolováním zdrojové IP adresy a EDNS klientské podsíti (Pokud je předaná) a kontrola proti intelligence latence sítě služby udržuje. Skutečné uživatele měření to zvyšuje pro základní koncovým uživatelům tak, že jejich prostředí přispívat do této tabulky latence také ověřit, která v této tabulce adekvátní zahrnuje sítě koncového uživatele z kde koncoví uživatelé připojit k Azure. To vede k vyšší přesností v směrování koncovým uživatelům.
@@ -182,7 +186,7 @@ Ne, nemusíte hostovat žádné součásti serveru straně v Azure pro reálnéh
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Zvýší mého používání Azure šířky pásma při použití reálného měření uživatele?
 Jak je uvedeno v předchozí odpověď, serverové komponenty reálného měření uživatele vlastněná a spravovaná službou Azure. To znamená, že použití šířky pásma Azure nebude zvýšit, protože používáte reálného měření uživatele. Všimněte si, že nezahrnuje žádné využití šířky pásma mimo co Azure poplatky. Jsme Minimalizovat šířku pásma používanou stahování pouze jeden pixelů bitovou kopii do měření latence do oblasti Azure. 
 
-## <a name="traffic-view"></a>Traffic View
+## <a name="traffic-view"></a>Zobrazení přenosů
 
 ### <a name="what-does-traffic-view-do"></a>Jakým způsobem zobrazení provozu?
 Zobrazení provozu je funkce správce provoz, který vám pomůže pochopit více o uživatele a jak se jejich prostředí. Používá dotazů přijatých Traffic Manager a tabulky intelligence latenci sítě, které služba udržuje, kde přinášejí následující:

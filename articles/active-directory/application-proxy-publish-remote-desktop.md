@@ -1,25 +1,25 @@
 ---
-title: "Publikování vzdálené plochy s Proxy aplikace Azure AD | Microsoft Docs"
-description: "Popisuje základní informace o Azure AD Application Proxy konektory."
+title: Publikování vzdálené plochy s Proxy aplikace Azure AD | Microsoft Docs
+description: Popisuje základní informace o Azure AD Application Proxy konektory.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: daveba
+ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 44b54ad4331d48202044316486a5b1d1ef9202d2
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 9d013c22041c2ff64af7790836103068ffbf48ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s proxy aplikace služby Azure AD
 
@@ -75,14 +75,14 @@ Připojit k nasazení vzdálené plochy jako správce a změňte název serveru 
 1. Připojte k serveru vzdálené plochy rolí Zprostředkovatel připojení k VP.
 2. Spusťte **správce serveru**.
 3. Vyberte **služby Vzdálená plocha** z podokna na levé straně.
-4. Vyberte **přehled**.
+4. Vyberte **Přehled**.
 5. V části Přehled nasazení vyberte v rozevírací nabídce a zvolte **upravit vlastnosti nasazení**.
 6. Na kartě Brána VP změnit **název serveru** pole na externí adresu URL, který nastavíte pro koncový bod VP hostitele proxy serveru aplikace.
 7. Změna **přihlášení metoda** do **ověřování hesla**.
 
   ![Vlastnosti obrazovky nasazení na vzdálené plochy](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Spusťte tento příkaz pro každou kolekci. Nahraďte  *\<yourcollectionname\>*  a  *\<proxyfrontendurl\>*  nahraďte svými vlastními informacemi. Tento příkaz umožňuje jednotné přihlašování mezi Web VP a Brána VP a je optimalizován výkon:
+8. Spusťte tento příkaz pro každou kolekci. Nahraďte *\<yourcollectionname\>* a *\<proxyfrontendurl\>* nahraďte svými vlastními informacemi. Tento příkaz umožňuje jednotné přihlašování mezi Web VP a Brána VP a je optimalizován výkon:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

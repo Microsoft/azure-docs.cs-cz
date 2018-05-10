@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na víc konfigurací IP adres pomocí portálu Azure
 
@@ -42,7 +42,7 @@ V našem scénáři používáme následující konfiguraci:
 - Azure nástroj pro vyrovnávání zatížení se používá ke zveřejnění dvě front-end IP adresy, jednu pro každý web. Front-endu adresy se používají k distribuci provoz do příslušných konfiguraci protokolu IP pro každý web.
 - Pro front-end IP adresy a fond back-end IP adresy se používá stejné číslo portu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Náš scénář příklad předpokládá, že máte skupinu prostředků s názvem **contosofabrikam** nakonfigurovaný následujícím způsobem:
 
@@ -120,7 +120,7 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte front-endu fond IP a
 
 4. Vyberte pro vyrovnávání zatížení (**mylb**), které chcete přidat front-end fondu IP.
 
-5. V části **nastavení**, vyberte **front-endové fondy**. V podokně Další horní části, vyberte **přidat**.
+5. V části **nastavení**, vyberte **konfigurace IP front-endu**. V podokně Další horní části, vyberte **přidat**.
 
 6. Zadejte název pro vaše front-end IP adresu (například **contosofe** nebo **fabrikamfe**).
 
@@ -128,7 +128,7 @@ Pro každý web (contoso.com a fabrikam.com) nakonfigurujte front-endu fond IP a
 
 8. Vytvoření druhého front-end IP adresy opakováním <a href="#step3-3">krok 3</a> prostřednictvím <a href="#step3-7">krok 7</a> v této části.
 
-Po dokončení konfigurace fondu front-end IP adresy se zobrazí v části nástroj pro vyrovnávání zatížení **fond IP front-endu** nastavení. 
+Po dokončení konfigurace fondu front-end IP adresy se zobrazí v části nástroj pro vyrovnávání zatížení **konfigurace IP front-endu** nastavení. 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>Krok 4: Konfigurace fondu back-end
 

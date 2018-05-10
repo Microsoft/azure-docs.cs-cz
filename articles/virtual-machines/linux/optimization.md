@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytvoření virtuálního počítače (VM) Linux je snadné provést z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit jste ho nastavili za účelem optimalizace jeho výkon na platformě Microsoft Azure. Toto téma používá virtuálního počítače s Ubuntu Server, ale můžete vytvořit také pomocí virtuálních počítačů Linux [vlastní Image jako šablona](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -28,7 +28,7 @@ Vytvoření virtuálního počítače (VM) Linux je snadné provést z příkazo
 ## <a name="prerequisites"></a>Požadavky
 Toto téma předpokládá, že již máte funkční předplatné Azure ([bezplatné zkušební verze registrace](https://azure.microsoft.com/pricing/free-trial/)) a již zřídit virtuální počítač do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k předplatnému Azure s [az přihlášení](/cli/azure/reference-index#az_login) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="azure-os-disk"></a>Azure OS Disk
+## <a name="azure-os-disk"></a>Azure Disk operačního systému
 Po vytvoření virtuálního počítače s Linuxem v Azure, má dva disky, které jsou s ním spojená. **/ dev/sda** je disk operačního systému, **/dev/sdb** je dočasným diskovým.  Nepoužívejte hlavní disk operačního systému (**/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaná pro rychlé spuštění virtuálního počítače a neposkytuje dobrý výkon pro zatížení. Chcete připojit k virtuálnímu počítači získat trvalé jeden nebo více disků a optimalizované úložiště pro vaše data. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Přidání disků pro velikost a cílech výkonnosti
@@ -131,7 +131,8 @@ Pamatujte si, jak se všechny diskuse optimalizace, potřebujete provést testy 
 
 Některé užitečné odkazy na další zdroje informací: 
 
-* [Storage úrovně Premium: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md)
-* [Uživatelská příručka k Azure Linux Agent](agent-user-guide.md)
+* 
+  [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](premium-storage.md)
+* [Uživatelská příručka k Azure Linux Agent](../extensions/agent-linux.md)
 * [Optimalizace výkonu databáze MySQL na virtuálních počítačích Azure Linux](classic/optimize-mysql.md)
 * [Konfigurace softwaru diskového pole RAID v systému Linux](configure-raid.md)

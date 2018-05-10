@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: 2b141c96ad3f71cf35ddfbd08ce1eff14e36d8d0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 6d14d7bb4abc512668f16244462b347712655021
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů Azure pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -263,9 +263,9 @@ ms.lasthandoff: 04/23/2018
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md (Nasazení a správě virtuálních počítačů pomocí šablon Azure Resource Manageru a rozhraní příkazového řádku Azure)
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md (Správa virtuálních počítačů pomocí Azure Resource Manageru a prostředí PowerShell)
-[virtual-machines-windows-agent-user-guide]:../../windows/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
+[virtual-machines-windows-agent-user-guide]:../../extensions/agent-windows.md
+[virtual-machines-linux-agent-user-guide]:../../extensions/agent-linux.md
+[virtual-machines-linux-agent-user-guide-command-line-options]:../../extensions/agent-linux.md#command-line-options
 [virtual-machines-linux-capture-image]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
@@ -1005,15 +1005,15 @@ Pokud **stav** hodnota není **OK**, postupujte podle pokynů v [Kontrola stavu 
 
 2.  Zkontrolujte výstup Azure rozšířené monitorování rozšíření.
 
-  a.  Spustit `more /var/lib/AzureEnhancedMonitor/PerfCounters`
+  a.  Spusťte `more /var/lib/AzureEnhancedMonitor/PerfCounters`.
 
    **Očekávaný výsledek**: vrátí seznam čítačů výkonu. Soubor by neměl být prázdný.
 
- b. Spustit `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`
+ b. Spusťte `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`.
 
    **Očekávaný výsledek**: vrátí jeden řádek, kde je chyba **žádné**, například **3; konfigurace; Chyba; 0; 0; žádná; 0; 1456416792; tst-servercs;**
 
-  c. Spustit `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`
+  c. Spusťte `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`.
 
     **Očekávaný výsledek**: vrátí jako prázdný nebo neexistuje.
 
@@ -1021,29 +1021,29 @@ Pokud předchozí kontroly nebyla úspěšná, spusťte tyto další kontroly:
 
 1.  Ujistěte se, že příkaz waagent nainstalován a povolen.
 
-  a.  Spustit `sudo ls -al /var/lib/waagent/`
+  a.  Spusťte `sudo ls -al /var/lib/waagent/`.
 
       **Očekávaný výsledek**: obsahuje seznam obsahu, který příkaz waagent adresáře.
 
-  b.  Spustit `ps -ax | grep waagent`
+  b.  Spusťte `ps -ax | grep waagent`.
 
    **Očekávaný výsledek**: Zobrazí jednu položku podobnou: `python /usr/sbin/waagent -daemon`
 
 3.   Ujistěte se, zda je rozšíření monitorování rozšířeného Azure nainstalovaná a spuštěná.
 
-  a.  Spustit `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`
+  a.  Spusťte `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`.
 
     **Očekávaný výsledek**: uvádí obsah adresáře Azure rozšířeného rozšíření monitorování.
 
-  b. Spustit `ps -ax | grep AzureEnhanced`
+  b. Spusťte `ps -ax | grep AzureEnhanced`.
 
      **Očekávaný výsledek**: Zobrazí jednu položku podobnou: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 3. Nainstalujte agenta hostitele SAP, jak je popsáno v Poznámka SAP [1031096]a zkontrolujte výstup `saposcol`.
 
-  a.  Spustit `/usr/sap/hostctrl/exe/saposcol -d`
+  a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
 
-  b.  Spustit `dump ccm`
+  b.  Spusťte `dump ccm`.
 
   c.  Zkontrolujte, zda **Virtualization_Configuration\Enhanced monitorování přístupu** metrika **true**.
 

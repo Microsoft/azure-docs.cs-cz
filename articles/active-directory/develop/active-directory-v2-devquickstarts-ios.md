@@ -1,11 +1,9 @@
 ---
-title: "Přidání přihlášení do aplikace pro iOS pomocí koncového bodu v2.0 Azure AD | Microsoft Docs"
-description: "Jak sestavit aplikaci pro iOS, který se přihlásí uživatele s i osobní účet Microsoft a pracovní nebo školní účty pomocí knihovny třetích stran."
+title: Přidání přihlášení do aplikace pro iOS pomocí koncového bodu v2.0 Azure AD | Microsoft Docs
+description: Jak sestavit aplikaci pro iOS, který se přihlásí uživatele s i osobní účet Microsoft a pracovní nebo školní účty pomocí knihovny třetích stran.
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5323f9a514c3c1c6134656e41af68e479fd8fdc5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Přidání přihlášení k aplikaci pro iOS pomocí rozhraní Graph API pomocí koncového bodu v2.0 knihovnu třetích stran
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Vývojáři mohou použít žádné knihovny, které chtějí integrovat našich služeb. Což vývojářům používat naše platforma s další knihovny, jsme jste zapisují několik návody podobné následujícímu abychom ukázali, jak nakonfigurovat třetích stran knihovny pro připojení k identitu platformy Microsoft. Většina knihovny, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) se může připojit k Microsoft identity platform.
@@ -564,7 +562,7 @@ Nakonec se podíváme, jak vrátit data do MasterViewController. Data se vrátí
 ```
 
 
-## <a name="run-the-sample"></a>Spustit ukázku
+## <a name="run-the-sample"></a>Spuštění ukázky
 Pokud jste používali kostru nebo a potom společně s průvodce měli spustit nyní vaší aplikace. Spusťte simulátoru a klikněte na **přihlášení** k používání aplikace.
 
 ## <a name="get-security-updates-for-our-product"></a>Získejte bezpečnostní aktualizace našich produktů

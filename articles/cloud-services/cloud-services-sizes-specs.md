@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bde4347c487be8986c72435172b18c10effa0690
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro cloudové služby
 Toto téma popisuje možnosti dostupné velikosti a pro cloudové služby role instance (webových rolí a rolí pracovního procesu). Je také důležité informace o nasazení myslet při plánování použití těchto prostředků. ID, které vložíte v má velikost pro všechny vaše [souboru definice služby](cloud-services-model-and-package.md#csdef). Ceny pro každou velikost jsou k dispozici na [ceník služby Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) stránky.
@@ -59,10 +59,10 @@ Vytvořili jsme koncept výpočetní jednotky Azure (ACU) poskytnout způsob por
 | Rodina SKU | ACU na jádro |
 | --- | --- |
 | [ExtraSmall](#a-series) |50 |
-| [Small-ExtraLarge](#a-series) |100 |
+| [Malá ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
-| [A v2](#av2-series) |100 |
+| [V2](#av2-series) |100 |
 | [D](#d-series) |160 |
 | [D v2](#dv2-series) |160 - 190* |
 | [D v3](#dv3-series) |160 - 190* |
@@ -81,21 +81,21 @@ Následující tabulky pro jednotlivé velikosti virtuálních počítačů uvá
 * Maximální šířka pásma sítě je maximální přenosová kapacita vyhrazená a přidělená danému typu virtuálního počítače. Maximální šířka pásma slouží pro orientaci při výběru správného typu virtuálního počítače, aby byla zajištěna dostatečná síťová kapacita. Při přesunu mezi nízká, střední, vysoká a velmi vysoké, odpovídajícím způsobem zvyšuje propustnost. Skutečný výkon sítě bude záviset na mnoha faktorech včetně zatížení aplikací a sítě a síťového nastavení aplikace.
 
 ## <a name="a-series"></a>A-Series
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní HDD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0,768        | 20                   | 1 / malá |
-| Krátkodobé používání           | 1         | 1,75         | 225                  | 1 / střední |
-| Střednědobé používání          | 2         | 3,5 GB       | 490                  | 1 / střední |
-| Dlouhodobé používání           | 4         | 7            | 1000                 | 2 / vysoká |
-| ExtraLarge      | 8         | 14           | 2040                 | 4 / vysoká |
-| A5              | 2         | 14           | 490                  | 1 / střední |
-| A6              | 4         | 28           | 1000                 | 2 / vysoká |
-| A7              | 8         | 56           | 2040                 | 4 / vysoká |
+| Krátkodobé používání           | 1         | 1,75         | 70                   | 1 / střední |
+| Střednědobé používání          | 2         | 3,5          | 135                  | 1 / střední |
+| Dlouhodobé používání           | 4         | 7            | 285                  | 2 / vysoká |
+| ExtraLarge      | 8         | 14           | 605                  | 4 / vysoká |
+| A5              | 2         | 14           | 135                  | 1 / střední |
+| A6              | 4         | 28           | 285                  | 2 / vysoká |
+| A7              | 8         | 56           | 605                  | 4 / vysoká |
 
 ## <a name="a-series---compute-intensive-instances"></a>A-series – Instance náročné na výpočetní výkon
 Informace a důležité informace o použití těchto velikosti najdete v tématu [vysokovýkonné výpočetní velikosti virtuálních počítačů](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní HDD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště: GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2 / vysoká |
 | A9*             |16         | 112          | 1817                 | 4 / velmi vysoká |
@@ -106,7 +106,7 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 
 ## <a name="av2-series"></a>Av2-series
 
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1 / střední                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2 / střední                 |
@@ -118,7 +118,7 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 
 
 ## <a name="d-series"></a>D-series
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1 / střední |
 | Standard_D2     | 2         | 7            | 100                  | 2 / vysoká |
@@ -130,7 +130,7 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 | Standard_D14    | 16        | 112          | 800                  | 8 / velmi vysoká |
 
 ## <a name="dv2-series"></a>Dv2-series
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1 / střední |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2 / vysoká |
@@ -145,7 +145,7 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 
 ## <a name="dv3-series"></a>Dv3-series
 
-| Velikost            | Procesorová jádra | Paměť: GiB   | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB   | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2 / střední |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2 / vysoká |
@@ -156,7 +156,7 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 
 ## <a name="ev3-series"></a>Ev3-series
 
-| Velikost            | Procesorová jádra | Paměť: GiB   | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB   | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2 / střední |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2 / vysoká |
@@ -167,20 +167,20 @@ Informace a důležité informace o použití těchto velikosti najdete v témat
 
 
 ## <a name="g-series"></a>G-series
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1 / vysoká |
 | Standard_G2     | 4         | 56           | 768                  |2 / vysoká |
 | Standard_G3     | 8         | 112          | 1 536                |4 / velmi vysoká |
 | Standard_G4     | 16        | 224          | 3 072                |8 / velmi vysoká |
-| Standard_G5     | 32        | 448          | 6 144                |8 / velmi vysoká |
+| Na úrovni Standard_G5     | 32        | 448          | 6 144                |8 / velmi vysoká |
 
 ## <a name="h-series"></a>H-series
 Virtuální počítače Azure H-series jsou další generací počítačů s vysokým výpočetním výkonem a jsou zaměřené na výpočetně vysoce náročné úlohy, jako je např. molekulární modelování, výpočty dynamiky tekutin a podobně. Tyto 8 a 16 jader virtuální počítače jsou postavené na technologii Intel. Haswell E5-2667 V3 procesoru poskytuje funkci DDR4 paměti a místní úložiště založená na SSD.
 
 Řada H-series nabízí kromě značného výkonu procesorů i řadu možností přímého přístupu do paměti vzdáleného počítače (RDMA) s nízkou latencí díky technologii FDR InfiniBand, a množství konfigurací paměti pro podporu požadavků na vysoce paměťově náročné výpočetní operace.
 
-| Velikost            | Procesorová jádra | Paměť: GiB  | Místní SSD: GiB       | Max. počet NIC / Šířka pásma sítě |
+| Velikost            | Procesorová jádra | Paměť: GiB  | Dočasné úložiště (SSD): GiB       | Max. počet NIC / Šířka pásma sítě |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8 / vysoká |
 | Standard_H16    | 16        | 112          | 2000                 | 8 / velmi vysoká |

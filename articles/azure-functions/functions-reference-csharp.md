@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9de8119cbde486800639bc5f3559a1a2859ec204
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcí jazyka C# skript (.csx) referenční informace pro vývojáře
 
@@ -335,7 +335,7 @@ Následující sestavení může být odkazován jednoduchý název (například
 ## <a name="referencing-custom-assemblies"></a>Odkazování na vlastní sestavení
 
 Chcete-li vlastního sestavení, můžete použít buď *sdílené* sestavení nebo *privátní* sestavení:
-- Sdílená sestavení jsou sdíleny ve všech funkcí v rámci funkce aplikace. Chcete-li vlastního sestavení, nahrajte sestavení do funkce aplikace, například v `bin` složku v kořenu aplikace funkce. 
+- Sdílená sestavení jsou sdíleny ve všech funkcí v rámci funkce aplikace. Chcete-li vlastního sestavení, nahrajte sestavení do složky s názvem `bin` ve vaší [funkce aplikace kořenové složky](functions-reference.md#folder-structure) (wwwroot). 
 - Soukromá sestavení jsou součástí kontextu danou funkci a podporovat zkušební načtení různých verzí. Soukromá sestavení musí být nahrán v `bin` složky v adresáři funkce. Odkaz sestavení pomocí názvu souboru, jako třeba `#r "MyAssembly.dll"`. 
 
 Informace o tom, jak odeslat soubory do složky funkce, najdete v části na [balíček správy](#using-nuget-packages).

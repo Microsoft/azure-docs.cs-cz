@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f24dd917f4197f933fd58f7c646c18372da8593
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položky marketplace z Azure do Azure zásobníku
 
@@ -31,7 +31,7 @@ Jak se rozhodnete, který obsah, který chcete zahrnout do vaší zásobník Azu
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Stažení položky marketplace ve scénáři připojené (s připojením k Internetu)
 
 1. Chcete-li stáhnout položky marketplace, je nutné nejprve [zaregistrovat zásobník Azure s Azure](azure-stack-register.md).
-2. Přihlaste se k portálu správce Azure zásobníku (https://portal.local.azurestack.external).
+2. Přihlaste se k portálu správce Azure zásobníku (pro ASDK, použijte https://portal.local.azurestack.external).
 3. Některé položky marketplace. může být velký. Zkontrolujte a ujistěte se, zda máte dostatek místa v systému klepnutím na tlačítko **zprostředkovatelé prostředků** > **úložiště**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
@@ -60,7 +60,7 @@ Před použitím nástroje syndikace marketplace, ujistěte se, že máte [zareg
 
 Z počítače, který má připojení k Internetu použijte následující postup ke stažení položky marketplace. vyžaduje:
 
-1. Otevřete konzolu prostředí PowerShell jako správce a [nainstalovat konkrétní moduly Powershellu zásobník Azure](azure-stack-powershell-install.md). Ujistěte se, že instalujete **prostředí PowerShell, verze 1.2.11 nebo vyšší**.  
+1. Otevřete konzolu prostředí PowerShell jako správce a [nainstalovat konkrétní moduly Powershellu zásobník Azure](azure-stack-powershell-install.md). Ujistěte se, že instalujete **modulu PowerShell zásobník Azure verze 1.2.11 nebo vyšší**.  
 
 2. Přidáte účet Azure, který jste použili k registraci Azure zásobníku. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny bez parametrů. Zobrazí se výzva k zadání přihlašovacích údajů účtu Azure a možná budete muset použít 2 ověřování na základě konfigurace vašeho účtu.  
 
@@ -92,7 +92,7 @@ Z počítače, který má připojení k Internetu použijte následující postu
 5. Naimportujte modul syndikace a spusťte nástroj spuštěním následujících příkazů:  
 
    ```powershell
-   Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
+   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
      -destination "<Destination folder path>" `
@@ -100,21 +100,28 @@ Z počítače, který má připojení k Internetu použijte následující postu
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
 
-6. Když je nástroj spuštěn, zobrazí se výzva k zadání přihlašovacích údajů účtu Azure. Přihlaste se k účtu Azure, který jste použili k registraci Azure zásobníku. Po přihlášení úspěšné, zobrazí se následující obrazovka s seznamu položky marketplace. k dispozici.  
+6. Když je nástroj spuštěn, zobrazí se výzva k zadání přihlašovacích údajů účtu Azure. Přihlaste se k účtu Azure, který jste použili k registraci Azure zásobníku. Po přihlášení úspěšné, měli byste vidět následující obrazovka s seznamu položky marketplace. k dispozici.  
 
    ![Místní položky Azure Marketplace.](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
 7. Vyberte bitovou kopii, kterou chcete stáhnout a poznamenejte si verzi obrázku. Tím, že podržíte klávesu Ctrl můžete vybrat více bitových kopií. Používáte verzi obrázku pro import bitovou kopii v další části.  Klikněte na tlačítko **Ok**a pak přijměte právní podmínky kliknutím na **Ano**. Můžete také filtrovat seznam bitové kopie pomocí **přidat kritéria** možnost. 
 
-   Stahování trvá několik minut v závislosti na velikosti obrázku. Po stažení bitové kopie a je k dispozici v cílové cestě, která jste zadali dříve. Stahování obsahuje položky souboru a Galerie virtuální pevný disk ve formátu Azpkg.
+   Stahování trvá několik minut v závislosti na velikosti obrázku. Po stažení bitové kopie a je k dispozici v cílové cestě, která jste zadali dříve. Stahování obsahuje soubor virtuálního pevného disku (pro virtuální počítače) nebo. Soubor ZIP (pro rozšíření virtuálního počítače) a položky galerie v Azpkg formátu.
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>Importovat image a publikujete ho v zásobníku Azure marketplace
+Existují tři různé typy položek na webu Marketplace: virtuálních počítačů, rozšíření virtuálního počítače a šablony řešení. Šablony řešení jsou popsané dále.
+> [!NOTE]
+> Rozšíření virtuálního počítače nelze přidat do Azure zásobníku v tuto chvíli.
 
 1. Po stažení balíčku bitové kopie a galerie, uložte je a obsah ve složce AzureStack. nástroje pro hlavní na vyměnitelnou diskovou jednotku a zkopírujte jej do prostředí Azure zásobníku (můžete ji zkopírovat místně do libovolného umístění, jako například: "C:\MarketplaceImages").     
 
 2. Před importem bitovou kopii, je nutné připojit k Azure zásobníku operátor prostředí pomocí kroků popsaných v [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](azure-stack-powershell-configure-admin.md).  
 
-3. Pomocí rutiny Add-AzsVMImage importujte bitovou kopii do protokolů Azure. Při použití této rutiny, nezapomeňte nahradit *vydavatele*, *nabízejí*a další hodnoty parametrů s hodnotami bitové kopie, který chcete importovat. Můžete získat *vydavatele*, *nabízejí*, a *sku* hodnoty bitové kopie z objektu elementu imageReference Azpkg souboru, který jste předtím stáhli a  *verze* hodnotu z kroku 6 v předchozí části.
+3. Pokud stahování zahrnuty malý soubor 3MB virtuální pevný disk s názvem fixed3.vhd, je šablona řešení. Tento soubor není potřeba; přejděte ke kroku 5. Zajistěte, aby že si stáhnout všechny závislé položky, které je uvedené v popisu pro stahování.
+
+4. Pomocí rutiny Add-AzsVMImage importujte bitovou kopii do protokolů Azure. Při použití této rutiny, nezapomeňte nahradit *vydavatele*, *nabízejí*a další hodnoty parametrů s hodnotami bitové kopie, který chcete importovat. Můžete získat *vydavatele*, *nabízejí*, a *sku* hodnoty bitové kopie z objektu elementu imageReference Azpkg souboru, který jste předtím stáhli a  *verze* hodnotu z kroku 6 v předchozí části.
+
+Pokud chcete najít elementu imageReference, budete muset přejmenovat soubor AZPKG s. ZIP rozšíření, rozbalte ho do dočasného umístění a otevřete soubor DeploymentTemplates\CreateUiDefinition.json v textovém editoru. Najděte v této části:
 
    ```json
    "imageReference": {
@@ -140,9 +147,9 @@ Z počítače, který má připojení k Internetu použijte následující postu
     -Location Local
    ```
 
-4. Použití portálu k nahrání vaší položku Marketplace. (. Azpkg) do úložiště objektů Blob Azure zásobníku. Můžete nahrát do místního úložiště zásobník Azure nebo nahrát do Azure Storage. (Je dočasné umístění balíčku.) Ujistěte se, že objekt blob je veřejně přístupný a poznamenejte si identifikátor URI.  
+5. Použití portálu k nahrání vaší položku Marketplace. (. Azpkg) do úložiště objektů Blob Azure zásobníku. Můžete nahrát do místního úložiště zásobník Azure nebo nahrát do Azure Storage. (Je dočasné umístění balíčku.) Ujistěte se, že objekt blob je veřejně přístupný a poznamenejte si identifikátor URI.  
 
-5. Publikovat položku marketplace. zásobník Azure pomocí **přidat AzsGalleryItem**. Příklad:
+6. Publikovat položku marketplace. zásobník Azure pomocí **přidat AzsGalleryItem**. Příklad:
 
    ```powershell
    Add-AzsGalleryItem `
@@ -150,7 +157,7 @@ Z počítače, který má připojení k Internetu použijte následující postu
      –Verbose
    ```
 
-6. Po publikování položky galerie, můžete ji z zobrazit **nový** > **Marketplace** podokně.  
+7. Po publikování položky galerie, můžete ji z zobrazit **nový** > **Marketplace** podokně. Pokud stahování byla šablona řešení, ujistěte se, že jste si stáhli také závislé image virtuálního pevného disku.
 
    ![Marketplace](./media/azure-stack-download-azure-marketplace-item/image06.png)
 

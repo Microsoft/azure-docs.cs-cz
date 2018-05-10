@@ -3,17 +3,17 @@ title: Správě Azure Kubernetes clusteru pomocí webového uživatelského rozh
 description: Pomocí řídicího panelu Kubernetes v AKS
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cdb406c5a0a314562ae886c797c5ebd9dc5f8796
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Řídicí panel Kubernetes s Azure Kubernetes služby (AKS)
 

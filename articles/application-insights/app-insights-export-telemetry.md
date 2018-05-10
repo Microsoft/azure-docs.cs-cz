@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: mbullwin
-ms.openlocfilehash: 05d271eb7d046819bb8fc2be20623cba0000d8f4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 942cc355c186b73e0b8802bfbf79ef8b4b39191a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete zachovat telemetrie po dobu delší než doba uchování standardní? Nebo ji zpracovat nějakým způsobem specializované? Průběžné Export je ideální pro tento. Události, které vidíte na portálu služby Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud můžete stáhnout vaše data a zápis, ať kódu je třeba zpracovat.  
 
-Pomocí průběžné exportovat mohou být účtovány dalších poplatků. Zkontrolujte vaše [cenový model](http://azure.microsoft.com/pricing/details/application-insights/).
+Pomocí průběžné exportovat mohou být účtovány dalších poplatků. Zkontrolujte vaše [cenový model](https://azure.microsoft.com/pricing/details/application-insights/).
 
 Před nastavením průběžné export existují nějaké alternativy, které můžete vzít v úvahu:
 

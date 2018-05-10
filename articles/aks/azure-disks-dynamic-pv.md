@@ -3,16 +3,16 @@ title: Azure Disk pomocí AKS
 description: Disky systému Azure pomocí AKS
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 5c82659e4dd980b9285d81d51eb17b227ec33035
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c9f3c851507c1120670f513479bc448fed656141
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trvalé svazky s disky systému Azure
 

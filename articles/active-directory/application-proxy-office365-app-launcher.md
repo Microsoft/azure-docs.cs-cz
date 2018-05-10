@@ -1,25 +1,25 @@
 ---
-title: "Nastavit vlastní domovskou stránku pro publikovaných aplikací pomocí proxy aplikace služby Azure AD | Microsoft Docs"
-description: "Popisuje základní informace o Azure AD Application Proxy konektory"
+title: Nastavit vlastní domovskou stránku pro publikovaných aplikací pomocí proxy aplikace služby Azure AD | Microsoft Docs
+description: Popisuje základní informace o Azure AD Application Proxy konektory
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d31100015a11bc57d488f1d6af93db8526e38968
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 1627f3590bd92f2460368cffab48d43c5a82d3c4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavit vlastní domovskou stránku pro publikovaných aplikací pomocí proxy aplikace služby Azure AD
 
@@ -42,7 +42,7 @@ Než budete nastavit adresu URL domovskou stránku, mějte na paměti následuj�
 
 * Zajistěte, aby cestu, kterou zadáte cestu subdomény kořenové domény adresy URL.
 
-  Pokud adresa URL kořenové domény, například https://apps.contoso.com/app1/, adresu URL domovskou stránku, kterou nakonfigurujete musí začínat https://apps.contoso.com/app1/.
+  Pokud je adresa URL kořenové domény, například https://apps.contoso.com/app1/, adresa URL domovskou stránku, který nakonfigurujete musí začínat https://apps.contoso.com/app1/.
 
 * Pokud změníte publikované aplikace, může změna resetovat hodnotu adresy URL domovské stránky. Při aktualizaci aplikace v budoucnu, měli znovu zkontrolovat a v případě potřeby aktualizujte adresu URL domovské stránky.
 
@@ -119,7 +119,7 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s danou ho
     $appnew = New-Object “Microsoft.Open.AzureAD.Model.Application”
     ```
 
-3. Na hodnotu, která chcete nastavte adresu URL domovské stránky. Hodnota musí být cesta subdomény publikované aplikace. Například, pokud změníte adresu URL domovské stránky z *https://sharepoint-iddemo.msappproxy.net/* k *https://sharepoint-iddemo.msappproxy.net/hybrid/*, uživatelům aplikace přejít přímo na domovské stránce vlastní .
+3. Na hodnotu, která chcete nastavte adresu URL domovské stránky. Hodnota musí být cesta subdomény publikované aplikace. Například, pokud změníte adresu URL domovské stránky z *https://sharepoint-iddemo.msappproxy.net/* k *https://sharepoint-iddemo.msappproxy.net/hybrid/*, uživatelům aplikace přejít přímo na domovské stránce vlastní.
 
     ```
     $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”

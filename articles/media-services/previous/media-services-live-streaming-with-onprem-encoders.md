@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e1a7c3cec7925c6fb01aafba152dde2383cee442
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi
 
@@ -34,7 +34,7 @@ Ve službě Azure Media Services *kanál* představuje cestu pro zpracování da
   > Použití průchozí metody je nejekonomičtější způsob, jak živě Streamovat.
 
 
-* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTP (MPEG-TS), RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase příchozího datového proudu jednou přenosovou rychlostí do datového proudu více přenosovými rychlostmi (adaptivní) videa. Služba Media Services doručí datový proud zákazníkům, kteří ji.
+* Místní kodér za provozu odešle datový proud s jednou přenosovou rychlostí do kanálu, který je povoleno provádět kódování v reálném čase pomocí služby Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase příchozího datového proudu jednou přenosovou rychlostí do datového proudu více přenosovými rychlostmi (adaptivní) videa. Služba Media Services doručí datový proud zákazníkům, kteří ji.
 
 Od verze Media Services 2.10, když vytvoříte kanál, můžete určit, jak se mají kanál pro příjem vstupního datového proudu. Můžete také určete, jestli má kanál provést kódování v reálném čase z datového proudu. Máte dvě možnosti:
 

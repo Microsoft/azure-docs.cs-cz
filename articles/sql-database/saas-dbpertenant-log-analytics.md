@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 02c380c78fa773b56a3c8b666e890836a3d8e54b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Nastavení a použití analýzy protokolů víceklientské aplikace SaaS databáze SQL
 
@@ -65,7 +65,7 @@ Adresář Wingtip lístky SaaS víceklientské databázové skripty a zdrojový 
 
 Analýzy protokolů je samostatná služba, která musí být nakonfigurovaná. Analýzy protokolů shromažďuje data protokolu, telemetrie a metriky v pracovním prostoru analýzy protokolů. Stejně jako ostatní prostředky v Azure je třeba vytvořit pracovní prostor analýzy protokolů. Pracovní prostor nemusí být vytvořen ve stejné skupině prostředků jako aplikace, které sleduje. Provádění tak často, když je nejvhodnější. Pro aplikace Wingtip lístky použijte jedna skupina prostředků a ujistěte se, že je odstranit pracovní prostor s aplikací.
 
-1. V prostředí PowerShell ISE, otevřete *... \\WingtipTicketsSaaS-MultiTenantDb-master\\učení moduly\\sledování výkonu a správy\\protokolu analýzy\\** ukázku LogAnalytics.ps1***.
+1. V prostředí PowerShell ISE, otevřete *... \\WingtipTicketsSaaS-MultiTenantDb-master\\učení moduly\\sledování výkonu a správy\\protokolu analýzy\\ukázku LogAnalytics.ps1*.
 2. Pokud chcete spustit skript, stisknutím klávesy F5.
 
 Nyní můžete otevřít analýzy protokolů v portálu Azure nebo na portálu služby Operations Management Suite. Trvá několik minut shromažďování telemetrických dat v pracovním prostoru analýzy protokolů a zpřístupněte ho. Čím delší je ponechat systému shromažďování diagnostických dat, je více zajímavé zkušenosti. 

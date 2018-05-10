@@ -1,66 +1,66 @@
 ---
-title: Azure definice strukturu zásad. | Microsoft Docs
-description: Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaká opatření se mají provést.
+title: Struktura definic Azure Policy
+description: Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaký vliv má provést.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/30/2018
+ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: ba5380813266b3baf981eaf39eda384ad8c91d5a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 3750bc409753868566c91c01cf6093f439c599f9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
-Definice zásad prostředků používané zásad Azure umožňuje vytvořit konvence pro prostředky ve vaší organizaci prostřednictvím popisu, když je tato zásada vynucená a jaká opatření se mají provést. Definováním konvence můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete zadat, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měli konkrétní značku. Zásady jsou zdědí všechny podřízené prostředky. Ano Pokud je zásada pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
+Definice zásad prostředků používané zásad Azure umožňuje vytvořit konvence pro prostředky ve vaší organizaci prostřednictvím popisu, když je tato zásada vynucená a jaký vliv má provést. Definováním konvence můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete zadat, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měli konkrétní značku. Zásady jsou zdědí všechny podřízené prostředky. Ano Pokud je zásada pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
 
 Schéma používá zásad Azure naleznete zde: [https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](https://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json)
 
 JSON použijete k vytvoření definice zásady. Definice zásad obsahuje prvky pro:
 
-* režim
-* parameters
-* Zobrazovaný název
-* description
-* Pravidlo zásad
-  * logické vyhodnocení
-  * Platnost
+- režim
+- parameters
+- Zobrazovaný název
+- description
+- Pravidlo zásad
+  - logické vyhodnocení
+  - Platnost
 
 Například následujícím kódu JSON zobrazuje zásadu, která omezuje, kdy jsou prostředky nasazené:
 
 ```json
 {
-  "properties": {
-    "mode": "all",
-    "parameters": {
-      "allowedLocations": {
-        "type": "array",
-        "metadata": {
-          "description": "The list of locations that can be specified when deploying resources",
-          "strongType": "location",
-          "displayName": "Allowed locations"
+    "properties": {
+        "mode": "all",
+        "parameters": {
+            "allowedLocations": {
+                "type": "array",
+                "metadata": {
+                    "description": "The list of locations that can be specified when deploying resources",
+                    "strongType": "location",
+                    "displayName": "Allowed locations"
+                }
+            }
+        },
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "policyRule": {
+            "if": {
+                "not": {
+                    "field": "location",
+                    "in": "[parameters('allowedLocations')]"
+                }
+            },
+            "then": {
+                "effect": "deny"
+            }
         }
-      }
-    },
-    "displayName": "Allowed locations",
-    "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-    "policyRule": {
-      "if": {
-        "not": {
-          "field": "location",
-          "in": "[parameters('allowedLocations')]"
-        }
-      },
-      "then": {
-        "effect": "deny"
-      }
     }
-  }
 }
 ```
 
@@ -69,8 +69,9 @@ Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samp
 ## <a name="mode"></a>Mode
 
 **Režimu** Určuje, jaké typy prostředků se vyhodnotí pro zásadu. Podporované režimy jsou:
-* `all`: vyhodnocení skupiny prostředků a všechny typy prostředků
-* `indexed`: pouze vyhodnotit typy prostředků, které podporují značky a umístění
+
+- `all`: vyhodnocení skupiny prostředků a všechny typy prostředků
+- `indexed`: pouze vyhodnotit typy prostředků, které podporují značky a umístění
 
 Doporučujeme, abyste nastavili **režimu** k `all` ve většině případů. Všechny definice zásady vytvořené pomocí portálu použijte `all` režimu. Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure, můžete zadat **režimu** parametr ručně. Pokud definice zásady neobsahuje **režimu** hodnota je výchozí hodnota je `all` v prostředí Azure PowerShell a na `null` v rozhraní příkazového řádku Azure, což je totéž jako `indexed`, pro zpětné kompatibility.
 
@@ -82,30 +83,29 @@ Parametry zjednodušit vaší zásady správy snížením počtu definice zásad
 
 Můžete třeba definovat zásady pro vlastnosti prostředku, který omezit umístění, kde můžete nasadit prostředky. Při vytváření zásady, v takovém případě by deklarovat následující parametry:
 
-
 ```json
 "parameters": {
-  "allowedLocations": {
-    "type": "array",
-    "metadata": {
-      "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations",
-      "strongType": "location"
+    "allowedLocations": {
+        "type": "array",
+        "metadata": {
+            "description": "The list of allowed locations for resources.",
+            "displayName": "Allowed locations",
+            "strongType": "location"
+        }
     }
-  }
 }
 ```
 
 Typ parametru může být řetězec nebo pole. Vlastnost metadat slouží k nástroje, například na portálu Azure a zobrazte uživatelské informace.
 
-V rámci vlastnost metadat můžete použít **strongType** zajistit vybrat víc seznam možností v rámci portálu Azure.  Povolené hodnoty pro **strongType** aktuálně patří:
+V rámci vlastnost metadat, můžete použít **strongType** zajistit vybrat víc seznam možností v rámci portálu Azure.  Povolené hodnoty pro **strongType** aktuálně patří:
 
-* `"location"`
-* `"resourceTypes"`
-* `"storageSkus"`
-* `"vmSKUs"`
-* `"existingResourceGroups"`
-* `"omsWorkspace"`
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 V pravidle zásady můžete odkazovat na parametry s následující syntaxí:
 
@@ -116,9 +116,18 @@ V pravidle zásady můžete odkazovat na parametry s následující syntaxí:
 }
 ```
 
+## <a name="definition-location"></a>Umístění definice
+
+Při vytváření definice initiative nebo zásady, je třeba zadat umístění definice.
+
+Definice umístění Určuje obor, ke kterému lze přiřadit definici initiative nebo zásad. Umístění lze zadat jako skupinu pro správu nebo předplatné.
+
+> [!NOTE]
+> Pokud budete chtít použít tuto definici zásady pro více předplatných, musí být umístění obsahující odběry, které chcete přiřadit initiative nebo zásady skupiny pro správu.
+
 ## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
-Můžete použít **displayName** a **popis** identifikovat definice zásady a poskytují kontext pro při použití.
+Můžete použít **displayName** a **popis** k identifikaci definice zásady a poskytují kontext pro při použití.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -128,12 +137,12 @@ V **pak** bloku, definujete o tom, že se stane, když **Pokud** podmínky jsou 
 
 ```json
 {
-  "if": {
-    <condition> | <logical operator>
-  },
-  "then": {
-    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
-  }
+    "if": {
+        <condition> | <logical operator>
+    },
+    "then": {
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+    }
 }
 ```
 
@@ -141,9 +150,9 @@ V **pak** bloku, definujete o tom, že se stane, když **Pokud** podmínky jsou 
 
 Jsou podporované logické operátory:
 
-* `"not": {condition  or operator}`
-* `"allOf": [{condition or operator},{condition or operator}]`
-* `"anyOf": [{condition or operator},{condition or operator}]`
+- `"not": {condition  or operator}`
+- `"allOf": [{condition or operator},{condition or operator}]`
+- `"anyOf": [{condition or operator},{condition or operator}]`
 
 **Není** syntaxe Invertuje výběr výsledek podmínku. **AllOf** syntaxe (podobně jako logické **a** operaci) vyžaduje všechny podmínek. **AnyOf** syntaxe (podobně jako logické **nebo** operaci) vyžaduje jeden nebo více podmínek.
 
@@ -151,18 +160,17 @@ Logické operátory lze vnořit. Následující příklad ukazuje **není** oper
 
 ```json
 "if": {
-  "allOf": [
-    {
-      "not": {
-        "field": "tags",
-        "containsKey": "application"
-      }
-    },
-    {
-      "field": "type",
-      "equals": "Microsoft.Storage/storageAccounts"
-    }
-  ]
+    "allOf": [{
+            "not": {
+                "field": "tags",
+                "containsKey": "application"
+            }
+        },
+        {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+        }
+    ]
 },
 ```
 
@@ -170,42 +178,44 @@ Logické operátory lze vnořit. Následující příklad ukazuje **není** oper
 
 Podmínka vyhodnocena jako jestli **pole** splňuje určitá kritéria. Jsou podporované podmínky:
 
-* `"equals": "value"`
-* `"notEquals": "value"`
-* `"like": "value"`
-* `"notLike": "value"`
-* `"match": "value"`
-* `"notMatch": "value"`
-* `"contains": "value"`
-* `"notContains": "value"`
-* `"in": ["value1","value2"]`
-* `"notIn": ["value1","value2"]`
-* `"containsKey": "keyName"`
-* `"notContainsKey": "keyName"`
-* `"exists": "bool"`
+- `"equals": "value"`
+- `"notEquals": "value"`
+- `"like": "value"`
+- `"notLike": "value"`
+- `"match": "value"`
+- `"notMatch": "value"`
+- `"contains": "value"`
+- `"notContains": "value"`
+- `"in": ["value1","value2"]`
+- `"notIn": ["value1","value2"]`
+- `"containsKey": "keyName"`
+- `"notContainsKey": "keyName"`
+- `"exists": "bool"`
 
 Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak (*) v hodnotě.
 
 Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [povolit více vzory názvů](scripts/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pole
+
 Podmínky se vytváří pomocí pole. Pole představuje vlastnosti v datová část požadavku prostředku, který se používá k popisu stavu prostředku.  
 
 Podporovány jsou následující pole:
 
-* `name`
-* `fullName`
-  * Vrátí úplný název prostředku, včetně všech nadřazených položek (například "myServer/databáze")
-* `kind`
-* `type`
-* `location`
-* `tags`
-* `tags.tagName`
-* `tags[tagName]`
-  * Tato syntaxe závorky podporuje názvy značek, které obsahovat tečky.
-* Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
+- `name`
+- `fullName`
+  - Vrátí úplný název prostředku, včetně všech nadřazených položek (například "myServer/databáze")
+- `kind`
+- `type`
+- `location`
+- `tags`
+- `tags.tagName`
+- `tags[tagName]`
+  - Tato syntaxe závorky podporuje názvy značek, které obsahovat tečky.
+- Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
 
 ### <a name="alternative-accessors"></a>Alternativní přístupové objekty
+
 **Pole** je primární přistupujícího objektu používá v pravidla zásad. Zkontroluje přímo k prostředku, který se vyhodnocuje. Však zásady podporuje jeden další přistupujícího objektu **zdroj**.
 
 ```json
@@ -215,34 +225,32 @@ Podporovány jsou následující pole:
 
 **Zdroj** podporuje pouze jednu hodnotu, **akce**. Akce vrátí autorizace akce požadavek, který se vyhodnocuje. Autorizace akce jsou zveřejněné v části autorizace [protokol aktivit](../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
 
-Když je zásad vyhodnocení existující prostředky na pozadí, nastaví **akce** k `/write` autorizace akce u typu prostředku.
+Zásady je vyhodnocení existující prostředky na pozadí, nastaví **akce** k `/write` autorizace akce u typu prostředku.
 
 ### <a name="effect"></a>Efekt
+
 Zásady podporuje následující typy vliv:
 
-* **Odepřít**: vygeneruje událost v protokolu auditování a požadavek se nezdaří
-* **Audit**: vygeneruje událost upozornění v protokolu auditu ale nesplní žádost
-* **Připojit**: Přidá definovanou sadu pole k této žádosti
-* **AuditIfNotExists**: umožňuje auditování, pokud prostředek neexistuje.
-* **DeployIfNotExists**: nasadí prostředku, pokud ještě neexistuje. V současné době tímto účelem je podporována pouze prostřednictvím integrovaných zásad.
+- **Odepřít**: vygeneruje událost v protokolu auditování a požadavek se nezdaří
+- **Audit**: vygeneruje událost upozornění v protokolu auditu ale nesplní žádost
+- **Připojit**: Přidá definovanou sadu pole k této žádosti
+- **AuditIfNotExists**: umožňuje auditování, pokud prostředek neexistuje.
+- **DeployIfNotExists**: nasadí prostředku, pokud ještě neexistuje. V současné době tímto účelem je podporována pouze prostřednictvím integrovaných zásad.
 
 Pro **připojit**, je nutné zadat následující podrobnosti:
 
 ```json
 "effect": "append",
-"details": [
-  {
+"details": [{
     "field": "field name",
     "value": "value of the field"
-  }
-]
+}]
 ```
 
 Hodnota může být řetězec nebo objekt formátu JSON.
 
 S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci související prostředek a použít pravidlo a odpovídající efekt, pokud tento prostředek neexistuje. Například může vyžadovat, že sledovací proces sítě nasazuje pro všechny virtuální sítě.
 Příklad audit, když není nasazený rozšíření virtuálního počítače, naleznete v části [Audit Pokud rozšíření neexistuje](scripts/audit-ext-not-exist.md).
-
 
 ## <a name="aliases"></a>Aliasy
 
@@ -369,7 +377,6 @@ Povolit iniciativy seskupit několik související definice zásad ke zjednoduš
 
 Následující příklad ukazuje, jak vytvořit initiative pro zpracování dvě značky: `costCenter` a `productName`. Chcete-li použít výchozí hodnota značky používá dvě předdefinované zásady.
 
-
 ```json
 {
     "properties": {
@@ -390,8 +397,7 @@ Následující příklad ukazuje, jak vytvořit initiative pro zpracování dvě
                 }
             }
         },
-        "policyDefinitions": [
-            {
+        "policyDefinitions": [{
                 "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "parameters": {
                     "tagName": {

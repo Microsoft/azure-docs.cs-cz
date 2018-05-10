@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69ee7baeda524647dd259ea22bb948b0168fd913
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchický model prostředků a základní koncepty databáze Azure Cosmos
 
@@ -50,7 +50,7 @@ Jak ukazuje následující diagram, Azure DB Cosmos hierarchické **model prost�
 ![Model hierarchické prostředků Azure Cosmos DB][1]  
 **Model hierarchické prostředků**   
 
-Chcete-li začít pracovat s prostředky, je potřeba [vytvoření databázového účtu](create-sql-api-dotnet.md) pomocí svého předplatného Azure. Databázový účet se může skládat z sadu **databáze**, každá obsahuje několik **kolekce**, každý naopak obsahovat ** uložené procedury, aktivuje, funkce UDF, dokumenty a související  **přílohy**. Databáze také přiřazeni **uživatelé**, každý s sadu **oprávnění** pro přístup k kolekce, uložené procedury, triggery, funkce UDF, dokumenty nebo přílohy. Databáze, uživatelé, oprávnění a kolekce jsou systémem definované prostředky s dobře známými schématy, dokumenty a přílohy obsahují libovolný, uživatelem definovaný obsah JSON.  
+Chcete-li začít pracovat s prostředky, je potřeba [vytvoření databázového účtu](create-sql-api-dotnet.md) pomocí svého předplatného Azure. Databázový účet se může skládat z sadu **databáze**, každá obsahuje několik **kolekce**, každý naopak obsahovat **uložené procedury, aktivuje, funkce UDF, dokumenty a související přílohy**. Databáze také přiřazeni **uživatelé**, každý s sadu **oprávnění** pro přístup k kolekce, uložené procedury, triggery, funkce UDF, dokumenty nebo přílohy. Databáze, uživatelé, oprávnění a kolekce jsou systémem definované prostředky s dobře známými schématy, dokumenty a přílohy obsahují libovolný, uživatelem definovaný obsah JSON.  
 
 | Prostředek | Popis |
 | --- | --- |

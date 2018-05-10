@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Víceklientské SaaS databáze klientů vzory
 
@@ -88,7 +88,7 @@ Databáze SQL Azure poskytuje nástroje, které jsou nezbytné ke konfiguraci, s
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Operace škálování databáze za klienta
 
-Platforma Azure SQL Database má mnoho funkcí správy, které jsou navržené tak, aby správu velkého počtu databází ve velkém měřítku, jako jsou třeba i více než 100 000 databáze.  Tyto funkce usnadnění vyhovující vzoru databáze za klienta.
+Platforma Azure SQL Database má mnoho funkcí pro správu navržená ke správě velkého počtu databází ve velkém měřítku, jako jsou třeba i více než 100 000 databáze.  Tyto funkce usnadnění vyhovující vzoru databáze za klienta.
 
 Předpokládejme například, že systém má databáze 1000 klienta jako jeho pouze jednu databázi.  Databáze může mít 20 indexy.  Pokud systém převede na situaci, kdy 1000 jednoho klienta databáze, roste množství indexy na 20 000.  V databázi SQL v rámci [automatické ladění][docu-sql-db-automatic-tuning-771a], ve výchozím nastavení jsou povoleny automatické indexování funkce.  Automatické indexování spravuje za vás všechny 20 000 indexy a probíhající vytvořit a vyřazení optimalizace.  Tyto automatizované akce se provedou v rámci jednotlivých databáze a nejsou koordinované nebo omezené na základě podobné akce v jiných databázích.  Automatické indexování zpracovává indexy odlišně v zaneprázdněn databázi než v databázi méně zaneprázdněn.  Tento typ přizpůsobení správy indexu by nepraktické škálované databáze za klienta, pokud tato úloha obrovské správu měli provést ručně.
 
@@ -169,7 +169,7 @@ V tomto modelu hybridního databáze jednoho klienta pro klienty odběratele moh
 
 Následující tabulka shrnuje rozdíly mezi modely hlavní klientů.
 
-| Měření | Samostatná aplikace | Database-per-tenant | Horizontálně dělené více klientů |
+| Měření | Samostatná aplikace | Databáze za klienta | Horizontálně dělené více klientů |
 | :---------- | :------------- | :------------------ | :------------------- |
 | Měřítko | Střednědobé používání<br />1-100s | Velmi vysoké<br />1-100,000s | Unlimited<br />1-1,000,000s |
 | Izolaci klientů | Velmi vysoké | Vysoký | Nízká; s výjimkou žádným singleton klientem (která je samostatně do databáze. MT). |

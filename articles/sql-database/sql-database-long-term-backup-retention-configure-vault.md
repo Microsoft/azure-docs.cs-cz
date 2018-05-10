@@ -7,18 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurace a obnovení z Azure SQL Database dlouhodobé zálohování uchovávání pomocí trezoru služeb zotavení Azure
 
 Můžete nakonfigurovat na trezor služeb zotavení Azure uložte zálohy databáze Azure SQL a poté obnovte databázi pomocí zálohy uchovávány v úložišti pomocí portálu Azure nebo Powershellu.
+
+> [!NOTE]
+> Jako součást počáteční verze Preview dlouhodobé uchovávání záloh v říjnu 2016 byly zálohy uložené ve službě Azure Recovery Services trezoru. Tato aktualizace odebere tuto závislost, ale kvůli zpětné kompatibilitě se původní rozhraní API podporuje do 31 může 2018. Pokud potřebujete pro interakci s záloh v trezoru Azure Services Recovery, přečtěte si [dlouhodobé uchovávání záloh pomocí trezoru službu Azure Recovery Services](sql-database-long-term-backup-retention-configure-vault.md). 
+
 
 ## <a name="azure-portal"></a>Azure Portal
 

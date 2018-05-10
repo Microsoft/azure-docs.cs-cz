@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
+ms.component: msi
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: f643b1203283d7aac01aa8821a180c898f33ec25
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 552f9e7cae4d7f46ea1548cfe7d9482bff79e5bc
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s spravované služby Identity (MSI) pro Azure Active Directory
 
@@ -87,7 +88,7 @@ Pokud identita spravované služby je povoleno na virtuálním počítači, se z
 
 Rozšíření virtuálního počítače identita spravované služby v současné době nepodporuje možnost jeho schéma exportu do šablony skupiny prostředků. V důsledku toho vygenerované šablony nezobrazuje parametry konfigurace umožňující spravovat Identity služby u daného prostředku. Tyto části můžete přidat ručně pomocí následujících příkladech v [konfigurace Identity služby virtuálních počítačů spravovaných pomocí šablony](qs-configure-template-windows-vm.md).
 
-Když funkce exportu schématu je k dispozici pro rozšíření virtuálního počítače MSI, objeví se v [export skupiny prostředků, které obsahují rozšíření virtuálního počítače](../../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions).
+Když funkce exportu schématu je k dispozici pro rozšíření virtuálního počítače MSI, objeví se v [export skupiny prostředků, které obsahují rozšíření virtuálního počítače](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Okno Konfigurace se nezobrazí na portálu Azure
 

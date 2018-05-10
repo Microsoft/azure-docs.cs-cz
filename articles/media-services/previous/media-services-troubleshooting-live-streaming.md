@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Průvodce řešením potíží s živým streamováním
-Toto téma nabízí návrhy na řešení problémů některé živé streamování.
+Tento článek poskytuje návrhy na řešení problémů některé živé streamování.
 
 ## <a name="issues-related-to-on-premises-encoders"></a>Problémy související s místními kodéry
 Tato část poskytuje návrhy na řešení potíží s problémy související s místními kodéry, které jsou nakonfigurované k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.
@@ -44,23 +44,10 @@ Tato část poskytuje návrhy na řešení potíží s problémy související s
     **Řešení potíží**: Ujistěte se, že kodér je už nabízení do AMS, zastavte a znovu nastavit kanál. Jednou spustit znovu, zkuste se připojit kodér s novým nastavením. Pokud tento problém pořád nevyřeší, zkuste vytvořit nový kanál zcela, někdy kanály se může stát poškozená po několika nezdařených pokusů o zadání.  
 * **Potenciální problém**: nejsou optimální velikost The GOP nebo nastavení klíčových snímků. 
   
-    **Řešení potíží**: GOP doporučená velikost nebo @keyframe, které určuje interval je 2 sekundy. Některé kodéry vypočítat toto nastavení v počet snímků, jiné zase sekund. Příklad: při výstupu 30fps, velikost GOP by být 60 rámce, který je ekvivalentní na 2 sekundy.  
+    **Řešení potíží**: GOP doporučená velikost nebo @keyframe, které určuje interval je dvou sekund. Některé kodéry vypočítat toto nastavení v počet snímků, jiné zase sekund. Příklad: při výstupu 30 fps, velikost GOP by být 60 rámce, který je ekvivalentní na 2 sekundy.  
 * **Potenciální problém**: uzavřené porty blokují datového proudu. 
   
-    **Řešení potíží**: při streamování prostřednictvím RTMP, zkontrolujte nastavení brány firewall nebo proxy, potvrďte, že jsou otevřené odchozí porty 1935 a 1936. Při použití RTP streamování, potvrďte, že odchozí port 2010 je otevřen. 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Problém: Při konfiguraci kodér do datového proudu s protokol RTP, neexistuje žádný místo pro zadání názvu hostitele.
-* **Potenciální problém**: mnoho RTP kodéry zakázat u názvů hostitele, a bude nutné získat IP adresu.  
-  
-    **Řešení potíží**: Chcete-li najít IP adresu, otevřete příkazový řádek na libovolném počítači. Chcete-li to provést v systému Windows, otevřete Spouštěče spustit (WIN + R) a zadejte "cmd" otevřete.  
-  
-    Jakmile příkazovém řádku je otevřený, zadejte "Ping [AMS název hostitele]". 
-  
-    Název hostitele může být odvozen vynecháním číslo portu z Azure Ingestované adresy URL, jak je znázorněno v následujícím příkladu: 
-  
-    RTP://Test2-amstest009.RTP.Channel.mediaservices.Windows.NET:2010 / 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **Řešení potíží**: při streamování prostřednictvím RTMP, zkontrolujte nastavení brány firewall nebo proxy, potvrďte, že jsou otevřené odchozí porty 1935 a 1936. 
 
 > [!NOTE]
 > Pokud po provedení kroků řešení potíží, které stále nemůžete použít datový proud úspěšně, odešlete lístek podpory pomocí portálu Azure.

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: a4b1e30f1350a5e5886899069b05b8b87bb7000d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil za provozu Azure web apps s Application Insights
 
-*Tato funkce Azure Application Insights je obecně dostupné pro funkce Web Apps služby Azure App Service a je ve verzi preview pro výpočetní prostředky Azure.*
+*Tato funkce Azure Application Insights je obecně dostupné pro funkce Web Apps služby Azure App Service a je ve verzi preview pro výpočetní prostředky Azure. Informace ohledně [místní použití profileru](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).*
 
 Tento článek popisuje množství času stráveného v každá metoda za provozu webové aplikace při použití [Application Insights](app-insights-overview.md). Nástroj Application Insights profileru zobrazí podrobné profily živé požadavky, které se spouští vaše aplikace. Profileru klade důraz *aktivní trase* používající nejvíce času. Na základě vzorkování jsou profilovaným požadavků s různé doby odezvy. S využitím různých technik, můžete snížit režijní náklady, který je spojen s aplikací.
 
@@ -138,7 +138,7 @@ Profileru náhodně spustí dvě minuty každou hodinu na každém virtuálním 
 
 Další servery, které jsou k dispozici pro hostování aplikace, menší dopad profileru má na výkon aplikací. Je to proto, že algoritmus vzorkování výsledkem profileru systémem jenom 5 procent servery kdykoli. Další servery jsou k dispozici pro webové žádosti k posunutí nároky na serveru kvůli spuštěním profileru.
 
-## <a name="disable-profiler"></a>Zakázat profileru
+## <a name="disable-profiler"></a>Zakázat Profiler
 Pro zastavení nebo restartování profileru pro jednotlivé webové aplikace instance, v části **webové úlohy**, přejděte k prostředku webové aplikace. Chcete-li odstranit profileru, přejděte na **rozšíření**.
 
 ![Webovou úlohu zakázat profileru][disable-profiler-webjob]

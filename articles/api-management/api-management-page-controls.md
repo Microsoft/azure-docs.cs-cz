@@ -1,11 +1,11 @@
 ---
-title: "Ovládací prvky stránky Azure API Management | Microsoft Docs"
-description: "Další informace o ovládací prvky stránky, která je k dispozici pro použití v šablonách portálu vývojáře ve službě Azure API Management."
+title: Ovládací prvky stránky Azure API Management | Microsoft Docs
+description: Další informace o ovládací prvky stránky, která je k dispozici pro použití v šablonách portálu vývojáře ve službě Azure API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Ovládací prvky stránky Azure API Management
 Azure API Management poskytuje následující ovládací prvky pro použití v vývojář portálu šablony.  
@@ -43,10 +43,10 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 -   [přihlášení k odběru tlačítko](#subscribe-button)  
 -   [zrušení předplatného](#subscription-cancel)  
   
-##  <a name="app-actions"></a>Akce aplikace  
+##  <a name="app-actions"></a> Akce aplikace  
  `app-actions` Řízení poskytuje uživatelské rozhraní pro interakci s aplikacemi na stránce profilu uživatele na portál pro vývojáře.  
   
- ![aplikace & č. 45; akce řízení](./media/api-management-page-controls/APIM-app-actions-control.png "APIM akcí aplikace řízení")  
+ ![aplikace&#45;akce řízení](./media/api-management-page-controls/APIM-app-actions-control.png "APIM akcí aplikace řízení")  
   
 ### <a name="usage"></a>Využití  
   
@@ -65,10 +65,10 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Aplikace](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a>Basic přihlášení  
+##  <a name="basic-signin"></a> Basic přihlášení  
  `basic-signin` Řízení poskytuje ovládací prvek pro shromažďování uživatelské přihlašovací údaje na stránce přihlášení v portálu pro vývojáře.  
   
- ![Basic & č. 45; přihlášení řízení](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic přihlášení řízení")  
+ ![základní&#45;přihlášení řízení](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic přihlášení řízení")  
   
 ### <a name="usage"></a>Využití  
   
@@ -84,7 +84,7 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Přihlásit se](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a>ovládací prvek stránkování  
+##  <a name="paging-control"></a> ovládací prvek stránkování  
  `paging-control` Poskytuje funkce stránkování vývojáře portálu stránky zobrazující seznam položek.  
   
  ![stránkování řízení](./media/api-management-page-controls/APIM-paging-control.png "APIM stránkování ovládacího prvku")  
@@ -107,7 +107,7 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Seznam produktů](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a>Zprostředkovatelé  
+##  <a name="providers"></a> Zprostředkovatelé  
  `providers` Řízení poskytuje ovládací prvek pro výběr zprostředkovatele ověřování na stránce přihlášení v portálu pro vývojáře.  
   
  ![poskytovatelé řízení](./media/api-management-page-controls/APIM-providers-control.png "APIM poskytovatelé řízení")  
@@ -126,7 +126,7 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Přihlásit se](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a>ovládací prvek vyhledávání  
+##  <a name="search-control"></a> ovládací prvek vyhledávání  
  `search-control` Poskytuje funkce hledání vývojáře portálu stránky zobrazující seznam položek.  
   
  ![hledání řízení](./media/api-management-page-controls/APIM-search-control.png "APIM vyhledávání řízení")  
@@ -147,10 +147,10 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Seznam produktů](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a>registrace  
+##  <a name="sign-up"></a> registrace  
  `sign-up` Řízení poskytuje ovládací prvek pro shromažďování informací o profilu uživatele na stránce registrace v portálu pro vývojáře.  
   
- ![přihlašovací & č. 45; až řízení](./media/api-management-page-controls/APIM-sign-up-control.png "APIM registrace ovládacího prvku")  
+ ![přihlašovací&#45;až řízení](./media/api-management-page-controls/APIM-sign-up-control.png "APIM registrace ovládacího prvku")  
   
 ### <a name="usage"></a>Využití  
   
@@ -166,10 +166,10 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Registrace](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a>přihlášení k odběru tlačítko  
+##  <a name="subscribe-button"></a> přihlášení k odběru tlačítko  
  `subscribe-button` Poskytuje ovládací prvek pro přihlášení k odběru uživatele k produktu.  
   
- ![přihlášení k odběru & č. 45; tlačítko – ovládací prvek](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM přihlášení k odběru tlačítko – ovládací prvek")  
+ ![přihlášení k odběru&#45;tlačítko řízení](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM přihlášení k odběru tlačítko – ovládací prvek")  
   
 ### <a name="usage"></a>Využití  
   
@@ -185,10 +185,10 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Produktu](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a>zrušení předplatného  
+##  <a name="subscription-cancel"></a> zrušení předplatného  
  `subscription-cancel` Řízení poskytuje ovládací prvek pro zrušení odběru produktu na stránce profilu uživatele v portálu pro vývojáře.  
   
- ![předplatné & č. 45; zrušit řízení](./media/api-management-page-controls/APIM-subscription-cancel-control.png "řízení APIM zrušit předplatné")  
+ ![předplatné&#45;zrušit řízení](./media/api-management-page-controls/APIM-subscription-cancel-control.png "řízení APIM zrušit předplatné")  
   
 ### <a name="usage"></a>Využití  
   
@@ -210,5 +210,5 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 -   [Produktu](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).

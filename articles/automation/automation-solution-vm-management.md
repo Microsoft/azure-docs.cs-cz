@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1a7a711c9b255aabdae76d28908d81f349aebe4a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) ve službě Azure Automation
 
@@ -26,7 +26,7 @@ Toto řešení poskytuje možnost decentralizované automatizace pro uživatele,
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Runbooky pracují s [účtem Spustit jako Azure](automation-offering-get-started.md#authentication-methods). Účet Spustit jako je preferovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může vypršení platnosti nebo často mění.
+* Runbooky pracují s [účtem Spustit jako Azure](automation-create-runas-account.md). Účet Spustit jako je preferovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může vypršení platnosti nebo často mění.
 * Toto řešení spravuje jenom virtuální počítače, které jsou ve stejném předplatném jako účet Azure Automation.
 * Toto řešení je nasadit jenom na následující oblasti: Austrálie – jihovýchod, Střední Kanada, střed, východní USA, Japonsko – východ, Asie a Tichomoří – jihovýchod, Spojené království – jih a západní Evropa.
 
@@ -80,8 +80,8 @@ Proveďte následující kroky k přidání spuštění a zastavení virtuální
    * Vyberte **plán**. Toto je opakovaný datum a čas spuštění a zastavení virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je plán nakonfigurovaná na časové pásmo UTC. Vybrat jinou oblast, není k dispozici. Konfigurace plánu pro konkrétní časové pásmo po dokončení konfigurace řešení, najdete v části [úprava plán spuštění a vypnutí](#modify-the-startup-and-shutdown-schedule).
    * Pro příjem **e-mailová oznámení** z Sendgridu, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** ale rozhodnout později, že chcete dostávat e-mailová oznámení, můžete aktualizovat **External_EmailToAddress** proměnná s platnou e-mailové adresy oddělené čárkou a potom Upravit proměnnou **External_IsSendEmail** s hodnotou **Ano**.
 
-> [!IMPORTANT]
-> Výchozí hodnota pro **cílové názvy ResourceGroup** je **&ast;**. To cílí všechny virtuální počítače v předplatném. Pokud nechcete, aby řešení pro všechny virtuální počítače ve vašem předplatném tato hodnota se musí aktualizovat, aby seznam názvy skupin prostředků před povolením plány.
+    > [!IMPORTANT]
+    > Výchozí hodnota pro **cílové názvy ResourceGroup** je **&ast;**. To cílí všechny virtuální počítače v předplatném. Pokud nechcete, aby řešení pro všechny virtuální počítače ve vašem předplatném tato hodnota se musí aktualizovat, aby seznam názvy skupin prostředků před povolením plány.
 
 1. Po nakonfigurování počátečního nastavení potřebné pro řešení, klikněte na tlačítko **OK** zavřete **parametry** a vyberte **vytvořit**. Po ověření jsou všechna nastavení, je řešení nasazeno do vašeho předplatného. Tento proces může trvat několik sekund a v jeho průběh můžete sledovat **oznámení** z nabídky.
 
@@ -181,9 +181,9 @@ Zahrnout všechny nadřízené runbooky *WhatIf* parametr. Pokud nastavíte hodn
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volat z nadřízeného runbooku. Tato sada runbook vytvoří výstrahy na základě za prostředků pro scénář AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla výstrah na virtuálních počítačích v cílových skupinách, předplatné nebo prostředek. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
-|AutoStop_Disable | Žádné | Zakáže AutoStop výstrahy a výchozí plán.|
+|AutoStop_Disable | žádný | Zakáže AutoStop výstrahy a výchozí plán.|
 |AutoStop_StopVM_Child | WebHookData | Volat z nadřízeného runbooku. Pravidla výstrah volat tuto sadu runbook k zastavení virtuálního počítače.|
-|Bootstrap_Main | Žádné | Použít jednou nastavit bootstrap konfigurace, třeba webhookURI, které nejsou obvykle přístupné ze Správce prostředků Azure. Tato sada runbook se po úspěšném nasazení automaticky odebere.|
+|Bootstrap_Main | žádný | Použít jednou nastavit bootstrap konfigurace, třeba webhookURI, které nejsou obvykle přístupné ze Správce prostředků Azure. Tato sada runbook se po úspěšném nasazení automaticky odebere.|
 |ScheduledStartStop_Child | VMName <br> Akce: Spuštění nebo zastavení <br> ResourceGroupName | Volat z nadřízeného runbooku. Provede spuštění nebo zastavení akce pro naplánované zastavení.|
 |ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>VMList <br> WhatIf: True nebo False | Tato akce ovlivní všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provést pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuálních počítačů tím, že aktualizuje **External_ExcludeVMNames** proměnné.<br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
 |SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>VMList| Vytvoření značky s názvem **SequenceStart** a **SequenceStop** na každý virtuální počítač, pro které chcete do pořadí spuštění a zastavení aktivity. Hodnota značky musí být celé kladné číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*. <br> *WhatIf* ověří logiky sad runbook bez spuštění. <br> **Poznámka:**: virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames a External_ExcludeVMNames v proměnné automatizace Azure. Musí mít odpovídající značky pro akce se projeví.|
@@ -218,7 +218,7 @@ Ve všech scénářích **External_Start_ResourceGroupNames**, **External_Stop_R
 
 ### <a name="schedules"></a>Plány
 
-Následující tabulka uvádí každý z výchozích plánů vytvoří ve vašem účtu Automation.  Můžete je upravit nebo vytvořit vlastní vlastní plány. Ve výchozím nastavení, každý z nich jsou zakázány s výjimkou **Scheduled_StartVM** a **Scheduled_StopVM**.
+Následující tabulka uvádí každý z výchozích plánů vytvoří ve vašem účtu Automation. Můžete je upravit nebo vytvořit vlastní vlastní plány. Ve výchozím nastavení, každý z nich jsou zakázány s výjimkou **Scheduled_StartVM** a **Scheduled_StopVM**.
 
 Všechny plány, by neměla být povolena, protože to může vytvořit překrývající se plán akcí. Je nejvhodnější určit, které optimalizace, kterou chcete provést a odpovídajícím způsobem upravit. Najdete ukázkové scénáře v oddílu přehled další vysvětlení.
 
@@ -226,7 +226,7 @@ Všechny plány, by neměla být povolena, protože to může vytvořit překrý
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Ke spuštění sady runbook AutoStop_CreateAlert_Parent každých 8 hodin, která zase zastaví hodnot na základě virtuálních počítačů v External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames a External_ExcludeVMNames v proměnné automatizace Azure. Alternativně můžete čárkami oddělený seznam virtuálních počítačů pomocí parametru VMList.|
 |Scheduled_StopVM | Uživatelem definované denně | Ke spuštění sady runbook Scheduled_Parent s parametrem *Zastavit* každý den v určeném čase. Automaticky zastaví všechny virtuální počítače, které splňují pravidla definované proměnné asset. Měli byste povolit související plán **naplánovaná-StartVM**.|
-|Scheduled_StartVM | Uživatelem definované denně | Ke spuštění sady runbook Scheduled_Parent s parametrem *spustit* každý den v určeném čase.  Všechny virtuální počítače, které splňují pravidla definované odpovídající proměnné se automaticky spustí. Měli byste povolit související plán **naplánovaná StopVM**.|
+|Scheduled_StartVM | Uživatelem definované denně | Ke spuštění sady runbook Scheduled_Parent s parametrem *spustit* každý den v určeném čase. Všechny virtuální počítače, které splňují pravidla definované odpovídající proměnné se automaticky spustí. Měli byste povolit související plán **naplánovaná StopVM**.|
 |Sekvencování StopVM | 1:00 AM (UTC), každý pátek | Ke spuštění sady runbook Sequenced_Parent s parametrem *Zastavit* každý pátek v určeném čase. Postupně (vzestupně) zastaví všechny virtuální počítače s značky **SequenceStop** definované odpovídající proměnné. Informace naleznete v sekci sady Runbook další podrobnosti o značky hodnoty a proměnné asset. Měli byste povolit související plán **Sequenced-StartVM**.|
 |Sekvencování StartVM | 1:00 PM (UTC), každé pondělí | Ke spuštění sady runbook Sequenced_Parent s parametrem *spustit* každé pondělí v určeném čase. Postupně (sestupně) začíná značku ze všech virtuálních počítačů **SequenceStart** definované odpovídající proměnné. Informace naleznete v sekci sady Runbook další podrobnosti o značky hodnoty a proměnné asset. Měli byste povolit související plán **Sequenced StopVM**.|
 

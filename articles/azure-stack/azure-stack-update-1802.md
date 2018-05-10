@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -84,6 +84,8 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 - **Na základě rolí vylepšení řízení přístupu (RBAC)** – teď můžete RBAC delegovat oprávnění pro univerzální skupiny uživatelů po nasazení Azure zásobníku se službou AD FS. Další informace o RBAC najdete v tématu [spravovat RBAC](azure-stack-manage-permissions.md).
 
 - **Byla přidána podpora několika domén selhání**.  Další informace najdete v tématu [vysoká dostupnost pro Azure zásobníku](azure-stack-key-features.md#high-availability-for-azure-stack).
+
+- **Podpora pro upgrade fyzické paměti** – teď můžete rozšířit kapacitu paměti systému Azure zásobníku integrované po počátečním nasazení. Další informace najdete v tématu [spravovat kapacita fyzické paměti pro Azure zásobníku](azure-stack-manage-storage-physical-memory-capacity.md).
 
 - **Různé opravy** pro výkon, stabilitu, zabezpečení a operační systém, který je používán zásobník Azure.
 

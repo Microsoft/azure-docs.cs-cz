@@ -1,25 +1,25 @@
 ---
-title: "Publikování aplikací na samostatných sítí a umístění v skupiny konektoru Proxy aplikace Azure AD | Microsoft Docs"
-description: "Popisuje postup vytvoření a Správa skupin konektorů v Azure AD Application Proxy."
+title: Publikování aplikací na samostatných sítí a umístění v skupiny konektoru Proxy aplikace Azure AD | Microsoft Docs
+description: Popisuje postup vytvoření a Správa skupin konektorů v Azure AD Application Proxy.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 58886fc8d1b713207d8cd2c5547d2f99420ba6eb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7fcd6e9746984b79ba83d0d9157b356bf315dfe
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění pomocí konektoru skupin
 
@@ -74,7 +74,7 @@ Pro aplikace nainstalované v IaaS pro přístup do cloudu konektor skupiny posk
 
 Trvat jako příklad, že v organizaci, která má několik virtuálních počítačů, které jsou připojené k vlastní IaaS hostované virtuální sítě. Umožnit zaměstnancům používat tyto aplikace jsou těchto privátních sítí připojené k podnikové síti prostřednictvím sítě site-to-site VPN. To umožňuje kvalitní zaměstnanci, kteří se nacházejí na místních. Ale nemusí být ideální pro vzdálení zaměstnanci, protože vyžaduje další místní infrastrukturu ke směrování přístupu, jak je vidět na obrázku níže:
 
-![AzureAD Iaas Network](./media/application-proxy-publish-apps-separate-networks/application-proxy-iaas-network.png)
+![AzureAD Iaas sítě](./media/application-proxy-publish-apps-separate-networks/application-proxy-iaas-network.png)
   
 Pomocí skupin Azure AD Application Proxy connector můžete povolit běžné služby zabezpečený přístup ke všem aplikacím, aniž by byla vytvořena další závislosti ve vaší podnikové síti:
 

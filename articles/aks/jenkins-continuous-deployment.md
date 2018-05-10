@@ -3,17 +3,17 @@ title: Průběžné nasazování volaných s Kubernetes ve službě Azure Kubern
 description: Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes ve službě Azure Kubernetes Service
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 757cf69e85885f5a17111410f1dae1ba1c04d167
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Průběžné nasazování pomocí volaných a Kubernetes služby Azure
 

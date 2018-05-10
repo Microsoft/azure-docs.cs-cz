@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: c817964ebab358f8e31e7435b7067fc60e9516fa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]
@@ -46,7 +46,7 @@ Azure AD Graph API poskytuje následující funkce:
 * **Ověřování s Azure AD**: každý požadavek do Azure AD Graph API musí být ověřeny připojením JSON Web Token (JWT) v hlavičce autorizace požadavku. Tento token se získávají pomocí vytváření požadavku na koncový bod tokenu Azure AD a poskytnutí platné přihlašovací údaje. Můžete použít tok přihlašovacích údajů klienta OAuth 2.0 nebo tok k získání tokenu pro volání grafu poskytování autorizačních kódů. Další informace najdete [OAuth 2.0 ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * **Na základě rolí autorizace (RBAC)**: skupiny zabezpečení jsou používány k provádění RBAC v Azure AD Graph API. Například, pokud chcete určit, zda má uživatel přístup ke konkrétní prostředek, můžete volat aplikace [zkontrolovat členství ve skupině (přenosné)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) operaci, která vrátí hodnotu true nebo false.
 * **Rozdílovou dotazu**: rozdílové dotazu umožňuje sledovat změny v adresáři mezi dvěma časových období bez nutnosti provádět časté dotazy k Azure AD Graph API. Tento typ požadavku vrátí pouze změny provedené mezi předchozí požadavek rozdílové dotazu a aktuální žádost. Další informace najdete v tématu [Azure AD Graph API rozdílové dotazu](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
-* **Rozšíření adresáře**: organizační jednotky můžete přidat vlastní vlastnosti objektů adresáře bez nutnosti externím úložišti. Například pokud vaše aplikace vyžaduje Skype ID vlastnosti pro každého uživatele, můžete zaregistrovat nové vlastnosti v adresáři a bude k dispozici pro použití na každý objekt uživatele. Další informace najdete v tématu [Azure AD Graph API rozšíření schématu služby Directory](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+* **Rozšíření adresáře**: můžete přidat vlastní vlastnosti objektů adresáře bez nutnosti externím úložišti. Například pokud vaše aplikace vyžaduje Skype ID vlastnosti pro každého uživatele, můžete zaregistrovat nové vlastnosti v adresáři a bude k dispozici pro použití na každý objekt uživatele. Další informace najdete v tématu [Azure AD Graph API rozšíření schématu služby Directory](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
 * **Zabezpečené obory oprávnění**: Azure AD Graph API zpřístupní obory oprávnění, které umožňují zabezpečený přístup k datům Azure AD pomocí OAuth 2.0. Podporuje celou řadu typů aplikace klienta, včetně:
   
   * uživatelská rozhraní, které jsou uvedeny Delegovaný přístup k datům prostřednictvím autorizace od přihlášeného uživatele (delegovaný)

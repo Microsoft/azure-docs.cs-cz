@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c3443f014f6c42ba9e8b68b21c2b9d0fdb1549
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f6b01c2a0bfacb4e7e121cdb06ad8be4ab17d53a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure virtuálních počítačů, plánování a implementace pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -260,8 +260,8 @@ ms.lasthandoff: 04/23/2018
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
+[virtual-machines-linux-agent-user-guide]:../../extensions/agent-linux.md
+[virtual-machines-linux-agent-user-guide-command-line-options]:../../extensions/agent-windows.md#command-line-options
 [virtual-machines-linux-capture-image]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
 [virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
@@ -372,7 +372,7 @@ Následující další příručky jsou k dispozici pro téma nasazení SAP v Az
 
 Následující poznámky k SAP souvisí s tématem SAP v Azure:
 
-| Poznámka: číslo | Nadpis |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a velikosti |
 | [2015553] |SAP na platformě Microsoft Azure: podporovat požadavky |
@@ -1630,8 +1630,8 @@ V následující tabulce typické SAP jsou uvedeny komunikační porty. V podsta
 | --- | --- | --- | --- | --- |
 | Dispečer |sapdp`<nn>` najdete v části * |3201 |3200 - 3299 |Dispečer SAP, používá SAP grafického uživatelského rozhraní pro systém Windows a Java |
 | Server zpráv |sapms`<sid`> najdete v části ** |3600 |volné sapms`<anySID`> |identifikátor SID = ID systému SAP |
-| brána |sapgw`<nn`> najdete v části * |3301 |Volné |Bráně SAP, používá pro komunikaci CPIC a RFC |
-| Směrovač SAP |sapdp99 |3299 |Volné |Pouze názvy služby CI (centrální instance) můžete přiřadit v /etc/services na libovolnou hodnotu po instalaci. |
+| brána |sapgw`<nn`> najdete v části * |3301 |free |Bráně SAP, používá pro komunikaci CPIC a RFC |
+| Směrovač SAP |sapdp99 |3299 |free |Pouze názvy služby CI (centrální instance) můžete přiřadit v /etc/services na libovolnou hodnotu po instalaci. |
 
 *) nn = čísla Instance SAP
 

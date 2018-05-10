@@ -1,25 +1,25 @@
 ---
-title: "Brány Azure zásobník plánování zásobník Azure integrované systémy | Microsoft Docs"
-description: "Popisuje aspekty zásobník Azure brány firewall pro nasazení na víc uzlů připojená k Azure zásobník Azure."
+title: Brány Azure zásobník plánování zásobník Azure integrované systémy | Microsoft Docs
+description: Popisuje aspekty zásobník Azure brány firewall pro nasazení na víc uzlů připojená k Azure zásobník Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Integrace brány firewall Azure zásobníku
 Doporučuje se použít zařízení brány firewall ke zvýšení zabezpečení Azure zásobníku. I když se třeba distribuované útokům (DDOS) odmítnutí služby, zjišťování neoprávněných vniknutí a prověřování obsahu vám může pomoci brány firewall, budou také k propustnost úzkým místem pro služby Azure storage jako objekty BLOB, tabulek a front.
@@ -44,7 +44,7 @@ Některé z downsides použití NAT pro veřejný virtuální adresy IP jsou:
 Aktuálně doporučujeme zakázat dešifrování SSL na veškerý provoz Azure zásobníku. Pokud je podporován v budoucí aktualizace, bude poskytnuta pokyny o tom, jak povolit dešifrování SSL pro Azure zásobníku.
 
 ## <a name="edge-firewall-scenario"></a>Scénář hraniční brány firewall
-V nasazení okraj je zásobník Azure nasadit přímo za hraniční směrovač nebo bránu firewall. V těchto scénářích platí je podporováno pro bránu firewall, aby se výše ohraničení nebo funguje jako zařízení ohraničení, pokud ji podporuje stejné náklady více cesta (ECMP) pomocí protokolu BGP nebo statické směrování.
+V nasazení okraj je zásobník Azure nasadit přímo za hraniční směrovač nebo bránu firewall. V těchto scénářích se podporuje pro bránu firewall, aby se výše ohraničení (scénář 1), které podporuje konfiguraci brány firewall aktivní aktivní a aktivní pasivní nebo funguje jako zařízení ohraničení (scénář 2), kde se podporuje jenom aktivní aktivní brány firewall Konfigurace spoléhat na stejné náklady více cesta (ECMP) pomocí protokolu BGP nebo statické směrování pro převzetí služeb při selhání.
 
 Obvykle jsou veřejné směrovatelné IP adresy zadané pro veřejné fondu virtuálních IP adres z externí sítě v době nasazení. Ve scénáři s edge není doporučeno používat veřejné směrovatelné IP adresy v jiné síti z bezpečnostních důvodů. Tento scénář umožňuje uživatelům mít úplná samoobslužné řízené cloudové prostředí jako veřejný cloud, jako je například Azure.  
 

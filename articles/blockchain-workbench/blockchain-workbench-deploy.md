@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 01f396b4a2b8851ce1433a297981d30328c113b8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: a16d65e9c462bfcacc5ae9f29889667efd9ddb84
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
 
@@ -79,27 +79,6 @@ Dále musíte upravit manifest aplikace pro použití aplikační role v rámci 
 
 4.  Klikněte na tlačítko **Uložit** se uložit změny manifestu aplikace.
 
-### <a name="add-graph-api-key-to-application"></a>Přidání rozhraní Graph API klíč do aplikace
-
-Blockchain Workbench používá Azure AD jako hlavní identity systém správy uživatelům interakci s blockchain aplikace. Aby Blockchain Workbench pro přístup k Azure AD a načíst informace o uživateli, jako jsou jména a e-mailů je nutné přidat přístupový klíč. Blockchain Workbench používá klíč k ověření s Azure AD.
-
-1. Pro aplikaci jste zaregistrovali, vyberte **nastavení** v podokně podrobností zaregistrovanou aplikaci.
-2. Vyberte **Klíče**.
-3. Přidejte nový klíč zadáním klíče **popis** a výběr **vyprší platnost** hodnoty duration. 
-
-    ![Vytvořit klíč](media/blockchain-workbench-deploy/app-key-create.png)
-
-    |Nastavení  | Hodnota  |
-    |---------|---------|
-    | Popis | `Service` |
-    | Platí do | Vyberte dobu trvání vypršení platnosti |
-
-4. Vyberte **Uložit**. 
-5. Zkopírujte hodnotu klíče a uloží jej pro pozdější. Je třeba pro nasazení.
-
-    > [!IMPORTANT]
-    >  Pokud nemáte uložit klíč pro nasazení, musíte vygenerovat nový klíč. Hodnota klíče nelze načíst později z portálu.
-
 ### <a name="add-graph-api-required-permissions"></a>Přidání rozhraní Graph API vyžaduje oprávnění
 
 Rozhraní API aplikace musí požádat o oprávnění uživatele pro přístup k adresáři. Nastavte následující požadované oprávnění pro aplikaci API:
@@ -121,6 +100,27 @@ Rozhraní API aplikace musí požádat o oprávnění uživatele pro přístup k
    ![Udělit oprávnění](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
    Udělení oprávnění umožňuje Blockchain Workbench pro přístup uživatelé v adresáři. Vyhledávání a přidání členů do Blockchain Workbench je potřeba oprávnění ke čtení.
+
+### <a name="add-graph-api-key-to-application"></a>Přidání rozhraní Graph API klíč do aplikace
+
+Blockchain Workbench používá Azure AD jako hlavní identity systém správy uživatelům interakci s blockchain aplikace. Aby Blockchain Workbench pro přístup k Azure AD a načíst informace o uživateli, jako jsou jména a e-mailů je nutné přidat přístupový klíč. Blockchain Workbench používá klíč k ověření s Azure AD.
+
+1. Pro aplikaci jste zaregistrovali, vyberte **nastavení** v podokně podrobností zaregistrovanou aplikaci.
+2. Vyberte **Klíče**.
+3. Přidejte nový klíč zadáním klíče **popis** a výběr **vyprší platnost** hodnoty duration. 
+
+    ![Vytvořit klíč](media/blockchain-workbench-deploy/app-key-create.png)
+
+    |Nastavení  | Hodnota  |
+    |---------|---------|
+    | Popis | `Service` |
+    | Platí do | Vyberte dobu trvání vypršení platnosti |
+
+4. Vyberte **Uložit**. 
+5. Zkopírujte hodnotu klíče a uloží jej pro pozdější. Je třeba pro nasazení.
+
+    > [!IMPORTANT]
+    >  Pokud nemáte uložit klíč pro nasazení, musíte vygenerovat nový klíč. Hodnota klíče nelze načíst později z portálu.
 
 ### <a name="get-application-id"></a>Získání ID aplikace
 
@@ -170,6 +170,7 @@ Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbe
     | Heslo | Heslo se používá pro připojení k virtuálním počítačům. |
     | SSH | Použijte veřejným klíčem RSA ve formátu jeden řádek začínající **ssh-rsa** nebo použijte formát PEM víceřádkový. Můžete vygenerovat pomocí klíče SSH `ssh-keygen` na Linuxu a OS X nebo PuTTYGen ve Windows. Další informace o klíče SSH, viz [klíče použití SSH se systémem Windows v Azure](../virtual-machines/linux/ssh-from-windows.md). |
     | Databáze heslo / potvrďte heslo k databázi | Zadejte heslo pro přístup k databázi vytvořené jako součást nasazení. |
+    | Oblast nasazení | Zadejte, kam chcete nasadit Blockchain Workbench prostředky. Pro nejlepší dostupnosti probíhá, mělo by to odpovídat **umístění** nastavení. |
     | Předplatné | Zadejte předplatné Azure, které chcete použít pro vaše nasazení. |
     | Skupiny prostředků | Vytvořit novou skupinu prostředků výběrem **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
     | Umístění | Zadejte oblast, kterou chcete nasadit rozhraní. |
@@ -199,7 +200,7 @@ Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbe
     | Výkon úložiště | Vyberte upřednostňovaný výkon úložiště virtuálních počítačů ve vaší síti blockchain. |
     | Velikost virtuálního počítače | Vyberte upřednostňovanou velikost virtuálního počítače ve vaší síti blockchain. |
 
-10. Klikněte na tlačítko **OK** ukončíte části velikost a výkon sítě.
+10. Vyberte **OK** ukončíte části velikost a výkon sítě.
 
 11. Dokončení **Azure monitorování** nastavení.
 
@@ -207,9 +208,8 @@ Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbe
 
     | Nastavení | Popis  |
     |---------|--------------|
-    | Monitorování | Vyberte, zda má Azure monitorování, který se má použít k monitorování sítě blockchain |
-    | Připojte se k existující instanci OMS | Zvolte, zda chcete použít existující instanci služby Operations Management Suite nebo vytvořit novou |
-    | Umístění pracovní prostor OMS | Vyberte oblast pro pracovní prostor OMS. Mělo by to odpovídat oblasti pro umístění Blockchain Workbench |
+    | Monitorování | Zvolte, zda chcete povolit monitorování Azure, který chcete monitorovat vaši síť blockchain |
+    | Připojte se k existující instanci analýzy protokolů | Zvolte, zda chcete použít existující analýzy protokolů instance nebo vytvořte novou. Pokud používáte existující instanci, zadejte své ID pracovního prostoru a primární klíč. |
 
 12. Klikněte na tlačítko **OK** ukončíte části monitorování Azure.
 

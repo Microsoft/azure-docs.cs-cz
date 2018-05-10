@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: eaaee36a2f4dd5a313f8871cea5fd885812fe351
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Použití Azure Stream Analytics tools pro sadu Visual Studio
 Azure Stream Analytics tools pro Visual Studio jsou obecně dostupné. Tyto nástroje povolte bohatší možnosti pro uživatele Stream Analytics k řešení potíží a také zápisu složitých dotazů a i psát dotazy místně. Úloha Stream Analytics také můžete exportovat do projektu sady Visual Studio.
@@ -28,6 +28,20 @@ Po dokončení tohoto kurzu, budete moci:
 * Otestujte úlohu místně s místní ukázková data.
 * Monitorování použijte k řešení potíží.
 * Exportujte stávající úlohy na projekty.
+
+>[!IMPORTANT]
+>
+>V rámci přípravy pro nové obecné Data Protection nařízení (GDPR) do vliv na 25 může 2018, se doporučuje, aby uživatelé služby Azure Stream Analytics Tools pro sadu Visual Studio upgradovat na verzi 2.3.3000.5 nebo novější. Tato verze zahrnuje změny v závislosti na požadavcích ochrany nejnovější data. Všimněte si, že nejsou k dispozici pro předchozí verze stáhnout a jsou zastaralé. 
+>
+>**Co je potřeba udělat?**
+>
+>1. Zkontrolujte, pokud používáte starší verze než 2.3.3000.5 Azure Stream Analytics Tools pro sadu Visual Studio. 
+>   
+>   ![Zkontrolujte verzi nástroje](./media/stream-analytics-tools-for-vs/about-data-lake.png)
+> 
+>2. Pokud vaše verze dřívější verzi 2.3.3000.5, aktualizace vašeho nástrojů Azure Data Lake pro Visual Studio pomocí návštěvy webu Stažení softwaru: 
+>    - [Pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Pro Visual Studio 2013 a 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
 
 ## <a name="prerequisites"></a>Požadavky
 Požadovaný k dokončení tohoto kurzu potřebujete:
@@ -52,7 +66,7 @@ Projekt **Projedou** se generuje ve **Průzkumníku řešení**.
 2. Přihlaste se pomocí účtu Azure. 
 
 ## <a name="define-input-sources"></a>Definování vstupních zdrojů
-1. V **Průzkumníku řešení**, rozbalte **vstupy** uzlu a přejmenujte **Input.json** k **EntryStream.json**. Double-click **EntryStream.json**.
+1. V **Průzkumníku řešení**, rozbalte **vstupy** uzlu a přejmenujte **Input.json** k **EntryStream.json**. Klikněte dvakrát na **EntryStream.json**.
 
 2. Pro **vstupní Alias**, zadejte **EntryStream**. Všimněte si, že vstupní alias se používá ve skriptu dotazu.
 
@@ -195,7 +209,7 @@ Můžete sledovat průběh v **výstup** okno.
    ![Spustit úlohu](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-submit-job-02.png)
 
  
-### <a name="start-the-job"></a>Spustit úlohu
+### <a name="start-the-job"></a>Spuštění úlohy
 Teď se vytvoří úlohu, a automaticky se otevře zobrazení úloh. 
 1. Kliknutím na tlačítko zelenou šipku spustíte úlohu.
 

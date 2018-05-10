@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: v-deasim
-ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Pravidla ve službě Azure CDN modul funkce
 Tento článek obsahuje seznam podrobný popis dostupných funkcí pro Azure Content Delivery Network (CDN) [stroj pravidel](cdn-rules-engine.md).
@@ -392,7 +392,7 @@ Nakonfigurujte tuto funkci tak, že definujete obě z následujících možnost�
 Možnost|Popis
 --|--
 Původní cesta| Zadejte relativní cestu k typy požadavků, jejichž klíče mezipaměti je přepsaná. Relativní cesta může být definováno výběrem základní původní cestu a poté definování vzor regulárního výrazu.
-Nová cesta|Zadejte relativní cestu k nové klíče mezipaměti. Relativní cesta může být definováno výběrem základní původní cestu a poté definování vzor regulárního výrazu. Tuto relativní cestu lze sestavit dynamicky prostřednictvím protokolu HTTP, proměnné
+Nová cesta|Zadejte relativní cestu k nové klíče mezipaměti. Relativní cesta může být definováno výběrem základní původní cestu a poté definování vzor regulárního výrazu. Tuto relativní cestu lze dynamicky sestavit prostřednictvím [HTTP proměnné](cdn-http-variables.md).
 **Výchozí chování:** klíče mezipaměti požadavek je určen podle identifikátoru URI požadavku.
 
 [Zpět na začátek](#azure-cdn-rules-engine-features)
@@ -884,9 +884,9 @@ Na hlavička požadavku je možné provádět jednu z následujících akcí:
 
 Možnost|Popis|Příklad:
 -|-|-
-Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky žádosti.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/> **Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** Value1Value2
-Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/>**Žádosti o hodnotu hlavičky (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky požadavku:** hodnota2 <br/>
-Odstranění|Odstraní určenou hlavičku požadavku.|**Žádosti o hodnotu hlavičky (klient):** Value1 <br/> **Změňte konfiguraci klienta hlavička požadavku:** odstranit v hlavičce žádosti. <br/>**Výsledek:** hlavičku zadaný požadavek nebude předají na zdrojový server.
+Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky žádosti.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Value2 <br/>**Nová hodnota hlavičky žádosti:** <br/>Value1Value2
+Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Value2<br/>**Nová hodnota hlavičky žádosti:**<br/> Value2 <br/>
+Odstranění|Odstraní určenou hlavičku požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky požadavku klienta:**<br/>Odstraňte v hlavičce žádosti.<br/>**Výsledek:**<br/>Zadaný požadavek záhlaví nebudou předávány na zdrojový server.
 
 Informace o klíči:
 
@@ -922,9 +922,9 @@ Na hlavičku odpovědi je možné provádět jednu z následujících akcí:
 
 Možnost|Popis|Příklad:
 -|-|-
-Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/> **Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** Value1Value2
-Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/>**Hodnota hlavičky odpovědi (stroj pravidel HTTP):** hodnota2 <br/>**Nová hodnota hlavičky odpovědi:** hodnota2 <br/>
-Odstranění|Odstraní zadané hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):** Value1 <br/> **Změňte konfiguraci klienta hlavička odpovědi:** odstranit dotyčném hlavičku odpovědi. <br/>**Výsledek:** zadané hlavičky odpovědi nebude předají do žadatel.
+Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br />value1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Value2<br/>**Nová hodnota hlavičky odpovědi:**<br/>Value1Value2
+Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):**<br/>value1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Value2 <br/>**Nová hodnota hlavičky odpovědi:**<br/>Value2 <br/>
+Odstranění|Odstraní zadané hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky odpovědi klienta:**<br/>Odstraňte dotyčném hlavičku odpovědi.<br/>**Výsledek:**<br/>Zadané hlavičky odpovědi nebude předají do žadatel.
 
 Informace o klíči:
 
@@ -998,7 +998,7 @@ Informace o klíči:
 - Abyste zabránili předávaná hlavičku požadavku specifické CDN, odeberte ji ze seznamu oddělených mezerami v seznamu pole hlavičky.
 
 Následující hlavičky protokolu HTTP jsou součástí na výchozím seznamu:
-- prostřednictvím
+- Přes
 - X-předávaných pro
 - X předávaných Proto
 - X-hostitel
@@ -1234,8 +1234,8 @@ Konfigurace této funkce vyžaduje nastavení následujících možností:
 Možnost|Popis
 -|-
 Kód|Vyberte kód odpovědi, který bude vrácen do žadatel.
-Zdroj & vzor| Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přesměrována. Bude přesměrovat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/> <br/> **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/> **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> -Zkontrolujte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s veškeré podmínky shody definované pro tuto funkci. <br/> -Zadat vzor; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce.
-Cíl| Zadejte adresu URL, na kterou se přesměruje výše uvedených požadavků. <br/> Vytvořte dynamicky pomocí této adresy URL: <br/> -Vzor regulárního výrazu <br/>-HTTP proměnné <br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. <br/> 
+Zdroj & vzor| Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přesměrována. Bude přesměrovat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/> <br/> **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/><br/> **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> -Zkontrolujte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s veškeré podmínky shody definované pro tuto funkci. <br/> -Zadat vzor; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce.
+Cíl| Zadejte adresu URL, na kterou se přesměruje výše uvedených požadavků. <br/><br/> Vytvořte dynamicky pomocí této adresy URL: <br/> -Vzor regulárního výrazu <br/>- [Proměnné HTTP](cdn-http-variables.md) <br/><br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. <br/> 
 Důrazně doporučujeme používat absolutní adresu URL. Použití relativní adresa URL může přesměrovat adresy URL CDN platná cesta UNC.
 
 **Vzorový scénář**
@@ -1276,8 +1276,8 @@ Informace o klíči:
 
 Možnost|Popis
 -|-
- Zdroj & vzor | Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přepsána. Bude nutné přepsat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/>     - **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/> - **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> Ověřte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s některá z podmínek shodu definované pro tuto funkci. Určete vzorec; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce. 
- Cíl  |Zadejte relativní adresu URL, na který se přepsal výše uvedené požadavky: <br/>    1. Výběr bodu přístup k obsahu, který identifikuje zdrojový server. <br/>    2. Definování relativní cestu pomocí: <br/>        -Vzor regulárního výrazu <br/>        -HTTP proměnné <br/> <br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. 
+ Zdroj & vzor | Tato nastavení definovat vzor požadavek URI, který vystihuje typ požadavků, které může být přepsána. Bude nutné přepsat pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/><br/>  - **Zdroj (nebo přístup k obsahu bodu):** vyberte relativní cestu, která identifikuje zdrojový server. Je tato cesta _/XXXX/_ části a název koncového bodu. <br/><br/> - **Zdroj (vzor):** vzor, který identifikuje požadavky relativní cestou musí být definován. Tento vzor regulárního výrazu musí definovat cestu, která spustí přímo po dříve vybrané přístup k obsahu bodu (viz výše). <br/> Ověřte, že žádost o identifikátor URI (tedy zdroj & vzor) dříve definovaná kritéria není v konfliktu s některá z podmínek shodu definované pro tuto funkci. Určete vzorec; Pokud použijete na prázdnou hodnotu jako vzor, se splní všechny řetězce. 
+ Cíl  |Zadejte relativní adresu URL, na který se přepsal výše uvedené požadavky: <br/>    1. Výběr bodu přístup k obsahu, který identifikuje zdrojový server. <br/>    2. Definování relativní cestu pomocí: <br/>        -Vzor regulárního výrazu <br/>        - [Proměnné HTTP](cdn-http-variables.md) <br/> <br/> Nahraďte hodnoty zachycení ve vzoru zdrojové do cílové vzor pomocí $_n_ kde _n_ identifikuje hodnotu podle pořadí, ve kterém byla zaznamenána. Například $1 představuje první hodnotu zachyceny ve vzorku zdroje, zatímco druhá hodnota představuje $2. 
  Tato funkce umožňuje bodů POP přepsání adresy URL bez tradičních přesměrování. To znamená žadatel obdrží stejný kód odpovědi jako v případě, kdyby byla požadována rewritten adresy URL.
 
 **Vzorový scénář 1**

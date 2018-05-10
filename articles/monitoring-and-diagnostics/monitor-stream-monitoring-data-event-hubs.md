@@ -1,9 +1,9 @@
 ---
-title: "Stream monitorování data do centra událostí Azure | Microsoft Docs"
-description: "Naučte se všechna vaše Azure monitorování data do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu datového proudu."
+title: Stream monitorování data do centra událostí Azure | Microsoft Docs
+description: Naučte se všechna vaše Azure monitorování data do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu datového proudu.
 author: johnkemnetz
 manager: robb
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Monitorování data do centra událostí pro používání pomocí externího nástroje Azure datového proudu
 
@@ -79,7 +79,7 @@ Musíte nainstalovat agenta hosta data monitorování operačního systému odes
 
 ### <a name="stream-linux-data-to-an-event-hub"></a>Datový proud Linux data do centra událostí
 
-[Diagnostiky Azure Linux agent](../virtual-machines/linux/diagnostic-extension.md) slouží k odesílání dat monitorování od počítač s Linuxem do centra událostí. K tomu přidáním centra událostí jako jímku ve vašem LAD nastavení konfigurace chráněný soubor JSON. [Najdete v tomto článku Další informace o přidání jímek centra událostí do vaší diagnostiky Azure Linux agent](../virtual-machines/linux/diagnostic-extension.md#protected-settings).
+[Diagnostiky Azure Linux agent](../virtual-machines/extensions/diagnostics-linux.md) slouží k odesílání dat monitorování od počítač s Linuxem do centra událostí. K tomu přidáním centra událostí jako jímku ve vašem LAD nastavení konfigurace chráněný soubor JSON. [Najdete v tomto článku Další informace o přidání jímek centra událostí do vaší diagnostiky Azure Linux agent](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nelze nastavit vysílání datového proudu data monitorování hostovaného operačního systému do centra událostí na portálu. Místo toho je nutné ručně upravit konfigurační soubor.

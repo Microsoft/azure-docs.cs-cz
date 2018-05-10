@@ -1,25 +1,25 @@
 ---
-title: "Řešení potíží s Proxy aplikace | Microsoft Docs"
-description: "Vysvětluje postup řešení potíží s chybami v Azure AD Application Proxy."
+title: Řešení potíží s Proxy aplikace | Microsoft Docs
+description: Vysvětluje postup řešení potíží s chybami v Azure AD Application Proxy.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54e0ebe60981ef429fdfc97cee1b460b03261a9f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikace problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo v publikování aplikací, zkontrolujte následující možnosti, zda je správně funguje proxy aplikace služby Microsoft Azure AD:
@@ -34,7 +34,7 @@ Další informace o nástroji Poradce při potížích s Azure AD najdete v tém
 ## <a name="the-page-is-not-rendered-correctly"></a>Stránky není správně vykreslen.
 Můžete mít problémy s aplikací vykreslování nebo funguje správně, aniž by mu musela specifické chybové zprávy. Tato situace může nastat, pokud jste publikovali cesta článek, ale aplikace vyžaduje obsah, který existuje mimo této cestě.
 
-Například pokud publikujete https://yourapp/app cesty, ale aplikace volá bitové kopie v https://yourapp/media, že nebude vykreslit. Ujistěte se, že publikování aplikace pomocí nejvyšší úrovně cesty, je nutné zahrnout všechny relevantní obsah. V tomto příkladu je http://yourapp/.
+Například, pokud publikujete cesta https://yourapp/app , ale aplikace volá bitové kopie https://yourapp/media, nebude vykreslen. Ujistěte se, že publikování aplikace pomocí nejvyšší úrovně cesty, je nutné zahrnout všechny relevantní obsah. V tomto příkladu je http://yourapp/.
 
 Pokud změníte cestu ke zahrnovat odkazovaného obsahu, ale stále potřebují uživatelům zobrazovat na hlubší propojení v cestě, naleznete v příspěvku blogu [nastavení správné odkaz pro aplikaci Proxy aplikace ve službě Azure AD přístup k panelu a Spouštěč aplikace Office 365](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 
@@ -78,9 +78,9 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 | ----- | ----------------- |
 | Stránku nelze zobrazit stránku. | Uživatel může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud aplikace je aplikace, integrované ověřování systému Windows. Definovaný název SPN pro tuto aplikaci může být nesprávný. Pro aplikace, integrované ověřování systému Windows Ujistěte se, zda je správný název SPN nakonfigurován pro tuto aplikaci. |
 | Stránku nelze zobrazit stránku. | Uživatel může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud aplikace je aplikace OWA. To může být způsobeno jedním z těchto:<br><li>Definovaný název SPN pro tuto aplikaci je nesprávný. Ujistěte se, zda je správný název SPN nakonfigurován pro tuto aplikaci.</li><li>Uživatele, kteří se pokusili získat přístup k aplikaci je k přihlášení pomocí účtu Microsoft, nikoli na správné podnikový účet, nebo uživatel je uživatel typu Host. Zajistěte, aby se uživatel přihlásí pomocí svého účtu podnikové, odpovídající doméně publikované aplikace. Uživatelé s Account Microsoft a hostů nelze přístup k aplikacím integrované ověřování systému Windows.</li><li>Pro tuto aplikaci na straně místní není správně definováno uživatele, kteří se pokusili získat přístup k aplikaci. Ujistěte se, jestli tento uživatel má příslušná oprávnění, jak jsou definovány pro tuto aplikaci back-end na místní počítač. |
-| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění k této aplikaci přístup. Ověření se nezdařilo. Ujistěte se, že přiřaďte uživatele s přístupem k této aplikaci. | Vaši uživatelé může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud používají účty Microsoft místo podnikovém účtu pro přihlášení. Uživatele typu Host může také dojít k této chybě. Uživatelé s Account Microsoft a hosté nelze přístup k aplikacím integrované ověřování systému Windows. Zajistěte, aby se uživatel přihlásí pomocí svého účtu podnikové, odpovídající doméně publikované aplikace.<br><br>Nemůže mít přiřazeno uživatele pro tuto aplikaci. Přejděte na **aplikace** kartě a v části **uživatelů a skupin**, přiřadit tohoto uživatele nebo skupiny uživatelů do této aplikace. |
+| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění k této aplikaci přístup. Ověření se nepovedlo. Ujistěte se, že přiřaďte uživatele s přístupem k této aplikaci. | Vaši uživatelé může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud používají účty Microsoft místo podnikovém účtu pro přihlášení. Uživatele typu Host může také dojít k této chybě. Uživatelé s Account Microsoft a hosté nelze přístup k aplikacím integrované ověřování systému Windows. Zajistěte, aby se uživatel přihlásí pomocí svého účtu podnikové, odpovídající doméně publikované aplikace.<br><br>Nemůže mít přiřazeno uživatele pro tuto aplikaci. Přejděte na **aplikace** kartě a v části **uživatelů a skupin**, přiřadit tohoto uživatele nebo skupiny uživatelů do této aplikace. |
 | Nyní je nepřístupný této podnikové aplikace. Zkuste to prosím znovu později... Konektor vypršel časový limit. | Vaši uživatelé může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nejsou správně definované pro tuto aplikaci na straně místní. Ujistěte se, že uživatelé mají oprávnění, jak jsou definovány pro tuto aplikaci back-end na místní počítač. |
-| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění k této aplikaci přístup. Ověření se nezdařilo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Vaši uživatelé může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nebyla přiřazena explicitně s licencí Premium nebo Basic správcem odběratele. Přejděte do služby Active Directory odběratele **licence** kartě a ujistěte se, že tohoto uživatele nebo skupiny uživatelů je přiřazena licence Premium nebo Basic. |
+| Nelze získat přístup k této podnikové aplikace. Nemáte oprávnění k této aplikaci přístup. Ověření se nepovedlo. Ujistěte se, že uživatel má licenci pro Azure Active Directory Premium nebo Basic. | Vaši uživatelé může dojít k této chybě při pokusu o přístup k aplikaci, kterou jste publikovali, pokud nebyla přiřazena explicitně s licencí Premium nebo Basic správcem odběratele. Přejděte do služby Active Directory odběratele **licence** kartě a ujistěte se, že tohoto uživatele nebo skupiny uživatelů je přiřazena licence Premium nebo Basic. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Moje chyba nebyl zde uvedené.
 

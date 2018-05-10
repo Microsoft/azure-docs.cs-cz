@@ -1,24 +1,24 @@
 ---
-title: "Přidání bitové kopie systému Linux do Azure zásobníku"
-description: "Zjistěte, jak přidat Linux bitové kopie do protokolů Azure."
+title: Přidání bitové kopie systému Linux do Azure zásobníku
+description: Zjistěte, jak přidat Linux bitové kopie do protokolů Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 6e6f9ca3b314ee2f58d8007e7ddc93ddd213e361
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 64a860bc925b9c7499363c1fe39d03df88a9a51d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Přidání bitové kopie systému Linux do Azure zásobníku
 
@@ -28,56 +28,29 @@ Linuxové virtuální počítače (VM) můžete nasadit v Azure zásobníku při
 
 ## <a name="marketplace-management"></a>Správa webu Marketplace
 
-Chcete-li Linux bitové kopie z Azure Marketplace, použijte postupy v následujícím článku. Vyberte Image Linux, které můžete chtít nabízet uživatelům v zásobníku vaší Azure.
+Chcete-li Linux bitové kopie z Azure Marketplace, použijte postupy v následujícím článku. Vyberte Image Linux, které můžete chtít nabízet uživatelům v zásobníku vaší Azure. 
 
 [Stažení položky marketplace z Azure do Azure zásobníku](azure-stack-download-azure-marketplace-item.md).
 
+Všimněte si, že jsou časté aktualizace do těchto bitových kopií, proto Marketplace Management často k zachování aktualizovaného stavu.
+
 ## <a name="prepare-your-own-image"></a>Příprava vlastní image
 
-Můžete připravit Linux image pomocí jedné z následujících pokynů:
+ Pokud je to možné, stažení bitové kopie, které přes správu Marketplace, které byly připravené a testována zásobník Azure. 
+ 
+ Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné, a ne všechny verze agenta bude fungovat v Azure zásobníku. Měli byste použít verzi 2.2.18 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloudu init](https://cloud-init.io/) v tuto chvíli není podporován v zásobníku Azure.
+
+ Vlastní image Linux pomocí následujících pokynů můžete připravit:
 
    * [Na základě centOS distribuce](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
    * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Ubuntu](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [Ubuntu Server](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-1. Stáhněte a nainstalujte [Azure Linux Agent](https://github.com/Azure/WALinuxAgent/).
+    
+## <a name="add-your-image-to-the-marketplace"></a>Přidání bitové kopie do marketplace.
+ 
+Postupujte podle [lze přidat image do Marketplace](azure-stack-add-vm-image.md). Ujistěte se, že `OSType` parametr je nastaven na `Linux`.
 
-    Azure Linux Agent verze 2.2.2 nebo novější je nutný k poskytování virtuálním počítačům s Linuxem v Azure zásobníku a některé verze nefungují (2.2.12 a 2.2.13 příklady). Řadu distribucí uvedené dříve již obsahují verzi agenta (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`). Pokud vytvoříte vlastní image, musíte nainstalovat agenta ručně. Nainstalovaná verze se dá určit název balíčku, nebo spuštěním `/usr/sbin/waagent -version` ve virtuálním počítači.
-
-    Podle pokynů níže – ruční instalace agenta Azure Linux.
-
-   a. Nejprve stáhnout nejnovější verzi agenta Azure Linux z [Githubu](https://github.com/Azure/WALinuxAgent/releases), například:
-
-            # wget https://github.com/Azure/WALinuxAgent/archive/v2.2.21.tar.gz
-   b. Rozbalte Azure agenta:
-
-            # tar -vzxf v2.2.21.tar.gz
-   c. Nainstalujte python setuptools
-
-        **Debian / Ubuntu**
-
-            # sudo apt-get update
-            # sudo apt-get install python-setuptools
-
-        **Ubuntu 16.04+**
-
-            # sudo apt-get install python3-setuptools
-
-        **RHEL / CentOS / Oracle Linux**
-
-            # sudo yum install python-setuptools
-   d. Nainstalujte agenta Azure:
-
-            # cd WALinuxAgent-2.2.21
-            # sudo python3 setup.py install --register-service
-
-     Systémy s Pythonem 2.x a Python 3.x nainstalován-souběžného možná nutné spustit následující příkaz:
-
-         sudo python3 setup.py install --register-service
-     Další informace najdete v tématu Azure Linux Agent [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
-2. [Přidání bitové kopie na Marketplace s cílem](azure-stack-add-vm-image.md). Ujistěte se, že `OSType` parametr je nastaven na `Linux`.
-3. Po přidání bitovou kopii na Marketplace, je-li vytvořit položku Marketplace. a mohou uživatelé nasadit virtuální počítač s Linuxem.
-
-## <a name="next-steps"></a>Další postup
-[Přehled nabídky služeb v Azure zásobníku](azure-stack-offer-services-overview.md)
+Po přidání bitovou kopii na Marketplace, je-li vytvořit položku Marketplace. a mohou uživatelé nasadit virtuální počítač s Linuxem.

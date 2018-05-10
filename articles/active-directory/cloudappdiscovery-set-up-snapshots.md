@@ -4,21 +4,21 @@ description: Poskytuje informace o hledání a Správa aplikací pomocí Cloud A
 services: active-directory
 keywords: cloud app discovery,. Správa aplikací
 documentationcenter: ''
-author: curtand
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
-ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: curtand
+ms.author: barbkess
 ms.reviewer: nigu
 ms.custom: it-pro
-ms.openlocfilehash: ad4591223c72893a4488f5515d8ceb83e0d7f8cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 33ac83e04e43088f74bb46670f0571762b57e555
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>Vytvoření snímku sestavy Cloud App Discovery
 

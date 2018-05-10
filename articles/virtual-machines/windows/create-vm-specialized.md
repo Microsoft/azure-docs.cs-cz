@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření virtuálního počítače s Windows z specializované virtuálního pevného disku v Azure | Microsoft Docs"
-description: "Vytvořte nový virtuální počítač Windows připojením specializované spravované disk jako disk operačního systému, použití v modelu nasazení Resource Manager."
+title: Vytvoření virtuálního počítače s Windows z specializované virtuálního pevného disku v Azure | Microsoft Docs
+description: Vytvořte nový virtuální počítač Windows připojením specializované spravované disk jako disk operačního systému, použití v modelu nasazení Resource Manager.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 578d31aef5ddeafbd806d0bae4231c135968f78a
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7b1a145040297debe2c348d61f204fc82d2e7d4d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>Vytvoření virtuálního počítače s Windows z disku specializované pomocí prostředí PowerShell
 
@@ -40,7 +40,7 @@ Toto téma ukazuje, jak používat spravovaného disky. Pokud máte starší ver
 Pokud používáte prostředí PowerShell, ujistěte se, že máte nejnovější verzi modulu prostředí AzureRM.Compute PowerShell. 
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM -RequiredVersion 6.0.0
 ```
 Další informace najdete v tématu [Azure PowerShell verze](/powershell/azure/overview).
 
@@ -137,7 +137,7 @@ V závislosti na připojení k síti a velikost souboru virtuálního pevného d
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Vytvoření spravovaného disku z virtuálního pevného disku
 
-Vytvoření spravovaného disku z specializované virtuálního pevného disku v účtu úložiště pomocí [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Tento příklad používá **myOSDisk1** pro název disku vloží disku *StandardLRS* úložiště a používá *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* jako identifikátor URI pro zdrojové virtuální pevný disk.
+Vytvoření spravovaného disku z specializované virtuálního pevného disku v účtu úložiště pomocí [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk). Tento příklad používá **myOSDisk1** pro název disku vloží disku *Standard_LRS* úložiště a používá *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* jako identifikátor URI pro zdrojové virtuální pevný disk.
 
 Vytvořte novou skupinu prostředků pro nový virtuální počítač.
 
@@ -153,7 +153,7 @@ Vytvořte nový disk operačního systému z nahraný virtuální pevný disk.
 $sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType StandardLRS  `
+    (New-AzureRmDiskConfig -AccountType Standard_LRS  `
     -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
@@ -337,7 +337,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 Přidat disk operačního systému do konfigurace pomocí [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk). Tento příklad nastaví velikost disku k *128 GB* a připojí spravovaných disků jako *Windows* disk operačního systému.
  
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 

@@ -1,25 +1,25 @@
 ---
-title: "Ověřování na základě záhlaví s PingAccess pro proxy aplikace služby Azure AD | Microsoft Docs"
-description: "Publikování aplikací s PingAccess a Proxy aplikace pro podporu ověřování na základě záhlaví."
+title: Ověřování na základě záhlaví s PingAccess pro proxy aplikace služby Azure AD | Microsoft Docs
+description: Publikování aplikací s PingAccess a Proxy aplikace pro podporu ověřování na základě záhlaví.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování na základě záhlaví pro jednotné přihlašování s Proxy aplikace a PingAccess
 
@@ -95,7 +95,7 @@ Postupujte podle těchto kroků k publikování aplikace. Pro podrobnější ná
    ![Vyberte na základě záhlaví přihlášení](./media/application-proxy-ping-access/sso-header.PNG)
 
 11. Zavřete okno aplikace Enterprise nebo posuňte se úplně levé straně si vrátit do nabídky Azure Active Directory.
-12. Vyberte **registrace aplikace**.
+12. Vyberte **Registrace aplikací**.
 
    ![Vyberte aplikaci registrace](./media/application-proxy-ping-access/app-registrations.png)
 

@@ -1,23 +1,24 @@
 ---
-title: "Postup konfigurace povoleno MSI virtuálního počítače Azure pomocí sady Azure SDK"
-description: "Krok podle podrobné pokyny pro konfiguraci a použití ve virtuálním počítači Azure, pomocí sady Azure SDK a spravovaná služba Identity (MSI)."
+title: Postup konfigurace povoleno MSI virtuálního počítače Azure pomocí sady Azure SDK
+description: Krok podle podrobné pokyny pro konfiguraci a použití ve virtuálním počítači Azure, pomocí sady Azure SDK a spravovaná služba Identity (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
-ms.openlocfilehash: 42a238d0fda8d5ac87fbb23ab5c191452ef6e2be
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 781f332b2892d9af536bf9a6f81642842285927b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-an-azure-sdk"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí sady Azure SDK
 

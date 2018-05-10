@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 80ae3b526ff429ead5b42769237ce9ee30f30bbd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -172,7 +172,7 @@ Jakmile povolíte úspěšně zálohování, zásady zálohování se spustí po
 Pokud máte potíže s registrací virtuální počítač, zobrazíte následující informace o instalaci agenta virtuálního počítače a na připojení k síti. Pravděpodobně ani nepotřebujete následující informace Pokud chráníte virtuální počítače vytvořené v Azure. Ale pokud jste migrovali virtuální počítače Azure, ujistěte se, zda správně nainstalovaný agent virtuálního počítače a virtuální počítač může komunikovat se službou virtuální sítě.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Nainstalujte agenta virtuálního počítače na virtuálním počítači
-Pro rozšíření Backup pracovat, Azure [agenta virtuálního počítače](../virtual-machines/windows/agent-user-guide.md) musí být nainstalován na virtuální počítač Azure. Pokud byl váš virtuální počítač vytvořen z Azure Marketplace, agent virtuálního počítače již existuje ve virtuálním počítači. 
+Pro rozšíření Backup pracovat, Azure [agenta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) musí být nainstalován na virtuální počítač Azure. Pokud byl váš virtuální počítač vytvořen z Azure Marketplace, agent virtuálního počítače již existuje ve virtuálním počítači. 
 
 Následující informace slouží pro situacích, kdy jsou *není* pomocí virtuální počítač vytvořen z Azure Marketplace. Například jste migrovali virtuální počítač z překážek místní datacentra. V takovém případě musí být nainstalovaný za účelem ochrany virtuálního počítače agenta virtuálního počítače.
 
@@ -180,9 +180,9 @@ Pokud máte problémy se zálohováním virtuálního počítače Azure, zkontro
 
 | **Operace** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Nainstalujte agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Budete potřebovat oprávnění správce k dokončení instalace. |Nainstalujte si nejnovější verzi [agenta systému Linux](../virtual-machines/linux/agent-user-guide.md). Budete potřebovat oprávnění správce k dokončení instalace. Doporučujeme nainstalovat agenta z distribuční úložiště. Jsme *nedoporučujeme* instalace agenta virtuálního počítače s Linuxem přímo z Githubu.  |
-| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduché jako přeinstalace [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů pro [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta z distribuční úložiště. Jsme *nedoporučujeme* aktualizace agenta virtuálního počítače s Linuxem přímo z Githubu.<br><br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
-| Ověření instalace agenta virtuálního počítače |1. Přejděte do složky C:\WindowsAzure\Packages ve virtuálním počítači Azure. <br><br>2. Najít soubor WaAppAgent.exe. <br><br>3. Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. **Verze produktu** pole by mělo být 2.6.1198.718 nebo vyšší. |neuvedeno |
+| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace budete potřebovat oprávnění správce. |<li> Nainstalujte si nejnovější verzi [agenta systému Linux](../virtual-machines/extensions/agent-linux.md). K dokončení instalace budete potřebovat oprávnění správce. Doporučujeme nainstalovat agenta z distribuční úložiště. Jsme **nedoporučujeme** instalaci agenta virtuálního počítače s Linuxem přímo z githubu.  |
+| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta z distribuční úložiště. Jsme **nedoporučujeme** aktualizace agenta virtuálního počítače s Linuxem přímo z githubu.<br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
+| Ověření instalace agenta virtuálního počítače |<li>Ve virtuálním počítači Azure přejděte do složky *C:\WindowsAzure\Packages*. <li>Měl by být přítomný soubor WaAppAgent.exe.<li> Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. Pole Verze produktu by mělo být 2.6.1198.718 nebo vyšší. |neuvedeno |
 
 ### <a name="backup-extension"></a>Rozšíření zálohování
 Po instalaci agenta virtuálního počítače na virtuálním počítači nainstaluje služba Azure Backup agent virtuálního počítače rozšíření zálohování. Služba Backup bezproblémově upgraduje a opravuje rozšíření zálohování.

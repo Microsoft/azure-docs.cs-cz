@@ -5,20 +5,20 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2018
+ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6fc89469e1a9b2d7142e38f7aea5596fc9adb4e4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1ed82a199fbee44d3cd9df7f5416c4e243d9d191
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker.
 
 Není žádný rozdíl ve struktuře sad runbook, které běží v Azure Automation a ty, které běží na hybridní pracovní proces Runbooku. Sady Runbook, které můžete použít pro každý s největší pravděpodobností se podstatně liší ale vzhledem k tomu obvykle cílení hybridní pracovní proces Runbooku sady runbook spravovat prostředky v místním počítači sám sebe nebo s prostředky v místním prostředí, kde je nasazen, při sady runbook v Služby Azure Automation obvykle spravovat prostředky v cloudu Azure.
 
-Při vytváření sady runbook spouštět na hybridní pracovní proces Runbooku měli upravit a testování sad runbook na počítači, který je hostitelem hybridní pracovní proces. Hostitelský počítač má všechny moduly Powershellu a přístup k síti, které je třeba spravovat a přístup k místním prostředkům. Jakmile sady runbook je upravovat a testovat na počítači hybridního pracovního procesu, ho můžete nahrát do prostředí Azure Automation, kde je k dispozici pro spouštění v hybridní pracovní proces. Je důležité vědět, že úlohy spouštět pod účtem místního systému, které můžou představovat jemně lišit, při vytváření sady runbook pro hybridní pracovní proces Runbook by měly vzít v úvahu.
+Při vytváření sady runbook spouštět na hybridní pracovní proces Runbooku měli upravit a testování sad runbook na počítači, který je hostitelem hybridní pracovní proces. Hostitelský počítač má všechny moduly Powershellu a přístup k síti, které je třeba spravovat a přístup k místním prostředkům. Jakmile sady runbook je upravovat a testovat na počítači hybridního pracovního procesu, ho můžete nahrát do prostředí Azure Automation, kde je k dispozici pro spouštění v hybridní pracovní proces. Je důležité vědět, že úlohy běžet pod účtem místního systému pro windows nebo zvláštní uživatelský účet **nxautomation** v systému Linux, které můžou představovat jemně lišit při vytváření sady runbook pro hybridní pracovní proces Runbook by to mělo být vzít v úvahu.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Spuštění sady runbook pro Hybrid Runbook Worker.
 
@@ -28,12 +28,12 @@ Při spuštění sady runbook na portálu Azure, se zobrazí **spustit na** mož
 
 Použití **RunOn** parametr. Můžete následující příkaz pro spuštění sady runbook s názvem Test-Runbook na hybridní skupina pracovního procesu Runbook s názvem MyHybridGroup pomocí prostředí Windows PowerShell.
 
-```powershell-interactive
+```azurepowershell-interactive
 Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 > [!NOTE]
-> **RunOn** parametr byl přidán do **Start-AzureAutomationRunbook** rutiny ve verzi 0.9.1 Microsoft Azure PowerShell. Měli byste [stáhnout nejnovější verzi](https://azure.microsoft.com/downloads/) Pokud máte některou z dřívějších nainstalována. Stačí tuto verzi nainstalovat na pracovní stanici, kde spouštíte sadu runbook z prostředí Windows PowerShell. Nemusíte jej nainstalovat na počítače pracovní, pokud máte v úmyslu spouštění sad runbook z tohoto počítače. Nelze spustit aktuálně sady runbook na hybridní pracovní proces Runbooku z jiného runbooku vzhledem k tomu, že bude vyžadovat nejnovější verzi prostředí Azure Powershell má být nainstalován do vašeho účtu Automation. Nejnovější verze je automaticky aktualizovat ve službě Azure Automation a automaticky instaluje zaměstnancům brzy k dispozici.
+> **RunOn** parametr byl přidán do **Start-AzureAutomationRunbook** rutiny ve verzi 0.9.1 Microsoft Azure PowerShell. Měli byste [stáhnout nejnovější verzi](https://azure.microsoft.com/downloads/) Pokud máte některou z dřívějších nainstalována. Stačí tuto verzi nainstalovat na pracovní stanici, kde spouštíte sadu runbook z prostředí PowerShell. Nemusíte jej nainstalovat na počítače pracovní, pokud máte v úmyslu spouštění sad runbook z tohoto počítače"
 
 ## <a name="runbook-permissions"></a>Oprávnění sady Runbook
 
@@ -41,11 +41,11 @@ Runbook spuštěných v hybridní pracovní proces Runbooku nelze použít stejn
 
 ### <a name="runbook-authentication"></a>Ověření sady Runbook
 
-Ve výchozím nastavení, sady runbook běžet v kontextu účtu místního systému na místním počítači, musí zadat své vlastní ověřování na prostředky, které chtějí získat přístup.
+Ve výchozím nastavení, sady runbook spustit v kontextu účtu místního systému pro Windows a zvláštní uživatelský účet **nxautomation** pro systém Linux na místním počítači, takže musí zadat své vlastní ověřování na prostředky, které chtějí získat přístup .
 
 Můžete použít [pověření](automation-credentials.md) a [certifikát](automation-certificates.md) prostředky ve vašem runbooku pomocí rutiny, které vám umožní zadat přihlašovací údaje, můžete provést ověření na různých prostředků. Následující příklad ukazuje část sady runbook, který restartuje počítač. Načte přihlašovací údaje z asset přihlašovacích údajů a názvu počítače z variabilní prostředek a potom tyto hodnoty používá pomocí rutiny Restart-Computer.
 
-```powershell-interactive
+```azurepowershell-interactive
 $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
 $Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
 
@@ -56,7 +56,7 @@ Můžete také využít [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Účet Spustit jako
 
-Namísto s runbooky své vlastní ověřování k místním prostředkům, můžete zadat **RunAs** účet pro skupinu hybridních pracovních procesů. Zadáte [asset přihlašovacích údajů](automation-credentials.md) který má přístup k místním prostředkům a všechny sady runbook spouštět tyto přihlašovací údaje při spuštění v hybridní pracovní proces Runbooku ve skupině.
+Ve výchozím nastavení používá hybridní pracovní proces Runbooku místního systému pro Windows a zvláštní uživatelský účet **nxautomation** pro Linux spuštění sady runbook. Namísto s runbooky své vlastní ověřování k místním prostředkům, můžete zadat **RunAs** účet pro skupinu hybridních pracovních procesů. Zadáte [asset přihlašovacích údajů](automation-credentials.md) který má přístup k místním prostředkům a všechny sady runbook spouštět tyto přihlašovací údaje při spuštění v hybridní pracovní proces Runbooku ve skupině.
 
 Uživatelské jméno pro přihlašovací údaje musí být v jednom z následujících formátů:
 
@@ -79,7 +79,7 @@ Jako součást procesu automatizované sestavení pro nasazení prostředků v A
 
 Následující Powershellový runbook *Export RunAsCertificateToHybridWorker*, exportuje certifikát spustit jako z vašeho účtu Azure Automation a soubory ke stažení a naimportuje ho do úložiště certifikátů místního počítače v hybridním pracovní připojený k stejný účet. Po dokončení tohoto kroku, tak ověří, že pracovní proces může úspěšně ověřit do Azure pomocí účtu spustit jako.
 
-```powershell-interactive
+```azurepowershell-interactive
 <#PSScriptInfo
 .VERSION 1.0
 .GUID 3a796b9a-623d-499d-86c8-c249f10a6986

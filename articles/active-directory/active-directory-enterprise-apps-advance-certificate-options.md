@@ -1,13 +1,14 @@
 ---
-title: "Podepsání možnosti v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory rozšířené certifikátu | Microsoft Docs"
-description: "Další informace o použití pokročilý certifikát Podepisování možnosti v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory"
+title: Podepsání možnosti v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory rozšířené certifikátu | Microsoft Docs
+description: Další informace o použití pokročilý certifikát Podepisování možnosti v tokenu SAML pro předběžně integrované aplikace v Azure Active Directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeevansd
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c035dcb55af451d0dae71d7a0f5548a6ba3c0ed
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05eb175e3d8306308998780ac230d4f44e611294
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti v tokenu SAML pro galerii aplikací v Azure Active Directory podepsání certifikátu
 Dnes Azure Active Directory (Azure AD) podporuje tisícům předem integrovaných aplikací v galerii aplikací Azure Active Directory. Tato hodnota zahrnuje více než 500 aplikace, které podporují jednotné přihlašování pomocí protokolu SAML 2.0. Když se uživatel přihlásí k aplikaci prostřednictvím služby Azure AD pomocí SAML, Azure AD odešle token do aplikace (přes HTTP POST). Aplikace pak ověří a použije token k přihlášení uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML jsou podepsané jedinečný certifikát, který je vytvořen ve službě Azure AD a konkrétní standardních algoritmů.
@@ -28,7 +29,7 @@ Azure AD se využívá část výchozí nastavení pro aplikace, galerie. Výcho
 
 Azure AD podporuje pokročilý certifikát Podepisování nastavení. Pokud chcete vybrat tyto možnosti, nejprve vyberte **zobrazit upřesňující nastavení podpisový certifikát** políčko:
 
-![Zobrazit rozšířená nastavení podepsání certifikátu][1]
+![Zobrazit upřesňující nastavení podepisování certifikátu][1]
 
 Po výběru tohoto zaškrtávacího políčka, můžete nastavit možnosti podepsání certifikátu a certifikát podpisový algoritmus.
 
@@ -56,7 +57,7 @@ Azure AD podporuje dva podpisový algoritmy k podepsání odpověď SAML:
 
     ![Podepsání algoritmus SHA-1 certifikátu][2]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Konfigurovat jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
 * [Řešení potíží s na základě SAML jednotné přihlašování](develop/active-directory-saml-debugging.md)

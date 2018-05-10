@@ -8,15 +8,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: 853e8fbc0c7044dc97a29254bfd4130e7f81bbbd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-cognitive-search"></a>Co je kognitivní hledání?
 
-Kognitivní vyhledávání je funkce preview služby Azure Search, k dispozici na všechny vrstvy v jihu USA a západní Evropa, který přidává AI indexování úloh. Extrakce dat, zpracování přirozeného jazyka a zpracovávání obrázků během indexování vyhledá latentní informace v nestrukturovaných nebo vyhledávat obsah a umožňuje vyhledávat ve službě Azure Search.
+Kognitivní vyhledávání je funkce preview [Azure Search](search-what-is-azure-search.md), k dispozici na všechny vrstvy v jihu USA a západní Evropa, který přidává AI indexování úloh. Extrakce dat, zpracování přirozeného jazyka a zpracovávání obrázků během indexování vyhledá latentní informace v nestrukturovaných nebo vyhledávat obsah a umožňuje vyhledávat ve službě Azure Search.
 
 AI integrace se prostřednictvím *kognitivní dovednosti* který zlepšit komunikaci oddělení zdroj dokumentů prostřednictvím sekvenční procesy v trasu k indexu vyhledávání. 
 

@@ -1,25 +1,25 @@
 ---
-title: "Přístup k aplikacím Proxy aplikace Azure AD v týmy | Microsoft Docs"
-description: "Přístup k místní aplikace přes Microsoft Teams pomocí proxy aplikace služby Azure AD."
+title: Přístup k aplikacím Proxy aplikace Azure AD v týmy | Microsoft Docs
+description: Přístup k místní aplikace přes Microsoft Teams pomocí proxy aplikace služby Azure AD.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a8dca307bb97898f229b39710a3b566ee913fcca
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 66fdc03d2945b84615ee39dcbcc9bc71ddb06711
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Teams společnosti Microsoft
 
@@ -38,7 +38,7 @@ Pokud již máte aplikace publikována, ale nepamatujete jejich externí adresy 
 
 Po publikování aplikace prostřednictvím Proxy aplikace dát uživatelům vědět, že si můžete přidat jako karty přímo v jejich týmy kanály, a pak je k dispozici pro všechny uživatele v týmu používat aplikaci. Kliknul proveďte tyto kroky:
 
-1. Přejděte do týmů kanál, ve které chcete přidat tuto aplikaci a vyberte  **+**  přidat na kartě.
+1. Přejděte do týmů kanál, ve které chcete přidat tuto aplikaci a vyberte **+** přidat na kartě.
 
    ![Vyberte Přidat na kartě](./media/application-proxy-teams/add-tab.png)
 

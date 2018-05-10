@@ -1,11 +1,9 @@
 ---
-title: "Postup povolení jednotného přihlašování napříč aplikacemi v systému iOS pomocí ADAL | Microsoft Docs"
-description: "Jak používat funkce sady ADAL SDK povolit jednotné přihlašování v rámci vaší aplikace. "
+title: Postup povolení jednotného přihlašování napříč aplikacemi v systému iOS pomocí ADAL | Microsoft Docs
+description: 'Jak používat funkce sady ADAL SDK povolit jednotné přihlašování v rámci vaší aplikace. '
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: xerners
 manager: mtillman
-editor: 
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +13,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a7d93fe6289ade7fbdf3050d49184feb8b370bb5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c477e7e6fb9ef9a93ceab53c1427b974bab99b37
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postup povolení jednotného přihlašování napříč aplikacemi v systému iOS pomocí ADAL
 Pokud jednotné přihlašování (SSO), aby uživatelé stačí jednou zadat své přihlašovací údaje a mají tyto přihlašovací údaje automaticky fungovat na všech aplikací nyní očekává zákazníků. Problémy se zadáním uživatelského jména a hesla na malou obrazovku, často časy v kombinaci s další faktor (2FA) jako telefonní hovor nebo kód zasílání zpráv SMS, má za následek rychlé nespokojenosti, pokud uživatel má k tomu více než jednou pro svůj produkt.
@@ -160,11 +158,11 @@ V pořadí pro platformu Microsoft Identity vědět, že má povolené sdílet t
 
 Asi vás zajímá, jak bude identifikujete různé aplikace ke službě Microsoft Identity, pokud používá stejné ID aplikace Je odpověď **identifikátory URI přesměrování**. Každá aplikace může mít několik přesměrování identifikátory URI registrován v portálu registrace. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Zde je příklad, jak to vypadá:
 
-Identifikátor URI přesměrování app1:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+Identifikátor URI přesměrování app1: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-Identifikátor URI přesměrování počítači App2:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+Identifikátor URI přesměrování počítači App2: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-Identifikátor URI přesměrování App3:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+Identifikátor URI přesměrování App3: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 

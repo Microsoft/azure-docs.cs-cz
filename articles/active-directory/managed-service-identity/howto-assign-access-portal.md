@@ -1,23 +1,24 @@
 ---
-title: "Přiřazení přístupu MSI pro prostředek služby Azure, pomocí portálu Azure"
-description: "Podrobné pokyny pro přiřazení MSI na jeden přístup k prostředkům na jiný prostředek, a to pomocí portálu Azure."
+title: Přiřazení přístupu MSI pro prostředek služby Azure, pomocí portálu Azure
+description: Podrobné pokyny pro přiřazení MSI na jeden přístup k prostředkům na jiný prostředek, a to pomocí portálu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 9120104955aac8ca8a0568e4519c99e1bd786541
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 06f316a7c96ff266e9f4593fa3a9ac871b2979aa
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Přiřadit identitu služby spravovat přístup k prostředku pomocí portálu Azure
 

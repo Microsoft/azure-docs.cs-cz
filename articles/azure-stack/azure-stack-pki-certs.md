@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku
 
@@ -35,7 +35,7 @@ Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veře
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
 Následující seznam popisuje požadavky na certifikát, které jsou nutné k nasazení Azure zásobníku: 
 - Certifikáty musí být vystavené z interní certifikační autority nebo veřejné certifikační autority. Pokud se používá z veřejné certifikační autority, musí být zahrnut v bitové kopii základní operační systém v rámci programu Microsoft důvěryhodné kořenové autoritě. Úplný seznam najdete: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Infrastruktury Azure zásobníku musí mít přístup k síti na používaný k podepisování certifikátů certifikační autority
+- Vaše infrastruktura Azure zásobníku musí mít přístup k síti do umístění seznamu odvolaných certifikátů (CRL) certifikační autority publikován v certifikátu. Tento seznam odvolaných certifikátů musí být koncový bod http
 - Když otáčení certifikátů, certifikáty musí být že buď vystavené stejným interní certifikační autorita používaná k podepisování certifikátů uvedených v nasazení nebo všechny veřejné certifikační autority z výše
 - Použití certifikáty podepsané svým držitelem nejsou podporovány.
 - Certifikát může být jeden zástupný znak certifikát zahrnující všechny obory názvů v poli Alternativní název předmětu (SAN). Alternativně můžete použít jednotlivé certifikáty pomocí zástupné znaky pro koncové body, jako třeba **acs** a Key Vault, kde jsou vyžadovány. 
@@ -45,6 +45,7 @@ Následující seznam popisuje požadavky na certifikát, které jsou nutné k n
 - Soubory certifikátů pfx musí mít hodnoty "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
 - Tento certifikát "vystaveno pro:" pole nesmí být stejné jako jeho "vydaný:" pole.
 - Hesla, aby všechny soubory pfx certifikátů musí být stejný v době nasazení
+- Heslo pro soubor pfx certifikátu musí být složité heslo.
 - Zajistěte, aby názvy subjektu a alternativní názvy předmětu certifikátů odpovídaly specifikace popsané v tomto článku, aby se zabránilo selhání nasazení.
 
 > [!NOTE]
@@ -114,11 +115,11 @@ Následující tabulka popisuje koncové body a certifikáty potřebné pro adap
 |App Service|Certifikát SSL výchozí web provoz|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL typu Wildcard více doménami<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|Rozhraní API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
-|App Service|JEDNOTNÉ PŘIHLAŠOVÁNÍ|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|App Service|Jednotné přihlašování|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Certifikát SSL<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 
 <sup>1</sup> vyžaduje jeden certifikát s více alternativní názvy subjektu zástupný znak. Více zástupné sítí SAN na jeden certifikát nemusí podporovat všechny veřejné certifikačních autorit 
 
-<sup>2</sup> A &#42;.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Služby App Service explicitně vyžaduje použití samostatných certifikátů pro tyto koncové body. 
+<sup>2</sup> A &#42;.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* zástupný certifikát nelze použít namísto tyto tři certifikáty (api.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*, ftp.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >* a sso.appservice. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*. Služby App Service explicitně vyžaduje použití samostatných certifikátů pro tyto koncové body. 
 
 ## <a name="learn-more"></a>Další informace
 Zjistěte, jak [vygenerujete certifikáty infrastruktury veřejných KLÍČŮ pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md). 

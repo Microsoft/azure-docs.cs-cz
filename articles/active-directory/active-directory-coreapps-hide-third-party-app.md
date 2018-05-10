@@ -3,23 +3,24 @@ title: Skrýt aplikace z možnosti pro uživatele v Azure Active Directory | Mic
 description: Jak skrýt aplikace z možnosti pro uživatele v Azure Active Directory přístup panelů nebo Spouštěč oken Office 365.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 7da8c60feed7cbb630e5b48653c657cc8fed9e99
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 564b724ab3971e0566fb2b1dc3a75c2eeac3d391
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Skrýt aplikace z možnosti pro uživatele v Azure Active Directory
 

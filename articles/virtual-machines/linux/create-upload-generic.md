@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 171265d996c9fe4eb10ac354347f5725dadd0203
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 17b4df83b141d5365a8d6244c4ab73b0eba5ed73
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,9 +29,9 @@ Platformy Azure SLA se vztahuje na virtuální počítače běžící operační
 * [Distribuce schválené pro Linux ve službě Azure-](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Podpora pro Linux obrázků v Microsoft Azure](https://support.microsoft.com/kb/2941892)
 
-Všechny distribuce spuštěné v Azure budou muset splňovat určité požadavky na šance, že správně spouštět na platformě.  Tento článek je komplexní rozhodně není, protože každý distribuční se liší. a je dost možné, že i v případě splnění všech následujících kritérií stále potřebujete k výraznému vylepšení systému Linux a ujistěte se, zda správně pracuje na platformě.
+Všechny distribuce spuštěné v Azure budou muset splnit určité požadavky na šance, že správně spouštět na platformě.  Tento článek je komplexní rozhodně není, protože každý distribuční se liší. a je možné, že i v případě splnění všech následujících kritérií potřebujete výrazné vylepšení systému Linux a ujistěte se, zda správně pracuje na platformě.
 
-Je z tohoto důvodu, který doporučujeme spouštět některý z našich [Linux na distribuce schválené pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Pokud je to možné. V následujících článcích vás provede postup přípravy různé potvrzená distribuce systému Linux, které jsou podporovány v Azure:
+Je z tohoto důvodu, který doporučujeme začínat [Linux na distribuce schválené pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Pokud je to možné. V následujícím článku na vás provede postup přípravy různé potvrzená distribuce systému Linux, které jsou podporovány v Azure:
 
 * **[Na základě centOS distribuce](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -40,7 +40,7 @@ Je z tohoto důvodu, který doporučujeme spouštět některý z našich [Linux 
 * **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Zbývající část tohoto článku se soustředí na obecných pokynů pro spuštění distribuční Linux v Azure.
+Zbývající část tohoto článku se zaměřuje na obecných pokynů pro spuštění distribuční Linux v Azure.
 
 ## <a name="general-linux-installation-notes"></a>Poznámky k instalaci obecné Linux
 * Formát VHDX není podporován v Azure, pouze **pevný virtuální pevný disk**.  Disk můžete převést do formátu virtuálního pevného disku pomocí Správce technologie Hyper-V nebo rutiny convert-VHD prostředí. Pokud používáte VirtualBox to znamená výběr **pevnou velikost** oproti výchozí přidělí dynamicky při vytváření disku.
@@ -53,9 +53,9 @@ Zbývající část tohoto článku se soustředí na obecných pokynů pro spu�
 * Všechny virtuální pevné disky na platformě Azure, musí mít virtuální velikost zarovnán 1MB. Při převodu z nezpracovaná disku na virtuální pevný disk je nutné zajistit, aby velikost disku nezpracovaná není násobkem 1MB před převodem. Další informace naleznete v následujících krocích.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Instalace modulů jádra bez technologie Hyper-V
-Azure je spuštěná na hypervisoru technologie Hyper-V, takže Linux vyžaduje nainstalované moduly určité jádra pro spuštění v Azure. Pokud máte virtuální počítač, který se vytvořil mimo technologie Hyper-V, instalačních programů Linux nemusí zahrnovat ovladače pro Hyper-V v počáteční disku paměti RAM (initrd nebo initramfs) Pokud zjistí, zda je spuštěna prostředí Hyper-V. Při použití jiným virtualizačním systému (tj. Virtualbox, KVM atd.) Příprava bitové kopie systému Linux, budete muset znovu vytvořit initrd zajistit, aby alespoň `hv_vmbus` a `hv_storvsc` jádra moduly jsou k dispozici na počáteční disku paměti RAM.  Jedná se o známý problém alespoň na systémy založené na nadřazený distribuce Red Hat.
+Azure je spuštěná na hypervisoru technologie Hyper-V, takže Linux vyžaduje nainstalované moduly určité jádra pro spuštění v Azure. Pokud máte virtuální počítač, který se vytvořil mimo technologie Hyper-V, instalačních programů Linux nemusí zahrnovat ovladače pro Hyper-V v počáteční disku paměti RAM (initrd nebo initramfs) Pokud zjistí, zda je spuštěna v prostředí Hyper-V. Při použití jiným virtualizačním systému (tj. Virtualbox, KVM atd.) Příprava bitové kopie systému Linux, budete muset znovu vytvořit initrd zajistit, aby alespoň `hv_vmbus` a `hv_storvsc` jádra moduly jsou k dispozici na počáteční disku paměti RAM.  Jedná se o známý problém alespoň na systémy založené na nadřazený distribuce Red Hat.
 
-Tento mechanismus pro nové sestavení initrd nebo initramfs image může lišit v závislosti na rozdělení. Projděte si dokumentaci k vaší distribuční nebo podporu pro správné postup.  Tady je jedním z příkladů jak znovu sestavte initrd pomocí `mkinitrd` nástroje:
+Tento mechanismus pro nové sestavení initrd nebo initramfs image může lišit v závislosti na rozdělení. Správné postupu naleznete v dokumentaci k vaší distribuce nebo podporu.  Tady je jedním z příkladů jak znovu sestavte initrd pomocí `mkinitrd` nástroje:
 
 Nejprve zálohujte existující bitová kopie initrd:
 
@@ -68,11 +68,11 @@ V dalším kroku znovu sestavit initrd s `hv_vmbus` a `hv_storvsc` moduly jádra
 
 
 ### <a name="resizing-vhds"></a>Změna velikosti virtuálních pevných disků
-Image virtuálního pevného disku na Azure musí mít virtuální velikost zarovnán 1MB.  Obvykle virtuální pevné disky vytvořené pomocí technologie Hyper-V už zarovnání správně.  Pokud není správně zarovnaná virtuálního pevného disku, pak při pokusu o vytvoření, může se zobrazit chybová zpráva podobná následující *image* z vaší virtuálního pevného disku:
+Image virtuálního pevného disku na Azure musí mít virtuální velikost zarovnán 1 MB.  Obvykle virtuální pevné disky vytvořené pomocí technologie Hyper-V už zarovnání správně.  Pokud virtuální pevný disk není zarovnána správně, může zobrazit chybová zpráva podobná následující při pokusu o vytvoření *image* z vaší virtuálního pevného disku:
 
     "The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. The size must be a whole number (in MBs).”
 
-Chcete-li opravit to můžete změnit velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](http://technet.microsoft.com/library/hh848535.aspx) rutiny prostředí Powershell.  Pokud používáte v prostředí systému Windows, se doporučuje použít qemu img převést (v případě potřeby) a změnit velikost virtuálního pevného disku.
+Chcete-li vyřešit tento problém, změnit velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](http://technet.microsoft.com/library/hh848535.aspx) rutiny prostředí Powershell.  Pokud používáte v prostředí systému Windows, je doporučeno používat qemu img převést (v případě potřeby) a velikost virtuálního pevného disku.
 
 > [!NOTE]
 > Je známého problému v qemu img verze > = 2.2.1, jejímž výsledkem nesprávně naformátovaný VHD. Ve verzi 2.6 QEMU byl opraven problém. Doporučuje se používat qemu-img 2.2.0 nebo nižší, nebo aktualizace na 2.6 nebo novější. Referenční dokumentace: https://bugs.launchpad.net/qemu/+bug/1490611.
@@ -83,7 +83,7 @@ Chcete-li opravit to můžete změnit velikost virtuálního počítače pomocí
    
        # qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
 
-2. Vypočítejte požadovaná velikost bitové kopie disku a ujistěte se, že virtuální velikost je zarovnán 1MB.  Následující skript prostředí bash s tím pomůže.  Tento skript využívá "`qemu-img info`" určit virtuální velikost bitové kopie disku a pak vypočítá velikost další 1 MB:
+2. Vypočítejte požadovaná velikost bitové kopie disku a ujistěte se, že virtuální velikost je zarovnán 1 MB.  Následující skript prostředí bash s tím pomůže.  Tento skript využívá "`qemu-img info`" určit virtuální velikost bitové kopie disku a pak vypočítá velikost další 1 MB:
    
        rawdisk="MyLinuxVM.raw"
        vhddisk="MyLinuxVM.vhd"
@@ -108,11 +108,11 @@ Chcete-li opravit to můžete změnit velikost virtuálního počítače pomocí
        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc MyLinuxVM.raw MyLinuxVM.vhd
 
 ## <a name="linux-kernel-requirements"></a>Požadavky na Linux jádra
-Přímo na nadřazený jádra systému Linux jsou podílí ovladače Linux integrační služby (LIS) pro technologii Hyper-V a Azure. Velkém množství distribucí, které obsahují nejnovější verzi jádra Linux (tj. 3.x) bude již je k dispozici tyto ovladače, nebo v opačném případě zadejte přeneseny zpět verze těchto ovladačů s jejich jádra.  Tyto ovladače neustále aktualizované v nadřazeného jádra s nové opravy a funkce, takže pokud je to možné se doporučuje spustit [schválené distribuční](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) který bude obsahovat tyto opravy a aktualizace.
+Přímo na nadřazený jádra systému Linux jsou podílí ovladače Linux integrační služby (LIS) pro technologii Hyper-V a Azure. Velkém množství distribucí, které obsahují nejnovější verzi jádra Linux (tj. 3.x) již je k dispozici tyto ovladače, nebo v opačném případě zadejte přeneseny zpět verze těchto ovladačů s jejich jádra.  Tyto ovladače neustále aktualizované v nadřazeného jádra s nové opravy a funkce, takže pokud je to možné se doporučuje spustit [schválené distribuční](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) obsahující tyto oprav a aktualizací.
 
-Pokud používáte hodnotu typu variant Red Hat Enterprise Linux verze **6.0 6.3**, bude nutné nainstalovat nejnovější ovladače LIS pro Hyper-V. Ovladače lze nalézt [v tomto umístění](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Od systému RHEL **6.4 +** (a odvozené konfigurace) LIS jsou již součástí jádra a proto žádné další instalační balíčky jsou potřebné ke spuštění těchto systémech v Azure.
+Pokud používáte hodnotu typu variant Red Hat Enterprise Linux verze **6.0 6.3**, pak musíte nainstalovat nejnovější ovladače LIS pro Hyper-V. Ovladače lze nalézt [v tomto umístění](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Od systému RHEL **6.4 +** (a odvozené konfigurace) LIS jsou již součástí jádra a proto žádné další instalační balíčky jsou potřebné ke spuštění těchto systémech v Azure.
 
-Pokud se vyžaduje vlastní jádra, se doporučuje použít novější verzi jádra (tj. **3.8 +**). U těchto distribuce nebo dodavatelů, kteří spravují své vlastní jádra některé úsilí bude potřeba pravidelně backport LIS ovladače z nadřazeného jádra pro vaše vlastní jádra.  I když už používáte relativně nejnovější verzi jádra, důrazně doporučujeme ke sledování všech nadřazeného opravy LIS ovladače a backport ty podle potřeby. Je k dispozici v umístění zdrojových souborů ovladačů LIS [údržby programu](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) ve stromu Linux jádra zdrojového souboru:
+Pokud se vyžaduje vlastní jádra, se doporučuje použít novější verzi jádra (tj. **3.8 +**). Pro tyto distribuce nebo dodavatelů, kteří spravují své vlastní jádra, je potřeba pravidelně backport LIS některé úsilí ovladače z nadřazeného jádra k vaší vlastní jádra.  I když už používáte relativně nejnovější verzi jádra, důrazně doporučujeme ke sledování všech nadřazeného opravy LIS ovladače a backport ty podle potřeby. Je k dispozici v umístění zdrojových souborů ovladačů LIS [údržby programu](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) ve stromu Linux jádra zdrojového souboru:
 
     F:    arch/x86/include/asm/mshyperv.h
     F:    arch/x86/include/uapi/asm/hyperv.h
@@ -126,7 +126,7 @@ Pokud se vyžaduje vlastní jádra, se doporučuje použít novější verzi já
     F:    include/linux/hyperv.h
     F:    tools/hv/
 
-V velmi minimální bylo zjištěno chybí následující opravy, způsobit problémy v Azure a tak tyto musí být obsaženy v jádra. Tento seznam je rozhodně není vyčerpávající nebo úplný pro všechny distribuce:
+Minimálně bylo zjištěno chybí následující opravy, způsobit problémy v Azure a tak tyto musí být obsaženy v jádra. Tento seznam je rozhodně není vyčerpávající nebo úplný pro všechny distribuce:
 
 * [ata_piix: ve výchozím nastavení odložené disků, aby se ovladače technologie Hyper-V](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
 * [miniport storvsc: účet pro pakety na cestě v cestě k RESETOVÁNÍ](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
@@ -137,7 +137,7 @@ V velmi minimální bylo zjištěno chybí následující opravy, způsobit prob
 * [scsi_sysfs: ochranu proti dvojité provádění __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>Azure Linux Agent
-[Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (příkaz waagent) je potřeba správně zřídit virtuální počítač s Linuxem v Azure. Můžete získat nejnovější verzi, soubor problémy nebo odeslání žádosti o přijetí změn na [úložiště GitHub agenta Linux](https://github.com/Azure/WALinuxAgent).
+[Azure Linux Agent](../extensions/agent-linux.md) (příkaz waagent) je potřeba správně zřídit virtuální počítač s Linuxem v Azure. Můžete získat nejnovější verzi, soubor problémy nebo odeslání žádosti o přijetí změn na [úložiště GitHub agenta Linux](https://github.com/Azure/WALinuxAgent).
 
 * V rámci Apache 2.0 licence vydání agenta systému Linux. Velkém množství distribucí již zadejte ot. / min nebo bázi deb balíčky pro agenta, a proto v některých případech to lze nainstalovat a aktualizovat s malým množstvím úsilí.
 * Azure Linux Agent vyžaduje Python v2.6 +.
@@ -147,25 +147,27 @@ V velmi minimální bylo zjištěno chybí následující opravy, způsobit prob
 
 ## <a name="general-linux-system-requirements"></a>Požadavky na systém Linux obecné
 
-* Změňte na řádku spouštěcí jádra GRUB nebo GRUB2, zahrnout následující parametry. To také zajistí, všechny zprávy konzoly odešlou do první sériového portu, který může být užitečné Azure podporu pro ladění problémů:
+* Změňte na řádku spouštěcí jádra GRUB nebo GRUB2, zahrnout následující parametry. To také zajistí, že všechny zprávy konzoly odešlou do první sériového portu, který může být užitečné Azure podporu pro ladění problémů:
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
+  
+    To také zajistí, že všechny zprávy konzoly odešlou do první sériového portu, který může být užitečné Azure podporu pro ladění problémů.
   
     Kromě výše uvedeného, doporučuje se *odebrat* Pokud existují následující parametry:
   
         rhgb quiet crashkernel=auto
   
-    Grafické a quiet spouštěcí nejsou užitečné při cloudovém prostředí, kde chceme, aby všechny protokoly pro odeslání do sériového portu. `crashkernel` Možnost může být vlevo nakonfigurované v případě potřeby, ale Všimněte si, že tento parametr se sníží množství dostupné paměti ve virtuálním počítači 128 MB nebo informace, které mohou způsobovat menší velikostí virtuálního počítače.
+    Grafické a quiet spouštěcí není užitečná při cloudovém prostředí, kde chceme, aby všechny protokoly pro odeslání do sériového portu. `crashkernel` Možnost může být vlevo nakonfigurované v případě potřeby, ale Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači 128 MB nebo informace, které mohou způsobovat menší velikostí virtuálního počítače.
 
 * Instalace agenta Azure Linux
   
-    Azure Linux Agent je požadované pro zřizování Linux image na platformě Azure.  Velkém množství distribucí zadejte agenta jako balíček RPM nebo bázi Deb (balíčku se obvykle označuje jako 'WALinuxAgent' nebo 'walinuxagent').  Agent lze také nainstalovat ručně pomocí následujících kroků v [Linux Agent průvodce](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    Azure Linux Agent je požadované pro zřizování Linux image na platformě Azure.  Velkém množství distribucí zadejte agenta jako balíček RPM nebo bázi Deb (balíčku se obvykle označuje jako 'WALinuxAgent' nebo 'walinuxagent').  Agent lze také nainstalovat ručně pomocí následujících kroků v [Linux Agent průvodce](../extensions/agent-linux.md).
 
 * Ujistěte se, že SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle je to výchozí hodnota.
 
 * Nevytvářejte odkládacího prostoru na disku operačního systému
   
-    Azure Linux Agent mohou automaticky konfigurovat odkládacího souboru pomocí disku místní prostředek, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je disk místní prostředek *dočasné* na disku a může vyprázdněny, když je virtuální počítač zrušit. Po instalaci Azure Linux Agent (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
+    Azure Linux Agent mohou automaticky konfigurovat odkládacího souboru pomocí disku místní prostředek, který je připojen k virtuálnímu počítači po zřízení v Azure. Disk, místní prostředek *dočasné* na disku a může vyprázdněny, když je virtuální počítač zrušit. Po instalaci Azure Linux Agent (viz předchozí krok), upravte následující parametry v /etc/waagent.conf odpovídajícím způsobem:
   
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -184,5 +186,5 @@ V velmi minimální bylo zjištěno chybí následující opravy, způsobit prob
   > 
   > 
 
-* Pak musíte vypnout virtuální počítač a nahrání virtuálního pevného disku do Azure.
+* Vypněte virtuální počítač a nahrání virtuálního pevného disku do Azure.
 

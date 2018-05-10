@@ -3,23 +3,23 @@ title: Pochopení konektory proxy aplikace služby Azure AD | Microsoft Docs
 description: Popisuje základní informace o Azure AD Application Proxy konektory.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
-ms.author: billmath
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e2b82b5c32e1b36bf730b7b834c9b8ad124629
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Pochopení konektory proxy aplikace služby Azure AD
 
@@ -157,7 +157,7 @@ Pokud chcete zobrazit protokoly, přejděte do prohlížeče událostí, otevře
 
 Můžete zkontrolovat stav služby v okně služby. Tento konektor zahrnuje dvě služby systému Windows: skutečný konektor a aktualizačního programu. Oba dva musí běžet vždy.
 
- ![AzureAD Services Local](./media/application-proxy-understand-connectors/aad-connector-services.png)
+ ![Místní služby AzureAD](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
 ## <a name="next-steps"></a>Další postup
 

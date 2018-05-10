@@ -7,12 +7,13 @@ ms.author: daveba
 ms.date: 03/28/2018
 ms.topic: reference
 ms.service: active-directory
+ms.component: msi
 manager: mtillman
-ms.openlocfilehash: c78ba7b6c48ffddd44ef35340e9eb69a3ed32f40
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff56928748f536ffe1cfc30891585565e962d9fe
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="services-that-support-managed-service-identity"></a>Služby, které podporují identita spravované služby 
 

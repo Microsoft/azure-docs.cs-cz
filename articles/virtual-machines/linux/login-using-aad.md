@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/01/2018
+ms.date: 05/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 1a2bb6def032d1790a67e458afb162402c1443a7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -43,14 +43,16 @@ Následující Linuxových distribucích jsou aktuálně podporovány ve verzi P
 
 | Distribuce | Verze |
 | --- | --- |
-| Ubuntu Server | Ubuntu 16.04 LTS a Ubuntu Server 17.10 |
+| CentOS | CentOS 6.9 a CentOS 7.4 |
+| Red Hat Enterprise Linux | RHEL 7 | 
+| Ubuntu Server | Ubuntu 14.04 LTS, Ubuntu Server 16.04 a Ubuntu Server 17.10 |
 
 Ve verzi Preview této funkce jsou aktuálně podporovány následující oblasti:
 
-- Střed USA – jih
+- Všechny veřejné oblasti Azure
 
 >[!IMPORTANT]
-> Chcete-li použít tuto funkci verze preview, se nasadit jenom podporované distro Linux a v podporované oblasti Azure.
+> Chcete-li použít tuto funkci verze preview, se nasadit jenom podporované distro Linux a v podporované oblasti Azure. Funkce není podporována v Azure Government nebo svrchovaných cloudy.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +81,7 @@ K přihlášení do virtuálního počítače s Linuxem pomocí přihlašovacíc
 
 ```azurecli-interactive
 az vm extension set \
-    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH.Edp \
+    --publisher Microsoft.Azure.ActiveDirectory.LinuxSSH \
     --name AADLoginForLinux \
     --resource-group myResourceGroup \
     --vm-name myVM

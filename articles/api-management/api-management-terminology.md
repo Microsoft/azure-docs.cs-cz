@@ -1,21 +1,21 @@
 ---
-title: "Terminologie služby Azure API Management | Microsoft Docs"
-description: "Tento článek poskytuje definice podmínek, které jsou specifické pro API Management."
+title: Terminologie služby Azure API Management | Microsoft Docs
+description: Tento článek poskytuje definice podmínek, které jsou specifické pro API Management.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: 9391b65a5aade4c050ca964354bfea2d3a2338d8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 81cf34cacdfe37e25d6b745304ab0879245fd8da
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -28,10 +28,10 @@ Tento článek poskytuje definice podmínek, které jsou specifické pro správu
 * **Produkt APIM** -produkt obsahuje jeden nebo více rozhraní API a také kvóty využití a podmínky použití. Může obsahovat několik rozhraní API a poskytněte jim pro vývojáře prostřednictvím portálu pro vývojáře. Další informace najdete v tématu [vytvoření a publikování produktu](api-management-howto-add-products.md).
 * **Operace rozhraní API APIM** -každý APIM API představuje sadu operací, které jsou k dispozici pro vývojáře. Každé rozhraní API APIM obsahuje odkaz na službu back-end, který implementuje rozhraní API a jeho operace se mapují na operace implementované back-end službu. Další informace najdete v tématu [model rozhraní API odpovědi](mock-api-responses.md).
 * **Verze** – někdy, kterou chcete publikovat nové nebo jiné rozhraní API funkce pro některé uživatele, zatímco ostatní chcete přilepit s rozhraním API, která aktuálně funguje pro ně. Další informace najdete v tématu [publikovat více verzí rozhraní API](api-management-get-started-publish-versions.md).
-* **Revize** – Pokud je vaše rozhraní API je připravena k přejděte a začne být používají vývojáři, je obvykle potřeba postará v provádění změn pro toto rozhraní API a současně nechcete přerušit volající rozhraní API. Je také užitečné umožnit vývojáři vědět o provedené změny. Další informace najdete v tématu [použít revize](api-management-get-started-revise-api.md).
+* **Revize** – Pokud je vaše rozhraní API je připravena k přejděte a začne být používají vývojáři, je obvykle potřeba postará v provádění změn pro toto rozhraní API a současně nechcete přerušit volající rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Další informace najdete v tématu [použít revize](api-management-get-started-revise-api.md).
 * **Portál pro vývojáře** -vašim zákazníkům (vývojáři) má použít portál pro vývojáře pro přístup vašich rozhraní API. Portál pro vývojáře můžete přizpůsobit. Další informace najdete v tématu [přizpůsobení portálu pro vývojáře](api-management-customize-styles.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření instance](get-started-create-service-instance.md)

@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
 **Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data
@@ -192,7 +192,7 @@ Součásti infrastruktury obsahují následující funkce:
 -   [**UDR**][UDR]. Ve výchozím nastavení založené na systémovou tabulku směrování se směruje provoz ve virtuální síti. Trasy se definují uživatele je vlastní směrovací tabulku, která správci sítě můžete přidružit k jedné nebo několika podsítích přepsat chování systémovou tabulku směrování a zadejte cestu k komunikace v rámci virtuální sítě. Přítomnost udr zaručuje, aby odchozí provoz z přenosu ramenem prostřednictvím konkrétní vlastní virtuální počítače nebo virtuální zařízení sítě a nástroje pro vyrovnávání zatížení nachází v centru a větve.
 -   [**NSG**][NSG]. Skupina zabezpečení sítě je seznam pravidel zabezpečení, které fungují jako provoz filtrování zdrojů IP, cílové IP, protokoly, porty zdrojové IP a cílové IP porty. NSG můžete použít k podsíti, karty virtuální síťovou kartu spojené s virtuální počítač Azure, nebo obojí. Skupin Nsg je nezbytné k implementaci správné toku řízení v centru a větve. Úroveň zabezpečení poskytované NSG je funkce, které porty, otevřete a pro jaké účely. Zákazníci by se měly používat filtry další jednotlivé virtuální počítače s založené na hostiteli brány firewall například IPtables nebo brány Windows Firewall.
 -   [**DNS**][DNS]. Překlad prostředků do virtuální sítě vDC je zajišťováno prostřednictvím DNS. Azure poskytuje služby DNS pro obě [veřejné][DNS] a [privátní] [ PrivateDNS] překlad názvů. Privátní zón překladu názvů v rámci virtuální sítě i do virtuálních sítí. Privátní zón pouze rozpětí může mít virtuální sítí ve stejné oblasti, ale také napříč oblasti a odběry. Pro překlad IP adres veřejný Azure DNS poskytuje hostitelské služby domén DNS poskytnutí překladu názvů pomocí infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
--   [** Předplatné] [ SubMgmt] a [správu skupiny prostředků][RGMgmt]**. Předplatné definuje hranici přirozené vytvořit více skupin prostředků v Azure. Prostředky v předplatném se sestaví společně v logické kontejnery s názvem skupiny prostředků. Skupina prostředků představuje logické skupiny pro uspořádání prostředků virtuálních řadičů domény.
+-   [**Předplatné** ] [ SubMgmt] a [ **správu skupiny prostředků**][RGMgmt]. Předplatné definuje hranici přirozené vytvořit více skupin prostředků v Azure. Prostředky v předplatném se sestaví společně v logické kontejnery s názvem skupiny prostředků. Skupina prostředků představuje logické skupiny pro uspořádání prostředků virtuálních řadičů domény.
 -   [**RBAC**][RBAC]. Prostřednictvím RBAC je možné mapy organizační roli společně s práva pro přístup k určité prostředky Azure, což umožňuje omezit přístup jenom určité podmnožiny akce uživatele. S RBAC můžete udělit přístup přiřazením příslušné role uživatele, skupiny a aplikace v rámci oboru relevantní. Předplatné Azure, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. RBAC umožňuje dědičnosti oprávnění. Role přiřazené v nadřazeném oboru podřízené objekty jsou v něm obsažena také uděluje přístup. RBAC můžete oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Například použijte funkci RBAC umožníte jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databáze SQL v rámci stejného předplatného.
 -   [**VNet Peering**][VNetPeering]. Základní funkce umožňuje vytvořit infrastrukturu vDC je ve stejné oblasti prostřednictvím sítě Azure datového centra, nebo pomocí páteřní strukturu Azure světě v oblastech sítě VNet partnerský vztah, mechanismus, který se připojuje dvě virtuální sítě (virtuální sítě).
 

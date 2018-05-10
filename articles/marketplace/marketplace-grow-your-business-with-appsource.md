@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: f0d9739dda608b7c49ff9a8fbd93d08b301c0b9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0af34a725849acf6fbb6523f03e90a85ce5ba719
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="grow-your-business-with-appsource"></a>Růst společnosti s AppSource
 Azure Marketplace i AppSource jsou spuštění body pro společné aktivity, přejděte na trh se společností Microsoft a setrvačníku pro růst podniku. Pomocí spuštění povýšení, generování vyžádání a joint prodeje a marketingu, lze vaši nabídku marketplace základnu vaší firmy stroje cloudu. Neexistují žádné poplatky za účasti. Zákazníků společnosti Microsoft najdete naší cloudové tržišť každý den se najít správné aplikace a služby, které pomohou zvýšit své firmy. Naším cílem je pomocí řešení a služeb od společnosti Microsoft a naše ekosystém partnerů připojení organizace. 
@@ -88,7 +88,7 @@ V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše n
 **StoreFront podrobnosti - artefakty Marketing**
 | StoreFront nastavení       | Osvědčené postupy          | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Nabídka logo (formát PNG, 58 × 48)**    | Vaše logo musí navržena a optimalizována pro digitální střední.<br>Nahrajte logo ve formátu PNG pro stránky hledání na nabídku. |
+| **Nabídka logo (formát PNG, 48 × 48)**    | Vaše logo musí navržena a optimalizována pro digitální střední.<br>Nahrajte logo ve formátu PNG pro stránky hledání na nabídku. |
 | **Nabídka logo (.png. 216 x 216)**     | Vaše logo musí navržena a optimalizována pro digitální střední. <br>Nahrajte logo ve formátu PNG podrobnosti aplikace na nabídku výpis stránky. |
 | **Další informace**   | Zahrnují podporu prodeje a marketingu prostředky v části "Další informace," pro příklad, dokumenty white paper, brožury, kontrolní seznamy, PowerPoints a tak dále. Všechny soubory musí být ve formátu PDF. Nemáte prodeje, informujte potenciálního zákazníka. <br>Přidání odkazu na cílovou stránku aplikace na všechny dokumenty a přidejte adresu URL parametry můžete sledovat návštěvníky a zkušební verze. |
 | **Videa**       | Nahrát aspoň jeden video, jsou povoleny maximálně čtyři videa. Videa měli komunikovat hodnotu vaši nabídku. Zajistěte, aby byl kandidát hrdina tohoto textu není vaší společnosti. Videa by měl řeči primárnímu serveru, problémy a cíle vaší základní rozhodnutí maker osobě. <br>Doporučená délka: 60 90 sekund. Začlenit klíčových slov názvu videím.<br>Zvažte přidání dalších videa, jako je například postupy video; začátek video nebo video názory zákazníků. |
@@ -98,7 +98,7 @@ V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše n
 
 Když vaši nabídku uveden v AppSource, jste již získali oprávnění k zobrazení oznámení "K dispozici na AppSource" na vašem webu. 
 
-    ![AppSource badge](./media/marketplace-appsource/appsourcebadge.png)
+ ![Oznámení "BADGE" AppSource](./media/marketplace-appsource/appsourcebadge.png)
     
 Přidání tato oznámení do vaší lokality podporuje, že vaši nabídku na AppSource a vy můžete propojit potenciální zákazníky přímo na stránku výpis. Oznámení AppSource je k dispozici ve třech úrovních. Můžete si stáhnout oznámení "BADGE" spolu s pokyny k použití v [zvýšit úroveň dostupnosti vaší aplikace v Microsoft AppSource](https://appsource.microsoft.com/blogs/promote-your-app-s-availability-on-microsoft-appsource).
 

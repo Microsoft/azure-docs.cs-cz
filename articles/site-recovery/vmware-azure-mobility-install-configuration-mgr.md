@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 8382fadc02a7e80b6f28bd777f423013aed9add3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 50328fc3b594a9162ffb9f82f699f43f9106640f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizaci instalace služby Mobility pomocí nástroje System Center Configuration Manager
 
@@ -49,7 +49,7 @@ Alternativně můžete automatizovat instalace služby Mobility s [Azure Automat
 4. Kopírování **MobSvc.passphrase** soubor do **MobSvcWindows** složky do sdílené síťové složky.
 5. Přejděte do instalačního programu úložiště na konfiguračním serveru tak, že spustíte následující příkaz:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Kopírování **Microsoft automatické obnovení systému\_uživatelský Agent\_*verze*\_Windows\_GA\_*datum*\_Release.exe**  k **MobSvcWindows** složky do sdílené síťové složky.
 7. Zkopírujte následující kód a uložte ho jako **install.bat** do **MobSvcWindows** složky.
@@ -174,7 +174,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
   | **Název parametru** | **Hodnota** |
   |--|--|
   | Název | Instalaci služby Mobility Microsoft Azure (Windows) |
-  | Příkazový řádek | install.bat |
+  | Příkazový řádek | Install.bat |
   | Program lze spustit | Zda je přihlášený uživatel |
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -230,7 +230,7 @@ Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration 
 4. Kopírování **MobSvc.passphrase** soubor do **MobSvcLinux** složky do sdílené síťové složky.
 5. Přejděte do instalačního programu úložiště na konfiguračním serveru spuštěním příkazu:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Zkopírujte následující soubory do **MobSvcLinux** složky do sdílené síťové složky:
    * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
@@ -399,7 +399,7 @@ cd /tmp
     | **Název parametru** | **Hodnota** |
   |--|--|
   | Název | Instalaci služby Mobility Microsoft Azure (Linux) |
-  | Příkazový řádek | ./install_linux.sh |
+  | Příkazový řádek | ./install_linux.SH |
   | Program lze spustit | Zda je přihlášený uživatel |
 
   ![Snímek obrazovky vytvořením balíčku a programu Průvodce](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)

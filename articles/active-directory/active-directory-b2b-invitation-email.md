@@ -1,24 +1,20 @@
 ---
-title: "Elementy pozvánku e-mail spolupráce B2B – Azure Active Directory | Microsoft Docs"
-description: "Azure Active Directory s B2B spolupráce pozvánku e-mailové šablony"
+title: Elementy pozvánku e-mail spolupráce B2B – Azure Active Directory | Microsoft Docs
+description: Azure Active Directory s B2B spolupráce pozvánku e-mailové šablony
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.custom: seohack1
 ms.service: active-directory
+ms.component: B2B
 ms.topic: article
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0d26fc4758b2defc3f1b8b5643daafdac4d2baac
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3767a2ce457f7aa976620fb2df217d7f0823fe99
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy pozvánku e-mail spolupráce B2B – Azure Active Directory
 
@@ -54,7 +50,7 @@ Pokud jste ještě profilový obrázek, se zobrazí ikona s iniciály pozvání 
 
   ![Zobrazení pozvánky iniciály](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
-### <a name="body"></a>Text
+### <a name="body"></a>Tělo
 Text obsahuje zprávu, která vytvoří pozvání odeslal nebo předána pozvánku rozhraní API. Je textová oblast, takže nezpracovává značky HTML z bezpečnostních důvodů.
 
 ### <a name="footer-section"></a>Sekce zápatí
@@ -72,16 +68,10 @@ Zápatí obsahuje značky společnosti Microsoft a umožňuje příjemce vědět
 
 ## <a name="next-steps"></a>Další postup
 
-Projděte si naše další články ohledně spolupráce B2B ve službě Azure AD:
+Na spolupráci Azure AD B2B najdete v následujících článcích:
 
-* [Co je spolupráce Azure AD B2B](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Jak Azure Active Directory správci přidat uživatele spolupráce B2B?](active-directory-b2b-admin-add-users.md)
-* [Jak informační pracovníci přidat uživatele spolupráce B2B?](active-directory-b2b-iw-add-users.md)
-* [Uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md)
-* [Licencování Azure AD s B2B spolupráce](active-directory-b2b-licensing.md)
-* [Řešení potíží s spolupráce Azure Active Directory s B2B](active-directory-b2b-troubleshooting.md)
-* [Spolupráce Azure Active Directory s B2B nejčastější dotazy (FAQ)](active-directory-b2b-faq.md)
-* [Spolupráce Azure Active Directory s B2B rozhraní API a přizpůsobení](active-directory-b2b-api.md)
-* [Vícefaktorové ověřování pro uživatele pro spolupráci B2B](active-directory-b2b-mfa-instructions.md)
-* [Přidání uživatelů spolupráce B2B bez Pozvánka](active-directory-b2b-add-user-without-invite.md)
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
+- [Co je spolupráce Azure AD B2B](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Jak Azure Active Directory správci přidat uživatele spolupráce B2B?](active-directory-b2b-admin-add-users.md)
+- [Jak informační pracovníci přidat uživatele spolupráce B2B?](active-directory-b2b-iw-add-users.md)
+- [Uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md)
+- [Přidání uživatelů spolupráce B2B bez Pozvánka](active-directory-b2b-add-user-without-invite.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6452d8f88b91fe0cbf144ce951b84ba4cec0047
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (klasické)
 
@@ -37,11 +37,11 @@ Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombi
 
 Azure poskytuje tři různých způsobů dosažení nasazení Classic odchozí připojení.  Všechna nasazení Classic mají všechny tři scénáře, která je jim dostupná:
 
-| Scénář | Metoda | Popis | Webové Role pracovního procesu | IaaS | 
-| --- | --- | --- | --- | --- |
-| [1. Virtuální počítač s Instance úroveň veřejnou IP adresu](#ilpip) | Překládat pomocí SNAT, port vydávají nepoužívá |Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
-| [2. veřejný koncový bod Vyrovnávání zatížení sítě](#publiclbendpoint) | Překládat pomocí SNAT s port vydávají (PAT) pro veřejný koncový bod |Azure sdílí veřejných IP adres veřejný koncový bod s více privátní koncových bodů. Azure používá dočasné porty veřejný koncový bod pro Jan. | Ano | Ano |
-| [3. Samostatný virtuální počítač ](#defaultsnat) | Překládat pomocí SNAT s port vydávají (PAT) | Azure automaticky označí veřejnou IP adresu pro překládat pomocí SNAT, sdílí tato veřejná IP adresa s celé nasazení a používá dočasné porty koncový bod veřejné IP adresy pro Jan. Toto je záložní scénář pro uvedených scénářů. Pokud potřebujete viditelnost a kontrolu se nedoporučuje. | Ano | Ano|
+| Scénář | Metoda | Protokoly IP | Popis | Webové Role pracovního procesu | IaaS | 
+| --- | --- | --- | --- | --- | --- |
+| [1. Virtuální počítač s Instance úroveň veřejnou IP adresu](#ilpip) | Překládat pomocí SNAT, port vydávají nepoužívá | PROTOKOL TCP, UDP, ICMP, ESP | Azure používá veřejné IP adresy přiřazené virtuálního počítače. Instance má všechny dočasné porty, které jsou k dispozici. | Ne | Ano |
+| [2. veřejný koncový bod Vyrovnávání zatížení sítě](#publiclbendpoint) | Překládat pomocí SNAT s port vydávají (PAT) pro veřejný koncový bod | TCP, UDP | Azure sdílí veřejných IP adres veřejný koncový bod s více privátní koncových bodů. Azure používá dočasné porty veřejný koncový bod pro Jan. | Ano | Ano |
+| [3. Samostatný virtuální počítač ](#defaultsnat) | Překládat pomocí SNAT s port vydávají (PAT) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro překládat pomocí SNAT, sdílí tato veřejná IP adresa s celé nasazení a používá dočasné porty koncový bod veřejné IP adresy pro Jan. Toto je záložní scénář pro uvedených scénářů. Pokud potřebujete viditelnost a kontrolu se nedoporučuje. | Ano | Ano |
 
 Toto je podmnožinu funkcí odchozí připojení k dispozici pro nasazení Resource Manager v Azure.  
 

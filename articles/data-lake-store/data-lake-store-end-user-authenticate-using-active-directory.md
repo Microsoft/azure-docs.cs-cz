@@ -1,8 +1,8 @@
 ---
-title: "Ověřování koncového uživatele: Data Lake Store s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí Azure Active Directory"
+title: 'Ověřování koncového uživatele: Data Lake Store s Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí Azure Active Directory
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 39ee32ec8b1d005aac12cb88262d7e2f37898721
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Ověření koncových uživatelů s Data Lake Store pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Zkontrolujte, zda jste vybrali při postupovat podle pokynů v odkazu, **nativn�
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Získání ID aplikace a identifikátor URI pro přesměrování
 
-V tématu [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) načíst ID aplikace nativní aplikace Azure AD (také nazývané ID klienta na portálu Azure classic).
+V tématu [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) načíst ID aplikace.
 
 Chcete-li získat identifikátor URI přesměrování, proveďte následující kroky.
 

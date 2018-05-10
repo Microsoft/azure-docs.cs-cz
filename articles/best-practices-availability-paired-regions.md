@@ -7,13 +7,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 754b0bdea4ccb93de16fda4eea5e012e0630daea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuitu a zotavení po havárii (BCDR): spárovat oblasti Azure
 
@@ -25,31 +25,30 @@ Každé oblasti Azure je spárován s jinou oblast v rámci stejné geography, s
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Obrázek 1 – Azure regionální pár diagram
+Obrázek 1 – Azure regionální páry
 
 | Geography | Spárované oblasti |  |
 |:--- |:--- |:--- |
 | Asie |Východní Asie |Jihovýchodní Asie |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
+| Brazílie |Brazílie – Jih (2) |Střed USA – jih |
 | Kanada |Kanada – střed |Východní Kanada |
 | Čína |Čína – sever |Čína – východ|
+| Evropa |Severní Evropa |Západní Evropa |
+| Německo |Německo – střed |Německo – severovýchod |
 | Indie |Střed Indie |Indie – jih |
 | Indie |Indie – západ (1) |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Korea |Korea – střed |Korea – jih |
-| Severní Amerika |Střed USA – sever |Střed USA – jih |
 | Severní Amerika |Východ USA |Západní USA |
 | Severní Amerika |Východní USA 2 |Střed USA |
-| Severní Amerika |Západní USA 2 |Západní střed USA |
-| Evropa |Severní Evropa |Západní Evropa |
-| Japonsko |Japonsko – východ |Japonsko – západ |
-| Brazílie |Brazílie – Jih (2) |Střed USA – jih |
+| Severní Amerika |Střed USA – sever |Střed USA – jih |
+| Severní Amerika |Západní USA 2 |Západní střed USA 
+| Spojené království |Spojené království – západ |Spojené království – jih |
+| ministerstvo obrany USA |US DoD – východ |US DoD – střed |
+| US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
 | US Government |USA – verze pro státní správu Iowa (3) |USA (Gov) – Virginia |
 | US Government |USA – verze pro státní správu Virginia (4) |USA (Gov) – Texas |
-| US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
-| USA – oddělení obrany |US DoD – východ |US DoD – střed |
-| SPOJENÉ KRÁLOVSTVÍ |Spojené království – západ |Spojené království – jih |
-| Německo |Německo – střed |Německo – severovýchod |
 
 Tabulka 1 - mapování regionální párů Azure
 

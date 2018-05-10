@@ -1,26 +1,20 @@
 ---
-title: "Konfigurace aplikací SaaS pro spolupráci B2B ve službě Azure Active Directory | Microsoft Docs"
-description: "Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce"
+title: Konfigurace aplikací SaaS pro spolupráci B2B ve službě Azure Active Directory | Microsoft Docs
+description: Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 05/23/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e2206ca8ddee867b9ea48911f70793010989ad69
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 36fe82311b180a1dbe4fb81b78f10482cb8bb4ac
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
 
@@ -35,7 +29,7 @@ Předtím, než se podíváte na konkrétní aplikaci pokyny, zde jsou některé
 * Atributy uživatele na zmírnit problémy s disk profilu pozměnění uživatele (UPD) v uživatele typu Host, vždy nastavte **uživatelský identifikátor** k **user.mail**.
 
 
-## <a name="dropbox-business"></a>Dropbox Business
+## <a name="dropbox-business"></a>Obchodní dropbox
 
 Pokud chcete povolit uživatelům přihlášení pomocí účtu organizace, je nutné ručně nakonfigurovat Dropbox obchodní používat Azure AD jako zprostředkovatele identity Security (Assertion Markup Language SAML). Pokud obchodní Dropbox nebyl nakonfigurován k tomu, nemůže výzvu nebo jinak umožňují uživatelům přihlásit se pomocí služby Azure AD.
 
@@ -105,13 +99,8 @@ Jako budou pozvaní uživatelé Dropbox musí pozvaným uživatelům pole uplatn
 
 Na spolupráci Azure AD B2B najdete v následujících článcích:
 
-* [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Vlastnosti uživatele spolupráce B2B](active-directory-b2b-user-properties.md)
-* [Přidání uživatele spolupráce B2B k roli](active-directory-b2b-add-guest-to-role.md)
-* [Delegovat pozvánek spolupráce B2B](active-directory-b2b-delegate-invitations.md)
-* [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
-* [Kód spolupráce B2B a ukázky prostředí PowerShell](active-directory-b2b-code-samples.md)
-* [Tokeny uživatele spolupráce B2B](active-directory-b2b-user-token.md)
-* [Deklarace uživatele spolupráce B2B mapování](active-directory-b2b-claims-mapping.md)
-* [Externí sdílení Office 365](active-directory-b2b-o365-external-user.md)
-* [Aktuální omezení spolupráce B2B](active-directory-b2b-current-limitations.md)
+- [Co je spolupráce B2B ve službě Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Dynamické skupiny a spolupráci B2B](active-directory-b2b-dynamic-groups.md)
+- [Deklarace uživatele spolupráce B2B mapování](active-directory-b2b-claims-mapping.md)
+- [Externí sdílení Office 365](active-directory-b2b-o365-external-user.md)
+

@@ -1,11 +1,11 @@
 ---
-title: "Jak nastavit nebo upravit zásady služby Azure API Management | Microsoft Docs"
-description: "Toto téma ukazuje, jak nastavit nebo upravit zásady služby Azure API Management."
+title: Jak nastavit nebo upravit zásady služby Azure API Management | Microsoft Docs
+description: Toto téma ukazuje, jak nastavit nebo upravit zásady služby Azure API Management.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 409069cbc382610a48139df75f0f64b1682d8ee6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Jak nastavit nebo upravit zásady služby Azure API Management
 
@@ -29,7 +29,7 @@ Podrobné informace o zásadách najdete v tématu [zásady ve službě Azure AP
 
 Nastavit nebo upravit zásadu, postupujte podle následujících kroků:
 
-1. Přihlaste se k portálu Azure v [https://portal.azure.com](https://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Přejděte k vaší instanci APIM.
 3. Klikněte **rozhraní API** kartě.
 4. Vyberte jednu z rozhraní API, která jste předtím naimportovali.
@@ -38,7 +38,7 @@ Nastavit nebo upravit zásadu, postupujte podle následujících kroků:
 7. Klepněte na trojúhelník vedle **příchozí** nebo **odchozí** tužky.
 8. Vyberte **editor kódu** položky.
 
-    ![Upravit zásady](./media/set-edit-policies/set-edit-policies01.png)
+    ![Upravení zásady](./media/set-edit-policies/set-edit-policies01.png)
 
 9. Vložte kód požadovanou zásadu do jedné odpovídající bloků.
          
@@ -82,7 +82,7 @@ Globální obor je nakonfigurován pro **všechna rozhraní API** v instanci API
     ![Globální obor](./media/api-management-howto-policies/global-scope.png)
 
 3. Klikněte na ikonu trojúhelníku.
-4. Vyberte **editor kódu**.
+4. Vyberte **Editor kódu**.
 5. Přidání nebo úprava zásad.
 6. Stiskněte klávesu **Uložit**. 
 
@@ -111,7 +111,7 @@ Rozhraní API obor je nakonfigurován pro **všechny operace** vybrané rozhran�
 
 2. Vyberte **všechny operace**
 3. Klikněte na ikonu trojúhelníku.
-4. Vyberte **editor kódu**.
+4. Vyberte **Editor kódu**.
 5. Přidání nebo úprava zásad.
 6. Stiskněte klávesu **Uložit**. 
 
@@ -125,11 +125,11 @@ Operace oboru je nakonfigurován pro vybranou operaci.
     ![Operace oboru](./media/api-management-howto-policies/operation-scope.png)
 
 3. Klikněte na ikonu trojúhelníku.
-4. Vyberte **editor kódu**.
+4. Vyberte **Editor kódu**.
 5. Přidání nebo úprava zásad.
 6. Stiskněte klávesu **Uložit**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Najdete v následujících tématech souvisejících:
 

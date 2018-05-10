@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: d539475d376e2c3e38c2cbd38de0a10645fcabe4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
 
@@ -27,6 +27,8 @@ Azure mřížky událostí má tři typy ověřování:
 Webhooky jsou jedním z mnoha způsoby, jak přijímat události z události mřížky Azure. Až o novou událost připravena, odešle Webhooku mřížky událostí nakonfigurovaný koncový bod HTTP s událostí v textu požadavku HTTP.
 
 Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL a odešlete požadavek GET buď prostřednictvím klienta REST nebo webový prohlížeč.
+
+Ruční ověřování je ve verzi preview. Pokud chcete použít, musíte nainstalovat [událostí mřížky rozšíření](/cli/azure/azure-cli-extensions-list) pro [2.0 rozhraní příkazového řádku AZ](/cli/azure/install-azure-cli). Můžete je nainstalovat `az extension add --name eventgrid`. Pokud používáte rozhraní API REST, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Podrobnosti o ověření
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 1e07845591583c7159958d4e2eb7eeb2f126b75f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aea78c98d85fe9bc21b61d3c963a5bdd7e1c20b3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="using-gpus-on-aks"></a>Použití grafických procesorů v AKS
 
@@ -273,12 +273,12 @@ job "samples-tf-mnist-demo" deleted
 
 ## <a name="next-steps"></a>Další postup
 
-Zajímá systémem Kubernetes úlohy Machine Learning? Naleznete v dokumentaci Kubeflow další podrobnosti.
+Zajímá systémem Kubernetes úlohy Machine Learning? Naleznete Kubeflow labs pro více podrobností.
 
 > [!div class="nextstepaction"]
-> [Kubeflow uživatelská příručka][kubeflow-docs]
+> [Kubeflow Labs][kubeflow-labs]
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubeflow-docs]: https://github.com/kubeflow/kubeflow/blob/master/user_guide.md
+[kubeflow-labs]: https://github.com/Azure/kubeflow-labs

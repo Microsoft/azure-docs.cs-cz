@@ -61,8 +61,22 @@
               href: azure-stack-prepare-pki-certs.md
             - name: Ověření certifikátů infrastruktury veřejných KLÍČŮ
               href: azure-stack-validate-pki-certs.md
-        - name: Integrace identit
-          href: azure-stack-integrate-identity.md
+            - name: Opravit certifikáty PKI
+              href: azure-stack-remediate-certs.md
+            - name: Materiály pro nasazení
+              items:
+                - name: Rutiny Start-AzsReadiness – reference
+                  href: azure-stack-azsreadiness-cmdlet.md
+                - name: Podívejte se na sestavu připravenosti
+                  href: azure-stack-validation-report.md
+            - name: Integrace identit
+              items:
+                - name: Vyberte zprostředkovatele identity
+                  href: azure-stack-integrate-identity.md
+                - name: Ověření identit Azure
+                  href: azure-stack-validate-identity.md
+        - name: Ověření registrace Azure
+          href: azure-stack-validate-registration.md
         - name: Externí monitorování
           href: azure-stack-integrate-monitor.md
         - name: Integrace zabezpečení
@@ -123,7 +137,7 @@
               href: azure-stack-manage-storage-accounts.md
             - name: Spravovat kapacita úložiště
               href: azure-stack-manage-storage-shares.md
-            - name: Spravovat kapacita fyzické úložiště Azure zásobníku
+            - name: Spravovat kapacita fyzické paměti
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: Výměna hardwaru
           items:
@@ -253,6 +267,10 @@
               href: azure-stack-compute-add-scalesets.md
             - name: Virtuální počítače s Linuxem nabídka
               href: azure-stack-linux.md
+            - name: Přidat virtuální počítač Red Hat
+              href: azure-stack-redhat-create-upload-vhd.md
+            - name: Nabízejí Kubernetes clusteru
+              href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Využití a fakturace
           items:
             - name: Přehled

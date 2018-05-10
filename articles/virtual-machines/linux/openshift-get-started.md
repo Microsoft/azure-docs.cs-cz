@@ -1,25 +1,25 @@
 ---
-title: "OpenShift v Azure přehled | Microsoft Docs"
-description: "Přehled OpenShift v Azure."
+title: OpenShift v Azure přehled | Microsoft Docs
+description: Přehled OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 5d154a1c860a5ebd7af2efd55b470bb14efe6c67
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: c8e740a66271c88b3abb036867d1760cc9e77607
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="openshift-in-azure"></a>OpenShift v Azure
 
@@ -31,14 +31,14 @@ OpenShift zahrnuje Kubernetes pro správu a kontejner orchestration. Přidá dev
 - Snadné nasazení a škálování.
 - Dlouhodobé údržby životního cyklu pro týmy a aplikace.
 
-Existuje více verzí OpenShift, z nichž dva jsou k dispozici pro spuštění v Azure:
+Nejsou k dispozici více verzí OpenShift:
 
 - OpenShift Origin
 - OpenShift Container Platform
 - OpenShift Online
 - OpenShift vyhrazené
 
-Čtyři verzí popsaná v tomto článku, dva jsou dostupné pro zákazníky nasadit v Azure na své vlastní: OpenShift původ a OpenShift kontejneru platformy.
+Čtyři verzí popsaná v tomto článku pouze dva jsou dostupné pro zákazníky, které chcete nasadit v Azure: OpenShift původ a OpenShift kontejneru platformy.
 
 ## <a name="openshift-origin"></a>OpenShift Origin
 
@@ -60,7 +60,7 @@ S touto verzí zákazník nasadí kontejnery, ale nemá žádnou kontrolu, přes
 
 Vyhrazené je Red Hat spravovaná *jednoho klienta* OpenShift používající kontejneru platformy. Red Hat spravuje všechny základní infrastruktury (virtuální počítače, OpenShift clusteru, sítě, úložiště, atd.). Cluster je specifická pro jedno zákazníka a spustí ve veřejném cloudu (například AWS nebo Google s Azure brzo časná 2018). Cluster s podporou počáteční zahrnuje čtyři uzly aplikace pro 48,000 za jeden rok. (placené předem).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Konfigurace běžné požadavků pro OpenShift v Azure](./openshift-prerequisites.md)
 - [Nasazení OpenShift původ v Azure](./openshift-origin.md)

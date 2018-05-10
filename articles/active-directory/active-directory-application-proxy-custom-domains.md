@@ -1,29 +1,29 @@
 ---
-title: "Vlastní domény v Azure AD Application Proxy | Microsoft Docs"
-description: "Správa vlastních domén v Azure AD Application Proxy tak, aby adresa URL pro aplikaci je stejný bez ohledu na to, kde uživatelé k němu přístup."
+title: Vlastní domény v Azure AD Application Proxy | Microsoft Docs
+description: Správa vlastních domén v Azure AD Application Proxy tak, aby adresa URL pro aplikaci je stejný bez ohledu na to, kde uživatelé k němu přístup.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 2fe9f895-f641-4362-8b27-7a5d08f8600f
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b198c6aba4227e33eae4af49c019bc4012086a51
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 91cb67bb7a8ebcf0b06561a4c647098c577a473a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastní domény v Azure AD Application Proxy
 
-Při publikování aplikace prostřednictvím Proxy aplikace služby Active Directory Azure můžete vytvořit externí adresu URL pro vaše uživatele, který se má přejít při pracují vzdáleně. Tato adresa URL získá výchozí doménu *yourtenant.msappproxy.net*. Například pokud jste publikovali aplikaci s názvem výdajů a váš klient je s názvem Contoso, pak je externí adresa URL by byl https://expenses-contoso.msappproxy.net. Pokud chcete použít vlastní název domény, nakonfigurujte vlastní doménu pro vaši aplikaci. 
+Při publikování aplikace prostřednictvím Proxy aplikace služby Active Directory Azure můžete vytvořit externí adresu URL pro vaše uživatele, který se má přejít při pracují vzdáleně. Tato adresa URL získá výchozí doménu *yourtenant.msappproxy.net*. Například pokud jste publikovali aplikaci s názvem výdaje a váš klient je s názvem Contoso, pak by externí adresu URL https://expenses-contoso.msappproxy.net. Pokud chcete použít vlastní název domény, nakonfigurujte vlastní doménu pro vaši aplikaci. 
 
 Doporučujeme, abyste nastavili vlastní domény pro vaše aplikace, pokud je to možné. Mezi výhody vlastní domény patří:
 

@@ -1,11 +1,11 @@
 ---
-title: "Jak spravovat uživatelské účty v Azure API Management | Microsoft Docs"
-description: "Naučte se vytvořit nebo pozvat uživatele ve službě Azure API Management"
+title: Jak spravovat uživatelské účty v Azure API Management | Microsoft Docs
+description: Naučte se vytvořit nebo pozvat uživatele ve službě Azure API Management
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 501210c3fab2659deb9594e1bbd9aa51912187e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ed914a3890aab1dd49536856feeb8975986e00
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 Vývojáři ve službě API Management, jsou uživatelé rozhraní API, která vystavit použití služby API Management. Tato příručka obsahuje k vytváření a zvaní vývojářů používat rozhraní API a produkty, abyste vytvořili pro ně k dispozici s vaší instance služby API Management. Informace o správě uživatelských účtů prostřednictvím kódu programu, najdete v článku [entitu uživatele](https://msdn.microsoft.com/library/azure/dn776330.aspx) dokumentaci v [rozhraní API služby REST pro správu](https://msdn.microsoft.com/library/azure/dn776326.aspx) odkaz.

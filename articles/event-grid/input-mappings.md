@@ -6,17 +6,19 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08d1e1ad93eb69d6749860348d13a64078ed1993
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 8426d03d5c3058638fecc0fe27a03a7699a23add
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Vlastní pole mapy událostí mřížky schématu
 
 Pokud vaše data události neodpovídá očekávanému [událostí mřížky schématu](event-schema.md), stále můžete mřížky událostí pro událost trasy odběratelům. Tento článek popisuje způsob namapování vašeho schématu do schématu událostí mřížky.
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>Původní schématu události
 

@@ -3,17 +3,17 @@ title: Nasazení kontejnerů s Helm v Kubernetes v Azure
 description: Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v AKS
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c46bd64b3fec06e4ba4050542f27ba3e70862e45
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 53201021433b71aa6cd5b53e2089c2a105bade07
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-helm-with-azure-kubernetes-service-aks"></a>Helm pomocí služby Azure Kubernetes (AKS)
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cc91366bda4dd443392c78cd61e5cc0ddb261fe2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvořit sadu škálování virtuálního počítače, která používá dostupnost zóny
 
@@ -194,7 +194,7 @@ Následující příklad vytvoří škálování jedním zóny Linux nastavení 
 }
 ```
 
-Kompletní příklad měřítka jedním zóny nastavit a síťové prostředky, najdete v části [této ukázkové šablony Resource Manageru](https://github.com/Azure/vm-scale-sets/blob/master/zones/singlezone.json)
+Kompletní příklad měřítka jedním zóny nastavit a síťové prostředky, najdete v části [této ukázkové šablony Resource Manageru](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
 
 ### <a name="zone-redundant-scale-set"></a>Zónově redundantní škálovací sadu
 
@@ -216,7 +216,7 @@ Pokud chcete vytvořit sadu zónově redundantní škálování, zadejte více h
 
 Pokud vytvoříte veřejnou IP adresu nebo Vyrovnávání zatížení, zadejte *"sku": {"název": "Standard"} "* vlastnost k vytvoření zóny redundantních síťových prostředků. Také musíte vytvořit skupinu zabezpečení sítě a pravidla tak, aby povolovala přenosy. Další informace najdete v tématu [Azure zatížení vyrovnávání standardní přehled](../load-balancer/load-balancer-standard-overview.md).
 
-Zónově redundantní měřítka kompletní příklad sady a síťové prostředky naleznete v tématu [této ukázkové šablony Resource Manageru](https://github.com/Azure/vm-scale-sets/blob/master/zones/multizone.json)
+Zónově redundantní měřítka kompletní příklad sady a síťové prostředky naleznete v tématu [této ukázkové šablony Resource Manageru](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
 ## <a name="next-steps"></a>Další postup
 

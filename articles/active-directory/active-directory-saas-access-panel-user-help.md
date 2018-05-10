@@ -1,11 +1,11 @@
 ---
-title: "Zobrazit nápovědu k přístupu a použití portálu Moje aplikace v Azure Active Directory | Microsoft Docs"
-description: "Získáte pomoc s přihlášením a provádět běžné úkoly na přístupovém panelu."
+title: Zobrazit nápovědu k přístupu a použití portálu Moje aplikace v Azure Active Directory | Microsoft Docs
+description: Získáte pomoc s přihlášením a provádět běžné úkoly na přístupovém panelu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 285ee0c4e7f963c372c4f95face73864ba2a4f68
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Řešení problémů s přístupu a použití portálu Moje aplikace
 
@@ -29,7 +29,7 @@ Pokud dojde k problémům s přihlášením nebo pomocí portálu Moje aplikace,
 
 Zkuste tyto Obecné tipy pro:
 
-- První, kontrola, pokud chcete zobrazit, zda používáte správnou adresu URL, [https://myapps.microsoft.com](https://myapps.microsoft.com).
+- První, kontrola, pokud chcete zobrazit, zda používáte správnou adresu URL, [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 - Zkuste přidat adresu URL do prohlížeče důvěryhodných serverů.
 - Ujistěte se, že vaše heslo je správný a jestli nevypršela platnost. Další informace najdete v tématu [resetovat heslo pracovního nebo školního](active-directory-passwords-update-your-own-password.md).
 - Zkontrolujte, že vaše kontaktní údaje ověřování je aktuální a není blokuje přístup. Další informace najdete v tématu [co Azure Multi-Factor Authentication znamená pro mě nejlepší?](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user).
@@ -55,7 +55,7 @@ Zkontrolujte, zda byly splněny následující požadavky na prohlížeč:
 - **Hraniční**: v systému Windows 10 Anniversary Edition nebo novějším.
 - **Chrome**: v systému Windows 7 nebo novější a Mac OS X nebo novější.
 - **Firefox 26.0 nebo novější**: v systému Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
-- **Internet Explorer 8, 9, 10, 11**: na Windows 7 nebo novější (omezená podpora).
+- **Internet Explorer 11**: na Windows 7 nebo novější (omezená podpora).
 
 Můžete také stáhnout rozšíření pro Chrome a hraniční přímo z následujících lokalit:
 
