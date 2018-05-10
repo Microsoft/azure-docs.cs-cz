@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 9fa87f8dc0c94ec93e049e35be727c031b4b06ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb70b3ff84392797ce0d93b8cf5d4018ff8ebdd8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření bitové kopie virtuálního počítače nebo virtuální pevný disk
 
@@ -45,7 +45,7 @@ Zjednodušené verzi tohoto tématu pro testování, vyhodnocení nebo získáv�
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: Zrušení zřízení virtuálního počítače
-Můžete zrušit jejich zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit počítače konkrétní soubory a data. Použití `waagent` s *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v [uživatelské příručce agenta Azure Linux](../windows/agent-user-guide.md).
+Můžete zrušit jejich zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure se odstranit počítače konkrétní soubory a data. Použití `waagent` s *-deprovision + uživatele* parametr na svůj zdroj virtuálního počítače s Linuxem. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
 
 1. Připojte k virtuálním počítačům s Linuxem pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:

@@ -1,13 +1,13 @@
 ---
-title: "Automatizovat nasazení prostředků pro funkce aplikace v Azure Functions | Microsoft Docs"
-description: "Naučte se vytvářet šablonu Azure Resource Manager, která nasadí aplikaci funkce."
+title: Automatizovat nasazení prostředků pro funkce aplikace v Azure Functions | Microsoft Docs
+description: Naučte se vytvářet šablonu Azure Resource Manager, která nasadí aplikaci funkce.
 services: Functions
 documtationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkce, funkce, bez serveru architektura, infrastruktura jako kód, azure resource Manageru"
+editor: ''
+tags: ''
+keywords: Azure funkce, funkce, bez serveru architektura, infrastruktura jako kód, azure resource Manageru
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 28b2f5aba69e5c058feb7119eb31352220922998
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizovat nasazení prostředků pro funkce aplikace v Azure Functions
 
@@ -56,7 +56,9 @@ Funkce aplikace vyžaduje tyto prostředky:
 }
 ```
 
-Kromě toho vlastnosti `AzureWebJobsStorage` a `AzureWebJobsDashboard` musí být zadány jako nastavení aplikace v konfiguraci lokality. Modul runtime Azure Functions používá `AzureWebJobsStorage` připojovací řetězec k vytvoření interní front. Připojovací řetězec `AzureWebJobsDashboard` se používá k přihlášení k Azure Table storage a power **monitorování** na portálu.
+Kromě toho vlastnost `AzureWebJobsStorage` musí být zadány jako nastavení aplikace v konfiguraci lokality. Pokud není funkce aplikace použít Application Insights pro sledování, se musí také určit `AzureWebJobsDashboard` jako nastavení aplikace.
+
+Modul runtime Azure Functions používá `AzureWebJobsStorage` připojovací řetězec k vytvoření interní front.  Pokud není povoleno Application Insights, modul runtime používá `AzureWebJobsDashboard` připojovací řetězec k přihlášení k Azure Table storage a power **monitorování** na portálu.
 
 Tyto vlastnosti jsou určené v `appSettings` kolekce `siteConfig` objektu:
 
@@ -260,7 +262,7 @@ Můžete použít některou z následujících způsobů k nasazení vaší šab
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [portál Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Nasazení do Azure tlačítko

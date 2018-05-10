@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 006d04efb0a6bebc424cb005bf63af2b3cd7a42e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: f38054eaf2829149a496f840366b6f2f9e03e12b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovné sestavení indexu Azure Search
 
@@ -35,8 +35,8 @@ Plán na úplné časté, znovu sestaví během active vývoje, když index sch�
 | Úpravy | Stav opětovné sestavení|
 |--------------|---------------|
 | Název pole, změnit datový typ, nebo jeho [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) | Změna definice pole obvykle způsobuje opětovné sestavení snížení, s výjimkou těchto [atributy indexu](https://docs.microsoft.com/rest/api/searchservice/create-index): dá načíst, SearchAnalyzer, SynonymMaps. Retrievable, SearchAnalyzer a SynonymMaps atributy můžete přidat na stávající pole bez nutnosti znovu sestavte jeho index.|
-| Přidání polí | Žádné explicitní požadavek na opětovné sestavení. Existující indexované dokumenty zadána pro nové pole hodnotu null. Na budoucí nové indexování jsou hodnoty ze zdroje dat přidány do dokumentů. |
-| Odstranění pole | Žádné explicitní požadavek na opětovné sestavení. Odstraněné pole se nepoužívá, ale fyzicky definice pole a obsah zůstanou v indexu až další sestavení. |
+| Přidání polí | Žádné explicitní požadavek na opětovné sestavení. Existující indexované dokumenty zadána pro nové pole hodnotu null. Na budoucí nové indexování nahraďte hodnoty ze zdrojových dat hodnoty Null přidal Azure Search. |
+| Odstranění pole | Pole nelze odstranit přímo z indexu Azure Search. Místo toho byste měli mít vaší aplikace "odstraněné" pole, které chcete nepoužívejte ji ignorovat. Fyzicky definice pole a obsah zůstat v indexu až po příštím opětovném sestavení indexu pomocí schéma, které vynechá dané oblasti.|
 
 > [!Note]
 > Nové vytvoření je také nutný, pokud přejdete vrstev. Pokud se v určitém okamžiku rozhodnete na větší kapacitu, neexistuje žádný místní upgrade. Nová služba musí být vytvořený nový bod kapacitu a indexy musí být založený od začátku na novou službu. 

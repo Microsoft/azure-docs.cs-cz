@@ -174,10 +174,6 @@
 #### [Vytvoření sestav snímků](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### Zjišťování na základě agenta
-##### [Co je Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md)
-##### [Aktualizace nastavení registru](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [Vysvětlení zabezpečení a ochrany soukromí](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Vzdálený přístup k aplikací s App Proxy](active-directory-application-proxy-get-started.md)
@@ -328,7 +324,7 @@
 #### [Nejčastější dotazy](active-directory-identity-protection-faqs.md)
 #### [Glosář](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [Integrace ostatních služeb s Azure AD]()
 ### [Povolení integrace LinkedIn](linkedin-integration.md)

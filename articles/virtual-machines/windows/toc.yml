@@ -105,7 +105,11 @@
         - name: Postup povolení akcelerátoru zápisu
           href: how-to-enable-write-accelerator.md
         - name: Řešení potíží s připojenými virtuálními pevnými disky
-          href: troubleshoot-vhds.md
+          items:
+            - name: Chyby odstraňování prostředků úložiště
+              href: storage-resource-deletion-errors.md
+            - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+              href: unexpected-reboots-attached-vhds.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací
@@ -202,7 +206,7 @@
         - name: Stažení šablony
           href: download-template.md
         - name: Agent virtuálního počítače Azure
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: Plánovaná údržba
           href: maintenance-notifications.md
         - name: Omezení spekulativního spouštění
@@ -231,7 +235,7 @@
           href: download-vhd.md
     - name: Dostupnost a škálování
       items:
-        - name: Škálovací sady virtuálních počítačů
+        - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Vysoká dostupnost
           href: manage-availability.md
@@ -365,7 +369,7 @@
         - name: Agent Network Watcher
           href: extensions-nwa.md
         - name: Omezení instalace rozšíření
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: Migrace virtuálních počítačů
       items:
         - name: Migrace AWS a místních virtuálních počítačů

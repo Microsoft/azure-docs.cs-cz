@@ -118,7 +118,6 @@
 #### [Azure Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [Konfigurace místních kodérů pro použití s cloudovým kodérem](media-services-live-encoders-overview.md)
-#### [Kodér Elemental Live](media-services-configure-elemental-live-encoder.md)
 #### [Kodér FMLE](media-services-configure-fmle-live-encoder.md)
 #### [Kodér Haivision KB](media-services-configure-kb-live-encoder.md)
 #### [Kodér NewTek TriCaster](media-services-configure-tricaster-live-encoder.md)
